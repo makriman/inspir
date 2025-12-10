@@ -7,6 +7,7 @@ import Results from './components/Results';
 import Dashboard from './components/Dashboard';
 import QuizAttempts from './components/QuizAttempts';
 import QuizReview from './components/QuizReview';
+import QuizHistory from './pages/QuizHistory';
 
 // SEO Pages
 import About from './pages/About';
@@ -76,6 +77,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/history"
+            element={
+              <ProtectedRoute>
+                <QuizHistory />
               </ProtectedRoute>
             }
           />
