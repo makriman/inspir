@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import API_URL from '../utils/api';
+import StudyStreaks from './StudyStreaks';
 
 export default function Dashboard() {
   const [history, setHistory] = useState([]);
@@ -166,7 +167,7 @@ export default function Dashboard() {
         )}
 
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
           <div className="bg-off-white rounded-xl shadow-lg p-4 sm:p-6">
             <p className="text-gray-600 text-xs sm:text-sm font-semibold mb-1 sm:mb-2">Total Quizzes</p>
             <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-deep-blue">{history.length}</p>
@@ -180,6 +181,10 @@ export default function Dashboard() {
             <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-deep-blue">
               {history.length > 0 ? Math.max(...history.map(h => h.percentage)) : 0}%
             </p>
+          </div>
+          {/* Study Streak Card */}
+          <div>
+            <StudyStreaks compact={true} />
           </div>
         </div>
 

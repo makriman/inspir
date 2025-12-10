@@ -43,6 +43,9 @@ import NotFound from './pages/NotFound';
 import StudentForum from './pages/StudentForum';
 import Chat from './pages/Chat';
 import GradeCalculator from './pages/GradeCalculator';
+import CitationGenerator from './pages/CitationGenerator';
+import CornellNotes from './pages/CornellNotes';
+import StudyStreaksPage from './pages/StudyStreaksPage';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -106,6 +109,11 @@ function App() {
           <Route path="/study-timer" element={<StudyTimer />} />
           <Route path="/forum" element={<StudentForum />} />
           <Route path="/grade-calculator" element={<GradeCalculator />} />
+
+          {/* New Study Tools */}
+          <Route path="/citations" element={<CitationGenerator />} />
+          <Route path="/cornell-notes" element={<CornellNotes />} />
+          <Route path="/streaks" element={<StudyStreaksPage />} />
           <Route
             path="/chat"
             element={

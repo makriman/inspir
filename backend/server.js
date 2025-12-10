@@ -8,6 +8,9 @@ import quizRoutes from './routes/quiz.js';
 import authRoutes from './routes/auth.js';
 import forumRoutes from './routes/forum.js';
 import chatRoutes from './routes/chat.js';
+import citationRoutes from './routes/citation.js';
+import cornellNotesRoutes from './routes/cornellNotes.js';
+import streaksRoutes from './routes/streaks.js';
 
 dotenv.config();
 
@@ -76,6 +79,9 @@ app.use('/api/quiz', quizRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/forum', forumRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/citations', citationRoutes);
+app.use('/api/cornell-notes', cornellNotesRoutes);
+app.use('/api/streaks', streaksRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

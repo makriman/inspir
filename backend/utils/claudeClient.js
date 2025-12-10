@@ -213,3 +213,24 @@ Respond with ONLY "correct" or "incorrect".`;
            correctAnswer.toLowerCase().includes(userAnswer.toLowerCase());
   }
 }
+
+// Generate Cornell Notes from content
+export async function generateCornellNotes(prompt) {
+  try {
+    const message = await anthropic.messages.create({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 2048,
+      messages: [
+        {
+          role: 'user',
+          content: prompt
+        }
+      ]
+    });
+
+    return message.content[0].text;
+  } catch (error) {
+    console.error('Error generating Cornell notes:', error);
+    throw error;
+  }
+}
