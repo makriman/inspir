@@ -234,3 +234,159 @@ export async function generateCornellNotes(prompt) {
     throw error;
   }
 }
+
+// Extract text from image using Claude Vision API
+export async function extractTextFromImage(imageBase64) {
+  try {
+    // Remove data URL prefix if present
+    const base64Data = imageBase64.includes(',')
+      ? imageBase64.split(',')[1]
+      : imageBase64;
+
+    // Detect image format
+    let mediaType = 'image/jpeg';
+    if (imageBase64.startsWith('data:image/png')) {
+      mediaType = 'image/png';
+    } else if (imageBase64.startsWith('data:image/webp')) {
+      mediaType = 'image/webp';
+    } else if (imageBase64.startsWith('data:image/gif')) {
+      mediaType = 'image/gif';
+    }
+
+    const message = await anthropic.messages.create({
+      model: 'claude-sonnet-4-5-20250929',
+      max_tokens: 2048,
+      messages: [
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'image',
+              source: {
+                type: 'base64',
+                media_type: mediaType,
+                data: base64Data
+              }
+            },
+            {
+              type: 'text',
+              text: `Extract all text from this image of a homework question or problem.
+
+Also analyze the content and determine:
+1. The subject area (Mathematics, Physics, Chemistry, Biology, English, History, Geography, Computer Science, or Other)
+2. Your confidence level (0-100) in the extraction accuracy
+
+Respond in JSON format:
+{
+  "extracted_text": "the full text from the image",
+  "detected_subject": "subject name",
+  "confidence": 95
+}`
+            }
+          ]
+        }
+      ]
+    });
+
+    const responseText = message.content[0].text;
+
+    // Parse JSON response
+    try {
+      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) {
+        throw new Error('No JSON found in response');
+      }
+      return JSON.parse(jsonMatch[0]);
+    } catch (parseError) {
+      // Fallback if JSON parsing fails
+      return {
+        extractedText: responseText,
+        detectedSubject: 'Other',
+        confidence: 50
+      };
+    }
+
+  } catch (error) {
+    console.error('Error extracting text from image:', error);
+    throw error;
+  }
+}
+
+// Generate step-by-step solution for a doubt/question
+export async function generateDoubtSolution(questionText, subject = null) {
+  try {
+    const prompt = `You are an expert tutor helping students solve homework problems.
+Provide a clear, step-by-step solution to the following question.
+
+${subject ? `Subject: ${subject}\n` : ''}
+Question: ${questionText}
+
+Provide your response in JSON format with the following structure:
+{
+  "solution": "Full solution text with complete explanation",
+  "steps": [
+    "Step 1: Clear explanation of first step",
+    "Step 2: Clear explanation of second step",
+    "Step 3: etc..."
+  ],
+  "key_concepts": [
+    "Concept 1 used in solution",
+    "Concept 2 used in solution"
+  ],
+  "difficulty": "Easy|Medium|Hard"
+}
+
+Guidelines:
+1. Break down the solution into clear, logical steps
+2. Explain WHY each step is taken, not just WHAT to do
+3. Use simple language appropriate for students
+4. Show all calculations and reasoning
+5. Highlight the final answer clearly
+6. List 2-5 key concepts used in the solution
+7. Estimate the difficulty level
+
+Be thorough but concise. Make learning the priority.`;
+
+    const message = await anthropic.messages.create({
+      model: 'claude-sonnet-4-5-20250929',
+      max_tokens: 4096,
+      messages: [
+        {
+          role: 'user',
+          content: prompt
+        }
+      ]
+    });
+
+    const responseText = message.content[0].text;
+
+    // Parse JSON response
+    try {
+      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) {
+        throw new Error('No JSON found in response');
+      }
+      const parsed = JSON.parse(jsonMatch[0]);
+
+      // Validate required fields
+      return {
+        solution: parsed.solution || responseText,
+        steps: parsed.steps || [responseText],
+        key_concepts: parsed.key_concepts || [],
+        difficulty: parsed.difficulty || 'Medium'
+      };
+    } catch (parseError) {
+      // Fallback if JSON parsing fails
+      return {
+        solution: responseText,
+        steps: [responseText],
+        key_concepts: [],
+        difficulty: 'Medium'
+      };
+    }
+
+  } catch (error) {
+    console.error('Error generating doubt solution:', error);
+    throw error;
+  }
+}

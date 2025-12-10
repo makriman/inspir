@@ -46,6 +46,7 @@ import GradeCalculator from './pages/GradeCalculator';
 import CitationGenerator from './pages/CitationGenerator';
 import CornellNotes from './pages/CornellNotes';
 import StudyStreaksPage from './pages/StudyStreaksPage';
+import DoubtSolver from './pages/DoubtSolver';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -114,6 +115,8 @@ function App() {
           <Route path="/citations" element={<CitationGenerator />} />
           <Route path="/cornell-notes" element={<CornellNotes />} />
           <Route path="/streaks" element={<StudyStreaksPage />} />
+          <Route path="/doubt" element={<DoubtSolver />} />
+          <Route path="/doubt/shared/:shareToken" element={<DoubtSolver />} />
           <Route
             path="/chat"
             element={
