@@ -1,9 +1,16 @@
-import express from 'express';
-import cors from 'cors';
 import dotenv from 'dotenv';
-import multer from 'multer';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load .env from the backend directory (absolute path to handle PM2 running from different cwd)
+dotenv.config({ path: '/root/quiz-app/backend/.env' });
+
+import express from 'express';
+import cors from 'cors';
+import multer from 'multer';
 import quizRoutes from './routes/quiz.js';
 import authRoutes from './routes/auth.js';
 import forumRoutes from './routes/forum.js';
@@ -12,8 +19,6 @@ import citationRoutes from './routes/citation.js';
 import cornellNotesRoutes from './routes/cornellNotes.js';
 import streaksRoutes from './routes/streaks.js';
 import doubtRoutes from './routes/doubt.js';
-
-dotenv.config();
 
 // Guard against stdout/stderr EPIPE when the log sink closes unexpectedly (keeps server alive)
 const handlePipeError = (err) => {
@@ -39,9 +44,6 @@ if (process.env.JWT_SECRET.length < 32) {
   console.error('Current length:', process.env.JWT_SECRET.length);
   process.exit(1);
 }
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
