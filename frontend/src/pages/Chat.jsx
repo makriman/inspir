@@ -1,28 +1,40 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
-import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import API_URL from '../utils/api';
+
+// Import tool components
+import ToolbarIcon from '../components/chat/ToolbarIcon';
+import RightSidebar from '../components/chat/RightSidebar';
+import ChatHeader from '../components/chat/ChatHeader';
+import MessageBubble from '../components/chat/MessageBubble';
+import ToolModal from '../components/chat/ToolModal';
 
 export default function Chat() {
   const { user, session, loading: authLoading } = useAuth();
   const navigate = useNavigate();
 
+  // Chat state
   const [conversations, setConversations] = useState([]);
   const [currentConversation, setCurrentConversation] = useState(null);
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingMessage, setStreamingMessage] = useState('');
+
+  // UI state
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [editingTitle, setEditingTitle] = useState(null);
-  const [editTitle, setEditTitle] = useState('');
+  const [activeToolId, setActiveToolId] = useState(null);
+
+  // User preferences
+  const [ageFilter, setAgeFilter] = useState('teen'); // 'under14', 'teen', 'adult'
+  const [currentSubject, setCurrentSubject] = useState('General');
+  const [studyStreak, setStudyStreak] = useState(5);
+  const [todayStudyTime, setTodayStudyTime] = useState(135); // minutes
 
   const messagesEndRef = useRef(null);
-  const inputRef = useRef(null);
   const textareaRef = useRef(null);
 
   // Redirect if not authenticated
@@ -39,7 +51,7 @@ export default function Chat() {
     }
   }, [user, session]);
 
-  // Auto-scroll to bottom when new messages arrive
+  // Auto-scroll to bottom
   useEffect(() => {
     scrollToBottom();
   }, [messages, streamingMessage]);
@@ -48,7 +60,8 @@ export default function Chat() {
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+      const newHeight = Math.min(textareaRef.current.scrollHeight, 120);
+      textareaRef.current.style.height = newHeight + 'px';
     }
   }, [inputMessage]);
 
@@ -59,9 +72,7 @@ export default function Chat() {
   const loadConversations = async () => {
     try {
       const response = await axios.get(`${API_URL}/chat/conversations`, {
-        headers: {
-          Authorization: `Bearer ${session.access_token}`
-        }
+        headers: { Authorization: `Bearer ${session.access_token}` }
       });
       setConversations(response.data);
     } catch (error) {
@@ -74,19 +85,16 @@ export default function Chat() {
       const response = await axios.post(
         `${API_URL}/chat/conversations`,
         { title: 'New Chat' },
-        {
-          headers: {
-            Authorization: `Bearer ${session.access_token}`
-          }
-        }
+        { headers: { Authorization: `Bearer ${session.access_token}` } }
       );
       const newConv = response.data;
       setConversations(prev => [newConv, ...prev]);
       setCurrentConversation(newConv);
       setMessages([]);
-      inputRef.current?.focus();
+      return newConv;
     } catch (error) {
       console.error('Error creating conversation:', error);
+      return null;
     }
   };
 
@@ -94,11 +102,7 @@ export default function Chat() {
     try {
       const response = await axios.get(
         `${API_URL}/chat/conversations/${conversationId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${session.access_token}`
-          }
-        }
+        { headers: { Authorization: `Bearer ${session.access_token}` } }
       );
       setMessages(response.data);
     } catch (error) {
@@ -110,21 +114,15 @@ export default function Chat() {
     setCurrentConversation(conversation);
     loadMessages(conversation.id);
     setStreamingMessage('');
-    // Auto-close sidebar on mobile after selecting conversation
-    if (window.innerWidth < 640) {
-      setSidebarCollapsed(true);
-    }
   };
 
   const sendMessage = async () => {
-    if (!inputMessage.trim() || isStreaming) {
-      return;
-    }
-
-    // Create new conversation if none selected
-    if (!currentConversation) {
-      await createNewConversation();
-      return;
+    if (!inputMessage.trim() || isStreaming) return;
+    let conversation = currentConversation;
+    if (!conversation) {
+      const newConv = await createNewConversation();
+      if (!newConv) return;
+      conversation = newConv;
     }
 
     const userMessage = inputMessage.trim();
@@ -132,7 +130,6 @@ export default function Chat() {
     setIsStreaming(true);
     setStreamingMessage('');
 
-    // Add user message to UI immediately
     const tempUserMsg = {
       id: 'temp-' + Date.now(),
       role: 'user',
@@ -143,7 +140,7 @@ export default function Chat() {
 
     try {
       const response = await fetch(
-        `${API_URL}/chat/conversations/${currentConversation.id}/messages`,
+        `${API_URL}/chat/conversations/${conversation.id}/messages`,
         {
           method: 'POST',
           headers: {
@@ -154,13 +151,10 @@ export default function Chat() {
         }
       );
 
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
+      if (!response.ok) throw new Error('Failed to send message');
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
-
       let fullText = '';
 
       while (true) {
@@ -174,7 +168,6 @@ export default function Chat() {
           if (line.startsWith('data: ')) {
             try {
               const data = JSON.parse(line.slice(6));
-
               if (data.type === 'content') {
                 fullText += data.text;
                 setStreamingMessage(fullText);
@@ -188,9 +181,6 @@ export default function Chat() {
                 setMessages(prev => [...prev, assistantMsg]);
                 setStreamingMessage('');
                 loadConversations();
-              } else if (data.type === 'error') {
-                console.error('Streaming error:', data.error);
-                alert('Error: ' + data.error);
               }
             } catch (e) {
               // Ignore parse errors
@@ -201,60 +191,9 @@ export default function Chat() {
     } catch (error) {
       console.error('Error sending message:', error);
       alert('Failed to send message. Please try again.');
-      // Remove temporary user message on error
       setMessages(prev => prev.filter(m => m.id !== tempUserMsg.id));
     } finally {
       setIsStreaming(false);
-    }
-  };
-
-  const deleteConversation = async (convId, e) => {
-    e.stopPropagation();
-    if (!confirm('Delete this conversation? This cannot be undone.')) return;
-
-    try {
-      await axios.delete(`${API_URL}/chat/conversations/${convId}`, {
-        headers: {
-          Authorization: `Bearer ${session.access_token}`
-        }
-      });
-
-      setConversations(prev => prev.filter(c => c.id !== convId));
-      if (currentConversation?.id === convId) {
-        setCurrentConversation(null);
-        setMessages([]);
-      }
-    } catch (error) {
-      console.error('Error deleting conversation:', error);
-    }
-  };
-
-  const startEditingTitle = (conv, e) => {
-    e.stopPropagation();
-    setEditingTitle(conv.id);
-    setEditTitle(conv.title);
-  };
-
-  const saveTitle = async (convId) => {
-    if (!editTitle.trim()) {
-      setEditingTitle(null);
-      return;
-    }
-
-    try {
-      await axios.patch(
-        `${API_URL}/chat/conversations/${convId}`,
-        { title: editTitle.trim() },
-        {
-          headers: {
-            Authorization: `Bearer ${session.access_token}`
-          }
-        }
-      );
-      loadConversations();
-      setEditingTitle(null);
-    } catch (error) {
-      console.error('Error updating title:', error);
     }
   };
 
@@ -265,283 +204,264 @@ export default function Chat() {
     }
   };
 
+  const deleteConversation = async (convId) => {
+    if (!confirm('Delete this conversation?')) return;
+    try {
+      await axios.delete(`${API_URL}/chat/conversations/${convId}`, {
+        headers: { Authorization: `Bearer ${session.access_token}` }
+      });
+      setConversations(prev => prev.filter(c => c.id !== convId));
+      if (currentConversation?.id === convId) {
+        setCurrentConversation(null);
+        setMessages([]);
+      }
+    } catch (error) {
+      console.error('Error deleting conversation:', error);
+    }
+  };
+
+  // Define 15 revolutionary tools
+  const tools = [
+    { id: 'draw', icon: '🎨', label: 'Draw/Sketch', description: 'Visual learning canvas', color: 'from-blue-500 to-green-500' },
+    { id: 'quiz', icon: '📝', label: 'Quiz Generator', description: 'Create instant quizzes', color: 'from-purple-500 to-pink-500' },
+    { id: 'flashcards', icon: '🃏', label: 'Flashcards', description: 'Study with flashcards', color: 'from-yellow-500 to-orange-500' },
+    { id: 'practice', icon: '📊', label: 'Practice Tests', description: 'Full practice tests', color: 'from-blue-500 to-indigo-500' },
+    { id: 'timer', icon: '⏰', label: 'Study Timer', description: 'Pomodoro timer', color: 'from-red-500 to-pink-500' },
+    { id: 'habits', icon: '✅', label: 'Habit Tracker', description: 'Track study habits', color: 'from-green-500 to-teal-500' },
+    { id: 'explain', icon: '💡', label: 'Explain Concept', description: 'Deep explanations', color: 'from-yellow-400 to-yellow-600' },
+    { id: 'music', icon: '🎵', label: 'Study Music', description: 'Focus music', color: 'from-purple-400 to-purple-600' },
+    { id: 'image', icon: '📸', label: 'Image Analysis', description: 'Homework help', color: 'from-blue-400 to-cyan-500' },
+    { id: 'math', icon: '🧮', label: 'Math Solver', description: 'Step-by-step math', color: 'from-indigo-500 to-blue-500' },
+    { id: 'science', icon: '🔬', label: 'Science Lab', description: 'Experiments & simulations', color: 'from-green-400 to-emerald-500' },
+    { id: 'visual', icon: '🌍', label: 'Visual Learning', description: 'Diagrams & maps', color: 'from-blue-500 to-green-400' },
+    { id: 'notes', icon: '📓', label: 'Notes Sync', description: 'Cornell notes', color: 'from-amber-600 to-orange-600' },
+    { id: 'planner', icon: '📅', label: 'AI Planner', description: 'Smart scheduling', color: 'from-violet-500 to-purple-500' },
+    { id: 'goals', icon: '🎯', label: 'Goal Setter', description: 'Track progress', color: 'from-red-500 to-rose-500' }
+  ];
+
   if (authLoading) {
     return (
-      <div className="h-screen flex items-center justify-center bg-white">
-        <div className="text-gray-600">Loading...</div>
+      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="text-gray-600 text-lg"
+        >
+          Loading...
+        </motion.div>
       </div>
     );
   }
 
   return (
-    <div className="h-screen flex bg-white overflow-hidden">
-      {/* Sidebar */}
-      <div className={`${sidebarCollapsed ? 'w-0' : 'w-full sm:w-64'} ${sidebarCollapsed ? '' : 'fixed sm:relative'} inset-0 sm:inset-auto z-40 sm:z-auto flex-shrink-0 transition-all duration-300 border-r border-gray-200 bg-gray-50 flex flex-col overflow-hidden`}>
-        {!sidebarCollapsed && (
-          <>
-            {/* Sidebar Header */}
-            <div className="p-4 border-b border-gray-200">
-              <button
-                onClick={createNewConversation}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                </svg>
-                New chat
-              </button>
-            </div>
-
-            {/* Conversations List */}
-            <div className="flex-1 overflow-y-auto p-2">
-              {conversations.map((conv) => (
-                <div
-                  key={conv.id}
-                  onClick={() => selectConversation(conv)}
-                  className={`group relative flex items-center gap-3 px-3 py-2 rounded-lg cursor-pointer mb-1 ${
-                    currentConversation?.id === conv.id
-                      ? 'bg-gray-200'
-                      : 'hover:bg-gray-100'
-                  }`}
-                >
-                  <svg className="w-4 h-4 flex-shrink-0 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                  </svg>
-
-                  {editingTitle === conv.id ? (
-                    <input
-                      type="text"
-                      value={editTitle}
-                      onChange={(e) => setEditTitle(e.target.value)}
-                      onBlur={() => saveTitle(conv.id)}
-                      onKeyPress={(e) => e.key === 'Enter' && saveTitle(conv.id)}
-                      className="flex-1 bg-white border border-gray-300 rounded px-2 py-1 text-sm"
-                      autoFocus
-                      onClick={(e) => e.stopPropagation()}
-                    />
-                  ) : (
-                    <span className="flex-1 text-sm truncate">{conv.title}</span>
-                  )}
-
-                  <div className="hidden group-hover:flex items-center gap-1">
-                    <button
-                      onClick={(e) => startEditingTitle(conv, e)}
-                      className="p-1 hover:bg-gray-200 rounded"
-                      title="Rename"
-                    >
-                      <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={(e) => deleteConversation(conv.id, e)}
-                      className="p-1 hover:bg-red-100 rounded"
-                      title="Delete"
-                    >
-                      <svg className="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* User Info */}
-            <div className="p-4 border-t border-gray-200">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center text-white text-sm font-semibold">
-                  {user?.username?.[0]?.toUpperCase() || 'U'}
-                </div>
-                <span className="text-sm font-medium truncate">{user?.username}</span>
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-
-      {/* Main Chat Area */}
-      <div className="flex-1 flex flex-col relative">
-        {/* Toggle Sidebar Button */}
-        <div className="absolute top-2 sm:top-4 left-2 sm:left-4 z-10">
-          <button
-            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            className="p-2 bg-white shadow-md sm:shadow-none hover:bg-gray-100 rounded-lg transition-colors"
-          >
-            <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {sidebarCollapsed ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              )}
-            </svg>
-          </button>
-        </div>
+    <div className="h-screen flex bg-white overflow-hidden relative">
+      {/* MAIN CHAT AREA - LEFT SIDE (60-70%) */}
+      <motion.div
+        className="flex-1 flex flex-col relative bg-gradient-to-br from-white to-purple-50/30"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Chat Header */}
+        <ChatHeader
+          currentSubject={currentSubject}
+          ageFilter={ageFilter}
+          studyStreak={studyStreak}
+          todayStudyTime={todayStudyTime}
+          onSubjectChange={setCurrentSubject}
+          onAgeFilterChange={setAgeFilter}
+        />
 
         {currentConversation ? (
           <>
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto">
-              <div className="max-w-3xl mx-auto px-3 sm:px-4 py-4 sm:py-8 pt-14 sm:pt-16">
+            <div className="flex-1 overflow-y-auto px-8 py-6" style={{ paddingBottom: '100px' }}>
+              <div className="max-w-4xl mx-auto">
                 {messages.length === 0 && !streamingMessage && (
-                  <div className="text-center py-8 sm:py-12">
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-3 sm:mb-4">How can I help you today?</h2>
-                    <p className="text-sm sm:text-base text-gray-600">Ask me anything - I'm here to assist with your studies and questions.</p>
-                  </div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center py-12"
+                  >
+                    <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                      How can I help you today?
+                    </h2>
+                    <p className="text-gray-600 text-lg">
+                      Ask me anything - I'm here to help you learn!
+                    </p>
+                  </motion.div>
                 )}
 
                 {messages.map((msg, idx) => (
-                  <div key={msg.id} className={`mb-4 sm:mb-8 ${msg.role === 'user' ? 'ml-auto max-w-[85%] sm:max-w-[80%]' : ''}`}>
-                    <div className="flex items-start gap-2 sm:gap-4">
-                      {msg.role === 'assistant' && (
-                        <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                          </svg>
-                        </div>
-                      )}
-
-                      <div className={`flex-1 ${msg.role === 'user' ? 'text-right' : ''}`}>
-                        {msg.role === 'user' && (
-                          <div className="inline-block bg-gray-100 rounded-2xl px-3 sm:px-5 py-2 sm:py-3 text-left max-w-full">
-                            <p className="text-sm sm:text-base text-gray-900 whitespace-pre-wrap break-words">{msg.content}</p>
-                          </div>
-                        )}
-
-                        {msg.role === 'assistant' && (
-                          <div className="prose prose-slate max-w-none">
-                            <ReactMarkdown
-                              components={{
-                                code({node, inline, className, children, ...props}) {
-                                  const match = /language-(\w+)/.exec(className || '');
-                                  return !inline && match ? (
-                                    <SyntaxHighlighter
-                                      style={oneDark}
-                                      language={match[1]}
-                                      PreTag="div"
-                                      {...props}
-                                    >
-                                      {String(children).replace(/\n$/, '')}
-                                    </SyntaxHighlighter>
-                                  ) : (
-                                    <code className={className} {...props}>
-                                      {children}
-                                    </code>
-                                  );
-                                },
-                              }}
-                            >
-                              {msg.content}
-                            </ReactMarkdown>
-                          </div>
-                        )}
-                      </div>
-
-                      {msg.role === 'user' && (
-                        <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gray-700 flex items-center justify-center flex-shrink-0 text-white text-xs sm:text-sm font-semibold">
-                          {user?.username?.[0]?.toUpperCase() || 'U'}
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <MessageBubble
+                    key={msg.id}
+                    message={msg}
+                    user={user}
+                    index={idx}
+                  />
                 ))}
 
                 {/* Streaming message */}
                 {streamingMessage && (
-                  <div className="mb-4 sm:mb-8">
-                    <div className="flex items-start gap-2 sm:gap-4">
-                      <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-purple-600 flex items-center justify-center flex-shrink-0">
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                      </div>
-                      <div className="flex-1">
-                        <div className="prose prose-slate max-w-none">
-                          <ReactMarkdown
-                            components={{
-                              code({node, inline, className, children, ...props}) {
-                                const match = /language-(\w+)/.exec(className || '');
-                                return !inline && match ? (
-                                  <SyntaxHighlighter
-                                    style={oneDark}
-                                    language={match[1]}
-                                    PreTag="div"
-                                    {...props}
-                                  >
-                                    {String(children).replace(/\n$/, '')}
-                                  </SyntaxHighlighter>
-                                ) : (
-                                  <code className={className} {...props}>
-                                    {children}
-                                  </code>
-                                );
-                              },
-                            }}
-                          >
-                            {streamingMessage}
-                          </ReactMarkdown>
-                          <span className="inline-block w-1.5 h-5 bg-purple-600 ml-1 animate-pulse"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <MessageBubble
+                    message={{
+                      id: 'streaming',
+                      role: 'assistant',
+                      content: streamingMessage,
+                      created_at: new Date().toISOString()
+                    }}
+                    user={user}
+                    isStreaming={true}
+                  />
                 )}
 
                 <div ref={messagesEndRef} />
               </div>
             </div>
 
-            {/* Input Area */}
-            <div className="border-t border-gray-200 bg-white">
-              <div className="max-w-3xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
-                <div className="relative flex items-end gap-2 bg-white border border-gray-300 rounded-xl p-2 focus-within:border-gray-400 transition-colors">
+            {/* Input Area - Fixed at bottom of chat */}
+            <div className="absolute bottom-20 left-0 right-0 bg-gradient-to-t from-white via-white to-transparent pt-6 pb-4 px-8">
+              <div className="max-w-4xl mx-auto">
+                <motion.div
+                  className="relative flex items-end gap-3 bg-white border-2 border-gray-200 rounded-2xl p-3 shadow-lg focus-within:border-blue-400 focus-within:shadow-xl transition-all"
+                  whileFocus={{ scale: 1.01 }}
+                >
+                  {/* Quick action buttons */}
+                  <div className="flex gap-2 items-center pb-2">
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      title="Attach file"
+                    >
+                      📎
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      title="Take photo"
+                    >
+                      📷
+                    </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      title="Voice input"
+                    >
+                      🎤
+                    </motion.button>
+                  </div>
+
                   <textarea
                     ref={textareaRef}
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Message InspirQuiz AI..."
+                    placeholder="Ask me anything... I'm here to help you learn!"
                     disabled={isStreaming}
                     rows={1}
-                    className="flex-1 resize-none bg-transparent border-none focus:outline-none text-sm sm:text-base text-gray-900 placeholder-gray-500 max-h-32 sm:max-h-40 px-1 sm:px-2 py-2 disabled:opacity-50"
-                    style={{ minHeight: '24px' }}
+                    className="flex-1 resize-none bg-transparent border-none focus:outline-none text-base text-gray-900 placeholder-gray-400 px-3 py-2 disabled:opacity-50"
+                    style={{ maxHeight: '120px' }}
                   />
-                  <button
+
+                  <motion.button
                     onClick={sendMessage}
                     disabled={isStreaming || !inputMessage.trim()}
-                    className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-gray-900 text-white hover:bg-gray-800 disabled:opacity-30 disabled:hover:bg-gray-900 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-lg"
                   >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                    </svg>
-                  </button>
-                </div>
-                <p className="text-xs text-gray-500 text-center mt-2">
-                  InspirQuiz AI can make mistakes. Check important information.
-                </p>
+                    🚀
+                  </motion.button>
+                </motion.div>
               </div>
             </div>
           </>
         ) : (
-          <div className="flex-1 flex items-center justify-center px-4">
-            <div className="text-center">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-purple-600 flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h1 className="text-2xl sm:text-4xl font-semibold text-gray-800 mb-2 sm:mb-3">InspirQuiz AI</h1>
-              <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">How can I help you today?</p>
-              <button
-                onClick={createNewConversation}
-                className="px-4 sm:px-6 py-2 sm:py-3 bg-gray-900 text-white rounded-xl hover:bg-gray-800 transition-colors font-medium text-sm sm:text-base"
+          <div className="flex-1 flex items-center justify-center px-4" style={{ paddingBottom: '100px' }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
+              <motion.div
+                className="w-24 h-24 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center mx-auto mb-6 shadow-2xl"
+                animate={{
+                  boxShadow: [
+                    '0 10px 30px rgba(124, 58, 237, 0.3)',
+                    '0 10px 40px rgba(124, 58, 237, 0.5)',
+                    '0 10px 30px rgba(124, 58, 237, 0.3)',
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
               >
-                Start a conversation
-              </button>
-            </div>
+                <span className="text-5xl">✨</span>
+              </motion.div>
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+                InspirQuiz AI
+              </h1>
+              <p className="text-gray-600 text-xl mb-8">
+                Your revolutionary AI study companion
+              </p>
+              <motion.button
+                onClick={createNewConversation}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-2xl hover:from-purple-700 hover:to-blue-700 transition-all font-semibold text-lg shadow-xl"
+              >
+                Start Learning Now
+              </motion.button>
+            </motion.div>
           </div>
         )}
-      </div>
+      </motion.div>
+
+      {/* RIGHT SIDEBAR - Navigation & Organization (320px) */}
+      <RightSidebar
+        collapsed={sidebarCollapsed}
+        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+        user={user}
+        conversations={conversations}
+        currentConversation={currentConversation}
+        onSelectConversation={selectConversation}
+        onDeleteConversation={deleteConversation}
+        onNewConversation={createNewConversation}
+        studyStreak={studyStreak}
+        todayStudyTime={todayStudyTime}
+      />
+
+      {/* BOTTOM TOOLBAR - Revolutionary Animated Tools */}
+      <motion.div
+        className="fixed bottom-0 left-0 right-0 h-20 bg-white/80 backdrop-blur-xl border-t border-gray-200 shadow-2xl z-50"
+        initial={{ y: 100 }}
+        animate={{ y: 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      >
+        <div className="h-full flex items-center justify-center gap-4 px-4 overflow-x-auto">
+          {tools.map((tool, index) => (
+            <ToolbarIcon
+              key={tool.id}
+              tool={tool}
+              index={index}
+              isActive={activeToolId === tool.id}
+              onClick={() => setActiveToolId(tool.id)}
+            />
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Tool Modal */}
+      <AnimatePresence>
+        {activeToolId && (
+          <ToolModal
+            tool={tools.find(t => t.id === activeToolId)}
+            onClose={() => setActiveToolId(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
