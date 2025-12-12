@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { X, Sparkles } from 'lucide-react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function ToolModal({ tool, onClose }) {
   if (!tool) return null;
@@ -215,26 +216,144 @@ function StudyTimer() {
 }
 
 function DrawCanvas() {
+  const canvasRef = useRef(null);
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [currentColor, setCurrentColor] = useState('black');
+  const [lineWidth, setLineWidth] = useState(3);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    // Set canvas size
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    // Fill with white background
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }, []);
+
+  const startDrawing = (e) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const rect = canvas.getBoundingClientRect();
+
+    ctx.strokeStyle = currentColor;
+    ctx.lineWidth = lineWidth;
+
+    ctx.beginPath();
+    ctx.moveTo(
+      e.clientX - rect.left,
+      e.clientY - rect.top
+    );
+    setIsDrawing(true);
+  };
+
+  const draw = (e) => {
+    if (!isDrawing) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const rect = canvas.getBoundingClientRect();
+
+    ctx.lineTo(
+      e.clientX - rect.left,
+      e.clientY - rect.top
+    );
+    ctx.stroke();
+  };
+
+  const stopDrawing = () => {
+    setIsDrawing(false);
+  };
+
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  };
+
+  const saveCanvas = () => {
+    const canvas = canvasRef.current;
+    const dataURL = canvas.toDataURL('image/png');
+    const link = document.createElement('a');
+    link.download = `drawing-${Date.now()}.png`;
+    link.href = dataURL;
+    link.click();
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-bold text-gray-800">Drawing Canvas</h3>
         <div className="flex gap-2">
-          <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold">Clear</button>
-          <button className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-lg font-semibold">Save</button>
+          <button
+            onClick={clearCanvas}
+            className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg font-semibold transition-colors"
+          >
+            Clear
+          </button>
+          <button
+            onClick={saveCanvas}
+            className="px-4 py-2 bg-blue-600 text-white hover:bg-blue-700 rounded-lg font-semibold transition-colors"
+          >
+            Save
+          </button>
         </div>
       </div>
-      <div className="bg-white border-4 border-gray-300 rounded-xl h-96 flex items-center justify-center">
-        <p className="text-gray-400">Canvas area - drawing functionality would go here</p>
-      </div>
-      <div className="flex gap-2">
-        {['black', 'red', 'blue', 'green', 'yellow'].map((color) => (
-          <button
-            key={color}
-            className="w-10 h-10 rounded-full border-2 border-gray-300"
-            style={{ backgroundColor: color }}
-          />
-        ))}
+      <canvas
+        ref={canvasRef}
+        onMouseDown={startDrawing}
+        onMouseMove={draw}
+        onMouseUp={stopDrawing}
+        onMouseLeave={stopDrawing}
+        className="w-full bg-white border-4 border-gray-300 rounded-xl h-96 cursor-crosshair"
+        style={{ touchAction: 'none' }}
+      />
+      <div className="space-y-3">
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-semibold text-gray-700">Color:</span>
+          <div className="flex gap-2">
+            {['black', 'red', 'blue', 'green', 'yellow', 'purple', 'orange', 'white'].map((color) => (
+              <motion.button
+                key={color}
+                onClick={() => setCurrentColor(color)}
+                className={`w-10 h-10 rounded-full border-2 transition-all ${
+                  currentColor === color ? 'border-gray-800 scale-110' : 'border-gray-300'
+                }`}
+                style={{ backgroundColor: color }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-semibold text-gray-700">Brush Size:</span>
+          <div className="flex gap-2">
+            {[2, 4, 6, 8].map((size) => (
+              <motion.button
+                key={size}
+                onClick={() => setLineWidth(size)}
+                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                  lineWidth === size
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {size}px
+              </motion.button>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
