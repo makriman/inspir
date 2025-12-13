@@ -19,7 +19,7 @@ export default function StudyStreaks({ compact = false }) {
 
   const loadStreakData = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('auth_token');
       if (!token) return;
 
       const response = await axios.get(`${API_URL}/streaks/current`, {
@@ -35,7 +35,7 @@ export default function StudyStreaks({ compact = false }) {
 
   const loadActivityHistory = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('auth_token');
       if (!token) return;
 
       const response = await axios.get(`${API_URL}/streaks/history?days=30`, {
@@ -49,7 +49,7 @@ export default function StudyStreaks({ compact = false }) {
 
   const loadStats = async () => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('auth_token');
       if (!token) return;
 
       const response = await axios.get(`${API_URL}/streaks/stats?days=30`, {
