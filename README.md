@@ -2,14 +2,14 @@
 
 **"The Only Study Toolkit You Need"**
 
-inspir is an all-in-one AI-powered study platform designed to help students succeed. With 5 live tools and 62 more coming soon, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
+inspir is an all-in-one AI-powered study platform designed to help students succeed. With 9 live tools and 58 more coming soon, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
 
 [![Live Site](https://img.shields.io/badge/Live-quiz.inspir.uk-blue)](https://quiz.inspir.uk)
 [![License](https://img.shields.io/badge/License-Private-red)]()
 
 ---
 
-## 🚀 Live Tools (5)
+## 🚀 Live Tools (9)
 
 ### 1. 📝 Quiz Generator
 Upload PDFs, DOCX files, or paste text to generate AI-powered quizzes instantly. Get 10 intelligent questions with automatic grading and detailed explanations.
@@ -27,6 +27,8 @@ Your personal AI study assistant powered by Claude. Ask questions, get explanati
 **Features:**
 - Context-aware conversations
 - Study help and explanations
+- **Interactive drawing canvas** - Sketch diagrams, draw concepts, visualize ideas
+- Image upload support
 - Homework assistance
 - Concept clarification
 - 24/7 availability
@@ -61,17 +63,61 @@ Connect with fellow students, share resources, ask questions, and build your stu
 - Resource sharing
 - Study groups
 
+### 6. 📚 Citation Generator
+Generate properly formatted citations in multiple styles (APA, MLA, Chicago, Harvard) from URLs, books, or journals.
+
+**Features:**
+- Multiple citation styles (APA, MLA, Chicago, Harvard)
+- URL-based citation generation
+- Book and journal citations
+- Copy to clipboard
+- Citation history tracking
+- Automatic metadata extraction
+
+### 7. 📝 Cornell Notes
+Take structured notes using the proven Cornell note-taking system with AI-powered features.
+
+**Features:**
+- Cornell note-taking format (Cues, Notes, Summary)
+- Auto-save functionality
+- Export to PDF
+- Rich text editing
+- Note organization and search
+- Template system
+
+### 8. 🔥 Study Streaks
+Track your daily study activity and build consistent study habits with gamified streak tracking.
+
+**Features:**
+- Daily streak counter
+- 30-day activity heatmap calendar
+- Activity breakdown by type (quiz, chat, timer, notes, citations)
+- Longest streak tracking
+- Total study days counter
+- Motivational tips and progress visualization
+
+### 9. 🤔 Doubt Solver
+Get instant help with your doubts and questions using AI-powered problem solving.
+
+**Features:**
+- AI-powered doubt resolution
+- Step-by-step explanations
+- Multi-subject support
+- Image upload for problems
+- Solution history
+- Follow-up questions
+
 ---
 
-## 🔮 Coming Soon (62 Tools)
+## 🔮 Coming Soon (58 Tools)
 
-inspir is rapidly expanding with 62 additional study tools in development, including:
+inspir is rapidly expanding with 58 additional study tools in development, including:
 - Flashcard generator
-- Note-taking system
-- Study planner
-- Citation generator
+- Mind mapping tool
+- Study planner & calendar
 - Concept mapper
-- And 57 more...
+- Math equation solver
+- And 53 more...
 
 ---
 
@@ -240,8 +286,28 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 - `GET /api/quiz/:id` - Get specific quiz by ID
 
 ### Chat Routes
-- `POST /api/chat` - Send message to AI assistant
+- `POST /api/chat` - Send message to AI assistant (supports text and images)
 - `GET /api/chat/history` - Get chat history (auth required)
+
+### Citation Routes
+- `POST /api/citations/generate` - Generate citation from URL or metadata
+- `GET /api/citations/history` - Get citation history (auth required)
+
+### Cornell Notes Routes
+- `POST /api/cornell-notes` - Create new Cornell note
+- `GET /api/cornell-notes` - Get all user's notes (auth required)
+- `GET /api/cornell-notes/:id` - Get specific note
+- `PUT /api/cornell-notes/:id` - Update note
+- `DELETE /api/cornell-notes/:id` - Delete note
+
+### Study Streaks Routes
+- `POST /api/streaks/activity` - Log study activity
+- `GET /api/streaks/current` - Get current streak data (auth required)
+- `GET /api/streaks/history` - Get activity history (auth required)
+- `GET /api/streaks/stats` - Get activity statistics (auth required)
+
+### Doubt Solver Routes
+- `POST /api/doubt` - Submit doubt for AI resolution
 
 ### Auth Routes
 - `POST /api/auth/signup` - Create new account
@@ -300,6 +366,32 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 - `user_id` (UUID, foreign key to auth.users)
 - `content` (TEXT)
 - `created_at` (TIMESTAMP)
+
+**cornell_notes**
+- `id` (UUID, primary key)
+- `user_id` (UUID, foreign key to auth.users)
+- `title` (TEXT)
+- `cues` (TEXT)
+- `notes` (TEXT)
+- `summary` (TEXT)
+- `created_at` (TIMESTAMP)
+- `updated_at` (TIMESTAMP)
+
+**study_activity**
+- `id` (UUID, primary key)
+- `user_id` (UUID, foreign key to auth.users)
+- `activity_date` (DATE)
+- `activity_type` (VARCHAR) - 'quiz', 'chat', 'timer', 'notes', 'citation'
+- `activity_count` (INTEGER)
+- `total_time_minutes` (INTEGER)
+
+**user_streaks**
+- `user_id` (UUID, primary key)
+- `current_streak` (INTEGER)
+- `longest_streak` (INTEGER)
+- `total_study_days` (INTEGER)
+- `last_activity_date` (DATE)
+- `streak_freeze_count` (INTEGER)
 
 ---
 
