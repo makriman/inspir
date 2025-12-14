@@ -2,172 +2,19 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { blogPosts } from '../seo/blogPosts';
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const articles = [
-    {
-      slug: 'students-exam-prep',
-      title: 'How to Actually Prepare for Exams (Without Just Re-Reading Your Notes)',
-      excerpt: 'Re-reading your notes feels productive, but it\'s one of the least effective study methods. Here\'s what actually works.',
-      category: 'Study Tips',
-      readTime: '8 min',
-      icon: '📚'
-    },
-    {
-      slug: 'teachers-lesson-plans',
-      title: 'Creating Assessments From Lesson Plans in Minutes, Not Hours',
-      excerpt: 'Teachers spend countless hours writing quiz questions. Here\'s how to cut that time down to minutes while maintaining quality.',
-      category: 'For Teachers',
-      readTime: '7 min',
-      icon: '👩‍🏫'
-    },
-    {
-      slug: 'study-smarter-notes',
-      title: 'Study Smarter: Turn Your Notes Into Active Learning',
-      excerpt: 'Your notes are just sitting there. Here\'s how to transform them into an active learning tool that actually improves retention.',
-      category: 'Study Tips',
-      readTime: '9 min',
-      icon: '📝'
-    },
-    {
-      slug: 'quiz-yourself-quickly',
-      title: 'The 5-Minute Study Hack That Actually Works',
-      excerpt: 'Don\'t have time to study? This quick technique helps you retain more in less time.',
-      category: 'Quick Tips',
-      readTime: '5 min',
-      icon: '⚡'
-    },
-    {
-      slug: 'self-directed-learning',
-      title: 'Self-Directed Learning: How to Actually Retain What You Teach Yourself',
-      excerpt: 'Teaching yourself something new? Here\'s how to ensure the information sticks beyond next week.',
-      category: 'Learning Strategies',
-      readTime: '10 min',
-      icon: '🎯'
-    },
-    {
-      slug: 'effective-study-quizzes',
-      title: 'What Makes a Good Study Quiz? (It\'s Not What You Think)',
-      excerpt: 'Not all quizzes are created equal. Learn what separates effective learning tools from time-wasters.',
-      category: 'Study Tips',
-      readTime: '8 min',
-      icon: '✅'
-    },
-    {
-      slug: 'professional-training',
-      title: 'Professional Development That Actually Sticks: A Training Guide',
-      excerpt: 'Most professional training is forgotten within a week. Here\'s how to make it stick.',
-      category: 'Professional',
-      readTime: '9 min',
-      icon: '💼'
-    },
-    {
-      slug: 'active-recall-learning',
-      title: 'Why Active Recall Beats Every Other Study Method',
-      excerpt: 'Science says active recall is the most effective way to learn. Here\'s what it is and how to use it.',
-      category: 'Learning Science',
-      readTime: '11 min',
-      icon: '🧠'
-    },
-    {
-      slug: 'textbook-quizzes',
-      title: 'Stop Highlighting Your Textbook and Do This Instead',
-      excerpt: 'Highlighting feels like studying, but it barely helps. Here\'s a better way to process textbook content.',
-      category: 'Study Tips',
-      readTime: '7 min',
-      icon: '📖'
-    },
-    {
-      slug: 'language-learning',
-      title: 'Language Learning Beyond Flashcards: Testing Comprehension, Not Just Vocabulary',
-      excerpt: 'Flashcards help with vocabulary, but they won\'t make you fluent. Here\'s what will.',
-      category: 'Language Learning',
-      readTime: '10 min',
-      icon: '🌍'
-    },
-    {
-      slug: 'medical-students-guide',
-      title: 'Medical School Study Strategies: Managing Information Overload',
-      excerpt: 'Medical students face an impossible amount of material. Here\'s how to actually learn it all.',
-      category: 'Medical Education',
-      readTime: '12 min',
-      icon: '⚕️'
-    },
-    {
-      slug: 'law-school-study',
-      title: 'Law School Success: Beyond Case Briefs and Outlines',
-      excerpt: 'Case briefs and outlines are important, but they won\'t prepare you for exams. Here\'s what will.',
-      category: 'Legal Education',
-      readTime: '10 min',
-      icon: '⚖️'
-    },
-    {
-      slug: 'homeschool-assessments',
-      title: 'Homeschool Assessments Without the Stress',
-      excerpt: 'Creating homeschool assessments doesn\'t have to take hours. Here\'s how to test understanding efficiently.',
-      category: 'Homeschooling',
-      readTime: '8 min',
-      icon: '🏠'
-    },
-    {
-      slug: 'corporate-training',
-      title: 'Corporate Training That Employees Actually Remember',
-      excerpt: 'Most corporate training is forgotten immediately. Here\'s how to design training that sticks.',
-      category: 'Corporate',
-      readTime: '9 min',
-      icon: '🏢'
-    },
-    {
-      slug: 'study-groups-collaboration',
-      title: 'Making Study Groups Actually Productive',
-      excerpt: 'Study groups often devolve into social hour. Here\'s how to make them effective learning sessions.',
-      category: 'Study Tips',
-      readTime: '8 min',
-      icon: '👥'
-    },
-    {
-      slug: 'certification-exam-prep',
-      title: 'Certification Exam Prep: How to Study When You Have a Full-Time Job',
-      excerpt: 'Studying for certifications while working full-time requires strategy. Here\'s what actually works.',
-      category: 'Professional',
-      readTime: '10 min',
-      icon: '🎓'
-    },
-    {
-      slug: 'vs-traditional-flashcards',
-      title: 'AI Quizzes vs. Traditional Flashcards: What Works Better?',
-      excerpt: 'Flashcards have been the go-to study tool for decades. But are they still the best option?',
-      category: 'Learning Tools',
-      readTime: '9 min',
-      icon: '🆚'
-    },
-    {
-      slug: 'science-active-recall',
-      title: 'The Science of Active Recall: Why Testing Yourself Works',
-      excerpt: 'Active recall isn\'t just a study hack—it\'s backed by decades of cognitive science research.',
-      category: 'Learning Science',
-      readTime: '11 min',
-      icon: '🔬'
-    },
-    {
-      slug: 'research-paper-quizzes',
-      title: 'Academic Research: Using Quizzes to Understand Dense Papers',
-      excerpt: 'Research papers are hard to parse. Here\'s how quizzes can help you actually understand them.',
-      category: 'Academic',
-      readTime: '9 min',
-      icon: '📄'
-    },
-    {
-      slug: 'general-knowledge-fun',
-      title: 'Learning for Fun: Building General Knowledge Without Formal Classes',
-      excerpt: 'Want to be smarter and more knowledgeable? Here\'s how to learn effectively outside of formal education.',
-      category: 'Lifelong Learning',
-      readTime: '8 min',
-      icon: '💡'
-    }
-  ];
+  const articles = blogPosts.map((post) => ({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.description,
+    category: post.category,
+    readTime: post.readTime,
+    icon: post.icon,
+  }));
 
   const categories = ['All', ...new Set(articles.map(a => a.category))];
 

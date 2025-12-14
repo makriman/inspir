@@ -29,7 +29,7 @@ export default function HomePageGuest() {
         {/* Logo & Headline */}
         <div className="text-center mb-8 animate-fadeIn">
           <h1 className="text-5xl md:text-6xl font-bold text-primary-blue mb-4">
-            inspir
+            InspirQuiz
           </h1>
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
             The Only Study Toolkit You Need
@@ -68,7 +68,7 @@ export default function HomePageGuest() {
 
         {/* Social Proof */}
         <p className="text-center text-sm text-gray-500">
-          Trusted by 10,000+ students worldwide
+          Built for students, teachers, and self-learners
         </p>
       </section>
 
@@ -79,7 +79,7 @@ export default function HomePageGuest() {
             Start Learning Today
           </h2>
           <p className="text-lg text-gray-600">
-            9 powerful tools, ready to use
+            {liveTools.length} powerful tools, ready to use
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function HomePageGuest() {
               The Complete Study Toolkit
             </h2>
             <p className="text-lg text-gray-600">
-              67 tools to transform your learning
+              A growing toolkit to support your workflow
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function HomePageGuest() {
             <div className="text-6xl mb-4">🎯</div>
             <h3 className="text-xl font-bold mb-2">Choose Your Tool</h3>
             <p className="text-gray-600">
-              Pick from 9 live tools or join the waitlist for 58 more
+              Pick a tool and start in seconds
             </p>
           </div>
 
@@ -183,35 +183,32 @@ export default function HomePageGuest() {
             <div className="text-6xl mb-4">📈</div>
             <h3 className="text-xl font-bold mb-2">Track Progress</h3>
             <p className="text-gray-600">
-              Monitor your improvement with detailed analytics
+              Save quizzes, review attempts, and build better study habits
             </p>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Built For */}
       <section className="bg-off-white py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 text-center shadow-md">
-              <div className="text-5xl font-bold text-primary-blue mb-2">
-                10,000+
-              </div>
+              <div className="text-5xl font-bold text-primary-blue mb-2">🎓</div>
               <div className="text-gray-600 font-semibold">Students</div>
+              <div className="text-sm text-gray-500 mt-2">Turn notes into quizzes for active recall</div>
             </div>
 
             <div className="bg-white rounded-2xl p-8 text-center shadow-md">
-              <div className="text-5xl font-bold text-primary-blue mb-2">
-                50,000+
-              </div>
-              <div className="text-gray-600 font-semibold">Quizzes Generated</div>
+              <div className="text-5xl font-bold text-primary-blue mb-2">👩‍🏫</div>
+              <div className="text-gray-600 font-semibold">Teachers</div>
+              <div className="text-sm text-gray-500 mt-2">Create quick checks for understanding</div>
             </div>
 
             <div className="bg-white rounded-2xl p-8 text-center shadow-md">
-              <div className="text-5xl font-bold text-primary-blue mb-2">
-                4.8★
-              </div>
-              <div className="text-gray-600 font-semibold">Average Rating</div>
+              <div className="text-5xl font-bold text-primary-blue mb-2">🧠</div>
+              <div className="text-gray-600 font-semibold">Self‑Learners</div>
+              <div className="text-sm text-gray-500 mt-2">Study any topic with better questions</div>
             </div>
           </div>
         </div>
@@ -221,54 +218,51 @@ export default function HomePageGuest() {
       <section className="max-w-6xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
-            What Students Say
+            Popular Study Workflows
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-white rounded-2xl p-6 shadow-md">
-            <p className="text-gray-700 mb-4 italic">
-              "inspir has transformed how I study. The quiz generator alone has boosted my grades by 15%!"
+            <div className="text-4xl mb-3">🧠</div>
+            <h3 className="text-lg font-bold mb-2 text-black">Quiz‑First Exam Prep</h3>
+            <p className="text-gray-700 mb-4">
+              Upload notes or type a topic → generate a quiz → review what you missed → repeat. It’s active recall in a simple loop.
             </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-purple-light rounded-full flex items-center justify-center text-white font-bold mr-3">
-                S
-              </div>
-              <div>
-                <div className="font-semibold">Sarah M.</div>
-                <div className="text-sm text-gray-500">University Student</div>
-              </div>
-            </div>
+            <button
+              onClick={() => navigate('/quiz')}
+              className="text-primary-blue font-semibold hover:underline"
+            >
+              Create a quiz →
+            </button>
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-md">
-            <p className="text-gray-700 mb-4 italic">
-              "The AI chat tutor is like having a 24/7 study buddy. It's been a game-changer for my homework."
+            <div className="text-4xl mb-3">⏱️</div>
+            <h3 className="text-lg font-bold mb-2 text-black">Pomodoro + Review</h3>
+            <p className="text-gray-700 mb-4">
+              Use a focused timer session, then finish with a short quiz to lock in what you just studied.
             </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-purple-light rounded-full flex items-center justify-center text-white font-bold mr-3">
-                J
-              </div>
-              <div>
-                <div className="font-semibold">James T.</div>
-                <div className="text-sm text-gray-500">High School Senior</div>
-              </div>
-            </div>
+            <button
+              onClick={() => navigate('/study-timer')}
+              className="text-primary-blue font-semibold hover:underline"
+            >
+              Open study timer →
+            </button>
           </div>
 
           <div className="bg-white rounded-2xl p-6 shadow-md">
-            <p className="text-gray-700 mb-4 italic">
-              "I love how everything I need is in one place. Can't wait for the flashcard creator!"
+            <div className="text-4xl mb-3">🧩</div>
+            <h3 className="text-lg font-bold mb-2 text-black">Unblock a Stuck Problem</h3>
+            <p className="text-gray-700 mb-4">
+              Ask a question or upload a problem and get step‑by‑step help. Then generate a quiz to make sure you really understood.
             </p>
-            <div className="flex items-center">
-              <div className="w-10 h-10 bg-purple-light rounded-full flex items-center justify-center text-white font-bold mr-3">
-                E
-              </div>
-              <div>
-                <div className="font-semibold">Emma L.</div>
-                <div className="text-sm text-gray-500">College Freshman</div>
-              </div>
-            </div>
+            <button
+              onClick={() => navigate('/doubt')}
+              className="text-primary-blue font-semibold hover:underline"
+            >
+              Use doubt solver →
+            </button>
           </div>
         </div>
       </section>
@@ -280,7 +274,7 @@ export default function HomePageGuest() {
             Ready to study smarter?
           </h2>
           <p className="text-lg text-white opacity-90 mb-8">
-            Join thousands of students already using inspir
+            Start studying smarter today with InspirQuiz
           </p>
           <button
             onClick={() => navigate('/auth')}
@@ -289,7 +283,7 @@ export default function HomePageGuest() {
             Sign Up Free
           </button>
           <p className="text-white opacity-75 mt-4 text-sm">
-            No credit card required • 9 tools ready instantly
+            No credit card required • {liveTools.length} tools ready instantly
           </p>
         </div>
       </section>

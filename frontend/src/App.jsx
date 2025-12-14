@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import SeoRouter from './seo/SeoRouter';
 import AuthPage from './pages/AuthPage';
 import HomePageGuest from './pages/HomePageGuest';
 import HomePageUser from './pages/HomePageUser';
@@ -41,6 +42,9 @@ import VsTraditionalFlashcards from './pages/blog/VsTraditionalFlashcards';
 import ScienceActiveRecall from './pages/blog/ScienceActiveRecall';
 import ResearchPaperQuizzes from './pages/blog/ResearchPaperQuizzes';
 import GeneralKnowledgeFun from './pages/blog/GeneralKnowledgeFun';
+import CornellNotesMethod from './pages/blog/CornellNotesMethod';
+import PomodoroActiveRecall from './pages/blog/PomodoroActiveRecall';
+import AIStudyDoubtSolver from './pages/blog/AIStudyDoubtSolver';
 import StudyTimer from './pages/StudyTimer';
 import NotFound from './pages/NotFound';
 import StudentForum from './pages/StudentForum';
@@ -83,6 +87,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <SeoRouter />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/quiz" element={<UploadInterface />} />
@@ -172,6 +177,9 @@ function App() {
           <Route path="/blog/science-active-recall" element={<ScienceActiveRecall />} />
           <Route path="/blog/research-paper-quizzes" element={<ResearchPaperQuizzes />} />
           <Route path="/blog/general-knowledge-fun" element={<GeneralKnowledgeFun />} />
+          <Route path="/blog/cornell-notes-method" element={<CornellNotesMethod />} />
+          <Route path="/blog/pomodoro-active-recall" element={<PomodoroActiveRecall />} />
+          <Route path="/blog/ai-study-doubt-solver" element={<AIStudyDoubtSolver />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

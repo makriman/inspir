@@ -82,15 +82,15 @@ export default function About() {
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">Why We Don't Track You</h2>
+                <h2 className="text-3xl font-bold text-deep-blue mb-4">Why We Keep Signup Minimal</h2>
                 <p className="text-gray-700 mb-4">
                   You might notice we don't ask for your email during signup. That's intentional. We only store your username
-                  and password so you can save your quizzes. That's it.
+                  and password so you can save your quizzes and use account features.
                 </p>
                 <p className="text-gray-700 mb-4">
-                  No tracking pixels, no analytics following you around the internet, no selling your data to advertisers.
-                  If you forget your password, we can't help you recover it—but that's the price of actual privacy.
-                  We think it's worth it.
+                  We’re focused on learning outcomes, not building a marketing database. If you forget your password, recovery
+                  options are limited—use a password manager if you create an account.
+                  For details on data handling, see our <Link to="/privacy" className="text-purple-dark font-semibold hover:underline">Privacy Policy</Link>.
                 </p>
               </section>
 

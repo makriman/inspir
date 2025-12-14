@@ -27,12 +27,12 @@
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://quiz.inspir.uk/" />
-    <meta property="twitter:title" content="Quiz Me On Anything - AI Quiz Generator" />
-    <meta property="twitter:description" content="Upload your study notes or type any topic - get instant AI-powered quizzes with thought-provoking questions. Perfect for students!" />
-    <meta property="twitter:image" content="https://quiz.inspir.uk/og-image.jpg" />
-    <meta property="twitter:image:alt" content="Quiz Me On Anything - AI quiz generator" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://quiz.inspir.uk/" />
+    <meta name="twitter:title" content="Quiz Me On Anything - AI Quiz Generator" />
+    <meta name="twitter:description" content="Upload your study notes or type any topic - get instant AI-powered quizzes with thought-provoking questions. Perfect for students!" />
+    <meta name="twitter:image" content="https://quiz.inspir.uk/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Quiz Me On Anything - AI quiz generator" />
 
     <!-- Additional SEO Meta Tags -->
     <meta name="application-name" content="InspirQuiz" />
@@ -49,6 +49,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.json" />
+    <link rel="alternate" type="application/rss+xml" title="InspirQuiz Blog" href="https://quiz.inspir.uk/rss.xml" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,12 +77,6 @@
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Web",
       "browserRequirements": "Requires JavaScript. Requires HTML5.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/InStock"
-      },
       "featureList": [
         "Topic-based quiz generation",
         "Upload study notes (TXT, DOCX)",
@@ -89,17 +84,10 @@
         "Multiple choice questions",
         "Open-ended analysis questions",
         "Instant quiz creation",
-        "No login required",
+        "Guest mode (no login required for basic use)",
         "Free to use"
       ],
-      "screenshot": "https://quiz.inspir.uk/og-image.svg",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "127",
-        "bestRating": "5",
-        "worstRating": "1"
-      }
+      "screenshot": "https://quiz.inspir.uk/og-image.jpg"
     }
     </script>
 
@@ -121,89 +109,6 @@
     }
     </script>
 
-    <!-- Structured Data - FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do I need to upload content to create a quiz?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No! You can simply type any topic (like 'World War 2' or 'Photosynthesis') and our AI will generate thought-provoking questions based on general knowledge. However, uploading your study notes or pasting content will create more targeted questions specific to your material."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What kind of questions does the AI generate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "InspirQuiz creates thought-provoking, fundamental questions that test deep understanding - not simple recall. Instead of 'Who is the PM of India?', you'll get questions like 'Who is the person with a history as a chai seller who rose to the highest political position in India?' We focus on understanding, analysis, and critical thinking."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is InspirQuiz free to use?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes! InspirQuiz is completely free to use. You can generate quizzes without even creating an account. If you want to save your quizzes and track your progress, you can create a free account."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What file formats can I upload?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can upload TXT and DOCX (Microsoft Word) files up to 10MB. Simply drag and drop your study notes, lecture materials, or any educational content."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does it take to generate a quiz?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Quiz generation is instant! Once you enter a topic or upload your notes, your 10-question quiz (5 multiple choice + 5 open-ended) will be ready in 10-20 seconds."
-          }
-        }
-      ]
-    }
-    </script>
-
-    <!-- Structured Data - BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://quiz.inspir.uk/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "How It Works",
-          "item": "https://quiz.inspir.uk/how-it-works"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Use Cases",
-          "item": "https://quiz.inspir.uk/use-cases"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Blog",
-          "item": "https://quiz.inspir.uk/blog"
-        }
-      ]
-    }
-    </script>
   </head>
   <body>
     <div id="root"></div>
