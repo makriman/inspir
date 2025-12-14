@@ -61,7 +61,7 @@ export const blogPosts = [
   },
   {
     slug: 'professional-training',
-    title: 'InspirQuiz for Professionals: Training & Development',
+    title: 'Quizzes for Professionals: Training & Development',
     description:
       'Make workplace learning stick with short quizzes, spaced review, and repeatable practice routines for onboarding and professional development.',
     category: 'Professional Development',
@@ -111,7 +111,7 @@ export const blogPosts = [
   },
   {
     slug: 'law-school-study',
-    title: 'Law School Study Guide with InspirQuiz',
+    title: 'Law School Study Guide with Quizzes',
     description:
       'Move beyond passive outlines: turn doctrine into questions, practice issue spotting, and build exam-ready retrieval.',
     category: 'Law School',
@@ -161,7 +161,7 @@ export const blogPosts = [
   },
   {
     slug: 'vs-traditional-flashcards',
-    title: 'InspirQuiz vs Traditional Flashcards',
+    title: 'Quizzes vs Traditional Flashcards',
     description:
       'Flashcards are useful, but quizzes can test deeper understanding. Learn when to use each (and how to combine them).',
     category: 'Study Tools',
@@ -227,6 +227,46 @@ export const blogPosts = [
     category: 'Learning Strategies',
     readTime: '10 min',
     icon: '🧩',
+    lastModified: '2025-12-14',
+  },
+  {
+    slug: 'study-from-notes-ai-quiz',
+    title: 'How to Study From Notes with an AI Quiz Generator',
+    description:
+      'A quiz-first workflow for turning lecture notes into active recall. Generate questions, review mistakes, and build lasting memory with a repeatable routine.',
+    category: 'Study Tips',
+    readTime: '10 min',
+    icon: '🗂️',
+    lastModified: '2025-12-14',
+  },
+  {
+    slug: 'spaced-repetition-schedule',
+    title: 'Spaced Repetition Schedule: A Simple Plan That Actually Works',
+    description:
+      'A practical spaced repetition schedule (1–3–7–14) you can use for any subject. Learn what to do on each review day and how to apply it with short quizzes.',
+    category: 'Learning Science',
+    readTime: '9 min',
+    icon: '🗓️',
+    lastModified: '2025-12-14',
+  },
+  {
+    slug: 'finals-study-plan',
+    title: 'How to Study for Finals: A 7‑Day Plan Built on Active Recall',
+    description:
+      'A 7-day finals study plan that replaces vague “review everything” with active recall. Build question banks, target weak areas, and use mixed practice to prepare.',
+    category: 'Study Tips',
+    readTime: '11 min',
+    icon: '📅',
+    lastModified: '2025-12-14',
+  },
+  {
+    slug: 'better-mcq-questions',
+    title: 'How to Write Better Multiple Choice Questions (Teacher Guide)',
+    description:
+      'A teacher-friendly framework for writing MCQs that test understanding, reveal misconceptions, and are faster to create and grade.',
+    category: 'For Teachers',
+    readTime: '10 min',
+    icon: '🧑‍🏫',
     lastModified: '2025-12-14',
   },
 ];

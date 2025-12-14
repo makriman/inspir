@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Login({ onToggle }) {
   const [username, setUsername] = useState('');
@@ -110,8 +111,8 @@ export default function Login({ onToggle }) {
 
         <div className="mt-6 p-4 bg-gray-100 rounded-lg">
           <p className="text-xs text-gray-600 text-center">
-            We don't collect emails or track you. This account is just to save your quizzes and results.
-            If you forget your credentials, there's no recovery - good ol' internet style.
+            No email required. This account is for saving quizzes and results. If you forget your credentials, recovery is limited.
+            See our <Link to="/privacy" className="font-semibold text-deep-blue hover:underline">Privacy Policy</Link> for details.
           </p>
         </div>
       </div>

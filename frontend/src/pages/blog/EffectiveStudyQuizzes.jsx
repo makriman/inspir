@@ -57,7 +57,7 @@ export default function EffectiveStudyQuizzes() {
           <li>Track confidence: if you guessed, mark it for review even if correct.</li>
         </ul>
 
-        <h2>How InspirQuiz Helps</h2>
+        <h2>How inspir Helps</h2>
         <p>
           Upload notes or paste content and get 10 questions auto-generated (5 MCQ, 5 short answer) with varied difficulty and plausible distractors. Use them for active recall instead of passive re-reading.
         </p>

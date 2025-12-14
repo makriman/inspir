@@ -348,7 +348,7 @@ export default function StudyGroupsCollaboration() {
           <h3 className="text-2xl font-bold mb-4">Supercharge Your Study Group</h3>
           <p className="mb-6">Create shared quiz banks from your group's notes and study more effectively together.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz
+            Try inspir
           </Link>
         </div>
       </div>

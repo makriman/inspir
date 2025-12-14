@@ -12,15 +12,6 @@ export default function GradeCalculator() {
   const [whatIfScore, setWhatIfScore] = useState('');
   const [whatIfWeight, setWhatIfWeight] = useState('');
 
-  // Add SEO metadata
-  useEffect(() => {
-    document.title = 'Grade Calculator & GPA Tracker - InspirQuiz';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Calculate your grades with assignment weights, see real-time projections, run what-if scenarios, and track your GPA across multiple semesters.');
-    }
-  }, []);
-
   // Load data from localStorage
   useEffect(() => {
     const savedCourses = localStorage.getItem('gradeCalculator_courses');

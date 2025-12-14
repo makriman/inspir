@@ -298,7 +298,7 @@ export default function MedicalStudentsGuide() {
                       </p>
         
                       <p>
-                        Creating quiz questions manually is valuable but time-consuming. Tools like InspirQuiz can generate questions from your lecture notes in seconds, saving you time while still giving you the benefit of active recall practice.
+                        Creating quiz questions manually is valuable but time-consuming. Tools like inspir can generate questions from your lecture notes in seconds, saving you time while still giving you the benefit of active recall practice.
                       </p>
         
                       <p>
@@ -319,7 +319,7 @@ export default function MedicalStudentsGuide() {
           <h3 className="text-2xl font-bold mb-4">Study Smarter, Not Just Harder</h3>
           <p className="mb-6">Turn your medical school lectures into practice questions instantly.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz
+            Try inspir
           </Link>
         </div>
       </div>

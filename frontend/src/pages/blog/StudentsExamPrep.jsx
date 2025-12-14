@@ -52,7 +52,7 @@ export default function StudentsExamPrep() {
         After you finish reviewing a section of your notes or textbook, create quiz questions based on that material. Not in a few days—right away, while it's still fresh.
       </p>
       <p>
-        You can do this manually, but honestly? That takes forever. Tools like InspirQuiz can turn your notes into a full practice quiz in about 20 seconds. Either way, the key is to have questions ready before you start "studying."
+        You can do this manually, but honestly? That takes forever. Tools like inspir can turn your notes into a full practice quiz in about 20 seconds. Either way, the key is to have questions ready before you start "studying."
       </p>
 
       <h3>Step 2: Test Yourself (Without Peeking)</h3>
@@ -95,9 +95,9 @@ export default function StudentsExamPrep() {
         <li>Studying in long, exhausting sessions instead of shorter, focused blocks</li>
       </ul>
 
-      <h2>How InspirQuiz Makes This Easy</h2>
+      <h2>How inspir Makes This Easy</h2>
       <p>
-        InspirQuiz takes the friction out of active recall. Paste your notes or upload a DOCX/TXT file and get:
+        inspir takes the friction out of active recall. Paste your notes or upload a DOCX/TXT file and get:
       </p>
       <ul>
         <li>10 high-quality questions (5 multiple choice, 5 short answer)</li>
@@ -113,7 +113,7 @@ export default function StudentsExamPrep() {
         Preparing for exams doesn't have to mean endless re-reading and highlighting. In fact, it shouldn't. If you want your study time to actually pay off, you need to <strong>make your brain do the work of remembering.</strong>
       </p>
       <p>
-        Active recall through practice questions is the most reliable way to do that. Whether you make them yourself or let InspirQuiz generate them for you, the method is what matters.
+        Active recall through practice questions is the most reliable way to do that. Whether you make them yourself or let inspir generate them for you, the method is what matters.
       </p>
       <p className="text-lg text-deep-blue font-semibold mt-8">
         Start your next study session with a quiz instead of your notes. You'll be surprised how much more you remember on test day.

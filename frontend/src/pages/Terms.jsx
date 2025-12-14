@@ -11,17 +11,17 @@ export default function Terms() {
             <h1 className="text-4xl md:text-5xl font-bold text-deep-blue mb-6">Terms of Service</h1>
 
             <div className="prose prose-lg max-w-none">
-              <p className="text-sm text-gray-600 mb-8">Last updated: December 8, 2025</p>
+              <p className="text-sm text-gray-600 mb-8">Last updated: December 14, 2025</p>
 
               <p className="text-xl text-gray-700 mb-8">
                 These terms are written in plain English because legal jargon doesn't make things clearer.
-                By using InspirQuiz, you're agreeing to these terms.
+                By using inspir, you're agreeing to these terms.
               </p>
 
               <section className="mb-8">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">What InspirQuiz Is</h2>
+                <h2 className="text-3xl font-bold text-deep-blue mb-4">What inspir Is</h2>
                 <p className="text-gray-700 mb-4">
-                  InspirQuiz is a tool that uses AI to generate quiz questions from content you provide. You paste
+                  inspir is a tool that uses AI to generate quiz questions from content you provide. You paste
                   text or upload a document, we generate questions, and you use those questions to test your knowledge.
                 </p>
                 <p className="text-gray-700">
@@ -38,8 +38,8 @@ export default function Terms() {
                   <ul className="list-disc pl-6 text-gray-700 space-y-2">
                     <li>Create quizzes for personal study, teaching, training, or any educational purpose</li>
                     <li>Use quizzes with your students or trainees</li>
-                    <li>Share quiz questions you've generated (manually—we don't have a sharing feature built in yet)</li>
-                    <li>Use InspirQuiz for commercial purposes like corporate training or professional development</li>
+                    <li>Share quizzes via links and use them with friends, classmates, or students</li>
+                    <li>Use inspir for commercial purposes like corporate training or professional development</li>
                   </ul>
                 </div>
 
@@ -47,7 +47,7 @@ export default function Terms() {
                   <h3 className="text-xl font-semibold text-deep-blue mb-3">What You Can't Do</h3>
                   <ul className="list-disc pl-6 text-gray-700 space-y-2">
                     <li>Upload content you don't have the right to use (no copyrighted textbooks unless you own them or have permission)</li>
-                    <li>Use InspirQuiz to generate spam, malicious content, or harmful material</li>
+                    <li>Use inspir to generate spam, malicious content, or harmful material</li>
                     <li>Attempt to hack, reverse engineer, or otherwise compromise the service</li>
                     <li>Create automated bots or scripts to abuse the service or generate excessive API calls</li>
                     <li>Impersonate others or create fake accounts</li>
@@ -59,7 +59,7 @@ export default function Terms() {
               <section className="mb-8">
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">Your Content and Data</h2>
                 <p className="text-gray-700 mb-4">
-                  When you upload or paste content into InspirQuiz:
+                  When you upload or paste content into inspir:
                 </p>
                 <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
                   <li>You retain all ownership of your content</li>
@@ -94,7 +94,7 @@ export default function Terms() {
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">Accuracy and Reliability</h2>
                 <div className="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-500 mb-4">
                   <p className="text-gray-700 mb-3">
-                    <strong>Important:</strong> InspirQuiz uses AI to generate questions, and AI can make mistakes.
+                    <strong>Important:</strong> inspir uses AI to generate questions, and AI can make mistakes.
                   </p>
                   <p className="text-gray-700">
                     While we've designed the system to create accurate, thoughtful questions, you should always review
@@ -115,7 +115,7 @@ export default function Terms() {
               <section className="mb-8">
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">Service Availability</h2>
                 <p className="text-gray-700 mb-4">
-                  We try to keep InspirQuiz running smoothly, but we can't guarantee 100% uptime. The service may be
+                  We try to keep inspir running smoothly, but we can't guarantee 100% uptime. The service may be
                   temporarily unavailable due to:
                 </p>
                 <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
@@ -132,7 +132,7 @@ export default function Terms() {
               <section className="mb-8">
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">Pricing and Changes</h2>
                 <p className="text-gray-700 mb-4">
-                  InspirQuiz is currently free to use. If we ever introduce paid features or subscriptions, we'll:
+                  inspir is currently free to use. If we ever introduce paid features or subscriptions, we'll:
                 </p>
                 <ul className="list-disc pl-6 text-gray-700 space-y-2">
                   <li>Clearly communicate the pricing</li>
@@ -144,7 +144,7 @@ export default function Terms() {
               <section className="mb-8">
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">Intellectual Property</h2>
                 <p className="text-gray-700 mb-4">
-                  The InspirQuiz website, software, design, and branding are owned by us and protected by copyright
+                  The inspir website, software, design, and branding are owned by us and protected by copyright
                   and other intellectual property laws.
                 </p>
                 <p className="text-gray-700">
@@ -157,7 +157,7 @@ export default function Terms() {
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">Limitation of Liability</h2>
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <p className="text-gray-700 mb-3">
-                    InspirQuiz is provided "as is" without warranties of any kind. We're not liable for:
+                    inspir is provided "as is" without warranties of any kind. We're not liable for:
                   </p>
                   <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-3">
                     <li>Any damages resulting from your use (or inability to use) the service</li>
@@ -167,7 +167,7 @@ export default function Terms() {
                     <li>Any decisions you make based on quiz content</li>
                   </ul>
                   <p className="text-gray-700">
-                    If you're using InspirQuiz for something important (like studying for a major exam), always verify
+                    If you're using inspir for something important (like studying for a major exam), always verify
                     the information independently. Don't rely solely on AI-generated quizzes.
                   </p>
                 </div>
@@ -185,22 +185,23 @@ export default function Terms() {
                   <li>Use the service for illegal or harmful purposes</li>
                 </ul>
                 <p className="text-gray-700">
-                  You can stop using InspirQuiz at any time. If you want your account and data deleted, let us know.
+                  You can stop using inspir at any time. If you want your account and data deleted, let us know.
                 </p>
               </section>
 
               <section className="mb-8">
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">Third-Party Services</h2>
                 <p className="text-gray-700 mb-4">
-                  InspirQuiz uses third-party services, including:
+                  inspir uses third-party services, including:
                 </p>
                 <ul className="list-disc pl-6 text-gray-700 space-y-2 mb-4">
                   <li><strong>Anthropic (Claude AI):</strong> For quiz generation</li>
                   <li><strong>Supabase:</strong> For database hosting</li>
+                  <li><strong>Microsoft Clarity:</strong> For product analytics to improve usability</li>
                   <li><strong>Various hosting and infrastructure providers</strong></li>
                 </ul>
                 <p className="text-gray-700">
-                  These services have their own terms and policies. By using InspirQuiz, you agree to comply with
+                  These services have their own terms and policies. By using inspir, you agree to comply with
                   those terms as they relate to your use of our service.
                 </p>
               </section>
@@ -212,7 +213,7 @@ export default function Terms() {
                   "Last updated" date at the top.
                 </p>
                 <p className="text-gray-700">
-                  Continued use of InspirQuiz after changes means you accept the new terms. If you don't agree with
+                  Continued use of inspir after changes means you accept the new terms. If you don't agree with
                   the changes, stop using the service.
                 </p>
               </section>
@@ -235,7 +236,7 @@ export default function Terms() {
               <div className="bg-gray-100 p-6 rounded-lg mt-8">
                 <h3 className="text-xl font-semibold text-deep-blue mb-3">The Simple Version</h3>
                 <p className="text-gray-700">
-                  Use InspirQuiz for learning and teaching. Don't abuse it or do anything illegal. We'll do our
+                  Use inspir for learning and teaching. Don't abuse it or do anything illegal. We'll do our
                   best to provide a good service, but we can't guarantee perfection. Always verify important information.
                   Be a decent human being, and we'll all get along fine.
                 </p>

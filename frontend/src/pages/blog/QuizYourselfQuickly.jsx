@@ -36,7 +36,7 @@ export default function QuizYourselfQuickly() {
         <ul>
           <li>Explain the concept out loud as if teaching someone.</li>
           <li>Write down everything you remember.</li>
-          <li>Answer pre-made questions (generate in InspirQuiz right after class).</li>
+          <li>Answer pre-made questions (generate in inspir right after class).</li>
           <li>Sketch a quick diagram from memory.</li>
         </ul>
         <p>Do it from memory—no peeking. Discomfort = learning.</p>
@@ -79,7 +79,7 @@ export default function QuizYourselfQuickly() {
         </ul>
 
         <h2>Make It Even Easier</h2>
-        <p>Create questions immediately after class while the material is fresh, or paste notes into InspirQuiz to generate 10 ready-to-use questions (5 MCQ, 5 short answer) in seconds. Then spend your five minutes actually answering, not preparing.</p>
+        <p>Create questions immediately after class while the material is fresh, or paste notes into inspir to generate 10 ready-to-use questions (5 MCQ, 5 short answer) in seconds. Then spend your five minutes actually answering, not preparing.</p>
 
         <h2>Start Now</h2>
         <p>You finished this article. Spend five minutes quizzing yourself on today’s hardest topic. Set a timer and go.</p>

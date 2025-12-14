@@ -32,8 +32,8 @@ export default function HomeschoolAssessments() {
         <h2>Portfolio Over Time</h2>
         <p>Keep samples of work weekly. Compare early and recent attempts to see progress. This is motivating for kids and reassuring for parents.</p>
 
-        <h2>Use InspirQuiz for Low-Stress Checks</h2>
-        <p>Paste your lesson notes into InspirQuiz to generate 10 questions instantly. Do a 10-minute quiz together, discuss answers, and mark concepts to revisit.</p>
+        <h2>Use inspir for Low-Stress Checks</h2>
+        <p>Paste your lesson notes into inspir to generate 10 questions instantly. Do a 10-minute quiz together, discuss answers, and mark concepts to revisit.</p>
 
         <h2>Support Different Learning Styles</h2>
         <ul>

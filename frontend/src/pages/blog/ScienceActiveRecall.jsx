@@ -342,7 +342,7 @@ export default function ScienceActiveRecall() {
                       </p>
         
                       <p>
-                        Tools like InspirQuiz can generate practice questions instantly from your study materials, removing the friction of question creation.
+                        Tools like inspir can generate practice questions instantly from your study materials, removing the friction of question creation.
                       </p>
         
                       <h2>The Bottom Line</h2>

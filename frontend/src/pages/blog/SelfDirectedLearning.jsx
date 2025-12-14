@@ -240,7 +240,7 @@ export default function SelfDirectedLearning() {
           <h3 className="text-2xl font-bold mb-4">Test Your Understanding</h3>
           <p className="mb-6">Turn your self-study notes into quizzes and actually retain what you're learning.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz
+            Try inspir
           </Link>
         </div>
       </div>

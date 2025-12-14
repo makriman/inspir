@@ -9,11 +9,11 @@ export default function About() {
       <main className="min-h-screen bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 py-12">
           <article>
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-blue mb-6">About InspirQuiz</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-deep-blue mb-6">About inspir</h1>
 
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-700 mb-8">
-                We built InspirQuiz because studying shouldn't be boring, and creating quizzes shouldn't take hours.
+                We built inspir because studying shouldn’t be passive — and creating good practice questions shouldn’t take hours.
               </p>
 
               <section className="mb-12">
@@ -30,14 +30,14 @@ export default function About() {
                 </p>
                 <p className="text-gray-700">
                   We thought: what if you could just paste your notes or upload your study materials and get a thoughtful,
-                  well-designed quiz in seconds? That's InspirQuiz.
+                  well-designed quiz in seconds? That’s inspir.
                 </p>
               </section>
 
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-deep-blue mb-4">How It Actually Works</h2>
                 <p className="text-gray-700 mb-4">
-                  InspirQuiz uses AI (Claude, specifically) to read your content and generate quiz questions that test real understanding.
+                  inspir uses AI (Claude) to read your content and generate quiz questions that test real understanding.
                   Not just "what year did X happen" questions, but questions that make you think about why things matter and how concepts connect.
                 </p>
                 <p className="text-gray-700 mb-4">
@@ -101,7 +101,7 @@ export default function About() {
                   Testing yourself, struggling with questions, and engaging with the material—that's how actual learning happens.
                 </p>
                 <p className="text-gray-700">
-                  InspirQuiz exists to make that kind of active learning easy. We want to lower the barrier between
+                  inspir exists to make that kind of active learning easy. We want to lower the barrier between
                   "I should study this" and actually testing your understanding. If we can make studying less painful
                   and more effective, we've done our job.
                 </p>

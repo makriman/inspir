@@ -8,10 +8,10 @@ function faqJsonLd() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Is InspirQuiz free to use?',
+        name: 'Is inspir free to use?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'InspirQuiz is free to use. You can generate quizzes as a guest, and you can create a free account to save quizzes and track progress.',
+          text: 'inspir is free to use. You can generate quizzes as a guest, and you can create an account to save quizzes and track progress.',
         },
       },
       {
@@ -19,15 +19,15 @@ function faqJsonLd() {
         name: 'Do I need an account to create a quiz?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'No. You can generate quizzes as a guest. An account is only needed for features that require saving, history, or personalization.',
+          text: 'No. You can generate quizzes as a guest. An account is only needed for features like saving, history, or personalization.',
         },
       },
       {
         '@type': 'Question',
-        name: 'What can I upload?',
+        name: 'What can I generate a quiz from?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You can paste text or upload supported note formats (such as TXT and DOCX) to generate more targeted questions from your material.',
+          text: 'You can type a topic, paste text, or upload supported note formats (such as TXT and DOCX). Uploading notes usually produces more targeted questions.',
         },
       },
       {
@@ -35,7 +35,7 @@ function faqJsonLd() {
         name: 'How many questions are generated?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'A standard InspirQuiz quiz contains 10 questions: a mix of multiple choice and open-ended questions designed to test understanding.',
+          text: 'A standard inspir quiz contains 10 questions: a mix of multiple choice and open-ended questions designed to test understanding.',
         },
       },
       {
@@ -44,6 +44,14 @@ function faqJsonLd() {
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Yes. You can generate a shareable link so others can take the same quiz from any device.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do you store the notes I upload?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Your notes are processed to generate questions. Saved quizzes store generated questions and answers; they don’t need to permanently store your raw notes to be useful.',
         },
       },
     ],
@@ -67,12 +75,12 @@ function articleJsonLd({ slug, title, description, lastModified }) {
     dateModified: lastModified,
     author: {
       '@type': 'Organization',
-      name: 'InspirQuiz',
+      name: 'inspir',
       url: 'https://quiz.inspir.uk',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'InspirQuiz',
+      name: 'inspir',
       url: 'https://quiz.inspir.uk',
       logo: {
         '@type': 'ImageObject',
@@ -85,9 +93,9 @@ function articleJsonLd({ slug, title, description, lastModified }) {
 const STATIC_ROUTES = [
   {
     pattern: '/',
-    title: 'Quiz Me On Anything - AI Quiz Generator',
+    title: 'AI Quiz Generator from Notes & Topics',
     description:
-      'Generate thought‑provoking AI quizzes from any topic or your own notes. Study with active recall and learn faster with InspirQuiz.',
+      'Generate AI quizzes from any topic or your notes. Study with active recall using inspir.',
     canonicalPath: '/',
     robots: 'index, follow',
   },
@@ -95,7 +103,7 @@ const STATIC_ROUTES = [
     pattern: '/how-it-works',
     title: 'How It Works',
     description:
-      'See how InspirQuiz turns a topic or your notes into a quiz in seconds — and why thought‑provoking questions improve retention.',
+      'See how inspir turns a topic or your notes into a quiz in seconds — and why retrieval practice improves retention.',
     canonicalPath: '/how-it-works',
   },
   {
@@ -109,13 +117,13 @@ const STATIC_ROUTES = [
     pattern: '/use-cases',
     title: 'Use Cases',
     description:
-      'Real ways students, teachers, and self-learners use InspirQuiz for exam prep, lessons, active recall, and long-term retention.',
+      'Real ways students, teachers, and self-learners use inspir for exam prep, lessons, active recall, and long-term retention.',
     canonicalPath: '/use-cases',
   },
   {
     pattern: '/faq',
     title: 'FAQ',
-    description: 'Answers to common questions about InspirQuiz, quiz generation, uploading notes, accounts, and sharing.',
+    description: 'Answers to common questions about inspir, quiz generation, uploading notes, accounts, and sharing.',
     canonicalPath: '/faq',
     jsonLd: faqJsonLd(),
   },
@@ -123,7 +131,7 @@ const STATIC_ROUTES = [
     pattern: '/about',
     title: 'About',
     description:
-      'Why InspirQuiz exists: make active recall and good self-testing effortless for students, teachers, and lifelong learners.',
+      'Why inspir exists: make active recall and good self-testing effortless for students, teachers, and lifelong learners.',
     canonicalPath: '/about',
   },
   {
@@ -179,11 +187,11 @@ const STATIC_ROUTES = [
     pattern: '/forum',
     title: 'Student Forum',
     description:
-      'Discuss study strategies, ask questions, and learn with others. The InspirQuiz forum is built for students and self-learners.',
+      'Discuss study strategies, ask questions, and learn with others. The inspir forum is built for students and self-learners.',
     canonicalPath: '/forum',
   },
-  { pattern: '/privacy', title: 'Privacy Policy', description: 'How InspirQuiz handles data and privacy.', canonicalPath: '/privacy' },
-  { pattern: '/terms', title: 'Terms of Service', description: 'Terms and conditions for using InspirQuiz.', canonicalPath: '/terms' },
+  { pattern: '/privacy', title: 'Privacy Policy', description: 'How inspir handles data and privacy.', canonicalPath: '/privacy' },
+  { pattern: '/terms', title: 'Terms of Service', description: 'Terms and conditions for using inspir.', canonicalPath: '/terms' },
   {
     pattern: '/auth',
     title: 'Sign In',
@@ -198,6 +206,7 @@ const STATIC_ROUTES = [
   { pattern: '/quiz/:quizId/review', title: 'Quiz Review', robots: 'noindex, nofollow' },
   { pattern: '/shared/:shareToken', title: 'Shared Quiz', robots: 'noindex, nofollow' },
   { pattern: '/doubt/shared/:shareToken', title: 'Shared Doubt', robots: 'noindex, nofollow' },
+  { pattern: '/chat', title: 'AI Chat', canonicalPath: '/chat', robots: 'noindex, nofollow' },
 ];
 
 export function resolveRouteSeo(pathname) {
@@ -222,7 +231,7 @@ export function resolveRouteSeo(pathname) {
 
   return {
     title: 'Page Not Found',
-    description: 'This page does not exist. Explore InspirQuiz to generate quizzes and study smarter with active recall.',
+    description: 'This page does not exist. Explore inspir to generate quizzes and study smarter with active recall.',
     canonicalPath: pathname,
     robots: 'noindex, follow',
   };

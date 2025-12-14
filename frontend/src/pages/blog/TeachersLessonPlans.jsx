@@ -68,7 +68,7 @@ export default function TeachersLessonPlans() {
                       <h3>Generate A First Draft Quickly</h3>
         
                       <p>
-                        This is where AI tools like InspirQuiz come in handy. Copy your lesson material, generate quiz questions based on it, and you'll have a first draft in about 20 seconds.
+                        This is where AI tools like inspir come in handy. Copy your lesson material, generate quiz questions based on it, and you'll have a first draft in about 20 seconds.
                       </p>
         
                       <p>
@@ -195,7 +195,7 @@ export default function TeachersLessonPlans() {
           <h3 className="text-2xl font-bold mb-4">Save Time on Assessment Creation</h3>
           <p className="mb-6">Turn your lesson plans into quizzes in seconds, then customize to fit your needs.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz for Free
+            Try inspir for Free
           </Link>
         </div>
       </div>

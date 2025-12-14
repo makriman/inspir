@@ -328,7 +328,7 @@ export default function ResearchPaperQuizzes() {
                       </p>
         
                       <p>
-                        Copy key sections of the paper (or the whole paper if it's not too long) into a quiz generation tool like InspirQuiz. This creates initial questions that you can then review and refine.
+                        Copy key sections of the paper (or the whole paper if it's not too long) into a quiz generation tool like inspir. This creates initial questions that you can then review and refine.
                       </p>
         
                       <p>
@@ -375,7 +375,7 @@ export default function ResearchPaperQuizzes() {
           <h3 className="text-2xl font-bold mb-4">Test Your Research Comprehension</h3>
           <p className="mb-6">Generate comprehension questions from academic papers and actually understand what you read.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz
+            Try inspir
           </Link>
         </div>
       </div>

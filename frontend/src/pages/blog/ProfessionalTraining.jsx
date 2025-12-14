@@ -3,7 +3,7 @@ import BlogLayout from '../../components/BlogLayout';
 export default function ProfessionalTraining() {
   return (
     <BlogLayout
-      title="InspirQuiz for Professionals: Training & Development"
+      title="Quizzes for Professionals: Training & Development"
       category="Professional Development"
       readTime="8 min read"
     >
@@ -232,7 +232,7 @@ export default function ProfessionalTraining() {
                       </p>
         
                       <p>
-                        Tools like InspirQuiz can generate these questions automatically from your training materials, saving you the time of creating them manually.
+                        Tools like inspir can generate these questions automatically from your training materials, saving you the time of creating them manually.
                       </p>
         
                       <h3>Create Job Aids</h3>
@@ -287,7 +287,7 @@ export default function ProfessionalTraining() {
           <h3 className="text-2xl font-bold mb-4">Reinforce Your Training</h3>
           <p className="mb-6">Create follow-up quizzes from training materials and actually retain what you learn.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz
+            Try inspir
           </Link>
         </div>
       </div>

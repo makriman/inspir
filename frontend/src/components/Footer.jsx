@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const shareUrl = encodeURIComponent('https://quiz.inspir.uk/');
-  const shareText = encodeURIComponent('InspirQuiz — generate AI quizzes from any topic or your notes.');
+  const shareText = encodeURIComponent('inspir — generate AI quizzes from any topic or your notes.');
 
   return (
     <footer className="bg-deep-blue text-white mt-16">
@@ -11,9 +11,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-vibrant-yellow font-bold text-xl mb-4">InspirQuiz</h3>
+            <h3 className="text-vibrant-yellow font-bold text-xl mb-4">inspir</h3>
             <p className="text-gray-300 text-sm">
-              Generate thought-provoking quizzes from any topic or your own notes. Built for active recall.
+              Generate AI quizzes from any topic or your notes. Built for active recall.
             </p>
             <div className="mt-4 flex flex-wrap gap-2 text-xs">
               <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Guest Mode</span>
@@ -44,6 +44,7 @@ export default function Footer() {
               <li><Link to="/use-cases" className="text-gray-300 hover:text-vibrant-yellow transition-colors">Use Cases</Link></li>
               <li><Link to="/blog" className="text-gray-300 hover:text-vibrant-yellow transition-colors">Blog</Link></li>
               <li><a href="/rss.xml" className="text-gray-300 hover:text-vibrant-yellow transition-colors">RSS</a></li>
+              <li><a href="/sitemap.xml" className="text-gray-300 hover:text-vibrant-yellow transition-colors">Sitemap</a></li>
               <li><Link to="/about" className="text-gray-300 hover:text-vibrant-yellow transition-colors">About</Link></li>
               <li><Link to="/faq" className="text-gray-300 hover:text-vibrant-yellow transition-colors">FAQ</Link></li>
             </ul>
@@ -98,7 +99,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; {currentYear} InspirQuiz. All rights reserved. | Study smarter with active recall.</p>
+          <p>&copy; {currentYear} inspir. All rights reserved. | Study smarter with active recall.</p>
         </div>
       </div>
     </footer>

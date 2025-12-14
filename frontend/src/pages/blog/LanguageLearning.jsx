@@ -268,7 +268,7 @@ export default function LanguageLearning() {
                       </ul>
         
                       <p>
-                        You can create these manually or use tools like InspirQuiz to generate them from the content.
+                        You can create these manually or use tools like inspir to generate them from the content.
                       </p>
         
                       <h3>Test Yourself Later</h3>
@@ -334,7 +334,7 @@ export default function LanguageLearning() {
           <h3 className="text-2xl font-bold mb-4">Test Language Comprehension</h3>
           <p className="mb-6">Create comprehension quizzes from real articles, videos, and content in your target language.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz
+            Try inspir
           </Link>
         </div>
       </div>

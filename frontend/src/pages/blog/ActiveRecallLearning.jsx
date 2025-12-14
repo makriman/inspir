@@ -111,9 +111,9 @@ export default function ActiveRecallLearning() {
           <li><strong>Application</strong>: "Given scenario S, which concept/process applies and why?"</li>
         </ul>
 
-        <h2>How InspirQuiz Helps</h2>
+        <h2>How inspir Helps</h2>
         <p>
-          InspirQuiz automates the question-writing part. Paste your notes or upload a DOCX/TXT and get 10 questions (5 MCQ, 5 short answer) instantly. Use them for your next active recall session instead of staring at your notes.
+          inspir automates the question-writing part. Paste your notes or upload a DOCX/TXT and get 10 questions (5 MCQ, 5 short answer) instantly. Use them for your next active recall session instead of staring at your notes.
         </p>
 
         <h2>Common Pitfalls</h2>

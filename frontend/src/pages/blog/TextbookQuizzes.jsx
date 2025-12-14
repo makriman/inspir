@@ -87,7 +87,7 @@ export default function TextbookQuizzes() {
                       </p>
         
                       <p>
-                        If creating questions manually feels like too much work, you can use tools like InspirQuiz to generate questions from the textbook section. The important part is having questions ready.
+                        If creating questions manually feels like too much work, you can use tools like inspir to generate questions from the textbook section. The important part is having questions ready.
                       </p>
         
                       <h3>Step 5: Check Your Work</h3>

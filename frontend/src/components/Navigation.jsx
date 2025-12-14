@@ -25,7 +25,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-dark to-purple-darker bg-clip-text text-transparent">
-                InspirQuiz
+                inspir
               </span>
             </Link>
           </div>

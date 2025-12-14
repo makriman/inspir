@@ -29,7 +29,7 @@ export default function HomePageGuest() {
         {/* Logo & Headline */}
         <div className="text-center mb-8 animate-fadeIn">
           <h1 className="text-5xl md:text-6xl font-bold text-primary-blue mb-4">
-            InspirQuiz
+            inspir
           </h1>
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
             The Only Study Toolkit You Need
@@ -274,7 +274,7 @@ export default function HomePageGuest() {
             Ready to study smarter?
           </h2>
           <p className="text-lg text-white opacity-90 mb-8">
-            Start studying smarter today with InspirQuiz
+            Start studying smarter today with inspir
           </p>
           <button
             onClick={() => navigate('/auth')}

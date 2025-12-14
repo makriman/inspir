@@ -45,7 +45,7 @@ export default function CorporateTraining() {
 
         <h2>How to Implement Quickly</h2>
         <ul>
-          <li>Convert existing SOPs into question banks with InspirQuiz (upload DOCX/TXT).</li>
+          <li>Convert existing SOPs into question banks with inspir (upload DOCX/TXT).</li>
           <li>Create 10-question sets per workflow (5 MCQ, 5 short answer).</li>
           <li>Run a 15-minute “learn + apply” session: 5 minutes of content, 10 minutes of quiz/application.</li>
           <li>Schedule two follow-up micro-quizzes in the next week.</li>
@@ -63,7 +63,7 @@ export default function CorporateTraining() {
 
         <h2>Bottom Line</h2>
         <p>
-          Training works when people recall and apply knowledge repeatedly. Build shorter modules, add active recall throughout, mirror real scenarios, and follow up with spaced micro-quizzes. InspirQuiz makes it fast to generate those questions so employees actually remember—and use—what you teach.
+          Training works when people recall and apply knowledge repeatedly. Build shorter modules, add active recall throughout, mirror real scenarios, and follow up with spaced micro-quizzes. inspir makes it fast to generate those questions so employees actually remember—and use—what you teach.
         </p>
       </div>
     </BlogLayout>

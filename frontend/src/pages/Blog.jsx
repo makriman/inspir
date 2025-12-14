@@ -30,7 +30,7 @@ export default function Blog() {
       <div className="bg-gradient-to-r from-purple-dark via-purple-darker to-deep-blue text-white py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            The InspirQuiz <span className="text-vibrant-yellow">Learning Blog</span>
+            The inspir <span className="text-vibrant-yellow">Learning Blog</span>
           </h1>
           <p className="text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto mb-8">
             Evidence-based study strategies, learning science, and practical tips to help you learn smarter, not harder.

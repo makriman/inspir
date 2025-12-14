@@ -11,7 +11,7 @@ export default function HowItWorks() {
         <div className="bg-gradient-to-r from-purple-dark to-purple-darker text-white py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              How InspirQuiz Works
+              How inspir Works
             </h1>
             <p className="text-xl md:text-2xl text-purple-100">
               From topic to quiz in under 30 seconds
@@ -22,7 +22,7 @@ export default function HowItWorks() {
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
             <p className="text-xl text-gray-700 mb-8 text-center">
-              Creating a quiz with InspirQuiz is ridiculously simple. Here's exactly how it works.
+              Creating a quiz with inspir is simple. Here’s exactly how it works.
             </p>
 
             {/* Step 1 */}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Signup({ onToggle }) {
   const [username, setUsername] = useState('');
@@ -42,9 +43,9 @@ export default function Signup({ onToggle }) {
       <div className="bg-off-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-deep-blue mb-2">
-            Join QuizMaster
+            Create your inspir account
           </h1>
-          <p className="text-gray-600">Start your learning journey today</p>
+          <p className="text-gray-600">Save quizzes, track progress, and come back anytime</p>
         </div>
 
         {error && (
@@ -140,8 +141,8 @@ export default function Signup({ onToggle }) {
 
         <div className="mt-6 p-4 bg-gray-100 rounded-lg">
           <p className="text-xs text-gray-600 text-center">
-            We don't collect emails or track you. This account is just to save your quizzes and results.
-            If you forget your credentials, there's no recovery - good ol' internet style.
+            No email required. This account is for saving quizzes and results. If you forget your credentials, recovery is limited.
+            See our <Link to="/privacy" className="font-semibold text-deep-blue hover:underline">Privacy Policy</Link> for details.
           </p>
         </div>
       </div>

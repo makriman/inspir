@@ -401,7 +401,7 @@ export default function Chat() {
                 <span className="text-5xl">✨</span>
               </motion.div>
               <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
-                InspirQuiz AI
+                inspir AI
               </h1>
               <p className="text-gray-600 text-xl mb-8">
                 Your revolutionary AI study companion

@@ -105,10 +105,10 @@ function faqJsonLd() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Is InspirQuiz free to use?',
+        name: 'Is inspir free to use?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'InspirQuiz is free to use. You can generate quizzes as a guest, and you can create a free account to save quizzes and track progress.',
+          text: 'inspir is free to use. You can generate quizzes as a guest, and you can create an account to save quizzes and track progress.',
         },
       },
       {
@@ -121,10 +121,10 @@ function faqJsonLd() {
       },
       {
         '@type': 'Question',
-        name: 'What can I upload?',
+        name: 'What can I generate a quiz from?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You can paste text or upload supported note formats (such as TXT and DOCX) to generate more targeted questions from your material.',
+          text: 'You can type a topic, paste text, or upload supported note formats (such as TXT and DOCX). Uploading notes usually produces more targeted questions.',
         },
       },
     ],
@@ -136,7 +136,7 @@ const staticPages = [
     pathname: '/',
     title: siteConfig.defaultTitle,
     description:
-      'Generate thought‑provoking AI quizzes from any topic or your own notes. Study with active recall and learn faster with InspirQuiz.',
+      'Generate AI quizzes from any topic or your notes. Study with active recall using inspir.',
     ogType: 'website',
   },
   {
@@ -150,20 +150,20 @@ const staticPages = [
     pathname: '/how-it-works',
     title: 'How It Works',
     description:
-      'See how InspirQuiz turns a topic or your notes into a quiz in seconds — and why thought‑provoking questions improve retention.',
+      'See how inspir turns a topic or your notes into a quiz in seconds — and why retrieval practice improves retention.',
     ogType: 'website',
   },
   {
     pathname: '/use-cases',
     title: 'Use Cases',
     description:
-      'Real ways students, teachers, and self-learners use InspirQuiz for exam prep, lessons, active recall, and long-term retention.',
+      'Real ways students, teachers, and self-learners use inspir for exam prep, lessons, active recall, and long-term retention.',
     ogType: 'website',
   },
   {
     pathname: '/faq',
     title: 'FAQ',
-    description: 'Answers to common questions about InspirQuiz, quiz generation, uploading notes, accounts, and sharing.',
+    description: 'Answers to common questions about inspir, quiz generation, uploading notes, accounts, and sharing.',
     ogType: 'website',
     jsonLd: faqJsonLd(),
   },
@@ -171,7 +171,7 @@ const staticPages = [
     pathname: '/about',
     title: 'About',
     description:
-      'Why InspirQuiz exists: make active recall and good self-testing effortless for students, teachers, and lifelong learners.',
+      'Why inspir exists: make active recall and good self-testing effortless for students, teachers, and lifelong learners.',
     ogType: 'website',
   },
   {
@@ -220,11 +220,11 @@ const staticPages = [
   {
     pathname: '/forum',
     title: 'Student Forum',
-    description: 'Discuss study strategies, ask questions, and learn with others in the InspirQuiz community.',
+    description: 'Discuss study strategies, ask questions, and learn with others in the inspir community.',
     ogType: 'website',
   },
-  { pathname: '/privacy', title: 'Privacy Policy', description: 'How InspirQuiz handles data and privacy.', ogType: 'website' },
-  { pathname: '/terms', title: 'Terms of Service', description: 'Terms and conditions for using InspirQuiz.', ogType: 'website' },
+  { pathname: '/privacy', title: 'Privacy Policy', description: 'How inspir handles data and privacy.', ogType: 'website' },
+  { pathname: '/terms', title: 'Terms of Service', description: 'Terms and conditions for using inspir.', ogType: 'website' },
 ];
 
 const blogPages = blogPosts.map((post) => ({
@@ -302,4 +302,3 @@ main().catch((error) => {
   console.error('[prerender-seo] Failed:', error);
   process.exitCode = 1;
 });
-

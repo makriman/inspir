@@ -3,7 +3,7 @@ import BlogLayout from '../../components/BlogLayout';
 export default function LawSchoolStudy() {
   return (
     <BlogLayout
-      title="Law School Study Guide with InspirQuiz"
+      title="Law School Study Guide with Quizzes"
       category="Law School"
       readTime="8 min read"
     >
@@ -340,7 +340,7 @@ export default function LawSchoolStudy() {
           <h3 className="text-2xl font-bold mb-4">Turn Outlines Into Practice Questions</h3>
           <p className="mb-6">Generate hypothetical fact patterns from your law school notes and outlines.</p>
           <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-            Try InspirQuiz
+            Try inspir
           </Link>
         </div>
       </div>

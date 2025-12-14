@@ -9,11 +9,11 @@ export default function UseCases() {
       <main className="min-h-screen bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 py-12">
           <article>
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-blue mb-6">How People Use InspirQuiz</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-deep-blue mb-6">How People Use inspir</h1>
 
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-700 mb-8">
-                InspirQuiz works for anyone who needs to learn something or help others learn.
+                inspir works for anyone who needs to learn something or help others learn.
                 Here are the most common ways people actually use it.
               </p>
 
@@ -24,7 +24,7 @@ export default function UseCases() {
                   <h3 className="text-2xl font-semibold text-deep-blue mb-3">Exam Preparation</h3>
                   <p className="text-gray-700 mb-3">
                     You've got three chapters to study for Friday's exam. Copy your lecture notes or textbook summaries
-                    into InspirQuiz and generate practice questions. Work through them, check your answers, identify
+                    into inspir and generate practice questions. Work through them, check your answers, identify
                     what you don't understand yet, and review those sections.
                   </p>
                   <p className="text-gray-700">
@@ -37,7 +37,7 @@ export default function UseCases() {
                   <h3 className="text-2xl font-semibold text-deep-blue mb-3">Understanding Complex Concepts</h3>
                   <p className="text-gray-700 mb-3">
                     Sometimes you read something in a textbook and think you get it, but you're not sure.
-                    Paste that section into InspirQuiz and take a quiz on it.
+                    Paste that section into inspir and take a quiz on it.
                   </p>
                   <p className="text-gray-700">
                     If you struggle with the questions, you didn't actually understand it yet. Go back, re-read,
@@ -76,7 +76,7 @@ export default function UseCases() {
                 <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
                   <h3 className="text-2xl font-semibold text-deep-blue mb-3">Quick Formative Assessments</h3>
                   <p className="text-gray-700 mb-3">
-                    You just taught a new concept. Upload your lesson plan or lecture notes to InspirQuiz,
+                    You just taught a new concept. Upload your lesson plan or lecture notes to inspir,
                     generate a quick 10-question assessment, and give it to your students at the end of class.
                   </p>
                   <p className="text-gray-700">
@@ -245,13 +245,13 @@ export default function UseCases() {
                   questions that require you to think and apply what you've read—that's when learning actually happens.
                 </p>
                 <p className="text-gray-700">
-                  InspirQuiz just makes it ridiculously easy to create those tests so you can focus on the actual learning part.
+                  inspir makes it easy to create those tests so you can focus on the actual learning part.
                 </p>
               </section>
 
               <div className="bg-purple-gradient text-white rounded-lg p-8 text-center">
                 <h2 className="text-2xl font-bold mb-4">What Will You Use It For?</h2>
-                <p className="mb-6">Whether you're cramming for finals or mastering a new skill, InspirQuiz is ready to help.</p>
+                <p className="mb-6">Whether you're cramming for finals or mastering a new skill, inspir is ready to help.</p>
                 <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
                   Start Creating Quizzes
                 </Link>

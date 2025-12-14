@@ -36,7 +36,7 @@ export default function CertificationExamPrep() {
 
         <h2>Use Active Recall, Not Passive Review</h2>
         <p>Close the book and pull questions from memory. Use practice questions, write down answers, then check.</p>
-        <p>InspirQuiz can turn your notes or outline into a 10-question set instantly (5 MCQ, 5 short answer) so you spend time testing, not preparing to test.</p>
+        <p>inspir can turn your notes or outline into a 10-question set instantly (5 MCQ, 5 short answer) so you spend time testing, not preparing to test.</p>
 
         <h2>Make Practice Exams Count</h2>
         <ul>
@@ -55,7 +55,7 @@ export default function CertificationExamPrep() {
         </ul>
 
         <h2>Weekend Deep Dives</h2>
-        <p>Use one weekend block to do a full-length or half-length practice exam. Spend equal time reviewing the answers as you did taking the test. Convert every mistake into a new question in InspirQuiz so you see it again next week.</p>
+        <p>Use one weekend block to do a full-length or half-length practice exam. Spend equal time reviewing the answers as you did taking the test. Convert every mistake into a new question in inspir so you see it again next week.</p>
 
         <h2>Energy Management</h2>
         <ul>
@@ -73,7 +73,7 @@ export default function CertificationExamPrep() {
 
         <h2>Bottom Line</h2>
         <p>
-          With limited time, you win by being ruthless: study only what’s tested, in the format you’ll be tested, using active recall every session. Automate question generation with InspirQuiz, stick to short daily blocks, and use the Study Timer to stay consistent. That’s how you pass while working full-time.
+          With limited time, you win by being ruthless: study only what’s tested, in the format you’ll be tested, using active recall every session. Automate question generation with inspir, stick to short daily blocks, and use the Study Timer to stay consistent. That’s how you pass while working full-time.
         </p>
       </div>
     </BlogLayout>

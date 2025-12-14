@@ -124,7 +124,7 @@ export default function StudySmarterNotes() {
                       </p>
         
                       <p>
-                        <strong>Within 24 hours:</strong> Review your notes and turn them into quiz questions. You can do this manually or use a tool like InspirQuiz to generate questions quickly. Aim for a mix of factual questions and conceptual questions.
+                        <strong>Within 24 hours:</strong> Review your notes and turn them into quiz questions. You can do this manually or use a tool like inspir to generate questions quickly. Aim for a mix of factual questions and conceptual questions.
                       </p>
         
                       <p>

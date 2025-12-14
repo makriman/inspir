@@ -61,7 +61,7 @@ export default function BlogLayout({
           <article className="bg-white shadow-lg border border-gray-100 rounded-3xl p-6 md:p-10 mt-8 prose prose-lg max-w-none">
             {children}
             <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-purple-100 to-blue-100 border border-purple-200">
-              <h3 className="text-xl font-bold text-deep-blue mb-2">Try InspirQuiz for your next study session</h3>
+              <h3 className="text-xl font-bold text-deep-blue mb-2">Try inspir for your next study session</h3>
               <p className="text-gray-700 mb-4">
                 Turn any set of notes into a 10-question quiz in seconds, then stay on track with the Pomodoro Study Timer.
               </p>

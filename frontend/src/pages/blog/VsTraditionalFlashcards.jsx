@@ -3,7 +3,7 @@ import BlogLayout from '../../components/BlogLayout';
 export default function VsTraditionalFlashcards() {
   return (
     <BlogLayout
-      title="InspirQuiz vs Traditional Flashcards"
+      title="Quizzes vs Traditional Flashcards"
       category="Study Tools"
       readTime="7 min read"
     >

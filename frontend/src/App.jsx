@@ -45,6 +45,10 @@ import GeneralKnowledgeFun from './pages/blog/GeneralKnowledgeFun';
 import CornellNotesMethod from './pages/blog/CornellNotesMethod';
 import PomodoroActiveRecall from './pages/blog/PomodoroActiveRecall';
 import AIStudyDoubtSolver from './pages/blog/AIStudyDoubtSolver';
+import StudyFromNotesAIQuiz from './pages/blog/StudyFromNotesAIQuiz';
+import SpacedRepetitionSchedule from './pages/blog/SpacedRepetitionSchedule';
+import FinalsStudyPlan from './pages/blog/FinalsStudyPlan';
+import TeacherMultipleChoiceQuestions from './pages/blog/TeacherMultipleChoiceQuestions';
 import StudyTimer from './pages/StudyTimer';
 import NotFound from './pages/NotFound';
 import StudentForum from './pages/StudentForum';
@@ -180,6 +184,10 @@ function App() {
           <Route path="/blog/cornell-notes-method" element={<CornellNotesMethod />} />
           <Route path="/blog/pomodoro-active-recall" element={<PomodoroActiveRecall />} />
           <Route path="/blog/ai-study-doubt-solver" element={<AIStudyDoubtSolver />} />
+          <Route path="/blog/study-from-notes-ai-quiz" element={<StudyFromNotesAIQuiz />} />
+          <Route path="/blog/spaced-repetition-schedule" element={<SpacedRepetitionSchedule />} />
+          <Route path="/blog/finals-study-plan" element={<FinalsStudyPlan />} />
+          <Route path="/blog/better-mcq-questions" element={<TeacherMultipleChoiceQuestions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

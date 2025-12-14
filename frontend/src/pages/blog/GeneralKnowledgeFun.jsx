@@ -44,8 +44,8 @@ export default function GeneralKnowledgeFun() {
         <h2>Keep It Sustainable</h2>
         <p>Short, regular sessions beat sporadic marathons. Use the Study Timer: 25 minutes learning, 5 minutes summarizing/quiz. Repeat a few times a week.</p>
 
-        <h2>Use InspirQuiz for Curious Learning</h2>
-        <p>Drop a link or paste notes from what you read into InspirQuiz to generate a quick 10-question quiz. Take it later in the week to reinforce what you learned.</p>
+        <h2>Use inspir for Curious Learning</h2>
+        <p>Drop a link or paste notes from what you read into inspir to generate a quick 10-question quiz. Take it later in the week to reinforce what you learned.</p>
 
         <h2>Bottom Line</h2>
         <p>
