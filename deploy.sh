@@ -28,7 +28,11 @@ systemctl reload nginx
 
 # Check backend status
 echo "🔍 Checking backend status..."
-pm2 list | grep quiz-backend
+if command -v pm2 >/dev/null 2>&1; then
+    timeout 5s pm2 list | grep quiz-backend || echo "⚠️  Unable to read pm2 status (pm2 not responding or process not found)."
+else
+    echo "⚠️  pm2 not found; skipping backend status check."
+fi
 
 # Restart backend if needed
 read -p "Restart backend? (y/n): " -n 1 -r
