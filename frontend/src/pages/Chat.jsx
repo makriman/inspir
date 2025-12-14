@@ -23,6 +23,7 @@ export default function Chat() {
   const [inputMessage, setInputMessage] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
   const [streamingMessage, setStreamingMessage] = useState('');
+  const [chatError, setChatError] = useState('');
 
   // UI state
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -75,8 +76,10 @@ export default function Chat() {
         headers: { Authorization: `Bearer ${session.access_token}` }
       });
       setConversations(response.data);
+      setChatError('');
     } catch (error) {
       console.error('Error loading conversations:', error);
+      setChatError(error.response?.data?.error || 'Failed to load chat. Please try again.');
     }
   };
 
@@ -91,9 +94,11 @@ export default function Chat() {
       setConversations(prev => [newConv, ...prev]);
       setCurrentConversation(newConv);
       setMessages([]);
+      setChatError('');
       return newConv;
     } catch (error) {
       console.error('Error creating conversation:', error);
+      setChatError(error.response?.data?.error || 'Failed to start chat. Please try again.');
       return null;
     }
   };
@@ -406,6 +411,11 @@ export default function Chat() {
               <p className="text-gray-600 text-xl mb-8">
                 Your revolutionary AI study companion
               </p>
+              {chatError && (
+                <div className="max-w-md mx-auto mb-6 bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl text-sm">
+                  {chatError}
+                </div>
+              )}
               <motion.button
                 onClick={createNewConversation}
                 whileHover={{ scale: 1.05 }}

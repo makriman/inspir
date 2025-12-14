@@ -12,6 +12,45 @@ const anthropic = new Anthropic({
   ...(Number.isFinite(MAX_RETRIES) ? { maxRetries: MAX_RETRIES } : {}),
 });
 
+const QUIZ_MODEL =
+  process.env.ANTHROPIC_QUIZ_MODEL ||
+  process.env.ANTHROPIC_MODEL ||
+  'claude-sonnet-4-5-20250929';
+
+const RETRYABLE_STATUSES = new Set([408, 409, 425, 429, 500, 502, 503, 504, 529]);
+
+function isRetryableAnthropicError(error) {
+  const status = error?.status;
+  if (typeof status === 'number' && RETRYABLE_STATUSES.has(status)) return true;
+
+  const type = error?.error?.error?.type;
+  if (type === 'overloaded_error') return true;
+
+  const message = error?.message || '';
+  return /overloaded|rate limit|timeout|temporarily unavailable/i.test(message);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function withRetry(fn, { retries = 3, baseDelayMs = 750, maxDelayMs = 8000 } = {}) {
+  let attempt = 0;
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    try {
+      return await fn();
+    } catch (error) {
+      attempt += 1;
+      if (attempt > retries || !isRetryableAnthropicError(error)) throw error;
+
+      const jitter = 0.8 + Math.random() * 0.4;
+      const delay = Math.min(maxDelayMs, Math.round(baseDelayMs * Math.pow(2, attempt - 1) * jitter));
+      await sleep(delay);
+    }
+  }
+}
+
 export async function generateQuiz(content, topicName = null) {
   // Determine if this is topic-only generation or content-based
   const isTopicOnly = content.startsWith('Topic:');
@@ -111,18 +150,28 @@ ${isTopicOnly ? '' : `Educational Content:\n${content}`}
 Remember: Return ONLY the JSON object, no additional text or explanation.`;
 
   try {
-    const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-5-20250929',
-      max_tokens: 4096,
-      messages: [
-        {
-          role: 'user',
-          content: prompt
-        }
-      ]
-    }, {
-      timeout: Number.parseInt(process.env.ANTHROPIC_QUIZ_TIMEOUT_MS || '', 10) || DEFAULT_TIMEOUT_MS
-    });
+    const message = await withRetry(
+      () =>
+        anthropic.messages.create(
+          {
+            model: QUIZ_MODEL,
+            max_tokens: 4096,
+            messages: [
+              {
+                role: 'user',
+                content: prompt,
+              },
+            ],
+          },
+          {
+            timeout:
+              Number.parseInt(process.env.ANTHROPIC_QUIZ_TIMEOUT_MS || '', 10) || DEFAULT_TIMEOUT_MS,
+          }
+        ),
+      {
+        retries: Number.parseInt(process.env.ANTHROPIC_OVERLOAD_RETRIES || '', 10) || 3,
+      }
+    );
 
     const responseText = message.content[0].text;
 
@@ -142,7 +191,10 @@ Remember: Return ONLY the JSON object, no additional text or explanation.`;
     return quizData;
   } catch (error) {
     console.error('Error generating quiz:', error);
-    throw new Error(`Failed to generate quiz: ${error.message}`, { cause: error });
+    const wrapped = new Error(`Failed to generate quiz: ${error.message}`, { cause: error });
+    if (typeof error?.status === 'number') wrapped.status = error.status;
+    if (error?.error?.error?.type) wrapped.providerErrorType = error.error.error.type;
+    throw wrapped;
   }
 }
 
@@ -200,16 +252,24 @@ Consider the answer correct if it captures the key concepts, even if worded diff
 Respond with ONLY "correct" or "incorrect".`;
 
   try {
-    const message = await anthropic.messages.create({
-      model: 'claude-sonnet-4-5-20250929',
-      max_tokens: 10,
-      messages: [
-        {
-          role: 'user',
-          content: prompt
-        }
-      ]
-    });
+    const message = await withRetry(
+      () =>
+        anthropic.messages.create({
+          model: QUIZ_MODEL,
+          max_tokens: 10,
+          messages: [
+            {
+              role: 'user',
+              content: prompt,
+            },
+          ],
+        }),
+      {
+        retries: Number.parseInt(process.env.ANTHROPIC_OVERLOAD_RETRIES || '', 10) || 2,
+        baseDelayMs: 500,
+        maxDelayMs: 5000,
+      }
+    );
 
     const evaluation = message.content[0].text.toLowerCase().trim();
     return evaluation === 'correct';

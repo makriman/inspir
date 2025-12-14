@@ -5,7 +5,9 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Load .env from the backend directory (absolute path to handle PM2 running from different cwd)
+// Load env from backend directory (absolute paths to handle PM2 running from different cwd).
+// Prefer a local override file for secrets that should not be committed.
+dotenv.config({ path: '/root/quiz-app/backend/.env.local' });
 dotenv.config({ path: '/root/quiz-app/backend/.env' });
 
 import express from 'express';
@@ -45,6 +47,12 @@ if (process.env.JWT_SECRET.length < 32) {
   console.error('ERROR: JWT_SECRET must be at least 32 characters long for security');
   console.error('Current length:', process.env.JWT_SECRET.length);
   process.exit(1);
+}
+
+if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  console.warn(
+    'WARN: SUPABASE_SERVICE_ROLE_KEY is not set. Chat (and any RLS-protected tables) will fail with 503 until this is configured.'
+  );
 }
 
 const app = express();

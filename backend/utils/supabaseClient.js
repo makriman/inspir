@@ -1,6 +1,26 @@
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
+const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: { persistSession: false, autoRefreshToken: false },
+});
+
+export const supabaseAdmin = supabaseServiceRoleKey
+  ? createClient(supabaseUrl, supabaseServiceRoleKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    })
+  : null;
+
+export function getSupabaseAdminOrThrow() {
+  if (!supabaseAdmin) {
+    const error = new Error(
+      'Chat database is not configured: SUPABASE_SERVICE_ROLE_KEY is missing (required to bypass RLS for server-side operations).'
+    );
+    error.code = 'SUPABASE_SERVICE_ROLE_KEY_MISSING';
+    throw error;
+  }
+  return supabaseAdmin;
+}

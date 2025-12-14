@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { supabase } from '../utils/supabaseClient.js';
+import { getSupabaseAdminOrThrow } from '../utils/supabaseClient.js';
 import {
   moderateContent,
   generateBlockedMessage,
@@ -16,11 +16,22 @@ const anthropic = new Anthropic({
 // Allow overriding model via env but default to Claude Sonnet 4.5
 const MODEL = process.env.ANTHROPIC_MODEL || 'claude-sonnet-4-5-20250929';
 
+function maybeSendMisconfig(res, error) {
+  if (error?.code !== 'SUPABASE_SERVICE_ROLE_KEY_MISSING') return false;
+
+  res.status(503).json({
+    error: 'Chat temporarily unavailable',
+    message: error.message
+  });
+  return true;
+}
+
 /**
  * Create a new chat conversation
  */
 export async function createConversation(req, res) {
   try {
+    const supabaseAdmin = getSupabaseAdminOrThrow();
     const userId = req.user?.id;
     const { title, folder } = req.body;
 
@@ -31,7 +42,7 @@ export async function createConversation(req, res) {
       return res.status(401).json({ error: 'Authentication required' });
     }
 
-    const { data: conversation, error } = await supabase
+    const { data: conversation, error } = await supabaseAdmin
       .from('chat_conversations')
       .insert([
         {
@@ -53,6 +64,7 @@ export async function createConversation(req, res) {
     console.log('[Chat] Conversation created successfully:', conversation.id);
     res.json(conversation);
   } catch (error) {
+    if (maybeSendMisconfig(res, error)) return;
     console.error('[Chat] Error creating conversation:', error);
     console.error('[Chat] Error stack:', error.stack);
     res.status(500).json({
@@ -68,13 +80,14 @@ export async function createConversation(req, res) {
  */
 export async function getConversations(req, res) {
   try {
+    const supabaseAdmin = getSupabaseAdminOrThrow();
     const userId = req.user?.id;
 
     if (!userId) {
       return res.status(401).json({ error: 'Authentication required' });
     }
 
-    const { data: conversations, error } = await supabase
+    const { data: conversations, error } = await supabaseAdmin
       .from('chat_conversations')
       .select('*')
       .eq('user_id', userId)
@@ -87,6 +100,7 @@ export async function getConversations(req, res) {
 
     res.json(conversations);
   } catch (error) {
+    if (maybeSendMisconfig(res, error)) return;
     console.error('Error fetching conversations:', error.message);
     res.status(500).json({
       error: 'Failed to fetch conversations',
@@ -100,6 +114,7 @@ export async function getConversations(req, res) {
  */
 export async function getMessages(req, res) {
   try {
+    const supabaseAdmin = getSupabaseAdminOrThrow();
     const userId = req.user?.id;
     const { conversationId } = req.params;
 
@@ -108,7 +123,7 @@ export async function getMessages(req, res) {
     }
 
     // Verify user owns this conversation
-    const { data: conversation, error: convError } = await supabase
+    const { data: conversation, error: convError } = await supabaseAdmin
       .from('chat_conversations')
       .select('id')
       .eq('id', conversationId)
@@ -119,7 +134,7 @@ export async function getMessages(req, res) {
       return res.status(404).json({ error: 'Conversation not found' });
     }
 
-    const { data: messages, error } = await supabase
+    const { data: messages, error } = await supabaseAdmin
       .from('chat_messages')
       .select('*')
       .eq('conversation_id', conversationId)
@@ -132,6 +147,7 @@ export async function getMessages(req, res) {
 
     res.json(messages);
   } catch (error) {
+    if (maybeSendMisconfig(res, error)) return;
     console.error('Error fetching messages:', error.message);
     res.status(500).json({
       error: 'Failed to fetch messages',
@@ -146,6 +162,7 @@ export async function getMessages(req, res) {
 export async function sendMessage(req, res) {
   console.log('[Chat] ===== SEND MESSAGE START =====');
   try {
+    const supabaseAdmin = getSupabaseAdminOrThrow();
     const userId = req.user?.id;
     const { conversationId } = req.params;
     const { content } = req.body;
@@ -174,7 +191,7 @@ export async function sendMessage(req, res) {
     }
 
     // Verify user owns this conversation
-    const { data: conversation, error: convError } = await supabase
+    const { data: conversation, error: convError } = await supabaseAdmin
       .from('chat_conversations')
       .select('*')
       .eq('id', conversationId)
@@ -186,7 +203,7 @@ export async function sendMessage(req, res) {
     }
 
     // Save user message
-    const { data: userMessage, error: userMsgError } = await supabase
+    const { data: userMessage, error: userMsgError } = await supabaseAdmin
       .from('chat_messages')
       .insert([
         {
@@ -208,7 +225,7 @@ export async function sendMessage(req, res) {
     }
 
     // Get conversation history
-    const { data: historyMessages, error: histError } = await supabase
+    const { data: historyMessages, error: histError } = await supabaseAdmin
       .from('chat_messages')
       .select('role, content')
       .eq('conversation_id', conversationId)
@@ -266,7 +283,7 @@ export async function sendMessage(req, res) {
       }
 
       // Save assistant message
-      const { data: assistantMessage, error: assistMsgError } = await supabase
+      const { data: assistantMessage, error: assistMsgError } = await supabaseAdmin
         .from('chat_messages')
         .insert([
           {
@@ -287,7 +304,7 @@ export async function sendMessage(req, res) {
       // Auto-generate title if this is the first message
       if (historyMessages.length <= 1) {
         const autoTitle = generateConversationTitle(content);
-        await supabase
+        await supabaseAdmin
           .from('chat_conversations')
           .update({ title: autoTitle })
           .eq('id', conversationId);
@@ -319,6 +336,7 @@ export async function sendMessage(req, res) {
   } catch (error) {
     console.error('Error sending message:', error.message);
     if (!res.headersSent) {
+      if (maybeSendMisconfig(res, error)) return;
       res.status(500).json({
         error: 'Failed to send message',
         message: error.message
@@ -332,6 +350,7 @@ export async function sendMessage(req, res) {
  */
 export async function deleteConversation(req, res) {
   try {
+    const supabaseAdmin = getSupabaseAdminOrThrow();
     const userId = req.user?.id;
     const { conversationId } = req.params;
 
@@ -339,7 +358,7 @@ export async function deleteConversation(req, res) {
       return res.status(401).json({ error: 'Authentication required' });
     }
 
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
       .from('chat_conversations')
       .delete()
       .eq('id', conversationId)
@@ -352,6 +371,7 @@ export async function deleteConversation(req, res) {
 
     res.json({ success: true });
   } catch (error) {
+    if (maybeSendMisconfig(res, error)) return;
     console.error('Error deleting conversation:', error.message);
     res.status(500).json({
       error: 'Failed to delete conversation',
@@ -365,6 +385,7 @@ export async function deleteConversation(req, res) {
  */
 export async function updateConversation(req, res) {
   try {
+    const supabaseAdmin = getSupabaseAdminOrThrow();
     const userId = req.user?.id;
     const { conversationId } = req.params;
     const { title, folder, is_pinned } = req.body;
@@ -378,7 +399,7 @@ export async function updateConversation(req, res) {
     if (folder !== undefined) updates.folder = folder;
     if (is_pinned !== undefined) updates.is_pinned = is_pinned;
 
-    const { data: conversation, error } = await supabase
+    const { data: conversation, error } = await supabaseAdmin
       .from('chat_conversations')
       .update(updates)
       .eq('id', conversationId)
@@ -393,6 +414,7 @@ export async function updateConversation(req, res) {
 
     res.json(conversation);
   } catch (error) {
+    if (maybeSendMisconfig(res, error)) return;
     console.error('Error updating conversation:', error.message);
     res.status(500).json({
       error: 'Failed to update conversation',
@@ -406,6 +428,7 @@ export async function updateConversation(req, res) {
  */
 export async function searchMessages(req, res) {
   try {
+    const supabaseAdmin = getSupabaseAdminOrThrow();
     const userId = req.user?.id;
     const { query } = req.query;
 
@@ -418,7 +441,7 @@ export async function searchMessages(req, res) {
     }
 
     // Get user's conversation IDs
-    const { data: conversations, error: convError } = await supabase
+    const { data: conversations, error: convError } = await supabaseAdmin
       .from('chat_conversations')
       .select('id')
       .eq('user_id', userId);
@@ -430,7 +453,7 @@ export async function searchMessages(req, res) {
     const conversationIds = conversations.map(c => c.id);
 
     // Full-text search using PostgreSQL
-    const { data: messages, error } = await supabase
+    const { data: messages, error } = await supabaseAdmin
       .from('chat_messages')
       .select('id, conversation_id, role, content, created_at')
       .in('conversation_id', conversationIds)
@@ -448,6 +471,7 @@ export async function searchMessages(req, res) {
 
     res.json(messages);
   } catch (error) {
+    if (maybeSendMisconfig(res, error)) return;
     console.error('Error searching messages:', error.message);
     res.status(500).json({
       error: 'Failed to search messages',

@@ -115,7 +115,8 @@ export async function createQuiz(req, res) {
       requestId,
       durationMs: Date.now() - startedAt,
       message: error?.message,
-      causeName: error?.cause?.name
+      causeName: error?.cause?.name,
+      status: error?.status || error?.cause?.status
     });
     console.error('Error creating quiz:', error);
 
@@ -131,13 +132,27 @@ export async function createQuiz(req, res) {
     });
 
     const causeName = error?.cause?.name;
+    const status = error?.status || error?.cause?.status;
+    const providerErrorType = error?.providerErrorType || error?.cause?.error?.error?.type;
+
     const isTimeout =
       causeName === 'APIConnectionTimeoutError' ||
       causeName === 'AbortError' ||
       /timeout/i.test(error?.message || '');
 
-    res.status(isTimeout ? 504 : 500).json({
-      error: isTimeout ? 'Quiz generation timed out' : 'Failed to create quiz',
+    const isOverloaded =
+      status === 529 ||
+      providerErrorType === 'overloaded_error' ||
+      /overloaded/i.test(error?.message || '');
+
+    const httpStatus = isTimeout ? 504 : isOverloaded ? 503 : 500;
+
+    res.status(httpStatus).json({
+      error: isTimeout
+        ? 'Quiz generation timed out'
+        : isOverloaded
+          ? 'AI is currently busy. Please try again in 30–60 seconds.'
+          : 'Failed to create quiz',
       message: error.message
     });
   }
