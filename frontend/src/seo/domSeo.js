@@ -81,7 +81,7 @@ export function applySeo({
   setMetaContent(
     'meta[property="og:image:alt"]',
     { property: 'og:image:alt' },
-    title ? `${title} - ${siteConfig.siteName}` : `${siteConfig.siteName} - AI Quiz Generator`
+    title ? `${title} - ${siteConfig.siteName}` : `${siteConfig.siteName} - AI Study Toolkit`
   );
   setMetaContent('meta[property="og:site_name"]', { property: 'og:site_name' }, siteConfig.siteName);
   setMetaContent('meta[property="og:locale"]', { property: 'og:locale' }, siteConfig.locale);
@@ -94,7 +94,7 @@ export function applySeo({
   setMetaContent(
     'meta[name="twitter:image:alt"]',
     { name: 'twitter:image:alt' },
-    title ? `${title} - ${siteConfig.siteName}` : `${siteConfig.siteName} - AI Quiz Generator`
+    title ? `${title} - ${siteConfig.siteName}` : `${siteConfig.siteName} - AI Study Toolkit`
   );
 
   ensureLink('link[rel="canonical"]', { rel: 'canonical', href: canonicalUrl }).setAttribute('href', canonicalUrl);

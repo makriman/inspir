@@ -20,6 +20,7 @@ fi
 echo "📂 Copying build to web directory..."
 rm -rf /var/www/quiz.inspir.uk/*
 cp -r dist/* /var/www/quiz.inspir.uk/
+chmod -R a+rX /var/www/quiz.inspir.uk/
 
 # Reload nginx
 echo "🔄 Reloading nginx..."

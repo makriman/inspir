@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
   const currentYear = new Date().getFullYear();
   const shareUrl = encodeURIComponent('https://quiz.inspir.uk/');
-  const shareText = encodeURIComponent('inspir — generate AI quizzes from any topic or your notes.');
+  const shareText = encodeURIComponent('inspir — an AI study toolkit: quizzes, step-by-step help, notes, citations, focus, and progress.');
 
   return (
     <footer className="bg-deep-blue text-white mt-16">
@@ -13,12 +13,13 @@ export default function Footer() {
           <div>
             <h3 className="text-vibrant-yellow font-bold text-xl mb-4">inspir</h3>
             <p className="text-gray-300 text-sm">
-              Generate AI quizzes from any topic or your notes. Built for active recall.
+              An AI study toolkit for active learning: quizzes, explanations, notes, citations, focus tools, and progress tracking.
             </p>
             <div className="mt-4 flex flex-wrap gap-2 text-xs">
-              <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Guest Mode</span>
-              <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Shareable Quizzes</span>
-              <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Study Tools</span>
+              <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Quizzes</span>
+              <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Doubt Solver</span>
+              <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Study Timer</span>
+              <span className="px-2 py-1 rounded-full bg-white/10 text-gray-200">Notes</span>
             </div>
           </div>
 
@@ -99,7 +100,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; {currentYear} inspir. All rights reserved. | Study smarter with active recall.</p>
+          <p>&copy; {currentYear} inspir. All rights reserved. | Study smarter with active learning.</p>
         </div>
       </div>
     </footer>

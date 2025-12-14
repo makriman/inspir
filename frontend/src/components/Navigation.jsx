@@ -6,6 +6,7 @@ export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user } = useAuth();
   const navLinks = [
+    { to: '/quiz', label: 'Quiz Generator' },
     { to: '/chat', label: 'AI Chat' },
     { to: '/doubt', label: 'Doubt Solver' },
     { to: '/how-it-works', label: 'How It Works' },

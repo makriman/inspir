@@ -125,13 +125,13 @@ export default function Blog() {
           <div className="mt-16 bg-gradient-to-r from-purple-dark via-purple-darker to-deep-blue text-white rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Put These Tips Into Practice?</h2>
             <p className="text-xl text-purple-100 mb-6 max-w-2xl mx-auto">
-              Generate your first quiz and start learning more effectively today
+              Build a simple study system: focus, learn, test yourself, fix gaps, repeat.
             </p>
             <Link
-              to="/"
+              to="/how-it-works"
               className="inline-block bg-gradient-to-r from-coral-red to-red-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all"
             >
-              Create a Quiz Now →
+              Explore The Toolkit →
             </Link>
           </div>
         </div>

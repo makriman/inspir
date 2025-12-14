@@ -7,272 +7,118 @@ export default function HowItWorks() {
     <>
       <Navigation />
       <main className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
-        {/* Hero Section */}
+        {/* Hero */}
         <div className="bg-gradient-to-r from-purple-dark to-purple-darker text-white py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              How inspir Works
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">How inspir Works</h1>
             <p className="text-xl md:text-2xl text-purple-100">
-              From topic to quiz in under 30 seconds
+              Pick a tool → paste notes or ask a question → learn with active recall
             </p>
           </div>
         </div>
 
         <div className="max-w-4xl mx-auto px-4 py-12">
           <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-8">
-            <p className="text-xl text-gray-700 mb-8 text-center">
-              Creating a quiz with inspir is simple. Here’s exactly how it works.
+            <p className="text-xl text-gray-700 mb-10 text-center">
+              inspir is an AI study toolkit. Quizzes are one part of it — you can also get step-by-step explanations, generate
+              Cornell notes, create citations, run focused timer sessions, and build consistency.
             </p>
 
-            {/* Step 1 */}
-            <section className="mb-16">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-dark to-coral-red rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  1
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-deep-blue mb-3">Tell Us What to Quiz You On</h2>
-                  <p className="text-lg text-gray-700 mb-4">
-                    This is the ONLY required step. Just type what you want to be quizzed on:
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-xl border-l-4 border-purple-dark mb-6">
-                <h3 className="font-semibold text-deep-blue mb-3 text-lg">Example topics:</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="mr-2">📚</span>
-                    <span>"World War 2" - Get questions about causes, battles, consequences</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">🧬</span>
-                    <span>"Photosynthesis" - Understand how plants convert light to energy</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">💻</span>
-                    <span>"Python Programming" - Test your coding knowledge</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">🌍</span>
-                    <span>"Climate Change" - Quiz yourself on environmental science</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">🎨</span>
-                    <span>"Renaissance Art" - Learn about art history</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-vibrant-yellow bg-opacity-10 border border-vibrant-yellow p-5 rounded-lg">
-                <p className="text-gray-800 font-medium">
-                  ⚡ <strong>That's it!</strong> You can generate a quiz with just a topic. The AI will create thought-provoking questions based on its general knowledge. Click "Generate Quiz" and you're done!
-                </p>
-              </div>
-            </section>
-
-            {/* Step 2 - Optional */}
-            <section className="mb-16">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  2
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-deep-blue mb-2">
-                    Add Your Notes <span className="text-gray-500 text-2xl font-normal">(Optional)</span>
-                  </h2>
-                  <p className="text-lg text-gray-700 mb-4">
-                    Want questions specific to YOUR study material? Upload your notes or paste your content.
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white border-2 border-purple-300 p-6 rounded-xl hover:shadow-md transition-shadow">
-                  <div className="text-4xl mb-3">📝</div>
-                  <h3 className="text-xl font-bold text-deep-blue mb-3">Paste Your Text</h3>
-                  <p className="text-gray-700 mb-3">
-                    Copy lecture notes, textbook chapters, study guides, or any educational content and paste it in.
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Perfect for: Digital notes, online articles, copy-pasted sections from PDFs
-                  </p>
-                </div>
-
-                <div className="bg-white border-2 border-purple-300 p-6 rounded-xl hover:shadow-md transition-shadow">
-                  <div className="text-4xl mb-3">📁</div>
-                  <h3 className="text-xl font-bold text-deep-blue mb-3">Upload Documents</h3>
-                  <p className="text-gray-700 mb-3">
-                    Drag and drop your study files. We support TXT and DOCX files up to 10MB.
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Perfect for: Organized study materials, class handouts, lecture notes saved as files
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-6 bg-blue-50 border border-blue-200 p-5 rounded-lg">
-                <p className="text-gray-800">
-                  💡 <strong>Pro tip for students:</strong> Upload your class notes or paste textbook sections to get quiz questions tailored specifically to your course material. It's like having a personal tutor who knows exactly what you're studying!
-                </p>
-              </div>
-            </section>
-
-            {/* Step 3 */}
-            <section className="mb-16">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-dark to-coral-red rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  3
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-deep-blue mb-3">We Generate Your Quiz</h2>
-                  <p className="text-lg text-gray-700">
-                    Click "Generate Quiz" and watch the magic happen. In 10-20 seconds, you'll have a complete quiz ready.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-purple-dark to-purple-darker text-white p-8 rounded-xl mb-6">
-                <h3 className="text-2xl font-bold mb-4">What Makes Our Quizzes Different?</h3>
-                <p className="mb-4 text-purple-100">
-                  We don't just create boring, factual recall questions. Our AI generates thought-provoking questions that test <strong>deep understanding</strong>.
-                </p>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="bg-white bg-opacity-10 p-4 rounded-lg">
-                    <div className="text-red-300 font-bold mb-2">❌ Simple Recall (Boring)</div>
-                    <p className="text-sm text-purple-100">"Who is the Prime Minister of India?"</p>
-                  </div>
-                  <div className="bg-vibrant-yellow bg-opacity-20 p-4 rounded-lg border border-vibrant-yellow">
-                    <div className="text-vibrant-yellow font-bold mb-2">✅ Thought-Provoking (Interesting)</div>
-                    <p className="text-sm text-white">"Who is the person with a history as a chai seller who rose to the highest political position in India?"</p>
-                  </div>
-
-                  <div className="bg-white bg-opacity-10 p-4 rounded-lg">
-                    <div className="text-red-300 font-bold mb-2">❌ Simple Fact</div>
-                    <p className="text-sm text-purple-100">"When did World War 2 end?"</p>
-                  </div>
-                  <div className="bg-vibrant-yellow bg-opacity-20 p-4 rounded-lg border border-vibrant-yellow">
-                    <div className="text-vibrant-yellow font-bold mb-2">✅ Deep Understanding</div>
-                    <p className="text-sm text-white">"What strategic decision made in 1945 fundamentally changed warfare and international relations?"</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-dark">
-                  <h4 className="font-bold text-deep-blue mb-3 text-lg">5 Multiple Choice Questions</h4>
-                  <p className="text-gray-700 text-sm mb-3">
-                    All four answer options are carefully crafted to be plausible. No obviously wrong answers that waste your time.
-                  </p>
-                  <p className="text-gray-700 text-sm">
-                    These test your understanding of concepts, not just your ability to recognize keywords.
-                  </p>
-                </div>
-
-                <div className="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-dark">
-                  <h4 className="font-bold text-deep-blue mb-3 text-lg">5 Open-Ended Questions</h4>
-                  <p className="text-gray-700 text-sm mb-3">
-                    "Why", "How", "Explain", and "Analyze" questions that require you to think deeply and articulate your understanding.
-                  </p>
-                  <p className="text-gray-700 text-sm">
-                    These are the questions that actually help you learn and retain information.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Step 4 */}
-            <section className="mb-16">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-dark to-coral-red rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  4
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-deep-blue mb-3">Take Your Quiz</h2>
-                  <p className="text-lg text-gray-700">
-                    Work through the questions at your own pace. No timers, no pressure.
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-gray-50 p-6 rounded-xl">
-                <ul className="space-y-3 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="mr-3 text-purple-dark">✓</span>
-                    <span>For multiple choice: Select the best answer</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3 text-purple-dark">✓</span>
-                    <span>For open-ended: Type your response in the text area</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3 text-purple-dark">✓</span>
-                    <span>Navigate between questions using Previous/Next buttons</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3 text-purple-dark">✓</span>
-                    <span>See your progress with the visual indicator at the top</span>
-                  </li>
-                </ul>
-              </div>
-            </section>
-
-            {/* Step 5 */}
             <section className="mb-12">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-dark to-coral-red rounded-full flex items-center justify-center text-white font-bold text-xl">
-                  5
-                </div>
-                <div>
-                  <h2 className="text-3xl font-bold text-deep-blue mb-3">Get Your Results & Learn</h2>
-                  <p className="text-lg text-gray-700">
-                    Submit your quiz and see how you did. More importantly, understand what you got wrong.
+              <h2 className="text-3xl font-bold text-deep-blue mb-4">1) Pick a workflow</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                  <h3 className="text-xl font-bold text-deep-blue mb-2">🧠 Active recall (quiz-first)</h3>
+                  <p className="text-gray-700 mb-3">
+                    Generate questions from a topic or your notes. Answer without looking. Review mistakes. Repeat tomorrow.
                   </p>
+                  <Link to="/quiz" className="text-purple-dark font-semibold hover:underline">Open Quiz Generator →</Link>
+                </div>
+                <div className="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                  <h3 className="text-xl font-bold text-deep-blue mb-2">🧩 Unblock a problem (doubt solving)</h3>
+                  <p className="text-gray-700 mb-3">
+                    Ask a question or upload a problem image and get a step-by-step explanation you can learn from.
+                  </p>
+                  <Link to="/doubt" className="text-purple-dark font-semibold hover:underline">Open Doubt Solver →</Link>
+                </div>
+                <div className="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                  <h3 className="text-xl font-bold text-deep-blue mb-2">🗒️ Notes that convert to memory</h3>
+                  <p className="text-gray-700 mb-3">
+                    Turn content into Cornell-style notes with cues and summaries so review becomes self-testing.
+                  </p>
+                  <Link to="/cornell-notes" className="text-purple-dark font-semibold hover:underline">Open Cornell Notes →</Link>
+                </div>
+                <div className="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                  <h3 className="text-xl font-bold text-deep-blue mb-2">⏱️ Focus sessions</h3>
+                  <p className="text-gray-700 mb-3">
+                    Run a Pomodoro timer, then end the session with a quiz or quick recall check to lock in learning.
+                  </p>
+                  <Link to="/study-timer" className="text-purple-dark font-semibold hover:underline">Open Study Timer →</Link>
                 </div>
               </div>
+            </section>
 
-              <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl border border-purple-200">
-                <p className="text-gray-700 mb-4">
-                  The AI will evaluate your answers - even the open-ended ones! You'll see:
-                </p>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="mr-2">📊</span>
-                    <span>Your overall score and percentage</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">✅</span>
-                    <span>Which questions you got right</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">📝</span>
-                    <span>The correct answers with explanations</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-2">🎯</span>
-                    <span>Where you need to review and study more</span>
-                  </li>
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold text-deep-blue mb-4">2) Use the right input</h2>
+              <div className="bg-white border border-gray-200 p-6 rounded-xl">
+                <ul className="space-y-3 text-gray-700">
+                  <li><strong>Topic:</strong> fastest way to start when you’re learning something broad.</li>
+                  <li><strong>Paste text:</strong> best for targeted quizzes and note generation from a specific section.</li>
+                  <li><strong>Upload notes:</strong> useful for longer materials (TXT/DOCX supported).</li>
+                  <li><strong>Image upload:</strong> perfect for homework problems in the Doubt Solver.</li>
                 </ul>
               </div>
             </section>
 
-            {/* CTA */}
-            <div className="bg-gradient-to-r from-purple-dark via-purple-darker to-deep-blue text-white rounded-2xl p-8 md:p-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Try It?</h2>
-              <p className="text-xl text-purple-100 mb-6 max-w-2xl mx-auto">
-                No signup required. No credit card. Just type a topic and see how it works.
-              </p>
+            <section className="mb-12">
+              <h2 className="text-3xl font-bold text-deep-blue mb-4">3) Learn in a loop (this is the secret)</h2>
+              <div className="bg-gradient-to-r from-purple-dark to-purple-darker text-white p-8 rounded-xl">
+                <p className="text-purple-100 mb-4">
+                  Tools don’t create learning — habits do. Use inspir to run a loop that builds memory:
+                </p>
+                <ol className="list-decimal pl-6 space-y-2">
+                  <li>Generate output (quiz / explanation / notes)</li>
+                  <li>Attempt from memory (don’t peek)</li>
+                  <li>Review mistakes and rewrite the “why”</li>
+                  <li>Repeat on a schedule (spaced repetition)</li>
+                </ol>
+              </div>
+            </section>
+
+            <section>
+              <h2 className="text-3xl font-bold text-deep-blue mb-4">Quick links</h2>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Link to="/citations" className="bg-white border border-gray-200 p-5 rounded-xl hover:shadow-md transition">
+                  <div className="font-bold text-deep-blue">Citation Generator</div>
+                  <div className="text-gray-700 text-sm">Generate citations and keep sources organized</div>
+                </Link>
+                <Link to="/forum" className="bg-white border border-gray-200 p-5 rounded-xl hover:shadow-md transition">
+                  <div className="font-bold text-deep-blue">Student Forum</div>
+                  <div className="text-gray-700 text-sm">Ask questions and learn with others</div>
+                </Link>
+              </div>
+            </section>
+          </div>
+
+          {/* CTA */}
+          <div className="bg-purple-gradient text-white rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Start with one tool</h2>
+            <p className="text-xl text-purple-100 mb-8">
+              Pick a workflow and do one focused session. That’s how the habit starts.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
-                to="/"
-                className="inline-block bg-gradient-to-r from-coral-red to-red-600 text-white px-10 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:scale-105 transition-all"
+                to="/quiz"
+                className="inline-block bg-coral-red text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg"
               >
-                Create Your First Quiz →
+                Try Quiz Generator →
               </Link>
-              <p className="mt-4 text-sm text-purple-200">
-                Takes less than 30 seconds. Seriously.
-              </p>
+              <Link
+                to="/doubt"
+                className="inline-block bg-white text-deep-blue px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition-all"
+              >
+                Use Doubt Solver →
+              </Link>
             </div>
           </div>
         </div>
@@ -281,3 +127,4 @@ export default function HowItWorks() {
     </>
   );
 }
+

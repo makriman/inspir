@@ -32,10 +32,10 @@ export default function HomePageGuest() {
             inspir
           </h1>
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-            The Only Study Toolkit You Need
+            The AI Study Toolkit
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            AI-powered tools for students who want to study smarter, not harder
+            Quizzes, step-by-step explanations, Cornell notes, citations, timers, and progress tools — in one place.
           </p>
         </div>
 
@@ -51,29 +51,29 @@ export default function HomePageGuest() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
           <button
-            onClick={() => navigate('/auth')}
+            onClick={() => {
+              document.getElementById('live-tools')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="w-full sm:w-auto px-8 py-4 bg-accent-red text-white font-bold text-lg rounded-xl hover:bg-red-600 transform hover:scale-105 transition-all duration-200 shadow-lg"
           >
-            Get Started Free
+            Explore Tools
           </button>
           <button
-            onClick={() => {
-              document.getElementById('all-tools')?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => navigate('/auth')}
             className="w-full sm:w-auto px-8 py-4 bg-white text-primary-blue font-bold text-lg rounded-xl border-2 border-primary-blue hover:bg-primary-blue hover:text-white transition-all duration-200"
           >
-            View All Tools
+            Create Account
           </button>
         </div>
 
         {/* Social Proof */}
         <p className="text-center text-sm text-gray-500">
-          Built for students, teachers, and self-learners
+          Built for students, teachers, and self-learners — focused on active recall.
         </p>
       </section>
 
       {/* Live Tools Showcase */}
-      <section className="max-w-7xl mx-auto px-4 py-16">
+      <section id="live-tools" className="max-w-7xl mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
             Start Learning Today
@@ -267,21 +267,29 @@ export default function HomePageGuest() {
         </div>
       </section>
 
-      {/* Final CTA */}
+        {/* Final CTA */}
       <section className="bg-gradient-to-r from-purple-light to-purple-dark py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to study smarter?
           </h2>
           <p className="text-lg text-white opacity-90 mb-8">
-            Start studying smarter today with inspir
+            Start with any tool — quizzes, explanations, notes, or a timer
           </p>
           <button
-            onClick={() => navigate('/auth')}
+            onClick={() => navigate('/quiz')}
             className="px-10 py-4 bg-accent-red text-white font-bold text-lg rounded-xl hover:bg-red-600 transform hover:scale-105 transition-all duration-200 shadow-xl"
           >
-            Sign Up Free
+            Try the Quiz Generator
           </button>
+          <div className="mt-4">
+            <button
+              onClick={() => navigate('/doubt')}
+              className="text-white font-semibold hover:underline"
+            >
+              Or use the Doubt Solver →
+            </button>
+          </div>
           <p className="text-white opacity-75 mt-4 text-sm">
             No credit card required • {liveTools.length} tools ready instantly
           </p>

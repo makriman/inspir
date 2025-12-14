@@ -7,19 +7,34 @@ import { logAuditEvent, AuditEventTypes, AuditActions, AuditStatus } from '../ut
 import { sanitizeSourceName, sanitizeContent, sanitizeAttemptName, sanitizeAnswers } from '../utils/sanitizer.js';
 
 export async function createQuiz(req, res) {
+  const requestId = randomUUID();
+  const startedAt = Date.now();
   try {
     const { content, sourceName } = req.body;
     const userId = req.user?.id;
 
+    console.log('[Quiz] Generate start', {
+      requestId,
+      userId: userId || 'guest',
+      hasFile: !!req.file,
+      contentChars: typeof content === 'string' ? content.length : 0
+    });
+
     // Sanitize inputs
     const sanitizedSourceName = sanitizeSourceName(sourceName);
     let textContent = content;
+    const uploadedFilePath = req.file?.path;
 
-    // If file was uploaded, process it
-    if (req.file) {
-      textContent = await processFile(req.file);
-      // Clean up uploaded file
-      await fs.unlink(req.file.path).catch(console.error);
+    try {
+      // If file was uploaded, process it
+      if (req.file) {
+        textContent = await processFile(req.file);
+      }
+    } finally {
+      // Always clean up uploaded file (even if processing fails)
+      if (uploadedFilePath) {
+        await fs.unlink(uploadedFilePath).catch(() => {});
+      }
     }
 
     // Sanitize content
@@ -45,7 +60,13 @@ export async function createQuiz(req, res) {
     }
 
     // Generate quiz using Claude
+    const llmStartedAt = Date.now();
     const quizData = await generateQuiz(textContent, sanitizedSourceName);
+    console.log('[Quiz] Generate completed', {
+      requestId,
+      durationMs: Date.now() - llmStartedAt,
+      questionCount: Array.isArray(quizData?.questions) ? quizData.questions.length : null
+    });
 
     // Save quiz to database if user is logged in
     if (userId) {
@@ -90,6 +111,12 @@ export async function createQuiz(req, res) {
 
     res.json(quizData);
   } catch (error) {
+    console.error('[Quiz] Generate failed', {
+      requestId,
+      durationMs: Date.now() - startedAt,
+      message: error?.message,
+      causeName: error?.cause?.name
+    });
     console.error('Error creating quiz:', error);
 
     // Log quiz creation failure
@@ -103,8 +130,14 @@ export async function createQuiz(req, res) {
       errorMessage: error.message
     });
 
-    res.status(500).json({
-      error: 'Failed to create quiz',
+    const causeName = error?.cause?.name;
+    const isTimeout =
+      causeName === 'APIConnectionTimeoutError' ||
+      causeName === 'AbortError' ||
+      /timeout/i.test(error?.message || '');
+
+    res.status(isTimeout ? 504 : 500).json({
+      error: isTimeout ? 'Quiz generation timed out' : 'Failed to create quiz',
       message: error.message
     });
   }

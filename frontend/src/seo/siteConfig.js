@@ -2,11 +2,14 @@ export const siteConfig = {
   siteName: 'inspir',
   baseUrl: 'https://quiz.inspir.uk',
   locale: 'en_US',
-  defaultTitle: 'inspir — AI Quiz Generator from Notes & Topics',
+  defaultTitle: 'inspir — AI Study Toolkit',
   titleTemplate: '%s | inspir',
   defaultDescription:
-    'Generate AI quizzes from any topic or your notes. Study with active recall using inspir.',
+    'An AI-powered study toolkit: quizzes, step-by-step explanations, Cornell notes, citations, timers, and progress tools — in one place.',
   defaultKeywords: [
+    'AI study tool',
+    'AI study assistant',
+    'AI tutor',
     'AI quiz generator',
     'quiz generator',
     'study tool',
@@ -15,6 +18,8 @@ export const siteConfig = {
     'quiz from notes',
     'exam prep',
     'learning tool',
+    'study timer',
+    'citation generator',
   ],
   defaultImagePath: '/og-image.jpg',
 };

@@ -2,6 +2,15 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
+function UseCaseCard({ title, children }) {
+  return (
+    <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
+      <h3 className="text-2xl font-semibold text-deep-blue mb-3">{title}</h3>
+      <div className="text-gray-700 space-y-3">{children}</div>
+    </div>
+  );
+}
+
 export default function UseCases() {
   return (
     <>
@@ -13,248 +22,121 @@ export default function UseCases() {
 
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-700 mb-8">
-                inspir works for anyone who needs to learn something or help others learn.
-                Here are the most common ways people actually use it.
+                inspir isn’t just a quiz generator anymore. It’s a toolkit you can combine into a study system: focus → learn → test → fix gaps → repeat.
+                Here are real workflows that fit different goals.
               </p>
 
               <section className="mb-12">
                 <h2 className="text-3xl font-bold text-deep-blue mb-6">For Students</h2>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Exam Preparation</h3>
-                  <p className="text-gray-700 mb-3">
-                    You've got three chapters to study for Friday's exam. Copy your lecture notes or textbook summaries
-                    into inspir and generate practice questions. Work through them, check your answers, identify
-                    what you don't understand yet, and review those sections.
+                <UseCaseCard title="Exam Prep That Actually Works">
+                  <p>
+                    Start with a focused session using the <Link to="/study-timer" className="text-purple-dark font-semibold hover:underline">Study Timer</Link>.
+                    Then use the <Link to="/quiz" className="text-purple-dark font-semibold hover:underline">Quiz Generator</Link> to test yourself from your notes.
                   </p>
-                  <p className="text-gray-700">
-                    Repeat until you can answer everything confidently. Active recall like this beats reading your
-                    notes for the fifth time.
+                  <p>
+                    Review what you missed, use the <Link to="/doubt" className="text-purple-dark font-semibold hover:underline">Doubt Solver</Link> to clarify weak spots,
+                    and repeat tomorrow. Track consistency with <Link to="/streaks" className="text-purple-dark font-semibold hover:underline">Study Streaks</Link>.
                   </p>
-                </div>
+                </UseCaseCard>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Understanding Complex Concepts</h3>
-                  <p className="text-gray-700 mb-3">
-                    Sometimes you read something in a textbook and think you get it, but you're not sure.
-                    Paste that section into inspir and take a quiz on it.
+                <UseCaseCard title="Understanding Hard Concepts (Not Just Memorizing)">
+                  <p>
+                    When a topic feels confusing, start with the <Link to="/doubt" className="text-purple-dark font-semibold hover:underline">Doubt Solver</Link> to get a
+                    step-by-step explanation in your own words.
                   </p>
-                  <p className="text-gray-700">
-                    If you struggle with the questions, you didn't actually understand it yet. Go back, re-read,
-                    and try again. The questions will show you exactly what you're missing.
+                  <p>
+                    Then generate a short quiz on the same section to prove you understand it. The quiz is your feedback loop.
                   </p>
-                </div>
+                </UseCaseCard>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Homework and Assignment Review</h3>
-                  <p className="text-gray-700 mb-3">
-                    Finished reading an assignment for class? Before moving on, turn it into a quiz to make sure
-                    you actually absorbed the information.
+                <UseCaseCard title="Assignments & Writing: Stay Organized and Cite Correctly">
+                  <p>
+                    Use <Link to="/cornell-notes" className="text-purple-dark font-semibold hover:underline">Cornell Notes</Link> to structure readings into cues and summaries,
+                    then keep sources clean with the <Link to="/citations" className="text-purple-dark font-semibold hover:underline">Citation Generator</Link>.
                   </p>
-                  <p className="text-gray-700">
-                    This is especially useful for subjects where you need to retain information long-term,
-                    not just for the next test. Medical students, law students, and anyone in technical fields
-                    find this incredibly helpful.
-                  </p>
-                </div>
+                </UseCaseCard>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Study Groups</h3>
-                  <p className="text-gray-700 mb-3">
-                    One person in your study group can create quizzes from your shared notes, then everyone
-                    takes the same quiz. Compare answers, discuss where you disagreed, and learn from each other.
+                <UseCaseCard title="Study Groups That Don’t Waste Time">
+                  <p>
+                    One person creates a quiz from shared notes, then shares it. Compare answers, discuss gaps, and post tricky questions in the{' '}
+                    <Link to="/forum" className="text-purple-dark font-semibold hover:underline">Student Forum</Link>.
                   </p>
-                  <p className="text-gray-700">
-                    Makes study sessions way more productive than just sitting around asking "Did you get this part?"
-                  </p>
-                </div>
+                </UseCaseCard>
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-6">For Teachers and Educators</h2>
+                <h2 className="text-3xl font-bold text-deep-blue mb-6">For Teachers &amp; Educators</h2>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Quick Formative Assessments</h3>
-                  <p className="text-gray-700 mb-3">
-                    You just taught a new concept. Upload your lesson plan or lecture notes to inspir,
-                    generate a quick 10-question assessment, and give it to your students at the end of class.
+                <UseCaseCard title="Quick Checks for Understanding (Exit Tickets)">
+                  <p>
+                    Turn lesson plans or readings into a fast formative quiz and share the link with students. It’s a simple way to spot misconceptions early,
+                    before they become exam-day surprises.
                   </p>
-                  <p className="text-gray-700">
-                    It takes 30 seconds to create and gives you immediate feedback on whether students actually
-                    understood what you just taught.
+                  <p>
+                    Tool: <Link to="/quiz" className="text-purple-dark font-semibold hover:underline">Quiz Generator</Link>.
                   </p>
-                </div>
+                </UseCaseCard>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Homework and Practice Problems</h3>
-                  <p className="text-gray-700 mb-3">
-                    Need to create homework assignments or practice problems? Generate questions from your
-                    curriculum materials, review them, tweak if needed, and assign them to your class.
+                <UseCaseCard title="Revision Packs Students Will Actually Use">
+                  <p>
+                    Create a structured summary with <Link to="/cornell-notes" className="text-purple-dark font-semibold hover:underline">Cornell Notes</Link>,
+                    then pair it with a quiz for retrieval practice. Students get a clear “what to know” and a way to test it.
                   </p>
-                  <p className="text-gray-700">
-                    You can even create multiple versions from the same content by regenerating quizzes,
-                    so students can't just copy each other's answers.
-                  </p>
-                </div>
+                </UseCaseCard>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Differentiated Learning</h3>
-                  <p className="text-gray-700 mb-3">
-                    Create quizzes from different sections of your material for students at different levels.
-                    Advanced students get questions from more complex content, students who need extra help
-                    get quizzes from foundational material.
+                <UseCaseCard title="A Supportive Learning Community">
+                  <p>
+                    Encourage students to ask and answer each other’s questions in the <Link to="/forum" className="text-purple-dark font-semibold hover:underline">Student Forum</Link>.
+                    The best revision often happens when students explain concepts to each other.
                   </p>
-                  <p className="text-gray-700">
-                    Everyone gets appropriately challenging practice without you spending hours writing
-                    multiple versions of everything.
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Flipped Classroom Prep</h3>
-                  <p className="text-gray-700 mb-3">
-                    If you're doing flipped classroom teaching, create quizzes from the reading materials
-                    students are supposed to review before class.
-                  </p>
-                  <p className="text-gray-700">
-                    They can self-test to make sure they're ready, and you can use the same quiz as a
-                    quick check at the start of class.
-                  </p>
-                </div>
+                </UseCaseCard>
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-6">For Self-Directed Learners</h2>
+                <h2 className="text-3xl font-bold text-deep-blue mb-6">For Self-Learners &amp; Professionals</h2>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Learning New Skills</h3>
-                  <p className="text-gray-700 mb-3">
-                    Teaching yourself to code? Learning a new language? Studying history for fun?
-                    As you work through tutorials, articles, or documentation, turn each section into a quiz.
+                <UseCaseCard title="Online Courses: Turn Videos into Real Knowledge">
+                  <p>
+                    Convert course notes into a quiz, then review weak areas with explanations. Add focused sessions with the{' '}
+                    <Link to="/study-timer" className="text-purple-dark font-semibold hover:underline">Study Timer</Link> so your learning is consistent, not random.
                   </p>
-                  <p className="text-gray-700">
-                    This forces you to actually process what you're reading instead of just passively consuming
-                    content. You'll learn faster and remember more.
-                  </p>
-                </div>
+                </UseCaseCard>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Book Reading and Retention</h3>
-                  <p className="text-gray-700 mb-3">
-                    Reading non-fiction books but finding you forget everything a week later? After each chapter,
-                    summarize the key points in a few paragraphs and turn it into a quiz.
+                <UseCaseCard title="Certification Prep When Time Is Limited">
+                  <p>
+                    Use short daily sessions, track consistency with <Link to="/streaks" className="text-purple-dark font-semibold hover:underline">Study Streaks</Link>, and
+                    keep your practice measurable with quizzes. The aim is steady progress, not marathon cramming.
                   </p>
-                  <p className="text-gray-700">
-                    The act of creating that summary plus taking the quiz massively improves retention.
-                    Come back and retake the quiz a month later for spaced repetition.
-                  </p>
-                </div>
+                </UseCaseCard>
 
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Online Course Supplements</h3>
-                  <p className="text-gray-700 mb-3">
-                    Taking an online course? Most platforms have quizzes, but they're often pretty basic.
-                    Copy the course transcript or your notes and create your own quizzes with more thought-provoking questions.
+                <UseCaseCard title="Reading Papers and Reports Without Re-Reading Forever">
+                  <p>
+                    Structure key points with <Link to="/cornell-notes" className="text-purple-dark font-semibold hover:underline">Cornell Notes</Link>, keep sources tidy with{' '}
+                    <Link to="/citations" className="text-purple-dark font-semibold hover:underline">Citations</Link>, then quiz yourself on methods, results, and implications.
                   </p>
-                  <p className="text-gray-700">
-                    This is particularly useful for courses that are heavy on video content but light on practice problems.
-                  </p>
-                </div>
-              </section>
-
-              <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-6">For Professionals and Workplace Learning</h2>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Certification Exam Prep</h3>
-                  <p className="text-gray-700 mb-3">
-                    Studying for a professional certification? Upload study guides, create quizzes from each section,
-                    and work through them systematically.
-                  </p>
-                  <p className="text-gray-700">
-                    Track which areas you're strong in and which need more work. Focus your study time where it matters most.
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Training New Employees</h3>
-                  <p className="text-gray-700 mb-3">
-                    Creating training materials for new hires? Turn your documentation, process guides, or training
-                    manuals into quizzes. New employees can self-test to ensure they've understood everything.
-                  </p>
-                  <p className="text-gray-700">
-                    This is way more effective than just having them read documents and hoping they absorbed it all.
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Knowledge Retention</h3>
-                  <p className="text-gray-700 mb-3">
-                    Need to stay current in your field but find you forget things quickly? After reading industry
-                    articles, whitepapers, or reports, turn key sections into quizzes.
-                  </p>
-                  <p className="text-gray-700">
-                    Review them periodically to keep that knowledge fresh. This is especially useful in fast-moving
-                    fields like technology or finance.
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Compliance Training</h3>
-                  <p className="text-gray-700 mb-3">
-                    If your organization has compliance requirements, create quizzes from your compliance documentation.
-                    Employees can use them to verify they understand the policies.
-                  </p>
-                  <p className="text-gray-700">
-                    Much more engaging than just reading policy documents, and you get built-in verification
-                    that people actually get it.
-                  </p>
-                </div>
-              </section>
-
-              <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-6">For Parents and Homeschoolers</h2>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Homeschool Assessments</h3>
-                  <p className="text-gray-700 mb-3">
-                    Homeschooling your kids? Create quizzes from their textbooks or curriculum materials to assess
-                    what they've learned. It's like having instant formative assessments without spending hours
-                    creating test questions.
-                  </p>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow-sm">
-                  <h3 className="text-2xl font-semibold text-deep-blue mb-3">Helping with Homework</h3>
-                  <p className="text-gray-700 mb-3">
-                    When your kid is studying for a test, help them by creating practice quizzes from their study materials.
-                    They can take the quiz, and you can review the answers together to see what they need to work on.
-                  </p>
-                  <p className="text-gray-700">
-                    Way more productive than the classic "Do you want me to quiz you?" approach where you're just reading
-                    questions verbatim from their notes.
-                  </p>
-                </div>
-              </section>
-
-              <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">The Common Thread</h2>
-                <p className="text-gray-700 mb-4">
-                  All these use cases share the same principle: testing yourself is one of the most effective ways to learn.
-                  Reading something once doesn't mean you've learned it. Being able to answer questions about it—especially
-                  questions that require you to think and apply what you've read—that's when learning actually happens.
-                </p>
-                <p className="text-gray-700">
-                  inspir makes it easy to create those tests so you can focus on the actual learning part.
-                </p>
+                </UseCaseCard>
               </section>
 
               <div className="bg-purple-gradient text-white rounded-lg p-8 text-center">
-                <h2 className="text-2xl font-bold mb-4">What Will You Use It For?</h2>
-                <p className="mb-6">Whether you're cramming for finals or mastering a new skill, inspir is ready to help.</p>
-                <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-                  Start Creating Quizzes
-                </Link>
+                <h2 className="text-2xl font-bold mb-4">Pick One Workflow and Start</h2>
+                <p className="mb-6">
+                  Don’t try to do everything at once. Start with one tool, then connect them into a system.
+                </p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Link
+                    to="/how-it-works"
+                    className="inline-block bg-white text-deep-blue px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all"
+                  >
+                    How It Works
+                  </Link>
+                  <Link
+                    to="/quiz"
+                    className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all"
+                  >
+                    Try Quiz Generator
+                  </Link>
+                </div>
               </div>
             </div>
           </article>

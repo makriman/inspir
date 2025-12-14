@@ -13,106 +13,90 @@ export default function About() {
 
             <div className="prose prose-lg max-w-none">
               <p className="text-xl text-gray-700 mb-8">
-                We built inspir because studying shouldn’t be passive — and creating good practice questions shouldn’t take hours.
+                inspir began as a simple idea: studying shouldn’t be passive, and creating good practice questions shouldn’t take hours.
+                We started with quizzes. We’ve evolved into a complete AI study toolkit.
               </p>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">The Problem We're Solving</h2>
+                <h2 className="text-3xl font-bold text-deep-blue mb-4">What inspir Is Now</h2>
                 <p className="text-gray-700 mb-4">
-                  If you've ever tried to study for an exam, you know the struggle. You've got pages and pages of notes,
-                  textbook chapters you're supposed to "review," and somehow you're expected to remember all of it.
-                  Flashcards help, but making them takes forever. Practice tests would be great, but where do you even start?
+                  The best learning loop is simple: focus, learn, test yourself, fix gaps, repeat. inspir is built to support that loop end-to-end.
                 </p>
-                <p className="text-gray-700 mb-4">
-                  Teachers face the same issue from the other side. Creating good quiz questions that actually test understanding
-                  (not just memorization) is genuinely hard work. It can take hours to write a quality 10-question quiz that
-                  covers the material properly.
-                </p>
-                <p className="text-gray-700">
-                  We thought: what if you could just paste your notes or upload your study materials and get a thoughtful,
-                  well-designed quiz in seconds? That’s inspir.
-                </p>
-              </section>
-
-              <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">How It Actually Works</h2>
-                <p className="text-gray-700 mb-4">
-                  inspir uses AI (Claude) to read your content and generate quiz questions that test real understanding.
-                  Not just "what year did X happen" questions, but questions that make you think about why things matter and how concepts connect.
-                </p>
-                <p className="text-gray-700 mb-4">
-                  The AI creates a mix of multiple choice questions (to test specific knowledge) and open-ended questions
-                  (to test deeper understanding). It's designed to generate the kind of questions that actually help you learn,
-                  not just regurgitate facts.
-                </p>
-              </section>
-
-              <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">Who This Is For</h2>
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Students</h3>
+                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Active Learning</h3>
                     <p className="text-gray-700">
-                      Turn your lecture notes, textbook chapters, or study guides into practice quizzes.
-                      Perfect for exam prep, homework review, or just making sure you actually understand the material.
+                      Use the <Link to="/quiz" className="text-purple-dark font-semibold hover:underline">Quiz Generator</Link> to turn topics or notes into practice,
+                      and make retrieval practice a habit—not a last-minute panic.
                     </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Teachers</h3>
+                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Step-by-Step Help</h3>
                     <p className="text-gray-700">
-                      Create assessments from your lesson plans, reading materials, or curriculum documents in minutes instead of hours.
-                      Spend less time writing quizzes, more time teaching.
+                      Use the <Link to="/doubt" className="text-purple-dark font-semibold hover:underline">Doubt Solver</Link> when you’re stuck, then go back to practice
+                      so the concept actually sticks.
                     </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Self-Learners</h3>
+                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Structure &amp; Organization</h3>
                     <p className="text-gray-700">
-                      Learning something new on your own? Create quizzes from articles, tutorials, or documentation
-                      to actually test whether you're getting it. Active recall beats passive reading every time.
+                      Create cue-based revision using <Link to="/cornell-notes" className="text-purple-dark font-semibold hover:underline">Cornell Notes</Link>, and keep
+                      your writing workflow clean with the <Link to="/citations" className="text-purple-dark font-semibold hover:underline">Citation Generator</Link>.
                     </p>
                   </div>
                   <div className="bg-white p-6 rounded-lg shadow-sm">
-                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Professionals</h3>
+                    <h3 className="text-xl font-semibold text-deep-blue mb-3">Focus &amp; Consistency</h3>
                     <p className="text-gray-700">
-                      Preparing for certifications, training new team members, or brushing up on industry knowledge?
-                      Turn your training materials into effective quizzes that ensure the information sticks.
+                      Stay on track with the <Link to="/study-timer" className="text-purple-dark font-semibold hover:underline">Study Timer</Link> and build momentum with{' '}
+                      <Link to="/streaks" className="text-purple-dark font-semibold hover:underline">Study Streaks</Link>. Learn with others in the{' '}
+                      <Link to="/forum" className="text-purple-dark font-semibold hover:underline">Student Forum</Link>.
                     </p>
                   </div>
                 </div>
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">Why We Keep Signup Minimal</h2>
+                <h2 className="text-3xl font-bold text-deep-blue mb-4">What We Believe About Learning</h2>
                 <p className="text-gray-700 mb-4">
-                  You might notice we don't ask for your email during signup. That's intentional. We only store your username
-                  and password so you can save your quizzes and use account features.
+                  Most people “study” by re-reading, highlighting, or passively watching videos. It feels productive—but it doesn’t reliably build memory.
                 </p>
-                <p className="text-gray-700 mb-4">
-                  We’re focused on learning outcomes, not building a marketing database. If you forget your password, recovery
-                  options are limited—use a password manager if you create an account.
-                  For details on data handling, see our <Link to="/privacy" className="text-purple-dark font-semibold hover:underline">Privacy Policy</Link>.
+                <p className="text-gray-700">
+                  inspir is designed around active learning: retrieval practice (testing yourself), spaced review, and focused sessions. The goal isn’t more time studying.
+                  It’s more learning per minute.
                 </p>
               </section>
 
               <section className="mb-12">
-                <h2 className="text-3xl font-bold text-deep-blue mb-4">The Mission</h2>
+                <h2 className="text-3xl font-bold text-deep-blue mb-4">Privacy, By Design</h2>
                 <p className="text-gray-700 mb-4">
-                  Learning should be active, not passive. Reading something once doesn't mean you've learned it.
-                  Testing yourself, struggling with questions, and engaging with the material—that's how actual learning happens.
+                  We keep signup minimal (no email required). You can try inspir without an account, and create one if you want saved history or personalization.
                 </p>
                 <p className="text-gray-700">
-                  inspir exists to make that kind of active learning easy. We want to lower the barrier between
-                  "I should study this" and actually testing your understanding. If we can make studying less painful
-                  and more effective, we've done our job.
+                  For details on data handling, see our{' '}
+                  <Link to="/privacy" className="text-purple-dark font-semibold hover:underline">
+                    Privacy Policy
+                  </Link>
+                  .
                 </p>
               </section>
 
               <div className="bg-purple-gradient text-white rounded-lg p-8 text-center">
-                <h2 className="text-2xl font-bold mb-4">Ready to Try It?</h2>
-                <p className="mb-6">Create your first quiz in under a minute. No credit card, no lengthy signup.</p>
-                <Link to="/" className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all">
-                  Create a Quiz
-                </Link>
+                <h2 className="text-2xl font-bold mb-4">Build Your Study System</h2>
+                <p className="mb-6">Start with one tool today, then connect them into a workflow that fits you.</p>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Link
+                    to="/how-it-works"
+                    className="inline-block bg-white text-deep-blue px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all"
+                  >
+                    How It Works
+                  </Link>
+                  <Link
+                    to="/quiz"
+                    className="inline-block bg-coral-red text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all"
+                  >
+                    Try Quiz Generator
+                  </Link>
+                </div>
               </div>
             </div>
           </article>

@@ -8,18 +8,26 @@ function faqJsonLd() {
     mainEntity: [
       {
         '@type': 'Question',
-        name: 'Is inspir free to use?',
+        name: 'What is inspir?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'inspir is free to use. You can generate quizzes as a guest, and you can create an account to save quizzes and track progress.',
+          text: 'inspir is an AI-powered study toolkit with quizzes, step-by-step explanations, Cornell notes, citations, focus tools, and progress tracking.',
         },
       },
       {
         '@type': 'Question',
-        name: 'Do I need an account to create a quiz?',
+        name: 'Is inspir free?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'No. You can generate quizzes as a guest. An account is only needed for features like saving, history, or personalization.',
+          text: 'inspir is currently free to use. You can try tools as a guest and create an account to save work and access account-based features.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I need an account?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No. Guest mode is available for quick sessions. Create an account if you want saved items, history, or tools that require a signed-in session.',
         },
       },
       {
@@ -32,26 +40,18 @@ function faqJsonLd() {
       },
       {
         '@type': 'Question',
-        name: 'How many questions are generated?',
+        name: 'Can I share quizzes or explanations?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'A standard inspir quiz contains 10 questions: a mix of multiple choice and open-ended questions designed to test understanding.',
+          text: 'Yes. inspir supports shareable links so you can send a quiz or a shared doubt/explanation to classmates or friends.',
         },
       },
       {
         '@type': 'Question',
-        name: 'Can I share a quiz with friends or classmates?',
+        name: 'How accurate is the AI?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Yes. You can generate a shareable link so others can take the same quiz from any device.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Do you store the notes I upload?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Your notes are processed to generate questions. Saved quizzes store generated questions and answers; they don’t need to permanently store your raw notes to be useful.',
+          text: 'AI can make mistakes. Use inspir as a study accelerator, not a single source of truth. When it matters, verify against your course materials or reputable sources.',
         },
       },
     ],
@@ -93,9 +93,9 @@ function articleJsonLd({ slug, title, description, lastModified }) {
 const STATIC_ROUTES = [
   {
     pattern: '/',
-    title: 'AI Quiz Generator from Notes & Topics',
+    title: 'AI Study Toolkit for Students',
     description:
-      'Generate AI quizzes from any topic or your notes. Study with active recall using inspir.',
+      'An AI-powered study toolkit: quizzes, step-by-step explanations, Cornell notes, citations, timers, streaks, and a student forum — in one place.',
     canonicalPath: '/',
     robots: 'index, follow',
   },
@@ -103,7 +103,7 @@ const STATIC_ROUTES = [
     pattern: '/how-it-works',
     title: 'How It Works',
     description:
-      'See how inspir turns a topic or your notes into a quiz in seconds — and why retrieval practice improves retention.',
+      'Learn the inspir workflow: focus → learn → test yourself → fix gaps. See how the toolkit supports active learning and better retention.',
     canonicalPath: '/how-it-works',
   },
   {
@@ -117,13 +117,13 @@ const STATIC_ROUTES = [
     pattern: '/use-cases',
     title: 'Use Cases',
     description:
-      'Real ways students, teachers, and self-learners use inspir for exam prep, lessons, active recall, and long-term retention.',
+      'Real workflows for students, teachers, and self-learners: exam prep, clarification, revision systems, writing, focus sessions, and progress tracking.',
     canonicalPath: '/use-cases',
   },
   {
     pattern: '/faq',
     title: 'FAQ',
-    description: 'Answers to common questions about inspir, quiz generation, uploading notes, accounts, and sharing.',
+    description: 'Answers to common questions about inspir: the study toolkit, pricing, accounts, sharing, AI accuracy, and privacy.',
     canonicalPath: '/faq',
     jsonLd: faqJsonLd(),
   },
@@ -131,21 +131,21 @@ const STATIC_ROUTES = [
     pattern: '/about',
     title: 'About',
     description:
-      'Why inspir exists: make active recall and good self-testing effortless for students, teachers, and lifelong learners.',
+      'inspir started as a quiz generator. Now it’s an AI study toolkit built around active learning: practice, clarity, focus, and consistency.',
     canonicalPath: '/about',
   },
   {
     pattern: '/blog',
     title: 'Blog',
     description:
-      'Evidence-based study strategies, learning science, and practical guides for active recall, exam prep, and studying from notes.',
+      'Evidence-based study strategies, learning science, and practical workflows for active learning with inspir.',
     canonicalPath: '/blog',
   },
   {
     pattern: '/study-timer',
     title: 'Study Timer',
     description:
-      'A simple Pomodoro study timer to stay focused. Pair it with quizzes for active recall sessions that actually build memory.',
+      'A simple Pomodoro-style study timer to stay focused. Pair it with quizzes and explanations to build a repeatable learning loop.',
     canonicalPath: '/study-timer',
   },
   {
@@ -231,7 +231,7 @@ export function resolveRouteSeo(pathname) {
 
   return {
     title: 'Page Not Found',
-    description: 'This page does not exist. Explore inspir to generate quizzes and study smarter with active recall.',
+    description: 'This page does not exist. Explore inspir to build your study system with quizzes, explanations, focus tools, and more.',
     canonicalPath: pathname,
     robots: 'noindex, follow',
   };

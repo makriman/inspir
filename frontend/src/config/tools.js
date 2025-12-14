@@ -30,7 +30,7 @@ export const tools = [
     description: 'Focus-optimized Pomodoro timer with custom intervals',
     category: 'Focus & Productivity',
     status: 'live',
-    route: '/timer',
+    route: '/study-timer',
     keywords: ['timer', 'pomodoro', 'focus', 'productivity', 'session']
   },
   {
@@ -40,7 +40,7 @@ export const tools = [
     description: 'Calculate grades, predict scores, and plan your semester',
     category: 'Organization',
     status: 'live',
-    route: '/grades',
+    route: '/grade-calculator',
     keywords: ['grade', 'calculator', 'gpa', 'score', 'predict', 'semester']
   },
   {

@@ -51,6 +51,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '0.0.0.0';
 
+// Trust the first proxy so req.ip is derived correctly when behind a reverse proxy (e.g. Nginx/Cloudflare),
+// and to prevent express-rate-limit from throwing ERR_ERL_UNEXPECTED_X_FORWARDED_FOR.
+if (process.env.TRUST_PROXY !== 'false') {
+  app.set('trust proxy', 1);
+}
+
 // CORS configuration - only allow requests from frontend
 const allowedOrigins = [
   process.env.FRONTEND_URL,

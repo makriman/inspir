@@ -22,6 +22,8 @@ import Terms from './pages/Terms';
 import Blog from './pages/Blog';
 
 // Blog Articles
+import AIStudyToolkit from './pages/blog/AIStudyToolkit';
+import StudyStreaksHabits from './pages/blog/StudyStreaksHabits';
 import StudentsExamPrep from './pages/blog/StudentsExamPrep';
 import TeachersLessonPlans from './pages/blog/TeachersLessonPlans';
 import StudySmarterNotes from './pages/blog/StudySmarterNotes';
@@ -95,6 +97,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/quiz" element={<UploadInterface />} />
+          <Route path="/quiz/play" element={<Quiz />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/results" element={<Results />} />
           <Route
@@ -161,6 +164,8 @@ function App() {
           />
 
           {/* Blog Articles */}
+          <Route path="/blog/ai-study-toolkit" element={<AIStudyToolkit />} />
+          <Route path="/blog/study-streaks-habits" element={<StudyStreaksHabits />} />
           <Route path="/blog/students-exam-prep" element={<StudentsExamPrep />} />
           <Route path="/blog/teachers-lesson-plans" element={<TeachersLessonPlans />} />
           <Route path="/blog/study-smarter-notes" element={<StudySmarterNotes />} />

@@ -31,16 +31,16 @@ export default function BlogLayout({
                 <p className="text-sm text-gray-500">{updated}</p>
                 <div className="flex flex-wrap gap-3">
                   <Link
-                    to="/"
+                    to="/quiz"
                     className="bg-coral-red text-white px-4 py-2 rounded-xl font-semibold shadow-md hover:scale-[1.01] transition-transform"
                   >
-                    Generate a Quiz
+                    Try Quiz Generator
                   </Link>
                   <Link
-                    to="/study-timer"
+                    to="/doubt"
                     className="bg-white text-deep-blue border border-gray-200 px-4 py-2 rounded-xl font-semibold shadow-sm hover:bg-gray-50 transition"
                   >
-                    Open Study Timer
+                    Use Doubt Solver
                   </Link>
                 </div>
               </div>
@@ -63,14 +63,14 @@ export default function BlogLayout({
             <div className="mt-10 p-6 rounded-2xl bg-gradient-to-r from-purple-100 to-blue-100 border border-purple-200">
               <h3 className="text-xl font-bold text-deep-blue mb-2">Try inspir for your next study session</h3>
               <p className="text-gray-700 mb-4">
-                Turn any set of notes into a 10-question quiz in seconds, then stay on track with the Pomodoro Study Timer.
+                Use the loop: focus → learn → test → fix gaps. Start with a quiz for retrieval practice or a doubt for step-by-step clarity.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/" className="bg-coral-red text-white px-5 py-3 rounded-xl font-semibold shadow hover:scale-[1.01] transition-transform">
-                  Generate a Quiz
+                <Link to="/quiz" className="bg-coral-red text-white px-5 py-3 rounded-xl font-semibold shadow hover:scale-[1.01] transition-transform">
+                  Try Quiz Generator
                 </Link>
-                <Link to="/study-timer" className="bg-white border border-purple-200 text-deep-blue px-5 py-3 rounded-xl font-semibold hover:bg-purple-50 transition">
-                  Open Study Timer
+                <Link to="/doubt" className="bg-white border border-purple-200 text-deep-blue px-5 py-3 rounded-xl font-semibold hover:bg-purple-50 transition">
+                  Use Doubt Solver
                 </Link>
               </div>
             </div>

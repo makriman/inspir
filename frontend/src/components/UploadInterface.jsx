@@ -142,12 +142,18 @@ export default function UploadInterface() {
 
       const response = await axios.post(`${API_URL}/quiz/generate`, formData, {
         headers,
+        timeout: 120000,
       });
 
       // Navigate to quiz page with generated quiz data
-      navigate('/quiz', { state: { quizData: response.data } });
+      navigate('/quiz/play', { state: { quizData: response.data } });
     } catch (err) {
-      setError(err.response?.data?.error || 'Failed to generate quiz. Please try again.');
+      const isTimeout = err?.code === 'ECONNABORTED' || /timeout/i.test(err?.message || '');
+      setError(
+        isTimeout
+          ? 'Quiz generation is taking longer than expected. Please try again.'
+          : (err.response?.data?.error || 'Failed to generate quiz. Please try again.')
+      );
       setLoading(false);
     }
   };

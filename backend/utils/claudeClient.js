@@ -3,8 +3,13 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const DEFAULT_TIMEOUT_MS = Number.parseInt(process.env.ANTHROPIC_TIMEOUT_MS || '', 10) || 90_000;
+const MAX_RETRIES = Number.parseInt(process.env.ANTHROPIC_MAX_RETRIES || '', 10);
+
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
+  timeout: DEFAULT_TIMEOUT_MS,
+  ...(Number.isFinite(MAX_RETRIES) ? { maxRetries: MAX_RETRIES } : {}),
 });
 
 export async function generateQuiz(content, topicName = null) {
@@ -115,6 +120,8 @@ Remember: Return ONLY the JSON object, no additional text or explanation.`;
           content: prompt
         }
       ]
+    }, {
+      timeout: Number.parseInt(process.env.ANTHROPIC_QUIZ_TIMEOUT_MS || '', 10) || DEFAULT_TIMEOUT_MS
     });
 
     const responseText = message.content[0].text;
@@ -135,7 +142,7 @@ Remember: Return ONLY the JSON object, no additional text or explanation.`;
     return quizData;
   } catch (error) {
     console.error('Error generating quiz:', error);
-    throw new Error(`Failed to generate quiz: ${error.message}`);
+    throw new Error(`Failed to generate quiz: ${error.message}`, { cause: error });
   }
 }
 

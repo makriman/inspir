@@ -1,5 +1,25 @@
 export const blogPosts = [
   {
+    slug: 'ai-study-toolkit',
+    title: 'What Is an AI Study Toolkit? (And How to Build a Simple Study System)',
+    description:
+      'A practical guide to building an active learning system with quizzes, explanations, notes, focus sessions, and streaks — using inspir.',
+    category: 'Study Tools',
+    readTime: '10 min',
+    icon: '🧰',
+    lastModified: '2025-12-14',
+  },
+  {
+    slug: 'study-streaks-habits',
+    title: 'Study Streaks That Work: How to Build Consistency Without Burnout',
+    description:
+      'Use streaks as a system, not pressure. Learn how to stay consistent with short focus sessions, active recall, and simple daily minimums.',
+    category: 'Study Habits',
+    readTime: '9 min',
+    icon: '🔥',
+    lastModified: '2025-12-14',
+  },
+  {
     slug: 'students-exam-prep',
     title: 'How to Actually Prepare for Exams (Without Just Re-Reading Your Notes)',
     description:
