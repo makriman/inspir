@@ -19,6 +19,8 @@ import citationRoutes from './routes/citation.js';
 import cornellNotesRoutes from './routes/cornellNotes.js';
 import streaksRoutes from './routes/streaks.js';
 import doubtRoutes from './routes/doubt.js';
+import waitlistRoutes from './routes/waitlist.js';
+import userRoutes from './routes/user.js';
 
 // Guard against stdout/stderr EPIPE when the log sink closes unexpectedly (keeps server alive)
 const handlePipeError = (err) => {
@@ -86,6 +88,8 @@ app.use('/api/citations', citationRoutes);
 app.use('/api/cornell-notes', cornellNotesRoutes);
 app.use('/api/streaks', streaksRoutes);
 app.use('/api/doubt', doubtRoutes);
+app.use('/api/waitlist', waitlistRoutes);
+app.use('/api/user', userRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import AuthPage from './pages/AuthPage';
+import HomePageGuest from './pages/HomePageGuest';
+import HomePageUser from './pages/HomePageUser';
 import UploadInterface from './components/UploadInterface';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
@@ -63,14 +65,28 @@ function ProtectedRoute({ children }) {
   return user ? children : <Navigate to="/auth" />;
 }
 
+function HomePage() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-white to-off-white flex items-center justify-center">
+        <div className="text-primary-blue text-2xl font-bold">Loading...</div>
+      </div>
+    );
+  }
+
+  return user ? <HomePageUser /> : <HomePageGuest />;
+}
+
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<UploadInterface />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/quiz" element={<UploadInterface />} />
           <Route path="/auth" element={<AuthPage />} />
-          <Route path="/quiz" element={<Quiz />} />
           <Route path="/results" element={<Results />} />
           <Route
             path="/dashboard"
