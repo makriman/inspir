@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import Navigation from './Navigation';
-import Footer from './Footer';
 import API_URL from '../utils/api';
 
 const FRONTEND_URL = 'https://quiz.inspir.uk';
@@ -156,7 +155,6 @@ export default function QuizAttempts() {
             <p className="text-deep-blue text-lg font-semibold">Loading attempts...</p>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -178,7 +176,6 @@ export default function QuizAttempts() {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -509,7 +506,6 @@ export default function QuizAttempts() {
         </div>
       )}
 
-      <Footer />
     </div>
   );
 }

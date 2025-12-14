@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 
 export default function GradeCalculator() {
   const [courses, setCourses] = useState([]);
@@ -493,7 +492,6 @@ export default function GradeCalculator() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

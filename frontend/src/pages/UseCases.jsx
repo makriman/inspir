@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 function UseCaseCard({ title, children }) {
@@ -142,7 +141,6 @@ export default function UseCases() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

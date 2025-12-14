@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -383,7 +382,6 @@ export default function CitationGenerator() {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 }

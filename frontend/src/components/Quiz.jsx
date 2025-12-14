@@ -3,7 +3,6 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import Navigation from './Navigation';
-import Footer from './Footer';
 import CorrectionLoading from './CorrectionLoading';
 import API_URL from '../utils/api';
 
@@ -87,7 +86,6 @@ export default function Quiz() {
             <p className="text-deep-blue text-lg font-semibold">Loading quiz...</p>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -107,7 +105,6 @@ export default function Quiz() {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -243,7 +240,6 @@ export default function Quiz() {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -272,7 +268,6 @@ export default function Quiz() {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -400,7 +395,6 @@ export default function Quiz() {
         </div>
       </div>
       </main>
-      <Footer />
     </div>
   );
 }

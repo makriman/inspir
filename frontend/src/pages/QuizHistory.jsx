@@ -4,7 +4,6 @@ import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import API_URL from '../utils/api';
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 
 export default function QuizHistory() {
   const [history, setHistory] = useState([]);
@@ -117,7 +116,6 @@ export default function QuizHistory() {
         <div className="min-h-screen bg-purple-gradient flex items-center justify-center">
           <div className="text-white text-2xl">Loading...</div>
         </div>
-        <Footer />
       </>
     );
   }
@@ -360,7 +358,6 @@ export default function QuizHistory() {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

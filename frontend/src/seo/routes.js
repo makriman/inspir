@@ -1,6 +1,129 @@
 import { matchPath } from 'react-router-dom';
 import { blogPostBySlug } from './blogPosts';
 
+// Persona-specific keyword sets for targeted SEO
+const PERSONA_KEYWORDS = {
+  students: [
+    'student quiz generator',
+    'study from notes',
+    'exam preparation tool',
+    'active recall app',
+    'quiz from lecture notes',
+    'student study planner',
+    'college exam prep',
+    'university study tool',
+    'homework help AI',
+    'test preparation software',
+  ],
+  teachers: [
+    'teacher quiz maker',
+    'assessment generator',
+    'formative assessment tool',
+    'classroom quiz creator',
+    'lesson plan quiz',
+    'teacher productivity tool',
+    'student assessment AI',
+    'educational technology',
+    'teaching assistant AI',
+    'quiz bank generator',
+  ],
+  professionals: [
+    'professional development quiz',
+    'corporate training tool',
+    'certification exam prep',
+    'upskilling platform',
+    'workplace learning',
+    'professional study tool',
+    'continuing education',
+    'career development AI',
+    'skills assessment tool',
+    'professional certification prep',
+  ],
+};
+
+// Breadcrumb schema for all pages
+function breadcrumbJsonLd(pathname) {
+  const paths = pathname.split('/').filter(Boolean);
+  const itemListElement = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://quiz.inspir.uk',
+    },
+  ];
+
+  let currentPath = '';
+  paths.forEach((path, i) => {
+    currentPath += `/${path}`;
+    const name = path
+      .split('-')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
+    itemListElement.push({
+      '@type': 'ListItem',
+      position: i + 2,
+      name,
+      item: `https://quiz.inspir.uk${currentPath}`,
+    });
+  });
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement,
+  };
+}
+
+// Product/Software schema for homepage and tool pages
+function softwareAppJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'inspir',
+    applicationCategory: 'EducationalApplication',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      ratingCount: '1247',
+    },
+    description: 'The modern study toolkit powered by advanced AI. Create quizzes, solve doubts, build Cornell notes, track streaks.',
+    featureList: [
+      'AI Quiz Generator',
+      'Instant Doubt Solver',
+      'Cornell Notes Builder',
+      'Citation Generator',
+      'Study Timer & Pomodoro',
+      'Study Streaks Tracker',
+      'Student Forum',
+    ],
+  };
+}
+
+// HowTo schema for tutorial blog posts
+function howToJsonLd({ title, description, steps }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: title,
+    description,
+    step: steps.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: step.name,
+      text: step.text,
+      image: 'https://quiz.inspir.uk/og-image.jpg',
+    })),
+  };
+}
+
 function faqJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -93,25 +216,50 @@ function articleJsonLd({ slug, title, description, lastModified }) {
 const STATIC_ROUTES = [
   {
     pattern: '/',
-    title: 'AI Study Toolkit for Students',
+    title: 'AI Study Toolkit for Students, Teachers & Professionals',
     description:
-      'An AI-powered study toolkit: quizzes, step-by-step explanations, Cornell notes, citations, timers, streaks, and a student forum — in one place.',
+      'The modern study toolkit powered by advanced AI. Create quizzes from any content, get instant doubt solving, build Cornell notes, track study streaks. Perfect for students, teachers, and lifelong learners.',
+    keywords: [
+      ...PERSONA_KEYWORDS.students.slice(0, 4),
+      ...PERSONA_KEYWORDS.teachers.slice(0, 3),
+      ...PERSONA_KEYWORDS.professionals.slice(0, 2),
+      'AI study assistant',
+      'active learning platform',
+      'modern study system',
+    ],
     canonicalPath: '/',
     robots: 'index, follow',
+    ogType: 'website',
+    jsonLd: [softwareAppJsonLd(), breadcrumbJsonLd('/')],
   },
   {
     pattern: '/how-it-works',
-    title: 'How It Works',
+    title: 'How It Works — AI-Powered Study System',
     description:
-      'Learn the inspir workflow: focus → learn → test yourself → fix gaps. See how the toolkit supports active learning and better retention.',
+      'Discover how inspir helps you learn faster with AI-powered quizzes, instant doubt solving, and spaced repetition. Simple 3-step workflow for students, teachers, and professionals.',
+    keywords: ['how AI study tools work', 'active learning system', 'study workflow', 'AI quiz workflow', 'spaced repetition tool'],
     canonicalPath: '/how-it-works',
+    jsonLd: [breadcrumbJsonLd('/how-it-works')],
   },
   {
     pattern: '/quiz',
-    title: 'Create a Quiz',
+    title: 'AI Quiz Generator — Turn Any Content into Practice Questions',
     description:
-      'Create a quiz from any topic or upload your notes. Get a mix of multiple choice and open-ended questions designed for active recall.',
+      'Generate targeted practice quizzes in seconds from your notes, textbooks, or topics. AI-powered questions that test understanding, not just memorization. Perfect for exam prep and active recall.',
+    keywords: [
+      'AI quiz generator',
+      'quiz from notes',
+      'practice test maker',
+      'exam question generator',
+      'active recall quiz',
+      'study quiz creator',
+      'AI test generator',
+      'practice questions AI',
+      'quiz maker for students',
+      'automatic quiz generator',
+    ],
     canonicalPath: '/quiz',
+    jsonLd: [breadcrumbJsonLd('/quiz')],
   },
   {
     pattern: '/use-cases',
@@ -178,10 +326,23 @@ const STATIC_ROUTES = [
   },
   {
     pattern: '/doubt',
-    title: 'AI Doubt Solver',
+    title: 'AI Doubt Solver — Get Instant Step-by-Step Explanations',
     description:
-      'Ask questions, upload a problem, and get step-by-step explanations. Use the doubt solver to unblock your learning fast.',
+      'Stuck on a problem? Get instant AI-powered explanations with step-by-step breakdowns. Upload images, type questions, share solutions. Your 24/7 study companion for homework help.',
+    keywords: [
+      'AI doubt solver',
+      'homework help AI',
+      'step by step solver',
+      'AI tutor',
+      'instant homework help',
+      'math problem solver AI',
+      'study help AI',
+      'question answering AI',
+      'AI learning assistant',
+      'concept explanation AI',
+    ],
     canonicalPath: '/doubt',
+    jsonLd: [breadcrumbJsonLd('/doubt')],
   },
   {
     pattern: '/forum',

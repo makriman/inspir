@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import StudyStreaks from '../components/StudyStreaks';
 
 export default function StudyStreaksPage() {
@@ -24,7 +23,6 @@ export default function StudyStreaksPage() {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 }

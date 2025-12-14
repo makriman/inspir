@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import { useAuth } from '../contexts/AuthContext';
 
 const STORAGE_KEY = 'inspirquiz_study_sessions_v1';
@@ -391,8 +390,6 @@ export default function StudyTimer() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

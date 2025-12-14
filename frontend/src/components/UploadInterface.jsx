@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import LoadingScreen from './LoadingScreen';
 import Navigation from './Navigation';
-import Footer from './Footer';
 import API_URL from '../utils/api';
 
 // Cycling placeholder examples
@@ -373,8 +372,6 @@ The more context you provide, the more tailored and relevant the questions will 
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }

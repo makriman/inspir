@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
-import Footer from './Footer';
 
 export default function BlogLayout({
   title,
@@ -77,7 +76,6 @@ export default function BlogLayout({
           </article>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

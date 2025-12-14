@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 export default function About() {
@@ -102,7 +101,6 @@ export default function About() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

@@ -3,7 +3,6 @@ import { useAuth } from '../contexts/AuthContext';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -700,7 +699,6 @@ export default function DoubtSolver() {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 
 export default function Privacy() {
   return (
@@ -248,7 +247,6 @@ export default function Privacy() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

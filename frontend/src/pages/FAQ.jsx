@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 function FaqCard({ question, children }) {
@@ -126,6 +125,85 @@ export default function FAQ() {
                 </section>
 
                 <section>
+                  <h2 className="text-2xl font-bold text-deep-blue mb-4">For Students</h2>
+                  <div className="space-y-4">
+                    <FaqCard question="Can I use inspir for college exams?">
+                      <p>
+                        Yes. Students use inspir to generate practice quizzes from lecture notes, textbook chapters, and study guides. Upload your notes as TXT or DOCX, or paste content directly. The AI creates targeted questions for active recall practice.
+                      </p>
+                    </FaqCard>
+
+                    <FaqCard question="How do I create quizzes from PDF textbooks?">
+                      <p>
+                        Copy text from your PDF and paste it into the Quiz Generator, or convert the PDF chapter to TXT/DOCX first. Focus on one chapter or section at a time for best results.
+                      </p>
+                    </FaqCard>
+
+                    <FaqCard question="Can I study for finals using inspir?">
+                      <p>
+                        Absolutely. Upload all your notes for a course, generate quizzes on different topics, and use spaced repetition with Study Streaks. Check out our{' '}
+                        <Link to="/blog/finals-study-plan" className="text-purple-dark font-semibold hover:underline">
+                          Finals Study Plan guide
+                        </Link>
+                        {' '}for a complete strategy.
+                      </p>
+                    </FaqCard>
+
+                    <FaqCard question="What AI model does inspir use?">
+                      <p>
+                        inspir uses Claude by Anthropic, a frontier AI model known for strong reasoning and accuracy. It excels at understanding context and generating educational content.
+                      </p>
+                    </FaqCard>
+                  </div>
+                </section>
+
+                <section>
+                  <h2 className="text-2xl font-bold text-deep-blue mb-4">For Teachers</h2>
+                  <div className="space-y-4">
+                    <FaqCard question="Can teachers track student progress?">
+                      <p>
+                        Currently, inspir doesn't have teacher dashboards or grade tracking. However, you can generate quizzes from lesson plans and share them via links. Students can take quizzes and share their results back with you.
+                      </p>
+                    </FaqCard>
+
+                    <FaqCard question="Can I export quizzes to Google Classroom?">
+                      <p>
+                        Not directly yet. You can share quiz links with students to complete on inspir, or manually copy questions into Google Forms or your LMS. Export features are on our roadmap.
+                      </p>
+                    </FaqCard>
+
+                    <FaqCard question="How do I create formative assessments quickly?">
+                      <p>
+                        Paste your lesson plan or key teaching points into the Quiz Generator. In 30 seconds, you'll get multiple choice and short answer questions to check for understanding. Perfect for exit tickets or quick reviews.
+                      </p>
+                    </FaqCard>
+                  </div>
+                </section>
+
+                <section>
+                  <h2 className="text-2xl font-bold text-deep-blue mb-4">For Professionals</h2>
+                  <div className="space-y-4">
+                    <FaqCard question="Is inspir good for certification exam prep?">
+                      <p>
+                        Yes. Many professionals use inspir to study for AWS, PMP, CFA, and other certifications. Upload study materials or paste from official guides, then quiz yourself on key concepts. The spaced repetition helps retention while working full-time.
+                      </p>
+                    </FaqCard>
+
+                    <FaqCard question="Can I use this for corporate training?">
+                      <p>
+                        Absolutely. Upload training documents, policies, or procedures and generate quizzes to reinforce learning. Great for onboarding or compliance training that needs to stick.
+                      </p>
+                    </FaqCard>
+
+                    <FaqCard question="How do study streaks work for busy professionals?">
+                      <p>
+                        Set a daily study goal (even just 10 minutes). Each day you study, your streak increments. The visual tracker helps build consistent micro-learning habits that fit around work schedules.
+                      </p>
+                    </FaqCard>
+                  </div>
+                </section>
+
+                <section>
                   <h2 className="text-2xl font-bold text-deep-blue mb-4">AI Safety &amp; Accuracy</h2>
                   <div className="space-y-4">
                     <FaqCard question="How accurate is the AI?">
@@ -203,7 +281,6 @@ export default function FAQ() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 
 export default function Terms() {
   return (
@@ -245,7 +244,6 @@ export default function Terms() {
           </article>
         </div>
       </main>
-      <Footer />
     </>
   );
 }

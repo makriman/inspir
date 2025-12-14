@@ -2,7 +2,6 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import { useAuth } from '../contexts/AuthContext';
 import API_URL from '../utils/api';
 
@@ -238,7 +237,6 @@ export default function StudentForum() {
         <main className="flex-grow flex items-center justify-center">
           <div className="text-xl text-gray-600">Loading forum...</div>
         </main>
-        <Footer />
       </div>
     );
   }
@@ -486,8 +484,6 @@ export default function StudentForum() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }

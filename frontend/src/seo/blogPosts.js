@@ -1,5 +1,25 @@
 export const blogPosts = [
   {
+    slug: 'multiple-exams-strategy',
+    title: 'How to Study for Multiple Exams at Once (Without Burning Out)',
+    description:
+      'Master multiple exams simultaneously with interleaving, priority-based scheduling, and energy management. Smart strategies beat all-nighters.',
+    category: 'Study Tips',
+    readTime: '9 min',
+    icon: '📚',
+    lastModified: '2025-12-14',
+  },
+  {
+    slug: 'ai-vs-traditional-methods',
+    title: 'AI Study Tools vs Traditional Methods: What Actually Works in 2025',
+    description:
+      'Compare AI tools to flashcards, textbooks, and handwritten notes. Learn when to use each method and how to combine them for maximum results.',
+    category: 'Learning Science',
+    readTime: '11 min',
+    icon: '⚖️',
+    lastModified: '2025-12-14',
+  },
+  {
     slug: 'ai-study-toolkit',
     title: 'What Is an AI Study Toolkit? (And How to Build a Simple Study System)',
     description:

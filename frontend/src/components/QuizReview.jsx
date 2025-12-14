@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import Navigation from './Navigation';
-import Footer from './Footer';
 import API_URL from '../utils/api';
 
 export default function QuizReview() {
@@ -69,7 +68,6 @@ export default function QuizReview() {
             <p className="text-deep-blue text-lg font-semibold">Loading quiz...</p>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -90,7 +88,6 @@ export default function QuizReview() {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -110,7 +107,6 @@ export default function QuizReview() {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -242,7 +238,6 @@ export default function QuizReview() {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 }

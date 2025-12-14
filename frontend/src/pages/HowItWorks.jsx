@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 
 export default function HowItWorks() {
@@ -123,8 +122,6 @@ export default function HowItWorks() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   );
 }
-

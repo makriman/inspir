@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import SeoRouter from './seo/SeoRouter';
+import ConditionalFooter from './components/ConditionalFooter';
 import AuthPage from './pages/AuthPage';
 import HomePageGuest from './pages/HomePageGuest';
 import HomePageUser from './pages/HomePageUser';
@@ -22,6 +23,8 @@ import Terms from './pages/Terms';
 import Blog from './pages/Blog';
 
 // Blog Articles
+import MultipleExamsStrategy from './pages/blog/MultipleExamsStrategy';
+import AIvsTraditionalMethods from './pages/blog/AIvsTraditionalMethods';
 import AIStudyToolkit from './pages/blog/AIStudyToolkit';
 import StudyStreaksHabits from './pages/blog/StudyStreaksHabits';
 import StudentsExamPrep from './pages/blog/StudentsExamPrep';
@@ -164,6 +167,8 @@ function App() {
           />
 
           {/* Blog Articles */}
+          <Route path="/blog/multiple-exams-strategy" element={<MultipleExamsStrategy />} />
+          <Route path="/blog/ai-vs-traditional-methods" element={<AIvsTraditionalMethods />} />
           <Route path="/blog/ai-study-toolkit" element={<AIStudyToolkit />} />
           <Route path="/blog/study-streaks-habits" element={<StudyStreaksHabits />} />
           <Route path="/blog/students-exam-prep" element={<StudentsExamPrep />} />
@@ -195,6 +200,7 @@ function App() {
           <Route path="/blog/better-mcq-questions" element={<TeacherMultipleChoiceQuestions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ConditionalFooter />
       </Router>
     </AuthProvider>
   );

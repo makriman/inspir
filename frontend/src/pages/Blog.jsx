@@ -1,5 +1,4 @@
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { blogPosts } from '../seo/blogPosts';
@@ -136,8 +135,6 @@ export default function Blog() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </>
   );
 }

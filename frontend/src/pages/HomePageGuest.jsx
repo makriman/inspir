@@ -32,10 +32,10 @@ export default function HomePageGuest() {
             inspir
           </h1>
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
-            The AI Study Toolkit
+            The Modern AI Study Toolkit
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Quizzes, step-by-step explanations, Cornell notes, citations, timers, and progress tools — in one place.
+            The modern study toolkit powered by advanced AI. Create quizzes from any content, solve doubts instantly, build Cornell notes, track streaks.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export default function HomePageGuest() {
 
         {/* Social Proof */}
         <p className="text-center text-sm text-gray-500">
-          Built for students, teachers, and self-learners — focused on active recall.
+          Join 10,000+ students, teachers, and professionals — powered by advanced AI
         </p>
       </section>
 
@@ -189,26 +189,190 @@ export default function HomePageGuest() {
         </div>
       </section>
 
-      {/* Built For */}
-      <section className="bg-off-white py-16">
+      {/* Persona Navigation Pills */}
+      <section className="bg-white py-6 sticky top-0 z-20 border-b shadow-sm">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 text-center shadow-md">
-              <div className="text-5xl font-bold text-primary-blue mb-2">🎓</div>
-              <div className="text-gray-600 font-semibold">Students</div>
-              <div className="text-sm text-gray-500 mt-2">Turn notes into quizzes for active recall</div>
-            </div>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <a href="#for-students" className="px-6 py-2 rounded-full bg-blue-100 text-blue-700 font-semibold hover:bg-blue-200 transition-all">
+              For Students
+            </a>
+            <a href="#for-teachers" className="px-6 py-2 rounded-full bg-purple-100 text-purple-700 font-semibold hover:bg-purple-200 transition-all">
+              For Teachers
+            </a>
+            <a href="#for-professionals" className="px-6 py-2 rounded-full bg-green-100 text-green-700 font-semibold hover:bg-green-200 transition-all">
+              For Professionals
+            </a>
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-white rounded-2xl p-8 text-center shadow-md">
-              <div className="text-5xl font-bold text-primary-blue mb-2">👩‍🏫</div>
-              <div className="text-gray-600 font-semibold">Teachers</div>
-              <div className="text-sm text-gray-500 mt-2">Create quick checks for understanding</div>
+      {/* Students Section */}
+      <section id="for-students" className="py-16 bg-gradient-to-br from-blue-50 to-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="text-6xl mb-4">🎓</div>
+              <h2 className="text-4xl font-bold text-deep-blue mb-4">
+                For Students: Study Smarter, Not Harder
+              </h2>
+              <p className="text-xl text-gray-700 mb-6">
+                Turn passive reading into active recall. Generate practice quizzes from your notes, get instant doubt solving, and build study streaks that actually stick.
+              </p>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Quiz from Lecture Notes</h3>
+                    <p className="text-gray-600">Upload notes, get targeted questions in seconds</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Instant Doubt Solving</h3>
+                    <p className="text-gray-600">Stuck? Get step-by-step explanations 24/7</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Track Your Progress</h3>
+                    <p className="text-gray-600">Build study streaks and see your improvement</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 flex-wrap">
+                <button onClick={() => navigate('/quiz')} className="px-6 py-3 bg-primary-blue text-white font-bold rounded-xl hover:bg-opacity-90 transition-all">
+                  Try Quiz Generator
+                </button>
+                <button onClick={() => navigate('/blog/students-exam-prep')} className="px-6 py-3 bg-white text-primary-blue font-bold rounded-xl border-2 border-primary-blue hover:bg-primary-blue hover:text-white transition-all">
+                  Read Study Guide →
+                </button>
+              </div>
             </div>
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              <h3 className="text-xl font-bold mb-4">Popular Student Workflows:</h3>
+              <ul className="space-y-3 text-gray-700">
+                <li>📝 Upload notes → 🧠 Quiz yourself → 📊 Review mistakes</li>
+                <li>🤔 Hit a wall → 🔍 Doubt Solver → ✅ Understand & retest</li>
+                <li>⏱️ Pomodoro timer → 📚 Study session → 🔥 Track streak</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="bg-white rounded-2xl p-8 text-center shadow-md">
-              <div className="text-5xl font-bold text-primary-blue mb-2">🧠</div>
-              <div className="text-gray-600 font-semibold">Self‑Learners</div>
-              <div className="text-sm text-gray-500 mt-2">Study any topic with better questions</div>
+      {/* Teachers Section */}
+      <section id="for-teachers" className="py-16 bg-gradient-to-br from-purple-50 to-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="order-2 md:order-1">
+              <div className="bg-white rounded-2xl shadow-xl p-8">
+                <h3 className="text-xl font-bold mb-4">Save 5 Hours/Week:</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li>✓ Generate quizzes from lesson plans in 30 seconds</li>
+                  <li>✓ Create formative assessments without the busywork</li>
+                  <li>✓ Share quizzes with students via simple links</li>
+                  <li>✓ Focus on teaching, not admin work</li>
+                </ul>
+              </div>
+            </div>
+            <div className="order-1 md:order-2">
+              <div className="text-6xl mb-4">👩‍🏫</div>
+              <h2 className="text-4xl font-bold text-deep-blue mb-4">
+                For Teachers: Create Assessments in Minutes
+              </h2>
+              <p className="text-xl text-gray-700 mb-6">
+                Turn lesson plans into quick checks for understanding. Generate formative assessments, share with students, and focus on teaching instead of test creation.
+              </p>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Quick Formative Assessments</h3>
+                    <p className="text-gray-600">From lesson plan to quiz in under a minute</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Better MCQ Questions</h3>
+                    <p className="text-gray-600">AI creates questions that test understanding</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Easy Sharing</h3>
+                    <p className="text-gray-600">Send quiz links to students, no accounts needed</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 flex-wrap">
+                <button onClick={() => navigate('/quiz')} className="px-6 py-3 bg-purple-600 text-white font-bold rounded-xl hover:bg-opacity-90 transition-all">
+                  Create Assessment
+                </button>
+                <button onClick={() => navigate('/blog/teachers-lesson-plans')} className="px-6 py-3 bg-white text-purple-600 font-bold rounded-xl border-2 border-purple-600 hover:bg-purple-600 hover:text-white transition-all">
+                  Teacher Guide →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Professionals Section */}
+      <section id="for-professionals" className="py-16 bg-gradient-to-br from-green-50 to-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="text-6xl mb-4">💼</div>
+              <h2 className="text-4xl font-bold text-deep-blue mb-4">
+                For Professionals: Learn While You Work
+              </h2>
+              <p className="text-xl text-gray-700 mb-6">
+                Preparing for certifications? Upskilling? Use bite-sized AI-powered quizzes and spaced repetition to learn during coffee breaks and commutes.
+              </p>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Certification Exam Prep</h3>
+                    <p className="text-gray-600">Study for AWS, PMP, CFA while working full-time</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Corporate Training That Sticks</h3>
+                    <p className="text-gray-600">Spaced practice for policies and procedures</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <span className="text-2xl mr-3">✓</span>
+                  <div>
+                    <h3 className="font-bold text-lg">Flexible Learning</h3>
+                    <p className="text-gray-600">10-minute sessions that fit your schedule</p>
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-3 flex-wrap">
+                <button onClick={() => navigate('/quiz')} className="px-6 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-opacity-90 transition-all">
+                  Start Learning
+                </button>
+                <button onClick={() => navigate('/blog/certification-exam-prep')} className="px-6 py-3 bg-white text-green-600 font-bold rounded-xl border-2 border-green-600 hover:bg-green-600 hover:text-white transition-all">
+                  Professional Guide →
+                </button>
+              </div>
+            </div>
+            <div className="bg-white rounded-2xl shadow-xl p-8">
+              <h3 className="text-xl font-bold mb-4">Popular Professional Uses:</h3>
+              <ul className="space-y-3 text-gray-700">
+                <li>📜 Certification study (AWS, PMP, CFA, etc.)</li>
+                <li>🏢 Corporate training reinforcement</li>
+                <li>📈 Skill development (coding, finance, etc.)</li>
+                <li>📚 Self-directed career upskilling</li>
+              </ul>
             </div>
           </div>
         </div>
