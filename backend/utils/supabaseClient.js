@@ -1,4 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
+
+// Ensure environment variables are loaded before creating clients.
+// In Node ESM, module evaluation order can cause server.js to load after this module,
+// so we load env here as well (safe and idempotent).
+dotenv.config({ path: '/root/quiz-app/backend/.env.local' });
+dotenv.config({ path: '/root/quiz-app/backend/.env' });
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseAnonKey = process.env.SUPABASE_ANON_KEY;
