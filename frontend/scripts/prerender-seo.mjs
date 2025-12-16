@@ -152,7 +152,7 @@ const staticPages = [
     pathname: '/',
     title: 'AI Study Toolkit for Students',
     description:
-      'An AI-powered study toolkit: quizzes, step-by-step explanations, Cornell notes, citations, timers, streaks, and a student forum — in one place.',
+      'AI-powered study toolkit: quizzes, flashcards, study guides, text summaries, math solving, mind maps, Cornell notes, citations, timers, streaks, and a student forum — in one place.',
     ogType: 'website',
   },
   {
@@ -237,6 +237,48 @@ const staticPages = [
     pathname: '/forum',
     title: 'Student Forum',
     description: 'Discuss study strategies, ask questions, and learn with others in the inspir community.',
+    ogType: 'website',
+  },
+  {
+    pathname: '/text-summarizer',
+    title: 'Text Summarizer',
+    description: 'Summarize long content into key points, takeaways, and study-ready notes for faster revision.',
+    ogType: 'website',
+  },
+  {
+    pathname: '/study-guide-gen',
+    title: 'Study Guide Generator',
+    description: 'Generate complete study guides from any content with AI: key concepts, definitions, examples, and practice questions.',
+    ogType: 'website',
+  },
+  {
+    pathname: '/flashcards',
+    title: 'Flashcard Creator',
+    description: 'Create AI-generated flashcards and study with spaced repetition to boost retention and active recall.',
+    ogType: 'website',
+  },
+  {
+    pathname: '/math-solver',
+    title: 'Math Problem Solver',
+    description: 'Get step-by-step solutions to math problems with clear explanations and practice suggestions.',
+    ogType: 'website',
+  },
+  {
+    pathname: '/mind-map',
+    title: 'Mind Map Creator',
+    description: 'Turn ideas into visual mind maps for brainstorming, revision, and clearer understanding.',
+    ogType: 'website',
+  },
+  {
+    pathname: '/concept-map',
+    title: 'Concept Map Builder',
+    description: 'Build concept maps to visualize relationships, hierarchies, and connections between ideas.',
+    ogType: 'website',
+  },
+  {
+    pathname: '/practice-test-builder',
+    title: 'Practice Test Builder',
+    description: 'Create custom practice tests from your study materials with AI-generated questions and instant feedback.',
     ogType: 'website',
   },
   { pathname: '/privacy', title: 'Privacy Policy', description: 'How inspir handles data and privacy.', ogType: 'website' },
