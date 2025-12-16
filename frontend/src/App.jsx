@@ -63,6 +63,13 @@ import CitationGenerator from './pages/CitationGenerator';
 import CornellNotes from './pages/CornellNotes';
 import StudyStreaksPage from './pages/StudyStreaksPage';
 import DoubtSolver from './pages/DoubtSolver';
+import TextSummarizer from './pages/TextSummarizer';
+import StudyGuideGenerator from './pages/StudyGuideGenerator';
+import FlashcardCreator from './pages/FlashcardCreator';
+import MathSolver from './pages/MathSolver';
+import MindMapCreator from './pages/MindMapCreator';
+import ConceptMapBuilder from './pages/ConceptMapBuilder';
+import PracticeTestBuilder from './pages/PracticeTestBuilder';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -157,6 +164,13 @@ function App() {
           <Route path="/streaks" element={<StudyStreaksPage />} />
           <Route path="/doubt" element={<DoubtSolver />} />
           <Route path="/doubt/shared/:shareToken" element={<DoubtSolver />} />
+          <Route path="/text-summarizer" element={<TextSummarizer />} />
+          <Route path="/study-guide-gen" element={<StudyGuideGenerator />} />
+          <Route path="/flashcards" element={<FlashcardCreator />} />
+          <Route path="/math-solver" element={<MathSolver />} />
+          <Route path="/mind-map" element={<MindMapCreator />} />
+          <Route path="/concept-map" element={<ConceptMapBuilder />} />
+          <Route path="/practice-test-builder" element={<PracticeTestBuilder />} />
           <Route
             path="/chat"
             element={

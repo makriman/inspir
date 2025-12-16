@@ -6,7 +6,7 @@ export const siteConfig = {
   titleTemplate: '%s | inspir',
   tagline: 'The modern study toolkit powered by advanced AI',
   defaultDescription:
-    'The modern study toolkit powered by advanced AI. Create quizzes from any content, solve doubts instantly, build Cornell notes, track streaks. Built for students, teachers, and professionals.',
+    'The modern study toolkit powered by advanced AI. Create quizzes, flashcards, study guides, text summaries, mind maps, and practice tests from any content, solve doubts instantly, build Cornell notes, and track streaks.',
   defaultKeywords: [
     // Students (Primary - 5 keywords)
     'AI study tool',
@@ -30,6 +30,12 @@ export const siteConfig = {
     'AI tutor',
     'learning platform',
     'study assistant',
+    'AI flashcard generator',
+    'text summarizer',
+    'study guide generator',
+    'AI math solver',
+    'mind map creator',
+    'practice test builder',
   ],
   defaultImagePath: '/og-image.jpg',
 };

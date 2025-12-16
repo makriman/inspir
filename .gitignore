@@ -78,6 +78,9 @@ uploads/
 .pm2/
 pm2.pid
 
+# Runtime artifacts
+backend/server-runtime.pid
+
 # Database
 *.db
 *.sqlite

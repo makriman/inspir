@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
@@ -8,20 +8,11 @@ import StudyStreaks from './StudyStreaks';
 export default function Dashboard() {
   const [quizHistory, setQuizHistory] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const { user, session, signOut } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) {
-      navigate('/auth');
-      return;
-    }
-
-    fetchData();
-  }, [user]);
-
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
+    if (!session) return;
     try {
       const response = await axios.get(`${API_URL}/quiz/history`, {
         headers: {
@@ -35,7 +26,16 @@ export default function Dashboard() {
       console.error('Failed to load data:', err);
       setLoading(false);
     }
-  };
+  }, [session]);
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/auth');
+      return;
+    }
+
+    fetchData();
+  }, [user, navigate, fetchData]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -150,12 +150,6 @@ export default function Dashboard() {
             Sign Out
           </button>
         </div>
-
-        {error && (
-          <div className="bg-coral-red bg-opacity-10 border border-coral-red text-white px-4 py-3 rounded-lg mb-6">
-            {error}
-          </div>
-        )}
 
         {/* Quick Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

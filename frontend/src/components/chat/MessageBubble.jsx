@@ -67,7 +67,7 @@ export default function MessageBubble({ message, user, index, isStreaming = fals
               <div className="prose prose-slate max-w-none">
                 <ReactMarkdown
                   components={{
-                    code({ node, inline, className, children, ...props }) {
+                    code({ inline, className, children, ...props }) {
                       const match = /language-(\w+)/.exec(className || '');
                       return !inline && match ? (
                         <div className="relative group">

@@ -78,6 +78,9 @@ export function applySeo({
   setMetaContent('meta[property="og:title"]', { property: 'og:title' }, resolvedTitle);
   setMetaContent('meta[property="og:description"]', { property: 'og:description' }, resolvedDescription);
   setMetaContent('meta[property="og:image"]', { property: 'og:image' }, imageUrl);
+  setMetaContent('meta[property="og:image:width"]', { property: 'og:image:width' }, '1200');
+  setMetaContent('meta[property="og:image:height"]', { property: 'og:image:height' }, '630');
+  setMetaContent('meta[property="og:image:type"]', { property: 'og:image:type' }, 'image/jpeg');
   setMetaContent(
     'meta[property="og:image:alt"]',
     { property: 'og:image:alt' },

@@ -23,6 +23,13 @@ import streaksRoutes from './routes/streaks.js';
 import doubtRoutes from './routes/doubt.js';
 import waitlistRoutes from './routes/waitlist.js';
 import userRoutes from './routes/user.js';
+import summarizerRoutes from './routes/summarizerRoutes.js';
+import studyGuideRoutes from './routes/studyGuideRoutes.js';
+import flashcardRoutes from './routes/flashcardRoutes.js';
+import mathSolverRoutes from './routes/mathSolverRoutes.js';
+import mindMapRoutes from './routes/mindMapRoutes.js';
+import conceptMapRoutes from './routes/conceptMapRoutes.js';
+import practiceTestRoutes from './routes/practiceTestRoutes.js';
 
 // Guard against stdout/stderr EPIPE when the log sink closes unexpectedly (keeps server alive)
 const handlePipeError = (err) => {
@@ -104,6 +111,13 @@ app.use('/api/streaks', streaksRoutes);
 app.use('/api/doubt', doubtRoutes);
 app.use('/api/waitlist', waitlistRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/summarizer', summarizerRoutes);
+app.use('/api/study-guides', studyGuideRoutes);
+app.use('/api/flashcards', flashcardRoutes);
+app.use('/api/math-solver', mathSolverRoutes);
+app.use('/api/mindmap', mindMapRoutes);
+app.use('/api/conceptmap', conceptMapRoutes);
+app.use('/api/practice-tests', practiceTestRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

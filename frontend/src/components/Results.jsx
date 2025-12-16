@@ -11,7 +11,6 @@ export default function Results() {
   const results = location.state?.results;
   const quizId = location.state?.quizId;
   const isSharedQuiz = location.state?.isSharedQuiz;
-  const quizCreator = location.state?.quizCreator;
   const shareToken = location.state?.shareToken;
 
   const [showShareModal, setShowShareModal] = useState(false);

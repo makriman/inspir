@@ -1,8 +1,8 @@
 // Complete tools configuration for inspir platform
-// 9 live tools + 58 coming soon tools = 67 total
+// 16 live tools + 51 coming soon tools = 67 total
 
 export const tools = [
-  // ===== LIVE TOOLS (9) =====
+  // ===== LIVE TOOLS (16) =====
   {
     id: 'quiz-generator',
     name: 'Quiz Generator',
@@ -93,19 +93,65 @@ export const tools = [
     route: '/doubt',
     keywords: ['doubt', 'question', 'help', 'solve', 'problem', 'ai']
   },
-
-  // ===== COMING SOON TOOLS (58) =====
-
-  // Active Learning (9 tools)
+  {
+    id: 'text-summarizer',
+    name: 'Text Summarizer',
+    icon: '📑',
+    description: 'Summarize long texts into key points',
+    category: 'AI Help',
+    status: 'live',
+    route: '/text-summarizer',
+    keywords: ['summarize', 'summary', 'condense', 'shorten']
+  },
+  {
+    id: 'study-guide-gen',
+    name: 'Study Guide Generator',
+    icon: '📘',
+    description: 'Generate comprehensive study guides from notes',
+    category: 'AI Help',
+    status: 'live',
+    route: '/study-guide-gen',
+    keywords: ['study guide', 'generate', 'notes', 'summary']
+  },
   {
     id: 'flashcard-creator',
     name: 'Flashcard Creator',
     icon: '🎴',
     description: 'Create and study with AI-generated flashcards',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/flashcards',
     keywords: ['flashcard', 'memorize', 'study', 'cards', 'spaced repetition']
+  },
+  {
+    id: 'math-solver',
+    name: 'Math Problem Solver',
+    icon: '🔢',
+    description: 'Solve math problems with step-by-step solutions',
+    category: 'AI Help',
+    status: 'live',
+    route: '/math-solver',
+    keywords: ['math', 'solver', 'calculator', 'equation', 'solution']
+  },
+  {
+    id: 'mind-map',
+    name: 'Mind Map Creator',
+    icon: '🧩',
+    description: 'Create visual mind maps to organize ideas',
+    category: 'Visual Learning',
+    status: 'live',
+    route: '/mind-map',
+    keywords: ['mind map', 'visual', 'brainstorm', 'organize']
+  },
+  {
+    id: 'concept-map',
+    name: 'Concept Map Builder',
+    icon: '🗺️',
+    description: 'Build concept maps to connect related ideas',
+    category: 'Visual Learning',
+    status: 'live',
+    route: '/concept-map',
+    keywords: ['concept map', 'connect', 'relationship', 'visual']
   },
   {
     id: 'practice-test-builder',
@@ -113,10 +159,14 @@ export const tools = [
     icon: '📋',
     description: 'Build custom practice tests from your study materials',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/practice-test-builder',
     keywords: ['practice', 'test', 'exam', 'builder', 'custom']
   },
+
+  // ===== COMING SOON TOOLS (51) =====
+
+  // Active Learning (7 tools)
   {
     id: 'fill-blank-generator',
     name: 'Fill-in-the-Blank Generator',
@@ -394,16 +444,6 @@ export const tools = [
     keywords: ['paraphrase', 'rephrase', 'rewrite', 'text']
   },
   {
-    id: 'text-summarizer',
-    name: 'Text Summarizer',
-    icon: '📑',
-    description: 'Summarize long texts into key points',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['summarize', 'summary', 'condense', 'shorten']
-  },
-  {
     id: 'concept-explainer',
     name: 'Concept Explainer',
     icon: '💡',
@@ -412,16 +452,6 @@ export const tools = [
     status: 'coming-soon',
     route: null,
     keywords: ['concept', 'explain', 'simplify', 'understand']
-  },
-  {
-    id: 'math-solver',
-    name: 'Math Problem Solver',
-    icon: '🔢',
-    description: 'Solve math problems with step-by-step solutions',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['math', 'solver', 'calculator', 'equation', 'solution']
   },
   {
     id: 'code-debugger',
@@ -452,16 +482,6 @@ export const tools = [
     status: 'coming-soon',
     route: null,
     keywords: ['research', 'paper', 'academic', 'source', 'find']
-  },
-  {
-    id: 'study-guide-gen',
-    name: 'Study Guide Generator',
-    icon: '📘',
-    description: 'Generate comprehensive study guides from notes',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['study guide', 'generate', 'notes', 'summary']
   },
 
   // Organization (6 tools)
@@ -526,27 +546,7 @@ export const tools = [
     keywords: ['schedule', 'builder', 'plan', 'optimize', 'timetable']
   },
 
-  // Visual Learning (5 tools)
-  {
-    id: 'mind-map',
-    name: 'Mind Map Creator',
-    icon: '🧩',
-    description: 'Create visual mind maps to organize ideas',
-    category: 'Visual Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['mind map', 'visual', 'brainstorm', 'organize']
-  },
-  {
-    id: 'concept-map',
-    name: 'Concept Map Builder',
-    icon: '🗺️',
-    description: 'Build concept maps to connect related ideas',
-    category: 'Visual Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['concept map', 'connect', 'relationship', 'visual']
-  },
+  // Visual Learning (3 tools)
   {
     id: 'infographic',
     name: 'Infographic Generator',

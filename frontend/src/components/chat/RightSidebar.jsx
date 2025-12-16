@@ -342,7 +342,7 @@ export default function RightSidebar({
 }
 
 // Sidebar Section Component
-function SidebarSection({ title, icon, isExpanded, onToggle, children }) {
+function SidebarSection({ title, isExpanded, onToggle, children }) {
   return (
     <motion.div className="bg-white rounded-xl shadow-sm overflow-hidden">
       <motion.button

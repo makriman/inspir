@@ -20,30 +20,31 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Check for existing token and validate it
     const token = localStorage.getItem('auth_token');
-    if (token) {
-      // Validate token by fetching current user
-      axios
-        .get(`${API_URL}/auth/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
+    const initAuth = async () => {
+      if (token) {
+        // Validate token by fetching current user
+        try {
+          const response = await axios.get(`${API_URL}/auth/me`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
           setUser(response.data.user);
           setSession({ access_token: token });
-        })
-        .catch(() => {
+        } catch {
           // Token is invalid, clear it
           localStorage.removeItem('auth_token');
           setUser(null);
           setSession(null);
-        })
-        .finally(() => {
+        } finally {
           setLoading(false);
-        });
-    } else {
-      setLoading(false);
-    }
+        }
+      } else {
+        setLoading(false);
+      }
+    };
+
+    initAuth();
   }, []);
 
   const value = {
