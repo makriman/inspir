@@ -2,14 +2,14 @@
 
 **"The Only Study Toolkit You Need"**
 
-inspir is an all-in-one AI-powered study platform designed to help students succeed. With 9 live tools and 58 more coming soon, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
+inspir is an all-in-one AI-powered study platform designed to help students succeed. With **16 live tools** and comprehensive features, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
 
 [![Live Site](https://img.shields.io/badge/Live-quiz.inspir.uk-blue)](https://quiz.inspir.uk)
 [![License](https://img.shields.io/badge/License-Private-red)]()
 
 ---
 
-## 🚀 Live Tools (9)
+## 🚀 Live Tools (16)
 
 ### 1. 📝 Quiz Generator
 Upload PDFs, DOCX files, or paste text to generate AI-powered quizzes instantly. Get 10 intelligent questions with automatic grading and detailed explanations.
@@ -17,7 +17,10 @@ Upload PDFs, DOCX files, or paste text to generate AI-powered quizzes instantly.
 **Features:**
 - Multiple input methods (file upload or text paste)
 - Mixed question types (multiple choice & short answer)
-- AI-powered grading with Claude 4.5
+- AI-powered grading with Claude Sonnet 4.5
+- Quiz sharing with unique tokens
+- Guest quiz-taking (no login required)
+- Analytics dashboard with attempt tracking
 - Quiz history and progress tracking
 - Instant feedback and explanations
 
@@ -106,38 +109,102 @@ Get instant help with your doubts and questions using AI-powered problem solving
 - Image upload for problems
 - Solution history
 - Follow-up questions
+- Shareable solutions
 
----
+### 10. 📄 Text Summarizer
+Condense long texts, articles, and documents into concise summaries using AI.
 
-## 🔮 Coming Soon (58 Tools)
+**Features:**
+- Upload documents (PDF, DOCX, TXT) or paste text
+- AI-powered summarization
+- Adjustable summary length
+- Key points extraction
+- Multiple summary formats
 
-inspir is rapidly expanding with 58 additional study tools in development, including:
-- Flashcard generator
-- Mind mapping tool
-- Study planner & calendar
-- Concept mapper
-- Math equation solver
-- And 53 more...
+### 11. 📖 Study Guide Generator
+Create comprehensive study guides from your course materials automatically.
+
+**Features:**
+- Generate from documents or text
+- Structured study guide format
+- Key concepts and definitions
+- Practice questions included
+- Export to PDF
+
+### 12. 🎴 Flashcard Creator
+Generate smart flashcards from your study materials with AI assistance.
+
+**Features:**
+- Auto-generate from text or documents
+- Spaced repetition algorithm
+- Interactive study mode
+- Progress tracking
+- Export and share flashcard sets
+
+### 13. 🔢 Math Solver
+Solve mathematical problems with step-by-step explanations.
+
+**Features:**
+- Multiple math topics supported
+- Step-by-step solutions
+- Visual explanations
+- Image upload for handwritten problems
+- Solution history
+
+### 14. 🧠 Mind Map Creator
+Visualize concepts and relationships with interactive mind maps.
+
+**Features:**
+- AI-assisted mind map generation
+- Interactive node creation
+- Export to image
+- Collaborative features
+- Custom styling and colors
+
+### 15. 🗺️ Concept Map Builder
+Build detailed concept maps to understand relationships between ideas.
+
+**Features:**
+- AI-powered concept extraction
+- Interactive graph visualization
+- Relationship mapping
+- Export and share
+- Template library
+
+### 16. 📋 Practice Test Builder
+Create full practice tests from your study materials.
+
+**Features:**
+- Generate from documents or topics
+- Multiple question types
+- Timed test mode
+- Auto-grading with feedback
+- Performance analytics
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 18** - Modern UI framework
+- **React 19** - Modern UI framework
 - **Vite** - Lightning-fast build tool
 - **Tailwind CSS** - Utility-first styling
 - **React Router DOM** - Client-side routing
+- **Framer Motion** - Animation library
 - **Supabase Client** - Authentication & database
 - **Axios** - HTTP client
+- **React Markdown** - Markdown rendering with KaTeX
+- **Lucide React** - Icon library
+- **React Flow** - Interactive diagrams
 
 ### Backend
-- **Node.js & Express** - Server framework
+- **Node.js & Express 5** - Server framework
 - **Anthropic Claude API** - AI/ML (Sonnet 4.5)
 - **Supabase** - Auth, database & real-time features
 - **Multer** - File upload handling
-- **pdf-parse & mammoth** - Document processing
+- **pdf-parse & mammoth** - Document processing (PDF, DOCX)
 - **JWT** - Secure authentication
+- **Bcrypt** - Password hashing
 
 ### Infrastructure
 - **nginx** - Reverse proxy & static serving
@@ -159,14 +226,18 @@ inspir is rapidly expanding with 58 additional study tools in development, inclu
 
 ```bash
 git clone https://github.com/makriman/inspir.git
-cd inspir
+cd inspir/quiz-app
 ```
 
 ### 2. Set Up Supabase
 
 1. Create a new project at [supabase.com](https://supabase.com)
-2. Go to SQL Editor and run the schema from `backend/database-schema.sql`
-3. Get your project URL and anon key from Settings > API
+2. Go to SQL Editor and run all migration files:
+   - `backend/database-schema.sql`
+   - `backend/database-migration-sharing.sql`
+   - `backend/database-new-features.sql`
+   - Other schema files as needed
+3. Get your project URL and keys from Settings > API
 
 ### 3. Backend Setup
 
@@ -179,8 +250,9 @@ cp .env.example .env
 # Edit .env and add your credentials:
 # - ANTHROPIC_API_KEY (from console.anthropic.com)
 # - SUPABASE_URL (from Supabase project settings)
-# - SUPABASE_ANON_KEY (from Supabase project settings)
+# - SUPABASE_KEY (service role key from Supabase)
 # - JWT_SECRET (generate a secure random string)
+# - FRONTEND_URL (e.g., http://localhost:5173)
 
 # Install dependencies
 npm install
@@ -189,20 +261,20 @@ npm install
 npm run dev
 ```
 
-The backend will run on `http://localhost:3000`
+The backend will run on `http://localhost:5000`
 
 ### 4. Frontend Setup
 
 ```bash
-cd frontend
+cd ../frontend
 
 # Copy environment template
 cp .env.example .env
 
 # Edit .env and add:
 # - VITE_SUPABASE_URL (same as backend)
-# - VITE_SUPABASE_ANON_KEY (same as backend)
-# - VITE_API_URL=http://localhost:3000/api
+# - VITE_SUPABASE_ANON_KEY (anon key from Supabase)
+# - VITE_API_URL=http://localhost:5000
 
 # Install dependencies
 npm install
@@ -223,29 +295,42 @@ Navigate to `http://localhost:5173` in your browser.
 
 ```
 inspir/
-├── backend/                 # Node.js/Express backend
-│   ├── routes/             # API route handlers
-│   ├── middleware/         # Auth & validation middleware
-│   ├── utils/              # Helper functions
-│   ├── uploads/            # File upload directory
-│   ├── database-schema.sql # Supabase database schema
-│   ├── server.js           # Main server file
-│   └── .env.example        # Environment template
-├── frontend/               # React frontend
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Route pages
-│   │   ├── contexts/      # React contexts (Auth, etc.)
-│   │   ├── utils/         # Helper functions
-│   │   ├── App.jsx        # Main app component
-│   │   └── main.jsx       # Entry point
-│   ├── public/            # Static assets
-│   └── .env.example       # Environment template
-├── deploy/                 # Deployment configs
-│   ├── nginx/             # nginx configuration
-│   └── systemd/           # systemd service files
-├── docs/                   # Additional documentation
-└── README.md              # You are here
+├── quiz-app/
+│   ├── backend/                    # Node.js/Express backend
+│   │   ├── controllers/           # API controllers for each feature
+│   │   │   ├── quizController.js
+│   │   │   ├── chatController.js
+│   │   │   ├── doubtController.js
+│   │   │   ├── flashcardController.js
+│   │   │   ├── mathSolverController.js
+│   │   │   ├── summarizerController.js
+│   │   │   └── ... (more)
+│   │   ├── routes/                # API route handlers
+│   │   ├── middleware/            # Auth & validation middleware
+│   │   ├── utils/                 # Helper functions
+│   │   ├── uploads/               # File upload directory
+│   │   ├── database-*.sql         # Database schemas & migrations
+│   │   ├── server.js              # Main server file
+│   │   └── .env.example           # Environment template
+│   │
+│   └── frontend/                   # React frontend
+│       ├── src/
+│       │   ├── components/        # Reusable UI components
+│       │   ├── pages/             # Route pages (16 tools)
+│       │   ├── contexts/          # React contexts (Auth, etc.)
+│       │   ├── seo/               # SEO configuration
+│       │   ├── utils/             # Helper functions
+│       │   ├── App.jsx            # Main app component
+│       │   └── main.jsx           # Entry point
+│       ├── public/                # Static assets
+│       └── .env.example           # Environment template
+│
+├── deploy/                         # Deployment configs
+│   ├── nginx/                     # nginx configuration
+│   └── systemd/                   # systemd service files
+│
+├── docs/                           # Additional documentation
+└── README.md                       # You are here
 ```
 
 ---
@@ -256,13 +341,13 @@ inspir/
 
 **Frontend:**
 ```bash
-cd frontend
+cd quiz-app/frontend
 npm run build
 ```
 
 **Backend:**
 ```bash
-cd backend
+cd quiz-app/backend
 npm start
 ```
 
@@ -281,13 +366,20 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 
 ### Quiz Routes
 - `POST /api/quiz/generate` - Generate quiz from content
+- `POST /api/quiz/save` - Save quiz to database
 - `POST /api/quiz/submit` - Submit quiz answers for grading
-- `GET /api/quiz/history` - Get user's quiz history (auth required)
+- `GET /api/quiz/user` - Get user's quizzes (auth required)
 - `GET /api/quiz/:id` - Get specific quiz by ID
+- `DELETE /api/quiz/:id` - Delete quiz
+- `POST /api/quiz/:quizId/share` - Generate share token
+- `GET /api/quiz/shared/:shareToken` - Get shared quiz (public)
+- `POST /api/quiz/shared/:shareToken/submit` - Submit shared quiz attempt
+- `GET /api/quiz/:quizId/attempts` - Get quiz attempt statistics
 
 ### Chat Routes
 - `POST /api/chat` - Send message to AI assistant (supports text and images)
 - `GET /api/chat/history` - Get chat history (auth required)
+- `DELETE /api/chat/history` - Clear chat history
 
 ### Citation Routes
 - `POST /api/citations/generate` - Generate citation from URL or metadata
@@ -308,6 +400,32 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 
 ### Doubt Solver Routes
 - `POST /api/doubt` - Submit doubt for AI resolution
+- `POST /api/doubt/share` - Generate shareable doubt solution
+
+### Text Summarizer Routes
+- `POST /api/summarizer/summarize` - Generate text summary
+
+### Study Guide Routes
+- `POST /api/study-guide/generate` - Generate study guide
+
+### Flashcard Routes
+- `POST /api/flashcards/generate` - Generate flashcard set
+- `GET /api/flashcards` - Get user's flashcard sets
+- `PUT /api/flashcards/:id` - Update flashcard set
+- `DELETE /api/flashcards/:id` - Delete flashcard set
+
+### Math Solver Routes
+- `POST /api/math/solve` - Solve math problem with steps
+
+### Mind Map Routes
+- `POST /api/mind-map/generate` - Generate mind map
+
+### Concept Map Routes
+- `POST /api/concept-map/generate` - Generate concept map
+
+### Practice Test Routes
+- `POST /api/practice-test/generate` - Generate practice test
+- `POST /api/practice-test/submit` - Submit and grade practice test
 
 ### Auth Routes
 - `POST /api/auth/signup` - Create new account
@@ -326,82 +444,84 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 
 ## 🗄️ Database Schema
 
-### Tables
+### Core Tables
+
+**users** (managed by Supabase Auth)
+- Authentication and user profiles
 
 **quizzes**
 - `id` (UUID, primary key)
-- `user_id` (UUID, foreign key to auth.users)
+- `user_id` (UUID, foreign key)
 - `source_name` (TEXT)
 - `questions` (JSONB)
+- `share_token` (TEXT, unique)
+- `is_shared` (BOOLEAN)
+- `created_by_username` (TEXT)
 - `created_at` (TIMESTAMP)
 
 **quiz_results**
 - `id` (UUID, primary key)
-- `user_id` (UUID, foreign key to auth.users)
-- `quiz_id` (UUID, foreign key to quizzes)
+- `user_id` (UUID, foreign key)
+- `quiz_id` (UUID, foreign key)
 - `score` (INTEGER)
 - `total_questions` (INTEGER)
 - `percentage` (INTEGER)
 - `answers` (JSONB)
 - `submitted_at` (TIMESTAMP)
 
+**quiz_attempts**
+- `id` (UUID, primary key)
+- `quiz_id` (UUID, foreign key)
+- `user_id` (UUID, nullable)
+- `attempt_name` (TEXT)
+- `is_guest` (BOOLEAN)
+- `score`, `total_questions`, `percentage`
+- `answers` (JSONB)
+- `completed_at` (TIMESTAMP)
+
 **chat_messages**
-- `id` (UUID, primary key)
-- `user_id` (UUID, foreign key to auth.users)
-- `message` (TEXT)
-- `response` (TEXT)
-- `created_at` (TIMESTAMP)
+- Chat history and conversations
 
-**forum_posts**
-- `id` (UUID, primary key)
-- `user_id` (UUID, foreign key to auth.users)
-- `title` (TEXT)
-- `content` (TEXT)
-- `category` (TEXT)
-- `created_at` (TIMESTAMP)
-
-**forum_comments**
-- `id` (UUID, primary key)
-- `post_id` (UUID, foreign key to forum_posts)
-- `user_id` (UUID, foreign key to auth.users)
-- `content` (TEXT)
-- `created_at` (TIMESTAMP)
+**forum_posts** & **forum_comments**
+- Community forum content
 
 **cornell_notes**
-- `id` (UUID, primary key)
-- `user_id` (UUID, foreign key to auth.users)
-- `title` (TEXT)
-- `cues` (TEXT)
-- `notes` (TEXT)
-- `summary` (TEXT)
-- `created_at` (TIMESTAMP)
-- `updated_at` (TIMESTAMP)
+- Structured Cornell notes
 
-**study_activity**
-- `id` (UUID, primary key)
-- `user_id` (UUID, foreign key to auth.users)
-- `activity_date` (DATE)
-- `activity_type` (VARCHAR) - 'quiz', 'chat', 'timer', 'notes', 'citation'
-- `activity_count` (INTEGER)
-- `total_time_minutes` (INTEGER)
+**study_activity** & **user_streaks**
+- Study tracking and gamification
 
-**user_streaks**
-- `user_id` (UUID, primary key)
-- `current_streak` (INTEGER)
-- `longest_streak` (INTEGER)
-- `total_study_days` (INTEGER)
-- `last_activity_date` (DATE)
-- `streak_freeze_count` (INTEGER)
+**flashcard_sets** & **flashcards**
+- Flashcard content and progress
+
+**doubt_solutions**
+- Doubt solver history
+
+**text_summaries**
+- Summarizer history
+
+**math_solutions**
+- Math solver history
+
+**study_guides**
+- Generated study guides
+
+**mind_maps** & **concept_maps**
+- Visual learning tools
+
+**practice_tests**
+- Practice test history
 
 ---
 
 ## 🎨 Brand Colors
 
 - **Deep Blue** (#1A237E) - Primary brand color
-- **Vibrant Yellow-Green** (#C6FF00) - Accent highlights
+- **Vibrant Purple** (#7C3AED) - Accents and highlights
 - **Coral Red** (#FF5252) - Call-to-action buttons
-- **Off-White** (#F5F5F5) - Backgrounds and cards
-- **Purple Gradient** (#6A1B9A → #4A148C) - Main backgrounds
+- **Vibrant Yellow** (#FFC107) - Secondary buttons
+- **Off-White** (#F9FAFB) - Backgrounds and cards
+- **Purple Gradient** - Main page backgrounds
 
 ---
 
@@ -424,6 +544,8 @@ This is a private project. If you have access and want to contribute:
 - Use strong JWT secrets in production
 - Enable HTTPS in production
 - Keep dependencies updated
+- Rate limiting enabled on API endpoints
+- Row Level Security (RLS) policies in Supabase
 
 ---
 
@@ -446,7 +568,7 @@ For issues, feature requests, or questions:
 
 ## 🙏 Acknowledgments
 
-- Powered by [Anthropic Claude AI](https://www.anthropic.com)
+- Powered by [Anthropic Claude AI](https://www.anthropic.com) (Sonnet 4.5)
 - Database & Auth by [Supabase](https://supabase.com)
 - Deployed on Ubuntu Server with nginx
 - Built with ❤️ for students everywhere
@@ -454,3 +576,5 @@ For issues, feature requests, or questions:
 ---
 
 **inspir** - The Only Study Toolkit You Need
+
+*Comprehensive AI-powered study platform with 16 live tools to help you succeed.*
