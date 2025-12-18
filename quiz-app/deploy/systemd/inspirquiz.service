@@ -1,0 +1,19 @@
+[Unit]
+Description=InspirQuiz Backend Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/quiz-app/backend
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOST=0.0.0.0
+EnvironmentFile=-/root/quiz-app/backend/.env
+ExecStart=/usr/bin/node /root/quiz-app/backend/server.js
+Restart=on-failure
+RestartSec=5
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
