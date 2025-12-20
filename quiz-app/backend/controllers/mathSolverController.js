@@ -12,9 +12,9 @@ export async function solveMathProblem(req, res) {
       return res.status(400).json({ error: 'Problem text is required' });
     }
 
-    const prompt = \`Solve this math problem step by step:
+    const prompt = `Solve this math problem step by step:
 
-Problem: \${problemText}
+Problem: ${problemText}
 
 Provide a detailed solution with:
 1. Step-by-step explanation (each step should be clear and justified)
@@ -32,7 +32,7 @@ Return as JSON:
   ],
   "finalAnswer": "...",
   "verification": "Brief verification that the answer is correct"
-}\`;
+}`;
 
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-5-20250929',
@@ -103,13 +103,13 @@ export async function generatePracticeProblems(req, res) {
       .select('*').eq('id', id).eq('user_id', userId).single();
     if (!original) return res.status(404).json({ error: 'Solution not found' });
 
-    const prompt = \`Generate \${count} similar practice problems based on this solved problem:
-Problem: \${original.problem_text}
-Type: \${original.problem_type}
-Difficulty: \${original.difficulty_level}
+    const prompt = `Generate ${count} similar practice problems based on this solved problem:
+Problem: ${original.problem_text}
+Type: ${original.problem_type}
+Difficulty: ${original.difficulty_level}
 
 Create similar problems with solutions. Return as JSON array:
-[{"problem": "...", "steps": [...], "answer": "..."}]\`;
+[{"problem": "...", "steps": [...], "answer": "..."}]`;
 
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-5-20250929',

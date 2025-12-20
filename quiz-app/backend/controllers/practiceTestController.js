@@ -36,12 +36,12 @@ export async function generateQuestions(req, res) {
       return res.status(400).json({ error: 'Content is required' });
     }
 
-    const prompt = \`Generate \${questionCount} test questions from this content:
+    const prompt = `Generate ${questionCount} test questions from this content:
 
 Content:
-\${content}
+${content}
 
-Create questions with these types: \${questionTypes.join(', ')}
+Create questions with these types: ${questionTypes.join(', ')}
 
 Return as JSON:
 {
@@ -55,7 +55,7 @@ Return as JSON:
       "points": 1
     }
   ]
-}\`;
+}`;
 
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-5-20250929',
@@ -117,13 +117,13 @@ export async function submitTestAttempt(req, res) {
           score += question.points || 1;
         }
       } else if (question.questionType === 'essay' || question.questionType === 'short_answer') {
-        const gradingPrompt = \`Grade this answer:
-Question: \${question.questionText}
-Correct Answer: \${question.correctAnswer}
-Student Answer: \${userAnswer}
+        const gradingPrompt = `Grade this answer:
+Question: ${question.questionText}
+Correct Answer: ${question.correctAnswer}
+Student Answer: ${userAnswer}
 
-Provide score (0-\${question.points}) and brief feedback as JSON:
-{"score": 0-\${question.points}, "feedback": "..."}\`;
+Provide score (0-${question.points}) and brief feedback as JSON:
+{"score": 0-${question.points}, "feedback": "..."}`;
 
         const message = await anthropic.messages.create({
           model: 'claude-sonnet-4-5-20250929',

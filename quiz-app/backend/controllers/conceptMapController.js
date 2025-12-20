@@ -12,8 +12,8 @@ export async function generateConceptMap(req, res) {
       return res.status(400).json({ error: 'Topic is required' });
     }
 
-    const prompt = \`Create a concept map showing relationships for: \${topic}
-\${content ? \`Context: \${content}\` : ''}
+    const prompt = `Create a concept map showing relationships for: ${topic}
+${content ? `Context: ${content}` : ''}
 
 Generate concepts and their relationships:
 Return as JSON:
@@ -26,7 +26,7 @@ Return as JSON:
   "relationships": [
     {"id": "r1", "source": "1", "target": "2", "label": "causes", "type": "causal"}
   ]
-}\`;
+}`;
 
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-5-20250929',

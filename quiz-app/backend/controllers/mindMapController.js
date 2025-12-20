@@ -12,8 +12,8 @@ export async function generateMindMap(req, res) {
       return res.status(400).json({ error: 'Topic is required' });
     }
 
-    const prompt = \`Create a mind map for: \${topic}
-\${content ? \`Additional context: \${content}\` : ''}
+    const prompt = `Create a mind map for: ${topic}
+${content ? `Additional context: ${content}` : ''}
 
 Generate a hierarchical mind map with:
 - Central idea (root node)
@@ -32,7 +32,7 @@ Return as JSON:
     {"id": "e1", "source": "1", "target": "2"},
     {"id": "e2", "source": "2", "target": "3"}
   ]
-}\`;
+}`;
 
     const message = await anthropic.messages.create({
       model: 'claude-sonnet-4-5-20250929',
