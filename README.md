@@ -2,14 +2,14 @@
 
 **"The Only Study Toolkit You Need"**
 
-inspir is an all-in-one AI-powered study platform designed to help students succeed. With **16 live tools** and comprehensive features, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
+inspir is an all-in-one AI-powered study platform designed to help students succeed. With **15 live tools** and comprehensive features, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
 
 [![Live Site](https://img.shields.io/badge/Live-quiz.inspir.uk-blue)](https://quiz.inspir.uk)
 [![License](https://img.shields.io/badge/License-Private-red)]()
 
 ---
 
-## 🚀 Live Tools (16)
+## 🚀 Live Tools (15)
 
 ### 1. 📝 Quiz Generator
 Upload PDFs, DOCX files, or paste text to generate AI-powered quizzes instantly. Get 10 intelligent questions with automatic grading and detailed explanations.
@@ -24,19 +24,7 @@ Upload PDFs, DOCX files, or paste text to generate AI-powered quizzes instantly.
 - Quiz history and progress tracking
 - Instant feedback and explanations
 
-### 2. 💬 AI Chat
-Your personal AI study assistant powered by Claude. Ask questions, get explanations, and have natural conversations about any topic.
-
-**Features:**
-- Context-aware conversations
-- Study help and explanations
-- **Interactive drawing canvas** - Sketch diagrams, draw concepts, visualize ideas
-- Image upload support
-- Homework assistance
-- Concept clarification
-- 24/7 availability
-
-### 3. ⏱️ Study Timer
+### 2. ⏱️ Study Timer
 Focus-optimized Pomodoro timer with customizable intervals and break periods.
 
 **Features:**
@@ -46,7 +34,7 @@ Focus-optimized Pomodoro timer with customizable intervals and break periods.
 - Focus mode
 - Progress statistics
 
-### 4. 🎓 Grade Calculator
+### 3. 🎓 Grade Calculator
 Plan your semester with precision. Calculate current grades, predict final scores, and strategize your study efforts.
 
 **Features:**
@@ -56,7 +44,7 @@ Plan your semester with precision. Calculate current grades, predict final score
 - Grade prediction
 - Semester planning
 
-### 5. 💭 Student Forum
+### 4. 💭 Student Forum
 Connect with fellow students, share resources, ask questions, and build your study community.
 
 **Features:**
@@ -66,7 +54,7 @@ Connect with fellow students, share resources, ask questions, and build your stu
 - Resource sharing
 - Study groups
 
-### 6. 📚 Citation Generator
+### 5. 📚 Citation Generator
 Generate properly formatted citations in multiple styles (APA, MLA, Chicago, Harvard) from URLs, books, or journals.
 
 **Features:**
@@ -77,7 +65,7 @@ Generate properly formatted citations in multiple styles (APA, MLA, Chicago, Har
 - Citation history tracking
 - Automatic metadata extraction
 
-### 7. 📝 Cornell Notes
+### 6. 📝 Cornell Notes
 Take structured notes using the proven Cornell note-taking system with AI-powered features.
 
 **Features:**
@@ -88,18 +76,18 @@ Take structured notes using the proven Cornell note-taking system with AI-powere
 - Note organization and search
 - Template system
 
-### 8. 🔥 Study Streaks
+### 7. 🔥 Study Streaks
 Track your daily study activity and build consistent study habits with gamified streak tracking.
 
 **Features:**
 - Daily streak counter
 - 30-day activity heatmap calendar
-- Activity breakdown by type (quiz, chat, timer, notes, citations)
+- Activity breakdown by type (quiz, timer, notes, citations, doubt solver)
 - Longest streak tracking
 - Total study days counter
 - Motivational tips and progress visualization
 
-### 9. 🤔 Doubt Solver
+### 8. 🤔 Doubt Solver
 Get instant help with your doubts and questions using AI-powered problem solving.
 
 **Features:**
@@ -111,7 +99,7 @@ Get instant help with your doubts and questions using AI-powered problem solving
 - Follow-up questions
 - Shareable solutions
 
-### 10. 📄 Text Summarizer
+### 9. 📄 Text Summarizer
 Condense long texts, articles, and documents into concise summaries using AI.
 
 **Features:**
@@ -121,7 +109,7 @@ Condense long texts, articles, and documents into concise summaries using AI.
 - Key points extraction
 - Multiple summary formats
 
-### 11. 📖 Study Guide Generator
+### 10. 📖 Study Guide Generator
 Create comprehensive study guides from your course materials automatically.
 
 **Features:**
@@ -131,7 +119,7 @@ Create comprehensive study guides from your course materials automatically.
 - Practice questions included
 - Export to PDF
 
-### 12. 🎴 Flashcard Creator
+### 11. 🎴 Flashcard Creator
 Generate smart flashcards from your study materials with AI assistance.
 
 **Features:**
@@ -141,7 +129,7 @@ Generate smart flashcards from your study materials with AI assistance.
 - Progress tracking
 - Export and share flashcard sets
 
-### 13. 🔢 Math Solver
+### 12. 🔢 Math Solver
 Solve mathematical problems with step-by-step explanations.
 
 **Features:**
@@ -151,7 +139,7 @@ Solve mathematical problems with step-by-step explanations.
 - Image upload for handwritten problems
 - Solution history
 
-### 14. 🧠 Mind Map Creator
+### 13. 🧠 Mind Map Creator
 Visualize concepts and relationships with interactive mind maps.
 
 **Features:**
@@ -161,7 +149,7 @@ Visualize concepts and relationships with interactive mind maps.
 - Collaborative features
 - Custom styling and colors
 
-### 15. 🗺️ Concept Map Builder
+### 14. 🗺️ Concept Map Builder
 Build detailed concept maps to understand relationships between ideas.
 
 **Features:**
@@ -171,7 +159,7 @@ Build detailed concept maps to understand relationships between ideas.
 - Export and share
 - Template library
 
-### 16. 📋 Practice Test Builder
+### 15. 📋 Practice Test Builder
 Create full practice tests from your study materials.
 
 **Features:**
@@ -299,7 +287,6 @@ inspir/
 │   ├── backend/                    # Node.js/Express backend
 │   │   ├── controllers/           # API controllers for each feature
 │   │   │   ├── quizController.js
-│   │   │   ├── chatController.js
 │   │   │   ├── doubtController.js
 │   │   │   ├── flashcardController.js
 │   │   │   ├── mathSolverController.js
@@ -316,7 +303,7 @@ inspir/
 │   └── frontend/                   # React frontend
 │       ├── src/
 │       │   ├── components/        # Reusable UI components
-│       │   ├── pages/             # Route pages (16 tools)
+│       │   ├── pages/             # Route pages (15 tools)
 │       │   ├── contexts/          # React contexts (Auth, etc.)
 │       │   ├── seo/               # SEO configuration
 │       │   ├── utils/             # Helper functions
@@ -375,11 +362,6 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 - `GET /api/quiz/shared/:shareToken` - Get shared quiz (public)
 - `POST /api/quiz/shared/:shareToken/submit` - Submit shared quiz attempt
 - `GET /api/quiz/:quizId/attempts` - Get quiz attempt statistics
-
-### Chat Routes
-- `POST /api/chat` - Send message to AI assistant (supports text and images)
-- `GET /api/chat/history` - Get chat history (auth required)
-- `DELETE /api/chat/history` - Clear chat history
 
 ### Citation Routes
 - `POST /api/citations/generate` - Generate citation from URL or metadata
@@ -479,9 +461,6 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 - `answers` (JSONB)
 - `completed_at` (TIMESTAMP)
 
-**chat_messages**
-- Chat history and conversations
-
 **forum_posts** & **forum_comments**
 - Community forum content
 
@@ -577,4 +556,4 @@ For issues, feature requests, or questions:
 
 **inspir** - The Only Study Toolkit You Need
 
-*Comprehensive AI-powered study platform with 16 live tools to help you succeed.*
+*Comprehensive AI-powered study platform with 15 live tools to help you succeed.*

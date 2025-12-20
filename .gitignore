@@ -90,3 +90,20 @@ backend/server-runtime.pid
 .vercel
 .netlify
 *.tsbuildinfo
+
+# Claude Code
+.claude/
+.bash_history
+.bashrc
+.gitconfig
+.git-credentials
+.ssh/
+.profile
+.wget-hsts
+.config/
+.npm/
+.codex/
+.cloud-locale-test.skip
+frontend.backup/
+.claude.json
+.claude.json.backup
