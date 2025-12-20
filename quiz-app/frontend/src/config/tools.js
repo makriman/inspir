@@ -1,8 +1,8 @@
 // Complete tools configuration for inspir platform
-// 16 live tools + 51 coming soon tools = 67 total
+// 26 live tools + 41 coming soon tools = 67 total
 
 export const tools = [
-  // ===== LIVE TOOLS (16) =====
+  // ===== LIVE TOOLS (26) =====
   {
     id: 'quiz-generator',
     name: 'Quiz Generator',
@@ -164,7 +164,7 @@ export const tools = [
     keywords: ['practice', 'test', 'exam', 'builder', 'custom']
   },
 
-  // ===== COMING SOON TOOLS (51) =====
+  // ===== COMING SOON TOOLS (41) =====
 
   // Active Learning (7 tools)
   {
@@ -173,8 +173,8 @@ export const tools = [
     icon: '✍️',
     description: 'Generate fill-in-the-blank exercises automatically',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/worksheets/fill-blank-generator',
     keywords: ['fill', 'blank', 'exercise', 'practice']
   },
   {
@@ -183,8 +183,8 @@ export const tools = [
     icon: '✅',
     description: 'Access thousands of practice MCQs organized by topic',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/worksheets/mcq-bank',
     keywords: ['mcq', 'multiple choice', 'questions', 'bank', 'practice']
   },
   {
@@ -193,8 +193,8 @@ export const tools = [
     icon: '📄',
     description: 'Generate thought-provoking essay questions for practice',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/worksheets/essay-question-generator',
     keywords: ['essay', 'question', 'writing', 'practice']
   },
   {
@@ -203,8 +203,8 @@ export const tools = [
     icon: '📖',
     description: 'Expand your vocabulary with contextual learning',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/worksheets/vocabulary-builder',
     keywords: ['vocabulary', 'words', 'language', 'learn']
   },
   {
@@ -213,8 +213,8 @@ export const tools = [
     icon: '✔️',
     description: 'Create true/false quizzes from any content',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/worksheets/true-false-quiz',
     keywords: ['true', 'false', 'quiz', 'binary']
   },
   {
@@ -223,8 +223,8 @@ export const tools = [
     icon: '🎯',
     description: 'Turn your notes into interactive matching games',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/worksheets/matching-game',
     keywords: ['matching', 'game', 'interactive', 'pairs']
   },
   {
@@ -233,8 +233,8 @@ export const tools = [
     icon: '🔬',
     description: 'Practice labeling diagrams for science and anatomy',
     category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/worksheets/diagram-labeling',
     keywords: ['diagram', 'label', 'science', 'anatomy', 'visual']
   },
 
@@ -245,8 +245,8 @@ export const tools = [
     icon: '⏲️',
     description: 'Create personalized study session timers',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/custom-timer',
     keywords: ['timer', 'custom', 'session', 'personalized']
   },
   {
@@ -255,8 +255,8 @@ export const tools = [
     icon: '📊',
     description: 'Track and analyze your study sessions over time',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/session-tracker',
     keywords: ['session', 'tracker', 'analytics', 'time']
   },
   {
@@ -265,8 +265,8 @@ export const tools = [
     icon: '🚫',
     description: 'Block distracting websites during study sessions',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/focus-mode',
     keywords: ['focus', 'blocker', 'distraction', 'productivity']
   },
   {

@@ -6,6 +6,8 @@ export async function processFile(file) {
 
   try {
     switch (ext) {
+      case 'pdf':
+        throw new Error('PDF files are not supported yet. Please upload a TXT or DOCX file instead.');
       case 'txt':
         return await processTXT(file.path);
       case 'docx':
@@ -19,6 +21,8 @@ export async function processFile(file) {
     throw new Error(`Error processing file: ${error.message}`);
   }
 }
+
+export default processFile;
 
 async function processTXT(filePath) {
   try {

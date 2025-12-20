@@ -3,6 +3,8 @@ import Navigation from '../components/Navigation';
 import { useAuth } from '../contexts/AuthContext';
 
 const STORAGE_KEY = 'inspirquiz_study_sessions_v1';
+const TIMER_PRESETS_KEY = 'inspirquiz_timer_presets_v1';
+const ACTIVE_PRESET_KEY = 'inspirquiz_timer_active_preset_v1';
 
 function loadSessions() {
   if (typeof window === 'undefined') return [];
@@ -87,6 +89,30 @@ export default function StudyTimer() {
   const [activeSubject, setActiveSubject] = useState('');
 
   const intervalRef = useRef(null);
+
+  useEffect(() => {
+    try {
+      const presetId = localStorage.getItem(ACTIVE_PRESET_KEY);
+      if (!presetId) return;
+
+      const raw = localStorage.getItem(TIMER_PRESETS_KEY);
+      const presets = raw ? JSON.parse(raw) : [];
+      const preset = Array.isArray(presets) ? presets.find((p) => p.id === presetId) : null;
+      if (!preset) return;
+
+      setStudyMinutes(Number(preset.focusMinutes) || 25);
+      setBreakMinutes(Number(preset.breakMinutes) || 5);
+      setMode('focus');
+      setSecondsLeft((Number(preset.focusMinutes) || 25) * 60);
+      setIsRunning(false);
+      setActiveStart(null);
+      setActiveSubject('');
+    } catch {
+      // ignore
+    } finally {
+      localStorage.removeItem(ACTIVE_PRESET_KEY);
+    }
+  }, []);
 
   useEffect(() => {
     persistSessions(sessions);

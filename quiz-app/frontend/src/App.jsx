@@ -70,6 +70,10 @@ import MathSolver from './pages/MathSolver';
 import MindMapCreator from './pages/MindMapCreator';
 import ConceptMapBuilder from './pages/ConceptMapBuilder';
 import PracticeTestBuilder from './pages/PracticeTestBuilder';
+import WorksheetTool from './pages/WorksheetTool';
+import CustomStudyTimer from './pages/CustomStudyTimer';
+import StudySessionTracker from './pages/StudySessionTracker';
+import FocusMode from './pages/FocusMode';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -171,6 +175,10 @@ function App() {
           <Route path="/mind-map" element={<MindMapCreator />} />
           <Route path="/concept-map" element={<ConceptMapBuilder />} />
           <Route path="/practice-test-builder" element={<PracticeTestBuilder />} />
+          <Route path="/worksheets/:type" element={<WorksheetTool />} />
+          <Route path="/custom-timer" element={<CustomStudyTimer />} />
+          <Route path="/session-tracker" element={<StudySessionTracker />} />
+          <Route path="/focus-mode" element={<FocusMode />} />
           <Route
             path="/chat"
             element={

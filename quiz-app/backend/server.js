@@ -30,6 +30,7 @@ import mathSolverRoutes from './routes/mathSolverRoutes.js';
 import mindMapRoutes from './routes/mindMapRoutes.js';
 import conceptMapRoutes from './routes/conceptMapRoutes.js';
 import practiceTestRoutes from './routes/practiceTestRoutes.js';
+import worksheetRoutes from './routes/worksheetRoutes.js';
 
 // Guard against stdout/stderr EPIPE when the log sink closes unexpectedly (keeps server alive)
 const handlePipeError = (err) => {
@@ -118,6 +119,7 @@ app.use('/api/math-solver', mathSolverRoutes);
 app.use('/api/mindmap', mindMapRoutes);
 app.use('/api/conceptmap', conceptMapRoutes);
 app.use('/api/practice-tests', practiceTestRoutes);
+app.use('/api/worksheets', worksheetRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
