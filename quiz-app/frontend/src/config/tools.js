@@ -1,8 +1,8 @@
 // Complete tools configuration for inspir platform
-// 25 live tools + 41 coming soon tools = 66 total
+// 35 live tools + 31 coming soon tools = 66 total
 
 const rawTools = [
-  // ===== LIVE TOOLS (25) =====
+  // ===== LIVE TOOLS (35) =====
   {
     id: 'quiz-generator',
     name: 'Quiz Generator',
@@ -265,8 +265,8 @@ const rawTools = [
     icon: '⌛',
     description: 'Time individual tasks and track completion',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/task-timer',
     keywords: ['task', 'timer', 'productivity', 'time tracking']
   },
   {
@@ -275,8 +275,8 @@ const rawTools = [
     icon: '🔔',
     description: 'Get reminders to take healthy study breaks',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/break-reminder',
     keywords: ['break', 'reminder', 'health', 'rest']
   },
   {
@@ -285,8 +285,8 @@ const rawTools = [
     icon: '🧠',
     description: 'Structured deep work sessions for maximum productivity',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/deep-work',
     keywords: ['deep work', 'focus', 'productivity', 'concentration']
   },
   {
@@ -295,8 +295,8 @@ const rawTools = [
     icon: '👥',
     description: 'Synchronized timers for group study sessions',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/group-timer',
     keywords: ['group', 'timer', 'study', 'sync', 'collaboration']
   },
   {
@@ -305,8 +305,8 @@ const rawTools = [
     icon: '🎵',
     description: 'Curated playlists designed to enhance concentration',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/focus-music',
     keywords: ['music', 'focus', 'concentration', 'playlist']
   },
   {
@@ -315,8 +315,8 @@ const rawTools = [
     icon: '🌧️',
     description: 'Generate ambient sounds for better focus',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/ambient-sounds',
     keywords: ['ambient', 'sounds', 'white noise', 'focus']
   },
 
@@ -327,8 +327,8 @@ const rawTools = [
     icon: '🎯',
     description: 'Set and track daily study goals',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/daily-goals',
     keywords: ['goals', 'daily', 'targets', 'tracking']
   },
   {
@@ -627,8 +627,8 @@ const rawTools = [
     icon: '✅',
     description: 'Track and build positive study habits',
     category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/habit-tracker',
     keywords: ['habit', 'tracker', 'routine', 'consistency', 'build']
   },
   {
@@ -637,8 +637,8 @@ const rawTools = [
     icon: '📊',
     description: 'Comprehensive dashboard of all your progress',
     category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/progress-dashboard',
     keywords: ['dashboard', 'progress', 'overview', 'analytics', 'stats']
   },
   {
@@ -677,8 +677,8 @@ const rawTools = [
     icon: '📋',
     description: 'Automated progress reports delivered to your inbox',
     category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/weekly-reports',
     keywords: ['report', 'weekly', 'monthly', 'progress', 'summary']
   }
 ];

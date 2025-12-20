@@ -305,6 +305,58 @@ const STATIC_ROUTES = [
     canonicalPath: '/study-timer',
   },
   {
+    pattern: '/task-timer',
+    title: 'Task Timer',
+    description:
+      'Time individual tasks, log sessions, and see where your study time actually goes.',
+    canonicalPath: '/task-timer',
+  },
+  {
+    pattern: '/break-reminder',
+    title: 'Break Reminder',
+    description:
+      'Set work and break intervals to protect your focus and avoid burnout during study sessions.',
+    canonicalPath: '/break-reminder',
+  },
+  {
+    pattern: '/deep-work',
+    title: 'Deep Work Sessions',
+    description:
+      'Run structured multi-cycle deep work sessions with built-in focus and break phases.',
+    canonicalPath: '/deep-work',
+  },
+  { pattern: '/group-timer', title: 'Group Study Timer', canonicalPath: '/group-timer', robots: 'noindex, nofollow' },
+  {
+    pattern: '/focus-music',
+    title: 'Music for Focus',
+    description:
+      'Minimal, distraction-free focus audio you can start instantly to help you enter flow.',
+    canonicalPath: '/focus-music',
+  },
+  {
+    pattern: '/ambient-sounds',
+    title: 'Ambient Sounds',
+    description:
+      'Build a simple ambient mix (rain, noise, waves) to study with fewer distractions.',
+    canonicalPath: '/ambient-sounds',
+  },
+  {
+    pattern: '/daily-goals',
+    title: 'Daily Study Goals',
+    description:
+      'Set daily targets and track progress in minutes, sessions, and tasks.',
+    canonicalPath: '/daily-goals',
+  },
+  {
+    pattern: '/habit-tracker',
+    title: 'Habit Tracker',
+    description:
+      'Track small daily study habits and build consistency over time.',
+    canonicalPath: '/habit-tracker',
+  },
+  { pattern: '/progress-dashboard', title: 'Progress Dashboard', canonicalPath: '/progress-dashboard', robots: 'noindex, nofollow' },
+  { pattern: '/weekly-reports', title: 'Weekly Reports', canonicalPath: '/weekly-reports', robots: 'noindex, nofollow' },
+  {
     pattern: '/grade-calculator',
     title: 'Grade Calculator',
     description:

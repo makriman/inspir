@@ -74,6 +74,16 @@ import CustomStudyTimer from './pages/CustomStudyTimer';
 import StudySessionTracker from './pages/StudySessionTracker';
 import FocusMode from './pages/FocusMode';
 import ComingSoonTool from './pages/ComingSoonTool';
+import TaskTimer from './pages/TaskTimer';
+import BreakReminder from './pages/BreakReminder';
+import DeepWorkSessions from './pages/DeepWorkSessions';
+import GroupStudyTimer from './pages/GroupStudyTimer';
+import FocusMusic from './pages/FocusMusic';
+import AmbientSounds from './pages/AmbientSounds';
+import DailyGoals from './pages/DailyGoals';
+import HabitTracker from './pages/HabitTracker';
+import ProgressDashboard from './pages/ProgressDashboard';
+import WeeklyReports from './pages/WeeklyReports';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -179,6 +189,16 @@ function App() {
           <Route path="/custom-timer" element={<CustomStudyTimer />} />
           <Route path="/session-tracker" element={<StudySessionTracker />} />
           <Route path="/focus-mode" element={<FocusMode />} />
+          <Route path="/task-timer" element={<TaskTimer />} />
+          <Route path="/break-reminder" element={<BreakReminder />} />
+          <Route path="/deep-work" element={<DeepWorkSessions />} />
+          <Route path="/group-timer" element={<GroupStudyTimer />} />
+          <Route path="/focus-music" element={<FocusMusic />} />
+          <Route path="/ambient-sounds" element={<AmbientSounds />} />
+          <Route path="/daily-goals" element={<DailyGoals />} />
+          <Route path="/habit-tracker" element={<HabitTracker />} />
+          <Route path="/progress-dashboard" element={<ProgressDashboard />} />
+          <Route path="/weekly-reports" element={<WeeklyReports />} />
           <Route path="/coming-soon/:toolId" element={<ComingSoonTool />} />
 
           {/* Blog Articles */}

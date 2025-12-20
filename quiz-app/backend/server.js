@@ -30,6 +30,11 @@ import mindMapRoutes from './routes/mindMapRoutes.js';
 import conceptMapRoutes from './routes/conceptMapRoutes.js';
 import practiceTestRoutes from './routes/practiceTestRoutes.js';
 import worksheetRoutes from './routes/worksheetRoutes.js';
+import productivityRoutes from './routes/productivity.js';
+import groupTimerRoutes from './routes/groupTimer.js';
+import audioRoutes from './routes/audio.js';
+import goalsRoutes from './routes/goals.js';
+import analyticsRoutes from './routes/analytics.js';
 
 // Guard against stdout/stderr EPIPE when the log sink closes unexpectedly (keeps server alive)
 const handlePipeError = (err) => {
@@ -118,6 +123,11 @@ app.use('/api/mindmap', mindMapRoutes);
 app.use('/api/conceptmap', conceptMapRoutes);
 app.use('/api/practice-tests', practiceTestRoutes);
 app.use('/api/worksheets', worksheetRoutes);
+app.use('/api/productivity', productivityRoutes);
+app.use('/api/group-timer', groupTimerRoutes);
+app.use('/api/audio', audioRoutes);
+app.use('/api/goals', goalsRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
