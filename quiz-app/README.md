@@ -2,14 +2,14 @@
 
 **"The Only Study Toolkit You Need"**
 
-inspir is an all-in-one AI-powered study platform designed to help students succeed. With 9 live tools and 58 more coming soon, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
+inspir is an all-in-one AI-powered study platform designed to help students succeed. With 8 live tools and 59 more coming soon, inspir combines cutting-edge AI technology with essential study utilities to create the ultimate academic companion.
 
 [![Live Site](https://img.shields.io/badge/Live-quiz.inspir.uk-blue)](https://quiz.inspir.uk)
 [![License](https://img.shields.io/badge/License-Private-red)]()
 
 ---
 
-## 🚀 Live Tools (9)
+## 🚀 Live Tools (8)
 
 ### 1. 📝 Quiz Generator
 Upload PDFs, DOCX files, or paste text to generate AI-powered quizzes instantly. Get 10 intelligent questions with automatic grading and detailed explanations.
@@ -21,19 +21,7 @@ Upload PDFs, DOCX files, or paste text to generate AI-powered quizzes instantly.
 - Quiz history and progress tracking
 - Instant feedback and explanations
 
-### 2. 💬 AI Chat
-Your personal AI study assistant powered by Claude. Ask questions, get explanations, and have natural conversations about any topic.
-
-**Features:**
-- Context-aware conversations
-- Study help and explanations
-- **Interactive drawing canvas** - Sketch diagrams, draw concepts, visualize ideas
-- Image upload support
-- Homework assistance
-- Concept clarification
-- 24/7 availability
-
-### 3. ⏱️ Study Timer
+### 2. ⏱️ Study Timer
 Focus-optimized Pomodoro timer with customizable intervals and break periods.
 
 **Features:**
@@ -43,7 +31,7 @@ Focus-optimized Pomodoro timer with customizable intervals and break periods.
 - Focus mode
 - Progress statistics
 
-### 4. 🎓 Grade Calculator
+### 3. 🎓 Grade Calculator
 Plan your semester with precision. Calculate current grades, predict final scores, and strategize your study efforts.
 
 **Features:**
@@ -53,7 +41,7 @@ Plan your semester with precision. Calculate current grades, predict final score
 - Grade prediction
 - Semester planning
 
-### 5. 💭 Student Forum
+### 4. 💭 Student Forum
 Connect with fellow students, share resources, ask questions, and build your study community.
 
 **Features:**
@@ -63,7 +51,7 @@ Connect with fellow students, share resources, ask questions, and build your stu
 - Resource sharing
 - Study groups
 
-### 6. 📚 Citation Generator
+### 5. 📚 Citation Generator
 Generate properly formatted citations in multiple styles (APA, MLA, Chicago, Harvard) from URLs, books, or journals.
 
 **Features:**
@@ -74,7 +62,7 @@ Generate properly formatted citations in multiple styles (APA, MLA, Chicago, Har
 - Citation history tracking
 - Automatic metadata extraction
 
-### 7. 📝 Cornell Notes
+### 6. 📝 Cornell Notes
 Take structured notes using the proven Cornell note-taking system with AI-powered features.
 
 **Features:**
@@ -85,18 +73,18 @@ Take structured notes using the proven Cornell note-taking system with AI-powere
 - Note organization and search
 - Template system
 
-### 8. 🔥 Study Streaks
+### 7. 🔥 Study Streaks
 Track your daily study activity and build consistent study habits with gamified streak tracking.
 
 **Features:**
 - Daily streak counter
 - 30-day activity heatmap calendar
-- Activity breakdown by type (quiz, chat, timer, notes, citations)
+- Activity breakdown by type (quiz, timer, notes, citations, doubt solver)
 - Longest streak tracking
 - Total study days counter
 - Motivational tips and progress visualization
 
-### 9. 🤔 Doubt Solver
+### 8. 🤔 Doubt Solver
 Get instant help with your doubts and questions using AI-powered problem solving.
 
 **Features:**
@@ -109,7 +97,7 @@ Get instant help with your doubts and questions using AI-powered problem solving
 
 ---
 
-## 🔮 Coming Soon (58 Tools)
+## 🔮 Coming Soon (59 Tools)
 
 inspir is rapidly expanding with 58 additional study tools in development, including:
 - Flashcard generator
@@ -285,10 +273,6 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 - `GET /api/quiz/history` - Get user's quiz history (auth required)
 - `GET /api/quiz/:id` - Get specific quiz by ID
 
-### Chat Routes
-- `POST /api/chat` - Send message to AI assistant (supports text and images)
-- `GET /api/chat/history` - Get chat history (auth required)
-
 ### Citation Routes
 - `POST /api/citations/generate` - Generate citation from URL or metadata
 - `GET /api/citations/history` - Get citation history (auth required)
@@ -344,13 +328,6 @@ See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for detailed deployment instruction
 - `percentage` (INTEGER)
 - `answers` (JSONB)
 - `submitted_at` (TIMESTAMP)
-
-**chat_messages**
-- `id` (UUID, primary key)
-- `user_id` (UUID, foreign key to auth.users)
-- `message` (TEXT)
-- `response` (TEXT)
-- `created_at` (TIMESTAMP)
 
 **forum_posts**
 - `id` (UUID, primary key)

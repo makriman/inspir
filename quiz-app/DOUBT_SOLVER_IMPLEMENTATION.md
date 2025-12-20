@@ -58,7 +58,7 @@ The **Doubt Solver** is a new AI-powered homework helper that allows students to
    - Added routes: `/doubt` and `/doubt/shared/:shareToken`
 
 3. **MODIFIED: `/frontend/src/components/Navigation.jsx`**
-   - Added "Doubt Solver" link in navigation (after AI Chat)
+   - Added "Doubt Solver" link in navigation
 
 ## 🔧 API Endpoints
 

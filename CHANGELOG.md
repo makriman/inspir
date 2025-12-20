@@ -27,7 +27,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Core Features
 - **Quiz Generator**: AI-powered quiz generation from uploaded documents (PDF, DOCX, TXT) or pasted text
-- **AI Chat**: Personal AI study assistant powered by Claude 4.5
 - **Study Timer**: Pomodoro-style focus timer with customizable intervals
 - **Grade Calculator**: Semester grade planning and prediction tool
 - **Student Forum**: Community discussion board with topics and comments
@@ -46,13 +45,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Quiz history tracking
 - Score statistics and performance metrics
 - Detailed answer explanations
-
-#### AI Chat
-- Context-aware conversations
-- Study assistance and concept explanations
-- Homework help
-- Natural language interaction
-- Chat history preservation
 
 #### Study Timer
 - Customizable work intervals (1-60 minutes)
@@ -133,7 +125,6 @@ Initial public release of inspir - The Only Study Toolkit You Need
 ## Future Releases
 
 ### [1.1.0] - Planned
-- Enhanced AI chat with conversation branching
 - Quiz difficulty selection
 - Custom timer sound uploads
 - Forum search and filtering

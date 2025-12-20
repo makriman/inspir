@@ -375,7 +375,6 @@ const STATIC_ROUTES = [
   { pattern: '/quiz/:quizId/review', title: 'Quiz Review', robots: 'noindex, nofollow' },
   { pattern: '/shared/:shareToken', title: 'Shared Quiz', robots: 'noindex, nofollow' },
   { pattern: '/doubt/shared/:shareToken', title: 'Shared Doubt', robots: 'noindex, nofollow' },
-  { pattern: '/chat', title: 'AI Chat', canonicalPath: '/chat', robots: 'noindex, nofollow' },
   {
     pattern: '/text-summarizer',
     title: 'AI Text Summarizer — Condense Content into Clear Summaries',

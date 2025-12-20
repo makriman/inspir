@@ -203,7 +203,7 @@ Log a study activity (authenticated)
 **Request Body:**
 ```json
 {
-  "activityType": "quiz",  // quiz, chat, timer, notes, citation, etc.
+  "activityType": "quiz",  // quiz, timer, notes, citation, doubt, etc.
   "timeMinutes": 25
 }
 ```
@@ -276,10 +276,6 @@ Get activity statistics by type (authenticated)
   "timer": {
     "count": 20,
     "totalTimeMinutes": 500
-  },
-  "chat": {
-    "count": 8,
-    "totalTimeMinutes": 60
   }
 }
 ```
@@ -383,7 +379,7 @@ Get activity statistics by type (authenticated)
 4. **Integration Points**
    - Call `/api/streaks/activity` when user:
      - Completes a quiz
-     - Uses AI chat
+     - Uses the doubt solver
      - Completes a timer session
      - Generates Cornell notes
      - Creates citations

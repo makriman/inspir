@@ -53,14 +53,6 @@ export default function Dashboard() {
       stats: `${quizHistory.length} quizzes taken`
     },
     {
-      name: 'AI Chat',
-      icon: '💬',
-      description: 'Your personal study assistant',
-      path: '/chat',
-      color: 'from-blue-500 to-cyan-600',
-      stats: 'Powered by Claude AI'
-    },
-    {
       name: 'Doubt Solver',
       icon: '🤔',
       description: 'Get homework help with AI',
@@ -319,10 +311,10 @@ export default function Dashboard() {
               Create Quiz
             </button>
             <button
-              onClick={() => navigate('/chat')}
+              onClick={() => navigate('/study-timer')}
               className="px-8 py-4 bg-white text-deep-blue rounded-lg font-bold hover:bg-opacity-90 transition-all shadow-lg transform hover:scale-105"
             >
-              Chat with AI
+              Start Timer
             </button>
             <button
               onClick={() => navigate('/doubt')}

@@ -432,7 +432,6 @@ Visit your site and test:
 - [ ] Homepage loads
 - [ ] User registration and login
 - [ ] Quiz generation
-- [ ] AI Chat
 - [ ] Study Timer
 - [ ] Grade Calculator
 - [ ] Student Forum

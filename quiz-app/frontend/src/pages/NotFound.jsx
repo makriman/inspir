@@ -16,8 +16,8 @@ export default function NotFound() {
             <p className="text-sm uppercase tracking-[0.3em] text-vibrant-yellow">Lost in the quiziverse</p>
             <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight">404</h1>
             <p className="text-xl text-purple-100">
-              This page took a break, but the new tools are wide awake—jump into chat, the student forum, a study timer,
-              or spin up a fresh quiz.
+              This page took a break, but the new tools are wide awake—jump into the student forum, a study timer, or
+              spin up a fresh quiz.
             </p>
             <div className="flex flex-wrap gap-3 justify-center mt-4">
               <Link
@@ -25,12 +25,6 @@ export default function NotFound() {
                 className="bg-coral-red text-white px-5 py-3 rounded-xl font-semibold hover:scale-[1.02] transition-transform shadow-lg"
               >
                 Generate a Quiz
-              </Link>
-              <Link
-                to="/chat"
-                className="bg-white/15 border border-white/10 text-white px-5 py-3 rounded-xl font-semibold hover:bg-white/20 transition"
-              >
-                Open Study Chat
               </Link>
               <Link
                 to="/forum"

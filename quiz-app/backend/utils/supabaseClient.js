@@ -24,7 +24,7 @@ export const supabaseAdmin = supabaseServiceRoleKey
 export function getSupabaseAdminOrThrow() {
   if (!supabaseAdmin) {
     const error = new Error(
-      'Chat database is not configured: SUPABASE_SERVICE_ROLE_KEY is missing (required to bypass RLS for server-side operations).'
+      'Supabase admin client is not configured: SUPABASE_SERVICE_ROLE_KEY is missing (required to bypass RLS for server-side operations).'
     );
     error.code = 'SUPABASE_SERVICE_ROLE_KEY_MISSING';
     throw error;
