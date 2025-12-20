@@ -84,6 +84,21 @@ import DailyGoals from './pages/DailyGoals';
 import HabitTracker from './pages/HabitTracker';
 import ProgressDashboard from './pages/ProgressDashboard';
 import WeeklyReports from './pages/WeeklyReports';
+import XpLeveling from './pages/XpLeveling';
+import Badges from './pages/Badges';
+import Leaderboards from './pages/Leaderboards';
+import Challenges from './pages/Challenges';
+import ProgressVisualization from './pages/ProgressVisualization';
+import Milestones from './pages/Milestones';
+import AccountabilityPartner from './pages/AccountabilityPartner';
+import NoteOrganizer from './pages/NoteOrganizer';
+import StudyPlanner from './pages/StudyPlanner';
+import CourseManager from './pages/CourseManager';
+import AssignmentTracker from './pages/AssignmentTracker';
+import GpaTracker from './pages/GpaTracker';
+import StudyScheduleBuilder from './pages/StudyScheduleBuilder';
+import StudyGroups from './pages/StudyGroups';
+import ResourceSharing from './pages/ResourceSharing';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -199,6 +214,21 @@ function App() {
           <Route path="/habit-tracker" element={<HabitTracker />} />
           <Route path="/progress-dashboard" element={<ProgressDashboard />} />
           <Route path="/weekly-reports" element={<WeeklyReports />} />
+          <Route path="/xp-leveling" element={<XpLeveling />} />
+          <Route path="/badges" element={<Badges />} />
+          <Route path="/leaderboards" element={<Leaderboards />} />
+          <Route path="/challenges" element={<Challenges />} />
+          <Route path="/progress-viz" element={<ProgressVisualization />} />
+          <Route path="/milestones" element={<Milestones />} />
+          <Route path="/accountability" element={<AccountabilityPartner />} />
+          <Route path="/note-organizer" element={<NoteOrganizer />} />
+          <Route path="/study-planner" element={<StudyPlanner />} />
+          <Route path="/course-manager" element={<CourseManager />} />
+          <Route path="/assignment-tracker" element={<AssignmentTracker />} />
+          <Route path="/gpa-tracker" element={<GpaTracker />} />
+          <Route path="/schedule-builder" element={<StudyScheduleBuilder />} />
+          <Route path="/study-groups" element={<StudyGroups />} />
+          <Route path="/resource-sharing" element={<ResourceSharing />} />
           <Route path="/coming-soon/:toolId" element={<ComingSoonTool />} />
 
           {/* Blog Articles */}

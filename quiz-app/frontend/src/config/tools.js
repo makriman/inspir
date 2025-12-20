@@ -1,8 +1,8 @@
 // Complete tools configuration for inspir platform
-// 35 live tools + 31 coming soon tools = 66 total
+// 50 live tools + 16 coming soon tools = 66 total
 
 const rawTools = [
-  // ===== LIVE TOOLS (35) =====
+  // ===== LIVE TOOLS (50) =====
   {
     id: 'quiz-generator',
     name: 'Quiz Generator',
@@ -154,7 +154,7 @@ const rawTools = [
     keywords: ['practice', 'test', 'exam', 'builder', 'custom']
   },
 
-  // ===== COMING SOON TOOLS (41) =====
+  // ===== COMING SOON TOOLS (16) =====
 
   // Active Learning (7 tools)
   {
@@ -337,8 +337,8 @@ const rawTools = [
     icon: '⭐',
     description: 'Earn XP and level up as you study',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/xp-leveling',
     keywords: ['xp', 'level', 'experience', 'gamification']
   },
   {
@@ -347,8 +347,8 @@ const rawTools = [
     icon: '🏆',
     description: 'Unlock badges for reaching milestones',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/badges',
     keywords: ['badge', 'achievement', 'unlock', 'reward']
   },
   {
@@ -357,8 +357,8 @@ const rawTools = [
     icon: '📈',
     description: 'Compete with friends on study leaderboards',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/leaderboards',
     keywords: ['leaderboard', 'compete', 'ranking', 'competition']
   },
   {
@@ -367,8 +367,8 @@ const rawTools = [
     icon: '🎲',
     description: 'Join weekly study challenges and competitions',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/challenges',
     keywords: ['challenge', 'competition', 'weekly', 'contest']
   },
   {
@@ -377,8 +377,8 @@ const rawTools = [
     icon: '📊',
     description: 'Visualize your study progress with beautiful charts',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/progress-viz',
     keywords: ['progress', 'visualization', 'charts', 'graphs']
   },
   {
@@ -387,8 +387,8 @@ const rawTools = [
     icon: '🎉',
     description: 'Celebrate when you hit major study milestones',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/milestones',
     keywords: ['milestone', 'celebration', 'achievement', 'reward']
   },
   {
@@ -397,8 +397,8 @@ const rawTools = [
     icon: '🤝',
     description: 'Partner with friends for mutual accountability',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/accountability',
     keywords: ['accountability', 'partner', 'motivation', 'support']
   },
 
@@ -481,8 +481,8 @@ const rawTools = [
     icon: '🏷️',
     description: 'Organize notes with tags and folders',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/note-organizer',
     keywords: ['organize', 'tags', 'folders', 'notes', 'categorize']
   },
   {
@@ -491,8 +491,8 @@ const rawTools = [
     icon: '📅',
     description: 'Plan your study schedule with an interactive calendar',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/study-planner',
     keywords: ['planner', 'calendar', 'schedule', 'plan', 'organize']
   },
   {
@@ -501,8 +501,8 @@ const rawTools = [
     icon: '📚',
     description: 'Manage all your courses and subjects in one place',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/course-manager',
     keywords: ['course', 'manage', 'subject', 'organize', 'track']
   },
   {
@@ -511,8 +511,8 @@ const rawTools = [
     icon: '📝',
     description: 'Track assignments, deadlines, and submissions',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/assignment-tracker',
     keywords: ['assignment', 'deadline', 'tracker', 'homework', 'due']
   },
   {
@@ -521,8 +521,8 @@ const rawTools = [
     icon: '📊',
     description: 'Track your GPA across semesters',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/gpa-tracker',
     keywords: ['gpa', 'tracker', 'grades', 'semester', 'average']
   },
   {
@@ -531,8 +531,8 @@ const rawTools = [
     icon: '🗓️',
     description: 'Build optimized study schedules based on your needs',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/schedule-builder',
     keywords: ['schedule', 'builder', 'plan', 'optimize', 'timetable']
   },
 
@@ -575,8 +575,8 @@ const rawTools = [
     icon: '🏠',
     description: 'Create or join virtual study groups',
     category: 'Social',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/study-groups',
     keywords: ['group', 'room', 'study', 'collaborate', 'virtual']
   },
   {
@@ -595,8 +595,8 @@ const rawTools = [
     icon: '📤',
     description: 'Share and discover study resources',
     category: 'Social',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/resource-sharing',
     keywords: ['share', 'resource', 'materials', 'community', 'discover']
   },
   {

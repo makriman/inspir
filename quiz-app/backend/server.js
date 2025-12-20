@@ -35,6 +35,9 @@ import groupTimerRoutes from './routes/groupTimer.js';
 import audioRoutes from './routes/audio.js';
 import goalsRoutes from './routes/goals.js';
 import analyticsRoutes from './routes/analytics.js';
+import gamificationRoutes from './routes/gamification.js';
+import organizationRoutes from './routes/organization.js';
+import socialRoutes from './routes/social.js';
 
 // Guard against stdout/stderr EPIPE when the log sink closes unexpectedly (keeps server alive)
 const handlePipeError = (err) => {
@@ -128,6 +131,9 @@ app.use('/api/group-timer', groupTimerRoutes);
 app.use('/api/audio', audioRoutes);
 app.use('/api/goals', goalsRoutes);
 app.use('/api/analytics', analyticsRoutes);
+app.use('/api/gamification', gamificationRoutes);
+app.use('/api/organization', organizationRoutes);
+app.use('/api/social', socialRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
