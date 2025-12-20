@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { supabase } from '../config/supabaseClient.js';
+import { supabase } from '../utils/supabaseClient.js';
 import processFile from '../utils/fileProcessor.js';
 import {
   calculateNextReview,
