@@ -8,7 +8,7 @@ import {
   calculateMasteryStats,
   getRecommendedSession
 } from '../utils/spacedRepetition.js';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -110,7 +110,7 @@ Important: Return ONLY the JSON object, no additional text. Generate exactly ${c
     // Add unique IDs to each card
     const cardsWithIds = flashcardData.cards.map(card => ({
       ...card,
-      id: uuidv4()
+      id: randomUUID()
     }));
 
     // Use provided deck name or AI-generated one
@@ -501,7 +501,7 @@ export async function shareDeck(req, res) {
     }
 
     // Generate share token
-    const shareToken = uuidv4();
+    const shareToken = randomUUID();
 
     await supabase
       .from('flashcard_decks')

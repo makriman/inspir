@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { supabase } from '../utils/supabaseClient.js';
 import processFile from '../utils/fileProcessor.js';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'node:crypto';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -331,7 +331,7 @@ export async function shareStudyGuide(req, res) {
     }
 
     // Generate share token and enable sharing
-    const shareToken = uuidv4();
+    const shareToken = randomUUID();
 
     const { data, error } = await supabase
       .from('study_guides')
