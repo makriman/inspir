@@ -214,7 +214,17 @@ export async function getLeaderboards(req, res) {
       .order('total_xp', { ascending: false })
       .order('updated_at', { ascending: false })
       .limit(limit);
-    if (error) throw error;
+    if (error) {
+      if (error.code === 'PGRST205') {
+        return res.json({
+          success: true,
+          leaderboard: [],
+          dbNotReady: true,
+          message: 'Leaderboard data is not available yet (database schema not applied).',
+        });
+      }
+      throw error;
+    }
 
     const userIds = Array.from(new Set((data || []).map((r) => r.user_id))).filter(Boolean);
     let usersById = new Map();
@@ -560,4 +570,3 @@ export async function sendAccountabilityCheckin(req, res) {
     res.status(500).json({ error: 'Failed to send check-in' });
   }
 }
-
