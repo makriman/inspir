@@ -143,7 +143,7 @@ export default function HomePageUser() {
               Continue Where You Left Off
             </h2>
             <button
-              onClick={() => navigate('/quiz/history')}
+              onClick={() => navigate('/history')}
               className="text-primary-blue hover:text-purple-dark font-semibold text-sm"
             >
               View All Activity →
@@ -203,7 +203,7 @@ export default function HomePageUser() {
         {/* Search Bar */}
         <div className="mb-6">
           <ToolSearch
-            placeholder="Search all 67 tools..."
+            placeholder={`Search all ${tools.length} tools...`}
             onToolClick={handleToolClick}
           />
         </div>

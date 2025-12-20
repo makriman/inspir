@@ -113,7 +113,7 @@ export default function ToolSearch({ placeholder, large = false, onToolClick }) 
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query && setShowResults(true)}
           onKeyDown={handleKeyDown}
-          placeholder={placeholder || "Search all 67 tools..."}
+          placeholder={placeholder || "Search all tools..."}
           className={`
             w-full bg-white border-2 border-gray-200
             rounded-xl pl-12 pr-4

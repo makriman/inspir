@@ -448,7 +448,7 @@ const STATIC_ROUTES = [
       'AI doubt solver',
       'homework help AI',
       'step by step solver',
-      'AI tutor',
+      'AI homework helper',
       'instant homework help',
       'math problem solver AI',
       'study help AI',

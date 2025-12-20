@@ -27,7 +27,7 @@ export const siteConfig = {
     'continuing education platform',
     'upskilling software',
     // Generic high-value keywords
-    'AI tutor',
+    'homework help AI',
     'learning platform',
     'study assistant',
     'AI flashcard generator',

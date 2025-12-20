@@ -39,14 +39,14 @@ export default function HomePageGuest() {
             The Modern AI Study Toolkit
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            The modern study toolkit powered by advanced AI. Create quizzes from any content, solve doubts instantly, build Cornell notes, track streaks.
+            The modern study toolkit powered by advanced AI. Create quizzes from any content, solve doubts instantly, stay focused with timers, and track progress with goals and streaks.
           </p>
         </div>
 
         {/* Search Bar */}
         <div className="max-w-3xl mx-auto mb-8">
           <ToolSearch
-            placeholder="What do you want to study today? Try 'Generate quiz', 'AI tutor', 'Citation'..."
+            placeholder="What do you want to do today? Try 'Quiz', 'Doubt solver', 'Study timer', 'XP', 'Planner'..."
             large={true}
             onToolClick={handleToolClick}
           />
