@@ -40,7 +40,7 @@ export default function ToolSearch({ placeholder, large = false, onToolClick }) 
     setQuery('');
     setShowResults(false);
 
-    if (tool.status === 'live' && tool.route) {
+    if (tool.route) {
       navigate(tool.route);
     } else if (onToolClick) {
       onToolClick(tool);

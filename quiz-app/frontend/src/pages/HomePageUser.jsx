@@ -52,6 +52,10 @@ export default function HomePageUser() {
   }, [session]);
 
   const handleToolClick = (tool) => {
+    if (tool.route) {
+      navigate(tool.route);
+      return;
+    }
     if (tool.status === 'coming-soon') {
       setSelectedTool(tool);
     }

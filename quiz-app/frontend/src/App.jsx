@@ -73,6 +73,7 @@ import WorksheetTool from './pages/WorksheetTool';
 import CustomStudyTimer from './pages/CustomStudyTimer';
 import StudySessionTracker from './pages/StudySessionTracker';
 import FocusMode from './pages/FocusMode';
+import ComingSoonTool from './pages/ComingSoonTool';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -178,6 +179,7 @@ function App() {
           <Route path="/custom-timer" element={<CustomStudyTimer />} />
           <Route path="/session-tracker" element={<StudySessionTracker />} />
           <Route path="/focus-mode" element={<FocusMode />} />
+          <Route path="/coming-soon/:toolId" element={<ComingSoonTool />} />
 
           {/* Blog Articles */}
           <Route path="/blog/multiple-exams-strategy" element={<MultipleExamsStrategy />} />

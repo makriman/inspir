@@ -1,7 +1,7 @@
 // Complete tools configuration for inspir platform
 // 25 live tools + 41 coming soon tools = 66 total
 
-export const tools = [
+const rawTools = [
   // ===== LIVE TOOLS (25) =====
   {
     id: 'quiz-generator',
@@ -682,6 +682,13 @@ export const tools = [
     keywords: ['report', 'weekly', 'monthly', 'progress', 'summary']
   }
 ];
+
+export const tools = rawTools.map((tool) => {
+  if (tool.status === 'coming-soon' && !tool.route) {
+    return { ...tool, route: `/coming-soon/${tool.id}` };
+  }
+  return tool;
+});
 
 export const categories = [
   'All',

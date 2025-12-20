@@ -17,6 +17,10 @@ export default function HomePageGuest() {
   const displayedTools = showAllTools ? filteredTools : filteredTools.slice(0, 18);
 
   const handleToolClick = (tool) => {
+    if (tool.route) {
+      navigate(tool.route);
+      return;
+    }
     if (tool.status === 'coming-soon') {
       setSelectedTool(tool);
     }

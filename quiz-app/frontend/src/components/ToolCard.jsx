@@ -4,7 +4,7 @@ export default function ToolCard({ tool, onClick, showStats = false, stats = nul
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (tool.status === 'live' && tool.route) {
+    if (tool.route) {
       navigate(tool.route);
     } else if (onClick) {
       onClick(tool);
@@ -74,9 +74,7 @@ export default function ToolCard({ tool, onClick, showStats = false, stats = nul
             </span>
           </span>
         ) : (
-          <span className="text-gray-400 font-semibold">
-            Click to join waitlist
-          </span>
+          <span className="text-gray-400 font-semibold">See what’s coming</span>
         )}
       </div>
 

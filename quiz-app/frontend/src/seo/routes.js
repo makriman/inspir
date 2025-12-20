@@ -371,6 +371,7 @@ const STATIC_ROUTES = [
   { pattern: '/dashboard', title: 'Dashboard', canonicalPath: '/dashboard', robots: 'noindex, nofollow' },
   { pattern: '/history', title: 'Quiz History', canonicalPath: '/history', robots: 'noindex, nofollow' },
   { pattern: '/results', title: 'Quiz Results', canonicalPath: '/results', robots: 'noindex, nofollow' },
+  { pattern: '/coming-soon/:toolId', title: 'Coming Soon', canonicalPath: '/coming-soon', robots: 'noindex, nofollow' },
   { pattern: '/quiz/:quizId/attempts', title: 'Quiz Attempts', robots: 'noindex, nofollow' },
   { pattern: '/quiz/:quizId/review', title: 'Quiz Review', robots: 'noindex, nofollow' },
   { pattern: '/shared/:shareToken', title: 'Shared Quiz', robots: 'noindex, nofollow' },
