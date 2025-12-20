@@ -1,8 +1,8 @@
 // Complete tools configuration for inspir platform
-// 16 live tools + 51 coming soon tools = 67 total
+// 15 live tools + 51 coming soon tools = 66 total
 
 export const tools = [
-  // ===== LIVE TOOLS (16) =====
+  // ===== LIVE TOOLS (15) =====
   {
     id: 'quiz-generator',
     name: 'Quiz Generator',
@@ -12,16 +12,6 @@ export const tools = [
     status: 'live',
     route: '/quiz',
     keywords: ['quiz', 'test', 'practice', 'exam', 'questions', 'generate']
-  },
-  {
-    id: 'ai-chat',
-    name: 'AI Chat Tutor',
-    icon: '💬',
-    description: 'Get instant help with a personal AI study assistant',
-    category: 'AI Help',
-    status: 'live',
-    route: '/chat',
-    keywords: ['chat', 'ai', 'tutor', 'help', 'question', 'assistant', 'drawing']
   },
   {
     id: 'study-timer',

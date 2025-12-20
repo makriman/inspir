@@ -1,7 +1,7 @@
 -- ============================================
 -- COMPLETE DATABASE SETUP FOR INSPIR
 -- All features: Citations, Cornell Notes, Study Streaks,
--- Doubt Solver, Chat System, Waitlist
+-- Doubt Solver, Waitlist
 -- Run this in Supabase SQL Editor
 -- ============================================
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS study_activity (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
     activity_date DATE NOT NULL,
-    activity_type VARCHAR(50) NOT NULL, -- 'quiz', 'chat', 'timer', 'notes', 'citation', 'doubt', etc.
+    activity_type VARCHAR(50) NOT NULL, -- 'quiz', 'timer', 'notes', 'citation', 'doubt', etc.
     activity_count INTEGER DEFAULT 1,
     total_time_minutes INTEGER DEFAULT 0, -- For timer sessions
     created_at TIMESTAMPTZ DEFAULT NOW(),
@@ -148,58 +148,7 @@ CREATE INDEX IF NOT EXISTS idx_doubt_shares_token ON doubt_shares(share_token);
 CREATE INDEX IF NOT EXISTS idx_doubt_shares_doubt_id ON doubt_shares(doubt_id);
 
 -- ============================================
--- 5. CHAT SYSTEM
--- ============================================
-
--- Chat conversations table
-CREATE TABLE IF NOT EXISTS chat_conversations (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
-  title VARCHAR(255) NOT NULL DEFAULT 'New Chat',
-  folder VARCHAR(100) DEFAULT 'general', -- For organizing chats
-  is_pinned BOOLEAN DEFAULT false,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  last_message_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- Chat messages table
-CREATE TABLE IF NOT EXISTS chat_messages (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  conversation_id UUID REFERENCES chat_conversations(id) ON DELETE CASCADE NOT NULL,
-  role VARCHAR(20) NOT NULL, -- 'user' or 'assistant'
-  content TEXT NOT NULL,
-  tokens_used INTEGER DEFAULT 0,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-
-  -- Safety fields
-  was_flagged BOOLEAN DEFAULT false,
-  moderation_reason TEXT,
-
-  -- Metadata (for images, drawings, etc.)
-  metadata JSONB DEFAULT '{}'::jsonb
-);
-
--- Chat folders/categories (for organization)
-CREATE TABLE IF NOT EXISTS chat_folders (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
-  name VARCHAR(100) NOT NULL,
-  color VARCHAR(20) DEFAULT 'blue',
-  icon VARCHAR(50) DEFAULT 'folder',
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  UNIQUE(user_id, name)
-);
-
--- Indexes for chat system
-CREATE INDEX IF NOT EXISTS idx_chat_messages_content_search ON chat_messages USING gin(to_tsvector('english', content));
-CREATE INDEX IF NOT EXISTS idx_chat_conversations_user_id ON chat_conversations(user_id);
-CREATE INDEX IF NOT EXISTS idx_chat_conversations_updated_at ON chat_conversations(updated_at DESC);
-CREATE INDEX IF NOT EXISTS idx_chat_messages_conversation_id ON chat_messages(conversation_id);
-CREATE INDEX IF NOT EXISTS idx_chat_messages_created_at ON chat_messages(created_at);
-
--- ============================================
--- 6. WAITLIST (COMING SOON TOOLS)
+-- 5. WAITLIST (COMING SOON TOOLS)
 -- ============================================
 
 -- Create waitlist table for coming soon tools
@@ -229,9 +178,6 @@ ALTER TABLE study_activity ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_streaks ENABLE ROW LEVEL SECURITY;
 ALTER TABLE doubt_questions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE doubt_shares ENABLE ROW LEVEL SECURITY;
-ALTER TABLE chat_conversations ENABLE ROW LEVEL SECURITY;
-ALTER TABLE chat_messages ENABLE ROW LEVEL SECURITY;
-ALTER TABLE chat_folders ENABLE ROW LEVEL SECURITY;
 ALTER TABLE waitlist ENABLE ROW LEVEL SECURITY;
 
 -- Citations policies
@@ -281,24 +227,6 @@ CREATE POLICY "Users can view their own shares" ON doubt_shares FOR SELECT
 CREATE POLICY "Users can create shares for their doubts" ON doubt_shares FOR INSERT
   WITH CHECK (EXISTS (SELECT 1 FROM doubt_questions WHERE doubt_questions.id = doubt_shares.doubt_id AND doubt_questions.user_id = auth.uid()));
 CREATE POLICY "Anyone can view shares" ON doubt_shares FOR SELECT USING (true);
-
--- Chat conversations policies
-CREATE POLICY "Users can view their own conversations" ON chat_conversations FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users can insert their own conversations" ON chat_conversations FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "Users can update their own conversations" ON chat_conversations FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "Users can delete their own conversations" ON chat_conversations FOR DELETE USING (auth.uid() = user_id);
-
--- Chat messages policies
-CREATE POLICY "Users can view messages in their conversations" ON chat_messages FOR SELECT
-  USING (conversation_id IN (SELECT id FROM chat_conversations WHERE user_id = auth.uid()));
-CREATE POLICY "Users can insert messages in their conversations" ON chat_messages FOR INSERT
-  WITH CHECK (conversation_id IN (SELECT id FROM chat_conversations WHERE user_id = auth.uid()));
-
--- Chat folders policies
-CREATE POLICY "Users can view their own folders" ON chat_folders FOR SELECT USING (auth.uid() = user_id);
-CREATE POLICY "Users can insert their own folders" ON chat_folders FOR INSERT WITH CHECK (auth.uid() = user_id);
-CREATE POLICY "Users can update their own folders" ON chat_folders FOR UPDATE USING (auth.uid() = user_id);
-CREATE POLICY "Users can delete their own folders" ON chat_folders FOR DELETE USING (auth.uid() = user_id);
 
 -- Waitlist policies (public access for signups)
 CREATE POLICY "Anyone can add to waitlist" ON waitlist FOR INSERT WITH CHECK (true);
@@ -378,23 +306,6 @@ CREATE TRIGGER study_activity_streak_update
     FOR EACH ROW
     EXECUTE FUNCTION trigger_update_streak();
 
--- Function to auto-update chat conversation timestamp
-CREATE OR REPLACE FUNCTION update_chat_conversation_timestamp()
-RETURNS TRIGGER AS $$
-BEGIN
-  UPDATE chat_conversations
-  SET updated_at = NOW(), last_message_at = NOW()
-  WHERE id = NEW.conversation_id;
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-DROP TRIGGER IF EXISTS trigger_update_chat_timestamp ON chat_messages;
-CREATE TRIGGER trigger_update_chat_timestamp
-  AFTER INSERT ON chat_messages
-  FOR EACH ROW
-  EXECUTE FUNCTION update_chat_conversation_timestamp();
-
 -- Function to update doubt questions updated_at
 CREATE OR REPLACE FUNCTION update_doubt_questions_updated_at()
 RETURNS TRIGGER AS $$
@@ -434,8 +345,6 @@ COMMENT ON TABLE cornell_notes IS 'Stores Cornell-style structured notes';
 COMMENT ON TABLE study_activity IS 'Tracks daily study activities for streak calculation';
 COMMENT ON TABLE user_streaks IS 'Stores streak statistics for gamification';
 COMMENT ON TABLE doubt_questions IS 'Stores student questions and AI-generated solutions';
-COMMENT ON TABLE chat_conversations IS 'Stores user chat conversations with AI tutor';
-COMMENT ON TABLE chat_messages IS 'Stores individual messages in conversations';
 COMMENT ON TABLE waitlist IS 'Stores email addresses for users interested in coming soon tools';
 
 -- ============================================
@@ -453,7 +362,6 @@ AND tablename IN (
   'citations', 'citation_projects', 'project_citations',
   'cornell_notes', 'study_activity', 'user_streaks',
   'doubt_questions', 'doubt_shares',
-  'chat_conversations', 'chat_messages', 'chat_folders',
   'waitlist'
 )
 ORDER BY tablename;

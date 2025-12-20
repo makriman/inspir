@@ -8,7 +8,6 @@ export default function ConditionalFooter() {
   // Keep it for marketing/content pages like Home, Blog, About, FAQ, etc.
   const hidePrefixes = [
     '/auth',
-    '/chat',
     '/citations',
     '/cornell-notes',
     '/dashboard',

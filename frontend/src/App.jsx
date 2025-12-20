@@ -57,7 +57,6 @@ import TeacherMultipleChoiceQuestions from './pages/blog/TeacherMultipleChoiceQu
 import StudyTimer from './pages/StudyTimer';
 import NotFound from './pages/NotFound';
 import StudentForum from './pages/StudentForum';
-import Chat from './pages/Chat';
 import GradeCalculator from './pages/GradeCalculator';
 import CitationGenerator from './pages/CitationGenerator';
 import CornellNotes from './pages/CornellNotes';
@@ -171,14 +170,6 @@ function App() {
           <Route path="/mind-map" element={<MindMapCreator />} />
           <Route path="/concept-map" element={<ConceptMapBuilder />} />
           <Route path="/practice-test-builder" element={<PracticeTestBuilder />} />
-          <Route
-            path="/chat"
-            element={
-              <ProtectedRoute>
-                <Chat />
-              </ProtectedRoute>
-            }
-          />
 
           {/* Blog Articles */}
           <Route path="/blog/multiple-exams-strategy" element={<MultipleExamsStrategy />} />

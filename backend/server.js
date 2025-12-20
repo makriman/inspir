@@ -16,7 +16,6 @@ import multer from 'multer';
 import quizRoutes from './routes/quiz.js';
 import authRoutes from './routes/auth.js';
 import forumRoutes from './routes/forum.js';
-import chatRoutes from './routes/chat.js';
 import citationRoutes from './routes/citation.js';
 import cornellNotesRoutes from './routes/cornellNotes.js';
 import streaksRoutes from './routes/streaks.js';
@@ -58,7 +57,7 @@ if (process.env.JWT_SECRET.length < 32) {
 
 if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
   console.warn(
-    'WARN: SUPABASE_SERVICE_ROLE_KEY is not set. Chat (and any RLS-protected tables) will fail with 503 until this is configured.'
+    'WARN: SUPABASE_SERVICE_ROLE_KEY is not set. Some features using RLS-protected tables may fail with 503 until this is configured.'
   );
 }
 
@@ -104,7 +103,6 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use('/api/quiz', quizRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/forum', forumRoutes);
-app.use('/api/chat', chatRoutes);
 app.use('/api/citations', citationRoutes);
 app.use('/api/cornell-notes', cornellNotesRoutes);
 app.use('/api/streaks', streaksRoutes);

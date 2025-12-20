@@ -215,11 +215,10 @@ export default function StudyStreaks({ compact = false }) {
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold capitalize text-gray-700">
                       {type === 'quiz' && '📝 Quizzes'}
-                      {type === 'chat' && '💬 AI Chat'}
                       {type === 'timer' && '⏱️ Timer'}
                       {type === 'notes' && '📝 Notes'}
                       {type === 'citation' && '📚 Citations'}
-                      {!['quiz', 'chat', 'timer', 'notes', 'citation'].includes(type) && `📌 ${type}`}
+                      {!['quiz', 'timer', 'notes', 'citation'].includes(type) && `📌 ${type}`}
                     </span>
                     <span className="text-sm text-gray-600">
                       {data.count} times • {Math.round(data.totalTimeMinutes)} min
@@ -243,7 +242,7 @@ export default function StudyStreaks({ compact = false }) {
         <h3 className="text-lg font-bold mb-3">💡 Streak Tips</h3>
         <ul className="space-y-2 text-sm opacity-90">
           <li>✓ Study a little every day to maintain your streak</li>
-          <li>✓ Try different tools: quizzes, chat, notes, citations</li>
+          <li>✓ Try different tools: quizzes, notes, citations, doubt solver</li>
           <li>✓ Even 5 minutes counts toward your streak!</li>
           <li>✓ Your longest streak: {streakData.longest_streak} days - can you beat it?</li>
         </ul>

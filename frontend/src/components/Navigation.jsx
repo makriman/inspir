@@ -7,7 +7,6 @@ export default function Navigation() {
   const { user } = useAuth();
   const navLinks = [
     { to: '/quiz', label: 'Quiz Generator' },
-    { to: '/chat', label: 'AI Chat' },
     { to: '/doubt', label: 'Doubt Solver' },
     { to: '/how-it-works', label: 'How It Works' },
     { to: '/use-cases', label: 'Use Cases' },
