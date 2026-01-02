@@ -1,14 +1,25 @@
 #!/bin/bash
 
-# Deployment script for InspirQuiz
+# Deployment script for inspir
 
-echo "🚀 Starting InspirQuiz deployment..."
+echo "🚀 Starting inspir deployment..."
 
-# Navigate to frontend directory
-cd /root/quiz-app/frontend || exit 1
+# Navigate to project directory
+cd /root/inspir || exit 1
+
+# Pull latest code
+echo "📥 Pulling latest code..."
+git pull origin main
+
+# Install backend dependencies
+echo "📦 Installing backend dependencies..."
+cd /root/inspir/backend
+npm install --production
 
 # Build the frontend
 echo "📦 Building frontend..."
+cd /root/inspir/frontend
+npm install
 npm run build
 
 if [ $? -ne 0 ]; then
@@ -26,23 +37,11 @@ chmod -R a+rX /var/www/quiz.inspir.uk/
 echo "🔄 Reloading nginx..."
 systemctl reload nginx
 
-# Check backend status
-echo "🔍 Checking backend status..."
-if command -v pm2 >/dev/null 2>&1; then
-    timeout 5s pm2 list | grep quiz-backend || echo "⚠️  Unable to read pm2 status (pm2 not responding or process not found)."
-else
-    echo "⚠️  pm2 not found; skipping backend status check."
-fi
-
-# Restart backend if needed
-read -p "Restart backend? (y/n): " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    cd /root/quiz-app/backend || exit 1
-    pm2 restart quiz-backend
-    pm2 save
-fi
+# Restart backend with PM2
+echo "🔄 Restarting backend..."
+cd /root/inspir/backend
+pm2 restart quiz-backend || pm2 start server.js --name quiz-backend
+pm2 save
 
 echo "✅ Deployment complete!"
 echo "🌐 Live at: https://quiz.inspir.uk"
-echo "📊 Grade Calculator at: https://quiz.inspir.uk/grade-calculator"
