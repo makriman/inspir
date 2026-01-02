@@ -5,10 +5,10 @@ import { dirname, join } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Load env from backend directory (absolute paths to handle PM2 running from different cwd).
-// Prefer a local override file for secrets that should not be committed.
-dotenv.config({ path: '/root/quiz-app/backend/.env.local' });
-dotenv.config({ path: '/root/quiz-app/backend/.env' });
+// Load env from backend directory (use relative paths for portability)
+// Try .env.local first (for local overrides), then fall back to .env
+dotenv.config({ path: join(__dirname, '.env.local') });
+dotenv.config({ path: join(__dirname, '.env') });
 
 import express from 'express';
 import cors from 'cors';

@@ -6,15 +6,17 @@ The only study toolkit you need — an AI-powered web app for quizzes, notes, su
 
 ---
 
-## What’s Included
+## What's Included
 
-**Live tools (50)** (see full list in-app: https://quiz.inspir.uk)
-- **Active learning:** Quiz Generator, Flashcards, Practice Test Builder, Mind Maps, Concept Maps, Worksheets
-- **AI help:** Doubt Solver, Text Summarizer, Study Guide Generator, Math Solver, Citation Generator
-- **Focus:** Study Timer, Task Timer, Break Reminder, Deep Work, Focus Mode, Focus Music, Ambient Sounds
-- **Gamification:** Study Streaks, Daily Goals, Habit Tracker, XP & Leveling, Badges, Challenges, Milestones, Accountability Partner
-- **Organization:** Cornell Notes, Note Organizer, Study Planner, Schedule Builder, Course Manager, Assignment Tracker, GPA Tracker
-- **Social:** Student Forum, Study Groups, Resource Sharing, Group Timer
+**53 Live Study Tools** (see full list in-app: https://quiz.inspir.uk)
+
+- **Active Learning:** Quiz Generator, Flashcard Creator, Practice Test Builder, Mind Map Creator, Concept Map Builder, Fill-in-the-Blank, MCQ Bank, True/False Quiz, Vocabulary Builder
+- **AI Help:** Doubt Solver, Text Summarizer, Study Guide Generator, Math Solver, Citation Generator, Essay Assistant, Grammar Checker, Paraphrasing, Concept Explainer, Translator, Research Finder
+- **Focus & Productivity:** Study Timer, Custom Timer, Task Timer, Break Reminder, Deep Work, Focus Mode, Focus Music, Ambient Sounds, Group Timer, Session Tracker
+- **Gamification:** Study Streaks, Daily Goals, Habit Tracker, XP & Leveling, Badges, Leaderboards, Challenges, Milestones
+- **Organization:** Cornell Notes, Grade Calculator, Note Organizer, Study Planner, Assignment Tracker, GPA Tracker, Course Manager, Schedule Builder
+- **Analytics:** Progress Dashboard
+- **Social:** Student Forum, Study Groups, Resource Sharing
 
 **Core capabilities**
 - Auth + user data via Supabase

@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { supabase } from '../config/supabaseClient.js';
-import processFile from '../utils/fileProcessor.js';
+import { supabase } from '../utils/supabaseClient.js';
+import { processFile } from '../utils/fileProcessor.js';
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -79,8 +79,8 @@ Important: Return ONLY the JSON object, no additional text.`;
       const responseText = message.content[0].text;
       // Try to extract JSON if it's wrapped in markdown code blocks
       const jsonMatch = responseText.match(/```json\s*([\s\S]*?)\s*```/) ||
-                       responseText.match(/```\s*([\s\S]*?)\s*```/) ||
-                       [null, responseText];
+        responseText.match(/```\s*([\s\S]*?)\s*```/) ||
+        [null, responseText];
       summaryData = JSON.parse(jsonMatch[1]);
     } catch (parseError) {
       console.error('Failed to parse Claude response:', parseError);

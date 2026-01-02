@@ -1,8 +1,10 @@
 // Complete tools configuration for inspir platform
-// 15 live tools + 51 coming soon tools = 66 total
+// 66 live tools
 
 export const tools = [
-  // ===== LIVE TOOLS (15) =====
+  // ===== LIVE TOOLS =====
+
+  // Quiz & Tests
   {
     id: 'quiz-generator',
     name: 'Quiz Generator',
@@ -14,65 +16,89 @@ export const tools = [
     keywords: ['quiz', 'test', 'practice', 'exam', 'questions', 'generate']
   },
   {
-    id: 'study-timer',
-    name: 'Study Timer',
-    icon: '⏱️',
-    description: 'Focus-optimized Pomodoro timer with custom intervals',
-    category: 'Focus & Productivity',
+    id: 'practice-test-builder',
+    name: 'Practice Test Builder',
+    icon: '📋',
+    description: 'Build custom practice tests from your study materials',
+    category: 'Active Learning',
     status: 'live',
-    route: '/study-timer',
-    keywords: ['timer', 'pomodoro', 'focus', 'productivity', 'session']
+    route: '/practice-test-builder',
+    keywords: ['practice', 'test', 'exam', 'builder', 'custom']
   },
   {
-    id: 'grade-calculator',
-    name: 'Grade Calculator',
-    icon: '🎓',
-    description: 'Calculate grades, predict scores, and plan your semester',
-    category: 'Organization',
+    id: 'flashcard-creator',
+    name: 'Flashcard Creator',
+    icon: '🎴',
+    description: 'Create and study with AI-generated flashcards',
+    category: 'Active Learning',
     status: 'live',
-    route: '/grade-calculator',
-    keywords: ['grade', 'calculator', 'gpa', 'score', 'predict', 'semester']
+    route: '/flashcards',
+    keywords: ['flashcard', 'memorize', 'study', 'cards', 'spaced repetition']
   },
   {
-    id: 'student-forum',
-    name: 'Student Forum',
-    icon: '💭',
-    description: 'Connect with students, share resources, ask questions',
-    category: 'Social',
+    id: 'fill-blank-generator',
+    name: 'Fill-in-the-Blank Generator',
+    icon: '✍️',
+    description: 'Generate fill-in-the-blank exercises automatically',
+    category: 'Active Learning',
     status: 'live',
-    route: '/forum',
-    keywords: ['forum', 'community', 'discussion', 'students', 'questions']
+    route: '/fill-blank',
+    keywords: ['fill', 'blank', 'exercise', 'practice']
   },
   {
-    id: 'citation-generator',
-    name: 'Citation Generator',
-    icon: '📚',
-    description: 'Generate citations in APA, MLA, Chicago, and Harvard styles',
-    category: 'AI Help',
+    id: 'mcq-bank',
+    name: 'Multiple Choice Question Bank',
+    icon: '✅',
+    description: 'Generate unlimited MCQs from your study materials',
+    category: 'Active Learning',
     status: 'live',
-    route: '/citations',
-    keywords: ['citation', 'reference', 'apa', 'mla', 'chicago', 'harvard', 'bibliography']
+    route: '/mcq-bank',
+    keywords: ['mcq', 'multiple choice', 'questions', 'bank', 'practice']
   },
   {
-    id: 'cornell-notes',
-    name: 'Cornell Notes',
-    icon: '📝',
-    description: 'Take structured notes with the Cornell note-taking system',
-    category: 'Organization',
+    id: 'true-false-quiz',
+    name: 'True/False Quiz Maker',
+    icon: '✔️',
+    description: 'Create true/false quizzes from any content',
+    category: 'Active Learning',
     status: 'live',
-    route: '/cornell-notes',
-    keywords: ['notes', 'cornell', 'note-taking', 'organize', 'pdf', 'export']
+    route: '/true-false',
+    keywords: ['true', 'false', 'quiz', 'binary']
   },
   {
-    id: 'study-streaks',
-    name: 'Study Streaks',
-    icon: '🔥',
-    description: 'Track daily study activity and build consistent habits',
-    category: 'Analytics',
+    id: 'vocabulary-builder',
+    name: 'Vocabulary Builder',
+    icon: '📖',
+    description: 'Expand your vocabulary with AI-powered learning',
+    category: 'Active Learning',
     status: 'live',
-    route: '/streaks',
-    keywords: ['streak', 'habit', 'tracking', 'progress', 'daily', 'gamification']
+    route: '/vocabulary',
+    keywords: ['vocabulary', 'words', 'language', 'learn']
   },
+
+  // Visual Learning
+  {
+    id: 'mind-map',
+    name: 'Mind Map Creator',
+    icon: '🧩',
+    description: 'Create visual mind maps to organize ideas',
+    category: 'Visual Learning',
+    status: 'live',
+    route: '/mind-map',
+    keywords: ['mind map', 'visual', 'brainstorm', 'organize']
+  },
+  {
+    id: 'concept-map',
+    name: 'Concept Map Builder',
+    icon: '🗺️',
+    description: 'Build concept maps to connect related ideas',
+    category: 'Visual Learning',
+    status: 'live',
+    route: '/concept-map',
+    keywords: ['concept map', 'connect', 'relationship', 'visual']
+  },
+
+  // AI Help
   {
     id: 'doubt-solver',
     name: 'Doubt Solver',
@@ -104,16 +130,6 @@ export const tools = [
     keywords: ['study guide', 'generate', 'notes', 'summary']
   },
   {
-    id: 'flashcard-creator',
-    name: 'Flashcard Creator',
-    icon: '🎴',
-    description: 'Create and study with AI-generated flashcards',
-    category: 'Active Learning',
-    status: 'live',
-    route: '/flashcards',
-    keywords: ['flashcard', 'memorize', 'study', 'cards', 'spaced repetition']
-  },
-  {
     id: 'math-solver',
     name: 'Math Problem Solver',
     icon: '🔢',
@@ -124,140 +140,96 @@ export const tools = [
     keywords: ['math', 'solver', 'calculator', 'equation', 'solution']
   },
   {
-    id: 'mind-map',
-    name: 'Mind Map Creator',
-    icon: '🧩',
-    description: 'Create visual mind maps to organize ideas',
-    category: 'Visual Learning',
+    id: 'citation-generator',
+    name: 'Citation Generator',
+    icon: '📚',
+    description: 'Generate citations in APA, MLA, Chicago, and Harvard styles',
+    category: 'AI Help',
     status: 'live',
-    route: '/mind-map',
-    keywords: ['mind map', 'visual', 'brainstorm', 'organize']
+    route: '/citations',
+    keywords: ['citation', 'reference', 'apa', 'mla', 'chicago', 'harvard', 'bibliography']
   },
   {
-    id: 'concept-map',
-    name: 'Concept Map Builder',
-    icon: '🗺️',
-    description: 'Build concept maps to connect related ideas',
-    category: 'Visual Learning',
-    status: 'live',
-    route: '/concept-map',
-    keywords: ['concept map', 'connect', 'relationship', 'visual']
-  },
-  {
-    id: 'practice-test-builder',
-    name: 'Practice Test Builder',
-    icon: '📋',
-    description: 'Build custom practice tests from your study materials',
-    category: 'Active Learning',
-    status: 'live',
-    route: '/practice-test-builder',
-    keywords: ['practice', 'test', 'exam', 'builder', 'custom']
-  },
-
-  // ===== COMING SOON TOOLS (51) =====
-
-  // Active Learning (7 tools)
-  {
-    id: 'fill-blank-generator',
-    name: 'Fill-in-the-Blank Generator',
+    id: 'essay-assistant',
+    name: 'Essay Assistant',
     icon: '✍️',
-    description: 'Generate fill-in-the-blank exercises automatically',
-    category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['fill', 'blank', 'exercise', 'practice']
+    description: 'Get AI help with essay outlines, introductions, and conclusions',
+    category: 'AI Help',
+    status: 'live',
+    route: '/essay-assistant',
+    keywords: ['essay', 'writing', 'outline', 'introduction']
   },
   {
-    id: 'mcq-bank',
-    name: 'Multiple Choice Question Bank',
-    icon: '✅',
-    description: 'Access thousands of practice MCQs organized by topic',
-    category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['mcq', 'multiple choice', 'questions', 'bank', 'practice']
+    id: 'grammar-checker',
+    name: 'Grammar Checker',
+    icon: '✓',
+    description: 'Check and improve your grammar and writing',
+    category: 'AI Help',
+    status: 'live',
+    route: '/grammar-checker',
+    keywords: ['grammar', 'spelling', 'writing', 'check']
   },
   {
-    id: 'essay-question-generator',
-    name: 'Essay Question Generator',
-    icon: '📄',
-    description: 'Generate thought-provoking essay questions for practice',
-    category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['essay', 'question', 'writing', 'practice']
+    id: 'paraphrasing',
+    name: 'Paraphrasing Tool',
+    icon: '🔄',
+    description: 'Rewrite text in different styles',
+    category: 'AI Help',
+    status: 'live',
+    route: '/paraphrasing',
+    keywords: ['paraphrase', 'rewrite', 'rephrase']
   },
   {
-    id: 'vocabulary-builder',
-    name: 'Vocabulary Builder',
-    icon: '📖',
-    description: 'Expand your vocabulary with contextual learning',
-    category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['vocabulary', 'words', 'language', 'learn']
+    id: 'concept-explainer',
+    name: 'Concept Explainer',
+    icon: '💡',
+    description: 'Understand any concept explained at your level',
+    category: 'AI Help',
+    status: 'live',
+    route: '/concept-explainer',
+    keywords: ['explain', 'concept', 'understand', 'learn']
   },
   {
-    id: 'true-false-quiz',
-    name: 'True/False Quiz Maker',
-    icon: '✔️',
-    description: 'Create true/false quizzes from any content',
-    category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['true', 'false', 'quiz', 'binary']
+    id: 'translator',
+    name: 'Translator',
+    icon: '🌍',
+    description: 'Translate text to multiple languages',
+    category: 'AI Help',
+    status: 'live',
+    route: '/translator',
+    keywords: ['translate', 'language', 'foreign']
   },
   {
-    id: 'matching-game',
-    name: 'Matching Game Generator',
-    icon: '🎯',
-    description: 'Turn your notes into interactive matching games',
-    category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['matching', 'game', 'interactive', 'pairs']
-  },
-  {
-    id: 'diagram-labeling',
-    name: 'Diagram Labeling Practice',
-    icon: '🔬',
-    description: 'Practice labeling diagrams for science and anatomy',
-    category: 'Active Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['diagram', 'label', 'science', 'anatomy', 'visual']
+    id: 'research-finder',
+    name: 'Research Finder',
+    icon: '🔍',
+    description: 'Find academic sources and research for any topic',
+    category: 'AI Help',
+    status: 'live',
+    route: '/research-finder',
+    keywords: ['research', 'sources', 'academic', 'find']
   },
 
-  // Focus & Productivity (9 tools)
+  // Focus & Productivity
+  {
+    id: 'study-timer',
+    name: 'Study Timer',
+    icon: '⏱️',
+    description: 'Focus-optimized Pomodoro timer with custom intervals',
+    category: 'Focus & Productivity',
+    status: 'live',
+    route: '/study-timer',
+    keywords: ['timer', 'pomodoro', 'focus', 'productivity', 'session']
+  },
   {
     id: 'custom-timer',
     name: 'Custom Study Timer',
     icon: '⏲️',
     description: 'Create personalized study session timers',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/custom-timer',
     keywords: ['timer', 'custom', 'session', 'personalized']
-  },
-  {
-    id: 'session-tracker',
-    name: 'Study Session Tracker',
-    icon: '📊',
-    description: 'Track and analyze your study sessions over time',
-    category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['session', 'tracker', 'analytics', 'time']
-  },
-  {
-    id: 'focus-mode',
-    name: 'Focus Mode / Website Blocker',
-    icon: '🚫',
-    description: 'Block distracting websites during study sessions',
-    category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['focus', 'blocker', 'distraction', 'productivity']
   },
   {
     id: 'task-timer',
@@ -265,8 +237,8 @@ export const tools = [
     icon: '⌛',
     description: 'Time individual tasks and track completion',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/task-timer',
     keywords: ['task', 'timer', 'productivity', 'time tracking']
   },
   {
@@ -275,8 +247,8 @@ export const tools = [
     icon: '🔔',
     description: 'Get reminders to take healthy study breaks',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/break-reminder',
     keywords: ['break', 'reminder', 'health', 'rest']
   },
   {
@@ -285,9 +257,39 @@ export const tools = [
     icon: '🧠',
     description: 'Structured deep work sessions for maximum productivity',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/deep-work',
     keywords: ['deep work', 'focus', 'productivity', 'concentration']
+  },
+  {
+    id: 'focus-mode',
+    name: 'Focus Mode',
+    icon: '🎯',
+    description: 'Block distractions and stay focused',
+    category: 'Focus & Productivity',
+    status: 'live',
+    route: '/focus-mode',
+    keywords: ['focus', 'blocker', 'distraction', 'productivity']
+  },
+  {
+    id: 'focus-music',
+    name: 'Focus Music',
+    icon: '🎵',
+    description: 'Background music for better concentration',
+    category: 'Focus & Productivity',
+    status: 'live',
+    route: '/focus-music',
+    keywords: ['music', 'focus', 'concentration', 'background']
+  },
+  {
+    id: 'ambient-sounds',
+    name: 'Ambient Sounds',
+    icon: '🌧️',
+    description: 'Mix ambient sounds for the perfect study atmosphere',
+    category: 'Focus & Productivity',
+    status: 'live',
+    route: '/ambient-sounds',
+    keywords: ['ambient', 'sounds', 'rain', 'nature', 'focus']
   },
   {
     id: 'group-timer',
@@ -295,299 +297,217 @@ export const tools = [
     icon: '👥',
     description: 'Synchronized timers for group study sessions',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
+    status: 'live',
+    route: '/group-timer',
     keywords: ['group', 'timer', 'study', 'sync', 'collaboration']
   },
   {
-    id: 'focus-music',
-    name: 'Music for Focus',
-    icon: '🎵',
-    description: 'Curated playlists designed to enhance concentration',
+    id: 'session-tracker',
+    name: 'Study Session Tracker',
+    icon: '📊',
+    description: 'Track and analyze your study sessions over time',
     category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['music', 'focus', 'concentration', 'playlist']
-  },
-  {
-    id: 'ambient-sounds',
-    name: 'Ambient Sounds Generator',
-    icon: '🌧️',
-    description: 'Generate ambient sounds for better focus',
-    category: 'Focus & Productivity',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['ambient', 'sounds', 'white noise', 'focus']
+    status: 'live',
+    route: '/session-tracker',
+    keywords: ['session', 'tracker', 'analytics', 'time']
   },
 
-  // Gamification (8 tools)
+  // Gamification
+  {
+    id: 'study-streaks',
+    name: 'Study Streaks',
+    icon: '🔥',
+    description: 'Track daily study activity and build consistent habits',
+    category: 'Gamification',
+    status: 'live',
+    route: '/streaks',
+    keywords: ['streak', 'habit', 'tracking', 'progress', 'daily', 'gamification']
+  },
   {
     id: 'daily-goals',
-    name: 'Daily Study Goals',
+    name: 'Daily Goals',
     icon: '🎯',
     description: 'Set and track daily study goals',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['goals', 'daily', 'targets', 'tracking']
+    status: 'live',
+    route: '/daily-goals',
+    keywords: ['goals', 'daily', 'targets', 'objectives']
+  },
+  {
+    id: 'habit-tracker',
+    name: 'Habit Tracker',
+    icon: '📅',
+    description: 'Build consistent study habits with tracking',
+    category: 'Gamification',
+    status: 'live',
+    route: '/habit-tracker',
+    keywords: ['habit', 'tracker', 'consistency', 'routine']
   },
   {
     id: 'xp-leveling',
-    name: 'XP & Leveling System',
+    name: 'XP & Leveling',
     icon: '⭐',
     description: 'Earn XP and level up as you study',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['xp', 'level', 'experience', 'gamification']
+    status: 'live',
+    route: '/xp-leveling',
+    keywords: ['xp', 'experience', 'level', 'gamification']
   },
   {
     id: 'badges',
-    name: 'Badges & Achievements',
-    icon: '🏆',
-    description: 'Unlock badges for reaching milestones',
+    name: 'Badges',
+    icon: '🏅',
+    description: 'Earn badges for achievements',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['badge', 'achievement', 'unlock', 'reward']
+    status: 'live',
+    route: '/badges',
+    keywords: ['badges', 'achievements', 'rewards']
   },
   {
     id: 'leaderboards',
     name: 'Leaderboards',
-    icon: '📈',
-    description: 'Compete with friends on study leaderboards',
+    icon: '🏆',
+    description: 'Compete with other students',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['leaderboard', 'compete', 'ranking', 'competition']
+    status: 'live',
+    route: '/leaderboards',
+    keywords: ['leaderboard', 'ranking', 'compete']
   },
   {
     id: 'challenges',
-    name: 'Study Challenges',
-    icon: '🎲',
-    description: 'Join weekly study challenges and competitions',
+    name: 'Challenges',
+    icon: '⚔️',
+    description: 'Complete challenges for rewards',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['challenge', 'competition', 'weekly', 'contest']
-  },
-  {
-    id: 'progress-viz',
-    name: 'Progress Visualization',
-    icon: '📊',
-    description: 'Visualize your study progress with beautiful charts',
-    category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['progress', 'visualization', 'charts', 'graphs']
+    status: 'live',
+    route: '/challenges',
+    keywords: ['challenge', 'goals', 'rewards']
   },
   {
     id: 'milestones',
-    name: 'Milestone Celebrations',
-    icon: '🎉',
-    description: 'Celebrate when you hit major study milestones',
+    name: 'Milestones',
+    icon: '🏅',
+    description: 'Track your learning journey milestones',
     category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['milestone', 'celebration', 'achievement', 'reward']
-  },
-  {
-    id: 'accountability',
-    name: 'Accountability Partner',
-    icon: '🤝',
-    description: 'Partner with friends for mutual accountability',
-    category: 'Gamification',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['accountability', 'partner', 'motivation', 'support']
+    status: 'live',
+    route: '/milestones',
+    keywords: ['milestone', 'progress', 'journey']
   },
 
-  // AI Writing & Help (10 tools)
+  // Organization
   {
-    id: 'essay-assistant',
-    name: 'Essay Writing Assistant',
-    icon: '✏️',
-    description: 'Get AI help with essay structure and writing',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['essay', 'writing', 'assistant', 'ai', 'help']
+    id: 'cornell-notes',
+    name: 'Cornell Notes',
+    icon: '📝',
+    description: 'Take structured notes with the Cornell note-taking system',
+    category: 'Organization',
+    status: 'live',
+    route: '/cornell-notes',
+    keywords: ['notes', 'cornell', 'note-taking', 'organize', 'pdf', 'export']
   },
   {
-    id: 'grammar-checker',
-    name: 'Grammar & Style Checker',
-    icon: '✨',
-    description: 'Check grammar, style, and improve your writing',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['grammar', 'style', 'writing', 'check', 'improve']
+    id: 'grade-calculator',
+    name: 'Grade Calculator',
+    icon: '🎓',
+    description: 'Calculate grades, predict scores, and plan your semester',
+    category: 'Organization',
+    status: 'live',
+    route: '/grade-calculator',
+    keywords: ['grade', 'calculator', 'gpa', 'score', 'predict', 'semester']
   },
-  {
-    id: 'paraphrasing',
-    name: 'Paraphrasing Tool',
-    icon: '🔄',
-    description: 'Rephrase text while maintaining meaning',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['paraphrase', 'rephrase', 'rewrite', 'text']
-  },
-  {
-    id: 'concept-explainer',
-    name: 'Concept Explainer',
-    icon: '💡',
-    description: 'Get simple explanations for complex concepts',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['concept', 'explain', 'simplify', 'understand']
-  },
-  {
-    id: 'code-debugger',
-    name: 'Code Debugger',
-    icon: '💻',
-    description: 'Debug code and get programming help',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['code', 'debug', 'programming', 'fix', 'error']
-  },
-  {
-    id: 'translator',
-    name: 'Language Translator',
-    icon: '🌐',
-    description: 'Translate text between multiple languages',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['translate', 'language', 'translation', 'multilingual']
-  },
-  {
-    id: 'research-finder',
-    name: 'Research Paper Finder',
-    icon: '🔍',
-    description: 'Find academic papers and research sources',
-    category: 'AI Help',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['research', 'paper', 'academic', 'source', 'find']
-  },
-
-  // Organization (6 tools)
   {
     id: 'note-organizer',
-    name: 'Note Organizer/Tagging',
-    icon: '🏷️',
-    description: 'Organize notes with tags and folders',
+    name: 'Note Organizer',
+    icon: '📁',
+    description: 'Organize notes into folders and categories',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['organize', 'tags', 'folders', 'notes', 'categorize']
+    status: 'live',
+    route: '/note-organizer',
+    keywords: ['notes', 'organize', 'folders', 'categories']
   },
   {
     id: 'study-planner',
-    name: 'Study Planner/Calendar',
+    name: 'Study Planner',
     icon: '📅',
-    description: 'Plan your study schedule with an interactive calendar',
+    description: 'Plan and schedule your study sessions',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['planner', 'calendar', 'schedule', 'plan', 'organize']
-  },
-  {
-    id: 'course-manager',
-    name: 'Course Manager',
-    icon: '📚',
-    description: 'Manage all your courses and subjects in one place',
-    category: 'Organization',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['course', 'manage', 'subject', 'organize', 'track']
+    status: 'live',
+    route: '/study-planner',
+    keywords: ['planner', 'schedule', 'calendar', 'organize']
   },
   {
     id: 'assignment-tracker',
     name: 'Assignment Tracker',
-    icon: '📝',
-    description: 'Track assignments, deadlines, and submissions',
+    icon: '📋',
+    description: 'Track assignments with due dates and priorities',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['assignment', 'deadline', 'tracker', 'homework', 'due']
+    status: 'live',
+    route: '/assignment-tracker',
+    keywords: ['assignment', 'tracker', 'due date', 'homework']
   },
   {
     id: 'gpa-tracker',
     name: 'GPA Tracker',
     icon: '📊',
-    description: 'Track your GPA across semesters',
+    description: 'Track and calculate your GPA',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['gpa', 'tracker', 'grades', 'semester', 'average']
+    status: 'live',
+    route: '/gpa-tracker',
+    keywords: ['gpa', 'grades', 'tracker', 'academic']
+  },
+  {
+    id: 'course-manager',
+    name: 'Course Manager',
+    icon: '📚',
+    description: 'Manage your courses and schedules',
+    category: 'Organization',
+    status: 'live',
+    route: '/course-manager',
+    keywords: ['course', 'manage', 'schedule', 'class']
   },
   {
     id: 'schedule-builder',
-    name: 'Study Schedule Builder',
-    icon: '🗓️',
-    description: 'Build optimized study schedules based on your needs',
+    name: 'Schedule Builder',
+    icon: '📆',
+    description: 'Build your weekly study schedule',
     category: 'Organization',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['schedule', 'builder', 'plan', 'optimize', 'timetable']
+    status: 'live',
+    route: '/schedule-builder',
+    keywords: ['schedule', 'builder', 'weekly', 'timetable']
   },
 
-  // Visual Learning (3 tools)
+  // Analytics
   {
-    id: 'infographic',
-    name: 'Infographic Generator',
-    icon: '📊',
-    description: 'Turn data into beautiful infographics',
-    category: 'Visual Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['infographic', 'visual', 'data', 'chart', 'graphic']
-  },
-  {
-    id: 'timeline',
-    name: 'Timeline Creator',
-    icon: '⏳',
-    description: 'Create interactive timelines for history and events',
-    category: 'Visual Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['timeline', 'history', 'events', 'chronology', 'visual']
-  },
-  {
-    id: 'diagram-maker',
-    name: 'Diagram Maker',
-    icon: '📐',
-    description: 'Create diagrams and flowcharts easily',
-    category: 'Visual Learning',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['diagram', 'flowchart', 'visual', 'create', 'draw']
+    id: 'progress-dashboard',
+    name: 'Progress Dashboard',
+    icon: '📈',
+    description: 'View your study progress and statistics',
+    category: 'Analytics',
+    status: 'live',
+    route: '/progress-dashboard',
+    keywords: ['progress', 'dashboard', 'stats', 'analytics']
   },
 
-  // Social & Collaboration (5 tools)
+  // Social
+  {
+    id: 'student-forum',
+    name: 'Student Forum',
+    icon: '💭',
+    description: 'Connect with students, share resources, ask questions',
+    category: 'Social',
+    status: 'live',
+    route: '/forum',
+    keywords: ['forum', 'community', 'discussion', 'students', 'questions']
+  },
   {
     id: 'study-groups',
-    name: 'Study Groups/Rooms',
-    icon: '🏠',
-    description: 'Create or join virtual study groups',
+    name: 'Study Groups',
+    icon: '👥',
+    description: 'Create and join study groups',
     category: 'Social',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['group', 'room', 'study', 'collaborate', 'virtual']
-  },
-  {
-    id: 'advanced-forum',
-    name: 'Question Forum (Advanced)',
-    icon: '❓',
-    description: 'Advanced Q&A platform with voting and best answers',
-    category: 'Social',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['forum', 'question', 'answer', 'community', 'vote']
+    status: 'live',
+    route: '/study-groups',
+    keywords: ['groups', 'study', 'collaborate', 'team']
   },
   {
     id: 'resource-sharing',
@@ -595,136 +515,31 @@ export const tools = [
     icon: '📤',
     description: 'Share and discover study resources',
     category: 'Social',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['share', 'resource', 'materials', 'community', 'discover']
-  },
-  {
-    id: 'peer-review',
-    name: 'Peer Review',
-    icon: '👀',
-    description: 'Get feedback from peers on your work',
-    category: 'Social',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['peer', 'review', 'feedback', 'critique', 'improve']
-  },
-  {
-    id: 'study-buddy',
-    name: 'Study Buddy Matching',
-    icon: '🤝',
-    description: 'Find study partners with similar goals',
-    category: 'Social',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['buddy', 'partner', 'match', 'study', 'friend']
-  },
-
-  // Analytics (6 tools including habit tracker)
-  {
-    id: 'habit-tracker',
-    name: 'Habit Tracker',
-    icon: '✅',
-    description: 'Track and build positive study habits',
-    category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['habit', 'tracker', 'routine', 'consistency', 'build']
-  },
-  {
-    id: 'progress-dashboard',
-    name: 'Progress Dashboard',
-    icon: '📊',
-    description: 'Comprehensive dashboard of all your progress',
-    category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['dashboard', 'progress', 'overview', 'analytics', 'stats']
-  },
-  {
-    id: 'time-analytics',
-    name: 'Study Time Analytics',
-    icon: '⏱️',
-    description: 'Detailed analytics on how you spend study time',
-    category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['time', 'analytics', 'tracking', 'study', 'analysis']
-  },
-  {
-    id: 'performance-tracking',
-    name: 'Performance Tracking',
-    icon: '📈',
-    description: 'Track performance across all tools and subjects',
-    category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['performance', 'tracking', 'progress', 'improvement', 'scores']
-  },
-  {
-    id: 'strengths-weaknesses',
-    name: 'Strengths/Weaknesses Analysis',
-    icon: '🎯',
-    description: 'AI-powered analysis of your strengths and weaknesses',
-    category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['strength', 'weakness', 'analysis', 'improve', 'ai']
-  },
-  {
-    id: 'weekly-reports',
-    name: 'Weekly/Monthly Reports',
-    icon: '📋',
-    description: 'Automated progress reports delivered to your inbox',
-    category: 'Analytics',
-    status: 'coming-soon',
-    route: null,
-    keywords: ['report', 'weekly', 'monthly', 'progress', 'summary']
+    status: 'live',
+    route: '/resource-sharing',
+    keywords: ['share', 'resources', 'materials', 'download']
   }
 ];
 
-export const categories = [
-  'All',
-  'Active Learning',
-  'Focus & Productivity',
-  'Gamification',
-  'AI Help',
-  'Organization',
-  'Visual Learning',
-  'Social',
-  'Analytics'
-];
-
-// Helper functions
-export const getLiveTools = () => tools.filter(tool => tool.status === 'live');
-export const getComingSoonTools = () => tools.filter(tool => tool.status === 'coming-soon');
-export const getToolsByCategory = (category) => {
-  if (category === 'All') return tools;
-  return tools.filter(tool => tool.category === category);
+export const getToolsByCategory = () => {
+  const categories = {};
+  tools.forEach(tool => {
+    if (!categories[tool.category]) {
+      categories[tool.category] = [];
+    }
+    categories[tool.category].push(tool);
+  });
+  return categories;
 };
+
+export const getLiveTools = () => tools.filter(t => t.status === 'live');
+export const getComingSoonTools = () => tools.filter(t => t.status === 'coming-soon');
 
 export const searchTools = (query) => {
-  if (!query || query.trim() === '') return tools;
-
-  const lowerQuery = query.toLowerCase();
+  const q = query.toLowerCase();
   return tools.filter(tool =>
-    tool.name.toLowerCase().includes(lowerQuery) ||
-    tool.description.toLowerCase().includes(lowerQuery) ||
-    tool.keywords.some(keyword => keyword.toLowerCase().includes(lowerQuery)) ||
-    tool.category.toLowerCase().includes(lowerQuery)
-  ).sort((a, b) => {
-    // Prioritize live tools
-    if (a.status === 'live' && b.status !== 'live') return -1;
-    if (a.status !== 'live' && b.status === 'live') return 1;
-
-    // Then sort by name match
-    const aNameMatch = a.name.toLowerCase().includes(lowerQuery);
-    const bNameMatch = b.name.toLowerCase().includes(lowerQuery);
-    if (aNameMatch && !bNameMatch) return -1;
-    if (!aNameMatch && bNameMatch) return 1;
-
-    return 0;
-  });
+    tool.name.toLowerCase().includes(q) ||
+    tool.description.toLowerCase().includes(q) ||
+    tool.keywords.some(k => k.toLowerCase().includes(q))
+  );
 };
-
-export const getToolById = (id) => tools.find(tool => tool.id === id);

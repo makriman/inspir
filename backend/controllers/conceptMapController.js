@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { supabase } from '../config/supabaseClient.js';
+import { supabase } from '../utils/supabaseClient.js';
 import { v4 as uuidv4 } from 'uuid';
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });

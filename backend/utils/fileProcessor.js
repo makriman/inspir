@@ -1,5 +1,6 @@
 import mammoth from 'mammoth';
 import fs from 'fs/promises';
+import pdf from 'pdf-parse';
 
 export async function processFile(file) {
   const ext = file.originalname.split('.').pop().toLowerCase();
@@ -11,8 +12,10 @@ export async function processFile(file) {
       case 'docx':
       case 'doc':
         return await processDOCX(file.path);
+      case 'pdf':
+        return await processPDF(file.path);
       default:
-        throw new Error('Unsupported file format. Please upload a TXT or DOCX file.');
+        throw new Error('Unsupported file format. Please upload a PDF, DOCX, or TXT file.');
     }
   } catch (error) {
     console.error('File processing error:', error);
@@ -49,3 +52,22 @@ async function processDOCX(filePath) {
     throw new Error(`Failed to extract text from DOCX: ${error.message}`);
   }
 }
+
+async function processPDF(filePath) {
+  try {
+    const dataBuffer = await fs.readFile(filePath);
+    const data = await pdf(dataBuffer);
+
+    if (!data.text || data.text.trim().length === 0) {
+      throw new Error('No text content found in PDF file');
+    }
+
+    return data.text;
+  } catch (error) {
+    console.error('PDF processing error:', error);
+    throw new Error(`Failed to extract text from PDF: ${error.message}`);
+  }
+}
+
+// Default export for backwards compatibility
+export default { processFile };

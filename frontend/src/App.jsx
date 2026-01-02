@@ -70,6 +70,44 @@ import MindMapCreator from './pages/MindMapCreator';
 import ConceptMapBuilder from './pages/ConceptMapBuilder';
 import PracticeTestBuilder from './pages/PracticeTestBuilder';
 
+// New Tool Pages
+import CustomTimer from './pages/CustomTimer';
+import TaskTimer from './pages/TaskTimer';
+import BreakReminder from './pages/BreakReminder';
+import DeepWork from './pages/DeepWork';
+import AmbientSounds from './pages/AmbientSounds';
+import FocusMode from './pages/FocusMode';
+import FocusMusic from './pages/FocusMusic';
+import GroupTimer from './pages/GroupTimer';
+import SessionTracker from './pages/SessionTracker';
+import DailyGoals from './pages/DailyGoals';
+import HabitTracker from './pages/HabitTracker';
+import XPLeveling from './pages/XPLeveling';
+import Badges from './pages/Badges';
+import Leaderboards from './pages/Leaderboards';
+import Challenges from './pages/Challenges';
+import Milestones from './pages/Milestones';
+import NoteOrganizer from './pages/NoteOrganizer';
+import StudyPlanner from './pages/StudyPlanner';
+import AssignmentTracker from './pages/AssignmentTracker';
+import GPATracker from './pages/GPATracker';
+import CourseManager from './pages/CourseManager';
+import ScheduleBuilder from './pages/ScheduleBuilder';
+import ProgressDashboard from './pages/ProgressDashboard';
+import EssayAssistant from './pages/EssayAssistant';
+import GrammarChecker from './pages/GrammarChecker';
+import Paraphrasing from './pages/Paraphrasing';
+import VocabularyBuilder from './pages/VocabularyBuilder';
+import Translator from './pages/Translator';
+import ConceptExplainer from './pages/ConceptExplainer';
+import ResearchFinder from './pages/ResearchFinder';
+import FillBlankGenerator from './pages/FillBlankGenerator';
+import MCQBank from './pages/MCQBank';
+import TrueFalseQuiz from './pages/TrueFalseQuiz';
+import StudyGroups from './pages/StudyGroups';
+import ResourceSharing from './pages/ResourceSharing';
+
+
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
@@ -166,10 +204,60 @@ function App() {
           <Route path="/text-summarizer" element={<TextSummarizer />} />
           <Route path="/study-guide-gen" element={<StudyGuideGenerator />} />
           <Route path="/flashcards" element={<FlashcardCreator />} />
+          <Route path="/shared/flashcards/:token" element={<FlashcardCreator />} />
           <Route path="/math-solver" element={<MathSolver />} />
           <Route path="/mind-map" element={<MindMapCreator />} />
           <Route path="/concept-map" element={<ConceptMapBuilder />} />
           <Route path="/practice-test-builder" element={<PracticeTestBuilder />} />
+
+          {/* Focus & Productivity Tools */}
+          <Route path="/custom-timer" element={<CustomTimer />} />
+          <Route path="/task-timer" element={<TaskTimer />} />
+          <Route path="/break-reminder" element={<BreakReminder />} />
+          <Route path="/deep-work" element={<DeepWork />} />
+          <Route path="/ambient-sounds" element={<AmbientSounds />} />
+          <Route path="/focus-mode" element={<FocusMode />} />
+          <Route path="/focus-music" element={<FocusMusic />} />
+          <Route path="/group-timer" element={<GroupTimer />} />
+          <Route path="/session-tracker" element={<SessionTracker />} />
+
+          {/* Gamification Tools */}
+          <Route path="/daily-goals" element={<DailyGoals />} />
+          <Route path="/habit-tracker" element={<HabitTracker />} />
+          <Route path="/xp-leveling" element={<XPLeveling />} />
+          <Route path="/badges" element={<Badges />} />
+          <Route path="/leaderboards" element={<Leaderboards />} />
+          <Route path="/challenges" element={<Challenges />} />
+          <Route path="/milestones" element={<Milestones />} />
+
+          {/* Organization Tools */}
+          <Route path="/note-organizer" element={<NoteOrganizer />} />
+          <Route path="/study-planner" element={<StudyPlanner />} />
+          <Route path="/assignment-tracker" element={<AssignmentTracker />} />
+          <Route path="/gpa-tracker" element={<GPATracker />} />
+          <Route path="/course-manager" element={<CourseManager />} />
+          <Route path="/schedule-builder" element={<ScheduleBuilder />} />
+
+          {/* Analytics Tools */}
+          <Route path="/progress-dashboard" element={<ProgressDashboard />} />
+
+          {/* AI Help Tools */}
+          <Route path="/essay-assistant" element={<EssayAssistant />} />
+          <Route path="/grammar-checker" element={<GrammarChecker />} />
+          <Route path="/paraphrasing" element={<Paraphrasing />} />
+          <Route path="/vocabulary" element={<VocabularyBuilder />} />
+          <Route path="/translator" element={<Translator />} />
+          <Route path="/concept-explainer" element={<ConceptExplainer />} />
+          <Route path="/research-finder" element={<ResearchFinder />} />
+
+          {/* Active Learning Tools */}
+          <Route path="/fill-blank" element={<FillBlankGenerator />} />
+          <Route path="/mcq-bank" element={<MCQBank />} />
+          <Route path="/true-false" element={<TrueFalseQuiz />} />
+
+          {/* Social Tools */}
+          <Route path="/study-groups" element={<StudyGroups />} />
+          <Route path="/resource-sharing" element={<ResourceSharing />} />
 
           {/* Blog Articles */}
           <Route path="/blog/multiple-exams-strategy" element={<MultipleExamsStrategy />} />
