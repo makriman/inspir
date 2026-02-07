@@ -521,15 +521,23 @@ export const tools = [
   }
 ];
 
-export const getToolsByCategory = () => {
-  const categories = {};
-  tools.forEach(tool => {
-    if (!categories[tool.category]) {
-      categories[tool.category] = [];
-    }
-    categories[tool.category].push(tool);
-  });
-  return categories;
+export const categories = [
+  'All',
+  'Active Learning',
+  'Visual Learning',
+  'AI Help',
+  'Focus & Productivity',
+  'Gamification',
+  'Organization',
+  'Analytics',
+  'Social'
+];
+
+export const getToolsByCategory = (category) => {
+  if (!category || category === 'All') {
+    return tools;
+  }
+  return tools.filter(tool => tool.category === category);
 };
 
 export const getLiveTools = () => tools.filter(t => t.status === 'live');

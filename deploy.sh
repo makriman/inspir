@@ -5,7 +5,7 @@
 echo "🚀 Starting inspir deployment..."
 
 # Navigate to project directory
-cd /root/inspir || exit 1
+cd /root || exit 1
 
 # Pull latest code
 echo "📥 Pulling latest code..."
@@ -13,12 +13,12 @@ git pull origin main
 
 # Install backend dependencies
 echo "📦 Installing backend dependencies..."
-cd /root/inspir/backend
+cd /root/backend
 npm install --production
 
 # Build the frontend
 echo "📦 Building frontend..."
-cd /root/inspir/frontend
+cd /root/frontend
 npm install
 npm run build
 
@@ -39,7 +39,7 @@ systemctl reload nginx
 
 # Restart backend with PM2
 echo "🔄 Restarting backend..."
-cd /root/inspir/backend
+cd /root/backend
 pm2 restart quiz-backend || pm2 start server.js --name quiz-backend
 pm2 save
 
