@@ -1,26 +1,65 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-default: var(--font-inter), Inter, system-ui, sans-serif;
+  --color-text: rgb(9 23 71);
+  --color-primary: rgb(2 5 211);
+  --color-surface: rgb(255 255 255);
+  --color-background: rgb(255 255 255);
+  --color-neo-bg: rgb(240 240 243);
+  --color-neo-light: rgb(255 255 255);
+  --color-neo-dark: rgb(174 174 192);
+  --app-black: #030303;
+  --app-panel: #303030;
+  --app-row: #262626;
+  --app-line: #242424;
+  --app-green: #59c96b;
+  --app-red: #e05055;
+  --app-blue: #0500d8;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: var(--font-default);
+  background: #000;
+  color: #fff;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.app-scrollbar {
+  scrollbar-color: #343434 #050505;
+  scrollbar-width: thin;
+}
+
+.app-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.app-scrollbar::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+.app-scrollbar::-webkit-scrollbar-thumb {
+  background: #343434;
+  border-radius: 999px;
 }
