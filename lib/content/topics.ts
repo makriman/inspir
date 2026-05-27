@@ -1,6 +1,7 @@
 export type TopicUiMode =
   | "chat"
   | "quiz"
+  | "flashcards"
   | "time-travel"
   | "historical-person"
   | "interactive-instruction"
@@ -397,6 +398,8 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "What should become flashcards?",
     sortOrder: 20,
     category: "Practice",
+    uiMode: "flashcards",
+    modelProfile: "structured",
     starters: ["Make flashcards for mitosis", "Turn this note into Q&A", "Create geography flashcards"],
     purpose: "Create high-quality retrieval practice cards.",
     firstTurn: "Ask for source material or topic and target difficulty.",

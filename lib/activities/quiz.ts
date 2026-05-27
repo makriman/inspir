@@ -3,6 +3,7 @@ import { generateObject } from "ai";
 import { z } from "zod";
 import type { ActivityRun } from "@/lib/db/schema";
 import { resolveModelName } from "@/lib/ai/model-router";
+import { parseFlashcardState, sanitizeFlashcardState } from "@/lib/activities/flashcards";
 
 const quizQuestionSchema = z.object({
   id: z.string(),
@@ -142,6 +143,13 @@ export function parseQuizState(value: unknown) {
 
 export function sanitizeActivityRun(run: ActivityRun | undefined | null) {
   if (!run) return null;
+  if (run.type === "flashcards") {
+    const parsed = parseFlashcardState(run.state);
+    return {
+      ...run,
+      state: parsed.success ? sanitizeFlashcardState(parsed.data) : run.state,
+    };
+  }
   if (run.type !== "quiz") return run;
   const parsed = parseQuizState(run.state);
   return {

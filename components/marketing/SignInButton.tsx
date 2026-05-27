@@ -1,30 +1,57 @@
 "use client";
 
-export function SignInButton() {
-  async function startGoogleSignIn() {
-    const response = await fetch("/api/auth/csrf");
-    const { csrfToken } = (await response.json()) as { csrfToken: string };
-    const form = document.createElement("form");
-    form.method = "post";
-    form.action = "/api/auth/signin/google?callbackUrl=/chat";
+import type { ReactNode } from "react";
 
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = "csrfToken";
-    input.value = csrfToken;
-    form.appendChild(input);
+export async function startGoogleSignIn(callbackUrl = "/chat") {
+  const response = await fetch("/api/auth/csrf");
+  const { csrfToken } = (await response.json()) as { csrfToken: string };
+  const form = document.createElement("form");
+  form.method = "post";
+  form.action = `/api/auth/signin/google?callbackUrl=${encodeURIComponent(callbackUrl)}`;
 
-    document.body.appendChild(form);
-    form.submit();
-  }
+  const input = document.createElement("input");
+  input.type = "hidden";
+  input.name = "csrfToken";
+  input.value = csrfToken;
+  form.appendChild(input);
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
+export function GoogleContinueButton({
+  children = "Continue with Google",
+  className = "",
+  callbackUrl = "/chat",
+}: {
+  children?: ReactNode;
+  className?: string;
+  callbackUrl?: string;
+}) {
+  return (
+    <button type="button" onClick={() => void startGoogleSignIn(callbackUrl)} className={className}>
+      {children}
+    </button>
+  );
+}
+
+export function SignInButton({
+  label = "Get Started Now",
+  className = "landing-cta",
+  callbackUrl = "/chat",
+}: {
+  label?: string;
+  className?: string;
+  callbackUrl?: string;
+}) {
 
   return (
     <button
       type="button"
-      onClick={startGoogleSignIn}
-      className="landing-cta"
+      onClick={() => void startGoogleSignIn(callbackUrl)}
+      className={className}
     >
-      Get Started Now
+      {label}
     </button>
   );
 }

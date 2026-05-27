@@ -1,29 +1,203 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { InspirLogo } from "@/components/brand/InspirLogo";
-import { SocialLinks } from "@/components/brand/SocialLinks";
-import { SignInButton } from "@/components/marketing/SignInButton";
+import {
+  BookOpenCheck,
+  BrainCircuit,
+  CircleDot,
+  Code2,
+  GraduationCap,
+  HeartHandshake,
+  School,
+  Sparkles,
+} from "lucide-react";
+import {
+  ArrowLink,
+  MarketingFooter,
+  MarketingHeader,
+  missionImages,
+} from "@/components/marketing/MarketingShell";
+
+export const metadata: Metadata = {
+  title: "inspir | Free AI learning for everyone",
+  description:
+    "Revolutionize Your Learning Journey with Artificial intelligence. Learn, practise, debate, quiz, and explore with inspir.",
+};
+
+const stats = [
+  ["2013", "started as a public learning community"],
+  ["1M+", "learners reached across the platform and partner schools"],
+  ["100+", "countries represented across the learner base"],
+] as const;
+
+const modes = [
+  {
+    icon: BookOpenCheck,
+    title: "Learn anything",
+    text: "Clear explanations, examples, and next steps for whatever you are curious about.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "Practise actively",
+    text: "Quizzes, Socratic prompts, debate, role-play, and interactive instruction.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Built for learners",
+    text: "Short turns, simple language, and teaching logic shaped around understanding.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Open by design",
+    text: "A public product and open-source rebuild welcoming educators, builders, and students.",
+  },
+] as const;
+
+const repos = [
+  {
+    href: "https://github.com/makriman/inspir",
+    title: "makriman/inspir",
+    text: "The current inspirlearning.com rebuild.",
+  },
+  {
+    href: "https://github.com/makriman/ai-study-platform",
+    title: "makriman/ai-study-platform",
+    text: "The next-generation AI study platform.",
+  },
+  {
+    href: "https://github.com/makriman/inspir-platform",
+    title: "makriman/inspir-platform",
+    text: "The broader open-source inspir platform.",
+  },
+] as const;
 
 export default function LandingPage() {
   return (
-    <main className="landing-bubble">
-      <InspirLogo className="landing-logo" />
-      <section className="landing-hero" aria-labelledby="landing-title">
-        <h1 id="landing-title" className="landing-title">
-          <span>Revolutionize Your Learning Journey with</span>
-          <span>Artificial intelligence</span>
-        </h1>
-        <SignInButton />
+    <main className="marketing-site">
+      <section className="marketing-hero" aria-labelledby="landing-title">
+        <img src={missionImages[0]} alt="" className="marketing-hero-image" />
+        <div className="marketing-hero-shade" />
+        <MarketingHeader hero />
+        <div className="marketing-hero-content">
+          <span className="marketing-kicker">Free public AI learning platform</span>
+          <h1 id="landing-title">Revolutionize Your Learning Journey with Artificial intelligence</h1>
+          <p>
+            inspir helps anyone learn and practise through patient AI conversations, quizzes,
+            debates, role-play, and guided instruction.
+          </p>
+          <div className="marketing-hero-actions">
+            <Link href="/chat" className="marketing-primary-cta">
+              Get Started
+              <Sparkles size={18} />
+            </Link>
+            <Link href="/mission" className="marketing-secondary-cta">
+              Read the mission
+            </Link>
+          </div>
+          <dl className="marketing-hero-stats">
+            {stats.map(([value, label]) => (
+              <div key={value}>
+                <dt>{value}</dt>
+                <dd>{label}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </section>
-      <footer className="landing-footer">
-        <nav className="landing-legal-links">
-          <Link href="/tnc">Terms and Conditions</Link>
-          <Link href="/privacy">Privacy Policy</Link>
-        </nav>
-        <nav className="landing-mission-link">
-          <Link href="/mission">Read our Mission Statement</Link>
-        </nav>
-        <SocialLinks className="landing-social-links" />
-      </footer>
+
+      <section className="marketing-band is-intro">
+        <div className="marketing-section-copy">
+          <span>Mission first</span>
+          <h2>Learning should be free, fun, and useful.</h2>
+          <p>
+            inspir began as quizzes and student communities, grew through schools and events,
+            and now uses AI to make one-to-one learning more accessible.
+          </p>
+        </div>
+        <div className="marketing-proof-grid">
+          <div>
+            <CircleDot size={20} />
+            Built from real learner behavior, not a generic chat box.
+          </div>
+          <div>
+            <CircleDot size={20} />
+            Supports extracurricular learning, academic practice, and curiosity.
+          </div>
+          <div>
+            <CircleDot size={20} />
+            Available publicly while schools can run confidential custom versions.
+          </div>
+        </div>
+      </section>
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>What you can do</span>
+          <h2>Learn by talking, testing, debating, and exploring.</h2>
+        </div>
+        <div className="marketing-card-grid">
+          {modes.map((mode) => {
+            const Icon = mode.icon;
+            return (
+              <article key={mode.title} className="marketing-card">
+                <Icon size={24} />
+                <h3>{mode.title}</h3>
+                <p>{mode.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="marketing-split-band">
+        <div>
+          <span className="marketing-kicker dark">For schools and CSR partners</span>
+          <h2>Custom AI learning spaces with data confidentiality.</h2>
+          <p>
+            Schools can offer white-labelled AI chat experiences tailored to their learners,
+            including NCERT-aligned content and workflows, with usage funded by partner schools
+            or CSR sponsorship.
+          </p>
+          <div className="marketing-inline-actions">
+            <ArrowLink href="/schools">Explore schools</ArrowLink>
+            <ArrowLink href="mailto:schools@inspirlearning.com" external>
+              schools@inspirlearning.com
+            </ArrowLink>
+          </div>
+        </div>
+        <div className="marketing-school-panel" aria-hidden="true">
+          <School size={34} />
+          <strong>White-labelled school AI</strong>
+          <span>School-specific workflows</span>
+          <span>NCERT-aligned options</span>
+          <span>Confidential deployments</span>
+        </div>
+      </section>
+
+      <section className="marketing-band is-github">
+        <div className="marketing-section-copy">
+          <span>Build with us</span>
+          <h2>inspir is being built in public.</h2>
+          <p>
+            Contributions are welcome from engineers, educators, designers, students, and anyone
+            who wants AI learning to be safer, clearer, more accessible, and more useful.
+          </p>
+        </div>
+        <div className="marketing-repo-grid">
+          {repos.map((repo) => (
+            <a key={repo.href} href={repo.href} target="_blank" rel="noreferrer" className="marketing-repo-card">
+              <Code2 size={22} />
+              <strong>{repo.title}</strong>
+              <span>{repo.text}</span>
+            </a>
+          ))}
+        </div>
+        <div className="marketing-contribute-row">
+          <span>Good first areas:</span>
+          <p>accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.</p>
+        </div>
+      </section>
+
+      <MarketingFooter />
     </main>
   );
 }

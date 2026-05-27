@@ -3,24 +3,54 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/config";
 import { ChatClient } from "@/components/chat/ChatClient";
 import { getActiveTopics, getDefaultTopic, getUserById } from "@/lib/db/queries";
+import { getTopicMetadata } from "@/lib/ai/prompts";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export default async function ChatPage() {
   const session = await getServerSession(authOptions);
-  if (!session?.user?.id) redirect("/");
 
   const [topics, defaultTopic, user] = await Promise.all([
     getActiveTopics(),
     getDefaultTopic(),
-    getUserById(session.user.id),
+    session?.user?.id ? getUserById(session.user.id) : Promise.resolve(null),
   ]);
 
   if (!defaultTopic) throw new Error("Default topic missing");
 
+  if (!session?.user?.id) {
+    const guestTopics = topics.filter((topic) => {
+      const uiMode = getTopicMetadata(topic)?.uiMode;
+      return uiMode !== "quiz" && uiMode !== "flashcards";
+    });
+    const initialTopic = guestTopics.find((topic) => topic.id === defaultTopic.id) ?? guestTopics[0];
+    if (!initialTopic) redirect("/");
+
+    return (
+      <ChatClient
+        authMode="guest"
+        user={{
+          id: "guest",
+          name: "Guest learner",
+          email: "",
+          image: null,
+          score: 0,
+          preferredLanguage: "English",
+          createdAt: new Date(),
+          profileImageHash: null,
+        }}
+        topics={guestTopics}
+        initialTopicId={initialTopic.id}
+        initialMessages={[]}
+        initialActivityRun={null}
+      />
+    );
+  }
+
   return (
     <ChatClient
+      authMode="authenticated"
       user={{
         id: session.user.id,
         name: user?.name ?? session.user.name ?? "User Name",

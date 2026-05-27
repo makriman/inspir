@@ -40,6 +40,7 @@ import {
 } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
+import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { defaultLanguage, supportedLanguages } from "@/lib/content/languages";
 import { formatBubbleDate } from "@/lib/utils/dates";
 
@@ -48,6 +49,7 @@ type TopicMetadata = {
   uiMode:
     | "chat"
     | "quiz"
+    | "flashcards"
     | "time-travel"
     | "historical-person"
     | "interactive-instruction"
@@ -129,13 +131,57 @@ type PublicQuizState = {
   questions: PublicQuizQuestion[];
 };
 
-type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz">;
+type PublicFlashcard = {
+  id: string;
+  front: string;
+  back?: string;
+  hint?: string;
+  example?: string;
+  trap?: string;
+  tags?: string[];
+  isRevealed?: boolean;
+  rating?: "known" | "again";
+  reviewedAt?: string;
+};
+
+type PublicFlashcardState = {
+  topic: string;
+  source?: string;
+  currentIndex: number;
+  knownCount: number;
+  reviewedCount: number;
+  maxCards: 12;
+  completed: boolean;
+  cards: PublicFlashcard[];
+};
+
+type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards">;
 
 function topicMetadata(topic: Topic | undefined): TopicMetadata | undefined {
   const metadata = topic?.metadata;
   if (!metadata || typeof metadata !== "object") return undefined;
   if (!("uiMode" in metadata) || !("starters" in metadata)) return undefined;
   return metadata as TopicMetadata;
+}
+
+function readStoredGuestUsage(limit: number) {
+  if (typeof window === "undefined") return 0;
+  try {
+    const stored = Number(window.localStorage.getItem("inspir_guest_messages_used") ?? "0");
+    if (!Number.isFinite(stored) || stored <= 0) return 0;
+    return Math.min(stored, limit);
+  } catch {
+    return 0;
+  }
+}
+
+function writeStoredGuestUsage(used: number) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem("inspir_guest_messages_used", String(used));
+  } catch {
+    // Guest limits are also enforced by signed cookies on the server.
+  }
 }
 
 function isQuizState(value: Record<string, unknown>): value is PublicQuizState {
@@ -146,7 +192,17 @@ function isQuizState(value: Record<string, unknown>): value is PublicQuizState {
   );
 }
 
+function isFlashcardState(value: Record<string, unknown>): value is PublicFlashcardState {
+  return (
+    typeof value.topic === "string" &&
+    Array.isArray(value.cards) &&
+    typeof value.currentIndex === "number" &&
+    typeof value.reviewedCount === "number"
+  );
+}
+
 export function ChatClient({
+  authMode = "authenticated",
   user,
   topics,
   initialTopicId,
@@ -154,6 +210,7 @@ export function ChatClient({
   initialMessages,
   initialActivityRun,
 }: {
+  authMode?: "authenticated" | "guest";
   user: UserProfile;
   topics: Topic[];
   initialTopicId: string;
@@ -161,6 +218,8 @@ export function ChatClient({
   initialMessages: Message[];
   initialActivityRun: ActivityRun | null;
 }) {
+  const isGuest = authMode === "guest";
+  const guestMessageLimit = 5;
   const [activeTopicId, setActiveTopicId] = useState(initialTopicId);
   const [activeChatId, setActiveChatId] = useState<string | undefined>(initialChatId);
   const [messages, setMessages] = useState<Message[]>(initialMessages);
@@ -176,6 +235,10 @@ export function ChatClient({
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [profileUser, setProfileUser] = useState(user);
   const [languageSaving, setLanguageSaving] = useState(false);
+  const [guestMessagesUsed, setGuestMessagesUsed] = useState(() => {
+    return readStoredGuestUsage(guestMessageLimit);
+  });
+  const [guestPromptOpen, setGuestPromptOpen] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -185,7 +248,13 @@ export function ChatClient({
   const metadata = topicMetadata(activeTopic);
   const uiMode = metadata?.uiMode ?? "chat";
   const isQuizMode = uiMode === "quiz";
-  const isMiniAppMode = uiMode !== "chat" && uiMode !== "quiz";
+  const isFlashcardMode = uiMode === "flashcards";
+  const isMiniAppMode = uiMode !== "chat" && uiMode !== "quiz" && uiMode !== "flashcards";
+
+  function saveGuestUsage(used: number) {
+    setGuestMessagesUsed(used);
+    writeStoredGuestUsage(used);
+  }
 
   const filteredTopics = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -210,7 +279,7 @@ export function ChatClient({
   }, [input]);
 
   useEffect(() => {
-    if (!recentOpen) return;
+    if (!recentOpen || isGuest) return;
     let cancelled = false;
     fetch(`/api/chats?topicId=${activeTopicId}`)
       .then((response) => response.json())
@@ -223,9 +292,10 @@ export function ChatClient({
     return () => {
       cancelled = true;
     };
-  }, [recentOpen, activeTopicId]);
+  }, [recentOpen, activeTopicId, isGuest]);
 
   async function createChat(topicId = activeTopicId, activate = true) {
+    if (isGuest) return "guest-chat";
     const response = await fetch("/api/chats", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -249,6 +319,7 @@ export function ChatClient({
   }
 
   async function loadChat(chatId: string, options?: { preserveRequest?: boolean }) {
+    if (isGuest) return;
     if (!options?.preserveRequest) cancelActiveRequest();
     const response = await fetch(`/api/chats/${chatId}`);
     if (!response.ok) return;
@@ -264,6 +335,15 @@ export function ChatClient({
 
   async function resetChat() {
     cancelActiveRequest();
+    if (isGuest) {
+      setActiveChatId(undefined);
+      setMessages([]);
+      setActivityRun(null);
+      setInput("");
+      setRecentOpen(false);
+      window.history.replaceState(null, "", "/chat");
+      return;
+    }
     const chatId = await createChat(activeTopicId);
     setMessages([]);
     setActivityRun(null);
@@ -273,7 +353,11 @@ export function ChatClient({
 
   async function sendMessage(content: string, appendUser = true) {
     const trimmed = content.trim();
-    if (!trimmed || sending || isQuizMode) return;
+    if (!trimmed || sending || isQuizMode || isFlashcardMode) return;
+    if (isGuest && guestMessagesUsed >= guestMessageLimit) {
+      setGuestPromptOpen(true);
+      return;
+    }
 
     const requestId = requestSeqRef.current + 1;
     requestSeqRef.current = requestId;
@@ -298,19 +382,37 @@ export function ChatClient({
     abortRef.current = controller;
 
     try {
-      const chatId = activeChatId ?? (await createChat(activeTopicId, false));
+      const contextMessages = messages
+        .filter((message) => message.role === "user" || message.role === "assistant")
+        .slice(-12)
+        .map((message) => ({ role: message.role, content: message.content }));
+      const chatId = isGuest ? undefined : activeChatId ?? (await createChat(activeTopicId, false));
       if (!isCurrentRequest()) return;
-      if (!activeChatId) {
+      if (!isGuest && chatId && !activeChatId) {
         setActiveChatId(chatId);
         window.history.replaceState(null, "", `/chat/${chatId}`);
       }
-      const response = await fetch("/api/chat", {
+      const response = await fetch(isGuest ? "/api/guest-chat" : "/api/chat", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ chatId, content: trimmed }),
+        body: JSON.stringify(
+          isGuest
+            ? {
+                topicId: activeTopicId,
+                content: trimmed,
+                messages: contextMessages,
+                preferredLanguage: profileUser.preferredLanguage,
+              }
+            : { chatId, content: trimmed },
+        ),
         signal: controller.signal,
       });
       if (!isCurrentRequest()) return;
+      if (isGuest && response.status === 429) {
+        setGuestPromptOpen(true);
+        setMessages((current) => current.filter((message) => message.id !== userMessage.id));
+        return;
+      }
       if (!response.ok || !response.body) throw new Error("No assistant response");
 
       const reader = response.body.getReader();
@@ -346,7 +448,14 @@ export function ChatClient({
           ),
         );
       }
-      if (isCurrentRequest()) await loadChat(chatId, { preserveRequest: true });
+      if (isCurrentRequest() && isGuest) {
+        const usedFromServer = Number(response.headers.get("x-guest-messages-used"));
+        const nextUsed = Number.isFinite(usedFromServer)
+          ? usedFromServer
+          : Math.min(guestMessagesUsed + 1, guestMessageLimit);
+        saveGuestUsage(Math.min(nextUsed, guestMessageLimit));
+      }
+      if (isCurrentRequest() && !isGuest && chatId) await loadChat(chatId, { preserveRequest: true });
     } catch (error) {
       if (!isCurrentRequest()) return;
       setAwaitingResponse(false);
@@ -417,6 +526,7 @@ export function ChatClient({
   }
 
   async function updatePreferredLanguage(preferredLanguage: string) {
+    if (isGuest) return;
     const previous = profileUser;
     setLanguageSaving(true);
     setProfileUser((current) => ({ ...current, preferredLanguage }));
@@ -455,13 +565,15 @@ export function ChatClient({
     <div className={`bubble-chat-root ${profileOpen ? "profile-open" : ""}`}>
       <aside className={`bubble-sidebar ${mobileSidebarOpen ? "is-open" : ""}`}>
         <TopicSidebar
+          isGuest={isGuest}
           avatarSrc={avatarSrc}
           topics={topics}
           filteredTopics={filteredTopics}
           activeTopicId={activeTopicId}
           search={search}
           onProfile={() => {
-            setProfileOpen(true);
+            if (isGuest) setGuestPromptOpen(true);
+            else setProfileOpen(true);
             setMobileSidebarOpen(false);
           }}
           onSearch={setSearch}
@@ -482,8 +594,11 @@ export function ChatClient({
         <TopBar
           title={recentOpen ? `${activeTopic.name}'s Recent Conversations` : activeTopic.name}
           recentOpen={recentOpen}
+          showRecent={!isGuest}
           sending={sending}
-          canRegenerate={!isQuizMode && messages.some((message) => message.role === "user")}
+          canRegenerate={
+            !isGuest && !isQuizMode && !isFlashcardMode && messages.some((message) => message.role === "user")
+          }
           onReset={resetChat}
           onRecent={() => {
             setRecentLoading(true);
@@ -495,7 +610,7 @@ export function ChatClient({
           onRegenerate={regenerateLast}
         />
 
-        {recentOpen ? (
+        {recentOpen && !isGuest ? (
           <RecentConversations
             chats={recentChats}
             loading={recentLoading}
@@ -504,6 +619,14 @@ export function ChatClient({
           />
         ) : isQuizMode ? (
           <QuizWorkspace
+            activeChatId={activeChatId}
+            activeTopicId={activeTopicId}
+            activityRun={activityRun}
+            createChat={createChat}
+            onActivityRun={setActivityRun}
+          />
+        ) : isFlashcardMode ? (
+          <FlashcardWorkspace
             activeChatId={activeChatId}
             activeTopicId={activeTopicId}
             activityRun={activityRun}
@@ -590,11 +713,19 @@ export function ChatClient({
           onClose={() => setProfileOpen(false)}
         />
       ) : null}
+      {isGuest && guestPromptOpen ? (
+        <GuestContinueModal
+          used={guestMessagesUsed}
+          limit={guestMessageLimit}
+          onClose={() => setGuestPromptOpen(false)}
+        />
+      ) : null}
     </div>
   );
 }
 
 function TopicSidebar({
+  isGuest,
   avatarSrc,
   topics,
   filteredTopics,
@@ -604,6 +735,7 @@ function TopicSidebar({
   onSearch,
   onSelect,
 }: {
+  isGuest: boolean;
   avatarSrc?: string;
   topics: Topic[];
   filteredTopics: Topic[];
@@ -626,9 +758,13 @@ function TopicSidebar({
   return (
     <div className="bubble-sidebar-inner">
       <div className="bubble-sidebar-header">
-        <button type="button" onClick={onProfile} aria-label="Open profile" className="bubble-avatar-button">
-          {avatarSrc ? <img src={avatarSrc} alt="" /> : null}
-        </button>
+        {isGuest ? (
+          <GoogleContinueButton className="bubble-guest-auth-button">Continue with Google</GoogleContinueButton>
+        ) : (
+          <button type="button" onClick={onProfile} aria-label="Open profile" className="bubble-avatar-button">
+            {avatarSrc ? <img src={avatarSrc} alt="" /> : null}
+          </button>
+        )}
         <InspirLogo className="bubble-sidebar-logo" />
       </div>
       <div className="bubble-search-row">
@@ -670,6 +806,7 @@ function TopicSidebar({
 function TopBar({
   title,
   recentOpen,
+  showRecent,
   sending,
   canRegenerate,
   onReset,
@@ -681,6 +818,7 @@ function TopBar({
 }: {
   title: string;
   recentOpen: boolean;
+  showRecent: boolean;
   sending: boolean;
   canRegenerate: boolean;
   onReset: () => void;
@@ -716,9 +854,11 @@ function TopBar({
         >
           {sending ? <Square size={18} fill="currentColor" /> : <RefreshCw size={24} strokeWidth={3} />}
         </button>
-        <button type="button" onClick={onRecent} aria-label="Recent conversations" className="bubble-history-button">
-          <History size={26} strokeWidth={3} />
-        </button>
+        {showRecent ? (
+          <button type="button" onClick={onRecent} aria-label="Recent conversations" className="bubble-history-button">
+            <History size={26} strokeWidth={3} />
+          </button>
+        ) : null}
       </div>
     </header>
   );
@@ -1408,6 +1548,255 @@ function answerLabel(question: PublicQuizQuestion, index: number | undefined) {
   return `${String.fromCharCode(65 + index)}. ${question.options[index] ?? ""}`;
 }
 
+const flashcardBuildSteps = [
+  "Finding atomic ideas",
+  "Writing recall prompts",
+  "Adding memory hints",
+  "Checking common traps",
+  "Stacking the deck",
+  "Ready for review",
+];
+
+function FlashcardWorkspace({
+  activeChatId,
+  activeTopicId,
+  activityRun,
+  createChat,
+  onActivityRun,
+}: {
+  activeChatId?: string;
+  activeTopicId: string;
+  activityRun: ActivityRun | null;
+  createChat: (topicId?: string) => Promise<string>;
+  onActivityRun: (run: ActivityRun | null) => void;
+}) {
+  const [topic, setTopic] = useState("");
+  const [source, setSource] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [buildProgress, setBuildProgress] = useState(0);
+  const [reviewing, setReviewing] = useState(false);
+  const [error, setError] = useState("");
+  const deck = activityRun?.type === "flashcards" && isFlashcardState(activityRun.state) ? activityRun.state : null;
+  const currentCard = deck?.cards[deck.currentIndex];
+
+  useEffect(() => {
+    if (!loading) return;
+    const interval = window.setInterval(() => {
+      setBuildProgress((current) => Math.min(94, current + Math.max(4, Math.round((100 - current) / 6))));
+    }, 520);
+
+    return () => window.clearInterval(interval);
+  }, [loading]);
+
+  async function startFlashcards(event?: FormEvent) {
+    event?.preventDefault();
+    const deckTopic = topic.trim();
+    if (!deckTopic || loading) return;
+    setError("");
+    setBuildProgress(8);
+    setLoading(true);
+    try {
+      const chatId = activeChatId ?? (await createChat(activeTopicId));
+      const response = await fetch("/api/activities/flashcards", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ chatId, topic: deckTopic, source: source.trim() || undefined }),
+      });
+      if (!response.ok) throw new Error("Could not build flashcards");
+      const data = await response.json();
+      setBuildProgress(100);
+      onActivityRun(data.activityRun);
+    } catch {
+      setError("I could not build that deck right now. Try a shorter topic or simpler notes.");
+      setBuildProgress(0);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function reviewCard(action: "reveal" | "known" | "again") {
+    if (!activityRun || reviewing) return;
+    setReviewing(true);
+    setError("");
+    try {
+      const response = await fetch(`/api/activities/flashcards/${activityRun.id}/review`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(
+          action === "reveal" ? { action: "reveal" } : { action: "rate", rating: action },
+        ),
+      });
+      if (!response.ok) throw new Error("Could not review card");
+      const data = await response.json();
+      onActivityRun(data.activityRun);
+    } catch {
+      setError("I could not save that card review. Please try again.");
+    } finally {
+      setReviewing(false);
+    }
+  }
+
+  return (
+    <main className="bubble-workspace bubble-flashcard-workspace">
+      {!deck ? (
+        loading ? (
+          <FlashcardBuildLoader topic={topic} progress={buildProgress} />
+        ) : (
+          <form onSubmit={startFlashcards} className="bubble-flashcard-start">
+            <div className="bubble-flashcard-start-icon">
+              <Clipboard size={28} />
+            </div>
+            <h2>What should become flashcards?</h2>
+            <p>Give me a topic or paste notes. I will build a 12-card recall deck with hints and traps.</p>
+            <div className="bubble-flashcard-input-stack">
+              <input
+                value={topic}
+                onChange={(event) => setTopic(event.target.value)}
+                placeholder="Mitosis, climate zones, irregular verbs..."
+                disabled={loading}
+              />
+              <textarea
+                value={source}
+                onChange={(event) => setSource(event.target.value)}
+                placeholder="Optional: paste notes, syllabus points, or facts to prioritize"
+                disabled={loading}
+                rows={5}
+              />
+            </div>
+            <button type="submit" disabled={loading || !topic.trim()}>
+              Build deck
+            </button>
+            {error ? <span className="bubble-quiz-error">{error}</span> : null}
+          </form>
+        )
+      ) : (
+        <section className="bubble-flashcard-shell">
+          <header className="bubble-quiz-header">
+            <div>
+              <span>Flashcards on</span>
+              <h2>{deck.topic}</h2>
+            </div>
+            <strong>
+              {deck.knownCount}/{deck.maxCards}
+            </strong>
+          </header>
+          <div className="bubble-quiz-progress">
+            <span style={{ width: `${(deck.reviewedCount / deck.maxCards) * 100}%` }} />
+          </div>
+
+          {deck.completed ? (
+            <FlashcardReview deck={deck} />
+          ) : currentCard ? (
+            <article className={`bubble-flashcard-card ${currentCard.back ? "is-revealed" : ""}`}>
+              <div className="bubble-flashcard-card-top">
+                <span>
+                  Card {deck.currentIndex + 1} of {deck.maxCards}
+                </span>
+                <div>
+                  {(currentCard.tags ?? []).map((tag) => (
+                    <small key={tag}>{tag}</small>
+                  ))}
+                </div>
+              </div>
+              <h3>{currentCard.front}</h3>
+              {currentCard.hint ? (
+                <p className="bubble-flashcard-hint">
+                  <strong>Hint</strong>
+                  {currentCard.hint}
+                </p>
+              ) : null}
+
+              {currentCard.back ? (
+                <div className="bubble-flashcard-answer">
+                  <strong>Answer</strong>
+                  <p>{currentCard.back}</p>
+                  {currentCard.example ? <span>Example: {currentCard.example}</span> : null}
+                  {currentCard.trap ? <span>Watch out: {currentCard.trap}</span> : null}
+                </div>
+              ) : null}
+
+              <div className="bubble-flashcard-actions">
+                {!currentCard.back ? (
+                  <button type="button" disabled={reviewing} onClick={() => void reviewCard("reveal")}>
+                    Show answer
+                  </button>
+                ) : (
+                  <>
+                    <button type="button" disabled={reviewing} onClick={() => void reviewCard("again")}>
+                      Review again
+                    </button>
+                    <button type="button" disabled={reviewing} onClick={() => void reviewCard("known")}>
+                      I knew it
+                    </button>
+                  </>
+                )}
+              </div>
+            </article>
+          ) : null}
+          {error ? <span className="bubble-quiz-error">{error}</span> : null}
+        </section>
+      )}
+    </main>
+  );
+}
+
+function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: number }) {
+  const stepIndex = Math.min(
+    flashcardBuildSteps.length - 1,
+    Math.floor((progress / 100) * flashcardBuildSteps.length),
+  );
+  return (
+    <section className="bubble-quiz-loader bubble-flashcard-loader" aria-live="polite">
+      <div className="bubble-flashcard-loader-stack">
+        <span />
+        <span />
+        <span />
+        <Clipboard size={26} />
+      </div>
+      <div>
+        <span className="bubble-quiz-loader-kicker">Building your deck</span>
+        <h2>{topic.trim() || "Your topic"}</h2>
+        <p>{flashcardBuildSteps[stepIndex]}</p>
+      </div>
+      <div className="bubble-quiz-loader-track">
+        <span style={{ width: `${progress}%` }} />
+      </div>
+      <ol className="bubble-quiz-loader-steps">
+        {flashcardBuildSteps.map((step, index) => (
+          <li key={step} className={index <= stepIndex ? "is-active" : ""}>
+            {step}
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
+function FlashcardReview({ deck }: { deck: PublicFlashcardState }) {
+  const missed = deck.cards.filter((card) => card.rating === "again");
+  return (
+    <article className="bubble-flashcard-review">
+      <h3>Deck complete: {deck.knownCount}/12 known</h3>
+      <p>
+        {missed.length
+          ? "Review the cards marked again, then rebuild a smaller deck from those weak spots."
+          : "Clean sweep. Come back later and test the same deck from memory."}
+      </p>
+      <div className="bubble-review-list">
+        {deck.cards.map((card, index) => (
+          <div key={card.id} className={card.rating === "known" ? "is-correct" : "is-wrong"}>
+            <strong>
+              {index + 1}. {card.front}
+            </strong>
+            <span>{card.back}</span>
+            {card.trap ? <p>Trap: {card.trap}</p> : null}
+          </div>
+        ))}
+      </div>
+    </article>
+  );
+}
+
 function RecentConversations({
   chats,
   loading,
@@ -1440,6 +1829,38 @@ function RecentConversations({
         ))}
       </div>
     </main>
+  );
+}
+
+function GuestContinueModal({
+  used,
+  limit,
+  onClose,
+}: {
+  used: number;
+  limit: number;
+  onClose: () => void;
+}) {
+  return (
+    <div className="bubble-guest-modal-backdrop" role="presentation">
+      <section className="bubble-guest-modal" role="dialog" aria-modal="true" aria-labelledby="guest-modal-title">
+        <button type="button" onClick={onClose} aria-label="Close" className="bubble-guest-modal-close">
+          <X size={20} />
+        </button>
+        <span className="bubble-guest-modal-kicker">
+          {Math.min(used, limit)}/{limit} free guest messages used
+        </span>
+        <h2 id="guest-modal-title">Continue learning for free</h2>
+        <p>
+          Google keeps your learning history, profile, language preference, and future conversations saved.
+          inspir stays free to use.
+        </p>
+        <GoogleContinueButton className="bubble-guest-modal-primary">Continue with Google</GoogleContinueButton>
+        <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
+          Maybe later
+        </button>
+      </section>
+    </div>
   );
 }
 

@@ -2,6 +2,11 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildTopicSystemPrompt, INSPIR_TUTOR_CONTRACT } from "../lib/ai/prompts";
 import { resolveModelName } from "../lib/ai/model-router";
+import {
+  reviewFlashcard,
+  sanitizeFlashcardState,
+  type FlashcardState,
+} from "../lib/activities/flashcards";
 import { answerQuizQuestion, sanitizeQuizState, type QuizState } from "../lib/activities/quiz";
 import { topicSeeds } from "../lib/content/topics";
 
@@ -60,6 +65,13 @@ test("collaborative instruction no longer defaults to Hindi", () => {
   assert.equal(/Hindi|Aaj|Chalo|saath|Mujhe/.test(text), false);
 });
 
+test("flashcard builder is a structured mini app mode", () => {
+  const seed = topicSeeds.find((topic) => topic.slug === "flashcard-builder");
+  assert.ok(seed);
+  assert.equal(seed.metadata.uiMode, "flashcards");
+  assert.equal(seed.metadata.modelProfile, "structured");
+});
+
 test("model router uses profile-specific env vars with OPENAI_MODEL fallback", () => {
   const previous = {
     OPENAI_MODEL: process.env.OPENAI_MODEL,
@@ -108,4 +120,38 @@ test("quiz state hides future answers and scores a submitted answer", () => {
   const visible = sanitizeQuizState(answered.state);
   assert.equal(visible.questions[0].correctIndex, 1);
   assert.equal(visible.questions[1].correctIndex, undefined);
+});
+
+test("flashcard state hides answers until reveal and tracks recall", () => {
+  const state: FlashcardState = {
+    topic: "Planets",
+    currentIndex: 0,
+    knownCount: 0,
+    reviewedCount: 0,
+    maxCards: 12,
+    completed: false,
+    cards: Array.from({ length: 12 }, (_, index) => ({
+      id: `card${index + 1}`,
+      front: `Front ${index + 1}`,
+      back: `Back ${index + 1}`,
+      hint: "Hint",
+      example: "Example",
+      trap: "Trap",
+      tags: ["space"],
+    })),
+  };
+
+  const hidden = sanitizeFlashcardState(state);
+  assert.equal(hidden.cards[0].back, undefined);
+  assert.equal(hidden.cards[0].hint, "Hint");
+
+  const revealed = reviewFlashcard(state, { action: "reveal" });
+  assert.equal(revealed.changed, true);
+  const visible = sanitizeFlashcardState(revealed.state);
+  assert.equal(visible.cards[0].back, "Back 1");
+
+  const rated = reviewFlashcard(revealed.state, { action: "rate", rating: "known" });
+  assert.equal(rated.state.knownCount, 1);
+  assert.equal(rated.state.reviewedCount, 1);
+  assert.equal(rated.state.currentIndex, 1);
 });
