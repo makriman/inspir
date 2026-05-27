@@ -188,4 +188,4 @@ AI products touch sensitive user data, auth flows, and provider keys. Please do 
 
 ## License
 
-No open source license has been declared yet. Until a license is added, all rights are reserved by the repository owner.
+MIT. See [LICENSE](LICENSE).
