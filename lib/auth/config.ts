@@ -19,6 +19,7 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: googleClientId,
       clientSecret: googleClientSecret,
+      allowDangerousEmailAccountLinking: true,
       authorization: {
         params: {
           prompt: "select_account",
@@ -37,6 +38,13 @@ export const authOptions: NextAuthOptions = {
     error: "/",
   },
   callbacks: {
+    async signIn({ account, profile }) {
+      if (account?.provider === "google") {
+        const googleProfile = profile as { email_verified?: boolean } | undefined;
+        return googleProfile?.email_verified !== false;
+      }
+      return true;
+    },
     async jwt({ token, user }) {
       if (user?.id) token.id = user.id;
       return token;
