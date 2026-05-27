@@ -5,29 +5,24 @@ import { SignInButton } from "@/components/marketing/SignInButton";
 
 export default function LandingPage() {
   return (
-    <main className="flex min-h-screen flex-col bg-black px-6 text-white">
-      <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center pb-10 pt-12 text-center">
-        <InspirLogo className="mb-16 h-32 w-auto object-contain" />
-        <h1 className="max-w-4xl text-[clamp(2.4rem,5vw,4.7rem)] font-black leading-[1.04] tracking-normal">
-          Revolutionize Your Learning Journey with Artificial intelligence
+    <main className="landing-bubble">
+      <InspirLogo className="landing-logo" />
+      <section className="landing-hero" aria-labelledby="landing-title">
+        <h1 id="landing-title" className="landing-title">
+          <span>Revolutionize Your Learning Journey with</span>
+          <span>Artificial intelligence</span>
         </h1>
-        <div className="mt-12 w-full">
-          <SignInButton />
-        </div>
+        <SignInButton />
       </section>
-      <footer className="mx-auto flex w-full max-w-5xl flex-col items-center gap-5 pb-8 text-sm font-bold text-white/90">
-        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-          <Link href="/tnc" className="hover:text-white">
-            Terms and Conditions
-          </Link>
-          <Link href="/privacy" className="hover:text-white">
-            Privacy Policy
-          </Link>
-          <Link href="/mission" className="hover:text-white">
-            Mission
-          </Link>
+      <footer className="landing-footer">
+        <nav className="landing-legal-links">
+          <Link href="/tnc">Terms and Conditions</Link>
+          <Link href="/privacy">Privacy Policy</Link>
         </nav>
-        <SocialLinks />
+        <nav className="landing-mission-link">
+          <Link href="/mission">Read our Mission Statement</Link>
+        </nav>
+        <SocialLinks className="landing-social-links" />
       </footer>
     </main>
   );

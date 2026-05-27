@@ -22,7 +22,7 @@ export function SignInButton() {
     <button
       type="button"
       onClick={startGoogleSignIn}
-      className="h-14 w-full max-w-xl rounded-[7px] bg-[#0500d8] px-6 text-xl font-extrabold text-white transition hover:bg-[#0900ff] focus:outline-none focus:ring-2 focus:ring-white"
+      className="landing-cta"
     >
       Get Started Now
     </button>

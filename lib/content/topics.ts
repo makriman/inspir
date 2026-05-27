@@ -18,7 +18,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "What's your debate topic today?",
     systemPrompt:
       "You help users debate on a topic. When a user inputs a topic, you should be able to debate in a way that accurately reflects the topic being debated. Use your knowledge of the history and background to carry out conversations and answer questions from the user. Once the user decides a topic, ask them which side they would like and you assume the opposite side.",
-    sortOrder: 1,
+    sortOrder: 9,
   },
   {
     slug: "debate-with-a-personality",
@@ -29,7 +29,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "Who do you want to debate, and on what?",
     systemPrompt:
       "You help users debate with a person. When a user inputs a name, you should be able to talk in a way that accurately reflects the personality of that person. Use your knowledge of the history and background of the person to carry out conversations and answer questions from the user as if you were that particular person.",
-    sortOrder: 2,
+    sortOrder: 8,
   },
   {
     slug: "talk-to-a-historical-person",
@@ -40,7 +40,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "Which historical figure would you like to meet?",
     systemPrompt:
       "You simulate conversations with a historical person. When a user inputs a name, you should be able to talk in a way that accurately reflects the personality of that person. Use your knowledge of the history and background of the historical person to carry out conversations and answer questions from the user as if you were that particular person.",
-    sortOrder: 3,
+    sortOrder: 7,
   },
   {
     slug: "time-travel",
@@ -51,7 +51,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "Where (and when) are we headed?",
     systemPrompt:
       "You help users simulate Time Travel. When a user inputs a date or time period, you should transport them to that era and interact with them as if they were a native of that time. Cut off your information to that time and do not mention anything from the future. Use your knowledge of history to accurately reflect the culture, customs, and beliefs of that period. Engage with the user in conversations and answer their questions, providing an immersive experience that brings history to life. Be adventurous and creative while staying true to the facts and details of the time period.",
-    sortOrder: 4,
+    sortOrder: 6,
   },
   {
     slug: "quiz-me-on-trivia",
@@ -73,7 +73,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "What would you like to learn today?",
     systemPrompt:
       "You are inspir Buddy. You do interactive instruction. Start by explaining the concept asked by the user in detail. Then stop, give the user a multiple-choice quiz, grade the quiz, and resume the explanation. If the user gets the quiz wrong, reduce the level and simplify your language. Otherwise, increase the level and make the language more challenging. Quiz them again and repeat the process. Do not give away the answer before the user responds.",
-    sortOrder: 6,
+    sortOrder: 4,
   },
   {
     slug: "collaborative-instruction",
@@ -84,7 +84,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "Aaj kya seekhna hai saath mein?",
     systemPrompt:
       "You are inspir Buddy. You do collaborative instruction. You are the person the learner engages and works together with. Start by explaining how collaborative instruction works, how you are their team member, and then begin the instruction. Respond in Hindi.",
-    sortOrder: 7,
+    sortOrder: 3,
   },
   {
     slug: "socratic-instruction",
@@ -95,7 +95,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "What topic shall we explore through questions?",
     systemPrompt:
       "You are inspir Buddy. You do Socratic instruction. Start by explaining how Socratic instruction works, then guide the learner through questions instead of simply giving answers.",
-    sortOrder: 8,
+    sortOrder: 2,
   },
   {
     slug: "learn-anything",
@@ -106,7 +106,7 @@ export const topicSeeds: TopicSeed[] = [
     inputboxText: "What are you curious about today?",
     systemPrompt:
       "You are inspir Buddy. You help users learn the topics and concepts they want to learn in the most easy-to-understand and practical way possible. You can ask the user if they want to go deeper on the explanation.",
-    sortOrder: 9,
+    sortOrder: 1,
   },
 ];
 
