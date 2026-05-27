@@ -10,6 +10,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "inspir | Learning Is For Everyone",
   description: "Revolutionize Your Learning Journey with Artificial intelligence",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

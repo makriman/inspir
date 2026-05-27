@@ -72,6 +72,7 @@ export function ChatClient({
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
+  const [awaitingResponse, setAwaitingResponse] = useState(false);
   const [search, setSearch] = useState("");
   const [profileOpen, setProfileOpen] = useState(false);
   const [recentOpen, setRecentOpen] = useState(false);
@@ -149,6 +150,7 @@ export function ChatClient({
 
     setInput("");
     setSending(true);
+    setAwaitingResponse(true);
     setRecentOpen(false);
 
     const now = new Date();
@@ -158,13 +160,8 @@ export function ChatClient({
       content,
       createdAt: now,
     };
-    const assistantMessage: Message = {
-      id: `local-assistant-${now.getTime()}`,
-      role: "assistant",
-      content: "",
-      createdAt: new Date(),
-    };
-    setMessages((current) => [...current, userMessage, assistantMessage]);
+    const assistantMessageId = `local-assistant-${now.getTime()}`;
+    setMessages((current) => [...current, userMessage]);
 
     try {
       const chatId = activeChatId ?? (await createChat(activeTopicId));
@@ -178,29 +175,46 @@ export function ChatClient({
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let assistantText = "";
+      let assistantInserted = false;
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
         assistantText += decoder.decode(value, { stream: true });
-        setMessages((current) =>
-          current.map((message) =>
-            message.id === assistantMessage.id ? { ...message, content: assistantText } : message,
-          ),
-        );
+        if (!assistantInserted) {
+          assistantInserted = true;
+          setAwaitingResponse(false);
+          setMessages((current) => [
+            ...current,
+            {
+              id: assistantMessageId,
+              role: "assistant",
+              content: assistantText,
+              createdAt: new Date(),
+            },
+          ]);
+          continue;
+        }
+
+        setMessages((current) => {
+          return current.map((message) =>
+            message.id === assistantMessageId ? { ...message, content: assistantText } : message,
+          );
+        });
       }
       await loadChat(chatId);
     } catch {
-      setMessages((current) =>
-        current.map((message) =>
-          message.id === assistantMessage.id
-            ? {
-                ...message,
-                content: "I could not answer right now. Please try again.",
-              }
-            : message,
-        ),
-      );
+      setAwaitingResponse(false);
+      setMessages((current) => [
+        ...current,
+        {
+          id: assistantMessageId,
+          role: "assistant",
+          content: "I could not answer right now. Please try again.",
+          createdAt: new Date(),
+        },
+      ]);
     } finally {
+      setAwaitingResponse(false);
       setSending(false);
     }
   }
@@ -275,8 +289,13 @@ export function ChatClient({
                   .map((message) => (
                     <MessageBubble key={message.id} message={message} />
                   ))}
-                {sending && messages[messages.length - 1]?.content === "" ? (
-                  <div className="bubble-thinking">Thinking...</div>
+                {awaitingResponse ? (
+                  <div className="bubble-thinking" aria-live="polite">
+                    <span />
+                    <span />
+                    <span />
+                    <strong>Thinking</strong>
+                  </div>
                 ) : null}
               </div>
             </div>
@@ -425,6 +444,7 @@ function TopBar({
 function TopicIntroCard({ topic }: { topic: Topic }) {
   return (
     <article className="bubble-intro-card">
+      <h2>{topic.name}</h2>
       <p>{topic.description}</p>
     </article>
   );
