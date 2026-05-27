@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { openai } from "@ai-sdk/openai";
-import { streamText } from "ai";
 import { z } from "zod";
-import { eq, sql as dsql } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { requireSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
-import { aiRuns, users } from "@/lib/db/schema";
+import { aiRuns } from "@/lib/db/schema";
 import { getContextMessages, getOwnedChat, insertMessage } from "@/lib/db/queries";
 import { buildModelMessages } from "@/lib/ai/prompts";
+import { createLearningAgent } from "@/lib/ai/learning-agent";
+import { resolveModelForTopic } from "@/lib/ai/model-router";
 import { checkRateLimit } from "@/lib/utils/rate-limit";
 
 export const runtime = "nodejs";
@@ -42,8 +42,8 @@ export async function POST(request: NextRequest) {
   });
 
   const context = await getContextMessages(parsed.data.chatId);
-  const assembled = buildModelMessages(owned.topic.systemPrompt, context);
-  const model = process.env.OPENAI_MODEL ?? "gpt-4.1-mini";
+  const assembled = buildModelMessages(owned.topic, context);
+  const model = resolveModelForTopic(owned.topic);
 
   const [run] = await db
     .insert(aiRuns)
@@ -56,12 +56,9 @@ export async function POST(request: NextRequest) {
     .returning();
 
   try {
-    const result = streamText({
-      model: openai(model),
-      system: assembled.system,
-      messages: assembled.messages,
-      temperature: 0.7,
-      maxOutputTokens: 2500,
+    const agent = createLearningAgent({
+      topic: owned.topic,
+      model,
       onFinish: async (event) => {
         const assistant = await insertMessage({
           chatId: parsed.data.chatId,
@@ -79,14 +76,9 @@ export async function POST(request: NextRequest) {
             completedAt: new Date(),
           })
           .where(eq(aiRuns.id, run.id));
-        if (owned.topic?.slug === "quiz-me-on-trivia" && /^correct\b/i.test(event.text.trim())) {
-          await db
-            .update(users)
-            .set({ score: dsql`${users.score} + 1`, updatedAt: new Date() })
-            .where(eq(users.id, session.user.id));
-        }
       },
     });
+    const result = await agent.stream({ messages: assembled.messages });
 
     return result.toTextStreamResponse();
   } catch (error) {

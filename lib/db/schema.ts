@@ -131,6 +131,7 @@ export const messages = pgTable(
       .notNull(),
     role: text("role").notNull(),
     content: text("content").notNull(),
+    metadata: jsonb("metadata").$type<Record<string, unknown>>().default({}).notNull(),
     legacySenderId: text("legacy_sender_id"),
     legacyUserId: text("legacy_user_id"),
     legacyTopicId: text("legacy_topic_id"),
@@ -138,6 +139,28 @@ export const messages = pgTable(
   },
   (table) => ({
     chatCreatedIdx: index("messages_chat_created_idx").on(table.chatId, table.createdAt),
+  }),
+);
+
+export const activityRuns = pgTable(
+  "activity_runs",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    chatId: uuid("chat_id")
+      .references(() => chats.id, { onDelete: "cascade" })
+      .notNull(),
+    type: text("type").notNull(),
+    status: text("status").notNull().default("active"),
+    state: jsonb("state").$type<Record<string, unknown>>().default({}).notNull(),
+    score: integer("score"),
+    maxScore: integer("max_score"),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+    completedAt: timestamp("completed_at", { withTimezone: true }),
+  },
+  (table) => ({
+    chatIdx: index("activity_runs_chat_id_idx").on(table.chatId),
+    typeIdx: index("activity_runs_type_idx").on(table.type),
   }),
 );
 
@@ -187,3 +210,4 @@ export type Topic = typeof topics.$inferSelect;
 export type Chat = typeof chats.$inferSelect;
 export type Message = typeof messages.$inferSelect;
 export type User = typeof users.$inferSelect;
+export type ActivityRun = typeof activityRuns.$inferSelect;

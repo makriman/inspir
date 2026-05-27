@@ -1,6 +1,6 @@
 import { and, asc, count, desc, eq, ilike, inArray, isNull, or } from "drizzle-orm";
 import { db } from "./client";
-import { chats, messages, topics, users } from "./schema";
+import { activityRuns, chats, messages, topics, users } from "./schema";
 import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
 
 export async function ensureSeedTopics() {
@@ -15,6 +15,7 @@ export async function ensureSeedTopics() {
         inputboxText: topic.inputboxText,
         systemPrompt: topic.systemPrompt,
         sortOrder: topic.sortOrder,
+        metadata: topic.metadata,
         status: "active",
       })
       .onConflictDoUpdate({
@@ -26,6 +27,7 @@ export async function ensureSeedTopics() {
           inputboxText: topic.inputboxText,
           systemPrompt: topic.systemPrompt,
           sortOrder: topic.sortOrder,
+          metadata: topic.metadata,
           status: "active",
           updatedAt: new Date(),
         },
@@ -140,8 +142,12 @@ export async function insertMessage(input: {
   chatId: string;
   role: "user" | "assistant" | "system";
   content: string;
+  metadata?: Record<string, unknown>;
 }) {
-  const [message] = await db.insert(messages).values(input).returning();
+  const [message] = await db
+    .insert(messages)
+    .values({ ...input, metadata: input.metadata ?? {} })
+    .returning();
   await db.update(chats).set({ updatedAt: new Date() }).where(eq(chats.id, input.chatId));
   if (input.role === "user") {
     const [{ value }] = await db
@@ -156,6 +162,69 @@ export async function insertMessage(input: {
     }
   }
   return message;
+}
+
+export async function createActivityRun(input: {
+  chatId: string;
+  type: string;
+  status?: string;
+  state: Record<string, unknown>;
+  score?: number | null;
+  maxScore?: number | null;
+}) {
+  const [run] = await db
+    .insert(activityRuns)
+    .values({
+      chatId: input.chatId,
+      type: input.type,
+      status: input.status ?? "active",
+      state: input.state,
+      score: input.score ?? null,
+      maxScore: input.maxScore ?? null,
+    })
+    .returning();
+  await db.update(chats).set({ updatedAt: new Date() }).where(eq(chats.id, input.chatId));
+  return run;
+}
+
+export async function getLatestActivityRun(chatId: string) {
+  const [run] = await db
+    .select()
+    .from(activityRuns)
+    .where(eq(activityRuns.chatId, chatId))
+    .orderBy(desc(activityRuns.updatedAt))
+    .limit(1);
+  return run;
+}
+
+export async function getActivityRunById(activityRunId: string) {
+  const [run] = await db
+    .select()
+    .from(activityRuns)
+    .where(eq(activityRuns.id, activityRunId))
+    .limit(1);
+  return run;
+}
+
+export async function updateActivityRun(
+  activityRunId: string,
+  input: {
+    status?: string;
+    state?: Record<string, unknown>;
+    score?: number | null;
+    maxScore?: number | null;
+    completedAt?: Date | null;
+  },
+) {
+  const [run] = await db
+    .update(activityRuns)
+    .set({ ...input, updatedAt: new Date() })
+    .where(eq(activityRuns.id, activityRunId))
+    .returning();
+  if (run?.chatId) {
+    await db.update(chats).set({ updatedAt: new Date() }).where(eq(chats.id, run.chatId));
+  }
+  return run;
 }
 
 export async function getContextMessages(chatId: string, limit = 30) {

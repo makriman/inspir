@@ -33,6 +33,7 @@ export default async function ChatPage() {
       topics={topics}
       initialTopicId={defaultTopic.id}
       initialMessages={[]}
+      initialActivityRun={null}
     />
   );
 }

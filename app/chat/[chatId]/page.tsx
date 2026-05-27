@@ -2,7 +2,15 @@ import { redirect, notFound } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/config";
 import { ChatClient } from "@/components/chat/ChatClient";
-import { getActiveTopics, getChatMessages, getDefaultTopic, getOwnedChat, getUserById } from "@/lib/db/queries";
+import { sanitizeActivityRun } from "@/lib/activities/quiz";
+import {
+  getActiveTopics,
+  getChatMessages,
+  getDefaultTopic,
+  getLatestActivityRun,
+  getOwnedChat,
+  getUserById,
+} from "@/lib/db/queries";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -15,11 +23,12 @@ export default async function ChatThreadPage({ params }: { params: Promise<{ cha
   const owned = await getOwnedChat(chatId, session.user.id);
   if (!owned) notFound();
 
-  const [topics, defaultTopic, messages, user] = await Promise.all([
+  const [topics, defaultTopic, messages, user, activityRun] = await Promise.all([
     getActiveTopics(),
     getDefaultTopic(),
     getChatMessages(chatId),
     getUserById(session.user.id),
+    getLatestActivityRun(chatId),
   ]);
 
   return (
@@ -44,7 +53,9 @@ export default async function ChatThreadPage({ params }: { params: Promise<{ cha
             : "assistant",
         content: message.content,
         createdAt: message.createdAt,
+        metadata: message.metadata,
       }))}
+      initialActivityRun={sanitizeActivityRun(activityRun)}
     />
   );
 }

@@ -1,0 +1,50 @@
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+import { requireSession } from "@/lib/auth/session";
+import { createActivityRun, getOwnedChat, insertMessage } from "@/lib/db/queries";
+import { generateQuiz, sanitizeQuizState } from "@/lib/activities/quiz";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+const startQuizSchema = z.object({
+  chatId: z.uuid(),
+  topic: z.string().trim().min(1).max(180),
+});
+
+export async function POST(request: NextRequest) {
+  const session = await requireSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  const parsed = startQuizSchema.safeParse(await request.json());
+  if (!parsed.success) return NextResponse.json({ error: "Invalid quiz request" }, { status: 400 });
+
+  const owned = await getOwnedChat(parsed.data.chatId, session.user.id);
+  if (!owned?.topic || owned.topic.slug !== "quiz-me-on-trivia") {
+    return NextResponse.json({ error: "Quiz chat not found" }, { status: 404 });
+  }
+
+  const quiz = await generateQuiz(parsed.data.topic);
+  const run = await createActivityRun({
+    chatId: parsed.data.chatId,
+    type: "quiz",
+    state: quiz,
+    score: 0,
+    maxScore: quiz.maxScore,
+  });
+
+  await insertMessage({
+    chatId: parsed.data.chatId,
+    role: "user",
+    content: `Quiz me on ${parsed.data.topic}`,
+    metadata: { activityRunId: run.id, activityType: "quiz", event: "started" },
+  });
+  await insertMessage({
+    chatId: parsed.data.chatId,
+    role: "assistant",
+    content: `Your 10-question quiz on ${parsed.data.topic} is ready. Answer one question at a time and I will score it as you go.`,
+    metadata: { activityRunId: run.id, activityType: "quiz", event: "started" },
+  });
+
+  return NextResponse.json({ activityRun: { ...run, state: sanitizeQuizState(quiz) } });
+}

@@ -317,6 +317,23 @@ a {
   background: rgb(10 10 10);
 }
 
+.bubble-topic-group h3 {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 0;
+  border-top: 1px solid rgb(255 255 255 / 0.05);
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
+  background: rgb(10 10 10 / 0.96);
+  color: rgb(255 255 255 / 0.56);
+  padding: 8px 15px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 .bubble-topic-row {
   display: block;
   position: relative;
@@ -393,7 +410,7 @@ a {
   position: absolute;
   top: 18px;
   left: 10px;
-  right: 160px;
+  right: 184px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -415,7 +432,7 @@ a {
   top: 9px;
   right: 0;
   display: flex;
-  width: 150px;
+  width: 176px;
   height: 36px;
   align-items: center;
   justify-content: center;
@@ -432,9 +449,10 @@ a {
 }
 
 .bubble-reset-button,
-.bubble-history-button {
+.bubble-history-button,
+.bubble-regenerate-button {
   display: grid;
-  width: 48px;
+  width: 44px;
   height: 34px;
   place-items: center;
 }
@@ -445,6 +463,15 @@ a {
 
 .bubble-history-button {
   color: rgb(3 207 101);
+}
+
+.bubble-regenerate-button {
+  color: rgb(255 255 255 / 0.9);
+}
+
+.bubble-regenerate-button:disabled {
+  color: rgb(255 255 255 / 0.28);
+  cursor: default;
 }
 
 .bubble-mobile-menu {
@@ -493,6 +520,17 @@ a {
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: 0;
+}
+
+.bubble-intro-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: rgb(46 127 62);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .bubble-intro-card p {
@@ -552,17 +590,200 @@ a {
 
 .bubble-message-bubble p {
   margin: 0;
-  white-space: pre-line;
+}
+
+.bubble-rich-content {
+  display: grid;
+  gap: 10px;
+}
+
+.bubble-rich-content h3 {
+  margin: 4px 0 0;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.bubble-rich-content p,
+.bubble-rich-content ul {
+  margin: 0;
+}
+
+.bubble-rich-content ul {
+  padding-left: 22px;
+}
+
+.bubble-rich-content li + li {
+  margin-top: 5px;
+}
+
+.bubble-rich-content code {
+  border-radius: 5px;
+  background: rgb(255 255 255 / 0.1);
+  padding: 1px 5px;
+  font-size: 0.92em;
+}
+
+.bubble-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 8px;
+}
+
+.bubble-table-wrap table {
+  width: 100%;
+  min-width: 420px;
+  border-collapse: collapse;
+}
+
+.bubble-table-wrap th,
+.bubble-table-wrap td {
+  border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  padding: 8px 10px;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: left;
+  vertical-align: top;
+}
+
+.bubble-table-wrap th {
+  background: rgb(255 255 255 / 0.08);
+  font-weight: 900;
+}
+
+.bubble-table-wrap tr:last-child td {
+  border-bottom: 0;
+}
+
+.bubble-message-bubble footer {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
 }
 
 .bubble-message-bubble time {
-  display: block;
-  margin-top: 10px;
   font-size: 11px;
   font-weight: 600;
   line-height: 1;
   text-align: right;
   opacity: 0.72;
+}
+
+.bubble-message-bubble footer button {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 0;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 0.08);
+  color: currentColor;
+  cursor: pointer;
+}
+
+.bubble-starter-grid {
+  display: grid;
+  width: min(860px, 100%);
+  margin: 0 auto 26px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.bubble-starter-grid button {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.06);
+  color: #fff;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.25;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bubble-starter-grid button:hover {
+  border-color: rgb(88 205 110 / 0.72);
+  background: rgb(88 205 110 / 0.13);
+}
+
+.bubble-mini-panel {
+  width: min(860px, 100%);
+  margin: 0 auto 24px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 10px;
+  background: rgb(18 18 20 / 0.92);
+  padding: 16px;
+  box-shadow: 0 18px 55px rgb(0 0 0 / 0.3);
+}
+
+.bubble-mini-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgb(88 205 110);
+}
+
+.bubble-mini-panel-header div {
+  display: grid;
+  gap: 4px;
+}
+
+.bubble-mini-panel-header strong {
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.15;
+}
+
+.bubble-mini-panel-header span {
+  color: rgb(255 255 255 / 0.68);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.bubble-mini-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.bubble-mini-card-grid article {
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.05);
+  padding: 12px;
+}
+
+.bubble-mini-card-grid strong,
+.bubble-mini-card-grid span {
+  display: block;
+}
+
+.bubble-mini-card-grid strong {
+  margin-bottom: 6px;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.bubble-mini-card-grid span {
+  color: rgb(255 255 255 / 0.66);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.bubble-mini-panel .bubble-starter-grid {
+  width: 100%;
+  margin: 14px 0 0;
 }
 
 .bubble-thinking {
@@ -624,10 +845,13 @@ a {
 
 .bubble-composer-inner {
   position: absolute;
-  inset: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 64px;
+  max-height: 170px;
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 0.2);
   border-radius: 18px;
@@ -641,13 +865,16 @@ a {
 .bubble-composer-input {
   min-width: 0;
   flex: 1 1 auto;
+  height: auto;
+  max-height: 150px;
   border: 0;
   background: transparent;
   color: #fff;
-  padding: 0 18px;
+  resize: none;
+  padding: 20px 18px 14px;
   font-size: 15px;
   font-weight: 600;
-  line-height: 64px;
+  line-height: 1.45;
   outline: none;
 }
 
@@ -666,6 +893,299 @@ a {
   color: #fff;
   cursor: pointer;
   transition: background 160ms ease, color 160ms ease;
+}
+
+.bubble-quiz-workspace {
+  display: grid;
+  min-height: 0;
+  place-items: center;
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.bubble-quiz-start,
+.bubble-quiz-card {
+  width: min(760px, 100%);
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 12px;
+  background: rgb(18 18 20 / 0.95);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.42);
+}
+
+.bubble-quiz-start {
+  display: grid;
+  gap: 18px;
+  justify-items: center;
+  padding: clamp(24px, 6vw, 54px);
+  text-align: center;
+}
+
+.bubble-quiz-start-icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border-radius: 18px;
+  background: rgb(88 205 110 / 0.16);
+  color: rgb(88 205 110);
+}
+
+.bubble-quiz-start h2,
+.bubble-quiz-card h2,
+.bubble-question-card h3,
+.bubble-quiz-review h3 {
+  margin: 0;
+  color: #fff;
+  letter-spacing: 0;
+}
+
+.bubble-quiz-start h2 {
+  max-width: 560px;
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.05;
+}
+
+.bubble-quiz-start p {
+  max-width: 560px;
+  margin: 0;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.bubble-quiz-input-row {
+  display: flex;
+  width: min(560px, 100%);
+  min-height: 56px;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.06);
+}
+
+.bubble-quiz-input-row input {
+  min-width: 0;
+  flex: 1 1 auto;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  padding: 0 16px;
+  outline: none;
+}
+
+.bubble-quiz-input-row button {
+  width: 118px;
+  border: 0;
+  background: rgb(88 205 110);
+  color: rgb(5 16 8);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.bubble-quiz-input-row button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.bubble-quiz-error {
+  color: rgb(255 137 145);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.bubble-quiz-card {
+  padding: clamp(18px, 4vw, 28px);
+}
+
+.bubble-quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.bubble-quiz-header span,
+.bubble-question-card > span {
+  display: block;
+  color: rgb(88 205 110);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.bubble-quiz-header h2 {
+  margin-top: 7px;
+  font-size: clamp(22px, 4vw, 34px);
+  line-height: 1.1;
+}
+
+.bubble-quiz-header > strong {
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background: rgb(88 205 110 / 0.16);
+  color: rgb(125 235 143);
+  padding: 12px 14px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.bubble-quiz-progress {
+  height: 8px;
+  overflow: hidden;
+  margin: 18px 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.08);
+}
+
+.bubble-quiz-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(88 205 110);
+  transition: width 200ms ease;
+}
+
+.bubble-quiz-feedback {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.bubble-quiz-feedback.is-correct {
+  background: rgb(88 205 110 / 0.12);
+  color: rgb(125 235 143);
+}
+
+.bubble-quiz-feedback.is-wrong {
+  background: rgb(224 80 85 / 0.12);
+  color: rgb(255 137 145);
+}
+
+.bubble-quiz-feedback strong,
+.bubble-quiz-feedback span {
+  display: block;
+}
+
+.bubble-quiz-feedback strong {
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.bubble-quiz-feedback span {
+  color: rgb(255 255 255 / 0.72);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.bubble-question-card {
+  border-radius: 10px;
+  background: rgb(255 255 255 / 0.04);
+  padding: 18px;
+}
+
+.bubble-question-card h3 {
+  margin-top: 10px;
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.2;
+}
+
+.bubble-option-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.bubble-option-grid button {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.06);
+  color: #fff;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bubble-option-grid button:hover {
+  border-color: rgb(88 205 110 / 0.8);
+  background: rgb(88 205 110 / 0.12);
+}
+
+.bubble-option-grid button:disabled {
+  cursor: default;
+  opacity: 0.64;
+}
+
+.bubble-option-grid strong {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  border-radius: 7px;
+  background: rgb(255 255 255 / 0.12);
+}
+
+.bubble-option-grid span {
+  font-weight: 760;
+  line-height: 1.3;
+}
+
+.bubble-quiz-review > p {
+  margin: 8px 0 18px;
+  color: rgb(255 255 255 / 0.72);
+  font-weight: 650;
+}
+
+.bubble-review-list {
+  display: grid;
+  gap: 10px;
+}
+
+.bubble-review-list > div {
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.04);
+  padding: 12px;
+}
+
+.bubble-review-list > div.is-correct {
+  border-color: rgb(88 205 110 / 0.3);
+}
+
+.bubble-review-list > div.is-wrong {
+  border-color: rgb(224 80 85 / 0.38);
+}
+
+.bubble-review-list strong,
+.bubble-review-list span {
+  display: block;
+}
+
+.bubble-review-list strong {
+  margin-bottom: 8px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.bubble-review-list span,
+.bubble-review-list p {
+  margin: 0;
+  color: rgb(255 255 255 / 0.7);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.4;
 }
 
 .bubble-send-button:not(:disabled):hover {
@@ -967,7 +1487,7 @@ a {
 
   .bubble-topbar-title {
     left: 10px;
-    right: 160px;
+    right: 184px;
   }
 }
 
@@ -1066,7 +1586,7 @@ a {
   .bubble-topbar-title {
     top: 18px;
     left: 79px;
-    right: 176px;
+    right: 184px;
     justify-content: center;
     font-size: 15px;
     line-height: 18px;
@@ -1103,6 +1623,15 @@ a {
     gap: 14px;
   }
 
+  .bubble-starter-grid,
+  .bubble-mini-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bubble-mini-panel {
+    padding: 14px;
+  }
+
   .bubble-message-bubble,
   .bubble-thinking {
     max-width: 92%;
@@ -1118,8 +1647,12 @@ a {
     height: 56px;
   }
 
+  .bubble-composer-inner {
+    min-height: 56px;
+  }
+
   .bubble-composer-input {
-    line-height: 56px;
+    padding-top: 17px;
   }
 
   .bubble-send-button {
