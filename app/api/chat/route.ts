@@ -4,10 +4,11 @@ import { eq } from "drizzle-orm";
 import { requireSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
 import { aiRuns } from "@/lib/db/schema";
-import { getContextMessages, getOwnedChat, insertMessage } from "@/lib/db/queries";
+import { getContextMessages, getOwnedChat, getUserById, insertMessage } from "@/lib/db/queries";
 import { buildModelMessages } from "@/lib/ai/prompts";
 import { createLearningAgent } from "@/lib/ai/learning-agent";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
+import { normalizeLanguage } from "@/lib/content/languages";
 import { checkRateLimit } from "@/lib/utils/rate-limit";
 
 export const runtime = "nodejs";
@@ -42,7 +43,9 @@ export async function POST(request: NextRequest) {
   });
 
   const context = await getContextMessages(parsed.data.chatId);
-  const assembled = buildModelMessages(owned.topic, context);
+  const user = await getUserById(session.user.id);
+  const preferredLanguage = normalizeLanguage(user?.preferredLanguage);
+  const assembled = buildModelMessages(owned.topic, context, preferredLanguage);
   const model = resolveModelForTopic(owned.topic);
 
   const [run] = await db
@@ -59,6 +62,7 @@ export async function POST(request: NextRequest) {
     const agent = createLearningAgent({
       topic: owned.topic,
       model,
+      preferredLanguage,
       onFinish: async (event) => {
         const assistant = await insertMessage({
           chatId: parsed.data.chatId,

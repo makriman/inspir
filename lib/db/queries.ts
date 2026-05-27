@@ -55,6 +55,15 @@ export async function getUserById(userId: string) {
   return user;
 }
 
+export async function updateUserLanguage(userId: string, preferredLanguage: string) {
+  const [user] = await db
+    .update(users)
+    .set({ preferredLanguage, updatedAt: new Date() })
+    .where(eq(users.id, userId))
+    .returning();
+  return user;
+}
+
 export async function createChatForUser(userId: string, topicId: string) {
   const [topic] = await db.select().from(topics).where(eq(topics.id, topicId)).limit(1);
   if (!topic) throw new Error("Topic not found");

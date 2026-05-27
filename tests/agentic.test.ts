@@ -33,7 +33,31 @@ test("prompt assembly includes the shared tutor contract and selected mode promp
   });
   assert.ok(prompt.includes(INSPIR_TUTOR_CONTRACT));
   assert.ok(prompt.includes("Selected mode: Socratic Instruction"));
+  assert.ok(prompt.includes("Profile language: English"));
   assert.ok(prompt.includes("Ask one focused diagnostic question"));
+});
+
+test("prompt assembly includes selected profile language", () => {
+  const seed = topicSeeds.find((topic) => topic.slug === "learn-anything");
+  assert.ok(seed);
+  const prompt = buildTopicSystemPrompt(
+    {
+      name: seed.name,
+      slug: seed.slug,
+      systemPrompt: seed.systemPrompt,
+      metadata: seed.metadata,
+    },
+    "Spanish",
+  );
+  assert.ok(prompt.includes("Profile language: Spanish"));
+  assert.ok(prompt.includes("Respond in Spanish"));
+});
+
+test("collaborative instruction no longer defaults to Hindi", () => {
+  const seed = topicSeeds.find((topic) => topic.slug === "collaborative-instruction");
+  assert.ok(seed);
+  const text = [seed.subText, seed.description, seed.inputboxText, seed.systemPrompt, ...seed.metadata.starters].join(" ");
+  assert.equal(/Hindi|Aaj|Chalo|saath|Mujhe/.test(text), false);
 });
 
 test("model router uses profile-specific env vars with OPENAI_MODEL fallback", () => {

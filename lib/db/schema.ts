@@ -22,6 +22,7 @@ export const users = pgTable("users", {
   profileImageData: text("profile_image_data"),
   profileImageMime: text("profile_image_mime"),
   profileImageHash: text("profile_image_hash"),
+  preferredLanguage: text("preferred_language").notNull().default("English"),
   profilePictureDownloadedAt: timestamp("profile_picture_downloaded_at", {
     withTimezone: true,
   }),

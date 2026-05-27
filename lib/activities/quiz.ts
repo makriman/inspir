@@ -49,30 +49,36 @@ const generatedQuizSchema = z.object({
 export async function generateQuiz(topic: string): Promise<QuizState> {
   if (!process.env.OPENAI_API_KEY) return fallbackQuiz(topic);
 
-  const result = await generateObject({
-    model: openai(resolveModelName("structured")),
-    schema: generatedQuizSchema,
-    system:
-      "You are an expert quiz designer for a learner-first education app. Create fair multiple-choice questions. Do not include answer labels inside option text.",
-    prompt: [
-      `Create exactly 10 multiple-choice questions about: ${topic}.`,
-      "Each question needs 4 plausible options, exactly one correct option, and a short explanation.",
-      "Mix difficulty from easy to moderately challenging. Avoid obscure trivia unless the topic itself asks for it.",
-    ].join("\n"),
-    temperature: 0.35,
-  });
+  try {
+    const result = await generateObject({
+      model: openai(resolveModelName("structured")),
+      schema: generatedQuizSchema,
+      system:
+        "You are an expert quiz designer for a learner-first education app. Create fair multiple-choice questions. Do not include answer labels inside option text.",
+      prompt: [
+        `Create exactly 10 multiple-choice questions about: ${topic}.`,
+        "Each question needs 4 plausible options, exactly one correct option, and a short explanation.",
+        "Mix difficulty from easy to moderately challenging. Avoid obscure trivia unless the topic itself asks for it.",
+      ].join("\n"),
+      temperature: 0.35,
+      maxRetries: 1,
+      abortSignal: AbortSignal.timeout(35_000),
+    });
 
-  return {
-    topic,
-    currentIndex: 0,
-    score: 0,
-    maxScore: 10,
-    completed: false,
-    questions: result.object.questions.map((question, index) => ({
-      id: `q${index + 1}`,
-      ...question,
-    })),
-  };
+    return {
+      topic,
+      currentIndex: 0,
+      score: 0,
+      maxScore: 10,
+      completed: false,
+      questions: result.object.questions.map((question, index) => ({
+        id: `q${index + 1}`,
+        ...question,
+      })),
+    };
+  } catch {
+    return fallbackQuiz(topic);
+  }
 }
 
 export function answerQuizQuestion(state: QuizState, answerIndex: number) {

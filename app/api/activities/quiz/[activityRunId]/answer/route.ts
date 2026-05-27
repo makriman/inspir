@@ -59,10 +59,10 @@ export async function POST(
     completedAt: result.state.completed ? new Date() : null,
   });
 
-  if (result.changed && result.wasCorrect) {
+  if (result.changed && result.state.completed && run.status !== "completed" && result.state.score > 0) {
     await db
       .update(users)
-      .set({ score: dsql`${users.score} + 1`, updatedAt: new Date() })
+      .set({ score: dsql`${users.score} + ${result.state.score}`, updatedAt: new Date() })
       .where(eq(users.id, session.user.id));
   }
 

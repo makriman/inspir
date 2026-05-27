@@ -39,6 +39,7 @@ export default async function ChatThreadPage({ params }: { params: Promise<{ cha
         email: user?.email ?? session.user.email ?? "user@example.com",
         image: user?.image ?? session.user.image ?? null,
         score: user?.score ?? 0,
+        preferredLanguage: user?.preferredLanguage ?? "English",
         createdAt: user?.createdAt ?? new Date(),
         profileImageHash: user?.profileImageHash ?? null,
       }}

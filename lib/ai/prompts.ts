@@ -1,5 +1,6 @@
 import type { Message, Topic } from "@/lib/db/schema";
 import type { TopicMetadata } from "@/lib/content/topics";
+import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 
 type TopicLike = Pick<Topic, "name" | "slug" | "systemPrompt" | "metadata">;
 
@@ -20,11 +21,13 @@ export function getTopicMetadata(topic: Pick<TopicLike, "metadata">): TopicMetad
   return metadata as TopicMetadata;
 }
 
-export function buildTopicSystemPrompt(topic: TopicLike) {
+export function buildTopicSystemPrompt(topic: TopicLike, preferredLanguage = defaultLanguage) {
   const metadata = getTopicMetadata(topic);
+  const language = normalizeLanguage(preferredLanguage);
   return [
     INSPIR_TUTOR_CONTRACT,
     `\nSelected mode: ${topic.name} (${topic.slug})`,
+    `Profile language: ${language}`,
     metadata
       ? `Category: ${metadata.category}\nInterface: ${metadata.uiMode}\nModel profile: ${metadata.modelProfile}`
       : undefined,
@@ -32,6 +35,7 @@ export function buildTopicSystemPrompt(topic: TopicLike) {
     topic.systemPrompt,
     "\nResponse rules:",
     "- Stay inside the selected mode unless the learner explicitly asks to switch.",
+    `- Respond in ${language}. If the learner asks for a translation, preserve this profile language unless they explicitly request a different language for that reply.`,
     "- Keep responses practical, clear, and interactive.",
     "- Prefer one useful next action at the end of each response.",
     "- For homework, exams, and graded work, coach understanding instead of producing a dishonest final submission.",
@@ -43,6 +47,7 @@ export function buildTopicSystemPrompt(topic: TopicLike) {
 export function buildModelMessages(
   topic: TopicLike,
   persistedMessages: Pick<Message, "role" | "content">[],
+  preferredLanguage = defaultLanguage,
 ) {
   const messages = persistedMessages
     .filter((message) => message.role === "user" || message.role === "assistant")
@@ -52,7 +57,7 @@ export function buildModelMessages(
     }));
 
   return {
-    system: buildTopicSystemPrompt(topic),
+    system: buildTopicSystemPrompt(topic, preferredLanguage),
     messages,
   };
 }
