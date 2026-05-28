@@ -2,7 +2,15 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import robots from "../app/robots";
 import sitemap from "../app/sitemap";
-import { getBlogPosts } from "../lib/content/blog";
+import manifest from "../app/manifest";
+import {
+  getBlogCategories,
+  getBlogPost,
+  getBlogPostTopic,
+  getBlogPosts,
+  getRelatedBlogPosts,
+} from "../lib/content/blog";
+import { homepageFaqs, homepageLearningPaths } from "../lib/content/landing";
 import { topicSeeds } from "../lib/content/topics";
 import {
   defaultTopicPath,
@@ -11,8 +19,17 @@ import {
   resolveTopicSlug,
   topicPath,
 } from "../lib/content/topic-routing";
-import { absoluteUrl } from "../lib/seo/config";
-import { serializeJsonLd, topicJsonLd } from "../lib/seo/json-ld";
+import { absoluteUrl, metadataAlternates, socialImage } from "../lib/seo/config";
+import {
+  faqPageJsonLd,
+  itemListJsonLd,
+  learningModesItemListJsonLd,
+  serializeJsonLd,
+  topicJsonLd,
+  videoObjectJsonLd,
+  webPageJsonLd,
+} from "../lib/seo/json-ld";
+import { buildRssFeed } from "../lib/seo/rss";
 
 test("topic routing separates public slugs from private uuid chats", () => {
   assert.equal(defaultTopicPath(), "/chat/learn-anything");
@@ -36,9 +53,15 @@ test("sitemap includes public topic and blog pages but excludes private surfaces
     assert.ok(urls.includes(absoluteUrl(`/blog/${post.slug}`)), `${post.slug} should be in sitemap`);
   }
 
+  for (const category of getBlogCategories()) {
+    assert.ok(urls.includes(absoluteUrl(`/blog/category/${category.slug}`)), `${category.slug} should be in sitemap`);
+  }
+
   assert.ok(posts.length >= 100);
   assert.ok(urls.includes(absoluteUrl("/")));
+  assert.ok(urls.includes(absoluteUrl("/topics")));
   assert.ok(urls.includes(absoluteUrl("/blog")));
+  assert.ok(sitemap().some((entry) => entry.images?.some((image) => image.startsWith(absoluteUrl("/og?")))));
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
 });
@@ -50,9 +73,20 @@ test("topic json-ld uses absolute public chat urls", () => {
   const entries = topicJsonLd(topic);
   const serialized = JSON.stringify(entries);
   assert.ok(serialized.includes(absoluteUrl("/chat/socratic-instruction")));
+  assert.ok(serialized.includes(absoluteUrl("/topics")));
   assert.ok(serialized.includes("LearningResource"));
   assert.ok(serialized.includes("SoftwareApplication"));
   assert.ok(serialized.includes("BreadcrumbList"));
+});
+
+test("learning modes item list exposes every public topic", () => {
+  const jsonLd = learningModesItemListJsonLd(topicSeeds);
+  const serialized = JSON.stringify(jsonLd);
+
+  assert.equal(jsonLd.itemListElement.length, topicSeeds.length);
+  for (const topic of topicSeeds) {
+    assert.ok(serialized.includes(absoluteUrl(topicPath(topic.slug))), `${topic.slug} should be in item list`);
+  }
 });
 
 test("robots allows AI search crawlers while blocking training crawlers and private areas", () => {
@@ -78,4 +112,133 @@ test("json-ld serialization escapes html-sensitive characters", () => {
   const serialized = serializeJsonLd({ name: "Safe <script>alert(1)</script>" });
   assert.equal(serialized.includes("<script>"), false);
   assert.ok(serialized.includes("\\u003cscript>"));
+});
+
+test("public page json-ld helpers emit absolute citation urls", () => {
+  const page = webPageJsonLd({
+    path: "/media",
+    name: "Media",
+    description: "Press facts",
+    type: "AboutPage",
+  });
+  const list = itemListJsonLd({
+    path: "/media",
+    id: "official-links",
+    name: "Official links",
+    items: [{ name: "Mission", url: "/mission", description: "Mission page" }],
+  });
+
+  assert.equal(page.url, absoluteUrl("/media"));
+  assert.equal(page["@type"], "AboutPage");
+  assert.equal(list.itemListElement[0].url, absoluteUrl("/mission"));
+});
+
+test("video json-ld exposes the public learning film without unsafe markup", () => {
+  const video = videoObjectJsonLd({
+    path: "/",
+    name: "inspir: You can Learn Anything",
+    description: "A short film about learning.",
+    thumbnailUrl: "https://example.com/thumb.jpg",
+    contentUrl: "/media/inspir-learning-film.mp4",
+  });
+
+  assert.equal(video["@type"], "VideoObject");
+  assert.equal(video["@id"], `${absoluteUrl("/")}#video`);
+  assert.equal(video.contentUrl, absoluteUrl("/media/inspir-learning-film.mp4"));
+  assert.equal(serializeJsonLd(video).includes("<iframe"), false);
+});
+
+test("faq json-ld exposes questions as answerable entities", () => {
+  const faq = faqPageJsonLd({
+    path: "/schools",
+    questions: [
+      {
+        question: "Can schools try inspir first?",
+        answer: "Yes. Schools can try public guest modes before a tailored deployment.",
+      },
+    ],
+  });
+
+  assert.equal(faq["@type"], "FAQPage");
+  assert.equal(faq["@id"], `${absoluteUrl("/schools")}#faq`);
+  assert.equal(faq.mainEntity[0]["@type"], "Question");
+  assert.equal(faq.mainEntity[0].acceptedAnswer["@type"], "Answer");
+});
+
+test("homepage learning paths and faqs expose crawlable guest-mode guidance", () => {
+  assert.equal(homepageLearningPaths.length, 4);
+  assert.ok(homepageLearningPaths.every((path) => path.links.every((link) => link.href.startsWith("/chat/"))));
+  assert.ok(homepageFaqs.some((item) => item.answer.includes("guest mode")));
+
+  const faq = faqPageJsonLd({ path: "/", questions: homepageFaqs });
+  const list = itemListJsonLd({
+    path: "/",
+    id: "learning-paths",
+    name: "Popular AI learning paths",
+    items: homepageLearningPaths.map((path) => ({
+      name: path.title,
+      url: path.links[0].href,
+      description: path.description,
+    })),
+  });
+
+  assert.equal(faq.mainEntity.length, homepageFaqs.length);
+  assert.equal(list.itemListElement.length, homepageLearningPaths.length);
+  assert.ok(JSON.stringify(list).includes(absoluteUrl("/chat/learn-anything")));
+});
+
+test("blog posts resolve related public modes and category clusters", () => {
+  const post = getBlogPost("ai-learn-anything-guide");
+  assert.ok(post);
+  const topic = getBlogPostTopic(post);
+  assert.equal(topic?.slug, "learn-anything");
+
+  const related = getRelatedBlogPosts(post, 4);
+  assert.ok(related.length > 0);
+  assert.ok(getBlogCategories().some((category) => category.slug === "ai-tutor"));
+});
+
+test("rss feed exposes the blog library with escaped public links", () => {
+  const posts = getBlogPosts();
+  const feed = buildRssFeed(posts);
+
+  assert.ok(feed.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
+  assert.ok(feed.includes(`<atom:link href="${absoluteUrl("/rss.xml")}" rel="self" type="application/rss+xml" />`));
+  assert.ok(feed.includes(absoluteUrl("/blog/ai-learn-anything-guide")));
+  assert.ok(feed.includes(absoluteUrl("/og?title=AI+Learning+Blog")));
+  assert.ok((feed.match(/<item>/g) ?? []).length >= 100);
+
+  const escapedFeed = buildRssFeed([{ ...posts[0], title: "Safe <script>alert(1)</script>" }]);
+  assert.equal(escapedFeed.includes("<script>"), false);
+  assert.ok(escapedFeed.includes("Safe &lt;script&gt;alert(1)&lt;/script&gt;"));
+});
+
+test("metadata alternates keep rss discovery alongside canonicals", () => {
+  const alternates = metadataAlternates("/blog");
+
+  assert.equal(alternates.canonical, "/blog");
+  assert.equal(alternates.types["application/rss+xml"], "/rss.xml");
+});
+
+test("social image helper creates absolute generated og image urls", () => {
+  const image = socialImage({
+    title: "AI Socratic Tutor <script>",
+    eyebrow: "Learning mode",
+    description: "Ask better questions and learn actively.",
+  });
+
+  assert.equal(image.width, 1200);
+  assert.equal(image.height, 630);
+  assert.ok(image.url.startsWith(absoluteUrl("/og?")));
+  assert.ok(image.url.includes("title=AI+Socratic+Tutor+%3Cscript%3E"));
+  assert.equal(image.alt, "AI Socratic Tutor <script> | inspir");
+});
+
+test("web app manifest starts learners on the canonical guest mode", () => {
+  const output = manifest();
+
+  assert.equal(output.name, "inspir | Free AI learning for everyone");
+  assert.equal(output.start_url, "/chat/learn-anything");
+  assert.equal(output.display, "standalone");
+  assert.ok(output.icons?.some((icon) => icon.src === "/inspir-app-icon.svg" && icon.purpose?.includes("maskable")));
 });

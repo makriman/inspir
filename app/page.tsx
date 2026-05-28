@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   BookOpenCheck,
   BrainCircuit,
   CircleDot,
   Code2,
+  CornerDownRight,
   GraduationCap,
   HeartHandshake,
   School,
@@ -15,17 +17,57 @@ import {
   MarketingFooter,
   MarketingHeader,
   MarketingHeroVideo,
+  missionImages,
 } from "@/components/marketing/MarketingShell";
 import { getBlogPosts } from "@/lib/content/blog";
+import { homepageFaqs, homepageLearningPaths } from "@/lib/content/landing";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
+import { defaultSocialImage, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import {
+  faqPageJsonLd,
+  itemListJsonLd,
+  serializeJsonLd,
+  videoObjectJsonLd,
+  webPageJsonLd,
+} from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Free AI learning for everyone",
   description:
-    "Revolutionize Your Learning Journey with Artificial intelligence. Learn, practise, debate, quiz, and explore with inspir.",
-  alternates: { canonical: "/" },
+    "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+  alternates: metadataAlternates("/"),
+  openGraph: {
+    title: "Free AI learning for everyone | inspir",
+    description:
+      "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+    url: "/",
+    siteName,
+    images: [
+      socialImage({
+        title: "Free AI learning for everyone",
+        eyebrow: "Start learning",
+        description:
+          "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      }),
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free AI learning for everyone | inspir",
+    description:
+      "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+    images: [
+      socialImage({
+        title: "Free AI learning for everyone",
+        eyebrow: "Start learning",
+        description:
+          "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      }).url,
+    ],
+  },
 };
 
 const stats = [
@@ -95,9 +137,46 @@ export default function LandingPage() {
     .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
     .filter((topic): topic is (typeof topicSeeds)[number] => Boolean(topic));
   const featuredPosts = getBlogPosts().slice(0, 6);
+  const jsonLd = [
+    webPageJsonLd({
+      path: "/",
+      name: "Free AI learning for everyone | inspir",
+      description:
+        "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+    }),
+    videoObjectJsonLd({
+      path: "/",
+      name: "inspir: You can Learn Anything",
+      description:
+        "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      thumbnailUrl: defaultSocialImage.url,
+      contentUrl: "/media/inspir-learning-film.mp4",
+    }),
+    itemListJsonLd({
+      path: "/",
+      id: "learning-paths",
+      name: "Popular AI learning paths",
+      items: homepageLearningPaths.map((path) => ({
+        name: path.title,
+        url: path.links[0].href,
+        description: path.description,
+      })),
+    }),
+    faqPageJsonLd({
+      path: "/",
+      questions: homepageFaqs,
+    }),
+  ];
 
   return (
     <main className="marketing-site">
+      {jsonLd.map((entry, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
+        />
+      ))}
       <MarketingHeader hero />
       <section className="marketing-hero" aria-labelledby="landing-title">
         <div className="marketing-hero-content">
@@ -139,27 +218,35 @@ export default function LandingPage() {
         </dl>
       </section>
 
-      <section className="marketing-band is-intro">
-        <div className="marketing-section-copy">
+      <section className="marketing-story-split">
+        <div className="marketing-story-media">
+          <Image
+            src={missionImages[1]}
+            alt="A student learning at a chalkboard"
+            width={1100}
+            height={720}
+          />
+        </div>
+        <div className="marketing-story-copy">
           <span>Mission first</span>
-          <h2>Learning should be free, fun, and useful.</h2>
+          <h2>Not another answer box. A place to learn.</h2>
           <p>
             inspir began as quizzes and student communities, grew through schools and events,
             and now uses AI to make one-to-one learning more accessible.
           </p>
-        </div>
-        <div className="marketing-proof-grid">
-          <div>
-            <CircleDot size={20} />
-            Built from real learner behavior, not a generic chat box.
-          </div>
-          <div>
-            <CircleDot size={20} />
-            Supports extracurricular learning, academic practice, and curiosity.
-          </div>
-          <div>
-            <CircleDot size={20} />
-            Available publicly while schools can run confidential custom versions.
+          <div className="marketing-proof-grid">
+            <div>
+              <CircleDot size={20} />
+              Built from real learner behavior, not a generic chat box.
+            </div>
+            <div>
+              <CircleDot size={20} />
+              Supports extracurricular learning, academic practice, and curiosity.
+            </div>
+            <div>
+              <CircleDot size={20} />
+              Available publicly while schools can run confidential custom versions.
+            </div>
           </div>
         </div>
       </section>
@@ -185,11 +272,11 @@ export default function LandingPage() {
 
       <section className="marketing-band is-discovery">
         <div className="marketing-section-copy">
-          <span>Public topic chats</span>
-          <h2>Indexable learning modes people can land on directly.</h2>
+          <span>Public learning modes</span>
+          <h2>Open the exact kind of help you came for.</h2>
           <p>
             Each mode opens as a public guest chat with its own purpose, examples, and learning
-            flow, so learners can start from the exact help they searched for.
+            flow, so learners can start with the right kind of support immediately.
           </p>
         </div>
         <div className="marketing-topic-grid">
@@ -206,7 +293,34 @@ export default function LandingPage() {
         </div>
         <div className="marketing-inline-actions">
           <ArrowLink href="/chat/learn-anything">Open guest chat</ArrowLink>
-          <ArrowLink href="/blog">Read the learning guides</ArrowLink>
+          <ArrowLink href="/topics">Browse every mode</ArrowLink>
+        </div>
+      </section>
+
+      <section className="marketing-band is-learning-paths">
+        <div className="marketing-section-copy">
+          <span>Popular paths</span>
+          <h2>Start with the job you need done.</h2>
+          <p>
+            Search engines see pages. Learners need sequences. These paths connect the public
+            modes into practical study loops for understanding, homework, exam prep, and exploration.
+          </p>
+        </div>
+        <div className="marketing-path-grid">
+          {homepageLearningPaths.map((path) => (
+            <article key={path.title} className="marketing-path-card">
+              <h3>{path.title}</h3>
+              <p>{path.description}</p>
+              <div>
+                {path.links.map((link) => (
+                  <Link key={link.href} href={link.href}>
+                    <CornerDownRight size={15} />
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -215,8 +329,8 @@ export default function LandingPage() {
           <span>From the blog</span>
           <h2>Study loops, AI tutoring guides, and practical prompts.</h2>
           <p>
-            The blog connects searchers to useful learning advice and then into the matching
-            live mode.
+            The blog connects useful learning advice to live practice, so a guide can become
+            a study session in one step.
           </p>
         </div>
         <div className="marketing-repo-grid">
@@ -254,6 +368,21 @@ export default function LandingPage() {
           <span>School-specific workflows</span>
           <span>NCERT-aligned options</span>
           <span>Confidential deployments</span>
+        </div>
+      </section>
+
+      <section className="marketing-band is-home-faq">
+        <div className="marketing-section-copy">
+          <span>Quick answers</span>
+          <h2>What learners usually ask before they start.</h2>
+        </div>
+        <div className="marketing-faq-list">
+          {homepageFaqs.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
         </div>
       </section>
 
