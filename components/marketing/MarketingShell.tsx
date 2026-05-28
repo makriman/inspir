@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowUpRight, Code2 } from "lucide-react";
-import { InspirLogo, InspirWordmark } from "@/components/brand/InspirLogo";
+import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 
 export const missionImages = [
@@ -24,7 +24,6 @@ export function MarketingHeader({ hero = false }: { hero?: boolean }) {
     <header className={`marketing-header ${hero ? "is-hero" : ""}`}>
       <Link href="/" aria-label="inspir home" className="marketing-brand">
         <InspirLogo variant="white" className="marketing-brand-mark" />
-        <InspirWordmark className="marketing-brand-word" />
       </Link>
       <nav className="marketing-nav" aria-label="Primary navigation">
         {navLinks.map((link) => (
@@ -45,7 +44,7 @@ export function MarketingFooter() {
   return (
     <footer className="marketing-footer">
       <div>
-        <InspirWordmark className="marketing-footer-word" />
+        <InspirLogo variant="white" className="marketing-footer-logo" />
         <p>Learning is for everyone.</p>
       </div>
       <nav className="marketing-footer-links" aria-label="Footer links">

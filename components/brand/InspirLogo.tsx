@@ -1,8 +1,6 @@
-const whiteLogo =
-  "https://5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io/f1685530709490x148832961625310340/INSPIRE%20LOGO%20Vertical%20-%20White.svg";
+import Image from "next/image";
 
-const colorLogo =
-  "https://5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io/cdn-cgi/image/w=,h=,f=auto,dpr=1,fit=contain/f1690007829310x218356692826717300/INSPIRE%20LOGO%20Vertical%20-%20Color.png";
+const logoSrc = "/inspir-logo-white.svg";
 
 export function InspirLogo({
   variant = "white",
@@ -12,17 +10,19 @@ export function InspirLogo({
   className?: string;
 }) {
   return (
-    <img
-      src={variant === "white" ? whiteLogo : colorLogo}
+    <Image
+      src={logoSrc}
       alt="inspir"
+      width={128}
+      height={72}
       className={className}
-      loading="eager"
+      data-variant={variant}
+      priority
+      unoptimized
     />
   );
 }
 
 export function InspirWordmark({ className = "" }: { className?: string }) {
-  return (
-    <span className={`font-black lowercase leading-none tracking-normal ${className}`}>inspir</span>
-  );
+  return <InspirLogo className={className} />;
 }

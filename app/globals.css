@@ -8576,3 +8576,36 @@ a {
     display: grid;
   }
 }
+
+/* Shared local inspir logo */
+.marketing-brand .marketing-brand-mark {
+  display: block;
+  width: 104px;
+  height: auto;
+  object-fit: contain;
+}
+
+.marketing-footer-logo,
+.marketing-loader-logo {
+  display: block;
+  width: 116px;
+  height: auto;
+  object-fit: contain;
+}
+
+.bubble-sidebar-logo {
+  width: 100px;
+  height: 54px;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .marketing-brand .marketing-brand-mark {
+    width: 92px;
+  }
+
+  .marketing-footer-logo,
+  .marketing-loader-logo {
+    width: 104px;
+  }
+}
