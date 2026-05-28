@@ -6,6 +6,14 @@ import { getBlogPosts } from "@/lib/content/blog";
 import { defaultSocialImage, siteName } from "@/lib/seo/config";
 import { breadcrumbJsonLd, serializeJsonLd } from "@/lib/seo/json-ld";
 
+const corePostSlugs = new Set([
+  "ai-learning-companion-for-everyone",
+  "how-to-study-with-ai-without-cheating-yourself",
+  "socratic-ai-tutor",
+  "talk-to-historical-figures-with-ai",
+  "ai-flashcards-and-active-recall",
+]);
+
 export const metadata: Metadata = {
   title: "AI Learning Blog",
   description:
@@ -31,6 +39,8 @@ export const metadata: Metadata = {
 
 export default function BlogIndexPage() {
   const posts = getBlogPosts();
+  const corePosts = posts.filter((post) => corePostSlugs.has(post.slug));
+  const topicPosts = posts.filter((post) => !corePostSlugs.has(post.slug));
   const jsonLd = breadcrumbJsonLd([
     { name: "Home", url: "/" },
     { name: "Blog", url: "/blog" },
@@ -50,7 +60,7 @@ export default function BlogIndexPage() {
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Latest guides</span>
+          <span>Core guides</span>
           <h2>Practical learning ideas, not hype.</h2>
           <p>
             Each article is written to help learners, parents, educators, and builders use AI
@@ -58,11 +68,37 @@ export default function BlogIndexPage() {
           </p>
         </div>
         <div className="marketing-repo-grid">
-          {posts.map((post) => (
+          {corePosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="marketing-repo-card blog-card">
               <time dateTime={post.date}>{new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(post.date))}</time>
               <strong>{post.title}</strong>
               <span>{post.description}</span>
+              <small>
+                Read article
+                <ArrowUpRight size={14} />
+              </small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band is-topic-library">
+        <div className="marketing-section-copy">
+          <span>Topic library</span>
+          <h2>Every public learning mode has guides and prompt loops.</h2>
+          <p>
+            These pages support long-tail search intent and link directly into the matching
+            guest chat experience.
+          </p>
+        </div>
+        <div className="marketing-topic-grid">
+          {topicPosts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="marketing-topic-link blog-card">
+              <time dateTime={post.date}>
+                {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(post.date))}
+              </time>
+              <strong>{post.title}</strong>
+              <p>{post.description}</p>
               <small>
                 Read article
                 <ArrowUpRight size={14} />

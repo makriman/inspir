@@ -16,6 +16,10 @@ import {
   MarketingHeader,
   MarketingHeroVideo,
 } from "@/components/marketing/MarketingShell";
+import { getBlogPosts } from "@/lib/content/blog";
+import { topicSeeds } from "@/lib/content/topics";
+import { topicPath } from "@/lib/content/topic-routing";
+import { getTopicSeo } from "@/lib/content/topic-seo";
 
 export const metadata: Metadata = {
   title: "Free AI learning for everyone",
@@ -71,7 +75,27 @@ const repos = [
   },
 ] as const;
 
+const priorityTopicSlugs = [
+  "learn-anything",
+  "socratic-instruction",
+  "homework-coach",
+  "math-step-coach",
+  "writing-coach",
+  "code-tutor",
+  "quiz-me-on-trivia",
+  "flashcard-builder",
+  "time-travel",
+  "talk-to-a-historical-person",
+  "debate-any-topic",
+  "exam-prep-planner",
+] as const;
+
 export default function LandingPage() {
+  const priorityTopics = priorityTopicSlugs
+    .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
+    .filter((topic): topic is (typeof topicSeeds)[number] => Boolean(topic));
+  const featuredPosts = getBlogPosts().slice(0, 6);
+
   return (
     <main className="marketing-site">
       <MarketingHeader hero />
@@ -156,6 +180,55 @@ export default function LandingPage() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section className="marketing-band is-discovery">
+        <div className="marketing-section-copy">
+          <span>Public topic chats</span>
+          <h2>Indexable learning modes people can land on directly.</h2>
+          <p>
+            Each mode opens as a public guest chat with its own purpose, examples, and learning
+            flow, so learners can start from the exact help they searched for.
+          </p>
+        </div>
+        <div className="marketing-topic-grid">
+          {priorityTopics.map((topic) => {
+            const seo = getTopicSeo(topic);
+            return (
+              <Link key={topic.slug} href={topicPath(topic.slug)} className="marketing-topic-link">
+                <span>{topic.metadata.category}</span>
+                <strong>{topic.name}</strong>
+                <p>{seo.description}</p>
+              </Link>
+            );
+          })}
+        </div>
+        <div className="marketing-inline-actions">
+          <ArrowLink href="/chat/learn-anything">Open guest chat</ArrowLink>
+          <ArrowLink href="/blog">Read the learning guides</ArrowLink>
+        </div>
+      </section>
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>From the blog</span>
+          <h2>Study loops, AI tutoring guides, and practical prompts.</h2>
+          <p>
+            The blog connects searchers to useful learning advice and then into the matching
+            live mode.
+          </p>
+        </div>
+        <div className="marketing-repo-grid">
+          {featuredPosts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="marketing-repo-card blog-card">
+              <time dateTime={post.date}>
+                {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(post.date))}
+              </time>
+              <strong>{post.title}</strong>
+              <span>{post.description}</span>
+            </Link>
+          ))}
         </div>
       </section>
 

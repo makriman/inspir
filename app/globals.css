@@ -6668,27 +6668,48 @@ a {
 
 .marketing-hero {
   position: relative;
-  display: grid;
-  min-height: auto;
-  justify-items: center;
+  display: flex;
+  min-height: calc(100svh - 96px);
+  align-items: center;
+  justify-content: flex-start;
   overflow: hidden;
   border-bottom: 1px solid rgb(255 255 255 / 0.1);
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0) 42%),
-    #050505;
+  background: #050505;
   color: #fffaf1;
-  padding: 92px clamp(20px, 5vw, 72px) 70px;
-  text-align: center;
+  padding: 92px clamp(20px, 5vw, 72px) 78px;
+  text-align: left;
+}
+
+.marketing-hero::before,
+.marketing-hero::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+}
+
+.marketing-hero::before {
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.64) 42%, rgb(0 0 0 / 0.2) 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.3) 0%, rgb(0 0 0 / 0.08) 42%, rgb(0 0 0 / 0.78) 100%);
+}
+
+.marketing-hero::after {
+  top: auto;
+  height: 32%;
+  background: linear-gradient(180deg, rgb(5 5 5 / 0), #050505 88%);
 }
 
 .marketing-hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: block;
-  width: min(930px, 100%);
-  min-height: auto;
-  margin: 0 auto;
+  width: min(760px, 100%);
+  min-height: 0;
+  margin: 0;
   padding: 0;
+  text-shadow: 0 2px 34px rgb(0 0 0 / 0.48);
 }
 
 .marketing-kicker,
@@ -6709,8 +6730,8 @@ a {
 }
 
 .marketing-hero h1 {
-  margin: 18px auto 0;
-  max-width: 920px;
+  margin: 18px 0 0;
+  max-width: 760px;
   color: #fffaf1;
   font-size: 92px;
   font-weight: 950;
@@ -6720,8 +6741,8 @@ a {
 
 .marketing-hero p {
   max-width: 680px;
-  margin: 24px auto 0;
-  color: rgb(255 250 241 / 0.72);
+  margin: 24px 0 0;
+  color: rgb(255 250 241 / 0.8);
   font-size: 21px;
   font-weight: 620;
   line-height: 1.45;
@@ -6737,7 +6758,7 @@ a {
 }
 
 .marketing-hero-actions {
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .marketing-primary-cta,
@@ -6786,43 +6807,29 @@ a {
 }
 
 .marketing-hero-video {
-  width: min(1150px, 100%);
-  margin: 54px auto 0;
-}
-
-.marketing-video-frame {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  border: 1px solid rgb(255 255 255 / 0.16);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgb(2 5 211 / 0.24), rgb(0 0 0 / 0.34)),
-    #0205d3;
-  box-shadow: 0 34px 90px rgb(0 0 0 / 0.42);
-}
-
-.marketing-video-frame iframe {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgb(2 5 211 / 0.34), rgb(255 90 102 / 0.16)),
+    #050505;
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.marketing-hero-video iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100vw, 177.78svh);
+  height: max(56.25vw, 100svh);
   border: 0;
-}
-
-.marketing-hero-video figcaption {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 12px;
-  color: rgb(255 250 241 / 0.62);
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.marketing-hero-video figcaption span {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
+  filter: saturate(1.05) contrast(1.08);
+  transform: translate(-50%, -50%);
 }
 
 .marketing-band {
@@ -6847,6 +6854,11 @@ a {
 .marketing-band.is-github {
   background: #050505;
   color: #fffaf1;
+}
+
+.marketing-band.is-discovery,
+.marketing-band.is-topic-library {
+  background: #0f100d;
 }
 
 .marketing-section-copy {
@@ -6962,7 +6974,8 @@ a {
 }
 
 .marketing-card-grid,
-.marketing-repo-grid {
+.marketing-repo-grid,
+.marketing-topic-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
@@ -7043,6 +7056,10 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.marketing-topic-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .marketing-repo-card {
   display: block;
   color: #fffaf1;
@@ -7064,6 +7081,62 @@ a {
 
 .marketing-repo-card span {
   display: block;
+}
+
+.marketing-topic-link {
+  display: flex;
+  min-height: 214px;
+  flex-direction: column;
+  border: 1px solid rgb(255 255 255 / 0.13);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.055);
+  color: #fffaf1;
+  padding: 20px;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.marketing-topic-link:hover {
+  border-color: rgb(255 216 77 / 0.44);
+  background: rgb(255 255 255 / 0.085);
+  transform: translateY(-1px);
+}
+
+.marketing-topic-link > span,
+.marketing-topic-link time,
+.marketing-topic-link small {
+  color: #ffd84d;
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.marketing-topic-link strong {
+  margin-top: 16px;
+  color: #fffaf1;
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1.12;
+}
+
+.marketing-topic-link p {
+  margin: 12px 0 0;
+  color: rgb(255 250 241 / 0.66);
+  font-size: 14px;
+  font-weight: 620;
+  line-height: 1.5;
+}
+
+.marketing-topic-link small {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 18px;
 }
 
 .marketing-contribute-row {
@@ -7439,7 +7512,8 @@ a {
   }
 
   .marketing-card-grid,
-  .marketing-repo-grid {
+  .marketing-repo-grid,
+  .marketing-topic-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -7493,13 +7567,13 @@ a {
   }
 
   .marketing-hero {
-    min-height: auto;
-    padding: 64px 16px 48px;
+    min-height: 76svh;
+    padding: 68px 16px 54px;
   }
 
   .marketing-hero-content {
     width: 100%;
-    min-height: auto;
+    min-height: 0;
     margin: 0;
     padding: 0;
   }
@@ -7530,12 +7604,14 @@ a {
     width: 100%;
   }
 
-  .marketing-hero-video {
-    margin-top: 38px;
+  .marketing-hero::before {
+    background:
+      linear-gradient(180deg, rgb(0 0 0 / 0.88) 0%, rgb(0 0 0 / 0.66) 52%, rgb(0 0 0 / 0.78) 100%),
+      linear-gradient(90deg, rgb(0 0 0 / 0.82), rgb(0 0 0 / 0.34));
   }
 
-  .marketing-hero-video figcaption {
-    justify-content: flex-start;
+  .marketing-hero-video {
+    opacity: 0.48;
   }
 
   .marketing-band,
@@ -7556,7 +7632,8 @@ a {
 
   .marketing-hero-stats,
   .marketing-card-grid,
-  .marketing-repo-grid {
+  .marketing-repo-grid,
+  .marketing-topic-grid {
     display: grid;
     grid-template-columns: 1fr;
   }
