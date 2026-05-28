@@ -6691,8 +6691,8 @@ a {
 
 .marketing-hero::before {
   background:
-    linear-gradient(90deg, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.64) 42%, rgb(0 0 0 / 0.2) 100%),
-    linear-gradient(180deg, rgb(0 0 0 / 0.3) 0%, rgb(0 0 0 / 0.08) 42%, rgb(0 0 0 / 0.78) 100%);
+    linear-gradient(90deg, rgb(0 0 0 / 0.84) 0%, rgb(0 0 0 / 0.5) 42%, rgb(0 0 0 / 0.12) 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.18) 0%, rgb(0 0 0 / 0.04) 42%, rgb(0 0 0 / 0.68) 100%);
 }
 
 .marketing-hero::after {
@@ -6814,10 +6814,13 @@ a {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background:
+  background-image:
     linear-gradient(135deg, rgb(2 5 211 / 0.34), rgb(255 90 102 / 0.16)),
-    #050505;
-  opacity: 0.62;
+    url("https://5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io/f1685191905644x747393734386347000/inspire-logo-presentation_compressed_page-0008.jpg");
+  background-color: #050505;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.82;
   pointer-events: none;
 }
 
@@ -6829,6 +6832,7 @@ a {
   height: max(56.25vw, 100svh);
   border: 0;
   filter: saturate(1.05) contrast(1.08);
+  opacity: 0.74;
   transform: translate(-50%, -50%);
 }
 
@@ -7611,7 +7615,7 @@ a {
   }
 
   .marketing-hero-video {
-    opacity: 0.48;
+    opacity: 0.62;
   }
 
   .marketing-band,
