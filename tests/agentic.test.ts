@@ -2,12 +2,14 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildTopicSystemPrompt, INSPIR_TUTOR_CONTRACT } from "../lib/ai/prompts";
 import { resolveModelName } from "../lib/ai/model-router";
+import { buildMiniAppInstruction, getVisibleMessageContent } from "../lib/ai/visible-content";
 import {
   reviewFlashcard,
   sanitizeFlashcardState,
   type FlashcardState,
 } from "../lib/activities/flashcards";
 import { answerQuizQuestion, sanitizeQuizState, type QuizState } from "../lib/activities/quiz";
+import { findSeededTopic, seededTopics } from "../lib/content/seeded-topics";
 import { topicSeeds } from "../lib/content/topics";
 
 test("topic registry exposes exactly 50 learner modes and preserves legacy slugs", () => {
@@ -90,6 +92,33 @@ test("flashcard builder is a structured mini app mode", () => {
   assert.equal(seed.metadata.modelProfile, "structured");
 });
 
+test("seeded topic fallback preserves full AI topic fields with slug ids", () => {
+  const topics = seededTopics();
+  const timeTravel = findSeededTopic("time-travel");
+
+  assert.equal(topics.length, topicSeeds.length);
+  assert.ok(timeTravel);
+  assert.equal(timeTravel.id, "time-travel");
+  assert.equal(timeTravel.status, "active");
+  assert.equal((timeTravel.metadata as { uiMode?: unknown }).uiMode, "time-travel");
+  assert.ok(timeTravel.systemPrompt.includes("temporal passport"));
+});
+
+test("mini app control prompts expose only concise user-visible labels", () => {
+  const prompt = buildMiniAppInstruction({
+    visible: "Open workroom: photosynthesis essay",
+    instructions:
+      "Create a shared task board, ask for my first contribution, then work beside me with checkpoints.",
+  });
+
+  assert.equal(getVisibleMessageContent(prompt), "Open workroom: photosynthesis essay");
+  assert.equal(getVisibleMessageContent("Regular learner message"), "Regular learner message");
+  assert.equal(
+    getVisibleMessageContent("[Socratic session start]\nTarget input: opportunity cost"),
+    "Socratic target: opportunity cost",
+  );
+});
+
 test("model router uses profile-specific env vars with OPENAI_MODEL fallback", () => {
   const previous = {
     OPENAI_MODEL: process.env.OPENAI_MODEL,
@@ -105,6 +134,31 @@ test("model router uses profile-specific env vars with OPENAI_MODEL fallback", (
   assert.equal(resolveModelName("fast"), "fallback-model");
   assert.equal(resolveModelName("reasoning"), "reasoning-model");
   assert.equal(resolveModelName("structured"), "structured-model");
+
+  for (const [key, value] of Object.entries(previous)) {
+    if (value === undefined) delete process.env[key];
+    else process.env[key] = value;
+  }
+});
+
+test("model router falls specialized profiles back to the configured fast model", () => {
+  const previous = {
+    OPENAI_MODEL: process.env.OPENAI_MODEL,
+    OPENAI_FAST_MODEL: process.env.OPENAI_FAST_MODEL,
+    OPENAI_REASONING_MODEL: process.env.OPENAI_REASONING_MODEL,
+    OPENAI_MODEL_REASONING: process.env.OPENAI_MODEL_REASONING,
+    OPENAI_STRUCTURED_MODEL: process.env.OPENAI_STRUCTURED_MODEL,
+    OPENAI_MODEL_STRUCTURED: process.env.OPENAI_MODEL_STRUCTURED,
+  };
+  process.env.OPENAI_MODEL = "global-model";
+  process.env.OPENAI_FAST_MODEL = "fast-model";
+  delete process.env.OPENAI_REASONING_MODEL;
+  delete process.env.OPENAI_MODEL_REASONING;
+  delete process.env.OPENAI_STRUCTURED_MODEL;
+  delete process.env.OPENAI_MODEL_STRUCTURED;
+
+  assert.equal(resolveModelName("reasoning"), "fast-model");
+  assert.equal(resolveModelName("structured"), "fast-model");
 
   for (const [key, value] of Object.entries(previous)) {
     if (value === undefined) delete process.env[key];

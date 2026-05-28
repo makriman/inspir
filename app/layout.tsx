@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 import {
-  defaultSocialImage,
+  metadataAlternates,
+  socialImage,
   siteDescription,
   siteName,
   siteTitle,
@@ -19,6 +20,12 @@ import {
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const rootSocialImage = socialImage({
+  title: "Free AI learning for everyone",
+  eyebrow: "inspir",
+  description: siteDescription,
 });
 
 export const metadata: Metadata = {
@@ -50,7 +57,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     url: "/",
     siteName,
-    images: [defaultSocialImage],
+    images: [rootSocialImage],
     locale: "en_US",
     type: "website",
   },
@@ -58,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: [defaultSocialImage.url],
+    images: [rootSocialImage.url],
   },
   robots: {
     index: true,
@@ -71,6 +78,16 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  alternates: metadataAlternates("/"),
+  manifest: "/manifest.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fffdf8" },
+    { media: "(prefers-color-scheme: dark)", color: "#171614" },
+  ],
+  colorScheme: "light dark",
 };
 
 export default function RootLayout({

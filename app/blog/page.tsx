@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
-import { getBlogPosts } from "@/lib/content/blog";
-import { defaultSocialImage, siteName } from "@/lib/seo/config";
+import { getBlogCategories, getBlogPosts } from "@/lib/content/blog";
+import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { breadcrumbJsonLd, serializeJsonLd } from "@/lib/seo/json-ld";
 
 const corePostSlugs = new Set([
@@ -18,14 +18,20 @@ export const metadata: Metadata = {
   title: "AI Learning Blog",
   description:
     "Practical notes on AI tutoring, active recall, Socratic learning, study skills, and accessible education.",
-  alternates: { canonical: "/blog" },
+  alternates: metadataAlternates("/blog"),
   openGraph: {
     title: "AI Learning Blog | inspir",
     description:
       "Practical notes on AI tutoring, active recall, Socratic learning, study skills, and accessible education.",
     url: "/blog",
     siteName,
-    images: [defaultSocialImage],
+    images: [
+      socialImage({
+        title: "AI Learning Blog",
+        eyebrow: "Guides",
+        description: "Practical notes on AI tutoring, active recall, Socratic learning, and study skills.",
+      }),
+    ],
     type: "website",
   },
   twitter: {
@@ -33,12 +39,19 @@ export const metadata: Metadata = {
     title: "AI Learning Blog | inspir",
     description:
       "Practical notes on AI tutoring, active recall, Socratic learning, study skills, and accessible education.",
-    images: [defaultSocialImage.url],
+    images: [
+      socialImage({
+        title: "AI Learning Blog",
+        eyebrow: "Guides",
+        description: "Practical notes on AI tutoring, active recall, Socratic learning, and study skills.",
+      }).url,
+    ],
   },
 };
 
 export default function BlogIndexPage() {
   const posts = getBlogPosts();
+  const categories = getBlogCategories().slice(0, 12);
   const corePosts = posts.filter((post) => corePostSlugs.has(post.slug));
   const topicPosts = posts.filter((post) => !corePostSlugs.has(post.slug));
   const jsonLd = breadcrumbJsonLd([
@@ -57,6 +70,25 @@ export default function BlogIndexPage() {
         Notes on tutoring, memory, active practice, historical roleplay, and making learning
         more accessible without making learners passive.
       </MarketingPageHero>
+
+      <section className="marketing-band is-discovery">
+        <div className="marketing-section-copy">
+          <span>Explore by theme</span>
+          <h2>Find the right guide faster.</h2>
+          <p>
+            The blog is organized around study methods, prompt loops, and the public AI learning
+            modes people can use immediately.
+          </p>
+        </div>
+        <div className="blog-category-strip">
+          {categories.map((category) => (
+            <Link key={category.slug} href={`/blog/category/${category.slug}`} className="blog-category-chip">
+              <strong>{category.name}</strong>
+              <span>{category.count} articles</span>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
@@ -87,7 +119,7 @@ export default function BlogIndexPage() {
           <span>Topic library</span>
           <h2>Every public learning mode has guides and prompt loops.</h2>
           <p>
-            These pages support long-tail search intent and link directly into the matching
+            These guides answer specific learning questions and link directly into the matching
             guest chat experience.
           </p>
         </div>

@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { ChatClient } from "@/components/chat/ChatClient";
 import { sanitizeActivityRun } from "@/lib/activities/quiz";
 import { authOptions } from "@/lib/auth/config";
+import { seededTopics, topicFromSeed } from "@/lib/content/seeded-topics";
 import { topicSeeds } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { isUuidPathSegment, resolveTopicSlug, topicPath } from "@/lib/content/topic-routing";
@@ -15,7 +16,7 @@ import {
   getOwnedChat,
   getUserById,
 } from "@/lib/db/queries";
-import { defaultSocialImage, siteName } from "@/lib/seo/config";
+import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { serializeJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
 
 export const runtime = "nodejs";
@@ -24,6 +25,8 @@ export const dynamic = "force-dynamic";
 type ChatRoutePageProps = {
   params: Promise<{ chatId: string }>;
 };
+
+const publicTopicDbTimeoutMs = 1500;
 
 function findSeedTopic(slug: string) {
   return topicSeeds.find((topic) => topic.slug === slug);
@@ -42,6 +45,15 @@ function guestUser() {
   };
 }
 
+async function withPublicTopicTimeout<T>(promise: Promise<T>) {
+  return Promise.race([
+    promise,
+    new Promise<T>((_, reject) => {
+      setTimeout(() => reject(new Error("Public topic database lookup timed out")), publicTopicDbTimeoutMs);
+    }),
+  ]);
+}
+
 export function generateStaticParams() {
   return topicSeeds.map((topic) => ({ chatId: topic.slug }));
 }
@@ -54,24 +66,29 @@ export async function generateMetadata({ params }: ChatRoutePageProps): Promise<
     const topic = findSeedTopic(slug);
     if (!topic) return {};
     const seo = getTopicSeo(topic);
+    const image = socialImage({
+      title: seo.title,
+      eyebrow: "Learning mode",
+      description: seo.description,
+    });
     return {
       title: seo.title,
       description: seo.description,
-      alternates: { canonical: topicPath(topic.slug) },
+      alternates: metadataAlternates(topicPath(topic.slug)),
       robots: { index: true, follow: true },
       openGraph: {
         title: seo.title,
         description: seo.description,
         url: topicPath(topic.slug),
         siteName,
-        images: [defaultSocialImage],
+        images: [image],
         type: "website",
       },
       twitter: {
         card: "summary_large_image",
         title: seo.title,
         description: seo.description,
-        images: [defaultSocialImage.url],
+        images: [image.url],
       },
     };
   }
@@ -99,14 +116,32 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     if (!seedTopic) notFound();
 
     const session = await getServerSession(authOptions);
-    const [topics, user] = await Promise.all([
-      getActiveTopics(),
-      session?.user?.id ? getUserById(session.user.id) : Promise.resolve(null),
-    ]);
-    const topic = topics.find((candidate) => candidate.slug === topicSlug);
+    const seedFallbackTopics = seededTopics();
+    let topics = seedFallbackTopics;
+    let user = null;
+    let savedChatsAvailable = false;
+
+    if (session?.user?.id) {
+      try {
+        const [dbTopics, dbUser] = await withPublicTopicTimeout(
+          Promise.all([getActiveTopics(), getUserById(session.user.id)]),
+        );
+        const dbTopic = dbTopics.find((candidate) => candidate.slug === topicSlug);
+        if (dbTopics.length > 0 && dbTopic) {
+          topics = dbTopics;
+          user = dbUser;
+          savedChatsAvailable = true;
+        }
+      } catch {
+        topics = seedFallbackTopics;
+        savedChatsAvailable = false;
+      }
+    }
+
+    const topic = topics.find((candidate) => candidate.slug === topicSlug) ?? topicFromSeed(seedTopic);
     if (!topic) notFound();
 
-    const profileUser = session?.user?.id
+    const profileUser = session?.user?.id && savedChatsAvailable
       ? {
           id: session.user.id,
           name: user?.name ?? session.user.name ?? "Learner",
@@ -129,7 +164,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           />
         ))}
         <ChatClient
-          authMode={session?.user?.id ? "authenticated" : "guest"}
+          authMode={savedChatsAvailable ? "authenticated" : "guest"}
           user={profileUser}
           topics={topics}
           initialTopicId={topic.id}

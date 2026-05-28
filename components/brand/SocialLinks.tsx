@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const links = [
   {
     href: "https://twitter.com/inspiruk",
@@ -39,7 +41,7 @@ export function SocialLinks({
           rel="noreferrer"
           className="bubble-social-link"
         >
-          <img src={src} alt="" />
+          <Image src={src} alt="" width={36} height={38} unoptimized />
         </a>
       ))}
     </div>

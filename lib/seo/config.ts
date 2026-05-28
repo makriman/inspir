@@ -11,6 +11,12 @@ export const defaultSocialImage = {
   alt: "inspir mission: learning is for everyone",
 };
 
+export type SocialImageInput = {
+  title: string;
+  eyebrow?: string;
+  description?: string;
+};
+
 export const socialProfiles = [
   "https://twitter.com/inspiruk",
   "https://www.facebook.com/inspir.uk",
@@ -21,4 +27,25 @@ export const socialProfiles = [
 export function absoluteUrl(path = "/") {
   if (/^https?:\/\//.test(path)) return path;
   return new URL(path, siteUrl).toString();
+}
+
+export function metadataAlternates(canonical: string) {
+  return {
+    canonical,
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
+  };
+}
+
+export function socialImage({ title, eyebrow = siteName, description }: SocialImageInput) {
+  const params = new URLSearchParams({ title, eyebrow });
+  if (description) params.set("description", description);
+
+  return {
+    url: absoluteUrl(`/og?${params.toString()}`),
+    width: 1200,
+    height: 630,
+    alt: `${title} | ${siteName}`,
+  };
 }

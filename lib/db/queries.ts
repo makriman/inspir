@@ -2,6 +2,7 @@ import { and, asc, count, desc, eq, ilike, inArray, isNull, or } from "drizzle-o
 import { db } from "./client";
 import { activityRuns, chats, messages, topics, users } from "./schema";
 import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
+import { getVisibleMessageContent } from "@/lib/ai/visible-content";
 
 export async function ensureSeedTopics() {
   for (const topic of topicSeeds) {
@@ -144,7 +145,7 @@ export async function getChatPreview(chatId: string) {
     .where(and(eq(messages.chatId, chatId), eq(messages.role, "user")))
     .orderBy(asc(messages.createdAt))
     .limit(1);
-  return firstUserMessage?.content;
+  return firstUserMessage ? getVisibleMessageContent(firstUserMessage.content) : undefined;
 }
 
 export async function insertMessage(input: {
@@ -164,9 +165,10 @@ export async function insertMessage(input: {
       .from(messages)
       .where(and(eq(messages.chatId, input.chatId), eq(messages.role, "user")));
     if (value === 1) {
+      const visibleTitle = getVisibleMessageContent(input.content);
       await db
         .update(chats)
-        .set({ title: input.content.slice(0, 96), updatedAt: new Date() })
+        .set({ title: visibleTitle.slice(0, 96), updatedAt: new Date() })
         .where(eq(chats.id, input.chatId));
     }
   }

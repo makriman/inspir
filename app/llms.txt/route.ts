@@ -1,4 +1,4 @@
-import { getBlogPosts } from "@/lib/content/blog";
+import { getBlogCategories, getBlogPosts } from "@/lib/content/blog";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { absoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/seo/config";
@@ -17,6 +17,7 @@ export function GET() {
     `- Schools: ${absoluteUrl("/schools")}`,
     `- Media: ${absoluteUrl("/media")}`,
     `- About: ${absoluteUrl("/about")}`,
+    `- Learning modes: ${absoluteUrl("/topics")}`,
     `- Blog: ${absoluteUrl("/blog")}`,
     "",
     "## Public AI learning modes",
@@ -24,6 +25,9 @@ export function GET() {
     "",
     "## Blog posts",
     ...getBlogPosts().map((post) => `- ${post.title}: ${absoluteUrl(`/blog/${post.slug}`)}`),
+    "",
+    "## Blog categories",
+    ...getBlogCategories().map((category) => `- ${category.name}: ${absoluteUrl(`/blog/category/${category.slug}`)}`),
     "",
   ];
 

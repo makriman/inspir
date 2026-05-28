@@ -1,9 +1,12 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- Profile photos come from user auth providers and are intentionally rendered as plain avatars. */
+
 import {
   FormEvent,
   KeyboardEvent,
   RefObject,
+  type ComponentType,
   useEffect,
   useMemo,
   useRef,
@@ -20,13 +23,11 @@ import {
   BookOpenCheck,
   Bot,
   BrainCircuit,
-  CalendarDays,
   CheckCircle2,
   Clipboard,
   Compass,
   Copy,
   Coins,
-  Eye,
   FileText,
   Gauge,
   Gavel,
@@ -38,7 +39,6 @@ import {
   Lightbulb,
   ListChecks,
   Mail,
-  Map,
   MapPin,
   Menu,
   MessageCircle,
@@ -49,10 +49,8 @@ import {
   Route,
   RotateCcw,
   Scale,
-  ScrollText,
   Search,
   Send,
-  Shield,
   ShieldCheck,
   SlidersHorizontal,
   Sparkles,
@@ -77,6 +75,7 @@ import { defaultLanguage, supportedLanguages } from "@/lib/content/languages";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicPath } from "@/lib/content/topic-routing";
 import { formatBubbleDate } from "@/lib/utils/dates";
+import { buildMiniAppInstruction, getVisibleMessageContent } from "@/lib/ai/visible-content";
 
 type TopicMetadata = {
   category: string;
@@ -246,6 +245,17 @@ function isFlashcardState(value: Record<string, unknown>): value is PublicFlashc
   );
 }
 
+function toDisplayMessage(message: Message): Message | null {
+  if (message.role === "system") return null;
+  const content = getVisibleMessageContent(message.content).trim();
+  if (!content) return null;
+  return content === message.content ? message : { ...message, content };
+}
+
+function displayMessages(messages: Message[]) {
+  return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
+}
+
 export function ChatClient({
   authMode = "authenticated",
   user,
@@ -296,6 +306,7 @@ export function ChatClient({
   const isQuizMode = uiMode === "quiz";
   const isFlashcardMode = uiMode === "flashcards";
   const isMiniAppMode = uiMode !== "chat" && uiMode !== "quiz" && uiMode !== "flashcards";
+  const visibleChatMessages = displayMessages(messages);
 
   function saveGuestUsage(used: number) {
     setGuestMessagesUsed(used);
@@ -687,6 +698,7 @@ export function ChatClient({
               activityRun={activityRun}
               createChat={createChat}
               onActivityRun={setActivityRun}
+              onReset={resetChat}
             />
           )
         ) : isMiniAppMode ? (
@@ -753,18 +765,16 @@ export function ChatClient({
           <main className="bubble-workspace">
             <div ref={listRef} className="bubble-message-scroll app-scrollbar">
               <TopicIntroCard topic={activeTopic} />
-              {messages.filter((message) => message.role !== "system").length === 0 ? (
+              {visibleChatMessages.length === 0 ? (
                 <StarterGrid
                   starters={metadata?.starters ?? []}
                   onStart={(starter) => void sendMessage(starter)}
                 />
               ) : null}
               <div className="bubble-message-stack">
-                {messages
-                  .filter((message) => message.role !== "system")
-                  .map((message) => (
-                    <MessageBubble key={message.id} message={message} />
-                  ))}
+                {visibleChatMessages.map((message) => (
+                  <MessageBubble key={message.id} message={message} />
+                ))}
                 {awaitingResponse ? (
                   <div className="bubble-thinking" aria-live="polite">
                     <span />
@@ -1044,8 +1054,6 @@ function StarterGrid({
 }
 
 type TimeTravelStep = "departure" | "destination" | "identity" | "purpose" | "realism" | "depth" | "clearance";
-type TimeTravelPanel = "scene" | "map" | "timeline" | "people" | "rules" | "inventory" | "evidence";
-type TimeTravelLens = "Immersive" | "Historian" | "Strategy" | "Economics" | "Leadership" | "Technology";
 
 type TimeTravelJourney = {
   id: string;
@@ -1361,25 +1369,6 @@ const timeTravelDepth: TimeTravelChoice[] = [
   { id: "open-simulation", label: "Open simulation", description: "Stateful exploration with consequences and evolving risk." },
 ];
 
-const timeTravelPanels: Array<{ id: TimeTravelPanel; label: string }> = [
-  { id: "scene", label: "Scene" },
-  { id: "map", label: "Map" },
-  { id: "timeline", label: "Timeline" },
-  { id: "people", label: "People" },
-  { id: "rules", label: "Rules" },
-  { id: "inventory", label: "Inventory" },
-  { id: "evidence", label: "Evidence" },
-];
-
-const timeTravelLenses: TimeTravelLens[] = [
-  "Immersive",
-  "Historian",
-  "Strategy",
-  "Economics",
-  "Leadership",
-  "Technology",
-];
-
 const fallbackTimeTravelJourney: TimeTravelJourney = {
   ...timeTravelJourneyTemplates[0],
   id: "saved-expedition",
@@ -1520,22 +1509,25 @@ function buildTimeTravelPrompt({
     },
   };
 
-  return [
-    "Start a Time Travel expedition. Do not open a generic chat and do not write a broad period summary.",
-    "Treat this as a stateful, evidence-aware historical simulation with a passport, travel advisory, world view, and choices.",
-    "Simulation state:",
-    JSON.stringify(state, null, 2),
-    "First response rules:",
-    "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
-    "- Otherwise, open with modular cards: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence.",
-    "- Keep in-world knowledge separate from historian knowledge.",
-    "- Mark known facts, plausible reconstruction, and speculation clearly.",
-    "- Do not fabricate direct quotes, citations, or private thoughts.",
-    "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
-    "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
-    "- End with three meaningful actions plus one option to pause for historian context.",
-    "Debrief rule: when the learner asks to end or debrief, summarize discoveries, evidence confidence, remaining uncertainties, and award a passport stamp.",
-  ].join("\n");
+  return buildMiniAppInstruction({
+    visible: `Time travel: ${journey.label} as ${identity.label}. Mission: ${purpose.label}.`,
+    instructions: [
+      "Start a Time Travel expedition. Do not open a generic chat and do not write a broad period summary.",
+      "Treat this as a stateful, evidence-aware historical simulation with a passport, travel advisory, world view, and choices.",
+      "Simulation state:",
+      JSON.stringify(state, null, 2),
+      "First response rules:",
+      "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "- Keep in-world knowledge separate from historian knowledge.",
+      "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "- End with three meaningful actions plus one option to pause for historian context.",
+      "Debrief rule: when the learner asks to end or debrief, summarize discoveries, evidence confidence, remaining uncertainties, and award a passport stamp.",
+    ].join("\n"),
+  });
 }
 
 type MiniAppConfig = {
@@ -1733,8 +1725,8 @@ function TimeTravelWorkspace({
   onStop: () => void;
   onReset: () => void;
 }) {
-  const visibleMessages = messages.filter((message) => message.role !== "system");
-  const hasSession = visibleMessages.length > 0 || sending || awaitingResponse;
+  const visibleMessages = displayMessages(messages);
+  const hasSession = messages.some((message) => message.role !== "system") || sending || awaitingResponse;
   const [intent, setIntent] = useState("");
   const [step, setStep] = useState<TimeTravelStep>("departure");
   const [journeyOptions, setJourneyOptions] = useState(() => timeTravelJourneyTemplates.slice(0, 5));
@@ -2204,6 +2196,172 @@ function TimeTravelPassport({
   );
 }
 
+type CoachChatAction = {
+  label: string;
+  icon?: ComponentType<{ size?: number }>;
+  onClick: () => void;
+  disabled?: boolean;
+};
+
+type CoachChatDetail = {
+  title: string;
+  body: string;
+  icon?: ComponentType<{ size?: number }>;
+};
+
+function CoachChatSession({
+  eyebrow,
+  title,
+  subtitle,
+  coachName,
+  placeholder,
+  messages,
+  input,
+  sending,
+  awaitingResponse,
+  inputRef,
+  listRef,
+  actions,
+  details,
+  resetLabel,
+  onInput,
+  onSubmit,
+  onKeyDown,
+  onStop,
+  onReset,
+}: {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  coachName: string;
+  placeholder: string;
+  messages: Message[];
+  input: string;
+  sending: boolean;
+  awaitingResponse: boolean;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  listRef: RefObject<HTMLDivElement | null>;
+  actions?: CoachChatAction[];
+  details?: CoachChatDetail[];
+  resetLabel: string;
+  onInput: (value: string) => void;
+  onSubmit: (event?: FormEvent) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onStop: () => void;
+  onReset: () => void;
+}) {
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const hasDetails = Boolean(details?.length);
+
+  return (
+    <main className="bubble-workspace coach-chat-workspace">
+      <section className={`coach-chat-shell ${detailsOpen ? "is-details-open" : ""}`}>
+        <header className="coach-chat-top">
+          <div className="coach-chat-avatar" aria-hidden="true">
+            <Bot size={24} />
+          </div>
+          <div className="coach-chat-title">
+            <span>{eyebrow}</span>
+            <h2>{title}</h2>
+            <p>{subtitle}</p>
+          </div>
+          <div className="coach-chat-toolbar">
+            {hasDetails ? (
+              <button type="button" onClick={() => setDetailsOpen((open) => !open)}>
+                <SlidersHorizontal size={17} />
+                <span>{detailsOpen ? "Hide details" : "Details"}</span>
+              </button>
+            ) : null}
+            <button type="button" onClick={onReset}>
+              <RotateCcw size={17} />
+              <span>{resetLabel}</span>
+            </button>
+          </div>
+        </header>
+
+        {actions?.length ? (
+          <div className="coach-chat-action-strip" aria-label="Coach actions">
+            {actions.map((action) => {
+              const ActionIcon = action.icon ?? Sparkles;
+              return (
+                <button key={action.label} type="button" onClick={action.onClick} disabled={action.disabled}>
+                  <ActionIcon size={16} />
+                  <span>{action.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        ) : null}
+
+        {detailsOpen && details?.length ? (
+          <aside className="coach-chat-details" aria-label="Session details">
+            <div className="coach-chat-details-head">
+              <ShieldCheck size={18} />
+              <strong>Session setup</strong>
+            </div>
+            <div className="coach-chat-details-grid">
+              {details.map((detail) => {
+                const DetailIcon = detail.icon ?? FileText;
+                return (
+                  <article key={detail.title}>
+                    <DetailIcon size={17} />
+                    <div>
+                      <strong>{detail.title}</strong>
+                      <span>{detail.body}</span>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </aside>
+        ) : null}
+
+        <section className="coach-chat-body">
+          <div ref={listRef} className="coach-chat-log app-scrollbar">
+            <div className="coach-chat-message-stack">
+              {messages.map((message) => (
+                <MessageBubble key={message.id} message={message} assistantLabel={`${coachName} response`} />
+              ))}
+              {awaitingResponse ? (
+                <div className="bubble-thinking" aria-live="polite">
+                  <span />
+                  <span />
+                  <span />
+                  <strong>{coachName} is thinking</strong>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          <form onSubmit={onSubmit} className="bubble-composer coach-chat-composer">
+            <div className="bubble-composer-inner">
+              <textarea
+                ref={inputRef}
+                value={input}
+                onChange={(event) => onInput(event.target.value)}
+                onKeyDown={onKeyDown}
+                placeholder={placeholder}
+                disabled={sending}
+                className="bubble-composer-input"
+                rows={1}
+              />
+              <button
+                type={sending ? "button" : "submit"}
+                onClick={sending ? onStop : undefined}
+                disabled={!sending && !input.trim()}
+                aria-label={sending ? "Stop response" : "Send message"}
+                className="bubble-send-button"
+              >
+                {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
+              </button>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+  );
+}
+
 function TimeTravelSession({
   topic,
   journey,
@@ -2243,9 +2401,6 @@ function TimeTravelSession({
   onStop: () => void;
   onReset: () => void;
 }) {
-  const [panel, setPanel] = useState<TimeTravelPanel>("scene");
-  const [lens, setLens] = useState<TimeTravelLens>("Immersive");
-  const [timelineIndex, setTimelineIndex] = useState(1);
   const actions = [
     ...journey.actions,
     "Ask the guide to explain the power structure",
@@ -2255,332 +2410,49 @@ function TimeTravelSession({
 
   function sendAction(action: string) {
     void onSend(
-      `Action from inside the ${journey.label} expedition: ${action}. Keep the simulation state, constraints, and evidence labels visible.`,
+      buildMiniAppInstruction({
+        visible: action,
+        instructions: `Action from inside the ${journey.label} expedition: ${action}. Keep the simulation state, constraints, and evidence labels visible.`,
+      }),
     );
   }
 
-  return (
-    <main className="bubble-workspace bubble-time-workspace">
-      <section className="bubble-time-session">
-        <div className="bubble-time-rail">
-          <TimeTravelPassport
-            journey={journey}
-            identity={identity}
-            purpose={purpose}
-            realism={realism}
-            depth={depth}
-            compact
-          />
-          <button type="button" onClick={onReset} className="bubble-time-new-journey">
-            <RotateCcw size={17} />
-            <span>New passport</span>
-          </button>
-        </div>
-
-        <section className="bubble-time-world">
-          <header className="bubble-time-world-header">
-            <div>
-              <span>{journey.arrival}</span>
-              <h2>{journey.place}</h2>
-            </div>
-            <div className="bubble-time-world-pills">
-              <span>{journey.date}</span>
-              <span>{journey.risk} risk</span>
-              <span>{realism?.label ?? "Guided"} realism</span>
-            </div>
-          </header>
-
-          <div className="bubble-time-lens-row" role="tablist" aria-label="Modern lens">
-            <Scale size={17} />
-            {timeTravelLenses.map((item) => (
-              <button
-                key={item}
-                type="button"
-                className={item === lens ? "is-active" : ""}
-                onClick={() => setLens(item)}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-
-          <div className="bubble-time-panel-tabs" role="tablist" aria-label="Expedition view">
-            {timeTravelPanels.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                className={item.id === panel ? "is-active" : ""}
-                onClick={() => setPanel(item.id)}
-              >
-                <TimeTravelPanelIcon panel={item.id} />
-                <span>{item.label}</span>
-              </button>
-            ))}
-          </div>
-
-          <TimeTravelWorldPanel
-            panel={panel}
-            lens={lens}
-            journey={journey}
-            identity={identity}
-            timelineIndex={timelineIndex}
-            onTimeline={setTimelineIndex}
-          />
-        </section>
-
-        <section className="bubble-time-chat">
-          <header className="bubble-time-chat-header">
-            <MessageCircle size={18} />
-            <div>
-              <span>{topic.name}</span>
-              <strong>{identity.role}</strong>
-            </div>
-          </header>
-
-          <div ref={listRef} className="bubble-time-chat-log app-scrollbar">
-            <div className="bubble-message-stack bubble-time-message-stack">
-              {messages.map((message) => (
-                <MessageBubble key={message.id} message={message} />
-              ))}
-              {awaitingResponse ? (
-                <div className="bubble-thinking" aria-live="polite">
-                  <span />
-                  <span />
-                  <span />
-                  <strong>Thinking</strong>
-                </div>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="bubble-time-action-chips">
-            {actions.slice(0, 6).map((action) => (
-              <button key={action} type="button" disabled={sending} onClick={() => sendAction(action)}>
-                <Sparkles size={14} />
-                <span>{action}</span>
-              </button>
-            ))}
-          </div>
-
-          <form onSubmit={onSubmit} className="bubble-time-composer">
-            <textarea
-              ref={inputRef}
-              value={input}
-              onChange={(event) => onInput(event.target.value)}
-              onKeyDown={onKeyDown}
-              placeholder="Speak from inside the world..."
-              disabled={sending}
-              rows={1}
-            />
-            <button
-              type={sending ? "button" : "submit"}
-              onClick={sending ? onStop : undefined}
-              disabled={!sending && !input.trim()}
-              aria-label={sending ? "Stop response" : "Send message"}
-            >
-              {sending ? <Square size={17} fill="currentColor" /> : <Send size={20} />}
-            </button>
-          </form>
-        </section>
-      </section>
-    </main>
-  );
-}
-
-function TimeTravelPanelIcon({ panel }: { panel: TimeTravelPanel }) {
-  const icons = {
-    scene: Eye,
-    map: Map,
-    timeline: CalendarDays,
-    people: Users,
-    rules: Gavel,
-    inventory: Coins,
-    evidence: FileText,
-  };
-  const Icon = icons[panel];
-  return <Icon size={15} />;
-}
-
-function TimeTravelWorldPanel({
-  panel,
-  lens,
-  journey,
-  identity,
-  timelineIndex,
-  onTimeline,
-}: {
-  panel: TimeTravelPanel;
-  lens: TimeTravelLens;
-  journey: TimeTravelJourney;
-  identity: TimeTravelerIdentity;
-  timelineIndex: number;
-  onTimeline: (index: number) => void;
-}) {
-  const timeline = [
-    `Before arrival: ${journey.context}`,
-    `Now: ${journey.eventClock[0] ?? journey.arrival}`,
-    `Soon: ${journey.eventClock[1] ?? "Local consequences unfold from your choices."}`,
-    `Historian knowledge: ${journey.knownFacts[0] ?? journey.confidence}`,
+  const details: CoachChatDetail[] = [
+    { title: "Arrival", body: `${journey.arrival} - ${journey.date}`, icon: MapPin },
+    { title: "Identity", body: `${identity.role}. ${identity.status}.`, icon: UserRound },
+    { title: "Mission", body: `${purpose?.label ?? "Guided"} - ${depth?.label ?? "Open visit"}`, icon: Compass },
+    { title: "Realism", body: `${realism?.label ?? "Guided"} realism. ${journey.risk} risk.`, icon: ShieldCheck },
+    { title: "Evidence", body: journey.confidence, icon: FileText },
+    { title: "Boundary", body: journey.exposureRisk, icon: AlertTriangle },
   ];
 
-  if (panel === "map") {
-    return (
-      <div className="bubble-time-panel">
-        <div className="bubble-time-route-map">
-          {journey.route.map((stop, index) => (
-            <span key={stop} className={index === 0 ? "is-current" : ""}>
-              {stop}
-            </span>
-          ))}
-        </div>
-        <div className="bubble-time-list-grid">
-          {journey.route.map((stop, index) => (
-            <article key={stop}>
-              <MapPin size={17} />
-              <div>
-                <strong>{index === 0 ? "Current location" : `Route ${index}`}</strong>
-                <span>{stop}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (panel === "timeline") {
-    return (
-      <div className="bubble-time-panel">
-        <div className="bubble-time-scrubber">
-          <input
-            type="range"
-            min="0"
-            max={timeline.length - 1}
-            value={timelineIndex}
-            onChange={(event) => onTimeline(Number(event.target.value))}
-          />
-          <strong>{timeline[timelineIndex]}</strong>
-        </div>
-        <div className="bubble-time-knowledge-split">
-          <article>
-            <span>In-world knowledge</span>
-            <p>{journey.eventClock[0] ?? "People know only what has reached this place and status level."}</p>
-          </article>
-          <article>
-            <span>Historian knowledge</span>
-            <p>{journey.knownFacts.join(" ")}</p>
-          </article>
-        </div>
-      </div>
-    );
-  }
-
-  if (panel === "people") {
-    return (
-      <div className="bubble-time-panel bubble-time-list-grid">
-        {journey.people.map((person) => (
-          <article key={person}>
-            <Users size={17} />
-            <div>
-              <strong>{person}</strong>
-              <span>Approach through your role as {identity.role.toLowerCase()}.</span>
-            </div>
-          </article>
-        ))}
-      </div>
-    );
-  }
-
-  if (panel === "rules") {
-    return (
-      <div className="bubble-time-panel">
-        <div className="bubble-time-danger">
-          <Shield size={19} />
-          <span>{journey.exposureRisk}</span>
-        </div>
-        <div className="bubble-time-list-grid">
-          {journey.socialRules.map((rule) => (
-            <article key={rule}>
-              <Gavel size={17} />
-              <div>
-                <strong>Constraint</strong>
-                <span>{rule}</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (panel === "inventory") {
-    return (
-      <div className="bubble-time-panel bubble-time-inventory">
-        <article>
-          <UserRound size={18} />
-          <strong>{identity.clothing}</strong>
-          <span>What others see first</span>
-        </article>
-        <article>
-          <Coins size={18} />
-          <strong>{identity.money}</strong>
-          <span>{journey.currency}</span>
-        </article>
-        <article>
-          <ScrollText size={18} />
-          <strong>{identity.clearance}</strong>
-          <span>{identity.status}</span>
-        </article>
-      </div>
-    );
-  }
-
-  if (panel === "evidence") {
-    return (
-      <div className="bubble-time-panel bubble-time-evidence">
-        <EvidenceColumn title="Known" items={journey.knownFacts} />
-        <EvidenceColumn title="Reconstructed" items={journey.reconstructions} />
-        <EvidenceColumn title="Speculative" items={journey.speculative} />
-      </div>
-    );
-  }
-
   return (
-    <div className="bubble-time-panel">
-      <div className="bubble-time-scene-card">
-        <span>{lens} lens</span>
-        <h3>{journey.sensory}</h3>
-        <p>{journey.context}</p>
-      </div>
-      <div className="bubble-time-scene-grid">
-        <article>
-          <CalendarDays size={18} />
-          <strong>Event clock</strong>
-          <span>{journey.eventClock.join(" ")}</span>
-        </article>
-        <article>
-          <UserRound size={18} />
-          <strong>Identity</strong>
-          <span>{identity.role}</span>
-        </article>
-        <article>
-          <SlidersHorizontal size={18} />
-          <strong>Objects</strong>
-          <span>{journey.objects.join(", ")}</span>
-        </article>
-      </div>
-    </div>
-  );
-}
-
-function EvidenceColumn({ title, items }: { title: string; items: string[] }) {
-  return (
-    <article>
-      <strong>{title}</strong>
-      {items.map((item) => (
-        <span key={item}>{item}</span>
-      ))}
-    </article>
+    <CoachChatSession
+      eyebrow={topic.name}
+      title={journey.place}
+      subtitle={`${journey.arrival} - ${identity.role}`}
+      coachName="Guide"
+      placeholder="Ask, act, pause for context, or request a debrief..."
+      messages={messages}
+      input={input}
+      sending={sending}
+      awaitingResponse={awaitingResponse}
+      inputRef={inputRef}
+      listRef={listRef}
+      actions={actions.slice(0, 6).map((action) => ({
+        label: action,
+        icon: Compass,
+        disabled: sending,
+        onClick: () => sendAction(action),
+      }))}
+      details={details}
+      resetLabel="Change passport"
+      onInput={onInput}
+      onSubmit={onSubmit}
+      onKeyDown={onKeyDown}
+      onStop={onStop}
+      onReset={onReset}
+    />
   );
 }
 
@@ -2789,34 +2661,40 @@ function buildHistoricalEncounterPrompt({
   const engagement = historicalEngagementModes.find((candidate) => candidate.id === mode) ?? historicalEngagementModes[1];
   const needsTimeSlice = timeSlice === historicalTimeSliceOptions[0];
 
-  return [
-    "Open the Historical Person mini app as a staged historical audience with a living dossier.",
-    "Do not run this as a generic chatbot or a famous-person costume.",
-    `Start type: ${startType === "discover" ? "vague discovery request" : "direct person request"}.`,
-    startType === "discover"
-      ? `Discovery request: ${personOrTheme}. Suggest 3 to 5 historical people first. Each card must include name, era, why they matter, best conversation modes, controversy level, evidence quality, and a fitting setting. Ask me to choose before building a persona.`
-      : `Requested person or encounter: ${personOrTheme}.`,
-    needsTimeSlice
-      ? "Time slice: not chosen yet. If a specific person is named, offer 4 to 5 historically meaningful versions of this person before any in-character dialogue. Explain how each version changes the worldview, stakes, and setting."
-      : `Selected time slice: ${timeSlice}. If this slice is too broad, narrow it once with 2 or 3 historically meaningful options before the encounter begins.`,
-    setting ? `Preferred setting: ${setting}.` : "Preferred setting: choose a historically fitting room, court, battlefield tent, study, prison, salon, workshop, public square, or other concrete place.",
-    `Engagement mode: ${engagement.label}. The user's relationship to the person is: ${userRole || engagement.role}.`,
-    openingGoal ? `User's purpose or opening angle: ${openingGoal}.` : "User's purpose: help them choose sharp opening questions.",
-    `Historian sidecar visibility: ${historianVisibility}.`,
-    "Required flow:",
-    "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
-    "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
-    "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
-    "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
-    "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
-    "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
-    "- Do not let the persona give medical, legal, financial, or harmful advice as authoritative guidance.",
-    "First response format:",
-    "1. If discovery or time-slice choice is needed, show choices and stop.",
-    "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
-  ]
-    .filter(Boolean)
-    .join("\n");
+  return buildMiniAppInstruction({
+    visible:
+      startType === "discover"
+        ? `Find a historical person: ${personOrTheme}`
+        : `Historical audience: ${personOrTheme} (${needsTimeSlice ? "choose time slice" : timeSlice})`,
+    instructions: [
+      "Open the Historical Person mini app as a staged historical audience with a living dossier.",
+      "Do not run this as a generic chatbot or a famous-person costume.",
+      `Start type: ${startType === "discover" ? "vague discovery request" : "direct person request"}.`,
+      startType === "discover"
+        ? `Discovery request: ${personOrTheme}. Suggest 3 to 5 historical people first. Each card must include name, era, why they matter, best conversation modes, controversy level, evidence quality, and a fitting setting. Ask me to choose before building a persona.`
+        : `Requested person or encounter: ${personOrTheme}.`,
+      needsTimeSlice
+        ? "Time slice: not chosen yet. If a specific person is named, offer 4 to 5 historically meaningful versions of this person before any in-character dialogue. Explain how each version changes the worldview, stakes, and setting."
+        : `Selected time slice: ${timeSlice}. If this slice is too broad, narrow it once with 2 or 3 historically meaningful options before the encounter begins.`,
+      setting ? `Preferred setting: ${setting}.` : "Preferred setting: choose a historically fitting room, court, battlefield tent, study, prison, salon, workshop, public square, or other concrete place.",
+      `Engagement mode: ${engagement.label}. The user's relationship to the person is: ${userRole || engagement.role}.`,
+      openingGoal ? `User's purpose or opening angle: ${openingGoal}.` : "User's purpose: help them choose sharp opening questions.",
+      `Historian sidecar visibility: ${historianVisibility}.`,
+      "Required flow:",
+      "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "- Do not let the persona give medical, legal, financial, or harmful advice as authoritative guidance.",
+      "First response format:",
+      "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+    ]
+      .filter(Boolean)
+      .join("\n"),
+  });
 }
 
 const collaborationModeOptions = [
@@ -3011,19 +2889,22 @@ function buildCollaborativeInstructionPrompt({
   roomType: CollaborationRoomType;
 }) {
   const room = collaborationRoomTemplates[roomType];
-  return [
-    `Let's open a collaborative workroom for: ${goal}`,
-    "",
-    `Mode: ${mode.label}`,
-    `AI role: ${mode.role}`,
-    `Tone: ${mode.tone}`,
-    `Workspace: ${room.label} - ${room.artifactTitle}`,
-    "",
-    "Make the first rough structure before giving advice. Start with: \"I made the first rough structure. Edit anything. I will react to your changes.\"",
-    "Use visible sections: Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, Next action.",
-    mode.instruction,
-    "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
-  ].join("\n");
+  return buildMiniAppInstruction({
+    visible: `Open workroom: ${goal} (${mode.label})`,
+    instructions: [
+      `Let's open a collaborative workroom for: ${goal}`,
+      "",
+      `Mode: ${mode.label}`,
+      `AI role: ${mode.role}`,
+      `Tone: ${mode.tone}`,
+      `Workspace: ${room.label} - ${room.artifactTitle}`,
+      "",
+      "Make the first rough structure before giving advice. Start with: \"I made the first rough structure. Edit anything. I will react to your changes.\"",
+      "Use visible sections: Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, Next action.",
+      mode.instruction,
+      "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
+    ].join("\n"),
+  });
 }
 
 function formatSprintTime(seconds: number) {
@@ -3066,15 +2947,16 @@ function CollaborativeInstructionWorkspace({
   const [modeId, setModeId] = useState<CollaborationModeId>("friendly_builder");
   const [sprintSeconds, setSprintSeconds] = useState(10 * 60);
   const [sprintRunning, setSprintRunning] = useState(false);
-  const visibleMessages = messages.filter((message) => message.role !== "system");
-  const recoveredGoal = extractCollaborationGoal(visibleMessages);
+  const rawMessages = messages.filter((message) => message.role !== "system");
+  const visibleMessages = displayMessages(messages);
+  const recoveredGoal = extractCollaborationGoal(rawMessages);
   const activeGoal = roomGoal || recoveredGoal || goal;
   const roomType = inferCollaborationRoomType(activeGoal);
   const room = collaborationRoomTemplates[roomType];
   const RoomIcon = room.icon;
   const activeMode = getCollaborationMode(modeId);
   const ActiveModeIcon = activeMode.icon;
-  const hasSession = visibleMessages.length > 0 || sending || awaitingResponse || Boolean(roomGoal);
+  const hasSession = rawMessages.length > 0 || sending || awaitingResponse || Boolean(roomGoal);
   const assistantCount = visibleMessages.filter((message) => message.role === "assistant").length;
 
   useEffect(() => {
@@ -3113,14 +2995,22 @@ function CollaborativeInstructionWorkspace({
     setModeId(nextModeId);
     if (hasSession) {
       void onSend(
-        `Switch collaboration mode to ${nextMode.label}. Keep the same shared artifact, decision log, open questions, and user ownership.`,
+        buildMiniAppInstruction({
+          visible: `Switch to ${nextMode.label}`,
+          instructions: `Switch collaboration mode to ${nextMode.label}. Keep the same shared artifact, decision log, open questions, and user ownership.`,
+        }),
       );
     }
   }
 
-  function sendHandoff(prompt: string) {
+  function sendHandoff(action: (typeof collaborationHandoffActions)[number]) {
     if (sending) return;
-    void onSend(prompt);
+    void onSend(
+      buildMiniAppInstruction({
+        visible: action.label,
+        instructions: action.prompt,
+      }),
+    );
   }
 
   function startSprint() {
@@ -3128,7 +3018,62 @@ function CollaborativeInstructionWorkspace({
     setSprintSeconds(10 * 60);
     setSprintRunning(true);
     void onSend(
-      `Start a 10-minute sprint for "${activeGoal || topic.name}". Pick one concrete artifact checkpoint, assign my move and your support role, then end with a checkpoint.`,
+      buildMiniAppInstruction({
+        visible: "Start 10-minute sprint",
+        instructions: `Start a 10-minute sprint for "${activeGoal || topic.name}". Pick one concrete artifact checkpoint, assign my move and your support role, then end with a checkpoint.`,
+      }),
+    );
+  }
+
+  if (hasSession) {
+    const actionItems: CoachChatAction[] = [
+      ...collaborationHandoffActions.map((action) => ({
+        label: action.label,
+        icon: action.icon,
+        disabled: sending,
+        onClick: () => sendHandoff(action),
+      })),
+      {
+        label: sprintRunning ? "Sprint running" : "Start 10 min",
+        icon: Timer,
+        disabled: sending || sprintRunning,
+        onClick: startSprint,
+      },
+      ...collaborationModeOptions.map((modeOption) => ({
+        label: modeOption.label,
+        icon: modeOption.icon,
+        disabled: sending || modeOption.id === modeId,
+        onClick: () => switchMode(modeOption.id),
+      })),
+    ];
+
+    return (
+      <CoachChatSession
+        eyebrow="Collaborative Instruction"
+        title={activeGoal || topic.name}
+        subtitle={`${room.title} - ${activeMode.label}`}
+        coachName="Collaborator"
+        placeholder="Add, edit, challenge, or decide the next move"
+        messages={visibleMessages}
+        input={input}
+        sending={sending}
+        awaitingResponse={awaitingResponse}
+        inputRef={inputRef}
+        listRef={listRef}
+        actions={actionItems}
+        details={[
+          { title: "Workspace", body: `${room.label} - ${room.artifactTitle}`, icon: RoomIcon },
+          { title: "Working style", body: `${activeMode.role}. ${activeMode.tone}.`, icon: ActiveModeIcon },
+          { title: "Sprint clock", body: sprintRunning ? `${formatSprintTime(sprintSeconds)} remaining` : "Ready for a 10-minute checkpoint", icon: Timer },
+          ...room.sections.map((section) => ({ title: section.title, body: section.body, icon: FileText })),
+        ]}
+        resetLabel="Change setup"
+        onInput={onInput}
+        onSubmit={onSubmit}
+        onKeyDown={onKeyDown}
+        onStop={onStop}
+        onReset={onReset}
+      />
     );
   }
 
@@ -3292,7 +3237,7 @@ function CollaborativeInstructionWorkspace({
                         <button
                           key={action.label}
                           type="button"
-                          onClick={() => sendHandoff(action.prompt)}
+                          onClick={() => sendHandoff(action)}
                           disabled={sending}
                         >
                           <ActionIcon size={16} />
@@ -3385,7 +3330,7 @@ function CollaborationActivityFeed({
   modeLabel: string;
   initialGoal: string;
 }) {
-  const visibleMessages = messages.filter((message) => message.role !== "system");
+  const visibleMessages = displayMessages(messages);
   return (
     <section className="bubble-collab-feed" aria-label="Activity feed">
       <header>
@@ -3488,8 +3433,8 @@ function GuidedMiniAppWorkspace({
   const [primary, setPrimary] = useState("");
   const [secondary, setSecondary] = useState("");
   const [notes, setNotes] = useState("");
-  const visibleMessages = messages.filter((message) => message.role !== "system");
-  const hasSession = visibleMessages.length > 0 || sending || awaitingResponse;
+  const visibleMessages = displayMessages(messages);
+  const hasSession = messages.some((message) => message.role !== "system") || sending || awaitingResponse;
 
   if (mode === "collaborative-instruction") {
     return (
@@ -3537,11 +3482,44 @@ function GuidedMiniAppWorkspace({
     event?.preventDefault();
     if (!primary.trim() || sending) return;
     void onSend(
-      config.buildPrompt({
-        primary: primary.trim(),
-        secondary: secondary.trim(),
-        notes: notes.trim(),
+      buildMiniAppInstruction({
+        visible: `${topic.name}: ${primary.trim()}`,
+        instructions: config.buildPrompt({
+          primary: primary.trim(),
+          secondary: secondary.trim(),
+          notes: notes.trim(),
+        }),
       }),
+    );
+  }
+
+  if (hasSession) {
+    return (
+      <CoachChatSession
+        eyebrow={config.eyebrow}
+        title={primary.trim() || topic.name}
+        subtitle={config.milestones.join(" -> ")}
+        coachName="Coach"
+        placeholder={topic.inputboxText}
+        messages={visibleMessages}
+        input={input}
+        sending={sending}
+        awaitingResponse={awaitingResponse}
+        inputRef={inputRef}
+        listRef={listRef}
+        details={[
+          { title: config.primaryLabel, body: primary.trim() || "Set in the opening message", icon: BookOpenCheck },
+          { title: config.secondaryLabel, body: secondary.trim() || "Use chat to adjust this", icon: SlidersHorizontal },
+          { title: config.notesLabel, body: notes.trim() || "No extra notes", icon: StickyNote },
+          ...config.panels.map((panel) => ({ title: panel.title, body: panel.body, icon: FileText })),
+        ]}
+        resetLabel="Change setup"
+        onInput={onInput}
+        onSubmit={onSubmit}
+        onKeyDown={onKeyDown}
+        onStop={onStop}
+        onReset={onReset}
+      />
     );
   }
 
@@ -3719,8 +3697,8 @@ function HistoricalPersonWorkspace({
   const [userRole, setUserRole] = useState("respectful but challenging interlocutor");
   const [openingGoal, setOpeningGoal] = useState("");
   const [historianVisibility, setHistorianVisibility] = useState("medium");
-  const visibleMessages = messages.filter((message) => message.role !== "system");
-  const hasSession = visibleMessages.length > 0 || sending || awaitingResponse;
+  const visibleMessages = displayMessages(messages);
+  const hasSession = messages.some((message) => message.role !== "system") || sending || awaitingResponse;
   const selectedMode =
     historicalEngagementModes.find((mode) => mode.id === engagementMode) ?? historicalEngagementModes[1];
   const selectedTimeSlice = customTimeSlice.trim() || timeSlice;
@@ -3763,6 +3741,87 @@ function HistoricalPersonWorkspace({
         openingGoal: openingGoal.trim(),
         historianVisibility,
       }),
+    );
+  }
+
+  if (hasSession) {
+    const encounterTitle =
+      personOrTheme.trim() ||
+      visibleMessages.find((message) => message.role === "user")?.content.replace(/^Historical audience:\s*/i, "") ||
+      topic.name;
+    const actions: CoachChatAction[] = [
+      ...historicalDossierActions.map((action) => ({
+        label: action.title,
+        icon: FileText,
+        disabled: sending,
+        onClick: () =>
+          void onSend(
+            buildMiniAppInstruction({
+              visible: action.title,
+              instructions: action.prompt,
+            }),
+          ),
+      })),
+      ...historicalModeSwitches.map((switcher) => ({
+        label: switcher.label,
+        icon: Scale,
+        disabled: sending,
+        onClick: () =>
+          void onSend(
+            buildMiniAppInstruction({
+              visible: switcher.label,
+              instructions: switcher.prompt,
+            }),
+          ),
+      })),
+      {
+        label: "Generate debrief",
+        icon: FileText,
+        disabled: sending,
+        onClick: () =>
+          void onSend(
+            buildMiniAppInstruction({
+              visible: "Generate debrief",
+              instructions:
+                "End this session with a debrief artifact: what the person argued, what I challenged, strongest insight, weakest claim, historical context learned, open questions, recommended next encounters, and any saved quotes clearly marked as generated paraphrases unless sourced.",
+            }),
+          ),
+      },
+    ];
+
+    return (
+      <CoachChatSession
+        eyebrow="Historical audience"
+        title={encounterTitle}
+        subtitle={`${selectedTimeSlice} - ${selectedMode.label}`}
+        coachName="Historian coach"
+        placeholder="Ask, challenge, request evidence, or open a dossier item..."
+        messages={visibleMessages}
+        input={input}
+        sending={sending}
+        awaitingResponse={awaitingResponse}
+        inputRef={inputRef}
+        listRef={listRef}
+        actions={actions}
+        details={[
+          { title: "Time slice", body: selectedTimeSlice, icon: History },
+          { title: "Setting", body: setting.trim() || "Historically fitted setting", icon: MapPin },
+          { title: "Your role", body: userRole || selectedMode.role, icon: UserRound },
+          { title: "Mode", body: selectedMode.body, icon: historicalModeIcon(selectedMode.id) },
+          {
+            title: "Historian sidecar",
+            body: historianVisibilityOptions.find((option) => option.value === historianVisibility)?.body ?? "Evidence labels stay visible.",
+            icon: ShieldCheck,
+          },
+          { title: "Boundary", body: "Generated dialogue is simulation, not authenticated quotation.", icon: AlertTriangle },
+        ]}
+        resetLabel="Change audience"
+        onInput={onInput}
+        onSubmit={onSubmit}
+        onKeyDown={onKeyDown}
+        onStop={onStop}
+        onReset={onReset}
+      />
     );
   }
 
@@ -4023,7 +4082,14 @@ function HistoricalPersonWorkspace({
                     key={action.title}
                     type="button"
                     disabled={sending}
-                    onClick={() => void onSend(action.prompt)}
+                    onClick={() =>
+                      void onSend(
+                        buildMiniAppInstruction({
+                          visible: action.title,
+                          instructions: action.prompt,
+                        }),
+                      )
+                    }
                   >
                     <strong>{action.title}</strong>
                     <span>{action.body}</span>
@@ -4036,7 +4102,11 @@ function HistoricalPersonWorkspace({
                 className="historical-debrief-button"
                 onClick={() =>
                   void onSend(
-                    "End this session with a debrief artifact: what the person argued, what I challenged, strongest insight, weakest claim, historical context learned, open questions, recommended next encounters, and any saved quotes clearly marked as generated paraphrases unless sourced.",
+                    buildMiniAppInstruction({
+                      visible: "Generate debrief",
+                      instructions:
+                        "End this session with a debrief artifact: what the person argued, what I challenged, strongest insight, weakest claim, historical context learned, open questions, recommended next encounters, and any saved quotes clearly marked as generated paraphrases unless sourced.",
+                    }),
                   )
                 }
               >
@@ -4072,7 +4142,14 @@ function HistoricalPersonWorkspace({
                     key={switcher.label}
                     type="button"
                     disabled={sending}
-                    onClick={() => void onSend(switcher.prompt)}
+                    onClick={() =>
+                      void onSend(
+                        buildMiniAppInstruction({
+                          visible: switcher.label,
+                          instructions: switcher.prompt,
+                        }),
+                      )
+                    }
                   >
                     {switcher.label}
                   </button>
@@ -4158,22 +4235,35 @@ function ClockIcon() {
 }
 
 function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
-  const icons = {
-    compass: Compass,
-    landmark: Landmark,
-    lesson: BookOpenCheck,
-    collab: Clipboard,
-    socratic: Gauge,
-  };
-  const Icon = icons[icon];
   return (
     <div className="bubble-mini-icon">
-      <Icon size={24} />
+      <MiniIconGlyph icon={icon} />
     </div>
   );
 }
 
-function MessageBubble({ message }: { message: Message }) {
+function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
+  switch (icon) {
+    case "compass":
+      return <Compass size={24} />;
+    case "landmark":
+      return <Landmark size={24} />;
+    case "lesson":
+      return <BookOpenCheck size={24} />;
+    case "collab":
+      return <Clipboard size={24} />;
+    case "socratic":
+      return <Gauge size={24} />;
+  }
+}
+
+function MessageBubble({
+  message,
+  assistantLabel = "Coach response",
+}: {
+  message: Message;
+  assistantLabel?: string;
+}) {
   const isUser = message.role === "user";
   const [copied, setCopied] = useState(false);
 
@@ -4186,6 +4276,10 @@ function MessageBubble({ message }: { message: Message }) {
   return (
     <div className={`bubble-message-row ${isUser ? "is-user" : "is-assistant"}`}>
       <article className="bubble-message-bubble">
+        <header className="bubble-message-author">
+          {isUser ? <UserRound size={14} /> : <Bot size={14} />}
+          <strong>{isUser ? "You" : assistantLabel}</strong>
+        </header>
         <RichMessageContent content={message.content} />
         <footer>
           <time>{formatBubbleDate(message.createdAt)}</time>
@@ -4473,12 +4567,14 @@ function FlashcardWorkspace({
   activityRun,
   createChat,
   onActivityRun,
+  onReset,
 }: {
   activeChatId?: string;
   activeTopicId: string;
   activityRun: ActivityRun | null;
   createChat: (topicId?: string) => Promise<string>;
   onActivityRun: (run: ActivityRun | null) => void;
+  onReset: () => void;
 }) {
   const [topic, setTopic] = useState("");
   const [source, setSource] = useState("");
@@ -4486,8 +4582,13 @@ function FlashcardWorkspace({
   const [buildProgress, setBuildProgress] = useState(0);
   const [reviewing, setReviewing] = useState(false);
   const [error, setError] = useState("");
+  const [hintCardId, setHintCardId] = useState<string | null>(null);
   const deck = activityRun?.type === "flashcards" && isFlashcardState(activityRun.state) ? activityRun.state : null;
   const currentCard = deck?.cards[deck.currentIndex];
+  const missedCards = deck?.cards.filter((card) => card.rating === "again") ?? [];
+  const remainingCount = deck ? Math.max(0, deck.maxCards - deck.reviewedCount) : 0;
+  const progressPercent = deck ? Math.round((deck.reviewedCount / deck.maxCards) * 100) : 0;
+  const hintOpen = Boolean(currentCard && hintCardId === currentCard.id);
 
   useEffect(() => {
     if (!loading) return;
@@ -4546,6 +4647,28 @@ function FlashcardWorkspace({
     }
   }
 
+  function changeDeck() {
+    onReset();
+    setTopic("");
+    setSource("");
+    setError("");
+    setHintCardId(null);
+    setBuildProgress(0);
+  }
+
+  function reviewMissed(deckState: PublicFlashcardState) {
+    const missed = deckState.cards.filter((card) => card.rating === "again");
+    setTopic(`Weak spots from ${deckState.topic}`);
+    setSource(
+      missed
+        .map((card, index) => `${index + 1}. ${card.front}\nAnswer: ${card.back ?? ""}\nTrap: ${card.trap ?? ""}`)
+        .join("\n\n"),
+    );
+    setError("");
+    setHintCardId(null);
+    onActivityRun(null);
+  }
+
   return (
     <main className="bubble-workspace bubble-flashcard-workspace">
       {!deck ? (
@@ -4553,49 +4676,71 @@ function FlashcardWorkspace({
           <FlashcardBuildLoader topic={topic} progress={buildProgress} />
         ) : (
           <form onSubmit={startFlashcards} className="bubble-flashcard-start">
-            <div className="bubble-flashcard-start-icon">
-              <Clipboard size={28} />
+            <div className="bubble-flashcard-start-copy">
+              <div className="bubble-flashcard-start-icon">
+                <Clipboard size={28} />
+              </div>
+              <span>Active recall builder</span>
+              <h2>Turn material into a deck you actually test yourself on.</h2>
+              <p>Give me a topic or paste notes. I will build 12 focused cards with optional hints, traps, and examples.</p>
             </div>
-            <h2>What should become flashcards?</h2>
-            <p>Give me a topic or paste notes. I will build a 12-card recall deck with hints and traps.</p>
-            <div className="bubble-flashcard-input-stack">
-              <input
-                value={topic}
-                onChange={(event) => setTopic(event.target.value)}
-                placeholder="Mitosis, climate zones, irregular verbs..."
-                disabled={loading}
-              />
-              <textarea
-                value={source}
-                onChange={(event) => setSource(event.target.value)}
-                placeholder="Optional: paste notes, syllabus points, or facts to prioritize"
-                disabled={loading}
-                rows={5}
-              />
+            <div className="bubble-flashcard-start-panel">
+              <div className="bubble-flashcard-input-stack">
+                <label>
+                  <span>Deck topic</span>
+                  <input
+                    value={topic}
+                    onChange={(event) => setTopic(event.target.value)}
+                    placeholder="Mitosis, climate zones, irregular verbs..."
+                    disabled={loading}
+                  />
+                </label>
+                <label>
+                  <span>Source notes</span>
+                  <textarea
+                    value={source}
+                    onChange={(event) => setSource(event.target.value)}
+                    placeholder="Optional: paste notes, syllabus points, or facts to prioritize"
+                    disabled={loading}
+                    rows={5}
+                  />
+                </label>
+              </div>
+              <button type="submit" disabled={loading || !topic.trim()}>
+                Build deck
+              </button>
+              <div className="bubble-flashcard-start-rules" aria-label="Deck rules">
+                <span>Recall before reveal</span>
+                <span>Hints stay optional</span>
+                <span>Misses become a smaller review deck</span>
+              </div>
+              {error ? <span className="bubble-quiz-error">{error}</span> : null}
             </div>
-            <button type="submit" disabled={loading || !topic.trim()}>
-              Build deck
-            </button>
-            {error ? <span className="bubble-quiz-error">{error}</span> : null}
           </form>
         )
       ) : (
         <section className="bubble-flashcard-shell">
-          <header className="bubble-quiz-header">
+          <header className="bubble-flashcard-header">
             <div>
               <span>Flashcards on</span>
               <h2>{deck.topic}</h2>
             </div>
-            <strong>
-              {deck.knownCount}/{deck.maxCards}
-            </strong>
+            <button type="button" onClick={changeDeck}>
+              <RotateCcw size={16} />
+              <span>Change deck</span>
+            </button>
           </header>
           <div className="bubble-quiz-progress">
-            <span style={{ width: `${(deck.reviewedCount / deck.maxCards) * 100}%` }} />
+            <span style={{ width: `${progressPercent}%` }} />
+          </div>
+          <div className="bubble-flashcard-stats" aria-label="Deck progress">
+            <FlashcardStat label="Known" value={`${deck.knownCount}/${deck.maxCards}`} />
+            <FlashcardStat label="Again" value={String(missedCards.length)} />
+            <FlashcardStat label="Left" value={String(remainingCount)} />
           </div>
 
           {deck.completed ? (
-            <FlashcardReview deck={deck} />
+            <FlashcardReview deck={deck} onReviewMissed={reviewMissed} onStartOver={changeDeck} />
           ) : currentCard ? (
             <article className={`bubble-flashcard-card ${currentCard.back ? "is-revealed" : ""}`}>
               <div className="bubble-flashcard-card-top">
@@ -4609,7 +4754,7 @@ function FlashcardWorkspace({
                 </div>
               </div>
               <h3>{currentCard.front}</h3>
-              {currentCard.hint ? (
+              {currentCard.hint && hintOpen && !currentCard.back ? (
                 <p className="bubble-flashcard-hint">
                   <strong>Hint</strong>
                   {currentCard.hint}
@@ -4627,9 +4772,20 @@ function FlashcardWorkspace({
 
               <div className="bubble-flashcard-actions">
                 {!currentCard.back ? (
-                  <button type="button" disabled={reviewing} onClick={() => void reviewCard("reveal")}>
-                    Show answer
-                  </button>
+                  <>
+                    {currentCard.hint ? (
+                      <button
+                        type="button"
+                        disabled={reviewing}
+                        onClick={() => setHintCardId(hintOpen ? null : currentCard.id)}
+                      >
+                        {hintOpen ? "Hide hint" : "Need a hint"}
+                      </button>
+                    ) : null}
+                    <button type="button" disabled={reviewing} onClick={() => void reviewCard("reveal")}>
+                      Show answer
+                    </button>
+                  </>
                 ) : (
                   <>
                     <button type="button" disabled={reviewing} onClick={() => void reviewCard("again")}>
@@ -4682,7 +4838,24 @@ function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: nu
   );
 }
 
-function FlashcardReview({ deck }: { deck: PublicFlashcardState }) {
+function FlashcardStat({ label, value }: { label: string; value: string }) {
+  return (
+    <article>
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </article>
+  );
+}
+
+function FlashcardReview({
+  deck,
+  onReviewMissed,
+  onStartOver,
+}: {
+  deck: PublicFlashcardState;
+  onReviewMissed: (deck: PublicFlashcardState) => void;
+  onStartOver: () => void;
+}) {
   const missed = deck.cards.filter((card) => card.rating === "again");
   return (
     <article className="bubble-flashcard-review">
@@ -4692,6 +4865,16 @@ function FlashcardReview({ deck }: { deck: PublicFlashcardState }) {
           ? "Review the cards marked again, then rebuild a smaller deck from those weak spots."
           : "Clean sweep. Come back later and test the same deck from memory."}
       </p>
+      <div className="bubble-flashcard-review-actions">
+        {missed.length ? (
+          <button type="button" onClick={() => onReviewMissed(deck)}>
+            Review missed cards
+          </button>
+        ) : null}
+        <button type="button" onClick={onStartOver}>
+          Build another deck
+        </button>
+      </div>
       <div className="bubble-review-list">
         {deck.cards.map((card, index) => (
           <div key={card.id} className={card.rating === "known" ? "is-correct" : "is-wrong"}>

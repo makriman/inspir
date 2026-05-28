@@ -1,4 +1,7 @@
+import Image from "next/image";
+import Link from "next/link";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
+import { breadcrumbJsonLd, serializeJsonLd, webPageJsonLd } from "@/lib/seo/json-ld";
 
 function isHeading(block: string) {
   if (block.length > 90) return false;
@@ -6,49 +9,117 @@ function isHeading(block: string) {
   return !/[.!?]$/.test(block);
 }
 
+function slugifyHeading(block: string, index: number) {
+  const slug = block
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+  return `${slug || "section"}-${index}`;
+}
+
 export function ContentPage({
   title,
   blocks,
+  description,
+  eyebrow = "Public record",
   images,
+  path,
+  relatedLinks = [
+    { href: "/mission", label: "Mission" },
+    { href: "/schools", label: "Schools" },
+    { href: "/blog", label: "Learning guides" },
+  ],
 }: {
   title: string;
   blocks: readonly string[];
+  description?: string;
+  eyebrow?: string;
   images?: readonly string[];
+  path?: string;
+  relatedLinks?: readonly { href: string; label: string }[];
 }) {
   const filtered = blocks.filter((block) => block.trim() && block.trim() !== title);
+  const entries = filtered.map((block, index) => ({
+    block,
+    id: isHeading(block) ? slugifyHeading(block, index) : undefined,
+    isHeading: isHeading(block),
+  }));
+  const headings = entries.filter((entry) => entry.isHeading).slice(0, 8);
+  const jsonLd =
+    path && description
+      ? [
+          breadcrumbJsonLd([
+            { name: "Home", url: "/" },
+            { name: title, url: path },
+          ]),
+          webPageJsonLd({ path, name: title, description }),
+        ]
+      : [];
 
   return (
     <main className="marketing-site">
+      {jsonLd.map((entry, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
+        />
+      ))}
       <MarketingHeader />
       <article className="content-page">
         <header className="content-page-header">
-          <span>Public record</span>
+          <span>{eyebrow}</span>
           <h1>{title}</h1>
+          {description ? <p>{description}</p> : null}
         </header>
-        <div className="content-page-body">
-          {filtered.map((block, index) => {
-            const image = images?.[index % images.length];
-            const showImage = images && index > 0 && index % 4 === 0 && image;
-            return (
-              <section
-                key={`${block.slice(0, 24)}-${index}`}
-                className={`content-page-block ${isHeading(block) ? "is-heading" : ""}`}
-              >
-                {showImage ? (
-                  <img
-                    src={image.startsWith("//") ? `https:${image}` : image}
-                    alt=""
-                    loading="lazy"
-                  />
-                ) : null}
-                {isHeading(block) ? (
-                  <h2>{block}</h2>
-                ) : (
-                  <p>{block}</p>
-                )}
-              </section>
-            );
-          })}
+        <div className="content-page-layout">
+          <aside className="content-page-rail" aria-label={`${title} page navigation`}>
+            {headings.length > 0 ? (
+              <nav className="content-page-index" aria-label={`${title} sections`}>
+                <span>On this page</span>
+                {headings.map((entry) => (
+                  <a key={entry.id} href={`#${entry.id}`}>
+                    {entry.block}
+                  </a>
+                ))}
+              </nav>
+            ) : null}
+            <div className="content-page-related">
+              <span>Explore next</span>
+              {relatedLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </aside>
+
+          <div className="content-page-body">
+            {entries.map((entry, index) => {
+              const image = images?.[index % images.length];
+              const showImage = images && index > 0 && index % 4 === 0 && image;
+              return (
+                <section
+                  key={`${entry.block.slice(0, 24)}-${index}`}
+                  id={entry.id}
+                  className={`content-page-block ${entry.isHeading ? "is-heading" : ""}`}
+                >
+                  {showImage ? (
+                    <Image
+                      src={image.startsWith("//") ? `https:${image}` : image}
+                      alt=""
+                      width={1200}
+                      height={675}
+                      loading="lazy"
+                    />
+                  ) : null}
+                  {entry.isHeading ? <h2>{entry.block}</h2> : <p>{entry.block}</p>}
+                </section>
+              );
+            })}
+          </div>
         </div>
       </article>
       <MarketingFooter />

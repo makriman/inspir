@@ -922,17 +922,22 @@ export function InteractiveInstructionWorkspace({
               <h2>{currentStep.title}</h2>
               <p>{currentStep.block.skill}</p>
             </div>
-            <div className="instruction-difficulty">
-              {difficultyOptions.map((option) => (
-                <button
-                  key={option.id}
-                  type="button"
-                  className={mode === option.id ? "is-selected" : ""}
-                  onClick={() => setMode(option.id)}
-                >
-                  {option.label}
-                </button>
-              ))}
+            <div className="instruction-stage-actions">
+              <button type="button" onClick={restartLesson} className="instruction-secondary-action">
+                Change setup
+              </button>
+              <div className="instruction-difficulty">
+                {difficultyOptions.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    className={mode === option.id ? "is-selected" : ""}
+                    onClick={() => setMode(option.id)}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </header>
 

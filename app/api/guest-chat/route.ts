@@ -4,6 +4,7 @@ import { z } from "zod";
 import { createLearningAgent } from "@/lib/ai/learning-agent";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
 import { getTopicMetadata } from "@/lib/ai/prompts";
+import { findSeededTopic } from "@/lib/content/seeded-topics";
 import { getActiveTopics } from "@/lib/db/queries";
 import { checkRateLimit } from "@/lib/utils/rate-limit";
 
@@ -16,7 +17,7 @@ const guestUsageCookie = "inspir_guest_messages_used";
 const guestCookieMaxAge = 60 * 60 * 24 * 30;
 
 const guestChatSchema = z.object({
-  topicId: z.uuid(),
+  topicId: z.string().trim().min(1).max(120),
   content: z.string().trim().min(1).max(6000),
   preferredLanguage: z.string().trim().min(1).max(80).optional(),
   messages: z
@@ -43,6 +44,23 @@ function requestIp(request: NextRequest) {
     request.headers.get("x-real-ip") ||
     "unknown"
   );
+}
+
+async function getGuestTopic(topicId: string) {
+  const seededTopic = findSeededTopic(topicId);
+  if (seededTopic) return seededTopic;
+
+  const normalized = topicId.toLowerCase();
+  try {
+    const topics = await getActiveTopics();
+    return (
+      topics.find(
+        (candidate) => candidate.id === topicId || candidate.slug.toLowerCase() === normalized,
+      ) ?? findSeededTopic(topicId)
+    );
+  } catch {
+    return findSeededTopic(topicId);
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -79,8 +97,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const topics = await getActiveTopics();
-  const topic = topics.find((candidate) => candidate.id === parsed.data.topicId);
+  const topic = await getGuestTopic(parsed.data.topicId);
   const uiMode = topic ? getTopicMetadata(topic)?.uiMode : undefined;
   if (!topic || uiMode === "quiz" || uiMode === "flashcards") {
     return NextResponse.json({ error: "Topic not available for guest chat" }, { status: 404 });

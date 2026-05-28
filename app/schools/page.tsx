@@ -7,12 +7,50 @@ import {
   MarketingHeader,
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
+import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import {
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+  itemListJsonLd,
+  serializeJsonLd,
+  webPageJsonLd,
+} from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Schools",
   description:
     "White-labelled AI learning experiences for schools, with custom workflows, data confidentiality, and NCERT-aligned options.",
-  alternates: { canonical: "/schools" },
+  alternates: metadataAlternates("/schools"),
+  openGraph: {
+    title: "AI Learning For Schools | inspir",
+    description:
+      "White-labelled AI learning experiences for schools, with custom workflows, confidentiality, NCERT-aligned options, and CSR sponsorship paths.",
+    url: "/schools",
+    siteName,
+    images: [
+      socialImage({
+        title: "AI Learning For Schools",
+        eyebrow: "Schools",
+        description:
+          "Tailored AI learning experiences for school communities, curriculum needs, confidentiality, and funded access.",
+      }),
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Learning For Schools | inspir",
+    description:
+      "White-labelled AI learning experiences for schools, with custom workflows, confidentiality, NCERT-aligned options, and CSR sponsorship paths.",
+    images: [
+      socialImage({
+        title: "AI Learning For Schools",
+        eyebrow: "Schools",
+        description:
+          "Tailored AI learning experiences for school communities, curriculum needs, confidentiality, and funded access.",
+      }).url,
+    ],
+  },
 };
 
 const schoolFeatures = [
@@ -38,9 +76,61 @@ const schoolFeatures = [
   },
 ] as const;
 
+const schoolFaqs = [
+  {
+    question: "Can a school use inspir as a guest learning tool first?",
+    answer:
+      "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+  },
+  {
+    question: "Can inspir support school-specific content or curriculum needs?",
+    answer:
+      "School deployments can be adapted around custom content, workflows, and NCERT-aligned learning needs where appropriate.",
+  },
+  {
+    question: "How can access be funded for learners?",
+    answer:
+      "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+  },
+] as const;
+
 export default function SchoolsPage() {
+  const jsonLd = [
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: "Schools", url: "/schools" },
+    ]),
+    webPageJsonLd({
+      path: "/schools",
+      name: "AI Learning For Schools | inspir",
+      description:
+        "White-labelled AI learning experiences for schools, with custom workflows, confidentiality, NCERT-aligned options, and CSR sponsorship paths.",
+    }),
+    itemListJsonLd({
+      path: "/schools",
+      id: "school-features",
+      name: "inspir school deployment features",
+      items: schoolFeatures.map((feature) => ({
+        name: feature.title,
+        url: "/schools",
+        description: feature.text,
+      })),
+    }),
+    faqPageJsonLd({
+      path: "/schools",
+      questions: schoolFaqs,
+    }),
+  ];
+
   return (
     <main className="marketing-site">
+      {jsonLd.map((entry, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
+        />
+      ))}
       <MarketingHeader />
       <MarketingPageHero eyebrow="For schools" title="Custom AI learning spaces for every school community.">
         inspir works with schools to offer tailored AI chat experiences for students, built around
@@ -88,6 +178,25 @@ export default function SchoolsPage() {
           <span>Custom content</span>
           <span>CSR sponsorship paths</span>
           <span>No forms required</span>
+        </div>
+      </section>
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>Common questions</span>
+          <h2>Simple paths from public guest mode to school deployment.</h2>
+          <p>
+            Schools can start by trying the public modes, then move toward a tailored version
+            when they need custom workflows, content alignment, or funded access.
+          </p>
+        </div>
+        <div className="marketing-faq-list">
+          {schoolFaqs.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
         </div>
       </section>
 

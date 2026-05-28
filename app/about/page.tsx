@@ -5,12 +5,48 @@ import {
   MarketingHeader,
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
+import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import {
+  breadcrumbJsonLd,
+  serializeJsonLd,
+  webPageJsonLd,
+} from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "The story of inspir, from Facebook quizzes and student communities to a free AI learning platform built in public.",
-  alternates: { canonical: "/about" },
+  alternates: metadataAlternates("/about"),
+  openGraph: {
+    title: "About inspir",
+    description:
+      "The story of inspir, from public quizzes and student communities to free AI learning tools built in public.",
+    url: "/about",
+    siteName,
+    images: [
+      socialImage({
+        title: "About inspir",
+        eyebrow: "Story",
+        description:
+          "From quizzes and student communities to a free public AI learning platform built in public.",
+      }),
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About inspir",
+    description:
+      "The story of inspir, from public quizzes and student communities to free AI learning tools built in public.",
+    images: [
+      socialImage({
+        title: "About inspir",
+        eyebrow: "Story",
+        description:
+          "From quizzes and student communities to a free public AI learning platform built in public.",
+      }).url,
+    ],
+  },
 };
 
 const timeline = [
@@ -47,8 +83,29 @@ const timeline = [
 ] as const;
 
 export default function AboutPage() {
+  const jsonLd = [
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: "About", url: "/about" },
+    ]),
+    webPageJsonLd({
+      path: "/about",
+      name: "About inspir",
+      description:
+        "The story of inspir, from public quizzes and student communities to free AI learning tools built in public.",
+      type: "AboutPage",
+    }),
+  ];
+
   return (
     <main className="marketing-site">
+      {jsonLd.map((entry, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
+        />
+      ))}
       <MarketingHeader />
       <MarketingPageHero eyebrow="About inspir" title="Learning is for everyone, and AI should make that more true.">
         inspir is a free AI learning platform shaped by more than a decade of quizzes,
@@ -93,6 +150,14 @@ export default function AboutPage() {
           <ArrowLink href="https://github.com/makriman/inspir" external>
             Contribute on GitHub
           </ArrowLink>
+        </div>
+      </section>
+
+      <section className="marketing-cta-band">
+        <h2>Explore the public learning surface.</h2>
+        <div className="marketing-inline-actions">
+          <ArrowLink href="/topics">Browse every mode</ArrowLink>
+          <ArrowLink href="/blog">Read the learning guides</ArrowLink>
         </div>
       </section>
 
