@@ -12,7 +12,7 @@ import {
   topicPath,
 } from "../lib/content/topic-routing";
 import { absoluteUrl } from "../lib/seo/config";
-import { serializeJsonLd } from "../lib/seo/json-ld";
+import { serializeJsonLd, topicJsonLd } from "../lib/seo/json-ld";
 
 test("topic routing separates public slugs from private uuid chats", () => {
   assert.equal(defaultTopicPath(), "/chat/learn-anything");
@@ -26,19 +26,33 @@ test("topic routing separates public slugs from private uuid chats", () => {
 
 test("sitemap includes public topic and blog pages but excludes private surfaces", () => {
   const urls = sitemap().map((entry) => entry.url);
+  const posts = getBlogPosts();
 
   for (const topic of topicSeeds) {
     assert.ok(urls.includes(absoluteUrl(topicPath(topic.slug))), `${topic.slug} should be in sitemap`);
   }
 
-  for (const post of getBlogPosts()) {
+  for (const post of posts) {
     assert.ok(urls.includes(absoluteUrl(`/blog/${post.slug}`)), `${post.slug} should be in sitemap`);
   }
 
+  assert.ok(posts.length >= 100);
   assert.ok(urls.includes(absoluteUrl("/")));
   assert.ok(urls.includes(absoluteUrl("/blog")));
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
+});
+
+test("topic json-ld uses absolute public chat urls", () => {
+  const topic = topicSeeds.find((candidate) => candidate.slug === "socratic-instruction");
+  assert.ok(topic);
+
+  const entries = topicJsonLd(topic);
+  const serialized = JSON.stringify(entries);
+  assert.ok(serialized.includes(absoluteUrl("/chat/socratic-instruction")));
+  assert.ok(serialized.includes("LearningResource"));
+  assert.ok(serialized.includes("SoftwareApplication"));
+  assert.ok(serialized.includes("BreadcrumbList"));
 });
 
 test("robots allows AI search crawlers while blocking training crawlers and private areas", () => {
