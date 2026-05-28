@@ -36,9 +36,9 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     screenshots: [
       {
-        src: "https://5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io/f1685191905644x747393734386347000/inspire-logo-presentation_compressed_page-0008.jpg",
+        src: "/inspir-social-preview.png",
         sizes: "1200x630",
-        type: "image/jpeg",
+        type: "image/png",
         form_factor: "wide",
         label: "inspir learning mission",
       },

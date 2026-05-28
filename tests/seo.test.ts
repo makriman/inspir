@@ -19,6 +19,7 @@ import {
   resolveTopicSlug,
   topicPath,
 } from "../lib/content/topic-routing";
+import { buildAiContentIndex, buildLlmsFullTxt, buildLlmsTxt } from "../lib/seo/ai-index";
 import { absoluteUrl, metadataAlternates, socialImage } from "../lib/seo/config";
 import {
   faqPageJsonLd,
@@ -61,7 +62,7 @@ test("sitemap includes public topic and blog pages but excludes private surfaces
   assert.ok(urls.includes(absoluteUrl("/")));
   assert.ok(urls.includes(absoluteUrl("/topics")));
   assert.ok(urls.includes(absoluteUrl("/blog")));
-  assert.ok(sitemap().some((entry) => entry.images?.some((image) => image.startsWith(absoluteUrl("/og?")))));
+  assert.ok(sitemap().some((entry) => entry.images?.includes(absoluteUrl("/inspir-social-preview.png"))));
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
 });
@@ -205,12 +206,39 @@ test("rss feed exposes the blog library with escaped public links", () => {
   assert.ok(feed.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
   assert.ok(feed.includes(`<atom:link href="${absoluteUrl("/rss.xml")}" rel="self" type="application/rss+xml" />`));
   assert.ok(feed.includes(absoluteUrl("/blog/ai-learn-anything-guide")));
-  assert.ok(feed.includes(absoluteUrl("/og?title=AI+Learning+Blog")));
+  assert.ok(feed.includes(absoluteUrl("/inspir-social-preview.png")));
   assert.ok((feed.match(/<item>/g) ?? []).length >= 100);
 
   const escapedFeed = buildRssFeed([{ ...posts[0], title: "Safe <script>alert(1)</script>" }]);
   assert.equal(escapedFeed.includes("<script>"), false);
   assert.ok(escapedFeed.includes("Safe &lt;script&gt;alert(1)&lt;/script&gt;"));
+});
+
+test("ai discovery files describe every public mode without exposing private chats", () => {
+  const compact = buildLlmsTxt();
+  const full = buildLlmsFullTxt();
+  const index = buildAiContentIndex();
+  const serialized = JSON.stringify(index);
+
+  assert.ok(compact.includes(absoluteUrl("/llms-full.txt")));
+  assert.ok(compact.includes(absoluteUrl("/ai-content-index.json")));
+  assert.ok(compact.includes("Public learning entrypoints are canonical at /chat/{topicSlug}."));
+  assert.ok(full.includes("# inspir Full AI-Readable Learning Index"));
+  assert.ok(full.includes(`URL: ${absoluteUrl("/chat/learn-anything")}`));
+  assert.ok(full.includes("Historical and persona simulations"));
+  assert.equal(index.publicLearningModes.length, topicSeeds.length);
+  assert.ok(index.blog.postCount >= 100);
+  assert.ok(index.blog.posts.length >= 100);
+  assert.ok(index.blog.categoryCount >= 1);
+  assert.ok(index.publicLearningModes.every((mode) => mode.url.includes("/chat/")));
+  assert.ok(
+    index.publicLearningModes.some(
+      (mode) => mode.slug === "socratic-instruction" && mode.searchIntents.includes("AI Socratic tutor"),
+    ),
+  );
+  assert.equal(/\/chat\/[0-9a-f-]{36}/i.test(compact), false);
+  assert.equal(/\/chat\/[0-9a-f-]{36}/i.test(full), false);
+  assert.equal(/\/chat\/[0-9a-f-]{36}/i.test(serialized), false);
 });
 
 test("metadata alternates keep rss discovery alongside canonicals", () => {
@@ -220,7 +248,7 @@ test("metadata alternates keep rss discovery alongside canonicals", () => {
   assert.equal(alternates.types["application/rss+xml"], "/rss.xml");
 });
 
-test("social image helper creates absolute generated og image urls", () => {
+test("social image helper uses the local branded preview image", () => {
   const image = socialImage({
     title: "AI Socratic Tutor <script>",
     eyebrow: "Learning mode",
@@ -229,8 +257,8 @@ test("social image helper creates absolute generated og image urls", () => {
 
   assert.equal(image.width, 1200);
   assert.equal(image.height, 630);
-  assert.ok(image.url.startsWith(absoluteUrl("/og?")));
-  assert.ok(image.url.includes("title=AI+Socratic+Tutor+%3Cscript%3E"));
+  assert.equal(image.url, absoluteUrl("/inspir-social-preview.png"));
+  assert.equal(image.url.includes("bubble.io"), false);
   assert.equal(image.alt, "AI Socratic Tutor <script> | inspir");
 });
 
@@ -241,4 +269,5 @@ test("web app manifest starts learners on the canonical guest mode", () => {
   assert.equal(output.start_url, "/chat/learn-anything");
   assert.equal(output.display, "standalone");
   assert.ok(output.icons?.some((icon) => icon.src === "/inspir-app-icon.svg" && icon.purpose?.includes("maskable")));
+  assert.ok(output.screenshots?.some((screenshot) => screenshot.src === "/inspir-social-preview.png"));
 });

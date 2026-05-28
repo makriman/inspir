@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="inspir free AI learning for everyone">
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fff6dc"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#ff385c"/>
+      <stop offset="52%" stop-color="#ffd84d"/>
+      <stop offset="100%" stop-color="#35c46a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#151515"/>
+  <path d="M0 0H1200V154L0 246Z" fill="#fffdf8"/>
+  <path d="M0 522L1200 384V630H0Z" fill="#241f1d"/>
+  <rect x="72" y="70" width="1056" height="490" rx="34" fill="url(#panel)" stroke="#1f1d1b" stroke-opacity="0.14" stroke-width="2"/>
+  <rect x="72" y="532" width="1056" height="28" rx="14" fill="url(#accent)"/>
+  <path d="M875 70H1128V235C1074 206 1027 190 988 187C946 184 908 195 875 221V70Z" fill="#ff385c" opacity="0.12"/>
+  <path d="M72 390C170 360 255 365 326 404C382 434 438 440 494 421V560H72V390Z" fill="#35c46a" opacity="0.1"/>
+  <text x="108" y="155" fill="#181614" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="900">inspir</text>
+  <rect x="108" y="185" width="84" height="9" rx="4.5" fill="#ff385c"/>
+  <text x="108" y="258" fill="#237a43" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="900">FREE AI LEARNING</text>
+  <text x="108" y="350" fill="#181614" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900">Learning is</text>
+  <text x="108" y="430" fill="#181614" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900">for everyone.</text>
+  <text x="108" y="505" fill="#4a4642" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Tutoring, quizzes, flashcards, writing, code, and study plans.</text>
+  <text x="780" y="138" fill="#181614" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="900">Guest mode is free</text>
+  <text x="780" y="174" fill="#56514d" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">inspirlearning.com</text>
+</svg>
