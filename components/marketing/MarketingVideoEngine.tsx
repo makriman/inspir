@@ -177,7 +177,7 @@ export function MarketingVideoEngine({
           setEnded(true);
         }}
       >
-        <track kind="captions" src={captionsSrc} srcLang="en" label="English captions" default />
+        <track kind="captions" src={captionsSrc} srcLang="en" label="English captions" />
         <track kind="chapters" src={chapterTrackSrc} srcLang="en" label="Film chapters" />
       </video>
       <button
@@ -197,7 +197,12 @@ export function MarketingVideoEngine({
         </span>
       </button>
       {chapters.length ? (
-        <div id="learning-film-chapters" className="marketing-video-chapters" aria-label="Film chapters">
+        <div
+          id="learning-film-chapters"
+          className="marketing-video-chapters"
+          aria-label="Film chapters"
+          hidden={!chaptersOpen}
+        >
           <span>{activeChapter?.title ?? "Film chapters"}</span>
           <div>
             {chapters.map((chapter) => (
@@ -215,7 +220,12 @@ export function MarketingVideoEngine({
         </div>
       ) : null}
       {transcript ? (
-        <aside id="learning-film-transcript" className="marketing-video-transcript" aria-label="Film transcript">
+        <aside
+          id="learning-film-transcript"
+          className="marketing-video-transcript"
+          aria-label="Film transcript"
+          hidden={!transcriptOpen}
+        >
           <span>Transcript</span>
           <p>{transcript}</p>
           {chapters.length ? (

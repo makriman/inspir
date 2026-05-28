@@ -10438,14 +10438,30 @@ a {
   object-fit: cover;
 }
 
+.marketing-hero > .marketing-hero-video .marketing-video-poster {
+  inset: auto clamp(24px, 13vw, 190px) clamp(128px, 20vh, 210px) auto;
+  width: 78px;
+  height: 78px;
+  overflow: visible;
+  border-radius: 999px;
+  padding: 0;
+}
+
+.marketing-hero > .marketing-hero-video .marketing-hero-video-play {
+  width: 78px;
+  height: 78px;
+}
+
 .marketing-hero > .marketing-hero-video .marketing-video-caption {
   display: none;
 }
 
 .marketing-hero > .marketing-hero-video .marketing-video-kicker {
-  top: 20px;
-  right: clamp(20px, 5vw, 72px);
+  top: -48px;
+  right: 0;
   left: auto;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .marketing-hero > .marketing-hero-video .marketing-video-controls {
@@ -12628,17 +12644,21 @@ a {
     box-shadow: none;
   }
 
-  .marketing-video-poster {
-    padding: 14px;
+  .marketing-hero > .marketing-hero-video .marketing-video-poster {
+    right: 16px;
+    bottom: 76px;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+  }
+
+  .marketing-hero > .marketing-hero-video .marketing-hero-video-play {
+    width: 56px;
+    height: 56px;
   }
 
   .marketing-hero > .marketing-hero-video .marketing-video-kicker {
-    top: 12px;
-    right: 12px;
-    left: auto;
-    min-height: 28px;
-    padding: 0 10px;
-    font-size: 10px;
+    display: none;
   }
 
   .marketing-hero > .marketing-hero-video .marketing-video-controls {
@@ -12661,7 +12681,8 @@ a {
 
   .marketing-video-controls button:nth-of-type(2),
   .marketing-video-controls button:nth-of-type(3),
-  .marketing-video-controls button:nth-of-type(5) {
+  .marketing-video-controls button:nth-of-type(4),
+  .marketing-video-controls button:nth-of-type(6) {
     display: none;
   }
 

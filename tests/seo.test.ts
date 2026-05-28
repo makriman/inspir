@@ -883,6 +883,24 @@ test("video json-ld exposes the public learning film without unsafe markup", () 
   assert.equal(serializeJsonLd(video).includes("<iframe"), false);
 });
 
+test("homepage video controls stay accessible and compact on mobile", () => {
+  const videoEngine = readFileSync("components/marketing/MarketingVideoEngine.tsx", "utf8");
+  const css = readFileSync("app/globals.css", "utf8");
+  const mobileHiddenControls = css.match(
+    /\.marketing-video-controls button:nth-of-type\(2\),[\s\S]*?display: none;\n  \}/,
+  )?.[0];
+
+  assert.ok(videoEngine.includes("hidden={!chaptersOpen}"));
+  assert.ok(videoEngine.includes("hidden={!transcriptOpen}"));
+  assert.equal(videoEngine.includes('label="English captions" default'), false);
+  assert.ok(videoEngine.includes('aria-controls="learning-film-chapters"'));
+  assert.ok(videoEngine.includes('aria-controls="learning-film-transcript"'));
+  assert.ok(mobileHiddenControls);
+  assert.ok(mobileHiddenControls.includes("nth-of-type(4)"));
+  assert.ok(mobileHiddenControls.includes("nth-of-type(6)"));
+  assert.equal(mobileHiddenControls.includes("nth-of-type(5)"), false);
+});
+
 test("faq json-ld exposes questions as answerable entities", () => {
   const faq = faqPageJsonLd({
     path: "/schools",
