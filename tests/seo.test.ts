@@ -4,6 +4,7 @@ import test from "node:test";
 import robots from "../app/robots";
 import sitemap from "../app/sitemap";
 import manifest from "../app/manifest";
+import nextConfig from "../next.config";
 import {
   blogHeadingId,
   estimateBlogReadingMinutes,
@@ -122,12 +123,14 @@ import {
 import { buildAiContentIndex, buildLlmsFullTxt, buildLlmsTxt } from "../lib/seo/ai-index";
 import { absoluteUrl, metadataAlternates, socialImage } from "../lib/seo/config";
 import {
+  blogLearningResourceJsonLd,
   blogPostingJsonLd,
   faqPageJsonLd,
   howToJsonLd,
   itemListJsonLd,
   learningModesItemListJsonLd,
   serializeJsonLd,
+  siteNavigationJsonLd,
   topicJsonLd,
   videoObjectJsonLd,
   webPageJsonLd,
@@ -548,23 +551,38 @@ test("subject pages connect subject intent to public modes, prompts, guides, and
   assert.ok(serialized.includes("AI homework helper"));
 });
 
-test("robots allows AI search crawlers while blocking training crawlers and private areas", () => {
+test("robots allows AI discovery crawlers while blocking private areas", () => {
   const output = robots();
   const rules = Array.isArray(output.rules) ? output.rules : [output.rules];
-  const trainingRule = rules.find((rule) => {
+  const discoveryRule = rules.find((rule) => {
     const agents = Array.isArray(rule.userAgent) ? rule.userAgent : [rule.userAgent];
-    return agents.includes("GPTBot") && agents.includes("ClaudeBot");
-  });
-  const searchRule = rules.find((rule) => {
-    const agents = Array.isArray(rule.userAgent) ? rule.userAgent : [rule.userAgent];
-    return agents.includes("OAI-SearchBot") && agents.includes("PerplexityBot");
+    return (
+      agents.includes("OAI-SearchBot") &&
+      agents.includes("ChatGPT-User") &&
+      agents.includes("GPTBot") &&
+      agents.includes("ClaudeBot") &&
+      agents.includes("PerplexityBot")
+    );
   });
 
-  assert.equal(trainingRule?.disallow, "/");
-  assert.equal(searchRule?.allow, "/");
-  assert.ok(Array.isArray(searchRule?.disallow));
-  assert.ok((searchRule?.disallow as string[]).includes("/api/"));
+  assert.equal(discoveryRule?.allow, "/");
+  assert.ok(Array.isArray(discoveryRule?.disallow));
+  assert.ok((discoveryRule?.disallow as string[]).includes("/api/"));
+  assert.ok((discoveryRule?.disallow as string[]).includes("/admin/"));
   assert.equal(output.sitemap, absoluteUrl("/sitemap.xml"));
+});
+
+test("next config preserves canonical legal route and crawler headers", async () => {
+  const redirects = nextConfig.redirects ? await nextConfig.redirects() : [];
+  const headers = nextConfig.headers ? await nextConfig.headers() : [];
+  const tncRedirect = redirects.find((redirect) => redirect.source === "/tnc");
+  const apiHeaders = headers.find((entry) => entry.source === "/api/:path*");
+  const mediaHeaders = headers.find((entry) => entry.source === "/media/:path*");
+
+  assert.equal(tncRedirect?.destination, "/terms");
+  assert.equal(tncRedirect?.permanent, true);
+  assert.ok(apiHeaders?.headers.some((header) => header.key === "X-Robots-Tag" && header.value === "noindex, nofollow"));
+  assert.ok(mediaHeaders?.headers.some((header) => header.key === "Cache-Control" && header.value.includes("immutable")));
 });
 
 test("json-ld serialization escapes html-sensitive characters", () => {
@@ -590,6 +608,24 @@ test("public page json-ld helpers emit absolute citation urls", () => {
   assert.equal(page.url, absoluteUrl("/media"));
   assert.equal(page["@type"], "AboutPage");
   assert.equal(list.itemListElement[0].url, absoluteUrl("/mission"));
+});
+
+test("site navigation and blog learning resources expose AI-readable public routes", () => {
+  const navigation = siteNavigationJsonLd();
+  const post = getBlogPost("socratic-ai-tutor");
+  assert.ok(post);
+  const resource = blogLearningResourceJsonLd(post);
+
+  assert.equal(navigation["@id"], `${absoluteUrl("/")}#site-navigation`);
+  assert.ok(
+    navigation.itemListElement.some(
+      (item) => item.item.name === "Learning modes" && item.item.url === absoluteUrl("/topics"),
+    ),
+  );
+  assert.equal(resource["@type"], "LearningResource");
+  assert.equal(resource.url, absoluteUrl(`/blog/${post.slug}`));
+  assert.equal(resource.isAccessibleForFree, true);
+  assert.ok((resource.learningResourceType as string[]).includes("Study guide"));
 });
 
 test("mission authority content exposes principles, reference links, and faq schema", () => {
@@ -847,7 +883,9 @@ test("trust page exposes public/private boundaries, crawler policy, references, 
   assert.ok(safeguards.itemListElement.some((item) => item.url === absoluteUrl("/robots.txt")));
   assert.ok(references.itemListElement.some((item) => item.url === absoluteUrl("/ai-content-index.json")));
   assert.ok(serialized.includes("Private saved chats stay private"));
-  assert.ok(serialized.includes("GPTBot and ClaudeBot are disallowed"));
+  assert.ok(serialized.includes("GPTBot"));
+  assert.ok(serialized.includes("ClaudeBot"));
+  assert.ok(serialized.includes("public discovery"));
 });
 
 test("video json-ld exposes the public learning film without unsafe markup", () => {
@@ -1510,11 +1548,15 @@ test("ai discovery files describe every public mode without exposing private cha
   assert.equal(/\/chat\/[0-9a-f-]{36}/i.test(serialized), false);
 });
 
-test("metadata alternates keep rss discovery alongside canonicals", () => {
+test("metadata alternates expose rss, llms, ai index, and language canonicals", () => {
   const alternates = metadataAlternates("/blog");
 
   assert.equal(alternates.canonical, "/blog");
+  assert.equal(alternates.languages["en-US"], "/blog");
+  assert.equal(alternates.languages["x-default"], "/blog");
   assert.equal(alternates.types["application/rss+xml"], "/rss.xml");
+  assert.equal(alternates.types["text/plain"], "/llms.txt");
+  assert.equal(alternates.types["application/json"], "/ai-content-index.json");
 });
 
 test("social image helper uses the local branded preview image", () => {

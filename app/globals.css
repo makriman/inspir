@@ -10430,6 +10430,22 @@ a {
     linear-gradient(90deg, rgb(0 0 0 / 0.4), transparent 58%, rgb(0 0 0 / 0.16));
 }
 
+.marketing-hero > .marketing-hero-video::after {
+  position: absolute;
+  top: clamp(104px, 14vh, 158px);
+  right: clamp(20px, 5vw, 72px);
+  bottom: clamp(86px, 13vh, 128px);
+  left: clamp(20px, 5vw, 72px);
+  z-index: 2;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 8px;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.06),
+    0 34px 100px rgb(0 0 0 / 0.2);
+  content: "";
+  pointer-events: none;
+}
+
 .marketing-hero > .marketing-hero-video.is-playing {
   box-shadow: none;
 }
@@ -12642,6 +12658,13 @@ a {
     aspect-ratio: auto;
     margin-top: 0;
     box-shadow: none;
+  }
+
+  .marketing-hero > .marketing-hero-video::after {
+    top: 74px;
+    right: 12px;
+    bottom: 72px;
+    left: 12px;
   }
 
   .marketing-hero > .marketing-hero-video .marketing-video-poster {

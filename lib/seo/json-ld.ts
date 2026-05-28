@@ -7,6 +7,20 @@ import type { TopicSeed } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { absoluteUrl, siteDescription, siteName, siteUrl, socialImage, socialProfiles } from "@/lib/seo/config";
 
+const primarySiteNavigation = [
+  { name: "Start learning", url: "/chat/learn-anything" },
+  { name: "Learning modes", url: "/topics" },
+  { name: "Subjects", url: "/subjects" },
+  { name: "Prompts", url: "/prompts" },
+  { name: "Learning paths", url: "/learn" },
+  { name: "AI learning map", url: "/ai-learning-map" },
+  { name: "Compare AI tutors", url: "/compare" },
+  { name: "Blog", url: "/blog" },
+  { name: "Schools", url: "/schools" },
+  { name: "Trust", url: "/trust" },
+  { name: "About", url: "/about" },
+] as const;
+
 export function serializeJsonLd(data: unknown) {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
@@ -14,13 +28,23 @@ export function serializeJsonLd(data: unknown) {
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "EducationalOrganization"],
     "@id": `${siteUrl}/#organization`,
     name: siteName,
     url: siteUrl,
     logo: absoluteUrl("/icon.png"),
     sameAs: socialProfiles,
     description: siteDescription,
+    slogan: "Learning is for everyone.",
+    knowsAbout: [
+      "AI tutoring",
+      "Socratic learning",
+      "active recall",
+      "homework coaching",
+      "flashcards",
+      "study planning",
+      "educational technology",
+    ],
   };
 }
 
@@ -37,6 +61,25 @@ export function websiteJsonLd() {
       target: `${siteUrl}/chat/learn-anything?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+export function siteNavigationJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${siteUrl}/#site-navigation`,
+    name: "inspir public navigation",
+    itemListElement: primarySiteNavigation.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "SiteNavigationElement",
+        name: item.name,
+        url: absoluteUrl(item.url),
+        isPartOf: { "@id": `${siteUrl}/#website` },
+      },
+    })),
   };
 }
 
@@ -290,6 +333,10 @@ export function learningModesItemListJsonLd(topics: TopicSeed[]) {
 
 export function blogPostingJsonLd(post: BlogPost) {
   const wordCount = estimateBlogIndexedWordCount(post);
+  const about = post.tags.map((tag) => ({
+    "@type": "Thing",
+    name: tag,
+  }));
 
   return {
     "@context": "https://schema.org",
@@ -312,6 +359,32 @@ export function blogPostingJsonLd(post: BlogPost) {
       }).url,
     keywords: post.tags.join(", "),
     articleSection: post.tags,
+    about,
+    isAccessibleForFree: true,
+    inLanguage: "en-US",
+    educationalUse: ["Self-study", "Tutoring", "Practice"],
+    learningResourceType: "Learning guide",
+    isPartOf: { "@id": `${siteUrl}/blog#blog` },
+  };
+}
+
+export function blogLearningResourceJsonLd(post: BlogPost) {
+  const url = absoluteUrl(`/blog/${post.slug}`);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "@id": `${url}#learning-resource`,
+    name: post.title,
+    url,
+    description: post.description,
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    educationalUse: ["Self-study", "Tutoring", "Practice"],
+    learningResourceType: ["Article", "Study guide", "Prompt guide"],
+    teaches: post.tags,
+    timeRequired: `PT${estimateBlogIndexedReadingMinutes(post)}M`,
+    provider: { "@id": `${siteUrl}/#organization` },
     isPartOf: { "@id": `${siteUrl}/blog#blog` },
   };
 }

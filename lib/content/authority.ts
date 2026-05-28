@@ -110,7 +110,7 @@ export const trustSafeguards = [
   },
   {
     title: "Crawler policy",
-    text: "Robots rules allow search and AI retrieval crawlers for public pages, while blocking API routes, admin routes, reset flows, GPTBot, and ClaudeBot training crawlers.",
+    text: "Robots rules allow Google, standard search crawlers, and major AI discovery crawlers on public pages, while blocking API routes, admin routes, and reset flows.",
     href: "/robots.txt",
   },
   {
@@ -127,14 +127,14 @@ export const trustCrawlerPolicies = [
     text: "Public pages, topic chats, learning paths, blog guides, and authority pages are intended to be discoverable.",
   },
   {
-    name: "AI search and retrieval crawlers",
+    name: "AI search, retrieval, and assistant crawlers",
     status: "Allowed on public pages",
-    text: "OAI-SearchBot, ChatGPT-User, PerplexityBot, Perplexity-User, Claude-SearchBot, and Claude-User are allowed for public discovery.",
+    text: "OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User, ClaudeBot, Applebot, Google-Extended, and CCBot are allowed for public discovery.",
   },
   {
-    name: "Training crawlers",
-    status: "Disallowed",
-    text: "GPTBot and ClaudeBot are disallowed unless the policy is intentionally changed later.",
+    name: "Public AI-readable files",
+    status: "Allowed on public pages",
+    text: "llms.txt, llms-full.txt, and ai-content-index.json summarize public pages, routes, modes, guides, and citation boundaries for assistants.",
   },
   {
     name: "Private and utility routes",
@@ -183,9 +183,9 @@ export const trustFaqs = [
       "No. Private saved chats use private identifiers, are not listed in the sitemap, and are not included in AI discovery files such as llms.txt, llms-full.txt, or ai-content-index.json.",
   },
   {
-    question: "Why does inspir allow AI search crawlers but block training crawlers?",
+    question: "Why does inspir allow AI discovery crawlers?",
     answer:
-      "The goal is discovery and citation of public learning pages, not unrestricted training use. Search and retrieval crawlers are allowed on public pages, while GPTBot and ClaudeBot are disallowed.",
+      "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
   },
   {
     question: "How does inspir reduce answer-copying?",

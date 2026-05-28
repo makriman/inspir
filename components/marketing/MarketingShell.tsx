@@ -68,7 +68,7 @@ export function MarketingFooter() {
         <Link href="/media">Media</Link>
         <Link href="/trust">Trust</Link>
         <Link href="/about">About</Link>
-        <Link href="/tnc">Terms</Link>
+        <Link href="/terms">Terms</Link>
         <Link href="/privacy">Privacy</Link>
       </nav>
       <SocialLinks compact className="marketing-footer-social" />

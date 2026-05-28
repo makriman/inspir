@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 import {
+  absoluteUrl,
   metadataAlternates,
   socialImage,
   siteDescription,
@@ -13,6 +14,7 @@ import {
 import {
   organizationJsonLd,
   serializeJsonLd,
+  siteNavigationJsonLd,
   webApplicationJsonLd,
   websiteJsonLd,
 } from "@/lib/seo/json-ld";
@@ -36,8 +38,11 @@ export const metadata: Metadata = {
   },
   description: siteDescription,
   applicationName: siteName,
+  authors: [{ name: siteName, url: siteUrl }],
   creator: siteName,
   publisher: siteName,
+  category: "education",
+  referrer: "origin-when-cross-origin",
   keywords: [
     "AI tutor",
     "free AI learning",
@@ -47,6 +52,11 @@ export const metadata: Metadata = {
     "AI quiz generator",
     "learn anything",
   ],
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
@@ -80,6 +90,10 @@ export const metadata: Metadata = {
   },
   alternates: metadataAlternates("/"),
   manifest: "/manifest.webmanifest",
+  other: {
+    "ai-content-index": absoluteUrl("/ai-content-index.json"),
+    "llms-txt": absoluteUrl("/llms.txt"),
+  },
 };
 
 export const viewport: Viewport = {
@@ -95,7 +109,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd()];
+  const jsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
 
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>

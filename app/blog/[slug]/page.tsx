@@ -22,7 +22,14 @@ import { getBlogPostPracticePlan } from "@/lib/content/blog-practice";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { defaultSocialImage, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
-import { blogPostingJsonLd, breadcrumbJsonLd, howToJsonLd, itemListJsonLd, serializeJsonLd } from "@/lib/seo/json-ld";
+import {
+  blogLearningResourceJsonLd,
+  blogPostingJsonLd,
+  breadcrumbJsonLd,
+  howToJsonLd,
+  itemListJsonLd,
+  serializeJsonLd,
+} from "@/lib/seo/json-ld";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -106,6 +113,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const jsonLd = [
     blogPostingJsonLd(post),
+    blogLearningResourceJsonLd(post),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Blog", url: "/blog" },

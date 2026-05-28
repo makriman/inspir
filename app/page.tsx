@@ -231,7 +231,7 @@ export default function LandingPage() {
 
       <section className="marketing-band is-film-notes" aria-labelledby="film-notes-title">
         <div className="marketing-section-copy">
-          <span>Learning film</span>
+          <span>Learning engine</span>
           <h2 id="film-notes-title">A thirty-second promise: learning should open instantly.</h2>
           <p>{homepageFilm.transcript}</p>
         </div>

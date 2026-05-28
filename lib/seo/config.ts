@@ -22,6 +22,7 @@ export const socialProfiles = [
   "https://www.facebook.com/inspir.uk",
   "https://instagram.com/inspir.uk",
   "https://www.linkedin.com/company/inspiruk/",
+  "https://github.com/makriman/inspir",
 ];
 
 export function absoluteUrl(path = "/") {
@@ -32,8 +33,14 @@ export function absoluteUrl(path = "/") {
 export function metadataAlternates(canonical: string) {
   return {
     canonical,
+    languages: {
+      "en-US": canonical,
+      "x-default": canonical,
+    },
     types: {
       "application/rss+xml": "/rss.xml",
+      "text/plain": "/llms.txt",
+      "application/json": "/ai-content-index.json",
     },
   };
 }

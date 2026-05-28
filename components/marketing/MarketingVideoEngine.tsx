@@ -184,14 +184,14 @@ export function MarketingVideoEngine({
         type="button"
         className="marketing-video-poster"
         onClick={() => void playVideo()}
-        aria-label="Play inspir learning film"
+        aria-label="Play inspir learning preview"
       >
-        <span className="marketing-video-kicker">31 second learning film</span>
+        <span className="marketing-video-kicker">Learning engine preview</span>
         <span className="marketing-hero-video-play">
           <Play size={26} fill="currentColor" />
         </span>
         <span id="learning-film-caption" className="marketing-video-caption">
-          <strong>Watch the learning film</strong>
+          <strong>See inspir in motion</strong>
           {" "}
           <span>A short story about curiosity, access, and AI that teaches.</span>
         </span>
