@@ -8,9 +8,10 @@ import {
 } from "@/components/marketing/MarketingShell";
 
 export const metadata: Metadata = {
-  title: "Media | inspir",
+  title: "Media",
   description:
     "Media notes, recognition, metrics, and source links for inspir, the free AI-powered learning platform.",
+  alternates: { canonical: "/media" },
 };
 
 const highlights = [

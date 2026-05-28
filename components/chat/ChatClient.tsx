@@ -16,32 +16,66 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import {
   ArrowLeft,
+  AlertTriangle,
   BookOpenCheck,
+  Bot,
+  BrainCircuit,
+  CalendarDays,
   CheckCircle2,
   Clipboard,
   Compass,
   Copy,
+  Coins,
+  Eye,
+  FileText,
   Gauge,
+  Gavel,
+  GitPullRequestArrow,
+  HeartHandshake,
   History,
   Landmark,
   Languages,
+  Lightbulb,
+  ListChecks,
   Mail,
+  Map,
+  MapPin,
   Menu,
   MessageCircle,
+  MessageSquareText,
+  Milestone,
+  PencilLine,
   RefreshCw,
+  Route,
   RotateCcw,
+  Scale,
+  ScrollText,
   Search,
   Send,
+  Shield,
+  ShieldCheck,
+  SlidersHorizontal,
   Sparkles,
   Square,
-  User as UserIcon,
+  Stamp,
+  StickyNote,
+  Thermometer,
+  Timer,
+  UserRound,
+  Users,
+  Waypoints,
+  Workflow,
   X,
   XCircle,
 } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
+import { InteractiveInstructionWorkspace } from "@/components/chat/InteractiveInstructionWorkspace";
+import { SocraticWorkspace } from "@/components/chat/SocraticWorkspace";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { defaultLanguage, supportedLanguages } from "@/lib/content/languages";
+import { getTopicSeo } from "@/lib/content/topic-seo";
+import { topicPath } from "@/lib/content/topic-routing";
 import { formatBubbleDate } from "@/lib/utils/dates";
 
 type TopicMetadata = {
@@ -164,6 +198,17 @@ function topicMetadata(topic: Topic | undefined): TopicMetadata | undefined {
   return metadata as TopicMetadata;
 }
 
+function topicSeo(topic: Topic) {
+  const metadata = topicMetadata(topic);
+  return getTopicSeo({
+    slug: topic.slug,
+    name: topic.name,
+    description: topic.description,
+    subText: topic.subText,
+    metadata: { category: metadata?.category ?? "Learning" },
+  });
+}
+
 function readStoredGuestUsage(limit: number) {
   if (typeof window === "undefined") return 0;
   try {
@@ -239,6 +284,7 @@ export function ChatClient({
     return readStoredGuestUsage(guestMessageLimit);
   });
   const [guestPromptOpen, setGuestPromptOpen] = useState(false);
+  const [workspaceResetCount, setWorkspaceResetCount] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -335,13 +381,14 @@ export function ChatClient({
 
   async function resetChat() {
     cancelActiveRequest();
+    setWorkspaceResetCount((current) => current + 1);
     if (isGuest) {
       setActiveChatId(undefined);
       setMessages([]);
       setActivityRun(null);
       setInput("");
       setRecentOpen(false);
-      window.history.replaceState(null, "", "/chat");
+      window.history.replaceState(null, "", topicPath(activeTopic.slug));
       return;
     }
     const chatId = await createChat(activeTopicId);
@@ -514,6 +561,7 @@ export function ChatClient({
   }
 
   function selectTopic(topicId: string) {
+    const nextTopic = topics.find((topic) => topic.id === topicId);
     cancelActiveRequest();
     setActiveTopicId(topicId);
     setActiveChatId(undefined);
@@ -522,7 +570,7 @@ export function ChatClient({
     setInput("");
     setRecentOpen(false);
     setMobileSidebarOpen(false);
-    window.history.replaceState(null, "", "/chat");
+    window.history.replaceState(null, "", nextTopic ? topicPath(nextTopic.slug) : "/chat");
   }
 
   async function updatePreferredLanguage(preferredLanguage: string) {
@@ -618,39 +666,89 @@ export function ChatClient({
             onOpen={loadChat}
           />
         ) : isQuizMode ? (
-          <QuizWorkspace
-            activeChatId={activeChatId}
-            activeTopicId={activeTopicId}
-            activityRun={activityRun}
-            createChat={createChat}
-            onActivityRun={setActivityRun}
-          />
+          isGuest ? (
+            <GuestFeatureGate topic={activeTopic} featureName="scored AI quizzes" />
+          ) : (
+            <QuizWorkspace
+              activeChatId={activeChatId}
+              activeTopicId={activeTopicId}
+              activityRun={activityRun}
+              createChat={createChat}
+              onActivityRun={setActivityRun}
+            />
+          )
         ) : isFlashcardMode ? (
-          <FlashcardWorkspace
-            activeChatId={activeChatId}
-            activeTopicId={activeTopicId}
-            activityRun={activityRun}
-            createChat={createChat}
-            onActivityRun={setActivityRun}
-          />
+          isGuest ? (
+            <GuestFeatureGate topic={activeTopic} featureName="AI flashcard decks" />
+          ) : (
+            <FlashcardWorkspace
+              activeChatId={activeChatId}
+              activeTopicId={activeTopicId}
+              activityRun={activityRun}
+              createChat={createChat}
+              onActivityRun={setActivityRun}
+            />
+          )
         ) : isMiniAppMode ? (
-          <GuidedMiniAppWorkspace
-            key={activeTopic.id}
-            topic={activeTopic}
-            mode={uiMode}
-            messages={messages}
-            input={input}
-            sending={sending}
-            awaitingResponse={awaitingResponse}
-            inputRef={inputRef}
-            listRef={listRef}
-            onInput={setInput}
-            onSend={sendMessage}
-            onSubmit={submitMessage}
-            onKeyDown={handleComposerKeyDown}
-            onStop={stopGeneration}
-            onReset={resetChat}
-          />
+          uiMode === "interactive-instruction" ? (
+            <InteractiveInstructionWorkspace
+              key={`${activeTopic.id}-${workspaceResetCount}`}
+              topic={activeTopic}
+              onReset={resetChat}
+            />
+          ) : uiMode === "time-travel" ? (
+            <TimeTravelWorkspace
+              key={`${activeTopic.id}-${workspaceResetCount}`}
+              topic={activeTopic}
+              messages={messages}
+              input={input}
+              sending={sending}
+              awaitingResponse={awaitingResponse}
+              inputRef={inputRef}
+              listRef={listRef}
+              onInput={setInput}
+              onSend={sendMessage}
+              onSubmit={submitMessage}
+              onKeyDown={handleComposerKeyDown}
+              onStop={stopGeneration}
+              onReset={resetChat}
+            />
+          ) : uiMode === "socratic-instruction" ? (
+            <SocraticWorkspace
+              key={`${activeTopic.id}-${workspaceResetCount}`}
+              topic={activeTopic}
+              messages={messages}
+              input={input}
+              sending={sending}
+              awaitingResponse={awaitingResponse}
+              inputRef={inputRef}
+              listRef={listRef}
+              onInput={setInput}
+              onSend={sendMessage}
+              onSubmit={submitMessage}
+              onKeyDown={handleComposerKeyDown}
+              onStop={stopGeneration}
+              onReset={resetChat}
+            />
+          ) : (
+            <GuidedMiniAppWorkspace
+              key={`${activeTopic.id}-${workspaceResetCount}`}
+              topic={activeTopic}
+              mode={uiMode}
+              messages={messages}
+              input={input}
+              sending={sending}
+              awaitingResponse={awaitingResponse}
+              inputRef={inputRef}
+              listRef={listRef}
+              onInput={setInput}
+              onSend={sendMessage}
+              onSubmit={submitMessage}
+              onKeyDown={handleComposerKeyDown}
+              onStop={stopGeneration}
+              onReset={resetChat}
+            />
+          )
         ) : (
           <main className="bubble-workspace">
             <div ref={listRef} className="bubble-message-scroll app-scrollbar">
@@ -865,6 +963,7 @@ function TopBar({
 }
 
 function TopicIntroCard({ topic }: { topic: Topic }) {
+  const seo = topicSeo(topic);
   return (
     <article className="bubble-intro-card">
       <div>
@@ -872,7 +971,55 @@ function TopicIntroCard({ topic }: { topic: Topic }) {
         <h2>{topic.name}</h2>
       </div>
       <p>{topic.description}</p>
+      <div className="bubble-topic-seo-grid">
+        <section>
+          <strong>Who it helps</strong>
+          <span>{seo.who}</span>
+        </section>
+        <section>
+          <strong>Why it is different</strong>
+          <span>{seo.whyDifferent}</span>
+        </section>
+      </div>
+      <ul className="bubble-topic-outcomes">
+        {seo.outcomes.map((outcome) => (
+          <li key={outcome}>{outcome}</li>
+        ))}
+      </ul>
     </article>
+  );
+}
+
+function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: string }) {
+  const seo = topicSeo(topic);
+  const starters = topicMetadata(topic)?.starters ?? [];
+
+  return (
+    <main className="bubble-workspace">
+      <section className="bubble-guest-feature-gate">
+        <TopicIntroCard topic={topic} />
+        <div className="bubble-guest-feature-card">
+          <Sparkles size={26} />
+          <span>Free public learning mode</span>
+          <h2>Continue with Google to use {featureName}.</h2>
+          <p>
+            {seo.description} Sign in keeps your progress, score, generated activities, and
+            future conversations saved.
+          </p>
+          <GoogleContinueButton className="bubble-guest-modal-primary">Continue with Google</GoogleContinueButton>
+        </div>
+        {starters.length ? (
+          <div className="bubble-starter-grid">
+            {starters.map((starter) => (
+              <a key={starter} href={topicPath(topic.slug)}>
+                <Sparkles size={16} />
+                <span>{starter}</span>
+              </a>
+            ))}
+          </div>
+        ) : null}
+      </section>
+    </main>
   );
 }
 
@@ -894,6 +1041,501 @@ function StarterGrid({
       ))}
     </div>
   );
+}
+
+type TimeTravelStep = "departure" | "destination" | "identity" | "purpose" | "realism" | "depth" | "clearance";
+type TimeTravelPanel = "scene" | "map" | "timeline" | "people" | "rules" | "inventory" | "evidence";
+type TimeTravelLens = "Immersive" | "Historian" | "Strategy" | "Economics" | "Leadership" | "Technology";
+
+type TimeTravelJourney = {
+  id: string;
+  label: string;
+  place: string;
+  date: string;
+  arrival: string;
+  context: string;
+  season: string;
+  jurisdiction: string;
+  risk: string;
+  confidence: string;
+  languages: string[];
+  currency: string;
+  route: string[];
+  eventClock: string[];
+  people: string[];
+  objects: string[];
+  socialRules: string[];
+  knownFacts: string[];
+  reconstructions: string[];
+  speculative: string[];
+  actions: string[];
+  sensory: string;
+  exposureRisk: string;
+};
+
+type TimeTravelerIdentity = {
+  id: string;
+  label: string;
+  role: string;
+  description: string;
+  languages: string;
+  status: string;
+  clothing: string;
+  money: string;
+  clearance: string;
+};
+
+type TimeTravelChoice = {
+  id: string;
+  label: string;
+  description: string;
+};
+
+const timeTravelJourneyTemplates: TimeTravelJourney[] = [
+  {
+    id: "florence-1504",
+    label: "Florence, 1504",
+    place: "Florence",
+    date: "September 1504",
+    arrival: "Piazza della Signoria, near the newly installed David",
+    context: "Republican Florence after the Medici expulsion, with guild politics and artistic patronage in public view.",
+    season: "Early autumn",
+    jurisdiction: "Florentine Republic",
+    risk: "Moderate",
+    confidence: "High for politics and major sites; mixed for street-level dialogue.",
+    languages: ["Tuscan Italian", "Latin among educated elites"],
+    currency: "Florin, soldi, small coinage",
+    route: ["Piazza della Signoria", "Guild workshops", "Mercato Vecchio", "Arno crossings"],
+    eventClock: ["David has become a civic symbol", "Guild alliances shape access", "Rumors about Medici return circulate"],
+    people: ["Stone carver's apprentice", "Wool guild factor", "Humanist secretary"],
+    objects: ["Florin coin", "Workshop chalk study", "Guild token"],
+    socialRules: ["Patronage opens doors", "Public speech has factional weight", "Clothing signals rank quickly"],
+    knownFacts: ["Michelangelo's David was installed in 1504", "Florence was a republic in this period", "Guilds shaped civic power"],
+    reconstructions: ["Market noise, smells, and bargaining norms are inferred from urban records", "Ordinary conversations are plausible composites"],
+    speculative: ["Specific private opinions of unnamed residents", "Exact sequence of a street encounter"],
+    actions: ["Inspect the guild token", "Ask about the David", "Find a print seller"],
+    sensory: "Stone dust, wool dye, bells, and sharp political glances under a crowded square.",
+    exposureRisk: "Modern talk of individual artistic genius can sound naive without patronage, guild, and civic context.",
+  },
+  {
+    id: "delhi-1857",
+    label: "Delhi, 1857",
+    place: "Delhi",
+    date: "September 1857",
+    arrival: "Market street near Chandni Chowk during the siege",
+    context: "The Indian Rebellion of 1857 has made Delhi a contested imperial and military space.",
+    season: "Late monsoon",
+    jurisdiction: "Mughal symbolic authority under rebel control, contested by the East India Company",
+    risk: "High",
+    confidence: "High for major military events; mixed for ordinary household details.",
+    languages: ["Hindustani", "Persian in elite records", "English among Company forces"],
+    currency: "Rupees, silver coin, credit through trusted households",
+    route: ["Chandni Chowk", "Kashmere Gate", "Red Fort approaches", "Merchant lanes"],
+    eventClock: ["Siege pressure is rising", "Supplies and loyalties are strained", "Rumors move faster than verified news"],
+    people: ["Merchant household scribe", "Water carrier", "Sepoy courier"],
+    objects: ["Folded letter", "Silver rupee", "Cloth ration bundle"],
+    socialRules: ["Questions about allegiance are dangerous", "Language and dress signal risk", "Movement needs a plausible errand"],
+    knownFacts: ["Delhi was a central site in the 1857 rebellion", "Kashmere Gate was militarily significant", "Bahadur Shah Zafar became a symbolic focus"],
+    reconstructions: ["Street-level errands and household anxieties are built from memoirs and social history", "Unnamed residents are composites"],
+    speculative: ["Exact words spoken by ordinary people", "Private motivations without records"],
+    actions: ["Deliver the folded letter", "Ask a water carrier what locals know", "Compare rebel and Company information"],
+    sensory: "Wet dust, shouted rumors, smoke, prayer calls, and the metallic anxiety of a city under pressure.",
+    exposureRisk: "Asking openly who will win could expose you; people here do not have historian hindsight.",
+  },
+  {
+    id: "athens-399-bce",
+    label: "Athens, 399 BCE",
+    place: "Athens",
+    date: "399 BCE",
+    arrival: "Agora during the days around Socrates' trial",
+    context: "Democratic Athens is recovering from war, oligarchic trauma, and civic suspicion.",
+    season: "Spring",
+    jurisdiction: "Athenian democracy",
+    risk: "Moderate",
+    confidence: "High for broad civic institutions; contested for Socrates' exact voice and motives.",
+    languages: ["Attic Greek"],
+    currency: "Drachmae and obols",
+    route: ["Agora", "Stoa Basileios", "Law courts", "Workshops near the square"],
+    eventClock: ["Trial talk travels through civic spaces", "Recent political wounds remain raw", "Citizens weigh piety, education, and loyalty"],
+    people: ["Potter-citizen", "Metic trader", "Young rhetoric student"],
+    objects: ["Ostrakon shard", "Oil flask", "Wax tablet"],
+    socialRules: ["Citizenship determines political voice", "Public argument is social performance", "Piety is civic, not private only"],
+    knownFacts: ["Socrates was tried and executed in 399 BCE", "The Athenian agora was a civic center", "Citizenship was restricted"],
+    reconstructions: ["Ordinary reactions are plausible blends of legal and literary evidence", "Street routes are approximate"],
+    speculative: ["How any single bystander felt about Socrates", "Exact trial-day crowd movement"],
+    actions: ["Attend court gossip", "Ask a metic what citizenship excludes", "Inspect the ostrakon"],
+    sensory: "Olive oil, dust, bronze, public argument, and the uneasy pride of a wounded democracy.",
+    exposureRisk: "Modern assumptions about equal citizenship would be immediately out of place.",
+  },
+  {
+    id: "changan-742",
+    label: "Chang'an, 742",
+    place: "Chang'an",
+    date: "742 CE",
+    arrival: "West Market during the Tang dynasty",
+    context: "Tang Chang'an is a cosmopolitan imperial capital linked to steppe, Central Asian, and Buddhist networks.",
+    season: "Late spring",
+    jurisdiction: "Tang Empire under Emperor Xuanzong",
+    risk: "Low to moderate",
+    confidence: "High for city planning and cosmopolitan trade; mixed for market micro-scenes.",
+    languages: ["Middle Chinese", "Sogdian among some merchants", "Sanskrit in Buddhist contexts"],
+    currency: "Copper cash, bolts of cloth, credit relationships",
+    route: ["West Market", "Ward gates", "Buddhist monastery", "Administrative avenues"],
+    eventClock: ["Markets operate under timed gates", "Foreign merchants gather in regulated spaces", "Court culture is near its high point"],
+    people: ["Sogdian trader", "Monastery translator", "Market inspector"],
+    objects: ["Copper cash string", "Perfume resin", "Buddhist manuscript fragment"],
+    socialRules: ["Curfews and ward gates matter", "Officials control market order", "Foreignness can be useful and watched"],
+    knownFacts: ["Chang'an was the Tang capital", "The West Market hosted long-distance trade", "Ward systems structured urban life"],
+    reconstructions: ["Market characters are composites", "Specific prices vary by evidence and period"],
+    speculative: ["Exact merchant dialogue", "Precise sensory mix at a given stall"],
+    actions: ["Bargain for resin", "Visit a translation hall", "Trace a trade route on the map"],
+    sensory: "Horse sweat, incense, lacquer, copper cash, and languages braided through a regulated market.",
+    exposureRisk: "Missing the curfew or ignoring official rank can quickly become dangerous.",
+  },
+  {
+    id: "london-1666",
+    label: "London, 1666",
+    place: "London",
+    date: "2 September 1666",
+    arrival: "Pudding Lane as fire begins to spread",
+    context: "Restoration London faces plague memory, dense timber housing, and a fire that will reshape the city.",
+    season: "Dry late summer",
+    jurisdiction: "Kingdom of England under Charles II",
+    risk: "Very high",
+    confidence: "High for the Great Fire timeline; mixed for exact street-level encounters.",
+    languages: ["Early Modern English"],
+    currency: "Pounds, shillings, pence",
+    route: ["Pudding Lane", "London Bridge approaches", "St Paul's area", "River stairs"],
+    eventClock: ["Fire spreads with wind and dense buildings", "Householders try to save goods", "Authorities debate demolition"],
+    people: ["Baker's neighbor", "River boatman", "Parish watchman"],
+    objects: ["Leather fire bucket", "Household ledger", "Bread peel"],
+    socialRules: ["Parish ties matter", "Rumor can turn against outsiders", "Property and survival decisions collide"],
+    knownFacts: ["The Great Fire began in 1666", "Pudding Lane is associated with the outbreak", "St Paul's Cathedral was destroyed"],
+    reconstructions: ["Individual routes through smoke are plausible, not exact", "Ordinary speech is period-informed reconstruction"],
+    speculative: ["A named bystander's private thoughts", "Exact timing of every alley evacuation"],
+    actions: ["Help carry ledgers", "Find the river stairs", "Ask the watchman what orders exist"],
+    sensory: "Hot tar, panicked footsteps, bells, smoke, and the crack of timber in a city built too tightly.",
+    exposureRisk: "Standing idle with strange questions during a disaster invites suspicion.",
+  },
+  {
+    id: "fatehpur-sikri-1582",
+    label: "Fatehpur Sikri, 1582",
+    place: "Fatehpur Sikri",
+    date: "1582 CE",
+    arrival: "Near Akbar's imperial complex and debate spaces",
+    context: "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+    season: "Cool season",
+    jurisdiction: "Mughal Empire under Akbar",
+    risk: "Moderate",
+    confidence: "High for court culture and imperial policy; mixed for ordinary court-adjacent life.",
+    languages: ["Persian", "Hindavi", "Arabic and Sanskrit in scholarly contexts"],
+    currency: "Rupee, dam, gifts, patronage obligations",
+    route: ["Diwan-i-Khas precinct", "Imperial workshops", "Market outside the complex", "Scholarly gathering"],
+    eventClock: ["Translation projects carry prestige", "Religious debate is politically charged", "Court access depends on patronage"],
+    people: ["Court translator", "Workshop painter", "Rajput retainer"],
+    objects: ["Illustrated manuscript folio", "Copper dam", "Perfumed petition paper"],
+    socialRules: ["Rank controls speech", "Gifts and introductions matter", "Religious language needs care"],
+    knownFacts: ["Akbar ruled the Mughal Empire in this period", "Fatehpur Sikri was an imperial center", "Court translation and debate were significant"],
+    reconstructions: ["Workshop routines are plausible reconstructions", "Unnamed court figures are composites"],
+    speculative: ["Exact conversations inside elite spaces", "Private motives behind every policy"],
+    actions: ["Meet a translator", "Inspect a manuscript folio", "Ask how patronage works"],
+    sensory: "Red sandstone heat, ink, perfumed paper, controlled silence, and many languages orbiting power.",
+    exposureRisk: "Treating religion as private opinion rather than public order would sound strange and possibly dangerous.",
+  },
+  {
+    id: "paris-1789",
+    label: "Paris, July 1789",
+    place: "Paris",
+    date: "13 July 1789",
+    arrival: "Faubourg Saint-Antoine on the eve of the Bastille",
+    context: "Food prices, rumors, royal politics, and armed crowds are pushing Paris toward a decisive rupture.",
+    season: "Summer",
+    jurisdiction: "Kingdom of France in revolutionary crisis",
+    risk: "High",
+    confidence: "High for the political moment; mixed for crowd-level motivations.",
+    languages: ["French"],
+    currency: "Livres, sous, bread prices as daily pressure",
+    route: ["Faubourg Saint-Antoine", "Palais-Royal", "Les Invalides", "Bastille approaches"],
+    eventClock: ["Rumors about royal troops spread", "Crowds search for arms", "Bread and legitimacy dominate talk"],
+    people: ["Journeyman printer", "Market woman", "National Guard volunteer"],
+    objects: ["Pamphlet", "Bread token", "Pike head"],
+    socialRules: ["Political language can mobilize or endanger", "Crowds test loyalty fast", "Bread is politics"],
+    knownFacts: ["The Bastille fell on 14 July 1789", "Paris was politically volatile", "Pamphlets shaped public opinion"],
+    reconstructions: ["Individual crowd interactions are plausible composites", "Exact street conversations are inferred"],
+    speculative: ["Specific intent of unnamed participants", "Whether one encounter changes a crowd's direction"],
+    actions: ["Read the pamphlet aloud", "Ask about bread prices", "Follow the arms rumor"],
+    sensory: "Printer's ink, sweat, bread queues, ironwork, and a city discovering its own force.",
+    exposureRisk: "Overconfident modern slogans can be misread; local grievances and fear carry the moment.",
+  },
+  {
+    id: "ostia-117",
+    label: "Ostia, 117 CE",
+    place: "Ostia",
+    date: "117 CE",
+    arrival: "Harbor warehouses near Rome's grain supply",
+    context: "The Roman Empire under Trajan's final year depends on ports, credit, labor, and imperial logistics.",
+    season: "Late summer",
+    jurisdiction: "Roman Empire",
+    risk: "Moderate",
+    confidence: "High for port infrastructure and trade systems; mixed for individual merchant routines.",
+    languages: ["Latin", "Greek among traders"],
+    currency: "Denarii, sestertii, credit and contracts",
+    route: ["Warehouses", "Harbor basin", "Guild office", "Tavern near the docks"],
+    eventClock: ["Ships unload grain and oil", "Guilds coordinate labor", "News from the imperial frontier travels slowly"],
+    people: ["Freedman accountant", "Dock laborer", "Greek shipmaster"],
+    objects: ["Amphora stamp", "Wax contract tablet", "Denarius"],
+    socialRules: ["Status follows legal category", "Patrons protect access", "Contracts matter more than charm"],
+    knownFacts: ["Ostia served Rome's supply system", "Roman trade used amphorae and contracts", "Legal status shaped daily life"],
+    reconstructions: ["Specific price comparisons vary", "Ordinary characters are evidence-aware composites"],
+    speculative: ["Exact tavern conversations", "A single merchant's private plan"],
+    actions: ["Inspect the amphora stamp", "Negotiate a delivery", "Ask how freed status works"],
+    sensory: "Salt air, olive oil, rope fiber, shouted accounts, and the heavy logistics behind imperial abundance.",
+    exposureRisk: "Ignoring slavery, freed status, and patronage would make your assumptions visibly modern.",
+  },
+];
+
+const timeTravelerIdentities: TimeTravelerIdentity[] = [
+  {
+    id: "guided-self",
+    label: "Yourself with a guide",
+    role: "Out-of-time observer with a discreet field guide",
+    description: "Safer, more explanatory, and allowed to ask modern comparisons.",
+    languages: "Guide translates, but locals notice hesitation.",
+    status: "Protected outsider",
+    clothing: "Conservative local outer layers chosen by the guide",
+    money: "Small supervised purse",
+    clearance: "Educational clearance",
+  },
+  {
+    id: "plausible-local",
+    label: "Plausible local",
+    role: "Historically plausible resident attached to ordinary networks",
+    description: "More immersive, with tighter limits on what you can know and say.",
+    languages: "Local working language with class-appropriate fluency",
+    status: "Non-elite but socially legible",
+    clothing: "Period-appropriate clothing matched to status",
+    money: "Small reserve in local coin or credit",
+    clearance: "Immersion clearance",
+  },
+  {
+    id: "trade-assistant",
+    label: "Merchant assistant",
+    role: "Assistant to a trading household or workshop",
+    description: "Best for money, logistics, food, routes, and social exchange.",
+    languages: "Trade phrases plus household vocabulary",
+    status: "Useful but supervised",
+    clothing: "Workable travel clothing",
+    money: "Account tokens and a modest coin pouch",
+    clearance: "Commercial clearance",
+  },
+  {
+    id: "scribe-translator",
+    label: "Scribe or translator",
+    role: "Literate helper near records, letters, or multilingual exchange",
+    description: "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+    languages: "Reading knowledge plus formal speech routines",
+    status: "Literate non-elite",
+    clothing: "Plain respectable dress with writing tools",
+    money: "Small silver or copper reserve",
+    clearance: "Document clearance",
+  },
+];
+
+const timeTravelPurposes: TimeTravelChoice[] = [
+  { id: "observe", label: "Observe", description: "Move carefully and notice ordinary life before judging." },
+  { id: "investigate", label: "Investigate", description: "Follow a historical question through people, objects, and power." },
+  { id: "survive", label: "Survive", description: "Food, shelter, suspicion, money, and risk matter from the first step." },
+  { id: "meet-moment", label: "Meet the moment", description: "Arrive near a turning point and track what people know then." },
+  { id: "compare", label: "Compare to today", description: "Keep governance, money, labor, technology, and culture in view." },
+];
+
+const timeTravelRealism: TimeTravelChoice[] = [
+  { id: "guided", label: "Guided", description: "Safe, explanatory, and easier to pause for context." },
+  { id: "strict", label: "Strict", description: "No modern hindsight in-world; status, danger, and access are enforced." },
+  { id: "source-heavy", label: "Source-heavy", description: "Frequent evidence notes and uncertainty labels." },
+];
+
+const timeTravelDepth: TimeTravelChoice[] = [
+  { id: "short", label: "10-minute visit", description: "One tight arrival, three discoveries, and a debrief stamp." },
+  { id: "guided-expedition", label: "Guided expedition", description: "Several locations, figures, artifacts, and field notes." },
+  { id: "open-simulation", label: "Open simulation", description: "Stateful exploration with consequences and evolving risk." },
+];
+
+const timeTravelPanels: Array<{ id: TimeTravelPanel; label: string }> = [
+  { id: "scene", label: "Scene" },
+  { id: "map", label: "Map" },
+  { id: "timeline", label: "Timeline" },
+  { id: "people", label: "People" },
+  { id: "rules", label: "Rules" },
+  { id: "inventory", label: "Inventory" },
+  { id: "evidence", label: "Evidence" },
+];
+
+const timeTravelLenses: TimeTravelLens[] = [
+  "Immersive",
+  "Historian",
+  "Strategy",
+  "Economics",
+  "Leadership",
+  "Technology",
+];
+
+const fallbackTimeTravelJourney: TimeTravelJourney = {
+  ...timeTravelJourneyTemplates[0],
+  id: "saved-expedition",
+  label: "Saved expedition",
+  place: "Active destination",
+  date: "Saved arrival point",
+  arrival: "Current scene",
+  context: "Continue the existing historical expedition from the conversation.",
+  risk: "Unknown",
+  confidence: "Read from the current evidence notes.",
+};
+
+function resolveJourneyOptions(intent: string) {
+  const query = intent.toLowerCase();
+  if (!query.trim()) return timeTravelJourneyTemplates.slice(0, 5);
+  if (/mughal|akbar|shah jahan|fatehpur|court/.test(query)) {
+    return [
+      timeTravelJourneyTemplates.find((journey) => journey.id === "fatehpur-sikri-1582")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "delhi-1857")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "ostia-117")!,
+    ];
+  }
+  if (/french|revolution|bastille|paris/.test(query)) {
+    return [
+      timeTravelJourneyTemplates.find((journey) => journey.id === "paris-1789")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "london-1666")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "athens-399-bce")!,
+    ];
+  }
+  if (/roman|rome|trader|trade|merchant/.test(query)) {
+    return [
+      timeTravelJourneyTemplates.find((journey) => journey.id === "ostia-117")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "changan-742")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "fatehpur-sikri-1582")!,
+    ];
+  }
+  if (/battle|war|siege|rebellion|revolt/.test(query)) {
+    return [
+      timeTravelJourneyTemplates.find((journey) => journey.id === "delhi-1857")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "paris-1789")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "london-1666")!,
+    ];
+  }
+  if (/athens|socrates|greek|democracy/.test(query)) {
+    return [
+      timeTravelJourneyTemplates.find((journey) => journey.id === "athens-399-bce")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "florence-1504")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "paris-1789")!,
+    ];
+  }
+  if (/china|tang|silk|chang/.test(query)) {
+    return [
+      timeTravelJourneyTemplates.find((journey) => journey.id === "changan-742")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "fatehpur-sikri-1582")!,
+      timeTravelJourneyTemplates.find((journey) => journey.id === "ostia-117")!,
+    ];
+  }
+
+  return [
+    buildCustomJourney(intent, "Center of power", "court, assembly, palace, command tent, or administrative center"),
+    buildCustomJourney(intent, "Street-level life", "market, household, workshop, port, school, or neighborhood"),
+    buildCustomJourney(intent, "Edge of the system", "frontier, trade route, borderland, ship, monastery, or garrison"),
+  ];
+}
+
+function buildCustomJourney(intent: string, label: string, arrival: string): TimeTravelJourney {
+  const cleanIntent = intent.trim() || "A historical turning point";
+  return {
+    id: `${label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${cleanIntent.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 28)}`,
+    label,
+    place: cleanIntent,
+    date: "AI-resolved date range",
+    arrival,
+    context: "The Travel Designer should resolve this intent into a specific historical place, date, and political moment before arrival.",
+    season: "To be resolved",
+    jurisdiction: "To be resolved",
+    risk: "Pending",
+    confidence: "Pending evidence check",
+    languages: ["To be resolved"],
+    currency: "To be resolved",
+    route: ["Arrival point", "Ordinary-life node", "Power node", "Exit route"],
+    eventClock: ["Resolve the event clock before opening the world", "Separate in-world knowledge from historian knowledge"],
+    people: ["Local guide", "Ordinary worker", "Gatekeeper to power"],
+    objects: ["Local coin or token", "Document or sign", "Food or tool"],
+    socialRules: ["Resolve status rules", "Resolve language risk", "Resolve access limits"],
+    knownFacts: ["The assistant must identify known facts before simulating"],
+    reconstructions: ["Plausible ordinary life should be labelled as reconstruction"],
+    speculative: ["Unverified details must stay visibly uncertain"],
+    actions: ["Choose exact entry point", "Build passport", "Request source confidence"],
+    sensory: "The first scene should become concrete only after the destination is resolved.",
+    exposureRisk: "Unresolved until the historical setting is specified.",
+  };
+}
+
+function buildTimeTravelPrompt({
+  journey,
+  identity,
+  purpose,
+  realism,
+  depth,
+}: {
+  journey: TimeTravelJourney;
+  identity: TimeTravelerIdentity;
+  purpose: TimeTravelChoice;
+  realism: TimeTravelChoice;
+  depth: TimeTravelChoice;
+}) {
+  const state = {
+    destination: {
+      place: journey.place,
+      date_range: journey.date,
+      specific_arrival: journey.arrival,
+      political_context: journey.context,
+      season: journey.season,
+      jurisdiction: journey.jurisdiction,
+    },
+    traveler: {
+      identity_mode: identity.id,
+      role: identity.role,
+      languages: identity.languages,
+      status: identity.status,
+      clothing: identity.clothing,
+      money: identity.money,
+    },
+    simulation: {
+      realism_level: realism.label,
+      risk_level: journey.risk,
+      current_location: journey.arrival,
+      mode: purpose.label,
+      depth: depth.label,
+      event_clock: journey.eventClock,
+    },
+    evidence: {
+      confidence: journey.confidence,
+      known_facts: journey.knownFacts,
+      plausible_reconstructions: journey.reconstructions,
+      speculative_elements: journey.speculative,
+    },
+  };
+
+  return [
+    "Start a Time Travel expedition. Do not open a generic chat and do not write a broad period summary.",
+    "Treat this as a stateful, evidence-aware historical simulation with a passport, travel advisory, world view, and choices.",
+    "Simulation state:",
+    JSON.stringify(state, null, 2),
+    "First response rules:",
+    "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+    "- Otherwise, open with modular cards: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence.",
+    "- Keep in-world knowledge separate from historian knowledge.",
+    "- Mark known facts, plausible reconstruction, and speculation clearly.",
+    "- Do not fabricate direct quotes, citations, or private thoughts.",
+    "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+    "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+    "- End with three meaningful actions plus one option to pause for historian context.",
+    "Debrief rule: when the learner asks to end or debrief, summarize discoveries, evidence confidence, remaining uncertainties, and award a passport stamp.",
+  ].join("\n");
 }
 
 type MiniAppConfig = {
@@ -1062,6 +1704,1756 @@ const miniAppConfigs: Record<MiniMode, MiniAppConfig> = {
   },
 };
 
+function TimeTravelWorkspace({
+  topic,
+  messages,
+  input,
+  sending,
+  awaitingResponse,
+  inputRef,
+  listRef,
+  onInput,
+  onSend,
+  onSubmit,
+  onKeyDown,
+  onStop,
+  onReset,
+}: {
+  topic: Topic;
+  messages: Message[];
+  input: string;
+  sending: boolean;
+  awaitingResponse: boolean;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  listRef: RefObject<HTMLDivElement | null>;
+  onInput: (value: string) => void;
+  onSend: (content: string) => Promise<void>;
+  onSubmit: (event?: FormEvent) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onStop: () => void;
+  onReset: () => void;
+}) {
+  const visibleMessages = messages.filter((message) => message.role !== "system");
+  const hasSession = visibleMessages.length > 0 || sending || awaitingResponse;
+  const [intent, setIntent] = useState("");
+  const [step, setStep] = useState<TimeTravelStep>("departure");
+  const [journeyOptions, setJourneyOptions] = useState(() => timeTravelJourneyTemplates.slice(0, 5));
+  const [selectedJourney, setSelectedJourney] = useState<TimeTravelJourney | null>(null);
+  const [identityId, setIdentityId] = useState("");
+  const [purposeId, setPurposeId] = useState("");
+  const [realismId, setRealismId] = useState("");
+  const [depthId, setDepthId] = useState("");
+
+  const identity = timeTravelerIdentities.find((option) => option.id === identityId);
+  const purpose = timeTravelPurposes.find((option) => option.id === purposeId);
+  const realism = timeTravelRealism.find((option) => option.id === realismId);
+  const depth = timeTravelDepth.find((option) => option.id === depthId);
+
+  function resolveIntent(event?: FormEvent) {
+    event?.preventDefault();
+    setJourneyOptions(resolveJourneyOptions(intent));
+    setSelectedJourney(null);
+    setStep("destination");
+  }
+
+  function selectJourney(journey: TimeTravelJourney) {
+    setSelectedJourney(journey);
+    setStep("identity");
+  }
+
+  function sendRandomJourney() {
+    const journey =
+      timeTravelJourneyTemplates[Math.floor(Math.random() * timeTravelJourneyTemplates.length)] ??
+      timeTravelJourneyTemplates[0];
+    setIntent(journey.label);
+    setJourneyOptions(resolveJourneyOptions(journey.label));
+    selectJourney(journey);
+  }
+
+  function beginJourney() {
+    if (!selectedJourney || !identity || !purpose || !realism || !depth || sending) return;
+    void onSend(buildTimeTravelPrompt({ journey: selectedJourney, identity, purpose, realism, depth }));
+  }
+
+  if (hasSession) {
+    return (
+      <TimeTravelSession
+        topic={topic}
+        journey={selectedJourney ?? fallbackTimeTravelJourney}
+        identity={identity ?? timeTravelerIdentities[0]}
+        purpose={purpose}
+        realism={realism}
+        depth={depth}
+        messages={visibleMessages}
+        input={input}
+        sending={sending}
+        awaitingResponse={awaitingResponse}
+        inputRef={inputRef}
+        listRef={listRef}
+        onInput={onInput}
+        onSend={onSend}
+        onSubmit={onSubmit}
+        onKeyDown={onKeyDown}
+        onStop={onStop}
+        onReset={onReset}
+      />
+    );
+  }
+
+  return (
+    <main className="bubble-workspace bubble-time-workspace">
+      <div className="bubble-time-scroll app-scrollbar">
+        <section className="bubble-time-onboarding">
+          <div className="bubble-time-stage">
+            {step === "departure" ? (
+              <TimeTravelDepartureBoard
+                intent={intent}
+                topic={topic}
+                onIntent={setIntent}
+                onResolve={resolveIntent}
+                onRandom={sendRandomJourney}
+                onSelect={selectJourney}
+              />
+            ) : step === "destination" ? (
+              <TimeTravelDestinationStep
+                intent={intent}
+                options={journeyOptions}
+                onBack={() => setStep("departure")}
+                onSelect={selectJourney}
+              />
+            ) : step === "identity" ? (
+              <TimeTravelChoiceStep
+                kicker="Traveler identity"
+                title="How do you want to be seen when you arrive?"
+                body="Your status controls language, money, access, danger, and what questions sound natural."
+                choices={timeTravelerIdentities}
+                selectedId={identityId}
+                onSelect={(id) => {
+                  setIdentityId(id);
+                  setStep("purpose");
+                }}
+                onBack={() => setStep("destination")}
+              />
+            ) : step === "purpose" ? (
+              <TimeTravelChoiceStep
+                kicker="Mission"
+                title="What kind of journey is this?"
+                body="The simulation will prioritize different people, risks, objects, and explanations."
+                choices={timeTravelPurposes}
+                selectedId={purposeId}
+                onSelect={(id) => {
+                  setPurposeId(id);
+                  setStep("realism");
+                }}
+                onBack={() => setStep("identity")}
+              />
+            ) : step === "realism" ? (
+              <TimeTravelChoiceStep
+                kicker="Realism"
+                title="How strict should the crossing be?"
+                body="Strict mode keeps modern knowledge out of the world and applies social consequences sooner."
+                choices={timeTravelRealism}
+                selectedId={realismId}
+                onSelect={(id) => {
+                  setRealismId(id);
+                  setStep("depth");
+                }}
+                onBack={() => setStep("purpose")}
+              />
+            ) : step === "depth" ? (
+              <TimeTravelChoiceStep
+                kicker="Duration"
+                title="How deep should the expedition go?"
+                body="Short visits end with a fast debrief; open simulations keep state and consequences active."
+                choices={timeTravelDepth}
+                selectedId={depthId}
+                onSelect={(id) => {
+                  setDepthId(id);
+                  setStep("clearance");
+                }}
+                onBack={() => setStep("realism")}
+              />
+            ) : (
+              <TimeTravelClearance
+                journey={selectedJourney ?? fallbackTimeTravelJourney}
+                identity={identity}
+                purpose={purpose}
+                realism={realism}
+                depth={depth}
+                sending={sending}
+                onBack={() => setStep("depth")}
+                onBegin={beginJourney}
+              />
+            )}
+          </div>
+          <TimeTravelPassport
+            journey={selectedJourney}
+            identity={identity}
+            purpose={purpose}
+            realism={realism}
+            depth={depth}
+          />
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function TimeTravelDepartureBoard({
+  intent,
+  topic,
+  onIntent,
+  onResolve,
+  onRandom,
+  onSelect,
+}: {
+  intent: string;
+  topic: Topic;
+  onIntent: (value: string) => void;
+  onResolve: (event?: FormEvent) => void;
+  onRandom: () => void;
+  onSelect: (journey: TimeTravelJourney) => void;
+}) {
+  const featured = timeTravelJourneyTemplates.slice(0, 5);
+
+  return (
+    <div className="bubble-time-departure">
+      <header className="bubble-time-hero">
+        <div>
+          <span>{topic.name}</span>
+          <h2>Departures beyond the present</h2>
+        </div>
+        <button type="button" onClick={onRandom} className="bubble-time-icon-button">
+          <Waypoints size={18} />
+          <span>Send me somewhere consequential</span>
+        </button>
+      </header>
+
+      <form className="bubble-time-search-board" onSubmit={onResolve}>
+        <Search size={20} />
+        <input
+          value={intent}
+          onChange={(event) => onIntent(event.target.value)}
+          placeholder="Where and when do you want to go?"
+        />
+        <button type="submit">
+          <Compass size={18} />
+          <span>Resolve</span>
+        </button>
+      </form>
+
+      <div className="bubble-time-map-board" aria-label="Historical hotspots">
+        {featured.map((journey) => (
+          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="bubble-time-hotspot">
+            <MapPin size={16} />
+            <span>{journey.label}</span>
+          </button>
+        ))}
+      </div>
+
+      <ol className="bubble-time-timeline-stops">
+        {featured.map((journey) => (
+          <li key={journey.id}>
+            <button type="button" onClick={() => onSelect(journey)}>
+              <span>{journey.date}</span>
+              <strong>{journey.place}</strong>
+            </button>
+          </li>
+        ))}
+      </ol>
+
+      <div className="bubble-time-journey-grid">
+        {timeTravelJourneyTemplates.slice(0, 6).map((journey) => (
+          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="bubble-time-journey-card">
+            <span>{journey.label}</span>
+            <strong>{journey.arrival}</strong>
+            <small>{journey.context}</small>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TimeTravelDestinationStep({
+  intent,
+  options,
+  onBack,
+  onSelect,
+}: {
+  intent: string;
+  options: TimeTravelJourney[];
+  onBack: () => void;
+  onSelect: (journey: TimeTravelJourney) => void;
+}) {
+  return (
+    <div className="bubble-time-question">
+      <button type="button" onClick={onBack} className="bubble-time-back">
+        <ArrowLeft size={17} />
+        <span>Departure board</span>
+      </button>
+      <span>Arrival point</span>
+      <h2>{intent.trim() ? "Choose the strongest entry point." : "Choose your arrival point."}</h2>
+      <p>Center of power, street-level life, and the edge of the system reveal different histories.</p>
+      <div className="bubble-time-option-grid">
+        {options.map((journey) => (
+          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="bubble-time-option-card">
+            <strong>{journey.label}</strong>
+            <span>{journey.arrival}</span>
+            <small>{journey.context}</small>
+            <em>{journey.confidence}</em>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TimeTravelChoiceStep({
+  kicker,
+  title,
+  body,
+  choices,
+  selectedId,
+  onSelect,
+  onBack,
+}: {
+  kicker: string;
+  title: string;
+  body: string;
+  choices: Array<TimeTravelChoice | TimeTravelerIdentity>;
+  selectedId: string;
+  onSelect: (id: string) => void;
+  onBack: () => void;
+}) {
+  return (
+    <div className="bubble-time-question">
+      <button type="button" onClick={onBack} className="bubble-time-back">
+        <ArrowLeft size={17} />
+        <span>Back</span>
+      </button>
+      <span>{kicker}</span>
+      <h2>{title}</h2>
+      <p>{body}</p>
+      <div className="bubble-time-option-grid">
+        {choices.map((choice) => (
+          <button
+            key={choice.id}
+            type="button"
+            onClick={() => onSelect(choice.id)}
+            className={`bubble-time-option-card ${choice.id === selectedId ? "is-selected" : ""}`}
+          >
+            <strong>{choice.label}</strong>
+            <span>{"role" in choice ? choice.role : choice.description}</span>
+            <small>{"status" in choice ? `${choice.status} - ${choice.languages}` : choice.description}</small>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TimeTravelClearance({
+  journey,
+  identity,
+  purpose,
+  realism,
+  depth,
+  sending,
+  onBack,
+  onBegin,
+}: {
+  journey: TimeTravelJourney;
+  identity?: TimeTravelerIdentity;
+  purpose?: TimeTravelChoice;
+  realism?: TimeTravelChoice;
+  depth?: TimeTravelChoice;
+  sending: boolean;
+  onBack: () => void;
+  onBegin: () => void;
+}) {
+  const ready = Boolean(identity && purpose && realism && depth);
+  return (
+    <div className="bubble-time-clearance">
+      <button type="button" onClick={onBack} className="bubble-time-back">
+        <ArrowLeft size={17} />
+        <span>Back</span>
+      </button>
+      <div className="bubble-time-clearance-head">
+        <ShieldCheck size={28} />
+        <div>
+          <span>Travel advisory</span>
+          <h2>{journey.arrival}</h2>
+        </div>
+      </div>
+      <div className="bubble-time-advisory-grid">
+        <TimeTravelAdvisoryItem icon="language" label="Languages" value={journey.languages.join(", ")} />
+        <TimeTravelAdvisoryItem icon="risk" label="Risk" value={`${journey.risk} - ${journey.exposureRisk}`} />
+        <TimeTravelAdvisoryItem icon="money" label="Money" value={identity?.money ?? journey.currency} />
+        <TimeTravelAdvisoryItem icon="status" label="Status" value={identity?.status ?? "Pending identity clearance"} />
+        <TimeTravelAdvisoryItem icon="rules" label="Do not forget" value={journey.socialRules[0] ?? "Local rules apply"} />
+        <TimeTravelAdvisoryItem icon="evidence" label="Evidence" value={journey.confidence} />
+      </div>
+      <div className="bubble-time-warning">
+        <AlertTriangle size={20} />
+        <span>{journey.exposureRisk}</span>
+      </div>
+      <button type="button" disabled={!ready || sending} onClick={onBegin} className="bubble-time-enter-button">
+        <Compass size={19} />
+        <span>{journey.risk === "Very high" ? "Enter carefully" : "Enter the city"}</span>
+      </button>
+    </div>
+  );
+}
+
+function TimeTravelAdvisoryItem({
+  icon,
+  label,
+  value,
+}: {
+  icon: "language" | "risk" | "money" | "status" | "rules" | "evidence";
+  label: string;
+  value: string;
+}) {
+  const icons = {
+    language: Languages,
+    risk: Thermometer,
+    money: Coins,
+    status: UserRound,
+    rules: Gavel,
+    evidence: FileText,
+  };
+  const Icon = icons[icon];
+  return (
+    <article className="bubble-time-advisory-item">
+      <Icon size={19} />
+      <div>
+        <strong>{label}</strong>
+        <span>{value}</span>
+      </div>
+    </article>
+  );
+}
+
+function TimeTravelPassport({
+  journey,
+  identity,
+  purpose,
+  realism,
+  depth,
+  compact = false,
+}: {
+  journey: TimeTravelJourney | null;
+  identity?: TimeTravelerIdentity;
+  purpose?: TimeTravelChoice;
+  realism?: TimeTravelChoice;
+  depth?: TimeTravelChoice;
+  compact?: boolean;
+}) {
+  const stamps = [
+    journey ? "Destination" : undefined,
+    identity ? "Identity" : undefined,
+    purpose ? "Mission" : undefined,
+    realism ? "Realism" : undefined,
+    depth ? "Depth" : undefined,
+  ].filter(Boolean);
+
+  return (
+    <aside className={`bubble-time-passport ${compact ? "is-compact" : ""}`}>
+      <div className="bubble-time-passport-cover">
+        <div>
+          <span>Temporal passport</span>
+          <h3>{journey?.label ?? "Clearance pending"}</h3>
+        </div>
+        <Stamp size={28} />
+      </div>
+      <dl className="bubble-time-passport-fields">
+        <div>
+          <dt>Destination</dt>
+          <dd>{journey?.arrival ?? "Choose an arrival point"}</dd>
+        </div>
+        <div>
+          <dt>Date</dt>
+          <dd>{journey?.date ?? "Unstamped"}</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>{identity?.role ?? "Identity pending"}</dd>
+        </div>
+        <div>
+          <dt>Language</dt>
+          <dd>{identity?.languages ?? journey?.languages.join(", ") ?? "Pending"}</dd>
+        </div>
+        <div>
+          <dt>Risk</dt>
+          <dd>{journey?.risk ?? "Pending"}</dd>
+        </div>
+        <div>
+          <dt>Mode</dt>
+          <dd>{purpose?.label ?? "Mission pending"}</dd>
+        </div>
+      </dl>
+      <div className="bubble-time-stamps">
+        {stamps.length ? (
+          stamps.map((stamp) => <span key={stamp}>{stamp}</span>)
+        ) : (
+          <span>Awaiting first stamp</span>
+        )}
+      </div>
+    </aside>
+  );
+}
+
+function TimeTravelSession({
+  topic,
+  journey,
+  identity,
+  purpose,
+  realism,
+  depth,
+  messages,
+  input,
+  sending,
+  awaitingResponse,
+  inputRef,
+  listRef,
+  onInput,
+  onSend,
+  onSubmit,
+  onKeyDown,
+  onStop,
+  onReset,
+}: {
+  topic: Topic;
+  journey: TimeTravelJourney;
+  identity: TimeTravelerIdentity;
+  purpose?: TimeTravelChoice;
+  realism?: TimeTravelChoice;
+  depth?: TimeTravelChoice;
+  messages: Message[];
+  input: string;
+  sending: boolean;
+  awaitingResponse: boolean;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  listRef: RefObject<HTMLDivElement | null>;
+  onInput: (value: string) => void;
+  onSend: (content: string) => Promise<void>;
+  onSubmit: (event?: FormEvent) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onStop: () => void;
+  onReset: () => void;
+}) {
+  const [panel, setPanel] = useState<TimeTravelPanel>("scene");
+  const [lens, setLens] = useState<TimeTravelLens>("Immersive");
+  const [timelineIndex, setTimelineIndex] = useState(1);
+  const actions = [
+    ...journey.actions,
+    "Ask the guide to explain the power structure",
+    "Compare this with today",
+    "Request debrief and passport stamp",
+  ];
+
+  function sendAction(action: string) {
+    void onSend(
+      `Action from inside the ${journey.label} expedition: ${action}. Keep the simulation state, constraints, and evidence labels visible.`,
+    );
+  }
+
+  return (
+    <main className="bubble-workspace bubble-time-workspace">
+      <section className="bubble-time-session">
+        <div className="bubble-time-rail">
+          <TimeTravelPassport
+            journey={journey}
+            identity={identity}
+            purpose={purpose}
+            realism={realism}
+            depth={depth}
+            compact
+          />
+          <button type="button" onClick={onReset} className="bubble-time-new-journey">
+            <RotateCcw size={17} />
+            <span>New passport</span>
+          </button>
+        </div>
+
+        <section className="bubble-time-world">
+          <header className="bubble-time-world-header">
+            <div>
+              <span>{journey.arrival}</span>
+              <h2>{journey.place}</h2>
+            </div>
+            <div className="bubble-time-world-pills">
+              <span>{journey.date}</span>
+              <span>{journey.risk} risk</span>
+              <span>{realism?.label ?? "Guided"} realism</span>
+            </div>
+          </header>
+
+          <div className="bubble-time-lens-row" role="tablist" aria-label="Modern lens">
+            <Scale size={17} />
+            {timeTravelLenses.map((item) => (
+              <button
+                key={item}
+                type="button"
+                className={item === lens ? "is-active" : ""}
+                onClick={() => setLens(item)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
+
+          <div className="bubble-time-panel-tabs" role="tablist" aria-label="Expedition view">
+            {timeTravelPanels.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className={item.id === panel ? "is-active" : ""}
+                onClick={() => setPanel(item.id)}
+              >
+                <TimeTravelPanelIcon panel={item.id} />
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
+
+          <TimeTravelWorldPanel
+            panel={panel}
+            lens={lens}
+            journey={journey}
+            identity={identity}
+            timelineIndex={timelineIndex}
+            onTimeline={setTimelineIndex}
+          />
+        </section>
+
+        <section className="bubble-time-chat">
+          <header className="bubble-time-chat-header">
+            <MessageCircle size={18} />
+            <div>
+              <span>{topic.name}</span>
+              <strong>{identity.role}</strong>
+            </div>
+          </header>
+
+          <div ref={listRef} className="bubble-time-chat-log app-scrollbar">
+            <div className="bubble-message-stack bubble-time-message-stack">
+              {messages.map((message) => (
+                <MessageBubble key={message.id} message={message} />
+              ))}
+              {awaitingResponse ? (
+                <div className="bubble-thinking" aria-live="polite">
+                  <span />
+                  <span />
+                  <span />
+                  <strong>Thinking</strong>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="bubble-time-action-chips">
+            {actions.slice(0, 6).map((action) => (
+              <button key={action} type="button" disabled={sending} onClick={() => sendAction(action)}>
+                <Sparkles size={14} />
+                <span>{action}</span>
+              </button>
+            ))}
+          </div>
+
+          <form onSubmit={onSubmit} className="bubble-time-composer">
+            <textarea
+              ref={inputRef}
+              value={input}
+              onChange={(event) => onInput(event.target.value)}
+              onKeyDown={onKeyDown}
+              placeholder="Speak from inside the world..."
+              disabled={sending}
+              rows={1}
+            />
+            <button
+              type={sending ? "button" : "submit"}
+              onClick={sending ? onStop : undefined}
+              disabled={!sending && !input.trim()}
+              aria-label={sending ? "Stop response" : "Send message"}
+            >
+              {sending ? <Square size={17} fill="currentColor" /> : <Send size={20} />}
+            </button>
+          </form>
+        </section>
+      </section>
+    </main>
+  );
+}
+
+function TimeTravelPanelIcon({ panel }: { panel: TimeTravelPanel }) {
+  const icons = {
+    scene: Eye,
+    map: Map,
+    timeline: CalendarDays,
+    people: Users,
+    rules: Gavel,
+    inventory: Coins,
+    evidence: FileText,
+  };
+  const Icon = icons[panel];
+  return <Icon size={15} />;
+}
+
+function TimeTravelWorldPanel({
+  panel,
+  lens,
+  journey,
+  identity,
+  timelineIndex,
+  onTimeline,
+}: {
+  panel: TimeTravelPanel;
+  lens: TimeTravelLens;
+  journey: TimeTravelJourney;
+  identity: TimeTravelerIdentity;
+  timelineIndex: number;
+  onTimeline: (index: number) => void;
+}) {
+  const timeline = [
+    `Before arrival: ${journey.context}`,
+    `Now: ${journey.eventClock[0] ?? journey.arrival}`,
+    `Soon: ${journey.eventClock[1] ?? "Local consequences unfold from your choices."}`,
+    `Historian knowledge: ${journey.knownFacts[0] ?? journey.confidence}`,
+  ];
+
+  if (panel === "map") {
+    return (
+      <div className="bubble-time-panel">
+        <div className="bubble-time-route-map">
+          {journey.route.map((stop, index) => (
+            <span key={stop} className={index === 0 ? "is-current" : ""}>
+              {stop}
+            </span>
+          ))}
+        </div>
+        <div className="bubble-time-list-grid">
+          {journey.route.map((stop, index) => (
+            <article key={stop}>
+              <MapPin size={17} />
+              <div>
+                <strong>{index === 0 ? "Current location" : `Route ${index}`}</strong>
+                <span>{stop}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (panel === "timeline") {
+    return (
+      <div className="bubble-time-panel">
+        <div className="bubble-time-scrubber">
+          <input
+            type="range"
+            min="0"
+            max={timeline.length - 1}
+            value={timelineIndex}
+            onChange={(event) => onTimeline(Number(event.target.value))}
+          />
+          <strong>{timeline[timelineIndex]}</strong>
+        </div>
+        <div className="bubble-time-knowledge-split">
+          <article>
+            <span>In-world knowledge</span>
+            <p>{journey.eventClock[0] ?? "People know only what has reached this place and status level."}</p>
+          </article>
+          <article>
+            <span>Historian knowledge</span>
+            <p>{journey.knownFacts.join(" ")}</p>
+          </article>
+        </div>
+      </div>
+    );
+  }
+
+  if (panel === "people") {
+    return (
+      <div className="bubble-time-panel bubble-time-list-grid">
+        {journey.people.map((person) => (
+          <article key={person}>
+            <Users size={17} />
+            <div>
+              <strong>{person}</strong>
+              <span>Approach through your role as {identity.role.toLowerCase()}.</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    );
+  }
+
+  if (panel === "rules") {
+    return (
+      <div className="bubble-time-panel">
+        <div className="bubble-time-danger">
+          <Shield size={19} />
+          <span>{journey.exposureRisk}</span>
+        </div>
+        <div className="bubble-time-list-grid">
+          {journey.socialRules.map((rule) => (
+            <article key={rule}>
+              <Gavel size={17} />
+              <div>
+                <strong>Constraint</strong>
+                <span>{rule}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (panel === "inventory") {
+    return (
+      <div className="bubble-time-panel bubble-time-inventory">
+        <article>
+          <UserRound size={18} />
+          <strong>{identity.clothing}</strong>
+          <span>What others see first</span>
+        </article>
+        <article>
+          <Coins size={18} />
+          <strong>{identity.money}</strong>
+          <span>{journey.currency}</span>
+        </article>
+        <article>
+          <ScrollText size={18} />
+          <strong>{identity.clearance}</strong>
+          <span>{identity.status}</span>
+        </article>
+      </div>
+    );
+  }
+
+  if (panel === "evidence") {
+    return (
+      <div className="bubble-time-panel bubble-time-evidence">
+        <EvidenceColumn title="Known" items={journey.knownFacts} />
+        <EvidenceColumn title="Reconstructed" items={journey.reconstructions} />
+        <EvidenceColumn title="Speculative" items={journey.speculative} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="bubble-time-panel">
+      <div className="bubble-time-scene-card">
+        <span>{lens} lens</span>
+        <h3>{journey.sensory}</h3>
+        <p>{journey.context}</p>
+      </div>
+      <div className="bubble-time-scene-grid">
+        <article>
+          <CalendarDays size={18} />
+          <strong>Event clock</strong>
+          <span>{journey.eventClock.join(" ")}</span>
+        </article>
+        <article>
+          <UserRound size={18} />
+          <strong>Identity</strong>
+          <span>{identity.role}</span>
+        </article>
+        <article>
+          <SlidersHorizontal size={18} />
+          <strong>Objects</strong>
+          <span>{journey.objects.join(", ")}</span>
+        </article>
+      </div>
+    </div>
+  );
+}
+
+function EvidenceColumn({ title, items }: { title: string; items: string[] }) {
+  return (
+    <article>
+      <strong>{title}</strong>
+      {items.map((item) => (
+        <span key={item}>{item}</span>
+      ))}
+    </article>
+  );
+}
+
+const historicalEngagementModes = [
+  {
+    id: "interview",
+    label: "Interview",
+    body: "Ask direct questions and let the historian clarify evidence when needed.",
+    role: "historical interviewer",
+  },
+  {
+    id: "debate",
+    label: "Debate",
+    body: "Challenge ideas while the person defends the worldview of their moment.",
+    role: "respectful but challenging interlocutor",
+  },
+  {
+    id: "apprenticeship",
+    label: "Apprenticeship",
+    body: "Learn how they thought, worked, planned, wrote, governed, or experimented.",
+    role: "apprentice studying their method",
+  },
+  {
+    id: "council-room",
+    label: "Council room",
+    body: "Ask for advice through their period worldview and constraints.",
+    role: "advisor seeking counsel",
+  },
+  {
+    id: "cross-examination",
+    label: "Cross-examination",
+    body: "Confront contradictions, evasions, and consequences with evidence support.",
+    role: "prosecutor testing claims",
+  },
+  {
+    id: "day-in-the-life",
+    label: "Day-in-the-life",
+    body: "Follow an ordinary or decisive day with setting, pressure, and choices.",
+    role: "observer inside the scene",
+  },
+  {
+    id: "moral-tribunal",
+    label: "Moral tribunal",
+    body: "Evaluate legacy without flattening context into excuse or condemnation.",
+    role: "tribunal questioner",
+  },
+  {
+    id: "strategy-room",
+    label: "Strategy room",
+    body: "Reconstruct a decision, alternatives, constraints, and outcomes.",
+    role: "strategy analyst",
+  },
+] as const;
+
+type HistoricalEngagementModeId = (typeof historicalEngagementModes)[number]["id"];
+
+const historicalTimeSliceOptions = [
+  "Ask the historian to propose time slices",
+  "Formative years before public power",
+  "At the decisive turning point",
+  "At peak influence or authority",
+  "During crisis, exile, trial, or imprisonment",
+  "Late-life retrospective before death",
+];
+
+const historianVisibilityOptions = [
+  {
+    value: "medium",
+    label: "Balanced",
+    body: "Flag important context without crowding every reply.",
+  },
+  {
+    value: "high",
+    label: "Evidence-heavy",
+    body: "Show more uncertainty, anachronism, and source-boundary notes.",
+  },
+  {
+    value: "low",
+    label: "Immersive",
+    body: "Keep the sidecar quieter unless something needs correction.",
+  },
+];
+
+const historicalQuickStarts = [
+  {
+    label: "Challenge Churchill on empire",
+    startType: "direct",
+    person: "Winston Churchill",
+    timeSlice: "Wartime prime minister in 1940",
+    mode: "cross-examination" as HistoricalEngagementModeId,
+    setting: "Cabinet room during wartime Britain",
+    userRole: "citizen-prosecutor testing imperial assumptions",
+    goal: "Challenge the tension between fighting tyranny in Europe and defending empire.",
+  },
+  {
+    label: "Meet Ambedkar in committee",
+    startType: "direct",
+    person: "B. R. Ambedkar",
+    timeSlice: "1946-1949 constitution-making period",
+    mode: "debate" as HistoricalEngagementModeId,
+    setting: "committee room in Delhi",
+    userRole: "MBA student studying institutional design",
+    goal: "Debate safeguards, social democracy, and the cost of constitutional compromise.",
+  },
+  {
+    label: "Find an education changer",
+    startType: "discover",
+    person: "someone who changed education and faced serious opposition",
+    timeSlice: "Ask the historian to propose time slices",
+    mode: "interview" as HistoricalEngagementModeId,
+    setting: "",
+    userRole: "curious learner",
+    goal: "Suggest candidates with strong evidence and vivid settings.",
+  },
+];
+
+const historicalDossierActions = [
+  {
+    title: "Timeline so far",
+    body: "Events the person has already lived through.",
+    prompt: "Open the timeline so far for this exact time slice. Separate documented events from contested interpretation.",
+  },
+  {
+    title: "Beliefs and blind spots",
+    body: "What they value, defend, miss, or refuse.",
+    prompt: "Show the person's major beliefs at this time, their blind spots, and what they would likely resist understanding.",
+  },
+  {
+    title: "Allies and enemies",
+    body: "Who pressures them, supports them, or threatens them.",
+    prompt: "Map allies, enemies, critics, patrons, and pressure groups around this person at this moment.",
+  },
+  {
+    title: "Evidence drawer",
+    body: "Sources, confidence, uncertainty, and forbidden quotes.",
+    prompt: "Open the evidence drawer. Label high-confidence facts, plausible reconstructions, contested claims, and things you must not fabricate.",
+  },
+  {
+    title: "Questions to ask",
+    body: "Openings that produce a better encounter.",
+    prompt: "Recommend opening questions for this encounter, grouped by interview, debate, contradiction, and legacy.",
+  },
+];
+
+const historicalModeSwitches = [
+  {
+    label: "Historian explains",
+    prompt: "Step out of character briefly. Explain the historical context, evidence quality, and uncertainties behind the last exchange.",
+  },
+  {
+    label: "Debate harder",
+    prompt: "Increase the challenge. Have the historical person defend their worldview more forcefully while the historian tracks weak claims.",
+  },
+  {
+    label: "Ask as student",
+    prompt: "Reframe my next question as a student trying to understand the mental model, not just the biography.",
+  },
+  {
+    label: "Compare legacy",
+    prompt: "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+  },
+];
+
+function historicalModeIcon(mode: HistoricalEngagementModeId) {
+  switch (mode) {
+    case "interview":
+      return MessageCircle;
+    case "debate":
+      return Scale;
+    case "apprenticeship":
+      return BookOpenCheck;
+    case "council-room":
+      return Users;
+    case "cross-examination":
+      return Gavel;
+    case "day-in-the-life":
+      return History;
+    case "moral-tribunal":
+      return AlertTriangle;
+    case "strategy-room":
+      return Gauge;
+    default:
+      return Landmark;
+  }
+}
+
+function buildHistoricalEncounterPrompt({
+  startType,
+  personOrTheme,
+  timeSlice,
+  setting,
+  mode,
+  userRole,
+  openingGoal,
+  historianVisibility,
+}: {
+  startType: "direct" | "discover";
+  personOrTheme: string;
+  timeSlice: string;
+  setting: string;
+  mode: HistoricalEngagementModeId;
+  userRole: string;
+  openingGoal: string;
+  historianVisibility: string;
+}) {
+  const engagement = historicalEngagementModes.find((candidate) => candidate.id === mode) ?? historicalEngagementModes[1];
+  const needsTimeSlice = timeSlice === historicalTimeSliceOptions[0];
+
+  return [
+    "Open the Historical Person mini app as a staged historical audience with a living dossier.",
+    "Do not run this as a generic chatbot or a famous-person costume.",
+    `Start type: ${startType === "discover" ? "vague discovery request" : "direct person request"}.`,
+    startType === "discover"
+      ? `Discovery request: ${personOrTheme}. Suggest 3 to 5 historical people first. Each card must include name, era, why they matter, best conversation modes, controversy level, evidence quality, and a fitting setting. Ask me to choose before building a persona.`
+      : `Requested person or encounter: ${personOrTheme}.`,
+    needsTimeSlice
+      ? "Time slice: not chosen yet. If a specific person is named, offer 4 to 5 historically meaningful versions of this person before any in-character dialogue. Explain how each version changes the worldview, stakes, and setting."
+      : `Selected time slice: ${timeSlice}. If this slice is too broad, narrow it once with 2 or 3 historically meaningful options before the encounter begins.`,
+    setting ? `Preferred setting: ${setting}.` : "Preferred setting: choose a historically fitting room, court, battlefield tent, study, prison, salon, workshop, public square, or other concrete place.",
+    `Engagement mode: ${engagement.label}. The user's relationship to the person is: ${userRole || engagement.role}.`,
+    openingGoal ? `User's purpose or opening angle: ${openingGoal}.` : "User's purpose: help them choose sharp opening questions.",
+    `Historian sidecar visibility: ${historianVisibility}.`,
+    "Required flow:",
+    "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+    "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+    "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+    "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+    "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+    "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+    "- Do not let the persona give medical, legal, financial, or harmful advice as authoritative guidance.",
+    "First response format:",
+    "1. If discovery or time-slice choice is needed, show choices and stop.",
+    "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+const collaborationModeOptions = [
+  {
+    id: "friendly_builder",
+    label: "Friendly builder",
+    role: "supportive peer and co-builder",
+    tone: "warm, practical, momentum-focused",
+    instruction: "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+    icon: HeartHandshake,
+  },
+  {
+    id: "sharp_sparring_partner",
+    label: "Sharp sparring partner",
+    role: "tough critic and editor",
+    tone: "direct, constructive, evidence-focused",
+    instruction: "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+    icon: BrainCircuit,
+  },
+  {
+    id: "structured_operator",
+    label: "Structured operator",
+    role: "project-room operator",
+    tone: "crisp, organized, completion-focused",
+    instruction: "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+    icon: ListChecks,
+  },
+] as const;
+
+type CollaborationModeId = (typeof collaborationModeOptions)[number]["id"];
+
+const collaborationRoomTemplates = {
+  pair_builder: {
+    label: "Pair builder",
+    title: "Shared draft room",
+    artifactTitle: "Working artifact",
+    icon: FileText,
+    sections: [
+      { title: "Output", body: "Define the thing we are making and the standard it has to meet." },
+      { title: "Structure", body: "Sketch the outline, sections, or table before polishing language." },
+      { title: "Evidence", body: "Collect examples, facts, quotes, or constraints that support the work." },
+      { title: "Revision", body: "Track accepted changes, rejected changes, and the next edit." },
+    ],
+    comments: ["Clarify the audience", "Preserve user voice", "Show changes before merging"],
+  },
+  sparring_partner: {
+    label: "Sparring partner",
+    title: "Argument test room",
+    artifactTitle: "Assumption map",
+    icon: GitPullRequestArrow,
+    sections: [
+      { title: "Claim", body: "State the idea in one sentence so it can be tested." },
+      { title: "Assumptions", body: "List what has to be true for the idea to work." },
+      { title: "Weakest point", body: "Attack the most fragile assumption first." },
+      { title: "Decision", body: "Accept, revise, reject, or gather evidence." },
+    ],
+    comments: ["Prove this", "Separate logic from execution", "Name the tradeoff"],
+  },
+  study_buddy: {
+    label: "Study buddy",
+    title: "Learning workroom",
+    artifactTitle: "Concept board",
+    icon: Lightbulb,
+    sections: [
+      { title: "Core idea", body: "Build the plain-language explanation together." },
+      { title: "User explanation", body: "The learner explains it back in their own words." },
+      { title: "AI challenge", body: "One targeted question tests the current understanding." },
+      { title: "Recap", body: "Lock useful notes only after the idea has been used." },
+    ],
+    comments: ["Unclear", "Try an example", "Check understanding before moving on"],
+  },
+  project_operator: {
+    label: "Project operator",
+    title: "Execution room",
+    artifactTitle: "Task board",
+    icon: Workflow,
+    sections: [
+      { title: "Goal", body: "Define the concrete finish line and owner." },
+      { title: "Next actions", body: "Split work into AI-owned, user-owned, and shared moves." },
+      { title: "Blockers", body: "Expose missing input, risk, time pressure, or unclear scope." },
+      { title: "Checkpoint", body: "End every sprint with an artifact or decision." },
+    ],
+    comments: ["Make it smaller", "Assign ownership", "End with output"],
+  },
+  creative_partner: {
+    label: "Creative partner",
+    title: "Idea studio",
+    artifactTitle: "Option board",
+    icon: Sparkles,
+    sections: [
+      { title: "Raw options", body: "Generate enough material to choose from." },
+      { title: "Clusters", body: "Group similar ideas and name the pattern." },
+      { title: "Kill list", body: "Remove weak, generic, or low-fit ideas quickly." },
+      { title: "Prototype", body: "Develop the strongest option into something testable." },
+    ],
+    comments: ["Expand", "Cut", "Make it stranger", "Pick the strongest"],
+  },
+} as const;
+
+type CollaborationRoomType = keyof typeof collaborationRoomTemplates;
+
+const collaborationQuickStarts = [
+  "Prepare for a class discussion on Tata's acquisition of JLR",
+  "Build an essay outline on climate adaptation",
+  "Pressure-test my startup idea",
+  "Learn supply and demand by working through examples",
+];
+
+const collaborationHandoffActions = [
+  {
+    label: "AI, take first pass",
+    prompt: "Take the first pass on the shared artifact. Make the structure visible, mark assumptions, and ask me to accept, edit, or reject.",
+    icon: Bot,
+  },
+  {
+    label: "I will try",
+    prompt: "Hand the next move to me. Give me one clear task and wait for my contribution before you revise.",
+    icon: UserRound,
+  },
+  {
+    label: "Challenge me",
+    prompt: "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+    icon: BrainCircuit,
+  },
+  {
+    label: "Rewrite this",
+    prompt: "Rewrite the current rough section as a suggested edit. Show what changed and why before asking me to merge it.",
+    icon: PencilLine,
+  },
+  {
+    label: "Just advise",
+    prompt: "Stop editing directly for this turn. Give concise advice and one practical next move.",
+    icon: MessageSquareText,
+  },
+  {
+    label: "Merge changes",
+    prompt: "Merge the accepted changes into a clean current version, then update the decision log and open questions.",
+    icon: GitPullRequestArrow,
+  },
+] as const;
+
+function getCollaborationMode(modeId: CollaborationModeId) {
+  return collaborationModeOptions.find((mode) => mode.id === modeId) ?? collaborationModeOptions[0];
+}
+
+function inferCollaborationRoomType(goal: string): CollaborationRoomType {
+  const normalized = goal.toLowerCase();
+  if (
+    /\b(essay|write|draft|memo|deck|pitch|outline|paper|article|answer|story|script|proposal)\b/.test(
+      normalized,
+    )
+  ) {
+    return "pair_builder";
+  }
+  if (/\b(idea|argument|assumption|strategy|decision|hypothesis|risk|case|debate|thesis)\b/.test(normalized)) {
+    return "sparring_partner";
+  }
+  if (/\b(project|execute|plan|tasks|deadline|launch|ship|finish|operator|sprint)\b/.test(normalized)) {
+    return "project_operator";
+  }
+  if (/\b(brainstorm|creative|ideas|name|concept|options|prototype)\b/.test(normalized)) {
+    return "creative_partner";
+  }
+  return "study_buddy";
+}
+
+function extractCollaborationGoal(messages: Message[]) {
+  const firstUser = messages.find((message) => message.role === "user")?.content.trim();
+  if (!firstUser) return "";
+  const extracted = extractCollaborationGoalFromContent(firstUser);
+  if (extracted) return extracted;
+  return firstUser.length > 180 ? `${firstUser.slice(0, 177).trim()}...` : firstUser;
+}
+
+function extractCollaborationGoalFromContent(content: string) {
+  const match = content.match(/collaborative workroom for:\s*([\s\S]*?)(?:\n\nMode:|$)/i);
+  return match?.[1]?.trim() ?? "";
+}
+
+function extractCollaborationModeFromContent(content: string) {
+  const match = content.match(/\nMode:\s*([^\n]+)/i);
+  return match?.[1]?.trim() ?? "";
+}
+
+function buildCollaborativeInstructionPrompt({
+  goal,
+  mode,
+  roomType,
+}: {
+  goal: string;
+  mode: (typeof collaborationModeOptions)[number];
+  roomType: CollaborationRoomType;
+}) {
+  const room = collaborationRoomTemplates[roomType];
+  return [
+    `Let's open a collaborative workroom for: ${goal}`,
+    "",
+    `Mode: ${mode.label}`,
+    `AI role: ${mode.role}`,
+    `Tone: ${mode.tone}`,
+    `Workspace: ${room.label} - ${room.artifactTitle}`,
+    "",
+    "Make the first rough structure before giving advice. Start with: \"I made the first rough structure. Edit anything. I will react to your changes.\"",
+    "Use visible sections: Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, Next action.",
+    mode.instruction,
+    "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
+  ].join("\n");
+}
+
+function formatSprintTime(seconds: number) {
+  const minutes = Math.floor(seconds / 60);
+  const remainder = seconds % 60;
+  return `${minutes}:${String(remainder).padStart(2, "0")}`;
+}
+
+function CollaborativeInstructionWorkspace({
+  topic,
+  messages,
+  input,
+  sending,
+  awaitingResponse,
+  inputRef,
+  listRef,
+  onInput,
+  onSend,
+  onSubmit,
+  onKeyDown,
+  onStop,
+  onReset,
+}: {
+  topic: Topic;
+  messages: Message[];
+  input: string;
+  sending: boolean;
+  awaitingResponse: boolean;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  listRef: RefObject<HTMLDivElement | null>;
+  onInput: (value: string) => void;
+  onSend: (content: string) => Promise<void>;
+  onSubmit: (event?: FormEvent) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onStop: () => void;
+  onReset: () => void;
+}) {
+  const [goal, setGoal] = useState("");
+  const [roomGoal, setRoomGoal] = useState("");
+  const [modeId, setModeId] = useState<CollaborationModeId>("friendly_builder");
+  const [sprintSeconds, setSprintSeconds] = useState(10 * 60);
+  const [sprintRunning, setSprintRunning] = useState(false);
+  const visibleMessages = messages.filter((message) => message.role !== "system");
+  const recoveredGoal = extractCollaborationGoal(visibleMessages);
+  const activeGoal = roomGoal || recoveredGoal || goal;
+  const roomType = inferCollaborationRoomType(activeGoal);
+  const room = collaborationRoomTemplates[roomType];
+  const RoomIcon = room.icon;
+  const activeMode = getCollaborationMode(modeId);
+  const ActiveModeIcon = activeMode.icon;
+  const hasSession = visibleMessages.length > 0 || sending || awaitingResponse || Boolean(roomGoal);
+  const assistantCount = visibleMessages.filter((message) => message.role === "assistant").length;
+
+  useEffect(() => {
+    if (!sprintRunning) return;
+    const timer = window.setInterval(() => {
+      setSprintSeconds((current) => {
+        if (current <= 1) {
+          window.clearInterval(timer);
+          window.setTimeout(() => setSprintRunning(false), 0);
+          return 0;
+        }
+        return current - 1;
+      });
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [sprintRunning]);
+
+  function startWorkroom(event?: FormEvent) {
+    event?.preventDefault();
+    const trimmed = goal.trim();
+    if (!trimmed || sending) return;
+    const nextRoomType = inferCollaborationRoomType(trimmed);
+    setRoomGoal(trimmed);
+    void onSend(
+      buildCollaborativeInstructionPrompt({
+        goal: trimmed,
+        mode: activeMode,
+        roomType: nextRoomType,
+      }),
+    );
+  }
+
+  function switchMode(nextModeId: CollaborationModeId) {
+    if (nextModeId === modeId || sending) return;
+    const nextMode = getCollaborationMode(nextModeId);
+    setModeId(nextModeId);
+    if (hasSession) {
+      void onSend(
+        `Switch collaboration mode to ${nextMode.label}. Keep the same shared artifact, decision log, open questions, and user ownership.`,
+      );
+    }
+  }
+
+  function sendHandoff(prompt: string) {
+    if (sending) return;
+    void onSend(prompt);
+  }
+
+  function startSprint() {
+    if (sending) return;
+    setSprintSeconds(10 * 60);
+    setSprintRunning(true);
+    void onSend(
+      `Start a 10-minute sprint for "${activeGoal || topic.name}". Pick one concrete artifact checkpoint, assign my move and your support role, then end with a checkpoint.`,
+    );
+  }
+
+  return (
+    <main className="bubble-workspace bubble-collab-workspace">
+      <div ref={listRef} className="bubble-collab-scroll app-scrollbar">
+        {!hasSession ? (
+          <section className="bubble-collab-start">
+            <header className="bubble-collab-roombar">
+              <div>
+                <span>Shared workroom</span>
+                <h2>Collaborative Instruction</h2>
+              </div>
+              <strong className="bubble-collab-status-pill">
+                <ActiveModeIcon size={15} />
+                Mode: {activeMode.label}
+              </strong>
+            </header>
+            <div className="bubble-collab-start-grid">
+              <form className="bubble-collab-intent-panel" onSubmit={startWorkroom}>
+                <label htmlFor="collab-goal">What are we trying to build, solve, learn, or improve?</label>
+                <textarea
+                  id="collab-goal"
+                  value={goal}
+                  onChange={(event) => setGoal(event.target.value)}
+                  placeholder="Prepare for a class discussion on Tata's acquisition of JLR"
+                  rows={5}
+                  disabled={sending}
+                />
+                <div className="bubble-collab-mode-picker" role="group" aria-label="Collaboration style">
+                  {collaborationModeOptions.map((modeOption) => {
+                    const ModeIcon = modeOption.icon;
+                    return (
+                      <button
+                        key={modeOption.id}
+                        type="button"
+                        onClick={() => setModeId(modeOption.id)}
+                        className={modeOption.id === modeId ? "is-active" : ""}
+                      >
+                        <ModeIcon size={17} />
+                        <span>{modeOption.label}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+                <button type="submit" disabled={!goal.trim() || sending} className="bubble-collab-open-button">
+                  <Route size={18} />
+                  Open workroom
+                </button>
+              </form>
+              <section className="bubble-collab-canvas-preview" aria-label="Workspace preview">
+                <div className="bubble-collab-preview-head">
+                  <RoomIcon size={22} />
+                  <div>
+                    <span>{room.title}</span>
+                    <strong>{room.artifactTitle}</strong>
+                  </div>
+                </div>
+                <div className="bubble-collab-preview-grid">
+                  {room.sections.map((section) => (
+                    <article key={section.title}>
+                      <strong>{section.title}</strong>
+                      <span>{section.body}</span>
+                    </article>
+                  ))}
+                </div>
+                <div className="bubble-collab-quick-starts">
+                  {collaborationQuickStarts.map((quickStart) => (
+                    <button key={quickStart} type="button" onClick={() => setGoal(quickStart)}>
+                      <Sparkles size={14} />
+                      <span>{quickStart}</span>
+                    </button>
+                  ))}
+                </div>
+              </section>
+            </div>
+          </section>
+        ) : (
+          <section className="bubble-collab-room">
+            <header className="bubble-collab-roombar">
+              <div>
+                <span>{room.title}</span>
+                <h2>{activeGoal || topic.name}</h2>
+              </div>
+              <div className="bubble-collab-roombar-actions">
+                <strong className="bubble-collab-status-pill">
+                  <ActiveModeIcon size={15} />
+                  Mode: {activeMode.label}
+                </strong>
+                <button type="button" onClick={onReset} className="bubble-collab-reset-button">
+                  New room
+                </button>
+              </div>
+            </header>
+            <div className="bubble-collab-room-grid">
+              <section className="bubble-collab-canvas">
+                <div className="bubble-collab-canvas-head">
+                  <div>
+                    <RoomIcon size={22} />
+                    <span>{room.artifactTitle}</span>
+                  </div>
+                  <strong>v{Math.max(1, assistantCount + 1)}</strong>
+                </div>
+                <div className="bubble-collab-ai-presence">
+                  <Bot size={15} />
+                  <span>{sending || awaitingResponse ? "AI is reviewing your artifact" : "Ready for next handoff"}</span>
+                </div>
+                <div className="bubble-collab-section-grid">
+                  {room.sections.map((section, index) => (
+                    <article key={section.title}>
+                      <header>
+                        <span>{String(index + 1).padStart(2, "0")}</span>
+                        <strong>{section.title}</strong>
+                      </header>
+                      <p>{section.body}</p>
+                      {room.comments[index % room.comments.length] ? (
+                        <em>{room.comments[index % room.comments.length]}</em>
+                      ) : null}
+                    </article>
+                  ))}
+                </div>
+                <div className="bubble-collab-inline-comments">
+                  {["Strong", "Unclear", "Prove this", "Cut", "Expand"].map((comment) => (
+                    <span key={comment}>{comment}</span>
+                  ))}
+                </div>
+              </section>
+              <aside className="bubble-collab-rail">
+                <section className="bubble-collab-rail-panel">
+                  <header>
+                    <SlidersHorizontal size={17} />
+                    <strong>Working style</strong>
+                  </header>
+                  <div className="bubble-collab-mode-switches">
+                    {collaborationModeOptions.map((modeOption) => {
+                      const ModeIcon = modeOption.icon;
+                      return (
+                        <button
+                          key={modeOption.id}
+                          type="button"
+                          onClick={() => switchMode(modeOption.id)}
+                          className={modeOption.id === modeId ? "is-active" : ""}
+                          disabled={sending}
+                        >
+                          <ModeIcon size={16} />
+                          <span>{modeOption.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+                <section className="bubble-collab-rail-panel">
+                  <header>
+                    <HandOffIcon />
+                    <strong>Handoff</strong>
+                  </header>
+                  <div className="bubble-collab-handoff-grid">
+                    {collaborationHandoffActions.map((action) => {
+                      const ActionIcon = action.icon;
+                      return (
+                        <button
+                          key={action.label}
+                          type="button"
+                          onClick={() => sendHandoff(action.prompt)}
+                          disabled={sending}
+                        >
+                          <ActionIcon size={16} />
+                          <span>{action.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+                <section className="bubble-collab-rail-panel bubble-collab-sprint">
+                  <header>
+                    <Timer size={17} />
+                    <strong>Sprint</strong>
+                  </header>
+                  <div>
+                    <span>{formatSprintTime(sprintSeconds)}</span>
+                    <button type="button" onClick={startSprint} disabled={sending || sprintRunning}>
+                      {sprintRunning ? "Running" : "Start 10 min"}
+                    </button>
+                  </div>
+                </section>
+                <section className="bubble-collab-rail-panel">
+                  <header>
+                    <Milestone size={17} />
+                    <strong>Decision log</strong>
+                  </header>
+                  <ol className="bubble-collab-decision-list">
+                    <li>
+                      <span>Owner</span>
+                      <strong>User decides what ships</strong>
+                    </li>
+                    <li>
+                      <span>Open</span>
+                      <strong>Accept, edit, or reject the next AI pass</strong>
+                    </li>
+                  </ol>
+                </section>
+              </aside>
+            </div>
+            <CollaborationActivityFeed
+              messages={visibleMessages}
+              awaitingResponse={awaitingResponse}
+              modeLabel={activeMode.label}
+              initialGoal={activeGoal}
+            />
+          </section>
+        )}
+      </div>
+      {hasSession ? (
+        <form onSubmit={onSubmit} className="bubble-composer bubble-collab-composer">
+          <div className="bubble-composer-inner">
+            <textarea
+              ref={inputRef}
+              value={input}
+              onChange={(event) => onInput(event.target.value)}
+              onKeyDown={onKeyDown}
+              placeholder="Add, edit, challenge, or decide the next move"
+              disabled={sending}
+              className="bubble-composer-input"
+              rows={1}
+            />
+            <button
+              type={sending ? "button" : "submit"}
+              onClick={sending ? onStop : undefined}
+              disabled={!sending && !input.trim()}
+              aria-label={sending ? "Stop response" : "Send message"}
+              className="bubble-send-button"
+            >
+              {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
+            </button>
+          </div>
+        </form>
+      ) : null}
+    </main>
+  );
+}
+
+function HandOffIcon() {
+  return <HeartHandshake size={17} />;
+}
+
+function CollaborationActivityFeed({
+  messages,
+  awaitingResponse,
+  modeLabel,
+  initialGoal,
+}: {
+  messages: Message[];
+  awaitingResponse: boolean;
+  modeLabel: string;
+  initialGoal: string;
+}) {
+  const visibleMessages = messages.filter((message) => message.role !== "system");
+  return (
+    <section className="bubble-collab-feed" aria-label="Activity feed">
+      <header>
+        <div>
+          <StickyNote size={18} />
+          <strong>Teammate log</strong>
+        </div>
+        <span>{modeLabel}</span>
+      </header>
+      <div className="bubble-collab-feed-list">
+        {!visibleMessages.length && initialGoal ? (
+          <article className="is-user">
+            <header>
+              <div>
+                <UserRound size={16} />
+                <strong>User set shared intent</strong>
+              </div>
+              <time>Now</time>
+            </header>
+            <RichMessageContent content={`**Shared intent**\n\n${initialGoal}`} />
+          </article>
+        ) : null}
+        {visibleMessages.map((message, index) => {
+          const isUser = message.role === "user";
+          const title = isUser
+            ? index === 0
+              ? "User set shared intent"
+              : "User contributed"
+            : index < 2
+              ? "AI made the first structure"
+              : "AI revised the workspace";
+          const Icon = isUser ? UserRound : Bot;
+          return (
+            <article key={message.id} className={isUser ? "is-user" : "is-ai"}>
+              <header>
+                <div>
+                  <Icon size={16} />
+                  <strong>{title}</strong>
+                </div>
+                <time>{formatBubbleDate(message.createdAt)}</time>
+              </header>
+              <RichMessageContent content={formatCollaborationFeedContent(message, index)} />
+            </article>
+          );
+        })}
+        {awaitingResponse ? (
+          <div className="bubble-thinking" aria-live="polite">
+            <span />
+            <span />
+            <span />
+            <strong>Reviewing</strong>
+          </div>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
+function formatCollaborationFeedContent(message: Message, index: number) {
+  if (message.role !== "user" || index !== 0) return message.content;
+  const goal = extractCollaborationGoalFromContent(message.content);
+  const mode = extractCollaborationModeFromContent(message.content);
+  if (!goal) return message.content;
+  return [`**Shared intent**\n\n${goal}`, mode ? `**Mode**\n\n${mode}` : undefined]
+    .filter(Boolean)
+    .join("\n\n");
+}
+
 function GuidedMiniAppWorkspace({
   topic,
   mode,
@@ -1093,12 +3485,53 @@ function GuidedMiniAppWorkspace({
   onStop: () => void;
   onReset: () => void;
 }) {
-  const config = miniAppConfigs[mode];
   const [primary, setPrimary] = useState("");
   const [secondary, setSecondary] = useState("");
   const [notes, setNotes] = useState("");
   const visibleMessages = messages.filter((message) => message.role !== "system");
   const hasSession = visibleMessages.length > 0 || sending || awaitingResponse;
+
+  if (mode === "collaborative-instruction") {
+    return (
+      <CollaborativeInstructionWorkspace
+        topic={topic}
+        messages={messages}
+        input={input}
+        sending={sending}
+        awaitingResponse={awaitingResponse}
+        inputRef={inputRef}
+        listRef={listRef}
+        onInput={onInput}
+        onSend={onSend}
+        onSubmit={onSubmit}
+        onKeyDown={onKeyDown}
+        onStop={onStop}
+        onReset={onReset}
+      />
+    );
+  }
+
+  if (mode === "historical-person") {
+    return (
+      <HistoricalPersonWorkspace
+        topic={topic}
+        messages={messages}
+        input={input}
+        sending={sending}
+        awaitingResponse={awaitingResponse}
+        inputRef={inputRef}
+        listRef={listRef}
+        onInput={onInput}
+        onSend={onSend}
+        onSubmit={onSubmit}
+        onKeyDown={onKeyDown}
+        onStop={onStop}
+        onReset={onReset}
+      />
+    );
+  }
+
+  const config = miniAppConfigs[mode];
 
   function startMiniApp(event?: FormEvent) {
     event?.preventDefault();
@@ -1117,6 +3550,7 @@ function GuidedMiniAppWorkspace({
       <div ref={listRef} className="bubble-mini-scroll app-scrollbar">
         {!hasSession ? (
           <section className="bubble-mini-start">
+            <TopicIntroCard topic={topic} />
             <div className="bubble-mini-start-copy">
               <span>{config.eyebrow}</span>
               <h2>{config.setupTitle}</h2>
@@ -1245,6 +3679,482 @@ function GuidedMiniAppWorkspace({
       ) : null}
     </main>
   );
+}
+
+function HistoricalPersonWorkspace({
+  topic,
+  messages,
+  input,
+  sending,
+  awaitingResponse,
+  inputRef,
+  listRef,
+  onInput,
+  onSend,
+  onSubmit,
+  onKeyDown,
+  onStop,
+  onReset,
+}: {
+  topic: Topic;
+  messages: Message[];
+  input: string;
+  sending: boolean;
+  awaitingResponse: boolean;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  listRef: RefObject<HTMLDivElement | null>;
+  onInput: (value: string) => void;
+  onSend: (content: string) => Promise<void>;
+  onSubmit: (event?: FormEvent) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onStop: () => void;
+  onReset: () => void;
+}) {
+  const [startType, setStartType] = useState<"direct" | "discover">("direct");
+  const [personOrTheme, setPersonOrTheme] = useState("");
+  const [timeSlice, setTimeSlice] = useState(historicalTimeSliceOptions[0]);
+  const [customTimeSlice, setCustomTimeSlice] = useState("");
+  const [engagementMode, setEngagementMode] = useState<HistoricalEngagementModeId>("debate");
+  const [setting, setSetting] = useState("");
+  const [userRole, setUserRole] = useState("respectful but challenging interlocutor");
+  const [openingGoal, setOpeningGoal] = useState("");
+  const [historianVisibility, setHistorianVisibility] = useState("medium");
+  const visibleMessages = messages.filter((message) => message.role !== "system");
+  const hasSession = visibleMessages.length > 0 || sending || awaitingResponse;
+  const selectedMode =
+    historicalEngagementModes.find((mode) => mode.id === engagementMode) ?? historicalEngagementModes[1];
+  const selectedTimeSlice = customTimeSlice.trim() || timeSlice;
+
+  function applyQuickStart(example: (typeof historicalQuickStarts)[number]) {
+    setStartType(example.startType as "direct" | "discover");
+    setPersonOrTheme(example.person);
+    if (historicalTimeSliceOptions.includes(example.timeSlice)) {
+      setTimeSlice(example.timeSlice);
+      setCustomTimeSlice("");
+    } else {
+      setTimeSlice(historicalTimeSliceOptions[0]);
+      setCustomTimeSlice(example.timeSlice);
+    }
+    setEngagementMode(example.mode);
+    setSetting(example.setting);
+    setUserRole(example.userRole);
+    setOpeningGoal(example.goal);
+  }
+
+  function selectEngagementMode(mode: (typeof historicalEngagementModes)[number]) {
+    setEngagementMode(mode.id);
+    setUserRole((current) => {
+      const currentlyPreset = historicalEngagementModes.some((candidate) => candidate.role === current);
+      return !current.trim() || currentlyPreset ? mode.role : current;
+    });
+  }
+
+  function startHistoricalEncounter(event?: FormEvent) {
+    event?.preventDefault();
+    if (!personOrTheme.trim() || sending) return;
+    void onSend(
+      buildHistoricalEncounterPrompt({
+        startType,
+        personOrTheme: personOrTheme.trim(),
+        timeSlice: selectedTimeSlice,
+        setting: setting.trim(),
+        mode: engagementMode,
+        userRole: userRole.trim() || selectedMode.role,
+        openingGoal: openingGoal.trim(),
+        historianVisibility,
+      }),
+    );
+  }
+
+  return (
+    <main className="bubble-workspace historical-workspace">
+      <div ref={listRef} className="historical-scroll app-scrollbar">
+        {!hasSession ? (
+          <section className="historical-start">
+            <div className="historical-start-main">
+              <TopicIntroCard topic={topic} />
+              <header className="historical-audience-hero">
+                <span>Historical Audience Chamber</span>
+                <h2>Stage the person, year, room, and relationship.</h2>
+                <p>
+                  Build a bounded encounter with a dossier first, then speak through an
+                  in-character layer and a historian sidecar.
+                </p>
+                <div className="historical-contract-strip" aria-label="Historical safeguards">
+                  <span>
+                    <ShieldCheck size={15} /> Time slice required
+                  </span>
+                  <span>
+                    <FileText size={15} /> No invented quotes
+                  </span>
+                  <span>
+                    <AlertTriangle size={15} /> Context is not endorsement
+                  </span>
+                </div>
+              </header>
+              <form className="historical-setup" onSubmit={startHistoricalEncounter}>
+                <div className="historical-segmented" aria-label="Start type">
+                  <button
+                    type="button"
+                    aria-pressed={startType === "direct"}
+                    className={startType === "direct" ? "is-active" : ""}
+                    onClick={() => setStartType("direct")}
+                  >
+                    <UserRound size={17} />
+                    <span>Direct person</span>
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={startType === "discover"}
+                    className={startType === "discover" ? "is-active" : ""}
+                    onClick={() => setStartType("discover")}
+                  >
+                    <Search size={17} />
+                    <span>Vague start</span>
+                  </button>
+                </div>
+
+                <label className="historical-field">
+                  <span>{startType === "direct" ? "Person or challenge" : "What kind of person?"}</span>
+                  <textarea
+                    value={personOrTheme}
+                    onChange={(event) => setPersonOrTheme(event.target.value)}
+                    placeholder={
+                      startType === "direct"
+                        ? "Napoleon after Austerlitz, Ambedkar in the Constitution committee..."
+                        : "Someone who changed education, a leader from a collapsing empire..."
+                    }
+                    disabled={sending}
+                    rows={2}
+                  />
+                </label>
+
+                <div className="historical-field-grid">
+                  <label className="historical-field">
+                    <span>Setting</span>
+                    <input
+                      value={setting}
+                      onChange={(event) => setSetting(event.target.value)}
+                      placeholder="Court, study, prison cell, battlefield tent..."
+                      disabled={sending}
+                    />
+                  </label>
+                  <label className="historical-field">
+                    <span>Your role</span>
+                    <input
+                      value={userRole}
+                      onChange={(event) => setUserRole(event.target.value)}
+                      placeholder="Student, rival, journalist, citizen..."
+                      disabled={sending}
+                    />
+                  </label>
+                </div>
+
+                <section className="historical-form-block" aria-labelledby="time-slice-label">
+                  <div className="historical-form-heading">
+                    <ClockIcon />
+                    <div>
+                      <strong id="time-slice-label">Time slice</strong>
+                      <span>The version of a person matters more than the name.</span>
+                    </div>
+                  </div>
+                  <div className="historical-chip-grid">
+                    {historicalTimeSliceOptions.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        className={!customTimeSlice && timeSlice === option ? "is-active" : ""}
+                        aria-pressed={!customTimeSlice && timeSlice === option}
+                        onClick={() => {
+                          setTimeSlice(option);
+                          setCustomTimeSlice("");
+                        }}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                  <label className="historical-field">
+                    <span>Or write a precise slice</span>
+                    <input
+                      value={customTimeSlice}
+                      onChange={(event) => setCustomTimeSlice(event.target.value)}
+                      placeholder="Salt March strategist, St. Helena retrospective, 1946 committee room..."
+                      disabled={sending}
+                    />
+                  </label>
+                </section>
+
+                <section className="historical-form-block" aria-labelledby="engagement-label">
+                  <div className="historical-form-heading">
+                    <MessageCircle size={20} />
+                    <div>
+                      <strong id="engagement-label">Engagement contract</strong>
+                      <span>Choose the relationship and the purpose of the room.</span>
+                    </div>
+                  </div>
+                  <div className="historical-mode-grid">
+                    {historicalEngagementModes.map((mode) => {
+                      const Icon = historicalModeIcon(mode.id);
+                      return (
+                        <button
+                          key={mode.id}
+                          type="button"
+                          aria-pressed={engagementMode === mode.id}
+                          className={engagementMode === mode.id ? "is-active" : ""}
+                          onClick={() => selectEngagementMode(mode)}
+                        >
+                          <Icon size={18} />
+                          <strong>{mode.label}</strong>
+                          <span>{mode.body}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+
+                <div className="historical-field-grid">
+                  <section className="historical-form-block" aria-label="Historian visibility">
+                    <div className="historical-form-heading">
+                      <FileText size={20} />
+                      <div>
+                        <strong>Historian sidecar</strong>
+                        <span>How visibly should evidence appear?</span>
+                      </div>
+                    </div>
+                    <div className="historical-visibility-grid">
+                      {historianVisibilityOptions.map((option) => (
+                        <button
+                          key={option.value}
+                          type="button"
+                          aria-pressed={historianVisibility === option.value}
+                          className={historianVisibility === option.value ? "is-active" : ""}
+                          onClick={() => setHistorianVisibility(option.value)}
+                        >
+                          <strong>{option.label}</strong>
+                          <span>{option.body}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                  <label className="historical-field historical-opening-field">
+                    <span>Opening purpose</span>
+                    <textarea
+                      value={openingGoal}
+                      onChange={(event) => setOpeningGoal(event.target.value)}
+                      placeholder="What do you want to ask, test, learn, or confront?"
+                      disabled={sending}
+                      rows={5}
+                    />
+                  </label>
+                </div>
+
+                <button type="submit" className="historical-primary-action" disabled={!personOrTheme.trim() || sending}>
+                  Build the audience
+                </button>
+              </form>
+            </div>
+
+            <aside className="historical-start-rail">
+              <section className="historical-rail-panel">
+                <div className="historical-rail-heading">
+                  <Sparkles size={20} />
+                  <strong>Fast starts</strong>
+                </div>
+                <div className="historical-quick-list">
+                  {historicalQuickStarts.map((example) => (
+                    <button key={example.label} type="button" onClick={() => applyQuickStart(example)}>
+                      <span>{example.label}</span>
+                      <small>{example.timeSlice}</small>
+                    </button>
+                  ))}
+                </div>
+              </section>
+              <section className="historical-rail-panel">
+                <div className="historical-rail-heading">
+                  <Landmark size={20} />
+                  <strong>Dossier wall includes</strong>
+                </div>
+                <div className="historical-rail-list">
+                  {historicalDossierActions.map((item) => (
+                    <article key={item.title}>
+                      <strong>{item.title}</strong>
+                      <span>{item.body}</span>
+                    </article>
+                  ))}
+                </div>
+              </section>
+              <section className="historical-rail-panel historical-safety-panel">
+                <div className="historical-rail-heading">
+                  <AlertTriangle size={20} />
+                  <strong>Non-negotiables</strong>
+                </div>
+                <p>
+                  Generated dialogue is simulation. The historian layer must mark evidence,
+                  uncertainty, anachronism, and harmful views clearly.
+                </p>
+              </section>
+            </aside>
+          </section>
+        ) : (
+          <section className="historical-stage-grid">
+            <aside className="historical-dossier-panel">
+              <div className="historical-session-heading">
+                <Landmark size={23} />
+                <div>
+                  <span>Living dossier</span>
+                  <strong>{personOrTheme.trim() || topic.name}</strong>
+                </div>
+              </div>
+              <div className="historical-session-meta">
+                <span>
+                  <ClockIcon /> {selectedTimeSlice}
+                </span>
+                <span>
+                  <MapPin size={15} /> {setting.trim() || "Historically fitted setting"}
+                </span>
+                <span>
+                  <Scale size={15} /> {selectedMode.label}
+                </span>
+              </div>
+              <div className="historical-dossier-actions">
+                {historicalDossierActions.map((action) => (
+                  <button
+                    key={action.title}
+                    type="button"
+                    disabled={sending}
+                    onClick={() => void onSend(action.prompt)}
+                  >
+                    <strong>{action.title}</strong>
+                    <span>{action.body}</span>
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                disabled={sending}
+                className="historical-debrief-button"
+                onClick={() =>
+                  void onSend(
+                    "End this session with a debrief artifact: what the person argued, what I challenged, strongest insight, weakest claim, historical context learned, open questions, recommended next encounters, and any saved quotes clearly marked as generated paraphrases unless sourced.",
+                  )
+                }
+              >
+                <FileText size={17} />
+                <span>Generate debrief</span>
+              </button>
+              <button type="button" onClick={onReset} className="historical-new-session">
+                New audience
+              </button>
+            </aside>
+
+            <section className="historical-encounter-panel">
+              <header className="historical-stage-top">
+                <div className="historical-scene-mark">
+                  <Landmark size={24} />
+                </div>
+                <div>
+                  <span>Audience in progress</span>
+                  <h2>{personOrTheme.trim() || "Historical encounter"}</h2>
+                  <p>
+                    {setting.trim() || "The scene is being established by the dossier."} · {userRole || selectedMode.role}
+                  </p>
+                </div>
+                <div className="historical-temperature">
+                  <Thermometer size={17} />
+                  <span>{selectedMode.label}</span>
+                </div>
+              </header>
+
+              <div className="historical-mode-switcher" aria-label="Conversation controls">
+                {historicalModeSwitches.map((switcher) => (
+                  <button
+                    key={switcher.label}
+                    type="button"
+                    disabled={sending}
+                    onClick={() => void onSend(switcher.prompt)}
+                  >
+                    {switcher.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="bubble-message-stack historical-message-stack">
+                {visibleMessages.map((message) => (
+                  <MessageBubble key={message.id} message={message} />
+                ))}
+                {awaitingResponse ? (
+                  <div className="bubble-thinking" aria-live="polite">
+                    <span />
+                    <span />
+                    <span />
+                    <strong>Thinking</strong>
+                  </div>
+                ) : null}
+              </div>
+            </section>
+
+            <aside className="historical-sidecar-panel">
+              <div className="historical-session-heading">
+                <ShieldCheck size={22} />
+                <div>
+                  <span>Historian sidecar</span>
+                  <strong>{historianVisibilityOptions.find((option) => option.value === historianVisibility)?.label}</strong>
+                </div>
+              </div>
+              <div className="historical-sidecar-list">
+                <article>
+                  <strong>Evidence labels</strong>
+                  <span>Documented, plausible reconstruction, modern paraphrase, contested, or fictionalized.</span>
+                </article>
+                <article>
+                  <strong>Knowledge boundary</strong>
+                  <span>The person should not know future events unless you explicitly open modern confrontation.</span>
+                </article>
+                <article>
+                  <strong>Claim tracker</strong>
+                  <span>Ask to save major claims and classify their evidence strength.</span>
+                </article>
+                <article>
+                  <strong>Pressure check</strong>
+                  <span>Use the dossier to see what incentives, fears, allies, and enemies shape the reply.</span>
+                </article>
+              </div>
+            </aside>
+          </section>
+        )}
+      </div>
+      {hasSession ? (
+        <form onSubmit={onSubmit} className="bubble-composer">
+          <div className="bubble-composer-inner">
+            <textarea
+              ref={inputRef}
+              value={input}
+              onChange={(event) => onInput(event.target.value)}
+              onKeyDown={onKeyDown}
+              placeholder="Ask, challenge, request evidence, or open a dossier item..."
+              disabled={sending}
+              className="bubble-composer-input"
+              rows={1}
+            />
+            <button
+              type={sending ? "button" : "submit"}
+              onClick={sending ? onStop : undefined}
+              disabled={!sending && !input.trim()}
+              aria-label={sending ? "Stop response" : "Send message"}
+              className="bubble-send-button"
+            >
+              {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
+            </button>
+          </div>
+        </form>
+      ) : null}
+    </main>
+  );
+}
+
+function ClockIcon() {
+  return <History size={20} />;
 }
 
 function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
@@ -1850,10 +4760,10 @@ function GuestContinueModal({
         <span className="bubble-guest-modal-kicker">
           {Math.min(used, limit)}/{limit} free guest messages used
         </span>
-        <h2 id="guest-modal-title">Continue learning for free</h2>
+        <h2 id="guest-modal-title">Continue learning</h2>
         <p>
-          Google keeps your learning history, profile, language preference, and future conversations saved.
-          inspir stays free to use.
+          Easy Google login, then inspir stores your learning history, language preference, and chats so
+          everything is ready next time. inspir stays free to use.
         </p>
         <GoogleContinueButton className="bubble-guest-modal-primary">Continue with Google</GoogleContinueButton>
         <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
@@ -1889,14 +4799,13 @@ function ProfilePanel({
         <section className="bubble-profile-hero">
           <div className="bubble-profile-avatar">{avatarSrc ? <img src={avatarSrc} alt="" /> : null}</div>
           <div>
-            <h3>{user.name || "User Name"}</h3>
+            <h3>{user.name || "Learner"}</h3>
             <p>{user.email || "user@example.com"}</p>
           </div>
         </section>
 
         <div className="bubble-profile-info">
-          <ProfileLine icon="user" label="Name" value={user.name || "User Name"} />
-          <ProfileLine icon="mail" label="Email" value={user.email || "user@example.com"} />
+          <ProfileLine label="Email" value={user.email || "user@example.com"} />
         </div>
 
         <section className="bubble-language-card">
@@ -1946,18 +4855,16 @@ function ProfilePanel({
 }
 
 function ProfileLine({
-  icon,
   label,
   value,
 }: {
-  icon: "user" | "mail";
   label: string;
   value: string;
 }) {
   return (
     <div className="bubble-profile-line">
       <div className="bubble-profile-line-icon">
-        {icon === "mail" ? <Mail size={32} fill="currentColor" /> : <UserIcon size={32} fill="currentColor" />}
+        <Mail size={32} fill="currentColor" />
       </div>
       <div className="bubble-profile-line-text">
         <span>{label}</span>

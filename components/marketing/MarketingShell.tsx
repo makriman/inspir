@@ -11,8 +11,10 @@ export const missionImages = [
 ] as const;
 
 const navLinks = [
+  { href: "/chat/learn-anything", label: "Start" },
   { href: "/mission", label: "Mission" },
   { href: "/schools", label: "Schools" },
+  { href: "/blog", label: "Blog" },
   { href: "/media", label: "Media" },
   { href: "/about", label: "About" },
 ] as const;
@@ -21,12 +23,12 @@ export function MarketingHeader({ hero = false }: { hero?: boolean }) {
   return (
     <header className={`marketing-header ${hero ? "is-hero" : ""}`}>
       <Link href="/" aria-label="inspir home" className="marketing-brand">
-        <InspirLogo variant={hero ? "white" : "color"} className="marketing-brand-mark" />
+        <InspirLogo variant="white" className="marketing-brand-mark" />
         <InspirWordmark className="marketing-brand-word" />
       </Link>
       <nav className="marketing-nav" aria-label="Primary navigation">
         {navLinks.map((link) => (
-          <Link key={link.href} href={link.href}>
+          <Link key={link.href} href={link.href} className={link.href.startsWith("/chat") ? "is-primary" : ""}>
             {link.label}
           </Link>
         ))}
@@ -49,6 +51,7 @@ export function MarketingFooter() {
       <nav className="marketing-footer-links" aria-label="Footer links">
         <Link href="/mission">Mission</Link>
         <Link href="/schools">Schools</Link>
+        <Link href="/blog">Blog</Link>
         <Link href="/media">Media</Link>
         <Link href="/about">About</Link>
         <Link href="/tnc">Terms</Link>
@@ -77,10 +80,24 @@ export function MarketingPageHero({
       </div>
       <div className="marketing-page-visual" aria-hidden="true">
         {missionImages.map((src, index) => (
-          <img key={src} src={src} alt="" className={`is-${index + 1}`} />
+          <img key={src} src={src} alt="" className={`is-${index + 1}`} loading={index === 0 ? "eager" : "lazy"} />
         ))}
       </div>
     </section>
+  );
+}
+
+export function MarketingHeroVideo() {
+  return (
+    <div className="marketing-hero-video" aria-hidden="true">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/HOSC6eGLj20?autoplay=1&mute=1&controls=0&loop=1&playlist=HOSC6eGLj20&modestbranding=1&playsinline=1&rel=0&iv_load_policy=3&disablekb=1&fs=0"
+        title="inspir learning video"
+        tabIndex={-1}
+        allow="autoplay; encrypted-media; picture-in-picture"
+        referrerPolicy="strict-origin-when-cross-origin"
+      />
+    </div>
   );
 }
 

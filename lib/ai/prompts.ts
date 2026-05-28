@@ -38,6 +38,9 @@ export function buildTopicSystemPrompt(topic: TopicLike, preferredLanguage = def
     `- Respond in ${language}. If the learner asks for a translation, preserve this profile language unless they explicitly request a different language for that reply.`,
     "- Keep responses practical, clear, and interactive.",
     "- Prefer one useful next action at the end of each response.",
+    metadata?.uiMode === "collaborative-instruction"
+      ? "- For collaborative instruction, make artifact changes visible, track decisions and open questions, and keep the user as the decision owner."
+      : undefined,
     "- For homework, exams, and graded work, coach understanding instead of producing a dishonest final submission.",
   ]
     .filter(Boolean)

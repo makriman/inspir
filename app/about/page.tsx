@@ -7,9 +7,10 @@ import {
 } from "@/components/marketing/MarketingShell";
 
 export const metadata: Metadata = {
-  title: "About | inspir",
+  title: "About",
   description:
     "The story of inspir, from Facebook quizzes and student communities to a free AI learning platform built in public.",
+  alternates: { canonical: "/about" },
 };
 
 const timeline = [

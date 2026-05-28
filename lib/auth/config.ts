@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { eq } from "drizzle-orm";
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/lib/db/client";
 import { accounts, sessions, users, verificationTokens } from "@/lib/db/schema";
@@ -63,8 +64,22 @@ export const authOptions: NextAuthOptions = {
   },
   events: {
     async signIn({ user, profile }) {
+      const googleProfile = profile as { name?: string; picture?: string } | undefined;
+      const googleName = googleProfile?.name?.trim() || user.name?.trim();
       const profileImage =
-        (profile as { picture?: string } | undefined)?.picture ?? user.image ?? undefined;
+        googleProfile?.picture ?? user.image ?? undefined;
+
+      if (user.id && (googleName || profileImage)) {
+        await db
+          .update(users)
+          .set({
+            ...(googleName ? { name: googleName } : {}),
+            ...(profileImage ? { image: profileImage } : {}),
+            updatedAt: new Date(),
+          })
+          .where(eq(users.id, user.id));
+      }
+
       await refreshProfilePhoto(user.id, profileImage);
     },
   },

@@ -20,7 +20,7 @@ inspir gives learners topic-based AI modes rather than a single generic chat box
 
 - Learn Anything: clear explanations for any topic.
 - Socratic Instruction: questions that guide the learner toward understanding.
-- Collaborative Instruction: Hindi-first study partner mode.
+- Collaborative Instruction: shared workroom for learning, critique, decisions, and artifact-building.
 - Interactive Instruction: explain, quiz, adapt, repeat.
 - Quiz me on Trivia: text-in-chat multiple choice quizzes with scoring.
 - Time travel: explore another era through an AI local guide.

@@ -14,13 +14,14 @@ import {
   ArrowLink,
   MarketingFooter,
   MarketingHeader,
-  missionImages,
+  MarketingHeroVideo,
 } from "@/components/marketing/MarketingShell";
 
 export const metadata: Metadata = {
-  title: "inspir | Free AI learning for everyone",
+  title: "Free AI learning for everyone",
   description:
     "Revolutionize Your Learning Journey with Artificial intelligence. Learn, practise, debate, quiz, and explore with inspir.",
+  alternates: { canonical: "/" },
 };
 
 const stats = [
@@ -73,35 +74,45 @@ const repos = [
 export default function LandingPage() {
   return (
     <main className="marketing-site">
+      <MarketingHeader hero />
       <section className="marketing-hero" aria-labelledby="landing-title">
-        <img src={missionImages[0]} alt="" className="marketing-hero-image" />
-        <div className="marketing-hero-shade" />
-        <MarketingHeader hero />
         <div className="marketing-hero-content">
           <span className="marketing-kicker">Free public AI learning platform</span>
-          <h1 id="landing-title">Revolutionize Your Learning Journey with Artificial intelligence</h1>
+          <h1 id="landing-title">Free AI learning for everyone.</h1>
           <p>
             inspir helps anyone learn and practise through patient AI conversations, quizzes,
             debates, role-play, and guided instruction.
           </p>
           <div className="marketing-hero-actions">
-            <Link href="/chat" className="marketing-primary-cta">
-              Get Started
+            <Link href="/chat/learn-anything" className="marketing-primary-cta">
+              Start learning
               <Sparkles size={18} />
             </Link>
             <Link href="/mission" className="marketing-secondary-cta">
               Read the mission
             </Link>
           </div>
-          <dl className="marketing-hero-stats">
-            {stats.map(([value, label]) => (
-              <div key={value}>
-                <dt>{value}</dt>
-                <dd>{label}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
+        <MarketingHeroVideo />
+      </section>
+
+      <section className="marketing-band marketing-impact-band">
+        <div className="marketing-section-copy is-centered">
+          <span>Globally useful</span>
+          <h2>Built for curiosity, practice, and access.</h2>
+          <p>
+            The work began in public learning communities and continues as a free AI companion
+            for students, parents, teachers, and self-taught learners.
+          </p>
+        </div>
+        <dl className="marketing-hero-stats">
+          {stats.map(([value, label]) => (
+            <div key={value}>
+              <dt>{value}</dt>
+              <dd>{label}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section className="marketing-band is-intro">

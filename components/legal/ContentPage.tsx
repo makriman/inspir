@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { InspirWordmark } from "@/components/brand/InspirLogo";
+import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
 
 function isHeading(block: string) {
   if (block.length > 90) return false;
@@ -19,50 +18,40 @@ export function ContentPage({
   const filtered = blocks.filter((block) => block.trim() && block.trim() !== title);
 
   return (
-    <main className="min-h-screen bg-black text-white">
-      <header className="border-b border-white/10 bg-[#050505] px-6 py-5">
-        <div className="mx-auto flex max-w-5xl items-center justify-between">
-          <Link href="/" aria-label="inspir home">
-            <InspirWordmark className="text-3xl" />
-          </Link>
-          <nav className="flex items-center gap-5 text-sm font-bold text-white/80">
-            <Link href="/tnc" className="hover:text-white">
-              Terms
-            </Link>
-            <Link href="/privacy" className="hover:text-white">
-              Privacy
-            </Link>
-            <Link href="/mission" className="hover:text-white">
-              Mission
-            </Link>
-          </nav>
-        </div>
-      </header>
-      <article className="mx-auto max-w-5xl px-6 py-12">
-        <h1 className="mb-8 text-4xl font-black tracking-normal md:text-6xl">{title}</h1>
-        <div className="space-y-7 text-base font-semibold leading-8 text-white/86 md:text-lg">
+    <main className="marketing-site">
+      <MarketingHeader />
+      <article className="content-page">
+        <header className="content-page-header">
+          <span>Public record</span>
+          <h1>{title}</h1>
+        </header>
+        <div className="content-page-body">
           {filtered.map((block, index) => {
             const image = images?.[index % images.length];
             const showImage = images && index > 0 && index % 4 === 0 && image;
             return (
-              <section key={`${block.slice(0, 24)}-${index}`} className="space-y-5">
+              <section
+                key={`${block.slice(0, 24)}-${index}`}
+                className={`content-page-block ${isHeading(block) ? "is-heading" : ""}`}
+              >
                 {showImage ? (
                   <img
                     src={image.startsWith("//") ? `https:${image}` : image}
                     alt=""
-                    className="my-8 aspect-[16/9] w-full rounded-[8px] object-cover"
+                    loading="lazy"
                   />
                 ) : null}
                 {isHeading(block) ? (
-                  <h2 className="pt-2 text-2xl font-black text-white">{block}</h2>
+                  <h2>{block}</h2>
                 ) : (
-                  <p className="whitespace-pre-line">{block}</p>
+                  <p>{block}</p>
                 )}
               </section>
             );
           })}
         </div>
       </article>
+      <MarketingFooter />
     </main>
   );
 }

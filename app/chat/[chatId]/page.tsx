@@ -1,8 +1,12 @@
-import { redirect, notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth/config";
 import { ChatClient } from "@/components/chat/ChatClient";
 import { sanitizeActivityRun } from "@/lib/activities/quiz";
+import { authOptions } from "@/lib/auth/config";
+import { topicSeeds } from "@/lib/content/topics";
+import { getTopicSeo } from "@/lib/content/topic-seo";
+import { isUuidPathSegment, resolveTopicSlug, topicPath } from "@/lib/content/topic-routing";
 import {
   getActiveTopics,
   getChatMessages,
@@ -11,15 +15,136 @@ import {
   getOwnedChat,
   getUserById,
 } from "@/lib/db/queries";
+import { defaultSocialImage, siteName } from "@/lib/seo/config";
+import { serializeJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export default async function ChatThreadPage({ params }: { params: Promise<{ chatId: string }> }) {
+type ChatRoutePageProps = {
+  params: Promise<{ chatId: string }>;
+};
+
+function findSeedTopic(slug: string) {
+  return topicSeeds.find((topic) => topic.slug === slug);
+}
+
+function guestUser() {
+  return {
+    id: "guest",
+    name: "Guest learner",
+    email: "",
+    image: null,
+    score: 0,
+    preferredLanguage: "English",
+    createdAt: new Date(),
+    profileImageHash: null,
+  };
+}
+
+export function generateStaticParams() {
+  return topicSeeds.map((topic) => ({ chatId: topic.slug }));
+}
+
+export async function generateMetadata({ params }: ChatRoutePageProps): Promise<Metadata> {
+  const { chatId } = await params;
+  const slug = resolveTopicSlug(chatId);
+
+  if (slug) {
+    const topic = findSeedTopic(slug);
+    if (!topic) return {};
+    const seo = getTopicSeo(topic);
+    return {
+      title: seo.title,
+      description: seo.description,
+      alternates: { canonical: topicPath(topic.slug) },
+      robots: { index: true, follow: true },
+      openGraph: {
+        title: seo.title,
+        description: seo.description,
+        url: topicPath(topic.slug),
+        siteName,
+        images: [defaultSocialImage],
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seo.title,
+        description: seo.description,
+        images: [defaultSocialImage.url],
+      },
+    };
+  }
+
+  if (isUuidPathSegment(chatId)) {
+    return {
+      title: "Private chat",
+      description: "A private saved inspir chat.",
+      robots: { index: false, follow: false, nocache: true },
+    };
+  }
+
+  return {
+    title: "Chat not found",
+    robots: { index: false, follow: false },
+  };
+}
+
+export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
+  const { chatId } = await params;
+  const topicSlug = resolveTopicSlug(chatId);
+
+  if (topicSlug) {
+    const seedTopic = findSeedTopic(topicSlug);
+    if (!seedTopic) notFound();
+
+    const session = await getServerSession(authOptions);
+    const [topics, user] = await Promise.all([
+      getActiveTopics(),
+      session?.user?.id ? getUserById(session.user.id) : Promise.resolve(null),
+    ]);
+    const topic = topics.find((candidate) => candidate.slug === topicSlug);
+    if (!topic) notFound();
+
+    const profileUser = session?.user?.id
+      ? {
+          id: session.user.id,
+          name: user?.name ?? session.user.name ?? "Learner",
+          email: user?.email ?? session.user.email ?? "user@example.com",
+          image: user?.image ?? session.user.image ?? null,
+          score: user?.score ?? 0,
+          preferredLanguage: user?.preferredLanguage ?? "English",
+          createdAt: user?.createdAt ?? new Date(),
+          profileImageHash: user?.profileImageHash ?? null,
+        }
+      : guestUser();
+
+    return (
+      <>
+        {topicJsonLd(seedTopic).map((entry, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
+          />
+        ))}
+        <ChatClient
+          authMode={session?.user?.id ? "authenticated" : "guest"}
+          user={profileUser}
+          topics={topics}
+          initialTopicId={topic.id}
+          initialMessages={[]}
+          initialActivityRun={null}
+        />
+      </>
+    );
+  }
+
+  if (!isUuidPathSegment(chatId)) notFound();
+
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) redirect("/");
 
-  const { chatId } = await params;
   const owned = await getOwnedChat(chatId, session.user.id);
   if (!owned) notFound();
 
@@ -33,9 +158,10 @@ export default async function ChatThreadPage({ params }: { params: Promise<{ cha
 
   return (
     <ChatClient
+      authMode="authenticated"
       user={{
         id: session.user.id,
-        name: user?.name ?? session.user.name ?? "User Name",
+        name: user?.name ?? session.user.name ?? "Learner",
         email: user?.email ?? session.user.email ?? "user@example.com",
         image: user?.image ?? session.user.image ?? null,
         score: user?.score ?? 0,

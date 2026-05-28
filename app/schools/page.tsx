@@ -9,9 +9,10 @@ import {
 } from "@/components/marketing/MarketingShell";
 
 export const metadata: Metadata = {
-  title: "Schools | inspir",
+  title: "Schools",
   description:
     "White-labelled AI learning experiences for schools, with custom workflows, data confidentiality, and NCERT-aligned options.",
+  alternates: { canonical: "/schools" },
 };
 
 const schoolFeatures = [
@@ -93,7 +94,7 @@ export default function SchoolsPage() {
       <section className="marketing-cta-band">
         <h2>Try the platform, then talk to us about a school version.</h2>
         <div className="marketing-inline-actions">
-          <Link href="/chat" className="marketing-primary-cta is-dark">
+          <Link href="/chat/learn-anything" className="marketing-primary-cta is-dark">
             Try platform
             <Sparkles size={18} />
           </Link>

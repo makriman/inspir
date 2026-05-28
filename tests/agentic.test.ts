@@ -58,11 +58,29 @@ test("prompt assembly includes selected profile language", () => {
   assert.ok(prompt.includes("Respond in Spanish"));
 });
 
+test("historical person prompt requires time slices and evidence labels", () => {
+  const seed = topicSeeds.find((topic) => topic.slug === "talk-to-a-historical-person");
+  assert.ok(seed);
+  const prompt = buildTopicSystemPrompt({
+    name: seed.name,
+    slug: seed.slug,
+    systemPrompt: seed.systemPrompt,
+    metadata: seed.metadata,
+  });
+
+  assert.ok(prompt.includes("time slice"));
+  assert.ok(prompt.includes("historian sidecar"));
+  assert.ok(prompt.includes("Never present generated dialogue as authenticated quotation"));
+});
+
 test("collaborative instruction no longer defaults to Hindi", () => {
   const seed = topicSeeds.find((topic) => topic.slug === "collaborative-instruction");
   assert.ok(seed);
   const text = [seed.subText, seed.description, seed.inputboxText, seed.systemPrompt, ...seed.metadata.starters].join(" ");
   assert.equal(/Hindi|Aaj|Chalo|saath|Mujhe/.test(text), false);
+  assert.ok(seed.systemPrompt.includes("rough shared artifact"));
+  assert.ok(seed.systemPrompt.includes("Decision log"));
+  assert.ok(seed.systemPrompt.includes("decision owner"));
 });
 
 test("flashcard builder is a structured mini app mode", () => {
