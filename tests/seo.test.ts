@@ -10,7 +10,7 @@ import {
   getBlogPosts,
   getRelatedBlogPosts,
 } from "../lib/content/blog";
-import { homepageFaqs, homepageLearningPaths } from "../lib/content/landing";
+import { homepageFaqs, homepageLearningPaths, learningPathHref } from "../lib/content/landing";
 import { topicSeeds } from "../lib/content/topics";
 import {
   defaultTopicPath,
@@ -61,7 +61,11 @@ test("sitemap includes public topic and blog pages but excludes private surfaces
   assert.ok(posts.length >= 100);
   assert.ok(urls.includes(absoluteUrl("/")));
   assert.ok(urls.includes(absoluteUrl("/topics")));
+  assert.ok(urls.includes(absoluteUrl("/learn")));
   assert.ok(urls.includes(absoluteUrl("/blog")));
+  for (const path of homepageLearningPaths) {
+    assert.ok(urls.includes(absoluteUrl(learningPathHref(path.slug))), `${path.slug} should be in sitemap`);
+  }
   assert.ok(sitemap().some((entry) => entry.images?.includes(absoluteUrl("/inspir-social-preview.png"))));
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
@@ -178,14 +182,16 @@ test("homepage learning paths and faqs expose crawlable guest-mode guidance", ()
     name: "Popular AI learning paths",
     items: homepageLearningPaths.map((path) => ({
       name: path.title,
-      url: path.links[0].href,
+      url: learningPathHref(path.slug),
       description: path.description,
     })),
   });
 
   assert.equal(faq.mainEntity.length, homepageFaqs.length);
   assert.equal(list.itemListElement.length, homepageLearningPaths.length);
-  assert.ok(JSON.stringify(list).includes(absoluteUrl("/chat/learn-anything")));
+  assert.ok(homepageLearningPaths.every((path) => path.steps.length === 3));
+  assert.ok(homepageLearningPaths.every((path) => path.relatedBlogSlugs.length >= 3));
+  assert.ok(JSON.stringify(list).includes(absoluteUrl("/learn/understand-a-hard-topic")));
 });
 
 test("blog posts resolve related public modes and category clusters", () => {
@@ -224,8 +230,12 @@ test("ai discovery files describe every public mode without exposing private cha
   assert.ok(compact.includes(absoluteUrl("/ai-content-index.json")));
   assert.ok(compact.includes("Public learning entrypoints are canonical at /chat/{topicSlug}."));
   assert.ok(full.includes("# inspir Full AI-Readable Learning Index"));
+  assert.ok(compact.includes(absoluteUrl("/learn/understand-a-hard-topic")));
+  assert.ok(full.includes("## AI learning paths"));
   assert.ok(full.includes(`URL: ${absoluteUrl("/chat/learn-anything")}`));
   assert.ok(full.includes("Historical and persona simulations"));
+  assert.equal(index.learningPaths.length, homepageLearningPaths.length);
+  assert.ok(index.learningPaths.every((path) => path.url.includes("/learn/")));
   assert.equal(index.publicLearningModes.length, topicSeeds.length);
   assert.ok(index.blog.postCount >= 100);
   assert.ok(index.blog.posts.length >= 100);

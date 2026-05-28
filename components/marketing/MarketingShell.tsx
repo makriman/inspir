@@ -15,6 +15,7 @@ export const missionImages = [
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
   { href: "/topics", label: "Modes" },
+  { href: "/learn", label: "Paths" },
   { href: "/mission", label: "Mission" },
   { href: "/schools", label: "Schools" },
   { href: "/blog", label: "Blog" },
@@ -53,6 +54,7 @@ export function MarketingFooter() {
       <nav className="marketing-footer-links" aria-label="Footer links">
         <Link href="/mission">Mission</Link>
         <Link href="/topics">Modes</Link>
+        <Link href="/learn">Paths</Link>
         <Link href="/schools">Schools</Link>
         <Link href="/blog">Blog</Link>
         <Link href="/media">Media</Link>

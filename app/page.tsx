@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowUpRight,
   BookOpenCheck,
   BrainCircuit,
   CircleDot,
@@ -20,7 +21,7 @@ import {
   missionImages,
 } from "@/components/marketing/MarketingShell";
 import { getBlogPosts } from "@/lib/content/blog";
-import { homepageFaqs, homepageLearningPaths } from "@/lib/content/landing";
+import { homepageFaqs, homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
@@ -158,7 +159,7 @@ export default function LandingPage() {
       name: "Popular AI learning paths",
       items: homepageLearningPaths.map((path) => ({
         name: path.title,
-        url: path.links[0].href,
+        url: learningPathHref(path.slug),
         description: path.description,
       })),
     }),
@@ -312,6 +313,10 @@ export default function LandingPage() {
               <h3>{path.title}</h3>
               <p>{path.description}</p>
               <div>
+                <Link href={learningPathHref(path.slug)}>
+                  <ArrowUpRight size={15} />
+                  Open the path
+                </Link>
                 {path.links.map((link) => (
                   <Link key={link.href} href={link.href}>
                     <CornerDownRight size={15} />

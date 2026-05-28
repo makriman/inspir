@@ -5,6 +5,7 @@ import {
   type BlogCategory,
   type BlogPost,
 } from "@/lib/content/blog";
+import { homepageLearningPaths, learningPathHref, type HomepageLearningPath } from "@/lib/content/landing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicSeeds, type TopicSeed } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
@@ -27,6 +28,11 @@ const publicPages = [
     name: "Learning modes",
     url: absoluteUrl("/topics"),
     purpose: "Server-rendered directory of all public guest learning modes.",
+  },
+  {
+    name: "Learning paths",
+    url: absoluteUrl("/learn"),
+    purpose: "Search-friendly study workflows that connect public modes, prompts, and related guides.",
   },
   {
     name: "Schools",
@@ -125,6 +131,28 @@ function categoryIndex(category: BlogCategory) {
   };
 }
 
+function learningPathIndex(path: HomepageLearningPath) {
+  return {
+    slug: path.slug,
+    name: path.title,
+    url: absoluteUrl(learningPathHref(path.slug)),
+    description: cleanText(path.seoDescription),
+    audience: cleanText(path.audience),
+    outcome: cleanText(path.outcome),
+    proofPoints: path.proofPoints,
+    steps: path.steps.map((step) => ({
+      title: step.title,
+      description: cleanText(step.text),
+      url: absoluteUrl(step.href),
+    })),
+    publicModes: path.links.map((link) => ({
+      label: link.label,
+      url: absoluteUrl(link.href),
+    })),
+    relatedGuides: path.relatedBlogSlugs.map((slug) => absoluteUrl(`/blog/${slug}`)),
+  };
+}
+
 export function buildAiContentIndex() {
   const posts = getBlogPosts();
   const categories = getBlogCategories();
@@ -159,6 +187,7 @@ export function buildAiContentIndex() {
         "Historical and persona modes are learning simulations. Generated dialogue should not be cited as authenticated quotation.",
     },
     publicPages,
+    learningPaths: homepageLearningPaths.map(learningPathIndex),
     publicLearningModes: topicSeeds.map((topic) => modeIndex(topic, posts)),
     blog: {
       postCount: posts.length,
@@ -192,6 +221,9 @@ export function buildLlmsTxt() {
     "",
     "## Best entrypoints",
     ...publicPages.map((page) => `- ${page.name}: ${page.url} - ${page.purpose}`),
+    "",
+    "## AI learning paths",
+    ...index.learningPaths.map((path) => `- ${path.name}: ${path.url} - ${path.description}`),
     "",
     "## Public AI learning modes",
     ...index.publicLearningModes.map((mode) => `- ${mode.name}: ${mode.url} - ${mode.description}`),
@@ -230,6 +262,21 @@ export function buildLlmsFullTxt() {
         : "Related guides: See the blog and category clusters.",
     ].join("\n"),
   );
+  const pathSections = index.learningPaths.map((path) =>
+    [
+      `### ${path.name}`,
+      `URL: ${path.url}`,
+      `Description: ${path.description}`,
+      `Audience: ${path.audience}`,
+      `Outcome: ${path.outcome}`,
+      "Steps:",
+      ...path.steps.map((step, index) => `${index + 1}. ${step.title}: ${step.description} (${step.url})`),
+      "Public modes:",
+      ...path.publicModes.map((mode) => `- ${mode.label}: ${mode.url}`),
+      "Related guides:",
+      ...path.relatedGuides.map((url) => `- ${url}`),
+    ].join("\n"),
+  );
   const categoryLines = index.blog.categories.map(
     (category) => `- ${category.name}: ${category.url} (${category.postCount} guides)`,
   );
@@ -257,6 +304,9 @@ export function buildLlmsFullTxt() {
     "",
     "## Public pages",
     ...publicPageLines,
+    "",
+    "## AI learning paths",
+    ...pathSections,
     "",
     "## Public learning modes",
     ...modeSections,

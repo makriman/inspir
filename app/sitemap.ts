@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getBlogCategories, getBlogPosts } from "@/lib/content/blog";
+import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { absoluteUrl, socialImage } from "@/lib/seo/config";
@@ -20,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: absoluteUrl("/schools"), lastModified: staticLastModified, changeFrequency: "monthly", priority: 0.75 },
     { url: absoluteUrl("/media"), lastModified: staticLastModified, changeFrequency: "monthly", priority: 0.65 },
     { url: absoluteUrl("/topics"), lastModified: staticLastModified, changeFrequency: "weekly", priority: 0.82 },
+    { url: absoluteUrl("/learn"), lastModified: staticLastModified, changeFrequency: "weekly", priority: 0.78 },
     { url: absoluteUrl("/blog"), lastModified: staticLastModified, changeFrequency: "weekly", priority: 0.7 },
   ];
 
@@ -54,5 +56,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [socialImage({ title: `${category.name} AI Learning Guides`, eyebrow: "Blog theme" }).url],
   }));
 
-  return [...staticRoutes, ...topicRoutes, ...blogRoutes, ...blogCategoryRoutes];
+  const learningPathRoutes: MetadataRoute.Sitemap = homepageLearningPaths.map((path) => ({
+    url: absoluteUrl(learningPathHref(path.slug)),
+    lastModified: staticLastModified,
+    changeFrequency: "weekly",
+    priority: 0.76,
+    images: [
+      socialImage({
+        title: path.seoTitle,
+        eyebrow: "Learning path",
+        description: path.seoDescription,
+      }).url,
+    ],
+  }));
+
+  return [...staticRoutes, ...learningPathRoutes, ...topicRoutes, ...blogRoutes, ...blogCategoryRoutes];
 }
