@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
+import { ArrowUpRight, CornerDownRight, Sparkles } from "lucide-react";
 import { ChatClient } from "@/components/chat/ChatClient";
 import { sanitizeActivityRun } from "@/lib/activities/quiz";
 import { authOptions } from "@/lib/auth/config";
 import { seededTopics, topicFromSeed } from "@/lib/content/seeded-topics";
+import {
+  getRelatedBlogGuidesForTopic,
+  getRelatedLearningPathsForTopic,
+  topicPublicFaqs,
+} from "@/lib/content/topic-public-seo";
 import { topicSeeds } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { isUuidPathSegment, resolveTopicSlug, topicPath } from "@/lib/content/topic-routing";
@@ -17,7 +24,7 @@ import {
   getUserById,
 } from "@/lib/db/queries";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
-import { serializeJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
+import { faqPageJsonLd, itemListJsonLd, serializeJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -43,6 +50,110 @@ function guestUser() {
     createdAt: new Date(),
     profileImageHash: null,
   };
+}
+
+function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number] }) {
+  const seo = getTopicSeo(topic);
+  const starters = topic.metadata.starters;
+  const relatedPaths = getRelatedLearningPathsForTopic(topic);
+  const relatedGuides = getRelatedBlogGuidesForTopic(topic);
+  const hasRelated = relatedPaths.length > 0 || relatedGuides.length > 0;
+
+  return (
+    <section className="public-topic-seo" aria-labelledby={`${topic.slug}-seo-title`}>
+      <div className="public-topic-seo-head">
+        <span>{topic.metadata.category} learning mode</span>
+        <h2 id={`${topic.slug}-seo-title`}>{seo.title}</h2>
+        <p>{seo.description}</p>
+        <div className="public-topic-seo-actions">
+          <Link href={topicPath(topic.slug)} className="marketing-primary-cta">
+            Start {topic.name}
+            <Sparkles size={18} />
+          </Link>
+          <Link href="/topics" className="marketing-secondary-cta">
+            Browse all modes
+          </Link>
+        </div>
+      </div>
+
+      <div className="public-topic-seo-grid">
+        <article>
+          <strong>Who it helps</strong>
+          <p>{seo.who}</p>
+        </article>
+        <article>
+          <strong>Why it is different</strong>
+          <p>{seo.whyDifferent}</p>
+        </article>
+        <article>
+          <strong>What you can practise</strong>
+          <ul>
+            {seo.outcomes.map((outcome) => (
+              <li key={outcome}>{outcome}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      {starters.length ? (
+        <div className="public-topic-prompt-panel">
+          <div>
+            <span>Example prompts</span>
+            <h3>Good ways to start this chat.</h3>
+          </div>
+          <div className="public-topic-prompt-list">
+            {starters.map((starter) => (
+              <Link key={starter} href={topicPath(topic.slug)}>
+                <CornerDownRight size={16} />
+                {starter}
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      {hasRelated ? (
+        <div className="public-topic-related">
+          {relatedPaths.length ? (
+            <section>
+              <span>Learning paths</span>
+              <h3>Use this mode inside a study workflow.</h3>
+              <div>
+                {relatedPaths.map((path) => (
+                  <Link key={path.href} href={path.href}>
+                    <strong>{path.title}</strong>
+                    <p>{path.description}</p>
+                    <small>
+                      Open path
+                      <ArrowUpRight size={14} />
+                    </small>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+          {relatedGuides.length ? (
+            <section>
+              <span>Related guides</span>
+              <h3>Read a guide, then practise here.</h3>
+              <div>
+                {relatedGuides.map((guide) => (
+                  <Link key={guide.href} href={guide.href}>
+                    <strong>{guide.title}</strong>
+                    <p>{guide.description}</p>
+                    <small>
+                      Read guide
+                      <ArrowUpRight size={14} />
+                    </small>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+        </div>
+      ) : null}
+    </section>
+  );
 }
 
 async function withPublicTopicTimeout<T>(promise: Promise<T>) {
@@ -154,9 +265,37 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
         }
       : guestUser();
 
+    const topicFaqs = topicPublicFaqs(seedTopic);
+    const relatedPaths = getRelatedLearningPathsForTopic(seedTopic);
+    const relatedGuides = getRelatedBlogGuidesForTopic(seedTopic);
+    const topicStructuredData = [
+      ...topicJsonLd(seedTopic),
+      faqPageJsonLd({
+        path: topicPath(seedTopic.slug),
+        questions: topicFaqs,
+      }),
+      itemListJsonLd({
+        path: topicPath(seedTopic.slug),
+        id: "related-topic-resources",
+        name: `${seedTopic.name} related learning resources`,
+        items: [
+          ...relatedPaths.map((path) => ({
+            name: path.title,
+            url: path.href,
+            description: path.description,
+          })),
+          ...relatedGuides.map((guide) => ({
+            name: guide.title,
+            url: guide.href,
+            description: guide.description,
+          })),
+        ],
+      }),
+    ];
+
     return (
       <>
-        {topicJsonLd(seedTopic).map((entry, index) => (
+        {topicStructuredData.map((entry, index) => (
           <script
             key={index}
             type="application/ld+json"
@@ -171,6 +310,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           initialMessages={[]}
           initialActivityRun={null}
         />
+        <PublicTopicSeoCompanion topic={seedTopic} />
       </>
     );
   }

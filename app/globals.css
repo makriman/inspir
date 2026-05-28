@@ -603,6 +603,198 @@ a {
   line-height: 1;
 }
 
+.public-topic-seo {
+  --editorial-ink: #211f1c;
+  --editorial-muted: rgb(33 31 28 / 0.66);
+  --editorial-soft: #f7f3ed;
+  --editorial-paper: #fffdf8;
+  --editorial-card: #ffffff;
+  --editorial-line: rgb(33 31 28 / 0.12);
+  --editorial-red: #ff385c;
+  --editorial-green: #157f58;
+  display: grid;
+  gap: 34px;
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+  padding: 84px clamp(24px, 5vw, 72px);
+}
+
+.public-topic-seo-head {
+  width: min(860px, 100%);
+}
+
+.public-topic-seo-head > span,
+.public-topic-prompt-panel span,
+.public-topic-related section > span {
+  color: var(--editorial-red);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.public-topic-seo-head h2 {
+  margin: 16px 0 0;
+  color: var(--editorial-ink);
+  font-size: clamp(38px, 6vw, 70px);
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.public-topic-seo-head p {
+  max-width: 720px;
+  margin: 20px 0 0;
+  color: var(--editorial-muted);
+  font-size: 20px;
+  font-weight: 560;
+  line-height: 1.5;
+}
+
+.public-topic-seo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.public-topic-seo-grid,
+.public-topic-related {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.public-topic-seo-grid article,
+.public-topic-prompt-panel,
+.public-topic-related a {
+  border: 1px solid var(--editorial-line);
+  border-radius: 8px;
+  background: var(--editorial-card);
+  box-shadow: 0 16px 40px rgb(33 31 28 / 0.045);
+}
+
+.public-topic-seo-grid article {
+  padding: 24px;
+}
+
+.public-topic-seo-grid strong {
+  color: var(--editorial-ink);
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.public-topic-seo-grid p,
+.public-topic-seo-grid li {
+  color: var(--editorial-muted);
+  font-size: 15px;
+  font-weight: 560;
+  line-height: 1.55;
+}
+
+.public-topic-seo-grid p {
+  margin: 12px 0 0;
+}
+
+.public-topic-seo-grid ul {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.public-topic-seo-grid li {
+  border-left: 2px solid rgb(255 56 92 / 0.34);
+  padding-left: 10px;
+}
+
+.public-topic-prompt-panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.4fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding: 24px;
+}
+
+.public-topic-prompt-panel h3,
+.public-topic-related h3 {
+  margin: 9px 0 0;
+  color: var(--editorial-ink);
+  font-size: 24px;
+  font-weight: 850;
+  line-height: 1.14;
+}
+
+.public-topic-prompt-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.public-topic-prompt-list a,
+.public-topic-related small {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.public-topic-prompt-list a {
+  min-height: 58px;
+  border-radius: 8px;
+  background: var(--editorial-soft);
+  color: var(--editorial-ink);
+  padding: 13px;
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.28;
+  text-decoration: none;
+}
+
+.public-topic-prompt-list svg {
+  flex: 0 0 auto;
+  color: var(--editorial-red);
+}
+
+.public-topic-related {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.public-topic-related section > div {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.public-topic-related a {
+  display: block;
+  color: var(--editorial-ink);
+  padding: 18px;
+  text-decoration: none;
+}
+
+.public-topic-related a strong {
+  display: block;
+  font-size: 17px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.public-topic-related a p {
+  margin: 9px 0 0;
+  color: var(--editorial-muted);
+  font-size: 14px;
+  font-weight: 540;
+  line-height: 1.45;
+}
+
+.public-topic-related small {
+  margin-top: 12px;
+  color: var(--editorial-red);
+  font-size: 12px;
+  font-weight: 880;
+  text-transform: uppercase;
+}
+
 .bubble-message-stack {
   display: flex;
   width: min(860px, 100%);
@@ -10359,6 +10551,197 @@ a {
   color: var(--editorial-red);
 }
 
+.public-topic-seo {
+  display: grid;
+  gap: 38px;
+  padding: 82px clamp(24px, 5vw, 72px);
+  border-top: 1px solid var(--editorial-line);
+  background: var(--editorial-soft);
+  color: var(--editorial-ink);
+}
+
+.public-topic-seo-head {
+  display: grid;
+  max-width: 860px;
+  gap: 14px;
+}
+
+.public-topic-seo-head > span,
+.public-topic-prompt-panel span,
+.public-topic-related span {
+  color: var(--editorial-green);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.public-topic-seo-head h2,
+.public-topic-prompt-panel h3,
+.public-topic-related h3 {
+  margin: 0;
+  color: var(--editorial-ink);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.public-topic-seo-head h2 {
+  font-size: clamp(36px, 5vw, 64px);
+}
+
+.public-topic-seo-head p {
+  margin: 0;
+  color: var(--editorial-muted);
+  font-size: 18px;
+  font-weight: 560;
+  line-height: 1.58;
+}
+
+.public-topic-seo-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.public-topic-seo-grid,
+.public-topic-related {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.public-topic-seo-grid article,
+.public-topic-prompt-panel,
+.public-topic-related section {
+  border: 1px solid var(--editorial-line);
+  border-radius: 8px;
+  background: var(--editorial-card);
+  box-shadow: 0 18px 48px rgb(33 31 28 / 0.05);
+}
+
+.public-topic-seo-grid article {
+  padding: 24px;
+}
+
+.public-topic-seo-grid strong {
+  display: block;
+  color: var(--editorial-ink);
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.public-topic-seo-grid p,
+.public-topic-seo-grid li {
+  color: var(--editorial-muted);
+  font-size: 15px;
+  font-weight: 520;
+  line-height: 1.55;
+}
+
+.public-topic-seo-grid p {
+  margin: 12px 0 0;
+}
+
+.public-topic-seo-grid ul {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0 0;
+  padding-left: 18px;
+}
+
+.public-topic-prompt-panel {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.35fr) minmax(0, 1fr);
+  gap: 22px;
+  padding: 24px;
+}
+
+.public-topic-prompt-panel h3,
+.public-topic-related h3 {
+  margin-top: 7px;
+  font-size: 24px;
+}
+
+.public-topic-prompt-list,
+.public-topic-related section > div {
+  display: grid;
+  gap: 10px;
+}
+
+.public-topic-prompt-list a,
+.public-topic-related a {
+  display: flex;
+  gap: 10px;
+  border: 1px solid var(--editorial-line);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.7);
+  color: var(--editorial-ink);
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.public-topic-prompt-list a {
+  align-items: center;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 780;
+}
+
+.public-topic-related {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.public-topic-related section {
+  padding: 24px;
+}
+
+.public-topic-related a {
+  flex-direction: column;
+  padding: 18px;
+}
+
+.public-topic-related a strong {
+  color: var(--editorial-ink);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.public-topic-related a p {
+  margin: 0;
+  color: var(--editorial-muted);
+  font-size: 14px;
+  font-weight: 520;
+  line-height: 1.5;
+}
+
+.public-topic-related a small {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--editorial-red);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.public-topic-prompt-list a:hover,
+.public-topic-prompt-list a:focus-visible,
+.public-topic-related a:hover,
+.public-topic-related a:focus-visible {
+  border-color: rgb(255 56 92 / 0.3);
+  background: #ffffff;
+  transform: translateY(-1px);
+}
+
+.public-topic-prompt-list svg,
+.public-topic-related svg {
+  flex: 0 0 auto;
+  color: var(--editorial-red);
+}
+
 .marketing-topic-link {
   display: flex;
   flex-direction: column;
@@ -10958,7 +11341,9 @@ a {
 
   .marketing-story-split,
   .marketing-split-band,
-  .learning-path-intro {
+  .learning-path-intro,
+  .public-topic-prompt-panel,
+  .public-topic-related {
     grid-template-columns: 1fr;
   }
 
@@ -11113,6 +11498,7 @@ a {
   .marketing-path-grid,
   .learning-path-step-grid,
   .learning-path-mode-list,
+  .public-topic-seo-grid,
   .media-fact-table {
     grid-template-columns: 1fr;
   }
