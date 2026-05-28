@@ -1,5 +1,5 @@
 ---
-title: "AI Exam Prep Planner For Realistic Study Schedules: practical guide"
+title: "AI Exam Prep Planner Study Schedule Guide"
 description: "A practical guide to using Exam Prep Planner on inspir for planning learning, with prompts, study loops, and safer AI habits."
 date: "2026-05-10"
 author: "inspir"

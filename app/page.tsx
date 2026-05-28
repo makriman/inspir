@@ -21,11 +21,18 @@ import {
   missionImages,
 } from "@/components/marketing/MarketingShell";
 import { getBlogPosts } from "@/lib/content/blog";
-import { homepageFaqs, homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
+import {
+  homepageFaqs,
+  homepageFilm,
+  homepageHeroRoutes,
+  homepageLearningPaths,
+  learningPathHref,
+} from "@/lib/content/landing";
+import { getSubjectPages, subjectPath } from "@/lib/content/subjects";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
-import { defaultSocialImage, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import {
   faqPageJsonLd,
   itemListJsonLd,
@@ -137,6 +144,7 @@ export default function LandingPage() {
   const priorityTopics = priorityTopicSlugs
     .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
     .filter((topic): topic is (typeof topicSeeds)[number] => Boolean(topic));
+  const subjectPages = getSubjectPages();
   const featuredPosts = getBlogPosts().slice(0, 6);
   const jsonLd = [
     webPageJsonLd({
@@ -147,11 +155,14 @@ export default function LandingPage() {
     }),
     videoObjectJsonLd({
       path: "/",
-      name: "inspir: You can Learn Anything",
-      description:
-        "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-      thumbnailUrl: defaultSocialImage.url,
-      contentUrl: "/media/inspir-learning-film.mp4",
+      name: homepageFilm.title,
+      description: homepageFilm.description,
+      thumbnailUrl: homepageFilm.thumbnailUrl,
+      contentUrl: homepageFilm.contentUrl,
+      duration: homepageFilm.duration,
+      uploadDate: homepageFilm.uploadDate,
+      transcript: homepageFilm.transcript,
+      clips: homepageFilm.chapters,
     }),
     itemListJsonLd({
       path: "/",
@@ -161,6 +172,16 @@ export default function LandingPage() {
         name: path.title,
         url: learningPathHref(path.slug),
         description: path.description,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/",
+      id: "subject-hubs",
+      name: "AI tutors by subject",
+      items: subjectPages.map((page) => ({
+        name: page.seoTitle,
+        url: subjectPath(page.slug),
+        description: page.description,
       })),
     }),
     faqPageJsonLd({
@@ -196,8 +217,33 @@ export default function LandingPage() {
               Read the mission
             </Link>
           </div>
+          <nav className="marketing-hero-routes" aria-label="Fast learning routes">
+            {homepageHeroRoutes.map((route) => (
+              <Link key={route.href} href={route.href}>
+                <span>{route.eyebrow}</span>
+                <strong>{route.title}</strong>
+              </Link>
+            ))}
+          </nav>
         </div>
-        <MarketingHeroVideo />
+        <MarketingHeroVideo chapters={homepageFilm.chapters} transcript={homepageFilm.transcript} />
+      </section>
+
+      <section className="marketing-band is-film-notes" aria-labelledby="film-notes-title">
+        <div className="marketing-section-copy">
+          <span>Learning film</span>
+          <h2 id="film-notes-title">A thirty-second promise: learning should open instantly.</h2>
+          <p>{homepageFilm.transcript}</p>
+        </div>
+        <div className="marketing-film-chapter-grid">
+          {homepageFilm.chapters.map((chapter, index) => (
+            <article key={chapter.title} id={`learning-film-chapter-${index + 1}`}>
+              <span>{new Date(chapter.start * 1000).toISOString().slice(14, 19)}</span>
+              <strong>{chapter.title}</strong>
+              <p>{chapter.text}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="marketing-band marketing-impact-band">
@@ -295,6 +341,35 @@ export default function LandingPage() {
         <div className="marketing-inline-actions">
           <ArrowLink href="/chat/learn-anything">Open guest chat</ArrowLink>
           <ArrowLink href="/topics">Browse every mode</ArrowLink>
+        </div>
+      </section>
+
+      <section className="marketing-band is-topic-finder">
+        <div className="marketing-section-copy">
+          <span>AI tutors by subject</span>
+          <h2>Start from the subject, then open the right learning mode.</h2>
+          <p>
+            Math, writing, coding, history, homework, and exam prep each need different behavior.
+            These public subject hubs connect the search intent to live modes, prompts, guides,
+            and review loops.
+          </p>
+        </div>
+        <div className="marketing-mode-finder-grid">
+          {subjectPages.map((page) => (
+            <Link key={page.slug} href={subjectPath(page.slug)} className="marketing-mode-finder-card">
+              <span>{page.eyebrow}</span>
+              <strong>{page.seoTitle}</strong>
+              <p>{page.description}</p>
+              <small>
+                Open subject hub
+                <ArrowUpRight size={14} />
+              </small>
+            </Link>
+          ))}
+        </div>
+        <div className="marketing-inline-actions">
+          <ArrowLink href="/subjects">Browse subjects</ArrowLink>
+          <ArrowLink href="/ai-learning-map">Open the learning map</ArrowLink>
         </div>
       </section>
 

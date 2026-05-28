@@ -1,4 +1,4 @@
-import type { BlogPost } from "@/lib/content/blog";
+import { getBlogPostTopic, type BlogPost } from "@/lib/content/blog";
 import { absoluteUrl, siteDescription, siteName, socialImage } from "@/lib/seo/config";
 
 function escapeXml(value: string) {
@@ -10,6 +10,14 @@ function escapeXml(value: string) {
     .replace(/'/g, "&apos;");
 }
 
+function escapeHtml(value: string) {
+  return escapeXml(value);
+}
+
+function cdata(value: string) {
+  return `<![CDATA[${value.replaceAll("]]>", "]]]]><![CDATA[>")}]]>`;
+}
+
 function formatRssDate(value: string) {
   return new Date(value).toUTCString();
 }
@@ -17,17 +25,33 @@ function formatRssDate(value: string) {
 function itemXml(post: BlogPost) {
   const url = absoluteUrl(`/blog/${post.slug}`);
   const date = formatRssDate(post.updated ?? post.date);
+  const topic = getBlogPostTopic(post);
   const categories = post.tags
     .map((tag) => `    <category>${escapeXml(tag)}</category>`)
     .join("\n");
+  const modeLink = topic
+    ? `<p>Related public learning mode: <a href="${absoluteUrl(`/chat/${topic.slug}`)}">${escapeHtml(topic.name)}</a>.</p>`
+    : "";
+  const content = cdata(
+    [
+      `<p>${escapeHtml(post.description)}</p>`,
+      modeLink,
+      `<p><a href="${url}">Read the full guide on ${escapeHtml(siteName)}</a>.</p>`,
+      `<p><a href="${absoluteUrl("/blog")}">Browse the AI learning guide library</a>.</p>`,
+    ]
+      .filter(Boolean)
+      .join(""),
+  );
 
   return `  <item>
     <title>${escapeXml(post.title)}</title>
     <link>${url}</link>
     <guid isPermaLink="true">${url}</guid>
     <description>${escapeXml(post.description)}</description>
+    <dc:creator>${escapeXml(post.author)}</dc:creator>
     <pubDate>${date}</pubDate>
 ${categories}
+    <content:encoded>${content}</content:encoded>
   </item>`;
 }
 
@@ -36,7 +60,7 @@ export function buildRssFeed(posts: BlogPost[]) {
   const lastBuildDate = formatRssDate(sortedPosts[0]?.updated ?? sortedPosts[0]?.date ?? new Date().toISOString());
 
   return `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
 <channel>
   <title>${escapeXml(`${siteName} AI Learning Blog`)}</title>
   <link>${absoluteUrl("/blog")}</link>

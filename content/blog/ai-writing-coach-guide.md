@@ -1,5 +1,5 @@
 ---
-title: "AI Writing Coach For Essays, Stories, And Clearer Drafts: practical guide"
+title: "AI Writing Coach For Essays And Drafts: practical guide"
 description: "A practical guide to using Writing Coach on inspir for communication learning, with prompts, study loops, and safer AI habits."
 date: "2026-05-15"
 author: "inspir"

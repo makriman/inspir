@@ -10,6 +10,7 @@ import { seededTopics, topicFromSeed } from "@/lib/content/seeded-topics";
 import {
   getRelatedBlogGuidesForTopic,
   getRelatedLearningPathsForTopic,
+  getRelatedTopicModesForTopic,
   topicPublicFaqs,
 } from "@/lib/content/topic-public-seo";
 import { topicSeeds } from "@/lib/content/topics";
@@ -57,13 +58,15 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
   const starters = topic.metadata.starters;
   const relatedPaths = getRelatedLearningPathsForTopic(topic);
   const relatedGuides = getRelatedBlogGuidesForTopic(topic);
-  const hasRelated = relatedPaths.length > 0 || relatedGuides.length > 0;
+  const relatedModes = getRelatedTopicModesForTopic(topic);
+  const faqs = topicPublicFaqs(topic);
+  const hasRelated = relatedPaths.length > 0 || relatedGuides.length > 0 || relatedModes.length > 0;
 
   return (
     <section className="public-topic-seo" aria-labelledby={`${topic.slug}-seo-title`}>
       <div className="public-topic-seo-head">
         <span>{topic.metadata.category} learning mode</span>
-        <h2 id={`${topic.slug}-seo-title`}>{seo.title}</h2>
+        <h1 id={`${topic.slug}-seo-title`}>{seo.title}</h1>
         <p>{seo.description}</p>
         <div className="public-topic-seo-actions">
           <Link href={topicPath(topic.slug)} className="marketing-primary-cta">
@@ -150,8 +153,41 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
               </div>
             </section>
           ) : null}
+          {relatedModes.length ? (
+            <section>
+              <span>Related modes</span>
+              <h3>Keep learning with the right next chat.</h3>
+              <div>
+                {relatedModes.map((mode) => (
+                  <Link key={mode.href} href={mode.href}>
+                    <strong>{mode.title}</strong>
+                    <p>{mode.description}</p>
+                    <small>
+                      Start mode
+                      <ArrowUpRight size={14} />
+                    </small>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </div>
       ) : null}
+
+      <div className="public-topic-faq">
+        <div>
+          <span>Questions learners ask</span>
+          <h3>Before you start {topic.name}.</h3>
+        </div>
+        <div className="public-topic-faq-list">
+          {faqs.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -268,6 +304,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     const topicFaqs = topicPublicFaqs(seedTopic);
     const relatedPaths = getRelatedLearningPathsForTopic(seedTopic);
     const relatedGuides = getRelatedBlogGuidesForTopic(seedTopic);
+    const relatedModes = getRelatedTopicModesForTopic(seedTopic);
     const topicStructuredData = [
       ...topicJsonLd(seedTopic),
       faqPageJsonLd({
@@ -288,6 +325,11 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
             name: guide.title,
             url: guide.href,
             description: guide.description,
+          })),
+          ...relatedModes.map((mode) => ({
+            name: mode.title,
+            url: mode.href,
+            description: mode.description,
           })),
         ],
       }),

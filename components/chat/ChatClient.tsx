@@ -70,6 +70,7 @@ import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { InteractiveInstructionWorkspace } from "@/components/chat/InteractiveInstructionWorkspace";
 import { SocraticWorkspace } from "@/components/chat/SocraticWorkspace";
+import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { defaultLanguage, supportedLanguages } from "@/lib/content/languages";
 import { getTopicSeo } from "@/lib/content/topic-seo";
@@ -974,6 +975,7 @@ function TopBar({
 
 function TopicIntroCard({ topic }: { topic: Topic }) {
   const seo = topicSeo(topic);
+
   return (
     <article className="bubble-intro-card">
       <div>
@@ -996,6 +998,15 @@ function TopicIntroCard({ topic }: { topic: Topic }) {
           <li key={outcome}>{outcome}</li>
         ))}
       </ul>
+      <section className="bubble-topic-study-flow" aria-label={`${topic.name} study flow`}>
+        <h3>A good learning loop</h3>
+        <ol>
+          <li>Start with one specific question or task.</li>
+          <li>Ask for hints, examples, or checks before a final answer.</li>
+          <li>Turn the weak spot into a quiz, flashcards, or a follow-up chat.</li>
+        </ol>
+      </section>
+      <TopicResourceLinks topic={topic} />
     </article>
   );
 }
@@ -1885,6 +1896,7 @@ function TimeTravelWorkspace({
             realism={realism}
             depth={depth}
           />
+          <TopicResourceLinks topic={topic} />
         </section>
       </div>
     </main>
@@ -3150,6 +3162,7 @@ function CollaborativeInstructionWorkspace({
                 </div>
               </section>
             </div>
+            <TopicResourceLinks topic={topic} />
           </section>
         ) : (
           <section className="bubble-collab-room">

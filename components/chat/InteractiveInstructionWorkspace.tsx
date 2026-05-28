@@ -10,8 +10,10 @@ import {
   Sparkles,
   XCircle,
 } from "lucide-react";
+import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 
 type TopicLike = {
+  slug: string;
   name: string;
 };
 
@@ -832,6 +834,7 @@ export function InteractiveInstructionWorkspace({
               </button>
             </form>
           )}
+          <TopicResourceLinks topic={topic} />
         </section>
       </main>
     );

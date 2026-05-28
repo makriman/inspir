@@ -28,6 +28,7 @@ import {
   Target,
   Zap,
 } from "lucide-react";
+import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { formatBubbleDate } from "@/lib/utils/dates";
 
 type Topic = {
@@ -271,6 +272,7 @@ export function SocraticWorkspace({
                 ))}
               </div>
             ) : null}
+            <TopicResourceLinks topic={topic} />
           </section>
         ) : (
           <section className="socratic-chamber">

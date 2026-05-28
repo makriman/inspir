@@ -7,6 +7,13 @@ import {
   MarketingHeader,
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
+import {
+  schoolDeploymentSteps,
+  schoolFaqs,
+  schoolFeatures,
+  schoolSearchIntents,
+  schoolUseCases,
+} from "@/lib/content/authority";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import {
   breadcrumbJsonLd,
@@ -17,14 +24,14 @@ import {
 } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
-  title: "Schools",
+  title: "AI Tutor For Schools",
   description:
-    "White-labelled AI learning experiences for schools, with custom workflows, data confidentiality, and NCERT-aligned options.",
+    "White-labelled AI tutoring for schools, with guest learning modes, custom workflows, confidentiality planning, NCERT-aligned options, and funded access paths.",
   alternates: metadataAlternates("/schools"),
   openGraph: {
     title: "AI Learning For Schools | inspir",
     description:
-      "White-labelled AI learning experiences for schools, with custom workflows, confidentiality, NCERT-aligned options, and CSR sponsorship paths.",
+      "White-labelled AI tutoring for schools, with guest learning modes, custom workflows, confidentiality planning, NCERT-aligned options, and CSR sponsorship paths.",
     url: "/schools",
     siteName,
     images: [
@@ -32,7 +39,7 @@ export const metadata: Metadata = {
         title: "AI Learning For Schools",
         eyebrow: "Schools",
         description:
-          "Tailored AI learning experiences for school communities, curriculum needs, confidentiality, and funded access.",
+          "Tailored AI learning experiences for school communities, curriculum needs, confidentiality planning, and funded access.",
       }),
     ],
     type: "website",
@@ -41,58 +48,19 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Learning For Schools | inspir",
     description:
-      "White-labelled AI learning experiences for schools, with custom workflows, confidentiality, NCERT-aligned options, and CSR sponsorship paths.",
+      "White-labelled AI tutoring for schools, with guest learning modes, custom workflows, confidentiality planning, NCERT-aligned options, and CSR sponsorship paths.",
     images: [
       socialImage({
         title: "AI Learning For Schools",
         eyebrow: "Schools",
         description:
-          "Tailored AI learning experiences for school communities, curriculum needs, confidentiality, and funded access.",
+          "Tailored AI learning experiences for school communities, curriculum needs, confidentiality planning, and funded access.",
       }).url,
     ],
   },
 };
 
-const schoolFeatures = [
-  {
-    icon: School,
-    title: "White-labelled AI chat",
-    text: "A school-specific learning experience that feels like part of your own student ecosystem.",
-  },
-  {
-    icon: LockKeyhole,
-    title: "Data confidentiality",
-    text: "Deployments are designed around confidentiality for school communities and student use.",
-  },
-  {
-    icon: BookMarked,
-    title: "NCERT-aligned options",
-    text: "Custom content and workflows can be aligned to NCERT needs and school-specific priorities.",
-  },
-  {
-    icon: Sparkles,
-    title: "Funded access",
-    text: "AI usage can be funded by partner schools or subsidised through CSR sponsorship.",
-  },
-] as const;
-
-const schoolFaqs = [
-  {
-    question: "Can a school use inspir as a guest learning tool first?",
-    answer:
-      "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
-  },
-  {
-    question: "Can inspir support school-specific content or curriculum needs?",
-    answer:
-      "School deployments can be adapted around custom content, workflows, and NCERT-aligned learning needs where appropriate.",
-  },
-  {
-    question: "How can access be funded for learners?",
-    answer:
-      "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
-  },
-] as const;
+const featureIcons = [School, LockKeyhole, BookMarked, Sparkles] as const;
 
 export default function SchoolsPage() {
   const jsonLd = [
@@ -112,8 +80,37 @@ export default function SchoolsPage() {
       name: "inspir school deployment features",
       items: schoolFeatures.map((feature) => ({
         name: feature.title,
-        url: "/schools",
+        url: feature.href,
         description: feature.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/schools",
+      id: "school-deployment-steps",
+      name: "inspir school deployment path",
+      items: schoolDeploymentSteps.map((step) => ({
+        name: `${step.step}: ${step.title}`,
+        url: step.href,
+        description: step.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/schools",
+      id: "school-use-cases",
+      name: "inspir school AI learning use cases",
+      items: schoolUseCases.map((useCase) => ({
+        name: useCase.title,
+        url: useCase.href,
+        description: useCase.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/schools",
+      id: "school-search-intents",
+      name: "AI learning search intents for schools",
+      items: schoolSearchIntents.map((intent) => ({
+        name: intent,
+        url: "/schools",
       })),
     }),
     faqPageJsonLd({
@@ -137,10 +134,10 @@ export default function SchoolsPage() {
         confidentiality, curriculum needs, and the practical realities of school deployment.
       </MarketingPageHero>
 
-      <section className="marketing-band">
+      <section id="school-features" className="marketing-band">
         <div className="marketing-section-copy">
           <span>What schools get</span>
-          <h2>A free-to-access learning layer that can fit your institution.</h2>
+          <h2>A free-to-access AI tutor layer that can fit your institution.</h2>
           <p>
             The public inspir platform helps learners practise extracurricular activities and
             explore ideas. School deployments can be customised around each school’s content,
@@ -148,8 +145,8 @@ export default function SchoolsPage() {
           </p>
         </div>
         <div className="marketing-card-grid">
-          {schoolFeatures.map((feature) => {
-            const Icon = feature.icon;
+          {schoolFeatures.map((feature, index) => {
+            const Icon = featureIcons[index] ?? School;
             return (
               <article key={feature.title} className="marketing-card">
                 <Icon size={24} />
@@ -158,6 +155,48 @@ export default function SchoolsPage() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section id="school-deployment" className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>Deployment path</span>
+          <h2>Start with public guest mode, then shape the school version around real needs.</h2>
+          <p>
+            This gives school leaders a low-friction way to evaluate the learning experience before
+            committing to content work, staff workflows, or funded access.
+          </p>
+        </div>
+        <div className="marketing-card-grid">
+          {schoolDeploymentSteps.map((step) => (
+            <article key={step.slug} className="learning-path-step">
+              <span>{step.step}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <Link href={step.href}>Explore step</Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="school-use-cases" className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>Who it helps</span>
+          <h2>One AI learning system, several school jobs.</h2>
+          <p>
+            Students need direct support, teachers need focused learning behavior, leaders need
+            responsible deployment paths, and partners need clear ways to fund access.
+          </p>
+        </div>
+        <div className="marketing-topic-grid">
+          {schoolUseCases.map((useCase) => (
+            <Link key={useCase.title} href={useCase.href} className="marketing-topic-link">
+              <span>Use case</span>
+              <strong>{useCase.title}</strong>
+              <p>{useCase.text}</p>
+              <small>Open related resource</small>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -200,7 +239,7 @@ export default function SchoolsPage() {
         </div>
       </section>
 
-      <section className="marketing-cta-band">
+      <section id="school-contact" className="marketing-cta-band">
         <h2>Try the platform, then talk to us about a school version.</h2>
         <div className="marketing-inline-actions">
           <Link href="/chat/learn-anything" className="marketing-primary-cta is-dark">

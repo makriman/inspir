@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowUpRight, CheckCircle2, CornerDownRight, Sparkles } from "lucide-react";
+import { AlertTriangle, ArrowUpRight, CheckCircle2, CornerDownRight, Sparkles } from "lucide-react";
 import {
   ArrowLink,
   MarketingFooter,
@@ -39,11 +39,40 @@ function pathJsonLd(path: HomepageLearningPath) {
     educationalUse: ["Self-study", "Tutoring", "Practice"],
     learningResourceType: "AI learning path",
     teaches: path.title,
+    keywords: path.searchIntents,
     provider: { "@id": `${siteUrl}/#organization` },
-    hasPart: path.links.map((link) => ({
-      "@type": "LearningResource",
-      name: link.label,
-      url: absoluteUrl(link.href),
+    hasPart: [
+      ...path.links.map((link) => ({
+        "@type": "LearningResource",
+        name: link.label,
+        url: absoluteUrl(link.href),
+      })),
+      ...path.examplePrompts.map((prompt) => ({
+        "@type": "CreativeWork",
+        name: prompt.title,
+        text: prompt.text,
+        url: absoluteUrl(prompt.href),
+      })),
+    ],
+  };
+}
+
+function pathHowToJsonLd(path: HomepageLearningPath) {
+  const url = absoluteUrl(learningPathHref(path.slug));
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": `${url}#how-to`,
+    name: path.seoTitle,
+    description: path.seoDescription,
+    totalTime: "PT30M",
+    step: path.steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.title,
+      text: step.text,
+      url: absoluteUrl(step.href),
     })),
   };
 }
@@ -100,6 +129,7 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
       description: path.seoDescription,
     }),
     pathJsonLd(path),
+    pathHowToJsonLd(path),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Learning paths", url: "/learn" },
@@ -113,6 +143,35 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
         name: step.title,
         url: step.href,
         description: step.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: learningPathHref(path.slug),
+      id: "example-prompts",
+      name: `${path.title} example AI prompts`,
+      items: path.examplePrompts.map((prompt) => ({
+        name: prompt.title,
+        url: prompt.href,
+        description: prompt.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: learningPathHref(path.slug),
+      id: "review-loop",
+      name: `${path.title} review loop`,
+      items: path.reviewLoop.map((step) => ({
+        name: step.title,
+        url: step.href,
+        description: step.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: learningPathHref(path.slug),
+      id: "mistakes-to-avoid",
+      name: `${path.title} mistakes to avoid`,
+      items: path.avoid.map((mistake, index) => ({
+        name: mistake,
+        url: `${learningPathHref(path.slug)}#avoid-${index + 1}`,
       })),
     }),
     faqPageJsonLd({
@@ -201,6 +260,74 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
         </div>
       </section>
 
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>Prompt examples</span>
+          <h2>Start with prompts that keep the learning active.</h2>
+          <p>
+            These are written to make the AI coach, question, and review rather than simply
+            produce an answer to copy.
+          </p>
+        </div>
+        <div className="marketing-topic-grid">
+          {path.examplePrompts.map((prompt) => (
+            <Link key={prompt.title} href={prompt.href} className="marketing-topic-link">
+              <span>Example prompt</span>
+              <strong>{prompt.title}</strong>
+              <p>{prompt.text}</p>
+              <small>
+                Open mode
+                <ArrowUpRight size={14} />
+              </small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>What to avoid</span>
+          <h2>Common traps that make AI learning weaker.</h2>
+          <p>
+            The point is not to use AI less. It is to use it in a way that leaves you with
+            stronger understanding after the session.
+          </p>
+        </div>
+        <div className="marketing-card-grid">
+          {path.avoid.map((mistake, index) => (
+            <article key={mistake} id={`avoid-${index + 1}`} className="marketing-card">
+              <AlertTriangle size={22} />
+              <h3>{`Avoid ${index + 1}`}</h3>
+              <p>{mistake}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band is-discovery">
+        <div className="marketing-section-copy">
+          <span>Review loop</span>
+          <h2>Make the session leave evidence of learning.</h2>
+          <p>
+            A good path does not end at the answer. It ends with a test, a correction, and a
+            next repetition.
+          </p>
+        </div>
+        <div className="learning-path-step-grid">
+          {path.reviewLoop.map((step, index) => (
+            <article key={step.title} className="learning-path-step">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <Link href={step.href}>
+                Continue loop
+                <ArrowUpRight size={15} />
+              </Link>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {relatedPosts.length ? (
         <section className="marketing-band is-learning-paths">
           <div className="marketing-section-copy">
@@ -228,6 +355,24 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
           </div>
         </section>
       ) : null}
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>Search paths</span>
+          <h2>The learning jobs this page is built to answer.</h2>
+          <p>
+            Each phrase maps to the same practical workflow: choose a public mode, ask for
+            active help, then review what changed.
+          </p>
+        </div>
+        <div className="learning-path-mode-list">
+          {path.searchIntents.map((intent) => (
+            <Link key={intent} href={learningPathHref(path.slug)}>
+              {intent}
+            </Link>
+          ))}
+        </div>
+      </section>
 
       <section className="marketing-band is-home-faq">
         <div className="marketing-section-copy">

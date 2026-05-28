@@ -15,11 +15,14 @@ export const missionImages = [
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
   { href: "/topics", label: "Modes" },
+  { href: "/subjects", label: "Subjects" },
+  { href: "/prompts", label: "Prompts" },
   { href: "/learn", label: "Paths" },
   { href: "/mission", label: "Mission" },
   { href: "/schools", label: "Schools" },
   { href: "/blog", label: "Blog" },
   { href: "/media", label: "Media" },
+  { href: "/trust", label: "Trust" },
   { href: "/about", label: "About" },
 ] as const;
 
@@ -54,10 +57,16 @@ export function MarketingFooter() {
       <nav className="marketing-footer-links" aria-label="Footer links">
         <Link href="/mission">Mission</Link>
         <Link href="/topics">Modes</Link>
+        <Link href="/subjects">Subjects</Link>
+        <Link href="/prompts">Prompts</Link>
         <Link href="/learn">Paths</Link>
+        <Link href="/for">For</Link>
+        <Link href="/ai-learning-map">Map</Link>
+        <Link href="/compare">Compare</Link>
         <Link href="/schools">Schools</Link>
         <Link href="/blog">Blog</Link>
         <Link href="/media">Media</Link>
+        <Link href="/trust">Trust</Link>
         <Link href="/about">About</Link>
         <Link href="/tnc">Terms</Link>
         <Link href="/privacy">Privacy</Link>
@@ -100,8 +109,21 @@ export function MarketingPageHero({
   );
 }
 
-export function MarketingHeroVideo() {
-  return <MarketingVideoEngine />;
+type MarketingHeroVideoChapter = {
+  title: string;
+  start: number;
+  end: number;
+  text: string;
+};
+
+export function MarketingHeroVideo({
+  chapters,
+  transcript,
+}: {
+  chapters?: ReadonlyArray<MarketingHeroVideoChapter>;
+  transcript?: string;
+}) {
+  return <MarketingVideoEngine chapters={chapters} transcript={transcript} />;
 }
 
 export function ArrowLink({

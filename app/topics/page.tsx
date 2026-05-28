@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Compass, SearchCheck, Sparkles } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
+import {
+  getTopicCategoryHubs,
+  getTopicSpotlightModes,
+  topicDirectoryFaqs,
+} from "@/lib/content/topic-directory";
 import { topicSeeds } from "@/lib/content/topics";
-import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import {
   breadcrumbJsonLd,
+  faqPageJsonLd,
+  itemListJsonLd,
   learningModesItemListJsonLd,
   serializeJsonLd,
+  webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
@@ -49,22 +56,43 @@ export const metadata: Metadata = {
   },
 };
 
-function groupedTopics() {
-  const groups = new Map<string, typeof topicSeeds>();
-  for (const topic of topicSeeds) {
-    const category = topic.metadata.category;
-    groups.set(category, [...(groups.get(category) ?? []), topic]);
-  }
-  return Array.from(groups.entries());
-}
-
 export default function TopicsPage() {
+  const categoryHubs = getTopicCategoryHubs();
+  const spotlightModes = getTopicSpotlightModes();
   const jsonLd = [
+    webPageJsonLd({
+      path: "/topics",
+      name: "AI Learning Modes",
+      description:
+        "A public directory of inspir's guest AI learning modes, organized by learning need, category, and live chat entrypoint.",
+      type: "CollectionPage",
+    }),
     breadcrumbJsonLd([
       { name: "Home", url: "/" },
       { name: "Learning modes", url: "/topics" },
     ]),
     learningModesItemListJsonLd(topicSeeds),
+    itemListJsonLd({
+      path: "/topics",
+      id: "mode-categories",
+      name: "AI learning mode categories",
+      items: categoryHubs.map((hub) => ({
+        name: `${hub.name} AI learning modes`,
+        url: hub.href,
+        description: hub.description,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/topics",
+      id: "featured-mode-entrypoints",
+      name: "Featured public AI learning mode entrypoints",
+      items: spotlightModes.map((mode) => ({
+        name: mode.name,
+        url: mode.href,
+        description: mode.reason,
+      })),
+    }),
+    faqPageJsonLd({ path: "/topics", questions: topicDirectoryFaqs }),
   ];
 
   return (
@@ -82,6 +110,31 @@ export default function TopicsPage() {
         learners can arrive directly from search and begin in the right flow.
       </MarketingPageHero>
 
+      <section className="marketing-band is-topic-finder">
+        <div className="marketing-section-copy">
+          <span>Best first clicks</span>
+          <h2>High-intent learning searches should land in a useful chat, not a brochure.</h2>
+          <p>
+            These entrypoints cover the searches learners make when they need immediate help:
+            explanations, Socratic questions, homework hints, math steps, writing feedback,
+            flashcards, quizzes, and historical conversations.
+          </p>
+        </div>
+        <div className="marketing-mode-finder-grid">
+          {spotlightModes.map((mode) => (
+            <Link key={mode.slug} href={mode.href} className="marketing-mode-finder-card">
+              <span>{mode.intent}</span>
+              <strong>{mode.name}</strong>
+              <p>{mode.reason}</p>
+              <small>
+                {mode.category}
+                <ArrowUpRight size={14} />
+              </small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="marketing-band">
         <div className="marketing-section-copy">
           <span>Mode directory</span>
@@ -91,23 +144,45 @@ export default function TopicsPage() {
             roleplay, planning, critique, and active recall.
           </p>
         </div>
+        <nav className="marketing-mode-category-nav" aria-label="Learning mode categories">
+          {categoryHubs.map((hub) => (
+            <Link key={hub.slug} href={hub.href}>
+              {hub.name}
+              <span>{hub.modeCount}</span>
+            </Link>
+          ))}
+        </nav>
         <div className="marketing-mode-directory">
-          {groupedTopics().map(([category, topics]) => (
+          {categoryHubs.map((hub) => (
             <section
-              key={category}
+              key={hub.slug}
+              id={hub.slug}
               className="marketing-mode-category"
-              aria-labelledby={`mode-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+              aria-labelledby={`mode-${hub.slug}`}
             >
               <div className="marketing-mode-category-header">
-                <span id={`mode-${category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>{category}</span>
-                <strong>{topics.length} modes</strong>
+                <div>
+                  <h3 id={`mode-${hub.slug}`}>{hub.name}</h3>
+                  <p>{hub.description}</p>
+                </div>
+                <strong>{hub.modeCount} modes</strong>
+              </div>
+              <div className="marketing-mode-category-summary">
+                <div>
+                  <Compass size={18} />
+                  <span>{hub.bestFor}</span>
+                </div>
+                <div>
+                  <SearchCheck size={18} />
+                  <span>{hub.searchIntents.join(" | ")}</span>
+                </div>
               </div>
               <div className="marketing-topic-grid">
-                {topics.map((topic) => {
+                {hub.topics.map((topic) => {
                   const seo = getTopicSeo(topic);
                   const starters = topic.metadata.starters.slice(0, 2);
                   return (
-                    <Link key={topic.slug} href={topicPath(topic.slug)} className="marketing-topic-link">
+                    <Link key={topic.slug} href={`/chat/${topic.slug}`} className="marketing-topic-link">
                       <span>{topic.metadata.uiMode.replaceAll("-", " ")}</span>
                       <strong>{topic.name}</strong>
                       <p>{seo.description}</p>
@@ -127,6 +202,25 @@ export default function TopicsPage() {
                 })}
               </div>
             </section>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band is-topic-faq">
+        <div className="marketing-section-copy">
+          <span>Public guest mode FAQ</span>
+          <h2>Built for people arriving from search.</h2>
+          <p>
+            Search pages, AI answer engines, and learners all get the same promise: public,
+            useful, canonical entrypoints that open directly inside the learning experience.
+          </p>
+        </div>
+        <div className="marketing-mode-faq-list">
+          {topicDirectoryFaqs.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
           ))}
         </div>
       </section>

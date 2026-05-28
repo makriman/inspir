@@ -14,8 +14,15 @@ import {
   MarketingHeader,
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
+import { authorityReferenceLinks, missionFaqs, missionPrinciples } from "@/lib/content/authority";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
-import { breadcrumbJsonLd, serializeJsonLd } from "@/lib/seo/json-ld";
+import {
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+  itemListJsonLd,
+  serializeJsonLd,
+  webPageJsonLd,
+} from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "Mission",
@@ -82,17 +89,50 @@ const proof = [
 ] as const;
 
 export default function MissionPage() {
-  const jsonLd = breadcrumbJsonLd([
-    { name: "Home", url: "/" },
-    { name: "Mission", url: "/mission" },
-  ]);
+  const jsonLd = [
+    webPageJsonLd({
+      path: "/mission",
+      name: "Mission | inspir",
+      description:
+        "inspir's mission is to make learning accessible, engaging, enjoyable, and useful through free public AI learning tools and school-ready learning spaces.",
+      type: "AboutPage",
+    }),
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: "Mission", url: "/mission" },
+    ]),
+    itemListJsonLd({
+      path: "/mission",
+      id: "mission-principles",
+      name: "inspir mission principles",
+      items: missionPrinciples.map((principle) => ({
+        name: principle.title,
+        url: "/mission",
+        description: principle.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/mission",
+      id: "authority-reference-links",
+      name: "inspir public authority reference links",
+      items: authorityReferenceLinks.map((link) => ({
+        name: link.title,
+        url: link.href,
+        description: link.text,
+      })),
+    }),
+    faqPageJsonLd({ path: "/mission", questions: missionFaqs }),
+  ];
 
   return (
     <main className="marketing-site">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-      />
+      {jsonLd.map((entry, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
+        />
+      ))}
       <MarketingHeader />
       <MarketingPageHero eyebrow="Mission" title="Learning is for everyone.">
         inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone
@@ -160,6 +200,31 @@ export default function MissionPage() {
         </div>
       </section>
 
+      <section className="marketing-band is-mission-authority">
+        <div className="marketing-section-copy">
+          <span>Public evidence</span>
+          <h2>The mission is connected to real product surfaces.</h2>
+          <p>
+            These pages make the story easier to verify, cite, crawl, and use: public modes,
+            learning paths, long-form guides, school deployment notes, media facts, and the
+            company background.
+          </p>
+        </div>
+        <div className="marketing-topic-grid">
+          {authorityReferenceLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="marketing-topic-link">
+              <span>Reference page</span>
+              <strong>{link.title}</strong>
+              <p>{link.text}</p>
+              <small>
+                Open reference
+                <Sparkles size={14} />
+              </small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="marketing-split-band">
         <div>
           <span className="marketing-kicker dark">Public value</span>
@@ -180,6 +245,25 @@ export default function MissionPage() {
           <span>Guest mode for public access</span>
           <span>Mode-specific learning flows</span>
           <span>School deployment paths</span>
+        </div>
+      </section>
+
+      <section className="marketing-band is-mission-faq">
+        <div className="marketing-section-copy">
+          <span>Mission FAQ</span>
+          <h2>Clear answers for learners, schools, and search systems.</h2>
+          <p>
+            The public product, the school pathway, and the content library should all point
+            back to the same principle: learning should stay active, accessible, and useful.
+          </p>
+        </div>
+        <div className="marketing-faq-list">
+          {missionFaqs.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
         </div>
       </section>
 

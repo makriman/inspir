@@ -21,6 +21,12 @@ export type BlogCategory = {
   posts: BlogPost[];
 };
 
+export type BlogHeading = {
+  id: string;
+  level: 2 | 3;
+  title: string;
+};
+
 const blogDirectory = join(process.cwd(), "content", "blog");
 
 function parseArray(value: string) {
@@ -91,6 +97,45 @@ export function slugifyBlogTag(value: string) {
     .replace(/^-+|-+$/g, "");
 }
 
+export function blogHeadingId(value: string) {
+  return slugifyBlogTag(
+    value
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+      .replace(/[`*_~#]/g, "")
+      .replace(/&/g, " and "),
+  );
+}
+
+export function estimateBlogReadingMinutes(post: BlogPost) {
+  const wordCount = post.body.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(wordCount / 220));
+}
+
+export function extractBlogHeadings(post: BlogPost) {
+  const counts = new Map<string, number>();
+
+  return post.body
+    .split("\n")
+    .map((line): BlogHeading | null => {
+      const match = /^(##|###)\s+(.+)$/.exec(line.trim());
+      if (!match) return null;
+
+      const title = match[2].trim();
+      const baseId = blogHeadingId(title);
+      if (!baseId) return null;
+
+      const count = counts.get(baseId) ?? 0;
+      counts.set(baseId, count + 1);
+
+      return {
+        id: count === 0 ? baseId : `${baseId}-${count + 1}`,
+        level: match[1] === "##" ? 2 : 3,
+        title,
+      };
+    })
+    .filter((heading): heading is BlogHeading => Boolean(heading));
+}
+
 function guideSlug(topic: TopicSeed) {
   return topic.slug.endsWith("-guide") ? `ai-${topic.slug}` : `ai-${topic.slug}-guide`;
 }
@@ -100,14 +145,17 @@ function promptLoopSlug(topic: TopicSeed) {
 }
 
 export function getBlogPostTopic(post: BlogPost) {
-  return topicSeeds.find((topic) => {
-    return (
-      post.slug === guideSlug(topic) ||
-      post.slug === promptLoopSlug(topic) ||
-      post.tags.some((tag) => tag.toLowerCase() === topic.name.toLowerCase()) ||
-      post.body.includes(`/chat/${topic.slug}`)
-    );
-  });
+  const directSlugMatch = topicSeeds.find(
+    (topic) => post.slug === guideSlug(topic) || post.slug === promptLoopSlug(topic),
+  );
+  if (directSlugMatch) return directSlugMatch;
+
+  const lowerTags = new Set(post.tags.map((tag) => tag.toLowerCase()));
+  const tagMatch = topicSeeds.find((topic) => lowerTags.has(topic.name.toLowerCase()) || lowerTags.has(topic.slug));
+  if (tagMatch) return tagMatch;
+
+  const linkedTopics = topicSeeds.filter((topic) => post.body.includes(`/chat/${topic.slug}`));
+  return linkedTopics.length === 1 ? linkedTopics[0] : undefined;
 }
 
 export function getRelatedBlogPosts(post: BlogPost, limit = 3) {

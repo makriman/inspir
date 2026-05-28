@@ -14,9 +14,20 @@ import {
   MarketingHeader,
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
-import { metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
+import {
+  mediaAttributionFacts,
+  mediaCitationSnippets,
+  mediaCoverageLinks,
+  mediaFaqs,
+  mediaLinkingTargets,
+  mediaHighlights,
+  mediaOfficialLinks,
+  mediaStoryAngles,
+} from "@/lib/content/authority";
+import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import {
   breadcrumbJsonLd,
+  faqPageJsonLd,
   itemListJsonLd,
   serializeJsonLd,
   webPageJsonLd,
@@ -57,83 +68,7 @@ export const metadata: Metadata = {
   },
 };
 
-const highlights = [
-  {
-    icon: UsersRound,
-    title: "1M+ learners",
-    text: "Reached across the free public platform and partner school deployments.",
-  },
-  {
-    icon: Globe2,
-    title: "100+ countries",
-    text: "A learner base that already extends beyond India into a wider international audience.",
-  },
-  {
-    icon: Award,
-    title: "DeepHack recognition",
-    text: "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
-  },
-  {
-    icon: Newspaper,
-    title: "Built since 2013",
-    text: "From Facebook quizzes and offline events to applied AI learning infrastructure.",
-  },
-] as const;
-
-const coverageLinks = [
-  {
-    href: "https://deccanbusiness.com/where-learning-becomes-universal-inspirs-vision-to-make-education-free-fun-and-accessible-for-everyone/",
-    label: "Deccan Business coverage",
-    text: "Coverage of inspir's vision for free, accessible education.",
-  },
-  {
-    href: "https://dhunt.in/12OTez",
-    label: "Dailyhunt coverage",
-    text: "Syndicated coverage for wider consumer reach.",
-  },
-  {
-    href: "https://nirantk.com/community/deephackdemos/",
-    label: "DeepHack community page",
-    text: "Community page connected to DeepHack recognition.",
-  },
-  {
-    href: "https://inspir.uk",
-    label: "inspir.uk next-generation buildout",
-    text: "The wider international buildout connected to the inspir project.",
-  },
-] as const;
-
-const officialLinks = [
-  {
-    href: "/mission",
-    title: "Mission",
-    text: "The public statement of why inspir exists and what learning access means.",
-  },
-  {
-    href: "/topics",
-    title: "Public AI learning modes",
-    text: "A crawlable directory of every guest learning chat entrypoint.",
-  },
-  {
-    href: "/blog",
-    title: "AI learning blog",
-    text: "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
-  },
-  {
-    href: "https://github.com/makriman/inspir",
-    title: "Current GitHub repo",
-    text: "The open-source rebuild for developers, educators, and contributors.",
-  },
-] as const;
-
-const attributionFacts = [
-  ["Name", "inspir"],
-  ["Website", siteUrl],
-  ["Category", "Free AI learning platform"],
-  ["Founded", "2013"],
-  ["Primary audience", "Learners, parents, teachers, schools, and self-taught builders"],
-  ["Public entrypoint", "/chat/learn-anything"],
-] as const;
+const highlightIcons = [UsersRound, Globe2, Award, Newspaper] as const;
 
 export default function MediaPage() {
   const jsonLd = [
@@ -151,12 +86,53 @@ export default function MediaPage() {
       path: "/media",
       id: "official-links",
       name: "Official inspir reference links",
-      items: officialLinks.map((link) => ({
+      items: mediaOfficialLinks.map((link) => ({
         name: link.title,
         url: link.href,
         description: link.text,
       })),
     }),
+    itemListJsonLd({
+      path: "/media",
+      id: "coverage-links",
+      name: "External coverage and reference links",
+      items: mediaCoverageLinks.map((link) => ({
+        name: link.label,
+        url: link.href,
+        description: link.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/media",
+      id: "story-angles",
+      name: "inspir media story angles",
+      items: mediaStoryAngles.map((angle) => ({
+        name: angle.title,
+        url: angle.href,
+        description: angle.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/media",
+      id: "linking-targets",
+      name: "Recommended inspir citation and backlink targets",
+      items: mediaLinkingTargets.map((target) => ({
+        name: `${target.title}: ${target.anchorText}`,
+        url: target.href,
+        description: target.text,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/media",
+      id: "citation-snippets",
+      name: "Suggested inspir citation snippets",
+      items: mediaCitationSnippets.map((snippet) => ({
+        name: snippet.title,
+        url: snippet.href,
+        description: snippet.text,
+      })),
+    }),
+    faqPageJsonLd({ path: "/media", questions: mediaFaqs }),
   ];
 
   return (
@@ -184,8 +160,8 @@ export default function MediaPage() {
           </p>
         </div>
         <div className="marketing-card-grid">
-          {highlights.map((item) => {
-            const Icon = item.icon;
+          {mediaHighlights.map((item, index) => {
+            const Icon = highlightIcons[index] ?? Sparkles;
             return (
               <article key={item.title} className="marketing-card">
                 <Icon size={24} />
@@ -194,6 +170,30 @@ export default function MediaPage() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section className="marketing-band is-media-angles">
+        <div className="marketing-section-copy">
+          <span>Story angles</span>
+          <h2>Coverage ideas that link back to real public pages.</h2>
+          <p>
+            These angles are written for journalists, directory editors, school partners, and
+            AI answer systems that need a useful summary plus a verifiable URL.
+          </p>
+        </div>
+        <div className="marketing-topic-grid">
+          {mediaStoryAngles.map((angle) => (
+            <Link key={angle.href} href={angle.href} className="marketing-topic-link">
+              <span>Coverage angle</span>
+              <strong>{angle.title}</strong>
+              <p>{angle.text}</p>
+              <small>
+                Open source page
+                <ArrowUpRightIcon />
+              </small>
+            </Link>
+          ))}
         </div>
       </section>
 
@@ -207,7 +207,7 @@ export default function MediaPage() {
           </p>
         </div>
         <div className="marketing-topic-grid">
-          {officialLinks.map((link) => {
+          {mediaOfficialLinks.map((link) => {
             const external = link.href.startsWith("http");
             return (
               <Link
@@ -246,10 +246,55 @@ export default function MediaPage() {
           </div>
         </div>
         <div className="marketing-media-list">
-          {coverageLinks.map((link) => (
+          {mediaCoverageLinks.map((link) => (
             <ArrowLink key={link.href} href={link.href} external>
               {link.label}
             </ArrowLink>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>Linking guide</span>
+          <h2>Recommended pages and anchor text for citations.</h2>
+          <p>
+            These targets make backlinks and directory listings point to the most useful
+            public page for the context, instead of sending every reference to the same place.
+          </p>
+        </div>
+        <div className="marketing-topic-grid">
+          {mediaLinkingTargets.map((target) => (
+            <Link key={target.href} href={target.href} className="marketing-topic-link">
+              <span>Suggested anchor: {target.anchorText}</span>
+              <strong>{target.title}</strong>
+              <p>{target.text}</p>
+              <small>
+                Open target
+                <ArrowUpRightIcon />
+              </small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band is-discovery">
+        <div className="marketing-section-copy">
+          <span>Citation copy</span>
+          <h2>Short descriptions writers can reuse with attribution.</h2>
+          <p>
+            These snippets keep citations accurate, linkable, and aligned with the public
+            product surface people can inspect.
+          </p>
+        </div>
+        <div className="marketing-card-grid">
+          {mediaCitationSnippets.map((snippet) => (
+            <article key={snippet.title} className="marketing-card">
+              <Link2 size={22} />
+              <h3>{snippet.title}</h3>
+              <p>{snippet.text}</p>
+              <ArrowLink href={snippet.href}>Source page</ArrowLink>
+            </article>
           ))}
         </div>
       </section>
@@ -260,11 +305,30 @@ export default function MediaPage() {
           <h2>Short facts for articles, directories, and partner pages.</h2>
         </div>
         <div className="media-fact-table">
-          {attributionFacts.map(([label, value]) => (
+          {mediaAttributionFacts.map(([label, value]) => (
             <div key={label}>
               <strong>{label}</strong>
               <span>{value}</span>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band is-media-faq">
+        <div className="marketing-section-copy">
+          <span>Media FAQ</span>
+          <h2>Short answers for citations, directories, and AI summaries.</h2>
+          <p>
+            Use these facts when describing inspir in articles, partner pages, education
+            directories, school notes, and AI-generated summaries.
+          </p>
+        </div>
+        <div className="marketing-faq-list">
+          {mediaFaqs.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
           ))}
         </div>
       </section>

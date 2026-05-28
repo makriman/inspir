@@ -1,4 +1,8 @@
 import type { BlogPost } from "@/lib/content/blog";
+import {
+  estimateBlogIndexedReadingMinutes,
+  estimateBlogIndexedWordCount,
+} from "@/lib/content/blog-depth";
 import type { TopicSeed } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { absoluteUrl, siteDescription, siteName, siteUrl, socialImage, socialProfiles } from "@/lib/seo/config";
@@ -57,23 +61,50 @@ export function videoObjectJsonLd({
   description,
   thumbnailUrl,
   contentUrl,
+  duration,
+  uploadDate,
+  transcript,
+  clips,
 }: {
   path: string;
   name: string;
   description: string;
-  thumbnailUrl: string;
-  contentUrl: string;
+    thumbnailUrl: string;
+    contentUrl: string;
+    duration?: string;
+    uploadDate?: string;
+    transcript?: string;
+  clips?: ReadonlyArray<{ title: string; start: number; end?: number; text?: string }>;
 }) {
+  const url = absoluteUrl(path);
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
-    "@id": `${absoluteUrl(path)}#video`,
+    "@id": `${url}#video`,
     name,
     description,
-    thumbnailUrl: [thumbnailUrl],
+    thumbnailUrl: [absoluteUrl(thumbnailUrl)],
     contentUrl: absoluteUrl(contentUrl),
+    encodingFormat: "video/mp4",
+    url: `${url}#learning-film`,
+    duration,
+    uploadDate,
+    transcript,
+    isAccessibleForFree: true,
+    accessibilityFeature: ["captions", "transcript", "chapters"],
+    accessibilitySummary:
+      "The film has a text transcript, timed captions, and chapter markers on the page.",
     publisher: { "@id": `${siteUrl}/#organization` },
-    isPartOf: { "@id": `${absoluteUrl(path)}#webpage` },
+    isPartOf: { "@id": `${url}#webpage` },
+    hasPart: clips?.map((clip, index) => ({
+      "@type": "Clip",
+      "@id": `${url}#learning-film-chapter-${index + 1}`,
+      name: clip.title,
+      description: clip.text,
+      startOffset: clip.start,
+      endOffset: clip.end,
+      url: `${url}#learning-film`,
+    })),
   };
 }
 
@@ -137,6 +168,40 @@ export function itemListJsonLd({
       url: absoluteUrl(item.url),
       name: item.name,
       description: item.description,
+    })),
+  };
+}
+
+export function howToJsonLd({
+  path,
+  id,
+  name,
+  description,
+  totalTime,
+  steps,
+}: {
+  path: string;
+  id: string;
+  name: string;
+  description: string;
+  totalTime?: string;
+  steps: Array<{ name: string; text: string; url?: string }>;
+}) {
+  const url = absoluteUrl(path);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": `${url}#${id}`,
+    name,
+    description,
+    totalTime,
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      url: step.url ? absoluteUrl(step.url) : `${url}#${id}-step-${index + 1}`,
     })),
   };
 }
@@ -224,6 +289,8 @@ export function learningModesItemListJsonLd(topics: TopicSeed[]) {
 }
 
 export function blogPostingJsonLd(post: BlogPost) {
+  const wordCount = estimateBlogIndexedWordCount(post);
+
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -234,6 +301,8 @@ export function blogPostingJsonLd(post: BlogPost) {
     author: { "@type": "Organization", name: post.author },
     publisher: { "@id": `${siteUrl}/#organization` },
     mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+    wordCount,
+    timeRequired: `PT${estimateBlogIndexedReadingMinutes(post)}M`,
     image:
       post.image ??
       socialImage({

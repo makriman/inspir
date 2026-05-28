@@ -96,6 +96,16 @@ const topTopicSeo: Record<string, TopicSeo> = {
     outcomes: ["Create recall cards", "Reveal answers when ready", "Review misses sooner"],
     searchIntents: ["AI flashcard maker", "free flashcard builder", "active recall AI"],
   },
+  "interactive-instruction": {
+    title: "Interactive AI Tutor With Live Lesson Tools",
+    description:
+      "Learn by doing, comparing, repairing, and proving mastery with an AI tutor that turns your goal into an active lesson.",
+    who: "Learners who want a guided lesson canvas with examples, checks, and active practice instead of a long chat answer.",
+    whyDifferent:
+      "The mode keeps the session interactive, moving between explanation, try-it steps, checks, and repairs.",
+    outcomes: ["Set a learning goal", "Practise inside the lesson", "Repair weak spots"],
+    searchIntents: ["interactive AI tutor", "AI lesson generator", "learn by doing with AI"],
+  },
   "time-travel": {
     title: "AI Time Travel For Learning History",
     description:
@@ -145,6 +155,46 @@ const topTopicSeo: Record<string, TopicSeo> = {
       "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
     outcomes: ["Prioritize topics", "Plan review", "Track risk areas"],
     searchIntents: ["AI study planner", "exam prep planner", "study schedule generator"],
+  },
+  "memory-palace": {
+    title: "AI Memory Palace Builder For Study Recall",
+    description:
+      "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+    who: "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+    whyDifferent:
+      "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+    outcomes: ["Choose a route", "Place vivid cues", "Practise recall"],
+    searchIntents: ["AI memory palace", "memory palace builder", "memorize with AI"],
+  },
+  "spaced-review": {
+    title: "AI Spaced Review Coach For Long-Term Memory",
+    description:
+      "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+    who: "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+    whyDifferent:
+      "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+    outcomes: ["Pick review targets", "Schedule recall", "Repair misses"],
+    searchIntents: ["AI spaced repetition", "spaced review coach", "AI memory review"],
+  },
+  "study-plan-builder": {
+    title: "AI Study Plan Builder For Better Learning",
+    description:
+      "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+    who: "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+    whyDifferent:
+      "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+    outcomes: ["Define the goal", "Schedule practice", "Build review loops"],
+    searchIntents: ["AI study plan builder", "AI study schedule", "study planner with AI"],
+  },
+  "story-tutor": {
+    title: "Story Tutor For Learning Through Narrative",
+    description:
+      "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+    who: "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+    whyDifferent:
+      "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+    outcomes: ["Choose the concept", "Build a story", "Explain the lesson"],
+    searchIntents: ["AI story tutor", "learn through stories", "story based learning AI"],
   },
 };
 

@@ -1,5 +1,5 @@
 ---
-title: "Math Step Coach For Solving Problems With Understanding: practical guide"
+title: "Math Step Coach For Understanding: practical guide"
 description: "A practical guide to using Math Step Coach on inspir for stem learning, with prompts, study loops, and safer AI habits."
 date: "2026-05-17"
 author: "inspir"
