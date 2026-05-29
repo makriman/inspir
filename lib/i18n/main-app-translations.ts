@@ -18,8 +18,18 @@ const generatedTranslationSchema = z.object({
   value: z.string(),
 });
 
-const defaultTranslationConcurrency = 16;
-const defaultTranslationFlushEvery = 25;
+const defaultTranslationBatchSize = 24;
+const defaultTranslationConcurrency = 4;
+const defaultTranslationRetryAfterMs = 1500;
+const failedTranslationRetryAfterMs = 30_000;
+
+export type MainAppTranslationResult = {
+  bundle: MainAppTranslationBundle;
+  complete: boolean;
+  translatedCount: number;
+  totalCount: number;
+  retryAfterMs?: number;
+};
 
 export async function getCachedMainAppTranslationBundle(language: string) {
   const normalized = normalizeLanguage(language);
@@ -40,8 +50,20 @@ export async function getCachedMainAppTranslationBundle(language: string) {
 }
 
 export async function getOrCreateMainAppTranslationBundle(language: string): Promise<MainAppTranslationBundle> {
+  return (await getOrCreateMainAppTranslationResult(language)).bundle;
+}
+
+export async function getOrCreateMainAppTranslationResult(language: string): Promise<MainAppTranslationResult> {
   const normalized = normalizeLanguage(language);
-  if (normalized === defaultLanguage) return getEnglishMainAppTranslationBundle();
+  if (normalized === defaultLanguage) {
+    const bundle = getEnglishMainAppTranslationBundle();
+    return {
+      bundle,
+      complete: true,
+      translatedCount: Object.keys(bundle.sourceStrings).length,
+      totalCount: Object.keys(bundle.sourceStrings).length,
+    };
+  }
 
   const sourceStrings = getMainAppSourceStrings();
   const sourceHash = getMainAppSourceHash(sourceStrings);
@@ -52,31 +74,43 @@ export async function getOrCreateMainAppTranslationBundle(language: string): Pro
     console.error("Could not read main app translation cache", error);
   }
   if (cached && isFreshAppTranslation(cached, sourceHash) && validateTranslationPayload(sourceStrings, cached.payload)) {
-    return buildMainAppTranslationBundle(normalized, cached.payload);
+    const bundle = buildMainAppTranslationBundle(normalized, cached.payload);
+    return {
+      bundle,
+      complete: true,
+      translatedCount: Object.keys(sourceStrings).length,
+      totalCount: Object.keys(sourceStrings).length,
+    };
   }
 
   const model = resolveTranslationModelName();
 
   if (!process.env.OPENAI_API_KEY) {
-    return getEnglishMainAppTranslationBundle();
+    const bundle = getEnglishMainAppTranslationBundle();
+    return {
+      bundle,
+      complete: false,
+      translatedCount: 0,
+      totalCount: Object.keys(sourceStrings).length,
+    };
   }
 
-  const initialStrings = cached && isFreshAppTranslation(cached, sourceHash) ? cached.payload : {};
-  const strings = await generateTranslationsPerField({
-    language: normalized,
+  const validCachedStrings = filterValidTranslations(
     sourceStrings,
-    initialStrings,
+    cached && isFreshAppTranslation(cached, sourceHash) ? cached.payload : {},
+  );
+  const batchSize = readPositiveIntegerEnv("OPENAI_TRANSLATION_BATCH_SIZE", defaultTranslationBatchSize);
+  const missingEntries = Object.entries(sourceStrings)
+    .filter(([key]) => !validCachedStrings[key])
+    .slice(0, batchSize);
+  const batchResult = await generateTranslationsForEntries({
+    language: normalized,
+    entries: missingEntries,
     model,
-    onProgress: async (payload) => {
-      await upsertAppTranslation({
-        namespace: mainAppTranslationNamespace,
-        language: normalized,
-        sourceHash,
-        payload,
-        model,
-      });
-    },
   });
+  const batchStrings = batchResult.translated;
+  const strings = { ...validCachedStrings, ...batchStrings };
+  const complete = validateTranslationPayload(sourceStrings, strings);
 
   try {
     await upsertAppTranslation({
@@ -90,68 +124,49 @@ export async function getOrCreateMainAppTranslationBundle(language: string): Pro
     console.error("Could not write main app translation cache", error);
   }
 
-  return buildMainAppTranslationBundle(normalized, strings);
+  return {
+    bundle: buildMainAppPartialTranslationBundle(normalized, sourceStrings, strings),
+    complete,
+    translatedCount: Object.keys(strings).length,
+    totalCount: Object.keys(sourceStrings).length,
+    retryAfterMs: complete
+      ? undefined
+      : batchResult.failedCount > 0 && Object.keys(batchStrings).length === 0
+        ? failedTranslationRetryAfterMs
+        : defaultTranslationRetryAfterMs,
+  };
 }
 
-async function generateTranslationsPerField({
+async function generateTranslationsForEntries({
   language,
-  sourceStrings,
-  initialStrings,
+  entries,
   model,
-  onProgress,
 }: {
   language: string;
-  sourceStrings: Record<string, string>;
-  initialStrings: Record<string, string>;
+  entries: Array<[string, string]>;
   model: string;
-  onProgress: (payload: Record<string, string>) => Promise<void>;
 }) {
   const translated: Record<string, string> = {};
-  const entries = Object.entries(sourceStrings);
-  for (const [key, source] of entries) {
-    if (isValidFieldTranslation(source, initialStrings[key])) translated[key] = initialStrings[key];
-  }
-
-  const missingEntries = entries.filter(([key]) => !translated[key]);
   const concurrency = readPositiveIntegerEnv("OPENAI_TRANSLATION_CONCURRENCY", defaultTranslationConcurrency);
-  const flushEvery = readPositiveIntegerEnv("OPENAI_TRANSLATION_FLUSH_EVERY", defaultTranslationFlushEvery);
   const failures: Array<{ key: string; error: unknown }> = [];
   let nextEntryIndex = 0;
-  let completedSinceFlush = 0;
   let completed = 0;
-  let flushPromise = Promise.resolve();
-
-  async function flushProgress(force = false) {
-    if (!force && completedSinceFlush < flushEvery) return;
-    completedSinceFlush = 0;
-    const payload = { ...translated };
-    flushPromise = flushPromise.then(async () => {
-      try {
-        await onProgress(payload);
-      } catch (error) {
-        console.error("Could not write main app translation progress", error);
-      }
-    });
-    await flushPromise;
-  }
 
   async function runWorker() {
-    while (nextEntryIndex < missingEntries.length) {
+    while (nextEntryIndex < entries.length) {
       const entryIndex = nextEntryIndex;
       nextEntryIndex += 1;
-      const [key, source] = missingEntries[entryIndex];
+      const [key, source] = entries[entryIndex];
       try {
         const value = await generateTranslationField({ language, key, source, model });
         translated[key] = value;
         completed += 1;
-        completedSinceFlush += 1;
         console.info("Main app translation field complete", {
           language,
           key,
           completed,
-          total: missingEntries.length,
+          total: entries.length,
         });
-        await flushProgress();
       } catch (error) {
         failures.push({ key, error });
         console.error("Main app translation field failed", { language, key, error });
@@ -159,18 +174,18 @@ async function generateTranslationsPerField({
     }
   }
 
-  await Promise.all(Array.from({ length: Math.min(concurrency, missingEntries.length) }, runWorker));
-  await flushProgress(true);
+  await Promise.all(Array.from({ length: Math.min(concurrency, entries.length) }, runWorker));
 
   if (failures.length) {
-    throw new Error(`Failed to translate ${failures.length} main app fields`);
+    console.error("Main app translation batch completed with failures", {
+      language,
+      failedCount: failures.length,
+      translatedCount: Object.keys(translated).length,
+      total: entries.length,
+    });
   }
 
-  if (!validateTranslationPayload(sourceStrings, translated)) {
-    throw new Error("Generated translation payload failed validation");
-  }
-
-  return translated;
+  return { translated, failedCount: failures.length };
 }
 
 async function generateTranslationField({
@@ -201,14 +216,13 @@ async function generateTranslationField({
       fieldKey: key,
       sourceText: source,
     }),
-    temperature: 0.2,
     maxOutputTokens: maxOutputTokensForField(source),
-    maxRetries: 2,
+    maxRetries: 0,
     abortSignal: AbortSignal.timeout(90_000),
     providerOptions: {
       openai: {
         reasoningEffort: "medium",
-        textVerbosity: "low",
+        textVerbosity: "medium",
       },
     },
   });
@@ -226,6 +240,31 @@ function isValidFieldTranslation(source: string, value: string | undefined) {
   const sourcePlaceholders = placeholdersIn(source).sort().join("|");
   const valuePlaceholders = placeholdersIn(value).sort().join("|");
   return sourcePlaceholders === valuePlaceholders;
+}
+
+function filterValidTranslations(
+  sourceStrings: Record<string, string>,
+  translatedStrings: Record<string, string>,
+) {
+  return Object.fromEntries(
+    Object.entries(sourceStrings)
+      .filter(([key, source]) => isValidFieldTranslation(source, translatedStrings[key]))
+      .map(([key]) => [key, translatedStrings[key]]),
+  );
+}
+
+function buildMainAppPartialTranslationBundle(
+  language: string,
+  sourceStrings: Record<string, string>,
+  translatedStrings: Record<string, string>,
+): MainAppTranslationBundle {
+  return {
+    namespace: mainAppTranslationNamespace,
+    language: normalizeLanguage(language),
+    sourceHash: getMainAppSourceHash(sourceStrings),
+    sourceStrings,
+    strings: { ...sourceStrings, ...translatedStrings },
+  };
 }
 
 function maxOutputTokensForField(source: string) {

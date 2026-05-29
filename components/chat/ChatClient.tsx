@@ -351,6 +351,10 @@ function useAutoTranslate(
   }, [bundle?.language, bundle?.sourceHash, ref, textMap]);
 }
 
+function sleep(ms: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
 export function ChatClient({
   authMode = "authenticated",
   user,
@@ -398,6 +402,7 @@ export function ChatClient({
   const translationRootRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const requestSeqRef = useRef(0);
+  const translationLoadSeqRef = useRef(0);
   const translationTextMap = useMemo(() => buildTranslationTextMap(translationBundle), [translationBundle]);
   const displayTopics = useMemo(
     () => topics.map((topic) => translateTopic(topic, translationTextMap)),
@@ -430,18 +435,34 @@ export function ChatClient({
     );
   }, [search, displayTopics]);
 
+  async function loadMainAppTranslation(language: string) {
+    const loadSeq = translationLoadSeqRef.current + 1;
+    translationLoadSeqRef.current = loadSeq;
+    const maxAttempts = 120;
+
+    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+      const response = await fetch(`/api/main-app-translations?language=${encodeURIComponent(language)}`);
+      if (!response.ok) throw new Error("Could not load translation");
+
+      const data = await response.json();
+      if (translationLoadSeqRef.current !== loadSeq) return;
+      if (data.bundle) setTranslationBundle(data.bundle);
+      if (data.complete !== false) return;
+
+      await sleep(data.retryAfterMs ?? 1500);
+    }
+  }
+
   useEffect(() => {
     if (!profileUser.preferredLanguage) return;
     if (translationBundle.language === profileUser.preferredLanguage) return;
-    void loadMainAppTranslation(profileUser.preferredLanguage);
+    const timeoutId = window.setTimeout(() => {
+      void loadMainAppTranslation(profileUser.preferredLanguage).catch(() => {
+        // Keep the saved profile language; English UI remains available until translation loads.
+      });
+    }, 0);
+    return () => window.clearTimeout(timeoutId);
   }, [profileUser.preferredLanguage, translationBundle.language]);
-
-  async function loadMainAppTranslation(language: string) {
-    const response = await fetch(`/api/main-app-translations?language=${encodeURIComponent(language)}`);
-    if (!response.ok) throw new Error("Could not load translation");
-    const data = await response.json();
-    if (data.bundle) setTranslationBundle(data.bundle);
-  }
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -729,11 +750,6 @@ export function ChatClient({
           createdAt: data.user.createdAt,
           profileImageHash: data.user.profileImageHash ?? null,
         });
-      }
-      try {
-        await loadMainAppTranslation(preferredLanguage);
-      } catch {
-        // Keep the saved profile language; English UI remains available until translation loads.
       }
     } catch {
       setProfileUser(previous);
