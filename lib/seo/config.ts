@@ -1,8 +1,8 @@
 export const siteUrl = "https://inspirlearning.com";
 export const siteName = "inspir";
-export const siteTitle = "inspir | Free AI learning for everyone";
+export const siteTitle = "inspir | Free AI tutor and learning companion";
 export const siteDescription =
-  "inspir is a free AI learning platform for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, role-play, and study planning.";
+  "inspir is a free AI tutor and learning companion for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, role-play, writing feedback, coding help, and study planning.";
 
 export const defaultSocialImage = {
   url: `${siteUrl}/inspir-social-preview.png`,

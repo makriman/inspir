@@ -89,7 +89,7 @@ import { topicSeeds, type TopicSeed } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { absoluteUrl, siteDescription, siteName, siteUrl } from "@/lib/seo/config";
 
-const contentLastUpdated = "2026-05-28";
+const contentLastUpdated = "2026-05-29";
 
 const publicPages = [
   {

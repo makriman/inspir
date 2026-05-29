@@ -14,16 +14,12 @@ export const missionImages = [
 
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
-  { href: "/topics", label: "Modes" },
   { href: "/subjects", label: "Subjects" },
-  { href: "/prompts", label: "Prompts" },
+  { href: "/topics", label: "Modes" },
   { href: "/learn", label: "Paths" },
-  { href: "/mission", label: "Mission" },
-  { href: "/schools", label: "Schools" },
   { href: "/blog", label: "Blog" },
-  { href: "/media", label: "Media" },
+  { href: "/schools", label: "Schools" },
   { href: "/trust", label: "Trust" },
-  { href: "/about", label: "About" },
 ] as const;
 
 export function MarketingHeader({ hero = false }: { hero?: boolean }) {

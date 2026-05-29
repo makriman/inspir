@@ -45,11 +45,16 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   keywords: [
     "AI tutor",
+    "free AI tutor",
     "free AI learning",
+    "AI learning companion",
     "Socratic AI tutor",
     "AI homework coach",
+    "AI study planner",
     "AI flashcards",
     "AI quiz generator",
+    "AI writing coach",
+    "AI code tutor",
     "learn anything",
   ],
   formatDetection: {
@@ -93,6 +98,8 @@ export const metadata: Metadata = {
   other: {
     "ai-content-index": absoluteUrl("/ai-content-index.json"),
     "llms-txt": absoluteUrl("/llms.txt"),
+    "llms-full": absoluteUrl("/llms-full.txt"),
+    "content-language": "en-US",
   },
 };
 

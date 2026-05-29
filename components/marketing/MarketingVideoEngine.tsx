@@ -186,14 +186,13 @@ export function MarketingVideoEngine({
         onClick={() => void playVideo()}
         aria-label="Play inspir learning preview"
       >
-        <span className="marketing-video-kicker">Learning engine preview</span>
+        <span className="marketing-video-kicker">Watch 31s</span>
         <span className="marketing-hero-video-play">
           <Play size={26} fill="currentColor" />
         </span>
         <span id="learning-film-caption" className="marketing-video-caption">
-          <strong>See inspir in motion</strong>
-          {" "}
-          <span>A short story about curiosity, access, and AI that teaches.</span>
+          <strong>inspir in motion</strong>
+          <span>Curiosity, practice, and AI that teaches.</span>
         </span>
       </button>
       {chapters.length ? (
@@ -244,8 +243,8 @@ export function MarketingVideoEngine({
       {ended ? (
         <div className="marketing-video-end-card">
           <span>Next step</span>
-          <strong>Turn the film into a live learning session.</strong>
-          <p>Open the free tutor, ask your first question, and move straight from inspiration into practice.</p>
+          <strong>Start a live learning session.</strong>
+          <p>Ask your first question and move straight into practice.</p>
           <div>
             <Link href="/chat/learn-anything">
               Start learning

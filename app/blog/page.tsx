@@ -22,22 +22,23 @@ const corePostSlugs = new Set([
   "ai-flashcards-and-active-recall",
 ]);
 
+const blogDescription =
+  "Explore 100+ AI learning guides, prompt loops, and study workflows for tutoring, active recall, homework help, writing feedback, coding, and exam prep.";
+
 export const metadata: Metadata = {
   title: "AI Learning Blog",
-  description:
-    "Practical notes on AI tutoring, active recall, Socratic learning, study skills, and accessible education.",
+  description: blogDescription,
   alternates: metadataAlternates("/blog"),
   openGraph: {
     title: "AI Learning Blog | inspir",
-    description:
-      "Practical notes on AI tutoring, active recall, Socratic learning, study skills, and accessible education.",
+    description: blogDescription,
     url: "/blog",
     siteName,
     images: [
       socialImage({
         title: "AI Learning Blog",
         eyebrow: "Guides",
-        description: "Practical notes on AI tutoring, active recall, Socratic learning, and study skills.",
+        description: blogDescription,
       }),
     ],
     type: "website",
@@ -45,13 +46,12 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Learning Blog | inspir",
-    description:
-      "Practical notes on AI tutoring, active recall, Socratic learning, study skills, and accessible education.",
+    description: blogDescription,
     images: [
       socialImage({
         title: "AI Learning Blog",
         eyebrow: "Guides",
-        description: "Practical notes on AI tutoring, active recall, Socratic learning, and study skills.",
+        description: blogDescription,
       }).url,
     ],
   },
@@ -97,9 +97,9 @@ export default function BlogIndexPage() {
     }),
     itemListJsonLd({
       path: "/blog",
-      id: "recent-mode-guides",
-      name: "Public mode guide library",
-      items: topicPosts.slice(0, 50).map((post) => ({
+      id: "complete-guide-library",
+      name: "Complete AI learning guide library",
+      items: posts.map((post) => ({
         name: post.title,
         url: `/blog/${post.slug}`,
         description: post.description,
@@ -119,8 +119,8 @@ export default function BlogIndexPage() {
       ))}
       <MarketingHeader />
       <MarketingPageHero eyebrow="Blog" title="Better ways to learn with AI.">
-        Notes on tutoring, memory, active practice, historical roleplay, and making learning
-        more accessible without making learners passive.
+        {posts.length} guides for tutoring, memory, active practice, historical roleplay,
+        homework help, writing feedback, coding, and learning without becoming passive.
       </MarketingPageHero>
 
       <section className="marketing-band is-blog-library">

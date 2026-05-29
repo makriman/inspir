@@ -8,13 +8,25 @@ import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { absoluteUrl, socialImage } from "@/lib/seo/config";
 
-const staticLastModified = new Date("2026-05-28T00:00:00.000Z");
+const staticLastModified = new Date("2026-05-29T00:00:00.000Z");
 
 function isoDurationToSeconds(value: string) {
   const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(value);
   if (!match) return undefined;
   const [, hours = "0", minutes = "0", seconds = "0"] = match;
   return Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
+}
+
+function withLanguageAlternates(routes: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+  return routes.map((entry) => ({
+    ...entry,
+    alternates: {
+      languages: {
+        "en-US": entry.url,
+        "x-default": entry.url,
+      },
+    },
+  }));
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -182,7 +194,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ],
   }));
 
-  return [
+  return withLanguageAlternates([
     ...staticRoutes,
     ...learningPathRoutes,
     ...comparisonRoutes,
@@ -191,5 +203,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...topicRoutes,
     ...blogRoutes,
     ...blogCategoryRoutes,
-  ];
+  ]);
 }

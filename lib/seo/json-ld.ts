@@ -36,6 +36,7 @@ export function organizationJsonLd() {
     sameAs: socialProfiles,
     description: siteDescription,
     slogan: "Learning is for everyone.",
+    areaServed: "Worldwide",
     knowsAbout: [
       "AI tutoring",
       "Socratic learning",
@@ -55,7 +56,16 @@ export function websiteJsonLd() {
     "@id": `${siteUrl}/#website`,
     name: siteName,
     url: siteUrl,
+    inLanguage: "en-US",
     publisher: { "@id": `${siteUrl}/#organization` },
+    about: [
+      "free AI tutoring",
+      "AI learning modes",
+      "active recall",
+      "Socratic learning",
+      "homework coaching",
+      "AI study prompts",
+    ],
     potentialAction: {
       "@type": "SearchAction",
       target: `${siteUrl}/chat/learn-anything?q={search_term_string}`,
@@ -95,6 +105,25 @@ export function webApplicationJsonLd() {
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     publisher: { "@id": `${siteUrl}/#organization` },
     description: siteDescription,
+    isAccessibleForFree: true,
+    browserRequirements: "Requires a modern web browser with JavaScript enabled.",
+    featureList: [
+      "AI explanations",
+      "Socratic tutoring",
+      "homework coaching",
+      "quiz generation",
+      "flashcard generation",
+      "writing feedback",
+      "coding help",
+      "study planning",
+      "AI learning prompt library",
+    ],
+    audience: [
+      { "@type": "Audience", audienceType: "Students" },
+      { "@type": "Audience", audienceType: "Parents" },
+      { "@type": "Audience", audienceType: "Teachers" },
+      { "@type": "Audience", audienceType: "Self-taught learners" },
+    ],
   };
 }
 
@@ -360,6 +389,7 @@ export function blogPostingJsonLd(post: BlogPost) {
     keywords: post.tags.join(", "),
     articleSection: post.tags,
     about,
+    mentions: about,
     isAccessibleForFree: true,
     inLanguage: "en-US",
     educationalUse: ["Self-study", "Tutoring", "Practice"],

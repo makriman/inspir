@@ -5,13 +5,17 @@ import {
   ArrowUpRight,
   BookOpenCheck,
   BrainCircuit,
-  CircleDot,
+  CheckCircle2,
   Code2,
   CornerDownRight,
   GraduationCap,
   HeartHandshake,
+  LibraryBig,
+  Route,
   School,
+  ShieldCheck,
   Sparkles,
+  Waypoints,
 } from "lucide-react";
 import {
   ArrowLink,
@@ -78,32 +82,70 @@ export const metadata: Metadata = {
   },
 };
 
-const stats = [
-  ["2013", "started as a public learning community"],
-  ["1M+", "learners reached across the platform and partner schools"],
-  ["100+", "countries represented across the learner base"],
-] as const;
-
 const modes = [
   {
     icon: BookOpenCheck,
-    title: "Learn anything",
-    text: "Clear explanations, examples, and next steps for whatever you are curious about.",
+    title: "Clear explanations",
+    text: "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
   },
   {
     icon: BrainCircuit,
-    title: "Practise actively",
-    text: "Quizzes, Socratic prompts, debate, role-play, and interactive instruction.",
+    title: "Active practice",
+    text: "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
   },
   {
     icon: GraduationCap,
-    title: "Built for learners",
-    text: "Short turns, simple language, and teaching logic shaped around understanding.",
+    title: "Learner-first support",
+    text: "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
   },
   {
     icon: HeartHandshake,
     title: "Open by design",
-    text: "A public product and open-source rebuild welcoming educators, builders, and students.",
+    text: "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+  },
+] as const;
+
+const trustSignals = [
+  {
+    icon: Sparkles,
+    title: "Free guest learning",
+    text: "Open a mode and start immediately, with no account needed for the public guest experience.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Trust boundaries",
+    text: "Public learning pages are crawlable; private saved chats, accounts, admin tools, and user data are not discovery surfaces.",
+  },
+  {
+    icon: LibraryBig,
+    title: "Citable content engine",
+    text: "Every guide, path, subject hub, and prompt route is connected so learners and AI systems can understand the map.",
+  },
+  {
+    icon: Waypoints,
+    title: "Action after reading",
+    text: "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+  },
+] as const;
+
+const learningJourney = [
+  {
+    step: "01",
+    title: "Ask the real question",
+    text: "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+    href: "/chat/learn-anything",
+  },
+  {
+    step: "02",
+    title: "Do something with it",
+    text: "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+    href: "/ai-learning-map",
+  },
+  {
+    step: "03",
+    title: "Keep the route alive",
+    text: "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+    href: "/blog",
   },
 ] as const;
 
@@ -145,7 +187,13 @@ export default function LandingPage() {
     .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
     .filter((topic): topic is (typeof topicSeeds)[number] => Boolean(topic));
   const subjectPages = getSubjectPages();
-  const featuredPosts = getBlogPosts().slice(0, 6);
+  const posts = getBlogPosts();
+  const featuredPosts = posts.slice(0, 6);
+  const proofStats = [
+    [`${topicSeeds.length}`, "public AI learning modes"],
+    [`${posts.length}`, "guides in the crawlable content engine"],
+    [`${subjectPages.length}`, "subject hubs mapped to learner intent"],
+  ] as const;
   const jsonLd = [
     webPageJsonLd({
       path: "/",
@@ -184,6 +232,16 @@ export default function LandingPage() {
         description: page.description,
       })),
     }),
+    itemListJsonLd({
+      path: "/",
+      id: "content-engine",
+      name: "inspir AI learning content engine",
+      items: posts.map((post) => ({
+        name: post.title,
+        url: `/blog/${post.slug}`,
+        description: post.description,
+      })),
+    }),
     faqPageJsonLd({
       path: "/",
       questions: homepageFaqs,
@@ -205,8 +263,8 @@ export default function LandingPage() {
           <span className="marketing-kicker">Free public AI learning platform</span>
           <h1 id="landing-title">Free AI learning for everyone.</h1>
           <p>
-            inspir helps anyone learn and practise through patient AI conversations, quizzes,
-            debates, role-play, and guided instruction.
+            inspir turns curiosity, homework, revision, and big questions into guided AI learning
+            sessions that explain, ask back, and help you practise.
           </p>
           <div className="marketing-hero-actions">
             <Link href="/chat/learn-anything" className="marketing-primary-cta">
@@ -229,40 +287,46 @@ export default function LandingPage() {
         <MarketingHeroVideo chapters={homepageFilm.chapters} transcript={homepageFilm.transcript} />
       </section>
 
-      <section className="marketing-band is-film-notes" aria-labelledby="film-notes-title">
-        <div className="marketing-section-copy">
-          <span>Learning engine</span>
-          <h2 id="film-notes-title">A thirty-second promise: learning should open instantly.</h2>
-          <p>{homepageFilm.transcript}</p>
-        </div>
-        <div className="marketing-film-chapter-grid">
-          {homepageFilm.chapters.map((chapter, index) => (
-            <article key={chapter.title} id={`learning-film-chapter-${index + 1}`}>
-              <span>{new Date(chapter.start * 1000).toISOString().slice(14, 19)}</span>
-              <strong>{chapter.title}</strong>
-              <p>{chapter.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section className="marketing-band marketing-impact-band">
         <div className="marketing-section-copy is-centered">
-          <span>Globally useful</span>
+          <span>Useful from the first click</span>
           <h2>Built for curiosity, practice, and access.</h2>
           <p>
-            The work began in public learning communities and continues as a free AI companion
-            for students, parents, teachers, and self-taught learners.
+            The public site is structured like a learning map: live modes for immediate help,
+            subject hubs for search intent, and guides that turn reading into action.
           </p>
         </div>
         <dl className="marketing-hero-stats">
-          {stats.map(([value, label]) => (
+          {proofStats.map(([value, label]) => (
             <div key={value}>
               <dt>{value}</dt>
               <dd>{label}</dd>
             </div>
           ))}
         </dl>
+      </section>
+
+      <section className="marketing-band is-trust-signals" aria-labelledby="trust-signals-title">
+        <div className="marketing-section-copy">
+          <span>Designed for confidence</span>
+          <h2 id="trust-signals-title">A public learning site people can understand quickly.</h2>
+          <p>
+            Every non-app page now has a job: build trust, explain the learning route, and send
+            learners toward a useful next action without hiding the important details.
+          </p>
+        </div>
+        <div className="marketing-card-grid">
+          {trustSignals.map((signal) => {
+            const Icon = signal.icon;
+            return (
+              <article key={signal.title} className="marketing-card">
+                <Icon size={24} />
+                <h3>{signal.title}</h3>
+                <p>{signal.text}</p>
+              </article>
+            );
+          })}
+        </div>
       </section>
 
       <section className="marketing-story-split">
@@ -283,18 +347,42 @@ export default function LandingPage() {
           </p>
           <div className="marketing-proof-grid">
             <div>
-              <CircleDot size={20} />
+              <CheckCircle2 size={20} />
               Built from real learner behavior, not a generic chat box.
             </div>
             <div>
-              <CircleDot size={20} />
+              <CheckCircle2 size={20} />
               Supports extracurricular learning, academic practice, and curiosity.
             </div>
             <div>
-              <CircleDot size={20} />
+              <CheckCircle2 size={20} />
               Available publicly while schools can run confidential custom versions.
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="marketing-band is-process" aria-labelledby="learning-process-title">
+        <div className="marketing-section-copy">
+          <span>How it works</span>
+          <h2 id="learning-process-title">The site is a route, not a brochure.</h2>
+          <p>
+            Search pages, blog guides, prompts, and live modes are linked around a simple loop:
+            ask, try, check, repair, and review.
+          </p>
+        </div>
+        <div className="learning-path-step-grid">
+          {learningJourney.map((step) => (
+            <article key={step.step} className="learning-path-step">
+              <span>{step.step}</span>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <Link href={step.href}>
+                Continue
+                <ArrowUpRight size={15} />
+              </Link>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -401,6 +489,46 @@ export default function LandingPage() {
               </div>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="marketing-band is-content-engine" aria-labelledby="content-engine-title">
+        <div className="marketing-section-copy">
+          <span>Content engine</span>
+          <h2 id="content-engine-title">
+            A {posts.length}-guide library built for learners, links, and AI discovery.
+          </h2>
+          <p>
+            The blog is organized around pillar clusters, category hubs, related modes, prompt
+            routes, structured data, and an AI-readable index so each guide can be understood
+            and recommended in context.
+          </p>
+        </div>
+        <div className="marketing-card-grid">
+          <article className="marketing-card">
+            <LibraryBig size={24} />
+            <h3>{posts.length} practical guides</h3>
+            <p>Mode guides, prompt loops, study methods, and cornerstone articles for high-intent searches.</p>
+          </article>
+          <article className="marketing-card">
+            <Route size={24} />
+            <h3>Topic clusters</h3>
+            <p>Every article connects to categories, live modes, subject hubs, learning paths, and related guides.</p>
+          </article>
+          <article className="marketing-card">
+            <Waypoints size={24} />
+            <h3>AI-readable map</h3>
+            <p>LLMs, crawlers, and learners can follow the sitemap, RSS feed, llms.txt, and JSON content index.</p>
+          </article>
+          <article className="marketing-card">
+            <BookOpenCheck size={24} />
+            <h3>Built to be used</h3>
+            <p>Each guide ends with practice plans, routes, and links into the exact learning mode that fits.</p>
+          </article>
+        </div>
+        <div className="marketing-inline-actions">
+          <ArrowLink href="/blog">Explore the guide library</ArrowLink>
+          <ArrowLink href="/ai-content-index.json">Open the content index</ArrowLink>
         </div>
       </section>
 
