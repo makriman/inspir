@@ -166,7 +166,7 @@ test("model router falls specialized profiles back to the configured fast model"
   }
 });
 
-test("translation model uses explicit env or structured fallback", () => {
+test("translation model uses explicit env or flagship fallback", () => {
   const previous = {
     OPENAI_MODEL: process.env.OPENAI_MODEL,
     OPENAI_FAST_MODEL: process.env.OPENAI_FAST_MODEL,
@@ -178,7 +178,7 @@ test("translation model uses explicit env or structured fallback", () => {
   process.env.OPENAI_STRUCTURED_MODEL = "structured-model";
   delete process.env.OPENAI_TRANSLATION_MODEL;
 
-  assert.equal(resolveTranslationModelName(), "structured-model");
+  assert.equal(resolveTranslationModelName(), "gpt-5.5");
 
   process.env.OPENAI_TRANSLATION_MODEL = "translation-model";
   assert.equal(resolveTranslationModelName(), "translation-model");

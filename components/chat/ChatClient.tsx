@@ -412,6 +412,7 @@ export function ChatClient({
   const isFlashcardMode = uiMode === "flashcards";
   const isMiniAppMode = uiMode !== "chat" && uiMode !== "quiz" && uiMode !== "flashcards";
   const visibleChatMessages = displayMessages(messages);
+  const userDisplayName = profileUser.name?.trim() || "Learner";
 
   function saveGuestUsage(used: number) {
     setGuestMessagesUsed(used);
@@ -841,6 +842,7 @@ export function ChatClient({
             <TimeTravelWorkspace
               key={`${activeTopic.id}-${workspaceResetCount}`}
               topic={activeTopic}
+              userName={userDisplayName}
               messages={messages}
               input={input}
               sending={sending}
@@ -858,6 +860,7 @@ export function ChatClient({
             <SocraticWorkspace
               key={`${activeTopic.id}-${workspaceResetCount}`}
               topic={activeTopic}
+              userName={userDisplayName}
               messages={messages}
               input={input}
               sending={sending}
@@ -876,6 +879,7 @@ export function ChatClient({
               key={`${activeTopic.id}-${workspaceResetCount}`}
               topic={activeTopic}
               mode={uiMode}
+              userName={userDisplayName}
               messages={messages}
               input={input}
               sending={sending}
@@ -902,7 +906,7 @@ export function ChatClient({
               ) : null}
               <div className="bubble-message-stack">
                 {visibleChatMessages.map((message) => (
-                  <MessageBubble key={message.id} message={message} />
+                  <MessageBubble key={message.id} message={message} userLabel={userDisplayName} />
                 ))}
                 {awaitingResponse ? (
                   <div className="bubble-thinking" aria-live="polite">
@@ -1837,6 +1841,7 @@ const miniAppConfigs: Record<MiniMode, MiniAppConfig> = {
 
 function TimeTravelWorkspace({
   topic,
+  userName,
   messages,
   input,
   sending,
@@ -1851,6 +1856,7 @@ function TimeTravelWorkspace({
   onReset,
 }: {
   topic: Topic;
+  userName: string;
   messages: Message[];
   input: string;
   sending: boolean;
@@ -1910,6 +1916,7 @@ function TimeTravelWorkspace({
     return (
       <TimeTravelSession
         topic={topic}
+        userName={userName}
         journey={selectedJourney ?? fallbackTimeTravelJourney}
         identity={identity ?? timeTravelerIdentities[0]}
         purpose={purpose}
@@ -2353,6 +2360,7 @@ function CoachChatSession({
   eyebrow,
   title,
   subtitle,
+  userName,
   coachName,
   placeholder,
   messages,
@@ -2373,6 +2381,7 @@ function CoachChatSession({
   eyebrow: string;
   title: string;
   subtitle: string;
+  userName: string;
   coachName: string;
   placeholder: string;
   messages: Message[];
@@ -2460,7 +2469,12 @@ function CoachChatSession({
           <div ref={listRef} className="coach-chat-log app-scrollbar">
             <div className="coach-chat-message-stack">
               {messages.map((message) => (
-                <MessageBubble key={message.id} message={message} assistantLabel={`${coachName} response`} />
+                <MessageBubble
+                  key={message.id}
+                  message={message}
+                  userLabel={userName}
+                  assistantLabel={`${coachName} response`}
+                />
               ))}
               {awaitingResponse ? (
                 <div className="bubble-thinking" aria-live="polite">
@@ -2504,6 +2518,7 @@ function CoachChatSession({
 
 function TimeTravelSession({
   topic,
+  userName,
   journey,
   identity,
   purpose,
@@ -2523,6 +2538,7 @@ function TimeTravelSession({
   onReset,
 }: {
   topic: Topic;
+  userName: string;
   journey: TimeTravelJourney;
   identity: TimeTravelerIdentity;
   purpose?: TimeTravelChoice;
@@ -2571,6 +2587,7 @@ function TimeTravelSession({
       eyebrow={topic.name}
       title={journey.place}
       subtitle={`${journey.arrival} - ${identity.role}`}
+      userName={userName}
       coachName="Guide"
       placeholder="Ask, act, pause for context, or request a debrief..."
       messages={messages}
@@ -3055,6 +3072,7 @@ function formatSprintTime(seconds: number) {
 
 function CollaborativeInstructionWorkspace({
   topic,
+  userName,
   messages,
   input,
   sending,
@@ -3069,6 +3087,7 @@ function CollaborativeInstructionWorkspace({
   onReset,
 }: {
   topic: Topic;
+  userName: string;
   messages: Message[];
   input: string;
   sending: boolean;
@@ -3192,6 +3211,7 @@ function CollaborativeInstructionWorkspace({
         eyebrow="Collaborative Instruction"
         title={activeGoal || topic.name}
         subtitle={`${room.title} - ${activeMode.label}`}
+        userName={userName}
         coachName="Collaborator"
         placeholder="Add, edit, challenge, or decide the next move"
         messages={visibleMessages}
@@ -3420,6 +3440,7 @@ function CollaborativeInstructionWorkspace({
             </div>
             <CollaborationActivityFeed
               messages={visibleMessages}
+              userName={userName}
               awaitingResponse={awaitingResponse}
               modeLabel={activeMode.label}
               initialGoal={activeGoal}
@@ -3462,11 +3483,13 @@ function HandOffIcon() {
 
 function CollaborationActivityFeed({
   messages,
+  userName,
   awaitingResponse,
   modeLabel,
   initialGoal,
 }: {
   messages: Message[];
+  userName: string;
   awaitingResponse: boolean;
   modeLabel: string;
   initialGoal: string;
@@ -3487,7 +3510,7 @@ function CollaborationActivityFeed({
             <header>
               <div>
                 <UserRound size={16} />
-                <strong>User set shared intent</strong>
+                <strong>{userName} set shared intent</strong>
               </div>
               <time>Now</time>
             </header>
@@ -3498,8 +3521,8 @@ function CollaborationActivityFeed({
           const isUser = message.role === "user";
           const title = isUser
             ? index === 0
-              ? "User set shared intent"
-              : "User contributed"
+              ? `${userName} set shared intent`
+              : `${userName} contributed`
             : index < 2
               ? "AI made the first structure"
               : "AI revised the workspace";
@@ -3543,6 +3566,7 @@ function formatCollaborationFeedContent(message: Message, index: number) {
 function GuidedMiniAppWorkspace({
   topic,
   mode,
+  userName,
   messages,
   input,
   sending,
@@ -3558,6 +3582,7 @@ function GuidedMiniAppWorkspace({
 }: {
   topic: Topic;
   mode: MiniMode;
+  userName: string;
   messages: Message[];
   input: string;
   sending: boolean;
@@ -3581,6 +3606,7 @@ function GuidedMiniAppWorkspace({
     return (
       <CollaborativeInstructionWorkspace
         topic={topic}
+        userName={userName}
         messages={messages}
         input={input}
         sending={sending}
@@ -3601,6 +3627,7 @@ function GuidedMiniAppWorkspace({
     return (
       <HistoricalPersonWorkspace
         topic={topic}
+        userName={userName}
         messages={messages}
         input={input}
         sending={sending}
@@ -3640,6 +3667,7 @@ function GuidedMiniAppWorkspace({
         eyebrow={config.eyebrow}
         title={primary.trim() || topic.name}
         subtitle={config.milestones.join(" -> ")}
+        userName={userName}
         coachName="Coach"
         placeholder={topic.inputboxText}
         messages={visibleMessages}
@@ -3756,7 +3784,7 @@ function GuidedMiniAppWorkspace({
               </header>
               <div className="bubble-message-stack bubble-mini-message-stack">
                 {visibleMessages.map((message) => (
-                  <MessageBubble key={message.id} message={message} />
+                  <MessageBubble key={message.id} message={message} userLabel={userName} />
                 ))}
                 {awaitingResponse ? (
                   <div className="bubble-thinking" aria-live="polite">
@@ -3802,6 +3830,7 @@ function GuidedMiniAppWorkspace({
 
 function HistoricalPersonWorkspace({
   topic,
+  userName,
   messages,
   input,
   sending,
@@ -3816,6 +3845,7 @@ function HistoricalPersonWorkspace({
   onReset,
 }: {
   topic: Topic;
+  userName: string;
   messages: Message[];
   input: string;
   sending: boolean;
@@ -3935,6 +3965,7 @@ function HistoricalPersonWorkspace({
         eyebrow="Historical audience"
         title={encounterTitle}
         subtitle={`${selectedTimeSlice} - ${selectedMode.label}`}
+        userName={userName}
         coachName="Historian coach"
         placeholder="Ask, challenge, request evidence, or open a dossier item..."
         messages={visibleMessages}
@@ -4299,7 +4330,7 @@ function HistoricalPersonWorkspace({
 
               <div className="bubble-message-stack historical-message-stack">
                 {visibleMessages.map((message) => (
-                  <MessageBubble key={message.id} message={message} />
+                  <MessageBubble key={message.id} message={message} userLabel={userName} />
                 ))}
                 {awaitingResponse ? (
                   <div className="bubble-thinking" aria-live="polite">
@@ -4400,9 +4431,11 @@ function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
 
 function MessageBubble({
   message,
+  userLabel = "Learner",
   assistantLabel = "Coach response",
 }: {
   message: Message;
+  userLabel?: string;
   assistantLabel?: string;
 }) {
   const isUser = message.role === "user";
@@ -4419,7 +4452,7 @@ function MessageBubble({
       <article className="bubble-message-bubble">
         <header className="bubble-message-author">
           {isUser ? <UserRound size={14} /> : <Bot size={14} />}
-          <strong>{isUser ? "You" : assistantLabel}</strong>
+          <strong>{isUser ? userLabel : assistantLabel}</strong>
         </header>
         <RichMessageContent content={message.content} />
         <footer>
@@ -5138,8 +5171,8 @@ function ProfilePanel({
               <Languages size={22} />
             </div>
             <div>
-              <strong>Response language</strong>
-              <span>All tutoring replies follow this setting.</span>
+              <strong>Preferred Language</strong>
+              <span>All app text and tutoring replies follow this setting.</span>
             </div>
           </div>
           <select

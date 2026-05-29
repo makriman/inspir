@@ -117,6 +117,7 @@ const mapSections: Array<{
 
 export function SocraticWorkspace({
   topic,
+  userName,
   messages,
   input,
   sending,
@@ -131,6 +132,7 @@ export function SocraticWorkspace({
   onReset,
 }: {
   topic: Topic;
+  userName: string;
   messages: Message[];
   input: string;
   sending: boolean;
@@ -407,7 +409,9 @@ export function SocraticWorkspace({
                 </div>
                 <div className="socratic-log-stack">
                   {displayMessages.length ? (
-                    displayMessages.map((message) => <SocraticTurn key={message.id} message={message} />)
+                    displayMessages.map((message) => (
+                      <SocraticTurn key={message.id} message={message} userName={userName} />
+                    ))
                   ) : awaitingResponse ? (
                     <ThinkingPulse />
                   ) : null}
@@ -484,12 +488,12 @@ function MapNodeCard({ node }: { node: MapNode }) {
   );
 }
 
-function SocraticTurn({ message }: { message: Message }) {
+function SocraticTurn({ message, userName }: { message: Message; userName: string }) {
   const isUser = message.role === "user";
   return (
     <article className={`socratic-turn ${isUser ? "is-user" : "is-assistant"}`}>
       <header>
-        <strong>{isUser ? "You" : "Coach"}</strong>
+        <strong>{isUser ? userName : "Coach"}</strong>
         <time>{formatBubbleDate(message.createdAt)}</time>
       </header>
       <SocraticRichText content={message.content} />

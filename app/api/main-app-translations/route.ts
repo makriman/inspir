@@ -5,6 +5,7 @@ import { normalizeLanguage } from "@/lib/content/languages";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 300;
 
 export async function GET(request: NextRequest) {
   const session = await requireSession();
@@ -15,7 +16,8 @@ export async function GET(request: NextRequest) {
   try {
     const bundle = await getOrCreateMainAppTranslationBundle(language);
     return NextResponse.json({ bundle });
-  } catch {
+  } catch (error) {
+    console.error("Main app translation failed", error);
     return NextResponse.json({ error: "Translation unavailable" }, { status: 500 });
   }
 }

@@ -68,7 +68,13 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
   const hasRelated = relatedPaths.length > 0 || relatedGuides.length > 0 || relatedModes.length > 0;
 
   return (
-    <section className="public-topic-seo" aria-labelledby={`${topic.slug}-seo-title`}>
+    <section
+      className="public-topic-seo is-hidden-for-app"
+      aria-hidden="true"
+      inert
+      data-no-auto-translate="true"
+      aria-labelledby={`${topic.slug}-seo-title`}
+    >
       <div className="public-topic-seo-head">
         <span>{topic.metadata.category} learning mode</span>
         <h1 id={`${topic.slug}-seo-title`}>{seo.title}</h1>
