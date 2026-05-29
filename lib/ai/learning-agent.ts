@@ -8,18 +8,20 @@ export function createLearningAgent({
   topic,
   model = resolveModelForTopic(topic),
   preferredLanguage,
+  learnerAge,
   onFinish,
 }: {
   topic: Topic;
   model?: string;
   preferredLanguage?: string;
+  learnerAge?: number | null;
   onFinish?: ToolLoopAgentOnFinishCallback;
 }) {
   const profile = getTopicMetadata(topic)?.modelProfile ?? "fast";
   return new ToolLoopAgent({
     id: `inspir-${topic.slug}`,
     model: openai(model),
-    instructions: buildTopicSystemPrompt(topic, preferredLanguage),
+    instructions: buildTopicSystemPrompt(topic, preferredLanguage, { learnerAge }),
     tools: {},
     temperature: resolveTemperature(profile),
     maxOutputTokens: profile === "reasoning" ? 3200 : 2400,

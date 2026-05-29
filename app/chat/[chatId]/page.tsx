@@ -24,6 +24,9 @@ import {
   getOwnedChat,
   getUserById,
 } from "@/lib/db/queries";
+import { getCachedMainAppTranslationBundle } from "@/lib/i18n/main-app-translations";
+import { getEnglishMainAppTranslationBundle } from "@/lib/i18n/main-app-source";
+import { calculateAge } from "@/lib/profile/age";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { faqPageJsonLd, itemListJsonLd, serializeJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
 
@@ -48,6 +51,8 @@ function guestUser() {
     image: null,
     score: 0,
     preferredLanguage: "English",
+    dateOfBirth: null,
+    age: null,
     createdAt: new Date(),
     profileImageHash: null,
   };
@@ -287,6 +292,9 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
 
     const topic = topics.find((candidate) => candidate.slug === topicSlug) ?? topicFromSeed(seedTopic);
     if (!topic) notFound();
+    if (session?.user?.id && savedChatsAvailable && !user?.dateOfBirth) {
+      redirect(`/onboarding/age?next=${encodeURIComponent(topicPath(topic.slug))}`);
+    }
 
     const profileUser = session?.user?.id && savedChatsAvailable
       ? {
@@ -296,10 +304,15 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           image: user?.image ?? session.user.image ?? null,
           score: user?.score ?? 0,
           preferredLanguage: user?.preferredLanguage ?? "English",
+          dateOfBirth: user?.dateOfBirth ?? null,
+          age: calculateAge(user?.dateOfBirth),
           createdAt: user?.createdAt ?? new Date(),
           profileImageHash: user?.profileImageHash ?? null,
         }
       : guestUser();
+    const translationBundle =
+      (await getCachedMainAppTranslationBundle(profileUser.preferredLanguage)) ??
+      getEnglishMainAppTranslationBundle();
 
     const topicFaqs = topicPublicFaqs(seedTopic);
     const relatedPaths = getRelatedLearningPathsForTopic(seedTopic);
@@ -351,6 +364,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           initialTopicId={topic.id}
           initialMessages={[]}
           initialActivityRun={null}
+          initialTranslationBundle={translationBundle}
         />
         <PublicTopicSeoCompanion topic={seedTopic} />
       </>
@@ -372,6 +386,9 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     getUserById(session.user.id),
     getLatestActivityRun(chatId),
   ]);
+  if (!user?.dateOfBirth) {
+    redirect(`/onboarding/age?next=${encodeURIComponent(`/chat/${chatId}`)}`);
+  }
 
   return (
     <ChatClient
@@ -383,6 +400,8 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
         image: user?.image ?? session.user.image ?? null,
         score: user?.score ?? 0,
         preferredLanguage: user?.preferredLanguage ?? "English",
+        dateOfBirth: user?.dateOfBirth ?? null,
+        age: calculateAge(user?.dateOfBirth),
         createdAt: user?.createdAt ?? new Date(),
         profileImageHash: user?.profileImageHash ?? null,
       }}
@@ -400,6 +419,10 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
         metadata: message.metadata,
       }))}
       initialActivityRun={sanitizeActivityRun(activityRun)}
+      initialTranslationBundle={
+        (await getCachedMainAppTranslationBundle(user?.preferredLanguage ?? "English")) ??
+        getEnglishMainAppTranslationBundle()
+      }
     />
   );
 }

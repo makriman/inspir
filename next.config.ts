@@ -22,21 +22,20 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io",
-        pathname: "/**",
-      },
-    ],
-  },
   async redirects() {
     return [
       {
         source: "/tnc",
         destination: "/terms",
         permanent: true,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/sitemap",
       },
     ];
   },

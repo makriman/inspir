@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildTopicSystemPrompt, INSPIR_TUTOR_CONTRACT } from "../lib/ai/prompts";
-import { resolveModelName } from "../lib/ai/model-router";
+import { resolveModelName, resolveTranslationModelName } from "../lib/ai/model-router";
 import { buildMiniAppInstruction, getVisibleMessageContent } from "../lib/ai/visible-content";
 import {
   reviewFlashcard,
@@ -159,6 +159,29 @@ test("model router falls specialized profiles back to the configured fast model"
 
   assert.equal(resolveModelName("reasoning"), "fast-model");
   assert.equal(resolveModelName("structured"), "fast-model");
+
+  for (const [key, value] of Object.entries(previous)) {
+    if (value === undefined) delete process.env[key];
+    else process.env[key] = value;
+  }
+});
+
+test("translation model uses explicit env or structured fallback", () => {
+  const previous = {
+    OPENAI_MODEL: process.env.OPENAI_MODEL,
+    OPENAI_FAST_MODEL: process.env.OPENAI_FAST_MODEL,
+    OPENAI_STRUCTURED_MODEL: process.env.OPENAI_STRUCTURED_MODEL,
+    OPENAI_TRANSLATION_MODEL: process.env.OPENAI_TRANSLATION_MODEL,
+  };
+  process.env.OPENAI_MODEL = "global-model";
+  process.env.OPENAI_FAST_MODEL = "fast-model";
+  process.env.OPENAI_STRUCTURED_MODEL = "structured-model";
+  delete process.env.OPENAI_TRANSLATION_MODEL;
+
+  assert.equal(resolveTranslationModelName(), "structured-model");
+
+  process.env.OPENAI_TRANSLATION_MODEL = "translation-model";
+  assert.equal(resolveTranslationModelName(), "translation-model");
 
   for (const [key, value] of Object.entries(previous)) {
     if (value === undefined) delete process.env[key];

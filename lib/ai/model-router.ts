@@ -15,6 +15,10 @@ export function resolveModelName(profile: ModelProfile = "fast") {
   return fastModel;
 }
 
+export function resolveTranslationModelName() {
+  return process.env.OPENAI_TRANSLATION_MODEL ?? resolveModelName("structured");
+}
+
 export function resolveModelForTopic(topic: Pick<Topic, "metadata">) {
   const metadata = getTopicMetadata(topic);
   return resolveModelName(metadata?.modelProfile ?? "fast");

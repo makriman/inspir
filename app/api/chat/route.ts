@@ -10,6 +10,7 @@ import { createLearningAgent } from "@/lib/ai/learning-agent";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
 import { normalizeLanguage } from "@/lib/content/languages";
 import { checkRateLimit } from "@/lib/utils/rate-limit";
+import { calculateAge } from "@/lib/profile/age";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -45,7 +46,8 @@ export async function POST(request: NextRequest) {
   const context = await getContextMessages(parsed.data.chatId);
   const user = await getUserById(session.user.id);
   const preferredLanguage = normalizeLanguage(user?.preferredLanguage);
-  const assembled = buildModelMessages(owned.topic, context, preferredLanguage);
+  const learnerAge = calculateAge(user?.dateOfBirth);
+  const assembled = buildModelMessages(owned.topic, context, preferredLanguage, { learnerAge });
   const model = resolveModelForTopic(owned.topic);
 
   const [run] = await db
@@ -63,6 +65,7 @@ export async function POST(request: NextRequest) {
       topic: owned.topic,
       model,
       preferredLanguage,
+      learnerAge,
       onFinish: async (event) => {
         const assistant = await insertMessage({
           chatId: parsed.data.chatId,

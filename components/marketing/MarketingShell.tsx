@@ -1,16 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { ArrowUpRight, Code2 } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { MarketingVideoEngine } from "@/components/marketing/MarketingVideoEngine";
-
-export const missionImages = [
-  "https://5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io/f1685191905644x747393734386347000/inspire-logo-presentation_compressed_page-0008.jpg",
-  "https://5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io/f1685191915410x254612906062515970/inspire-logo-presentation_compressed_page-0007.jpg",
-  "https://5ee5b6e1ce35d6eb5c13bd01a3187ca0.cdn.bubble.io/f1685191628192x310335032442042600/inspire-logo-presentation_compressed_page-0009.jpg",
-] as const;
 
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
@@ -89,17 +82,27 @@ export function MarketingPageHero({
         <p>{children}</p>
       </div>
       <div className="marketing-page-visual" aria-hidden="true">
-        {[missionImages[0], missionImages[2]].map((src, index) => (
-          <figure key={src} className={`is-${index + 1}`}>
-            <Image
-              src={src}
-              alt=""
-              width={900}
-              height={506}
-              priority={index === 0}
-            />
-          </figure>
-        ))}
+        <figure className="is-film">
+          <video
+            src="/media/inspir-learning-film.mp4"
+            poster="/inspir-social-preview.png"
+            muted
+            autoPlay
+            loop
+            playsInline
+            preload="metadata"
+          />
+        </figure>
+        <figure className="is-map">
+          <div className="marketing-page-map">
+            <span />
+            <span />
+            <span />
+            <span />
+            <i />
+            <i />
+          </div>
+        </figure>
       </div>
     </section>
   );

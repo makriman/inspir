@@ -7,6 +7,7 @@ import {
   KeyboardEvent,
   RefObject,
   type ComponentType,
+  type MutableRefObject,
   useEffect,
   useMemo,
   useRef,
@@ -77,6 +78,7 @@ import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicPath } from "@/lib/content/topic-routing";
 import { formatBubbleDate } from "@/lib/utils/dates";
 import { buildMiniAppInstruction, getVisibleMessageContent } from "@/lib/ai/visible-content";
+import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
 
 type TopicMetadata = {
   category: string;
@@ -118,6 +120,8 @@ type UserProfile = {
   image: string | null;
   score: number;
   preferredLanguage: string;
+  dateOfBirth?: string | null;
+  age?: number | null;
   createdAt: string | Date;
   profileImageHash?: string | null;
 };
@@ -257,6 +261,96 @@ function displayMessages(messages: Message[]) {
   return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
 }
 
+const translatableAttributes = ["aria-label", "title", "placeholder"];
+
+function buildTranslationTextMap(bundle: MainAppTranslationBundle | null | undefined) {
+  const map = new Map<string, string>();
+  if (!bundle) return map;
+  for (const [key, source] of Object.entries(bundle.sourceStrings)) {
+    const translated = bundle.strings[key];
+    if (!translated) continue;
+    map.set(source.trim(), translated);
+  }
+  return map;
+}
+
+function translateRawText(value: string, textMap: Map<string, string>) {
+  if (!value.trim()) return value;
+  const leading = value.match(/^\s*/)?.[0] ?? "";
+  const trailing = value.match(/\s*$/)?.[0] ?? "";
+  const core = value.trim();
+  const translated = textMap.get(core);
+  return translated ? `${leading}${translated}${trailing}` : value;
+}
+
+function translateTopic(topic: Topic, textMap: Map<string, string>): Topic {
+  const metadata = topicMetadata(topic);
+  return {
+    ...topic,
+    name: translateRawText(topic.name, textMap),
+    subText: translateRawText(topic.subText, textMap),
+    description: translateRawText(topic.description, textMap),
+    inputboxText: translateRawText(topic.inputboxText, textMap),
+    metadata: metadata
+      ? {
+          ...metadata,
+          category: translateRawText(metadata.category, textMap),
+          starters: metadata.starters.map((starter) => translateRawText(starter, textMap)),
+        }
+      : topic.metadata,
+  };
+}
+
+function shouldSkipTranslation(node: Node) {
+  const element = node.nodeType === Node.ELEMENT_NODE ? (node as Element) : node.parentElement;
+  return Boolean(element?.closest("[data-no-auto-translate], code, pre, script, style"));
+}
+
+function useAutoTranslate(
+  ref: MutableRefObject<HTMLElement | null>,
+  bundle: MainAppTranslationBundle | null | undefined,
+) {
+  const textMap = useMemo(() => buildTranslationTextMap(bundle), [bundle]);
+
+  useEffect(() => {
+    const root = ref.current;
+    if (!root || textMap.size === 0) return;
+    const translateRoot = root;
+
+    function translateNodeTree() {
+      for (const element of Array.from(translateRoot.querySelectorAll<HTMLElement>("*"))) {
+        if (shouldSkipTranslation(element)) continue;
+        for (const attribute of translatableAttributes) {
+          const value = element.getAttribute(attribute);
+          if (!value) continue;
+          const translated = translateRawText(value, textMap);
+          if (translated !== value) element.setAttribute(attribute, translated);
+        }
+      }
+
+      const walker = document.createTreeWalker(translateRoot, NodeFilter.SHOW_TEXT);
+      const textNodes: Text[] = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
+      for (const node of textNodes) {
+        if (shouldSkipTranslation(node)) continue;
+        const translated = translateRawText(node.data, textMap);
+        if (translated !== node.data) node.data = translated;
+      }
+    }
+
+    translateNodeTree();
+    const observer = new MutationObserver(() => translateNodeTree());
+    observer.observe(root, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: translatableAttributes,
+    });
+    return () => observer.disconnect();
+  }, [bundle?.language, bundle?.sourceHash, ref, textMap]);
+}
+
 export function ChatClient({
   authMode = "authenticated",
   user,
@@ -265,6 +359,7 @@ export function ChatClient({
   initialChatId,
   initialMessages,
   initialActivityRun,
+  initialTranslationBundle,
 }: {
   authMode?: "authenticated" | "guest";
   user: UserProfile;
@@ -273,6 +368,7 @@ export function ChatClient({
   initialChatId?: string;
   initialMessages: Message[];
   initialActivityRun: ActivityRun | null;
+  initialTranslationBundle: MainAppTranslationBundle;
 }) {
   const isGuest = authMode === "guest";
   const guestMessageLimit = 5;
@@ -290,6 +386,7 @@ export function ChatClient({
   const [recentLoading, setRecentLoading] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [profileUser, setProfileUser] = useState(user);
+  const [translationBundle, setTranslationBundle] = useState(initialTranslationBundle);
   const [languageSaving, setLanguageSaving] = useState(false);
   const [guestMessagesUsed, setGuestMessagesUsed] = useState(() => {
     return readStoredGuestUsage(guestMessageLimit);
@@ -298,10 +395,17 @@ export function ChatClient({
   const [workspaceResetCount, setWorkspaceResetCount] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const translationRootRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const requestSeqRef = useRef(0);
+  const translationTextMap = useMemo(() => buildTranslationTextMap(translationBundle), [translationBundle]);
+  const displayTopics = useMemo(
+    () => topics.map((topic) => translateTopic(topic, translationTextMap)),
+    [topics, translationTextMap],
+  );
+  useAutoTranslate(translationRootRef, translationBundle);
 
-  const activeTopic = topics.find((topic) => topic.id === activeTopicId) ?? topics[0];
+  const activeTopic = displayTopics.find((topic) => topic.id === activeTopicId) ?? displayTopics[0];
   const metadata = topicMetadata(activeTopic);
   const uiMode = metadata?.uiMode ?? "chat";
   const isQuizMode = uiMode === "quiz";
@@ -316,14 +420,27 @@ export function ChatClient({
 
   const filteredTopics = useMemo(() => {
     const q = search.trim().toLowerCase();
-    if (!q) return topics;
-    return topics.filter(
+    if (!q) return displayTopics;
+    return displayTopics.filter(
       (topic) =>
         topic.name.toLowerCase().includes(q) ||
         topic.subText.toLowerCase().includes(q) ||
         topicMetadata(topic)?.category.toLowerCase().includes(q),
     );
-  }, [search, topics]);
+  }, [search, displayTopics]);
+
+  useEffect(() => {
+    if (!profileUser.preferredLanguage) return;
+    if (translationBundle.language === profileUser.preferredLanguage) return;
+    void loadMainAppTranslation(profileUser.preferredLanguage);
+  }, [profileUser.preferredLanguage, translationBundle.language]);
+
+  async function loadMainAppTranslation(language: string) {
+    const response = await fetch(`/api/main-app-translations?language=${encodeURIComponent(language)}`);
+    if (!response.ok) throw new Error("Could not load translation");
+    const data = await response.json();
+    if (data.bundle) setTranslationBundle(data.bundle);
+  }
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -606,9 +723,16 @@ export function ChatClient({
           image: data.user.image,
           score: data.user.score ?? 0,
           preferredLanguage: data.user.preferredLanguage ?? defaultLanguage,
+          dateOfBirth: data.user.dateOfBirth ?? null,
+          age: data.user.age ?? null,
           createdAt: data.user.createdAt,
           profileImageHash: data.user.profileImageHash ?? null,
         });
+      }
+      try {
+        await loadMainAppTranslation(preferredLanguage);
+      } catch {
+        // Keep the saved profile language; English UI remains available until translation loads.
       }
     } catch {
       setProfileUser(previous);
@@ -622,12 +746,16 @@ export function ChatClient({
     : profileUser.image || undefined;
 
   return (
-    <div className={`bubble-chat-root ${profileOpen ? "profile-open" : ""}`}>
+    <div
+      key={`${translationBundle.language}-${translationBundle.sourceHash}`}
+      ref={translationRootRef}
+      className={`bubble-chat-root ${profileOpen ? "profile-open" : ""}`}
+    >
       <aside className={`bubble-sidebar ${mobileSidebarOpen ? "is-open" : ""}`}>
         <TopicSidebar
           isGuest={isGuest}
           avatarSrc={avatarSrc}
-          topics={topics}
+          topics={displayTopics}
           filteredTopics={filteredTopics}
           activeTopicId={activeTopicId}
           search={search}
@@ -765,7 +893,7 @@ export function ChatClient({
         ) : (
           <main className="bubble-workspace">
             <div ref={listRef} className="bubble-message-scroll app-scrollbar">
-              <TopicIntroCard topic={activeTopic} />
+              {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} /> : null}
               {visibleChatMessages.length === 0 ? (
                 <StarterGrid
                   starters={metadata?.starters ?? []}
@@ -4307,7 +4435,7 @@ function MessageBubble({
 
 function RichMessageContent({ content }: { content: string }) {
   return (
-    <div className="bubble-rich-content">
+    <div className="bubble-rich-content" data-no-auto-translate="true">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeKatex]}
@@ -5030,6 +5158,10 @@ function ProfilePanel({
         </section>
 
         <div className="bubble-profile-stats-grid">
+          <ProfileStat
+            label="Age"
+            value={typeof user.age === "number" ? String(user.age) : "Add your date of birth"}
+          />
           <ProfileStat label="Learning score" value={String(user.score ?? 0)} />
           <ProfileStat label="inspir'ed since" value={formatBubbleDate(user.createdAt)} />
         </div>

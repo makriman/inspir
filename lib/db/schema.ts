@@ -1,5 +1,6 @@
 import {
   boolean,
+  date,
   index,
   integer,
   jsonb,
@@ -23,6 +24,8 @@ export const users = pgTable("users", {
   profileImageMime: text("profile_image_mime"),
   profileImageHash: text("profile_image_hash"),
   preferredLanguage: text("preferred_language").notNull().default("English"),
+  dateOfBirth: date("date_of_birth", { mode: "string" }),
+  dateOfBirthSource: text("date_of_birth_source"),
   profilePictureDownloadedAt: timestamp("profile_picture_downloaded_at", {
     withTimezone: true,
   }),
@@ -207,8 +210,26 @@ export const legacyDummyData = pgTable("legacy_dummy_data", {
   modifiedAt: timestamp("modified_at", { withTimezone: true }),
 });
 
+export const appTranslations = pgTable(
+  "app_translations",
+  {
+    namespace: text("namespace").notNull(),
+    language: text("language").notNull(),
+    sourceHash: text("source_hash").notNull(),
+    payload: jsonb("payload").$type<Record<string, string>>().default({}).notNull(),
+    model: text("model").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.namespace, table.language] }),
+    languageIdx: index("app_translations_language_idx").on(table.language),
+  }),
+);
+
 export type Topic = typeof topics.$inferSelect;
 export type Chat = typeof chats.$inferSelect;
 export type Message = typeof messages.$inferSelect;
 export type User = typeof users.$inferSelect;
 export type ActivityRun = typeof activityRuns.$inferSelect;
+export type AppTranslation = typeof appTranslations.$inferSelect;

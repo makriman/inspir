@@ -10,6 +10,9 @@ import { absoluteUrl, socialImage } from "@/lib/seo/config";
 
 const staticLastModified = new Date("2026-05-29T00:00:00.000Z");
 
+type SitemapEntry = MetadataRoute.Sitemap[number];
+type SitemapVideo = NonNullable<SitemapEntry["videos"]>[number];
+
 function isoDurationToSeconds(value: string) {
   const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(value);
   if (!match) return undefined;
@@ -29,7 +32,68 @@ function withLanguageAlternates(routes: MetadataRoute.Sitemap): MetadataRoute.Si
   }));
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function escapeXml(value: string | number | Date) {
+  const text = value instanceof Date ? value.toISOString() : String(value);
+  return text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
+function renderTag(name: string, value: string | number | Date | undefined, indent = "    ") {
+  if (value === undefined || value === null || value === "") return "";
+  return `${indent}<${name}>${escapeXml(value)}</${name}>`;
+}
+
+function renderVideo(video: SitemapVideo) {
+  const fields = [
+    renderTag("video:title", video.title, "      "),
+    renderTag("video:thumbnail_loc", video.thumbnail_loc, "      "),
+    renderTag("video:description", video.description, "      "),
+    renderTag("video:content_loc", video.content_loc, "      "),
+    renderTag("video:player_loc", video.player_loc, "      "),
+    renderTag("video:duration", video.duration, "      "),
+    renderTag("video:tag", video.tag, "      "),
+    renderTag("video:publication_date", video.publication_date, "      "),
+    renderTag("video:family_friendly", video.family_friendly, "      "),
+    renderTag("video:requires_subscription", video.requires_subscription, "      "),
+  ];
+
+  if (video.uploader?.content) {
+    const info = video.uploader.info ? ` info="${escapeXml(video.uploader.info)}"` : "";
+    fields.push(`      <video:uploader${info}>${escapeXml(video.uploader.content)}</video:uploader>`);
+  }
+
+  return ["    <video:video>", ...fields.filter(Boolean), "    </video:video>"].join("\n");
+}
+
+function renderEntry(entry: SitemapEntry) {
+  const alternates = Object.entries(entry.alternates?.languages ?? {})
+    .filter((alternate): alternate is [string, string] => Boolean(alternate[1]))
+    .map(
+      ([language, href]) =>
+        `    <xhtml:link rel="alternate" hreflang="${escapeXml(language)}" href="${escapeXml(href)}" />`,
+    );
+  const images = (entry.images ?? []).map(
+    (image) => `    <image:image>\n      <image:loc>${escapeXml(image)}</image:loc>\n    </image:image>`,
+  );
+  const videos = (entry.videos ?? []).map(renderVideo);
+  const fields = [
+    renderTag("loc", entry.url),
+    ...alternates,
+    ...images,
+    ...videos,
+    renderTag("lastmod", entry.lastModified),
+    renderTag("changefreq", entry.changeFrequency),
+    renderTag("priority", entry.priority),
+  ].filter(Boolean);
+
+  return ["  <url>", ...fields, "  </url>"].join("\n");
+}
+
+export default function sitemapEntries(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: absoluteUrl("/"),
@@ -204,4 +268,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogRoutes,
     ...blogCategoryRoutes,
   ]);
+}
+
+export function buildSitemapXml(entries = sitemapEntries()) {
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
+    ...entries.map(renderEntry),
+    "</urlset>",
+    "",
+  ].join("\n");
 }

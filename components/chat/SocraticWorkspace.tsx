@@ -499,7 +499,7 @@ function SocraticTurn({ message }: { message: Message }) {
 
 function SocraticRichText({ content }: { content: string }) {
   return (
-    <div className="socratic-rich-text">
+    <div className="socratic-rich-text" data-no-auto-translate="true">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeKatex]}

@@ -56,15 +56,27 @@ const generatedFlashcardsSchema = z.object({
   ).length(12),
 });
 
-export async function generateFlashcards(topic: string, source?: string): Promise<FlashcardState> {
+export async function generateFlashcards(
+  topic: string,
+  source?: string,
+  options: { learnerAge?: number | null } = {},
+): Promise<FlashcardState> {
   if (!process.env.OPENAI_API_KEY) return fallbackFlashcards(topic, source);
 
   try {
+    const ageInstruction =
+      typeof options.learnerAge === "number"
+        ? `The learner is ${options.learnerAge} years old. Adapt content, examples, tone, and safety boundaries appropriately. Do not mention their age unless directly relevant or asked.`
+        : undefined;
     const result = await generateObject({
       model: openai(resolveModelName("structured")),
       schema: generatedFlashcardsSchema,
-      system:
+      system: [
         "You are an expert learning designer. Build retrieval-practice flashcards that are specific, accurate, and useful. Fronts should ask one thing only. Backs should be concise but complete.",
+        ageInstruction,
+      ]
+        .filter(Boolean)
+        .join("\n"),
       prompt: [
         `Create exactly 12 flashcards for: ${topic}.`,
         source ? `Use this source material as the priority context:\n${source}` : undefined,

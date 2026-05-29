@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
 import { generateFlashcards, sanitizeFlashcardState } from "@/lib/activities/flashcards";
-import { createActivityRun, getOwnedChat, insertMessage } from "@/lib/db/queries";
+import { createActivityRun, getOwnedChat, getUserById, insertMessage } from "@/lib/db/queries";
+import { calculateAge } from "@/lib/profile/age";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,7 +26,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Flashcard chat not found" }, { status: 404 });
   }
 
-  const flashcards = await generateFlashcards(parsed.data.topic, parsed.data.source);
+  const user = await getUserById(session.user.id);
+  const flashcards = await generateFlashcards(parsed.data.topic, parsed.data.source, {
+    learnerAge: calculateAge(user?.dateOfBirth),
+  });
   const run = await createActivityRun({
     chatId: parsed.data.chatId,
     type: "flashcards",

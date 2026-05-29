@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import robots from "../app/robots";
-import sitemap from "../app/sitemap";
 import manifest from "../app/manifest";
 import nextConfig from "../next.config";
 import {
@@ -136,6 +135,7 @@ import {
   webPageJsonLd,
 } from "../lib/seo/json-ld";
 import { buildRssFeed } from "../lib/seo/rss";
+import sitemap, { buildSitemapXml } from "../lib/seo/sitemap";
 
 test("topic routing separates public slugs from private uuid chats", () => {
   assert.equal(defaultTopicPath(), "/chat/learn-anything");
@@ -195,6 +195,18 @@ test("sitemap includes public topic and blog pages but excludes private surfaces
   assert.equal(homeEntry?.videos?.[0]?.requires_subscription, "no");
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
+});
+
+test("sitemap xml stays valid, styled, and crawler-readable", () => {
+  const xml = buildSitemapXml();
+  assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
+  assert.ok(xml.includes('<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>'));
+  assert.ok(xml.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'));
+  assert.ok(xml.includes(`<loc>${absoluteUrl("/")}</loc>`));
+  assert.ok(xml.includes(`<video:content_loc>${absoluteUrl(homepageFilm.contentUrl)}</video:content_loc>`));
+  assert.ok(xml.endsWith("</urlset>\n"));
+  assert.equal(xml.includes("<script"), false);
+  assert.equal(xml.includes("&lt;urlset"), false);
 });
 
 test("topic json-ld uses absolute public chat urls", () => {
@@ -574,13 +586,20 @@ test("robots allows AI discovery crawlers while blocking private areas", () => {
 
 test("next config preserves canonical legal route and crawler headers", async () => {
   const redirects = nextConfig.redirects ? await nextConfig.redirects() : [];
+  const rewrites = nextConfig.rewrites ? await nextConfig.rewrites() : [];
   const headers = nextConfig.headers ? await nextConfig.headers() : [];
   const tncRedirect = redirects.find((redirect) => redirect.source === "/tnc");
+  const sitemapRewrite = Array.isArray(rewrites)
+    ? rewrites.find((rewrite) => rewrite.source === "/sitemap.xml")
+    : rewrites.beforeFiles?.find((rewrite) => rewrite.source === "/sitemap.xml") ??
+      rewrites.afterFiles?.find((rewrite) => rewrite.source === "/sitemap.xml") ??
+      rewrites.fallback?.find((rewrite) => rewrite.source === "/sitemap.xml");
   const apiHeaders = headers.find((entry) => entry.source === "/api/:path*");
   const mediaHeaders = headers.find((entry) => entry.source === "/media/:path*");
 
   assert.equal(tncRedirect?.destination, "/terms");
   assert.equal(tncRedirect?.permanent, true);
+  assert.equal(sitemapRewrite?.destination, "/sitemap");
   assert.ok(apiHeaders?.headers.some((header) => header.key === "X-Robots-Tag" && header.value === "noindex, nofollow"));
   assert.ok(mediaHeaders?.headers.some((header) => header.key === "Cache-Control" && header.value.includes("immutable")));
 });

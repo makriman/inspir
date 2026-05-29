@@ -47,15 +47,23 @@ const generatedQuizSchema = z.object({
   ).length(10),
 });
 
-export async function generateQuiz(topic: string): Promise<QuizState> {
+export async function generateQuiz(topic: string, options: { learnerAge?: number | null } = {}): Promise<QuizState> {
   if (!process.env.OPENAI_API_KEY) return fallbackQuiz(topic);
 
   try {
+    const ageInstruction =
+      typeof options.learnerAge === "number"
+        ? `The learner is ${options.learnerAge} years old. Adapt content, examples, tone, and safety boundaries appropriately. Do not mention their age unless directly relevant or asked.`
+        : undefined;
     const result = await generateObject({
       model: openai(resolveModelName("structured")),
       schema: generatedQuizSchema,
-      system:
+      system: [
         "You are an expert quiz designer for a learner-first education app. Create fair multiple-choice questions. Do not include answer labels inside option text.",
+        ageInstruction,
+      ]
+        .filter(Boolean)
+        .join("\n"),
       prompt: [
         `Create exactly 10 multiple-choice questions about: ${topic}.`,
         "Each question needs 4 plausible options, exactly one correct option, and a short explanation.",

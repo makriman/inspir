@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -22,7 +21,6 @@ import {
   MarketingFooter,
   MarketingHeader,
   MarketingHeroVideo,
-  missionImages,
 } from "@/components/marketing/MarketingShell";
 import { getBlogPosts } from "@/lib/content/blog";
 import {
@@ -258,10 +256,10 @@ export default function LandingPage() {
         />
       ))}
       <MarketingHeader hero />
-      <section className="marketing-hero" aria-labelledby="landing-title">
+      <section className="marketing-hero" aria-labelledby="home-title">
         <div className="marketing-hero-content">
           <span className="marketing-kicker">Free public AI learning platform</span>
-          <h1 id="landing-title">Free AI learning for everyone.</h1>
+          <h1 id="home-title">Free AI learning for everyone.</h1>
           <p>
             inspir turns curiosity, homework, revision, and big questions into guided AI learning
             sessions that explain, ask back, and help you practise.
@@ -330,12 +328,15 @@ export default function LandingPage() {
       </section>
 
       <section className="marketing-story-split">
-        <div className="marketing-story-media">
-          <Image
-            src={missionImages[1]}
-            alt="A student learning at a chalkboard"
-            width={1100}
-            height={720}
+        <div className="marketing-story-media" aria-hidden="true">
+          <video
+            src="/media/inspir-learning-film.mp4"
+            poster="/inspir-social-preview.png"
+            muted
+            autoPlay
+            loop
+            playsInline
+            preload="metadata"
           />
         </div>
         <div className="marketing-story-copy">

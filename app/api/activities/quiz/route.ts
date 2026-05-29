@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
-import { createActivityRun, getOwnedChat, insertMessage } from "@/lib/db/queries";
+import { createActivityRun, getOwnedChat, getUserById, insertMessage } from "@/lib/db/queries";
 import { generateQuiz, sanitizeQuizState } from "@/lib/activities/quiz";
+import { calculateAge } from "@/lib/profile/age";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -24,7 +25,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Quiz chat not found" }, { status: 404 });
   }
 
-  const quiz = await generateQuiz(parsed.data.topic);
+  const user = await getUserById(session.user.id);
+  const quiz = await generateQuiz(parsed.data.topic, { learnerAge: calculateAge(user?.dateOfBirth) });
   const run = await createActivityRun({
     chatId: parsed.data.chatId,
     type: "quiz",

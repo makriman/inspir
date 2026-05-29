@@ -1,6 +1,6 @@
 import { and, asc, count, desc, eq, ilike, inArray, isNull, or } from "drizzle-orm";
 import { db } from "./client";
-import { activityRuns, chats, messages, topics, users } from "./schema";
+import { activityRuns, appTranslations, chats, messages, topics, users } from "./schema";
 import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
 
@@ -63,6 +63,59 @@ export async function updateUserLanguage(userId: string, preferredLanguage: stri
     .where(eq(users.id, userId))
     .returning();
   return user;
+}
+
+export async function updateUserProfile(
+  userId: string,
+  input: {
+    preferredLanguage?: string;
+    dateOfBirth?: string;
+    dateOfBirthSource?: string;
+  },
+) {
+  const [user] = await db
+    .update(users)
+    .set({
+      ...(input.preferredLanguage ? { preferredLanguage: input.preferredLanguage } : {}),
+      ...(input.dateOfBirth ? { dateOfBirth: input.dateOfBirth } : {}),
+      ...(input.dateOfBirth ? { dateOfBirthSource: input.dateOfBirthSource ?? "user" } : {}),
+      updatedAt: new Date(),
+    })
+    .where(eq(users.id, userId))
+    .returning();
+  return user;
+}
+
+export async function getAppTranslation(namespace: string, language: string) {
+  const [translation] = await db
+    .select()
+    .from(appTranslations)
+    .where(and(eq(appTranslations.namespace, namespace), eq(appTranslations.language, language)))
+    .limit(1);
+  return translation;
+}
+
+export async function upsertAppTranslation(input: {
+  namespace: string;
+  language: string;
+  sourceHash: string;
+  payload: Record<string, string>;
+  model: string;
+}) {
+  const [translation] = await db
+    .insert(appTranslations)
+    .values(input)
+    .onConflictDoUpdate({
+      target: [appTranslations.namespace, appTranslations.language],
+      set: {
+        sourceHash: input.sourceHash,
+        payload: input.payload,
+        model: input.model,
+        updatedAt: new Date(),
+      },
+    })
+    .returning();
+  return translation;
 }
 
 export async function createChatForUser(userId: string, topicId: string) {
