@@ -12,14 +12,14 @@ import {
 import { getAppTranslation, upsertAppTranslation } from "@/lib/db/queries";
 import { resolveTranslationModelName } from "@/lib/ai/model-router";
 import type { MainAppTranslationBundle } from "./main-app-types";
-import { isFreshAppTranslation, validateTranslationPayload } from "./translation-validation";
+import { isFreshAppTranslation, placeholdersIn, validateTranslationPayload } from "./translation-validation";
 
 const generatedTranslationSchema = z.object({
-  strings: z.record(z.string(), z.string()),
+  value: z.string(),
 });
 
-const translationChunkSize = 180;
-const translationConcurrency = 4;
+const defaultTranslationConcurrency = 16;
+const defaultTranslationFlushEvery = 25;
 
 export async function getCachedMainAppTranslationBundle(language: string) {
   const normalized = normalizeLanguage(language);
@@ -35,6 +35,7 @@ export async function getCachedMainAppTranslationBundle(language: string) {
     return null;
   }
   if (!isFreshAppTranslation(cached, sourceHash)) return null;
+  if (!validateTranslationPayload(sourceStrings, cached.payload)) return null;
   return buildMainAppTranslationBundle(normalized, cached.payload);
 }
 
@@ -42,21 +43,39 @@ export async function getOrCreateMainAppTranslationBundle(language: string): Pro
   const normalized = normalizeLanguage(language);
   if (normalized === defaultLanguage) return getEnglishMainAppTranslationBundle();
 
-  const cached = await getCachedMainAppTranslationBundle(normalized);
-  if (cached) return cached;
-
   const sourceStrings = getMainAppSourceStrings();
   const sourceHash = getMainAppSourceHash(sourceStrings);
+  let cached;
+  try {
+    cached = await getAppTranslation(mainAppTranslationNamespace, normalized);
+  } catch (error) {
+    console.error("Could not read main app translation cache", error);
+  }
+  if (cached && isFreshAppTranslation(cached, sourceHash) && validateTranslationPayload(sourceStrings, cached.payload)) {
+    return buildMainAppTranslationBundle(normalized, cached.payload);
+  }
+
   const model = resolveTranslationModelName();
 
   if (!process.env.OPENAI_API_KEY) {
     return getEnglishMainAppTranslationBundle();
   }
 
-  const strings = await generateTranslationInChunks({
+  const initialStrings = cached && isFreshAppTranslation(cached, sourceHash) ? cached.payload : {};
+  const strings = await generateTranslationsPerField({
     language: normalized,
     sourceStrings,
+    initialStrings,
     model,
+    onProgress: async (payload) => {
+      await upsertAppTranslation({
+        namespace: mainAppTranslationNamespace,
+        language: normalized,
+        sourceHash,
+        payload,
+        model,
+      });
+    },
   });
 
   try {
@@ -74,34 +93,78 @@ export async function getOrCreateMainAppTranslationBundle(language: string): Pro
   return buildMainAppTranslationBundle(normalized, strings);
 }
 
-async function generateTranslationInChunks({
+async function generateTranslationsPerField({
   language,
   sourceStrings,
+  initialStrings,
   model,
+  onProgress,
 }: {
   language: string;
   sourceStrings: Record<string, string>;
+  initialStrings: Record<string, string>;
   model: string;
+  onProgress: (payload: Record<string, string>) => Promise<void>;
 }) {
   const translated: Record<string, string> = {};
   const entries = Object.entries(sourceStrings);
-  const chunks = Array.from({ length: Math.ceil(entries.length / translationChunkSize) }, (_, index) => {
-    const start = index * translationChunkSize;
-    return Object.fromEntries(entries.slice(start, start + translationChunkSize));
-  });
-  let nextChunkIndex = 0;
+  for (const [key, source] of entries) {
+    if (isValidFieldTranslation(source, initialStrings[key])) translated[key] = initialStrings[key];
+  }
+
+  const missingEntries = entries.filter(([key]) => !translated[key]);
+  const concurrency = readPositiveIntegerEnv("OPENAI_TRANSLATION_CONCURRENCY", defaultTranslationConcurrency);
+  const flushEvery = readPositiveIntegerEnv("OPENAI_TRANSLATION_FLUSH_EVERY", defaultTranslationFlushEvery);
+  const failures: Array<{ key: string; error: unknown }> = [];
+  let nextEntryIndex = 0;
+  let completedSinceFlush = 0;
+  let completed = 0;
+  let flushPromise = Promise.resolve();
+
+  async function flushProgress(force = false) {
+    if (!force && completedSinceFlush < flushEvery) return;
+    completedSinceFlush = 0;
+    const payload = { ...translated };
+    flushPromise = flushPromise.then(async () => {
+      try {
+        await onProgress(payload);
+      } catch (error) {
+        console.error("Could not write main app translation progress", error);
+      }
+    });
+    await flushPromise;
+  }
 
   async function runWorker() {
-    while (nextChunkIndex < chunks.length) {
-      const chunkIndex = nextChunkIndex;
-      nextChunkIndex += 1;
-      const sourceChunk = chunks[chunkIndex];
-      const translatedChunk = await generateTranslationChunk({ language, sourceChunk, model, chunkIndex });
-      Object.assign(translated, translatedChunk);
+    while (nextEntryIndex < missingEntries.length) {
+      const entryIndex = nextEntryIndex;
+      nextEntryIndex += 1;
+      const [key, source] = missingEntries[entryIndex];
+      try {
+        const value = await generateTranslationField({ language, key, source, model });
+        translated[key] = value;
+        completed += 1;
+        completedSinceFlush += 1;
+        console.info("Main app translation field complete", {
+          language,
+          key,
+          completed,
+          total: missingEntries.length,
+        });
+        await flushProgress();
+      } catch (error) {
+        failures.push({ key, error });
+        console.error("Main app translation field failed", { language, key, error });
+      }
     }
   }
 
-  await Promise.all(Array.from({ length: Math.min(translationConcurrency, chunks.length) }, runWorker));
+  await Promise.all(Array.from({ length: Math.min(concurrency, missingEntries.length) }, runWorker));
+  await flushProgress(true);
+
+  if (failures.length) {
+    throw new Error(`Failed to translate ${failures.length} main app fields`);
+  }
 
   if (!validateTranslationPayload(sourceStrings, translated)) {
     throw new Error("Generated translation payload failed validation");
@@ -110,35 +173,37 @@ async function generateTranslationInChunks({
   return translated;
 }
 
-async function generateTranslationChunk({
+async function generateTranslationField({
   language,
-  sourceChunk,
+  key,
+  source,
   model,
-  chunkIndex,
 }: {
   language: string;
-  sourceChunk: Record<string, string>;
+  key: string;
+  source: string;
   model: string;
-  chunkIndex: number;
 }) {
   const result = await generateObject({
     model: openai(model),
     schema: generatedTranslationSchema,
     system: [
       "You are a meticulous product localization specialist for an education app.",
-      "Translate every value into the target language while preserving the exact JSON keys.",
-      "Preserve placeholders like {name}, punctuation that belongs with placeholders, and product name inspir.",
-      "Do not translate code identifiers, URLs, markdown syntax, or bracketed control markers unless they are natural visible copy.",
-      "Return natural UI copy, not literal word-for-word text when that would sound awkward.",
+      "Translate exactly the provided UI text into the target language.",
+      "Return only the translated value in the structured field.",
+      "Preserve placeholders like {name}, punctuation that belongs with placeholders, markdown markers, and the product name inspir.",
+      "Do not translate code identifiers, URLs, class names, or bracketed control markers unless the text is natural visible copy.",
+      "Use natural product UI copy, not literal word-for-word text when that would sound awkward.",
     ].join("\n"),
     prompt: JSON.stringify({
       targetLanguage: language,
       sourceLanguage: defaultLanguage,
-      strings: sourceChunk,
+      fieldKey: key,
+      sourceText: source,
     }),
     temperature: 0.2,
-    maxOutputTokens: 12000,
-    maxRetries: 1,
+    maxOutputTokens: maxOutputTokensForField(source),
+    maxRetries: 2,
     abortSignal: AbortSignal.timeout(90_000),
     providerOptions: {
       openai: {
@@ -148,9 +213,26 @@ async function generateTranslationChunk({
     },
   });
 
-  if (!validateTranslationPayload(sourceChunk, result.object.strings)) {
-    throw new Error(`Generated translation chunk ${chunkIndex + 1} failed validation`);
+  const value = result.object.value;
+  if (!isValidFieldTranslation(source, value)) {
+    throw new Error("Generated translation field failed validation");
   }
 
-  return result.object.strings;
+  return value;
+}
+
+function isValidFieldTranslation(source: string, value: string | undefined) {
+  if (!value?.trim()) return false;
+  const sourcePlaceholders = placeholdersIn(source).sort().join("|");
+  const valuePlaceholders = placeholdersIn(value).sort().join("|");
+  return sourcePlaceholders === valuePlaceholders;
+}
+
+function maxOutputTokensForField(source: string) {
+  return Math.max(256, Math.min(2000, source.length * 4 + 128));
+}
+
+function readPositiveIntegerEnv(name: string, fallback: number) {
+  const parsed = Number.parseInt(process.env[name] ?? "", 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
