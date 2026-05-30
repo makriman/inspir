@@ -16,7 +16,7 @@ export function resolveModelName(profile: ModelProfile = "fast") {
 }
 
 export function resolveTranslationModelName() {
-  return process.env.OPENAI_TRANSLATION_MODEL ?? "gpt-5.5";
+  return process.env.OPENAI_TRANSLATION_MODEL ?? process.env.OPENAI_FAST_MODEL ?? process.env.OPENAI_MODEL ?? "gpt-4.1-mini";
 }
 
 export function resolveModelForTopic(topic: Pick<Topic, "metadata">) {

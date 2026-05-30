@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { defaultLanguage, normalizeLanguage, supportedLanguages } from "@/lib/content/languages";
+import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 import { topicSeeds } from "@/lib/content/topics";
 import { mainAppComponentText } from "./main-app-component-text";
 import type { MainAppTranslationBundle } from "./main-app-types";
@@ -25,10 +25,6 @@ export function getMainAppSourceStrings() {
     if (!isTranslatableComponentText(text)) continue;
     strings[`component.${stableTextKey(text)}`] = text;
   }
-
-  supportedLanguages.forEach((language) => {
-    strings[`language.${language}`] = language;
-  });
 
   for (const topic of topicSeeds) {
     strings[`topic.${topic.slug}.name`] = topic.name;

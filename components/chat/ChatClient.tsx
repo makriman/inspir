@@ -73,7 +73,7 @@ import { InteractiveInstructionWorkspace } from "@/components/chat/InteractiveIn
 import { SocraticWorkspace } from "@/components/chat/SocraticWorkspace";
 import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
-import { defaultLanguage, supportedLanguages } from "@/lib/content/languages";
+import { defaultLanguage, languageDisplayName, supportedLanguages } from "@/lib/content/languages";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicPath } from "@/lib/content/topic-routing";
 import { formatBubbleDate } from "@/lib/utils/dates";
@@ -5317,10 +5317,11 @@ function ProfilePanel({
             disabled={languageSaving}
             onChange={(event) => onLanguageChange(event.target.value)}
             className="bubble-language-select"
+            data-no-auto-translate="true"
           >
             {supportedLanguages.map((language) => (
-              <option key={language} value={language}>
-                {language}
+              <option key={language} value={language} data-no-auto-translate="true">
+                {languageDisplayName(language)}
               </option>
             ))}
           </select>

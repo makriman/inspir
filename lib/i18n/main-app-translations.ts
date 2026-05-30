@@ -20,8 +20,10 @@ const generatedTranslationSchema = z.object({
 
 const defaultTranslationBatchSize = 24;
 const defaultTranslationConcurrency = 4;
+const defaultTranslationMaxRetries = 2;
 const defaultTranslationRetryAfterMs = 1500;
 const failedTranslationRetryAfterMs = 30_000;
+const defaultTranslationTimeoutMs = 60_000;
 
 export type MainAppTranslationResult = {
   bundle: MainAppTranslationBundle;
@@ -171,7 +173,11 @@ async function generateTranslationsForEntries({
         });
       } catch (error) {
         failures.push({ key, error });
-        console.error("Main app translation field failed", { language, key, error });
+        console.error("Main app translation field failed", {
+          language,
+          key,
+          error: summarizeTranslationError(error),
+        });
       }
     }
   }
@@ -201,43 +207,61 @@ async function generateTranslationField({
   source: string;
   model: string;
 }) {
-  const result = await generateObject({
-    model: openai(model),
-    schema: generatedTranslationSchema,
-    system: [
-      "You are a meticulous product localization specialist for an education app.",
-      "Translate exactly the provided UI text into the target language.",
-      "Return only the translated value in the structured field.",
-      "Preserve placeholders like {name}, punctuation that belongs with placeholders, markdown markers, and the product name inspir.",
-      "Do not translate code identifiers, URLs, class names, or bracketed control markers unless the text is natural visible copy.",
-      "Use the field key for context, but never translate or include the key.",
-      "Use natural, concise product UI copy, not literal word-for-word text when that would sound awkward.",
-      "Prefer consistent education-app terminology across labels, controls, topics, onboarding, quiz, and flashcard copy.",
-      "For Hindi, write in natural Devanagari Hindi. Avoid Hinglish except for brand names, common acronyms like AI, or terms that are normally left in English.",
-    ].join("\n"),
-    prompt: JSON.stringify({
-      targetLanguage: language,
-      sourceLanguage: defaultLanguage,
-      fieldKey: key,
-      sourceText: source,
-    }),
-    maxOutputTokens: maxOutputTokensForField(source),
-    maxRetries: 0,
-    abortSignal: AbortSignal.timeout(90_000),
-    providerOptions: {
-      openai: {
-        reasoningEffort: "medium",
-        textVerbosity: "medium",
-      },
-    },
-  });
+  const maxRetries = readNonNegativeIntegerEnv("OPENAI_TRANSLATION_MAX_RETRIES", defaultTranslationMaxRetries);
+  const maxAttempts = maxRetries + 1;
+  let lastError: unknown;
 
-  const value = result.object.value;
-  if (!isValidFieldTranslation(source, value)) {
-    throw new Error("Generated translation field failed validation");
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      const providerOptions = buildTranslationProviderOptions();
+      const result = await generateObject({
+        model: openai(model),
+        schema: generatedTranslationSchema,
+        system: [
+          "You are a meticulous product localization specialist for an education app.",
+          "Translate exactly the provided UI text into the target language.",
+          "Return only the translated value in the structured field.",
+          "Preserve placeholders like {name}, punctuation that belongs with placeholders, markdown markers, and the product name inspir.",
+          "Do not translate code identifiers, URLs, class names, or bracketed control markers unless the text is natural visible copy.",
+          "Use the field key for context, but never translate or include the key.",
+          "Use natural, concise product UI copy, not literal word-for-word text when that would sound awkward.",
+          "Prefer consistent education-app terminology across labels, controls, topics, onboarding, quiz, and flashcard copy.",
+          "For Hindi, write in natural Devanagari Hindi. Avoid Hinglish except for brand names, common acronyms like AI, or terms that are normally left in English.",
+        ].join("\n"),
+        prompt: JSON.stringify({
+          targetLanguage: language,
+          sourceLanguage: defaultLanguage,
+          fieldKey: key,
+          sourceText: source,
+        }),
+        maxOutputTokens: maxOutputTokensForField(source),
+        maxRetries: 0,
+        abortSignal: AbortSignal.timeout(readPositiveIntegerEnv("OPENAI_TRANSLATION_TIMEOUT_MS", defaultTranslationTimeoutMs)),
+        ...(providerOptions ? { providerOptions } : {}),
+      });
+
+      const value = result.object.value;
+      if (!isValidFieldTranslation(source, value)) {
+        throw new Error("Generated translation field failed validation");
+      }
+
+      return value;
+    } catch (error) {
+      lastError = error;
+      if (attempt < maxAttempts) {
+        console.warn("Retrying main app translation field", {
+          language,
+          key,
+          attempt,
+          maxAttempts,
+          error: summarizeTranslationError(error),
+        });
+        await sleep(250 * attempt);
+      }
+    }
   }
 
-  return value;
+  throw lastError;
 }
 
 function isValidFieldTranslation(source: string, value: string | undefined) {
@@ -293,10 +317,53 @@ function canRemainUntranslated(source: string) {
 }
 
 function maxOutputTokensForField(source: string) {
-  return Math.max(256, Math.min(2000, source.length * 4 + 128));
+  return Math.max(768, Math.min(2500, source.length * 4 + 256));
 }
 
 function readPositiveIntegerEnv(name: string, fallback: number) {
   const parsed = Number.parseInt(process.env[name] ?? "", 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function readNonNegativeIntegerEnv(name: string, fallback: number) {
+  const parsed = Number.parseInt(process.env[name] ?? "", 10);
+  return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+}
+
+function buildTranslationProviderOptions() {
+  const openaiOptions: Record<string, string> = {};
+  const reasoningEffort = process.env.OPENAI_TRANSLATION_REASONING_EFFORT;
+  const textVerbosity = process.env.OPENAI_TRANSLATION_TEXT_VERBOSITY;
+
+  if (reasoningEffort) openaiOptions.reasoningEffort = reasoningEffort;
+  if (textVerbosity) openaiOptions.textVerbosity = textVerbosity;
+
+  return Object.keys(openaiOptions).length ? { openai: openaiOptions } : undefined;
+}
+
+function summarizeTranslationError(error: unknown) {
+  if (!(error instanceof Error)) return { message: String(error) };
+
+  const details = error as Error & {
+    finishReason?: unknown;
+    statusCode?: unknown;
+    requestId?: unknown;
+    cause?: {
+      finishReason?: unknown;
+      statusCode?: unknown;
+      requestId?: unknown;
+    };
+  };
+
+  return {
+    name: error.name,
+    message: error.message,
+    finishReason: details.finishReason ?? details.cause?.finishReason,
+    statusCode: details.statusCode ?? details.cause?.statusCode,
+    requestId: details.requestId ?? details.cause?.requestId,
+  };
+}
+
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

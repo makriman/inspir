@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { buildTopicSystemPrompt } from "../lib/ai/prompts";
-import { defaultLanguage } from "../lib/content/languages";
+import { defaultLanguage, languageDisplayName, supportedLanguages } from "../lib/content/languages";
 import { topicSeeds } from "../lib/content/topics";
 import { getEnglishMainAppTranslationBundle, getMainAppSourceHash } from "../lib/i18n/main-app-source";
 import { isFreshAppTranslation, validateTranslationPayload } from "../lib/i18n/translation-validation";
@@ -52,4 +52,19 @@ test("main app translation source has stable keys and validates placeholders", (
   const broken: Record<string, string> = { ...bundle.strings, "onboarding.age.body": "Missing" };
   broken["onboarding.age.title"] = "";
   assert.equal(validateTranslationPayload(bundle.sourceStrings, broken), false);
+});
+
+test("language selector display names stay native and stable", () => {
+  assert.equal(languageDisplayName("English"), "English");
+  assert.equal(languageDisplayName("Hindi"), "हिन्दी");
+  assert.equal(languageDisplayName("Kannada"), "ಕನ್ನಡ");
+  assert.equal(languageDisplayName("Tamil"), "தமிழ்");
+  assert.equal(languageDisplayName("Malayalam"), "മലയാളം");
+  assert.equal(languageDisplayName("Arabic"), "العربية");
+  assert.equal(languageDisplayName("Spanish"), "Español");
+  assert.equal(languageDisplayName("Telugu"), "తెలుగు");
+
+  for (const language of supportedLanguages) {
+    assert.ok(languageDisplayName(language).trim());
+  }
 });
