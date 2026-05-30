@@ -87,5 +87,6 @@ function isTranslatableComponentText(text: string) {
   if (/^\[[^\]]+\]$/.test(value)) return false;
   if (/\b[a-z]+(?:\s*\|\s*)[A-Z]?[A-Za-z]+\b/.test(value)) return false;
   if (/\b(?:bubble|coach|historical|app)-[a-z0-9-]+\b/.test(value)) return false;
+  if (/^[Mm][0-9,.\sCcSsLlHhVvZz-]+$/.test(value)) return false;
   return true;
 }
