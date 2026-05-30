@@ -78,7 +78,7 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
   }
   const validCachedStrings = filterValidTranslations(
     sourceStrings,
-    cached && isFreshAppTranslation(cached, sourceHash) ? cached.payload : {},
+    cached?.payload ?? {},
   );
   if (isCompleteMainAppTranslationPayload(sourceStrings, validCachedStrings)) {
     const bundle = buildMainAppTranslationBundle(normalized, validCachedStrings);
