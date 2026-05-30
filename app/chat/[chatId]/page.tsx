@@ -298,10 +298,6 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
 
     const topic = topics.find((candidate) => candidate.slug === topicSlug) ?? topicFromSeed(seedTopic);
     if (!topic) notFound();
-    if (session?.user?.id && savedChatsAvailable && !user?.dateOfBirth) {
-      redirect(`/onboarding/age?next=${encodeURIComponent(topicPath(topic.slug))}`);
-    }
-
     const profileUser = session?.user?.id && savedChatsAvailable
       ? {
           id: session.user.id,
@@ -392,10 +388,6 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     getUserById(session.user.id),
     getLatestActivityRun(chatId),
   ]);
-  if (!user?.dateOfBirth) {
-    redirect(`/onboarding/age?next=${encodeURIComponent(`/chat/${chatId}`)}`);
-  }
-
   return (
     <ChatClient
       authMode="authenticated"

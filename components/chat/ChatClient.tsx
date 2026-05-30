@@ -126,6 +126,19 @@ type UserProfile = {
   profileImageHash?: string | null;
 };
 
+type ApiProfileUser = {
+  id: string;
+  name: string | null;
+  email: string;
+  image: string | null;
+  score?: number | null;
+  preferredLanguage?: string | null;
+  dateOfBirth?: string | null;
+  age?: number | null;
+  createdAt: string | Date;
+  profileImageHash?: string | null;
+};
+
 type RecentChat = {
   id: string;
   topicId: string | null;
@@ -261,6 +274,21 @@ function displayMessages(messages: Message[]) {
   return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
 }
 
+function profileFromApiUser(user: ApiProfileUser): UserProfile {
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    image: user.image,
+    score: user.score ?? 0,
+    preferredLanguage: user.preferredLanguage ?? defaultLanguage,
+    dateOfBirth: user.dateOfBirth ?? null,
+    age: user.age ?? null,
+    createdAt: user.createdAt,
+    profileImageHash: user.profileImageHash ?? null,
+  };
+}
+
 const translatableAttributes = ["aria-label", "title", "placeholder"];
 
 function buildTranslationTextMap(bundle: MainAppTranslationBundle | null | undefined) {
@@ -390,6 +418,7 @@ export function ChatClient({
   const [recentLoading, setRecentLoading] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [profileUser, setProfileUser] = useState(user);
+  const [agePromptOpen, setAgePromptOpen] = useState(() => !isGuest && !user.dateOfBirth);
   const [translationBundle, setTranslationBundle] = useState(initialTranslationBundle);
   const [languageSaving, setLanguageSaving] = useState(false);
   const [guestMessagesUsed, setGuestMessagesUsed] = useState(() => {
@@ -738,18 +767,7 @@ export function ChatClient({
       if (!response.ok) throw new Error("Could not update language");
       const data = await response.json();
       if (data.user) {
-        setProfileUser({
-          id: data.user.id,
-          name: data.user.name,
-          email: data.user.email,
-          image: data.user.image,
-          score: data.user.score ?? 0,
-          preferredLanguage: data.user.preferredLanguage ?? defaultLanguage,
-          dateOfBirth: data.user.dateOfBirth ?? null,
-          age: data.user.age ?? null,
-          createdAt: data.user.createdAt,
-          profileImageHash: data.user.profileImageHash ?? null,
-        });
+        setProfileUser(profileFromApiUser(data.user));
       }
     } catch {
       setProfileUser(previous);
@@ -974,7 +992,17 @@ export function ChatClient({
         <GuestContinueModal
           used={guestMessagesUsed}
           limit={guestMessageLimit}
+          callbackUrl={activeTopic ? topicPath(activeTopic.slug) : "/chat"}
           onClose={() => setGuestPromptOpen(false)}
+        />
+      ) : null}
+      {!isGuest && agePromptOpen && !profileUser.dateOfBirth ? (
+        <AgePromptModal
+          onClose={() => setAgePromptOpen(false)}
+          onSaved={(updatedUser) => {
+            setProfileUser(updatedUser);
+            setAgePromptOpen(false);
+          }}
         />
       ) : null}
     </div>
@@ -1016,7 +1044,12 @@ function TopicSidebar({
     <div className="bubble-sidebar-inner">
       <div className="bubble-sidebar-header">
         {isGuest ? (
-          <GoogleContinueButton className="bubble-guest-auth-button">Continue with Google</GoogleContinueButton>
+          <GoogleContinueButton
+            className="bubble-guest-auth-button"
+            callbackUrl={activeTopic ? topicPath(activeTopic.slug) : "/chat"}
+          >
+            Continue with Google
+          </GoogleContinueButton>
         ) : (
           <button type="button" onClick={onProfile} aria-label="Open profile" className="bubble-avatar-button">
             {avatarSrc ? <img src={avatarSrc} alt="" /> : null}
@@ -1175,7 +1208,9 @@ function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: s
             {seo.description} Sign in keeps your progress, score, generated activities, and
             future conversations saved.
           </p>
-          <GoogleContinueButton className="bubble-guest-modal-primary">Continue with Google</GoogleContinueButton>
+          <GoogleContinueButton className="bubble-guest-modal-primary" callbackUrl={topicPath(topic.slug)}>
+            Continue with Google
+          </GoogleContinueButton>
         </div>
         {starters.length ? (
           <div className="bubble-starter-grid">
@@ -5118,10 +5153,12 @@ function RecentConversations({
 function GuestContinueModal({
   used,
   limit,
+  callbackUrl,
   onClose,
 }: {
   used: number;
   limit: number;
+  callbackUrl: string;
   onClose: () => void;
 }) {
   return (
@@ -5138,10 +5175,94 @@ function GuestContinueModal({
           Easy Google login, then inspir stores your learning history, language preference, and chats so
           everything is ready next time. inspir stays free to use.
         </p>
-        <GoogleContinueButton className="bubble-guest-modal-primary">Continue with Google</GoogleContinueButton>
+        <GoogleContinueButton className="bubble-guest-modal-primary" callbackUrl={callbackUrl}>
+          Continue with Google
+        </GoogleContinueButton>
         <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
           Maybe later
         </button>
+      </section>
+    </div>
+  );
+}
+
+function AgePromptModal({
+  onClose,
+  onSaved,
+}: {
+  onClose: () => void;
+  onSaved: (user: UserProfile) => void;
+}) {
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const today = new Date().toISOString().slice(0, 10);
+
+  async function submitDateOfBirth(event: FormEvent) {
+    event.preventDefault();
+    if (!dateOfBirth) {
+      setError("Please enter your date of birth.");
+      return;
+    }
+
+    setSaving(true);
+    setError("");
+    try {
+      const response = await fetch("/api/me", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ dateOfBirth }),
+      });
+      const data = await response.json().catch(() => null);
+      if (!response.ok || !data?.user) {
+        throw new Error(data?.error || "Could not save date of birth");
+      }
+      onSaved(profileFromApiUser(data.user));
+    } catch (saveError) {
+      setError(saveError instanceof Error ? saveError.message : "Please enter a valid date of birth.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="bubble-guest-modal-backdrop" role="presentation">
+      <section
+        className="bubble-guest-modal bubble-age-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="age-modal-title"
+      >
+        <button type="button" onClick={onClose} aria-label="Close" className="bubble-guest-modal-close">
+          <X size={20} />
+        </button>
+        <span className="bubble-guest-modal-kicker">Age-appropriate learning</span>
+        <h2 id="age-modal-title">Help inspir fit your age</h2>
+        <p>
+          Add your date of birth so inspir can adapt examples, tone, and safety boundaries for an
+          age-appropriate experience.
+        </p>
+        <form onSubmit={submitDateOfBirth} className="bubble-age-form">
+          <label className="bubble-age-label" htmlFor="date-of-birth">
+            Date of birth
+          </label>
+          <input
+            id="date-of-birth"
+            type="date"
+            value={dateOfBirth}
+            max={today}
+            onChange={(event) => setDateOfBirth(event.target.value)}
+            className="bubble-age-input"
+            required
+          />
+          {error ? <span className="bubble-age-error">{error}</span> : null}
+          <button type="submit" disabled={saving} className="bubble-guest-modal-primary">
+            {saving ? "Saving..." : "Continue"}
+          </button>
+          <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
+            Maybe later
+          </button>
+        </form>
       </section>
     </div>
   );

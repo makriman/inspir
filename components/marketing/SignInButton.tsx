@@ -5,10 +5,7 @@ import type { ReactNode } from "react";
 export async function startGoogleSignIn(callbackUrl = "/chat") {
   const response = await fetch("/api/auth/csrf");
   const { csrfToken } = (await response.json()) as { csrfToken: string };
-  const nextUrl =
-    callbackUrl.startsWith("/onboarding/age")
-      ? callbackUrl
-      : `/onboarding/age?next=${encodeURIComponent(callbackUrl || "/chat")}`;
+  const nextUrl = callbackUrl || "/chat";
   const form = document.createElement("form");
   form.method = "post";
   form.action = `/api/auth/signin/google?callbackUrl=${encodeURIComponent(nextUrl)}`;

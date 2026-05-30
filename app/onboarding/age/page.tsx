@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import { AgeOnboardingForm } from "@/components/onboarding/AgeOnboardingForm";
 import { authOptions } from "@/lib/auth/config";
-import { getUserById } from "@/lib/db/queries";
-import { getCachedMainAppTranslationBundle } from "@/lib/i18n/main-app-translations";
-import { getEnglishMainAppTranslationBundle } from "@/lib/i18n/main-app-source";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -26,14 +22,7 @@ export default async function AgeOnboardingPage({ searchParams }: AgeOnboardingP
   const params = await searchParams;
   const nextParam = Array.isArray(params.next) ? params.next[0] : params.next;
   const nextUrl = safeNextUrl(nextParam);
-  const user = await getUserById(session.user.id);
-  if (user?.dateOfBirth) redirect(nextUrl);
-
-  const translationBundle =
-    (await getCachedMainAppTranslationBundle(user?.preferredLanguage ?? "English")) ??
-    getEnglishMainAppTranslationBundle();
-
-  return <AgeOnboardingForm nextUrl={nextUrl} translationBundle={translationBundle} />;
+  redirect(nextUrl);
 }
 
 function safeNextUrl(value: string | undefined) {

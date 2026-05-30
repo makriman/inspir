@@ -6880,6 +6880,46 @@ a {
   color: #fff;
 }
 
+.bubble-age-modal h2 {
+  white-space: normal;
+}
+
+.bubble-age-form {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.bubble-age-label {
+  color: rgb(255 255 255 / 0.86);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.bubble-age-input {
+  min-height: 46px;
+  width: 100%;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.08);
+  color: #fff;
+  padding: 0 12px;
+  font-size: 16px;
+  font-weight: 750;
+  color-scheme: dark;
+}
+
+.bubble-age-input:focus {
+  outline: 2px solid rgb(40 214 122 / 0.45);
+  outline-offset: 2px;
+}
+
+.bubble-age-error {
+  color: #ff8b8b;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 @media (max-width: 1023px) {
   .marketing-card-grid,
   .marketing-repo-grid {
