@@ -22,6 +22,7 @@ export function getMainAppSourceStrings() {
   const strings: Record<string, string> = { ...baseStrings };
 
   for (const text of mainAppComponentText) {
+    if (!isTranslatableComponentText(text)) continue;
     strings[`component.${stableTextKey(text)}`] = text;
   }
 
@@ -78,4 +79,13 @@ export function buildMainAppTranslationBundle(
 
 function stableTextKey(text: string) {
   return createHash("sha1").update(text).digest("hex").slice(0, 12);
+}
+
+function isTranslatableComponentText(text: string) {
+  const value = text.trim();
+  if (!value) return false;
+  if (/^\[[^\]]+\]$/.test(value)) return false;
+  if (/\b[a-z]+(?:\s*\|\s*)[A-Z]?[A-Za-z]+\b/.test(value)) return false;
+  if (/\b(?:bubble|coach|historical|app)-[a-z0-9-]+\b/.test(value)) return false;
+  return true;
 }

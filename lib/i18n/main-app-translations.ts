@@ -45,8 +45,9 @@ export async function getCachedMainAppTranslationBundle(language: string) {
     return null;
   }
   if (!isFreshAppTranslation(cached, sourceHash)) return null;
-  if (!validateTranslationPayload(sourceStrings, cached.payload)) return null;
-  return buildMainAppTranslationBundle(normalized, cached.payload);
+  const validCachedStrings = filterValidTranslations(sourceStrings, cached.payload);
+  if (!isCompleteMainAppTranslationPayload(sourceStrings, validCachedStrings)) return null;
+  return buildMainAppTranslationBundle(normalized, validCachedStrings);
 }
 
 export async function getOrCreateMainAppTranslationBundle(language: string): Promise<MainAppTranslationBundle> {
@@ -73,8 +74,12 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
   } catch (error) {
     console.error("Could not read main app translation cache", error);
   }
-  if (cached && isFreshAppTranslation(cached, sourceHash) && validateTranslationPayload(sourceStrings, cached.payload)) {
-    const bundle = buildMainAppTranslationBundle(normalized, cached.payload);
+  const validCachedStrings = filterValidTranslations(
+    sourceStrings,
+    cached && isFreshAppTranslation(cached, sourceHash) ? cached.payload : {},
+  );
+  if (isCompleteMainAppTranslationPayload(sourceStrings, validCachedStrings)) {
+    const bundle = buildMainAppTranslationBundle(normalized, validCachedStrings);
     return {
       bundle,
       complete: true,
@@ -95,10 +100,6 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
     };
   }
 
-  const validCachedStrings = filterValidTranslations(
-    sourceStrings,
-    cached && isFreshAppTranslation(cached, sourceHash) ? cached.payload : {},
-  );
   const batchSize = readPositiveIntegerEnv("OPENAI_TRANSLATION_BATCH_SIZE", defaultTranslationBatchSize);
   const missingEntries = Object.entries(sourceStrings)
     .filter(([key]) => !validCachedStrings[key])
@@ -110,7 +111,8 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
   });
   const batchStrings = batchResult.translated;
   const strings = { ...validCachedStrings, ...batchStrings };
-  const complete = validateTranslationPayload(sourceStrings, strings);
+  const validStringCount = Object.keys(filterValidTranslations(sourceStrings, strings)).length;
+  const complete = validStringCount === Object.keys(sourceStrings).length;
 
   try {
     await upsertAppTranslation({
@@ -127,7 +129,7 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
   return {
     bundle: buildMainAppPartialTranslationBundle(normalized, sourceStrings, strings),
     complete,
-    translatedCount: Object.keys(strings).length,
+    translatedCount: validStringCount,
     totalCount: Object.keys(sourceStrings).length,
     retryAfterMs: complete
       ? undefined
@@ -208,7 +210,10 @@ async function generateTranslationField({
       "Return only the translated value in the structured field.",
       "Preserve placeholders like {name}, punctuation that belongs with placeholders, markdown markers, and the product name inspir.",
       "Do not translate code identifiers, URLs, class names, or bracketed control markers unless the text is natural visible copy.",
-      "Use natural product UI copy, not literal word-for-word text when that would sound awkward.",
+      "Use the field key for context, but never translate or include the key.",
+      "Use natural, concise product UI copy, not literal word-for-word text when that would sound awkward.",
+      "Prefer consistent education-app terminology across labels, controls, topics, onboarding, quiz, and flashcard copy.",
+      "For Hindi, write in natural Devanagari Hindi. Avoid Hinglish except for brand names, common acronyms like AI, or terms that are normally left in English.",
     ].join("\n"),
     prompt: JSON.stringify({
       targetLanguage: language,
@@ -239,7 +244,19 @@ function isValidFieldTranslation(source: string, value: string | undefined) {
   if (!value?.trim()) return false;
   const sourcePlaceholders = placeholdersIn(source).sort().join("|");
   const valuePlaceholders = placeholdersIn(value).sort().join("|");
-  return sourcePlaceholders === valuePlaceholders;
+  if (sourcePlaceholders !== valuePlaceholders) return false;
+  if (source.trim() === value.trim() && !canRemainUntranslated(source)) return false;
+  return true;
+}
+
+function isCompleteMainAppTranslationPayload(
+  sourceStrings: Record<string, string>,
+  translatedStrings: Record<string, string>,
+) {
+  return (
+    validateTranslationPayload(sourceStrings, translatedStrings) &&
+    Object.keys(filterValidTranslations(sourceStrings, translatedStrings)).length === Object.keys(sourceStrings).length
+  );
 }
 
 function filterValidTranslations(
@@ -265,6 +282,14 @@ function buildMainAppPartialTranslationBundle(
     sourceStrings,
     strings: { ...sourceStrings, ...translatedStrings },
   };
+}
+
+function canRemainUntranslated(source: string) {
+  const value = source.trim();
+  if (!/[A-Za-z]/.test(value)) return true;
+  if (value.toLowerCase() === "inspir") return true;
+  if (/^https?:\/\//i.test(value)) return true;
+  return /^[A-Z0-9][A-Z0-9\s&+./:'-]*$/.test(value) && !/[a-z]/.test(value);
 }
 
 function maxOutputTokensForField(source: string) {
