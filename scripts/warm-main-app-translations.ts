@@ -7,22 +7,41 @@ const explicitEnv = new Set(Object.keys(process.env));
 loadEnvFile(".env.local", explicitEnv);
 loadEnvFile(".env.vercel.production.local", explicitEnv);
 
-process.env.OPENAI_TRANSLATION_MODEL ??= process.env.OPENAI_FAST_MODEL ?? process.env.OPENAI_MODEL ?? "gpt-4.1-mini";
+if (!process.env.OPENAI_TRANSLATION_MODEL?.trim()) {
+  process.env.OPENAI_TRANSLATION_MODEL =
+    process.env.OPENAI_FAST_MODEL?.trim() || process.env.OPENAI_MODEL?.trim() || "gpt-4.1-mini";
+}
 process.env.OPENAI_TRANSLATION_BATCH_SIZE ??= "48";
 process.env.OPENAI_TRANSLATION_CONCURRENCY ??= "4";
 process.env.OPENAI_TRANSLATION_MAX_RETRIES ??= "2";
 
-const { defaultLanguage, supportedLanguages } = await import("@/lib/content/languages");
-const { getOrCreateMainAppTranslationResult } = await import("@/lib/i18n/main-app-translations");
-const { sql } = await import("@/lib/db/client");
-
-type SupportedLanguage = (typeof supportedLanguages)[number];
+let sqlConnection: { end(options: { timeout: number }): Promise<void> } | undefined;
+let getTranslationResult:
+  | ((
+      language: string,
+    ) => Promise<{
+      complete: boolean;
+      translatedCount: number;
+      totalCount: number;
+      retryAfterMs?: number;
+    }>)
+  | undefined;
+type SupportedLanguage = string;
 
 async function main() {
   if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required.");
   if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is required.");
 
-  const { languages, languageConcurrency } = parseArgs(process.argv.slice(2));
+  const { defaultLanguage, supportedLanguages } = await import("@/lib/content/languages");
+  const { getOrCreateMainAppTranslationResult } = await import("@/lib/i18n/main-app-translations");
+  const { sql } = await import("@/lib/db/client");
+  sqlConnection = sql;
+  getTranslationResult = getOrCreateMainAppTranslationResult;
+
+  const { languages, languageConcurrency } = parseArgs(process.argv.slice(2), {
+    defaultLanguage,
+    supportedLanguages,
+  });
   const startedAt = Date.now();
 
   console.log(
@@ -56,7 +75,8 @@ async function warmLanguage(language: SupportedLanguage) {
   while (true) {
     rounds += 1;
     const startedAt = Date.now();
-    const result = await getOrCreateMainAppTranslationResult(language);
+    if (!getTranslationResult) throw new Error("Translation warmup was not initialized.");
+    const result = await getTranslationResult(language);
     const durationMs = Date.now() - startedAt;
     const added = previousCount < 0 ? result.translatedCount : Math.max(0, result.translatedCount - previousCount);
 
@@ -110,7 +130,13 @@ async function runWithConcurrency<T, R>(items: T[], concurrency: number, worker:
   return results;
 }
 
-function parseArgs(args: string[]) {
+function parseArgs(
+  args: string[],
+  languageConfig: {
+    defaultLanguage: string;
+    supportedLanguages: readonly string[];
+  },
+) {
   const languages: string[] = [];
   let languageConcurrency = readPositiveInteger(process.env.TRANSLATION_WARMUP_LANGUAGE_CONCURRENCY, 2);
 
@@ -132,12 +158,21 @@ function parseArgs(args: string[]) {
   }
 
   return {
-    languages: normalizeRequestedLanguages(languages.length ? languages : defaultLanguages),
+    languages: normalizeRequestedLanguages(languages.length ? languages : defaultLanguages, languageConfig),
     languageConcurrency,
   };
 }
 
-function normalizeRequestedLanguages(languages: string[]) {
+function normalizeRequestedLanguages(
+  languages: string[],
+  {
+    defaultLanguage,
+    supportedLanguages,
+  }: {
+    defaultLanguage: string;
+    supportedLanguages: readonly string[];
+  },
+) {
   const requested = new Set<SupportedLanguage>();
 
   for (const language of languages) {
@@ -173,7 +208,8 @@ function loadEnvFile(filename: string, protectedKeys: Set<string>) {
 
     const [, key, rawValue] = match;
     if (protectedKeys.has(key)) continue;
-    process.env[key] = parseEnvValue(rawValue);
+    const value = parseEnvValue(rawValue);
+    if (value) process.env[key] = value;
   }
 }
 
@@ -198,5 +234,5 @@ main()
     process.exitCode = 1;
   })
   .finally(async () => {
-    await sql.end({ timeout: 5 });
+    await sqlConnection?.end({ timeout: 5 });
   });

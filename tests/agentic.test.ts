@@ -180,6 +180,9 @@ test("translation model uses explicit env or fast fallback", () => {
 
   assert.equal(resolveTranslationModelName(), "fast-model");
 
+  process.env.OPENAI_TRANSLATION_MODEL = " ";
+  assert.equal(resolveTranslationModelName(), "fast-model");
+
   delete process.env.OPENAI_FAST_MODEL;
   assert.equal(resolveTranslationModelName(), "global-model");
 

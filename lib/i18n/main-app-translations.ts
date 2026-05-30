@@ -165,12 +165,14 @@ async function generateTranslationsForEntries({
         const value = await generateTranslationField({ language, key, source, model });
         translated[key] = value;
         completed += 1;
-        console.info("Main app translation field complete", {
-          language,
-          key,
-          completed,
-          total: entries.length,
-        });
+        if (translationVerboseLogs()) {
+          console.info("Main app translation field complete", {
+            language,
+            key,
+            completed,
+            total: entries.length,
+          });
+        }
       } catch (error) {
         failures.push({ key, error });
         console.error("Main app translation field failed", {
@@ -313,7 +315,22 @@ function canRemainUntranslated(source: string) {
   if (!/[A-Za-z]/.test(value)) return true;
   if (value.toLowerCase() === "inspir") return true;
   if (/^https?:\/\//i.test(value)) return true;
+  if (/^\d+\s*[-–]\s*\d+\s*(?:min|mins|minutes|sec|secs|hours?|hrs?)$/i.test(value)) return true;
+  if (isProperNameLabel(value)) return true;
   return /^[A-Z0-9][A-Z0-9\s&+./:'-]*$/.test(value) && !/[a-z]/.test(value);
+}
+
+function isProperNameLabel(value: string) {
+  const normalized = value.replace(/\.{3}$/, "");
+  const segments = normalized.split(",").map((segment) => segment.trim()).filter(Boolean);
+  if (!segments.length) return false;
+
+  const words = segments.flatMap((segment) => segment.split(/\s+/));
+  const hasProperNameSignal =
+    value.includes(",") || value.includes("'") || /\d/.test(value) || /(?:[A-Z]\.\s*)+/.test(value) || words.length >= 2;
+  if (!hasProperNameSignal) return false;
+
+  return words.every((word) => /^(?:[A-Z]\.|[A-Z][A-Za-z.'-]*|\d{2,4})$/.test(word));
 }
 
 function maxOutputTokensForField(source: string) {
@@ -328,6 +345,10 @@ function readPositiveIntegerEnv(name: string, fallback: number) {
 function readNonNegativeIntegerEnv(name: string, fallback: number) {
   const parsed = Number.parseInt(process.env[name] ?? "", 10);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
+}
+
+function translationVerboseLogs() {
+  return process.env.OPENAI_TRANSLATION_VERBOSE_LOGS === "true";
 }
 
 function buildTranslationProviderOptions() {
