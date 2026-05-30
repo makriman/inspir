@@ -1,4 +1,4 @@
-import { and, asc, count, desc, eq, ilike, inArray, isNull, or } from "drizzle-orm";
+import { and, asc, count, desc, eq, ilike, inArray, isNull, or, sql as drizzleSql } from "drizzle-orm";
 import { db } from "./client";
 import { activityRuns, appTranslations, chats, messages, topics, users } from "./schema";
 import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
@@ -109,7 +109,13 @@ export async function upsertAppTranslation(input: {
       target: [appTranslations.namespace, appTranslations.language],
       set: {
         sourceHash: input.sourceHash,
-        payload: input.payload,
+        payload: drizzleSql`
+          case
+            when ${appTranslations.sourceHash} = ${input.sourceHash}
+              then ${appTranslations.payload} || excluded.payload
+            else excluded.payload
+          end
+        `,
         model: input.model,
         updatedAt: new Date(),
       },
