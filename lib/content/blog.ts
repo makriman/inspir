@@ -25,6 +25,7 @@ export type BlogHeading = {
   id: string;
   level: 2 | 3;
   title: string;
+  line: number;
 };
 
 const blogDirectory = join(process.cwd(), "content", "blog");
@@ -34,8 +35,10 @@ function parseArray(value: string) {
   const inner = trimmed.startsWith("[") && trimmed.endsWith("]") ? trimmed.slice(1, -1) : trimmed;
   return inner
     .split(",")
-    .map((item) => item.trim().replace(/^["']|["']$/g, ""))
-    .filter(Boolean);
+    .flatMap((item) => {
+      const value = item.trim().replace(/^["']|["']$/g, "");
+      return value ? [value] : [];
+    });
 }
 
 function parseFrontmatter(source: string, slug: string): BlogPost {
@@ -74,14 +77,14 @@ function parseFrontmatter(source: string, slug: string): BlogPost {
 
 export function getBlogPosts() {
   if (!existsSync(blogDirectory)) return [];
-  return readdirSync(blogDirectory)
-    .filter((file) => file.endsWith(".md"))
-    .map((file) => {
-      const slug = file.replace(/\.md$/, "");
-      const source = readFileSync(join(blogDirectory, file), "utf8");
-      return parseFrontmatter(source, slug);
-    })
-    .sort((a, b) => b.date.localeCompare(a.date));
+  const posts: BlogPost[] = [];
+  for (const file of readdirSync(blogDirectory)) {
+    if (!file.endsWith(".md")) continue;
+    const slug = file.replace(/\.md$/, "");
+    const source = readFileSync(join(blogDirectory, file), "utf8");
+    posts.push(parseFrontmatter(source, slug));
+  }
+  return posts.toSorted((a, b) => b.date.localeCompare(a.date));
 }
 
 export function getBlogPost(slug: string) {
@@ -116,7 +119,7 @@ export function extractBlogHeadings(post: BlogPost) {
 
   return post.body
     .split("\n")
-    .map((line): BlogHeading | null => {
+    .map((line, index): BlogHeading | null => {
       const match = /^(##|###)\s+(.+)$/.exec(line.trim());
       if (!match) return null;
 
@@ -131,6 +134,7 @@ export function extractBlogHeadings(post: BlogPost) {
         id: count === 0 ? baseId : `${baseId}-${count + 1}`,
         level: match[1] === "##" ? 2 : 3,
         title,
+        line: index + 1,
       };
     })
     .filter((heading): heading is BlogHeading => Boolean(heading));
@@ -162,24 +166,25 @@ export function getRelatedBlogPosts(post: BlogPost, limit = 3) {
   const topic = getBlogPostTopic(post);
   const tagSet = new Set(post.tags.map((tag) => tag.toLowerCase()));
 
-  return getBlogPosts()
-    .filter((candidate) => candidate.slug !== post.slug)
-    .map((candidate) => {
-      const candidateTopic = getBlogPostTopic(candidate);
-      const overlappingTags = candidate.tags.filter((tag) => tagSet.has(tag.toLowerCase())).length;
-      const sameTopic = topic && candidateTopic?.slug === topic.slug ? 10 : 0;
-      const sameCategory = topic && candidate.tags.includes(topic.metadata.category) ? 4 : 0;
-      const evergreen = candidate.slug === "how-to-study-with-ai-without-cheating-yourself" ? 2 : 0;
+  const scoredPosts: Array<{ post: BlogPost; score: number }> = [];
+  for (const candidate of getBlogPosts()) {
+    if (candidate.slug === post.slug) continue;
+    const candidateTopic = getBlogPostTopic(candidate);
+    const candidateTags = new Set(candidate.tags);
+    const overlappingTags = candidate.tags.filter((tag) => tagSet.has(tag.toLowerCase())).length;
+    const sameTopic = topic && candidateTopic?.slug === topic.slug ? 10 : 0;
+    const sameCategory = topic && candidateTags.has(topic.metadata.category) ? 4 : 0;
+    const evergreen = candidate.slug === "how-to-study-with-ai-without-cheating-yourself" ? 2 : 0;
+    const score = sameTopic + sameCategory + overlappingTags * 3 + evergreen;
+    if (score > 0) scoredPosts.push({ post: candidate, score });
+  }
 
-      return {
-        post: candidate,
-        score: sameTopic + sameCategory + overlappingTags * 3 + evergreen,
-      };
-    })
-    .filter((candidate) => candidate.score > 0)
-    .sort((a, b) => b.score - a.score || b.post.date.localeCompare(a.post.date))
-    .slice(0, limit)
-    .map((candidate) => candidate.post);
+  const relatedPosts: BlogPost[] = [];
+  for (const candidate of scoredPosts.toSorted((a, b) => b.score - a.score || b.post.date.localeCompare(a.post.date))) {
+    relatedPosts.push(candidate.post);
+    if (relatedPosts.length >= limit) break;
+  }
+  return relatedPosts;
 }
 
 export function getBlogCategories(minPosts = 3): BlogCategory[] {

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useReducer } from "react";
 import {
   BookOpenCheck,
   CheckCircle2,
@@ -80,6 +80,38 @@ type CoachEntry = {
   content: string;
 };
 
+type InstructionState = {
+  setupStage: SetupStage;
+  goal: string;
+  context: string;
+  level: string;
+  mode: Difficulty;
+  lesson: Lesson | null;
+  currentStepIndex: number;
+  completedSteps: string[];
+  mastery: number;
+  answer: string;
+  selectedChoice: string;
+  feedback: Feedback | null;
+  strengths: string[];
+  misconceptions: string[];
+  savedNotes: string[];
+  coachInput: string;
+  coachEntries: CoachEntry[];
+  simulation: { a: number; b: number; c: number; d: number };
+};
+
+type InstructionStateAction = Partial<InstructionState> | ((state: InstructionState) => Partial<InstructionState>);
+
+function instructionStateReducer(state: InstructionState, action: InstructionStateAction) {
+  const patch = typeof action === "function" ? action(state) : action;
+  return { ...state, ...patch };
+}
+
+function appendUniqueLimited(items: string[], value: string, limit = 4) {
+  return [...new Set([...items, value])].slice(-limit);
+}
+
 const goalExamples = [
   "Teach me financial modeling",
   "Help me understand supply and demand",
@@ -97,6 +129,17 @@ const difficultyOptions: Array<{ id: Difficulty; label: string }> = [
   { id: "exam", label: "Exam mode" },
   { id: "real-world", label: "Real-world mode" },
 ];
+
+const instructionCoachActions = [
+  ["hint", "Hint"],
+  ["easier", "Slow down"],
+  ["harder", "Harder"],
+  ["quiz", "Quiz me"],
+  ["formula", "Formula"],
+  ["real", "Real life"],
+  ["notes", "Save note"],
+  ["skip", "Skip?"],
+] as const;
 
 function inferDomain(goal: string): Domain {
   const normalized = goal.toLowerCase();
@@ -523,6 +566,67 @@ function scoreOpenResponse(answer: string, expectedTerms: string[] | undefined) 
   };
 }
 
+function buildInstructionEvaluationAction(
+  currentStep: LessonStep,
+  selectedChoice: string,
+  answer: string,
+): InstructionStateAction | null {
+  if (currentStep.block.type === "choice") {
+    const choice = currentStep.block.choices?.find((item) => item.label === selectedChoice);
+    if (!choice) return null;
+    if (choice.correct) {
+      return (current) => ({
+        feedback: { tone: "success", title: "Evidence accepted", body: choice.feedback },
+        strengths: appendUniqueLimited(current.strengths, currentStep.block.skill),
+        mastery: Math.min(96, current.mastery + 13),
+      });
+    }
+    return (current) => ({
+      feedback: {
+        tone: "repair",
+        title: "Specific repair",
+        body: choice.feedback,
+        repair: currentStep.block.repair,
+      },
+      misconceptions: choice.misconception
+        ? appendUniqueLimited(current.misconceptions, choice.misconception)
+        : current.misconceptions,
+      mastery: Math.max(18, current.mastery + 2),
+    });
+  }
+
+  const scored = scoreOpenResponse(answer, currentStep.block.expectedTerms);
+  if (scored.passed) {
+    return (current) => ({
+      feedback: {
+        tone: "success",
+        title: currentStep.block.type === "mastery" ? "Mastery evidence found" : "Good link",
+        body:
+          currentStep.block.type === "simulation"
+            ? "You named a changed input and connected it to the result. That is the move we are training."
+            : "You gave enough of the causal link to move forward.",
+      },
+      strengths: appendUniqueLimited(current.strengths, currentStep.checkpoint),
+      mastery: Math.min(100, current.mastery + (currentStep.block.type === "mastery" ? 18 : 12)),
+    });
+  }
+
+  const missing = scored.missingTerms;
+  return (current) => ({
+    feedback: {
+      tone: "repair",
+      title: "Close, but one link is missing",
+      body:
+        missing.length > 0
+          ? `Your answer needs a clearer link using ideas like ${missing.join(", ")}.`
+          : "Your answer needs a clearer because-link: what changed, what it affected, and why.",
+      repair: currentStep.block.repair,
+    },
+    misconceptions: appendUniqueLimited(current.misconceptions, currentStep.block.commonMistake),
+    mastery: Math.max(18, current.mastery + 2),
+  });
+}
+
 export function InteractiveInstructionWorkspace({
   topic,
   onReset,
@@ -530,30 +634,54 @@ export function InteractiveInstructionWorkspace({
   topic: TopicLike;
   onReset: () => void | Promise<void>;
 }) {
-  const [setupStage, setSetupStage] = useState<SetupStage>("goal");
-  const [goal, setGoal] = useState("");
-  const [context, setContext] = useState("Project");
-  const [level, setLevel] = useState("Shaky");
-  const [mode, setMode] = useState<Difficulty>("same");
-  const [lesson, setLesson] = useState<Lesson | null>(null);
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const [completedSteps, setCompletedSteps] = useState<string[]>([]);
-  const [mastery, setMastery] = useState(34);
-  const [answer, setAnswer] = useState("");
-  const [selectedChoice, setSelectedChoice] = useState("");
-  const [feedback, setFeedback] = useState<Feedback | null>(null);
-  const [strengths, setStrengths] = useState<string[]>([]);
-  const [misconceptions, setMisconceptions] = useState<string[]>([]);
-  const [savedNotes, setSavedNotes] = useState<string[]>([]);
-  const [coachInput, setCoachInput] = useState("");
-  const [coachEntries, setCoachEntries] = useState<CoachEntry[]>([
+  const [
     {
-      id: "coach-welcome",
-      role: "coach",
-      content: "I will keep the lesson active: hint, repair, slow down, or raise the challenge when you ask.",
+      setupStage,
+      goal,
+      context,
+      level,
+      mode,
+      lesson,
+      currentStepIndex,
+      completedSteps,
+      mastery,
+      answer,
+      selectedChoice,
+      feedback,
+      strengths,
+      misconceptions,
+      savedNotes,
+      coachInput,
+      coachEntries,
+      simulation,
     },
-  ]);
-  const [simulation, setSimulation] = useState({ a: 60, b: 55, c: 42, d: 24 });
+    updateInstructionState,
+  ] = useReducer(instructionStateReducer, {
+    setupStage: "goal",
+    goal: "",
+    context: "Project",
+    level: "Shaky",
+    mode: "same",
+    lesson: null,
+    currentStepIndex: 0,
+    completedSteps: [],
+    mastery: 34,
+    answer: "",
+    selectedChoice: "",
+    feedback: null,
+    strengths: [],
+    misconceptions: [],
+    savedNotes: [],
+    coachInput: "",
+    coachEntries: [
+      {
+        id: "coach-welcome",
+        role: "coach",
+        content: "I will keep the lesson active: hint, repair, slow down, or raise the challenge when you ask.",
+      },
+    ],
+    simulation: { a: 60, b: 55, c: 42, d: 24 },
+  } satisfies InstructionState);
 
   const currentStep = lesson?.steps[currentStepIndex];
   const allComplete = Boolean(lesson && completedSteps.length === lesson.steps.length);
@@ -567,7 +695,7 @@ export function InteractiveInstructionWorkspace({
   function continueSetup(event?: FormEvent) {
     event?.preventDefault();
     if (!goal.trim()) return;
-    setSetupStage("context");
+    updateInstructionState({ setupStage: "context" });
   }
 
   function startLesson(event?: FormEvent) {
@@ -579,119 +707,73 @@ export function InteractiveInstructionWorkspace({
       level,
       mode,
     });
-    setLesson(nextLesson);
-    setCurrentStepIndex(0);
-    setCompletedSteps([]);
-    setMastery(level === "Advanced" ? 48 : level === "Decent" ? 40 : 34);
-    setAnswer("");
-    setSelectedChoice("");
-    setFeedback(null);
-    setStrengths([]);
-    setMisconceptions([]);
-    setSavedNotes([]);
-    setCoachEntries([
-      {
-        id: "coach-route",
-        role: "coach",
-        content: `Route built for "${goal.trim()}". We will start with action, then repair the exact gap before moving on.`,
-      },
-    ]);
+    updateInstructionState({
+      lesson: nextLesson,
+      currentStepIndex: 0,
+      completedSteps: [],
+      mastery: level === "Advanced" ? 48 : level === "Decent" ? 40 : 34,
+      answer: "",
+      selectedChoice: "",
+      feedback: null,
+      strengths: [],
+      misconceptions: [],
+      savedNotes: [],
+      coachEntries: [
+        {
+          id: "coach-route",
+          role: "coach",
+          content: `Route built for "${goal.trim()}". We will start with action, then repair the exact gap before moving on.`,
+        },
+      ],
+    });
   }
 
   function evaluateCurrentStep(event?: FormEvent) {
     event?.preventDefault();
     if (!currentStep) return;
-
-    if (currentStep.block.type === "choice") {
-      const choice = currentStep.block.choices?.find((item) => item.label === selectedChoice);
-      if (!choice) return;
-      if (choice.correct) {
-        setFeedback({
-          tone: "success",
-          title: "Evidence accepted",
-          body: choice.feedback,
-        });
-        setStrengths((current) => [...new Set([...current, currentStep.block.skill])].slice(-4));
-        setMastery((current) => Math.min(96, current + 13));
-      } else {
-        setFeedback({
-          tone: "repair",
-          title: "Specific repair",
-          body: choice.feedback,
-          repair: currentStep.block.repair,
-        });
-        if (choice.misconception) {
-          setMisconceptions((current) => [...new Set([...current, choice.misconception!])].slice(-4));
-        }
-        setMastery((current) => Math.max(18, current + 2));
-      }
-      return;
-    }
-
-    const scored = scoreOpenResponse(answer, currentStep.block.expectedTerms);
-    if (scored.passed) {
-      setFeedback({
-        tone: "success",
-        title: currentStep.block.type === "mastery" ? "Mastery evidence found" : "Good link",
-        body:
-          currentStep.block.type === "simulation"
-            ? "You named a changed input and connected it to the result. That is the move we are training."
-            : "You gave enough of the causal link to move forward.",
-      });
-      setStrengths((current) => [...new Set([...current, currentStep.checkpoint])].slice(-4));
-      setMastery((current) => Math.min(100, current + (currentStep.block.type === "mastery" ? 18 : 12)));
-    } else {
-      const missing = scored.missingTerms;
-      setFeedback({
-        tone: "repair",
-        title: "Close, but one link is missing",
-        body:
-          missing.length > 0
-            ? `Your answer needs a clearer link using ideas like ${missing.join(", ")}.`
-            : "Your answer needs a clearer because-link: what changed, what it affected, and why.",
-        repair: currentStep.block.repair,
-      });
-      setMisconceptions((current) => [...new Set([...current, currentStep.block.commonMistake])].slice(-4));
-      setMastery((current) => Math.max(18, current + 2));
-    }
+    const evaluationAction = buildInstructionEvaluationAction(currentStep, selectedChoice, answer);
+    if (evaluationAction) updateInstructionState(evaluationAction);
   }
 
   function advanceStep() {
     if (!lesson || !currentStep || feedback?.tone !== "success") return;
-    setCompletedSteps((current) => [...new Set([...current, currentStep.id])]);
-    setAnswer("");
-    setSelectedChoice("");
-    setFeedback(null);
-    if (currentStepIndex < lesson.steps.length - 1) {
-      setCurrentStepIndex((current) => current + 1);
-    }
+    updateInstructionState((current) => ({
+      completedSteps: appendUniqueLimited(current.completedSteps, currentStep.id, lesson.steps.length),
+      answer: "",
+      selectedChoice: "",
+      feedback: null,
+      currentStepIndex:
+        current.currentStepIndex < lesson.steps.length - 1 ? current.currentStepIndex + 1 : current.currentStepIndex,
+    }));
   }
 
   function retryStep() {
-    setAnswer("");
-    setSelectedChoice("");
-    setFeedback(null);
+    updateInstructionState({ answer: "", selectedChoice: "", feedback: null });
   }
 
   function restartLesson() {
-    setLesson(null);
-    setSetupStage("goal");
-    setGoal("");
-    setContext("Project");
-    setLevel("Shaky");
-    setMode("same");
+    updateInstructionState({
+      lesson: null,
+      setupStage: "goal",
+      goal: "",
+      context: "Project",
+      level: "Shaky",
+      mode: "same",
+    });
     void onReset();
   }
 
   function addCoachEntry(content: string, role: CoachEntry["role"] = "coach") {
-    setCoachEntries((current) => [
-      ...current,
-      {
-        id: `${role}-${Date.now()}-${current.length}`,
-        role,
-        content,
-      },
-    ]);
+    updateInstructionState((current) => ({
+      coachEntries: [
+        ...current.coachEntries,
+        {
+          id: `${role}-${Date.now()}-${current.coachEntries.length}`,
+          role,
+          content,
+        },
+      ],
+    }));
   }
 
   function coach(action: string) {
@@ -710,10 +792,12 @@ export function InteractiveInstructionWorkspace({
           : "I can compress the explanation, but I still need one proof of understanding before unlocking the next step.",
     };
     if (action === "notes") {
-      setSavedNotes((current) => [...current, currentStep.block.explanation].slice(-5));
+      updateInstructionState((current) => ({
+        savedNotes: [...current.savedNotes, currentStep.block.explanation].slice(-5),
+      }));
     }
-    if (action === "easier") setMode("easier");
-    if (action === "harder") setMode("harder");
+    if (action === "easier") updateInstructionState({ mode: "easier" });
+    if (action === "harder") updateInstructionState({ mode: "harder" });
     addCoachEntry(replies[action] ?? currentStep.block.hint);
   }
 
@@ -722,7 +806,7 @@ export function InteractiveInstructionWorkspace({
     const trimmed = coachInput.trim();
     if (!trimmed || !currentStep) return;
     addCoachEntry(trimmed, "learner");
-    setCoachInput("");
+    updateInstructionState({ coachInput: "" });
     const normalized = trimmed.toLowerCase();
     if (/hint|stuck|help/.test(normalized)) coach("hint");
     else if (/example/.test(normalized)) addCoachEntry(currentStep.block.example);
@@ -737,141 +821,34 @@ export function InteractiveInstructionWorkspace({
 
   if (!lesson) {
     return (
-      <main className="bubble-workspace instruction-workspace">
-        <section className="instruction-setup">
-          <div className="instruction-setup-copy">
-            <span>{topic.name}</span>
-            <h2>Build the lesson around what you want to become able to do.</h2>
-            <p>
-              No long intake form. Answer one sharp question, then the app creates a route with checks,
-              repair loops, and a mastery proof.
-            </p>
-          </div>
-
-          {setupStage === "goal" ? (
-            <form className="instruction-setup-panel" onSubmit={continueSetup}>
-              <div className="instruction-panel-kicker">
-                <BookOpenCheck size={22} />
-                <span>Question 1 of 2</span>
-              </div>
-              <label>
-                <span>What do you want to understand or be able to do?</span>
-                <textarea
-                  value={goal}
-                  onChange={(event) => setGoal(event.target.value)}
-                  placeholder="Teach me financial modeling"
-                  rows={4}
-                />
-              </label>
-              <div className="instruction-chip-grid">
-                {goalExamples.map((example) => (
-                  <button key={example} type="button" onClick={() => setGoal(example)}>
-                    <Sparkles size={15} />
-                    <span>{example}</span>
-                  </button>
-                ))}
-              </div>
-              <button type="submit" disabled={!goal.trim()} className="instruction-primary-action">
-                Shape the route
-              </button>
-            </form>
-          ) : (
-            <form className="instruction-setup-panel" onSubmit={startLesson}>
-              <div className="instruction-panel-kicker">
-                <Gauge size={22} />
-                <span>Question 2 of 2</span>
-              </div>
-              <fieldset>
-                <legend>What is this for?</legend>
-                <div className="instruction-segment-row">
-                  {contextOptions.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      className={context === option ? "is-selected" : ""}
-                      onClick={() => setContext(option)}
-                    >
-                      {option}
-                    </button>
-                  ))}
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend>How strong are you right now?</legend>
-                <div className="instruction-segment-row">
-                  {levelOptions.map((option) => (
-                    <button
-                      key={option}
-                      type="button"
-                      className={level === option ? "is-selected" : ""}
-                      onClick={() => setLevel(option)}
-                    >
-                      {option}
-                    </button>
-                  ))}
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend>Default lesson pressure</legend>
-                <div className="instruction-segment-row">
-                  {difficultyOptions.slice(0, 3).map((option) => (
-                    <button
-                      key={option.id}
-                      type="button"
-                      className={mode === option.id ? "is-selected" : ""}
-                      onClick={() => setMode(option.id)}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              </fieldset>
-              <button type="submit" className="instruction-primary-action">
-                Generate learning map
-              </button>
-              <button type="button" className="instruction-secondary-action" onClick={() => setSetupStage("goal")}>
-                Edit goal
-              </button>
-            </form>
-          )}
-          <TopicResourceLinks topic={topic} />
-        </section>
-      </main>
+      <InstructionSetupView
+        topic={topic}
+        setupStage={setupStage}
+        goal={goal}
+        context={context}
+        level={level}
+        mode={mode}
+        onContinue={continueSetup}
+        onStartLesson={startLesson}
+        onGoal={(nextGoal) => updateInstructionState({ goal: nextGoal })}
+        onContext={(nextContext) => updateInstructionState({ context: nextContext })}
+        onLevel={(nextLevel) => updateInstructionState({ level: nextLevel })}
+        onMode={(nextMode) => updateInstructionState({ mode: nextMode })}
+        onBackToGoal={() => updateInstructionState({ setupStage: "goal" })}
+      />
     );
   }
 
   if (allComplete) {
     return (
-      <main className="bubble-workspace instruction-workspace">
-        <section className="instruction-complete">
-          <div className="instruction-complete-badge">
-            <CheckCircle2 size={38} />
-            <span>Mastery checkpoint passed</span>
-          </div>
-          <h2>{lesson.objective}</h2>
-          <p>
-            Mastery score: {mastery}%. You earned the Applied badge because you used the idea in a
-            fresh task instead of only reading about it.
-          </p>
-          <div className="instruction-recap-grid">
-            <article>
-              <strong>Strengths</strong>
-              <span>{strengths.length ? strengths.join("; ") : "You completed the route."}</span>
-            </article>
-            <article>
-              <strong>Repaired gaps</strong>
-              <span>{misconceptions.length ? misconceptions.join("; ") : "No major misconception persisted."}</span>
-            </article>
-            <article>
-              <strong>Saved notes</strong>
-              <span>{savedNotes.length ? `${savedNotes.length} note saved` : "No notes saved yet."}</span>
-            </article>
-          </div>
-          <button type="button" onClick={restartLesson} className="instruction-primary-action">
-            Start another lesson
-          </button>
-        </section>
-      </main>
+      <InstructionCompleteView
+        lesson={lesson}
+        mastery={mastery}
+        strengths={strengths}
+        misconceptions={misconceptions}
+        savedNotes={savedNotes}
+        onRestart={restartLesson}
+      />
     );
   }
 
@@ -879,205 +856,733 @@ export function InteractiveInstructionWorkspace({
 
   return (
     <main className="bubble-workspace instruction-workspace">
-      <section className="instruction-shell">
-        <aside className="instruction-map" aria-label="Learning map">
-          <div className="instruction-map-head">
-            <span>Learning map</span>
-            <strong>{lesson.objective}</strong>
-          </div>
-          <div className="instruction-mastery">
-            <div>
-              <span>Mastery</span>
-              <strong>{mastery}%</strong>
-            </div>
-            <div className="instruction-mastery-track">
-              <span style={{ width: `${mastery}%` }} />
-            </div>
-            <small>{lesson.estimatedEffort} remaining effort</small>
-          </div>
-          <ol className="instruction-step-list">
-            {lesson.steps.map((step, index) => {
-              const completed = completedSteps.includes(step.id);
-              const current = index === currentStepIndex;
-              const locked = index > currentStepIndex && !completed;
-              return (
-                <li
-                  key={step.id}
-                  className={`${completed ? "is-complete" : ""} ${current ? "is-current" : ""} ${
-                    locked ? "is-locked" : ""
-                  }`}
-                >
-                  <span>{completed ? <CheckCircle2 size={15} /> : index + 1}</span>
-                  <div>
-                    <strong>{step.title}</strong>
-                    {current ? <p>{step.summary}</p> : null}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </aside>
+      <InstructionSessionView
+        lesson={lesson}
+        currentStep={currentStep}
+        currentStepIndex={currentStepIndex}
+        completedSteps={completedSteps}
+        mastery={mastery}
+        mode={mode}
+        answer={answer}
+        selectedChoice={selectedChoice}
+        feedback={feedback}
+        simulation={simulation}
+        simulationLabels={simulationLabels}
+        simulationOutput={simulationOutput}
+        misconceptions={misconceptions}
+        coachEntries={coachEntries}
+        coachInput={coachInput}
+        onAnswer={(value) => updateInstructionState({ answer: value })}
+        onCoach={coach}
+        onCoachInput={(value) => updateInstructionState({ coachInput: value })}
+        onEvaluate={evaluateCurrentStep}
+        onMode={(value) => updateInstructionState({ mode: value })}
+        onRestart={restartLesson}
+        onRetry={retryStep}
+        onSelectChoice={(value) => updateInstructionState({ selectedChoice: value })}
+        onSimulation={(value) => updateInstructionState((current) => ({ simulation: { ...current.simulation, ...value } }))}
+        onStepAdvance={advanceStep}
+        onSubmitCoachQuestion={submitCoachQuestion}
+      />
+    </main>
+  );
+}
 
-        <section className="instruction-stage">
-          <header className="instruction-stage-head">
-            <div>
-              <span>{currentStep.block.type.replace("-", " ")}</span>
-              <h2>{currentStep.title}</h2>
-              <p>{currentStep.block.skill}</p>
-            </div>
-            <div className="instruction-stage-actions">
-              <button type="button" onClick={restartLesson} className="instruction-secondary-action">
-                Change setup
-              </button>
-              <div className="instruction-difficulty">
-                {difficultyOptions.map((option) => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    className={mode === option.id ? "is-selected" : ""}
-                    onClick={() => setMode(option.id)}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </header>
+type SimulationLabels = ReturnType<typeof simulationLabelsFor>;
 
-          <form className="instruction-block" onSubmit={evaluateCurrentStep}>
-            <ConceptSlice step={currentStep} />
+function InstructionSetupView({
+  topic,
+  setupStage,
+  goal,
+  context,
+  level,
+  mode,
+  onContinue,
+  onStartLesson,
+  onGoal,
+  onContext,
+  onLevel,
+  onMode,
+  onBackToGoal,
+}: {
+  topic: TopicLike;
+  setupStage: SetupStage;
+  goal: string;
+  context: string;
+  level: string;
+  mode: Difficulty;
+  onContinue: (event?: FormEvent) => void;
+  onStartLesson: (event?: FormEvent) => void;
+  onGoal: (value: string) => void;
+  onContext: (value: string) => void;
+  onLevel: (value: string) => void;
+  onMode: (value: Difficulty) => void;
+  onBackToGoal: () => void;
+}) {
+  return (
+    <main className="bubble-workspace instruction-workspace">
+      <section className="instruction-setup">
+        <div className="instruction-setup-copy">
+          <span>{topic.name}</span>
+          <h2>Build the lesson around what you want to become able to do.</h2>
+          <p>
+            No long intake form. Answer one sharp question, then the app creates a route with checks, repair loops, and
+            a mastery proof.
+          </p>
+        </div>
 
-            {currentStep.block.type === "choice" ? (
-              <div className="instruction-choice-list" role="radiogroup" aria-label={currentStep.block.prompt}>
-                {currentStep.block.choices?.map((choice) => (
-                  <button
-                    key={choice.label}
-                    type="button"
-                    className={selectedChoice === choice.label ? "is-selected" : ""}
-                    onClick={() => setSelectedChoice(choice.label)}
-                  >
-                    {choice.label}
-                  </button>
-                ))}
-              </div>
-            ) : null}
-
-            {currentStep.block.type === "simulation" ? (
-              <div className="instruction-simulation">
-                <div className="instruction-sim-output">
-                  <span>{simulationLabels.output}</span>
-                  <strong>
-                    {simulationLabels.unit}
-                    {simulationOutput}
-                  </strong>
-                </div>
-                <SimulationSlider
-                  label={simulationLabels.a}
-                  value={simulation.a}
-                  onChange={(value) => setSimulation((current) => ({ ...current, a: value }))}
-                />
-                <SimulationSlider
-                  label={simulationLabels.b}
-                  value={simulation.b}
-                  onChange={(value) => setSimulation((current) => ({ ...current, b: value }))}
-                />
-                <SimulationSlider
-                  label={simulationLabels.c}
-                  value={simulation.c}
-                  onChange={(value) => setSimulation((current) => ({ ...current, c: value }))}
-                />
-                <SimulationSlider
-                  label={simulationLabels.d}
-                  value={simulation.d}
-                  onChange={(value) => setSimulation((current) => ({ ...current, d: value }))}
-                />
-              </div>
-            ) : null}
-
-            {currentStep.block.type !== "choice" ? (
-              <label className="instruction-answer">
-                <span>{currentStep.block.prompt}</span>
-                <textarea
-                  value={answer}
-                  onChange={(event) => setAnswer(event.target.value)}
-                  placeholder="Write a short answer. The app checks the link, not polish."
-                  rows={currentStep.block.type === "mastery" ? 6 : 4}
-                />
-              </label>
-            ) : null}
-
-            {feedback ? <InstructionFeedbackCard feedback={feedback} /> : null}
-
-            <div className="instruction-block-actions">
-              {feedback?.tone === "success" ? (
-                <button type="button" onClick={advanceStep} className="instruction-primary-action">
-                  {currentStepIndex === lesson.steps.length - 1 ? "Finish and recap" : "Continue"}
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  disabled={currentStep.block.type === "choice" ? !selectedChoice : answer.trim().length < 4}
-                  className="instruction-primary-action"
-                >
-                  {currentStep.block.actionLabel}
-                </button>
-              )}
-              {feedback ? (
-                <button type="button" onClick={retryStep} className="instruction-secondary-action">
-                  Retry this block
-                </button>
-              ) : null}
-            </div>
-          </form>
-        </section>
-
-        <aside className="instruction-coach" aria-label="Coach sidecar">
-          <div className="instruction-coach-head">
-            <MessageCircle size={20} />
-            <div>
-              <span>Coach sidecar</span>
-              <strong>Learner model</strong>
-            </div>
-          </div>
-          <div className="instruction-model-card">
-            <span>Current objective</span>
-            <strong>{currentStep.checkpoint}</strong>
-            <p>
-              {misconceptions.length
-                ? `Watching for: ${misconceptions[misconceptions.length - 1]}`
-                : "No persistent misconception yet."}
-            </p>
-          </div>
-          <div className="instruction-coach-actions">
-            <button type="button" onClick={() => coach("hint")}>Hint</button>
-            <button type="button" onClick={() => coach("easier")}>Slow down</button>
-            <button type="button" onClick={() => coach("harder")}>Harder</button>
-            <button type="button" onClick={() => coach("quiz")}>Quiz me</button>
-            <button type="button" onClick={() => coach("formula")}>Formula</button>
-            <button type="button" onClick={() => coach("real")}>Real life</button>
-            <button type="button" onClick={() => coach("notes")}>Save note</button>
-            <button type="button" onClick={() => coach("skip")}>Skip?</button>
-          </div>
-          <div className="instruction-coach-log app-scrollbar">
-            {coachEntries.map((entry) => (
-              <p key={entry.id} className={entry.role === "learner" ? "is-learner" : ""}>
-                {entry.content}
-              </p>
-            ))}
-          </div>
-          <form className="instruction-coach-form" onSubmit={submitCoachQuestion}>
-            <input
-              value={coachInput}
-              onChange={(event) => setCoachInput(event.target.value)}
-              placeholder="Ask for a hint or example"
-            />
-            <button type="submit" disabled={!coachInput.trim()} aria-label="Ask coach">
-              <Send size={16} />
-            </button>
-          </form>
-        </aside>
+        {setupStage === "goal" ? (
+          <InstructionGoalForm goal={goal} onGoal={onGoal} onContinue={onContinue} />
+        ) : (
+          <InstructionContextForm
+            context={context}
+            level={level}
+            mode={mode}
+            onContext={onContext}
+            onLevel={onLevel}
+            onMode={onMode}
+            onStartLesson={onStartLesson}
+            onBackToGoal={onBackToGoal}
+          />
+        )}
+        <TopicResourceLinks topic={topic} />
       </section>
     </main>
+  );
+}
+
+function InstructionGoalForm({
+  goal,
+  onGoal,
+  onContinue,
+}: {
+  goal: string;
+  onGoal: (value: string) => void;
+  onContinue: (event?: FormEvent) => void;
+}) {
+  return (
+    <form className="instruction-setup-panel" onSubmit={onContinue}>
+      <div className="instruction-panel-kicker">
+        <BookOpenCheck size={22} />
+        <span>Question 1 of 2</span>
+      </div>
+      <label>
+        <span>What do you want to understand or be able to do?</span>
+        <textarea value={goal} onChange={(event) => onGoal(event.target.value)} placeholder="Teach me financial modeling" rows={4} />
+      </label>
+      <div className="instruction-chip-grid">
+        {goalExamples.map((example) => (
+          <button key={example} type="button" onClick={() => onGoal(example)}>
+            <Sparkles size={15} />
+            <span>{example}</span>
+          </button>
+        ))}
+      </div>
+      <button type="submit" disabled={!goal.trim()} className="instruction-primary-action">
+        Shape the route
+      </button>
+    </form>
+  );
+}
+
+function InstructionContextForm({
+  context,
+  level,
+  mode,
+  onContext,
+  onLevel,
+  onMode,
+  onStartLesson,
+  onBackToGoal,
+}: {
+  context: string;
+  level: string;
+  mode: Difficulty;
+  onContext: (value: string) => void;
+  onLevel: (value: string) => void;
+  onMode: (value: Difficulty) => void;
+  onStartLesson: (event?: FormEvent) => void;
+  onBackToGoal: () => void;
+}) {
+  return (
+    <form className="instruction-setup-panel" onSubmit={onStartLesson}>
+      <div className="instruction-panel-kicker">
+        <Gauge size={22} />
+        <span>Question 2 of 2</span>
+      </div>
+      <InstructionSegmentRow
+        legend="What is this for?"
+        options={contextOptions}
+        value={context}
+        onChange={onContext}
+      />
+      <InstructionSegmentRow
+        legend="How strong are you right now?"
+        options={levelOptions}
+        value={level}
+        onChange={onLevel}
+      />
+      <fieldset>
+        <legend>Default lesson pressure</legend>
+        <div className="instruction-segment-row">
+          {difficultyOptions.slice(0, 3).map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              className={mode === option.id ? "is-selected" : ""}
+              onClick={() => onMode(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </fieldset>
+      <button type="submit" className="instruction-primary-action">
+        Generate learning map
+      </button>
+      <button type="button" className="instruction-secondary-action" onClick={onBackToGoal}>
+        Edit goal
+      </button>
+    </form>
+  );
+}
+
+function InstructionSegmentRow({
+  legend,
+  options,
+  value,
+  onChange,
+}: {
+  legend: string;
+  options: readonly string[];
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  return (
+    <fieldset>
+      <legend>{legend}</legend>
+      <div className="instruction-segment-row">
+        {options.map((option) => (
+          <button
+            key={option}
+            type="button"
+            className={value === option ? "is-selected" : ""}
+            onClick={() => onChange(option)}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+  );
+}
+
+function InstructionCompleteView({
+  lesson,
+  mastery,
+  strengths,
+  misconceptions,
+  savedNotes,
+  onRestart,
+}: {
+  lesson: Lesson;
+  mastery: number;
+  strengths: string[];
+  misconceptions: string[];
+  savedNotes: string[];
+  onRestart: () => void;
+}) {
+  return (
+    <main className="bubble-workspace instruction-workspace">
+      <section className="instruction-complete">
+        <div className="instruction-complete-badge">
+          <CheckCircle2 size={38} />
+          <span>Mastery checkpoint passed</span>
+        </div>
+        <h2>{lesson.objective}</h2>
+        <p>
+          Mastery score: {mastery}%. You earned the Applied badge because you used the idea in a fresh task instead of
+          only reading about it.
+        </p>
+        <div className="instruction-recap-grid">
+          <article>
+            <strong>Strengths</strong>
+            <span>{strengths.length ? strengths.join("; ") : "You completed the route."}</span>
+          </article>
+          <article>
+            <strong>Repaired gaps</strong>
+            <span>{misconceptions.length ? misconceptions.join("; ") : "No major misconception persisted."}</span>
+          </article>
+          <article>
+            <strong>Saved notes</strong>
+            <span>{savedNotes.length ? `${savedNotes.length} note saved` : "No notes saved yet."}</span>
+          </article>
+        </div>
+        <button type="button" onClick={onRestart} className="instruction-primary-action">
+          Start another lesson
+        </button>
+      </section>
+    </main>
+  );
+}
+
+function InstructionSessionView({
+  lesson,
+  currentStep,
+  currentStepIndex,
+  completedSteps,
+  mastery,
+  mode,
+  answer,
+  selectedChoice,
+  feedback,
+  simulation,
+  simulationLabels,
+  simulationOutput,
+  misconceptions,
+  coachEntries,
+  coachInput,
+  onAnswer,
+  onCoach,
+  onCoachInput,
+  onEvaluate,
+  onMode,
+  onRestart,
+  onRetry,
+  onSelectChoice,
+  onSimulation,
+  onStepAdvance,
+  onSubmitCoachQuestion,
+}: {
+  lesson: Lesson;
+  currentStep: LessonStep;
+  currentStepIndex: number;
+  completedSteps: string[];
+  mastery: number;
+  mode: Difficulty;
+  answer: string;
+  selectedChoice: string;
+  feedback: Feedback | null;
+  simulation: InstructionState["simulation"];
+  simulationLabels: SimulationLabels;
+  simulationOutput: number;
+  misconceptions: string[];
+  coachEntries: CoachEntry[];
+  coachInput: string;
+  onAnswer: (value: string) => void;
+  onCoach: (action: string) => void;
+  onCoachInput: (value: string) => void;
+  onEvaluate: (event?: FormEvent) => void;
+  onMode: (value: Difficulty) => void;
+  onRestart: () => void;
+  onRetry: () => void;
+  onSelectChoice: (value: string) => void;
+  onSimulation: (value: Partial<InstructionState["simulation"]>) => void;
+  onStepAdvance: () => void;
+  onSubmitCoachQuestion: (event?: FormEvent) => void;
+}) {
+  return (
+    <section className="instruction-shell">
+      <InstructionMap
+        lesson={lesson}
+        currentStepIndex={currentStepIndex}
+        completedSteps={completedSteps}
+        mastery={mastery}
+      />
+      <InstructionStage
+        lesson={lesson}
+        currentStep={currentStep}
+        currentStepIndex={currentStepIndex}
+        mode={mode}
+        answer={answer}
+        selectedChoice={selectedChoice}
+        feedback={feedback}
+        simulation={simulation}
+        simulationLabels={simulationLabels}
+        simulationOutput={simulationOutput}
+        onAnswer={onAnswer}
+        onEvaluate={onEvaluate}
+        onMode={onMode}
+        onRestart={onRestart}
+        onRetry={onRetry}
+        onSelectChoice={onSelectChoice}
+        onSimulation={onSimulation}
+        onStepAdvance={onStepAdvance}
+      />
+      <InstructionCoach
+        currentStep={currentStep}
+        misconceptions={misconceptions}
+        coachEntries={coachEntries}
+        coachInput={coachInput}
+        onCoach={onCoach}
+        onCoachInput={onCoachInput}
+        onSubmitCoachQuestion={onSubmitCoachQuestion}
+      />
+    </section>
+  );
+}
+
+function InstructionMap({
+  lesson,
+  currentStepIndex,
+  completedSteps,
+  mastery,
+}: {
+  lesson: Lesson;
+  currentStepIndex: number;
+  completedSteps: string[];
+  mastery: number;
+}) {
+  return (
+    <aside className="instruction-map" aria-label="Learning map">
+      <div className="instruction-map-head">
+        <span>Learning map</span>
+        <strong>{lesson.objective}</strong>
+      </div>
+      <div className="instruction-mastery">
+        <div>
+          <span>Mastery</span>
+          <strong>{mastery}%</strong>
+        </div>
+        <div className="instruction-mastery-track">
+          <span style={{ width: `${mastery}%` }} />
+        </div>
+        <small>{lesson.estimatedEffort} remaining effort</small>
+      </div>
+      <ol className="instruction-step-list">
+        {lesson.steps.map((step, index) => {
+          const completed = completedSteps.includes(step.id);
+          const current = index === currentStepIndex;
+          const locked = index > currentStepIndex && !completed;
+          return (
+            <li
+              key={step.id}
+              className={`${completed ? "is-complete" : ""} ${current ? "is-current" : ""} ${
+                locked ? "is-locked" : ""
+              }`}
+            >
+              <span>{completed ? <CheckCircle2 size={15} /> : index + 1}</span>
+              <div>
+                <strong>{step.title}</strong>
+                {current ? <p>{step.summary}</p> : null}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </aside>
+  );
+}
+
+function InstructionStage({
+  lesson,
+  currentStep,
+  currentStepIndex,
+  mode,
+  answer,
+  selectedChoice,
+  feedback,
+  simulation,
+  simulationLabels,
+  simulationOutput,
+  onAnswer,
+  onEvaluate,
+  onMode,
+  onRestart,
+  onRetry,
+  onSelectChoice,
+  onSimulation,
+  onStepAdvance,
+}: {
+  lesson: Lesson;
+  currentStep: LessonStep;
+  currentStepIndex: number;
+  mode: Difficulty;
+  answer: string;
+  selectedChoice: string;
+  feedback: Feedback | null;
+  simulation: InstructionState["simulation"];
+  simulationLabels: SimulationLabels;
+  simulationOutput: number;
+  onAnswer: (value: string) => void;
+  onEvaluate: (event?: FormEvent) => void;
+  onMode: (value: Difficulty) => void;
+  onRestart: () => void;
+  onRetry: () => void;
+  onSelectChoice: (value: string) => void;
+  onSimulation: (value: Partial<InstructionState["simulation"]>) => void;
+  onStepAdvance: () => void;
+}) {
+  return (
+    <section className="instruction-stage">
+      <InstructionStageHeader step={currentStep} mode={mode} onMode={onMode} onRestart={onRestart} />
+      <form className="instruction-block" onSubmit={onEvaluate}>
+        <ConceptSlice step={currentStep} />
+        <InstructionStepInput
+          step={currentStep}
+          answer={answer}
+          selectedChoice={selectedChoice}
+          simulation={simulation}
+          simulationLabels={simulationLabels}
+          simulationOutput={simulationOutput}
+          onAnswer={onAnswer}
+          onSelectChoice={onSelectChoice}
+          onSimulation={onSimulation}
+        />
+        {feedback ? <InstructionFeedbackCard feedback={feedback} /> : null}
+        <InstructionStepActions
+          lesson={lesson}
+          currentStep={currentStep}
+          currentStepIndex={currentStepIndex}
+          answer={answer}
+          selectedChoice={selectedChoice}
+          feedback={feedback}
+          onRetry={onRetry}
+          onStepAdvance={onStepAdvance}
+        />
+      </form>
+    </section>
+  );
+}
+
+function InstructionStageHeader({
+  step,
+  mode,
+  onMode,
+  onRestart,
+}: {
+  step: LessonStep;
+  mode: Difficulty;
+  onMode: (value: Difficulty) => void;
+  onRestart: () => void;
+}) {
+  return (
+    <header className="instruction-stage-head">
+      <div>
+        <span>{step.block.type.replace("-", " ")}</span>
+        <h2>{step.title}</h2>
+        <p>{step.block.skill}</p>
+      </div>
+      <div className="instruction-stage-actions">
+        <button type="button" onClick={onRestart} className="instruction-secondary-action">
+          Change setup
+        </button>
+        <div className="instruction-difficulty">
+          {difficultyOptions.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              className={mode === option.id ? "is-selected" : ""}
+              onClick={() => onMode(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function InstructionStepInput({
+  step,
+  answer,
+  selectedChoice,
+  simulation,
+  simulationLabels,
+  simulationOutput,
+  onAnswer,
+  onSelectChoice,
+  onSimulation,
+}: {
+  step: LessonStep;
+  answer: string;
+  selectedChoice: string;
+  simulation: InstructionState["simulation"];
+  simulationLabels: SimulationLabels;
+  simulationOutput: number;
+  onAnswer: (value: string) => void;
+  onSelectChoice: (value: string) => void;
+  onSimulation: (value: Partial<InstructionState["simulation"]>) => void;
+}) {
+  if (step.block.type === "choice") {
+    return (
+      <div className="instruction-choice-list" role="radiogroup" aria-label={step.block.prompt}>
+        {step.block.choices?.map((choice) => (
+          <button
+            key={choice.label}
+            type="button"
+            className={selectedChoice === choice.label ? "is-selected" : ""}
+            onClick={() => onSelectChoice(choice.label)}
+          >
+            {choice.label}
+          </button>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {step.block.type === "simulation" ? (
+        <InstructionSimulation
+          simulation={simulation}
+          simulationLabels={simulationLabels}
+          simulationOutput={simulationOutput}
+          onSimulation={onSimulation}
+        />
+      ) : null}
+      <label className="instruction-answer">
+        <span>{step.block.prompt}</span>
+        <textarea
+          value={answer}
+          onChange={(event) => onAnswer(event.target.value)}
+          placeholder="Write a short answer. The app checks the link, not polish."
+          rows={step.block.type === "mastery" ? 6 : 4}
+        />
+      </label>
+    </>
+  );
+}
+
+function InstructionSimulation({
+  simulation,
+  simulationLabels,
+  simulationOutput,
+  onSimulation,
+}: {
+  simulation: InstructionState["simulation"];
+  simulationLabels: SimulationLabels;
+  simulationOutput: number;
+  onSimulation: (value: Partial<InstructionState["simulation"]>) => void;
+}) {
+  return (
+    <div className="instruction-simulation">
+      <div className="instruction-sim-output">
+        <span>{simulationLabels.output}</span>
+        <strong>
+          {simulationLabels.unit}
+          {simulationOutput}
+        </strong>
+      </div>
+      <SimulationSlider label={simulationLabels.a} value={simulation.a} onChange={(value) => onSimulation({ a: value })} />
+      <SimulationSlider label={simulationLabels.b} value={simulation.b} onChange={(value) => onSimulation({ b: value })} />
+      <SimulationSlider label={simulationLabels.c} value={simulation.c} onChange={(value) => onSimulation({ c: value })} />
+      <SimulationSlider label={simulationLabels.d} value={simulation.d} onChange={(value) => onSimulation({ d: value })} />
+    </div>
+  );
+}
+
+function InstructionStepActions({
+  lesson,
+  currentStep,
+  currentStepIndex,
+  answer,
+  selectedChoice,
+  feedback,
+  onRetry,
+  onStepAdvance,
+}: {
+  lesson: Lesson;
+  currentStep: LessonStep;
+  currentStepIndex: number;
+  answer: string;
+  selectedChoice: string;
+  feedback: Feedback | null;
+  onRetry: () => void;
+  onStepAdvance: () => void;
+}) {
+  return (
+    <div className="instruction-block-actions">
+      {feedback?.tone === "success" ? (
+        <button type="button" onClick={onStepAdvance} className="instruction-primary-action">
+          {currentStepIndex === lesson.steps.length - 1 ? "Finish and recap" : "Continue"}
+        </button>
+      ) : (
+        <button
+          type="submit"
+          disabled={currentStep.block.type === "choice" ? !selectedChoice : answer.trim().length < 4}
+          className="instruction-primary-action"
+        >
+          {currentStep.block.actionLabel}
+        </button>
+      )}
+      {feedback ? (
+        <button type="button" onClick={onRetry} className="instruction-secondary-action">
+          Retry this block
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
+function InstructionCoach({
+  currentStep,
+  misconceptions,
+  coachEntries,
+  coachInput,
+  onCoach,
+  onCoachInput,
+  onSubmitCoachQuestion,
+}: {
+  currentStep: LessonStep;
+  misconceptions: string[];
+  coachEntries: CoachEntry[];
+  coachInput: string;
+  onCoach: (action: string) => void;
+  onCoachInput: (value: string) => void;
+  onSubmitCoachQuestion: (event?: FormEvent) => void;
+}) {
+  return (
+    <aside className="instruction-coach" aria-label="Coach sidecar">
+      <div className="instruction-coach-head">
+        <MessageCircle size={20} />
+        <div>
+          <span>Coach sidecar</span>
+          <strong>Learner model</strong>
+        </div>
+      </div>
+      <div className="instruction-model-card">
+        <span>Current objective</span>
+        <strong>{currentStep.checkpoint}</strong>
+        <p>
+          {misconceptions.length
+            ? `Watching for: ${misconceptions[misconceptions.length - 1]}`
+            : "No persistent misconception yet."}
+        </p>
+      </div>
+      <InstructionCoachActions onCoach={onCoach} />
+      <div className="instruction-coach-log app-scrollbar">
+        {coachEntries.map((entry) => (
+          <p key={entry.id} className={entry.role === "learner" ? "is-learner" : ""}>
+            {entry.content}
+          </p>
+        ))}
+      </div>
+      <form className="instruction-coach-form" onSubmit={onSubmitCoachQuestion}>
+        <input
+          aria-label="Ask the coach"
+          value={coachInput}
+          onChange={(event) => onCoachInput(event.target.value)}
+          placeholder="Ask for a hint or example"
+        />
+        <button type="submit" disabled={!coachInput.trim()} aria-label="Ask coach">
+          <Send size={16} />
+        </button>
+      </form>
+    </aside>
+  );
+}
+
+function InstructionCoachActions({ onCoach }: { onCoach: (action: string) => void }) {
+  return (
+    <div className="instruction-coach-actions">
+      {instructionCoachActions.map(([action, label]) => (
+        <button key={action} type="button" onClick={() => onCoach(action)}>
+          {label}
+        </button>
+      ))}
+    </div>
   );
 }
 

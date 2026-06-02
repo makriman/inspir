@@ -32,7 +32,3 @@ export function resolveTopicSlug(value: string | null | undefined) {
 export function isKnownTopicSlug(value: string | null | undefined) {
   return resolveTopicSlug(value) !== undefined;
 }
-
-export function publicTopicSlugs() {
-  return topicSeeds.map((topic) => topic.slug);
-}

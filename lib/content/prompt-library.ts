@@ -36,7 +36,7 @@ export const promptLibrarySearchIntents = [
   "AI writing feedback prompts",
 ] as const;
 
-export function promptEntryId(topic: TopicSeed, index: number) {
+function promptEntryId(topic: TopicSeed, index: number) {
   return `${topic.slug}-prompt-${index + 1}`;
 }
 

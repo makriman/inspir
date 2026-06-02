@@ -36,10 +36,6 @@ export function getVisibleMessageContent(content: string) {
   return visible || "";
 }
 
-export function isMiniAppInstruction(content: string) {
-  return content.startsWith(miniAppInstructionMarker);
-}
-
 function extractLabeledLine(content: string, label: string) {
   const match = content.match(new RegExp(`^${label}:\\s*(.+)$`, "im"));
   return match?.[1]?.trim() ?? "";

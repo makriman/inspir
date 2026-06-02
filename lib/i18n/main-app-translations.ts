@@ -156,32 +156,36 @@ async function generateTranslationsForEntries({
   let nextEntryIndex = 0;
   let completed = 0;
 
-  async function runWorker() {
-    while (nextEntryIndex < entries.length) {
-      const entryIndex = nextEntryIndex;
-      nextEntryIndex += 1;
-      const [key, source] = entries[entryIndex];
-      try {
-        const value = await generateTranslationField({ language, key, source, model });
-        translated[key] = value;
-        completed += 1;
-        if (translationVerboseLogs()) {
-          console.info("Main app translation field complete", {
-            language,
-            key,
-            completed,
-            total: entries.length,
-          });
-        }
-      } catch (error) {
-        failures.push({ key, error });
-        console.error("Main app translation field failed", {
+  async function translateEntry(entryIndex: number) {
+    const [key, source] = entries[entryIndex];
+    try {
+      const value = await generateTranslationField({ language, key, source, model });
+      translated[key] = value;
+      completed += 1;
+      if (translationVerboseLogs()) {
+        console.info("Main app translation field complete", {
           language,
           key,
-          error: summarizeTranslationError(error),
+          completed,
+          total: entries.length,
         });
       }
+    } catch (error) {
+      failures.push({ key, error });
+      console.error("Main app translation field failed", {
+        language,
+        key,
+        error: summarizeTranslationError(error),
+      });
     }
+  }
+
+  async function runWorker(): Promise<void> {
+    const entryIndex = nextEntryIndex;
+    nextEntryIndex += 1;
+    if (entryIndex >= entries.length) return;
+    await translateEntry(entryIndex);
+    return runWorker();
   }
 
   await Promise.all(Array.from({ length: Math.min(concurrency, entries.length) }, runWorker));
@@ -211,9 +215,8 @@ async function generateTranslationField({
 }) {
   const maxRetries = readNonNegativeIntegerEnv("OPENAI_TRANSLATION_MAX_RETRIES", defaultTranslationMaxRetries);
   const maxAttempts = maxRetries + 1;
-  let lastError: unknown;
 
-  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+  async function attemptTranslationField(attempt: number): Promise<string> {
     try {
       const providerOptions = buildTranslationProviderOptions();
       const result = await generateObject({
@@ -249,7 +252,6 @@ async function generateTranslationField({
 
       return value;
     } catch (error) {
-      lastError = error;
       if (attempt < maxAttempts) {
         console.warn("Retrying main app translation field", {
           language,
@@ -259,11 +261,13 @@ async function generateTranslationField({
           error: summarizeTranslationError(error),
         });
         await sleep(250 * attempt);
+        return attemptTranslationField(attempt + 1);
       }
+      throw error;
     }
   }
 
-  throw lastError;
+  return attemptTranslationField(1);
 }
 
 function isValidFieldTranslation(source: string, value: string | undefined) {
@@ -289,11 +293,13 @@ function filterValidTranslations(
   sourceStrings: Record<string, string>,
   translatedStrings: Record<string, string>,
 ) {
-  return Object.fromEntries(
-    Object.entries(sourceStrings)
-      .filter(([key, source]) => isValidFieldTranslation(source, translatedStrings[key]))
-      .map(([key]) => [key, translatedStrings[key]]),
-  );
+  const validTranslations: Record<string, string> = {};
+  for (const [key, source] of Object.entries(sourceStrings)) {
+    if (isValidFieldTranslation(source, translatedStrings[key])) {
+      validTranslations[key] = translatedStrings[key];
+    }
+  }
+  return validTranslations;
 }
 
 function buildMainAppPartialTranslationBundle(
@@ -322,7 +328,10 @@ function canRemainUntranslated(source: string) {
 
 function isProperNameLabel(value: string) {
   const normalized = value.replace(/\.{3}$/, "");
-  const segments = normalized.split(",").map((segment) => segment.trim()).filter(Boolean);
+  const segments = normalized.split(",").flatMap((segment) => {
+    const value = segment.trim();
+    return value ? [value] : [];
+  });
   if (!segments.length) return false;
 
   const words = segments.flatMap((segment) => segment.split(/\s+/));

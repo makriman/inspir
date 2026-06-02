@@ -12,8 +12,9 @@ import { answerQuizQuestion, sanitizeQuizState, type QuizState } from "../lib/ac
 import { findSeededTopic, seededTopics } from "../lib/content/seeded-topics";
 import { topicSeeds } from "../lib/content/topics";
 
-test("topic registry exposes exactly 50 learner modes and preserves legacy slugs", () => {
-  assert.equal(topicSeeds.length, 50);
+test("topic registry exposes imported learner modes and preserves legacy slugs", () => {
+  assert.ok(topicSeeds.length >= 50);
+  assert.equal(new Set(topicSeeds.map((topic) => topic.slug)).size, topicSeeds.length);
   for (const slug of [
     "learn-anything",
     "socratic-instruction",
@@ -24,6 +25,11 @@ test("topic registry exposes exactly 50 learner modes and preserves legacy slugs
     "talk-to-a-historical-person",
     "debate-with-a-personality",
     "debate-any-topic",
+    "study-timer",
+    "music-for-focus",
+    "practice-test-builder",
+    "cornell-notes",
+    "study-streaks",
   ]) {
     assert.ok(topicSeeds.some((topic) => topic.slug === slug), `${slug} should remain available`);
   }

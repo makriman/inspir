@@ -14,11 +14,11 @@ import {
   getAudiencePages,
 } from "@/lib/content/audiences";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -93,13 +93,7 @@ export default function AudienceHubPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="For learners" title="AI learning should fit the person using it.">
         Students, parents, teachers, and self-taught learners search for different things.

@@ -14,11 +14,11 @@ import {
   subjectPath,
 } from "@/lib/content/subjects";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -94,13 +94,7 @@ export default function SubjectHubPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Subjects" title="Find the right AI tutor for the subject in front of you.">
         Math, writing, coding, history, homework, and exam prep each need a different kind of help.

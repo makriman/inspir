@@ -191,240 +191,428 @@ export function SocraticWorkspace({
     <main className="bubble-workspace socratic-workspace">
       <div ref={hasSession ? listRef : undefined} className="socratic-scroll app-scrollbar">
         {!hasSession ? (
-          <section className="socratic-start">
-            <div className="socratic-start-copy">
-              <div className="socratic-kicker">
-                <Gauge size={18} />
-                <span>Socratic Instruction</span>
-              </div>
-              <h2>Build understanding by answering one precise question at a time.</h2>
-              <div className="socratic-contract" aria-label="Socratic contract">
-                {contractItems.map((item) => (
-                  <span key={item}>
-                    <CheckCircle2 size={15} />
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <form className="socratic-start-form" onSubmit={startSession}>
-              <div className="socratic-form-head">
-                <Target size={22} />
-                <div>
-                  <strong>Thinking target</strong>
-                  <span>Start with a concept, case, argument, decision, or text.</span>
-                </div>
-              </div>
-
-              <div className="socratic-segment-grid" aria-label="Target type">
-                {targetKinds.map((kind) => (
-                  <button
-                    key={kind.id}
-                    type="button"
-                    className={kind.id === targetKind ? "is-active" : ""}
-                    onClick={() => {
-                      setTargetKind(kind.id);
-                      if (!target.trim()) setTarget(kind.example);
-                    }}
-                  >
-                    {kind.label}
-                  </button>
-                ))}
-              </div>
-
-              <label className="socratic-target-input">
-                <span>{targetKinds.find((kind) => kind.id === targetKind)?.label ?? "Target"}</span>
-                <textarea
-                  value={target}
-                  onChange={(event) => setTarget(event.target.value)}
-                  placeholder={targetKinds.find((kind) => kind.id === targetKind)?.example}
-                  rows={4}
-                  disabled={sending}
-                />
-              </label>
-
-              <div className="socratic-mode-row" aria-label="Socratic mode">
-                {socraticModes.map((option) => (
-                  <button
-                    key={option.id}
-                    type="button"
-                    title={option.description}
-                    className={option.id === mode ? "is-active" : ""}
-                    onClick={() => setMode(option.id)}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-
-              <button type="submit" className="socratic-start-button" disabled={!target.trim() || sending}>
-                <Sparkles size={17} />
-                Begin with the first question
-              </button>
-            </form>
-
-            {starters.length ? (
-              <div className="socratic-starter-row">
-                {starters.map((starter) => (
-                  <button key={starter} type="button" onClick={() => setTarget(starter)}>
-                    <Compass size={15} />
-                    <span>{starter}</span>
-                  </button>
-                ))}
-              </div>
-            ) : null}
-            <TopicResourceLinks topic={topic} />
-          </section>
+          <SocraticStartScreen
+            topic={topic}
+            starters={starters}
+            target={target}
+            targetKind={targetKind}
+            mode={mode}
+            sending={sending}
+            onStart={startSession}
+            onMode={setMode}
+            onTarget={setTarget}
+            onTargetKind={setTargetKind}
+          />
         ) : (
-          <section className="socratic-chamber">
-            <aside className="socratic-session-rail">
-              <section className="socratic-target-panel">
-                <span>{targetKinds.find((kind) => kind.id === session.targetKind)?.label ?? "Target"}</span>
-                <strong>{session.target}</strong>
-                <em>{socraticModes.find((option) => option.id === session.mode)?.label ?? "Guided"} mode</em>
-              </section>
-
-              <section className="socratic-depth-panel">
-                <div className="socratic-panel-title">
-                  <ListChecks size={16} />
-                  <strong>Reasoning depth</strong>
-                </div>
-                <div className="socratic-depth-list">
-                  {progress.map((stage) => (
-                    <span key={stage.label} className={stage.active ? "is-active" : ""}>
-                      {stage.label}
-                    </span>
-                  ))}
-                </div>
-              </section>
-
-              <section className="socratic-hint-panel">
-                <div className="socratic-panel-title">
-                  <Lightbulb size={16} />
-                  <strong>Hint ladder</strong>
-                </div>
-                <div className="socratic-hint-list">
-                  {hintSteps.map((step, index) => (
-                    <article key={step.label} className={index < hintLevel ? "is-open" : ""}>
-                      <span>{index + 1}</span>
-                      <div>
-                        <strong>{step.label}</strong>
-                        <em>{step.body}</em>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
-
-              <button type="button" onClick={onReset} className="socratic-new-session">
-                <RefreshCw size={16} />
-                New target
-              </button>
-            </aside>
-
-            <section className="socratic-focus-column">
-              <article className="socratic-question-card">
-                <div className="socratic-question-head">
-                  <div>
-                    <span>Question focus</span>
-                    <strong>Answer this question before moving on.</strong>
-                  </div>
-                  {misconception ? <em>{misconception}</em> : null}
-                </div>
-                <p>{activeQuestion}</p>
-                {latestFeedback ? <small>{latestFeedback}</small> : null}
-              </article>
-
-              <div className="socratic-coach-controls" aria-label="Coach controls">
-                <CoachButton
-                  icon={Lightbulb}
-                  label={hintLevel ? `Hint ${Math.min(hintLevel + 1, 4)}` : "Hint"}
-                  title="Ask for the next hint level"
-                  onClick={() => sendCoachControl("hint")}
-                  disabled={sending}
-                />
-                <CoachButton
-                  icon={CircleHelp}
-                  label="Rephrase"
-                  title="Ask for the same question in simpler words"
-                  onClick={() => sendCoachControl("rephrase")}
-                  disabled={sending}
-                />
-                <CoachButton
-                  icon={BookOpenCheck}
-                  label="Example"
-                  title="Ask for a parallel example"
-                  onClick={() => sendCoachControl("example")}
-                  disabled={sending}
-                />
-                <CoachButton
-                  icon={Zap}
-                  label="Challenge"
-                  title="Pressure-test the last answer"
-                  onClick={() => sendCoachControl("challenge")}
-                  disabled={sending}
-                />
-                <CoachButton
-                  icon={ListChecks}
-                  label="Synthesize"
-                  title="Move toward final synthesis"
-                  onClick={() => sendCoachControl("synthesis")}
-                  disabled={sending}
-                />
-                <CoachButton
-                  icon={Sparkles}
-                  label="Reveal"
-                  title="Ask for a direct explanation"
-                  onClick={() => sendCoachControl("reveal")}
-                  disabled={sending}
-                />
-              </div>
-
-              <form onSubmit={onSubmit} className="socratic-answer-box">
-                <textarea
-                  ref={inputRef}
-                  value={input}
-                  onChange={(event) => onInput(event.target.value)}
-                  onKeyDown={onKeyDown}
-                  placeholder="Write your answer, even if it is rough."
-                  disabled={sending}
-                  rows={3}
-                />
-                <button
-                  type={sending ? "button" : "submit"}
-                  onClick={sending ? onStop : undefined}
-                  disabled={!sending && !input.trim()}
-                  aria-label={sending ? "Stop response" : "Send answer"}
-                >
-                  {sending ? <Square size={16} fill="currentColor" /> : <Send size={18} />}
-                  <span>{sending ? "Stop" : "Send"}</span>
-                </button>
-              </form>
-
-              <section className="socratic-log">
-                <div className="socratic-panel-title">
-                  <GitBranch size={16} />
-                  <strong>Reasoning log</strong>
-                </div>
-                <div className="socratic-log-stack">
-                  {displayMessages.length ? (
-                    displayMessages.map((message) => (
-                      <SocraticTurn key={message.id} message={message} userName={userName} />
-                    ))
-                  ) : awaitingResponse ? (
-                    <ThinkingPulse />
-                  ) : null}
-                  {awaitingResponse && displayMessages.length ? <ThinkingPulse /> : null}
-                </div>
-              </section>
-            </section>
-
-            <ThinkingMapPanel map={thinkingMap} learnerAnswerCount={learnerMessages.length} />
-          </section>
+          <SocraticSessionView
+            session={session}
+            progress={progress}
+            hintLevel={hintLevel}
+            misconception={misconception}
+            activeQuestion={activeQuestion}
+            latestFeedback={latestFeedback}
+            displayMessages={displayMessages}
+            userName={userName}
+            input={input}
+            sending={sending}
+            awaitingResponse={awaitingResponse}
+            inputRef={inputRef}
+            thinkingMap={thinkingMap}
+            learnerAnswerCount={learnerMessages.length}
+            onInput={onInput}
+            onKeyDown={onKeyDown}
+            onReset={onReset}
+            onSubmit={onSubmit}
+            onStop={onStop}
+            onCoachControl={sendCoachControl}
+          />
         )}
       </div>
     </main>
+  );
+}
+
+function SocraticStartScreen({
+  topic,
+  starters,
+  target,
+  targetKind,
+  mode,
+  sending,
+  onStart,
+  onMode,
+  onTarget,
+  onTargetKind,
+}: {
+  topic: Topic;
+  starters: string[];
+  target: string;
+  targetKind: TargetKind;
+  mode: SocraticMode;
+  sending: boolean;
+  onStart: (event?: FormEvent) => void;
+  onMode: (mode: SocraticMode) => void;
+  onTarget: (target: string) => void;
+  onTargetKind: (kind: TargetKind) => void;
+}) {
+  const activeKind = targetKinds.find((kind) => kind.id === targetKind);
+  return (
+    <section className="socratic-start">
+      <div className="socratic-start-copy">
+        <div className="socratic-kicker">
+          <Gauge size={18} />
+          <span>Socratic Instruction</span>
+        </div>
+        <h2>Build understanding by answering one precise question at a time.</h2>
+        <div className="socratic-contract" aria-label="Socratic contract">
+          {contractItems.map((item) => (
+            <span key={item}>
+              <CheckCircle2 size={15} />
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <form className="socratic-start-form" onSubmit={onStart}>
+        <div className="socratic-form-head">
+          <Target size={22} />
+          <div>
+            <strong>Thinking target</strong>
+            <span>Start with a concept, case, argument, decision, or text.</span>
+          </div>
+        </div>
+
+        <div className="socratic-segment-grid" aria-label="Target type">
+          {targetKinds.map((kind) => (
+            <button
+              key={kind.id}
+              type="button"
+              className={kind.id === targetKind ? "is-active" : ""}
+              onClick={() => {
+                onTargetKind(kind.id);
+                if (!target.trim()) onTarget(kind.example);
+              }}
+            >
+              {kind.label}
+            </button>
+          ))}
+        </div>
+
+        <label className="socratic-target-input">
+          <span>{activeKind?.label ?? "Target"}</span>
+          <textarea
+            value={target}
+            onChange={(event) => onTarget(event.target.value)}
+            placeholder={activeKind?.example}
+            rows={4}
+            disabled={sending}
+          />
+        </label>
+
+        <div className="socratic-mode-row" aria-label="Socratic mode">
+          {socraticModes.map((option) => (
+            <button
+              key={option.id}
+              type="button"
+              title={option.description}
+              className={option.id === mode ? "is-active" : ""}
+              onClick={() => onMode(option.id)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+
+        <button type="submit" className="socratic-start-button" disabled={!target.trim() || sending}>
+          <Sparkles size={17} />
+          Begin with the first question
+        </button>
+      </form>
+
+      {starters.length ? (
+        <div className="socratic-starter-row">
+          {starters.map((starter) => (
+            <button key={starter} type="button" onClick={() => onTarget(starter)}>
+              <Compass size={15} />
+              <span>{starter}</span>
+            </button>
+          ))}
+        </div>
+      ) : null}
+      <TopicResourceLinks topic={topic} />
+    </section>
+  );
+}
+
+function SocraticSessionView({
+  session,
+  progress,
+  hintLevel,
+  misconception,
+  activeQuestion,
+  latestFeedback,
+  displayMessages,
+  userName,
+  input,
+  sending,
+  awaitingResponse,
+  inputRef,
+  thinkingMap,
+  learnerAnswerCount,
+  onInput,
+  onKeyDown,
+  onReset,
+  onSubmit,
+  onStop,
+  onCoachControl,
+}: {
+  session: { targetKind: TargetKind; mode: SocraticMode; target: string };
+  progress: Array<{ label: string; active: boolean }>;
+  hintLevel: number;
+  misconception: string;
+  activeQuestion: string;
+  latestFeedback: string;
+  displayMessages: Message[];
+  userName: string;
+  input: string;
+  sending: boolean;
+  awaitingResponse: boolean;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  thinkingMap: ThinkingMap;
+  learnerAnswerCount: number;
+  onInput: (value: string) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onReset: () => void;
+  onSubmit: (event?: FormEvent) => void;
+  onStop: () => void;
+  onCoachControl: (kind: "hint" | "rephrase" | "example" | "challenge" | "synthesis" | "reveal") => void;
+}) {
+  return (
+    <section className="socratic-chamber">
+      <SocraticSessionRail session={session} progress={progress} hintLevel={hintLevel} onReset={onReset} />
+      <section className="socratic-focus-column">
+        <SocraticQuestionCard question={activeQuestion} feedback={latestFeedback} misconception={misconception} />
+        <SocraticCoachControls hintLevel={hintLevel} sending={sending} onCoachControl={onCoachControl} />
+        <SocraticAnswerBox
+          input={input}
+          sending={sending}
+          inputRef={inputRef}
+          onInput={onInput}
+          onKeyDown={onKeyDown}
+          onSubmit={onSubmit}
+          onStop={onStop}
+        />
+        <SocraticLog messages={displayMessages} awaitingResponse={awaitingResponse} userName={userName} />
+      </section>
+      <ThinkingMapPanel map={thinkingMap} learnerAnswerCount={learnerAnswerCount} />
+    </section>
+  );
+}
+
+function SocraticSessionRail({
+  session,
+  progress,
+  hintLevel,
+  onReset,
+}: {
+  session: { targetKind: TargetKind; mode: SocraticMode; target: string };
+  progress: Array<{ label: string; active: boolean }>;
+  hintLevel: number;
+  onReset: () => void;
+}) {
+  return (
+    <aside className="socratic-session-rail">
+      <section className="socratic-target-panel">
+        <span>{targetKinds.find((kind) => kind.id === session.targetKind)?.label ?? "Target"}</span>
+        <strong>{session.target}</strong>
+        <em>{socraticModes.find((option) => option.id === session.mode)?.label ?? "Guided"} mode</em>
+      </section>
+      <section className="socratic-depth-panel">
+        <div className="socratic-panel-title">
+          <ListChecks size={16} />
+          <strong>Reasoning depth</strong>
+        </div>
+        <div className="socratic-depth-list">
+          {progress.map((stage) => (
+            <span key={stage.label} className={stage.active ? "is-active" : ""}>
+              {stage.label}
+            </span>
+          ))}
+        </div>
+      </section>
+      <section className="socratic-hint-panel">
+        <div className="socratic-panel-title">
+          <Lightbulb size={16} />
+          <strong>Hint ladder</strong>
+        </div>
+        <div className="socratic-hint-list">
+          {hintSteps.map((step, index) => (
+            <article key={step.label} className={index < hintLevel ? "is-open" : ""}>
+              <span>{index + 1}</span>
+              <div>
+                <strong>{step.label}</strong>
+                <em>{step.body}</em>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+      <button type="button" onClick={onReset} className="socratic-new-session">
+        <RefreshCw size={16} />
+        New target
+      </button>
+    </aside>
+  );
+}
+
+function SocraticQuestionCard({
+  question,
+  feedback,
+  misconception,
+}: {
+  question: string;
+  feedback: string;
+  misconception: string;
+}) {
+  return (
+    <article className="socratic-question-card">
+      <div className="socratic-question-head">
+        <div>
+          <span>Question focus</span>
+          <strong>Answer this question before moving on.</strong>
+        </div>
+        {misconception ? <em>{misconception}</em> : null}
+      </div>
+      <p>{question}</p>
+      {feedback ? <small>{feedback}</small> : null}
+    </article>
+  );
+}
+
+function SocraticCoachControls({
+  hintLevel,
+  sending,
+  onCoachControl,
+}: {
+  hintLevel: number;
+  sending: boolean;
+  onCoachControl: (kind: "hint" | "rephrase" | "example" | "challenge" | "synthesis" | "reveal") => void;
+}) {
+  return (
+    <div className="socratic-coach-controls" aria-label="Coach controls">
+      <CoachButton
+        icon={Lightbulb}
+        label={hintLevel ? `Hint ${Math.min(hintLevel + 1, 4)}` : "Hint"}
+        title="Ask for the next hint level"
+        onClick={() => onCoachControl("hint")}
+        disabled={sending}
+      />
+      <CoachButton
+        icon={CircleHelp}
+        label="Rephrase"
+        title="Ask for the same question in simpler words"
+        onClick={() => onCoachControl("rephrase")}
+        disabled={sending}
+      />
+      <CoachButton
+        icon={BookOpenCheck}
+        label="Example"
+        title="Ask for a parallel example"
+        onClick={() => onCoachControl("example")}
+        disabled={sending}
+      />
+      <CoachButton
+        icon={Zap}
+        label="Challenge"
+        title="Pressure-test the last answer"
+        onClick={() => onCoachControl("challenge")}
+        disabled={sending}
+      />
+      <CoachButton
+        icon={ListChecks}
+        label="Synthesize"
+        title="Move toward final synthesis"
+        onClick={() => onCoachControl("synthesis")}
+        disabled={sending}
+      />
+      <CoachButton
+        icon={Sparkles}
+        label="Reveal"
+        title="Ask for a direct explanation"
+        onClick={() => onCoachControl("reveal")}
+        disabled={sending}
+      />
+    </div>
+  );
+}
+
+function SocraticAnswerBox({
+  input,
+  sending,
+  inputRef,
+  onInput,
+  onKeyDown,
+  onSubmit,
+  onStop,
+}: {
+  input: string;
+  sending: boolean;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  onInput: (value: string) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onSubmit: (event?: FormEvent) => void;
+  onStop: () => void;
+}) {
+  return (
+    <form onSubmit={onSubmit} className="socratic-answer-box">
+      <textarea
+        aria-label="Socratic answer"
+        ref={inputRef}
+        value={input}
+        onChange={(event) => onInput(event.target.value)}
+        onKeyDown={onKeyDown}
+        placeholder="Write your answer, even if it is rough."
+        disabled={sending}
+        rows={3}
+      />
+      <button
+        type={sending ? "button" : "submit"}
+        onClick={sending ? onStop : undefined}
+        disabled={!sending && !input.trim()}
+        aria-label={sending ? "Stop response" : "Send answer"}
+      >
+        {sending ? <Square size={16} fill="currentColor" /> : <Send size={18} />}
+        <span>{sending ? "Stop" : "Send"}</span>
+      </button>
+    </form>
+  );
+}
+
+function SocraticLog({
+  messages,
+  awaitingResponse,
+  userName,
+}: {
+  messages: Message[];
+  awaitingResponse: boolean;
+  userName: string;
+}) {
+  return (
+    <section className="socratic-log">
+      <div className="socratic-panel-title">
+        <GitBranch size={16} />
+        <strong>Reasoning log</strong>
+      </div>
+      <div className="socratic-log-stack">
+        {messages.length ? (
+          messages.map((message) => <SocraticTurn key={message.id} message={message} userName={userName} />)
+        ) : awaitingResponse ? (
+          <ThinkingPulse />
+        ) : null}
+        {awaitingResponse && messages.length ? <ThinkingPulse /> : null}
+      </div>
+    </section>
   );
 }
 
@@ -695,10 +883,13 @@ function buildThinkingMap(messages: Message[]): ThinkingMap {
 
 function extractLabelEntries(content: string, labels: string[]) {
   const lines = content.split(/\r?\n/);
+  const patterns = labels.map(
+    (label) => new RegExp(`^\\s*(?:[-*]\\s*)?\\*{0,2}${escapeRegExp(label)}\\*{0,2}:\\s*(.+)$`, "i"),
+  );
   const entries: string[] = [];
   for (const line of lines) {
-    for (const label of labels) {
-      const match = line.match(new RegExp(`^\\s*(?:[-*]\\s*)?\\*{0,2}${escapeRegExp(label)}\\*{0,2}:\\s*(.+)$`, "i"));
+    for (const pattern of patterns) {
+      const match = line.match(pattern);
       if (match?.[1]) entries.push(cleanInline(match[1]));
     }
   }
@@ -714,8 +905,11 @@ function extractQuestion(content: string) {
 }
 
 function extractField(content: string, labels: string[]) {
-  for (const label of labels) {
-    const match = content.match(new RegExp(`^\\s*(?:[-*]\\s*)?\\*{0,2}${escapeRegExp(label)}\\*{0,2}:\\s*(.+)$`, "im"));
+  const patterns = labels.map(
+    (label) => new RegExp(`^\\s*(?:[-*]\\s*)?\\*{0,2}${escapeRegExp(label)}\\*{0,2}:\\s*(.+)$`, "im"),
+  );
+  for (const pattern of patterns) {
+    const match = content.match(pattern);
     if (match?.[1]) return cleanInline(match[1]);
   }
   return "";

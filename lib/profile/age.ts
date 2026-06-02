@@ -16,7 +16,7 @@ export function calculateAge(dateOfBirth: string | null | undefined, now = new D
   return age >= 0 ? age : null;
 }
 
-export function normalizeDateOfBirth(input: unknown) {
+function normalizeDateOfBirth(input: unknown) {
   if (typeof input !== "string") return null;
   const trimmed = input.trim();
   return parseDateOnly(trimmed) ? trimmed : null;

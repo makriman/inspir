@@ -1,8 +1,10 @@
-export function getAdminEmails() {
+function getAdminEmails() {
   return (process.env.ADMIN_EMAILS ?? "")
     .split(",")
-    .map((email) => email.trim().toLowerCase())
-    .filter(Boolean);
+    .flatMap((email) => {
+      const normalized = email.trim().toLowerCase();
+      return normalized ? [normalized] : [];
+    });
 }
 
 export function isAdminEmail(email: string | null | undefined) {

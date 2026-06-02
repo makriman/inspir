@@ -22,7 +22,3 @@ export function InspirLogo({
     />
   );
 }
-
-export function InspirWordmark({ className = "" }: { className?: string }) {
-  return <InspirLogo className={className} />;
-}

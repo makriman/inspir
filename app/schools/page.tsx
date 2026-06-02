@@ -15,11 +15,11 @@ import {
   schoolUseCases,
 } from "@/lib/content/authority";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -121,13 +121,7 @@ export default function SchoolsPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="For schools" title="Custom AI learning spaces for every school community.">
         inspir works with schools to offer tailored AI chat experiences for students, built around

@@ -155,7 +155,7 @@ export function getTopicCategoryHubs() {
 
   return Array.from(groups.entries()).map(([category, topics]) => {
     const profile = getCategoryProfile(category);
-    const sortedTopics = [...topics].sort((a, b) => a.sortOrder - b.sortOrder);
+    const sortedTopics = topics.toSorted((a, b) => a.sortOrder - b.sortOrder);
 
     return {
       slug: topicCategorySlug(category),

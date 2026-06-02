@@ -14,11 +14,11 @@ import {
   getComparisonPages,
 } from "@/lib/content/comparisons";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -93,13 +93,7 @@ export default function ComparePage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Compare" title="Choose the right learning tool for the moment.">
         Some searches need a course library. Some need a live AI tutor, a hint, a Socratic

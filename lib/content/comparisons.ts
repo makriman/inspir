@@ -1,7 +1,7 @@
-import { getBlogPosts, type BlogPost } from "@/lib/content/blog";
+import { getBlogPosts } from "@/lib/content/blog";
 import { getLearningMapWorkflows } from "@/lib/content/learning-map";
 import { getTopicSeo } from "@/lib/content/topic-seo";
-import { topicSeeds, type TopicSeed } from "@/lib/content/topics";
+import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 
 type ComparisonRow = {
@@ -63,7 +63,7 @@ export const comparisonHubSearchIntents = [
   "Socratic AI tutor alternative",
 ] as const;
 
-export const comparisonPages: ComparisonPage[] = [
+const comparisonPages: ComparisonPage[] = [
   {
     slug: "khan-academy-alternative",
     competitorName: "Khan Academy",
@@ -212,13 +212,7 @@ export const comparisonPages: ComparisonPage[] = [
   },
 ];
 
-function isTopicSeed(value: TopicSeed | undefined): value is TopicSeed {
-  return Boolean(value);
-}
-
-function isBlogPost(value: BlogPost | undefined): value is BlogPost {
-  return Boolean(value);
-}
+const topicSeedBySlug = new Map(topicSeeds.map((topic) => [topic.slug, topic]));
 
 export function comparisonPath(slug: string) {
   return `/compare/${slug}`;
@@ -235,12 +229,13 @@ export function getComparisonPage(slug: string) {
 export function getComparisonPageResources(page: ComparisonPage) {
   const posts = getBlogPosts();
   const workflows = getLearningMapWorkflows();
+  const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
+  const workflowsBySlug = new Map(workflows.map((workflow) => [workflow.slug, workflow]));
 
   return {
-    modes: page.relatedModeSlugs
-      .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
-      .filter(isTopicSeed)
-      .map((topic) => {
+    modes: page.relatedModeSlugs.flatMap((slug) => {
+      const topic = topicSeedBySlug.get(slug);
+      if (!topic) return [];
         const seo = getTopicSeo(topic);
         return {
           slug: topic.slug,
@@ -250,24 +245,26 @@ export function getComparisonPageResources(page: ComparisonPage) {
           category: topic.metadata.category,
           starters: topic.metadata.starters.slice(0, 2),
         };
-      }),
-    guides: page.relatedGuideSlugs
-      .map((slug) => posts.find((post) => post.slug === slug))
-      .filter(isBlogPost)
-      .map((post) => ({
+    }),
+    guides: page.relatedGuideSlugs.flatMap((slug) => {
+      const post = postsBySlug.get(slug);
+      if (!post) return [];
+      return {
         slug: post.slug,
         title: post.title,
         href: `/blog/${post.slug}`,
         description: post.description,
-      })),
-    workflows: page.relatedWorkflowSlugs
-      .map((slug) => workflows.find((workflow) => workflow.slug === slug))
-      .filter((workflow): workflow is NonNullable<typeof workflow> => Boolean(workflow))
-      .map((workflow) => ({
+      };
+    }),
+    workflows: page.relatedWorkflowSlugs.flatMap((slug) => {
+      const workflow = workflowsBySlug.get(slug);
+      if (!workflow) return [];
+      return {
         slug: workflow.slug,
         title: workflow.title,
         href: workflow.href,
         description: workflow.description,
-      })),
+      };
+    }),
   };
 }

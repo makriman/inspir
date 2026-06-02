@@ -1,9 +1,9 @@
-import { getBlogPosts, type BlogPost } from "@/lib/content/blog";
-import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
+import { getBlogPosts } from "@/lib/content/blog";
+import { homepageLearningPaths, learningPathHref, type HomepageLearningPath } from "@/lib/content/landing";
 import { getLearningMapWorkflows } from "@/lib/content/learning-map";
 import { getPromptEntries } from "@/lib/content/prompt-library";
 import { getTopicSeo } from "@/lib/content/topic-seo";
-import { topicSeeds, type TopicSeed } from "@/lib/content/topics";
+import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 
 type SubjectJob = {
@@ -26,7 +26,7 @@ export type SubjectPage = {
   modeSlugs: string[];
   guideSlugs: string[];
   workflowSlugs: string[];
-  pathSlugs: string[];
+  pathSlugs: Array<HomepageLearningPath["slug"]>;
   reviewLoop: string[];
   faqs: Array<{ question: string; answer: string }>;
 };
@@ -59,7 +59,7 @@ export const subjectHubSearchIntents = [
   "free AI tutor by subject",
 ] as const;
 
-export const subjectPages: SubjectPage[] = [
+const subjectPages: SubjectPage[] = [
   {
     slug: "math",
     subjectArea: "Mathematics",
@@ -536,19 +536,8 @@ export const subjectPages: SubjectPage[] = [
   },
 ];
 
-type PromptEntry = ReturnType<typeof getPromptEntries>[number];
-
-function isTopicSeed(value: TopicSeed | undefined): value is TopicSeed {
-  return Boolean(value);
-}
-
-function isBlogPost(value: BlogPost | undefined): value is BlogPost {
-  return Boolean(value);
-}
-
-function isPromptEntry(value: PromptEntry | undefined): value is PromptEntry {
-  return Boolean(value);
-}
+const topicSeedBySlug = new Map(topicSeeds.map((topic) => [topic.slug, topic]));
+const learningPathBySlug = new Map(homepageLearningPaths.map((path) => [path.slug, path]));
 
 export function subjectPath(slug: string) {
   return `/subjects/${slug}`;
@@ -566,12 +555,14 @@ export function getSubjectPageResources(page: SubjectPage) {
   const posts = getBlogPosts();
   const workflows = getLearningMapWorkflows();
   const prompts = getPromptEntries();
+  const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
+  const workflowsBySlug = new Map(workflows.map((workflow) => [workflow.slug, workflow]));
+  const promptsByTopicSlug = new Map(prompts.map((entry) => [entry.topicSlug, entry]));
 
   return {
-    modes: page.modeSlugs
-      .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
-      .filter(isTopicSeed)
-      .map((topic) => {
+    modes: page.modeSlugs.flatMap((slug) => {
+      const topic = topicSeedBySlug.get(slug);
+      if (!topic) return [];
         const seo = getTopicSeo(topic);
         return {
           slug: topic.slug,
@@ -581,44 +572,48 @@ export function getSubjectPageResources(page: SubjectPage) {
           category: topic.metadata.category,
           starters: topic.metadata.starters.slice(0, 2),
         };
-      }),
-    prompts: page.modeSlugs
-      .map((slug) => prompts.find((entry) => entry.topicSlug === slug))
-      .filter(isPromptEntry)
-      .map((entry) => ({
+    }),
+    prompts: page.modeSlugs.flatMap((slug) => {
+      const entry = promptsByTopicSlug.get(slug);
+      if (!entry) return [];
+      return {
         id: entry.id,
         prompt: entry.prompt,
         topicName: entry.topicName,
         topicSlug: entry.topicSlug,
         href: entry.href,
         description: entry.description,
-      })),
-    guides: page.guideSlugs
-      .map((slug) => posts.find((post) => post.slug === slug))
-      .filter(isBlogPost)
-      .map((post) => ({
+      };
+    }),
+    guides: page.guideSlugs.flatMap((slug) => {
+      const post = postsBySlug.get(slug);
+      if (!post) return [];
+      return {
         slug: post.slug,
         title: post.title,
         href: `/blog/${post.slug}`,
         description: post.description,
-      })),
-    workflows: page.workflowSlugs
-      .map((slug) => workflows.find((workflow) => workflow.slug === slug))
-      .filter((workflow): workflow is NonNullable<typeof workflow> => Boolean(workflow))
-      .map((workflow) => ({
+      };
+    }),
+    workflows: page.workflowSlugs.flatMap((slug) => {
+      const workflow = workflowsBySlug.get(slug);
+      if (!workflow) return [];
+      return {
         slug: workflow.slug,
         title: workflow.title,
         href: workflow.href,
         description: workflow.description,
-      })),
-    paths: page.pathSlugs
-      .map((slug) => homepageLearningPaths.find((path) => path.slug === slug))
-      .filter((path): path is NonNullable<typeof path> => Boolean(path))
-      .map((path) => ({
+      };
+    }),
+    paths: page.pathSlugs.flatMap((slug) => {
+      const path = learningPathBySlug.get(slug);
+      if (!path) return [];
+      return {
         slug: path.slug,
         title: path.title,
         href: learningPathHref(path.slug),
         description: path.description,
-      })),
+      };
+    }),
   };
 }

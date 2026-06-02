@@ -22,11 +22,11 @@ import {
   getAudiencePages,
 } from "@/lib/content/audiences";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -155,13 +155,7 @@ export default async function AudienceDetailPage({ params }: AudienceDetailPageP
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow={page.eyebrow} title={page.title}>
         {page.description}

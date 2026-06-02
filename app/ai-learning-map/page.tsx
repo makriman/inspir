@@ -20,11 +20,11 @@ import {
   learningMapSearchIntents,
 } from "@/lib/content/learning-map";
 import { absoluteUrl, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -162,13 +162,7 @@ export default function AiLearningMapPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="AI learning map" title="One map for modes, prompts, paths, and guides.">
         Pick the learning job first, then jump into the right public guest mode, starter

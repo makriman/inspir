@@ -1,8 +1,8 @@
-import { getBlogPosts, type BlogPost } from "@/lib/content/blog";
-import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
+import { getBlogPosts } from "@/lib/content/blog";
+import { homepageLearningPaths, learningPathHref, type HomepageLearningPath } from "@/lib/content/landing";
 import { getLearningMapWorkflows } from "@/lib/content/learning-map";
 import { getTopicSeo } from "@/lib/content/topic-seo";
-import { topicSeeds, type TopicSeed } from "@/lib/content/topics";
+import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 
 type AudienceJob = {
@@ -25,7 +25,7 @@ export type AudiencePage = {
   modeSlugs: string[];
   guideSlugs: string[];
   workflowSlugs: string[];
-  pathSlugs: string[];
+  pathSlugs: Array<HomepageLearningPath["slug"]>;
   safeguards: string[];
   faqs: Array<{ question: string; answer: string }>;
 };
@@ -57,7 +57,7 @@ export const audienceHubSearchIntents = [
   "AI learning companion for adults",
 ] as const;
 
-export const audiencePages: AudiencePage[] = [
+const audiencePages: AudiencePage[] = [
   {
     slug: "students",
     role: "student",
@@ -400,13 +400,8 @@ export const audiencePages: AudiencePage[] = [
   },
 ];
 
-function isTopicSeed(value: TopicSeed | undefined): value is TopicSeed {
-  return Boolean(value);
-}
-
-function isBlogPost(value: BlogPost | undefined): value is BlogPost {
-  return Boolean(value);
-}
+const topicSeedBySlug = new Map(topicSeeds.map((topic) => [topic.slug, topic]));
+const learningPathBySlug = new Map(homepageLearningPaths.map((path) => [path.slug, path]));
 
 export function audiencePath(slug: string) {
   return `/for/${slug}`;
@@ -423,12 +418,13 @@ export function getAudiencePage(slug: string) {
 export function getAudiencePageResources(page: AudiencePage) {
   const posts = getBlogPosts();
   const workflows = getLearningMapWorkflows();
+  const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
+  const workflowsBySlug = new Map(workflows.map((workflow) => [workflow.slug, workflow]));
 
   return {
-    modes: page.modeSlugs
-      .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
-      .filter(isTopicSeed)
-      .map((topic) => {
+    modes: page.modeSlugs.flatMap((slug) => {
+      const topic = topicSeedBySlug.get(slug);
+      if (!topic) return [];
         const seo = getTopicSeo(topic);
         return {
           slug: topic.slug,
@@ -438,33 +434,36 @@ export function getAudiencePageResources(page: AudiencePage) {
           category: topic.metadata.category,
           starters: topic.metadata.starters.slice(0, 2),
         };
-      }),
-    guides: page.guideSlugs
-      .map((slug) => posts.find((post) => post.slug === slug))
-      .filter(isBlogPost)
-      .map((post) => ({
+    }),
+    guides: page.guideSlugs.flatMap((slug) => {
+      const post = postsBySlug.get(slug);
+      if (!post) return [];
+      return {
         slug: post.slug,
         title: post.title,
         href: `/blog/${post.slug}`,
         description: post.description,
-      })),
-    workflows: page.workflowSlugs
-      .map((slug) => workflows.find((workflow) => workflow.slug === slug))
-      .filter((workflow): workflow is NonNullable<typeof workflow> => Boolean(workflow))
-      .map((workflow) => ({
+      };
+    }),
+    workflows: page.workflowSlugs.flatMap((slug) => {
+      const workflow = workflowsBySlug.get(slug);
+      if (!workflow) return [];
+      return {
         slug: workflow.slug,
         title: workflow.title,
         href: workflow.href,
         description: workflow.description,
-      })),
-    paths: page.pathSlugs
-      .map((slug) => homepageLearningPaths.find((path) => path.slug === slug))
-      .filter((path): path is NonNullable<typeof path> => Boolean(path))
-      .map((path) => ({
+      };
+    }),
+    paths: page.pathSlugs.flatMap((slug) => {
+      const path = learningPathBySlug.get(slug);
+      if (!path) return [];
+      return {
         slug: path.slug,
         title: path.title,
         href: learningPathHref(path.slug),
         description: path.description,
-      })),
+      };
+    }),
   };
 }

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   absoluteUrl,
   metadataAlternates,
@@ -13,7 +14,6 @@ import {
 } from "@/lib/seo/config";
 import {
   organizationJsonLd,
-  serializeJsonLd,
   siteNavigationJsonLd,
   webApplicationJsonLd,
   websiteJsonLd,
@@ -29,6 +29,8 @@ const rootSocialImage = socialImage({
   eyebrow: "inspir",
   description: siteDescription,
 });
+
+const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -116,18 +118,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
-
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full bg-black text-white">
-        {jsonLd.map((entry, index) => (
-          <script
-            key={index}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-          />
-        ))}
+      <body className="min-h-full bg-[#171614] text-white">
+        <JsonLdScripts items={rootJsonLd} />
         {children}
       </body>
     </html>

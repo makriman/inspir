@@ -1,7 +1,6 @@
 import { openai } from "@ai-sdk/openai";
 import { generateObject } from "ai";
 import { z } from "zod";
-import type { ActivityRun } from "@/lib/db/schema";
 import { resolveModelName } from "@/lib/ai/model-router";
 
 const flashcardRatingSchema = z.enum(["known", "again"]);
@@ -19,7 +18,7 @@ const flashcardSchema = z.object({
   reviewedAt: z.string().optional(),
 });
 
-export const flashcardStateSchema = z.object({
+const flashcardStateSchema = z.object({
   topic: z.string().min(1),
   source: z.string().optional(),
   currentIndex: z.number().int().min(0).max(12),
@@ -179,15 +178,6 @@ export function sanitizeFlashcardState(state: FlashcardState): PublicFlashcardSt
 
 export function parseFlashcardState(value: unknown) {
   return flashcardStateSchema.safeParse(value);
-}
-
-export function sanitizeFlashcardActivityRun(run: ActivityRun | undefined | null) {
-  if (!run) return null;
-  const parsed = parseFlashcardState(run.state);
-  return {
-    ...run,
-    state: parsed.success ? sanitizeFlashcardState(parsed.data) : run.state,
-  };
 }
 
 function fallbackFlashcards(topic: string, source?: string): FlashcardState {

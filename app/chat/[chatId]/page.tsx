@@ -28,7 +28,8 @@ import { getCachedMainAppTranslationBundle } from "@/lib/i18n/main-app-translati
 import { getEnglishMainAppTranslationBundle } from "@/lib/i18n/main-app-source";
 import { calculateAge } from "@/lib/profile/age";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
-import { faqPageJsonLd, itemListJsonLd, serializeJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
+import { faqPageJsonLd, itemListJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -352,13 +353,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
 
     return (
       <>
-        {topicStructuredData.map((entry, index) => (
-          <script
-            key={index}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-          />
-        ))}
+        <JsonLdScripts items={topicStructuredData} />
         <ChatClient
           authMode={savedChatsAvailable ? "authenticated" : "guest"}
           user={profileUser}
@@ -400,7 +395,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
         preferredLanguage: user?.preferredLanguage ?? "English",
         dateOfBirth: user?.dateOfBirth ?? null,
         age: calculateAge(user?.dateOfBirth),
-        createdAt: user?.createdAt ?? new Date(),
+        createdAt: user?.createdAt ?? "",
         profileImageHash: user?.profileImageHash ?? null,
       }}
       topics={topics}

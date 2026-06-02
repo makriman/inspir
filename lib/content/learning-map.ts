@@ -1,8 +1,8 @@
-import { getBlogPosts, type BlogPost } from "@/lib/content/blog";
-import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
+import { getBlogPosts } from "@/lib/content/blog";
+import { homepageLearningPaths, learningPathHref, type HomepageLearningPath } from "@/lib/content/landing";
 import { getPromptEntries } from "@/lib/content/prompt-library";
 import { getTopicSeo } from "@/lib/content/topic-seo";
-import { topicSeeds, type TopicSeed } from "@/lib/content/topics";
+import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 
 type LearningMapWorkflowSeed = {
@@ -13,7 +13,7 @@ type LearningMapWorkflowSeed = {
   audience: string;
   outcome: string;
   searchIntents: string[];
-  pathSlug?: string;
+  pathSlug?: HomepageLearningPath["slug"];
   modeSlugs: string[];
   guideSlugs: string[];
   reviewLoop: string[];
@@ -206,26 +206,25 @@ export const learningMapFaqs = [
   },
 ] as const;
 
-function isTopicSeed(value: TopicSeed | undefined): value is TopicSeed {
-  return Boolean(value);
-}
-
-function isBlogPost(value: BlogPost | undefined): value is BlogPost {
-  return Boolean(value);
-}
+const topicSeedBySlug = new Map(topicSeeds.map((topic) => [topic.slug, topic]));
+const learningPathBySlug = new Map(homepageLearningPaths.map((path) => [path.slug, path]));
 
 export function getLearningMapWorkflows() {
   const posts = getBlogPosts();
   const prompts = getPromptEntries();
+  const postsBySlug = new Map(posts.map((post) => [post.slug, post]));
+  const promptsByTopicSlug = prompts.reduce<Map<string, typeof prompts>>((map, entry) => {
+    const existing = map.get(entry.topicSlug) ?? [];
+    existing.push(entry);
+    map.set(entry.topicSlug, existing);
+    return map;
+  }, new Map());
 
   return workflowSeeds.map((workflow) => {
-    const path = workflow.pathSlug
-      ? homepageLearningPaths.find((candidate) => candidate.slug === workflow.pathSlug)
-      : undefined;
-    const modes = workflow.modeSlugs
-      .map((slug) => topicSeeds.find((topic) => topic.slug === slug))
-      .filter(isTopicSeed)
-      .map((topic) => {
+    const path = workflow.pathSlug ? learningPathBySlug.get(workflow.pathSlug) : undefined;
+    const modes = workflow.modeSlugs.flatMap((slug) => {
+      const topic = topicSeedBySlug.get(slug);
+      if (!topic) return [];
         const seo = getTopicSeo(topic);
 
         return {
@@ -237,7 +236,7 @@ export function getLearningMapWorkflows() {
           description: seo.description,
           starterPrompts: topic.metadata.starters.slice(0, 2),
         };
-      });
+    });
 
     return {
       ...workflow,
@@ -251,18 +250,17 @@ export function getLearningMapWorkflows() {
           }
         : null,
       modes,
-      prompts: workflow.modeSlugs
-        .map((slug) => prompts.find((entry) => entry.topicSlug === slug))
-        .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry)),
-      guides: workflow.guideSlugs
-        .map((slug) => posts.find((post) => post.slug === slug))
-        .filter(isBlogPost)
-        .map((post) => ({
+      prompts: workflow.modeSlugs.flatMap((slug) => promptsByTopicSlug.get(slug) ?? []),
+      guides: workflow.guideSlugs.flatMap((slug) => {
+        const post = postsBySlug.get(slug);
+        if (!post) return [];
+        return {
           slug: post.slug,
           title: post.title,
           href: `/blog/${post.slug}`,
           description: post.description,
-        })),
+        };
+      }),
     };
   });
 }

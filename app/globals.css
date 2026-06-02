@@ -177,6 +177,22 @@ a {
   object-fit: contain;
 }
 
+.bubble-sidebar-store-button {
+  position: absolute;
+  top: 10px;
+  right: 9.5px;
+  display: grid;
+  width: 35px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgb(107 107 107);
+  border-radius: 999px;
+  background: rgb(88 205 110);
+  color: rgb(5 16 8);
+  padding: 0;
+  cursor: pointer;
+}
+
 .bubble-search-row {
   position: relative;
   height: 54px;
@@ -253,6 +269,38 @@ a {
   color: #fff;
   text-align: left;
   cursor: pointer;
+}
+
+.bubble-topic-row-shell {
+  position: relative;
+}
+
+.bubble-topic-row.has-sidebar-action .bubble-topic-title,
+.bubble-topic-row.has-sidebar-action .bubble-topic-subtitle {
+  right: 56px;
+}
+
+.bubble-topic-row-action {
+  position: absolute;
+  top: 18px;
+  right: 12px;
+  z-index: 2;
+  display: grid;
+  width: 31px;
+  height: 31px;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 999px;
+  background: rgb(88 205 110);
+  color: rgb(5 16 8);
+  padding: 0;
+  cursor: pointer;
+}
+
+.bubble-topic-row-action.is-added {
+  background: rgb(88 205 110 / 0.14);
+  color: rgb(125 235 143);
+  cursor: default;
 }
 
 .bubble-topic-row.has-gap {
@@ -904,6 +952,279 @@ a {
 .bubble-mini-panel .bubble-starter-grid {
   width: 100%;
   margin: 14px 0 0;
+}
+
+.bubble-learning-store {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 8% 0%, rgb(88 205 110 / 0.16), transparent 24rem),
+    linear-gradient(180deg, rgb(8 9 10), rgb(0 0 0));
+  padding: clamp(18px, 4vw, 42px);
+}
+
+.bubble-store-head {
+  display: grid;
+  width: min(1180px, 100%);
+  margin: 0 auto 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+  align-items: end;
+  gap: 18px;
+}
+
+.bubble-store-head span,
+.bubble-focus-tool-copy span {
+  color: rgb(125 235 143);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.bubble-store-head h2,
+.bubble-focus-tool-copy h2 {
+  margin: 10px 0 8px;
+  color: #fff;
+  font-size: clamp(30px, 5vw, 54px);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+.bubble-store-head p,
+.bubble-focus-tool-copy p {
+  max-width: 640px;
+  margin: 0;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.bubble-store-search {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.08);
+  color: rgb(255 255 255 / 0.68);
+  padding: 0 13px;
+}
+
+.bubble-store-search input {
+  width: 100%;
+  height: 46px;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.bubble-store-categories {
+  display: flex;
+  width: min(1180px, 100%);
+  margin: 0 auto 22px;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.bubble-store-categories button {
+  flex: 0 0 auto;
+  height: 36px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.06);
+  color: rgb(255 255 255 / 0.74);
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.bubble-store-categories button.is-active {
+  border-color: rgb(88 205 110 / 0.62);
+  background: rgb(88 205 110 / 0.16);
+  color: rgb(125 235 143);
+}
+
+.bubble-store-groups {
+  display: grid;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  gap: 22px;
+}
+
+.bubble-store-group h3 {
+  margin: 0 0 10px;
+  color: rgb(255 255 255 / 0.56);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bubble-store-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.bubble-store-tile {
+  display: grid;
+  min-height: 184px;
+  grid-template-rows: 1fr auto;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 8px;
+  background: rgb(18 18 20 / 0.92);
+  overflow: hidden;
+}
+
+.bubble-store-tile.is-active {
+  border-color: rgb(88 205 110 / 0.68);
+}
+
+.bubble-store-tile.is-added {
+  background: rgb(23 28 24 / 0.94);
+}
+
+.bubble-store-tile-main {
+  display: grid;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bubble-store-tile-top {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.bubble-store-tile-top > span,
+.bubble-store-tile-top small {
+  color: rgb(125 235 143);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bubble-store-tile-top small {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.bubble-store-tile strong {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.bubble-store-tile p {
+  margin: 0;
+  color: rgb(255 255 255 / 0.68);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.bubble-store-tile-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+  padding: 10px 12px;
+}
+
+.bubble-store-open-button,
+.bubble-store-add-button,
+.bubble-store-remove-button {
+  height: 34px;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.bubble-store-open-button {
+  background: rgb(255 255 255 / 0.08);
+  color: #fff;
+  padding: 0 14px;
+}
+
+.bubble-store-add-button,
+.bubble-store-remove-button {
+  display: grid;
+  width: 34px;
+  place-items: center;
+  padding: 0;
+}
+
+.bubble-store-add-button {
+  background: rgb(88 205 110);
+  color: rgb(5 16 8);
+}
+
+.bubble-store-remove-button {
+  background: rgb(255 78 78);
+  color: #fff;
+}
+
+.bubble-store-detail {
+  border-top: 1px solid rgb(255 255 255 / 0.08);
+  padding: 0 14px 14px;
+}
+
+.bubble-store-starters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.bubble-store-starters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.06);
+  color: #fff;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 760;
+  cursor: pointer;
+}
+
+.bubble-store-empty {
+  display: grid;
+  width: min(520px, 100%);
+  margin: 70px auto;
+  justify-items: center;
+  gap: 8px;
+  color: rgb(255 255 255 / 0.68);
+  text-align: center;
+}
+
+.bubble-store-empty strong {
+  color: #fff;
+  font-size: 18px;
 }
 
 .bubble-thinking {
@@ -1609,6 +1930,20 @@ a {
     left: 10px;
     right: 184px;
   }
+
+  .bubble-store-head,
+  .bubble-focus-tool {
+    grid-template-columns: 1fr;
+  }
+
+  .bubble-store-grid,
+  .bubble-music-presets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bubble-focus-settings {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -1664,6 +1999,45 @@ a {
 
   .bubble-topbar-actions {
     right: 0;
+  }
+
+  .bubble-learning-store,
+  .bubble-tool-workspace {
+    padding: 16px 14px 96px;
+  }
+
+  .bubble-store-head h2,
+  .bubble-focus-tool-copy h2 {
+    font-size: 32px;
+    line-height: 1.02;
+  }
+
+  .bubble-store-grid,
+  .bubble-music-presets,
+  .bubble-focus-settings,
+  .bubble-focus-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .bubble-focus-tool-copy,
+  .bubble-timer-card,
+  .bubble-music-card {
+    min-height: 0;
+  }
+
+  .bubble-timer-card > strong {
+    font-size: 64px;
+  }
+
+  .bubble-timer-controls,
+  .bubble-music-controls {
+    flex-direction: column;
+  }
+
+  .bubble-persistent-dock {
+    right: 10px;
+    bottom: 10px;
+    width: min(310px, calc(100vw - 20px));
   }
 
   .bubble-message-scroll {
@@ -2135,6 +2509,322 @@ a {
 .bubble-mini-message-stack {
   width: 100%;
   padding: 16px 0 8px;
+}
+
+.bubble-tool-workspace {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  background:
+    radial-gradient(circle at 8% 0%, rgb(88 205 110 / 0.18), transparent 24rem),
+    radial-gradient(circle at 90% 12%, rgb(95 209 214 / 0.11), transparent 26rem),
+    linear-gradient(180deg, rgb(8 9 10), rgb(0 0 0));
+  padding: clamp(18px, 4vw, 48px);
+}
+
+.bubble-focus-tool {
+  display: grid;
+  width: min(1040px, 100%);
+  margin: 0 auto;
+  grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+  gap: 16px;
+}
+
+.bubble-focus-tool-copy {
+  display: flex;
+  min-height: 320px;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 8px;
+  background: rgb(18 18 20 / 0.92);
+  padding: clamp(22px, 4vw, 38px);
+}
+
+.bubble-timer-card,
+.bubble-music-card,
+.bubble-focus-settings,
+.bubble-focus-stats,
+.bubble-music-presets {
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 8px;
+  background: rgb(18 18 20 / 0.94);
+  box-shadow: 0 24px 70px rgb(0 0 0 / 0.32);
+}
+
+.bubble-timer-card,
+.bubble-music-card {
+  display: grid;
+  align-content: center;
+  min-height: 320px;
+  gap: 18px;
+  padding: clamp(20px, 4vw, 34px);
+}
+
+.bubble-timer-mode,
+.bubble-music-now {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 8px;
+  color: rgb(125 235 143);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.bubble-timer-card > strong {
+  color: #fff;
+  font-size: clamp(70px, 12vw, 116px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0;
+}
+
+.bubble-timer-progress {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.1);
+}
+
+.bubble-timer-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: rgb(88 205 110);
+}
+
+.bubble-timer-controls,
+.bubble-music-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.bubble-timer-controls button,
+.bubble-music-controls button,
+.bubble-focus-settings button {
+  display: inline-flex;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 8px;
+  background: rgb(88 205 110);
+  color: rgb(5 16 8);
+  padding: 0 16px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.bubble-timer-controls button + button {
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+}
+
+.bubble-focus-settings {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(220px, 1fr) repeat(2, minmax(120px, 170px)) minmax(190px, auto);
+  gap: 12px;
+  padding: 16px;
+}
+
+.bubble-focus-settings label {
+  display: grid;
+  gap: 7px;
+}
+
+.bubble-focus-settings span {
+  color: rgb(255 255 255 / 0.66);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.bubble-focus-settings input {
+  width: 100%;
+  height: 42px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.07);
+  color: #fff;
+  padding: 0 12px;
+  outline: none;
+}
+
+.bubble-focus-settings button {
+  align-self: end;
+  width: 100%;
+}
+
+.bubble-focus-stats {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+}
+
+.bubble-focus-stats article {
+  display: grid;
+  gap: 5px;
+  background: rgb(255 255 255 / 0.04);
+  padding: 16px;
+}
+
+.bubble-focus-stats strong {
+  overflow-wrap: anywhere;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.bubble-focus-stats span {
+  color: rgb(255 255 255 / 0.6);
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.bubble-music-now div {
+  display: grid;
+  gap: 4px;
+}
+
+.bubble-music-now span {
+  color: rgb(125 235 143);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.bubble-music-now strong {
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.1;
+}
+
+.bubble-music-card p {
+  margin: 0;
+  color: rgb(255 255 255 / 0.7);
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.bubble-music-controls label {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.06);
+  color: #fff;
+  padding: 0 12px;
+}
+
+.bubble-music-controls input {
+  width: 100%;
+}
+
+.bubble-music-presets {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  padding: 12px;
+}
+
+.bubble-music-presets button {
+  display: grid;
+  gap: 7px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.05);
+  color: #fff;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.bubble-music-presets button.is-active {
+  border-color: rgb(88 205 110 / 0.55);
+  background: rgb(88 205 110 / 0.14);
+}
+
+.bubble-music-presets strong {
+  font-size: 15px;
+  line-height: 1.15;
+}
+
+.bubble-music-presets span {
+  color: rgb(255 255 255 / 0.65);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.bubble-persistent-dock {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+  display: grid;
+  gap: 8px;
+  width: min(310px, calc(100vw - 36px));
+}
+
+.bubble-dock-item {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 8px;
+  background: rgb(18 18 20 / 0.96);
+  box-shadow: 0 18px 55px rgb(0 0 0 / 0.4);
+  padding: 7px;
+}
+
+.bubble-dock-item.is-ringing {
+  border-color: rgb(88 205 110 / 0.7);
+}
+
+.bubble-dock-main,
+.bubble-dock-item > button {
+  display: inline-flex;
+  min-width: 0;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 7px;
+  background: rgb(255 255 255 / 0.08);
+  color: #fff;
+  padding: 0 10px;
+  font-size: 13px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.bubble-dock-main {
+  flex: 1 1 auto;
+}
+
+.bubble-dock-main span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.bubble-dock-item > button:last-child {
+  flex: 0 0 34px;
+  padding: 0;
 }
 
 .coach-chat-workspace {
@@ -4154,6 +4844,9 @@ a {
 
 .bubble-collab-mode-picker {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  border: 0;
+  padding: 0;
 }
 
 .bubble-collab-mode-picker button,
@@ -5337,6 +6030,228 @@ a {
   font-weight: 760;
 }
 
+.bubble-memory-card {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.055);
+  padding: 14px;
+}
+
+.bubble-memory-head {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.bubble-memory-head strong,
+.bubble-memory-head span {
+  display: block;
+}
+
+.bubble-memory-head strong {
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.bubble-memory-head span {
+  margin-top: 4px;
+  color: rgb(255 255 255 / 0.62);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.bubble-memory-toggle {
+  display: flex;
+  width: 48px;
+  height: 28px;
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+  padding: 3px;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.bubble-memory-toggle span {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  transform: translateX(0);
+  transition: transform 160ms ease;
+}
+
+.bubble-memory-toggle.is-on {
+  border-color: rgb(125 235 143 / 0.4);
+  background: rgb(88 205 110 / 0.42);
+}
+
+.bubble-memory-toggle.is-on span {
+  transform: translateX(19px);
+}
+
+.bubble-memory-muted,
+.bubble-memory-error {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 720;
+  line-height: 1.35;
+}
+
+.bubble-memory-muted {
+  color: rgb(255 255 255 / 0.62);
+}
+
+.bubble-memory-error {
+  color: rgb(255 160 160);
+}
+
+.bubble-memory-notice {
+  border: 1px solid rgb(125 235 143 / 0.24);
+  border-radius: 10px;
+  background: rgb(88 205 110 / 0.1);
+  padding: 10px;
+}
+
+.bubble-memory-notice strong,
+.bubble-memory-notice p {
+  margin: 0;
+}
+
+.bubble-memory-notice strong {
+  color: #fff;
+  font-size: 13px;
+}
+
+.bubble-memory-notice p {
+  margin-top: 5px;
+  color: rgb(255 255 255 / 0.68);
+  font-size: 12px;
+  font-weight: 640;
+  line-height: 1.35;
+}
+
+.bubble-memory-notice button,
+.bubble-memory-summary button,
+.bubble-memory-actions button {
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 820;
+}
+
+.bubble-memory-notice button {
+  height: 32px;
+  margin-top: 9px;
+  background: rgb(125 235 143);
+  padding: 0 12px;
+  color: rgb(10 26 14);
+}
+
+.bubble-memory-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bubble-memory-summary span {
+  color: rgb(255 255 255 / 0.68);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.bubble-memory-summary button {
+  height: 32px;
+  background: rgb(255 255 255 / 0.1);
+  padding: 0 10px;
+  color: #fff;
+}
+
+.bubble-memory-list {
+  display: grid;
+  gap: 12px;
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.bubble-memory-group {
+  display: grid;
+  gap: 8px;
+}
+
+.bubble-memory-group h4 {
+  margin: 0;
+  color: rgb(125 235 143);
+  font-size: 12px;
+  font-weight: 860;
+  letter-spacing: 0;
+}
+
+.bubble-memory-item {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.16);
+  padding: 10px;
+}
+
+.bubble-memory-item p {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 660;
+  line-height: 1.42;
+}
+
+.bubble-memory-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  color: rgb(255 255 255 / 0.52);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.bubble-memory-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.bubble-memory-actions button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+}
+
+.bubble-memory-edit {
+  width: 100%;
+  min-height: 84px;
+  resize: vertical;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 8px;
+  background: rgb(12 12 14 / 0.88);
+  padding: 9px;
+  color: #fff;
+  font: inherit;
+  line-height: 1.35;
+}
+
 .bubble-profile-stats-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -6016,6 +6931,24 @@ a {
 
 .bubble-language-select {
   max-width: 100%;
+}
+
+.bubble-memory-card {
+  padding: 12px;
+}
+
+.bubble-memory-head {
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+}
+
+.bubble-memory-head strong,
+.bubble-memory-head span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bubble-memory-list {
+  max-height: 360px;
 }
 
 .bubble-profile-stats-grid {
@@ -6806,6 +7739,7 @@ a {
 .bubble-guest-modal {
   position: relative;
   width: min(460px, 100%);
+  margin: 0;
   border: 1px solid rgb(255 255 255 / 0.18);
   border-radius: 8px;
   background: rgb(20 20 22 / 0.9);

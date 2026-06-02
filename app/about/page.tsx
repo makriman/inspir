@@ -9,11 +9,11 @@ import {
 } from "@/components/marketing/MarketingShell";
 import { aboutFaqs, aboutProofPoints, aboutStoryLinks, aboutTimeline } from "@/lib/content/authority";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -102,13 +102,7 @@ export default function AboutPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="About inspir" title="Learning is for everyone, and AI should make that more true.">
         inspir is a free AI learning platform shaped by more than a decade of quizzes,

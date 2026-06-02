@@ -84,6 +84,7 @@ export function MarketingPageHero({
       <div className="marketing-page-visual" aria-hidden="true">
         <figure className="is-film">
           <video
+            aria-label="inspir learning film preview"
             src="/media/inspir-learning-film.mp4"
             poster="/inspir-social-preview.png"
             muted

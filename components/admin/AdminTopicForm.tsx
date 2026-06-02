@@ -31,7 +31,7 @@ export function AdminTopicForm() {
           <input
             name={name}
             required
-            className="mt-2 h-12 w-full rounded-[7px] border border-white/20 bg-black px-3 text-white outline-none focus:border-white"
+            className="mt-2 h-12 w-full rounded-[7px] border border-white/20 bg-[#11100e] px-3 text-white outline-none focus:border-white"
           />
         </label>
       ))}
@@ -41,7 +41,7 @@ export function AdminTopicForm() {
           name="description"
           required
           rows={5}
-          className="mt-2 w-full rounded-[7px] border border-white/20 bg-black px-3 py-3 text-white outline-none focus:border-white"
+          className="mt-2 w-full rounded-[7px] border border-white/20 bg-[#11100e] p-3 text-white outline-none focus:border-white"
         />
       </label>
       <label className="block text-sm font-black">
@@ -50,7 +50,7 @@ export function AdminTopicForm() {
           name="systemPrompt"
           required
           rows={8}
-          className="mt-2 w-full rounded-[7px] border border-white/20 bg-black px-3 py-3 text-white outline-none focus:border-white"
+          className="mt-2 w-full rounded-[7px] border border-white/20 bg-[#11100e] p-3 text-white outline-none focus:border-white"
         />
       </label>
       <button type="submit" className="h-12 rounded-[7px] bg-[#0500d8] px-6 font-black text-white">

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { useRef, useState } from "react";
+import { useReducer, useRef } from "react";
 import {
   ArrowUpRight,
   Captions,
@@ -27,6 +27,33 @@ type MarketingVideoChapter = {
   text: string;
 };
 
+type VideoEngineState = {
+  started: boolean;
+  playing: boolean;
+  muted: boolean;
+  ended: boolean;
+  chaptersOpen: boolean;
+  transcriptOpen: boolean;
+  duration: number;
+  currentTime: number;
+};
+
+const emptyVideoChapters: ReadonlyArray<MarketingVideoChapter> = [];
+const initialVideoEngineState: VideoEngineState = {
+  started: false,
+  playing: false,
+  muted: false,
+  ended: false,
+  chaptersOpen: false,
+  transcriptOpen: false,
+  duration: fallbackFilmDuration,
+  currentTime: 0,
+};
+
+function videoEngineReducer(state: VideoEngineState, nextState: Partial<VideoEngineState>) {
+  return { ...state, ...nextState };
+}
+
 function formatTime(seconds: number, { roundUp = false } = {}) {
   if (!Number.isFinite(seconds) || seconds <= 0) return "0:00";
   const roundedSeconds = roundUp ? Math.ceil(seconds) : Math.floor(seconds);
@@ -36,7 +63,7 @@ function formatTime(seconds: number, { roundUp = false } = {}) {
 }
 
 export function MarketingVideoEngine({
-  chapters = [],
+  chapters = emptyVideoChapters,
   transcript,
 }: {
   chapters?: ReadonlyArray<MarketingVideoChapter>;
@@ -44,14 +71,10 @@ export function MarketingVideoEngine({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [started, setStarted] = useState(false);
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
-  const [ended, setEnded] = useState(false);
-  const [chaptersOpen, setChaptersOpen] = useState(false);
-  const [transcriptOpen, setTranscriptOpen] = useState(false);
-  const [duration, setDuration] = useState(fallbackFilmDuration);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [
+    { started, playing, muted, ended, chaptersOpen, transcriptOpen, duration, currentTime },
+    updateVideoState,
+  ] = useReducer(videoEngineReducer, initialVideoEngineState);
 
   const progress = duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0;
   const progressStyle = { "--video-progress": `${progress}%` } as CSSProperties;
@@ -65,18 +88,15 @@ export function MarketingVideoEngine({
 
     try {
       await video.play();
-      setStarted(true);
-      setPlaying(true);
-      setEnded(false);
+      updateVideoState({ started: true, playing: true, ended: false });
     } catch {
-      setStarted(false);
-      setPlaying(false);
+      updateVideoState({ started: false, playing: false });
     }
   }
 
   function pauseVideo() {
     videoRef.current?.pause();
-    setPlaying(false);
+    updateVideoState({ playing: false });
   }
 
   function togglePlay() {
@@ -91,14 +111,13 @@ export function MarketingVideoEngine({
     const video = videoRef.current;
     if (!video) return;
     video.currentTime = 0;
-    setCurrentTime(0);
-    setEnded(false);
+    updateVideoState({ currentTime: 0, ended: false });
     void playVideo();
   }
 
   function toggleMute() {
     const nextMuted = !muted;
-    setMuted(nextMuted);
+    updateVideoState({ muted: nextMuted });
     if (videoRef.current) videoRef.current.muted = nextMuted;
   }
 
@@ -108,15 +127,14 @@ export function MarketingVideoEngine({
     if (!video || !duration || Number.isNaN(nextProgress)) return;
     const nextTime = (nextProgress / 100) * duration;
     video.currentTime = nextTime;
-    setCurrentTime(nextTime);
+    updateVideoState({ currentTime: nextTime });
   }
 
   function seekToChapter(seconds: number) {
     const video = videoRef.current;
     if (!video) return;
     video.currentTime = seconds;
-    setCurrentTime(seconds);
-    setEnded(false);
+    updateVideoState({ currentTime: seconds, ended: false });
     void playVideo();
   }
 
@@ -132,7 +150,7 @@ export function MarketingVideoEngine({
 
   function updateDuration(video: HTMLVideoElement) {
     if (Number.isFinite(video.duration) && video.duration > 0) {
-      setDuration(video.duration);
+      updateVideoState({ duration: video.duration });
     }
   }
 
@@ -149,6 +167,7 @@ export function MarketingVideoEngine({
         className="marketing-video-ambient"
         src={filmSrc}
         aria-hidden="true"
+        tabIndex={-1}
         playsInline
         muted
         autoPlay
@@ -166,15 +185,13 @@ export function MarketingVideoEngine({
         muted={muted}
         onLoadedMetadata={(event) => updateDuration(event.currentTarget)}
         onDurationChange={(event) => updateDuration(event.currentTarget)}
-        onTimeUpdate={(event) => setCurrentTime(event.currentTarget.currentTime)}
+        onTimeUpdate={(event) => updateVideoState({ currentTime: event.currentTarget.currentTime })}
         onPlay={() => {
-          setEnded(false);
-          setPlaying(true);
+          updateVideoState({ ended: false, playing: true });
         }}
-        onPause={() => setPlaying(false)}
+        onPause={() => updateVideoState({ playing: false })}
         onEnded={() => {
-          setPlaying(false);
-          setEnded(true);
+          updateVideoState({ playing: false, ended: true });
         }}
       >
         <track kind="captions" src={captionsSrc} srcLang="en" label="English captions" />
@@ -265,7 +282,7 @@ export function MarketingVideoEngine({
         </button>
         <button
           type="button"
-          onClick={() => setChaptersOpen((open) => !open)}
+          onClick={() => updateVideoState({ chaptersOpen: !chaptersOpen })}
           aria-label={chaptersOpen ? "Hide film chapters" : "Show film chapters"}
           aria-expanded={chaptersOpen}
           aria-controls="learning-film-chapters"
@@ -275,7 +292,7 @@ export function MarketingVideoEngine({
         {transcript ? (
           <button
             type="button"
-            onClick={() => setTranscriptOpen((open) => !open)}
+            onClick={() => updateVideoState({ transcriptOpen: !transcriptOpen })}
             aria-label={transcriptOpen ? "Hide film transcript" : "Show film transcript"}
             aria-expanded={transcriptOpen}
             aria-controls="learning-film-transcript"

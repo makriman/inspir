@@ -10,12 +10,12 @@ import {
 import { topicSeeds } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
   learningModesItemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -97,13 +97,7 @@ export default function TopicsPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Learning modes" title="Start from the exact kind of help you need.">
         Every public inspir mode has its own guest URL, examples, and teaching behavior, so

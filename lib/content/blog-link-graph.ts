@@ -37,29 +37,32 @@ export function getBlogPostLearningGraph(post: BlogPost) {
   });
   const learningPaths = topic
     ? getRelatedLearningPathsForTopic(topic)
-    : homepageLearningPaths
-        .filter((path) => (path.relatedBlogSlugs as readonly string[]).includes(post.slug))
-        .map((path) => ({
+    : homepageLearningPaths.flatMap((path) => {
+        if (!(path.relatedBlogSlugs as readonly string[]).includes(post.slug)) return [];
+        return {
           title: path.title,
           href: learningPathHref(path.slug),
           description: path.description,
-        }));
-  const workflows = getLearningMapWorkflows()
-    .filter((workflow) => {
+        };
+      });
+  const workflows = getLearningMapWorkflows().flatMap((workflow) => {
       const guideMatch = workflow.guides.some((guide) => guide.href === `/blog/${post.slug}`);
       const modeMatch = topic ? workflow.modes.some((mode) => mode.slug === topic.slug) : false;
-      return guideMatch || modeMatch;
-    })
-    .map((workflow) => ({
+      if (!guideMatch && !modeMatch) return [];
+      return {
       title: workflow.title,
       href: workflow.href,
       description: workflow.description,
-    }));
-  const prompts = topic
-    ? getPromptEntries()
-        .filter((entry) => entry.topicSlug === topic.slug)
-        .slice(0, 3)
-    : [];
+      };
+    });
+  const prompts: ReturnType<typeof getPromptEntries> = [];
+  if (topic) {
+    for (const entry of getPromptEntries()) {
+      if (entry.topicSlug !== topic.slug) continue;
+      prompts.push(entry);
+      if (prompts.length >= 3) break;
+    }
+  }
   const relatedModes = topic ? getRelatedTopicModesForTopic(topic, 4) : [];
 
   const modeLink: BlogLearningLink[] = topic

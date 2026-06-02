@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
-import { breadcrumbJsonLd, serializeJsonLd, webPageJsonLd } from "@/lib/seo/json-ld";
+import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo/json-ld";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 
 function isHeading(block: string) {
   if (block.length > 90) return false;
@@ -41,10 +42,16 @@ export function ContentPage({
   relatedLinks?: readonly { href: string; label: string }[];
 }) {
   const filtered = blocks.filter((block) => block.trim() && block.trim() !== title);
+  const blockCounts = new Map<string, number>();
   const entries = filtered.map((block, index) => ({
     block,
     id: isHeading(block) ? slugifyHeading(block, index) : undefined,
     isHeading: isHeading(block),
+    key: (() => {
+      const count = blockCounts.get(block) ?? 0;
+      blockCounts.set(block, count + 1);
+      return `${block.slice(0, 64)}-${count}`;
+    })(),
   }));
   const headings = entries.filter((entry) => entry.isHeading).slice(0, 8);
   const jsonLd =
@@ -60,13 +67,7 @@ export function ContentPage({
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <article className="content-page">
         <header className="content-page-header">
@@ -102,7 +103,7 @@ export function ContentPage({
               const showImage = images && index > 0 && index % 4 === 0 && image;
               return (
                 <section
-                  key={`${entry.block.slice(0, 24)}-${index}`}
+                  key={entry.key}
                   id={entry.id}
                   className={`content-page-block ${entry.isHeading ? "is-heading" : ""}`}
                 >

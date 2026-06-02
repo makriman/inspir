@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { isValidElement, type ReactNode } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
 import {
-  blogHeadingId,
   extractBlogHeadings,
   getBlogCategories,
   getBlogPost,
@@ -22,25 +20,19 @@ import { getBlogPostPracticePlan } from "@/lib/content/blog-practice";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { defaultSocialImage, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import { formatMediumDate, formatLongDate } from "@/lib/utils/dates";
 import {
   blogLearningResourceJsonLd,
   blogPostingJsonLd,
   breadcrumbJsonLd,
   howToJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
 } from "@/lib/seo/json-ld";
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
-
-function childrenToText(children: ReactNode): string {
-  if (typeof children === "string" || typeof children === "number") return String(children);
-  if (Array.isArray(children)) return children.map(childrenToText).join("");
-  if (isValidElement<{ children?: ReactNode }>(children)) return childrenToText(children.props.children);
-  return "";
-}
 
 export function generateStaticParams() {
   return getBlogPosts().map((post) => ({ slug: post.slug }));
@@ -99,16 +91,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const categorySlugs = new Set(getBlogCategories().map((category) => category.slug));
   const headings = extractBlogHeadings(post);
   const readingMinutes = estimateBlogIndexedReadingMinutes(post);
-  const renderedHeadingCounts = new Map<string, number>();
-  function nextHeadingId(children: ReactNode) {
-    const baseId = blogHeadingId(childrenToText(children));
-    const count = renderedHeadingCounts.get(baseId) ?? 0;
-    renderedHeadingCounts.set(baseId, count + 1);
-    return count === 0 ? baseId : `${baseId}-${count + 1}`;
-  }
+  const headingIdByLine = new Map(headings.map((heading) => [heading.line, heading.id]));
   const markdownComponents: Components = {
-    h2: ({ children }) => <h2 id={nextHeadingId(children)}>{children}</h2>,
-    h3: ({ children }) => <h3 id={nextHeadingId(children)}>{children}</h3>,
+    h2: ({ children, node }) => <h2 id={headingIdByLine.get(node?.position?.start.line ?? -1)}>{children}</h2>,
+    h3: ({ children, node }) => <h3 id={headingIdByLine.get(node?.position?.start.line ?? -1)}>{children}</h3>,
   };
 
   const jsonLd = [
@@ -163,20 +149,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <article className="blog-article">
         <Link href="/blog" className="blog-back-link">
           Blog
         </Link>
         <header className="blog-article-header">
-          <time dateTime={post.date}>{new Intl.DateTimeFormat("en", { dateStyle: "long" }).format(new Date(post.date))}</time>
+          <time dateTime={post.date}>{formatLongDate(post.date)}</time>
           <h1>{post.title}</h1>
           <p>{post.description}</p>
           <dl className="blog-article-meta-list">
@@ -354,7 +334,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {relatedPosts.map((related) => (
                 <Link key={related.slug} href={`/blog/${related.slug}`} className="marketing-repo-card blog-card">
                   <time dateTime={related.date}>
-                    {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(related.date))}
+                    {formatMediumDate(related.date)}
                   </time>
                   <strong>{related.title}</strong>
                   <span>{related.description}</span>

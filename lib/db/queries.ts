@@ -1,27 +1,16 @@
-import { and, asc, count, desc, eq, ilike, inArray, isNull, or, sql as drizzleSql } from "drizzle-orm";
+import { and, asc, count, desc, eq, ilike, inArray, or, sql as drizzleSql } from "drizzle-orm";
 import { db } from "./client";
 import { activityRuns, appTranslations, chats, messages, topics, users } from "./schema";
 import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
 
-export async function ensureSeedTopics() {
-  for (const topic of topicSeeds) {
-    await db
-      .insert(topics)
-      .values({
-        slug: topic.slug,
-        name: topic.name,
-        subText: topic.subText,
-        description: topic.description,
-        inputboxText: topic.inputboxText,
-        systemPrompt: topic.systemPrompt,
-        sortOrder: topic.sortOrder,
-        metadata: topic.metadata,
-        status: "active",
-      })
-      .onConflictDoUpdate({
-        target: topics.slug,
-        set: {
+async function ensureSeedTopics() {
+  await Promise.all(
+    topicSeeds.map((topic) =>
+      db
+        .insert(topics)
+        .values({
+          slug: topic.slug,
           name: topic.name,
           subText: topic.subText,
           description: topic.description,
@@ -30,10 +19,23 @@ export async function ensureSeedTopics() {
           sortOrder: topic.sortOrder,
           metadata: topic.metadata,
           status: "active",
-          updatedAt: new Date(),
-        },
-      });
-  }
+        })
+        .onConflictDoUpdate({
+          target: topics.slug,
+          set: {
+            name: topic.name,
+            subText: topic.subText,
+            description: topic.description,
+            inputboxText: topic.inputboxText,
+            systemPrompt: topic.systemPrompt,
+            sortOrder: topic.sortOrder,
+            metadata: topic.metadata,
+            status: "active",
+            updatedAt: new Date(),
+          },
+        }),
+    ),
+  );
 }
 
 export async function getActiveTopics() {
@@ -53,15 +55,6 @@ export async function getDefaultTopic() {
 
 export async function getUserById(userId: string) {
   const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
-  return user;
-}
-
-export async function updateUserLanguage(userId: string, preferredLanguage: string) {
-  const [user] = await db
-    .update(users)
-    .set({ preferredLanguage, updatedAt: new Date() })
-    .where(eq(users.id, userId))
-    .returning();
   return user;
 }
 
@@ -305,18 +298,4 @@ export async function getContextMessages(chatId: string, limit = 30) {
     .orderBy(desc(messages.createdAt))
     .limit(limit);
   return rows.reverse();
-}
-
-export async function resetChat(userId: string, topicId: string) {
-  return createChatForUser(userId, topicId);
-}
-
-export async function findOrphanedLegacyMessages() {
-  const rows = await db
-    .select({ id: messages.id })
-    .from(messages)
-    .leftJoin(chats, eq(messages.chatId, chats.id))
-    .where(isNull(chats.id))
-    .limit(1);
-  return rows.length;
 }

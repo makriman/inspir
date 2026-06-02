@@ -19,7 +19,7 @@ export default async function AdminPage() {
   if (!isAdminEmail(session.user.email)) redirect("/");
 
   return (
-    <main className="min-h-screen bg-black px-6 py-10 text-white">
+    <main className="min-h-screen bg-[#171614] px-6 py-10 text-white">
       <h1 className="mx-auto mb-8 max-w-3xl text-4xl font-black">Admin</h1>
       <AdminTopicForm />
     </main>

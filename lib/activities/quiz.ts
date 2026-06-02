@@ -15,7 +15,7 @@ const quizQuestionSchema = z.object({
   answeredAt: z.string().optional(),
 });
 
-export const quizStateSchema = z.object({
+const quizStateSchema = z.object({
   topic: z.string().min(1),
   currentIndex: z.number().int().min(0).max(10),
   score: z.number().int().min(0).max(10),

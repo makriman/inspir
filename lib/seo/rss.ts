@@ -56,7 +56,7 @@ ${categories}
 }
 
 export function buildRssFeed(posts: BlogPost[]) {
-  const sortedPosts = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+  const sortedPosts = posts.toSorted((a, b) => b.date.localeCompare(a.date));
   const lastBuildDate = formatRssDate(sortedPosts[0]?.updated ?? sortedPosts[0]?.date ?? new Date().toISOString());
 
   return `<?xml version="1.0" encoding="UTF-8"?>

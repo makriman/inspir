@@ -16,11 +16,12 @@ import {
   type HomepageLearningPath,
 } from "@/lib/content/landing";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import { formatMediumDate } from "@/lib/utils/dates";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -182,13 +183,7 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Learning path" title={path.title}>
         {path.seoDescription}
@@ -342,7 +337,7 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
             {relatedPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="marketing-repo-card blog-card">
                 <time dateTime={post.date}>
-                  {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(post.date))}
+                  {formatMediumDate(post.date)}
                 </time>
                 <strong>{post.title}</strong>
                 <span>{post.description}</span>

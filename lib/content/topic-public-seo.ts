@@ -5,25 +5,31 @@ import { topicSeeds, type TopicSeed } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 
 export function getRelatedLearningPathsForTopic(topic: TopicSeed) {
-  return homepageLearningPaths
-    .filter((path) => path.links.some((link) => link.href === topicPath(topic.slug)))
-    .map((path) => ({
+  return homepageLearningPaths.flatMap((path) => {
+    if (!path.links.some((link) => link.href === topicPath(topic.slug))) return [];
+    return {
       title: path.title,
       href: learningPathHref(path.slug),
       description: path.description,
-    }));
+    };
+  });
 }
 
 export function getRelatedBlogGuidesForTopic(topic: TopicSeed, limit = 3) {
-  return getBlogPosts()
-    .filter((post) => getBlogPostTopic(post)?.slug === topic.slug)
-    .slice(0, limit)
-    .map((post) => ({
+  const guides: Array<{ title: string; href: string; description: string; date: string }> = [];
+
+  for (const post of getBlogPosts()) {
+    if (guides.length >= limit) break;
+    if (getBlogPostTopic(post)?.slug !== topic.slug) continue;
+    guides.push({
       title: post.title,
       href: `/blog/${post.slug}`,
       description: post.description,
       date: post.date,
-    }));
+    });
+  }
+
+  return guides;
 }
 
 export function getRelatedTopicModesForTopic(topic: TopicSeed, limit = 4) {
@@ -35,26 +41,24 @@ export function getRelatedTopicModesForTopic(topic: TopicSeed, limit = 4) {
     }),
   );
 
-  const scoredTopics = topicSeeds
-    .filter((candidate) => candidate.slug !== topic.slug)
-    .map((candidate) => ({
-      topic: candidate,
-      score:
-        (pathConnectedSlugs.has(candidate.slug) ? 3 : 0) +
-        (candidate.metadata.category === topic.metadata.category ? 2 : 0),
-    }))
-    .filter((candidate) => candidate.score > 0)
-    .sort((a, b) => b.score - a.score || a.topic.sortOrder - b.topic.sortOrder)
-    .slice(0, limit);
+  const scoredTopics: Array<{ topic: TopicSeed; score: number }> = [];
+  for (const candidate of topicSeeds) {
+    if (candidate.slug === topic.slug) continue;
+    const score =
+      (pathConnectedSlugs.has(candidate.slug) ? 3 : 0) +
+      (candidate.metadata.category === topic.metadata.category ? 2 : 0);
+    if (score > 0) scoredTopics.push({ topic: candidate, score });
+  }
+  scoredTopics.sort((a, b) => b.score - a.score || a.topic.sortOrder - b.topic.sortOrder);
 
-  const fallbackTopics =
-    scoredTopics.length > 0
-      ? scoredTopics
-      : topicSeeds
-          .filter((candidate) => candidate.slug !== topic.slug)
-          .sort((a, b) => a.sortOrder - b.sortOrder)
-          .slice(0, limit)
-          .map((candidate) => ({ topic: candidate, score: 0 }));
+  const fallbackTopics = scoredTopics.slice(0, limit);
+  if (!fallbackTopics.length) {
+    for (const candidate of topicSeeds.toSorted((a, b) => a.sortOrder - b.sortOrder)) {
+      if (candidate.slug === topic.slug) continue;
+      fallbackTopics.push({ topic: candidate, score: 0 });
+      if (fallbackTopics.length >= limit) break;
+    }
+  }
 
   return fallbackTopics.map(({ topic: relatedTopic }) => {
     const seo = getTopicSeo(relatedTopic);

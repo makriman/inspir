@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 
-export async function startGoogleSignIn(callbackUrl = "/chat") {
+async function startGoogleSignIn(callbackUrl = "/chat") {
   const response = await fetch("/api/auth/csrf");
   const { csrfToken } = (await response.json()) as { csrfToken: string };
   const nextUrl = callbackUrl || "/chat";
@@ -57,26 +57,5 @@ function GoogleLogo() {
         d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06L5.84 9.9C6.71 7.31 9.14 5.38 12 5.38z"
       />
     </svg>
-  );
-}
-
-export function SignInButton({
-  label = "Get Started Now",
-  className = "marketing-primary-cta",
-  callbackUrl = "/chat",
-}: {
-  label?: string;
-  className?: string;
-  callbackUrl?: string;
-}) {
-
-  return (
-    <button
-      type="button"
-      onClick={() => void startGoogleSignIn(callbackUrl)}
-      className={className}
-    >
-      {label}
-    </button>
   );
 }

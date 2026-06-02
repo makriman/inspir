@@ -32,7 +32,9 @@ export const blogHubFaqs = [
   },
 ] as const;
 
-export const blogPillarClusters: BlogPillarCluster[] = [
+const topicSeedBySlug = new Map(topicSeeds.map((topic) => [topic.slug, topic]));
+
+const blogPillarClusters: BlogPillarCluster[] = [
   {
     slug: "ai-tutor-fundamentals",
     title: "AI tutor fundamentals",
@@ -482,7 +484,7 @@ export function getBlogCategoryRelatedModes(category: BlogCategory, limit = 6) {
 
   for (const workflow of profile.workflows) {
     const slug = workflow.href.match(/^\/chat\/([^/?#]+)/)?.[1];
-    const topic = slug ? topicSeeds.find((candidate) => candidate.slug === slug) : undefined;
+    const topic = slug ? topicSeedBySlug.get(slug) : undefined;
     if (!topic) continue;
     scores.set(topic.slug, { count: 0, boost: 100, topic });
   }
@@ -511,13 +513,18 @@ export function getBlogCategoryRelatedModes(category: BlogCategory, limit = 6) {
 }
 
 export function getBlogCategoryFeaturedPosts(category: BlogCategory, limit = 6) {
-  const pillarGuideSlugs = blogPillarClusters
-    .filter((cluster) => cluster.categoryHref === `/blog/category/${category.slug}`)
-    .flatMap((cluster) => cluster.guideSlugs);
   const postsBySlug = new Map(getBlogPosts().map((post) => [post.slug, post]));
-  const selected = pillarGuideSlugs
-    .map((slug) => postsBySlug.get(slug))
-    .filter((post): post is BlogPost => Boolean(post));
+  const selected: BlogPost[] = [];
+
+  for (const cluster of blogPillarClusters) {
+    if (cluster.categoryHref !== `/blog/category/${category.slug}`) continue;
+    for (const slug of cluster.guideSlugs) {
+      const post = postsBySlug.get(slug);
+      if (!post) continue;
+      selected.push(post);
+      if (selected.length >= limit) return selected;
+    }
+  }
 
   for (const post of category.posts) {
     if (selected.length >= limit) break;

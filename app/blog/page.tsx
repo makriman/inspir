@@ -6,11 +6,12 @@ import { getBlogCategories, getBlogPosts } from "@/lib/content/blog";
 import { blogHubFaqs, getBlogPillarClusters } from "@/lib/content/blog-directory";
 import { topicSeeds } from "@/lib/content/topics";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import { formatMediumDate } from "@/lib/utils/dates";
 import {
   breadcrumbJsonLd,
   faqPageJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -110,13 +111,7 @@ export default function BlogIndexPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Blog" title="Better ways to learn with AI.">
         {posts.length} guides for tutoring, memory, active practice, historical roleplay,
@@ -212,7 +207,7 @@ export default function BlogIndexPage() {
         <div className="marketing-repo-grid">
           {corePosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="marketing-repo-card blog-card">
-              <time dateTime={post.date}>{new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(post.date))}</time>
+              <time dateTime={post.date}>{formatMediumDate(post.date)}</time>
               <strong>{post.title}</strong>
               <span>{post.description}</span>
               <small>
@@ -237,7 +232,7 @@ export default function BlogIndexPage() {
           {topicPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="marketing-topic-link blog-card">
               <time dateTime={post.date}>
-                {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(new Date(post.date))}
+                {formatMediumDate(post.date)}
               </time>
               <strong>{post.title}</strong>
               <p>{post.description}</p>

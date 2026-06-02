@@ -1127,7 +1127,7 @@ test("public topic companion content exposes related resources and faq schema", 
 test("public chat intro links point to existing guides and prompt loops", () => {
   const postSlugs = new Set(getBlogPosts().map((post) => post.slug));
 
-  for (const topic of topicSeeds) {
+  for (const topic of topicSeeds.filter((topic) => !topic.metadata.source)) {
     const guideSlug = topic.slug.endsWith("-guide") ? `ai-${topic.slug}` : `ai-${topic.slug}-guide`;
 
     assert.ok(postSlugs.has(guideSlug), `${topic.slug} should have a mode guide`);

@@ -1,18 +1,21 @@
 "use client";
 
-/* eslint-disable @next/next/no-img-element -- Profile photos come from user auth providers and are intentionally rendered as plain avatars. */
-
 import {
   FormEvent,
   KeyboardEvent,
   RefObject,
   type ComponentType,
   type MutableRefObject,
+  type SetStateAction,
+  useCallback,
   useEffect,
   useMemo,
+  useReducer,
   useRef,
   useState,
 } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { signOut } from "next-auth/react";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
@@ -24,6 +27,7 @@ import {
   BookOpenCheck,
   Bot,
   BrainCircuit,
+  Check,
   CheckCircle2,
   Clipboard,
   Compass,
@@ -44,8 +48,8 @@ import {
   Menu,
   MessageCircle,
   MessageSquareText,
-  Milestone,
   PencilLine,
+  Plus,
   RefreshCw,
   Route,
   RotateCcw,
@@ -70,6 +74,17 @@ import {
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { InteractiveInstructionWorkspace } from "@/components/chat/InteractiveInstructionWorkspace";
+import {
+  getDefaultSidebarTopicIds,
+  LearningStore,
+  type LearningStoreTopic,
+} from "@/components/chat/LearningStore";
+import {
+  FocusMusicWorkspace,
+  FocusTimerWorkspace,
+  PersistentLearningDock,
+  usePersistentLearningTools,
+} from "@/components/chat/PersistentLearningTools";
 import { SocraticWorkspace } from "@/components/chat/SocraticWorkspace";
 import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
@@ -90,9 +105,14 @@ type TopicMetadata = {
     | "historical-person"
     | "interactive-instruction"
     | "collaborative-instruction"
-    | "socratic-instruction";
+    | "socratic-instruction"
+    | "study-timer"
+    | "focus-music";
   modelProfile: "fast" | "reasoning" | "structured";
   starters: string[];
+  keywords?: string[];
+  source?: string;
+  toolId?: string;
 };
 
 type Topic = {
@@ -163,6 +183,44 @@ type ActivityRun = {
   completedAt: string | Date | null;
 };
 
+type MemorySettings = {
+  enabled: boolean;
+  captureScope: string;
+  retrievalMode: string;
+  noticeSeenAt: string | Date | null;
+};
+
+type MemoryItem = {
+  id: string;
+  kind: string;
+  category: string;
+  content: string;
+  tags: string[];
+  confidence: number;
+  salience: number;
+  createdAt: string | Date;
+  updatedAt: string | Date;
+};
+
+type MemoryProfile = {
+  category: string;
+  summary: string;
+  updatedAt: string | Date;
+};
+
+type MemoryDashboard = {
+  settings: MemorySettings;
+  memories: MemoryItem[];
+  profiles: MemoryProfile[];
+};
+
+class StaleChatRequestError extends Error {
+  constructor() {
+    super("Chat request was superseded");
+    this.name = "StaleChatRequestError";
+  }
+}
+
 type PublicQuizQuestion = {
   id: string;
   prompt: string;
@@ -206,7 +264,7 @@ type PublicFlashcardState = {
   cards: PublicFlashcard[];
 };
 
-type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards">;
+type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards" | "study-timer" | "focus-music">;
 
 function topicMetadata(topic: Topic | undefined): TopicMetadata | undefined {
   const metadata = topic?.metadata;
@@ -244,6 +302,57 @@ function writeStoredGuestUsage(used: number) {
   } catch {
     // Guest limits are also enforced by signed cookies on the server.
   }
+}
+
+const sidebarFeatureStorageKey = "inspir_sidebar_feature_ids_v1";
+
+function readStoredSidebarFeatureIds() {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(sidebarFeatureStorageKey);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === "string") : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredSidebarFeatureIds(ids: string[]) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(sidebarFeatureStorageKey, JSON.stringify(ids));
+  } catch {
+    // The sidebar can fall back to defaults if persistence is unavailable.
+  }
+}
+
+function uniqueValidTopicIds(ids: string[], topics: Topic[]) {
+  const valid = new Set(topics.map((topic) => topic.id));
+  const seen = new Set<string>();
+  return ids.filter((id) => {
+    if (!valid.has(id) || seen.has(id)) return false;
+    seen.add(id);
+    return true;
+  });
+}
+
+function topicSearchContent(topic: Topic) {
+  const metadata = topicMetadata(topic);
+  return [
+    topic.name,
+    topic.subText,
+    topic.description,
+    topic.inputboxText,
+    metadata?.category,
+    metadata?.uiMode,
+    metadata?.source,
+    ...(metadata?.starters ?? []),
+    ...(metadata?.keywords ?? []),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
 }
 
 function isQuizState(value: Record<string, unknown>): value is PublicQuizState {
@@ -383,16 +492,80 @@ function sleep(ms: number) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
-export function ChatClient({
-  authMode = "authenticated",
-  user,
-  topics,
-  initialTopicId,
-  initialChatId,
-  initialMessages,
-  initialActivityRun,
-  initialTranslationBundle,
+async function pollMainAppTranslation({
+  language,
+  loadSeq,
+  getCurrentLoadSeq,
+  onBundle,
+  attempt = 0,
 }: {
+  language: string;
+  loadSeq: number;
+  getCurrentLoadSeq: () => number;
+  onBundle: (bundle: MainAppTranslationBundle) => void;
+  attempt?: number;
+}): Promise<void> {
+  const maxAttempts = 120;
+  if (getCurrentLoadSeq() !== loadSeq) return;
+  if (attempt >= maxAttempts) return;
+  const response = await fetch(`/api/main-app-translations?language=${encodeURIComponent(language)}`);
+  if (!response.ok) throw new Error("Could not load translation");
+  if (getCurrentLoadSeq() !== loadSeq) return;
+
+  const data = await response.json();
+  if (getCurrentLoadSeq() === loadSeq && data.bundle) onBundle(data.bundle);
+  if (getCurrentLoadSeq() !== loadSeq || data.complete !== false) return;
+
+  await sleep(data.retryAfterMs ?? 1500);
+  return pollMainAppTranslation({ language, loadSeq, getCurrentLoadSeq, onBundle, attempt: attempt + 1 });
+}
+
+type MergeStateAction<State> = Partial<State> | ((state: State) => Partial<State>);
+
+function mergeStateReducer<State>(state: State, nextState: MergeStateAction<State>) {
+  const patch = typeof nextState === "function" ? nextState(state) : nextState;
+  return { ...state, ...patch };
+}
+
+function resolveSetState<Value>(nextValue: SetStateAction<Value>, currentValue: Value) {
+  if (typeof nextValue === "function") return (nextValue as (value: Value) => Value)(currentValue);
+  return nextValue;
+}
+
+type ChatClientState = {
+  activeTopicId: string;
+  activeChatId: string | undefined;
+  messages: Message[];
+  activityRun: ActivityRun | null;
+  input: string;
+  sending: boolean;
+  awaitingResponse: boolean;
+  search: string;
+  storeOpen: boolean;
+  sidebarTopicIds: string[] | null;
+  profileOpen: boolean;
+  recentOpen: boolean;
+  recentChats: RecentChat[];
+  recentLoading: boolean;
+  mobileSidebarOpen: boolean;
+  profileUser: UserProfile;
+  agePromptOpen: boolean;
+  translationBundle: MainAppTranslationBundle;
+  languageSaving: boolean;
+  guestMessagesUsed: number;
+  guestPromptOpen: boolean;
+  workspaceResetCount: number;
+  memoryDashboard: MemoryDashboard | null;
+  memoryLoading: boolean;
+  memorySaving: boolean;
+  memoryError: string | null;
+};
+
+function chatClientStateReducer(state: ChatClientState, nextState: MergeStateAction<ChatClientState>) {
+  return mergeStateReducer(state, nextState);
+}
+
+type ChatClientProps = {
   authMode?: "authenticated" | "guest";
   user: UserProfile;
   topics: Topic[];
@@ -401,50 +574,181 @@ export function ChatClient({
   initialMessages: Message[];
   initialActivityRun: ActivityRun | null;
   initialTranslationBundle: MainAppTranslationBundle;
-}) {
+};
+
+export function ChatClient(props: ChatClientProps) {
+  return <ChatClientLayout {...useChatClientController(props)} />;
+}
+
+function useChatClientController({
+  authMode = "authenticated",
+  user,
+  topics,
+  initialTopicId,
+  initialChatId,
+  initialMessages,
+  initialActivityRun,
+  initialTranslationBundle,
+}: ChatClientProps) {
   const isGuest = authMode === "guest";
   const guestMessageLimit = 5;
-  const [activeTopicId, setActiveTopicId] = useState(initialTopicId);
-  const [activeChatId, setActiveChatId] = useState<string | undefined>(initialChatId);
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
-  const [activityRun, setActivityRun] = useState<ActivityRun | null>(initialActivityRun);
-  const [input, setInput] = useState("");
-  const [sending, setSending] = useState(false);
-  const [awaitingResponse, setAwaitingResponse] = useState(false);
-  const [search, setSearch] = useState("");
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [recentOpen, setRecentOpen] = useState(false);
-  const [recentChats, setRecentChats] = useState<RecentChat[]>([]);
-  const [recentLoading, setRecentLoading] = useState(false);
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [profileUser, setProfileUser] = useState(user);
-  const [agePromptOpen, setAgePromptOpen] = useState(() => !isGuest && !user.dateOfBirth);
-  const [translationBundle, setTranslationBundle] = useState(initialTranslationBundle);
-  const [languageSaving, setLanguageSaving] = useState(false);
-  const [guestMessagesUsed, setGuestMessagesUsed] = useState(() => {
-    return readStoredGuestUsage(guestMessageLimit);
-  });
-  const [guestPromptOpen, setGuestPromptOpen] = useState(false);
-  const [workspaceResetCount, setWorkspaceResetCount] = useState(0);
+  const [
+    {
+      activeTopicId,
+      activeChatId,
+      messages,
+      activityRun,
+      input,
+      sending,
+      awaitingResponse,
+      search,
+      storeOpen,
+      sidebarTopicIds,
+      profileOpen,
+      recentOpen,
+      recentChats,
+      recentLoading,
+      mobileSidebarOpen,
+      profileUser,
+      agePromptOpen,
+      translationBundle,
+      languageSaving,
+      guestMessagesUsed,
+      guestPromptOpen,
+      workspaceResetCount,
+      memoryDashboard,
+      memoryLoading,
+      memorySaving,
+      memoryError,
+    },
+    updateChatState,
+  ] = useReducer(chatClientStateReducer, {
+    activeTopicId: initialTopicId,
+    activeChatId: initialChatId,
+    messages: initialMessages,
+    activityRun: initialActivityRun,
+    input: "",
+    sending: false,
+    awaitingResponse: false,
+    search: "",
+    storeOpen: false,
+    sidebarTopicIds: null,
+    profileOpen: false,
+    recentOpen: false,
+    recentChats: [],
+    recentLoading: false,
+    mobileSidebarOpen: false,
+    profileUser: user,
+    agePromptOpen: !isGuest && !user.dateOfBirth,
+    translationBundle: initialTranslationBundle,
+    languageSaving: false,
+    guestMessagesUsed: 0,
+    guestPromptOpen: false,
+    workspaceResetCount: 0,
+    memoryDashboard: null,
+    memoryLoading: false,
+    memorySaving: false,
+    memoryError: null,
+  } satisfies ChatClientState);
+
+  function updateChatField<Key extends keyof ChatClientState>(
+    key: Key,
+    nextValue: SetStateAction<ChatClientState[Key]>,
+  ) {
+    updateChatState((current) => ({
+      [key]: resolveSetState(nextValue, current[key]),
+    }));
+  }
+
+  const setActiveTopicId = (value: SetStateAction<ChatClientState["activeTopicId"]>) =>
+    updateChatField("activeTopicId", value);
+  const setActiveChatId = (value: SetStateAction<ChatClientState["activeChatId"]>) =>
+    updateChatField("activeChatId", value);
+  const setMessages = (value: SetStateAction<ChatClientState["messages"]>) => updateChatField("messages", value);
+  const setActivityRun = (value: SetStateAction<ChatClientState["activityRun"]>) =>
+    updateChatField("activityRun", value);
+  const setInput = (value: SetStateAction<ChatClientState["input"]>) => updateChatField("input", value);
+  const setSending = (value: SetStateAction<ChatClientState["sending"]>) => updateChatField("sending", value);
+  const setAwaitingResponse = (value: SetStateAction<ChatClientState["awaitingResponse"]>) =>
+    updateChatField("awaitingResponse", value);
+  const setSearch = (value: SetStateAction<ChatClientState["search"]>) => updateChatField("search", value);
+  const setStoreOpen = (value: SetStateAction<ChatClientState["storeOpen"]>) => updateChatField("storeOpen", value);
+  const setSidebarTopicIds = (value: SetStateAction<ChatClientState["sidebarTopicIds"]>) =>
+    updateChatField("sidebarTopicIds", value);
+  const setProfileOpen = (value: SetStateAction<ChatClientState["profileOpen"]>) =>
+    updateChatField("profileOpen", value);
+  const setRecentOpen = (value: SetStateAction<ChatClientState["recentOpen"]>) =>
+    updateChatField("recentOpen", value);
+  const setRecentChats = (value: SetStateAction<ChatClientState["recentChats"]>) =>
+    updateChatField("recentChats", value);
+  const setRecentLoading = (value: SetStateAction<ChatClientState["recentLoading"]>) =>
+    updateChatField("recentLoading", value);
+  const setMobileSidebarOpen = (value: SetStateAction<ChatClientState["mobileSidebarOpen"]>) =>
+    updateChatField("mobileSidebarOpen", value);
+  const setProfileUser = (value: SetStateAction<ChatClientState["profileUser"]>) =>
+    updateChatField("profileUser", value);
+  const setAgePromptOpen = (value: SetStateAction<ChatClientState["agePromptOpen"]>) =>
+    updateChatField("agePromptOpen", value);
+  const setLanguageSaving = (value: SetStateAction<ChatClientState["languageSaving"]>) =>
+    updateChatField("languageSaving", value);
+  const setGuestMessagesUsed = (value: SetStateAction<ChatClientState["guestMessagesUsed"]>) =>
+    updateChatField("guestMessagesUsed", value);
+  const setGuestPromptOpen = (value: SetStateAction<ChatClientState["guestPromptOpen"]>) =>
+    updateChatField("guestPromptOpen", value);
+  const setWorkspaceResetCount = (value: SetStateAction<ChatClientState["workspaceResetCount"]>) =>
+    updateChatField("workspaceResetCount", value);
+  const setMemoryDashboard = (value: SetStateAction<ChatClientState["memoryDashboard"]>) =>
+    updateChatField("memoryDashboard", value);
+  const setMemorySaving = (value: SetStateAction<ChatClientState["memorySaving"]>) =>
+    updateChatField("memorySaving", value);
+  const setMemoryError = (value: SetStateAction<ChatClientState["memoryError"]>) =>
+    updateChatField("memoryError", value);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const translationRootRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const requestSeqRef = useRef(0);
   const translationLoadSeqRef = useRef(0);
+  const sidebarHydratedRef = useRef(false);
+  const [sidebarPersonalizationReady, setSidebarPersonalizationReady] = useState(false);
   const translationTextMap = useMemo(() => buildTranslationTextMap(translationBundle), [translationBundle]);
   const displayTopics = useMemo(
     () => topics.map((topic) => translateTopic(topic, translationTextMap)),
     [topics, translationTextMap],
   );
+  const learningTools = usePersistentLearningTools();
   useAutoTranslate(translationRootRef, translationBundle);
 
+  const defaultSidebarIds = useMemo(
+    () => getDefaultSidebarTopicIds(displayTopics as LearningStoreTopic[]),
+    [displayTopics],
+  );
+  const addedTopicIds = useMemo(
+    () =>
+      uniqueValidTopicIds(
+        sidebarPersonalizationReady ? sidebarTopicIds ?? defaultSidebarIds : defaultSidebarIds,
+        displayTopics,
+      ),
+    [defaultSidebarIds, displayTopics, sidebarPersonalizationReady, sidebarTopicIds],
+  );
+  const sidebarTopics = useMemo(
+    () => displayTopics.filter((topic) => addedTopicIds.includes(topic.id)),
+    [addedTopicIds, displayTopics],
+  );
   const activeTopic = displayTopics.find((topic) => topic.id === activeTopicId) ?? displayTopics[0];
   const metadata = topicMetadata(activeTopic);
   const uiMode = metadata?.uiMode ?? "chat";
   const isQuizMode = uiMode === "quiz";
   const isFlashcardMode = uiMode === "flashcards";
-  const isMiniAppMode = uiMode !== "chat" && uiMode !== "quiz" && uiMode !== "flashcards";
+  const isFocusTimerMode = uiMode === "study-timer";
+  const isFocusMusicMode = uiMode === "focus-music";
+  const isMiniAppMode =
+    uiMode !== "chat" &&
+    uiMode !== "quiz" &&
+    uiMode !== "flashcards" &&
+    uiMode !== "study-timer" &&
+    uiMode !== "focus-music";
+  const miniAppMode = isMiniAppMode ? (uiMode as MiniMode) : null;
   const visibleChatMessages = displayMessages(messages);
   const userDisplayName = profileUser.name?.trim() || "Learner";
 
@@ -456,42 +760,70 @@ export function ChatClient({
   const filteredTopics = useMemo(() => {
     const q = search.trim().toLowerCase();
     if (!q) return displayTopics;
-    return displayTopics.filter(
-      (topic) =>
-        topic.name.toLowerCase().includes(q) ||
-        topic.subText.toLowerCase().includes(q) ||
-        topicMetadata(topic)?.category.toLowerCase().includes(q),
-    );
+    return displayTopics.filter((topic) => topicSearchContent(topic).includes(q));
   }, [search, displayTopics]);
 
-  async function loadMainAppTranslation(language: string) {
-    const loadSeq = translationLoadSeqRef.current + 1;
-    translationLoadSeqRef.current = loadSeq;
-    const maxAttempts = 120;
-
-    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
-      const response = await fetch(`/api/main-app-translations?language=${encodeURIComponent(language)}`);
-      if (!response.ok) throw new Error("Could not load translation");
-
-      const data = await response.json();
-      if (translationLoadSeqRef.current !== loadSeq) return;
-      if (data.bundle) setTranslationBundle(data.bundle);
-      if (data.complete !== false) return;
-
-      await sleep(data.retryAfterMs ?? 1500);
-    }
-  }
+  useEffect(() => {
+    if (sidebarHydratedRef.current) return;
+    sidebarHydratedRef.current = true;
+    let timeoutId: number | null = null;
+    const frameId = window.requestAnimationFrame(() => {
+      timeoutId = window.setTimeout(() => {
+        const storedIds = readStoredSidebarFeatureIds();
+        if (storedIds) updateChatState({ sidebarTopicIds: storedIds });
+        setSidebarPersonalizationReady(true);
+      }, 0);
+    });
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      if (timeoutId !== null) window.clearTimeout(timeoutId);
+    };
+  }, []);
 
   useEffect(() => {
-    if (!profileUser.preferredLanguage) return;
-    if (translationBundle.language === profileUser.preferredLanguage) return;
+    const used = readStoredGuestUsage(guestMessageLimit);
+    if (used) updateChatState({ guestMessagesUsed: used });
+  }, [guestMessageLimit]);
+
+  useEffect(() => {
+    const preferredLanguage = profileUser.preferredLanguage;
+    if (!preferredLanguage) return;
+    if (translationBundle.language === preferredLanguage) return;
+    const loadSeq = translationLoadSeqRef.current + 1;
+    translationLoadSeqRef.current = loadSeq;
+
     const timeoutId = window.setTimeout(() => {
-      void loadMainAppTranslation(profileUser.preferredLanguage).catch(() => {
+      void pollMainAppTranslation({
+        language: preferredLanguage,
+        loadSeq,
+        getCurrentLoadSeq: () => translationLoadSeqRef.current,
+        onBundle: (bundle) => updateChatState({ translationBundle: bundle }),
+      }).catch(() => {
         // Keep the saved profile language; English UI remains available until translation loads.
       });
     }, 0);
     return () => window.clearTimeout(timeoutId);
   }, [profileUser.preferredLanguage, translationBundle.language]);
+
+  const loadMemoryDashboard = useCallback(async () => {
+    if (isGuest) return;
+    updateChatState({ memoryLoading: true, memoryError: null });
+    try {
+      const response = await fetch("/api/memory");
+      if (!response.ok) throw new Error("Could not load memory");
+      const data = await response.json();
+      updateChatState({ memoryDashboard: data });
+    } catch {
+      updateChatState({ memoryError: "Could not load memory right now." });
+    } finally {
+      updateChatState({ memoryLoading: false });
+    }
+  }, [isGuest]);
+
+  useEffect(() => {
+    if (isGuest || !profileOpen || memoryDashboard || memoryLoading) return;
+    void loadMemoryDashboard();
+  }, [isGuest, profileOpen, memoryDashboard, memoryLoading, loadMemoryDashboard]);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -503,22 +835,6 @@ export function ChatClient({
     textarea.style.height = "0px";
     textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
   }, [input]);
-
-  useEffect(() => {
-    if (!recentOpen || isGuest) return;
-    let cancelled = false;
-    fetch(`/api/chats?topicId=${activeTopicId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (!cancelled) setRecentChats(data.chats ?? []);
-      })
-      .finally(() => {
-        if (!cancelled) setRecentLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [recentOpen, activeTopicId, isGuest]);
 
   async function createChat(topicId = activeTopicId, activate = true) {
     if (isGuest) return "guest-chat";
@@ -613,8 +929,11 @@ export function ChatClient({
         .filter((message) => message.role === "user" || message.role === "assistant")
         .slice(-12)
         .map((message) => ({ role: message.role, content: message.content }));
+      const ensureCurrentRequest = () => {
+        if (!isCurrentRequest()) throw new StaleChatRequestError();
+      };
       const chatId = isGuest ? undefined : activeChatId ?? (await createChat(activeTopicId, false));
-      if (!isCurrentRequest()) return;
+      ensureCurrentRequest();
       if (!isGuest && chatId && !activeChatId) {
         setActiveChatId(chatId);
         window.history.replaceState(null, "", `/chat/${chatId}`);
@@ -634,7 +953,7 @@ export function ChatClient({
         ),
         signal: controller.signal,
       });
-      if (!isCurrentRequest()) return;
+      ensureCurrentRequest();
       if (isGuest && response.status === 429) {
         setGuestPromptOpen(true);
         setMessages((current) => current.filter((message) => message.id !== userMessage.id));
@@ -646,13 +965,18 @@ export function ChatClient({
       const decoder = new TextDecoder();
       let assistantText = "";
       let assistantInserted = false;
-      while (true) {
+
+      function ensureCurrentStream() {
+        if (isCurrentRequest()) return;
+        void reader.cancel();
+        throw new StaleChatRequestError();
+      }
+
+      async function readAssistantStream(): Promise<void> {
+        ensureCurrentStream();
         const { value, done } = await reader.read();
-        if (!isCurrentRequest()) {
-          await reader.cancel();
-          return;
-        }
-        if (done) break;
+        ensureCurrentStream();
+        if (done) return;
         assistantText += decoder.decode(value, { stream: true });
         if (!assistantInserted) {
           assistantInserted = true;
@@ -666,7 +990,7 @@ export function ChatClient({
               createdAt: new Date(),
             },
           ]);
-          continue;
+          return readAssistantStream();
         }
 
         setMessages((current) =>
@@ -674,7 +998,10 @@ export function ChatClient({
             message.id === assistantMessageId ? { ...message, content: assistantText } : message,
           ),
         );
+        return readAssistantStream();
       }
+
+      await readAssistantStream();
       if (isCurrentRequest() && isGuest) {
         const usedFromServer = Number(response.headers.get("x-guest-messages-used"));
         const nextUsed = Number.isFinite(usedFromServer)
@@ -684,6 +1011,7 @@ export function ChatClient({
       }
       if (isCurrentRequest() && !isGuest && chatId) await loadChat(chatId, { preserveRequest: true });
     } catch (error) {
+      if (error instanceof StaleChatRequestError) return;
       if (!isCurrentRequest()) return;
       setAwaitingResponse(false);
       if ((error as Error).name === "AbortError") {
@@ -740,6 +1068,38 @@ export function ChatClient({
     void sendMessage(lastUser.content, false);
   }
 
+  function addSidebarTopic(topicId: string, options?: { selectAfterAdd?: boolean }) {
+    setSidebarTopicIds((current) => {
+      const base = uniqueValidTopicIds(current ?? defaultSidebarIds, displayTopics);
+      const nextIds = base.includes(topicId) ? base : [...base, topicId];
+      writeStoredSidebarFeatureIds(nextIds);
+      return nextIds;
+    });
+    if (options?.selectAfterAdd) {
+      selectTopic(topicId);
+    }
+  }
+
+  function removeSidebarTopic(topicId: string) {
+    setSidebarTopicIds((current) => {
+      const base = uniqueValidTopicIds(current ?? defaultSidebarIds, displayTopics);
+      const nextIds = base.filter((id) => id !== topicId);
+      writeStoredSidebarFeatureIds(nextIds);
+      return nextIds;
+    });
+  }
+
+  function openLearningStore() {
+    setStoreOpen(true);
+    setRecentOpen(false);
+    setMobileSidebarOpen(false);
+  }
+
+  function openFirstTopicWithMode(mode: TopicMetadata["uiMode"]) {
+    const topic = topics.find((item) => topicMetadata(item)?.uiMode === mode);
+    if (topic) selectTopic(topic.id);
+  }
+
   function selectTopic(topicId: string) {
     const nextTopic = topics.find((topic) => topic.id === topicId);
     cancelActiveRequest();
@@ -749,8 +1109,22 @@ export function ChatClient({
     setActivityRun(null);
     setInput("");
     setRecentOpen(false);
+    setStoreOpen(false);
     setMobileSidebarOpen(false);
     window.history.replaceState(null, "", nextTopic ? topicPath(nextTopic.slug) : "/chat");
+  }
+
+  async function openRecentConversations() {
+    if (isGuest) return;
+    setRecentLoading(true);
+    setRecentOpen(true);
+    try {
+      const response = await fetch(`/api/chats?topicId=${activeTopicId}`);
+      const data = await response.json();
+      setRecentChats(data.chats ?? []);
+    } finally {
+      setRecentLoading(false);
+    }
   }
 
   async function updatePreferredLanguage(preferredLanguage: string) {
@@ -776,9 +1150,235 @@ export function ChatClient({
     }
   }
 
+  async function patchMemorySettings(input: { enabled?: boolean; noticeSeen?: boolean }) {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch("/api/memory", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      if (!response.ok) throw new Error("Could not update memory settings");
+      const data = await response.json();
+      setMemoryDashboard(data);
+    } catch {
+      setMemoryError("Could not update memory settings.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
+  async function updateMemoryItem(memoryId: string, input: { content?: string; category?: string; tags?: string[] }) {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch(`/api/memory/${memoryId}`, {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      if (!response.ok) throw new Error("Could not update memory");
+      await loadMemoryDashboard();
+    } catch {
+      setMemoryError("Could not update that memory.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
+  async function deleteMemoryItem(memoryId: string) {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch(`/api/memory/${memoryId}`, { method: "DELETE" });
+      if (!response.ok) throw new Error("Could not delete memory");
+      await loadMemoryDashboard();
+    } catch {
+      setMemoryError("Could not delete that memory.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
+  async function clearMemory() {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch("/api/memory", { method: "DELETE" });
+      if (!response.ok) throw new Error("Could not clear memory");
+      const data = await response.json();
+      setMemoryDashboard(data);
+    } catch {
+      setMemoryError("Could not clear memory.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
   const avatarSrc = profileUser.profileImageHash
     ? `/api/me/photo?hash=${profileUser.profileImageHash}`
     : profileUser.image || undefined;
+
+  return {
+    activeChatId,
+    activeTopic,
+    activeTopicId,
+    activityRun,
+    addSidebarTopic,
+    addedTopicIds,
+    agePromptOpen,
+    awaitingResponse,
+    avatarSrc,
+    createChat,
+    displayTopics,
+    filteredTopics,
+    guestMessageLimit,
+    guestMessagesUsed,
+    guestPromptOpen,
+    handleComposerKeyDown,
+    input,
+    inputRef,
+    isFlashcardMode,
+    isFocusMusicMode,
+    isFocusTimerMode,
+    isGuest,
+    isQuizMode,
+    languageSaving,
+    learningTools,
+    listRef,
+    loadChat,
+    messages,
+    memoryDashboard,
+    memoryError,
+    memoryLoading,
+    memorySaving,
+    metadata,
+    miniAppMode,
+    mobileSidebarOpen,
+    openRecentConversations,
+    openFirstTopicWithMode,
+    openLearningStore,
+    profileOpen,
+    profileUser,
+    recentChats,
+    recentLoading,
+    recentOpen,
+    regenerateLast,
+    resetChat,
+    search,
+    selectTopic,
+    sendMessage,
+    sidebarTopics,
+    sending,
+    setActivityRun,
+    setAgePromptOpen,
+    setGuestPromptOpen,
+    setInput,
+    setMobileSidebarOpen,
+    setProfileOpen,
+    setProfileUser,
+    setRecentOpen,
+    setSearch,
+    setStoreOpen,
+    stopGeneration,
+    storeOpen,
+    submitMessage,
+    translationBundle,
+    translationRootRef,
+    patchMemorySettings,
+    updateMemoryItem,
+    updatePreferredLanguage,
+    deleteMemoryItem,
+    clearMemory,
+    removeSidebarTopic,
+    userDisplayName,
+    visibleChatMessages,
+    workspaceResetCount,
+  };
+}
+
+export function ChatClientLayout(controller: ReturnType<typeof useChatClientController>) {
+  const {
+    activeChatId,
+    activeTopic,
+    activeTopicId,
+    activityRun,
+    addSidebarTopic,
+    addedTopicIds,
+    agePromptOpen,
+    awaitingResponse,
+    avatarSrc,
+    createChat,
+    displayTopics,
+    filteredTopics,
+    guestMessageLimit,
+    guestMessagesUsed,
+    guestPromptOpen,
+    handleComposerKeyDown,
+    input,
+    inputRef,
+    isFlashcardMode,
+    isFocusMusicMode,
+    isFocusTimerMode,
+    isGuest,
+    isQuizMode,
+    languageSaving,
+    learningTools,
+    listRef,
+    loadChat,
+    messages,
+    memoryDashboard,
+    memoryError,
+    memoryLoading,
+    memorySaving,
+    metadata,
+    miniAppMode,
+    mobileSidebarOpen,
+    openFirstTopicWithMode,
+    openLearningStore,
+    openRecentConversations,
+    profileOpen,
+    profileUser,
+    recentChats,
+    recentLoading,
+    recentOpen,
+    regenerateLast,
+    resetChat,
+    search,
+    selectTopic,
+    sendMessage,
+    sidebarTopics,
+    sending,
+    setActivityRun,
+    setAgePromptOpen,
+    setGuestPromptOpen,
+    setInput,
+    setMobileSidebarOpen,
+    setProfileOpen,
+    setProfileUser,
+    setRecentOpen,
+    setSearch,
+    setStoreOpen,
+    stopGeneration,
+    storeOpen,
+    submitMessage,
+    translationBundle,
+    translationRootRef,
+    patchMemorySettings,
+    updateMemoryItem,
+    updatePreferredLanguage,
+    deleteMemoryItem,
+    clearMemory,
+    removeSidebarTopic,
+    userDisplayName,
+    visibleChatMessages,
+    workspaceResetCount,
+  } = controller;
 
   return (
     <div
@@ -791,9 +1391,13 @@ export function ChatClient({
           isGuest={isGuest}
           avatarSrc={avatarSrc}
           topics={displayTopics}
+          sidebarTopics={sidebarTopics}
           filteredTopics={filteredTopics}
           activeTopicId={activeTopicId}
+          addedTopicIds={addedTopicIds}
           search={search}
+          onAddFeature={(topicId) => addSidebarTopic(topicId, { selectAfterAdd: true })}
+          onOpenStore={openLearningStore}
           onProfile={() => {
             if (isGuest) setGuestPromptOpen(true);
             else setProfileOpen(true);
@@ -815,25 +1419,39 @@ export function ChatClient({
 
       <section className="bubble-main-shell">
         <TopBar
-          title={recentOpen ? `${activeTopic.name}'s Recent Conversations` : activeTopic.name}
-          recentOpen={recentOpen}
-          showRecent={!isGuest}
+          title={storeOpen ? "Learning Store" : recentOpen ? `${activeTopic.name}'s Recent Conversations` : activeTopic.name}
+          recentOpen={recentOpen || storeOpen}
+          showRecent={!isGuest && !storeOpen}
           sending={sending}
           canRegenerate={
-            !isGuest && !isQuizMode && !isFlashcardMode && messages.some((message) => message.role === "user")
+            !storeOpen &&
+            !isGuest &&
+            !isQuizMode &&
+            !isFlashcardMode &&
+            messages.some((message) => message.role === "user")
           }
           onReset={resetChat}
-          onRecent={() => {
-            setRecentLoading(true);
-            setRecentOpen(true);
+          onRecent={() => void openRecentConversations()}
+          onBack={() => {
+            if (storeOpen) setStoreOpen(false);
+            else setRecentOpen(false);
           }}
-          onBack={() => setRecentOpen(false)}
           onMenu={() => setMobileSidebarOpen(true)}
           onStop={stopGeneration}
           onRegenerate={regenerateLast}
+          showSessionActions={!storeOpen}
         />
 
-        {recentOpen && !isGuest ? (
+        {storeOpen ? (
+          <LearningStore
+            topics={displayTopics as LearningStoreTopic[]}
+            addedTopicIds={addedTopicIds}
+            activeTopicId={activeTopicId}
+            onAdd={addSidebarTopic}
+            onRemove={removeSidebarTopic}
+            onSelect={selectTopic}
+          />
+        ) : recentOpen && !isGuest ? (
           <RecentConversations
             chats={recentChats}
             loading={recentLoading}
@@ -865,14 +1483,18 @@ export function ChatClient({
               onReset={resetChat}
             />
           )
-        ) : isMiniAppMode ? (
-          uiMode === "interactive-instruction" ? (
+        ) : isFocusTimerMode ? (
+          <FocusTimerWorkspace tools={learningTools} />
+        ) : isFocusMusicMode ? (
+          <FocusMusicWorkspace tools={learningTools} />
+        ) : miniAppMode ? (
+          miniAppMode === "interactive-instruction" ? (
             <InteractiveInstructionWorkspace
               key={`${activeTopic.id}-${workspaceResetCount}`}
               topic={activeTopic}
               onReset={resetChat}
             />
-          ) : uiMode === "time-travel" ? (
+          ) : miniAppMode === "time-travel" ? (
             <TimeTravelWorkspace
               key={`${activeTopic.id}-${workspaceResetCount}`}
               topic={activeTopic}
@@ -890,7 +1512,7 @@ export function ChatClient({
               onStop={stopGeneration}
               onReset={resetChat}
             />
-          ) : uiMode === "socratic-instruction" ? (
+          ) : miniAppMode === "socratic-instruction" ? (
             <SocraticWorkspace
               key={`${activeTopic.id}-${workspaceResetCount}`}
               topic={activeTopic}
@@ -912,7 +1534,7 @@ export function ChatClient({
             <GuidedMiniAppWorkspace
               key={`${activeTopic.id}-${workspaceResetCount}`}
               topic={activeTopic}
-              mode={uiMode}
+              mode={miniAppMode}
               userName={userDisplayName}
               messages={messages}
               input={input}
@@ -955,6 +1577,7 @@ export function ChatClient({
             <form onSubmit={submitMessage} className="bubble-composer">
               <div className="bubble-composer-inner">
                 <textarea
+                  aria-label="Message"
                   ref={inputRef}
                   value={input}
                   onChange={(event) => setInput(event.target.value)}
@@ -984,10 +1607,23 @@ export function ChatClient({
           user={profileUser}
           avatarSrc={avatarSrc}
           languageSaving={languageSaving}
+          memoryDashboard={memoryDashboard}
+          memoryLoading={memoryLoading}
+          memorySaving={memorySaving}
+          memoryError={memoryError}
           onLanguageChange={updatePreferredLanguage}
+          onMemorySettings={patchMemorySettings}
+          onMemoryUpdate={updateMemoryItem}
+          onMemoryDelete={deleteMemoryItem}
+          onMemoryClear={clearMemory}
           onClose={() => setProfileOpen(false)}
         />
       ) : null}
+      <PersistentLearningDock
+        tools={learningTools}
+        onOpenTimer={() => openFirstTopicWithMode("study-timer")}
+        onOpenMusic={() => openFirstTopicWithMode("focus-music")}
+      />
       {isGuest && guestPromptOpen ? (
         <GuestContinueModal
           used={guestMessagesUsed}
@@ -1009,13 +1645,17 @@ export function ChatClient({
   );
 }
 
-function TopicSidebar({
+export function TopicSidebar({
   isGuest,
   avatarSrc,
   topics,
+  sidebarTopics,
   filteredTopics,
   activeTopicId,
+  addedTopicIds,
   search,
+  onAddFeature,
+  onOpenStore,
   onProfile,
   onSearch,
   onSelect,
@@ -1023,15 +1663,19 @@ function TopicSidebar({
   isGuest: boolean;
   avatarSrc?: string;
   topics: Topic[];
+  sidebarTopics: Topic[];
   filteredTopics: Topic[];
   activeTopicId: string;
+  addedTopicIds: string[];
   search: string;
+  onAddFeature: (topicId: string) => void;
+  onOpenStore: () => void;
   onProfile: () => void;
   onSearch: (value: string) => void;
   onSelect: (topicId: string) => void;
 }) {
   const activeTopic = topics.find((topic) => topic.id === activeTopicId);
-  const rows = filteredTopics.length ? filteredTopics : activeTopic ? [activeTopic] : [];
+  const rows = search ? filteredTopics : sidebarTopics;
   const groups = rows.reduce<Array<{ category: string; topics: Topic[] }>>((acc, topic) => {
     const category = topicMetadata(topic)?.category ?? "Learning";
     const existing = acc.find((group) => group.category === category);
@@ -1052,14 +1696,26 @@ function TopicSidebar({
           </GoogleContinueButton>
         ) : (
           <button type="button" onClick={onProfile} aria-label="Open profile" className="bubble-avatar-button">
-            {avatarSrc ? <img src={avatarSrc} alt="" /> : null}
+            {avatarSrc ? (
+              <Image src={avatarSrc} alt="" width={40} height={40} sizes="40px" unoptimized />
+            ) : null}
           </button>
         )}
         <InspirLogo className="bubble-sidebar-logo" />
+        <button
+          type="button"
+          onClick={onOpenStore}
+          aria-label="Open learning store"
+          title="Open learning store"
+          className="bubble-sidebar-store-button"
+        >
+          <Plus size={20} />
+        </button>
       </div>
       <div className="bubble-search-row">
         <div className="bubble-search-shell">
           <input
+            aria-label="Search chats"
             value={search}
             onChange={(event) => onSearch(event.target.value)}
             placeholder="Search"
@@ -1072,20 +1728,56 @@ function TopicSidebar({
         {search && filteredTopics.length === 0 ? (
           <div className="bubble-no-results">No search results</div>
         ) : null}
+        {!search && rows.length === 0 && activeTopic ? (
+          <button
+            type="button"
+            onClick={() => onSelect(activeTopic.id)}
+            className={`bubble-topic-row ${activeTopic.id === activeTopicId ? "is-active" : ""}`}
+          >
+            <span className="bubble-topic-title">{activeTopic.name}</span>
+            <span className="bubble-topic-subtitle">{activeTopic.subText}</span>
+          </button>
+        ) : null}
         {groups.map((group) => (
           <section key={group.category} className="bubble-topic-group">
             <h3>{group.category}</h3>
-            {group.topics.map((topic) => (
-              <button
-                key={topic.id}
-                type="button"
-                onClick={() => onSelect(topic.id)}
-                className={`bubble-topic-row ${topic.id === activeTopicId ? "is-active" : ""}`}
-              >
-                <span className="bubble-topic-title">{topic.name}</span>
-                <span className="bubble-topic-subtitle">{topic.subText}</span>
-              </button>
-            ))}
+            {group.topics.map((topic) => {
+              const isAdded = addedTopicIds.includes(topic.id);
+              return (
+                <div key={topic.id} className="bubble-topic-row-shell">
+                  <button
+                    type="button"
+                    onClick={() => onSelect(topic.id)}
+                    className={`bubble-topic-row ${search ? "has-sidebar-action" : ""} ${
+                      topic.id === activeTopicId ? "is-active" : ""
+                    }`}
+                  >
+                    <span className="bubble-topic-title">{topic.name}</span>
+                    <span className="bubble-topic-subtitle">{topic.subText}</span>
+                  </button>
+                  {search ? (
+                    isAdded ? (
+                      <span className="bubble-topic-row-action is-added" aria-label={`${topic.name} is added`}>
+                        <Check size={16} />
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          onAddFeature(topic.id);
+                        }}
+                        className="bubble-topic-row-action"
+                        aria-label={`Add ${topic.name} to sidebar`}
+                        title={`Add ${topic.name} to sidebar`}
+                      >
+                        <Plus size={16} />
+                      </button>
+                    )
+                  ) : null}
+                </div>
+              );
+            })}
           </section>
         ))}
       </div>
@@ -1093,7 +1785,7 @@ function TopicSidebar({
   );
 }
 
-function TopBar({
+export function TopBar({
   title,
   recentOpen,
   showRecent,
@@ -1105,6 +1797,7 @@ function TopBar({
   onMenu,
   onStop,
   onRegenerate,
+  showSessionActions = true,
 }: {
   title: string;
   recentOpen: boolean;
@@ -1117,6 +1810,7 @@ function TopBar({
   onMenu: () => void;
   onStop: () => void;
   onRegenerate: () => void;
+  showSessionActions?: boolean;
 }) {
   return (
     <header className="bubble-topbar">
@@ -1132,29 +1826,33 @@ function TopBar({
         <span>{title}</span>
       </div>
       <div className="bubble-topbar-actions">
-        <button type="button" onClick={onReset} aria-label="Reset conversation" className="bubble-reset-button">
-          <RotateCcw size={25} strokeWidth={3} />
-        </button>
-        <button
-          type="button"
-          onClick={sending ? onStop : onRegenerate}
-          disabled={!sending && !canRegenerate}
-          aria-label={sending ? "Stop response" : "Regenerate response"}
-          className="bubble-regenerate-button"
-        >
-          {sending ? <Square size={18} fill="currentColor" /> : <RefreshCw size={24} strokeWidth={3} />}
-        </button>
-        {showRecent ? (
-          <button type="button" onClick={onRecent} aria-label="Recent conversations" className="bubble-history-button">
-            <History size={26} strokeWidth={3} />
-          </button>
+        {showSessionActions ? (
+          <>
+            <button type="button" onClick={onReset} aria-label="Reset conversation" className="bubble-reset-button">
+              <RotateCcw size={25} strokeWidth={3} />
+            </button>
+            <button
+              type="button"
+              onClick={sending ? onStop : onRegenerate}
+              disabled={!sending && !canRegenerate}
+              aria-label={sending ? "Stop response" : "Regenerate response"}
+              className="bubble-regenerate-button"
+            >
+              {sending ? <Square size={18} fill="currentColor" /> : <RefreshCw size={24} strokeWidth={3} />}
+            </button>
+            {showRecent ? (
+              <button type="button" onClick={onRecent} aria-label="Recent conversations" className="bubble-history-button">
+                <History size={26} strokeWidth={3} />
+              </button>
+            ) : null}
+          </>
         ) : null}
       </div>
     </header>
   );
 }
 
-function TopicIntroCard({ topic }: { topic: Topic }) {
+export function TopicIntroCard({ topic }: { topic: Topic }) {
   const seo = topicSeo(topic);
 
   return (
@@ -1192,7 +1890,7 @@ function TopicIntroCard({ topic }: { topic: Topic }) {
   );
 }
 
-function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: string }) {
+export function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: string }) {
   const seo = topicSeo(topic);
   const starters = topicMetadata(topic)?.starters ?? [];
 
@@ -1227,7 +1925,7 @@ function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: s
   );
 }
 
-function StarterGrid({
+export function StarterGrid({
   starters,
   onStart,
 }: {
@@ -1890,7 +2588,7 @@ const miniAppConfigs: Record<MiniMode, MiniAppConfig> = {
   },
 };
 
-function TimeTravelWorkspace({
+export function TimeTravelWorkspace({
   topic,
   userName,
   messages,
@@ -1923,14 +2621,28 @@ function TimeTravelWorkspace({
 }) {
   const visibleMessages = displayMessages(messages);
   const hasSession = messages.some((message) => message.role !== "system") || sending || awaitingResponse;
-  const [intent, setIntent] = useState("");
-  const [step, setStep] = useState<TimeTravelStep>("departure");
-  const [journeyOptions, setJourneyOptions] = useState(() => timeTravelJourneyTemplates.slice(0, 5));
-  const [selectedJourney, setSelectedJourney] = useState<TimeTravelJourney | null>(null);
-  const [identityId, setIdentityId] = useState("");
-  const [purposeId, setPurposeId] = useState("");
-  const [realismId, setRealismId] = useState("");
-  const [depthId, setDepthId] = useState("");
+  const [
+    { intent, step, journeyOptions, selectedJourney, identityId, purposeId, realismId, depthId },
+    updateTimeTravel,
+  ] = useReducer(mergeStateReducer<{
+    intent: string;
+    step: TimeTravelStep;
+    journeyOptions: TimeTravelJourney[];
+    selectedJourney: TimeTravelJourney | null;
+    identityId: string;
+    purposeId: string;
+    realismId: string;
+    depthId: string;
+  }>, {
+    intent: "",
+    step: "departure",
+    journeyOptions: timeTravelJourneyTemplates.slice(0, 5),
+    selectedJourney: null,
+    identityId: "",
+    purposeId: "",
+    realismId: "",
+    depthId: "",
+  });
 
   const identity = timeTravelerIdentities.find((option) => option.id === identityId);
   const purpose = timeTravelPurposes.find((option) => option.id === purposeId);
@@ -1939,23 +2651,27 @@ function TimeTravelWorkspace({
 
   function resolveIntent(event?: FormEvent) {
     event?.preventDefault();
-    setJourneyOptions(resolveJourneyOptions(intent));
-    setSelectedJourney(null);
-    setStep("destination");
+    updateTimeTravel({
+      journeyOptions: resolveJourneyOptions(intent),
+      selectedJourney: null,
+      step: "destination",
+    });
   }
 
   function selectJourney(journey: TimeTravelJourney) {
-    setSelectedJourney(journey);
-    setStep("identity");
+    updateTimeTravel({ selectedJourney: journey, step: "identity" });
   }
 
   function sendRandomJourney() {
     const journey =
       timeTravelJourneyTemplates[Math.floor(Math.random() * timeTravelJourneyTemplates.length)] ??
       timeTravelJourneyTemplates[0];
-    setIntent(journey.label);
-    setJourneyOptions(resolveJourneyOptions(journey.label));
-    selectJourney(journey);
+    updateTimeTravel({
+      intent: journey.label,
+      journeyOptions: resolveJourneyOptions(journey.label),
+      selectedJourney: journey,
+      step: "identity",
+    });
   }
 
   function beginJourney() {
@@ -1998,7 +2714,7 @@ function TimeTravelWorkspace({
               <TimeTravelDepartureBoard
                 intent={intent}
                 topic={topic}
-                onIntent={setIntent}
+                onIntent={(nextIntent) => updateTimeTravel({ intent: nextIntent })}
                 onResolve={resolveIntent}
                 onRandom={sendRandomJourney}
                 onSelect={selectJourney}
@@ -2007,7 +2723,7 @@ function TimeTravelWorkspace({
               <TimeTravelDestinationStep
                 intent={intent}
                 options={journeyOptions}
-                onBack={() => setStep("departure")}
+                onBack={() => updateTimeTravel({ step: "departure" })}
                 onSelect={selectJourney}
               />
             ) : step === "identity" ? (
@@ -2018,10 +2734,9 @@ function TimeTravelWorkspace({
                 choices={timeTravelerIdentities}
                 selectedId={identityId}
                 onSelect={(id) => {
-                  setIdentityId(id);
-                  setStep("purpose");
+                  updateTimeTravel({ identityId: id, step: "purpose" });
                 }}
-                onBack={() => setStep("destination")}
+                onBack={() => updateTimeTravel({ step: "destination" })}
               />
             ) : step === "purpose" ? (
               <TimeTravelChoiceStep
@@ -2031,10 +2746,9 @@ function TimeTravelWorkspace({
                 choices={timeTravelPurposes}
                 selectedId={purposeId}
                 onSelect={(id) => {
-                  setPurposeId(id);
-                  setStep("realism");
+                  updateTimeTravel({ purposeId: id, step: "realism" });
                 }}
-                onBack={() => setStep("identity")}
+                onBack={() => updateTimeTravel({ step: "identity" })}
               />
             ) : step === "realism" ? (
               <TimeTravelChoiceStep
@@ -2044,10 +2758,9 @@ function TimeTravelWorkspace({
                 choices={timeTravelRealism}
                 selectedId={realismId}
                 onSelect={(id) => {
-                  setRealismId(id);
-                  setStep("depth");
+                  updateTimeTravel({ realismId: id, step: "depth" });
                 }}
-                onBack={() => setStep("purpose")}
+                onBack={() => updateTimeTravel({ step: "purpose" })}
               />
             ) : step === "depth" ? (
               <TimeTravelChoiceStep
@@ -2057,10 +2770,9 @@ function TimeTravelWorkspace({
                 choices={timeTravelDepth}
                 selectedId={depthId}
                 onSelect={(id) => {
-                  setDepthId(id);
-                  setStep("clearance");
+                  updateTimeTravel({ depthId: id, step: "clearance" });
                 }}
-                onBack={() => setStep("realism")}
+                onBack={() => updateTimeTravel({ step: "realism" })}
               />
             ) : (
               <TimeTravelClearance
@@ -2070,7 +2782,7 @@ function TimeTravelWorkspace({
                 realism={realism}
                 depth={depth}
                 sending={sending}
-                onBack={() => setStep("depth")}
+                onBack={() => updateTimeTravel({ step: "depth" })}
                 onBegin={beginJourney}
               />
             )}
@@ -2089,7 +2801,7 @@ function TimeTravelWorkspace({
   );
 }
 
-function TimeTravelDepartureBoard({
+export function TimeTravelDepartureBoard({
   intent,
   topic,
   onIntent,
@@ -2122,6 +2834,7 @@ function TimeTravelDepartureBoard({
       <form className="bubble-time-search-board" onSubmit={onResolve}>
         <Search size={20} />
         <input
+          aria-label="Time travel destination"
           value={intent}
           onChange={(event) => onIntent(event.target.value)}
           placeholder="Where and when do you want to go?"
@@ -2165,7 +2878,7 @@ function TimeTravelDepartureBoard({
   );
 }
 
-function TimeTravelDestinationStep({
+export function TimeTravelDestinationStep({
   intent,
   options,
   onBack,
@@ -2199,7 +2912,7 @@ function TimeTravelDestinationStep({
   );
 }
 
-function TimeTravelChoiceStep({
+export function TimeTravelChoiceStep({
   kicker,
   title,
   body,
@@ -2243,7 +2956,7 @@ function TimeTravelChoiceStep({
   );
 }
 
-function TimeTravelClearance({
+export function TimeTravelClearance({
   journey,
   identity,
   purpose,
@@ -2296,24 +3009,27 @@ function TimeTravelClearance({
   );
 }
 
-function TimeTravelAdvisoryItem({
+const timeTravelAdvisoryIcons = {
+  language: Languages,
+  risk: Thermometer,
+  money: Coins,
+  status: UserRound,
+  rules: Gavel,
+  evidence: FileText,
+};
+
+type TimeTravelAdvisoryIcon = keyof typeof timeTravelAdvisoryIcons;
+
+export function TimeTravelAdvisoryItem({
   icon,
   label,
   value,
 }: {
-  icon: "language" | "risk" | "money" | "status" | "rules" | "evidence";
+  icon: TimeTravelAdvisoryIcon;
   label: string;
   value: string;
 }) {
-  const icons = {
-    language: Languages,
-    risk: Thermometer,
-    money: Coins,
-    status: UserRound,
-    rules: Gavel,
-    evidence: FileText,
-  };
-  const Icon = icons[icon];
+  const Icon = timeTravelAdvisoryIcons[icon];
   return (
     <article className="bubble-time-advisory-item">
       <Icon size={19} />
@@ -2325,7 +3041,7 @@ function TimeTravelAdvisoryItem({
   );
 }
 
-function TimeTravelPassport({
+export function TimeTravelPassport({
   journey,
   identity,
   purpose,
@@ -2407,7 +3123,7 @@ type CoachChatDetail = {
   icon?: ComponentType<{ size?: number }>;
 };
 
-function CoachChatSession({
+export function CoachChatSession({
   eyebrow,
   title,
   subtitle,
@@ -2541,6 +3257,7 @@ function CoachChatSession({
           <form onSubmit={onSubmit} className="bubble-composer coach-chat-composer">
             <div className="bubble-composer-inner">
               <textarea
+                aria-label="Message coach"
                 ref={inputRef}
                 value={input}
                 onChange={(event) => onInput(event.target.value)}
@@ -2567,7 +3284,7 @@ function CoachChatSession({
   );
 }
 
-function TimeTravelSession({
+export function TimeTravelSession({
   topic,
   userName,
   journey,
@@ -3082,11 +3799,6 @@ function extractCollaborationGoalFromContent(content: string) {
   return match?.[1]?.trim() ?? "";
 }
 
-function extractCollaborationModeFromContent(content: string) {
-  const match = content.match(/\nMode:\s*([^\n]+)/i);
-  return match?.[1]?.trim() ?? "";
-}
-
 function buildCollaborativeInstructionPrompt({
   goal,
   mode,
@@ -3121,7 +3833,7 @@ function formatSprintTime(seconds: number) {
   return `${minutes}:${String(remainder).padStart(2, "0")}`;
 }
 
-function CollaborativeInstructionWorkspace({
+export function CollaborativeInstructionWorkspace({
   topic,
   userName,
   messages,
@@ -3152,11 +3864,22 @@ function CollaborativeInstructionWorkspace({
   onStop: () => void;
   onReset: () => void;
 }) {
-  const [goal, setGoal] = useState("");
-  const [roomGoal, setRoomGoal] = useState("");
-  const [modeId, setModeId] = useState<CollaborationModeId>("friendly_builder");
-  const [sprintSeconds, setSprintSeconds] = useState(10 * 60);
-  const [sprintRunning, setSprintRunning] = useState(false);
+  const [{ goal, roomGoal, modeId, sprintSeconds, sprintRunning }, updateCollaborationState] = useReducer(
+    mergeStateReducer<{
+      goal: string;
+      roomGoal: string;
+      modeId: CollaborationModeId;
+      sprintSeconds: number;
+      sprintRunning: boolean;
+    }>,
+    {
+      goal: "",
+      roomGoal: "",
+      modeId: "friendly_builder",
+      sprintSeconds: 10 * 60,
+      sprintRunning: false,
+    },
+  );
   const rawMessages = messages.filter((message) => message.role !== "system");
   const visibleMessages = displayMessages(messages);
   const recoveredGoal = extractCollaborationGoal(rawMessages);
@@ -3165,20 +3888,18 @@ function CollaborativeInstructionWorkspace({
   const room = collaborationRoomTemplates[roomType];
   const RoomIcon = room.icon;
   const activeMode = getCollaborationMode(modeId);
-  const ActiveModeIcon = activeMode.icon;
   const hasSession = rawMessages.length > 0 || sending || awaitingResponse || Boolean(roomGoal);
-  const assistantCount = visibleMessages.filter((message) => message.role === "assistant").length;
 
   useEffect(() => {
     if (!sprintRunning) return;
     const timer = window.setInterval(() => {
-      setSprintSeconds((current) => {
-        if (current <= 1) {
+      updateCollaborationState((current) => {
+        if (current.sprintSeconds <= 1) {
           window.clearInterval(timer);
-          window.setTimeout(() => setSprintRunning(false), 0);
-          return 0;
+          window.setTimeout(() => updateCollaborationState({ sprintRunning: false }), 0);
+          return { sprintSeconds: 0 };
         }
-        return current - 1;
+        return { sprintSeconds: current.sprintSeconds - 1 };
       });
     }, 1000);
     return () => window.clearInterval(timer);
@@ -3189,7 +3910,7 @@ function CollaborativeInstructionWorkspace({
     const trimmed = goal.trim();
     if (!trimmed || sending) return;
     const nextRoomType = inferCollaborationRoomType(trimmed);
-    setRoomGoal(trimmed);
+    updateCollaborationState({ roomGoal: trimmed });
     void onSend(
       buildCollaborativeInstructionPrompt({
         goal: trimmed,
@@ -3202,7 +3923,7 @@ function CollaborativeInstructionWorkspace({
   function switchMode(nextModeId: CollaborationModeId) {
     if (nextModeId === modeId || sending) return;
     const nextMode = getCollaborationMode(nextModeId);
-    setModeId(nextModeId);
+    updateCollaborationState({ modeId: nextModeId });
     if (hasSession) {
       void onSend(
         buildMiniAppInstruction({
@@ -3225,8 +3946,7 @@ function CollaborativeInstructionWorkspace({
 
   function startSprint() {
     if (sending) return;
-    setSprintSeconds(10 * 60);
-    setSprintRunning(true);
+    updateCollaborationState({ sprintSeconds: 10 * 60, sprintRunning: true });
     void onSend(
       buildMiniAppInstruction({
         visible: "Start 10-minute sprint",
@@ -3236,385 +3956,265 @@ function CollaborativeInstructionWorkspace({
   }
 
   if (hasSession) {
-    const actionItems: CoachChatAction[] = [
-      ...collaborationHandoffActions.map((action) => ({
-        label: action.label,
-        icon: action.icon,
-        disabled: sending,
-        onClick: () => sendHandoff(action),
-      })),
-      {
-        label: sprintRunning ? "Sprint running" : "Start 10 min",
-        icon: Timer,
-        disabled: sending || sprintRunning,
-        onClick: startSprint,
-      },
-      ...collaborationModeOptions.map((modeOption) => ({
-        label: modeOption.label,
-        icon: modeOption.icon,
-        disabled: sending || modeOption.id === modeId,
-        onClick: () => switchMode(modeOption.id),
-      })),
-    ];
-
     return (
-      <CoachChatSession
-        eyebrow="Collaborative Instruction"
-        title={activeGoal || topic.name}
-        subtitle={`${room.title} - ${activeMode.label}`}
-        userName={userName}
-        coachName="Collaborator"
-        placeholder="Add, edit, challenge, or decide the next move"
-        messages={visibleMessages}
-        input={input}
-        sending={sending}
+      <CollaborativeSession
+        activeGoal={activeGoal}
+        activeMode={activeMode}
         awaitingResponse={awaitingResponse}
+        input={input}
         inputRef={inputRef}
         listRef={listRef}
-        actions={actionItems}
-        details={[
-          { title: "Workspace", body: `${room.label} - ${room.artifactTitle}`, icon: RoomIcon },
-          { title: "Working style", body: `${activeMode.role}. ${activeMode.tone}.`, icon: ActiveModeIcon },
-          { title: "Sprint clock", body: sprintRunning ? `${formatSprintTime(sprintSeconds)} remaining` : "Ready for a 10-minute checkpoint", icon: Timer },
-          ...room.sections.map((section) => ({ title: section.title, body: section.body, icon: FileText })),
-        ]}
-        resetLabel="Change setup"
+        messages={visibleMessages}
+        modeId={modeId}
+        room={room}
+        roomIcon={RoomIcon}
+        sending={sending}
+        sprintRunning={sprintRunning}
+        sprintSeconds={sprintSeconds}
+        topic={topic}
+        userName={userName}
+        onHandoff={sendHandoff}
         onInput={onInput}
-        onSubmit={onSubmit}
         onKeyDown={onKeyDown}
-        onStop={onStop}
         onReset={onReset}
+        onSprint={startSprint}
+        onStop={onStop}
+        onSubmit={onSubmit}
+        onSwitchMode={switchMode}
       />
     );
   }
 
   return (
+    <CollaborativeSetup
+      activeMode={activeMode}
+      goal={goal}
+      listRef={listRef}
+      modeId={modeId}
+      room={room}
+      roomIcon={RoomIcon}
+      sending={sending}
+      topic={topic}
+      onGoal={(value) => updateCollaborationState({ goal: value })}
+      onMode={(value) => updateCollaborationState({ modeId: value })}
+      onStartWorkroom={startWorkroom}
+    />
+  );
+}
+
+export function CollaborativeSession({
+  activeGoal,
+  activeMode,
+  awaitingResponse,
+  input,
+  inputRef,
+  listRef,
+  messages,
+  modeId,
+  room,
+  roomIcon: RoomIcon,
+  sending,
+  sprintRunning,
+  sprintSeconds,
+  topic,
+  userName,
+  onHandoff,
+  onInput,
+  onKeyDown,
+  onReset,
+  onSprint,
+  onStop,
+  onSubmit,
+  onSwitchMode,
+}: {
+  activeGoal: string;
+  activeMode: (typeof collaborationModeOptions)[number];
+  awaitingResponse: boolean;
+  input: string;
+  inputRef: RefObject<HTMLTextAreaElement | null>;
+  listRef: RefObject<HTMLDivElement | null>;
+  messages: Message[];
+  modeId: CollaborationModeId;
+  room: (typeof collaborationRoomTemplates)[CollaborationRoomType];
+  roomIcon: ComponentType<{ size?: number }>;
+  sending: boolean;
+  sprintRunning: boolean;
+  sprintSeconds: number;
+  topic: Topic;
+  userName: string;
+  onHandoff: (action: (typeof collaborationHandoffActions)[number]) => void;
+  onInput: (value: string) => void;
+  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
+  onReset: () => void;
+  onSprint: () => void;
+  onStop: () => void;
+  onSubmit: (event?: FormEvent) => void;
+  onSwitchMode: (modeId: CollaborationModeId) => void;
+}) {
+  const ActiveModeIcon = activeMode.icon;
+  const actionItems: CoachChatAction[] = [
+    ...collaborationHandoffActions.map((action) => ({
+      label: action.label,
+      icon: action.icon,
+      disabled: sending,
+      onClick: () => onHandoff(action),
+    })),
+    {
+      label: sprintRunning ? "Sprint running" : "Start 10 min",
+      icon: Timer,
+      disabled: sending || sprintRunning,
+      onClick: onSprint,
+    },
+    ...collaborationModeOptions.map((modeOption) => ({
+      label: modeOption.label,
+      icon: modeOption.icon,
+      disabled: sending || modeOption.id === modeId,
+      onClick: () => onSwitchMode(modeOption.id),
+    })),
+  ];
+
+  return (
+    <CoachChatSession
+      eyebrow="Collaborative Instruction"
+      title={activeGoal || topic.name}
+      subtitle={`${room.title} - ${activeMode.label}`}
+      userName={userName}
+      coachName="Collaborator"
+      placeholder="Add, edit, challenge, or decide the next move"
+      messages={messages}
+      input={input}
+      sending={sending}
+      awaitingResponse={awaitingResponse}
+      inputRef={inputRef}
+      listRef={listRef}
+      actions={actionItems}
+      details={[
+        { title: "Workspace", body: `${room.label} - ${room.artifactTitle}`, icon: RoomIcon },
+        { title: "Working style", body: `${activeMode.role}. ${activeMode.tone}.`, icon: ActiveModeIcon },
+        {
+          title: "Sprint clock",
+          body: sprintRunning ? `${formatSprintTime(sprintSeconds)} remaining` : "Ready for a 10-minute checkpoint",
+          icon: Timer,
+        },
+        ...room.sections.map((section) => ({ title: section.title, body: section.body, icon: FileText })),
+      ]}
+      resetLabel="Change setup"
+      onInput={onInput}
+      onSubmit={onSubmit}
+      onKeyDown={onKeyDown}
+      onStop={onStop}
+      onReset={onReset}
+    />
+  );
+}
+
+export function CollaborativeSetup({
+  activeMode,
+  goal,
+  listRef,
+  modeId,
+  room,
+  roomIcon: RoomIcon,
+  sending,
+  topic,
+  onGoal,
+  onMode,
+  onStartWorkroom,
+}: {
+  activeMode: (typeof collaborationModeOptions)[number];
+  goal: string;
+  listRef: RefObject<HTMLDivElement | null>;
+  modeId: CollaborationModeId;
+  room: (typeof collaborationRoomTemplates)[CollaborationRoomType];
+  roomIcon: ComponentType<{ size?: number }>;
+  sending: boolean;
+  topic: Topic;
+  onGoal: (value: string) => void;
+  onMode: (value: CollaborationModeId) => void;
+  onStartWorkroom: (event?: FormEvent) => void;
+}) {
+  const ActiveModeIcon = activeMode.icon;
+  return (
     <main className="bubble-workspace bubble-collab-workspace">
       <div ref={listRef} className="bubble-collab-scroll app-scrollbar">
-        {!hasSession ? (
-          <section className="bubble-collab-start">
-            <header className="bubble-collab-roombar">
-              <div>
-                <span>Shared workroom</span>
-                <h2>Collaborative Instruction</h2>
-              </div>
-              <strong className="bubble-collab-status-pill">
-                <ActiveModeIcon size={15} />
-                Mode: {activeMode.label}
-              </strong>
-            </header>
-            <div className="bubble-collab-start-grid">
-              <form className="bubble-collab-intent-panel" onSubmit={startWorkroom}>
-                <label htmlFor="collab-goal">What are we trying to build, solve, learn, or improve?</label>
-                <textarea
-                  id="collab-goal"
-                  value={goal}
-                  onChange={(event) => setGoal(event.target.value)}
-                  placeholder="Prepare for a class discussion on Tata's acquisition of JLR"
-                  rows={5}
-                  disabled={sending}
-                />
-                <div className="bubble-collab-mode-picker" role="group" aria-label="Collaboration style">
-                  {collaborationModeOptions.map((modeOption) => {
-                    const ModeIcon = modeOption.icon;
-                    return (
-                      <button
-                        key={modeOption.id}
-                        type="button"
-                        onClick={() => setModeId(modeOption.id)}
-                        className={modeOption.id === modeId ? "is-active" : ""}
-                      >
-                        <ModeIcon size={17} />
-                        <span>{modeOption.label}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-                <button type="submit" disabled={!goal.trim() || sending} className="bubble-collab-open-button">
-                  <Route size={18} />
-                  Open workroom
-                </button>
-              </form>
-              <section className="bubble-collab-canvas-preview" aria-label="Workspace preview">
-                <div className="bubble-collab-preview-head">
-                  <RoomIcon size={22} />
-                  <div>
-                    <span>{room.title}</span>
-                    <strong>{room.artifactTitle}</strong>
-                  </div>
-                </div>
-                <div className="bubble-collab-preview-grid">
-                  {room.sections.map((section) => (
-                    <article key={section.title}>
-                      <strong>{section.title}</strong>
-                      <span>{section.body}</span>
-                    </article>
-                  ))}
-                </div>
-                <div className="bubble-collab-quick-starts">
-                  {collaborationQuickStarts.map((quickStart) => (
-                    <button key={quickStart} type="button" onClick={() => setGoal(quickStart)}>
-                      <Sparkles size={14} />
-                      <span>{quickStart}</span>
-                    </button>
-                  ))}
-                </div>
-              </section>
+        <section className="bubble-collab-start">
+          <header className="bubble-collab-roombar">
+            <div>
+              <span>Shared workroom</span>
+              <h2>Collaborative Instruction</h2>
             </div>
-            <TopicResourceLinks topic={topic} />
-          </section>
-        ) : (
-          <section className="bubble-collab-room">
-            <header className="bubble-collab-roombar">
-              <div>
-                <span>{room.title}</span>
-                <h2>{activeGoal || topic.name}</h2>
-              </div>
-              <div className="bubble-collab-roombar-actions">
-                <strong className="bubble-collab-status-pill">
-                  <ActiveModeIcon size={15} />
-                  Mode: {activeMode.label}
-                </strong>
-                <button type="button" onClick={onReset} className="bubble-collab-reset-button">
-                  New room
-                </button>
-              </div>
-            </header>
-            <div className="bubble-collab-room-grid">
-              <section className="bubble-collab-canvas">
-                <div className="bubble-collab-canvas-head">
-                  <div>
-                    <RoomIcon size={22} />
-                    <span>{room.artifactTitle}</span>
-                  </div>
-                  <strong>v{Math.max(1, assistantCount + 1)}</strong>
-                </div>
-                <div className="bubble-collab-ai-presence">
-                  <Bot size={15} />
-                  <span>{sending || awaitingResponse ? "AI is reviewing your artifact" : "Ready for next handoff"}</span>
-                </div>
-                <div className="bubble-collab-section-grid">
-                  {room.sections.map((section, index) => (
-                    <article key={section.title}>
-                      <header>
-                        <span>{String(index + 1).padStart(2, "0")}</span>
-                        <strong>{section.title}</strong>
-                      </header>
-                      <p>{section.body}</p>
-                      {room.comments[index % room.comments.length] ? (
-                        <em>{room.comments[index % room.comments.length]}</em>
-                      ) : null}
-                    </article>
-                  ))}
-                </div>
-                <div className="bubble-collab-inline-comments">
-                  {["Strong", "Unclear", "Prove this", "Cut", "Expand"].map((comment) => (
-                    <span key={comment}>{comment}</span>
-                  ))}
-                </div>
-              </section>
-              <aside className="bubble-collab-rail">
-                <section className="bubble-collab-rail-panel">
-                  <header>
-                    <SlidersHorizontal size={17} />
-                    <strong>Working style</strong>
-                  </header>
-                  <div className="bubble-collab-mode-switches">
-                    {collaborationModeOptions.map((modeOption) => {
-                      const ModeIcon = modeOption.icon;
-                      return (
-                        <button
-                          key={modeOption.id}
-                          type="button"
-                          onClick={() => switchMode(modeOption.id)}
-                          className={modeOption.id === modeId ? "is-active" : ""}
-                          disabled={sending}
-                        >
-                          <ModeIcon size={16} />
-                          <span>{modeOption.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </section>
-                <section className="bubble-collab-rail-panel">
-                  <header>
-                    <HandOffIcon />
-                    <strong>Handoff</strong>
-                  </header>
-                  <div className="bubble-collab-handoff-grid">
-                    {collaborationHandoffActions.map((action) => {
-                      const ActionIcon = action.icon;
-                      return (
-                        <button
-                          key={action.label}
-                          type="button"
-                          onClick={() => sendHandoff(action)}
-                          disabled={sending}
-                        >
-                          <ActionIcon size={16} />
-                          <span>{action.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </section>
-                <section className="bubble-collab-rail-panel bubble-collab-sprint">
-                  <header>
-                    <Timer size={17} />
-                    <strong>Sprint</strong>
-                  </header>
-                  <div>
-                    <span>{formatSprintTime(sprintSeconds)}</span>
-                    <button type="button" onClick={startSprint} disabled={sending || sprintRunning}>
-                      {sprintRunning ? "Running" : "Start 10 min"}
+            <strong className="bubble-collab-status-pill">
+              <ActiveModeIcon size={15} />
+              Mode: {activeMode.label}
+            </strong>
+          </header>
+          <div className="bubble-collab-start-grid">
+            <form className="bubble-collab-intent-panel" onSubmit={onStartWorkroom}>
+              <label htmlFor="collab-goal">What are we trying to build, solve, learn, or improve?</label>
+              <textarea
+                id="collab-goal"
+                value={goal}
+                onChange={(event) => onGoal(event.target.value)}
+                placeholder="Prepare for a class discussion on Tata's acquisition of JLR"
+                rows={5}
+                disabled={sending}
+              />
+              <fieldset className="bubble-collab-mode-picker">
+                <legend className="sr-only">Collaboration style</legend>
+                {collaborationModeOptions.map((modeOption) => {
+                  const ModeIcon = modeOption.icon;
+                  return (
+                    <button
+                      key={modeOption.id}
+                      type="button"
+                      onClick={() => onMode(modeOption.id)}
+                      className={modeOption.id === modeId ? "is-active" : ""}
+                    >
+                      <ModeIcon size={17} />
+                      <span>{modeOption.label}</span>
                     </button>
-                  </div>
-                </section>
-                <section className="bubble-collab-rail-panel">
-                  <header>
-                    <Milestone size={17} />
-                    <strong>Decision log</strong>
-                  </header>
-                  <ol className="bubble-collab-decision-list">
-                    <li>
-                      <span>Owner</span>
-                      <strong>User decides what ships</strong>
-                    </li>
-                    <li>
-                      <span>Open</span>
-                      <strong>Accept, edit, or reject the next AI pass</strong>
-                    </li>
-                  </ol>
-                </section>
-              </aside>
-            </div>
-            <CollaborationActivityFeed
-              messages={visibleMessages}
-              userName={userName}
-              awaitingResponse={awaitingResponse}
-              modeLabel={activeMode.label}
-              initialGoal={activeGoal}
-            />
-          </section>
-        )}
-      </div>
-      {hasSession ? (
-        <form onSubmit={onSubmit} className="bubble-composer bubble-collab-composer">
-          <div className="bubble-composer-inner">
-            <textarea
-              ref={inputRef}
-              value={input}
-              onChange={(event) => onInput(event.target.value)}
-              onKeyDown={onKeyDown}
-              placeholder="Add, edit, challenge, or decide the next move"
-              disabled={sending}
-              className="bubble-composer-input"
-              rows={1}
-            />
-            <button
-              type={sending ? "button" : "submit"}
-              onClick={sending ? onStop : undefined}
-              disabled={!sending && !input.trim()}
-              aria-label={sending ? "Stop response" : "Send message"}
-              className="bubble-send-button"
-            >
-              {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
-            </button>
+                  );
+                })}
+              </fieldset>
+              <button type="submit" disabled={!goal.trim() || sending} className="bubble-collab-open-button">
+                <Route size={18} />
+                Open workroom
+              </button>
+            </form>
+            <section className="bubble-collab-canvas-preview" aria-label="Workspace preview">
+              <div className="bubble-collab-preview-head">
+                <RoomIcon size={22} />
+                <div>
+                  <span>{room.title}</span>
+                  <strong>{room.artifactTitle}</strong>
+                </div>
+              </div>
+              <div className="bubble-collab-preview-grid">
+                {room.sections.map((section) => (
+                  <article key={section.title}>
+                    <strong>{section.title}</strong>
+                    <span>{section.body}</span>
+                  </article>
+                ))}
+              </div>
+              <div className="bubble-collab-quick-starts">
+                {collaborationQuickStarts.map((quickStart) => (
+                  <button key={quickStart} type="button" onClick={() => onGoal(quickStart)}>
+                    <Sparkles size={14} />
+                    <span>{quickStart}</span>
+                  </button>
+                ))}
+              </div>
+            </section>
           </div>
-        </form>
-      ) : null}
+          <TopicResourceLinks topic={topic} />
+        </section>
+      </div>
     </main>
   );
 }
 
-function HandOffIcon() {
-  return <HeartHandshake size={17} />;
-}
-
-function CollaborationActivityFeed({
-  messages,
-  userName,
-  awaitingResponse,
-  modeLabel,
-  initialGoal,
-}: {
-  messages: Message[];
-  userName: string;
-  awaitingResponse: boolean;
-  modeLabel: string;
-  initialGoal: string;
-}) {
-  const visibleMessages = displayMessages(messages);
-  return (
-    <section className="bubble-collab-feed" aria-label="Activity feed">
-      <header>
-        <div>
-          <StickyNote size={18} />
-          <strong>Teammate log</strong>
-        </div>
-        <span>{modeLabel}</span>
-      </header>
-      <div className="bubble-collab-feed-list">
-        {!visibleMessages.length && initialGoal ? (
-          <article className="is-user">
-            <header>
-              <div>
-                <UserRound size={16} />
-                <strong>{userName} set shared intent</strong>
-              </div>
-              <time>Now</time>
-            </header>
-            <RichMessageContent content={`**Shared intent**\n\n${initialGoal}`} />
-          </article>
-        ) : null}
-        {visibleMessages.map((message, index) => {
-          const isUser = message.role === "user";
-          const title = isUser
-            ? index === 0
-              ? `${userName} set shared intent`
-              : `${userName} contributed`
-            : index < 2
-              ? "AI made the first structure"
-              : "AI revised the workspace";
-          const Icon = isUser ? UserRound : Bot;
-          return (
-            <article key={message.id} className={isUser ? "is-user" : "is-ai"}>
-              <header>
-                <div>
-                  <Icon size={16} />
-                  <strong>{title}</strong>
-                </div>
-                <time>{formatBubbleDate(message.createdAt)}</time>
-              </header>
-              <RichMessageContent content={formatCollaborationFeedContent(message, index)} />
-            </article>
-          );
-        })}
-        {awaitingResponse ? (
-          <div className="bubble-thinking" aria-live="polite">
-            <span />
-            <span />
-            <span />
-            <strong>Reviewing</strong>
-          </div>
-        ) : null}
-      </div>
-    </section>
-  );
-}
-
-function formatCollaborationFeedContent(message: Message, index: number) {
-  if (message.role !== "user" || index !== 0) return message.content;
-  const goal = extractCollaborationGoalFromContent(message.content);
-  const mode = extractCollaborationModeFromContent(message.content);
-  if (!goal) return message.content;
-  return [`**Shared intent**\n\n${goal}`, mode ? `**Mode**\n\n${mode}` : undefined]
-    .filter(Boolean)
-    .join("\n\n");
-}
-
-function GuidedMiniAppWorkspace({
+export function GuidedMiniAppWorkspace({
   topic,
   mode,
   userName,
@@ -3854,6 +4454,7 @@ function GuidedMiniAppWorkspace({
         <form onSubmit={onSubmit} className="bubble-composer">
           <div className="bubble-composer-inner">
             <textarea
+              aria-label="Debate message"
               ref={inputRef}
               value={input}
               onChange={(event) => onInput(event.target.value)}
@@ -3879,22 +4480,19 @@ function GuidedMiniAppWorkspace({
   );
 }
 
-function HistoricalPersonWorkspace({
-  topic,
-  userName,
-  messages,
-  input,
-  sending,
-  awaitingResponse,
-  inputRef,
-  listRef,
-  onInput,
-  onSend,
-  onSubmit,
-  onKeyDown,
-  onStop,
-  onReset,
-}: {
+type HistoricalState = {
+  startType: "direct" | "discover";
+  personOrTheme: string;
+  timeSlice: string;
+  customTimeSlice: string;
+  engagementMode: HistoricalEngagementModeId;
+  setting: string;
+  userRole: string;
+  openingGoal: string;
+  historianVisibility: string;
+};
+
+type HistoricalPersonWorkspaceProps = {
   topic: Topic;
   userName: string;
   messages: Message[];
@@ -3909,16 +4507,55 @@ function HistoricalPersonWorkspace({
   onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
   onStop: () => void;
   onReset: () => void;
-}) {
-  const [startType, setStartType] = useState<"direct" | "discover">("direct");
-  const [personOrTheme, setPersonOrTheme] = useState("");
-  const [timeSlice, setTimeSlice] = useState(historicalTimeSliceOptions[0]);
-  const [customTimeSlice, setCustomTimeSlice] = useState("");
-  const [engagementMode, setEngagementMode] = useState<HistoricalEngagementModeId>("debate");
-  const [setting, setSetting] = useState("");
-  const [userRole, setUserRole] = useState("respectful but challenging interlocutor");
-  const [openingGoal, setOpeningGoal] = useState("");
-  const [historianVisibility, setHistorianVisibility] = useState("medium");
+};
+
+export function HistoricalPersonWorkspace(props: HistoricalPersonWorkspaceProps) {
+  return useHistoricalPersonWorkspace(props);
+}
+
+function useHistoricalPersonWorkspace({
+  topic,
+  userName,
+  messages,
+  input,
+  sending,
+  awaitingResponse,
+  inputRef,
+  listRef,
+  onInput,
+  onSend,
+  onSubmit,
+  onKeyDown,
+  onStop,
+  onReset,
+}: HistoricalPersonWorkspaceProps) {
+  const [
+    {
+      startType,
+      personOrTheme,
+      timeSlice,
+      customTimeSlice,
+      engagementMode,
+      setting,
+      userRole,
+      openingGoal,
+      historianVisibility,
+    },
+    updateHistoricalState,
+  ] = useReducer(
+    mergeStateReducer<HistoricalState>,
+    {
+      startType: "direct",
+      personOrTheme: "",
+      timeSlice: historicalTimeSliceOptions[0],
+      customTimeSlice: "",
+      engagementMode: "debate",
+      setting: "",
+      userRole: "respectful but challenging interlocutor",
+      openingGoal: "",
+      historianVisibility: "medium",
+    },
+  );
   const visibleMessages = displayMessages(messages);
   const hasSession = messages.some((message) => message.role !== "system") || sending || awaitingResponse;
   const selectedMode =
@@ -3926,26 +4563,27 @@ function HistoricalPersonWorkspace({
   const selectedTimeSlice = customTimeSlice.trim() || timeSlice;
 
   function applyQuickStart(example: (typeof historicalQuickStarts)[number]) {
-    setStartType(example.startType as "direct" | "discover");
-    setPersonOrTheme(example.person);
-    if (historicalTimeSliceOptions.includes(example.timeSlice)) {
-      setTimeSlice(example.timeSlice);
-      setCustomTimeSlice("");
-    } else {
-      setTimeSlice(historicalTimeSliceOptions[0]);
-      setCustomTimeSlice(example.timeSlice);
-    }
-    setEngagementMode(example.mode);
-    setSetting(example.setting);
-    setUserRole(example.userRole);
-    setOpeningGoal(example.goal);
+    updateHistoricalState({
+      startType: example.startType as "direct" | "discover",
+      personOrTheme: example.person,
+      timeSlice: historicalTimeSliceOptions.includes(example.timeSlice)
+        ? example.timeSlice
+        : historicalTimeSliceOptions[0],
+      customTimeSlice: historicalTimeSliceOptions.includes(example.timeSlice) ? "" : example.timeSlice,
+      engagementMode: example.mode,
+      setting: example.setting,
+      userRole: example.userRole,
+      openingGoal: example.goal,
+    });
   }
 
   function selectEngagementMode(mode: (typeof historicalEngagementModes)[number]) {
-    setEngagementMode(mode.id);
-    setUserRole((current) => {
-      const currentlyPreset = historicalEngagementModes.some((candidate) => candidate.role === current);
-      return !current.trim() || currentlyPreset ? mode.role : current;
+    updateHistoricalState((current) => {
+      const currentlyPreset = historicalEngagementModes.some((candidate) => candidate.role === current.userRole);
+      return {
+        engagementMode: mode.id,
+        userRole: !current.userRole.trim() || currentlyPreset ? mode.role : current.userRole,
+      };
     });
   }
 
@@ -4080,7 +4718,7 @@ function HistoricalPersonWorkspace({
                     type="button"
                     aria-pressed={startType === "direct"}
                     className={startType === "direct" ? "is-active" : ""}
-                    onClick={() => setStartType("direct")}
+                    onClick={() => updateHistoricalState({ startType: "direct" })}
                   >
                     <UserRound size={17} />
                     <span>Direct person</span>
@@ -4089,7 +4727,7 @@ function HistoricalPersonWorkspace({
                     type="button"
                     aria-pressed={startType === "discover"}
                     className={startType === "discover" ? "is-active" : ""}
-                    onClick={() => setStartType("discover")}
+                    onClick={() => updateHistoricalState({ startType: "discover" })}
                   >
                     <Search size={17} />
                     <span>Vague start</span>
@@ -4100,7 +4738,7 @@ function HistoricalPersonWorkspace({
                   <span>{startType === "direct" ? "Person or challenge" : "What kind of person?"}</span>
                   <textarea
                     value={personOrTheme}
-                    onChange={(event) => setPersonOrTheme(event.target.value)}
+                    onChange={(event) => updateHistoricalState({ personOrTheme: event.target.value })}
                     placeholder={
                       startType === "direct"
                         ? "Napoleon after Austerlitz, Ambedkar in the Constitution committee..."
@@ -4116,7 +4754,7 @@ function HistoricalPersonWorkspace({
                     <span>Setting</span>
                     <input
                       value={setting}
-                      onChange={(event) => setSetting(event.target.value)}
+                      onChange={(event) => updateHistoricalState({ setting: event.target.value })}
                       placeholder="Court, study, prison cell, battlefield tent..."
                       disabled={sending}
                     />
@@ -4125,7 +4763,7 @@ function HistoricalPersonWorkspace({
                     <span>Your role</span>
                     <input
                       value={userRole}
-                      onChange={(event) => setUserRole(event.target.value)}
+                      onChange={(event) => updateHistoricalState({ userRole: event.target.value })}
                       placeholder="Student, rival, journalist, citizen..."
                       disabled={sending}
                     />
@@ -4148,8 +4786,7 @@ function HistoricalPersonWorkspace({
                         className={!customTimeSlice && timeSlice === option ? "is-active" : ""}
                         aria-pressed={!customTimeSlice && timeSlice === option}
                         onClick={() => {
-                          setTimeSlice(option);
-                          setCustomTimeSlice("");
+                          updateHistoricalState({ timeSlice: option, customTimeSlice: "" });
                         }}
                       >
                         {option}
@@ -4160,7 +4797,7 @@ function HistoricalPersonWorkspace({
                     <span>Or write a precise slice</span>
                     <input
                       value={customTimeSlice}
-                      onChange={(event) => setCustomTimeSlice(event.target.value)}
+                      onChange={(event) => updateHistoricalState({ customTimeSlice: event.target.value })}
                       placeholder="Salt March strategist, St. Helena retrospective, 1946 committee room..."
                       disabled={sending}
                     />
@@ -4211,7 +4848,7 @@ function HistoricalPersonWorkspace({
                           type="button"
                           aria-pressed={historianVisibility === option.value}
                           className={historianVisibility === option.value ? "is-active" : ""}
-                          onClick={() => setHistorianVisibility(option.value)}
+                          onClick={() => updateHistoricalState({ historianVisibility: option.value })}
                         >
                           <strong>{option.label}</strong>
                           <span>{option.body}</span>
@@ -4223,7 +4860,7 @@ function HistoricalPersonWorkspace({
                     <span>Opening purpose</span>
                     <textarea
                       value={openingGoal}
-                      onChange={(event) => setOpeningGoal(event.target.value)}
+                      onChange={(event) => updateHistoricalState({ openingGoal: event.target.value })}
                       placeholder="What do you want to ask, test, learn, or confront?"
                       disabled={sending}
                       rows={5}
@@ -4428,6 +5065,7 @@ function HistoricalPersonWorkspace({
         <form onSubmit={onSubmit} className="bubble-composer">
           <div className="bubble-composer-inner">
             <textarea
+              aria-label="Historical conversation message"
               ref={inputRef}
               value={input}
               onChange={(event) => onInput(event.target.value)}
@@ -4453,11 +5091,11 @@ function HistoricalPersonWorkspace({
   );
 }
 
-function ClockIcon() {
+export function ClockIcon() {
   return <History size={20} />;
 }
 
-function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
+export function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
   return (
     <div className="bubble-mini-icon">
       <MiniIconGlyph icon={icon} />
@@ -4465,7 +5103,7 @@ function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
   );
 }
 
-function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
+export function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
   switch (icon) {
     case "compass":
       return <Compass size={24} />;
@@ -4480,7 +5118,7 @@ function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
   }
 }
 
-function MessageBubble({
+export function MessageBubble({
   message,
   userLabel = "Learner",
   assistantLabel = "Coach response",
@@ -4517,7 +5155,7 @@ function MessageBubble({
   );
 }
 
-function RichMessageContent({ content }: { content: string }) {
+export function RichMessageContent({ content }: { content: string }) {
   return (
     <div className="bubble-rich-content" data-no-auto-translate="true">
       <ReactMarkdown
@@ -4557,7 +5195,7 @@ const quizBuildSteps = [
   "Shuffling the challenge",
 ];
 
-function QuizWorkspace({
+export function QuizWorkspace({
   activeChatId,
   activeTopicId,
   activityRun,
@@ -4570,11 +5208,16 @@ function QuizWorkspace({
   createChat: (topicId?: string) => Promise<string>;
   onActivityRun: (run: ActivityRun | null) => void;
 }) {
-  const [topic, setTopic] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [buildProgress, setBuildProgress] = useState(0);
-  const [answering, setAnswering] = useState(false);
-  const [error, setError] = useState("");
+  const [{ topic, loading, buildProgress, answering, error }, updateQuizState] = useReducer(
+    mergeStateReducer<{
+      topic: string;
+      loading: boolean;
+      buildProgress: number;
+      answering: boolean;
+      error: string;
+    }>,
+    { topic: "", loading: false, buildProgress: 0, answering: false, error: "" },
+  );
   const quiz = activityRun?.type === "quiz" && isQuizState(activityRun.state) ? activityRun.state : null;
   const currentQuestion = quiz?.questions[quiz.currentIndex];
   const lastAnswered = quiz
@@ -4584,7 +5227,9 @@ function QuizWorkspace({
   useEffect(() => {
     if (!loading) return;
     const interval = window.setInterval(() => {
-      setBuildProgress((current) => Math.min(94, current + Math.max(3, Math.round((100 - current) / 7))));
+      updateQuizState((current) => ({
+        buildProgress: Math.min(94, current.buildProgress + Math.max(3, Math.round((100 - current.buildProgress) / 7))),
+      }));
     }, 520);
 
     return () => window.clearInterval(interval);
@@ -4594,9 +5239,7 @@ function QuizWorkspace({
     event?.preventDefault();
     const quizTopic = topic.trim();
     if (!quizTopic || loading) return;
-    setError("");
-    setBuildProgress(8);
-    setLoading(true);
+    updateQuizState({ error: "", buildProgress: 8, loading: true });
     try {
       const chatId = activeChatId ?? (await createChat(activeTopicId));
       const response = await fetch("/api/activities/quiz", {
@@ -4606,20 +5249,21 @@ function QuizWorkspace({
       });
       if (!response.ok) throw new Error("Could not build quiz");
       const data = await response.json();
-      setBuildProgress(100);
+      updateQuizState({ buildProgress: 100 });
       onActivityRun(data.activityRun);
     } catch {
-      setError("I could not build that quiz right now. Try a simpler topic or try again.");
-      setBuildProgress(0);
+      updateQuizState({
+        error: "I could not build that quiz right now. Try a simpler topic or try again.",
+        buildProgress: 0,
+      });
     } finally {
-      setLoading(false);
+      updateQuizState({ loading: false });
     }
   }
 
   async function answerQuestion(answerIndex: number) {
     if (!activityRun || answering) return;
-    setAnswering(true);
-    setError("");
+    updateQuizState({ answering: true, error: "" });
     try {
       const response = await fetch(`/api/activities/quiz/${activityRun.id}/answer`, {
         method: "POST",
@@ -4630,9 +5274,9 @@ function QuizWorkspace({
       const data = await response.json();
       onActivityRun(data.activityRun);
     } catch {
-      setError("I could not score that answer. Please try again.");
+      updateQuizState({ error: "I could not score that answer. Please try again." });
     } finally {
-      setAnswering(false);
+      updateQuizState({ answering: false });
     }
   }
 
@@ -4650,8 +5294,9 @@ function QuizWorkspace({
             <p>Pick any topic. I will build 10 multiple-choice questions and score you as you go.</p>
             <div className="bubble-quiz-input-row">
               <input
+                aria-label="Quiz topic"
                 value={topic}
-                onChange={(event) => setTopic(event.target.value)}
+                onChange={(event) => updateQuizState({ topic: event.target.value })}
                 placeholder="Space exploration, Indian history, algebra..."
                 disabled={loading}
               />
@@ -4709,7 +5354,7 @@ function QuizWorkspace({
   );
 }
 
-function QuizBuildLoader({ topic, progress }: { topic: string; progress: number }) {
+export function QuizBuildLoader({ topic, progress }: { topic: string; progress: number }) {
   const stepIndex = Math.min(quizBuildSteps.length - 1, Math.floor((progress / 100) * quizBuildSteps.length));
   return (
     <section className="bubble-quiz-loader" aria-live="polite">
@@ -4738,7 +5383,7 @@ function QuizBuildLoader({ topic, progress }: { topic: string; progress: number 
   );
 }
 
-function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
+export function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
   const correct = question.isCorrect;
   return (
     <aside className={`bubble-quiz-feedback ${correct ? "is-correct" : "is-wrong"}`}>
@@ -4751,7 +5396,7 @@ function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
   );
 }
 
-function QuizReview({ quiz }: { quiz: PublicQuizState }) {
+export function QuizReview({ quiz }: { quiz: PublicQuizState }) {
   return (
     <article className="bubble-quiz-review">
       <h3>Final score: {quiz.score}/10</h3>
@@ -4786,7 +5431,7 @@ const flashcardBuildSteps = [
   "Ready for review",
 ];
 
-function FlashcardWorkspace({
+export function FlashcardWorkspace({
   activeChatId,
   activeTopicId,
   activityRun,
@@ -4801,13 +5446,18 @@ function FlashcardWorkspace({
   onActivityRun: (run: ActivityRun | null) => void;
   onReset: () => void;
 }) {
-  const [topic, setTopic] = useState("");
-  const [source, setSource] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [buildProgress, setBuildProgress] = useState(0);
-  const [reviewing, setReviewing] = useState(false);
-  const [error, setError] = useState("");
-  const [hintCardId, setHintCardId] = useState<string | null>(null);
+  const [{ topic, source, loading, buildProgress, reviewing, error, hintCardId }, updateFlashcardState] = useReducer(
+    mergeStateReducer<{
+      topic: string;
+      source: string;
+      loading: boolean;
+      buildProgress: number;
+      reviewing: boolean;
+      error: string;
+      hintCardId: string | null;
+    }>,
+    { topic: "", source: "", loading: false, buildProgress: 0, reviewing: false, error: "", hintCardId: null },
+  );
   const deck = activityRun?.type === "flashcards" && isFlashcardState(activityRun.state) ? activityRun.state : null;
   const currentCard = deck?.cards[deck.currentIndex];
   const missedCards = deck?.cards.filter((card) => card.rating === "again") ?? [];
@@ -4818,7 +5468,9 @@ function FlashcardWorkspace({
   useEffect(() => {
     if (!loading) return;
     const interval = window.setInterval(() => {
-      setBuildProgress((current) => Math.min(94, current + Math.max(4, Math.round((100 - current) / 6))));
+      updateFlashcardState((current) => ({
+        buildProgress: Math.min(94, current.buildProgress + Math.max(4, Math.round((100 - current.buildProgress) / 6))),
+      }));
     }, 520);
 
     return () => window.clearInterval(interval);
@@ -4828,9 +5480,7 @@ function FlashcardWorkspace({
     event?.preventDefault();
     const deckTopic = topic.trim();
     if (!deckTopic || loading) return;
-    setError("");
-    setBuildProgress(8);
-    setLoading(true);
+    updateFlashcardState({ error: "", buildProgress: 8, loading: true });
     try {
       const chatId = activeChatId ?? (await createChat(activeTopicId));
       const response = await fetch("/api/activities/flashcards", {
@@ -4840,20 +5490,21 @@ function FlashcardWorkspace({
       });
       if (!response.ok) throw new Error("Could not build flashcards");
       const data = await response.json();
-      setBuildProgress(100);
+      updateFlashcardState({ buildProgress: 100 });
       onActivityRun(data.activityRun);
     } catch {
-      setError("I could not build that deck right now. Try a shorter topic or simpler notes.");
-      setBuildProgress(0);
+      updateFlashcardState({
+        error: "I could not build that deck right now. Try a shorter topic or simpler notes.",
+        buildProgress: 0,
+      });
     } finally {
-      setLoading(false);
+      updateFlashcardState({ loading: false });
     }
   }
 
   async function reviewCard(action: "reveal" | "known" | "again") {
     if (!activityRun || reviewing) return;
-    setReviewing(true);
-    setError("");
+    updateFlashcardState({ reviewing: true, error: "" });
     try {
       const response = await fetch(`/api/activities/flashcards/${activityRun.id}/review`, {
         method: "POST",
@@ -4866,31 +5517,27 @@ function FlashcardWorkspace({
       const data = await response.json();
       onActivityRun(data.activityRun);
     } catch {
-      setError("I could not save that card review. Please try again.");
+      updateFlashcardState({ error: "I could not save that card review. Please try again." });
     } finally {
-      setReviewing(false);
+      updateFlashcardState({ reviewing: false });
     }
   }
 
   function changeDeck() {
     onReset();
-    setTopic("");
-    setSource("");
-    setError("");
-    setHintCardId(null);
-    setBuildProgress(0);
+    updateFlashcardState({ topic: "", source: "", error: "", hintCardId: null, buildProgress: 0 });
   }
 
   function reviewMissed(deckState: PublicFlashcardState) {
     const missed = deckState.cards.filter((card) => card.rating === "again");
-    setTopic(`Weak spots from ${deckState.topic}`);
-    setSource(
-      missed
+    updateFlashcardState({
+      topic: `Weak spots from ${deckState.topic}`,
+      source: missed
         .map((card, index) => `${index + 1}. ${card.front}\nAnswer: ${card.back ?? ""}\nTrap: ${card.trap ?? ""}`)
         .join("\n\n"),
-    );
-    setError("");
-    setHintCardId(null);
+      error: "",
+      hintCardId: null,
+    });
     onActivityRun(null);
   }
 
@@ -4915,7 +5562,7 @@ function FlashcardWorkspace({
                   <span>Deck topic</span>
                   <input
                     value={topic}
-                    onChange={(event) => setTopic(event.target.value)}
+                    onChange={(event) => updateFlashcardState({ topic: event.target.value })}
                     placeholder="Mitosis, climate zones, irregular verbs..."
                     disabled={loading}
                   />
@@ -4924,7 +5571,7 @@ function FlashcardWorkspace({
                   <span>Source notes</span>
                   <textarea
                     value={source}
-                    onChange={(event) => setSource(event.target.value)}
+                    onChange={(event) => updateFlashcardState({ source: event.target.value })}
                     placeholder="Optional: paste notes, syllabus points, or facts to prioritize"
                     disabled={loading}
                     rows={5}
@@ -5002,7 +5649,7 @@ function FlashcardWorkspace({
                       <button
                         type="button"
                         disabled={reviewing}
-                        onClick={() => setHintCardId(hintOpen ? null : currentCard.id)}
+                        onClick={() => updateFlashcardState({ hintCardId: hintOpen ? null : currentCard.id })}
                       >
                         {hintOpen ? "Hide hint" : "Need a hint"}
                       </button>
@@ -5031,7 +5678,7 @@ function FlashcardWorkspace({
   );
 }
 
-function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: number }) {
+export function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: number }) {
   const stepIndex = Math.min(
     flashcardBuildSteps.length - 1,
     Math.floor((progress / 100) * flashcardBuildSteps.length),
@@ -5063,7 +5710,7 @@ function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: nu
   );
 }
 
-function FlashcardStat({ label, value }: { label: string; value: string }) {
+export function FlashcardStat({ label, value }: { label: string; value: string }) {
   return (
     <article>
       <span>{label}</span>
@@ -5072,7 +5719,7 @@ function FlashcardStat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function FlashcardReview({
+export function FlashcardReview({
   deck,
   onReviewMissed,
   onStartOver,
@@ -5115,7 +5762,7 @@ function FlashcardReview({
   );
 }
 
-function RecentConversations({
+export function RecentConversations({
   chats,
   loading,
   onBack,
@@ -5132,7 +5779,7 @@ function RecentConversations({
         <ArrowLeft size={22} />
         Back
       </button>
-      {loading ? <p className="bubble-recent-empty">Loading...</p> : null}
+      {loading ? <p className="bubble-recent-empty">Loading…</p> : null}
       {!loading && chats.length === 0 ? <p className="bubble-recent-empty">No search results</p> : null}
       <div className="bubble-recent-list">
         {chats.map((chat) => (
@@ -5150,7 +5797,7 @@ function RecentConversations({
   );
 }
 
-function GuestContinueModal({
+export function GuestContinueModal({
   used,
   limit,
   callbackUrl,
@@ -5163,7 +5810,7 @@ function GuestContinueModal({
 }) {
   return (
     <div className="bubble-guest-modal-backdrop" role="presentation">
-      <section className="bubble-guest-modal" role="dialog" aria-modal="true" aria-labelledby="guest-modal-title">
+      <dialog open className="bubble-guest-modal" aria-modal="true" aria-labelledby="guest-modal-title">
         <button type="button" onClick={onClose} aria-label="Close" className="bubble-guest-modal-close">
           <X size={20} />
         </button>
@@ -5181,12 +5828,12 @@ function GuestContinueModal({
         <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
           Maybe later
         </button>
-      </section>
+      </dialog>
     </div>
   );
 }
 
-function AgePromptModal({
+export function AgePromptModal({
   onClose,
   onSaved,
 }: {
@@ -5227,9 +5874,9 @@ function AgePromptModal({
 
   return (
     <div className="bubble-guest-modal-backdrop" role="presentation">
-      <section
+      <dialog
+        open
         className="bubble-guest-modal bubble-age-modal"
-        role="dialog"
         aria-modal="true"
         aria-labelledby="age-modal-title"
       >
@@ -5263,22 +5910,38 @@ function AgePromptModal({
             Maybe later
           </button>
         </form>
-      </section>
+      </dialog>
     </div>
   );
 }
 
-function ProfilePanel({
+export function ProfilePanel({
   user,
   avatarSrc,
   languageSaving,
+  memoryDashboard,
+  memoryLoading,
+  memorySaving,
+  memoryError,
   onLanguageChange,
+  onMemorySettings,
+  onMemoryUpdate,
+  onMemoryDelete,
+  onMemoryClear,
   onClose,
 }: {
   user: UserProfile;
   avatarSrc?: string;
   languageSaving: boolean;
+  memoryDashboard: MemoryDashboard | null;
+  memoryLoading: boolean;
+  memorySaving: boolean;
+  memoryError: string | null;
   onLanguageChange: (language: string) => void;
+  onMemorySettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onMemoryUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onMemoryDelete: (memoryId: string) => void;
+  onMemoryClear: () => void;
   onClose: () => void;
 }) {
   return (
@@ -5291,7 +5954,9 @@ function ProfilePanel({
       </div>
       <div className="bubble-profile-body app-scrollbar">
         <section className="bubble-profile-hero">
-          <div className="bubble-profile-avatar">{avatarSrc ? <img src={avatarSrc} alt="" /> : null}</div>
+          <div className="bubble-profile-avatar">
+            {avatarSrc ? <Image src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized /> : null}
+          </div>
           <div>
             <h3>{user.name || "Learner"}</h3>
             <p>{user.email || "user@example.com"}</p>
@@ -5325,7 +5990,7 @@ function ProfilePanel({
               </option>
             ))}
           </select>
-          {languageSaving ? <span className="bubble-language-saving">Saving...</span> : null}
+          {languageSaving ? <span className="bubble-language-saving">Saving…</span> : null}
         </section>
 
         <div className="bubble-profile-stats-grid">
@@ -5337,14 +6002,25 @@ function ProfilePanel({
           <ProfileStat label="inspir'ed since" value={formatBubbleDate(user.createdAt)} />
         </div>
 
+        <MemoryPanel
+          dashboard={memoryDashboard}
+          loading={memoryLoading}
+          saving={memorySaving}
+          error={memoryError}
+          onSettings={onMemorySettings}
+          onUpdate={onMemoryUpdate}
+          onDelete={onMemoryDelete}
+          onClear={onMemoryClear}
+        />
+
         <button type="button" onClick={() => signOut({ callbackUrl: "/" })} className="bubble-profile-logout">
           Logout
         </button>
         <footer className="bubble-profile-footer">
           <div className="bubble-profile-legal">
-            <a href="/tnc">Terms and Conditions</a>
+            <Link href="/tnc">Terms and Conditions</Link>
             <span>|</span>
-            <a href="/privacy">Privacy Policy</a>
+            <Link href="/privacy">Privacy Policy</Link>
           </div>
           <SocialLinks compact className="bubble-profile-social" />
         </footer>
@@ -5353,7 +6029,193 @@ function ProfilePanel({
   );
 }
 
-function ProfileLine({
+function MemoryPanel({
+  dashboard,
+  loading,
+  saving,
+  error,
+  onSettings,
+  onUpdate,
+  onDelete,
+  onClear,
+}: {
+  dashboard: MemoryDashboard | null;
+  loading: boolean;
+  saving: boolean;
+  error: string | null;
+  onSettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onDelete: (memoryId: string) => void;
+  onClear: () => void;
+}) {
+  const settings = dashboard?.settings;
+  const enabled = settings?.enabled ?? true;
+  const grouped = useMemo(() => groupMemoriesByCategory(dashboard?.memories ?? []), [dashboard?.memories]);
+
+  return (
+    <section className="bubble-memory-card">
+      <div className="bubble-memory-head">
+        <div className="bubble-profile-line-icon">
+          <BrainCircuit size={22} />
+        </div>
+        <div>
+          <strong>Memory</strong>
+          <span>Inspir uses saved context only when it is relevant.</span>
+        </div>
+        <button
+          type="button"
+          className={`bubble-memory-toggle ${enabled ? "is-on" : ""}`}
+          aria-pressed={enabled}
+          disabled={saving || loading}
+          onClick={() => onSettings({ enabled: !enabled })}
+        >
+          <span />
+        </button>
+      </div>
+
+      {loading ? <p className="bubble-memory-muted">Loading memory...</p> : null}
+      {error ? <p className="bubble-memory-error">{error}</p> : null}
+
+      {settings && !settings.noticeSeenAt ? (
+        <div className="bubble-memory-notice">
+          <strong>Memory is on for signed-in accounts.</strong>
+          <p>You can edit, delete, or clear what Inspir remembers from here.</p>
+          <button type="button" disabled={saving} onClick={() => onSettings({ noticeSeen: true })}>
+            Got it
+          </button>
+        </div>
+      ) : null}
+
+      {dashboard ? (
+        <>
+          <div className="bubble-memory-summary">
+            <span>{dashboard.memories.length} saved memories</span>
+            <button type="button" disabled={saving || dashboard.memories.length === 0} onClick={onClear}>
+              Clear all
+            </button>
+          </div>
+
+          <div className="bubble-memory-list">
+            {dashboard.memories.length === 0 ? (
+              <p className="bubble-memory-muted">No saved memories yet.</p>
+            ) : (
+              grouped.map((group) => (
+                <div key={group.category} className="bubble-memory-group">
+                  <h4>{memoryCategoryLabel(group.category)}</h4>
+                  {group.memories.map((memory) => (
+                    <MemoryItemEditor
+                      key={memory.id}
+                      memory={memory}
+                      saving={saving}
+                      onUpdate={onUpdate}
+                      onDelete={onDelete}
+                    />
+                  ))}
+                </div>
+              ))
+            )}
+          </div>
+        </>
+      ) : null}
+    </section>
+  );
+}
+
+function MemoryItemEditor({
+  memory,
+  saving,
+  onUpdate,
+  onDelete,
+}: {
+  memory: MemoryItem;
+  saving: boolean;
+  onUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onDelete: (memoryId: string) => void;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(memory.content);
+
+  function save() {
+    const next = draft.trim();
+    if (!next || next === memory.content) {
+      setEditing(false);
+      setDraft(memory.content);
+      return;
+    }
+    onUpdate(memory.id, { content: next });
+    setEditing(false);
+  }
+
+  return (
+    <article className="bubble-memory-item">
+      {editing ? (
+        <textarea
+          value={draft}
+          onChange={(event) => setDraft(event.target.value)}
+          className="bubble-memory-edit"
+          rows={3}
+          maxLength={600}
+        />
+      ) : (
+        <p>{memory.content}</p>
+      )}
+      <div className="bubble-memory-item-meta">
+        <span>{memory.kind === "explicit" ? "Saved by you" : "Learned automatically"}</span>
+        <span>{formatBubbleDate(memory.updatedAt)}</span>
+      </div>
+      <div className="bubble-memory-actions">
+        {editing ? (
+          <>
+            <button type="button" disabled={saving} onClick={save} aria-label="Save memory">
+              <CheckCircle2 size={16} />
+            </button>
+            <button
+              type="button"
+              disabled={saving}
+              onClick={() => {
+                setEditing(false);
+                setDraft(memory.content);
+              }}
+              aria-label="Cancel memory edit"
+            >
+              <XCircle size={16} />
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" disabled={saving} onClick={() => setEditing(true)} aria-label="Edit memory">
+              <PencilLine size={16} />
+            </button>
+            <button type="button" disabled={saving} onClick={() => onDelete(memory.id)} aria-label="Delete memory">
+              <XCircle size={16} />
+            </button>
+          </>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function groupMemoriesByCategory(memories: MemoryItem[]) {
+  const map = new Map<string, MemoryItem[]>();
+  for (const memory of memories) {
+    const key = memory.category || "general";
+    map.set(key, [...(map.get(key) ?? []), memory]);
+  }
+  return [...map.entries()]
+    .sort(([a], [b]) => memoryCategoryLabel(a).localeCompare(memoryCategoryLabel(b)))
+    .map(([category, items]) => ({ category, memories: items }));
+}
+
+function memoryCategoryLabel(category: string) {
+  return category
+    .split("_")
+    .filter(Boolean)
+    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+export function ProfileLine({
   label,
   value,
 }: {
@@ -5373,7 +6235,7 @@ function ProfileLine({
   );
 }
 
-function ProfileStat({ label, value }: { label: string; value: string }) {
+export function ProfileStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="bubble-profile-stat">
       <strong>{label}</strong>

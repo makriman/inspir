@@ -9,10 +9,10 @@ import {
 } from "@/components/marketing/MarketingShell";
 import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
   itemListJsonLd,
-  serializeJsonLd,
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
@@ -78,13 +78,7 @@ export default function LearningPathsPage() {
 
   return (
     <main className="marketing-site">
-      {jsonLd.map((entry, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(entry) }}
-        />
-      ))}
+      <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Learning paths" title="Use AI as a study workflow, not a shortcut.">
         Each path connects the right public guest modes, prompts, and guides so learners can
