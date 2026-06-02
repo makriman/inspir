@@ -8,6 +8,7 @@ import {
   RefObject,
   type ComponentType,
   type MutableRefObject,
+  useCallback,
   useEffect,
   useMemo,
   useRef,
@@ -161,6 +162,37 @@ type ActivityRun = {
   createdAt: string | Date;
   updatedAt: string | Date;
   completedAt: string | Date | null;
+};
+
+type MemorySettings = {
+  enabled: boolean;
+  captureScope: string;
+  retrievalMode: string;
+  noticeSeenAt: string | Date | null;
+};
+
+type MemoryItem = {
+  id: string;
+  kind: string;
+  category: string;
+  content: string;
+  tags: string[];
+  confidence: number;
+  salience: number;
+  createdAt: string | Date;
+  updatedAt: string | Date;
+};
+
+type MemoryProfile = {
+  category: string;
+  summary: string;
+  updatedAt: string | Date;
+};
+
+type MemoryDashboard = {
+  settings: MemorySettings;
+  memories: MemoryItem[];
+  profiles: MemoryProfile[];
 };
 
 type PublicQuizQuestion = {
@@ -426,6 +458,10 @@ export function ChatClient({
   });
   const [guestPromptOpen, setGuestPromptOpen] = useState(false);
   const [workspaceResetCount, setWorkspaceResetCount] = useState(0);
+  const [memoryDashboard, setMemoryDashboard] = useState<MemoryDashboard | null>(null);
+  const [memoryLoading, setMemoryLoading] = useState(false);
+  const [memorySaving, setMemorySaving] = useState(false);
+  const [memoryError, setMemoryError] = useState<string | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const translationRootRef = useRef<HTMLDivElement>(null);
@@ -464,6 +500,22 @@ export function ChatClient({
     );
   }, [search, displayTopics]);
 
+  const loadMemoryDashboard = useCallback(async () => {
+    if (isGuest) return;
+    setMemoryLoading(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch("/api/memory");
+      if (!response.ok) throw new Error("Could not load memory");
+      const data = await response.json();
+      setMemoryDashboard(data);
+    } catch {
+      setMemoryError("Could not load memory right now.");
+    } finally {
+      setMemoryLoading(false);
+    }
+  }, [isGuest]);
+
   async function loadMainAppTranslation(language: string) {
     const loadSeq = translationLoadSeqRef.current + 1;
     translationLoadSeqRef.current = loadSeq;
@@ -492,6 +544,14 @@ export function ChatClient({
     }, 0);
     return () => window.clearTimeout(timeoutId);
   }, [profileUser.preferredLanguage, translationBundle.language]);
+
+  useEffect(() => {
+    if (isGuest || !profileOpen || memoryDashboard || memoryLoading) return;
+    const timeoutId = window.setTimeout(() => {
+      void loadMemoryDashboard();
+    }, 0);
+    return () => window.clearTimeout(timeoutId);
+  }, [isGuest, profileOpen, memoryDashboard, memoryLoading, loadMemoryDashboard]);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
@@ -776,6 +836,76 @@ export function ChatClient({
     }
   }
 
+  async function patchMemorySettings(input: { enabled?: boolean; noticeSeen?: boolean }) {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch("/api/memory", {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      if (!response.ok) throw new Error("Could not update memory settings");
+      const data = await response.json();
+      setMemoryDashboard(data);
+    } catch {
+      setMemoryError("Could not update memory settings.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
+  async function updateMemoryItem(memoryId: string, input: { content?: string; category?: string; tags?: string[] }) {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch(`/api/memory/${memoryId}`, {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      if (!response.ok) throw new Error("Could not update memory");
+      await loadMemoryDashboard();
+    } catch {
+      setMemoryError("Could not update that memory.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
+  async function deleteMemoryItem(memoryId: string) {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch(`/api/memory/${memoryId}`, { method: "DELETE" });
+      if (!response.ok) throw new Error("Could not delete memory");
+      await loadMemoryDashboard();
+    } catch {
+      setMemoryError("Could not delete that memory.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
+  async function clearMemory() {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch("/api/memory", { method: "DELETE" });
+      if (!response.ok) throw new Error("Could not clear memory");
+      const data = await response.json();
+      setMemoryDashboard(data);
+    } catch {
+      setMemoryError("Could not clear memory.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
   const avatarSrc = profileUser.profileImageHash
     ? `/api/me/photo?hash=${profileUser.profileImageHash}`
     : profileUser.image || undefined;
@@ -984,7 +1114,15 @@ export function ChatClient({
           user={profileUser}
           avatarSrc={avatarSrc}
           languageSaving={languageSaving}
+          memoryDashboard={memoryDashboard}
+          memoryLoading={memoryLoading}
+          memorySaving={memorySaving}
+          memoryError={memoryError}
           onLanguageChange={updatePreferredLanguage}
+          onMemorySettings={patchMemorySettings}
+          onMemoryUpdate={updateMemoryItem}
+          onMemoryDelete={deleteMemoryItem}
+          onMemoryClear={clearMemory}
           onClose={() => setProfileOpen(false)}
         />
       ) : null}
@@ -5272,13 +5410,29 @@ function ProfilePanel({
   user,
   avatarSrc,
   languageSaving,
+  memoryDashboard,
+  memoryLoading,
+  memorySaving,
+  memoryError,
   onLanguageChange,
+  onMemorySettings,
+  onMemoryUpdate,
+  onMemoryDelete,
+  onMemoryClear,
   onClose,
 }: {
   user: UserProfile;
   avatarSrc?: string;
   languageSaving: boolean;
+  memoryDashboard: MemoryDashboard | null;
+  memoryLoading: boolean;
+  memorySaving: boolean;
+  memoryError: string | null;
   onLanguageChange: (language: string) => void;
+  onMemorySettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onMemoryUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onMemoryDelete: (memoryId: string) => void;
+  onMemoryClear: () => void;
   onClose: () => void;
 }) {
   return (
@@ -5337,6 +5491,17 @@ function ProfilePanel({
           <ProfileStat label="inspir'ed since" value={formatBubbleDate(user.createdAt)} />
         </div>
 
+        <MemoryPanel
+          dashboard={memoryDashboard}
+          loading={memoryLoading}
+          saving={memorySaving}
+          error={memoryError}
+          onSettings={onMemorySettings}
+          onUpdate={onMemoryUpdate}
+          onDelete={onMemoryDelete}
+          onClear={onMemoryClear}
+        />
+
         <button type="button" onClick={() => signOut({ callbackUrl: "/" })} className="bubble-profile-logout">
           Logout
         </button>
@@ -5351,6 +5516,192 @@ function ProfilePanel({
       </div>
     </aside>
   );
+}
+
+function MemoryPanel({
+  dashboard,
+  loading,
+  saving,
+  error,
+  onSettings,
+  onUpdate,
+  onDelete,
+  onClear,
+}: {
+  dashboard: MemoryDashboard | null;
+  loading: boolean;
+  saving: boolean;
+  error: string | null;
+  onSettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onDelete: (memoryId: string) => void;
+  onClear: () => void;
+}) {
+  const settings = dashboard?.settings;
+  const enabled = settings?.enabled ?? true;
+  const grouped = useMemo(() => groupMemoriesByCategory(dashboard?.memories ?? []), [dashboard?.memories]);
+
+  return (
+    <section className="bubble-memory-card">
+      <div className="bubble-memory-head">
+        <div className="bubble-profile-line-icon">
+          <BrainCircuit size={22} />
+        </div>
+        <div>
+          <strong>Memory</strong>
+          <span>Inspir uses saved context only when it is relevant.</span>
+        </div>
+        <button
+          type="button"
+          className={`bubble-memory-toggle ${enabled ? "is-on" : ""}`}
+          aria-pressed={enabled}
+          disabled={saving || loading}
+          onClick={() => onSettings({ enabled: !enabled })}
+        >
+          <span />
+        </button>
+      </div>
+
+      {loading ? <p className="bubble-memory-muted">Loading memory...</p> : null}
+      {error ? <p className="bubble-memory-error">{error}</p> : null}
+
+      {settings && !settings.noticeSeenAt ? (
+        <div className="bubble-memory-notice">
+          <strong>Memory is on for signed-in accounts.</strong>
+          <p>You can edit, delete, or clear what Inspir remembers from here.</p>
+          <button type="button" disabled={saving} onClick={() => onSettings({ noticeSeen: true })}>
+            Got it
+          </button>
+        </div>
+      ) : null}
+
+      {dashboard ? (
+        <>
+          <div className="bubble-memory-summary">
+            <span>{dashboard.memories.length} saved memories</span>
+            <button type="button" disabled={saving || dashboard.memories.length === 0} onClick={onClear}>
+              Clear all
+            </button>
+          </div>
+
+          <div className="bubble-memory-list">
+            {dashboard.memories.length === 0 ? (
+              <p className="bubble-memory-muted">No saved memories yet.</p>
+            ) : (
+              grouped.map((group) => (
+                <div key={group.category} className="bubble-memory-group">
+                  <h4>{memoryCategoryLabel(group.category)}</h4>
+                  {group.memories.map((memory) => (
+                    <MemoryItemEditor
+                      key={memory.id}
+                      memory={memory}
+                      saving={saving}
+                      onUpdate={onUpdate}
+                      onDelete={onDelete}
+                    />
+                  ))}
+                </div>
+              ))
+            )}
+          </div>
+        </>
+      ) : null}
+    </section>
+  );
+}
+
+function MemoryItemEditor({
+  memory,
+  saving,
+  onUpdate,
+  onDelete,
+}: {
+  memory: MemoryItem;
+  saving: boolean;
+  onUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onDelete: (memoryId: string) => void;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(memory.content);
+
+  function save() {
+    const next = draft.trim();
+    if (!next || next === memory.content) {
+      setEditing(false);
+      setDraft(memory.content);
+      return;
+    }
+    onUpdate(memory.id, { content: next });
+    setEditing(false);
+  }
+
+  return (
+    <article className="bubble-memory-item">
+      {editing ? (
+        <textarea
+          value={draft}
+          onChange={(event) => setDraft(event.target.value)}
+          className="bubble-memory-edit"
+          rows={3}
+          maxLength={600}
+        />
+      ) : (
+        <p>{memory.content}</p>
+      )}
+      <div className="bubble-memory-item-meta">
+        <span>{memory.kind === "explicit" ? "Saved by you" : "Learned automatically"}</span>
+        <span>{formatBubbleDate(memory.updatedAt)}</span>
+      </div>
+      <div className="bubble-memory-actions">
+        {editing ? (
+          <>
+            <button type="button" disabled={saving} onClick={save} aria-label="Save memory">
+              <CheckCircle2 size={16} />
+            </button>
+            <button
+              type="button"
+              disabled={saving}
+              onClick={() => {
+                setEditing(false);
+                setDraft(memory.content);
+              }}
+              aria-label="Cancel memory edit"
+            >
+              <XCircle size={16} />
+            </button>
+          </>
+        ) : (
+          <>
+            <button type="button" disabled={saving} onClick={() => setEditing(true)} aria-label="Edit memory">
+              <PencilLine size={16} />
+            </button>
+            <button type="button" disabled={saving} onClick={() => onDelete(memory.id)} aria-label="Delete memory">
+              <XCircle size={16} />
+            </button>
+          </>
+        )}
+      </div>
+    </article>
+  );
+}
+
+function groupMemoriesByCategory(memories: MemoryItem[]) {
+  const map = new Map<string, MemoryItem[]>();
+  for (const memory of memories) {
+    const key = memory.category || "general";
+    map.set(key, [...(map.get(key) ?? []), memory]);
+  }
+  return [...map.entries()]
+    .sort(([a], [b]) => memoryCategoryLabel(a).localeCompare(memoryCategoryLabel(b)))
+    .map(([category, items]) => ({ category, memories: items }));
+}
+
+function memoryCategoryLabel(category: string) {
+  return category
+    .split("_")
+    .filter(Boolean)
+    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
+    .join(" ");
 }
 
 function ProfileLine({

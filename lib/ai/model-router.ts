@@ -24,6 +24,10 @@ export function resolveTranslationModelName() {
   );
 }
 
+export function resolveEmbeddingModelName() {
+  return readModelEnv("OPENAI_EMBEDDING_MODEL") ?? "text-embedding-3-small";
+}
+
 export function resolveModelForTopic(topic: Pick<Topic, "metadata">) {
   const metadata = getTopicMetadata(topic);
   return resolveModelName(metadata?.modelProfile ?? "fast");

@@ -1,6 +1,7 @@
 import type { Message, Topic } from "@/lib/db/schema";
 import type { TopicMetadata } from "@/lib/content/topics";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
+import { formatMemoryPromptContext, type MemoryPromptContext } from "@/lib/ai/memory";
 
 type TopicLike = Pick<Topic, "name" | "slug" | "systemPrompt" | "metadata">;
 
@@ -23,6 +24,7 @@ export function getTopicMetadata(topic: Pick<TopicLike, "metadata">): TopicMetad
 
 type LearnerContext = {
   learnerAge?: number | null;
+  memoryContext?: MemoryPromptContext;
 };
 
 export function buildTopicSystemPrompt(
@@ -39,6 +41,7 @@ export function buildTopicSystemPrompt(
     typeof context.learnerAge === "number"
       ? `Learner age: ${context.learnerAge}`
       : undefined,
+    formatMemoryPromptContext(context.memoryContext),
     metadata
       ? `Category: ${metadata.category}\nInterface: ${metadata.uiMode}\nModel profile: ${metadata.modelProfile}`
       : undefined,

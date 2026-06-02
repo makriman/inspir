@@ -5337,6 +5337,228 @@ a {
   font-weight: 760;
 }
 
+.bubble-memory-card {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.055);
+  padding: 14px;
+}
+
+.bubble-memory-head {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.bubble-memory-head strong,
+.bubble-memory-head span {
+  display: block;
+}
+
+.bubble-memory-head strong {
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.bubble-memory-head span {
+  margin-top: 4px;
+  color: rgb(255 255 255 / 0.62);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.bubble-memory-toggle {
+  display: flex;
+  width: 48px;
+  height: 28px;
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+  padding: 3px;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.bubble-memory-toggle span {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #fff;
+  transform: translateX(0);
+  transition: transform 160ms ease;
+}
+
+.bubble-memory-toggle.is-on {
+  border-color: rgb(125 235 143 / 0.4);
+  background: rgb(88 205 110 / 0.42);
+}
+
+.bubble-memory-toggle.is-on span {
+  transform: translateX(19px);
+}
+
+.bubble-memory-muted,
+.bubble-memory-error {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 720;
+  line-height: 1.35;
+}
+
+.bubble-memory-muted {
+  color: rgb(255 255 255 / 0.62);
+}
+
+.bubble-memory-error {
+  color: rgb(255 160 160);
+}
+
+.bubble-memory-notice {
+  border: 1px solid rgb(125 235 143 / 0.24);
+  border-radius: 10px;
+  background: rgb(88 205 110 / 0.1);
+  padding: 10px;
+}
+
+.bubble-memory-notice strong,
+.bubble-memory-notice p {
+  margin: 0;
+}
+
+.bubble-memory-notice strong {
+  color: #fff;
+  font-size: 13px;
+}
+
+.bubble-memory-notice p {
+  margin-top: 5px;
+  color: rgb(255 255 255 / 0.68);
+  font-size: 12px;
+  font-weight: 640;
+  line-height: 1.35;
+}
+
+.bubble-memory-notice button,
+.bubble-memory-summary button,
+.bubble-memory-actions button {
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 820;
+}
+
+.bubble-memory-notice button {
+  height: 32px;
+  margin-top: 9px;
+  background: rgb(125 235 143);
+  padding: 0 12px;
+  color: rgb(10 26 14);
+}
+
+.bubble-memory-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.bubble-memory-summary span {
+  color: rgb(255 255 255 / 0.68);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.bubble-memory-summary button {
+  height: 32px;
+  background: rgb(255 255 255 / 0.1);
+  padding: 0 10px;
+  color: #fff;
+}
+
+.bubble-memory-list {
+  display: grid;
+  gap: 12px;
+  max-height: 420px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.bubble-memory-group {
+  display: grid;
+  gap: 8px;
+}
+
+.bubble-memory-group h4 {
+  margin: 0;
+  color: rgb(125 235 143);
+  font-size: 12px;
+  font-weight: 860;
+  letter-spacing: 0;
+}
+
+.bubble-memory-item {
+  position: relative;
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.16);
+  padding: 10px;
+}
+
+.bubble-memory-item p {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 660;
+  line-height: 1.42;
+}
+
+.bubble-memory-item-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  color: rgb(255 255 255 / 0.52);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.bubble-memory-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.bubble-memory-actions button {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  background: rgb(255 255 255 / 0.1);
+  color: #fff;
+}
+
+.bubble-memory-edit {
+  width: 100%;
+  min-height: 84px;
+  resize: vertical;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 8px;
+  background: rgb(12 12 14 / 0.88);
+  padding: 9px;
+  color: #fff;
+  font: inherit;
+  line-height: 1.35;
+}
+
 .bubble-profile-stats-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -6016,6 +6238,24 @@ a {
 
 .bubble-language-select {
   max-width: 100%;
+}
+
+.bubble-memory-card {
+  padding: 12px;
+}
+
+.bubble-memory-head {
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+}
+
+.bubble-memory-head strong,
+.bubble-memory-head span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bubble-memory-list {
+  max-height: 360px;
 }
 
 .bubble-profile-stats-grid {
