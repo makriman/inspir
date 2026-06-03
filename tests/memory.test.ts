@@ -116,11 +116,15 @@ test("direct memory extraction is typo tolerant for explicit remember requests",
   assert.equal(extraction.memories.length, 1);
   assert.equal(extraction.memories[0]?.kind, "explicit");
   assert.equal(extraction.memories[0]?.content, "I like maths");
+
+  const scrambled = extractDirectMemoryActions("Can you rememebr that I prefer short hints?");
+  assert.equal(scrambled.memories.length, 1);
+  assert.equal(scrambled.memories[0]?.content, "I prefer short hints");
 });
 
 test("completed turn extraction resolves explicit favorite-food references from the acknowledgement", () => {
   const extraction = extractDirectMemoryActionsFromTurn({
-    userMessage: "remeber its my favourite food?",
+    userMessage: "rememebr its my favourite food?",
     assistantMessage:
       "Got it! Puttu Kadala is your favorite food. That's a delicious choice. I'll remember that for future chats.",
   });
@@ -143,6 +147,7 @@ test("memory intent detects questions about saved knowledge", () => {
   assert.equal(detectMemoryIntent("What do you know about me?"), "ask_about_memory");
   assert.equal(detectMemoryIntent("Can you remember that I prefer short hints?"), "explicit_remember");
   assert.equal(detectMemoryIntent("Can you remeber that I prefer short hints?"), "explicit_remember");
+  assert.equal(detectMemoryIntent("Can you rememebr that I prefer short hints?"), "explicit_remember");
   assert.equal(detectMemoryIntent("What is my favourite foos?"), "personalized");
   assert.equal(detectMemoryIntent("Explain gravity simply"), "generic");
 });

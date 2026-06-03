@@ -156,6 +156,9 @@ const memoryRelevanceTerms = [
   "remember",
   "remeber",
   "rember",
+  "rememebr",
+  "remembr",
+  "remebr",
   "forget",
   "save that",
   "save this",
@@ -189,7 +192,7 @@ const memoryRelevanceTerms = [
 ];
 
 const explicitRememberPatterns = [
-  /\b(?:remember|remeber|rember)\s+(?:that\s+)?(.+)/i,
+  /\b(?:remember|remeber|rember|rememebr|remembr|remebr)\s+(?:that\s+)?(.+)/i,
   /\bkeep in mind\s+(?:that\s+)?(.+)/i,
   /\bsave\s+(?:that|this)\s+(.+)/i,
   /\bmake a note\s+(?:that\s+)?(.+)/i,
@@ -310,7 +313,7 @@ export function shouldUseMemoryHeuristic(message: string) {
   const intent = detectMemoryIntent(message);
   if (intent !== "generic") return true;
   const text = message.toLowerCase();
-  if (/\b(remember|remeber|rember|forget)\b/.test(text)) return true;
+  if (/\b(remember|remeber|rember|rememebr|remembr|remebr|forget)\b/.test(text)) return true;
   if (/\b(my|mine|i|me)\b/.test(text) && /\b(project|exam|essay|goal|style|preference|progress|plan|work)\b/.test(text)) {
     return true;
   }
@@ -961,7 +964,7 @@ function inferExplicitMemoryFromCompletedTurn(input: {
 }): MemoryExtraction {
   const empty: MemoryExtraction = { memories: [], forget: [], clearAll: false };
   const userText = getVisibleMessageContent(input.userMessage);
-  if (!/\b(?:remember|remeber|rember|keep in mind|save)\b/i.test(userText)) return empty;
+  if (!/\b(?:remember|remeber|rember|rememebr|remembr|remebr|keep in mind|save)\b/i.test(userText)) return empty;
 
   const favoriteKind = favoriteMemoryKind(userText);
   if (!favoriteKind) return empty;
