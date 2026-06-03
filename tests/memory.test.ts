@@ -119,7 +119,13 @@ test("memory extraction does not save lookup questions or low-information fragme
 
   assert.equal(isUsefulMemoryContent("that"), false);
   assert.equal(isUsefulMemoryContent("about me"), false);
+  assert.equal(isUsefulMemoryContent("the planets"), false);
   assert.equal(isUsefulMemoryContent("Puttu Kadala is the learner's favourite food."), true);
+});
+
+test("memory extraction does not treat study memorization requests as personal saved memories", () => {
+  const extraction = extractDirectMemoryActions("Remember the planets");
+  assert.equal(extraction.memories.length, 0);
 });
 
 test("memory display text removes internal learner phrasing", () => {

@@ -35,6 +35,28 @@ const memoryCreateSchema = z.object({
     .default("general"),
 });
 
+type ManualMemoryInput = z.infer<typeof memoryCreateSchema> & {
+  userId: string;
+};
+
+function createManualMemoryAndLoadDashboard(input: ManualMemoryInput) {
+  return buildMemoryEmbedding(input.content)
+    .then((embedding) =>
+      createUserMemory({
+        userId: input.userId,
+        kind: "explicit",
+        category: input.category,
+        content: input.content,
+        tags: ["manual"],
+        confidence: 100,
+        salience: 95,
+        embedding,
+      }),
+    )
+    .then(() => compileUserMemoryProfile(input.userId, input.category))
+    .then(() => getMemoryDashboard(input.userId));
+}
+
 export async function GET() {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -57,20 +79,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Memory is turned off." }, { status: 409 });
   }
 
-  const embedding = await buildMemoryEmbedding(parsed.data.content);
-  await createUserMemory({
+  const dashboard = await createManualMemoryAndLoadDashboard({
     userId: session.user.id,
-    kind: "explicit",
-    category: parsed.data.category,
-    content: parsed.data.content,
-    tags: ["manual"],
-    confidence: 100,
-    salience: 95,
-    embedding,
+    ...parsed.data,
   });
-  await compileUserMemoryProfile(session.user.id, parsed.data.category);
-
-  const dashboard = await getMemoryDashboard(session.user.id);
   return NextResponse.json(serializeDashboard(dashboard), { status: 201 });
 }
 
@@ -99,6 +111,32 @@ export async function DELETE() {
 }
 
 function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashboard>>) {
+  const memories = [];
+
+  for (const memory of dashboard.memories) {
+    if (!isUsefulMemoryContent(memory.content)) continue;
+
+    const tags = memory.tags ?? [];
+    const tagSet = new Set(tags);
+    memories.push({
+      id: memory.id,
+      kind: memory.kind,
+      category: memory.category,
+      content: memory.content,
+      displayContent: displayMemoryContent(memory.content),
+      sourceLabel: tagSet.has("manual")
+        ? "Added manually"
+        : memory.kind === "explicit"
+          ? "Remembered from chat"
+          : "Learned from chats",
+      tags,
+      confidence: memory.confidence,
+      salience: memory.salience,
+      createdAt: memory.createdAt,
+      updatedAt: memory.updatedAt,
+    });
+  }
+
   return {
     settings: serializeMemorySettings(dashboard.settings),
     profiles: dashboard.profiles.map((profile) => ({
@@ -106,25 +144,6 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
       summary: profile.summary,
       updatedAt: profile.updatedAt,
     })),
-    memories: dashboard.memories.filter((memory) => isUsefulMemoryContent(memory.content)).map((memory) => {
-      const tags = memory.tags ?? [];
-      return {
-        id: memory.id,
-        kind: memory.kind,
-        category: memory.category,
-        content: memory.content,
-        displayContent: displayMemoryContent(memory.content),
-        sourceLabel: tags.includes("manual")
-          ? "Added manually"
-          : memory.kind === "explicit"
-            ? "Remembered from chat"
-            : "Learned from chats",
-        tags,
-        confidence: memory.confidence,
-        salience: memory.salience,
-        createdAt: memory.createdAt,
-        updatedAt: memory.updatedAt,
-      };
-    }),
+    memories,
   };
 }

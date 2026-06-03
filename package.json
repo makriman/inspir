@@ -22,6 +22,7 @@
     "test": "tsx --test tests/*.test.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
+    "memory:backfill": "tsx scripts/backfill-memory.ts",
     "translations:warm": "tsx scripts/warm-main-app-translations.ts",
     "import:bubble": "tsx scripts/import-bubble.ts --mode=best-effort",
     "validate:import": "tsx scripts/validate-import.ts"

@@ -29,6 +29,20 @@ const chatRequestSchema = z.object({
 
 type MemoryJob = (() => Promise<void>) | null;
 
+function createMemoryJobLatch() {
+  let memoryJobSettled = false;
+  let settleMemoryJob: (job: MemoryJob) => void = () => {};
+  const memoryJob = new Promise<MemoryJob>((resolve) => {
+    settleMemoryJob = (job) => {
+      if (memoryJobSettled) return;
+      memoryJobSettled = true;
+      resolve(job);
+    };
+  });
+
+  return { memoryJob, settleMemoryJob };
+}
+
 export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -89,15 +103,7 @@ export async function POST(request: NextRequest) {
       status: "started",
     })
     .returning();
-  let memoryJobSettled = false;
-  let settleMemoryJob: (job: MemoryJob) => void = () => {};
-  const memoryJob = new Promise<MemoryJob>((resolve) => {
-    settleMemoryJob = (job) => {
-      if (memoryJobSettled) return;
-      memoryJobSettled = true;
-      resolve(job);
-    };
-  });
+  const { memoryJob, settleMemoryJob } = createMemoryJobLatch();
 
   after(async () => {
     const job = await memoryJobWithTimeout(memoryJob);

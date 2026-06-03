@@ -233,6 +233,15 @@ export function isUsefulMemoryContent(value: string) {
   if (words.length <= 2 && words.every((word) => /^(about|me|my|mine|that|this|it|its|remember|know)$/i.test(word))) {
     return false;
   }
+  if (
+    words.length <= 3 &&
+    !/\b(i|i'm|im|my|mine|me|learner|user|you|your|prefer|preference|like|likes|favo[u]?rite|goal|project|exam|essay|style|constraint|struggle|working)\b/i.test(
+      text,
+    ) &&
+    !/\b(is|are|am|prefer|like|likes|want|wants|need|needs)\b/i.test(text)
+  ) {
+    return false;
+  }
   return true;
 }
 
@@ -265,7 +274,13 @@ export function extractDirectMemoryActions(message: string): MemoryExtraction {
   for (const pattern of explicitRememberPatterns) {
     const match = text.match(pattern);
     const content = cleanMemoryText(match?.[1] ?? "");
-    if (content && !isAmbiguousPronounMemory(content) && isUsefulMemoryContent(content) && !looksSensitive(content)) {
+    if (
+      content &&
+      isDurableExplicitMemoryRequest(match?.[0] ?? "", content) &&
+      !isAmbiguousPronounMemory(content) &&
+      isUsefulMemoryContent(content) &&
+      !looksSensitive(content)
+    ) {
       return {
         memories: [
           {
@@ -1058,18 +1073,14 @@ function extractFavoriteSubject(text: string, favoriteKind: string) {
       : favoriteKind === "color"
         ? "(?:color|colour|colors|colours)"
         : escapeRegExp(favoriteKind);
-  const sentences = text
-    .split(/[\n.!?]+/)
-    .map((sentence) => sentence.trim())
-    .filter(Boolean);
+  const favoriteSentencePattern = new RegExp(
+    `(?:that\\s+)?(.{2,90}?)\\s+is\\s+(?:your|the learner'?s)\\s+favo[u]?rite(?:\\s+${kindPattern})?\\b`,
+    "i",
+  );
+  const sentences = splitMemorySentences(text);
 
   for (const sentence of sentences) {
-    const match = sentence.match(
-      new RegExp(
-        `(?:that\\s+)?(.{2,90}?)\\s+is\\s+(?:your|the learner'?s)\\s+favo[u]?rite(?:\\s+${kindPattern})?\\b`,
-        "i",
-      ),
-    );
+    const match = sentence.match(favoriteSentencePattern);
     const subject = sanitizeFavoriteSubject(match?.[1] ?? "");
     if (subject) return subject;
   }
@@ -1079,10 +1090,7 @@ function extractFavoriteSubject(text: string, favoriteKind: string) {
 
 function inferRecentNamedSubject(contextMessages: Array<Pick<PersistedMessage, "role" | "content">>) {
   for (const message of [...contextMessages].reverse().slice(0, 6)) {
-    const sentences = getVisibleMessageContent(message.content)
-      .split(/[\n.!?]+/)
-      .map((sentence) => sentence.trim())
-      .filter(Boolean);
+    const sentences = splitMemorySentences(getVisibleMessageContent(message.content));
     for (const sentence of sentences) {
       const match = sentence.match(/^(?:yes[, ]*)?([A-Z][A-Za-z0-9' -]{1,60}?)\s+is\s+(?:a|an|the|popular)\b/);
       const subject = sanitizeFavoriteSubject(match?.[1] ?? "");
@@ -1090,6 +1098,13 @@ function inferRecentNamedSubject(contextMessages: Array<Pick<PersistedMessage, "
     }
   }
   return null;
+}
+
+function splitMemorySentences(text: string) {
+  return text.split(/[\n.!?]+/).flatMap((sentence) => {
+    const trimmed = sentence.trim();
+    return trimmed ? [trimmed] : [];
+  });
 }
 
 function sanitizeFavoriteSubject(value: string) {
@@ -1117,6 +1132,15 @@ function isAskAboutMemoryQuestion(value: string) {
     ) ||
     /\bwhat\s+you\s+(?:know|remember|remeber|rember|rememebr|remembr|remebr)\s+about\s+me\b/i.test(value) ||
     /\bdo\s+you\s+(?:remember|remeber|rember|rememebr|remembr|remebr)\s+me\b/i.test(value)
+  );
+}
+
+function isDurableExplicitMemoryRequest(matchText: string, content: string) {
+  return (
+    /\b(?:remember|remeber|rember|rememebr|remembr|remebr|keep in mind|make a note)\s+that\b/i.test(matchText) ||
+    /\bsave\s+(?:that|this)\b/i.test(matchText) ||
+    /\b(i|i'm|im|my|mine|me|learner|user|you|your|we|our)\b/i.test(content) ||
+    strongPersonalMemoryCuePattern.test(content)
   );
 }
 

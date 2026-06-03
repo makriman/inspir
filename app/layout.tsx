@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
+import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   absoluteUrl,
@@ -123,6 +124,7 @@ export default function RootLayout({
       <body className="min-h-full bg-[#171614] text-white">
         <JsonLdScripts items={rootJsonLd} />
         {children}
+        <PwaInstallPrompt />
       </body>
     </html>
   );
