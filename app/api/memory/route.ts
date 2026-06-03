@@ -144,17 +144,6 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
       summary: profile.summary,
       updatedAt: profile.updatedAt,
     })),
-    history: {
-      indexedTurnCount: dashboard.history.indexedTurnCount,
-      chatSummaryCount: dashboard.history.chatSummaryCount,
-      lastIndexedAt: dashboard.history.lastIndexedAt,
-      recentSummaries: dashboard.history.recentSummaries.map((summary) => ({
-        chatId: summary.chatId,
-        summary: summary.summary,
-        topics: summary.topics ?? [],
-        updatedAt: summary.updatedAt,
-      })),
-    },
     memories,
   };
 }

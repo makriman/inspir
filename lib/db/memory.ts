@@ -118,7 +118,7 @@ export async function updateUserMemorySettings(
 }
 
 export async function getMemoryDashboard(userId: string) {
-  const [settings, memories, profiles, historyRows, recentSummaries] = await Promise.all([
+  const [settings, memories, profiles] = await Promise.all([
     ensureUserMemorySettings(userId),
     db
       .select()
@@ -126,44 +126,8 @@ export async function getMemoryDashboard(userId: string) {
       .where(and(eq(userMemories.userId, userId), eq(userMemories.status, "active")))
       .orderBy(desc(userMemories.salience), desc(userMemories.updatedAt)),
     getUserMemoryProfiles(userId),
-    sql<{
-      indexedTurnCount: string | number;
-      chatSummaryCount: string | number;
-      lastIndexedAt: Date | null;
-    }[]>`
-      select
-        (select count(*) from chat_memory_turns where user_id = ${userId}) as "indexedTurnCount",
-        (select count(*) from chat_memory_summaries where user_id = ${userId}) as "chatSummaryCount",
-        (select max(updated_at) from chat_memory_turns where user_id = ${userId}) as "lastIndexedAt"
-    `,
-    db
-      .select({
-        chatId: chatMemorySummaries.chatId,
-        summary: chatMemorySummaries.summary,
-        topics: chatMemorySummaries.topics,
-        updatedAt: chatMemorySummaries.updatedAt,
-      })
-      .from(chatMemorySummaries)
-      .where(eq(chatMemorySummaries.userId, userId))
-      .orderBy(desc(chatMemorySummaries.updatedAt))
-      .limit(3),
   ]);
-  const history = historyRows[0] ?? {
-    indexedTurnCount: 0,
-    chatSummaryCount: 0,
-    lastIndexedAt: null,
-  };
-  return {
-    settings,
-    memories,
-    profiles,
-    history: {
-      indexedTurnCount: Number(history.indexedTurnCount ?? 0),
-      chatSummaryCount: Number(history.chatSummaryCount ?? 0),
-      lastIndexedAt: history.lastIndexedAt,
-      recentSummaries,
-    },
-  };
+  return { settings, memories, profiles };
 }
 
 export async function getActiveUserMemories(userId: string, limit = 100) {
