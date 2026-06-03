@@ -209,6 +209,33 @@ const preferencePatterns = [
 const strongPersonalMemoryCuePattern =
   /\b(my|mine|me)\b.*\b(favo[u]?rite|fav|prefer|preference|like|likes|food|foods|foos|colour|color|project|exam|essay|goal|style|progress|plan|work)\b|\b(favo[u]?rite|fav|prefer|like|likes)\b.*\b(my|mine|me)\b/i;
 
+export function displayMemoryContent(content: string) {
+  return content
+    .replace(/\bthe learner's\b/gi, "your")
+    .replace(/\blearner's\b/gi, "your")
+    .replace(/\bthe learner\b/gi, "you")
+    .replace(/\blearner\b/gi, "you")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+export function isUsefulMemoryContent(value: string) {
+  const text = cleanMemoryText(value).toLowerCase();
+  if (!text || text.length < 5) return false;
+  if (
+    /^(that|this|it|its|it's|that's|thats|about me|all about me|what about me|what you know about me|what do you know about me|what do you remember about me|what all do you remember about me|what all do you remeber about me|remember about me|remember me)$/i.test(
+      text,
+    )
+  ) {
+    return false;
+  }
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length <= 2 && words.every((word) => /^(about|me|my|mine|that|this|it|its|remember|know)$/i.test(word))) {
+    return false;
+  }
+  return true;
+}
+
 export function extractDirectMemoryActions(message: string): MemoryExtraction {
   const text = getVisibleMessageContent(message).trim();
   const lower = text.toLowerCase();
@@ -233,10 +260,12 @@ export function extractDirectMemoryActions(message: string): MemoryExtraction {
     };
   }
 
+  if (isAskAboutMemoryQuestion(text)) return empty;
+
   for (const pattern of explicitRememberPatterns) {
     const match = text.match(pattern);
     const content = cleanMemoryText(match?.[1] ?? "");
-    if (content && !isAmbiguousPronounMemory(content) && !looksSensitive(content)) {
+    if (content && !isAmbiguousPronounMemory(content) && isUsefulMemoryContent(content) && !looksSensitive(content)) {
       return {
         memories: [
           {
@@ -259,7 +288,7 @@ export function extractDirectMemoryActions(message: string): MemoryExtraction {
   for (const pattern of preferencePatterns) {
     const match = text.match(pattern);
     const content = cleanMemoryText(match?.[0] ?? "");
-    if (content && !looksSensitive(content)) {
+    if (content && isUsefulMemoryContent(content) && !looksSensitive(content)) {
       return {
         memories: [
           {
@@ -297,10 +326,10 @@ export function detectMemoryIntent(message: string): MemoryIntent {
   if (!text) return "generic";
   if (/\b(clear|delete|erase|remove)\s+(all\s+)?memor(y|ies)\b/.test(text)) return "explicit_forget";
   if (/^\s*(forget|delete|erase|remove)\b/.test(text) || /\bforget\s+(?:that|my|this)\b/.test(text)) return "explicit_forget";
-  if (explicitRememberPatterns.some((pattern) => pattern.test(text))) return "explicit_remember";
-  if (/\b(what do you know about me|what you know about me|what do you remember about me|do you remember me)\b/.test(text)) {
+  if (isAskAboutMemoryQuestion(text)) {
     return "ask_about_memory";
   }
+  if (explicitRememberPatterns.some((pattern) => pattern.test(text))) return "explicit_remember";
   if (/\b(my|mine|i|me)\b/.test(text) && /\b(project|exam|essay|goal|style|preference|progress|plan|work)\b/.test(text)) {
     return "personalized";
   }
@@ -361,11 +390,12 @@ export async function retrieveRelevantMemoryForTurn(input: {
   }
 
   const query = gate.query || input.message;
-  const [embedding, allMemories, allProfiles] = await Promise.all([
+  const [embedding, rawMemories, allProfiles] = await Promise.all([
     embedText(query),
     getActiveUserMemories(input.userId, 100),
     getUserMemoryProfiles(input.userId),
   ]);
+  const allMemories = rawMemories.filter((memory) => isUsefulMemoryContent(memory.content));
 
   let selectedMemories: MemorySearchResult[] = [];
   let selectedSummaries: ChatSummarySearchResult[] = [];
@@ -387,6 +417,8 @@ export async function retrieveRelevantMemoryForTurn(input: {
     selectedMemories = lexicalMemoryRank(query, allMemories, 8);
     selectedTurns = await searchChatMemoryTurnsByText(input.userId, query, input.chatId, 4);
   }
+
+  selectedMemories = selectedMemories.filter((memory) => isUsefulMemoryContent(memory.content));
 
   const explicit = selectedMemories.filter((memory) => memory.kind === "explicit").slice(0, 2);
   const auto = selectedMemories
@@ -574,7 +606,9 @@ export async function processMemoryAfterTurn(input: {
   const updatedCategories = await Promise.all(
     extraction.memories.map((candidate) => upsertExtractedMemory(input, candidate)),
   );
-  for (const category of updatedCategories) changedCategories.add(category);
+  for (const category of updatedCategories) {
+    if (category) changedCategories.add(category);
+  }
 
   const summary = extraction.chatSummary ?? fallbackChatSummary(input);
   const turnIndex = extraction.forget.length ? null : buildChatTurnIndex(input, summary.topics);
@@ -653,6 +687,18 @@ async function upsertExtractedMemory(
   },
   candidate: MemoryExtraction["memories"][number],
 ) {
+  if (!isUsefulMemoryContent(candidate.content)) {
+    await insertMemoryEvent({
+      userId: input.userId,
+      chatId: input.chatId,
+      messageId: input.userMessage.id,
+      eventType: "skipped",
+      reason: "low_information_memory",
+      metadata: { content: candidate.content.slice(0, 120), category: candidate.category, kind: candidate.kind },
+    });
+    return null;
+  }
+
   const normalized = normalizeMemoryContent(candidate.content);
   const [existing, embedding] = await Promise.all([
     findExistingMemoryByNormalized(input.userId, normalized),
@@ -910,11 +956,11 @@ function fallbackExtraction(input: {
 function mergeMemoryExtractions(primary: MemoryExtraction, secondary: MemoryExtraction): MemoryExtraction {
   if (primary.clearAll || primary.forget.length) return primary;
   if (secondary.clearAll || secondary.forget.length) return secondary;
-  const memories = [...primary.memories];
+  const memories = primary.memories.filter((memory) => isUsefulMemoryContent(memory.content));
   const seen = new Set(memories.map((memory) => normalizeMemoryContent(memory.content)));
   for (const memory of secondary.memories) {
     const key = normalizeMemoryContent(memory.content);
-    if (!seen.has(key) && !looksSensitive(memory.content)) {
+    if (!seen.has(key) && isUsefulMemoryContent(memory.content) && !looksSensitive(memory.content)) {
       memories.push(memory);
       seen.add(key);
     }
@@ -1062,6 +1108,16 @@ function sanitizeFavoriteSubject(value: string) {
 
 function isAmbiguousPronounMemory(value: string) {
   return /^(it|it's|its|this|that|that's|thats)\b/i.test(value.trim());
+}
+
+function isAskAboutMemoryQuestion(value: string) {
+  return (
+    /\bwhat(?:\s+all)?\s+(?:do\s+you\s+)?(?:know|remember|remeber|rember|rememebr|remembr|remebr)\s+about\s+me\b/i.test(
+      value,
+    ) ||
+    /\bwhat\s+you\s+(?:know|remember|remeber|rember|rememebr|remembr|remebr)\s+about\s+me\b/i.test(value) ||
+    /\bdo\s+you\s+(?:remember|remeber|rember|rememebr|remembr|remebr)\s+me\b/i.test(value)
+  );
 }
 
 function cleanMemoryText(value: string) {

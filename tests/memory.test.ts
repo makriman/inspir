@@ -3,9 +3,11 @@ import test from "node:test";
 import { buildTopicSystemPrompt } from "../lib/ai/prompts";
 import {
   detectMemoryIntent,
+  displayMemoryContent,
   extractDirectMemoryActions,
   extractDirectMemoryActionsFromTurn,
   formatMemoryPromptContext,
+  isUsefulMemoryContent,
   memoryRunMetadata,
   shouldUseMemoryHeuristic,
   type MemoryPromptContext,
@@ -109,6 +111,24 @@ test("direct memory extraction saves explicit remember requests", () => {
   assert.equal(extraction.memories[0]?.content, "I like maths and the colour red");
 });
 
+test("memory extraction does not save lookup questions or low-information fragments", () => {
+  const lookup = extractDirectMemoryActions("what all do you remeber about me?");
+  assert.equal(lookup.memories.length, 0);
+  assert.equal(lookup.forget.length, 0);
+  assert.equal(lookup.clearAll, false);
+
+  assert.equal(isUsefulMemoryContent("that"), false);
+  assert.equal(isUsefulMemoryContent("about me"), false);
+  assert.equal(isUsefulMemoryContent("Puttu Kadala is the learner's favourite food."), true);
+});
+
+test("memory display text removes internal learner phrasing", () => {
+  assert.equal(
+    displayMemoryContent("Puttu Kadala is the learner's favourite food."),
+    "Puttu Kadala is your favourite food.",
+  );
+});
+
 test("direct memory extraction is typo tolerant for explicit remember requests", () => {
   const extraction = extractDirectMemoryActions("Can you remeber that I like maths?");
   assert.equal(extraction.clearAll, false);
@@ -145,6 +165,7 @@ test("direct memory extraction treats forget as deletion only", () => {
 
 test("memory intent detects questions about saved knowledge", () => {
   assert.equal(detectMemoryIntent("What do you know about me?"), "ask_about_memory");
+  assert.equal(detectMemoryIntent("what all do you remeber about me?"), "ask_about_memory");
   assert.equal(detectMemoryIntent("Can you remember that I prefer short hints?"), "explicit_remember");
   assert.equal(detectMemoryIntent("Can you remeber that I prefer short hints?"), "explicit_remember");
   assert.equal(detectMemoryIntent("Can you rememebr that I prefer short hints?"), "explicit_remember");

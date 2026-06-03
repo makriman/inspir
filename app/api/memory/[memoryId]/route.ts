@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
-import { buildMemoryEmbedding, compileUserMemoryProfile } from "@/lib/ai/memory";
+import { buildMemoryEmbedding, compileUserMemoryProfile, displayMemoryContent, isUsefulMemoryContent } from "@/lib/ai/memory";
 import { deleteUserMemory, updateUserMemory } from "@/lib/db/memory";
 
 export const runtime = "nodejs";
@@ -22,6 +22,9 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
   if (!parsed.success) return NextResponse.json({ error: "Invalid memory update" }, { status: 400 });
 
   const nextContent = parsed.data.content;
+  if (nextContent && !isUsefulMemoryContent(nextContent)) {
+    return NextResponse.json({ error: "That memory needs a little more detail." }, { status: 400 });
+  }
   const memory = await updateUserMemory(session.user.id, memoryId, {
     ...(nextContent ? { content: nextContent, embedding: await buildMemoryEmbedding(nextContent), kind: "explicit" as const } : {}),
     ...(parsed.data.category ? { category: parsed.data.category } : {}),
@@ -37,6 +40,12 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
       kind: memory.kind,
       category: memory.category,
       content: memory.content,
+      displayContent: displayMemoryContent(memory.content),
+      sourceLabel: memory.tags?.includes("manual")
+        ? "Added manually"
+        : memory.kind === "explicit"
+          ? "Remembered from chat"
+          : "Learned from chats",
       tags: memory.tags,
       confidence: memory.confidence,
       salience: memory.salience,

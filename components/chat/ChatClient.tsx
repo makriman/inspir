@@ -192,6 +192,8 @@ type MemoryItem = {
   kind: string;
   category: string;
   content: string;
+  displayContent?: string;
+  sourceLabel?: string;
   tags: string[];
   confidence: number;
   salience: number;
@@ -381,7 +383,7 @@ function displayMessages(messages: Message[]) {
 }
 
 function isExplicitMemoryMutationRequest(value: string) {
-  return /\b(remember|keep in mind|save that|save this|forget|clear memory|clear memories|delete memory|delete memories)\b/i.test(
+  return /\b(remember|remeber|rember|rememebr|remembr|remebr|keep in mind|save that|save this|forget|clear memory|clear memories|delete memory|delete memories)\b/i.test(
     value,
   );
 }
@@ -1182,6 +1184,26 @@ function useChatClientController({
     }
   }
 
+  async function createMemoryItem(input: { content: string; category?: string }) {
+    if (isGuest) return;
+    setMemorySaving(true);
+    setMemoryError(null);
+    try {
+      const response = await fetch("/api/memory", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(input),
+      });
+      if (!response.ok) throw new Error("Could not add memory");
+      const data = await response.json();
+      setMemoryDashboard(data);
+    } catch {
+      setMemoryError("Could not add that memory.");
+    } finally {
+      setMemorySaving(false);
+    }
+  }
+
   async function updateMemoryItem(memoryId: string, input: { content?: string; category?: string; tags?: string[] }) {
     if (isGuest) return;
     setMemorySaving(true);
@@ -1303,6 +1325,7 @@ function useChatClientController({
     translationBundle,
     translationRootRef,
     patchMemorySettings,
+    createMemoryItem,
     updateMemoryItem,
     updatePreferredLanguage,
     deleteMemoryItem,
@@ -1622,6 +1645,7 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
     agePromptOpen,
     avatarSrc,
     clearMemory,
+    createMemoryItem,
     deleteMemoryItem,
     guestMessageLimit,
     guestMessagesUsed,
@@ -1658,6 +1682,7 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
           memoryError={memoryError}
           onLanguageChange={updatePreferredLanguage}
           onMemorySettings={patchMemorySettings}
+          onMemoryCreate={createMemoryItem}
           onMemoryUpdate={updateMemoryItem}
           onMemoryDelete={deleteMemoryItem}
           onMemoryClear={clearMemory}
@@ -5970,6 +5995,7 @@ function ProfilePanel({
   memoryError,
   onLanguageChange,
   onMemorySettings,
+  onMemoryCreate,
   onMemoryUpdate,
   onMemoryDelete,
   onMemoryClear,
@@ -5984,6 +6010,7 @@ function ProfilePanel({
   memoryError: string | null;
   onLanguageChange: (language: string) => void;
   onMemorySettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onMemoryCreate: (input: { content: string; category?: string }) => void;
   onMemoryUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
   onMemoryDelete: (memoryId: string) => void;
   onMemoryClear: () => void;
@@ -6053,6 +6080,7 @@ function ProfilePanel({
           saving={memorySaving}
           error={memoryError}
           onSettings={onMemorySettings}
+          onCreate={onMemoryCreate}
           onUpdate={onMemoryUpdate}
           onDelete={onMemoryDelete}
           onClear={onMemoryClear}
@@ -6080,6 +6108,7 @@ function MemoryPanel({
   saving,
   error,
   onSettings,
+  onCreate,
   onUpdate,
   onDelete,
   onClear,
@@ -6089,6 +6118,7 @@ function MemoryPanel({
   saving: boolean;
   error: string | null;
   onSettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onCreate: (input: { content: string; category?: string }) => void;
   onUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
   onDelete: (memoryId: string) => void;
   onClear: () => void;
@@ -6096,6 +6126,18 @@ function MemoryPanel({
   const settings = dashboard?.settings;
   const enabled = settings?.enabled ?? true;
   const grouped = useMemo(() => groupMemoriesByCategory(dashboard?.memories ?? []), [dashboard?.memories]);
+  const [adding, setAdding] = useState(false);
+  const [newMemory, setNewMemory] = useState("");
+  const [newCategory, setNewCategory] = useState("preferences");
+
+  function addMemory() {
+    const content = newMemory.trim();
+    if (!content) return;
+    onCreate({ content, category: newCategory });
+    setNewMemory("");
+    setNewCategory("preferences");
+    setAdding(false);
+  }
 
   return (
     <section className="bubble-memory-card">
@@ -6105,7 +6147,14 @@ function MemoryPanel({
         </div>
         <div>
           <strong>Memory</strong>
-          <span>Inspir uses saved context only when it is relevant.</span>
+          <span>{enabled ? "On for this account" : "Off for this account"}</span>
+        </div>
+      </div>
+
+      <div className="bubble-memory-status-row">
+        <div>
+          <strong>{enabled ? "Memory is on" : "Memory is off"}</strong>
+          <span>{enabled ? "Inspir can use saved memories when relevant." : "Inspir will not save or use memories."}</span>
         </div>
         <button
           type="button"
@@ -6115,7 +6164,10 @@ function MemoryPanel({
           disabled={saving || loading}
           onClick={() => onSettings({ enabled: !enabled })}
         >
-          <span />
+          <span className="bubble-memory-toggle-track">
+            <span className="bubble-memory-toggle-thumb" />
+          </span>
+          <strong>{enabled ? "On" : "Off"}</strong>
         </button>
       </div>
 
@@ -6125,7 +6177,7 @@ function MemoryPanel({
       {settings && !settings.noticeSeenAt ? (
         <div className="bubble-memory-notice">
           <strong>Memory is on for signed-in accounts.</strong>
-          <p>You can edit, delete, or clear what Inspir remembers from here.</p>
+          <p>Saved memories are the editable facts below. Related chat history is searched separately and is not listed as a saved memory.</p>
           <button type="button" disabled={saving} onClick={() => onSettings({ noticeSeen: true })}>
             Got it
           </button>
@@ -6136,14 +6188,62 @@ function MemoryPanel({
         <>
           <div className="bubble-memory-summary">
             <span>{dashboard.memories.length} saved memories</span>
-            <button type="button" disabled={saving || dashboard.memories.length === 0} onClick={onClear}>
-              Clear all
-            </button>
+            <div className="bubble-memory-summary-actions">
+              <button type="button" disabled={saving || !enabled} onClick={() => setAdding((current) => !current)}>
+                <Plus size={15} />
+                <span>Add</span>
+              </button>
+              <button type="button" disabled={saving || dashboard.memories.length === 0} onClick={onClear}>
+                Clear all
+              </button>
+            </div>
           </div>
+
+          {adding ? (
+            <div className="bubble-memory-add">
+              <textarea
+                aria-label="Add memory"
+                value={newMemory}
+                onChange={(event) => setNewMemory(event.target.value)}
+                placeholder="Example: Puttu Kadala is my favourite food."
+                rows={3}
+                maxLength={600}
+                disabled={saving || !enabled}
+              />
+              <div className="bubble-memory-add-actions">
+                <select
+                  aria-label="Memory category"
+                  value={newCategory}
+                  disabled={saving || !enabled}
+                  onChange={(event) => setNewCategory(event.target.value)}
+                >
+                  {memoryCategoryOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <button type="button" disabled={saving || !enabled || !newMemory.trim()} onClick={addMemory}>
+                  Save
+                </button>
+                <button
+                  type="button"
+                  disabled={saving}
+                  onClick={() => {
+                    setAdding(false);
+                    setNewMemory("");
+                    setNewCategory("preferences");
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ) : null}
 
           <div className="bubble-memory-list">
             {dashboard.memories.length === 0 ? (
-              <p className="bubble-memory-muted">No saved memories yet.</p>
+              <p className="bubble-memory-muted">No editable saved memories yet.</p>
             ) : (
               grouped.map((group) => (
                 <div key={group.category} className="bubble-memory-group">
@@ -6183,9 +6283,9 @@ function MemoryItemEditor({
 
   function save() {
     const next = draft.trim();
-    if (!next || next === memory.content) {
+    if (!next || next === memory.content || next === memory.displayContent) {
       setEditing(false);
-      setDraft(memory.content);
+      setDraft(editableMemoryText(memory));
       return;
     }
     onUpdate(memory.id, { content: next });
@@ -6204,10 +6304,10 @@ function MemoryItemEditor({
           maxLength={600}
         />
       ) : (
-        <p>{memory.content}</p>
+        <p>{memory.displayContent ?? memory.content}</p>
       )}
       <div className="bubble-memory-item-meta">
-        <span>{memory.kind === "explicit" ? "Saved by you" : "Learned automatically"}</span>
+        <span>{memory.sourceLabel ?? (memory.kind === "explicit" ? "Remembered from chat" : "Learned from chats")}</span>
         <span>{formatBubbleDate(memory.updatedAt)}</span>
       </div>
       <div className="bubble-memory-actions">
@@ -6221,7 +6321,7 @@ function MemoryItemEditor({
               disabled={saving}
               onClick={() => {
                 setEditing(false);
-                setDraft(memory.content);
+                setDraft(editableMemoryText(memory));
               }}
               aria-label="Cancel memory edit"
             >
@@ -6234,7 +6334,7 @@ function MemoryItemEditor({
               type="button"
               disabled={saving}
               onClick={() => {
-                setDraft(memory.content);
+                setDraft(editableMemoryText(memory));
                 setEditing(true);
               }}
               aria-label="Edit memory"
@@ -6249,6 +6349,22 @@ function MemoryItemEditor({
       </div>
     </article>
   );
+}
+
+const memoryCategoryOptions = [
+  { value: "preferences", label: "Preferences" },
+  { value: "learning_style", label: "Learning style" },
+  { value: "projects", label: "Projects" },
+  { value: "goals", label: "Goals" },
+  { value: "knowledge", label: "Knowledge" },
+  { value: "constraints", label: "Constraints" },
+  { value: "interaction", label: "Interaction" },
+  { value: "identity", label: "Identity" },
+  { value: "general", label: "General" },
+];
+
+function editableMemoryText(memory: MemoryItem) {
+  return memory.displayContent ?? memory.content;
 }
 
 function groupMemoriesByCategory(memories: MemoryItem[]) {
