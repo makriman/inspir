@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
 import { buildMemoryEmbedding, compileUserMemoryProfile, displayMemoryContent, isUsefulMemoryContent } from "@/lib/ai/memory";
-import { deleteUserMemory, updateUserMemory } from "@/lib/db/memory";
+import { deleteUserMemory, getUserMemory, updateUserMemory } from "@/lib/db/memory";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,14 +25,29 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
   if (nextContent && !isUsefulMemoryContent(nextContent)) {
     return NextResponse.json({ error: "That memory needs a little more detail." }, { status: 400 });
   }
+  const existing = await getUserMemory(session.user.id, memoryId);
+  if (!existing || existing.status !== "active") return NextResponse.json({ error: "Memory not found" }, { status: 404 });
+
+  const userEdited = Boolean(nextContent || parsed.data.category || parsed.data.tags);
+  const nextTags = userEdited
+    ? [
+        ...new Set([
+          ...(parsed.data.tags ?? existing.tags ?? []).filter((tag) => tag !== "prior_chat" && tag !== "chat_history"),
+          "manual",
+        ]),
+      ].slice(0, 8)
+    : parsed.data.tags;
+
   const memory = await updateUserMemory(session.user.id, memoryId, {
     ...(nextContent ? { content: nextContent, embedding: await buildMemoryEmbedding(nextContent), kind: "explicit" as const } : {}),
     ...(parsed.data.category ? { category: parsed.data.category } : {}),
-    ...(parsed.data.tags ? { tags: parsed.data.tags } : {}),
+    ...(nextTags ? { tags: nextTags } : {}),
     salience: 90,
   });
   if (!memory) return NextResponse.json({ error: "Memory not found" }, { status: 404 });
-  await compileUserMemoryProfile(session.user.id, memory.category);
+  await Promise.all(
+    [...new Set([existing.category, memory.category])].map((category) => compileUserMemoryProfile(session.user.id, category)),
+  );
 
   return NextResponse.json({
     memory: {
@@ -41,11 +56,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
       category: memory.category,
       content: memory.content,
       displayContent: displayMemoryContent(memory.content),
-      sourceLabel: memory.tags?.includes("manual")
-        ? "Added manually"
-        : memory.kind === "explicit"
-          ? "Remembered from chat"
-          : "Learned from chats",
+      sourceLabel: memorySourceLabel(memory.kind, memory.tags ?? []),
       tags: memory.tags,
       confidence: memory.confidence,
       salience: memory.salience,
@@ -65,4 +76,11 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
   await compileUserMemoryProfile(session.user.id, memory.category);
 
   return NextResponse.json({ ok: true });
+}
+
+function memorySourceLabel(kind: string, tags: string[]) {
+  if (tags.includes("manual")) return "Added manually";
+  if (tags.includes("prior_chat")) return "From previous chat";
+  if (kind === "explicit") return "Remembered from chat";
+  return "Learned from chats";
 }

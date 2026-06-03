@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { buildTopicSystemPrompt } from "../lib/ai/prompts";
 import {
+  buildChatHistoryMemoryContent,
   detectMemoryIntent,
   displayMemoryContent,
   extractDirectMemoryActions,
@@ -133,6 +134,19 @@ test("memory display text removes internal learner phrasing", () => {
     displayMemoryContent("Puttu Kadala is the learner's favourite food."),
     "Puttu Kadala is your favourite food.",
   );
+});
+
+test("prior chat turns are materialized as editable memory text", () => {
+  const content = buildChatHistoryMemoryContent({
+    topicName: "Learn Anything",
+    question: "What is a black hole?",
+    answerExcerpt: "A black hole is a region where gravity is so strong that light cannot escape.",
+  });
+  assert.equal(
+    content,
+    "In Learn Anything, you asked: What is a black hole. Inspir helped with: A black hole is a region where gravity is so strong that light cannot escape",
+  );
+  assert.equal(isUsefulMemoryContent(content), true);
 });
 
 test("direct memory extraction is typo tolerant for explicit remember requests", () => {

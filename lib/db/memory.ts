@@ -139,6 +139,15 @@ export async function getActiveUserMemories(userId: string, limit = 100) {
     .limit(limit);
 }
 
+export async function getUserMemory(userId: string, memoryId: string) {
+  const [memory] = await db
+    .select()
+    .from(userMemories)
+    .where(and(eq(userMemories.userId, userId), eq(userMemories.id, memoryId)))
+    .limit(1);
+  return memory ?? null;
+}
+
 export async function getActiveMemoriesByCategory(userId: string, category: string, limit = 40) {
   return db
     .select()
@@ -146,6 +155,19 @@ export async function getActiveMemoriesByCategory(userId: string, category: stri
     .where(and(eq(userMemories.userId, userId), eq(userMemories.status, "active"), eq(userMemories.category, category)))
     .orderBy(desc(userMemories.salience), desc(userMemories.updatedAt))
     .limit(limit);
+}
+
+export async function findMemoriesBySourceMessage(userId: string, sourceMessageId: string) {
+  return db
+    .select()
+    .from(userMemories)
+    .where(and(eq(userMemories.userId, userId), eq(userMemories.sourceMessageId, sourceMessageId)))
+    .limit(20);
+}
+
+export async function findMemoryBySourceMessageTag(userId: string, sourceMessageId: string, tag: string) {
+  const rows = await findMemoriesBySourceMessage(userId, sourceMessageId);
+  return rows.find((memory) => (memory.tags ?? []).includes(tag));
 }
 
 export async function createUserMemory(input: {

@@ -10,26 +10,21 @@ import {
   deleteMatchingChatMemoryTurnsByText,
   ensureUserMemorySettings,
   findExistingMemoryByNormalized,
+  findMemoriesBySourceMessage,
   findMatchingMemoriesByText,
   getActiveMemoriesByCategory,
   getActiveUserMemories,
   getUserMemoryProfiles,
   insertMemoryEvent,
   lexicalMemoryRank,
-  markChatTurnsUsed,
   markMemoriesUsed,
   memoryUseMetadata,
   normalizeMemoryContent,
-  searchChatMemoryTurnsByEmbedding,
-  searchChatMemoryTurnsByText,
-  searchChatSummariesByEmbedding,
   searchUserMemoriesByEmbedding,
   updateUserMemory,
   upsertChatMemorySummary,
   upsertChatMemoryTurn,
   upsertUserMemoryProfile,
-  type ChatSummarySearchResult,
-  type ChatTurnSearchResult,
   type MemorySearchResult,
 } from "@/lib/db/memory";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
@@ -423,33 +418,27 @@ export async function retrieveRelevantMemoryForTurn(input: {
   const allMemories = rawMemories.filter((memory) => isUsefulMemoryContent(memory.content));
 
   let selectedMemories: MemorySearchResult[] = [];
-  let selectedSummaries: ChatSummarySearchResult[] = [];
-  let selectedTurns: ChatTurnSearchResult[] = [];
-
   if (embedding) {
     try {
-      [selectedMemories, selectedSummaries, selectedTurns] = await Promise.all([
-        searchUserMemoriesByEmbedding(input.userId, embedding, 8),
-        searchChatSummariesByEmbedding(input.userId, embedding, 4),
-        searchChatMemoryTurnsByEmbedding(input.userId, embedding, input.chatId, 8),
-      ]);
+      selectedMemories = await searchUserMemoriesByEmbedding(input.userId, embedding, 12);
     } catch {
-      selectedMemories = lexicalMemoryRank(query, allMemories, 8);
-      selectedSummaries = [];
-      selectedTurns = await searchChatMemoryTurnsByText(input.userId, query, input.chatId, 4);
+      selectedMemories = lexicalMemoryRank(query, allMemories, 12);
     }
   } else {
-    selectedMemories = lexicalMemoryRank(query, allMemories, 8);
-    selectedTurns = await searchChatMemoryTurnsByText(input.userId, query, input.chatId, 4);
+    selectedMemories = lexicalMemoryRank(query, allMemories, 12);
   }
 
-  selectedMemories = selectedMemories.filter((memory) => isUsefulMemoryContent(memory.content));
+  selectedMemories = selectedMemories.filter(
+    (memory) =>
+      isUsefulMemoryContent(memory.content) &&
+      !((memory.tags ?? []).includes("prior_chat") && memory.sourceChatId === input.chatId),
+  );
 
-  const explicit = selectedMemories.filter((memory) => memory.kind === "explicit").slice(0, 2);
+  const explicit = selectedMemories.filter((memory) => memory.kind === "explicit").slice(0, 3);
   const auto = selectedMemories
     .filter((memory) => memory.kind !== "explicit" && !explicit.some((selected) => selected.id === memory.id))
-    .slice(0, 4);
-  const memories = [...explicit, ...auto].slice(0, 5);
+    .slice(0, 5);
+  const memories = [...explicit, ...auto].slice(0, 6);
 
   const categories = [...new Set(memories.map((memory) => memory.category))];
   const profiles = allProfiles
@@ -459,23 +448,6 @@ export async function retrieveRelevantMemoryForTurn(input: {
       category: profile.category,
       summary: profile.summary,
     }));
-
-  const chatSummaries = selectedSummaries
-    .filter((summary) => summary.chatId !== input.chatId)
-    .slice(0, 2)
-    .map((summary) => ({
-      chatId: summary.chatId,
-      summary: summary.summary,
-      topics: summary.topics ?? [],
-    }));
-
-  const priorChatTurns = selectedTurns.slice(0, 4).map((turn) => ({
-    id: turn.id,
-    chatId: turn.chatId,
-    question: turn.question,
-    answerExcerpt: turn.answerExcerpt,
-    topics: turn.topics ?? [],
-  }));
 
   const promptMemories = memories.map((memory) => ({
     id: memory.id,
@@ -494,23 +466,11 @@ export async function retrieveRelevantMemoryForTurn(input: {
       reason: gate.reason,
     });
   }
-  if (priorChatTurns.length) {
-    await markChatTurnsUsed({
-      userId: input.userId,
-      turnIds: priorChatTurns.map((turn) => turn.id),
-      chatId: input.chatId,
-      messageId: input.userMessageId,
-      reason: gate.reason,
-    });
-  }
-
   const shouldIncludeStatus = intent === "explicit_remember" || intent === "explicit_forget" || intent === "ask_about_memory";
   const used =
     shouldIncludeStatus ||
     promptMemories.length > 0 ||
-    profiles.length > 0 ||
-    chatSummaries.length > 0 ||
-    priorChatTurns.length > 0;
+    profiles.length > 0;
 
   return {
     settingsEnabled: true,
@@ -523,12 +483,12 @@ export async function retrieveRelevantMemoryForTurn(input: {
     },
     memories: promptMemories,
     profiles,
-    chatSummaries,
-    priorChatTurns,
+    chatSummaries: [],
+    priorChatTurns: [],
     memoryIds: promptMemories.map((memory) => memory.id),
     profileCategories: profiles.map((profile) => profile.category),
-    chatSummaryIds: chatSummaries.map((summary) => summary.chatId),
-    chatTurnIds: priorChatTurns.map((turn) => turn.id),
+    chatSummaryIds: [],
+    chatTurnIds: [],
   };
 }
 
@@ -673,6 +633,22 @@ export async function processMemoryAfterTurn(input: {
     );
   }
   await Promise.all(persistenceTasks);
+
+  if (turnIndex) {
+    const chatHistoryCategory = await upsertChatHistoryMemoryFromTurn({
+      userId: input.userId,
+      chatId: input.chatId,
+      topicName: input.topic.name,
+      topicSlug: input.topic.slug,
+      userMessageId: input.userMessage.id,
+      question: turnIndex.question,
+      answerExcerpt: turnIndex.answerExcerpt,
+      topics: turnIndex.topics,
+      embedding: turnEmbedding,
+    });
+    if (chatHistoryCategory) changedCategories.add(chatHistoryCategory);
+  }
+
   await Promise.all([...changedCategories].map((category) => compileUserMemoryProfile(input.userId, category)));
 }
 
@@ -964,6 +940,109 @@ async function embedText(value: string) {
 
 export async function buildMemoryEmbedding(value: string) {
   return embedText(value);
+}
+
+export function buildChatHistoryMemoryContent(input: {
+  topicName: string;
+  question: string;
+  answerExcerpt?: string | null;
+}) {
+  const topicName = compactText(input.topicName || "a previous chat", 80);
+  const question = compactText(cleanMemoryText(getVisibleMessageContent(input.question)), 220);
+  const answerExcerpt = compactText(cleanMemoryText(input.answerExcerpt ?? ""), 260);
+  if (!question) return "";
+  return compactText(
+    [
+      `In ${topicName}, you asked: ${question}`,
+      answerExcerpt ? `Inspir helped with: ${answerExcerpt}` : undefined,
+    ]
+      .filter(Boolean)
+      .join(". "),
+    560,
+  );
+}
+
+export async function upsertChatHistoryMemoryFromTurn(input: {
+  userId: string;
+  chatId: string;
+  topicName: string;
+  topicSlug?: string | null;
+  userMessageId: string;
+  question: string;
+  answerExcerpt?: string | null;
+  topics?: string[];
+  embedding?: number[] | null;
+}) {
+  const intent = detectMemoryIntent(input.question);
+  if (intent === "explicit_remember" || intent === "explicit_forget" || intent === "ask_about_memory") {
+    await insertMemoryEvent({
+      userId: input.userId,
+      chatId: input.chatId,
+      messageId: input.userMessageId,
+      eventType: "skipped",
+      reason: "chat_history_memory_control_turn",
+      metadata: { intent },
+    });
+    return null;
+  }
+
+  const content = buildChatHistoryMemoryContent(input);
+  if (!isUsefulMemoryContent(content) || looksSensitive(content)) {
+    await insertMemoryEvent({
+      userId: input.userId,
+      chatId: input.chatId,
+      messageId: input.userMessageId,
+      eventType: "skipped",
+      reason: "chat_history_low_information",
+      metadata: { question: compactText(input.question, 160) },
+    });
+    return null;
+  }
+
+  const sourceMemories = await findMemoriesBySourceMessage(input.userId, input.userMessageId);
+  const existingChatHistory = sourceMemories.find((memory) => (memory.tags ?? []).includes("prior_chat"));
+  if (existingChatHistory?.status === "deleted") return null;
+  if (sourceMemories.some((memory) => memory.status === "active" && !(memory.tags ?? []).includes("prior_chat"))) {
+    return null;
+  }
+
+  const category = categorizeMemoryContent(content);
+  const tags = [
+    "prior_chat",
+    "chat_history",
+    ...(input.topicSlug ? [input.topicSlug] : []),
+    ...(input.topics ?? []).map((topic) => topic.toLowerCase().replace(/[^a-z0-9]+/g, "_")).filter(Boolean),
+  ];
+  const uniqueTags = [...new Set(tags)].slice(0, 8);
+
+  if (existingChatHistory) {
+    await updateUserMemory(input.userId, existingChatHistory.id, {
+      kind: existingChatHistory.kind === "explicit" ? "explicit" : "auto",
+      category,
+      content,
+      tags: [...new Set([...(existingChatHistory.tags ?? []), ...uniqueTags])].slice(0, 8),
+      confidence: Math.max(existingChatHistory.confidence, 70),
+      salience: Math.max(existingChatHistory.salience, 55),
+      sourceChatId: input.chatId,
+      sourceMessageId: input.userMessageId,
+      embedding: input.embedding ?? (await embedText(content)),
+    });
+  } else {
+    await createUserMemory({
+      userId: input.userId,
+      kind: "auto",
+      category,
+      content,
+      tags: uniqueTags,
+      confidence: 70,
+      salience: 55,
+      sourceChatId: input.chatId,
+      sourceMessageId: input.userMessageId,
+      embedding: input.embedding ?? (await embedText(content)),
+    });
+  }
+
+  return category;
 }
 
 function fallbackExtraction(input: {

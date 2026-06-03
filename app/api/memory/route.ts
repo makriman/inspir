@@ -117,18 +117,13 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
     if (!isUsefulMemoryContent(memory.content)) continue;
 
     const tags = memory.tags ?? [];
-    const tagSet = new Set(tags);
     memories.push({
       id: memory.id,
       kind: memory.kind,
       category: memory.category,
       content: memory.content,
       displayContent: displayMemoryContent(memory.content),
-      sourceLabel: tagSet.has("manual")
-        ? "Added manually"
-        : memory.kind === "explicit"
-          ? "Remembered from chat"
-          : "Learned from chats",
+      sourceLabel: memorySourceLabel(memory.kind, tags),
       tags,
       confidence: memory.confidence,
       salience: memory.salience,
@@ -146,4 +141,12 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
     })),
     memories,
   };
+}
+
+function memorySourceLabel(kind: string, tags: string[]) {
+  const tagSet = new Set(tags);
+  if (tagSet.has("manual")) return "Added manually";
+  if (tagSet.has("prior_chat")) return "From previous chat";
+  if (kind === "explicit") return "Remembered from chat";
+  return "Learned from chats";
 }

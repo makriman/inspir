@@ -6177,7 +6177,7 @@ function MemoryPanel({
       {settings && !settings.noticeSeenAt ? (
         <div className="bubble-memory-notice">
           <strong>Memory is on for signed-in accounts.</strong>
-          <p>Saved memories are the editable facts below. Related chat history is searched separately and is not listed as a saved memory.</p>
+          <p>Everything Inspir remembers is shown below as editable memory cards. You can add, edit, delete, or clear them anytime.</p>
           <button type="button" disabled={saving} onClick={() => onSettings({ noticeSeen: true })}>
             Got it
           </button>
@@ -6187,7 +6187,9 @@ function MemoryPanel({
       {dashboard ? (
         <>
           <div className="bubble-memory-summary">
-            <span>{dashboard.memories.length} saved memories</span>
+            <span>
+              {dashboard.memories.length} saved {dashboard.memories.length === 1 ? "memory" : "memories"}
+            </span>
             <div className="bubble-memory-summary-actions">
               <button type="button" disabled={saving || !enabled} onClick={() => setAdding((current) => !current)}>
                 <Plus size={15} />
@@ -6308,7 +6310,6 @@ function MemoryItemEditor({
       )}
       <div className="bubble-memory-item-meta">
         <span>{memory.sourceLabel ?? (memory.kind === "explicit" ? "Remembered from chat" : "Learned from chats")}</span>
-        <span>{formatBubbleDate(memory.updatedAt)}</span>
       </div>
       <div className="bubble-memory-actions">
         {editing ? (
