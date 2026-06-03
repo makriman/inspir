@@ -207,10 +207,25 @@ type MemoryProfile = {
   updatedAt: string | Date;
 };
 
+type MemoryHistorySummary = {
+  chatId: string;
+  summary: string;
+  topics: string[];
+  updatedAt: string | Date;
+};
+
+type MemoryHistory = {
+  indexedTurnCount: number;
+  chatSummaryCount: number;
+  lastIndexedAt: string | Date | null;
+  recentSummaries: MemoryHistorySummary[];
+};
+
 type MemoryDashboard = {
   settings: MemorySettings;
   memories: MemoryItem[];
   profiles: MemoryProfile[];
+  history?: MemoryHistory;
 };
 
 class StaleChatRequestError extends Error {
@@ -6125,6 +6140,8 @@ function MemoryPanel({
 }) {
   const settings = dashboard?.settings;
   const enabled = settings?.enabled ?? true;
+  const history = dashboard?.history;
+  const hasIndexedHistory = (history?.indexedTurnCount ?? 0) > 0 || (history?.chatSummaryCount ?? 0) > 0;
   const grouped = useMemo(() => groupMemoriesByCategory(dashboard?.memories ?? []), [dashboard?.memories]);
   const [adding, setAdding] = useState(false);
   const [newMemory, setNewMemory] = useState("");
@@ -6241,9 +6258,44 @@ function MemoryPanel({
             </div>
           ) : null}
 
+          {hasIndexedHistory && history ? (
+            <div className="bubble-memory-history">
+              <div className="bubble-memory-history-head">
+                <span className="bubble-memory-history-icon">
+                  <History size={17} />
+                </span>
+                <div>
+                  <strong>Previous chats indexed</strong>
+                  <span>
+                    {history.indexedTurnCount} chat turns
+                    {history.chatSummaryCount > 0 ? ` across ${history.chatSummaryCount} chat summaries` : ""}
+                  </span>
+                </div>
+              </div>
+              <p>
+                Inspir can search this history when it helps, without showing it as editable saved facts.
+                {history.lastIndexedAt ? ` Updated ${formatBubbleDate(history.lastIndexedAt)}.` : ""}
+              </p>
+              {history.recentSummaries.length > 0 ? (
+                <div className="bubble-memory-history-list">
+                  {history.recentSummaries.slice(0, 3).map((summary) => (
+                    <article key={summary.chatId}>
+                      <p>{summary.summary}</p>
+                      {summary.topics.length > 0 ? <span>{summary.topics.slice(0, 3).join(", ")}</span> : null}
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
           <div className="bubble-memory-list">
             {dashboard.memories.length === 0 ? (
-              <p className="bubble-memory-muted">No editable saved memories yet.</p>
+              <p className="bubble-memory-muted">
+                {hasIndexedHistory
+                  ? "No editable saved facts yet. Previous chats are indexed separately."
+                  : "No editable saved memories yet."}
+              </p>
             ) : (
               grouped.map((group) => (
                 <div key={group.category} className="bubble-memory-group">
