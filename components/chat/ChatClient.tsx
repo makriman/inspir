@@ -76,15 +76,12 @@ import { SocialLinks } from "@/components/brand/SocialLinks";
 import { InteractiveInstructionWorkspace } from "@/components/chat/InteractiveInstructionWorkspace";
 import {
   getDefaultSidebarTopicIds,
-  LearningStore,
   type LearningStoreTopic,
-} from "@/components/chat/LearningStore";
-import {
-  FocusMusicWorkspace,
-  FocusTimerWorkspace,
-  PersistentLearningDock,
-  usePersistentLearningTools,
-} from "@/components/chat/PersistentLearningTools";
+} from "@/components/chat/learning-store-utils";
+import { LearningStore } from "@/components/chat/LearningStore";
+import { FocusMusicWorkspace } from "@/components/chat/FocusMusicWorkspace";
+import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
+import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
 import { SocraticWorkspace } from "@/components/chat/SocraticWorkspace";
 import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
@@ -383,6 +380,12 @@ function displayMessages(messages: Message[]) {
   return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
 }
 
+function isExplicitMemoryMutationRequest(value: string) {
+  return /\b(remember|keep in mind|save that|save this|forget|clear memory|clear memories|delete memory|delete memories)\b/i.test(
+    value,
+  );
+}
+
 function profileFromApiUser(user: ApiProfileUser): UserProfile {
   return {
     id: user.id,
@@ -579,6 +582,8 @@ type ChatClientProps = {
 export function ChatClient(props: ChatClientProps) {
   return <ChatClientLayout {...useChatClientController(props)} />;
 }
+
+type ChatClientController = ReturnType<typeof useChatClientController>;
 
 function useChatClientController({
   authMode = "authenticated",
@@ -1009,7 +1014,14 @@ function useChatClientController({
           : Math.min(guestMessagesUsed + 1, guestMessageLimit);
         saveGuestUsage(Math.min(nextUsed, guestMessageLimit));
       }
-      if (isCurrentRequest() && !isGuest && chatId) await loadChat(chatId, { preserveRequest: true });
+      if (isCurrentRequest() && !isGuest && chatId) {
+        await loadChat(chatId, { preserveRequest: true });
+        if (isExplicitMemoryMutationRequest(trimmed) && (profileOpen || memoryDashboard)) {
+          window.setTimeout(() => {
+            void loadMemoryDashboard();
+          }, 1200);
+        }
+      }
     } catch (error) {
       if (error instanceof StaleChatRequestError) return;
       if (!isCurrentRequest()) return;
@@ -1302,82 +1314,27 @@ function useChatClientController({
   };
 }
 
-export function ChatClientLayout(controller: ReturnType<typeof useChatClientController>) {
+function ChatClientLayout(controller: ChatClientController) {
   const {
-    activeChatId,
-    activeTopic,
     activeTopicId,
-    activityRun,
     addSidebarTopic,
     addedTopicIds,
-    agePromptOpen,
-    awaitingResponse,
     avatarSrc,
-    createChat,
     displayTopics,
     filteredTopics,
-    guestMessageLimit,
-    guestMessagesUsed,
-    guestPromptOpen,
-    handleComposerKeyDown,
-    input,
-    inputRef,
-    isFlashcardMode,
-    isFocusMusicMode,
-    isFocusTimerMode,
     isGuest,
-    isQuizMode,
-    languageSaving,
-    learningTools,
-    listRef,
-    loadChat,
-    messages,
-    memoryDashboard,
-    memoryError,
-    memoryLoading,
-    memorySaving,
-    metadata,
-    miniAppMode,
     mobileSidebarOpen,
-    openFirstTopicWithMode,
     openLearningStore,
-    openRecentConversations,
     profileOpen,
-    profileUser,
-    recentChats,
-    recentLoading,
-    recentOpen,
-    regenerateLast,
-    resetChat,
     search,
     selectTopic,
-    sendMessage,
     sidebarTopics,
-    sending,
-    setActivityRun,
-    setAgePromptOpen,
     setGuestPromptOpen,
-    setInput,
     setMobileSidebarOpen,
     setProfileOpen,
-    setProfileUser,
-    setRecentOpen,
     setSearch,
-    setStoreOpen,
-    stopGeneration,
-    storeOpen,
-    submitMessage,
     translationBundle,
     translationRootRef,
-    patchMemorySettings,
-    updateMemoryItem,
-    updatePreferredLanguage,
-    deleteMemoryItem,
-    clearMemory,
-    removeSidebarTopic,
-    userDisplayName,
-    visibleChatMessages,
-    workspaceResetCount,
   } = controller;
 
   return (
@@ -1417,191 +1374,279 @@ export function ChatClientLayout(controller: ReturnType<typeof useChatClientCont
         />
       ) : null}
 
-      <section className="bubble-main-shell">
-        <TopBar
-          title={storeOpen ? "Learning Store" : recentOpen ? `${activeTopic.name}'s Recent Conversations` : activeTopic.name}
-          recentOpen={recentOpen || storeOpen}
-          showRecent={!isGuest && !storeOpen}
-          sending={sending}
-          canRegenerate={
-            !storeOpen &&
-            !isGuest &&
-            !isQuizMode &&
-            !isFlashcardMode &&
-            messages.some((message) => message.role === "user")
-          }
-          onReset={resetChat}
-          onRecent={() => void openRecentConversations()}
-          onBack={() => {
-            if (storeOpen) setStoreOpen(false);
-            else setRecentOpen(false);
-          }}
-          onMenu={() => setMobileSidebarOpen(true)}
-          onStop={stopGeneration}
-          onRegenerate={regenerateLast}
-          showSessionActions={!storeOpen}
-        />
+      <ChatMainSection controller={controller} />
+      <ChatPanelOverlays controller={controller} />
+    </div>
+  );
+}
 
-        {storeOpen ? (
-          <LearningStore
-            topics={displayTopics as LearningStoreTopic[]}
-            addedTopicIds={addedTopicIds}
-            activeTopicId={activeTopicId}
-            onAdd={addSidebarTopic}
-            onRemove={removeSidebarTopic}
-            onSelect={selectTopic}
-          />
-        ) : recentOpen && !isGuest ? (
-          <RecentConversations
-            chats={recentChats}
-            loading={recentLoading}
-            onBack={() => setRecentOpen(false)}
-            onOpen={loadChat}
-          />
-        ) : isQuizMode ? (
-          isGuest ? (
-            <GuestFeatureGate topic={activeTopic} featureName="scored AI quizzes" />
-          ) : (
-            <QuizWorkspace
-              activeChatId={activeChatId}
-              activeTopicId={activeTopicId}
-              activityRun={activityRun}
-              createChat={createChat}
-              onActivityRun={setActivityRun}
-            />
-          )
-        ) : isFlashcardMode ? (
-          isGuest ? (
-            <GuestFeatureGate topic={activeTopic} featureName="AI flashcard decks" />
-          ) : (
-            <FlashcardWorkspace
-              activeChatId={activeChatId}
-              activeTopicId={activeTopicId}
-              activityRun={activityRun}
-              createChat={createChat}
-              onActivityRun={setActivityRun}
-              onReset={resetChat}
-            />
-          )
-        ) : isFocusTimerMode ? (
-          <FocusTimerWorkspace tools={learningTools} />
-        ) : isFocusMusicMode ? (
-          <FocusMusicWorkspace tools={learningTools} />
-        ) : miniAppMode ? (
-          miniAppMode === "interactive-instruction" ? (
-            <InteractiveInstructionWorkspace
-              key={`${activeTopic.id}-${workspaceResetCount}`}
-              topic={activeTopic}
-              onReset={resetChat}
-            />
-          ) : miniAppMode === "time-travel" ? (
-            <TimeTravelWorkspace
-              key={`${activeTopic.id}-${workspaceResetCount}`}
-              topic={activeTopic}
-              userName={userDisplayName}
-              messages={messages}
-              input={input}
-              sending={sending}
-              awaitingResponse={awaitingResponse}
-              inputRef={inputRef}
-              listRef={listRef}
-              onInput={setInput}
-              onSend={sendMessage}
-              onSubmit={submitMessage}
-              onKeyDown={handleComposerKeyDown}
-              onStop={stopGeneration}
-              onReset={resetChat}
-            />
-          ) : miniAppMode === "socratic-instruction" ? (
-            <SocraticWorkspace
-              key={`${activeTopic.id}-${workspaceResetCount}`}
-              topic={activeTopic}
-              userName={userDisplayName}
-              messages={messages}
-              input={input}
-              sending={sending}
-              awaitingResponse={awaitingResponse}
-              inputRef={inputRef}
-              listRef={listRef}
-              onInput={setInput}
-              onSend={sendMessage}
-              onSubmit={submitMessage}
-              onKeyDown={handleComposerKeyDown}
-              onStop={stopGeneration}
-              onReset={resetChat}
-            />
-          ) : (
-            <GuidedMiniAppWorkspace
-              key={`${activeTopic.id}-${workspaceResetCount}`}
-              topic={activeTopic}
-              mode={miniAppMode}
-              userName={userDisplayName}
-              messages={messages}
-              input={input}
-              sending={sending}
-              awaitingResponse={awaitingResponse}
-              inputRef={inputRef}
-              listRef={listRef}
-              onInput={setInput}
-              onSend={sendMessage}
-              onSubmit={submitMessage}
-              onKeyDown={handleComposerKeyDown}
-              onStop={stopGeneration}
-              onReset={resetChat}
-            />
-          )
-        ) : (
-          <main className="bubble-workspace">
-            <div ref={listRef} className="bubble-message-scroll app-scrollbar">
-              {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} /> : null}
-              {visibleChatMessages.length === 0 ? (
-                <StarterGrid
-                  starters={metadata?.starters ?? []}
-                  onStart={(starter) => void sendMessage(starter)}
-                />
-              ) : null}
-              <div className="bubble-message-stack">
-                {visibleChatMessages.map((message) => (
-                  <MessageBubble key={message.id} message={message} userLabel={userDisplayName} />
-                ))}
-                {awaitingResponse ? (
-                  <div className="bubble-thinking" aria-live="polite">
-                    <span />
-                    <span />
-                    <span />
-                    <strong>Thinking</strong>
-                  </div>
-                ) : null}
-              </div>
+function ChatMainSection({ controller }: { controller: ChatClientController }) {
+  const {
+    activeTopic,
+    isFlashcardMode,
+    isGuest,
+    isQuizMode,
+    messages,
+    openRecentConversations,
+    recentOpen,
+    regenerateLast,
+    resetChat,
+    sending,
+    setMobileSidebarOpen,
+    setRecentOpen,
+    setStoreOpen,
+    stopGeneration,
+    storeOpen,
+  } = controller;
+
+  return (
+    <section className="bubble-main-shell">
+      <TopBar
+        title={storeOpen ? "Learning Store" : recentOpen ? `${activeTopic.name}'s Recent Conversations` : activeTopic.name}
+        recentOpen={recentOpen || storeOpen}
+        showRecent={!isGuest && !storeOpen}
+        sending={sending}
+        canRegenerate={
+          !storeOpen && !isGuest && !isQuizMode && !isFlashcardMode && messages.some((message) => message.role === "user")
+        }
+        onReset={resetChat}
+        onRecent={() => void openRecentConversations()}
+        onBack={() => {
+          if (storeOpen) setStoreOpen(false);
+          else setRecentOpen(false);
+        }}
+        onMenu={() => setMobileSidebarOpen(true)}
+        onStop={stopGeneration}
+        onRegenerate={regenerateLast}
+        showSessionActions={!storeOpen}
+      />
+      <ChatWorkspaceSwitch controller={controller} />
+    </section>
+  );
+}
+
+function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController }) {
+  const {
+    activeChatId,
+    activeTopic,
+    activeTopicId,
+    activityRun,
+    addSidebarTopic,
+    addedTopicIds,
+    awaitingResponse,
+    createChat,
+    displayTopics,
+    handleComposerKeyDown,
+    input,
+    inputRef,
+    isFlashcardMode,
+    isFocusMusicMode,
+    isFocusTimerMode,
+    isGuest,
+    isQuizMode,
+    learningTools,
+    listRef,
+    loadChat,
+    messages,
+    miniAppMode,
+    recentChats,
+    recentLoading,
+    recentOpen,
+    removeSidebarTopic,
+    resetChat,
+    selectTopic,
+    sendMessage,
+    sending,
+    setActivityRun,
+    setInput,
+    setRecentOpen,
+    stopGeneration,
+    storeOpen,
+    submitMessage,
+    userDisplayName,
+    workspaceResetCount,
+  } = controller;
+
+  if (storeOpen) {
+    return (
+      <LearningStore
+        topics={displayTopics as LearningStoreTopic[]}
+        addedTopicIds={addedTopicIds}
+        activeTopicId={activeTopicId}
+        onAdd={addSidebarTopic}
+        onRemove={removeSidebarTopic}
+        onSelect={selectTopic}
+      />
+    );
+  }
+
+  if (recentOpen && !isGuest) {
+    return (
+      <RecentConversations
+        chats={recentChats}
+        loading={recentLoading}
+        onBack={() => setRecentOpen(false)}
+        onOpen={loadChat}
+      />
+    );
+  }
+
+  if (isQuizMode) {
+    if (isGuest) return <GuestFeatureGate topic={activeTopic} featureName="scored AI quizzes" />;
+    return (
+      <QuizWorkspace
+        activeChatId={activeChatId}
+        activeTopicId={activeTopicId}
+        activityRun={activityRun}
+        createChat={createChat}
+        onActivityRun={setActivityRun}
+      />
+    );
+  }
+
+  if (isFlashcardMode) {
+    if (isGuest) return <GuestFeatureGate topic={activeTopic} featureName="AI flashcard decks" />;
+    return (
+      <FlashcardWorkspace
+        activeChatId={activeChatId}
+        activeTopicId={activeTopicId}
+        activityRun={activityRun}
+        createChat={createChat}
+        onActivityRun={setActivityRun}
+        onReset={resetChat}
+      />
+    );
+  }
+
+  if (isFocusTimerMode) return <FocusTimerWorkspace tools={learningTools} />;
+  if (isFocusMusicMode) return <FocusMusicWorkspace tools={learningTools} />;
+
+  if (!miniAppMode) return <StandardChatWorkspace controller={controller} />;
+
+  const miniAppProps = {
+    key: `${activeTopic.id}-${workspaceResetCount}`,
+    topic: activeTopic,
+    userName: userDisplayName,
+    messages,
+    input,
+    sending,
+    awaitingResponse,
+    inputRef,
+    listRef,
+    onInput: setInput,
+    onSend: sendMessage,
+    onSubmit: submitMessage,
+    onKeyDown: handleComposerKeyDown,
+    onStop: stopGeneration,
+    onReset: resetChat,
+  };
+
+  if (miniAppMode === "interactive-instruction") {
+    return <InteractiveInstructionWorkspace key={miniAppProps.key} topic={activeTopic} onReset={resetChat} />;
+  }
+  if (miniAppMode === "time-travel") return <TimeTravelWorkspace {...miniAppProps} />;
+  if (miniAppMode === "socratic-instruction") return <SocraticWorkspace {...miniAppProps} />;
+  return <GuidedMiniAppWorkspace {...miniAppProps} mode={miniAppMode} />;
+}
+
+function StandardChatWorkspace({ controller }: { controller: ChatClientController }) {
+  const {
+    activeTopic,
+    awaitingResponse,
+    handleComposerKeyDown,
+    input,
+    inputRef,
+    listRef,
+    metadata,
+    sendMessage,
+    sending,
+    setInput,
+    stopGeneration,
+    submitMessage,
+    userDisplayName,
+    visibleChatMessages,
+  } = controller;
+
+  return (
+    <main className="bubble-workspace">
+      <div ref={listRef} className="bubble-message-scroll app-scrollbar">
+        {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} /> : null}
+        {visibleChatMessages.length === 0 ? (
+          <StarterGrid starters={metadata?.starters ?? []} onStart={(starter) => void sendMessage(starter)} />
+        ) : null}
+        <div className="bubble-message-stack">
+          {visibleChatMessages.map((message) => (
+            <MessageBubble key={message.id} message={message} userLabel={userDisplayName} />
+          ))}
+          {awaitingResponse ? (
+            <div className="bubble-thinking" aria-live="polite">
+              <span />
+              <span />
+              <span />
+              <strong>Thinking</strong>
             </div>
-            <form onSubmit={submitMessage} className="bubble-composer">
-              <div className="bubble-composer-inner">
-                <textarea
-                  aria-label="Message"
-                  ref={inputRef}
-                  value={input}
-                  onChange={(event) => setInput(event.target.value)}
-                  onKeyDown={handleComposerKeyDown}
-                  placeholder={activeTopic.inputboxText}
-                  disabled={sending}
-                  className="bubble-composer-input"
-                  rows={1}
-                />
-                <button
-                  type={sending ? "button" : "submit"}
-                  onClick={sending ? stopGeneration : undefined}
-                  disabled={!sending && !input.trim()}
-                  aria-label={sending ? "Stop response" : "Send message"}
-                  className="bubble-send-button"
-                >
-                  {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
-                </button>
-              </div>
-            </form>
-          </main>
-        )}
-      </section>
+          ) : null}
+        </div>
+      </div>
+      <form onSubmit={submitMessage} className="bubble-composer">
+        <div className="bubble-composer-inner">
+          <textarea
+            aria-label="Message"
+            ref={inputRef}
+            value={input}
+            onChange={(event) => setInput(event.target.value)}
+            onKeyDown={handleComposerKeyDown}
+            placeholder={activeTopic.inputboxText}
+            disabled={sending}
+            className="bubble-composer-input"
+            rows={1}
+          />
+          <button
+            type={sending ? "button" : "submit"}
+            onClick={sending ? stopGeneration : undefined}
+            disabled={!sending && !input.trim()}
+            aria-label={sending ? "Stop response" : "Send message"}
+            className="bubble-send-button"
+          >
+            {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
+          </button>
+        </div>
+      </form>
+    </main>
+  );
+}
 
+function ChatPanelOverlays({ controller }: { controller: ChatClientController }) {
+  const {
+    activeTopic,
+    agePromptOpen,
+    avatarSrc,
+    clearMemory,
+    deleteMemoryItem,
+    guestMessageLimit,
+    guestMessagesUsed,
+    guestPromptOpen,
+    isGuest,
+    languageSaving,
+    learningTools,
+    memoryDashboard,
+    memoryError,
+    memoryLoading,
+    memorySaving,
+    openFirstTopicWithMode,
+    patchMemorySettings,
+    profileOpen,
+    profileUser,
+    setAgePromptOpen,
+    setGuestPromptOpen,
+    setProfileOpen,
+    setProfileUser,
+    updateMemoryItem,
+    updatePreferredLanguage,
+  } = controller;
+
+  return (
+    <>
       {profileOpen ? (
         <ProfilePanel
           user={profileUser}
@@ -1641,11 +1686,11 @@ export function ChatClientLayout(controller: ReturnType<typeof useChatClientCont
           }}
         />
       ) : null}
-    </div>
+    </>
   );
 }
 
-export function TopicSidebar({
+function TopicSidebar({
   isGuest,
   avatarSrc,
   topics,
@@ -1785,7 +1830,7 @@ export function TopicSidebar({
   );
 }
 
-export function TopBar({
+function TopBar({
   title,
   recentOpen,
   showRecent,
@@ -1852,7 +1897,7 @@ export function TopBar({
   );
 }
 
-export function TopicIntroCard({ topic }: { topic: Topic }) {
+function TopicIntroCard({ topic }: { topic: Topic }) {
   const seo = topicSeo(topic);
 
   return (
@@ -1890,7 +1935,7 @@ export function TopicIntroCard({ topic }: { topic: Topic }) {
   );
 }
 
-export function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: string }) {
+function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: string }) {
   const seo = topicSeo(topic);
   const starters = topicMetadata(topic)?.starters ?? [];
 
@@ -1925,7 +1970,7 @@ export function GuestFeatureGate({ topic, featureName }: { topic: Topic; feature
   );
 }
 
-export function StarterGrid({
+function StarterGrid({
   starters,
   onStart,
 }: {
@@ -2588,7 +2633,7 @@ const miniAppConfigs: Record<MiniMode, MiniAppConfig> = {
   },
 };
 
-export function TimeTravelWorkspace({
+function TimeTravelWorkspace({
   topic,
   userName,
   messages,
@@ -2801,7 +2846,7 @@ export function TimeTravelWorkspace({
   );
 }
 
-export function TimeTravelDepartureBoard({
+function TimeTravelDepartureBoard({
   intent,
   topic,
   onIntent,
@@ -2878,7 +2923,7 @@ export function TimeTravelDepartureBoard({
   );
 }
 
-export function TimeTravelDestinationStep({
+function TimeTravelDestinationStep({
   intent,
   options,
   onBack,
@@ -2912,7 +2957,7 @@ export function TimeTravelDestinationStep({
   );
 }
 
-export function TimeTravelChoiceStep({
+function TimeTravelChoiceStep({
   kicker,
   title,
   body,
@@ -2956,7 +3001,7 @@ export function TimeTravelChoiceStep({
   );
 }
 
-export function TimeTravelClearance({
+function TimeTravelClearance({
   journey,
   identity,
   purpose,
@@ -3020,7 +3065,7 @@ const timeTravelAdvisoryIcons = {
 
 type TimeTravelAdvisoryIcon = keyof typeof timeTravelAdvisoryIcons;
 
-export function TimeTravelAdvisoryItem({
+function TimeTravelAdvisoryItem({
   icon,
   label,
   value,
@@ -3041,7 +3086,7 @@ export function TimeTravelAdvisoryItem({
   );
 }
 
-export function TimeTravelPassport({
+function TimeTravelPassport({
   journey,
   identity,
   purpose,
@@ -3123,7 +3168,7 @@ type CoachChatDetail = {
   icon?: ComponentType<{ size?: number }>;
 };
 
-export function CoachChatSession({
+function CoachChatSession({
   eyebrow,
   title,
   subtitle,
@@ -3284,7 +3329,7 @@ export function CoachChatSession({
   );
 }
 
-export function TimeTravelSession({
+function TimeTravelSession({
   topic,
   userName,
   journey,
@@ -3833,7 +3878,7 @@ function formatSprintTime(seconds: number) {
   return `${minutes}:${String(remainder).padStart(2, "0")}`;
 }
 
-export function CollaborativeInstructionWorkspace({
+function CollaborativeInstructionWorkspace({
   topic,
   userName,
   messages,
@@ -4002,7 +4047,7 @@ export function CollaborativeInstructionWorkspace({
   );
 }
 
-export function CollaborativeSession({
+function CollaborativeSession({
   activeGoal,
   activeMode,
   awaitingResponse,
@@ -4108,7 +4153,7 @@ export function CollaborativeSession({
   );
 }
 
-export function CollaborativeSetup({
+function CollaborativeSetup({
   activeMode,
   goal,
   listRef,
@@ -4214,7 +4259,7 @@ export function CollaborativeSetup({
   );
 }
 
-export function GuidedMiniAppWorkspace({
+function GuidedMiniAppWorkspace({
   topic,
   mode,
   userName,
@@ -4509,7 +4554,7 @@ type HistoricalPersonWorkspaceProps = {
   onReset: () => void;
 };
 
-export function HistoricalPersonWorkspace(props: HistoricalPersonWorkspaceProps) {
+function HistoricalPersonWorkspace(props: HistoricalPersonWorkspaceProps) {
   return useHistoricalPersonWorkspace(props);
 }
 
@@ -5091,11 +5136,11 @@ function useHistoricalPersonWorkspace({
   );
 }
 
-export function ClockIcon() {
+function ClockIcon() {
   return <History size={20} />;
 }
 
-export function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
+function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
   return (
     <div className="bubble-mini-icon">
       <MiniIconGlyph icon={icon} />
@@ -5103,7 +5148,7 @@ export function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
   );
 }
 
-export function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
+function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
   switch (icon) {
     case "compass":
       return <Compass size={24} />;
@@ -5118,7 +5163,7 @@ export function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
   }
 }
 
-export function MessageBubble({
+function MessageBubble({
   message,
   userLabel = "Learner",
   assistantLabel = "Coach response",
@@ -5155,7 +5200,7 @@ export function MessageBubble({
   );
 }
 
-export function RichMessageContent({ content }: { content: string }) {
+function RichMessageContent({ content }: { content: string }) {
   return (
     <div className="bubble-rich-content" data-no-auto-translate="true">
       <ReactMarkdown
@@ -5195,7 +5240,7 @@ const quizBuildSteps = [
   "Shuffling the challenge",
 ];
 
-export function QuizWorkspace({
+function QuizWorkspace({
   activeChatId,
   activeTopicId,
   activityRun,
@@ -5354,7 +5399,7 @@ export function QuizWorkspace({
   );
 }
 
-export function QuizBuildLoader({ topic, progress }: { topic: string; progress: number }) {
+function QuizBuildLoader({ topic, progress }: { topic: string; progress: number }) {
   const stepIndex = Math.min(quizBuildSteps.length - 1, Math.floor((progress / 100) * quizBuildSteps.length));
   return (
     <section className="bubble-quiz-loader" aria-live="polite">
@@ -5383,7 +5428,7 @@ export function QuizBuildLoader({ topic, progress }: { topic: string; progress: 
   );
 }
 
-export function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
+function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
   const correct = question.isCorrect;
   return (
     <aside className={`bubble-quiz-feedback ${correct ? "is-correct" : "is-wrong"}`}>
@@ -5396,7 +5441,7 @@ export function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
   );
 }
 
-export function QuizReview({ quiz }: { quiz: PublicQuizState }) {
+function QuizReview({ quiz }: { quiz: PublicQuizState }) {
   return (
     <article className="bubble-quiz-review">
       <h3>Final score: {quiz.score}/10</h3>
@@ -5431,7 +5476,7 @@ const flashcardBuildSteps = [
   "Ready for review",
 ];
 
-export function FlashcardWorkspace({
+function FlashcardWorkspace({
   activeChatId,
   activeTopicId,
   activityRun,
@@ -5678,7 +5723,7 @@ export function FlashcardWorkspace({
   );
 }
 
-export function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: number }) {
+function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: number }) {
   const stepIndex = Math.min(
     flashcardBuildSteps.length - 1,
     Math.floor((progress / 100) * flashcardBuildSteps.length),
@@ -5710,7 +5755,7 @@ export function FlashcardBuildLoader({ topic, progress }: { topic: string; progr
   );
 }
 
-export function FlashcardStat({ label, value }: { label: string; value: string }) {
+function FlashcardStat({ label, value }: { label: string; value: string }) {
   return (
     <article>
       <span>{label}</span>
@@ -5719,7 +5764,7 @@ export function FlashcardStat({ label, value }: { label: string; value: string }
   );
 }
 
-export function FlashcardReview({
+function FlashcardReview({
   deck,
   onReviewMissed,
   onStartOver,
@@ -5762,7 +5807,7 @@ export function FlashcardReview({
   );
 }
 
-export function RecentConversations({
+function RecentConversations({
   chats,
   loading,
   onBack,
@@ -5797,7 +5842,7 @@ export function RecentConversations({
   );
 }
 
-export function GuestContinueModal({
+function GuestContinueModal({
   used,
   limit,
   callbackUrl,
@@ -5833,7 +5878,7 @@ export function GuestContinueModal({
   );
 }
 
-export function AgePromptModal({
+function AgePromptModal({
   onClose,
   onSaved,
 }: {
@@ -5915,7 +5960,7 @@ export function AgePromptModal({
   );
 }
 
-export function ProfilePanel({
+function ProfilePanel({
   user,
   avatarSrc,
   languageSaving,
@@ -6065,6 +6110,7 @@ function MemoryPanel({
         <button
           type="button"
           className={`bubble-memory-toggle ${enabled ? "is-on" : ""}`}
+          aria-label={enabled ? "Turn memory off" : "Turn memory on"}
           aria-pressed={enabled}
           disabled={saving || loading}
           onClick={() => onSettings({ enabled: !enabled })}
@@ -6073,7 +6119,7 @@ function MemoryPanel({
         </button>
       </div>
 
-      {loading ? <p className="bubble-memory-muted">Loading memory...</p> : null}
+      {loading ? <p className="bubble-memory-muted">Loading memory…</p> : null}
       {error ? <p className="bubble-memory-error">{error}</p> : null}
 
       {settings && !settings.noticeSeenAt ? (
@@ -6133,7 +6179,7 @@ function MemoryItemEditor({
   onDelete: (memoryId: string) => void;
 }) {
   const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState(memory.content);
+  const [draft, setDraft] = useState("");
 
   function save() {
     const next = draft.trim();
@@ -6150,6 +6196,7 @@ function MemoryItemEditor({
     <article className="bubble-memory-item">
       {editing ? (
         <textarea
+          aria-label="Edit saved memory"
           value={draft}
           onChange={(event) => setDraft(event.target.value)}
           className="bubble-memory-edit"
@@ -6183,7 +6230,15 @@ function MemoryItemEditor({
           </>
         ) : (
           <>
-            <button type="button" disabled={saving} onClick={() => setEditing(true)} aria-label="Edit memory">
+            <button
+              type="button"
+              disabled={saving}
+              onClick={() => {
+                setDraft(memory.content);
+                setEditing(true);
+              }}
+              aria-label="Edit memory"
+            >
               <PencilLine size={16} />
             </button>
             <button type="button" disabled={saving} onClick={() => onDelete(memory.id)} aria-label="Delete memory">
@@ -6202,8 +6257,8 @@ function groupMemoriesByCategory(memories: MemoryItem[]) {
     const key = memory.category || "general";
     map.set(key, [...(map.get(key) ?? []), memory]);
   }
-  return [...map.entries()]
-    .sort(([a], [b]) => memoryCategoryLabel(a).localeCompare(memoryCategoryLabel(b)))
+  return Array.from(map.entries())
+    .toSorted(([a], [b]) => memoryCategoryLabel(a).localeCompare(memoryCategoryLabel(b)))
     .map(([category, items]) => ({ category, memories: items }));
 }
 
@@ -6215,7 +6270,7 @@ function memoryCategoryLabel(category: string) {
     .join(" ");
 }
 
-export function ProfileLine({
+function ProfileLine({
   label,
   value,
 }: {
@@ -6235,7 +6290,7 @@ export function ProfileLine({
   );
 }
 
-export function ProfileStat({ label, value }: { label: string; value: string }) {
+function ProfileStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="bubble-profile-stat">
       <strong>{label}</strong>

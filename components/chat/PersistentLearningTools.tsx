@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Bell, CheckCircle2, Music, Pause, Play, RotateCcw, Timer, Volume2, X } from "lucide-react";
+import { Bell, Pause, Play, RotateCcw, Timer } from "lucide-react";
+import { formatSeconds } from "@/components/chat/persistent-learning-format";
 
 type TimerMode = "focus" | "break";
 
@@ -113,11 +114,19 @@ function writeJson(key: string, value: unknown) {
   }
 }
 
-function formatSeconds(seconds: number) {
-  const safe = Math.max(0, Math.floor(seconds));
-  const mins = Math.floor(safe / 60);
-  const secs = safe % 60;
-  return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+function readStoredTimer(): FocusTimerState {
+  const storedTimer = readJson(timerStorageKey, defaultTimer());
+  return {
+    ...storedTimer,
+    running: false,
+    endsAt: null,
+    secondsLeft: Math.max(1, storedTimer.secondsLeft || storedTimer.focusMinutes * 60),
+  };
+}
+
+function readStoredMusic(): FocusMusicState {
+  const storedMusic = readJson(musicStorageKey, defaultMusic());
+  return { ...storedMusic, playing: false };
 }
 
 function clampMinutes(value: number, fallback: number) {
@@ -242,30 +251,15 @@ function playTimerChime() {
 }
 
 export function usePersistentLearningTools() {
-  const [timer, setTimer] = useState<FocusTimerState>(() => defaultTimer());
-  const [music, setMusic] = useState<FocusMusicState>(() => defaultMusic());
+  const [timer, setTimer] = useState<FocusTimerState>(() => readStoredTimer());
+  const [music, setMusic] = useState<FocusMusicState>(() => readStoredMusic());
   const timerRef = useRef(timer);
   const musicKitRef = useRef<AudioKit>({ ctx: null, masterGain: null, cleanup: null });
-  const storageHydratedRef = useRef(false);
 
   const activeMusicPreset = useMemo(
     () => musicPresets.find((preset) => preset.id === music.presetId) ?? musicPresets[0],
     [music.presetId],
   );
-
-  useEffect(() => {
-    if (storageHydratedRef.current) return;
-    storageHydratedRef.current = true;
-    const storedTimer = readJson(timerStorageKey, defaultTimer());
-    setTimer({
-      ...storedTimer,
-      running: false,
-      endsAt: null,
-      secondsLeft: Math.max(1, storedTimer.secondsLeft || storedTimer.focusMinutes * 60),
-    });
-    const storedMusic = readJson(musicStorageKey, defaultMusic());
-    setMusic({ ...storedMusic, playing: false });
-  }, []);
 
   useEffect(() => {
     timerRef.current = timer;
@@ -536,122 +530,5 @@ export function FocusTimerWorkspace({ tools }: { tools: PersistentLearningToolsC
         </div>
       </section>
     </main>
-  );
-}
-
-export function FocusMusicWorkspace({ tools }: { tools: PersistentLearningToolsController }) {
-  const { music, musicActions, musicPresets: presets, activeMusicPreset } = tools;
-
-  return (
-    <main className="bubble-tool-workspace app-scrollbar">
-      <section className="bubble-focus-tool">
-        <div className="bubble-focus-tool-copy">
-          <span>Focus & Productivity</span>
-          <h2>Music for Focus</h2>
-          <p>Minimal generated audio keeps playing while you keep learning. No embedded player needs to stay open.</p>
-        </div>
-
-        <div className="bubble-music-card">
-          <div className="bubble-music-now">
-            <Music size={24} />
-            <div>
-              <span>{music.playing ? "Now playing" : "Ready"}</span>
-              <strong>{activeMusicPreset.name}</strong>
-            </div>
-          </div>
-          <p>{activeMusicPreset.description}</p>
-          <div className="bubble-music-controls">
-            {music.playing ? (
-              <button type="button" onClick={musicActions.stop}>
-                <Pause size={18} />
-                Stop
-              </button>
-            ) : (
-              <button type="button" onClick={() => void musicActions.start()}>
-                <Play size={18} />
-                Play
-              </button>
-            )}
-            <label>
-              <Volume2 size={18} />
-              <input
-                type="range"
-                min={0}
-                max={1}
-                step={0.01}
-                value={music.volume}
-                onChange={(event) => musicActions.setVolume(Number(event.target.value))}
-              />
-            </label>
-          </div>
-        </div>
-
-        <div className="bubble-music-presets">
-          {presets.map((preset) => (
-            <button
-              key={preset.id}
-              type="button"
-              onClick={() => {
-                musicActions.setPreset(preset.id);
-                if (music.playing) void musicActions.start(preset.id);
-              }}
-              className={preset.id === music.presetId ? "is-active" : ""}
-            >
-              <strong>{preset.name}</strong>
-              <span>{preset.description}</span>
-            </button>
-          ))}
-        </div>
-      </section>
-    </main>
-  );
-}
-
-export function PersistentLearningDock({
-  tools,
-  onOpenTimer,
-  onOpenMusic,
-}: {
-  tools: PersistentLearningToolsController;
-  onOpenTimer: () => void;
-  onOpenMusic: () => void;
-}) {
-  const { timer, timerActions, music, musicActions, activeMusicPreset } = tools;
-  const showTimer = timer.running || timer.ringing;
-  const showMusic = music.playing;
-
-  if (!showTimer && !showMusic) return null;
-
-  return (
-    <div className="bubble-persistent-dock" aria-live="polite">
-      {showTimer ? (
-        <div className={`bubble-dock-item ${timer.ringing ? "is-ringing" : ""}`}>
-          <button type="button" onClick={onOpenTimer} className="bubble-dock-main">
-            {timer.ringing ? <CheckCircle2 size={18} /> : <Timer size={18} />}
-            <span>{timer.ringing ? "Timer done" : formatSeconds(timer.secondsLeft)}</span>
-          </button>
-          {timer.ringing ? (
-            <button type="button" onClick={timerActions.dismissRing} aria-label="Dismiss timer alert">
-              <X size={16} />
-            </button>
-          ) : timer.running ? (
-            <button type="button" onClick={timerActions.pause} aria-label="Pause timer">
-              <Pause size={16} />
-            </button>
-          ) : null}
-        </div>
-      ) : null}
-      {showMusic ? (
-        <div className="bubble-dock-item">
-          <button type="button" onClick={onOpenMusic} className="bubble-dock-main">
-            <Music size={18} />
-            <span>{activeMusicPreset.name}</span>
-          </button>
-          <button type="button" onClick={musicActions.stop} aria-label="Stop focus music">
-            <X size={16} />
-          </button>
-        </div>
-      ) : null}
-    </div>
   );
 }

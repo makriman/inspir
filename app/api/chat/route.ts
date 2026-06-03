@@ -67,9 +67,11 @@ export async function POST(request: NextRequest) {
   const memoryContext = {
     used: memoryRetrieval.used,
     gateReason: memoryRetrieval.gateReason,
+    status: memoryRetrieval.status,
     memories: memoryRetrieval.memories,
     profiles: memoryRetrieval.profiles,
     chatSummaries: memoryRetrieval.chatSummaries,
+    priorChatTurns: memoryRetrieval.priorChatTurns,
   };
   const assembled = buildModelMessages(topic, context, preferredLanguage, { learnerAge, memoryContext });
   const model = resolveModelForTopic(topic);
@@ -84,26 +86,6 @@ export async function POST(request: NextRequest) {
       status: "started",
     })
     .returning();
-  let resolveMemoryJob: (job: (() => Promise<void>) | null) => void = () => {};
-  const memoryJob = new Promise<(() => Promise<void>) | null>((resolve) => {
-    resolveMemoryJob = resolve;
-  });
-
-  after(async () => {
-    const job = await Promise.race([
-      memoryJob,
-      new Promise<null>((resolve) => {
-        setTimeout(() => resolve(null), 1_000);
-      }),
-    ]);
-    if (!job) return;
-    try {
-      await job();
-    } catch (memoryError) {
-      console.warn("Memory processing failed", memoryError);
-    }
-  });
-
   try {
     const agent = createLearningAgent({
       topic,
@@ -128,27 +110,31 @@ export async function POST(request: NextRequest) {
             completedAt: new Date(),
           })
           .where(eq(aiRuns.id, run.id));
-        resolveMemoryJob(async () => {
-          await processMemoryAfterTurn({
-            userId: session.user.id,
-            chatId: parsed.data.chatId,
-            topic,
-            userMessage: {
-              id: userMessage.id,
-              role: "user",
-              content: userMessage.content,
-            },
-            assistantMessage: {
-              id: assistant.id,
-              role: "assistant",
-              content: event.text,
-            },
-            contextMessages: context.map((message) => ({
-              id: message.id,
-              role: message.role,
-              content: message.content,
-            })),
-          });
+        after(async () => {
+          try {
+            await processMemoryAfterTurn({
+              userId: session.user.id,
+              chatId: parsed.data.chatId,
+              topic,
+              userMessage: {
+                id: userMessage.id,
+                role: "user",
+                content: userMessage.content,
+              },
+              assistantMessage: {
+                id: assistant.id,
+                role: "assistant",
+                content: event.text,
+              },
+              contextMessages: context.map((message) => ({
+                id: message.id,
+                role: message.role,
+                content: message.content,
+              })),
+            });
+          } catch (memoryError) {
+            console.warn("Memory processing failed", memoryError);
+          }
         });
       },
     });
@@ -164,7 +150,6 @@ export async function POST(request: NextRequest) {
         completedAt: new Date(),
       })
       .where(eq(aiRuns.id, run.id));
-    resolveMemoryJob(null);
     return NextResponse.json({ error: "The assistant could not answer right now." }, { status: 500 });
   }
 }
@@ -181,9 +166,11 @@ async function safeRetrieveMemory(input: Parameters<typeof retrieveRelevantMemor
       memories: [],
       profiles: [],
       chatSummaries: [],
+      priorChatTurns: [],
       memoryIds: [],
       profileCategories: [],
       chatSummaryIds: [],
+      chatTurnIds: [],
     };
   }
 }

@@ -1,5 +1,5 @@
 import type { Topic } from "@/lib/db/schema";
-import { getTopicMetadata } from "./prompts";
+import { getTopicMetadata } from "@/lib/ai/topic-metadata";
 
 export type ModelProfile = "fast" | "reasoning" | "structured";
 

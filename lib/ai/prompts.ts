@@ -1,9 +1,11 @@
 import type { Message, Topic } from "@/lib/db/schema";
-import type { TopicMetadata } from "@/lib/content/topics";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 import { formatMemoryPromptContext, type MemoryPromptContext } from "@/lib/ai/memory";
+import { getTopicMetadata } from "@/lib/ai/topic-metadata";
 
 type TopicLike = Pick<Topic, "name" | "slug" | "systemPrompt" | "metadata">;
+
+export { getTopicMetadata } from "@/lib/ai/topic-metadata";
 
 export const INSPIR_TUTOR_CONTRACT = [
   "You are inspir Buddy, a warm, rigorous learning companion for Inspir.",
@@ -15,12 +17,6 @@ export const INSPIR_TUTOR_CONTRACT = [
   "Use GitHub-flavored Markdown when it improves clarity: headings, bullets, tables, checklists, and compact examples.",
   "When the mode has turn-taking rules, preserve them exactly.",
 ].join("\n");
-
-export function getTopicMetadata(topic: Pick<TopicLike, "metadata">): TopicMetadata | undefined {
-  const metadata = topic.metadata;
-  if (!metadata || typeof metadata !== "object") return undefined;
-  return metadata as TopicMetadata;
-}
 
 type LearnerContext = {
   learnerAge?: number | null;

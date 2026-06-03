@@ -257,6 +257,39 @@ export const chatMemorySummaries = pgTable(
   }),
 );
 
+export const chatMemoryTurns = pgTable(
+  "chat_memory_turns",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    chatId: uuid("chat_id")
+      .notNull()
+      .references(() => chats.id, { onDelete: "cascade" }),
+    topicId: uuid("topic_id").references(() => topics.id, { onDelete: "set null" }),
+    userMessageId: uuid("user_message_id")
+      .notNull()
+      .references(() => messages.id, { onDelete: "cascade" }),
+    assistantMessageId: uuid("assistant_message_id")
+      .notNull()
+      .references(() => messages.id, { onDelete: "cascade" }),
+    question: text("question").notNull(),
+    answerExcerpt: text("answer_excerpt").notNull(),
+    searchableText: text("searchable_text").notNull(),
+    topics: jsonb("topics").$type<string[]>().default([]).notNull(),
+    embedding: vector("embedding", { dimensions: 512 }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => ({
+    userIdx: index("chat_memory_turns_user_idx").on(table.userId),
+    chatIdx: index("chat_memory_turns_chat_idx").on(table.chatId),
+    topicIdx: index("chat_memory_turns_topic_idx").on(table.topicId),
+    userMessageIdx: uniqueIndex("chat_memory_turns_user_message_idx").on(table.userMessageId),
+  }),
+);
+
 export const userMemoryProfiles = pgTable(
   "user_memory_profiles",
   {
@@ -343,5 +376,6 @@ export type AppTranslation = typeof appTranslations.$inferSelect;
 export type UserMemorySetting = typeof userMemorySettings.$inferSelect;
 export type UserMemory = typeof userMemories.$inferSelect;
 export type ChatMemorySummary = typeof chatMemorySummaries.$inferSelect;
+export type ChatMemoryTurn = typeof chatMemoryTurns.$inferSelect;
 export type UserMemoryProfile = typeof userMemoryProfiles.$inferSelect;
 export type MemoryEvent = typeof memoryEvents.$inferSelect;

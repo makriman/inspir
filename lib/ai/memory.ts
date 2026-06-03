@@ -7,6 +7,7 @@ import {
   createUserMemory,
   deleteUserMemoryProfile,
   deleteUserMemory,
+  deleteMatchingChatMemoryTurnsByText,
   ensureUserMemorySettings,
   findExistingMemoryByNormalized,
   findMatchingMemoriesByText,
@@ -15,15 +16,20 @@ import {
   getUserMemoryProfiles,
   insertMemoryEvent,
   lexicalMemoryRank,
+  markChatTurnsUsed,
   markMemoriesUsed,
   memoryUseMetadata,
   normalizeMemoryContent,
+  searchChatMemoryTurnsByEmbedding,
+  searchChatMemoryTurnsByText,
   searchChatSummariesByEmbedding,
   searchUserMemoriesByEmbedding,
   updateUserMemory,
   upsertChatMemorySummary,
+  upsertChatMemoryTurn,
   upsertUserMemoryProfile,
   type ChatSummarySearchResult,
+  type ChatTurnSearchResult,
   type MemorySearchResult,
 } from "@/lib/db/memory";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
@@ -51,12 +57,35 @@ export type PromptChatSummary = {
   topics: string[];
 };
 
+export type PromptPriorChatTurn = {
+  id: string;
+  chatId: string;
+  question: string;
+  answerExcerpt: string;
+  topics: string[];
+};
+
+export type MemoryIntent =
+  | "generic"
+  | "explicit_remember"
+  | "explicit_forget"
+  | "ask_about_memory"
+  | "personalized";
+
+export type MemoryStatus = {
+  enabled: boolean;
+  intent: MemoryIntent;
+  shouldAcknowledge: boolean;
+};
+
 export type MemoryPromptContext = {
   used: boolean;
   gateReason?: string;
+  status?: MemoryStatus;
   memories: PromptMemory[];
   profiles: PromptMemoryProfile[];
   chatSummaries: PromptChatSummary[];
+  priorChatTurns: PromptPriorChatTurn[];
 };
 
 export type MemoryRetrievalResult = MemoryPromptContext & {
@@ -64,6 +93,7 @@ export type MemoryRetrievalResult = MemoryPromptContext & {
   memoryIds: string[];
   profileCategories: string[];
   chatSummaryIds: string[];
+  chatTurnIds: string[];
 };
 
 const memoryGateSchema = z.object({
@@ -120,9 +150,16 @@ const memoryProfileSchema = z.object({
   summary: z.string().trim().min(8).max(1200),
 });
 
+type MemoryExtraction = z.infer<typeof memoryExtractionSchema>;
+
 const memoryRelevanceTerms = [
   "remember",
   "forget",
+  "save that",
+  "save this",
+  "keep in mind",
+  "i prefer",
+  "my preference",
   "you know about me",
   "what do you know",
   "last time",
@@ -141,7 +178,111 @@ const memoryRelevanceTerms = [
   "do you remember",
 ];
 
+const explicitRememberPatterns = [
+  /\bremember\s+(?:that\s+)?(.+)/i,
+  /\bkeep in mind\s+(?:that\s+)?(.+)/i,
+  /\bsave\s+(?:that|this)\s+(.+)/i,
+  /\bmake a note\s+(?:that\s+)?(.+)/i,
+];
+
+const preferencePatterns = [
+  /\bi prefer\s+(.+)/i,
+  /\bi like\s+(.+)/i,
+  /\bi struggle with\s+(.+)/i,
+  /\bi am working on\s+(.+)/i,
+  /\bi'm working on\s+(.+)/i,
+];
+
+export function extractDirectMemoryActions(message: string): MemoryExtraction {
+  const text = getVisibleMessageContent(message).trim();
+  const lower = text.toLowerCase();
+  const empty: MemoryExtraction = { memories: [], forget: [], clearAll: false };
+  if (!text) return empty;
+
+  if (/\b(clear|delete|erase|remove)\s+(all\s+)?memor(y|ies)\b/i.test(text)) {
+    return { memories: [], forget: [], clearAll: true };
+  }
+
+  if (/^\s*(forget|delete|erase|remove)\b/i.test(text) || /\bforget\s+(?:that|my|this)\b/i.test(text)) {
+    const forgetText = text.replace(/^\s*(please|can you|could you|would you)\s+/i, "");
+    const query = cleanMemoryText(
+      forgetText
+        .replace(/^\s*(forget|delete|erase|remove)\s+(that\s+)?/i, "")
+        .replace(/\bforget\s+(that\s+)?/i, ""),
+    );
+    return {
+      memories: [],
+      forget: query ? [{ query, reason: "Explicit forget request." }] : [],
+      clearAll: false,
+    };
+  }
+
+  for (const pattern of explicitRememberPatterns) {
+    const match = text.match(pattern);
+    const content = cleanMemoryText(match?.[1] ?? "");
+    if (content && !looksSensitive(content)) {
+      return {
+        memories: [
+          {
+            content,
+            category: categorizeMemoryContent(content),
+            kind: "explicit",
+            tags: ["explicit"],
+            confidence: 95,
+            salience: 90,
+          },
+        ],
+        forget: [],
+        clearAll: false,
+      };
+    }
+  }
+
+  if (/\b(password|token|api key|secret|credit card|payment)\b/i.test(lower)) return empty;
+
+  for (const pattern of preferencePatterns) {
+    const match = text.match(pattern);
+    const content = cleanMemoryText(match?.[0] ?? "");
+    if (content && !looksSensitive(content)) {
+      return {
+        memories: [
+          {
+            content,
+            category: categorizeMemoryContent(content),
+            kind: "auto",
+            tags: ["durable"],
+            confidence: 80,
+            salience: 70,
+          },
+        ],
+        forget: [],
+        clearAll: false,
+      };
+    }
+  }
+
+  return empty;
+}
+
+export function detectMemoryIntent(message: string): MemoryIntent {
+  const text = getVisibleMessageContent(message).trim().toLowerCase();
+  if (!text) return "generic";
+  if (/\b(clear|delete|erase|remove)\s+(all\s+)?memor(y|ies)\b/.test(text)) return "explicit_forget";
+  if (/^\s*(forget|delete|erase|remove)\b/.test(text) || /\bforget\s+(?:that|my|this)\b/.test(text)) return "explicit_forget";
+  if (explicitRememberPatterns.some((pattern) => pattern.test(text))) return "explicit_remember";
+  if (/\b(what do you know about me|what you know about me|what do you remember about me|do you remember me)\b/.test(text)) {
+    return "ask_about_memory";
+  }
+  if (/\b(my|mine|i|me)\b/.test(text) && /\b(project|exam|essay|goal|style|preference|progress|plan|work)\b/.test(text)) {
+    return "personalized";
+  }
+  if (preferencePatterns.some((pattern) => pattern.test(text))) return "personalized";
+  return memoryRelevanceTerms.some((term) => text.includes(term)) ? "personalized" : "generic";
+}
+
 export function shouldUseMemoryHeuristic(message: string) {
+  const intent = detectMemoryIntent(message);
+  if (intent !== "generic") return true;
   const text = message.toLowerCase();
   if (/\b(remember|forget)\b/.test(text)) return true;
   if (/\b(my|mine|i|me)\b/.test(text) && /\b(project|exam|essay|goal|style|preference|progress|plan|work)\b/.test(text)) {
@@ -158,6 +299,7 @@ export async function retrieveRelevantMemoryForTurn(input: {
   topic: TopicLike;
   contextMessages: PersistedMessage[];
 }): Promise<MemoryRetrievalResult> {
+  const intent = detectMemoryIntent(input.message);
   const settings = await ensureUserMemorySettings(input.userId);
   if (!settings.enabled) {
     await insertMemoryEvent({
@@ -167,13 +309,14 @@ export async function retrieveRelevantMemoryForTurn(input: {
       eventType: "skipped",
       reason: "memory_disabled",
     });
-    return emptyMemoryRetrieval(false, "Memory is disabled for this user.");
+    return emptyMemoryRetrieval(false, "Memory is disabled for this user.", intent);
   }
 
   const gate = await shouldUseMemory({
     message: input.message,
     topicName: input.topic.name,
     contextMessages: input.contextMessages,
+    intent,
   });
 
   if (!gate.useMemory) {
@@ -184,43 +327,46 @@ export async function retrieveRelevantMemoryForTurn(input: {
       eventType: "skipped",
       reason: gate.reason,
     });
-    return emptyMemoryRetrieval(true, gate.reason);
+    return emptyMemoryRetrieval(true, gate.reason, intent);
   }
 
   const query = gate.query || input.message;
-  const embedding = await embedText(query);
-  const [allMemories, allProfiles] = await Promise.all([
+  const [embedding, allMemories, allProfiles] = await Promise.all([
+    embedText(query),
     getActiveUserMemories(input.userId, 100),
     getUserMemoryProfiles(input.userId),
   ]);
 
   let selectedMemories: MemorySearchResult[] = [];
   let selectedSummaries: ChatSummarySearchResult[] = [];
+  let selectedTurns: ChatTurnSearchResult[] = [];
 
   if (embedding) {
     try {
-      [selectedMemories, selectedSummaries] = await Promise.all([
+      [selectedMemories, selectedSummaries, selectedTurns] = await Promise.all([
         searchUserMemoriesByEmbedding(input.userId, embedding, 8),
         searchChatSummariesByEmbedding(input.userId, embedding, 4),
+        searchChatMemoryTurnsByEmbedding(input.userId, embedding, input.chatId, 8),
       ]);
     } catch {
       selectedMemories = lexicalMemoryRank(query, allMemories, 8);
       selectedSummaries = [];
+      selectedTurns = await searchChatMemoryTurnsByText(input.userId, query, input.chatId, 4);
     }
   } else {
     selectedMemories = lexicalMemoryRank(query, allMemories, 8);
+    selectedTurns = await searchChatMemoryTurnsByText(input.userId, query, input.chatId, 4);
   }
 
   const explicit = selectedMemories.filter((memory) => memory.kind === "explicit").slice(0, 2);
   const auto = selectedMemories
-    .filter((memory) => memory.kind !== "explicit")
-    .filter((memory) => !explicit.some((selected) => selected.id === memory.id))
+    .filter((memory) => memory.kind !== "explicit" && !explicit.some((selected) => selected.id === memory.id))
     .slice(0, 4);
   const memories = [...explicit, ...auto].slice(0, 5);
 
   const categories = [...new Set(memories.map((memory) => memory.category))];
   const profiles = allProfiles
-    .filter((profile) => categories.includes(profile.category))
+    .filter((profile) => (categories.length ? categories.includes(profile.category) : intent === "ask_about_memory"))
     .slice(0, 1)
     .map((profile) => ({
       category: profile.category,
@@ -235,6 +381,14 @@ export async function retrieveRelevantMemoryForTurn(input: {
       summary: summary.summary,
       topics: summary.topics ?? [],
     }));
+
+  const priorChatTurns = selectedTurns.slice(0, 4).map((turn) => ({
+    id: turn.id,
+    chatId: turn.chatId,
+    question: turn.question,
+    answerExcerpt: turn.answerExcerpt,
+    topics: turn.topics ?? [],
+  }));
 
   const promptMemories = memories.map((memory) => ({
     id: memory.id,
@@ -253,17 +407,41 @@ export async function retrieveRelevantMemoryForTurn(input: {
       reason: gate.reason,
     });
   }
+  if (priorChatTurns.length) {
+    await markChatTurnsUsed({
+      userId: input.userId,
+      turnIds: priorChatTurns.map((turn) => turn.id),
+      chatId: input.chatId,
+      messageId: input.userMessageId,
+      reason: gate.reason,
+    });
+  }
+
+  const shouldIncludeStatus = intent === "explicit_remember" || intent === "explicit_forget" || intent === "ask_about_memory";
+  const used =
+    shouldIncludeStatus ||
+    promptMemories.length > 0 ||
+    profiles.length > 0 ||
+    chatSummaries.length > 0 ||
+    priorChatTurns.length > 0;
 
   return {
     settingsEnabled: true,
-    used: promptMemories.length > 0 || profiles.length > 0 || chatSummaries.length > 0,
+    used,
     gateReason: gate.reason,
+    status: {
+      enabled: true,
+      intent,
+      shouldAcknowledge: intent === "explicit_remember" || intent === "explicit_forget",
+    },
     memories: promptMemories,
     profiles,
     chatSummaries,
+    priorChatTurns,
     memoryIds: promptMemories.map((memory) => memory.id),
     profileCategories: profiles.map((profile) => profile.category),
     chatSummaryIds: chatSummaries.map((summary) => summary.chatId),
+    chatTurnIds: priorChatTurns.map((turn) => turn.id),
   };
 }
 
@@ -273,6 +451,25 @@ export function formatMemoryPromptContext(context: MemoryPromptContext | undefin
     "\nRelevant learner memory:",
     "Use this only when it helps the current request. The learner's current message and current chat override older memory. Explicit saved memories have priority over automatic summaries.",
   ];
+
+  if (context.status) {
+    if (context.status.enabled) {
+      lines.push(
+        "Memory is enabled for this signed-in learner. Do not say you only remember during this conversation.",
+      );
+      if (context.status.intent === "explicit_remember") {
+        lines.push("If the learner asks you to remember something, briefly acknowledge that it will be saved after this response.");
+      }
+      if (context.status.intent === "explicit_forget") {
+        lines.push("If the learner asks you to forget something, briefly acknowledge that matching saved memory will be removed after this response.");
+      }
+      if (context.status.intent === "ask_about_memory") {
+        lines.push("If no saved memories or related chats are listed below, say you do not have saved information about them yet.");
+      }
+    } else {
+      lines.push("Memory is currently off for this signed-in learner. Do not claim that a new memory will be saved.");
+    }
+  }
 
   if (context.memories.length) {
     lines.push("\nSaved memories:");
@@ -296,6 +493,15 @@ export function formatMemoryPromptContext(context: MemoryPromptContext | undefin
     }
   }
 
+  if (context.priorChatTurns.length) {
+    lines.push("\nPrior related chat turns:");
+    for (const turn of context.priorChatTurns.slice(0, 4)) {
+      const topicText = turn.topics.length ? ` (${turn.topics.join(", ")})` : "";
+      lines.push(`- Learner asked: ${turn.question}${topicText}`);
+      if (turn.answerExcerpt) lines.push(`  Inspir replied: ${turn.answerExcerpt}`);
+    }
+  }
+
   return lines.join("\n");
 }
 
@@ -306,6 +512,8 @@ export function memoryRunMetadata(retrieval: MemoryRetrievalResult) {
     memoryIds: retrieval.memoryIds,
     profileCategories: retrieval.profileCategories,
     chatSummaryIds: retrieval.chatSummaryIds,
+    chatTurnIds: retrieval.chatTurnIds,
+    memoryIntent: retrieval.status?.intent,
   });
 }
 
@@ -328,72 +536,146 @@ export async function processMemoryAfterTurn(input: {
 
   const changedCategories = new Set<string>();
 
-  for (const forget of extraction.forget) {
-    const matches = await findMatchingMemoriesByText(input.userId, forget.query, 10);
-    for (const memory of matches) {
-      await deleteUserMemory(input.userId, memory.id);
-      changedCategories.add(memory.category);
-    }
-  }
+  const forgottenCategories = await Promise.all(
+    extraction.forget.map((forget) => processForgetMemoryRequest(input, forget)),
+  );
+  for (const category of forgottenCategories.flat()) changedCategories.add(category);
 
-  for (const candidate of extraction.memories) {
-    const normalized = normalizeMemoryContent(candidate.content);
-    const existing = await findExistingMemoryByNormalized(input.userId, normalized);
-    const embedding = await embedText(candidate.content);
-
-    if (existing) {
-      await updateUserMemory(input.userId, existing.id, {
-        kind: existing.kind === "explicit" ? "explicit" : candidate.kind,
-        category: candidate.category,
-        content: candidate.content,
-        tags: [...new Set([...(existing.tags ?? []), ...candidate.tags])].slice(0, 8),
-        confidence: Math.max(existing.confidence, candidate.confidence),
-        salience: Math.max(existing.salience, candidate.salience),
-        sourceChatId: input.chatId,
-        sourceMessageId: input.userMessage.id,
-        embedding,
-      });
-    } else {
-      await createUserMemory({
-        userId: input.userId,
-        kind: candidate.kind,
-        category: candidate.category,
-        content: candidate.content,
-        tags: candidate.tags,
-        confidence: candidate.confidence,
-        salience: candidate.salience,
-        sourceChatId: input.chatId,
-        sourceMessageId: input.userMessage.id,
-        embedding,
-      });
-    }
-    changedCategories.add(candidate.category);
-  }
+  const updatedCategories = await Promise.all(
+    extraction.memories.map((candidate) => upsertExtractedMemory(input, candidate)),
+  );
+  for (const category of updatedCategories) changedCategories.add(category);
 
   const summary = extraction.chatSummary ?? fallbackChatSummary(input);
+  const turnIndex = extraction.forget.length ? null : buildChatTurnIndex(input, summary.topics);
+  const [summaryEmbedding, turnEmbedding] = await Promise.all([
+    summary.summary ? embedText(summary.summary) : Promise.resolve(null),
+    turnIndex ? embedText(turnIndex.searchableText) : Promise.resolve(null),
+  ]);
+  const persistenceTasks: Promise<unknown>[] = [];
   if (summary.summary) {
-    await upsertChatMemorySummary({
-      chatId: input.chatId,
+    persistenceTasks.push(
+      upsertChatMemorySummary({
+        chatId: input.chatId,
+        userId: input.userId,
+        topicId: input.topic.id,
+        summary: summary.summary,
+        topics: summary.topics,
+        sourceMessageCount: input.contextMessages.length + 2,
+        lastMessageId: input.assistantMessage.id,
+        embedding: summaryEmbedding,
+      }),
+    );
+  }
+  if (turnIndex) {
+    persistenceTasks.push(
+      upsertChatMemoryTurn({
+        userId: input.userId,
+        chatId: input.chatId,
+        topicId: input.topic.id,
+        userMessageId: input.userMessage.id,
+        assistantMessageId: input.assistantMessage.id,
+        question: turnIndex.question,
+        answerExcerpt: turnIndex.answerExcerpt,
+        searchableText: turnIndex.searchableText,
+        topics: turnIndex.topics,
+        embedding: turnEmbedding,
+      }),
+    );
+  }
+  await Promise.all(persistenceTasks);
+  await Promise.all([...changedCategories].map((category) => compileUserMemoryProfile(input.userId, category)));
+}
+
+async function processForgetMemoryRequest(
+  input: {
+    userId: string;
+    chatId: string;
+    userMessage: PersistedMessage;
+  },
+  forget: MemoryExtraction["forget"][number],
+) {
+  const [matches, deletedTurnIds] = await Promise.all([
+    findMatchingMemoriesByText(input.userId, forget.query, 10),
+    deleteMatchingChatMemoryTurnsByText(input.userId, forget.query),
+  ]);
+  await Promise.all([
+    ...matches.map((memory) => deleteUserMemory(input.userId, memory.id)),
+    ...deletedTurnIds.map((turnId) =>
+      insertMemoryEvent({
+        userId: input.userId,
+        chatId: input.chatId,
+        messageId: input.userMessage.id,
+        eventType: "deleted",
+        reason: forget.reason ?? "Explicit forget request.",
+        metadata: { chatTurnId: turnId, query: forget.query },
+      }),
+    ),
+  ]);
+  return matches.map((memory) => memory.category);
+}
+
+async function upsertExtractedMemory(
+  input: {
+    userId: string;
+    chatId: string;
+    userMessage: PersistedMessage;
+  },
+  candidate: MemoryExtraction["memories"][number],
+) {
+  const normalized = normalizeMemoryContent(candidate.content);
+  const [existing, embedding] = await Promise.all([
+    findExistingMemoryByNormalized(input.userId, normalized),
+    embedText(candidate.content),
+  ]);
+
+  if (existing) {
+    await updateUserMemory(input.userId, existing.id, {
+      kind: existing.kind === "explicit" ? "explicit" : candidate.kind,
+      category: candidate.category,
+      content: candidate.content,
+      tags: [...new Set([...(existing.tags ?? []), ...candidate.tags])].slice(0, 8),
+      confidence: Math.max(existing.confidence, candidate.confidence),
+      salience: Math.max(existing.salience, candidate.salience),
+      sourceChatId: input.chatId,
+      sourceMessageId: input.userMessage.id,
+      embedding,
+    });
+  } else {
+    await createUserMemory({
       userId: input.userId,
-      topicId: input.topic.id,
-      summary: summary.summary,
-      topics: summary.topics,
-      sourceMessageCount: input.contextMessages.length + 2,
-      lastMessageId: input.assistantMessage.id,
-      embedding: await embedText(summary.summary),
+      kind: candidate.kind,
+      category: candidate.category,
+      content: candidate.content,
+      tags: candidate.tags,
+      confidence: candidate.confidence,
+      salience: candidate.salience,
+      sourceChatId: input.chatId,
+      sourceMessageId: input.userMessage.id,
+      embedding,
     });
   }
-
-  for (const category of changedCategories) {
-    await compileUserMemoryProfile(input.userId, category);
-  }
+  return candidate.category;
 }
 
 async function shouldUseMemory(input: {
   message: string;
   topicName: string;
   contextMessages: PersistedMessage[];
+  intent: MemoryIntent;
 }) {
+  if (
+    input.intent === "explicit_remember" ||
+    input.intent === "explicit_forget" ||
+    input.intent === "ask_about_memory"
+  ) {
+    return {
+      useMemory: true,
+      reason: `Memory intent detected: ${input.intent}.`,
+      query: input.message,
+    };
+  }
+
   const fallback = shouldUseMemoryHeuristic(input.message);
   if (!process.env.OPENAI_API_KEY) {
     return {
@@ -409,7 +691,7 @@ async function shouldUseMemory(input: {
       schema: memoryGateSchema,
       system: [
         "Decide whether a tutor should retrieve long-term learner memory before answering.",
-        "Return true only when memory could materially improve the answer: personal preferences, prior projects, progress, goals, learning style, continuity, remember/forget requests, or direct questions about what the assistant knows.",
+        "Return true only when memory could materially improve the answer: personal preferences, prior projects, progress, goals, learning style, continuity, remember/forget requests, prior chat questions and replies, or direct questions about what the assistant knows.",
         "Return false for generic educational questions that can be answered without personal context.",
       ].join("\n"),
       prompt: JSON.stringify({
@@ -441,7 +723,9 @@ async function extractMemoryUpdates(input: {
   userMessage: PersistedMessage;
   assistantMessage: PersistedMessage;
   contextMessages: PersistedMessage[];
-}): Promise<z.infer<typeof memoryExtractionSchema>> {
+}): Promise<MemoryExtraction> {
+  const direct = extractDirectMemoryActions(input.userMessage.content);
+  if (direct.clearAll || direct.forget.length) return direct;
   if (!process.env.OPENAI_API_KEY) return fallbackExtraction(input.userMessage.content);
 
   const existing = await getActiveUserMemories(input.userId, 60);
@@ -478,7 +762,7 @@ async function extractMemoryUpdates(input: {
       maxRetries: 0,
       abortSignal: AbortSignal.timeout(25_000),
     });
-    return result.object;
+    return mergeMemoryExtractions(direct, result.object);
   } catch {
     return fallbackExtraction(input.userMessage.content);
   }
@@ -570,36 +854,89 @@ export async function buildMemoryEmbedding(value: string) {
   return embedText(value);
 }
 
-function fallbackExtraction(message: string): z.infer<typeof memoryExtractionSchema> {
-  const text = getVisibleMessageContent(message).trim();
-  if (/^\s*forget\b/i.test(text)) {
-    const query = text.replace(/^\s*forget\s+(that\s+)?/i, "").trim();
-    return {
-      memories: [],
-      forget: query ? [{ query, reason: "Explicit forget request." }] : [],
-      clearAll: /\beverything|all memories|all memory\b/i.test(text),
-    };
-  }
+function fallbackExtraction(message: string): MemoryExtraction {
+  return extractDirectMemoryActions(message);
+}
 
-  const rememberMatch = text.match(/\bremember\s+(?:that\s+)?(.+)/i);
-  if (!rememberMatch?.[1]) {
-    return { memories: [], forget: [], clearAll: false };
+function mergeMemoryExtractions(primary: MemoryExtraction, secondary: MemoryExtraction): MemoryExtraction {
+  if (primary.clearAll || primary.forget.length) return primary;
+  if (secondary.clearAll || secondary.forget.length) return secondary;
+  const memories = [...primary.memories];
+  const seen = new Set(memories.map((memory) => normalizeMemoryContent(memory.content)));
+  for (const memory of secondary.memories) {
+    const key = normalizeMemoryContent(memory.content);
+    if (!seen.has(key) && !looksSensitive(memory.content)) {
+      memories.push(memory);
+      seen.add(key);
+    }
   }
-
   return {
-    memories: [
-      {
-        content: rememberMatch[1].trim().slice(0, 500),
-        category: "general",
-        kind: "explicit",
-        tags: ["explicit"],
-        confidence: 95,
-        salience: 85,
-      },
-    ],
+    memories: memories.slice(0, 6),
     forget: [],
     clearAll: false,
+    chatSummary: secondary.chatSummary,
   };
+}
+
+function buildChatTurnIndex(
+  input: {
+    topic: TopicLike;
+    userMessage: PersistedMessage;
+    assistantMessage: PersistedMessage;
+  },
+  summaryTopics: string[] = [],
+) {
+  const question = compactText(getVisibleMessageContent(input.userMessage.content), 700);
+  const answerExcerpt = compactText(input.assistantMessage.content, 900);
+  const topics: string[] = [];
+  const seenTopics = new Set<string>();
+  for (const topic of [input.topic.name, ...summaryTopics]) {
+    const trimmed = topic.trim();
+    if (!trimmed || seenTopics.has(trimmed)) continue;
+    seenTopics.add(trimmed);
+    topics.push(trimmed);
+    if (topics.length === 8) break;
+  }
+  return {
+    question,
+    answerExcerpt,
+    topics,
+    searchableText: compactText(
+      [`Mode: ${input.topic.name}`, `Learner question: ${question}`, `Inspir answer: ${answerExcerpt}`].join("\n"),
+      1800,
+    ),
+  };
+}
+
+function cleanMemoryText(value: string) {
+  return compactText(
+    value
+      .replace(/^(please|can you|could you|would you)\s+/i, "")
+      .replace(/\s+(please)$/i, "")
+      .replace(/[?.!]+$/g, "")
+      .trim(),
+    500,
+  );
+}
+
+function compactText(value: string, maxLength: number) {
+  return value.replace(/\s+/g, " ").trim().slice(0, maxLength);
+}
+
+function looksSensitive(value: string) {
+  return /\b(password|passcode|token|api key|secret|credit card|card number|cvv|bank account|ssn|social security)\b/i.test(
+    value,
+  );
+}
+
+function categorizeMemoryContent(content: string) {
+  const text = content.toLowerCase();
+  if (/\b(prefer|like|favorite|favourite|colour|color)\b/.test(text)) return "preferences";
+  if (/\b(explain|tone|reply|answer|short|concise|detailed|step by step|visual)\b/.test(text)) return "interaction";
+  if (/\b(project|building|working on|app|website|essay)\b/.test(text)) return "projects";
+  if (/\b(goal|exam|test|gcse|revise|revision|prepare)\b/.test(text)) return "goals";
+  if (/\b(struggle|confused|level|know|understand)\b/.test(text)) return "knowledge";
+  return "general";
 }
 
 function fallbackChatSummary(input: {
@@ -615,16 +952,30 @@ function fallbackChatSummary(input: {
   };
 }
 
-function emptyMemoryRetrieval(settingsEnabled: boolean, gateReason: string): MemoryRetrievalResult {
+function emptyMemoryRetrieval(
+  settingsEnabled: boolean,
+  gateReason: string,
+  intent: MemoryIntent = "generic",
+): MemoryRetrievalResult {
+  const shouldIncludeStatus = intent === "explicit_remember" || intent === "explicit_forget" || intent === "ask_about_memory";
   return {
     settingsEnabled,
-    used: false,
+    used: shouldIncludeStatus,
     gateReason,
+    status: shouldIncludeStatus
+      ? {
+          enabled: settingsEnabled,
+          intent,
+          shouldAcknowledge: intent === "explicit_remember" || intent === "explicit_forget",
+        }
+      : undefined,
     memories: [],
     profiles: [],
     chatSummaries: [],
+    priorChatTurns: [],
     memoryIds: [],
     profileCategories: [],
     chatSummaryIds: [],
+    chatTurnIds: [],
   };
 }
