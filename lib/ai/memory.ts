@@ -154,12 +154,22 @@ type MemoryExtraction = z.infer<typeof memoryExtractionSchema>;
 
 const memoryRelevanceTerms = [
   "remember",
+  "remeber",
+  "rember",
   "forget",
   "save that",
   "save this",
   "keep in mind",
   "i prefer",
   "my preference",
+  "my favorite",
+  "my favourite",
+  "favorite food",
+  "favourite food",
+  "my food",
+  "my foods",
+  "my foos",
+  "fav",
   "you know about me",
   "what do you know",
   "last time",
@@ -179,7 +189,7 @@ const memoryRelevanceTerms = [
 ];
 
 const explicitRememberPatterns = [
-  /\bremember\s+(?:that\s+)?(.+)/i,
+  /\b(?:remember|remeber|rember)\s+(?:that\s+)?(.+)/i,
   /\bkeep in mind\s+(?:that\s+)?(.+)/i,
   /\bsave\s+(?:that|this)\s+(.+)/i,
   /\bmake a note\s+(?:that\s+)?(.+)/i,
@@ -192,6 +202,9 @@ const preferencePatterns = [
   /\bi am working on\s+(.+)/i,
   /\bi'm working on\s+(.+)/i,
 ];
+
+const strongPersonalMemoryCuePattern =
+  /\b(my|mine|me)\b.*\b(favo[u]?rite|fav|prefer|preference|like|likes|food|foods|foos|colour|color|project|exam|essay|goal|style|progress|plan|work)\b|\b(favo[u]?rite|fav|prefer|like|likes)\b.*\b(my|mine|me)\b/i;
 
 export function extractDirectMemoryActions(message: string): MemoryExtraction {
   const text = getVisibleMessageContent(message).trim();
@@ -220,7 +233,7 @@ export function extractDirectMemoryActions(message: string): MemoryExtraction {
   for (const pattern of explicitRememberPatterns) {
     const match = text.match(pattern);
     const content = cleanMemoryText(match?.[1] ?? "");
-    if (content && !looksSensitive(content)) {
+    if (content && !isAmbiguousPronounMemory(content) && !looksSensitive(content)) {
       return {
         memories: [
           {
@@ -264,6 +277,18 @@ export function extractDirectMemoryActions(message: string): MemoryExtraction {
   return empty;
 }
 
+export function extractDirectMemoryActionsFromTurn(input: {
+  userMessage: string;
+  assistantMessage?: string;
+  contextMessages?: Array<Pick<PersistedMessage, "role" | "content">>;
+}): MemoryExtraction {
+  const direct = extractDirectMemoryActions(input.userMessage);
+  if (direct.clearAll || direct.forget.length) return direct;
+
+  const inferred = inferExplicitMemoryFromCompletedTurn(input);
+  return mergeMemoryExtractions(direct, inferred);
+}
+
 export function detectMemoryIntent(message: string): MemoryIntent {
   const text = getVisibleMessageContent(message).trim().toLowerCase();
   if (!text) return "generic";
@@ -277,6 +302,7 @@ export function detectMemoryIntent(message: string): MemoryIntent {
     return "personalized";
   }
   if (preferencePatterns.some((pattern) => pattern.test(text))) return "personalized";
+  if (strongPersonalMemoryCuePattern.test(text)) return "personalized";
   return memoryRelevanceTerms.some((term) => text.includes(term)) ? "personalized" : "generic";
 }
 
@@ -284,10 +310,11 @@ export function shouldUseMemoryHeuristic(message: string) {
   const intent = detectMemoryIntent(message);
   if (intent !== "generic") return true;
   const text = message.toLowerCase();
-  if (/\b(remember|forget)\b/.test(text)) return true;
+  if (/\b(remember|remeber|rember|forget)\b/.test(text)) return true;
   if (/\b(my|mine|i|me)\b/.test(text) && /\b(project|exam|essay|goal|style|preference|progress|plan|work)\b/.test(text)) {
     return true;
   }
+  if (strongPersonalMemoryCuePattern.test(text)) return true;
   return memoryRelevanceTerms.some((term) => text.includes(term));
 }
 
@@ -677,6 +704,13 @@ async function shouldUseMemory(input: {
   }
 
   const fallback = shouldUseMemoryHeuristic(input.message);
+  if (strongPersonalMemoryCuePattern.test(input.message)) {
+    return {
+      useMemory: true,
+      reason: "Strong personal memory cue detected.",
+      query: input.message,
+    };
+  }
   if (!process.env.OPENAI_API_KEY) {
     return {
       useMemory: fallback,
@@ -724,9 +758,13 @@ async function extractMemoryUpdates(input: {
   assistantMessage: PersistedMessage;
   contextMessages: PersistedMessage[];
 }): Promise<MemoryExtraction> {
-  const direct = extractDirectMemoryActions(input.userMessage.content);
+  const direct = extractDirectMemoryActionsFromTurn({
+    userMessage: input.userMessage.content,
+    assistantMessage: input.assistantMessage.content,
+    contextMessages: input.contextMessages,
+  });
   if (direct.clearAll || direct.forget.length) return direct;
-  if (!process.env.OPENAI_API_KEY) return fallbackExtraction(input.userMessage.content);
+  if (!process.env.OPENAI_API_KEY) return fallbackExtraction(input);
 
   const existing = await getActiveUserMemories(input.userId, 60);
   try {
@@ -764,7 +802,7 @@ async function extractMemoryUpdates(input: {
     });
     return mergeMemoryExtractions(direct, result.object);
   } catch {
-    return fallbackExtraction(input.userMessage.content);
+    return fallbackExtraction(input);
   }
 }
 
@@ -854,8 +892,16 @@ export async function buildMemoryEmbedding(value: string) {
   return embedText(value);
 }
 
-function fallbackExtraction(message: string): MemoryExtraction {
-  return extractDirectMemoryActions(message);
+function fallbackExtraction(input: {
+  userMessage: PersistedMessage;
+  assistantMessage?: PersistedMessage;
+  contextMessages?: PersistedMessage[];
+}): MemoryExtraction {
+  return extractDirectMemoryActionsFromTurn({
+    userMessage: input.userMessage.content,
+    assistantMessage: input.assistantMessage?.content,
+    contextMessages: input.contextMessages,
+  });
 }
 
 function mergeMemoryExtractions(primary: MemoryExtraction, secondary: MemoryExtraction): MemoryExtraction {
@@ -908,6 +954,113 @@ function buildChatTurnIndex(
   };
 }
 
+function inferExplicitMemoryFromCompletedTurn(input: {
+  userMessage: string;
+  assistantMessage?: string;
+  contextMessages?: Array<Pick<PersistedMessage, "role" | "content">>;
+}): MemoryExtraction {
+  const empty: MemoryExtraction = { memories: [], forget: [], clearAll: false };
+  const userText = getVisibleMessageContent(input.userMessage);
+  if (!/\b(?:remember|remeber|rember|keep in mind|save)\b/i.test(userText)) return empty;
+
+  const favoriteKind = favoriteMemoryKind(userText);
+  if (!favoriteKind) return empty;
+
+  const assistantText = input.assistantMessage ?? "";
+  const subject =
+    extractFavoriteSubject(assistantText, favoriteKind) ??
+    inferRecentNamedSubject(input.contextMessages ?? []);
+  if (!subject || looksSensitive(subject)) return empty;
+
+  const label = favoriteKind === "color" ? "favourite colour" : `favourite ${favoriteKind}`;
+  return {
+    memories: [
+      {
+        content: `${subject} is the learner's ${label}.`,
+        category: "preferences",
+        kind: "explicit",
+        tags: ["explicit", "favorite", "favourite", favoriteKind],
+        confidence: 95,
+        salience: 90,
+      },
+    ],
+    forget: [],
+    clearAll: false,
+  };
+}
+
+function favoriteMemoryKind(text: string) {
+  if (!/\bfavo[u]?rite|fav\b/i.test(text)) return null;
+  if (/\b(food|foods|foos|dish|meal|snack)\b/i.test(text)) return "food";
+  if (/\b(colou?r|colors|colours)\b/i.test(text)) return "color";
+  const match = text.match(/\bfavo[u]?rite\s+([a-z][a-z\s]{1,32})/i);
+  const kind = cleanMemoryText(match?.[1] ?? "")
+    .replace(/\b(is|are|was|were|that|this|it|its|my|mine|please)\b.*$/i, "")
+    .trim()
+    .toLowerCase();
+  if (!kind || kind.length > 32) return null;
+  return kind;
+}
+
+function extractFavoriteSubject(text: string, favoriteKind: string) {
+  const kindPattern =
+    favoriteKind === "food"
+      ? "(?:food|foods|foos|dish|meal|snack)"
+      : favoriteKind === "color"
+        ? "(?:color|colour|colors|colours)"
+        : escapeRegExp(favoriteKind);
+  const sentences = text
+    .split(/[\n.!?]+/)
+    .map((sentence) => sentence.trim())
+    .filter(Boolean);
+
+  for (const sentence of sentences) {
+    const match = sentence.match(
+      new RegExp(
+        `(?:that\\s+)?(.{2,90}?)\\s+is\\s+(?:your|the learner'?s)\\s+favo[u]?rite(?:\\s+${kindPattern})?\\b`,
+        "i",
+      ),
+    );
+    const subject = sanitizeFavoriteSubject(match?.[1] ?? "");
+    if (subject) return subject;
+  }
+
+  return null;
+}
+
+function inferRecentNamedSubject(contextMessages: Array<Pick<PersistedMessage, "role" | "content">>) {
+  for (const message of [...contextMessages].reverse().slice(0, 6)) {
+    const sentences = getVisibleMessageContent(message.content)
+      .split(/[\n.!?]+/)
+      .map((sentence) => sentence.trim())
+      .filter(Boolean);
+    for (const sentence of sentences) {
+      const match = sentence.match(/^(?:yes[, ]*)?([A-Z][A-Za-z0-9' -]{1,60}?)\s+is\s+(?:a|an|the|popular)\b/);
+      const subject = sanitizeFavoriteSubject(match?.[1] ?? "");
+      if (subject) return subject;
+    }
+  }
+  return null;
+}
+
+function sanitizeFavoriteSubject(value: string) {
+  const subject = value
+    .replace(/[*_`]/g, "")
+    .replace(/^(yes|yep|sure|great|awesome|got it)[, ]*/i, "")
+    .replace(/^(i'm glad to hear|glad to hear)\s+/i, "")
+    .replace(/^(i'll|i will)\s+remember\s+(that\s+)?/i, "")
+    .replace(/^(that|this)\s+/i, "")
+    .trim();
+  if (!subject || subject.length > 80) return null;
+  if (/^(it|it's|its|this|that|they|them|he|she|your|learner|the learner)$/i.test(subject)) return null;
+  if (/\b(remember|favo[u]?rite|forget|password|token|secret)\b/i.test(subject)) return null;
+  return subject;
+}
+
+function isAmbiguousPronounMemory(value: string) {
+  return /^(it|it's|its|this|that|that's|thats)\b/i.test(value.trim());
+}
+
 function cleanMemoryText(value: string) {
   return compactText(
     value
@@ -917,6 +1070,10 @@ function cleanMemoryText(value: string) {
       .trim(),
     500,
   );
+}
+
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function compactText(value: string, maxLength: number) {

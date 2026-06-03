@@ -4,6 +4,7 @@ import { buildTopicSystemPrompt } from "../lib/ai/prompts";
 import {
   detectMemoryIntent,
   extractDirectMemoryActions,
+  extractDirectMemoryActionsFromTurn,
   formatMemoryPromptContext,
   memoryRunMetadata,
   shouldUseMemoryHeuristic,
@@ -75,6 +76,7 @@ test("memory relevance heuristic avoids generic turns and catches personal conti
   assert.equal(shouldUseMemoryHeuristic("Remember that I prefer visual examples"), true);
   assert.equal(shouldUseMemoryHeuristic("I prefer visual examples"), true);
   assert.equal(shouldUseMemoryHeuristic("Forget my old project preference"), true);
+  assert.equal(shouldUseMemoryHeuristic("What is my favourite foos?"), true);
 });
 
 test("memory prompt explains signed-in memory capability for direct memory turns", () => {
@@ -107,6 +109,29 @@ test("direct memory extraction saves explicit remember requests", () => {
   assert.equal(extraction.memories[0]?.content, "I like maths and the colour red");
 });
 
+test("direct memory extraction is typo tolerant for explicit remember requests", () => {
+  const extraction = extractDirectMemoryActions("Can you remeber that I like maths?");
+  assert.equal(extraction.clearAll, false);
+  assert.equal(extraction.forget.length, 0);
+  assert.equal(extraction.memories.length, 1);
+  assert.equal(extraction.memories[0]?.kind, "explicit");
+  assert.equal(extraction.memories[0]?.content, "I like maths");
+});
+
+test("completed turn extraction resolves explicit favorite-food references from the acknowledgement", () => {
+  const extraction = extractDirectMemoryActionsFromTurn({
+    userMessage: "remeber its my favourite food?",
+    assistantMessage:
+      "Got it! Puttu Kadala is your favorite food. That's a delicious choice. I'll remember that for future chats.",
+  });
+  assert.equal(extraction.clearAll, false);
+  assert.equal(extraction.forget.length, 0);
+  assert.equal(extraction.memories.length, 1);
+  assert.equal(extraction.memories[0]?.kind, "explicit");
+  assert.equal(extraction.memories[0]?.category, "preferences");
+  assert.equal(extraction.memories[0]?.content, "Puttu Kadala is the learner's favourite food.");
+});
+
 test("direct memory extraction treats forget as deletion only", () => {
   const extraction = extractDirectMemoryActions("Please forget that I like red");
   assert.equal(extraction.memories.length, 0);
@@ -117,6 +142,8 @@ test("direct memory extraction treats forget as deletion only", () => {
 test("memory intent detects questions about saved knowledge", () => {
   assert.equal(detectMemoryIntent("What do you know about me?"), "ask_about_memory");
   assert.equal(detectMemoryIntent("Can you remember that I prefer short hints?"), "explicit_remember");
+  assert.equal(detectMemoryIntent("Can you remeber that I prefer short hints?"), "explicit_remember");
+  assert.equal(detectMemoryIntent("What is my favourite foos?"), "personalized");
   assert.equal(detectMemoryIntent("Explain gravity simply"), "generic");
 });
 

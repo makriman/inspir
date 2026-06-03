@@ -20,11 +20,14 @@ import { calculateAge } from "@/lib/profile/age";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 120;
 
 const chatRequestSchema = z.object({
   chatId: z.uuid(),
   content: z.string().trim().min(1).max(6000),
 });
+
+type MemoryJob = (() => Promise<void>) | null;
 
 export async function POST(request: NextRequest) {
   const session = await requireSession();
@@ -86,6 +89,26 @@ export async function POST(request: NextRequest) {
       status: "started",
     })
     .returning();
+  let memoryJobSettled = false;
+  let settleMemoryJob: (job: MemoryJob) => void = () => {};
+  const memoryJob = new Promise<MemoryJob>((resolve) => {
+    settleMemoryJob = (job) => {
+      if (memoryJobSettled) return;
+      memoryJobSettled = true;
+      resolve(job);
+    };
+  });
+
+  after(async () => {
+    const job = await memoryJobWithTimeout(memoryJob);
+    if (!job) return;
+    try {
+      await job();
+    } catch (memoryError) {
+      console.warn("Memory processing failed", memoryError);
+    }
+  });
+
   try {
     const agent = createLearningAgent({
       topic,
@@ -94,24 +117,24 @@ export async function POST(request: NextRequest) {
       learnerAge,
       memoryContext,
       onFinish: async (event) => {
-        const assistant = await insertMessage({
-          chatId: parsed.data.chatId,
-          role: "assistant",
-          content: event.text,
-        });
-        await db
-          .update(aiRuns)
-          .set({
-            assistantMessageId: assistant.id,
-            promptTokens: event.totalUsage.inputTokens ?? null,
-            completionTokens: event.totalUsage.outputTokens ?? null,
-            totalTokens: event.totalUsage.totalTokens ?? null,
-            status: "completed",
-            completedAt: new Date(),
-          })
-          .where(eq(aiRuns.id, run.id));
-        after(async () => {
-          try {
+        try {
+          const assistant = await insertMessage({
+            chatId: parsed.data.chatId,
+            role: "assistant",
+            content: event.text,
+          });
+          await db
+            .update(aiRuns)
+            .set({
+              assistantMessageId: assistant.id,
+              promptTokens: event.totalUsage.inputTokens ?? null,
+              completionTokens: event.totalUsage.outputTokens ?? null,
+              totalTokens: event.totalUsage.totalTokens ?? null,
+              status: "completed",
+              completedAt: new Date(),
+            })
+            .where(eq(aiRuns.id, run.id));
+          settleMemoryJob(async () => {
             await processMemoryAfterTurn({
               userId: session.user.id,
               chatId: parsed.data.chatId,
@@ -132,16 +155,18 @@ export async function POST(request: NextRequest) {
                 content: message.content,
               })),
             });
-          } catch (memoryError) {
-            console.warn("Memory processing failed", memoryError);
-          }
-        });
+          });
+        } catch (error) {
+          settleMemoryJob(null);
+          throw error;
+        }
       },
     });
     const result = await agent.stream({ messages: assembled.messages });
 
     return result.toTextStreamResponse();
   } catch (error) {
+    settleMemoryJob(null);
     await db
       .update(aiRuns)
       .set({
@@ -151,6 +176,20 @@ export async function POST(request: NextRequest) {
       })
       .where(eq(aiRuns.id, run.id));
     return NextResponse.json({ error: "The assistant could not answer right now." }, { status: 500 });
+  }
+}
+
+async function memoryJobWithTimeout(memoryJob: Promise<MemoryJob>) {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      memoryJob,
+      new Promise<null>((resolve) => {
+        timer = setTimeout(() => resolve(null), 90_000);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
   }
 }
 
