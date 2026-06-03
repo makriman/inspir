@@ -394,23 +394,25 @@ export async function searchChatMemoryTurnsByEmbedding(
 export async function searchChatMemoryTurnsByText(userId: string, query: string, currentChatId: string, limit = 6) {
   const trimmed = query.trim();
   if (!trimmed) return [];
-  return db
+  const terms = lexicalTerms(trimmed);
+  if (!terms.length) return [];
+  const turns = await db
     .select()
     .from(chatMemoryTurns)
-    .where(
-      and(
-        eq(chatMemoryTurns.userId, userId),
-        ilike(chatMemoryTurns.searchableText, `%${trimmed.slice(0, 96)}%`),
-      ),
-    )
+    .where(eq(chatMemoryTurns.userId, userId))
     .orderBy(desc(chatMemoryTurns.updatedAt))
-    .limit(limit * 2)
-    .then((turns) =>
-      turns
-        .filter((turn) => turn.chatId !== currentChatId)
-        .slice(0, limit)
-        .map((turn) => ({ ...turn, similarity: 0.1 })),
-    );
+    .limit(200);
+
+  const rankedTurns = [];
+  for (const turn of turns) {
+    if (turn.chatId === currentChatId) continue;
+    const haystack = `${turn.question} ${turn.answerExcerpt} ${turn.searchableText} ${(turn.topics ?? []).join(" ")}`.toLowerCase();
+    const overlap = terms.filter((term) => haystack.includes(term)).length;
+    if (!overlap) continue;
+    rankedTurns.push({ ...turn, similarity: overlap / terms.length });
+  }
+
+  return rankedTurns.sort((left, right) => right.similarity - left.similarity).slice(0, limit);
 }
 
 export async function upsertChatMemorySummary(input: {
@@ -660,12 +662,7 @@ export const memoryUseMetadata = (input: {
 });
 
 export function lexicalMemoryRank(query: string, memories: MemorySearchResult[], limit = 5) {
-  const terms = new Set(
-    query
-      .toLowerCase()
-      .split(/[^a-z0-9]+/)
-      .filter((term) => term.length > 2),
-  );
+  const terms = new Set(lexicalTerms(query));
   return memories
     .map((memory) => {
       const haystack = `${memory.category} ${memory.content} ${(memory.tags ?? []).join(" ")}`.toLowerCase();
@@ -676,4 +673,36 @@ export function lexicalMemoryRank(query: string, memories: MemorySearchResult[],
     .filter((memory) => memory.similarity !== undefined)
     .sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
     .slice(0, limit);
+}
+
+function lexicalTerms(query: string) {
+  const stopWords = new Set([
+    "about",
+    "again",
+    "before",
+    "could",
+    "did",
+    "does",
+    "for",
+    "from",
+    "have",
+    "history",
+    "previous",
+    "that",
+    "the",
+    "what",
+    "when",
+    "where",
+    "which",
+    "with",
+    "you",
+  ]);
+  return [
+    ...new Set(
+      query
+        .toLowerCase()
+        .split(/[^a-z0-9]+/)
+        .filter((term) => term.length > 2 && !stopWords.has(term)),
+    ),
+  ];
 }

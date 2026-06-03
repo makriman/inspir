@@ -178,6 +178,14 @@ const memoryRelevanceTerms = [
   "last time",
   "previous",
   "earlier",
+  "past chat",
+  "previous chat",
+  "chat history",
+  "conversation history",
+  "what did i ask",
+  "what have i asked",
+  "we discussed",
+  "we talked",
   "continue",
   "resume",
   "my project",
@@ -350,6 +358,7 @@ export function detectMemoryIntent(message: string): MemoryIntent {
   }
   if (preferencePatterns.some((pattern) => pattern.test(text))) return "personalized";
   if (strongPersonalMemoryCuePattern.test(text)) return "personalized";
+  if (isPriorChatRecallCue(text)) return "personalized";
   return memoryRelevanceTerms.some((term) => text.includes(term)) ? "personalized" : "generic";
 }
 
@@ -362,6 +371,7 @@ export function shouldUseMemoryHeuristic(message: string) {
     return true;
   }
   if (strongPersonalMemoryCuePattern.test(text)) return true;
+  if (isPriorChatRecallCue(text)) return true;
   return memoryRelevanceTerms.some((term) => text.includes(term));
 }
 
@@ -1132,6 +1142,19 @@ function isAskAboutMemoryQuestion(value: string) {
     ) ||
     /\bwhat\s+you\s+(?:know|remember|remeber|rember|rememebr|remembr|remebr)\s+about\s+me\b/i.test(value) ||
     /\bdo\s+you\s+(?:remember|remeber|rember|rememebr|remembr|remebr)\s+me\b/i.test(value)
+  );
+}
+
+function isPriorChatRecallCue(value: string) {
+  return (
+    /\b(previous|past|earlier|last)\s+(chat|conversation|question|topic|lesson|session)s?\b/i.test(value) ||
+    /\b(chat|conversation)\s+history\b/i.test(value) ||
+    /\bwhat\s+(?:did|have)\s+i\s+(?:ask|say|tell|mention|learn|study|discuss|talk)(?:ed)?\b.*\b(before|previously|earlier|last time|past)\b/i.test(
+      value,
+    ) ||
+    /\b(?:we|i)\s+(?:talked|discussed|covered|studied|learned)\b.*\b(before|previously|earlier|last time|past)\b/i.test(
+      value,
+    )
   );
 }
 

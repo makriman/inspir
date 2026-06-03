@@ -172,6 +172,8 @@ test("direct memory extraction treats forget as deletion only", () => {
 test("memory intent detects questions about saved knowledge", () => {
   assert.equal(detectMemoryIntent("What do you know about me?"), "ask_about_memory");
   assert.equal(detectMemoryIntent("what all do you remeber about me?"), "ask_about_memory");
+  assert.equal(detectMemoryIntent("What did I ask before about science projects?"), "personalized");
+  assert.equal(shouldUseMemoryHeuristic("What did I ask before about science projects?"), true);
   assert.equal(detectMemoryIntent("Can you remember that I prefer short hints?"), "explicit_remember");
   assert.equal(detectMemoryIntent("Can you remeber that I prefer short hints?"), "explicit_remember");
   assert.equal(detectMemoryIntent("Can you rememebr that I prefer short hints?"), "explicit_remember");
