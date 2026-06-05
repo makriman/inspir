@@ -59,15 +59,12 @@ function isLikelyMobileOrTablet() {
   return fitsTabletViewport && (hasCoarsePointer || hasMobileUserAgent);
 }
 
-function isIosSafari() {
+function isIosBrowser() {
   const userAgent = window.navigator.userAgent;
-  const isIosDevice =
+  return (
     /iPad|iPhone|iPod/i.test(userAgent) ||
-    (/Macintosh/i.test(userAgent) && window.navigator.maxTouchPoints > 1);
-  const isWebKit = /WebKit/i.test(userAgent);
-  const isOtherIosBrowser = /CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo/i.test(userAgent);
-
-  return isIosDevice && isWebKit && !isOtherIosBrowser;
+    (/Macintosh/i.test(userAgent) && window.navigator.maxTouchPoints > 1)
+  );
 }
 
 function readTimestamp(key: string) {
@@ -184,7 +181,7 @@ export function PwaInstallPrompt() {
       }
 
       const repeatVisit = registerVisit() >= 2;
-      const shouldUseIosMode = isIosSafari();
+      const shouldUseIosMode = isIosBrowser();
       timeout = window.setTimeout(() => {
         canConsiderPromptRef.current = true;
         isRepeatVisitRef.current = repeatVisit;
@@ -360,7 +357,7 @@ export function PwaInstallPrompt() {
           <ol className="pwa-install-steps" aria-label="iOS install steps">
             <li>
               <Share size={17} aria-hidden="true" />
-              Tap Safari&apos;s share button.
+              Tap the browser share button.
             </li>
             <li>
               <Plus size={17} aria-hidden="true" />

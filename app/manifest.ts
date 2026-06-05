@@ -17,6 +17,24 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: "any",
     icons: [
       {
+        src: "/inspir-app-icon-192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/inspir-app-icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/inspir-app-icon-512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable",
+      },
+      {
         src: "/inspir-app-icon.svg",
         sizes: "any",
         type: "image/svg+xml",
@@ -28,12 +46,8 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/svg+xml",
         purpose: "maskable",
       },
-      {
-        src: "/icon.png",
-        sizes: "128x118",
-        type: "image/png",
-      },
     ],
+    prefer_related_applications: false,
     screenshots: [
       {
         src: "/inspir-social-preview.png",
