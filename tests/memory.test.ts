@@ -8,6 +8,7 @@ import {
   extractDirectMemoryActions,
   extractDirectMemoryActionsFromTurn,
   formatMemoryPromptContext,
+  buildFallbackMemorySynthesis,
   isUsefulMemoryContent,
   memoryRunMetadata,
   shouldUseMemoryHeuristic,
@@ -24,9 +25,11 @@ test("prompt assembly omits memory section when no memory is selected", () => {
     memoryContext: {
       used: false,
       memories: [],
+      summarySections: [],
       profiles: [],
       chatSummaries: [],
       priorChatTurns: [],
+      sources: [],
     },
   });
 
@@ -49,6 +52,16 @@ test("prompt assembly includes only selected memory with override guidance", () 
         tags: ["style"],
       },
     ],
+    summarySections: [
+      {
+        id: "preferences",
+        title: "Preferences",
+        category: "preferences",
+        summary: "Likes concise explanations and example-led tutoring.",
+        sourceMemoryIds: ["mem1"],
+        sourceTurnIds: [],
+      },
+    ],
     profiles: [{ category: "preferences", summary: "Prefers concise, example-led tutoring." }],
     chatSummaries: [{ chatId: "chat1", summary: "Previously practiced algebra mistakes.", topics: ["Algebra"] }],
     priorChatTurns: [
@@ -60,6 +73,7 @@ test("prompt assembly includes only selected memory with override guidance", () 
         topics: ["Maths"],
       },
     ],
+    sources: [],
   };
 
   const formatted = formatMemoryPromptContext(memoryContext);
@@ -68,6 +82,7 @@ test("prompt assembly includes only selected memory with override guidance", () 
 
   const prompt = buildTopicSystemPrompt(seed, "English", { memoryContext });
   assert.ok(prompt.includes("The learner prefers short explanations with examples."));
+  assert.ok(prompt.includes("Likes concise explanations and example-led tutoring."));
   assert.ok(prompt.includes("Prefers concise, example-led tutoring."));
   assert.ok(prompt.includes("Previously practiced algebra mistakes."));
   assert.ok(prompt.includes("How should I revise simultaneous equations?"));
@@ -92,9 +107,11 @@ test("memory prompt explains signed-in memory capability for direct memory turns
       shouldAcknowledge: true,
     },
     memories: [],
+    summarySections: [],
     profiles: [],
     chatSummaries: [],
     priorChatTurns: [],
+    sources: [],
   };
   const formatted = formatMemoryPromptContext(context);
   assert.ok(formatted?.includes("Memory is enabled for this signed-in learner"));
@@ -206,13 +223,24 @@ test("run metadata records selected memory ids and profile categories", () => {
       shouldAcknowledge: false,
     },
     memories: [],
+    summarySections: [],
     profiles: [],
     chatSummaries: [],
     priorChatTurns: [],
+    sources: [
+      {
+        type: "memory",
+        id: "memory:mem1",
+        label: "Remembered from chat",
+        excerpt: "The learner prefers examples.",
+        memoryId: "mem1",
+      },
+    ],
     memoryIds: ["mem1", "mem2"],
     profileCategories: ["preferences"],
     chatSummaryIds: ["chat1"],
     chatTurnIds: ["turn1"],
+    summarySectionIds: ["preferences"],
   };
 
   assert.deepEqual(memoryRunMetadata(retrieval), {
@@ -222,6 +250,47 @@ test("run metadata records selected memory ids and profile categories", () => {
     profileCategories: ["preferences"],
     chatSummaryIds: ["chat1"],
     chatTurnIds: ["turn1"],
+    summarySectionIds: ["preferences"],
+    sources: [
+      {
+        type: "memory",
+        id: "memory:mem1",
+        label: "Remembered from chat",
+        excerpt: "The learner prefers examples.",
+        memoryId: "mem1",
+      },
+    ],
     memoryIntent: "personalized",
   });
+});
+
+test("fallback dreaming synthesis groups memories and prepares editable prior-chat cards", () => {
+  const synthesis = buildFallbackMemorySynthesis({
+    memories: [
+      {
+        id: "mem1",
+        category: "preferences",
+        content: "Puttu Kadala is the learner's favourite food.",
+        sourceType: "explicit",
+        sourceTurnIds: [],
+        salience: 95,
+      },
+      {
+        id: "mem2",
+        category: "knowledge",
+        content: "In Learn Anything, you asked: Explain black holes simply.",
+        sourceType: "prior_chat",
+        sourceTurnIds: ["turn1"],
+        salience: 55,
+      },
+    ],
+    turns: [],
+    feedback: [],
+  });
+
+  assert.equal(synthesis.sections.length, 2);
+  assert.ok(synthesis.summary.includes("Preferences"));
+  assert.equal(synthesis.memoryUpdates.length, 1);
+  assert.equal(synthesis.memoryUpdates[0]?.sourceMemoryIds[0], "mem2");
+  assert.equal(synthesis.memoryUpdates[0]?.sourceTurnIds[0], "turn1");
 });

@@ -4,11 +4,16 @@ import {
   chatMemorySummaries,
   chatMemoryTurns,
   memoryEvents,
+  memorySourceFeedback,
+  memorySynthesisRuns,
   userMemories,
   userMemoryProfiles,
+  userMemorySummaries,
   userMemorySettings,
   type ChatMemorySummary,
   type ChatMemoryTurn,
+  type MemorySourceFeedback,
+  type UserMemorySummary,
   type UserMemory,
   type UserMemorySetting,
 } from "./schema";
@@ -24,7 +29,9 @@ export type MemoryEventType =
   | "summarized"
   | "turn_indexed"
   | "profile_compiled"
-  | "settings_updated";
+  | "settings_updated"
+  | "synthesized"
+  | "feedback";
 
 export type MemorySearchResult = Pick<
   UserMemory,
@@ -37,8 +44,16 @@ export type MemorySearchResult = Pick<
   | "confidence"
   | "salience"
   | "status"
+  | "sourceType"
+  | "sourceTurnIds"
+  | "sourceMemoryIds"
   | "sourceChatId"
   | "sourceMessageId"
+  | "validFrom"
+  | "validUntil"
+  | "freshnessStatus"
+  | "pinned"
+  | "doNotMention"
   | "createdAt"
   | "updatedAt"
 > & {
@@ -69,6 +84,8 @@ export type ChatTurnSearchResult = Pick<
   similarity?: number;
 };
 
+export type UserMemorySummarySection = NonNullable<UserMemorySummary["sections"]>[number];
+
 export async function ensureUserMemorySettings(userId: string): Promise<UserMemorySetting> {
   const [settings] = await db
     .insert(userMemorySettings)
@@ -91,6 +108,9 @@ export async function updateUserMemorySettings(
   userId: string,
   input: {
     enabled?: boolean;
+    savedMemoryEnabled?: boolean;
+    chatHistoryEnabled?: boolean;
+    dreamingEnabled?: boolean;
     captureScope?: string;
     retrievalMode?: string;
     noticeSeenAt?: Date | null;
@@ -99,6 +119,9 @@ export async function updateUserMemorySettings(
   await ensureUserMemorySettings(userId);
   const patch = {
     ...(input.enabled !== undefined ? { enabled: input.enabled } : {}),
+    ...(input.savedMemoryEnabled !== undefined ? { savedMemoryEnabled: input.savedMemoryEnabled } : {}),
+    ...(input.chatHistoryEnabled !== undefined ? { chatHistoryEnabled: input.chatHistoryEnabled } : {}),
+    ...(input.dreamingEnabled !== undefined ? { dreamingEnabled: input.dreamingEnabled } : {}),
     ...(input.captureScope !== undefined ? { captureScope: input.captureScope } : {}),
     ...(input.retrievalMode !== undefined ? { retrievalMode: input.retrievalMode } : {}),
     ...(input.noticeSeenAt !== undefined ? { noticeSeenAt: input.noticeSeenAt } : {}),
@@ -114,11 +137,33 @@ export async function updateUserMemorySettings(
     eventType: "settings_updated",
     metadata: input,
   });
+  if (input.chatHistoryEnabled === false) {
+    await Promise.all([
+      db
+        .update(userMemories)
+        .set({ status: "deleted", deletedAt: new Date(), updatedAt: new Date() })
+        .where(
+          and(
+            eq(userMemories.userId, userId),
+            eq(userMemories.status, "active"),
+            inArray(userMemories.sourceType, ["prior_chat", "synthesized"]),
+          ),
+        ),
+      db.delete(userMemorySummaries).where(eq(userMemorySummaries.userId, userId)),
+      db.delete(chatMemorySummaries).where(eq(chatMemorySummaries.userId, userId)),
+      db.delete(chatMemoryTurns).where(eq(chatMemoryTurns.userId, userId)),
+    ]);
+    await insertMemoryEvent({
+      userId,
+      eventType: "cleared",
+      reason: "chat_history_memory_disabled",
+    });
+  }
   return settings;
 }
 
 export async function getMemoryDashboard(userId: string) {
-  const [settings, memories, profiles] = await Promise.all([
+  const [settings, memories, profiles, summary] = await Promise.all([
     ensureUserMemorySettings(userId),
     db
       .select()
@@ -126,8 +171,9 @@ export async function getMemoryDashboard(userId: string) {
       .where(and(eq(userMemories.userId, userId), eq(userMemories.status, "active")))
       .orderBy(desc(userMemories.salience), desc(userMemories.updatedAt)),
     getUserMemoryProfiles(userId),
+    getUserMemorySummary(userId),
   ]);
-  return { settings, memories, profiles };
+  return { settings, memories, profiles, summary };
 }
 
 export async function getActiveUserMemories(userId: string, limit = 100) {
@@ -178,8 +224,16 @@ export async function createUserMemory(input: {
   tags?: string[];
   confidence?: number;
   salience?: number;
+  sourceType?: string;
+  sourceTurnIds?: string[];
+  sourceMemoryIds?: string[];
   sourceChatId?: string | null;
   sourceMessageId?: string | null;
+  validFrom?: Date | null;
+  validUntil?: Date | null;
+  freshnessStatus?: string;
+  pinned?: boolean;
+  doNotMention?: boolean;
   embedding?: number[] | null;
 }) {
   const [memory] = await db
@@ -192,8 +246,16 @@ export async function createUserMemory(input: {
       tags: input.tags ?? [],
       confidence: input.confidence ?? 70,
       salience: input.salience ?? 50,
+      sourceType: input.sourceType ?? sourceTypeFromKindAndTags(input.kind ?? "auto", input.tags ?? []),
+      sourceTurnIds: input.sourceTurnIds ?? [],
+      sourceMemoryIds: input.sourceMemoryIds ?? [],
       sourceChatId: input.sourceChatId ?? null,
       sourceMessageId: input.sourceMessageId ?? null,
+      validFrom: input.validFrom ?? null,
+      validUntil: input.validUntil ?? null,
+      freshnessStatus: input.freshnessStatus ?? "current",
+      pinned: input.pinned ?? false,
+      doNotMention: input.doNotMention ?? false,
       embedding: input.embedding ?? null,
     })
     .returning();
@@ -221,6 +283,14 @@ export async function updateUserMemory(
     status: string;
     sourceChatId: string | null;
     sourceMessageId: string | null;
+    sourceType: string;
+    sourceTurnIds: string[];
+    sourceMemoryIds: string[];
+    validFrom: Date | null;
+    validUntil: Date | null;
+    freshnessStatus: string;
+    pinned: boolean;
+    doNotMention: boolean;
     embedding: number[] | null;
     supersededByMemoryId: string | null;
     lastUsedAt: Date | null;
@@ -257,6 +327,7 @@ export async function clearUserMemories(userId: string) {
       .set({ status: "deleted", deletedAt: new Date(), updatedAt: new Date() })
       .where(and(eq(userMemories.userId, userId), eq(userMemories.status, "active"))),
     db.delete(userMemoryProfiles).where(eq(userMemoryProfiles.userId, userId)),
+    db.delete(userMemorySummaries).where(eq(userMemorySummaries.userId, userId)),
     db.delete(chatMemorySummaries).where(eq(chatMemorySummaries.userId, userId)),
     db.delete(chatMemoryTurns).where(eq(chatMemoryTurns.userId, userId)),
   ]);
@@ -312,14 +383,24 @@ export async function searchUserMemoriesByEmbedding(userId: string, embedding: n
       confidence,
       salience,
       status,
+      source_type as "sourceType",
+      source_turn_ids as "sourceTurnIds",
+      source_memory_ids as "sourceMemoryIds",
       source_chat_id as "sourceChatId",
       source_message_id as "sourceMessageId",
+      valid_from as "validFrom",
+      valid_until as "validUntil",
+      freshness_status as "freshnessStatus",
+      pinned,
+      do_not_mention as "doNotMention",
       created_at as "createdAt",
       updated_at as "updatedAt",
       (1 - (embedding <=> ${vector}::vector))::float as similarity
     from user_memories
     where user_id = ${userId}
       and status = 'active'
+      and do_not_mention = false
+      and freshness_status <> 'expired'
       and embedding is not null
     order by embedding <=> ${vector}::vector
     limit ${limit}
@@ -542,6 +623,200 @@ export async function deleteUserMemoryProfile(userId: string, category: string) 
     .where(and(eq(userMemoryProfiles.userId, userId), eq(userMemoryProfiles.category, category)));
 }
 
+export async function getUserMemorySummary(userId: string) {
+  const [summary] = await db
+    .select()
+    .from(userMemorySummaries)
+    .where(eq(userMemorySummaries.userId, userId))
+    .limit(1);
+  return summary ?? null;
+}
+
+export async function upsertUserMemorySummary(input: {
+  userId: string;
+  summary: string;
+  sections: UserMemorySummarySection[];
+  sourceMemoryIds?: string[];
+  sourceTurnIds?: string[];
+  version?: number;
+}) {
+  const [summary] = await db
+    .insert(userMemorySummaries)
+    .values({
+      userId: input.userId,
+      summary: input.summary,
+      sections: input.sections,
+      sourceMemoryIds: input.sourceMemoryIds ?? [],
+      sourceTurnIds: input.sourceTurnIds ?? [],
+      version: input.version ?? 1,
+      lastSynthesizedAt: new Date(),
+    })
+    .onConflictDoUpdate({
+      target: userMemorySummaries.userId,
+      set: {
+        summary: input.summary,
+        sections: input.sections,
+        sourceMemoryIds: input.sourceMemoryIds ?? [],
+        sourceTurnIds: input.sourceTurnIds ?? [],
+        version: input.version ?? 1,
+        lastSynthesizedAt: new Date(),
+        updatedAt: new Date(),
+      },
+    })
+    .returning();
+
+  await insertMemoryEvent({
+    userId: input.userId,
+    eventType: "synthesized",
+    metadata: {
+      sectionCount: input.sections.length,
+      sourceMemoryIds: input.sourceMemoryIds ?? [],
+      sourceTurnIds: input.sourceTurnIds ?? [],
+    },
+  });
+  return summary;
+}
+
+export async function createMemorySynthesisRun(input: {
+  userId: string;
+  reason: string;
+  inputCounts?: Record<string, unknown>;
+}) {
+  const [run] = await db
+    .insert(memorySynthesisRuns)
+    .values({
+      userId: input.userId,
+      reason: input.reason,
+      inputCounts: input.inputCounts ?? {},
+    })
+    .returning();
+  return run;
+}
+
+export async function finishMemorySynthesisRun(
+  runId: string,
+  input: {
+    status: "completed" | "failed" | "skipped";
+    outputCounts?: Record<string, unknown>;
+    error?: string | null;
+  },
+) {
+  const [run] = await db
+    .update(memorySynthesisRuns)
+    .set({
+      status: input.status,
+      outputCounts: input.outputCounts ?? {},
+      error: input.error ?? null,
+      finishedAt: new Date(),
+    })
+    .where(eq(memorySynthesisRuns.id, runId))
+    .returning();
+  return run;
+}
+
+export async function listUsersDueForMemorySynthesis(limit = 10) {
+  return sql<Array<{ userId: string }>>`
+    select distinct settings.user_id as "userId"
+    from user_memory_settings settings
+    left join user_memory_summaries summaries on summaries.user_id = settings.user_id
+    where settings.enabled = true
+      and settings.saved_memory_enabled = true
+      and settings.dreaming_enabled = true
+      and (
+        summaries.user_id is null
+        or exists (
+          select 1 from user_memories memories
+          where memories.user_id = settings.user_id
+            and memories.status = 'active'
+            and memories.updated_at > summaries.last_synthesized_at
+        )
+        or (
+          settings.chat_history_enabled = true
+          and exists (
+            select 1 from chat_memory_turns turns
+            where turns.user_id = settings.user_id
+              and turns.updated_at > summaries.last_synthesized_at
+          )
+        )
+      )
+    order by settings.user_id
+    limit ${limit}
+  `;
+}
+
+export async function getRecentChatMemoryTurnsForUser(userId: string, limit = 80) {
+  return db
+    .select()
+    .from(chatMemoryTurns)
+    .where(eq(chatMemoryTurns.userId, userId))
+    .orderBy(desc(chatMemoryTurns.updatedAt))
+    .limit(limit);
+}
+
+export async function getChatMemoryTurnsByIds(userId: string, turnIds: string[]) {
+  const ids = [...new Set(turnIds)].filter(Boolean);
+  if (!ids.length) return [];
+  return db
+    .select()
+    .from(chatMemoryTurns)
+    .where(and(eq(chatMemoryTurns.userId, userId), inArray(chatMemoryTurns.id, ids)))
+    .orderBy(desc(chatMemoryTurns.updatedAt));
+}
+
+export async function getUserMemoriesByIds(userId: string, memoryIds: string[]) {
+  const ids = [...new Set(memoryIds)].filter(Boolean);
+  if (!ids.length) return [];
+  return db
+    .select()
+    .from(userMemories)
+    .where(and(eq(userMemories.userId, userId), inArray(userMemories.id, ids)))
+    .orderBy(desc(userMemories.salience), desc(userMemories.updatedAt));
+}
+
+export async function insertMemorySourceFeedback(input: {
+  userId: string;
+  aiRunId?: string | null;
+  memoryId?: string | null;
+  chatTurnId?: string | null;
+  summarySectionId?: string | null;
+  action: MemorySourceFeedback["action"];
+  note?: string | null;
+}) {
+  const [feedback] = await db
+    .insert(memorySourceFeedback)
+    .values({
+      userId: input.userId,
+      aiRunId: input.aiRunId ?? null,
+      memoryId: input.memoryId ?? null,
+      chatTurnId: input.chatTurnId ?? null,
+      summarySectionId: input.summarySectionId ?? null,
+      action: input.action,
+      note: input.note ?? null,
+    })
+    .returning();
+  await insertMemoryEvent({
+    userId: input.userId,
+    memoryId: input.memoryId,
+    eventType: "feedback",
+    metadata: {
+      aiRunId: input.aiRunId ?? null,
+      chatTurnId: input.chatTurnId ?? null,
+      summarySectionId: input.summarySectionId ?? null,
+      action: input.action,
+    },
+  });
+  return feedback;
+}
+
+export async function getRecentMemorySourceFeedback(userId: string, limit = 120) {
+  return db
+    .select()
+    .from(memorySourceFeedback)
+    .where(eq(memorySourceFeedback.userId, userId))
+    .orderBy(desc(memorySourceFeedback.createdAt))
+    .limit(limit);
+}
+
 export async function markMemoriesUsed(input: {
   userId: string;
   memoryIds: string[];
@@ -615,6 +890,9 @@ export async function insertMemoryEvent(input: {
 export function serializeMemorySettings(settings: UserMemorySetting) {
   return {
     enabled: settings.enabled,
+    savedMemoryEnabled: settings.savedMemoryEnabled,
+    chatHistoryEnabled: settings.chatHistoryEnabled,
+    dreamingEnabled: settings.dreamingEnabled,
     captureScope: settings.captureScope,
     retrievalMode: settings.retrievalMode,
     noticeSeenAt: settings.noticeSeenAt,
@@ -636,6 +914,8 @@ export const memoryUseMetadata = (input: {
   profileCategories?: string[];
   chatSummaryIds?: string[];
   chatTurnIds?: string[];
+  summarySectionIds?: string[];
+  sources?: Array<Record<string, unknown>>;
   memoryIntent?: string;
 }) => ({
   used: input.used,
@@ -644,6 +924,8 @@ export const memoryUseMetadata = (input: {
   profileCategories: input.profileCategories ?? [],
   chatSummaryIds: input.chatSummaryIds ?? [],
   chatTurnIds: input.chatTurnIds ?? [],
+  summarySectionIds: input.summarySectionIds ?? [],
+  sources: input.sources ?? [],
   memoryIntent: input.memoryIntent,
 });
 
@@ -653,10 +935,19 @@ export function lexicalMemoryRank(query: string, memories: MemorySearchResult[],
     .map((memory) => {
       const haystack = `${memory.category} ${memory.content} ${(memory.tags ?? []).join(" ")}`.toLowerCase();
       const overlap = [...terms].filter((term) => haystack.includes(term)).length;
-      const score = overlap * 10 + memory.salience + (memory.kind === "explicit" ? 25 : 0);
+      const sourceBoost = memory.sourceType === "manual" || memory.kind === "explicit" ? 25 : 0;
+      const pinnedBoost = memory.pinned ? 25 : 0;
+      const stalePenalty = memory.freshnessStatus === "stale" ? 20 : 0;
+      const score = overlap * 10 + memory.salience + sourceBoost + pinnedBoost - stalePenalty;
       return { ...memory, similarity: overlap ? score / 100 : undefined };
     })
-    .filter((memory) => memory.similarity !== undefined)
+    .filter(
+      (memory) =>
+        memory.similarity !== undefined &&
+        !memory.doNotMention &&
+        memory.status === "active" &&
+        memory.freshnessStatus !== "expired",
+    )
     .sort((a, b) => (b.similarity ?? 0) - (a.similarity ?? 0))
     .slice(0, limit);
 }
@@ -691,4 +982,11 @@ function lexicalTerms(query: string) {
         .filter((term) => term.length > 2 && !stopWords.has(term)),
     ),
   ];
+}
+
+function sourceTypeFromKindAndTags(kind: string, tags: string[]) {
+  if (tags.includes("manual")) return "manual";
+  if (tags.includes("prior_chat") || tags.includes("chat_history")) return "prior_chat";
+  if (kind === "explicit") return "explicit";
+  return "auto";
 }

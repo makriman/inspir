@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
-import { buildMemoryEmbedding, compileUserMemoryProfile, displayMemoryContent, isUsefulMemoryContent } from "@/lib/ai/memory";
+import {
+  buildMemoryEmbedding,
+  compileUserMemoryProfile,
+  displayMemoryContent,
+  isUsefulMemoryContent,
+  synthesizeUserMemory,
+} from "@/lib/ai/memory";
 import {
   clearUserMemories,
   createUserMemory,
@@ -15,7 +21,12 @@ export const dynamic = "force-dynamic";
 
 const memorySettingsSchema = z.object({
   enabled: z.boolean().optional(),
+  savedMemoryEnabled: z.boolean().optional(),
+  chatHistoryEnabled: z.boolean().optional(),
+  dreamingEnabled: z.boolean().optional(),
   noticeSeen: z.boolean().optional(),
+  refreshSummary: z.boolean().optional(),
+  correction: z.string().trim().min(5).max(800).optional(),
 });
 
 const memoryCreateSchema = z.object({
@@ -50,6 +61,8 @@ function createManualMemoryAndLoadDashboard(input: ManualMemoryInput) {
         tags: ["manual"],
         confidence: 100,
         salience: 95,
+        sourceType: "manual",
+        pinned: true,
         embedding,
       }),
     )
@@ -95,8 +108,29 @@ export async function PATCH(request: NextRequest) {
 
   await updateUserMemorySettings(session.user.id, {
     enabled: parsed.data.enabled,
+    savedMemoryEnabled: parsed.data.savedMemoryEnabled,
+    chatHistoryEnabled: parsed.data.chatHistoryEnabled,
+    dreamingEnabled: parsed.data.dreamingEnabled,
     noticeSeenAt: parsed.data.noticeSeen ? new Date() : undefined,
   });
+  if (parsed.data.correction) {
+    const embedding = await buildMemoryEmbedding(parsed.data.correction);
+    await createUserMemory({
+      userId: session.user.id,
+      kind: "explicit",
+      category: "general",
+      content: parsed.data.correction,
+      tags: ["manual", "correction"],
+      confidence: 100,
+      salience: 95,
+      sourceType: "manual",
+      pinned: true,
+      embedding,
+    });
+  }
+  if (parsed.data.refreshSummary || parsed.data.correction) {
+    await synthesizeUserMemory(session.user.id, parsed.data.correction ? "user_correction" : "manual_refresh");
+  }
   const dashboard = await getMemoryDashboard(session.user.id);
   return NextResponse.json(serializeDashboard(dashboard));
 }
@@ -115,6 +149,7 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
 
   for (const memory of dashboard.memories) {
     if (!isUsefulMemoryContent(memory.content)) continue;
+    if (memory.doNotMention && memory.sourceType === "prior_chat") continue;
 
     const tags = memory.tags ?? [];
     memories.push({
@@ -123,10 +158,14 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
       category: memory.category,
       content: memory.content,
       displayContent: displayMemoryContent(memory.content),
-      sourceLabel: memorySourceLabel(memory.kind, tags),
+      sourceLabel: memorySourceLabel(memory.kind, tags, memory.sourceType),
       tags,
       confidence: memory.confidence,
       salience: memory.salience,
+      sourceType: memory.sourceType,
+      freshnessStatus: memory.freshnessStatus,
+      pinned: memory.pinned,
+      doNotMention: memory.doNotMention,
       createdAt: memory.createdAt,
       updatedAt: memory.updatedAt,
     });
@@ -134,6 +173,14 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
 
   return {
     settings: serializeMemorySettings(dashboard.settings),
+    summary: dashboard.summary
+      ? {
+          summary: dashboard.summary.summary,
+          sections: dashboard.summary.sections ?? [],
+          lastSynthesizedAt: dashboard.summary.lastSynthesizedAt,
+          updatedAt: dashboard.summary.updatedAt,
+        }
+      : null,
     profiles: dashboard.profiles.map((profile) => ({
       category: profile.category,
       summary: profile.summary,
@@ -143,10 +190,11 @@ function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashbo
   };
 }
 
-function memorySourceLabel(kind: string, tags: string[]) {
+function memorySourceLabel(kind: string, tags: string[], sourceType?: string) {
   const tagSet = new Set(tags);
-  if (tagSet.has("manual")) return "Added manually";
-  if (tagSet.has("prior_chat")) return "From previous chat";
+  if (sourceType === "manual" || tagSet.has("manual")) return "Added manually";
+  if (sourceType === "prior_chat" || tagSet.has("prior_chat")) return "From previous chat";
+  if (sourceType === "synthesized") return "Synthesized from chats";
   if (kind === "explicit") return "Remembered from chat";
   return "Learned from chats";
 }

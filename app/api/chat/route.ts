@@ -86,9 +86,11 @@ export async function POST(request: NextRequest) {
     gateReason: memoryRetrieval.gateReason,
     status: memoryRetrieval.status,
     memories: memoryRetrieval.memories,
+    summarySections: memoryRetrieval.summarySections,
     profiles: memoryRetrieval.profiles,
     chatSummaries: memoryRetrieval.chatSummaries,
     priorChatTurns: memoryRetrieval.priorChatTurns,
+    sources: memoryRetrieval.sources,
   };
   const assembled = buildModelMessages(topic, context, preferredLanguage, { learnerAge, memoryContext });
   const model = resolveModelForTopic(topic);
@@ -209,13 +211,16 @@ async function safeRetrieveMemory(input: Parameters<typeof retrieveRelevantMemor
       used: false,
       gateReason: "Memory retrieval failed; answered without long-term memory.",
       memories: [],
+      summarySections: [],
       profiles: [],
       chatSummaries: [],
       priorChatTurns: [],
+      sources: [],
       memoryIds: [],
       profileCategories: [],
       chatSummaryIds: [],
       chatTurnIds: [],
+      summarySectionIds: [],
     };
   }
 }

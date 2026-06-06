@@ -196,6 +196,9 @@ export const userMemorySettings = pgTable("user_memory_settings", {
     .primaryKey()
     .references(() => users.id, { onDelete: "cascade" }),
   enabled: boolean("enabled").notNull().default(true),
+  savedMemoryEnabled: boolean("saved_memory_enabled").notNull().default(true),
+  chatHistoryEnabled: boolean("chat_history_enabled").notNull().default(true),
+  dreamingEnabled: boolean("dreaming_enabled").notNull().default(true),
   captureScope: text("capture_scope").notNull().default("broad"),
   retrievalMode: text("retrieval_mode").notNull().default("need_based"),
   noticeSeenAt: timestamp("notice_seen_at", { withTimezone: true }),
@@ -217,10 +220,18 @@ export const userMemories = pgTable(
     confidence: integer("confidence").notNull().default(70),
     salience: integer("salience").notNull().default(50),
     status: text("status").notNull().default("active"),
+    sourceType: text("source_type").notNull().default("auto"),
+    sourceTurnIds: jsonb("source_turn_ids").$type<string[]>().default([]).notNull(),
+    sourceMemoryIds: jsonb("source_memory_ids").$type<string[]>().default([]).notNull(),
     sourceChatId: uuid("source_chat_id").references(() => chats.id, { onDelete: "set null" }),
     sourceMessageId: uuid("source_message_id").references(() => messages.id, { onDelete: "set null" }),
     supersededByMemoryId: uuid("superseded_by_memory_id"),
     embedding: vector("embedding", { dimensions: 512 }),
+    validFrom: timestamp("valid_from", { withTimezone: true }),
+    validUntil: timestamp("valid_until", { withTimezone: true }),
+    freshnessStatus: text("freshness_status").notNull().default("current"),
+    pinned: boolean("pinned").notNull().default(false),
+    doNotMention: boolean("do_not_mention").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
     lastUsedAt: timestamp("last_used_at", { withTimezone: true }),
@@ -230,6 +241,9 @@ export const userMemories = pgTable(
     userStatusIdx: index("user_memories_user_status_idx").on(table.userId, table.status),
     categoryIdx: index("user_memories_category_idx").on(table.category),
     sourceChatIdx: index("user_memories_source_chat_idx").on(table.sourceChatId),
+    sourceTypeIdx: index("user_memories_source_type_idx").on(table.sourceType),
+    freshnessIdx: index("user_memories_freshness_idx").on(table.freshnessStatus),
+    doNotMentionIdx: index("user_memories_do_not_mention_idx").on(table.doNotMention),
   }),
 );
 
@@ -308,6 +322,77 @@ export const userMemoryProfiles = pgTable(
   }),
 );
 
+export const userMemorySummaries = pgTable("user_memory_summaries", {
+  userId: uuid("user_id")
+    .primaryKey()
+    .references(() => users.id, { onDelete: "cascade" }),
+  summary: text("summary").notNull().default(""),
+  sections: jsonb("sections")
+    .$type<
+      Array<{
+        id: string;
+        title: string;
+        category: string;
+        summary: string;
+        sourceMemoryIds?: string[];
+        sourceTurnIds?: string[];
+        doNotMention?: boolean;
+      }>
+    >()
+    .default([])
+    .notNull(),
+  sourceMemoryIds: jsonb("source_memory_ids").$type<string[]>().default([]).notNull(),
+  sourceTurnIds: jsonb("source_turn_ids").$type<string[]>().default([]).notNull(),
+  version: integer("version").notNull().default(1),
+  lastSynthesizedAt: timestamp("last_synthesized_at", { withTimezone: true }).defaultNow().notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const memorySynthesisRuns = pgTable(
+  "memory_synthesis_runs",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    reason: text("reason").notNull(),
+    status: text("status").notNull().default("started"),
+    inputCounts: jsonb("input_counts").$type<Record<string, unknown>>().default({}).notNull(),
+    outputCounts: jsonb("output_counts").$type<Record<string, unknown>>().default({}).notNull(),
+    error: text("error"),
+    startedAt: timestamp("started_at", { withTimezone: true }).defaultNow().notNull(),
+    finishedAt: timestamp("finished_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => ({
+    userStatusIdx: index("memory_synthesis_runs_user_status_idx").on(table.userId, table.status),
+    startedIdx: index("memory_synthesis_runs_started_idx").on(table.startedAt),
+  }),
+);
+
+export const memorySourceFeedback = pgTable(
+  "memory_source_feedback",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    aiRunId: uuid("ai_run_id").references(() => aiRuns.id, { onDelete: "set null" }),
+    memoryId: uuid("memory_id").references(() => userMemories.id, { onDelete: "set null" }),
+    chatTurnId: uuid("chat_turn_id").references(() => chatMemoryTurns.id, { onDelete: "set null" }),
+    summarySectionId: text("summary_section_id"),
+    action: text("action").notNull(),
+    note: text("note"),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => ({
+    userIdx: index("memory_source_feedback_user_idx").on(table.userId, table.createdAt),
+    memoryIdx: index("memory_source_feedback_memory_idx").on(table.memoryId),
+    turnIdx: index("memory_source_feedback_turn_idx").on(table.chatTurnId),
+  }),
+);
+
 export const memoryEvents = pgTable(
   "memory_events",
   {
@@ -378,4 +463,7 @@ export type UserMemory = typeof userMemories.$inferSelect;
 export type ChatMemorySummary = typeof chatMemorySummaries.$inferSelect;
 export type ChatMemoryTurn = typeof chatMemoryTurns.$inferSelect;
 export type UserMemoryProfile = typeof userMemoryProfiles.$inferSelect;
+export type UserMemorySummary = typeof userMemorySummaries.$inferSelect;
+export type MemorySynthesisRun = typeof memorySynthesisRuns.$inferSelect;
+export type MemorySourceFeedback = typeof memorySourceFeedback.$inferSelect;
 export type MemoryEvent = typeof memoryEvents.$inferSelect;

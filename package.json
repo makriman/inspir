@@ -24,6 +24,7 @@
     "db:migrate": "drizzle-kit migrate",
     "memory:backfill": "tsx scripts/backfill-memory.ts",
     "memory:materialize": "tsx scripts/materialize-chat-memory.ts",
+    "memory:synthesize": "tsx scripts/synthesize-memory.ts",
     "translations:warm": "tsx scripts/warm-main-app-translations.ts",
     "import:bubble": "tsx scripts/import-bubble.ts --mode=best-effort",
     "validate:import": "tsx scripts/validate-import.ts"

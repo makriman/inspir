@@ -33,6 +33,8 @@ import {
   Compass,
   Copy,
   Coins,
+  Eye,
+  EyeOff,
   FileText,
   Gauge,
   Gavel,
@@ -182,6 +184,9 @@ type ActivityRun = {
 
 type MemorySettings = {
   enabled: boolean;
+  savedMemoryEnabled: boolean;
+  chatHistoryEnabled: boolean;
+  dreamingEnabled: boolean;
   captureScope: string;
   retrievalMode: string;
   noticeSeenAt: string | Date | null;
@@ -197,7 +202,28 @@ type MemoryItem = {
   tags: string[];
   confidence: number;
   salience: number;
+  sourceType?: string;
+  freshnessStatus?: string;
+  pinned?: boolean;
+  doNotMention?: boolean;
   createdAt: string | Date;
+  updatedAt: string | Date;
+};
+
+type MemorySummarySection = {
+  id: string;
+  title: string;
+  category: string;
+  summary: string;
+  sourceMemoryIds?: string[];
+  sourceTurnIds?: string[];
+  doNotMention?: boolean;
+};
+
+type MemorySummary = {
+  summary: string;
+  sections: MemorySummarySection[];
+  lastSynthesizedAt: string | Date;
   updatedAt: string | Date;
 };
 
@@ -209,8 +235,20 @@ type MemoryProfile = {
 
 type MemoryDashboard = {
   settings: MemorySettings;
+  summary: MemorySummary | null;
   memories: MemoryItem[];
   profiles: MemoryProfile[];
+};
+
+type MessageMemorySource = {
+  type: "memory" | "summary" | "past_chat";
+  id: string;
+  label: string;
+  excerpt: string;
+  reason?: string;
+  memoryId?: string;
+  chatTurnId?: string;
+  summarySectionId?: string;
 };
 
 class StaleChatRequestError extends Error {
@@ -564,6 +602,7 @@ type ChatClientState = {
   memoryLoading: boolean;
   memorySaving: boolean;
   memoryError: string | null;
+  memorySourceModal: { messageId: string; sources: MessageMemorySource[] } | null;
 };
 
 function chatClientStateReducer(state: ChatClientState, nextState: MergeStateAction<ChatClientState>) {
@@ -627,6 +666,7 @@ function useChatClientController({
       memoryLoading,
       memorySaving,
       memoryError,
+      memorySourceModal,
     },
     updateChatState,
   ] = useReducer(chatClientStateReducer, {
@@ -656,6 +696,7 @@ function useChatClientController({
     memoryLoading: false,
     memorySaving: false,
     memoryError: null,
+    memorySourceModal: null,
   } satisfies ChatClientState);
 
   function updateChatField<Key extends keyof ChatClientState>(
@@ -710,6 +751,8 @@ function useChatClientController({
     updateChatField("memorySaving", value);
   const setMemoryError = (value: SetStateAction<ChatClientState["memoryError"]>) =>
     updateChatField("memoryError", value);
+  const setMemorySourceModal = (value: SetStateAction<ChatClientState["memorySourceModal"]>) =>
+    updateChatField("memorySourceModal", value);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const translationRootRef = useRef<HTMLDivElement>(null);
@@ -1164,7 +1207,15 @@ function useChatClientController({
     }
   }
 
-  async function patchMemorySettings(input: { enabled?: boolean; noticeSeen?: boolean }) {
+  async function patchMemorySettings(input: {
+    enabled?: boolean;
+    savedMemoryEnabled?: boolean;
+    chatHistoryEnabled?: boolean;
+    dreamingEnabled?: boolean;
+    noticeSeen?: boolean;
+    refreshSummary?: boolean;
+    correction?: string;
+  }) {
     if (isGuest) return;
     setMemorySaving(true);
     setMemoryError(null);
@@ -1204,7 +1255,10 @@ function useChatClientController({
     }
   }
 
-  async function updateMemoryItem(memoryId: string, input: { content?: string; category?: string; tags?: string[] }) {
+  async function updateMemoryItem(
+    memoryId: string,
+    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
+  ) {
     if (isGuest) return;
     setMemorySaving(true);
     setMemoryError(null);
@@ -1254,6 +1308,28 @@ function useChatClientController({
     }
   }
 
+  async function submitMemorySourceFeedback(source: MessageMemorySource, action: "relevant" | "not_relevant" | "dont_mention") {
+    if (isGuest) return;
+    const aiRunId = memorySourceModal ? findAiRunIdForMessage(messages, memorySourceModal.messageId) : undefined;
+    try {
+      const response = await fetch("/api/memory/source-feedback", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          aiRunId,
+          memoryId: source.memoryId,
+          chatTurnId: source.chatTurnId,
+          summarySectionId: source.summarySectionId,
+          action,
+        }),
+      });
+      if (!response.ok) throw new Error("Could not save source feedback");
+      if (action !== "relevant") await loadMemoryDashboard();
+    } catch {
+      setMemoryError("Could not update that memory source.");
+    }
+  }
+
   const avatarSrc = profileUser.profileImageHash
     ? `/api/me/photo?hash=${profileUser.profileImageHash}`
     : profileUser.image || undefined;
@@ -1291,6 +1367,7 @@ function useChatClientController({
     memoryError,
     memoryLoading,
     memorySaving,
+    memorySourceModal,
     metadata,
     miniAppMode,
     mobileSidebarOpen,
@@ -1314,6 +1391,7 @@ function useChatClientController({
     setGuestPromptOpen,
     setInput,
     setMobileSidebarOpen,
+    setMemorySourceModal,
     setProfileOpen,
     setProfileUser,
     setRecentOpen,
@@ -1321,6 +1399,7 @@ function useChatClientController({
     setStoreOpen,
     stopGeneration,
     storeOpen,
+    submitMemorySourceFeedback,
     submitMessage,
     translationBundle,
     translationRootRef,
@@ -1584,6 +1663,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
     sendMessage,
     sending,
     setInput,
+    setMemorySourceModal,
     stopGeneration,
     submitMessage,
     userDisplayName,
@@ -1599,7 +1679,12 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
         ) : null}
         <div className="bubble-message-stack">
           {visibleChatMessages.map((message) => (
-            <MessageBubble key={message.id} message={message} userLabel={userDisplayName} />
+            <MessageBubble
+              key={message.id}
+              message={message}
+              userLabel={userDisplayName}
+              onMemorySources={(sources) => setMemorySourceModal({ messageId: message.id, sources })}
+            />
           ))}
           {awaitingResponse ? (
             <div className="bubble-thinking" aria-live="polite">
@@ -1657,14 +1742,17 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
     memoryError,
     memoryLoading,
     memorySaving,
+    memorySourceModal,
     openFirstTopicWithMode,
     patchMemorySettings,
     profileOpen,
     profileUser,
     setAgePromptOpen,
     setGuestPromptOpen,
+    setMemorySourceModal,
     setProfileOpen,
     setProfileUser,
+    submitMemorySourceFeedback,
     updateMemoryItem,
     updatePreferredLanguage,
   } = controller;
@@ -1709,6 +1797,13 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
             setProfileUser(updatedUser);
             setAgePromptOpen(false);
           }}
+        />
+      ) : null}
+      {memorySourceModal ? (
+        <MemorySourcesModal
+          sources={memorySourceModal.sources}
+          onClose={() => setMemorySourceModal(null)}
+          onFeedback={(source, action) => void submitMemorySourceFeedback(source, action)}
         />
       ) : null}
     </>
@@ -5192,12 +5287,15 @@ function MessageBubble({
   message,
   userLabel = "Learner",
   assistantLabel = "Coach response",
+  onMemorySources,
 }: {
   message: Message;
   userLabel?: string;
   assistantLabel?: string;
+  onMemorySources?: (sources: MessageMemorySource[]) => void;
 }) {
   const isUser = message.role === "user";
+  const memorySources = getMessageMemorySources(message);
   const [copied, setCopied] = useState(false);
 
   async function copyMessage() {
@@ -5216,6 +5314,16 @@ function MessageBubble({
         <RichMessageContent content={message.content} />
         <footer>
           <time>{formatBubbleDate(message.createdAt)}</time>
+          {!isUser && memorySources.length > 0 && onMemorySources ? (
+            <button
+              type="button"
+              onClick={() => onMemorySources(memorySources)}
+              aria-label="Show memory sources"
+              className="bubble-memory-source-button"
+            >
+              <StickyNote size={14} />
+            </button>
+          ) : null}
           <button type="button" onClick={copyMessage} aria-label="Copy message">
             {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
           </button>
@@ -5246,6 +5354,54 @@ function RichMessageContent({ content }: { content: string }) {
       >
         {normalizeAssistantMarkdown(content)}
       </ReactMarkdown>
+    </div>
+  );
+}
+
+function MemorySourcesModal({
+  sources,
+  onClose,
+  onFeedback,
+}: {
+  sources: MessageMemorySource[];
+  onClose: () => void;
+  onFeedback: (source: MessageMemorySource, action: "relevant" | "not_relevant" | "dont_mention") => void;
+}) {
+  return (
+    <div className="bubble-modal-backdrop" role="presentation">
+      <section className="bubble-memory-source-modal" role="dialog" aria-modal="true" aria-label="Memory sources">
+        <header>
+          <div>
+            <strong>Memory sources</strong>
+            <span>{sources.length} used for this reply</span>
+          </div>
+          <button type="button" onClick={onClose} aria-label="Close memory sources">
+            <X size={20} />
+          </button>
+        </header>
+        <div className="bubble-memory-source-list app-scrollbar">
+          {sources.map((source) => (
+            <article key={source.id} className="bubble-memory-source-card">
+              <div>
+                <strong>{source.label}</strong>
+                {source.reason ? <span>{source.reason}</span> : null}
+              </div>
+              <p>{source.excerpt}</p>
+              <div className="bubble-memory-source-actions">
+                <button type="button" onClick={() => onFeedback(source, "relevant")} aria-label="Mark source relevant">
+                  <Check size={15} />
+                </button>
+                <button type="button" onClick={() => onFeedback(source, "not_relevant")} aria-label="Mark source not relevant">
+                  <XCircle size={15} />
+                </button>
+                <button type="button" onClick={() => onFeedback(source, "dont_mention")} aria-label="Do not mention this source">
+                  <EyeOff size={15} />
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
@@ -6009,9 +6165,20 @@ function ProfilePanel({
   memorySaving: boolean;
   memoryError: string | null;
   onLanguageChange: (language: string) => void;
-  onMemorySettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onMemorySettings: (input: {
+    enabled?: boolean;
+    savedMemoryEnabled?: boolean;
+    chatHistoryEnabled?: boolean;
+    dreamingEnabled?: boolean;
+    noticeSeen?: boolean;
+    refreshSummary?: boolean;
+    correction?: string;
+  }) => void;
   onMemoryCreate: (input: { content: string; category?: string }) => void;
-  onMemoryUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onMemoryUpdate: (
+    memoryId: string,
+    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
+  ) => void;
   onMemoryDelete: (memoryId: string) => void;
   onMemoryClear: () => void;
   onClose: () => void;
@@ -6102,6 +6269,40 @@ function ProfilePanel({
   );
 }
 
+function getMessageMemorySources(message: Message): MessageMemorySource[] {
+  const sources = message.metadata?.memorySources;
+  if (!Array.isArray(sources)) return [];
+  const parsed: MessageMemorySource[] = [];
+  for (const source of sources) {
+    if (!source || typeof source !== "object") continue;
+    const record = source as Record<string, unknown>;
+    if (typeof record.id !== "string" || typeof record.label !== "string" || typeof record.excerpt !== "string") {
+      continue;
+    }
+    const type =
+      record.type === "memory" || record.type === "summary" || record.type === "past_chat"
+        ? record.type
+        : "memory";
+    parsed.push({
+      type,
+      id: record.id,
+      label: record.label,
+      excerpt: record.excerpt,
+      reason: typeof record.reason === "string" ? record.reason : undefined,
+      memoryId: typeof record.memoryId === "string" ? record.memoryId : undefined,
+      chatTurnId: typeof record.chatTurnId === "string" ? record.chatTurnId : undefined,
+      summarySectionId: typeof record.summarySectionId === "string" ? record.summarySectionId : undefined,
+    });
+  }
+  return parsed;
+}
+
+function findAiRunIdForMessage(messages: Message[], messageId: string) {
+  const message = messages.find((item) => item.id === messageId);
+  const aiRunId = message?.metadata?.aiRunId;
+  return typeof aiRunId === "string" ? aiRunId : undefined;
+}
+
 function MemoryPanel({
   dashboard,
   loading,
@@ -6117,18 +6318,34 @@ function MemoryPanel({
   loading: boolean;
   saving: boolean;
   error: string | null;
-  onSettings: (input: { enabled?: boolean; noticeSeen?: boolean }) => void;
+  onSettings: (input: {
+    enabled?: boolean;
+    savedMemoryEnabled?: boolean;
+    chatHistoryEnabled?: boolean;
+    dreamingEnabled?: boolean;
+    noticeSeen?: boolean;
+    refreshSummary?: boolean;
+    correction?: string;
+  }) => void;
   onCreate: (input: { content: string; category?: string }) => void;
-  onUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onUpdate: (
+    memoryId: string,
+    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
+  ) => void;
   onDelete: (memoryId: string) => void;
   onClear: () => void;
 }) {
   const settings = dashboard?.settings;
   const enabled = settings?.enabled ?? true;
+  const savedMemoryEnabled = settings?.savedMemoryEnabled ?? true;
+  const chatHistoryEnabled = settings?.chatHistoryEnabled ?? true;
+  const dreamingEnabled = settings?.dreamingEnabled ?? true;
   const grouped = useMemo(() => groupMemoriesByCategory(dashboard?.memories ?? []), [dashboard?.memories]);
+  const memoryControlsDisabled = saving || !enabled || !savedMemoryEnabled;
   const [adding, setAdding] = useState(false);
   const [newMemory, setNewMemory] = useState("");
   const [newCategory, setNewCategory] = useState("preferences");
+  const [correction, setCorrection] = useState("");
 
   function addMemory() {
     const content = newMemory.trim();
@@ -6137,6 +6354,25 @@ function MemoryPanel({
     setNewMemory("");
     setNewCategory("preferences");
     setAdding(false);
+  }
+
+  function saveCorrection() {
+    const content = correction.trim();
+    if (!content) return;
+    onSettings({ correction: content });
+    setCorrection("");
+  }
+
+  async function muteSummarySection(section: MemorySummarySection) {
+    await fetch("/api/memory/source-feedback", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        summarySectionId: section.id,
+        action: "dont_mention",
+      }),
+    }).catch(() => undefined);
+    onSettings({ refreshSummary: true });
   }
 
   return (
@@ -6151,10 +6387,10 @@ function MemoryPanel({
         </div>
       </div>
 
-      <div className="bubble-memory-status-row">
+      <div className="bubble-memory-status-row bubble-memory-master-row">
         <div>
           <strong>{enabled ? "Memory is on" : "Memory is off"}</strong>
-          <span>{enabled ? "Inspir can use saved memories when relevant." : "Inspir will not save or use memories."}</span>
+          <span>{enabled ? "Used only when it helps." : "Nothing is saved or used."}</span>
         </div>
         <button
           type="button"
@@ -6171,6 +6407,29 @@ function MemoryPanel({
         </button>
       </div>
 
+      {enabled ? (
+        <div className="bubble-memory-setting-list">
+          <MemoryMiniToggle
+            label="Saved memory"
+            checked={savedMemoryEnabled}
+            disabled={saving || loading}
+            onChange={(checked) => onSettings({ savedMemoryEnabled: checked })}
+          />
+          <MemoryMiniToggle
+            label="Past chats"
+            checked={chatHistoryEnabled}
+            disabled={saving || loading || !savedMemoryEnabled}
+            onChange={(checked) => onSettings({ chatHistoryEnabled: checked })}
+          />
+          <MemoryMiniToggle
+            label="Synthesis"
+            checked={dreamingEnabled}
+            disabled={saving || loading || !savedMemoryEnabled}
+            onChange={(checked) => onSettings({ dreamingEnabled: checked })}
+          />
+        </div>
+      ) : null}
+
       {loading ? <p className="bubble-memory-muted">Loading memory…</p> : null}
       {error ? <p className="bubble-memory-error">{error}</p> : null}
 
@@ -6186,12 +6445,22 @@ function MemoryPanel({
 
       {dashboard ? (
         <>
+          <MemorySummaryCard
+            summary={dashboard.summary}
+            saving={memoryControlsDisabled}
+            correction={correction}
+            onCorrection={setCorrection}
+            onSaveCorrection={saveCorrection}
+            onRefresh={() => onSettings({ refreshSummary: true })}
+            onMuteSection={(section) => void muteSummarySection(section)}
+          />
+
           <div className="bubble-memory-summary">
             <span>
               {dashboard.memories.length} saved {dashboard.memories.length === 1 ? "memory" : "memories"}
             </span>
             <div className="bubble-memory-summary-actions">
-              <button type="button" disabled={saving || !enabled} onClick={() => setAdding((current) => !current)}>
+              <button type="button" disabled={memoryControlsDisabled} onClick={() => setAdding((current) => !current)}>
                 <Plus size={15} />
                 <span>Add</span>
               </button>
@@ -6210,13 +6479,13 @@ function MemoryPanel({
                 placeholder="Example: Puttu Kadala is my favourite food."
                 rows={3}
                 maxLength={600}
-                disabled={saving || !enabled}
+                disabled={memoryControlsDisabled}
               />
               <div className="bubble-memory-add-actions">
                 <select
                   aria-label="Memory category"
                   value={newCategory}
-                  disabled={saving || !enabled}
+                  disabled={memoryControlsDisabled}
                   onChange={(event) => setNewCategory(event.target.value)}
                 >
                   {memoryCategoryOptions.map((option) => (
@@ -6225,7 +6494,7 @@ function MemoryPanel({
                     </option>
                   ))}
                 </select>
-                <button type="button" disabled={saving || !enabled || !newMemory.trim()} onClick={addMemory}>
+                <button type="button" disabled={memoryControlsDisabled || !newMemory.trim()} onClick={addMemory}>
                   Save
                 </button>
                 <button
@@ -6269,6 +6538,102 @@ function MemoryPanel({
   );
 }
 
+function MemoryMiniToggle({
+  label,
+  checked,
+  disabled,
+  onChange,
+}: {
+  label: string;
+  checked: boolean;
+  disabled?: boolean;
+  onChange: (checked: boolean) => void;
+}) {
+  return (
+    <button
+      type="button"
+      className={`bubble-memory-mini-toggle ${checked ? "is-on" : ""}`}
+      aria-pressed={checked}
+      disabled={disabled}
+      onClick={() => onChange(!checked)}
+    >
+      <span>{label}</span>
+      <span className="bubble-memory-mini-switch" />
+    </button>
+  );
+}
+
+function MemorySummaryCard({
+  summary,
+  saving,
+  correction,
+  onCorrection,
+  onSaveCorrection,
+  onRefresh,
+  onMuteSection,
+}: {
+  summary: MemorySummary | null;
+  saving: boolean;
+  correction: string;
+  onCorrection: (value: string) => void;
+  onSaveCorrection: () => void;
+  onRefresh: () => void;
+  onMuteSection: (section: MemorySummarySection) => void;
+}) {
+  const sections = summary?.sections?.filter((section) => !section.doNotMention) ?? [];
+  return (
+    <div className="bubble-memory-summary-card">
+      <div className="bubble-memory-summary-card-head">
+        <div>
+          <strong>Memory summary</strong>
+          <span>{summary?.lastSynthesizedAt ? `Updated ${formatBubbleDate(summary.lastSynthesizedAt)}` : "No summary yet"}</span>
+        </div>
+        <button type="button" disabled={saving} onClick={onRefresh} aria-label="Refresh memory summary">
+          <RefreshCw size={15} />
+        </button>
+      </div>
+
+      {sections.length ? (
+        <div className="bubble-memory-summary-sections">
+          {sections.map((section) => (
+            <article key={section.id} className="bubble-memory-summary-section">
+              <div>
+                <strong>{section.title || memoryCategoryLabel(section.category)}</strong>
+                <p>{section.summary}</p>
+              </div>
+              <button
+                type="button"
+                disabled={saving}
+                onClick={() => onMuteSection(section)}
+                aria-label={`Don't mention ${section.title}`}
+              >
+                <XCircle size={15} />
+              </button>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p className="bubble-memory-muted">No summary yet.</p>
+      )}
+
+      <div className="bubble-memory-correction">
+        <textarea
+          aria-label="Correct memory"
+          value={correction}
+          onChange={(event) => onCorrection(event.target.value)}
+          placeholder="Correct or add what Inspir should remember."
+          rows={2}
+          maxLength={800}
+          disabled={saving}
+        />
+        <button type="button" disabled={saving || !correction.trim()} onClick={onSaveCorrection}>
+          Save
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function MemoryItemEditor({
   memory,
   saving,
@@ -6277,39 +6642,65 @@ function MemoryItemEditor({
 }: {
   memory: MemoryItem;
   saving: boolean;
-  onUpdate: (memoryId: string, input: { content?: string; category?: string; tags?: string[] }) => void;
+  onUpdate: (
+    memoryId: string,
+    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
+  ) => void;
   onDelete: (memoryId: string) => void;
 }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState("");
+  const [draftCategory, setDraftCategory] = useState(memory.category || "general");
 
   function save() {
     const next = draft.trim();
-    if (!next || next === memory.content || next === memory.displayContent) {
+    const categoryChanged = draftCategory !== memory.category;
+    const contentChanged = next && next !== memory.content && next !== memory.displayContent;
+    if (!contentChanged && !categoryChanged) {
       setEditing(false);
       setDraft(editableMemoryText(memory));
+      setDraftCategory(memory.category || "general");
       return;
     }
-    onUpdate(memory.id, { content: next });
+    onUpdate(memory.id, {
+      ...(contentChanged ? { content: next } : {}),
+      ...(categoryChanged ? { category: draftCategory } : {}),
+    });
     setEditing(false);
   }
 
   return (
     <article className="bubble-memory-item">
       {editing ? (
-        <textarea
-          aria-label="Edit saved memory"
-          value={draft}
-          onChange={(event) => setDraft(event.target.value)}
-          className="bubble-memory-edit"
-          rows={3}
-          maxLength={600}
-        />
+        <>
+          <textarea
+            aria-label="Edit saved memory"
+            value={draft}
+            onChange={(event) => setDraft(event.target.value)}
+            className="bubble-memory-edit"
+            rows={3}
+            maxLength={600}
+          />
+          <select
+            aria-label="Memory category"
+            value={draftCategory}
+            disabled={saving}
+            className="bubble-memory-edit-category"
+            onChange={(event) => setDraftCategory(event.target.value)}
+          >
+            {memoryCategoryOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </>
       ) : (
-        <p>{memory.displayContent ?? memory.content}</p>
+        <p className={memory.doNotMention ? "is-muted-memory" : undefined}>{memory.displayContent ?? memory.content}</p>
       )}
       <div className="bubble-memory-item-meta">
         <span>{memory.sourceLabel ?? (memory.kind === "explicit" ? "Remembered from chat" : "Learned from chats")}</span>
+        {memory.doNotMention ? <span>Muted</span> : null}
       </div>
       <div className="bubble-memory-actions">
         {editing ? (
@@ -6323,6 +6714,7 @@ function MemoryItemEditor({
               onClick={() => {
                 setEditing(false);
                 setDraft(editableMemoryText(memory));
+                setDraftCategory(memory.category || "general");
               }}
               aria-label="Cancel memory edit"
             >
@@ -6336,11 +6728,20 @@ function MemoryItemEditor({
               disabled={saving}
               onClick={() => {
                 setDraft(editableMemoryText(memory));
+                setDraftCategory(memory.category || "general");
                 setEditing(true);
               }}
               aria-label="Edit memory"
             >
               <PencilLine size={16} />
+            </button>
+            <button
+              type="button"
+              disabled={saving}
+              onClick={() => onUpdate(memory.id, { doNotMention: !memory.doNotMention })}
+              aria-label={memory.doNotMention ? "Allow memory in answers" : "Do not mention memory"}
+            >
+              {memory.doNotMention ? <Eye size={16} /> : <EyeOff size={16} />}
             </button>
             <button type="button" disabled={saving} onClick={() => onDelete(memory.id)} aria-label="Delete memory">
               <XCircle size={16} />

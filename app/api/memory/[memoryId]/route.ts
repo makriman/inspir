@@ -11,6 +11,8 @@ const memoryUpdateSchema = z.object({
   content: z.string().trim().min(1).max(600).optional(),
   category: z.string().trim().min(1).max(60).optional(),
   tags: z.array(z.string().trim().min(1).max(32)).max(8).optional(),
+  pinned: z.boolean().optional(),
+  doNotMention: z.boolean().optional(),
 });
 
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ memoryId: string }> }) {
@@ -42,6 +44,9 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     ...(nextContent ? { content: nextContent, embedding: await buildMemoryEmbedding(nextContent), kind: "explicit" as const } : {}),
     ...(parsed.data.category ? { category: parsed.data.category } : {}),
     ...(nextTags ? { tags: nextTags } : {}),
+    ...(userEdited ? { sourceType: "manual", pinned: true } : {}),
+    ...(parsed.data.pinned !== undefined ? { pinned: parsed.data.pinned } : {}),
+    ...(parsed.data.doNotMention !== undefined ? { doNotMention: parsed.data.doNotMention } : {}),
     salience: 90,
   });
   if (!memory) return NextResponse.json({ error: "Memory not found" }, { status: 404 });
@@ -56,10 +61,14 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
       category: memory.category,
       content: memory.content,
       displayContent: displayMemoryContent(memory.content),
-      sourceLabel: memorySourceLabel(memory.kind, memory.tags ?? []),
+      sourceLabel: memorySourceLabel(memory.kind, memory.tags ?? [], memory.sourceType),
       tags: memory.tags,
       confidence: memory.confidence,
       salience: memory.salience,
+      sourceType: memory.sourceType,
+      freshnessStatus: memory.freshnessStatus,
+      pinned: memory.pinned,
+      doNotMention: memory.doNotMention,
       createdAt: memory.createdAt,
       updatedAt: memory.updatedAt,
     },
@@ -78,9 +87,10 @@ export async function DELETE(_request: NextRequest, { params }: { params: Promis
   return NextResponse.json({ ok: true });
 }
 
-function memorySourceLabel(kind: string, tags: string[]) {
-  if (tags.includes("manual")) return "Added manually";
-  if (tags.includes("prior_chat")) return "From previous chat";
+function memorySourceLabel(kind: string, tags: string[], sourceType?: string) {
+  if (sourceType === "manual" || tags.includes("manual")) return "Added manually";
+  if (sourceType === "prior_chat" || tags.includes("prior_chat")) return "From previous chat";
+  if (sourceType === "synthesized") return "Synthesized from chats";
   if (kind === "explicit") return "Remembered from chat";
   return "Learned from chats";
 }
