@@ -7,13 +7,13 @@ const explicitEnv = new Set(Object.keys(process.env));
 loadEnvFile(".env.local", explicitEnv);
 loadEnvFile(".env.vercel.production.local", explicitEnv);
 
-if (!process.env.OPENAI_TRANSLATION_MODEL?.trim()) {
-  process.env.OPENAI_TRANSLATION_MODEL =
-    process.env.OPENAI_FAST_MODEL?.trim() || process.env.OPENAI_MODEL?.trim() || "gpt-4.1-mini";
-}
-process.env.OPENAI_TRANSLATION_BATCH_SIZE ??= "48";
-process.env.OPENAI_TRANSLATION_CONCURRENCY ??= "4";
-process.env.OPENAI_TRANSLATION_MAX_RETRIES ??= "2";
+process.env.GEMINI_TRANSLATION_MODEL ??= process.env.GOOGLE_TRANSLATION_MODEL?.trim() || "gemini-3.1-flash-lite";
+process.env.TRANSLATION_BATCH_SIZE ??=
+  process.env.GEMINI_TRANSLATION_BATCH_SIZE?.trim() || process.env.OPENAI_TRANSLATION_BATCH_SIZE?.trim() || "48";
+process.env.TRANSLATION_CONCURRENCY ??=
+  process.env.GEMINI_TRANSLATION_CONCURRENCY?.trim() || process.env.OPENAI_TRANSLATION_CONCURRENCY?.trim() || "2";
+process.env.TRANSLATION_MAX_RETRIES ??=
+  process.env.GEMINI_TRANSLATION_MAX_RETRIES?.trim() || process.env.OPENAI_TRANSLATION_MAX_RETRIES?.trim() || "2";
 
 let sqlConnection: { end(options: { timeout: number }): Promise<void> } | undefined;
 let getTranslationResult:
@@ -26,32 +26,41 @@ let getTranslationResult:
       retryAfterMs?: number;
     }>)
   | undefined;
+let deleteTranslationCache: ((language: string) => Promise<void>) | undefined;
 type SupportedLanguage = string;
 
 async function main() {
   if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is required.");
-  if (!process.env.OPENAI_API_KEY) throw new Error("OPENAI_API_KEY is required.");
+  if (!translationApiKey()) throw new Error("GEMINI_API_KEY or GOOGLE_GENERATIVE_AI_API_KEY is required.");
 
   const { defaultLanguage, supportedLanguages } = await import("@/lib/content/languages");
+  const { mainAppTranslationNamespace } = await import("@/lib/i18n/main-app-source");
   const { getOrCreateMainAppTranslationResult } = await import("@/lib/i18n/main-app-translations");
+  const { deleteAppTranslation } = await import("@/lib/db/queries");
   const { sql } = await import("@/lib/db/client");
   sqlConnection = sql;
   getTranslationResult = getOrCreateMainAppTranslationResult;
+  deleteTranslationCache = (language: string) => deleteAppTranslation(mainAppTranslationNamespace, language);
 
-  const { languages, languageConcurrency } = parseArgs(process.argv.slice(2), {
+  const { languages, languageConcurrency, refresh } = parseArgs(process.argv.slice(2), {
     defaultLanguage,
     supportedLanguages,
   });
   const startedAt = Date.now();
+
+  if (refresh) {
+    await Promise.all(languages.map((language) => deleteTranslationCache?.(language)));
+  }
 
   console.log(
     JSON.stringify({
       event: "translation_warmup_start",
       languages,
       languageConcurrency,
-      model: process.env.OPENAI_TRANSLATION_MODEL,
-      batchSize: process.env.OPENAI_TRANSLATION_BATCH_SIZE,
-      fieldConcurrency: process.env.OPENAI_TRANSLATION_CONCURRENCY,
+      refresh,
+      model: process.env.GEMINI_TRANSLATION_MODEL,
+      batchSize: process.env.TRANSLATION_BATCH_SIZE,
+      fieldConcurrency: process.env.TRANSLATION_CONCURRENCY,
     }),
   );
 
@@ -139,6 +148,7 @@ function parseArgs(
 ) {
   const languages: string[] = [];
   let languageConcurrency = readPositiveInteger(process.env.TRANSLATION_WARMUP_LANGUAGE_CONCURRENCY, 2);
+  let refresh = false;
 
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
@@ -152,6 +162,8 @@ function parseArgs(
       index += 1;
     } else if (arg.startsWith("--languages=")) {
       languages.push(...splitLanguages(arg.slice("--languages=".length)));
+    } else if (arg === "--refresh") {
+      refresh = true;
     } else if (!arg.startsWith("--")) {
       languages.push(...splitLanguages(arg));
     }
@@ -160,6 +172,7 @@ function parseArgs(
   return {
     languages: normalizeRequestedLanguages(languages.length ? languages : defaultLanguages, languageConfig),
     languageConcurrency,
+    refresh,
   };
 }
 
@@ -194,6 +207,10 @@ function splitLanguages(value: string) {
 function readPositiveInteger(value: string | undefined, fallback: number) {
   const parsed = Number.parseInt(value ?? "", 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function translationApiKey() {
+  return process.env.GEMINI_API_KEY?.trim() || process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim();
 }
 
 function loadEnvFile(filename: string, protectedKeys: Set<string>) {

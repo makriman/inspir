@@ -1,5 +1,4 @@
-import { openai } from "@ai-sdk/openai";
-import { generateObject } from "ai";
+import { GoogleGenAI, Type } from "@google/genai";
 import { z } from "zod";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 import {
@@ -19,11 +18,30 @@ const generatedTranslationSchema = z.object({
 });
 
 const defaultTranslationBatchSize = 24;
-const defaultTranslationConcurrency = 4;
+const defaultTranslationConcurrency = 2;
 const defaultTranslationMaxRetries = 2;
 const defaultTranslationRetryAfterMs = 1500;
 const failedTranslationRetryAfterMs = 30_000;
 const defaultTranslationTimeoutMs = 60_000;
+const defaultTranslationRetryDelayMs = 1000;
+
+const geminiTranslationResponseSchema = {
+  type: Type.OBJECT,
+  properties: {
+    value: {
+      type: Type.STRING,
+    },
+  },
+  required: ["value"],
+  propertyOrdering: ["value"],
+};
+
+let geminiTranslationClient: GoogleGenAI | undefined;
+let geminiTranslationClientApiKey: string | undefined;
+
+const languageSpecificIdenticalTranslations: Record<string, ReadonlySet<string>> = {
+  Spanish: new Set(["Social"]),
+};
 
 export type MainAppTranslationResult = {
   bundle: MainAppTranslationBundle;
@@ -47,8 +65,8 @@ export async function getCachedMainAppTranslationBundle(language: string) {
     return null;
   }
   if (!isFreshAppTranslation(cached, sourceHash)) return null;
-  const validCachedStrings = filterValidTranslations(sourceStrings, cached.payload);
-  if (!isCompleteMainAppTranslationPayload(sourceStrings, validCachedStrings)) return null;
+  const validCachedStrings = filterValidTranslations(sourceStrings, cached.payload, normalized);
+  if (!isCompleteMainAppTranslationPayload(sourceStrings, validCachedStrings, normalized)) return null;
   return buildMainAppTranslationBundle(normalized, validCachedStrings);
 }
 
@@ -79,8 +97,9 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
   const validCachedStrings = filterValidTranslations(
     sourceStrings,
     cached?.payload ?? {},
+    normalized,
   );
-  if (isCompleteMainAppTranslationPayload(sourceStrings, validCachedStrings)) {
+  if (isCompleteMainAppTranslationPayload(sourceStrings, validCachedStrings, normalized)) {
     const bundle = buildMainAppTranslationBundle(normalized, validCachedStrings);
     return {
       bundle,
@@ -92,7 +111,7 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
 
   const model = resolveTranslationModelName();
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!resolveTranslationApiKey()) {
     const bundle = getEnglishMainAppTranslationBundle();
     return {
       bundle,
@@ -102,7 +121,10 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
     };
   }
 
-  const batchSize = readPositiveIntegerEnv("OPENAI_TRANSLATION_BATCH_SIZE", defaultTranslationBatchSize);
+  const batchSize = readPositiveIntegerEnv(
+    ["TRANSLATION_BATCH_SIZE", "GEMINI_TRANSLATION_BATCH_SIZE", "OPENAI_TRANSLATION_BATCH_SIZE"],
+    defaultTranslationBatchSize,
+  );
   const missingEntries = Object.entries(sourceStrings)
     .filter(([key]) => !validCachedStrings[key])
     .slice(0, batchSize);
@@ -113,7 +135,7 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
   });
   const batchStrings = batchResult.translated;
   const strings = { ...validCachedStrings, ...batchStrings };
-  const validStringCount = Object.keys(filterValidTranslations(sourceStrings, strings)).length;
+  const validStringCount = Object.keys(filterValidTranslations(sourceStrings, strings, normalized)).length;
   const complete = validStringCount === Object.keys(sourceStrings).length;
 
   try {
@@ -151,7 +173,10 @@ async function generateTranslationsForEntries({
   model: string;
 }) {
   const translated: Record<string, string> = {};
-  const concurrency = readPositiveIntegerEnv("OPENAI_TRANSLATION_CONCURRENCY", defaultTranslationConcurrency);
+  const concurrency = readPositiveIntegerEnv(
+    ["TRANSLATION_CONCURRENCY", "GEMINI_TRANSLATION_CONCURRENCY", "OPENAI_TRANSLATION_CONCURRENCY"],
+    defaultTranslationConcurrency,
+  );
   const failures: Array<{ key: string; error: unknown }> = [];
   let nextEntryIndex = 0;
   let completed = 0;
@@ -213,40 +238,40 @@ async function generateTranslationField({
   source: string;
   model: string;
 }) {
-  const maxRetries = readNonNegativeIntegerEnv("OPENAI_TRANSLATION_MAX_RETRIES", defaultTranslationMaxRetries);
+  const maxRetries = readNonNegativeIntegerEnv(
+    ["TRANSLATION_MAX_RETRIES", "GEMINI_TRANSLATION_MAX_RETRIES", "OPENAI_TRANSLATION_MAX_RETRIES"],
+    defaultTranslationMaxRetries,
+  );
   const maxAttempts = maxRetries + 1;
 
   async function attemptTranslationField(attempt: number): Promise<string> {
     try {
-      const providerOptions = buildTranslationProviderOptions();
-      const result = await generateObject({
-        model: openai(model),
-        schema: generatedTranslationSchema,
-        system: [
-          "You are a meticulous product localization specialist for an education app.",
-          "Translate exactly the provided UI text into the target language.",
-          "Return only the translated value in the structured field.",
-          "Preserve placeholders like {name}, punctuation that belongs with placeholders, markdown markers, and the product name inspir.",
-          "Do not translate code identifiers, URLs, class names, or bracketed control markers unless the text is natural visible copy.",
-          "Use the field key for context, but never translate or include the key.",
-          "Use natural, concise product UI copy, not literal word-for-word text when that would sound awkward.",
-          "Prefer consistent education-app terminology across labels, controls, topics, onboarding, quiz, and flashcard copy.",
-          "For Hindi, write in natural Devanagari Hindi. Avoid Hinglish except for brand names, common acronyms like AI, or terms that are normally left in English.",
-        ].join("\n"),
-        prompt: JSON.stringify({
+      const result = await getGeminiTranslationClient().models.generateContent({
+        model,
+        contents: JSON.stringify({
           targetLanguage: language,
           sourceLanguage: defaultLanguage,
           fieldKey: key,
           sourceText: source,
         }),
-        maxOutputTokens: maxOutputTokensForField(source),
-        maxRetries: 0,
-        abortSignal: AbortSignal.timeout(readPositiveIntegerEnv("OPENAI_TRANSLATION_TIMEOUT_MS", defaultTranslationTimeoutMs)),
-        ...(providerOptions ? { providerOptions } : {}),
+        config: {
+          systemInstruction: buildTranslationSystemInstruction(),
+          responseMimeType: "application/json",
+          responseSchema: geminiTranslationResponseSchema,
+          temperature: 0,
+          topP: 0.1,
+          maxOutputTokens: maxOutputTokensForField(source),
+          abortSignal: AbortSignal.timeout(
+            readPositiveIntegerEnv(
+              ["TRANSLATION_TIMEOUT_MS", "GEMINI_TRANSLATION_TIMEOUT_MS", "OPENAI_TRANSLATION_TIMEOUT_MS"],
+              defaultTranslationTimeoutMs,
+            ),
+          ),
+        },
       });
 
-      const value = result.object.value;
-      if (!isValidFieldTranslation(source, value)) {
+      const value = parseGeneratedTranslation(result.text).value;
+      if (!isValidFieldTranslation(source, value, language)) {
         throw new Error("Generated translation field failed validation");
       }
 
@@ -260,7 +285,10 @@ async function generateTranslationField({
           maxAttempts,
           error: summarizeTranslationError(error),
         });
-        await sleep(250 * attempt);
+        await sleep(
+          readPositiveIntegerEnv(["TRANSLATION_RETRY_DELAY_MS", "GEMINI_TRANSLATION_RETRY_DELAY_MS"], defaultTranslationRetryDelayMs) *
+            attempt,
+        );
         return attemptTranslationField(attempt + 1);
       }
       throw error;
@@ -270,32 +298,83 @@ async function generateTranslationField({
   return attemptTranslationField(1);
 }
 
-function isValidFieldTranslation(source: string, value: string | undefined) {
+function buildTranslationSystemInstruction() {
+  return [
+    "You are a meticulous product localization specialist for an education app.",
+    "Translate exactly the provided UI text into the target language.",
+    "Return only JSON with the translated value in the value field.",
+    "Do not add concepts, labels, navigation words, suffixes, prefixes, or explanatory words that are not present in the source text.",
+    "Preserve placeholders like {name}, punctuation that belongs with placeholders, markdown markers, and the product name inspir.",
+    "Do not translate code identifiers, URLs, class names, or bracketed control markers unless the text is natural visible copy.",
+    "Use the field key for context, but never translate or include the key.",
+    "Use natural, concise product UI copy, not literal word-for-word text when that would sound awkward.",
+    "Prefer consistent education-app terminology across labels, controls, topics, onboarding, quiz, and flashcard copy.",
+    "For Hindi, write in natural Devanagari Hindi. Avoid Hinglish except for brand names, common acronyms like AI, or terms that are normally left in English.",
+  ].join("\n");
+}
+
+function getGeminiTranslationClient() {
+  const apiKey = resolveTranslationApiKey();
+  if (!apiKey) throw new Error("GEMINI_API_KEY or GOOGLE_GENERATIVE_AI_API_KEY is required for translations.");
+  if (!geminiTranslationClient || geminiTranslationClientApiKey !== apiKey) {
+    geminiTranslationClient = new GoogleGenAI({ apiKey });
+    geminiTranslationClientApiKey = apiKey;
+  }
+  return geminiTranslationClient;
+}
+
+function resolveTranslationApiKey() {
+  return readStringEnv(["GEMINI_API_KEY", "GOOGLE_GENERATIVE_AI_API_KEY"]);
+}
+
+function parseGeneratedTranslation(text: string | undefined) {
+  if (!text?.trim()) throw new Error("Gemini returned an empty translation response");
+
+  const trimmed = text.trim();
+  const jsonText = trimmed.startsWith("```") ? stripCodeFence(trimmed) : trimmed;
+  return generatedTranslationSchema.parse(JSON.parse(jsonText));
+}
+
+function stripCodeFence(value: string) {
+  return value.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+}
+
+function isValidFieldTranslation(source: string, value: string | undefined, language?: string) {
   if (!value?.trim()) return false;
   const sourcePlaceholders = placeholdersIn(source).sort().join("|");
   const valuePlaceholders = placeholdersIn(value).sort().join("|");
   if (sourcePlaceholders !== valuePlaceholders) return false;
-  if (source.trim() === value.trim() && !canRemainUntranslated(source)) return false;
+  if (hasLikelyExtraneousTranslationArtifact(source, value, language)) return false;
+  if (source.trim() === value.trim() && !canRemainUntranslated(source, language)) return false;
   return true;
+}
+
+function hasLikelyExtraneousTranslationArtifact(source: string, value: string, language?: string) {
+  if (language !== "Spanish") return false;
+  if (/\bvuelta\b/i.test(value) && !/\b(?:again|back|cycle|return|round|turn)\b/i.test(source)) return true;
+  if (/\btienda\b/i.test(value) && !/\b(?:shop|store|tent)\b/i.test(source)) return true;
+  return false;
 }
 
 function isCompleteMainAppTranslationPayload(
   sourceStrings: Record<string, string>,
   translatedStrings: Record<string, string>,
+  language?: string,
 ) {
   return (
     validateTranslationPayload(sourceStrings, translatedStrings) &&
-    Object.keys(filterValidTranslations(sourceStrings, translatedStrings)).length === Object.keys(sourceStrings).length
+    Object.keys(filterValidTranslations(sourceStrings, translatedStrings, language)).length === Object.keys(sourceStrings).length
   );
 }
 
 function filterValidTranslations(
   sourceStrings: Record<string, string>,
   translatedStrings: Record<string, string>,
+  language?: string,
 ) {
   const validTranslations: Record<string, string> = {};
   for (const [key, source] of Object.entries(sourceStrings)) {
-    if (isValidFieldTranslation(source, translatedStrings[key])) {
+    if (isValidFieldTranslation(source, translatedStrings[key], language)) {
       validTranslations[key] = translatedStrings[key];
     }
   }
@@ -316,10 +395,11 @@ function buildMainAppPartialTranslationBundle(
   };
 }
 
-function canRemainUntranslated(source: string) {
+function canRemainUntranslated(source: string, language?: string) {
   const value = source.trim();
   if (!/[A-Za-z]/.test(value)) return true;
   if (value.toLowerCase() === "inspir") return true;
+  if (language && languageSpecificIdenticalTranslations[language]?.has(value)) return true;
   if (/^https?:\/\//i.test(value)) return true;
   if (/^\d+\s*[-–]\s*\d+\s*(?:min|mins|minutes|sec|secs|hours?|hrs?)$/i.test(value)) return true;
   if (isProperNameLabel(value)) return true;
@@ -346,29 +426,27 @@ function maxOutputTokensForField(source: string) {
   return Math.max(768, Math.min(2500, source.length * 4 + 256));
 }
 
-function readPositiveIntegerEnv(name: string, fallback: number) {
-  const parsed = Number.parseInt(process.env[name] ?? "", 10);
+function readPositiveIntegerEnv(names: string | string[], fallback: number) {
+  const parsed = Number.parseInt(readStringEnv(names) ?? "", 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
 }
 
-function readNonNegativeIntegerEnv(name: string, fallback: number) {
-  const parsed = Number.parseInt(process.env[name] ?? "", 10);
+function readNonNegativeIntegerEnv(names: string | string[], fallback: number) {
+  const parsed = Number.parseInt(readStringEnv(names) ?? "", 10);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
 }
 
 function translationVerboseLogs() {
-  return process.env.OPENAI_TRANSLATION_VERBOSE_LOGS === "true";
+  return readStringEnv(["TRANSLATION_VERBOSE_LOGS", "GEMINI_TRANSLATION_VERBOSE_LOGS", "OPENAI_TRANSLATION_VERBOSE_LOGS"]) === "true";
 }
 
-function buildTranslationProviderOptions() {
-  const openaiOptions: Record<string, string> = {};
-  const reasoningEffort = process.env.OPENAI_TRANSLATION_REASONING_EFFORT;
-  const textVerbosity = process.env.OPENAI_TRANSLATION_TEXT_VERBOSITY;
-
-  if (reasoningEffort) openaiOptions.reasoningEffort = reasoningEffort;
-  if (textVerbosity) openaiOptions.textVerbosity = textVerbosity;
-
-  return Object.keys(openaiOptions).length ? { openai: openaiOptions } : undefined;
+function readStringEnv(names: string | string[]) {
+  const envNames = Array.isArray(names) ? names : [names];
+  for (const name of envNames) {
+    const value = process.env[name]?.trim();
+    if (value) return value;
+  }
+  return undefined;
 }
 
 function summarizeTranslationError(error: unknown) {

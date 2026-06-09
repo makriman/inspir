@@ -117,6 +117,12 @@ export async function upsertAppTranslation(input: {
   return translation;
 }
 
+export async function deleteAppTranslation(namespace: string, language: string) {
+  await db
+    .delete(appTranslations)
+    .where(and(eq(appTranslations.namespace, namespace), eq(appTranslations.language, language)));
+}
+
 export async function createChatForUser(userId: string, topicId: string) {
   const [topic] = await db.select().from(topics).where(eq(topics.id, topicId)).limit(1);
   if (!topic) throw new Error("Topic not found");

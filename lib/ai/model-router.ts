@@ -17,10 +17,10 @@ export function resolveModelName(profile: ModelProfile = "fast") {
 
 export function resolveTranslationModelName() {
   return (
-    readModelEnv("OPENAI_TRANSLATION_MODEL") ??
-    readModelEnv("OPENAI_FAST_MODEL") ??
-    readModelEnv("OPENAI_MODEL") ??
-    "gpt-4.1-mini"
+    readModelEnv("GEMINI_TRANSLATION_MODEL") ??
+    readModelEnv("GOOGLE_TRANSLATION_MODEL") ??
+    readModelEnv("TRANSLATION_MODEL") ??
+    "gemini-3.1-flash-lite"
   );
 }
 

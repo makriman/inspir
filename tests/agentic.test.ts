@@ -172,28 +172,37 @@ test("model router falls specialized profiles back to the configured fast model"
   }
 });
 
-test("translation model uses explicit env or fast fallback", () => {
+test("translation model uses Gemini translation env or default", () => {
   const previous = {
     OPENAI_MODEL: process.env.OPENAI_MODEL,
     OPENAI_FAST_MODEL: process.env.OPENAI_FAST_MODEL,
     OPENAI_STRUCTURED_MODEL: process.env.OPENAI_STRUCTURED_MODEL,
     OPENAI_TRANSLATION_MODEL: process.env.OPENAI_TRANSLATION_MODEL,
+    TRANSLATION_MODEL: process.env.TRANSLATION_MODEL,
+    GOOGLE_TRANSLATION_MODEL: process.env.GOOGLE_TRANSLATION_MODEL,
+    GEMINI_TRANSLATION_MODEL: process.env.GEMINI_TRANSLATION_MODEL,
   };
   process.env.OPENAI_MODEL = "global-model";
   process.env.OPENAI_FAST_MODEL = "fast-model";
   process.env.OPENAI_STRUCTURED_MODEL = "structured-model";
   delete process.env.OPENAI_TRANSLATION_MODEL;
+  delete process.env.TRANSLATION_MODEL;
+  delete process.env.GOOGLE_TRANSLATION_MODEL;
+  delete process.env.GEMINI_TRANSLATION_MODEL;
 
-  assert.equal(resolveTranslationModelName(), "fast-model");
+  assert.equal(resolveTranslationModelName(), "gemini-3.1-flash-lite");
 
-  process.env.OPENAI_TRANSLATION_MODEL = " ";
-  assert.equal(resolveTranslationModelName(), "fast-model");
+  process.env.TRANSLATION_MODEL = " ";
+  assert.equal(resolveTranslationModelName(), "gemini-3.1-flash-lite");
 
-  delete process.env.OPENAI_FAST_MODEL;
-  assert.equal(resolveTranslationModelName(), "global-model");
-
-  process.env.OPENAI_TRANSLATION_MODEL = "translation-model";
+  process.env.TRANSLATION_MODEL = "translation-model";
   assert.equal(resolveTranslationModelName(), "translation-model");
+
+  process.env.GOOGLE_TRANSLATION_MODEL = "google-model";
+  assert.equal(resolveTranslationModelName(), "google-model");
+
+  process.env.GEMINI_TRANSLATION_MODEL = "gemini-model";
+  assert.equal(resolveTranslationModelName(), "gemini-model");
 
   for (const [key, value] of Object.entries(previous)) {
     if (value === undefined) delete process.env[key];
