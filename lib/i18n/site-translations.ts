@@ -1,5 +1,5 @@
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
-import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
+import { getDatabaseTranslationBundle } from "@/lib/i18n/db-translations";
 import type { TranslationResult } from "./translation-types";
 import {
   getAllSiteTranslationNamespaces,
@@ -28,7 +28,7 @@ export async function getCachedSiteTranslationBundle(language: string, namespace
   const source = getSiteTranslationSource(namespace);
   if (normalized === defaultLanguage) return getEnglishSiteTranslationBundle(source.namespace);
 
-  return getCuratedTranslationBundle(source, normalized);
+  return getDatabaseTranslationBundle(source, normalized);
 }
 
 export async function getCachedSiteTranslationEntries(language: string, namespaces: string[]) {

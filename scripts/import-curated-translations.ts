@@ -56,7 +56,10 @@ type Args = {
   dryRun: boolean;
   allowPartial: boolean;
   allowStale: boolean;
+  concurrency: number;
 };
+
+type ImportPackResult = Awaited<ReturnType<typeof importPackGroup>>;
 
 let upsertTranslation:
   | ((input: {
@@ -92,16 +95,25 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const files = collectJsonFiles(resolve(process.cwd(), args.dir));
   const groups = groupLoadedPacks(files.flatMap((filePath) => loadPack(filePath, args) ?? []));
-  const results = [];
+  const results: ImportPackResult[] = [];
   let hasFailure = false;
 
   try {
-    for (const group of groups) {
-      const result = await importPackGroup(group, args);
-      results.push(result);
-      if (!result.ok) hasFailure = true;
-      console.log(JSON.stringify({ event: "curated_translation_pack_checked", ...result }));
-    }
+    let cursor = 0;
+    const workers = Array.from({ length: Math.min(args.concurrency, groups.length) }, async () => {
+      while (true) {
+        const index = cursor;
+        cursor += 1;
+        const group = groups[index];
+        if (!group) return;
+
+        const result = await importPackGroup(group, args);
+        results[index] = result;
+        if (!result.ok) hasFailure = true;
+        console.log(JSON.stringify({ event: "curated_translation_pack_checked", ...result }));
+      }
+    });
+    await Promise.all(workers);
   } finally {
     await sqlConnection?.end({ timeout: 5 });
   }
@@ -340,6 +352,7 @@ function parseArgs(rawArgs: string[]): Args {
   let dryRun = false;
   let allowPartial = false;
   let allowStale = false;
+  let concurrency = 8;
   const languages: string[] = [];
   const namespaces: string[] = [];
   const files: string[] = [];
@@ -374,6 +387,11 @@ function parseArgs(rawArgs: string[]): Args {
       allowPartial = true;
     } else if (arg === "--allow-stale") {
       allowStale = true;
+    } else if (arg === "--concurrency") {
+      concurrency = readPositiveInteger(rawArgs[index + 1], concurrency);
+      index += 1;
+    } else if (arg.startsWith("--concurrency=")) {
+      concurrency = readPositiveInteger(arg.slice("--concurrency=".length), concurrency);
     }
   }
 
@@ -385,6 +403,7 @@ function parseArgs(rawArgs: string[]): Args {
     dryRun,
     allowPartial,
     allowStale,
+    concurrency,
   };
 }
 
@@ -411,6 +430,11 @@ function splitCsv(value: string) {
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function readPositiveInteger(value: string | undefined, fallback: number) {
+  const parsed = Number(value);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
 }
 
 function loadEnvFile(filename: string, protectedKeys: Set<string>) {

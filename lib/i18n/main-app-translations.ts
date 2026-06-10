@@ -1,5 +1,5 @@
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
-import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
+import { getDatabaseTranslationBundle } from "@/lib/i18n/db-translations";
 import {
   buildMainAppTranslationBundle,
   getEnglishMainAppTranslationBundle,
@@ -28,7 +28,7 @@ export async function getCachedMainAppTranslationBundle(language: string) {
   if (normalized === defaultLanguage) return getEnglishMainAppTranslationBundle();
 
   const source = getMainAppTranslationSource();
-  const bundle = getCuratedTranslationBundle(source, normalized);
+  const bundle = await getDatabaseTranslationBundle(source, normalized);
   if (!bundle) return null;
   return buildMainAppTranslationBundle(normalized, bundle.strings);
 }

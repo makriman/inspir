@@ -1,8 +1,8 @@
 # Localization Workflow
 
-The app does not translate text at user request time. Production reads completed static bundles from
-`translations/curated-bundles/<locale>.json`; missing bundles are a data-prep problem, not a runtime
-model call.
+The app does not translate text at user request time. Translation packs are generated and validated
+offline, then imported once into `app_translations`. Production reads those cached DB rows by
+`namespace + language`; missing rows are a data-prep problem, not a runtime model call.
 
 ## Manual Curated Packs
 
@@ -18,9 +18,8 @@ For large namespaces, split the pack into smaller files that can be assigned to 
 pnpm translations:export -- --languages=Icelandic --namespace=main-app --dir=translations/curated --chunk-size=250
 ```
 
-Chunk files are named like `main-app.part-001-of-010.json`. The runtime merges all complete files
-for the same language and namespace into one bundle. Before deploy, compact the chunk files into the
-production bundle format:
+Chunk files are named like `main-app.part-001-of-010.json`. Before import, compact the chunk files
+into the one-file-per-language bundle format:
 
 ```bash
 pnpm translations:bundle -- --dir=translations/curated --out-dir=translations/curated-bundles --clean
@@ -39,10 +38,16 @@ Validate a completed pack:
 pnpm translations:import -- --languages=Hindi --namespace=route:home --dir=translations/curated --dry-run
 ```
 
-Validate the compact production bundles:
+Validate the compact import bundles:
 
 ```bash
 pnpm translations:import -- --all-languages --all-namespaces --dir=translations/curated-bundles --dry-run
+```
+
+Import the validated bundles into the production database:
+
+```bash
+pnpm translations:import -- --all-languages --all-namespaces --dir=translations/curated-bundles
 ```
 
 Validate an incomplete chunk set while work is still in progress:
@@ -59,8 +64,8 @@ pnpm translations:status -- --all-languages --namespace=route:home
 
 The validator checks source hashes, missing fields, unknown keys, placeholder preservation, and
 unchanged English where the target language should translate ordinary UI copy. `translations:import`
-still exists as a temporary bridge for migrating older cached DB rows into curated files, but the app
-does not rely on translation API routes or provider-backed workers.
+also uploads completed bundles into `app_translations`, but the app does not rely on translation API
+routes or provider-backed workers.
 
 ## Cache Export Bridge
 
