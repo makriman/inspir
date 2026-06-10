@@ -19,7 +19,19 @@ export function getDatabaseTranslationBundle(source: TranslationSource, language
 
 async function readDatabaseTranslationBundle(source: TranslationSource, language: SupportedLanguage) {
   const row = await getAppTranslation(source.namespace, language);
-  if (!row || row.sourceHash !== source.sourceHash) return null;
+  if (!row) {
+    console.warn("translation_db_missing", { namespace: source.namespace, language, sourceHash: source.sourceHash });
+    return null;
+  }
+  if (row.sourceHash !== source.sourceHash) {
+    console.warn("translation_db_stale", {
+      namespace: source.namespace,
+      language,
+      expectedSourceHash: source.sourceHash,
+      rowSourceHash: row.sourceHash,
+    });
+    return null;
+  }
 
   const strings: Record<string, string> = {};
   for (const [key, sourceText] of Object.entries(source.sourceStrings)) {
