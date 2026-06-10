@@ -22,6 +22,18 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  outputFileTracingIncludes: {
+    "/*": [
+      "./app/**/*.ts",
+      "./app/**/*.tsx",
+      "./components/legal/**/*.tsx",
+      "./components/marketing/**/*.tsx",
+      "./content/blog/**/*.md",
+      "./lib/content/**/*.ts",
+      "./lib/seo/config.ts",
+      "./lib/seo/json-ld.ts",
+    ],
+  },
   images: {
     remotePatterns: [
       {
