@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
@@ -10,6 +10,7 @@ import {
   getBlogCategoryProfile,
   getBlogCategoryRelatedModes,
 } from "@/lib/content/blog-directory";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
   const description = `${profile.description} Browse ${category.count} guides linked to live AI learning modes.`;
   const image = socialImage({ title, eyebrow: "Blog theme", description });
 
-  return {
+  return localizeMarketingMetadata({
     title,
     description,
     alternates: metadataAlternates(`/blog/category/${category.slug}`),
@@ -56,7 +57,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
       description,
       images: [image.url],
     },
-  };
+  }, `/blog/category/${category.slug}`);
 }
 
 export default async function BlogCategoryPage({ params }: BlogCategoryPageProps) {

@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "language": "Chinese",
+  "locale": "zh",
+  "namespace": "route:ai-learning-map",
+  "sourceHash": "ed5c404157cb369b59b407351615d701fdf7f9250fb0afcb05cfa6e93a6a094f",
+  "part": {
+    "index": 5,
+    "total": 5
+  },
+  "entries": [
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "使用提示、检查点和小例子，而不是完整最终答案。"
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "有用时，使用假设、材料、方法、观察和解释分区。"
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "使用想法菜单、选择标准和下一步草图。"
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "使用角色内对话和简短指导说明。"
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "使用关键要点、大纲、定义和复习问题。"
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "使用排行榜规则、评分、安全措施和反思。"
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "使用等级表、XP 规则、任务卡和防刷保护。"
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "用叙事让概念更容易记住。"
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "有帮助时，使用嵌套项目符号、表格或 Mermaid 文本。"
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "使用编号地点、图像和回忆检查点。"
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "使用目标、总结、示例、陷阱、问题和下一次复习。"
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "使用观察、解释、证据和下一问题分区。"
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "使用配对库、打乱列表、答案键和复习说明。"
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "使用地点卡、比较表和地图提示词。"
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "使用实用音频建议和学习会话设置说明。"
+    },
+    {
+      "key": "site.92a746b2e3db690b66",
+      "source": "Use prompt",
+      "value": "使用提示词"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "使用任务、等级、徽章和 Boss 问题。"
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "使用雨声进行阅读"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "使用雨声进行复习"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "使用反思提示词、学习者优势和一个下一步实验。"
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "使用报告分区：成果、证据、阻碍、经验、下周。"
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "使用研究问题、来源矩阵和综合笔记。"
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "使用资源卡、受众说明和使用建议。"
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "使用复习队列、截止日期和信心评分。"
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "使用评分表记录清晰度、结构、证据和表达说明。"
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "使用简短专注计划、检查清单和会后反思提示词。"
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "使用简短分区、示例、类比，以及在有帮助时兼容 GFM 的列表或表格。"
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "使用简短总结、少量引用式参考和问题集。"
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "使用简短支持性说明和实用下一步行动。"
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "使用简单的环境音预设，减少阅读、写作、复习或解决问题时的干扰。"
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "使用简单记号、示例和练习提示词。"
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "使用简单表格、因果链和注意事项说明。"
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "使用简明语言改写和缺口检查清单。"
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "将素描作为一种学习手段：规划图表、标注粗略地图、解释流程，或将混乱的想法转化为更清晰的视觉效果。"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "使用声音建议和专注设置说明。"
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "使用利益相关者表格和平衡的正反分析。"
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "适当时使用 STAR 或情境-行动-结果框架。"
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "使用故事节点加学习说明。"
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "使用连续状态、微小行动、恢复规则和每周反思。"
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "使用包含词语、含义、例句、记忆钩子和练习提示词的表格。"
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "使用表格、通俗要点和谨慎说明。"
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "先使用目标语言，然后用学习者偏好的支持语言提供简短反馈。"
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "使用任务看板、截止日期和下一步行动列表。"
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "使用任务卡、已用时间、笔记和后续时间块建议。"
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "使用测试分区、计时、答案键、评分规则和复习计划。"
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "使用费曼技巧揭示缺口并简化理解。"
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "使用这种紧凑格式：简读：一句话。地图更新：根据需要提供简洁的主张、假设、缺口或修正项目符号。下一个问题：只问一个问题。第一次回复时，使用目标、约定和第一个问题。"
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "使用思想实验、论证图和平衡总结。"
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "使用时间线、原因层和后果地图。"
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "使用树结构、节点标签、链接和下一步提示词。"
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "使用未标注部件、提示层级、答案键和复习提示词。"
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "使用视觉词汇和引导观察提示词。"
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "使用每周计划、备用计划和微小下一步行动。"
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "使用工作/休息循环、休息菜单和返回提示词。"
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "使用练习纸分区、答案键和难度标签。"
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "认可这种感受，识别阻碍因素，并选择一个小下一步。"
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "视觉分析"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "视觉学习"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "视觉化学习"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "口试练习"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "词汇构建器"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "周报"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "每周报告"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "加权分数"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "我们应该设计什么样的成就系统？"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "我们要进行什么头脑风暴？"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "我们要读什么？"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "今天你对什么感到好奇？"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "您准备说什么？"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "你正在研究什么？"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "您在写什么？"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "想了解什么艺术作品、艺术家或风格？"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "你手头有哪些作业？"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "我们要探讨什么重大问题？"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "我们应该探索什么职业或兴趣？"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "我们应该学习什么公民学主题？"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "我们要解决什么编程主题或错误？"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "什么承诺需要责任监督？"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "我们应该构建什么概念图？"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "您正在管理哪些课程或科目？"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "我们应该练习标注哪种图表？"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "我们应该探讨什么困境？"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "在这个世界里，你接下来要做什么？"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "你需要记住什么？"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "你需要学习什么？"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "你今天想完成什么？"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "法院是做什么的？"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "产品经理是做什么的？"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "这项调查显示了什么？"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "我们应该模拟什么经济理念？"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "你正在准备什么考试？"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "我需要多少期末分数？"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "这周发生了什么？"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "如果税收发生变化会怎样？"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "如果我们改变温度会发生什么？"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "你被哪道作业题难住了？"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "有什么想法让你感到困惑或怀疑吗？"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "您正在准备什么面试？"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "什么是知识？"
+    },
+    {
+      "key": "site.a3f16bd77eb4ae9996",
+      "source": "What is the AI learning map?",
+      "value": "AI 学习地图是什么？"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "你想要什么样的专注环境音？"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "我们应该模拟什么样的案例？"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "今天你需要什么样的专注氛围？"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "哪种学习目标应该转化为升级系统？"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "你想养成什么学习习惯？"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "我们应该反思哪个学习时刻？"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "什么学习策略适合我？"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "什么使论点成立？"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "什么使事物变得公平？"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "哪些材料需要制作成学习指南？"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "我们要解决什么数学问题？"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "我们应该研究什么音乐概念？"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "这次深度工作环节应产生什么成果？"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "哪些内容应该变成配对游戏？"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "我们应该回顾哪些进度？"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "我们要构建什么项目？"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "你想发布什么问题或讨论？"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "你想分享什么资源？"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "我们应该进行什么样的角色扮演场景？"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "我们要探索什么科学理念或实验？"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "什么可以变成一个挑战？"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "什么内容应该变成学习游戏？"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "你想把什么变成故事？"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "哪些内容需要制作成抽认卡？"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "排行榜应该衡量什么？"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "练习测试应涵盖哪些内容？"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "学习小组应该做什么？"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "工作表应涵盖哪些内容？"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "这次专注时段的主题是什么？"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "我们该复习什么？"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "我们应该画什么草图或图表？"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "你正在建立什么样的连胜或日常习惯？"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "我们要为哪项任务计时？"
+    },
+    {
+      "key": "site.fc8d830216f2567d93",
+      "source": "What this workflow should leave behind",
+      "value": "这个工作流应该留下什么"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "你想测试哪个主题？"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "什么主题应该变成思维导图？"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "你正在准备哪种口试或口头考试？"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "你要向我解释什么？"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "我们应该练习哪些单词或主题？"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "你想要什么样的工作/休息节奏？"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "今天您想学习什么？"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "是什么让你现在感到学习困难？"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "今天你想辩论什么话题？"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "我们应该去哪里探索？"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "我们应该追溯哪段历史事件？"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "你想见哪位历史人物？"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "想要练习哪种语言和情境？"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "白噪音"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "你想和谁辩论？辩论什么话题？"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "谁在一起学习，目标是什么？"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "为什么城市多建在河流附近？"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "我为什么逃避学习？"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "罗马帝国为何衰落？"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "为什么我的代数答案错了？"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "为什么这个语法规则很奇怪？"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "关于天气的词汇"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "计算加权成绩、GPA情景、所需的期末分数以及学期假设方案。"
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "通过权衡利益相关者、后果、责任、权利和权衡取舍来解决困境。"
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "一步一步攻克数学难题"
+    },
+    {
+      "key": "site.fa00fba57bff817728",
+      "source": "Workflow directory",
+      "value": "工作流目录"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "工作表生成器"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "世界各国首都"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "编写签到脚本"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "写一个好的论坛问题"
+    },
+    {
+      "key": "site.066231d418b0ddf600",
+      "source": "Write and communicate clearly",
+      "value": "清晰写作与沟通"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "撰写我的每周学习报告"
+    },
+    {
+      "key": "site.5f2b3a44b731b839b8",
+      "source": "Write the lesson learned before expanding the project.",
+      "value": "在扩展项目之前，写下学到的经验。"
+    },
+    {
+      "key": "site.9a58fdeb87fb7db943",
+      "source": "Write the strongest claim and strongest counterclaim.",
+      "value": "写出最强的主张和最强的反方主张。"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "写作教练"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "经验值与等级系统"
+    },
+    {
+      "key": "site.4016d37780f77e418a",
+      "source": "Yes. The linked public learning modes open in guest mode, so learners can try explanations, Socratic questions, homework coaching, quizzes, flashcards, and more without starting from a marketing page.",
+      "value": "可以。链接的公共学习模式会以访客模式打开，因此学习者无需从营销页面开始，就能尝试解释、苏格拉底式问题、作业辅导、测验、闪卡等。"
+    }
+  ]
+}

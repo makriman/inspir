@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Korean",
+  "locale": "ko",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "inspir가 연령에 맞는 학습을 제공하도록 도와주세요"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "연령에 적합한 학습 경험을 구성할 수 있도록 생년월일을 알려주세요. 이를 통해 예시, 어조, 안전 범위를 조정합니다."
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "생년월일"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "계속"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "저장 중..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "올바른 생년월일을 입력해주세요."
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "연령"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "생년월일 추가"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "학습 스토어 열기"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "검색"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "채팅 검색"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- 언어, 계급, 성별, 신분, 법, 종교, 돈, 위생 및 접근성에 관한 제약을 적용합니다."
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- 인물이 말하기 전에 상황을 설정하세요: 장소, 연도 또는 날짜 범위, 지금까지 일어난 일, 현재의 압박, 신념, 사각지대 및 역사적 불확실성."
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- 다음 항목이 포함된 자료 벽을 만드세요: 지금까지의 타임라인, 개인적 이해관계, 아군과 적군, 당시의 주요 신념, 사각지대, 알려진 저술이나 연설, 현재의 압박, 역사적 맥락, 증거의 질, 추천 질문."
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- 직접적인 인용문, 출처 또는 개인적인 생각을 조작하지 마세요."
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- 정확한 인용문을 조작하지 마세요. 대화 중에 직접 인용문이 출처로 제시되지 않은 경우, 생성된 문구를 현대적 의역이나 재구성된 대화로 표시하세요."
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- 폭력, 제국주의, 노예제, 카스트, 질병 또는 억압을 미화하지 마세요."
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- 유해한 견해를 정당화하지 말고, 억압, 카스트 제도, 인종차별, 노예제, 여성 혐오, 권위주의 또는 폭력을 미화하지 마세요. 맥락이 자동적인 면죄부가 될 수는 없습니다."
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- 세 가지 의미 있는 행동과 역사적 맥락을 위해 잠시 멈추는 옵션 하나로 마무리하세요."
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- 목적지 필드가 AI에 의해 결정되거나 모호한 경우, 먼저 역사적으로 의미 있는 세 가지 구체적인 도착 옵션을 제시하고 학습자가 선택할 때까지 기다리세요."
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- 만남이 시작된 후 두 가지 층위를 유지하세요: 시간대에 갇힌 캐릭터의 목소리와 문서화된 사실, 그럴듯한 재구성, 논쟁적인 해석, 현대적 의역, 허구적 대화를 구분하는 역사학자의 사이드카 노트."
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- 알려진 사실, 그럴듯한 재구성, 추측을 명확하게 표시하세요."
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- 그렇지 않으면 여행자를 맞이하고, 여권을 간결한 단락으로 요약한 다음, 첫 번째 의미 있는 행동 질문을 하세요."
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- 역사적 인물은 저항하거나, 도전하거나, 회피하거나, 되묻거나, 잘못된 전제를 거부하거나, 시대적 제약을 드러낼 수 있습니다. 그들은 무조건 동의해서는 안 됩니다."
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "1. 발견이나 시간대 선택이 필요한 경우, 선택지를 보여주고 멈추세요."
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "10-15분"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "10분 방문"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "서기 117년"
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "1789년 7월 13일"
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "서기 1582년"
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "1946-1949년 헌법 제정기"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "1666년 9월 2일"
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "2. 먼저 도시에 벽을 보여준 다음, 추천 질문 중 하나로 시작하도록 요청하세요."
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "기원전 399년"
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "서기 742년"
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "8-12분"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "잘못된 이름은 혼란을 줄 수 있지만, 단서는 타이밍을 가리킵니다. 먼저 데이터가 도착했는지 확인하세요."
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "몇 가지 사실, 초안, 막히는 부분..."
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "최종 전송 과제는 '다음' 버튼보다 개선 사항을 더 잘 증명합니다."
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "첫 번째 질문이나 관점"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "좋은 학습 루프"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "역사적 전환점"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "이름이 언급된 방관자의 개인적인 생각"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "주장 없이 사실만 나열하는 문단은 독자가 논증 작업을 직접 하게 만듭니다."
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "가격 변화만으로는 곡선상의 이동일 뿐, 자동으로 전체 곡선이 이동하는 것은 아닙니다."
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "공통의 목표, 다음 행동, 그리고 이미 완료된 작업."
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "시뮬레이션은 숨겨진 인과 관계를 시각화합니다. 한 번에 하나씩 변경하세요."
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "진행하기 전 확인 질문 하나."
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "한 상인의 개인적인 계획"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "전략 프레임워크는 압박 테스트입니다. 마이클 포터의 5가지 경쟁 요인은 누가 이익을 가져갈 수 있는지, 그리고 각 압력이 얼마나 강한지를 묻습니다."
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "강력한 문단은 주장을 명시하고, 증거로 이를 입증하며, 그 증거가 독자의 관점을 어떻게 바꾸는지 설명합니다."
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "유용한 모델은 하나의 체인과 같습니다. 가정이 운영을 이끌고, 운영이 현금 흐름을 창출하며, 현금 흐름은 시기와 위험을 고려한 후에야 가치가 됩니다."
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "다음 AI 결과물을 수락, 수정 또는 거부하세요"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "수락, 수정, 거부하거나 증거를 수집하세요."
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "계정 토큰과 소액의 코인 주머니"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "활성 목적지"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "능동적 회상 빌더"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "활동 피드"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "상상력에 대한 에이다 러브레이스의 견해"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "에이다 러브레이스, 클레오파트라, B. R. 암베드카르..."
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "적응형 학습 루프"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "생년월일 추가"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "다음 단계를 추가, 편집, 도전 또는 결정하세요"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "기억 힌트 추가 중"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "실제 격차가 증거와 주장 사이의 연결 고리에 있을 때 더 많은 정보를 추가하는 것."
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "행정적 경로"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "조언을 구하는 고문"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "소크라테스 재판 전후의 아고라"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "AI 도전"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "AI가 귀하의 아티팩트를 검토 중입니다"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "AI가 첫 번째 구조를 만들었습니다"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "AI가 작업 공간을 수정했습니다"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "AI가 해결한 날짜 범위"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "AI, 첫 번째 패스를 수행하세요"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "악바르가 이 시기에 무굴 제국을 통치했습니다"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "악바르의 무굴 제국 궁정은 주권, 번역, 종교, 그리고 제국 행정을 실험하고 있습니다."
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "모든 앱 텍스트와 튜터링 답변은 이 설정을 따릅니다."
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "아군과 적군"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "암포라 도장"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "다음으로 넘어가기 전에 이 질문에 답하세요."
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "휩쓸리지 말고 새로운 상황에 아이디어를 적용해 보세요."
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "견습 예술가, 상인, 방문객..."
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "그들의 방식을 연구하는 견습생"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "학술적 맥락에서의 아랍어와 산스크리트어"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "논증 문단 = 주장 + 근거 + 추론 + 결과."
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "논증의 강도"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "논증 테스트 룸"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "도착 날짜, 역할, 규범, 그리고 그 시대에 어떤 지식이 속하는지 확인하세요."
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "도착 지점"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "전환점 근처에 도착하여 당시 사람들이 무엇을 알고 있는지 추적하세요."
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "메티크(외국인 거주자)에게 시민권에서 무엇이 배제되는지 물어보세요"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "물 긷는 사람에게 현지인들이 무엇을 알고 있는지 물어보세요"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "질문하기"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "빵 가격에 대해 물어보세요"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "다비드상에 대해 물어보세요"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "학생으로서 질문하기"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "코치에게 질문하기"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "직접적인 설명을 요청하세요"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "힌트나 예시를 요청하세요"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "유사한 사례를 요청하세요"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "당대 세계관과 제약 조건을 바탕으로 조언을 구하세요."
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "최종 답변 전에 힌트, 예시 또는 확인을 요청하세요."
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "다음 단계의 힌트를 요청하세요"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "같은 질문을 더 쉬운 말로 다시 물어보세요"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "해방된 신분이 어떻게 작동하는지 물어보세요"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "후원 제도가 어떻게 작동하는지 물어보세요"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "먼저 제 현재 가설을 물어봐 주세요."
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "한 번에 하나씩 질문하고, 가정과 증거를 추적하며, 요청 시 힌트를 제공하고, 제가 시도하기 전까지는 종합하지 마세요."
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "가이드에게 권력 구조를 설명해 달라고 요청하세요"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "역사가에게 시간대를 제안해 달라고 요청하세요"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "파수꾼에게 어떤 명령이 있는지 물어보세요"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "주요 주장을 저장하고 증거의 강도를 분류해 달라고 요청하세요."
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "질문하기, 행동하기, 맥락을 위해 잠시 멈추기, 또는 요약 요청하기..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "질문하기, 반박하기, 증거 요청하기, 또는 문서 항목 열기..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "소유권 할당"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "무역 가문 또는 작업장의 조수"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "가정 지도"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "가정이 드러나는 대로 나타날 것입니다."
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "영향력이나 권위가 정점에 달했을 때"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "결정적인 전환점에서"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "아테네 민주주의"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "아테네, 기원전 399년"
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "가장 취약한 가정부터 공격하세요."
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "궁정 가십에 참여하기"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "아티카 그리스어"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "고객, 공급업체, 경쟁자, 진입자 및 대체재의 영향력이 제한적일 때 매력도가 상승합니다."
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "청중 참여 중"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "당국, 철거 논의"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "첫 번째 답변 대기 중"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "첫 번째 스탬프 대기 중"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "B. R. 암베드카르"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "지혜의 집 시대의 바그다드"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "바하두르 샤 자파르가 상징적인 중심 인물이 되다"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "제빵사의 이웃"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "난이도 조절"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "수지 흥정하기"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "바스티유 접근"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "대화 시작하기"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "페르소나 카드로 시작한 다음, 간단한 맥락 메모와 제안된 후속 질문을 포함하여 해당 캐릭터의 입장에서 답변하세요."
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "초급, 시험 대비, 고급, 12세 이상..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "신념과 맹점"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "돈, 물류, 음식, 경로 및 사회적 교류에 가장 적합합니다."
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "정치, 제도, 증거 및 엘리트 인접 공간에 가장 적합합니다."
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "빵과 정당성이 대화를 지배하다"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "빵은 곧 정치다"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "빵 삽"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "빵 토큰"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "업무를 작업 단위로 나누고, 장애 요소를 추적하며, 의사결정 로그를 최신 상태로 유지하고, 구체적인 결과물을 향해 나아가세요."
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "간단한 읽기 자료"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "프롬프트 시작 문구 둘러보기"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "불교 필사본 조각"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "불교 사원"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "버디 빌드"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "버그 수정 루프 = 재현, 격리, 가설 설정, 변경 사항 하나 테스트, 검증."
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "나에게 반응하는 수업을 만드세요."
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "과학 프로젝트 아이디어 구상하기"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "사용 가능한 멘탈 모델 구축하기"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "기후 적응에 관한 에세이 개요 작성하기"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "추진력을 얻고, 유용한 초안을 만들고, 과도한 칭찬 없이 의사결정을 요청하세요."
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "여권 만들기"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "할 수 있게 되고 싶은 것을 중심으로 수업을 구성하세요."
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "쉬운 언어로 된 설명을 함께 만들어 보세요."
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "한 번에 하나의 정확한 질문에 답하며 이해도를 높이세요."
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "덱 구성 중"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "퀴즈 구성 중"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "구매자 교섭력"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "구매자의 취향은 하나의 요인일 뿐입니다. 비용, 기술, 세금, 투입 가격 등이 공급을 변화시킬 수 있습니다."
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "전시 영국 내각 회의실"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "모든 가격 변동을 수요 변화라고 부르기."
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "권력의 중심"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "권력의 중심, 거리의 삶, 그리고 시스템의 가장자리는 서로 다른 역사를 보여줍니다."
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "제국주의에 대해 처칠에게 도전하기"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "상대방이 당대의 세계관을 옹호하는 동안 그들의 생각에 도전하세요."
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "나에게 도전하기"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "반례, 경계 사례 또는 숨겨진 가정 중 하나를 들어 내 마지막 답변에 도전하세요. 질문은 하나만 하세요."
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "유럽의 폭정에 맞서 싸우는 것과 제국을 방어하는 것 사이의 긴장에 도전하기"
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "현재 아티팩트의 가장 취약한 부분을 공략하세요. 직접적으로 가정을 지적하고, 이를 방어하거나 수정하도록 요구하세요."
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "사용자가 의사 결정권을 유지하도록 하면서 약한 가정, 모호한 주장, 누락된 증거에 도전하세요."
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "찬드니 초크"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "장안"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "장안은 당나라의 수도였습니다"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "장안, 742년"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "청중 변경"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "덱 변경"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "입력을 변경하고 출력을 설명하세요."
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "여권 변경"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "설정 변경"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "한꺼번에 변경"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "실행 순서를 확인하기 전에 구문을 변경합니다."
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "여러 파일을 한꺼번에 변경하면 증상이 사라지더라도 실제 원인을 숨길 수 있습니다."
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "내 예측 확인하기"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "다음 단계로 넘어가기 전에 이해도 확인하기"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "비동기 결과를 읽기 전에 await 처리가 되었는지 확인하세요."
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "흔한 함정 확인하기"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "개념과 시작 레벨을 선택하세요. 튜터가 작은 부분을 가르치고, 확인한 다음, 매 답변 후에 조정합니다."
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "도착 지점 선택"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "정확한 진입 지점 선택"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "다음 선택"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "목적지를 선택하세요."
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "방의 관계와 목적을 선택하세요."
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "가장 강력한 진입 지점을 선택하세요."
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "시간 슬라이스 선택"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "도착 지점을 선택하세요."
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "제국주의적 가정을 시험하는 시민 검사"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "시민들은 경건함, 교육, 충성심을 저울질합니다"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "시민권이 정치적 목소리를 결정합니다"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "시민권은 제한적이었습니다"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "주장 명확화"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "주장 추적기"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "청중 명확히 하기"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "행동을 읽기 전에 행위자를 분류합니다."
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "승인 대기 중"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "사다리 오르기"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "프로필 닫기"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "주제 닫기"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "거의 다 왔지만, 링크 하나가 빠졌습니다"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "의류 배급 꾸러미"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "의복은 계급을 빠르게 나타냅니다"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "코치 행동"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "코치 제어"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "코치 응답"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "코치 사이드카"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "인지 부하"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "협업 스타일"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "협력적 교수법"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "협력 학습실"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "작업을 뒷받침하는 예시, 사실, 인용구 또는 제약 조건을 수집하세요."
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "상업적 허가"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "델리의 위원회실"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "흔한 실수"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "모든 모드 비교"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "인물을 영웅이나 악당으로 단순화하지 말고 의도, 당대의 비판, 이후의 결과, 현대적 평가를 비교하세요."
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "유산 비교"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "반란군과 회사 정보 비교"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "오늘날과 비교"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "오늘날과 비교"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "인접한 두 사례를 비교하세요."
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "아이디어를 하나의 유용한 멘탈 모델로 압축하세요."
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "개념 보드"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "간결함은 논리가 성립한 후에야 도움이 됩니다. 길이는 여기서 주된 진단 요소가 아닙니다."
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "증거를 바탕으로 모순, 회피, 결과를 직시하세요."
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "수요 곡선상의 이동과 수요 곡선 자체의 이동을 혼동하고 있습니다."
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "회계상 이익을 실제로 분배하거나 재투자할 수 있는 현금과 혼동하고 있습니다."
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "가정, 현금 흐름 및 가치 평가 연결"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "가이드가 선택한 보수적인 외부 레이어"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "맥락이 곧 보증은 아닙니다"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "맥락 노트"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "학습 계속하기"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "Google 계정으로 계속하기"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "계약법적 고려 사항"
+    }
+  ]
+}

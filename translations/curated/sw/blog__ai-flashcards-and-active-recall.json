@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Swahili",
+  "locale": "sw",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "Upande wa mbele ulio wazi unaouliza wazo moja."
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "Mtego wa kawaida unaoonya kuhusu kosa linalowezekana."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "Upande wa nyuma mfupi unaokamilisha wazo."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "Kidokezo kinachosaidia bila kutoa kila kitu."
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "Chaguo la marudio ili kadi ulizokosa zirudi mapema zaidi."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "Mtiririko rahisi wa flashcards"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "Kadi imara zaidi huomba kukumbuka:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "Kadi yenye manufaa huuliza jambo moja. Haipaswi kuficha maswali matano ndani ya kidokezo kimoja. Inapaswa kuwa mahususi vya kutosha kujibika, lakini si nyembamba kiasi cha kupoteza maana."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "Flashcard dhaifu ya AI husema:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "kumbukumbu ya kufanya mazoezi kwa kukumbuka mara kwa mara"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "Ongeza vidokezo bila kutoa jibu"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI inaweza kusaidia kutengeneza flashcards haraka, lakini kujifunza bado hutokana na kukumbuka. Ikiwa zana inaandika kadi na mwanafunzi hajitahidi kamwe kuzijibu, karibu hakuna kilichobadilika. Toleo lenye manufaa hugeuza noti zisizo nadhifu kuwa vidokezo vilivyolengwa, kisha humfanya mwanafunzi akumbuke kabla ya kufichua jibu."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "AI inaweza kugeuza noti mbichi kuwa vidokezo safi vya kukumbuka. Inaweza kugawa mawazo mapana kuwa kadi ndogo, kuongeza mifano, na kutambua mitego ambayo mwanafunzi anaweza kukosa."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "Flashcards za AI na kukumbuka kwa bidii: jinsi ya kukumbuka zaidi"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "tumia dhana kwenye mfano mdogo."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "Omba kadi za wazo moja zenye vidokezo na mitego ya kawaida."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Nyuma: \"Upangaji wa nafasi hulazimisha kumbukumbu kujenga upya jibu baada ya kusahau kidogo, jambo linaloimarisha kukumbuka baadaye.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "linganisha mawazo mawili;"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "fafanua istilahi;"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "Futa kadi zilizo pana sana au dhahiri sana."
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "Usipitie kila kitu kwa uzito sawa"
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "Rahisi. Isogeze baadaye."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "eleza sababu;"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "Flashcards ni mojawapo ya njia rahisi zaidi za kufanya hili."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "Flashcards zina nguvu, lakini si mchakato mzima wa kusoma. Zinafaa zaidi kwa kukumbuka, msamiati, fasili, fomula, tofauti, na mifano muhimu. Zinakuwa dhaifu wakati mwanafunzi hajawahi kuelewa wazo tangu mwanzo."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Flashcards hufanya kazi vizuri zaidi zinapopima wazo moja kwa wakati, zinaonyesha majibu baada tu ya juhudi, na kurudisha kadi zilizokosewa mapema zaidi."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "Kwa njia ya kina zaidi, soma mwongozo wa Flashcard Builder na vidokezo na mzunguko wa masomo wa Flashcard Builder. Lengo si seti nzuri ya kadi. Lengo ni kukumbuka zaidi noti zinapokuwa hazipo."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "Kwa mfano:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "Mbele: \"Kwa nini marudio yaliyopangwa kwa nafasi hufanya kazi vizuri kuliko kusoma kwa msongamano?\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "Ngumu. Rudia baada ya kuchelewa kidogo."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "Kidokezo: \"Fikiria kuhusu kusahau na kukumbuka.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "Vidokezo vinafaa vinapohifadhi juhudi. Kidokezo kibaya ni jibu lililojificha. Kidokezo kizuri hupunguza eneo la kutafuta."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "tambua kosa la kawaida;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "Ikiwa kadi inaendelea kushindikana, usiirudie tu. Uliza kwa nini ni ngumu. Tumia Socratic Instruction kufichua dhana potofu, Math Step Coach kwa mapengo ya utaratibu, au maktaba ya vidokezo vya kujifunza kwa AI kupata kidokezo bora cha kusoma."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "Flashcard Builder ya inspir imeundwa kuzunguka mzunguko huo wa kukumbuka kwa bidii: jenga seti, jaribu upande wa mbele, fichua jibu, kadiria kumbukumbu yako, na rudia yaliyokosewa hadi wazo lishike."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "Imekosewa. Rudia hivi karibuni."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "Kosa moja wanafunzi hufanya ni kuchukulia kila kadi sawa. Ikiwa unaijua kadi papo hapo, kuirudia tena kesho kunaweza kupoteza muda. Ukikosa kadi, kusubiri wiki moja kunaweza kuwa muda mrefu sana."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "Unganisha flashcards na uelewa"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "Bandika sehemu ndogo ya noti kwenye Flashcard Builder."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "Usanisinuru: mchakato ambao mimea hutumia kutengeneza chakula."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "Kadiria kumbukumbu kwa uaminifu."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "Noti za kusoma huhisi kama kazi inaendelea. Kuzikumbuka baadaye ndiyo jaribio halisi."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "kumbuka mfuatano;"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "Rudia bila kuangalia upande wa nyuma."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "Kadi imara mara nyingi hujumuisha:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "ujuzi wa kusoma"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Kidokezo hicho humsaidia mwanafunzi kuanza bila kuondoa kitendo cha kukumbuka. Flashcard Builder ya inspir imeundwa kwa mzunguko huu wa kufichua na kupima: jaribu kwanza, fichua pili, pima kwa uaminifu, kisha rudisha kadi dhaifu mapema zaidi."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Ndiyo maana kukumbuka kwa bidii ni muhimu. Badala ya kuangalia jibu, unajaribu kulitoa kutoka kumbukumbuni. Jitihada hiyo huimarisha kumbukumbu na huonyesha kinachohitaji kazi zaidi."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "Mwanafunzi bado anapaswa kufanya kazi ya kukumbuka. Hilo ndilo kusudi."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "Kadi ya pili humfanya mwanafunzi akumbuke uhusiano, si kutambua sentensi tu. Kadi nzuri kwa kawaida hulenga moja ya kazi hizi:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "Hili halihitaji kuwa tata. Sehemu muhimu ni kwamba ratiba yako ya marudio ijibu kumbukumbu badala ya kuichukulia seti ya kadi kama orodha tuli."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "Jaribu katika Flashcard Builder. Ikiwa unahitaji kuelewa mada kabla ya kutengeneza kadi, anza na Learn Anything. Ikiwa unataka shinikizo baada ya kurudia kadi, nenda kwenye Quiz Me On Trivia au Viva Practice."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "Geuza noti kuwa kadi bora"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "Geuza makosa yanayojirudia kuwa swali kwa Learn Anything."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "Tumia mzunguko huu:"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Tumia viwango vitatu:"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Jukumu la klorofili katika usanisinuru ni nini?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "Kinachofanya flashcard iwe nzuri"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "Unapobandika noti kwenye AI, iombe igawanye mawazo mapana katika kazi hizo. Seti yenye kadi 18 mahususi kwa kawaida ni bora kuliko seti yenye kadi 5 kubwa ambazo kila moja ina aya nzima."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "Mahali AI husaidia"
+    }
+  ]
+}

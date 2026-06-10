@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Punjabi",
+  "locale": "pa",
+  "namespace": "route:prompts",
+  "sourceHash": "52bbfc34cc3a087619a8c0a53a101d03dc7252f34f52d3fa43b2e29e83344528",
+  "part": {
+    "index": 1,
+    "total": 5
+  },
+  "entries": [
+    {
+      "key": "site.2c96c60d177b424b9f",
+      "source": "{value1} AI learning prompts",
+      "value": "{value1} AI learning ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.89bad2c5e802b8af31",
+      "source": "{value1} prompts",
+      "value": "{value1} ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.c6d8180abdab526769",
+      "source": "{value1} starter prompts",
+      "value": "{value1} starter ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.1d3641443de0df089b",
+      "source": "{value1}: {value2}",
+      "value": "{value1}: {value2} ਵਿਵਰਣ"
+    },
+    {
+      "key": "site.8270bbbae0970dc932",
+      "source": "10 MCQs on any topic with a score",
+      "value": "ਕਿਸੇ ਵੀ ਵਿਸ਼ੇ 'ਤੇ ਸਕੋਰ ਦੇ ਨਾਲ 10 MCQs"
+    },
+    {
+      "key": "site.293efcb73e2cdd9886",
+      "source": "A guided reasoning chamber for disciplined questioning",
+      "value": "ਅਨੁਸ਼ਾਸਿਤ ਪ੍ਰਸ਼ਨਾਂ ਲਈ ਇੱਕ ਨਿਰਦੇਸ਼ਿਤ ਤਰਕ ਚੈਂਬਰ"
+    },
+    {
+      "key": "site.4d365b2f5823ef4e0d",
+      "source": "A public AI learning prompt library with starter prompts for tutoring, homework help, Socratic questions, quizzes, flashcards, writing feedback, exam prep, and more.",
+      "value": "A ਜਨਤਕ AI learning ਪ੍ਰੌਮਪਟ ਲਾਇਬ੍ਰੇਰੀ ਨਾਲ starter ਪ੍ਰੌਮਪਟ ਲਈ tutoring, ਹੋਮਵਰਕ ਮਦਦ, ਸੋਕਰੇਟਿਕ ਸਵਾਲ, ਕਵਿਜ਼, ਫਲੈਸ਼ਕਾਰਡ, ਲਿਖਤ ਫੀਡਬੈਕ, ਇਮਤਿਹਾਨ prep, ਅਤੇ more."
+    },
+    {
+      "key": "site.656a120c3cef3e1730",
+      "source": "Accountability Partner",
+      "value": "ਜਵਾਬਦੇਹੀ ਭਾਈਵਾਲ"
+    },
+    {
+      "key": "site.b484114207a28812a8",
+      "source": "Act as an intelligent collaborator in a shared workroom, helping the user learn, think, and produce through visible shared work.",
+      "value": "Act as ਇੱਕ intelligent collaborator ਵਿੱਚ ਇੱਕ shared workroom, helping user ਸਿੱਖੋ, think, ਅਤੇ produce ਰਾਹੀਂ visible shared ਕੰਮ."
+    },
+    {
+      "key": "site.5297eaca5251bfeb03",
+      "source": "Active Learning",
+      "value": "ਸਰਗਰਮ ਸਿਖਲਾਈ"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "ਸਕ੍ਰਿਆਤਮਕ ਰੀਕਾਲ"
+    },
+    {
+      "key": "site.9d3c8506ef510c151d",
+      "source": "Adaptive lessons that make you do",
+      "value": "ਅਨੁਕੂਲ ਪਾਠ ਜੋ ਤੁਹਾਨੂੰ ਕੰਮ ਕਰਨ ਲਈ ਪ੍ਰੇਰਿਤ ਕਰਦੇ ਹਨ"
+    },
+    {
+      "key": "site.d61a66c51f682dcb84",
+      "source": "Add nodes, test relationships, find gaps, and revise the map.",
+      "value": "Add nodes, test relationships, find gaps, ਅਤੇ revise ਨਕਸ਼ਾ."
+    },
+    {
+      "key": "site.7b951c0ab5479c1615",
+      "source": "Add your next edit, decision, question, or handoff",
+      "value": "ਆਪਣਾ ਅਗਲਾ ਬਦਲਾਅ, ਫੈਸਲਾ, ਸਵਾਲ, ਜਾਂ ਹੈਂਡਆਫ ਸ਼ਾਮਲ ਕਰੋ"
+    },
+    {
+      "key": "site.badffd4897cc89d905",
+      "source": "Adjust audio and pair it with a realistic work block.",
+      "value": "Adjust audio ਅਤੇ pair ਇਹ ਨਾਲ ਇੱਕ ਹਕੀਕਤੀ ਕੰਮ block."
+    },
+    {
+      "key": "site.9b5fe90fbbcef2909b",
+      "source": "Adjust sound choice and pair it with a focus block.",
+      "value": "Adjust sound choice ਅਤੇ pair ਇਹ ਨਾਲ ਇੱਕ focus block."
+    },
+    {
+      "key": "site.761806a78bc96d1e13",
+      "source": "After every learner answer, identify the claim, reasoning, assumptions, gaps, contradictions, or corrected insight. Give one brief read of their answer, update the reasoning map with concise labels, then ask exactly one next-best question.",
+      "value": "After every ਸਿੱਖਣ ਵਾਲਾ ਜਵਾਬ, identify ਦਾਅਵਾ, ਤਰਕ, assumptions, gaps, contradictions, ਜਾਂ corrected insight. Give one brief ਪੜ੍ਹੋ ਦਾ ਉਨ੍ਹਾਂ ਦਾ ਜਵਾਬ, update ਤਰਕ ਨਕਸ਼ਾ ਨਾਲ concise labels, ਫਿਰ ਪੁੱਛੋ exactly one next-ਸਭ ਤੋਂ ਵਧੀਆ ਸਵਾਲ."
+    },
+    {
+      "key": "site.445f077b5d649a6370",
+      "source": "AI exam prep prompts",
+      "value": "AI ਇਮਤਿਹਾਨ prep ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.88c9f1f09fd5fa38fb",
+      "source": "AI flashcard prompts",
+      "value": "AI flashcard ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.56f848e0f9e7bbad77",
+      "source": "AI Help",
+      "value": "AI ਮਦਦ"
+    },
+    {
+      "key": "site.84d5ad0c8c38fac5fb",
+      "source": "AI homework help prompts",
+      "value": "AI ਹੋਮਵਰਕ ਮਦਦ ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.7817d99167cca36454",
+      "source": "AI in classrooms",
+      "value": "ਕਲਾਸਰੂਮਾਂ ਵਿੱਚ AI"
+    },
+    {
+      "key": "site.c567176a52dfc06d8e",
+      "source": "AI learning prompt categories",
+      "value": "AI learning ਪ੍ਰੌਮਪਟ ਵਰਗ"
+    },
+    {
+      "key": "site.e654960c386982aa27",
+      "source": "AI Learning Prompt Library",
+      "value": "AI ਲਰਨਿੰਗ ਪ੍ਰੌਮਪਟ ਲਾਇਬ੍ਰੇਰੀ"
+    },
+    {
+      "key": "site.9cfbe350cf6faa5e94",
+      "source": "AI Learning Prompt Library | inspir",
+      "value": "AI Learning ਪ੍ਰੌਮਪਟ ਲਾਇਬ੍ਰੇਰੀ | inspir"
+    },
+    {
+      "key": "site.b7e4b30d6b4cd6d17a",
+      "source": "AI learning prompt search intents",
+      "value": "AI learning ਪ੍ਰੌਮਪਟ search intents"
+    },
+    {
+      "key": "site.aa19875db47e56a2b0",
+      "source": "AI learning prompts",
+      "value": "AI learning ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.39de8c550e85b64fa8",
+      "source": "AI Socratic tutor prompts",
+      "value": "AI Socratic tutor ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.8f277c54e75609265c",
+      "source": "AI study prompts",
+      "value": "AI ਅਧਿਐਨ ਪ੍ਰੋੰਪਟ"
+    },
+    {
+      "key": "site.318984b9f9acc3f6de",
+      "source": "AI tutor prompts",
+      "value": "AI tutor ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.2756b7c190b59ce563",
+      "source": "AI writing feedback prompts",
+      "value": "AI ਲਿਖਤ ਫੀਡਬੈਕ ਪ੍ਰੌਮਪਟ"
+    },
+    {
+      "key": "site.5cb48f858250c1b226",
+      "source": "ai-learning-platform, ai-study-platform",
+      "value": "AI ਸਿੱਖਣ ਦਾ ਪ੍ਲੇਟਫੌਰ੍ਮ, AI ਪੜ੍ਹਾਈ ਪ੍ਲੇਟਫੌਰ੍ਮ"
+    },
+    {
+      "key": "site.43a69b5b6c6987ab48",
+      "source": "All inspir AI learning prompt starters",
+      "value": "All inspir AI learning ਪ੍ਰੌਮਪਟ starters"
+    },
+    {
+      "key": "site.1c56d2d141ea93a984",
+      "source": "ambient sounds",
+      "value": "ਐਂਬੀਐਂਟ ਸਾਊਂਡਸ"
+    },
+    {
+      "key": "site.0bb179274b1375c2c7",
+      "source": "Ambient Sounds",
+      "value": "ਐਂਬੀਐਂਟ ਸਾਊਂਡਸ"
+    },
+    {
+      "key": "site.25bc96295797b5371a",
+      "source": "Analytics",
+      "value": "ਵਿਸ਼ਲੇਸ਼ਣ"
+    },
+    {
+      "key": "site.630dff24d48bbe9e5f",
+      "source": "Analyze a chart from my textbook",
+      "value": "ਮੇਰੀ ਪਾਠ ਪੁਸਤਕ ਤੋਂ ਇੱਕ ਚਾਰਟ ਦਾ ਵਿਸ਼ਲੇਸ਼ਣ ਕਰੋ"
+    },
+    {
+      "key": "site.f3d82372406438fc15",
+      "source": "Animal testing",
+      "value": "ਜਾਨਵਰਾਂ 'ਤੇ ਟੈਸਟਿੰਗ"
+    },
+    {
+      "key": "site.4a562a9b337e6bcf7b",
+      "source": "Answer the active question in your own words",
+      "value": "ਸਰਗਰਮ ਸਵਾਲ ਦਾ ਜਵਾਬ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦਿਓ"
+    },
+    {
+      "key": "site.24631ae56fdf2458b4",
+      "source": "Answer the learner directly, then offer two possible paths: simpler foundations or deeper exploration.",
+      "value": "ਜਵਾਬ ਸਿੱਖਣ ਵਾਲਾ directly, ਫਿਰ offer two possible paths: ਹੋਰ ਸਧਾਰਣ ਬੁਨਿਆਦਾਂ ਜਾਂ deeper ਪੜਚੋਲ."
+    },
+    {
+      "key": "site.bd15717df793a3c48d",
+      "source": "Are these prompts just for ChatGPT?",
+      "value": "Are ਇਹ ਪ੍ਰੌਮਪਟ just ਲਈ ChatGPT?"
+    },
+    {
+      "key": "site.5724fa519df604c68f",
+      "source": "Argue both sides and sharpen thinking",
+      "value": "ਦੋਵਾਂ ਪੱਖਾਂ 'ਤੇ ਦਲੀਲ ਦਿਓ ਅਤੇ ਸੋਚ ਨੂੰ ਤੇਜ਼ ਕਰੋ"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "ਬਹਿਸ"
+    },
+    {
+      "key": "site.59e0b5e990e4abcd08",
+      "source": "Art Appreciation Guide",
+      "value": "ਕਲਾ ਪ੍ਰਸ਼ੰਸਾ ਗਾਈਡ"
+    },
+    {
+      "key": "site.8cf49371813924ee9b",
+      "source": "Ask a teacher for help",
+      "value": "ਅਧਿਆਪਕ ਤੋਂ ਮਦਦ ਮੰਗੋ"
+    },
+    {
+      "key": "site.f3596efe3970f77e47",
+      "source": "Ask about goals, deadlines, available time, and current confidence.",
+      "value": "ਪੁੱਛੋ ਬਾਰੇ ਟੀਚੇ, deadlines, available ਸਮਾਂ, ਅਤੇ current ਆਤਮ-ਵਿਸ਼ਵਾਸ."
+    },
+    {
+      "key": "site.d5e602864e9aae0c25",
+      "source": "Ask Ambedkar about democracy",
+      "value": "ਅੰਬੇਦਕਰ ਨੂੰ ਲੋਕਤੰਤਰ ਬਾਰੇ ਪੁੱਛੋ"
+    },
+    {
+      "key": "site.537d2b3dc7097b9871",
+      "source": "Ask audience, metric, risks, and how to include improvement.",
+      "value": "ਪੁੱਛੋ ਦਰਸ਼ਕ, metric, ਖਤਰੇ, ਅਤੇ how ਨੂੰ include improvement."
+    },
+    {
+      "key": "site.04e52aeabc0b08909c",
+      "source": "Ask current routine, target habit, and easiest daily version.",
+      "value": "ਪੁੱਛੋ current ਰੁਟੀਨ, target ਆਦਤ, ਅਤੇ easiest daily version."
+    },
+    {
+      "key": "site.7ab7c687e52242e47a",
+      "source": "Ask follow-ups, evaluate accuracy and confidence, correct gaps, and retry.",
+      "value": "ਪੁੱਛੋ follow-ups, evaluate accuracy ਅਤੇ ਆਤਮ-ਵਿਸ਼ਵਾਸ, correct gaps, ਅਤੇ retry."
+    },
+    {
+      "key": "site.285ea4c174d1520547",
+      "source": "Ask for a topic, level, or word list; then introduce a small set.",
+      "value": "a ਵਿਸ਼ਾ, ਪੱਧਰ, ਜਾਂ word list; ਫਿਰ introduce ਇੱਕ small set. ਮੰਗੋ"
+    },
+    {
+      "key": "site.427fb050d7dc2dc514",
+      "source": "Ask for artwork/style or provide a looking framework.",
+      "value": "artwork/ਸ਼ੈਲੀ ਜਾਂ provide ਇੱਕ looking framework. ਮੰਗੋ"
+    },
+    {
+      "key": "site.6e665f7600e0c89537",
+      "source": "Ask for assignment names, due dates, effort, and current status.",
+      "value": "assignment names, due dates, effort, ਅਤੇ current status. ਮੰਗੋ"
+    },
+    {
+      "key": "site.084423923bd784bb4d",
+      "source": "Ask for audience, goal, and draft status if unclear; then give focused feedback.",
+      "value": "ਦਰਸ਼ਕ, ਟੀਚਾ, ਅਤੇ ਡਰਾਫਟ status ਜੇ unclear; ਫਿਰ give ਕੇਂਦਰਿਤ ਫੀਡਬੈਕ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.0e2b6597354136d2cf",
+      "source": "Ask for author, title, date, publisher, URL, and access date when needed.",
+      "value": "author, title, ਮਿਤੀ, publisher, URL, ਅਤੇ ਪਹੁੰਚ ਮਿਤੀ ਜਦੋਂ needed. ਮੰਗੋ"
+    },
+    {
+      "key": "site.119b48cd9bad369d89",
+      "source": "Ask for available time, must-do tasks, and energy level.",
+      "value": "available ਸਮਾਂ, must-do tasks, ਅਤੇ ਊਰਜਾ ਪੱਧਰ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.a6b51d42cf02c49b7d",
+      "source": "Ask for commitment, partner/context, check-in frequency, and proof.",
+      "value": "commitment, partner/ਸੰਦਰਭ, ਜਾਂਚੋ-in frequency, ਅਤੇ proof. ਮੰਗੋ"
+    },
+    {
+      "key": "site.2d392770c0b100f840",
+      "source": "Ask for domain and difficulty, then set the case brief and first decision.",
+      "value": "domain ਅਤੇ ਮੁਸ਼ਕਲ ਪੱਧਰ ਮੰਗੋ, ਫਿਰ set case brief ਅਤੇ first decision."
+    },
+    {
+      "key": "site.a98ced627266f72c48",
+      "source": "Ask for event and depth, then separate background causes from immediate triggers.",
+      "value": "event ਅਤੇ depth ਮੰਗੋ, ਫਿਰ separate background causes ਤੋਂ immediate triggers."
+    },
+    {
+      "key": "site.0471a9c6156fd1be0c",
+      "source": "Ask for exam date, syllabus, available time, and confidence by topic.",
+      "value": "ਇਮਤਿਹਾਨ ਮਿਤੀ, syllabus, available ਸਮਾਂ, ਅਤੇ ਆਤਮ-ਵਿਸ਼ਵਾਸ ਰਾਹੀਂ ਵਿਸ਼ਾ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.b8b85519e2e1a47fc9",
+      "source": "Ask for format, time limit, and audience; then begin a practice round.",
+      "value": "ਫਾਰਮੈਟ, ਸਮਾਂ limit, ਅਤੇ ਦਰਸ਼ਕ; ਫਿਰ begin ਇੱਕ ਅਭਿਆਸ round. ਮੰਗੋ"
+    },
+    {
+      "key": "site.98db5f82ec3a2af323",
+      "source": "Ask for goal, constraints, and desired vibe; then offer a varied idea set.",
+      "value": "ਟੀਚਾ, ਪਾਬੰਦੀਆਂ, ਅਤੇ desired vibe; ਫਿਰ offer ਇੱਕ varied ਵਿਚਾਰ set. ਮੰਗੋ"
+    },
+    {
+      "key": "site.963106b4f414d94e70",
+      "source": "Ask for goal, timeline, tasks, and what counts as real progress.",
+      "value": "ਟੀਚਾ, timeline, tasks, ਅਤੇ what counts as real progress. ਮੰਗੋ"
+    },
+    {
+      "key": "site.e62b9ae3a1c383622b",
+      "source": "Ask for grading scale, weights, current scores, and target.",
+      "value": "grading scale, weights, current scores, ਅਤੇ target. ਮੰਗੋ"
+    },
+    {
+      "key": "site.7bc9a6a4e0eb9f0b3e",
+      "source": "Ask for group size, goal, duration, and check-in cadence.",
+      "value": "group size, ਟੀਚਾ, duration, ਅਤੇ ਜਾਂਚੋ-in cadence. ਮੰਗੋ"
+    },
+    {
+      "key": "site.8da5e289a4d94213bf",
+      "source": "Ask for language, goal, and code/error if relevant.",
+      "value": "language, ਟੀਚਾ, ਅਤੇ code/ਗਲਤੀ ਜੇ relevant. ਮੰਗੋ"
+    },
+    {
+      "key": "site.a510b85398e6ed0fb1",
+      "source": "Ask for language, learner level, and scenario; then start in character.",
+      "value": "language, ਸਿੱਖਣ ਵਾਲਾ ਪੱਧਰ, ਅਤੇ scenario; ਫਿਰ ਸ਼ੁਰੂ ਕਰੋ ਵਿੱਚ character. ਮੰਗੋ"
+    },
+    {
+      "key": "site.46b04eed1ce5b240d0",
+      "source": "Ask for material, deadline, and prior confidence.",
+      "value": "ਸਮੱਗਰੀ, ਅੰਤਿਮ ਮਿਤੀ, ਅਤੇ prior ਆਤਮ-ਵਿਸ਼ਵਾਸ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.315bb1251ce7e3b500",
+      "source": "Ask for outcome, duration, distractions, and starting state.",
+      "value": "ਨਤੀਜਾ, duration, distractions, ਅਤੇ starting state. ਮੰਗੋ"
+    },
+    {
+      "key": "site.05e25251a393a3e9c2",
+      "source": "Ask for peer feedback",
+      "value": "peer ਫੀਡਬੈਕ ਮੰਗੋ"
+    },
+    {
+      "key": "site.e5efa3b02f4022b1bc",
+      "source": "Ask for place or theme, then orient with location, scale, and key features.",
+      "value": "place ਜਾਂ theme ਮੰਗੋ, ਫਿਰ orient ਨਾਲ location, scale, ਅਤੇ key features."
+    },
+    {
+      "key": "site.f7b5131ac12cc08b60",
+      "source": "Ask for research goal, level, and available sources.",
+      "value": "ਖੋਜ ਟੀਚਾ, ਪੱਧਰ, ਅਤੇ available ਸਰੋਤ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.2afb2438829f1297ed",
+      "source": "Ask for role, audience, and background; then run a first question.",
+      "value": "role, ਦਰਸ਼ਕ, ਅਤੇ background; ਫਿਰ run ਇੱਕ first ਸਵਾਲ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.11f2bfb8e5edb1b7b1",
+      "source": "Ask for source material and pair type.",
+      "value": "ਸਰੋਤ ਸਮੱਗਰੀ ਅਤੇ pair type. ਮੰਗੋ"
+    },
+    {
+      "key": "site.884bdf7600ff57f01f",
+      "source": "Ask for source material or topic and target difficulty.",
+      "value": "ਸਰੋਤ ਸਮੱਗਰੀ ਜਾਂ ਵਿਸ਼ਾ ਅਤੇ target ਮੁਸ਼ਕਲ ਪੱਧਰ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.4c19533f1f78e3db1e",
+      "source": "Ask for source material, topic, and target detail if missing.",
+      "value": "ਸਰੋਤ ਸਮੱਗਰੀ, ਵਿਸ਼ਾ, ਅਤੇ target detail ਜੇ missing. ਮੰਗੋ"
+    },
+    {
+      "key": "site.ff7bb65608584ee316",
+      "source": "Ask for subject, level, time limit, and question types if missing.",
+      "value": "ਵਿਸ਼ਾ, ਪੱਧਰ, ਸਮਾਂ limit, ਅਤੇ ਸਵਾਲ types ਜੇ missing. ਮੰਗੋ"
+    },
+    {
+      "key": "site.a8da551efd61e46661",
+      "source": "Ask for subjects, deadlines, resources, and pain points.",
+      "value": "ਵਿਸ਼ੇ, deadlines, reਸਰੋਤ, ਅਤੇ pain points. ਮੰਗੋ"
+    },
+    {
+      "key": "site.4354a840106e740e0f",
+      "source": "Ask for subjects, time spent, wins, misses, and upcoming deadlines.",
+      "value": "ਵਿਸ਼ੇ, ਸਮਾਂ spent, wins, misses, ਅਤੇ upcoming deadlines. ਮੰਗੋ"
+    },
+    {
+      "key": "site.a8b2580a67452045b9",
+      "source": "Ask for the data, context, and question being answered.",
+      "value": "the ਡਾਟਾ, ਸੰਦਰਭ, ਅਤੇ ਸਵਾਲ being answered. ਮੰਗੋ"
+    },
+    {
+      "key": "site.5b4fd2270651097e04",
+      "source": "Ask for the diagram parts or subject, then generate a label list and practice round.",
+      "value": "the diagram parts ਜਾਂ ਵਿਸ਼ਾ ਮੰਗੋ, ਫਿਰ generate ਇੱਕ label list ਅਤੇ ਅਭਿਆਸ round."
+    },
+    {
+      "key": "site.c7c1f2d7322a3ab6d1",
+      "source": "Ask for the habit, current obstacle, and easiest starting version.",
+      "value": "the ਆਦਤ, current obstacle, ਅਤੇ easiest starting version. ਮੰਗੋ"
+    },
+    {
+      "key": "site.f3692ccb931fbce24d",
+      "source": "Ask for the learning context and behaviors worth rewarding.",
+      "value": "the learning ਸੰਦਰਭ ਅਤੇ behaviors worth rewarding. ਮੰਗੋ"
+    },
+    {
+      "key": "site.5ea1010e190756e791",
+      "source": "Ask for the note set, subject, and desired organization style.",
+      "value": "the note set, ਵਿਸ਼ਾ, ਅਤੇ desired organization ਸ਼ੈਲੀ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.996c6a99589be01eba",
+      "source": "Ask for the passage or title and the learner's goal.",
+      "value": "the passage ਜਾਂ title ਅਤੇ ਸਿੱਖਣ ਵਾਲਾ's ਟੀਚਾ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.a4e68fc032bb4ddf56",
+      "source": "Ask for the question, learner answer, and expected answer if any part is missing.",
+      "value": "the ਸਵਾਲ, ਸਿੱਖਣ ਵਾਲਾ ਜਵਾਬ, ਅਤੇ expected ਜਵਾਬ ਜੇ any part ਹੈ missing. ਮੰਗੋ"
+    },
+    {
+      "key": "site.a54855f42d844443f5",
+      "source": "Ask for the source text, claim, author, date, and context if missing.",
+      "value": "the ਸਰੋਤ text, ਦਾਅਵਾ, author, ਮਿਤੀ, ਅਤੇ ਸੰਦਰਭ ਜੇ missing. ਮੰਗੋ"
+    },
+    {
+      "key": "site.b2fa2f1b57f733ce3d",
+      "source": "Ask for the study block length and suggest a break rhythm.",
+      "value": "the study block length ਅਤੇ suggest ਇੱਕ break rhythm. ਮੰਗੋ"
+    },
+    {
+      "key": "site.c6fdc44d059fa472e5",
+      "source": "Ask for the task, target duration, and completion criteria.",
+      "value": "the task, target duration, ਅਤੇ completion criteria. ਮੰਗੋ"
+    },
+    {
+      "key": "site.aef265161171456bcb",
+      "source": "Ask for the text and desired length if missing.",
+      "value": "the text ਅਤੇ desired length ਜੇ missing. ਮੰਗੋ"
+    },
+    {
+      "key": "site.c408791abeb19834eb",
+      "source": "Ask for the topic and which side the learner wants; take the opposite side.",
+      "value": "the ਵਿਸ਼ਾ ਅਤੇ which side ਸਿੱਖਣ ਵਾਲਾ wants; take opposite side. ਮੰਗੋ"
+    },
+    {
+      "key": "site.d37746fbd262e5dea5",
+      "source": "Ask for the topic, context, what they tried, and desired help.",
+      "value": "the ਵਿਸ਼ਾ, ਸੰਦਰਭ, what ਉਹ tried, ਅਤੇ desired ਮਦਦ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.283f49692c65a20536",
+      "source": "Ask for the visible text, labels, and the learner's question if the image is not attached.",
+      "value": "the visible text, labels, ਅਤੇ ਸਿੱਖਣ ਵਾਲਾ's ਸਵਾਲ ਜੇ image ਹੈ ਨਹੀਂ attached. ਮੰਗੋ"
+    },
+    {
+      "key": "site.078c7e0919ee44705b",
+      "source": "Ask for topic and purpose, then propose the central node and first branches.",
+      "value": "ਵਿਸ਼ਾ ਅਤੇ purpose ਮੰਗੋ, ਫਿਰ propose central node ਅਤੇ first branches."
+    },
+    {
+      "key": "site.ffefb04913a46b3b93",
+      "source": "Ask for topic and scope, then propose a first map structure.",
+      "value": "ਵਿਸ਼ਾ ਅਤੇ scope ਮੰਗੋ, ਫਿਰ propose ਇੱਕ first ਨਕਸ਼ਾ ਢਾਂਚਾ."
+    },
+    {
+      "key": "site.a6af2a3120e22424d8",
+      "source": "Ask for topic, age/level, and tone; then create a short story setup.",
+      "value": "ਵਿਸ਼ਾ, age/ਪੱਧਰ, ਅਤੇ tone; ਫਿਰ ਤਿਆਰ ਕਰੋ ਇੱਕ short story setup. ਮੰਗੋ"
+    },
+    {
+      "key": "site.eadbb8b829a747f2bd",
+      "source": "Ask for topic, duration, level, and scoring preference.",
+      "value": "ਵਿਸ਼ਾ, duration, ਪੱਧਰ, ਅਤੇ scoring preference. ਮੰਗੋ"
+    },
+    {
+      "key": "site.935e95f744b8ef5b51",
+      "source": "Ask for topic, level, and examiner style; then begin with a warm-up question.",
+      "value": "ਵਿਸ਼ਾ, ਪੱਧਰ, ਅਤੇ examiner ਸ਼ੈਲੀ; ਫਿਰ begin ਨਾਲ ਇੱਕ warm-up ਸਵਾਲ. ਮੰਗੋ"
+    },
+    {
+      "key": "site.458da4b67cd64d08ed",
+      "source": "Ask for topic, level, and preferred game vibe; then create the first quest.",
+      "value": "ਵਿਸ਼ਾ, ਪੱਧਰ, ਅਤੇ preferred game vibe; ਫਿਰ ਤਿਆਰ ਕਰੋ first quest. ਮੰਗੋ"
+    },
+    {
+      "key": "site.97bb872f6d8903b468",
+      "source": "Ask for topic, level, exam date, and source material if needed.",
+      "value": "ਵਿਸ਼ਾ, ਪੱਧਰ, ਇਮਤਿਹਾਨ ਮਿਤੀ, ਅਤੇ ਸਰੋਤ ਸਮੱਗਰੀ ਜੇ needed. ਮੰਗੋ"
+    },
+    {
+      "key": "site.fd666c3e4cc0c190f3",
+      "source": "Ask for topic, level, question types, and number of items.",
+      "value": "ਵਿਸ਼ਾ, ਪੱਧਰ, ਸਵਾਲ types, ਅਤੇ number ਦਾ items. ਮੰਗੋ"
+    },
+    {
+      "key": "site.b5eb36c5449ff4f87b",
+      "source": "Ask group size, topic, time, and desired outcome.",
+      "value": "ਪੁੱਛੋ group size, ਵਿਸ਼ਾ, ਸਮਾਂ, ਅਤੇ desired ਨਤੀਜਾ."
+    },
+    {
+      "key": "site.eb13e0b413d547707a",
+      "source": "Ask instrument/level if relevant, then teach one small concept.",
+      "value": "ਪੁੱਛੋ instrument/ਪੱਧਰ ਜੇ relevant, ਫਿਰ teach one small concept."
+    },
+    {
+      "key": "site.aa9c8abf089531cddf",
+      "source": "Ask interests, constraints, and curiosity level before recommending paths.",
+      "value": "ਪੁੱਛੋ interests, ਪਾਬੰਦੀਆਂ, ਅਤੇ curiosity ਪੱਧਰ ਤੋਂ ਪਹਿਲਾਂ recommending paths."
+    },
+    {
+      "key": "site.384bbc7a4ac852e0e8",
+      "source": "Ask me questions about this poem",
+      "value": "ਮੈਨੂੰ ਇਸ ਕਵਿਤਾ ਬਾਰੇ ਸਵਾਲ ਪੁੱਛੋ"
+    },
+    {
+      "key": "site.a8672051a0f5c02117",
+      "source": "Ask me thesis defense questions",
+      "value": "ਮੈਨੂੰ ਥੀਸਿਸ ਡਿਫੈਂਸ ਦੇ ਪ੍ਰਸ਼ਨ ਪੁੱਛੋ"
+    },
+    {
+      "key": "site.44978f965047043b57",
+      "source": "Ask one focused diagnostic question quickly. Convert the learner's target into a mastery target internally, then start with a simple question that reveals their mental model.",
+      "value": "ਪੁੱਛੋ one ਕੇਂਦਰਿਤ diagnostic ਸਵਾਲ ਜਲਦੀ. Convert ਸਿੱਖਣ ਵਾਲਾ's target ਵਿੱਚ ਇੱਕ mastery target internally, ਫਿਰ ਸ਼ੁਰੂ ਕਰੋ ਨਾਲ ਇੱਕ ਸਧਾਰਣ ਸਵਾਲ ਕਿ reveals ਉਨ੍ਹਾਂ ਦਾ mental model."
+    },
+    {
+      "key": "site.dd04e773fa0353ffbf",
+      "source": "Ask one sharp goal question, infer sensible defaults, then create a compact learning map with a try-first activity.",
+      "value": "ਪੁੱਛੋ one sharp ਟੀਚਾ ਸਵਾਲ, infer sensible defaults, ਫਿਰ ਤਿਆਰ ਕਰੋ ਇੱਕ compact learning ਨਕਸ਼ਾ ਨਾਲ ਇੱਕ ਅਜ਼ਮਾਓ-first ਗਤੀਵਿਧੀ."
+    },
+    {
+      "key": "site.c1fc0749d21528e35c",
+      "source": "Ask predictions, reveal consequences, adjust variables, and summarize principles.",
+      "value": "ਪੁੱਛੋ predictions, reveal consequences, adjust variables, ਅਤੇ summarize principles."
+    },
+    {
+      "key": "site.8a4dfc8a1a3954bbdd",
+      "source": "Ask the learner to explain the topic in plain language first.",
+      "value": "ਪੁੱਛੋ ਸਿੱਖਣ ਵਾਲਾ ਨੂੰ ਸਮਝਾਓ ਵਿਸ਼ਾ ਵਿੱਚ plain language first."
+    },
+    {
+      "key": "site.95a1accde33b8d972e",
+      "source": "Ask the learner to state their current belief, then test it with a small example.",
+      "value": "ਪੁੱਛੋ ਸਿੱਖਣ ਵਾਲਾ ਨੂੰ state ਉਨ੍ਹਾਂ ਦਾ current belief, ਫਿਰ test ਇਹ ਨਾਲ ਇੱਕ small ਉਦਾਹਰਣ."
+    },
+    {
+      "key": "site.853517f968ce1f1a51",
+      "source": "Ask what data or observations they have and what decision they need.",
+      "value": "ਪੁੱਛੋ what ਡਾਟਾ ਜਾਂ observations ਉਹ have ਅਤੇ what decision ਉਹ need."
+    },
+    {
+      "key": "site.06736eedb0d142242c",
+      "source": "Ask what happened, what they felt, and what they want to improve.",
+      "value": "ਪੁੱਛੋ what happened, what ਉਹ felt, ਅਤੇ what ਉਹ want ਨੂੰ improve."
+    },
+    {
+      "key": "site.c332825ec386824009",
+      "source": "Ask what must be remembered and what familiar place the learner wants to use.",
+      "value": "ਪੁੱਛੋ what ਲਾਜ਼ਮੀ ਹੈ ਹੋਣਾ remembered ਅਤੇ what familiar place ਸਿੱਖਣ ਵਾਲਾ wants ਨੂੰ ਵਰਤੋ."
+    },
+    {
+      "key": "site.a4cf0278718ddda061",
+      "source": "Ask what the learner wants to be quizzed on if the topic is missing.",
+      "value": "ਪੁੱਛੋ what ਸਿੱਖਣ ਵਾਲਾ wants ਨੂੰ ਹੋਣਾ quizzed ਤੇ ਜੇ ਵਿਸ਼ਾ ਹੈ missing."
+    },
+    {
+      "key": "site.2f4bcf33af3c996ab9",
+      "source": "Ask what the learner wants to represent, then propose a simple visual layout.",
+      "value": "ਪੁੱਛੋ what ਸਿੱਖਣ ਵਾਲਾ wants ਨੂੰ represent, ਫਿਰ propose ਇੱਕ ਸਧਾਰਣ visual layout."
+    },
+    {
+      "key": "site.13d29ea274b9e4966b",
+      "source": "Ask what the resource is, audience, and what context they need.",
+      "value": "ਪੁੱਛੋ what reਸਰੋਤ is, ਦਰਸ਼ਕ, ਅਤੇ what ਸੰਦਰਭ ਉਹ need."
+    },
+    {
+      "key": "site.4f41d5c8ebc0ebdea8",
+      "source": "Ask what they are doing and suggest a low-distraction sound preset.",
+      "value": "ਪੁੱਛੋ what ਉਹ ਹਨ doing ਅਤੇ suggest ਇੱਕ low-distraction sound preset."
+    },
+    {
+      "key": "site.73ad590b59591d428a",
+      "source": "Ask what they have tried, then give a hint or worked miniature example.",
+      "value": "ਪੁੱਛੋ what ਉਹ have tried, ਫਿਰ give ਇੱਕ ਇਸ਼ਾਰਾ ਜਾਂ worked miniature ਉਦਾਹਰਣ."
+    },
+    {
+      "key": "site.3330b0e4b9329b8d24",
+      "source": "Ask, evaluate, improve with structure, and retry.",
+      "value": "ਪੁੱਛੋ, evaluate, improve ਨਾਲ ਢਾਂਚਾ, ਅਤੇ retry."
+    },
+    {
+      "key": "site.451319a8325c91de90",
+      "source": "Assign XP, levels, quests, and reflection checkpoints.",
+      "value": "Assign XP, ਸ੍ਤਰs, ਕ੍ਵੇਸ੍ਟ, and ਚਿੰਤਨ ਚੇਕਪੌਇੰਟ."
+    },
+    {
+      "key": "site.9e3e3f75496ae44f8c",
+      "source": "assignment tracker",
+      "value": "ਅਸਾਈਨਮੈਂਟ ਟਰੈਕਰ"
+    },
+    {
+      "key": "site.9f652ed2e7f9977eee",
+      "source": "Assignment Tracker",
+      "value": "ਅਸਾਈਨਮੈਂਟ ਟਰੈਕਰ"
+    },
+    {
+      "key": "site.635eab82738464165f",
+      "source": "Athens, 399 BCE",
+      "value": "ਏਥਨਜ਼, 399 ਈਸਾ ਪੂਰਵ"
+    },
+    {
+      "key": "site.676f0595835b0415b7",
+      "source": "Avoid claiming private beliefs. For living people, imitate public rhetoric broadly without fabricating personal positions.",
+      "value": "Avoid ਦਾਅਵਾing ਨਿੱਜੀ beliefs. ਲਈ living people, imitate ਜਨਤਕ rhetoric broadly ਬਿਨਾਂ fabricating personal positions."
+    },
+    {
+      "key": "site.9e6aed6a8f30dd169d",
+      "source": "Background focus audio that keeps playing",
+      "value": "ਬੈਕਗ੍ਰਾਊਂਡ ਫੋਕਸ ਆਡੀਓ ਜੋ ਚੱਲਦਾ ਰਹਿੰਦਾ ਹੈ"
+    },
+    {
+      "key": "site.0765a400abe3f60770",
+      "source": "Badges & Achievements",
+      "value": "ਬੈਜ ਅਤੇ ਪ੍ਰਾਪਤੀਆਂ"
+    },
+    {
+      "key": "site.8bb5ab62fb43bb6f1e",
+      "source": "Balance school and exam prep",
+      "value": "ਸਕੂਲ ਅਤੇ ਪ੍ਰੀਖਿਆ ਦੀ ਤਿਆਰੀ ਵਿੱਚ ਸੰਤੁਲਨ ਬਣਾਓ"
+    },
+    {
+      "key": "site.234bd62fef5f32b987",
+      "source": "Better AI learning starts with better prompts.",
+      "value": "Better AI learning ਸ਼ੁਰੂ ਹੁੰਦਾ ਹੈ ਨਾਲ better ਪ੍ਰੌਮਪਟ."
+    },
+    {
+      "key": "site.d9904990e5def571e7",
+      "source": "boss round",
+      "value": "ਬੌਸ ਰਾਉੰਡ"
+    },
+    {
+      "key": "site.7623c291c5375ec686",
+      "source": "Brainstorm a science project",
+      "value": "ਵਿਗਿਆਨ ਪ੍ਰੋਜੈਕਟ ਲਈ ਵਿਚਾਰ-ਵਟਾਂਦਰਾ ਕਰੋ"
+    },
+    {
+      "key": "site.98d1637b91a6152002",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "ਪ੍ਰੋਜੈਕਟਾਂ, ਕਹਾਣੀਆਂ, ਡਿਜ਼ਾਈਨਾਂ, ਸਿਰਲੇਖਾਂ, ਪ੍ਰਯੋਗਾਂ ਅਤੇ ਅਚਾਨਕ ਨਜ਼ਰੀਏ ਬਾਰੇ ਬ੍ਰੇਨਸਟਾਰਮਿੰਗ ਕਰੋ।"
+    },
+    {
+      "key": "site.c5c0f10e94a219b55b",
+      "source": "Branch a topic into connected ideas",
+      "value": "ਕਿਸੇ ਵਿਸ਼ੇ ਨੂੰ ਜੁੜੇ ਹੋਏ ਵਿਚਾਰਾਂ ਵਿੱਚ ਵੰਡੋ"
+    },
+    {
+      "key": "site.dab5887f0a9a846248",
+      "source": "Break a big task into timed blocks",
+      "value": "ਇੱਕ ਵੱਡੇ ਕੰਮ ਨੂੰ ਸਮਾਂਬੱਧ ਹਿੱਸਿਆਂ ਵਿੱਚ ਵੰਡੋ"
+    },
+    {
+      "key": "site.55d85e820f7a471c1f",
+      "source": "break reminder",
+      "value": "ਬ੍ਰੇਕ ਰੀਮਾਈਂਡਰ"
+    },
+    {
+      "key": "site.b8b946b425ddf8de86",
+      "source": "Break Reminder",
+      "value": "ਬ੍ਰੇਕ ਰੀਮਾਈਂਡਰ"
+    },
+    {
+      "key": "site.b6ecb7306b4c115a78",
+      "source": "Break tasks into timed steps, reflect on actual effort, and update the next block.",
+      "value": "Break tasks ਵਿੱਚ timed steps, reflect ਤੇ actual effort, ਅਤੇ update next block."
+    },
+    {
+      "key": "site.4b45b2d5e966454c84",
+      "source": "Break the visual into shapes, labels, relationships, and checks for missing information.",
+      "value": "Break visual ਵਿੱਚ shapes, labels, relationships, ਅਤੇ checks ਲਈ missing ਜਾਣਕਾਰੀ."
+    },
+    {
+      "key": "site.87a956984274e6d2b5",
+      "source": "Break work into milestones, inspect progress, remove blockers, and adapt scope.",
+      "value": "Break ਕੰਮ ਵਿੱਚ milestones, inspect progress, remove blockers, ਅਤੇ adapt scope."
+    },
+    {
+      "key": "site.a56e1e195f7a4c2a02",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "ਕੰਮ ਨੂੰ ਨਾਮਿਤ ਕਾਰਜਾਂ ਵਿੱਚ ਵੰਡੋ, ਹਰੇਕ ਦਾ ਸਮਾਂ ਮਾਪੋ, ਅਤੇ ਹਰੇਕ ਫੋਕਸ ਸੈਸ਼ਨ ਤੋਂ ਬਾਅਦ ਦੇਖੋ ਕਿ ਪੜ੍ਹਾਈ ਵਿੱਚ ਕਿੰਨੀ ਮਿਹਨਤ ਲੱਗੀ।"
+    },
+    {
+      "key": "site.0794d5b8029d8aa800",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ਕੋਈ ਪੈਰਾ ਜਾਂ ਕਿਤਾਬ ਦਾ ਵਿਚਾਰ ਲਿਆਓ ਅਤੇ ਸਾਰ, ਸ਼ਬਦਾਵਲੀ, ਅਨੁਮਾਨ ਅਤੇ ਚਰਚਾ ਰਾਹੀਂ ਸਮਝ ਵਧਾਓ।"
+    },
+    {
+      "key": "site.b726419f6e326d9f17",
+      "source": "Browse starter prompts for every public inspir mode, then open the matching guest chat to turn the prompt into a live learning loop.",
+      "value": "Browse starter ਪ੍ਰੌਮਪਟ ਲਈ every ਜਨਤਕ inspir ਮੋਡ, ਫਿਰ ਖੋਲ੍ਹੋ matching guest ਚੈਟ ਨੂੰ ਬਦਲੋ ਪ੍ਰੌਮਪਟ ਵਿੱਚ ਇੱਕ ਲਾਈਵ learning loop."
+    },
+    {
+      "key": "site.cdf4cb489c1367a73a",
+      "source": "Build a biology unit test",
+      "value": "ਜੀਵ ਵਿਗਿਆਨ ਦਾ ਯੂਨਿਟ ਟੈਸਟ ਬਣਾਓ"
+    },
+    {
+      "key": "site.afdc6e2a6ea519b6ce",
+      "source": "Build a finals study guide",
+      "value": "ਫਾਈਨਲ ਪ੍ਰੀਖਿਆ ਲਈ ਸਟੱਡੀ ਗਾਈਡ ਤਿਆਰ ਕਰੋ"
+    },
+    {
+      "key": "site.9a490168399d934cbc",
+      "source": "Build a full test from your material",
+      "value": "ਆਪਣੀ ਸਮੱਗਰੀ ਤੋਂ ਇੱਕ ਪੂਰਾ ਟੈਸਟ ਬਣਾਓ"
+    },
+    {
+      "key": "site.dfb957acc42e99196a",
+      "source": "Build a map of democracy",
+      "value": "ਲੋਕਤੰਤਰ ਦਾ ਇੱਕ ਨਕਸ਼ਾ ਤਿਆਰ ਕਰੋ"
+    },
+    {
+      "key": "site.0fcd3c6df198757937",
+      "source": "Build a photosynthesis explanation with me",
+      "value": "ਮੇਰੇ ਨਾਲ ਪ੍ਰਕਾਸ਼ ਸੰਸ਼ਲੇਸ਼ਣ (photosynthesis) ਦੀ ਵਿਆਖਿਆ ਤਿਆਰ ਕਰੋ"
+    },
+    {
+      "key": "site.3adbd46eba6a77ffa4",
+      "source": "Build a portfolio website",
+      "value": "ਇੱਕ ਪੋਰਟਫੋਲੀਓ ਵੈੱਬਸਾਈਟ ਬਣਾਓ"
+    },
+    {
+      "key": "site.ba586de92a117bdea2",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "ਆਪਣੀ ਮਿਤੀ, ਸਿਲੇਬਸ, ਤਾਕਤਾਂ ਅਤੇ ਕਮਜ਼ੋਰ ਖੇਤਰਾਂ ਤੋਂ ਇੱਕ ਯਥਾਰਥਵਾਦੀ ਇਮਤਿਹਾਨ ਯੋਜਨਾ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.4716c697251a6f7672",
+      "source": "Build a routine that survives real life",
+      "value": "ਇੱਕ ਅਜਿਹਾ ਰੁਟੀਨ ਬਣਾਓ ਜੋ ਅਸਲ ਜੀਵਨ ਵਿੱਚ ਕੰਮ ਆਵੇ"
+    },
+    {
+      "key": "site.ded45628bcad4e1a1a",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "ਉਦੇਸ਼ਾਂ, ਸੰਕਲਪ ਦੇ ਸਾਰ, ਉਦਾਹਰਣਾਂ, ਆਮ ਗਲਤੀਆਂ, ਅਭਿਆਸ ਪ੍ਰਸ਼ਨਾਂ ਅਤੇ ਇੱਕ ਸਮੀਖਿਆ ਯੋਜਨਾ ਦੇ ਨਾਲ ਇੱਕ ਅਧਿਐਨ ਗਾਈਡ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.acb15923b205de7d8d",
+      "source": "Build check-ins that keep you moving",
+      "value": "ਅਜਿਹੇ ਚੈੱਕ-ਇਨ ਬਣਾਓ ਜੋ ਤੁਹਾਨੂੰ ਅੱਗੇ ਵਧਣ ਲਈ ਪ੍ਰੇਰਿਤ ਰੱਖਣ"
+    },
+    {
+      "key": "site.e5d9ce14875b463ee3",
+      "source": "Build communication skill through realistic roleplay and feedback.",
+      "value": "ਬਣਾਓ ਸੰਚਾਰ ਕੌਸ਼ਲ through ਯਥਾਰ੍ਥਵਾਦੀ ਰੋਲਪ੍ਲੇ and ਫ਼ੀਡਬੈਕ."
+    },
+    {
+      "key": "site.1ebdac7f888fa84e98",
+      "source": "Build consistency without guilt",
+      "value": "ਬਿਨਾਂ ਕਿਸੇ ਦੋਸ਼ ਦੇ ਨਿਰੰਤਰਤਾ ਬਣਾਓ"
+    },
+    {
+      "key": "site.a5cc98fbee44c930a8",
+      "source": "Build mixed practice worksheets from a topic or notes.",
+      "value": "ਬਣਾਓ mixed ਅਭਿਆਸ worksheets ਤੋਂ ਇੱਕ ਵਿਸ਼ਾ ਜਾਂ ਨੋਟ."
+    },
+    {
+      "key": "site.951d8c65343997c00b",
+      "source": "Build references in common formats",
+      "value": "ਆਮ ਫਾਰਮੈਟਾਂ ਵਿੱਚ ਹਵਾਲੇ ਬਣਾਓ"
+    },
+    {
+      "key": "site.95ec3bfab65a54a0ae",
+      "source": "Build sections, administer questions, mark responses, and identify weak areas.",
+      "value": "ਬਣਾਓ sections, administer ਸਵਾਲ, mark responses, ਅਤੇ identify ਕਮਜ਼ੋਰ ਖੇਤਰ."
+    },
+    {
+      "key": "site.3a2394e40526963d52",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "ਸਪੱਸ਼ਟ ਨਿਯਮਾਂ, ਸਕੋਰਿੰਗ, ਪੱਧਰਾਂ, ਬੌਸ ਰਾਊਂਡਾਂ ਅਤੇ ਪ੍ਰਤੀਬਿੰਬ ਦੇ ਨਾਲ ਅਧਿਐਨ ਚੁਣੌਤੀਆਂ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.54511757696b263ebe",
+      "source": "Build vocabulary exercises",
+      "value": "ਸ਼ਬਦਾਵਲੀ ਅਭਿਆਸ ਬਣਾਓ"
+    },
+    {
+      "key": "site.dc326fcc24ba471506",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "ਅਰਥ, ਉਦਾਹਰਣਾਂ, ਉਚਾਰਨ ਸੰਕੇਤਾਂ, ਯਾਦ ਰੱਖਣ ਦੇ ਤਰੀਕਿਆਂ ਅਤੇ ਤੇਜ਼ ਅਭਿਆਸ ਨਾਲ ਸ਼ਬਦਾਵਲੀ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.b0bb0056cf4be7c005",
+      "source": "Build, critique, and learn in a shared workroom",
+      "value": "ਇੱਕ ਸਾਂਝੇ ਵਰਕਰੂਮ ਵਿੱਚ ਬਣਾਓ, ਆਲੋਚਨਾ ਕਰੋ ਅਤੇ ਸਿੱਖੋ"
+    },
+    {
+      "key": "site.6c3cb499ed00d5b778",
+      "source": "Business English words",
+      "value": "ਕਾਰੋਬਾਰੀ ਅੰਗਰੇਜ਼ੀ ਸ਼ਬਦ"
+    },
+    {
+      "key": "site.5647b2b0fc91eaaf30",
+      "source": "Business strategy case",
+      "value": "ਕਾਰੋਬਾਰੀ ਰਣਨੀਤੀ ਦਾ ਕੇਸ"
+    },
+    {
+      "key": "site.36d72c2f5ce776d5f7",
+      "source": "Calculate my weighted grade",
+      "value": "ਮੇਰੇ ਵੇਟਿਡ ਗ੍ਰੇਡ ਦੀ ਗਣਨਾ ਕਰੋ"
+    },
+    {
+      "key": "site.86be60cf7dd31dd24b",
+      "source": "Can schools use this prompt library?",
+      "value": "Can ਸਕੂਲ ਵਰਤੋ ਇਹ ਪ੍ਰੌਮਪਟ ਲਾਇਬ੍ਰੇਰੀ?"
+    },
+    {
+      "key": "site.dc429c7fae68e05082",
+      "source": "Career Explorer",
+      "value": "ਕਰੀਅਰ ਐਕਸਪਲੋਰਰ"
+    },
+    {
+      "key": "site.5e518f5df8caac34a7",
+      "source": "Case Study Simulator",
+      "value": "ਕੇਸ ਸਟੱਡੀ ਸਿਮੂਲੇਟਰ"
+    },
+    {
+      "key": "site.d379874eb54c85b8b3",
+      "source": "Causes of World War I",
+      "value": "ਪਹਿਲੇ ਵਿਸ਼ਵ ਯੁੱਧ ਦੇ ਕਾਰਨ"
+    },
+    {
+      "key": "site.63125e6a136a736ab5",
+      "source": "Challenge, score, give feedback, unlock next level, and review missed ideas.",
+      "value": "Challenge, score, give ਫੀਡਬੈਕ, unlock next ਪੱਧਰ, ਅਤੇ ਦੁਹਰਾਈ missed ਵਿਚਾਰ."
+    },
+    {
+      "key": "site.bb2825214fc1d21e26",
+      "source": "Chang'an, 742",
+      "value": "ਚਾਂਗ'ਆਨ, 742"
+    },
+    {
+      "key": "site.ef7de54aac228e3064",
+      "source": "ChatGPT prompts for learning",
+      "value": "ChatGPT ਪ੍ਰੌਮਪਟ ਲਈ learning"
+    },
+    {
+      "key": "site.76932ffa6108b2fbc7",
+      "source": "Check each step, correct errors, and connect procedures to concepts.",
+      "value": "ਹਰ ਚਰਣ ਜਾੰਚੇੰ, ਗਲਤਿਜਾਂੰ ਸੁਧਾਰੇੰ, ਅਤੇ ਪ੍ਰਕ੍ਰਿਜਾਂਓੰ ਨੂੰ ਧਾਰਣਾਵਾਂ ਤੋਂ ਜੋਡ਼ੇੰ।"
+    },
+    {
+      "key": "site.310ba61389fd4b98e1",
+      "source": "Check my essay thesis",
+      "value": "ਮੇਰੇ ਲੇਖ ਦੇ ਥੀਸਿਸ ਦੀ ਜਾਂਚ ਕਰੋ"
+    },
+    {
+      "key": "site.1c7b90644fa2254a97",
+      "source": "Check this claim's evidence",
+      "value": "ਇਸ ਦਾਅਵੇ ਦੇ ਸਬੂਤ ਦੀ ਜਾਂਚ ਕਰੋ"
+    },
+    {
+      "key": "site.9685b5120a71193129",
+      "source": "Check what fields my citation is missing",
+      "value": "ਜਾਂਚ ਕਰੋ ਕਿ ਮੇਰੇ ਹਵਾਲੇ ਵਿੱਚ ਕਿਹੜੇ ਖੇਤਰ ਗਾਇਬ ਹਨ"
+    },
+    {
+      "key": "site.34971b8fb11caeb1c1",
+      "source": "Chicago",
+      "value": "ਸ਼ਿਕਾਗੋ"
+    },
+    {
+      "key": "site.819f9fa9c5b5a32fa1",
+      "source": "Choose calm audio for math",
+      "value": "ਗਣਿਤ ਲਈ ਸ਼ਾਂਤ ਆਡੀਓ ਚੁਣੋ"
+    },
+    {
+      "key": "site.d300974784997be48d",
+      "source": "Choose fair metrics, anti-gaming rules, and reset cadence.",
+      "value": "ਚੁਣੋ fair metrics, anti-gaming rules, ਅਤੇ reset cadence."
+    },
+    {
+      "key": "site.bb0b90624c2a48575b",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "ਪੜ੍ਹਨ, ਲਿਖਣ, ਸਮੱਸਿਆ ਹੱਲ ਕਰਨ ਜਾਂ ਡੀਪ ਵਰਕ ਲਈ ਜਨਰੇਟਿਡ ਫੋਕਸ ਆਡੀਓ ਚੁਣੋ। ਜਦੋਂ ਤੁਸੀਂ ਹੋਰ ਚੈਟਾਂ 'ਤੇ ਸਵਿੱਚ ਕਰਦੇ ਹੋ ਤਾਂ ਇਹ ਚੱਲਦਾ ਰਹਿੰਦਾ ਹੈ।"
+    },
+    {
+      "key": "site.0af92c934c10aa5166",
+      "source": "Choose the learning job before choosing the words.",
+      "value": "ਚੁਣੋ ਸਿੱਖਣ ਕੰਮ ਤੋਂ ਪਹਿਲਾਂ choosing words."
+    },
+    {
+      "key": "site.e25c21d5e0e188b76a",
+      "source": "Citation Generator",
+      "value": "ਹਵਾਲਾ ਜਨਰੇਟਰ"
+    },
+    {
+      "key": "site.7c1a06cc179d00a1f3",
+      "source": "Civics Coach",
+      "value": "ਸਿਵਿਕਸ ਕੋਚ"
+    },
+    {
+      "key": "site.7efd372bf333ca8b10",
+      "source": "Clarify country/context if needed, then explain the institution or idea simply.",
+      "value": "Clarify country/ਸੰਦਰਭ ਜੇ needed, ਫਿਰ ਸਮਝਾਓ institution ਜਾਂ ਵਿਚਾਰ simply."
+    },
+    {
+      "key": "site.fa61db3fd2a4dffddb",
+      "source": "Clarify goal, deadline, resources, and done criteria.",
+      "value": "Clarify ਟੀਚਾ, ਅੰਤਿਮ ਮਿਤੀ, reਸਰੋਤ, ਅਤੇ done criteria."
+    },
+    {
+      "key": "site.3ab4e0b2c8e3138246",
+      "source": "Clarify role, goal, stakes, and tone; then begin in character.",
+      "value": "Clarify role, ਟੀਚਾ, stakes, ਅਤੇ tone; ਫਿਰ begin ਵਿੱਚ character."
+    },
+    {
+      "key": "site.f8100ab23d5de09ed1",
+      "source": "Clarify the personality, topic, and learner's side before beginning.",
+      "value": "Clarify personality, ਵਿਸ਼ਾ, ਅਤੇ ਸਿੱਖਣ ਵਾਲਾ's side ਤੋਂ ਪਹਿਲਾਂ beginning."
+    },
+    {
+      "key": "site.722bf0c4aac42c0afb",
+      "source": "Clarify the question and identify variables or the core concept.",
+      "value": "Clarify ਸਵਾਲ ਅਤੇ identify variables ਜਾਂ core concept."
+    },
+    {
+      "key": "site.a73b33aff646400025",
+      "source": "Clarify the question and offer two or three angles.",
+      "value": "Clarify ਸਵਾਲ ਅਤੇ offer two ਜਾਂ three angles."
+    },
+    {
+      "key": "site.e0a856db3b72e09372",
+      "source": "Clarify the question, add evidence, summarize replies, and plan follow-up.",
+      "value": "Clarify ਸਵਾਲ, add ਸਬੂਤ, summarize replies, ਅਤੇ ਯੋਜਨਾ ਬਣਾਓ follow-up."
+    },
+    {
+      "key": "site.5b41dd35b060436cd0",
+      "source": "Clear explanations for any curiosity",
+      "value": "ਕਿਸੇ ਵੀ ਉਤਸੁਕਤਾ ਲਈ ਸਪੱਸ਼ਟ ਵਿਆਖਿਆਵਾਂ"
+    },
+    {
+      "key": "site.b84375a2dec620c9d0",
+      "source": "Cluster, tag, summarize, connect, and turn notes into review prompts.",
+      "value": "Cluster, tag, summarize, connect, ਅਤੇ ਬਦਲੋ ਨੋਟ ਵਿੱਚ ਦੁਹਰਾਈ ਪ੍ਰੌਮਪਟ."
+    },
+    {
+      "key": "site.c94effc9dd9d4d8f50",
+      "source": "Coach homework ethically by supporting the learner's process.",
+      "value": "Coach ਹੋਮਵਰਕ ethically ਰਾਹੀਂ supporting ਸਿੱਖਣ ਵਾਲਾ's process."
+    },
+    {
+      "key": "site.29b14d5a17735fa13a",
+      "source": "Coach interview preparation through practice and feedback.",
+      "value": "Coach interview preparation ਰਾਹੀਂ ਅਭਿਆਸ ਅਤੇ ਫੀਡਬੈਕ."
+    },
+    {
+      "key": "site.8a4dfaae56ef367b4a",
+      "source": "Coach learners through project planning and execution.",
+      "value": "Coach ਸਿੱਖਣ ਵਾਲੇ ਰਾਹੀਂ project ਯੋਜਨਾ ਅਤੇ execution."
+    },
+    {
+      "key": "site.66fa912f0cf473e317",
+      "source": "Coach the learner without shaming them. Ask for context when needed. Be clear about uncertainty. Do not claim to verify live facts unless tools are explicitly available.",
+      "value": "Coach ਸਿੱਖਣ ਵਾਲਾ ਬਿਨਾਂ shaming them. ਪੁੱਛੋ ਲਈ ਸੰਦਰਭ ਜਦੋਂ needed. ਹੋਣਾ ਸਪੱਸ਼ਟ ਬਾਰੇ uncertainty. Do ਨਹੀਂ ਦਾਅਵਾ ਨੂੰ verify ਲਾਈਵ ਤੱਥ unless ਟੂਲ ਹਨ explicitly available."
+    },
+    {
+      "key": "site.250bfe045e07f5612c",
+      "source": "Coach visual thinking through diagrams, sketches, maps, and labels.",
+      "value": "Coach visual thinking ਰਾਹੀਂ diagrams, sketches, ਨਕਸ਼ੇ, ਅਤੇ labels."
+    },
+    {
+      "key": "site.74ba739696ba4edd69",
+      "source": "Coach writing from idea to revision while preserving the learner's voice.",
+      "value": "Coach ਲਿਖਤ ਤੋਂ ਵਿਚਾਰ ਨੂੰ revision ਜਦਕਿ preserving ਸਿੱਖਣ ਵਾਲਾ's ਆਵਾਜ਼."
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "ਕੋਡ ਟਿਊਟਰ"
+    },
+    {
+      "key": "site.cdb1652b4d2c4a7551",
+      "source": "Collaborative Instruction",
+      "value": "Collaborative Instruction"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "ਸੰਚਾਰ"
+    },
+    {
+      "key": "site.e45b977cc4d0643316",
+      "source": "Compare ethical lenses, test edge cases, and ask the learner to justify a position.",
+      "value": "Compare ethical lenses, test edge cases, ਅਤੇ ਪੁੱਛੋ ਸਿੱਖਣ ਵਾਲਾ ਨੂੰ justify ਇੱਕ position."
+    },
+    {
+      "key": "site.d5efee38e14589e095",
+      "source": "Compare India and Japan",
+      "value": "ਭਾਰਤ ਅਤੇ ਜਾਪਾਨ ਦੀ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "site.fffaef19d232de30aa",
+      "source": "Compare law and psychology",
+      "value": "ਕਾਨੂੰਨ ਅਤੇ ਮਨੋਵਿਗਿਆਨ ਦੀ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "site.6a97f574e88463ca36",
+      "source": "Compare options, show day-in-life, identify skills, and suggest experiments.",
+      "value": "Compare options, show day-in-life, identify skills, ਅਤੇ suggest experiments."
+    },
+    {
+      "key": "site.0d4767cacdcac9f779",
+      "source": "Compare reasoning, identify the exact misconception, then give a similar practice item.",
+      "value": "Compare ਤਰਕ, identify exact ਗਲਤਫ਼ਹਮੀ, ਫਿਰ give ਇੱਕ similar ਅਭਿਆਸ item."
+    },
+    {
+      "key": "site.a5d01060d402fae560",
+      "source": "Compare Renaissance and modern art",
+      "value": "ਪੁਨਰਜਾਗਰਣ (Renaissance) ਅਤੇ ਆਧੁਨਿਕ ਕਲਾ ਦੀ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "site.92857580c96cf266b0",
+      "source": "Compute scenarios, explain assumptions, and identify the highest leverage next assessment.",
+      "value": "Compute scenarios, ਸਮਝਾਓ assumptions, ਅਤੇ identify highest leverage next assessment."
+    },
+    {
+      "key": "site.2e9cde211c0043e4a8",
+      "source": "Concept Map Builder",
+      "value": "ਕਨਸੈਪਟ ਮੈਪ ਬਿਲਡਰ"
+    },
+    {
+      "key": "site.977042da5d6a01ff5b",
+      "source": "Condense readings into useful study notes",
+      "value": "ਪੜ੍ਹਨ ਸਮੱਗਰੀ ਨੂੰ ਲਾਭਦਾਇਕ ਅਧਿਐਨ ਨੋਟਸ ਵਿੱਚ ਸੰਖੇਪ ਕਰੋ"
+    },
+    {
+      "key": "site.b36620712e784e4664",
+      "source": "Connect algebra concepts",
+      "value": "ਬੀਜਗਣਿਤ ਦੇ ਸੰਕਲਪਾਂ ਨੂੰ ਜੋੜੋ"
+    },
+    {
+      "key": "site.5da02d559371eb4150",
+      "source": "Connect ideas visually in text",
+      "value": "ਵਿਚਾਰਾਂ ਨੂੰ ਟੈਕਸਟ ਵਿੱਚ ਵਿਜ਼ੂਅਲ ਰੂਪ ਨਾਲ ਜੋੜੋ"
+    },
+    {
+      "key": "site.fdb3fc1ac4457b8c0b",
+      "source": "Connect physical geography to human activity, ask map-thinking questions, and compare regions.",
+      "value": "Connect physical geography ਨੂੰ human ਗਤੀਵਿਧੀ, ਪੁੱਛੋ ਨਕਸ਼ਾ-thinking ਸਵਾਲ, ਅਤੇ compare regions."
+    },
+    {
+      "key": "site.42699f58579faf467c",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "ਤੱਥਾਂ, ਸੂਚੀਆਂ, ਭਾਸ਼ਣਾਂ ਜਾਂ ਕ੍ਰਮਾਂ ਨੂੰ ਯਾਦਗਾਰੀ ਮਾਨਸਿਕ ਦ੍ਰਿਸ਼ਾਂ ਵਿੱਚ ਬਦਲੋ।"
+    },
+    {
+      "key": "site.bf30600087e7269f2c",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "ਲੈਕਚਰਾਂ, ਰੀਡਿੰਗਾਂ, ਜਾਂ ਕੱਚੇ ਨੋਟਾਂ ਨੂੰ ਕੋਰਨੇਲ ਵਿਧੀ ਵਿੱਚ ਬਦਲੋ, ਜਿਸ ਵਿੱਚ ਸੰਕੇਤ ਪ੍ਰਸ਼ਨ, ਮੁੱਖ ਨੋਟ, ਸਾਰ ਅਤੇ ਸਮੀਖਿਆ ਪ੍ਰੋਂਪਟ ਸ਼ਾਮਲ ਹੋਣ।"
+    },
+    {
+      "key": "site.193cb603180a74c92e",
+      "source": "Convert the user goal into a rough shared artifact before giving advice. Start with: \"I made the first rough structure. Edit anything. I will react to your changes.\" Ask at most one practical context question if needed, but still create the starter structure.",
+      "value": "Convert user ਟੀਚਾ ਵਿੱਚ ਇੱਕ rough shared artifact ਤੋਂ ਪਹਿਲਾਂ giving advice. ਸ਼ੁਰੂ ਕਰੋ with: \"I made first rough ਢਾਂਚਾ. Edit anything. I ਕਰੇਗਾ react ਨੂੰ ਤੁਹਾਡਾ changes.\" ਪੁੱਛੋ ਤੇ most one ਵਰਤੋਂਯੋਗ ਸੰਦਰਭ ਸਵਾਲ ਜੇ needed, but still ਤਿਆਰ ਕਰੋ starter ਢਾਂਚਾ."
+    },
+    {
+      "key": "site.47ba90a32421606713",
+      "source": "Convert topics or notes into structured revision guides.",
+      "value": "Convert ਵਿਸ਼ੇ ਜਾਂ ਨੋਟ ਵਿੱਚ structured revision ਗਾਈਡਾਂ."
+    },
+    {
+      "key": "site.d0fb79858fa666b544",
+      "source": "Coordinate focus rounds with others",
+      "value": "ਦੂਜਿਆਂ ਨਾਲ ਫੋਕਸ ਰਾਊਂਡਾਂ ਦਾ ਤਾਲਮੇਲ ਕਰੋ"
+    },
+    {
+      "key": "site.133c9119bdb19237bb",
+      "source": "cornell notes",
+      "value": "ਕੋਰਨੇਲ ਨੋਟਸ"
+    },
+    {
+      "key": "site.69e2e4dfd85a2cc5dd",
+      "source": "Cornell Notes",
+      "value": "ਕੋਰਨੇਲ ਨੋਟਸ"
+    },
+    {
+      "key": "site.31a88ebc0f5e190d30",
+      "source": "course manager",
+      "value": "ਕੋਰਸ ਮੈਨੇਜਰ"
+    },
+    {
+      "key": "site.1501fde7e7e9a9a4c0",
+      "source": "Course Manager",
+      "value": "ਕੋਰਸ ਮੈਨੇਜਰ"
+    },
+    {
+      "key": "site.bc6da0ddc156009675",
+      "source": "Create a daily English routine",
+      "value": "ਰੋਜ਼ਾਨਾ ਅੰਗਰੇਜ਼ੀ ਰੁਟੀਨ ਬਣਾਓ"
+    },
+    {
+      "key": "site.8c60a83454a2f869bc",
+      "source": "Create a math boss battle",
+      "value": "ਇੱਕ ਗਣਿਤ ਬੌਸ ਲੜਾਈ ਬਣਾਓ"
+    },
+    {
+      "key": "site.810551caeba1797381",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "ਲਿਖਣ ਜਾਂ ਪੜ੍ਹਨ ਤੋਂ ਪਹਿਲਾਂ ਵਿਚਾਰ-ਵਟਾਂਦਰੇ, ਦੁਹਰਾਈ, ਯੋਜਨਾਬੰਦੀ, ਜਾਂ ਸੰਕਲਪਾਂ ਨੂੰ ਜੋੜਨ ਲਈ ਇੱਕ ਮਾਈਂਡ ਮੈਪ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.67e53fd78c28d684f2",
+      "source": "Create a resource summary",
+      "value": "ਇੱਕ ਸਰੋਤ ਸਾਰਾਂਸ਼ ਬਣਾਓ"
+    },
+    {
+      "key": "site.f584f41e3ed4eb35bb",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "ਆਪਣੇ ਸਮੇਂ, ਊਰਜਾ, ਟੀਚਿਆਂ ਅਤੇ ਕਮਜ਼ੋਰ ਪੱਖਾਂ ਦੇ ਆਧਾਰ 'ਤੇ ਇੱਕ ਅਧਿਐਨ ਯੋਜਨਾ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.350902f5bd1ec7f439",
+      "source": "Create a vocabulary boss round",
+      "value": "ਇੱਕ ਸ਼ਬਦਾਵਲੀ ਬੌਸ ਰਾਊਂਡ ਬਣਾਓ"
+    },
+    {
+      "key": "site.0c8d4146100ba39af7",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "ਸਪੱਸ਼ਟ ਵਚਨਬੱਧਤਾਵਾਂ, ਸਬੂਤ, ਰਿਕਵਰੀ ਨਿਯਮਾਂ, ਅਤੇ ਸਹਾਇਕ ਫਾਲੋ-ਅਪ ਦੇ ਨਾਲ ਜਵਾਬਦੇਹੀ ਚੈੱਕ-ਇਨ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.6f92b436449a5721bd",
+      "source": "Create an evidence-aware historical expedition anchored in a temporal passport, concrete place, date, identity, constraints, and progressive world state.",
+      "value": "ਤਿਆਰ ਕਰੋ ਇੱਕ ਸਬੂਤ-aware historical expedition anchored ਵਿੱਚ ਇੱਕ temporal passport, concrete place, ਮਿਤੀ, identity, ਪਾਬੰਦੀਆਂ, ਅਤੇ progressive world state."
+    },
+    {
+      "key": "site.dbb8325dedd1b47bed",
+      "source": "Create an exam-style history paper",
+      "value": "ਇਮਤਿਹਾਨ-ਸ਼ੈਲੀ ਦਾ ਇਤਿਹਾਸ ਦਾ ਪੇਪਰ ਬਣਾਓ"
+    },
+    {
+      "key": "site.31dda0a649f30bd7d2",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "ਸਰੋਤ ਦੇ ਵੇਰਵਿਆਂ ਤੋਂ APA, MLA, ਸ਼ਿਕਾਗੋ, ਹਾਰਵਰਡ, ਜਾਂ ਸਧਾਰਨ ਗ੍ਰੰਥ-ਸੂਚੀ ਐਂਟਰੀਆਂ ਬਣਾਓ ਅਤੇ ਗੁੰਮ ਹੋਏ ਖੇਤਰਾਂ ਦੀ ਜਾਂਚ ਕਰੋ।"
+    },
+    {
+      "key": "site.ac09ba90c8129b4a4f",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "ਨਿਰੰਤਰਤਾ, ਮੁਹਾਰਤ, ਹਿੰਮਤ, ਸੰਸ਼ੋਧਨ, ਸਹਿਯੋਗ ਅਤੇ ਮੁਕੰਮਲ ਕੀਤੇ ਕੰਮਾਂ ਲਈ ਬੈਜ ਬਣਾਓ।"
+    },
+    {
+      "key": "site.0dc603a399dbe67f9b",
+      "source": "Create badges for my class",
+      "value": "ਮੇਰੀ ਕਲਾਸ ਲਈ ਬੈਜ ਬਣਾਓ"
+    },
+    {
+      "key": "site.4a189dbd7eda904ba4",
+      "source": "Create cause-effect pairs",
+      "value": "ਕਾਰਨ-ਪ੍ਰਭਾਵ ਜੋੜੇ ਬਣਾਓ"
+    },
+    {
+      "key": "site.589044ee72cfb4b1cd",
+      "source": "Create challenge rules, rounds, feedback, unlocks, and recap.",
+      "value": "ਤਿਆਰ ਕਰੋ challenge rules, rounds, ਫੀਡਬੈਕ, unlocks, ਅਤੇ recap."
+    },
+    {
+      "key": "site.614e22feb019b54c59",
+      "source": "Create concise learning reports that lead to better planning.",
+      "value": "ਤਿਆਰ ਕਰੋ concise learning reports ਕਿ lead ਨੂੰ better ਯੋਜਨਾ."
+    },
+    {
+      "key": "site.e9ad7886de36bb562e",
+      "source": "Create diagram labeling practice from described visuals.",
+      "value": "ਤਿਆਰ ਕਰੋ diagram labeling ਅਭਿਆਸ ਤੋਂ described visuals."
+    },
+    {
+      "key": "site.109e52eb6d004cb5b1",
+      "source": "Create exam-style practice tests that assess more than recall.",
+      "value": "ਤਿਆਰ ਕਰੋ ਇਮਤਿਹਾਨ-ਸ਼ੈਲੀ ਅਭਿਆਸ tests ਕਿ assess more than recall."
+    },
+    {
+      "key": "site.c0a9d4209f9f524fa1",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "ਅਜਿਹੇ ਨਿਰਪੱਖ ਲੀਡਰਬੋਰਡ ਬਣਾਓ ਜੋ ਮਿਹਨਤ, ਸੁਧਾਰ, ਟੀਮ ਵਰਕ, ਜਾਂ ਇਕਸਾਰਤਾ ਨੂੰ ਇਨਾਮ ਦਿੰਦੇ ਹਨ, ਬਿਨਾਂ ਹੌਲੀ ਸਿੱਖਣ ਵਾਲਿਆਂ ਨੂੰ ਨਿਰਾਸ਼ ਕੀਤੇ।"
+    },
+    {
+      "key": "site.86221d88781709bfec",
+      "source": "Create fair, engaging 10-question multiple-choice quizzes on learner-chosen topics.",
+      "value": "ਤਿਆਰ ਕਰੋ fair, engaging 10-ਸਵਾਲ multiple-choice ਕਵਿਜ਼ ਤੇ ਸਿੱਖਣ ਵਾਲਾ-chosen ਵਿਸ਼ੇ."
+    },
+    {
+      "key": "site.0b29740b0afa046435",
+      "source": "Create geography flashcards",
+      "value": "ਭੂਗੋਲ ਦੇ ਫਲੈਸ਼ਕਾਰਡ ਬਣਾਓ"
+    },
+    {
+      "key": "site.c2d338654893288335",
+      "source": "Create high-quality retrieval practice cards.",
+      "value": "ਤਿਆਰ ਕਰੋ high-quality retrieval ਅਭਿਆਸ ਕਾਰਡ."
+    },
+    {
+      "key": "site.ff0e8d5e8fdbaa3f4f",
+      "source": "Create matching practice that strengthens associations.",
+      "value": "ਤਿਆਰ ਕਰੋ matching ਅਭਿਆਸ ਕਿ strengthens associations."
+    },
+    {
+      "key": "site.c28dfd5c8dcfee4485",
+      "source": "Create mixed chemistry practice",
+      "value": "ਮਿਸ਼ਰਤ ਰਸਾਇਣ ਵਿਗਿਆਨ ਅਭਿਆਸ ਬਣਾਓ"
+    },
+    {
+      "key": "site.1759741798130dda90",
+      "source": "Create practical exam preparation plans and review routines.",
+      "value": "ਤਿਆਰ ਕਰੋ ਵਰਤੋਂਯੋਗ ਇਮਤਿਹਾਨ preparation plans ਅਤੇ ਦੁਹਰਾਈ routines."
+    },
+    {
+      "key": "site.957b709bdb51286eaa",
+      "source": "Create practical language roleplays with feedback.",
+      "value": "ਤਿਆਰ ਕਰੋ ਵਰਤੋਂਯੋਗ language ਰੋਲਪਲੇs ਨਾਲ ਫੀਡਬੈਕ."
+    },
+    {
+      "key": "site.429c62fad91ee48e14",
+      "source": "Create realistic study routines.",
+      "value": "ਬਣਾਓ realistic ਪੜ੍ਹਾਈ ਰੂਟੀਨs."
+    },
+    {
+      "key": "site.28d50b86b2cb90271f",
+      "source": "Create short challenges and boss rounds",
+      "value": "ਛੋਟੀਆਂ ਚੁਣੌਤੀਆਂ ਅਤੇ ਬੌਸ ਰਾਊਂਡ ਬਣਾਓ"
+    },
+    {
+      "key": "site.46aa3364165bf30d72",
+      "source": "Create structured deep work sessions for difficult learning tasks.",
+      "value": "ਤਿਆਰ ਕਰੋ structured deep ਕੰਮ ਸੈਸ਼ਨ ਲਈ difficult learning tasks."
+    },
+    {
+      "key": "site.bf5086441fd26540da",
+      "source": "Create tags for these notes",
+      "value": "ਇਹਨਾਂ ਨੋਟਾਂ ਲਈ ਟੈਗ ਬਣਾਓ"
+    }
+  ]
+}

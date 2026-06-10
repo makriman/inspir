@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "language": "Turkish",
+  "locale": "tr",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.badges-achievements.inputboxText",
+      "source": "What achievement system should we design?",
+      "value": "Hangi başarı sistemini tasarlamalıyız?"
+    },
+    {
+      "key": "topic.badges-achievements.category",
+      "source": "Gamification",
+      "value": "Oyunlaştırma"
+    },
+    {
+      "key": "topic.badges-achievements.seo.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Tutarlılık, ustalık, cesaret, tekrar, iş birliği ve tamamlanmış ürünler için rozetler oluşturun."
+    },
+    {
+      "key": "topic.badges-achievements.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Genel bir cevap kutusu yerine pratik rehberlik isteyen, oyunlaştırma konularını keşfeden öğrenciler."
+    },
+    {
+      "key": "topic.badges-achievements.seo.whyDifferent",
+      "source": "This mode is tuned for badges & achievements with its own prompts, examples, and learning flow.",
+      "value": "Bu mod, kendi istemleri, örnekleri ve öğrenme akışıyla rozetler ve başarılar için özel olarak ayarlanmıştır."
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.0",
+      "source": "Reward milestones that matter",
+      "value": "Önemli dönüm noktalarını ödüllendirin"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Örnek istemlerle başlayın"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Oturumu hedefinize göre uyarlayın"
+    },
+    {
+      "key": "topic.badges-achievements.starter.0",
+      "source": "Create badges for my class",
+      "value": "Sınıfım için rozetler oluşturun"
+    },
+    {
+      "key": "topic.badges-achievements.starter.1",
+      "source": "Reward revision milestones",
+      "value": "Tekrar kilometre taşlarını ödüllendir"
+    },
+    {
+      "key": "topic.badges-achievements.starter.2",
+      "source": "Make achievement rules",
+      "value": "Başarı kuralları oluştur"
+    },
+    {
+      "key": "topic.leaderboards.name",
+      "source": "Leaderboards",
+      "value": "Liderlik Tabloları"
+    },
+    {
+      "key": "topic.leaderboards.subText",
+      "source": "Make competition healthier",
+      "value": "Rekabeti daha sağlıklı hale getir"
+    },
+    {
+      "key": "topic.leaderboards.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Daha yavaş öğrenenlerin motivasyonunu kırmadan çabayı, gelişimi, ekip çalışmasını veya istikrarı ödüllendiren adil liderlik tabloları oluşturun."
+    },
+    {
+      "key": "topic.leaderboards.inputboxText",
+      "source": "What should the leaderboard measure?",
+      "value": "Liderlik tablosu neyi ölçmeli?"
+    },
+    {
+      "key": "topic.leaderboards.category",
+      "source": "Gamification",
+      "value": "Oyunlaştırma"
+    },
+    {
+      "key": "topic.leaderboards.seo.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Daha yavaş öğrenenlerin motivasyonunu kırmadan çabayı, gelişimi, ekip çalışmasını veya istikrarı ödüllendiren adil liderlik tabloları oluşturun."
+    },
+    {
+      "key": "topic.leaderboards.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Genel bir cevap kutusu yerine pratik rehberlik isteyen, oyunlaştırma konularını keşfeden öğrenciler."
+    },
+    {
+      "key": "topic.leaderboards.seo.whyDifferent",
+      "source": "This mode is tuned for leaderboards with its own prompts, examples, and learning flow.",
+      "value": "Bu mod, kendi istemleri, örnekleri ve öğrenme akışıyla liderlik tabloları için özel olarak ayarlanmıştır."
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.0",
+      "source": "Make competition healthier",
+      "value": "Rekabeti daha sağlıklı hale getir"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Örnek istemlerle başlayın"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Oturumu hedefinize göre uyarlayın"
+    },
+    {
+      "key": "topic.leaderboards.starter.0",
+      "source": "Design a class leaderboard",
+      "value": "Bir sınıf liderlik tablosu tasarla"
+    },
+    {
+      "key": "topic.leaderboards.starter.1",
+      "source": "Measure improvement fairly",
+      "value": "Gelişimi adil bir şekilde ölç"
+    },
+    {
+      "key": "topic.leaderboards.starter.2",
+      "source": "Make a team challenge board",
+      "value": "Bir takım meydan okuma tablosu oluştur"
+    },
+    {
+      "key": "topic.accountability-partner.name",
+      "source": "Accountability Partner",
+      "value": "Sorumluluk Ortağı"
+    },
+    {
+      "key": "topic.accountability-partner.subText",
+      "source": "Build check-ins that keep you moving",
+      "value": "Sizi harekete geçirecek kontroller oluşturun"
+    },
+    {
+      "key": "topic.accountability-partner.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Net taahhütler, kanıtlar, telafi kuralları ve destekleyici takipler içeren sorumluluk kontrolleri oluşturun."
+    },
+    {
+      "key": "topic.accountability-partner.inputboxText",
+      "source": "What commitment needs accountability?",
+      "value": "Hangi taahhüt sorumluluk gerektiriyor?"
+    },
+    {
+      "key": "topic.accountability-partner.category",
+      "source": "Gamification",
+      "value": "Oyunlaştırma"
+    },
+    {
+      "key": "topic.accountability-partner.seo.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Net taahhütler, kanıtlar, telafi kuralları ve destekleyici takipler içeren sorumluluk kontrolleri oluşturun."
+    },
+    {
+      "key": "topic.accountability-partner.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Genel bir cevap kutusu yerine pratik rehberlik isteyen, oyunlaştırma konularını keşfeden öğrenciler."
+    },
+    {
+      "key": "topic.accountability-partner.seo.whyDifferent",
+      "source": "This mode is tuned for accountability partner with its own prompts, examples, and learning flow.",
+      "value": "Bu mod, kendi istemleri, örnekleri ve öğrenme akışıyla sorumluluk ortağı için özel olarak ayarlanmıştır."
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.0",
+      "source": "Build check-ins that keep you moving",
+      "value": "Sizi harekete geçirecek kontroller oluşturun"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Örnek istemlerle başlayın"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Oturumu hedefinize göre uyarlayın"
+    },
+    {
+      "key": "topic.accountability-partner.starter.0",
+      "source": "Set up weekly accountability",
+      "value": "Haftalık hesap verebilirlik sistemi kurun"
+    },
+    {
+      "key": "topic.accountability-partner.starter.1",
+      "source": "Write a check-in script",
+      "value": "Bir kontrol metni yazın"
+    },
+    {
+      "key": "topic.accountability-partner.starter.2",
+      "source": "Recover after missing a goal",
+      "value": "Bir hedefi kaçırdıktan sonra toparlanın"
+    },
+    {
+      "key": "topic.study-challenges.name",
+      "source": "Study Challenges",
+      "value": "Çalışma Meydan Okumaları"
+    },
+    {
+      "key": "topic.study-challenges.subText",
+      "source": "Create short challenges and boss rounds",
+      "value": "Kısa meydan okumalar ve bölüm sonu canavarı turları oluşturun"
+    },
+    {
+      "key": "topic.study-challenges.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Net kurallar, puanlama, seviyeler, bölüm sonu canavarı turları ve değerlendirme içeren çalışma meydan okumaları oluşturun."
+    },
+    {
+      "key": "topic.study-challenges.inputboxText",
+      "source": "What should become a challenge?",
+      "value": "Ne bir meydan okumaya dönüşmeli?"
+    },
+    {
+      "key": "topic.study-challenges.category",
+      "source": "Gamification",
+      "value": "Oyunlaştırma"
+    },
+    {
+      "key": "topic.study-challenges.seo.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Net kurallar, puanlama, seviyeler, bölüm sonu canavarı turları ve değerlendirme içeren çalışma meydan okumaları oluşturun."
+    },
+    {
+      "key": "topic.study-challenges.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Genel bir cevap kutusu yerine pratik rehberlik isteyen, oyunlaştırma konularını keşfeden öğrenciler."
+    },
+    {
+      "key": "topic.study-challenges.seo.whyDifferent",
+      "source": "This mode is tuned for study challenges with its own prompts, examples, and learning flow.",
+      "value": "Bu mod, kendi istemleri, örnekleri ve öğrenme akışıyla çalışma meydan okumaları için özel olarak ayarlanmıştır."
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.0",
+      "source": "Create short challenges and boss rounds",
+      "value": "Kısa meydan okumalar ve bölüm sonu canavarı turları oluşturun"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Örnek istemlerle başlayın"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Oturumu hedefinize göre uyarlayın"
+    },
+    {
+      "key": "topic.study-challenges.starter.0",
+      "source": "Make a 7 day math challenge",
+      "value": "7 günlük bir matematik meydan okuması yapın"
+    },
+    {
+      "key": "topic.study-challenges.starter.1",
+      "source": "Create a vocabulary boss round",
+      "value": "Bir kelime bilgisi bölüm sonu canavarı turu oluşturun"
+    },
+    {
+      "key": "topic.study-challenges.starter.2",
+      "source": "Design a revision sprint",
+      "value": "Bir tekrar sprinti tasarlayın"
+    }
+  ]
+}

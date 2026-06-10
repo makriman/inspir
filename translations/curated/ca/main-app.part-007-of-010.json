@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Catalan",
+  "locale": "ca",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Començar amb indicacions d'exemple"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adaptar la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "Negocia una data límit"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "Gestiona un client maleducat"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "Demana ajuda a un professor"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "Explorador de carreres"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "Descobreix camins que encaixen amb tu"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "Explora carreres a partir d'interessos, habilitats, exemples d'un dia típic i propers passos."
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "Quina carrera o interès hauríem d'explorar?"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "Planificació"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "Explora carreres a partir d'interessos, habilitats, exemples d'un dia típic i propers passos."
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de planificació i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per a l'explorador de carreres, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "Descobreix camins que encaixen amb tu"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "M'agraden la biologia i l'art"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "Què fa un responsable de producte?"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "Compara dret i psicologia"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "Preparador d'entrevistes"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "Practica respostes més sòlides"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "Prepara entrevistes escolars, de pràctiques, de feina o de beques amb preguntes realistes i retorn."
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "Per a quina entrevista et prepares?"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "Planificació"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "Prepara entrevistes escolars, de pràctiques, de feina o de beques amb preguntes realistes i retorn."
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de planificació i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per al preparador d'entrevistes, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "Practica respostes més sòlides"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "Simulació d'entrevista universitària"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "Practica preguntes per a una entrevista de pràctiques"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "Millora la resposta a «Parla'm de tu»"
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "Tutor de codi"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "Aprèn programació construint"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "Entén el codi, depura errors, aprèn conceptes i crea petits projectes pas a pas."
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Quin tema de programació o error abordarem?"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "Entén el codi, depura errors, aprèn conceptes de programació i crea petits projectes pas a pas."
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "Programadors principiants i intermedis que necessiten explicacions, ajuda per depurar o acompanyament en projectes."
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "El tutor pregunta què esperes que faci el codi i després fa servir exemples petits i proves perquè el comportament s'entengui."
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "Explica l'error"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "Entén el concepte"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "Prova una petita correcció"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "Explica la recursió en JavaScript"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "Ajuda'm a depurar aquest error"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "Ensenya'm els bucles de Python"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "Coach de projectes"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "Converteix idees en fites"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "Planifica un projecte escolar, creatiu, de codi o personal amb abast, fites, bloquejos i properes accions."
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "Quin projecte estem construint?"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "Planificació"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "Planifica un projecte escolar, creatiu, de codi o personal amb abast, fites, bloquejos i properes accions."
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de planificació i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per al coach de projectes, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "Converteix idees en fites"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "Planifica un projecte per a una fira de ciències"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "Crea un lloc web de portafolis"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "Organitza una presentació d'història"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "Assistent de recerca"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "Formula preguntes i sintetitza fonts"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Converteix un tema ampli en preguntes de recerca, termes de cerca, esquemes i notes de fonts."
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "Què estàs investigant?"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "Pensament"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Converteix un tema ampli en preguntes de recerca, termes de cerca, esquemes i notes de fonts."
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de pensament i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per a l'assistent de recerca, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "Formula preguntes i sintetitza fonts"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "Investiga l'energia renovable"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "Troba enfocaments sobre l'ètica de la IA"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "Planifica un treball sobre urbanització"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "Avaluador de fonts"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "Avalua la credibilitat i el biaix"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "Avalua articles, afirmacions, vídeos o publicacions segons l'evidència, el biaix, la fiabilitat i el context que falta."
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "Enganxa o descriu la font"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "Pensament"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "Avalua articles, afirmacions, vídeos o publicacions segons l'evidència, el biaix, la fiabilitat i el context que falta."
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de pensament i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per a l'avaluador de fonts, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "Avalua la credibilitat i el biaix"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "És fiable aquest article?"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "Comprova l'evidència d'aquesta afirmació"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "Detecta el biaix en aquest paràgraf"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "Intèrpret de dades"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "Dona sentit a les xifres i els gràfics"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "Enganxa dades, descripcions de gràfics o resultats i aprèn què volen dir, què no volen dir i què cal preguntar després."
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "Enganxa les dades o descriu el gràfic"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "Enganxa dades, descripcions de gràfics o resultats i aprèn què volen dir, què no volen dir i què cal preguntar després."
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes STEM i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per a l'intèrpret de dades, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "Dona sentit a les xifres i els gràfics"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "Explica aquesta taula"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "Què mostra aquesta enquesta?"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "Ajuda'm a interpretar un gràfic"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "Constructor de plans d'estudi"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "Crea una rutina que aguanti la vida real"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "Crea un pla d'estudi adaptat al teu temps, energia, objectius i punts febles."
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "Què has d'estudiar?"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "Planificació"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "Crea un pla d'estudi realista adaptat al teu temps, energia, objectius, punts febles, cicles de repàs i calendari de pràctica."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "Estudiants i persones autodidactes que necessiten estructura sense convertir el pla en una llista impossible."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "El constructor equilibra l'ambició amb el repàs, la pràctica, els dies de recuperació i la següent acció útil més petita."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "Defineix l'objectiu"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "Programa la pràctica"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "Crea cicles de repàs"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "Planifica'm la setmana de matemàtiques"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "Crea una rutina diària d'anglès"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "Equilibra l'escola i la preparació d'exàmens"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "Coach d'hàbits"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "Fes que l'aprenentatge sigui constant"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Converteix intencions en petits hàbits d'aprenentatge repetibles amb senyals, recompenses i plans de recuperació."
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "Quin hàbit d'aprenentatge vols crear?"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "Planificació"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Converteix intencions en petits hàbits d'aprenentatge repetibles amb senyals, recompenses i plans de recuperació."
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de planificació i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per al coach d'hàbits, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "Fes que l'aprenentatge sigui constant"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "Llegeix 20 minuts cada dia"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "Deixa de procrastinar amb les matemàtiques"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "Practica programació cada dia"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "Coach de motivació"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "Reprèn l'aprenentatge quan es fa difícil"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "Desencalla't emocionalment, troba un pas següent més petit i recupera l'impuls sense culpa."
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "Què fa que aprendre sigui difícil ara mateix?"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "Planificació"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "Desencalla't emocionalment, troba un pas següent més petit i recupera l'impuls sense culpa."
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de planificació i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per al coach de motivació, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "Reprèn l'aprenentatge quan es fa difícil"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "Sento que vaig amb retard"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "Continuo procrastinant"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "He suspès un examen i em sento malament"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "Generador d'idees creatives"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "Genera i dona forma a idees originals"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Fes una pluja d'idees per a projectes, històries, dissenys, títols, experiments i enfocaments inesperats."
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "Sobre què fem la pluja d'idees?"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "Creativitat"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Fes una pluja d'idees per a projectes, històries, dissenys, títols, experiments i enfocaments inesperats."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes de creativitat i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per al generador d'idees creatives, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "Genera i dona forma a idees originals"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "Idees per a un projecte de ciències"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "Conceptes d'històries sobre l'amistat"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "Inicis creatius per a presentacions"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "Tutor d'històries"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "Aprèn a través d'històries"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "Converteix conceptes en històries, personatges, conflictes i escenes memorables."
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "Què s'hauria de convertir en una història?"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "Creativitat"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "Converteix conceptes en històries, personatges, conflictes i escenes memorables que facin més fàcils de recordar les idees difícils."
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "Persones que recorden millor les idees a través de la narració, l'analogia, els personatges i exemples vius."
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "El tutor tradueix material abstracte en estructura narrativa mantenint visible el concepte de fons."
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "Tria el concepte"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "Construeix una història"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "Explica la lliçó"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "Ensenya les fraccions com una història"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "Fes una història sobre ecosistemes"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "Explica la democràcia amb personatges"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "Laboratori de filosofia"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "Pensa amb cura sobre les grans preguntes"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "Explora la identitat, el coneixement, l'equitat, la llibertat, la felicitat i altres preguntes profundes mitjançant un raonament acurat."
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "Quina gran pregunta explorem?"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "Humanitats"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "Explora la identitat, el coneixement, l'equitat, la llibertat, la felicitat i altres preguntes profundes mitjançant un raonament acurat."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes d'humanitats i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per al laboratori de filosofia, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "Pensa amb cura sobre les grans preguntes"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "Què fa que una cosa sigui justa?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "Tenim lliure albir?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "Què és el coneixement?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "Dilemes ètics"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "Practica el raonament moral"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Treballa dilemes sospesant parts interessades, conseqüències, deures, drets i equilibris."
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "Quin dilema hauríem d'examinar?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "Humanitats"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Treballa dilemes sospesant parts interessades, conseqüències, deures, drets i equilibris."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes d'humanitats i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per als dilemes ètics, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "Practica el raonament moral"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "La IA a les aules"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "L'experimentació amb animals"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "Mentir pot estar bé alguna vegada?"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "Explorador de geografia"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "Entén llocs, mapes i persones"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Explora països, ciutats, rius, climes, migració, recursos i com la geografia modela la vida."
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "On hauríem d'explorar?"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "Humanitats"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Explora països, ciutats, rius, climes, migració, recursos i com la geografia modela la vida."
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes d'humanitats i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per a l'explorador de geografia, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "Entén llocs, mapes i persones"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "Per què hi ha ciutats a prop dels rius?"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "Explora l'Himàlaia"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "Compara l'Índia i el Japó"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "Simulador d'economia"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "Aprèn sobre decisions, incentius i equilibris"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "Juga amb mercats, escassetat, incentius, polítiques i finances personals mitjançant simulacions senzilles."
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "Quina idea d'economia hauríem de simular?"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "Humanitats"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "Juga amb mercats, escassetat, incentius, polítiques i finances personals mitjançant simulacions senzilles."
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes d'humanitats i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per al simulador d'economia, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "Aprèn sobre decisions, incentius i equilibris"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "Simula l'oferta i la demanda"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "Explica la inflació"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "Què passa si canvien els impostos?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "Causa i efecte en història"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "Ressegueix per què van passar els fets"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Desglossa esdeveniments històrics a través de causes, detonants, conseqüències i possibilitats alternatives."
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "Quin esdeveniment històric hauríem de resseguir?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "Humanitats"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Desglossa esdeveniments històrics a través de causes, detonants, conseqüències i possibilitats alternatives."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes d'humanitats i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Aquest mode està dissenyat per a causa i efecte en història, amb indicacions, exemples i un flux d'aprenentatge propis."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "Ressegueix per què van passar els fets"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comença amb exemples de propostes"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapta la sessió al teu objectiu"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "Causes de la Primera Guerra Mundial"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "Per què es va afeblir l'Imperi Romà?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "Efectes de la impremta"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "Coach d'educació cívica"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "Entén drets, govern i societat"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "Aprèn constitucions, democràcia, eleccions, tribunals, drets, deures i polítiques públiques."
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "Quin tema d'educació cívica hauríem d'estudiar?"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "Humanitats"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "Aprèn constitucions, democràcia, eleccions, tribunals, drets, deures i polítiques públiques."
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Persones que exploren temes d'humanitats i volen orientació pràctica en lloc d'un quadre de resposta genèric."
+    }
+  ]
+}

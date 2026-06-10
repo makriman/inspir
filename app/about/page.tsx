@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import {
   ArrowLink,
@@ -8,6 +8,7 @@ import {
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
 import { aboutFaqs, aboutProofPoints, aboutStoryLinks, aboutTimeline } from "@/lib/content/authority";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -17,7 +18,7 @@ import {
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "About",
   description:
     "The story of inspir, from Facebook quizzes and student communities to a free AI learning platform built in public.",
@@ -53,6 +54,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/about");
+}
 
 export default function AboutPage() {
   const jsonLd = [

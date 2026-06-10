@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, CornerDownRight, Sparkles } from "lucide-react";
 import {
   ArrowLink,
@@ -8,6 +8,7 @@ import {
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
 import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -16,7 +17,7 @@ import {
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Learning Paths",
   description:
     "Practical AI learning paths for understanding hard topics, homework help, exam prep, history, debate, flashcards, and active recall.",
@@ -50,6 +51,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/learn");
+}
 
 export default function LearningPathsPage() {
   const jsonLd = [

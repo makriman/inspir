@@ -14896,3 +14896,119 @@ a {
     transition: none;
   }
 }
+
+.marketing-language-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 999px;
+  padding: 7px 9px;
+  color: inherit;
+  background: rgb(255 255 255 / 7%);
+}
+
+.marketing-language-picker select {
+  min-width: 92px;
+  max-width: 136px;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  outline: none;
+}
+
+.marketing-language-picker option {
+  color: #171614;
+  background: #fffdf8;
+}
+
+.marketing-language-bar {
+  position: fixed;
+  inset: auto 16px 16px 16px;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 980px;
+  margin: 0 auto;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 8px;
+  padding: 12px;
+  color: #fffdf8;
+  background: rgb(23 22 20 / 94%);
+  box-shadow: 0 18px 60px rgb(0 0 0 / 28%);
+  backdrop-filter: blur(14px);
+}
+
+.marketing-language-bar strong,
+.marketing-language-bar span {
+  display: block;
+}
+
+.marketing-language-bar strong {
+  font-size: 0.95rem;
+}
+
+.marketing-language-bar span {
+  margin-top: 2px;
+  color: rgb(255 253 248 / 72%);
+  font-size: 0.84rem;
+}
+
+.marketing-language-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.marketing-language-bar button,
+.marketing-language-bar select {
+  min-height: 38px;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: #fffdf8;
+  background: rgb(255 255 255 / 8%);
+  font-weight: 800;
+}
+
+.marketing-language-bar select {
+  max-width: 210px;
+}
+
+.marketing-language-bar option {
+  color: #171614;
+  background: #fffdf8;
+}
+
+.marketing-language-bar button:last-child {
+  width: 38px;
+  padding: 0;
+}
+
+.content-page-legal-notice {
+  border: 1px solid rgb(89 201 107 / 28%);
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: rgb(89 201 107 / 10%);
+}
+
+@media (max-width: 720px) {
+  .marketing-language-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .marketing-language-bar-actions {
+    justify-content: stretch;
+  }
+
+  .marketing-language-bar-actions button,
+  .marketing-language-bar-actions select {
+    flex: 1 1 100%;
+  }
+}

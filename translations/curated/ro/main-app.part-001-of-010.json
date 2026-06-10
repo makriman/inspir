@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Romanian",
+  "locale": "ro",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "Ajută inspir să se adapteze vârstei tale"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "Spune-ne data nașterii pentru a putea crea o experiență de învățare adecvată vârstei tale. O folosim pentru a ajusta exemplele, tonul și limitele de siguranță."
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "Data nașterii"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "Continuă"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "Se salvează..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "Te rugăm să introduci o dată de naștere validă."
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "Vârstă"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "Adaugă data nașterii"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "Deschide magazinul de învățare"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "Caută"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "Caută conversații"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- Aplică constrângeri legate de limbă, rang, gen, clasă, lege, religie, bani, salubritate și acces."
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- Înainte ca persoana să vorbească, construiește cadrul: unde ne aflăm, anul sau intervalul de timp, ce s-a întâmplat până acum, presiunile actuale, credințele, punctele oarbe și incertitudinile istoricului."
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- Creează un dosar cu: cronologia de până acum, mizele personale, aliați și inamici, credințele majore din acea perioadă, punctele oarbe, scrieri sau discursuri cunoscute, presiunea actuală, contextul istoric, calitatea dovezilor și întrebări de deschidere recomandate."
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- Nu fabrica citate directe, referințe sau gânduri private."
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- Nu fabrica citate exacte. Dacă un citat direct nu este menționat în conversație, marchează formularea generată ca o parafrază modernizată sau un dialog reconstituit."
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- Nu romantiza violența, imperiul, sclavia, casta, boala sau opresiunea."
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- Nu cosmetiza opiniile dăunătoare și nu glorifica opresiunea, sistemul de caste, rasismul, sclavia, misoginia, autoritarismul sau violența. Contextul nu este o scuză automată."
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- Încheie cu trei acțiuni semnificative plus o opțiune de a face o pauză pentru contextul istoric."
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- Dacă orice câmp de destinație este rezolvat de AI sau este vag, oferă mai întâi trei opțiuni concrete de sosire semnificative din punct de vedere istoric și așteaptă ca elevul să aleagă."
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- Menține două straturi după începerea întâlnirii: vocea personajului limitată la intervalul de timp și notele secundare ale istoricului care disting faptele documentate, reconstrucția plauzibilă, interpretarea contestată, parafraza modernă și dialogul ficționalizat."
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- Marchează clar faptele cunoscute, reconstrucția plauzibilă și speculațiile."
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- În rest, salută călătorul, rezumă pașaportul într-un paragraf compact, apoi pune prima întrebare de acțiune semnificativă."
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- Persoana istorică poate rezista, contesta, evita, pune întrebări înapoi, respinge premise false sau dezvălui constrângerile perioadei. Nu ar trebui să fie infinit de agreabilă."
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "1. Dacă este necesară alegerea unei descoperiri sau a unui interval de timp, afișează opțiunile și oprește-te."
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "10-15 min"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "Vizită de 10 minute"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "117 d.Hr."
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "13 iulie 1789"
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "1582 d.Hr."
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "1946-1949 perioada de elaborare a constituției"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "2 septembrie 1666"
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "2. În rest, arată mai întâi peretele cu dosare, apoi invită-mă să încep cu una dintre întrebările recomandate."
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "399 î.Hr."
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "742 d.Hr."
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "8-12 min"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "Un nume nepotrivit poate crea confuzie, dar indiciul indică momentul. Mai întâi demonstrează dacă datele au sosit."
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "Câteva fapte, o schiță brută, unde ești blocat..."
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "O sarcină finală de transfer demonstrează îmbunătățirea mai bine decât un buton Înainte."
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "O primă întrebare sau perspectivă"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "O buclă de învățare bună"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "Un punct de cotitură istoric"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "Gândurile private ale unui martor ocular numit"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "Un paragraf care enumeră fapte fără a face o afirmație obligă cititorul să facă munca de argumentare."
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "O modificare a prețului în sine reprezintă o mișcare de-a lungul unei curbe, nu automat o deplasare a întregii curbe."
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "Un obiectiv comun, acțiunile următoare și ceea ce este deja realizat."
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "O simulare face vizibil lanțul cauzal ascuns. Schimbă un singur lucru pe rând."
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "O singură întrebare de verificare înainte de a merge mai departe."
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "Planul privat al unui singur comerciant"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "Un cadru strategic este un test de presiune. Cele cinci forțe ale lui Porter întreabă cine poate lua profitul și cât de puternică este fiecare presiune."
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "Un paragraf puternic numește afirmația, o dovedește cu dovezi, apoi explică de ce dovezile schimbă perspectiva cititorului."
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "Un model util este un lanț: ipotezele conduc operațiunile, operațiunile creează fluxul de numerar, iar fluxul de numerar devine valoare doar după ce sunt luate în considerare sincronizarea și riscul."
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "Acceptă, editează sau respinge următoarea iterație AI"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "Acceptă, revizuiește, respinge sau colectează dovezi."
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "Jetoane de cont și o pungă modestă de monede"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "Destinație activă"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "Generator de reamintire activă"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "Flux de activitate"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "Ada Lovelace despre imaginație"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "Ada Lovelace, Cleopatra, B. R. Ambedkar..."
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "Buclă de lecție adaptivă"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "Adaugă data nașterii"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "Adaugă, editează, provoacă sau decide următoarea mișcare"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "Adăugarea de indicii pentru memorie"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "Adăugarea mai multor informații atunci când lacuna reală este legătura dintre dovadă și afirmație."
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "Căi administrative"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "consilier care caută sfaturi"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "Agora în zilele din jurul procesului lui Socrate"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "Provocare AI"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "AI analizează artefactul tău"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "AI a creat prima structură"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "AI a revizuit spațiul de lucru"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "Interval de date rezolvat de AI"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "AI, fă prima iterație"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "Akbar a condus Imperiul Mogul în această perioadă"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "Curtea mogulă a lui Akbar experimentează cu suveranitatea, traducerea, religia și administrația imperială."
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "Tot textul din aplicație și răspunsurile tutorilor respectă această setare."
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "Aliați și inamici"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "Ștampilă de amforă"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "Răspunde la această întrebare înainte de a merge mai departe."
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "Aplică ideea într-o situație nouă fără a te lăsa purtat de val."
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "Ucenic artist, negustor, vizitator..."
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "ucenic care le studiază metoda"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "Araba și sanscrita în contexte academice"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "Paragraf argumentativ = afirmație + dovezi + raționament + consecință."
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "Forța argumentului"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "Cameră de testare a argumentelor"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "Data sosirii, rolul, normele și ce cunoștințe aparțin acelei perioade."
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "Punct de sosire"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "Sosește în apropierea unui punct de cotitură și urmărește ce știu oamenii în acel moment."
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "Întreabă un metec ce exclude cetățenia"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "Întreabă un cărăuș de apă ce știu localnicii"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "Întreabă despre"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "Întreabă despre prețul pâinii"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "Întreabă despre David"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "Întreabă ca student"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "Întreabă antrenorul"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "Cere o explicație directă"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "Cere un indiciu sau un exemplu"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "Cere un exemplu paralel"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "Cere sfaturi prin prisma viziunii asupra lumii și a constrângerilor din acea perioadă."
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "Cere indicii, exemple sau verificări înainte de un răspuns final."
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "Cere următorul nivel de indiciu"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "Cere aceeași întrebare în cuvinte mai simple"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "Întreabă cum funcționează statutul de liber"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "Întreabă cum funcționează patronajul"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "Întreabă-mă mai întâi care este ipoteza mea actuală."
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "Pune câte o întrebare pe rând, urmărește ipotezele și dovezile, oferă indicii la cerere și nu sintetiza până nu am încercat eu."
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "Cere ghidului să explice structura puterii"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "Cere istoricului să propună segmente temporale"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "Întreabă paznicul ce ordine există"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "Cere salvarea principalelor afirmații și clasificarea forței dovezilor lor."
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "Întreabă, acționează, ia o pauză pentru context sau cere o informare..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "Întreabă, provoacă, cere dovezi sau deschide un element din dosar..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "Atribuie responsabilitatea"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "Asistent al unei case comerciale sau al unui atelier"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "Harta ipotezelor"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "Ipotezele vor apărea pe măsură ce ies la iveală."
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "La apogeul influenței sau autorității"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "În punctul decisiv de cotitură"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "Democrația ateniană"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "Atena, 399 î.Hr."
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "Atacă mai întâi cea mai fragilă ipoteză."
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "Participă la bârfele de la curte"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "Greaca veche atică"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "Atracția crește atunci când clienții, furnizorii, rivalii, noii intrați și substituenții au o putere limitată."
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "Audiență în desfășurare"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "Autoritățile dezbat demolarea"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "Se așteaptă primul răspuns"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "Se așteaptă primul timbru"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "B. R. Ambedkar"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "Bagdadul în timpul Casei Înțelepciunii"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "Bahadur Shah Zafar a devenit un punct central simbolic"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "Vecinul brutarului"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "Echilibrarea dificultății"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "Târguială pentru rășină"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "Bastilia se apropie"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "Începe conversația"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "Începe cu un card de personaj, apoi răspunde în rol, cu scurte note de context și sugestii de întrebări de continuare."
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "Începător, pregătire pentru examen, avansat, vârsta 12+..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "Convingeri și puncte oarbe"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "Cel mai bun pentru bani, logistică, hrană, rute și schimburi sociale."
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "Cel mai bun pentru politică, instituții, dovezi și spații adiacente elitei."
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "Pâinea și legitimitatea domină discuțiile"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "Pâinea este politică"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "Lopată de brutar"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "Jeton pentru pâine"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "Împarte munca în sarcini, urmărește blocajele, menține jurnalul deciziilor la zi și avansează către un rezultat concret."
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "Lectură scurtă"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "Răsfoiește sugestii de prompturi"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "Fragment de manuscris budist"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "Mănăstire budistă"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "Construcție în echipă"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "Bucla de remediere a erorilor = reproduce, izolează, formulează ipoteze, testează o modificare, verifică."
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "Creează o lecție care reacționează la tine."
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "Construiește o idee de proiect științific"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "construiește un model mental utilizabil"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "Creează o schiță de eseu despre adaptarea la schimbările climatice"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "Creează impuls, fă o primă variantă utilă și cere decizii fără a exagera cu laudele."
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "Construiește pașaportul"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "Construiește lecția în jurul a ceea ce vrei să devii capabil să faci."
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "Construiți împreună explicația în limbaj simplu."
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "Construiește înțelegerea răspunzând la o singură întrebare precisă pe rând."
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "Se construiește pachetul tău"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "Se construiește testul tău"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "Puterea cumpărătorului"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "Preferințele cumpărătorilor sunt doar un factor. Costurile, tehnologia, taxele și prețurile resurselor pot influența oferta."
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "Sala cabinetului în timpul Marii Britanii pe timp de război"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "Numirea oricărei mișcări a prețului drept o schimbare a cererii."
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "Centru de putere"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "Centrul de putere, viața de la nivelul străzii și marginea sistemului dezvăluie istorii diferite."
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "Contestă-l pe Churchill cu privire la imperiu"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "Contestă ideile în timp ce persoana apără viziunea asupra lumii din epoca sa."
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "Provocă-mă"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "Contestă ultimul meu răspuns cu un contraexemplu, un caz limită sau o presupunere ascunsă. Pune o singură întrebare."
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "Contestă tensiunea dintre lupta împotriva tiraniei în Europa și apărarea imperiului."
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "Contestă cea mai slabă parte a artefactului actual. Fii direct, numește presupunerea și cere-mi să o apăr sau să o revizuiesc."
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "Contestă presupunerile slabe, afirmațiile vagi și dovezile lipsă, păstrând în același timp utilizatorul ca decident."
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "Chandni Chowk"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "Chang'an"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "Chang'an a fost capitala dinastiei Tang"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "Chang'an, 742"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "Schimbă publicul"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "Schimbă pachetul"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "Schimbă datele de intrare și explică rezultatul."
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "Schimbă pașaportul"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "Schimbă configurarea"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "Modificări simultane"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "Schimbă sintaxa înainte de a verifica ordinea de execuție."
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "Modificarea mai multor fișiere simultan poate ascunde cauza reală, chiar dacă simptomul dispare."
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "Verifică-mi predicția"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "Verifică înțelegerea înainte de a trece mai departe"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "Verifică dacă rezultatul asincron este așteptat înainte de a fi citit."
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "Verificarea capcanelor comune"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "Alege un concept și un nivel de pornire. Tutorele tău predă o mică parte, o verifică, apoi se ajustează după fiecare răspuns."
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "Alege un punct de sosire"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "Alege punctul exact de intrare"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "Alege următorul"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "Alege destinația."
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "Alege relația și scopul camerei."
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "Alege cel mai puternic punct de intrare."
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "alege intervalul de timp"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "Alege punctul tău de sosire."
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "cetățean-procuror care testează ipotezele imperiale"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "Cetățenii cântăresc evlavia, educația și loialitatea"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "Cetățenia determină vocea politică"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "Cetățenia era restricționată"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "Claritatea revendicării"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "Urmăritor de revendicări"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "Clarifică publicul"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "Clasifică actorii înainte de a citi comportamentul."
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "Autorizare în așteptare"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "Urcă pe scară"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "Închide profilul"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "Închide subiectele"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "Aproape, dar lipsește o legătură"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "Pachet de rație de îmbrăcăminte"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "Îmbrăcămintea indică rapid rangul"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "Acțiuni de coaching"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "Controale antrenor"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "Răspuns antrenor"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "Panou lateral antrenor"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "Încărcare cognitivă"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "Stil de colaborare"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "Instruire colaborativă"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "Sală de studiu colaborativ"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "Colectează exemple, fapte, citate sau constrângeri care susțin lucrarea."
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "Autorizație comercială"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "sală de comitet în Delhi"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "Greșeală comună"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "Compară toate modurile"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "Compară intențiile, critica contemporană, consecințele ulterioare și judecata modernă fără a reduce persoana la un erou sau un ticălos."
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "Compară moștenirea"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "Compară informațiile despre rebeli și Companie"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "Compară acest lucru cu ziua de azi"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "Compară cu ziua de azi"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "Compară două cazuri apropiate."
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "Comprimă ideea într-un model mental utilizabil."
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "Panou de concepte"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "Concizia ajută doar după ce argumentul funcționează. Lungimea nu este diagnosticul principal aici."
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "Confruntă contradicțiile, evaziunile și consecințele cu dovezi de susținere."
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "Confundă mișcarea de-a lungul cererii cu o schimbare a cererii."
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "Confundă profitul contabil cu numerarul care poate fi efectiv distribuit sau reinvestit."
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "conectează ipotezele, fluxul de numerar și evaluarea"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "Straturi exterioare locale conservatoare alese de ghid"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "Contextul nu reprezintă o aprobare"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "Note de context"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "Continuă învățarea"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "Continuă cu Google"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "considerație privind dreptul contractual"
+    }
+  ]
+}

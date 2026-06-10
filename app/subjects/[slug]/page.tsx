@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
@@ -23,6 +23,7 @@ import {
   getSubjectPages,
   subjectPath,
 } from "@/lib/content/subjects";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -95,7 +96,7 @@ export async function generateMetadata({ params }: SubjectDetailPageProps): Prom
     description: page.description,
   });
 
-  return {
+  return localizeMarketingMetadata({
     title: page.seoTitle,
     description: page.description,
     alternates: metadataAlternates(subjectPath(page.slug)),
@@ -114,7 +115,7 @@ export async function generateMetadata({ params }: SubjectDetailPageProps): Prom
       description: page.description,
       images: [image.url],
     },
-  };
+  }, subjectPath(page.slug));
 }
 
 export default async function SubjectDetailPage({ params }: SubjectDetailPageProps) {

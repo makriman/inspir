@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Thai",
+  "locale": "th",
+  "namespace": "route:subjects",
+  "sourceHash": "480251a76b7ac147108b72d0c9732342b12c95b2a5fb1bc33af0ca23f8e5d014",
+  "part": {
+    "index": 5,
+    "total": 6
+  },
+  "entries": [
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ลองอธิบายแนวคิดให้ง่ายขึ้น ติวเตอร์ของคุณจะช่วยหาจุดบกพร่อง ตั้งคำถาม และช่วยให้คุณเรียบเรียงคำอธิบายใหม่"
+    },
+    {
+      "key": "site.3277493b1028207a63",
+      "source": "Try prompt",
+      "value": "ลองพรอมป์"
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "เปลี่ยนหัวข้อกว้างๆ ให้เป็นคำถามสำหรับการวิจัย คำค้นหา โครงร่าง และบันทึกจากแหล่งข้อมูล"
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "เปลี่ยนแนวคิด ข้อโต้แย้ง ปัญหา ข้อความ หรือการตัดสินใจ ให้กลายเป็นชุดคำถามที่มุ่งเน้น เพื่อนคู่คิดของคุณจะรับฟังคำตอบแต่ละข้อ วิเคราะห์สมมติฐานและช่องว่าง และผลักดันให้คุณไปสู่การสรุปผลด้วยตัวคุณเอง ลองใช้: \"ช่วยให้ฉันเข้าใจค่าเสียโอกาสหน่อย\""
+    },
+    {
+      "key": "site.c9d9192f68012bc832",
+      "source": "Turn a mistake into practice",
+      "value": "เปลี่ยนความผิดพลาดให้เป็นการฝึก"
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "เปลี่ยนหลักสูตรให้เป็นแผนการเรียน"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "เปลี่ยนหัวข้อ หลักสูตร หรือบันทึกย่อให้เป็นแบบทดสอบฝึกหัดที่สมจริง พร้อมส่วนต่างๆ การจับเวลา คำแนะนำในการให้คะแนน และขั้นตอนการทบทวน"
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "เปลี่ยนกิจกรรมให้เป็นขั้นตอนถัดไป"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "เปลี่ยนแนวคิดให้กลายเป็นเรื่องราว ตัวละคร ความขัดแย้ง และฉากที่น่าจดจำ"
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "เปลี่ยนแผนภาพ ระบบร่างกาย แผนที่ เวิร์กโฟลว์ หรือการตั้งค่าห้องปฏิบัติการให้เป็นแบบฝึกหัดระบุชื่อส่วนประกอบพร้อมคำใบ้และการตรวจสอบคำตอบ"
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "เปลี่ยนไอเดียให้เป็นเป้าหมายสำคัญ"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "เปลี่ยนความตั้งใจให้เป็นนิสัยการเรียนรู้เล็กๆ ที่ทำซ้ำได้ด้วยตัวกระตุ้น รางวัล และแผนการฟื้นฟู"
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "เปลี่ยนการเรียนให้เป็น challenge สั้นๆ ที่มีโครงสร้าง"
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "เปลี่ยนเนื้อหาให้เป็นคู่มือทบทวนบทเรียน"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "เปลี่ยนบันทึกของฉันให้เป็นแผ่นสรุปทบทวน"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "เปลี่ยนบันทึกย่อให้เป็นเกมจับคู่สำหรับคำศัพท์ แนวคิด บุคคล/เหตุการณ์ สูตร ตัวอย่าง หรือคู่สาเหตุและผลลัพธ์"
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "เปลี่ยนบันทึกหรือหัวข้อให้เป็นแฟลชการ์ดที่ชัดเจน พร้อมคำตอบ กับดัก และคำกระตุ้นการทบทวน"
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "เปลี่ยนความก้าวหน้าให้เป็นเลเวลและเควสต์"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "เปลี่ยนการอ่านหนังสือให้เป็นเควสต์"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "เปลี่ยนบันทึกที่กระจัดกระจายให้เป็นโฟลเดอร์ แท็ก สรุป ลิงก์ และการดำเนินการทบทวนที่ช่วยให้เรียกคืนข้อมูลได้ง่ายขึ้น"
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "เปลี่ยนกิจกรรมการเรียน ผลคะแนนแบบทดสอบ บันทึก และตัวจับเวลา ให้เป็นการทบทวนในรูปแบบแดชบอร์ดพร้อมแนวโน้มและสิ่งที่ต้องทำต่อไป"
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "เปลี่ยนการเรียนให้เป็นความท้าทาย"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "เปลี่ยนข้อความให้เป็นสื่อเรียนที่กระชับและจำง่าย"
+    },
+    {
+      "key": "site.d5e00d60abf4868c49",
+      "source": "Turn the confusion into a flashcard, quiz question, or explain-back prompt before leaving.",
+      "value": "เปลี่ยนความสับสนให้เป็น flashcard คำถาม quiz หรือพรอมป์อธิบายกลับก่อนออก"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "เปลี่ยนคลิกแรกให้เป็นลูปการเรียนรู้ครบวงจร"
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "เปลี่ยนการบรรยายนี้ให้เป็นบันทึกย่อแบบ Cornell"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "เปลี่ยนบันทึกนี้ให้เป็นคำถามและคำตอบ"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "เปลี่ยนความตั้งใจคลุมเครือให้เป็นเป้าหมายเรียนรายวันที่ทำได้จริง"
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "เปลี่ยนคำศัพท์ให้เป็นเลเวล"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "ติวคณิตศาสตร์ด้วยเหตุผลทีละขั้นและการมีส่วนร่วมของผู้เรียน"
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "การสอนพิเศษ"
+    },
+    {
+      "key": "site.abcadedbc910700e58",
+      "source": "Understand a programming concept",
+      "value": "เข้าใจแนวคิดการเขียนโปรแกรม"
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "ทำความเข้าใจโค้ด แก้ไขข้อผิดพลาด เรียนรู้แนวคิด และสร้างโปรเจกต์เล็กๆ ทีละขั้นตอน"
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "ทำความเข้าใจสถานที่ แผนที่ และผู้คน"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "ทำความเข้าใจสิทธิ รัฐบาล และสังคม"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "เข้าใจเรื่องเสียง จังหวะ และการประสานเสียง"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "ทำความเข้าใจว่าทำไมคำตอบถึงถูกต้อง"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "วิเคราะห์เหตุการณ์ทางประวัติศาสตร์ผ่านสาเหตุ ปัจจัยกระตุ้น ผลลัพธ์ และความเป็นไปได้อื่นๆ"
+    },
+    {
+      "key": "site.1d4d43cc6f3a833e03",
+      "source": "Use",
+      "value": "ใช้"
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "ใช้การพักแบบ 50/10"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "ใช้ตารางกระชับสำหรับคำตอบที่ให้มา ไอเดียที่ถูกต้อง ความเข้าใจผิด และก้าวถัดไป"
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "ใช้ scorecard ความน่าเชื่อถือและคำถามเพื่อสืบต่อ"
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "ใช้สัญญา deep work พร้อมผลลัพธ์ แผนบล็อกเวลา กฎ และการทบทวน"
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "ใช้ตารางที่มี front, back, hint และกับดักที่พบบ่อย"
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "ใช้ชื่อ badge เกณฑ์ tier และตัวอย่างหลักฐาน"
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "ใช้ snippet ก่อน/หลัง ลำดับความสำคัญในการแก้ไข และเหตุผลสั้นๆ"
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "ใช้ปฏิทิน checklist และธงความเสี่ยง"
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "ใช้ไฟล์กรณี ตัวเลือก ผลลัพธ์ และบันทึกการเรียนรู้"
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "ใช้การ์ด challenge แต้ม รอบ และ debrief"
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "ใช้รายการ citation พร้อม checklist ช่องข้อมูลที่ขาด"
+    },
+    {
+      "key": "site.67ab2fa1194e620987",
+      "source": "Use Code Tutor for concepts, Project Coach for product ideas, Data Interpreter for datasets, and Study Plan Builder for a learning roadmap.",
+      "value": "ใช้ Code Tutor สำหรับแนวคิด Project Coach สำหรับไอเดียผลิตภัณฑ์ Data Interpreter สำหรับ dataset และ Study Plan Builder สำหรับ roadmap การเรียนรู้"
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "ใช้การ์ด commitment สคริปต์ check-in และแผน recovery"
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "ใช้ส่วนแบบกะทัดรัดเป็นลำดับ: setting, time slice, persona kernel, dossier wall, historian sidecar, คำถามเปิดที่แนะนำ จากนั้นเป็นการโต้ตอบในบทบาทพร้อมป้ายกำกับ claim เป็นครั้งคราวและ debrief เมื่อร้องขอ"
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "ใช้ส่วนแบบ UI กะทัดรัด: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence และ Field Notes จบ turn สำคัญด้วยตัวเลือกที่มีความหมาย"
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "ใช้ส่วน workroom แบบกะทัดรัด เช่น Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions และ Next action แสดงการแก้ไขที่แนะนำหรือ diff ก่อนรวมเมื่อต้องเขียนใหม่"
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "ใช้ตารางเปรียบเทียบและการทดลองขั้นถัดไป"
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "ใช้ claim ที่กระชับ พรอมป์หลักฐาน และสรุป debate ตอนท้ายเมื่อถูกขอ"
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "ใช้ snippet โค้ดที่กระชับ comment เฉพาะเมื่อมีประโยชน์ และ test case"
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "ใช้คำสั่งวาดแบบกระชับ รายการ label และ checkpoint ทางภาพ"
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "ใช้ส่วน Cornell: cues, notes, summary และ recall checks"
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "ใช้การ์ดคอร์ส รายการทรัพยากร และตาราง workload รายสัปดาห์"
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "ใช้การ์ด dashboard บันทึกแนวโน้ม จุดอ่อน และก้าวถัดไป"
+    },
+    {
+      "key": "site.21bcc1ab289563ea0a",
+      "source": "Use Data Interpreter to ask what the data says, what it does not say, and what to check next.",
+      "value": "ใช้ Data Interpreter เพื่อถามว่าข้อมูลบอกอะไร ไม่ได้บอกอะไร และควรตรวจอะไรต่อ"
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "ใช้ตาราง deadline ธงความเสี่ยง และก้าวถัดไป"
+    },
+    {
+      "key": "site.5e7b8bf8fda0b72c8d",
+      "source": "Use debate and cause-effect modes to compare explanations and write a stronger argument.",
+      "value": "ใช้โหมด debate และ cause-effect เพื่อเปรียบเทียบคำอธิบายและเขียน argument ที่แข็งแรงขึ้น"
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "ใช้การ์ด debate คำโต้แย้งสั้นๆ และการให้คะแนนคุณภาพ argument เป็นครั้งคราว"
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "ใช้การวินิจฉัย โมเดลที่ดีกว่า เหตุผลว่าทำไมใช้ได้ และคำถามตรวจหนึ่งข้อ"
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "ใช้ diagram ในข้อความ คำอธิบายบทบาท และสถานการณ์จริง"
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "ใช้สมการ ขั้นตอนที่จัดแนว และบันทึกสั้นๆ ว่าทำไมจึงใช้ได้"
+    },
+    {
+      "key": "site.32342ae4ffd3ccbc2f",
+      "source": "Use Exam Prep Planner to split a syllabus into sessions, practice, rest, and review checkpoints.",
+      "value": "ใช้ Exam Prep Planner เพื่อแบ่ง syllabus เป็นเซสชัน การฝึก การพัก และ checkpoint ทบทวน"
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "ใช้คำถาม examiner รูปทรง model answer และ feedback scorecard"
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "ใช้ตัวอย่าง เปรียบเทียบระบบ ถามคำถามประยุกต์ และแยกข้อเท็จจริงออกจากความคิดเห็น"
+    },
+    {
+      "key": "site.5ab4fb5e9add990671",
+      "source": "Use Flashcards and Spaced Review to turn misses into repeatable memory work.",
+      "value": "ใช้ Flashcards และ Spaced Review เพื่อเปลี่ยนจุดพลาดให้เป็นงานความจำที่ทำซ้ำได้"
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "ใช้ folder, tag, สรุปโน้ต, link และการกระทำทบทวน"
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "ใช้สูตร ตาราง และแผนคะแนนเป้าหมาย"
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "ใช้โพสต์ที่พร้อมลง forum ร่างคำตอบ และสรุปการอภิปราย"
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "ใช้การ์ดเป้าหมาย ลำดับความสำคัญ ประมาณเวลา blocker และเกณฑ์ว่าเสร็จแล้ว"
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "ใช้ agenda กลุ่ม บทบาท รอบ ทรัพยากร และงานติดตามผล"
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "ใช้บทบาทกลุ่ม รอบจับเวลา check-in และพรอมป์ debrief"
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "ใช้สูตรนิสัย แผนอุปสรรค และการทดลอง 7 วัน"
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "ใช้ hint, checkpoint และตัวอย่างเล็กๆ แทนคำตอบสุดท้ายเต็มรูปแบบ"
+    },
+    {
+      "key": "site.b7f1b5070a6f617745",
+      "source": "Use Homework Coach to narrow the stuck point, then explain the next line in your own words.",
+      "value": "ใช้ Homework Coach เพื่อจำกัดจุดที่ติดให้แคบลง แล้วอธิบายบรรทัดถัดไปด้วยคำของคุณเอง"
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "ใช้ส่วน hypothesis, materials, method, observation และ explanation เมื่อมีประโยชน์"
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "ใช้เมนูไอเดีย เกณฑ์การเลือก และสเก็ตช์ขั้นถัดไป"
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "ใช้บทสนทนาในบทบาทและบันทึกโค้ชสั้นๆ"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "ใช้ inspir สำหรับ feedback เรียงความ การช่วยอ่าน การฝึกพูด การวิจารณ์แหล่งข้อมูล และลูปแก้ไขที่ปรับปรุงโครงสร้างโดยไม่แทนที่เสียงของผู้เรียน"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "ใช้ inspir สำหรับ hint การบ้าน การตรวจขั้นตอนคณิตศาสตร์ feedback งานเขียน การวิจารณ์แหล่งข้อมูล คำถามโสเครติค และ flashcard โดยไม่เปิดเผยแชตส่วนตัว"
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "ใช้ inspir เพื่อความช่วยเหลือคณิตศาสตร์ทีละขั้น hint การบ้าน เหตุผลแบบโสเครติค quiz, flashcard และเตรียมสอบโดยไม่คัดลอกคำตอบ"
+    },
+    {
+      "key": "site.3cc91c4bf9fc851004",
+      "source": "Use it for debugging as a learning exercise: share the symptom, your expectation, and what you already tried, then ask for the next diagnostic step.",
+      "value": "ใช้มันสำหรับ debugging ในฐานะการฝึกเรียนรู้: แชร์อาการ สิ่งที่คุณคาดหวัง และสิ่งที่ลองแล้ว จากนั้นขอขั้นตอนวินิจฉัยถัดไป"
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "ใช้ key takeaways, outline, definitions และคำถามทบทวน"
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "ใช้กฎ leaderboard การให้คะแนน safeguard และการสะท้อนคิด"
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "ใช้ตาราง level กฎ XP การ์ด quest และ safeguard ป้องกันการ grind"
+    },
+    {
+      "key": "site.c138353994a69a1461",
+      "source": "Use Math Step Coach for reasoning checks and Writing Coach for revision priorities.",
+      "value": "ใช้ Math Step Coach สำหรับตรวจเหตุผล และ Writing Coach สำหรับลำดับความสำคัญในการแก้ไข"
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "ใช้ narrative เพื่อทำให้แนวคิดจำง่าย"
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "ใช้ nested bullet ตาราง หรือข้อความ Mermaid เมื่อช่วยให้งานชัดขึ้น"
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "ใช้ตำแหน่งแบบมีหมายเลข ภาพ และ recall checkpoint"
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "ใช้ objectives, summaries, examples, traps, questions และ next review"
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "ใช้ส่วน observation, interpretation, evidence และ next-question"
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "ใช้ pair banks รายการที่สลับลำดับ answer key และบันทึกทบทวน"
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "ใช้ place card ตารางเปรียบเทียบ และพรอมป์แผนที่"
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "ใช้เคล็ดลับเสียงที่ใช้งานได้จริงและบันทึกการตั้งค่าเซสชันเรียน"
+    },
+    {
+      "key": "site.43f312328ff3dea7a6",
+      "source": "Use Project Coach to turn a vague idea into the next testable feature or learning checkpoint.",
+      "value": "ใช้ Project Coach เพื่อเปลี่ยนไอเดียคลุมเครือให้เป็นฟีเจอร์ถัดไปหรือ checkpoint การเรียนรู้ที่ทดสอบได้"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "ใช้ quest, level, badge และ boss question"
+    },
+    {
+      "key": "site.b0e2d270322f3134ca",
+      "source": "Use Quiz and Flashcards after the explanation so the same error becomes easier to spot.",
+      "value": "ใช้ Quiz และ Flashcards หลังคำอธิบาย เพื่อให้ข้อผิดพลาดเดิมมองเห็นได้ง่ายขึ้น"
+    },
+    {
+      "key": "site.e2a9ec9823fba748bf",
+      "source": "Use Quiz mode to test recall first, then repair only the topics that need attention.",
+      "value": "ใช้ Quiz mode เพื่อทดสอบ recall ก่อน แล้วซ่อมเฉพาะหัวข้อที่ต้องการความสนใจ"
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "ใช้เสียงฝนสำหรับการอ่าน"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "ใช้เสียงฝนเพื่อการทบทวนบทเรียน"
+    },
+    {
+      "key": "site.ff8acf76ddef517cbf",
+      "source": "Use Reading Companion to summarize, question, and explain the passage before citing it.",
+      "value": "ใช้ Reading Companion เพื่อสรุป ตั้งคำถาม และอธิบายข้อความก่อนอ้างอิง"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "ใช้พรอมป์สะท้อนคิด จุดแข็งของผู้เรียน และการทดลองถัดไปหนึ่งอย่าง"
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "ใช้ส่วนรายงาน: wins, evidence, blockers, lessons, next week"
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "ใช้คำถามวิจัย เมทริกซ์แหล่งข้อมูล และบันทึกสังเคราะห์"
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "ใช้การ์ดทรัพยากร บันทึกผู้ชม และเคล็ดลับการใช้งาน"
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "ใช้คิวทบทวน วันที่ครบกำหนด และคะแนนความมั่นใจ"
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "ใช้ scorecard สำหรับความชัดเจน โครงสร้าง หลักฐาน และบันทึกการนำเสนอ"
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "ใช้แผนโฟกัสสั้นๆ checklist และพรอมป์สะท้อนคิดหลังเซสชัน"
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "ใช้ส่วนสั้นๆ ตัวอย่าง อุปมา และรายการหรือตารางที่เป็นมิตรกับ GFM เมื่อช่วยให้งานชัดขึ้น"
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "ใช้สรุปสั้นๆ การอ้างอิงที่ quote น้อย และชุดคำถาม"
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "ใช้บันทึกสนับสนุนสั้นๆ และก้าวถัดไปที่ใช้ได้จริง"
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "ใช้ค่าที่ตั้งไว้ล่วงหน้าของเสียงบรรยากาศเพื่อลดสิ่งรบกวนระหว่างการอ่าน การเขียน การทบทวนบทเรียน หรือการแก้โจทย์ปัญหา"
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "ใช้ notation ง่ายๆ ตัวอย่าง และพรอมป์ฝึก"
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "ใช้ตารางง่ายๆ ห่วงโซ่เหตุและผล และบันทึก caveat"
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "ใช้การเขียนใหม่ด้วยภาษาง่ายและ checklist ช่องว่าง"
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "ใช้การสเก็ตช์เป็นเครื่องมือในการเรียนรู้ เช่น วางแผนแผนภาพ ระบุแผนที่คร่าวๆ อธิบายกระบวนการ หรือเปลี่ยนไอเดียที่ยุ่งเหยิงให้เป็นภาพที่ชัดเจนขึ้น"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "ใช้คำแนะนำเสียงและบันทึกการตั้งค่าโฟกัส"
+    },
+    {
+      "key": "site.673383be4080ccee8e",
+      "source": "Use source critique for any claim you might cite.",
+      "value": "ใช้ source critique สำหรับ claim ใดๆ ที่คุณอาจ cite"
+    },
+    {
+      "key": "site.f035a4dcdcb6a8b442",
+      "source": "Use source critique or speaking practice to test whether the argument holds.",
+      "value": "ใช้ source critique หรือ speaking practice เพื่อทดสอบว่า argument ยังยืนอยู่ได้หรือไม่"
+    },
+    {
+      "key": "site.e61a20ed03ef5f151c",
+      "source": "Use Speaking Practice or Viva Practice to defend a claim out loud and find weak spots.",
+      "value": "ใช้ Speaking Practice หรือ Viva Practice เพื่อปกป้อง claim ออกเสียงและหาจุดอ่อน"
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "ใช้ตาราง stakeholder และการวิเคราะห์ pro/con ที่สมดุล"
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "ใช้กรอบ STAR หรือ situation-action-result เมื่อเหมาะสม"
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "ใช้จังหวะเรื่องราวพร้อมบันทึกการเรียนรู้"
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "ใช้สถานะ streak การกระทำเล็กๆ กฎ recovery และการสะท้อนรายสัปดาห์"
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "ใช้ตารางที่มีคำ ความหมาย ตัวอย่าง memory hook และพรอมป์ฝึก"
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "ใช้ตาราง takeaways ภาษาง่าย และบันทึกเตือน"
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "ใช้ภาษาปลายทางก่อน แล้วให้ feedback สั้นๆ ในภาษาช่วยเหลือที่ผู้เรียนถนัด"
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "ใช้ task board, deadline และรายการ next-action"
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "ใช้ task card เวลาที่ผ่านไป โน้ต และข้อเสนอแนะ block ติดตามผล"
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "ใช้ส่วนทดสอบ เวลา answer key rubric และแผนทบทวน"
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "ใช้เทคนิค Feynman เพื่อเผยช่องว่างและทำให้ความเข้าใจง่ายขึ้น"
+    },
+    {
+      "key": "site.28cbcf738d776f9d5d",
+      "source": "Use the historical person mode for perspective-taking, then verify claims with source critique.",
+      "value": "ใช้โหมด historical person เพื่อฝึกมองจากมุมมองอื่น แล้วตรวจสอบ claim ด้วย source critique"
+    },
+    {
+      "key": "site.1ef8423a25187fe253",
+      "source": "Use the simulations to generate questions and context, then verify important claims with primary or trusted secondary sources.",
+      "value": "ใช้การจำลองเพื่อสร้างคำถามและบริบท จากนั้นตรวจสอบ claim สำคัญด้วยแหล่งปฐมภูมิหรือแหล่งทุติยภูมิที่น่าเชื่อถือ"
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "ใช้รูปแบบกระชับนี้: Brief read: หนึ่งประโยค Map update: bullet แบบ Claim, Assumption, Gap หรือ Correction ที่กระชับตามความเกี่ยวข้อง Next question: คำถามเดียวพอดี สำหรับคำตอบแรก ให้ใช้ Target, Contract และ First question"
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "ใช้ thought experiment, argument map และสรุปที่สมดุล"
+    },
+    {
+      "key": "site.5dcf3d94e7f150a1c2",
+      "source": "Use Time Travel to understand the setting, constraints, beliefs, and pressures before judging the outcome.",
+      "value": "ใช้ Time Travel เพื่อเข้าใจฉาก ข้อจำกัด ความเชื่อ และแรงกดดันก่อนตัดสินผลลัพธ์"
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "ใช้ timeline ชั้นเหตุ และแผนที่ผลลัพธ์"
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "ใช้โครงสร้างต้นไม้ label ของ node ลิงก์ และพรอมป์ขั้นถัดไป"
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "ใช้ส่วนที่ไม่ติด label ระดับ hint, answer key และพรอมป์ทบทวน"
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "ใช้คำศัพท์ภาพและพรอมป์มองอย่างมีไกด์"
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "ใช้แผนรายสัปดาห์ แผนสำรอง และ next action เล็กๆ"
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "ใช้รอบทำงาน/พัก เมนูพัก และพรอมป์กลับเข้าสู่งาน"
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "ใช้ส่วน worksheet, answer key และ label ระดับความยาก"
+    },
+    {
+      "key": "site.272f9a3e858e31920c",
+      "source": "Useful subject help ends with proof that the idea stuck.",
+      "value": "ความช่วยเหลือรายวิชาที่มีประโยชน์จบด้วยหลักฐานว่าไอเดียติดอยู่ในหัว"
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "ยืนยันความรู้สึก ระบุ blocker และเลือกก้าวถัดไปเล็กๆ หนึ่งอย่าง"
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "การวิเคราะห์ภาพ"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "การเรียนรู้ด้วยภาพ"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "การเรียนรู้ผ่านภาพ"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "ฝึกสอบปากเปล่า"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "สร้างคลังคำศัพท์"
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "อยากได้จุดเริ่มที่กว้างที่สุดไหม?"
+    },
+    {
+      "key": "site.a8323a2a9b34ae7e0c",
+      "source": "Web",
+      "value": "เว็บ"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "รายงานรายสัปดาห์"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "รายงานประจำสัปดาห์"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "คะแนนถ่วงน้ำหนัก"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "เราควรออกแบบระบบความสำเร็จแบบไหนดี"
+    },
+    {
+      "key": "site.4478c5b34881470d07",
+      "source": "What are inspir subject hubs?",
+      "value": "subject hubs ของ inspir คืออะไร?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "เรากำลังระดมความคิดเรื่องอะไรกันอยู่?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "เรากำลังอ่านอะไรกันอยู่?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "วันนี้คุณสงสัยเรื่องอะไรอยู่?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "คุณกำลังเตรียมตัวจะพูดเรื่องอะไร?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "คุณกำลังทำวิจัยเรื่องอะไรอยู่?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "คุณกำลังเขียนอะไรอยู่?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "ผลงานศิลปะ ศิลปิน หรือรูปแบบใด"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "คุณมีงานอะไรที่ต้องทำบ้าง?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "เรากำลังสำรวจคำถามสำคัญข้อไหนอยู่?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "เราควรสำรวจอาชีพหรือความสนใจด้านไหนดี?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "เราควรศึกษาหัวข้อหน้าที่พลเมืองเรื่องใดดี?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "เราจะมาจัดการกับหัวข้อการเขียนโค้ดหรือบั๊กตัวไหนกันดี?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "ข้อตกลงใดที่ต้องการการตรวจสอบความรับผิดชอบ?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "เราควรสร้างแผนผังแนวคิดเรื่องอะไร?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "คุณกำลังจัดการหลักสูตรหรือวิชาอะไรอยู่บ้าง?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "เราควรฝึกระบุชื่อส่วนประกอบในแผนภาพใด?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "เราควรตรวจสอบภาวะกลืนไม่เข้าคายไม่ออกเรื่องใด?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "คุณจะทำอะไรต่อไปในโลกนี้?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "คุณต้องการจำอะไร?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "คุณต้องการเรียนอะไร"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "วันนี้คุณต้องการทำอะไรให้สำเร็จบ้าง?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "ศาลทำหน้าที่อะไร"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Product Manager ทำหน้าที่อะไร?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "แบบสำรวจนี้แสดงให้เห็นอะไร"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "เราควรจำลองแนวคิดทางเศรษฐกิจเรื่องอะไรดี?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "คุณกำลังเตรียมตัวสอบอะไรอยู่?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "ฉันต้องทำคะแนนสอบปลายภาคเท่าไหร่?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "สัปดาห์นี้เกิดอะไรขึ้นบ้าง?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "จะเกิดอะไรขึ้นหากมีการเปลี่ยนแปลงภาษี?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "จะเกิดอะไรขึ้นถ้าเราเปลี่ยนอุณหภูมิ?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "โจทย์การบ้านข้อไหนที่คุณติดอยู่?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "แนวคิดไหนที่รู้สึกสับสนหรือน่าสงสัย?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "คุณกำลังเตรียมตัวสัมภาษณ์เรื่องอะไร?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "ความรู้คืออะไร?"
+    },
+    {
+      "key": "site.3260060484f39629b0",
+      "source": "What is the best first step for exam prep?",
+      "value": "ก้าวแรกที่ดีที่สุดสำหรับการเตรียมสอบคืออะไร?"
+    },
+    {
+      "key": "site.4381cf32c8b3508f71",
+      "source": "What is the best writing workflow?",
+      "value": "workflow งานเขียนที่ดีที่สุดคืออะไร?"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "คุณต้องการเสียงบรรยากาศแบบไหนเพื่อช่วยในการจดจ่อ?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "เราควรจำลองกรณีศึกษาแบบไหนดี?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "วันนี้คุณต้องการโฟกัสในรูปแบบไหน?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "เป้าหมายการเรียนรู้ใดที่คุณต้องการเปลี่ยนให้เป็นระบบเลเวล"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "คุณต้องการสร้างนิสัยการเรียนรู้แบบไหน?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "เราควรทบทวนช่วงเวลาการเรียนรู้ไหนดี?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "กลยุทธ์การเรียนรู้แบบไหนที่เหมาะกับฉัน?"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "อะไรที่ทำให้ข้อโต้แย้งมีน้ำหนัก?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "อะไรคือสิ่งที่ทำให้บางสิ่งยุติธรรม?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "เนื้อหาใดที่ต้องการให้ทำเป็นคู่มือการเรียน?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "เราจะมาทำโจทย์คณิตศาสตร์ข้อไหนกันดี?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "เราควรทำงานกับแนวคิดทางดนตรีอะไรดี"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "เซสชันการทำงานเชิงลึกนี้ควรสร้างผลลัพธ์อะไร?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "คู่ใดบ้างที่ควรนำมาทำเป็นเกมจับคู่?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "ความคืบหน้าส่วนไหนที่เราควรทบทวน?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "เรากำลังจะสร้างโปรเจกต์อะไรกัน?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "คุณต้องการโพสต์คำถามหรือหัวข้อสนทนาอะไร?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "คุณต้องการแบ่งปันทรัพยากรอะไร"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "เราควรจำลองสถานการณ์อะไรดี?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "เรากำลังสำรวจแนวคิดหรือการทดลองทางวิทยาศาสตร์เรื่องอะไรอยู่?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "อะไรที่ควรกลายเป็นความท้าทาย?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "อะไรที่ควรเปลี่ยนให้เป็นเกมการเรียนรู้?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "อยากให้เรื่องไหนกลายเป็นนิทาน?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "ต้องการเปลี่ยนอะไรให้เป็นแฟลชการ์ด?"
+    },
+    {
+      "key": "site.b4db5ce01f645bf51a",
+      "source": "What should builders open first?",
+      "value": "ผู้สร้างควรเปิดอะไรก่อน?"
+    },
+    {
+      "key": "site.c29304d627902ff93d",
+      "source": "What should I open first for math?",
+      "value": "ฉันควรเปิดอะไรก่อนสำหรับคณิตศาสตร์?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "กระดานผู้นำควรวัดผลจากอะไร?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "แบบทดสอบฝึกหัดควรครอบคลุมเนื้อหาอะไรบ้าง?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "กลุ่มเรียนรู้ควรทำอะไรบ้าง?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "ใบงานควรครอบคลุมเนื้อหาอะไรบ้าง?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "ช่วงเวลาโฟกัสนี้ควรเกี่ยวกับเรื่องอะไร?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "เราควรทบทวนเรื่องอะไรดี?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "เราควรสเก็ตช์หรือวาดแผนภาพเรื่องอะไรดี?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "คุณกำลังสร้างความต่อเนื่องหรือกิจวัตรแบบไหนอยู่?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "เราควรจับเวลางานอะไรดี?"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "คุณต้องการให้เราทดสอบคุณในหัวข้อไหนดี?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "หัวข้อใดที่ต้องการนำมาสร้างเป็นแผนผังความคิด?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "คุณกำลังเตรียมตัวสอบปากเปล่าหรือสอบสัมภาษณ์เรื่องอะไรอยู่?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "คุณจะอธิบายอะไรกลับมาให้ฉันฟัง?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "เราควรฝึกคำศัพท์หรือหัวข้ออะไรดี?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "คุณต้องการจังหวะการทำงาน/การพักแบบไหน?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "วันนี้คุณอยากเรียนรู้อะไร"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "อะไรที่ทำให้การเรียนรู้เป็นเรื่องยากในตอนนี้?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "หัวข้อการโต้แย้งของคุณในวันนี้คืออะไร?"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "เราควรไปสำรวจที่ไหนดี?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "เราควรสืบค้นเหตุการณ์ทางประวัติศาสตร์เรื่องใดดี?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "คุณอยากพบกับบุคคลสำคัญท่านใด?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "ต้องการฝึกภาษาอะไรและสถานการณ์ไหน?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "เสียง white noise"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "คุณต้องการถกเถียงกับใคร และเรื่องอะไร?"
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "language": "Czech",
+  "locale": "cs",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.badges-achievements.inputboxText",
+      "source": "What achievement system should we design?",
+      "value": "Jaký systém úspěchů bychom měli navrhnout?"
+    },
+    {
+      "key": "topic.badges-achievements.category",
+      "source": "Gamification",
+      "value": "Gamifikace"
+    },
+    {
+      "key": "topic.badges-achievements.seo.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Vytvářejte odznaky za konzistenci, mistrovství, odvahu, revizi, spolupráci a dokončené projekty."
+    },
+    {
+      "key": "topic.badges-achievements.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Studenti zkoumající témata gamifikace, kteří chtějí praktické vedení namísto obecné odpovědi."
+    },
+    {
+      "key": "topic.badges-achievements.seo.whyDifferent",
+      "source": "This mode is tuned for badges & achievements with its own prompts, examples, and learning flow.",
+      "value": "Tento režim je vyladěn pro odznaky a úspěchy s vlastními výzvami, příklady a vzdělávacím tokem."
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.0",
+      "source": "Reward milestones that matter",
+      "value": "Odměňte milníky, na kterých záleží"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začněte s příkladovými výzvami"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Přizpůsobte relaci svému cíli"
+    },
+    {
+      "key": "topic.badges-achievements.starter.0",
+      "source": "Create badges for my class",
+      "value": "Vytvořte odznaky pro mou třídu"
+    },
+    {
+      "key": "topic.badges-achievements.starter.1",
+      "source": "Reward revision milestones",
+      "value": "Odměňujte milníky v opakování"
+    },
+    {
+      "key": "topic.badges-achievements.starter.2",
+      "source": "Make achievement rules",
+      "value": "Vytvořte pravidla pro úspěchy"
+    },
+    {
+      "key": "topic.leaderboards.name",
+      "source": "Leaderboards",
+      "value": "Žebříčky"
+    },
+    {
+      "key": "topic.leaderboards.subText",
+      "source": "Make competition healthier",
+      "value": "Udělejte soutěžení zdravějším"
+    },
+    {
+      "key": "topic.leaderboards.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Vytvářejte spravedlivé žebříčky, které odměňují úsilí, zlepšení, týmovou práci nebo konzistenci, aniž by odrazovaly pomalejší studenty."
+    },
+    {
+      "key": "topic.leaderboards.inputboxText",
+      "source": "What should the leaderboard measure?",
+      "value": "Co by měl žebříček měřit?"
+    },
+    {
+      "key": "topic.leaderboards.category",
+      "source": "Gamification",
+      "value": "Gamifikace"
+    },
+    {
+      "key": "topic.leaderboards.seo.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Vytvářejte spravedlivé žebříčky, které odměňují úsilí, zlepšení, týmovou práci nebo konzistenci, aniž by odrazovaly pomalejší studenty."
+    },
+    {
+      "key": "topic.leaderboards.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Studenti zkoumající témata gamifikace, kteří chtějí praktické rady namísto obecného pole pro odpovědi."
+    },
+    {
+      "key": "topic.leaderboards.seo.whyDifferent",
+      "source": "This mode is tuned for leaderboards with its own prompts, examples, and learning flow.",
+      "value": "Tento režim je vyladěn pro žebříčky s vlastními výzvami, příklady a studijním postupem."
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.0",
+      "source": "Make competition healthier",
+      "value": "Udělejte soutěžení zdravějším"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začněte s příklady výzev"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Přizpůsobte relaci svému cíli"
+    },
+    {
+      "key": "topic.leaderboards.starter.0",
+      "source": "Design a class leaderboard",
+      "value": "Navrhněte třídní žebříček"
+    },
+    {
+      "key": "topic.leaderboards.starter.1",
+      "source": "Measure improvement fairly",
+      "value": "Měřte zlepšení spravedlivě"
+    },
+    {
+      "key": "topic.leaderboards.starter.2",
+      "source": "Make a team challenge board",
+      "value": "Vytvořte týmovou výzvu"
+    },
+    {
+      "key": "topic.accountability-partner.name",
+      "source": "Accountability Partner",
+      "value": "Partner pro odpovědnost"
+    },
+    {
+      "key": "topic.accountability-partner.subText",
+      "source": "Build check-ins that keep you moving",
+      "value": "Vytvořte kontrolní mechanismy, které vás udrží v pohybu"
+    },
+    {
+      "key": "topic.accountability-partner.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Vytvářejte kontrolní body odpovědnosti s jasnými závazky, důkazy, pravidly pro nápravu a podpůrným následným sledováním."
+    },
+    {
+      "key": "topic.accountability-partner.inputboxText",
+      "source": "What commitment needs accountability?",
+      "value": "Jaký závazek vyžaduje odpovědnost?"
+    },
+    {
+      "key": "topic.accountability-partner.category",
+      "source": "Gamification",
+      "value": "Gamifikace"
+    },
+    {
+      "key": "topic.accountability-partner.seo.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Vytvářejte kontrolní body odpovědnosti s jasnými závazky, důkazy, pravidly pro nápravu a podpůrným následným sledováním."
+    },
+    {
+      "key": "topic.accountability-partner.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Studenti zkoumající témata gamifikace, kteří chtějí praktické rady namísto obecného pole pro odpovědi."
+    },
+    {
+      "key": "topic.accountability-partner.seo.whyDifferent",
+      "source": "This mode is tuned for accountability partner with its own prompts, examples, and learning flow.",
+      "value": "Tento režim je vyladěn pro partnera pro odpovědnost s vlastními výzvami, příklady a studijním postupem."
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.0",
+      "source": "Build check-ins that keep you moving",
+      "value": "Vytvořte si kontrolní body, které vás udrží v pohybu"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začněte s ukázkovými výzvami"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Přizpůsobte sezení svému cíli"
+    },
+    {
+      "key": "topic.accountability-partner.starter.0",
+      "source": "Set up weekly accountability",
+      "value": "Nastavte si týdenní zodpovědnost"
+    },
+    {
+      "key": "topic.accountability-partner.starter.1",
+      "source": "Write a check-in script",
+      "value": "Napište si scénář pro kontrolu"
+    },
+    {
+      "key": "topic.accountability-partner.starter.2",
+      "source": "Recover after missing a goal",
+      "value": "Jak se zotavit po nesplnění cíle"
+    },
+    {
+      "key": "topic.study-challenges.name",
+      "source": "Study Challenges",
+      "value": "Studijní výzvy"
+    },
+    {
+      "key": "topic.study-challenges.subText",
+      "source": "Create short challenges and boss rounds",
+      "value": "Vytvářejte krátké výzvy a kola s bossy"
+    },
+    {
+      "key": "topic.study-challenges.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Vytvářejte studijní výzvy s jasnými pravidly, bodováním, úrovněmi, koly s bossy a reflexí."
+    },
+    {
+      "key": "topic.study-challenges.inputboxText",
+      "source": "What should become a challenge?",
+      "value": "Co by se mělo stát výzvou?"
+    },
+    {
+      "key": "topic.study-challenges.category",
+      "source": "Gamification",
+      "value": "Gamifikace"
+    },
+    {
+      "key": "topic.study-challenges.seo.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Vytvářejte studijní výzvy s jasnými pravidly, bodováním, úrovněmi, koly s bossy a reflexí."
+    },
+    {
+      "key": "topic.study-challenges.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Studenti, kteří zkoumají témata gamifikace a chtějí praktické vedení namísto obecného pole pro odpovědi."
+    },
+    {
+      "key": "topic.study-challenges.seo.whyDifferent",
+      "source": "This mode is tuned for study challenges with its own prompts, examples, and learning flow.",
+      "value": "Tento režim je vyladěn pro studijní výzvy s vlastními podněty, příklady a studijním postupem."
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.0",
+      "source": "Create short challenges and boss rounds",
+      "value": "Vytvářejte krátké výzvy a kola s bossy"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začněte s ukázkovými výzvami"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Přizpůsobte sezení svému cíli"
+    },
+    {
+      "key": "topic.study-challenges.starter.0",
+      "source": "Make a 7 day math challenge",
+      "value": "Vytvořte sedmidenní matematickou výzvu"
+    },
+    {
+      "key": "topic.study-challenges.starter.1",
+      "source": "Create a vocabulary boss round",
+      "value": "Vytvořte kolo s bossem pro slovní zásobu"
+    },
+    {
+      "key": "topic.study-challenges.starter.2",
+      "source": "Design a revision sprint",
+      "value": "Navrhněte opakovací sprint"
+    }
+  ]
+}

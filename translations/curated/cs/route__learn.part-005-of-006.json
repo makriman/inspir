@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Czech",
+  "locale": "cs",
+  "namespace": "route:learn",
+  "sourceHash": "6b67cb58949582f0d63c0de58034de706fb1def479bd47caff347771e08a7cc3",
+  "part": {
+    "index": 5,
+    "total": 6
+  },
+  "entries": [
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Cestování časem"
+    },
+    {
+      "key": "site.b5de165cd236398a33",
+      "source": "timed test",
+      "value": "časovaný test"
+    },
+    {
+      "key": "site.c1f2f784477421cc0f",
+      "source": "Tiny explanation, example, user action, specific feedback, targeted repair or progress, recap, and mastery checkpoint.",
+      "value": "Krátké vysvětlení, příklad, akce uživatele, konkrétní zpětná vazba, cílená oprava nebo posun, shrnutí a kontrola zvládnutí."
+    },
+    {
+      "key": "site.a31ae9a6964e2f0a17",
+      "source": "Trace chains, compare importance, discuss consequences, and ask counterfactual questions.",
+      "value": "Sledujte řetězce, porovnávejte důležitost, diskutujte důsledky a pokládejte kontrafaktuální otázky."
+    },
+    {
+      "key": "site.895a7dace1b9ada67b",
+      "source": "Trace why events happened",
+      "value": "Zjistěte, proč k událostem došlo"
+    },
+    {
+      "key": "site.7ac967e6972ee5e7f5",
+      "source": "Track attempts, shrink goals when needed, and repair broken streaks.",
+      "value": "Sledujte pokusy, v případě potřeby zmenšete cíle a opravujte přerušené série."
+    },
+    {
+      "key": "site.c675fc274ad17a1cb4",
+      "source": "Track deadlines and next actions",
+      "value": "Sledujte termíny a další kroky"
+    },
+    {
+      "key": "site.af26deb023c5d0063d",
+      "source": "Track essay drafting focus",
+      "value": "Sledovat soustředění při psaní eseje"
+    },
+    {
+      "key": "site.d0d8eff92e1afc3d45",
+      "source": "Track essay outline work",
+      "value": "Sledovat práci na osnově eseje"
+    },
+    {
+      "key": "site.fd1f501b443adac02b",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Sledujte své studijní série, napravte vynechané dny a vytvořte si minimální životaschopný studijní návyk, který obstojí v běžném životě."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Cestuj obdobím"
+    },
+    {
+      "key": "site.fc86028b09428f3fbc",
+      "source": "Treat each turn as collaborative work: draft, critique, revise, ask for a decision, update open questions, and hand the next useful move to either the user or AI. Challenge weak ideas when the selected mode calls for it.",
+      "value": "Berte každé kolo jako společnou práci: navrhnout, zkritizovat, upravit, požádat o rozhodnutí, aktualizovat otevřené otázky a předat další užitečný krok buď uživateli, nebo AI. Zpochybňujte slabé nápady, když to vybraný režim vyžaduje."
+    },
+    {
+      "key": "site.93f978228f89334d15",
+      "source": "true false",
+      "value": "pravda nepravda"
+    },
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Zkuste vysvětlit koncept jednoduše. Váš tutor odhalí mezery, klade otázky a pomůže vám vysvětlení zdokonalit."
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Vyzkoušet Homework Coach"
+    },
+    {
+      "key": "site.cf66660c72e079e266",
+      "source": "Try this prompt in {value1}: {value2}",
+      "value": "Vyzkoušejte tento prompt v {value1}: {value2}"
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Proměňte široké téma ve výzkumné otázky, vyhledávací dotazy, osnovy a poznámky ke zdrojům."
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "Proměňte koncept, argument, problém, text nebo rozhodnutí v cílený řetězec otázek. Váš průvodce naslouchá každé odpovědi, mapuje předpoklady a mezery a vede vás k vlastnímu závěrečnému shrnutí. Zkuste: „Pomoz mi pochopit náklady obětované příležitosti.“"
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Proměňte osnovy ve studijní plán"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Proměňte téma, osnovy nebo poznámky v realistický cvičný test s oddíly, časováním, pokyny k hodnocení a kroky pro revizi."
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "Proměňte aktivitu v další kroky"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "Proměňte koncepty v příběhy, postavy, konflikty a nezapomenutelné scény."
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Proměňte diagramy, tělesné systémy, mapy, pracovní postupy nebo laboratorní sestavy v procvičování popisků s nápovědami a kontrolou odpovědí."
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "Proměňte nápady v milníky"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Proměňte svá předsevzetí v malé, opakovatelné studijní návyky pomocí spouštěčů, odměn a plánů pro případ selhání."
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Proměň to v kartičky"
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "Proměňte učení v krátké strukturované výzvy."
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "Proměňte studijní materiály v přehledného průvodce"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Proměň chyby ve smyčky opakování"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Převeď mé poznámky na studijní přehled"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Proměňte poznámky v pexeso pro slovní zásobu, koncepty, lidi/události, vzorce, příklady nebo dvojice příčina-následek."
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Proměňte poznámky nebo témata v přehledné kartičky s odpověďmi, chytáky a výzvami k procvičování."
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "Proměňte pokrok v úrovně a úkoly"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "Proměňte čtení v úkoly"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Proměňte roztříštěné poznámky ve složky, štítky, shrnutí, odkazy a akce k opakování, které usnadní jejich vybavování."
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Proměňte studijní aktivitu, výsledky kvízů, poznámky a časovače v přehled ve stylu dashboardu s trendy a dalšími akcemi."
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "Proměňte studium ve výzvu"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "Proměňte text v kompaktní, zapamatovatelný studijní materiál."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Přeměň opravenou chybu na kartičku nebo krátký checklist na později."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Přeměň vysvětlení na kartičky pro aktivní vybavování s jednou pojmovou kartičkou, jednou kartičkou s příkladem a jednou kartičkou k omylu."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Nejtěžší nezvládnutou otázku proměň v kartičku a zopakuj si ji později."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Přeměň tyto nezvládnuté otázky na kartičky seskupené podle pojmu, vzorce, definice a příkladu."
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Převeďte tuto přednášku na Cornellovy poznámky"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "Převést tuto poznámku na otázky a odpovědi"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "Proměňte nejasné záměry v dosažitelné denní studijní cíle."
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "Proměň slovní zásobu v úrovně"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "Doučujte matematiku pomocí uvažování krok za krokem a zapojení studenta."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Doučování"
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "Porozumět těžkému tématu"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Porozuměj historickému kontextu, zkoumej perspektivu, porovnávej tvrzení a odděluj simulaci od doloženého faktu."
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "Pochopte kód, opravujte chyby, učte se koncepty a budujte malé projekty krok za krokem."
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "Pochopte místa, mapy a lidi"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "Pochopte práva, vládu a společnost"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Pochopte zvuk, rytmus a harmonii"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "Pochopte, proč je odpověď správná"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Rozebírejte historické události prostřednictvím příčin, spouštěčů, následků a alternativních možností."
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "Použijte přestávky 50/10"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "Použijte kompaktní tabulku pro uvedenou odpověď, správnou myšlenku, mylnou představu a další krok."
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "Použijte hodnoticí kartu důvěryhodnosti a otázky k dalšímu zkoumání."
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "Použijte smlouvu o hluboké práci s výsledkem, plánem bloku, pravidly a reflexí."
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "Použijte tabulku s přední stranou, zadní stranou, nápovědou a běžnou pastí."
+    },
+    {
+      "key": "site.b09316e95362266ac0",
+      "source": "Use AI as a study workflow, not a shortcut.",
+      "value": "Používejte AI jako studijní pracovní postup, ne jako zkratku."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Používej AI koučování domácích úkolů pro nápovědy, kontroly kroků, matematické uvažování a zpětnou vazbu k psaní, zatímco konečná práce zůstane tvoje."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Používej AI cestování časem, historické rozhovory a procvičování debaty k objevování kontextu, důkazů, argumentů a perspektiv."
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "Použijte názvy odznaků, kritéria, úrovně a příklady důkazů."
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "Použijte ukázky před/po, priority revize a stručné zdůvodnění."
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "Použijte kalendáře, kontrolní seznamy a rizikové příznaky."
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "Použijte soubor případu, volby, výsledek a poznámku k učení."
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "Použijte karty výzev, body, kola a závěrečné shrnutí."
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "Použijte citační záznamy plus kontrolní seznam chybějících polí."
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "Použijte karty závazků, skripty kontrolních schůzek a plány obnovy."
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "Použijte kompaktní postupné části: prostředí, časový výřez, jádro osobnosti, stěnu dokumentace, historikův sidecar, doporučené úvodní otázky a poté výměny v roli s občasnými štítky tvrzení a shrnutím na vyžádání."
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "Použijte kompaktní části podobné UI: Pas, Cestovní upozornění, Scéna příjezdu, Místo, Identita, Společenská pravidla, Hodiny události, Lidé poblíž, Předměty, Volby, Důkazy a Terénní poznámky. Hlavní tahy zakončete smysluplnými volbami."
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "Použijte kompaktní části pracovny, jako jsou Sdílený artefakt, Příspěvek AI, Tah uživatele, Inline komentáře, Záznam rozhodnutí, Otevřené otázky a Další akce. Při přepisování ukažte navržené úpravy nebo diffy před sloučením."
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "Použijte srovnávací tabulky a experimenty pro další krok."
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "Použijte stručná tvrzení, prompty k důkazům a na vyžádání závěrečné shrnutí debaty."
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "Použijte stručné úryvky kódu, komentáře jen tehdy, když jsou užitečné, a testovací případy."
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "Použijte stručné instrukce ke kreslení, seznamy popisků a vizuální kontrolní body."
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "Použijte Cornellovy části: vodítka, poznámky, shrnutí a kontroly vybavování."
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "Použijte karty kurzů, seznamy zdrojů a týdenní tabulky zátěže."
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "Použijte dashboardové karty, poznámky k trendům, slabá místa a další akce."
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "Použijte tabulky termínů, rizikové příznaky a další akce."
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "Použijte debatní karty, stručné vyvracení a občasné skórování kvality argumentů."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Použij debatu k porovnání nejsilnějšího tvrzení a nejsilnější protiteze."
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "Použijte diagnózu, lepší model, vysvětlení proč funguje a jednu kontrolní otázku."
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "Použijte diagramy v textu, vysvětlení rolí a scénáře z reálného světa."
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "Použijte rovnice, zarovnané kroky a krátké poznámky, proč to funguje."
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "Použijte otázky zkoušejícího, tvary modelových odpovědí a hodnoticí karty zpětné vazby."
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "Použijte příklady, porovnávejte systémy, pokládejte aplikační otázky a oddělujte fakta od názorů."
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "Použijte složky, štítky, shrnutí poznámek, odkazy a akce opakování."
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "Použijte vzorce, tabulky a plány cílového skóre."
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "Použijte příspěvky připravené pro fórum, návrhy odpovědí a shrnutí diskuse."
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "Použijte karty cílů, prioritu, odhad času, blokátor a kritéria hotovo."
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "Použijte skupinový program, role, kola, zdroje a navazující úkoly."
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "Použijte skupinové role, časovaná kola, průběžné kontroly a prompty k reflexi."
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "Použijte recept na návyk, plán překážek a 7denní experiment."
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "Použijte nápovědy, kontrolní body a malé příklady místo úplných finálních odpovědí."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Používej nápovědy, kontroly kroků a zpětnou vazbu k psaní, aniž by se učení změnilo v opisování odpovědí."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "Když je to užitečné, použijte části hypotéza, materiály, metoda, pozorování a vysvětlení."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "Použijte nabídky nápadů, výběrová kritéria a náčrty dalších kroků."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "Použijte dialog v roli a krátké koučovací poznámky."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "Použijte hlavní poznatky, osnovu, definice a otázky k opakování."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "Použijte pravidla žebříčku, bodování, ochranná opatření a reflexi."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "Použijte tabulky úrovní, pravidla XP, karty úkolů a ochranu proti grindování."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "Použijte vyprávění, aby byly pojmy zapamatovatelnější."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "Když to pomůže, použijte vnořené odrážky, tabulky nebo text Mermaid."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "Použijte očíslovaná místa, obrázky a kontrolní body vybavování."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "Použijte cíle, shrnutí, příklady, pasti, otázky a další opakování."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "Použijte části pozorování, interpretace, důkazy a další otázka."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "Použijte banky dvojic, promíchané seznamy, klíč odpovědí a poznámky k opakování."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "Použijte karty míst, srovnávací tabulky a mapové prompty."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "Použijte praktické tipy k audiu a poznámky k nastavení studijního sezení."
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "Použijte questy, úrovně, odznaky a boss otázky."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "Použijte déšť pro čtení"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "Použít zvuky deště pro opakování"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "Použijte prompty k reflexi, silné stránky studenta a jeden další experiment."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "Použijte části reportu: výhry, důkazy, blokátory, lekce, příští týden."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "Použijte výzkumné otázky, matice zdrojů a poznámky k syntéze."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "Použijte karty zdrojů, poznámky k publiku a tipy k použití."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "Použijte fronty opakování, termíny splnění a hodnocení jistoty."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "Použijte hodnoticí karty pro poznámky k jasnosti, struktuře, důkazům a projevu."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "Použijte krátké plány soustředění, kontrolní seznamy a prompty k reflexi po sezení."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "Použijte krátké části, příklady, analogie a seznamy nebo tabulky vhodné pro GFM, když pomáhají."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "Použijte krátká shrnutí, odkazy s minimem citací a sady otázek."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "Použijte krátké podpůrné poznámky a praktické další akce."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Používejte jednoduché předvolby okolních zvuků ke snížení rozptylování při čtení, psaní, opakování nebo řešení problémů."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "Použijte jednoduchý zápis, příklady a prompty k procvičování."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "Použijte jednoduché tabulky, řetězce příčin a následků a poznámky k výhradám."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "Použijte přepisy do jednoduchého jazyka a kontrolní seznamy mezer."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Použijte skicování jako studijní metodu: plánujte diagramy, popisujte hrubé mapy, vysvětlujte procesy nebo přeměňte chaotický nápad na jasnější vizuál."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Použij sokratovské otázky"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "Použijte doporučení zvuků a poznámky k nastavení soustředění."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "Použijte tabulky zainteresovaných stran a vyváženou analýzu pro/proti."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "Když je to vhodné, použijte rámce STAR nebo situace-akce-výsledek."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "Použijte příběhové body plus poznámky k učení."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "Použijte stav série, drobnou akci, pravidlo obnovy a týdenní reflexi."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "Použijte tabulky se slovem, významem, příkladem, paměťovou pomůckou a promptem k procvičování."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "Použijte tabulky, poznatky v jednoduchém jazyce a upozornění."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "Nejdřív použijte cílový jazyk a potom krátkou zpětnou vazbu v preferovaném podpůrném jazyce studenta."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "Použijte úkolové tabule, termíny a seznamy dalších akcí."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "Použijte karty úkolů, uplynulý čas, poznámky a návrhy navazujícího bloku."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "Použijte části testu, časování, klíče odpovědí, rubriky a plány opakování."
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Použij datum zkoušky, učivo, dostupný čas a slabé oblasti k vytvoření plánu, který obstojí ve skutečném životě."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "Použijte Feynmanovu techniku k odhalení mezer a zjednodušení porozumění."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "Použijte tento kompaktní formát: Krátké přečtení: jedna věta. Aktualizace mapy: stručné odrážky Tvrzení, Předpoklad, Mezera nebo Oprava podle potřeby. Další otázka: přesně jedna otázka. V první odpovědi použijte Cíl, Dohodu a První otázku."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "Použijte myšlenkové experimenty, mapy argumentů a vyvážená shrnutí."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Použijte časové osy, vrstvy příčin a mapy důsledků."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Použijte stromové struktury, popisky uzlů, odkazy a prompty k dalším krokům."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Použijte neoznačené části, úrovně nápověd, klíč odpovědí a prompty k opakování."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Použijte vizuální slovní zásobu a vedené prompty k pozorování."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Použijte týdenní plány, záložní plány a drobné další akce."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Použijte cykly práce a přestávky, nabídky přestávek a prompty k návratu."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Použijte části pracovního listu, klíče odpovědí a štítky obtížnosti."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Používej zpětnou vazbu k psaní pro strukturu, jasnost a důkazy, zatímco konečný návrh zůstane rozpoznatelně tvůj."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Potvrďte pocit, určete blokátor a vyberte jeden malý další krok."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "vizuální analýza"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "vizuální učení"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Vizuální učení"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Nácvik ústní zkoušky"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Budování slovní zásoby"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Zpětná vazba zachovávající hlas"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Smyčky slabých oblastí"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "týdenní report"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Týdenní přehledy"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "vážené skóre"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Jaký systém úspěchů bychom měli navrhnout?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "Co budeme brainstormovat?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Co budeme číst?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Co vás dnes zajímá?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Co se připravujete říct?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Co zkoumáte?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Co píšete?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Jaké umělecké dílo, umělec nebo styl?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Jaké úkoly máte před sebou?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Jakou velkou otázku zkoumáme?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Jakou kariéru nebo zájem máme prozkoumat?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Jaké občanské téma máme studovat?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Jaké kódovací téma nebo chybu budeme řešit?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Jaký závazek vyžaduje odpovědnost?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Jaký koncept máme zmapovat?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Jaké kurzy nebo předměty spravujete?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Který diagram bychom měli procvičovat v popisování?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Jaké dilema bychom měli prozkoumat?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Co uděláš v tomto světě jako další krok?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Co si potřebujete zapamatovat?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Co potřebujete studovat?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Co chcete dnes stihnout?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Co dělá soud?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Co dělá produktový manažer?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Co ukazuje tento průzkum?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Jakou ekonomickou myšlenku máme simulovat?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Na jakou zkoušku se připravujete?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Jaký výsledek potřebuji u závěrečné zkoušky?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "Co se tento týden stalo?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "Co se stane, když se změní daně?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "Co se stane, když změníme teplotu?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "S jakým úkolem potřebujete pomoci?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Která myšlenka vám připadá matoucí nebo podezřelá?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "Na jaký pohovor se připravujete?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "Co je to poznání?"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Jaký druh okolního soustředění si přejete?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "Jaký případ bychom měli simulovat?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "Na co se dnes chcete soustředit?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Jaký vzdělávací cíl by se měl stát systémem úrovní?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "Jaký studijní návyk si chcete vytvořit?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "Nad jakým momentem při učení bychom se měli zamyslet?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "Jaká strategie učení mi vyhovuje?"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "Co dělá argument platným?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "Co dělá věc spravedlivou?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "Z jakého materiálu by se měl stát studijní průvodce?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "Jaký matematický příklad budeme řešit?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "Na jakém hudebním nápadu bychom měli pracovat?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Jaký výsledek by mělo toto sezení hluboké práce přinést?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "Jaké dvojice by se měly stát pexesem?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "Jaký pokrok máme zkontrolovat?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "Jaký projekt budujeme?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "Jakou otázku nebo diskusi chcete zveřejnit?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "Jaký zdroj chcete sdílet?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "Jaký scénář si máme zahrát?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Jaký vědecký nápad nebo experiment zkoumáme?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "Co by se mělo stát výzvou?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "Co by se mělo stát výukovou hrou?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "Co by se mělo stát příběhem?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "Z čeho by se měly stát kartičky?"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Na co se mám zeptat jako první, když téma působí příliš těžce?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Co mám zahrnout do promptu k domácímu úkolu?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "Co by měl žebříček měřit?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "Co by měl cvičný test pokrývat?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "Co by měla studijní skupina dělat?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "Co by měl pracovní list obsahovat?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "Na co se chcete v tomto studijním bloku zaměřit?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "Co si máme zopakovat?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "Co bychom měli načrtnout nebo znázornit diagramem?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "Jakou sérii nebo rutinu si budujete?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "Jaký úkol máme měřit?"
+    },
+    {
+      "key": "site.834f5e34978fe93e4e",
+      "source": "What to avoid",
+      "value": "Čemu se vyhnout"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "Z jakého tématu tě máme vyzkoušet?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "Jaké téma by se mělo stát myšlenkovou mapou?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Na jakou ústní zkoušku se připravujete?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "Co mi vysvětlíte zpět?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "Jaká slova nebo téma bychom měli procvičit?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "Jaký rytmus práce a přestávek si přejete?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "Co byste se chtěli dnes naučit?"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "Co vám právě teď ztěžuje učení?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "Jaké je vaše dnešní téma debaty?"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "Kde bychom měli bádat?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "Kterou historickou událost máme prozkoumat?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "S jakou historickou osobností byste se chtěli setkat?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "Jaký jazyk a situace?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "bílý šum"
+    }
+  ]
+}

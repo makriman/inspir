@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Russian",
+  "locale": "ru",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "Вредны ли социальные сети?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "Нужно ли задавать домашнее задание?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "Стоит ли исследовать космос?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "Объясни мой ответ"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "Пойми, почему ответ верный или неверный"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Вставьте вопрос, ваш ответ и правильный ответ, если он у вас есть. Ваш помощник объяснит логику решения и поможет избежать подобных ошибок в будущем."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "Вставьте вопрос и ваш ответ"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "Практика"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Вставьте вопрос, ваш ответ и правильный ответ, если он у вас есть. Ваш помощник объяснит логику решения и поможет избежать подобных ошибок в будущем."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, которые хотят получить практические рекомендации, а не просто готовый ответ."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Этот режим специально настроен для объяснения ответов с помощью собственных подсказок, примеров и процесса обучения."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "Пойми, почему ответ верный или неверный"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начни с примеров запросов"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируй сессию под свою цель"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Почему мой ответ по алгебре неверный?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "Объясни это исправление грамматики"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "Я выбрал Б. Почему верно В?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "Репетитор по домашке"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "Подсказки без готовых ответов"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "Справляйтесь с домашним заданием с помощью подсказок, примеров и проверок, которые помогут вам думать самостоятельно."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "С какой задачей из домашнего задания у вас возникли трудности?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "Практика"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Справляйтесь с домашним заданием с помощью этичных подсказок, примеров, проверок и пошагового руководства."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "Ученики, которым нужна помощь в начале решения задачи, проверке работы или понимании ошибки."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Репетитор поддерживает ваше мышление, не выполняя задание за вас, поэтому итоговая работа остается вашей."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "Найдите следующий шаг"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "Поймите свою ошибку"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "Решите похожую задачу"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "Помоги мне начать эту текстовую задачу"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "Проверь тезис моего эссе"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "Дай подсказку к этой задаче по физике"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "Math Step Coach"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "Разбирайте математику шаг за шагом"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "Решайте математические задачи, понимая каждый шаг. Ваш наставник проверит работу, укажет на ошибки и поможет обрести уверенность."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "Какую математическую задачу нам нужно разобрать?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Разбирайте алгебру, математический анализ, текстовые задачи и математические концепции шаг за шагом с помощью ИИ-наставника."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "Учащиеся, которые хотят понять, почему работает каждый математический шаг, а не просто списать ответ."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Система проверяет каждый шаг, указывает на ошибки и связывает методы решения с теорией."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "Выберите первый шаг"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "Проверьте каждый шаг"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "Объясните, почему этот метод работает"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "Реши со мной 2x + 5 = 17"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "Помоги с квадратными уравнениями"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "Объясни производные шаг за шагом"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "Science Lab Partner"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "Безопасно изучайте эксперименты и концепции"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Планируйте безопасные демонстрации, разбирайтесь в переменных, прогнозируйте результаты и рассуждайте на основе доказательств, как настоящий ученый."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Какую научную идею или эксперимент мы будем изучать?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Планируйте безопасные демонстрации, разбирайтесь в переменных, прогнозируйте результаты и делайте выводы на основе доказательств, как настоящий ученый."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, изучающие темы STEM, которым нужно практическое руководство, а не просто стандартное поле для ответов."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен специально для работы в качестве партнера по научной лаборатории с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "Безопасное изучение экспериментов и концепций"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров запросов"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "Разработать эксперимент по росту растений"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "Объяснить кислоты и основания"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "Что произойдет, если изменить температуру?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "Тренер по письму"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "Планируйте, пишите черновики, редактируйте и совершенствуйте свои тексты"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "Улучшайте эссе, рассказы, электронные письма и аргументы с помощью целенаправленной обратной связи, сохраняя при этом свой уникальный стиль."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "Что вы пишете?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "Коммуникация"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Улучшайте свои тексты с помощью планирования, редактирования, структурирования и обратной связи, сохраняя при этом свой авторский голос."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "Учащиеся, которые пишут эссе, рассказы, электронные письма, сопроводительные письма или аргументированные тексты."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Тренер дает целевые рекомендации по редактированию и примеры «до и после», не заменяя при этом ваш собственный стиль."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "Четко сформулируйте свою мысль"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "Улучшите структуру"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "Редактируйте осознанно"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "Улучшить вступление к моему эссе"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "Помочь мне составить план рассказа"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "Сделать этот абзац более понятным"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "Компаньон для чтения"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "Читайте, составляйте резюме и задавайте вопросы по текстам"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Приносите отрывок или идею книги и развивайте понимание с помощью резюме, словарного запаса, выводов и обсуждения."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "Что мы читаем?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "Коммуникация"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Приносите отрывок или идею книги и развивайте понимание с помощью резюме, словарного запаса, выводов и обсуждения."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, изучающие темы коммуникации, которым нужно практическое руководство, а не просто поле для ответов."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен для компаньона по чтению с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "Читайте, составляйте резюме и задавайте вопросы по текстам"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров подсказок"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "Помоги мне понять этот абзац"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "Составь резюме 2-й главы"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "Задай мне вопросы по этому стихотворению"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "Тренажер словарного запаса"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "Изучайте слова в контексте"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Расширяйте словарный запас с помощью значений, примеров, подсказок по произношению, мнемонических приемов и быстрой практики."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "Какие слова или тему нам стоит попрактиковать?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "Коммуникация"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Расширяйте словарный запас с помощью значений, примеров, подсказок по произношению, мнемонических приемов и быстрой практики."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, изучающие темы коммуникации, которым нужно практическое руководство, а не просто поле для ответов."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен для тренажера словарного запаса с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "Изучайте слова в контексте"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров подсказок"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "Словарный запас для SAT"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "Деловой английский"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "Слова о погоде"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "Языковая ролевая игра"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "Практикуйте реальные диалоги"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Практикуйте язык в реалистичных сценариях, таких как кафе, собеседования, путешествия и повседневная жизнь, с исправлениями после каждого хода."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "Какой язык и ситуация?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "Общение"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Практикуйте язык в реалистичных сценариях, таких как кафе, собеседования, путешествия и повседневная жизнь, с исправлениями после каждого хода."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, изучающие темы общения, которым нужно практическое руководство, а не просто поле для ввода текста."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен специально для языковых ролевых игр с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "Практикуйте реальные диалоги"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров подсказок"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "Ролевая игра в испанском кафе"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "Разговор в аэропорту на французском"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "Торг на рынке на хинди"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "Практика речи"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "Репетируйте вслух с подсказками"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Готовьтесь к выступлениям, презентациям, собеседованиям или устным экзаменам с помощью подсказок, тайминга и обратной связи по структуре."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "К чему вы готовитесь?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "Общение"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Готовьтесь к выступлениям, презентациям, собеседованиям или устным экзаменам с помощью подсказок, тайминга и обратной связи по структуре."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, изучающие темы общения, которым нужны практические рекомендации, а не просто общие ответы."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен на практику разговорной речи с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "Тренируйтесь вслух с помощью подсказок"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров подсказок"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "Отрепетировать школьную презентацию"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "Пробный экзамен IELTS по разговорной речи"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "Помогите мне ответить на вопросы собеседования"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "Планировщик подготовки к экзаменам"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Превратите учебную программу в план занятий"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Составьте реалистичный план подготовки к экзамену, основываясь на дате, программе, ваших сильных и слабых сторонах."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "К какому экзамену вы готовитесь?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "Планирование"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Превратите свою учебную программу, дату экзамена, время и слабые места в практический план занятий."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "Студенты, которым нужен план, сочетающий повторение, практику, уверенность и реальную жизнь."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Планировщик расставляет приоритеты для слабых мест, добавляет циклы повторения и создает запасные планы на случай пропущенных дней."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "Расставьте приоритеты тем"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "Запланируйте повторение"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "Отслеживайте проблемные зоны"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "Составить план на 2 недели по биологии"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "Составить график повторения для JEE"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "Помогите мне подготовиться к выпускным экзаменам"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "Конструктор карточек"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "Создавайте умные карточки для запоминания"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Превращайте заметки или темы в понятные карточки с ответами, ловушками и подсказками для повторения."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "Что нужно превратить в карточки?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "Практика"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Превращайте заметки или темы в целенаправленные карточки с подсказками, ответами, примерами и типичными ловушками."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "Студенты, готовящиеся к экзаменам, изучающие языки и все, кто использует метод активного воспроизведения."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Карточки содержат по одному вопросу за раз и включают ловушки, чтобы повторение развивало понимание, а не просто узнавание."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "Создавайте карточки для запоминания"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "Открывайте ответы, когда будете готовы"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "Повторяйте пропущенное чаще"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "Создать карточки по митозу"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "Превратить эту заметку в вопросы и ответы"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "Создать карточки по географии"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "Дворец памяти"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "Запоминайте идеи с помощью ярких мест"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "Превращайте факты, списки, речи или последовательности в запоминающиеся ментальные сцены."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "Что вам нужно запомнить?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "Практика"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "Превращайте факты, речи, списки или последовательности в запоминающиеся сцены, которые облегчают воспроизведение во время учебы и экзаменов."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "Учащиеся, которые запоминают упорядоченные идеи, лексику, речи, формулы или факты, требующие более сильной ментальной привязки."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "Этот режим создает яркие локации, маршруты и подсказки для воспроизведения вместо того, чтобы заставлять вас перечитывать заметки."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "Выберите маршрут"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "Разместите яркие подсказки"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "Практикуйте воспроизведение"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "Запомнить планеты"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "Запомнить план выступления"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "Изучить биологическую систематику"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "Интервальное повторение"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "Повторяйте, пока не забыли"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "Планируйте и проводите быстрые сессии повторения для укрепления долговременной памяти."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "Что нам нужно повторить?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "Практика"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "Планируйте быстрые сессии повторения, возвращайтесь к сложным темам и укрепляйте долговременную память с помощью интервальных повторений под руководством ИИ."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "Для тех, кто забывает прочитанное и нуждается в практическом графике повторения концепций, терминов или экзаменационных материалов."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Наш коуч превращает ошибки и сомнения в график повторений, а не просто в очередное пассивное резюме."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "Выберите темы для повторения"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "Запланируйте воспроизведение материала"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "Исправьте ошибки"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "Повторить вчерашнюю химию"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "Составить план повторения на 7 дней"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "Снова проверить мой словарный запас"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "Конструктор концептуальных карт"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "Визуализируйте связи между идеями в тексте"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Отображайте взаимосвязи идей: от причин и следствий до категорий, примеров и противоречий."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "Какую концепцию нам нужно отобразить?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "Мышление"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Отображайте взаимосвязи идей: от причин и следствий до категорий, примеров и противоречий."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Для тех, кто изучает темы мышления и хочет получить практическое руководство вместо стандартного поля для ответов."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен специально для создания концептуальных карт с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "Визуализируйте связи между идеями в тексте"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров запросов"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "Составить карту изменения климата"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "Связать алгебраические концепции"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "Построить карту демократии"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "Доктор заблуждений"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "Находите и исправляйте ошибочные ментальные модели"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Расскажите, как вы понимаете ситуацию, и ваш помощник выявит скрытые заблуждения с помощью мягких проверок."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Какая идея кажется запутанной или сомнительной?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "Мышление"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Расскажите, как вы понимаете ситуацию, и ваш помощник выявит скрытые заблуждения с помощью мягких проверок."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, изучающие темы мышления, которым нужно практическое руководство, а не просто ответы из поисковика."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен специально для доктора заблуждений с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "Находите и исправляйте ошибочные ментальные модели"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров запросов"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "Я думаю, что тяжелые предметы падают быстрее"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "Я не понимаю отрицательные числа"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "Почему это грамматическое правило такое странное?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "Тьютор Фейнмана"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "Объясняйте просто, пока не запомните"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Попробуйте объяснить концепцию простыми словами. Ваш тьютор найдет пробелы, задаст вопросы и поможет выстроить объяснение заново."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "Что вы мне объясните?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "Мышление"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Попробуйте объяснить концепцию простыми словами. Ваш тьютор найдет пробелы в знаниях, задаст уточняющие вопросы и поможет выстроить объяснение заново."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Для тех, кто изучает темы мышления и хочет получить практическое руководство, а не просто стандартный ответ."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен специально для тьютора Фейнмана с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "Объясняйте просто, пока не запомните"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров запросов"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "Я объясню гравитацию"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "Проверь мое понимание инфляции"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "Помоги мне упростить рекурсию"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "Симулятор кейсов"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "Учитесь на основе реалистичных решений"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Погрузитесь в реалистичный кейс, принимайте решения, наблюдайте за последствиями и изучайте принципы, лежащие в основе каждого выбора."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "Какой кейс нам стоит симулировать?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "Погружение"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Погрузитесь в реалистичный кейс, принимайте решения, наблюдайте за последствиями и изучайте принципы, лежащие в основе каждого выбора."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Для тех, кто изучает темы погружения и хочет получить практическое руководство, а не просто стандартный ответ."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен специально для симулятора кейсов с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "Учитесь на основе реалистичных решений"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Начните с примеров запросов"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Адаптируйте сессию под свою цель"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "Кейс по бизнес-стратегии"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "Кейс по медицинской этике"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "Кейс по экологической политике"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "Ролевой сценарий"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "Практикуйте сложные жизненные разговоры"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Практикуйте ведение переговоров, разрешение конфликтов, поддержку клиентов, лидерство или любые важные разговоры."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "Какой сценарий мы разыграем?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "Погружение"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Практикуйте ведение переговоров, разрешение конфликтов, поддержку клиентов, лидерство или любые важные разговоры."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Учащиеся, изучающие темы погружения, которым нужно практическое руководство, а не просто поле для ввода текста."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Этот режим настроен для ролевых сценариев с собственными подсказками, примерами и процессом обучения."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "Практикуйте сложные жизненные разговоры"
+    }
+  ]
+}

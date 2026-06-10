@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Albanian",
+  "locale": "sq",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 4,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "component.911283fe2232",
+      "source": "Quick Check",
+      "value": "Kontroll i shpejtë"
+    },
+    {
+      "key": "component.d614793e93c0",
+      "source": "Quiz me",
+      "value": "Më bëj kuiz"
+    },
+    {
+      "key": "component.f4fd71bdcc3d",
+      "source": "Quiz on",
+      "value": "Kuiz mbi"
+    },
+    {
+      "key": "component.750127052ffa",
+      "source": "Rajput retainer",
+      "value": "Mbajtës rajput"
+    },
+    {
+      "key": "component.2cb0220c7fb5",
+      "source": "Rank controls speech",
+      "value": "Rangu kontrollon të folurin"
+    },
+    {
+      "key": "component.47f2291b96b5",
+      "source": "Raw options",
+      "value": "Opsione të papërpunuara"
+    },
+    {
+      "key": "component.b0fb2e2755f6",
+      "source": "Read the guide",
+      "value": "Lexo udhëzuesin"
+    },
+    {
+      "key": "component.1ba9285c4dbb",
+      "source": "Read the pamphlet aloud",
+      "value": "Lexoje broshurën me zë"
+    },
+    {
+      "key": "component.8df33e186224",
+      "source": "Reading knowledge plus formal speech routines",
+      "value": "Njohuri leximi plus rutina formale të të folurit"
+    },
+    {
+      "key": "component.e27e7173e91e",
+      "source": "Ready for a 10-minute checkpoint",
+      "value": "Gati për një pikë kontrolli 10-minutëshe"
+    },
+    {
+      "key": "component.9ee1d87c6cd7",
+      "source": "Ready for next handoff",
+      "value": "Gati për dorëzimin e radhës"
+    },
+    {
+      "key": "component.8c2d9db100f4",
+      "source": "Ready for review",
+      "value": "Gati për shqyrtim"
+    },
+    {
+      "key": "component.370cdd29a525",
+      "source": "Real life",
+      "value": "Jeta reale"
+    },
+    {
+      "key": "component.8e10fdd77b25",
+      "source": "Real-world mode",
+      "value": "Modaliteti i botës reale"
+    },
+    {
+      "key": "component.7d2085c16e37",
+      "source": "Reasoning depth",
+      "value": "Thellësia e arsyetimit"
+    },
+    {
+      "key": "component.12814e474612",
+      "source": "Reasoning link",
+      "value": "Lidhja e arsyetimit"
+    },
+    {
+      "key": "component.410a5fd0ec61",
+      "source": "Reasoning log",
+      "value": "Regjistri i arsyetimit"
+    },
+    {
+      "key": "component.08c753ccf87c",
+      "source": "Recall before reveal",
+      "value": "Kujto para se ta zbulosh"
+    },
+    {
+      "key": "component.28220567a702",
+      "source": "Recent political wounds remain raw",
+      "value": "Plagët politike të kohëve të fundit mbeten të hapura"
+    },
+    {
+      "key": "component.7d4b454370c7",
+      "source": "Recognition is useful, but it is weaker evidence than applying the idea without the answer in front of you.",
+      "value": "Njohja është e dobishme, por është provë më e dobët sesa zbatimi i idesë pa e pasur përgjigjen përpara."
+    },
+    {
+      "key": "component.afbf9a099120",
+      "source": "Recommend opening questions for this encounter, grouped by interview, debate, contradiction, and legacy.",
+      "value": "Rekomando pyetje hapëse për këtë takim, të grupuara sipas intervistës, debatit, kundërshtisë dhe trashëgimisë."
+    },
+    {
+      "key": "component.c783910b44b6",
+      "source": "Reconstruct a decision, alternatives, constraints, and outcomes.",
+      "value": "Rindërto një vendim, alternativat, kufizimet dhe rezultatet."
+    },
+    {
+      "key": "component.a72a8f73dc11",
+      "source": "Red Fort approaches",
+      "value": "Qasjet drejt Red Fort"
+    },
+    {
+      "key": "component.2ce8b9e121f0",
+      "source": "Red sandstone heat, ink, perfumed paper, controlled silence, and many languages orbiting power.",
+      "value": "Nxehtësi gurësh ranorë të kuq, bojë, letër e parfumuar, heshtje e kontrolluar dhe shumë gjuhë që rrotullohen rreth pushtetit."
+    },
+    {
+      "key": "component.0ccc7909b5fb",
+      "source": "Reframe my next question as a student trying to understand the mental model, not just the biography.",
+      "value": "Riformuloje pyetjen time të radhës si një student që përpiqet të kuptojë modelin mendor, jo vetëm biografinë."
+    },
+    {
+      "key": "component.a24c276ac12d",
+      "source": "Religious debate is politically charged",
+      "value": "Debati fetar është i ngarkuar politikisht"
+    },
+    {
+      "key": "component.e0e026276557",
+      "source": "Religious language needs care",
+      "value": "Gjuha fetare kërkon kujdes"
+    },
+    {
+      "key": "component.0c5330d19ead",
+      "source": "Remote work is better",
+      "value": "Puna nga larg është më e mirë"
+    },
+    {
+      "key": "component.037bbfc29028",
+      "source": "Remove weak, generic, or low-fit ideas quickly.",
+      "value": "Hiq shpejt idetë e dobëta, të përgjithshme ose që nuk përshtaten mirë."
+    },
+    {
+      "key": "component.2988f3dfb74c",
+      "source": "Removes the failing path instead of understanding it.",
+      "value": "Heq rrugën që dështon në vend që ta kuptojë atë."
+    },
+    {
+      "key": "component.90b8131b4d1f",
+      "source": "Renaissance Florence in 1490",
+      "value": "Firence e Rilindjes në vitin 1490"
+    },
+    {
+      "key": "component.66325effd9f8",
+      "source": "Rename the variable everywhere.",
+      "value": "Riemërto ndryshoren kudo."
+    },
+    {
+      "key": "component.f7fb183346d9",
+      "source": "Repaired gaps",
+      "value": "Boshllëqe të riparuara"
+    },
+    {
+      "key": "component.971339da94e1",
+      "source": "Repairing the misconception makes the next problem easier instead of just more familiar.",
+      "value": "Riparimi i keqkuptimit e bën problemin tjetër më të lehtë, në vend që thjesht ta bëjë më të njohur."
+    },
+    {
+      "key": "component.4883a9d371cf",
+      "source": "Repeating a definition without applying it can feel fluent while hiding gaps.",
+      "value": "Përsëritja e një përkufizimi pa e zbatuar mund të duket e rrjedhshme, ndërkohë që fsheh boshllëqe."
+    },
+    {
+      "key": "component.6bcff7ac2de1",
+      "source": "Rephrase the active question in simpler language. Ask only one question.",
+      "value": "Riformuloje pyetjen aktive me gjuhë më të thjeshtë. Bëj vetëm një pyetje."
+    },
+    {
+      "key": "component.8fe6a933e8a8",
+      "source": "Reply in this compact shape:",
+      "value": "Përgjigju në këtë formë kompakte:"
+    },
+    {
+      "key": "component.cf0cbc5ccf37",
+      "source": "Request debrief and passport stamp",
+      "value": "Kërko përmbledhjen dhe vulën e pasaportës"
+    },
+    {
+      "key": "component.9ed885c7e35d",
+      "source": "Request source confidence",
+      "value": "Kërko sigurinë e burimit"
+    },
+    {
+      "key": "component.2f79ec2e3c66",
+      "source": "Required flow:",
+      "value": "Rrjedha e kërkuar:"
+    },
+    {
+      "key": "component.17f2bb4b3ffd",
+      "source": "Reset the controls, move only one slider, and describe the before-and-after in plain language.",
+      "value": "Rivendos kontrollet, lëviz vetëm një rrëshqitës dhe përshkruaj para-dhe-pas me gjuhë të thjeshtë."
+    },
+    {
+      "key": "component.6b51f64dd73e",
+      "source": "Resolve access limits",
+      "value": "Zgjidh kufizimet e qasjes"
+    },
+    {
+      "key": "component.2c934f39de2e",
+      "source": "Resolve language risk",
+      "value": "Zgjidh rrezikun gjuhësor"
+    },
+    {
+      "key": "component.803dbfad3fc6",
+      "source": "Resolve status rules",
+      "value": "Zgjidh rregullat e statusit"
+    },
+    {
+      "key": "component.7aa618d54a21",
+      "source": "Resolve the event clock before opening the world",
+      "value": "Zgjidh orën e ngjarjes para se të hapësh botën"
+    },
+    {
+      "key": "component.e77ea1a2315f",
+      "source": "respectful but challenging interlocutor",
+      "value": "bashkëbisedues i respektueshëm, por sfidues"
+    },
+    {
+      "key": "component.68fcff7df5ce",
+      "source": "Restaurants and drivers can be suppliers, but this specific clue is about customers comparing and switching.",
+      "value": "Restorantet dhe shoferët mund të jenë furnitorë, por kjo e dhënë specifike ka të bëjë me klientët që krahasojnë dhe ndërrojnë zgjedhje."
+    },
+    {
+      "key": "component.4c027317545d",
+      "source": "Restoration London faces plague memory, dense timber housing, and a fire that will reshape the city.",
+      "value": "Londra e Restaurimit përballet me kujtesën e murtajës, banesa të dendura prej druri dhe një zjarr që do ta riformësojë qytetin."
+    },
+    {
+      "key": "component.343b38bb71c5",
+      "source": "Reveal the starting model before the lesson explains it.",
+      "value": "Zbulo modelin fillestar para se mësimi ta shpjegojë atë."
+    },
+    {
+      "key": "component.78df3f31215b",
+      "source": "Rewrite the current rough section as a suggested edit. Show what changed and why before asking me to merge it.",
+      "value": "Rishkruaje seksionin aktual të papërpunuar si një redaktim të sugjeruar. Trego çfarë ndryshoi dhe pse, para se të më kërkosh ta bashkoj."
+    },
+    {
+      "key": "component.ca5560da5759",
+      "source": "Rewrite this",
+      "value": "Rishkruaje këtë"
+    },
+    {
+      "key": "component.7ab132020523",
+      "source": "Right. Transfer to a fresh example is stronger evidence than recognition.",
+      "value": "Saktë. Transferimi te një shembull i ri është provë më e fortë sesa njohja."
+    },
+    {
+      "key": "component.d81e83b6c2b3",
+      "source": "Right. You identified a seller-side cost shock and predicted the pressure on price.",
+      "value": "Saktë. Identifikove një goditje kostoje nga ana e shitësit dhe parashikove presionin mbi çmimin."
+    },
+    {
+      "key": "component.1743f14ce624",
+      "source": "River boatman",
+      "value": "Varkëtar lumi"
+    },
+    {
+      "key": "component.a031a7b57338",
+      "source": "River stairs",
+      "value": "Shkallët e lumit"
+    },
+    {
+      "key": "component.d6f443f51ba3",
+      "source": "Roman Empire",
+      "value": "Perandoria Romake"
+    },
+    {
+      "key": "component.e720ae03ad93",
+      "source": "Roman trade used amphorae and contracts",
+      "value": "Tregtia romake përdorte amfora dhe kontrata"
+    },
+    {
+      "key": "component.959a5e064b58",
+      "source": "Rubric-aware prompts.",
+      "value": "Prompt-e të vetëdijshme për rubrikën."
+    },
+    {
+      "key": "component.08957554ee0d",
+      "source": "Rumor can turn against outsiders",
+      "value": "Thashethemet mund të kthehen kundër të huajve"
+    },
+    {
+      "key": "component.7bb279bd578d",
+      "source": "Rumors about royal troops spread",
+      "value": "Përhapen thashetheme për trupat mbretërore"
+    },
+    {
+      "key": "component.4ffbaba7cfe7",
+      "source": "Rumors move faster than verified news",
+      "value": "Thashethemet lëvizin më shpejt se lajmet e verifikuara"
+    },
+    {
+      "key": "component.f406a98a85fd",
+      "source": "Rupee, dam, gifts, patronage obligations",
+      "value": "Rupi, dam, dhurata, detyrime patronazhi"
+    },
+    {
+      "key": "component.0f3dd7548a25",
+      "source": "Rupees, silver coin, credit through trusted households",
+      "value": "Rupi, monedhë argjendi, kredi përmes shtëpive të besuara"
+    },
+    {
+      "key": "component.ce4c40a824ca",
+      "source": "Safe, explanatory, and easier to pause for context.",
+      "value": "E sigurt, shpjeguese dhe më e lehtë për t’u ndalur për kontekst."
+    },
+    {
+      "key": "component.36c12e82b1e3",
+      "source": "Safer, more explanatory, and allowed to ask modern comparisons.",
+      "value": "Më e sigurt, më shpjeguese dhe e lejuar të bëjë krahasime moderne."
+    },
+    {
+      "key": "component.758625ed4fc7",
+      "source": "Salt air, olive oil, rope fiber, shouted accounts, and the heavy logistics behind imperial abundance.",
+      "value": "Ajër i kripur, vaj ulliri, fibra litari, llogari të thirrura me zë dhe logjistika e rëndë pas bollëkut perandorak."
+    },
+    {
+      "key": "component.2f7b7ad341e0",
+      "source": "Salt March strategist, St. Helena retrospective, 1946 committee room...",
+      "value": "Strateg i Marshimit të Kripës, retrospektivë nga Shën Helena, sallë komiteti më 1946..."
+    },
+    {
+      "key": "component.7605cf4afbe7",
+      "source": "Same level",
+      "value": "I njëjti nivel"
+    },
+    {
+      "key": "component.98d5309ca571",
+      "source": "Sanskrit in Buddhist contexts",
+      "value": "Sanskritishtja në kontekste budiste"
+    },
+    {
+      "key": "component.d69ca0d332d1",
+      "source": "Save note",
+      "value": "Ruaj shënimin"
+    },
+    {
+      "key": "component.613d9d44835c",
+      "source": "Saved arrival point",
+      "value": "Pika e mbërritjes e ruajtur"
+    },
+    {
+      "key": "component.1fdbc928c5f7",
+      "source": "Saved expedition",
+      "value": "Ekspeditë e ruajtur"
+    },
+    {
+      "key": "component.31db64ffad28",
+      "source": "Saved notes",
+      "value": "Shënime të ruajtura"
+    },
+    {
+      "key": "component.72498e1de0b8",
+      "source": "Say why the mistake is tempting, then name the missing link.",
+      "value": "Thuaj pse gabimi është tundues, pastaj emërto lidhjen që mungon."
+    },
+    {
+      "key": "component.ae1f10df8a38",
+      "source": "Saying revenue is up, so the company is worth more ignores margins, reinvestment, working capital, and risk.",
+      "value": "Të thuash se të ardhurat janë rritur, prandaj kompania vlen më shumë, shpërfill marzhet, riinvestimin, kapitalin qarkullues dhe rrezikun."
+    },
+    {
+      "key": "component.aa4986e9edb4",
+      "source": "Scanning the topic",
+      "value": "Skanimi i temës"
+    },
+    {
+      "key": "component.95a63c58f054",
+      "source": "Scene Choices",
+      "value": "Zgjedhjet e skenës"
+    },
+    {
+      "key": "component.8c09328917b9",
+      "source": "Scholarly gathering",
+      "value": "Mbledhje dijetarësh"
+    },
+    {
+      "key": "component.943e915ec679",
+      "source": "Science, leadership, democracy, daily life...",
+      "value": "Shkencë, udhëheqje, demokraci, jetë e përditshme..."
+    },
+    {
+      "key": "component.c32b5d9ea958",
+      "source": "Scribe or translator",
+      "value": "Shkrues ose përkthyes"
+    },
+    {
+      "key": "component.631a600e6190",
+      "source": "Seeing the output change but not naming the mechanism.",
+      "value": "Të shohësh që rezultati ndryshon, por pa emërtuar mekanizmin."
+    },
+    {
+      "key": "component.291a85699c85",
+      "source": "Send answer",
+      "value": "Dërgo përgjigjen"
+    },
+    {
+      "key": "component.03bf0b770e02",
+      "source": "Send me somewhere consequential",
+      "value": "Më dërgo diku me pasoja"
+    },
+    {
+      "key": "component.c70a890d1411",
+      "source": "Send message",
+      "value": "Dërgo mesazh"
+    },
+    {
+      "key": "component.e34837b56e99",
+      "source": "Sepoy courier",
+      "value": "Korrier sepoy"
+    },
+    {
+      "key": "component.cdf2d39e903c",
+      "source": "September 1857",
+      "value": "Shtator 1857"
+    },
+    {
+      "key": "component.ae720381a40f",
+      "source": "Session details",
+      "value": "Detajet e seancës"
+    },
+    {
+      "key": "component.a2a3d6a1542f",
+      "source": "Session setup",
+      "value": "Konfigurimi i seancës"
+    },
+    {
+      "key": "component.1ba59c4d3dd8",
+      "source": "Set a place, period, and mission. Your guide will keep the trip bounded to the era and mark speculation clearly.",
+      "value": "Vendos një vend, periudhë dhe mision. Udhërrëfyesi yt do ta mbajë udhëtimin të kufizuar në epokë dhe do ta shënojë qartë spekulimin."
+    },
+    {
+      "key": "component.697f7a980cbb",
+      "source": "Set a thinking target and I will ask the first diagnostic question.",
+      "value": "Vendos një objektiv mendimi dhe unë do të bëj pyetjen e parë diagnostikuese."
+    },
+    {
+      "key": "component.792f7f7dcd69",
+      "source": "Set in the opening message",
+      "value": "Vendosur në mesazhin hapës"
+    },
+    {
+      "key": "component.8a705896a4cd",
+      "source": "Set the shared task.",
+      "value": "Vendos detyrën e përbashkët."
+    },
+    {
+      "key": "component.cb09bfd23c1c",
+      "source": "Several locations, figures, artifacts, and field notes.",
+      "value": "Disa vendndodhje, figura, artefakte dhe shënime terreni."
+    },
+    {
+      "key": "component.32c79cbb745e",
+      "source": "Shared draft room",
+      "value": "Dhoma e përbashkët e draftit"
+    },
+    {
+      "key": "component.b95ef75a6977",
+      "source": "Shared goal",
+      "value": "Qëllimi i përbashkët"
+    },
+    {
+      "key": "component.12264cf9af73",
+      "source": "Shared workroom",
+      "value": "Dhoma e përbashkët e punës"
+    },
+    {
+      "key": "component.a043f6325d8b",
+      "source": "Sharp sparring partner",
+      "value": "Partner debatues i mprehtë"
+    },
+    {
+      "key": "component.6d03e52b9f64",
+      "source": "Ships unload grain and oil",
+      "value": "Anijet shkarkojnë drithë dhe vaj"
+    },
+    {
+      "key": "component.b5c30a43f61f",
+      "source": "Short factual notes clarify uncertainty, bias, and interpretation.",
+      "value": "Shënimet e shkurtra faktike sqarojnë pasigurinë, paragjykimin dhe interpretimin."
+    },
+    {
+      "key": "component.9eee3f2520ec",
+      "source": "short run",
+      "value": "afat i shkurtër"
+    },
+    {
+      "key": "component.cd5ee6d32c79",
+      "source": "Short summaries keep both sides aligned before moving on.",
+      "value": "Përmbledhjet e shkurtra i mbajnë të dyja palët të sinkronizuara para se të ecin përpara."
+    },
+    {
+      "key": "component.d30f4c170784",
+      "source": "Should a company enter this market?",
+      "value": "A duhet të hyjë një kompani në këtë treg?"
+    },
+    {
+      "key": "component.46cd61f538a3",
+      "source": "Should I take this job?",
+      "value": "A duhet ta pranoj këtë punë?"
+    },
+    {
+      "key": "component.1ccfd398d4b0",
+      "source": "Show a similar solved case.",
+      "value": "Trego një rast të ngjashëm të zgjidhur."
+    },
+    {
+      "key": "component.ba314d24a638",
+      "source": "Show changes before merging",
+      "value": "Trego ndryshimet para bashkimit"
+    },
+    {
+      "key": "component.18073a08edd8",
+      "source": "Show more uncertainty, anachronism, and source-boundary notes.",
+      "value": "Trego më shumë shënime për pasigurinë, anakronizmin dhe kufijtë e burimeve."
+    },
+    {
+      "key": "component.f927d36bbccb",
+      "source": "Show the person's major beliefs at this time, their blind spots, and what they would likely resist understanding.",
+      "value": "Trego besimet kryesore të personit në këtë kohë, pikat e tij të verbra dhe çfarë ka të ngjarë të mos pranojë të kuptojë."
+    },
+    {
+      "key": "component.9a2cc71fc80f",
+      "source": "Shuffling the challenge",
+      "value": "Përzierja e sfidës"
+    },
+    {
+      "key": "component.b731c4a36a3f",
+      "source": "Siege pressure is rising",
+      "value": "Presioni i rrethimit po rritet"
+    },
+    {
+      "key": "component.2bf03d063535",
+      "source": "Silver rupee",
+      "value": "Rupi argjendi"
+    },
+    {
+      "key": "component.7782e521b837",
+      "source": "Simulation state:",
+      "value": "Gjendja e simulimit:"
+    },
+    {
+      "key": "component.3afde4662953",
+      "source": "Sketch the outline, sections, or table before polishing language.",
+      "value": "Skico konturin, seksionet ose tabelën para se të lëmohësh gjuhën."
+    },
+    {
+      "key": "component.3e6c81f343a2",
+      "source": "Skill being trained",
+      "value": "Aftësia që po stërvitet"
+    },
+    {
+      "key": "component.e5601a411aad",
+      "source": "Slow down",
+      "value": "Ngadalëso"
+    },
+    {
+      "key": "component.88481fc98d2b",
+      "source": "Small nudges arrive before direct explanations.",
+      "value": "Shtysat e vogla vijnë para shpjegimeve të drejtpërdrejta."
+    },
+    {
+      "key": "component.4e6245ea3ddf",
+      "source": "Small reserve in local coin or credit",
+      "value": "Rezervë e vogël në monedhë vendase ose kredi"
+    },
+    {
+      "key": "component.80d2a8d1ff01",
+      "source": "Small silver or copper reserve",
+      "value": "Rezervë e vogël argjendi ose bakri"
+    },
+    {
+      "key": "component.660ae3f3c3cb",
+      "source": "Small supervised purse",
+      "value": "Kuletë e vogël e mbikëqyrur"
+    },
+    {
+      "key": "component.18777af6d137",
+      "source": "Socrates was tried and executed in 399 BCE",
+      "value": "Sokrati u gjykua dhe u ekzekutua në vitin 399 p.e.s."
+    },
+    {
+      "key": "component.aba1434a8b61",
+      "source": "Socratic contract",
+      "value": "Kontrata sokratike"
+    },
+    {
+      "key": "component.bfac28b8b6c0",
+      "source": "Socratic Instruction",
+      "value": "Mësim sokratik"
+    },
+    {
+      "key": "component.26da7d97a7ba",
+      "source": "Socratic mode",
+      "value": "Modalitet sokratik"
+    },
+    {
+      "key": "component.687e60d68b03",
+      "source": "Socratic Question Ladder",
+      "value": "Shkalla sokratike e pyetjeve"
+    },
+    {
+      "key": "component.2762c36d8393",
+      "source": "Socratic target",
+      "value": "Objektivi sokratik"
+    },
+    {
+      "key": "component.1f0bef28ebb0",
+      "source": "Sogdian among some merchants",
+      "value": "Sogdishtja mes disa tregtarëve"
+    },
+    {
+      "key": "component.1a9bed8b911d",
+      "source": "Sogdian trader",
+      "value": "Tregtar sogdian"
+    },
+    {
+      "key": "component.123362322dd4",
+      "source": "someone who changed education and faced serious opposition",
+      "value": "dikush që ndryshoi arsimin dhe u përball me kundërshtim serioz"
+    },
+    {
+      "key": "component.b97348873c90",
+      "source": "Source notes",
+      "value": "Shënime burimore"
+    },
+    {
+      "key": "component.9ae0bd32a926",
+      "source": "Sources, confidence, uncertainty, and forbidden quotes.",
+      "value": "Burime, siguri, pasiguri dhe citime të ndaluara."
+    },
+    {
+      "key": "component.234633855523",
+      "source": "Space exploration, Indian history, algebra...",
+      "value": "Eksplorimi i hapësirës, historia indiane, algjebra..."
+    },
+    {
+      "key": "component.ec020737163e",
+      "source": "Sparring partner",
+      "value": "Partner debatues"
+    },
+    {
+      "key": "component.2e7acac22156",
+      "source": "Specific intent of unnamed participants",
+      "value": "Qëllimi specifik i pjesëmarrësve të paemërtuar"
+    },
+    {
+      "key": "component.d3edf0ff6ce5",
+      "source": "Specific price comparisons vary",
+      "value": "Krahasimet specifike të çmimeve ndryshojnë"
+    },
+    {
+      "key": "component.88cb2d329aac",
+      "source": "Specific prices vary by evidence and period",
+      "value": "Çmimet specifike ndryshojnë sipas provave dhe periudhës"
+    },
+    {
+      "key": "component.9b1ded6a8dc1",
+      "source": "Specific private opinions of unnamed residents",
+      "value": "Opinionet specifike private të banorëve të paemërtuar"
+    },
+    {
+      "key": "component.d3c1b72b26e7",
+      "source": "Specific repair",
+      "value": "Riparim specifik"
+    },
+    {
+      "key": "component.ca4ffaf33a74",
+      "source": "Split work into AI-owned, user-owned, and shared moves.",
+      "value": "Ndaje punën në lëvizje që i takojnë AI-së, përdoruesit dhe të përbashkëta."
+    },
+    {
+      "key": "component.292cf95a6473",
+      "source": "Sprint clock",
+      "value": "Ora e sprintit"
+    },
+    {
+      "key": "component.21bc3678d8af",
+      "source": "Sprint running",
+      "value": "Sprinti po zhvillohet"
+    },
+    {
+      "key": "component.fb9e565113d9",
+      "source": "St Paul's area",
+      "value": "Zona e St Paul’s"
+    },
+    {
+      "key": "component.082ef68d29be",
+      "source": "St Paul's Cathedral was destroyed",
+      "value": "Katedralja e St Paul’s u shkatërrua"
+    },
+    {
+      "key": "component.d84b0b06fe79",
+      "source": "Stacking the deck",
+      "value": "Rregullimi i situatës në favor të një rezultati"
+    },
+    {
+      "key": "component.7ae1cbe15e94",
+      "source": "Stage the person, year, room, and relationship.",
+      "value": "Vendos në skenë personin, vitin, dhomën dhe marrëdhënien."
+    },
+    {
+      "key": "component.f711569ede42",
+      "source": "Standing idle with strange questions during a disaster invites suspicion.",
+      "value": "Të rrish pa punë me pyetje të çuditshme gjatë një fatkeqësie ngjall dyshim."
+    },
+    {
+      "key": "component.0c424b7d86c2",
+      "source": "Start 10 min",
+      "value": "Fillo 10 min"
+    },
+    {
+      "key": "component.9b9e76c02192",
+      "source": "Start 10-minute sprint",
+      "value": "Fillo sprintin 10-minutësh"
+    },
+    {
+      "key": "component.11f6c8d9c9f9",
+      "source": "Start a Time Travel expedition. Do not open a generic chat and do not write a broad period summary.",
+      "value": "Fillo një ekspeditë të Udhëtimit në Kohë. Mos hap një bisedë të përgjithshme dhe mos shkruaj një përmbledhje të gjerë të periudhës."
+    },
+    {
+      "key": "component.6b9d6a34d557",
+      "source": "Start the loop",
+      "value": "Fillo ciklin"
+    },
+    {
+      "key": "component.e3ad6391f7bf",
+      "source": "Start with a concept, case, argument, decision, or text.",
+      "value": "Fillo me një koncept, rast, argument, vendim ose tekst."
+    },
+    {
+      "key": "component.f556c89a8b4d",
+      "source": "Start with a question, not a lecture.",
+      "value": "Fillo me një pyetje, jo me leksion."
+    },
+    {
+      "key": "component.ef5156a056b4",
+      "source": "Start with a tiny lesson, one check question, a mastery meter, and wait for my answer before continuing.",
+      "value": "Fillo me një mësim të vogël, një pyetje kontrolli, një matës zotërimi dhe prit përgjigjen time para se të vazhdosh."
+    },
+    {
+      "key": "component.142d438e5e04",
+      "source": "Start with an era passport, a vivid arrival scene, three choices for what to do next, and a compact timeline log.",
+      "value": "Fillo me një pasaportë epoke, një skenë mbërritjeje të gjallë, tre zgjedhje për çfarë të bëhet më pas dhe një regjistër kompakt të kronologjisë."
+    },
+    {
+      "key": "component.c37ca604e2dc",
+      "source": "Start with one specific question or task.",
+      "value": "Fillo me një pyetje ose detyrë specifike."
+    },
+    {
+      "key": "component.2b7453257f4f",
+      "source": "Starting level",
+      "value": "Niveli fillestar"
+    },
+    {
+      "key": "component.4f5e3c332f19",
+      "source": "State the idea in one sentence so it can be tested.",
+      "value": "Shprehe idenë në një fjali që të mund të testohet."
+    },
+    {
+      "key": "component.c74d4b02e52c",
+      "source": "State your starting idea so the tutor has something to test.",
+      "value": "Shprehe idenë tënde fillestare që tutori të ketë diçka për të testuar."
+    },
+    {
+      "key": "component.46e32d8f91f3",
+      "source": "Stateful exploration with consequences and evolving risk.",
+      "value": "Eksplorim me gjendje, pasoja dhe rrezik në zhvillim."
+    },
+    {
+      "key": "component.f9e0ee67a1d7",
+      "source": "Status follows legal category",
+      "value": "Statusi ndjek kategorinë ligjore"
+    },
+    {
+      "key": "component.ceb551000f2f",
+      "source": "Step by step, brainstorm first, solve together...",
+      "value": "Hap pas hapi, stuhi mendimesh në fillim, zgjidhje së bashku..."
+    },
+    {
+      "key": "component.8adabdb3486e",
+      "source": "Step out of character briefly. Explain the historical context, evidence quality, and uncertainties behind the last exchange.",
+      "value": "Dil shkurt nga roli. Shpjego kontekstin historik, cilësinë e provave dhe pasiguritë pas shkëmbimit të fundit."
+    },
+    {
+      "key": "component.081a9237b493",
+      "source": "Stoa Basileios",
+      "value": "Stoa Basileios"
+    },
+    {
+      "key": "component.4b2fa093d4ce",
+      "source": "Stone dust, wool dye, bells, and sharp political glances under a crowded square.",
+      "value": "Pluhur guri, bojë leshi, kambana dhe vështrime të mprehta politike nën një shesh të mbushur."
+    },
+    {
+      "key": "component.2aca6afb4778",
+      "source": "Stop editing directly for this turn. Give concise advice and one practical next move.",
+      "value": "Ndalo redaktimin e drejtpërdrejtë për këtë radhë. Jep këshillë të shkurtër dhe një hap praktik të radhës."
+    },
+    {
+      "key": "component.68a76b55a28a",
+      "source": "Stop response",
+      "value": "Ndalo përgjigjen"
+    },
+    {
+      "key": "component.e01e169ee3c4",
+      "source": "Stopped. Send another message whenever you are ready.",
+      "value": "U ndal. Dërgo një mesazh tjetër kur të jesh gati."
+    },
+    {
+      "key": "component.467ff09a3d78",
+      "source": "strategy analyst",
+      "value": "analist strategjie"
+    },
+    {
+      "key": "component.12c6d113a829",
+      "source": "Strategy room",
+      "value": "Dhoma e strategjisë"
+    },
+    {
+      "key": "component.1e8c49009561",
+      "source": "Street routes are approximate",
+      "value": "Rrugët e rrugicave janë të përafërta"
+    },
+    {
+      "key": "component.9a266da321cf",
+      "source": "Street-level life",
+      "value": "Jeta në nivel rruge"
+    },
+    {
+      "key": "component.671334a5dc3f",
+      "source": "Strict mode keeps modern knowledge out of the world and applies social consequences sooner.",
+      "value": "Modaliteti strikt e mban njohurinë moderne jashtë botës dhe i zbaton më shpejt pasojat shoqërore."
+    },
+    {
+      "key": "component.5d20c7acc540",
+      "source": "Strict questioning, minimal explanation.",
+      "value": "Pyetje strikte, shpjegim minimal."
+    },
+    {
+      "key": "component.3468a42615ce",
+      "source": "Strong work.",
+      "value": "Punë e fortë."
+    },
+    {
+      "key": "component.9da9de583a66",
+      "source": "Strong writing is a chain of claim, reason, evidence, and consequence. Each sentence should do a job in that chain.",
+      "value": "Shkrimi i fortë është një zinxhir pretendimi, arsyeje, prove dhe pasoje. Çdo fjali duhet të bëjë një punë në atë zinxhir."
+    },
+    {
+      "key": "component.891a3118e913",
+      "source": "Structured operator",
+      "value": "Operator i strukturuar"
+    },
+    {
+      "key": "component.bb081145e157",
+      "source": "Student, rival, journalist, citizen...",
+      "value": "Student, rival, gazetar, qytetar..."
+    },
+    {
+      "key": "component.3dc6eae27c61",
+      "source": "Study buddy",
+      "value": "Shok studimi"
+    },
+    {
+      "key": "component.8d961c0c8d91",
+      "source": "Submit my sentence",
+      "value": "Dorëzo fjalinë time"
+    },
+    {
+      "key": "component.63e6139fa622",
+      "source": "Submit repair",
+      "value": "Dorëzo riparimin"
+    },
+    {
+      "key": "component.a294528c7533",
+      "source": "Substitute threat",
+      "value": "Kërcënimi i zëvendësuesve"
+    },
+    {
+      "key": "component.f513dc207def",
+      "source": "Substitutes are alternatives like cooking or pickup. Comparing apps is buyer leverage inside the category.",
+      "value": "Zëvendësuesit janë alternativa si gatimi ose marrja me vete. Krahasimi i aplikacioneve është fuqi blerësi brenda kategorisë."
+    },
+    {
+      "key": "component.512d13df792b",
+      "source": "Suggest candidates with strong evidence and vivid settings.",
+      "value": "Sugjero kandidatë me prova të forta dhe mjedise të gjalla."
+    },
+    {
+      "key": "component.68dfa0817fe0",
+      "source": "Supplier power",
+      "value": "Fuqia e furnitorëve"
+    },
+    {
+      "key": "component.904290a8efd8",
+      "source": "Supplies and loyalties are strained",
+      "value": "Furnizimet dhe besnikëritë janë të tendosura"
+    },
+    {
+      "key": "component.7ca47ca1d959",
+      "source": "Supply capacity",
+      "value": "Kapaciteti i furnizimit"
+    },
+    {
+      "key": "component.fba6cccea3d2",
+      "source": "Supply shifts left and price tends to rise.",
+      "value": "Oferta zhvendoset majtas dhe çmimi priret të rritet."
+    },
+    {
+      "key": "component.a2193b649f30",
+      "source": "supportive peer and co-builder",
+      "value": "bashkëmoshatar mbështetës dhe bashkëndërtues"
+    },
+    {
+      "key": "component.0d21fa45e97f",
+      "source": "Synthesis Locked",
+      "value": "Sinteza u kyç"
+    },
+    {
+      "key": "component.9477a2cecb7c",
+      "source": "Take the first pass on the shared artifact. Make the structure visible, mark assumptions, and ask me to accept, edit, or reject.",
+      "value": "Bëj kalimin e parë mbi artefaktin e përbashkët. Bëje strukturën të dukshme, shëno supozimet dhe më kërko ta pranoj, ta redaktoj ose ta refuzoj."
+    },
+    {
+      "key": "component.968d8ccd3939",
+      "source": "Tang Chang'an is a cosmopolitan imperial capital linked to steppe, Central Asian, and Buddhist networks.",
+      "value": "Chang’an-i i Tangëve është një kryeqytet perandorak kozmopolit i lidhur me rrjete të stepës, Azisë Qendrore dhe budiste."
+    },
+    {
+      "key": "component.9430e8ebb24c",
+      "source": "Tang Empire under Emperor Xuanzong",
+      "value": "Perandoria Tang nën Perandorin Xuanzong"
+    },
+    {
+      "key": "component.815b9c1f8eaf",
+      "source": "Target input",
+      "value": "Hyrja e objektivit"
+    },
+    {
+      "key": "component.1e8d87abfdd2",
+      "source": "Target: one sentence describing the learning target.",
+      "value": "Objektivi: një fjali që përshkruan synimin e të nxënit."
+    },
+    {
+      "key": "component.b91b91417d97",
+      "source": "Task board",
+      "value": "Tabela e detyrave"
+    },
+    {
+      "key": "component.b4965316bf71",
+      "source": "Task Board",
+      "value": "Tabela e detyrave"
+    },
+    {
+      "key": "component.db83c6c41bea",
+      "source": "Tavern near the docks",
+      "value": "Tavernë pranë dokëve"
+    },
+    {
+      "key": "component.f5e0b35ab0a4",
+      "source": "Tax or friction",
+      "value": "Taksë ose fërkim"
+    },
+    {
+      "key": "component.03c0ab897f85",
+      "source": "Teach me financial modeling",
+      "value": "Më mëso modelimin financiar"
+    },
+    {
+      "key": "component.6d3e7f92132e",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Më mëso Pesë Forcat e Porter-it"
+    },
+    {
+      "key": "component.1a3b09e25613",
+      "source": "Teach me ratios",
+      "value": "Më mëso raportet"
+    },
+    {
+      "key": "component.e691ca1cc2d6",
+      "source": "Teammate log",
+      "value": "Regjistri i shokut të ekipit"
+    },
+    {
+      "key": "component.642847a78523",
+      "source": "Temporal passport",
+      "value": "Pasaporta kohore"
+    },
+    {
+      "key": "component.894031ed8d34",
+      "source": "Terms and Conditions",
+      "value": "Kushtet dhe Afatet"
+    },
+    {
+      "key": "component.1f5fb2d7968f",
+      "source": "That catches the revenue movement, but misses the margin and cash timing links. Sales alone do not prove cash flow improved.",
+      "value": "Kjo kap lëvizjen e të ardhurave, por humb lidhjet me marzhin dhe kohën e parasë. Vetëm shitjet nuk provojnë se fluksi i parasë është përmirësuar."
+    },
+    {
+      "key": "component.e09b451125fe",
+      "source": "That may hide the symptom, but it does not teach you where the data flow broke.",
+      "value": "Kjo mund ta fshehë simptomën, por nuk të mëson ku u prish rrjedha e të dhënave."
+    },
+    {
+      "key": "component.8702e66c501a",
+      "source": "The assistant must identify known facts before simulating",
+      "value": "Asistenti duhet të identifikojë faktet e njohura para simulimit"
+    },
+    {
+      "key": "component.3d7ec899f5c7",
+      "source": "The Athenian agora was a civic center",
+      "value": "Agora athinase ishte qendër qytetare"
+    },
+    {
+      "key": "component.d2acbb41caee",
+      "source": "The Bastille fell on 14 July 1789",
+      "value": "Bastija ra më 14 korrik 1789"
+    },
+    {
+      "key": "component.fe8b62f4c6f7",
+      "source": "The explanation that links evidence back to the claim.",
+      "value": "Shpjegimi që lidh provat përsëri me pretendimin."
+    },
+    {
+      "key": "component.4f3c6c46372c",
+      "source": "The final summary waits until you have done real thinking.",
+      "value": "Përmbledhja finale pret derisa të kesh menduar vërtet."
+    },
+    {
+      "key": "component.170a298af4bb",
+      "source": "The first scene should become concrete only after the destination is resolved.",
+      "value": "Skena e parë duhet të bëhet konkrete vetëm pasi të zgjidhet destinacioni."
+    },
+    {
+      "key": "component.dda3745f7c3f",
+      "source": "The Great Fire began in 1666",
+      "value": "Zjarri i Madh filloi në vitin 1666"
+    },
+    {
+      "key": "component.7848d16b1941",
+      "source": "The Indian Rebellion of 1857 has made Delhi a contested imperial and military space.",
+      "value": "Kryengritja Indiane e vitit 1857 e ka bërë Delhin një hapësirë perandorake dhe ushtarake të kontestuar."
+    },
+    {
+      "key": "component.791488b22528",
+      "source": "The learner can connect a variable change to an outcome.",
+      "value": "Nxënësi mund të lidhë një ndryshim ndryshoreje me një rezultat."
+    },
+    {
+      "key": "component.e8e1ab2cb31d",
+      "source": "The learner can explain the key link in their own words.",
+      "value": "Nxënësi mund ta shpjegojë lidhjen kyçe me fjalët e veta."
+    },
+    {
+      "key": "component.41dbc5b54014",
+      "source": "The learner can identify and fix the misconception.",
+      "value": "Nxënësi mund të identifikojë dhe rregullojë keqkuptimin."
+    },
+    {
+      "key": "component.cf756f58116b",
+      "source": "The learner can make a first prediction.",
+      "value": "Nxënësi mund të bëjë një parashikim të parë."
+    },
+    {
+      "key": "component.06a1b27fe4f6",
+      "source": "The learner demonstrates transfer.",
+      "value": "Nxënësi demonstron transferim."
+    },
+    {
+      "key": "component.8a807bf79ab9",
+      "source": "The learner explains it back in their own words.",
+      "value": "Nxënësi e shpjegon përsëri me fjalët e veta."
+    },
+    {
+      "key": "component.9d8ad585667c",
+      "source": "The longest sentence, because shorter is always stronger.",
+      "value": "Fjalia më e gjatë, sepse më e shkurtra është gjithmonë më e fortë."
+    },
+    {
+      "key": "component.7e2e56647be9",
+      "source": "The person should not know future events unless you explicitly open modern confrontation.",
+      "value": "Personi nuk duhet t’i dijë ngjarjet e ardhshme, përveç nëse hap shprehimisht përballje moderne."
+    },
+    {
+      "key": "component.f0fd6cd67e39",
+      "source": "The question path starts now.",
+      "value": "Rruga e pyetjeve fillon tani."
+    },
+    {
+      "key": "component.a2bd49b45f3d",
+      "source": "The Roman Empire under Trajan's final year depends on ports, credit, labor, and imperial logistics.",
+      "value": "Perandoria Romake në vitin e fundit të Trajanit varet nga portet, kredia, puna dhe logjistika perandorake."
+    },
+    {
+      "key": "component.f476ed3acdff",
+      "source": "The scene is being established by the dossier.",
+      "value": "Skena po vendoset nga dosja."
+    },
+    {
+      "key": "component.4d51e9042d90",
+      "source": "The simulation will prioritize different people, risks, objects, and explanations.",
+      "value": "Simulimi do t’u japë përparësi njerëzve, rreziqeve, objekteve dhe shpjegimeve të ndryshme."
+    },
+    {
+      "key": "component.f8c2de640fab",
+      "source": "The title, because every weak paragraph has a weak title.",
+      "value": "Titulli, sepse çdo paragraf i dobët ka një titull të dobët."
+    },
+    {
+      "key": "component.4623da54a0a9",
+      "source": "The Travel Designer should resolve this intent into a specific historical place, date, and political moment before arrival.",
+      "value": "Projektuesi i Udhëtimit duhet ta zgjidhë këtë synim në një vend historik, datë dhe moment politik specifik para mbërritjes."
+    },
+    {
+      "key": "component.e30ca6ff4334",
+      "source": "The version of a person matters more than the name.",
+      "value": "Versioni i një personi ka më shumë rëndësi se emri."
+    },
+    {
+      "key": "component.21b15b46e5b8",
+      "source": "The West Market hosted long-distance trade",
+      "value": "Tregu Perëndimor priste tregti në distanca të gjata"
+    },
+    {
+      "key": "component.68b4b19c0766",
+      "source": "Thinking map",
+      "value": "Harta e mendimit"
+    },
+    {
+      "key": "component.7a4d98aa3cd3",
+      "source": "Thinking target",
+      "value": "Objektivi i mendimit"
+    },
+    {
+      "key": "component.8f2396f4c96a",
+      "source": "This is the evidence checkpoint. You advance only by showing the skill.",
+      "value": "Kjo është pika e kontrollit të provave. Përparon vetëm duke treguar aftësinë."
+    },
+    {
+      "key": "component.9096eabdd4d6",
+      "source": "This lets you explain why a model moves instead of just copying formulas.",
+      "value": "Kjo të lejon të shpjegosh pse lëviz një model, jo thjesht të kopjosh formula."
+    },
+    {
+      "key": "component.2347008c82bd",
+      "source": "Threat of substitutes",
+      "value": "Kërcënimi i zëvendësuesve"
+    },
+    {
+      "key": "component.6f38f52d9c52",
+      "source": "Time slice",
+      "value": "Prerje kohore"
+    },
+    {
+      "key": "component.04bb104a9e9b",
+      "source": "Time slice required",
+      "value": "Kërkohet prerje kohore"
+    },
+    {
+      "key": "component.d107ef10266d",
+      "source": "Time slice: not chosen yet. If a specific person is named, offer 4 to 5 historically meaningful versions of this person before any in-character dialogue. Explain how each version changes the worldview, stakes, and setting.",
+      "value": "Prerje kohore: ende e pazgjedhur. Nëse përmendet një person specifik, ofro 4 deri në 5 versione historikisht domethënëse të këtij personi para çdo dialogu në rol. Shpjego si ndryshon secili version botëkuptimin, interesat dhe mjedisin."
+    },
+    {
+      "key": "component.ddbe343f845c",
+      "source": "Time Travel Console",
+      "value": "Konsola e Udhëtimit në Kohë"
+    },
+    {
+      "key": "component.8f6171fc6ace",
+      "source": "Timeline Log",
+      "value": "Regjistri i kronologjisë"
+    },
+    {
+      "key": "component.a03a44a893eb",
+      "source": "Timeline so far",
+      "value": "Kronologjia deri tani"
+    },
+    {
+      "key": "component.fcf34335919b",
+      "source": "Titles matter, but this clue points to reasoning inside the paragraph.",
+      "value": "Titujt kanë rëndësi, por kjo e dhënë tregon te arsyetimi brenda paragrafit."
+    },
+    {
+      "key": "component.7106eda1bee9",
+      "source": "To be resolved",
+      "value": "Për t’u zgjidhur"
+    },
+    {
+      "key": "component.1f1bdf16e6c7",
+      "source": "Tokyo in 2120",
+      "value": "Tokio në 2120"
+    },
+    {
+      "key": "component.ad110d0cf8a4",
+      "source": "Topic or question",
+      "value": "Tema ose pyetja"
+    },
+    {
+      "key": "component.926364936c28",
+      "source": "tough critic and editor",
+      "value": "kritik dhe redaktor i ashpër"
+    },
+    {
+      "key": "component.36975a502081",
+      "source": "Trace a trade route on the map",
+      "value": "Gjurmo një rrugë tregtare në hartë"
+    },
+    {
+      "key": "component.c6d3da081bdd",
+      "source": "trace cause and effect in code",
+      "value": "gjurmo shkakun dhe pasojën në kod"
+    },
+    {
+      "key": "component.2f18f5776cc7",
+      "source": "Trace depth",
+      "value": "Thellësia e gjurmimit"
+    },
+    {
+      "key": "component.b6254d0fed3a",
+      "source": "Track accepted changes, rejected changes, and the next edit.",
+      "value": "Gjurmo ndryshimet e pranuara, ndryshimet e refuzuara dhe redaktimin e radhës."
+    },
+    {
+      "key": "component.30fbe484599f",
+      "source": "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
+      "value": "Gjurmo vendimet dhe pyetjet e hapura. Ruaje zërin tim në detyrat e shkrimit. Bëj më së shumti një pyetje praktike nëse mungon konteksti."
+    },
+    {
+      "key": "component.20369d07cf56",
+      "source": "Trade phrases plus household vocabulary",
+      "value": "Fraza tregtare plus fjalor shtëpiak"
+    }
+  ]
+}

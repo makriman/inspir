@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo/json-ld";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import { legalEnglishControlsNotice } from "@/lib/i18n/site-source";
 
 function isHeading(block: string) {
   if (block.length > 90) return false;
@@ -54,6 +55,7 @@ export function ContentPage({
     })(),
   }));
   const headings = entries.filter((entry) => entry.isHeading).slice(0, 8);
+  const showLegalNotice = path === "/terms" || path === "/privacy";
   const jsonLd =
     path && description
       ? [
@@ -74,6 +76,7 @@ export function ContentPage({
           <span>{eyebrow}</span>
           <h1>{title}</h1>
           {description ? <p>{description}</p> : null}
+          {showLegalNotice ? <p className="content-page-legal-notice">{legalEnglishControlsNotice}</p> : null}
         </header>
         <div className="content-page-layout">
           <aside className="content-page-rail" aria-label={`${title} page navigation`}>

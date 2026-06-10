@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hungarian",
+  "locale": "hu",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "Káros a közösségi média?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "Szükség van házi feladatra?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "Megéri az űrkutatás?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "Magyarázd meg a válaszom"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "Értsd meg, miért működik egy válasz"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Illeszd be a kérdést, a válaszodat és a várt választ, ha megvan. A segítőd elmagyarázza az érvelést, és segít elkerülni ugyanazt a hibát legközelebb."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "Illeszd be a kérdést és a válaszodat"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "Gyakorlás"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Illeszd be a kérdést, a válaszodat és a várt választ, ha megvan. A segítőd elmagyarázza az érvelést, és segít elkerülni ugyanazt a hibát legközelebb."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik gyakorlati témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást szeretnének."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a válaszmagyarázatra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "Értsd meg, miért működik egy válasz"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Miért rossz az algebrai válaszom?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "Magyarázd el ezt a nyelvtani javítást"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "A B-t választottam. Miért a C a helyes?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "Házi feladat edző"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "Tippek a válaszok tálalása nélkül"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "Lendülj túl a házi feladat nehézségein tippekkel, példákkal és ellenőrzésekkel, amelyek segítenek önállóan gondolkodni."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "Melyik házi feladattal akadtál el?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "Gyakorlás"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Lendülj túl a házi feladat nehézségein etikus tippekkel, példákkal, ellenőrzésekkel és lépésről lépésre történő útmutatással."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "Diákok, akiknek segítségre van szükségük egy feladat elkezdéséhez, a munka ellenőrzéséhez vagy egy hiba megértéséhez."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Az edző támogatja a gondolkodásodat anélkül, hogy átvenné a feladatot, így a végső munka a tiéd marad."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "Találd meg a következő lépést"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "Értsd meg a hibát"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "Gyakorolj egy hasonló feladatot"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "Segíts elkezdeni ezt a szöveges feladatot"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "Ellenőrizd a dolgozatom tézisét"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "Adj egy tippet ehhez a fizika feladathoz"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "Matematika Lépésről Lépésre Edző"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "Oldj meg matematikai feladatokat lépésről lépésre"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "Oldj meg matematikai feladatokat az egyes lépések megértésével. Az edződ ellenőrzi a munkádat, rámutat az apró hibákra, és növeli az önbizalmadat."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "Milyen matematikai feladatot oldjunk meg?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Oldj meg algebrai, kalkulus, szöveges és egyéb matematikai feladatokat lépésről lépésre egy AI edző segítségével."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "Tanulók, akik meg akarják érteni, miért működik az egyes matematikai lépések, nem csak lemásolni a választ."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "A folyamat minden lépést ellenőriz, rámutat a hibákra, és összekapcsolja az eljárásokat a fogalmakkal."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "Válassz egy első lépést"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "Ellenőrizd az egyes lépéseket"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "Magyarázd el, miért működik a módszer"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "Oldd meg velem a 2x + 5 = 17 egyenletet"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "Segíts a másodfokú egyenletekben"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "Magyarázd el a deriválást lépésről lépésre"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "Tudományos Labor Partner"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "Fedezz fel kísérleteket és fogalmakat biztonságosan"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Tervezz biztonságos bemutatókat, értsd meg a változókat, jósold meg az eredményeket, és érvelj bizonyítékok alapján, mint egy tudós."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Milyen tudományos ötletet vagy kísérletet fedezzünk fel?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Tervezz biztonságos kísérleteket, értsd meg a változókat, jósold meg az eredményeket, és érvelj bizonyítékok alapján, mint egy tudós."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik STEM témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a tudományos laboratóriumi partnerre van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "Fedezz fel kísérleteket és fogalmakat biztonságosan"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "Tervezz egy növénytermesztési kísérletet"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "Magyarázd el a savakat és bázisokat"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "Mi történik, ha megváltoztatjuk a hőmérsékletet?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "Íráskészség-fejlesztő"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "Tervezz, írj vázlatot, szerkessz és fejleszd az írásodat"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "Fejleszd esszéidet, történeteidet, e-mailjeidet és érveléseidet célzott visszajelzésekkel, amelyek megőrzik a saját hangodat."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "Mit írsz éppen?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "Kommunikáció"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Fejleszd írásodat tervezéssel, szerkesztéssel, strukturálással és olyan visszajelzésekkel, amelyek megőrzik a saját hangodat."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "Tanulók, akik esszéket, történeteket, e-maileket, ösztöndíj-pályázatokat vagy érveléseket írnak."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "A coach célzott szerkesztési prioritásokat és előtte-utána példákat ad anélkül, hogy átvenné a te hangodat."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "Tisztázd a mondanivalódat"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "Javítsd a szerkezetet"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "Szerkessz tudatosan"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "Javítsd az esszém bevezetését"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "Segíts vázlatot készíteni egy történethez"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "Tedd érthetőbbé ezt a bekezdést"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "Olvasási segéd"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "Olvass, foglalj össze és kérdezz szövegekről"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Hozz egy szövegrészletet vagy könyvötletet, és fejleszd a szövegértésedet összefoglalók, szókincs, következtetések és beszélgetés segítségével."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "Mit olvasunk?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "Kommunikáció"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Hozz egy szövegrészletet vagy könyvötletet, és fejleszd a szövegértésedet összefoglalók, szókincs, következtetések és beszélgetés segítségével."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik kommunikációs témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód az olvasási segédre van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "Olvass, foglalj össze és kérdezz szövegekről"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "Segíts megérteni ezt a bekezdést"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "Foglald össze a 2. fejezetet"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "Tegyél fel kérdéseket erről a versről"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "Szókincsfejlesztő"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "Tanulj szavakat szövegkörnyezetben"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Bővítsd a szókincsedet jelentésekkel, példákkal, kiejtési tippekkel, memóriasegítőkkel és gyors gyakorlatokkal."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "Milyen szavakat vagy témát gyakoroljunk?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "Kommunikáció"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Bővítsd a szókincsedet jelentésekkel, példákkal, kiejtési tippekkel, memóriasegítőkkel és gyors gyakorlatokkal."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik kommunikációs témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a szókincsfejlesztőre van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "Tanulj szavakat szövegkörnyezetben"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljaihoz"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "SAT szókincs"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "Üzleti angol szavak"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "Időjárással kapcsolatos szavak"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "Nyelvi szerepjáték"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "Gyakoroljon valódi beszélgetéseket"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Gyakoroljon nyelveket életszerű helyzetekben, mint például kávézókban, állásinterjúkon, utazás közben vagy a mindennapi életben, minden kör után javításokkal."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "Melyik nyelv és milyen helyzet?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "Kommunikáció"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Gyakoroljon nyelveket életszerű helyzetekben, mint például kávézókban, állásinterjúkon, utazás közben vagy a mindennapi életben, minden kör után javításokkal."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan nyelvtanulók, akik kommunikációs témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a nyelvi szerepjátékra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "Gyakoroljon valódi beszélgetéseket"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdje példa promptokkal"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljaihoz"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "Spanyol kávézói szerepjáték"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "Francia reptéri beszélgetés"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "Hindi piaci alkudozás"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "Beszédgyakorlat"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "Gyakoroljon hangosan promptok segítségével"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Készüljön fel beszédekre, prezentációkra, interjúkra vagy szóbeli vizsgákra promptok, időzítés és a felépítésre vonatkozó visszajelzések segítségével."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "Mire készül mondani?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "Kommunikáció"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Készüljön fel beszédekre, prezentációkra, interjúkra vagy szóbeli vizsgákra promptok, időzítés és a felépítésre vonatkozó visszajelzések segítségével."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Kommunikációs témákat felfedező tanulók, akik általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a beszédgyakorlásra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "Gyakorolj hangosan a promptok segítségével"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "Gyakorold az iskolai prezentációmat"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "IELTS beszédkészség próbavizsga"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "Segíts megválaszolni az állásinterjú kérdéseit"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "Vizsgafelkészítő tervező"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Alakítsd a tantervet tanulási tervvé"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Készíts reális vizsgatervet a dátumod, a tanterved, az erősségeid és a gyenge pontjaid alapján."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "Milyen vizsgára készülsz?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "Tervezés"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Alakítsd a tantervedet, a vizsga dátumát, az idődet és a gyenge pontjaidat gyakorlati tanulási tervvé."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "Diákok, akiknek olyan tervre van szükségük, amely egyensúlyt teremt az ismétlés, a gyakorlás, az önbizalom és a mindennapi élet között."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "A tervező a gyenge pontokat helyezi előtérbe, ismétlési köröket ad hozzá, és tartalékterveket készít a kihagyott napokra."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "Témák rangsorolása"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "Ismétlés tervezése"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "Kockázatos területek nyomon követése"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "Tervezz meg 2 hetet biológiából"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "Készíts egy JEE ismétlési ütemtervet"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "Segíts felkészülni a záróvizsgákra"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "Tanulókártya-készítő"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "Készíts okos kártyákat a felidézéshez"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Alakítsd jegyzeteidet vagy témáidat átlátható kártyákká válaszokkal, buktatókkal és ismétlési emlékeztetőkkel."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "Miből készüljenek kártyák?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "Gyakorlás"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Alakítsd jegyzeteidet vagy témáidat célzott kártyákká tippekkel, válaszokkal, példákkal és gyakori buktatókkal."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "Vizsgákra készülő diákok, nyelvtanulók és bárki, aki az előhívásos gyakorlást használja."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "A kártyák egyszerre egy dologra kérdeznek rá, és buktatókat is tartalmaznak, így az ismétlés megértést épít, nem csak felismerést."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "Készíts felidéző kártyákat"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "Fedd fel a válaszokat, amikor készen állsz"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "Ismételd át hamarabb a hibákat"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "Készíts kártyákat a mitózisról"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "Alakítsd ezt a jegyzetet kérdezz-felelek formátumba"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "Készíts földrajzi kártyákat"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "Memóriapalota"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "Jegyezz meg ötleteket élénk helyszínekkel"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "Alakítsd a tényeket, listákat, beszédeket vagy sorrendeket emlékezetes mentális jelenetekké."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "Mit kell megjegyezned?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "Gyakorlás"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "Alakítsd a tényeket, beszédeket, listákat vagy sorrendeket emlékezetes jelenetekké, amelyek megkönnyítik a felidézést tanulás és vizsgák közben."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "Tanulók, akik sorrendbe rendezett ötleteket, szókincset, beszédeket, képleteket vagy tényeket jegyeznek meg, amelyekhez erősebb mentális horgonyra van szükség."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "Ez az üzemmód élénk helyszíneket, útvonalakat és előhívási jeleket tervez ahelyett, hogy csak a jegyzetek újraolvasására kérne."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "Válassz egy útvonalat"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "Helyezz el élénk jeleket"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "Gyakorold a felidézést"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "Jegyezd meg a bolygókat"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "Memorizálj egy beszédvázlatot"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "Tanuld meg a biológiai rendszertant"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "Időzített ismétlés"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "Ismételj, mielőtt elfelejtenéd"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "Tervezz és végezz gyors ismétlő foglalkozásokat, amelyek erősítik a hosszú távú memóriát."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "Mit ismételjünk át?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "Gyakorlás"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "Tervezz gyors ismétlő foglalkozásokat, térj vissza a gyenge pontokhoz, és erősítsd a hosszú távú memóriádat AI-vezérelt időzített ismétléssel."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "Azoknak a tanulóknak, akik olvasás után felejtenek, és gyakorlatias ismétlési ritmusra van szükségük fogalmak, kifejezések vagy vizsgaanyagok esetében."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Az edző a hibákat és a bizonytalanságot ismétlési ütemtervvé alakítja, ahelyett, hogy csak egy újabb passzív összefoglalót adna."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "Válaszd ki az ismétlendő témákat"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "Ütemezd a felidézést"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "Javítsd a hibákat"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "Ismételd át a tegnapi kémiát"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "Készíts egy 7 napos ismétlési tervet"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "Kérdezz ki újra a szókincsből"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "Fogalomtérkép-készítő"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "Kapcsold össze az ötleteket vizuálisan szövegben"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Térképezd fel az ötletek közötti összefüggéseket, az ok-okozati viszonyoktól a kategóriákig, példákig és ellentmondásokig."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "Milyen fogalmat térképezzünk fel?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "Gondolkodás"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Térképezd fel az ötletek közötti összefüggéseket, az ok-okozati viszonyoktól a kategóriákig, példákig és ellentmondásokig."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Gondolkodási témákat felfedező tanulóknak, akik gyakorlati útmutatást szeretnének egy általános válaszmező helyett."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a fogalomtérkép-készítőhöz van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "Kapcsold össze az ötleteket vizuálisan szövegben"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "Térképezd fel a klímaváltozást"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "Kapcsold össze az algebrai fogalmakat"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "Építs térképet a demokráciáról"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "Tévhit-doktor"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "Találd meg és javítsd ki a hibás mentális modelleket"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Mondd el, mit gondolsz, mi történik, és a segítőd kíméletes tesztekkel diagnosztizálja a rejtett tévhiteidet."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Melyik ötlet tűnik zavarosnak vagy gyanúsnak?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "Gondolkodás"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Mondd el, mit gondolsz, mi történik, és a segítőd kíméletes tesztekkel diagnosztizálja a rejtett tévhiteidet."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Gondolkodási témákat felfedező tanulók, akik általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a tévhit-doktorra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "Találd meg és javítsd ki a hibás mentális modelleket"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "Azt hiszem, a nehezebb tárgyak gyorsabban esnek"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "Nem értem a negatív számokat"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "Miért furcsa ez a nyelvtani szabály?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "Feynman-tutor"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "Magyarázd el egyszerűen, amíg meg nem jegyzed"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Próbálj meg egyszerűen elmagyarázni egy fogalmat. A tutorod észreveszi a hiányosságokat, kérdéseket tesz fel, és segít újraépíteni a magyarázatot."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "Mit fogsz visszamagyarázni nekem?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "Gondolkodás"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Próbálj meg egyszerűen elmagyarázni egy fogalmat. A tutorod észreveszi a hiányosságokat, kérdéseket tesz fel, és segít újraépíteni a magyarázatot."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik gondolkodással kapcsolatos témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a Feynman-tutorra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "Magyarázd el egyszerűen, amíg meg nem jegyzed"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "Elmagyarázom a gravitációt"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "Teszteld a tudásomat az inflációról"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "Segíts leegyszerűsíteni a rekurziót"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "Esettanulmány-szimulátor"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "Tanulj valósághű döntéseken keresztül"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Lépj be egy valósághű esetbe, hozz döntéseket, lásd a következményeket, és ismerd meg az egyes választások mögött rejlő elveket."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "Milyen esetet szimuláljunk?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "Elmélyülés"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Lépj be egy valósághű esetbe, hozz döntéseket, lásd a következményeket, és ismerd meg az egyes választások mögött rejlő elveket."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik elmélyülést igénylő témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód az esettanulmány-szimulátorra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "Tanulj valósághű döntéseken keresztül"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "Üzleti stratégiai eset"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "Orvosi etikai eset"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "Környezetvédelmi politikai eset"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "Szerepjáték-szituáció"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "Gyakorold a nehéz, valós életbeli beszélgetéseket"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Gyakorolj tárgyalást, konfliktuskezelést, ügyfélszolgálatot, vezetést vagy bármilyen nagy téttel bíró beszélgetést."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "Milyen szituációt játsszunk el?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "Elmélyülés"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Gyakorolj tárgyalást, konfliktuskezelést, ügyfélszolgálatot, vezetést vagy bármilyen nagy téttel bíró beszélgetést."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Azok a tanulók, akik elmélyülést igénylő témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a szerepjáték-szituációkra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "Gyakorold a nehéz, valós életbeli beszélgetéseket"
+    }
+  ]
+}

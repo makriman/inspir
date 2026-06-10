@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Slovenian",
+  "locale": "sl",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Razdeli delo na poimenovana opravila, meri čas vsakega in po vsaki osredotočeni seji preglej, kam je šel učni trud."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme osredotočenosti in produktivnosti ter želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen časovniku opravil z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "Meri čas posameznih nalog in spremljaj vloženi trud"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "Meri čas za sklop nalog"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "Spremljaj delo na osnutku eseja"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "Razdeli veliko nalogo na časovno omejene bloke"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "Opomnik za odmor"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "Zaščiti zbranost z zdravimi premori"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Nastavi ritem dela in odmorov, načrtuj pravi odklop in se izogni neskončni učni utrujenosti."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "Kakšen ritem dela in odmorov želiš?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "Osredotočenost in produktivnost"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Nastavi ritem dela in odmorov, načrtuj pravi odklop in se izogni neskončni učni utrujenosti."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme osredotočenosti in produktivnosti ter želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen opomniku za odmor z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "Zaščiti zbranost z zdravimi premori"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "Uporabi ritem odmorov 50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "Načrtuj zdrav odmor"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "Pomagaj mi nehati pretiravati z učenjem"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "Seje poglobljenega dela"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "Načrtuj blok zbranosti z malo motnjami"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Pripravi sejo poglobljenega dela z jasnim izidom, omejitvami, pravili zbranosti, kontrolno točko za pregled in rezervnim načrtom."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Kakšen izid naj ustvari ta seja poglobljenega dela?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "Osredotočenost in produktivnost"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Pripravi sejo poglobljenega dela z jasnim izidom, omejitvami, pravili zbranosti, kontrolno točko za pregled in rezervnim načrtom."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme osredotočenosti in produktivnosti ter želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen sejam poglobljenega dela z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "Načrtuj blok zbranosti z malo motnjami"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "Načrtuj 90-minutni blok poglobljenega dela"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "Pomagaj mi pri zbranosti za programiranje"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "Postavi pravila za pisanje zaključne naloge"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "Časovnik za skupinsko učenje"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "Uskladi kroge zbranosti z drugimi"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Vzpostavi skupni učni ritem za prijatelje ali sošolce z usklajenimi cilji, preverjanji napredka in vprašanji za zaključni pogovor."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Kdo se uči skupaj in kakšen je cilj?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "Družabno"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Vzpostavi skupni učni ritem za prijatelje ali sošolce z usklajenimi cilji, preverjanji napredka in vprašanji za zaključni pogovor."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo družabne teme in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen časovniku za skupinsko učenje z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "Uskladi kroge zbranosti z drugimi"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "Načrtuj skupinski Pomodoro"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "Strukturiraj učno sobo"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "Izvedi 45-minutno skupinsko sejo"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "Ambientni zvoki"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "Ustvarjene zvočne kulise za mirno učenje"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Uporabi preproste prednastavitve ambientnega zvoka za manj motenj med branjem, pisanjem, ponavljanjem ali reševanjem problemov."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Kakšno ambientno zbranost želiš?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "Osredotočenost in produktivnost"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Uporabi preproste prednastavitve ambientnega zvoka za manj motenj med branjem, pisanjem, ponavljanjem ali reševanjem problemov."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme osredotočenosti in produktivnosti ter želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen ambientnim zvokom z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "Ustvarjene zvočne kulise za mirno učenje"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "Uporabi dež za branje"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "Izberi miren zvok za matematiko"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "Vzpostavi tiho vzdušje za poglobljeno delo"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "Učni nizi"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "Gradi doslednost brez občutka krivde"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Spremljaj učne nize, nadoknadi izpuščene dni in oblikuj najmanjšo izvedljivo učno navado, ki zdrži resnično življenje."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "Kateri niz ali rutino gradiš?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Spremljaj učne nize, nadoknadi izpuščene dni in oblikuj najmanjšo izvedljivo učno navado, ki zdrži resnično življenje."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo analitične teme in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen učnim nizom z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "Gradi doslednost brez občutka krivde"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "Začni učni niz"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "Nadoknadi izpuščen dan"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "Oblikuj majhen dnevni pregled"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "Nadzorna plošča napredka"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "Preglej učno dejavnost in naslednje korake"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Pretvori učno dejavnost, rezultate kvizov, zapiske in časovnike v pregled v slogu nadzorne plošče s trendi in naslednjimi dejanji."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "Kateri napredek naj pregledamo?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Pretvori učno dejavnost, rezultate kvizov, zapiske in časovnike v pregled v slogu nadzorne plošče s trendi in naslednjimi dejanji."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo analitične teme in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen nadzorni plošči napredka z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "Preglej učno dejavnost in naslednje korake"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "Preglej moj teden"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "Poišči šibka področja"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "Pretvori dejavnost v naslednje korake"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "Tedenska poročila"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Povzemi uspehe, spodrsljaje in naslednji teden"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Ustvari tedensko ali mesečno učno poročilo s trudom, izidi, ovirami, uspehi in osredotočenim načrtom."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "Kaj se je zgodilo ta teden?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Ustvari tedensko ali mesečno učno poročilo s trudom, izidi, ovirami, uspehi in osredotočenim načrtom."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo analitične teme in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen tedenskim poročilom z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Povzemi uspehe, spodrsljaje in naslednji teden"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "Napiši moje tedensko poročilo o učenju"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "Povzemi moj napredek"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "Načrtuj naslednji teden na podlagi tega tedna"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "Sledilnik nalog"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "Spremljaj roke in naslednja dejanja"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Organiziraj naloge po roku, vložku, stanju, tveganju in najmanjšem naslednjem dejanju."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "Katere naloge te čakajo?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "Organizacija"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Organiziraj naloge po roku, vložku, stanju, tveganju in najmanjšem naslednjem dejanju."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme organizacije in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen sledilniku nalog z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "Spremljaj roke in naslednja dejanja"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "Organiziraj moje roke"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "Razvrsti naloge po pomembnosti"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "Načrtuj oddajo tega projekta"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "Upravljalnik predmetov"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "Organiziraj predmete, teme in delovno obremenitev"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Uredi predmete, enote, naloge, vire in tedensko obremenitev v en organiziran učni sistem."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "Katere predmete ali področja upravljaš?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "Organizacija"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Uredi predmete, enote, naloge, vire in tedensko obremenitev v en organiziran učni sistem."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme organizacije in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen upravljalniku predmetov z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "Organiziraj predmete, teme in delovno obremenitev"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "Nastavi moje predmete"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "Organiziraj moj semester"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "Razporedi teme po predmetih"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "Organizator zapiskov"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "Označi, razvrsti in poveži zapiske"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Pretvori raztresene zapiske v mape, oznake, povzetke, povezave in dejanja za ponavljanje, ki olajšajo priklic."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "Prilepi ali opiši zapiske za organizacijo"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "Organizacija"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Pretvori raztresene zapiske v mape, oznake, povzetke, povezave in dejanja za ponavljanje, ki olajšajo priklic."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme organizacije in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen organizatorju zapiskov z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "Označi, razvrsti in poveži zapiske"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "Organiziraj moje zapiske s predavanj"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "Ustvari oznake za te zapiske"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "Poišči teme v mojem zvezku"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "Deljenje virov"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "Pripravi in deli učne vire"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Pripravi učne vire za sošolce ali skupino: povzetke, povezave, zapiske, razlage in navodila za uporabo."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "Kateri vir želiš deliti?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "Družabno"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Pripravi učne vire za sošolce ali skupino: povzetke, povezave, zapiske, razlage in navodila za uporabo."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo družabne teme in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen deljenju virov z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "Pripravi in deli učne vire"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "Pripravi moje zapiske za skupino"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "Ustvari povzetek vira"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "Pripravi smernice za deljenje"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "Učne skupine"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "Naj bo skupinsko učenje strukturirano"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Načrtuj produktivno učno skupino z vlogami, dnevnim redom, krogi vprašanj, skupnimi viri in zapiski povzetka."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "Kaj naj počne učna skupina?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "Družabno"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Načrtuj produktivno učno skupino z vlogami, dnevnim redom, krogi vprašanj, skupnimi viri in zapiski povzetka."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo družabne teme in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen učnim skupinam z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "Naj bo skupinsko učenje strukturirano"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "Načrtuj skupinsko sejo"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "Določi vloge za učno skupino"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "Uredi neproduktivno skupino"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "Študentski forum"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "Oblikuj vprašanja za pomoč skupnosti"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Pripravi jasna forumska vprašanja, odgovore, povzetke in nadaljnje prošnje, zaradi katerih so študentske razprave uporabnejše."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "Katero vprašanje ali razpravo želiš objaviti?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "Družabno"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Pripravi jasna forumska vprašanja, odgovore, povzetke in nadaljnje prošnje, zaradi katerih so študentske razprave uporabnejše."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo družabne teme in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen študentskemu forumu z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "Oblikuj vprašanja za pomoč skupnosti"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "Napiši dobro forumsko vprašanje"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "Povzemi razpravo"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "Prosi za povratne informacije vrstnikov"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "Ustvarjalnik delovnih listov"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "Ustvari mešane delovne liste za vajo"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Ustvari delovne liste z vrstami vprašanj, kot so dopolnjevanje praznin, vprašanja z več možnimi odgovori, drži/ne drži, kratki odgovori in povezovanje."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "Kaj naj zajema delovni list?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "Aktivno učenje"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Ustvari delovne liste z vrstami vprašanj, kot so dopolnjevanje praznin, vprašanja z več možnimi odgovori, drži/ne drži, kratki odgovori in povezovanje."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme aktivnega učenja in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen ustvarjalniku delovnih listov z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "Ustvari mešane delovne liste za vajo"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "Ustvari delovni list o ulomkih"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "Ustvari mešano vajo iz kemije"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "Sestavi vaje za besedišče"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "Vaja označevanja diagramov"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Vadi oznake za diagrame in sisteme"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Pretvori diagrame, telesne sisteme, zemljevide, delovne tokove ali laboratorijske postavitve v vajo označevanja z namigi in preverjanjem odgovorov."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "Kateri diagram naj vadimo označevati?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "Aktivno učenje"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Pretvori diagrame, telesne sisteme, zemljevide, delovne tokove ali laboratorijske postavitve v vajo označevanja z namigi in preverjanjem odgovorov."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme aktivnega učenja in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen vaji označevanja diagramov z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Vadi oznake za diagrame in sisteme"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "Označi rastlinsko celico"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "Vadi diagram srca"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "Ustvari vprašanja za označevanje zemljevida"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "Ustvarjalnik igre povezovanja"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Poveži izraze, definicije, vzroke in primere"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Pretvori zapiske v igre povezovanja za besedišče, pojme, ljudi/dogodke, formule, primere ali pare vzrok-posledica."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "Kateri pari naj postanejo igra povezovanja?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "Aktivno učenje"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Pretvori zapiske v igre povezovanja za besedišče, pojme, ljudi/dogodke, formule, primere ali pare vzrok-posledica."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme aktivnega učenja in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen ustvarjalniku igre povezovanja z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Poveži izraze, definicije, vzroke in primere"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "Poveži izraze in definicije"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "Ustvari pare vzrok-posledica"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "Ustvari vajo povezovanja formul"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP in stopnje"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "Pretvori napredek v stopnje in misije"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Oblikuj sistem točk, stopenj, misij in nagrad okoli resničnega učnega napredka."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Kateri učni cilj naj postane sistem stopenj?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "Igrifikacija"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Oblikuj sistem točk, stopenj, misij in nagrad okoli resničnega učnega napredka."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Učenci, ki raziskujejo teme igrifikacije in želijo praktično usmerjanje namesto splošnega polja za odgovore."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "Ta način je prilagojen sistemu XP in stopenj z lastnimi pozivi, primeri in učnim tokom."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "Pretvori napredek v stopnje in misije"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Začni s primeri pozivov"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Prilagodi učno sejo svojemu cilju"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "Ustvari XP za pripravo na izpit"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "Oblikuj stopnje za vajo programiranja"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "Pretvori branje v misije"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "Značke in dosežki"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "Nagradi mejnike, ki štejejo"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Ustvari značke za doslednost, obvladovanje, pogum, ponavljanje, sodelovanje in dokončane izdelke."
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "language": "Kannada",
+  "locale": "kn",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.badges-achievements.inputboxText",
+      "source": "What achievement system should we design?",
+      "value": "ನಾವು ಯಾವ ಸಾಧನೆಯ ವ್ಯವಸ್ಥೆಯನ್ನು ವಿನ್ಯಾಸಗೊಳಿಸಬೇಕು?"
+    },
+    {
+      "key": "topic.badges-achievements.category",
+      "source": "Gamification",
+      "value": "ಗ್ಯಾಮಿಫಿಕೇಶನ್"
+    },
+    {
+      "key": "topic.badges-achievements.seo.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "ಸ್ಥಿರತೆ, ಪಾಂಡಿತ್ಯ, ಧೈರ್ಯ, ಪರಿಷ್ಕರಣೆ, ಸಹಯೋಗ ಮತ್ತು ಪೂರ್ಣಗೊಂಡ ಕಲಾಕೃತಿಗಳಿಗಾಗಿ ಬ್ಯಾಡ್ಜ್‌ಗಳನ್ನು ರಚಿಸಿ."
+    },
+    {
+      "key": "topic.badges-achievements.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "ಸಾಮಾನ್ಯ ಉತ್ತರಗಳ ಬದಲಿಗೆ ಪ್ರಾಯೋಗಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಬಯಸುವ ಗ್ಯಾಮಿಫಿಕೇಶನ್ ವಿಷಯಗಳನ್ನು ಅನ್ವೇಷಿಸುವ ಕಲಿಯುವವರು."
+    },
+    {
+      "key": "topic.badges-achievements.seo.whyDifferent",
+      "source": "This mode is tuned for badges & achievements with its own prompts, examples, and learning flow.",
+      "value": "ಈ ಮೋಡ್ ಅನ್ನು ಬ್ಯಾಡ್ಜ್‌ಗಳು ಮತ್ತು ಸಾಧನೆಗಳಿಗಾಗಿ ಅದರದೇ ಆದ ಪ್ರಾಂಪ್ಟ್‌ಗಳು, ಉದಾಹರಣೆಗಳು ಮತ್ತು ಕಲಿಕೆಯ ಹರಿವಿನೊಂದಿಗೆ ಸಿದ್ಧಪಡಿಸಲಾಗಿದೆ."
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.0",
+      "source": "Reward milestones that matter",
+      "value": "ಮುಖ್ಯವಾದ ಮೈಲಿಗಲ್ಲುಗಳಿಗೆ ಬಹುಮಾನ ನೀಡಿ"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ಉದಾಹರಣೆ ಪ್ರಾಂಪ್ಟ್‌ಗಳೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿ"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ನಿಮ್ಮ ಗುರಿಗೆ ಅನುಗುಣವಾಗಿ ಅಧಿವೇಶನವನ್ನು ಹೊಂದಿಸಿ"
+    },
+    {
+      "key": "topic.badges-achievements.starter.0",
+      "source": "Create badges for my class",
+      "value": "ನನ್ನ ತರಗತಿಗಾಗಿ ಬ್ಯಾಡ್ಜ್‌ಗಳನ್ನು ರಚಿಸಿ"
+    },
+    {
+      "key": "topic.badges-achievements.starter.1",
+      "source": "Reward revision milestones",
+      "value": "ರಿವಿಷನ್ ಮೈಲಿಗಲ್ಲುಗಳಿಗೆ ಬಹುಮಾನ ನೀಡಿ"
+    },
+    {
+      "key": "topic.badges-achievements.starter.2",
+      "source": "Make achievement rules",
+      "value": "ಸಾಧನೆಯ ನಿಯಮಗಳನ್ನು ರೂಪಿಸಿ"
+    },
+    {
+      "key": "topic.leaderboards.name",
+      "source": "Leaderboards",
+      "value": "ಲೀಡರ್‌ಬೋರ್ಡ್‌ಗಳು"
+    },
+    {
+      "key": "topic.leaderboards.subText",
+      "source": "Make competition healthier",
+      "value": "ಸ್ಪರ್ಧೆಯನ್ನು ಆರೋಗ್ಯಕರವಾಗಿಸಿ"
+    },
+    {
+      "key": "topic.leaderboards.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "ನಿಧಾನವಾಗಿ ಕಲಿಯುವವರನ್ನು ನಿರುತ್ಸಾಹಗೊಳಿಸದೆ, ಪ್ರಯತ್ನ, ಸುಧಾರಣೆ, ತಂಡದ ಕೆಲಸ ಅಥವಾ ಸ್ಥಿರತೆಯನ್ನು ಪುರಸ್ಕರಿಸುವ ನ್ಯಾಯಯುತ ಲೀಡರ್‌ಬೋರ್ಡ್‌ಗಳನ್ನು ರಚಿಸಿ."
+    },
+    {
+      "key": "topic.leaderboards.inputboxText",
+      "source": "What should the leaderboard measure?",
+      "value": "ಲೀಡರ್‌ಬೋರ್ಡ್ ಯಾವುದನ್ನು ಅಳೆಯಬೇಕು?"
+    },
+    {
+      "key": "topic.leaderboards.category",
+      "source": "Gamification",
+      "value": "ಗ್ಯಾಮಿಫಿಕೇಶನ್"
+    },
+    {
+      "key": "topic.leaderboards.seo.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "ನಿಧಾನವಾಗಿ ಕಲಿಯುವವರನ್ನು ನಿರುತ್ಸಾಹಗೊಳಿಸದೆ, ಪ್ರಯತ್ನ, ಸುಧಾರಣೆ, ತಂಡದ ಕೆಲಸ ಅಥವಾ ಸ್ಥಿರತೆಯನ್ನು ಪುರಸ್ಕರಿಸುವ ನ್ಯಾಯಯುತ ಲೀಡರ್‌ಬೋರ್ಡ್‌ಗಳನ್ನು ರಚಿಸಿ."
+    },
+    {
+      "key": "topic.leaderboards.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "ಸಾಮಾನ್ಯ ಉತ್ತರಗಳ ಬದಲಿಗೆ ಪ್ರಾಯೋಗಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಬಯಸುವ ಗ್ಯಾಮಿಫಿಕೇಶನ್ ವಿಷಯಗಳನ್ನು ಅನ್ವೇಷಿಸುವ ಕಲಿಯುವವರು."
+    },
+    {
+      "key": "topic.leaderboards.seo.whyDifferent",
+      "source": "This mode is tuned for leaderboards with its own prompts, examples, and learning flow.",
+      "value": "ಈ ಮೋಡ್ ಲೀಡರ್‌ಬೋರ್ಡ್‌ಗಳಿಗಾಗಿ ತನ್ನದೇ ಆದ ಪ್ರಾಂಪ್ಟ್‌ಗಳು, ಉದಾಹರಣೆಗಳು ಮತ್ತು ಕಲಿಕೆಯ ಹರಿವಿನೊಂದಿಗೆ ಸಿದ್ಧಪಡಿಸಲಾಗಿದೆ."
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.0",
+      "source": "Make competition healthier",
+      "value": "ಸ್ಪರ್ಧೆಯನ್ನು ಆರೋಗ್ಯಕರವಾಗಿಸಿ"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ಉದಾಹರಣೆ ಪ್ರಾಂಪ್ಟ್‌ಗಳೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿ"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ನಿಮ್ಮ ಗುರಿಗೆ ಅನುಗುಣವಾಗಿ ಅಧಿವೇಶನವನ್ನು ಹೊಂದಿಸಿ"
+    },
+    {
+      "key": "topic.leaderboards.starter.0",
+      "source": "Design a class leaderboard",
+      "value": "ತರಗತಿಯ ಲೀಡರ್‌ಬೋರ್ಡ್ ವಿನ್ಯಾಸಗೊಳಿಸಿ"
+    },
+    {
+      "key": "topic.leaderboards.starter.1",
+      "source": "Measure improvement fairly",
+      "value": "ಸುಧಾರಣೆಯನ್ನು ನ್ಯಾಯಯುತವಾಗಿ ಅಳೆಯಿರಿ"
+    },
+    {
+      "key": "topic.leaderboards.starter.2",
+      "source": "Make a team challenge board",
+      "value": "ತಂಡದ ಸವಾಲಿನ ಬೋರ್ಡ್ ರಚಿಸಿ"
+    },
+    {
+      "key": "topic.accountability-partner.name",
+      "source": "Accountability Partner",
+      "value": "ಅಕೌಂಟಬಿಲಿಟಿ ಪಾರ್ಟ್ನರ್"
+    },
+    {
+      "key": "topic.accountability-partner.subText",
+      "source": "Build check-ins that keep you moving",
+      "value": "ನಿಮ್ಮನ್ನು ಮುನ್ನಡೆಸುವ ಚೆಕ್-ಇನ್‌ಗಳನ್ನು ನಿರ್ಮಿಸಿ"
+    },
+    {
+      "key": "topic.accountability-partner.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "ಸ್ಪಷ್ಟ ಬದ್ಧತೆಗಳು, ಪುರಾವೆ, ಚೇತರಿಕೆಯ ನಿಯಮಗಳು ಮತ್ತು ಬೆಂಬಲಿತ ಫಾಲೋ-ಅಪ್‌ಗಳೊಂದಿಗೆ ಅಕೌಂಟಬಿಲಿಟಿ ಚೆಕ್-ಇನ್‌ಗಳನ್ನು ರಚಿಸಿ."
+    },
+    {
+      "key": "topic.accountability-partner.inputboxText",
+      "source": "What commitment needs accountability?",
+      "value": "ಯಾವ ಬದ್ಧತೆಗೆ ಅಕೌಂಟಬಿಲಿಟಿ ಅಗತ್ಯವಿದೆ?"
+    },
+    {
+      "key": "topic.accountability-partner.category",
+      "source": "Gamification",
+      "value": "ಗ್ಯಾಮಿಫಿಕೇಶನ್"
+    },
+    {
+      "key": "topic.accountability-partner.seo.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "ಸ್ಪಷ್ಟ ಬದ್ಧತೆಗಳು, ಪುರಾವೆ, ಚೇತರಿಕೆಯ ನಿಯಮಗಳು ಮತ್ತು ಬೆಂಬಲಿತ ಫಾಲೋ-ಅಪ್‌ಗಳೊಂದಿಗೆ ಅಕೌಂಟಬಿಲಿಟಿ ಚೆಕ್-ಇನ್‌ಗಳನ್ನು ರಚಿಸಿ."
+    },
+    {
+      "key": "topic.accountability-partner.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "ಸಾಮಾನ್ಯ ಉತ್ತರಗಳ ಬದಲಿಗೆ ಪ್ರಾಯೋಗಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಬಯಸುವ ಗ್ಯಾಮಿಫಿಕೇಶನ್ ವಿಷಯಗಳನ್ನು ಅನ್ವೇಷಿಸುವ ಕಲಿಯುವವರು."
+    },
+    {
+      "key": "topic.accountability-partner.seo.whyDifferent",
+      "source": "This mode is tuned for accountability partner with its own prompts, examples, and learning flow.",
+      "value": "ಈ ಮೋಡ್ ಅಕೌಂಟಬಿಲಿಟಿ ಪಾರ್ಟ್ನರ್‌ಗಾಗಿ ತನ್ನದೇ ಆದ ಪ್ರಾಂಪ್ಟ್‌ಗಳು, ಉದಾಹರಣೆಗಳು ಮತ್ತು ಕಲಿಕೆಯ ಹರಿವಿನೊಂದಿಗೆ ಸಿದ್ಧಪಡಿಸಲಾಗಿದೆ."
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.0",
+      "source": "Build check-ins that keep you moving",
+      "value": "ನಿಮ್ಮ ಪ್ರಗತಿಯನ್ನು ಮುಂದುವರಿಸುವ ಚೆಕ್-ಇನ್‌ಗಳನ್ನು ನಿರ್ಮಿಸಿ"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ಉದಾಹರಣೆ ಪ್ರಾಂಪ್ಟ್‌ಗಳೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿ"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ನಿಮ್ಮ ಗುರಿಗೆ ಅನುಗುಣವಾಗಿ ಅಧಿವೇಶನವನ್ನು ಹೊಂದಿಸಿ"
+    },
+    {
+      "key": "topic.accountability-partner.starter.0",
+      "source": "Set up weekly accountability",
+      "value": "ಸಾಪ್ತಾಹಿಕ ಹೊಣೆಗಾರಿಕೆಯನ್ನು ಹೊಂದಿಸಿ"
+    },
+    {
+      "key": "topic.accountability-partner.starter.1",
+      "source": "Write a check-in script",
+      "value": "ಚೆಕ್-ಇನ್ ಸ್ಕ್ರಿಪ್ಟ್ ಬರೆಯಿರಿ"
+    },
+    {
+      "key": "topic.accountability-partner.starter.2",
+      "source": "Recover after missing a goal",
+      "value": "ಗುರಿಯನ್ನು ತಪ್ಪಿಸಿಕೊಂಡ ನಂತರ ಚೇತರಿಸಿಕೊಳ್ಳಿ"
+    },
+    {
+      "key": "topic.study-challenges.name",
+      "source": "Study Challenges",
+      "value": "ಅಧ್ಯಯನ ಸವಾಲುಗಳು"
+    },
+    {
+      "key": "topic.study-challenges.subText",
+      "source": "Create short challenges and boss rounds",
+      "value": "ಸಣ್ಣ ಸವಾಲುಗಳು ಮತ್ತು ಬಾಸ್ ರೌಂಡ್‌ಗಳನ್ನು ರಚಿಸಿ"
+    },
+    {
+      "key": "topic.study-challenges.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "ಸ್ಪಷ್ಟ ನಿಯಮಗಳು, ಸ್ಕೋರಿಂಗ್, ಹಂತಗಳು, ಬಾಸ್ ರೌಂಡ್‌ಗಳು ಮತ್ತು ಪ್ರತಿಬಿಂಬದೊಂದಿಗೆ ಅಧ್ಯಯನ ಸವಾಲುಗಳನ್ನು ನಿರ್ಮಿಸಿ."
+    },
+    {
+      "key": "topic.study-challenges.inputboxText",
+      "source": "What should become a challenge?",
+      "value": "ಯಾವುದು ಸವಾಲಾಗಿ ಬದಲಾಗಬೇಕು?"
+    },
+    {
+      "key": "topic.study-challenges.category",
+      "source": "Gamification",
+      "value": "ಗ್ಯಾಮಿಫಿಕೇಶನ್"
+    },
+    {
+      "key": "topic.study-challenges.seo.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "ಸ್ಪಷ್ಟ ನಿಯಮಗಳು, ಸ್ಕೋರಿಂಗ್, ಹಂತಗಳು, ಬಾಸ್ ರೌಂಡ್‌ಗಳು ಮತ್ತು ಪ್ರತಿಬಿಂಬದೊಂದಿಗೆ ಅಧ್ಯಯನ ಸವಾಲುಗಳನ್ನು ನಿರ್ಮಿಸಿ."
+    },
+    {
+      "key": "topic.study-challenges.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "ಸಾಮಾನ್ಯ ಉತ್ತರ ಪೆಟ್ಟಿಗೆಯ ಬದಲಿಗೆ ಪ್ರಾಯೋಗಿಕ ಮಾರ್ಗದರ್ಶನವನ್ನು ಬಯಸುವ ಗ್ಯಾಮಿಫಿಕೇಶನ್ ವಿಷಯಗಳನ್ನು ಅನ್ವೇಷಿಸುವ ಕಲಿಯುವವರು."
+    },
+    {
+      "key": "topic.study-challenges.seo.whyDifferent",
+      "source": "This mode is tuned for study challenges with its own prompts, examples, and learning flow.",
+      "value": "ಈ ಮೋಡ್ ತನ್ನದೇ ಆದ ಪ್ರಾಂಪ್ಟ್‌ಗಳು, ಉದಾಹರಣೆಗಳು ಮತ್ತು ಕಲಿಕೆಯ ಹರಿವಿನೊಂದಿಗೆ ಅಧ್ಯಯನ ಸವಾಲುಗಳಿಗಾಗಿ ಟ್ಯೂನ್ ಮಾಡಲ್ಪಟ್ಟಿದೆ."
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.0",
+      "source": "Create short challenges and boss rounds",
+      "value": "ಸಣ್ಣ ಸವಾಲುಗಳು ಮತ್ತು ಬಾಸ್ ರೌಂಡ್‌ಗಳನ್ನು ರಚಿಸಿ"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ಉದಾಹರಣೆ ಪ್ರಾಂಪ್ಟ್‌ಗಳೊಂದಿಗೆ ಪ್ರಾರಂಭಿಸಿ"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ನಿಮ್ಮ ಗುರಿಗೆ ಅನುಗುಣವಾಗಿ ಅಧಿವೇಶನವನ್ನು ಹೊಂದಿಸಿ"
+    },
+    {
+      "key": "topic.study-challenges.starter.0",
+      "source": "Make a 7 day math challenge",
+      "value": "7 ದಿನಗಳ ಗಣಿತ ಸವಾಲನ್ನು ಮಾಡಿ"
+    },
+    {
+      "key": "topic.study-challenges.starter.1",
+      "source": "Create a vocabulary boss round",
+      "value": "ಶಬ್ದಕೋಶದ ಬಾಸ್ ರೌಂಡ್ ರಚಿಸಿ"
+    },
+    {
+      "key": "topic.study-challenges.starter.2",
+      "source": "Design a revision sprint",
+      "value": "ರಿವಿಷನ್ ಸ್ಪ್ರಿಂಟ್ ಅನ್ನು ವಿನ್ಯಾಸಗೊಳಿಸಿ"
+    }
+  ]
+}

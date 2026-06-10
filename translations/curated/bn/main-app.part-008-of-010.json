@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Bengali",
+  "locale": "bn",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি সিভিক্স কোচের জন্য বিশেষভাবে তৈরি, যেখানে নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রক্রিয়া রয়েছে।"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "অধিকার, সরকার এবং সমাজ সম্পর্কে বুঝুন"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্য অনুযায়ী সেশনটি সাজিয়ে নিন"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "একটি বিল কীভাবে আইনে পরিণত হয়?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "মৌলিক অধিকার ব্যাখ্যা করুন"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "আদালত কী কাজ করে?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "শিল্পকলা মূল্যায়ন নির্দেশিকা"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "আরও গভীরভাবে দেখুন এবং পর্যবেক্ষণ করুন"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "শিল্পকর্ম, শৈলী, শিল্পী, দৃশ্যমান পছন্দ এবং কী একটি ছবিকে শক্তিশালী করে তোলে তা অন্বেষণ করুন।"
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "কোন শিল্পকর্ম, শিল্পী বা শৈলী?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "সৃজনশীলতা"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "শিল্পকর্ম, শৈলী, শিল্পী, দৃশ্যমান পছন্দ এবং কী একটি ছবিকে শক্তিশালী করে তোলে তা অন্বেষণ করুন।"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "সৃজনশীলতার বিষয়গুলো অন্বেষণকারী শিক্ষার্থী যারা সাধারণ উত্তর বাক্সের পরিবর্তে ব্যবহারিক নির্দেশনা চান।"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি শিল্পকলা মূল্যায়ন নির্দেশিকার জন্য তৈরি করা হয়েছে, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রবাহ রয়েছে।"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "আরও গভীরভাবে দেখুন এবং পর্যবেক্ষণ করুন"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটি মানিয়ে নিন"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "ইম্প্রেশনিজম ব্যাখ্যা করুন"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "আমি কীভাবে একটি চিত্রকর্ম দেখব?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "রেনেসাঁ এবং আধুনিক শিল্পের তুলনা করুন"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "মিউজিক থিওরি কোচ"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "শব্দ, ছন্দ এবং সুর বুঝুন"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "নোট, কর্ড, স্কেল, ছন্দ, কান প্রশিক্ষণের ধারণা এবং গান কীভাবে তৈরি হয় তা শিখুন।"
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "আমরা কোন মিউজিক আইডিয়া নিয়ে কাজ করব?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "সৃজনশীলতা"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "নোট, কর্ড, স্কেল, ছন্দ, কান প্রশিক্ষণের ধারণা এবং গান কীভাবে তৈরি হয় তা শিখুন।"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "সৃজনশীলতার বিষয়গুলো অন্বেষণকারী শিক্ষার্থী যারা সাধারণ উত্তর বাক্সের পরিবর্তে ব্যবহারিক নির্দেশনা চান।"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি মিউজিক থিওরি কোচের জন্য তৈরি করা হয়েছে, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রবাহ রয়েছে।"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "শব্দ, ছন্দ এবং সুর বুঝতে শিখুন"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "মেজর এবং মাইনর ব্যাখ্যা করুন"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "কর্ড কীভাবে কাজ করে?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "ছন্দের মৌলিক বিষয়গুলো শেখান"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "মানসিকতার প্রতিফলন"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "আপনি কীভাবে শেখেন তা নিয়ে ভাবুন"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "কী আপনাকে শিখতে সাহায্য করে, কী বাধা হয়ে দাঁড়ায় এবং কীভাবে একজন আরও ভালো শিক্ষার্থী হওয়া যায় তা লক্ষ্য করুন।"
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "আমাদের কোন শেখার মুহূর্তটি নিয়ে প্রতিফলন করা উচিত?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "পরিকল্পনা"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "কী আপনাকে শিখতে সাহায্য করে, কী বাধা হয়ে দাঁড়ায় এবং কীভাবে একজন আরও ভালো শিক্ষার্থী হওয়া যায় তা লক্ষ্য করুন।"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী পরিকল্পনার বিষয়গুলো অন্বেষণ করছে এবং সাধারণ উত্তরের পরিবর্তে ব্যবহারিক নির্দেশনা চায়।"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রবাহের মাধ্যমে মানসিকতার প্রতিফলনের জন্য বিশেষভাবে তৈরি।"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "আপনি কীভাবে শেখেন তা নিয়ে ভাবুন"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "আমি কেন পড়াশোনা এড়িয়ে চলছিলাম?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "খারাপ পরীক্ষার পর প্রতিফলন"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "কোন শেখার কৌশলটি আমার জন্য উপযুক্ত?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "লার্নিং গেম মাস্টার"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "পড়াশোনাকে একটি চ্যালেঞ্জে পরিণত করুন"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "কোয়েস্ট, লেভেল, পয়েন্ট, চ্যালেঞ্জ এবং বস রাউন্ডের মাধ্যমে পড়াশোনাকে একটি খেলার মতো আনন্দদায়ক করে তুলুন।"
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "কোন বিষয়টিকে একটি লার্নিং গেমে পরিণত করা উচিত?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "অনুশীলন"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "কোয়েস্ট, লেভেল, পয়েন্ট, চ্যালেঞ্জ এবং বস রাউন্ডের মাধ্যমে শেখাকে একটি খেলার মতো আনন্দদায়ক করে তুলুন।"
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী অনুশীলনের বিষয়গুলো অন্বেষণ করছে এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা চায়।"
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি লার্নিং গেম মাস্টারের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রবাহ রয়েছে।"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "পড়াশোনাকে একটি চ্যালেঞ্জে পরিণত করুন"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "জীববিজ্ঞানকে একটি কোয়েস্ট হিসেবে তৈরি করুন"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "শব্দভাণ্ডারকে লেভেলে রূপান্তর করুন"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "একটি গণিত বস ব্যাটল তৈরি করুন"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "ভাইভা অনুশীলন"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "মৌখিক পরীক্ষার জন্য প্রস্তুতি নিন"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "ভাইভা, মৌখিক পরীক্ষা, প্রজেক্ট ডিফেন্স এবং দ্রুত ফলো-আপ প্রশ্নের অনুশীলন করুন শান্ত ফিডব্যাকের সাথে।"
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "আপনি কোন ভাইভা বা মৌখিক পরীক্ষার জন্য প্রস্তুতি নিচ্ছেন?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "অনুশীলন"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "ভাইভা, মৌখিক পরীক্ষা, প্রজেক্ট ডিফেন্স এবং দ্রুত ফলো-আপ প্রশ্নের অনুশীলন করুন শান্ত ফিডব্যাকের সাথে।"
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী অনুশীলনের বিষয়গুলো অন্বেষণ করছে এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা চায়।"
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি ভাইভা অনুশীলনের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রবাহ রয়েছে।"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "মৌখিক পরীক্ষার জন্য প্রস্তুতি নিন"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "আমার সায়েন্স প্রজেক্ট ভাইভার অনুশীলন করুন"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "আমাকে থিসিস ডিফেন্সের প্রশ্ন করুন"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "মক প্র্যাকটিক্যাল পরীক্ষার প্রশ্ন"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "স্টাডি টাইমার"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "অ্যালার্ট সহ পারসিস্টেন্ট পোমোডোরো টাইমার"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "ফোকাস এবং বিরতির সেশন চালান যা চ্যাট, ট্যাব এবং মিনি অ্যাপের মধ্যে চলাচলের সময়ও চলতে থাকে। সেশন শেষ হলে এটি ব্যাকগ্রাউন্ড থেকে রিং করতে পারে।"
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "এই ফোকাস সেশনটি কী নিয়ে হওয়া উচিত?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "ফোকাস ও প্রোডাক্টিভিটি"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "ফোকাস এবং বিরতির সেশন চালান যা চ্যাট, ট্যাব এবং মিনি অ্যাপের মধ্যে চলাচলের সময়ও চলতে থাকে। সেশন শেষ হলে এটি ব্যাকগ্রাউন্ড থেকে রিং করতে পারে।"
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী ফোকাস ও প্রোডাক্টিভিটি বিষয়গুলো অন্বেষণ করছেন এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা চান।"
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি স্টাডি টাইমারের জন্য টিউন করা হয়েছে, যার নিজস্ব প্রম্পট, উদাহরণ এবং লার্নিং ফ্লো রয়েছে।"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "অ্যালার্ট সহ পারসিস্টেন্ট পোমোডোরো টাইমার"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটি মানিয়ে নিন"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "২৫ মিনিটের একটি জীববিজ্ঞান সেশন শুরু করুন"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "৫০/১০ ডিপ ওয়ার্ক রিদম সেট করুন"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "প্রবন্ধ লেখার ফোকাস ট্র্যাক করুন"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "ফোকাসের জন্য মিউজিক"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "ব্যাকগ্রাউন্ড ফোকাস অডিও যা বাজতে থাকে"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "পড়া, লেখা, সমস্যা সমাধান বা গভীর কাজের জন্য জেনারেটেড ফোকাস অডিও বেছে নিন। আপনি অন্য চ্যাটে স্যুইচ করলেও এটি বাজতে থাকে।"
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "আজ আপনি কেমন ফোকাস চান?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "ফোকাস ও প্রোডাক্টিভিটি"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "পড়া, লেখা, সমস্যা সমাধান বা গভীর কাজের জন্য জেনারেটেড ফোকাস অডিও বেছে নিন। আপনি অন্য চ্যাটে স্যুইচ করলেও এটি বাজতে থাকে।"
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী ফোকাস ও প্রোডাক্টিভিটি বিষয়গুলো অন্বেষণ করছেন এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা চান।"
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি ফোকাসের জন্য মিউজিকের সাথে টিউন করা হয়েছে, যার নিজস্ব প্রম্পট, উদাহরণ এবং লার্নিং ফ্লো রয়েছে।"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "ব্যাকগ্রাউন্ড ফোকাস অডিও যা বাজতে থাকে"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "মনোযোগ দিয়ে পড়ার জন্য শান্ত মিউজিক চালান"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "গভীর মনোযোগের জন্য অডিও সেট আপ করুন"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "রিভিশনের জন্য বৃষ্টির শব্দ ব্যবহার করুন"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "ড্র/স্কেচ বোর্ড"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "ডায়াগ্রাম এবং খসড়া ভিজ্যুয়ালের মাধ্যমে চিন্তা করুন"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "শেখার কৌশল হিসেবে স্কেচিং ব্যবহার করুন: ডায়াগ্রামের পরিকল্পনা করুন, খসড়া ম্যাপ চিহ্নিত করুন, প্রক্রিয়া ব্যাখ্যা করুন বা অগোছালো ধারণাকে আরও স্পষ্ট ভিজ্যুয়ালে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "আমরা কী স্কেচ বা ডায়াগ্রাম করব?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "ভিজ্যুয়াল লার্নিং"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "শেখার কৌশল হিসেবে স্কেচিং ব্যবহার করুন: ডায়াগ্রামের পরিকল্পনা করুন, খসড়া ম্যাপ চিহ্নিত করুন, প্রক্রিয়া ব্যাখ্যা করুন বা অগোছালো ধারণাকে আরও স্পষ্ট ভিজ্যুয়ালে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী ভিজ্যুয়াল লার্নিং বিষয়গুলো অন্বেষণ করছে এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা চায়।"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি নিজস্ব প্রম্পট, উদাহরণ এবং লার্নিং ফ্লো সহ ড্র/স্কেচ বোর্ডের জন্য বিশেষভাবে তৈরি করা হয়েছে।"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "ডায়াগ্রাম এবং খসড়া ভিজ্যুয়ালের মাধ্যমে চিন্তা করুন"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "একটি কোষের ডায়াগ্রাম স্কেচ করুন"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "একটি চাহিদা-জোগান গ্রাফ আঁকুন"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "প্রথম বিশ্বযুদ্ধের কারণগুলো ম্যাপ করুন"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "প্র্যাকটিস টেস্ট বিল্ডার"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "আপনার উপাদান থেকে একটি পূর্ণাঙ্গ পরীক্ষা তৈরি করুন"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "কোনো বিষয়, সিলেবাস বা নোটকে সেকশন, সময়সীমা, মার্কিং গাইডেন্স এবং রিভিউ ধাপসহ একটি বাস্তবসম্মত প্র্যাকটিস টেস্টে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "প্র্যাকটিস টেস্টে কী কী থাকা উচিত?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "অ্যাক্টিভ লার্নিং"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "কোনো বিষয়, সিলেবাস বা নোটকে সেকশন, সময়সীমা, মার্কিং গাইডেন্স এবং রিভিউ ধাপসহ একটি বাস্তবসম্মত প্র্যাকটিস টেস্টে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী সক্রিয়ভাবে শেখার বিষয়গুলো অন্বেষণ করছে এবং সাধারণ উত্তরের পরিবর্তে ব্যবহারিক নির্দেশনা চায়।"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি প্র্যাকটিস টেস্ট বিল্ডারের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রক্রিয়া রয়েছে।"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "আপনার উপকরণ থেকে একটি পূর্ণাঙ্গ পরীক্ষা তৈরি করুন"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "জীববিজ্ঞানের একটি ইউনিট টেস্ট তৈরি করুন"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "মিশ্র গণিতের একটি প্র্যাকটিস টেস্ট তৈরি করুন"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "পরীক্ষার আদলে ইতিহাসের একটি প্রশ্নপত্র তৈরি করুন"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "ইমেজ অ্যানালাইসিস কোচ"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "স্ক্রিনশট, ডায়াগ্রাম এবং হোমওয়ার্কের ছবিগুলো বিশ্লেষণ করুন"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "কোনো ছবির বিবরণ দিন বা বিস্তারিত পেস্ট করুন এবং ডায়াগ্রাম, চার্ট, সমস্যা, হাতে লেখা নোট বা দৃশ্যমান প্রমাণ বুঝতে সাহায্য নিন।"
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "ছবিটির বর্ণনা দিন বা যা দেখা যাচ্ছে তা পেস্ট করুন"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "এআই (AI) সহায়তা"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "কোনো ছবির বিবরণ দিন বা বিস্তারিত পেস্ট করুন এবং ডায়াগ্রাম, চার্ট, সমস্যা, হাতে লেখা নোট বা দৃশ্যমান প্রমাণ বুঝতে সাহায্য নিন।"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী এআই (AI) সহায়তার বিষয়গুলো অন্বেষণ করছে এবং সাধারণ উত্তরের পরিবর্তে ব্যবহারিক নির্দেশনা চায়।"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি ইমেজ অ্যানালাইসিস কোচের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রক্রিয়া রয়েছে।"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "স্ক্রিনশট, ডায়াগ্রাম এবং হোমওয়ার্কের ছবিগুলো বিশ্লেষণ করুন"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "এই ডায়াগ্রামটি বুঝতে সাহায্য করুন"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "আমার পাঠ্যবইয়ের একটি চার্ট বিশ্লেষণ করুন"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "এই স্ক্রিনশটটিতে কী দেখানো হচ্ছে তা ব্যাখ্যা করুন"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "কর্নেল নোটস"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "নোটগুলোকে কিউ (cues), বিস্তারিত তথ্য এবং সারাংশে সাজান"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "লেকচার, রিডিং বা অগোছালো নোটগুলোকে কিউ প্রশ্ন, মূল নোট, সারাংশ এবং রিভিউ প্রম্পটসহ কর্নেল পদ্ধতিতে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "নোট পেস্ট করুন অথবা লেসনের নাম লিখুন"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "অর্গানাইজেশন"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "লেকচার, রিডিং বা অগোছালো নোটগুলোকে কিউ প্রশ্ন, মূল নোট, সারাংশ এবং রিভিউ প্রম্পটসহ কর্নেল পদ্ধতিতে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী অর্গানাইজেশন বিষয়গুলো নিয়ে কাজ করছেন এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা খুঁজছেন।"
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি কর্নেল নোটের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং লার্নিং ফ্লো রয়েছে।"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "নোটগুলোকে কিউ, ডিটেইলস এবং সারাংশে সাজান"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্য অনুযায়ী সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "এই লেকচারটিকে কর্নেল নোটে রূপান্তর করুন"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "অধ্যায় ৩-এর জন্য কিউ প্রশ্ন তৈরি করুন"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "আমার অগোছালো নোটগুলোর সারাংশ তৈরি করুন"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "সাইটেশন জেনারেটর"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "সাধারণ ফরম্যাটে রেফারেন্স তৈরি করুন"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "উৎস থেকে প্রাপ্ত তথ্যের ভিত্তিতে APA, MLA, শিকাগো, হার্ভার্ড বা সাধারণ বিব্লিওগ্রাফি এন্ট্রি তৈরি করুন এবং কোনো তথ্য বাদ পড়েছে কি না তা যাচাই করুন।"
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "উৎস বা URL-এর তথ্য পেস্ট করুন"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "AI হেল্প"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "উৎস থেকে প্রাপ্ত তথ্যের ভিত্তিতে APA, MLA, শিকাগো, হার্ভার্ড বা সাধারণ বিব্লিওগ্রাফি এন্ট্রি তৈরি করুন এবং কোনো তথ্য বাদ পড়েছে কি না তা যাচাই করুন।"
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী AI হেল্প বিষয়গুলো নিয়ে কাজ করছেন এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা খুঁজছেন।"
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি সাইটেশন জেনারেটরের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং লার্নিং ফ্লো রয়েছে।"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "সাধারণ ফরম্যাটে রেফারেন্স তৈরি করুন"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্য অনুযায়ী সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "একটি APA সাইটেশন তৈরি করুন"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "এই ওয়েবসাইটটিকে MLA ফরম্যাটে সাজান"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "আমার সাইটেশনে কোন কোন তথ্য বাদ পড়েছে তা দেখুন"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "টেক্সট সামারাইজার"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "পড়াশোনার বিষয়বস্তুকে কার্যকর নোট হিসেবে সংক্ষেপ করুন"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "দীর্ঘ টেক্সটকে মূল ধারণা, কাঠামো, সংজ্ঞা, উদাহরণ এবং মনে রাখার মতো প্রশ্নে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "যে টেক্সটটি সংক্ষেপ করতে চান তা এখানে পেস্ট করুন"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "AI সহায়তা"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "দীর্ঘ টেক্সটকে মূল ধারণা, কাঠামো, সংজ্ঞা, উদাহরণ এবং মনে রাখার মতো প্রশ্নে রূপান্তর করুন।"
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী AI সহায়তা খুঁজছেন এবং সাধারণ উত্তরের পরিবর্তে ব্যবহারিক দিকনির্দেশনা চান।"
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি টেক্সট সামারাইজারের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রক্রিয়া রয়েছে।"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "পড়াশোনার বিষয়বস্তুকে কার্যকর নোট হিসেবে সংক্ষেপ করুন"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্য অনুযায়ী সেশনটি সাজিয়ে নিন"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "এই আর্টিকেলটি সংক্ষেপ করুন"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "আমার নোট থেকে মূল পয়েন্টগুলো বের করুন"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "একটি অধ্যায়ের সারাংশ তৈরি করুন"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "স্টাডি গাইড জেনারেটর"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "পাঠ্য বিষয়কে রিভিশন গাইডে রূপান্তর করুন"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "উদ্দেশ্য, ধারণার সারাংশ, উদাহরণ, সাধারণ ভুল, অনুশীলনী প্রশ্ন এবং রিভিশন পরিকল্পনা সহ একটি স্টাডি গাইড তৈরি করুন।"
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "কোন বিষয়বস্তু থেকে স্টাডি গাইড তৈরি করতে চান?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "AI সহায়তা"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "উদ্দেশ্য, ধারণার সারাংশ, উদাহরণ, সাধারণ ভুল, অনুশীলনী প্রশ্ন এবং রিভিশন পরিকল্পনা সহ একটি স্টাডি গাইড তৈরি করুন।"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী AI সহায়তা খুঁজছেন এবং সাধারণ উত্তরের পরিবর্তে ব্যবহারিক দিকনির্দেশনা চান।"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি স্টাডি গাইড জেনারেটরের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রক্রিয়া রয়েছে।"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "উপাদানকে রিভিশন গাইডে রূপান্তর করুন"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটি মানিয়ে নিন"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "সালোকসংশ্লেষণের জন্য একটি গাইড তৈরি করুন"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "আমার নোটগুলোকে রিভিশন শিটে রূপান্তর করুন"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "ফাইনাল পরীক্ষার জন্য একটি স্টাডি গাইড তৈরি করুন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "গ্রেড ও জিপিএ ক্যালকুলেটর"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "গ্রেড অনুমান করুন এবং স্কোরের লক্ষ্য নির্ধারণ করুন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "ওয়েটেড গ্রেড, জিপিএ পরিস্থিতি, প্রয়োজনীয় ফাইনাল স্কোর এবং সেমিস্টারের সম্ভাব্য পরিকল্পনাগুলো হিসাব করুন।"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "আপনার গ্রেড ওয়েট এবং স্কোর শেয়ার করুন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "অর্গানাইজেশন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "ওয়েটেড গ্রেড, জিপিএ পরিস্থিতি, প্রয়োজনীয় ফাইনাল স্কোর এবং সেমিস্টারের সম্ভাব্য পরিকল্পনাগুলো হিসাব করুন।"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী অর্গানাইজেশন বিষয়গুলো নিয়ে কাজ করছে এবং সাধারণ উত্তরের পরিবর্তে ব্যবহারিক নির্দেশনা চায়।"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি গ্রেড ও জিপিএ ক্যালকুলেটরের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং লার্নিং ফ্লো রয়েছে।"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "গ্রেড অনুমান করুন এবং স্কোরের লক্ষ্য নির্ধারণ করুন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটি মানিয়ে নিন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "ফাইনাল পরীক্ষায় আমার কত স্কোর প্রয়োজন?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "আমার ওয়েটেড গ্রেড হিসাব করুন"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "আমার জিপিএ লক্ষ্য পরিকল্পনা করুন"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "মাইন্ড ম্যাপ ক্রিয়েটর"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "একটি বিষয়কে সংযুক্ত ধারণায় বিভক্ত করুন"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "ব্রেইনস্টর্মিং, রিভিশন, পরিকল্পনা বা লেখার আগে ধারণাগুলোকে সংযুক্ত করার জন্য একটি মাইন্ড ম্যাপ তৈরি করুন।"
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "কোন বিষয়টি দিয়ে মাইন্ড ম্যাপ তৈরি করা উচিত?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "ভিজ্যুয়াল লার্নিং"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "লেখার বা পড়ার আগে ব্রেইনস্টর্মিং, রিভিশন, পরিকল্পনা বা ধারণাগুলোকে সংযুক্ত করার জন্য একটি মাইন্ড ম্যাপ তৈরি করুন।"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী ভিজ্যুয়াল লার্নিংয়ের বিষয়গুলো অন্বেষণ করছেন এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা খুঁজছেন।"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি মাইন্ড ম্যাপ তৈরির জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রবাহ রয়েছে।"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "একটি বিষয়কে সংযুক্ত ধারণায় বিভক্ত করুন"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "মেশিন লার্নিংয়ের মাইন্ড ম্যাপ তৈরি করুন"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "একটি ইতিহাসের প্রবন্ধের ম্যাপ তৈরি করুন"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "একটি বিজ্ঞান প্রকল্পের জন্য ব্রেইনস্টর্মিং করুন"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "দৈনিক অধ্যয়নের লক্ষ্য"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "আজকের শেখার লক্ষ্য নির্ধারণ এবং ট্র্যাক করুন"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "প্রচেষ্টার অনুমান, অগ্রাধিকার, বাধার পরীক্ষা এবং একটি দ্রুত পর্যালোচনা রীতির মাধ্যমে বাস্তবসম্মত দৈনিক অধ্যয়নের লক্ষ্য পরিকল্পনা করুন।"
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "আজ আপনি কী কী সম্পন্ন করতে চান?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "গ্যামিফিকেশন"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "প্রচেষ্টার অনুমান, অগ্রাধিকার, বাধার পরীক্ষা এবং একটি দ্রুত পর্যালোচনা রীতির মাধ্যমে বাস্তবসম্মত দৈনিক অধ্যয়নের লক্ষ্য পরিকল্পনা করুন।"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "যেসব শিক্ষার্থী গ্যামিফিকেশন বিষয়গুলো অন্বেষণ করছেন এবং সাধারণ উত্তর বক্সের পরিবর্তে ব্যবহারিক নির্দেশনা খুঁজছেন।"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "এই মোডটি দৈনিক অধ্যয়নের লক্ষ্যের জন্য বিশেষভাবে তৈরি, যার নিজস্ব প্রম্পট, উদাহরণ এবং শেখার প্রবাহ রয়েছে।"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "আজকের শেখার লক্ষ্য নির্ধারণ এবং ট্র্যাক করুন"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "উদাহরণ প্রম্পট দিয়ে শুরু করুন"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "আপনার লক্ষ্যের সাথে সেশনটিকে মানিয়ে নিন"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "আজকের জন্য তিনটি লক্ষ্য নির্ধারণ করুন"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "আমার লক্ষ্যগুলোকে বাস্তবসম্মত করুন"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "আমার অধ্যয়নের লক্ষ্যগুলো পর্যালোচনা করুন"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "টাস্ক টাইমার"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "স্বতন্ত্র কাজের সময় নির্ধারণ করুন এবং প্রচেষ্টার পরিমাণ দেখুন"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "কাজকে নির্দিষ্ট নামে ভাগ করুন, প্রতিটির সময় নির্ধারণ করুন এবং প্রতিটি ফোকাসড সেশনের পর আপনার পড়াশোনার প্রচেষ্টা কোথায় ব্যয় হয়েছে তা পর্যালোচনা করুন।"
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "আমরা কোন কাজের সময় নির্ধারণ করব?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "ফোকাস ও উৎপাদনশীলতা"
+    }
+  ]
+}

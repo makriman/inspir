@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Korean",
+  "locale": "ko",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 4,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "component.911283fe2232",
+      "source": "Quick Check",
+      "value": "빠른 확인"
+    },
+    {
+      "key": "component.d614793e93c0",
+      "source": "Quiz me",
+      "value": "퀴즈 풀기"
+    },
+    {
+      "key": "component.f4fd71bdcc3d",
+      "source": "Quiz on",
+      "value": "퀴즈 주제:"
+    },
+    {
+      "key": "component.750127052ffa",
+      "source": "Rajput retainer",
+      "value": "라지푸트 가신"
+    },
+    {
+      "key": "component.2cb0220c7fb5",
+      "source": "Rank controls speech",
+      "value": "지위가 언어를 결정합니다"
+    },
+    {
+      "key": "component.47f2291b96b5",
+      "source": "Raw options",
+      "value": "원시 옵션"
+    },
+    {
+      "key": "component.b0fb2e2755f6",
+      "source": "Read the guide",
+      "value": "가이드 읽기"
+    },
+    {
+      "key": "component.1ba9285c4dbb",
+      "source": "Read the pamphlet aloud",
+      "value": "팜플렛을 소리 내어 읽으세요"
+    },
+    {
+      "key": "component.8df33e186224",
+      "source": "Reading knowledge plus formal speech routines",
+      "value": "독해 지식 및 공식적인 화법"
+    },
+    {
+      "key": "component.e27e7173e91e",
+      "source": "Ready for a 10-minute checkpoint",
+      "value": "10분 체크포인트를 시작할 준비가 되셨나요?"
+    },
+    {
+      "key": "component.9ee1d87c6cd7",
+      "source": "Ready for next handoff",
+      "value": "다음 핸드오프 준비 완료"
+    },
+    {
+      "key": "component.8c2d9db100f4",
+      "source": "Ready for review",
+      "value": "검토 준비 완료"
+    },
+    {
+      "key": "component.370cdd29a525",
+      "source": "Real life",
+      "value": "실생활"
+    },
+    {
+      "key": "component.8e10fdd77b25",
+      "source": "Real-world mode",
+      "value": "실전 모드"
+    },
+    {
+      "key": "component.7d2085c16e37",
+      "source": "Reasoning depth",
+      "value": "추론 깊이"
+    },
+    {
+      "key": "component.12814e474612",
+      "source": "Reasoning link",
+      "value": "추론 링크"
+    },
+    {
+      "key": "component.410a5fd0ec61",
+      "source": "Reasoning log",
+      "value": "추론 로그"
+    },
+    {
+      "key": "component.08c753ccf87c",
+      "source": "Recall before reveal",
+      "value": "답을 보기 전에 먼저 떠올려 보세요"
+    },
+    {
+      "key": "component.28220567a702",
+      "source": "Recent political wounds remain raw",
+      "value": "최근의 정치적 상처가 여전히 아물지 않았습니다"
+    },
+    {
+      "key": "component.7d4b454370c7",
+      "source": "Recognition is useful, but it is weaker evidence than applying the idea without the answer in front of you.",
+      "value": "인식하는 것은 유용하지만, 정답을 보지 않고 아이디어를 직접 적용하는 것보다 증거로서의 가치는 낮습니다."
+    },
+    {
+      "key": "component.afbf9a099120",
+      "source": "Recommend opening questions for this encounter, grouped by interview, debate, contradiction, and legacy.",
+      "value": "이번 만남을 위한 추천 질문을 인터뷰, 토론, 반박, 유산별로 분류했습니다."
+    },
+    {
+      "key": "component.c783910b44b6",
+      "source": "Reconstruct a decision, alternatives, constraints, and outcomes.",
+      "value": "결정, 대안, 제약 조건 및 결과를 재구성하십시오."
+    },
+    {
+      "key": "component.a72a8f73dc11",
+      "source": "Red Fort approaches",
+      "value": "레드 포트 접근 방식"
+    },
+    {
+      "key": "component.2ce8b9e121f0",
+      "source": "Red sandstone heat, ink, perfumed paper, controlled silence, and many languages orbiting power.",
+      "value": "붉은 사암의 열기, 잉크, 향기로운 종이, 통제된 침묵, 그리고 권력 주위를 맴도는 수많은 언어들."
+    },
+    {
+      "key": "component.0ccc7909b5fb",
+      "source": "Reframe my next question as a student trying to understand the mental model, not just the biography.",
+      "value": "단순한 전기적 사실이 아니라 정신 모델을 이해하려는 학생의 입장에서 다음 질문을 재구성하십시오."
+    },
+    {
+      "key": "component.a24c276ac12d",
+      "source": "Religious debate is politically charged",
+      "value": "종교적 논쟁은 정치적으로 민감합니다"
+    },
+    {
+      "key": "component.e0e026276557",
+      "source": "Religious language needs care",
+      "value": "종교적 언어는 주의가 필요합니다"
+    },
+    {
+      "key": "component.0c5330d19ead",
+      "source": "Remote work is better",
+      "value": "원격 근무가 더 낫습니다"
+    },
+    {
+      "key": "component.037bbfc29028",
+      "source": "Remove weak, generic, or low-fit ideas quickly.",
+      "value": "약하거나 일반적이거나 적합하지 않은 아이디어를 빠르게 제거하십시오."
+    },
+    {
+      "key": "component.2988f3dfb74c",
+      "source": "Removes the failing path instead of understanding it.",
+      "value": "실패한 경로를 이해하는 대신 제거합니다."
+    },
+    {
+      "key": "component.90b8131b4d1f",
+      "source": "Renaissance Florence in 1490",
+      "value": "1490년의 르네상스 피렌체"
+    },
+    {
+      "key": "component.66325effd9f8",
+      "source": "Rename the variable everywhere.",
+      "value": "모든 곳에서 변수 이름을 변경하십시오."
+    },
+    {
+      "key": "component.f7fb183346d9",
+      "source": "Repaired gaps",
+      "value": "메워진 간극"
+    },
+    {
+      "key": "component.971339da94e1",
+      "source": "Repairing the misconception makes the next problem easier instead of just more familiar.",
+      "value": "오개념을 바로잡으면 다음 문제를 단순히 더 익숙하게 만드는 것이 아니라 더 쉽게 해결할 수 있습니다."
+    },
+    {
+      "key": "component.4883a9d371cf",
+      "source": "Repeating a definition without applying it can feel fluent while hiding gaps.",
+      "value": "정의를 적용하지 않고 반복하는 것은 유창하게 느껴질 수 있지만, 실제로는 이해의 간극을 숨길 수 있습니다."
+    },
+    {
+      "key": "component.6bcff7ac2de1",
+      "source": "Rephrase the active question in simpler language. Ask only one question.",
+      "value": "현재 질문을 더 간단한 언어로 바꾸십시오. 질문은 하나만 하십시오."
+    },
+    {
+      "key": "component.8fe6a933e8a8",
+      "source": "Reply in this compact shape:",
+      "value": "다음과 같은 간결한 형식으로 답변하십시오:"
+    },
+    {
+      "key": "component.cf0cbc5ccf37",
+      "source": "Request debrief and passport stamp",
+      "value": "디브리핑 및 여권 도장 요청"
+    },
+    {
+      "key": "component.9ed885c7e35d",
+      "source": "Request source confidence",
+      "value": "출처 신뢰도 요청"
+    },
+    {
+      "key": "component.2f79ec2e3c66",
+      "source": "Required flow:",
+      "value": "필수 흐름:"
+    },
+    {
+      "key": "component.17f2bb4b3ffd",
+      "source": "Reset the controls, move only one slider, and describe the before-and-after in plain language.",
+      "value": "컨트롤을 재설정하고 슬라이더를 하나만 움직인 다음, 변경 전후의 상태를 평이한 언어로 설명하십시오."
+    },
+    {
+      "key": "component.6b51f64dd73e",
+      "source": "Resolve access limits",
+      "value": "액세스 제한 해결"
+    },
+    {
+      "key": "component.2c934f39de2e",
+      "source": "Resolve language risk",
+      "value": "언어적 위험 해결"
+    },
+    {
+      "key": "component.803dbfad3fc6",
+      "source": "Resolve status rules",
+      "value": "상태 규칙 해결"
+    },
+    {
+      "key": "component.7aa618d54a21",
+      "source": "Resolve the event clock before opening the world",
+      "value": "세계를 열기 전에 이벤트 시계를 해결하십시오"
+    },
+    {
+      "key": "component.e77ea1a2315f",
+      "source": "respectful but challenging interlocutor",
+      "value": "존중하면서도 도전적인 대화 상대"
+    },
+    {
+      "key": "component.68fcff7df5ce",
+      "source": "Restaurants and drivers can be suppliers, but this specific clue is about customers comparing and switching.",
+      "value": "식당과 운전기사도 공급자가 될 수 있지만, 이 특정 단서는 고객의 비교와 전환에 관한 것입니다."
+    },
+    {
+      "key": "component.4c027317545d",
+      "source": "Restoration London faces plague memory, dense timber housing, and a fire that will reshape the city.",
+      "value": "복원기 런던은 역병의 기억, 밀집된 목조 주택, 그리고 도시를 재편할 화재에 직면해 있습니다."
+    },
+    {
+      "key": "component.343b38bb71c5",
+      "source": "Reveal the starting model before the lesson explains it.",
+      "value": "수업에서 설명하기 전에 시작 모델을 공개하세요."
+    },
+    {
+      "key": "component.78df3f31215b",
+      "source": "Rewrite the current rough section as a suggested edit. Show what changed and why before asking me to merge it.",
+      "value": "현재 초안 섹션을 제안된 수정안으로 다시 작성하세요. 병합을 요청하기 전에 무엇이 변경되었고 그 이유는 무엇인지 보여주세요."
+    },
+    {
+      "key": "component.ca5560da5759",
+      "source": "Rewrite this",
+      "value": "다시 쓰기"
+    },
+    {
+      "key": "component.7ab132020523",
+      "source": "Right. Transfer to a fresh example is stronger evidence than recognition.",
+      "value": "맞습니다. 새로운 예시로의 전이는 단순한 인식보다 더 강력한 증거입니다."
+    },
+    {
+      "key": "component.d81e83b6c2b3",
+      "source": "Right. You identified a seller-side cost shock and predicted the pressure on price.",
+      "value": "맞습니다. 판매자 측의 비용 충격을 파악하고 가격에 미칠 압력을 예측하셨군요."
+    },
+    {
+      "key": "component.1743f14ce624",
+      "source": "River boatman",
+      "value": "강 뱃사공"
+    },
+    {
+      "key": "component.a031a7b57338",
+      "source": "River stairs",
+      "value": "강가 계단"
+    },
+    {
+      "key": "component.d6f443f51ba3",
+      "source": "Roman Empire",
+      "value": "로마 제국"
+    },
+    {
+      "key": "component.e720ae03ad93",
+      "source": "Roman trade used amphorae and contracts",
+      "value": "로마 무역은 암포라와 계약을 사용했습니다"
+    },
+    {
+      "key": "component.959a5e064b58",
+      "source": "Rubric-aware prompts.",
+      "value": "채점 기준을 고려한 프롬프트."
+    },
+    {
+      "key": "component.08957554ee0d",
+      "source": "Rumor can turn against outsiders",
+      "value": "소문은 외부인을 향할 수 있습니다"
+    },
+    {
+      "key": "component.7bb279bd578d",
+      "source": "Rumors about royal troops spread",
+      "value": "왕실 군대에 대한 소문이 퍼졌습니다"
+    },
+    {
+      "key": "component.4ffbaba7cfe7",
+      "source": "Rumors move faster than verified news",
+      "value": "소문은 검증된 뉴스보다 빠르게 퍼집니다"
+    },
+    {
+      "key": "component.f406a98a85fd",
+      "source": "Rupee, dam, gifts, patronage obligations",
+      "value": "루피, 담, 선물, 후원 의무"
+    },
+    {
+      "key": "component.0f3dd7548a25",
+      "source": "Rupees, silver coin, credit through trusted households",
+      "value": "루피, 은화, 신뢰할 수 있는 가문을 통한 신용"
+    },
+    {
+      "key": "component.ce4c40a824ca",
+      "source": "Safe, explanatory, and easier to pause for context.",
+      "value": "안전하고 설명적이며 맥락을 위해 일시 정지하기 더 쉽습니다."
+    },
+    {
+      "key": "component.36c12e82b1e3",
+      "source": "Safer, more explanatory, and allowed to ask modern comparisons.",
+      "value": "더 안전하고 설명적이며 현대적인 비교를 요청할 수 있습니다."
+    },
+    {
+      "key": "component.758625ed4fc7",
+      "source": "Salt air, olive oil, rope fiber, shouted accounts, and the heavy logistics behind imperial abundance.",
+      "value": "짠 바닷바람, 올리브 오일, 밧줄 섬유, 외쳐진 기록들, 그리고 제국의 풍요 뒤에 숨겨진 거대한 물류."
+    },
+    {
+      "key": "component.2f7b7ad341e0",
+      "source": "Salt March strategist, St. Helena retrospective, 1946 committee room...",
+      "value": "소금 행진 전략가, 세인트헬레나 회고, 1946년 위원회실..."
+    },
+    {
+      "key": "component.7605cf4afbe7",
+      "source": "Same level",
+      "value": "같은 수준"
+    },
+    {
+      "key": "component.98d5309ca571",
+      "source": "Sanskrit in Buddhist contexts",
+      "value": "불교 맥락에서의 산스크리트어"
+    },
+    {
+      "key": "component.d69ca0d332d1",
+      "source": "Save note",
+      "value": "메모 저장"
+    },
+    {
+      "key": "component.613d9d44835c",
+      "source": "Saved arrival point",
+      "value": "저장된 도착 지점"
+    },
+    {
+      "key": "component.1fdbc928c5f7",
+      "source": "Saved expedition",
+      "value": "저장된 탐험"
+    },
+    {
+      "key": "component.31db64ffad28",
+      "source": "Saved notes",
+      "value": "저장된 메모"
+    },
+    {
+      "key": "component.72498e1de0b8",
+      "source": "Say why the mistake is tempting, then name the missing link.",
+      "value": "왜 그 실수가 유혹적인지 말하고, 누락된 연결 고리를 지목하세요."
+    },
+    {
+      "key": "component.ae1f10df8a38",
+      "source": "Saying revenue is up, so the company is worth more ignores margins, reinvestment, working capital, and risk.",
+      "value": "수익이 증가했으니 회사의 가치가 더 높다고 말하는 것은 마진, 재투자, 운전 자본, 위험을 무시하는 것입니다."
+    },
+    {
+      "key": "component.aa4986e9edb4",
+      "source": "Scanning the topic",
+      "value": "주제 훑어보기"
+    },
+    {
+      "key": "component.95a63c58f054",
+      "source": "Scene Choices",
+      "value": "장면 선택"
+    },
+    {
+      "key": "component.8c09328917b9",
+      "source": "Scholarly gathering",
+      "value": "학술 모임"
+    },
+    {
+      "key": "component.943e915ec679",
+      "source": "Science, leadership, democracy, daily life...",
+      "value": "과학, 리더십, 민주주의, 일상생활..."
+    },
+    {
+      "key": "component.c32b5d9ea958",
+      "source": "Scribe or translator",
+      "value": "필경사 또는 번역가"
+    },
+    {
+      "key": "component.631a600e6190",
+      "source": "Seeing the output change but not naming the mechanism.",
+      "value": "결과가 변하는 것은 보지만 메커니즘을 명명하지 못함."
+    },
+    {
+      "key": "component.291a85699c85",
+      "source": "Send answer",
+      "value": "답변 보내기"
+    },
+    {
+      "key": "component.03bf0b770e02",
+      "source": "Send me somewhere consequential",
+      "value": "중요한 곳으로 보내주세요"
+    },
+    {
+      "key": "component.c70a890d1411",
+      "source": "Send message",
+      "value": "메시지 보내기"
+    },
+    {
+      "key": "component.e34837b56e99",
+      "source": "Sepoy courier",
+      "value": "세포이 전령"
+    },
+    {
+      "key": "component.cdf2d39e903c",
+      "source": "September 1857",
+      "value": "1857년 9월"
+    },
+    {
+      "key": "component.ae720381a40f",
+      "source": "Session details",
+      "value": "세션 세부 정보"
+    },
+    {
+      "key": "component.a2a3d6a1542f",
+      "source": "Session setup",
+      "value": "세션 설정"
+    },
+    {
+      "key": "component.1ba59c4d3dd8",
+      "source": "Set a place, period, and mission. Your guide will keep the trip bounded to the era and mark speculation clearly.",
+      "value": "장소, 시대, 임무를 설정하세요. 가이드가 여행을 해당 시대에 맞게 제한하고 추측을 명확하게 표시할 것입니다."
+    },
+    {
+      "key": "component.697f7a980cbb",
+      "source": "Set a thinking target and I will ask the first diagnostic question.",
+      "value": "사고 목표를 설정하면 첫 번째 진단 질문을 드리겠습니다."
+    },
+    {
+      "key": "component.792f7f7dcd69",
+      "source": "Set in the opening message",
+      "value": "첫 메시지에서 설정됨"
+    },
+    {
+      "key": "component.8a705896a4cd",
+      "source": "Set the shared task.",
+      "value": "공유 과제 설정."
+    },
+    {
+      "key": "component.cb09bfd23c1c",
+      "source": "Several locations, figures, artifacts, and field notes.",
+      "value": "여러 위치, 인물, 유물 및 현장 메모."
+    },
+    {
+      "key": "component.32c79cbb745e",
+      "source": "Shared draft room",
+      "value": "공유 초안 작업실"
+    },
+    {
+      "key": "component.b95ef75a6977",
+      "source": "Shared goal",
+      "value": "공유 목표"
+    },
+    {
+      "key": "component.12264cf9af73",
+      "source": "Shared workroom",
+      "value": "공유 작업실"
+    },
+    {
+      "key": "component.a043f6325d8b",
+      "source": "Sharp sparring partner",
+      "value": "날카로운 토론 파트너"
+    },
+    {
+      "key": "component.6d03e52b9f64",
+      "source": "Ships unload grain and oil",
+      "value": "곡물과 기름을 하역하는 선박들"
+    },
+    {
+      "key": "component.b5c30a43f61f",
+      "source": "Short factual notes clarify uncertainty, bias, and interpretation.",
+      "value": "짧은 사실 기반 메모는 불확실성, 편향, 해석의 모호함을 명확히 합니다."
+    },
+    {
+      "key": "component.9eee3f2520ec",
+      "source": "short run",
+      "value": "단기"
+    },
+    {
+      "key": "component.cd5ee6d32c79",
+      "source": "Short summaries keep both sides aligned before moving on.",
+      "value": "짧은 요약은 다음 단계로 넘어가기 전에 양측의 의견을 일치시킵니다."
+    },
+    {
+      "key": "component.d30f4c170784",
+      "source": "Should a company enter this market?",
+      "value": "기업이 이 시장에 진입해야 할까요?"
+    },
+    {
+      "key": "component.46cd61f538a3",
+      "source": "Should I take this job?",
+      "value": "이 직업을 선택해야 할까요?"
+    },
+    {
+      "key": "component.1ccfd398d4b0",
+      "source": "Show a similar solved case.",
+      "value": "비슷한 해결 사례 보기"
+    },
+    {
+      "key": "component.ba314d24a638",
+      "source": "Show changes before merging",
+      "value": "병합 전 변경 사항 보기"
+    },
+    {
+      "key": "component.18073a08edd8",
+      "source": "Show more uncertainty, anachronism, and source-boundary notes.",
+      "value": "불확실성, 시대착오, 출처 경계에 관한 메모를 더 많이 표시합니다."
+    },
+    {
+      "key": "component.f927d36bbccb",
+      "source": "Show the person's major beliefs at this time, their blind spots, and what they would likely resist understanding.",
+      "value": "당시 그 인물의 주요 신념, 사각지대, 그리고 이해하기를 거부했을 만한 내용을 보여줍니다."
+    },
+    {
+      "key": "component.9a2cc71fc80f",
+      "source": "Shuffling the challenge",
+      "value": "도전 과제 섞기"
+    },
+    {
+      "key": "component.b731c4a36a3f",
+      "source": "Siege pressure is rising",
+      "value": "포위 압박이 거세지고 있습니다"
+    },
+    {
+      "key": "component.2bf03d063535",
+      "source": "Silver rupee",
+      "value": "은 루피"
+    },
+    {
+      "key": "component.7782e521b837",
+      "source": "Simulation state:",
+      "value": "시뮬레이션 상태:"
+    },
+    {
+      "key": "component.3afde4662953",
+      "source": "Sketch the outline, sections, or table before polishing language.",
+      "value": "언어를 다듬기 전에 개요, 섹션 또는 표를 작성하세요."
+    },
+    {
+      "key": "component.3e6c81f343a2",
+      "source": "Skill being trained",
+      "value": "훈련 중인 기술"
+    },
+    {
+      "key": "component.e5601a411aad",
+      "source": "Slow down",
+      "value": "속도 늦추기"
+    },
+    {
+      "key": "component.88481fc98d2b",
+      "source": "Small nudges arrive before direct explanations.",
+      "value": "직접적인 설명에 앞서 작은 힌트가 제공됩니다."
+    },
+    {
+      "key": "component.4e6245ea3ddf",
+      "source": "Small reserve in local coin or credit",
+      "value": "현지 화폐나 신용으로 된 소액 예비비"
+    },
+    {
+      "key": "component.80d2a8d1ff01",
+      "source": "Small silver or copper reserve",
+      "value": "소액의 은 또는 구리 예비비"
+    },
+    {
+      "key": "component.660ae3f3c3cb",
+      "source": "Small supervised purse",
+      "value": "소규모 감독 지갑"
+    },
+    {
+      "key": "component.18777af6d137",
+      "source": "Socrates was tried and executed in 399 BCE",
+      "value": "소크라테스는 기원전 399년에 재판을 받고 처형당했다"
+    },
+    {
+      "key": "component.aba1434a8b61",
+      "source": "Socratic contract",
+      "value": "소크라테스식 계약"
+    },
+    {
+      "key": "component.bfac28b8b6c0",
+      "source": "Socratic Instruction",
+      "value": "소크라테스식 교수법"
+    },
+    {
+      "key": "component.26da7d97a7ba",
+      "source": "Socratic mode",
+      "value": "소크라테스식 모드"
+    },
+    {
+      "key": "component.687e60d68b03",
+      "source": "Socratic Question Ladder",
+      "value": "소크라테스식 질문 사다리"
+    },
+    {
+      "key": "component.2762c36d8393",
+      "source": "Socratic target",
+      "value": "소크라테스식 목표"
+    },
+    {
+      "key": "component.1f0bef28ebb0",
+      "source": "Sogdian among some merchants",
+      "value": "일부 상인들 사이의 소그드인"
+    },
+    {
+      "key": "component.1a9bed8b911d",
+      "source": "Sogdian trader",
+      "value": "소그드인 상인"
+    },
+    {
+      "key": "component.123362322dd4",
+      "source": "someone who changed education and faced serious opposition",
+      "value": "교육을 변화시키고 심각한 반대에 직면했던 사람"
+    },
+    {
+      "key": "component.b97348873c90",
+      "source": "Source notes",
+      "value": "출처 주석"
+    },
+    {
+      "key": "component.9ae0bd32a926",
+      "source": "Sources, confidence, uncertainty, and forbidden quotes.",
+      "value": "출처, 신뢰도, 불확실성 및 금지된 인용문."
+    },
+    {
+      "key": "component.234633855523",
+      "source": "Space exploration, Indian history, algebra...",
+      "value": "우주 탐사, 인도 역사, 대수학..."
+    },
+    {
+      "key": "component.ec020737163e",
+      "source": "Sparring partner",
+      "value": "스파링 파트너"
+    },
+    {
+      "key": "component.2e7acac22156",
+      "source": "Specific intent of unnamed participants",
+      "value": "익명 참가자들의 구체적인 의도"
+    },
+    {
+      "key": "component.d3edf0ff6ce5",
+      "source": "Specific price comparisons vary",
+      "value": "구체적인 가격 비교는 다를 수 있음"
+    },
+    {
+      "key": "component.88cb2d329aac",
+      "source": "Specific prices vary by evidence and period",
+      "value": "구체적인 가격은 증거와 시기에 따라 다름"
+    },
+    {
+      "key": "component.9b1ded6a8dc1",
+      "source": "Specific private opinions of unnamed residents",
+      "value": "익명 거주자들의 구체적인 개인적 의견"
+    },
+    {
+      "key": "component.d3c1b72b26e7",
+      "source": "Specific repair",
+      "value": "특정 수리"
+    },
+    {
+      "key": "component.ca4ffaf33a74",
+      "source": "Split work into AI-owned, user-owned, and shared moves.",
+      "value": "작업을 AI 소유, 사용자 소유, 공유 작업으로 나누세요."
+    },
+    {
+      "key": "component.292cf95a6473",
+      "source": "Sprint clock",
+      "value": "스프린트 시계"
+    },
+    {
+      "key": "component.21bc3678d8af",
+      "source": "Sprint running",
+      "value": "스프린트 달리기"
+    },
+    {
+      "key": "component.fb9e565113d9",
+      "source": "St Paul's area",
+      "value": "세인트 폴 지역"
+    },
+    {
+      "key": "component.082ef68d29be",
+      "source": "St Paul's Cathedral was destroyed",
+      "value": "세인트 폴 대성당이 파괴되었다"
+    },
+    {
+      "key": "component.d84b0b06fe79",
+      "source": "Stacking the deck",
+      "value": "유리하게 상황 조작하기"
+    },
+    {
+      "key": "component.7ae1cbe15e94",
+      "source": "Stage the person, year, room, and relationship.",
+      "value": "인물, 연도, 장소, 관계를 설정하세요."
+    },
+    {
+      "key": "component.f711569ede42",
+      "source": "Standing idle with strange questions during a disaster invites suspicion.",
+      "value": "재난 상황에서 이상한 질문을 하며 가만히 서 있는 것은 의심을 삽니다."
+    },
+    {
+      "key": "component.0c424b7d86c2",
+      "source": "Start 10 min",
+      "value": "10분 시작"
+    },
+    {
+      "key": "component.9b9e76c02192",
+      "source": "Start 10-minute sprint",
+      "value": "10분 스프린트 시작"
+    },
+    {
+      "key": "component.11f6c8d9c9f9",
+      "source": "Start a Time Travel expedition. Do not open a generic chat and do not write a broad period summary.",
+      "value": "시간 여행 탐험을 시작하세요. 일반적인 채팅을 열거나 광범위한 시대 요약을 작성하지 마세요."
+    },
+    {
+      "key": "component.6b9d6a34d557",
+      "source": "Start the loop",
+      "value": "루프 시작"
+    },
+    {
+      "key": "component.e3ad6391f7bf",
+      "source": "Start with a concept, case, argument, decision, or text.",
+      "value": "개념, 사례, 주장, 결정 또는 텍스트로 시작하세요."
+    },
+    {
+      "key": "component.f556c89a8b4d",
+      "source": "Start with a question, not a lecture.",
+      "value": "강의가 아닌 질문으로 시작하세요."
+    },
+    {
+      "key": "component.ef5156a056b4",
+      "source": "Start with a tiny lesson, one check question, a mastery meter, and wait for my answer before continuing.",
+      "value": "작은 레슨, 확인 질문 하나, 숙달도 측정기로 시작하고, 제가 답변할 때까지 기다린 후 계속하세요."
+    },
+    {
+      "key": "component.142d438e5e04",
+      "source": "Start with an era passport, a vivid arrival scene, three choices for what to do next, and a compact timeline log.",
+      "value": "시대 여권, 생생한 도착 장면, 다음 행동을 위한 세 가지 선택지, 그리고 간결한 타임라인 기록으로 시작하세요."
+    },
+    {
+      "key": "component.c37ca604e2dc",
+      "source": "Start with one specific question or task.",
+      "value": "하나의 구체적인 질문이나 과제로 시작하세요."
+    },
+    {
+      "key": "component.2b7453257f4f",
+      "source": "Starting level",
+      "value": "시작 레벨"
+    },
+    {
+      "key": "component.4f5e3c332f19",
+      "source": "State the idea in one sentence so it can be tested.",
+      "value": "아이디어를 한 문장으로 명시하여 테스트할 수 있게 하세요."
+    },
+    {
+      "key": "component.c74d4b02e52c",
+      "source": "State your starting idea so the tutor has something to test.",
+      "value": "튜터가 테스트할 수 있도록 시작 아이디어를 명시하세요."
+    },
+    {
+      "key": "component.46e32d8f91f3",
+      "source": "Stateful exploration with consequences and evolving risk.",
+      "value": "결과와 진화하는 위험이 따르는 상태 기반 탐험."
+    },
+    {
+      "key": "component.f9e0ee67a1d7",
+      "source": "Status follows legal category",
+      "value": "법적 범주에 따른 상태"
+    },
+    {
+      "key": "component.ceb551000f2f",
+      "source": "Step by step, brainstorm first, solve together...",
+      "value": "단계별로, 먼저 브레인스토밍하고, 함께 해결해 봅시다..."
+    },
+    {
+      "key": "component.8adabdb3486e",
+      "source": "Step out of character briefly. Explain the historical context, evidence quality, and uncertainties behind the last exchange.",
+      "value": "잠시 캐릭터에서 벗어나세요. 마지막 대화의 역사적 맥락, 증거의 질, 그리고 그 이면의 불확실성을 설명하세요."
+    },
+    {
+      "key": "component.081a9237b493",
+      "source": "Stoa Basileios",
+      "value": "스토아 바실레이오스"
+    },
+    {
+      "key": "component.4b2fa093d4ce",
+      "source": "Stone dust, wool dye, bells, and sharp political glances under a crowded square.",
+      "value": "돌가루, 양모 염료, 종소리, 그리고 붐비는 광장 아래의 날카로운 정치적 시선들."
+    },
+    {
+      "key": "component.2aca6afb4778",
+      "source": "Stop editing directly for this turn. Give concise advice and one practical next move.",
+      "value": "이번 턴에는 직접 편집을 멈추세요. 간결한 조언과 실질적인 다음 행동 하나를 제시하세요."
+    },
+    {
+      "key": "component.68a76b55a28a",
+      "source": "Stop response",
+      "value": "응답 중단"
+    },
+    {
+      "key": "component.e01e169ee3c4",
+      "source": "Stopped. Send another message whenever you are ready.",
+      "value": "중단되었습니다. 준비가 되면 언제든 다시 메시지를 보내주세요."
+    },
+    {
+      "key": "component.467ff09a3d78",
+      "source": "strategy analyst",
+      "value": "전략 분석가"
+    },
+    {
+      "key": "component.12c6d113a829",
+      "source": "Strategy room",
+      "value": "전략실"
+    },
+    {
+      "key": "component.1e8c49009561",
+      "source": "Street routes are approximate",
+      "value": "거리 경로는 대략적인 것입니다"
+    },
+    {
+      "key": "component.9a266da321cf",
+      "source": "Street-level life",
+      "value": "거리 수준의 삶"
+    },
+    {
+      "key": "component.671334a5dc3f",
+      "source": "Strict mode keeps modern knowledge out of the world and applies social consequences sooner.",
+      "value": "엄격 모드는 현대 지식을 세상 밖으로 유지하고 사회적 결과를 더 빨리 적용합니다."
+    },
+    {
+      "key": "component.5d20c7acc540",
+      "source": "Strict questioning, minimal explanation.",
+      "value": "엄격한 질문, 최소한의 설명."
+    },
+    {
+      "key": "component.3468a42615ce",
+      "source": "Strong work.",
+      "value": "훌륭한 작업입니다."
+    },
+    {
+      "key": "component.9da9de583a66",
+      "source": "Strong writing is a chain of claim, reason, evidence, and consequence. Each sentence should do a job in that chain.",
+      "value": "강력한 글쓰기는 주장, 이유, 증거, 결과의 사슬입니다. 각 문장은 그 사슬 안에서 역할을 해야 합니다."
+    },
+    {
+      "key": "component.891a3118e913",
+      "source": "Structured operator",
+      "value": "구조화된 연산자"
+    },
+    {
+      "key": "component.bb081145e157",
+      "source": "Student, rival, journalist, citizen...",
+      "value": "학생, 라이벌, 기자, 시민..."
+    },
+    {
+      "key": "component.3dc6eae27c61",
+      "source": "Study buddy",
+      "value": "공부 친구"
+    },
+    {
+      "key": "component.8d961c0c8d91",
+      "source": "Submit my sentence",
+      "value": "내 문장 제출하기"
+    },
+    {
+      "key": "component.63e6139fa622",
+      "source": "Submit repair",
+      "value": "수정 사항 제출"
+    },
+    {
+      "key": "component.a294528c7533",
+      "source": "Substitute threat",
+      "value": "대체 위협"
+    },
+    {
+      "key": "component.f513dc207def",
+      "source": "Substitutes are alternatives like cooking or pickup. Comparing apps is buyer leverage inside the category.",
+      "value": "대체재는 요리나 픽업과 같은 대안입니다. 앱을 비교하는 것은 카테고리 내에서 구매자의 영향력을 행사하는 것입니다."
+    },
+    {
+      "key": "component.512d13df792b",
+      "source": "Suggest candidates with strong evidence and vivid settings.",
+      "value": "강력한 증거와 생생한 설정을 갖춘 후보를 제안하세요."
+    },
+    {
+      "key": "component.68dfa0817fe0",
+      "source": "Supplier power",
+      "value": "공급자 교섭력"
+    },
+    {
+      "key": "component.904290a8efd8",
+      "source": "Supplies and loyalties are strained",
+      "value": "공급과 충성도가 긴장 상태입니다"
+    },
+    {
+      "key": "component.7ca47ca1d959",
+      "source": "Supply capacity",
+      "value": "공급 능력"
+    },
+    {
+      "key": "component.fba6cccea3d2",
+      "source": "Supply shifts left and price tends to rise.",
+      "value": "공급이 왼쪽으로 이동하면 가격은 상승하는 경향이 있습니다."
+    },
+    {
+      "key": "component.a2193b649f30",
+      "source": "supportive peer and co-builder",
+      "value": "지지적인 동료이자 공동 구축자"
+    },
+    {
+      "key": "component.0d21fa45e97f",
+      "source": "Synthesis Locked",
+      "value": "합성 잠김"
+    },
+    {
+      "key": "component.9477a2cecb7c",
+      "source": "Take the first pass on the shared artifact. Make the structure visible, mark assumptions, and ask me to accept, edit, or reject.",
+      "value": "공유된 아티팩트에 대해 첫 번째 패스를 수행하세요. 구조를 가시화하고, 가정을 표시하고, 저에게 수락, 편집 또는 거절을 요청하세요."
+    },
+    {
+      "key": "component.968d8ccd3939",
+      "source": "Tang Chang'an is a cosmopolitan imperial capital linked to steppe, Central Asian, and Buddhist networks.",
+      "value": "당나라 장안은 스텝 지역, 중앙아시아, 불교 네트워크와 연결된 국제적인 제국의 수도입니다."
+    },
+    {
+      "key": "component.9430e8ebb24c",
+      "source": "Tang Empire under Emperor Xuanzong",
+      "value": "현종 황제 치하의 당나라"
+    },
+    {
+      "key": "component.815b9c1f8eaf",
+      "source": "Target input",
+      "value": "목표 입력"
+    },
+    {
+      "key": "component.1e8d87abfdd2",
+      "source": "Target: one sentence describing the learning target.",
+      "value": "목표: 학습 목표를 설명하는 한 문장."
+    },
+    {
+      "key": "component.b91b91417d97",
+      "source": "Task board",
+      "value": "작업 보드"
+    },
+    {
+      "key": "component.b4965316bf71",
+      "source": "Task Board",
+      "value": "작업 보드"
+    },
+    {
+      "key": "component.db83c6c41bea",
+      "source": "Tavern near the docks",
+      "value": "부두 근처의 선술집"
+    },
+    {
+      "key": "component.f5e0b35ab0a4",
+      "source": "Tax or friction",
+      "value": "세금 또는 마찰"
+    },
+    {
+      "key": "component.03c0ab897f85",
+      "source": "Teach me financial modeling",
+      "value": "재무 모델링을 가르쳐줘"
+    },
+    {
+      "key": "component.6d3e7f92132e",
+      "source": "Teach me Porter's Five Forces",
+      "value": "마이클 포터의 5가지 경쟁 요인을 가르쳐줘"
+    },
+    {
+      "key": "component.1a3b09e25613",
+      "source": "Teach me ratios",
+      "value": "비율을 가르쳐줘"
+    },
+    {
+      "key": "component.e691ca1cc2d6",
+      "source": "Teammate log",
+      "value": "팀원 로그"
+    },
+    {
+      "key": "component.642847a78523",
+      "source": "Temporal passport",
+      "value": "시간 여행 여권"
+    },
+    {
+      "key": "component.894031ed8d34",
+      "source": "Terms and Conditions",
+      "value": "이용 약관"
+    },
+    {
+      "key": "component.1f5fb2d7968f",
+      "source": "That catches the revenue movement, but misses the margin and cash timing links. Sales alone do not prove cash flow improved.",
+      "value": "그것은 수익 변동을 포착하지만, 마진과 현금 흐름 시점의 연관성은 놓치고 있습니다. 매출만으로는 현금 흐름이 개선되었다고 증명할 수 없습니다."
+    },
+    {
+      "key": "component.e09b451125fe",
+      "source": "That may hide the symptom, but it does not teach you where the data flow broke.",
+      "value": "그것은 증상을 숨길 수는 있지만, 데이터 흐름이 어디서 끊겼는지는 알려주지 않습니다."
+    },
+    {
+      "key": "component.8702e66c501a",
+      "source": "The assistant must identify known facts before simulating",
+      "value": "어시스턴트는 시뮬레이션 전에 알려진 사실을 식별해야 합니다"
+    },
+    {
+      "key": "component.3d7ec899f5c7",
+      "source": "The Athenian agora was a civic center",
+      "value": "아테네의 아고라는 시민 중심지였습니다"
+    },
+    {
+      "key": "component.d2acbb41caee",
+      "source": "The Bastille fell on 14 July 1789",
+      "value": "바스티유 감옥은 1789년 7월 14일에 함락되었습니다"
+    },
+    {
+      "key": "component.fe8b62f4c6f7",
+      "source": "The explanation that links evidence back to the claim.",
+      "value": "증거를 주장과 연결하는 설명입니다."
+    },
+    {
+      "key": "component.4f3c6c46372c",
+      "source": "The final summary waits until you have done real thinking.",
+      "value": "최종 요약은 사용자가 충분히 사고한 후에 제공됩니다."
+    },
+    {
+      "key": "component.170a298af4bb",
+      "source": "The first scene should become concrete only after the destination is resolved.",
+      "value": "첫 번째 장면은 목적지가 결정된 후에 구체화되어야 합니다."
+    },
+    {
+      "key": "component.dda3745f7c3f",
+      "source": "The Great Fire began in 1666",
+      "value": "런던 대화재는 1666년에 시작되었습니다"
+    },
+    {
+      "key": "component.7848d16b1941",
+      "source": "The Indian Rebellion of 1857 has made Delhi a contested imperial and military space.",
+      "value": "1857년 인도 항쟁으로 델리는 제국과 군사적 갈등의 공간이 되었습니다."
+    },
+    {
+      "key": "component.791488b22528",
+      "source": "The learner can connect a variable change to an outcome.",
+      "value": "학습자는 변수 변화와 결과를 연결할 수 있습니다."
+    },
+    {
+      "key": "component.e8e1ab2cb31d",
+      "source": "The learner can explain the key link in their own words.",
+      "value": "학습자는 핵심 연결 고리를 자신의 언어로 설명할 수 있습니다."
+    },
+    {
+      "key": "component.41dbc5b54014",
+      "source": "The learner can identify and fix the misconception.",
+      "value": "학습자는 오개념을 식별하고 수정할 수 있습니다."
+    },
+    {
+      "key": "component.cf756f58116b",
+      "source": "The learner can make a first prediction.",
+      "value": "학습자는 첫 번째 예측을 할 수 있습니다."
+    },
+    {
+      "key": "component.06a1b27fe4f6",
+      "source": "The learner demonstrates transfer.",
+      "value": "학습자가 전이 능력을 보여줍니다."
+    },
+    {
+      "key": "component.8a807bf79ab9",
+      "source": "The learner explains it back in their own words.",
+      "value": "학습자가 자신의 언어로 다시 설명합니다."
+    },
+    {
+      "key": "component.9d8ad585667c",
+      "source": "The longest sentence, because shorter is always stronger.",
+      "value": "가장 긴 문장입니다. 짧을수록 더 강력하기 때문입니다."
+    },
+    {
+      "key": "component.7e2e56647be9",
+      "source": "The person should not know future events unless you explicitly open modern confrontation.",
+      "value": "현대적인 대립 상황을 명시적으로 열지 않는 한, 인물은 미래의 사건을 알지 못해야 합니다."
+    },
+    {
+      "key": "component.f0fd6cd67e39",
+      "source": "The question path starts now.",
+      "value": "질문 경로가 지금 시작됩니다."
+    },
+    {
+      "key": "component.a2bd49b45f3d",
+      "source": "The Roman Empire under Trajan's final year depends on ports, credit, labor, and imperial logistics.",
+      "value": "트라야누스 황제 재위 마지막 해의 로마 제국은 항구, 신용, 노동력, 그리고 제국 물류에 의존합니다."
+    },
+    {
+      "key": "component.f476ed3acdff",
+      "source": "The scene is being established by the dossier.",
+      "value": "장면이 문서(dossier)에 의해 설정되고 있습니다."
+    },
+    {
+      "key": "component.4d51e9042d90",
+      "source": "The simulation will prioritize different people, risks, objects, and explanations.",
+      "value": "시뮬레이션은 서로 다른 인물, 위험, 객체, 그리고 설명을 우선시할 것입니다."
+    },
+    {
+      "key": "component.f8c2de640fab",
+      "source": "The title, because every weak paragraph has a weak title.",
+      "value": "제목입니다. 모든 약한 문단은 약한 제목을 가지고 있기 때문입니다."
+    },
+    {
+      "key": "component.4623da54a0a9",
+      "source": "The Travel Designer should resolve this intent into a specific historical place, date, and political moment before arrival.",
+      "value": "여행 설계자(Travel Designer)는 도착하기 전에 이 의도를 특정 역사적 장소, 날짜, 정치적 순간으로 해결해야 합니다."
+    },
+    {
+      "key": "component.e30ca6ff4334",
+      "source": "The version of a person matters more than the name.",
+      "value": "이름보다 인물의 버전이 더 중요합니다."
+    },
+    {
+      "key": "component.21b15b46e5b8",
+      "source": "The West Market hosted long-distance trade",
+      "value": "서쪽 시장은 장거리 무역을 유치했습니다"
+    },
+    {
+      "key": "component.68b4b19c0766",
+      "source": "Thinking map",
+      "value": "사고 지도"
+    },
+    {
+      "key": "component.7a4d98aa3cd3",
+      "source": "Thinking target",
+      "value": "사고 목표"
+    },
+    {
+      "key": "component.8f2396f4c96a",
+      "source": "This is the evidence checkpoint. You advance only by showing the skill.",
+      "value": "이곳은 증거 확인 지점입니다. 기술을 증명해야만 다음 단계로 넘어갈 수 있습니다."
+    },
+    {
+      "key": "component.9096eabdd4d6",
+      "source": "This lets you explain why a model moves instead of just copying formulas.",
+      "value": "이를 통해 단순히 공식을 복사하는 대신 모델이 왜 움직이는지 설명할 수 있습니다."
+    },
+    {
+      "key": "component.2347008c82bd",
+      "source": "Threat of substitutes",
+      "value": "대체재의 위협"
+    },
+    {
+      "key": "component.6f38f52d9c52",
+      "source": "Time slice",
+      "value": "시간 조각"
+    },
+    {
+      "key": "component.04bb104a9e9b",
+      "source": "Time slice required",
+      "value": "시간 조각 필요"
+    },
+    {
+      "key": "component.d107ef10266d",
+      "source": "Time slice: not chosen yet. If a specific person is named, offer 4 to 5 historically meaningful versions of this person before any in-character dialogue. Explain how each version changes the worldview, stakes, and setting.",
+      "value": "시간 조각: 아직 선택되지 않았습니다. 특정 인물이 언급되면, 캐릭터 대화가 시작되기 전에 이 인물의 역사적으로 의미 있는 4~5가지 버전을 제시하세요. 각 버전이 세계관, 이해관계, 배경을 어떻게 변화시키는지 설명하세요."
+    },
+    {
+      "key": "component.ddbe343f845c",
+      "source": "Time Travel Console",
+      "value": "시간 여행 콘솔"
+    },
+    {
+      "key": "component.8f6171fc6ace",
+      "source": "Timeline Log",
+      "value": "타임라인 로그"
+    },
+    {
+      "key": "component.a03a44a893eb",
+      "source": "Timeline so far",
+      "value": "지금까지의 타임라인"
+    },
+    {
+      "key": "component.fcf34335919b",
+      "source": "Titles matter, but this clue points to reasoning inside the paragraph.",
+      "value": "제목도 중요하지만, 이 단서는 문단 내의 추론을 가리킵니다."
+    },
+    {
+      "key": "component.7106eda1bee9",
+      "source": "To be resolved",
+      "value": "해결 예정"
+    },
+    {
+      "key": "component.1f1bdf16e6c7",
+      "source": "Tokyo in 2120",
+      "value": "2120년의 도쿄"
+    },
+    {
+      "key": "component.ad110d0cf8a4",
+      "source": "Topic or question",
+      "value": "주제 또는 질문"
+    },
+    {
+      "key": "component.926364936c28",
+      "source": "tough critic and editor",
+      "value": "까다로운 비평가이자 편집자"
+    },
+    {
+      "key": "component.36975a502081",
+      "source": "Trace a trade route on the map",
+      "value": "지도에서 무역 경로 추적하기"
+    },
+    {
+      "key": "component.c6d3da081bdd",
+      "source": "trace cause and effect in code",
+      "value": "코드에서 원인과 결과 추적하기"
+    },
+    {
+      "key": "component.2f18f5776cc7",
+      "source": "Trace depth",
+      "value": "추적 깊이"
+    },
+    {
+      "key": "component.b6254d0fed3a",
+      "source": "Track accepted changes, rejected changes, and the next edit.",
+      "value": "수락된 변경 사항, 거부된 변경 사항 및 다음 편집 내용을 추적합니다."
+    },
+    {
+      "key": "component.30fbe484599f",
+      "source": "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
+      "value": "결정과 미해결 질문을 추적하세요. 글쓰기 과제에서 제 목소리를 유지하세요. 맥락이 부족한 경우 최대 한 개의 실용적인 질문만 하세요."
+    },
+    {
+      "key": "component.20369d07cf56",
+      "source": "Trade phrases plus household vocabulary",
+      "value": "무역 관련 문구와 일상 어휘"
+    }
+  ]
+}

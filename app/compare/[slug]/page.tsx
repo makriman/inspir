@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
@@ -23,6 +23,7 @@ import {
   getComparisonPageResources,
   getComparisonPages,
 } from "@/lib/content/comparisons";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -68,7 +69,7 @@ export async function generateMetadata({ params }: ComparisonPageProps): Promise
     description: page.description,
   });
 
-  return {
+  return localizeMarketingMetadata({
     title: page.seoTitle,
     description: page.description,
     alternates: metadataAlternates(comparisonPath(page.slug)),
@@ -86,7 +87,7 @@ export async function generateMetadata({ params }: ComparisonPageProps): Promise
       description: page.description,
       images: [image.url],
     },
-  };
+  }, comparisonPath(page.slug));
 }
 
 export default async function ComparisonDetailPage({ params }: ComparisonPageProps) {

@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Swedish",
+  "locale": "sv",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "En tydlig framsida som frågar efter en idé."
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "En vanlig fallgrop som varnar för ett troligt misstag."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "En kort baksida som fullbordar tanken."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "En ledtråd som hjälper utan att avslöja allt."
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "Ett repetitionsval så att missade kort kommer tillbaka tidigare."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "Ett enkelt arbetsflöde för flashcards"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "Ett starkare kort ber om återkallning:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "Ett användbart kort frågar om en sak. Det ska inte gömma fem frågor i en prompt. Det ska vara tillräckligt specifikt för att kunna besvaras, men inte så smalt att det blir meningslöst."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "Ett svagt AI-flashcard säger:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "aktiv återkallelse"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "Lägg till ledtrådar utan att avslöja svaret"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI kan hjälpa till att skapa flashcards snabbare, men lärandet kommer fortfarande från återkallning. Om verktyget skriver korten och eleven aldrig anstränger sig för att svara på dem har nästan ingenting förändrats. Den användbara versionen gör röriga anteckningar till fokuserade prompter och låter sedan eleven återkalla innan svaret visas."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "AI kan göra röriga anteckningar till tydligare återkallningsprompter. Den kan dela upp breda idéer i mindre kort, lägga till exempel och identifiera fallgropar som en elev kan missa."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI-flashcards och aktiv återkallning: så minns du mer"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "tillämpa ett begrepp på ett litet exempel."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "Be om kort med en idé, ledtrådar och vanliga fallgropar."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Baksida: \"Mellanrum tvingar minnet att återskapa svaret efter viss glömska, vilket stärker senare återkallning.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "jämföra två idéer;"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "definiera en term;"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "Ta bort kort som är för breda eller självklara."
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "Granska inte allt lika mycket"
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "Lätt. Skjut upp det till senare."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "förklara en orsak;"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "Flashcards är ett av de enklaste sätten att göra detta."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "Flashcards är kraftfulla, men de är inte hela studieprocessen. De passar bäst för återkallning, ordförråd, definitioner, formler, distinktioner och viktiga exempel. De är svagare när eleven aldrig har förstått idén från början."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Flashcards fungerar bäst när de testar en idé i taget, visar svar först efter ansträngning och repeterar missade kort tidigare."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "För en djupare rutt, läs Flashcard Builder-guiden och Flashcard Builder-prompterna och studieloopen. Målet är inte en vacker kortlek. Målet är att minnas mer när anteckningarna är borta."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "Till exempel:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "Framsida: \"Varför fungerar intervallrepetition bättre än att råplugga?\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "Svårt. Repetera efter en kort fördröjning."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "Ledtråd: \"Tänk på glömska och återkallning.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "Ledtrådar är användbara när de bevarar ansträngningen. En dålig ledtråd är svaret förklätt. En bra ledtråd snävar in sökområdet."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "identifiera ett vanligt misstag;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "Om ett kort fortsätter att misslyckas, upprepa det inte bara. Fråga varför det är svårt. Använd Socratic Instruction för att avslöja missuppfattningen, Math Step Coach för procedurluckor eller promptbiblioteket för AI-lärande för att hitta en bättre studieprompt."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "inspir:s Flashcard Builder är utformad kring den aktiva återkallningsloopen: bygg en kortlek, försök med framsidan, visa svaret, betygsätt din återkallning och repetera missarna tills idén fastnar."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "Missat. Repetera snart."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "Ett misstag elever gör är att behandla varje kort likadant. Om du kan ett kort direkt kan repetition i morgon slösa tid. Om du missar ett kort kan en vecka vara för länge att vänta."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "Kombinera flashcards med förståelse"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "Klistra in en liten bit anteckningar i Flashcard Builder."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "Fotosyntes: processen växter använder för att skapa mat."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "Betygsätt återkallning ärligt."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "Att läsa anteckningar känns produktivt. Att minnas dem senare är det verkliga testet."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "minnas en sekvens;"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "Repetera utan att titta på baksidan."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "Starka kort innehåller ofta:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "studieteknik"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Den ledtråden hjälper eleven att börja utan att ta bort själva minnesarbetet. inspirs Flashcard Builder är utformad för denna visa-och-bedöm-loop: prova först, visa sedan, bedöm ärligt och ta tillbaka svaga kort tidigare."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Det är därför aktiv återkallning spelar roll. I stället för att titta på svaret försöker du hämta det ur minnet. Ansträngningen stärker minnet och visar vad som fortfarande behöver arbete."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "Eleven måste fortfarande göra minnesarbetet. Det är poängen."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "Det andra kortet får eleven att återkalla en relation, inte bara känna igen en mening. Bra kort fokuserar vanligtvis på en av dessa uppgifter:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "Det behöver inte vara komplicerat. Det viktiga är att ditt repetitionsschema reagerar på minnet i stället för att behandla kortleken som en statisk lista."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "Prova det i Flashcard Builder. Om du behöver förstå ämnet innan du skapar kort, börja i Learn Anything. Om du vill ha press efter att ha repeterat korten, gå vidare till Quiz Me On Trivia eller Viva Practice."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "Gör anteckningar till bättre kort"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "Gör upprepade missar till en fråga för Learn Anything."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "Använd denna loop:"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Använd tre betyg:"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Vilken roll har klorofyll i fotosyntesen?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "Vad som gör ett bra flashcard"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "När du klistrar in anteckningar i AI, be den dela upp breda idéer i dessa uppgifter. En kortlek med 18 specifika kort är vanligtvis bättre än en kortlek med 5 jättestora kort där varje kort innehåller ett helt stycke."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "Där AI hjälper"
+    }
+  ]
+}

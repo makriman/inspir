@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Arabic",
+  "locale": "ar",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "قسّم عملك إلى مهام محددة، واحسب وقت كل منها، وراجع أين ذهب جهدك الدراسي بعد كل جلسة تركيز."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التركيز والإنتاجية والذين يرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمؤقت المهام مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "احسب وقت المهام الفردية واطلع على الجهد المبذول"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "احسب وقت مجموعة مسائل"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "تتبع العمل على مخطط المقال"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "قسّم مهمة كبيرة إلى كتل زمنية"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "تذكير الاستراحة"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "حافظ على تركيزك من خلال فترات راحة صحية"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "حدد إيقاعات العمل والاستراحة، وخطط لإعادة ضبط حقيقية، وتجنب الانزلاق إلى إرهاق الدراسة المستمر."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "ما هو إيقاع العمل/الاستراحة الذي تريده؟"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "التركيز والإنتاجية"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "حدد إيقاعات العمل والاستراحة، وخطط لإعادة ضبط حقيقية، وتجنب الانزلاق إلى إرهاق الدراسة المستمر."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التركيز والإنتاجية والذين يرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لتذكير الاستراحة مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "حافظ على تركيزك من خلال فترات راحة صحية"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "استخدم فترات راحة 50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "خطط لاستراحة صحية"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "ساعدني في التوقف عن الإفراط في الدراسة"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "جلسات العمل العميق"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "خطط لفترة تركيز خالية من المشتتات"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "قم بإعداد جلسة عمل عميق بنتيجة واضحة، وقيود، وقواعد للتركيز، ونقطة مراجعة، وخطة بديلة."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "ما هي النتيجة التي يجب أن تحققها جلسة العمل العميق هذه؟"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "التركيز والإنتاجية"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "قم بإعداد جلسة عمل عميق بنتيجة واضحة، وقيود، وقواعد للتركيز، ونقطة مراجعة، وخطة بديلة."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التركيز والإنتاجية والذين يرغبون في توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لجلسات العمل العميق مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "خطط لفترة تركيز خالية من المشتتات"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "خطط لفترة عمل عميق مدتها 90 دقيقة"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "ساعدني في التركيز على البرمجة"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "ضع قواعد لكتابة الأطروحة"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "مؤقت الدراسة الجماعية"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "نسق جولات التركيز مع الآخرين"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "قم بتشغيل إيقاع دراسة مشترك للأصدقاء أو الزملاء مع أهداف متزامنة، وعمليات تسجيل وصول، وأسئلة للمناقشة."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "من يدرس معاً وما هو الهدف؟"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "اجتماعي"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "قم بتشغيل إيقاع دراسة مشترك للأصدقاء أو الزملاء مع أهداف متزامنة، وعمليات تسجيل وصول، وأسئلة للمناقشة."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون المواضيع الاجتماعية ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمؤقت الدراسة الجماعية مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "تنسيق جولات التركيز مع الآخرين"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "خطط لجلسة بومودورو جماعية"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "هيكل غرفة دراسة"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "إدارة جلسة جماعية لمدة 45 دقيقة"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "الأصوات المحيطة"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "مشاهد صوتية مولدة لدراسة هادئة"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "استخدم إعدادات الأصوات المحيطة البسيطة لتقليل التشتت أثناء القراءة أو الكتابة أو المراجعة أو حل المشكلات."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "ما نوع التركيز المحيط الذي تريده؟"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "التركيز والإنتاجية"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "استخدم إعدادات الأصوات المحيطة البسيطة لتقليل التشتت أثناء القراءة أو الكتابة أو المراجعة أو حل المشكلات."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التركيز والإنتاجية ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً للأصوات المحيطة مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "مشاهد صوتية مولدة لدراسة هادئة"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "استخدم صوت المطر للقراءة"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "اختر صوتاً هادئاً للرياضيات"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "قم بإعداد أجواء هادئة للعمل العميق"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "سلاسل الدراسة"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "ابنِ الاستمرارية دون الشعور بالذنب"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "تتبع فترات الدراسة المتواصلة، وعوّض الأيام الفائتة، وصمم عادة دراسية بسيطة ومستدامة تتناسب مع واقع حياتك."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "ما هي الفترة المتواصلة أو الروتين الذي تبنيه؟"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "التحليلات"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "تتبع فترات الدراسة المتواصلة، وعوّض الأيام الفائتة، وصمم عادة دراسية بسيطة ومستدامة تتناسب مع واقع حياتك."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التحليلات ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لفترات الدراسة المتواصلة مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "ابنِ الاستمرارية دون الشعور بالذنب"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "ابدأ فترة دراسة متواصلة"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "استعد نشاطك بعد تفويت يوم"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "صمم مراجعة يومية مصغرة"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "لوحة معلومات التقدم"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "راجع نشاط التعلم والخطوات التالية"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "حوّل نشاط الدراسة، ونتائج الاختبارات، والملاحظات، والمؤقتات إلى مراجعة بنمط لوحة المعلومات مع الاتجاهات والإجراءات التالية."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "ما هو التقدم الذي تود مراجعته؟"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "التحليلات"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "حوّل نشاط الدراسة، ونتائج الاختبارات، والملاحظات، والمؤقتات إلى مراجعة بنمط لوحة المعلومات مع الاتجاهات والإجراءات التالية."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التحليلات ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً للوحة معلومات التقدم مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "راجع نشاط التعلم والخطوات التالية"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "راجع أسبوعي"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "حدد نقاط الضعف"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "حوّل النشاط إلى خطوات تالية"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "التقارير الأسبوعية"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "لخص الإنجازات، والإخفاقات، وخطط الأسبوع القادم"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "أنشئ تقرير تعلم أسبوعي أو شهري يتضمن الجهد، والنتائج، والمعوقات، والإنجازات، وخطة مركزة."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "ماذا حدث هذا الأسبوع؟"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "التحليلات"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "أنشئ تقرير تعلم أسبوعي أو شهري يتضمن الجهد، والنتائج، والمعوقات، والإنجازات، وخطة مركزة."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التحليلات ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع للتقارير الأسبوعية مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "لخص الإنجازات، والإخفاقات، وخطط الأسبوع القادم"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "اكتب تقرير دراستي الأسبوعي"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "لخص تقدمي"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "خطط للأسبوع القادم بناءً على هذا الأسبوع"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "متتبع المهام"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "تتبع المواعيد النهائية والإجراءات التالية"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "نظّم المهام حسب تاريخ الاستحقاق، والجهد، والحالة، والمخاطر، وأصغر إجراء تالٍ."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "ما هي المهام المطلوبة منك؟"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "التنظيم"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "نظّم المهام حسب تاريخ الاستحقاق، والجهد، والحالة، والمخاطر، وأصغر إجراء تالٍ."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التنظيم ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمتتبع المهام مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "تتبع المواعيد النهائية والإجراءات التالية"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "تنظيم مواعيدي النهائية"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "ترتيب المهام حسب الأولوية"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "خطط لتسليم هذا المشروع"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "مدير الدورات الدراسية"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "تنظيم الدورات والمواضيع وعبء العمل"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "قم بتخطيط الدورات والوحدات والمهام والموارد وعبء العمل الأسبوعي في نظام دراسي واحد منظم."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "ما هي الدورات أو المواد التي تديرها؟"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "التنظيم"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "قم بتخطيط الدورات والوحدات والمهام والموارد وعبء العمل الأسبوعي في نظام دراسي واحد منظم."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التنظيم ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمدير الدورات الدراسية مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "تنظيم الدورات والمواضيع وعبء العمل"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "إعداد دوراتي الدراسية"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "تنظيم فصلي الدراسي"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "تخطيط المواضيع لكل مادة"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "منظم الملاحظات"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "تصنيف الملاحظات وترتيبها وربطها"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "حوّل الملاحظات المبعثرة إلى مجلدات، وعلامات، وملخصات، وروابط، وإجراءات مراجعة تجعل التذكر أسهل."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "الصق أو صف الملاحظات لتنظيمها"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "التنظيم"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "حوّل ملاحظاتك المبعثرة إلى مجلدات، وعلامات، وملخصات، وروابط، وإجراءات مراجعة تجعل استرجاع المعلومات أسهل."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التنظيم ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمنظم الملاحظات مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "تصنيف الملاحظات وفرزها وربطها"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "نظّم ملاحظات صفي"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "أنشئ علامات لهذه الملاحظات"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "اعثر على مواضيع في دفتر ملاحظاتي"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "مشاركة الموارد"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "تجميع ومشاركة موارد الدراسة"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "أعد موارد دراسية لزملائك في الفصل أو لمجموعة: ملخصات، روابط، ملاحظات، شرح، وتوجيهات للاستخدام."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "ما المورد الذي تود مشاركته؟"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "اجتماعي"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "أعد موارد دراسية لزملائك في الفصل أو لمجموعة: ملخصات، روابط، ملاحظات، شرح، وتوجيهات للاستخدام."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون المواضيع الاجتماعية ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمشاركة الموارد مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "تجميع ومشاركة موارد الدراسة"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "جمّع ملاحظاتي لمجموعة"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "أنشئ ملخصاً للموارد"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "ضع إرشادات للمشاركة"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "مجموعات الدراسة"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "اجعل الدراسة الجماعية منظمة"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "خطط لمجموعة دراسية مثمرة من خلال تحديد الأدوار، وجدول الأعمال، وجولات الأسئلة، والموارد المشتركة، وتدوين الملاحظات الختامية."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "ما الذي يجب أن تفعله مجموعة الدراسة؟"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "اجتماعي"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "خطط لمجموعة دراسية مثمرة من خلال تحديد الأدوار، وجدول الأعمال، وجولات الأسئلة، والموارد المشتركة، وتدوين الملاحظات الختامية."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع اجتماعية ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمجموعات الدراسة مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "اجعل الدراسة الجماعية منظمة"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "خطط لجلسة جماعية"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "حدد أدواراً لمجموعة دراسية"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "إصلاح مجموعة غير منتجة"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "منتدى الطلاب"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "صُغ أسئلة للحصول على مساعدة المجتمع"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "قم بإعداد أسئلة واضحة للمنتدى، وردود، وملخصات، وطلبات متابعة تجعل مناقشات الطلاب أكثر فائدة."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "ما هو السؤال أو المناقشة التي تريد طرحها؟"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "اجتماعي"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "قم بإعداد أسئلة واضحة للمنتدى، وردود، وملخصات، وطلبات متابعة تجعل مناقشات الطلاب أكثر فائدة."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع اجتماعية ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمنتدى الطلاب مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "صُغ أسئلة للحصول على مساعدة المجتمع"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "اكتب سؤالاً جيداً للمنتدى"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "لخص نقاشاً"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "اطلب ملاحظات من أقرانك"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "منشئ أوراق العمل"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "أنشئ أوراق عمل متنوعة للتدريب"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "أنشئ أوراق عمل تتضمن أنواعاً مختلفة من الأسئلة مثل ملء الفراغات، الاختيار من متعدد، صح أو خطأ، الإجابات القصيرة، والمطابقة."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "ما الذي يجب أن تغطيه ورقة العمل؟"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "التعلم النشط"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "أنشئ أوراق عمل تتضمن أنواعاً مختلفة من الأسئلة مثل ملء الفراغات، الاختيار من متعدد، صح أو خطأ، الإجابات القصيرة، والمطابقة."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التعلم النشط ويرغبون في توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمنشئ أوراق العمل مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "إنشاء أوراق عمل متنوعة للتدريب"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "اصنع ورقة عمل عن الكسور"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "أنشئ تدريباً متنوعاً في الكيمياء"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "ابنِ تمارين للمفردات"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "تدريب تسمية المخططات"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "تدرب على تسمية المخططات والأنظمة"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "حوّل المخططات، وأنظمة الجسم، والخرائط، وسير العمل، أو إعدادات المختبر إلى تدريب على التسمية مع تلميحات والتحقق من الإجابات."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "ما المخطط الذي يجب أن نتدرب على تسميته؟"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "التعلم النشط"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "حوّل المخططات، وأنظمة الجسم، والخرائط، وسير العمل، أو إعدادات المختبر إلى تدريب على التسمية مع تلميحات والتحقق من الإجابات."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التعلم النشط ويرغبون في توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لممارسة تسمية المخططات من خلال مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "ممارسة تسمية المخططات والأنظمة"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "تسمية أجزاء خلية نباتية"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "ممارسة تسمية مخطط القلب"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "إنشاء أسئلة لتسمية الخرائط"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "مولد ألعاب المطابقة"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "قم بمطابقة المصطلحات والتعريفات والأسباب والأمثلة"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "حوّل ملاحظاتك إلى ألعاب مطابقة للمفردات، والمفاهيم، والأشخاص/الأحداث، والصيغ، والأمثلة، أو أزواج السبب والنتيجة."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "ما هي الأزواج التي يجب أن تتحول إلى لعبة مطابقة؟"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "التعلم النشط"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "حوّل ملاحظاتك إلى ألعاب مطابقة للمفردات، والمفاهيم، والأشخاص/الأحداث، والصيغ، والأمثلة، أو أزواج السبب والنتيجة."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التعلم النشط ويرغبون في توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمولد ألعاب المطابقة من خلال مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "قم بمطابقة المصطلحات والتعريفات والأسباب والأمثلة"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "مطابقة المصطلحات والتعريفات"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "إنشاء أزواج السبب والنتيجة"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "إنشاء ممارسة مطابقة الصيغ"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "نقاط الخبرة (XP) والمستويات"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "حوّل تقدمك إلى مستويات ومهام"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "صمم نظاماً للنقاط والمستويات والمهام والمكافآت بناءً على تقدم التعلم الفعلي."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "ما هو هدف التعلم الذي يجب تحويله إلى نظام مستويات؟"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "التلعيب"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "صمم نظاماً للنقاط والمستويات والمهام والمكافآت بناءً على تقدم التعلم الفعلي."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التلعيب ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لنقاط الخبرة (XP) والمستويات مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "حول التقدم إلى مستويات ومهام"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "إنشاء نقاط خبرة للتحضير للاختبار"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "تصميم مستويات لممارسة البرمجة"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "تحويل القراءة إلى مهام"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "الشارات والإنجازات"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "كافئ المعالم المهمة"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "أنشئ شارات للاتساق، والإتقان، والشجاعة، والمراجعة، والتعاون، والمنتجات النهائية."
+    }
+  ]
+}

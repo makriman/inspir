@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "language": "Hebrew",
+  "locale": "he",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "השתמש בשלושה דירוגים:"
+    },
+    {
+      "key": "site.0b74139d26786c31a9",
+      "source": "Use Time travel when this is the right mode for the job. If you want a related path, try Quiz me on Trivia. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "השתמש ב-Time travel כשזה המצב המתאים למשימה. אם תרצה מסלול קשור, נסה את Quiz me on Trivia. אפשר גם לעיין בבלוג למידת ה-AI לשיטות לימוד, למידה סוקרטית, כרטיסיות, משחק תפקידים ושליפה פעילה."
+    },
+    {
+      "key": "site.a2f81eb61f9a3c9bd0",
+      "source": "Use Time travel when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "השתמש ב-Time travel כשאתה רוצה מפגש שמתחיל במהירות אבל עדיין מתאים את עצמו אליך. המטרה הראשונה אינה להישמע מרשים. המטרה הראשונה היא לגרום לצעד הבא להרגיש אפשרי."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "השתמש בצירי זמן, שכבות סיבתיות ומפות השלכות."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "השתמש במבני עץ, תוויות צמתים, קישורים ופרומפטים לצעד הבא."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "השתמש בחלקים ללא תוויות, שכבות רמזים, מפתח תשובות ופרומפטים לחזרה."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "השתמש באוצר מילים חזותי ובפרומפטים להתבוננות מודרכת."
+    },
+    {
+      "key": "site.d238305bf168b268ff",
+      "source": "Use Viva Practice when this is the right mode for the job. If you want a related path, try Learning Game Master. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "השתמש ב-Viva Practice כשזה המצב המתאים למשימה. אם תרצה מסלול קשור, נסה את Learning Game Master. אפשר גם לעיין בבלוג למידת ה-AI לשיטות לימוד, למידה סוקרטית, כרטיסיות, משחק תפקידים ושליפה פעילה."
+    },
+    {
+      "key": "site.9d0a10626774c99800",
+      "source": "Use Viva Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "השתמש ב-Viva Practice כשאתה רוצה מפגש שמתחיל במהירות אבל עדיין מתאים את עצמו אליך. המטרה הראשונה אינה להישמע מרשים. המטרה הראשונה היא לגרום לצעד הבא להרגיש אפשרי."
+    },
+    {
+      "key": "site.bd69cd3ea825ed4970",
+      "source": "Use Vocabulary Builder when this is the right mode for the job. If you want a related path, try Reading Companion. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "השתמש ב-Vocabulary Builder כשזה המצב המתאים למשימה. אם תרצה מסלול קשור, נסה את Reading Companion. אפשר גם לעיין בבלוג למידת ה-AI לשיטות לימוד, למידה סוקרטית, כרטיסיות, משחק תפקידים ושליפה פעילה."
+    },
+    {
+      "key": "site.cd4070756edded8a69",
+      "source": "Use Vocabulary Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "השתמש ב-Vocabulary Builder כשאתה רוצה מפגש שמתחיל במהירות אבל עדיין מתאים את עצמו אליך. המטרה הראשונה אינה להישמע מרשים. המטרה הראשונה היא לגרום לצעד הבא להרגיש אפשרי."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "השתמש בתוכניות שבועיות, תוכניות גיבוי ופעולות הבאות זעירות."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "השתמש במחזורי עבודה/הפסקה, תפריטי הפסקה ופרומפטים לחזרה."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "השתמש במקטעי דף עבודה, מפתחות תשובות ותוויות קושי."
+    },
+    {
+      "key": "site.3fb5408e7457bf73c1",
+      "source": "Use Writing Coach when this is the right mode for the job. If you want a related path, try Science Lab Partner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "השתמש ב-Writing Coach כשזה המצב המתאים למשימה. אם תרצה מסלול קשור, נסה את Science Lab Partner. אפשר גם לעיין בבלוג למידת ה-AI לשיטות לימוד, למידה סוקרטית, כרטיסיות, משחק תפקידים ושליפה פעילה."
+    },
+    {
+      "key": "site.74c889d60e73579cf5",
+      "source": "Use Writing Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "השתמש ב-Writing Coach כשאתה רוצה מפגש שמתחיל במהירות אבל עדיין מתאים את עצמו אליך. המטרה הראשונה אינה להישמע מרשים. המטרה הראשונה היא לגרום לצעד הבא להרגיש אפשרי."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "אמת את התחושה, זהה את החסם ובחר צעד קטן אחד קדימה."
+    },
+    {
+      "key": "site.754f12f4e5a90a1566",
+      "source": "Verify important facts with trusted sources, textbooks, or teacher-provided materials.",
+      "value": "אמת עובדות חשובות עם מקורות מהימנים, ספרי לימוד או חומרים שסופקו על ידי מורה."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "ניתוח חזותי"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "למידה חזותית"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "למידה חזותית"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "תרגול בחינה בעל פה"
+    },
+    {
+      "key": "site.9bb9921e99ff1e258d",
+      "source": "Viva Practice AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "מצב הלמידה Viva Practice AI הוא דרך ממוקדת להשתמש ב-AI ללמידה במקום לאיסוף תשובות פסיבי. המצב בנוי סביב משימה מסוימת: לתרגל ויווה, בחינות בעל פה, הגנות פרויקט ושאלות המשך מהירות עם משוב רגוע."
+    },
+    {
+      "key": "site.c4255e0bb155f796af",
+      "source": "Viva Practice AI Learning Mode: practical guide",
+      "value": "מצב הלמידה Viva Practice AI: מדריך מעשי"
+    },
+    {
+      "key": "site.40d5123891b796f2de",
+      "source": "Viva Practice prompts and study loop",
+      "value": "פרומפטים ולולאת לימוד של Viva Practice"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "בונה אוצר מילים"
+    },
+    {
+      "key": "site.19637f7cace496a827",
+      "source": "Vocabulary Builder AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "מצב הלמידה Vocabulary Builder AI הוא דרך ממוקדת להשתמש ב-AI ללמידה במקום לאיסוף תשובות פסיבי. המצב בנוי סביב משימה מסוימת: לבנות אוצר מילים עם משמעות, דוגמאות, רמזי הגייה, עוגני זיכרון ותרגול מהיר."
+    },
+    {
+      "key": "site.afd2aa4628a25e2ad6",
+      "source": "Vocabulary Builder AI Learning Mode: practical guide",
+      "value": "מצב הלמידה Vocabulary Builder AI: מדריך מעשי"
+    },
+    {
+      "key": "site.7ae5014c2f1de184ce",
+      "source": "Vocabulary Builder prompts and study loop",
+      "value": "פרומפטים ולולאת לימוד של Vocabulary Builder"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "דוח שבועי"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "דוחות שבועיים"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "ציון משוקלל"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "איך נראה מפגש סוקרטי טוב"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "איזו מערכת הישגים עלינו לעצב?"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "מה שותף למידת AI צריך לעשות עבור כולם"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "על מה אנחנו עושים סיעור מוחות?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "מה אנחנו קוראים?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "לגבי מה אתה סקרן היום?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "למה אתה מתכונן לומר?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "מה אתה חוקר?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "מה אתם כותבים?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "איזו יצירת אמנות, אמן או סגנון?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "אילו משימות עומדות על הפרק?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "איזו שאלה גדולה אנחנו חוקרים?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "איזו קריירה או תחום עניין נחקור?"
+    },
+    {
+      "key": "site.5e290b0b81a3592a09",
+      "source": "What choices were available?",
+      "value": "אילו בחירות היו זמינות?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "איזה נושא באזרחות נלמד?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "באיזה נושא תכנות או באג נטפל?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "איזו מחויבות דורשת דיווח?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "איזה מושג נמפה?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "אילו קורסים או מקצועות אתה מנהל?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "איזה תרשים נתרגל בתיוג?"
+    },
+    {
+      "key": "site.4ccb447427a6acda9a",
+      "source": "What did their society assume?",
+      "value": "מה החברה שלהם הניחה?"
+    },
+    {
+      "key": "site.8bc608a9306d319a8b",
+      "source": "What did this person care about?",
+      "value": "מה היה חשוב לאדם הזה?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "איזו דילמה נבחן?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "מה אתה עושה עכשיו בעולם הזה?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "מה אתה צריך לזכור?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "מה אתה צריך ללמוד?"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "מה לדעתך קורה?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "מה תרצה להספיק היום?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "מה עושה בית משפט?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "מה עושה מנהל מוצר?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "מה מראה הסקר הזה?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "איזה רעיון כלכלי כדאי לנו לדמות?"
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "אילו ראיות תומכות בזה?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "לאיזה מבחן אתה מתכונן?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "איזה ציון אני צריך במבחן הגמר?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "מה קרה השבוע?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "מה קורה אם המיסים משתנים?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "מה קורה אם נשנה את הטמפרטורה?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "באיזו בעיה בשיעורי הבית אתם תקועים?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "איזה רעיון נראה מבלבל או חשוד?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "לאיזה ראיון אתה מתכונן?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "מהו ידע?"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "מה תפקיד הכלורופיל בפוטוסינתזה?"
+    },
+    {
+      "key": "site.7b4cc8d27ce0650610",
+      "source": "What it should not do",
+      "value": "מה זה לא אמור לעשות"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "איזה סוג של אווירת מיקוד תרצה?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "איזה סוג של מקרה בוחן נדמה?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "איזה סוג של ריכוז אתה מחפש היום?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "איזו מטרה לימודית צריכה להפוך למערכת של רמות?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "איזה הרגל למידה תרצה לאמץ?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "על איזה רגע למידה כדאי לנו להרהר?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "איזו אסטרטגיית למידה מתאימה לי?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "מה הופך כרטיסייה לטובה"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "מה הופך טיעון לתקף?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "מה הופך משהו להוגן?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "איזה חומר להפוך למדריך למידה?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "על איזו בעיה מתמטית כדאי שנעבוד?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "על איזה רעיון מוזיקלי כדאי שנעבוד?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "איזו תוצאה סשן העבודה העמוקה הזה צריך להניב?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "אילו זוגות צריכים להפוך למשחק התאמה?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "איזו התקדמות עלינו לסקור?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "איזה פרויקט אנחנו בונים?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "איזו שאלה או דיון ברצונכם לפרסם?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "איזה משאב תרצה לשתף?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "איזה תרחיש נתרגל במשחק תפקידים?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "איזה רעיון או ניסוי מדעי אנחנו חוקרים?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "מה צריך להפוך לאתגר?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "מה צריך להפוך למשחק למידה?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "מה להפוך לסיפור?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "מה להפוך לכרטיסיות?"
+    },
+    {
+      "key": "site.08aa84aad475334414",
+      "source": "What should I ask {value1} first?",
+      "value": "מה כדאי לי לשאול את {value1} קודם?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "מה לוח המובילים צריך למדוד?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "מה צריך לכלול מבחן התרגול?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "מה קבוצת הלמידה צריכה לעשות?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "מה דף העבודה צריך לכלול?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "על מה צריך להיות סשן הריכוז הזה?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "על מה כדאי לחזור?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "מה כדאי לנו לצייר או לשרטט?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "איזה רצף או שגרה אתם בונים?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "איזו משימה נמדוד?"
+    },
+    {
+      "key": "site.f4877740cc39cf8b66",
+      "source": "What the companion should provide",
+      "value": "מה השותף צריך לספק"
+    },
+    {
+      "key": "site.231fbf27878f2698ea",
+      "source": "What this mode helps with",
+      "value": "במה המצב הזה עוזר"
+    },
+    {
+      "key": "site.a29b4b5ee632ee4d44",
+      "source": "What to ask a historical figure",
+      "value": "מה לשאול דמות היסטורית"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "על איזה נושא נבחן אותך?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "איזה נושא להפוך למפת חשיבה?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "לאיזו בחינה בעל פה אתם מתכוננים?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "מה תסביר לי בחזרה?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "אילו מילים או נושא עלינו לתרגל?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "איזה מקצב עבודה/הפסקה תרצו?"
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "מה היה משנה את דעתך?"
+    },
+    {
+      "key": "site.3ab45d2d5936f0cebc",
+      "source": "What would modern readers misunderstand?",
+      "value": "מה קוראים מודרניים היו מבינים לא נכון?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "מה תרצו ללמוד היום?"
+    },
+    {
+      "key": "site.2fb41d86e92cebbf5a",
+      "source": "What you can practise",
+      "value": "מה אפשר לתרגל"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "מה מקשה עליך ללמוד כרגע?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "מהו נושא הוויכוח שלכם היום?"
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "מתי הוראה סוקרטית היא הכלי הלא נכון"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "כאשר אתה מדביק הערות לתוך AI, בקש ממנו לחלק רעיונות רחבים למשימות האלה. חבילה עם 18 כרטיסים ספציפיים בדרך כלל טובה יותר מחבילה עם 5 כרטיסים ענקיים שכל אחד מהם מכיל פסקה שלמה."
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "איפה AI יכול לעזור"
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "איפה AI עוזר"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "לאן נחקור?"
+    },
+    {
+      "key": "site.0320ac9cef49bf6819",
+      "source": "Where to go next",
+      "value": "לאן להמשיך מכאן"
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "איזו הנחה עושה את רוב העבודה?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "איזה אירוע היסטורי נחקור?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "עם איזו דמות היסטורית היית רוצה להיפגש?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "איזו שפה ואיזה מצב?"
+    },
+    {
+      "key": "site.0f2909e7b85147ae50",
+      "source": "Which parts are well documented and which parts are uncertain?",
+      "value": "אילו חלקים מתועדים היטב ואילו חלקים אינם ודאיים?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "רעש לבן"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "עם מי תרצו להתווכח, ועל מה?"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "מי לומד יחד ומה המטרה?"
+    },
+    {
+      "key": "site.f4ff361d2bbe9cfce0",
+      "source": "Who it helps",
+      "value": "למי זה עוזר"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "למה מורה AI סוקרטי יכול לגרום לרעיונות להיקלט"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "מדוע ערים נמצאות ליד נהרות?"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "למה נמנעתי מללמוד?"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "מדוע נחלשה האימפריה הרומית?"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "למה התשובה שלי באלגברה שגויה?"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "למה חוק הדקדוק הזה מוזר?"
+    },
+    {
+      "key": "site.3b784ed5faff65ac4d",
+      "source": "Why it is different",
+      "value": "מדוע זה שונה"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "למה שאלות עוזרות"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "מילים בנושא מזג אוויר"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "חשב ציונים משוקללים, תרחישי ממוצע, ציונים נדרשים במבחני גמר ותכניות 'מה אם' לסמסטר."
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "עבוד על אלגברה, חדו\"א, בעיות מילוליות ומושגים מתמטיים צעד אחר צעד עם מאמן AI."
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "התמודדות עם דילמות על ידי שקילת בעלי עניין, השלכות, חובות, זכויות ופשרות."
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "עבוד על מתמטיקה צעד אחר צעד"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "בונה דפי עבודה"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "ערי בירה בעולם"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "כתוב תסריט לצ'ק-אין"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "כתוב שאלה טובה לפורום"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "כתוב את דוח הלמידה השבועי שלי"
+    },
+    {
+      "key": "site.26837fdfbdc6470aba",
+      "source": "Write your next step.",
+      "value": "כתוב את הצעד הבא שלך."
+    },
+    {
+      "key": "site.2906041145ba13b814",
+      "source": "writing coach",
+      "value": "מאמן כתיבה"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "מאמן כתיבה"
+    },
+    {
+      "key": "site.d0cad315c201ae8f56",
+      "source": "Writing Coach prompts and study loop",
+      "value": "פרומפטים ולולאת לימוד של Writing Coach"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP ועליית רמות"
+    },
+    {
+      "key": "site.9711f0284628a152bd",
+      "source": "Yes. {value1} opens as a public guest learning mode at {value2}, so you can start with a few free guest messages before creating an account.",
+      "value": "כן. {value1} נפתח כמצב למידת אורח ציבורי ב-{value2}, כך שתוכל להתחיל עם כמה הודעות אורח חינמיות לפני יצירת חשבון."
+    },
+    {
+      "key": "site.1a3740fa59d6eb6490",
+      "source": "You can also start with a rough version of your real problem. A messy first prompt is fine. The session can clarify the level, audience, deadline, and style once you begin.",
+      "value": "אפשר גם להתחיל בגרסה גסה של הבעיה האמיתית שלך. פרומפט ראשון מבולגן הוא בסדר. המפגש יכול להבהיר את הרמה, הקהל, המועד האחרון והסגנון אחרי שמתחילים."
+    },
+    {
+      "key": "site.f2e043b75e8b159ec8",
+      "source": "You can try the format in Talk to a Historical Person. If you want the wider scene before meeting a person, use Time Travel to visit a period, inspect constraints, and then ask what choices people actually had.",
+      "value": "אפשר לנסות את הפורמט ב-Talk to a Historical Person. אם אתה רוצה את הסצנה הרחבה יותר לפני מפגש עם אדם, השתמש ב-Time Travel כדי לבקר בתקופה, לבחון אילוצים ואז לשאול אילו בחירות היו לאנשים בפועל."
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "תדע שמורה AI סוקרטי עבד כאשר הלומד יכול לעשות שלושה דברים:"
+    }
+  ]
+}

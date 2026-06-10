@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hindi",
+  "locale": "hi",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "इसे फ्लैशकार्ड निर्माता में आज़माएँ। यदि कार्ड बनाने से पहले विषय समझना है, तो कुछ भी सीखें में शुरू करें। कार्ड की समीक्षा के बाद दबाव वाला अभ्यास चाहिए, तो क्विज मुझे पर ट्रिविया or मौखिक परीक्षा अभ्यास पर जाएँ।"
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "इन शुरुआती वाक्यों में से कोई आज़माएँ:"
+    },
+    {
+      "key": "site.fb56f6a441c776f424",
+      "source": "Try prompts like these:",
+      "value": "ऐसे प्रॉम्प्ट आज़माएँ:"
+    },
+    {
+      "key": "site.12ebad3df9c84b9d77",
+      "source": "Try prompts like:",
+      "value": "इस तरह के प्रॉम्प्ट आज़माएँ:"
+    },
+    {
+      "key": "site.477c581da58fc1ca4b",
+      "source": "Try the companion",
+      "value": "कंपैनियन आज़माएँ"
+    },
+    {
+      "key": "site.b9acba8c3008abb4c9",
+      "source": "Try the problem yourself.",
+      "value": "समस्या स्वयं हल करने की कोशिश करें।"
+    },
+    {
+      "key": "site.87ac07848c5b41bf9a",
+      "source": "Try the step in your own words.",
+      "value": "इस चरण को अपने शब्दों में आज़माएँ।"
+    },
+    {
+      "key": "site.4a90d5180b629ab43c",
+      "source": "Try the step yourself.",
+      "value": "चरण स्वयं आज़माएँ।"
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "एक व्यापक विषय को शोध प्रश्नों, खोज शब्दों, रूपरेखाओं और स्रोत नोट्स में बदलें।"
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "किसी अवधारणा, तर्क, समस्या, पाठ, या निर्णय को प्रश्नों की एक केंद्रित श्रृंखला में बदलें। आपका साथी हर उत्तर को सुनता है, मान्यताओं और खामियों को समझता है, और आपको अपनी अंतिम समझ तक पहुँचने में मदद करता है। आज़माएँ:\"मुझे अवसर लागत समझाने में मदद करें।\""
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "पाठ्यक्रम को अध्ययन योजना में बदलें"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "किसी विषय, पाठ्यक्रम या नोट्स को सेक्शन, टाइमिंग, मार्किंग गाइडेंस और रिव्यू स्टेप्स के साथ एक यथार्थवादी प्रैक्टिस टेस्ट में बदलें।"
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "गतिविधि को अगले चरणों में बदलें"
+    },
+    {
+      "key": "site.84d58c0795a0789a96",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "संकल्पनाओं को कहानियों, पात्रों, संघर्षों और यादगार दृश्यों में बदलें जो मुश्किल विचारों को याद रखना आसान बनाते हैं।"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "संकल्पनाओं को कहानियों, पात्रों, संघर्षों और यादगार दृश्यों में बदलें।"
+    },
+    {
+      "key": "site.3ed09c07ce851634d3",
+      "source": "Turn confusion into a clearer model",
+      "value": "दुविधा को एक स्पष्ट मॉडल में बदलें"
+    },
+    {
+      "key": "site.5f3d8e29ea2a5424fd",
+      "source": "Turn confusion into a clearer model.",
+      "value": "बदलें: उलझन में एक अधिक स्पष्ट मॉडल।"
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "आरेखों, शारीरिक प्रणालियों, मानचित्रों, कार्यप्रवाहों या लैब सेटअप को संकेतों और उत्तर जांच के साथ लेबलिंग अभ्यास में बदलें।"
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "विचारों को मील के पत्थरों में बदलें"
+    },
+    {
+      "key": "site.3ce1f87877a7079261",
+      "source": "Turn ideas into milestones.",
+      "value": "बदलें: विचार में मील के पत्थर।"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "इरादों को ट्रिगर्स, पुरस्कारों और रिकवरी योजनाओं के साथ छोटे दोहराने योग्य सीखने की आदतों में बदलें।"
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "बदलें: सीखना में छोटी संरचित challenges।"
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "सामग्री को रिवीजन गाइड में बदलें"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "मेरे नोट्स को रिवीजन शीट में बदलें"
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "नोट्स को बेहतर कार्ड में बदलें"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "शब्दावली, अवधारणाओं, लोगों/घटनाओं, सूत्रों, उदाहरणों या कारण-प्रभाव जोड़ियों के लिए नोट्स को मैचिंग गेम में बदलें।"
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "नोट्स या विषयों को उत्तर, जाल, और समीक्षा संकेतों के साथ स्पष्ट फ्लैशकार्ड में बदलें।"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "नोट्स या विषयों को सुझाव, जवाब, उदाहरण और सामान्य जाल के साथ केंद्रित फ्लैशकार्ड में बदलें।"
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "प्रगति को स्तरों और क्वेस्ट में बदलें"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "पढ़ने को क्वेस्ट में बदलें"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "बदलें: repeated छूटी बातें में एक प्रश्न के लिए कुछ भी सीखें।"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "बिखरे हुए नोट्स को फोल्डर, टैग, सारांश, लिंक और समीक्षा कार्यों में बदलें जो याद रखना आसान बनाते हैं।"
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "अध्ययन गतिविधि, क्विज़ परिणाम, नोट्स और टाइमर को रुझानों और अगले कार्यों के साथ एक डैशबोर्ड-शैली की समीक्षा में बदलें।"
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "अध्ययन को एक चुनौती बनाएं"
+    },
+    {
+      "key": "site.a094477e12c670b2e4",
+      "source": "Turn study into a challenge.",
+      "value": "बदलें: अध्ययन में एक चुनौती।"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "बदलें: पाठ में संक्षिप्त, यादगार अध्ययन सामग्री।"
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "बदलें: मोड में अभ्यास"
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "इस व्याख्यान को कॉर्नेल नोट्स में बदलें"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "इस नोट को प्रश्नोत्तर में बदलें"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "बदलें: अस्पष्ट इरादे में achievable दैनिक अध्ययन लक्ष्यs।"
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "शब्दावली को स्तरों में बदलें"
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "अपने सिलेबस, परीक्षा तिथि, समय और कमजोर विषयों को एक प्रभावी अध्ययनों की योजना में बदलें।"
+    },
+    {
+      "key": "site.b4212a1755ce874c8c",
+      "source": "turning passive reading into practice;",
+      "value": "बदलना निष्क्रिय पढ़ना में अभ्यास;"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "ट्यूटर गणित के साथ चरण-दर-चरण तर्क और शिक्षार्थी participation।"
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "कोड समझें, त्रुटियों को ठीक करें, अवधारणाएं सीखें, और छोटे प्रोजेक्ट्स को चरण दर चरण बनाएं।"
+    },
+    {
+      "key": "site.43417b2770a6aa9b4b",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "कोड को समझें, त्रुटियों को ठीक करें, प्रोग्रामिंग अवधारणाएँ सीखें, और छोटे प्रोजेक्ट्स चरण दर चरण बनाएं।"
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "स्थान, मानचित्र और लोगों को समझें"
+    },
+    {
+      "key": "site.e555b3487ca35eb88d",
+      "source": "Understand places, maps, and people.",
+      "value": "समझें: places, मानचित्र, और लोग।"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "अधिकारों, सरकार और समाज को समझें"
+    },
+    {
+      "key": "site.d978081dad4c868293",
+      "source": "Understand rights, government, and society.",
+      "value": "समझें: अधिकार, government, और समाज।"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "ध्वनि, लय और समरसता को समझें"
+    },
+    {
+      "key": "site.2c4166ad9c19c6e119",
+      "source": "Understand sound, rhythm, and harmony.",
+      "value": "समझें: ध्वनि, लय, और harmony।"
+    },
+    {
+      "key": "site.d8ff21d8b7abf47587",
+      "source": "Understand the concept",
+      "value": "अवधारणा को समझें"
+    },
+    {
+      "key": "site.3d76766688061b2737",
+      "source": "Understand the concept.",
+      "value": "समझें: अवधारणा।"
+    },
+    {
+      "key": "site.bc48415b4e3f1baea3",
+      "source": "Understand the core idea",
+      "value": "मूल विचार को समझें"
+    },
+    {
+      "key": "site.decf436e9f8586be35",
+      "source": "Understand the core idea.",
+      "value": "समझें: मुख्य विचार।"
+    },
+    {
+      "key": "site.524871bdd3e5e16410",
+      "source": "Understand the era",
+      "value": "युग को समझें"
+    },
+    {
+      "key": "site.d90262ddceb5b981c6",
+      "source": "Understand the era.",
+      "value": "समझें: era।"
+    },
+    {
+      "key": "site.33d8a772320c293d90",
+      "source": "Understand the mistake",
+      "value": "गलती को समझें"
+    },
+    {
+      "key": "site.913e59acc676e220aa",
+      "source": "Understand the mistake.",
+      "value": "समझें: गलती।"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "समझें कि कोई उत्तर क्यों सही होता है"
+    },
+    {
+      "key": "site.3b78b9b7264612be50",
+      "source": "Understand why an answer works.",
+      "value": "समझें: क्यों एक उत्तर कृतियां।"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "कारणों, प्रेरकों, परिणामों और वैकल्पिक संभावनाओं के माध्यम से ऐतिहासिक घटनाओं को समझें।"
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "50/10 के ब्रेक का उपयोग करें"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "उपयोग करें: एक संक्षिप्त table के लिए given उत्तर, सही करें विचार, misअवधारणाion, और next ले जाएं।"
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "उपयोग करें: एक credibility scorecard और प्रश्नs को investigate next।"
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "उपयोग करें: एक गहरी काम अनुबंध के साथ परिणाम, ब्लॉक योजना, नियम, और समीक्षा।"
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "उपयोग करें: एक table के साथ front, पीछे, संकेत, और आम trap।"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "उपयोग करें: AI जैसे एक कोच के लिए समझ, अभ्यास, और प्रतिक्रिया के बजाय का एक shortcut कि quietly removes सीखना।"
+    },
+    {
+      "key": "site.c27741d4fa1c4735e0",
+      "source": "Use AI for the thinking around the answer",
+      "value": "उपयोग करें: AI के लिए सोच इर्द-गिर्द उत्तर"
+    },
+    {
+      "key": "site.32feb61d4aa3606efc",
+      "source": "Use Art Appreciation Guide when this is the right mode for the job. If you want a related path, try Civics Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए कला सराहना मार्गदर्शिका सही मोड हो, तब कला सराहना मार्गदर्शिका का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो नागरिक शास्त्र कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.6a001db9ced5bfb232",
+      "source": "Use Art Appreciation Guide when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब कला सराहना मार्गदर्शिका का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "उपयोग करें: badge नाम, criteria, स्तर, और प्रमाण उदाहरण।"
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "उपयोग करें: पहले/after snippets, दोहराई प्राथमिकताएं, और संक्षिप्त rationale।"
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "उपयोग करें: calendars, checklists, और risk flags।"
+    },
+    {
+      "key": "site.b7e479a8da805c14af",
+      "source": "Use Career Explorer when this is the right mode for the job. If you want a related path, try Roleplay Scenario. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए करियर अन्वेषक सही मोड हो, तब करियर अन्वेषक का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो भूमिका-अभिनय परिदृश्य आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.5fa0d275390380b147",
+      "source": "Use Career Explorer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब करियर अन्वेषक का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "उपयोग करें: केस file, चयन, परिणाम, और सीखना नोट।"
+    },
+    {
+      "key": "site.d835e997c12945b8ec",
+      "source": "Use Case Study Simulator when this is the right mode for the job. If you want a related path, try Feynman Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए केस अध्ययन सिम्युलेटर सही मोड हो, तब केस अध्ययन सिम्युलेटर का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो Feynman ट्यूटर आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.718c202fac629655a7",
+      "source": "Use Case Study Simulator when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब केस अध्ययन सिम्युलेटर का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "उपयोग करें: चुनौती कार्ड, points, rounds, और debrief।"
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "उपयोग करें: संदर्भ-उद्धरण entries plus एक missing-fields checklist।"
+    },
+    {
+      "key": "site.962c32260471c9ecdd",
+      "source": "Use Civics Coach when this is the right mode for the job. If you want a related path, try History Cause-and-Effect. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए नागरिक शास्त्र कोच सही मोड हो, तब नागरिक शास्त्र कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो इतिहास कारण और प्रभाव आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.307747761ccd6ec09c",
+      "source": "Use Civics Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब नागरिक शास्त्र कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.bbe4b5cbcff3a78ba8",
+      "source": "Use Code Tutor when this is the right mode for the job. If you want a related path, try Interview Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए कोड ट्यूटर सही मोड हो, तब कोड ट्यूटर का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो साक्षात्कार कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.65fb48b213ba1d00a8",
+      "source": "Use Code Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब कोड ट्यूटर का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.cc86f8ca8f2b01fe01",
+      "source": "Use Collaborative Instruction when this is the right mode for the job. If you want a related path, try Socratic Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए सहयोगी निर्देश सही मोड हो, तब सहयोगी निर्देश का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो सोक्रेटिक निर्देश आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.6f8e91eb4525f32413",
+      "source": "Use Collaborative Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब सहयोगी निर्देश का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "उपयोग करें: प्रतिबद्धता कार्ड, check-in scripts, और पुनर्प्राप्ति योजनाs।"
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "उपयोग करें: संक्षिप्त staged sections: setting, समय slice, persona kernel, dossier दीवार, historian sidecar, recommended opening प्रश्नs, फिर in-character exchanges के साथ occasional दावा लेबल और debrief पर अनुरोध।"
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "उपयोग करें: संक्षिप्त UI-like sections: पासपोर्ट, यात्रा सलाह, Arrival दृश्य, स्थान, पहचान, Social नियम, घटना Clock, Nearby लोग, Objects, चयन, प्रमाण, और Field नोट्स। अंत major बदलता है के साथ अर्थपूर्ण चयन।"
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "उपयोग करें: संक्षिप्त कार्यस्थल sections ऐसे जैसे साझा सामग्री, AI contribution, उपयोगकर्ता ले जाएं, Inline comments, Decision दर्ज करें, खोलें प्रश्नs, और Next कार्रवाई। दिखाएं suggested संपादन or diffs पहले merging जब reलेखन।"
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "उपयोग करें: तुलना तालिकाएं और next-step प्रयोग।"
+    },
+    {
+      "key": "site.29b8400b4540e7d418",
+      "source": "Use Concept Map Builder when this is the right mode for the job. If you want a related path, try Spaced Review. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए अवधारणा मानचित्र निर्माता सही मोड हो, तब अवधारणा मानचित्र निर्माता का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो अंतराल-आधारित दोहराई आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.bb38dee9a6cd6fff36",
+      "source": "Use Concept Map Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब अवधारणा मानचित्र निर्माता का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "उपयोग करें: संक्षिप्त दावे, प्रमाण प्रॉम्प्ट, और एक अंतिम बहस पुनरावलोकन जब पूछा।"
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "उपयोग करें: संक्षिप्त कोड snippets, comments केवल जब उपयोगी, और परीक्षा मामले।"
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "उपयोग करें: संक्षिप्त drawing निर्देश, लेबल lists, और दृश्य जांच-बिंदु।"
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "उपयोग करें: Cornell sections: संकेत, नोट्स, summary, और स्मरण जांच।"
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "उपयोग करें: course कार्ड, reस्रोत lists, और weekly workload तालिकाएं।"
+    },
+    {
+      "key": "site.cec8c6e4945f7c202b",
+      "source": "Use Creative Brainstormer when this is the right mode for the job. If you want a related path, try Motivation Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए रचनात्मक विचारक सही मोड हो, तब रचनात्मक विचारक का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो प्रेरणा कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.c7f0d6a9fe1f0f0f1f",
+      "source": "Use Creative Brainstormer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब रचनात्मक विचारक का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "उपयोग करें: dashboard कार्ड, trend नोट्स, कमजोर हिस्से, और next कार्रवाइयां।"
+    },
+    {
+      "key": "site.13f6aa5dbc34a1c855",
+      "source": "Use Data Interpreter when this is the right mode for the job. If you want a related path, try Source Critic. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए डेटा दुभाषिया सही मोड हो, तब डेटा दुभाषिया का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो स्रोत आलोचक आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.8dcd885d4d2885f7be",
+      "source": "Use Data Interpreter when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब डेटा दुभाषिया का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "उपयोग करें: समय-सीमा तालिकाएं, risk flags, और next कार्रवाइयां।"
+    },
+    {
+      "key": "site.0df474b49f89092030",
+      "source": "Use Debate any topic when this is the right mode for the job. If you want a related path, try Debate with a personality. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए बहस कोई भी विषय सही मोड हो, तब बहस कोई भी विषय का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो बहस के साथ एक व्यक्तित्व आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.b6d7ea92de5267382e",
+      "source": "Use Debate any topic when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब बहस कोई भी विषय का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "उपयोग करें: बहस कार्ड, संक्षिप्त rebuttals, और occasional scorekeeping का तर्क गुणवत्ता।"
+    },
+    {
+      "key": "site.27069a04f2fe87017e",
+      "source": "Use Debate with a personality when this is the right mode for the job. If you want a related path, try Talk to a historical person. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए बहस के साथ एक व्यक्तित्व सही मोड हो, तब बहस के साथ एक व्यक्तित्व का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो बात को एक ऐतिहासिक व्यक्ति आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.a5d02d6f499f36bba7",
+      "source": "Use Debate with a personality when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब बहस के साथ एक व्यक्तित्व का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "उपयोग करें: diagnosis, बेहतर मॉडल, क्यों it कृतियां, और एक जांच प्रश्न।"
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "उपयोग करें: diagrams में पाठ, भूमिका exयोजनाations, और real-world परिदृश्य।"
+    },
+    {
+      "key": "site.404747c655d4bae525",
+      "source": "Use Economics Simulator when this is the right mode for the job. If you want a related path, try Geography Explorer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए अर्थशास्त्र सिम्युलेटर सही मोड हो, तब अर्थशास्त्र सिम्युलेटर का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो भूगोल अन्वेषक आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.4e7a277dd87ebfeba6",
+      "source": "Use Economics Simulator when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब अर्थशास्त्र सिम्युलेटर का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "उपयोग करें: equations, अनुरूप चरण, और छोटी why-this-works नोट्स।"
+    },
+    {
+      "key": "site.082e7690af7eb04c5d",
+      "source": "Use Ethics Dilemmas when this is the right mode for the job. If you want a related path, try Philosophy Lab. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए नैतिक दुविधाएं सही मोड हो, तब नैतिक दुविधाएं का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो दर्शन प्रयोगशाला आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.b2f3bcf1d78931ce13",
+      "source": "Use Ethics Dilemmas when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब नैतिक दुविधाएं का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.364c2ff6739024d5e5",
+      "source": "Use Exam Prep Planner when this is the right mode for the job. If you want a related path, try Speaking Practice. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए परीक्षा तैयारी योजनाकार सही मोड हो, तब परीक्षा तैयारी योजनाकार का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो बोलना अभ्यास आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.028f98cd50e70b89d2",
+      "source": "Use Exam Prep Planner when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब परीक्षा तैयारी योजनाकार का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "उपयोग करें: examiner प्रश्नs, मॉडल उत्तर shapes, और प्रतिक्रिया scorecards।"
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "उपयोग करें: उदाहरण, तुलना करें प्रणालियां, पूछें application प्रश्नs, और अलग तथ्य से opinions।"
+    },
+    {
+      "key": "site.fc3672b94854abb4d7",
+      "source": "Use Explain My Answer when this is the right mode for the job. If you want a related path, try Debate any topic. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए समझाएं मेरा उत्तर सही मोड हो, तब समझाएं मेरा उत्तर का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो बहस कोई भी विषय आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.0347d734092168c24f",
+      "source": "Use Explain My Answer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब समझाएं मेरा उत्तर का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.1f51099bf0f757ebc2",
+      "source": "Use Feynman Tutor when this is the right mode for the job. If you want a related path, try Misconception Doctor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए Feynman ट्यूटर सही मोड हो, तब Feynman ट्यूटर का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो Misअवधारणाion डॉक्टर आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.8d436f99bc40e1c969",
+      "source": "Use Feynman Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब Feynman ट्यूटर का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.99edef639ccbb31b6c",
+      "source": "Use Flashcard Builder when this is the right mode for the job. If you want a related path, try Exam Prep Planner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए फ्लैशकार्ड निर्माता सही मोड हो, तब फ्लैशकार्ड निर्माता का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो परीक्षा तैयारी योजनाकार आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.c1fb32683ce831e8e1",
+      "source": "Use Flashcard Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब फ्लैशकार्ड निर्माता का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "उपयोग करें: folders, tags, नोट सारांश, लिंक, और समीक्षा कार्रवाइयां।"
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "उपयोग करें: सूत्र, तालिकाएं, और लक्ष्य स्कोर योजनाs।"
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "उपयोग करें: forum-ready posts, reply मसौदे, और चर्चा सारांश।"
+    },
+    {
+      "key": "site.f52be16701e83ab73b",
+      "source": "Use Geography Explorer when this is the right mode for the job. If you want a related path, try Ethics Dilemmas. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए भूगोल अन्वेषक सही मोड हो, तब भूगोल अन्वेषक का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो नैतिक दुविधाएं आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.97f31fa0d1b629b922",
+      "source": "Use Geography Explorer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब भूगोल अन्वेषक का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "उपयोग करें: लक्ष्य कार्ड, प्राथमिकता, समय estimate, blocker, और किया criteria।"
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "उपयोग करें: समूह agenda, roles, rounds, reस्रोतs, और अनुवर्ती काम।"
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "उपयोग करें: समूह roles, timer rounds, check-ins, और debrief प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.6fc373d0f67386667d",
+      "source": "Use Habit Coach when this is the right mode for the job. If you want a related path, try Study Plan Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए आदत कोच सही मोड हो, तब आदत कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो अध्ययन योजना निर्माता आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.87b80b81d1d72e5932",
+      "source": "Use Habit Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब आदत कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "उपयोग करें: आदत recipe, obstacle योजना, और 7-दिन प्रयोग।"
+    },
+    {
+      "key": "site.dd987e4b1aaffc7617",
+      "source": "Use hints before answers",
+      "value": "उत्तर से पहले संकेत का उपयोग करें"
+    },
+    {
+      "key": "site.b2f99254c634dd4f39",
+      "source": "Use hints before answers.",
+      "value": "उपयोग करें: संकेत पहले उत्तरs।"
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "उपयोग करें: संकेत, जांच-बिंदु, और छोटा उदाहरण के बजाय से पूरा अंतिम उत्तरs।"
+    },
+    {
+      "key": "site.2433805f11d2eb611c",
+      "source": "Use historical AI roleplay with three rules:",
+      "value": "उपयोग करें: ऐतिहासिक AI भूमिका-अभिनय के साथ तीन नियम:"
+    },
+    {
+      "key": "site.2adb066629a09b3fc0",
+      "source": "Use History Cause-and-Effect when this is the right mode for the job. If you want a related path, try Economics Simulator. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए इतिहास कारण और प्रभाव सही मोड हो, तब इतिहास कारण और प्रभाव का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो अर्थशास्त्र सिम्युलेटर आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.a5ba0d88b06ad8eb5d",
+      "source": "Use History Cause-and-Effect when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब इतिहास कारण और प्रभाव का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.7289c50293ffe86821",
+      "source": "Use Homework Coach when this is the right mode for the job. If you want a related path, try Explain My Answer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए होमवर्क कोच सही मोड हो, तब होमवर्क कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो समझाएं मेरा उत्तर आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.8d74b261c3e3ee8d1b",
+      "source": "Use Homework Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब होमवर्क कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "उपयोग करें: hypothesis, materials, method, observation, और exयोजनाation sections जब उपयोगी।"
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "उपयोग करें: विचार menus, selection criteria, और next-step sketches।"
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "उपयोग करें: in-character संवाद और छोटी कोचing नोट्स।"
+    },
+    {
+      "key": "site.2e8595f94f7e64615d",
+      "source": "Use Interactive Instruction when this is the right mode for the job. If you want a related path, try Collaborative Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए इंटरैक्टिव निर्देश सही मोड हो, तब इंटरैक्टिव निर्देश का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो सहयोगी निर्देश आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.bfc97ba28152235951",
+      "source": "Use Interactive Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब इंटरैक्टिव निर्देश का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.014cfbab2db3818e0b",
+      "source": "Use Interview Coach when this is the right mode for the job. If you want a related path, try Career Explorer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए साक्षात्कार कोच सही मोड हो, तब साक्षात्कार कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो करियर अन्वेषक आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.80d83b53e452d83225",
+      "source": "Use Interview Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब साक्षात्कार कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.b2c3bbfbb2ff0b8d17",
+      "source": "Use it for comparison",
+      "value": "उपयोग करें: it के लिए तुलना"
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "उपयोग करें: मुख्य takeaways, रूपरेखा बनाएं, परिभाषाएं, और समीक्षा प्रश्नs।"
+    },
+    {
+      "key": "site.9f4c89b6edb43dca90",
+      "source": "Use Language Roleplay when this is the right mode for the job. If you want a related path, try Vocabulary Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए भाषा भूमिका-अभिनय सही मोड हो, तब भाषा भूमिका-अभिनय का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो शब्दावली निर्माता आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.dba045905f6b5388dd",
+      "source": "Use Language Roleplay when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब भाषा भूमिका-अभिनय का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "उपयोग करें: leaderboard नियम, scoring, safeguards, और चिंतन।"
+    },
+    {
+      "key": "site.796fd58553cd1e520b",
+      "source": "Use Learn Anything when this is the right mode for the job. If you want a related path, try Viva Practice. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए कुछ भी सीखें सही मोड हो, तब कुछ भी सीखें का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो मौखिक परीक्षा अभ्यास आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.7e1410918eae1ff0f9",
+      "source": "Use Learn Anything when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब कुछ भी सीखें का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.ece30e133ea6fb09af",
+      "source": "Use Learning Game Master when this is the right mode for the job. If you want a related path, try Mindset Reflection. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए सीखना खेल महारत सही मोड हो, तब सीखना खेल महारत का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो मानसिकता चिंतन आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.7bd9b1af11e6c97f57",
+      "source": "Use Learning Game Master when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब सीखना खेल महारत का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "उपयोग करें: स्तर तालिकाएं, XP नियम, quest कार्ड, और anti-grind safeguards।"
+    },
+    {
+      "key": "site.f9e69911e2bc7cd9e9",
+      "source": "Use Math Step Coach when this is the right mode for the job. If you want a related path, try Homework Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए गणित चरण कोच सही मोड हो, तब गणित चरण कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो होमवर्क कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.b73352517f50ac734a",
+      "source": "Use Math Step Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब गणित चरण कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.fcd2c6c11047c94e2f",
+      "source": "Use Memory Palace when this is the right mode for the job. If you want a related path, try Flashcard Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए स्मृति महल सही मोड हो, तब स्मृति महल का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो फ्लैशकार्ड निर्माता आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.d821ea36357e976a31",
+      "source": "Use Memory Palace when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब स्मृति महल का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.4887019842f0724851",
+      "source": "Use Mindset Reflection when this is the right mode for the job. If you want a related path, try Music Theory Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए मानसिकता चिंतन सही मोड हो, तब मानसिकता चिंतन का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो संगीत सिद्धांत कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.2d2e0a9dc56d5901b3",
+      "source": "Use Mindset Reflection when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब मानसिकता चिंतन का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.72a7705d332c277b81",
+      "source": "Use Misconception Doctor when this is the right mode for the job. If you want a related path, try Concept Map Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए Misअवधारणाion डॉक्टर सही मोड हो, तब Misअवधारणाion डॉक्टर का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो अवधारणा मानचित्र निर्माता आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.f9e7695f5bdac90694",
+      "source": "Use Misconception Doctor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब Misअवधारणाion डॉक्टर का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.d334db8b730b03e40c",
+      "source": "Use Motivation Coach when this is the right mode for the job. If you want a related path, try Habit Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए प्रेरणा कोच सही मोड हो, तब प्रेरणा कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो आदत कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.bdbaf136c7b7688af8",
+      "source": "Use Motivation Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब प्रेरणा कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.1e1ab9defd562ff660",
+      "source": "Use Music Theory Coach when this is the right mode for the job. If you want a related path, try Art Appreciation Guide. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए संगीत सिद्धांत कोच सही मोड हो, तब संगीत सिद्धांत कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो कला सराहना मार्गदर्शिका आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.ccb419e01315d58ef6",
+      "source": "Use Music Theory Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब संगीत सिद्धांत कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "उपयोग करें: narrative को बनाएं अवधारणाs यादगार।"
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "उपयोग करें: nested bullets, तालिकाएं, or Mermaid पाठ जब helpful।"
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "उपयोग करें: numbered locations, images, और स्मरण जांच-बिंदु।"
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "उपयोग करें: objectives, सारांश, उदाहरण, जाल, प्रश्नs, और next समीक्षा।"
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "उपयोग करें: observation, interpretation, प्रमाण, और next-प्रश्न sections।"
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "उपयोग करें: जोड़ें banks, scrambled lists, उत्तर मुख्य, और समीक्षा नोट्स।"
+    },
+    {
+      "key": "site.f59e37cae52db37732",
+      "source": "Use Philosophy Lab when this is the right mode for the job. If you want a related path, try Story Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए दर्शन प्रयोगशाला सही मोड हो, तब दर्शन प्रयोगशाला का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो कहानी ट्यूटर आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.95acbe6e96ee9cf931",
+      "source": "Use Philosophy Lab when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब दर्शन प्रयोगशाला का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "उपयोग करें: स्थान कार्ड, तुलना तालिकाएं, और मानचित्र प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "उपयोग करें: व्यावहारिक ऑडियो tips और अध्ययन-सत्र setup नोट्स।"
+    },
+    {
+      "key": "site.4801ac355f155a1a4e",
+      "source": "Use Project Coach when this is the right mode for the job. If you want a related path, try Code Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए प्रोजेक्ट कोच सही मोड हो, तब प्रोजेक्ट कोच का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो कोड ट्यूटर आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.57a45af1e9e70d79ae",
+      "source": "Use Project Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब प्रोजेक्ट कोच का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.f140bd34a9fa9cde77",
+      "source": "Use prompts that make the AI slow down:",
+      "value": "उपयोग करें: प्रॉम्प्ट कि बनाएं AI slow down:"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "उपयोग करें: quests, levels, बैज, और boss प्रश्नs।"
+    },
+    {
+      "key": "site.22c25a848f18347f87",
+      "source": "Use Quiz me on Trivia when this is the right mode for the job. If you want a related path, try Interactive Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए क्विज मुझे पर ट्रिविया सही मोड हो, तब क्विज मुझे पर ट्रिविया का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो इंटरैक्टिव निर्देश आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.b79428a954bf308588",
+      "source": "Use Quiz me on Trivia when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब क्विज मुझे पर ट्रिविया का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "पढ़ने के लिए बारिश की आवाज़ का उपयोग करें"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "रिवीजन के लिए बारिश की आवाजें सुनें"
+    },
+    {
+      "key": "site.ab1e6ba7d128549f8c",
+      "source": "Use Reading Companion when this is the right mode for the job. If you want a related path, try Writing Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए पढ़ना साथी सही मोड हो, तब पढ़ना साथी का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो लेखन कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.a9209e87bd56b691af",
+      "source": "Use Reading Companion when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब पढ़ना साथी का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "उपयोग करें: चिंतन प्रॉम्प्ट, शिक्षार्थी strengths, और एक next प्रयोग।"
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "उपयोग करें: report sections: सफलताएं, प्रमाण, अवरोध, lessons, next week।"
+    },
+    {
+      "key": "site.1c663cd386081888fa",
+      "source": "Use Research Assistant when this is the right mode for the job. If you want a related path, try Project Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए शोध सहायक सही मोड हो, तब शोध सहायक का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो प्रोजेक्ट कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.62a22abb2f8ba94eda",
+      "source": "Use Research Assistant when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब शोध सहायक का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "उपयोग करें: शोध प्रश्नs, स्रोत matrices, और संश्लेषण नोट्स।"
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "उपयोग करें: reस्रोत कार्ड, दर्शक नोट्स, और उपयोग tips।"
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "उपयोग करें: समीक्षा queues, अंतिम तिथियां, और आत्मविश्वास ratings।"
+    },
+    {
+      "key": "site.70dbffe904664c5bed",
+      "source": "Use Roleplay Scenario when this is the right mode for the job. If you want a related path, try Case Study Simulator. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए भूमिका-अभिनय परिदृश्य सही मोड हो, तब भूमिका-अभिनय परिदृश्य का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो केस अध्ययन सिम्युलेटर आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.60d591ab277dc02d31",
+      "source": "Use Roleplay Scenario when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब भूमिका-अभिनय परिदृश्य का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.7674e4599c4c2d592d",
+      "source": "Use Science Lab Partner when this is the right mode for the job. If you want a related path, try Math Step Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए विज्ञान प्रयोगशाला साथी सही मोड हो, तब विज्ञान प्रयोगशाला साथी का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो गणित चरण कोच आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.9f52ae61e48a05c844",
+      "source": "Use Science Lab Partner when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब विज्ञान प्रयोगशाला साथी का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "उपयोग करें: scorecards के लिए स्पष्टता, संरचना, प्रमाण, और delivery नोट्स।"
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "उपयोग करें: छोटी फोकस योजनाs, checklists, और post-session चिंतन प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "उपयोग करें: छोटी sections, उदाहरण, analogies, और GFM-friendly lists or तालिकाएं जब वे मदद।"
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "उपयोग करें: छोटी सारांश, quote-light references, और प्रश्न sets।"
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "उपयोग करें: छोटी supportive नोट्स और व्यावहारिक next कार्रवाइयां।"
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "पढ़ने, लिखने, संशोधन करने या समस्या समाधान के दौरान ध्यान भटकने से बचने के लिए सरल एम्बिएंट साउंड प्रीसेट का उपयोग करें।"
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "उपयोग करें: सरल notation, उदाहरण, और अभ्यास प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "उपयोग करें: सरल तालिकाएं, cause-effect chains, और caveat नोट्स।"
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "उपयोग करें: simple-language rewrites और gap checklists।"
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "सीखने के तरीके के रूप में स्केचिंग का उपयोग करें: आरेख तैयार करें, रफ मैप्स को लेबल करें, प्रक्रियाओं को समझाएं, या किसी अस्पष्ट विचार को स्पष्ट विजुअल में बदलें।"
+    },
+    {
+      "key": "site.4cf3a926ba31474f03",
+      "source": "Use Socratic Instruction when this is the right mode for the job. If you want a related path, try Learn Anything. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए सोक्रेटिक निर्देश सही मोड हो, तब सोक्रेटिक निर्देश का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो कुछ भी सीखें आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.09be51f50be6c84f1c",
+      "source": "Use Socratic Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब सोक्रेटिक निर्देश का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "उपयोग करें: ध्वनि recommendations और फोकस setup नोट्स।"
+    },
+    {
+      "key": "site.89d82da89b4e4384ea",
+      "source": "Use Source Critic when this is the right mode for the job. If you want a related path, try Research Assistant. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए स्रोत आलोचक सही मोड हो, तब स्रोत आलोचक का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो शोध सहायक आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.3a79c2d033f365c49a",
+      "source": "Use Source Critic when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब स्रोत आलोचक का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.cac7d3193398affd53",
+      "source": "Use Spaced Review when this is the right mode for the job. If you want a related path, try Memory Palace. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए अंतराल-आधारित दोहराई सही मोड हो, तब अंतराल-आधारित दोहराई का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो स्मृति महल आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.61ca222de56e1486eb",
+      "source": "Use Spaced Review when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब अंतराल-आधारित दोहराई का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.203b1008124e793875",
+      "source": "Use Speaking Practice when this is the right mode for the job. If you want a related path, try Language Roleplay. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए बोलना अभ्यास सही मोड हो, तब बोलना अभ्यास का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो भाषा भूमिका-अभिनय आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.0c2b0d301ed9b1b185",
+      "source": "Use Speaking Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब बोलना अभ्यास का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "उपयोग करें: stakeholder तालिकाएं और balanced pro/con analysis।"
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "उपयोग करें: STAR or situation-action-result frameworks जब उचित।"
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "उपयोग करें: कहानी beats plus सीखना नोट्स।"
+    },
+    {
+      "key": "site.20e59e7e4618506d23",
+      "source": "Use Story Tutor when this is the right mode for the job. If you want a related path, try Creative Brainstormer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए कहानी ट्यूटर सही मोड हो, तब कहानी ट्यूटर का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो रचनात्मक विचारक आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.13f34ff21cb8c8b222",
+      "source": "Use Story Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब कहानी ट्यूटर का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "उपयोग करें: streak स्थिति, छोटा कार्रवाई, पुनर्प्राप्ति नियम, और weekly चिंतन।"
+    },
+    {
+      "key": "site.ef690b4b24c51860e7",
+      "source": "Use Study Plan Builder when this is the right mode for the job. If you want a related path, try Data Interpreter. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए अध्ययन योजना निर्माता सही मोड हो, तब अध्ययन योजना निर्माता का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो डेटा दुभाषिया आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.605ce81174d20fa6bd",
+      "source": "Use Study Plan Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब अध्ययन योजना निर्माता का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "उपयोग करें: तालिकाएं के साथ शब्द, अर्थ, उदाहरण, स्मृति hook, और अभ्यास प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "उपयोग करें: तालिकाएं, सरल भाषा वाला takeaways, और सावधानी नोट्स।"
+    },
+    {
+      "key": "site.0843ee02d48520170f",
+      "source": "Use Talk to a historical person when this is the right mode for the job. If you want a related path, try Time travel. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "जब इस काम के लिए बात को एक ऐतिहासिक व्यक्ति सही मोड हो, तब बात को एक ऐतिहासिक व्यक्ति का उपयोग करें। यदि आप संबंधित रास्ता चाहते हैं, तो समय यात्रा आज़माएँ। आप अध्ययन विधियों, सोक्रेटिक सीखना, फ़्लैशकार्ड, भूमिका-अभिनय और सक्रिय स्मरण के लिए AI सीखना ब्लॉग भी देख सकते हैं।"
+    },
+    {
+      "key": "site.9fd2b6c941bfd76ace",
+      "source": "Use Talk to a historical person when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "जब आप ऐसा सत्र चाहते हैं जो जल्दी शुरू हो और फिर भी आपके अनुसार ढले, तब बात को एक ऐतिहासिक व्यक्ति का उपयोग करें। पहला लक्ष्य प्रभावशाली लगना नहीं है। पहला लक्ष्य अगले कदम को संभव महसूस कराना है।"
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "उपयोग करें: लक्ष्य भाषा पहला, फिर संक्षिप्त प्रतिक्रिया में learner's preferred सहायता भाषा।"
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "उपयोग करें: काम boards, समय-सीमाएं, और next-action lists।"
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "उपयोग करें: काम कार्ड, elapsed समय, नोट्स, और अनुवर्ती ब्लॉक suggestions।"
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "उपयोग करें: परीक्षा sections, समय, उत्तर keys, rubrics, और समीक्षा योजनाs।"
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "उपयोग करें: Feynman technique को सामने लाएं कमियां और simplify समझ।"
+    },
+    {
+      "key": "site.c7968150f8b8e0fc6c",
+      "source": "Use the right mode",
+      "value": "उपयोग करें: सही मोड"
+    },
+    {
+      "key": "site.07e374866d8070f138",
+      "source": "Use these prompts in Socratic Instruction:",
+      "value": "उपयोग करें: ये प्रॉम्प्ट में सोक्रेटिक निर्देश:"
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "उपयोग करें: यह संक्षिप्त प्रारूप: संक्षिप्त पढ़त: एक sentence। मानचित्र अपडेट करें: संक्षिप्त दावा, Assumption, Gap, or Correction bullets जैसे प्रासंगिक। Next प्रश्न: ठीक एक प्रश्न। के लिए पहला reply, उपयोग करें लक्ष्य, अनुबंध, और पहला प्रश्न।"
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "उपयोग करें: यह चक्र:"
+    },
+    {
+      "key": "site.7a64117d4b8497d86f",
+      "source": "Use this mode inside a study workflow.",
+      "value": "उपयोग करें: यह मोड अंदर एक अध्ययन वर्कफ़्लो।"
+    },
+    {
+      "key": "site.ace4d1b24c6474dc6c",
+      "source": "Use this rule: after any AI explanation, close the loop with output from your own mind. Write the idea back. Solve a fresh version. Make a flashcard. Teach it to an imaginary younger student. Ask for a quiz. The more the session asks you to produce, the less likely you are to fool yourself.",
+      "value": "उपयोग करें: यह नियम: बाद कोई भी AI exयोजनाation, समाप्त करें चक्र के साथ आउटपुट से आपका अपना mind। लिखें: विचार वापस। हल करें एक नया संस्करण। बनाएं एक फ़्लैशकार्ड। सिखाएं it को एक imaginary younger विद्यार्थी। पूछें के लिए एक क्विज़। अधिक सत्र पूछता है आप को बनाएं, कम likely आप हैं को fool खुद।"
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "उपयोग करें: thought प्रयोग, तर्क मानचित्र, और balanced सारांश।"
+    }
+  ]
+}

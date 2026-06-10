@@ -1,3 +1,5 @@
+import { languageAlternatesForPath } from "@/lib/i18n/routing";
+
 export const siteUrl = "https://inspirlearning.com";
 export const siteName = "inspir";
 export const siteTitle = "inspir | Free AI tutor and learning companion";
@@ -31,12 +33,14 @@ export function absoluteUrl(path = "/") {
 }
 
 export function metadataAlternates(canonical: string) {
+  const languages: Record<string, string> = {
+    ...languageAlternatesForPath(canonical),
+    "x-default": canonical,
+  };
+
   return {
     canonical,
-    languages: {
-      "en-US": canonical,
-      "x-default": canonical,
-    },
+    languages,
     types: {
       "application/rss+xml": "/rss.xml",
       "text/plain": "/llms.txt",

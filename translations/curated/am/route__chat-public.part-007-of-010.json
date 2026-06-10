@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Amharic",
+  "locale": "am",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.e9547469db2c30bfcc",
+      "source": "Reveal answers when ready",
+      "value": "ዝግጁ ሲሆኑ መልሶችን ያሳዩ"
+    },
+    {
+      "key": "site.8a950cc377da5f967c",
+      "source": "Reveal answers when ready.",
+      "value": "ዝግጁ ሲሆኑ መልሶችን ያሳዩ።"
+    },
+    {
+      "key": "site.f4cc169357ff174c73",
+      "source": "Review before you forget",
+      "value": "ሳይረሱት ይከልሱ"
+    },
+    {
+      "key": "site.0ef1170504d8d40025",
+      "source": "Review before you forget.",
+      "value": "ከመርሳትዎ በፊት ይገምግሙ።"
+    },
+    {
+      "key": "site.9826211f55e2f51509",
+      "source": "Review learning activity and next moves",
+      "value": "የመማር እንቅስቃሴን እና ቀጣይ እርምጃዎችን ይገምግሙ"
+    },
+    {
+      "key": "site.c9f03e794cc02b7858",
+      "source": "Review misses sooner",
+      "value": "ያመለጡትን በፍጥነት ይገምግሙ"
+    },
+    {
+      "key": "site.191de80c23c006ded4",
+      "source": "Review misses sooner.",
+      "value": "ያመለጡትን ቶሎ ይገምግሙ።"
+    },
+    {
+      "key": "site.f4ff8c72d42624ef9a",
+      "source": "Review my study goals",
+      "value": "የጥናት ግቦቼን ይገምግሙ"
+    },
+    {
+      "key": "site.414b586bd70e4e3bf1",
+      "source": "Review my week",
+      "value": "የሳምንቴን ሂደት ይገምግሙ"
+    },
+    {
+      "key": "site.9d14c71b70a1bb9eba",
+      "source": "Review weak areas",
+      "value": "ደካማ ጎኖችን ይገምግሙ"
+    },
+    {
+      "key": "site.94553c6cf31bf47994",
+      "source": "Review weak areas.",
+      "value": "ደካማ ቦታዎችን ይገምግሙ።"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "ወደ ጀርባው ሳይመለከቱ ይገምግሙ።"
+    },
+    {
+      "key": "site.0d3c05c1af0f9b9400",
+      "source": "Review yesterday's chemistry",
+      "value": "የቀድሞውን የኬሚስትሪ ትምህርት ይከልሱ"
+    },
+    {
+      "key": "site.b238599ce8c1f09d2a",
+      "source": "Revise with a reason",
+      "value": "በምክንያት ይከለሱ"
+    },
+    {
+      "key": "site.10843f8950ff1a37bd",
+      "source": "Revise with a reason.",
+      "value": "በምክንያት ያሻሽሉ።"
+    },
+    {
+      "key": "site.31496d6f0847ac3e2d",
+      "source": "revision guide",
+      "value": "የማሻሻያ መመሪያ"
+    },
+    {
+      "key": "site.a392fb45ad185d8e53",
+      "source": "Reward milestones that matter",
+      "value": "አስፈላጊ የሆኑ ምዕራፎችን ይሸልሙ"
+    },
+    {
+      "key": "site.efd7e996be12779265",
+      "source": "Reward revision milestones",
+      "value": "የክለሳ ምዕራፎችን ይሸልሙ"
+    },
+    {
+      "key": "site.2c5ed85494686ddb84",
+      "source": "Roleplay one turn at a time, correct gently, and add better phrasing.",
+      "value": "በአንድ ጊዜ አንድ ተራ ሚና ተጫወቱ፣ በለስላሳ ያርሙ፣ እና የተሻለ አባባል ያክሉ።"
+    },
+    {
+      "key": "site.55233ce3d9f6f75f85",
+      "source": "Roleplay one turn, respond naturally, pause for feedback when useful, and retry.",
+      "value": "አንድ ተራ ሚና ተጫወቱ፣ በተፈጥሯዊ መንገድ ይመልሱ፣ ጠቃሚ ሲሆን ለግብረመልስ ይቁሙ፣ እና ዳግም ይሞክሩ።"
+    },
+    {
+      "key": "site.e1860601a25415104f",
+      "source": "Roleplay Scenario",
+      "value": "የሚና ጨዋታ ሁኔታ"
+    },
+    {
+      "key": "site.93f68ed0e1964ad554",
+      "source": "Roleplay Scenario AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Roleplay Scenario AI Learning Mode ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ ድርድር፣ ግጭት፣ የደንበኛ ድጋፍ፣ መሪነት ወይም ማንኛውንም ከፍተኛ-አደጋ ውይይት ይለማመዱ።"
+    },
+    {
+      "key": "site.90cd34f310bfc155ca",
+      "source": "Roleplay Scenario AI Learning Mode: practical guide",
+      "value": "Roleplay Scenario AI Learning Mode፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.15bb536ae0b0868eb3",
+      "source": "Roleplay Scenario prompts and study loop",
+      "value": "የRoleplay Scenario ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.d73d62c23277b234a6",
+      "source": "Run a 45 minute group session",
+      "value": "የ45 ደቂቃ የቡድን ክፍለ-ጊዜ ያካሂዱ"
+    },
+    {
+      "key": "site.453c284b6718f1f6ca",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "ለጓደኞች ወይም ለክፍል ጓደኞች በተመሳሰሉ ግቦች፣ የክትትል ጥያቄዎች እና የውይይት ማጠቃለያዎች የተጋራ የጥናት ጊዜ ያካሂዱ።"
+    },
+    {
+      "key": "site.ba65c13fe365ab9bd4",
+      "source": "Run a Socratic thinking environment where the learner discovers understanding through disciplined questioning rather than passive explanation.",
+      "value": "ተማሪው በተገብሮ ማብራሪያ ሳይሆን በተደራጀ ጥያቄ ግንዛቤን የሚያገኝበት Socratic የአስተሳሰብ አካባቢ አስኪዱ።"
+    },
+    {
+      "key": "site.99b502a80598eca73a",
+      "source": "Run an adaptive lesson canvas where the learner acts early and the interface changes around their evidence of understanding.",
+      "value": "ተማሪው ቀድሞ የሚንቀሳቀስበት እና በግንዛቤ ማስረጃው ዙሪያ interface የሚቀየርበት የሚስማማ የትምህርት canvas አስኪዱ።"
+    },
+    {
+      "key": "site.aa69c937a8a7f5068c",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "በቻቶች፣ ትሮች እና ሚኒ አፕሊኬሽኖች መካከል ሲንቀሳቀሱ መቁጠሩን የሚቀጥል የትኩረት እና የእረፍት ክፍለ ጊዜዎችን ያሂዱ። ክፍለ ጊዜው ሲያልቅ ከበስተጀርባ ሆኖ ሊደውል ይችላል።"
+    },
+    {
+      "key": "site.4e9a78549282788d0c",
+      "source": "Run spaced retrieval sessions and build review schedules.",
+      "value": "spaced retrieval ክፍለ ጊዜዎችን አስኪዱ እና የግምገማ መርሐግብሮችን ይገንቡ።"
+    },
+    {
+      "key": "site.7ee0b056217799c21b",
+      "source": "SAT vocabulary",
+      "value": "የSAT የቃላት ዝርዝር"
+    },
+    {
+      "key": "site.d8c3070d7f11d6c224",
+      "source": "Say the goal in ordinary language.",
+      "value": "ግቡን በተለመደ ቋንቋ ይናገሩ።"
+    },
+    {
+      "key": "site.a5338ab885f5726493",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "ምን እየተፈጠረ እንደሆነ ያስቡትን ይናገሩ፣ እና ጓደኛዎ የተደበቁ የተሳሳቱ አመለካከቶችን በቀላል ፈተናዎች ይለይላችኋል።"
+    },
+    {
+      "key": "site.a5a8b2d6598b30f354",
+      "source": "Schedule practice",
+      "value": "ልምምድን ያቅዱ"
+    },
+    {
+      "key": "site.ad51e8881dc28ebef8",
+      "source": "Schedule recall",
+      "value": "ማስታወስን ያቅዱ"
+    },
+    {
+      "key": "site.662605cea1c14c8a36",
+      "source": "Science Lab Partner",
+      "value": "የሳይንስ ላብራቶሪ አጋር"
+    },
+    {
+      "key": "site.43b1041c4830b87379",
+      "source": "Science Lab Partner AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Science Lab Partner AI Learning Mode ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ ደህና demonstrationsን ያቅዱ፣ variablesን ይረዱ፣ ውጤቶችን ይተነብዩ፣ እና እንደ ሳይንቲስት ከማስረጃ ይመክኩ።"
+    },
+    {
+      "key": "site.6f1f12f0064ba6c964",
+      "source": "Science Lab Partner AI Learning Mode: practical guide",
+      "value": "Science Lab Partner AI Learning Mode፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.e24618ba1b4bd73298",
+      "source": "Science Lab Partner prompts and study loop",
+      "value": "የScience Lab Partner ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.55e96beff0827173d3",
+      "source": "Second, the tutor asks a diagnostic question. It should be simple enough to answer but revealing enough to expose the learner's current model.",
+      "value": "ሁለተኛ፣ አስተማሪው የምርመራ ጥያቄ ይጠይቃል። ጥያቄው ለመመለስ ቀላል መሆን አለበት፣ ግን የተማሪውን የአሁኑን የሐሳብ አቀራረብ ለማጋለጥ በቂ መረጃ የሚሰጥ መሆን አለበት።"
+    },
+    {
+      "key": "site.059ef2763a2a737271",
+      "source": "Separate in-character claims from evidence notes.",
+      "value": "በገጸ-ባሕርይ ውስጥ የሚቀርቡ ንግግሮችን ከማስረጃ ማስታወሻዎች ይለዩ።"
+    },
+    {
+      "key": "site.97512255bfd98beb85",
+      "source": "Separate known facts, plausible reconstruction, contested interpretation, and speculation. Do not fabricate direct quotes or fake sources. Do not romanticize violence, empire, slavery, caste, disease, oppression, or persecution. Keep in-world knowledge separate from historian knowledge.",
+      "value": "የታወቁ እውነታዎችን፣ ሊሆን የሚችል ዳግም ግንባታን፣ የሚከራከሩበትን ትርጓሜ እና ግምትን ይለዩ። ቀጥተኛ ጥቅሶችን ወይም የሐሰት ምንጮችን አትፍጠሩ። ኃይልን፣ ኢምፓየርን፣ ባርነትን፣ የዘር/ካስት ሥርዓትን፣ በሽታን፣ ጭቆናን ወይም ስደትን በማስዋብ አታቅርቡ። የዓለም-ውስጥ እውቀትን ከታሪክ ባለሙያ እውቀት በተለየ ያቆዩ።"
+    },
+    {
+      "key": "site.eb3c8ecb48a3214576",
+      "source": "session planning",
+      "value": "የክፍለ-ጊዜ እቅድ ማውጣት"
+    },
+    {
+      "key": "site.9b7aab7ffcb530cd70",
+      "source": "session tracker",
+      "value": "የክፍለ-ጊዜ መከታተያ"
+    },
+    {
+      "key": "site.73bf8a3a58e17dc370",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "የ50/10 ጥልቅ የስራ ምት ያዘጋጁ"
+    },
+    {
+      "key": "site.7d0300e5ff78d423b4",
+      "source": "Set a learning goal",
+      "value": "የመማሪያ ግብ ያዘጋጁ"
+    },
+    {
+      "key": "site.813e6c8352d8b09eb3",
+      "source": "Set a topic",
+      "value": "ርዕስ ይምረጡ"
+    },
+    {
+      "key": "site.63454dca6f69dbeae0",
+      "source": "Set a topic.",
+      "value": "ርዕስ ያዘጋጁ።"
+    },
+    {
+      "key": "site.5a616b9587b65f6e22",
+      "source": "Set agenda, roles, question rounds, and recap duties.",
+      "value": "አጀንዳ፣ ሚናዎች፣ የጥያቄ ዙሮች እና የማጠቃለያ ኃላፊነቶችን ያዘጋጁ።"
+    },
+    {
+      "key": "site.97484c7a3d3bd931c1",
+      "source": "Set and track today's learning targets",
+      "value": "የዛሬውን የመማሪያ ግቦች ያዘጋጁ እና ይከታተሉ"
+    },
+    {
+      "key": "site.e6d6b5c4d19f29189d",
+      "source": "Set commitments, review evidence, adapt obstacles, and keep tone constructive.",
+      "value": "ቁርጠኝነቶችን ያዘጋጁ፣ ማስረጃን ይከልሱ፣ እንቅፋቶችን ያስተካክሉ እና ቃናውን ገንቢ ያቆዩ።"
+    },
+    {
+      "key": "site.b400d6c6a3e8972f20",
+      "source": "Set rules for thesis writing",
+      "value": "ለተሲስ ጽሁፍ ህጎችን ያዘጋጁ"
+    },
+    {
+      "key": "site.af648f50f7007b4c9e",
+      "source": "Set shared rules, rotate updates, and end with a clear debrief.",
+      "value": "የጋራ ደንቦችን ያዘጋጁ፣ ዝማኔዎችን በተራ ያቅርቡ እና በግልጽ ማጠቃለያ ይጨርሱ።"
+    },
+    {
+      "key": "site.0ced479367b6f3ee63",
+      "source": "Set three goals for today",
+      "value": "ለዛሬ ሶስት ግቦችን ያዘጋጁ"
+    },
+    {
+      "key": "site.8a4751f5acd839e49e",
+      "source": "Set up a small scenario with actors, incentives, and a first change.",
+      "value": "ተዋናዮች፣ ማበረታቻዎች እና የመጀመሪያ ለውጥ ያሉት ትንሽ ሁኔታ ያዘጋጁ።"
+    },
+    {
+      "key": "site.3f2f94ae73f591d1ed",
+      "source": "Set up deep work audio",
+      "value": "ለጥልቅ ስራ የሚሆን ድምጽ ያዘጋጁ"
+    },
+    {
+      "key": "site.e845ba37254bf7f535",
+      "source": "Set up my courses",
+      "value": "ኮርሶቼን ያዋቅሩ"
+    },
+    {
+      "key": "site.8cdc078e1b87cd1314",
+      "source": "Set up quiet deep work ambience",
+      "value": "ለጥልቅ ስራ ጸጥ ያለ ድባብ ያዘጋጁ"
+    },
+    {
+      "key": "site.eacf3c063c087edecc",
+      "source": "Set up weekly accountability",
+      "value": "ሳምንታዊ የኃላፊነት ክትትል ያዘጋጁ"
+    },
+    {
+      "key": "site.0c2996310d356e83c9",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "የስራ እና የእረፍት ጊዜዎችን ያዘጋጁ፣ ትክክለኛ እረፍት ያቅዱ፣ እና ማለቂያ በሌለው የጥናት ድካም ውስጥ ከመውደቅ ይቆጠቡ።"
+    },
+    {
+      "key": "site.47421b8e4050685187",
+      "source": "Shape questions for community help",
+      "value": "ለማህበረሰብ እርዳታ ጥያቄዎችን ያዘጋጁ"
+    },
+    {
+      "key": "site.9e70c86aa1ab7ede4e",
+      "source": "share notes",
+      "value": "ማስታወሻዎችን አጋሩ"
+    },
+    {
+      "key": "site.7b08b06ef1896f71ce",
+      "source": "Share your grade weights and scores",
+      "value": "የውጤት ክብደትዎን እና ነጥቦችዎን ያጋሩ"
+    },
+    {
+      "key": "site.1b12fbb6950bc12662",
+      "source": "Sharpen critical thinking through fair, rigorous debate.",
+      "value": "በፍትሃዊና ጥብቅ ክርክር የትችት አስተሳሰብን ያሳሉ።"
+    },
+    {
+      "key": "site.d30f4c170784b5ae30",
+      "source": "Should a company enter this market?",
+      "value": "አንድ ኩባንያ ወደዚህ ገበያ መግባት አለበት?"
+    },
+    {
+      "key": "site.207bfa04b62c91ea8f",
+      "source": "Should homework exist?",
+      "value": "የቤት ስራ መኖር አለበት?"
+    },
+    {
+      "key": "site.6bb30db514dffcf939",
+      "source": "Should lying ever be okay?",
+      "value": "መዋሸት መቼም ቢሆን ተገቢ ሊሆን ይችላል?"
+    },
+    {
+      "key": "site.087cd4244039b82180",
+      "source": "Simulate supply and demand",
+      "value": "የአቅርቦት እና የፍላጎት ሁኔታን ያስመስሉ"
+    },
+    {
+      "key": "site.b5d45f2cbf4c958fe1",
+      "source": "Sketch a cell diagram",
+      "value": "የሴል ዲያግራም ይሳሉ"
+    },
+    {
+      "key": "site.41a575086b73bd0661",
+      "source": "Social",
+      "value": "ማህበራዊ"
+    },
+    {
+      "key": "site.80e2d1a4a4ca8e26f6",
+      "source": "Socratic AI Tutor For Deeper Understanding",
+      "value": "Socratic AI አስተማሪ ለጥልቅ ግንዛቤ"
+    },
+    {
+      "key": "site.02d037850c2cf33c49",
+      "source": "Socratic AI Tutor For Deeper Understanding is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "Socratic AI Tutor For Deeper Understanding ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ ጽንሰ-ሐሳብ፣ ክርክር፣ ችግኝ፣ ጽሑፍ ወይም ውሳኔን ወደ ተተኮረ የጥያቄዎች ሰንሰለት መቀየር። ጓደኛዎ እያንዳንዱን መልስ ያዳምጣል፣ ግምቶችንና ክፍተቶችን ያቀርጻል፣ እና ወደ ራስዎ የመጨረሻ ማዋሃድ ይገፋፋዎታል። ይሞክሩ፦ \"Help me understand opportunity cost.\""
+    },
+    {
+      "key": "site.943120ea1758e0e62d",
+      "source": "Socratic AI Tutor For Deeper Understanding: practical guide",
+      "value": "Socratic AI Tutor For Deeper Understanding፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "ሶክራቲክ መመሪያ"
+    },
+    {
+      "key": "site.4737a87f633bdcbfe4",
+      "source": "Socratic Instruction prompts and study loop",
+      "value": "የSocratic Instruction ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.6b301fd9e1520bf0c0",
+      "source": "Socratic learning",
+      "value": "Socratic ማስተማር"
+    },
+    {
+      "key": "site.9fbf01dd5a762f97d6",
+      "source": "Socratic learning app",
+      "value": "Socratic የመማር መተግበሪያ"
+    },
+    {
+      "key": "site.88f15ed7c65ba44840",
+      "source": "Socratic tutoring is not always the answer. If a learner has no background at all, a short explanation may be kinder than a question. If they are in crisis before a deadline, a planning mode like Exam Prep Planner or a hint mode like Homework Coach may be better. If the goal is remembering terms, Flashcard Builder is more direct.",
+      "value": "Socratic አስተማሪነት ሁልጊዜ መልሱ አይደለም። ተማሪው ምንም ቀዳሚ መሠረት ከሌለው፣ ከጥያቄ ይልቅ አጭር ማብራሪያ የበለጠ ደግ ሊሆን ይችላል። ከዕለት ገደብ በፊት በጭንቀት ውስጥ ከሆኑ፣ እንደ Exam Prep Planner ያለ የእቅድ ሁነታ ወይም እንደ Homework Coach ያለ የፍንጭ ሁነታ የተሻለ ሊሆን ይችላል። ግቡ ቃላትን መዝከር ከሆነ፣ Flashcard Builder የበለጠ ቀጥተኛ ነው።"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Socratic አስተማሪነት ከተገብሮ መልስ ማንበብ ይልቅ ጥልቅ ግንዛቤን ለመገንባት ጥያቄዎችን፣ ግምቶችን፣ ፍንጮችን እና ማሰላሰልን ይጠቀማል።"
+    },
+    {
+      "key": "site.1d594e558653a5f0fa",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "2x + 5 = 17 ን ከእኔ ጋር ይፍቱ"
+    },
+    {
+      "key": "site.d542093561ec428864",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "እያንዳንዱን እርምጃ በመረዳት ሂሳብን ይፍቱ። አሰልጣኝዎ ስራዎን ይፈትሻል፣ ስህተቶችን ይጠቁማል፣ እና በራስ መተማመንን ይገነባል።"
+    },
+    {
+      "key": "site.0c077975b330bed917",
+      "source": "Source Critic",
+      "value": "የምንጭ ተቺ"
+    },
+    {
+      "key": "site.fcc0e6f05943dc97f4",
+      "source": "Source Critic AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "Source Critic AI Learning Mode ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ ጽሑፎችን፣ አባባሎችን፣ ቪዲዮዎችን ወይም ልጥፎችን ለማስረጃ፣ ለወገንተኝነት፣ ለተአማኒነት እና ለጎደለ አውድ መገምገም።"
+    },
+    {
+      "key": "site.a921df9cd99648655c",
+      "source": "Source Critic AI Learning Mode: practical guide",
+      "value": "Source Critic AI Learning Mode፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.38cc491120ed790edd",
+      "source": "Source Critic prompts and study loop",
+      "value": "የSource Critic ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.671441dc2880542134",
+      "source": "Space exploration",
+      "value": "የጠፈር ምርምር"
+    },
+    {
+      "key": "site.3f28819ab7fad425a3",
+      "source": "Spaced Review",
+      "value": "የተራራቀ ክለሳ"
+    },
+    {
+      "key": "site.61a314e6c982c305c8",
+      "source": "Spaced Review AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "Spaced Review AI Learning Mode ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ የረጅም ጊዜ ትውስታን የሚያጠናክሩ ፈጣን የክለሳ ክፍለ-ጊዜዎችን ማቀድና ማካሄድ።"
+    },
+    {
+      "key": "site.36042eb1224372c863",
+      "source": "Spaced Review AI Learning Mode: practical guide",
+      "value": "Spaced Review AI Learning Mode፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.17797c4e418f32fbd5",
+      "source": "spaced review coach",
+      "value": "የተዘረጋ ክለሳ አሰልጣኝ"
+    },
+    {
+      "key": "site.3ecedd62e60b19e7a7",
+      "source": "Spaced Review prompts and study loop",
+      "value": "የSpaced Review ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.d397240c0841aef180",
+      "source": "Spanish cafe roleplay",
+      "value": "የስፓኒሽ ካፌ ሚና መጫወት"
+    },
+    {
+      "key": "site.d1b60eb3470f607df4",
+      "source": "Speaking Practice",
+      "value": "የንግግር ልምምድ"
+    },
+    {
+      "key": "site.ef0f44ba3f77ce66dc",
+      "source": "Speaking Practice AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Speaking Practice AI Learning Mode ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ ንግግሮችን፣ አቀራረቦችን፣ ቃለ-መጠይቆችን ወይም የቃል ፈተናዎችን በጥያቄ መነሻዎች፣ ጊዜ መቆጣጠር እና በመዋቅር ላይ ግብረመልስ በመዘጋጀት።"
+    },
+    {
+      "key": "site.644c4a4f387f0f121a",
+      "source": "Speaking Practice AI Learning Mode: practical guide",
+      "value": "Speaking Practice AI Learning Mode፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.efa20923f7ae96934d",
+      "source": "Speaking Practice prompts and study loop",
+      "value": "የSpeaking Practice ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.03904d8081a083b70d",
+      "source": "Spot bias in this paragraph",
+      "value": "በዚህ አንቀጽ ውስጥ ያለውን አድልዎ ይለዩ"
+    },
+    {
+      "key": "site.30ebf4d3f6792fadfa",
+      "source": "Stage historically bounded audience encounters with real figures, using a dossier, a time slice, a setting, a role relationship, and an evidence-aware historian layer.",
+      "value": "በdossier፣ በጊዜ ቁራጭ፣ በቦታ፣ በሚና ግንኙነት እና በማስረጃ የሚገነዘብ የታሪክ ባለሙያ ንብርብር በመጠቀም ከእውነተኛ ሰዎች ጋር በታሪክ የተገደቡ የታዳሚ ግንኙነቶችን ያዘጋጁ።"
+    },
+    {
+      "key": "site.952f375412e89ff213",
+      "source": "Start",
+      "value": "ጀምር"
+    },
+    {
+      "key": "site.3a4f7384e0fc59b482",
+      "source": "Start a 25 minute biology session",
+      "value": "የ25 ደቂቃ የባዮሎጂ ክፍለ ጊዜ ይጀምሩ"
+    },
+    {
+      "key": "site.ef50aaa350f40e7968",
+      "source": "Start a study streak",
+      "value": "የጥናት ቀጣይነት ይጀምሩ"
+    },
+    {
+      "key": "site.22c611ecc8ff0dde19",
+      "source": "Start learning with inspir",
+      "value": "በinspir መማር ይጀምሩ"
+    },
+    {
+      "key": "site.1239197fa99defe5ae",
+      "source": "Start mode",
+      "value": "የመጀመሪያ ሁነታ"
+    },
+    {
+      "key": "site.04c3a6339153f5d2b7",
+      "source": "Start the live mode at Art Appreciation Guide. If you want a neighboring learning format, try Music Theory Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በArt Appreciation Guide ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Music Theory Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.e9e325f4722ce60707",
+      "source": "Start the live mode at Career Explorer. If you want a neighboring learning format, try Interview Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በCareer Explorer ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Interview Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.1bf851e49d7cf6e7a1",
+      "source": "Start the live mode at Case Study Simulator. If you want a neighboring learning format, try Roleplay Scenario. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በCase Study Simulator ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Roleplay Scenarioን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.839653039b8d560029",
+      "source": "Start the live mode at Civics Coach. If you want a neighboring learning format, try Art Appreciation Guide. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በCivics Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Art Appreciation Guideን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.c1780d81ef1456bca7",
+      "source": "Start the live mode at Code Tutor. If you want a neighboring learning format, try Project Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በCode Tutor ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Project Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.9f07ac48ae034dfcc1",
+      "source": "Start the live mode at Collaborative Instruction. If you want a neighboring learning format, try Interactive Instruction. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በCollaborative Instruction ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Interactive Instructionን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.f9ae85cd5ff2501a18",
+      "source": "Start the live mode at Concept Map Builder. If you want a neighboring learning format, try Misconception Doctor. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በConcept Map Builder ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Misconception Doctorን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.b54b3cc3700dc1a283",
+      "source": "Start the live mode at Creative Brainstormer. If you want a neighboring learning format, try Story Tutor. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በCreative Brainstormer ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Story Tutorን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.473f8405e4508eee9d",
+      "source": "Start the live mode at Data Interpreter. If you want a neighboring learning format, try Study Plan Builder. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በData Interpreter ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Study Plan Builderን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.d7881372cb6c5d0b99",
+      "source": "Start the live mode at Debate any topic. If you want a neighboring learning format, try Explain My Answer. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በDebate any topic ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Explain My Answerን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.623b5b37750833b5c4",
+      "source": "Start the live mode at Debate with a personality. If you want a neighboring learning format, try Debate any topic. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በDebate with a personality ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Debate any topicን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.23b2f351bbbe415340",
+      "source": "Start the live mode at Economics Simulator. If you want a neighboring learning format, try History Cause-and-Effect. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በEconomics Simulator ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ History Cause-and-Effectን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.45b898faa6e7b93398",
+      "source": "Start the live mode at Ethics Dilemmas. If you want a neighboring learning format, try Geography Explorer. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በEthics Dilemmas ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Geography Explorerን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.392a5993fd71d2c75a",
+      "source": "Start the live mode at Exam Prep Planner. If you want a neighboring learning format, try Flashcard Builder. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በExam Prep Planner ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Flashcard Builderን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.9c50218856db8f8373",
+      "source": "Start the live mode at Explain My Answer. If you want a neighboring learning format, try Homework Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በExplain My Answer ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Homework Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.88f5c0e5ca5c0b3eea",
+      "source": "Start the live mode at Feynman Tutor. If you want a neighboring learning format, try Case Study Simulator. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በFeynman Tutor ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Case Study Simulatorን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.32c2acc0a413d8dd06",
+      "source": "Start the live mode at Flashcard Builder. If you want a neighboring learning format, try Memory Palace. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በFlashcard Builder ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Memory Palaceን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.8c8703d21c8ad5fb31",
+      "source": "Start the live mode at Geography Explorer. If you want a neighboring learning format, try Economics Simulator. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በGeography Explorer ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Economics Simulatorን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.29eb12466e9b8464ba",
+      "source": "Start the live mode at Habit Coach. If you want a neighboring learning format, try Motivation Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በHabit Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Motivation Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.16d3e91c01ab692211",
+      "source": "Start the live mode at History Cause-and-Effect. If you want a neighboring learning format, try Civics Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በHistory Cause-and-Effect ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Civics Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.fc349686e52e08e0eb",
+      "source": "Start the live mode at Homework Coach. If you want a neighboring learning format, try Math Step Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በHomework Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Math Step Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.89aadae45d852aac46",
+      "source": "Start the live mode at Interactive Instruction. If you want a neighboring learning format, try Quiz me on Trivia. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በInteractive Instruction ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Quiz me on Triviaን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.e443d53af288622dfe",
+      "source": "Start the live mode at Interview Coach. If you want a neighboring learning format, try Code Tutor. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በInterview Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Code Tutorን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.23f2f47a8b7d146b77",
+      "source": "Start the live mode at Language Roleplay. If you want a neighboring learning format, try Speaking Practice. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በLanguage Roleplay ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Speaking Practiceን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.3ab6679f5e3caafce7",
+      "source": "Start the live mode at Learn Anything. If you want a neighboring learning format, try Socratic Instruction. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በLearn Anything ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Socratic Instructionን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.be3ce2ced6110801bb",
+      "source": "Start the live mode at Learning Game Master. If you want a neighboring learning format, try Viva Practice. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በLearning Game Master ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Viva Practiceን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.47042221efe42123b7",
+      "source": "Start the live mode at Math Step Coach. If you want a neighboring learning format, try Science Lab Partner. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በMath Step Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Science Lab Partnerን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.42dae6512dca677aeb",
+      "source": "Start the live mode at Memory Palace. If you want a neighboring learning format, try Spaced Review. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በMemory Palace ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Spaced Reviewን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.050a9a5fc339781329",
+      "source": "Start the live mode at Mindset Reflection. If you want a neighboring learning format, try Learning Game Master. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በMindset Reflection ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Learning Game Masterን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.50265d416636e40af8",
+      "source": "Start the live mode at Misconception Doctor. If you want a neighboring learning format, try Feynman Tutor. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በMisconception Doctor ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Feynman Tutorን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.3c40227cdef3e6f50d",
+      "source": "Start the live mode at Motivation Coach. If you want a neighboring learning format, try Creative Brainstormer. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በMotivation Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Creative Brainstormerን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.7037e2d85cae7c528b",
+      "source": "Start the live mode at Music Theory Coach. If you want a neighboring learning format, try Mindset Reflection. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በMusic Theory Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Mindset Reflectionን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.6456256446d5a0cf27",
+      "source": "Start the live mode at Philosophy Lab. If you want a neighboring learning format, try Ethics Dilemmas. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በPhilosophy Lab ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Ethics Dilemmasን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.ba1d066a6b6aad9e20",
+      "source": "Start the live mode at Project Coach. If you want a neighboring learning format, try Research Assistant. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በProject Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Research Assistantን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.6c1d13ba28a29501fe",
+      "source": "Start the live mode at Quiz me on Trivia. If you want a neighboring learning format, try Time travel. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በQuiz me on Trivia ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Time travelን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.59fdd1b7a4450af60a",
+      "source": "Start the live mode at Reading Companion. If you want a neighboring learning format, try Vocabulary Builder. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በReading Companion ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Vocabulary Builderን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.b28a2d9821e2dcc773",
+      "source": "Start the live mode at Research Assistant. If you want a neighboring learning format, try Source Critic. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በResearch Assistant ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Source Criticን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.8370f21df22d5ece96",
+      "source": "Start the live mode at Roleplay Scenario. If you want a neighboring learning format, try Career Explorer. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በRoleplay Scenario ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Career Explorerን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.a51fa56c14d570dc79",
+      "source": "Start the live mode at Science Lab Partner. If you want a neighboring learning format, try Writing Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በScience Lab Partner ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Writing Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.82ef0b125c03ecd8bf",
+      "source": "Start the live mode at Socratic Instruction. If you want a neighboring learning format, try Collaborative Instruction. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በSocratic Instruction ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Collaborative Instructionን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.b4a55918bf5242ee95",
+      "source": "Start the live mode at Source Critic. If you want a neighboring learning format, try Data Interpreter. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በSource Critic ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Data Interpreterን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.196d4d19a87d6824b4",
+      "source": "Start the live mode at Spaced Review. If you want a neighboring learning format, try Concept Map Builder. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በSpaced Review ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Concept Map Builderን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.cda87adae33232a849",
+      "source": "Start the live mode at Speaking Practice. If you want a neighboring learning format, try Exam Prep Planner. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በSpeaking Practice ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Exam Prep Plannerን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.7372b8ea20873484f1",
+      "source": "Start the live mode at Story Tutor. If you want a neighboring learning format, try Philosophy Lab. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በStory Tutor ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Philosophy Labን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.0a212dcdc6e4c28fc9",
+      "source": "Start the live mode at Study Plan Builder. If you want a neighboring learning format, try Habit Coach. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በStudy Plan Builder ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Habit Coachን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.1055ad4ddf115378ad",
+      "source": "Start the live mode at Talk to a historical person. If you want a neighboring learning format, try Debate with a personality. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በTalk to a historical person ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Debate with a personalityን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.187a66cf7585626859",
+      "source": "Start the live mode at Time travel. If you want a neighboring learning format, try Talk to a historical person. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በTime travel ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Talk to a historical personን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.1d4272db12809b4336",
+      "source": "Start the live mode at Viva Practice. If you want a neighboring learning format, try Learn Anything. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በViva Practice ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Learn Anythingን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.42814035523b0a0c21",
+      "source": "Start the live mode at Vocabulary Builder. If you want a neighboring learning format, try Language Roleplay. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በVocabulary Builder ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Language Roleplayን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.fe603c59c3f1e89411",
+      "source": "Start the live mode at Writing Coach. If you want a neighboring learning format, try Reading Companion. For a broader view of the platform, read what an AI learning companion should do for everyone.",
+      "value": "ቀጥታ ሁነታውን በWriting Coach ይጀምሩ። ተቀራራቢ የመማር ቅርጽ ከፈለጉ፣ Reading Companionን ይሞክሩ። መድረኩን በሰፊው ለማየት፣ የኤአይ የመማር አጋር ለሁሉም ምን ማድረግ እንዳለበት ያንብቡ።"
+    },
+    {
+      "key": "site.d918513ed12cf4650a",
+      "source": "Start with a specific goal such as \"{value1}\". The mode works best when you include what you already know, where you are stuck, and what kind of help you want.",
+      "value": "እንደ \"{value1}\" ያለ የተወሰነ ግብ በመግለጽ ይጀምሩ። አስቀድመው የሚያውቁትን፣ የተያዙበትን ቦታ እና ምን ዓይነት እገዛ እንደሚፈልጉ ሲያካትቱ ሁነታው በተሻለ ይሠራል።"
+    },
+    {
+      "key": "site.42ebc84d27c2722a7a",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "site.4b3235b45a6ed42d8f",
+      "source": "Start with example prompts.",
+      "value": "በምሳሌ ጥያቄ መነሻዎች ይጀምሩ።"
+    },
+    {
+      "key": "site.7ca42962b3b6bbb317",
+      "source": "Start with Learn Anything if you have a topic in mind. Try Socratic Instruction if you want questions instead of an explanation. Use Flashcard Builder when you need to remember, or Exam Prep Planner when the problem is organizing your study time.",
+      "value": "በአእምሮዎ ውስጥ ርዕስ ካለ Learn Anythingን ይጀምሩ። ከማብራሪያ ይልቅ ጥያቄዎችን ከፈለጉ Socratic Instructionን ይሞክሩ። መዝከር ሲያስፈልግ Flashcard Builderን፣ ችግኙ የጥናት ጊዜዎን ማደራጀት ከሆነ Exam Prep Plannerን ይጠቀሙ።"
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "በአንድ ግልጽ ጥያቄ ይጀምሩ"
+    },
+    {
+      "key": "site.37b757614f9e52ed95",
+      "source": "Start with Talk to a Historical Person for a figure-led conversation. Use Time Travel for a place-and-period expedition. Read the Talk to a Historical Person guide or the Time Travel prompts and study loop if you want a more structured workflow.",
+      "value": "በሰው-መሪ ውይይት ለመጀመር Talk to a Historical Personን ይጀምሩ። ለቦታና ዘመን ጉዞ Time Travelን ይጠቀሙ። የበለጠ የተዋቀረ የሥራ ፍሰት ከፈለጉ Talk to a Historical Person guide ወይም Time Travel prompts and study loopን ያንብቡ።"
+    },
+    {
+      "key": "site.9c208cdb56de14af4f",
+      "source": "State the dilemma and identify stakeholders.",
+      "value": "የሥነ-ምግባር ችግኙን ግለጹ እና ባለድርሻዎችን ለዩ።"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "ግቡን በአንድ ዓረፍተ ነገር ግለጹ።"
+    },
+    {
+      "key": "site.7c86fb8a96c6cb04ac",
+      "source": "State the idea more clearly than at the start.",
+      "value": "ሐሳቡን ከመጀመሪያው ይልቅ በግልጽ ይግለጹ።"
+    },
+    {
+      "key": "site.f4c48e7ff8975235c7",
+      "source": "step by step math help",
+      "value": "ደረጃ በደረጃ የሂሳብ እገዛ"
+    },
+    {
+      "key": "site.e3cfac713ef7dae49c",
+      "source": "Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "ከታሪካዊ ሰው ጋር ወደ ውይይት ይግቡ። ጥያቄዎችን ይጠይቁ፣ ሃሳቦችን ይፈታተኑ፣ እና ዓለምን በእነሱ ዘመን፣ እሴቶች እና ገደቦች አማካኝነት ይረዱ።"
+    },
+    {
+      "key": "site.814b66298cd294012b",
+      "source": "Stop procrastinating on math",
+      "value": "የሂሳብ ትምህርትን ማዘግየት ያቁሙ"
+    },
+    {
+      "key": "site.35b6ebc08faf8fd880",
+      "source": "story based learning AI",
+      "value": "በታሪክ ላይ የተመሠረተ የመማር AI"
+    },
+    {
+      "key": "site.9f5c1a336c12972e0f",
+      "source": "Story concepts about friendship",
+      "value": "ስለ ወዳጅነት የታሪክ ፅንሰ-ሀሳቦች"
+    },
+    {
+      "key": "site.3ceff448ddf58eb6f8",
+      "source": "Story Tutor",
+      "value": "የታሪክ አስተማሪ"
+    },
+    {
+      "key": "site.937e83c946eec5eb49",
+      "source": "Story Tutor AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "Story Tutor AI Learning Mode ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ ጽንሰ-ሐሳቦችን ወደ ታሪኮች፣ ገጸ-ባሕርያት፣ ግጭቶች እና በቀላሉ የሚታወሱ ትዕይንቶች መቀየር።"
+    },
+    {
+      "key": "site.adff6aed7dc65de575",
+      "source": "Story Tutor AI Learning Mode: practical guide",
+      "value": "Story Tutor AI Learning Mode፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.95a67652d797e36dbe",
+      "source": "Story Tutor For Learning Through Narrative",
+      "value": "Story Tutor በትረካ ለመማር"
+    },
+    {
+      "key": "site.570a86a4b810372c78",
+      "source": "Story Tutor prompts and study loop",
+      "value": "የStory Tutor ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.f3369fc93085f1ac1b",
+      "source": "Strengthen weak claims",
+      "value": "ደካማ ክርክሮችን ያጠናክሩ"
+    },
+    {
+      "key": "site.c24055e254af984122",
+      "source": "Strengthen weak claims.",
+      "value": "ደካማ አባባሎችን ያጠናክሩ።"
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "ጠንካራ ካርዶች ብዙ ጊዜ ይህንን ያካትታሉ፦"
+    },
+    {
+      "key": "site.84185234696ee78adc",
+      "source": "Structure a study room",
+      "value": "የጥናት ክፍል ያዋቅሩ"
+    },
+    {
+      "key": "site.f151b055e376ea853c",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "ማስታወሻዎችን ወደ ፍንጮች፣ ዝርዝሮች እና ማጠቃለያ ያዋቅሩ"
+    },
+    {
+      "key": "site.2896f2375e8fe16d84",
+      "source": "Student Forum",
+      "value": "የተማሪዎች መድረክ"
+    },
+    {
+      "key": "site.e69c1da0c97b9f797f",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "እቅዱን ወደ የማይቻል ዝርዝር ሳይቀይሩ መዋቅር የሚፈልጉ ተማሪዎች እና በራሳቸው የሚማሩ።"
+    },
+    {
+      "key": "site.ceeafdfaf9b528aec2",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "ለፈተና የሚዘጋጁ ተማሪዎች፣ የቋንቋ ተማሪዎች እና የማስታወስ ልምምድ የሚጠቀሙ ሁሉ፡፡"
+    },
+    {
+      "key": "site.cfeb8ded7fab5511aa",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "ክለሳን፣ ልምምድን፣ በራስ መተማመንን እና እውነተኛ ህይወትን የሚያመዛዝን እቅድ የሚፈልጉ ተማሪዎች።"
+    },
+    {
+      "key": "site.c0e617fdf9ff771b7b",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "ጥያቄ ለመጀመር፣ ስራ ለመፈተሽ ወይም ስህተትን ለመረዳት እርዳታ የሚፈልጉ ተማሪዎች።"
+    },
+    {
+      "key": "site.cd4da7917a892c3117",
+      "source": "Students, debaters, writers, and curious learners who want stronger reasoning.",
+      "value": "ጠንካራ የማመዛዘን ችሎታ የሚፈልጉ ተማሪዎች፣ ተከራካሪዎች፣ ጸሃፊዎች እና የማወቅ ጉጉት ያላቸው ተማሪዎች።"
+    },
+    {
+      "key": "site.0bd4a138ccf2fdb113",
+      "source": "study activity",
+      "value": "የጥናት እንቅስቃሴ"
+    },
+    {
+      "key": "site.bce65c6d857e0764a5",
+      "source": "study challenge",
+      "value": "የጥናት ፈተና"
+    },
+    {
+      "key": "site.20a47421a6093a9f3f",
+      "source": "Study Challenges",
+      "value": "የትምህርት ተግዳሮቶች"
+    },
+    {
+      "key": "site.d7dc630f49231c6164",
+      "source": "study goals",
+      "value": "የጥናት ግቦች"
+    },
+    {
+      "key": "site.dd1400a8f4de4b4168",
+      "source": "study groups",
+      "value": "የጥናት ቡድኖች"
+    },
+    {
+      "key": "site.c8bb344d09ab3987e8",
+      "source": "Study Groups",
+      "value": "የጥናት ቡድኖች"
+    },
+    {
+      "key": "site.79d5732db1f79a3cd3",
+      "source": "study guide",
+      "value": "የጥናት መመሪያ"
+    },
+    {
+      "key": "site.29cff366f23f6fafe9",
+      "source": "Study Guide Generator",
+      "value": "የጥናት መመሪያ ማመንጫ"
+    },
+    {
+      "key": "site.9331a629f68113aa86",
+      "source": "Study Plan Builder",
+      "value": "የጥናት እቅድ አውጪ"
+    },
+    {
+      "key": "site.a443ccc2b23a5d5070",
+      "source": "Study Plan Builder AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "Study Plan Builder AI Learning Mode ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ በጊዜዎ፣ በኃይልዎ፣ በግቦችዎ እና በደካማ ቦታዎችዎ ዙሪያ የጥናት እቅድ መፍጠር።"
+    },
+    {
+      "key": "site.34d47afc1f35fc74fa",
+      "source": "Study Plan Builder AI Learning Mode: practical guide",
+      "value": "Study Plan Builder AI Learning Mode፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.e3d6988ea570eb9d0d",
+      "source": "Study Plan Builder prompts and study loop",
+      "value": "የStudy Plan Builder ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.1d4fd798f88ef777ca",
+      "source": "study planner with AI",
+      "value": "የጥናት እቅድ አውጪ በAI"
+    },
+    {
+      "key": "site.81d4b02268c4e99003",
+      "source": "study resources",
+      "value": "የጥናት ሀብቶች"
+    },
+    {
+      "key": "site.3c46a0b4d80a98cf5c",
+      "source": "study room",
+      "value": "የጥናት ክፍል"
+    },
+    {
+      "key": "site.c6b9da56fa2dec8757",
+      "source": "study schedule generator",
+      "value": "የጥናት መርሐግብር አመንጪ"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "የጥናት ክህሎቶች"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "የጥናት ቀጣይነት (Study Streaks)"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "የጥናት ሰዓት ቆጣሪ"
+    },
+    {
+      "key": "site.f44d7e8cc3553fbecb",
+      "source": "Studying with AI works best when the tool keeps you in the driver's seat.",
+      "value": "በAI መጥናት በተሻለ የሚሠራው መሣሪያው መሪነቱን በእጅዎ ሲያቆይ ነው።"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "ስኬት፦ ተማሪው ግልጽ የአእምሮ ሞዴል፣ ቀጣይ እርምጃ እና መቀጠል የሚያስችል እምነት ይዞ ይወጣል።"
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "ውይይትን በአጭሩ ያጠቃልሉ"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "ምዕራፍ 2ን ጠቅለል አድርገህ አቅርብ"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "ረጅም ጽሁፎችን ወደ ዋና ዋና ሃሳቦች፣ አወቃቀሮች፣ ትርጓሜዎች፣ ምሳሌዎች እና የማስታወሻ ጥያቄዎች ጠቅለል አድርግ።"
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "ሂደቴን ጠቅለል አድርገህ ግለጽ"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "ያልተስተካከሉ ማስታወሻዎቼን ጠቅለል አድርገው ያቅርቡ"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "ቅጦችን ያጠቃልሉ፣ ደካማ አካባቢዎችን ይመርምሩ እና ቀጣይ እርምጃዎችን ይምረጡ።"
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "ቅጦችን ያጠቃልሉ፣ caveatsን ለዩ፣ ዘዴዎችን ያብራሩ እና ቀጣይ ትንታኔዎችን ይጠቁሙ።"
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "ይህንን ጽሁፍ ጠቅለል አድርግ"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "ስኬቶችን፣ ክፍተቶችን እና የሚቀጥለውን ሳምንት ያጠቃልሉ"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "ያጠቃልሉ፣ መዋቅሩን ያብራሩ፣ አስፈላጊ ቃላትን ለዩ እና የማስታወስ ምርመራዎችን ያክሉ።"
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "ያጠቃልሉ፣ የቃላትን ትርጉም ያብራሩ፣ የመደምደሚያ ጥያቄዎችን ይጠይቁ እና ሐሳቦችን ያገናኙ።"
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "ያጠቃልሉ፣ ቅጦችን ለዩ እና ማሰላሰልን ወደ እቅድ ይቀይሩ።"
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "ያጠቃልሉ፣ ምልክት ያድርጉ፣ caveatsን ያክሉ እና ሌሎች እንዴት ሊጠቀሙበት እንደሚገባ ይጠቁሙ።"
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "ትኩረትን በዝቅተኛ ማዘናጊያ የጀርባ ድምፅ ይደግፉ።"
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "የተረጋጋ ጥናትን በርኅራኄ ያለው streak tracking ይደግፉ።"
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "በመሠረታዊና ክሊኒካዊ ባልሆነ መንገድ ተነሳሽነትንና ጽናትን ይደግፉ።"
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "የተሳሳተውን ግንዛቤ ያጋልጡ፣ ከትክክለኛው ሞዴል ጋር ያነጻጽሩት እና የማስተላለፍ ልምምድ ያድርጉ።"
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "ማስታወሻዎችን መለያ ይስጡ፣ ደርድር እና ያገናኙ"
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "ከታሪክ ሰው ጋር ተነጋገር"
+    },
+    {
+      "key": "site.f498d9559a8e2aaedd",
+      "source": "Talk to a historical person prompts and study loop",
+      "value": "የTalk to a historical person ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "ከክሊዮፓትራ ጋር ይወያዩ"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "ከታሪክ ሰዎች ጋር የሚያነጋግር ኤአይ"
+    },
+    {
+      "key": "site.8479e8174d72f35dd6",
+      "source": "Talk To Historical Figures With AI",
+      "value": "በAI ከታሪካዊ ሰዎች ጋር ይነጋገሩ"
+    },
+    {
+      "key": "site.fd491be7a558f38bc7",
+      "source": "Talk To Historical Figures With AI is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Talk To Historical Figures With AI ኤአይን ለመማር ለመጠቀም የተተኮረ መንገድ ነው፣ ተገብሮ መልሶችን ለመሰብሰብ አይደለም። ሁነታው በተወሰነ ሥራ ዙሪያ የተገነባ ነው፦ ከታሪካዊ ሰው ጋር ወደ ውይይት መግባት። ጥያቄዎችን ይጠይቁ፣ ሐሳቦችን ይፈትኑ፣ እና ዓለሙን በዘመኑ፣ በእሴቶቹ እና በገደቦቹ ያዳምጡ።"
+    },
+    {
+      "key": "site.3183f69986b7ceed7c",
+      "source": "Talk To Historical Figures With AI: practical guide",
+      "value": "Talk To Historical Figures With AI፦ ተግባራዊ መመሪያ"
+    },
+    {
+      "key": "site.c9a1ac167eee122c72",
+      "source": "Talking to a historical figure is not magic access to the past. It is a learning format.",
+      "value": "ከታሪካዊ ሰው ጋር መነጋገር ወደ ያለፈው ዘመን አስማታዊ መዳረሻ አይደለም። የመማር ቅርጸት ነው።"
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "የሥራ ጊዜ መቁጠሪያ"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "የተግባር ሰዓት ቆጣሪ"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "ማንኛውንም ርዕስ በሙቀት፣ በግልጽነት እና በጠቃሚ ምሳሌዎች ያስተምሩ።"
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "ጥብቅ የምንጭ ግምገማን ያስተምሩ።"
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "ኢኮኖሚክስን በሁኔታዎችና በtradeoffs ያስተምሩ።"
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "ሥነ-ምግባራዊ ምክንያት ማቅረብን በተዋቀሩ ችግኞች ያስተምሩ።"
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "ክፍልፋዮችን እንደ ታሪክ ያስተምሩ"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "ጂኦግራፊን እንደ የቦታ፣ ሰዎች፣ አካባቢ እና እንቅስቃሴ የተገናኙ ስርዓቶች ያስተምሩ።"
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "ታሪክን በምክንያታዊ አስተሳሰብ ያስተምሩ።"
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "ተማሪዎች ስነ-ጥበብን እንዲመለከቱ፣ እንዲተረጉሙ እና እንዲደሰቱበት ያስተምሩ።"
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "የፋይናንሺያል ሞዴሊንግ አስተምሩኝ"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "ወለድ እንዴት እንደሚሰራ አስተምረኝ"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "የፖርተርን አምስት ኃይሎች አስተምረኝ"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "የPython ሉፕስ (loops) አስተምሩኝ"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "ማስታወስን በቦታዊ ምስልና በretrieval ያስተምሩ።"
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "የፕሮግራሚንግ ጽንሰ-ሐሳቦችንና debuggingን በተማሪ ተሳትፎ ያስተምሩ።"
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "የዜማ መሰረታዊ ነገሮችን ያስተምሩ"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "ሳይንስን በማስረጃ፣ ተለዋዋጮች፣ ትንበያ እና ደህንነቱ የተጠበቀ ሙከራ ያስተምሩ።"
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "በእውነታዊ ጉዳዮችና በውሳኔ ውጤቶች ያስተምሩ።"
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "ቃላትን በአውድ እና በretrieval practice ያስተምሩ።"
+    }
+  ]
+}

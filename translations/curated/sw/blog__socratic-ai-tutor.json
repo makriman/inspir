@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "language": "Swahili",
+  "locale": "sw",
+  "namespace": "blog:socratic-ai-tutor",
+  "sourceHash": "7e26072fe4e5588a56a328afafd717b6d39cf2b49f4b52b85924df79ac569af7",
+  "entries": [
+    {
+      "key": "site.5418fe11c499220291",
+      "source": "\"Help me reason through this ethical dilemma without pushing me to a hidden conclusion.\"",
+      "value": "\"Nisaidie kufikiria kwa kina kuhusu mtanziko huu wa kimaadili bila kunisukuma kwenye hitimisho lililofichwa.\""
+    },
+    {
+      "key": "site.352966c547ac088b1a",
+      "source": "\"Help me understand opportunity cost by asking one question at a time.\"",
+      "value": "\"Nisaidie kuelewa gharama ya fursa kwa kuniuliza swali moja kwa wakati mmoja.\""
+    },
+    {
+      "key": "site.c773f2a3284acba81b",
+      "source": "\"I think I understand photosynthesis. Ask questions until you find the weak spot.\"",
+      "value": "\"Nadhani ninaelewa usanisinuru. Uliza maswali hadi upate sehemu dhaifu.\""
+    },
+    {
+      "key": "site.964b9d6e727c2dd845",
+      "source": "\"Make me summarize the final insight in my own words.\"",
+      "value": "\"Nifanye nifupishe ufahamu wa mwisho kwa maneno yangu mwenyewe.\""
+    },
+    {
+      "key": "site.f7fd15ce0e15c12b54",
+      "source": "\"Test whether my argument is valid. Do not give me the answer too quickly.\"",
+      "value": "\"Jaribu kama hoja yangu ni halali. Usinipe jibu haraka mno.\""
+    },
+    {
+      "key": "site.eaaffc61ea520eb649",
+      "source": "A direct explanation can be useful. But sometimes the best way to understand an idea is to wrestle with it.",
+      "value": "Maelezo ya moja kwa moja yanaweza kusaidia. Lakini wakati mwingine njia bora ya kuelewa wazo ni kupambana nalo kwa kufikiri."
+    },
+    {
+      "key": "site.87b0c467ed80ade449",
+      "source": "A Socratic tutor can surface those gaps without turning the session into a lecture.",
+      "value": "Mkufunzi wa Kisokrati anaweza kuonyesha mapengo hayo bila kugeuza kipindi kuwa mhadhara."
+    },
+    {
+      "key": "site.7a0d3765af27915bc5",
+      "source": "A strong session usually has four stages.",
+      "value": "Kipindi imara kwa kawaida kina hatua nne."
+    },
+    {
+      "key": "site.ff43fb5c5c0f826844",
+      "source": "AI is well suited to patient repetition. It can ask the next question, rephrase a hint, change the difficulty, and wait while the learner tries.",
+      "value": "AI inafaa sana kwa marudio yenye subira. Inaweza kuuliza swali linalofuata, kueleza upya kidokezo, kubadilisha ugumu, na kusubiri mwanafunzi anapojaribu."
+    },
+    {
+      "key": "site.809d1e1957710315a3",
+      "source": "AI tutor",
+      "value": "Mkufunzi wa AI"
+    },
+    {
+      "key": "site.51320c3214deb3e7cc",
+      "source": "Apply the idea to a new example.",
+      "value": "Tumia wazo hilo kwenye mfano mpya."
+    },
+    {
+      "key": "site.9413c5736b4da64196",
+      "source": "Can you test that idea with a simple example?",
+      "value": "Je, unaweza kulijaribu wazo hilo kwa mfano rahisi?"
+    },
+    {
+      "key": "site.d73813ec75bef0b1f5",
+      "source": "critical thinking",
+      "value": "kufikiri kwa kina"
+    },
+    {
+      "key": "site.239a1681ee458f631a",
+      "source": "First, the tutor identifies the target. \"I want to understand opportunity cost\" is different from \"I need to solve this economics homework question\" or \"I need to defend a position in debate.\" The target shapes the questions.",
+      "value": "Kwanza, mkufunzi hutambua lengo. \"Nataka kuelewa gharama ya fursa\" ni tofauti na \"Nahitaji kutatua swali hili la kazi ya nyumbani ya uchumi\" au \"Nahitaji kutetea msimamo katika mjadala.\" Lengo ndilo huunda maswali."
+    },
+    {
+      "key": "site.5767a106a35eac9d22",
+      "source": "For more practice, pair this with the Socratic Instruction guide, the Socratic prompts and study loop, or the broader guide on studying with AI without cheating yourself.",
+      "value": "Kwa mazoezi zaidi, unganisha hili na mwongozo wa Socratic Instruction, vidokezo na mzunguko wa masomo wa Kisokrati, au mwongozo mpana wa kusoma na AI bila kujidanganya."
+    },
+    {
+      "key": "site.87d186c70c40994969",
+      "source": "Fourth, the tutor asks one next-best question. Not five questions. Not a lecture. One move that keeps the learner thinking.",
+      "value": "Nne, mkufunzi huuliza swali moja bora linalofuata. Si maswali matano. Si mhadhara. Hatua moja inayomfanya mwanafunzi aendelee kufikiri."
+    },
+    {
+      "key": "site.12172064ab44019034",
+      "source": "Good Socratic prompts ask:",
+      "value": "Vidokezo vizuri vya Kisokrati huuliza:"
+    },
+    {
+      "key": "site.2d24058f88b11ae757",
+      "source": "How to know it worked",
+      "value": "Jinsi ya kujua imefanya kazi"
+    },
+    {
+      "key": "site.847d04773c3bdcbdd4",
+      "source": "Name the misconception or assumption that changed.",
+      "value": "Taja dhana potofu au dhana iliyobadilika."
+    },
+    {
+      "key": "site.e6f5db8a4f933a2b88",
+      "source": "Prompts to try",
+      "value": "Vidokezo vya kujaribu"
+    },
+    {
+      "key": "site.70bc8bc72d32fcb39d",
+      "source": "Questions reveal the shape of confusion. A learner might know a formula but not when to use it. They might remember a historical fact but not understand the cause. They might have a strong opinion but weak evidence.",
+      "value": "Maswali hufichua umbo la kuchanganyikiwa. Mwanafunzi anaweza kujua fomula lakini asijue wakati wa kuitumia. Anaweza kukumbuka ukweli wa kihistoria lakini asielewe sababu. Anaweza kuwa na maoni yenye nguvu lakini ushahidi dhaifu."
+    },
+    {
+      "key": "site.55e96beff0827173d3",
+      "source": "Second, the tutor asks a diagnostic question. It should be simple enough to answer but revealing enough to expose the learner's current model.",
+      "value": "Pili, mkufunzi huuliza swali la uchunguzi. Linapaswa kuwa rahisi vya kutosha kujibiwa, lakini lenye kufichua vya kutosha kuonyesha mtazamo wa sasa wa mwanafunzi."
+    },
+    {
+      "key": "site.6b301fd9e1520bf0c0",
+      "source": "Socratic learning",
+      "value": "Ujifunzaji wa Kisokratiki"
+    },
+    {
+      "key": "site.88f15ed7c65ba44840",
+      "source": "Socratic tutoring is not always the answer. If a learner has no background at all, a short explanation may be kinder than a question. If they are in crisis before a deadline, a planning mode like Exam Prep Planner or a hint mode like Homework Coach may be better. If the goal is remembering terms, Flashcard Builder is more direct.",
+      "value": "Ufundishaji wa Kisokrati si jibu kila wakati. Ikiwa mwanafunzi hana msingi wowote, maelezo mafupi yanaweza kuwa ya huruma zaidi kuliko swali. Ikiwa yuko kwenye shinikizo kabla ya muda wa mwisho, hali ya kupanga kama Exam Prep Planner au hali ya kidokezo kama Homework Coach inaweza kuwa bora. Ikiwa lengo ni kukumbuka istilahi, Flashcard Builder ni ya moja kwa moja zaidi."
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Ufundishaji wa Kisokrati hutumia maswali, dhana, vidokezo, na tafakari kujenga uelewa wa kina zaidi kuliko kusoma majibu bila kushiriki."
+    },
+    {
+      "key": "site.7c86fb8a96c6cb04ac",
+      "source": "State the idea more clearly than at the start.",
+      "value": "Taja wazo kwa uwazi zaidi kuliko ulivyoanza."
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "Huo ndio nguvu ya kujifunza kwa Kisokrati. Badala ya kutoa jibu kamili mara moja, mkufunzi huuliza swali lililolenga. Mwanafunzi hukisia. Mkufunzi hujaribu kisio hilo, hutoa kidokezo, na humsaidia mwanafunzi kuona kilichobadilika."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "Hilo ndilo ambalo hali ya Socratic Instruction ya inspir imejengwa kwa ajili yake: swali moja kwa wakati, vidokezo kabla ya majibu, na usanisi baada ya kufikiri kwa kweli."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "Ndiyo maana mkufunzi wa AI wa Kisokrati anaweza kuhisi polepole mwanzoni na kuwa na nguvu zaidi baadaye. Hubadilisha faraja ya maelezo yaliyokamilika kwa ushahidi kwamba mwanafunzi kweli anajenga wazo."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "Mdundo huo una manufaa hasa kwa mada dhahania: gharama ya fursa, usababisho katika historia, tafsiri ya fasihi, badilishano za kimaadili, uthibitisho, uwezekano, na muundo wa hoja. Unaweza pia kusaidia kazi za vitendo. Mwanafunzi anaweza kutumia Debate Any Topic baada ya kipindi cha Kisokrati kujaribu kama hoja zake zinastahimili shinikizo."
+    },
+    {
+      "key": "site.9a219773d3070c6b37",
+      "source": "The important constraint is restraint. A Socratic AI tutor should not dump the answer at the first sign of struggle. It should make effort easier to sustain.",
+      "value": "Kizuizi muhimu ni kujizuia. Mkufunzi wa AI wa Kisokrati hapaswi kumwaga jibu kwa ishara ya kwanza ya mwanafunzi kuhangaika. Anapaswa kufanya juhudi iwe rahisi kuendeleza."
+    },
+    {
+      "key": "site.994f12f48c17151b99",
+      "source": "The last prompt matters. Socratic learning should end with synthesis. After the questions, the learner should be able to say what changed in their thinking.",
+      "value": "Kidokezo cha mwisho ni muhimu. Kujifunza kwa Kisokrati kunapaswa kuishia kwa usanisi. Baada ya maswali, mwanafunzi anapaswa kuwa na uwezo wa kusema kilichobadilika katika kufikiri kwake."
+    },
+    {
+      "key": "site.18abb6aff0f8a17d0a",
+      "source": "The point is not to make every lesson a puzzle. The point is to choose the right amount of struggle.",
+      "value": "Hoja si kufanya kila somo kuwa fumbo. Hoja ni kuchagua kiwango sahihi cha juhudi."
+    },
+    {
+      "key": "site.4af2ce3751dcec34b4",
+      "source": "The work happens in the learner's mind.",
+      "value": "Kazi hufanyika katika akili ya mwanafunzi."
+    },
+    {
+      "key": "site.018311ea100e46db7a",
+      "source": "Third, the tutor reads the answer. A useful AI tutor should not merely say \"correct\" or \"incorrect.\" It should identify the claim, the assumption, the gap, or the misconception.",
+      "value": "Tatu, mkufunzi husoma jibu. Mkufunzi wa AI mwenye manufaa hapaswi kusema tu \"sahihi\" au \"si sahihi.\" Anapaswa kutambua dai, dhana ya msingi, pengo, au dhana potofu."
+    },
+    {
+      "key": "site.299200dd7de534cd1a",
+      "source": "Try it directly in Socratic Instruction. If you want a gentler explanation first, start with Learn Anything, then move into Socratic questions once you know the basic vocabulary.",
+      "value": "Jaribu moja kwa moja katika Socratic Instruction. Ikiwa unataka maelezo ya upole kwanza, anza na Learn Anything, kisha nenda kwenye maswali ya Kisokrati mara tu unapojua msamiati wa msingi."
+    },
+    {
+      "key": "site.07e374866d8070f138",
+      "source": "Use these prompts in Socratic Instruction:",
+      "value": "Tumia vidokezo hivi katika Socratic Instruction:"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "Kipindi kizuri cha Kisokrati kinaonekanaje"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "Unadhani nini kinaendelea?"
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "Ni ushahidi gani unaounga mkono hilo?"
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "Ni nini kingebadilisha mawazo yako?"
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "Wakati ufundishaji wa Kisokrati ni zana isiyofaa"
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "Mahali AI inaweza kusaidia"
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "Ni dhana gani ya msingi inayobeba mzigo mkubwa zaidi?"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Kwa nini mkufunzi wa AI wa Kisokrati anaweza kufanya mawazo yashikane"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "Kwa nini maswali husaidia"
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "Unajua mkufunzi wa AI wa Kisokrati amefanya kazi wakati mwanafunzi anaweza kufanya mambo matatu:"
+    }
+  ]
+}

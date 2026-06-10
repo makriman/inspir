@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Irish",
+  "locale": "ga",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} | inspir"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "Conairí lucht féachana {value1}"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "CC {value1}"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "Pointí iontrála modhanna poiblí {value1}"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "Treoracha gaolmhara {value1}"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "Cásanna úsáide {value1}"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "Compánach foghlama IS saor in aisce do dhaoine atá á múineadh féin."
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "Teagascóir IS saor in aisce do dhaltaí ar mian leo tuiscint, ní cóipeáil."
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "Ba chóir do shreabhadh oibre maith IS don teaghlach an foghlaimeoir a dhéanamh níos neamhspleáiche, ní níos spleáiche. Is féidir le tuismitheoirí leathanaigh phoiblí a úsáid chun a fheiceáil cad atá gach mód ceaptha a dhéanamh sula dtosaíonn páiste."
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "Treoir chairdiúil do thuismitheoirí ar mhodhanna foghlama IS poiblí inspir le haghaidh leideanna obair bhaile, míniú, gnáthaimh staidéir, spléachchártaí, agus comhráite foghlama níos sábháilte."
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "Is minic a chuardaíonn dalta, tuismitheoir, múinteoir, agus foghlaimeoir féin-mhúinte an teagascóir IS céanna i dteanga éagsúil. Déanann leathanaigh ar leith na cásanna úsáide cearta agus na teorainneacha sábháilteachta níos soiléire."
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "Teagascóir cód IS do thosaitheoirí"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "Spléachchártaí IS do pháistí"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "Spléachchártaí IS do dhaltaí"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "Cóitseálaí obair bhaile IS do mhúinteoirí"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "Cabhair obair bhaile IS do mo pháiste"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "Cabhair obair bhaile IS do dhaltaí"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "Leathanaigh lucht féachana foghlama IS"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "Intinní cuardaigh lucht féachana foghlama IS"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "Foghlaim IS de réir Lucht Féachana"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "Compánach foghlama IS do dhaoine fásta"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "Foghlaim IS do Dhaltaí, Tuismitheoirí, agus Múinteoirí"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "Foghlaim IS do Dhaltaí, Tuismitheoirí, agus Múinteoirí | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "Cabhair foghlama IS ar féidir le tuismitheoirí triail a bhaint aisti sula gcuireann siad muinín inti."
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "Modhanna foghlama IS do mhúinteoirí a bhfuil iompar dírithe de dhíth orthu."
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "Ba chóir don fhoghlaim IS oiriúnú don duine atá á húsáid."
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "Uirlisí Foghlama IS do Mhúinteoirí"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "Cabhair mhatamaitice IS do dhaltaí"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "Cóitseálaí tionscadail IS"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "Gineadóir tráthanna ceiste IS do mhúinteoirí"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "Teagascóir Sócraiteach IS don seomra ranga"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "Cabhair staidéir IS do theaghlaigh"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "Tógálaí plean staidéir IS"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "Pleanálaí staidéir IS do dhaltaí"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "Uirlisí IS do mhúinteoirí"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "Teagascóir IS do thuismitheoirí"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "Teagascóir IS do Thuismitheoirí agus do Theaghlaigh"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "Teagascóir IS don fhéin-staidéar"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "Teagascóir IS d’Fhoghlaimeoirí Féin-Mhúinte"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "Teagascóir IS do dhaltaí"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "Teagascóir IS do mhúinteoirí"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Aiseolas scríbhneoireachta IS do mhic léinn"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "An bhfuil leathanaigh lucht féachana poiblí agus innéacsaithe?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "Iarr leid, bíodh ar an bhfoghlaimeoir an chéad chéim eile a mhíniú, ansin úsáid tráth ceiste nó spléachchárta chun seiceáil ar fhan an smaoineamh."
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "Iarr leideanna, seiceálacha, agus aiseolas sula n-iarrann tú freagra críochnaithe."
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "Iarr réamhriachtanais, samhail shimplí, samplaí, agus míthuiscint choitianta."
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "Iarr aiseolas ar struchtúr, fianaise, agus soiléireacht agus coinnigh an dréacht deiridh mar do cheann féin."
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "Iarr na smaointe réamhriachtanacha, samhail i ngnáthchaint, sampla amháin, tasc cleachtaidh amháin, agus bealach amháin chun tuiscint a thástáil."
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "Iarr ar an bhfoghlaimeoir a mhíniú cad a d’athraigh tar éis gach leide."
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "Lucht féachana"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "CC lucht féachana"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "Conair foghlama lucht féachana"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "Ligeann leathanaigh lucht féachana d’innill chuardaigh agus d’innill freagraí IS daltaí, tuismitheoirí, múinteoirí, agus foghlaimeoirí neamhspleácha a idirdhealú seachas gach duine a leacú isteach in aon leathanach cineálach amháin."
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "conairí lucht féachana"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "Bealach lucht féachana"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "Ar ais chuig conairí lucht féachana"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "Teorainneacha"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "Teorainn"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "Tóg nós staidéir níos ciúine"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "An féidir le inspir cabhrú le daoine fásta agus le foghlaimeoirí féin-mhúinte?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "An féidir le tuismitheoirí triail a bhaint as inspir sula molann siad é?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "An féidir le daltaí inspir a úsáid gan síniú isteach?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "An féidir le múinteoirí triail a bhaint as inspir gan rolladh amach scoile?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "Seiceáil tuiscint gan bheith ag faire thar ghualainn"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "Roghnaigh cé atá ag foghlaim, ansin roghnaigh an t-iompar ceart."
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "Cruthaigh cleachtadh gan freagraí a sceitheadh"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "Teastaíonn bealaí éagsúla foghlama IS ó dhaoine éagsúla."
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "Ná mearbhall freagra tapa le máistreacht."
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "An bhfoilsíonn inspir comhráite príobháideacha linbh?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "Ceanglaíonn gach conair lucht féachana le dromchlaí foghlama poiblí, inchraolta."
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "EducationalAudience"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "Críochnaigh le fianaise foghlama."
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "Measúnaigh mód sula n-úsáideann tú le foghlaimeoirí é"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "Mínigh gach céim ghlactha ar ais i do chuid focal féin."
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "Fiosraigh modhanna foghlama IS poiblí is féidir le múinteoirí a úsáid chun teagasc Sócraiteach, tráthanna ceiste, spléachchártaí, aiseolas scríbhneoireachta, léirmheas foinsí, agus sreafaí oibre staidéir réidh don seomra ranga a mheas."
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "Aimsigh an sreabhadh oibre foghlama IS inspir ceart do dhaltaí, tuismitheoirí, múinteoirí, agus foghlaimeoirí féin-mhúinte."
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "Críochnaigh le míniú ar ais, tráth ceiste, spléachchárta, céim tionscadail, nó gnáthamh staidéir."
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "D’fhoghlaimeoirí"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "Do thuismitheoirí"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "D’fhoghlaimeoirí féin-mhúinte"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "Do dhaltaí"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "Do mhúinteoirí"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "teagascóir IS saor in aisce do pháistí"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "teagascóir IS saor in aisce don fhéin-staidéar"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "teagascóir IS saor in aisce do dhaltaí"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "Teagascóir IS Saor in Aisce do Dhaltaí"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "Faigh cabhair obair bhaile gan cóipeáil"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "Treoir"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "Treoracha agus sreafaí oibre"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "Cabhraigh le páiste éirí as bheith greamaithe"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Baile"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "Conas is féidir le daltaí caimiléireacht le IS a sheachaint?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "Conas a sheachnaím fánaíocht idir ábhair?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "Conas atá sé seo difriúil ó chatbot cineálach a thabhairt do dhaltaí?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Conas a oibríonn sé"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "Feabhsaigh scríbhneoireacht gan do ghuth a chailleadh"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "Tá inspir ann do dhaltaí, tuismitheoirí, múinteoirí, agus foghlaimeoirí féin-mhúinte a bhfuil modhanna foghlama IS dírithe de dhíth orthu le haghaidh mínithe, ceisteanna, leideanna, tráthanna ceiste, spléachchártaí, aiseolas, agus pleanáil staidéir."
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "Tá inspir eagraithe ina mhodhanna dírithe amhail teagasc Sócraiteach, leideanna obair bhaile, tráthanna ceiste, spléachchártaí, aiseolas scríbhneoireachta, léirmheas foinsí, agus pleanáil staidéir."
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "Ligeann modhanna poiblí inspir do mhúinteoirí an táirge a mheas trí fhíorshreafaí foghlama sula smaoiníonn siad ar imlonnú scoile nó ar chonair sheomra ranga oiriúnaithe."
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "Post"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "Coinnigh comhráite príobháideacha sábháilte amach as dromchlaí fionnachtana agus lua poiblí."
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "Coinnigh an seisiún dírithe ar fhianaise foghlama, ní ar bhailiú freagraí éighníomhach."
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "foghlaim rud ar bith le IS"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "Foghlaim trí thógáil"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "Conair foghlama"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "Sreabhadh oibre foghlama"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "Déan mearbhall níos éasca le plé"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "Déan cinnte go gcríochnaíonn gach seisiún foghlama le tástáil, déantán, nó céim athbhreithnithe."
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "Déan an nós inmharthana"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "Mód"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "Bog ó thástáil phoiblí go himlonnú scoile"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "Bog ceisteanna príobháideachais, rochtana, agus imlonnaithe atá sonrach don scoil chuig conair na scoileanna."
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "Ainmnigh an staid foghlama."
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "Níl. Tá leathanaigh phoiblí innéacsaithe, ach níl comhráite príobháideacha sábháilte san áireamh i léarscáil an tsuímh, i gcomhaid llms, ná in innéacs ábhair IS."
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "Oscail mód poiblí dírithe."
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "Oscail mód poiblí, tástáil iompar an dalta, agus scrúdaigh an gcuireann sé ceisteanna, an dtugann sé leideanna, an gcuireann sé tráthanna ceiste, nó an ndéanann sé léirmheas mar is cuí."
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "Oscail conair lucht féachana"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "Oscail mód"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "Oscail conair"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Oscail an léarscáil foghlama"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "Oscail an bealach seo"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "Oscail sreabhadh oibre"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "Is minic a bhíonn tuismitheoirí ag iarraidh cabhrú gan smacht a ghlacadh. Tugann inspir modhanna poiblí do theaghlaigh a dhéanann iompar foghlama infheicthe: leideanna, ceisteanna, míniú ar ais, athbhreithniú, agus pleanáil staidéir."
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "Greamaigh an cheist, cad a thriail tú, agus an pointe greamaithe. Iarr an leid úsáideach is lú, ní an freagra deiridh."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Cleachtadh"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "Taispeánann leathanaigh phoiblí iompar táirge, ní obair phríobháideach daltaí."
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "Léigh treoir"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "Réidh leis an gcéad mhód a thriail?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "Déan taighde gan an snáithe a chailleadh"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "Athbhreithniú"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "uirlis foghlama IS shábháilte do dhaltaí"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "Intinn chuardaigh"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "foghlaimeoir féin-mhúinte"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "Tá móiminteam agus struchtúr de dhíth ar fhoghlaimeoirí féin-mhúinte. Cabhraíonn inspir le fiosracht a iompú ina conair: mínigh, tóg, tástáil, athbhreithnigh, agus lean ar aghaidh."
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "Tosaigh ábhar ó na chéad phrionsabail"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Tosaigh ag foghlaim"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "Tosaigh le míniú simplí, ansin cuir ceisteanna Sócraiteacha go dtí gur féidir leat é a mhíniú ar ais."
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "Tosaigh le Learn Anything le haghaidh míniú simplí, Homework Coach le haghaidh tasc greamaithe, nó Flashcard Builder nuair is é athbhreithniú an sprioc."
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "Tosaigh le treoir phoiblí, ansin oscail an mód ceart."
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "Tosaigh leis an mód a mheaitseálann an nóiméad."
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "Tosaigh leis na modhanna poiblí, ansin úsáid leathanach na scoileanna chun céimeanna imlonnaithe, cásanna úsáide, agus teorainneacha muiníne a athbhreithniú."
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "Teastaíonn frámaíocht dhifriúil ó obair bhaile daltaí, tacaíocht tuismitheoirí, measúnú múinteoirí, agus féin-staidéar."
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "Teastaíonn cabhair thapa ó dhaltaí, ach caithfidh an chabhair an smaointeoireacht a fhágáil ina lámha fós. Treoraíonn inspir nóiméid staidéir choitianta isteach i modhanna poiblí dírithe seachas i mbosca freagraí cineálach amháin."
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "Cuardaíonn daltaí, tuismitheoirí, múinteoirí, agus foghlaimeoirí féin-mhúinte rudaí difriúla. Treoraíonn na leathanaigh seo gach lucht féachana chuig an mód poiblí, treoir, agus sreabhadh oibre staidéir ceart."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Tacaigh le scríbhneoireacht agus guth á chaomhnú"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Teastaíonn níos mó ná chatbot cineálach ó mhúinteoirí. Teastaíonn iompraíochtaí foghlama intuartha uathu: ceisteanna a chur, réasúnaíocht a sheiceáil, cleachtadh a ghiniúint, guth an dalta a chaomhnú, agus míthuiscintí a dhéanamh infheicthe."
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "Déanann leathanaigh lucht féachana an t-iompar foghlama atáthar ag súil leis soiléir ionas go dtosaíonn an chéad seisiún le breithiúnas níos fearr."
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "Na cuardaigh lucht féachana a bhfuil an mol seo tógtha lena bhfreagairt."
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "Ní nochtann na leathanaigh comhráite príobháideacha. Eagraíonn siad modhanna poiblí, prasaí, treoracha, sreafaí oibre, agus teorainneacha sábháilteachta ionas gur féidir le foghlaimeoir tosú san áit cheart."
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "Is féidir leis an teagascóir IS céanna a bheith ina leid obair bhaile, ina lúb míniú-ar-ais faoi mhaoirseacht tuismitheora, ina dhromchla measúnaithe múinteora, nó ina chóitseálaí féin-staidéir. Ba chóir don leathanach é sin a dhéanamh soiléir."
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "Na cuardaigh a bhfuil an leathanach seo deartha lena bhfreagairt."
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "Ní faisnéis a aimsiú amháin dúshlán an fhéin-staidéir. Is é an chéad ghníomh ceart eile a roghnú agus fios a bheith agat an bhfanann an smaoineamh i ndáiríre."
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "Ní fhágann na leathanaigh SEO is láidre foghlaimeoir sáinnithe. Ceanglaíonn siad intinn an lucht féachana le conairí, sreafaí oibre, treoracha, agus athbhreithniú in-athúsáidte."
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "Ní cóipeáil freagraí an sreabhadh oibre dalta is láidre. Is lúb é: mínigh an pointe greamaithe, cuir ceist níos fearr amháin, faigh leid, bain triail eile as, ansin athbhreithnigh an botún."
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "Is pointí iontrála beo d’aíonna iad seo. Tá siad poiblí agus innéacsaithe, agus fanann comhráite príobháideacha úsáideoirí lasmuigh de léarscáil an tsuímh agus comhaid fionnachtana IS."
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "Tá na frásaí seo infheicthe d’fhoghlaimeoirí agus san áireamh i bhfionnachtain struchtúrtha ionas gur féidir le hinnill freagraí cuspóir sonrach an lucht féachana ar an leathanach a thuiscint."
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "Déan tráth na gceist nó spléachchárta den mhearbhall sula dtéann tú ar aghaidh."
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "Déan athbhreithniú de bhotúin"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "Déan lúb foghlama iomlán den chéad chliceáil."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Múinteoireacht phearsantaithe"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "Tuig topaic roimh an scrúdú"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "Úsáid mód atá tiúnáilte do leidí, ceisteanna, tráthanna ceist, spléachchártaí, aiseolas scríbhneoireachta, nó pleanáil."
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "Úsáid IS le haghaidh leidí, mínithe, seiceálacha botún, agus lúba athbhreithnithe. Ná hiarr air freagra deiridh a tháirgeadh nach féidir leat a mhíniú."
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "Úsáid Code Tutor nó Project Coach chun sprioc doiléir a iompú ina céim bheag intástáilte eile."
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "Úsáid sreafaí oibre leid ar dtús agus míniú ar ais le haghaidh tacaíocht obair bhaile."
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "Úsáid Homework Coach chun leid a iarraidh, ansin iarr ar an bhfoghlaimeoir an chéad bhogadh eile a mhíniú."
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "Úsáid inspir mar theagascóir IS saor in aisce do dhaltaí: leidí obair bhaile, ceisteanna Sócraiteacha, seiceálacha céime matamaitice, aiseolas scríbhneoireachta, tráthanna ceist, spléachchártaí, agus ullmhúchán scrúdaithe."
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "Úsáid inspir chun aon rud a fhoghlaim go neamhspleách le mínithe, teagasc códaithe, cóitseáil tionscadail, cabhair taighde, mapaí coincheapa, pleananna staidéir, agus tacaíocht nósanna."
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "Úsáid Learn Anything chun samhail níos simplí, smaointe réamhriachtanacha, agus samplaí ag an leibhéal ceart a fháil."
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "Úsáid tuairiscí mód poiblí chun an t-iompar a roghnú sula dtosaíonn seisiún."
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "Úsáid modhanna tráth na gceist agus spléachchártaí don chuimhne ghníomhach, ansin cuir míreanna caillte isteach san athbhreithniú."
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "Úsáid tráthanna ceist agus spléachchártaí chun ceisteanna caillte a dhéanamh infheicthe agus in-athdhéanta."
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "Úsáid tráthanna ceist, spléachchártaí, agus ceisteanna Sócraiteacha ionas go dtaispeánann an foghlaimeoir a bhfuil tuiscint aige air."
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "Úsáid Research Assistant, Source Critic, agus Concept Map Builder chun éilimh agus fianaise a eagrú."
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "Úsáid cáineadh foinsí le haghaidh éileamh a d’fhéadfá a lua nó gníomhú orthu."
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "Úsáid Study Plan Builder agus Habit Coach chun gnáthamh a thógáil ar féidir leis tosú arís tar éis laethanta caillte."
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "Úsáid Study Plan Builder nó Habit Coach chun seisiúin bheaga agus atosuithe a dhéanamh infheicthe."
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "Úsáid Study Plan Builder chun sprioc bheag a roghnú, ansin úsáid tráthanna ceist, spléachchártaí, céimeanna tionscadail, nó mapaí coincheapa chun dul chun cinn a chruthú."
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "Úsáid leathanach na scoile chun sreafaí oibre saincheaptha, riachtanais rúndachta, agus céimeanna cur i bhfeidhm a iniúchadh."
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "Úsáid Writing Coach le haghaidh aiseolais ar struchtúr, soiléireacht, fianaise, agus tosaíochtaí athbhreithnithe."
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "Tá conradh soiléir ag foghlaim úsáideach IS."
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "An bhfuil an áit tosaigh is leithne uait?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "Cad é an sreabhadh oibre is fearr faoi mhaoirseacht tuismitheora?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "Cad ba cheart d’fhoghlaimeoir féinmhúinte a iarraidh ar dtús?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "Cad ba cheart do dhalta triail a bhaint as ar dtús?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "Cá háit ar cheart d’fhoireann scoile dul ina dhiaidh sin?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "Cé dó a bhfuil inspir?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "Cén fáth leathanaigh ar leith do lucht féachana éagsúla?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "Sea. Ní nascann leathanaigh lucht féachana ach le modhanna poiblí aoi, treoracha, tosaitheoirí prasa, cosáin foghlama, agus comhaid fionnachtana inléite ag IS. Fanann comhráite sábháilte príobháideacha eisiata."
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "Sea. Ligeann modhanna poiblí aoi do mhúinteoirí iompar foghlama a thástáil sula bpléitear imscaradh saincheaptha."
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "Sea. Osclaíonn modhanna poiblí aoi amhail Learn Anything, Homework Coach, Socratic Instruction, tráthanna ceist, spléachchártaí, agus aiseolas scríbhneoireachta go díreach."
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "Sea. Oibríonn modhanna poiblí do thopaicí scoile, scileanna gairmiúla, códú, taighde, tionscadail, agus gnáthaimh staidéir phearsanta."
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "Sea. Tá na modhanna poiblí aoi agus leathanaigh lucht féachana deartha ionas gur féidir le tuismitheoirí an t-iompar foghlama a iniúchadh sula mbraitheann siad air."
+    }
+  ]
+}

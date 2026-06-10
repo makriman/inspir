@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Yoruba",
+  "locale": "yo",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "Ṣé àwọn àwùjọ ayélujára léwu bí?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "Ṣé ó yẹ kí iṣẹ́ ilé wà?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "Ṣé wíwá kiri nínú òfurufú tọ́ sí i?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "Ṣàlàyé Ìdáhùn Mi"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "Lóye ìdí tí ìdáhùn kan fi tọ̀nà"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Lẹ́ mọ́ ìbéèrè kan, ìdáhùn rẹ, àti ìdáhùn tí a retí bí o bá ní í. Ọ̀rẹ́ rẹ yóò ṣàlàyé ìdí rẹ̀ yóò sì ràn ọ́ lọ́wọ́ láti yẹra fún àṣìṣe kan náà nígbà míràn."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "Lẹ́ mọ́ ìbéèrè náà àti ìdáhùn rẹ"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "Ìdánwò"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Lẹ́ mọ́ ìbéèrè kan, ìdáhùn rẹ, àti ìdáhùn tí a retí bí o bá ní í. Ọ̀rẹ́ rẹ yóò ṣàlàyé ìdí rẹ̀ yóò sì ràn ọ́ lọ́wọ́ láti yẹra fún àṣìṣe kan náà nígbà míràn."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣàwárí àwọn kókó-ẹ̀kọ́ ìdánwò tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Ọ̀nà yìí wà fún ṣíṣàlàyé ìdáhùn mi pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ẹ̀kọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "Lóye ìdí tí ìdáhùn kan fi tọ̀nà"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí góńgó rẹ"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Kí ló dé tí ìdáhùn àjẹmọ́-ìṣirò mi fi jẹ́ àṣìṣe?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "Ṣàlàyé àtúnṣe gírámà yìí"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "Mo yan B. Kí ló dé tí C fi tọ̀nà?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "Olùkọ́ Iṣẹ́ Ilé"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "Àwọn ìmọ̀ràn láìfúnni ní ìdáhùn tààrà"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "Jáde nínú ìdààmú iṣẹ́ ilé pẹ̀lú àwọn ìmọ̀ràn, àpẹẹrẹ, àti àwọn àyẹ̀wò tí yóò ràn ọ́ lọ́wọ́ láti ronú fúnra rẹ."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "Ìṣòro iṣẹ́ ilé wo ni o kọ̀ sí?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "Ìdánwò"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Jáde nínú ìdààmú iṣẹ́ ilé pẹ̀lú àwọn ìmọ̀ràn tó tọ́, àpẹẹrẹ, àyẹ̀wò, àti ìtọ́sọ́nà ní ìṣẹ̀sẹ̀."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n nílò ìrànlọ́wọ́ láti bẹ̀rẹ̀ ìṣòro kan, láti ṣàyẹ̀wò iṣẹ́, tàbí láti lóye àṣìṣe kan."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Olùkọ́ náà ń ṣètìlẹ́yìn fún ìrònú rẹ láì gba iṣẹ́ náà lọ́wọ́ rẹ, kí iṣẹ́ ìkẹyìn lè jẹ́ tirẹ̀."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "Wa igbese ti o tele"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "Loye asise naa"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "Se adaṣe iṣoro ti o jọra"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "Ran mi lọwọ lati bẹrẹ iṣoro ọrọ yii"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "Ṣayẹwo tesisi aroko mi"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "Fun mi ni itọkasi fun iṣoro fisiksi yii"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "Oluko Igbese Iṣiro"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "Ṣiṣẹ lori iṣiro ni igbese kan ni akoko kan"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "Yanju iṣiro nipa agbọye igbese kọọkan. Olukọ rẹ n ṣayẹwo iṣẹ rẹ, tọka awọn aṣiṣe, ati kọ igbẹkẹle."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "Iṣoro iṣiro wo ni o yẹ ki a ṣiṣẹ lori rẹ?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Ṣiṣẹ lori algebra, calculus, awọn iṣoro ọrọ, ati awọn imọran iṣiro ni igbese kan ni akoko kan pẹlu olukọ AI."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "Awọn akẹkọọ ti o fẹ lati rii idi ti igbese iṣiro kọọkan fi n ṣiṣẹ, kii ṣe lati da idahun kọ nikan."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Ilana naa n ṣayẹwo igbese kọọkan, tọka awọn aṣiṣe, ati so awọn ilana pọ mọ imọran naa."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "Yan igbese akọkọ"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "Ṣayẹwo igbese kọọkan"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "Ṣalaye idi ti ọna naa fi n ṣiṣẹ"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "Yanju 2x + 5 = 17 pẹlu mi"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "Ran mi lọwọ pẹlu awọn idogba onigun mẹrin"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "Ṣalaye awọn itọsẹ ni igbese nipasẹ igbese"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "Alabaṣepọ Laabu Imọ-jinlẹ"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "Ṣawari awọn idanwo ati awọn imọran lailewu"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Gbero awọn ifihan ailewu, loye awọn oniyipada, sọ asọtẹlẹ awọn abajade, ati ronu lati inu ẹri bi onimọ-jinlẹ."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Ero imọ-jinlẹ tabi idanwo wo ni a n ṣawari?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Ṣe ètò àwọn àfihàn tó wà láìléwu, lóye àwọn oníyípadà, sọ tẹ́lẹ̀ ohun tó máa ṣẹlẹ̀, kí o sì fi ẹ̀rí ṣàlàyé bíi onímọ̀ sáyẹ́ǹsì."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tó ń ṣàwárí àwọn kókó-ọ̀rọ̀ STEM tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Ọ̀nà yìí ni a ṣe àtúnṣe rẹ̀ fún alábàákẹ́gbẹ́ nínú yàrá sáyẹ́ǹsì pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ìkẹ́kọ̀ọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "Ṣàwárí àwọn àdánwò àti àwọn kókó-ọ̀rọ̀ láìléwu"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi tí o fẹ́ dé"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "Ṣe àpẹẹrẹ àdánwò ìdàgbàsókè ewéko"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "Ṣàlàyé àwọn acids àti bases"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "Kí ló máa ṣẹlẹ̀ bí a bá yí ìwọ̀n ìgbóná-ayé padà?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "Olùkọ́ Ìkọ̀wé"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "Ṣètò, kọ àkọsílẹ̀, ṣàtúnṣe, kí o sì mú kí ìkọ̀wé rẹ lágbára"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "Ṣe àtúnṣe àwọn àpilẹ̀kọ, ìtàn, ìfìwéránṣẹ́, àti àwọn àríyànjiyàn pẹ̀lú àbájáde tó wà lórí kókó tí kò sì yí ohùn rẹ padà."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "Kí ni o ń kọ?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "Ìbánisọ̀rọ̀"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Ṣe àtúnṣe ìkọ̀wé pẹ̀lú ètò, àtúnṣe, ìṣètò, àti àbájáde tó wà lórí kókó tí kò sì yí ohùn rẹ padà."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tó ń kọ àwọn àpilẹ̀kọ, ìtàn, ìfìwéránṣẹ́, àwọn àkọsílẹ̀ ẹ̀bẹ̀, tàbí àríyànjiyàn."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Olùkọ́ náà máa ń fún ọ ní àwọn ohun tó yẹ kí o ṣàtúnṣe àti àwọn àpẹẹrẹ ṣáájú àti lẹ́yìn láìdípò ohùn rẹ."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "Ṣe àlàyé kókó rẹ"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "Ṣe àtúnṣe ìṣètò"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "Ṣàtúnṣe pẹ̀lú ìdí tó wà lẹ́yìn rẹ̀"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "Ṣe àtúnṣe ìbẹ̀rẹ̀ àpilẹ̀kọ mi"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "Ràn mí lọ́wọ́ láti ṣètò ìtàn kan"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "Mú kí ìpínrọ̀ yìí ṣe kedere"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "Alábàáṣiṣẹ́ Ìwé-kíkà"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "Kàwé, ṣe àkópọ̀, kí o sì béèrè nípa àwọn ọ̀rọ̀"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Mú ẹsẹ-ìwé tàbí èrò ìwé wá, kí o sì mú òye rẹ pọ̀ sí i nípasẹ̀ àkópọ̀, ìtumọ̀ ọ̀rọ̀, ìfọkànbalẹ̀, àti ìjíròrò."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "Kí ni à ń kà?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "Ìbánisọ̀rọ̀"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Mú ẹsẹ-ìwé tàbí èrò ìwé wá, kí o sì mú òye rẹ pọ̀ sí i nípasẹ̀ àkópọ̀, ìtumọ̀ ọ̀rọ̀, ìfọkànbalẹ̀, àti ìjíròrò."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣàwárí àwọn kókó-ọ̀rọ̀ ìbánisọ̀rọ̀ tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Àwòṣe yìí wà fún alábàáṣiṣẹ́ ìwé-kíkà pẹ̀lú àwọn ìránnilétí, àpẹẹrẹ, àti ọ̀nà ìkẹ́kọ̀ọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "Kàwé, ṣe àkópọ̀, kí o sì béèrè nípa àwọn ọ̀rọ̀"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìránnilétí"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi tí o fẹ́ dé"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "Ràn mí lọ́wọ́ láti lóye ẹsẹ-ìwé yìí"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "Ṣe àkópọ̀ orí kejì"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "Béèrè àwọn ìbéèrè nípa ewì yìí lọ́wọ́ mi"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "Olùkọ́ Ọ̀rọ̀-ìtumọ̀"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "Kọ́ àwọn ọ̀rọ̀ nínú àyíká-ọ̀rọ̀ wọn"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Kọ́ ọ̀rọ̀-ìtumọ̀ pẹ̀lú ìtumọ̀, àpẹẹrẹ, àwọn àmì ìpè-ọ̀rọ̀, àwọn ọ̀nà ìrántí, àti ìdánwò kíákíá."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "Àwọn ọ̀rọ̀ tàbí kókó-ọ̀rọ̀ wo ni ó yẹ kí á ṣe àtúnyẹ̀wò?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "Ìbánisọ̀rọ̀"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Kọ́ ọ̀rọ̀-ìtumọ̀ pẹ̀lú ìtumọ̀, àpẹẹrẹ, àwọn àmì ìpè-ọ̀rọ̀, àwọn ọ̀nà ìrántí, àti ìdánwò kíákíá."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣàwárí àwọn kókó-ọ̀rọ̀ ìbánisọ̀rọ̀ tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Àwòṣe yìí wà fún olùkọ́ ọ̀rọ̀-ìtumọ̀ pẹ̀lú àwọn ìránnilétí, àpẹẹrẹ, àti ọ̀nà ìkẹ́kọ̀ọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "Kọ́ àwọn ọ̀rọ̀ nínú àyíká-ọ̀rọ̀ wọn"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìránnilétí"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi-afẹ́ẹ́ rẹ"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "Ọ̀rọ̀-ìtumọ̀ SAT"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "Àwọn ọ̀rọ̀ Gẹ̀ẹ́sì fún iṣẹ́-òwò"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "Àwọn ọ̀rọ̀ nípa ojú-ọjọ́"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "Ìṣeré-ìkópa Èdè"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "Ṣe àṣeṣe àwọn ìjíròrò gidi"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Ṣe àṣeṣe èdè nínú àwọn ipò gidi bíi ilé-oúnjẹ, ìfọ̀rọ̀wánilẹ́nuwò, ìrìn-àjò, àti ìgbésí-ayé ojoojúmọ́, pẹ̀lú àtúnṣe lẹ́yìn ìgbà kọ̀ọ̀kan."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "Èdè wo àti ipò wo?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "Ìbánisọ̀rọ̀"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Ṣe àṣeṣe èdè nínú àwọn ipò gidi bíi ilé-oúnjẹ, ìfọ̀rọ̀wánilẹ́nuwò, ìrìn-àjò, àti ìgbésí-ayé ojoojúmọ́, pẹ̀lú àtúnṣe lẹ́yìn ìgbà kọ̀ọ̀kan."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣàwárí àwọn kókó-ọ̀rọ̀ ìbánisọ̀rọ̀ tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Ọ̀nà yìí wà fún ìṣeré-ìkópa èdè pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ìkẹ́kọ̀ọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "Ṣe àṣeṣe àwọn ìjíròrò gidi"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi-afẹ́ẹ́ rẹ"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "Ìṣeré-ìkópa ní ilé-oúnjẹ Sípáníìṣì"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "Ìjíròrò ní pápá-ọkọ̀-òfurufú ti Faransé"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "Ìdúnàádúrà ní ọjà Híndì"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "Àṣeṣe Ìsọ̀rọ̀"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "Ṣe àṣeṣe ní ohùn rara pẹ̀lú àwọn ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Múra sílẹ̀ fún àwọn ọ̀rọ̀-sísọ, ìfihàn, ìfọ̀rọ̀wánilẹ́nuwò, tàbí àwọn ìdánwò ẹnu pẹ̀lú àwọn ìtọ́sọ́nà, àkókò, àti àbájáde lórí ètò."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "Kí ni o ń múra sílẹ̀ láti sọ?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "Ìbánisọ̀rọ̀"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Múra sílẹ̀ fún àwọn ọ̀rọ̀-sísọ, ìfihàn, ìfọ̀rọ̀wánilẹ́nuwò, tàbí àwọn ìdánwò ẹnu pẹ̀lú àwọn ìtọ́sọ́nà, àkókò, àti àbájáde lórí ètò."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń wá àwọn kókó-ọ̀rọ̀ ìbánisọ̀rọ̀ tí wọ́n sì fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Àwọn ọ̀nà yìí wà fún ìdánilẹ́kọ̀ọ́ ìsọ̀rọ̀ pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ìkẹ́kọ̀ọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "Ṣe àtúnyẹ̀wò ní ohùn rara pẹ̀lú àwọn ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi tí o fẹ́ dé"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "Ṣe àtúnyẹ̀wò ìṣàfihàn ilé-ìwé mi"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "Ṣe àwàdà ìdánilẹ́kọ̀ọ́ ìsọ̀rọ̀ IELTS"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "Ràn mí lọ́wọ́ láti dáhùn àwọn ìbéèrè ìfọ̀rọ̀wánilẹ́nuwò"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "Ètò Ìmúrasílẹ̀ fún Àdánwò"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Sọ ètò ẹ̀kọ́ di ètò ìkẹ́kọ̀ọ́"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Kọ ètò àdánwò tó ṣeé ṣe láti ọjọ́, ètò ẹ̀kọ́, àwọn agbára, àti àwọn kúlẹ̀kúlẹ̀ tí o kò mọ̀ dáadáa."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "Àdánwò wo ni o ń múra sílẹ̀ fún?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "Ìṣètò"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Sọ ètò ẹ̀kọ́, ọjọ́ àdánwò, àkókò, àti àwọn kúlẹ̀kúlẹ̀ tí o kò mọ̀ dáadáa di ètò ìkẹ́kọ̀ọ́ tó wúlò."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n nílò ètò tó ṣe ìwọ̀ntúnwọ̀nsì láàárín àtúnyẹ̀wò, ìdánilẹ́kọ̀ọ́, ìgbọ́kànlé, àti ìgbésí ayé gidi."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Ètò náà máa ń fi àwọn kúlẹ̀kúlẹ̀ tí o kò mọ̀ dáadáa ṣáájú, ó máa ń fi àwọn àtúnyẹ̀wò kún un, ó sì máa ń ṣètò ọ̀nà mìíràn fún àwọn ọjọ́ tí o bá pàdánù."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "Fi àwọn kókó-ọ̀rọ̀ ṣáájú"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "Ṣètò àtúnyẹ̀wò"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "Tọpa àwọn ibi tí ó lè nira"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "Ṣètò ọ̀sẹ̀ méjì fún ẹ̀kọ́ ìmọ̀-ẹ̀dá (biology)"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "Ṣe ètò àtúnyẹ̀wò JEE"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "Ràn mí lọ́wọ́ láti múra sílẹ̀ fún àdánwò ìparí"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "Olùkọ́ Flashcard"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "Ṣe àwọn káàdì ọlọ́gbọ́n fún ìrántí"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Sọ àwọn àkọsílẹ̀ tàbí àkòrí di káàdì ìrántí (flashcards) tó ṣe kedere pẹ̀lú àwọn ìdáhùn, àwọn ìdẹkùn, àti àwọn ìránnilétí fún àtúnyẹ̀wò."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "Kí ni ó yẹ kí ó di káàdì ìrántí?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "Ìdánwò"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Sọ àwọn àkọsílẹ̀ tàbí àkòrí di káàdì ìrántí tó dá lórí kókó pẹ̀lú àwọn àmì, ìdáhùn, àpẹẹrẹ, àti àwọn ìdẹkùn tó wọ́pọ̀."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tó ń múra sílẹ̀ fún ìdánwò, àwọn tó ń kọ́ èdè, àti ẹnikẹ́ni tó ń lo ìlànà ìrántí."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Àwọn káàdì máa ń béèrè ohun kan ní ẹ̀ẹ̀kan, wọ́n sì ní àwọn ìdẹkùn nínú kí àtúnyẹ̀wò lè mú kí o lóye kòkó ọ̀rọ̀, kì í ṣe kí o kàn mọ̀ ọ́n lójú lásán."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "Ṣẹ̀dá àwọn káàdì ìrántí"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "Fi àwọn ìdáhùn hàn nígbà tó bá yẹ"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "Ṣàtúnyẹ̀wò àwọn ohun tó o kò mọ̀ ní kíákíá"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "Ṣe àwọn káàdì ìrántí fún mitosis"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "Sọ àkọsílẹ̀ yìí di ìbéèrè àti ìdáhùn"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "Ṣẹ̀dá àwọn káàdì ìrántí nípa ẹ̀kọ́ ilẹ̀ ayé"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "Ààfin Ìrántí"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "Rántí àwọn èrò pẹ̀lú àwọn ibi tó ṣe kedere"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "Sọ àwọn òtítọ́, àtòjọ, ọ̀rọ̀ sísọ, tàbí ìtẹ̀lé nǹkan di àwọn àwòrán ọpọlọ tó rọrùn láti rántí."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "Kí ni o nílò láti rántí?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "Ìdánwò"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "Sọ àwọn òtítọ́, ọ̀rọ̀ sísọ, àtòjọ, tàbí ìtẹ̀lé nǹkan di àwọn àwòrán tó rọrùn láti rántí, èyí tí yóò mú kí ó rọrùn láti rántí nǹkan nígbà ìkẹ́kọ̀ọ́ àti ìdánwò."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tó ń kọ́ àwọn èrò tó tẹ̀ lé ara wọn, ọ̀rọ̀, ọ̀rọ̀ sísọ, àgbékalẹ̀, tàbí òtítọ́ tó nílò àmì ìrántí tó lágbára."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "Ọ̀nà yìí ń ṣe àwọn ibi, ọ̀nà, àti àmì ìrántí tó ṣe kedere dípò kí ó sọ fún ọ láti tún àkọsílẹ̀ kà."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "Yan ọ̀nà kan"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "Fi àwọn àmì ìrántí tó ṣe kedere sílẹ̀"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "Ṣe àtúnyẹ̀wò ìrántí"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "Rántí àwọn pílánẹ́ẹ̀tì"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "Ṣe àkópọ̀ ìlànà ọ̀rọ̀ sísọ ní orí"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "Kọ́ ẹ̀ka ìmọ̀ ẹ̀dá alààyè"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "Àtúnyẹ̀wò Tí A Pín Sákókò"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "Ṣe àtúnyẹ̀wò kí o tó gbàgbé"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "Ṣètò kí o sì ṣe àwọn àtúnyẹ̀wò kánkán tí yóò mú kí ìrántí pẹ́ pẹ́ lágbára."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "Kí ni ó yẹ kí á ṣe àtúnyẹ̀wò rẹ̀?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "Ìdánwò"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "Ṣètò àwọn àtúnyẹ̀wò kánkán, padà sí àwọn èrò tí kò yé ọ dáadáa, kí o sì mú kí ìrántí pẹ́ pẹ́ lágbára pẹ̀lú ìtọ́sọ́nà AI fún àtúnyẹ̀wò tí a pín sákókò."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí ó máa ń gbàgbé lẹ́yìn kíkàwé tí wọ́n sì nílò ìlànà àtúnyẹ̀wò tó wúlò fún àwọn èrò, ọ̀rọ̀, tàbí ohun èlò ìdánwò."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Olùkọ́ náà yí àwọn àṣìṣe àti iyèméjì padà sí ìtòlẹ́sẹẹsẹ àtúnyẹ̀wò dípò kí ó jẹ́ àkópọ̀ ọ̀rọ̀ lásán."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "Yan àwọn ohun tí yóò ṣe àtúnyẹ̀wò"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "Ṣètò ìrántí"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "Ṣe àtúnṣe àwọn àṣìṣe"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "Ṣe àtúnyẹ̀wò kẹ́mísítírì ti àná"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "Ṣe ètò àtúnyẹ̀wò fún ọjọ́ méje"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "Béèrè ìbéèrè lórí ọ̀rọ̀ tuntun lẹ́ẹ̀kan sí i"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "Olùkọ́lé Àwòrán Èrò"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "So àwọn èrò pọ̀ nípasẹ̀ ọ̀rọ̀"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Ṣe àwòrán bí àwọn èrò ṣe jẹ mọ́ra, láti àwọn ìdí àti àbájáde sí àwọn ẹ̀ka, àpẹẹrẹ, àti àwọn ìtakora."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "Èrò wo ni ó yẹ kí á ṣe àwòrán rẹ̀?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "Ìrònú"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Ṣe àwòrán bí àwọn èrò ṣe jẹ mọ́ra, láti àwọn ìdí àti àbájáde sí àwọn ẹ̀ka, àpẹẹrẹ, àti àwọn ìtakora."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí ó ń ṣàwárí àwọn èrò ìrònú tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Ìlànà yìí wà fún olùkọ́lé àwòrán èrò pẹ̀lú àwọn ìránnilétí, àpẹẹrẹ, àti ìṣàn iṣẹ́ ẹ̀kọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "So àwọn èrò pọ̀ ní ọ̀nà àwòrán nínú ọ̀rọ̀"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi tí o fẹ́ dé"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "Ṣe àwòrán ìyípadà ojú-ọjọ́"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "So àwọn èrò ìṣirò algebra pọ̀"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "Kọ́ àwòrán ti ẹ̀tọ́ ìjọba tiwantiwa"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "Dókítà Ìrònú Òdì"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "Wá àwọn èrò tí kò tọ́ kí o sì tún wọn ṣe"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Sọ ohun tí o rò pé ó ń ṣẹlẹ̀, ọ̀rẹ́ rẹ yóò sì ṣàyẹ̀wò àwọn èrò tí kò tọ́ pẹ̀lú àwọn ìbéèrè rírọrùn."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Èrò wo ni ó dà bíi pé ó ṣòro tàbí tí ó ń dáni láàmú?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "Ìrònú"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Sọ ohun tí o rò pé ó ń ṣẹlẹ̀, ọ̀rẹ́ rẹ yóò sì ṣàyẹ̀wò àwọn èrò tí kò tọ́ pẹ̀lú àwọn ìbéèrè rírọrùn."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣèwádìí nípa ìrònú tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò ìdáhùn lásán."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Ọ̀nà yìí ni a ṣe àtúnṣe rẹ̀ fún dókítà ìrònú òdì pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ìkẹ́kọ̀ọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "Wá àwọn èrò tí kò tọ́ kí o sì tún wọn ṣe"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi tí o fẹ́ dé"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "Mo rò pé àwọn nǹkan tó wúwo máa ń yára ṣubú"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "Mi ò lóye àwọn nọ́mbà tí ó kéré ju òdo lọ"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "Kí ló dé tí òfin gírámà yìí fi jẹ́ àjèjì?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "Olùkọ́ Feynman"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "Ṣàlàyé rẹ̀ ní ọ̀nà rírọrùn títí yóò fi yé ọ dáadáa"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Gbìyànjú láti ṣàlàyé èrò kan ní ọ̀nà rírọrùn. Olùkọ́ rẹ yóò rí àwọn àlàfo, yóò béèrè ìbéèrè, yóò sì ràn ọ́ lọ́wọ́ láti tún àlàyé náà kọ́."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "Kí ni o fẹ́ ṣàlàyé padà fún mi?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "Ìrònú"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Gbìyànjú láti ṣàlàyé èrò kan ní ọ̀nà tí ó rọrùn. Olùkọ́ rẹ yóò rí àwọn àlàfo, yóò béèrè àwọn ìbéèrè, yóò sì ràn ọ́ lọ́wọ́ láti tún àlàyé náà kọ́."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣàwárí àwọn kókó-ẹ̀kọ́ ìrònú tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Ipò yìí wà fún olùkọ́ Feynman pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ẹ̀kọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "Ṣàlàyé rẹ̀ ní ọ̀nà tí ó rọrùn títí yóò fi wọ̀ ọ́ lára"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi tí o fẹ́ dé"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "Màá ṣàlàyé agbára ìfà-nkan-mọ́lẹ̀ (gravity)"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "Dán òye mi wò lórí ìgbàlà (inflation)"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "Ràn mí lọ́wọ́ láti sọ ìpadàbọ̀ (recursion) di ohun tó rọrùn"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "Aṣàwòṣe Ìkẹ́kọ̀ọ́ Ọ̀ràn"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "Kọ́ ẹ̀kọ́ nípasẹ̀ àwọn ìpinnu tó wà nínú ayé gidi"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Wọ inú ọ̀ràn gidi kan, ṣe àwọn ìpinnu, rí àwọn àbájáde rẹ̀, kí o sì kọ́ ẹ̀kọ́ nípa ìlànà tó wà lẹ́yìn ìyànfẹ́ kọ̀ọ̀kan."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "Irú ọ̀ràn wo ni ó yẹ kí á ṣe àwòṣe rẹ̀?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "Ìbọmi"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Wọ inú ọ̀ràn gidi kan, ṣe àwọn ìpinnu, rí àwọn àbájáde rẹ̀, kí o sì kọ́ ẹ̀kọ́ nípa ìlànà tó wà lẹ́yìn ìyànfẹ́ kọ̀ọ̀kan."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣàwárí àwọn kókó-ẹ̀kọ́ ìbọmi tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Ipò yìí wà fún aṣàwòṣe ìkẹ́kọ̀ọ́ ọ̀ràn pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ẹ̀kọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "Kọ́ ẹ̀kọ́ nípasẹ̀ àwọn ìpinnu tó wà nínú ayé gidi"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú àwọn àpẹẹrẹ ìtọ́sọ́nà"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà sí ibi tí o fẹ́ dé"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "Ọ̀ràn nípa ètò ìṣòwò"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "Ọ̀ràn nípa ìwà rere nínú ìmọ̀ ìṣègùn"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "Ọ̀ràn nípa ètò àyíká"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "Ìṣẹ̀lẹ̀ Ìṣeré-ipá"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "Ṣe àṣeyọrí nínú àwọn ìjíròrò tó nira ní ìgbésí ayé gidi"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Ṣe àṣeyọrí nínú ìdúnàádúrà, ìjàgboro, ìrànwọ́ fún oníbàárà, ìdarí, tàbí èyíkéyìí ìjíròrò tó ní kókó pàtàkì."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "Ìṣẹ̀lẹ̀ wo ni ó yẹ kí a ṣe ìṣeré-ipá rẹ̀?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "Ìbọmi"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Ṣe àṣeyọrí nínú ìdúnàádúrà, ìjàgboro, ìrànwọ́ fún oníbàárà, ìdarí, tàbí èyíkéyìí ìjíròrò tó ní kókó pàtàkì."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tí wọ́n ń ṣàwárí àwọn kókó-ọ̀rọ̀ ìbọmi tí wọ́n fẹ́ ìtọ́sọ́nà tó wúlò dípò àpótí ìdáhùn lásán."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Àwòṣe yìí wà fún ìṣẹ̀lẹ̀ ìṣeré-ipá pẹ̀lú àwọn ìtọ́sọ́nà, àpẹẹrẹ, àti ọ̀nà ìkẹ́kọ̀ọ́ tirẹ̀."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "Ṣe àṣeyọrí nínú àwọn ìjíròrò tó nira ní ìgbésí ayé gidi"
+    }
+  ]
+}

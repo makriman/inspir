@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Welsh",
+  "locale": "cy",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} | inspir"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "{value1} cynulleidfa llwybrau"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "Cwestiynau cyffredin {value1}"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "{value1} cyhoeddus modd entrypoints"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "{value1} cysylltiedig canllawiau"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "{value1} defnyddio cases"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "Free dysgu AI companion ar gyfer people teaching themselves."
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "Free tiwtor AI ar gyfer myfyrwyr who eisiau to understand, nid copy."
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "Good family AI workflow dylai gwneud y dysgwr more independent, nid more dependent. rhieni gall defnyddio tudalennau cyhoeddus to see beth each modd yw meant to do cyn child starts."
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "Parent-friendly canllaw to inspir's cyhoeddus AI moddau dysgu ar gyfer awgrymiadau gwaith cartref, esboniad, astudio routines, cardiau cof, a sgyrsiau dysgu mwy diogel."
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "Myfyriwr, rhiant, athro, a hunanddysgedig dysgwr often search ar gyfer y same tiwtor AI in different language. Separate pages gwneud y right defnyddio cases a safety boundaries clearer."
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "AI cod tutor ar gyfer beginners"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "AI cardiau cof ar gyfer children"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "AI cardiau cof ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "AI gwaith cartref coach ar gyfer athrawon"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "AI cymorth gwaith cartref ar gyfer fy child"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "AI cymorth gwaith cartref ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "Dysgu AI audience pages"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "Dysgu AI audience search intents"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "Dysgu AI by Audience"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "Dysgu AI companion ar gyfer adults"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "Dysgu AI ar gyfer myfyrwyr, rhieni, a athrawon"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "Dysgu AI ar gyfer myfyrwyr, rhieni, a athrawon | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "Cymorth dysgu AI y gall rhieni roi cynnig arno cyn ymddiried ynddo."
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "AI moddau dysgu ar gyfer athrawon who angen focused behavior."
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "Dysgu AI dylai fit y person defnyddio it."
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "Dysgu AI Tools ar gyfer athrawon"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "AI math cymorth ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "AI prosiect coach"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "AI cwis generator ar gyfer athrawon"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "AI Socratic tutor ar gyfer ystafell ddosbarth"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "AI astudio cymorth ar gyfer families"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "AI cynllun astudio builder"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "AI astudio planner ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "AI offer ar gyfer athrawon"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "Tiwtor AI ar gyfer rhieni"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "Tiwtor AI ar gyfer Rhieni a Families"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "Tiwtor AI ar gyfer self astudio"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "Tiwtor AI ar gyfer Self-Taught Dysgwyr"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "Tiwtor AI ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "Tiwtor AI ar gyfer athrawon"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Adborth ysgrifennu AI i fyfyrwyr"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "Yw cynulleidfa tudalennau cyhoeddus a indexable?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "Gofynnwch am Awgrym, mae gan y dysgwr explain y next cam, then defnyddio cwis neu cerdyn cof to gwirio whether yr idea stuck."
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "Gofynnwch am Awgrymiadau, checks, a feedback cyn asking ar gyfer finished ateb."
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "Gofynnwch am Prerequisites, a syml model, examples, a a common camddealltwriaeth."
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "Gofynnwch am Structure, evidence, a clarity feedback tra keeping y final draft yours."
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "Gofynnwch am Y prerequisite ideas, iaith glir model, un example, un ymarfer task, a un way to test understanding."
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "Gofynnwch Y dysgwr to explain beth changed ar ôl each awgrym."
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "Cynulleidfa"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "Cynulleidfa FAQ"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "Cynulleidfa llwybr dysgu"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "Audience pages let search engines a AI ateb engines distinguish myfyrwyr, rhieni, athrawon, a independent dysgwyr instead of flattening everyone i mewn i un generic page."
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "Cynulleidfa llwybrau"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "Audience llwybr"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "Yn ôl i lwybrau cynulleidfa"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "Boundaries"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "Boundary"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "Adeiladwch Calmer astudio habit"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "Gall inspir cymorth adults a hunanddysgedig dysgwyr?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "Gall rhieni try inspir cyn recommending it?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "Gall myfyrwyr defnyddio inspir heb signing in?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "Gall athrawon try inspir heb ysgol rollout?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "Gwiriwch Dealltwriaeth heb hovering"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "Dewiswch pwy sy’n dysgu, yna dewiswch yr ymddygiad cywir."
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "Crëwch Ymarfer heb leaking atebion"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "Different people angen different dysgu AI routes."
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "Peidiwch â Confuse a fast ateb gyda mastery."
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "Mae inspir publish child's private chats?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "Each audience path connects to cyhoeddus, crawlable dysgu surfaces."
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "EducationalAudience"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "End gyda evidence of dysgu."
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "Evaluate a modd cyn defnyddio it gyda dysgwyr"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "Eglurwch Every accepted cam back in eich own words."
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "Archwiliwch Cyhoeddus AI moddau dysgu athrawon gall defnyddio to evaluate Socratic tutoring, cwisiau, cardiau cof, adborth ysgrifennu, beirniadaeth ffynonellau, a classroom-ready llifoedd gwaith astudio."
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "Find y right inspir AI llif gwaith dysgu ar gyfer myfyrwyr, rhieni, athrawon, a hunanddysgedig dysgwyr."
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "Finish gyda explain-back, cwis, cerdyn cof, project cam, neu astudio routine."
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "Ar gyfer dysgwyr"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "Ar gyfer rhieni"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "Ar gyfer self-taught dysgwyr"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "Ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "Ar gyfer athrawon"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "Am ddim Tiwtor AI ar gyfer kids"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "Free tiwtor AI ar gyfer self astudio"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "Am ddim Tiwtor AI ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "Am ddim Tiwtor AI ar gyfer Myfyrwyr"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "Get cymorth gwaith cartref heb copying"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "Canllaw"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "Canllawiau a llifoedd gwaith"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "Helpu a child get unstuck"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Cartref"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "Sut gall myfyrwyr avoid cheating gyda AI?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "Sut do rwy’n avoid drifting between topics?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "Sut yw hwn different o giving myfyrwyr chatbot cyffredinol?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Sut mae'n gweithio"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "Gwellwch Ysgrifennu heb losing eich voice"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "Inspir yw ar gyfer myfyrwyr, rhieni, athrawon, a hunanddysgedig dysgwyr who angen focused AI moddau dysgu ar gyfer explanations, cwestiynau, awgrymiadau, cwisiau, cardiau cof, feedback, a astudio planning."
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "Inspir yw organized i mewn i focused moddau such as Socratic tutoring, awgrymiadau gwaith cartref, cwisiau, cardiau cof, adborth ysgrifennu, beirniadaeth ffynonellau, a astudio planning."
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "Inspir's cyhoeddus moddau let athrawon evaluate y product through real dysgu flows cyn considering ysgol deployment neu tailored classroom pathway."
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "Job"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "Cadw preifat saved conversations out o cyhoeddus discovery a citation surfaces."
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "Keep y session focused on dysgu evidence, nid passive casglu atebion."
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "Dysgu anything gyda AI"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "Dysgu by building"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "Llwybr dysgu"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "Llif gwaith dysgu"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "Gwneud confusion easier to talk about"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "Gwneud every dysgu session end gyda test, artifact, neu review cam."
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "Gwneud y habit survivable"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "Modd"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "Move o cyhoeddus testing to ysgol deployment"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "Move school-specific preifatrwydd, access, a deployment cwestiynau to yr ysgolion pathway."
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "Name y dysgu situation."
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "No. tudalennau cyhoeddus yw indexable, but private saved chats yw nid included in y sitemap, llms files, neu AI content index."
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "Agorwch Ffocysedig cyhoeddus modd."
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "Agorwch Cyhoeddus modd, test y myfyriwr behavior, a inspect whether it asks, awgrymiadau, cwisiau, neu critiques appropriately."
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "Agorwch Cynulleidfa llwybr"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "Agorwch Modd"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "Agorwch Llwybr"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Agor y map dysgu"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "Agor y llwybr hwn"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "Agor llif gwaith"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "Rhieni yw often trying to cymorth heb taking over. inspir gives families cyhoeddus moddau hynny gwneud dysgu behavior visible: awgrymiadau, cwestiynau, explain-back, review, a astudio planning."
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "Paste y cwestiwn, beth chi tried, a y stuck point. gofyn ar gyfer y smallest useful awgrym, nid y final ateb."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Ymarfer"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "Tudalennau cyhoeddus show product behavior, nid private myfyriwr work."
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "Darllen canllaw"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "Ready to try y first modd?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "Research heb losing y thread"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "Review"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "Safe Offeryn dysgu AI ar gyfer myfyrwyr"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "Bwriad chwilio"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "dysgwr hunanddysgedig"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "Hunanddysgedig dysgwyr angen momentum a structure. inspir helps turn curiosity i mewn i path: explain, build, test, review, a keep going."
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "Dechreuwch Topic o first principles"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Dechrau dysgu"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "Dechreuwch Gyda simple esboniad, then gofyn cwestiynau Socratig until chi gall explain it back."
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "Dechreuwch Gyda Learn Anything ar gyfer simple esboniad, Homework Coach ar gyfer stuck assignment, neu Flashcard Builder pan y goal yw review."
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "Dechreuwch Gyda cyhoeddus guidance, then open y right modd."
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "Dechreuwch Gyda y modd hynny matches y moment."
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "Dechreuwch Gyda y cyhoeddus moddau, then defnyddio yr ysgolion page to review deployment camau, defnyddio cases, a trust boundaries."
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "Myfyriwr gwaith cartref, rhiant cymorth, athro evaluation, a self-study pob angen different framing."
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "Myfyrwyr angen cymorth cyflym, but y cymorth still mae gan to leave y meddwl yn eu dwylo. inspir routes eiliadau astudio cyffredin i mewn i moddau cyhoeddus ffocysedig instead of un blwch ateb cyffredinol."
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "Myfyrwyr, rhieni, athrawon, a hunanddysgedig dysgwyr search ar gyfer different things. rhain pages llwybr each audience to y right cyhoeddus modd, canllaw, a llif gwaith astudio."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Cymorth writing tra preserving voice"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Athrawon angen more than chatbot cyffredinol. They angen predictable dysgu behaviors: gofyn cwestiynau, gwirio reasoning, generate ymarfer, preserve myfyriwr voice, a gwneud misconceptions visible."
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "Y audience pages gwneud yr expected dysgu behavior explicit so y first session starts gyda gwell judgment."
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "Y audience searches hwn hub yw built to ateb."
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "Y pages do nid expose private conversations. They organize cyhoeddus moddau, promptiau, canllawiau, workflows, a safety boundaries so dysgwr gall start in y right place."
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "Y same tiwtor AI gall be gwaith cartref awgrym, parent-supervised explain-back dolen, athro evaluation surface, neu self-study coach. y page dylai gwneud hynny clear."
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "Y searches hwn page yw designed to ateb."
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "Y self-study challenge yw nid just finding gwybodaeth. It yw choosing y next right action a knowing whether yr idea actually stuck."
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "Y strongest SEO pages do nid strand dysgwr. They connect yr audience intent to paths, workflows, canllawiau, a repeatable review."
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "Y strongest myfyriwr workflow yw nid copïo atebion. It yw dolen: explain y stuck point, gofyn un gwell cwestiwn, get awgrym, try again, then review y miss."
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "Rhain yw live guest entrypoints. They yw cyhoeddus a indexable, tra private user conversations stay outside sitemap a AI discovery files."
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "Rhain phrases yw visible to dysgwyr a included in structured discovery so AI ateb engines gall understand yr audience-specific diben of y page."
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "Trowch Confusion i mewn i cwis neu cerdyn cof cyn moving on."
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "Trowch Mistakes i mewn i review"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "Trowch Y first click i mewn i complete dolen ddysgu."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Gwersi tiwtora"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "Understand topic cyn y test"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "Defnyddiwch Modd tuned ar gyfer awgrymiadau, cwestiynau, cwisiau, cardiau cof, adborth ysgrifennu, neu planning."
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "Defnyddiwch AI ar gyfer awgrymiadau, explanations, mistake checks, a review dolenni. Do nid gofyn it to produce final ateb chi cannot explain."
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "Defnyddiwch Code Tutor neu Project Coach to turn vague goal i mewn i small testable next cam."
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "Defnyddiwch Hint-first a esbonio’n ôl llifoedd gwaith ar gyfer gwaith cartref cymorth."
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "Defnyddiwch Homework Coach to gofyn ar gyfer awgrym, then gofyn y dysgwr to explain y next move."
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "Defnyddiwch Inspir as free tiwtor AI ar gyfer myfyrwyr: awgrymiadau gwaith cartref, cwestiynau Socratig, math gwiriadau camau, adborth ysgrifennu, cwisiau, cardiau cof, a exam prep."
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "Defnyddiwch Inspir to dysgu anything independently gyda explanations, code tutoring, project coaching, research cymorth, concept maps, astudio plans, a habit cymorth."
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "Defnyddiwch Learn Anything to get simpler model, prerequisite ideas, a examples at y right level."
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "Defnyddiwch Cyhoeddus modd descriptions to choose y behavior cyn session starts."
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "Defnyddiwch Cwis a cerdyn cof moddau ar gyfer adfer gweithredol, then llwybr missed items i mewn i review."
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "Defnyddiwch Cwisiau a cardiau cof to gwneud missed cwestiynau visible a repeatable."
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "Defnyddiwch Cwisiau, cardiau cof, a cwestiynau Socratig so y dysgwr shows beth they understand."
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "Defnyddiwch Research Assistant, Source Critic, a Concept Map Builder to organize claims a evidence."
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "Defnyddiwch Beirniadaeth ffynonellau ar gyfer claims chi efallai cite neu act on."
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "Defnyddiwch Study Plan Builder a Habit Coach to build routine hynny gall restart ar ôl missed days."
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "Defnyddiwch Study Plan Builder neu Habit Coach to gwneud small sessions a restarts visible."
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "Defnyddiwch Study Plan Builder to choose small goal, then defnyddio cwisiau, cardiau cof, project camau, neu concept maps to prove progress."
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "Defnyddiwch Y ysgol page to explore custom workflows, confidentiality angen, a rollout camau."
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "Defnyddiwch Writing Coach ar gyfer adborth ar strwythur, eglurder, evidence, a revision priorities."
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "Useful dysgu AI mae gan clear contract."
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "Eisiau y broadest place to start?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "Beth yw’r best rhiant-supervised llif gwaith?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "Beth dylai a self-taught dysgwr gofyn first?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "Beth dylai a myfyriwr rhoi cynnig ar first?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "Lle dylai a ysgol team go next?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "Who yw inspir ar gyfer?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "Pam separate tudalennau ar gyfer different audiences?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "Ie. Audience pages link only to moddau cyhoeddus rwy’n westeion, canllawiau, promptiau cychwynnol, llwybrau dysgu, a AI-readable discovery files. Private saved chats remain excluded."
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "Ie. Moddau cyhoeddus rwy’n westeion let athrawon test dysgu behavior cyn discussing custom deployment."
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "Ie. Moddau cyhoeddus rwy’n westeion such as Learn Anything, Homework Coach, Socratic Instruction, cwisiau, cardiau cof, a adborth ysgrifennu open directly."
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "Ie. Cyhoeddus moddau work ar gyfer ysgol topics, proffesiynol skills, codio, research, projects, a personol arferion astudio."
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "Ie. Y moddau cyhoeddus rwy’n westeion a audience pages yw designed so rhieni gall inspect y dysgu behavior cyn relying on it."
+    }
+  ]
+}

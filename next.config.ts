@@ -22,6 +22,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  outputFileTracingIncludes: {
+    "/*": ["./translations/curated/**/*.json"],
+  },
   images: {
     remotePatterns: [
       {

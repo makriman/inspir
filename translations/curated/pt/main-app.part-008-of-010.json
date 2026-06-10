@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Portuguese",
+  "locale": "pt",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o treinador de cidadania, com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "Entenda direitos, governo e sociedade"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "Como um projeto de lei se torna lei?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "Explique os direitos fundamentais"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "O que um tribunal faz?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "Guia de Apreciação Artística"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "Observe mais de perto e perceba mais"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Explore obras de arte, estilos, artistas, escolhas visuais e o que torna uma imagem poderosa."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "Qual obra de arte, artista ou estilo?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "Criatividade"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Explore obras de arte, estilos, artistas, escolhas visuais e o que torna uma imagem poderosa."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de criatividade e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o guia de apreciação artística com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "Observe mais de perto e perceba mais"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "Explique o impressionismo"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "Como devo olhar para uma pintura?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "Compare a arte renascentista e a arte moderna"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "Treinador de Teoria Musical"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Entenda o som, o ritmo e a harmonia"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Aprenda notas, acordes, escalas, ritmo, ideias de treinamento auditivo e como as músicas são construídas."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "Em qual ideia musical devemos trabalhar?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "Criatividade"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Aprenda notas, acordes, escalas, ritmo, ideias de treinamento auditivo e como as músicas são construídas."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de criatividade e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o treinador de teoria musical com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Entenda som, ritmo e harmonia"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "Explique maior e menor"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "Como funcionam os acordes?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "Ensine o básico de ritmo"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "Reflexão de Mentalidade"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "Reflita sobre como você aprende"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Observe o que ajuda você a aprender, o que atrapalha e como se tornar um estudante mais forte."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "Sobre qual momento de aprendizado devemos refletir?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "Planejamento"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Observe o que ajuda você a aprender, o que atrapalha e como se tornar um estudante mais forte."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de planejamento que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para reflexão de mentalidade com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "Reflita sobre como você aprende"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "Por que evitei estudar?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "Reflita após uma prova ruim"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "Qual estratégia de aprendizado combina comigo?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "Mestre de Jogos de Aprendizado"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "Transforme o estudo em um desafio"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Faça o aprendizado parecer um jogo com missões, níveis, pontos, desafios e rodadas de chefão."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "O que deve se tornar um jogo de aprendizado?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "Prática"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Transforme o aprendizado em um jogo com missões, níveis, pontos, desafios e rodadas contra chefões."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de prática que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o mestre de jogos de aprendizagem com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "Transforme o estudo em um desafio"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "Transforme biologia em uma missão"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "Transforme vocabulário em níveis"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "Crie uma batalha contra chefão de matemática"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "Prática de Arguição"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "Prepare-se para exames orais"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Pratique arguições, exames orais, defesas de projetos e perguntas de acompanhamento rápidas com feedback tranquilo."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Para qual arguição ou exame oral você está se preparando?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "Prática"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Pratique arguições, exames orais, defesas de projetos e perguntas de acompanhamento rápidas com feedback tranquilo."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de prática que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para a prática de arguição com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "Prepare-se para exames orais"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "Praticar minha arguição de projeto de ciências"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "Faça-me perguntas de defesa de tese"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "Simulado de perguntas de exame prático"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "Temporizador de Estudo"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Temporizador Pomodoro persistente com alertas"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Execute sessões de foco e pausas que continuam contando enquanto você alterna entre chats, abas e miniaplicativos. Ele pode tocar em segundo plano quando uma sessão termina."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "Sobre o que deve ser esta sessão de foco?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Foco e Produtividade"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Execute sessões de foco e pausas que continuam contando enquanto você alterna entre chats, abas e miniaplicativos. Ele pode tocar em segundo plano quando uma sessão termina."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de foco e produtividade que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o temporizador de estudo com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Temporizador Pomodoro persistente com alertas"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "Iniciar uma sessão de biologia de 25 minutos"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "Definir um ritmo de trabalho profundo de 50/10"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "Acompanhar o foco na redação de um ensaio"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "Música para Foco"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "Áudio de foco em segundo plano que continua tocando"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Escolha áudio de foco gerado para leitura, escrita, resolução de problemas ou trabalho profundo. Ele continua tocando enquanto você alterna para outros chats."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "Que tipo de foco você deseja hoje?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "Foco e Produtividade"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Escolha áudio de foco gerado para leitura, escrita, resolução de problemas ou trabalho profundo. Ele continua tocando enquanto você alterna para outros chats."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de foco e produtividade que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para música para foco com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "Áudio de foco em segundo plano que continua tocando"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "Tocar música calma para foco na leitura"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "Configurar áudio para trabalho profundo"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "Usar sons de chuva para revisão"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "Quadro de Desenho/Esboço"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Pense através de diagramas e visuais simples"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Use o esboço como uma estratégia de aprendizagem: planeje diagramas, rotule mapas simples, explique processos ou transforme uma ideia confusa em um visual mais claro."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "O que devemos esboçar ou diagramar?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "Aprendizagem Visual"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Use o esboço como uma estratégia de aprendizagem: planeje diagramas, rotule mapas simples, explique processos ou transforme uma ideia confusa em um visual mais claro."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de aprendizagem visual que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o quadro de desenho/esboço com seus próprios prompts, exemplos e fluxo de aprendizagem."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Pense através de diagramas e visuais simples"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "Esboçar um diagrama de célula"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "Desenhar um gráfico de oferta e demanda"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "Mapear as causas da Primeira Guerra Mundial"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "Criador de Testes Práticos"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "Crie um teste completo a partir do seu material"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Transforme um tópico, programa ou anotações em um teste prático realista com seções, tempo, orientação de correção e etapas de revisão."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "O que o teste prático deve cobrir?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "Aprendizagem Ativa"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Transforme um tópico, programa ou anotações em um teste prático realista com seções, tempo, orientação de correção e etapas de revisão."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de aprendizagem ativa e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o construtor de testes práticos com seus próprios prompts, exemplos e fluxo de aprendizagem."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "Crie um teste completo a partir do seu material"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "Criar um teste de unidade de biologia"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "Fazer um teste prático de matemática mista"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "Criar uma prova de história no estilo de exame"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "Treinador de Análise de Imagens"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Raciocine através de capturas de tela, diagramas e imagens de lição de casa"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Descreva ou cole detalhes de uma imagem e obtenha ajuda para ler diagramas, gráficos, problemas, notas manuscritas ou evidências visuais."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "Descreva a imagem ou cole o que está visível"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "Ajuda com IA"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Descreva ou cole detalhes de uma imagem e obtenha ajuda para ler diagramas, gráficos, problemas, notas manuscritas ou evidências visuais."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de ajuda com IA e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o treinador de análise de imagens com seus próprios prompts, exemplos e fluxo de aprendizagem."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Raciocine através de capturas de tela, diagramas e imagens de lição de casa"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "Ajude a ler este diagrama"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "Analisar um gráfico do meu livro didático"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "Explique o que esta captura de tela está mostrando"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "Notas Cornell"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Estruture notas em dicas, detalhes e resumo"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Converta palestras, leituras ou anotações brutas no método Cornell com perguntas-chave, notas principais, resumo e lembretes de revisão."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "Cole as anotações ou dê um nome à lição"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "Organização"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Converta palestras, leituras ou anotações brutas no método Cornell com perguntas-chave, notas principais, resumo e lembretes de revisão."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de organização e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para notas Cornell, com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Estruture anotações em perguntas-chave, detalhes e resumo"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Transforme esta palestra em notas Cornell"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "Crie perguntas-chave para o capítulo 3"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "Resuma minhas anotações brutas"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "Gerador de Citações"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "Crie referências em formatos comuns"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Crie entradas de bibliografia em APA, MLA, Chicago, Harvard ou simples a partir de detalhes da fonte, verificando campos ausentes."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "Cole os detalhes da fonte ou informações da URL"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "Ajuda com IA"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Crie entradas de bibliografia em APA, MLA, Chicago, Harvard ou simples a partir de detalhes da fonte, verificando campos ausentes."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de ajuda com IA e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o gerador de citações, com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "Crie referências em formatos comuns"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "Faça uma citação em APA"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "Formate este site em MLA"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "Verifique quais campos estão faltando na minha citação"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "Resumidor de Texto"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "Condense leituras em notas de estudo úteis"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Resuma textos longos em ideias principais, estrutura, definições, exemplos e perguntas de revisão."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "Cole o texto para resumir"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "Ajuda com IA"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Resuma textos longos em ideias principais, estrutura, definições, exemplos e perguntas de revisão."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de ajuda com IA que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o resumidor de texto com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "Condense leituras em notas de estudo úteis"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "Resuma este artigo"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "Extraia os pontos principais das minhas anotações"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "Faça um resumo do capítulo"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "Gerador de Guia de Estudo"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "Transforme material em um guia de revisão"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Crie um guia de estudo com objetivos, resumos de conceitos, exemplos, erros comuns, questões práticas e um plano de revisão."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "Qual material deve se tornar um guia de estudo?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "Ajuda com IA"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Crie um guia de estudo com objetivos, resumos de conceitos, exemplos, erros comuns, questões práticas e um plano de revisão."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes explorando tópicos de ajuda com IA que desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o gerador de guia de estudo com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "Transforme material em um guia de revisão"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "Crie um guia sobre fotossíntese"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Transforme minhas anotações em uma folha de revisão"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "Crie um guia de estudos para as finais"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "Calculadora de Notas e GPA"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "Preveja notas e planeje metas de pontuação"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Calcule notas ponderadas, cenários de GPA, pontuações finais necessárias e planos hipotéticos para o semestre."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "Compartilhe seus pesos de nota e pontuações"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "Organização"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Calcule notas ponderadas, cenários de GPA, pontuações finais necessárias e planos hipotéticos para o semestre."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de organização e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para a calculadora de notas e GPA, com seus próprios prompts, exemplos e fluxo de aprendizado."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "Preveja notas e planeje metas de pontuação"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "Qual nota final eu preciso?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "Calcule minha nota ponderada"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "Planeje minha meta de GPA"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "Criador de Mapas Mentais"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "Ramifique um tópico em ideias conectadas"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Crie um mapa mental para brainstorming, revisão, planejamento ou para conectar conceitos antes de escrever ou estudar."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "Qual tópico deve se tornar um mapa mental?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "Aprendizagem Visual"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Crie um mapa mental para brainstorming, revisão, planejamento ou para conectar conceitos antes de escrever ou estudar."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de aprendizagem visual e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para o criador de mapas mentais com seus próprios prompts, exemplos e fluxo de aprendizagem."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "Ramifique um tópico em ideias conectadas"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "Mapa mental de aprendizado de máquina"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "Mapear uma redação de história"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "Brainstorming para um projeto de ciências"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "Metas de Estudo Diárias"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "Defina e acompanhe as metas de aprendizagem de hoje"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Planeje um conjunto realista de metas de estudo diárias com estimativas de esforço, prioridade, verificações de atrito e um ritual de revisão rápida."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "O que você quer realizar hoje?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "Gamificação"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Planeje um conjunto realista de metas de estudo diárias com estimativas de esforço, prioridade, verificações de atrito e um ritual de revisão rápida."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Estudantes que exploram tópicos de gamificação e desejam orientação prática em vez de uma caixa de resposta genérica."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "Este modo é ajustado para metas de estudo diárias com seus próprios prompts, exemplos e fluxo de aprendizagem."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "Defina e acompanhe as metas de aprendizagem de hoje"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Comece com exemplos de prompts"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Adapte a sessão ao seu objetivo"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "Definir três metas para hoje"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "Tornar minhas metas realistas"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "Revisar minhas metas de estudo"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "Temporizador de Tarefas"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "Cronometre tarefas individuais e veja o esforço"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Divida o trabalho em tarefas nomeadas, cronometre cada uma e revise onde o esforço de estudo foi aplicado após cada sessão focada."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "Qual tarefa devemos cronometrar?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Foco e Produtividade"
+    }
+  ]
+}

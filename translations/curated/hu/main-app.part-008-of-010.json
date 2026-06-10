@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hungarian",
+  "locale": "hu",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód az állampolgári ismeretek oktatására van hangolva, saját kérdésfelvetésekkel, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "Ismerje meg a jogokat, a kormányzást és a társadalmat"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdje példa kérdésekkel"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljaihoz"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "Hogyan válik egy törvényjavaslat törvénnyé?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "Magyarázd el az alapvető jogokat"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "Mi a bíróság feladata?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "Művészettörténeti útmutató"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "Nézz alaposabban, és vedd észre a részleteket"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Fedezd fel a műalkotásokat, stílusokat, művészeket, vizuális döntéseket, és azt, mitől válik egy kép hatásossá."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "Melyik műalkotás, művész vagy stílus érdekel?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "Kreativitás"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Fedezd fel a műalkotásokat, stílusokat, művészeket, vizuális döntéseket, és azt, mitől válik egy kép hatásossá."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik kreatív témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a művészettörténeti útmutatóhoz van hangolva, saját kérdésekkel, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "Nézz alaposabban, és vedd észre a részleteket"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példakérdésekkel"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a foglalkozást a céljaidhoz"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "Magyarázd el az impresszionizmust"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "Hogyan érdemes egy festményt szemlélni?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "Hasonlítsd össze a reneszánsz és a modern művészetet"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "Zeneelméleti edző"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Értsd meg a hangot, a ritmust és a harmóniát"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Tanuld meg a hangjegyeket, akkordokat, skálákat, ritmust, hallásfejlesztési ötleteket, és azt, hogyan épülnek fel a dalok."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "Milyen zenei ötlettel foglalkozzunk?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "Kreativitás"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Tanuld meg a hangjegyeket, akkordokat, skálákat, ritmust, hallásfejlesztési ötleteket, és azt, hogyan épülnek fel a dalok."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik kreatív témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a zeneelméleti edzőhöz van hangolva, saját kérdésekkel, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Értsd meg a hangot, a ritmust és a harmóniát"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa kérdésekkel"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a foglalkozást a célodhoz"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "Magyarázd el a dúrt és a mollt"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "Hogyan működnek az akkordok?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "Tanítsd meg a ritmus alapjait"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "Gondolkodásmód-reflekció"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "Gondold át, hogyan tanulsz"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Figyeld meg, mi segíti a tanulásodat, mi akadályoz, és hogyan válhatsz hatékonyabb tanulóvá."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "Melyik tanulási élményt gondoljuk át?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "Tervezés"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Figyeld meg, mi segíti a tanulásodat, mi akadályoz, és hogyan válhatsz hatékonyabb tanulóvá."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik tervezési témákat fedeznek fel, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a gondolkodásmód-reflekcióra van hangolva, saját kérdésekkel, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "Gondold át, hogyan tanulsz"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa kérdésekkel"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a foglalkozást a célodhoz"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "Miért halogattam a tanulást?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "Reflekció egy rossz teszt után"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "Milyen tanulási stratégia illik hozzám?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "Tanulási Játékmester"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "Változtasd a tanulást kihívássá"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Tedd a tanulást játékká küldetésekkel, szintekkel, pontokkal, kihívásokkal és főellenség-körökkel."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "Miből legyen tanulási játék?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "Gyakorlás"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Tedd a tanulást játékká küldetésekkel, szintekkel, pontokkal, kihívásokkal és főellenség-körökkel."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik gyakorlati témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Ezt az üzemmódot a tanulási játékmesterhez hangoltuk, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "Változtasd a tanulást kihívássá"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "Tedd a biológiát küldetéssé"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "Változtasd a szókincset szintekké"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "Hozz létre egy matematikai főellenség-csatát"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "Szóbeli vizsga gyakorlása"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "Készülj fel a szóbeli kérdésekre"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Gyakorold a szóbeli vizsgákat, projektvédéseket és gyors kiegészítő kérdéseket nyugodt visszajelzésekkel."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Milyen szóbeli vizsgára készülsz?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "Gyakorlás"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Gyakorold a szóbeli vizsgákat, projektvédéseket és gyors kiegészítő kérdéseket nyugodt visszajelzésekkel."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik gyakorlati témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Ezt az üzemmódot a szóbeli vizsga gyakorlásához hangoltuk, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "Készülj fel a szóbeli kérdésekre"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "Gyakorold a tudományos projektem szóbeli védését"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "Tegyél fel nekem szakdolgozatvédési kérdéseket"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "Gyakorlati vizsgakérdések szimulációja"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "Tanulási időzítő"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Folyamatos Pomodoro-időzítő riasztásokkal"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Futtass fókusz- és szünetidőszakokat, amelyek tovább számolnak, miközben csevegések, lapok és mini alkalmazások között váltogatsz. A háttérből is jelez, ha véget ért egy munkamenet."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "Miről szóljon ez a fókuszált munkamenet?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Fókusz és produktivitás"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Futtass fókusz- és szünetidőszakokat, amelyek tovább számolnak, miközben csevegések, lapok és mini alkalmazások között váltogatsz. A háttérből is jelez, ha véget ért egy munkamenet."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik a fókusz és produktivitás témakörét kutatják, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a tanulási időzítőhöz van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Folyamatos Pomodoro-időzítő riasztásokkal"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa-promptokkal"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "Indíts egy 25 perces biológia munkamenetet"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "Állíts be egy 50/10-es mélymunka ritmust"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "Kövesd nyomon a fogalmazásírást"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "Zene a fókuszáláshoz"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "Háttérben szóló fókusz-zene, amely folyamatosan játszik"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Válassz generált fókusz-zenét olvasáshoz, íráshoz, problémamegoldáshoz vagy mély munkához. Folyamatosan szól, miközben más csevegésekre váltasz."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "Milyen típusú fókuszra vágysz ma?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "Fókusz és produktivitás"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Válassz generált fókusz-zenét olvasáshoz, íráshoz, problémamegoldáshoz vagy mély munkához. Folyamatosan szól, miközben más csevegésekre váltasz."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik a fókusz és produktivitás témakörét kutatják, és általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a fókusz-zenéhez van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "Háttérben szóló fókusz-zene, amely folyamatosan játszik"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa-promptokkal"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljához"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "Nyugodt olvasást segítő zene lejátszása"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "Mély munkához való hanganyag beállítása"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "Esőhangok használata az ismétléshez"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "Rajz-/vázlattábla"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Gondolkodjon diagramokon és vázlatos képeken keresztül"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Használja a vázlatkészítést tanulási módszerként: tervezzen diagramokat, címkézzen fel vázlatos térképeket, magyarázzon el folyamatokat, vagy alakítson át egy kusza ötletet tisztább vizuális formává."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "Mit vázoljunk fel vagy ábrázoljunk diagramon?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "Vizuális tanulás"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Használja a vázlatkészítést tanulási módszerként: tervezzen diagramokat, címkézzen fel vázlatos térképeket, magyarázzon el folyamatokat, vagy alakítson át egy kusza ötletet tisztább vizuális formává."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Vizuális tanulási témákat felfedező tanulók, akik általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a rajz-/vázlattáblához van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Gondolkodjon diagramokon és vázlatos képeken keresztül"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdje példa promptokkal"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljához"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "Vázoljon fel egy sejt-diagramot"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "Rajzoljon egy kereslet-kínálat grafikont"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "Térképezze fel az első világháború okait"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "Gyakorlóteszt-készítő"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "Állítson össze egy teljes tesztet az anyagából"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Alakítson át egy témát, tantervet vagy jegyzetet valósághű gyakorlótesztté szakaszokkal, időzítéssel, értékelési útmutatóval és áttekintési lépésekkel."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "Mit fedjen le a gyakorlóteszt?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "Aktív tanulás"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Alakítson át egy témát, tantervet vagy jegyzetet valósághű gyakorlótesztté szakaszokkal, időzítéssel, értékelési útmutatóval és áttekintési lépésekkel."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Az aktív tanulási témákat felfedező tanulók, akik általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a gyakorlati tesztkészítőhöz van igazítva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "Állítson össze egy teljes tesztet az anyagából"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdje példa promptokkal"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljához"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "Biológia témazáró teszt készítése"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "Vegyes matematikai gyakorló teszt készítése"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "Vizsga stílusú történelem dolgozat készítése"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "Képelemző edző"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Képernyőképek, diagramok és házi feladat képek elemzése"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Írja le vagy illessze be egy kép részleteit, és kapjon segítséget diagramok, grafikonok, feladatok, kézzel írott jegyzetek vagy vizuális bizonyítékok értelmezéséhez."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "Írja le a képet, vagy illessze be, ami látható"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "AI segítség"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Írja le vagy illessze be egy kép részleteit, és kapjon segítséget diagramok, grafikonok, feladatok, kézzel írott jegyzetek vagy vizuális bizonyítékok értelmezéséhez."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Az AI segítség témákat felfedező tanulók, akik általános válaszok helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a képelemző edzőhöz van igazítva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Képernyőképek, diagramok és házi feladat képek elemzése"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdje példa promptokkal"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljához"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "Segítség a diagram értelmezéséhez"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "Elemezz egy grafikont a tankönyvemből"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "Magyarázd el, mit mutat ez a képernyőkép"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "Cornell-jegyzetelés"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Jegyzetek strukturálása kulcsszavakra, részletekre és összefoglalóra"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Alakítsa előadásait, olvasmányait vagy vázlatos jegyzeteit Cornell-módszer szerinti jegyzetekké, amelyek tartalmazzák a kulcskérdéseket, a főbb jegyzeteket, az összefoglalót és az ismétlési útmutatókat."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "Illessze be a jegyzeteket vagy adja meg a lecke nevét"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "Szervezés"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Alakítsa előadásait, olvasmányait vagy vázlatos jegyzeteit Cornell-módszer szerinti jegyzetekké, amelyek tartalmazzák a kulcskérdéseket, a főbb jegyzeteket, az összefoglalót és az ismétlési útmutatókat."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik a szervezési témákat kutatják, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a Cornell-jegyzetekre van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Rendszerezze jegyzeteit kulcskérdésekre, részletekre és összefoglalóra"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdje példa promptokkal"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljaihoz"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Alakítsd ezt az előadást Cornell-jegyzetekké"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "Készíts kulcskérdéseket a 3. fejezethez"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "Foglald össze a vázlatos jegyzeteimet"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "Idézetgenerátor"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "Hivatkozások készítése gyakori formátumokban"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Készítsen APA, MLA, Chicago, Harvard vagy egyszerű bibliográfiai bejegyzéseket a forrásadatokból, miközben ellenőrzi a hiányzó mezőket."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "Illessze be a forrás részleteit vagy az URL-információkat"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "AI segítség"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Készítsen APA, MLA, Chicago, Harvard vagy egyszerű bibliográfiai bejegyzéseket a forrásadatokból, miközben ellenőrzi a hiányzó mezőket."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik az AI-segítség témáit kutatják, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód az idézetgenerátorra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "Hivatkozások készítése gyakori formátumokban"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdje példa promptokkal"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsa a munkamenetet a céljaihoz"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "Készíts egy APA-idézetet"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "Formázd ezt a weboldalt MLA stílusban"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "Ellenőrizd, milyen mezők hiányoznak a hivatkozásomból"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "Szövegösszefoglaló"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "Sűrítsd az olvasmányokat hasznos tanulási jegyzetekké"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Foglalj össze hosszú szövegeket kulcsötletekre, struktúrára, definíciókra, példákra és felidéző kérdésekre bontva."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "Illeszd be az összefoglalandó szöveget"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "AI segítség"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Foglalj össze hosszú szövegeket kulcsötletekre, struktúrára, definíciókra, példákra és felidéző kérdésekre bontva."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik AI segítség témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a szövegösszefoglalásra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "Sűrítsd az olvasmányokat hasznos tanulási jegyzetekké"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "Foglald össze ezt a cikket"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "Emeld ki a legfontosabb pontokat a jegyzeteimből"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "Készíts fejezetösszefoglalót"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "Tanulási útmutató generátor"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "Alakítsd az anyagot ismétlési útmutatóvá"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Építs tanulási útmutatót célkitűzésekkel, fogalomösszefoglalókkal, példákkal, gyakori hibákkal, gyakorló kérdésekkel és áttekintési tervvel."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "Milyen anyagból készüljön tanulási útmutató?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "AI segítség"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Építs tanulási útmutatót célkitűzésekkel, fogalomösszefoglalókkal, példákkal, gyakori hibákkal, gyakorló kérdésekkel és áttekintési tervvel."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Tanulók, akik AI segítség témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a tanulási útmutató generálására van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "Alakítsd az anyagot ismétlési útmutatóvá"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "Készíts útmutatót a fotoszintézisről"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Alakítsd a jegyzeteimet ismétlési segédletté"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "Készíts vizsgafelkészítő útmutatót"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "Osztályzat- és GPA-kalkulátor"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "Jelezd előre az osztályzatokat és tervezd meg a pontszámcélokat"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Számítsd ki a súlyozott osztályzatokat, GPA-forgatókönyveket, a szükséges záróvizsga-pontszámokat és a félévi „mi lenne, ha” terveket."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "Oszd meg az osztályzati súlyozásokat és pontszámokat"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "Szervezés"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Számítsd ki a súlyozott osztályzatokat, GPA-forgatókönyveket, a szükséges záróvizsga-pontszámokat és a félévi „mi lenne, ha” terveket."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Szervezési témákat kutató tanulók, akik általános válaszmező helyett gyakorlati útmutatást szeretnének."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód az osztályzat- és GPA-kalkulátorra van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "Jelezd előre az osztályzatokat és tervezd meg a pontszámcélokat"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "Milyen záróvizsga-pontszámra van szükségem?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "Számítsd ki a súlyozott osztályzatomat"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "Tervezd meg a GPA-célomat"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "Elmetérkép-készítő"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "Bonts egy témát kapcsolódó ötletekre"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Készíts elmetérképet ötleteléshez, ismétléshez, tervezéshez vagy fogalmak összekapcsolásához írás vagy tanulás előtt."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "Milyen témából készüljön elmetérkép?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "Vizuális tanulás"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Készíts elmetérképet ötleteléshez, ismétléshez, tervezéshez vagy fogalmak összekapcsolásához írás vagy tanulás előtt."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik vizuális tanulási témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód az elmetérkép-készítőhöz van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "Bonts egy témát kapcsolódó ötletekre"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "Elmetérkép a gépi tanulásról"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "Történelem esszé feltérképezése"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "Ötletelés egy tudományos projekthez"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "Napi tanulási célok"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "Állítsd be és kövesd nyomon a mai tanulási céljaidat"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Tervezz meg egy reális napi tanulási célkészletet erőfeszítés-becsléssel, prioritással, nehézségi ellenőrzéssel és egy gyors áttekintő rituáléval."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "Mit szeretnél ma elvégezni?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "Gamifikáció"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Tervezz meg egy reális napi tanulási célkészletet erőfeszítés-becsléssel, prioritással, nehézségi ellenőrzéssel és egy gyors áttekintő rituáléval."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Olyan tanulók, akik gamifikációs témákat fedeznek fel, és általános válaszmező helyett gyakorlati útmutatást keresnek."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "Ez az üzemmód a napi tanulási célokhoz van hangolva, saját promptokkal, példákkal és tanulási folyamattal."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "Állítsd be és kövesd nyomon a mai tanulási céljaidat"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Kezdd példa promptokkal"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Igazítsd a munkamenetet a célodhoz"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "Állíts be három célt a mai napra"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "Tedd reálissá a céljaimat"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "Tanulási céljaim áttekintése"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "Feladatidőzítő"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "Időzítsd az egyes feladatokat és kövesd nyomon az erőfeszítéseidet"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Bontsd a munkát elnevezett feladatokra, időzítsd mindegyiket, és minden koncentrált munkamenet után tekintsd át, hová irányult a tanulási erőfeszítésed."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "Milyen feladatot időzítsünk?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Fókusz és produktivitás"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "language": "Thai",
+  "locale": "th",
+  "namespace": "blog:math-step-coach-prompts-and-study-loop",
+  "sourceHash": "cd84edae35ed73cc1179eda760d00d3f68ffb8b9f29f45c5a8ac6d5f87bc154b",
+  "entries": [
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"ถามคำถามฉันก่อนอธิบายมากเกินไป\""
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"ตรวจคำตอบของฉันก่อนให้คำตอบของคุณ\""
+    },
+    {
+      "key": "site.8290f0b2c5537579ef",
+      "source": "\"Explain derivatives step by step\"",
+      "value": "\"อธิบายอนุพันธ์ทีละขั้นตอน\""
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"ให้เวอร์ชันที่ยากขึ้นหลังจากฉันลองแล้ว\""
+    },
+    {
+      "key": "site.efc3c4b9a6a1a9c59c",
+      "source": "\"Help with quadratic equations\"",
+      "value": "\"ช่วยเรื่องสมการกำลังสอง\""
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"ทำให้เป็นมิตรกับผู้เริ่มต้น\""
+    },
+    {
+      "key": "site.747708af741ed9c7ce",
+      "source": "\"Solve 2x + 5 = 17 with me\"",
+      "value": "\"แก้ 2x + 5 = 17 ไปกับฉัน\""
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "\"ใช้ตัวอย่างจากการสอบ โครงงาน หรือชีวิตประจำวันของฉัน\""
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "พรอมป์ AI"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "ขอภารกิจแรกเล็กมาก"
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "จบด้วยสรุปที่คุณเขียนเอง"
+    },
+    {
+      "key": "site.8ccc57dfebf0ed0089",
+      "source": "For Math Step Coach, a useful practice loop is:",
+      "value": "สำหรับ Math Step Coach ลูปฝึกที่มีประโยชน์คือ:"
+    },
+    {
+      "key": "site.5dcc96f11d0efbf6f2",
+      "source": "For this mode, the job is simple: Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "สำหรับโหมดนี้ งานเรียบง่าย: ทำงานผ่านพีชคณิต แคลคูลัส โจทย์ปัญหา และแนวคิดคณิตศาสตร์ทีละขั้นกับโค้ช AI"
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "พรอมป์ที่ดีมักมีสามอย่าง: วิชา ระดับปัจจุบันของคุณ และชนิดของความช่วยเหลือที่ต้องการ คุณไม่จำเป็นต้องใช้ถ้อยคำสมบูรณ์แบบ แค่ต้องมีบริบทพอให้เซสชันเริ่มได้"
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "หากคำตอบรู้สึกกว้างเกินไป ให้ทำให้แคบลง ขอหนึ่งตัวอย่าง หนึ่งความเข้าใจผิด หนึ่งคำถามตรวจ หรือหนึ่งก้าวถัดไป หากรู้สึกง่ายเกินไป ให้ขอความท้าทาย หากรู้สึกยากเกินไป ให้ขอสะพานจากสิ่งที่คุณรู้อยู่แล้ว"
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "ทำให้ผลลัพธ์มีประโยชน์ขึ้น"
+    },
+    {
+      "key": "site.2f03659a282a25dde8",
+      "source": "Math Step Coach prompts and study loop",
+      "value": "พรอมป์และลูปการเรียนของ Math Step Coach"
+    },
+    {
+      "key": "site.5fcefec1f3858099aa",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Math Step Coach on inspir.",
+      "value": "ไอเดียพรอมป์และลูปการเรียนที่ทำซ้ำได้เพื่อให้ได้ผลลัพธ์การเรียนที่มีประโยชน์จาก Math Step Coach บน inspir"
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "การอ่านคำตอบ AI ไม่เหมือนกับการเรียนรู้ หลังคำตอบแรก ขอให้โหมดทำให้คุณลงมือทำบางอย่างกับไอเดียนั้น"
+    },
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "เส้นทางการเรียนรู้ที่เกี่ยวข้อง"
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "ขอฟีดแบ็กในส่วนที่รู้สึกไม่แน่นอน"
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "ตอบก่อนขอวิธีแก้"
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "เริ่มด้วยคำขอที่ชัดเจนหนึ่งข้อ"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "ระบุเป้าหมายในหนึ่งประโยค"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "ทักษะการเรียน"
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "สรุปสุดท้ายนั้นสำคัญ เมื่อคุณอธิบายไอเดียกลับมา คุณเผยว่าอะไรแน่นแล้วและอะไรยังยืมมาจาก AI"
+    },
+    {
+      "key": "site.659e9d3407986296fb",
+      "source": "The best learning sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "เซสชันการเรียนที่ดีที่สุดปรับได้ flow ตรวจแต่ละขั้น ชี้จุดพลาด และเชื่อมขั้นตอนกลับไปยังแนวคิด"
+    },
+    {
+      "key": "site.375eef43396f6a3e0d",
+      "source": "The fastest way to get value from Math Step Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "วิธีที่เร็วที่สุดในการได้ประโยชน์จาก Math Step Coach คือให้ AI มีงานการเรียนรู้ ไม่ใช่แค่หัวข้อ หัวข้อบอกว่าคุณสนใจอะไร งานการเรียนรู้บอกว่าคุณต้องการความช่วยเหลือแบบไหน"
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "จากนั้นเพิ่มข้อจำกัดที่ทำให้เซสชันเป็นส่วนตัวมากขึ้น:"
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "ลองใช้ตัวเริ่มต้นเหล่านี้:"
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "เปลี่ยนโหมดให้เป็นการฝึก"
+    },
+    {
+      "key": "site.f9e69911e2bc7cd9e9",
+      "source": "Use Math Step Coach when this is the right mode for the job. If you want a related path, try Homework Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "ใช้ Math Step Coach เมื่อเป็นโหมดที่เหมาะกับงานนี้ หากต้องการเส้นทางที่เกี่ยวข้อง ลอง Homework Coach คุณยังสามารถดูบล็อกการเรียนรู้ AI เพื่อหาวิธีเรียน การเรียนแบบโสเครติค flashcard, roleplay และ active recall"
+    }
+  ]
+}

@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "language": "Armenian",
+  "locale": "hy",
+  "namespace": "route:ai-learning-map",
+  "sourceHash": "ed5c404157cb369b59b407351615d701fdf7f9250fb0afcb05cfa6e93a6a094f",
+  "part": {
+    "index": 5,
+    "total": 5
+  },
+  "entries": [
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "Օգտագործել հուշումներ, checkpoints, and small օրինակներ rather than full final պատասխաններ."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "Օգտագործել hypothesis, materials, method, observation, and բացատրություն sections երբ օգտակար."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել գաղափար menus, selection criteria, and next-step sketches."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել in-character dialogue and short coaching notes."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "Օգտագործել key takeaways, outline, definitions, and կրկնություն հարցեր."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել leaderboard rules, scoring, safeguards, and reflection."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել level tables, XP rules, quest քարտեր, and anti-grind safeguards."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "Օգտագործել narrative to make հասկացություններ memorable."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել nested bullets, tables, or MermԱԲd text երբ helpful."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել numbered locations, images, and վերհիշում checkpoints."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "Օգտագործել objectives, summaries, օրինակներ, traps, հարցեր, and հաջորդ կրկնություն."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել observation, interpretation, ապացույցներ, and next-question sections."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "Օգտագործել pԱԲr banks, scrambled lists, պատասխան key, and կրկնություն notes."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "Օգտագործել place քարտեր, համեմատություն tables, and քարտեզ հուշումներ."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել practical audio tips and study-session setup notes."
+    },
+    {
+      "key": "site.92a746b2e3db690b66",
+      "source": "Use prompt",
+      "value": "Օգտագործել հուշում"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "Օգտագործել quests, levels, badges, and boss հարցեր."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "Օգտագործեք անձրևի ձայնը կարդալու համար"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "Կրկնության համար օգտագործեք անձրևի ձայներ"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "Օգտագործել reflection հուշումներ, սովորող strengths, and one հաջորդ experiment."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "Օգտագործել report sections: wins, ապացույցներ, blockers, lessons, հաջորդ week."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "Օգտագործել հետազոտություն հարցեր, աղբյուր matrices, and synthesis notes."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել resource քարտեր, audience notes, and usage tips."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "Օգտագործել կրկնություն queues, due dates, and confidence ratings."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "Օգտագործել scorecards համար clarity, structure, ապացույցներ, and delivery notes."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել short focus plans, checklists, and post-session reflection հուշումներ."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "Օգտագործել short sections, օրինակներ, analogies, and GFM-friendly lists or tables երբ they օգնություն."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել short summaries, quote-light references, and հարց sets."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "Օգտագործել short supportive notes and practical հաջորդ գործողություններ."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Օգտագործեք պարզ ֆոնային ձայնային նախակազմեր՝ կարդալու, գրելու, կրկնելու կամ խնդիրներ լուծելու ընթացքում շեղումները նվազեցնելու համար։"
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "Օգտագործել պարզ notation, օրինակներ, and վարժանք հուշումներ."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել պարզ tables, cause-effect chԱԲns, and caveat notes."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել simple-language rewrites and gap checklists."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Օգտագործեք էսքիզավորումը որպես ուսուցման քայլ՝ պլանավորեք դիագրամներ, պիտակավորեք նախնական քարտեզներ, բացատրեք գործընթացներ կամ խառն գաղափարը վերածեք ավելի պարզ պատկերի։"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել sound recommendations and focus setup notes."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել stakeholder tables and balanced pro/con analysis."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել STAR or situation-action-result frameworks երբ appropriate."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "Օգտագործել story beats plus ուսուցում notes."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել streak status, tiny գործողություն, recovery rule, and weekly reflection."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "Օգտագործել tables հետ word, meaning, օրինակ, հիշողություն hook, and վարժանք հուշում."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել tables, plԱԲn-language takeaways, and caution notes."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել target language առաջին, then brief feedback in the learner's preferred support language."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել task boards, deadlines, and next-action lists."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել task քարտեր, elapsed time, notes, and follow-up block suggestions."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "Օգտագործել թեստ sections, timing, պատասխան keys, rubrics, and կրկնություն plans."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել the Feynman technique to reveal gaps and simplify understanding."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել this compact format: Brief կարդալ: one sentence. Քարտեզ update: concise ClԱԲm, Assumption, Gap, or Correction bullets as relevant. Հաջորդ հարց: exactly one հարց. Համար the առաջին reply, օգտագործել Target, Contract, and Առաջին հարց."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել thought experiments, argument maps, and balanced summaries."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել timelines, cause layers, and consequence maps."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել tree structures, node labels, links, and next-step հուշումներ."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Օգտագործել unlabeled parts, հուշում tiers, պատասխան key, and կրկնություն հուշումներ."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Օգտագործել visual vocabulary and guided looking հուշումներ."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Օգտագործել weekly plans, fallback plans, and tiny հաջորդ գործողություններ."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Օգտագործել աշխատանք/break cycles, break menus, and return հուշումներ."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել worksheet sections, պատասխան keys, and difficulty labels."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Ուսումնական նյութ՝ Validate the feeling, identify the blocker, and ընտրել one small հաջորդ քայլ."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "Ուսումնական նյութ՝ visual analysis"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "visual ուսուցում"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Տեսողական ուսուցում"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Բանավոր քննության պրակտիկա"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Բառապաշարի կառուցող"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "Ուսումնական նյութ՝ weekly report"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Շաբաթական հաշվետվություններ"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "Ուսումնական նյութ՝ weighted score"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Ի՞նչ ձեռքբերումների համակարգ պետք է նախագծենք։"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "Ի՞նչի շուրջ ենք գաղափարներ մտածում։"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Ի՞նչ ենք կարդում։"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Այսօր ի՞նչն է քեզ հետաքրքրում։"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Ի՞նչ ես պատրաստվում ասել։"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Ի՞նչ ես հետազոտում։"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Ի՞նչ ես գրում։"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Ո՞ր արվեստի գործը, արվեստագետը կամ ոճը։"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Ի՞նչ առաջադրանքներ ունեք ձեր սեղանին։"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Ի՞նչ մեծ հարց ենք ուսումնասիրում։"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Ո՞ր մասնագիտությունը կամ հետաքրքրությունը ուսումնասիրենք։"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Քաղաքացիական կրթության ո՞ր թեման ուսումնասիրենք։"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Կոդավորման ո՞ր թեման կամ bug-ն ենք լուծում։"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Ո՞ր պարտավորությունն է հաշվետվողականության կարիք ունի։"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Ո՞ր հասկացությունը քարտեզագրենք։"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Ի՞նչ դասընթացներ կամ առարկաներ եք կառավարում։"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Ո՞ր դիագրամի պիտակավորումն ենք վարժվելու։"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Ո՞ր երկընտրանքը քննենք։"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Ի՞նչ ես անում հաջորդը այս աշխարհում։"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Ի՞նչ պետք է հիշես։"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Ի՞նչ պետք է սովորես։"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Ի՞նչ եք ուզում ավարտել այսօր։"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Ի՞նչ է անում դատարանը։"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Ի՞նչ է անում product manager-ը։"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Ի՞նչ է ցույց տալիս այս հարցումը։"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Տնտեսության ո՞ր գաղափարը սիմուլացնենք։"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Ո՞ր քննությանն ես պատրաստվում։"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Ի՞նչ վերջնական միավոր է ինձ պետք։"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "Ի՞նչ տեղի ունեցավ այս շաբաթ։"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "Ի՞նչ կլինի, եթե հարկերը փոխվեն։"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "Ի՞նչ կլինի, եթե փոխենք ջերմաստիճանը։"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "Ո՞ր տնային առաջադրանքի վրա ես կանգ առել։"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Ո՞ր գաղափարն է շփոթեցնող կամ կասկածելի թվում։"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "Ի՞նչ հարցազրույցի ես պատրաստվում։"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "Ի՞նչ է գիտելիքը։"
+    },
+    {
+      "key": "site.a3f16bd77eb4ae9996",
+      "source": "What is the AI learning map?",
+      "value": "Ի՞նչ է the ԱԲ ուսուցում քարտեզ։"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Ինչպիսի՞ ֆոնային կենտրոնացում եք ուզում։"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "Ինչպիսի՞ դեպք սիմուլացնենք։"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "Այսօր ինչպիսի՞ կենտրոնացում եք ուզում։"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Ո՞ր ուսումնական նպատակը պետք է դառնա մակարդակների համակարգ։"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "Ի՞նչ ուսումնական սովորություն ես ուզում։"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "Ուսուցման ո՞ր պահի մասին անդրադառնանք։"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "Ուսուցման ո՞ր ռազմավարությունն է ինձ համապատասխանում։"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "Ի՞նչն է փաստարկը վավեր դարձնում։"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "Ի՞նչն է ինչ-որ բան դարձնում արդար։"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "Ո՞ր նյութը պետք է դառնա ուսումնական ուղեցույց։"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "Ո՞ր մաթեմատիկական խնդիրը միասին լուծենք։"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "Երաժշտական ո՞ր գաղափարի վրա աշխատենք։"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Ի՞նչ արդյունք պետք է տա այս խորը աշխատանքի սեսիան։"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "Ո՞ր զույգերը պետք է դառնան համապատասխանեցման խաղ։"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "Ի՞նչ առաջընթաց պետք է վերանայենք։"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "Ի՞նչ նախագիծ ենք կառուցում։"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "Ի՞նչ հարց կամ քննարկում եք ուզում հրապարակել։"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "Ո՞ր ռեսուրսն եք ուզում կիսվել։"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "Ո՞ր սցենարը խաղարկենք դերերով։"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Ո՞ր գիտական գաղափարը կամ փորձն ենք ուսումնասիրում։"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "Ի՞նչը պետք է դառնա մարտահրավեր։"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "Ի՞նչը դարձնենք ուսուցման խաղ։"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "Ի՞նչը պետք է պատմություն դառնա։"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "Ի՞նչը պետք է դառնա ֆլեշքարտեր։"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "Ի՞նչ պետք է չափի առաջատարների աղյուսակը։"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "Ի՞նչ պետք է ընդգրկի փորձնական թեստը։"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "Ի՞նչ պետք է անի ուսման խումբը։"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "Ի՞նչ պետք է ընդգրկի աշխատաթերթը։"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "Ինչի՞ մասին պետք է լինի այս կենտրոնացման սեանսը։"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "Ի՞նչ պետք է կրկնենք։"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "Ի՞նչը էսքիզավորենք կամ ներկայացնենք դիագրամով։"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "Ի՞նչ շարունակականություն կամ ռեժիմ եք կառուցում։"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "Ո՞ր առաջադրանքի ժամանակը չափենք։"
+    },
+    {
+      "key": "site.fc8d830216f2567d93",
+      "source": "What this workflow should leave behind",
+      "value": "Ինչ this աշխատանքային հոսք պետք է leave behind"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "Ո՞ր թեմայով քեզ փորձության դնենք։"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "Ո՞ր թեման պետք է դառնա մտքի քարտեզ։"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Ո՞ր բանավոր քննությանը կամ viva-ին եք պատրաստվում։"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "Ի՞նչ ես ինձ հետ բացատրելու։"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "Ո՞ր բառերը կամ թեման վարժենք։"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "Աշխատանքի/ընդմիջման ի՞նչ ռիթմ եք ուզում։"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "Այսօր ի՞նչ կուզեիր սովորել։"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "Ի՞նչն է հիմա դժվարացնում սովորելը։"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "Ո՞րն է քո այսօրվա բանավեճի թեման։"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "Որտե՞ղ ուսումնասիրենք։"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "Ո՞ր պատմական իրադարձության ընթացքը հետևենք։"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "Ո՞ր պատմական գործչին կուզեիր հանդիպել։"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "Ո՞ր լեզուն և իրավիճակը։"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "Ուսումնական նյութ՝ white noise"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "Ո՞ւմ հետ ես ուզում բանավիճել և ինչի՞ շուրջ։"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Ովքե՞ր են միասին սովորում, և ո՞րն է նպատակը։"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "Ինչո՞ւ են քաղաքները գետերի մոտ լինում։"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "Ինչո՞ւ էի խուսափում սովորելուց։"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "Ինչո՞ւ թուլացավ Հռոմեական կայսրությունը։"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Ինչու՞ է իմ հանրահաշվի պատասխանը սխալ։"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "Ինչու՞ է այս քերականական կանոնը տարօրինակ։"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "Եղանակի մասին բառեր"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Հաշվարկեք կշռված գնահատականները, GPA սցենարները, անհրաժեշտ վերջնական միավորները և կիսամյակի «ինչ կլինի, եթե» պլանները։"
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Աշխատիր երկընտրանքների վրա՝ կշռադատելով շահագրգիռ կողմերին, հետևանքները, պարտականությունները, իրավունքները և փոխզիջումները։"
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "Մաթեմատիկան անցիր քայլ առ քայլ"
+    },
+    {
+      "key": "site.fa00fba57bff817728",
+      "source": "Workflow directory",
+      "value": "Աշխատանքային հոսք գրացուցակ"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "Աշխատաթերթի ստեղծիչ"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "Աշխարհի մայրաքաղաքներ"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "Գրել ստուգման սցենար"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "Գրեք լավ ֆորումային հարց"
+    },
+    {
+      "key": "site.066231d418b0ddf600",
+      "source": "Write and communicate clearly",
+      "value": "Ուսումնական նյութ՝ Գրել and communicate clearly"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "Գրեք իմ շաբաթական ուսման հաշվետվությունը"
+    },
+    {
+      "key": "site.5f2b3a44b731b839b8",
+      "source": "Write the lesson learned before expanding the project.",
+      "value": "Գրել the դաս learned նախքան expanding the նախագիծ."
+    },
+    {
+      "key": "site.9a58fdeb87fb7db943",
+      "source": "Write the strongest claim and strongest counterclaim.",
+      "value": "Ուսումնական նյութ՝ Գրել the strongest clԱԲm and strongest counterclԱԲm."
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Գրելու մարզիչ"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP և մակարդակներ"
+    },
+    {
+      "key": "site.4016d37780f77e418a",
+      "source": "Yes. The linked public learning modes open in guest mode, so learners can try explanations, Socratic questions, homework coaching, quizzes, flashcards, and more without starting from a marketing page.",
+      "value": "Այո։ The linked հանրային ուսուցման ռեժիմներ բացել in հյուրային ռեժիմ, so սովորողներ can փորձել explanations, Սոկրատյան հարցեր, տնային աշխատանքի մարզում, հարցաշարեր, ֆլեշքարտեր, and ավելին առանց starting ից a marketing էջ."
+    }
+  ]
+}

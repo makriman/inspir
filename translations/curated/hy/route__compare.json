@@ -1,0 +1,714 @@
+{
+  "schemaVersion": 1,
+  "language": "Armenian",
+  "locale": "hy",
+  "namespace": "route:compare",
+  "sourceHash": "0fd5bc0339e2f92ec57b8158cf06e3bbdf66e84815381d70db4462ac4a79536d",
+  "entries": [
+    {
+      "key": "site.69de268ddc00988413",
+      "source": ", and when to open inspir.",
+      "value": ", և երբ բացել inspir-ը։"
+    },
+    {
+      "key": "site.79c71876203f61d77c",
+      "source": "{value1} {value2}",
+      "value": "{value1} {value2}"
+    },
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} | inspir"
+    },
+    {
+      "key": "site.3f7fc88cc82c645172",
+      "source": "{value1} alternative comparison",
+      "value": "{value1}-ի այլընտրանքների համեմատություն"
+    },
+    {
+      "key": "site.e1d3679b1d03ab2f08",
+      "source": "{value1} comparison page",
+      "value": "{value1} համեմատության էջ"
+    },
+    {
+      "key": "site.985c0d42405f58cb50",
+      "source": "{value1} comparison points",
+      "value": "{value1} համեմատության կետեր"
+    },
+    {
+      "key": "site.abd4cd39b9b6b90f0a",
+      "source": "{value1} points",
+      "value": "{value1} կետեր"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "{value1} հանրային ռեժիմի մուտքեր"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "{value1} հարակից ուղեցույցներ"
+    },
+    {
+      "key": "site.65900c36a88f60e657",
+      "source": "A course library is strongest when the search query matches a known skill, topic, or standard.",
+      "value": "Դասընթացների գրադարանը ամենաուժեղն է, երբ որոնման հարցումը համընկնում է հայտնի հմտության, թեմայի կամ չափորոշչի հետ։"
+    },
+    {
+      "key": "site.edabc431ff514b9c5d",
+      "source": "A Khan Academy alternative for live AI learning moments.",
+      "value": "Khan Academy-ի այլընտրանք՝ կենդանի ԱԲ ուսուցման պահերի համար։"
+    },
+    {
+      "key": "site.ef781ca91cb18dafd8",
+      "source": "A learner choosing between tools usually needs one of three things: a structured curriculum, a live tutor for the stuck point, or a practice loop that makes the idea stay learned.",
+      "value": "Գործիքներ ընտրող սովորողին սովորաբար պետք է երեք բաներից մեկը՝ կառուցվածքային ծրագիր, կենդանի ուսուցիչ խցանված կետի համար կամ վարժանքի շրջափուլ, որը օգնում է գաղափարը պահպանել։"
+    },
+    {
+      "key": "site.70936515d0fddcd33c",
+      "source": "A learner often moves through prepared videos, articles, exercises, and dashboards.",
+      "value": "Սովորողը հաճախ անցնում է պատրաստի տեսանյութերի, հոդվածների, վարժությունների և վահանակների միջով։"
+    },
+    {
+      "key": "site.fa833204940c724775",
+      "source": "A learner starts inside a mode-specific chat and can ask for a simpler model, a harder question, a quiz, a flashcard deck, or a critique.",
+      "value": "Սովորողը սկսում է ռեժիմին հատուկ չաթում և կարող է խնդրել ավելի պարզ մոդել, ավելի բարդ հարց, հարցաշար, ֆլեշքարտերի փաթեթ կամ քննադատություն։"
+    },
+    {
+      "key": "site.99f629cd17925bf58d",
+      "source": "AI homework coach alternative",
+      "value": "ԱԲ տնային աշխատանք մարզիչ alternative"
+    },
+    {
+      "key": "site.7a5c1db3f62a7f0277",
+      "source": "AI homework help alternative",
+      "value": "ԱԲ տնային աշխատանքի օգնություն alternative"
+    },
+    {
+      "key": "site.7f84a9e087424ee49d",
+      "source": "AI tutor alternatives",
+      "value": "ԱԲ ուսուցիչ alternatives"
+    },
+    {
+      "key": "site.da712cccdd1cbc92d8",
+      "source": "AI tutor comparison",
+      "value": "ԱԲ ուսուցիչ համեմատություն"
+    },
+    {
+      "key": "site.71390211f013158d94",
+      "source": "AI tutor comparison pages",
+      "value": "ԱԲ ուսուցիչ համեմատություն էջեր"
+    },
+    {
+      "key": "site.412ae339d0396fae94",
+      "source": "AI tutor comparison search intents",
+      "value": "ԱԲ ուսուցիչ համեմատություն որոնում intents"
+    },
+    {
+      "key": "site.8b60386b7a2c62fba2",
+      "source": "AI Tutor Comparisons",
+      "value": "ԱԲ ուսուցիչ Comparisons"
+    },
+    {
+      "key": "site.995ca1c1dd797fdf7a",
+      "source": "AI Tutor Comparisons | inspir",
+      "value": "ԱԲ ուսուցիչ Comparisons | inspir"
+    },
+    {
+      "key": "site.46369caad86fda6ceb",
+      "source": "AI tutor like Khan Academy",
+      "value": "ԱԲ ուսուցիչ like Khan Academy"
+    },
+    {
+      "key": "site.829e062e1d3e007b3a",
+      "source": "alternative comparison",
+      "value": "alternative համեմատություն"
+    },
+    {
+      "key": "site.96484f21dae3605b59",
+      "source": "Are these pages saying inspir replaces every learning platform?",
+      "value": "Ուսումնական նյութ՝ Are these էջեր saying inspir replaces every ուսուցում platform՞"
+    },
+    {
+      "key": "site.03c2ef723b2904e872",
+      "source": "Back to comparisons",
+      "value": "Ուսումնական նյութ՝ Back to comparisons"
+    },
+    {
+      "key": "site.1862701f023a90dba6",
+      "source": "Balanced, action-oriented differences for learners arriving from search.",
+      "value": "Balanced, action-oriented differences համար սովորողներ arriving ից որոնում."
+    },
+    {
+      "key": "site.832da3a447993780e4",
+      "source": "best AI learning app",
+      "value": "best ԱԲ ուսուցում հավելված"
+    },
+    {
+      "key": "site.752acb3eb4ff880788",
+      "source": "Best first click",
+      "value": "Best առաջին click"
+    },
+    {
+      "key": "site.e15aa13c72bb6766e4",
+      "source": "Can I use inspir alongside Khan Academy?",
+      "value": "Կարո՞ղ է Ուսումնական նյութ՝ I օգտագործել inspir alongside Khan Academy։"
+    },
+    {
+      "key": "site.df07ec19847b7e3c81",
+      "source": "Choose the right learning tool for the moment.",
+      "value": "Ընտրել the right ուսուցում tool համար the moment."
+    },
+    {
+      "key": "site.8d105cf44d3926289e",
+      "source": "Compare",
+      "value": "Համեմատել"
+    },
+    {
+      "key": "site.fe86b8b6f58d6b02ba",
+      "source": "Compare inspir with other learning tools and choose when to use live AI tutoring, public guest modes, prompts, guides, and study workflows.",
+      "value": "Համեմատել inspir հետ other ուսուցում tools and ընտրել երբ to օգտագործել կենդանի ԱԲ ուսուցում, հանրային հյուրային ռեժիմներ, հուշումներ, ուղեցույցներ, and ուսում աշխատանքային հոսքեր."
+    },
+    {
+      "key": "site.2dfcf898a3bd4e0111",
+      "source": "Comparison",
+      "value": "Համեմատություն"
+    },
+    {
+      "key": "site.e3449bc43c80fff108",
+      "source": "Comparison FAQ",
+      "value": "Համեմատություն FAQ"
+    },
+    {
+      "key": "site.0fbba3305ce0419e5b",
+      "source": "comparison page",
+      "value": "համեմատություն էջ"
+    },
+    {
+      "key": "site.23364909eb300169f1",
+      "source": "Curriculum",
+      "value": "Curriculum"
+    },
+    {
+      "key": "site.3b3290c7fa38e89955",
+      "source": "Discovery",
+      "value": "Հայտնաբերում"
+    },
+    {
+      "key": "site.e5d9412dc19e3b731b",
+      "source": "Do not ask which product wins. Ask which learning behavior fits.",
+      "value": "Do not հարցնել որը product wins. Հարցնել որը ուսումնական վարքագիծ fits."
+    },
+    {
+      "key": "site.de89ad80e4bc159305",
+      "source": "Do the comparison pages include private user chats?",
+      "value": "Do the համեմատություն էջեր include մասնավոր user chats՞"
+    },
+    {
+      "key": "site.f52c663e3e94fc11d1",
+      "source": "Does this comparison include private user chats?",
+      "value": "Does this համեմատություն include մասնավոր user chats՞"
+    },
+    {
+      "key": "site.b054bfce39dfee30f5",
+      "source": "Each comparison is written to be fair, useful, and action-oriented: what the known tool is good for, where inspir is different, and which public mode to open first.",
+      "value": "Each համեմատություն is written to be fԱԲr, օգտակար, and action-oriented: ինչ the known tool is լավ համար, որտեղ inspir is different, and որը հանրային ռեժիմ to բացել առաջին."
+    },
+    {
+      "key": "site.89a69d76177f3123dd",
+      "source": "Each page links comparison intent to live modes, guides, prompts, and AI-readable discovery files.",
+      "value": "Each էջ links համեմատություն intent to կենդանի ռեժիմներ, ուղեցույցներ, հուշումներ, and ԱԲ-readable discovery files."
+    },
+    {
+      "key": "site.691b9e3ae9e31ac807",
+      "source": "Every link here is public and crawlable. Private user chats stay out of comparison, sitemap, and AI-readable discovery files.",
+      "value": "Ուսումնական նյութ՝ Every link here is հանրային and crawlable. Մասնավոր user chats stay out of համեմատություն, sitemap, and ԱԲ-readable discovery files."
+    },
+    {
+      "key": "site.c48d44e9c6efbb98fa",
+      "source": "External facts are linked to official sources.",
+      "value": "Ուսումնական նյութ՝ External facts are linked to official sources."
+    },
+    {
+      "key": "site.e0a9a4669618e9e8d1",
+      "source": "Fair comparisons help learners choose faster.",
+      "value": "FԱԲr comparisons օգնություն սովորողներ ընտրել faster."
+    },
+    {
+      "key": "site.dab564d8093c751818",
+      "source": "Fit",
+      "value": "Fit"
+    },
+    {
+      "key": "site.e20bf3652cd69e5fe7",
+      "source": "free AI tutor alternative",
+      "value": "անվճար ԱԲ ուսուցիչ alternative"
+    },
+    {
+      "key": "site.f7db18e45d310a3740",
+      "source": "free AI tutor compared",
+      "value": "անվճար ԱԲ ուսուցիչ compared"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "Ուղեցույց"
+    },
+    {
+      "key": "site.895093b81f9bf96e69",
+      "source": "High-intent searches deserve a clear answer, not a vague landing page.",
+      "value": "Ուսումնական նյութ՝ High-intent searches deserve a հստակ պատասխան, not a vague landing էջ."
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Գլխավոր"
+    },
+    {
+      "key": "site.e6143903397be43d26",
+      "source": "Homework behavior",
+      "value": "Տնային աշխատանք behavior"
+    },
+    {
+      "key": "site.1f2797f9270f64d421",
+      "source": "Homework Coach and Math Step Coach are tuned for hint-first support, step checks, and ownership of the final answer.",
+      "value": "Տնային աշխատանքի մարզիչ and Մաթեմատիկայի քայլ առ քայլ մարզիչ are tuned համար նախ հուշումով support, քայլ checks, and ownership of the final պատասխան."
+    },
+    {
+      "key": "site.e67051684a0a7efe2e",
+      "source": "How to combine them",
+      "value": "Ուսումնական նյութ՝ How to combine them"
+    },
+    {
+      "key": "site.55680701f00ceb9366",
+      "source": "How to compare",
+      "value": "How to համեմատել"
+    },
+    {
+      "key": "site.778422b8e1f88970a1",
+      "source": "I need homework help without cheating.",
+      "value": "I need տնային աշխատանքի օգնություն առանց cheating."
+    },
+    {
+      "key": "site.c0f88a7be6e39754a8",
+      "source": "I need to remember this for an exam.",
+      "value": "Ուսումնական նյութ՝ I need to remember this համար an exam."
+    },
+    {
+      "key": "site.dbe2f41ef4ff955e5b",
+      "source": "I want history to feel alive but still evidence-aware.",
+      "value": "Ուսումնական նյութ՝ I ուզել history to feel alive but still evidence-aware."
+    },
+    {
+      "key": "site.e6cf030a4409f4caf0",
+      "source": "I watched a lesson but still do not get it.",
+      "value": "Ուսումնական նյութ՝ I watched a դաս but still do not get it."
+    },
+    {
+      "key": "site.b799727ddea54cfad2",
+      "source": "inspir comparison pages should be useful without pretending another platform is static. Check official sources for the latest product details.",
+      "value": "inspir համեմատություն էջեր պետք է be օգտակար առանց pretending another platform is static. Ստուգել official sources համար the latest product detԱԲls."
+    },
+    {
+      "key": "site.0fb7f30ad6ff523377",
+      "source": "inspir is built around public guest AI modes: Socratic questions, homework hints, math steps, writing feedback, quizzes, flashcards, and study planning.",
+      "value": "inspir is built around հանրային guest ԱԲ ռեժիմներ: Սոկրատյան հարցեր, տնային աշխատանք հուշումներ, math steps, գրավոր հետադարձ կապ, հարցաշարեր, ֆլեշքարտեր, and ուսման պլանning."
+    },
+    {
+      "key": "site.21037e55b97f4451ae",
+      "source": "Interaction style",
+      "value": "Ուսումնական նյութ՝ Interaction style"
+    },
+    {
+      "key": "site.919776a2ca87b87d66",
+      "source": "Is inspir a replacement for Khan Academy?",
+      "value": "Ուսումնական նյութ՝ Is inspir a replacement համար Khan Academy՞"
+    },
+    {
+      "key": "site.299b9447921e060357",
+      "source": "Khan Academy",
+      "value": "Ուսումնական նյութ՝ Khan Academy"
+    },
+    {
+      "key": "site.5964b9d690bcc87da3",
+      "source": "Khan Academy about page",
+      "value": "Khan Academy մասին էջ"
+    },
+    {
+      "key": "site.55ff090c4475eba300",
+      "source": "Khan Academy AI tutor alternative",
+      "value": "Ուսումնական նյութ՝ Khan Academy ԱԲ ուսուցիչ alternative"
+    },
+    {
+      "key": "site.e6f11e4eb4d3e1d946",
+      "source": "Khan Academy alternative",
+      "value": "Ուսումնական նյութ՝ Khan Academy alternative"
+    },
+    {
+      "key": "site.51f48b0fb58f53f8ad",
+      "source": "Khan Academy Alternative for Live AI Tutoring",
+      "value": "Khan Academy Alternative համար Կենդանի ԱԲ ուսուցում"
+    },
+    {
+      "key": "site.231a4e77c9c4b6f520",
+      "source": "Khan Academy is built around a broad library of lessons, practice, standards-aligned content, and mastery support.",
+      "value": "Ուսումնական նյութ՝ Khan Academy is built around a broad գրադարան of lessons, վարժանք, standards-aligned content, and mastery support."
+    },
+    {
+      "key": "site.d1f779c4344e216d05",
+      "source": "Khan Academy is excellent for structured lessons and practice. inspir is built for the moment a learner needs a live, promptable AI mode that can respond to their exact question, draft, problem, argument, or study plan.",
+      "value": "Ուսումնական նյութ՝ Khan Academy is excellent համար structured lessons and վարժանք. inspir is built համար the moment a սովորող needs a կենդանի, promptable ԱԲ ռեժիմ that can respond to their exact հարց, սևագիր, problem, argument, or ուսման պլան."
+    },
+    {
+      "key": "site.83ada5810a97d6106f",
+      "source": "Khanmigo official page",
+      "value": "Ուսումնական նյութ՝ Khanmigo official էջ"
+    },
+    {
+      "key": "site.9356fd3505a1d9fd86",
+      "source": "Learners often search with a product they already know. The useful answer is not winner-take-all; it is which tool behavior fits the job.",
+      "value": "Ուսումնական նյութ՝ Սովորողներ often որոնում հետ a product they already know. The օգտակար պատասխան is not winner-take-all; it is որը tool behavior fits the job."
+    },
+    {
+      "key": "site.cdab61adc3cffca489",
+      "source": "Learners who have a specific question and need help now.",
+      "value": "Սովորողներ who have a specific հարց and need օգնություն now."
+    },
+    {
+      "key": "site.84adfeeabd27f3fe1f",
+      "source": "Learning shape",
+      "value": "Ուսուցում shape"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "Ուսուցում աշխատանքային հոսք"
+    },
+    {
+      "key": "site.e3d015580b189f7743",
+      "source": "Live help",
+      "value": "Կենդանի օգնություն"
+    },
+    {
+      "key": "site.01a33756eb3d2e998f",
+      "source": "Live modes, guides, and workflows related to this comparison.",
+      "value": "Կենդանի ռեժիմներ, ուղեցույցներ, and աշխատանքային հոսքեր հարակից to this համեմատություն."
+    },
+    {
+      "key": "site.ef8131d4ef099261ab",
+      "source": "Many learners search by comparing tools they already know. A clear comparison page helps them choose the right learning behavior without hiding the tradeoffs.",
+      "value": "Many սովորողներ որոնում by comparing tools they already know. A հստակ համեմատություն էջ օգնում է them ընտրել the right ուսումնական վարքագիծ առանց hiding the tradeoffs."
+    },
+    {
+      "key": "site.a75d69d88d5b79e866",
+      "source": "No. The comparison links only to public guest-mode entrypoints, guides, prompt libraries, and learning paths. Private saved conversations are not used as source content.",
+      "value": "Ոչ։ Համեմատության հղումները վերաբերում են միայն հանրային հյուրային ռեժիմի մուտքերին, ուղեցույցներին, հուշումների գրադարաններին և ուսումնական ուղիներին։ Մասնավոր պահպանված զրույցները որպես աղբյուրային բովանդակություն չեն օգտագործվում։"
+    },
+    {
+      "key": "site.aed10f9f91c9bf277a",
+      "source": "No. The comparison pages are written to show when inspir is a better first click for live AI tutoring, prompts, and guest learning modes, and when a structured curriculum or official course library may still be useful.",
+      "value": "Ոչ։ The համեմատություն էջեր are written to show երբ inspir is a ավելի լավ առաջին click համար կենդանի ԱԲ ուսուցում, հուշումներ, and հյուրային ուսուցման ռեժիմներ, and երբ a structured curriculum or official դասընթաց գրադարան may still be օգտակար."
+    },
+    {
+      "key": "site.721930259ea85bd6e3",
+      "source": "No. They link only to public pages, public guest modes, guides, prompts, and learning paths. Private saved chats stay outside discovery surfaces.",
+      "value": "Ոչ։ They link only to հանրային էջեր, հանրային հյուրային ռեժիմներ, ուղեցույցներ, հուշումներ, and ուսումնական ուղիներ. Մասնավոր պահպանված չաթեր stay outside discovery surfaces."
+    },
+    {
+      "key": "site.4be83c2ad242622c0e",
+      "source": "Not across every learning need. Khan Academy is useful for structured lessons and practice. inspir is useful when a learner needs live AI help, Socratic questions, hints, quizzes, flashcards, feedback, or a study workflow around the exact thing they are working on.",
+      "value": "Not across every ուսուցում need. Khan Academy is օգտակար համար structured lessons and վարժանք. inspir is օգտակար երբ a սովորող needs կենդանի ԱԲ օգնություն, Սոկրատյան հարցեր, հուշումներ, հարցաշարեր, ֆլեշքարտեր, feedback, or a ուսում աշխատանքային հոսք around the exact thing they are working on."
+    },
+    {
+      "key": "site.7f9c1b786aa80b7624",
+      "source": "Official Khan Academy page for its AI-powered tutor and teaching assistant.",
+      "value": "Official Khan Academy էջ համար its ԱԲ-powered ուսուցիչ and teaching օգնական."
+    },
+    {
+      "key": "site.8466276a75727b3ad4",
+      "source": "Official mission and subject coverage reference.",
+      "value": "Ուսումնական նյութ՝ Official mission and առարկա coverage reference."
+    },
+    {
+      "key": "site.71277d137a4849aeea",
+      "source": "Official source",
+      "value": "Official աղբյուր"
+    },
+    {
+      "key": "site.d94da61fea5b3d1a29",
+      "source": "Open Learn Anything, ask for the prerequisite ideas, then switch into Socratic Instruction to test your model.",
+      "value": "Բացել Սովորիր ցանկացած բան, հարցնել համար the prerequisite գաղափարներ, then switch into Սոկրատյան ուսուցում to թեստ your model."
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "Բացել ռեժիմ"
+    },
+    {
+      "key": "site.6cc3364a242cbf9be7",
+      "source": "Open source",
+      "value": "Բացել աղբյուր"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Բացիր ուսումնական քարտեզը"
+    },
+    {
+      "key": "site.f99cce9ba8b855d87f",
+      "source": "Open the mode that matches the job.",
+      "value": "Ուսումնական նյութ՝ Բացել the ռեժիմ that matches the job."
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "Բացել աշխատանքային հոսք"
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "Paste the հարց, ինչ you tried, and the stuck point. Հարցնել համար the smallest օգտակար հուշում, not the final պատասխան."
+    },
+    {
+      "key": "site.0767c42a07f2fa099b",
+      "source": "People who learn better through conversation, questions, quizzes, and flashcards.",
+      "value": "People who սովորել ավելի լավ through conversation, հարցեր, հարցաշարեր, and ֆլեշքարտեր."
+    },
+    {
+      "key": "site.2d7cd8ab47e91a142a",
+      "source": "Prepared courses, videos, and exercises are strongest when the learner knows the topic sequence.",
+      "value": "Ուսումնական նյութ՝ Prepared courses, videos, and exercises are strongest երբ the սովորող knows the թեմա sequence."
+    },
+    {
+      "key": "site.3d6d128c6cdb66da13",
+      "source": "Public modes are tuned for explanations, Socratic questions, hints, step checks, quizzes, and review.",
+      "value": "Հանրային ռեժիմներ are tuned համար explanations, Սոկրատյան հարցեր, հուշումներ, քայլ checks, հարցաշարեր, and կրկնություն."
+    },
+    {
+      "key": "site.b35b251ac0299ad18b",
+      "source": "Public topic URLs let searches such as AI Socratic tutor, AI homework coach, AI flashcard builder, and talk to historical figures AI land directly in the matching mode.",
+      "value": "Հանրային թեմա URLs let searches such as ԱԲ Socratic ուսուցիչ, ԱԲ տնային աշխատանք մարզիչ, ԱԲ ֆլեշքարտ կառուցող, and talk to historical figures ԱԲ land directly in the matching ռեժիմ."
+    },
+    {
+      "key": "site.9eb1c3d6e13d90c45b",
+      "source": "Read comparison",
+      "value": "Կարդալ համեմատություն"
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "Կարդալ ուղեցույց"
+    },
+    {
+      "key": "site.c4ae3cf1805191f644",
+      "source": "Reference notes",
+      "value": "Ուսումնական նյութ՝ Reference notes"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "Որոնում intent"
+    },
+    {
+      "key": "site.dab06a16ebca6a965e",
+      "source": "Search landing pages",
+      "value": "Որոնում landing էջեր"
+    },
+    {
+      "key": "site.609f71722b1e0b0ddd",
+      "source": "Short answer",
+      "value": "Short պատասխան"
+    },
+    {
+      "key": "site.5f65cb44b22865405b",
+      "source": "Side by side",
+      "value": "Ուսումնական նյութ՝ Side by side"
+    },
+    {
+      "key": "site.b3d25fa95aa200f067",
+      "source": "Socratic AI tutor alternative",
+      "value": "Ուսումնական նյութ՝ Socratic ԱԲ ուսուցիչ alternative"
+    },
+    {
+      "key": "site.2ec8e6e39ac3988878",
+      "source": "Socratic AI tutor for students",
+      "value": "Socratic ԱԲ ուսուցիչ համար ուսանողներ"
+    },
+    {
+      "key": "site.85cd44ff10ddaa91b0",
+      "source": "Some searches need a course library. Some need a live AI tutor, a hint, a Socratic question, a quiz, or a flashcard deck. These pages make that choice clearer.",
+      "value": "Some searches need a դասընթաց գրադարան. Some need a կենդանի ԱԲ ուսուցիչ, a հուշում, a Socratic հարց, a հարցաշար, or a ֆլեշքարտերի փաթեթ. These էջեր make that choice ավելի հստակ."
+    },
+    {
+      "key": "site.54acc2806d4d927486",
+      "source": "Start here",
+      "value": "Սկսել here"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Սկսիր սովորել"
+    },
+    {
+      "key": "site.0192c076c03cb9f066",
+      "source": "Structured practice helps build foundations before and after homework.",
+      "value": "Structured վարժանք օգնում է կառուցել foundations նախքան and հետո տնային աշխատանք."
+    },
+    {
+      "key": "site.01edb8e5fcc8f3fd2d",
+      "source": "Students who want hints or step checks without answer-copying.",
+      "value": "Ուսանողներ who ուզել հուշումներ or քայլ checks առանց answer-copying."
+    },
+    {
+      "key": "site.ece53407c8b8eb8957",
+      "source": "Teachers or parents evaluating focused AI learning behaviors before a school deployment.",
+      "value": "Ուսուցիչներ or ծնողներ evaluating կենտրոնացված ԱԲ ուսումնական վարքագիծs նախքան a դպրոց deployment."
+    },
+    {
+      "key": "site.18aeb0ac29d67b16d4",
+      "source": "The comparison searches this hub is built to answer.",
+      "value": "The համեմատություն searches this hub is built to պատասխան."
+    },
+    {
+      "key": "site.86af9247f799f6c3d0",
+      "source": "The point is not to flatten two different tools into one winner. The point is to match the learning job to the behavior that helps fastest.",
+      "value": "Ուսումնական նյութ՝ The point is not to flatten two different tools into one winner. The point is to match the ուսումնական առաջադրանք to the behavior that օգնում է fastest."
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "Ուսումնական նյութ՝ The searches this էջ is designed to պատասխան."
+    },
+    {
+      "key": "site.3dce62e19d3c644042",
+      "source": "These are the high-intent moments where a learner usually needs a live teaching behavior rather than another broad page.",
+      "value": "Ուսումնական նյութ՝ These are the high-intent moments որտեղ a սովորող usually needs a կենդանի teaching behavior rather than another broad էջ."
+    },
+    {
+      "key": "site.714bb4a8c53ed6e02a",
+      "source": "These phrases are surfaced naturally on the page and in structured discovery files so crawlers can understand the exact comparison intent.",
+      "value": "Ուսումնական նյութ՝ These phrases are surfaced naturally on the էջ and in structured discovery files so crawlers can հասկանալ the exact համեմատություն intent."
+    },
+    {
+      "key": "site.2f242dd6f0a456cdc3",
+      "source": "This is not a claim that learners should abandon Khan Academy. For many topics, a trusted lesson library and a live AI learning mode work best together: learn the foundation, then use inspir to ask questions, repair confusion, practise recall, or get unstuck.",
+      "value": "This is not a clԱԲm that սովորողներ պետք է abandon Khan Academy. Համար many թեմաներ, a trusted դաս գրադարան and a կենդանի ԱԲ ուսուցման ռեժիմ աշխատանք best together: սովորել the foundation, then օգտագործել inspir to հարցնել հարցեր, repԱԲr confusion, practise վերհիշում, or get unstuck."
+    },
+    {
+      "key": "site.26e259635ae7f8880f",
+      "source": "Tool comparison",
+      "value": "Tool համեմատություն"
+    },
+    {
+      "key": "site.f5623c9e3226609a01",
+      "source": "Try the live AI learning path.",
+      "value": "Փորձել the կենդանի ԱԲ ուսումնական ուղի."
+    },
+    {
+      "key": "site.4d076130eaa623c2cb",
+      "source": "Turn the explanation into quiz questions, flashcards, and a review schedule based on what you miss.",
+      "value": "Turn the բացատրություն into հարցաշար հարցեր, ֆլեշքարտեր, and a կրկնություն schedule based on ինչ you miss."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Անհատական դասընթացներ"
+    },
+    {
+      "key": "site.c2a0beae2becd36b3e",
+      "source": "Use a live mode when you know the exact point of confusion and want the next explanation, question, hint, or review loop.",
+      "value": "Օգտագործել a կենդանի ռեժիմ երբ you know the exact point of confusion and ուզել the հաջորդ բացատրություն, հարց, հուշում, or կրկնություն loop."
+    },
+    {
+      "key": "site.4ba44f615dee2344fd",
+      "source": "Use a structured lesson when you know the course area and want a sequenced explanation or practice set.",
+      "value": "Օգտագործել a structured դաս երբ you know the դասընթաց area and ուզել a sequenced բացատրություն or վարժանք set."
+    },
+    {
+      "key": "site.14a29ba383c84d1592",
+      "source": "Use cases",
+      "value": "Օգտագործման դեպքs"
+    },
+    {
+      "key": "site.22a731b0bfd62c95ac",
+      "source": "Use comparison pages to route search into action.",
+      "value": "Օգտագործել համեմատություն էջեր to երթուղի որոնում into գործողություն."
+    },
+    {
+      "key": "site.d8fe052e025fdee3e6",
+      "source": "Use inspir first when your search is about an action: explain this simply, ask me Socratic questions, give me a homework hint, check my math step, quiz me, build flashcards, debate this topic, or help me plan revision.",
+      "value": "Օգտագործել inspir առաջին երբ your որոնում is մասին an գործողություն: explԱԲn this simply, հարցնել me Սոկրատյան հարցեր, տալ me a տնային աշխատանք հուշում, ստուգել my math քայլ, հարցաշար me, կառուցել ֆլեշքարտեր, debate this թեմա, or օգնություն me պլան revision."
+    },
+    {
+      "key": "site.cb34eb52e96d4923a8",
+      "source": "Use inspir to turn confusion into questions, examples, retrieval practice, writing feedback, debate, and a personal study plan.",
+      "value": "Օգտագործել inspir to turn confusion into հարցեր, օրինակներ, վերհիշման վարժանք, գրավոր հետադարձ կապ, debate, and a personal ուսման պլան."
+    },
+    {
+      "key": "site.6365ff905381cdf1bf",
+      "source": "Use inspir when the stuck point is specific.",
+      "value": "Ուսումնական նյութ՝ Օգտագործել inspir երբ the stuck point is specific."
+    },
+    {
+      "key": "site.7d662811b7005e34b8",
+      "source": "Use inspir when you want a free public AI learning mode that can explain, question, quiz, coach homework, build flashcards, and adapt to the exact thing you are stuck on.",
+      "value": "Օգտագործել inspir երբ you ուզել a անվճար հանրային ԱԲ ուսուցման ռեժիմ that can explԱԲn, հարց, հարցաշար, մարզիչ տնային աշխատանք, կառուցել ֆլեշքարտեր, and հարմարեցնել to the exact thing you are stuck on."
+    },
+    {
+      "key": "site.9fa5dd88ccb3c4b842",
+      "source": "Use structured lessons when the path is known.",
+      "value": "Օգտագործել structured lessons երբ the ուղի is known."
+    },
+    {
+      "key": "site.b9f9c31663bcb2ec5f",
+      "source": "Use the comparison below to pick the first public mode or guide.",
+      "value": "Օգտագործել the համեմատություն below to pick the առաջին հանրային ռեժիմ or ուղեցույց."
+    },
+    {
+      "key": "site.da0bb9eced08db949e",
+      "source": "Use the lesson library to learn the official sequence and practise core skills.",
+      "value": "Օգտագործել the դաս գրադարան to սովորել the official sequence and practise core հմտություններ."
+    },
+    {
+      "key": "site.bf178dc57296a51c39",
+      "source": "Use the right tool for the learning job.",
+      "value": "Օգտագործել the right tool համար the ուսումնական առաջադրանք."
+    },
+    {
+      "key": "site.80eabfca92732e19c0",
+      "source": "Use Time Travel or Historical Person mode, while keeping generated dialogue separate from documented sources.",
+      "value": "Օգտագործել Ժամանակային ճանապարհորդություն or Historical Person ռեժիմ, while keeping generated dialogue separate ից documented sources."
+    },
+    {
+      "key": "site.e8c617165400754142",
+      "source": "Want the live learning version right now?",
+      "value": "Ուզել the կենդանի ուսուցում version right now՞"
+    },
+    {
+      "key": "site.179ab657285e95eb0a",
+      "source": "When should I use inspir first?",
+      "value": "Երբ պետք է I օգտագործել inspir առաջին՞"
+    },
+    {
+      "key": "site.4cb6af1ae576c542dd",
+      "source": "When to use",
+      "value": "Երբ to օգտագործել"
+    },
+    {
+      "key": "site.e2a4fadebc2fb98bda",
+      "source": "When to use {value1}, and when to open inspir.",
+      "value": "Երբ օգտագործել {value1}-ը և երբ բացել inspir-ը։"
+    },
+    {
+      "key": "site.7dc8bdb14a2f7478cb",
+      "source": "Why make comparison pages at all?",
+      "value": "Ինչու make համեմատություն էջեր at բոլոր՞"
+    },
+    {
+      "key": "site.8bd58430ed1a80ace0",
+      "source": "Yes. A good workflow is to learn the foundation from a trusted lesson source, then use inspir to ask follow-up questions, practise recall, repair misconceptions, and plan what to review next.",
+      "value": "Այո։ A լավ աշխատանքային հոսք is to սովորել the foundation ից a trusted դաս աղբյուր, then օգտագործել inspir to հարցնել հաջորդ հարցեր, practise վերհիշում, repԱԲr misconceptions, and պլան ինչ to կրկնություն հաջորդ."
+    }
+  ]
+}

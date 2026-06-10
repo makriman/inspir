@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Zulu",
+  "locale": "zu",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Hlukanisa umsebenzi ube yimisebenzi enegama, bala isikhathi somsebenzi ngamunye, futhi ubuyekeze lapho umzamo wokufunda uye khona ngemva kweseshini ngayinye egxilile."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokugxila nokukhiqiza abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe isikhathi somsebenzi ngezikhumbuzo zayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "Bala isikhathi semisebenzi ngayinye ubone umzamo"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezikhumbuzo zesibonelo"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "Bala isikhathi sesethi yezinkinga"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "Landelela umsebenzi wozime we-essay"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "Hlukanisa umsebenzi omkhulu ube amabhulokhi anesikhathi"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "Isikhumbuzo Sekhefu"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "Vikela ukugxila ngamakhefu anempilo"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Setha imigqi yomsebenzi nekhefu, hlela ukusetha kabusha kwangempela, futhi ugweme ukukhathala okungapheli kokufunda."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "Yimuphi umgqi womsebenzi/wekhefu owufunayo?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "Ukugxila Nokukhiqiza"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Setha imigqi yomsebenzi nekhefu, hlela ukusetha kabusha kwangempela, futhi ugweme ukukhathala okungapheli kokufunda."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokugxila nokukhiqiza abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe isikhumbuzo sekhefu ngezikhumbuzo zayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "Vikela ukugxila ngamakhefu anempilo"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezikhumbuzo zesibonelo"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokomgomo wakho"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "Sebenzisa amakhefu angu-50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "Hlela ikhefu elinempilo"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "Ngisize ngiyeke ukufunda ngokweqile"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "Izikhathi Zokugxila Kakhulu (Deep Work Sessions)"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "Hlela isikhathi sokugxila ngaphandle kweziphazamiso"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Lungiselela iseshini yokugxila kakhulu enomphumela ocacile, imikhawulo, imithetho yokugxila, indawo yokuhlola, kanye nohlelo olungasetshenziswa uma kunesidingo."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Yimuphi umphumela okufanele le seshini yokugxila kakhulu iwukhiqize?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "Ukugxila Nokukhiqiza"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Lungiselela iseshini yokugxila kakhulu enomphumela ocacile, imikhawulo, imithetho yokugxila, indawo yokuhlola, kanye nohlelo olungasetshenziswa uma kunesidingo."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokugxila nokukhiqiza abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe izikhathi zokugxila kakhulu ngemiyalo yayo, izibonelo, kanye nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "Hlela isikhathi sokugxila ngaphandle kweziphazamiso"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokomgomo wakho"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "Hlela isikhathi sokugxila kakhulu semizuzu engu-90"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "Ngisize ngigxile ekubhaleni ikhodi"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "Beka imithetho yokubhala i-thesis"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "Isikhathi Sokufunda Ngeqembu"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "Hlela imizuliswano yokugxila nabanye"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Sebenzisa isigqi sokufunda esabiwe nabangani noma ofunda nabo ngemigomo evumelanisiwe, ukuhlola, kanye nemibuzo yokubuyekeza."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Obani abafunda ndawonye futhi yimuphi umgomo?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "Ezokuxhumana"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Sebenzisa isigqi sokufunda esabiwe nabangani noma ofunda nabo ngemigomo evumelanisiwe, ukuhlola, kanye nemibuzo yokubuyekeza."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zenhlalo abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe isikhathi sokufunda seqembu ngemiyalo yayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "Hlela imizuliswano yokugxila nabanye"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "Hlela i-Pomodoro yeqembu"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "Hlela igumbi lokufundela"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "Qalisa iseshini yeqembu yemizuzu engama-45"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "Imisindo Yendawo"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "Imisindo ekhiqiziwe yokufunda ngokuzola"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Sebenzisa izilungiselelo zomsindo wendawo ezilula ukunciphisa ukuphazamiseka ngesikhathi sokufunda, ukubhala, ukubuyekeza, noma ukuxazulula izinkinga."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Hlobo luni lomsindo wendawo wokugxila olufunayo?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "Ukugxila Nokukhiqiza"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Sebenzisa izilungiselelo zomsindo wendawo ezilula ukunciphisa ukuphazamiseka ngesikhathi sokufunda, ukubhala, ukubuyekeza, noma ukuxazulula izinkinga."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokugxila nokukhiqiza abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe imisindo yendawo ngemiyalo yayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "Imisindo ekhiqiziwe yokufunda ngokuzola"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "Sebenzisa umsindo wemvula ukuze ufunde"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "Khetha umsindo ozolile wezibalo"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "Setha indawo ethule yokusebenza ngokujula"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "Imigqa Yokufunda"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "Yakha ukungaguquguquki ngaphandle kwesizathu sokuzizwa unecala"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Landela imigqa yokufunda, lungisa izinsuku eziphuthelwe, futhi udale umkhuba wokufunda omncane ongaphila ngisho nasezimpilweni zansuku zonke."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "Yimuphi umugqa noma umkhuba owakhayo?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "Izibalo"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Landela imigqa yokufunda, lungisa izinsuku eziphuthelwe, futhi udale umkhuba wokufunda omncane ongaphila ngisho nasezimpilweni zansuku zonke."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zezibalo abafuna isiqondiso esiwusizo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe imigqa yokufunda ngemiyalo yayo, izibonelo, kanye nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "Yakha ukungaguquguquki ngaphandle kwesizungu"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "Qala umugqa wokufunda"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "Buyela esimweni ngemuva kokuphuthelwa usuku"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "Dala ukubuyekeza okuncane kwansuku zonke"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "Ideshibhodi Yenqubekelaphambili"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "Buyekeza umsebenzi wokufunda nezinyathelo ezilandelayo"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Guqula umsebenzi wokufunda, imiphumela yemibuzo, amanothi, nezikhathi zibe ukubuyekeza okufana nedeshibhodi okunezimo nezinyathelo ezilandelayo."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "Yini inqubekelaphambili okufanele siyibuyekeze?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "Izibalo"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Guqula umsebenzi wokufunda, imiphumela yemibuzo, amanothi, nezikhathi zibe ukubuyekeza okufana nedeshibhodi okunezimo nezinyathelo ezilandelayo."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zezibalo abafuna isiqondiso esiwusizo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe ideshibhodi yenqubekelaphambili ngemiyalo yayo, izibonelo, kanye nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "Buyekeza umsebenzi wokufunda nezinyathelo ezilandelayo"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "Buyekeza isonto lami"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "Thola izindawo ezibuthakathaka"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "Guqula umsebenzi ube yizinyathelo ezilandelayo"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "Imibiko Yamasonto Onke"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Fingqa impumelelo, okungahambanga kahle, kanye nesonto elizayo"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Khiqiza umbiko wokufunda wamasonto onke noma wanyanga zonke ohlanganisa umzamo, imiphumela, izithiyo, impumelelo, kanye nohlelo olugxilile."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "Kwenzekeni kuleli sonto?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "Izibalo"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Khiqiza umbiko wokufunda wamasonto onke noma wanyanga zonke ohlanganisa umzamo, imiphumela, izithiyo, impumelelo, kanye nohlelo olugxilile."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zezibalo abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe imibiko yamasonto onke ngemiyalo yayo, izibonelo, kanye nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Fingqa impumelelo, okungahambanga kahle, kanye nesonto elizayo"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokomgomo wakho"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "Bhala umbiko wami wokufunda wamasonto onke"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "Fingqa inqubekelaphambili yami"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "Hlela isonto elizayo ngokusekelwe kuleli sonto"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "Isilandeleli Semisebenzi"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "Landelela izinsuku zokugcina kanye nezenzo ezilandelayo"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Hlela imisebenzi ngokwedethi yokugcina, umzamo, isimo, ubungozi, kanye nesinyathelo esincane esilandelayo."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "Yimiphi imisebenzi okufanele uyenze?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "Inhlangano"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Hlela imisebenzi ngokwedethi yokugcina, umzamo, isimo, ubungozi, kanye nesinyathelo esincane esilandelayo."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zenhlangano abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe isilandeleli semisebenzi ngemiyalo yayo, izibonelo, kanye nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "Landela imingcele yesikhathi nezenzo ezilandelayo"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "Hlela imingcele yami yesikhathi"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "Beka imisebenzi eqalwa kuqala"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "Hlela ukuthunyelwa kwale phrojekthi"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "Umphathi Wezifundo"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "Hlela izifundo, izihloko, nomthwalo womsebenzi"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Hlela izifundo, amayunithi, imisebenzi, izinsiza, nomthwalo womsebenzi wamasonto onke ohlelweni olulodwa lokufunda."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "Yiziphi izifundo noma izihloko oziphathayo?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "Inhlangano"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Hlela izifundo, amayunithi, imisebenzi, izinsiza, nomthwalo womsebenzi wamasonto onke ohlelweni olulodwa lokufunda."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zenhlangano abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe umphathi wezifundo ngemiyalo yayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "Hlela izifundo, izihloko, nomthwalo womsebenzi"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "Setha izifundo zami"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "Hlela isemester yami"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "Dweba izihloko zesifundo ngasinye"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "Umhleli Wamanothi"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "Faka amathegi, hlunga, futhi uxhumanise amanothi"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Guqula amanothi ahlakazekile abe amafolda, amathegi, izifinyezo, izixhumanisi, nezenzo zokubuyekeza ezenza ukukhumbula kube lula."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "Namathisela noma uchaze amanothi ozowahlela"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "Ukuhlela"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Guqula amanothi ahlakazekile abe amafolda, amathegi, izifinyezo, izixhumanisi, nezenzo zokubuyekeza ezenza kube lula ukukhumbula."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokuhlela abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe umhleli wamanothi ngemiyalo yayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "Faka amathegi, hlunga, futhi uxhumanise amanothi"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "Hlela amanothi ami ekilasi"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "Dala amathegi alawa manothi"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "Thola izingqikithi encwadini yami yamanothi"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "Ukwabelana Ngezinsiza"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "Hlanganisa futhi wabelane ngezinsiza zokufunda"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Lungiselela izinsiza zokufunda ofunda nabo noma iqembu: izifinyezo, izixhumanisi, amanothi, izincazelo, nesiqondiso sokusebenzisa."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "Yisiphi isinsiza ofuna ukwabelana ngaso?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "Ezokuxhumana"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Lungiselela izinsiza zokufunda ofunda nabo noma iqembu: izifinyezo, izixhumanisi, amanothi, izincazelo, nesiqondiso sokusebenzisa."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zezokuxhumana abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe ukwabelana ngezinsiza ngemiyalo yayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "Hlanganisa futhi wabelane ngezinsiza zokufunda"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "Hlanganisa amanothi ami eqembu"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "Dala isifinyezo sesinsiza"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "Yenza imihlahlandlela yokwabelana"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "Amaqembu Okufunda"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "Yenza ukufunda kweqembu kube nohlelo"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Hlela iqembu lokufunda elikhiqizayo elinezindima, i-ajenda, imizuliswano yemibuzo, izinsiza ezabiwe, namanothi okubuyekeza."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "Iqembu lokufunda kufanele lenzeni?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "Ezokuxhumana"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Hlela iqembu lokufunda elikhiqizayo elinezindima, i-ajenda, imizuliswano yemibuzo, izinsiza ezabiwe, namanothi okubuyekeza."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zenhlalo abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe amaqembu okufunda ngemiyalo yayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "Yenza ukufunda kweqembu kube nohlelo"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "Hlela iseshini yeqembu"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "Dala izindima zeqembu lokufunda"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "Lungisa iqembu elingakhiqizi"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "Inkundla Yabafundi"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "Lungisa imibuzo ukuze uthole usizo emphakathini"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Lungiselela imibuzo ecacile yenkundla, izimpendulo, izifinyezo, nezicelo zokulandelela ezenza izingxoxo zabafundi zibe usizo kakhudlwana."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "Yimuphi umbuzo noma ingxoxo ofuna ukuyithumela?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "Ezokuxhumana"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Lungiselela imibuzo ecacile yenkundla, izimpendulo, izifinyezo, nezicelo zokulandelela ezenza izingxoxo zabafundi zibe usizo kakhudlwana."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zenhlalo abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe inkundla yabafundi ngemiyalo yayo, izibonelo, nokugeleza kokufunda."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "Lungisa imibuzo ukuze uthole usizo emphakathini"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "Bhala umbuzo omuhle wenkundla yezingxoxo"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "Fingqa ingxoxo"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "Cela impendulo kozakwenu"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "Umklami Wephepha Lokusebenzela"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "Khiqa amaphepha okusebenzela okuzilolonga okuxubile"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Dala amaphepha okusebenzela anezinhlobo zemibuzo efana nokugcwalisa izikhala, imibuzo enezinketho eziningi (MCQs), iqiniso/amanga, izimpendulo ezimfushane, nokufanisa."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "Iphepha lokusebenzela kufanele lihlanganise ini?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "Ukufunda Okusebenzayo"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Dala amaphepha okusebenzela anezinhlobo zemibuzo efana nokugcwalisa izikhala, imibuzo enezinketho eziningi (MCQs), iqiniso/amanga, izimpendulo ezimfushane, nokufanisa."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokufunda okusebenzayo abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe umklami wephepha lokusebenzela ngemiyalo yayo, izibonelo, nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "Khiqa amaphepha okusebenzela okuzilolonga okuxubile"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenjongo yakho"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "Yenza iphepha lokusebenzela ngama-fraction"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "Dala ukuzilolonga okuxubile kwamakhemikhali"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "Yakha izivivinyo zamagama"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "Ukuzilolonga Ukulebula Imidwebo"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Zilolonge ukulebula imidwebo nezinhlelo"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Guqula imidwebo, izinhlelo zomzimba, amamephu, ukuhamba komsebenzi, noma izilungiselelo zaselebhu zibe ukuzilolonga kokulebula ngamacebo nokuhlola izimpendulo."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "Yimuphi umdwebo okufanele sizilolonge ukuwulebula?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "Ukufunda Okusebenzayo"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Guqula imidwebo, izinhlelo zomzimba, amamephu, ukuhamba komsebenzi, noma izilungiselelo zaselebhu zibe ukuzilolonga kokulebula ngamacebo nokuhlola izimpendulo."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokufunda okusebenzayo abafuna isiqondiso esiwusizo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe ukuzijwayeza ukulebula imidwebo ngemiyalo yayo, izibonelo, kanye nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Zijwayeze amalebula emidwebo nezinhlelo"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenhloso yakho"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "Lebula iseli lesitshalo"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "Zijwayeze umdwebo wenhliziyo"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "Dala imibuzo yokulebula amamephu"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "Umenzi Womdlalo Wokufanisa"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Bhangqa amagama, izincazelo, izimbangela, nezibonelo"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Guqula amanothi abe imidlalo yokufanisa yamagama, imiqondo, abantu/imicimbi, amafomula, izibonelo, noma izibhangqo zembangela nomphumela."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "Yimaphi amabhangqa okufanele abe umdlalo wokufanisa?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "Ukufunda Okusebenzayo"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Guqula amanothi abe imidlalo yokufanisa yamagama, imiqondo, abantu/imicimbi, amafomula, izibonelo, noma izibhangqo zembangela nomphumela."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokufunda okusebenzayo abafuna isiqondiso esiwusizo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe umenzi womdlalo wokufanisa ngemiyalo yayo, izibonelo, kanye nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Bhangqa amagama, izincazelo, izimbangela, nezibonelo"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokwenhloso yakho"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "Fanisa amagama nezincazelo"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "Dala izibhangqo zembangela nomphumela"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "Dala ukuzijwayeza ukufanisa amafomula"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP & Ukukhuphuka Kwamazinga"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "Guqula inqubekelaphambili ibe ngamazinga nemisebenzi"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Dizayina uhlelo lwamaphuzu, amazinga, imisebenzi, nemiklomelo ngokusekelwe enqubekelaphambili yangempela yokufunda."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Yimuphi umgomo wokufunda okufanele ube uhlelo lwamazinga?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "Ukudlalisa (Gamification)"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Dizayina uhlelo lwamaphuzu, amazinga, imisebenzi, nemiklomelo ngokusekelwe enqubekelaphambili yangempela yokufunda."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Abafundi abahlola izihloko zokudlalisa abafuna isiqondiso esisebenzayo esikhundleni sebhokisi lezimpendulo elijwayelekile."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "Le modi ilungiselelwe i-XP namazinga ngemiyalo yayo, izibonelo, nokuhamba kokufunda."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "Guqula inqubekelaphambili ibe amazinga nemisebenzi"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Qala ngezibonelo zemiyalo"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Lungisa iseshini ngokomgomo wakho"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "Dala i-XP yokulungiselela izivivinyo"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "Dizayina amazinga okuzijwayeza ukubhala ikhodi"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "Guqula ukufunda kube imisebenzi"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "Amabheji Nezimpumelelo"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "Klomelisa izigaba ezibalulekile"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Dala amabheji okungaguquguquki, ukwazi kahle, isibindi, ukubuyekeza, ukubambisana, nemisebenzi eqediwe."
+    }
+  ]
+}

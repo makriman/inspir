@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Irish",
+  "locale": "ga",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 12,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "scileanna staidéir"
+    },
+    {
+      "key": "site.c0be267ae7b9421ba9",
+      "source": "Study skills guides",
+      "value": "Treoracha scileanna staidéir"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "Sraitheanna Staidéir"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "Uaineadóir Staidéir"
+    },
+    {
+      "key": "site.3b1f7ac98100c2db8d",
+      "source": "study with AI",
+      "value": "staidéar le IS"
+    },
+    {
+      "key": "site.3c328d5333fc21a14a",
+      "source": "Study with AI without cheating",
+      "value": "Déan staidéar le IS gan caimiléireacht"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Sreafaí oibre staidéir a cheanglaíonn modhanna aoi, prasaí, cleachtadh, agus treoracha gaolmhara."
+    },
+    {
+      "key": "site.f44d7e8cc3553fbecb",
+      "source": "Studying with AI works best when the tool keeps you in the driver's seat.",
+      "value": "Oibríonn staidéar le IS is fearr nuair a choinníonn an uirlis tusa i suíochán an tiománaí."
+    },
+    {
+      "key": "site.066ca7bdd036368736",
+      "source": "Subject hub",
+      "value": "Mol ábhair"
+    },
+    {
+      "key": "site.2feff266cc115ac2a6",
+      "source": "Subject hubs",
+      "value": "Moil ábhair"
+    },
+    {
+      "key": "site.44c887b5d77a86fb07",
+      "source": "subject hubs mapped to learner intent",
+      "value": "moil ábhair mapáilte d’intinn an fhoghlaimeora"
+    },
+    {
+      "key": "site.d0921b314798adbd36",
+      "source": "Subject hubs organize public AI learning modes by learning intent, such as math, writing, coding, history, homework, and exam prep. Each hub links to live guest modes, prompt starters, guides, workflows, and review loops.",
+      "value": "Eagraíonn moil ábhair modhanna poiblí foghlama IS de réir intinn foghlama, amhail matamaitic, scríbhneoireacht, códú, stair, obair bhaile, agus ullmhúchán scrúduithe. Nascann gach mol le modhanna beo d’aíonna, prasaí tosaithe, treoracha, sreafaí oibre, agus lúba athbhreithnithe."
+    },
+    {
+      "key": "site.edb0f4eb8d8e6cc0b9",
+      "source": "Subscriptions and Competitions",
+      "value": "Síntiúis agus Comórtais"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "Rath: fágann an foghlaimeoir le samhail mheabhrach níos soiléire, chéad chéim eile, agus muinín chun leanúint ar aghaidh."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "Déan achoimre ar phlé"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "Déan achoimre ar chaibidil 2"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Déan achoimre ar théacs fada ina phríomhsmaointe, struchtúr, sainmhínithe, samplaí agus ceisteanna cuimhne."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "Déan achoimre ar mo dhul chun cinn"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "Déan achoimre ar mo nótaí garbha"
+    },
+    {
+      "key": "site.8b0fbf296ebcf69e30",
+      "source": "summarize notes AI",
+      "value": "IS achoimrithe nótaí"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "Achoimrigh patrúin, déan diagnóis ar réimsí laga, agus roghnaigh na chéad ghníomhartha eile."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "Achoimrigh patrúin, sainaithin caveats, mínigh modhanna, agus mol an chéad anailís eile."
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Déan achoimre ar an gcomhthéacs"
+    },
+    {
+      "key": "site.68fdf8f5a74ec70a64",
+      "source": "Summarize the tradeoff",
+      "value": "Achoimrigh an malairt"
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "Déan achoimre ar an alt seo"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Déan achoimre ar bhuaiteanna, bearnaí, agus an tseachtain seo chugainn"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "Achoimrigh, soiléirigh struchtúr, sainaithin téarmaí tábhachtacha, agus cuir seiceálacha cuimhne leis."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "Achoimrigh, soiléirigh stór focal, cuir ceisteanna tátail, agus ceangail smaointe."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "Achoimrigh, sainaithin patrúin, agus tiontaigh machnamh ina phlean."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "Achoimrigh, lipéadaigh, cuir caveats leis, agus mol conas ba chóir do dhaoine eile é a úsáid."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "Tacaigh le tiúchan le fuaim chúlra íseal-seachráin."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "Tacaigh le staidéar comhsheasmhach le rianú sraithe atruach."
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Tacaigh le rochtain mhaoinithe ar fhoghlaim IS do phobail a dteastaíonn tacaíocht ardchaighdeáin uathu gan costas a chur ar theaghlaigh."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "Tacaigh le spreagadh agus buanseasmhacht ar bhealach bunaithe, neamhchliniciúil."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Tacaigh le scríbhneoireacht agus guth á chaomhnú"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Tacaíonn sé le foghlaim sheach-churaclaim, cleachtadh acadúil, agus fiosracht."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "Tabhair an mhíthuiscint chun solais, cuir i gcodarsnacht í leis an tsamhail cheart, agus cleacht aistriú."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Athraigh isteach i gceisteanna ionas gur féidir leat toimhdí a nochtadh agus bearnaí a líonadh in ionad an freagra a léamh go héighníomhach."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Clúdach sindeacáite le haghaidh teacht níos leithne ar thomhaltóirí."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "Clibeáil, sórtáil agus ceangail nótaí"
+    },
+    {
+      "key": "site.9899cc2856ebc766b7",
+      "source": "Talk to a historical figure",
+      "value": "Labhair le figiúr stairiúil"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Labhair le duine stairiúil agus coinnigh dialóg ghinte scartha ó luachan doiciméadaithe."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Labhair le duine stairiúil"
+    },
+    {
+      "key": "site.f498d9559a8e2aaedd",
+      "source": "Talk to a historical person prompts and study loop",
+      "value": "Prasaí agus lúb staidéir Talk to a historical person"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "Labhair le Cleopatra"
+    },
+    {
+      "key": "site.75f35e209bf368c2f5",
+      "source": "talk to historical figure AI",
+      "value": "IS chun labhairt le figiúr stairiúil"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "labhairt le daoine stairiúla IS"
+    },
+    {
+      "key": "site.8479e8174d72f35dd6",
+      "source": "Talk To Historical Figures With AI",
+      "value": "Labhair le Figiúirí Stairiúla le IS"
+    },
+    {
+      "key": "site.fd491be7a558f38bc7",
+      "source": "Talk To Historical Figures With AI is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Is bealach dírithe é Labhair le Figiúirí Stairiúla le IS chun IS a úsáid don fhoghlaim seachas bailiú freagraí éighníomhach. Tá an mód tógtha timpeall ar phost ar leith: céim isteach i gcomhrá le figiúr stairiúil. Cuir ceisteanna, tabhair dúshlán do smaointe, agus cloisteáil an domhan trína ré, luachanna, agus teorainneacha."
+    },
+    {
+      "key": "site.3183f69986b7ceed7c",
+      "source": "Talk To Historical Figures With AI: practical guide",
+      "value": "Labhair le Figiúirí Stairiúla le IS: treoir phraiticiúil"
+    },
+    {
+      "key": "site.c9a1ac167eee122c72",
+      "source": "Talking to a historical figure is not magic access to the past. It is a learning format.",
+      "value": "Ní rochtain draíochta ar an am atá caite é labhairt le figiúr stairiúil. Is formáid foghlama é."
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "amadóir tascanna"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "Uaineadóir Tascanna"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "Múin aon ábhar le teas, soiléireacht, agus samplaí úsáideacha."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "Múin measúnú criticiúil foinsí."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "Múin eacnamaíocht trí chásanna agus malairtí."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "Múin réasúnaíocht eiticiúil trí aincheisteanna struchtúrtha."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "Múin codáin mar scéal"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "Múin tíreolaíocht mar chórais cheangailte d’áit, daoine, timpeallacht, agus gluaiseacht."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "Múin stair trí réasúnaíocht chúiseach."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "Múin d’fhoghlaimeoirí ealaín a bhreathnú, a léirmhíniú, agus taitneamh a bhaint aisti."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "Múin samhaltú airgeadais dom"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "Múin dom conas a oibríonn ús"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Múin Cúig Fhórsa Porter dom"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "Múin lúba Python dom"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "Múin meabhrú trí íomhánna spásúla agus aisghabháil."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "Múin coincheapa ríomhchláraithe agus dífhabhtú le rannpháirtíocht an fhoghlaimeora."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "Múin bunghnéithe na rithime"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "Múin eolaíocht trí fhianaise, athróga, tuar, agus turgnamh sábháilte."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "Múin trí chásanna réalaíocha agus iarmhairtí cinntí."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "Múin stór focal trí chomhthéacs agus cleachtadh aisghabhála."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Múinteoirí"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Is féidir le múinteoirí agus ceannairí tosú le Learn Anything, Socratic Instruction, Homework Coach, tráthanna ceiste, agus spléachchártaí roimh rolladh amach foirmiúil."
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Teastaíonn níos mó ná chatbot cineálach ó mhúinteoirí. Teastaíonn iompraíochtaí foghlama intuartha uathu: ceisteanna a chur, réasúnaíocht a sheiceáil, cleachtadh a ghiniúint, guth an dalta a chaomhnú, agus míthuiscintí a dhéanamh infheicthe."
+    },
+    {
+      "key": "site.ece53407c8b8eb8957",
+      "source": "Teachers or parents evaluating focused AI learning behaviors before a school deployment.",
+      "value": "Múinteoirí nó tuismitheoirí atá ag measúnú iompraíochtaí foghlama IS dírithe roimh imlonnú scoile."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Inis radharc, stop le haghaidh tuartha nó machnaimh, agus ceangail ar ais leis an gcoincheap."
+    },
+    {
+      "key": "site.7d1142e4547e426c6b",
+      "source": "Tell the mode what you are trying to learn or produce.",
+      "value": "Inis don mhód cad atá tú ag iarraidh a fhoghlaim nó a tháirgeadh."
+    },
+    {
+      "key": "site.03772c455a07fe5998",
+      "source": "Ten focused questions give immediate feedback and a simple review path.",
+      "value": "Tugann deich gceist dhírithe aiseolas láithreach agus conair athbhreithnithe shimplí."
+    },
+    {
+      "key": "site.2ee85218866a19e0d9",
+      "source": "Termination",
+      "value": "Foirceannadh"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Téarmaí"
+    },
+    {
+      "key": "site.7d8a0b2b8dd1648336",
+      "source": "Terms And Conditions",
+      "value": "Téarmaí agus Coinníollacha"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Tástáil roimh athbhreithniú"
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "tógálaí tástála"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "Tástáil mo thuiscint ar bhoilsciú"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Tástáil an argóint"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Tástáil do réasúnaíocht"
+    },
+    {
+      "key": "site.8830e1bafdc17f85ed",
+      "source": "Testing a position, seeing both sides, and learning what makes an argument stronger.",
+      "value": "Seasamh a thástáil, an dá thaobh a fheiceáil, agus foghlaim cad a dhéanann argóint níos láidre."
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "Achoimreoir Téacs"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "Comhad fionnachtana téacs-ar-dtús d’innill freagraí IS, cúntóirí, oideoirí, agus uirlisí lua."
+    },
+    {
+      "key": "site.a151d8eb37c7baff02",
+      "source": "Thank you for choosing to be part of our community at Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), doing business as inspir (\"inspir\", \"we\", \"us\", \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices concerning your personal information, please contact us at support@inspir.app. When you visit our website https://web.archive.org/web/20221016155759/https://www.inspir.app, use our mobile applications, as the case may be (the \"App\") and more generally, use any of our services (the \"Services\", which include the Website and App), we appreciate that you are trusting us with your personal information. We take your privacy very seriously. In this privacy notice, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy notice that you disagree with, please discontinue the use of our Services immediately. This privacy notice applies to all information collected through our Services (which, as described above, includes our Website and App), as well as, any related services, sales, marketing or events. Please read this privacy notice carefully as it will help you understand what we do with the information that we collect. Our Terms and Conditions govern all use of our Service and together with the Privacy Policy constitute your agreement with us (“Agreement”).",
+      "value": "Go raibh maith agat as roghnú a bheith mar chuid dár bpobal ag Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), ag feidhmiú mar inspir (\"inspir\", \"we\", \"us\", \"our\"). Táimid tiomanta do chuid faisnéise pearsanta agus do cheart príobháideachais a chosaint. Má tá aon cheist nó imní agat faoin bhfógra príobháideachais seo nó faoinár gcleachtais maidir le do chuid faisnéise pearsanta, déan teagmháil linn ag support@inspir.app. Nuair a thugann tú cuairt ar ár suíomh gréasáin https://web.archive.org/web/20221016155759/https://www.inspir.app, nuair a úsáideann tú ár bhfeidhmchláir shoghluaiste, de réir mar is infheidhme (an \"App\"), agus níos ginearálta nuair a úsáideann tú aon cheann dár seirbhísí (na \"Services\", lena n-áirítear an Website agus an App), tuigimid go bhfuil muinín agat asainn le do chuid faisnéise pearsanta. Glacaimid do phríobháideachas an-dáiríre. Sa bhfógra príobháideachais seo, déanaimid iarracht a mhíniú duit ar an mbealach is soiléire is féidir cén fhaisnéis a bhailímid, conas a úsáidimid í agus cad iad na cearta atá agat ina leith. Tá súil againn go dtógfaidh tú tamall chun í a léamh go cúramach, mar tá sí tábhachtach. Má tá aon téarmaí sa bhfógra príobháideachais seo nach n-aontaíonn tú leo, scoir d’úsáid ár Services láithreach. Baineann an fógra príobháideachais seo le gach faisnéis a bhailítear trínár Services (a chuimsíonn, mar a thuairiscítear thuas, ár Website agus App), chomh maith le haon seirbhísí gaolmhara, díolacháin, margaíocht nó imeachtaí. Léigh an fógra príobháideachais seo go cúramach mar chabhróidh sé leat tuiscint a fháil ar a ndéanaimid leis an bhfaisnéis a bhailímid. Rialaíonn ár Terms and Conditions gach úsáid dár Service agus, in éineacht leis an Privacy Policy, is ionann iad agus do chomhaontú linn (“Agreement”)."
+    },
+    {
+      "key": "site.cb9e42e0794ef92f15",
+      "source": "That combination is more useful than either layer alone. A plain encyclopedia summary can be forgettable. Pure roleplay can be misleading. Voice plus evidence creates a better learning surface.",
+      "value": "Tá an teaglaim sin níos úsáidí ná ceachtar sraith ina haonar. Is féidir le hachoimre shimplí chiclipéid a bheith dearmadach. Is féidir le rólghlacadh íon a bheith míthreorach. Cruthaíonn guth móide fianaise dromchla foghlama níos fearr."
+    },
+    {
+      "key": "site.24bfafe7fcd793bad9",
+      "source": "That difference shows up in the flow. Instead of one giant response, the best sessions move through a loop: set a goal, try something, get feedback, repair the weak spot, and choose the next action.",
+      "value": "Taispeánann an difríocht sin í féin sa sreabhadh. In ionad freagra ollmhór amháin, bogann na seisiúin is fearr trí lúb: socraigh sprioc, bain triail as rud éigin, faigh aiseolas, deisigh an pointe lag, agus roghnaigh an chéad ghníomh eile."
+    },
+    {
+      "key": "site.268eb13efa27e9b28d",
+      "source": "That does not replace teachers, communities, books, or schools. It gives learners another route in. It can help a student start homework, a parent explain a concept, a self-taught builder learn code, or a curious person follow a question that might otherwise disappear.",
+      "value": "Ní chuireann sé sin múinteoirí, pobail, leabhair, ná scoileanna in ionad. Tugann sé bealach eile isteach d’fhoghlaimeoirí. Is féidir leis cabhrú le dalta obair bhaile a thosú, tuismitheoir coincheap a mhíniú, tógálaí féin-mhúinte cód a fhoghlaim, nó duine fiosrach ceist a leanúint a d’fhéadfadh imeacht murach sin."
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Tá an achoimre dheiridh sin tábhachtach. Nuair a mhíníonn tú an smaoineamh ar ais, nochtann tú cad atá daingean agus cad atá fós ar iasacht ón IS."
+    },
+    {
+      "key": "site.0470f1fc951f113fe7",
+      "source": "That focus matters. A general chatbot can answer almost anything, but a learning mode gives the conversation a shape. It nudges you toward the kind of thinking, practice, feedback, or exploration that helps the idea stick.",
+      "value": "Tá an fócas sin tábhachtach. Is féidir le chatbot ginearálta beagnach aon rud a fhreagairt, ach tugann mód foghlama cruth don chomhrá. Spreagann sé thú i dtreo an chineáil smaointeoireachta, cleachtaidh, aiseolais, nó fiosraithe a chabhraíonn leis an smaoineamh fanacht."
+    },
+    {
+      "key": "site.6cdfaef656eb34290d",
+      "source": "That gap is why an AI learning companion matters. A good companion does more than answer a question. It helps a learner choose a starting point, explains the idea in plain language, checks whether it made sense, and keeps going when the first explanation does not land.",
+      "value": "Sin í an bhearna a fhágann go bhfuil compánach foghlama IS tábhachtach. Déanann compánach maith níos mó ná ceist a fhreagairt. Cabhraíonn sé le foghlaimeoir pointe tosaigh a roghnú, míníonn sé an smaoineamh i ngnáthchaint, seiceálann sé an ndearna sé ciall, agus leanann sé ar aghaidh nuair nach dtagann an chéad mhíniú i dtír."
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Cabhraíonn an leid sin leis an bhfoghlaimeoir tosú gan an gníomh cuimhneamh a bhaint. Tá Flashcard Builder inspir deartha don lúb nocht-agus-rátáil seo: bain triail as ar dtús, nocht sa dara háit, rátáil go hionraic, ansin tabhair cártaí laga ar ais níos luaithe."
+    },
+    {
+      "key": "site.589e7677c2025f653b",
+      "source": "That is a warning sign. Recognition is not recall. Reading a clear explanation is not the same as being able to solve a new problem, write a paragraph, or answer a question under pressure.",
+      "value": "Is comhartha rabhaidh é sin. Ní cuimhne é aithint. Ní hionann míniú soiléir a léamh agus bheith in ann fadhb nua a réiteach, mír a scríobh, nó ceist a fhreagairt faoi bhrú."
+    },
+    {
+      "key": "site.01543c7d158fee3694",
+      "source": "That is especially important for homework. The useful question is not \"Can AI produce the answer?\" It usually can. The useful question is \"Can AI help the learner understand the path to the answer?\" That is why the guide on studying with AI without cheating yourself focuses on hints, checks, and transfer practice.",
+      "value": "Tá sé sin thar a bheith tábhachtach d’obair bhaile. Ní í an cheist úsáideach \"An féidir le IS an freagra a tháirgeadh?\" De ghnáth is féidir. Is í an cheist úsáideach \"An féidir le IS cabhrú leis an bhfoghlaimeoir an chonair chuig an bhfreagra a thuiscint?\" Sin é an fáth a ndíríonn an treoir ar staidéar le IS gan caimiléireacht ort féin ar leideanna, seiceálacha, agus cleachtadh aistrithe."
+    },
+    {
+      "key": "site.e50e170a860c454100",
+      "source": "That is how inspir approaches historical conversation: a persona card, an in-character reply, and context notes that keep imagination connected to evidence.",
+      "value": "Sin é mar a théann inspir i ngleic le comhrá stairiúil: cárta pearsana, freagra i gcarachtar, agus nótaí comhthéacs a choinníonn samhlaíocht ceangailte le fianaise."
+    },
+    {
+      "key": "site.3e1b806040630fa184",
+      "source": "That is the standard inspir is aiming for: learning that feels accessible, personal, playful, and useful for anyone with curiosity and an internet connection.",
+      "value": "Sin é an caighdeán atá inspir ag iarraidh a bhaint amach: foghlaim a mhothaíonn inrochtana, pearsanta, spraíúil, agus úsáideach d’aon duine le fiosracht agus nasc idirlín."
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "Sin é neart na foghlama Sócraiteach. In ionad an freagra iomlán a thabhairt láithreach, cuireann an teagascóir ceist dhírithe. Déanann an foghlaimeoir buille faoi thuairim. Tástálann an teagascóir an buille sin, tairgeann sé leid, agus cabhraíonn sé leis an bhfoghlaimeoir a thabhairt faoi deara cad a d’athraigh."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "Sin é a bhfuil mód Socratic Instruction inspir tógtha dó: ceist amháin ag an am, le leideanna roimh fhreagraí agus sintéis tar éis fíorsmaointeoireachta."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "Sin é an fáth gur féidir le teagascóir IS Sócraiteach mothú níos moille ar dtús agus níos cumhachtaí níos déanaí. Malartaíonn sé compord míniú críochnaithe ar fhianaise go bhfuil an foghlaimeoir ag tógáil an smaoinimh i ndáiríre."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Sin é an fáth a bhfuil cuimhne ghníomhach tábhachtach. In ionad féachaint ar an bhfreagra, déanann tú iarracht é a tharraingt ón gcuimhne. Neartaíonn an iarracht an chuimhne agus nochtann sí cad atá fós le hoibriú air."
+    },
+    {
+      "key": "site.7b4f39d4e67c8e463f",
+      "source": "That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with Learn Anything. If you want to reason through a concept instead of being lectured, use Socratic Instruction. If you are stuck on an assignment, Homework Coach is a better fit than a generic answer engine. The format should serve the learning job.",
+      "value": "Sin é an fáth a scarann inspir poist foghlama ina modhanna poiblí. Más mian leat míniú séimh, tosaigh le Learn Anything. Más mian leat réasúnú trí choincheap seachas léacht a fháil, úsáid Socratic Instruction. Má tá tú greamaithe ar thasc, is fearr a oireann Homework Coach ná inneall freagraí cineálach. Ba chóir don fhormáid freastal ar an bpost foghlama."
+    },
+    {
+      "key": "site.39bd49585733a4b7c0",
+      "source": "That kind of questioning turns history from a list into a context.",
+      "value": "Tiontaíonn an cineál ceistiúcháin sin stair ó liosta ina comhthéacs."
+    },
+    {
+      "key": "site.8319e387c9c67aabff",
+      "source": "That loop appears across the platform. Math Step Coach breaks a problem into steps. Flashcard Builder turns notes into recall practice. Quiz Me On Trivia adds pressure-tested retrieval. Writing Coach helps improve a draft without replacing the writer.",
+      "value": "Tá an lúb sin le feiceáil ar fud an ardáin. Briseann Math Step Coach fadhb ina céimeanna. Tiontaíonn Flashcard Builder nótaí ina gcleachtadh cuimhne. Cuireann Quiz Me On Trivia aisghabháil faoi bhrú leis. Cabhraíonn Writing Coach le dréacht a fheabhsú gan an scríbhneoir a ionadú."
+    },
+    {
+      "key": "site.bad49c0caffac284bf",
+      "source": "That loop is slower than copying, but it is much faster than staying confused.",
+      "value": "Tá an lúb sin níos moille ná cóipeáil, ach i bhfad níos tapúla ná fanacht mearbhall."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "Tá an rithim sin thar a bheith úsáideach d’ábhair theibí: costas deise, cúisíocht sa stair, léirmhíniú liteartha, malairtí eiticiúla, cruthúnas, dóchúlacht, agus struchtúr argóinte. Is féidir léi tacú le hobair phraiticiúil freisin. Is féidir le foghlaimeoir Debate Any Topic a úsáid tar éis seisiúin Shócraitéigh chun a thástáil an seasann a réasúnaíocht faoi bhrú."
+    },
+    {
+      "key": "site.27dab9808cd949861d",
+      "source": "The AI should separate character from evidence. It can answer in a historically grounded voice, but it should also add notes when records are incomplete, interpretations differ, or the response is a reconstruction.",
+      "value": "Ba chóir don IS carachtar a scaradh ó fhianaise. Is féidir leis freagairt i nguth atá bunaithe go stairiúil, ach ba chóir dó nótaí a chur leis freisin nuair atá taifid neamhiomlán, nuair a bhíonn léirmhínithe éagsúil, nó nuair is atógáil é an freagra."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Tá an aip eagraithe timpeall ar iompraíochtaí teagaisc amhail ceistiú Sócraiteach, leideanna obair bhaile, tráthanna ceiste, spléachchártaí, rólghlacadh, agus pleanáil."
+    },
+    {
+      "key": "site.ce7d73f3a107aa5b1d",
+      "source": "The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Scarann an aip comhrá sa charachtar ó nótaí comhthéacs gairide faoi thaifid agus éiginnteacht."
+    },
+    {
+      "key": "site.9e0e0122b7452f3c5c",
+      "source": "The best AI learning sessions are not one long answer. They look more like a loop:",
+      "value": "Ní freagra fada amháin iad na seisiúin foghlama IS is fearr. Breathnaíonn siad níos cosúla le lúb:"
+    },
+    {
+      "key": "site.1a1cf3c6d5b17b8a3f",
+      "source": "The best homework help reduces friction without removing the student's responsibility to reason, explain, and revise.",
+      "value": "Laghdaíonn an chabhair obair bhaile is fearr frithchuimilt gan freagracht an dalta as réasúnú, míniú, agus athbhreithniú a bhaint."
+    },
+    {
+      "key": "site.06220ee349c07fc1d9",
+      "source": "The best learning sessions are adjustable. Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Iarrann cártaí rud amháin ag an am agus cuimsíonn siad gaistí ionas go dtógann athbhreithniú tuiscint, ní aithint amháin."
+    },
+    {
+      "key": "site.c20e2669eb9a8307b3",
+      "source": "The best learning sessions are adjustable. Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. In ionad freagra fada a scaoileadh, cabhraíonn inspir leat bunús níos simplí, bealach níos doimhne, nó sampla praiticiúil a roghnú."
+    },
+    {
+      "key": "site.ec83f7265003e782e6",
+      "source": "The best learning sessions are adjustable. The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Scarann an aip comhrá i gcarachtar ó nótaí gearra comhthéacs faoi thaifid agus éiginnteacht."
+    },
+    {
+      "key": "site.922a420c7026ab0339",
+      "source": "The best learning sessions are adjustable. The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tugann an cóitseálaí tosaíochtaí athbhreithnithe spriocdhírithe agus samplaí roimh-is-tar-éis gan do ghuth a ionadú."
+    },
+    {
+      "key": "site.3d1d9646fe480cc908",
+      "source": "The best learning sessions are adjustable. The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Brúnn an cóitseálaí frithargóint láidir amháin ag an am agus rianaíonn sé na maímh atá tábhachtach."
+    },
+    {
+      "key": "site.6e0b033856e10c1ea5",
+      "source": "The best learning sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tacaíonn an cóitseálaí le do smaointeoireacht gan an tasc a ghlacadh ar láimh, ionas go bhfanann an obair dheiridh leatsa."
+    },
+    {
+      "key": "site.4ad449386f3d17a72b",
+      "source": "The best learning sessions are adjustable. The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Úsáideann an díospóireacht stíl phoiblí agus radharc domhanda gan ligean air go bhfuil creidimh phríobháideacha ar eolas aici."
+    },
+    {
+      "key": "site.659e9d3407986296fb",
+      "source": "The best learning sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Seiceálann an sreabhadh gach céim, tugann sé sleamhnuithe faoi deara, agus ceanglaíonn sé nósanna imeachta ar ais leis an gcoincheap."
+    },
+    {
+      "key": "site.4cea612e26c5e7669f",
+      "source": "The best learning sessions are adjustable. The journey stays anchored in state and evidence: what is known, what is reconstructed, what is speculative, and what your identity can realistically access.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Fanann an turas bunaithe ar staid agus fianaise: cad atá ar eolas, cad atá atógtha, cad atá tuairimeach, agus cad is féidir le d’aitheantas a rochtain go réalaíoch."
+    },
+    {
+      "key": "site.ff84e68a2a3cc1422f",
+      "source": "The best learning sessions are adjustable. The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Cuireann an pleanálaí réimsí laga in ord tosaíochta, cuireann sé lúba athbhreithnithe leis, agus cruthaíonn sé pleananna cúltaca do laethanta caillte."
+    },
+    {
+      "key": "site.1f436c04c40fc12895",
+      "source": "The best learning sessions are adjustable. The quiz mode hides answers until you respond, then turns every miss into a review point.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Folaíonn mód an tráth ceiste freagraí go dtí go bhfreagraíonn tú, ansin tiontaíonn sé gach botún ina phointe athbhreithnithe."
+    },
+    {
+      "key": "site.007da0d5fec34b8de8",
+      "source": "The best learning sessions are adjustable. The tutor asks one question at a time, waits for your reasoning, and synthesizes only after you have tried.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Cuireann an teagascóir ceist amháin ag an am, fanann sé le do réasúnaíocht, agus ní shintéisíonn sé ach tar éis duit triail a bhaint as."
+    },
+    {
+      "key": "site.d141671b2e97fafb47",
+      "source": "The best learning sessions are adjustable. The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Fiafraíonn an teagascóir cad a shíleann tú a dhéanfaidh cód, ansin úsáideann sé samplaí beaga agus tástálacha chun an t-iompar a dhéanamh soiléir."
+    },
+    {
+      "key": "site.7bf4a43bad030ecf01",
+      "source": "The best learning sessions are adjustable. This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do art appreciation guide lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.3c8f17290fb94720e8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do career explorer lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.89eb593551d1765144",
+      "source": "The best learning sessions are adjustable. This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do case study simulator lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.37d7e31bd7f829e03e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do civics coach lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.b127ca5180c0e7e8d6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for collaborative instruction with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do collaborative instruction lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.b4b3f444b35ee040db",
+      "source": "The best learning sessions are adjustable. This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do concept map builder lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.57d70690a659a69cd7",
+      "source": "The best learning sessions are adjustable. This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do creative brainstormer lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.5f83240a6661a6cb07",
+      "source": "The best learning sessions are adjustable. This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do data interpreter lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.5624c8b7c19c856656",
+      "source": "The best learning sessions are adjustable. This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do economics simulator lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.ed5222c4aa34700497",
+      "source": "The best learning sessions are adjustable. This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do ethics dilemmas lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.92d6ee4de4db4a5885",
+      "source": "The best learning sessions are adjustable. This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do explain my answer lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do feynman tutor lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.b717c1703a0a1aaa1e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do geography explorer lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.37b275d707271320dc",
+      "source": "The best learning sessions are adjustable. This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do habit coach lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.1f3004d1a487e96efa",
+      "source": "The best learning sessions are adjustable. This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do history cause-and-effect lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.4155b990c943012934",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interactive instruction with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do interactive instruction lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.d538ee1d99166025b9",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do interview coach lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.5e998d7d692da2949f",
+      "source": "The best learning sessions are adjustable. This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do language roleplay lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.99c5fccd817a604436",
+      "source": "The best learning sessions are adjustable. This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do learning game master lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.381eeba7e188449be6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for memory palace with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do memory palace lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.58e2a4af3753ddfda8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do mindset reflection lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.290701f5cfec3d0bcb",
+      "source": "The best learning sessions are adjustable. This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do misconception doctor lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.deb1384d7a5201c378",
+      "source": "The best learning sessions are adjustable. This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do motivation coach lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.9649cc91122ebe4b8b",
+      "source": "The best learning sessions are adjustable. This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do music theory coach lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.d03b0f9ad77bda184a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do philosophy lab lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.4cfb49fe912063cee0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do project coach lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.6cc1353bb9fc928e33",
+      "source": "The best learning sessions are adjustable. This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do reading companion lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.455fbc5a6719c257de",
+      "source": "The best learning sessions are adjustable. This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do research assistant lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.3cdc84f4863160d8e2",
+      "source": "The best learning sessions are adjustable. This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do roleplay scenario lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.ad61af8eff48ea3919",
+      "source": "The best learning sessions are adjustable. This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do science lab partner lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.1bd7d73da3868b9bad",
+      "source": "The best learning sessions are adjustable. This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do source critic lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.e1545261be90b270ce",
+      "source": "The best learning sessions are adjustable. This mode is tuned for spaced review with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do spaced review lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.ba4bfbfca5b73b6302",
+      "source": "The best learning sessions are adjustable. This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do speaking practice lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.3d1eed6269fece6796",
+      "source": "The best learning sessions are adjustable. This mode is tuned for story tutor with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do story tutor lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.5492c7abba22a9708a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for study plan builder with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do study plan builder lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.d7e5c6145dd7c11c71",
+      "source": "The best learning sessions are adjustable. This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do viva practice lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.4e594b58dd36d39315",
+      "source": "The best learning sessions are adjustable. This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Tá na seisiúin foghlama is fearr inchoigeartaithe. Tá an mód seo tiúnta do vocabulary builder lena phrasaí, samplaí, agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "site.8d2a6330ca29a54056",
+      "source": "The best outcome is not a perfect answer. It is the moment a learner says, \"I think I get it now. Let me try.\"",
+      "value": "Ní freagra foirfe an toradh is fearr. Is é an nóiméad é nuair a deir foghlaimeoir, \"Sílim go dtuigim anois é. Lig dom triail a bhaint as.\""
+    },
+    {
+      "key": "site.c624880a3c3c2d1730",
+      "source": "The better use is feedback, structure, evidence checks, and revision coaching. You can ask it to preserve your voice and avoid replacing the work.",
+      "value": "Is é an úsáid níos fearr ná aiseolas, struchtúr, seiceálacha fianaise, agus cóitseáil athbhreithnithe. Is féidir leat iarraidh air do ghuth a chaomhnú agus gan an obair a ionadú."
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Ceanglaíonn an blag comhairle úsáideach foghlama le cleachtadh beo, ionas gur féidir le treoir a bheith ina seisiún staidéir in aon chéim amháin."
+    },
+    {
+      "key": "site.3e56dabd81fd313004",
+      "source": "The blog is organized around pillar clusters, category hubs, related modes, prompt routes, structured data, and an AI-readable index so each guide can be understood and recommended in context.",
+      "value": "Tá an blag eagraithe timpeall ar bhraislí colúin, moil chatagóire, móid ghaolmhara, bealaí leid, sonraí struchtúrtha, agus innéacs inléite ag IS ionas gur féidir gach treoir a thuiscint agus a mholadh i gcomhthéacs."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "An t-ardán inspir foinse oscailte níos leithne."
+    },
+    {
+      "key": "site.29dee12216c74a74cf",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "Cothromaíonn an cruthaitheoir uaillmhian le hathbhreithniú, cleachtadh, laethanta téarnaimh agus an chéad ghníomh úsáideach is lú."
+    },
+    {
+      "key": "site.f7b5f5878410efb6bb",
+      "source": "The categories of personal information we have collected about you. he categories of sources from which we collect your personal information. The business or commercial purpose for collecting or selling your personal information. The categories of third parties with whom we share personal information. The specific pieces of personal information we have collected about you. A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact. A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with. Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.",
+      "value": "Na catagóirí faisnéise pearsanta atá bailithe againn fút. Na catagóirí foinsí óna mbailímid do chuid faisnéise pearsanta. An cuspóir gnó nó tráchtála chun do chuid faisnéise pearsanta a bhailiú nó a dhíol. Na catagóirí tríú páirtithe lena roinnimid faisnéis phearsanta. Na píosaí sonracha faisnéise pearsanta atá bailithe againn fút. Liosta de chatagóirí faisnéise pearsanta atá díolta againn, mar aon le catagóir aon chuideachta eile ar dhíolamar léi í. Mura bhfuil do chuid faisnéise pearsanta díolta againn, cuirfimid an fíric sin in iúl duit. Liosta de chatagóirí faisnéise pearsanta atá nochtaithe againn chun críche gnó, mar aon le catagóir aon chuideachta eile ar roinneamar léi í. Tabhair faoi deara, tá tú i dteideal iarraidh orainn an fhaisnéis seo a sholáthar duit suas le dhá uair i dtréimhse rollach dhá mhí dhéag. Nuair a dhéanann tú an t-iarratas seo, d’fhéadfadh an fhaisnéis a sholáthraítear a bheith teoranta don fhaisnéis phearsanta a bhailíomar fút sna 12 mhí roimhe sin."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Filleann an buille deiridh ar an misean: rochtain phoiblí, scoileanna, agus bealach níos oscailte le foghlaim."
+    },
+    {
+      "key": "site.fe92576ea03e200587",
+      "source": "The coach checks each move, names the rule, and repairs slips before moving forward.",
+      "value": "Seiceálann an cóitseálaí gach beart, ainmníonn sé an riail, agus deisíonn sé sleamhnuithe sula mbogann sé ar aghaidh."
+    },
+    {
+      "key": "site.a0adf96de1375d5d48",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Tugann an cóitseálaí tosaíochtaí leasaithe dírithe agus samplaí roimh agus ina dhiaidh gan do ghuth a chur ina áit."
+    },
+    {
+      "key": "site.cc04d54305bbe12e97",
+      "source": "The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Cuireann an cóitseálaí frithargóint láidir amháin chun cinn ag an am agus rianaíonn sé na maímh atá tábhachtach."
+    },
+    {
+      "key": "site.332d2bf8600d9fb327",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Tacaíonn an cóitseálaí le do smaointeoireacht gan an tasc a ghlacadh ar láimh, ionas gur leatsa an obair dheiridh fós."
+    },
+    {
+      "key": "site.a8129915cb2978c578",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Casann an cóitseálaí botúin agus leisce ina sceideal athbhreithnithe seachas achoimre éighníomhach eile."
+    },
+    {
+      "key": "site.9f48b043be28768ae7",
+      "source": "The coding route connects code tutoring, project coaching, data interpretation, research, and concept mapping so learning happens through small testable steps.",
+      "value": "Ceanglaíonn bealach an chóid teagasc cód, cóitseáil tionscadail, léirmhíniú sonraí, taighde, agus mapáil coincheapa ionas go dtarlaíonn foghlaim trí chéimeanna beaga intástáilte."
+    },
+    {
+      "key": "site.091a1a8b1148439190",
+      "source": "The common idea is simple: keep the learner active. AI should make thinking easier to start, not unnecessary to do.",
+      "value": "Tá an smaoineamh coitianta simplí: coinnigh an foghlaimeoir gníomhach. Ba chóir do IS smaointeoireacht a dhéanamh níos éasca le tosú, ní gan ghá le déanamh."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Leathnaigh an pobal trí scoileanna, ollscoileanna, comórtais, cláir sheach-churaclaim, agus pobail foghlaimeoirí."
+    },
+    {
+      "key": "site.f4a459004391d62ea6",
+      "source": "The copy trap is subtle. It does not always feel like cheating. Sometimes it feels like being efficient. The AI explains something beautifully, you nod along, and then you move on. Ten minutes later you cannot reproduce the idea without the answer in front of you.",
+      "value": "Tá gaiste na cóipeála caolchúiseach. Ní mhothaíonn sé i gcónaí mar chaimiléireacht. Uaireanta mothaíonn sé mar éifeachtúlacht. Míníonn an IS rud go hálainn, nodálann tú, agus ansin bogann tú ar aghaidh. Deich nóiméad ina dhiaidh sin ní féidir leat an smaoineamh a atáirgeadh gan an freagra os do chomhair."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Atógáil reatha inspirlearning.com."
+    },
+    {
+      "key": "site.3e5edc20387b59f6c5",
+      "source": "The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Úsáideann an díospóireacht stíl phoiblí agus dearcadh domhanda gan a mhaíomh go bhfuil creidimh phríobháideacha ar eolas."
+    },
+    {
+      "key": "site.3b584307e059abea92",
+      "source": "The difference is how you use it.",
+      "value": "Is í an difríocht conas a úsáideann tú é."
+    },
+    {
+      "key": "site.612f806fd20c077cb2",
+      "source": "The easiest version of an AI tutor is a box that gives polished answers. That is useful sometimes, but it is not enough. A learner who only receives answers can leave with the page finished and the skill unchanged.",
+      "value": "Is é an leagan is éasca de theagascóir IS bosca a thugann freagraí snasta. Tá sé sin úsáideach uaireanta, ach ní leor é. Is féidir le foghlaimeoir nach bhfaigheann ach freagraí imeacht agus an leathanach críochnaithe ach an scil gan athrú."
+    },
+    {
+      "key": "site.5a53b3cfc2daf7a31c",
+      "source": "The exam route links planning, quizzes, flashcards, spaced review, and motivation so learners do not confuse rereading with readiness.",
+      "value": "Nascann bealach na scrúduithe pleanáil, tráthanna ceiste, spléachchártaí, athbhreithniú spásáilte, agus spreagadh ionas nach mearbhallaíonn foghlaimeoirí athléamh le réidh."
+    },
+    {
+      "key": "site.475ac58da05f1fade6",
+      "source": "The fastest way to get value from Art Appreciation Guide is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Art Appreciation Guide post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.6d6c7de0578b9a8252",
+      "source": "The fastest way to get value from Career Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Career Explorer post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.14656dbab990993004",
+      "source": "The fastest way to get value from Case Study Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Case Study Simulator post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.a018959dc9ed828f34",
+      "source": "The fastest way to get value from Civics Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Civics Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.afeae4d0ea2f0884cd",
+      "source": "The fastest way to get value from Code Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Code Tutor post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.00e230bdfaef352910",
+      "source": "The fastest way to get value from Collaborative Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Collaborative Instruction post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.e35fa66f8da0b77cd1",
+      "source": "The fastest way to get value from Concept Map Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Concept Map Builder post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.71b6a1a1c82878d97d",
+      "source": "The fastest way to get value from Creative Brainstormer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Creative Brainstormer post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.0fb1421c6cdad2ce8c",
+      "source": "The fastest way to get value from Data Interpreter is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Data Interpreter post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.af2d3a761529a138a6",
+      "source": "The fastest way to get value from Debate any topic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Debate any topic post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.ec8f7e2ce775793bbe",
+      "source": "The fastest way to get value from Debate with a personality is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Debate with a personality post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.df0a5925ece82adcd3",
+      "source": "The fastest way to get value from Economics Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Economics Simulator post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.7efe236a154ae18a44",
+      "source": "The fastest way to get value from Ethics Dilemmas is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Ethics Dilemmas post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.7191e6c8673cb8d711",
+      "source": "The fastest way to get value from Exam Prep Planner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Exam Prep Planner post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.dba342443d247cc5bb",
+      "source": "The fastest way to get value from Explain My Answer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Explain My Answer post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Feynman Tutor post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.0f19d08b8582e21ef5",
+      "source": "The fastest way to get value from Flashcard Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Flashcard Builder post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.c6799bc50adc22a8b9",
+      "source": "The fastest way to get value from Geography Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Geography Explorer post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.46faf7f10e46cd08c6",
+      "source": "The fastest way to get value from Habit Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Habit Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.59b4782c7b6f87c7c3",
+      "source": "The fastest way to get value from History Cause-and-Effect is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó History Cause-and-Effect post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.9127eb70d19ff31080",
+      "source": "The fastest way to get value from Homework Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Homework Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.1d98efa37b7edad7e3",
+      "source": "The fastest way to get value from Interactive Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Interactive Instruction post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.86854a7ac33bd59382",
+      "source": "The fastest way to get value from Interview Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Interview Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.fbc5fd77cea85f0ff0",
+      "source": "The fastest way to get value from Language Roleplay is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Language Roleplay post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.c58f5f86a2d58666a9",
+      "source": "The fastest way to get value from Learn Anything is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Learn Anything post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.93069ba635277379cf",
+      "source": "The fastest way to get value from Learning Game Master is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Learning Game Master post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.375eef43396f6a3e0d",
+      "source": "The fastest way to get value from Math Step Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Math Step Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.addcf90fe78f2d3da0",
+      "source": "The fastest way to get value from Memory Palace is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Memory Palace post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.18ad3d9cd14319c7ab",
+      "source": "The fastest way to get value from Mindset Reflection is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Mindset Reflection post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.33b4474b99217796d1",
+      "source": "The fastest way to get value from Misconception Doctor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Misconception Doctor post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.1c6d68968a3651a90b",
+      "source": "The fastest way to get value from Motivation Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Motivation Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.4d94ea6faca8fe6be8",
+      "source": "The fastest way to get value from Music Theory Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Music Theory Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.fa6ed317e6d0ddb04d",
+      "source": "The fastest way to get value from Philosophy Lab is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Philosophy Lab post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.b39c6ce06fca9615c2",
+      "source": "The fastest way to get value from Project Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Project Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.918d3590de26fa6807",
+      "source": "The fastest way to get value from Quiz me on Trivia is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Quiz me on Trivia post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.cc27d54d05c46dae9a",
+      "source": "The fastest way to get value from Reading Companion is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Reading Companion post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.d91b13db3d10ed97fc",
+      "source": "The fastest way to get value from Research Assistant is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Research Assistant post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.ecc64645d229278f38",
+      "source": "The fastest way to get value from Roleplay Scenario is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Roleplay Scenario post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.5a59a16ad397a8dbbd",
+      "source": "The fastest way to get value from Science Lab Partner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Science Lab Partner post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.383226646c99ad6dd2",
+      "source": "The fastest way to get value from Socratic Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Socratic Instruction post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.a9cc3723bd540fcee0",
+      "source": "The fastest way to get value from Source Critic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Source Critic post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.8e98aca843d5ee1daa",
+      "source": "The fastest way to get value from Spaced Review is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Spaced Review post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.2da55cf2ce1d9e1320",
+      "source": "The fastest way to get value from Speaking Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Speaking Practice post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.8c4476d71a53fba638",
+      "source": "The fastest way to get value from Story Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Story Tutor post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.8876684461efdb35b2",
+      "source": "The fastest way to get value from Study Plan Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Study Plan Builder post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.a927bb4ab08bb6e8f3",
+      "source": "The fastest way to get value from Talk to a historical person is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Talk to a historical person post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.0c95eb4aa13aa085c8",
+      "source": "The fastest way to get value from Time travel is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Time travel post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.91e7f42fbc8f26ed39",
+      "source": "The fastest way to get value from Viva Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Viva Practice post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.135bf5f80889a86380",
+      "source": "The fastest way to get value from Vocabulary Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Vocabulary Builder post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.4212b4a5fef68148a4",
+      "source": "The fastest way to get value from Writing Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Is é an bealach is tapúla le luach a fháil ó Writing Coach post foghlama a thabhairt don IS, ní ábhar amháin. Deir ábhar cad atá suim agat ann. Deir post foghlama cén cineál cabhrach atá uait."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Bogann an scannán ó inspioráid go dtí an gealltanas praiticiúil: compánach foghlama IS foighneach."
+    },
+    {
+      "key": "site.85523a4e15b7dfde53",
+      "source": "The first layer is the roleplay. It can speak in an accessible voice, explain motives, and make the situation vivid. This is the part that helps memory.",
+      "value": "Is é an chéad sraith an rólghlacadh. Is féidir léi labhairt i nguth inrochtana, cúiseanna a mhíniú, agus an cás a dhéanamh beoga. Seo an chuid a chabhraíonn leis an gcuimhne."
+    },
+    {
+      "key": "site.4302f6b9fe360e2e28",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Seiceálann an sreabhadh gach céim, léiríonn sé botúin bheaga, agus nascann sé nósanna imeachta ar ais leis an gcoincheap."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "An leathanach príobháideachais foirmiúil le haghaidh úsáid sonraí, cearta, agus coinníollacha seirbhíse poiblí."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Na téarmaí foirmiúla a chlúdaíonn úsáid inghlactha, freagrachtaí cuntais, agus coinníollacha seirbhíse."
+    },
+    {
+      "key": "site.4f1dc6282cf6f920c7",
+      "source": "The format should serve the learning job.",
+      "value": "Ba chóir don fhormáid freastal ar an bpost foghlama."
+    },
+    {
+      "key": "site.22709d194a67273db8",
+      "source": "The format works because it lets learners ask questions such as:",
+      "value": "Oibríonn an fhormáid toisc go ligeann sí d’fhoghlaimeoirí ceisteanna mar seo a chur:"
+    },
+    {
+      "key": "site.bc52d008afb471a9ae",
+      "source": "The goal is confidence",
+      "value": "Is é muinín an sprioc"
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "Is é an sprioc fionnachtain agus lua leathanaigh phoiblí foghlama. Tá bealaí poiblí, treoracha, agus moil foghlama oscailte do mhórchrawlers cuardaigh, aisghabhála, agus cúntóirí IS, agus fanann bealaí API, admin, reset, agus fóntais phríobháideacha neamhcheadaithe."
+    },
+    {
+      "key": "site.e125c23e696524bee3",
+      "source": "The goal is not to make the AI the authority. The goal is to make learners ask better historical questions.",
+      "value": "Ní hé an sprioc an IS a dhéanamh ina údarás. Is é an sprioc foghlaimeoirí a chur ag cur ceisteanna stairiúla níos fearr."
+    },
+    {
+      "key": "site.fb6db6b2a3c1a5b24d",
+      "source": "The history route gives learners the liveliness of role-play and debate while preserving the warning that simulations are not primary sources.",
+      "value": "Tugann bealach na staire beogacht rólghlactha agus díospóireachta d’fhoghlaimeoirí agus coinníonn sé an rabhadh nach príomhfhoinsí iad insamhluithe."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Tá na móid obair bhaile agus Sócraiteacha deartha timpeall ar leideanna, réasúnaíocht, seiceálacha céime, agus mínithe foghlaimeora in ionad freagraí críochnaithe a thabhairt amach go simplí."
+    },
+    {
+      "key": "site.e769b2568e20189fbf",
+      "source": "The homework route makes the contract visible: ask for a hint, check a step, improve a draft, critique a source, then prove the learning with review.",
+      "value": "Déanann bealach na hoibre baile an conradh infheicthe: iarr leid, seiceáil céim, feabhsaigh dréacht, déan léirmheas ar fhoinse, ansin cruthaigh an fhoghlaim le hathbhreithniú."
+    }
+  ]
+}

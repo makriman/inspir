@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, ClipboardList, SearchCheck, Sparkles } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
 import {
@@ -9,6 +9,7 @@ import {
   promptLibraryFaqs,
   promptLibrarySearchIntents,
 } from "@/lib/content/prompt-library";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -21,7 +22,7 @@ import {
 const description =
   "A public AI learning prompt library with starter prompts for tutoring, homework help, Socratic questions, quizzes, flashcards, writing feedback, exam prep, and more.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Learning Prompt Library",
   description,
   alternates: metadataAlternates("/prompts"),
@@ -52,6 +53,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/prompts");
+}
 
 export default function PromptLibraryPage() {
   const entries = getPromptEntries();

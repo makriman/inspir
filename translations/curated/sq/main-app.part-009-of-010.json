@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Albanian",
+  "locale": "sq",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Ndaje punën në detyra me emër, mat kohën e secilës dhe rishiko ku shkoi përpjekja e studimit pas çdo seance të përqendruar."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema përqendrimi dhe produktiviteti dhe duan udhëzim praktik në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për kohëmatësin e detyrave, me nxitjet, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "Mat kohën e detyrave individuale dhe shih përpjekjen"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "Mat kohën për një grup ushtrimesh"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "Ndiq punën për skicën e esesë"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "Ndaje një detyrë të madhe në blloqe me kohë"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "Kujtues Pushimi"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "Mbro fokusin me pauza të shëndetshme"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Vendos ritme pune dhe pushimi, planifiko një rifreskim të vërtetë dhe shmang rrëshqitjen drejt lodhjes së pafundme nga studimi."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "Çfarë ritmi pune/pushimi dëshiron?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "Fokus dhe Produktivitet"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Vendos ritme pune dhe pushimi, planifiko një rifreskim të vërtetë dhe shmang rrëshqitjen drejt lodhjes së pafundme nga studimi."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema fokusi dhe produktiviteti dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për kujtues pushimi, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "Mbro fokusin me pauza të shëndetshme"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "Përdor pushime 50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "Planifiko një pushim të shëndetshëm"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "Më ndihmo të ndaloj studimin e tepruar"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "Seanca Pune të Thellë"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "Planifiko një bllok fokusi me pak shpërqendrime"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Përgatit një seancë pune të thellë me rezultat të qartë, kufizime, rregulla fokusi, pikë kontrolli për rishikim dhe plan rezervë."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Çfarë rezultati duhet të prodhojë kjo seancë pune e thellë?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "Fokus dhe Produktivitet"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Përgatit një seancë pune të thellë me rezultat të qartë, kufizime, rregulla fokusi, pikë kontrolli për rishikim dhe plan rezervë."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema fokusi dhe produktiviteti dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për seanca pune të thellë, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "Planifiko një bllok fokusi me pak shpërqendrime"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "Planifiko një bllok pune të thellë 90-minutësh"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "Më ndihmo të fokusohem te kodimi"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "Vendos rregulla për shkrimin e tezës"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "Kohëmatës Studimi në Grup"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "Koordino raunde fokusi me të tjerët"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Drejto një ritëm të përbashkët studimi për miq ose shokë klase me qëllime, kontrolle dhe pyetje përmbledhëse të sinkronizuara."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Kush po studion së bashku dhe cili është qëllimi?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "Sociale"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Drejto një ritëm të përbashkët studimi për miq ose shokë klase me qëllime, kontrolle dhe pyetje përmbledhëse të sinkronizuara."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema sociale dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për kohëmatës studimi në grup, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "Koordino raunde fokusi me të tjerët"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "Planifiko një Pomodoro në grup"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "Strukturo një dhomë studimi"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "Drejto një seancë grupi 45-minutëshe"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "Tinguj Ambientalë"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "Peizazhe zanore të gjeneruara për studim të qetë"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Përdor paracaktime të thjeshta tingujsh ambientalë për të ulur shpërqendrimin gjatë leximit, shkrimit, përsëritjes ose zgjidhjes së problemeve."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Çfarë lloj ambienti fokusi dëshiron?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "Fokus dhe Produktivitet"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Përdor paracaktime të thjeshta tingujsh ambientalë për të ulur shpërqendrimin gjatë leximit, shkrimit, përsëritjes ose zgjidhjes së problemeve."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema fokusi dhe produktiviteti dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për tinguj ambientalë, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "Peizazhe zanore të gjeneruara për studim të qetë"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "Përdor shi për lexim"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "Zgjidh audio të qetë për matematikë"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "Krijo ambient të qetë për punë të thellë"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "Vazhdimësi Studimi"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "Ndërto qëndrueshmëri pa faj"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Ndiq vazhdimësinë e studimit, rikupero ditët e humbura dhe krijo një zakon minimal studimi që i mbijeton jetës reale."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "Çfarë vazhdimësie ose rutine po ndërton?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Ndiq vazhdimësinë e studimit, rikupero ditët e humbura dhe krijo një zakon minimal studimi që i mbijeton jetës reale."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema analitike dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për vazhdimësi studimi, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "Ndërto qëndrueshmëri pa faj"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "Fillo një vazhdimësi studimi"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "Rikuperohu pas humbjes së një dite"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "Krijo një përsëritje të vogël ditore"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "Panel Progresi"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "Rishiko aktivitetin e të nxënit dhe hapat e radhës"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Kthe aktivitetin e studimit, rezultatet e kuizeve, shënimet dhe kohëmatësit në një rishikim si panel me prirje dhe veprime të radhës."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "Çfarë progresi duhet të rishikojmë?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Kthe aktivitetin e studimit, rezultatet e kuizeve, shënimet dhe kohëmatësit në një rishikim si panel me prirje dhe veprime të radhës."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema analitike dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për panel progresi, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "Rishiko aktivitetin e të nxënit dhe hapat e radhës"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "Rishiko javën time"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "Gjej fushat e dobëta"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "Kthe aktivitetin në hapa të radhës"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "Raporte Javore"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Përmblidh arritjet, mangësitë dhe javën e ardhshme"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Gjenero një raport javor ose mujor të të nxënit me përpjekje, rezultate, pengesa, arritje dhe një plan të fokusuar."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "Çfarë ndodhi këtë javë?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Gjenero një raport javor ose mujor të të nxënit me përpjekje, rezultate, pengesa, arritje dhe një plan të fokusuar."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema analitike dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për raporte javore, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Përmblidh arritjet, mangësitë dhe javën e ardhshme"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "Shkruaj raportin tim javor të studimit"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "Përmblidh progresin tim"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "Planifiko javën tjetër nga kjo javë"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "Gjurmues Detyrash"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "Ndiq afatet dhe veprimet e radhës"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Organizo detyrat sipas afatit, përpjekjes, statusit, rrezikut dhe veprimit më të vogël të radhës."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "Çfarë detyrash ke përpara?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "Organizim"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Organizo detyrat sipas afatit, përpjekjes, statusit, rrezikut dhe veprimit më të vogël të radhës."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema organizimi dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për gjurmues detyrash, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "Ndiq afatet dhe veprimet e radhës"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "Organizo afatet e mia"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "Jep përparësi detyrave"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "Planifiko dorëzimin e këtij projekti"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "Menaxher Kursesh"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "Organizo kurset, temat dhe ngarkesën e punës"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Harto kurset, njësitë, detyrat, burimet dhe ngarkesën javore në një sistem të organizuar studimi."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "Çfarë kursesh ose lëndësh po menaxhon?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "Organizim"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Harto kurset, njësitë, detyrat, burimet dhe ngarkesën javore në një sistem të organizuar studimi."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema organizimi dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për menaxher kursesh, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "Organizo kurset, temat dhe ngarkesën e punës"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "Konfiguro kurset e mia"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "Organizo semestrin tim"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "Harto temat për çdo lëndë"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "Organizues Shënimesh"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "Etiketo, rendit dhe lidh shënimet"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Kthe shënimet e shpërndara në dosje, etiketa, përmbledhje, lidhje dhe veprime përsëritjeje që e bëjnë rikujtimin më të lehtë."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "Ngjit ose përshkruaj shënimet që duhen organizuar"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "Organizim"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Kthe shënimet e shpërndara në dosje, etiketa, përmbledhje, lidhje dhe veprime përsëritjeje që e bëjnë rikujtimin më të lehtë."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema organizimi dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për organizues shënimesh, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "Etiketo, rendit dhe lidh shënimet"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "Organizo shënimet e mia të klasës"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "Krijo etiketa për këto shënime"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "Gjej temat në fletoren time"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "Ndarje Burimesh"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "Përgatit dhe ndaj burime studimi"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Përgatit burime studimi për shokë klase ose një grup: përmbledhje, lidhje, shënime, shpjegime dhe udhëzime përdorimi."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "Çfarë burimi dëshiron të ndash?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "Sociale"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Përgatit burime studimi për shokë klase ose një grup: përmbledhje, lidhje, shënime, shpjegime dhe udhëzime përdorimi."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema sociale dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për ndarje burimesh, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "Përgatit dhe ndaj burime studimi"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "Përgatit shënimet e mia për një grup"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "Krijo një përmbledhje burimi"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "Krijo udhëzime për ndarje"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "Grupe Studimi"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "Bëje studimin në grup të strukturuar"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Planifiko një grup studimi produktiv me role, agjendë, raunde pyetjesh, burime të përbashkëta dhe shënime përmbledhëse."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "Çfarë duhet të bëjë grupi i studimit?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "Sociale"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Planifiko një grup studimi produktiv me role, agjendë, raunde pyetjesh, burime të përbashkëta dhe shënime përmbledhëse."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema sociale dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për grupe studimi, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "Bëje studimin në grup të strukturuar"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "Planifiko një seancë grupi"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "Krijo role për një grup studimi"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "Rregullo një grup joproduktiv"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "Forum Studentësh"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "Formëso pyetje për ndihmë nga komuniteti"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Përgatit pyetje forumi, përgjigje, përmbledhje dhe kërkesa vijuese të qarta që i bëjnë diskutimet studentore më të dobishme."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "Çfarë pyetjeje ose diskutimi dëshiron të postosh?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "Sociale"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Përgatit pyetje forumi, përgjigje, përmbledhje dhe kërkesa vijuese të qarta që i bëjnë diskutimet studentore më të dobishme."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema sociale dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për forum studentësh, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "Formëso pyetje për ndihmë nga komuniteti"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "Shkruaj një pyetje të mirë forumi"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "Përmblidh një diskutim"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "Kërko vlerësim nga bashkëmoshatarët"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "Ndërtues Fletësh Ushtrimesh"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "Gjenero fletë ushtrimesh me praktikë të përzier"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Krijo fletë ushtrimesh me lloje pyetjesh si plotësim boshllëqesh, pyetje me zgjedhje, e vërtetë/e gabuar, përgjigje të shkurtra dhe përputhje."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "Çfarë duhet të mbulojë fleta e ushtrimeve?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "Të Nxënit Aktiv"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Krijo fletë ushtrimesh me lloje pyetjesh si plotësim boshllëqesh, pyetje me zgjedhje, e vërtetë/e gabuar, përgjigje të shkurtra dhe përputhje."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema të të nxënit aktiv dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për ndërtues fletësh ushtrimesh, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "Gjenero fletë ushtrimesh me praktikë të përzier"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "Krijo një fletë ushtrimesh për thyesat"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "Krijo praktikë të përzier kimie"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "Ndërto ushtrime fjalori"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "Praktikë Etiketimi Diagrami"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Praktiko etiketa për diagrame dhe sisteme"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Kthe diagramet, sistemet trupore, hartat, rrjedhat e punës ose konfigurimet laboratorike në praktikë etiketimi me sugjerime dhe kontrolle përgjigjesh."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "Cilin diagram duhet të praktikojmë duke e etiketuar?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "Të Nxënit Aktiv"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Kthe diagramet, sistemet trupore, hartat, rrjedhat e punës ose konfigurimet laboratorike në praktikë etiketimi me sugjerime dhe kontrolle përgjigjesh."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema të të nxënit aktiv dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për praktikë etiketimi diagrami, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Praktiko etiketa për diagrame dhe sisteme"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "Etiketo një qelizë bimore"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "Praktiko një diagram zemre"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "Krijo pyetje etiketimi harte"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "Gjenerator Loje Përputhjesh"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Çifto terma, përkufizime, shkaqe dhe shembuj"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Kthe shënimet në lojëra përputhjeje për fjalor, koncepte, njerëz/ngjarje, formula, shembuj ose çifte shkak-pasojë."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "Cilat çifte duhet të kthehen në lojë përputhjeje?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "Të Nxënit Aktiv"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Kthe shënimet në lojëra përputhjeje për fjalor, koncepte, njerëz/ngjarje, formula, shembuj ose çifte shkak-pasojë."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema të të nxënit aktiv dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për gjenerator loje përputhjesh, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Çifto terma, përkufizime, shkaqe dhe shembuj"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "Përputh termat dhe përkufizimet"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "Krijo çifte shkak-pasojë"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "Krijo praktikë përputhjeje formulash"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP dhe Nivele"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "Kthe progresin në nivele dhe misione"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Dizajno një sistem pikësh, nivelesh, misionesh dhe shpërblimesh rreth progresit real në të nxënë."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Cili qëllim mësimor duhet të kthehet në sistem nivelesh?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "Gamifikim"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Dizajno një sistem pikësh, nivelesh, misionesh dhe shpërblimesh rreth progresit real në të nxënë."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Nxënës që eksplorojnë tema gamifikimi dhe duan udhëzime praktike në vend të një kutie përgjigjesh të përgjithshme."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "Ky modalitet është përshtatur për XP dhe nivele, me kërkesat, shembujt dhe rrjedhën e vet të të nxënit."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "Kthe progresin në nivele dhe misione"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fillo me kërkesa shembull"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Përshtate seancën me qëllimin tënd"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "Krijo XP për përgatitje provimi"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "Dizajno nivele për praktikë kodimi"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "Kthe leximin në misione"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "Distinktivë dhe Arritje"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "Shpërble arritjet e rëndësishme"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Krijo distinktivë për qëndrueshmëri, zotërim, guxim, përsëritje, bashkëpunim dhe artefakte të përfunduara."
+    }
+  ]
+}

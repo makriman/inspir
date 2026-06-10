@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { TermsAndConditionsContent, termsDescription } from "@/components/legal/TermsAndConditionsContent";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "Terms",
   description: termsDescription,
   alternates: metadataAlternates("/terms"),
@@ -22,6 +23,10 @@ export const metadata: Metadata = {
     images: [socialImage({ title: "Terms", eyebrow: "Terms", description: termsDescription }).url],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/terms");
+}
 
 export default function TermsPage() {
   return <TermsAndConditionsContent path="/terms" />;

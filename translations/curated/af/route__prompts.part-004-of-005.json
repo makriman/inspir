@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Afrikaans",
+  "locale": "af",
+  "namespace": "route:prompts",
+  "sourceHash": "52bbfc34cc3a087619a8c0a53a101d03dc7252f34f52d3fa43b2e29e83344528",
+  "part": {
+    "index": 4,
+    "total": 5
+  },
+  "entries": [
+    {
+      "key": "site.26edff5d5495ab0c1b",
+      "source": "starter prompts",
+      "value": "startprompts"
+    },
+    {
+      "key": "site.9c208cdb56de14af4f",
+      "source": "State the dilemma and identify stakeholders.",
+      "value": "Formuleer wat dilemma en benoem die belanghebbenden."
+    },
+    {
+      "key": "site.e3cfac713ef7dae49c",
+      "source": "Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Tree in gesprek met 'n historiese figuur. Vra vrae, daag idees uit en ervaar die wêreld deur hul era, waardes en beperkings."
+    },
+    {
+      "key": "site.814b66298cd294012b",
+      "source": "Stop procrastinating on math",
+      "value": "Hou op om wiskunde uit te stel"
+    },
+    {
+      "key": "site.9f5c1a336c12972e0f",
+      "source": "Story concepts about friendship",
+      "value": "Storiekonsepte oor vriendskap"
+    },
+    {
+      "key": "site.3ceff448ddf58eb6f8",
+      "source": "Story Tutor",
+      "value": "Storie-tutor"
+    },
+    {
+      "key": "site.84185234696ee78adc",
+      "source": "Structure a study room",
+      "value": "Struktureer 'n studiekamer"
+    },
+    {
+      "key": "site.f151b055e376ea853c",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Struktureer notas in leidrade, besonderhede en opsomming"
+    },
+    {
+      "key": "site.2896f2375e8fe16d84",
+      "source": "Student Forum",
+      "value": "Studente-forum"
+    },
+    {
+      "key": "site.0bd4a138ccf2fdb113",
+      "source": "study activity",
+      "value": "studieactiviteit"
+    },
+    {
+      "key": "site.bce65c6d857e0764a5",
+      "source": "study challenge",
+      "value": "studie-uitdaging"
+    },
+    {
+      "key": "site.20a47421a6093a9f3f",
+      "source": "Study Challenges",
+      "value": "Studie-uitdagings"
+    },
+    {
+      "key": "site.d7dc630f49231c6164",
+      "source": "study goals",
+      "value": "studiedoelen"
+    },
+    {
+      "key": "site.dd1400a8f4de4b4168",
+      "source": "study groups",
+      "value": "studiegroepen"
+    },
+    {
+      "key": "site.c8bb344d09ab3987e8",
+      "source": "Study Groups",
+      "value": "Studiegroepe"
+    },
+    {
+      "key": "site.79d5732db1f79a3cd3",
+      "source": "study guide",
+      "value": "studiegids"
+    },
+    {
+      "key": "site.29cff366f23f6fafe9",
+      "source": "Study Guide Generator",
+      "value": "Studiegidsgenerator"
+    },
+    {
+      "key": "site.9331a629f68113aa86",
+      "source": "Study Plan Builder",
+      "value": "Studieplanbouer"
+    },
+    {
+      "key": "site.81d4b02268c4e99003",
+      "source": "study resources",
+      "value": "studiebronne"
+    },
+    {
+      "key": "site.3c46a0b4d80a98cf5c",
+      "source": "study room",
+      "value": "studieruimte"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "Studie-strepe"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "Studie-tydmeter"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "Succes: die leerder vertrekt met 'n helderder mentaal model, 'n volgende stap en vertroue om deur te gaan."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "Som 'n bespreking op"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "Som hoofstuk 2 op"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Som lang teks op in sleutelidees, struktuur, definisies, voorbeelde en herroepingsvrae."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "Som my vordering op"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "Som my rowwe notas op"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "Vat patronen saam, diagnosticeer swak plekken en kies vervolgstappe."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "Vat patronen saam, benoem kanttekeningen, verduidelik methoden uit en stel vervolgaannalyses vir."
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "Som hierdie artikel op"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Som suksesse, mislukkings en volgende week op"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "Vat saam, verduidelik die struktuur, benoem belangrike termen en voeg recall-kontroles by."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "Vat saam, verduidelik woordeskat, stel inferentievrae en verbind idees."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "Vat saam, herken patronen en stap reflectie om in 'n plan."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "Vat saam, label, voeg kanttekeningen by en stel vir hoe ander wat moet gebruik."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "Ondersteun concentratie met achtergrondklank met weinig afleiding."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "Ondersteun consequent studeren met milde streak-tracking."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "Ondersteun motivatie en volharding op 'n nuchtere, nie-klinische manier."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "Maak die wanopvatting sigbaar, stap wat naast die regte model en oefen transfer."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "Merk, sorteer en verbind notas"
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Praat met 'n historiese persoon"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "Praat met Cleopatra"
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "taaktimer"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "Taakhorlosie"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "Onderrig elke onderwerp met warmte, helderheid en nuttige voorbeelde."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "Leer kritische bronevaluering."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "Leer ekonomie via scenario's en afwegingen."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "Leer ethisch redeneer via gestruktureerdee dilemma's."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "Leer breuke as 'n storie"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "Leer aardrijkskunde as verbonden systemen van plek, mense, omgeving en beweging."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "Leer geskiedenis via causaal redeneer."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "Leer leerders kuns te observeren, interpreteren en waarderen."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "Leer my finansiële modellering"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "Leer my hoe rente werk"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Leer my Porter se Vyf Kragte"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "Leer my Python-lusse"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "Leer onthou via ruimtelijke beelden en ophalen uit wat geheugen."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "Leer programmeerconcepten en ontfout met aktiewe deelname van die leerder."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "Leer die basiese beginsels van ritme"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "Leer wetenschap via bewyse, variabelen, voorspelling en veilig experimenteren."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "Leer via realistiese casussen en gevolg van besluiten."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "Leer woordeskat via konteks en ophaaloefening."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Vertel 'n scène, paubaie vir voorspelling of reflectie en verbind daarna terug met wat konsep."
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "testbouwer"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "Toets my begrip van inflasie"
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "Teksopsommer"
+    },
+    {
+      "key": "site.9d5ac14201d63dade2",
+      "source": "The prompt searches this library is built to answer.",
+      "value": "Die promptzoekvrae waarop hierdie biblioteek is gebou."
+    },
+    {
+      "key": "site.ec1bb861632e4a60ff",
+      "source": "The prompts are designed to start active learning loops: explanation, Socratic questioning, homework hints, quizzes, flashcards, critique, debate, planning, and review.",
+      "value": "Die prompts is ontwerp om aktiewe leerlusse te starten: verduideliking, Sokratiese vrae, huiswerkwenke, vasvrae, flitskaarte, kritiek, debat, beplanning en herhaling."
+    },
+    {
+      "key": "site.beb3b6eaa65f4e2abe",
+      "source": "The same topic can need a different prompt depending on whether the learner needs an explanation, a hint, a quiz, a debate, or a plan.",
+      "value": "Hetzelfde onderwerp kan 'n ander prompt nodig wat, afhangend van of die leerder verduideliking, 'n wenk, 'n vasvra, 'n debat of 'n plan nodig wat."
+    },
+    {
+      "key": "site.1227208dc6bf29e482",
+      "source": "These are not generic copy-paste tricks. Each starter is attached to a public mode with a specific teaching behavior: questioning, hints, quizzes, flashcards, critique, roleplay, planning, or review.",
+      "value": "Hierdie is geen generieke kopieer-plaktrucs. Elke starter is gekoppel aan 'n openbare modus met spesifiek onderwijsgedrag: vrae vra, wenke, vasvrae, flitskaarte, kritiek, rolspel, beplanning of herhaling."
+    },
+    {
+      "key": "site.bb59ae830423e9875f",
+      "source": "They are written for inspir's public learning modes, but the patterns also show how to ask AI for better explanations, hints, questions, practice, and feedback.",
+      "value": "Hulle is geskryf vir die openbare leermodusse van inspir, maar die patronen laat ook sien hoe jy AI om beter verduideliking, wenke, vrae, oefening en terugvoer kan vrae."
+    },
+    {
+      "key": "site.ca6bb397632a998774",
+      "source": "Think carefully about big questions",
+      "value": "Dink deeglik na oor groot vrae"
+    },
+    {
+      "key": "site.802eda09a2d1478256",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Dink deur diagramme en rowwe beeldmateriaal"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "Denke"
+    },
+    {
+      "key": "site.b8b3a2029c82928fec",
+      "source": "Time a problem set",
+      "value": "Tyd 'n probleemstel"
+    },
+    {
+      "key": "site.00cdcfa826b547a2c0",
+      "source": "Time individual tasks and see effort",
+      "value": "Tyd individuele take en sien die moeite"
+    },
+    {
+      "key": "site.8393c4718a0ab930e7",
+      "source": "time tracking",
+      "value": "tijdregistrasie"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Tydreis"
+    },
+    {
+      "key": "site.b5de165cd236398a33",
+      "source": "timed test",
+      "value": "toets met tijdslimiet"
+    },
+    {
+      "key": "site.c1f2f784477421cc0f",
+      "source": "Tiny explanation, example, user action, specific feedback, targeted repair or progress, recap, and mastery checkpoint.",
+      "value": "Korte verduideliking, voorbeeld, aksie van die gebruiker, spesifieke terugvoer, gefokusde herstelstap of voortgaanng, opsomming en beheersingskontrole."
+    },
+    {
+      "key": "site.a31ae9a6964e2f0a17",
+      "source": "Trace chains, compare importance, discuss consequences, and ask counterfactual questions.",
+      "value": "Traceer ketens, vergelyk belang, bespreek gevolg en stel contrafeitelijke vrae."
+    },
+    {
+      "key": "site.895a7dace1b9ada67b",
+      "source": "Trace why events happened",
+      "value": "Spoor na waarom gebeure plaasgevind het"
+    },
+    {
+      "key": "site.7ac967e6972ee5e7f5",
+      "source": "Track attempts, shrink goals when needed, and repair broken streaks.",
+      "value": "Hou pogingen by, maak doelwitte kleinr wanneer nodig en herstel onderbroken reeksen."
+    },
+    {
+      "key": "site.c675fc274ad17a1cb4",
+      "source": "Track deadlines and next actions",
+      "value": "Volg sperdatums en volgende aksies"
+    },
+    {
+      "key": "site.af26deb023c5d0063d",
+      "source": "Track essay drafting focus",
+      "value": "Volg fokus vir opstel-skryfwerk"
+    },
+    {
+      "key": "site.d0d8eff92e1afc3d45",
+      "source": "Track essay outline work",
+      "value": "Volg opstel-uiteensetting werk"
+    },
+    {
+      "key": "site.fd1f501b443adac02b",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Volg studierekords, herstel gemiste dae, en ontwerp 'n minimum lewensvatbare studiegewoonte wat die werklike lewe oorleef."
+    },
+    {
+      "key": "site.fc86028b09428f3fbc",
+      "source": "Treat each turn as collaborative work: draft, critique, revise, ask for a decision, update open questions, and hand the next useful move to either the user or AI. Challenge weak ideas when the selected mode calls for it.",
+      "value": "Behandel elke beurt as samenwerking: opvra, bekritiseren, hersien, om 'n besluit vrae, oopmaak vrae bijwerken en die volgende nuttige stap by die gebruiker of AI leggen. Daag swak ideeen uit wanneer die gekies modus daarom vra."
+    },
+    {
+      "key": "site.93f978228f89334d15",
+      "source": "true false",
+      "value": "waar onwaar"
+    },
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Probeer om 'n konsep eenvoudig te verduidelik. Jou tutor identifiseer leemtes, vra vrae en help jou om die verduideliking te herbou."
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Verander 'n breë onderwerp in navorsingsvrae, soekterme, uiteensettings en bronaantekeninge."
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "Verander 'n konsep, argument, probleem, teks of besluit in 'n gefokusde ketting van vrae. Jou maat luister na elke antwoord, karteer aannames en leemtes, en stoot jou na jou eie finale sintese. Probeer: \"Help my om geleentheidskoste te verstaan.\""
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Verander 'n sillabus in 'n studieplan"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Omskep 'n onderwerp, sillabus of notas in 'n realistiese oefentoets met afdelings, tydsberekening, nasienriglyne en hersieningstappe."
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "Verander aktiwiteit in volgende stappe"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "Verander konsepte in stories, karakters, konflikte en onvergeetlike tonele."
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Verander diagramme, liggaanamstelsels, kaarte, werkvloeie of laboratoriumopstellings in etiketteringsoefeninge met wenke en antwoordkontroles."
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "Verander idees in mylpale"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Verander voorneems in klein, herhaalbare leergewoontes met vinniglers, belonings en herstelplanne."
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "Verander leer in kort gestruktureerdee uitdagingen."
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "Verander materiaal in 'n hersieningsgids"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Verander my notas in 'n hersieningsblad"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Verander notas in pasmaatspeletjies vir woordeskat, konsepte, mense/gebeure, formules, voorbeelde of oorsaak-gevolg-pare."
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Verander notas of onderwerpe in duidelike flitskaarte met antwoorde, strikke en hersieningsaanwysings."
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "Verander vordering in vlakke en take"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "Verander lees in take"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Verander deurmekaar notas in vouers, etikette, opsommings, skakels en hersieningsaksies wat herroeping makliker maak."
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Verander studieaktiwiteit, vasvra-resultate, notas en timers in 'n paneelbord-styl hersiening met tendense en volgende aksies."
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "Verander studie in 'n uitdaging"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "Verander teks om in compact, memorabel studiemateriaal."
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Verander hierdie lesing in Cornell-notas"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "Verander hierdie nota in V&A"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "Verander vae voorneems om in haalbare dagelijkse studiedoelen."
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "Verander woordeskat in vlakke"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "Gee wiskundebegeleiding met stapsgewyse redenasie en deelname van die leerder."
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "Verstaan kode, ontfout foute, leer konsepte en bou klein projekte stap vir stap."
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "Verstaan plekke, kaarte en mense"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "Verstaan regte, regering en die samelewing"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Verstaan klank, ritme en harmonie"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "Verstaan waarom 'n antwoord werk"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Ontleed historiese gebeure deur oorsake, vinniglers, gevolge en alternatiewe moontlikhede."
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "Gebruik 50/10 pouses"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "Gebruik 'n compacte tabel vir gegeven antwoord, correct idee, wanopvatting en volgende stap."
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "Gebruik 'n geloofwaardigheidsscorekaart en vrae om verder te navorsingen."
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "Gebruik 'n deep-workcontract met uitkomst, blokbeplanning, regels en evaluering."
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "Gebruik 'n tabel met voorkant, achterkant, wenk en veelvoorkomde valkuil."
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "Gebruik badgenamen, criteria, niveaus en bewysevoorbeelde."
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "Gebruik voor/na-fragmenten, hersieningsprioriteiten en beknopte onderbouwing."
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "Gebruik kalenders, kontrolelists en risicovlaggen."
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "Gebruik casusdossier, keuses, uitkomst en leernotitie."
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "Gebruik uitdagingskaarte, punte, rondes en nabespreking."
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "Gebruik citatie-items plus 'n kontrolelist vir ontbrekende velden."
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "Gebruik commitmentkaarte, kontrole-inscripts en herstelplannen."
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "Gebruik compacte gefaseerde afdelings: setting, tijdsegment, personakern, dossierwand, historici-sidecar, aanbevolen openingsvrae, daarna uitwisselingen in karakter met af en by claimlabels en debrief op versoek."
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "Gebruik compacte UI-achtige afdelings: Paspoort, Reisadvies, Aankomstscene, Locatie, Identiteit, Sociale regels, Gebeurtenisklok, Mense dichtbij, Objecten, Keuzes, Bewijs en Veldnotas. Sluit grote besluiturten af met betekenisvolle keuses."
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "Gebruik compacte werkruimte-afdelings soos Gedeeld artefact, AI-bijdrage, Gebruikersstap, Inline opmerkingen, Beslissingslog, Maak vrae oop en Volgende aksie. Toon voorgestelde bewerkingen of diffs vir wat samenvoegen by herschrijven."
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "Gebruik vergelijkingstabellen en eksperimente vir volgende stappe."
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "Gebruik beknopte claims, bewyseprompts en 'n afsluitende debatrecap wanneer daarom word navraag gedoen."
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "Gebruik beknopte kodefragmenten, opmerkingen net wanneer nuttig, en testgevalle."
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "Gebruik beknopte tekeninstructies, labellijsten en visuele kontrolepoints."
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "Gebruik Cornell-afdelings: aanwijzingen, notas, opsomming en herinneringskontroles."
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "Gebruik cursuskaarte, bronnelijsten en wekelijkse werklasttabellen."
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "Gebruik dashboardkaarte, trendnotas, swak plekken en volgende aksies."
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "Gebruik sperdatumtabellen, risicovlaggen en volgende aksies."
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "Gebruik debatkaarte, beknopte weerleggingen en af en by score bijhouden van argumentgehalte."
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "Gebruik diagnose, beter model, waarom wat werk en 'n kontrolevraag."
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "Gebruik diagrammen in teks, rolverklarings en realistiese scenario's."
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "Gebruik vergelijkingen, uitgelijnde stappe en kort notas oor waarom hierdie werk."
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "Gebruik examinatorvrae, vormen van modelantwoorde en terugvoerscorekaarte."
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "Gebruik voorbeelde, vergelyk systemen, stel toepassingsvrae en scheid feiten van meningen."
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "Gebruik vouers, tags, nota-opsommings, skakels en hersieningsaksies."
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "Gebruik formules, tabellen en plannen vir doelscores."
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "Gebruik forumberichten wat gereed is om te plaas, conceptreaksies en discussieopsommings."
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "Gebruik doelkaarte, prioriteit, tijdsinschatting, blokkade en klaarcriteria."
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "Gebruik groepsagenda, rollen, rondes, bronne en vervolgtaken."
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "Gebruik groepsrollen, timerrondes, kontrole-ins en debriefprompts."
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "Gebruik gewoonterecept, hindernisplan en 7-daags experiment."
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "Gebruik wenke, kontrolepoints en klein voorbeelde in plaas van volledige eindantwoorde."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "Gebruik hypothese-, materiaal-, methode-, observatie- en verduidelikingaanfdelings wanneer nuttig."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "Gebruik ideeenmenu's, selectiecriteria en schetsen vir volgende stappe."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "Gebruik dialoog in karakter en kort afrigteringsnotas."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "Gebruik kernpunte, opstap, definities en herhaalvrae."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "Gebruik leaderboardregels, scoring, waarborgen en reflectie."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "Gebruik leveltabellen, XP-regels, questkaarte en anti-grindwaarborgen."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "Gebruik narratief om konsepte memorabel te maak."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "Gebruik geneste bullets, tabellen of Mermaid-teks wanneer dat help."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "Gebruik genummerde locaties, beelden en herinneringskontrolepoints."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "Gebruik doelwitte, opsommings, voorbeelde, valkuilen, vrae en volgende herhaling."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "Gebruik afdelings vir observatie, interpretatie, bewyse en volgende vraag."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "Gebruik parenbanken, gehusselde lijsten, antwoordesleutel en herhaalnotas."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "Gebruik plekkaarte, vergelijkingstabellen en kaartprompts."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "Gebruik praktiese klanktips en notas vir die inrichting van studiesessies."
+    },
+    {
+      "key": "site.82e0284431babe11b9",
+      "source": "Use prompts to learn actively, not passively.",
+      "value": "Gebruik prompts om aktief te leer, nie passief."
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "Gebruik quests, levels, badges en eindbaasvrae."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "Gebruik reën vir lees"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "Gebruik reëngeluide vir hersiening"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "Gebruik reflectieprompts, sterke punte van die leerder en 'n volgd experiment."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "Gebruik rapportafdelings: successen, bewyse, blokkades, lessen, volgende week."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "Gebruik navorsingsvrae, bronmatrices en synthesewnotas."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "Gebruik bronkaarte, teikengroepnotas en gebruikstips."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "Gebruik herhaalwachtrijen, verstrykingdatums en vertrouesscores."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "Gebruik scorekaarte vir helderheid, struktuur, bewyse en aanbiedingnotas."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "Gebruik kort focusplannen, kontrolelists en reflectieprompts na die sessie."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "Gebruik kort afdelings, voorbeelde, analogieen en GFM-vriendelijke lijsten of tabellen wanneer hulle help."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "Gebruik kort opsommings, verwijzingen met weinig citaten en vraesets."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "Gebruik kort ondersteunende notas en praktiese volgende aksies."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Gebruik eenvoudige omgewingsklank-voorinstellings om afleiding tydens lees, skryf, hersiening of probleemoplossing te verminder."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "Gebruik eenvoudige notatie, voorbeelde en oefenprompts."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "Gebruik eenvoudige tabellen, oorzaak-gevolgketens en kanttekeningen."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "Gebruik herschrijvingen in eenvoudige taal en kontrolelists vir hiaten."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Gebruik skets as 'n leermetode: beplan diagramme, benoem rowwe kaarte, verduidelik prosesse, of omskep 'n deurmekaar idee in 'n duideliker visuele voorstelling."
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "Gebruik geluidsaanbevelingen en notas vir focusinrichting."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "Gebruik stakeholdertabellen en evenwichtige pro/con-analyse."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "Gebruik STAR- of situatie-aksie-resultaat-frameworks wanneer gepas."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "Gebruik storiebeats plus leernotas."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "Gebruik reeksstatus, klein aksie, herstelregel en wekelijkse reflectie."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "Gebruik tabellen met woord, betekenis, voorbeeld, geheugensteun en oefenprompt."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "Gebruik tabellen, kernpunte in eenvoudige taal en waarschuwingsnotas."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "Gebruik eers die doeltaal en daarna kort terugvoer in die ondersteuningstaal wat die leerder verkiest."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "Gebruik taakborden, sperdatums en lijsten met volgende aksies."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "Gebruik taakkaarte, verstreken tijd, notas en suggesties vir vervolgblokken."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "Gebruik toetsafdelings, timing, antwoordesleutels, rubrics en herhaalplannen."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "Gebruik die Feynman-techniek om hiaten sigbaar te maak en begrip te vereenvoudig."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "Gebruik hierdie compacte format: Korte lezing: 'n zin. Kaartupdate: beknopte bullets vir Claim, Aanname, Hiaat of Correctie waar relevant. Volgende vraag: presies 'n vraag. Gebruik vir wat eerste antwoord Doel, Contract en Eerste vraag."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "Gebruik gedachte-eksperimente, argumentkaarte en evenwichtige opsommings."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Gebruik tijdlijnen, oorzaaklagen en gevolgkaarte."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Gebruik boomstructuren, nodelabels, skakels en prompts vir volgende stappe."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Gebruik ongelabelde dele, wenkniveaus, antwoordesleutel en herhaalprompts."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Gebruik visuele woordeskat en begeleide kijkprompts."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Gebruik weekplannen, terugvalplannen en klein volgende aksies."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Gebruik werk/pauze-cycli, pauzemenu's en terugkeerprompts."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Gebruik werkbladafdelings, antwoordesleutels en moeilijkheidslabels."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Erken wat gevoel, identifiseer die blokkade en kies 'n klein volgende stap."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "visuele ontleding"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "visueel leer"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Visuele Leer"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Viva-oefening"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Woordeskatbouer"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "wekelijks rapport"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Weeklikse verslae"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "gewogen score"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Watter prestasiestelsel moet ons ontwerp?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "Waaroor dinkskrum ons?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Wat lees ons?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Waarvoor is jy vandag nuuskierig?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Wat berei jy voor om te sê?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Waaroor doen jy navorsing?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Wat skryf jy?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Watter kunswerk, kunstena of styl?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Watter opdragte het jy op jou bord?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Watter groot vraag verken ons?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Watter loopbaan of belangstelling moet ons verken?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Watter burgerkunde-onderwerp moet ons bestudeer?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Watter koderingsonderwerp of fout pak ons aan?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Watter verbintenis benodig verantwoording?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Watter konsep moet ons karteer?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Watter kursusse of vakke bestuur jy?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Watter diagram moet ons oefen om te etiketteer?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Watter dilemma moet ons ondersoek?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Wat doen jy volgende in hierdie wêreld?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Wat moet jy onthou?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Wat moet jy studeer?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Wat wil jy vandag gedoen kry?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Wat doen 'n hof?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Wat doen 'n produkbestuurder?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Wat wys hierdie opname?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Watter ekonomiese idee moet ons simuleer?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Vir watter eksamen berei jy voor?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Watter finale punt het ek nodig?"
+    }
+  ]
+}

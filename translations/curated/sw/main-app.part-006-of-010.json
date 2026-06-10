@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Swahili",
+  "locale": "sw",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "Je, mitandao ya kijamii ina madhara?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "Je, kazi ya nyumbani inapaswa kuwepo?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "Je, uchunguzi wa anga za juu unafaa?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "Elezea Jibu Langu"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "Elewa kwa nini jibu linafanya kazi"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Bandika swali, jibu lako, na jibu linalotarajiwa ikiwa unalo. Rafiki yako atakuelezea hoja na kukusaidia kuepuka kosa hilohilo wakati ujao."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "Bandika swali na jibu lako"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "Mazoezi"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Bandika swali, jibu lako, na jibu linalotarajiwa ikiwa unalo. Rafiki yako atakuelezea hoja na kukusaidia kuepuka kosa hilohilo wakati ujao."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mazoezi ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya kuelezea jibu langu ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "Elewa kwa nini jibu linafanya kazi"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Kwa nini jibu langu la aljebra si sahihi?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "Elezea masahihisho haya ya sarufi"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "Nilichagua B. Kwa nini C ni sahihi?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "Mkufunzi wa Kazi ya Nyumbani"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "Vidokezo bila kutoa majibu moja kwa moja"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "Ondokana na kukwama kwenye kazi ya nyumbani kwa vidokezo, mifano, na ukaguzi unaokusaidia kufanya fikra mwenyewe."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "Ni tatizo gani la kazi ya nyumbani ambalo umekwama nalo?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "Mazoezi"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Ondokana na kukwama kwenye kazi ya nyumbani kwa vidokezo vya kimaadili, mifano, ukaguzi, na ukufunzi wa hatua kwa hatua."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "Wanafunzi wanaohitaji msaada kuanza tatizo, kukagua kazi, au kuelewa kosa."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Mkufunzi anasaidia fikra zako bila kuchukua jukumu la kazi hiyo, ili kazi ya mwisho ibaki kuwa yako."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "Tafuta hatua inayofuata"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "Elewa kosa"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "Fanya mazoezi ya tatizo linalofanana"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "Nisaidie kuanza tatizo hili la maneno"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "Kagua nadharia ya insha yangu"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "Nipe dokezo kwa tatizo hili la fizikia"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "Mkufunzi wa Hatua za Hisabati"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "Tatua hisabati hatua kwa hatua"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "Tatua hisabati kwa kuelewa kila hatua. Mkufunzi wako anakagua kazi yako, anaonyesha makosa madogo, na kujenga ujasiri."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "Ni tatizo gani la hisabati tunapaswa kulitatua?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Tatua aljebra, kalkulasi, matatizo ya maneno, na dhana za hisabati hatua kwa hatua ukiwa na mkufunzi wa AI."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "Wanafunzi wanaotaka kuona kwa nini kila hatua ya hisabati inafanya kazi, siyo tu kunakili jibu."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Mfumo huu hukagua kila hatua, huonyesha makosa madogo, na kuunganisha taratibu na dhana husika."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "Chagua hatua ya kwanza"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "Kagua kila hatua"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "Eleza kwa nini mbinu hiyo inafanya kazi"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "Tatua 2x + 5 = 17 pamoja nami"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "Nisaidie na milinganyo ya kwadratiki"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "Eleza derivativu hatua kwa hatua"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "Mshirika wa Maabara ya Sayansi"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "Gundua majaribio na dhana kwa usalama"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Panga maonyesho salama, elewa vigezo, tabiri matokeo, na toa hoja kulingana na ushahidi kama mwanasayansi."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Ni wazo gani la kisayansi au jaribio tunalochunguza?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Panga maonyesho salama, elewa vigezo, tabiri matokeo, na toa hoja kutokana na ushahidi kama mwanasayansi."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za STEM wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mshirika wa maabara ya sayansi ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "Chunguza majaribio na dhana kwa usalama"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Rekebisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "Buni jaribio la ukuaji wa mmea"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "Eleza asidi na besi"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "Nini kitatokea tukibadilisha halijoto?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "Mkufunzi wa Uandishi"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "Panga, rasimu, kagua, na uimarishe uandishi"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "Boresha insha, hadithi, barua pepe, na hoja kwa maoni yaliyolengwa yanayohifadhi sauti yako."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "Unaandika nini?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "Mawasiliano"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Boresha uandishi kwa kupanga, kukagua, muundo, na maoni yanayohifadhi sauti yako."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "Wanafunzi wanaoandika insha, hadithi, barua pepe, noti za ufadhili, au hoja."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Mkufunzi hutoa vipaumbele vya marekebisho vilivyolengwa na mifano ya kabla na baada bila kuchukua nafasi ya sauti yako."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "Weka wazi hoja yako"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "Boresha muundo"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "Kagua kwa sababu"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "Boresha utangulizi wa insha yangu"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "Nisaidie kuainisha hadithi"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "Fanya aya hii iwe wazi zaidi"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "Mwandani wa Kusoma"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "Soma, fupisha, na uliza maswali kuhusu maandishi"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Leta kifungu au wazo la kitabu na ujenge uelewa kupitia muhtasari, msamiati, hitimisho, na majadiliano."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "Tunasoma nini?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "Mawasiliano"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Leta kifungu au wazo la kitabu na ujenge uelewa kupitia muhtasari, msamiati, hitimisho, na majadiliano."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mawasiliano wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mwandani wa kusoma ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "Soma, fupisha, na uliza maswali kuhusu maandishi"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "Nisaidie kuelewa aya hii"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "Fupisha sura ya 2"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "Niulize maswali kuhusu shairi hili"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "Mjenzi wa Msamiati"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "Jifunze maneno katika muktadha"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Jenga msamiati kwa maana, mifano, vidokezo vya matamshi, mbinu za kukumbuka, na mazoezi ya haraka."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "Ni maneno au mada gani tunapaswa kufanya mazoezi?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "Mawasiliano"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Jenga msamiati kwa maana, mifano, vidokezo vya matamshi, mbinu za kukumbuka, na mazoezi ya haraka."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mawasiliano wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mjenzi wa msamiati ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "Jifunze maneno katika muktadha"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "Msamiati wa SAT"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "Maneno ya Kiingereza cha kibiashara"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "Maneno kuhusu hali ya hewa"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "Uigizaji wa Lugha"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "Fanya mazoezi ya mazungumzo halisi"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Fanya mazoezi ya lugha katika hali halisi kama vile mikahawa, usaili, kusafiri, na maisha ya kila siku, huku ukisahihishwa baada ya kila hatua."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "Lugha gani na hali gani?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "Mawasiliano"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Fanya mazoezi ya lugha katika hali halisi kama vile mikahawa, usaili, kusafiri, na maisha ya kila siku, huku ukisahihishwa baada ya kila hatua."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mawasiliano ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya uigizaji wa lugha ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "Fanya mazoezi ya mazungumzo halisi"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "Uigizaji wa mkahawa wa Kihispania"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "Mazungumzo ya uwanja wa ndege wa Kifaransa"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "Kupatana bei sokoni kwa Kihindi"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "Mazoezi ya Kuzungumza"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "Fanya mazoezi kwa sauti na vidokezo"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Jitayarishe kwa hotuba, mawasilisho, usaili, au mitihani ya mdomo kwa kutumia vidokezo, muda, na maoni kuhusu muundo."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "Unajitayarisha kusema nini?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "Mawasiliano"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Jitayarishe kwa hotuba, mawasilisho, usaili, au mitihani ya mdomo kwa kutumia vidokezo, muda, na maoni kuhusu muundo."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mawasiliano wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mazoezi ya kuzungumza ikiwa na vidokezo, mifano, na mtiririko wa kujifunza wake yenyewe."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "Fanya mazoezi kwa sauti ukitumia vidokezo"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "Fanya mazoezi ya wasilisho langu la shuleni"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "Mazoezi ya kuzungumza ya IELTS"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "Nisaidie kujibu maswali ya usaili"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "Mpangaji wa Maandalizi ya Mtihani"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Badilisha mtaala kuwa mpango wa kusoma"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Jenga mpango halisi wa mtihani kulingana na tarehe yako, mtaala, uwezo, na maeneo dhaifu."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "Unajitayarisha kwa mtihani upi?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "Upangaji"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Badilisha mtaala wako, tarehe ya mtihani, muda, na maeneo dhaifu kuwa mpango wa vitendo wa kusoma."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "Wanafunzi wanaohitaji mpango unaosawazisha marudio, mazoezi, kujiamini, na maisha halisi."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Mpangaji huyu anatanguliza maeneo dhaifu, anaongeza mizunguko ya mapitio, na kuunda mipango mbadala kwa siku zilizokosa."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "Tanguliza mada"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "Panga mapitio"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "Fuatilia maeneo yenye hatari"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "Panga wiki 2 kwa ajili ya biolojia"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "Tengeneza ratiba ya marudio ya JEE"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "Nisaidie kujiandaa kwa mitihani ya mwisho"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "Mjenzi wa Flashcard"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "Tengeneza kadi mahiri kwa ajili ya kukumbuka"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Badilisha madokezo au mada kuwa flashcards zilizo wazi zenye majibu, mitego, na vidokezo vya marudio."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "Ni nini kinapaswa kuwa flashcards?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "Mazoezi"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Badilisha madokezo au mada kuwa flashcards zilizolenga zenye vidokezo, majibu, mifano, na mitego ya kawaida."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "Wanafunzi wanaojiandaa kwa mitihani, wanaojifunza lugha, na yeyote anayetumia mazoezi ya kukumbuka."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Kadi huuliza jambo moja kwa wakati mmoja na kujumuisha mitego ili marudio yajenge uelewa, si utambuzi tu."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "Tengeneza kadi za kukumbuka"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "Fichua majibu ukiwa tayari"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "Rudia yale uliyokosea mapema"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "Tengeneza flashcards kwa ajili ya mitosis"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "Badilisha dokezo hili kuwa Maswali na Majibu"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "Tengeneza flashcards za jiografia"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "Jumba la Kumbukumbu"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "Kumbuka mawazo ukitumia maeneo angavu"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "Badilisha ukweli, orodha, hotuba, au mfuatano kuwa matukio ya kiakili yanayokumbukika."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "Ni nini unahitaji kukumbuka?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "Mazoezi"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "Badilisha ukweli, hotuba, orodha, au mfuatano kuwa matukio yanayokumbukika ambayo hurahisisha kukumbuka wakati wa kusoma na mitihani."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "Wanafunzi wanaokariri mawazo yaliyopangwa, msamiati, hotuba, fomula, au ukweli unaohitaji mbinu bora ya kiakili."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "Njia hii hubuni maeneo angavu, njia, na vidokezo vya kukumbuka badala ya kukuomba usome tena madokezo."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "Chagua njia"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "Weka vidokezo angavu"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "Fanya mazoezi ya kukumbuka"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "Kumbuka sayari"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "Kumbuka muhtasari wa hotuba"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "Jifunze taksonomia ya biolojia"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "Mapitio ya Muda"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "Kagua kabla hujasahau"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "Panga na uendeshe vipindi vya haraka vya mapitio vinavyoimarisha kumbukumbu ya muda mrefu."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "Tunapaswa kukagua nini?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "Mazoezi"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "Panga vipindi vya haraka vya mapitio, kagua upya mawazo dhaifu, na uimarishe kumbukumbu ya muda mrefu kwa marudio ya muda yanayoongozwa na AI."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "Wanafunzi wanaosahau baada ya kusoma na wanaohitaji mdundo wa vitendo wa mapitio kwa dhana, istilahi, au nyenzo za mitihani."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Mkufunzi hugeuza makosa na kusita kuwa ratiba ya mapitio badala ya muhtasari mwingine wa kawaida."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "Chagua malengo ya mapitio"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "Panga ukumbusho"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "Rekebisha makosa"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "Kagua kemia ya jana"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "Tengeneza mpango wa mapitio wa siku 7"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "Niulize msamiati tena"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "Mjenzi wa Ramani ya Dhana"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "Unganisha mawazo kwa kuona katika maandishi"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Chora ramani ya jinsi mawazo yanavyohusiana, kuanzia visababishi na athari hadi kategoria, mifano, na utata."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "Tunapaswa kuchora ramani ya dhana gani?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "Kufikiri"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Chora ramani ya jinsi mawazo yanavyohusiana, kuanzia visababishi na athari hadi kategoria, mifano, na utata."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za kufikiri wanaotaka mwongozo wa vitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mjenzi wa ramani ya dhana ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "Unganisha mawazo kwa njia ya kuona katika maandishi"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "Chora ramani ya mabadiliko ya tabianchi"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "Unganisha dhana za aljebra"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "Jenga ramani ya demokrasia"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "Daktari wa Dhana Potofu"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "Tafuta na urekebishe mifumo potofu ya kufikiri"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Eleza unachofikiri kinatokea, na rafiki yako atatambua dhana potofu zilizojificha kwa kutumia majaribio mepesi."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Ni wazo gani linalokuchanganya au linalotia shaka?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "Kufikiri"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Eleza unachofikiri kinatokea, na rafiki yako atatambua dhana potofu zilizojificha kwa kutumia majaribio mepesi."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za kufikiri ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya daktari wa dhana potofu ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "Tafuta na urekebishe mifumo potofu ya kufikiri"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "Nadhani vitu vizito huanguka haraka zaidi"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "Sielewi namba hasi"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "Kwa nini kanuni hii ya sarufi ni ya ajabu?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "Mkufunzi wa Feynman"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "Eleza kwa urahisi hadi ieleweke vizuri"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Jaribu kueleza dhana kwa urahisi. Mkufunzi wako atabaini mapungufu, atauliza maswali, na kukusaidia kujenga upya maelezo hayo."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "Ni nini utanieleza?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "Kufikiri"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Jaribu kuelezea dhana kwa urahisi. Mkufunzi wako atabaini mapungufu, atauliza maswali, na kukusaidia kujenga upya maelezo hayo."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za kufikiri ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mkufunzi wa Feynman ikiwa na vidokezo, mifano, na mtiririko wa kujifunza wake yenyewe."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "Elezea kwa urahisi hadi ieleweke vizuri"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "Nitafafanua mvutano"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "Pima uelewa wangu kuhusu mfumuko wa bei"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "Nisaidie kurahisisha urudiaji (recursion)"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "Kiigaji cha Uchunguzi Kifani"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "Jifunze kupitia maamuzi ya kweli"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Ingia katika uchunguzi kifani wa kweli, fanya maamuzi, ona matokeo, na ujifunze kanuni iliyo nyuma ya kila chaguo."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "Ni aina gani ya uchunguzi kifani tunapaswa kuiga?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "Uzamishaji"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Ingia katika uchunguzi kifani wa kweli, fanya maamuzi, ona matokeo, na ujifunze kanuni iliyo nyuma ya kila chaguo."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za uzamishaji ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya kiigaji cha uchunguzi kifani ikiwa na vidokezo, mifano, na mtiririko wa kujifunza wake yenyewe."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "Jifunze kupitia maamuzi ya kweli"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "Uchunguzi kifani wa mkakati wa biashara"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "Uchunguzi kifani wa maadili ya kitabibu"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "Uchunguzi kifani wa sera ya mazingira"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "Hali ya Kuigiza"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "Jizoeze mazungumzo magumu ya maisha halisi"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Jizoeze mazungumzo ya majadiliano, migogoro, huduma kwa wateja, uongozi, au mazungumzo yoyote yenye uzito mkubwa."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "Tunapaswa kuigiza hali gani?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "Uzamaji"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Jizoeze mazungumzo ya majadiliano, migogoro, huduma kwa wateja, uongozi, au mazungumzo yoyote yenye uzito mkubwa."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za uzamaji wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya hali ya kuigiza ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "Jizoeze mazungumzo magumu ya maisha halisi"
+    }
+  ]
+}

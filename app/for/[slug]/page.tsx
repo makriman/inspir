@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import {
   ArrowUpRight,
@@ -21,6 +21,7 @@ import {
   getAudiencePageResources,
   getAudiencePages,
 } from "@/lib/content/audiences";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -80,7 +81,7 @@ export async function generateMetadata({ params }: AudienceDetailPageProps): Pro
     description: page.description,
   });
 
-  return {
+  return localizeMarketingMetadata({
     title: page.seoTitle,
     description: page.description,
     alternates: metadataAlternates(audiencePath(page.slug)),
@@ -98,7 +99,7 @@ export async function generateMetadata({ params }: AudienceDetailPageProps): Pro
       description: page.description,
       images: [image.url],
     },
-  };
+  }, audiencePath(page.slug));
 }
 
 export default async function AudienceDetailPage({ params }: AudienceDetailPageProps) {

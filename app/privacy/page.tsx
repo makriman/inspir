@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { ContentPage } from "@/components/legal/ContentPage";
 import { extractedPages } from "@/lib/content/extracted-pages";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 
 const description =
   "How inspir describes data use, privacy practices, and user rights for the public learning platform.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "Privacy Policy",
   description,
   alternates: metadataAlternates("/privacy"),
@@ -26,6 +27,10 @@ export const metadata: Metadata = {
     images: [socialImage({ title: "Privacy Policy", eyebrow: "Privacy", description }).url],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/privacy");
+}
 
 export default function PrivacyPage() {
   return (

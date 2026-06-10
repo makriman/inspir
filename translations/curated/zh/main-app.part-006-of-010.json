@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Chinese",
+  "locale": "zh",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "社交媒体有害吗？"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "应该有家庭作业吗？"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "太空探索值得吗？"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "解释我的答案"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "理解答案背后的逻辑"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "粘贴问题、你的答案以及参考答案（如果有）。你的学习伙伴会为你解释推理过程，帮助你下次避免犯同样的错误。"
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "粘贴问题和你的答案"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "练习"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "粘贴问题、你的答案以及参考答案（如果有）。你的学习伙伴会为你解释推理过程，帮助你下次避免犯同样的错误。"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "正在探索练习主题，并希望获得实用指导而非通用答案的学习者。"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "此模式专为“解释我的答案”功能而设计，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "理解答案背后的逻辑"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示开始"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据你的目标调整学习过程"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "为什么我的代数答案错了？"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "解释一下这个语法纠正"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "我选了B，为什么C才是对的？"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "作业辅导教练"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "提供提示，而非直接给出答案"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "通过提示、示例和检查来解决作业难题，帮助你独立思考。"
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "你被哪道作业题难住了？"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "练习"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "通过合乎道德的提示、示例、检查和分步辅导，帮你攻克作业难题。"
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "需要帮助开始解题、检查作业或理解错误的学生。"
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "教练会辅助你的思考，而不会直接代劳，确保最终的作业成果仍由你完成。"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "找到下一步"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "理解错误之处"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "练习类似题目"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "帮我开始做这道应用题"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "帮我检查论文论点"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "给我这道物理题一点提示"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "数学步骤教练"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "一步一步攻克数学难题"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "通过理解每一个步骤来解决数学问题。你的教练会检查你的作业，指出疏漏，并建立你的自信。"
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "我们要解决什么数学问题？"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "在 AI 教练的帮助下，一步一步攻克代数、微积分、应用题和数学概念。"
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "适合那些想了解每个数学步骤背后的原理，而不仅仅是抄写答案的学习者。"
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "该流程会检查每一步，指出疏漏，并将解题过程与数学概念联系起来。"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "选择第一步"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "检查每一步"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "解释方法原理"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "和我一起解 2x + 5 = 17"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "帮我解决二次方程"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "一步步解释导数"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "科学实验伙伴"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "安全地探索实验与概念"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "像科学家一样规划安全演示、理解变量、预测结果并根据证据进行推理。"
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "我们要探索什么科学理念或实验？"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "像科学家一样规划安全演示、理解变量、预测结果并根据证据进行推理。"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "探索 STEM 主题并希望获得实用指导而非通用答案框的学习者。"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "此模式专为科学实验伙伴量身定制，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "安全地探索实验和概念"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示词开始"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据您的目标调整会话"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "设计一个植物生长实验"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "解释酸和碱"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "如果我们改变温度会发生什么？"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "写作教练"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "规划、起草、修改并加强写作"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "通过有针对性的反馈来改进论文、故事、电子邮件和论点，同时保持您的个人风格。"
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "您在写什么？"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "沟通"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "通过规划、修改、结构优化和反馈来提升写作水平，同时保持您的个人风格。"
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "正在撰写论文、故事、电子邮件、奖学金申请或论点的学习者。"
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "教练提供有针对性的修改优先级和修改前后的示例，而不会取代您的个人风格。"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "阐明您的观点"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "改进结构"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "有理有据地进行修改"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "改进我的论文引言"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "帮我构思故事大纲"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "让这段话更清晰"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "阅读伴侣"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "阅读、总结并提问文本"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "带上一段文章或书籍构思，通过总结、词汇、推理和讨论来提升理解力。"
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "我们要读什么？"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "沟通"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "带上一段文章或书籍构思，通过总结、词汇、推理和讨论来提升理解力。"
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "探索沟通主题的学习者，他们需要的是实际指导，而不是通用的回答框。"
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "此模式专为阅读伴侣而设，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "阅读、总结并提问文本"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示词开始"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据你的目标调整会话"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "帮我理解这段话"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "总结第二章"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "就这首诗向我提问"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "词汇构建器"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "在语境中学习单词"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "通过含义、示例、发音提示、记忆钩子和快速练习来构建词汇量。"
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "我们应该练习哪些单词或主题？"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "沟通"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "通过含义、示例、发音提示、记忆钩子和快速练习来构建词汇量。"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "探索沟通主题的学习者，他们需要的是实际指导，而不是通用的回答框。"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "此模式专为词汇构建器而设，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "在语境中学习单词"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示词开始"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据您的目标调整课程"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "SAT 词汇"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "商务英语词汇"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "关于天气的词汇"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "语言角色扮演"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "练习真实对话"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "在咖啡馆、面试、旅行和日常生活等现实场景中练习语言，并在每轮对话后获得纠正。"
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "想要练习哪种语言和情境？"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "沟通"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "在咖啡馆、面试、旅行和日常生活等现实场景中练习语言，并在每轮对话后获得纠正。"
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "想要探索沟通主题并寻求实用指导，而非通用回答框的学习者。"
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "此模式专为语言角色扮演而设计，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "练习真实对话"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示词开始"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据您的目标调整课程"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "西班牙语咖啡馆角色扮演"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "法语机场对话"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "印地语市场讨价还价"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "口语练习"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "根据提示大声练习"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "通过提示、计时和结构反馈，准备演讲、演示、面试或口语考试。"
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "您准备说什么？"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "沟通"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "通过提示、计时和结构反馈，准备演讲、演示、面试或口语考试。"
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "正在探索沟通主题，且希望获得实用指导而非通用答案的学习者。"
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "此模式专为口语练习而设计，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "根据提示大声练习"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示开始"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据你的目标调整练习环节"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "练习我的学校演讲"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "雅思口语模拟练习"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "帮我回答面试问题"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "备考规划助手"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "将教学大纲转化为学习计划"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "根据你的考试日期、教学大纲、优势和薄弱环节，制定切实可行的备考计划。"
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "你正在准备什么考试？"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "规划"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "将你的教学大纲、考试日期、时间和薄弱环节转化为实用的学习计划。"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "需要平衡复习、练习、自信心和现实生活规划的学生。"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "该规划器优先考虑薄弱环节，增加复习循环，并为错过学习的日子制定补救计划。"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "优先处理重点主题"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "规划复习进度"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "追踪风险领域"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "制定两周生物复习计划"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "制定 JEE 复习时间表"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "帮我准备期末考试"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "闪卡制作工具"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "制作智能记忆卡片"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "将笔记或主题转化为包含答案、陷阱和复习提示的清晰抽认卡。"
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "哪些内容需要制作成抽认卡？"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "练习"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "将笔记或主题转化为包含提示、答案、示例和常见陷阱的重点抽认卡。"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "备考学生、语言学习者以及任何使用提取练习的人。"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "卡片每次只问一个问题并包含陷阱，因此复习可以建立理解，而不仅仅是识别。"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "创建记忆卡片"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "准备好后揭示答案"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "更快地复习遗漏点"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "为有丝分裂制作抽认卡"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "将此笔记转化为问答"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "创建地理抽认卡"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "记忆宫殿"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "用生动的场景记住想法"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "将事实、列表、演讲或序列转化为令人难忘的心理场景。"
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "你需要记住什么？"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "练习"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "将事实、演讲、列表或序列转化为令人难忘的场景，使学习和考试时的回忆更容易。"
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "需要记忆有序想法、词汇、演讲、公式或需要更强心理钩子的事实的学习者。"
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "该模式设计了生动的地点、路径和提取线索，而不是让你重读笔记。"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "选择一条路线"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "放置生动的线索"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "练习回忆"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "记住行星"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "记忆演讲大纲"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "学习生物分类学"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "间隔复习"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "在遗忘前复习"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "规划并进行快速复习，以增强长期记忆。"
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "我们该复习什么？"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "练习"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "通过AI引导的间隔重复，规划快速复习，重温薄弱知识点，并增强长期记忆。"
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "阅读后容易遗忘，且需要为概念、术语或考试资料建立实用复习节奏的学习者。"
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "教练会将你的遗漏和犹豫转化为复习计划，而不是提供又一个被动的总结。"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "选择复习目标"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "安排回忆练习"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "修复遗漏知识点"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "复习昨天的化学内容"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "制定一个7天复习计划"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "再次测试我的词汇量"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "概念图构建器"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "以文本形式直观地连接想法"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "梳理想法之间的联系，从因果关系到分类、示例和矛盾点。"
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "我们应该构建什么概念图？"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "思维"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "梳理想法之间的联系，从因果关系到分类、示例和矛盾点。"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "正在探索思维课题，且希望获得实用指导而非通用答案框的学习者。"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "此模式专为概念图构建而优化，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "以文本形式直观地连接观点"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示开始"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据你的目标调整会话"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "绘制气候变化图"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "连接代数概念"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "构建民主概念图"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "误区医生"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "发现并纠正错误的思维模型"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "说出你的想法，你的伙伴会通过温和的测试来诊断隐藏的误区。"
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "有什么想法让你感到困惑或怀疑吗？"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "思维"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "说出你的想法，你的伙伴会通过温和的测试来诊断隐藏的误区。"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "探索思维主题的学习者，他们需要实际指导而非通用的答案框。"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "此模式专为误区医生量身定制，拥有专属的提示、示例和学习流程。"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "发现并纠正错误的思维模型"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示开始"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据你的目标调整会话"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "我认为较重的物体下落得更快"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "我不理解负数"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "为什么这个语法规则很奇怪？"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "费曼导师"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "简单地解释，直到彻底掌握"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "尝试简单地解释一个概念。你的导师会发现其中的漏洞，提出问题，并帮助你重构解释。"
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "你要向我解释什么？"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "思维"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "尝试用简单的方式解释一个概念。你的导师会找出其中的漏洞，提出问题，并帮助你重新构建解释。"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "正在探索思维主题，并希望获得实际指导而非通用答案框的学习者。"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "此模式专为费曼导师量身定制，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "简单解释，直到彻底掌握"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示词开始"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据你的目标调整课程"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "我来解释一下重力"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "测试我对通货膨胀的理解"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "帮我简化递归的概念"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "案例研究模拟器"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "通过现实决策进行学习"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "进入一个现实案例，做出决策，观察后果，并学习每个选择背后的原则。"
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "我们应该模拟什么样的案例？"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "沉浸式学习"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "进入一个现实案例，做出决策，观察后果，并学习每个选择背后的原则。"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "正在探索沉浸式主题，并希望获得实际指导而非通用答案框的学习者。"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "此模式专为案例研究模拟器量身定制，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "通过现实决策进行学习"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "从示例提示词开始"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "根据你的目标调整课程"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "商业战略案例"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "医学伦理案例"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "环境政策案例"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "角色扮演场景"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "练习应对现实生活中的棘手对话"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "练习谈判、冲突处理、客户支持、领导力或任何高风险对话。"
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "我们应该进行什么样的角色扮演场景？"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "沉浸式学习"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "练习谈判、冲突处理、客户支持、领导力或任何高风险对话。"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "正在探索沉浸式主题，并希望获得实用指导而非通用回答框的学习者。"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "此模式专为角色扮演场景而设计，拥有专属的提示词、示例和学习流程。"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "练习应对现实生活中的棘手对话"
+    }
+  ]
+}

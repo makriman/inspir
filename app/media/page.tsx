@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import {
   Award,
   Globe2,
@@ -24,6 +24,7 @@ import {
   mediaOfficialLinks,
   mediaStoryAngles,
 } from "@/lib/content/authority";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -36,7 +37,7 @@ import {
 const description =
   "Media notes, source links, citation facts, and official reference URLs for inspir, the free AI-powered learning platform.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "Media And Press",
   description,
   alternates: metadataAlternates("/media"),
@@ -67,6 +68,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/media");
+}
 
 const highlightIcons = [UsersRound, Globe2, Award, Newspaper] as const;
 

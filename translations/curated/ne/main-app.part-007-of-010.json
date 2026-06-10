@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Nepali",
+  "locale": "ne",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "समयसीमाको बारेमा वार्ता गर्नुहोस्"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "अशिष्ट ग्राहकलाई सम्हाल्नुहोस्"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "शिक्षकसँग मद्दत माग्नुहोस्"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "क्यारियर अन्वेषक"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "तपाईंलाई सुहाउने बाटोहरू पत्ता लगाउनुहोस्"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "रुचि, सीप, दैनिक जीवनका उदाहरणहरू र अर्को चरणहरू मार्फत क्यारियरहरू अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "हामीले कुन क्यारियर वा रुचिको अन्वेषण गर्नुपर्छ?"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "योजना"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "रुचि, सीप, दैनिक जीवनका उदाहरणहरू र अर्को चरणहरू मार्फत क्यारियरहरू अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "योजना विषयहरू खोज्ने शिक्षार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "यो मोड आफ्नै प्रम्प्ट, उदाहरण र सिकाइ प्रवाहको साथ क्यारियर अन्वेषकका लागि तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "तपाईंलाई सुहाउने बाटोहरू पत्ता लगाउनुहोस्"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "मलाई जीवविज्ञान र कला मन पर्छ"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "प्रोडक्ट म्यानेजरले के गर्छन्?"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "कानून र मनोविज्ञानको तुलना गर्नुहोस्"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "अन्तर्वार्ता कोच"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "बलिया उत्तरहरूको अभ्यास गर्नुहोस्"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "विद्यालय, इन्टर्नशिप, जागिर वा छात्रवृत्तिको अन्तर्वार्ताका लागि यथार्थपरक प्रश्न र प्रतिक्रियासहित तयारी गर्नुहोस्।"
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "तपाईं कुन अन्तर्वार्ताको तयारी गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "योजना"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "विद्यालय, इन्टर्नशिप, जागिर वा छात्रवृत्तिको अन्तर्वार्ताका लागि यथार्थपरक प्रश्न र प्रतिक्रियासहित तयारी गर्नुहोस्।"
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "योजनाका विषयहरू खोज्ने र सामान्य उत्तरको सट्टा व्यावहारिक मार्गदर्शन चाहने विद्यार्थीहरू।"
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "यो मोड अन्तर्वार्ता कोचका लागि आफ्नै प्रम्प्ट, उदाहरण र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "बलिया उत्तरहरूको अभ्यास गर्नुहोस्"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "कलेज अन्तर्वार्ताको नक्कली अभ्यास"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "इन्टर्नशिप प्रश्नहरूको अभ्यास गर्नुहोस्"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "आफ्नो बारेमा बताउनुहोस् भन्ने प्रश्नलाई सुधार्नुहोस्"
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "कोड ट्युटर"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "बनाउँदै प्रोग्रामिङ सिक्नुहोस्"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "कोड बुझ्नुहोस्, त्रुटिहरू डिबग गर्नुहोस्, अवधारणाहरू सिक्नुहोस् र साना परियोजनाहरू चरणबद्ध रूपमा बनाउनुहोस्।"
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "हामी कुन कोडिङ विषय वा बगमा काम गर्दैछौँ?"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "कोड बुझ्नुहोस्, त्रुटिहरू डिबग गर्नुहोस्, प्रोग्रामिङ अवधारणाहरू सिक्नुहोस् र साना परियोजनाहरू चरणबद्ध रूपमा बनाउनुहोस्।"
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "स्पष्टीकरण, डिबगिङमा मद्दत, वा परियोजना कोचिङ चाहिने शुरुआती र मध्यवर्ती प्रोग्रामरहरू।"
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "ट्युटरले तपाईंले कोडबाट के अपेक्षा गर्नुहुन्छ भनेर सोध्छ, त्यसपछि व्यवहार बुझाउन साना उदाहरणहरू र परीक्षणहरू प्रयोग गर्दछ।"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "बगको व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "अवधारणा बुझ्नुहोस्"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "सानो सुधार प्रयास गर्नुहोस्"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "JavaScript मा रिकर्सन (recursion) को व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "यो त्रुटि डिबग गर्न मद्दत गर्नुहोस्"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "मलाई Python लूपहरू सिकाउनुहोस्"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "प्रोजेक्ट कोच"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "विचारहरूलाई माइलस्टोनहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "विद्यालय, रचनात्मक, कोडिङ, वा व्यक्तिगत परियोजनालाई दायरा, माइलस्टोन, अवरोधहरू, र अर्को कार्यहरूसहित योजना बनाउनुहोस्।"
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "हामी के परियोजना बनाउँदैछौं?"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "योजना"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "विद्यालय, रचनात्मक, कोडिङ, वा व्यक्तिगत परियोजनालाई दायरा, माइलस्टोन, अवरोधहरू, र अर्को कार्यहरूसहित योजना बनाउनुहोस्।"
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "योजनाका विषयहरू खोज्ने र सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहने विद्यार्थीहरू।"
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "यो मोड प्रोजेक्ट कोचका लागि आफ्नै प्रम्प्टहरू, उदाहरणहरू, र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "विचारहरूलाई माइलस्टोनहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूसँग सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "विज्ञान मेला परियोजनाको योजना बनाउनुहोस्"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "पोर्टफोलियो वेबसाइट बनाउनुहोस्"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "इतिहास प्रस्तुतीकरण व्यवस्थित गर्नुहोस्"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "अनुसन्धान सहायक"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "प्रश्नहरू तयार गर्नुहोस् र स्रोतहरूलाई संश्लेषण गर्नुहोस्"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "कुनै फराकिलो विषयलाई अनुसन्धान प्रश्नहरू, खोज शब्दहरू, रूपरेखा र स्रोत नोटहरूमा बदल्नुहोस्।"
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "तपाईं के को बारेमा अनुसन्धान गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "सोच-विचार"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "कुनै फराकिलो विषयलाई अनुसन्धान प्रश्नहरू, खोज शब्दहरू, रूपरेखा र स्रोत नोटहरूमा बदल्नुहोस्।"
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "सोच-विचारका विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "यो मोड आफ्नै प्रम्प्टहरू, उदाहरणहरू र सिकाइ प्रवाहका साथ अनुसन्धान सहायकका लागि तयार पारिएको हो।"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "प्रश्नहरू तयार पार्नुहोस् र स्रोतहरूलाई संश्लेषण गर्नुहोस्"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "नवीकरणीय ऊर्जाको अनुसन्धान गर्नुहोस्"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "AI नैतिकताका विभिन्न पक्षहरू पत्ता लगाउनुहोस्"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "सहरीकरण सम्बन्धी कार्यपत्रको योजना बनाउनुहोस्"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "स्रोत समालोचक"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "विश्वसनीयता र पूर्वाग्रहको मूल्याङ्कन गर्नुहोस्"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "लेख, दाबी, भिडियो वा पोस्टहरूलाई प्रमाण, पूर्वाग्रह, विश्वसनीयता र छुटेको सन्दर्भका लागि मूल्याङ्कन गर्नुहोस्।"
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "स्रोत टाँस्नुहोस् वा वर्णन गर्नुहोस्"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "सोच-विचार"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "लेख, दाबी, भिडियो वा पोस्टहरूलाई प्रमाण, पूर्वाग्रह, विश्वसनीयता र छुटेको सन्दर्भका लागि मूल्याङ्कन गर्नुहोस्।"
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "सोच-विचारका विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "यो मोड आफ्नै प्रम्प्टहरू, उदाहरणहरू र सिकाइ प्रवाहका साथ स्रोत समालोचकका लागि तयार पारिएको हो।"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "विश्वसनीयता र पूर्वाग्रहको मूल्याङ्कन गर्नुहोस्"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "के यो लेख विश्वसनीय छ?"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "यस दाबीको प्रमाण जाँच गर्नुहोस्"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "यस अनुच्छेदमा पूर्वाग्रह पत्ता लगाउनुहोस्"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "डेटा इन्टरप्रेटर"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "संख्या र चार्टहरू बुझ्नुहोस्"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "डेटा, चार्टको विवरण, वा नतिजाहरू टाँस्नुहोस् र तिनीहरूको अर्थ के हो, के होइन, र त्यसपछि के सोध्ने भन्ने कुरा सिक्नुहोस्।"
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "डेटा टाँस्नुहोस् वा चार्टको वर्णन गर्नुहोस्"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "डेटा, चार्टको विवरण, वा नतिजाहरू टाँस्नुहोस् र तिनीहरूको अर्थ के हो, के होइन, र त्यसपछि के सोध्ने भन्ने कुरा सिक्नुहोस्।"
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "STEM विषयहरू अन्वेषण गर्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "यो मोड आफ्नै प्रम्प्टहरू, उदाहरणहरू, र सिकाइ प्रवाहको साथ डेटा इन्टरप्रेटरका लागि तयार गरिएको हो।"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "संख्या र चार्टहरू बुझ्नुहोस्"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूसँग सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "आफ्नो लक्ष्य अनुसार सत्रलाई अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "यो तालिका व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "यो सर्वेक्षणले के देखाउँछ?"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "ग्राफ व्याख्या गर्न मद्दत गर्नुहोस्"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "अध्ययन योजना निर्माता"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "वास्तविक जीवनमा काम लाग्ने तालिका बनाउनुहोस्"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "आफ्नो समय, ऊर्जा, लक्ष्य र कमजोर पक्षहरूलाई ध्यानमा राखेर अध्ययन योजना बनाउनुहोस्।"
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "तपाईंले के अध्ययन गर्न आवश्यक छ?"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "योजना"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "आफ्नो समय, ऊर्जा, लक्ष्य, कमजोर पक्षहरू, पुनरावलोकन चक्र, र अभ्यास तालिकाको वरिपरि एक यथार्थपरक अध्ययन योजना बनाउनुहोस्।"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "विद्यार्थीहरू र स्व-अध्ययन गर्नेहरू जसलाई योजनालाई असम्भव चेकलिस्टमा नबदली संरचनाको आवश्यकता छ।"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "यो निर्माताले महत्वाकांक्षालाई पुनरावलोकन, अभ्यास, आरामका दिनहरू, र अर्को सबैभन्दा सानो उपयोगी कार्यसँग सन्तुलनमा राख्छ।"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "लक्ष्य निर्धारण गर्नुहोस्"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "अभ्यासको तालिका बनाउनुहोस्"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "पुनरावलोकन चक्रहरू निर्माण गर्नुहोस्"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "गणितका लागि मेरो हप्ताको योजना बनाउनुहोस्"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "दैनिक अंग्रेजी दिनचर्या सिर्जना गर्नुहोस्"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "विद्यालय र परीक्षाको तयारीबीच सन्तुलन मिलाउनुहोस्"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "बानी कोच"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "सिकाइलाई निरन्तर बनाउनुहोस्"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "ट्रिगर, पुरस्कार र रिकभरी योजनाहरूको साथ सिकाइका साना र दोहोर्याउन सकिने बानीहरू विकास गर्नुहोस्।"
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "तपाईं कस्तो सिकाइ बानी बसाल्न चाहनुहुन्छ?"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "योजना"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "ट्रिगर, पुरस्कार र रिकभरी योजनाहरूको साथ सिकाइका साना र दोहोर्याउन सकिने बानीहरू विकास गर्नुहोस्।"
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "योजनाका विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तरको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "यो मोड आफ्नै प्रम्प्ट, उदाहरण र सिकाइ प्रवाहको साथ बानी कोचका लागि तयार गरिएको हो।"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "सिकाइलाई निरन्तर बनाउनुहोस्"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "दैनिक २० मिनेट पढ्नुहोस्"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "गणितमा ढिलासुस्ती गर्न छोड्नुहोस्"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "हरेक दिन कोडिङ अभ्यास गर्नुहोस्"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "प्रेरणा कोच"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "सिकाइ गाह्रो लाग्दा फेरि सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "भावनात्मक रूपमा अड्किएको अवस्थाबाट बाहिर निस्कनुहोस्, अर्को सानो कदम पत्ता लगाउनुहोस् र दोषी महसुस नगरी गति बढाउनुहोस्।"
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "अहिले के कुराले सिकाइलाई गाह्रो बनाइरहेको छ?"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "योजना"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "भावनात्मक रूपमा अड्किएको अवस्थाबाट बाहिर निस्कनुहोस्, अर्को सानो कदम पत्ता लगाउनुहोस्, र अपराधबोध बिना गति पुनः प्राप्त गर्नुहोस्।"
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "योजनाका विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "यो मोड प्रेरणा कोचका लागि आफ्नै प्रम्प्टहरू, उदाहरणहरू, र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "सिकाइ कठिन लाग्दा पुनः सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूसँग सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "म पछि परेको महसुस गर्दैछु"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "म काम टार्दै छु"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "मैले परीक्षामा असफल भएँ र मलाई नराम्रो लागिरहेको छ"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "क्रिएटिभ ब्रेनस्टर्मर"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "मौलिक विचारहरू उत्पन्न गर्नुहोस् र आकार दिनुहोस्"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "परियोजनाहरू, कथाहरू, डिजाइनहरू, शीर्षकहरू, प्रयोगहरू, र अप्रत्याशित कोणहरूमा विचार मन्थन गर्नुहोस्।"
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "हामी के को बारेमा विचार मन्थन गर्दैछौं?"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "सिर्जनात्मकता"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "परियोजनाहरू, कथाहरू, डिजाइनहरू, शीर्षकहरू, प्रयोगहरू, र अप्रत्याशित कोणहरूमा विचार मन्थन गर्नुहोस्।"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "सिर्जनात्मकताका विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "यो मोड क्रिएटिभ ब्रेनस्टर्मरका लागि आफ्नै प्रम्प्टहरू, उदाहरणहरू, र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "मौलिक विचारहरू उत्पन्न गर्नुहोस् र आकार दिनुहोस्"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूसँग सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "विज्ञान परियोजनाका लागि विचारहरू"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "मित्रताको बारेमा कथा अवधारणाहरू"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "सिर्जनात्मक प्रस्तुति सुरुवातहरू"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "कथा ट्युटर"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "कथाका माध्यमबाट सिक्नुहोस्"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "अवधारणाहरूलाई कथा, पात्र, द्वन्द्व र स्मरणीय दृश्यहरूमा बदल्नुहोस्।"
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "केलाई कथा बनाउने?"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "सिर्जनात्मकता"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "अवधारणाहरूलाई कथा, पात्र, द्वन्द्व र स्मरणीय दृश्यहरूमा बदल्नुहोस् जसले कठिन विचारहरूलाई सम्झन सजिलो बनाउँछ।"
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "कथा, सादृश्य, पात्र र जीवन्त उदाहरणहरू मार्फत विचारहरू राम्रोसँग सम्झने विद्यार्थीहरू।"
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "यस ट्युटरले आधारभूत अवधारणालाई स्पष्ट राख्दै अमूर्त सामग्रीलाई कथाको संरचनामा अनुवाद गर्छ।"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "अवधारणा छान्नुहोस्"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "कथा बनाउनुहोस्"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "पाठ व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "भिन्न (fractions) लाई कथाको रूपमा सिकाउनुहोस्"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "पारिस्थितिक प्रणाली (ecosystems) को बारेमा कथा बनाउनुहोस्"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "पात्रहरू प्रयोग गरेर लोकतन्त्रको व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "दर्शनशास्त्र प्रयोगशाला"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "ठूला प्रश्नहरूका बारेमा गम्भीरतापूर्वक सोच्नुहोस्"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "पहिचान, ज्ञान, निष्पक्षता, स्वतन्त्रता, खुशी र अन्य गहिरो प्रश्नहरूलाई सावधानीपूर्वक तर्क गरेर अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "हामी कुन ठूलो प्रश्नको अन्वेषण गर्दैछौं?"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "मानविकी"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "पहिचान, ज्ञान, निष्पक्षता, स्वतन्त्रता, खुशी र अन्य गहिरो प्रश्नहरूलाई सावधानीपूर्वक तर्क गरेर अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "मानविकी विषयहरू अन्वेषण गर्ने विद्यार्थीहरू जसलाई सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहिन्छ।"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "यो मोड दर्शनशास्त्र प्रयोगशालाका लागि आफ्नै प्रम्प्ट, उदाहरण र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "ठूला प्रश्नहरूका बारेमा गम्भीरतापूर्वक सोच्नुहोस्"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "कुनै कुरालाई के ले निष्पक्ष बनाउँछ?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "के हामीसँग स्वतन्त्र इच्छा छ?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "ज्ञान भनेको के हो?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "नैतिक दुविधा"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "नैतिक तर्कको अभ्यास गर्नुहोस्"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "सरोकारवालाहरू, परिणामहरू, कर्तव्यहरू, अधिकारहरू र व्यापार-अफहरूलाई तौलेर दुविधाहरू समाधान गर्नुहोस्।"
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "हामीले कुन दुविधाको जाँच गर्नुपर्छ?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "मानविकी"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "सरोकारवालाहरू, परिणामहरू, कर्तव्यहरू, अधिकारहरू र व्यापार-अफहरूलाई तौलेर दुविधाहरू समाधान गर्नुहोस्।"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "मानविकी विषयहरू अन्वेषण गर्ने शिक्षार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "यो मोड नैतिक दुविधाहरूका लागि आफ्नै प्रम्प्टहरू, उदाहरणहरू र सिकाइ प्रवाहको साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "नैतिक तर्कको अभ्यास गर्नुहोस्"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूसँग सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "कक्षाकोठामा एआई (AI)"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "जनावरहरूमा परीक्षण"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "के कहिलेकाहीँ झूट बोल्नु ठीक हुन्छ?"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "भूगोल अन्वेषक"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "ठाउँहरू, नक्साहरू र मानिसहरूलाई बुझ्नुहोस्"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "देशहरू, सहरहरू, नदीहरू, जलवायु, बसाइँसराइ, स्रोतहरू र भूगोलले जीवनलाई कसरी आकार दिन्छ भन्ने बारे अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "हामीले कहाँ अन्वेषण गर्नुपर्छ?"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "मानविकी"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "देशहरू, सहरहरू, नदीहरू, जलवायु, बसाइँसराइ, स्रोतहरू र भूगोलले जीवनलाई कसरी आकार दिन्छ भन्ने बारे अन्वेषण गर्नुहोस्।"
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "मानविकी विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "यो मोड भूगोल अन्वेषकका लागि यसका आफ्नै प्रम्प्टहरू, उदाहरणहरू र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "ठाउँहरू, नक्साहरू र मानिसहरूलाई बुझ्नुहोस्"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "सहरहरू नदीको छेउमा किन हुन्छन्?"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "हिमालयको अन्वेषण गर्नुहोस्"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "भारत र जापानको तुलना गर्नुहोस्"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "अर्थशास्त्र सिम्युलेटर"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "छनौटहरू, प्रोत्साहनहरू र ट्रेडअफहरू सिक्नुहोस्"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "सरल सिमुलेशनहरू मार्फत बजार, अभाव, प्रोत्साहन, नीति र व्यक्तिगत वित्तसँग खेल्नुहोस्।"
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "हामीले कुन आर्थिक विचारको सिमुलेशन गर्नुपर्छ?"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "मानविकी"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "सरल सिमुलेशनहरू मार्फत बजार, अभाव, प्रोत्साहन, नीति र व्यक्तिगत वित्तसँग खेल्नुहोस्।"
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "मानविकी विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "यो मोड अर्थशास्त्र सिम्युलेटरका लागि यसका आफ्नै प्रम्प्टहरू, उदाहरणहरू र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "छनौटहरू, प्रोत्साहनहरू र ट्रेडअफहरू सिक्नुहोस्"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "माग र आपूर्ति सिमुलेट गर्नुहोस्"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "मुद्रास्फीति व्याख्या गर्नुहोस्"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "कर परिवर्तन भएमा के हुन्छ?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "इतिहासको कारण र प्रभाव"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "घटनाहरू किन भए पत्ता लगाउनुहोस्"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ऐतिहासिक घटनाहरूलाई कारण, उत्प्रेरक, परिणाम र वैकल्पिक सम्भावनाहरूका माध्यमबाट केलाउनुहोस्।"
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "हामीले कुन ऐतिहासिक घटनाको खोजी गर्नुपर्छ?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "मानविकी"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ऐतिहासिक घटनाहरूलाई कारण, उत्प्रेरक, परिणाम र वैकल्पिक सम्भावनाहरूका माध्यमबाट केलाउनुहोस्।"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "मानविकी विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "यो मोड इतिहासको कारण र प्रभावका लागि आफ्नै प्रम्प्ट, उदाहरण र सिकाइ प्रवाहका साथ तयार गरिएको छ।"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "घटनाहरू किन भए भन्ने कुरा पत्ता लगाउनुहोस्"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रम्प्टहरूबाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्रलाई आफ्नो लक्ष्य अनुसार अनुकूलित गर्नुहोस्"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "प्रथम विश्वयुद्धका कारणहरू"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "रोमन साम्राज्य किन कमजोर भयो?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "छापाखानाका प्रभावहरू"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "नागरिक शास्त्र प्रशिक्षक"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "अधिकार, सरकार र समाज बुझ्नुहोस्"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "संविधान, लोकतन्त्र, निर्वाचन, अदालत, अधिकार, कर्तव्य र सार्वजनिक नीतिबारे सिक्नुहोस्।"
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "हामीले नागरिक शास्त्रको कुन विषय अध्ययन गर्नुपर्छ?"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "मानविकी"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "संविधान, लोकतन्त्र, निर्वाचन, अदालत, अधिकार, कर्तव्य र सार्वजनिक नीतिबारे सिक्नुहोस्।"
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "मानविकी विषयहरू खोज्ने विद्यार्थीहरू जसले सामान्य उत्तर बाकसको सट्टा व्यावहारिक मार्गदर्शन चाहन्छन्।"
+    }
+  ]
+}

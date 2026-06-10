@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import {
   BookOpenCheck,
   BrainCircuit,
@@ -15,6 +15,7 @@ import {
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
 import { authorityReferenceLinks, missionFaqs, missionPrinciples } from "@/lib/content/authority";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -24,7 +25,7 @@ import {
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "Mission",
   description:
     "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
@@ -58,6 +59,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/mission");
+}
 
 const principles = [
   {

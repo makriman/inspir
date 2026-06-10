@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Telugu",
+  "locale": "te",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం పౌరశాస్త్ర సహాయకుడు కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "హక్కులు, ప్రభుత్వం, మరియు సమాజాన్ని అవగాహన చేసుకోండి"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను అనుకూలీకరించండి"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "బిల్లు చట్టం ఎలా అవుతుంది?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "ప్రాథమిక హక్కులను వివరించండి"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "అన్యాయ సంబంధ సమస్యలను పరిష్కరించడానికి కోర్టు ఏం చేస్తుంది?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "కళాభిమాన సమాచారం"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "ఇంకా దగ్గరగా చూస్తూ మరిన్ని వివరాలు గమనించండి"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "కళాకృతులు, శైలులు, కళాకారులు, దృశ్య ఎంపికలు మరియు చిత్రాన్ని శక్తివంతంగా చేసే అంశాలను అన్వేషించండి."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "ఏ కళాఖండం, కళాకారుడు లేదా శైలి?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "సృజనాత్మకత"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "చిత్రకళల్ని, శైలులను, చిత్రకారులను, దృశ్య ఎంపికలను, అలాగే ఒక చిత్రాన్ని శక్తివంతంగా చేసే అంశాలన్నీ అన్వేషించండి."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "సృజనాత్మకత విషయాలను అన్వేషిస్తున్న విద్యార్థులకు సాధారణ సమాధాన బాక్స్ కాకుండా ప్రాయోగిక మార్గనిర్దేశం కావాలనుకునేవారికి."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం కళా అవగాహన మార్గదర్శిని కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "ఆసక్తిగా చూసి మరింత గమనించండి"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి సెషన్‌ను అనుకూలించండి"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "ఇంప్రెషనిజం అంటే ఏమిటని వివరించండి"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "చిత్రాన్ని ఎలా చూడాలి?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "రెనెసాన్స్ మరియు ఆధునిక కళలను పోల్చండి"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "సంగీత సిద్ధాంత కోచ్"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "శబ్దం, లయ, మరియు హార్మోనీని అర్థం చేసుకోండి"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "నోట్లు,ొకకోడ్‌లు, స్కేల్స్, రిధం, చెవి శిక్షణ ఆలోచనలు మరియు పాటలు ఎలా నిర్మించబడతాయో నేర్చుకోండి."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "మనం ఏ సంగీత భావనపై పని చేయాలి?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "సృజనాత్మకత"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "నోట్లను, చోర్డ్లను, స్కేల్స్, ریధం, చెవుల శిక్షణ ఆలోచనలను, మరియు పాటలు ఎలా రూపొందించబడతాయో తెలుసుకోండి."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "సృజనాత్మకత అంశాలను అధ్యయనం చేసే వారు సాధారణ జవాబు బాక్స్ కాకుండా ప్రాయోగిక మార్గదర్శకత్వం కోరుతూ."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం సంగీత సిద్ధాంత సహాయకుడు కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "శబ్దం, తాళం, మరియు హార్మోనీని అర్థం చేసుకోండి"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ని అంగీకరించండి"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "ప్రధాన మరియు క్షుణ్ణతను వివరించండి"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "కోర్డ్లు ఎలా పనిచేస్తాయి?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "రిధమ్ ప్రాథమికాలు బోధించండి"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "మనోభావ ప్రతిబింబం"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "మీరు ఎలా నేర్చుకుంటున్నారో ఆలోచించండి"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "మీకు నేర్చుకోడంలో ఏమి సహాయపడుతుందో, ఏమి అడ్డంకి అవుతుందో గమనించండి, మరియు మీరు ఎలా బలమైన అభ్యాసి అవ్వవచ్చు అర్థం చేసుకోండి."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "మనం ఏ అభ్యాస గడియారాన్ని పరిశీలించాలి?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "ప్రణాళిక"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "మీకు ఏమి సహాయపడుతుందో, ఏమి బాధకమో, మరింత బలమైన నేర్చుకునేవారి ఎలా అవ్వాలో గమనించండి."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "ప్రణాళికా విషయాలను అన్వేషించే విద్యార్థులు, సాధారణ జవాబు పెట్టె కంటే ఉపయోగకరమైన మార్గదర్శకత్వం కోరుకునే వారు."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం మనస్తత్వ ప్రతిబింబం కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "మీరు ఎలా నేర్చుకుంటున్నారో ఆలోచించండి"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "నేను చదువుకోవడాన్ని ఎందుకు తప్పించుకున్నాను?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "చేపటి పరీక్ష తర్వాత ఆలోచించండి"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "ఏ అధ్యయన వ్యూహం నాకు తగుతుంది?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "లెర్నింగ్ గేమ్ మాస్టర్"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "అధ్యయనాన్ని ఓ సవాలుగా మార్చండి"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "అభ్యాసాన్ని క్వెస్టులు, స్థాయిలు, పాయింట్లు, సవాళ్లు మరియు బాస్ రౌండ్లతో గేమ్ లాంటి అనుభూతిగా మార్చండి."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "ఏది లెర్నింగ్ గేమ్‌గా మారాలి?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "ప్రాక్టీస్"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "క్వెస్ట్‌లు, స్థాయిలు, పాయింట్లు, సవాళ్లు, బాస్ రౌండ్లతో నేర్చుకోవడం ఆడకం వలే అనిపించించండి."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధాన పెట్టెలోకి కాకుండా ఉపయోగకరమైన మార్గదర్శకత్వం కోరుకునే అభ్యాస విషయాలను పరిశీలిస్తున్న విద్యార్థులు."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం అభ్యాస ఆట నిర్వాహకుడు కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "చదువును సవాలుగా మార్చండి"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను అనుకూలీకరించండి"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "జీవశాస్త్రాన్ని ఒక యాత్రగా మారుస్తుంది"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "పదసంపదను స్థాయిలాగా మార్చండి"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "గణితం బాస్ పోరాటం సృష్టించండి"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "వివా అభ్యాసం"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "మెాతమాట ప్రశ్నలకు సిద్ధం అవ్వండి"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "శాంతిగా అభిప్రాయం పొందుతూ వివా, మౌఖిక పరీక్షలు, ప్రాజెక్ట్ రక్షణలు, వేగవంతమైన అనుచర ప్రశ్నలను సాధన చేయండి."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "మీరు ఏ వైవా లేదా ఆరోపర శిక్షణ కోసం సిద్ధమవుతున్నారా?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "అభ్యాసం"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "శాంతమైన ప్రశ్నోత్తరాలతో పర్వాయి, ముగ్గురు పరీక్షలు, ప్రాజెక్ట్ రక్షణలు, మరియు వేగవంతమైన ఫాలో అప్ ప్రశ్నలు అభ్యసించండి."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ జవాబు బాక్స్ కాకుండా ప్రాయోగిక మార్గదర్శకత్వం కోరుకునేవారు అభ్యాస విషయాలను అన్వేషిస్తున్న విద్యార్థులు."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం viva practice కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "మౌఖిక ప్రశ్నోత్తరాలకు తయారు అవ్వండి"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "నా సైన్స్ ప్రాజెక్ట్ వైవా అభ్యాసం"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "నాకు థీసిస్ రక్షణ ప్రశ్నలు అడుగు"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "నకಲಿ ప్రాక్టికల్ పరీక్షా ప్రశ్నలు"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "స్టడీ టైమర్"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "అలర్ట్‌లతో కూడిన నిరంతర పోమోడోరో టైమర్"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "మీరు చాట్‌లు, ట్యాబ్‌లు మరియు మినీ యాప్‌ల మధ్య మారినప్పుడు కూడా సమయాన్ని లెక్కించే ఫోకస్ మరియు బ్రేక్ సెషన్‌లను రన్ చేయండి. సెషన్ ముగిసినప్పుడు ఇది బ్యాక్‌గ్రౌండ్ నుండి రింగ్ అవుతుంది."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "ఈ ఫోకస్ సెషన్ దేని గురించి ఉండాలి?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "ఫోకస్ & ఉత్పాదకత"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "మీరు చాట్‌లు, ట్యాబ్‌లు మరియు మినీ యాప్‌ల మధ్య మారినప్పుడు కూడా సమయాన్ని లెక్కించే ఫోకస్ మరియు బ్రేక్ సెషన్‌లను రన్ చేయండి. సెషన్ ముగిసినప్పుడు ఇది బ్యాక్‌గ్రౌండ్ నుండి రింగ్ అవుతుంది."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఫోకస్ & ఉత్పాదకత అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం అధ్యయన టైమర్ కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "అలర్ట్‌లతో కూడిన నిరంతర పోమోడోరో టైమర్"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "25 నిమిషాల బయాలజీ సెషన్‌ను ప్రారంభించండి"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "50/10 డీప్ వర్క్ రిథమ్‌ను సెట్ చేయండి"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "వ్యాస రచనపై దృష్టి పెట్టండి"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "ఫోకస్ కోసం సంగీతం"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "నిరంతరం ప్లే అయ్యే బ్యాక్‌గ్రౌండ్ ఫోకస్ ఆడియో"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "చదవడం, రాయడం, సమస్యలను పరిష్కరించడం లేదా డీప్ వర్క్ కోసం రూపొందించిన ఫోకస్ ఆడియోను ఎంచుకోండి. మీరు ఇతర చాట్‌లకు మారినప్పుడు కూడా ఇది ప్లే అవుతూనే ఉంటుంది."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "ఈరోజు మీకు ఎలాంటి ఫోకస్ కావాలి?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "ఫోకస్ & ఉత్పాదకత"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "చదవడం, రాయడం, సమస్యలను పరిష్కరించడం లేదా డీప్ వర్క్ కోసం రూపొందించిన ఫోకస్ ఆడియోను ఎంచుకోండి. మీరు ఇతర చాట్‌లకు మారినప్పుడు కూడా ఇది ప్లే అవుతూనే ఉంటుంది."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఫోకస్ & ఉత్పాదకత అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం ఏకాగ్రత కోసం సంగీతం కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "నిరంతరం ప్లే అయ్యే బ్యాక్‌గ్రౌండ్ ఫోకస్ ఆడియో"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "ప్రశాంతమైన రీడింగ్ ఫోకస్ సంగీతాన్ని ప్లే చేయండి"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "డీప్ వర్క్ ఆడియోను సెటప్ చేయండి"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "రివిజన్ కోసం వర్షపు శబ్దాలను ఉపయోగించండి"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "డ్రా/స్కెచ్ బోర్డ్"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "డయాగ్రామ్‌లు మరియు రఫ్ విజువల్స్ ద్వారా ఆలోచించండి"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "నేర్చుకునే పద్ధతిగా స్కెచింగ్‌ను ఉపయోగించండి: డయాగ్రామ్‌లను ప్లాన్ చేయండి, రఫ్ మ్యాప్‌లను లేబుల్ చేయండి, ప్రక్రియలను వివరించండి లేదా అస్పష్టమైన ఆలోచనను స్పష్టమైన దృశ్యంగా మార్చండి."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "మనం దేనిని స్కెచ్ చేయాలి లేదా డయాగ్రామ్ చేయాలి?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "విజువల్ లెర్నింగ్"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "నేర్చుకునే పద్ధతిగా స్కెచింగ్‌ను ఉపయోగించండి: డయాగ్రామ్‌లను ప్లాన్ చేయండి, రఫ్ మ్యాప్‌లను లేబుల్ చేయండి, ప్రక్రియలను వివరించండి లేదా అస్పష్టమైన ఆలోచనను స్పష్టమైన దృశ్యంగా మార్చండి."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే విజువల్ లెర్నింగ్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం గీయడం/స్కెచ్ బోర్డు కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "డయాగ్రామ్‌లు మరియు రఫ్ విజువల్స్ ద్వారా ఆలోచించండి"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "కణ డయాగ్రామ్‌ను స్కెచ్ చేయండి"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "సప్లై-డిమాండ్ గ్రాఫ్‌ను గీయండి"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "మొదటి ప్రపంచ యుద్ధానికి గల కారణాలను మ్యాప్ చేయండి"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "ప్రాక్టీస్ టెస్ట్ బిల్డర్"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "మీ మెటీరియల్ నుండి పూర్తి పరీక్షను రూపొందించండి"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "ఒక అంశం, సిలబస్ లేదా నోట్స్‌ను సెక్షన్‌లు, టైమింగ్, మార్కింగ్ గైడెన్స్ మరియు రివ్యూ స్టెప్స్‌తో కూడిన వాస్తవిక ప్రాక్టీస్ టెస్ట్‌గా మార్చండి."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "ప్రాక్టీస్ టెస్ట్ దేనిని కవర్ చేయాలి?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "యాక్టివ్ లెర్నింగ్"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "ఒక అంశం, సిలబస్ లేదా నోట్స్‌ను సెక్షన్‌లు, టైమింగ్, మార్కింగ్ గైడెన్స్ మరియు రివ్యూ స్టెప్స్‌తో కూడిన వాస్తవిక ప్రాక్టీస్ టెస్ట్‌గా మార్చండి."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే యాక్టివ్ లెర్నింగ్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం practice test builder కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "మీ మెటీరియల్ నుండి పూర్తి పరీక్షను రూపొందించండి"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "బయాలజీ యూనిట్ టెస్ట్‌ను రూపొందించండి"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "మిశ్రమ గణిత ప్రాక్టీస్ టెస్ట్‌ను తయారు చేయండి"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "పరీక్షా శైలిలో హిస్టరీ పేపర్‌ను సృష్టించండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "ఇమేజ్ అనాలిసిస్ కోచ్"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "స్క్రీన్‌షాట్‌లు, రేఖాచిత్రాలు మరియు హోంవర్క్ చిత్రాల ద్వారా విశ్లేషించండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "చిత్రం నుండి వివరాలను వివరించండి లేదా పేస్ట్ చేయండి మరియు రేఖాచిత్రాలు, చార్ట్‌లు, సమస్యలు, చేతితో రాసిన నోట్స్ లేదా దృశ్య ఆధారాలను చదవడంలో సహాయం పొందండి."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "చిత్రాన్ని వివరించండి లేదా కనిపించే వాటిని పేస్ట్ చేయండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "AI సహాయం"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "చిత్రం నుండి వివరాలను వివరించండి లేదా పేస్ట్ చేయండి మరియు రేఖాచిత్రాలు, చార్ట్‌లు, సమస్యలు, చేతితో రాసిన నోట్స్ లేదా దృశ్య ఆధారాలను చదవడంలో సహాయం పొందండి."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే AI సహాయక అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం image analysis coach కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "స్క్రీన్‌షాట్‌లు, రేఖాచిత్రాలు మరియు హోంవర్క్ చిత్రాల ద్వారా విశ్లేషించండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "ఈ రేఖాచిత్రాన్ని చదవడంలో సహాయపడండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "నా పాఠ్యపుస్తకం నుండి చార్ట్‌ను విశ్లేషించండి"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "ఈ స్క్రీన్‌షాట్ ఏమి చూపుతుందో వివరించండి"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "కార్నెల్ నోట్స్"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "నోట్స్‌ను క్యూలు, వివరాలు మరియు సారాంశంగా రూపొందించండి"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "ఉపన్యాసాలు, పఠనాలు లేదా రఫ్ నోట్స్‌ను క్యూ ప్రశ్నలు, ప్రధాన నోట్స్, సారాంశం మరియు రివ్యూ సూచన‌లతో కూడిన కార్నెల్ పద్ధతిలోకి మార్చండి."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "నోట్స్‌ను పేస్ట్ చేయండి లేదా పాఠం పేరును నమోదు చేయండి"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "ఆర్గనైజేషన్"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "ఉపన్యాసాలు, పఠనాలు లేదా రఫ్ నోట్స్‌ను క్యూ ప్రశ్నలు, ప్రధాన నోట్స్, సారాంశం మరియు రివ్యూ సూచన‌లతో కూడిన కార్నెల్ పద్ధతిలోకి మార్చండి."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఆర్గనైజేషన్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం cornell notes కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "నోట్స్‌ను క్యూలు, వివరాలు మరియు సారాంశంగా క్రమబద్ధీకరించండి"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "ఈ ఉపన్యాసాన్ని కార్నెల్ నోట్స్‌గా మార్చండి"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "చాప్టర్ 3 కోసం క్యూ ప్రశ్నలను తయారు చేయండి"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "నా రఫ్ నోట్స్‌ను సంగ్రహించండి"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "సైటేషన్ జనరేటర్"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "సాధారణ ఫార్మాట్లలో రిఫరెన్స్‌లను రూపొందించండి"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "మూల వివరాల నుండి APA, MLA, చికాగో, హార్వర్డ్ లేదా సాధారణ బిబ్లియోగ్రఫీ ఎంట్రీలను సృష్టించండి మరియు తప్పిపోయిన ఫీల్డ్‌ల కోసం తనిఖీ చేయండి."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "మూల వివరాలను లేదా URL సమాచారాన్ని పేస్ట్ చేయండి"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "AI సహాయం"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "మూల వివరాల నుండి APA, MLA, చికాగో, హార్వర్డ్ లేదా సాధారణ బిబ్లియోగ్రఫీ ఎంట్రీలను సృష్టించండి మరియు తప్పిపోయిన ఫీల్డ్‌ల కోసం తనిఖీ చేయండి."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే AI సహాయక అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం citation generator కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "సాధారణ ఫార్మాట్లలో రిఫరెన్స్‌లను రూపొందించండి"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "ఒక APA సైటేషన్‌ను తయారు చేయండి"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "ఈ వెబ్‌సైట్‌ను MLA ఫార్మాట్‌లో రూపొందించు"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "నా సైటేషన్‌లో ఏ ఫీల్డ్‌లు లేవో తనిఖీ చేయి"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "టెక్స్ట్ సమ్మరైజర్"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "చదివిన అంశాలను ఉపయోగకరమైన స్టడీ నోట్స్‌గా కుదించు"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "పెద్ద టెక్స్ట్‌ను ముఖ్యమైన అంశాలు, నిర్మాణం, నిర్వచనాలు, ఉదాహరణలు మరియు రీకాల్ ప్రశ్నలుగా సంగ్రహించు."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "సంగ్రహించాల్సిన టెక్స్ట్‌ను ఇక్కడ పేస్ట్ చేయి"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "AI సహాయం"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "పెద్ద టెక్స్ట్‌ను ముఖ్యమైన అంశాలు, నిర్మాణం, నిర్వచనాలు, ఉదాహరణలు మరియు రీకాల్ ప్రశ్నలుగా సంగ్రహించు."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే AI సహాయం కోసం వెతికే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం text summarizer కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "చదివిన అంశాలను ఉపయోగకరమైన స్టడీ నోట్స్‌గా కుదించు"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకో"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "ఈ వ్యాసాన్ని సంగ్రహించు"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "నా నోట్స్ నుండి ముఖ్యమైన పాయింట్లను సేకరించు"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "ఒక అధ్యాయం యొక్క సారాంశాన్ని తయారు చేయి"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "స్టడీ మార్గదర్శి జనరేటర్"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "మెటీరియల్‌ను రివిజన్ మార్గదర్శి‌గా మార్చు"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "లక్ష్యాలు, కాన్సెప్ట్ సారాంశాలు, ఉదాహరణలు, సాధారణ తప్పులు, ప్రాక్టీస్ ప్రశ్నలు మరియు రివ్యూ ప్లాన్‌తో స్టడీ మార్గదర్శి‌ను రూపొందించు."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "ఏ మెటీరియల్‌ను స్టడీ మార్గదర్శి‌గా మార్చాలి?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "AI సహాయం"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "లక్ష్యాలు, కాన్సెప్ట్ సారాంశాలు, ఉదాహరణలు, సాధారణ తప్పులు, ప్రాక్టీస్ ప్రశ్నలు మరియు రివ్యూ ప్లాన్‌తో స్టడీ మార్గదర్శి‌ను రూపొందించు."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే AI సహాయం కోసం వెతికే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం study మార్గదర్శి generator కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "మెటీరియల్‌ను రివిజన్ మార్గదర్శి‌గా మార్చండి"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "కిరణజన్య సంయోగక్రియ కోసం ఒక మార్గదర్శి‌ను రూపొందించండి"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "నా నోట్స్‌ను రివిజన్ షీట్‌గా మార్చండి"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "ఫైనల్స్ స్టడీ మార్గదర్శి‌ను తయారు చేయండి"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "గ్రేడ్ & GPA కాలిక్యులేటర్"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "గ్రేడ్‌లను అంచనా వేయండి మరియు స్కోర్ లక్ష్యాలను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "వెయిటెడ్ గ్రేడ్‌లు, GPA దృశ్యాలు, అవసరమైన ఫైనల్ స్కోర్‌లు మరియు సెమిస్టర్ వాట్-ఇఫ్ ప్లాన్‌లను లెక్కించండి."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "మీ గ్రేడ్ వెయిటేజీలు మరియు స్కోర్‌లను షేర్ చేయండి"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "ఆర్గనైజేషన్"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "వెయిటెడ్ గ్రేడ్‌లు, GPA దృశ్యాలు, అవసరమైన ఫైనల్ స్కోర్‌లు మరియు సెమిస్టర్ వాట్-ఇఫ్ ప్లాన్‌లను లెక్కించండి."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఆర్గనైజేషన్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం grade & gpa calculator కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "గ్రేడ్‌లను అంచనా వేయండి మరియు స్కోర్ లక్ష్యాలను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "నాకు ఎంత ఫైనల్ స్కోర్ అవసరం?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "నా వెయిటెడ్ గ్రేడ్‌ను లెక్కించండి"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "నా GPA లక్ష్యాన్ని ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "మైండ్ మ్యాప్ క్రియేటర్"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "ఒక అంశాన్ని అనుసంధానించబడిన ఆలోచనలుగా విభజించండి"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "బ్రెయిన్‌స్టార్మింగ్, రివిజన్, ప్లానింగ్ లేదా రాయడానికి లేదా చదవడానికి ముందు భావనలను అనుసంధానించడానికి మైండ్ మ్యాప్‌ను సృష్టించండి."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "ఏ అంశాన్ని మైండ్ మ్యాప్‌గా మార్చాలి?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "విజువల్ లెర్నింగ్"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "రాయడానికి లేదా చదవడానికి ముందు ఆలోచనలను పంచుకోవడానికి, రివిజన్ చేయడానికి, ప్రణాళిక చేయడానికి లేదా భావనలను అనుసంధానించడానికి మైండ్ మ్యాప్‌ను సృష్టించండి."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే విజువల్ లెర్నింగ్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం mind map creator కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "ఒక అంశాన్ని అనుసంధానించబడిన ఆలోచనలుగా విభజించండి"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "మెషిన్ లెర్నింగ్ మైండ్ మ్యాప్"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "హిస్టరీ వ్యాసం కోసం మ్యాప్"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "సైన్స్ ప్రాజెక్ట్ కోసం ఆలోచనలు"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "రోజువారీ అధ్యయన లక్ష్యాలు"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "ఈరోజు నేర్చుకోవాల్సిన లక్ష్యాలను సెట్ చేయండి మరియు ట్రాక్ చేయండి"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "ప్రయత్న అంచనాలు, ప్రాధాన్యత, అడ్డంకుల తనిఖీలు మరియు త్వరిత సమీక్షా పద్ధతితో వాస్తవిక రోజువారీ అధ్యయన లక్ష్యాలను ప్లాన్ చేయండి."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "ఈరోజు మీరు ఏమి పూర్తి చేయాలనుకుంటున్నారు?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "గేమిఫికేషన్"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "ప్రయత్న అంచనాలు, ప్రాధాన్యత, అడ్డంకుల తనిఖీలు మరియు త్వరిత సమీక్షా పద్ధతితో వాస్తవిక రోజువారీ అధ్యయన లక్ష్యాలను ప్లాన్ చేయండి."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే గేమిఫికేషన్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం daily study goals కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "ఈరోజు నేర్చుకోవాల్సిన లక్ష్యాలను సెట్ చేయండి మరియు ట్రాక్ చేయండి"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "ఈరోజు కోసం మూడు లక్ష్యాలను సెట్ చేయండి"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "నా లక్ష్యాలను వాస్తవికంగా మార్చుకోండి"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "నా అధ్యయన లక్ష్యాలను సమీక్షించండి"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "టాస్క్ టైమర్"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "వ్యక్తిగత పనుల సమయాన్ని లెక్కించండి మరియు ప్రయత్నాన్ని చూడండి"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "పనిని నిర్దిష్ట పనులుగా విభజించండి, ప్రతిదానికీ సమయాన్ని కేటాయించండి మరియు ప్రతి ఫోకస్డ్ సెషన్ తర్వాత మీ అధ్యయన ప్రయత్నం ఎక్కడ ఖర్చయిందో సమీక్షించండి."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "మనం ఏ పనికి సమయాన్ని లెక్కించాలి?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "ఏకాగ్రత & ఉత్పాదకత"
+    }
+  ]
+}

@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Odia",
+  "locale": "or",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "ସୋସିଆଲ ମିଡିଆ କଣ କ୍ଷତିକାରକ?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "ଘରୋଇ କାମ (homework) ରହିବା ଉଚିତ୍ କି?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "ମହାକାଶ ଅନୁସନ୍ଧାନ କ'ଣ ଲାଭଦାୟକ?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "ମୋ ଉତ୍ତର ବୁଝାନ୍ତୁ"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "ଏକ ଉତ୍ତର କାହିଁକି ସଠିକ୍ ତାହା ବୁଝନ୍ତୁ"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "ଏକ ପ୍ରଶ୍ନ, ଆପଣଙ୍କ ଉତ୍ତର ଏବଂ ଯଦି ଆପଣଙ୍କ ପାଖରେ ଅଛି ତେବେ ସମ୍ଭାବ୍ୟ ଉତ୍ତରଟି ପେଷ୍ଟ କରନ୍ତୁ। ଆପଣଙ୍କ ବନ୍ଧୁ ଏହାର କାରଣ ବୁଝାଇବେ ଏବଂ ପରବର୍ତ୍ତୀ ସମୟରେ ସେହି ଭୁଲ ନ କରିବାରେ ସାହାଯ୍ୟ କରିବେ।"
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "ପ୍ରଶ୍ନ ଏବଂ ଆପଣଙ୍କ ଉତ୍ତର ପେଷ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "ଅଭ୍ୟାସ"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "ଏକ ପ୍ରଶ୍ନ, ଆପଣଙ୍କ ଉତ୍ତର ଏବଂ ଯଦି ଆପଣଙ୍କ ପାଖରେ ଅଛି ତେବେ ସମ୍ଭାବ୍ୟ ଉତ୍ତରଟି ପେଷ୍ଟ କରନ୍ତୁ। ଆପଣଙ୍କ ବନ୍ଧୁ ଏହାର କାରଣ ବୁଝାଇବେ ଏବଂ ପରବର୍ତ୍ତୀ ସମୟରେ ସେହି ଭୁଲ ନ କରିବାରେ ସାହାଯ୍ୟ କରିବେ।"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "ଅଭ୍ୟାସ ବିଷୟଗୁଡ଼ିକ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ସାଧାରଣ ଉତ୍ତର ବକ୍ସ ବଦଳରେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ 'ମୋ ଉତ୍ତର ବୁଝାନ୍ତୁ' ପାଇଁ ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରକ୍ରିୟା ସହିତ ତିଆରି ହୋଇଛି।"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "ଏକ ଉତ୍ତର କାହିଁକି ସଠିକ୍ ତାହା ବୁଝନ୍ତୁ"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ସେସନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "ମୋର ବୀଜଗଣିତ ଉତ୍ତର କାହିଁକି ଭୁଲ?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "ଏହି ବ୍ୟାକରଣ ସଂଶୋଧନ ବୁଝାନ୍ତୁ"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "ମୁଁ B ବାଛିଥିଲି। C କାହିଁକି ସଠିକ୍?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "ହୋମୱାର୍କ କୋଚ୍"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "ସିଧାସଳଖ ଉତ୍ତର ନ ଦେଇ ସଙ୍କେତ (hints) ପ୍ରଦାନ"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "ସଙ୍କେତ, ଉଦାହରଣ ଏବଂ ଯାଞ୍ଚ ସହିତ ହୋମୱାର୍କରେ ଅଟକି ଯାଇଥିବା ସମସ୍ୟାର ସମାଧାନ କରନ୍ତୁ, ଯାହା ଆପଣଙ୍କୁ ନିଜେ ଚିନ୍ତା କରିବାରେ ସାହାଯ୍ୟ କରିବ।"
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "ଆପଣ କେଉଁ ହୋମୱାର୍କ ପ୍ରଶ୍ନରେ ଅଟକି ଯାଇଛନ୍ତି?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "ଅଭ୍ୟାସ"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "ନୈତିକ ସଙ୍କେତ, ଉଦାହରଣ, ଯାଞ୍ଚ ଏବଂ ପଦକ୍ଷେପ-ଅନୁଯାୟୀ କୋଚିଂ ସହିତ ହୋମୱାର୍କରେ ଅଟକି ଯାଇଥିବା ସମସ୍ୟାର ସମାଧାନ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "ଯେଉଁ ଛାତ୍ରଛାତ୍ରୀମାନଙ୍କୁ କୌଣସି ପ୍ରଶ୍ନ ଆରମ୍ଭ କରିବା, କାମ ଯାଞ୍ଚ କରିବା କିମ୍ବା ଭୁଲ ବୁଝିବାରେ ସାହାଯ୍ୟ ଦରକାର।"
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "ଏହି କୋଚ୍ ଆପଣଙ୍କ କାମକୁ ନିଜ ହାତକୁ ନ ନେଇ ଆପଣଙ୍କ ଚିନ୍ତାଧାରାକୁ ସମର୍ଥନ କରେ, ତେଣୁ ଚୂଡ଼ାନ୍ତ କାମଟି ଆପଣଙ୍କର ହିଁ ରହିଥାଏ।"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ ଖୋଜନ୍ତୁ"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "ଭୁଲ୍ ବୁଝନ୍ତୁ"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "ଏକ ସମାନ ସମସ୍ୟା ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "ଏହି ଶବ୍ଦ ସମସ୍ୟା ଆରମ୍ଭ କରିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "ମୋ ପ୍ରବନ୍ଧର ଥିସିସ୍ ଯାଞ୍ଚ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "ଏହି ପଦାର୍ଥ ବିଜ୍ଞାନ ସମସ୍ୟା ପାଇଁ ମୋତେ ଏକ ସଙ୍କେତ ଦିଅନ୍ତୁ"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "ଗଣିତ ଷ୍ଟେପ୍ କୋଚ୍"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "ଗଣିତକୁ ଗୋଟିଏ ପରେ ଗୋଟିଏ ପଦକ୍ଷେପରେ ସମାଧାନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "ପ୍ରତ୍ୟେକ ପଦକ୍ଷେପ ବୁଝି ଗଣିତ ସମାଧାନ କରନ୍ତୁ। ଆପଣଙ୍କ କୋଚ୍ ଆପଣଙ୍କ କାମ ଯାଞ୍ଚ କରନ୍ତି, ଭୁଲ୍ ଦର୍ଶାନ୍ତି ଏବଂ ଆତ୍ମବିଶ୍ୱାସ ବଢ଼ାନ୍ତି।"
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "ଆମେ କେଉଁ ଗଣିତ ସମସ୍ୟା ସମାଧାନ କରିବା?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "ଏକ AI କୋଚ୍ ସହିତ ବୀଜଗଣିତ, କାଲକୁଲସ୍, ଶବ୍ଦ ସମସ୍ୟା ଏବଂ ଗଣିତର ଧାରଣାଗୁଡ଼ିକୁ ଗୋଟିଏ ପରେ ଗୋଟିଏ ପଦକ୍ଷେପରେ ସମାଧାନ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "ଯେଉଁ ଶିକ୍ଷାର୍ଥୀମାନେ କେବଳ ଉତ୍ତର ନକଲ ନକରି ପ୍ରତ୍ୟେକ ଗଣିତ ପଦକ୍ଷେପ କାହିଁକି କାମ କରେ ତାହା ଦେଖିବାକୁ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "ଏହି ପ୍ରକ୍ରିୟା ପ୍ରତ୍ୟେକ ପଦକ୍ଷେପକୁ ଯାଞ୍ଚ କରେ, ଭୁଲ୍ ଦର୍ଶାଏ ଏବଂ ପ୍ରଣାଳୀଗୁଡ଼ିକୁ ଧାରଣା ସହିତ ସଂଯୋଗ କରେ।"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "ପ୍ରଥମ ପଦକ୍ଷେପ ବାଛନ୍ତୁ"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "ପ୍ରତ୍ୟେକ ପଦକ୍ଷେପ ଯାଞ୍ଚ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "ଏହି ପଦ୍ଧତି କାହିଁକି କାମ କରେ ତାହା ବୁଝାନ୍ତୁ"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "ମୋ ସହିତ 2x + 5 = 17 ସମାଧାନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "ଦ୍ୱିଘାତ ସମୀକରଣରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "ଡେରିଭେଟିଭ୍ ଗୁଡ଼ିକୁ ପଦକ୍ଷେପ ଅନୁଯାୟୀ ବୁଝାନ୍ତୁ"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "ସାଇନ୍ସ ଲ୍ୟାବ୍ ପାର୍ଟନର୍"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "ପରୀକ୍ଷଣ ଏବଂ ଧାରଣାଗୁଡ଼ିକୁ ନିରାପଦରେ ଅନୁସନ୍ଧାନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "ନିରାପଦ ପ୍ରଦର୍ଶନ ଯୋଜନା କରନ୍ତୁ, ଭେରିଏବଲ୍ ବୁଝନ୍ତୁ, ଫଳାଫଳ ପୂର୍ବାନୁମାନ କରନ୍ତୁ ଏବଂ ଜଣେ ବୈଜ୍ଞାନିକଙ୍କ ପରି ପ୍ରମାଣରୁ ଯୁକ୍ତି କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "ଆମେ କେଉଁ ବିଜ୍ଞାନ ଧାରଣା କିମ୍ବା ପରୀକ୍ଷଣ ଅନୁସନ୍ଧାନ କରୁଛୁ?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "ନିରାପଦ ପ୍ରଦର୍ଶନ ଯୋଜନା କରନ୍ତୁ, ଭେରିଏବଲ୍ ବୁଝନ୍ତୁ, ଫଳାଫଳ ଅନୁମାନ କରନ୍ତୁ ଏବଂ ଜଣେ ବୈଜ୍ଞାନିକଙ୍କ ପରି ପ୍ରମାଣରୁ ଯୁକ୍ତି କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "STEM ବିଷୟ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ ବିଜ୍ଞାନ ଲ୍ୟାବ ପାର୍ଟନର ପାଇଁ ଏହାର ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ତିଆରି ହୋଇଛି।"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "ପରୀକ୍ଷଣ ଏବଂ ଧାରଣାଗୁଡ଼ିକୁ ନିରାପଦରେ ଅନୁସନ୍ଧାନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ଅଧିବେଶନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "ଉଦ୍ଭିଦ ବୃଦ୍ଧି ପରୀକ୍ଷଣର ଡିଜାଇନ୍ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "ଏସିଡ୍ ଏବଂ ବେସ୍ ବୁଝାନ୍ତୁ"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "ଯଦି ଆମେ ତାପମାତ୍ରା ପରିବର୍ତ୍ତନ କରୁ ତେବେ କଣ ହେବ?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "ରାଇଟିଂ କୋଚ୍"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "ଲେଖାକୁ ଯୋଜନା, ଡ୍ରାଫ୍ଟ, ସଂଶୋଧନ ଏବଂ ମଜବୁତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "ଆପଣଙ୍କର ନିଜସ୍ୱ ଶୈଳୀକୁ ବଜାୟ ରଖି ଲକ୍ଷ୍ୟଭେଦୀ ମତାମତ ସହିତ ପ୍ରବନ୍ଧ, କାହାଣୀ, ଇମେଲ୍ ଏବଂ ଯୁକ୍ତିଗୁଡ଼ିକୁ ଉନ୍ନତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "ଆପଣ କଣ ଲେଖୁଛନ୍ତି?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "ଯୋଗାଯୋଗ"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "ଯୋଜନା, ସଂଶୋଧନ, ଗଠନ ଏବଂ ମତାମତ ସହିତ ଲେଖାକୁ ଉନ୍ନତ କରନ୍ତୁ ଯାହା ଆପଣଙ୍କର ନିଜସ୍ୱ ଶୈଳୀକୁ ବଜାୟ ରଖେ।"
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "ପ୍ରବନ୍ଧ, କାହାଣୀ, ଇମେଲ୍, ସ୍କଲାରସିପ୍ ନୋଟ୍ କିମ୍ବା ଯୁକ୍ତି ଲେଖୁଥିବା ଶିକ୍ଷାର୍ଥୀ।"
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "ଏହି କୋଚ୍ ଆପଣଙ୍କର ନିଜସ୍ୱ ଶୈଳୀକୁ ନ ବଦଳାଇ ସଂଶୋଧନ ପାଇଁ ଲକ୍ଷ୍ୟଭେଦୀ ପ୍ରାଥମିକତା ଏବଂ ପୂର୍ବ-ପର ଉଦାହରଣ ଦେଇଥାଏ।"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "ଆପଣଙ୍କର ମତକୁ ସ୍ପଷ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "ଗଠନକୁ ଉନ୍ନତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "ଏକ କାରଣ ସହିତ ସଂଶୋଧନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "ମୋ ପ୍ରବନ୍ଧର ଭୂମିକାକୁ ଉନ୍ନତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "କାହାଣୀର ରୂପରେଖ ପ୍ରସ୍ତୁତ କରିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "ଏହି ପାରାଗ୍ରାଫକୁ ଅଧିକ ସ୍ପଷ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "ପଠନ ସାଥୀ"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "ପଢନ୍ତୁ, ସାରାଂଶ କରନ୍ତୁ ଏବଂ ପାଠ୍ୟ ବିଷୟରେ ପ୍ରଶ୍ନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ଏକ ଅନୁଚ୍ଛେଦ କିମ୍ବା ବହିର ଧାରଣା ଆଣନ୍ତୁ ଏବଂ ସାରାଂଶ, ଶବ୍ଦଭଣ୍ଡାର, ଅନୁମାନ ଏବଂ ଆଲୋଚନା ମାଧ୍ୟମରେ ବୁଝିବା ଶକ୍ତି ବୃଦ୍ଧି କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "ଆମେ କଣ ପଢୁଛୁ?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "ଯୋଗାଯୋଗ"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ଏକ ଅନୁଚ୍ଛେଦ କିମ୍ବା ବହିର ଧାରଣା ଆଣନ୍ତୁ ଏବଂ ସାରାଂଶ, ଶବ୍ଦଭଣ୍ଡାର, ଅନୁମାନ ଏବଂ ଆଲୋଚନା ମାଧ୍ୟମରେ ବୁଝିବା ଶକ୍ତି ବୃଦ୍ଧି କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "ଯୋଗାଯୋଗ ବିଷୟ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ ପଠନ ସାଥୀ ପାଇଁ ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ପ୍ରସ୍ତୁତ କରାଯାଇଛି।"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "ପଢନ୍ତୁ, ସାରାଂଶ କରନ୍ତୁ ଏବଂ ପାଠ୍ୟ ବିଷୟରେ ପ୍ରଶ୍ନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ଅଧିବେଶନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "ଏହି ଅନୁଚ୍ଛେଦଟି ବୁଝିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "ଅଧ୍ୟାୟ ୨ ର ସାରାଂଶ ଦିଅନ୍ତୁ"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "ଏହି କବିତା ବିଷୟରେ ମୋତେ ପ୍ରଶ୍ନ ପଚାରନ୍ତୁ"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "ଶବ୍ଦଭଣ୍ଡାର ନିର୍ମାତା"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "ପ୍ରସଙ୍ଗ ଅନୁଯାୟୀ ଶବ୍ଦ ଶିଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "ଅର୍ଥ, ଉଦାହରଣ, ଉଚ୍ଚାରଣ ସଙ୍କେତ, ମନେ ରଖିବା ପାଇଁ ସୂଚନା ଏବଂ ଦ୍ରୁତ ଅଭ୍ୟାସ ସହିତ ଶବ୍ଦଭଣ୍ଡାର ଗଠନ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "ଆମେ କେଉଁ ଶବ୍ଦ କିମ୍ବା ବିଷୟ ଅଭ୍ୟାସ କରିବା ଉଚିତ୍?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "ଯୋଗାଯୋଗ"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "ଅର୍ଥ, ଉଦାହରଣ, ଉଚ୍ଚାରଣ ସଙ୍କେତ, ମନେ ରଖିବା ପାଇଁ ସୂଚନା ଏବଂ ଦ୍ରୁତ ଅଭ୍ୟାସ ସହିତ ଶବ୍ଦଭଣ୍ଡାର ଗଠନ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "ଯୋଗାଯୋଗ ବିଷୟ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ ଶବ୍ଦଭଣ୍ଡାର ନିର୍ମାତା ପାଇଁ ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ପ୍ରସ୍ତୁତ କରାଯାଇଛି।"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "ପ୍ରସଙ୍ଗ ଅନୁଯାୟୀ ଶବ୍ଦ ଶିଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ସେସନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "SAT ଶବ୍ଦଭଣ୍ଡାର"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "ବ୍ୟବସାୟିକ ଇଂରାଜୀ ଶବ୍ଦ"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "ପାଣିପାଗ ସମ୍ବନ୍ଧୀୟ ଶବ୍ଦ"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "ଭାଷା ରୋଲପ୍ଲେ"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "ପ୍ରକୃତ କଥୋପକଥନ ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "କାଫେ, ସାକ୍ଷାତକାର, ଭ୍ରମଣ ଏବଂ ଦୈନନ୍ଦିନ ଜୀବନ ଭଳି ବାସ୍ତବ ପରିସ୍ଥିତିରେ ଏକ ଭାଷା ଅଭ୍ୟାସ କରନ୍ତୁ, ପ୍ରତ୍ୟେକ ଥର ପରେ ସଂଶୋଧନ ସହିତ।"
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "କେଉଁ ଭାଷା ଏବଂ ପରିସ୍ଥିତି?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "ଯୋଗାଯୋଗ"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "କାଫେ, ସାକ୍ଷାତକାର, ଭ୍ରମଣ ଏବଂ ଦୈନନ୍ଦିନ ଜୀବନ ଭଳି ବାସ୍ତବ ପରିସ୍ଥିତିରେ ଏକ ଭାଷା ଅଭ୍ୟାସ କରନ୍ତୁ, ପ୍ରତ୍ୟେକ ଥର ପରେ ସଂଶୋଧନ ସହିତ।"
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "ଯୋଗାଯୋଗ ବିଷୟ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ ଭାଷା ରୋଲପ୍ଲେ ପାଇଁ ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ତିଆରି କରାଯାଇଛି।"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "ପ୍ରକୃତ କଥୋପକଥନ ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ସେସନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "ସ୍ପାନିଶ କାଫେ ରୋଲପ୍ଲେ"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "ଫ୍ରେଞ୍ଚ ଏୟାରପୋର୍ଟ କଥୋପକଥନ"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "ହିନ୍ଦୀ ବଜାର ଦରଦାମ"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "କହିବା ଅଭ୍ୟାସ"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "ପ୍ରମ୍ପ୍ଟ ସହିତ ଜୋରରେ ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "ପ୍ରମ୍ପ୍ଟ, ସମୟ ଏବଂ ଗଠନ ଉପରେ ମତାମତ ସହିତ ଭାଷଣ, ଉପସ୍ଥାପନା, ସାକ୍ଷାତକାର କିମ୍ବା ମୌଖିକ ପରୀକ୍ଷା ପାଇଁ ପ୍ରସ୍ତୁତ ହୁଅନ୍ତୁ।"
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "ଆପଣ କଣ କହିବା ପାଇଁ ପ୍ରସ୍ତୁତ ହେଉଛନ୍ତି?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "ଯୋଗାଯୋଗ"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "ପ୍ରମ୍ପ୍ଟ, ସମୟ ଏବଂ ଗଠନ ଉପରେ ମତାମତ ସହିତ ଭାଷଣ, ଉପସ୍ଥାପନା, ସାକ୍ଷାତକାର କିମ୍ବା ମୌଖିକ ପରୀକ୍ଷା ପାଇଁ ପ୍ରସ୍ତୁତ ହୁଅନ୍ତୁ।"
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "ଯେଉଁ ଶିକ୍ଷାର୍ଥୀମାନେ ଯୋଗାଯୋଗ ବିଷୟଗୁଡ଼ିକ ଅନୁସନ୍ଧାନ କରୁଛନ୍ତି ଏବଂ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ କହିବା ଅଭ୍ୟାସ ପାଇଁ ପ୍ରସ୍ତୁତ କରାଯାଇଛି, ଯେଉଁଥିରେ ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରକ୍ରିୟା ରହିଛି।"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "ପ୍ରମ୍ପ୍ଟ ସହିତ ଜୋରରେ ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ଅଧିବେଶନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "ମୋର ସ୍କୁଲ ପ୍ରେଜେଣ୍ଟେସନ୍ ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "IELTS ସ୍ପିକିଂ ମକ୍ ଟେଷ୍ଟ"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "ଇଣ୍ଟରଭ୍ୟୁ ପ୍ରଶ୍ନର ଉତ୍ତର ଦେବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "ପରୀକ୍ଷା ପ୍ରସ୍ତୁତି ପ୍ଲାନର୍"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "ସିଲାବସକୁ ଏକ ଅଧ୍ୟୟନ ଯୋଜନାରେ ପରିଣତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "ଆପଣଙ୍କ ତାରିଖ, ସିଲାବସ, ଶକ୍ତି ଏବଂ ଦୁର୍ବଳ ଅଞ୍ଚଳରୁ ଏକ ବାସ୍ତବବାଦୀ ପରୀକ୍ଷା ଯୋଜନା ପ୍ରସ୍ତୁତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "ଆପଣ କେଉଁ ପରୀକ୍ଷା ପାଇଁ ପ୍ରସ୍ତୁତି କରୁଛନ୍ତି?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "ଯୋଜନା"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "ଆପଣଙ୍କ ସିଲାବସ, ପରୀକ୍ଷା ତାରିଖ, ସମୟ ଏବଂ ଦୁର୍ବଳ ଅଞ୍ଚଳକୁ ଏକ ବ୍ୟବହାରିକ ଅଧ୍ୟୟନ ଯୋଜନାରେ ପରିଣତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "ଯେଉଁ ଛାତ୍ରଛାତ୍ରୀମାନଙ୍କୁ ଏକ ଯୋଜନା ଦରକାର ଯାହା ରିଭିଜନ୍, ଅଭ୍ୟାସ, ଆତ୍ମବିଶ୍ୱାସ ଏବଂ ବାସ୍ତବ ଜୀବନ ମଧ୍ୟରେ ସନ୍ତୁଳନ ରକ୍ଷା କରେ।"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "ଏହି ପ୍ଲାନର୍ ଦୁର୍ବଳ ଅଞ୍ଚଳକୁ ପ୍ରାଥମିକତା ଦିଏ, ରିଭିଜନ୍ ଲୁପ୍ ଯୋଡ଼େ ଏବଂ ଛୁଟି ଦିନ ପାଇଁ ବ୍ୟାକଅପ୍ ଯୋଜନା ପ୍ରସ୍ତୁତ କରେ।"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "ବିଷୟଗୁଡ଼ିକୁ ପ୍ରାଥମିକତା ଦିଅନ୍ତୁ"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "ରିଭିଜନ୍ ଯୋଜନା କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "ରିସ୍କ ଥିବା ଅଞ୍ଚଳଗୁଡ଼ିକୁ ଟ୍ରାକ୍ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "ଜୀବବିଜ୍ଞାନ ପାଇଁ ୨ ସପ୍ତାହର ଯୋଜନା କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "JEE ରିଭିଜନ୍ ସିଡ୍ୟୁଲ୍ ପ୍ରସ୍ତୁତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "ଫାଇନାଲ୍ ପରୀକ୍ଷା ପାଇଁ ପ୍ରସ୍ତୁତ ହେବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "ଫ୍ଲାସକାର୍ଡ ବିଲ୍ଡର୍"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "ମନେ ରଖିବା ପାଇଁ ସ୍ମାର୍ଟ କାର୍ଡ ତିଆରି କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "ନୋଟ୍ କିମ୍ବା ବିଷୟଗୁଡ଼ିକୁ ଉତ୍ତର, ଟ୍ରାପ୍ ଏବଂ ରିଭ୍ୟୁ ପ୍ରମ୍ପ୍ଟ ସହିତ ସ୍ପଷ୍ଟ ଫ୍ଲାସକାର୍ଡରେ ପରିଣତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "କେଉଁଗୁଡ଼ିକୁ ଫ୍ଲାସକାର୍ଡ କରିବା ଉଚିତ୍?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "ଅଭ୍ୟାସ"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "ନୋଟ୍ କିମ୍ବା ବିଷୟଗୁଡ଼ିକୁ ସଙ୍କେତ, ଉତ୍ତର, ଉଦାହରଣ ଏବଂ ସାଧାରଣ ଟ୍ରାପ୍ ସହିତ ଫୋକସ୍ ଫ୍ଲାସକାର୍ଡରେ ପରିଣତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "ପରୀକ୍ଷା ପାଇଁ ପ୍ରସ୍ତୁତ ହେଉଥିବା ଛାତ୍ରଛାତ୍ରୀ, ଭାଷା ଶିକ୍ଷାର୍ଥୀ ଏବଂ ରିଟ୍ରାଇଭାଲ୍ ପ୍ରାକ୍ଟିସ୍ ବ୍ୟବହାର କରୁଥିବା ଯେକୌଣସି ବ୍ୟକ୍ତି।"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "କାର୍ଡଗୁଡ଼ିକ ଗୋଟିଏ ସମୟରେ ଗୋଟିଏ ଜିନିଷ ପଚାରିଥାଏ ଏବଂ ସେଥିରେ ଟ୍ରାପ୍ ମଧ୍ୟ ଅନ୍ତର୍ଭୁକ୍ତ ଥାଏ, ଯାହାଫଳରେ ରିଭ୍ୟୁ କେବଳ ଚିହ୍ନିବା ନୁହେଁ ବରଂ ବୁଝିବା ଶକ୍ତିକୁ ମଧ୍ୟ ବଢ଼ାଇଥାଏ।"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "ରିକଲ୍ କାର୍ଡ ତିଆରି କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "ପ୍ରସ୍ତୁତ ହେଲେ ଉତ୍ତର ପ୍ରକାଶ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "ଭୁଲ୍ ହୋଇଥିବା ପ୍ରଶ୍ନଗୁଡ଼ିକୁ ଶୀଘ୍ର ରିଭ୍ୟୁ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "ମାଇଟୋସିସ୍ ପାଇଁ ଫ୍ଲାସକାର୍ଡ ତିଆରି କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "ଏହି ନୋଟକୁ ପ୍ରଶ୍ନ-ଉତ୍ତରରେ ପରିଣତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "ଭୂଗୋଳ ଫ୍ଲାସକାର୍ଡ ତିଆରି କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "ମେମୋରୀ ପ୍ୟାଲେସ୍"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "ଜୀବନ୍ତ ସ୍ଥାନ ସହିତ ଧାରଣାଗୁଡ଼ିକୁ ମନେ ରଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "ତଥ୍ୟ, ତାଲିକା, ଭାଷଣ କିମ୍ବା କ୍ରମକୁ ସ୍ମରଣୀୟ ମାନସିକ ଦୃଶ୍ୟରେ ପରିଣତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "ଆପଣଙ୍କୁ କଣ ମନେ ରଖିବାକୁ ପଡ଼ିବ?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "ଅଭ୍ୟାସ"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "ତଥ୍ୟ, ଭାଷଣ, ତାଲିକା କିମ୍ବା କ୍ରମକୁ ସ୍ମରଣୀୟ ଦୃଶ୍ୟରେ ପରିଣତ କରନ୍ତୁ ଯାହା ପାଠପଢ଼ା ଏବଂ ପରୀକ୍ଷା ସମୟରେ ମନେ ପକାଇବାକୁ ସହଜ କରିଥାଏ।"
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "କ୍ରମାନ୍ୱୟରେ ଥିବା ଧାରଣା, ଶବ୍ଦଭଣ୍ଡାର, ଭାଷଣ, ସୂତ୍ର କିମ୍ବା ତଥ୍ୟ ମନେ ରଖୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନଙ୍କୁ ଏକ ଶକ୍ତିଶାଳୀ ମାନସିକ ସହାୟତା ଆବଶ୍ୟକ।"
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "ଏହି ମୋଡ୍ ଆପଣଙ୍କୁ ନୋଟ୍ ପୁନର୍ବାର ପଢ଼ିବାକୁ କହିବା ପରିବର୍ତ୍ତେ ଜୀବନ୍ତ ସ୍ଥାନ, ପଥ ଏବଂ ରିଟ୍ରାଇଭାଲ୍ ସଙ୍କେତ ଡିଜାଇନ୍ କରିଥାଏ।"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "ଏକ ରୁଟ୍ ବାଛନ୍ତୁ"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "ଜୀବନ୍ତ ସଙ୍କେତ ରଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "ମନେ ପକାଇବା ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "ଗ୍ରହଗୁଡ଼ିକୁ ମନେ ରଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "ଏକ ଭାଷଣର ରୂପରେଖ ମନେ ରଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "ଜୀବବିଜ୍ଞାନର ବର୍ଗୀକରଣ ଶିଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "ସ୍ପେସ୍ଡ୍ ରିଭ୍ୟୁ"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "ଭୁଲିବା ପୂର୍ବରୁ ପୁନରାବୃତ୍ତି କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "ଦୀର୍ଘକାଳୀନ ସ୍ମୃତିକୁ ମଜବୁତ କରିବା ପାଇଁ ଦ୍ରୁତ ପୁନରାବୃତ୍ତି ଅଧିବେଶନ ଯୋଜନା କରନ୍ତୁ ଏବଂ ପରିଚାଳନା କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "ଆମେ କ’ଣ ପୁନରାବୃତ୍ତି କରିବା ଉଚିତ୍?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "ଅଭ୍ୟାସ"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "AI-ନିର୍ଦ୍ଦେଶିତ ସ୍ପେସ୍ଡ୍ ରିପିଟିସନ୍ ସହିତ ଦ୍ରୁତ ପୁନରାବୃତ୍ତି ଅଧିବେଶନ ଯୋଜନା କରନ୍ତୁ, ଦୁର୍ବଳ ବିଷୟଗୁଡ଼ିକୁ ପୁନର୍ବାର ଦେଖନ୍ତୁ ଏବଂ ଦୀର୍ଘକାଳୀନ ସ୍ମୃତିକୁ ମଜବୁତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "ଯେଉଁ ଶିକ୍ଷାର୍ଥୀମାନେ ପଢ଼ିବା ପରେ ଭୁଲିଯାଆନ୍ତି ଏବଂ ଧାରଣା, ଶବ୍ଦ କିମ୍ବା ପରୀକ୍ଷା ସାମଗ୍ରୀ ପାଇଁ ଏକ ବ୍ୟବହାରିକ ପୁନରାବୃତ୍ତି ତାଳ ଆବଶ୍ୟକ କରନ୍ତି।"
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "ଏହି କୋଚ୍ ଭୁଲ୍ ଏବଂ ଦ୍ୱିଧାକୁ ଏକ ପୁନରାବୃତ୍ତି କାର୍ଯ୍ୟସୂଚୀରେ ପରିଣତ କରେ, ନା କି କେବଳ ଏକ ନିଷ୍କ୍ରିୟ ସାରାଂଶରେ।"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "ପୁନରାବୃତ୍ତି ଲକ୍ଷ୍ୟ ବାଛନ୍ତୁ"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "ମନେ ପକାଇବା ପାଇଁ ସମୟ ନିର୍ଦ୍ଧାରଣ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "ଭୁଲଗୁଡ଼ିକୁ ସୁଧାରନ୍ତୁ"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "ଗତକାଲିର ରସାୟନ ବିଜ୍ଞାନ ପୁନରାବୃତ୍ତି କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "୭-ଦିନିଆ ପୁନରାବୃତ୍ତି ଯୋଜନା ପ୍ରସ୍ତୁତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "ମୋତେ ପୁଣିଥରେ ଶବ୍ଦକୋଷ ଉପରେ ପ୍ରଶ୍ନ ପଚାରନ୍ତୁ"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "କନସେପ୍ଟ ମ୍ୟାପ୍ ବିଲ୍ଡର୍"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "ଲେଖାରେ ଧାରଣାଗୁଡ଼ିକୁ ଦୃଶ୍ୟମାନ ଭାବରେ ସଂଯୋଗ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "କାରଣ ଏବଂ ପ୍ରଭାବଠାରୁ ଆରମ୍ଭ କରି ବର୍ଗ, ଉଦାହରଣ ଏବଂ ବିରୋଧାଭାସ ପର୍ଯ୍ୟନ୍ତ ଧାରଣାଗୁଡ଼ିକ କିପରି ସମ୍ବନ୍ଧିତ ତାହା ମ୍ୟାପ୍ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "ଆମେ କେଉଁ ଧାରଣାକୁ ମ୍ୟାପ୍ କରିବା ଉଚିତ୍?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "ଚିନ୍ତାଧାରା"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "କାରଣ ଏବଂ ପ୍ରଭାବଠାରୁ ଆରମ୍ଭ କରି ବର୍ଗ, ଉଦାହରଣ ଏବଂ ବିରୋଧାଭାସ ପର୍ଯ୍ୟନ୍ତ ଧାରଣାଗୁଡ଼ିକ କିପରି ସମ୍ବନ୍ଧିତ ତାହା ମ୍ୟାପ୍ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "ଚିନ୍ତାଧାରା ବିଷୟଗୁଡ଼ିକୁ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ କନସେପ୍ଟ ମ୍ୟାପ୍ ବିଲ୍ଡର୍ ପାଇଁ ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ତିଆରି ହୋଇଛି।"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "ପାଠ୍ୟରେ ଧାରଣାଗୁଡ଼ିକୁ ଦୃଶ୍ୟମାନ ଭାବରେ ସଂଯୋଗ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ଅଧିବେଶନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "ଜଳବାୟୁ ପରିବର୍ତ୍ତନର ମାନଚିତ୍ର ପ୍ରସ୍ତୁତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "ବୀଜଗଣିତର ଧାରଣାଗୁଡ଼ିକୁ ସଂଯୋଗ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "ଗଣତନ୍ତ୍ରର ଏକ ମାନଚିତ୍ର ପ୍ରସ୍ତୁତ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "ମିସକନସେପସନ୍ ଡକ୍ଟର"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "ଭୁଲ ମାନସିକ ମଡେଲଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ ଏବଂ ସଂଶୋଧନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "ଆପଣ କଣ ଭାବୁଛନ୍ତି ତାହା କୁହନ୍ତୁ, ଏବଂ ଆପଣଙ୍କ ବନ୍ଧୁ ସହଜ ପରୀକ୍ଷା ମାଧ୍ୟମରେ ଲୁକ୍କାୟିତ ଭୁଲ ଧାରଣାଗୁଡ଼ିକୁ ଚିହ୍ନଟ କରିବେ।"
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "କେଉଁ ଧାରଣାଟି ଦ୍ୱନ୍ଦ୍ୱପୂର୍ଣ୍ଣ କିମ୍ବା ସନ୍ଦେହଜନକ ମନେହୁଏ?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "ଚିନ୍ତାଧାରା"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "ଆପଣ କଣ ଭାବୁଛନ୍ତି ତାହା କୁହନ୍ତୁ, ଏବଂ ଆପଣଙ୍କ ବନ୍ଧୁ ସହଜ ପରୀକ୍ଷା ମାଧ୍ୟମରେ ଲୁକ୍କାୟିତ ଭୁଲ ଧାରଣାଗୁଡ଼ିକୁ ଚିହ୍ନଟ କରିବେ।"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "ଚିନ୍ତାଧାରା ବିଷୟଗୁଡ଼ିକୁ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡଟି ମିସକନସେପସନ୍ ଡକ୍ଟର ପାଇଁ ଏହାର ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ଟିଉନ୍ କରାଯାଇଛି।"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "ଭୁଲ ମାନସିକ ମଡେଲଗୁଡ଼ିକୁ ଖୋଜନ୍ତୁ ଏବଂ ସଂଶୋଧନ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ଅଧିବେଶନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "ମୁଁ ଭାବୁଛି ଭାରୀ ବସ୍ତୁଗୁଡ଼ିକ ଅଧିକ ଦ୍ରୁତ ଗତିରେ ତଳକୁ ପଡ଼ନ୍ତି"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "ମୁଁ ଋଣାତ୍ମକ ସଂଖ୍ୟା ବୁଝିପାରୁନାହିଁ"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "ଏହି ବ୍ୟାକରଣ ନିୟମଟି କାହିଁକି ଅଜବ?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "ଫେନମ୍ୟାନ୍ ଟିଉଟର"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "ଏହାକୁ ସରଳ ଭାବରେ ବୁଝାନ୍ତୁ ଯେପର୍ଯ୍ୟନ୍ତ ଏହା ମନେ ରହିବ"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ଏକ ଧାରଣାକୁ ସରଳ ଭାବରେ ବୁଝାଇବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ। ଆପଣଙ୍କ ଟିଉଟର ତ୍ରୁଟିଗୁଡ଼ିକୁ ଚିହ୍ନଟ କରିବେ, ପ୍ରଶ୍ନ ପଚାରିବେ ଏବଂ ବ୍ୟାଖ୍ୟାକୁ ପୁନର୍ଗଠନ କରିବାରେ ସାହାଯ୍ୟ କରିବେ।"
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "ଆପଣ ମୋତେ କଣ ବୁଝାଇବେ?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "ଚିନ୍ତନ"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ଏକ ଧାରଣାକୁ ସରଳ ଭାବରେ ବୁଝାଇବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ। ଆପଣଙ୍କ ଟ୍ୟୁଟର ତ୍ରୁଟିଗୁଡ଼ିକୁ ଚିହ୍ନଟ କରିବ, ପ୍ରଶ୍ନ ପଚାରିବ ଏବଂ ବ୍ୟାଖ୍ୟାକୁ ପୁନର୍ଗଠନ କରିବାରେ ସାହାଯ୍ୟ କରିବ।"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "ଚିନ୍ତନ ବିଷୟଗୁଡ଼ିକୁ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ ଫେନମ୍ୟାନ୍ ଟ୍ୟୁଟର ପାଇଁ ଏହାର ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ପ୍ରସ୍ତୁତ କରାଯାଇଛି।"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "ଏହାକୁ ସରଳ ଭାବରେ ବୁଝାନ୍ତୁ ଯେପର୍ଯ୍ୟନ୍ତ ଏହା ମନେ ରହିବ"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ଅଧିବେଶନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "ମୁଁ ମାଧ୍ୟାକର୍ଷଣ ଶକ୍ତି ବିଷୟରେ ବୁଝାଇବି"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "ମୁଦ୍ରାସ୍ଫୀତି ବିଷୟରେ ମୋର ବୁଝାମଣା ପରୀକ୍ଷା କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "ରିକର୍ସନ୍ (recursion) କୁ ସରଳ କରିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "କେସ୍ ଷ୍ଟଡି ସିମୁଲେଟର"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "ବାସ୍ତବବାଦୀ ନିଷ୍ପତ୍ତି ମାଧ୍ୟମରେ ଶିଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "ଏକ ବାସ୍ତବବାଦୀ କେସ୍ ପ୍ରବେଶ କରନ୍ତୁ, ନିଷ୍ପତ୍ତି ନିଅନ୍ତୁ, ପରିଣାମ ଦେଖନ୍ତୁ ଏବଂ ପ୍ରତ୍ୟେକ ପସନ୍ଦ ପଛରେ ଥିବା ନୀତି ଶିଖନ୍ତୁ।"
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "ଆମେ କି ପ୍ରକାର କେସ୍ ସିମୁଲେଟ୍ କରିବା ଉଚିତ୍?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "ଇମର୍ସନ୍"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "ଏକ ବାସ୍ତବବାଦୀ କେସ୍ ପ୍ରବେଶ କରନ୍ତୁ, ନିଷ୍ପତ୍ତି ନିଅନ୍ତୁ, ପରିଣାମ ଦେଖନ୍ତୁ ଏବଂ ପ୍ରତ୍ୟେକ ପସନ୍ଦ ପଛରେ ଥିବା ନୀତି ଶିଖନ୍ତୁ।"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "ଇମର୍ସନ୍ ବିଷୟଗୁଡ଼ିକୁ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ କେସ୍ ଷ୍ଟଡି ସିମୁଲେଟର ପାଇଁ ଏହାର ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ପ୍ରସ୍ତୁତ କରାଯାଇଛି।"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "ବାସ୍ତବବାଦୀ ନିଷ୍ପତ୍ତି ମାଧ୍ୟମରେ ଶିଖନ୍ତୁ"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ଉଦାହରଣ ପ୍ରମ୍ପ୍ଟ ସହିତ ଆରମ୍ଭ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଅନୁଯାୟୀ ଅଧିବେଶନକୁ ଆଡାପ୍ଟ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "ବ୍ୟବସାୟ ରଣନୀତି କେସ୍"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "ଚିକିତ୍ସା ନୈତିକତା କେସ୍"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "ପରିବେଶ ନୀତି କେସ୍"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "ରୋଲପ୍ଲେ ସିନାରିଓ"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "କଠିନ ବାସ୍ତବ ଜୀବନର କଥୋପକଥନ ଅଭ୍ୟାସ କରନ୍ତୁ"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "ବୁଝାମଣା, ବିବାଦ, ଗ୍ରାହକ ସହାୟତା, ନେତୃତ୍ୱ, କିମ୍ବା ଯେକୌଣସି ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ କଥୋପକଥନ ଅଭ୍ୟାସ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "ଆମେ କେଉଁ ସିନାରିଓର ରୋଲପ୍ଲେ କରିବା ଉଚିତ୍?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "ଇମର୍ସନ"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "ବୁଝାମଣା, ବିବାଦ, ଗ୍ରାହକ ସହାୟତା, ନେତୃତ୍ୱ, କିମ୍ବା ଯେକୌଣସି ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ କଥୋପକଥନ ଅଭ୍ୟାସ କରନ୍ତୁ।"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "ଇମର୍ସନ ବିଷୟ ଅନୁସନ୍ଧାନ କରୁଥିବା ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ଉତ୍ତର ବାକ୍ସ ପରିବର୍ତ୍ତେ ବ୍ୟବହାରିକ ମାର୍ଗଦର୍ଶନ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "ଏହି ମୋଡ୍ ରୋଲପ୍ଲେ ସିନାରିଓ ପାଇଁ ଏହାର ନିଜସ୍ୱ ପ୍ରମ୍ପ୍ଟ, ଉଦାହରଣ ଏବଂ ଶିକ୍ଷଣ ପ୍ରବାହ ସହିତ ତିଆରି ହୋଇଛି।"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "କଠିନ ବାସ୍ତବ ଜୀବନର କଥୋପକଥନ ଅଭ୍ୟାସ କରନ୍ତୁ"
+    }
+  ]
+}

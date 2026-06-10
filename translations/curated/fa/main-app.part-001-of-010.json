@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Persian",
+  "locale": "fa",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "به inspir کمک کنید تا با سن شما سازگار شود"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "تاریخ تولد خود را به ما بگویید تا بتوانیم یک تجربه یادگیری متناسب با سن شما ایجاد کنیم. ما از آن برای تنظیم مثال‌ها، لحن و محدودیت‌های ایمنی استفاده می‌کنیم."
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "تاریخ تولد"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "ادامه"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "در حال ذخیره..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "لطفاً یک تاریخ تولد معتبر وارد کنید."
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "سن"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "تاریخ تولد خود را اضافه کنید"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "باز کردن فروشگاه یادگیری"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "جستجو"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "جستجوی گفت‌وگوها"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- اعمال محدودیت‌ها در مورد زبان، رتبه، جنسیت، طبقه، قانون، مذهب، پول، بهداشت و دسترسی."
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- پیش از آنکه شخص صحبت کند، فضا را بسازید: کجا هستیم، سال یا بازه زمانی، آنچه تاکنون رخ داده، فشارهای کنونی، باورها، نقاط کور و عدم قطعیت‌های مورخان."
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- یک دیوار پرونده ایجاد کنید با: جدول زمانی تا به امروز، مخاطرات شخصی، متحدان و دشمنان، باورهای اصلی در آن زمان، نقاط کور، نوشته‌ها یا سخنرانی‌های شناخته‌شده، فشار کنونی، زمینه تاریخی، کیفیت شواهد و سوالات آغازین پیشنهادی."
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- نقل‌قول‌های مستقیم، استنادها یا افکار خصوصی را جعل نکنید."
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- نقل‌قول‌های دقیق را جعل نکنید. اگر نقل‌قول مستقیمی در گفتگو منبع‌دهی نشده است، متن تولید شده را به عنوان بازنویسی مدرن یا دیالوگ بازسازی‌شده علامت‌گذاری کنید."
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- خشونت، امپریالیسم، برده‌داری، نظام طبقاتی، بیماری یا ظلم را رمانتیک جلوه ندهید."
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- دیدگاه‌های آسیب‌رسان را تطهیر نکنید و ظلم، نظام طبقاتی، نژادپرستی، برده‌داری، زن‌ستیزی، استبداد یا خشونت را ستایش نکنید. زمینه، توجیه خودکار نیست."
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- با سه اقدام معنادار به علاوه یک گزینه برای توقف جهت دریافت زمینه تاریخی از سوی مورخ پایان دهید."
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- اگر هر فیلد مقصد توسط هوش مصنوعی حل شده یا مبهم است، ابتدا سه گزینه ورود ملموس و از نظر تاریخی معنادار ارائه دهید و منتظر بمانید تا یادگیرنده انتخاب کند."
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- پس از شروع برخورد، دو لایه را حفظ کنید: صدای شخصیت در محدوده بازه زمانی، و یادداشت‌های جانبی مورخ که واقعیت‌های مستند، بازسازی‌های قابل قبول، تفسیرهای مورد مناقشه، بازنویسی‌های مدرن و دیالوگ‌های داستانی را متمایز می‌کند."
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- حقایق شناخته‌شده، بازسازی‌های قابل قبول و گمانه‌زنی‌ها را به وضوح علامت‌گذاری کنید."
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- در غیر این صورت، به مسافر خوش‌آمد بگویید، گذرنامه را در یک پاراگراف فشرده خلاصه کنید، سپس اولین سوال اقدام معنادار را بپرسید."
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- شخص تاریخی ممکن است مقاومت کند، به چالش بکشد، طفره برود، سوالات متقابل بپرسد، فرضیات نادرست را رد کند یا محدودیت‌های دوره خود را آشکار سازد. آن‌ها نباید بی‌نهایت موافق باشند."
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "۱. اگر نیاز به انتخاب کشف یا بازه زمانی است، گزینه‌ها را نشان دهید و متوقف شوید."
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "۱۰ تا ۱۵ دقیقه"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "بازدید ۱۰ دقیقه‌ای"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "۱۱۷ میلادی"
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "۱۳ ژوئیه ۱۷۸۹"
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "۱۵۸۲ میلادی"
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "دوره تدوین قانون اساسی ۱۹۴۶-۱۹۴۹"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "۲ سپتامبر ۱۶۶۶"
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "۲. در غیر این صورت ابتدا دیوار پرونده را نشان بده، سپس از من دعوت کن تا با یکی از پرسش‌های پیشنهادی شروع کنم."
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "۳۹۹ پیش از میلاد"
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "۷۴۲ میلادی"
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "۸-۱۲ دقیقه"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "یک نام بد می‌تواند گیج‌کننده باشد، اما سرنخ به زمان‌بندی اشاره دارد. ابتدا ثابت کن که آیا داده‌ها رسیده‌اند یا خیر."
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "چند واقعیت، یک پیش‌نویس اولیه، جایی که در آن گیر کرده‌اید..."
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "یک تکلیف انتقال نهایی، بهبود را بهتر از دکمه «بعدی» اثبات می‌کند."
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "یک پرسش یا زاویه دید اولیه"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "یک حلقه یادگیری خوب"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "یک نقطه عطف تاریخی"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "افکار خصوصی یک ناظر نام‌برده"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "پاراگرافی که حقایق را بدون ادعا فهرست می‌کند، خواننده را وادار می‌کند تا کار استدلال را انجام دهد."
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "تغییر قیمت به تنهایی حرکتی در امتداد یک منحنی است، نه لزوماً جابجایی کل منحنی."
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "یک هدف مشترک، اقدامات بعدی و آنچه قبلاً انجام شده است."
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "یک شبیه‌سازی، زنجیره علّی پنهان را آشکار می‌کند. هر بار فقط یک چیز را تغییر دهید."
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "یک پرسش بررسی واحد قبل از حرکت به جلو."
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "طرح خصوصی یک تاجر"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "چارچوب استراتژی یک آزمون فشار است. مدل پنج نیروی پورتر می‌پرسد چه کسی می‌تواند سود را از بین ببرد و قدرت هر فشار چقدر است."
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "یک پاراگراف قوی ادعا را بیان می‌کند، آن را با شواهد ثابت می‌کند و سپس توضیح می‌دهد که چرا آن شواهد دیدگاه خواننده را تغییر می‌دهد."
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "یک مدل مفید، زنجیره‌ای است: مفروضات، عملیات را هدایت می‌کنند، عملیات، جریان نقدی ایجاد می‌کنند و جریان نقدی تنها پس از در نظر گرفتن زمان‌بندی و ریسک، به ارزش تبدیل می‌شود."
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "پذیرش، ویرایش یا رد مرحله بعدی هوش مصنوعی"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "پذیرش، بازبینی، رد یا جمع‌آوری شواهد."
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "توکن‌های حساب و یک کیف سکه کوچک"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "مقصد فعال"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "سازنده یادآوری فعال"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "فید فعالیت"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "آدا لاولیس درباره تخیل"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "آدا لاولیس، کلئوپاترا، بی. آر. آمبدکار..."
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "حلقه درس تطبیقی"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "تاریخ تولد خود را وارد کنید"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "افزودن، ویرایش، به چالش کشیدن یا تصمیم‌گیری برای حرکت بعدی"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "افزودن نکات حافظه"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "افزودن اطلاعات بیشتر زمانی که شکاف اصلی، پیوند بین شواهد و ادعا است."
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "مسیرهای اداری"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "مشاوری که به دنبال رایزنی است"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "آگورا در روزهای پیرامون محاکمه سقراط"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "چالش هوش مصنوعی"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "هوش مصنوعی در حال بررسی اثر شماست"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "هوش مصنوعی ساختار اولیه را ایجاد کرد"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "هوش مصنوعی فضای کاری را بازبینی کرد"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "محدوده زمانی تعیین‌شده توسط هوش مصنوعی"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "هوش مصنوعی، اولین مرحله را انجام بده"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "اکبر در این دوره بر امپراتوری گورکانی حکومت می‌کرد"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "دربار مغول اکبر در حال تجربه حاکمیت، ترجمه، مذهب و مدیریت امپراتوری است."
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "تمام متن برنامه و پاسخ‌های راهنما از این تنظیم پیروی می‌کنند."
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "متحدان و دشمنان"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "مهر آمفورا"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "قبل از ادامه، به این سوال پاسخ دهید."
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "ایده را بدون اغراق در موقعیت جدیدی به کار ببرید."
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "هنرجوی هنرمند، تاجر، بازدیدکننده..."
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "هنرجویی که روش آن‌ها را مطالعه می‌کند"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "عربی و سانسکریت در متون علمی"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "پاراگراف استدلالی = ادعا + شواهد + استدلال + نتیجه."
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "قدرت استدلال"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "اتاق آزمون استدلال"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "تاریخ ورود، نقش، هنجارها و دانشی که در آن دوره وجود دارد."
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "نقطه ورود"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "در نزدیکی یک نقطه عطف وارد شوید و آنچه مردم در آن زمان می‌دانند را دنبال کنید."
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "از یک متیک (ساکن خارجی) بپرسید که شهروندی چه چیزی را مستثنی می‌کند"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "از یک آب‌رسان بپرسید که محلی‌ها چه می‌دانند"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "پرسیدن درباره"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "درباره قیمت نان بپرسید"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "درباره داوود بپرسید"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "به عنوان دانش‌آموز بپرسید"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "از مربی بپرسید"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "درخواست توضیح مستقیم کنید"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "درخواست راهنمایی یا مثال کنید"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "درخواست یک مثال موازی"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "از طریق جهان‌بینی و محدودیت‌های دوره زمانی‌شان، درخواست مشاوره کنید."
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "پیش از پاسخ نهایی، درخواست راهنمایی، مثال یا بررسی کنید."
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "درخواست سطح بعدی راهنمایی"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "درخواست بیان همان سوال با کلمات ساده‌تر"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "پرسش درباره نحوه عملکرد وضعیت آزادی"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "پرسش درباره نحوه عملکرد حمایت مالی"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "ابتدا از من بخواهید فرضیه فعلی‌ام را بگویم."
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "هر بار یک سوال بپرسید، فرضیات و شواهد را دنبال کنید، در صورت درخواست راهنمایی ارائه دهید و تا زمانی که تلاش نکرده‌ام، نتیجه‌گیری نکنید."
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "از راهنما بخواهید ساختار قدرت را توضیح دهد"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "از مورخ بخواهید بازه‌های زمانی را پیشنهاد دهد"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "از نگهبان بپرسید چه دستوراتی وجود دارد"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "درخواست ذخیره ادعاهای اصلی و طبقه‌بندی قدرت شواهد آن‌ها."
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "بپرسید، عمل کنید، برای زمینه مکث کنید، یا درخواست گزارش کنید..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "بپرسید، به چالش بکشید، درخواست شواهد کنید، یا یک مورد از پرونده را باز کنید..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "تعیین مالکیت"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "دستیار یک خانواده تجاری یا کارگاه"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "نقشه فرضیات"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "فرضیات با ظاهر شدن، نمایش داده می‌شوند."
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "در اوج نفوذ یا قدرت"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "در نقطه عطف سرنوشت‌ساز"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "دموکراسی آتنی"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "آتن، ۳۹۹ پیش از میلاد"
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "ابتدا به شکننده‌ترین فرضیه حمله کنید."
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "حضور در شایعات درباری"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "یونانی آتیکی"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "جذابیت زمانی افزایش می‌یابد که مشتریان، تأمین‌کنندگان، رقبا، تازه‌واردان و جایگزین‌ها قدرت محدودی داشته باشند."
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "مخاطب در حال پیشرفت"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "مقامات درباره تخریب بحث می‌کنند"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "در انتظار اولین پاسخ"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "در انتظار اولین مهر"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "بی. آر. آمبدکار"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "بغداد در دوران بیت‌الحکمه"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "بهادر شاه ظفر به یک کانون نمادین تبدیل شد"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "همسایه نانوا"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "متعادل‌سازی دشواری"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "چانه زدن برای صمغ"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "باستیل نزدیک می‌شود"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "گفتگو را آغاز کنید"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "با یک کارت شخصیت شروع کنید، سپس با یادداشت‌های متنی مختصر و سوالات پیشنهادی برای پیگیری، در نقش آن شخصیت پاسخ دهید."
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "مبتدی، آمادگی آزمون، پیشرفته، ۱۲ سال به بالا..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "باورها و نقاط کور"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "بهترین برای پول، تدارکات، غذا، مسیرها و تبادلات اجتماعی."
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "بهترین برای سیاست، نهادها، شواهد و فضاهای نزدیک به نخبگان."
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "نان و مشروعیت بر گفتگوها حاکم است"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "نان یعنی سیاست"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "پاروی نان"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "ژتون نان"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "کار را به وظایف کوچک‌تر تقسیم کنید، موانع را پیگیری کنید، گزارش تصمیمات را به‌روز نگه دارید و برای رسیدن به یک خروجی مشخص تلاش کنید."
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "مطالعه کوتاه"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "مرور شروع‌کننده‌های پرامپت"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "قطعه‌ای از نسخه خطی بودایی"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "صومعه بودایی"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "ساخت مشارکتی"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "چرخه رفع اشکال = بازتولید، جداسازی، فرضیه‌سازی، تست یک تغییر، تأیید."
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "درسی بسازید که به شما واکنش نشان دهد."
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "ایده‌ای برای پروژه علمی بسازید"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "یک مدل ذهنی کاربردی بسازید"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "طرح کلی مقاله‌ای درباره سازگاری با تغییرات اقلیمی ایجاد کنید"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "شتاب ایجاد کنید، اولین نسخه کاربردی را بسازید و بدون تمجید بیش از حد، درخواست تصمیم‌گیری کنید."
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "ساخت گذرنامه"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "درس را حول محور آنچه می‌خواهید قادر به انجامش باشید، طراحی کنید."
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "توضیح به زبان ساده را با هم بسازید."
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "با پاسخ دادن به یک سوال دقیق در هر زمان، درک خود را بسازید."
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "در حال ساخت عرشه شما"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "در حال ساخت آزمون شما"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "قدرت خریدار"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "سلیقه خریداران تنها یکی از عوامل محرک است. هزینه‌ها، فناوری، مالیات‌ها و قیمت نهاده‌ها می‌توانند عرضه را تغییر دهند."
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "اتاق کابینه در دوران جنگ بریتانیا"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "نامیدن هر حرکت قیمت به عنوان تغییر در تقاضا."
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "مرکز قدرت"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "مرکز قدرت، زندگی در سطح خیابان و حاشیه سیستم، تاریخ‌های متفاوتی را آشکار می‌کنند."
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "چرچیل را در مورد امپراتوری به چالش بکشید"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "ایده‌ها را در حالی به چالش بکشید که فرد از جهان‌بینی زمان خود دفاع می‌کند."
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "مرا به چالش بکش"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "پاسخ آخر مرا با یک مثال نقض، مورد مرزی یا فرض پنهان به چالش بکش. فقط یک سوال بپرس."
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "تنش میان مبارزه با استبداد در اروپا و دفاع از امپراتوری را به چالش بکشید."
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "ضعیف‌ترین بخش اثر فعلی را به چالش بکشید. صریح باشید، فرض را نام ببرید و از من بخواهید که از آن دفاع کنم یا آن را اصلاح کنم."
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "فرضیات ضعیف، ادعاهای مبهم و شواهد ناقص را به چالش بکشید، در حالی که کاربر همچنان تصمیم‌گیرنده باقی می‌ماند."
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "چاندنی چوک"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "چانگ‌آن"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "چانگ‌آن پایتخت سلسله تانگ بود"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "چانگ‌آن، ۷۴۲"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "تغییر مخاطب"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "تغییر دسته کارت"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "ورودی‌ها را تغییر دهید و خروجی را توضیح دهید."
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "تغییر گذرنامه"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "تغییر تنظیمات"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "تغییرات همزمان"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "قبل از بررسی ترتیب اجرا، نحو را تغییر می‌دهد."
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "تغییر چندین فایل به طور همزمان ممکن است علت اصلی را پنهان کند، حتی اگر نشانه مشکل از بین برود."
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "پیش‌بینی مرا بررسی کن"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "قبل از ادامه، درک مطلب را بررسی کنید"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "بررسی کنید که آیا نتیجه ناهمگام (async) قبل از خواندن، منتظر مانده است یا خیر."
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "بررسی تله‌های رایج"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "یک مفهوم و سطح شروع را انتخاب کنید. معلم شما بخش کوچکی را آموزش می‌دهد، آن را بررسی می‌کند و سپس پس از هر پاسخ، تنظیمات را انجام می‌دهد."
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "یک نقطه ورود انتخاب کنید"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "نقطه ورود دقیق را انتخاب کنید"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "بعدی را انتخاب کنید"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "مقصد را انتخاب کنید."
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "رابطه و هدف اتاق را انتخاب کنید."
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "قوی‌ترین نقطه ورود را انتخاب کنید."
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "بازه زمانی را انتخاب کنید"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "نقطه ورود خود را انتخاب کنید."
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "شهروند-دادستان در حال آزمودن فرضیات امپراتوری"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "شهروندان تقوا، آموزش و وفاداری را می‌سنجند"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "شهروندی صدای سیاسی را تعیین می‌کند"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "شهروندی محدود بود"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "شفافیت ادعا"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "ردیاب ادعا"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "مخاطب را شفاف‌سازی کنید"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "بازیگران را پیش از خواندن رفتار طبقه‌بندی می‌کند."
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "در انتظار تاییدیه"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "از نردبان بالا بروید"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "بستن نمایه"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "بستن موضوعات"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "نزدیک است، اما یک پیوند جا افتاده است"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "بسته جیره پارچه"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "پوشاک به سرعت رتبه را نشان می‌دهد"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "اقدامات مربی"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "کنترل‌های مربی"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "پاسخ مربی"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "سایدکار مربی"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "بار شناختی"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "سبک همکاری"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "آموزش مشارکتی"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "اتاق مطالعه مشارکتی"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "نمونه‌ها، حقایق، نقل‌قول‌ها یا محدودیت‌هایی را که از کار پشتیبانی می‌کنند، جمع‌آوری کنید."
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "مجوز تجاری"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "اتاق کمیته در دهلی"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "اشتباه رایج"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "مقایسه همه حالت‌ها"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "مقاصد، نقدهای معاصر، پیامدهای بعدی و قضاوت‌های مدرن را بدون تقلیل دادن فرد به قهرمان یا شرور، مقایسه کنید."
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "مقایسه میراث"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "مقایسه اطلاعات شورشیان و شرکت"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "این را با امروز مقایسه کنید"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "مقایسه با امروز"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "دو مورد نزدیک را با هم مقایسه کنید."
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "ایده را به یک مدل ذهنی قابل استفاده فشرده کنید."
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "تخته مفاهیم"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "ایجاز تنها زمانی کمک می‌کند که استدلال کارآمد باشد. طول متن در اینجا تشخیص اصلی نیست."
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "با تکیه بر شواهد، با تناقضات، طفره‌رفتن‌ها و پیامدها روبرو شوید."
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "جابجایی در امتداد منحنی تقاضا را با تغییر در تقاضا اشتباه می‌گیرد."
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "اشتباه گرفتن سود حسابداری با وجه نقدی که واقعاً قابل توزیع یا سرمایه‌گذاری مجدد است."
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "ارتباط دادن مفروضات، جریان نقدی و ارزش‌گذاری"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "لایه‌های بیرونی محلی محافظه‌کارانه که توسط راهنما انتخاب شده‌اند"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "زمینه به معنای تایید نیست"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "یادداشت‌های زمینه"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "ادامه یادگیری"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "ادامه با گوگل"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "ملاحظات حقوق قراردادها"
+    }
+  ]
+}

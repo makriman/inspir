@@ -88,6 +88,14 @@ export async function getAppTranslation(namespace: string, language: string) {
   return translation;
 }
 
+export async function getAppTranslations(namespaces: string[], languages: string[]) {
+  if (!namespaces.length || !languages.length) return [];
+  return db
+    .select()
+    .from(appTranslations)
+    .where(and(inArray(appTranslations.namespace, namespaces), inArray(appTranslations.language, languages)));
+}
+
 export async function upsertAppTranslation(input: {
   namespace: string;
   language: string;

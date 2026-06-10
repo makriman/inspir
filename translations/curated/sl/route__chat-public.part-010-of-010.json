@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "language": "Slovenian",
+  "locale": "sl",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Koristite tri ocjene:"
+    },
+    {
+      "key": "site.0b74139d26786c31a9",
+      "source": "Use Time travel when this is the right mode for the job. If you want a related path, try Quiz me on Trivia. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Uporabi Time travel, ko je to pravi način za nalogo. Če želiš sorodno pot, poskusi Quiz me on Trivia. Lahko tudi prebrskaš blog o učenju z UI za učne metode, sokratsko učenje, kartice, igranje vlog in aktivni priklic."
+    },
+    {
+      "key": "site.a2f81eb61f9a3c9bd0",
+      "source": "Use Time travel when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Uporabi Time travel, ko želiš sejo, ki se začne hitro, a se ti še vedno prilagodi. Prvi cilj ni zveneti impresivno. Prvi cilj je, da se naslednji korak zdi izvedljiv."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Koristite vremenske linije, uzrokujte slojeve, in posljedice mape."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Koristite strukture stabla, oznake čvorova, veze, in sljedeči korak prompts."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Koristite neoznačene dijelte, stupnjeve savjeta, odgovor ključ, in pregled prompts."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Koristite vizuelni rječnik in vodene pojačivače za gledanje."
+    },
+    {
+      "key": "site.d238305bf168b268ff",
+      "source": "Use Viva Practice when this is the right mode for the job. If you want a related path, try Learning Game Master. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Uporabi Viva Practice, ko je to pravi način za nalogo. Če želiš sorodno pot, poskusi Learning Game Master. Lahko tudi prebrskaš blog o učenju z UI za učne metode, sokratsko učenje, kartice, igranje vlog in aktivni priklic."
+    },
+    {
+      "key": "site.9d0a10626774c99800",
+      "source": "Use Viva Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Uporabi Viva Practice, ko želiš sejo, ki se začne hitro, a se ti še vedno prilagodi. Prvi cilj ni zveneti impresivno. Prvi cilj je, da se naslednji korak zdi izvedljiv."
+    },
+    {
+      "key": "site.bd69cd3ea825ed4970",
+      "source": "Use Vocabulary Builder when this is the right mode for the job. If you want a related path, try Reading Companion. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Uporabi Vocabulary Builder, ko je to pravi način za nalogo. Če želiš sorodno pot, poskusi Reading Companion. Lahko tudi prebrskaš blog o učenju z UI za učne metode, sokratsko učenje, kartice, igranje vlog in aktivni priklic."
+    },
+    {
+      "key": "site.cd4070756edded8a69",
+      "source": "Use Vocabulary Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Uporabi Vocabulary Builder, ko želiš sejo, ki se začne hitro, a se ti še vedno prilagodi. Prvi cilj ni zveneti impresivno. Prvi cilj je, da se naslednji korak zdi izvedljiv."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Koristite tjedno načrtte, rezervne načrtte, in sitne sljedeče akcije."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Koristite cikluse rada/prekidanja, prekidač izbornika, in povvojnek prompts."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Koristite radne listte, odgovore na ključeve, in oznake poteškoča."
+    },
+    {
+      "key": "site.3fb5408e7457bf73c1",
+      "source": "Use Writing Coach when this is the right mode for the job. If you want a related path, try Science Lab Partner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Uporabi Writing Coach, ko je to pravi način za nalogo. Če želiš sorodno pot, poskusi Science Lab Partner. Lahko tudi prebrskaš blog o učenju z UI za učne metode, sokratsko učenje, kartice, igranje vlog in aktivni priklic."
+    },
+    {
+      "key": "site.74c889d60e73579cf5",
+      "source": "Use Writing Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Uporabi Writing Coach, ko želiš sejo, ki se začne hitro, a se ti še vedno prilagodi. Prvi cilj ni zveneti impresivno. Prvi cilj je, da se naslednji korak zdi izvedljiv."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Ovjeriti osječaj, identificirati blokator, in odabrati jedan mali sljedeči korak."
+    },
+    {
+      "key": "site.754f12f4e5a90a1566",
+      "source": "Verify important facts with trusted sources, textbooks, or teacher-provided materials.",
+      "value": "Preverite važne činjenice z pouzdanim izvorima, udžbenicima, ali učiteljima osiguranih materijala."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "analiza vida"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "vizualno učenje"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Vizualno učenje"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Vaja za ustni zagovor"
+    },
+    {
+      "key": "site.9bb9921e99ff1e258d",
+      "source": "Viva Practice AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Viva Practice način učenja z UI je osredotočen način uporabe UI za učenje namesto pasivnega zbiranja odgovorov. Način je zgrajen okoli posebne naloge: Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback."
+    },
+    {
+      "key": "site.c4255e0bb155f796af",
+      "source": "Viva Practice AI Learning Mode: practical guide",
+      "value": "Viva Practice AI Learning Mode: praktični vodnik"
+    },
+    {
+      "key": "site.40d5123891b796f2de",
+      "source": "Viva Practice prompts and study loop",
+      "value": "Pozivi in učna zanka za Viva Practice"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Graditelj besedišča"
+    },
+    {
+      "key": "site.19637f7cace496a827",
+      "source": "Vocabulary Builder AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Vocabulary Builder način učenja z UI je osredotočen način uporabe UI za učenje namesto pasivnega zbiranja odgovorov. Način je zgrajen okoli posebne naloge: Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice."
+    },
+    {
+      "key": "site.afd2aa4628a25e2ad6",
+      "source": "Vocabulary Builder AI Learning Mode: practical guide",
+      "value": "Vocabulary Builder AI Learning Mode: praktični vodnik"
+    },
+    {
+      "key": "site.7ae5014c2f1de184ce",
+      "source": "Vocabulary Builder prompts and study loop",
+      "value": "Pozivi in učna zanka za Vocabulary Builder"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "tjedno izvješče"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Tedenska poročila"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "ponderirani rezultat"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "Kako dobro izgleda Sokratska seja"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Kakšen sistem dosežkov naj oblikujemo?"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Kaj UI učeči pratitelj treba učiniti za svakoga"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "O čem zbiramo ideje?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Kaj bereva?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Kaj vas danes zanima?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Kaj se pripravljaš povedati?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Kaj raziskuješ?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Kaj pišeš?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Katero umetniško delo, umetnik ali slog?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Katere naloge te čakajo?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Katero veliko vprašanje raziskujemo?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Kateri poklic ali interes naj raziščemo?"
+    },
+    {
+      "key": "site.5e290b0b81a3592a09",
+      "source": "What choices were available?",
+      "value": "Koji su izbori bili dostupni?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Katero temo državljanske vzgoje naj preučujemo?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Katere programske teme ali napake se lotimo?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Za katero zavezo potrebujete odgovornost?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Kateri koncept naj prikaževa v zemljevidu?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Katere predmete ali področja upravljaš?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Kateri diagram naj vadimo označevati?"
+    },
+    {
+      "key": "site.4ccb447427a6acda9a",
+      "source": "What did their society assume?",
+      "value": "Kaj je njihovo društvo pretpostavilo?"
+    },
+    {
+      "key": "site.8bc608a9306d319a8b",
+      "source": "What did this person care about?",
+      "value": "Kaj je toj osobi stalo?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Katero dilemo naj preučimo?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Kaj v tem svetu naredite naslednje?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Kaj si moraš zapomniti?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Kaj se moraš učiti?"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "Kaj misliš da se dogadža?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Kaj želiš opraviti danes?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Kaj počne sodišče?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Kaj dela produktni vodja?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Kaj kaže ta anketa?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Katero ekonomsko idejo naj simuliramo?"
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "Koji dokazi to potvrdžuju?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Na kateri izpit se pripravljaš?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Kakšen končni rezultat potrebujem?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "Kaj se je zgodilo ta teden?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "Kaj se zgodi, če se davki spremenijo?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "Kaj se zgodi, če spremenimo temperaturo?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "Pri kateri nalogi za domačo nalogo si obtičal?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Katera ideja se zdi nejasna ali sumljiva?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "Na kateri razgovor se pripravljaš?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "Kaj je znanje?"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Koja je uloga klorofila v fotosintezi?"
+    },
+    {
+      "key": "site.7b4cc8d27ce0650610",
+      "source": "What it should not do",
+      "value": "Kaj to ne bi trebalo učiniti"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Kakšno ambientno zbranost želiš?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "Kakšen primer naj simulirava?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "Kakšno osredotočenost želiš danes?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Kateri učni cilj naj postane sistem stopenj?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "Katero učno navado želiš?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "O katerem učnem trenutku naj razmisliva?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "Katera učna strategija mi ustreza?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "Kaj čini dobru bljesak karticu"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "Kaj naredi argument veljaven?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "Kaj naredi nekaj pravično?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "Katero gradivo naj postane učni vodnik?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "Katero matematično nalogo naj skupaj predelava?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "Na kateri glasbeni ideji naj delava?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Kakšen izid naj ustvari ta seja poglobljenega dela?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "Kateri pari naj postanejo igra povezovanja?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "Kateri napredek naj pregledamo?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "Kateri projekt gradimo?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "Katero vprašanje ali razpravo želiš objaviti?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "Kateri vir želiš deliti?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "Kateri scenarij naj odigrava?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Katero znanstveno idejo ali poskus raziskujeva?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "Kaj naj postane izziv?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "Kaj naj postane učna igra?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "Kaj naj postane zgodba?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "Kaj naj postane učna kartica?"
+    },
+    {
+      "key": "site.08aa84aad475334414",
+      "source": "What should I ask {value1} first?",
+      "value": "Kaj prvo trebam pitati {value1}?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "Kaj naj meri lestvica uspešnosti?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "Kaj naj zajema vadbeni test?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "Kaj naj počne učna skupina?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "Kaj naj zajema delovni list?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "O čem naj bo ta seja osredotočenosti?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "Kaj naj ponoviva?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "Kaj naj skicirava ali prikaževa z diagramom?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "Kateri niz ali rutino gradiš?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "Kateremu opravilu naj meriva čas?"
+    },
+    {
+      "key": "site.f4877740cc39cf8b66",
+      "source": "What the companion should provide",
+      "value": "Kaj bi pratitelj trebao pružiti"
+    },
+    {
+      "key": "site.231fbf27878f2698ea",
+      "source": "What this mode helps with",
+      "value": "S čime ta način rada pomaže"
+    },
+    {
+      "key": "site.a29b4b5ee632ee4d44",
+      "source": "What to ask a historical figure",
+      "value": "Kaj pitati povijesnu figuru"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "Iz katere teme naj vas preizkusimo?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "Katera tema naj postane miselni vzorec?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Na kateri ustni zagovor ali ustni izpit se pripravljaš?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "Kaj mi boš razložil nazaj?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "Katere besede ali temo naj vadiva?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "Kakšen ritem dela in odmorov želiš?"
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "Kaj bi ti promijenilo mišljenje?"
+    },
+    {
+      "key": "site.3ab45d2d5936f0cebc",
+      "source": "What would modern readers misunderstand?",
+      "value": "Kaj bi suvremeni čitatelji pogrešno razumjeli?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "Kaj bi se danes radi naučili?"
+    },
+    {
+      "key": "site.2fb41d86e92cebbf5a",
+      "source": "What you can practise",
+      "value": "Kaj lahko vajati"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "Kaj trenutno otežuje učenje?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "Katera je vaša današnja tema za debato?"
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "Ko je sokratsko podučavanje pogrešno sredstvo"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "Ko umetnete bilješke v UI, zatražite da podijelite široke ideje na te poslte. Paluba z 18 posebnih kartica je obično bolje od palube z 5 divovskih kartica ki svaka sadrži cijeli pasus."
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "Gdje UI lahko pomoči"
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "Gdje UI pomaže"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "Kje naj raziskujemo?"
+    },
+    {
+      "key": "site.0320ac9cef49bf6819",
+      "source": "Where to go next",
+      "value": "Gdje iči sljedeče"
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "Koja pretpostavka najviše radi?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "Kateremu zgodovinskemu dogodku naj sledimo?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "Katero zgodovinsko osebnost bi radi srečali?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "Kateri jezik in katera situacija?"
+    },
+    {
+      "key": "site.0f2909e7b85147ae50",
+      "source": "Which parts are well documented and which parts are uncertain?",
+      "value": "Koji dijelovi su dobro dokumentirani in ki dijelovi su neizvjesni?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "bijela buka"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "S kom želite razpravljati in o čem?"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Kdo se uči skupaj in kakšen je cilj?"
+    },
+    {
+      "key": "site.f4ff361d2bbe9cfce0",
+      "source": "Who it helps",
+      "value": "Komu pomaga"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Zakar sokratski UI tutor lahko napraviti ideje zalijepiti"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "Zakaj so mesta ob rekah?"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "Zakaj sem se izogibal učenju?"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "Zakaj je Rimsko cesarstvo oslabelo?"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Zakaj je moj odgovor pri algebri napačen?"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "Zakaj je to slovnično pravilo čudno?"
+    },
+    {
+      "key": "site.3b784ed5faff65ac4d",
+      "source": "Why it is different",
+      "value": "Zakaj je drugače"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "Zakar vprašanja pomažu"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "Besede o vremenu"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Izračunaj tehtane ocene, scenarije GPA, potrebne končne rezultate in semestrske načrte kaj-če."
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Z mentorjem AI predelaj algebro, analizo, besedilne naloge in matematične pojme korak za korakom."
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Predelaj dileme s tehtanjem deležnikov, posledic, dolžnosti, pravic in kompromisov."
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "Predelaj matematiko korak za korakom"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "Ustvarjalnik delovnih listov"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "Prestolnice sveta"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "Napiši scenarij za preverjanje"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "Napiši dobro forumsko vprašanje"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "Napiši moje tedensko poročilo o učenju"
+    },
+    {
+      "key": "site.26837fdfbdc6470aba",
+      "source": "Write your next step.",
+      "value": "Napiši svoj sljedeči korak."
+    },
+    {
+      "key": "site.2906041145ba13b814",
+      "source": "writing coach",
+      "value": "trener pisanja"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Mentor pisanja"
+    },
+    {
+      "key": "site.d0cad315c201ae8f56",
+      "source": "Writing Coach prompts and study loop",
+      "value": "Pozivi in učna zanka za Writing Coach"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP in stopnje"
+    },
+    {
+      "key": "site.9711f0284628a152bd",
+      "source": "Yes. {value1} opens as a public guest learning mode at {value2}, so you can start with a few free guest messages before creating an account.",
+      "value": "Da. {value1} otvara kao način javnog učenja gostiju na {value2}, tako da lahko začeti z nekoliko brezplačnih poruka gostiju preden nego kar stvorite račun."
+    },
+    {
+      "key": "site.1a3740fa59d6eb6490",
+      "source": "You can also start with a rough version of your real problem. A messy first prompt is fine. The session can clarify the level, audience, deadline, and style once you begin.",
+      "value": "Lahko takodžer začeti z grubom verzijom vašeg pravog problema. Neuredan prvi prompt je v redu. Sekcija lahko pojasniti razinu, publiku, rok, in stil nakon kar počnete."
+    },
+    {
+      "key": "site.f2e043b75e8b159ec8",
+      "source": "You can try the format in Talk to a Historical Person. If you want the wider scene before meeting a person, use Time Travel to visit a period, inspect constraints, and then ask what choices people actually had.",
+      "value": "Lahko probati format v Talk to a History Osoba. Ako želite šire scene preden susreta z osobom, uporabljati Time Travel posjetiti razdoblje, pregledati ograničenja, a zatim pitati kar izbori ljudi zapravo imali."
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "Znaš da je sokratski UI tutor radio ko učenec lahko učiniti tri stvari:"
+    }
+  ]
+}

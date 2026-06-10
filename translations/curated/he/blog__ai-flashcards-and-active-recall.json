@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Hebrew",
+  "locale": "he",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "פתיחה ברורה שמבקשת רעיון אחד."
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "מלכודת נפוצה שמזהירה מפני טעות סבירה."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "צד אחורי תמציתי שמשלים את המחשבה."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "רמז שעוזר בלי לגלות הכול."
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "בחירת חזרה כך שכרטיסים שהוחמצו יחזרו מוקדם יותר."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "תהליך כרטיסיות פשוט"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "כרטיס חזק יותר מבקש היזכרות:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "כרטיס שימושי שואל דבר אחד. הוא לא אמור להסתיר חמש שאלות בתוך פרומפט אחד. הוא צריך להיות ספציפי מספיק כדי לענות עליו, אבל לא צר עד כדי כך שהוא מאבד משמעות."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "כרטיסיית AI חלשה אומרת:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "שליפה פעילה"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "הוסף רמזים בלי לגלות את התשובה"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI יכול לעזור ליצור כרטיסיות מהר יותר, אבל הלמידה עדיין מגיעה מהיזכרות. אם הכלי כותב את הכרטיסים והלומד אף פעם לא מתאמץ לענות עליהם, כמעט שום דבר לא השתנה. הגרסה השימושית הופכת פתקים מבולגנים לפרומפטים ממוקדים, ואז גורמת ללומד להיזכר לפני חשיפת התשובה."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "AI יכול להפוך פתקים גולמיים לפרומפטים נקיים יותר להיזכרות. הוא יכול לפצל רעיונות רחבים לכרטיסים קטנים יותר, להוסיף דוגמאות ולזהות מלכודות שלומד עלול לפספס."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "כרטיסיות AI והיזכרות פעילה: איך לזכור יותר"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "ליישם מושג על דוגמה קטנה."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "בקש כרטיסים עם רעיון אחד, רמזים ומלכודות נפוצות."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "צד אחורי: \"ריווח מכריח את הזיכרון לשחזר את התשובה אחרי שכחה מסוימת, וזה מחזק היזכרות עתידית.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "השווה שני רעיונות;"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "להגדיר מונח;"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "מחק כרטיסים רחבים מדי או מובנים מאליהם."
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "אל תסקור הכול באותה מידה"
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "קל. דחוף את זה לאחר כך."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "להסביר סיבה;"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "כרטיסיות הן אחת הדרכים הפשוטות ביותר לעשות זאת."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "כרטיסיות הן חזקות, אבל הן לא כל תהליך הלימוד. הן מיטביות להיזכרות, אוצר מילים, הגדרות, נוסחאות, הבחנות ודוגמאות מפתח. הן חלשות יותר כשהלומד מעולם לא הבין את הרעיון מלכתחילה."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "כרטיסיות עובדות הכי טוב כשהן בודקות רעיון אחד בכל פעם, חושפות תשובות רק אחרי מאמץ ומחזירות כרטיסים שהוחמצו מוקדם יותר."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "למסלול מעמיק יותר, קרא את מדריך Flashcard Builder ואת הפרומפטים ולולאת הלימוד של Flashcard Builder. המטרה אינה חפיסה יפה. המטרה היא לזכור יותר כשהפתקים נעלמים."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "לדוגמה:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "צד קדמי: \"למה חזרה במרווחים עובדת טוב יותר מדחיסה?\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "קשה. חזור אחרי השהיה קצרה."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "רמז: \"חשוב על שכחה והיזכרות.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "רמזים שימושיים כשהם שומרים על מאמץ. רמז רע הוא תשובה בתחפושת. רמז טוב מצמצם את מרחב החיפוש."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "לזהות טעות נפוצה;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "אם כרטיס ממשיך להיכשל, אל תחזור עליו בלבד. שאל למה הוא קשה. השתמש ב-Socratic Instruction כדי לחשוף את התפיסה השגויה, ב-Math Step Coach לפערים פרוצדורליים, או בספריית פרומפטים ללמידת AI כדי למצוא פרומפט לימוד טוב יותר."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "Flashcard Builder של inspir מתוכנן סביב לולאת ההיזכרות הפעילה הזאת: לבנות חפיסה, לנסות את הצד הקדמי, לחשוף את התשובה, לדרג את ההיזכרות ולחזור על הפספוסים עד שהרעיון נקלט."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "פספסת. חזור בקרוב."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "טעות אחת שלומדים עושים היא להתייחס לכל כרטיס באותו אופן. אם אתה יודע כרטיס מיד, ייתכן שחזרה עליו שוב מחר תבזבז זמן. אם פספסת כרטיס, ייתכן שהמתנה של שבוע תהיה ארוכה מדי."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "חבר כרטיסיות להבנה"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "הדבק קטע קטן של פתקים ב-Flashcard Builder."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "פוטוסינתזה: התהליך שבו צמחים מייצרים מזון."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "דרג היזכרות בכנות."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "קריאת פתקים מרגישה פרודוקטיבית. לזכור אותם מאוחר יותר הוא המבחן האמיתי."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "לזכור רצף;"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "חזור בלי להסתכל על הצד האחורי."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "כרטיסים חזקים כוללים לעיתים קרובות:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "מיומנויות לימוד"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "הרמז הזה עוזר ללומד להתחיל בלי להסיר את פעולת הזכירה. Flashcard Builder של inspir נועד ללולאת חשיפה ודירוג כזו: נסה קודם, חשוף אחר כך, דרג בכנות, ואז החזר כרטיסים חלשים מוקדם יותר."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "לכן שליפה פעילה חשובה. במקום להסתכל על התשובה, אתה מנסה לשלוף אותה מהזיכרון. המאמץ מחזק את הזיכרון וחושף מה עדיין דורש עבודה."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "הלומד עדיין צריך לעשות את פעולת הזכירה. זו הנקודה."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "הכרטיס השני גורם ללומד לשלוף קשר, לא רק לזהות משפט. כרטיסים טובים בדרך כלל מתמקדים באחת מהמשימות האלה:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "זה לא צריך להיות מסובך. החלק החשוב הוא שלוח החזרות שלך מגיב לזיכרון במקום להתייחס לחבילה כאל רשימה סטטית."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "נסה זאת ב-Flashcard Builder. אם אתה צריך להבין את הנושא לפני יצירת כרטיסים, התחל ב-Learn Anything. אם אתה רוצה לחץ אחרי חזרה על הכרטיסים, עבור ל-Quiz Me On Trivia או ל-Viva Practice."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "הפוך הערות לכרטיסים טובים יותר"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "הפוך פספוסים חוזרים לשאלה עבור Learn Anything."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "השתמש בלולאה הזו:"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "השתמש בשלושה דירוגים:"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "מה תפקיד הכלורופיל בפוטוסינתזה?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "מה הופך כרטיסייה לטובה"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "כאשר אתה מדביק הערות לתוך AI, בקש ממנו לחלק רעיונות רחבים למשימות האלה. חבילה עם 18 כרטיסים ספציפיים בדרך כלל טובה יותר מחבילה עם 5 כרטיסים ענקיים שכל אחד מהם מכיל פסקה שלמה."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "איפה AI עוזר"
+    }
+  ]
+}

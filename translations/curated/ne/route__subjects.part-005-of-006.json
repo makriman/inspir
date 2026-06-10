@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Nepali",
+  "locale": "ne",
+  "namespace": "route:subjects",
+  "sourceHash": "480251a76b7ac147108b72d0c9732342b12c95b2a5fb1bc33af0ca23f8e5d014",
+  "part": {
+    "index": 5,
+    "total": 6
+  },
+  "entries": [
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "कुनै अवधारणालाई सरल रूपमा व्याख्या गर्ने प्रयास गर्नुहोस्। तपाईंको ट्युटरले कमीहरू पत्ता लगाउँछ, प्रश्नहरू सोध्छ र तपाईंलाई व्याख्यालाई पुनः निर्माण गर्न मद्दत गर्छ।"
+    },
+    {
+      "key": "site.3277493b1028207a63",
+      "source": "Try prompt",
+      "value": "प्रम्प्ट प्रयास गर्नुहोस्"
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "कुनै फराकिलो विषयलाई अनुसन्धान प्रश्नहरू, खोज शब्दहरू, रूपरेखा र स्रोत नोटहरूमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "कुनै अवधारणा, तर्क, समस्या, पाठ, वा निर्णयलाई प्रश्नहरूको केन्द्रित शृङ्खलामा बदल्नुहोस्। तपाईंको साथीले प्रत्येक उत्तर सुन्छ, धारणाहरू र कमीहरू पहिचान गर्छ, र तपाईंलाई आफ्नै अन्तिम निष्कर्षमा पुग्न प्रेरित गर्छ। प्रयास गर्नुहोस्: \"मलाई अवसर लागत (opportunity cost) बुझ्न मद्दत गर्नुहोस्।\""
+    },
+    {
+      "key": "site.c9d9192f68012bc832",
+      "source": "Turn a mistake into practice",
+      "value": "गल्तीलाई अभ्यासमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "पाठ्यक्रमलाई अध्ययन योजनामा बदल्नुहोस्"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "कुनै विषय, पाठ्यक्रम, वा नोटहरूलाई खण्डहरू, समय, अंकन मार्गदर्शन, र समीक्षा चरणहरू सहितको यथार्थपरक अभ्यास परीक्षामा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "गतिविधिलाई अर्को चरणहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "अवधारणाहरूलाई कथा, पात्र, द्वन्द्व र स्मरणीय दृश्यहरूमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "चित्रहरू, शारीरिक प्रणालीहरू, नक्साहरू, कार्यप्रवाहहरू, वा प्रयोगशाला सेटअपहरूलाई सङ्केत र उत्तर जाँचसहितको लेबल अभ्यासमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "विचारहरूलाई माइलस्टोनहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "ट्रिगर, पुरस्कार र रिकभरी योजनाहरूको साथ सिकाइका साना र दोहोर्याउन सकिने बानीहरू विकास गर्नुहोस्।"
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "सिकाइलाई छोटा संरचित चुनौतीहरूमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "सामग्रीलाई रिभिजन गाइडमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "मेरो नोटहरूलाई रिभिजन पानामा बदल्नुहोस्"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "नोटहरूलाई शब्दावली, अवधारणाहरू, व्यक्ति/घटनाहरू, सूत्रहरू, उदाहरणहरू वा कारण-प्रभाव जोडीहरूका लागि म्याचिङ गेममा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "नोट वा विषयहरूलाई स्पष्ट फ्ल्यासकार्डहरूमा बदल्नुहोस्, जसमा उत्तरहरू, झुक्याउने प्रश्नहरू र पुनरावलोकनका लागि संकेतहरू समावेश हुन्छन्।"
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "प्रगतिलाई स्तर र खोजहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "पढाइलाई खोजहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "छरिएका नोटहरूलाई फोल्डर, ट्याग, सारांश, लिङ्क र पुनरावलोकन कार्यहरूमा बदल्नुहोस् जसले सम्झनालाई सजिलो बनाउँछ।"
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "अध्ययन गतिविधि, क्विज नतिजा, नोटहरू र टाइमरहरूलाई प्रवृत्ति र आगामी कार्यहरू सहितको ड्यासबोर्ड-शैली समीक्षामा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "अध्ययनलाई चुनौतीमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "text लाई छोटो, सम्झन सजिलो study material मा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.d5e00d60abf4868c49",
+      "source": "Turn the confusion into a flashcard, quiz question, or explain-back prompt before leaving.",
+      "value": "छोड्नुअघि अलमललाई flashcard, quiz question, वा explain-back prompt मा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "पहिलो click लाई पूरा learning loop मा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "यो व्याख्यानलाई कर्नेल नोटहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "यो नोटलाई प्रश्न-उत्तरमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "अस्पष्ट इच्छाहरूलाई हासिल गर्न सकिने दैनिक study goals मा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "शब्दावलीलाई लेभलहरूमा बदल्नुहोस्"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "चरण-दर-चरण reasoning र learner participation सहित गणित सिकाउनुहोस्।"
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "ट्युटरिङ"
+    },
+    {
+      "key": "site.abcadedbc910700e58",
+      "source": "Understand a programming concept",
+      "value": "programming concept बुझ्नुहोस्"
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "कोड बुझ्नुहोस्, त्रुटिहरू डिबग गर्नुहोस्, अवधारणाहरू सिक्नुहोस् र साना परियोजनाहरू चरणबद्ध रूपमा बनाउनुहोस्।"
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "ठाउँहरू, नक्साहरू र मानिसहरूलाई बुझ्नुहोस्"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "अधिकार, सरकार र समाज बुझ्नुहोस्"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "ध्वनि, लय र ताल बुझ्नुहोस्"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "एउटा उत्तर किन सही हुन्छ बुझ्नुहोस्"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ऐतिहासिक घटनाहरूलाई कारण, उत्प्रेरक, परिणाम र वैकल्पिक सम्भावनाहरूका माध्यमबाट केलाउनुहोस्।"
+    },
+    {
+      "key": "site.1d4d43cc6f3a833e03",
+      "source": "Use",
+      "value": "प्रयोग गर्नुहोस्"
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "५०/१० को विश्राम प्रयोग गर्नुहोस्"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "दिएको उत्तर, सही idea, misconception, र next move का लागि compact table प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "अर्को अनुसन्धान गर्न credibility scorecard र questions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "outcome, block plan, rules, र review सहित deep work contract प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "front, back, hint, र common trap सहितको table प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "badge names, criteria, tiers, र proof examples प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "before/after snippets, revision priorities, र concise rationale प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "calendars, checklists, र risk flags प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "case file, choices, outcome, र learning note प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "challenge cards, points, rounds, र debrief प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "citation entries र missing-fields checklist प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.67ab2fa1194e620987",
+      "source": "Use Code Tutor for concepts, Project Coach for product ideas, Data Interpreter for datasets, and Study Plan Builder for a learning roadmap.",
+      "value": "concepts का लागि Code Tutor, product ideas का लागि Project Coach, datasets का लागि Data Interpreter, र learning roadmap का लागि Study Plan Builder प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "commitment cards, check-in scripts, र recovery plans प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "compact staged sections प्रयोग गर्नुहोस्: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, त्यसपछि occasional claim labels सहित in-character exchanges र request गर्दा debrief।"
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "compact UI-जस्ता sections प्रयोग गर्नुहोस्: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, र Field Notes। ठूला turns लाई meaningful choices सहित अन्त्य गर्नुहोस्।"
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, र Next action जस्ता compact workroom sections प्रयोग गर्नुहोस्। rewriting गर्दा merge गर्नुअघि suggested edits वा diffs देखाउनुहोस्।"
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "comparison tables र next-step experiments प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "माग्दा concise claims, evidence prompts, र final debate recap प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "concise code snippets, useful हुँदा मात्र comments, र test cases प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "concise drawing instructions, label lists, र visual checkpoints प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "Cornell sections प्रयोग गर्नुहोस्: cues, notes, summary, र recall checks।"
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "course cards, resource lists, र weekly workload tables प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "dashboard cards, trend notes, weak spots, र next actions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.21bcc1ab289563ea0a",
+      "source": "Use Data Interpreter to ask what the data says, what it does not say, and what to check next.",
+      "value": "data ले के भन्छ, के भन्दैन, र अर्को के check गर्ने भनेर सोध्न Data Interpreter प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "deadline tables, risk flags, र next actions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.5e7b8bf8fda0b72c8d",
+      "source": "Use debate and cause-effect modes to compare explanations and write a stronger argument.",
+      "value": "explanations तुलना गर्न र बलियो argument लेख्न debate र cause-effect modes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "debate cards, concise rebuttals, र argument quality को occasional scorekeeping प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "diagnosis, better model, why it works, र one check question प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "text मा diagrams, role explanations, र real-world scenarios प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "equations, aligned steps, र छोटा why-this-works notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.32342ae4ffd3ccbc2f",
+      "source": "Use Exam Prep Planner to split a syllabus into sessions, practice, rest, and review checkpoints.",
+      "value": "syllabus लाई sessions, practice, rest, र review checkpoints मा बाँड्न Exam Prep Planner प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "examiner questions, model answer shapes, र feedback scorecards प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "examples प्रयोग गर्नुहोस्, systems तुलना गर्नुहोस्, application questions सोध्नुहोस्, र facts लाई opinions बाट अलग गर्नुहोस्।"
+    },
+    {
+      "key": "site.5ab4fb5e9add990671",
+      "source": "Use Flashcards and Spaced Review to turn misses into repeatable memory work.",
+      "value": "misses लाई repeatable memory work मा बदल्न Flashcards र Spaced Review प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "folders, tags, note summaries, links, र review actions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "formulas, tables, र target score plans प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "forum-ready posts, reply drafts, र discussion summaries प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "goal cards, priority, time estimate, blocker, र done criteria प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "group agenda, roles, rounds, resources, र follow-up tasks प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "group roles, timer rounds, check-ins, र debrief prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "habit recipe, obstacle plan, र 7-day experiment प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "पूर्ण final answers भन्दा hints, checkpoints, र साना examples प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.b7f1b5070a6f617745",
+      "source": "Use Homework Coach to narrow the stuck point, then explain the next line in your own words.",
+      "value": "stuck point साँघुरो बनाउन Homework Coach प्रयोग गर्नुहोस्, त्यसपछि अर्को line आफ्नै शब्दमा explain गर्नुहोस्।"
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "उपयोगी हुँदा hypothesis, materials, method, observation, र explanation sections प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "idea menus, selection criteria, र next-step sketches प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "in-character dialogue र छोटा coaching notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "learner को voice प्रतिस्थापन नगरी structure सुधार्ने essay feedback, reading support, speaking practice, source critique, र revision loops का लागि inspir प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "private chats expose नगरी homework hints, math step checks, writing feedback, source critique, Socratic questions, र flashcards का लागि inspir प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "answer-copying बिना step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, र exam prep का लागि inspir प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.3cc91c4bf9fc851004",
+      "source": "Use it for debugging as a learning exercise: share the symptom, your expectation, and what you already tried, then ask for the next diagnostic step.",
+      "value": "debugging लाई learning exercise बनाउन यसको प्रयोग गर्नुहोस्: symptom, आफ्नो expectation, र पहिले प्रयास गरेको कुरा share गर्नुहोस्, अनि next diagnostic step माग्नुहोस्।"
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "key takeaways, outline, definitions, र review questions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "leaderboard rules, scoring, safeguards, र reflection प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "level tables, XP rules, quest cards, र anti-grind safeguards प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.c138353994a69a1461",
+      "source": "Use Math Step Coach for reasoning checks and Writing Coach for revision priorities.",
+      "value": "reasoning checks का लागि Math Step Coach र revision priorities का लागि Writing Coach प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "concepts सम्झन सजिलो बनाउन narrative प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "सहयोगी हुँदा nested bullets, tables, वा Mermaid text प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "numbered locations, images, र recall checkpoints प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "objectives, summaries, examples, traps, questions, र next review प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "observation, interpretation, evidence, र next-question sections प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "pair banks, scrambled lists, answer key, र review notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "place cards, comparison tables, र map prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "practical audio tips र study-session setup notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.43f312328ff3dea7a6",
+      "source": "Use Project Coach to turn a vague idea into the next testable feature or learning checkpoint.",
+      "value": "अस्पष्ट idea लाई next testable feature वा learning checkpoint मा बदल्न Project Coach प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "quests, levels, badges, र boss questions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.b0e2d270322f3134ca",
+      "source": "Use Quiz and Flashcards after the explanation so the same error becomes easier to spot.",
+      "value": "explanation पछि Quiz र Flashcards प्रयोग गर्नुहोस् ताकि उही error सजिलै देखियोस्।"
+    },
+    {
+      "key": "site.e2a9ec9823fba748bf",
+      "source": "Use Quiz mode to test recall first, then repair only the topics that need attention.",
+      "value": "पहिले recall test गर्न Quiz mode प्रयोग गर्नुहोस्, त्यसपछि ध्यान चाहिने topics मात्र repair गर्नुहोस्।"
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "पढ्नका लागि पानी परेको आवाज प्रयोग गर्नुहोस्"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "दोहोर्‍याएर पढ्नका लागि वर्षाको आवाज प्रयोग गर्नुहोस्"
+    },
+    {
+      "key": "site.ff8acf76ddef517cbf",
+      "source": "Use Reading Companion to summarize, question, and explain the passage before citing it.",
+      "value": "passage cite गर्नुअघि summarize, question, र explain गर्न Reading Companion प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "reflection prompts, learner strengths, र एउटा next experiment प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "report sections प्रयोग गर्नुहोस्: wins, evidence, blockers, lessons, next week।"
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "research questions, source matrices, र synthesis notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "resource cards, audience notes, र usage tips प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "review queues, due dates, र confidence ratings प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "clarity, structure, evidence, र delivery notes का लागि scorecards प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "short focus plans, checklists, र post-session reflection prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "सहयोगी हुँदा short sections, examples, analogies, र GFM-friendly lists वा tables प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "short summaries, quote-light references, र question sets प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "short supportive notes र practical next actions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "पढ्दा, लेख्दा, पुनरावलोकन गर्दा वा समस्या समाधान गर्दा ध्यान भड्किन नदिन सरल एम्बियन्ट साउन्ड प्रिसेटहरू प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "simple notation, examples, र practice prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "simple tables, cause-effect chains, र caveat notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "simple-language rewrites र gap checklists प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "सिक्ने तरिकाको रूपमा स्केचिङ प्रयोग गर्नुहोस्: चित्रहरू योजना गर्नुहोस्, कच्चा नक्साहरूमा लेबल लगाउनुहोस्, प्रक्रियाहरू व्याख्या गर्नुहोस्, वा अस्पष्ट विचारलाई स्पष्ट दृश्यमा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "sound recommendations र focus setup notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.673383be4080ccee8e",
+      "source": "Use source critique for any claim you might cite.",
+      "value": "cite गर्न सकिने कुनै पनि claim का लागि source critique प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.f035a4dcdcb6a8b442",
+      "source": "Use source critique or speaking practice to test whether the argument holds.",
+      "value": "argument टिक्छ कि टिक्दैन test गर्न source critique वा speaking practice प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.e61a20ed03ef5f151c",
+      "source": "Use Speaking Practice or Viva Practice to defend a claim out loud and find weak spots.",
+      "value": "claim लाई ठूलो स्वरमा defend गर्न र weak spots भेट्टाउन Speaking Practice वा Viva Practice प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "stakeholder tables र balanced pro/con analysis प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "उपयुक्त हुँदा STAR वा situation-action-result frameworks प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "story beats र learning notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "streak status, tiny action, recovery rule, र weekly reflection प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "word, meaning, example, memory hook, र practice prompt सहितका tables प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "tables, plain-language takeaways, र caution notes प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "पहिले target language प्रयोग गर्नुहोस्, त्यसपछि learner को preferred support language मा छोटो feedback दिनुहोस्।"
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "task boards, deadlines, र next-action lists प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "task cards, elapsed time, notes, र follow-up block suggestions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "test sections, timing, answer keys, rubrics, र review plans प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "gaps देखाउन र understanding सरल बनाउन Feynman technique प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.28cbcf738d776f9d5d",
+      "source": "Use the historical person mode for perspective-taking, then verify claims with source critique.",
+      "value": "perspective-taking का लागि historical person mode प्रयोग गर्नुहोस्, त्यसपछि source critique बाट claims verify गर्नुहोस्।"
+    },
+    {
+      "key": "site.1ef8423a25187fe253",
+      "source": "Use the simulations to generate questions and context, then verify important claims with primary or trusted secondary sources.",
+      "value": "questions र context generate गर्न simulations प्रयोग गर्नुहोस्, त्यसपछि important claims लाई primary वा trusted secondary sources बाट verify गर्नुहोस्।"
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "यो compact format प्रयोग गर्नुहोस्: Brief read: एक वाक्य। Map update: आवश्यक भए concise Claim, Assumption, Gap, वा Correction bullets। Next question: ठीक एउटा प्रश्न। पहिलो reply का लागि Target, Contract, र First question प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "thought experiments, argument maps, र balanced summaries प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.5dcf3d94e7f150a1c2",
+      "source": "Use Time Travel to understand the setting, constraints, beliefs, and pressures before judging the outcome.",
+      "value": "outcome judge गर्नुअघि setting, constraints, beliefs, र pressures बुझ्न Time Travel प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "timelines, cause layers, र consequence maps प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "tree structures, node labels, links, र next-step prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "unlabeled parts, hint tiers, answer key, र review prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "visual vocabulary र guided looking prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "weekly plans, fallback plans, र tiny next actions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "work/break cycles, break menus, र return prompts प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "worksheet sections, answer keys, र difficulty labels प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.272f9a3e858e31920c",
+      "source": "Useful subject help ends with proof that the idea stuck.",
+      "value": "उपयोगी subject help विचार बसेको प्रमाणसँग अन्त्य हुन्छ।"
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "भावना मान्यता दिनुहोस्, blocker चिन्ह लगाउनुहोस्, र एउटा सानो next step छान्नुहोस्।"
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "दृश्य analysis"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "दृश्य सिकाइ"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "दृश्य सिकाइ"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "मौखिक परीक्षा अभ्यास"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "शब्दावली निर्माता"
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "सुरु गर्न सबैभन्दा फराकिलो ठाउँ चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.a8323a2a9b34ae7e0c",
+      "source": "Web",
+      "value": "वेब"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "साप्ताहिक रिपोर्ट"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "साप्ताहिक रिपोर्टहरू"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "भारित score"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "हामीले कस्तो उपलब्धि प्रणाली डिजाइन गर्नुपर्छ?"
+    },
+    {
+      "key": "site.4478c5b34881470d07",
+      "source": "What are inspir subject hubs?",
+      "value": "inspir subject hubs के हुन्?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "हामी के को बारेमा विचार मन्थन गर्दैछौं?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "हामी के पढ्दै छौँ?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "आज तपाईं के जान्न उत्सुक हुनुहुन्छ?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "तपाईं के बोल्ने तयारी गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "तपाईं के को बारेमा अनुसन्धान गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "तपाईं के लेख्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "कुन कलाकृति, कलाकार, वा शैली?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "तपाईंसँग के-के असाइनमेन्टहरू छन्?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "हामी कुन ठूलो प्रश्नको अन्वेषण गर्दैछौं?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "हामीले कुन क्यारियर वा रुचिको अन्वेषण गर्नुपर्छ?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "हामीले नागरिक शास्त्रको कुन विषय अध्ययन गर्नुपर्छ?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "हामी कुन कोडिङ विषय वा बगमा काम गर्दैछौँ?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "कुन प्रतिबद्धतालाई जवाफदेहिता चाहिन्छ?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "हामीले कुन अवधारणाको नक्सा बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "तपाईं कुन कोर्स वा विषयहरू व्यवस्थापन गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "हामीले कुन चित्र लेबल गर्ने अभ्यास गर्नुपर्छ?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "हामीले कुन दुविधाको जाँच गर्नुपर्छ?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "यस संसारमा तपाईं अब के गर्नुहुन्छ?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "तपाईंले के सम्झनु आवश्यक छ?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "तपाईंले के अध्ययन गर्न आवश्यक छ?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "तपाईं आज के पूरा गर्न चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "अदालतले के गर्छ?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "प्रोडक्ट म्यानेजरले के गर्छन्?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "यो सर्वेक्षणले के देखाउँछ?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "हामीले कुन आर्थिक विचारको सिमुलेशन गर्नुपर्छ?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "तपाईं कुन परीक्षाको तयारी गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "मलाई कति फाइनल स्कोर चाहिन्छ?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "यो हप्ता के भयो?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "कर परिवर्तन भएमा के हुन्छ?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "यदि हामीले तापक्रम परिवर्तन गर्यौं भने के हुन्छ?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "तपाईं कुन गृहकार्य समस्यामा अड्किनुभएको छ?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "कुन विचार भ्रामक वा शंकास्पद लाग्छ?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "तपाईं कुन अन्तर्वार्ताको तयारी गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "ज्ञान भनेको के हो?"
+    },
+    {
+      "key": "site.3260060484f39629b0",
+      "source": "What is the best first step for exam prep?",
+      "value": "exam prep का लागि सबैभन्दा राम्रो first step के हो?"
+    },
+    {
+      "key": "site.4381cf32c8b3508f71",
+      "source": "What is the best writing workflow?",
+      "value": "सबैभन्दा राम्रो writing workflow के हो?"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "तपाईं कस्तो प्रकारको एम्बियन्ट फोकस चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "हामीले कस्तो प्रकारको केस सिमुलेट गर्नुपर्छ?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "आज तपाईं कस्तो प्रकारको फोकस चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "कुन सिकाइ लक्ष्यलाई लेभलिङ प्रणाली बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "तपाईं कस्तो सिकाइ बानी बसाल्न चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "हामीले कुन सिकाइ क्षणमा प्रतिबिम्ब गर्नुपर्छ?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "कुन सिकाइ रणनीति मलाई सुहाउँछ?"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "तर्कलाई के कुराले वैध बनाउँछ?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "कुनै कुरालाई के ले निष्पक्ष बनाउँछ?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "कुन सामग्रीलाई अध्ययन गाइड बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "हामीले कुन गणित समस्या समाधान गर्ने?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "हामीले कुन संगीत विचारमा काम गर्नुपर्छ?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "यो गहिरो कार्य सत्रबाट कस्तो नतिजा आउनुपर्छ?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "कुन जोडीहरूलाई म्याचिङ गेम बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "हामीले कुन प्रगतिको समीक्षा गर्नुपर्छ?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "हामी के परियोजना बनाउँदैछौं?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "तपाईं कस्तो प्रश्न वा छलफल पोस्ट गर्न चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "तपाईं कुन स्रोत साझा गर्न चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "हामीले कस्तो परिदृश्यमा भूमिका निर्वाह गर्नुपर्छ?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "हामी कुन विज्ञान विचार वा प्रयोग अन्वेषण गर्दैछौं?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "के कुरा चुनौती बन्नुपर्छ?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "के कुरालाई सिकाइ खेल बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "केलाई कथा बनाउने?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "केलाई फ्ल्यासकार्ड बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.b4db5ce01f645bf51a",
+      "source": "What should builders open first?",
+      "value": "builders ले पहिले के खोल्नुपर्छ?"
+    },
+    {
+      "key": "site.c29304d627902ff93d",
+      "source": "What should I open first for math?",
+      "value": "math का लागि मैले पहिले के खोल्नुपर्छ?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "लिडरबोर्डले के मापन गर्नुपर्छ?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "अभ्यास परीक्षाले के समेट्नुपर्छ?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "अध्ययन समूहले के गर्नुपर्छ?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "वर्कसिटले के समेट्नु पर्छ?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "यो फोकस सत्र के को बारेमा हुनुपर्छ?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "हामीले के पुनरावलोकन गर्नुपर्छ?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "हामीले के स्केच वा चित्र बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "तपाईं कस्तो निरन्तरता वा दिनचर्या बनाउँदै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "हामीले कुन कार्यको समय मापन गर्नुपर्छ?"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "हामीले तपाईंलाई कुन विषयमा परीक्षण गर्ने?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "कुन विषयलाई माइन्ड म्याप बनाउनुपर्छ?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "तपाईं कुन मौखिक परीक्षाको तयारी गर्दै हुनुहुन्छ?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "तपाईं मलाई के व्याख्या गरेर सुनाउनुहुन्छ?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "हामीले कुन शब्द वा विषयको अभ्यास गर्नुपर्छ?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "तपाईं कस्तो काम/विश्रामको लय चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "तपाईं आज के सिक्न चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "अहिले के कुराले सिकाइलाई गाह्रो बनाइरहेको छ?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "आज तपाईंको बहसको विषय के हो?"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "हामीले कहाँ अन्वेषण गर्नुपर्छ?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "हामीले कुन ऐतिहासिक घटनाको खोजी गर्नुपर्छ?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "तपाईं कुन ऐतिहासिक व्यक्तित्वलाई भेट्न चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "कुन भाषा र परिस्थिति?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "white noise ध्वनि"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "तपाईं कोसँग र के विषयमा बहस गर्न चाहनुहुन्छ?"
+    }
+  ]
+}

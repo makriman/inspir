@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Vietnamese",
+  "locale": "vi",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "Mạng xã hội có gây hại không?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "Có nên có bài tập về nhà không?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "Khám phá không gian có đáng giá không?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "Giải thích câu trả lời của tôi"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "Hiểu lý do tại sao một câu trả lời lại đúng"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Dán câu hỏi, câu trả lời của bạn và câu trả lời mong đợi nếu có. Người bạn đồng hành của bạn sẽ giải thích lý do và giúp bạn tránh mắc lỗi tương tự vào lần sau."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "Dán câu hỏi và câu trả lời của bạn"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "Luyện tập"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "Dán câu hỏi, câu trả lời của bạn và câu trả lời mong đợi nếu có. Người bạn đồng hành của bạn sẽ giải thích lý do và giúp bạn tránh mắc lỗi tương tự vào lần sau."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề luyện tập và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh để giải thích câu trả lời của bạn với các gợi ý, ví dụ và quy trình học tập riêng."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "Hiểu lý do tại sao một câu trả lời lại đúng"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Tại sao câu trả lời đại số của tôi lại sai?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "Giải thích phần sửa lỗi ngữ pháp này"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "Tôi đã chọn B. Tại sao C lại đúng?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "Huấn luyện viên bài tập về nhà"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "Gợi ý mà không đưa ra đáp án trực tiếp"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "Vượt qua khó khăn khi làm bài tập về nhà với các gợi ý, ví dụ và kiểm tra giúp bạn tự mình tư duy."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "Bạn đang gặp khó khăn với bài tập nào?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "Luyện tập"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Vượt qua khó khăn khi làm bài tập về nhà với các gợi ý đạo đức, ví dụ, kiểm tra và huấn luyện từng bước."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "Học sinh cần trợ giúp để bắt đầu một bài toán, kiểm tra bài làm hoặc hiểu một lỗi sai."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Huấn luyện viên hỗ trợ tư duy của bạn mà không làm thay bài tập, vì vậy kết quả cuối cùng vẫn là của bạn."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "Tìm bước tiếp theo"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "Hiểu lỗi sai"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "Luyện tập bài toán tương tự"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "Giúp tôi bắt đầu bài toán đố này"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "Kiểm tra luận điểm bài luận của tôi"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "Gợi ý cho tôi bài toán vật lý này"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "Huấn luyện viên Toán học"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "Giải toán từng bước một"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "Giải toán bằng cách hiểu từng bước. Huấn luyện viên của bạn sẽ kiểm tra bài làm, chỉ ra các lỗi sai và giúp bạn tự tin hơn."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "Chúng ta nên giải bài toán nào đây?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Giải các bài toán đại số, giải tích, bài toán đố và các khái niệm toán học từng bước một với huấn luyện viên AI."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "Người học muốn hiểu lý do tại sao mỗi bước toán học lại hiệu quả, thay vì chỉ chép đáp án."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Quy trình này kiểm tra từng bước, chỉ ra các lỗi sai và kết nối các phương pháp với khái niệm gốc."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "Chọn bước đi đầu tiên"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "Kiểm tra từng bước"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "Giải thích lý do phương pháp này hiệu quả"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "Giải phương trình 2x + 5 = 17 cùng tôi"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "Giúp tôi giải phương trình bậc hai"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "Giải thích đạo hàm từng bước một"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "Bạn đồng hành Phòng thí nghiệm Khoa học"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "Khám phá các thí nghiệm và khái niệm một cách an toàn"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Lên kế hoạch cho các minh họa an toàn, hiểu các biến số, dự đoán kết quả và lập luận dựa trên bằng chứng như một nhà khoa học."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Chúng ta đang khám phá ý tưởng hay thí nghiệm khoa học nào?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Lập kế hoạch cho các thí nghiệm an toàn, hiểu các biến số, dự đoán kết quả và lập luận dựa trên bằng chứng như một nhà khoa học."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học khám phá các chủ đề STEM muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho đối tác phòng thí nghiệm khoa học với các gợi ý, ví dụ và quy trình học tập riêng."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "Khám phá các thí nghiệm và khái niệm một cách an toàn"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "Thiết kế một thí nghiệm về sự phát triển của cây trồng"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "Giải thích về axit và bazơ"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "Điều gì sẽ xảy ra nếu chúng ta thay đổi nhiệt độ?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "Huấn luyện viên Viết lách"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "Lập kế hoạch, soạn thảo, sửa đổi và củng cố bài viết"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "Cải thiện các bài luận, câu chuyện, email và lập luận với phản hồi có mục tiêu giúp giữ nguyên văn phong của bạn."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "Bạn đang viết gì vậy?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "Giao tiếp"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Cải thiện kỹ năng viết với việc lập kế hoạch, sửa đổi, cấu trúc và phản hồi giúp giữ nguyên văn phong của bạn."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "Người học đang viết bài luận, câu chuyện, email, ghi chú học bổng hoặc các bài lập luận."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Huấn luyện viên đưa ra các ưu tiên sửa đổi có mục tiêu và các ví dụ trước-sau mà không thay thế văn phong của bạn."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "Làm rõ quan điểm của bạn"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "Cải thiện cấu trúc"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "Sửa đổi có lý do"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "Cải thiện phần mở đầu bài luận của tôi"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "Giúp tôi lập dàn ý cho một câu chuyện"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "Làm cho đoạn văn này rõ ràng hơn"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "Người bạn đồng hành đọc sách"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "Đọc, tóm tắt và đặt câu hỏi về văn bản"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Mang đến một đoạn văn hoặc ý tưởng về cuốn sách và xây dựng khả năng hiểu thông qua các bản tóm tắt, từ vựng, suy luận và thảo luận."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "Chúng ta đang đọc gì vậy?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "Giao tiếp"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Mang đến một đoạn văn hoặc ý tưởng về cuốn sách và xây dựng khả năng hiểu thông qua các bản tóm tắt, từ vựng, suy luận và thảo luận."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề giao tiếp, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho người bạn đồng hành đọc sách với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "Đọc, tóm tắt và đặt câu hỏi về văn bản"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "Giúp tôi hiểu đoạn văn này"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "Tóm tắt chương 2"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "Đặt câu hỏi cho tôi về bài thơ này"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "Xây dựng vốn từ vựng"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "Học từ vựng theo ngữ cảnh"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Xây dựng vốn từ vựng với ý nghĩa, ví dụ, gợi ý phát âm, mẹo ghi nhớ và thực hành nhanh."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "Chúng ta nên luyện tập từ vựng hoặc chủ đề nào?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "Giao tiếp"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Xây dựng vốn từ vựng với ý nghĩa, ví dụ, gợi ý phát âm, mẹo ghi nhớ và thực hành nhanh."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề giao tiếp, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho việc xây dựng vốn từ vựng với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "Học từ vựng theo ngữ cảnh"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "Từ vựng SAT"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "Từ vựng tiếng Anh thương mại"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "Từ vựng về thời tiết"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "Nhập vai ngôn ngữ"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "Luyện tập các cuộc hội thoại thực tế"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Luyện tập ngôn ngữ trong các tình huống thực tế như quán cà phê, phỏng vấn, du lịch và đời sống hàng ngày, với phần sửa lỗi sau mỗi lượt nói."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "Bạn muốn chọn ngôn ngữ và tình huống nào?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "Giao tiếp"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Luyện tập ngôn ngữ trong các tình huống thực tế như quán cà phê, phỏng vấn, du lịch và đời sống hàng ngày, với phần sửa lỗi sau mỗi lượt nói."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề giao tiếp và muốn có hướng dẫn thực tế thay vì một khung trả lời chung chung."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho việc nhập vai ngôn ngữ với các gợi ý, ví dụ và luồng học tập riêng biệt."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "Luyện tập các cuộc hội thoại thực tế"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "Nhập vai tại quán cà phê bằng tiếng Tây Ban Nha"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "Hội thoại tại sân bay bằng tiếng Pháp"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "Mặc cả tại chợ bằng tiếng Hindi"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "Luyện nói"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "Luyện tập phát âm với các gợi ý"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Chuẩn bị cho các bài phát biểu, thuyết trình, phỏng vấn hoặc kỳ thi nói với các gợi ý, thời gian và phản hồi về cấu trúc."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "Bạn đang chuẩn bị nói về chủ đề gì?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "Giao tiếp"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "Chuẩn bị cho các bài phát biểu, thuyết trình, phỏng vấn hoặc kỳ thi nói với các gợi ý, thời gian và phản hồi về cấu trúc."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề giao tiếp và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh để luyện nói với các gợi ý, ví dụ và luồng học tập riêng biệt."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "Luyện tập thành tiếng với các gợi ý"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "Luyện tập bài thuyết trình ở trường của tôi"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "Mô phỏng bài thi nói IELTS"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "Giúp tôi trả lời các câu hỏi phỏng vấn"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "Công cụ Lập kế hoạch Ôn thi"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Biến giáo trình thành kế hoạch học tập"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Xây dựng kế hoạch ôn thi thực tế dựa trên ngày thi, giáo trình, điểm mạnh và điểm yếu của bạn."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "Bạn đang chuẩn bị cho kỳ thi nào?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "Lập kế hoạch"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Biến giáo trình, ngày thi, thời gian và các điểm yếu của bạn thành một kế hoạch học tập thiết thực."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "Học sinh cần một kế hoạch cân bằng giữa việc ôn tập, thực hành, sự tự tin và cuộc sống thực tế."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Công cụ lập kế hoạch ưu tiên các phần yếu, thêm các vòng lặp ôn tập và tạo các kế hoạch dự phòng cho những ngày bị lỡ."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "Ưu tiên các chủ đề"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "Lên kế hoạch ôn tập"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "Theo dõi các lĩnh vực rủi ro"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "Lập kế hoạch 2 tuần cho môn sinh học"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "Tạo lịch ôn tập JEE"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "Giúp tôi chuẩn bị cho kỳ thi cuối kỳ"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "Trình tạo Flashcard"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "Tạo thẻ thông minh để ghi nhớ"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Biến ghi chú hoặc chủ đề thành các thẻ ghi nhớ rõ ràng với câu trả lời, bẫy và gợi ý ôn tập."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "Nội dung nào cần được chuyển thành thẻ ghi nhớ?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "Luyện tập"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Biến ghi chú hoặc chủ đề thành các thẻ ghi nhớ tập trung với gợi ý, câu trả lời, ví dụ và các bẫy thường gặp."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "Học sinh chuẩn bị cho các kỳ thi, người học ngôn ngữ và bất kỳ ai sử dụng phương pháp luyện tập truy xuất thông tin."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Các thẻ chỉ hỏi một vấn đề tại một thời điểm và bao gồm các bẫy để việc ôn tập xây dựng sự hiểu biết, không chỉ là nhận diện."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "Tạo thẻ ghi nhớ để gợi nhớ"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "Xem câu trả lời khi sẵn sàng"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "Ôn tập các phần chưa thuộc sớm hơn"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "Tạo thẻ ghi nhớ về nguyên phân"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "Chuyển ghi chú này thành dạng hỏi đáp"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "Tạo thẻ ghi nhớ về địa lý"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "Cung điện ký ức"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "Ghi nhớ ý tưởng bằng những địa điểm sống động"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "Chuyển đổi sự kiện, danh sách, bài phát biểu hoặc trình tự thành các khung cảnh tinh thần đáng nhớ."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "Bạn cần ghi nhớ điều gì?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "Luyện tập"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "Chuyển đổi sự kiện, bài phát biểu, danh sách hoặc trình tự thành các khung cảnh đáng nhớ giúp việc gợi nhớ dễ dàng hơn trong quá trình học tập và thi cử."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "Người học đang ghi nhớ các ý tưởng theo thứ tự, từ vựng, bài phát biểu, công thức hoặc sự kiện cần một điểm tựa tinh thần mạnh mẽ hơn."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "Chế độ này thiết kế các địa điểm, lộ trình và tín hiệu truy xuất sống động thay vì yêu cầu bạn đọc lại ghi chú."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "Chọn một lộ trình"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "Đặt các tín hiệu sống động"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "Luyện tập gợi nhớ"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "Ghi nhớ các hành tinh"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "Ghi nhớ dàn ý bài phát biểu"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "Học phân loại sinh học"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "Ôn tập ngắt quãng"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "Ôn tập trước khi bạn quên"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "Lập kế hoạch và thực hiện các phiên ôn tập nhanh giúp củng cố trí nhớ dài hạn."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "Chúng ta nên ôn tập nội dung gì?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "Luyện tập"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "Lập kế hoạch ôn tập nhanh, xem lại các khái niệm còn yếu và củng cố trí nhớ dài hạn với phương pháp lặp lại ngắt quãng có AI hướng dẫn."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "Người học hay quên sau khi đọc và cần một nhịp độ ôn tập thực tế cho các khái niệm, thuật ngữ hoặc tài liệu ôn thi."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Huấn luyện viên biến những lỗi sai và sự do dự thành một lịch trình ôn tập thay vì chỉ là một bản tóm tắt thụ động khác."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "Chọn mục tiêu ôn tập"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "Lên lịch gợi nhớ"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "Khắc phục các lỗi sai"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "Ôn tập môn hóa học hôm qua"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "Lập kế hoạch ôn tập 7 ngày"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "Kiểm tra lại từ vựng cho tôi"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "Trình xây dựng sơ đồ tư duy"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "Kết nối các ý tưởng trực quan bằng văn bản"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Lập bản đồ cách các ý tưởng liên quan với nhau, từ nguyên nhân và kết quả đến các danh mục, ví dụ và mâu thuẫn."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "Chúng ta nên lập bản đồ khái niệm nào?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "Tư duy"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Lập bản đồ cách các ý tưởng liên quan với nhau, từ nguyên nhân và kết quả đến các danh mục, ví dụ và mâu thuẫn."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề tư duy và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho trình xây dựng sơ đồ tư duy với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "Kết nối các ý tưởng một cách trực quan bằng văn bản"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý mẫu"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "Lập bản đồ về biến đổi khí hậu"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "Kết nối các khái niệm đại số"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "Xây dựng bản đồ về dân chủ"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "Bác sĩ Sửa lỗi Tư duy"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "Tìm và sửa các mô hình tư duy sai lệch"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Hãy nói ra suy nghĩ của bạn về vấn đề đang xảy ra, và người bạn đồng hành sẽ chẩn đoán các quan niệm sai lầm tiềm ẩn thông qua các bài kiểm tra nhẹ nhàng."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Ý tưởng nào khiến bạn cảm thấy khó hiểu hoặc nghi ngờ?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "Tư duy"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Hãy nói ra suy nghĩ của bạn về vấn đề đang xảy ra, và người bạn đồng hành sẽ chẩn đoán các quan niệm sai lầm tiềm ẩn thông qua các bài kiểm tra nhẹ nhàng."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề tư duy và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho Bác sĩ Sửa lỗi Tư duy với các gợi ý, ví dụ và luồng học tập riêng biệt."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "Tìm và sửa các mô hình tư duy sai lệch"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý mẫu"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "Tôi nghĩ các vật nặng hơn sẽ rơi nhanh hơn"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "Tôi không hiểu về số âm"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "Tại sao quy tắc ngữ pháp này lại kỳ lạ vậy?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "Gia sư Feynman"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "Giải thích đơn giản cho đến khi bạn hiểu sâu"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Hãy thử giải thích một khái niệm một cách đơn giản. Gia sư của bạn sẽ phát hiện các lỗ hổng kiến thức, đặt câu hỏi và giúp bạn xây dựng lại lời giải thích."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "Bạn sẽ giải thích lại điều gì cho tôi?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "Tư duy"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Hãy thử giải thích một khái niệm một cách đơn giản. Gia sư của bạn sẽ phát hiện các lỗ hổng kiến thức, đặt câu hỏi và giúp bạn xây dựng lại lời giải thích."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề tư duy và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho gia sư Feynman với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "Giải thích đơn giản cho đến khi bạn nắm vững"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "Tôi sẽ giải thích về trọng lực"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "Kiểm tra sự hiểu biết của tôi về lạm phát"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "Giúp tôi đơn giản hóa đệ quy"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "Trình mô phỏng tình huống thực tế"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "Học tập thông qua các quyết định thực tế"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Tham gia vào một tình huống thực tế, đưa ra quyết định, xem xét hậu quả và tìm hiểu nguyên tắc đằng sau mỗi lựa chọn."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "Chúng ta nên mô phỏng loại tình huống nào?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "Trải nghiệm thực tế"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Tham gia vào một tình huống thực tế, đưa ra quyết định, xem xét hậu quả và tìm hiểu nguyên tắc đằng sau mỗi lựa chọn."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề trải nghiệm thực tế và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho trình mô phỏng tình huống thực tế với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "Học tập thông qua các quyết định thực tế"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "Tình huống chiến lược kinh doanh"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "Tình huống đạo đức y tế"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "Tình huống chính sách môi trường"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "Kịch bản đóng vai"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "Luyện tập các cuộc hội thoại khó trong đời thực"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Luyện tập đàm phán, giải quyết xung đột, hỗ trợ khách hàng, lãnh đạo hoặc bất kỳ cuộc hội thoại quan trọng nào."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "Chúng ta nên đóng vai kịch bản nào?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "Đắm mình"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Luyện tập đàm phán, giải quyết xung đột, hỗ trợ khách hàng, lãnh đạo hoặc bất kỳ cuộc hội thoại quan trọng nào."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học khám phá các chủ đề đắm mình, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho kịch bản đóng vai với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "Luyện tập các cuộc hội thoại khó trong đời thực"
+    }
+  ]
+}

@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Swahili",
+  "locale": "sw",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 2,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.ea4bb4da23fb87d4e5",
+      "source": "A simple test",
+      "value": "Jaribio rahisi"
+    },
+    {
+      "key": "site.87b0c467ed80ade449",
+      "source": "A Socratic tutor can surface those gaps without turning the session into a lecture.",
+      "value": "Mkufunzi wa Kisokrati anaweza kuonyesha mapengo hayo bila kugeuza kipindi kuwa mhadhara."
+    },
+    {
+      "key": "site.7a0d3765af27915bc5",
+      "source": "A strong session usually has four stages.",
+      "value": "Kipindi imara kwa kawaida kina hatua nne."
+    },
+    {
+      "key": "site.1a6848f0c8ec5bb0b1",
+      "source": "A strong study loop looks like this:",
+      "value": "Mzunguko imara wa kusoma huonekana hivi:"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "Kadi imara zaidi huomba kukumbuka:"
+    },
+    {
+      "key": "site.41e68830003eff69b8",
+      "source": "A stronger study loop",
+      "value": "Mzunguko imara zaidi wa kusoma"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "Kadi yenye manufaa huuliza jambo moja. Haipaswi kuficha maswali matano ndani ya kidokezo kimoja. Inapaswa kuwa mahususi vya kutosha kujibika, lakini si nyembamba kiasi cha kupoteza maana."
+    },
+    {
+      "key": "site.938617f5429d417dd6",
+      "source": "A useful historical AI response should have two layers.",
+      "value": "Jibu la kihistoria la AI lenye manufaa linapaswa kuwa na tabaka mbili."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "Flashcard dhaifu ya AI husema:"
+    },
+    {
+      "key": "site.ff7742828ded5fb1d5",
+      "source": "Access matters",
+      "value": "Ufikiaji ni muhimu"
+    },
+    {
+      "key": "site.656a120c3cef3e1730",
+      "source": "Accountability Partner",
+      "value": "Mshirika wa Uwajibikaji"
+    },
+    {
+      "key": "site.b484114207a28812a8",
+      "source": "Act as an intelligent collaborator in a shared workroom, helping the user learn, think, and produce through visible shared work.",
+      "value": "Tenda kama mshirika mwenye akili katika chumba cha kazi cha pamoja, ukimsaidia mtumiaji kujifunza, kufikiri, na kuzalisha kupitia kazi ya pamoja inayoonekana."
+    },
+    {
+      "key": "site.5297eaca5251bfeb03",
+      "source": "Active Learning",
+      "value": "Ujifunzaji Amilifu"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "kumbukumbu ya kufanya mazoezi kwa kukumbuka mara kwa mara"
+    },
+    {
+      "key": "site.0ef988b21b53f98841",
+      "source": "active recall AI",
+      "value": "AI ya kukumbuka kwa bidii"
+    },
+    {
+      "key": "site.e072c3432b03ef4bd6",
+      "source": "Adapt the session to your goal",
+      "value": "Rekebisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "site.279ca6d181ad9f793f",
+      "source": "Adapt the session to your goal.",
+      "value": "Rekebisha kipindi kulingana na lengo lako."
+    },
+    {
+      "key": "site.9d3c8506ef510c151d",
+      "source": "Adaptive lessons that make you do",
+      "value": "Masomo ya kurekebisha yanayokufanya utende"
+    },
+    {
+      "key": "site.9eec6dd0c72d52f8f5",
+      "source": "Adaptive lessons that make you do.",
+      "value": "Masomo yanayobadilika yanayokufanya utende."
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "Ongeza vidokezo bila kutoa jibu"
+    },
+    {
+      "key": "site.d61a66c51f682dcb84",
+      "source": "Add nodes, test relationships, find gaps, and revise the map.",
+      "value": "Ongeza nodi, jaribu mahusiano, tafuta mapengo, na rekebisha ramani."
+    },
+    {
+      "key": "site.7b951c0ab5479c1615",
+      "source": "Add your next edit, decision, question, or handoff",
+      "value": "Ongeza marekebisho yako yanayofuata, uamuzi, swali, au makabidhiano"
+    },
+    {
+      "key": "site.badffd4897cc89d905",
+      "source": "Adjust audio and pair it with a realistic work block.",
+      "value": "Rekebisha sauti na uiunganishe na kipindi halisi cha kazi."
+    },
+    {
+      "key": "site.9b5fe90fbbcef2909b",
+      "source": "Adjust sound choice and pair it with a focus block.",
+      "value": "Rekebisha chaguo la sauti na uliunganishe na kipindi cha umakini."
+    },
+    {
+      "key": "site.761806a78bc96d1e13",
+      "source": "After every learner answer, identify the claim, reasoning, assumptions, gaps, contradictions, or corrected insight. Give one brief read of their answer, update the reasoning map with concise labels, then ask exactly one next-best question.",
+      "value": "Baada ya kila jibu la mwanafunzi, tambua dai, mantiki, dhana, mapengo, mikanganyiko, au ufahamu uliosahihishwa. Toa usomaji mfupi mmoja wa jibu lao, sasisha ramani ya mantiki kwa lebo fupi, kisha uliza swali moja tu bora linalofuata."
+    },
+    {
+      "key": "site.63d302e254836526a3",
+      "source": "AI {value1} coach",
+      "value": "Kocha wa AI wa {value1}"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI inaweza kusaidia kutengeneza flashcards haraka, lakini kujifunza bado hutokana na kukumbuka. Ikiwa zana inaandika kadi na mwanafunzi hajitahidi kamwe kuzijibu, karibu hakuna kilichobadilika. Toleo lenye manufaa hugeuza noti zisizo nadhifu kuwa vidokezo vilivyolengwa, kisha humfanya mwanafunzi akumbuke kabla ya kufichua jibu."
+    },
+    {
+      "key": "site.f2a36c171d1ce71c9a",
+      "source": "AI can help you learn faster. It can also help you avoid learning entirely.",
+      "value": "AI inaweza kukusaidia kujifunza haraka zaidi. Inaweza pia kukusaidia kukwepa kujifunza kabisa."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "AI inaweza kugeuza noti mbichi kuwa vidokezo safi vya kukumbuka. Inaweza kugawa mawazo mapana kuwa kadi ndogo, kuongeza mifano, na kutambua mitego ambayo mwanafunzi anaweza kukosa."
+    },
+    {
+      "key": "site.8438f854213c85aee7",
+      "source": "AI code tutor",
+      "value": "Mkufunzi wa msimbo wa AI"
+    },
+    {
+      "key": "site.729d4425bdaaf80f4e",
+      "source": "AI debate coach",
+      "value": "Kocha wa mjadala wa AI"
+    },
+    {
+      "key": "site.51479a3d04cedeb703",
+      "source": "AI Debate Coach For Sharper Arguments",
+      "value": "Kocha wa Mjadala wa AI kwa Hoja Kali Zaidi"
+    },
+    {
+      "key": "site.2598763f61ea6b6bb6",
+      "source": "AI Debate Coach For Sharper Arguments is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Pick any topic and go head-to-head in a real debate. Choose a side, get challenged, and learn to make better arguments.",
+      "value": "Kocha wa Mjadala wa AI kwa Hoja Kali Zaidi ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: chagua mada yoyote na uingie kwenye mjadala halisi ana kwa ana. Chagua upande, changamkiwa, na jifunze kutoa hoja bora."
+    },
+    {
+      "key": "site.8859b800f7eee19699",
+      "source": "AI Debate Coach For Sharper Arguments: practical guide",
+      "value": "AI Debate Coach For Sharper Arguments: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.5fa2b724b7cdd99de5",
+      "source": "AI debate personality",
+      "value": "Haiba ya mjadala ya AI"
+    },
+    {
+      "key": "site.89e11cb85c14c4242a",
+      "source": "AI Exam Prep Planner For Realistic Study Schedules",
+      "value": "Mpangaji wa Maandalizi ya Mtihani wa AI kwa Ratiba Halisi za Kusoma"
+    },
+    {
+      "key": "site.bf462c9796fffadf77",
+      "source": "AI Exam Prep Planner For Realistic Study Schedules is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Mpangaji wa Maandalizi ya Mtihani wa AI kwa Ratiba Halisi za Kusoma ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: jenga mpango halisi wa mtihani kutoka tarehe yako, mtaala, nguvu zako, na maeneo dhaifu."
+    },
+    {
+      "key": "site.774db7d70706801265",
+      "source": "AI Exam Prep Planner Study Schedule Guide",
+      "value": "Mwongozo wa Ratiba ya Kusoma wa Mpangaji wa Maandalizi ya Mtihani wa AI"
+    },
+    {
+      "key": "site.8e215beabc2202d5a3",
+      "source": "AI Flashcard Builder For Active Recall",
+      "value": "Kijenga Flashcards cha AI kwa Kukumbuka kwa Bidii"
+    },
+    {
+      "key": "site.5a49a5d3cb6e13e70d",
+      "source": "AI Flashcard Builder For Active Recall is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Kijenga Flashcards cha AI kwa Kukumbuka kwa Bidii ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: geuza noti au mada kuwa flashcards zilizo wazi zenye majibu, mitego, na vidokezo vya marudio."
+    },
+    {
+      "key": "site.ac0661370a327a0196",
+      "source": "AI Flashcard Builder For Active Recall: practical guide",
+      "value": "AI Flashcard Builder For Active Recall: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.8b958fe8a16d05a11e",
+      "source": "AI flashcard maker",
+      "value": "Mtengenezaji wa flashcards wa AI"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "Flashcards za AI na kukumbuka kwa bidii: jinsi ya kukumbuka zaidi"
+    },
+    {
+      "key": "site.56f848e0f9e7bbad77",
+      "source": "AI Help",
+      "value": "Msaada wa AI"
+    },
+    {
+      "key": "site.863e8e7d7988c74d88",
+      "source": "AI historical conversation can help when it is handled carefully.",
+      "value": "Mazungumzo ya kihistoria ya AI yanaweza kusaidia yakishughulikiwa kwa uangalifu."
+    },
+    {
+      "key": "site.20bb829d6a66690dd1",
+      "source": "AI history roleplay",
+      "value": "Uigizaji wa historia kwa AI"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "Mkufunzi wa historia wa AI"
+    },
+    {
+      "key": "site.b7449dd0e648ebc984",
+      "source": "AI Homework Coach With Hints, Not Answer Dumping",
+      "value": "Kocha wa Kazi za Nyumbani wa AI Mwenye Vidokezo, Si Kumwaga Majibu"
+    },
+    {
+      "key": "site.8b3a4d41374e746147",
+      "source": "AI Homework Coach With Hints, Not Answer Dumping is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "Kocha wa Kazi za Nyumbani wa AI Mwenye Vidokezo, Si Kumwaga Majibu ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: ondoa kukwama kwenye kazi za nyumbani kwa vidokezo, mifano, na ukaguzi unaokusaidia kufikiri mwenyewe."
+    },
+    {
+      "key": "site.9c3d823515756d4b46",
+      "source": "AI Homework Coach With Hints, Not Answer Dumping: practical guide",
+      "value": "AI Homework Coach With Hints, Not Answer Dumping: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.3d3f1221e1d276649c",
+      "source": "AI homework helper",
+      "value": "Msaidizi wa kazi za nyumbani wa AI"
+    },
+    {
+      "key": "site.7817d99167cca36454",
+      "source": "AI in classrooms",
+      "value": "AI katika madarasa"
+    },
+    {
+      "key": "site.ff43fb5c5c0f826844",
+      "source": "AI is well suited to patient repetition. It can ask the next question, rephrase a hint, change the difficulty, and wait while the learner tries.",
+      "value": "AI inafaa sana kwa marudio yenye subira. Inaweza kuuliza swali linalofuata, kueleza upya kidokezo, kubadilisha ugumu, na kusubiri mwanafunzi anapojaribu."
+    },
+    {
+      "key": "site.f202252520545feb7e",
+      "source": "AI learning",
+      "value": "Kujifunza kwa AI"
+    },
+    {
+      "key": "site.27a1e1b793ab78ec56",
+      "source": "AI learning companion",
+      "value": "Msaidizi wa kujifunza kwa AI"
+    },
+    {
+      "key": "site.d79e5fb6751ee15bbf",
+      "source": "AI lesson generator",
+      "value": "Mtengenezaji wa somo wa AI"
+    },
+    {
+      "key": "site.0f50523d01f07dcc9f",
+      "source": "AI math tutor",
+      "value": "Mkufunzi wa hisabati wa AI"
+    },
+    {
+      "key": "site.2d01f73a0b9f9db13a",
+      "source": "AI memory palace",
+      "value": "Jumba la kumbukumbu la AI"
+    },
+    {
+      "key": "site.d0814414f377a38553",
+      "source": "AI Memory Palace Builder For Study Recall",
+      "value": "Kijenga Jumba la Kumbukumbu la AI kwa Kukumbuka Masomo"
+    },
+    {
+      "key": "site.41ebcc98ccc88cf9e9",
+      "source": "AI memory review",
+      "value": "Marudio ya kumbukumbu kwa AI"
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "Vidokezo vya AI"
+    },
+    {
+      "key": "site.b8c8a696a858497795",
+      "source": "AI quiz generator",
+      "value": "Mtengenezaji wa maswali wa AI"
+    },
+    {
+      "key": "site.f814daf9472e897692",
+      "source": "AI roleplay",
+      "value": "Uigizaji wa majukumu kwa AI"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "Mkufunzi wa Kisokrati wa AI"
+    },
+    {
+      "key": "site.751bdd7ceaaff7757b",
+      "source": "AI spaced repetition",
+      "value": "Marudio yaliyo na nafasi kwa AI"
+    },
+    {
+      "key": "site.90ccfd844fadf8ccbd",
+      "source": "AI Spaced Review Coach For Long-Term Memory",
+      "value": "Kocha wa Marudio ya AI kwa Kumbukumbu ya Muda Mrefu"
+    },
+    {
+      "key": "site.47da0912887d47a2d3",
+      "source": "AI story tutor",
+      "value": "Mkufunzi wa hadithi wa AI"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "Kijenga mpango wa kusoma wa AI"
+    },
+    {
+      "key": "site.5d5aaafd3733742404",
+      "source": "AI Study Plan Builder For Better Learning",
+      "value": "Kijenga Mpango wa Kusoma wa AI kwa Kujifunza Bora"
+    },
+    {
+      "key": "site.cf8c22484411c1bbea",
+      "source": "AI study planner",
+      "value": "Mpangaji wa kusoma wa AI"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "Ratiba ya masomo ya AI"
+    },
+    {
+      "key": "site.c2f5186d44405a46e8",
+      "source": "AI Time Travel For Learning History",
+      "value": "Usafiri wa Wakati kwa AI kwa Kujifunza Historia"
+    },
+    {
+      "key": "site.7a39d50658c347ee80",
+      "source": "AI Time Travel For Learning History is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Receive a temporal passport, clear a travel advisory, then explore a specific historical society through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Usafiri wa Wakati kwa AI kwa Kujifunza Historia ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: pokea pasipoti ya wakati, pitia ushauri wa safari, kisha chunguza jamii maalum ya kihistoria kupitia mandhari, ramani, kalenda ya matukio, watu, sheria, vitu, na ushahidi."
+    },
+    {
+      "key": "site.6762b13513f3bf3162",
+      "source": "AI Time Travel For Learning History: practical guide",
+      "value": "AI Time Travel For Learning History: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.809d1e1957710315a3",
+      "source": "AI tutor",
+      "value": "Mkufunzi wa AI"
+    },
+    {
+      "key": "site.deb014adb59d8c1c92",
+      "source": "AI Writing Coach For Essays And Drafts: practical guide",
+      "value": "AI Writing Coach For Essays And Drafts: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.ccd31f8cdd2f1014de",
+      "source": "AI Writing Coach For Essays, Stories, And Clearer Drafts",
+      "value": "Kocha wa Uandishi wa AI kwa Insha, Hadithi, na Rasimu Zilizo Wazi Zaidi"
+    },
+    {
+      "key": "site.1237bf6aa7166984ef",
+      "source": "AI Writing Coach For Essays, Stories, And Clearer Drafts is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "Kocha wa Uandishi wa AI kwa Insha, Hadithi, na Rasimu Zilizo Wazi Zaidi ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: boresha insha, hadithi, barua pepe, na hoja kwa mrejesho uliolengwa unaohifadhi sauti yako."
+    },
+    {
+      "key": "site.bf133915e9402e77df",
+      "source": "AI writing tutor",
+      "value": "Mkufunzi wa uandishi wa AI"
+    },
+    {
+      "key": "site.5cb48f858250c1b226",
+      "source": "ai-learning-platform, ai-study-platform",
+      "value": "jukwaa-la-kujifunza-kwa-ai, jukwaa-la-kusoma-kwa-ai"
+    },
+    {
+      "key": "site.1c56d2d141ea93a984",
+      "source": "ambient sounds",
+      "value": "sauti za mazingira"
+    },
+    {
+      "key": "site.0bb179274b1375c2c7",
+      "source": "Ambient Sounds",
+      "value": "Sauti za Mazingira"
+    },
+    {
+      "key": "site.36f2543046efb771be",
+      "source": "An AI learning companion should not pretend to be a magic authority. It should not erase uncertainty, replace teachers, or train learners to copy answers. The best systems are honest about limits and clear about the difference between help and handoff.",
+      "value": "Msaidizi wa kujifunza wa AI hapaswi kujifanya mamlaka ya kichawi. Hapasongezi kutokuwa na uhakika, kuchukua nafasi ya walimu, au kuwazoesha wanafunzi kunakili majibu. Mifumo bora huwa wazi kuhusu mipaka na tofauti kati ya msaada na kukabidhi kazi."
+    },
+    {
+      "key": "site.b099ec58b98668f283",
+      "source": "an ordinary person affected by the decision;",
+      "value": "mtu wa kawaida aliyeathiriwa na uamuzi;"
+    },
+    {
+      "key": "site.25bc96295797b5371a",
+      "source": "Analytics",
+      "value": "Uchambuzi"
+    },
+    {
+      "key": "site.630dff24d48bbe9e5f",
+      "source": "Analyze a chart from my textbook",
+      "value": "Changanua chati kutoka kwa kitabu changu cha kiada"
+    },
+    {
+      "key": "site.f3d82372406438fc15",
+      "source": "Animal testing",
+      "value": "Upimaji kwa wanyama"
+    },
+    {
+      "key": "site.b442c152b571b46f44",
+      "source": "Answer counterarguments",
+      "value": "Jibu hoja za kupinga"
+    },
+    {
+      "key": "site.7fe969b93da131adb2",
+      "source": "Answer counterarguments.",
+      "value": "Jibu hoja za kupinga."
+    },
+    {
+      "key": "site.4a562a9b337e6bcf7b",
+      "source": "Answer the active question in your own words",
+      "value": "Jibu swali linaloendelea kwa maneno yako mwenyewe"
+    },
+    {
+      "key": "site.24631ae56fdf2458b4",
+      "source": "Answer the learner directly, then offer two possible paths: simpler foundations or deeper exploration.",
+      "value": "Mjibu mwanafunzi moja kwa moja, kisha toa njia mbili zinazowezekana: misingi rahisi zaidi au uchunguzi wa kina zaidi."
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "tumia dhana kwenye mfano mdogo."
+    },
+    {
+      "key": "site.51320c3214deb3e7cc",
+      "source": "Apply the idea to a new example.",
+      "value": "Tumia wazo hilo kwenye mfano mpya."
+    },
+    {
+      "key": "site.5724fa519df604c68f",
+      "source": "Argue both sides and sharpen thinking",
+      "value": "Toa hoja pande zote mbili na uimarishe fikra zako"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Hoja"
+    },
+    {
+      "key": "site.81f668e00cc4607d47",
+      "source": "argument practice",
+      "value": "mazoezi ya hoja"
+    },
+    {
+      "key": "site.59e0b5e990e4abcd08",
+      "source": "Art Appreciation Guide",
+      "value": "Mwongozo wa Kuthamini Sanaa"
+    },
+    {
+      "key": "site.e9cb89712d4994b225",
+      "source": "Art Appreciation Guide AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Hali ya Kujifunza kwa AI ya Art Appreciation Guide ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: chunguza kazi za sanaa, mitindo, wasanii, chaguo za kuona, na kinachofanya picha iwe na nguvu."
+    },
+    {
+      "key": "site.9399e3186a9539d906",
+      "source": "Art Appreciation Guide AI Learning Mode: practical guide",
+      "value": "Hali ya Kujifunza kwa AI ya Art Appreciation Guide: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.0d8a7e68d401e88371",
+      "source": "Art Appreciation Guide prompts and study loop",
+      "value": "Vidokezo na mzunguko wa masomo wa Art Appreciation Guide"
+    },
+    {
+      "key": "site.8cf49371813924ee9b",
+      "source": "Ask a teacher for help",
+      "value": "Mwombe mwalimu msaada"
+    },
+    {
+      "key": "site.f3596efe3970f77e47",
+      "source": "Ask about goals, deadlines, available time, and current confidence.",
+      "value": "Uliza kuhusu malengo, makataa, muda uliopo, na ujasiri wa sasa."
+    },
+    {
+      "key": "site.d5e602864e9aae0c25",
+      "source": "Ask Ambedkar about democracy",
+      "value": "Muulize Ambedkar kuhusu demokrasia"
+    },
+    {
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Uliza swali lolote na ujifunze kupitia maelezo wazi, mifano, vidokezo vya ufuatiliaji, na mafunzo ya AI ya subira."
+    },
+    {
+      "key": "site.537d2b3dc7097b9871",
+      "source": "Ask audience, metric, risks, and how to include improvement.",
+      "value": "Uliza hadhira, kipimo, hatari, na jinsi ya kujumuisha uboreshaji."
+    },
+    {
+      "key": "site.c319014a75bd32b7c9",
+      "source": "Ask better questions",
+      "value": "Uliza maswali bora"
+    },
+    {
+      "key": "site.f9bb35b3dd910f281d",
+      "source": "Ask better questions.",
+      "value": "Uliza maswali bora."
+    },
+    {
+      "key": "site.04e52aeabc0b08909c",
+      "source": "Ask current routine, target habit, and easiest daily version.",
+      "value": "Uliza utaratibu wa sasa, tabia lengwa, na toleo rahisi zaidi la kila siku."
+    },
+    {
+      "key": "site.7ab7c687e52242e47a",
+      "source": "Ask follow-ups, evaluate accuracy and confidence, correct gaps, and retry.",
+      "value": "Uliza maswali ya ufuatiliaji, tathmini usahihi na ujasiri, sahihisha mapengo, na jaribu tena."
+    },
+    {
+      "key": "site.23eb8aac6df319561b",
+      "source": "Ask for a hint. Do not ask for the final answer yet.",
+      "value": "Omba kidokezo. Usiombe jibu la mwisho bado."
+    },
+    {
+      "key": "site.dbcf9226ece7ca14bc",
+      "source": "Ask for a small first step rather than a final answer.",
+      "value": "Omba hatua ndogo ya kwanza badala ya jibu la mwisho."
+    },
+    {
+      "key": "site.462c363c041fff2012",
+      "source": "Ask for a small first step.",
+      "value": "Omba hatua ndogo ya kwanza."
+    },
+    {
+      "key": "site.b6950f5ec2d5b0b452",
+      "source": "Ask for a small hint.",
+      "value": "Omba kidokezo kidogo."
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "Omba kazi ndogo ya kwanza."
+    },
+    {
+      "key": "site.285ea4c174d1520547",
+      "source": "Ask for a topic, level, or word list; then introduce a small set.",
+      "value": "Omba mada, kiwango, au orodha ya maneno; kisha anzisha seti ndogo."
+    },
+    {
+      "key": "site.427fb050d7dc2dc514",
+      "source": "Ask for artwork/style or provide a looking framework.",
+      "value": "Omba kazi ya sanaa/mtindo au toa mfumo wa kutazama."
+    },
+    {
+      "key": "site.6e665f7600e0c89537",
+      "source": "Ask for assignment names, due dates, effort, and current status.",
+      "value": "Omba majina ya kazi, tarehe za kukabidhi, juhudi, na hali ya sasa."
+    },
+    {
+      "key": "site.084423923bd784bb4d",
+      "source": "Ask for audience, goal, and draft status if unclear; then give focused feedback.",
+      "value": "Omba hadhira, lengo, na hali ya rasimu ikiwa haiko wazi; kisha toa mrejesho uliolenga."
+    },
+    {
+      "key": "site.0e2b6597354136d2cf",
+      "source": "Ask for author, title, date, publisher, URL, and access date when needed.",
+      "value": "Omba mwandishi, kichwa, tarehe, mchapishaji, URL, na tarehe ya kufikia inapohitajika."
+    },
+    {
+      "key": "site.119b48cd9bad369d89",
+      "source": "Ask for available time, must-do tasks, and energy level.",
+      "value": "Omba muda uliopo, kazi za lazima, na kiwango cha nguvu."
+    },
+    {
+      "key": "site.a6b51d42cf02c49b7d",
+      "source": "Ask for commitment, partner/context, check-in frequency, and proof.",
+      "value": "Omba ahadi, mshirika/muktadha, marudio ya ukaguzi, na uthibitisho."
+    },
+    {
+      "key": "site.2d392770c0b100f840",
+      "source": "Ask for domain and difficulty, then set the case brief and first decision.",
+      "value": "Omba eneo na ugumu, kisha weka muhtasari wa kesi na uamuzi wa kwanza."
+    },
+    {
+      "key": "site.a98ced627266f72c48",
+      "source": "Ask for event and depth, then separate background causes from immediate triggers.",
+      "value": "Omba tukio na kina, kisha tenganisha sababu za usuli na vichocheo vya papo hapo."
+    },
+    {
+      "key": "site.0471a9c6156fd1be0c",
+      "source": "Ask for exam date, syllabus, available time, and confidence by topic.",
+      "value": "Omba tarehe ya mtihani, mtaala, muda uliopo, na ujasiri kwa kila mada."
+    },
+    {
+      "key": "site.b8b85519e2e1a47fc9",
+      "source": "Ask for format, time limit, and audience; then begin a practice round.",
+      "value": "Omba muundo, kikomo cha muda, na hadhira; kisha anza raundi ya mazoezi."
+    },
+    {
+      "key": "site.98db5f82ec3a2af323",
+      "source": "Ask for goal, constraints, and desired vibe; then offer a varied idea set.",
+      "value": "Omba lengo, vikwazo, na hisia unayotaka; kisha toa seti tofauti ya mawazo."
+    },
+    {
+      "key": "site.963106b4f414d94e70",
+      "source": "Ask for goal, timeline, tasks, and what counts as real progress.",
+      "value": "Omba lengo, ratiba, kazi, na kinachohesabika kama maendeleo halisi."
+    },
+    {
+      "key": "site.e62b9ae3a1c383622b",
+      "source": "Ask for grading scale, weights, current scores, and target.",
+      "value": "Omba mfumo wa alama, uzito, alama za sasa, na lengo."
+    },
+    {
+      "key": "site.7bc9a6a4e0eb9f0b3e",
+      "source": "Ask for group size, goal, duration, and check-in cadence.",
+      "value": "Omba ukubwa wa kikundi, lengo, muda, na mpangilio wa ukaguzi."
+    },
+    {
+      "key": "site.8da5e289a4d94213bf",
+      "source": "Ask for language, goal, and code/error if relevant.",
+      "value": "Omba lugha, lengo, na msimbo/kosa ikiwa linafaa."
+    },
+    {
+      "key": "site.a510b85398e6ed0fb1",
+      "source": "Ask for language, learner level, and scenario; then start in character.",
+      "value": "Omba lugha, kiwango cha mwanafunzi, na hali; kisha anza ukiwa ndani ya mhusika."
+    },
+    {
+      "key": "site.46b04eed1ce5b240d0",
+      "source": "Ask for material, deadline, and prior confidence.",
+      "value": "Omba nyenzo, makataa, na ujasiri wa awali."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "Omba kadi za wazo moja zenye vidokezo na mitego ya kawaida."
+    },
+    {
+      "key": "site.315bb1251ce7e3b500",
+      "source": "Ask for outcome, duration, distractions, and starting state.",
+      "value": "Omba matokeo, muda, vikengeushi, na hali ya kuanzia."
+    },
+    {
+      "key": "site.05e25251a393a3e9c2",
+      "source": "Ask for peer feedback",
+      "value": "Omba maoni kutoka kwa wenzako"
+    },
+    {
+      "key": "site.e5efa3b02f4022b1bc",
+      "source": "Ask for place or theme, then orient with location, scale, and key features.",
+      "value": "Omba mahali au mada, kisha elekeza kwa eneo, ukubwa, na vipengele muhimu."
+    },
+    {
+      "key": "site.f7b5131ac12cc08b60",
+      "source": "Ask for research goal, level, and available sources.",
+      "value": "Omba lengo la utafiti, kiwango, na vyanzo vilivyopo."
+    },
+    {
+      "key": "site.2afb2438829f1297ed",
+      "source": "Ask for role, audience, and background; then run a first question.",
+      "value": "Omba jukumu, hadhira, na usuli; kisha endesha swali la kwanza."
+    },
+    {
+      "key": "site.11f2bfb8e5edb1b7b1",
+      "source": "Ask for source material and pair type.",
+      "value": "Omba nyenzo chanzo na aina ya jozi."
+    },
+    {
+      "key": "site.884bdf7600ff57f01f",
+      "source": "Ask for source material or topic and target difficulty.",
+      "value": "Omba nyenzo chanzo au mada na ugumu lengwa."
+    },
+    {
+      "key": "site.4c19533f1f78e3db1e",
+      "source": "Ask for source material, topic, and target detail if missing.",
+      "value": "Omba nyenzo chanzo, mada, na undani lengwa ikiwa vinakosekana."
+    },
+    {
+      "key": "site.ff7bb65608584ee316",
+      "source": "Ask for subject, level, time limit, and question types if missing.",
+      "value": "Omba somo, kiwango, kikomo cha muda, na aina za maswali ikiwa vinakosekana."
+    },
+    {
+      "key": "site.a8da551efd61e46661",
+      "source": "Ask for subjects, deadlines, resources, and pain points.",
+      "value": "Omba masomo, makataa, rasilimali, na maeneo yenye maumivu."
+    },
+    {
+      "key": "site.4354a840106e740e0f",
+      "source": "Ask for subjects, time spent, wins, misses, and upcoming deadlines.",
+      "value": "Omba masomo, muda uliotumika, mafanikio, makosa, na makataa yanayokuja."
+    },
+    {
+      "key": "site.a8b2580a67452045b9",
+      "source": "Ask for the data, context, and question being answered.",
+      "value": "Omba data, muktadha, na swali linalojibiwa."
+    },
+    {
+      "key": "site.5b4fd2270651097e04",
+      "source": "Ask for the diagram parts or subject, then generate a label list and practice round.",
+      "value": "Omba sehemu za mchoro au somo, kisha tengeneza orodha ya lebo na raundi ya mazoezi."
+    },
+    {
+      "key": "site.c7c1f2d7322a3ab6d1",
+      "source": "Ask for the habit, current obstacle, and easiest starting version.",
+      "value": "Omba tabia, kikwazo cha sasa, na toleo rahisi zaidi la kuanzia."
+    },
+    {
+      "key": "site.f3692ccb931fbce24d",
+      "source": "Ask for the learning context and behaviors worth rewarding.",
+      "value": "Omba muktadha wa kujifunza na tabia zinazostahili kutuzwa."
+    },
+    {
+      "key": "site.5ea1010e190756e791",
+      "source": "Ask for the note set, subject, and desired organization style.",
+      "value": "Omba seti ya noti, somo, na mtindo wa mpangilio unaotakiwa."
+    },
+    {
+      "key": "site.996c6a99589be01eba",
+      "source": "Ask for the passage or title and the learner's goal.",
+      "value": "Omba kifungu au kichwa na lengo la mwanafunzi."
+    },
+    {
+      "key": "site.a4e68fc032bb4ddf56",
+      "source": "Ask for the question, learner answer, and expected answer if any part is missing.",
+      "value": "Omba swali, jibu la mwanafunzi, na jibu linalotarajiwa ikiwa sehemu yoyote inakosekana."
+    },
+    {
+      "key": "site.a54855f42d844443f5",
+      "source": "Ask for the source text, claim, author, date, and context if missing.",
+      "value": "Omba maandishi chanzo, dai, mwandishi, tarehe, na muktadha ikiwa vinakosekana."
+    },
+    {
+      "key": "site.b2fa2f1b57f733ce3d",
+      "source": "Ask for the study block length and suggest a break rhythm.",
+      "value": "Omba urefu wa kipindi cha kusoma na pendekeza mpangilio wa mapumziko."
+    },
+    {
+      "key": "site.c6fdc44d059fa472e5",
+      "source": "Ask for the task, target duration, and completion criteria.",
+      "value": "Omba kazi, muda lengwa, na vigezo vya kukamilika."
+    },
+    {
+      "key": "site.aef265161171456bcb",
+      "source": "Ask for the text and desired length if missing.",
+      "value": "Omba maandishi na urefu unaotakiwa ikiwa vinakosekana."
+    },
+    {
+      "key": "site.c408791abeb19834eb",
+      "source": "Ask for the topic and which side the learner wants; take the opposite side.",
+      "value": "Omba mada na upande anaotaka mwanafunzi; chukua upande wa pili."
+    },
+    {
+      "key": "site.d37746fbd262e5dea5",
+      "source": "Ask for the topic, context, what they tried, and desired help.",
+      "value": "Omba mada, muktadha, walichojaribu, na msaada wanaotaka."
+    },
+    {
+      "key": "site.283f49692c65a20536",
+      "source": "Ask for the visible text, labels, and the learner's question if the image is not attached.",
+      "value": "Omba maandishi yanayoonekana, lebo, na swali la mwanafunzi ikiwa picha haijaambatishwa."
+    },
+    {
+      "key": "site.078c7e0919ee44705b",
+      "source": "Ask for topic and purpose, then propose the central node and first branches.",
+      "value": "Omba mada na kusudi, kisha pendekeza nodi kuu na matawi ya kwanza."
+    },
+    {
+      "key": "site.ffefb04913a46b3b93",
+      "source": "Ask for topic and scope, then propose a first map structure.",
+      "value": "Omba mada na wigo, kisha pendekeza muundo wa kwanza wa ramani."
+    },
+    {
+      "key": "site.a6af2a3120e22424d8",
+      "source": "Ask for topic, age/level, and tone; then create a short story setup.",
+      "value": "Omba mada, umri/kiwango, na toni; kisha tengeneza mwanzo mfupi wa hadithi."
+    },
+    {
+      "key": "site.eadbb8b829a747f2bd",
+      "source": "Ask for topic, duration, level, and scoring preference.",
+      "value": "Omba mada, muda, kiwango, na upendeleo wa utoaji alama."
+    },
+    {
+      "key": "site.935e95f744b8ef5b51",
+      "source": "Ask for topic, level, and examiner style; then begin with a warm-up question.",
+      "value": "Omba mada, kiwango, na mtindo wa mtahini; kisha anza kwa swali la kupasha moto."
+    },
+    {
+      "key": "site.458da4b67cd64d08ed",
+      "source": "Ask for topic, level, and preferred game vibe; then create the first quest.",
+      "value": "Omba mada, kiwango, na hisia ya mchezo inayopendelewa; kisha tengeneza changamoto ya kwanza."
+    },
+    {
+      "key": "site.97bb872f6d8903b468",
+      "source": "Ask for topic, level, exam date, and source material if needed.",
+      "value": "Omba mada, kiwango, tarehe ya mtihani, na nyenzo chanzo ikihitajika."
+    },
+    {
+      "key": "site.fd666c3e4cc0c190f3",
+      "source": "Ask for topic, level, question types, and number of items.",
+      "value": "Omba mada, kiwango, aina za maswali, na idadi ya vipengee."
+    },
+    {
+      "key": "site.b5eb36c5449ff4f87b",
+      "source": "Ask group size, topic, time, and desired outcome.",
+      "value": "Omba ukubwa wa kikundi, mada, muda, na matokeo yanayotakiwa."
+    },
+    {
+      "key": "site.eb13e0b413d547707a",
+      "source": "Ask instrument/level if relevant, then teach one small concept.",
+      "value": "Omba ala/kiwango ikiwa inafaa, kisha fundisha dhana moja ndogo."
+    },
+    {
+      "key": "site.aa9c8abf089531cddf",
+      "source": "Ask interests, constraints, and curiosity level before recommending paths.",
+      "value": "Omba mapendeleo, vikwazo, na kiwango cha udadisi kabla ya kupendekeza njia."
+    },
+    {
+      "key": "site.384bbc7a4ac852e0e8",
+      "source": "Ask me questions about this poem",
+      "value": "Niulize maswali kuhusu shairi hili"
+    },
+    {
+      "key": "site.a8672051a0f5c02117",
+      "source": "Ask me thesis defense questions",
+      "value": "Niulize maswali ya utetezi wa tasnifu"
+    },
+    {
+      "key": "site.44978f965047043b57",
+      "source": "Ask one focused diagnostic question quickly. Convert the learner's target into a mastery target internally, then start with a simple question that reveals their mental model.",
+      "value": "Uliza haraka swali moja la uchunguzi lililolenga. Geuza lengo la mwanafunzi kuwa lengo la umahiri kwa ndani, kisha anza na swali rahisi linalofichua mfano wake wa kufikiri."
+    },
+    {
+      "key": "site.dd04e773fa0353ffbf",
+      "source": "Ask one sharp goal question, infer sensible defaults, then create a compact learning map with a try-first activity.",
+      "value": "Uliza swali moja kali la lengo, tambua chaguo-msingi zinazofaa, kisha tengeneza ramani fupi ya kujifunza yenye shughuli ya kujaribu kwanza."
+    },
+    {
+      "key": "site.c1fc0749d21528e35c",
+      "source": "Ask predictions, reveal consequences, adjust variables, and summarize principles.",
+      "value": "Omba utabiri, onyesha matokeo, rekebisha vigeu, na fupisha kanuni."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Uliza maswali, changamoto mawazo, na jifunze historia kupitia mazungumzo ya kina na watu mashuhuri kutoka zamani."
+    },
+    {
+      "key": "site.be291f23ccb1dbe8a9",
+      "source": "Ask the AI to check that step.",
+      "value": "Iombe AI ikague hatua hiyo."
+    },
+    {
+      "key": "site.0c144a354468dbee40",
+      "source": "Ask the AI to check your reasoning, not just the result.",
+      "value": "Iombe AI ikague mantiki yako, si matokeo tu."
+    },
+    {
+      "key": "site.47a9847978bef7fe5c",
+      "source": "Ask the AI to check your reasoning.",
+      "value": "Iombe AI ikague mantiki yako."
+    },
+    {
+      "key": "site.88308d9ad6946ed778",
+      "source": "Ask the AI to label uncertainty.",
+      "value": "Iombe AI iweke lebo ya kutokuwa na uhakika."
+    },
+    {
+      "key": "site.8a4dfc8a1a3954bbdd",
+      "source": "Ask the learner to explain the topic in plain language first.",
+      "value": "Mwombe mwanafunzi aeleze mada kwa lugha rahisi kwanza."
+    },
+    {
+      "key": "site.95a1accde33b8d972e",
+      "source": "Ask the learner to state their current belief, then test it with a small example.",
+      "value": "Mwombe mwanafunzi aseme imani yake ya sasa, kisha ijaribu kwa mfano mdogo."
+    },
+    {
+      "key": "site.853517f968ce1f1a51",
+      "source": "Ask what data or observations they have and what decision they need.",
+      "value": "Uliza wana data au uchunguzi gani na wanahitaji uamuzi gani."
+    },
+    {
+      "key": "site.06736eedb0d142242c",
+      "source": "Ask what happened, what they felt, and what they want to improve.",
+      "value": "Uliza kilichotokea, walichohisi, na wanachotaka kuboresha."
+    },
+    {
+      "key": "site.c332825ec386824009",
+      "source": "Ask what must be remembered and what familiar place the learner wants to use.",
+      "value": "Uliza ni nini lazima kikumbukwe na ni mahali gani pa kawaida mwanafunzi anataka kutumia."
+    },
+    {
+      "key": "site.a4cf0278718ddda061",
+      "source": "Ask what the learner wants to be quizzed on if the topic is missing.",
+      "value": "Uliza mwanafunzi anataka kuulizwa maswali kuhusu nini ikiwa mada inakosekana."
+    },
+    {
+      "key": "site.2f4bcf33af3c996ab9",
+      "source": "Ask what the learner wants to represent, then propose a simple visual layout.",
+      "value": "Uliza mwanafunzi anataka kuwakilisha nini, kisha pendekeza mpangilio rahisi wa kuona."
+    },
+    {
+      "key": "site.13d29ea274b9e4966b",
+      "source": "Ask what the resource is, audience, and what context they need.",
+      "value": "Uliza rasilimali ni nini, hadhira, na muktadha wanaohitaji."
+    },
+    {
+      "key": "site.4f41d5c8ebc0ebdea8",
+      "source": "Ask what they are doing and suggest a low-distraction sound preset.",
+      "value": "Uliza wanachofanya na pendekeza mpangilio wa sauti wenye usumbufu mdogo."
+    },
+    {
+      "key": "site.73ad590b59591d428a",
+      "source": "Ask what they have tried, then give a hint or worked miniature example.",
+      "value": "Uliza walichojaribu, kisha toa kidokezo au mfano mdogo uliotatuliwa."
+    },
+    {
+      "key": "site.3330b0e4b9329b8d24",
+      "source": "Ask, evaluate, improve with structure, and retry.",
+      "value": "Uliza, tathmini, boresha kwa muundo, na jaribu tena."
+    },
+    {
+      "key": "site.451319a8325c91de90",
+      "source": "Assign XP, levels, quests, and reflection checkpoints.",
+      "value": "Toa XP, viwango, changamoto, na vituo vya tafakari."
+    },
+    {
+      "key": "site.9e3e3f75496ae44f8c",
+      "source": "assignment tracker",
+      "value": "kifuatiliaji cha kazi"
+    },
+    {
+      "key": "site.9f652ed2e7f9977eee",
+      "source": "Assignment Tracker",
+      "value": "Kifuatiliaji cha Kazi"
+    },
+    {
+      "key": "site.cf1bc68ec98b241b5b",
+      "source": "At the end of a study session, ask yourself three questions:",
+      "value": "Mwisho wa kipindi cha kusoma, jiulize maswali matatu:"
+    },
+    {
+      "key": "site.635eab82738464165f",
+      "source": "Athens, 399 BCE",
+      "value": "Athens, 399 KK"
+    },
+    {
+      "key": "site.b5714de6bfd4ed349d",
+      "source": "Attempt first. Spend three minutes trying without AI.",
+      "value": "Jaribu kwanza. Tumia dakika tatu kujaribu bila AI."
+    },
+    {
+      "key": "site.676f0595835b0415b7",
+      "source": "Avoid claiming private beliefs. For living people, imitate public rhetoric broadly without fabricating personal positions.",
+      "value": "Epuka kudai imani za faragha. Kwa watu walio hai, iga kwa upana usemi wao wa umma bila kubuni misimamo binafsi."
+    },
+    {
+      "key": "site.8484779ea6b71f2eaf",
+      "source": "Avoid the copy trap",
+      "value": "Epuka mtego wa kunakili"
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Nyuma: \"Upangaji wa nafasi hulazimisha kumbukumbu kujenga upya jibu baada ya kusahau kidogo, jambo linaloimarisha kukumbuka baadaye.\""
+    },
+    {
+      "key": "site.9e6aed6a8f30dd169d",
+      "source": "Background focus audio that keeps playing",
+      "value": "Sauti ya chinichini ya umakini inayoendelea kucheza"
+    },
+    {
+      "key": "site.0765a400abe3f60770",
+      "source": "Badges & Achievements",
+      "value": "Beji na Mafanikio"
+    },
+    {
+      "key": "site.8bb5ab62fb43bb6f1e",
+      "source": "Balance school and exam prep",
+      "value": "Sawazisha shule na maandalizi ya mitihani"
+    },
+    {
+      "key": "site.2c445dd5994fd48a7f",
+      "source": "Before you start",
+      "value": "Kabla hujaanza"
+    },
+    {
+      "key": "site.b1c64e2e1f12c4ad50",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "Wanaoanza na wale wa kiwango cha kati katika programu wanaohitaji maelezo, msaada wa kurekebisha makosa, au mwongozo wa miradi."
+    },
+    {
+      "key": "site.d9904990e5def571e7",
+      "source": "boss round",
+      "value": "raundi ya bosi"
+    },
+    {
+      "key": "site.7623c291c5375ec686",
+      "source": "Brainstorm a science project",
+      "value": "Buni mradi wa sayansi"
+    },
+    {
+      "key": "site.98d1637b91a6152002",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Buni miradi, hadithi, miundo, vichwa vya habari, majaribio, na mitazamo isiyotarajiwa."
+    },
+    {
+      "key": "site.c5c0f10e94a219b55b",
+      "source": "Branch a topic into connected ideas",
+      "value": "Gawa mada katika mawazo yaliyounganishwa"
+    },
+    {
+      "key": "site.dab5887f0a9a846248",
+      "source": "Break a big task into timed blocks",
+      "value": "Gawa kazi kubwa katika vipindi vilivyopimwa muda"
+    },
+    {
+      "key": "site.55d85e820f7a471c1f",
+      "source": "break reminder",
+      "value": "kikumbusho cha mapumziko"
+    },
+    {
+      "key": "site.b8b946b425ddf8de86",
+      "source": "Break Reminder",
+      "value": "Kikumbusho cha Mapumziko"
+    },
+    {
+      "key": "site.b6ecb7306b4c115a78",
+      "source": "Break tasks into timed steps, reflect on actual effort, and update the next block.",
+      "value": "Gawa kazi katika hatua zenye muda, tafakari juhudi halisi, na sasisha kipindi kinachofuata."
+    },
+    {
+      "key": "site.4b45b2d5e966454c84",
+      "source": "Break the visual into shapes, labels, relationships, and checks for missing information.",
+      "value": "Gawa taswira katika maumbo, lebo, mahusiano, na ukaguzi wa taarifa zinazokosekana."
+    },
+    {
+      "key": "site.87a956984274e6d2b5",
+      "source": "Break work into milestones, inspect progress, remove blockers, and adapt scope.",
+      "value": "Gawa kazi katika malengo madogo, kagua maendeleo, ondoa vizuizi, na rekebisha wigo."
+    },
+    {
+      "key": "site.a56e1e195f7a4c2a02",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Gawa kazi katika sehemu zenye majina, pima muda wa kila moja, na uhakiki mahali ambapo juhudi zako za kusoma zimeelekezwa baada ya kila kipindi cha umakini."
+    },
+    {
+      "key": "site.0794d5b8029d8aa800",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Leta kifungu au wazo la kitabu na ujenge uelewa kupitia muhtasari, msamiati, hitimisho, na majadiliano."
+    },
+    {
+      "key": "site.25c515faf7679ffee0",
+      "source": "Browse all modes",
+      "value": "Vinjari hali zote"
+    },
+    {
+      "key": "site.cdf4cb489c1367a73a",
+      "source": "Build a biology unit test",
+      "value": "Jenga jaribio la kitengo cha biolojia"
+    },
+    {
+      "key": "site.afdc6e2a6ea519b6ce",
+      "source": "Build a finals study guide",
+      "value": "Jenga mwongozo wa kusomea mitihani ya mwisho"
+    },
+    {
+      "key": "site.9a490168399d934cbc",
+      "source": "Build a full test from your material",
+      "value": "Jenga jaribio kamili kutoka kwa nyenzo zako"
+    },
+    {
+      "key": "site.13b4221624a546e87f",
+      "source": "Build a hypothesis",
+      "value": "Jenga dhana"
+    },
+    {
+      "key": "site.6540929220e989bb91",
+      "source": "Build a hypothesis.",
+      "value": "Jenga dhana."
+    },
+    {
+      "key": "site.57d84860ab8c5f7666",
+      "source": "Build a loop",
+      "value": "Jenga mzunguko"
+    },
+    {
+      "key": "site.dfb957acc42e99196a",
+      "source": "Build a map of democracy",
+      "value": "Jenga ramani ya demokrasia"
+    },
+    {
+      "key": "site.0fcd3c6df198757937",
+      "source": "Build a photosynthesis explanation with me",
+      "value": "Jenga maelezo ya usanisinuru pamoja nami"
+    },
+    {
+      "key": "site.3adbd46eba6a77ffa4",
+      "source": "Build a portfolio website",
+      "value": "Jenga tovuti ya kwingineko"
+    },
+    {
+      "key": "site.ba586de92a117bdea2",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Jenga mpango halisi wa mtihani kulingana na tarehe yako, mtaala, uwezo, na maeneo dhaifu."
+    },
+    {
+      "key": "site.4716c697251a6f7672",
+      "source": "Build a routine that survives real life",
+      "value": "Jenga utaratibu unaoendana na maisha halisi"
+    },
+    {
+      "key": "site.9bbfa550ce88c17d3e",
+      "source": "Build a routine that survives real life.",
+      "value": "Jenga utaratibu unaoendana na maisha halisi."
+    },
+    {
+      "key": "site.cafdadb2e7df26ec3d",
+      "source": "Build a story",
+      "value": "Jenga hadithi"
+    },
+    {
+      "key": "site.ded45628bcad4e1a1a",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Jenga mwongozo wa kusomea wenye malengo, muhtasari wa dhana, mifano, makosa ya kawaida, maswali ya mazoezi, na mpango wa mapitio."
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Tengeneza pasipoti ya muda, kamilisha ushauri wa kusafiri, na uchunguze ulimwengu wa kihistoria kupitia mandhari, ramani, kalenda ya matukio, watu, sheria, orodha ya vitu, na ushahidi."
+    },
+    {
+      "key": "site.acb15923b205de7d8d",
+      "source": "Build check-ins that keep you moving",
+      "value": "Jenga utaratibu wa kufuatilia maendeleo ili uendelee kupiga hatua"
+    },
+    {
+      "key": "site.e5d9ce14875b463ee3",
+      "source": "Build communication skill through realistic roleplay and feedback.",
+      "value": "Jenga ujuzi wa mawasiliano kupitia uigizaji halisi wa majukumu na mrejesho."
+    },
+    {
+      "key": "site.1ebdac7f888fa84e98",
+      "source": "Build consistency without guilt",
+      "value": "Jenga uthabiti bila hatia"
+    },
+    {
+      "key": "site.a5cc98fbee44c930a8",
+      "source": "Build mixed practice worksheets from a topic or notes.",
+      "value": "Jenga karatasi za mazoezi mchanganyiko kutoka mada au noti."
+    },
+    {
+      "key": "site.951d8c65343997c00b",
+      "source": "Build references in common formats",
+      "value": "Jenga marejeleo katika miundo ya kawaida"
+    },
+    {
+      "key": "site.5ce34a8d2fe753bba5",
+      "source": "Build review loops",
+      "value": "Jenga mizunguko ya marudio"
+    },
+    {
+      "key": "site.95ec3bfab65a54a0ae",
+      "source": "Build sections, administer questions, mark responses, and identify weak areas.",
+      "value": "Jenga sehemu, simamia maswali, tia alama majibu, na tambua maeneo dhaifu."
+    },
+    {
+      "key": "site.3a2394e40526963d52",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Jenga changamoto za masomo zenye sheria wazi, alama, viwango, raundi za wakubwa, na tafakari."
+    },
+    {
+      "key": "site.54511757696b263ebe",
+      "source": "Build vocabulary exercises",
+      "value": "Jenga mazoezi ya msamiati"
+    },
+    {
+      "key": "site.dc326fcc24ba471506",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Jenga msamiati kwa maana, mifano, vidokezo vya matamshi, mbinu za kukumbuka, na mazoezi ya haraka."
+    },
+    {
+      "key": "site.b0bb0056cf4be7c005",
+      "source": "Build, critique, and learn in a shared workroom",
+      "value": "Jenga, kosoa, na jifunze katika chumba cha kazi cha pamoja"
+    },
+    {
+      "key": "site.7af639dbd49809e80d",
+      "source": "Build, critique, and learn in a shared workroom.",
+      "value": "Jenga, kosoa, na jifunze katika chumba cha kazi cha pamoja."
+    },
+    {
+      "key": "site.6c3cb499ed00d5b778",
+      "source": "Business English words",
+      "value": "Maneno ya Kiingereza cha kibiashara"
+    },
+    {
+      "key": "site.5647b2b0fc91eaaf30",
+      "source": "Business strategy case",
+      "value": "Uchunguzi kifani wa mkakati wa biashara"
+    },
+    {
+      "key": "site.36d72c2f5ce776d5f7",
+      "source": "Calculate my weighted grade",
+      "value": "Kokotoa alama yangu yenye uzito"
+    },
+    {
+      "key": "site.fa16baa10b1f34bf86",
+      "source": "Can I do a new example?",
+      "value": "Je, naweza kufanya mfano mpya?"
+    },
+    {
+      "key": "site.2003f057f7f77bf2a4",
+      "source": "Can I explain the idea without looking?",
+      "value": "Je, naweza kueleza wazo bila kuangalia?"
+    },
+    {
+      "key": "site.e9a598077a28c214d2",
+      "source": "Can I use {value1} without signing in?",
+      "value": "Je, naweza kutumia {value1} bila kuingia?"
+    }
+  ]
+}

@@ -17,6 +17,9 @@ const baseStrings: Record<string, string> = {
   "onboarding.age.error": "Please enter a valid date of birth.",
   "profile.age": "Age",
   "profile.ageUnknown": "Add your date of birth",
+  "sidebar.openLearningStore": "Open learning store",
+  "sidebar.search": "Search",
+  "sidebar.searchChats": "Search chats",
 };
 
 export function getMainAppSourceStrings() {

@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "language": "Hindi",
+  "locale": "hi",
+  "namespace": "route:ai-learning-map",
+  "sourceHash": "ed5c404157cb369b59b407351615d701fdf7f9250fb0afcb05cfa6e93a6a094f",
+  "part": {
+    "index": 5,
+    "total": 5
+  },
+  "entries": [
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "उपयोग करें: संकेत, जांच-बिंदु, और छोटा उदाहरण के बजाय से पूरा अंतिम उत्तरs।"
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "उपयोग करें: hypothesis, materials, method, observation, और exयोजनाation sections जब उपयोगी।"
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "उपयोग करें: विचार menus, selection criteria, और next-step sketches।"
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "उपयोग करें: in-character संवाद और छोटी कोचing नोट्स।"
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "उपयोग करें: मुख्य takeaways, रूपरेखा बनाएं, परिभाषाएं, और समीक्षा प्रश्नs।"
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "उपयोग करें: leaderboard नियम, scoring, safeguards, और चिंतन।"
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "उपयोग करें: स्तर तालिकाएं, XP नियम, quest कार्ड, और anti-grind safeguards।"
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "उपयोग करें: narrative को बनाएं अवधारणाs यादगार।"
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "उपयोग करें: nested bullets, तालिकाएं, or Mermaid पाठ जब helpful।"
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "उपयोग करें: numbered locations, images, और स्मरण जांच-बिंदु।"
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "उपयोग करें: objectives, सारांश, उदाहरण, जाल, प्रश्नs, और next समीक्षा।"
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "उपयोग करें: observation, interpretation, प्रमाण, और next-प्रश्न sections।"
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "उपयोग करें: जोड़ें banks, scrambled lists, उत्तर मुख्य, और समीक्षा नोट्स।"
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "उपयोग करें: स्थान कार्ड, तुलना तालिकाएं, और मानचित्र प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "उपयोग करें: व्यावहारिक ऑडियो tips और अध्ययन-सत्र setup नोट्स।"
+    },
+    {
+      "key": "site.92a746b2e3db690b66",
+      "source": "Use prompt",
+      "value": "उपयोग करें: प्रॉम्प्ट"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "उपयोग करें: quests, levels, बैज, और boss प्रश्नs।"
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "पढ़ने के लिए बारिश की आवाज़ का उपयोग करें"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "रिवीजन के लिए बारिश की आवाजें सुनें"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "उपयोग करें: चिंतन प्रॉम्प्ट, शिक्षार्थी strengths, और एक next प्रयोग।"
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "उपयोग करें: report sections: सफलताएं, प्रमाण, अवरोध, lessons, next week।"
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "उपयोग करें: शोध प्रश्नs, स्रोत matrices, और संश्लेषण नोट्स।"
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "उपयोग करें: reस्रोत कार्ड, दर्शक नोट्स, और उपयोग tips।"
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "उपयोग करें: समीक्षा queues, अंतिम तिथियां, और आत्मविश्वास ratings।"
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "उपयोग करें: scorecards के लिए स्पष्टता, संरचना, प्रमाण, और delivery नोट्स।"
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "उपयोग करें: छोटी फोकस योजनाs, checklists, और post-session चिंतन प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "उपयोग करें: छोटी sections, उदाहरण, analogies, और GFM-friendly lists or तालिकाएं जब वे मदद।"
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "उपयोग करें: छोटी सारांश, quote-light references, और प्रश्न sets।"
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "उपयोग करें: छोटी supportive नोट्स और व्यावहारिक next कार्रवाइयां।"
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "पढ़ने, लिखने, संशोधन करने या समस्या समाधान के दौरान ध्यान भटकने से बचने के लिए सरल एम्बिएंट साउंड प्रीसेट का उपयोग करें।"
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "उपयोग करें: सरल notation, उदाहरण, और अभ्यास प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "उपयोग करें: सरल तालिकाएं, cause-effect chains, और caveat नोट्स।"
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "उपयोग करें: simple-language rewrites और gap checklists।"
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "सीखने के तरीके के रूप में स्केचिंग का उपयोग करें: आरेख तैयार करें, रफ मैप्स को लेबल करें, प्रक्रियाओं को समझाएं, या किसी अस्पष्ट विचार को स्पष्ट विजुअल में बदलें।"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "उपयोग करें: ध्वनि recommendations और फोकस setup नोट्स।"
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "उपयोग करें: stakeholder तालिकाएं और balanced pro/con analysis।"
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "उपयोग करें: STAR or situation-action-result frameworks जब उचित।"
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "उपयोग करें: कहानी beats plus सीखना नोट्स।"
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "उपयोग करें: streak स्थिति, छोटा कार्रवाई, पुनर्प्राप्ति नियम, और weekly चिंतन।"
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "उपयोग करें: तालिकाएं के साथ शब्द, अर्थ, उदाहरण, स्मृति hook, और अभ्यास प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "उपयोग करें: तालिकाएं, सरल भाषा वाला takeaways, और सावधानी नोट्स।"
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "उपयोग करें: लक्ष्य भाषा पहला, फिर संक्षिप्त प्रतिक्रिया में learner's preferred सहायता भाषा।"
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "उपयोग करें: काम boards, समय-सीमाएं, और next-action lists।"
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "उपयोग करें: काम कार्ड, elapsed समय, नोट्स, और अनुवर्ती ब्लॉक suggestions।"
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "उपयोग करें: परीक्षा sections, समय, उत्तर keys, rubrics, और समीक्षा योजनाs।"
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "उपयोग करें: Feynman technique को सामने लाएं कमियां और simplify समझ।"
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "उपयोग करें: यह संक्षिप्त प्रारूप: संक्षिप्त पढ़त: एक sentence। मानचित्र अपडेट करें: संक्षिप्त दावा, Assumption, Gap, or Correction bullets जैसे प्रासंगिक। Next प्रश्न: ठीक एक प्रश्न। के लिए पहला reply, उपयोग करें लक्ष्य, अनुबंध, और पहला प्रश्न।"
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "उपयोग करें: thought प्रयोग, तर्क मानचित्र, और balanced सारांश।"
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "उपयोग करें: timelines, कारण परतें, और consequence मानचित्र।"
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "उपयोग करें: tree structures, node लेबल, लिंक, और next-step प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "उपयोग करें: unlabeled भाग, संकेत स्तर, उत्तर मुख्य, और समीक्षा प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "उपयोग करें: दृश्य शब्दावली और गाइडd देखने का प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "उपयोग करें: weekly योजनाs, fallback योजनाs, और छोटा next कार्रवाइयां।"
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "उपयोग करें: काम/break cycles, break menus, और लौटें प्रॉम्प्ट।"
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "उपयोग करें: वर्कशीट sections, उत्तर keys, और कठिनाई लेबल।"
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Validate feeling, पहचानें blocker, और चुनें एक छोटा अगला कदम।"
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "दृश्य विश्लेषण"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "दृश्य सीखना"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "दृश्य शिक्षण"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "मुंहजुबानी अभ्यास"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "शब्दावली निर्माता"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "साप्ताहिक रिपोर्ट"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "साप्ताहिक रिपोर्ट"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "भारित स्कोर"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "हमें किस उपलब्धि प्रणाली को डिज़ाइन करना चाहिए?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "हम किस विषय पर विचार-मंथन कर रहे हैं?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "हम क्या पढ़ रहे हैं?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "आज आप किस बारे में जानने के लिए उत्सुक हैं?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "आप क्या कहने की तैयारी कर रहे हैं?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "आप किस विषय पर शोध कर रहे हैं?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "आप क्या लिख रहे हैं?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "कौन सा कला कार्य, कलाकार, या शैली?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "आपके पास कौन से असाइनमेंट हैं?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "हम कौन सा बड़ा प्रश्न खोज रहे हैं?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "कौन सा करियर या रुचि हम खोजें?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "हमें कौन सा नागरिक शास्त्र विषय पढ़ना चाहिए?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "हम कौन सा कोडिंग विषय या बग सुलझा रहे हैं?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "किस प्रतिबद्धता के लिए अकाउंटेबिलिटी की आवश्यकता है?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "हम कौन सा कॉन्सेप्ट मैप करें?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "आप किन कोर्स या विषयों का प्रबंधन कर रहे हैं?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "हमें किस आरेख की लेबलिंग का अभ्यास करना चाहिए?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "हमें किस दुविधा की जांच करनी चाहिए?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "इस दुनिया में आप अगला क्या करेंगे?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "आपको क्या याद रखना है?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "आप क्या पढ़ना चाहते हैं?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "आप आज क्या पूरा करना चाहते हैं?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "कोर्ट क्या करती है?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "एक प्रोडक्ट मैनेजर क्या करता है?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "यह सर्वेक्षण क्या दिखाता है?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "हम किस आर्थिक विचार का सिमुलेशन करें?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "आप किस परीक्षा की तैयारी कर रहे हैं?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "मुझे कितना फाइनल स्कोर चाहिए?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "इस सप्ताह क्या हुआ?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "यदि कर बदलें तो क्या होता है?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "अगर हम तापमान बदलें तो क्या होगा?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "आप किस गृहकार्य समस्या पर अटक गए हैं?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "कौन सा विचार समझने में मुश्किल या संदिग्ध लगता है?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "आप किस इंटरव्यू की तैयारी कर रहे हैं?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "ज्ञान क्या है?"
+    },
+    {
+      "key": "site.a3f16bd77eb4ae9996",
+      "source": "What is the AI learning map?",
+      "value": "क्या है AI सीखना मानचित्र?"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "आप किस तरह का एम्बिएंट फोकस चाहते हैं?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "हमें किस प्रकार का केस सिमुलेट करना चाहिए?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "आज आप किस तरह का फोकस चाहते हैं?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "किस सीखने के लक्ष्य को लेवलिंग सिस्टम में बदला जाना चाहिए?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "आप कौन सी सीखने की आदत चाहते हैं?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "किस सीखने के पल पर हमें सोच-विचार करना चाहिए?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "मेरे लिए कौन सी सीखने की रणनीति सही है?"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "एक तर्क मान्य तब क्यों माना जाता है?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "किसी चीज़ को न्यायसंगत क्या बनाता है?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "किस सामग्री को स्टडी गाइड बनाया जाना चाहिए?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "कौन सा गणित का प्रश्न हम साथ मिलकर हल करें?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "किस संगीत विचार पर हम काम करें?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "इस डीप वर्क सत्र से क्या परिणाम मिलना चाहिए?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "किन जोड़ियों का मैचिंग गेम बनाया जाना चाहिए?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "हमें किस प्रगति की समीक्षा करनी चाहिए?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "हम कौन सा प्रोजेक्ट बना रहे हैं?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "आप कौन सा प्रश्न या चर्चा पोस्ट करना चाहते हैं?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "आप कौन सा संसाधन साझा करना चाहते हैं?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "हम कौन-सा परिदृश्य निभाएं?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "हम कौन सा विज्ञान विचार या प्रयोग एक्सप्लोर कर रहे हैं?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "किसे एक चुनौती बनाया जाना चाहिए?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "कौन सा खेल शिक्षा के लिए होना चाहिए?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "कहानी क्या बननी चाहिए?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "फ्लैशकार्ड क्या बनाए जाने चाहिए?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "लीडरबोर्ड को किस आधार पर मापा जाना चाहिए?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "प्रैक्टिस टेस्ट में क्या शामिल होना चाहिए?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "स्टडी ग्रुप को क्या करना चाहिए?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "वर्कशीट में क्या शामिल होना चाहिए?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "यह फोकस सेशन किस बारे में होना चाहिए?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "हम क्या पुनरावलोकन करें?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "हमें क्या स्केच या आरेखित करना चाहिए?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "आप कौन सी स्ट्रीक या दिनचर्या बना रहे हैं?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "हमें किस कार्य का समय निर्धारित करना चाहिए?"
+    },
+    {
+      "key": "site.fc8d830216f2567d93",
+      "source": "What this workflow should leave behind",
+      "value": "क्या यह वर्कफ़्लो चाहिए छोड़ें पीछे"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "किस विषय पर आपको परीक्षा में परखें?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "किस विषय का माइंड मैप बनाया जाए?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "आप किस मौखिक परीक्षा की तैयारी कर रहे हैं?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "आप मुझे क्या समझाएंगे?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "हम कौन से शब्द या विषय का अभ्यास करें?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "आप काम/ब्रेक की क्या लय चाहते हैं?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "आज आप क्या सीखना चाहेंगे?"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "अभी सीखना क्यों मुश्किल हो रहा है?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "आज आपका बहस विषय क्या है?"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "कहाँ खोज शुरू करें?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "हम किस ऐतिहासिक घटना का पता लगाएं?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "किस ऐतिहासिक व्यक्ति से आप मिलना चाहेंगे?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "कौन सी भाषा और स्थिति?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "व्हाइट नॉइज़"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "आप किसके साथ बहस करना चाहते हैं, और किस विषय पर?"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "कौन साथ में पढ़ाई कर रहा है और लक्ष्य क्या है?"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "नदियों के पास शहर क्यों बने होते हैं?"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "मैंने पढ़ाई से क्यों बचा?"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "रोमन साम्राज्य कमजोर क्यों हुआ?"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "मेरा बीजगणित का उत्तर गलत क्यों है?"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "यह व्याकरण नियम अजीब क्यों है?"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "मौसम से संबंधित शब्द"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "वेटेड ग्रेड, GPA परिदृश्यों, आवश्यक फाइनल स्कोर और सेमेस्टर के संभावित परिणामों की गणना करें।"
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "हितधारकों, परिणामों, कर्तव्यों, अधिकारों और संतुलनों को परखकर नैतिक दुविधाओं का समाधान करें।"
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "गणित को एक-एक कदम करके समझें"
+    },
+    {
+      "key": "site.fa00fba57bff817728",
+      "source": "Workflow directory",
+      "value": "वर्कफ़्लो डायरेक्टरी"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "वर्कशीट बिल्डर"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "विश्व की राजधानियाँ"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "एक चेक-इन स्क्रिप्ट लिखें"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "एक अच्छा फ़ोरम प्रश्न लिखें"
+    },
+    {
+      "key": "site.066231d418b0ddf600",
+      "source": "Write and communicate clearly",
+      "value": "लिखें: और communicate स्पष्ट रूप से"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "मेरी साप्ताहिक अध्ययन रिपोर्ट लिखें"
+    },
+    {
+      "key": "site.5f2b3a44b731b839b8",
+      "source": "Write the lesson learned before expanding the project.",
+      "value": "लिखें: पाठ सीखा हुआ पहले expanding प्रोजेक्ट।"
+    },
+    {
+      "key": "site.9a58fdeb87fb7db943",
+      "source": "Write the strongest claim and strongest counterclaim.",
+      "value": "लिखें: सबसे मजबूत दावा और सबसे मजबूत counterclaim।"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "लेखन कोच"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP और लेवलिंग"
+    },
+    {
+      "key": "site.4016d37780f77e418a",
+      "source": "Yes. The linked public learning modes open in guest mode, so learners can try explanations, Socratic questions, homework coaching, quizzes, flashcards, and more without starting from a marketing page.",
+      "value": "हां। जुड़ा सार्वजनिक सीखने के मोड अतिथि मोड में खुलते हैं, इसलिए शिक्षार्थी marketing पेज से शुरू किए बिना व्याख्याएं, सोक्रेटिक प्रश्न, होमवर्क कोचिंग, क्विज, फ्लैशकार्ड और बहुत कुछ आजमा सकते हैं।"
+    }
+  ]
+}

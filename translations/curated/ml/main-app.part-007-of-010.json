@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Malayalam",
+  "locale": "ml",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകൾ ഉപയോഗിച്ച് ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷനെ നിങ്ങളുടെ ലക്ഷ്യത്തിനു അനുരൂപമാക്കുക"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "അവസാന തീയതി സംബന്ധിച്ച് ചർച്ച നടത്തുക"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "കഠിനമായ ഉപഭോക്താവിനെ കൈകാര്യം ചെയ്യുക"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "ഒരു അധ്യാപകനെ സഹായം ചോദിക്കുക"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "കാർയര്‍ എക്‌സ്പ്ലോറര്‍"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "നിങ്ങളെ അനുയോജ്യമായ വഴികൾ കണ്ടെത്തുക"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "രുചികൾ, കഴിവുകൾ, ദൈനന്ദിന ജീവിത ഉദാഹരണങ്ങൾ, തുടര്‍ നടപടികൾ എന്നിവയിലൂടെ കരിയറുകൾ അന്വേഷിക്കൂ."
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "ഏത് കരിയർ അല്ലെങ്കിൽ താൽപ്പര്യം നമുക്ക് അന്വേഷിക്കണം?"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "പ്ലാനിംഗ്"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "താല്‍പ്പര്യങ്ങൾ, കഴിവുകൾ, ദിനചര്യ ഉദാഹരണങ്ങൾ, അടുത്ത ഘട്ടങ്ങൾ എന്നിവ മുഖാന്തിരം തൊഴിൽ മേഖലകൾ അന്വേഷിക്കുക."
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "പ്ലാനിംഗ് വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ സാധാരണ മറുപടി ബോക്സിന്റെ പകരം പ്രായോഗിക മാർഗനിർദേശം അന്വേഷിക്കുന്നവരും."
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് കരിയർ എക്സ്പ്ലോററിന് അനുയോജ്യമായി രൂപകൽപ്പന ചെയ്തതാണ്, അതിന് സ്വന്തം പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉൾപ്പെടുത്തിയിട്ടുണ്ട്."
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "നിങ്ങൾക്ക് അനുയോജ്യമായ വഴികൾ കണ്ടെത്തൂ"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രേരണകളോടെ ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "അഭിമുഖ്യത്തിന് അനുയോജ്യമായതായി സെഷന്‍ ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "എനിക്ക് ജീവവിജ്ഞാനവും കലയും ഇഷ്ടമാണ്"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "ഒരു ഉൽ‌പന്ന മാനേജര്‍ എന്ത് ചെയ്യുന്നു?"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "നിയമവും മനഃശാസ്ത്രവും താരതമ്യം ചെയ്യുക"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "സാക്ഷാല്‍പരീക്ഷ പരിശീലകൻ"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "ശക്തമായ ഉത്തരങ്ങൾ അഭ്യസിക്കുക"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "സ്കൂൾ, ഇന്റേൺഷിപ്പ്, ജോലി, അല്ലെങ്കിൽ സ്കോളർഷിപ്പ് അഭിമുഖങ്ങൾക്കായി യഥാർത്ഥമായ ചോദ്യങ്ങളും മറുപടികളുമായി തയ്യാറെടുക്കുക."
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "നിങ്ങൾ ഏത് അഭിമുഖത്തിന് തയ്യാറെടുക്കുകയാണ്?"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "പ്ലാനിംഗ്"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "സ്കൂൾ, ഇന്റേൺഷിപ്പ്, ജോലി, അല്ലെങ്കിൽ സ്കോളർഷിപ്പ് അഭിമുഖങ്ങൾക്ക് യാഥാർത്ഥ്യത്തോടുള്ള ചോദ്യങ്ങളും പ്രതികരണവും ഉപയോഗിച്ച് പൂർണമായും തയ്യാറെടുക്കൂ."
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "സാധാരണ ഉത്തരം നല്‍കുന്ന ബോക്സിന് പകരം പ്രായോഗിക മാർഗ്ഗ നിർദ്ദേശങ്ങൾ തേടുന്ന, പദ്ധതിയിടൽ വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "ഇന്റർവ്യൂ കോച്ച്‌റിന് പ്രത്യേകമായി രൂപകല്പന ചെയ്ത ഈ മോഡ് അതിന്റെ സ്വന്തം പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളുമായും പഠന പ്രവാഹവുമാണ് ഉദ്ദേശിക്കുന്നത്."
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "മുന്നേറ്റം നേടാൻ ശക്തമായ ഉത്തരങ്ങൾ അഭ്യസിക്കുക"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രാമ്പ്റ്റുകൾ മുതലാക്കി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിനനുസരിച്ച് ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "മോക്ക് കോളേജ് അഭിമുഖം"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "ഇന്റേൺഷിപ്പ് ചോദ്യങ്ങൾ അഭ്യസിക്കുക"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "തുറന്ന് പറഞ്ഞുതരുക: നിങ്ങളുടെ പരിചയം മെച്ചപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "കോഡ് ട്യൂട്ടർ"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "നിർമിക്കുമ്പോൾ പ്രോഗ്രാമിംഗ് പഠിക്കൂ"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "കോഡ് മനസിലാക്കുക, പിശകുകൾ കണ്ടെത്തുക, ആശയങ്ങൾ പഠിക്കുക, ഘട്ടം ഘട്ടമായി ചെറിയ പ്രോജెక్టുകൾ നിർമ്മിക്കുക."
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "നാം ഏത് കോഡിംഗ് വിഷയം അല്ലെങ്കിൽ ബഗ് പരിഹരിക്കുകയാണ്?"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "കോഡ് മനസ്സിലാക്കുക, പിശകുകൾ ശരിയാക്കുക, പ്രോഗ്രാമിംഗ് ആശയങ്ങൾ പഠിക്കുക, ചെറിയ പ്രോജക്ടുകൾ ഘട്ടത്തോട് ഘട്ടം നിർമ്മിക്കുക."
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "വ്യാഖ്യാനങ്ങൾ, ഡീബഗിംഗ് സഹായം, അല്ലെങ്കിൽ പ്രോജക്ട് പരിശീലനം ആവശ്യമുള്ള ആരംഭനിലയിലും ഇടനിലപഠനത്തിന്റെയും പ്രോഗ്രാമർമാർ."
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "ട്യൂട്ടർ നിങ്ങൾ കോഡിൽ നിന്നും എന്ത് പ്രതീക്ഷിക്കുന്നുണ്ടെന്ന് ചോദിക്കുന്നു, പിന്നെ ചെറിയ ഉദാഹരണങ്ങളിലൂടെ പരീക്ഷണങ്ങൾ നടത്തി ആ പ്രവർത്തനം മനസ്സിലാക്കാൻ സഹായിക്കുന്നു."
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "എറർ വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "അവബോധം നേടുക"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "സ്വല്പ പരിഹാരം പരീക്ഷിക്കുക"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "ജാവാസ്ക്രിപ്റ്റിലെ റികഴ്‌സിവിനെ വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "ഈ പിശക് ഡീബഗ് ചെയ്യാൻ സഹായിക്കൂ"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "എന്നെ Python ലൂപ്പുകൾ പഠിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "പ്രോജക്റ്റ് കോച്ച്"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "ആലോചനകളെ ലക്ഷ്യങ്ങളായി മാറ്റുക"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "പരിധി, മൈൽസ്റ്റോണുകൾ, തടസ്സങ്ങൾ, തുടർന്ന് സ്വീകരിക്കാനുളള നടപടികൾ എന്നിവയടക്കം സ്കൂൾ, ക്രിയേറ്റീവ്, കോഡിംഗ്, അല്ലെങ്കിൽ വ്യക്തിഗത പ്രോജക്ട് പദ്ധതി തയ്യാറാക്കുക."
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "ഞങ്ങൾ ഏത് പ്രോജക്ട് നിർമ്മിക്കുകയാണ്?"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "തിരപ്രവര്‍ത്തനം"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "പരിധി, മൈൽസ്റ്റോണുകൾ, തടസ്സങ്ങൾ, അടുത്ത പ്രവർത്തനങ്ങൾ എന്നിവയോടൊപ്പം സ്കൂൾ, സൃഷ്‌ടിപരമായ, കോഡിങ്, അല്ലെങ്കിൽ വ്യക്തിഗത പ്രോജෙක්‌ടുകൾ പദ്ധതീകൃതി ചെയ്യുക."
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "ജനറിക് മറുപടി ബോക്‌സിന് പകരം പ്രായോഗിക മാർഗനിർദേശം തേടുന്ന പ്ലാനിങ്ങ് വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് പ്രോജക്റ്റ് കോച്ച്-ന് അനുയോജ്യമായ പ്രത്യേക പ്രോംപ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവ ഉൾക്കൊള്ളുന്ന വിധത്തിലാണ് ക്രമീകരിച്ചിരിക്കുന്നത്."
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "യോചനകൾ വിജയലക്ഷ്യങ്ങളാക്കുക"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളോടെ ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമാക്കുക"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "ഒരു സയൻസ് ഫെയർ പ്രോജക്ട് പദ്ധതിയിടുക"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "ഒരു പോർട്ട്ഫോളിയോ വെബ്സൈറ്റ് നിർമ്മിക്കുക"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "ചരിത്രപ്രസന്റേഷൻ ഒരുക്കുക"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "രിസര്‍ച്ചു അസിസ്റ്റന്‍റ്"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "ചോദ്യം രൂപപ്പെടുത്തുകയും ഉറവിടങ്ങൾ സംഖ്യപ്പെടുത്തുകയും ചെയ്യുക"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "ഒരു വിപുലമായ വിഷയത്തെ ഗവേഷണ ചോദ്യങ്ങളാക്കി, തിരയൽ പദങ്ങൾ, രൂപരേഖകൾ, ഉറവിട കുറിപ്പുകൾ എന്നിവയാക്കി മാറ്റുക."
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "നിങ്ങൾ എന്താണ് ഗവേഷണം നടത്തുന്നത്?"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "ചിന്തന"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "വ്യാപകമായ വിഷയത്തെ ഗവേഷണ ചോദ്യങ്ങളായി, തിരയൽ വാക്കുകളായി, രൂപരേഖകളായി, ഉറവിട കുറിപ്പുകളായി മാറ്റുക."
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "പ്രായോഗിക മാർഗനിർദ്ദേശം തേടുന്ന, സാധാരണ ഉത്തര ബോക്സ് ഒഴിവാക്കുന്ന ചിന്താമിത്ത വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് സ്വതന്ത്ര പ്രോമ്പ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയോടെ ഗവേഷണ സഹായികളായുള്ളതിനായി സജ്ജീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "ചോദ്യങ്ങൾ രൂപപ്പെടുത്തുകയും സ്രോതസ്സുകൾ സംയോജിപ്പിക്കുകയും ചെയ്യുക"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രംപ്റ്റുകളുമായി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സഭ നിങ്ങളുടെ ലക്ഷ്യത്തിന് uyğunമാക്കുക"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "പുതുക്കപെടുന്ന ഊർജ്ജം സംബന്ധിച്ച ഗവേഷണം"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "AI നൈതികതയിലുള്ള ആംഗിളുകൾ കണ്ടെത്തുക"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "നഗരവികസനത്തെക്കുറിച്ചുള്ള ഒരു പേപ്പർ പദ്ധതിരുത്തുക"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "സോഴ്‌സ് ക്രിട്ടിക്"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "വിശ്വാസയോഗ്യതയും പക്ഷപാതവും വിലയിരുത്തുക"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "ലേഖനങ്ങൾ, അവകാശക്കാഴ്‌ചകൾ, വീഡിയോകൾ അല്ലെങ്കിൽ പോസ്റ്റുകൾ തെളിവ്, പക്ഷപാതം, വിശ്വാസ്യത, നഷ്ടപ്പെട്ട പശ്ചാത്തലം എന്നിവയ്ക്ക് വേണ്ടി വിലയിരുത്തുക."
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "ഉറവിടം പേസ്റ്റ് ചെയ്യുക അല്ലെങ്കിൽ വിവരിക്കൂ"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "ചിന്തന"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "ലേഖനങ്ങൾ, അണയിക്കലുകൾ, വീഡിയോകൾ, അല്ലെങ്കിൽ പോസ്റ്റുകൾ തെളിവ്, പാർശ്വവത്കരണം, വിശ്വസനീയത, നഷ്ടപ്പെട്ട പ്ര السياസ് എന്നിവയ്ക്ക് വിലയിരുത്തുക."
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "ഓരോ വിഷയത്തിലും ചിന്തിക്കാൻ ആഗ്രഹിക്കുന്ന പഠിതാക്കൾ, സാധാരണ ഉത്തരങ്ങളിൽ പകരം പ്രായോഗിക മാർഗ്ഗനിർദേശങ്ങൾ തേടുന്നവർ."
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് സോഴ്‌സ് ക്രിട്ടിക്കിനായി പ്രത്യേക പ്രേരണകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയോടെ സജ്ജമാക്കപ്പെട്ടിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "വിശ്വാസ്യതയും പക്ഷപാതത്തെയും വിലയിരുത്തുക"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളുമായി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷനെ നിങ്ങളുടെ ലക്ഷ്യത്തിനു അനുയോജ്യമായി മാറ്റുക"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "ഈ ലേഖനം വിശ്വാസയോഗ്യമാണോ?"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "ഈ വാദത്തിന്റെ തെളിവ് പരിശോധിക്കുക"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "ഈ പാരഗ്രഫിൽ പക്ഷപാതം കണ്ടെത്തുക"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "ഡാറ്റ ഇന്റർപ്രിറ്റർ"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "സംഖ്യകളും ചാർട്ടുകളും അർത്ഥമാക്കുക"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "ഡേറ്റ, ചാർട്ട് വിവരണങ്ങൾ, അല്ലെങ്കിൽ ഫലങ്ങൾ പകർത്തി പകർത്തുക; അവയുടെ അർത്ഥം, അർത്ഥമില്ലാത്തത്, പിന്നീട് ചോദിക്കേണ്ടതു എന്നിവയെക്കുറിച്ച് പഠിക്കുക."
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "ഡാറ്റ പകർത്തി ഇവിടെ ഇടുക അല്ലെങ്കിൽ ചാർട്ട് വിവരിക്കുക"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "സ്റ്റേം"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "ഡേറ്റ, ചാർട്ട് വിവരണങ്ങൾ, അല്ലെങ്കിൽ ഫലങ്ങൾ പകർത്തി ഇവിടെ പകർത്തുക; അവയുടെ അർത്ഥം, അർത്ഥമാക്കാനാവാത്തതുക, ഇനി എന്തെല്ലാം ചോദിക്കാമെന്ന് പഠിക്കൂ."
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "സാധാരണ ഉത്തര പെട്ടികയ്ക്കുപകരം നിർദ്ദേശങ്ങൾ ആവശ്യപ്പെടുന്ന സ്‌റ്റീം വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠനക്കാർ."
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് ഡാറ്റ ഇന്റർപ്രിറ്ററിനായി പ്രത്യേകമായി ക്രമീകരിച്ചിരിക്കുന്നു, അതിന്റെ സ്വന്തം പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉൾക്കൊള്ളുന്നു."
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "സംഖ്യകളും ചരടുകളും മനസ്സിലാക്കൂ"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോമ്പ്റ്റുകളുമായി തുടങ്ങുക"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "നിങ്ങളുടെ ലക്ഷ്യത്തിനു അനുയോജ്യമായി സെഷന്‍ ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "ഈ പട്ടിക വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "ഈ സർവേ എന്താണ് കാണിക്കുന്നത്?"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "ഒരു ഗ്രാഫ് വ്യാഖ്യാനിക്കാൻ സഹായിക്കുക"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "അധ്യയന പദ്ധതി നിർമ്മാതാവ്"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "യാഥാർത്ഥ ജീവിതത്തെയും നിൽക്കുന്ന ഒരു സ്ഥിരമായ പതിവ് രൂപകൽപന ചെയ്യൂ"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "നിങ്ങളുടെ സമയം, ഊർജം, ലക്ഷ്യങ്ങൾ, ആവശ്യക മേഖലകൾക്കു ചുറ്റും പഠന പദ്ധതി രൂപകല്‍പന ചെയ്യുക."
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "നിങ്ങൾ എന്ത് പഠിക്കണമെന്ന് ആഗ്രഹിക്കുന്നു?"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "പരിപാടി"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "നിങ്ങളുടെ സമയം, ഊർജ്ജം, ലക്ഷ്യങ്ങൾ, ദുർബല മേഖലയുകൾ, അവലോകন চকറുകൾ, പരിശീലന ഷെഡ്യൂൾ എന്നിവയെത്ത 중심മാക്കി യഥാർത്ഥമായ പഠന പദ്ധതി നിർമ്മിക്കുക."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "പഠന പദ്ധതി അസാധ്യമായ ച$list ചെയ്തിയെയാക്കി മാറ്റാതെ ഘടന ആവശ്യമായ വിദ്യാർത്ഥികളുടെയും സ്വയം പഠിക്കുകയുള്ളവരുടെയും വേണ്ടിയുള്ളത്."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "ബിൽഡർ ആകാംക്ഷയും അവലോകനവും അഭ്യാസവും വിശ്രമ ദിവസങ്ങളും അടുത്ത ഏറ്റവും ചെറിയ പ്രയോജനкарമായ പ്രവർത്തിയും സമന്വയം ചെയ്യുന്നു."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "ലക്ഷ്യം നിശ്ചയിക്കുക"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "പ്രാക്ടീസ് നിയോജിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "പരിശോധന ചക্ৰങ്ങൾ നിർമ്മിക്കുക"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "എന്റെ ആഴ്ച ഗണിതത്തിന് പ്ലാൻ ചെയ്യുക"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "ദിവസേന ഇംഗ്ലീഷ് പാഠക്രമം രൂപപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "സ്കൂൾ പഠനവും പരീക്ഷാ തയ്യാറെടുപ്പും സമതുലിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "ഹാബിറ്റ് കോച്ച്"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "അധ്യയനം സ്ഥിരമായി നടത്തുക"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "വെറുതെ ഉള്ളക്കളങ്ങളെ ചെറിയ പുനരാവൃതമായ പഠന സ്വഭാവങ്ങളായി മാറ്റൂ, ട്രിഗറുകൾ, ഇൻعامങ്ങൾ, മടക്കറിവ് സങ്കേതങ്ങളോടെ."
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "നിങ്ങള്‍ അഭ്യസിക്കാൻ ആഗ്രഹിക്കുന്ന ശീലമെന്താണ്?"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "പരിപാഠം"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "ഉദ്ദേശങ്ങൾ ട്രിഗറുകൾ, പുരസ്കാരങ്ങൾ, വീണ്ടെടുക്കൽ പദ്ധതികളുമായി ചേർന്ന് ചെറിയ ആവർത്തനീയമായ പഠന പതികളാക്കൂ."
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "സാധാരണ ഉത്തര പെട്ടിയേക്കാൾ പ്രായോഗികമായ മാർഗ്ഗനിർദ്ദേശം തേടുന്ന, പദ്ധതികളുമായി ബന്ധപ്പെട്ട വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് ഹാബിറ്റ് കോച്ചിന് അനുയോജ്യമായ പ്രോമ്പ്റ്റുകളോടെയും ഉദാഹരണങ്ങളോടെയും പഠന പ്രക്രിയയോടെയും ക്രമീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "പഠനത്തെ സ്ഥിരതയാക്കുക"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രേരണകളോടെ ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായി മാറ്റുക"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "പ്രതിദിനം 20 മിനിറ്റ് വായിക്കുക"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "ഗണിതത്തിൽ വൈകിപ്പിക്കുന്നതു അവസാനിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "പ്രതിദിനം കോഡിംഗ് അഭ്യസിക്കൂ"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "പ്രചോദന പരിശീലകൻ"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "പഠനം കഠിനമായപ്പോൾ പുനരാരംഭിക്കുക"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "സ്വാഭാവികമായി മാനസികമായിട്ടുള്ള തടസ്സങ്ങൾ കടത്തുക, ചെറുതായൊരു അടുത്ത പടി കണ്ടെത്തുക, കുറ്റബോധമില്ലാതെ മുന്നേറ്റം പുനർനിർമ്മിക്കുക."
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "ഇപ്പോഴത്തെ പഠനം എതിർപ്പുള്ളത് എന്താണ്?"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "തീരുമാനങ്ങൾ"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "ആത്മാവിലുന്‍ തടസമില്ലാതാക്കുക, ചുരുങ്ങിയ അടുത്ത પગലിന്‍റെ വഴി കണ്ടെത്തുക, കുറ്റബോധമില്ലാതെ ഗതിഷീലം പുനര്‍സൃഷ്‌ടിക്കുക."
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "സാമാന്യമായ ഉത്തരത്തിനുപകരം പ്രായോഗിക മാർഗനിർദേശം തേടുന്ന പ്ലാനിങ് വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിക്കാര്മാർ."
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് സ്വന്തം പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉൾപ്പെടുത്തി പ്രോത്സാഹന പരിശീലകർക്കായി സജ്ജമാക്കിയതാണ്."
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "പഠനം കഠിനമായി തോന്നുമ്പോൾ പുനരാരംഭിക്കുക"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളോടെ ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായി സെഷൻ സാധ്യമാക്കൂ"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "എനിക്ക് പിന്നിലാണ് എന്നു തോന്നുന്നു"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "ഞാൻ എല്ലായ്പ്പോഴും വൈകിപ്പിക്കുന്നു"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "ഞാൻ ഒരു പരീക്ഷയിൽ പരാജയപ്പെട്ടു, അത് മേയ്ക്ക് മോശം തോന്നിക്കുന്നു"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "ക്രിയേറ്റീവ് ബ്രെയിൻസ്റ്റോർമർ"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "മൂല്യവത്തായ ആശയങ്ങൾ സൃഷ്ടിക്കുകയും രൂപകൽപ്പന ചെയ്യുകയും ചെയ്യൂ"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "പ്രോജക്ടുകൾ, കഥകൾ, ഡിസൈൻകൾ, ശീർഷകങ്ങൾ, പരീക്ഷണങ്ങൾ, അനപേക്ഷിതാംശങ്ങൾ എന്നിവ ചിന്തിക്കുകയും ആശയമാറ്റമാക്കുകയും ചെയ്യണം."
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "നാം എന്തിനായി കൃത്രിമചിന്തന നടത്തുകയാണ്?"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "സൃഷ്ടിപരമായത്"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "പ്രോജക്റ്റുകളും കഥകളും രൂപകൽപ്പനകളും ശീർഷകങ്ങളും പരീക്ഷണങ്ങളും അപ്രതീക്ഷിതമായ കാഴ്ചക്കോണുകളും ആശയമാറ്റം ചെയ്യുക."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "സാമാന്യ ഉത്തര ബോക്സ് അല്ല, പ്രായോഗിക മാർഗ്ഗനിർദ്ദേശം ആവശ്യപ്പെടുന്ന സൃഷ്ടിപരമായ വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് സൃഷ്ടിപരമായ ആശയവിനിമയത്തിന് അനുയോജ്യമായതാണ്, അതിൽ തനതു പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉൾക്കൊള്ളുന്നു."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "മൂല്യവത്തായ പുതിയ ആശയങ്ങൾ സൃഷ്ടിക്കുകയും രൂപപ്പെടുത്തുകയും ചെയ്യുക"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോമ്പ്റ്റുകളിൽ നിന്ന് ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യം ആക്കുക"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "ഒരു ശാസ്ത്ര പദ്ധതിക്കുള്ള ആശയങ്ങൾ"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "സ్నേഹത്തെക്കുറിച്ചുള്ള കഥാസങ്കല്പങ്ങൾ"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "സൃഷ്‌ടിവാത്സല্যমുള്ള അവതരണങ്‌കൾ"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "കഥാ അധ്യാപകൻ"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "കഥകളിലൂടെ പഠിക്കുക"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "സങ്കൽപ്പങ്ങളെ കഥകളാക്കി, കഥാപാത്രങ്ങളാക്കി, സംഘർഷങ്ങളാക്കി, ഓർമപ്പക-userexperience ഉണ്ടാക്കുന്ന രംഗങ്ങളാക്കി മാറ്റൂ."
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "ഒരു കഥയായി മാറേണ്ടത് എന്തിന് ആയിരിക്കണം?"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "സൃഷ്ടിപശക്തി"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "കഠിനമായ ആശയങ്ങൾ ഓർമ്മയിൽ സൂക്ഷിക്കാൻ സഹായിക്കുന്ന കഥകൾ, കഥാപാത്രങ്ങൾ, സംഘർഷങ്ങൾ, ഓർമ്മക്കൊള്ളാവുന്ന രംഗങ്ങൾ എന്നിവയായി ആശയങ്ങളെ മാറ്റുക."
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "കഥകളിലൂടെ, ഉപമകളിലൂടെ, കഥാപാത്രങ്ങളിലൂടെ, സജീവ ഉദാഹരണങ്ങളിലൂടെ ആശയങ്ങൾ മികച്ചത് ഓർത്തുകൊള്ളുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "ട്യൂട്ടർ അവബോധ തരത്തിലുള്ള വിഷയം കഥാസൗകര്യത്തിലേക്ക് മാറ്റുന്നു, അടിസ്ഥാന ആശയം തെളിവായി സൂക്ഷിച്ചുകൊണ്ടാണ്."
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "അവബോധം തിരഞ്ഞെടുക്കുക"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "ഒരു കഥ നിർമ്മിക്കുക"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "പാഠം വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "ഭാഗങ്ങളെ ഒരു കഥയായി പഠിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "പരിസരവ്യവസ്ഥകൾക്കുറിച്ചൊരു കഥ സൃഷ്‌ടിക്കുക"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "aladeeyatha katha paathraṅṅḷoṭe vivarikkuka"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "ദർശനശാസ്ത്ര ലാബ്"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "വലിയ ചോദ്യങ്ങളെ കുറിച്ച് സൂക്ഷ്മമായി വിചാരിക്കുക"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "പരിശീലനപരമായ ചിന്തനത്തിലൂടെ സ്വഭാവം, വിജ്ഞാനം, നീതി, സ്വാതന്ത്ര്യം, സന്തോഷം എന്നിവ ഉൾപ്പെടെ മനംമോഷ്ടികളായ മറ്റുള്ളവ ചോദ്യങ്ങൾ കണ്ടെത്തൂ."
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "നാം ഏത് വലിയ ചോദ്യം അന്വേഷിക്കുകയാണ്?"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "മനുഷ്യശാസ്ത്രങ്ങൾ"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "നിയമപരമായ താരതമ്യത്തിലൂടെ തിരിച്ചറിവ്, വിജ്ഞാനം, നീതിപരമായ മൂല്യങ്ങള്‍, സ്വാതന്ത്ര്യം, സന്തോഷം എന്നിവയും മറ്റ് ആഴത്തിലുള്ള ചോദ്യങ്ങളും അന്വേഷിക്കു."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "സാമൂഹികവിദ്യ വിഷയങ്ങൾ പഠിക്കുന്ന വിദ്യാർത്ഥികൾ, സാധാരണ ഉത്തരങ്ങൾക്കുപകരം പ്രായോഗിക മാർഗ്ഗനിർദേശം ആഗ്രഹിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് തൻറെ തന്നെ പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവുമുള്ള തത്ത്വചിന്താ പരീക്ഷണശാലയ്ക്ക് അനുയോജ്യമായി ക്രമീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "വലിയ ചോദ്യങ്ങളെക്കുറിച്ച് സൂക്ഷ്മമായി ആലോചിക്കുക"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോപ്റ്റുകളാൽ ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷനെ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായി മാറ്റുക"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "ഏതുവഴി എന്തെങ്കിലും ന്യായമായിരിക്കും?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "നമുക്ക് സ്വതന്ത്ര ഇച്ഛാശക്തിയുണ്ടോ?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "ജ്ഞാനം എന്താണ്?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "നൈതികതാ ദ്വന്ധങ്ങള്‍"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "നീതിശാസ്ത്രം വിശകലനം ചെയ്യാവുന്ന പ്രാക്ടീസ്"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "പഗ്രഹക്കാർ, ഫലങ്ങൾ, കടമകൾ, അവകാശങ്ങൾ, ലാഭനഷ്ടങ്ങൾ എന്നിവതിൻറെ ഭാരം കണക്കിലെടുത്ത് അനുഭവലബ്ധികൾ പരിഹരിക്കുക."
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "ഞങ്ങൾ പരിശോധിക്കേണ്ട പ്രശ്നമെന്താണ്?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "മനുഷ്യശാസ്ത്രം"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "ഹിതം അനുഭവിക്കാവുന്ന പ്രശ്‌നങ്ങളിൽ പങ്കാളികളെ, ഫലങ്ങൾ, ഉത്തരവാദിത്വങ്ങൾ, അകിബാറ്റുകൾ, വിനിമയങ്ങളെ വിലയിരുത്തി പരിഹരിക്കുക."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "കാലന്നുബന്ധ പ്രശ്നങ്ങൾക്ക് സാധാരണ മറുപടി കൊടുക്കുന്നതിന് പകരം പ്രായോഗിക മാർഗ്ഗനിർദ്ദേശം ആവശ്യപ്പെടുന്ന മാനവിക ശാസ്ത്ര വിഷയങ്ങൾ പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് നीतിശാസ്ത്ര சங்கർഷങ്ങൾക്കായി പ്രത്യേക തന്ത്രങ്ങളോടുകൂടിയും, ഉദാഹരണങ്ങളോടുകൂടിയും, പഠന പ്രവാഹത്തോടുകൂടിയും ക്രമീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "നീതിപരമായ നിരൂപണം അഭ്യാസം"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളിൽനിന്നു ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായി ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "ക്ലാസ്‌റൂമുകളില്‍ AI"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "മൃഗപരീക്ഷണം"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "പൊള്ള വാങ്ങല്‍ ഒരിക്കലും ശരിയാണോ?"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "ഭൂഗോളം എക്സ്പ്ലോറർ"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "സ്ഥലങ്ങൾ, ഭൂപടങ്ങൾ, മനുഷ്യർ എന്നിവയെക്കുറിച്ച് മനസിലാക്കുക"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "രാജ്യങ്ങൾ, നഗരങ്ങൾ, നദികൾ, കാലാവസ്ഥകൾ, കുടിയേറ്റം, വിഭവങ്ങൾ, ഭൂമിശാസ്ത്രം ജീവിതത്തെ എങ്ങനെ സ്വാധീനിക്കുന്നു എന്ന് അന്വേഷിക്കുക."
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "നമുക്ക് എവിടെയൊരെക്‌സ്‌പ്ലോർ ചെയ്യണം?"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "മനുഷ്യശാസ്ത്രം"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "രാജ്യങ്ങൾ, നഗരങ്ങൾ, നദികൾ, കാലാവസ്ഥകൾ, കുടിയേറ്റം, വിഭവങ്ങൾ എന്നിവയെക്കുറിച്ച് അന്വേഷിക്കുകയും ഭൂഗോളശാസ്ത്രീയമെന്നത് ജീവിതത്തെ എങ്ങനെ രൂപപ്പെടുത്തുന്നു എന്നത് അന്വേഷിക്കുകയും ചെയ്യുക."
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "സ്പർശഭൂമിക വിഷയങ്ങൾ അന്വേഷിക്കുന്നവർക്ക് പൊതുവായ ഉത്തര ബോക്സിനുപകരം പ്രായോഗിക മാർഗനിർദ്ദേശം നൽകാൻ."
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് ജിയോഗ്രഫി എക്സ്പ്ലോററിന് സ്വന്തമായ പ്രോംപ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവ ഉപയോഗിച്ച് തയ്യാറാക്കപ്പെട്ടതാണ്."
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "സ്ഥലങ്ങള്‍, ഭൂപടങ്ങള്‍, ജനങ്ങള്‍ എന്നിവയെക്കുറിച്ച് മനസ്സിലാക്കുക"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രൊംപ്റ്റുകളുമായി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിനനുസരിച്ച് മാറ്റാമ്"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "നദികളുടെ സമീപം നഗരങ്ങൾ എന്തുകൊണ്ടാണ് ഉണ്ടാകുന്നത്?"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "ഹിമാലയങ്ങൾ എക്‌സ്‌പ്ലോർ ചെയ്യു"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "ഇന്ത്യയും ജപ്പാനും താരതമ്യം ചെയ്യൂ"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "സാമ്പത്തിക ശാസ്ത്രം സിമുലേറ്റർ"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "തിരഞ്ഞെടുപ്പുകൾ, പ്രേരണകൾ, ഒപ്പം വാണിജ്യ തീരുമാനം പഠിക്കുക"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "സാമ്പത്തിക വിപണികൾ, കുറവുകൾ, പ്രേരണകൾ, നയം, വ്യക്തിഗത സാമ്പത്തികം എന്നിവ ലളിതമായ സിമുലേഷനുകൾ വഴിയാണ് അഭ്യസിക്കുക."
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "നാം ഏതാണ് സാമ്പത്തിക ആശയം അനുകരിക്കേണ്ടത്?"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "മനുഷ്യശാസ്ത്രം"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "മാർക്കറ്റുകൾ, കുറവുകൾ, പ്രോത്സാഹകങ്ങൾ, നയങ്ങൾ, വ്യക്തിഗത സാമ്പത്തികം എന്നിവക്ക് ലളിതമായ സിമുലേഷനുകളിലൂടെ അനുഭവം നേടൂ."
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "പൊതു മറുപടിയല്ല, പ്രായോഗിക മാർഗനിർദ്ദേശം അന്വേഷിക്കുന്ന മാനവികശാസ്ത്ര വിഷയങ്ങൾ പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് സാമ്പത്തിക സിമുലേറ്ററിന് അനുയോജ്യമായി അതിന്റെ സ്വന്തം പ്രಾಂപ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയോടുകൂടി ക്രമീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "തിരഞ്ഞെടുക്കലുകൾ, പ്രേരണകൾ, ഒപ്പം നിവർത്തനങ്ങൾ പഠിക്കുക"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളുമായി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "താങ്കളുടെ ലക്ഷ്യത്തിനു അനുയോജ്യമായി സെഷൻ ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "വില്പനയും ആവശ്യമുണ്ടാകലും അനുകരിക്കുക"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "പണമൂല്യനഷ്ടം വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "നികുതികൾ മാറ്റപ്പെട്ടാൽ എന്താകും സംഭവിക്കുന്നത്?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "ചരിത്രം കാരണവും ഫലവും"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "സംഭവങ്ങൾ ഉണ്ടായതിന്റെ കാരണം കണ്ടെത്തുക"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ചരിത്ര സംഭവങ്ങളെ കാരണങ്ങൾ, ഉദ്രეკകങ്ങൾ, ഫലങ്ങൾ, മാത്രമല്ല, പര്യാപ്തമായ മറ്റുവികല്പങ്ങളും പരിശോധിച്ച് വിശകലനം ചെയ്യുക."
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "നാം ഏത് ചരിത്ര സംഭവത്തെ രേഖപ്പെടുത്തണം?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "മനുഷ്യശാസ്ത്രം"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ചരിത്രസംഭവങ്ങളെ കാരണം, പ്രവർത്തിപ്പിക്കുന്ന ഘടകങ്ങൾ, ഫലം, രേഖാപരമായ മറ്റ് സാധ്യതകൾ എന്നിവയുടെ മുഖേന വിശകലനം ചെയ്യുക."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "സാമൂഹ്യ ശാസ്ത്ര വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠനാർഥികൾക്ക് സാധാരണ മറുപടി ബോക്സിനുപകരം പ്രായോഗിക മാർഗદર્શનം വേണമെന്നുള്ളവർ."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "ചരിത്രം കാരണഫലത്തോടനുബന്ധിച്ചാണ് ഈ മോഡ് രൂപകൽപ്പന ചെയ്തിരിക്കുന്നത് കൂടാതെ ഇതിന് പ്രത്യേക പ്രംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉണ്ട്."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "เหตุผลที่เหตุการณ์เกิดขึ้น"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോമ്പ്റ്റുകളുമായി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായ രീതിയിൽ രൂപകൽപ്പന ചെയ്യുക"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "പ്രථമ ലോക മഹായുദ്ധത്തിന്റെ കാരണങ്ങൾ"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "റോമൻ സാമ്രാജ്യം ദുർബലമാകാൻ കാരണം എന്തായിരുന്നു?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "പ്രിന്റിംഗ് പ്രസ് നൽകിയ പ്രതികരണങ്ങൾ"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "സിവിക്സ് കോച്ച്"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "അധികാരങ്ങൾ, സർക്കാർ, സർവജന സമൂഹം മനസിലാക്കുക"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "നിയമങ്ങൾ, ജനാധിപత్యം, തെരഞ്ഞെടുപ്പുകൾ, കോടതികൾ, അവകാശങ്ങൾ, ബാധ്യതകൾ, പൊതുപദവികൾ എന്നിവ പഠിക്കൂ."
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "ഞങ്ങൾ പഠിക്കേണ്ട പൗരത്വ വിഷയമെന്ന് നിങ്ങൾക്ക് എന്താണ് വിചാരിക്കുന്നത്?"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "മാനവശാസ്ത്രം"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "സംവിധാനങ്ങൾ, ജനാധിപത്യം, തിരഞ്ഞെടുപ്പുകൾ, കോടതികൾ, അവകാശങ്ങൾ, കടമകൾ, പൊതു നയം എന്നിവ പഠിക്കൂ."
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "സাধാരണ ഉത്തര പെട്ടകം മാറി പ്രായോഗിക മാർഗ്ഗനിർദ്ദേശം തേടുന്ന മനുഷ്യശാസ്ത്ര വിഷയങ്ങളിൽ താൽപര്യമുള്ള പഠിതാക്കൾ."
+    }
+  ]
+}

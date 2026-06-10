@@ -26,7 +26,10 @@ export async function POST(request: NextRequest) {
   }
 
   const user = await getUserById(session.user.id);
-  const quiz = await generateQuiz(parsed.data.topic, { learnerAge: calculateAge(user?.dateOfBirth) });
+  const quiz = await generateQuiz(parsed.data.topic, {
+    learnerAge: calculateAge(user?.dateOfBirth),
+    preferredLanguage: user?.preferredLanguage,
+  });
   const run = await createActivityRun({
     chatId: parsed.data.chatId,
     type: "quiz",

@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Bulgarian",
+  "locale": "bg",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 14,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.3b78b9b7264612be50",
+      "source": "Understand why an answer works.",
+      "value": "Разбираме защо един отговор работи."
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Разбиране на отговорите"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "За разлика от един обикновен чатбот, inspir организира ИИ около режими на обучение, така че учещите могат да започнат с вида на помощ, от която се нуждаят: намеци, въпроси, квизи, активно отѕив, ролеви, дебат или обратна връзка."
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Необразовани филми"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Разгледай исторически събития чрез причини, поводи, последици и алтернативни възможности."
+    },
+    {
+      "key": "site.0cb2a98d176c0d6e0a",
+      "source": "Use \"{value1}\" as a launchpad, not a stopping point. The strongest learning session moves from reading into recall, feedback, and one visible next step.",
+      "value": "Използвайте \"{value1}\" като линейна, а не спираща точка. Най-силният сесия се движи от четене в отзиви, обратна връзка, и една видима следващата стъпка."
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "Използвайте почивки 50/10"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "Използвайте компактна таблица за даден отговор, правилна идея, заблуждаване и следващ ход."
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "Използвайте карта за надеждност и въпроси, за да разследвате следващия."
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "Използвайте дълбока работа договор с резултатите, блок план, правила и преглед."
+    },
+    {
+      "key": "site.25f3436cf8f027c0a4",
+      "source": "Use a guided path for moving from confusion to examples, checks, and recall.",
+      "value": "Използвайте ръководен път за преместване от объркване към примери, проверки и припомняне."
+    },
+    {
+      "key": "site.263aad3876df3730dc",
+      "source": "Use a live AI learning mode to turn this guide into questions, feedback, examples, and next steps.",
+      "value": "Използвайте живо ИИ обучение режим, за да превърнете този ръководство в въпроси, обратна връзка, примери и следващите стъпки."
+    },
+    {
+      "key": "site.c2a0beae2becd36b3e",
+      "source": "Use a live mode when you know the exact point of confusion and want the next explanation, question, hint, or review loop.",
+      "value": "Използвайте режим на живот, когато знаете точната точка на объркване и искате следващото обяснение, въпрос, намек или преглед на петата."
+    },
+    {
+      "key": "site.4ba44f615dee2344fd",
+      "source": "Use a structured lesson when you know the course area and want a sequenced explanation or practice set.",
+      "value": "Използвайте структуриран урок, когато знаете областта на курса и искате последователно обяснение или практика набор."
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "Използвай маса с преден, заден, намек и обикновен капан."
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Използвайте ИИ като треньор за разбиране, практика и обратна връзка вместо прекия път, който тихо премахва ученето."
+    },
+    {
+      "key": "site.4726b0ac594e351581",
+      "source": "Use AI as a programming coach, project partner, data interpreter, and research helper while keeping the learner in the loop.",
+      "value": "Използвайте ИИ като програмен треньор, партньор на проекта, интерпретатор на данни, и изследовател, докато поддържате ученика в цикъла."
+    },
+    {
+      "key": "site.822197e35efa4dbf68",
+      "source": "Use AI feedback to sharpen structure and clarity without losing your own voice.",
+      "value": "Използвайте ИИ обратна връзка, за да остри структура и яснота, без да губите собствен глас."
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "Използвайте ИИ за намеци, обяснения, проверки грешки и преглед на петлите. Не го моля да произвежда окончателен отговор, който не можете да обясните."
+    },
+    {
+      "key": "site.e0ecab1fdd63f7ec14",
+      "source": "Use AI for the next hint, a step check, or draft feedback while keeping the final reasoning and voice yours.",
+      "value": "Използвайте ИИ за следващата намек, стъпка проверка, или проект на обратна връзка, докато запазва окончателното разсъждение и глас на вашата."
+    },
+    {
+      "key": "site.c27741d4fa1c4735e0",
+      "source": "Use AI for the thinking around the answer",
+      "value": "Използвайте ИИ за мислене около отговора"
+    },
+    {
+      "key": "site.3c15a1badabd630acb",
+      "source": "Use AI historical worlds, persona simulations, debate, philosophy, and evidence labels without confusing roleplay for sources.",
+      "value": "Използвайте исторически светове на ВИ, персона симулации, дебат, философия и етикети на доказателства без объркване на ролевите за източници."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Използвай AI помощ за домашни за подсказки, проверки на стъпки, математическо разсъждение и обратна връзка за писане, като крайният труд остава твой."
+    },
+    {
+      "key": "site.f454c3bcff623f2f24",
+      "source": "Use AI simulations as learning scaffolds while keeping sources, evidence, and interpretation clear.",
+      "value": "Използвайте симулации на ВИ като учещи скеле, като същевременно поддържате източници, доказателства и тълкуване ясно."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Използвай AI пътуване във времето, исторически разговори и практика за дебат, за да изследваш контекст, доказателства, аргументи и гледни точки."
+    },
+    {
+      "key": "site.74978cdedb6b898dad",
+      "source": "Use AI to pressure-test your reasoning, surface assumptions, and improve decisions.",
+      "value": "Използвайте ИИ, за да се подтискат-тест вашите разсъждения, повърхностни предположения, и подобряване на решенията."
+    },
+    {
+      "key": "site.938cad8945c8f12abf",
+      "source": "Use AI to slow down reasoning, check steps, debug mistakes, and practise concepts.",
+      "value": "Използвайте ИИ, за да забави разсъжденията, проверете стъпки, грешки при разправяне на грешки и практикуване на концепции."
+    },
+    {
+      "key": "site.32feb61d4aa3606efc",
+      "source": "Use Art Appreciation Guide when this is the right mode for the job. If you want a related path, try Civics Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Арт Апециационен ръководство, когато това е правилния режим за работа. Ако искате свързан път, опитайте Civilis Тренер. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Сократовско обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.6a001db9ced5bfb232",
+      "source": "Use Art Appreciation Guide when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Арт Аценационен ръководство, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "Използвайте имената на значките, критериите, степента и примерите на доказателствата."
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "Използвайте откъси преди/след, приоритети за редакция и кратка обосновка."
+    },
+    {
+      "key": "site.2f4a3f9ce995ca37de",
+      "source": "Use Brainstorm Ideas to create several routes before choosing one.",
+      "value": "Използвайте идеите на Brainstorm, за да създадете няколко маршрута, преди да изберете един."
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "Използвайте календари, контролни листи и рискови флагове."
+    },
+    {
+      "key": "site.b7e479a8da805c14af",
+      "source": "Use Career Explorer when this is the right mode for the job. If you want a related path, try Roleplay Scenario. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Кариерен Explorer, когато това е правилният режим за работата. Ако искате свързан път, опитайте Ролерей Сценарио. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socratuate обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.5fa0d275390380b147",
+      "source": "Use Career Explorer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Кариерен Explorer, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "Използвайте файла, избора, резултата и учната бележка."
+    },
+    {
+      "key": "site.d835e997c12945b8ec",
+      "source": "Use Case Study Simulator when this is the right mode for the job. If you want a related path, try Feynman Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте симулатора за изследване на случаите, когато това е правилният режим за работата. Ако искате свързан път, опитайте Feynman Tutor. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuate учение, флашкарти, ролеви и активното отзоваване."
+    },
+    {
+      "key": "site.718c202fac629655a7",
+      "source": "Use Case Study Simulator when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте симулатора за изследване на случаите, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувствате възможно."
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "Използвайте карти за предизвикателства, точки, кръгове и разпит."
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "Използвайте вписвания в цитация плюс списък с липсващи полета."
+    },
+    {
+      "key": "site.962c32260471c9ecdd",
+      "source": "Use Civics Coach when this is the right mode for the job. If you want a related path, try History Cause-and-Effect. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Civilis Coach, когато това е правилния режим за работата. Ако искате свързан път, опитайте история Причина и ефективен. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.307747761ccd6ec09c",
+      "source": "Use Civics Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Civilis Тренер, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.67ab2fa1194e620987",
+      "source": "Use Code Tutor for concepts, Project Coach for product ideas, Data Interpreter for datasets, and Study Plan Builder for a learning roadmap.",
+      "value": "Използвайте кода за концепции, Проект Треньор за продуктови идеи, Разводник на данни за разпечатки, и Изграждач на учебен план за обучение на карта."
+    },
+    {
+      "key": "site.6d2e9178319cdae5c6",
+      "source": "Use Code Tutor or homework modes to isolate the exact point where reasoning breaks.",
+      "value": "Използвайте кода Тутор или режими на домашно, за да изолирате точната точка, където разсъжденията се пречупват."
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "Използвайте кода Тутор или Проект Тренер, за да превърнете неясно гол в малка тестваема следващата стъпка."
+    },
+    {
+      "key": "site.bbe4b5cbcff3a78ba8",
+      "source": "Use Code Tutor when this is the right mode for the job. If you want a related path, try Interview Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте кода Тутор, когато това е правилния режим за работата. Ако искате свързан път, опитайте интервю Тренер. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socrathic обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.65fb48b213ba1d00a8",
+      "source": "Use Code Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте кода Тутор, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.cc86f8ca8f2b01fe01",
+      "source": "Use Collaborative Instruction when this is the right mode for the job. If you want a related path, try Socratic Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Кооперативни Инструкции, когато това е правилния режим за работата. Ако искате свързан път, опитайте Сократовско Instruction. Можете също така да разгледате блога за обучение на ВИ за методи, Socratuate учение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.6f8e91eb4525f32413",
+      "source": "Use Collaborative Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Кооперативни Инструкции, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувстват възможни."
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "Използвайте поети карти, чек-ин скриптове, и планове за възстановяване."
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "Използвайте компактни сцени: настройка, времева рязане, персона ядро, стена на досието, историческа странична кола, препоръчвани въпроси за откриване, след това размяна на характерни вещества с от време на време етикети и разпит по заявка."
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "Използвайте компактни ЮИ-като разделове: Паспорт, Пътуване Консултация, Пристигане Сцена, Местоположение, Идентичност, Социални правила, Часовник на събитията, В близост хора, Обекти, Избори, Доказателства, и Поле бележки. Край на голямата завой с смислен избор."
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "Използвайте компактни работни зали секции като съвместно артефакт, ИИ принос, потребителски ход, Вградени коментари, дневник на решения, отворени въпроси и следващо действие. Покажи предложени редактировки или различия, преди да се слее при повторното записване."
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "Използвайте таблици за сравнение и експерименти на следващата стъпка."
+    },
+    {
+      "key": "site.29b8400b4540e7d418",
+      "source": "Use Concept Map Builder when this is the right mode for the job. If you want a related path, try Spaced Review. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Concept Map Builder, когато това е правилният режим за работа. Ако искате свързан път, опитайте Spaceed Review. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuc обучение, флашкарти, ролеви и активно отчитане."
+    },
+    {
+      "key": "site.bb38dee9a6cd6fff36",
+      "source": "Use Concept Map Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Concept Map Builder, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "Използвайте концизни твърдения, доказателства подтикнати и окончателен дебат, когато попитате."
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "Използвайте слоеве на шишета, коментари само когато са полезни, и тестване случаи."
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "Използвайте концизни инструкции за рисуване, етикети списъци, и визуални контролни пунктове."
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "Използвайте Cornell секции: знаци, бележки, резюме и припомни чекове."
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "Използвайте карти за курс, ресурси списъци, и седмични маси за зареждане."
+    },
+    {
+      "key": "site.cec8c6e4945f7c202b",
+      "source": "Use Creative Brainstormer when this is the right mode for the job. If you want a related path, try Motivation Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Creative Brainstormer, когато това е правилния режим за работата. Ако искате свързан път, опитайте Мотивация треньор. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuate обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.c7f0d6a9fe1f0f0f1f",
+      "source": "Use Creative Brainstormer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Creative Brainstormer, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "Използвайте табло карти, тренд бележки, слаби точки, и следващите действия."
+    },
+    {
+      "key": "site.21bcc1ab289563ea0a",
+      "source": "Use Data Interpreter to ask what the data says, what it does not say, and what to check next.",
+      "value": "Използвайте интерпретер на данните, за да попитате какво казват данните, какво не казват, и какво да проверите следващото."
+    },
+    {
+      "key": "site.13f6aa5dbc34a1c855",
+      "source": "Use Data Interpreter when this is the right mode for the job. If you want a related path, try Source Critic. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте интерпретер на данни, когато това е правилният режим за работата. Ако искате свързан път, опитайте Source Critic. Можете също така да прегледате ИИ изучаване блог за методи за изучаване, Socratuc обучение, флашкарти, ролей и активното отзоваване."
+    },
+    {
+      "key": "site.8dcd885d4d2885f7be",
+      "source": "Use Data Interpreter when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте интерпретер на данни, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувствате възможно."
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "Използвайте краен срок, рискови флагове и следващите действия."
+    },
+    {
+      "key": "site.5e7b8bf8fda0b72c8d",
+      "source": "Use debate and cause-effect modes to compare explanations and write a stronger argument.",
+      "value": "Използвайте режими на дебат и предизвика-ефект, за да сравните обяснения и напишете по-силен аргумент."
+    },
+    {
+      "key": "site.67ce2e1733e0413da2",
+      "source": "Use Debate Any Topic to define the position, burden of proof, and opposing view.",
+      "value": "Използвайте Дебат Всяка тема, за да определите позицията, тежестта на доказателството, и противоположната гледка."
+    },
+    {
+      "key": "site.0a7246989e8a5277ee",
+      "source": "Use Debate Any Topic to separate evidence, values, and assumptions.",
+      "value": "Използвайте Дебат всяка тема, за да отделите доказателства, ценности и предположения."
+    },
+    {
+      "key": "site.bf18b2089e2f217da8",
+      "source": "Use Debate Any Topic to test claims against counterarguments.",
+      "value": "Използвайте Дебат всяка тема, за да тествате твърдения срещу контрааргументи."
+    },
+    {
+      "key": "site.0df474b49f89092030",
+      "source": "Use Debate any topic when this is the right mode for the job. If you want a related path, try Debate with a personality. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Дебат всяка тема, когато това е правилния режим за работата. Ако искате свързан път, опитайте Дебат с личност. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratation обучение, флашкарти, ролей и активното отзоваване."
+    },
+    {
+      "key": "site.b6d7ea92de5267382e",
+      "source": "Use Debate any topic when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Дебат всяка тема, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "Използвайте карти за дебат, концизни противоречия, и от време на време скориране на качеството на аргументите."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Използвай дебат, за да сравниш най-силното твърдение и най-силното контратвърдение."
+    },
+    {
+      "key": "site.27069a04f2fe87017e",
+      "source": "Use Debate with a personality when this is the right mode for the job. If you want a related path, try Talk to a historical person. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Дебат с личност, когато това е правилния режим за работата. Ако искате свързан път, опитайте Разговор с исторически човек. Можете също така да разгледате блога за обучение на ИИ за методи, Socratation обучение, флашкарти, ролей и активното отзоваване."
+    },
+    {
+      "key": "site.a5d02d6f499f36bba7",
+      "source": "Use Debate with a personality when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Дебат с личност, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувстват възможни."
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "Използвайте диагноза, по-добър модел, защо работи, и един въпрос за проверка."
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "Използвайте диаграми в текста, обяснения за роли, и сценарии на реалния свят."
+    },
+    {
+      "key": "site.404747c655d4bae525",
+      "source": "Use Economics Simulator when this is the right mode for the job. If you want a related path, try Geography Explorer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Икономически симулатор, когато това е правилният режим за работата. Ако искате свързан път, опитайте Geography Explorer. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socratuate учение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.4e7a277dd87ebfeba6",
+      "source": "Use Economics Simulator when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Икономически симулатор, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувствате възможно."
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "Използвайте уравнения, подредени стъпки, и кратки защо-този-творещи бележки."
+    },
+    {
+      "key": "site.082e7690af7eb04c5d",
+      "source": "Use Ethics Dilemmas when this is the right mode for the job. If you want a related path, try Philosophy Lab. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Ethics Dilemmas, когато това е правилния режим за работа. Ако искате свързан път, опитайте философия Лаборатория. Можете също така да разгледате ИИ учене блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното отзоваване."
+    },
+    {
+      "key": "site.b2f3bcf1d78931ce13",
+      "source": "Use Ethics Dilemmas when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Ethics Dilemmas, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.32342ae4ffd3ccbc2f",
+      "source": "Use Exam Prep Planner to split a syllabus into sessions, practice, rest, and review checkpoints.",
+      "value": "Използвайте Exam Prep Planner да разделите наставления на сесии, практика, почивка, и преглед на контролните пунктове."
+    },
+    {
+      "key": "site.364c2ff6739024d5e5",
+      "source": "Use Exam Prep Planner when this is the right mode for the job. If you want a related path, try Speaking Practice. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Exam Prep Planner, когато това е правилният режим за работа. Ако искате свързан път, опитайте да говорите практика. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.028f98cd50e70b89d2",
+      "source": "Use Exam Prep Planner when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Exam Prep Planner, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.9f4a4c5d3ac1cd1ed6",
+      "source": "Use Exam Prep Planner with the date, syllabus, available time, and weak areas.",
+      "value": "Използвайте Exam Prep Planner с датата, наставление, на разположение време, и слаби зони."
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "Използвайте въпроси, моделни отговори и обратни картички."
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "Използвайте примери, сравняване на системи, задават въпроси за кандидатстване, и отделя факти от мненията."
+    },
+    {
+      "key": "site.fc3672b94854abb4d7",
+      "source": "Use Explain My Answer when this is the right mode for the job. If you want a related path, try Debate any topic. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Обяснете ми отговора, когато това е правилният режим за работата. Ако искате свързан път, опитайте Дебат всяка тема. Можете също така да разгледате ИИ учене блог за методи за изучаване, Socratual обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.0347d734092168c24f",
+      "source": "Use Explain My Answer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Обяснете ми Отговора, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.1f51099bf0f757ebc2",
+      "source": "Use Feynman Tutor when this is the right mode for the job. If you want a related path, try Misconception Doctor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Feynman Tutor, когато това е правилния режим за работата. Ако искате свързан път, опитайте Fasconception Доктор. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuc обучение, флашкарти, ролей и активното отзоваване."
+    },
+    {
+      "key": "site.8d436f99bc40e1c969",
+      "source": "Use Feynman Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Feynman Tutor, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.68e3ce9dbf6dd60b61",
+      "source": "Use Flashcard Builder to convert misses into focused recall prompts.",
+      "value": "Използвайте Flashcard builder, за да конвертирате пропуски в фокусирани припомняне бързи."
+    },
+    {
+      "key": "site.99edef639ccbb31b6c",
+      "source": "Use Flashcard Builder when this is the right mode for the job. If you want a related path, try Exam Prep Planner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Flashcard Builder, когато това е правилният режим за работа. Ако искате свързан път, опитайте Exam Prep Planner. Можете също така да прегледате ИИ изучаване блог за методи за изучаване, Socratuc обучение, флашкарти, ролеви и активно отзоваване."
+    },
+    {
+      "key": "site.c1fb32683ce831e8e1",
+      "source": "Use Flashcard Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Flashcard Builder, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.5ab4fb5e9add990671",
+      "source": "Use Flashcards and Spaced Review to turn misses into repeatable memory work.",
+      "value": "Използвайте Flashcards и разпространен преглед, за да превърнете пропуските в повтаряща се памет работа."
+    },
+    {
+      "key": "site.32307cc36733b653d6",
+      "source": "Use flashcards or quizzes so the article becomes a practice loop, not just advice.",
+      "value": "Използвайте флашкарти или квизови, така че статията се превръща в практика петно, а не само съвети."
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "Използвайте папки, етикети, обобщения, връзки и преглед на действия."
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "Използвайте формули, таблици и планове за целеви резултати."
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "Използвайте постове за форуми, отговори на проекти и обобщения за дискусията."
+    },
+    {
+      "key": "site.f52be16701e83ab73b",
+      "source": "Use Geography Explorer when this is the right mode for the job. If you want a related path, try Ethics Dilemmas. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Geography Explorer, когато това е правилния режим за работата. Ако искате свързан път, опитайте Ethics Dilemmas. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratisation обучение, флашкарти, ролеви и активното отзоваване."
+    },
+    {
+      "key": "site.97f31fa0d1b629b922",
+      "source": "Use Geography Explorer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Geography Explorer, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "Използвайте цел карти, приоритет, време оценка, блокер, и направени критерии."
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "Използвайте групов дневен ред, роли, кръгове, ресурси и задачи за последване."
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "Използвайте групи, таймер кръгове, чек-инове, и разпит подтик."
+    },
+    {
+      "key": "site.6fc373d0f67386667d",
+      "source": "Use Habit Coach when this is the right mode for the job. If you want a related path, try Study Plan Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Habit Trener, когато това е правилния режим за работата. Ако искате свързан път, опитайте Изследване план Изграждане. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.87b80b81d1d72e5932",
+      "source": "Use Habit Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Habit Trener, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "Използвайте рецепта за навик, план за препятствия и 7-дневен експеримент."
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "Използвайте първо намек и обясни обратно работни потоци за домашна подкрепа."
+    },
+    {
+      "key": "site.dd987e4b1aaffc7617",
+      "source": "Use hints before answers",
+      "value": "Използвай подсказки преди отговорите"
+    },
+    {
+      "key": "site.b2f99254c634dd4f39",
+      "source": "Use hints before answers.",
+      "value": "Използвайте указания преди отговорите."
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "Използвайте намеци, контролни пунктове, и малки примери, а не пълен окончателен отговор."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Използвай подсказки, проверки на стъпки и обратна връзка за писане, без да превръщаш ученето в копиране на отговори."
+    },
+    {
+      "key": "site.2433805f11d2eb611c",
+      "source": "Use historical AI roleplay with three rules:",
+      "value": "Използвайте историческото ИИ ролей с три правила:"
+    },
+    {
+      "key": "site.0e7e091d76613071b3",
+      "source": "Use historical modes with labels for documented facts versus simulation.",
+      "value": "Използвайте исторически режими с етикети за документирани факти срещу симулация."
+    },
+    {
+      "key": "site.0d10ce798bdb416719",
+      "source": "Use Historical Person mode while treating generated dialogue as simulation.",
+      "value": "Използвайте режим „Исторически лица“, докато разглеждате генерирания диалог като симулация."
+    },
+    {
+      "key": "site.2adb066629a09b3fc0",
+      "source": "Use History Cause-and-Effect when this is the right mode for the job. If you want a related path, try Economics Simulator. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте история Причина и ефекти, когато това е правилният режим за работа. Ако искате свързан път, опитайте Икономически симулатор. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuc обучение, флашкарти, ролей и активно отстъпление."
+    },
+    {
+      "key": "site.a5ba0d88b06ad8eb5d",
+      "source": "Use History Cause-and-Effect when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте история Причина и ефекти, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувстват възможни."
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "Използвайте домашен треньор, за да поискат намек, след това помолете ученика да обясни следващия ход."
+    },
+    {
+      "key": "site.f786d63302707a26e8",
+      "source": "Use Homework Coach to move one step at a time instead of asking for the final answer.",
+      "value": "Използвайте домашен треньор, за да се движат една стъпка по стъпка, вместо да поиска за окончателен отговор."
+    },
+    {
+      "key": "site.b7f1b5070a6f617745",
+      "source": "Use Homework Coach to narrow the stuck point, then explain the next line in your own words.",
+      "value": "Използвайте домашен треньор, за да стесните заглавената точка, след което да обясните следващата линия със собствените си думи."
+    },
+    {
+      "key": "site.7289c50293ffe86821",
+      "source": "Use Homework Coach when this is the right mode for the job. If you want a related path, try Explain My Answer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте домашен треньор, когато това е правилния режим за работата. Ако искате свързан път, опитайте Обяснете ми Отговор. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socrathic обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.8d74b261c3e3ee8d1b",
+      "source": "Use Homework Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте домашна треньор, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Използвайте https://inspirlearning.com за сайта, /mission за мисията, /topics за директорията за обществено обучение и /chat/learn-anything за по подразбиране гост-учителски опит."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "Използвайте хипотезата, материали, метод, наблюдение, и разяснения, когато е полезно."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "Използвайте менюта идеи, критерии за подбор, и скици от следващата стъпка."
+    },
+    {
+      "key": "site.121af804d864e3b164",
+      "source": "Use immersion for engagement while keeping learning goals, evidence, and reflection visible.",
+      "value": "Използвайте потапяне за ангажиране, докато поддържате цели, доказателства и отражение видими."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "Използвайте диалог в характеристика и къси тренировъчни бележки."
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "Използвайте inspir като безплатно ИИ учител за студенти: домашни намеци, Сократовско въпроси, математически проверки, запис на обратна връзка, квизови, флашка картички, и изпит подготви."
+    },
+    {
+      "key": "site.d8fe052e025fdee3e6",
+      "source": "Use inspir first when your search is about an action: explain this simply, ask me Socratic questions, give me a homework hint, check my math step, quiz me, build flashcards, debate this topic, or help me plan revision.",
+      "value": "Използвайте inspir първо, когато търсенето ви е за действие: обясни това просто, задайте ми Сократовско въпроси, дайте ми домашен намек, проверете моята стъпка математика, ме тест, изграждане на флашкарти, дебат тази тема, или ми помогне да планирам преразглеждане."
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Използвайте inspir за обратна връзка с есето, подкрепа за четене, практика за говорене, източникна критика и ревизия на петлите, които подобряват структурата, без да заменят гласа на ученика."
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Използвайте inspir за указания за домашни, математически проверки, обратна връзка, източник на критика, Сократовско въпроси, и флашкарти без да изложи частни разговори."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Използвайте inspir за стъпка по стъпка математика помощ, домашни намеци, Сократовско разсъждения, квизови картички, и изпит подготви без копие на отговори."
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "Използвайте inspir, за да научите всичко независимо с обяснения, код преподаване, проектни тренировки, изследователска помощ, концепция карти, планове за обучение и навици подкрепа."
+    },
+    {
+      "key": "site.cb34eb52e96d4923a8",
+      "source": "Use inspir to turn confusion into questions, examples, retrieval practice, writing feedback, debate, and a personal study plan.",
+      "value": "Използвайте inspir, за да превърнете объркването в въпроси, примери, практика за събиране, записване на обратна връзка, дебат, и личен план за изучаване."
+    },
+    {
+      "key": "site.7d662811b7005e34b8",
+      "source": "Use inspir when you want a free public AI learning mode that can explain, question, quiz, coach homework, build flashcards, and adapt to the exact thing you are stuck on.",
+      "value": "Използвайте inspir, когато искате свободен публичен ИИ режим на обучение, който може да обясни, въпрос, квиз, домашна работа треньор, изграждане на флашкарти, и да се адаптира към точното нещо, което сте заседнали."
+    },
+    {
+      "key": "site.2e8595f94f7e64615d",
+      "source": "Use Interactive Instruction when this is the right mode for the job. If you want a related path, try Collaborative Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте интерактивна инструкция, когато това е правилният режим за работата. Ако искате свързан път, опитайте Кооперативни Инструкции. Можете също така да разгледате блога за обучение на ВИ за методи, Socratuate учение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.bfc97ba28152235951",
+      "source": "Use Interactive Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Interact Instruction, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувствате възможно."
+    },
+    {
+      "key": "site.014cfbab2db3818e0b",
+      "source": "Use Interview Coach when this is the right mode for the job. If you want a related path, try Career Explorer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Интервю Тренер, когато това е правилния режим за работата. Ако искате свързан път, опитайте Кариерен Explorer. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socratuate обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.80d83b53e452d83225",
+      "source": "Use Interview Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Интервю треньор, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.ce853d13955f6bfaab",
+      "source": "Use Interview or debate modes to test whether the explanation survives questions.",
+      "value": "Използвайте интервю или режими на дебат, за да тествате дали обяснението оцелява въпроси."
+    },
+    {
+      "key": "site.b2c3bbfbb2ff0b8d17",
+      "source": "Use it for comparison",
+      "value": "Използвайте го за сравнение"
+    },
+    {
+      "key": "site.3cc91c4bf9fc851004",
+      "source": "Use it for debugging as a learning exercise: share the symptom, your expectation, and what you already tried, then ask for the next diagnostic step.",
+      "value": "Използвайте го за разсейване на грешки като упражнение: споделяйте симптом, очакванията си и това, което вече сте опитали, след това потърсете следващата диагностична стъпка."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "Използвайте ключови запаси, очертаване, определения, и преглед въпроси."
+    },
+    {
+      "key": "site.9f4c89b6edb43dca90",
+      "source": "Use Language Roleplay when this is the right mode for the job. If you want a related path, try Vocabulary Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте езиковата ролерия, когато това е правилният режим за работата. Ако искате свързан път, опитайте Vocabulary Builder. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuc обучение, флашкарти, ролеви и активно отзоваване."
+    },
+    {
+      "key": "site.dba045905f6b5388dd",
+      "source": "Use Language Roleplay when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте езиковата ролерия, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувствате възможно."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "Използвайте правилата на лидерборда, гол, предпазни мерки и размисъл."
+    },
+    {
+      "key": "site.da5019d16ef439db02",
+      "source": "Use Learn Anything for broad explanations, Socratic Instruction for reasoning, Homework Coach for hint-first help, Math Step Coach for equations, and Flashcard Builder or Quiz me on Trivia for recall practice.",
+      "value": "Използвайте Научете всичко за широки обяснения, Socrat Instruction for reasoning, Homework Coach for subt- first help, Math Step Coach for уравнения, и Flashcard Builder или Quiz me on Trivia за припомняне на практиката."
+    },
+    {
+      "key": "site.85af502408684be219",
+      "source": "Use Learn Anything to clarify the concept and find examples.",
+      "value": "Използвайте Научете всичко, за да изясни концепцията и да намерите примери."
+    },
+    {
+      "key": "site.7556fab79a251a4cb7",
+      "source": "Use Learn Anything to convert the reasoning into a concise explanation.",
+      "value": "Използвайте Научете всичко, за да превърнете разсъждението в концизно обяснение."
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "Използвайте Научете всичко, за да получите по-прост модел, предпоставки идеи, и примери на правилното ниво."
+    },
+    {
+      "key": "site.1d231214a16d5e196d",
+      "source": "Use Learn Anything to turn a message into a simpler explanation and examples.",
+      "value": "Използвайте Научете всичко, за да превърнете съобщение в по-просто обяснение и примери."
+    },
+    {
+      "key": "site.796fd58553cd1e520b",
+      "source": "Use Learn Anything when this is the right mode for the job. If you want a related path, try Viva Practice. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Научете всичко, когато това е правилния режим за работата. Ако искате свързан път, опитайте Viva Practice. Можете също така да разгледате блога за обучение на ИИ за методи, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.7e1410918eae1ff0f9",
+      "source": "Use Learn Anything when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Научете всичко, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.ece30e133ea6fb09af",
+      "source": "Use Learning Game Master when this is the right mode for the job. If you want a related path, try Mindset Reflection. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Ученето на играта Master, когато това е правилния режим за работата. Ако искате свързан път, опитайте MINDset Reflection. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuate учение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.7bd9b1af11e6c97f57",
+      "source": "Use Learning Game Master when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте обучението на гейммастър, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "Използвайте таблиците на нивата, правилата на XP, картите за търсене и анти-кринд защитни мерки."
+    },
+    {
+      "key": "site.c138353994a69a1461",
+      "source": "Use Math Step Coach for reasoning checks and Writing Coach for revision priorities.",
+      "value": "Използвайте Math Step Coach за разсъждения проверки и писане на треньор за преразглеждане приоритети."
+    },
+    {
+      "key": "site.466d73af702c7677e4",
+      "source": "Use Math Step Coach to explain why each move is valid.",
+      "value": "Използвайте Math Step Trener да обясни защо всяко движение е валидно."
+    },
+    {
+      "key": "site.f9e69911e2bc7cd9e9",
+      "source": "Use Math Step Coach when this is the right mode for the job. If you want a related path, try Homework Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Math Step Trener, когато това е правилния режим за работата. Ако искате свързан път, опитайте Homework Тренер. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.b73352517f50ac734a",
+      "source": "Use Math Step Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Math Step Trener, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.fcd2c6c11047c94e2f",
+      "source": "Use Memory Palace when this is the right mode for the job. If you want a related path, try Flashcard Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Palace памет, когато това е правилния режим за работата. Ако искате свързан път, опитайте Flashcard Builder. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.d821ea36357e976a31",
+      "source": "Use Memory Palace when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Memory Palace, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.4887019842f0724851",
+      "source": "Use Mindset Reflection when this is the right mode for the job. If you want a related path, try Music Theory Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте MINDset Reflection, когато това е правилния режим за работата. Ако искате свързан път, опитайте музикална теория треньор. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.2d2e0a9dc56d5901b3",
+      "source": "Use Mindset Reflection when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте отражение на умовете, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувствате възможно."
+    },
+    {
+      "key": "site.72a7705d332c277b81",
+      "source": "Use Misconception Doctor when this is the right mode for the job. If you want a related path, try Concept Map Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте лекар погрешно застъпление, когато това е правилният режим за работа. Ако искате свързан път, опитайте Concept Map Builder. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuate учение, флашкарти, ролей и активното отзоваване."
+    },
+    {
+      "key": "site.f9e7695f5bdac90694",
+      "source": "Use Misconception Doctor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Fasconception Доктор, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.d334db8b730b03e40c",
+      "source": "Use Motivation Coach when this is the right mode for the job. If you want a related path, try Habit Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Motivation Coach, когато това е правилния режим за работата. Ако искате свързан път, опитайте Habit Treacher. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socratisation обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.bdbaf136c7b7688af8",
+      "source": "Use Motivation Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Мотивация Тренер, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.1e1ab9defd562ff660",
+      "source": "Use Music Theory Coach when this is the right mode for the job. If you want a related path, try Art Appreciation Guide. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Музика Теория Треньор, когато това е правилния режим за работата. Ако искате свързан път, опитайте Art Апрециация ръководство. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuate обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.ccb419e01315d58ef6",
+      "source": "Use Music Theory Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Музика Теорията Треньор, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "Използвайте разказите, за да направите концепциите незабравими."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "Използвайте вгнездени куршуми, маси или текст на сирена, когато е полезно."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "Използвайте номерирани места, снимки и отметки."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "Използвайте цели, резюмета, примери, капани, въпроси и следващ преглед."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "Използвай наблюдение, интерпретация, доказателства и секции за следващо разпитване."
+    },
+    {
+      "key": "site.8f15bbb949bbe55996",
+      "source": "Use of Data",
+      "value": "Използване на данни"
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "Използвайте двойки банки, кодирани списъци, отговори ключ, и преглед бележки."
+    },
+    {
+      "key": "site.f59e37cae52db37732",
+      "source": "Use Philosophy Lab when this is the right mode for the job. If you want a related path, try Story Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте лабораторията за философия, когато това е правилният режим за работата. Ако искате свързан път, опитайте Story Tutor. Можете също така да разгледате блога за обучение на ИИ за методи, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.95acbe6e96ee9cf931",
+      "source": "Use Philosophy Lab when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте философия Лаборатория, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "Използвайте карти за място, таблици за сравнение, и карти подтиква."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "Използвайте практически аудио съвети и забележки за сесия за обучение."
+    },
+    {
+      "key": "site.43f312328ff3dea7a6",
+      "source": "Use Project Coach to turn a vague idea into the next testable feature or learning checkpoint.",
+      "value": "Използвайте Project Coach да превърнете неясно идея в следващата тестваема функция или контролен пункт за обучение."
+    },
+    {
+      "key": "site.4801ac355f155a1a4e",
+      "source": "Use Project Coach when this is the right mode for the job. If you want a related path, try Code Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Project Coach, когато това е правилния режим за работата. Ако искате свързан път, опитайте Code Tutor. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.57a45af1e9e70d79ae",
+      "source": "Use Project Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Проект Тренер, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.f140bd34a9fa9cde77",
+      "source": "Use prompts that make the AI slow down:",
+      "value": "Използвайте бързи бързи лъчи, които карат ВИ да забавят:"
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Използвай публичните гост режими безплатно, после разгледай open-source работата и пътищата за училищно внедряване."
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "Използвайте описанието на обществения режим, за да изберете поведението преди започване на сесията."
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "Използвайте задачи, нива, значки и шеф въпроси."
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "Използвайте квиз и флаш-картови режими за активно отстъпление, след което пренасочете пропуснатите елементи в преглед."
+    },
+    {
+      "key": "site.b0e2d270322f3134ca",
+      "source": "Use Quiz and Flashcards after the explanation so the same error becomes easier to spot.",
+      "value": "Използвайте Quiz и Flashcards след обяснението, така че същата грешка става по-лесно да се забележи."
+    },
+    {
+      "key": "site.33d9813f108b6aa7db",
+      "source": "Use Quiz Me On Trivia to reveal what you actually remember.",
+      "value": "Използвайте Quiz Me On Trivia, за да разкриете това, което всъщност помните."
+    },
+    {
+      "key": "site.22c25a848f18347f87",
+      "source": "Use Quiz me on Trivia when this is the right mode for the job. If you want a related path, try Interactive Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Quiz ме на Trivia, когато това е правилния режим за работата. Ако искате свързан път, опитайте интерактивна Инструкция. Можете също така да разгледате ИИ учене блог за методи за изучаване, Socratuate учение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.b79428a954bf308588",
+      "source": "Use Quiz me on Trivia when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Quiz ме на Trivia, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.e2a9ec9823fba748bf",
+      "source": "Use Quiz mode to test recall first, then repair only the topics that need attention.",
+      "value": "Използвайте Quiz режим, за да тествате първо припомняне, след което ремонт само теми, които се нуждаят от внимание."
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "Използвайте квизови и флашкарти, за да направите пропуснатите въпроси видими и повтарящи се."
+    },
+    {
+      "key": "site.748c2c2802819d3ced",
+      "source": "Use quizzes and flashcards to practise formulas, definitions, and problem types.",
+      "value": "Използвайте квизови и флашкарти за практика формули, определения, и проблеми видове."
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "Използвайте квизови, флашкарти и сокративни въпроси, така че ученикът показва какво разбират."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "Използвайте звук от дъжд за четене"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "Използвай звуци от дъжд за преговор"
+    },
+    {
+      "key": "site.ff8acf76ddef517cbf",
+      "source": "Use Reading Companion to summarize, question, and explain the passage before citing it.",
+      "value": "Използвайте Четене Компаньон да обобщят, въпрос, и да обяснят пасажа, преди да го цитира."
+    },
+    {
+      "key": "site.ab1e6ba7d128549f8c",
+      "source": "Use Reading Companion when this is the right mode for the job. If you want a related path, try Writing Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Четене Придружение, когато това е правилният режим за работа. Ако искате свързан път, опитайте писане Тренер. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socrathic обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.a9209e87bd56b691af",
+      "source": "Use Reading Companion when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Четене Придружение, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувствате възможно."
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "Използвайте рефлексионните бързини, силните страни на учещия и следващия експеримент."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "Използвайте секции за доклади: победи, доказателства, блокери, уроци, следващата седмица."
+    },
+    {
+      "key": "site.1c663cd386081888fa",
+      "source": "Use Research Assistant when this is the right mode for the job. If you want a related path, try Project Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте изследователски асистент, когато това е правилния режим за работата. Ако искате свързан път, опитайте Проект Тренер. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socratuate учение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.62a22abb2f8ba94eda",
+      "source": "Use Research Assistant when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте изследователски асистент, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "Използвайте изследователски асистент, Source Critic, и Концепт Карта Изграждач, за да организират твърдения и доказателства."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "Използвайте изследователски въпроси, източник матрици, и синтез бележки."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "Използвайте ресурси карти, аудиторията бележки, и съвети за използване."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "Използвайте преглед опашки, дължими дати, и рейтинги на доверие."
+    },
+    {
+      "key": "site.70dbffe904664c5bed",
+      "source": "Use Roleplay Scenario when this is the right mode for the job. If you want a related path, try Case Study Simulator. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Roleplay Scenario, когато това е правилния режим за работата. Ако искате свързан път, опитайте си симулатор за изследване на случаи. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socratual обучение, флашкарти, ролеви и активното отзоваване."
+    },
+    {
+      "key": "site.60d591ab277dc02d31",
+      "source": "Use Roleplay Scenario when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Roleplay Scenario, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.7674e4599c4c2d592d",
+      "source": "Use Science Lab Partner when this is the right mode for the job. If you want a related path, try Math Step Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте научен лабораторен партньор, когато това е правилният режим за работата. Ако искате свързан път, опитайте Math Step Trener. Можете също така да разгледате ИИ обучение блог за методи за изучаване, Socratual обучение, флашкарти, ролеви и активното припомняне."
+    },
+    {
+      "key": "site.9f52ae61e48a05c844",
+      "source": "Use Science Lab Partner when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Science Lab Partner, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се почувствате възможно следващата стъпка."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "Използвайте картички за яснота, структура, доказателства и доставки бележки."
+    },
+    {
+      "key": "site.243ee1b67f1e36ad05",
+      "source": "Use Service in any manner that could disable, overburden, damage, or impair Service or interfere with any other party’s use of Service, including their ability to engage in real time activities through Service. Use any robot, spider, or other automatic device, process, or means to access Service for any purpose, including monitoring or copying any of the material on Service. Use any manual process to monitor or copy any of the material on Service or for any other unauthorized purpose without our prior written consent. Use any device, software, or routine that interferes with the proper working of Service. Introduce any viruses, trojan horses, worms, logic bombs, or other material which is malicious or technologically harmful. Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of Service, the server on which Service is stored, or any server, computer, or database connected to Service. Attack Service via a denial-of-service attack or a distributed denial-of-service attack. Take any action that may damage or falsify Company rating. Otherwise attempt to interfere with the proper working of Service.",
+      "value": "Използвайте услуга по какъвто и да е начин, който може да обезвреди, претоварени, да нарушава щетите или да нарушава услугите или да се намесва в използването на Службата на която и да е друга страна, включително способността им да извършват дейност в реално време чрез Служба. Използвайте всеки робот, паяк или друго автоматично устройство, процес или средства за достъп до услугата за каквато и да е цел, включително наблюдение или копиране на някой от материалите на услугата. Използвайте всеки ръчен процес, за да следите или копирате който и да е от материалите на услугата или за друга неразрешена цел без предварително писмено съгласие. Използвайте всяко устройство, софтуер, или рутинни, които се намесват в правилното функциониране на услугата. Въвеждане на вируси, троянски коне, червеи, логически бомби, или друг материал, който е злонамерен или технологично вредни. Опит за получаване на неразрешен достъп до, намесване с, щети, или нарушаване на всички части на услугата, сървъра, на който е съхраняван услугата, или всеки сървър, компютър или база данни, свързани с услугата. Атака услуга чрез отрицание на услугата атака или дистрибуиран отказ на услугата атака. В противен случай се опитва да се намеси в правилното функциониране на Службата."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "Използвайте къси планове за фокус, контролни листи, и след сесията отражение подбуди."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "Използвайте къси секции, примери, аналогии, и GFM-приятни списъци или таблици, когато те помагат."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "Използвайте кратки резюмета, цитат-светлинни препратки, и въпроси набори."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "Използвайте кратки поддържащи бележки и практически следващи действия."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Използвайте прости предварителни настройки за фонов звук, за да намалите разсейването при четене, писане, преговор или решаване на задачи."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "Използвайте простите нотации, примери и практика подбуди."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "Използвайте прости маси, вериги за предизвикани ефекти и кавалови бележки."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "Използвайте пренаписвания на прости езици и списък на пропуски."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Използвайте скицирането като учебен ход: планирайте диаграми, надписвайте груби карти, обяснявайте процеси или превръщайте объркана идея в по-ясна визуализация."
+    },
+    {
+      "key": "site.272400d94547e9d58f",
+      "source": "Use Socratic Instruction to ask what would change your mind.",
+      "value": "Използвайте Сложното учение, за да попитате какво ще промени мнението ви."
+    },
+    {
+      "key": "site.41b0540546b4a3543a",
+      "source": "Use Socratic Instruction to expose assumptions and weak links.",
+      "value": "Използвайте Сократовско Instruction, за да разкриете предположения и слаби връзки."
+    },
+    {
+      "key": "site.a52a9da60c21adfd4f",
+      "source": "Use Socratic Instruction to make sure you can justify the next move in your own words.",
+      "value": "Използвайте Сократовско Instruction, за да се уверите, че можете да оправдаете следващия ход със собствените си думи."
+    },
+    {
+      "key": "site.86906db6a53679221d",
+      "source": "Use Socratic Instruction to uncover missing assumptions and shallow confidence.",
+      "value": "Използвайте Сократовско Instruction, за да разкриете липсващите предположения и плитко доверие."
+    },
+    {
+      "key": "site.4cf3a926ba31474f03",
+      "source": "Use Socratic Instruction when this is the right mode for the job. If you want a related path, try Learn Anything. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте SKR Инструкция, когато това е правилния режим за работата. Ако искате свързан път, опитайте да научите нещо. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuate обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.09be51f50be6c84f1c",
+      "source": "Use Socratic Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Сократовско Instruction, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка да се чувстват възможни."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Използвай сократически въпроси"
+    },
+    {
+      "key": "site.3df2bcdb866aa5cb8d",
+      "source": "Use Socratic questions to extract what changed in your understanding.",
+      "value": "Използвайте сокративни въпроси, за да извлечете това, което е променено в разбирането ви."
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "Използвайте звучни препоръки и забележки за задаване на фокус."
+    },
+    {
+      "key": "site.89d82da89b4e4384ea",
+      "source": "Use Source Critic when this is the right mode for the job. If you want a related path, try Research Assistant. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Source Critic, когато това е правилния режим за работата. Ако искате свързан път, опитайте изследователски асистент. Можете също така да разгледате блога за обучение на ИИ за методи, Socratuc обучение, флашкарти, ролеви и активното отзоваване."
+    },
+    {
+      "key": "site.3a79c2d033f365c49a",
+      "source": "Use Source Critic when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Source Critic, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.673383be4080ccee8e",
+      "source": "Use source critique for any claim you might cite.",
+      "value": "Използвайте източника критика за всяко твърдение, което може да цитирате."
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "Използвайте източника критика за твърдения, които може да цитирате или да действате върху."
+    },
+    {
+      "key": "site.f035a4dcdcb6a8b442",
+      "source": "Use source critique or speaking practice to test whether the argument holds.",
+      "value": "Използвайте източника критика или практика на говорене, за да тествате дали аргументът се държи."
+    },
+    {
+      "key": "site.cac7d3193398affd53",
+      "source": "Use Spaced Review when this is the right mode for the job. If you want a related path, try Memory Palace. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Spaceed Review, когато това е правилният режим за работата. Ако искате свързан път, опитайте Memory Palace. Можете също така да разгледате ИИ изучаване блог за методи за изучаване, Socratuate учение, флашкарти, ролеви и активното отзоваване."
+    },
+    {
+      "key": "site.61ca222de56e1486eb",
+      "source": "Use Spaced Review when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Spaceed Review, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел е да не звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.e61a20ed03ef5f151c",
+      "source": "Use Speaking Practice or Viva Practice to defend a claim out loud and find weak spots.",
+      "value": "Използвайте Изказване практика или Viva практика, за да защитите претенция на глас и да намерите слаби точки."
+    },
+    {
+      "key": "site.203b1008124e793875",
+      "source": "Use Speaking Practice when this is the right mode for the job. If you want a related path, try Language Roleplay. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Използвайте Учебната практика, когато това е правилният режим за работата. Ако искате свързан път, опитайте език Ролей. Можете също така да разгледате блога за обучение на ВИ за методи, Socrathic обучение, флашкарти, ролей и активното припомняне."
+    },
+    {
+      "key": "site.0c2b0d301ed9b1b185",
+      "source": "Use Speaking Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Използвайте Уважаеми Практика, когато искате сесия, която започва бързо, но все още се адаптира към вас. Първата цел не е да звучи впечатляващо. Първата цел е да се направи следващата стъпка се чувстват възможни."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "Използвайте таблиците на заинтересованите страни и балансиран про/con анализ."
+    }
+  ]
+}

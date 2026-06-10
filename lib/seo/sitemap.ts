@@ -6,6 +6,8 @@ import { homepageFilm, homepageLearningPaths, learningPathHref } from "@/lib/con
 import { getSubjectPages, subjectPath } from "@/lib/content/subjects";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
+import { languageConfigs, supportedLanguages } from "@/lib/content/languages";
+import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, socialImage } from "@/lib/seo/config";
 
 const staticLastModified = new Date("2026-05-29T00:00:00.000Z");
@@ -21,15 +23,27 @@ function isoDurationToSeconds(value: string) {
 }
 
 function withLanguageAlternates(routes: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
-  return routes.map((entry) => ({
-    ...entry,
-    alternates: {
-      languages: {
-        "en-US": entry.url,
-        "x-default": entry.url,
+  return routes.flatMap((entry) => {
+    const url = new URL(entry.url);
+    const path = url.pathname === "/" ? "/" : `${url.pathname}${url.search}`;
+    const languages = Object.fromEntries(
+      supportedLanguages.map((language) => [
+        languageConfigs[language].locale,
+        absoluteUrl(localizePath(path, language)),
+      ]),
+    );
+
+    return supportedLanguages.map((language) => ({
+      ...entry,
+      url: absoluteUrl(localizePath(path, language)),
+      alternates: {
+        languages: {
+          ...languages,
+          "x-default": entry.url,
+        },
       },
-    },
-  }));
+    }));
+  });
 }
 
 function escapeXml(value: string | number | Date) {

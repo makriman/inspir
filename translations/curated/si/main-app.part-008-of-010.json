@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Sinhala",
+  "locale": "si",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය පුරවැසි අධ්‍යාපනය සඳහාම සකස් කර ඇති අතර, ඒ සඳහාම වෙන් වූ විමසුම්, උදාහරණ සහ ඉගෙනුම් ක්‍රියාවලියක් ඇත."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "අයිතිවාසිකම්, රජය සහ සමාජය පිළිබඳ අවබෝධයක් ලබා ගන්න"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "පනත් කෙටුම්පතක් නීතියක් බවට පත්වන්නේ කෙසේද?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "මූලික අයිතිවාසිකම් පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "අධිකරණයකින් කරන්නේ කුමක්ද?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "කලා රසවින්දන මාර්ගෝපදේශය"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "වඩාත් සමීපව බලන්න සහ වැඩිපුර දේවල් නිරීක්ෂණය කරන්න"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "කලා නිර්මාණ, ශෛලීන්, කලාකරුවන්, දෘශ්‍ය තේරීම් සහ රූපයක් බලගතු වන්නේ කෙසේද යන්න ගවේෂණය කරන්න."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "කුමන කලා නිර්මාණය, කලාකරුවා හෝ ශෛලිය ගැනද?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "නිර්මාණශීලිත්වය"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "කලා නිර්මාණ, ශෛලීන්, කලාකරුවන්, දෘශ්‍ය තේරීම් සහ රූපයක් බලගතු වන්නේ කෙසේද යන්න ගවේෂණය කරන්න."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන නිර්මාණශීලිත්වය පිළිබඳ මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා වේ."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ කලා රසවින්දන මාර්ගෝපදේශය සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "වඩාත් සමීපව බලන්න සහ වැඩිපුර දේවල් නිරීක්ෂණය කරන්න"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "ප්‍රකාශනවාදය (Impressionism) පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "මම සිතුවමක් දෙස බලන්නේ කෙසේද?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "පුනරුද සමයේ කලාව සහ නූතන කලාව සසඳන්න"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "සංගීත න්‍යාය පුහුණුකරු"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "ශබ්දය, රිද්මය සහ තාලය තේරුම් ගන්න"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "ස්වර, ස්වර සංයෝජන, පරිමාණයන්, රිද්මය, කන් පුහුණු කිරීමේ අදහස් සහ ගීත නිර්මාණය වී ඇති ආකාරය ඉගෙන ගන්න."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "අපි වැඩ කළ යුත්තේ කුමන සංගීත අදහස මතද?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "නිර්මාණශීලිත්වය"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "ස්වර, ස්වර සංයෝජන, පරිමාණයන්, රිද්මය, කන් පුහුණු කිරීමේ අදහස් සහ ගීත නිර්මාණය වී ඇති ආකාරය ඉගෙන ගන්න."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන නිර්මාණශීලිත්වය පිළිබඳ මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා වේ."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ සංගීත න්‍යාය පුහුණුකරු සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "ශබ්දය, රිද්මය සහ තාලය තේරුම් ගන්න"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ ප්‍රශ්න සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "මේජර් සහ මයිනර් ස්වර පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "කෝඩ්ස් (chords) ක්‍රියා කරන්නේ කෙසේද?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "රිද්මයේ මූලික කරුණු උගන්වන්න"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "මානසිකත්ව විමර්ශනය"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "ඔබ ඉගෙන ගන්නා ආකාරය ගැන විමසා බලන්න"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "ඔබට ඉගෙන ගැනීමට උපකාරී වන්නේ කුමක්ද, බාධාවක් වන්නේ කුමක්ද සහ වඩා හොඳ ඉගෙනුම්කරුවෙකු වන්නේ කෙසේද යන්න හඳුනා ගන්න."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "අපි විමසා බැලිය යුතු ඉගෙනුම් අවස්ථාව කුමක්ද?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "සැලසුම් කිරීම"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "ඔබට ඉගෙන ගැනීමට උපකාරී වන්නේ කුමක්ද, බාධාවක් වන්නේ කුමක්ද සහ වඩා හොඳ ඉගෙනුම්කරුවෙකු වන්නේ කෙසේද යන්න හඳුනා ගන්න."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, සැලසුම් කිරීමේ මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රශ්න, උදාහරණ සහ ඉගෙනුම් ක්‍රියාවලිය සමඟ මානසිකත්ව විමර්ශනය සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "ඔබ ඉගෙන ගන්නා ආකාරය ගැන විමසා බලන්න"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ ප්‍රශ්න සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "මම ඉගෙනීම මගහැරියේ ඇයි?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "අසාර්ථක පරීක්ෂණයකින් පසු විමසා බැලීම"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "මට ගැලපෙන ඉගෙනුම් උපාය මාර්ගය කුමක්ද?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "ඉගෙනුම් ක්‍රීඩා මාස්ටර්"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "අධ්‍යයනය අභියෝගයක් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "ගවේෂණ, මට්ටම්, ලකුණු, අභියෝග සහ බොස් වටයන් සමඟ ඉගෙනීම ක්‍රීඩාවක් මෙන් දැනෙන්නට සලස්වන්න."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "ඉගෙනුම් ක්‍රීඩාවක් බවට පත් කළ යුත්තේ කුමක්ද?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "පුහුණුව"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "ගවේෂණ, මට්ටම්, ලකුණු, අභියෝග සහ ප්‍රධාන වටයන් සමඟ ඉගෙනීම ක්‍රීඩාවක් මෙන් දැනෙන්නට සලස්වන්න."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු කොටුවකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන පුහුණු මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ ඉගෙනුම් ක්‍රීඩා මාස්ටර් සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "අධ්‍යයනය අභියෝගයක් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරන්න"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "ජීව විද්‍යාව ගවේෂණයක් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "වචන මාලාව මට්ටම් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "ගණිතමය ප්‍රධාන සටනක් නිර්මාණය කරන්න"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "මුඛ පරීක්ෂණ පුහුණුව"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "මුඛ පරීක්ෂණ සඳහා සූදානම් වන්න"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "මුඛ පරීක්ෂණ, වාචික විභාග, ව්‍යාපෘති ආරක්ෂා කිරීම් සහ ඉක්මන් පසු විපරම් ප්‍රශ්න සඳහා සන්සුන් ප්‍රතිපෝෂණ සමඟ පුහුණු වන්න."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "ඔබ සූදානම් වන්නේ කුමන මුඛ පරීක්ෂණය හෝ වාචික විභාගය සඳහාද?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "පුහුණුව"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "මුඛ පරීක්ෂණ, වාචික විභාග, ව්‍යාපෘති ආරක්ෂා කිරීම් සහ ඉක්මන් පසු විපරම් ප්‍රශ්න සඳහා සන්සුන් ප්‍රතිපෝෂණ සමඟ පුහුණු වන්න."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු කොටුවකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන පුහුණු මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ මුඛ පරීක්ෂණ පුහුණුව සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "මුඛ පරීක්ෂණ සඳහා සූදානම් වන්න"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරන්න"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "මගේ විද්‍යා ව්‍යාපෘති මුඛ පරීක්ෂණය පුහුණු වන්න"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "මට නිබන්ධන ආරක්ෂක ප්‍රශ්න අසන්න"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "ආදර්ශ ප්‍රායෝගික විභාග ප්‍රශ්න"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "අධ්‍යයන ටයිමරය"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "ඇඟවීම් සහිත ස්ථීර පොමෝඩෝරෝ ටයිමරය"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "ඔබ චැට්, ටැබ් සහ කුඩා යෙදුම් අතර මාරු වන විටත් ක්‍රියාත්මක වන අවධානය යොමු කිරීමේ සහ විවේක කාලසීමාවන් පවත්වා ගන්න. සැසියක් අවසන් වූ විට එය පසුබිමේ සිට නාද විය හැක."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "මෙම අවධානය යොමු කිරීමේ සැසිය කුමක් පිළිබඳ විය යුතුද?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "අවධානය සහ ඵලදායිතාව"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "ඔබ චැට්, ටැබ් සහ කුඩා යෙදුම් අතර මාරු වන විටත් ක්‍රියාත්මක වන අවධානය යොමු කිරීමේ සහ විවේක කාලසීමාවන් පවත්වා ගන්න. සැසියක් අවසන් වූ විට එය පසුබිමේ සිට නාද විය හැක."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, අවධානය සහ ඵලදායිතා මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා වේ."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ අධ්‍යයන ටයිමරය සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "ඇඟවීම් සහිත ස්ථීර පොමෝඩෝරෝ ටයිමරය"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "විනාඩි 25ක ජීව විද්‍යා සැසියක් ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "50/10 ගැඹුරු වැඩ රිද්මයක් සකසන්න"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "රචනා කෙටුම්පත් කිරීමේ අවධානය හඹා යන්න"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "අවධානය සඳහා සංගීතය"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "දිගටම වාදනය වන පසුබිම් අවධානය යොමු කිරීමේ ශ්‍රව්‍ය"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "කියවීම, ලිවීම, ගැටළු විසඳීම හෝ ගැඹුරු වැඩ සඳහා ජනනය කරන ලද අවධානය යොමු කිරීමේ ශ්‍රව්‍ය තෝරන්න. ඔබ වෙනත් චැට් වෙත මාරු වන විටත් එය දිගටම වාදනය වේ."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "අද ඔබට අවශ්‍ය වන්නේ කෙබඳු අවධානයක්ද?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "අවධානය සහ ඵලදායිතාව"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "කියවීම, ලිවීම, ගැටළු විසඳීම හෝ ගැඹුරු වැඩ සඳහා ජනනය කරන ලද අවධානය යොමු කිරීමේ ශ්‍රව්‍ය තෝරන්න. ඔබ වෙනත් චැට් වෙත මාරු වන විටත් එය දිගටම වාදනය වේ."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, අවධානය සහ ඵලදායිතා මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා වේ."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ අවධානය සඳහා සංගීතය සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "දිගටම වාදනය වන පසුබිම් අවධානය යොමු කිරීමේ ශ්‍රව්‍ය"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කය අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "කියවීම සඳහා සන්සුන් සංගීතය වාදනය කරන්න"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "ගැඹුරු අධ්‍යයනය සඳහා ශ්‍රව්‍ය සැකසීම"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "පුනරීක්ෂණ සඳහා වැසි හඬ භාවිතා කරන්න"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "ඇඳීමේ/සටහන් කිරීමේ පුවරුව"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "රූප සටහන් සහ දළ දෘශ්‍යමාන දේ හරහා සිතන්න"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "ඉගෙනීමේ ක්‍රමයක් ලෙස සටහන් ඇඳීම භාවිතා කරන්න: රූප සටහන් සැලසුම් කිරීම, දළ සිතියම් නම් කිරීම, ක්‍රියාවලීන් පැහැදිලි කිරීම හෝ අවුල් සහගත අදහසක් වඩාත් පැහැදිලි දෘශ්‍යමාන රූපයක් බවට පත් කිරීම."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "අප ඇඳිය යුත්තේ හෝ රූප සටහන් කළ යුත්තේ කුමක්ද?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "දෘශ්‍ය ඉගෙනීම"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "ඉගෙනීමේ ක්‍රමයක් ලෙස සටහන් ඇඳීම භාවිතා කරන්න: රූප සටහන් සැලසුම් කිරීම, දළ සිතියම් නම් කිරීම, ක්‍රියාවලීන් පැහැදිලි කිරීම හෝ අවුල් සහගත අදහසක් වඩාත් පැහැදිලි දෘශ්‍යමාන රූපයක් බවට පත් කිරීම."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන දෘශ්‍ය ඉගෙනුම් මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ ඇඳීමේ/සටහන් කිරීමේ පුවරුව සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "රූප සටහන් සහ දළ දෘශ්‍යමාන දේ හරහා සිතන්න"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කය අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "සෛල රූප සටහනක් අඳින්න"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "සැපයුම්-ඉල්ලුම් ප්‍රස්ථාරයක් අඳින්න"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "පළමු ලෝක යුද්ධයට හේතු සිතියම්ගත කරන්න"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "පුහුණු පරීක්ෂණ සාදන්නා"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "ඔබේ ද්‍රව්‍යවලින් සම්පූර්ණ පරීක්ෂණයක් ගොඩනඟන්න"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "මාතෘකාවක්, විෂය නිර්දේශයක් හෝ සටහන් කොටස්, කාලය, ලකුණු ලබා දීමේ මගපෙන්වීම සහ සමාලෝචන පියවර සහිත යථාර්ථවාදී පුහුණු පරීක්ෂණයක් බවට පත් කරන්න."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "පුහුණු පරීක්ෂණය ආවරණය කළ යුත්තේ කුමක්ද?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "ක්‍රියාකාරී ඉගෙනීම"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "මාතෘකාවක්, විෂය නිර්දේශයක් හෝ සටහන් කොටස්, කාලය, ලකුණු ලබා දීමේ මගපෙන්වීම සහ සමාලෝචන පියවර සහිත යථාර්ථවාදී පුහුණු පරීක්ෂණයක් බවට පත් කරන්න."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, ක්‍රියාකාරී ඉගෙනුම් මාතෘකා ගවේෂණය කරන සිසුන් සඳහා."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රොම්ප්ට්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහයන් සමඟ පුහුණු පරීක්ෂණ සාදන්නා සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "ඔබේ ද්‍රව්‍ය වලින් සම්පූර්ණ පරීක්ෂණයක් ගොඩනඟන්න"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රොම්ප්ට් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කය අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "ජීව විද්‍යා ඒකක පරීක්ෂණයක් ගොඩනඟන්න"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "මිශ්‍ර ගණිත පුහුණු පරීක්ෂණයක් සාදන්න"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "විභාග ආකෘතියේ ඉතිහාස ප්‍රශ්න පත්‍රයක් සාදන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "පින්තූර විශ්ලේෂණ පුහුණුකරු"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "තිරපිටපත්, රූප සටහන් සහ ගෙදර වැඩ සඳහා වන පින්තූර හරහා තර්කානුකූලව සිතන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "පින්තූරයක විස්තර විස්තර කරන්න හෝ අලවන්න, සහ රූප සටහන්, ප්‍රස්ථාර, ගැටළු, අතින් ලියන ලද සටහන් හෝ දෘශ්‍ය සාක්ෂි කියවීමට උදව් ලබා ගන්න."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "පින්තූරය විස්තර කරන්න හෝ පෙනෙන දේ අලවන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "AI උදව්"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "පින්තූරයක විස්තර විස්තර කරන්න හෝ අලවන්න, සහ රූප සටහන්, ප්‍රස්ථාර, ගැටළු, අතින් ලියන ලද සටහන් හෝ දෘශ්‍ය සාක්ෂි කියවීමට උදව් ලබා ගන්න."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, AI උදව් මාතෘකා ගවේෂණය කරන සිසුන් සඳහා."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රොම්ප්ට්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහයන් සමඟ පින්තූර විශ්ලේෂණ පුහුණුකරු සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "තිරපිටපත්, රූප සටහන් සහ ගෙදර වැඩ සඳහා වන පින්තූර හරහා තර්කානුකූලව සිතන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රොම්ප්ට් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කය අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "මෙම රූප සටහන කියවීමට උදව් කරන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "මගේ පෙළපොතේ ඇති ප්‍රස්ථාරයක් විශ්ලේෂණය කරන්න"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "මෙම තිරපිටපතෙන් පෙන්වන්නේ කුමක්දැයි පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "කෝනල් සටහන්"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "සටහන් ඉඟි, විස්තර සහ සාරාංශ ලෙස ව්‍යුහගත කරන්න"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "දේශන, කියවීම් හෝ දළ සටහන් කෝනල් (Cornell) ක්‍රමයට, ඉඟි ප්‍රශ්න, ප්‍රධාන සටහන්, සාරාංශ සහ සමාලෝචන විමසුම් සමඟ පරිවර්තනය කරන්න."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "සටහන් අලවන්න හෝ පාඩමේ නම ඇතුළත් කරන්න"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "සංවිධානය"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "දේශන, කියවීම් හෝ දළ සටහන් කෝනල් (Cornell) ක්‍රමයට, ඉඟි ප්‍රශ්න, ප්‍රධාන සටහන්, සාරාංශ සහ සමාලෝචන විමසුම් සමඟ පරිවර්තනය කරන්න."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු කොටුවකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, සංවිධාන මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය කෝනල් සටහන් සඳහාම විශේෂිත වූ විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහයකින් සකසා ඇත."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "සටහන් ඉඟි, විස්තර සහ සාරාංශ ලෙස ව්‍යුහගත කරන්න"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "මෙම දේශනය කෝනල් සටහන් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "3 වන පරිච්ඡේදය සඳහා ඉඟි ප්‍රශ්න සාදන්න"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "මගේ දළ සටහන් සාරාංශ කරන්න"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "උපුටා දැක්වීම් උත්පාදකය (Citation Generator)"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "පොදු ආකෘතිවලින් යොමු ගොඩනඟන්න"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "මූලාශ්‍ර විස්තර වලින් APA, MLA, Chicago, Harvard හෝ සරල ග්‍රන්ථ නාමාවලි ඇතුළත් කිරීම් සාදන්න, ඒ අතරතුර මග හැරුණු තොරතුරු පරීක්ෂා කරන්න."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "මූලාශ්‍ර විස්තර හෝ URL තොරතුරු අලවන්න"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "AI උදව්"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "මූලාශ්‍ර විස්තර වලින් APA, MLA, Chicago, Harvard හෝ සරල ග්‍රන්ථ නාමාවලි ඇතුළත් කිරීම් සාදන්න, ඒ අතරතුර මග හැරුණු තොරතුරු පරීක්ෂා කරන්න."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු කොටුවකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, AI උදව් මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය උපුටා දැක්වීම් උත්පාදකය සඳහාම විශේෂිත වූ විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහයකින් සකසා ඇත."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "පොදු ආකෘතිවලින් යොමු ගොඩනඟන්න"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "APA උපුටා දැක්වීමක් සාදන්න"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "මෙම වෙබ් අඩවිය MLA ආකෘතියට සකසන්න"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "මගේ උපුටා දැක්වීමේ (citation) මගහැරී ඇති ක්ෂේත්‍ර මොනවාදැයි පරීක්ෂා කරන්න"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "පෙළ සාරාංශකාරකය (Text Summarizer)"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "කියවීම් ප්‍රයෝජනවත් අධ්‍යයන සටහන් බවට කෙටි කරන්න"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "දිගු පෙළක් ප්‍රධාන අදහස්, ව්‍යුහය, නිර්වචන, උදාහරණ සහ සිහිපත් කිරීමේ ප්‍රශ්න ලෙස සාරාංශ කරන්න."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "සාරාංශ කිරීමට අවශ්‍ය පෙළ මෙතැන අලවන්න"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "AI උදව්"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "දිගු පෙළක් ප්‍රධාන අදහස්, ව්‍යුහය, නිර්වචන, උදාහරණ සහ සිහිපත් කිරීමේ ප්‍රශ්න ලෙස සාරාංශ කරන්න."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන AI උදව් මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය පෙළ සාරාංශකාරකය සඳහාම සකසා ඇති අතර එයටම ආවේණික විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහයක් ඇත."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "කියවීම් ප්‍රයෝජනවත් අධ්‍යයන සටහන් බවට කෙටි කරන්න"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ විමසුම් (example prompts) සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "මෙම ලිපිය සාරාංශ කරන්න"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "මගේ සටහන් වලින් ප්‍රධාන කරුණු උපුටා ගන්න"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "පරිච්ඡේද සාරාංශයක් සාදන්න"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "අධ්‍යයන මාර්ගෝපදේශක උත්පාදකය (Study Guide Generator)"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "අධ්‍යයන ද්‍රව්‍ය පුනරීක්ෂණ මාර්ගෝපදේශයක් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "අරමුණු, සංකල්ප සාරාංශ, උදාහරණ, පොදු වැරදි, පුහුණු ප්‍රශ්න සහ සමාලෝචන සැලැස්මක් සහිත අධ්‍යයන මාර්ගෝපදේශයක් ගොඩනඟන්න."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "අධ්‍යයන මාර්ගෝපදේශයක් බවට පත් කළ යුත්තේ කුමන ද්‍රව්‍යද?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "AI උදව්"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "අරමුණු, සංකල්ප සාරාංශ, උදාහරණ, පොදු වැරදි, පුහුණු ප්‍රශ්න සහ සමාලෝචන සැලැස්මක් සහිත අධ්‍යයන මාර්ගෝපදේශයක් ගොඩනඟන්න."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන AI උදව් මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය අධ්‍යයන මාර්ගෝපදේශක උත්පාදකය සඳහාම සකසා ඇති අතර එයටම ආවේණික විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහයක් ඇත."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "අධ්‍යයන ද්‍රව්‍ය පුනරීක්ෂණ මාර්ගෝපදේශයක් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "ප්‍රභාසංශ්ලේෂණය සඳහා මාර්ගෝපදේශයක් සාදන්න"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "මගේ සටහන් පුනරීක්ෂණ පත්‍රිකාවක් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "අවසාන විභාගය සඳහා අධ්‍යයන මාර්ගෝපදේශයක් සාදන්න"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "ශ්‍රේණි සහ GPA කැල්කියුලේටරය"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "ශ්‍රේණි පුරෝකථනය කර ලකුණු ඉලක්ක සැලසුම් කරන්න"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "බර තැබූ ශ්‍රේණි, GPA අවස්ථා, අවශ්‍ය අවසාන ලකුණු සහ අධ්‍යයන වාරයේ විවිධ සැලසුම් ගණනය කරන්න."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "ඔබේ ශ්‍රේණි බර සහ ලකුණු බෙදාගන්න"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "සංවිධානය"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "බර තැබූ ශ්‍රේණි, GPA අවස්ථා, අවශ්‍ය අවසාන ලකුණු සහ අධ්‍යයන වාරයේ විවිධ සැලසුම් ගණනය කරන්න."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් සොයන සංවිධාන මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ ශ්‍රේණි සහ GPA කැල්කියුලේටරය සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "ශ්‍රේණි පුරෝකථනය කර ලකුණු ඉලක්ක සැලසුම් කරන්න"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "මට අවශ්‍ය අවසාන ලකුණු මොනවාද?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "මගේ බර තැබූ ශ්‍රේණිය ගණනය කරන්න"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "මගේ GPA ඉලක්කය සැලසුම් කරන්න"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "මනෝ සිතියම් නිර්මාපකය"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "මාතෘකාවක් අදහස් ජාලයකට බෙදා වෙන් කරන්න"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "ලිවීමට හෝ ඉගෙනීමට පෙර මොළය අවුස්සන අදහස්, පුනරීක්ෂණ, සැලසුම් කිරීම හෝ සංකල්ප සම්බන්ධ කිරීම සඳහා මනෝ සිතියමක් සාදන්න."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "මනෝ සිතියමක් බවට පත් කළ යුත්තේ කුමන මාතෘකාවද?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "දෘශ්‍ය ඉගෙනුම"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "ලිවීමට හෝ ඉගෙනීමට පෙර අදහස් මන්ථනය, පුනරීක්ෂණය, සැලසුම් කිරීම හෝ සංකල්ප සම්බන්ධ කිරීම සඳහා මනෝ සිතියමක් (mind map) සාදන්න."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන දෘශ්‍ය ඉගෙනුම් මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ මනෝ සිතියම් නිර්මාතෘ සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "මාතෘකාවක් සම්බන්ධිත අදහස් වලට බෙදන්න"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "යන්ත්‍ර ඉගෙනුම (machine learning) සඳහා මනෝ සිතියමක්"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "ඉතිහාස රචනයක් සිතියම්ගත කරන්න"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "විද්‍යා ව්‍යාපෘතියක් සඳහා අදහස් මන්ථනය කරන්න"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "දෛනික අධ්‍යයන ඉලක්ක"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "අද දින ඉගෙනුම් ඉලක්ක සකසා ඒවා ලුහුබඳින්න"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "ප්‍රයත්න ඇස්තමේන්තු, ප්‍රමුඛතාවය, බාධක පරීක්ෂා කිරීම් සහ ඉක්මන් සමාලෝචන චාරිත්‍රයක් සමඟ යථාර්ථවාදී දෛනික අධ්‍යයන ඉලක්ක මාලාවක් සැලසුම් කරන්න."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "අද ඔබ සම්පූර්ණ කිරීමට බලාපොරොත්තු වන්නේ කුමක්ද?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "ක්‍රීඩාකරණය (Gamification)"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "ප්‍රයත්න ඇස්තමේන්තු, ප්‍රමුඛතාවය, බාධක පරීක්ෂා කිරීම් සහ ඉක්මන් සමාලෝචන චාරිත්‍රයක් සමඟ යථාර්ථවාදී දෛනික අධ්‍යයන ඉලක්ක මාලාවක් සැලසුම් කරන්න."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන ක්‍රීඩාකරණ මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ දෛනික අධ්‍යයන ඉලක්ක සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "අද දින ඉගෙනුම් ඉලක්ක සකසා ඒවා ලුහුබඳින්න"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "අද සඳහා ඉලක්ක තුනක් සකසන්න"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "මගේ ඉලක්ක යථාර්ථවාදී කරගන්න"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "මගේ අධ්‍යයන ඉලක්ක සමාලෝචනය කරන්න"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "කාර්ය ටයිමරය"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "තනි තනි කාර්යයන් සඳහා කාලය වෙන් කර උත්සාහය නිරීක්ෂණය කරන්න"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "වැඩ කටයුතු නම් කරන ලද කාර්යයන් ලෙස බෙදා, ඒ සෑම එකකටම කාලය වෙන් කර, සෑම අවධානය යොමු කළ සැසියකටම පසු ඔබේ අධ්‍යයන උත්සාහය වැය වූයේ කොතැනටදැයි සමාලෝචනය කරන්න."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "අප කාලය මැනිය යුත්තේ කුමන කාර්යයටද?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "අවධානය සහ ඵලදායිතාව"
+    }
+  ]
+}

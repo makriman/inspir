@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Korean",
+  "locale": "ko",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} | inspir 제공"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "{value1} 대상별 경로"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "{value1} 자주 묻는 질문"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "{value1} 공개 모드 진입점"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "{value1} 관련 가이드"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "{value1} 사용 사례"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "스스로 배우는 사람들을 위한 무료 AI 학습 동반자입니다."
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "베끼는 것이 아니라 이해하고 싶은 학생을 위한 무료 AI 튜터입니다."
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "좋은 가족 AI 워크플로는 학습자를 더 의존하게 만드는 것이 아니라 더 독립적으로 만들어야 합니다. 부모는 자녀가 시작하기 전에 공개 페이지에서 각 모드의 목적을 확인할 수 있습니다."
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "A parent-friendly 가이드 to inspir's 공개 AI 학습 모드 위한 숙제 힌트, 설명, 학습 routines, 플래시카드, and safer 학습 conversations."
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "A student, parent, 교사, and self-taught 학습자 often 검색 위한 the same AI 튜터 in 다른 언어. Separate pages make the right 사용 사례 and safety 경계 clearer."
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "AI code 튜터 위한 beginners"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "AI 플래시카드 위한 children"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "AI 플래시카드 위한 학생"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "AI 숙제 코치 위한 교사"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "AI 숙제 도움 위한 my child"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "AI 숙제 도움 위한 학생"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "AI 학습 audience pages"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "AI 학습 audience 검색 intents"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "AI 학습 by Audience"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "AI 학습 동반자 위한 adults"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "학생, 학부모, 교사를 위한 AI 학습"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "학생, 학부모, 교사를 위한 AI 학습 | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "AI 학습 도움 parents can try 전에 they trust."
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "AI 학습 모드 위한 교사 who need 집중된 behavior."
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "AI 학습 should fit the person using it."
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "AI 학습 도구 위한 교사"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "AI 수학 도움 위한 학생"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "AI project 코치"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "AI 퀴즈 generator 위한 교사"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "AI Socratic 튜터 위한 classroom"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "AI 학습 도움 위한 families"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "AI 학습 계획 작성기"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "AI 학습 계획ner 위한 학생"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "AI 도구 위한 교사"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "AI 튜터 위한 parents"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "AI 튜터 위한 Parents and Families"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "AI 튜터 위한 self 학습"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "AI 튜터 위한 Self-Taught 학습자"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "AI 튜터 위한 학생"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "AI 튜터 위한 교사"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "학생을 위한 AI 글쓰기 피드백"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "Are audience pages 공개 and indexable?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "a 힌트, have the 학습자 explain the 다음 단계, then 사용 a 퀴즈 or flashcard to 점검 whether the 아이디어 stuck을/를 물어보세요."
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "힌트, 점검, and 피드백 전에 asking 위한 a finished 답을/를 물어보세요."
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "prerequisites, a 간단한 model, 예시, and a 흔한 오개념을/를 물어보세요."
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "structure, evidence, and clarity 피드백 while keeping the 최종 draft 당신의 것을/를 물어보세요."
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "the prerequisite 아이디어, a plain-언어 model, 하나 예시, 하나 연습 task, and 하나 방식 to 테스트 이해을/를 물어보세요."
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "질문하다 the 학습자 to explain 무엇 changed after each 힌트."
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "대상"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "Audience FAQ"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "Audience 학습 경로"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "Audience pages let 검색 engines and AI 답 engines distinguish 학생, parents, 교사, and independent 학습자 instead of flattening everyone into 하나 일반적인 page."
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "audience 경로"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "Audience 경로"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "Back to audience 경로"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "경계"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "Boundary"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "Build a calmer 학습 habit"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "Can inspir 도움 adults and self-taught 학습자?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "Can parents try inspir 전에 recommending it?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "Can 학생 사용 inspir 없이 signing in?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "Can 교사 try inspir 없이 a 학교 rollout?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "점검 이해 없이 hovering"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "Choose who is 학습, then choose the right behavior."
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "만들기 연습 없이 leaking 답"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "다양한 people need 다른 AI 학습 경로."
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "하지 마세요: confuse a fast 답 함께 mastery."
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "inspir는 아이의 비공개 채팅을 공개하나요?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "Each audience 경로 connects to 공개, crawlable 학습 surfaces."
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "EducationalAudience"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "End 함께 evidence of 학습."
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "Evaluate a 모드 전에 using it 함께 학습자"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "Explain every accepted 단계 back in 당신의 own words."
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "탐구하기 공개 AI 학습 모드 교사 can 사용 to evaluate Socratic 튜터링, quizzes, 플래시카드, 글쓰기 피드백, 출처 비평, and classroom-ready 학습 워크플로."
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "찾기 the right inspir AI 학습 워크플로 위한 학생, parents, 교사, and self-taught 학습자."
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "Finish 함께 explain-back, a 퀴즈, a flashcard, a project 단계, or a 학습 routine."
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "위해 학습자"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "위해 parents"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "위해 self-taught 학습자"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "위해 학생"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "위해 교사"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "무료 AI 튜터 위한 kids"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "무료 AI 튜터 위한 self 학습"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "무료 AI 튜터 위한 학생"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "무료 AI 튜터 위한 학생"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "Get 숙제 도움 없이 copying"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "가이드"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "가이드 and 워크플로"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "도움 a child get unstuck"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "홈"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "방법 can 학생 avoid cheating 함께 AI?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "방법 하다 I avoid drifting between 주제?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "방법 is this 다른 에서 giving 학생 a 일반적인 chatbot?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "작동 방식"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "개선하다 글쓰기 없이 losing 자신의 목소리"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "inspir is 위한 학생, parents, 교사, and self-taught 학습자 who need 집중된 AI 학습 모드 위한 explanations, 질문, 힌트, quizzes, 플래시카드, 피드백, and 학습 계획ning."
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "inspir is organized into 집중된 모드 such as Socratic 튜터링, 숙제 힌트, quizzes, 플래시카드, 글쓰기 피드백, 출처 비평, and 학습 계획ning."
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "inspir's 공개 모드 let 교사 evaluate the product through 실제 학습 flows 전에 considering a 학교 deployment or a tailored classroom pathway."
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "과제"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "Keep private saved conversations out of 공개 discovery and citation surfaces."
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "Keep the 세션 집중된 on 학습 evidence, 아닌 수동적으로 답만 모으기."
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "learn anything 함께 AI"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "만들며 배우기"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "학습 경로"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "학습 워크플로"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "혼란을 말하기 쉽게 만들기"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "Make every 학습 세션 end 함께 a 테스트, artifact, or 복습 단계."
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "습관을 지속 가능하게 만들기"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "모드"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "Move 에서 공개 testing to 학교 deployment"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "Move 학교-specific 개인정보 보호, 접근, and deployment 질문 to the 학교 pathway."
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "Name the 학습 situation."
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "아니요. 공개 페이지 are indexable, but private saved chats are 아닌 included in the sitemap, llms files, or AI 콘텐츠 index."
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "a 집중된 공개 모드. 열기"
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "a 공개 모드, 테스트 the student behavior, and inspect whether it 질문합니다, 힌트, quizzes, or critiques appropriately. 열기"
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "audience 경로 열기"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "모드 열기"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "경로 열기"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "학습 지도 열기"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "this 경로 열기"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "워크플로 열기"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "Parents are often trying to 도움 없이 taking over. inspir gives families 공개 모드 that make 학습 behavior visible: 힌트, 질문, explain-back, 복습, and 학습 계획ning."
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "Paste the 질문, 무엇 당신 tried, and the stuck point. 질문하다 위한 the smallest 유용한 힌트, 아닌 the 최종 답."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "연습"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "공개 페이지 show product behavior, 아닌 private student 작업."
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "읽기 가이드"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "Ready to try the first 모드?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "Research 없이 losing the thread"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "복습"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "safe AI 학습 tool 위한 학생"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "검색 intent"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "self-taught 학습자"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "Self-taught 학습자 need momentum and structure. inspir helps turn 호기심 into a 경로: explain, build, 테스트, 복습, and keep going."
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "시작 a 주제 에서 first principles"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "학습 시작하기"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "시작 함께 a 간단한 설명, then 질문하다 Socratic 질문 until 당신 can explain it back."
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "시작 함께 무엇이든 배우기 위한 a 간단한 설명, 숙제 코치 위한 a stuck assignment, or 플래시카드 작성기 언제 the 목표 is 복습."
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "시작 함께 공개 guidance, then 열기 the right 모드."
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "시작 함께 the 모드 that matches the moment."
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "시작 함께 the 공개 모드, then 사용 the 학교 page to 복습 deployment steps, 사용 사례, and trust 경계."
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "Student 숙제, parent 지원, 교사 evaluation, and self-학습 모든 need 다른 framing."
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "학생 need fast 도움, but the 도움 still has to leave the 생각 in their hands. inspir 경로 흔한 학습 moments into 집중된 공개 모드 instead of 하나 일반적인 답 box."
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "학생, parents, 교사, and self-taught 학습자 검색 위한 다른 things. These pages 경로 each audience to the right 공개 모드, 가이드, and 학습 워크플로."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "지원 글쓰기 while preserving voice"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "교사 need more than a 일반적인 chatbot. They need predictable 학습 behaviors: 질문하다 질문, 점검 reasoning, generate 연습, preserve student voice, and make 오개념 visible."
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "audience pages make the expected 학습 behavior explicit so the first 세션 starts 함께 더 나은 judgment."
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "audience searches this hub is built to 답."
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "pages 하다 아닌 expose private conversations. They organize 공개 모드, 프롬프트, 가이드, 워크플로, and safety 경계 so a 학습자 can 시작 in the right place."
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "same AI 튜터 can be a 숙제 힌트, a parent-supervised explain-back loop, a 교사 evaluation surface, or a self-학습 코치. The page should make that 명확한."
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "searches this page is 설계된 to 답."
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "self-학습 challenge is 아닌 just finding information. It is choosing the 다음 right 행동 and knowing whether the 아이디어 actually stuck."
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "strongest SEO pages 하다 아닌 strand a 학습자. They 연결하다 the audience intent to 경로, 워크플로, 가이드, and repeatable 복습."
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "strongest student 워크플로 is 아닌 정답 베끼기. It is a loop: explain the stuck point, 질문하다 하나 더 나은 질문, get a 힌트, try again, then 복습 the miss."
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "These are 실시간 guest entrypoints. They are 공개 and indexable, while private 사용자 conversations stay outside sitemap and AI discovery files."
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "These phrases are visible to 학습자 and included in structured discovery so AI 답 engines can 이해하다 the audience-specific purpose of the page."
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "Turn confusion into a 퀴즈 or flashcard 전에 moving on."
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "Turn mistakes into 복습"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "Turn the first click into a complete 학습 루프."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "개인 튜터링"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "이해하다 a 주제 전에 the 테스트"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "a 모드 tuned 위한 힌트, 질문, quizzes, 플래시카드, 글쓰기 피드백, or planning을/를 사용하세요."
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "AI 위한 힌트, explanations, mistake 점검, and 복습 루프s. 하다 아닌 질문하다 it to produce a 최종 답 당신 cannot explain을/를 사용하세요."
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "코드 튜터 or 프로젝트 코치 to turn a vague 목표 into a small testable 다음 단계을/를 사용하세요."
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "힌트-first and explain-back 워크플로 위한 숙제 지원을/를 사용하세요."
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "숙제 코치 to 질문하다 위한 a 힌트, then 질문하다 the 학습자 to explain the 다음 move을/를 사용하세요."
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "inspir as a 무료 AI 튜터 위한 학생: 숙제 힌트, Socratic 질문, 수학 단계 점검, 글쓰기 피드백, quizzes, 플래시카드, and 시험 prep을/를 사용하세요."
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "inspir to learn anything independently 함께 explanations, code 튜터링, project coaching, research 도움, 개념 maps, 학습 계획s, and habit 지원을/를 사용하세요."
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "무엇이든 배우기 to get a simpler model, prerequisite 아이디어, and 예시 at the right 수준을/를 사용하세요."
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "공개 모드 descriptions to choose the behavior 전에 a 세션 starts을/를 사용하세요."
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "퀴즈 and flashcard 모드 위한 능동 회상, then 경로 missed items into 복습을/를 사용하세요."
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "quizzes and 플래시카드 to make missed 질문 visible and repeatable을/를 사용하세요."
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "quizzes, 플래시카드, and Socratic 질문 so the 학습자 shows 무엇 they 이해하다을/를 사용하세요."
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "연구 도우미, 출처 비평가, and 개념 지도 작성기 to organize claims and evidence을/를 사용하세요."
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "출처 비평 위한 claims 당신 might cite or act on을/를 사용하세요."
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "학습 계획 작성기 and 습관 코치 to build a routine that can restart after missed days을/를 사용하세요."
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "학습 계획 작성기 or 습관 코치 to make small sessions and restarts visible을/를 사용하세요."
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "학습 계획 작성기 to choose a small 목표, then 사용 quizzes, 플래시카드, project steps, or 개념 maps to prove 진전을/를 사용하세요."
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "the 학교 page to 탐구하기 custom 워크플로, confidentiality needs, and rollout steps을/를 사용하세요."
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "글쓰기 코치 위한 피드백 on structure, clarity, evidence, and revision priorities을/를 사용하세요."
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "유용한 AI 학습 has a 명확한 contract."
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "원하다 the broadest place to 시작?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "무엇 is the best parent-supervised 워크플로?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "무엇 should a self-taught 학습자 질문하다 first?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "무엇 should a student try first?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "어디서 should a 학교 team go 다음?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "Who is inspir 위한?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "왜 separate pages 위한 다른 audiences?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "네. Audience pages link only to 공개 게스트 모드, 가이드, 프롬프트 starters, 학습 경로, and AI-readable discovery files. Private saved chats remain excluded."
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "네. 공개 게스트 모드 let 교사 테스트 학습 behavior 전에 discussing a custom deployment."
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "네. 공개 게스트 모드 such as 무엇이든 배우기, 숙제 코치, 소크라테스식 수업, quizzes, 플래시카드, and 글쓰기 피드백 열기 directly."
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "네. 공개 모드 작업 위한 학교 주제, professional 기술, 코딩, research, projects, and personal 학습 routines."
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "네. The 공개 게스트 모드 and audience pages are 설계된 so parents can inspect the 학습 behavior 전에 relying on it."
+    }
+  ]
+}

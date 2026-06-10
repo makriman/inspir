@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Chinese",
+  "locale": "zh",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "帮助 inspir 适应您的年龄"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "请告诉我们您的出生日期，以便我们为您打造适合您年龄的学习体验。我们会根据它来调整示例、语气和安全边界。"
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "出生日期"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "继续"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "正在保存..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "请输入有效的出生日期。"
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "年龄"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "添加您的出生日期"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "打开学习商店"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "搜索"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "搜索聊天"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- 对语言、等级、性别、阶级、法律、宗教、金钱、卫生和准入施加限制。"
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- 在对方开口之前，先构建场景：我们身处何地、年份或日期范围、目前发生了什么、当前的压力、信仰、盲点以及历史学家的不确定性。"
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- 创建一个档案墙，包含：迄今为止的时间线、个人利害关系、盟友与敌人、当时的重大信仰、盲点、已知的著作或演讲、当前压力、历史背景、证据质量以及建议的开场问题。"
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- 不要捏造直接引语、引文或私人想法。"
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- 不要捏造确切的引语。如果对话中没有引用直接引语，请将生成的措辞标记为现代化的释义或重构的对话。"
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- 不要美化暴力、帝国、奴隶制、种姓、疾病或压迫。"
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- 不要粉饰有害观点，也不要美化压迫、种姓制度、种族主义、奴隶制、厌女症、威权主义或暴力。背景不是自动的借口。"
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- 以三个有意义的行动结束，并提供一个暂停以获取历史学家背景的选项。"
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- 如果任何目的地字段是 AI 解析的或模糊的，请先提供三个具体的、具有历史意义的到达选项，并等待学习者选择。"
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- 在邂逅开始后保持两个层面：受时间切片限制的角色内声音，以及区分记录事实、合理重构、有争议的解释、现代释义和虚构对话的历史学家侧边笔记。"
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- 清晰地标记已知事实、合理重构和推测。"
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- 否则，向旅行者问好，用一段简洁的文字总结护照信息，然后提出第一个有意义的行动问题。"
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- 历史人物可能会抵制、质疑、回避、反问、拒绝错误的前提或揭示时代的局限性。他们不应该总是无条件地顺从。"
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "1. 如果需要发现或选择时间切片，请显示选项并停止。"
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "10-15 分钟"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "10 分钟访问"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "公元117年"
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "1789年7月13日"
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "公元1582年"
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "1946-1949年制宪时期"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "1666年9月2日"
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "2. 否则先展示档案墙，然后邀请我从推荐的问题中选择一个开始。"
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "公元前399年"
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "公元742年"
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "8-12分钟"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "糟糕的命名会造成困惑，但线索指向了时机。首先证明数据是否已送达。"
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "一些事实、草稿、你卡住的地方……"
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "最终的迁移任务比“下一步”按钮更能证明进步。"
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "第一个问题或切入点"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "良好的学习循环"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "历史转折点"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "一位有名有姓的旁观者的私人想法"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "一段只列举事实而不提出主张的段落，会让读者不得不自己去进行论证。"
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "价格变动本身只是曲线上的移动，并不自动代表整条曲线的位移。"
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "共同的目标、后续行动以及已完成的工作。"
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "模拟可以让隐藏的因果链变得可见。一次只改变一个变量。"
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "在继续之前进行一次检查提问。"
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "一位商人的私人计划"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "战略框架是一种压力测试。波特五力模型询问谁能夺走利润，以及每种压力的强度如何。"
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "强有力的段落会提出主张，用证据证明它，然后解释为什么这些证据改变了读者的观点。"
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "一个有用的模型是一个链条：假设驱动运营，运营创造现金流，而现金流只有在考虑了时间和风险后才能转化为价值。"
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "接受、编辑或拒绝下一次 AI 生成的内容"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "接受、修改、拒绝或收集证据。"
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "账户代币和一个小钱袋"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "当前目的地"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "主动回忆构建器"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "活动动态"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "埃达·洛夫莱斯论想象力"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "埃达·洛夫莱斯、克利奥帕特拉、B. R. 安倍德卡……"
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "自适应课程循环"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "添加您的出生日期"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "添加、编辑、质疑或决定下一步行动"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "添加记忆提示"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "当真正的差距在于证据与主张之间的联系时，添加更多信息。"
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "行政途径"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "寻求建议的顾问"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "苏格拉底审判期间的阿哥拉广场"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "AI 挑战"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "AI 正在审查您的工件"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "AI 完成了初步结构"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "AI 修改了工作区"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "AI 解析的日期范围"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "AI，进行初步处理"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "阿克巴在此期间统治莫卧儿帝国"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "阿克巴的莫卧儿宫廷正在对主权、翻译、宗教和帝国行政进行实验。"
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "所有应用文本和辅导回复均遵循此设置。"
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "盟友与敌人"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "双耳瓶印章"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "在继续之前请回答此问题。"
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "将该观点应用于新情境，同时保持客观。"
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "学徒艺术家、商人、访客……"
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "学习他们方法的学徒"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "学术语境下的阿拉伯语和梵语"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "论证段落 = 主张 + 证据 + 推理 + 结论。"
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "论证强度"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "论证测试室"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "到达日期、角色、规范，以及该时期所拥有的知识。"
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "到达点"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "到达转折点附近，并追踪当时人们的认知。"
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "询问外邦人公民身份排除了什么"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "询问挑水工当地人知道什么"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "询问关于"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "询问面包价格"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "询问关于大卫像"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "以学生身份提问"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "询问教练"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "要求直接解释"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "索取提示或示例"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "请求一个平行案例"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "根据他们所处时代的世界观和局限性寻求建议。"
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "在给出最终答案前，先请求提示、示例或检查。"
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "请求下一级提示"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "请求用更简单的语言重述相同的问题"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "询问自由民身份是如何运作的"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "询问赞助人制度是如何运作的"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "先询问我当前的假设。"
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "一次只问一个问题，追踪假设和证据，按需提供提示，在我尝试之前不要进行总结。"
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "请向导解释权力结构"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "请历史学家提出时间切片"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "询问守夜人现有的命令"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "请求保存主要主张并对其证据强度进行分类。"
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "提问、行动、暂停以获取背景信息，或请求总结..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "提问、质疑、请求证据，或打开档案项目..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "分配所有权"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "贸易商户或作坊的助手"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "假设图谱"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "假设一旦浮现就会显示出来。"
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "处于影响力或权力的巅峰"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "处于决定性的转折点"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "雅典民主"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "雅典，公元前399年"
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "首先攻击最脆弱的假设。"
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "参与宫廷八卦"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "阿提卡希腊语"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "当客户、供应商、竞争对手、新进入者和替代品的权力有限时，吸引力会上升。"
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "听众正在进行中"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "当局讨论拆除事宜"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "等待第一个回答"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "等待第一个印章"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "B. R. 安倍德卡"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "智慧宫时期的巴格达"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "巴哈杜尔·沙·扎法尔成为象征性焦点"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "面包师的邻居"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "平衡难度"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "讨价还价购买树脂"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "巴士底狱临近"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "开始对话"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "从角色卡开始，然后以角色身份回答，并附上简短的背景说明和建议的后续问题。"
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "初学者、考试准备、进阶、12岁以上..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "信仰与盲点"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "最适合金钱、物流、食品、路线和社交交流。"
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "最适合政治、机构、证据和精英邻近空间。"
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "面包和合法性主导了谈话"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "面包就是政治"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "面包铲"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "面包代币"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "将工作拆解为任务，追踪阻碍，保持决策日志更新，并推动产出具体成果。"
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "简短阅读"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "浏览提示词入门"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "佛教手稿残片"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "佛教寺院"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "结对构建"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "Bug修复循环 = 复现、隔离、假设、测试单项更改、验证。"
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "构建一个能与你互动的课程。"
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "构建一个科学项目构思"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "构建一个可用的思维模型"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "构建关于气候适应的论文大纲"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "建立动力，完成有用的初稿，并在不过度赞美的情况下寻求决策。"
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "构建通行证"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "围绕你想要掌握的能力来构建课程。"
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "共同构建通俗易懂的解释。"
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "通过一次回答一个精确的问题来建立理解。"
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "正在构建你的卡片组"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "正在构建你的测验"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "买方力量"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "买方偏好只是驱动因素之一。成本、技术、税收和投入价格都会影响供给。"
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "战时英国的内阁会议室"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "将每一次价格变动都称为需求转移。"
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "权力中心"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "权力中心、街头生活以及系统边缘揭示了不同的历史。"
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "就帝国问题挑战丘吉尔"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "在对方捍卫其时代世界观的同时，挑战其观点。"
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "挑战我"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "用一个反例、边界情况或隐含假设来挑战我的上一个回答。只问一个问题。"
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "挑战在欧洲对抗暴政与捍卫帝国之间的张力。"
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "挑战当前产物中最薄弱的部分。直接指出并点名该假设，要求我进行辩护或修改。"
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "挑战薄弱的假设、模糊的声明和缺失的证据，同时保持用户作为决策者的地位。"
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "月光集市"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "长安"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "长安是唐朝的都城"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "长安，742年"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "更改受众"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "更换卡组"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "更改输入并解释输出。"
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "更换护照"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "更改设置"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "同时更改"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "在检查执行顺序之前更改语法。"
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "即使症状消失，同时更改多个文件也可能掩盖实际原因。"
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "检查我的预测"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "在继续之前检查理解程度"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "检查异步结果在读取前是否已等待。"
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "检查常见陷阱"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "选择一个概念和起始级别。你的导师会教授一小部分内容，进行检查，然后在每次回复后进行调整。"
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "选择到达点"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "选择确切的入口点"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "选择下一步"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "选择目的地。"
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "选择房间的关系和用途。"
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "选择最强的入口点。"
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "选择时间片"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "选择您的到达点。"
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "公民检察官测试帝国假设"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "公民权衡虔诚、教育和忠诚"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "公民身份决定政治话语权"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "公民身份受到限制"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "主张清晰度"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "主张追踪器"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "明确受众"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "在阅读行为之前对参与者进行分类。"
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "许可待定"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "攀登阶梯"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "关闭个人资料"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "关闭主题"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "很接近，但缺少一个链接"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "布料配给包"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "服装能快速显示等级"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "教练行动"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "教练控制项"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "教练回复"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "教练侧边栏"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "认知负荷"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "协作风格"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "协作式教学"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "协作学习室"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "收集支持该工作的示例、事实、引语或约束条件。"
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "商业许可"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "德里委员会会议室"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "常见错误"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "比较所有模式"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "比较意图、当代批评、后续影响和现代评价，而不将人物简单地归为英雄或恶棍。"
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "比较遗产"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "比较叛军与公司信息"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "将其与今天进行比较"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "与今天进行比较"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "比较两个相近的案例。"
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "将该想法压缩为一个可用的思维模型。"
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "概念板"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "只有在论点成立后，简洁才有意义。长度并不是这里的主要问题。"
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "用证据支持来直面矛盾、回避和后果。"
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "混淆了需求沿曲线的移动与需求曲线的位移。"
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "将会计利润与实际可分配或再投资的现金混为一谈。"
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "连接假设、现金流和估值"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "由向导选择的保守局部外层"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "背景不代表背书"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "背景注释"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "继续学习"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "使用 Google 继续"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "合同法对价"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "language": "Swahili",
+  "locale": "sw",
+  "namespace": "route:mission",
+  "sourceHash": "d916b46108002140b4377086d4844c7389d271340faea631b9d8298222038a46",
+  "part": {
+    "index": 2,
+    "total": 2
+  },
+  "entries": [
+    {
+      "key": "site.3bf84aa1615be47092",
+      "source": "Why now",
+      "value": "Kwa nini sasa"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Ndiyo. Shule inaweza kuanza kwa kujaribu hali za umma, kisha kwenda kwenye majaribio au usambazaji maalum wakati matumizi, mahitaji ya maudhui, na njia ya ufadhili viko wazi."
+    },
+    {
+      "key": "site.43e69afa661b737928",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from canonical /chat/{topicSlug} URLs.",
+      "value": "Ndiyo. Hali za umma za wageni kama Learn Anything, Socratic Instruction, Homework Coach, maswali, na flashcards hufunguka moja kwa moja kutoka URL rasmi za /chat/{topicSlug}."
+    },
+    {
+      "key": "site.86c3dcb99e53cbe5fb",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are intended to be indexable learning pages.",
+      "value": "Ndiyo. Njia za umma za kuingia kwenye mada kama /chat/learn-anything na /chat/socratic-instruction zimekusudiwa kuwa kurasa za kujifunza zinazoweza kuorodheshwa."
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Ndiyo. Hali za umma za wageni huwawezesha viongozi wa shule na walimu kujaribu uzoefu wa kujifunza kabla ya kujadili usambazaji maalum wa shule."
+    }
+  ]
+}

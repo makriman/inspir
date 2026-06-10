@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "language": "Arabic",
+  "locale": "ar",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.badges-achievements.inputboxText",
+      "source": "What achievement system should we design?",
+      "value": "ما هو نظام الإنجازات الذي يجب أن نصممه؟"
+    },
+    {
+      "key": "topic.badges-achievements.category",
+      "source": "Gamification",
+      "value": "التلعيب"
+    },
+    {
+      "key": "topic.badges-achievements.seo.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "أنشئ شارات للاتساق، والإتقان، والشجاعة، والمراجعة، والتعاون، والمنتجات النهائية."
+    },
+    {
+      "key": "topic.badges-achievements.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التلعيب ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.badges-achievements.seo.whyDifferent",
+      "source": "This mode is tuned for badges & achievements with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع للشارات والإنجازات مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.0",
+      "source": "Reward milestones that matter",
+      "value": "كافئ المعالم المهمة"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.badges-achievements.starter.0",
+      "source": "Create badges for my class",
+      "value": "إنشاء شارات لفصلي الدراسي"
+    },
+    {
+      "key": "topic.badges-achievements.starter.1",
+      "source": "Reward revision milestones",
+      "value": "مكافأة مراحل المراجعة"
+    },
+    {
+      "key": "topic.badges-achievements.starter.2",
+      "source": "Make achievement rules",
+      "value": "وضع قواعد للإنجازات"
+    },
+    {
+      "key": "topic.leaderboards.name",
+      "source": "Leaderboards",
+      "value": "لوحات الصدارة"
+    },
+    {
+      "key": "topic.leaderboards.subText",
+      "source": "Make competition healthier",
+      "value": "اجعل المنافسة أكثر صحة"
+    },
+    {
+      "key": "topic.leaderboards.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "أنشئ لوحات صدارة عادلة تكافئ الجهد، والتحسن، والعمل الجماعي، أو الاستمرارية دون إحباط المتعلمين الأبطأ."
+    },
+    {
+      "key": "topic.leaderboards.inputboxText",
+      "source": "What should the leaderboard measure?",
+      "value": "ما الذي يجب أن تقيسه لوحة الصدارة؟"
+    },
+    {
+      "key": "topic.leaderboards.category",
+      "source": "Gamification",
+      "value": "التلعيب"
+    },
+    {
+      "key": "topic.leaderboards.seo.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "أنشئ لوحات صدارة عادلة تكافئ الجهد، والتحسن، والعمل الجماعي، أو الاستمرارية دون إحباط المتعلمين الأبطأ."
+    },
+    {
+      "key": "topic.leaderboards.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التلعيب ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.leaderboards.seo.whyDifferent",
+      "source": "This mode is tuned for leaderboards with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع للوحات الصدارة مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.0",
+      "source": "Make competition healthier",
+      "value": "اجعل المنافسة أكثر صحة"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.leaderboards.starter.0",
+      "source": "Design a class leaderboard",
+      "value": "صمم لوحة صدارة للفصل"
+    },
+    {
+      "key": "topic.leaderboards.starter.1",
+      "source": "Measure improvement fairly",
+      "value": "قس التحسن بإنصاف"
+    },
+    {
+      "key": "topic.leaderboards.starter.2",
+      "source": "Make a team challenge board",
+      "value": "أنشئ لوحة تحدي للفريق"
+    },
+    {
+      "key": "topic.accountability-partner.name",
+      "source": "Accountability Partner",
+      "value": "شريك المساءلة"
+    },
+    {
+      "key": "topic.accountability-partner.subText",
+      "source": "Build check-ins that keep you moving",
+      "value": "ابنِ عمليات تحقق تبقيك مستمراً"
+    },
+    {
+      "key": "topic.accountability-partner.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "أنشئ عمليات تحقق للمساءلة مع التزامات واضحة، وإثباتات، وقواعد للتعافي، ومتابعة داعمة."
+    },
+    {
+      "key": "topic.accountability-partner.inputboxText",
+      "source": "What commitment needs accountability?",
+      "value": "ما هو الالتزام الذي يحتاج إلى مساءلة؟"
+    },
+    {
+      "key": "topic.accountability-partner.category",
+      "source": "Gamification",
+      "value": "التلعيب"
+    },
+    {
+      "key": "topic.accountability-partner.seo.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "أنشئ عمليات تحقق للمساءلة مع التزامات واضحة، وإثباتات، وقواعد للتعافي، ومتابعة داعمة."
+    },
+    {
+      "key": "topic.accountability-partner.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التلعيب ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.accountability-partner.seo.whyDifferent",
+      "source": "This mode is tuned for accountability partner with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لشريك المساءلة مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.0",
+      "source": "Build check-ins that keep you moving",
+      "value": "أنشئ عمليات متابعة تبقيك مستمراً"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.accountability-partner.starter.0",
+      "source": "Set up weekly accountability",
+      "value": "إعداد متابعة أسبوعية"
+    },
+    {
+      "key": "topic.accountability-partner.starter.1",
+      "source": "Write a check-in script",
+      "value": "كتابة نص للمتابعة"
+    },
+    {
+      "key": "topic.accountability-partner.starter.2",
+      "source": "Recover after missing a goal",
+      "value": "التعافي بعد إخفاق في تحقيق هدف"
+    },
+    {
+      "key": "topic.study-challenges.name",
+      "source": "Study Challenges",
+      "value": "تحديات الدراسة"
+    },
+    {
+      "key": "topic.study-challenges.subText",
+      "source": "Create short challenges and boss rounds",
+      "value": "أنشئ تحديات قصيرة وجولات تحدي كبرى"
+    },
+    {
+      "key": "topic.study-challenges.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "قم ببناء تحديات دراسية بقواعد واضحة، ونظام نقاط، ومستويات، وجولات تحدي كبرى، ومراجعة."
+    },
+    {
+      "key": "topic.study-challenges.inputboxText",
+      "source": "What should become a challenge?",
+      "value": "ما الذي يجب أن يتحول إلى تحدٍ؟"
+    },
+    {
+      "key": "topic.study-challenges.category",
+      "source": "Gamification",
+      "value": "التلعيب"
+    },
+    {
+      "key": "topic.study-challenges.seo.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "قم ببناء تحديات دراسية بقواعد واضحة، ونظام نقاط، ومستويات، وجولات تحدي كبرى، ومراجعة."
+    },
+    {
+      "key": "topic.study-challenges.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التلعيب ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.study-challenges.seo.whyDifferent",
+      "source": "This mode is tuned for study challenges with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً للتحديات الدراسية مع مطالباته الخاصة، وأمثلته، ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.0",
+      "source": "Create short challenges and boss rounds",
+      "value": "أنشئ تحديات قصيرة وجولات تحدي كبرى"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.study-challenges.starter.0",
+      "source": "Make a 7 day math challenge",
+      "value": "اصنع تحدي رياضيات لمدة 7 أيام"
+    },
+    {
+      "key": "topic.study-challenges.starter.1",
+      "source": "Create a vocabulary boss round",
+      "value": "أنشئ جولة تحدي كبرى للمفردات"
+    },
+    {
+      "key": "topic.study-challenges.starter.2",
+      "source": "Design a revision sprint",
+      "value": "صمم سباق مراجعة"
+    }
+  ]
+}

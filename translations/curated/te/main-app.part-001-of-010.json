@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Telugu",
+  "locale": "te",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "inspir మీ వయసుకు సరిపోయేలా సహాయపడండి"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "మీ వయస్సు ఆధారంగా సరైన నేర్చుకునే అనుభవాన్ని రూపొందించుకోవడానికి మీరు జన్మ తేదీ తెలపండి. ఉదాహరణలు, శైలి, మరియు భద్రతా పరిమితులను దీని ద్వారా సర్దుబాటు చేస్తాము."
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "పుట్టిన తేది"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "కొనసాగించండి"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "సమర్థవంతంగా నిల్వ అవుతోంది..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "దయచేసి సరైన జన్మతేది నమోదు చేయండి."
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "వయసు"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "మీ జన్మతారీఖు జోడించండి"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "అభ్యాస స్టోర్‌ను తెరువు"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "వెతుకు"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "చాట్‌లను వెతుకు"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- భాష, ర్యాంక్, లింగం, వర్గం, చట్టం, మతం, డబ్బు, శుభ్రత, మరియు ప్రాప్యతల చుట్టూ పరిమితులను వర్తింపజేయండి."
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- వ్యక్తి మాట్లాడకమునుపు గది సృష్టించండి: మనం ఎక్కడ ఉన్నామో, సంవత్సరం లేదా తేదీ పరిధి, ఇప్పటివరకు ఏమి జరిగింది, ప్రస్తుత ఒత్తిడి, నమ్మకాలు, చూపించని కోణాలు, మరియు చరిత్రకారుని అనిశ్చితులు."
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- ఇప్పటి వరకు టైమ్‌లైన్, వ్యక్తిగత స్వారస్యాలు, మిత్రులు మరియు శత్రువులు, ఈ సమయంలో ప్రధాన నమ్మకాలు, గనుకలు, తెలిసిన రచనలు లేదా ప్రసంగాలు, ప్రస్తుత ఒత్తిడి, చారిత్రక పరిభ్రమణ, సాక్ష్యాల నాణ్యత, మరియు సిఫారసు చేసిన ప్రారంభ ప్రశ్నలతో ఒక డోసి వాల్ సృష్టించండి."
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- నేరుగా చెప్పబడిన ఉద్ఘటనలు, సూచనలు లేదా వ్యక్తిగత ఆలోచనలు వాస్తవానికి విరుద్ధంగా పెట్టించవద్దు."
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- ఖచ్చితమైన కోటేషన్లను కల్పించకండి. ప్రత్యక్ష కోటేషన్ సంభాషణలో మూలం తెలియకపోతే, సృష్టించిన పదజాలాన్ని ఆధునికీకరించబడిన పునఃవ్యాఖ్య లేదా పునఃనిర్మిత సంభాషణగా గుర్తించండి."
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- హింస, సామ్రాజ్యవాదం, దాస్య వ్యవస్థ, జాతి, వ్యాధి, లేదా చంపడం వంటి వాటిని రొమాంటిక్ చేయవద్దు."
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- హానికరమైన దృక్పథాలను శుభ్రపరచకుండండి, దమనాన్ని, జాతిపితృత్వాన్ని, వర్ణవాదాన్ని, గులామత్వాన్ని, మడిసిన భావాన్ని, అధిపతిత్వాన్ని లేదా హింసను మహత్తరంగా చెబవద్దు. సందర్భం ఆటోమేటిక్ excuses కాదు."
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- చరిత్ర పరిణామాల సందర్భానికి విశ్రాంతి తీసుకునే ఎంపికతో పాటు మూడేళ్ళు ఆర్థవంతమైన చర్యలతో ముగించండి."
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- గమ్యస్థానం ఏదైనా AI ద్వారా నిర్ణయించబడిన లేదా స్పష్టంగా లేని పక్షంలో, తొలుత మూడు చారిత్రకంగా అర్థవంతమైన నిర్దిష్ట ఆవిర్భావ ఎంపికలను అందించి, అది ఎంచుకోవడానికి విద్యార్థి కోసం వేచి ఉండండి."
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- సాక్షాత్కారం ప్రారంభమైన తర్వాత రెండు మట్టాలను నిర్వహించండి: సమయ భాగం ద్వారా పరిమితమైన పాత్రలో ఉన్న వాయిస్, మరియు చరిత్రకార పక్కన ఉండే గమనికలు, ఇవి డాక్యుమెంటెడ్ వాస్తవం, సాధ్యమైన పునర్నిర్మాణం, వివాదాస్పద వ్యాఖ్యానం, ఆధునిక సారాంశం మరియు కథానక సంభాషణను ప్రత్యేకం చేస్తాయి."
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- తెలిసిన వాస్తవాలు, సాద్యమైన పునఃరచన, మరియు ఊహాగానాలను స్పష్టంగా సూచించండి."
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- లేకపోతే, ప్రయాణికుడిని దయతో అభివదించండి, పాస్‌పోర్టును ఒక సంక్షిప్త పేరాగ్రాఫ్‌లో సారాంశం చేస్తూ, మొదటి ముఖ్యమైన చర్య ప్రశ్నను అడగండి."
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- చారిత్రక వ్యక్తి నిరాకరించవచ్చు, సవాలు చేయవచ్చు, తప్పించుకోవచ్చు, ప్రశ్నలు అడగవచ్చు, తప్పు ఆలోచనలను తిరస్కరించవచ్చు లేదా కాలపరిమితులను వెల్లడించవచ్చు. వారు అన్నివేళలా ఒప్పుకోకూడదు."
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "1. కనుగొనక లేదా సమయ-స్లైస్ ఎంపిక అవసరమైతే, ఎంపికలను చూపించి ఆపు."
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "10-15 నిమిషాలు"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "10-నిమిషాల సందర్శన"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "117 క్రీస్తువూర్య కాలం"
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "13 జూలై 1789"
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "1582 క్రీస్తువు తర్వాత"
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "1946-1949 రాజ్యాంగ నిర్మాణం కాలం"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "2 సెప్టెంబర్ 1666"
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "2. లేకపోతే ముందుగా డోసియర్ వాల్‌ను చూపించండి, ఆపై సిఫార్సు చేసిన ప్రశ్నలలో ఒకటితో ప్రారంభమవ్వమని నన్ను ఆహ్వానించండి."
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "ఈసా ಪೂರ್ವ 399"
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "742 సీఈ"
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "8-12 నిమిషాలు"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "చెడు పేరు గందరగోళానికి దారి తీస్తుంది, కానీ సూచన సమయాన్ని సూచిస్తుంది. ముందుగా డేటా అందిందో లేదో నిరూపించండి."
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "కొన్ని నిజాలు, ప్రాథమిక రూపం, మీరు ఎక్కడ అడ్డగిస్తున్నారో..."
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "ఫైనల్ ట్రాన్స్‌ఫర్ టాస్క్ ఒక నెక్ట్స్ బటన్ కంటే మెరుగైన అభివృద్ధిని నిరూపిస్తుంది."
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "మొదటి ప్రశ్న లేదా కోణం"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "మంచి నేర్చుకునే చక్రం"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "ఒక చారిత్రాత్మక మలుపు"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "పేరున్న పక్షిపాటల వ్యక్తిగత ఆలోచనలు"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "దావా లేకుండా వాస్తవాలను列చిన ఒక పేరాగ్రాఫ్, పాఠకుడిని తర్కం చేసుకోవడానికి ప్రేరేపిస్తుంది."
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "ధర మార్పు అనేది కేవలం వంకరపై గమనం, అది స్వయంచాలకంగా మొత్తం వంకరను మార్పు కాదు."
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "పంచుకున్న లక్ష్యం, తదుపరి చర్యలు, మరియు ఇప్పటికే చేసినవి."
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "ఒక సిమ్యులేషన్ దాచిన కారణ సంబంధాన్ని స్పష్టంగా చూపిస్తుంది. ఒక సమయంలో ఒక విషయం మార్చండి."
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "తరువాతికి వెళ్లేముందు ఒకే ఒక్క తనిఖీ ప్రశ్న."
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "ఒకుంది వ్యాపారి వ్యక్తిగత ప్రణాళిక"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "ఒక వ్యూహం రెండు పరీక్ష. పోర్టర్ ఫైవ్ ఫోర్సెస్ ఎవరు లాభాన్ని తీసుకెళ్లగలరు మరియు ప్రతి ఒత్తిడి ఎంత బలమైనదో అడుగుతుంది."
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "శక్తివంతమైన ప్యారా గుర్తింపు చేస్తుంది, సాక్ష్యాలతో దాన్ని నిరూపిస్తుంది, అప్పుడు ఆ సాక్ష్యం పాఠకుడి అభిప్రాయాన్ని ఎందుకు మార్చిందో వివరించును."
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "ఫలప్రదమైన మోడల్ అనేది ఒక శృంఖల: ఊహింపులు కార్యాచరణలను నడిపిస్తాయి, కార్యాచరణలు నగదు ప్రవాహాన్ని సృష్టిస్తాయి, మరియు సమయానికి మరియు రిస్క్‌కు అనుకూలంగా చూసిన తర్వాతనే నగదు ప్రవాహం విలువగా మారుతుంది."
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "తర్వాతి AI పాస్‌ను అంగీకరించండి, సవరించండి లేదా తిరస్కరించండి"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "ఆమోదించండి, సవరణ చేయండి, తిరస్కరించండి, లేదా సాక్ష్యాలను సేకరించండి."
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "ఖాతా టోకెన్లు మరియు ఒక సాధారణ నాణెం సంచి"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "చురుకైన గమ్యం"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "సజీవ మర్చిపోకు నిర్మాణం"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "చర్యల ఫీడ్"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "అడా లవ్లేస్ పై కల్పన"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "అడా లవ్లేస్, క్లియోపట్రా, బి. ఆర్. అంబేద్కర్..."
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "అనుకూల పాఠం చక్రం"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "మీ పుట్టిన తేదీని జోడించండి"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "추가ించండి, సవరించండి, సవాలు చేస్తారు, లేదా తదుపరి అడుగు నిర్ణయం తీసుకోండి"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "మెమరీ హింట్లు జోడిస్తాము"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "సాక్ష్యం మరియు అభ్యర్థన మధ్య واقعی లోపం ఉన్నప్పుడు అదనపు సమాచారాన్ని చేర్చడం."
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "పరిపాలనా మార్గాలు"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "సలహా కోసం సంప్రదింపు seeking"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "సోక్రాటీస్ ట్రయల్ అలవాట్లు రోజుల్లో అగోరా"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "AI సవాలు"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "AI మీ కళాఖండాన్ని సమీక్షిస్తోంది"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "AI మొదటి నిర్మాణాన్ని చేసింది"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "AI వర్క్‌స్పేస్‌ను సవరించింది"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "AI పరిష్కరించిన తేదీ పరిధి"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "ఏఐ, మొదటి ప్రయత్నం చేయి"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "ఈ కాలంలో అక్షర్ ముఘల్ సామ్రాజ్యాన్ని పాలించాడు"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "అక్బర్ ముంగల్ బాహుళ్యం ఆధీనమాన్ని, అనువాదాన్ని, మతాన్ని, సామ్రాజ్య పరిపాలనను పరిక్షిస్తోంది."
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "అన్ని యాప్ పాఠ్యాలు మరియు బోధన సమాధానాలు ఈ అమరికను అనుసరిస్తాయి."
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "సహాయకులు మరియు శత్రువులు"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "అాంఫోరా ముద్ర"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "ముందుకు వెళ్లేముందు ఈ ప్రశ్నకు జవాబు ఇవ్వండి."
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "ఆలోచనను ఒక్కడే ప్రభావితం కాకుండా కొత్త పరిస్థితికి అన్వయించండి."
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "సిక్షణార్థి కళాకారుడు, వ్యాపారి, సందర్శకుడు..."
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "శిక్షణ పొందుతున్న విద్యార్థి వారి విధానాన్ని అధ్యయనం చేస్తోంది"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "శాస్త్రీయ సందర్భాలలో అరబిక్ మరియు సంస్కృతం"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "వాదన పేరా = వాదన + సాక్ష్యాలు + కారణాలు + ఫలితం."
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "దలిలో బలం"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "వాద వ్యూహ పరీక్ష గది"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "చేరే తేదీ, పాత్ర, నియమాలు, ఆ కాలంలో ఏ జ్ఞానం ఉండాలి."
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "చేరే స్థలం"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "ఒక మలుపు దగ్గరికి చేరుకుని, ఆ సమయంలో ప్రజలు ఏం తెలుసుకున్నారో గమనించండి."
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "పౌరసత్వం ఏవన్నీ తీసివేస్తుంది అని మేటిక్‌ను అడగ్గండి"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "నీటి పెట్టె దారుల నుండి స్థానికులు ఏమీ తెలుసుకున్నారో అడగండి"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "గురించి అడగండి"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "రొట్టె ధరల గురించి అడగండి"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "డేవిడ్ గురించి అడగండి"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "విద్యార్థిగా అడగండి"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "కోచ్‌ను అడగండి"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "నేరుగా వివరణ అడగండి"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "సూచన లేదా ఉదాహరణ అడగండి"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "సమాంతరమైన ఉదాహరణ అడగండి"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "వారి కాలం దృష్టికోణం మరియు పరిమితుల ద్వారా సలహా అడగండి."
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "చివరి సమాధానానికి ముందుగా సలహాలు, ఉదాహరణలు, లేదా తనిఖీలు అడగండి."
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "తరువాతి సూచన స్థాయిని అడగండి"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "అటువంటి ప్రశ్నను సులభమైన మాటల్లో అడగండి"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "విడుదల స్థితి ఎలా పని చేస్తుందో అడగండి"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "ప్రమోటర్‌షిప్ ఎలా పనిచేస్తుంది అని అడగండి"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "మొదట నా ప్రస్తుత ఊహను నన్ను అడగండి."
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "ఒక్కో ప్రశ్నను ఒక్కోసారిగా అడగండి, ఊహాగానాలు మరియు ప్రామాణికాలను ట్రాక్ చేయండి, అభ్యర్థనపై సూచనలు ఇవ్వండి, నేను ప్రయత్నించే వరకు సంకలనం చేయవద్దు."
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "అధికార నిర్మాణాన్ని వివరించమని మార్గదర్శిని అడగండి"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "చరిత్రవేత్తను సమయ విభాగాలు ప్రతిపాదించాలని అడగండి"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "గార్డును ఏ ఆదేశాలు ఉన్నాయో అడగండి"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "ప్రధాన వాదనలను సేవ్ చేయమని అడిగి, వాటి మధ్యస్థాయి సాక్ష్యాధార మేరను వర్గీకరించండి."
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "వినండి, చర్య తీసుకోండి, సందర్భం కోసం ఆపండి లేదా వివరם కోరండి..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "అడగండి, సవాలు చేయండి, సాక్ష్యాలు కోరండి, లేదా దోసియర్ అంశాన్ని ఓపెన్ చేయండి..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "మాలికత్వం కేటాయించు"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "వ్యాపార గృహం లేదా వర్క్‌షాప్ సహాయకుడు"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "అనుమాన నక్షత్రం"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "ఎట్టిపరిస్థితులూ వచ్చేలా చాలు కనిపిస్తాయి."
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "ముఖ్య ప్రభావం లేదా అధికారంలో ఉన్నప్పుడు"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "నిర్ణాయక మలుపు వద్ద"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "అథెనియన్ గణతంత్రం"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "అథెన్స్, 399 BCE"
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "మొదటగా అత్యంత సున్నితమైన అంచనాను దాడి చేయండి."
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "తురుపు సమాచారం తెలిసుకోండి"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "అటిక్ గ్రీకు"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "గ్రాహకులు, సరఫరాదారులు, పోటీదారులు, ప్రవేశదారులు, మరియు ప్రత్యామ్నాయాలు పరిమిత అధికారంతో ఉన్నప్పుడు ఆకర్షణ పెరుగుతుంది."
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "ప్రేక్షకులు కొనసాగుతోంది"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "అధికారులు ధ్వంసంపై చర్చిస్తున్నారు"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "మొదటి సమాధానానికి ఎదురుచూస్తోంది"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "మొదటి సీల్ కోసం ఎదురుచూస్తోంది"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "బి. ఆర్. అంబేడ్కర్"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "విజ్ఞానం గృహ కాలంలో బాగ్దాద్"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "బహదూర్ షా జఫర్ ఒక చిహ్నాత్మక దృష్టికోణమయ్యారు"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "బేకర్ పొరుగువాడు"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "కష్టత స్థాయిని సమతుల్యం చేయడం"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "రెసిన్ కోసం చర్చించండి"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "బాస్టిల్ చేరడం"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "సంభాషణ ప్రారంభించండి"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "పర్సోన కార్డ్‌తో ప్రారంభించండి, తర్వాత సరిపడిన నేపధ్యం నోట్సులు మరియు సూచించే అనుసరించిన ప్రశ్నలతో किरदारంలో జవాబు ఇవ్వండి."
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "ప్రారంభ స్థాయి, పరీక్ష సిద్ధత, ఉన్నత స్థాయి, 12 ఏళ్ల వయసు..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "నమ్మకాలు మరియు కరచివిప్పులు"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "ధనం, సరసమైన వాహనాలు, ఆహారం, మార్గాలు మరియు సామాజిక మార్పిడికి ఉత్తమం."
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "రాజకీయాలు, సంస్థలు, సాక్ష్యాలు, మరియు ప్రభావశీలమైన పరిసరాలలో ఉత్తమం."
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "అప్పు మరియు చట్టబద్ధతా కార్యక్రమాన్ని ప్రాబల్యంగా చూపిస్తాయి"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "రొట్టెలు రాజకీయాలు"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "రొట్టెలు తీసే పలుకు"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "బ్రెడ్ టోకెన్"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "పని భాగాలుగా విభజించండి, అవరోధాలను ట్రैक్ చేయండి, నిర్ణయాల లాగ్‌ను నవరించి ఉంచండి, మరియు స్పష్టమైన ఫలితానికి ముందుకు పోండి."
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "సంక్షిప్త పఠనం"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "సూచనల ప్రారంభాలను చూడండి"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "బౌద్ధ పుటల ముక్క"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "బౌద్ధ మఠం"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "బడ్డీ బిల్డ్"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "బగ్ ఫిక్స్ లూప్ = పునరుత్పత్తి చేయండి, ప్రత్యేకం చేయండి, పరిశీలించండి, ఒక మార్పును పరీక్షించండి, ధృవీకరించండి."
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "మీకు ప్రతిస్పందించే పాఠాన్ని నిర్మించండి."
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "శాస్త్ర ప్రాజెక్ట్ ఆలోచనను నిర్మించండి"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "ఉపయోగ సమస్యలు అర్థం చేసుకునేందుకు మానసిక నమూనాను రూపొందించుకోండి"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "కాలమాన సర్దుబాటుపై ఒక వ్యాస రూపరేఖ రూపొందించండి"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "గతిలను తెచ్చుకోండి, ప్రారంభంగా ఉపయుక్తమైన ప్రాథమిక సమీక్ష చేయండి, మరియు అనవసరంగా మెచ్చుకోకుండా నిర్ణయాలను వివిరించండి."
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "పాస్‌పోర్ట్ నిర్మించండి"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "మీరు చేయగలిగేలా కావలసిన దానిగా పాఠాన్ని నిర్మించండి."
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "సాదాసీదా భాషలో వివరణను కలిసి తయారు చేయండి."
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "ఒక్కొక్కటైన స్పష్టమైన ప్రశ్నకు సమాధానం ఇచ్చి అవగాహనను పెంచుకోండి."
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "మీ డెక్ నిర్మించడం"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "మీ ప్రశ్నోత్తరాన్ని తయారుచేస్తోంది"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "కొనుగోలుదారుల శక్తి"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "కొనుగోలుదారుల ఇష్టాలు మాత్రమే ఒక కారణం. ఖర్చులు, సాంకేతికత, పన్నులు, మరియు ఇన్పుట్ ధరలు సరఫరాను ప్రభావితం చేయవచ్చు."
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "పోరుల సమయంలో బ్రిటన్ లో క్యాబినెట్ గది"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "ప్రతి ధర మార్పును డిమాండ్ మార్పుగా పిలవడం."
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "శక్తి కేంద్రం"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "శక్తి కేంద్రం, వీధి స్థాయి జీవితం, మరియు వ్యవస్థ చివర వేర్వేరు చరిత్రలను ప్రదర్శిస్తాయి."
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "చర్చిల్‌ను సామ్రాజ్యం విషయంలో సవాల్ చేయండి"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "వ్యక్తి వారి సమయపు దృష్టికోణాన్ని రక్షించునప్పుడు సవాలు చేసే ఆలోచనల్ని ప్రతిపాదించండి."
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "నన్ను సవాలు చేయండి"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "నా చివరి సమాధానాన్ని ఒక వ్యతిరేక ఉదాహరణ, సరిహద్దు సందర్భం లేదా దాగి ఉన్న అంచనాతో సవాలు చేయండి. ఒక ప్రశ్న మాత్రమే అడగండి."
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "యురోప్లో అత్యాచారాన్ని ఎదుర్కొనే బాధ్యతతో సామ్రాజ్యాన్ని రక్షించుకోవడంలో ఉన్న సంఘర్షణను సవాలు చేయండి."
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "ప్రస్తుత ఆర్టిఫాక्ट్లో అత్యంత బలహీనమైన భాగాన్ని సవాలు చేయండి. నేరుగా ఉండండి, ఉహింపును నిర్దిష్టంగా పేర్కొని దానిని రక్షించమాన లేదా సవరిచేయమని నన్ను అడగండి."
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "ఉపయోగదారుడిని నిర్ణయ యజమానిగా కొనసాగిస్తూ, బలహీన అంచనాలు, అస్పష్ట దావాలు, మరియు సాక్ష్యాలు లేకపోవడం ను సవాలు చేయండి."
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "చాంద్నీ చౌక్"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "చాంగ్‌ఆన్"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "చాంగ్‌అన్ తాంగ్ రాజధాని"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "చాంగ్'అన్, 742"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "ప్రేక్షకులను మార్చండి"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "డెక్ మార్చండి"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "ఇన్‌పుట్‌లను మార్చి అవుట్పుట్‌ను వివరించండి."
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "పాస్‌పోర్ట్ మార్చండి"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "సెట్టప్ మార్చు"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "తక్షణమే మార్పులు"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "నిర్వహణ క్రమాన్ని తనిఖీ చేసే ముందు వాక్యరచన మార్పులు."
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "ఒకేసారి అనేక ఫైళ్లను మార్చడం వల్ల లక్షణం తొలగినా అసలు కారణం కనిపించకపోవచ్చు."
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "నా అంచనాను తనిఖీ చేయండి"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "తదుపరి దశకు వెళ్లే ముందు అవగాహనను తనిఖీ చేయండి"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "అసింక్రోనస్ ఫలితాన్ని చదవడం ముందు అది ఎదురు చూడబడి ఉందో లేదో తనిఖీ చేయండి."
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "సాధారణ ఫందాలను తనిఖీ చేయడం"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "ఒక కాన్సెప్ట్ మరియు ప్రారంభ స్థాయిని ఎంచుకోండి. మీ గురువు చిన్న భాగాన్ని బోధించి, దాన్ని పరీక్షించి, ప్రతి జవాబుకు తరువాత సర్దుబాటు చేస్తారు."
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "ఒక చేరే పాయింట్ ఎంచుకోండి"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "ఖచ్చితమైన ప్రవర్తన స్థానం ఎంచుకోండి"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "తర్వాతి ఎంచుకోండి"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "గమ్యాన్ని ఎంచుకోండి."
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "సంబంధం మరియు గదికి ఉద్దేశాన్ని ఎంచుకోండి."
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "కనిష్టశక్తి గల ప్రవేశద్వారం ఎంచుకోండి."
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "సమయ విభాగాన్ని ఎంచుకోండి"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "మీ చేరుకొనుట స్థానం ఎంచుకోండి."
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "పౌర న్యాయవాది సామ్రాజ్య అనుమానాలను పరీక్షించడం"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "నాగరికులు పుణ్యము, విద్య మరియు విశ్వాసాన్ని మూల్యాంకన చేస్తారు"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "పౌరసత్వం రాజకీయ స్వరం నిర్ణయిస్తుంది"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "పౌరత్వం పరిమితిగాను ఉండింది"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "స్పష్టతను హక్కు చెప్పుకోండి"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "దావా ట్రాకర్"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "ప్రేక్షకులను స్పష్టంగా చేయండి"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "చర్యను చదవడానికి ముందు నటులను వర్గీకరిస్తుంది."
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "దాఖలుకి అంగీకారం వేచి ఉంది"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "స్టెప్పులు ఎక్కండి"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "ప్రొఫైల్ మూసివేయండి"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "విషయాలను మూసివేయండి"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "దగ్గర ఉంది, కానీ ఒక లింక్ మిస్సైంది"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "బట్టల రిలేషన్ ప్యాక్"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "దుస్తులు పటిష్టంగా ర్యాంక్ సూచిస్తాయి"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "కోచ్ చర్యలు"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "కోచ్ నియంత్రణలు"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "కోచ్ సమాధానం"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "కోచ్ సైడ్కార్"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "జ్ఞాపకభారం"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "సహకార శైలి"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "సహకార ఆదేశం"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "సహకార అధ్యయన గది"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "పనిని మద్దతు ఇచ్చే ఉదాహరణలు, విషయాలు, ఉద్దృతాలు లేదా పరిమితులను సేకరించండి."
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "వాణిజ్య క్లియరెన్స్"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "దిల్లీలో కమిటీ గది"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "సాధారణ தவరు"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "అన్ని విధానంస్‌ను పోల్చండి"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "వ్యక్తిని హీరోగా లేదా విలన్‌గా తగ్గించకుండా, ఉద్దేశ్యాలు, నేటి విమర్శలు, తర్వాతి ఫలితాలు, మరియు ఆధునిక తీర్పులను పోల్చండి."
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "పారంపరికం పోల్చండి"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "పెనుగొడ్డు మరియు కంపెనీ సమాచారం పోల్చండి"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "దీనిని ఈరోజుతో పోల్చండి"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "ఈ రోజు తో పోల్చండి"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "రెండు సమీపమైన కేసుల‌ను పోల్చండి."
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "ఆ దృష్టి ఒక ఉపయోగకరమైన మానసిక నమూనాగా సంకుచితం చేయండి."
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "ఆలోచనా బోర్డు"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "ఆర్గ్యుమెంట్ పని చేసిన తర్వాతే సంక్షిప్తత సహాయపడుతుంది. దీర్ఘత్వం ఇక్కడ ప్రధాన నిర్ధారణ కాదు."
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "సాక్ష్యాలతో సహాయంగా تضادات, తప్పించుకోല్ని, మరియు ఫలితాలను ఎదుర్కోండి."
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "డిమాండ్ షిఫ్ట్‌తో సహా మ muvmentu ను గందరగోళపరుస్తుంది."
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "వాస్తవంగా పంపిణీ చేయగలిగే లేదా పునःనివేశం చేయగల నగదు తో గందరగోళపరిచే లెక్కింపు లాభాన్ని తప్పుగా అర్థం చేసుకోవడం."
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "అనుమానాలు, నగదు ప్రవాహం, మరియు మూల్యాంకనాన్ని క 연결చేయండి"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "మార్గదర్శకుడు ఎంచుకున్న పరిమిత స్థానిక బాహ్య పొరలు"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "సందర్బం అనుమతించడం కాదు"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "ప్రసంగ గమనికలు"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "పఠనం కొనసాగించండి"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "గూగుల్‌తో కొనసాగండి"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "ఒప్పంద చట్టం పరిశీలన"
+    }
+  ]
+}

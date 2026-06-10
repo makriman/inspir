@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Japanese",
+  "locale": "ja",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "締め切りの交渉をする"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "失礼な顧客に対応する"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "先生に助けを求める"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "キャリアエクスプローラー"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "自分に合ったキャリアを見つける"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "興味、スキル、日常の例、次のステップを通じてキャリアを探求しましょう。"
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "どのキャリアや興味を探求しますか？"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "プランニング"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "興味、スキル、日常の例、次のステップを通じてキャリアを探求しましょう。"
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ボックスではなく、実践的なガイダンスを求めるプランニングトピックを学習中のユーザー。"
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えたキャリアエクスプローラー用に調整されています。"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "自分に合ったキャリアを見つける"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "生物学とアートが好きです"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "プロダクトマネージャーは何をしますか？"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "法律と心理学を比較する"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "面接コーチ"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "より説得力のある回答を練習する"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "学校、インターンシップ、就職、奨学金の面接に向けて、実践的な質問とフィードバックで準備しましょう。"
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "どのような面接の準備をしていますか？"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "プランニング"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "学校、インターンシップ、就職、奨学金の面接に向けて、実践的な質問とフィードバックで準備しましょう。"
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求めるプランニングトピックを学習中のユーザー。"
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えた面接コーチ向けに調整されています。"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "より説得力のある回答を練習する"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "大学の模擬面接"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "インターンシップの質問を練習する"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "「自己紹介」を改善する"
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "コードチューター"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "作りながらプログラミングを学ぶ"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "コードの理解、エラーのデバッグ、概念の学習、そして小さなプロジェクトの構築をステップバイステップで行います。"
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "どのコーディングトピックやバグに取り組みますか？"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "コードの理解、エラーのデバッグ、プログラミング概念の学習、そして小さなプロジェクトの構築をステップバイステップで行います。"
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "解説やデバッグのサポート、プロジェクトのコーチングを必要とする初級から中級のプログラマー。"
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "コードに何を期待しているかを問いかけ、小さな例やテストを用いて動作の理解を深めます。"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "バグを解説する"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "概念を理解する"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "小さな修正を試す"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "JavaScriptの再帰について解説して"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "このエラーのデバッグを手伝って"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "Pythonのループを教えて"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "プロジェクトコーチ"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "アイデアをマイルストーンに変える"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "学校の課題、創作活動、プログラミング、個人的なプロジェクトなどを、範囲、マイルストーン、障害、次のアクションに分けて計画します。"
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "どんなプロジェクトを作りますか？"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "計画"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "学校の課題、創作活動、プログラミング、個人的なプロジェクトなどを、範囲、マイルストーン、障害、次のアクションに分けて計画します。"
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求める計画トピックを学習中のユーザー。"
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えたプロジェクトコーチ向けに調整されています。"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "アイデアをマイルストーンに変える"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "科学フェアのプロジェクトを計画する"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "ポートフォリオサイトを構築する"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "歴史のプレゼンテーションを構成する"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "リサーチアシスタント"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "質問を組み立て、ソースを統合する"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "幅広いトピックをリサーチクエスチョン、検索キーワード、アウトライン、ソースノートに変換します。"
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "何をリサーチしますか？"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "思考"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "幅広いトピックをリサーチクエスチョン、検索キーワード、アウトライン、ソースノートに変換します。"
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ボックスではなく、実践的なガイダンスを求める思考トピックを探求する学習者向け。"
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えたリサーチアシスタント用に調整されています。"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "質問を構成し、ソースを統合する"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "プロンプトの例から始める"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "再生可能エネルギーをリサーチする"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "AI倫理に関する視点を見つける"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "都市化に関する論文を計画する"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "ソースクリティック"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "信頼性とバイアスを判断する"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "記事、主張、動画、投稿を、証拠、バイアス、信頼性、欠落している文脈の観点から評価します。"
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "ソースを貼り付けるか、説明してください"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "思考"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "記事、主張、動画、投稿を、証拠、バイアス、信頼性、欠落している文脈の観点から評価します。"
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ボックスではなく、実践的なガイダンスを求める思考トピックを探求する学習者向け。"
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えたソースクリティック用に調整されています。"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "信頼性とバイアスを判断する"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "プロンプトの例から始める"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "この記事は信頼できますか？"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "この主張の根拠を確認する"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "この段落のバイアスを見抜く"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "データ解釈ツール"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "数値やグラフを読み解く"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "データやグラフの説明、調査結果を貼り付けて、その意味や解釈の注意点、次に何をすべきかを学びましょう。"
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "データを貼り付けるか、グラフについて説明してください"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "データやグラフの説明、調査結果を貼り付けて、その意味や解釈の注意点、次に何をすべきかを学びましょう。"
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "単なる回答だけでなく、実践的なガイダンスを求めるSTEM学習者向け。"
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "このモードはデータ解釈に特化しており、専用のプロンプト、例題、学習フローを備えています。"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "数値やグラフを読み解く"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例題プロンプトから始める"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "この表を解説して"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "この調査は何を示している？"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "グラフの解釈を手伝って"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "学習計画ビルダー"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "現実的で無理のないルーチンを作る"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "あなたの時間、エネルギー、目標、苦手分野に合わせて学習計画を作成します。"
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "何を学習する必要がありますか？"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "計画"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "時間、エネルギー、目標、苦手分野、復習サイクル、練習スケジュールを考慮した現実的な学習計画を作成します。"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "達成不可能なチェックリストではなく、構造化された計画を必要とする学生や独学の学習者向け。"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "このビルダーは、意欲的な目標と、復習、練習、休息日、そして次に取るべき最小限のアクションのバランスを整えます。"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "目標を定義する"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "練習をスケジュールする"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "復習ループを構築する"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "数学の週間計画を立てる"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "毎日の英語学習ルーチンを作成する"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "学校の勉強と試験対策を両立させる"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "習慣コーチ"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "学習を習慣化する"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "トリガー、報酬、リカバリープランを活用して、学習の意図を小さく繰り返せる習慣に変えましょう。"
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "どのような学習習慣を身につけたいですか？"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "計画"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "トリガー、報酬、リカバリープランを活用して、学習の意図を小さく繰り返せる習慣に変えましょう。"
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求める学習計画に関心のある学習者向け。"
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えた習慣コーチ用に調整されています。"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "学習を習慣化する"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "毎日20分読書する"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "数学の先延ばしをやめる"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "毎日プログラミングを練習する"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "モチベーションコーチ"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "学習が辛い時に再スタートする"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "感情的な行き詰まりを解消し、小さな次のステップを見つけ、罪悪感なしに勢いを取り戻しましょう。"
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "今、何が学習を難しくしていますか？"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "計画"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "感情的な行き詰まりを解消し、小さな次のステップを見つけ、罪悪感なしに勢いを取り戻しましょう。"
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求める計画トピックを学習中の学習者。"
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えたモチベーションコーチ向けに調整されています。"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "学習が困難に感じたときに再スタートする"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "遅れていると感じる"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "先延ばしにしてしまう"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "テストに失敗して落ち込んでいる"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "クリエイティブ・ブレインストーマー"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "独創的なアイデアを生み出し、形にする"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "プロジェクト、ストーリー、デザイン、タイトル、実験、そして予想外の切り口についてブレインストーミングを行います。"
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "何についてブレインストーミングしますか？"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "創造性"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "プロジェクト、ストーリー、デザイン、タイトル、実験、そして予想外の切り口についてブレインストーミングを行います。"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求める創造性トピックを学習中の学習者。"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えたクリエイティブ・ブレインストーマー向けに調整されています。"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "独創的なアイデアを生み出し、形にする"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "科学プロジェクトのアイデア"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "友情についてのストーリーのコンセプト"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "クリエイティブなプレゼンテーションの導入"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "ストーリーチューター"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "物語で学ぶ"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "概念を物語、キャラクター、葛藤、そして記憶に残るシーンへと変えましょう。"
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "物語にしたいことは何ですか？"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "創造性"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "概念を物語、キャラクター、葛藤、そして記憶に残るシーンに変えることで、難しいアイデアを思い出しやすくします。"
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "物語、類推、キャラクター、鮮やかな例を通してアイデアをよりよく記憶したい学習者。"
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "このチューターは、根底にある概念を明確に保ちながら、抽象的な教材を物語の構造に変換します。"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "概念を選ぶ"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "物語を構築する"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "レッスンを解説する"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "分数を物語として教える"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "生態系についての物語を作る"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "キャラクターを使って民主主義を説明する"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "哲学ラボ"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "大きな問いについて深く考える"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "アイデンティティ、知識、公平性、自由、幸福、その他の深い問いを、慎重な推論を通じて探求します。"
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "どの大きな問いを探求しますか？"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "人文科学"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "アイデンティティ、知識、公平性、自由、幸福、その他の深い問いを、慎重な推論を通じて探求します。"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ボックスではなく、実践的なガイダンスを求める人文科学トピックを探求する学習者。"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えた哲学ラボ向けに調整されています。"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "大きな問いについて深く考える"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "「公平」とは何か？"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "私たちに自由意志はあるのか？"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "知識とは何か？"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "倫理的ジレンマ"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "道徳的推論を実践する"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "利害関係者、結果、義務、権利、トレードオフを比較検討しながら、ジレンマを解決していきます。"
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "どのジレンマについて検討しますか？"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "人文科学"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "利害関係者、結果、義務、権利、トレードオフを比較検討しながら、ジレンマを解決していきます。"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求める人文科学のトピックを探求する学習者。"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備え、倫理的ジレンマに特化して調整されています。"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "道徳的推論を実践する"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "教室でのAI活用"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "動物実験"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "嘘をつくことは許されるのか？"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "地理エクスプローラー"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "場所、地図、人々を理解する"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "国、都市、川、気候、移住、資源、そして地理がどのように生活を形作るのかを探求します。"
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "どこを探求しますか？"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "人文科学"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "国、都市、川、気候、移住、資源、そして地理がどのように生活を形作るのかを探求します。"
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ボックスではなく、実践的なガイダンスを求める人文科学トピックを学習中の学習者。"
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えた地理エクスプローラー向けに調整されています。"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "場所、地図、人々を理解する"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "なぜ都市は川の近くにあるのか？"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "ヒマラヤ山脈を探索する"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "インドと日本を比較する"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "経済シミュレーター"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "選択、インセンティブ、トレードオフを学ぶ"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "市場、希少性、インセンティブ、政策、個人金融について、シンプルなシミュレーションを通じて学びます。"
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "どのような経済のアイデアをシミュレートしますか？"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "人文科学"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "市場、希少性、インセンティブ、政策、個人金融について、シンプルなシミュレーションを通じて学びます。"
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ボックスではなく、実践的なガイダンスを求める人文科学トピックを学習中の学習者。"
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備えた経済シミュレーター向けに調整されています。"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "選択、インセンティブ、トレードオフを学ぶ"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "需要と供給をシミュレートする"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "インフレを説明する"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "税金が変わるとどうなるか？"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "歴史の因果関係"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "出来事がなぜ起こったのかをたどる"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "歴史的な出来事を、原因、きっかけ、結果、そして別の可能性という観点から紐解きます。"
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "どの歴史的出来事をたどりますか？"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "人文科学"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "歴史的な出来事を、原因、きっかけ、結果、そして別の可能性という観点から紐解きます。"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求める人文科学を学ぶ学習者。"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "このモードは、独自のプロンプト、例、学習フローを備え、歴史の因果関係に特化しています。"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "出来事がなぜ起こったのかをたどる"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "例となるプロンプトから始める"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "目標に合わせてセッションを調整する"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "第一次世界大戦の原因"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "なぜローマ帝国は衰退したのか？"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "印刷機の影響"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "市民科コーチ"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "権利、政府、社会について理解する"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "憲法、民主主義、選挙、裁判所、権利、義務、公共政策について学びます。"
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "どの市民科のトピックを学習しますか？"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "人文科学"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "憲法、民主主義、選挙、裁判所、権利、義務、公共政策について学びます。"
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "一般的な回答ではなく、実践的なガイダンスを求める人文科学を学ぶ学習者。"
+    }
+  ]
+}

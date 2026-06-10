@@ -72,8 +72,9 @@ export const supportedLanguages = [
 ] as const;
 
 export const defaultLanguage = "English";
+export type SupportedLanguage = (typeof supportedLanguages)[number];
 
-export const nativeLanguageNames: Record<(typeof supportedLanguages)[number], string> = {
+export const nativeLanguageNames: Record<SupportedLanguage, string> = {
   English: "English",
   Hindi: "हिन्दी",
   Spanish: "Español",
@@ -146,13 +147,141 @@ export const nativeLanguageNames: Record<(typeof supportedLanguages)[number], st
   Azerbaijani: "Azərbaycanca",
 };
 
-export function languageDisplayName(language: (typeof supportedLanguages)[number] | string) {
-  return nativeLanguageNames[language as (typeof supportedLanguages)[number]] ?? language;
+export const languageLocaleCodes: Record<SupportedLanguage, string> = {
+  English: "en-US",
+  Hindi: "hi",
+  Spanish: "es",
+  French: "fr",
+  German: "de",
+  Italian: "it",
+  Portuguese: "pt",
+  Dutch: "nl",
+  Russian: "ru",
+  Ukrainian: "uk",
+  Polish: "pl",
+  Romanian: "ro",
+  Czech: "cs",
+  Hungarian: "hu",
+  Greek: "el",
+  Turkish: "tr",
+  Arabic: "ar",
+  Hebrew: "he",
+  Persian: "fa",
+  Urdu: "ur",
+  Bengali: "bn",
+  Tamil: "ta",
+  Telugu: "te",
+  Marathi: "mr",
+  Gujarati: "gu",
+  Kannada: "kn",
+  Malayalam: "ml",
+  Punjabi: "pa",
+  Odia: "or",
+  Assamese: "as",
+  Nepali: "ne",
+  Sinhala: "si",
+  Chinese: "zh",
+  Japanese: "ja",
+  Korean: "ko",
+  Vietnamese: "vi",
+  Thai: "th",
+  Indonesian: "id",
+  Malay: "ms",
+  Filipino: "fil",
+  Swahili: "sw",
+  Afrikaans: "af",
+  Amharic: "am",
+  Yoruba: "yo",
+  Zulu: "zu",
+  Hausa: "ha",
+  Somali: "so",
+  Norwegian: "no",
+  Swedish: "sv",
+  Danish: "da",
+  Finnish: "fi",
+  Icelandic: "is",
+  Irish: "ga",
+  Welsh: "cy",
+  Catalan: "ca",
+  Basque: "eu",
+  Galician: "gl",
+  Serbian: "sr",
+  Croatian: "hr",
+  Bosnian: "bs",
+  Bulgarian: "bg",
+  Slovak: "sk",
+  Slovenian: "sl",
+  Lithuanian: "lt",
+  Latvian: "lv",
+  Estonian: "et",
+  Albanian: "sq",
+  Georgian: "ka",
+  Armenian: "hy",
+  Azerbaijani: "az",
+};
+
+export const languageUrlPrefixes: Record<SupportedLanguage, string> = {
+  ...languageLocaleCodes,
+  English: "",
+  Filipino: "fil",
+} as Record<SupportedLanguage, string>;
+
+export const rtlLanguages = new Set<SupportedLanguage>(["Arabic", "Hebrew", "Persian", "Urdu"]);
+
+export type LanguageConfig = {
+  language: SupportedLanguage;
+  nativeName: string;
+  locale: string;
+  prefix: string;
+  dir: "ltr" | "rtl";
+};
+
+export const languageConfigs = Object.fromEntries(
+  supportedLanguages.map((language) => [
+    language,
+    {
+      language,
+      nativeName: nativeLanguageNames[language],
+      locale: languageLocaleCodes[language],
+      prefix: languageUrlPrefixes[language],
+      dir: rtlLanguages.has(language) ? "rtl" : "ltr",
+    },
+  ]),
+) as Record<SupportedLanguage, LanguageConfig>;
+
+export const languageCodeToLanguage = Object.fromEntries(
+  supportedLanguages.flatMap((language) => {
+    const locale = languageLocaleCodes[language].toLowerCase();
+    const languageCode = locale.split("-")[0];
+    return [
+      [locale, language],
+      [languageCode, language],
+    ];
+  }),
+) as Record<string, SupportedLanguage>;
+
+export const languagePrefixToLanguage = Object.fromEntries(
+  supportedLanguages.flatMap((language) => {
+    const prefix = languageUrlPrefixes[language];
+    return prefix ? [[prefix, language]] : [];
+  }),
+) as Record<string, SupportedLanguage>;
+
+export function languageDisplayName(language: SupportedLanguage | string) {
+  return nativeLanguageNames[language as SupportedLanguage] ?? language;
 }
 
-export function normalizeLanguage(language: unknown) {
+export function normalizeLanguage(language: unknown): SupportedLanguage {
   if (typeof language !== "string") return defaultLanguage;
-  return supportedLanguages.includes(language as (typeof supportedLanguages)[number])
-    ? language
+  return supportedLanguages.includes(language as SupportedLanguage)
+    ? (language as SupportedLanguage)
     : defaultLanguage;
+}
+
+export function normalizeLocaleOrLanguage(value: unknown): SupportedLanguage {
+  if (typeof value !== "string") return defaultLanguage;
+  const normalized = value.trim().toLowerCase();
+  const direct = supportedLanguages.find((language) => language.toLowerCase() === normalized);
+  if (direct) return direct;
+  return languageCodeToLanguage[normalized] ?? languageCodeToLanguage[normalized.split("-")[0]] ?? defaultLanguage;
 }

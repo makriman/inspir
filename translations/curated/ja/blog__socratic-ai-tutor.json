@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 1,
+  "language": "Japanese",
+  "locale": "ja",
+  "namespace": "blog:socratic-ai-tutor",
+  "sourceHash": "7e26072fe4e5588a56a328afafd717b6d39cf2b49f4b52b85924df79ac569af7",
+  "entries": [
+    {
+      "key": "site.5418fe11c499220291",
+      "source": "\"Help me reason through this ethical dilemma without pushing me to a hidden conclusion.\"",
+      "value": "\"隠れた結論へ誘導せずに、この倫理的ジレンマを考え抜くのを手伝ってください。\""
+    },
+    {
+      "key": "site.352966c547ac088b1a",
+      "source": "\"Help me understand opportunity cost by asking one question at a time.\"",
+      "value": "\"1つずつ質問しながら、機会費用を理解するのを手伝ってください。\""
+    },
+    {
+      "key": "site.c773f2a3284acba81b",
+      "source": "\"I think I understand photosynthesis. Ask questions until you find the weak spot.\"",
+      "value": "\"光合成は理解したと思います。弱点が見つかるまで質問してください。\""
+    },
+    {
+      "key": "site.964b9d6e727c2dd845",
+      "source": "\"Make me summarize the final insight in my own words.\"",
+      "value": "\"最後の気づきを自分の言葉で要約させてください。\""
+    },
+    {
+      "key": "site.f7fd15ce0e15c12b54",
+      "source": "\"Test whether my argument is valid. Do not give me the answer too quickly.\"",
+      "value": "\"私の論証が妥当かテストしてください。答えを急いで出さないでください。\""
+    },
+    {
+      "key": "site.eaaffc61ea520eb649",
+      "source": "A direct explanation can be useful. But sometimes the best way to understand an idea is to wrestle with it.",
+      "value": "直接説明は役に立つことがあります。しかし、考えを理解する最良の方法は、ときにそれと格闘することです。"
+    },
+    {
+      "key": "site.87b0c467ed80ade449",
+      "source": "A Socratic tutor can surface those gaps without turning the session into a lecture.",
+      "value": "ソクラテス式チューターは、セッションを講義に変えずにそうした穴を浮かび上がらせられます。"
+    },
+    {
+      "key": "site.7a0d3765af27915bc5",
+      "source": "A strong session usually has four stages.",
+      "value": "強いセッションには通常4つの段階があります。"
+    },
+    {
+      "key": "site.ff43fb5c5c0f826844",
+      "source": "AI is well suited to patient repetition. It can ask the next question, rephrase a hint, change the difficulty, and wait while the learner tries.",
+      "value": "AIは粘り強い反復に向いています。次の質問をし、ヒントを言い換え、難易度を変え、学習者が試す間待つことができます。"
+    },
+    {
+      "key": "site.809d1e1957710315a3",
+      "source": "AI tutor",
+      "value": "AIチューター"
+    },
+    {
+      "key": "site.51320c3214deb3e7cc",
+      "source": "Apply the idea to a new example.",
+      "value": "その考えを新しい例に適用する。"
+    },
+    {
+      "key": "site.9413c5736b4da64196",
+      "source": "Can you test that idea with a simple example?",
+      "value": "その考えをシンプルな例で試せますか？"
+    },
+    {
+      "key": "site.d73813ec75bef0b1f5",
+      "source": "critical thinking",
+      "value": "批判的思考"
+    },
+    {
+      "key": "site.239a1681ee458f631a",
+      "source": "First, the tutor identifies the target. \"I want to understand opportunity cost\" is different from \"I need to solve this economics homework question\" or \"I need to defend a position in debate.\" The target shapes the questions.",
+      "value": "まず、チューターは目標を特定します。「機会費用を理解したい」は、「この経済学の宿題問題を解く必要がある」や「ディベートで立場を守る必要がある」とは違います。目標が質問の形を決めます。"
+    },
+    {
+      "key": "site.5767a106a35eac9d22",
+      "source": "For more practice, pair this with the Socratic Instruction guide, the Socratic prompts and study loop, or the broader guide on studying with AI without cheating yourself.",
+      "value": "さらに練習するには、Socratic Instructionガイド、ソクラテス式プロンプトと学習ループ、またはAIで自分をごまかさずに勉強するための広いガイドと組み合わせてください。"
+    },
+    {
+      "key": "site.87d186c70c40994969",
+      "source": "Fourth, the tutor asks one next-best question. Not five questions. Not a lecture. One move that keeps the learner thinking.",
+      "value": "第4に、チューターは次に最善となる質問を1つ尋ねます。5つの質問ではありません。講義でもありません。学習者に考え続けさせる1つの一手です。"
+    },
+    {
+      "key": "site.12172064ab44019034",
+      "source": "Good Socratic prompts ask:",
+      "value": "よいソクラテス式プロンプトは次を尋ねます。"
+    },
+    {
+      "key": "site.2d24058f88b11ae757",
+      "source": "How to know it worked",
+      "value": "うまくいったかを知る方法"
+    },
+    {
+      "key": "site.847d04773c3bdcbdd4",
+      "source": "Name the misconception or assumption that changed.",
+      "value": "変わった誤解または前提を名づける。"
+    },
+    {
+      "key": "site.e6f5db8a4f933a2b88",
+      "source": "Prompts to try",
+      "value": "試してみるプロンプト"
+    },
+    {
+      "key": "site.70bc8bc72d32fcb39d",
+      "source": "Questions reveal the shape of confusion. A learner might know a formula but not when to use it. They might remember a historical fact but not understand the cause. They might have a strong opinion but weak evidence.",
+      "value": "質問は混乱の形を明らかにします。学習者は公式を知っていても、いつ使うかは分からないかもしれません。歴史的事実を覚えていても、原因を理解していないかもしれません。強い意見があっても、証拠が弱いかもしれません。"
+    },
+    {
+      "key": "site.55e96beff0827173d3",
+      "source": "Second, the tutor asks a diagnostic question. It should be simple enough to answer but revealing enough to expose the learner's current model.",
+      "value": "第2に、チューターは診断質問をします。答えられるほど簡単でありながら、学習者の現在のモデルを明らかにできる質問であるべきです。"
+    },
+    {
+      "key": "site.6b301fd9e1520bf0c0",
+      "source": "Socratic learning",
+      "value": "ソクラテス式学習"
+    },
+    {
+      "key": "site.88f15ed7c65ba44840",
+      "source": "Socratic tutoring is not always the answer. If a learner has no background at all, a short explanation may be kinder than a question. If they are in crisis before a deadline, a planning mode like Exam Prep Planner or a hint mode like Homework Coach may be better. If the goal is remembering terms, Flashcard Builder is more direct.",
+      "value": "ソクラテス式チュータリングが常に答えとは限りません。学習者に背景知識がまったくない場合、質問より短い説明の方が親切かもしれません。締め切り前で危機的な場合は、Exam Prep Plannerのような計画モードやHomework Coachのようなヒントモードの方がよいかもしれません。用語を覚えることが目標なら、Flashcard Builderの方が直接的です。"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "ソクラテス式チュータリングは、質問、仮説、ヒント、振り返りを使って、受け身の答え読みより深い理解を築きます。"
+    },
+    {
+      "key": "site.7c86fb8a96c6cb04ac",
+      "source": "State the idea more clearly than at the start.",
+      "value": "最初より明確に考えを述べる。"
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "それがソクラテス式学習の強みです。すぐに完全な答えを渡すのではなく、チューターは焦点を絞った質問をします。学習者は推測します。チューターはその推測をテストし、ヒントを出し、何が変わったかに気づくのを助けます。"
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "それこそがinspirのSocratic Instructionモードが作られた目的です。1度に1つの質問、答えの前のヒント、本当に考えた後の統合です。"
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "だからこそ、ソクラテス式AIチューターは最初は遅く感じられ、後からより力強く感じられます。完成した説明の安心感と引き換えに、学習者が実際に考えを作っている証拠を得ます。"
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "そのリズムは抽象的なトピックで特に役立ちます。機会費用、歴史の因果関係、文学的解釈、倫理的トレードオフ、証明、確率、論証構造などです。実践的な作業にも役立ちます。学習者はソクラテス式セッションの後にDebate Any Topicを使い、自分の推論がプレッシャーに耐えるかをテストできます。"
+    },
+    {
+      "key": "site.9a219773d3070c6b37",
+      "source": "The important constraint is restraint. A Socratic AI tutor should not dump the answer at the first sign of struggle. It should make effort easier to sustain.",
+      "value": "重要な制約は節度です。ソクラテス式AIチューターは、少し苦労しただけで答えを丸投げすべきではありません。努力を続けやすくするべきです。"
+    },
+    {
+      "key": "site.994f12f48c17151b99",
+      "source": "The last prompt matters. Socratic learning should end with synthesis. After the questions, the learner should be able to say what changed in their thinking.",
+      "value": "最後のプロンプトは重要です。ソクラテス式学習は統合で終わるべきです。質問の後、学習者は自分の考えがどう変わったかを言えるようになるべきです。"
+    },
+    {
+      "key": "site.18abb6aff0f8a17d0a",
+      "source": "The point is not to make every lesson a puzzle. The point is to choose the right amount of struggle.",
+      "value": "要点は、すべての授業をパズルにすることではありません。適切な量の苦労を選ぶことです。"
+    },
+    {
+      "key": "site.4af2ce3751dcec34b4",
+      "source": "The work happens in the learner's mind.",
+      "value": "作業は学習者の頭の中で起こります。"
+    },
+    {
+      "key": "site.018311ea100e46db7a",
+      "source": "Third, the tutor reads the answer. A useful AI tutor should not merely say \"correct\" or \"incorrect.\" It should identify the claim, the assumption, the gap, or the misconception.",
+      "value": "第3に、チューターは答えを読み取ります。有用なAIチューターは、単に「正しい」または「間違い」と言うだけであってはいけません。主張、前提、抜け、または誤解を特定すべきです。"
+    },
+    {
+      "key": "site.299200dd7de534cd1a",
+      "source": "Try it directly in Socratic Instruction. If you want a gentler explanation first, start with Learn Anything, then move into Socratic questions once you know the basic vocabulary.",
+      "value": "Socratic Instructionで直接試してください。先にやさしい説明が必要ならLearn Anythingから始め、基本語彙がわかってからソクラテス式の質問へ進んでください。"
+    },
+    {
+      "key": "site.07e374866d8070f138",
+      "source": "Use these prompts in Socratic Instruction:",
+      "value": "Socratic Instructionでこれらのプロンプトを使う:"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "よいソクラテス式セッションはどのようなものか"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "何が起きていると思いますか？"
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "それを支える証拠は何ですか？"
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "何があれば考えが変わりますか？"
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "ソクラテス式チュータリングが適切でないとき"
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "AIが役立つ場所"
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "最も大きく働いている前提はどれですか？"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "ソクラテス式AIチューターが考えを定着させられる理由"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "質問が役立つ理由"
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "学習者が次の3つをできるようになったら、ソクラテス式AIチューターが機能したとわかります:"
+    }
+  ]
+}

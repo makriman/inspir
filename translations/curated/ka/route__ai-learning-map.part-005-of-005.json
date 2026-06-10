@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "language": "Georgian",
+  "locale": "ka",
+  "namespace": "route:ai-learning-map",
+  "sourceHash": "ed5c404157cb369b59b407351615d701fdf7f9250fb0afcb05cfa6e93a6a094f",
+  "part": {
+    "index": 5,
+    "total": 5
+  },
+  "entries": [
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "სრული საბოლოო პასუხების ნაცვლად გამოიყენე მინიშნებები, საკონტროლო წერტილები და პატარა მაგალითები."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "საჭიროებისას გამოიყენე ჰიპოთეზის, მასალების, მეთოდის, დაკვირვებისა და ახსნის სექციები."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "გამოიყენე იდეების მენიუები, შერჩევის კრიტერიუმები და შემდეგი ნაბიჯის ესკიზები."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "გამოიყენე პერსონაჟში წარმართული დიალოგი და მოკლე მწვრთნელის შენიშვნები."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "გამოიყენე მთავარი დასკვნები, გეგმა, განმარტებები და გამეორების კითხვები."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "გამოიყენე ლიდერბორდის წესები, ქულების დათვლა, დამცავი ზომები და რეფლექსია."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "გამოიყენე დონის ცხრილები, XP წესები, ქვესტის ბარათები და anti-grind დამცავი ზომები."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "გამოიყენე ნარატივი, რომ კონცეფციები დასამახსოვრებელი გახდეს."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "საჭიროებისას გამოიყენე ჩაშენებული bullets, ცხრილები ან Mermaid ტექსტი."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "გამოიყენე დანომრილი ადგილები, სურათები და გახსენების საკონტროლო წერტილები."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "გამოიყენე მიზნები, შეჯამებები, მაგალითები, ხაფანგები, კითხვები და შემდეგი გამეორება."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "გამოიყენე დაკვირვების, ინტერპრეტაციის, მტკიცებულებისა და შემდეგი კითხვის სექციები."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "გამოიყენე წყვილების ბანკები, არეული სიები, პასუხების გასაღები და გამეორების შენიშვნები."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "გამოიყენე ადგილის ბარათები, შედარების ცხრილები და რუკის პრომპტები."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "გამოიყენე პრაქტიკული აუდიო რჩევები და სასწავლო სესიის დაყენების შენიშვნები."
+    },
+    {
+      "key": "site.92a746b2e3db690b66",
+      "source": "Use prompt",
+      "value": "გამოიყენე პრომპტი"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "გამოიყენე ქვესტები, დონეები, ბეჯები და boss კითხვები."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "გამოიყენეთ წვიმის ხმა კითხვისთვის"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "გამოიყენე წვიმის ხმები გამეორებისთვის"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "გამოიყენე რეფლექსიის პრომპტები, მოსწავლის ძლიერი მხარეები და ერთი შემდეგი ექსპერიმენტი."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "გამოიყენე ანგარიშის სექციები: მიღწევები, მტკიცებულება, შემაფერხებლები, გაკვეთილები, შემდეგი კვირა."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "გამოიყენე კვლევითი კითხვები, წყაროების მატრიცები და სინთეზის შენიშვნები."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "გამოიყენე რესურსის ბარათები, აუდიტორიის შენიშვნები და გამოყენების რჩევები."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "გამოიყენე გამეორების რიგები, ვადები და თავდაჯერებულობის რეიტინგები."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "გამოიყენე ქულების ბარათები სიცხადის, სტრუქტურის, მტკიცებულებისა და წარდგენის შენიშვნებისთვის."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "გამოიყენე მოკლე ფოკუსის გეგმები, საკონტროლო სიები და სესიისშემდგომი რეფლექსიის პრომპტები."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "გამოიყენე მოკლე სექციები, მაგალითები, ანალოგიები და GFM-სთვის მოსახერხებელი სიები ან ცხრილები, როცა ისინი ეხმარება."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "გამოიყენე მოკლე შეჯამებები, ციტატებით მსუბუქი მითითებები და კითხვების ნაკრებები."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "გამოიყენე მოკლე მხარდამჭერი შენიშვნები და პრაქტიკული შემდეგი მოქმედებები."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "გამოიყენეთ მარტივი ფონური ხმის წინასწარი პარამეტრები, რათა შეამციროთ ყურადღების გაფანტვა კითხვის, წერის, გამეორების ან ამოცანების ამოხსნის დროს."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "გამოიყენე მარტივი აღნიშვნა, მაგალითები და სავარჯიშო პრომპტები."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "გამოიყენე მარტივი ცხრილები, მიზეზ-შედეგის ჯაჭვები და caveat შენიშვნები."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "გამოიყენე მარტივი ენით გადაწერა და ხარვეზების საკონტროლო სიები."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "გამოიყენეთ ესკიზი, როგორც სწავლის ხერხი: დაგეგმეთ დიაგრამები, დააწერეთ ნიშნები უხეშ რუკებს, ახსენით პროცესები ან არეული იდეა უფრო მკაფიო ვიზუალად აქციეთ."
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "გამოიყენე ხმის რეკომენდაციები და ფოკუსის დაყენების შენიშვნები."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "გამოიყენე დაინტერესებული მხარეების ცხრილები და დაბალანსებული pro/con ანალიზი."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "საჭიროებისას გამოიყენე STAR ან situation-action-result ჩარჩოები."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "გამოიყენე ამბის რიტმები და სასწავლო შენიშვნები."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "გამოიყენე სერიის სტატუსი, პატარა მოქმედება, აღდგენის წესი და კვირეული რეფლექსია."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "გამოიყენე ცხრილები სიტყვით, მნიშვნელობით, მაგალითით, მეხსიერების კაუჭით და სავარჯიშო პრომპტით."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "გამოიყენე ცხრილები, მარტივი ენით დაწერილი დასკვნები და სიფრთხილის შენიშვნები."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "ჯერ გამოიყენე სამიზნე ენა, შემდეგ მოკლე უკუკავშირი მოსწავლისთვის სასურველ მხარდამჭერ ენაზე."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "გამოიყენე დავალებების დაფები, ვადები და შემდეგი მოქმედებების სიები."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "გამოიყენე დავალების ბარათები, გასული დრო, შენიშვნები და შემდგომი ბლოკის შემოთავაზებები."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "გამოიყენე ტესტის სექციები, დროის განაწილება, პასუხების გასაღებები, რუბრიკები და გამეორების გეგმები."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "გამოიყენე ფეინმანის ტექნიკა ხარვეზების გამოსავლენად და გაგების გასამარტივებლად."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "გამოიყენე ეს კომპაქტური ფორმატი: მოკლე წაკითხვა: ერთი წინადადება. რუკის განახლება: საჭიროების მიხედვით მოკლე Claim, Assumption, Gap ან Correction bullets. შემდეგი კითხვა: ზუსტად ერთი კითხვა. პირველ პასუხში გამოიყენე Target, Contract და First question."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "გამოიყენე აზრითი ექსპერიმენტები, არგუმენტის რუკები და დაბალანსებული შეჯამებები."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "გამოიყენე დროის ხაზები, მიზეზის ფენები და შედეგების რუკები."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "გამოიყენე ხის სტრუქტურები, კვანძის იარლიყები, ბმულები და შემდეგი ნაბიჯის პრომპტები."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "გამოიყენე უსათაურო ნაწილები, მინიშნების დონეები, პასუხების გასაღები და გამეორების პრომპტები."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "გამოიყენე ვიზუალური ლექსიკა და მართული დაკვირვების პრომპტები."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "გამოიყენე კვირეული გეგმები, fallback გეგმები და პატარა შემდეგი მოქმედებები."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "გამოიყენე სამუშაო/შესვენების ციკლები, შესვენების მენიუები და დაბრუნების პრომპტები."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "გამოიყენე სამუშაო ფურცლის სექციები, პასუხების გასაღებები და სირთულის ნიშნები."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "დაადასტურე გრძნობა, ამოიცანი შემაფერხებელი ფაქტორი და აირჩიე ერთი პატარა შემდეგი ნაბიჯი."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "ვიზუალური ანალიზი"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "ვიზუალური სწავლა"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "ვიზუალური სწავლა"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "ზეპირი გამოცდის პრაქტიკა"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "ლექსიკის შემქმნელი"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "კვირეული ანგარიში"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "ყოველკვირეული ანგარიშები"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "წონადი ქულა"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "როგორი მიღწევების სისტემა შევქმნათ?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "რაზე ვიფიქროთ იდეები?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "რას ვკითხულობთ?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "დღეს რა გაინტერესებს?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "რის სათქმელად ემზადები?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "რას იკვლევ?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "რას წერ?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "რომელი ნამუშევარი, ხელოვანი ან სტილი?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "რა დავალებები გაქვთ შესასრულებელი?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "რომელ დიდ კითხვას ვიკვლევთ?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "რომელი კარიერა ან ინტერესი გამოვიკვლიოთ?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "სამოქალაქო განათლების რომელი თემა ვისწავლოთ?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "კოდირების რომელ თემას ან შეცდომას ვეჭიდებით?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "რომელ ვალდებულებას სჭირდება ანგარიშვალდებულება?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "რომელი ცნება დავხაზოთ რუკაზე?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "რომელ კურსებს ან საგნებს მართავთ?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "რომელ დიაგრამაზე ვივარჯიშოთ წარწერების დასმით?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "რომელი დილემა განვიხილოთ?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "რას აკეთებ შემდეგ ამ სამყაროში?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "რა უნდა დაიმახსოვრო?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "რისი სწავლა გჭირდება?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "რის გაკეთება გსურთ დღეს?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "რას აკეთებს სასამართლო?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "რას აკეთებს პროდუქტის მენეჯერი?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "რას აჩვენებს ეს გამოკითხვა?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "ეკონომიკის რომელი იდეა მოვახდინოთ სიმულაციით?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "რომელი გამოცდისთვის ემზადები?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "რა ფინალური ქულა მჭირდება?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "რა მოხდა ამ კვირაში?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "რა მოხდება, თუ გადასახადები შეიცვლება?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "რა მოხდება, თუ ტემპერატურას შევცვლით?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "რომელ საშინაო დავალებაზე გაიჭედე?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "რომელი იდეა გეჩვენება დამაბნევლად ან საეჭვოდ?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "რომელი გასაუბრებისთვის ემზადები?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "რა არის ცოდნა?"
+    },
+    {
+      "key": "site.a3f16bd77eb4ae9996",
+      "source": "What is the AI learning map?",
+      "value": "რა არის AI სასწავლო რუკა?"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "როგორი ფონური ფოკუსი გსურთ?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "რა ტიპის ქეისი გავითამაშოთ?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "დღეს როგორი ფოკუსი გსურთ?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "რომელი სასწავლო მიზანი უნდა იქცეს დონეების სისტემად?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "რომელი სასწავლო ჩვევა გინდა?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "სწავლის რომელ მომენტზე დავფიქრდეთ?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "რომელი სწავლის სტრატეგია შემეფერება?"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "რა ხდის არგუმენტს ვალიდურს?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "რა ხდის რამეს სამართლიანს?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "რომელი მასალა უნდა იქცეს სასწავლო გზამკვლევად?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "რომელ მათემატიკურ ამოცანაზე ვიმუშაოთ?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "რომელ მუსიკალურ იდეაზე ვიმუშაოთ?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "რა შედეგი უნდა მოიტანოს ამ ღრმა მუშაობის სესიამ?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "რომელი წყვილები უნდა იქცეს შეხამების თამაშად?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "რომელ პროგრესს გადავხედოთ?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "რა პროექტს ვქმნით?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "რომელი კითხვის ან დისკუსიის გამოქვეყნება გსურთ?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "რომელი რესურსის გაზიარება გსურთ?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "რომელი სცენარი გავითამაშოთ?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "რომელ სამეცნიერო იდეას ან ექსპერიმენტს ვიკვლევთ?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "რა უნდა იქცეს გამოწვევად?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "რა უნდა იქცეს სასწავლო თამაშად?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "რა უნდა იქცეს ისტორიად?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "რა უნდა გადაიქცეს ფლეშბარათებად?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "რა უნდა გაზომოს ლიდერბორდმა?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "რას უნდა მოიცავდეს სავარჯიშო ტესტი?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "რა უნდა გააკეთოს სასწავლო ჯგუფმა?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "რას უნდა ფარავდეს სამუშაო ფურცელი?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "რაზე უნდა იყოს ეს ფოკუსის სესია?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "რა უნდა გავიმეოროთ?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "რა დავხატოთ ან რა დიაგრამა შევქმნათ?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "რა სერიას ან რუტინას აყალიბებთ?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "რომელი დავალების დრო გავზომოთ?"
+    },
+    {
+      "key": "site.fc8d830216f2567d93",
+      "source": "What this workflow should leave behind",
+      "value": "რა უნდა დატოვოს ამ სამუშაო ნაკადმა"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "რომელ თემაზე გამოგცადოთ?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "რომელი თემა უნდა იქცეს გონებრივ რუკად?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "რომელი viva-სთვის ან ზეპირი გამოცდისთვის ემზადებით?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "რას ამიხსნი უკან?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "რომელ სიტყვებზე ან თემაზე ვივარჯიშოთ?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "მუშაობისა და შესვენების როგორი რიტმი გსურთ?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "დღეს რისი სწავლა გინდა?"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "ახლა რა ართულებს სწავლას?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "დღეს რა არის შენი დებატის თემა?"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "სად ვიმოგზაუროთ კვლევით?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "რომელი ისტორიული მოვლენის კვალს მივყვეთ?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "რომელ ისტორიულ ფიგურასთან გსურს შეხვედრა?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "რომელი ენა და სიტუაცია?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "თეთრი ხმაური"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "ვისთან გინდა დებატი და რაზე?"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "ვინ სწავლობს ერთად და რა არის მიზანი?"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "რატომ არის ქალაქები მდინარეებთან ახლოს?"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "რატომ ავარიდე თავი სწავლას?"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "რატომ დასუსტდა რომის იმპერია?"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "რატომ არის ჩემი ალგებრის პასუხი არასწორი?"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "რატომ არის ეს გრამატიკული წესი უცნაური?"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "სიტყვები ამინდის შესახებ"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "გამოთვალეთ შეწონილი ნიშნები, GPA სცენარები, საჭირო ფინალური ქულები და სემესტრის „რა მოხდება, თუ“ გეგმები."
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "გაიარე დილემები მონაწილე მხარეების, შედეგების, მოვალეობების, უფლებებისა და კომპრომისების აწონ-დაწონვით."
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "გაიარე მათემატიკა ნაბიჯ-ნაბიჯ"
+    },
+    {
+      "key": "site.fa00fba57bff817728",
+      "source": "Workflow directory",
+      "value": "სამუშაო ნაკადების კატალოგი"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "სამუშაო ფურცლის შემქმნელი"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "მსოფლიოს დედაქალაქები"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "დაწერეთ შემოწმების სცენარი"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "დაწერე კარგი ფორუმის კითხვა"
+    },
+    {
+      "key": "site.066231d418b0ddf600",
+      "source": "Write and communicate clearly",
+      "value": "წერე და კომუნიკაცია მკაფიოდ აწარმოე"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "დაწერე ჩემი ყოველკვირეული სწავლის ანგარიში"
+    },
+    {
+      "key": "site.5f2b3a44b731b839b8",
+      "source": "Write the lesson learned before expanding the project.",
+      "value": "პროექტის გაფართოებამდე დაწერე ნასწავლი გაკვეთილი."
+    },
+    {
+      "key": "site.9a58fdeb87fb7db943",
+      "source": "Write the strongest claim and strongest counterclaim.",
+      "value": "დაწერე ყველაზე ძლიერი მტკიცება და ყველაზე ძლიერი საწინააღმდეგო მტკიცება."
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "წერის მწვრთნელი"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP და დონეები"
+    },
+    {
+      "key": "site.4016d37780f77e418a",
+      "source": "Yes. The linked public learning modes open in guest mode, so learners can try explanations, Socratic questions, homework coaching, quizzes, flashcards, and more without starting from a marketing page.",
+      "value": "დიახ. დაკავშირებული საჯარო სასწავლო რეჟიმები სტუმრის რეჟიმში იხსნება, ასე რომ მოსწავლეებს შეუძლიათ ახსნები, სოკრატული კითხვები, საშინაო დავალების coaching, ქვიზები, ფლეშბარათები და მეტი რამ სცადონ მარკეტინგული გვერდიდან დაწყების გარეშე."
+    }
+  ]
+}

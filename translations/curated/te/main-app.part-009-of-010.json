@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Telugu",
+  "locale": "te",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "పనిని నిర్దిష్ట పనులుగా విభజించండి, ప్రతిదానికీ సమయాన్ని కేటాయించండి మరియు ప్రతి ఫోకస్డ్ సెషన్ తర్వాత మీ అధ్యయన ప్రయత్నం ఎక్కడ ఖర్చయిందో సమీక్షించండి."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఏకాగ్రత & ఉత్పాదకత అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం task timer కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "వ్యక్తిగత పనుల సమయాన్ని లెక్కించండి మరియు ప్రయత్నాన్ని చూడండి"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "సమస్యల సెట్‌కు సమయాన్ని కేటాయించండి"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "వ్యాస రూపకల్పన పనిని ట్రాక్ చేయండి"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "పెద్ద పనిని సమయానుకూల బ్లాక్‌లుగా విభజించండి"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "బ్రేక్ రిమైండర్"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "ఆరోగ్యకరమైన విరామాలతో ఏకాగ్రతను కాపాడుకోండి"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "పని మరియు విరామ లయలను సెట్ చేయండి, నిజమైన రీసెట్ ప్లాన్ చేయండి మరియు అంతులేని అధ్యయన అలసటలోకి వెళ్లకుండా ఉండండి."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "మీకు ఎలాంటి పని/విరామ లయ కావాలి?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "ఏకాగ్రత & ఉత్పాదకత"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "పని మరియు విరామ లయలను సెట్ చేయండి, నిజమైన రీసెట్ ప్లాన్ చేయండి మరియు అంతులేని అధ్యయన అలసటలోకి వెళ్లకుండా ఉండండి."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఏకాగ్రత & ఉత్పాదకత అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం break reminder కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "ఆరోగ్యకరమైన విరామాలతో ఏకాగ్రతను కాపాడుకోండి"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "50/10 విరామాలను ఉపయోగించండి"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "ఆరోగ్యకరమైన విరామాన్ని ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "అతిగా చదవడం ఆపడానికి నాకు సహాయపడండి"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "డీప్ వర్క్ సెషన్‌లు"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "ఏకాగ్రత దెబ్బతినని ఫోకస్ బ్లాక్‌ను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "స్పష్టమైన ఫలితం, పరిమితులు, ఫోకస్ నియమాలు, రివ్యూ చెక్‌పాయింట్ మరియు బ్యాకప్ ప్లాన్‌తో డీప్ వర్క్ సెషన్‌ను సిద్ధం చేయండి."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "ఈ డీప్ వర్క్ సెషన్ ద్వారా ఎలాంటి ఫలితం రావాలి?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "ఫోకస్ & ఉత్పాదకత"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "స్పష్టమైన ఫలితం, పరిమితులు, ఫోకస్ నియమాలు, రివ్యూ చెక్‌పాయింట్ మరియు బ్యాకప్ ప్లాన్‌తో డీప్ వర్క్ సెషన్‌ను సిద్ధం చేయండి."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఫోకస్ & ఉత్పాదకత అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం deep work sessions కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "ఏకాగ్రత దెబ్బతినని ఫోకస్ బ్లాక్‌ను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "90 నిమిషాల డీప్ వర్క్ బ్లాక్‌ను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "కోడింగ్‌పై దృష్టి పెట్టడానికి నాకు సహాయపడండి"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "థీసిస్ రాయడం కోసం నియమాలను సెట్ చేయండి"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "గ్రూప్ స్టడీ టైమర్"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "ఇతరులతో కలిసి ఫోకస్ రౌండ్‌లను సమన్వయం చేసుకోండి"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "స్నేహితులు లేదా సహవిద్యార్థుల కోసం సమకాలీకరించబడిన లక్ష్యాలు, చెక్-ఇన్‌లు మరియు డీబ్రీఫ్ ప్రశ్నలతో కూడిన ఉమ్మడి అధ్యయన విధానాన్ని అమలు చేయండి."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "ఎవరెవరు కలిసి చదువుకుంటున్నారు మరియు లక్ష్యం ఏమిటి?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "సామాజిక"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "స్నేహితులు లేదా సహవిద్యార్థుల కోసం సమకాలీకరించబడిన లక్ష్యాలు, చెక్-ఇన్‌లు మరియు డీబ్రీఫ్ ప్రశ్నలతో కూడిన ఉమ్మడి అధ్యయన విధానాన్ని అమలు చేయండి."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే సామాజిక అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం group study timer కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "ఇతరులతో కలిసి ఫోకస్ రౌండ్‌లను సమన్వయం చేసుకోండి"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "గ్రూప్ పోమోడోరోను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "స్టడీ రూమ్‌ను రూపొందించండి"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "45 నిమిషాల గ్రూప్ సెషన్‌ను నిర్వహించండి"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "యాంబియంట్ సౌండ్స్"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "ప్రశాంతమైన అధ్యయనం కోసం రూపొందించబడిన సౌండ్‌స్కేప్‌లు"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "చదవడం, రాయడం, రివిజన్ చేయడం లేదా సమస్యలను పరిష్కరించేటప్పుడు పరధ్యానాన్ని తగ్గించడానికి సాధారణ యాంబియంట్ సౌండ్ ప్రీసెట్‌లను ఉపయోగించండి."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "మీకు ఎలాంటి యాంబియంట్ ఫోకస్ కావాలి?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "ఫోకస్ & ప్రొడక్టివిటీ"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "చదవడం, రాయడం, రివిజన్ చేయడం లేదా సమస్యలను పరిష్కరించేటప్పుడు పరధ్యానాన్ని తగ్గించడానికి సాధారణ యాంబియంట్ సౌండ్ ప్రీసెట్‌లను ఉపయోగించండి."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఫోకస్ & ప్రొడక్టివిటీ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం ambient sounds కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "ప్రశాంతమైన అధ్యయనం కోసం రూపొందించబడిన సౌండ్‌స్కేప్‌లు"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "చదవడానికి వర్షం శబ్దాన్ని ఉపయోగించండి"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "గణితం కోసం ప్రశాంతమైన ఆడియోను ఎంచుకోండి"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "నిశ్శబ్దమైన డీప్ వర్క్ వాతావరణాన్ని సెటప్ చేయండి"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "స్టడీ స్ట్రీక్స్"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "అపరాధ భావం లేకుండా స్థిరత్వాన్ని పెంచుకోండి"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "స్టడీ స్ట్రీక్‌లను ట్రాక్ చేయండి, తప్పిపోయిన రోజులను సరిదిద్దండి మరియు నిజ జీవితంలో కూడా కొనసాగే కనీస అధ్యయన అలవాటును రూపొందించుకోండి."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "మీరు ఎలాంటి స్ట్రీక్ లేదా దినచర్యను నిర్మిస్తున్నారు?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "అనలిటిక్స్"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "స్టడీ స్ట్రీక్‌లను ట్రాక్ చేయండి, తప్పిపోయిన రోజులను సరిదిద్దండి మరియు నిజ జీవితంలో కూడా కొనసాగే కనీస అధ్యయన అలవాటును రూపొందించుకోండి."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే అనలిటిక్స్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం study streaks కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "అపరాధభావం లేకుండా స్థిరత్వాన్ని పెంచుకోండి"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "స్టడీ స్ట్రీక్‌ను ప్రారంభించండి"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "ఒక రోజు తప్పిపోయిన తర్వాత తిరిగి పుంజుకోండి"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "చిన్నపాటి రోజువారీ రివ్యూను రూపొందించండి"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "ప్రోగ్రెస్ డాష్‌బోర్డ్"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "అభ్యాస కార్యకలాపాలు మరియు తదుపరి చర్యలను సమీక్షించండి"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "అధ్యయన కార్యకలాపాలు, ప్రశ్నోత్తర పరీక్ష ఫలితాలు, నోట్స్ మరియు టైమర్‌లను ట్రెండ్‌లు మరియు తదుపరి చర్యలతో కూడిన డాష్‌బోర్డ్-శైలి సమీక్షగా మార్చండి."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "మనం ఏ పురోగతిని సమీక్షించాలి?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "అనలిటిక్స్"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "అధ్యయన కార్యకలాపాలు, ప్రశ్నోత్తర పరీక్ష ఫలితాలు, నోట్స్ మరియు టైమర్‌లను ట్రెండ్‌లు మరియు తదుపరి చర్యలతో కూడిన డాష్‌బోర్డ్-శైలి సమీక్షగా మార్చండి."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే అనలిటిక్స్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం progress dashboard కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "అభ్యాస కార్యకలాపాలు మరియు తదుపరి చర్యలను సమీక్షించండి"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "నా వారాన్ని సమీక్షించు"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "బలహీనమైన అంశాలను కనుగొనండి"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "కృషిని తదుపరి దశలుగా మార్చండి"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "వారపు నివేదికలు"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "విజయాలు, లోపాలు మరియు వచ్చే వారం ప్రణాళికను సంగ్రహించండి"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "ప్రయత్నం, ఫలితాలు, అడ్డంకులు, విజయాలు మరియు దృష్టి కేంద్రీకరించిన ప్రణాళికతో వారపు లేదా నెలవారీ అభ్యాస నివేదికను రూపొందించండి."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "ఈ వారం ఏమి జరిగింది?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "అనలిటిక్స్"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "ప్రయత్నం, ఫలితాలు, అడ్డంకులు, విజయాలు మరియు దృష్టి కేంద్రీకరించిన ప్రణాళికతో వారపు లేదా నెలవారీ అభ్యాస నివేదికను రూపొందించండి."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే అనలిటిక్స్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం weekly reports కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "విజయాలు, లోపాలు మరియు వచ్చే వారం ప్రణాళికను సంగ్రహించండి"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "నా వారపు అధ్యయన నివేదికను వ్రాయండి"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "నా పురోగతిని సంగ్రహించండి"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "ఈ వారం ఆధారంగా వచ్చే వారం ప్రణాళిక చేయండి"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "అసైన్‌మెంట్ ట్రాకర్"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "గడువులను మరియు తదుపరి చర్యలను ట్రాక్ చేయండి"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "గడువు తేదీ, ప్రయత్నం, స్థితి, ప్రమాదం మరియు తదుపరి చిన్న చర్య ద్వారా అసైన్‌మెంట్‌లను నిర్వహించండి."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "మీ వద్ద ఉన్న అసైన్‌మెంట్‌లు ఏమిటి?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "ఆర్గనైజేషన్"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "గడువు తేదీ, ప్రయత్నం, స్థితి, ప్రమాదం మరియు తదుపరి చిన్న చర్య ద్వారా అసైన్‌మెంట్‌లను నిర్వహించండి."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఆర్గనైజేషన్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం assignment tracker కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "గడువులను మరియు తదుపరి చర్యలను ట్రాక్ చేయండి"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "నా గడువులను క్రమబద్ధీకరించు"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "అసైన్‌మెంట్‌లకు ప్రాధాన్యత ఇవ్వండి"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "ఈ ప్రాజెక్ట్ సమర్పణను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "కోర్స్ మేనేజర్"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "కోర్సులు, అంశాలు మరియు పనిభారాన్ని క్రమబద్ధీకరించండి"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "కోర్సులు, యూనిట్లు, అసైన్‌మెంట్‌లు, వనరులు మరియు వారపు పనిభారాన్ని ఒకే క్రమబద్ధమైన అధ్యయన వ్యవస్థలో మ్యాప్ చేయండి."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "మీరు ఏ కోర్సులు లేదా సబ్జెక్టులను నిర్వహిస్తున్నారు?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "ఆర్గనైజేషన్"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "కోర్సులు, యూనిట్లు, అసైన్‌మెంట్‌లు, వనరులు మరియు వారపు పనిభారాన్ని ఒకే క్రమబద్ధమైన అధ్యయన వ్యవస్థలో మ్యాప్ చేయండి."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే ఆర్గనైజేషన్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం course manager కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "కోర్సులు, అంశాలు మరియు పనిభారాన్ని క్రమబద్ధీకరించండి"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "నా కోర్సులను సెటప్ చేయండి"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "నా సెమిస్టర్‌ను క్రమబద్ధీకరించు"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "ప్రతి సబ్జెక్టుకు అంశాలను మ్యాప్ చేయండి"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "నోట్ ఆర్గనైజర్"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "నోట్‌లను ట్యాగ్ చేయండి, క్రమబద్ధీకరించండి మరియు అనుసంధానించండి"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "చెల్లాచెదురుగా ఉన్న నోట్‌లను ఫోల్డర్‌లు, ట్యాగ్‌లు, సారాంశాలు, లింక్‌లు మరియు రివ్యూ యాక్షన్‌లుగా మార్చండి, తద్వారా వాటిని గుర్తుంచుకోవడం సులభం అవుతుంది."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "క్రమబద్ధీకరించడానికి నోట్‌లను పేస్ట్ చేయండి లేదా వివరించండి"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "వ్యవస్థీకరణ"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "చెల్లాచెదురుగా ఉన్న నోట్స్‌ను ఫోల్డర్‌లు, ట్యాగ్‌లు, సారాంశాలు, లింక్‌లు మరియు రివ్యూ యాక్షన్‌లుగా మార్చండి, తద్వారా వాటిని గుర్తుంచుకోవడం సులభం అవుతుంది."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే వ్యవస్థీకరణ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం note organizer కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "నోట్స్‌ను ట్యాగ్ చేయండి, క్రమబద్ధీకరించండి మరియు అనుసంధానించండి"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "నా క్లాస్ నోట్స్‌ను వ్యవస్థీకరించు"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "ఈ నోట్స్ కోసం ట్యాగ్‌లను సృష్టించు"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "నా నోట్‌బుక్‌లో అంశాలను కనుగొను"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "వనరుల భాగస్వామ్యం"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "అధ్యయన వనరులను ప్యాకేజీ చేసి పంచుకోండి"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "సహవిద్యార్థుల కోసం లేదా ఒక సమూహం కోసం అధ్యయన వనరులను సిద్ధం చేయండి: సారాంశాలు, లింక్‌లు, నోట్స్, వివరణలు మరియు వినియోగ మార్గదర్శకాలు."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "మీరు ఏ వనరును పంచుకోవాలనుకుంటున్నారు?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "సామాజికం"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "సహవిద్యార్థుల కోసం లేదా ఒక సమూహం కోసం అధ్యయన వనరులను సిద్ధం చేయండి: సారాంశాలు, లింక్‌లు, నోట్స్, వివరణలు మరియు వినియోగ మార్గదర్శకాలు."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే సామాజిక అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం resource sharing కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "అధ్యయన వనరులను ప్యాకేజీ చేసి పంచుకోండి"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "ఒక సమూహం కోసం నా నోట్స్‌ను ప్యాకేజీ చేయి"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "వనరుల సారాంశాన్ని సృష్టించు"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "భాగస్వామ్య మార్గదర్శకాలను రూపొందించు"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "స్టడీ గ్రూపులు"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "గ్రూప్ స్టడీని క్రమబద్ధంగా మార్చుకోండి"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "పాత్రలు, ఎజెండా, ప్రశ్నల రౌండ్లు, భాగస్వామ్య వనరులు మరియు రీక్యాప్ నోట్స్‌తో ఉత్పాదకమైన స్టడీ గ్రూపును ప్లాన్ చేయండి."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "స్టడీ గ్రూప్ ఏమి చేయాలి?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "సామాజికం"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "పాత్రలు, ఎజెండా, ప్రశ్నల రౌండ్లు, భాగస్వామ్య వనరులు మరియు రీక్యాప్ నోట్స్‌తో ఉత్పాదకమైన స్టడీ గ్రూపును ప్లాన్ చేయండి."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే సామాజిక అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం study groups కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "గ్రూప్ స్టడీని క్రమబద్ధంగా మార్చుకోండి"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "గ్రూప్ సెషన్‌ను ప్లాన్ చేయండి"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "స్టడీ గ్రూప్ కోసం పాత్రలను సృష్టించండి"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "ఉత్పాదకత లేని గ్రూపును సరిచేయండి"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "స్టూడెంట్ ఫోరమ్"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "కమ్యూనిటీ సహాయం కోసం ప్రశ్నలను రూపొందించండి"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "విద్యార్థుల చర్చలను మరింత ఉపయోగకరంగా మార్చే స్పష్టమైన ఫోరమ్ ప్రశ్నలు, సమాధానాలు, సారాంశాలు మరియు ఫాలో-అప్ అభ్యర్థనలను సిద్ధం చేయండి."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "మీరు ఏ ప్రశ్న లేదా చర్చను పోస్ట్ చేయాలనుకుంటున్నారు?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "సామాజికం"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "విద్యార్థుల చర్చలను మరింత ఉపయోగకరంగా మార్చే స్పష్టమైన ఫోరమ్ ప్రశ్నలు, సమాధానాలు, సారాంశాలు మరియు ఫాలో-అప్ అభ్యర్థనలను సిద్ధం చేయండి."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే సామాజిక అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం student forum కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "కమ్యూనిటీ సహాయం కోసం ప్రశ్నలను రూపొందించండి"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "మంచి ఫోరమ్ ప్రశ్నను రాయండి"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "చర్చను సంగ్రహించండి"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "సహచరుల నుండి ఫీడ్‌బ్యాక్ అడగండి"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "వర్క్‌షీట్ బిల్డర్"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "మిశ్రమ అభ్యాస వర్క్‌షీట్‌లను రూపొందించండి"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "ఖాళీలను పూరించడం, MCQలు, నిజం/అబద్ధం, చిన్న సమాధానాలు మరియు జతపరచడం వంటి ప్రశ్న రకాలతో వర్క్‌షీట్‌లను సృష్టించండి."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "వర్క్‌షీట్ దేని గురించి ఉండాలి?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "యాక్టివ్ లెర్నింగ్"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "ఖాళీలను పూరించడం, MCQలు, నిజం/అబద్ధం, చిన్న సమాధానాలు మరియు జతపరచడం వంటి ప్రశ్న రకాలతో వర్క్‌షీట్‌లను సృష్టించండి."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే యాక్టివ్ లెర్నింగ్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం worksheet builder కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "మిశ్రమ అభ్యాస వర్క్‌షీట్‌లను రూపొందించండి"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "భిన్నాలపై వర్క్‌షీట్‌ను తయారు చేయండి"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "మిశ్రమ కెమిస్ట్రీ అభ్యాసాన్ని సృష్టించండి"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "పదజాలం వ్యాయామాలను రూపొందించండి"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "డయాగ్రామ్ లేబులింగ్ ప్రాక్టీస్"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "డయాగ్రామ్‌లు మరియు సిస్టమ్‌ల కోసం లేబుల్‌లను ప్రాక్టీస్ చేయండి"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "డయాగ్రామ్‌లు, శరీర వ్యవస్థలు, మ్యాప్‌లు, పని ప్రవాహంలు లేదా ల్యాబ్ సెటప్‌లను సూచనలు మరియు సమాధానాల తనిఖీలతో లేబులింగ్ ప్రాక్టీస్‌గా మార్చండి."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "మనం ఏ డయాగ్రామ్ లేబులింగ్‌ను ప్రాక్టీస్ చేయాలి?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "యాక్టివ్ లెర్నింగ్"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "డయాగ్రామ్‌లు, శరీర వ్యవస్థలు, మ్యాప్‌లు, పని ప్రవాహంలు లేదా ల్యాబ్ సెటప్‌లను సూచనలు మరియు సమాధానాల తనిఖీలతో లేబులింగ్ ప్రాక్టీస్‌గా మార్చండి."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే యాక్టివ్ లెర్నింగ్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం diagram labeling practice కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "డయాగ్రామ్‌లు మరియు సిస్టమ్‌ల కోసం లేబుల్‌లను ప్రాక్టీస్ చేయండి"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "ప్లాంట్ సెల్‌ను లేబుల్ చేయండి"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "గుండె డయాగ్రామ్‌ను ప్రాక్టీస్ చేయండి"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "మ్యాప్ లేబులింగ్ ప్రశ్నలను రూపొందించండి"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "మ్యాచింగ్ గేమ్ జనరేటర్"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "పదాలు, నిర్వచనాలు, కారణాలు మరియు ఉదాహరణలను జత చేయండి"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "నోట్స్‌ను పదజాలం, భావనలు, వ్యక్తులు/సంఘటనలు, సూత్రాలు, ఉదాహరణలు లేదా కారణ-ప్రభావ జతల కోసం మ్యాచింగ్ గేమ్‌లుగా మార్చండి."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "ఏ జతలను మ్యాచింగ్ గేమ్‌గా మార్చాలి?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "యాక్టివ్ లెర్నింగ్"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "నోట్స్‌ను పదజాలం, భావనలు, వ్యక్తులు/సంఘటనలు, సూత్రాలు, ఉదాహరణలు లేదా కారణ-ప్రభావ జతల కోసం మ్యాచింగ్ గేమ్‌లుగా మార్చండి."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల పెట్టెకు బదులుగా ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే యాక్టివ్ లెర్నింగ్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం matching game generator కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "పదాలు, నిర్వచనాలు, కారణాలు మరియు ఉదాహరణలను జత చేయండి"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "మీ లక్ష్యానికి అనుగుణంగా సెషన్‌ను మార్చుకోండి"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "పదాలు మరియు నిర్వచనాలను జత చేయండి"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "కారణ-ప్రభావ జతలను సృష్టించండి"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "ఫార్ములా మ్యాచింగ్ ప్రాక్టీస్‌ను రూపొందించండి"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP & లెవలింగ్"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "ప్రగతిని లెవల్స్ మరియు క్వెస్ట్‌లుగా మార్చండి"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "నిజమైన అభ్యాస పురోగతి ఆధారంగా పాయింట్లు, స్థాయిలు, క్వెస్ట్‌లు మరియు రివార్డుల వ్యవస్థను రూపొందించండి."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "ఏ అభ్యాస లక్ష్యం లెవలింగ్ సిస్టమ్‌గా మారాలి?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "గేమిఫికేషన్"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "నిజమైన అభ్యాస పురోగతి ఆధారంగా పాయింట్లు, స్థాయిలు, క్వెస్ట్‌లు మరియు రివార్డుల వ్యవస్థను రూపొందించండి."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "సాధారణ సమాధానాల కంటే ఆచరణాత్మక మార్గదర్శకత్వం కోరుకునే గేమిఫికేషన్ అంశాలను అన్వేషించే అభ్యాసకులు."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "ఈ విధానం xp & leveling కోసం ప్రత్యేకంగా సర్దుబాటు చేయబడింది; దీనికి స్వంత సూచనలు, ఉదాహరణలు, అభ్యాస ప్రవాహం ఉన్నాయి."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "పురోగతిని స్థాయిలు మరియు క్వెస్ట్‌లుగా మార్చండి"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "నమూనా సూచనలతో ప్రారంభించండి"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "సెషన్‌ను మీ లక్ష్యానికి అనుగుణంగా మార్చుకోండి"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "పరీక్ష తయారీ కోసం XPని రూపొందించండి"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "కోడింగ్ ప్రాక్టీస్ కోసం స్థాయిలను రూపొందించండి"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "పఠనాన్ని క్వెస్ట్‌లుగా మార్చండి"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "బ్యాడ్జ్‌లు & విజయాలు"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "ముఖ్యమైన మైలురాళ్లను రివార్డ్ చేయండి"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "స్థిరత్వం, నైపుణ్యం, ధైర్యం, పునర్విమర్శ, సహకారం మరియు పూర్తయిన ప్రాజెక్ట్‌ల కోసం బ్యాడ్జ్‌లను సృష్టించండి."
+    }
+  ]
+}

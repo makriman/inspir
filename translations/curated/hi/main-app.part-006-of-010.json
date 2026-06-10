@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hindi",
+  "locale": "hi",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "क्या सोशल मीडिया हानिकारक है?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "क्या होमवर्क होना चाहिए?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "क्या अंतरिक्ष अन्वेषण इसके लायक है?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "मेरा उत्तर समझाएं"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "समझें कि कोई उत्तर क्यों सही है"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "एक प्रश्न, आपका उत्तर, और यदि आपके पास है तो अपेक्षित उत्तर पेस्ट करें। आपका साथी तर्क समझाता है और अगली बार वही गलती न करने में मदद करता है।"
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "प्रश्न और आपका उत्तर यहाँ चिपकाएँ"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "प्रैक्टिस"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "एक प्रश्न, आपका उत्तर, और यदि आपके पास हो तो अपेक्षित उत्तर पेस्ट करें। आपका साथी तर्क समझाता है और अगली बार वही गलती दोहराने से बचाता है।"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "अभ्यास विषयों का पता लगाने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स की बजाय व्यावहारिक मार्गदर्शन चाहेंगे।"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "यह मोड\"मेरा उत्तर समझाओ\"के लिए खास तौर पर तैयार किया गया है, जिसमें इसके अपने संकेत, उदाहरण, और सीखने की प्रक्रिया शामिल हैं।"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "समझें कि कोई उत्तर क्यों सही होता है"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण संकेतों से शुरू करें"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार अनुकूलित करें"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "मेरा बीजगणित का उत्तर गलत क्यों है?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "इस व्याकरण सुधार को समझाएं"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "मैंने B चुना था। C सही क्यों है?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "होमवर्क कोच"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "उत्तर के बिना संकेत"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "संकेत, उदाहरण, और जांच के साथ होमवर्क में फंसे बिना खुद से सोचकर हल करें।"
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "आप किस गृहकार्य समस्या पर अटक गए हैं?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "अभ्यास"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "नैतिक संकेत, उदाहरण, जाँच और चरण-दर-चरण मार्गदर्शन के साथ होमवर्क में फंसे बिना बाहर निकलें।"
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "वे छात्र जिन्हें समस्या शुरू करने, समाधान की जाँच करने या गलती समझने में सहायता चाहिए।"
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "कोच आपके सोचने में मदद करता है, लेकिन असाइनमेंट को आपके बजाय पूरा नहीं करता, ताकि अंतिम काम आपका ही रहे।"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "अगला कदम ढूंढें"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "गलती को समझें"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "एक समान समस्या का अभ्यास करें"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "मुझे इस शब्द समस्या को शुरू करने में मदद करें"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "मेरा निबंध विषयवस्तु जांचें"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "इस भौतिकी समस्या के लिए एक सुझाव दें"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "मैथ स्टेप कोच"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "गणित को एक-एक कदम करके समझें"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "हर कदम को समझकर गणित हल करें। आपका कोच आपका काम जांचता है, गलतियां बताता है, और आत्मविश्वास बढ़ाता है।"
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "कौन सा गणित का प्रश्न हम साथ मिलकर हल करें?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "एसटीईएम"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "एक AI कोच के साथ बीजगणित, कलन, शब्द समस्याएँ, और गणित की अवधारणाओं को एक-एक कदम करके समझें।"
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "वे विद्यार्थी जो केवल उत्तर न करके हर गणितीय चरण क्यों काम करता है यह समझना चाहते हैं।"
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "यह प्रक्रिया प्रत्येक चरण की जाँच करती है, त्रुटियों को बताती है, और प्रक्रियाओं को फिर से अवधारणा से जोड़ती है।"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "पहली चाल चुनें"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "प्रत्येक चरण जांचें"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "बताएँ कि यह तरीका क्यों काम करता है"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "मेरे साथ 2x + 5 = 17 हल करें"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "द्विघात समीकरणों में सहायता"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "डेरिवेटिव्स को चरण-दर-चरण समझाएं"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "साइंस लैब पार्टनर"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "प्रयोगों और अवधारणाओं को सुरक्षित रूप से एक्सप्लोर करें"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "सुरक्षित प्रदर्शन योजना बनाएं, चर को समझें, परिणामों का अनुमान लगाएं, और वैज्ञानिक की तरह साक्ष्यों से तर्क करें।"
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "हम कौन सा विज्ञान विचार या प्रयोग एक्सप्लोर कर रहे हैं?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "एसटीईएम"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "सुरक्षित प्रदर्शन योजना बनाएं, परिवर्तनीयों को समझें, परिणामों का अनुमान लगाएं, और वैज्ञानिक की तरह प्रमाणों से तर्क करें।"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "स्टेम विषयों का पता लगाने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स की बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "यह मोड विज्ञान प्रयोगशाला साझेदार के लिए विशेष रूप से तैयार किया गया है, जिसमें इसके अपने संकेत, उदाहरण और सीखने का प्रवाह शामिल है।"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "प्रयोगों और अवधारणाओं को सुरक्षित रूप से एक्सप्लोर करें"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट से शुरू करें"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार अनुकूलित करें"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "पौधों की वृद्धि का प्रयोग डिजाइन करें"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "अम्ल और क्षार को समझाएं"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "अगर हम तापमान बदलें तो क्या होगा?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "लेखन कोच"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "लेखन की योजना बनाएं, मसौदा तैयार करें, संशोधित करें, और मजबूत करें"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "अपने निबंध, कहानियाँ, ईमेल और तर्कों में सुधार करें, प्राप्त करें सीधे सुझाव जो आपकी शैली को बनाए रखते हैं।"
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "आप क्या लिख रहे हैं?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "संचार"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "योजना, संशोधन, संरचना, और प्रतिक्रिया के साथ लिखने में सुधार करें जो आपकी आवाज़ को बरकरार रखे।"
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "लेख, कहानियाँ, ईमेल, छात्रवृत्ति नोट्स, या तर्क लिखने वाले शिक्षार्थी।"
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "कोच लक्षित संशोधन प्राथमिकताएं और पहले-بعد के उदाहरण देते हैं, बिना आपकी आवाज़ बदले।"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "अपने मुद्दे को स्पष्ट करें"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "संरचना में सुधार करें"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "कारण के साथ पुनः संशोधित करें"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "मेरे निबंध की प्रस्तावना सुधारें"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "मुझे एक कहानी का खाका तैयार करने में मदद करें"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "इस अनुच्छेद को और स्पष्ट बनाएं"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "पढ़ाई सहयोगी"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "पाठ पढ़ें, सारांश बनाएं, और प्रश्न पूछें"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "किसी अनुच्छेद या पुस्तक की सोच लाएं और सारांश, शब्दावली, अनुमान, और चर्चा के माध्यम से समझ बढ़ाएं।"
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "हम क्या पढ़ रहे हैं?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "संचार"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "कोई अनुच्छेद या किताब का विचार लेकर आएं और सारांश, शब्दावली, अनुमान, और चर्चा के जरिए समझ विकसित करें।"
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "संचार विषयों का पता लगाने वाले विद्यार्थी जिन्हें सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहिए।"
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "यह मोड रीडिंग कॉम्पेनियन के लिए अनुकूलित है, जिसमें अपनी स्वयं की प्रॉम्प्ट्स, उदाहरण और सीखने की प्रक्रिया शामिल है।"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "पाठों को पढ़ें, संक्षेपित करें, और प्रश्न पूछें"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट से शुरुआत करें"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "अपने लक्ष्य के अनुसार सत्र को अनुकूलित करें"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "मुझे इस पैरेग्राफ को समझने में मदद करें"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "अध्याय 2 का सारांश बनाएं"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "इस कविता के बारे में मुझसे सवाल पूछें"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "शब्दावली निर्माता"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "संदर्भ के साथ शब्द सीखें"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "अर्थ, उदाहरण, उच्चारण संकेत, याददाश्त के उपाय और त्वरित अभ्यास के साथ शब्दावली बनाएं।"
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "हम कौन से शब्द या विषय का अभ्यास करें?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "संचार"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "अर्थ, उदाहरण, उच्चारण संकेत, याद रखने के तरीके, और त्वरित अभ्यास के साथ शब्दावली बढ़ाएँ।"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "जो शिक्षार्थी संवाद विषयों का अन्वेषण कर रहे हैं और सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "यह मोड विशेष रूप से शब्दावली सुधारक के लिए अनुकूलित है, जिसमें इसके अपने संकेत, उदाहरण और सीखने की प्रक्रिया शामिल है।"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "संदर्भ में शब्द सीखें"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण संकेतों से शुरू करें"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार अनुकूल बनाएं"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "SAT शब्दावली"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "व्यावसायिक अंग्रेज़ी शब्द"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "मौसम से संबंधित शब्द"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "भाषा रोलप्ले"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "असली वार्तालापों का अभ्यास करें"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "कैफे, इंटरव्यू, यात्रा, और रोज़मर्रा की जिंदगी जैसे वास्तविक परिस्थितियों में भाषा का अभ्यास करें, हर संवाद के बाद सुधार के साथ।"
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "कौन सी भाषा और स्थिति?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "संचार"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "कैफे, साक्षात्कार, यात्रा और रोज़मर्रा की ज़िंदगी जैसे यथार्थवादी परिस्थितियों में भाषा का अभ्यास करें, हर संवाद के बाद सुधार के साथ।"
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "संवाद विषयों को समझने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स की बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "यह मोड भाषा रोलप्ले के लिए अनुकूलित है, जिसमें इसके अपने संकेत, उदाहरण और सीखने का प्रवाह शामिल है।"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "असल बातचीत का अभ्यास करें"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रांप्ट से शुरुआत करें"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार अनुकूलित करें"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "स्पैनिश कैफे रोलप्ले"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "फ्रेंच हवाई अड्डा बातचीत"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "हिंदी बाजार में मोलभाव"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "बोलने का अभ्यास"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "प्रेरणाओं के साथ ज़ोर से अभ्यास करें"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "प्रेरणाएँ, समय सीमा और संरचना पर प्रतिक्रिया के साथ भाषण, प्रस्तुतियाँ, इंटरव्यू या मौखिक परीक्षा की तैयारी करें।"
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "आप क्या कहने की तैयारी कर रहे हैं?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "संचार"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "प्रेरणाओं, समय सीमा, और संरचना पर प्रतिक्रिया के साथ भाषण, प्रस्तुतियाँ, साक्षात्कार, या मौखिक परीक्षाओं की तैयारी करें।"
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "वे शिक्षार्थी जो संचार विषयों का पता लगाते हैं और एक सामान्य उत्तर बॉक्स की बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "यह मोड अपने स्वयं के संकेतों, उदाहरणों और सीखने की प्रक्रिया के साथ बोलने के अभ्यास के लिए अनुकूलित है।"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "प्रेरणाओं के साथ जोर से बोलकर अभ्यास करें"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रश्नों से शुरू करें"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "अपना लक्ष्य ध्यान में रखते हुए सत्र को अनुकूलित करें"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "अपना स्कूल प्रस्तुति अभ्यास करें"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "मॉक IELTS बोलने का अभ्यास"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "मुझे इंटरव्यू के सवालों का जवाब देने में मदद करें"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "परीक्षा तैयारी योजना"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "पाठ्यक्रम को अध्ययन योजना में बदलें"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "अपने परीक्षा की तिथि, पाठ्यक्रम, मजबूत और कमजोर क्षेत्रों के आधार पर यथार्थ परीक्षा योजना बनाएं।"
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "आप किस परीक्षा की तैयारी कर रहे हैं?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "योजना बनाना"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "अपने सिलेबस, परीक्षा तिथि, समय और कमजोर विषयों को एक प्रभावी अध्ययनों की योजना में बदलें।"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "वे छात्र जिन्हें संशोधन, अभ्यास, आत्मविश्वास और वास्तविक जीवन के बीच संतुलित योजना की आवश्यकता है।"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "यह योजना कमजोर क्षेत्रों को प्राथमिकता देती है, पुनरावलोकन चक्र जोड़ती है, और छूटी हुई तिथियों के लिए वैकल्पिक योजना बनाती है।"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "टॉपिक्स को प्राथमिकता दें"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "समीक्षा योजना"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "जोखिम वाले क्षेत्रों को ट्रैक करें"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "जीवविज्ञान के लिए 2 सप्ताह की योजना बनाएं"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "JEE दोहराव के लिए समय-सारिणी बनाएं"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "मुझे फाइनल की तैयारी में मदद करें"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "फ्लैशकार्ड निर्माता"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "प्रत्यावर्तन के लिए स्मार्ट कार्ड बनाएं"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "नोट्स या विषयों को उत्तर, जाल, और समीक्षा संकेतों के साथ स्पष्ट फ्लैशकार्ड में बदलें।"
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "फ्लैशकार्ड क्या बनाए जाने चाहिए?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "अभ्यास"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "नोट्स या विषयों को सुझाव, जवाब, उदाहरण और सामान्य जाल के साथ केंद्रित फ्लैशकार्ड में बदलें।"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "परीक्षा की तैयारी कर रहे छात्र, भाषा सीखने वाले, और जो कोई भी पुनः प्राप्ति अभ्यास करता है।"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "कार्ड एक बार में एक प्रश्न पूछते हैं और इसमें जाल शामिल होते हैं ताकि पुनरावलोकन केवल पहचान नहीं बल्कि समझ विकसित करे।"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "रिकॉल कार्ड बनाएं"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "जब तैयार हों, उत्तर दिखाएँ"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "गलत उत्तर पहले पुनः देखें"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "माइटोसिस के लिए फ्लैशकार्ड बनाएं"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "इस नोट को प्रश्नोत्तर में बदलें"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "भूगोल फ्लैशकार्ड बनाएँ"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "मेमोरी पैलेस"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "जीवंत जगहों के साथ विचार याद रखें"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "तथ्यों, सूचियों, भाषणों, या क्रमों को यादगार मानसिक दृश्यों में बदलें।"
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "आपको क्या याद रखना है?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "अभ्यास"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "तथ्यों, भाषणों, सूचियों या क्रमों को यादगार दृश्यों में बदलें जो पढ़ाई और परीक्षा के दौरान याददाश्त को आसान बनाते हैं।"
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "वे शिक्षार्थी जो क्रमबद्ध विचारों, शब्दावली, भाषणों, सूत्रों या तथ्यों को याद कर रहे हैं जिन्हें मजबूत मानसिक कड़ी की आवश्यकता होती है।"
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "यह मोड आपको नोट्स दोहराने के बजाय जीवंत स्थान, रास्ते और पुनः प्राप्ति संकेत डिजाइन करता है।"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "एक मार्ग चुनें"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "जीवंत संकेत रखें"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "पुनःस्मरण का अभ्यास करें"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "ग्रहों को याद रखें"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "एक भाषण रूपरेखा याद करें"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "जीवविज्ञान वर्गीकरण सीखें"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "स्पेस्ड रिव्यू"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "भूलने से पहले पुनःसमीक्षा करें"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "लंबे समय तक याद रखने के लिए जल्दी समीक्षा सत्र योजना बनाएं और चलाएं।"
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "हम क्या पुनरावलोकन करें?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "अभ्यास"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "तेज़ समीक्षा सत्र योजना बनाएं, कमजोर अवधारणाओं को दोबारा देखें, और AI-निर्देशित अंतराल पुनरावृत्ति के साथ दीर्घकालिक स्मृति को मजबूत करें।"
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "ऐसे छात्र जो पढ़ने के बाद भूल जाते हैं और अवधारणाओं, शर्तों या परीक्षा सामग्री के लिए एक व्यावहारिक पुनरावृत्ति नियम चाहते हैं।"
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "कोच गलतियों और हिचकिचाहट को एक निष्क्रिय सारांश के बजाय पुनरावलोकन कार्यक्रम में बदल देता है।"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "समीक्षा लक्ष्य चुनें"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "स्मरण पुनर्निर्धारण करें"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "मिस को सुधारें"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "कल की केमिस्ट्री की समीक्षा करें"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "7-दिन की समीक्षा योजना बनाएं"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "शब्दावली पर फिर से प्रश्नोत्तरी करें"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "संकल्पना मानचित्र निर्माता"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "पाठ में विचारों को दृष्टिगत रूप से जोड़ें"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "विचारों के संबंधों को मानचित्रित करें, कारण और परिणाम से लेकर श्रेणियां, उदाहरण, और विरोधाभास तक।"
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "हम कौन सा कॉन्सेप्ट मैप करें?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "सोच"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "विचारों के संबंधों का नक्शा बनाएं, जैसे कारण और प्रभाव, श्रेणियाँ, उदाहरण, और विरोधाभास।"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "विचार विषयों का पता लगाते हुए सीखने वाले, जो सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "यह मोड कॉन्सेप्ट मैप बिल्डर के लिए अनुकूलित है, जिसमें इसके अपने प्रॉम्प्ट, उदाहरण, और सीखने की प्रक्रिया शामिल है।"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "टेक्स्ट में विचारों को दृश्य रूप में जोड़ें"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट के साथ शुरू करें"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "अपना लक्ष्य ध्यान में रखकर सत्र को अनुकूलित करें"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "जलवायु परिवर्तन मानचित्रित करें"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "बीजगणित के विचार जोड़ें"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "लोकतंत्र का एक नक्शा बनाएं"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "भ्रांति चिकित्सक"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "गलत मानसिक मॉडलों को खोजें और सुधारें"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "आप जो सोचते हैं वह बताएं, और आपका साथी कोमल परीक्षणों के साथ छिपी गलतफहमियों का पता लगाएगा।"
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "कौन सा विचार समझने में मुश्किल या संदिग्ध लगता है?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "सोचना"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "जो आप सोच रहे हैं कि क्या हो रहा है, उसे बताएं, और आपका साथी कोमल परीक्षणों के साथ छिपी गलतफहमियों का पता लगाएगा।"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "सोच से जुड़े विषयों का अध्ययन करने वाले शिक्षार्थी, जिन्हें सामान्य उत्तर बॉक्स की बजाय व्यावहारिक मार्गदर्शन चाहिए।"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "यह मोड गलतफहमी डॉक्टर के लिए विशेष रूप से तैयार किया गया है, जिसमें इसके अपने प्रॉम्प्ट, उदाहरण, और सीखने का प्रवाह शामिल है।"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "गलत मानसिक मॉडलों को खोजें और सुधारें"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण संकेतों से शुरू करें"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार अनुकूलित करें"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "मुझे लगता है कि भारी वस्तुएं जल्दी गिरती हैं"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "मुझे ऋणात्मक संख्याएँ समझ में नहीं आतीं"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "यह व्याकरण नियम अजीब क्यों है?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "फेनमैन ट्यूटर"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "इसे आसानी से समझाओ जब तक कि वह धीरे-धीरे याद न हो जाए"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "किसी अवधारणा को सरलता से समझाने की कोशिश करें। आपका ट्यूटर कमी पकड़ता है, सवाल पूछता है, और आपको व्याख्या को फिर से बनाने में मदद करता है।"
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "आप मुझे क्या समझाएंगे?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "सोचना"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "किसी अवधारणा को सरलता से समझाने की कोशिश करें। आपका ट्यूटर आपकी कमजोरियां पहचानता है, सवाल पूछता है, और आपकी व्याख्या को पुनर्निर्मित करने में मदद करता है।"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "सोचने से जुड़े विषय सीखने वाले जो सामान्य उत्तर बॉक्स की बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "यह मोड Feynman ट्यूटर के लिए विशेष रूप से तैयार किया गया है, जिसमें अपने प्रॉम्प्ट, उदाहरण और सीखने का प्रवाह शामिल है।"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "इसे तब तक सरलता से समझाओ जब तक यह पूरी तरह समझ में न आ जाए"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्स से शुरुआत करें"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार अनुकूलित करें"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "मैं गुरुत्वाकर्षण समझाऊंगा"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "मुद्रास्फीति की मेरी समझ का परीक्षण करें"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "मुझे पुनरावृत्ति को सरल बनाना सिखाएं"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "केस स्टडी सिम्युलेटर"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "वास्तविक निर्णयों के माध्यम से सीखें"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "एक यथार्थवादी केस दर्ज करें, निर्णय लें, परिणाम देखें, और प्रत्येक विकल्प के पीछे का सिद्धांत जानें।"
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "हमें किस प्रकार का केस सिमुलेट करना चाहिए?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "डुबकी"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "एक वास्तविक केस दर्ज करें, निर्णय लें, परिणाम देखें, और हर विकल्प के पीछे के सिद्धांत को सीखें।"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "जिन शिक्षार्थियों को डूबकी विषयों का पता लगाना है और जो सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "यह मोड केस स्टडी सिम्युलेटर के लिए विशेष रूप से अनुकूलित है, जिसमें इसके अपने प्रॉम्प्ट, उदाहरण और सीखने का क्रम शामिल है।"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "वास्तविक निर्णयों के माध्यम से सीखें"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण संकेतों से प्रारंभ करें"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "अपना लक्ष्य अनुसार सत्र अनुकूलित करें"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "व्यवसाय रणनीति केस"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "चिकित्सा नैतिकता केस"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "पर्यावरण नीति केस"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "भूमिका निभाने का परिदृश्य"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "कठिन वास्तविक जीवन की बातचीत का अभ्यास करें"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "संधि, विवाद, ग्राहक सहायता, नेतृत्व, या किसी भी महत्वपूर्ण बातचीत का अभ्यास करें।"
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "हम कौन-सा परिदृश्य निभाएं?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "डुबकी"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "वार्तालाप अभ्यास करें जैसे मोल भाव, विवाद समाधान, ग्राहक सहायता, नेतृत्व, या कोई भी उच्च-दांव वाली बातचीत।"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "वे शिक्षार्थी जो विशेष विषयों में गहरे उतरना चाहते हैं और सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "यह मोड रोलप्ले परिदृश्यों के लिए खास तौर पर तैयार किया गया है, जिसमें इसके अपने संकेत, उदाहरण और सीखने की प्रक्रिया शामिल हैं।"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "कठिन वास्तविक जीवन की बातचीत का अभ्यास करें"
+    }
+  ]
+}

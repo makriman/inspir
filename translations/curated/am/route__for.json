@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Amharic",
+  "locale": "am",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} | inspir"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "{value1} የተመልካቾች መንገዶች"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "{value1} ተደጋጋሚ ጥያቄዎች"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "{value1} የህዝብ ሁነታ መግቢያዎች"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "{value1} ተዛማጅ መመሪያዎች"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "{value1} የአጠቃቀም ሁኔታዎች"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "ራሳቸውን ለሚያስተምሩ ሰዎች ነፃ የኤአይ መማር አጋር።"
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "መገልበጥ ሳይሆን መረዳት ለሚፈልጉ ተማሪዎች ነፃ የኤአይ አስጠኚ።"
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "ጥሩ የቤተሰብ የኤአይ የሥራ ፍሰት ተማሪውን ይበልጥ ገለልተኛ ማድረግ አለበት፣ ይበልጥ ጥገኛ ማድረግ አይደለም። ወላጆች ልጅ ከመጀመሩ በፊት እያንዳንዱ ሁነታ ምን ለማድረግ እንደታሰበ ለማየት የህዝብ ገጾችን መጠቀም ይችላሉ።"
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "ለወላጆች ተስማሚ የinspir የህዝብ የኤአይ መማር ሁነታዎች መመሪያ፣ ለቤት ሥራ ፍንጮች፣ ማብራሪያ፣ የጥናት ልምዶች፣ ፍላሽካርዶች እና ይበልጥ ደህና የመማር ውይይቶች።"
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "ተማሪ፣ ወላጅ፣ መምህር እና ራሱን የሚያስተምር ተማሪ ብዙውን ጊዜ ተመሳሳይ የኤአይ አስጠኚን በተለያዩ ቋንቋዎች ይፈልጋሉ። የተለዩ ገጾች ትክክለኛዎቹን የአጠቃቀም ሁኔታዎች እና የደህንነት ወሰኖች ይበልጥ ግልጽ ያደርጋሉ።"
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "ለጀማሪዎች የኤአይ የኮድ አስጠኚ"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "ለልጆች የኤአይ ፍላሽካርዶች"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "ለተማሪዎች የኤአይ ፍላሽካርዶች"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "ለመምህራን የኤአይ የቤት ሥራ አሰልጣኝ"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "ለልጄ የኤአይ የቤት ሥራ እርዳታ"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "ለተማሪዎች የኤአይ የቤት ሥራ እርዳታ"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "የኤአይ መማር የተመልካቾች ገጾች"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "የኤአይ መማር የተመልካቾች የፍለጋ አላማዎች"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "የኤአይ መማር በተመልካች"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "ለአዋቂዎች የኤአይ የመማር አጋር"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "የኤአይ መማር ለተማሪዎች፣ ለወላጆች እና ለመምህራን"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "የኤአይ መማር ለተማሪዎች፣ ለወላጆች እና ለመምህራን | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "ወላጆች ከመተማመናቸው በፊት ሊሞክሩት የሚችሉት የኤአይ መማር እርዳታ።"
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "የተተኮረ ባህሪ ለሚፈልጉ መምህራን የኤአይ መማር ሁነታዎች።"
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "የኤአይ መማር ከሚጠቀመው ሰው ጋር መጣጣም አለበት።"
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "የኤአይ መማር መሣሪያዎች ለመምህራን"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "የኤአይ የሂሳብ እርዳታ ለተማሪዎች"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "የኤአይ የፕሮጀክት አሰልጣኝ"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "ለመምህራን የኤአይ ፈተና አመንጪ"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "የኤአይ ሶክራቲክ አስጠኚ ለክፍል"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "ለቤተሰቦች የኤአይ የጥናት እርዳታ"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "የኤአይ የጥናት እቅድ ገንቢ"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "ለተማሪዎች የኤአይ የጥናት እቅድ አዘጋጅ"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "የኤአይ መሣሪያዎች ለመምህራን"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "ለወላጆች የኤአይ አስጠኚ"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "የኤአይ አስጠኚ ለወላጆች እና ለቤተሰቦች"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "ለራስ-ጥናት የኤአይ አስጠኚ"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "ራሳቸውን ለሚያስተምሩ ተማሪዎች የኤአይ አስጠኚ"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "ለተማሪዎች የኤአይ አስጠኚ"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "ለመምህራን የኤአይ አስጠኚ"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "ለተማሪዎች የኤአይ የጽሑፍ ግብረመልስ"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "የተመልካቾች ገጾች የህዝብ እና ሊመዘገቡ የሚችሉ ናቸው?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "ፍንጭ ይጠይቁ፣ ተማሪው ቀጣዩን ደረጃ እንዲያብራራ ያድርጉ፣ ከዚያ ሐሳቡ እንደቆየ ለማረጋገጥ ፈተና ወይም ፍላሽካርድ ይጠቀሙ።"
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "የተጠናቀቀ መልስ ከመጠየቅዎ በፊት ፍንጮች፣ ማረጋገጫዎች እና ግብረመልስ ይጠይቁ።"
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "ቅድመ-እውቀቶች፣ ቀላል ሞዴል፣ ምሳሌዎች እና የተለመደ የተሳሳተ ግንዛቤ ይጠይቁ።"
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "የመጨረሻውን ረቂቅ የእርስዎ እንደሆነ በማቆየት ስለ አወቃቀር፣ ማስረጃ እና ግልጽነት ግብረመልስ ይጠይቁ።"
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "ቅድመ-እውቀት ሐሳቦችን፣ በቀላል ቋንቋ የተገለጸ ሞዴል፣ አንድ ምሳሌ፣ አንድ የልምምድ ተግባር እና ግንዛቤን ለመፈተን አንድ መንገድ ይጠይቁ።"
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "ከእያንዳንዱ ፍንጭ በኋላ ምን እንደተቀየረ ተማሪውን እንዲያብራራ ይጠይቁ።"
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "ተመልካቾች"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "የተመልካች ተደጋጋሚ ጥያቄዎች"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "የተመልካች የመማር መንገድ"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "የተመልካች ገጾች የፍለጋ ሞተሮችን እና የኤአይ መልስ ሞተሮችን ተማሪዎችን፣ ወላጆችን፣ መምህራንን እና ገለልተኛ ተማሪዎችን ከአንድ አጠቃላይ ገጽ ውስጥ ሳያጣምሙ እንዲለዩ ያደርጋሉ።"
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "የተመልካች መንገዶች"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "የተመልካች መስመር"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "ወደ ተመልካች መንገዶች ተመለስ"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "ወሰኖች"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "ወሰን"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "ይበልጥ ረጋ ያለ የጥናት ልማድ ይገንቡ"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "inspir አዋቂዎችን እና ራሳቸውን የሚያስተምሩ ተማሪዎችን መርዳት ይችላል?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "ወላጆች inspirን ከመመከራቸው በፊት መሞከር ይችላሉ?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "ተማሪዎች ሳይገቡ inspirን መጠቀም ይችላሉ?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "መምህራን የትምህርት ቤት ማስጀመሪያ ሳይኖር inspirን መሞከር ይችላሉ?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "ሳይቆጣጠሩ ግንዛቤን ያረጋግጡ"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "ማን እየተማረ እንደሆነ ይምረጡ፣ ከዚያ ትክክለኛውን ባህሪ ይምረጡ።"
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "መልሶችን ሳያፈስ ልምምድ ይፍጠሩ"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "የተለያዩ ሰዎች የተለያዩ የኤአይ መማር መንገዶችን ይፈልጋሉ።"
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "ፈጣን መልስን ከብቃት ጋር አታሳስቱ።"
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "inspir የሕፃን የግል ቻቶችን ያትማል?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "እያንዳንዱ የታዳሚ መንገድ ከይፋዊና በcrawler ሊደረስባቸው ከሚችሉ የመማር ገጾች ጋር ይገናኛል።"
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "EducationalAudience"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "በመማር ማስረጃ ይጨርሱ።"
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "ሁነታን ከተማሪዎች ጋር ከመጠቀም በፊት ይገምግሙ"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "እያንዳንዱን የተቀበለ ደረጃ በራስዎ ቃላት መልሰው ያብራሩ።"
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "አስተማሪዎች Socratic አስተማሪነትን፣ ፈተናዎችን፣ ፍላሽካርዶችን፣ የጽሑፍ ግብረመልስን፣ የምንጭ ትችትን እና ለክፍል የተዘጋጁ የጥናት የሥራ ፍሰቶችን ለመገምገም ሊጠቀሙባቸው የሚችሉ ይፋዊ የኤአይ መማር ሁነታዎችን ያስሱ።"
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "ለተማሪዎች፣ ወላጆች፣ አስተማሪዎች እና ራሳቸውን ለሚያስተምሩ ተማሪዎች ትክክለኛውን የinspir ኤአይ መማር የሥራ ፍሰት ያግኙ።"
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "በመልሶ ማብራራት፣ በፈተና፣ በፍላሽካርድ፣ በፕሮጀክት ደረጃ ወይም በጥናት ልማድ ይጨርሱ።"
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "ለተማሪዎች"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "ለወላጆች"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "ራሳቸውን ለሚያስተምሩ ተማሪዎች"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "ለተማሪዎች"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "ለአስተማሪዎች"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "ለልጆች ነፃ የኤአይ አስተማሪ"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "ለራስ ጥናት ነፃ የኤአይ አስተማሪ"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "ለተማሪዎች ነፃ የኤአይ አስተማሪ"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "ለተማሪዎች ነፃ የኤአይ አስተማሪ"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "ሳይቀዱ የቤት ሥራ እገዛ ያግኙ"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "መመሪያ"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "መመሪያዎች እና የሥራ ፍሰቶች"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "ልጅ ከተጣበቀበት እንዲወጣ ይርዱ"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "መነሻ"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "ተማሪዎች ከኤአይ ጋር መታለልን እንዴት ሊያስወግዱ ይችላሉ?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "በርዕሶች መካከል መንሸራተትን እንዴት አስወግዳለሁ?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "ይህ ለተማሪዎች አጠቃላይ chatbot ከመስጠት በምን ይለያል?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "እንዴት እንደሚሰራ"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "ድምፅዎን ሳያጡ ጽሑፍን ያሻሽሉ"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "inspir ለማብራሪያዎች፣ ጥያቄዎች፣ ፍንጮች፣ ፈተናዎች፣ ፍላሽካርዶች፣ ግብረመልስ እና የጥናት እቅድ ተተኮሩ የኤአይ መማር ሁነታዎች ለሚፈልጉ ተማሪዎች፣ ወላጆች፣ አስተማሪዎች እና ራሳቸውን ለሚያስተምሩ ተማሪዎች ነው።"
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "inspir እንደ Socratic አስተማሪነት፣ የቤት ሥራ ፍንጮች፣ ፈተናዎች፣ ፍላሽካርዶች፣ የጽሑፍ ግብረመልስ፣ የምንጭ ትችት እና የጥናት እቅድ ያሉ ተተኮሩ ሁነታዎች ውስጥ ተደራጅቷል።"
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "የinspir ይፋዊ ሁነታዎች አስተማሪዎች የትምህርት ቤት ማሰማራትን ወይም ብጁ የክፍል መንገድን ከማሰብ በፊት በእውነተኛ የመማር ፍሰቶች ምርቱን እንዲገምግሙ ያስችላቸዋል።"
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "ሥራ"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "የግል የተቀመጡ ውይይቶችን ከይፋዊ ግኝትና ጥቅስ ገጾች ውጭ ያቆዩ።"
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "ክፍለ ጊዜውን በተገብሮ መልስ መሰብሰብ ሳይሆን በመማር ማስረጃ ላይ ያተኩሩ።"
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "ከኤአይ ጋር ማንኛውንም ነገር ተማር"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "በመገንባት ተማር"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "የመማር መንገድ"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "የመማር የሥራ ፍሰት"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "ግራ መጋባትን ለመናገር ቀላል ያድርጉ"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "እያንዳንዱ የመማር ክፍለ ጊዜ በፈተና፣ በartifact ወይም በግምገማ ደረጃ እንዲጨርስ ያድርጉ።"
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "ልማዱን ሊቆይ የሚችል ያድርጉ"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "ሁነታ"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "ከይፋዊ ሙከራ ወደ ትምህርት ቤት ማሰማራት ይንቀሳቀሱ"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "ትምህርት ቤት-ተኮር የግላዊነት፣ የመዳረሻ እና የማሰማራት ጥያቄዎችን ወደ ትምህርት ቤቶች መንገድ ይውሰዱ።"
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "የመማር ሁኔታውን ይሰይሙ።"
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "አይ። ይፋዊ ገጾች indexable ናቸው፣ ግን የግል የተቀመጡ ቻቶች በsitemap፣ llms ፋይሎች ወይም የኤአይ ይዘት መረጃ ጠቋሚ ውስጥ አይካተቱም።"
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "a focused public mode.ን ክፈት"
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.ን ክፈት"
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "audience pathን ክፈት"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "modeን ክፈት"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "pathን ክፈት"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "የመማር ካርታውን ክፈት"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "this routeን ክፈት"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "workflowን ክፈት"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "ወላጆች ብዙ ጊዜ ሳይቆጣጠሩ ለመርዳት ይሞክራሉ። inspir ለቤተሰቦች የመማር ባህርይን የሚያሳዩ ይፋዊ ሁነታዎችን ይሰጣል፦ ፍንጮች፣ ጥያቄዎች፣ መልሶ ማብራራት፣ ግምገማ እና የጥናት እቅድ።"
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "ጥያቄውን፣ የሞከሩትን እና የተጣበቁበትን ነጥብ ይለጥፉ። የመጨረሻውን መልስ ሳይሆን ትንሹን ጠቃሚ ፍንጭ ይጠይቁ።"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "ልምድ ያድርጉ"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "ይፋዊ ገጾች የምርት ባህርይን ያሳያሉ፣ የግል የተማሪ ሥራን አይደለም።"
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "guideን አንብብ"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "መጀመሪያውን ሁነታ ለመሞከር ዝግጁ ነዎት?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "ገመዱን ሳያጡ ምርምር"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "ግምገማ"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "ለተማሪዎች ደህና የኤአይ መማር መሳሪያ"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "የፍለጋ ፍላጎት"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "ራሱን በራሱ የሚያስተምር ተማሪ"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "ራሳቸውን በራሳቸው የሚያስተምሩ ተማሪዎች ፍጥነትና መዋቅር ያስፈልጋቸዋል። inspir ፍላጎትን ወደ መንገድ ለመቀየር ይረዳል፦ ያብራሩ፣ ይገንቡ፣ ይፈትሹ፣ ይከልሱ እና ይቀጥሉ።"
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "ከመሠረታዊ መርሆዎች ርዕስ ይጀምሩ"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "መማር ጀምር"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "በቀላል ማብራሪያ ይጀምሩ፣ ከዚያ መልሰው ማብራራት እስኪችሉ ድረስ Socratic ጥያቄዎችን ይጠይቁ።"
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "ለቀላል ማብራሪያ Learn Anythingን፣ በተያዘ የቤት ሥራ Homework Coachን፣ ወይም ግቡ ክለሳ ከሆነ Flashcard Builderን ይጀምሩ።"
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "በሕዝባዊ መመሪያ ይጀምሩ፣ ከዚያ ትክክለኛውን ሁነታ ይክፈቱ።"
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "ከአሁኑ ጊዜ ጋር የሚዛመደውን ሁነታ ይጀምሩ።"
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "በሕዝባዊ ሁነታዎች ይጀምሩ፣ ከዚያ የትምህርት ቤቶች ገጽን በመጠቀም የመተግበሪያ ደረጃዎችን፣ የአጠቃቀም ሁኔታዎችን እና የእምነት ድንበሮችን ይከልሱ።"
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "የተማሪ የቤት ሥራ፣ የወላጅ ድጋፍ፣ የመምህር ግምገማ እና ራስን ማጥናት ሁሉም የተለየ አቀራረብ ያስፈልጋቸዋል።"
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "ተማሪዎች ፈጣን እገዛ ያስፈልጋቸዋል፣ ግን እገዛው አስተሳሰቡን በእጃቸው መተው አለበት። inspir የተለመዱ የጥናት ጊዜዎችን ከአንድ አጠቃላይ የመልስ ሳጥን ይልቅ ወደ ተተኮሩ ሕዝባዊ ሁነታዎች ያመራል።"
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "ተማሪዎች፣ ወላጆች፣ መምህራን እና ራሳቸውን በራሳቸው የሚያስተምሩ ሰዎች የተለያዩ ነገሮችን ይፈልጋሉ። እነዚህ ገጾች እያንዳንዱን ታዳሚ ወደ ትክክለኛው ሕዝባዊ ሁነታ፣ መመሪያ እና የጥናት ሥራ ፍሰት ያመራሉ።"
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "የጸሐፊውን ድምፅ በመጠበቅ ጽሑፍን ይደግፉ"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "መምህራን ከአጠቃላይ chatbot በላይ ያስፈልጋቸዋል። የሚጠበቁ የመማር ባሕሪዎች ያስፈልጋቸዋል፦ ጥያቄ መጠየቅ፣ አስተሳሰብን መፈተሽ፣ ልምምድ መፍጠር፣ የተማሪን ድምፅ መጠበቅ እና የተሳሳቱ ግንዛቤዎችን ግልጽ ማድረግ።"
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "የታዳሚ ገጾች የሚጠበቀውን የመማር ባሕሪ ግልጽ ያደርጋሉ፣ ስለዚህ የመጀመሪያው ክፍለ-ጊዜ በተሻለ ፍርድ ይጀምራል።"
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "ይህ hub ለመመለስ የተገነባለት የታዳሚ ፍለጋዎች።"
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "ገጾቹ የግል ውይይቶችን አያጋልጡም። ተማሪ በትክክለኛው ቦታ እንዲጀምር ሕዝባዊ ሁነታዎችን፣ prompts፣ guides፣ workflows እና safety boundariesን ያደራጃሉ።"
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "ተመሳሳይ AI tutor የቤት ሥራ ፍንጭ፣ በወላጅ የሚታይ explain-back loop፣ የመምህር ግምገማ ገጽታ ወይም የራስ-ጥናት coach ሊሆን ይችላል። ገጹ ያንን ግልጽ ማድረግ አለበት።"
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "ይህ ገጽ ለመመለስ የተነደፈላቸው ፍለጋዎች።"
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "የራስ-ጥናት ፈተናው መረጃ መፈለግ ብቻ አይደለም። ቀጣዩን ትክክለኛ እርምጃ መምረጥ እና ሐሳቡ በእውነት እንደተጣበቀ ማወቅ ነው።"
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "በጣም ጠንካራ SEO pages ተማሪን አያስቀሩም። የታዳሚ ዓላማን ከpaths፣ workflows፣ guides እና repeatable review ጋር ያገናኛሉ።"
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "በጣም ጠንካራ የተማሪ workflow መልስ መቅዳት አይደለም። ዑደት ነው፦ የተያዙበትን ነጥብ ያብራሩ፣ አንድ የተሻለ ጥያቄ ይጠይቁ፣ ፍንጭ ያግኙ፣ እንደገና ይሞክሩ፣ ከዚያ ስህተቱን ይከልሱ።"
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "እነዚህ ቀጥታ guest entrypoints ናቸው። ሕዝባዊና indexable ናቸው፣ የግል user conversations ግን ከsitemap እና AI discovery files ውጭ ይቆያሉ።"
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "እነዚህ ሐረጎች ለተማሪዎች ይታያሉ እና AI answer engines የገጹን audience-specific purpose እንዲረዱ በstructured discovery ውስጥ ይካተታሉ።"
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "confusion into a quiz or flashcard before moving on.ን ቀይር"
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "mistakes into reviewን ቀይር"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "the first click into a complete learning loop.ን ቀይር"
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "ትምህርት አገልግሎት"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "ከፈተናው በፊት ርዕስ ይረዱ"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "ለhints፣ questions፣ quizzes፣ flashcards፣ writing feedback ወይም planning የተስተካከለ ሁነታ ይጠቀሙ።"
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "AIን ለhints፣ explanations፣ mistake checks እና review loops ይጠቀሙ። ሊያብራሩት የማይችሉትን የመጨረሻ መልስ እንዲያዘጋጅ አትጠይቁት።"
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "ደብዛዛ ግብን ወደ ትንሽ፣ ሊፈተን የሚችል next step ለመቀየር Code Tutor ወይም Project Coach ይጠቀሙ።"
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "ለቤት ሥራ ድጋፍ hint-first እና explain-back workflows ይጠቀሙ።"
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "ፍንጭ ለመጠየቅ Homework Coachን ይጠቀሙ፣ ከዚያ ተማሪው ቀጣዩን እርምጃ እንዲያብራራ ይጠይቁ።"
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "inspirን ለተማሪዎች እንደ ነፃ AI tutor ይጠቀሙ፦ homework hints፣ Socratic questions፣ math step checks፣ writing feedback፣ quizzes፣ flashcards እና exam prep።"
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "explanations፣ code tutoring፣ project coaching፣ research help፣ concept maps፣ study plans እና habit support በመጠቀም ማንኛውንም ነገር በራስዎ ለመማር inspirን ይጠቀሙ።"
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "ቀላል model፣ prerequisite ideas እና በትክክለኛው ደረጃ examples ለማግኘት Learn Anythingን ይጠቀሙ።"
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "ክፍለ-ጊዜ ከመጀመሩ በፊት behaviorን ለመምረጥ public mode descriptions ይጠቀሙ።"
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "ለactive recall quiz እና flashcard modes ይጠቀሙ፣ ከዚያ missed itemsን ወደ review ያመሩ።"
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "missed questionsን ግልጽና repeatable ለማድረግ quizzes እና flashcards ይጠቀሙ።"
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "ተማሪው ምን እንደተረዳ እንዲያሳይ quizzes፣ flashcards እና Socratic questions ይጠቀሙ።"
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "claims እና evidenceን ለማደራጀት Research Assistant፣ Source Critic እና Concept Map Builder ይጠቀሙ።"
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "ሊጠቅሱት ወይም በመሠረቱ እርምጃ ሊወስዱበት ለሚችሉ claims source critique ይጠቀሙ።"
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "ከተሳቱ ቀናት በኋላ ዳግም መጀመር የሚችል routine ለመገንባት Study Plan Builder እና Habit Coach ይጠቀሙ።"
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "small sessions እና restarts ግልጽ ለማድረግ Study Plan Builder ወይም Habit Coach ይጠቀሙ።"
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "ትንሽ ግብ ለመምረጥ Study Plan Builderን ይጠቀሙ፣ ከዚያ progressን ለማረጋገጥ quizzes፣ flashcards፣ project steps ወይም concept maps ይጠቀሙ።"
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "custom workflows፣ confidentiality needs እና rollout steps ለመመርመር school pageን ይጠቀሙ።"
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "ለstructure፣ clarity፣ evidence እና revision priorities feedback ለማግኘት Writing Coachን ይጠቀሙ።"
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "ጠቃሚ AI learning ግልጽ contract አለው።"
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "ለመጀመር በጣም ሰፊውን ቦታ ይፈልጋሉ?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "በወላጅ ቁጥጥር ስር ምርጡ workflow ምንድን ነው?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "ራሱን በራሱ የሚያስተምር ተማሪ መጀመሪያ ምን መጠየቅ አለበት?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "ተማሪ መጀመሪያ ምን መሞከር አለበት?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "የትምህርት ቤት ቡድን ቀጥሎ ወዴት መሄድ አለበት?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "inspir ለማን ነው?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "ለተለያዩ ታዳሚዎች የተለዩ ገጾች ለምን?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "አዎ። Audience pages የሚያገናኙት ወደ public guest modes፣ guides፣ prompt starters፣ learning paths እና AI-readable discovery files ብቻ ነው። Private saved chats እንደተገለሉ ይቆያሉ።"
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "አዎ። Public guest modes መምህራን custom deployment ከመወያየታቸው በፊት learning behaviorን እንዲፈትሹ ይፈቅዳሉ።"
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "አዎ። እንደ Learn Anything፣ Homework Coach፣ Socratic Instruction፣ quizzes፣ flashcards እና writing feedback ያሉ public guest modes ቀጥታ ይከፈታሉ።"
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "አዎ። Public modes ለschool topics፣ professional skills፣ coding፣ research፣ projects እና personal study routines ይሠራሉ።"
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "አዎ። public guest modes እና audience pages ወላጆች በእሱ ላይ ከመታመናቸው በፊት learning behaviorን እንዲመረምሩ የተነደፉ ናቸው።"
+    }
+  ]
+}

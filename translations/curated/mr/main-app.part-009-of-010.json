@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Marathi",
+  "locale": "mr",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "कामाचे नामनिर्देशित भागांत विभाजन करा, प्रत्येकाची वेळ मोजा आणि प्रत्येक केंद्रित सत्रानंतर अभ्यासाचा प्रयत्न कुठे खर्च झाला याचे पुनरावलोकन करा."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "एकाग्रता आणि उत्पादकता विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "हा मोड टास्क टाइमरसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याच्या प्रवाहासह ट्यून केला आहे."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "वैयक्तिक कामांची वेळ मोजा आणि प्रयत्न पहा"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "प्रॉब्लेम सेटची वेळ मोजा"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "निबंधाच्या आराखड्याच्या कामाचा मागोवा घ्या"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "मोठ्या कामाचे वेळेनुसार ब्लॉक करा"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "ब्रेक रिमाइंडर"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "निरोगी विश्रांतीसह एकाग्रता सुरक्षित ठेवा"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "काम आणि विश्रांतीची लय सेट करा, खऱ्या अर्थाने रिसेटचे नियोजन करा आणि अभ्यासाच्या थकव्यापासून दूर राहा."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "तुम्हाला कामाची/विश्रांतीची कोणती लय हवी आहे?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "एकाग्रता आणि उत्पादकता"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "काम आणि विश्रांतीची लय सेट करा, खऱ्या अर्थाने रिसेटचे नियोजन करा आणि अभ्यासाच्या थकव्यापासून दूर राहा."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "एकाग्रता आणि उत्पादकता विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "हा मोड ब्रेक रिमाइंडरसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याच्या प्रवाहासह ट्यून केला आहे."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "निरोगी विश्रांतीसह एकाग्रता सुरक्षित ठेवा"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "५०/१० ब्रेक वापरा"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "निरोगी ब्रेकचे नियोजन करा"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "जास्त अभ्यास करणे थांबवण्यास मदत करा"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "डीप वर्क सेशन्स"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "कमी व्यत्यय असलेला फोकस ब्लॉक प्लॅन करा"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "स्पष्ट परिणाम, मर्यादा, फोकस नियम, पुनरावलोकन चेकपॉईंट आणि बॅकअप प्लॅनसह डीप वर्क सत्राची तयारी करा."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "या डीप वर्क सत्रातून काय साध्य व्हायला हवे?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "फोकस आणि उत्पादकता"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "स्पष्ट परिणाम, मर्यादा, फोकस नियम, पुनरावलोकन चेकपॉईंट आणि बॅकअप प्लॅनसह डीप वर्क सत्राची तयारी करा."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "फोकस आणि उत्पादकता विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "हा मोड डीप वर्क सत्रांसाठी तयार केला आहे, ज्यामध्ये स्वतःचे प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याची प्रक्रिया आहे."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "कमी व्यत्यय असलेला फोकस ब्लॉक प्लॅन करा"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "९० मिनिटांचा डीप वर्क ब्लॉक प्लॅन करा"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "कोडिंगवर लक्ष केंद्रित करण्यास मदत करा"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "थीसिस लेखनासाठी नियम सेट करा"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "ग्रुप स्टडी टाइमर"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "इतरांसोबत फोकस राउंड्सचे समन्वय साधा"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "मित्र किंवा वर्गमित्रांसाठी सामायिक अभ्यास लय चालवा, ज्यामध्ये समन्वित ध्येये, चेक-इन्स आणि चर्चा प्रश्न असतील."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "कोण एकत्र अभ्यास करत आहे आणि ध्येय काय आहे?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "सामाजिक"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "मित्र किंवा वर्गमित्रांसाठी सामायिक अभ्यास लय चालवा, ज्यामध्ये समन्वित ध्येये, चेक-इन्स आणि चर्चा प्रश्न असतील."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "सामाजिक विषयांचा अभ्यास करणारे विद्यार्थी ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "हा मोड ग्रुप स्टडी टाइमरसाठी तयार केला आहे, ज्यामध्ये स्वतःचे प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याची पद्धत आहे."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "इतरांसोबत अभ्यासाच्या फेऱ्यांचे नियोजन करा"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्रात बदल करा"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "ग्रुप पोमोडोरोचे नियोजन करा"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "अभ्यासाची खोली (स्टडी रूम) तयार करा"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "४५ मिनिटांचे ग्रुप सत्र चालवा"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "एम्बियंट साउंड्स"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "शांत अभ्यासासाठी तयार केलेले ध्वनी"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "वाचन, लेखन, उजळणी किंवा समस्या सोडवताना लक्ष विचलित होऊ नये म्हणून साध्या एम्बियंट साउंड प्रीसेटचा वापर करा."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "तुम्हाला कोणत्या प्रकारचा एम्बियंट फोकस हवा आहे?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "फोकस आणि उत्पादकता"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "वाचन, लेखन, उजळणी किंवा समस्या सोडवताना लक्ष विचलित होऊ नये म्हणून साध्या एम्बियंट साउंड प्रीसेटचा वापर करा."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "फोकस आणि उत्पादकता विषयांचा अभ्यास करणारे विद्यार्थी ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "हा मोड एम्बियंट साउंड्ससाठी तयार केला आहे, ज्यामध्ये स्वतःचे प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याची पद्धत आहे."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "शांत अभ्यासासाठी तयार केलेले ध्वनी"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्रात बदल करा"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "वाचनासाठी पावसाचा आवाज वापरा"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "गणितासाठी शांत ऑडिओ निवडा"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "शांत आणि एकाग्र कामासाठी वातावरण तयार करा"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "स्टडी स्ट्रीक्स"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "गिल्टशिवाय सातत्य राखा"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "अभ्यासाचा सातत्य (स्टडी स्ट्रीक) ट्रॅक करा, चुकलेले दिवस भरून काढा आणि दैनंदिन जीवनात टिकून राहील अशी किमान व्यवहार्य अभ्यासाची सवय तयार करा."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "तुम्ही कोणती स्ट्रीक किंवा दिनचर्या तयार करत आहात?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "अॅनालिटिक्स"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "अभ्यासाचा सातत्य (स्टडी स्ट्रीक) ट्रॅक करा, चुकलेले दिवस भरून काढा आणि दैनंदिन जीवनात टिकून राहील अशी किमान व्यवहार्य अभ्यासाची सवय तयार करा."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "अॅनालिटिक्स विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "हा मोड अभ्यासाच्या सातत्यासाठी (स्टडी स्ट्रीक्स) खास तयार केला असून यात स्वतःचे प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याचा प्रवाह आहे."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "अपराधीपणाशिवाय सातत्य राखा"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्रात बदल करा"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "अभ्यासाची स्ट्रीक सुरू करा"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "एक दिवस चुकल्यानंतर पुन्हा सुरुवात करा"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "लहान दैनंदिन उजळणीची रचना करा"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "प्रगती डॅशबोर्ड"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "शिकण्याच्या क्रियाकलापांचे आणि पुढील पावलांचे पुनरावलोकन करा"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "अभ्यासाचे क्रियाकलाप, क्विझ निकाल, नोट्स आणि टायमर्सना ट्रेंड्स आणि पुढील कृतींसह डॅशबोर्ड-शैलीतील पुनरावलोकनात रूपांतरित करा."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "आम्ही कोणत्या प्रगतीचे पुनरावलोकन करावे?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "अॅनालिटिक्स"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "अभ्यासाचे क्रियाकलाप, क्विझ निकाल, नोट्स आणि टायमर्सना ट्रेंड्स आणि पुढील कृतींसह डॅशबोर्ड-शैलीतील पुनरावलोकनात रूपांतरित करा."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "अॅनालिटिक्स विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "हा मोड प्रगती डॅशबोर्डसाठी खास तयार केला असून यात स्वतःचे प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याचा प्रवाह आहे."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "शिकण्याच्या क्रियाकलापांचे आणि पुढील पावलांचे पुनरावलोकन करा"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्रात बदल करा"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "माझ्या आठवड्याचे पुनरावलोकन करा"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "कमकुवत क्षेत्रे शोधा"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "कृतीचे पुढील पावलांमध्ये रूपांतर करा"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "साप्ताहिक अहवाल"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "यश, त्रुटी आणि पुढील आठवड्याचा सारांश"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "प्रयत्न, परिणाम, अडथळे, यश आणि केंद्रित योजनेसह साप्ताहिक किंवा मासिक शिक्षण अहवाल तयार करा."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "या आठवड्यात काय घडले?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "विश्लेषण"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "प्रयत्न, परिणाम, अडथळे, यश आणि केंद्रित योजनेसह साप्ताहिक किंवा मासिक शिक्षण अहवाल तयार करा."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "विश्लेषण विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "हा मोड साप्ताहिक अहवालांसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिक्षण प्रवाहासह तयार केला आहे."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "यश, त्रुटी आणि पुढील आठवड्याचा सारांश"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्र जुळवून घ्या"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "माझा साप्ताहिक अभ्यास अहवाल लिहा"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "माझ्या प्रगतीचा सारांश द्या"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "या आठवड्यावरून पुढील आठवड्याचे नियोजन करा"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "असाइनमेंट ट्रॅकर"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "डेडलाईन्स आणि पुढील कृतींचा मागोवा घ्या"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "असाइनमेंट्सची अंतिम तारीख, प्रयत्न, स्थिती, जोखीम आणि पुढील सर्वात लहान कृतीनुसार व्यवस्था करा."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "तुमच्याकडे कोणती असाइनमेंट्स आहेत?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "संघटना"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "असाइनमेंट्सची अंतिम तारीख, प्रयत्न, स्थिती, जोखीम आणि पुढील सर्वात लहान कृतीनुसार व्यवस्था करा."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "संघटना विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "हा मोड असाइनमेंट ट्रॅकरसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिक्षण प्रवाहासह तयार केला आहे."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "डेडलाइन आणि पुढील कृतींचा मागोवा घ्या"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "माझ्या डेडलाईन्स व्यवस्थित करा"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "असाइनमेंट्सना प्राधान्य द्या"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "या प्रोजेक्ट सबमिशनचे नियोजन करा"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "कोर्स मॅनेजर"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "कोर्स, विषय आणि कामाचा ताण व्यवस्थित करा"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "कोर्स, युनिट्स, असाइनमेंट्स, संसाधने आणि साप्ताहिक कामाचा ताण एका संघटित अभ्यास प्रणालीमध्ये मॅप करा."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "तुम्ही कोणते कोर्स किंवा विषय व्यवस्थापित करत आहात?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "संघटना"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "कोर्स, युनिट्स, असाइनमेंट्स, संसाधने आणि साप्ताहिक कामाचा ताण एका संघटित अभ्यास प्रणालीमध्ये मॅप करा."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "जे विद्यार्थी संघटना विषयांचा शोध घेत आहेत आणि ज्यांना सामान्य उत्तराऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "हा मोड कोर्स मॅनेजरसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याच्या प्रवाहासह ट्यून केला आहे."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "कोर्स, विषय आणि कामाचा ताण व्यवस्थित करा"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "माझे कोर्स सेट करा"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "माझे सत्र व्यवस्थित करा"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "प्रत्येक विषयासाठी विषय मॅप करा"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "नोट ऑर्गनायझर"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "नोट्स टॅग करा, सॉर्ट करा आणि कनेक्ट करा"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "विखुरलेल्या नोट्सना फोल्डर, टॅग, सारांश, लिंक्स आणि रिव्ह्यू कृतींमध्ये रूपांतरित करा ज्यामुळे आठवणे सोपे होईल."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "व्यवस्थित करण्यासाठी नोट्स पेस्ट करा किंवा वर्णन करा"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "व्यवस्थापन"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "विखुरलेल्या नोट्सना फोल्डर, टॅग, सारांश, लिंक्स आणि रिव्ह्यू ॲक्शन्समध्ये रूपांतरित करा, ज्यामुळे आठवणे सोपे होईल."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "जे विद्यार्थी व्यवस्थापन विषयांचा शोध घेत आहेत आणि ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "हा मोड नोट ऑर्गनायझरसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि लर्निंग फ्लोसह तयार केला आहे."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "नोट्स टॅग करा, सॉर्ट करा आणि कनेक्ट करा"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्राला अनुकूल करा"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "माझ्या क्लास नोट्स व्यवस्थित करा"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "या नोट्ससाठी टॅग तयार करा"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "माझ्या नोटबुकमधील विषय शोधा"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "संसाधन सामायिकरण"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "अभ्यास संसाधने पॅकेज करा आणि शेअर करा"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "सहकाऱ्यांसाठी किंवा गटासाठी अभ्यास संसाधने तयार करा: सारांश, लिंक्स, नोट्स, स्पष्टीकरणे आणि वापरासाठी मार्गदर्शन."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "तुम्हाला कोणते संसाधन शेअर करायचे आहे?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "सामाजिक"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "सहकाऱ्यांसाठी किंवा गटासाठी अभ्यास संसाधने तयार करा: सारांश, लिंक्स, नोट्स, स्पष्टीकरणे आणि वापरासाठी मार्गदर्शन."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "जे विद्यार्थी सामाजिक विषयांचा शोध घेत आहेत आणि ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "हा मोड रिसोर्स शेअरिंगसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि लर्निंग फ्लोसह तयार केला आहे."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "अभ्यास संसाधने पॅकेज करा आणि शेअर करा"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्राला अनुकूल करा"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "माझ्या नोट्स गटासाठी पॅकेज करा"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "संसाधन सारांश तयार करा"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "शेअरिंग मार्गदर्शक तत्त्वे बनवा"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "अभ्यास गट"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "गट अभ्यासाला शिस्तबद्ध बनवा"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "भूमिका, अजेंडा, प्रश्नमंजुषा, सामायिक संसाधने आणि उजळणी नोट्ससह एक उत्पादक अभ्यास गट नियोजित करा."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "अभ्यास गटाने काय करावे?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "सामाजिक"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "भूमिका, अजेंडा, प्रश्नमंजुषा, सामायिक संसाधने आणि उजळणी नोट्ससह एक उत्पादक अभ्यास गट नियोजित करा."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "सामाजिक विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "हा मोड अभ्यास गटांसाठी त्यांच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याच्या प्रवाहासह तयार केला आहे."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "गट अभ्यासाला शिस्तबद्ध बनवा"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्रात बदल करा"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "गट सत्राचे नियोजन करा"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "अभ्यास गटासाठी भूमिका निश्चित करा"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "अनुत्पादक गट सुधारित करा"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "विद्यार्थी मंच"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "समुदायाकडून मदतीसाठी प्रश्न तयार करा"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "स्पष्ट मंच प्रश्न, उत्तरे, सारांश आणि फॉलो-अप विनंत्या तयार करा ज्यामुळे विद्यार्थ्यांची चर्चा अधिक उपयुक्त होईल."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "तुम्हाला कोणता प्रश्न किंवा चर्चा पोस्ट करायची आहे?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "सामाजिक"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "स्पष्ट मंच प्रश्न, उत्तरे, सारांश आणि फॉलो-अप विनंत्या तयार करा ज्यामुळे विद्यार्थ्यांची चर्चा अधिक उपयुक्त होईल."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "सामाजिक विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "हा मोड विद्यार्थी मंचासाठी त्यांच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याच्या प्रवाहासह तयार केला आहे."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "समुदायाकडून मदतीसाठी प्रश्न तयार करा"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "एक चांगला फोरम प्रश्न लिहा"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "चर्चेचा सारांश द्या"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "सहकाऱ्यांकडून अभिप्राय मागा"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "वर्कशीट बिल्डर"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "मिश्र सरावाच्या वर्कशीट्स तयार करा"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "रिकाम्या जागा भरा, बहुपर्यायी प्रश्न (MCQs), चूक/बरोबर, थोडक्यात उत्तरे आणि जोड्या लावा यांसारख्या प्रश्न प्रकारांसह वर्कशीट्स तयार करा."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "वर्कशीटमध्ये काय समाविष्ट असावे?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "सक्रिय शिक्षण"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "रिकाम्या जागा भरा, बहुपर्यायी प्रश्न (MCQs), चूक/बरोबर, थोडक्यात उत्तरे आणि जोड्या लावा यांसारख्या प्रश्न प्रकारांसह वर्कशीट्स तयार करा."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "सक्रिय शिक्षण विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर बॉक्सऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "हा मोड वर्कशीट बिल्डरसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिक्षण प्रवाहासह ट्यून केला आहे."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "मिश्र सरावाच्या वर्कशीट्स तयार करा"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "अपूर्णांकांवर एक वर्कशीट बनवा"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "रसायनशास्त्राचा मिश्र सराव तयार करा"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "शब्दसंग्रहाचे व्यायाम तयार करा"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "आकृती लेबलिंग सराव"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "आकृत्या आणि प्रणालींसाठी लेबल्सचा सराव करा"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "आकृत्या, शरीर प्रणाली, नकाशे, वर्कफ्लो किंवा लॅब सेटअप्सना हिंट्स आणि उत्तर तपासणीसह लेबलिंग सरावात रूपांतरित करा."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "कोणत्या आकृतीचे लेबलिंग करण्याचा सराव करायचा आहे?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "सक्रिय शिक्षण"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "आकृत्या, शरीर प्रणाली, नकाशे, वर्कफ्लो किंवा लॅब सेटअप्सना हिंट्स आणि उत्तर तपासणीसह लेबलिंग सरावात रूपांतरित करा."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "सक्रिय शिक्षण विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "हा मोड आकृती लेबलिंग सरावासाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिक्षण प्रवाहासह तयार केला आहे."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "आकृत्या आणि प्रणालींसाठी लेबलचा सराव करा"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्रात बदल करा"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "वनस्पती पेशीचे लेबल करा"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "हृदयाच्या आकृतीचा सराव करा"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "नकाशा लेबलिंग प्रश्न तयार करा"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "मॅचिंग गेम जनरेटर"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "शब्द, व्याख्या, कारणे आणि उदाहरणांच्या जोड्या लावा"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "शब्दसंग्रह, संकल्पना, व्यक्ती/घटना, सूत्रे, उदाहरणे किंवा कारण-परिणाम जोड्यांसाठी नोट्सचे मॅचिंग गेम्समध्ये रूपांतर करा."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "कोणत्या जोड्यांचा मॅचिंग गेम बनवायला हवा?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "सक्रिय शिक्षण"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "शब्दसंग्रह, संकल्पना, व्यक्ती/घटना, सूत्रे, उदाहरणे किंवा कारण-परिणाम जोड्यांसाठी नोट्सचे मॅचिंग गेम्समध्ये रूपांतर करा."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "सक्रिय शिक्षण विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तर पेटीऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "हा मोड मॅचिंग गेम जनरेटरसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिक्षण प्रवाहासह तयार केला आहे."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "शब्द, व्याख्या, कारणे आणि उदाहरणांच्या जोड्या लावा"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "तुमच्या ध्येयानुसार सत्रात बदल करा"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "शब्द आणि व्याख्या जुळवा"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "कारण-परिणाम जोड्या तयार करा"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "सूत्र जुळवण्याचा सराव करा"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP आणि लेव्हलिंग"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "प्रगतीचे लेव्हल्स आणि क्वेस्ट्समध्ये रूपांतर करा"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "खऱ्या शैक्षणिक प्रगतीभोवती गुण, स्तर, क्वेस्ट आणि बक्षिसांची प्रणाली तयार करा."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "कोणते शैक्षणिक ध्येय लेव्हलिंग प्रणालीमध्ये रूपांतरित केले पाहिजे?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "गेमिफिकेशन"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "खऱ्या शैक्षणिक प्रगतीभोवती गुण, स्तर, क्वेस्ट आणि बक्षिसांची प्रणाली तयार करा."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "गेमिफिकेशन विषयांचा शोध घेणारे विद्यार्थी ज्यांना सामान्य उत्तरांऐवजी व्यावहारिक मार्गदर्शन हवे आहे."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "हा मोड XP आणि लेव्हलिंगसाठी त्याच्या स्वतःच्या प्रॉम्प्ट्स, उदाहरणे आणि शिकण्याच्या प्रवाहासह तयार केला आहे."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "प्रगतीचे स्तर आणि क्वेस्टमध्ये रूपांतर करा"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्ससह सुरुवात करा"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र तुमच्या ध्येयानुसार जुळवून घ्या"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "परीक्षेच्या तयारीसाठी XP बनवा"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "कोडिंग सरावासाठी स्तर डिझाइन करा"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "वाचनाचे क्वेस्टमध्ये रूपांतर करा"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "बॅजेस आणि यश (Achievements)"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "महत्त्वाच्या टप्प्यांना बक्षीस द्या"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "सातत्य, प्रभुत्व, धैर्य, उजळणी, सहयोग आणि पूर्ण केलेल्या कामांसाठी बॅजेस तयार करा."
+    }
+  ]
+}

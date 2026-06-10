@@ -25,14 +25,16 @@
     "memory:backfill": "tsx scripts/backfill-memory.ts",
     "memory:materialize": "tsx scripts/materialize-chat-memory.ts",
     "memory:synthesize": "tsx scripts/synthesize-memory.ts",
-    "translations:warm": "tsx scripts/warm-main-app-translations.ts",
+    "translations:status": "tsx scripts/status-curated-translations.ts",
+    "translations:export": "tsx scripts/export-curated-translations.ts",
+    "translations:export-cache": "tsx scripts/export-cached-translations.ts",
+    "translations:import": "tsx scripts/import-curated-translations.ts",
     "import:bubble": "tsx scripts/import-bubble.ts --mode=best-effort",
     "validate:import": "tsx scripts/validate-import.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.65",
     "@auth/drizzle-adapter": "^1.11.2",
-    "@google/genai": "^2.7.0",
     "@neondatabase/serverless": "^1.1.0",
     "ai": "^6.0.191",
     "drizzle-orm": "^0.45.2",

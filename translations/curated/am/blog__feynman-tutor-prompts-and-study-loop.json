@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "language": "Amharic",
+  "locale": "am",
+  "namespace": "blog:feynman-tutor-prompts-and-study-loop",
+  "sourceHash": "6b7520e7377252680efcd790b849d380475d7f64160b55f2350cd1c3c5c57c2a",
+  "entries": [
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"ብዙ ከማብራራትህ በፊት ጥያቄዎችን ጠይቀኝ።\""
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"የእኔን መልስ ከመስጠትህ በፊት አረጋግጥ።\""
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"ከሞከርኩ በኋላ የበለጠ ከባድ ስሪት ስጠኝ።\""
+    },
+    {
+      "key": "site.1d42dc0bfb9b08e820",
+      "source": "\"Help me simplify recursion\"",
+      "value": "\"ሪከርሽንን እንዳቀል እርዳኝ\""
+    },
+    {
+      "key": "site.67ad0ccec8a0f07868",
+      "source": "\"I'll explain gravity\"",
+      "value": "\"ስበትን እኔ አብራራለሁ\""
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"ለጀማሪ ተስማሚ አድርገው።\""
+    },
+    {
+      "key": "site.4ad90215ccef01e1b6",
+      "source": "\"Test my understanding of inflation\"",
+      "value": "\"የዋጋ ግሽበትን መረዳቴን ፈትን\""
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "\"ከፈተናዬ፣ ፕሮጀክቴ ወይም ዕለታዊ ሕይወቴ ምሳሌዎችን ተጠቀም።\""
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "የኤአይ ፕሮምፕቶች"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "በጣም ትንሽ የመጀመሪያ ተግባር ይጠይቁ።"
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "በራስዎ በሚጽፉት ማጠቃለያ ይጨርሱ።"
+    },
+    {
+      "key": "site.f8b5d22910d6837d65",
+      "source": "Feynman Tutor prompts and study loop",
+      "value": "የFeynman Tutor ጥያቄ መነሻዎች እና የጥናት ዑደት"
+    },
+    {
+      "key": "site.c77b422a4c9fb1ca67",
+      "source": "For Feynman Tutor, a useful practice loop is:",
+      "value": "ለFeynman Tutor፣ ጠቃሚ የልምምድ ዑደት ይህ ነው፦"
+    },
+    {
+      "key": "site.18dcb876cb96e9cee5",
+      "source": "For this mode, the job is simple: Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ለዚህ ሁነታ ሥራው ቀላል ነው፦ ጽንሰ-ሐሳብን በቀላሉ ለማብራራት ይሞክሩ። አስጠኚዎ ክፍተቶችን ያገኛል፣ ጥያቄዎችን ይጠይቃል፣ እና ማብራሪያውን እንደገና እንዲገነቡ ይረዳዎታል።"
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "ጥሩ ጥያቄ መነሻዎች ብዙ ጊዜ ሦስት ነገሮችን ያካትታሉ፦ የትምህርት ርዕሱን፣ የአሁኑን ደረጃዎን እና የሚፈልጉትን የእገዛ ዓይነት። ፍጹም ቃላት አያስፈልጉዎትም። ክፍለ ጊዜው እንዲጀምር በቂ አውድ ብቻ ያስፈልግዎታል።"
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "መልሱ በጣም ሰፊ ከመሰለ፣ ያጥብቁት። አንድ ምሳሌ፣ አንድ የተሳሳተ ግንዛቤ፣ አንድ የማረጋገጫ ጥያቄ ወይም አንድ ቀጣይ ደረጃ ይጠይቁ። በጣም ቀላል ከመሰለ፣ ፈተና ይጠይቁ። በጣም ከባድ ከመሰለ፣ ከሚያውቁት ነገር የሚጀምር ድልድይ ይጠይቁ።"
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "ውጤቱን የበለጠ ጠቃሚ ያድርጉ"
+    },
+    {
+      "key": "site.c39efca26acbacc063",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Feynman Tutor on inspir.",
+      "value": "በinspir ላይ Feynman Tutor ጠቃሚ የመማር ውጤት እንዲሰጥ የፕሮምፕት ሐሳቦች እና ሊደገም የሚችል የጥናት ዑደት።"
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "የኤአይ መልስ ማንበብ መማር አይደለም። ከመጀመሪያው መልስ በኋላ፣ ሁነታው ከሐሳቡ ጋር አንድ ነገር እንዲያደርጉ ይጠይቁ።"
+    },
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "ተዛማጅ የመማር መንገዶች"
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "እርግጠኛ ባልሆነው ክፍል ላይ ግብረመልስ ይጠይቁ።"
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "መፍትሔውን ከመጠየቅዎ በፊት ይመልሱ።"
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "በአንድ ግልጽ ጥያቄ ይጀምሩ"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "ግቡን በአንድ ዓረፍተ ነገር ግለጹ።"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "የጥናት ክህሎቶች"
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "ያ የመጨረሻ ማጠቃለያ አስፈላጊ ነው። ሐሳቡን መልሰው ሲያብራሩ፣ ምን ጠንካራ እንደሆነ እና ምን አሁንም ከAI የተዋሰ እንደሆነ ይገልጣሉ።"
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "ምርጥ የመማር ክፍለ ጊዜዎች ሊስተካከሉ የሚችሉ ናቸው። ይህ ሁነታ በራሱ ፕሮምፕቶች፣ ምሳሌዎች እና የመማር ፍሰት ለfeynman tutor ተስተካክሏል።"
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "ከFeynman Tutor ጠቃሚ ውጤት ለማግኘት ፈጣኑ መንገድ ለኤአይው ርዕስ ብቻ ሳይሆን የመማር ሥራ መስጠት ነው። ርዕስ የሚስብዎትን ይናገራል፤ የመማር ሥራ ደግሞ ምን ዓይነት እርዳታ እንደሚፈልጉ ይናገራል።"
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "ከዚያ ክፍለ-ጊዜውን የበለጠ ግላዊ የሚያደርግ ገደብ ያክሉ፦"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "ማሰብ"
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "one of these starters:ን ሞክር"
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "the mode into practiceን ቀይር"
+    },
+    {
+      "key": "site.1f51099bf0f757ebc2",
+      "source": "Use Feynman Tutor when this is the right mode for the job. If you want a related path, try Misconception Doctor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Feynman Tutor ለዚህ ሥራ ትክክለኛው ሁነታ ሲሆን ይጠቀሙበት። ተዛማጅ መንገድ ከፈለጉ፣ Misconception Doctorን ይሞክሩ። እንዲሁም ስለ ጥናት ዘዴዎች፣ Socratic መማር፣ ፍላሽካርዶች፣ ሚና ጨዋታ እና ንቁ ማስታወስ የኤአይ መማር ብሎግን ማሰስ ይችላሉ።"
+    }
+  ]
+}

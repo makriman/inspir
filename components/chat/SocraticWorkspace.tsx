@@ -117,6 +117,7 @@ const mapSections: Array<{
 
 export function SocraticWorkspace({
   topic,
+  language,
   userName,
   messages,
   input,
@@ -132,6 +133,7 @@ export function SocraticWorkspace({
   onReset,
 }: {
   topic: Topic;
+  language?: string;
   userName: string;
   messages: Message[];
   input: string;
@@ -193,6 +195,7 @@ export function SocraticWorkspace({
         {!hasSession ? (
           <SocraticStartScreen
             topic={topic}
+            language={language}
             starters={starters}
             target={target}
             targetKind={targetKind}
@@ -234,6 +237,7 @@ export function SocraticWorkspace({
 
 function SocraticStartScreen({
   topic,
+  language,
   starters,
   target,
   targetKind,
@@ -245,6 +249,7 @@ function SocraticStartScreen({
   onTargetKind,
 }: {
   topic: Topic;
+  language?: string;
   starters: string[];
   target: string;
   targetKind: TargetKind;
@@ -340,7 +345,7 @@ function SocraticStartScreen({
           ))}
         </div>
       ) : null}
-      <TopicResourceLinks topic={topic} />
+      <TopicResourceLinks topic={topic} language={language} />
     </section>
   );
 }

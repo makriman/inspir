@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Welsh",
+  "locale": "cy",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "Negodi dyddiad cau"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "Delio â chwsmer anghwrtais"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "Gofyn i athro am gymorth"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "Archwiliwr Gyrfaoedd"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "Darganfod llwybrau sy'n addas i chi"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "Archwilio gyrfaoedd drwy ddiddordebau, sgiliau, enghreifftiau o ddiwrnod ym mywyd y rôl, a chamau nesaf."
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "Pa yrfa neu ddiddordeb ddylem ni ei archwilio?"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "Cynllunio"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "Archwilio gyrfaoedd drwy ddiddordebau, sgiliau, enghreifftiau o ddiwrnod ym mywyd y rôl, a chamau nesaf."
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cynllunio ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer archwiliwr gyrfaoedd gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "Darganfod llwybrau sy'n addas i chi"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "Rwy'n hoffi bioleg a chelf"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "Beth mae rheolwr cynnyrch yn ei wneud?"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "Cymharu'r gyfraith a seicoleg"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "Hyfforddwr Cyfweliadau"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "Ymarfer atebion cryfach"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "Paratoi ar gyfer cyfweliadau ysgol, interniaeth, swydd neu ysgoloriaeth gyda chwestiynau realistig ac adborth."
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "Ar gyfer pa gyfweliad ydych chi'n paratoi?"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "Cynllunio"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "Paratoi ar gyfer cyfweliadau ysgol, interniaeth, swydd neu ysgoloriaeth gyda chwestiynau realistig ac adborth."
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cynllunio ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer hyfforddwr cyfweliadau gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "Ymarfer atebion cryfach"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "Cyfweliad ymarfer ar gyfer coleg"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "Ymarfer cwestiynau interniaeth"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "Gwella fy ateb i 'dywedwch wrthyf amdanoch chi eich hun'"
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "Tiwtor Codio"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "Dysgu rhaglennu drwy adeiladu"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "Deall cod, dadfygio gwallau, dysgu cysyniadau, ac adeiladu prosiectau bach gam wrth gam."
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Pa bwnc codio neu nam rydym ni'n mynd i'r afael ag ef?"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "Deall cod, dadfygio gwallau, dysgu cysyniadau rhaglennu, ac adeiladu prosiectau bach gam wrth gam."
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "Rhaglenwyr dechreuol a chanolradd sydd angen esboniadau, help i ddadfygio, neu hyfforddiant ar brosiectau."
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "Mae'r tiwtor yn gofyn beth rydych chi'n disgwyl i'r cod ei wneud, yna'n defnyddio enghreifftiau bach a phrofion i wneud yr ymddygiad yn glir."
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "Esbonio'r nam"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "Deall y cysyniad"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "Rhoi cynnig ar atgyweiriad bach"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "Esbonio recursion yn JavaScript"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "Helpu i ddadfygio'r gwall hwn"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "Dysgu dolenni Python i mi"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "Hyfforddwr Prosiectau"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "Troi syniadau'n gerrig milltir"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "Cynllunio prosiect ysgol, creadigol, codio neu bersonol gyda chwmpas, cerrig milltir, rhwystrau a chamau nesaf."
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "Pa brosiect ydyn ni'n ei adeiladu?"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "Cynllunio"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "Cynllunio prosiect ysgol, creadigol, codio neu bersonol gyda chwmpas, cerrig milltir, rhwystrau a chamau nesaf."
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cynllunio ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer hyfforddwr prosiectau gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "Troi syniadau'n gerrig milltir"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "Cynllunio prosiect ffair wyddoniaeth"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "Adeiladu gwefan bortffolio"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "Trefnu cyflwyniad hanes"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "Cynorthwyydd Ymchwil"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "Llunio cwestiynau a syntheseiddio ffynonellau"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Troi pwnc eang yn gwestiynau ymchwil, termau chwilio, amlinelliadau a nodiadau ffynhonnell."
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "Beth ydych chi'n ymchwilio iddo?"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "Meddwl"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Troi pwnc eang yn gwestiynau ymchwil, termau chwilio, amlinelliadau a nodiadau ffynhonnell."
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau meddwl ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer cynorthwyydd ymchwil gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "Llunio cwestiynau a syntheseiddio ffynonellau"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "Ymchwilio i ynni adnewyddadwy"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "Dod o hyd i onglau ar foeseg AI"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "Cynllunio papur ar drefoli"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "Beirniad Ffynonellau"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "Barnu hygrededd a thuedd"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "Gwerthuso erthyglau, honiadau, fideos neu bostiadau o ran tystiolaeth, tuedd, dibynadwyedd a chyd-destun coll."
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "Gludwch neu ddisgrifiwch y ffynhonnell"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "Meddwl"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "Gwerthuso erthyglau, honiadau, fideos neu bostiadau o ran tystiolaeth, tuedd, dibynadwyedd a chyd-destun coll."
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau meddwl ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer beirniad ffynonellau gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "Barnu hygrededd a thuedd"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "A yw'r erthygl hon yn ddibynadwy?"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "Gwirio tystiolaeth yr honiad hwn"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "Adnabod tuedd yn y paragraff hwn"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "Dehonglydd Data"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "Gwneud synnwyr o rifau a siartiau"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "Gludwch ddata, disgrifiadau siartiau neu ganlyniadau a dysgwch beth maen nhw'n ei olygu, beth nad ydynt yn ei olygu, a beth i'w ofyn nesaf."
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "Gludwch y data neu disgrifiwch y siart"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "Gludwch ddata, disgrifiadau siartiau neu ganlyniadau a dysgwch beth maen nhw'n ei olygu, beth nad ydynt yn ei olygu, a beth i'w ofyn nesaf."
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau STEM ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer dehonglydd data gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "Gwneud synnwyr o rifau a siartiau"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "Esbonio'r tabl hwn"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "Beth mae'r arolwg hwn yn ei ddangos?"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "Helpu i ddehongli graff"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "Adeiladwr Cynllun Astudio"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "Creu trefn sy'n gweithio mewn bywyd go iawn"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "Creu cynllun astudio o amgylch eich amser, egni, nodau a mannau gwan."
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "Beth sydd angen i chi ei astudio?"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "Cynllunio"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "Creu cynllun astudio realistig o amgylch eich amser, egni, nodau, mannau gwan, cylchoedd adolygu ac amserlen ymarfer."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "Myfyrwyr a dysgwyr hunanddysgedig sydd angen strwythur heb droi'r cynllun yn restr wirio amhosibl."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "Mae'r adeiladwr yn cydbwyso uchelgais ag adolygu, ymarfer, dyddiau adfer, a'r cam defnyddiol lleiaf nesaf."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "Diffinio'r nod"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "Amserlennu ymarfer"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "Creu cylchoedd adolygu"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "Cynllunio fy wythnos ar gyfer mathemateg"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "Creu trefn Saesneg ddyddiol"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "Cydbwyso ysgol a pharatoi ar gyfer arholiadau"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "Hyfforddwr Arferion"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "Gwneud dysgu'n gyson"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Troi bwriadau yn arferion dysgu bach y gellir eu hailadrodd gyda sbardunau, gwobrau a chynlluniau adfer."
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "Pa arfer dysgu hoffech chi ei ddatblygu?"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "Cynllunio"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Troi bwriadau yn arferion dysgu bach y gellir eu hailadrodd gyda sbardunau, gwobrau a chynlluniau adfer."
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cynllunio ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer hyfforddwr arferion gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "Gwneud dysgu'n gyson"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "Darllen am 20 munud bob dydd"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "Rhoi'r gorau i oedi gyda mathemateg"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "Ymarfer codio bob dydd"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "Hyfforddwr Cymhelliant"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "Ailddechrau pan fydd dysgu'n teimlo'n anodd"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "Dod allan o'r teimlad o fod yn sownd, dod o hyd i gam nesaf llai, ac ailadeiladu momentwm heb euogrwydd."
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "Beth sy'n gwneud dysgu'n anodd ar hyn o bryd?"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "Cynllunio"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "Dod allan o'r teimlad o fod yn sownd, dod o hyd i gam nesaf llai, ac ailadeiladu momentwm heb euogrwydd."
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cynllunio ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer hyfforddwr cymhelliant gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "Ailddechrau pan fydd dysgu'n teimlo'n anodd"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "Rwy'n teimlo fy mod ar ei hôl hi"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "Rwy'n dal i oedi"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "Methais brawf ac rwy'n teimlo'n wael"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "Cynhyrchydd Syniadau Creadigol"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "Cynhyrchu a siapio syniadau gwreiddiol"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Taflu syniadau ar gyfer prosiectau, straeon, dyluniadau, teitlau, arbrofion ac onglau annisgwyl."
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "Am beth ydyn ni'n taflu syniadau?"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "Creadigrwydd"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Taflu syniadau ar gyfer prosiectau, straeon, dyluniadau, teitlau, arbrofion ac onglau annisgwyl."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau creadigrwydd ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer cynhyrchydd syniadau creadigol gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "Cynhyrchu a siapio syniadau gwreiddiol"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "Syniadau ar gyfer prosiect gwyddoniaeth"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "Cysyniadau stori am gyfeillgarwch"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "Agoriadau creadigol ar gyfer cyflwyniad"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "Tiwtor Straeon"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "Dysgu drwy straeon"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "Troi cysyniadau yn straeon, cymeriadau, gwrthdaro a golygfeydd cofiadwy."
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "Beth ddylai ddod yn stori?"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "Creadigrwydd"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "Troi cysyniadau yn straeon, cymeriadau, gwrthdaro a golygfeydd cofiadwy sy'n gwneud syniadau anodd yn haws eu cofio."
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "Dysgwyr sy'n cofio syniadau'n well drwy naratif, cyfatebiaeth, cymeriadau ac enghreifftiau bywiog."
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "Mae'r tiwtor yn trosi deunydd haniaethol yn strwythur stori tra'n cadw'r cysyniad sylfaenol yn weladwy."
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "Dewis y cysyniad"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "Adeiladu stori"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "Esbonio'r wers"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "Dysgu ffracsiynau fel stori"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "Creu stori am ecosystemau"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "Esbonio democratiaeth gyda chymeriadau"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "Labordy Athroniaeth"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "Meddwl yn ofalus am gwestiynau mawr"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "Archwilio hunaniaeth, gwybodaeth, tegwch, rhyddid, hapusrwydd a chwestiynau dwfn eraill drwy resymu gofalus."
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "Pa gwestiwn mawr ydyn ni'n ei archwilio?"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "Y Dyniaethau"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "Archwilio hunaniaeth, gwybodaeth, tegwch, rhyddid, hapusrwydd a chwestiynau dwfn eraill drwy resymu gofalus."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau'r dyniaethau ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer labordy athroniaeth gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "Meddwl yn ofalus am gwestiynau mawr"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "Beth sy'n gwneud rhywbeth yn deg?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "A oes gennym ewyllys rydd?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "Beth yw gwybodaeth?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "Dilemâu Moeseg"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "Ymarfer rhesymu moesol"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Gweithio drwy ddilemâu drwy bwyso a mesur rhanddeiliaid, canlyniadau, dyletswyddau, hawliau a chyfaddawdau."
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "Pa ddilema ddylem ni ei harchwilio?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "Y Dyniaethau"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Gweithio drwy ddilemâu drwy bwyso a mesur rhanddeiliaid, canlyniadau, dyletswyddau, hawliau a chyfaddawdau."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau'r dyniaethau ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer dilemâu moeseg gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "Ymarfer rhesymu moesol"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "AI mewn ystafelloedd dosbarth"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "Profi ar anifeiliaid"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "A all dweud celwydd fyth fod yn iawn?"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "Archwiliwr Daearyddiaeth"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "Deall lleoedd, mapiau a phobl"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Archwilio gwledydd, dinasoedd, afonydd, hinsoddau, mudo, adnoddau, a sut mae daearyddiaeth yn siapio bywyd."
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "Pa le ddylem ni ei archwilio?"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "Y Dyniaethau"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Archwilio gwledydd, dinasoedd, afonydd, hinsoddau, mudo, adnoddau, a sut mae daearyddiaeth yn siapio bywyd."
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau'r dyniaethau ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer archwiliwr daearyddiaeth gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "Deall lleoedd, mapiau a phobl"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "Pam mae dinasoedd ger afonydd?"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "Archwilio'r Himalaya"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "Cymharu India a Japan"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "Efelychydd Economeg"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "Dysgu am ddewisiadau, cymhellion a chyfaddawdau"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "Chwarae gyda marchnadoedd, prinder, cymhellion, polisi a chyllid personol drwy efelychiadau syml."
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "Pa syniad economaidd ddylem ni ei efelychu?"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "Y Dyniaethau"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "Chwarae gyda marchnadoedd, prinder, cymhellion, polisi a chyllid personol drwy efelychiadau syml."
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau'r dyniaethau ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer efelychydd economeg gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "Dysgu am ddewisiadau, cymhellion a chyfaddawdau"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "Efelychu cyflenwad a galw"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "Esbonio chwyddiant"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "Beth sy'n digwydd os bydd trethi'n newid?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "Hanes: Achos ac Effaith"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "Olrhain pam y digwyddodd digwyddiadau"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Dadansoddi digwyddiadau hanesyddol drwy achosion, sbardunau, canlyniadau a phosibiliadau amgen."
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "Pa ddigwyddiad hanesyddol ddylem ni ei olrhain?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "Y Dyniaethau"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Dadansoddi digwyddiadau hanesyddol drwy achosion, sbardunau, canlyniadau a phosibiliadau amgen."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau'r dyniaethau ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer achos ac effaith mewn hanes gyda'i ysgogiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "Olrhain pam y digwyddodd digwyddiadau"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag ysgogiadau enghreifftiol"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i'ch nod"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "Achosion y Rhyfel Byd Cyntaf"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "Pam gwanhaodd yr Ymerodraeth Rufeinig?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "Effeithiau'r wasg argraffu"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "Hyfforddwr Dinasyddiaeth"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "Deall hawliau, llywodraeth a chymdeithas"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "Dysgu am gyfansoddiadau, democratiaeth, etholiadau, llysoedd, hawliau, dyletswyddau a pholisi cyhoeddus."
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "Pa bwnc dinasyddiaeth ddylem ni ei astudio?"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "Y Dyniaethau"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "Dysgu am gyfansoddiadau, democratiaeth, etholiadau, llysoedd, hawliau, dyletswyddau a pholisi cyhoeddus."
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau'r dyniaethau ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, BadgeCheck, CornerDownRight, SearchCheck, Sparkles } from "lucide-react";
 import {
   ArrowLink,
@@ -13,6 +13,7 @@ import {
   comparisonPath,
   getComparisonPages,
 } from "@/lib/content/comparisons";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -25,7 +26,7 @@ import {
 const description =
   "Compare inspir with other learning tools and choose when to use live AI tutoring, public guest modes, prompts, guides, and study workflows.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Tutor Comparisons",
   description,
   alternates: metadataAlternates("/compare"),
@@ -55,6 +56,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/compare");
+}
 
 export default function ComparePage() {
   const pages = getComparisonPages();

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import {
   ArrowUpRight,
   BookOpenCheck,
@@ -34,6 +34,7 @@ import { getSubjectPages, subjectPath } from "@/lib/content/subjects";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
@@ -44,7 +45,7 @@ import {
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "Free AI learning for everyone",
   description:
     "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
@@ -80,6 +81,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/");
+}
 
 const modes = [
   {

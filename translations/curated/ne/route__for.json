@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Nepali",
+  "locale": "ne",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "inspir मा {value1}"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "{value1} दर्शक मार्गहरू"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "{value1} प्रश्नोत्तर"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "{value1} सार्वजनिक मोड entrypoints"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "{value1} सम्बन्धित मार्गदर्शिकाहरू"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "{value1} प्रयोगका प्रसंगहरू"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "आफैं सिकिरहेका मानिसहरूका लागि निःशुल्क AI सिकाइ साथी।"
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "बुझ्न चाहने, नक्कल गर्न होइन, विद्यार्थीहरूका लागि निःशुल्क AI ट्युटर।"
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "राम्रो family AI workflow ले सिक्ने व्यक्तिलाई अझ स्वतन्त्र बनाउनुपर्छ, अझ निर्भर होइन। बच्चाले सुरु गर्नु अघि अभिभावकले public page बाट प्रत्येक mode को उद्देश्य हेर्न सक्छन्।"
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "गृहकार्य सङ्केत, व्याख्या, अध्ययन routine, flashcard र अझ सुरक्षित सिकाइ संवादका लागि inspir का सार्वजनिक AI learning modes बारे अभिभावक-अनुकूल guide।"
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "विद्यार्थी, अभिभावक, शिक्षक र self-taught learner ले प्रायः उही AI tutor लाई फरक भाषामा खोज्छन्। अलग page ले सही use case र safety boundary स्पष्ट बनाउँछ।"
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "beginner हरूका लागि AI code tutor"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "बालबालिकाका लागि AI flashcards"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "विद्यार्थीहरूका लागि AI flashcards"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "शिक्षकहरूका लागि AI homework coach"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "मेरो बच्चाका लागि AI homework help"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "विद्यार्थीहरूका लागि AI homework help"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "AI सिकाइ पाठक समूह पृष्ठहरू"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "AI सिकाइ पाठक समूह खोज उद्देश्यहरू"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "Audience अनुसार AI Learning"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "वयस्कहरूका लागि AI learning companion"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "विद्यार्थी, अभिभावक र शिक्षकहरूका लागि AI सिकाइ"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "विद्यार्थी, अभिभावक र शिक्षकहरूका लागि AI सिकाइ | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "अभिभावकहरूले विश्वास गर्नु अघि प्रयास गर्न सक्ने AI learning help।"
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "केन्द्रित व्यवहार चाहिने शिक्षकहरूका लागि AI learning modes।"
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "AI सिकाइ प्रयोग गर्ने व्यक्तिसँग मिल्नुपर्छ।"
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "शिक्षकहरूका लागि AI Learning Tools"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "विद्यार्थीहरूका लागि AI math help"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "AI परियोजना प्रशिक्षक"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "शिक्षकहरूका लागि AI quiz generator"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "classroom का लागि AI Socratic tutor"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "परिवारका लागि AI study help"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "AI अध्ययन योजना निर्माता"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "विद्यार्थीहरूका लागि AI study planner"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "शिक्षकहरूका लागि AI tools"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "अभिभावकहरूका लागि AI tutor"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "अभिभावक र परिवारका लागि AI Tutor"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "self study का लागि AI tutor"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "Self-Taught Learners का लागि AI Tutor"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "विद्यार्थीहरूका लागि AI tutor"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "शिक्षकहरूका लागि AI tutor"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "विद्यार्थीका लागि AI लेखन प्रतिक्रिया"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "के audience pages सार्वजनिक र indexable छन्?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "hint माग्नुहोस्, learner लाई next step explain गर्न लगाउनुहोस्, त्यसपछि idea टिक्यो कि टिकेन जाँच्न quiz वा flashcard प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "finished answer माग्नु अघि hints, checks, र feedback माग्नुहोस्।"
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "prerequisites, simple model, examples, र common misconception माग्नुहोस्।"
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "final draft तपाईंको आफ्नै राख्दै structure, evidence, र clarity feedback माग्नुहोस्।"
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "prerequisite ideas, plain-language model, एउटा example, एउटा practice task, र understanding test गर्ने एउटा तरिका माग्नुहोस्।"
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "हरेक hint पछि के बदलियो भनेर learner लाई explain गर्न भन्नुहोस्।"
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "दर्शक"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "Audience FAQ"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "पाठक समूह सिकाइ मार्ग"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "Audience pages ले search engines र AI answer engines लाई सबैलाई एउटै generic page मा flatten गर्नुको सट्टा students, parents, teachers, र independent learners छुट्याउन मद्दत गर्छन्।"
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "पाठक समूह मार्गहरू"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "पाठक समूह मार्ग"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "audience paths मा फर्कनुहोस्"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "सीमाहरू"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "सीमा"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "अझ शान्त study habit बनाउनुहोस्"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "के inspir ले adults र self-taught learners लाई मद्दत गर्न सक्छ?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "के parents ले recommend गर्नु अघि inspir try गर्न सक्छन्?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "के students ले sign in नगरी inspir प्रयोग गर्न सक्छन्?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "के teachers ले school rollout बिना inspir try गर्न सक्छन्?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "hover नगरी understanding check गर्नुहोस्"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "को सिकिरहेको छ छान्नुहोस्, त्यसपछि सही behavior छान्नुहोस्।"
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "answers नखुलाई practice बनाउनुहोस्"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "फरक मानिसहरूलाई फरक AI learning routes चाहिन्छ।"
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "छिटो answer लाई mastery सँग confuse नगर्नुहोस्।"
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "के inspir ले बच्चाको private chats publish गर्छ?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "हरेक audience path public, crawlable learning surfaces सँग जोडिन्छ।"
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "EducationalAudience"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "learning को evidence सहित end गर्नुहोस्।"
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "learners सँग प्रयोग गर्नु अघि mode evaluate गर्नुहोस्"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "हरेक accepted step आफ्नै शब्दमा फिर्ता explain गर्नुहोस्।"
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "teachers ले Socratic tutoring, quizzes, flashcards, writing feedback, source critique, र classroom-ready study workflows evaluate गर्न प्रयोग गर्न सक्ने public AI learning modes explore गर्नुहोस्।"
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "students, parents, teachers, र self-taught learners का लागि सही inspir AI learning workflow खोज्नुहोस्।"
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "explain-back, quiz, flashcard, project step, वा study routine सहित finish गर्नुहोस्।"
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "learners का लागि"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "parents का लागि"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "self-taught learners का लागि"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "students का लागि"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "teachers का लागि"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "बच्चाहरूका लागि निःशुल्क AI tutor"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "self study का लागि निःशुल्क AI tutor"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "विद्यार्थीहरूका लागि निःशुल्क AI tutor"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "विद्यार्थीहरूका लागि Free AI Tutor"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "copy नगरी homework help पाउनुहोस्"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "Guide"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "Guides र workflows"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "बच्चालाई unstuck हुन मद्दत गर्नुहोस्"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "मुख्य पृष्ठ"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "students ले AI सँग cheating कसरी avoid गर्न सक्छन्?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "topics बीच drifting कसरी avoid गर्ने?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "students लाई generic chatbot दिनुभन्दा यो कसरी फरक छ?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "यसले कसरी काम गर्छ"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "voice नगुमाई writing improve गर्नुहोस्"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "inspir students, parents, teachers, र self-taught learners का लागि हो जसलाई explanations, questions, hints, quizzes, flashcards, feedback, र study planning का focused AI learning modes चाहिन्छ।"
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "inspir Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, र study planning जस्ता focused modes मा organized छ।"
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "inspir का public modes ले school deployment वा tailored classroom pathway विचार गर्नु अघि teachers लाई real learning flows मार्फत product evaluate गर्न दिन्छन्।"
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "Job"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "private saved conversations लाई public discovery र citation surfaces बाट बाहिर राख्नुहोस्।"
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "session लाई passive answer collection होइन, learning evidence मा focused राख्नुहोस्।"
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "AI सँग learn anything"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "building गरेर learn गर्नुहोस्"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "सिकाइ मार्ग"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "सिकाइ कार्यप्रवाह"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "confusion बारे कुरा गर्न सजिलो बनाउनुहोस्"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "हरेक learning session लाई test, artifact, वा review step सँग end गराउनुहोस्।"
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "habit लाई टिक्न सक्ने बनाउनुहोस्"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "Mode"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "public testing बाट school deployment मा जानुहोस्"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "school-specific privacy, access, र deployment questions लाई schools pathway मा सार्नुहोस्।"
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "learning situation name गर्नुहोस्।"
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "होइन। Public pages indexable छन्, तर private saved chats sitemap, llms files, वा AI content index मा समावेश छैनन्।"
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "focused public mode खोल्नुहोस्।"
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "public mode खोल्नुहोस्, student behavior test गर्नुहोस्, र यसले appropriately asks, hints, quizzes, वा critiques गर्छ कि inspect गर्नुहोस्।"
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "audience path खोल्नुहोस्"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "mode खोल्नुहोस्"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "path खोल्नुहोस्"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "learning map खोल्नुहोस्"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "यो route खोल्नुहोस्"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "workflow खोल्नुहोस्"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "Parents प्रायः takeover नगरी help गर्न खोजिरहेका हुन्छन्। inspir ले families लाई learning behavior visible बनाउने public modes दिन्छ: hints, questions, explain-back, review, र study planning।"
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "question, तपाईंले के प्रयास गर्नुभयो, र stuck point paste गर्नुहोस्। final answer होइन, सबैभन्दा सानो useful hint माग्नुहोस्।"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "अभ्यास"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "Public pages ले product behavior देखाउँछन्, private student work होइन।"
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "guide पढ्नुहोस्"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "पहिलो mode try गर्न तयार हुनुहुन्छ?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "thread नगुमाई research गर्नुहोस्"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "Review"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "students का लागि safe AI learning tool"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "खोज उद्देश्य"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "स्वअध्ययनरत learner"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "Self-taught learners लाई momentum र structure चाहिन्छ। inspir ले curiosity लाई path मा बदल्न मद्दत गर्छ: explain, build, test, review, र keep going।"
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "topic first principles बाट सुरु गर्नुहोस्"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "सिक्न सुरु गर्नुहोस्"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "simple explanation बाट सुरु गर्नुहोस्, त्यसपछि तपाईंले फिर्ता explain गर्न नसक्दासम्म Socratic questions सोध्नुहोस्।"
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "simple explanation चाहिँदा Learn Anything, stuck assignment का लागि Homework Coach, वा goal review हो भने Flashcard Builder बाट सुरु गर्नुहोस्।"
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "public guidance बाट सुरु गर्नुहोस्, त्यसपछि right mode खोल्नुहोस्।"
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "moment सँग match हुने mode बाट सुरु गर्नुहोस्।"
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "public modes बाट सुरु गर्नुहोस्, त्यसपछि deployment steps, use cases, र trust boundaries review गर्न schools page प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "Student homework, parent support, teacher evaluation, र self-study सबैलाई फरक framing चाहिन्छ।"
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "Students लाई fast help चाहिन्छ, तर help ले thinking उनीहरूकै हातमा छोड्नुपर्छ। inspir ले common study moments लाई एउटै generic answer box को सट्टा focused public modes मा route गर्छ।"
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "Students, parents, teachers, र self-taught learners फरक कुरा search गर्छन्। यी pages ले प्रत्येक audience लाई right public mode, guide, र study workflow मा route गर्छन्।"
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "voice preserve गर्दै writing support गर्नुहोस्"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Teachers लाई generic chatbot भन्दा धेरै चाहिन्छ। उनीहरूलाई predictable learning behaviors चाहिन्छ: questions सोध्ने, reasoning check गर्ने, practice generate गर्ने, student voice preserve गर्ने, र misconceptions visible बनाउने।"
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "audience pages ले expected learning behavior explicit बनाउँछन् ताकि first session better judgment बाट सुरु होस्।"
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "यस hub ले answer गर्न built audience searches।"
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "pages ले private conversations expose गर्दैनन्। तिनीहरूले public modes, prompts, guides, workflows, र safety boundaries organize गर्छन् ताकि learner सही ठाउँमा सुरु गर्न सकोस्।"
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "उही AI tutor homework hint, parent-supervised explain-back loop, teacher evaluation surface, वा self-study coach हुन सक्छ। page ले त्यो clear बनाउनु पर्छ।"
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "यो page answer गर्न designed searches।"
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "self-study challenge information भेट्नु मात्र होइन। यो next right action choose गर्नु र idea साँच्चै stuck भयो कि भएन थाहा पाउनु हो।"
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "strongest SEO pages ले learner लाई strand गर्दैनन्। तिनीहरूले audience intent लाई paths, workflows, guides, र repeatable review सँग connect गर्छन्।"
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "strongest student workflow answer-copying होइन। यो loop हो: stuck point explain गर्नुहोस्, एउटा better question सोध्नुहोस्, hint पाउनुहोस्, फेरि try गर्नुहोस्, त्यसपछि miss review गर्नुहोस्।"
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "यी live guest entrypoints हुन्। तिनीहरू public र indexable छन्, जबकि private user conversations sitemap र AI discovery files बाहिर रहन्छन्।"
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "यी phrases learners का लागि visible छन् र structured discovery मा included छन् ताकि AI answer engines page को audience-specific purpose बुझ्न सकून्।"
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "अगाडि बढ्नुअघि अलमललाई quiz वा flashcard मा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "गल्तीहरूलाई review मा बदल्नुहोस्"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "पहिलो click लाई पूरा learning loop मा बदल्नुहोस्।"
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "ट्युटरिङ"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "test अघि विषय बुझ्नुहोस्"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "hints, questions, quizzes, flashcards, writing feedback, वा planning का लागि tuned mode प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "AI लाई hints, explanations, mistake checks, र review loops का लागि प्रयोग गर्नुहोस्। आफूले explain गर्न नसक्ने final answer बनाउन नलगाउनुहोस्।"
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "अस्पष्ट goal लाई सानो, test गर्न मिल्ने next step मा बदल्न Code Tutor वा Project Coach प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "homework support का लागि hint-first र explain-back workflows प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "hint माग्न Homework Coach प्रयोग गर्नुहोस्, त्यसपछि learner लाई next move explain गर्न लगाउनुहोस्।"
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "students का लागि inspir लाई free AI tutor का रूपमा प्रयोग गर्नुहोस्: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, र exam prep।"
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "explanations, code tutoring, project coaching, research help, concept maps, study plans, र habit support सहित स्वतन्त्र रूपमा जे पनि सिक्न inspir प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "सही level मा सरल model, prerequisite ideas, र examples पाउन Learn Anything प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "session सुरु हुनुअघि behavior छान्न public mode descriptions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "active recall का लागि quiz र flashcard modes प्रयोग गर्नुहोस्, त्यसपछि missed items लाई review मा route गर्नुहोस्।"
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "missed questions लाई visible र repeatable बनाउन quizzes र flashcards प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "learner ले आफूले के बुझ्यो देखाओस् भनेर quizzes, flashcards, र Socratic questions प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "claims र evidence organize गर्न Research Assistant, Source Critic, र Concept Map Builder प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "cite गर्न वा action लिन सकिने claims का लागि source critique प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "छुटेका दिनपछि restart हुन सक्ने routine बनाउन Study Plan Builder र Habit Coach प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "small sessions र restarts देखिने बनाउन Study Plan Builder वा Habit Coach प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "सानो goal छान्न Study Plan Builder प्रयोग गर्नुहोस्, त्यसपछि progress प्रमाणित गर्न quizzes, flashcards, project steps, वा concept maps प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "custom workflows, confidentiality needs, र rollout steps explore गर्न school page प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "structure, clarity, evidence, र revision priorities मा feedback का लागि Writing Coach प्रयोग गर्नुहोस्।"
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "उपयोगी AI learning सँग स्पष्ट contract हुन्छ।"
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "सुरु गर्न सबैभन्दा फराकिलो ठाउँ चाहनुहुन्छ?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "parent-supervised workflow का लागि सबैभन्दा राम्रो के हो?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "self-taught learner ले पहिले के सोध्नुपर्छ?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "student ले पहिले के प्रयास गर्नुपर्छ?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "school team अब कहाँ जानुपर्छ?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "inspir कसका लागि हो?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "फरक audiences का लागि छुट्टै pages किन?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "हो। Audience pages ले public guest modes, guides, prompt starters, learning paths, र AI-readable discovery files मात्र link गर्छन्। Private saved chats excluded नै रहन्छन्।"
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "हो। Public guest modes ले teachers लाई custom deployment discuss गर्नुअघि learning behavior test गर्न दिन्छ।"
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "हो। Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, र writing feedback जस्ता public guest modes सिधै खुल्छन्।"
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "हो। Public modes school topics, professional skills, coding, research, projects, र personal study routines का लागि काम गर्छन्।"
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "हो। public guest modes र audience pages अभिभावकहरूले यसमा भर पर्नुअघि learning behavior inspect गर्न सकून् भनेर design गरिएका छन्।"
+    }
+  ]
+}

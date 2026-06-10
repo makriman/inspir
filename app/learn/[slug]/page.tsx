@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { AlertTriangle, ArrowUpRight, CheckCircle2, CornerDownRight, Sparkles } from "lucide-react";
 import {
@@ -15,6 +15,7 @@ import {
   learningPathHref,
   type HomepageLearningPath,
 } from "@/lib/content/landing";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
@@ -93,7 +94,7 @@ export async function generateMetadata({ params }: LearningPathPageProps): Promi
     description: path.seoDescription,
   });
 
-  return {
+  return localizeMarketingMetadata({
     title: path.seoTitle,
     description: path.seoDescription,
     alternates: metadataAlternates(learningPathHref(path.slug)),
@@ -111,7 +112,7 @@ export async function generateMetadata({ params }: LearningPathPageProps): Promi
       description: path.seoDescription,
       images: [image.url],
     },
-  };
+  }, learningPathHref(path.slug));
 }
 
 export default async function LearningPathPage({ params }: LearningPathPageProps) {

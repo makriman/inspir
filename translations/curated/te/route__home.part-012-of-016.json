@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Telugu",
+  "locale": "te",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 12,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "అధ్యయన నైపుణ్యాలు"
+    },
+    {
+      "key": "site.c0be267ae7b9421ba9",
+      "source": "Study skills guides",
+      "value": "అధ్యయన నైపుణ్యాల మార్గదర్శి‌లు"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "స్టడీ స్ట్రీక్స్"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "స్టడీ టైమర్"
+    },
+    {
+      "key": "site.3b1f7ac98100c2db8d",
+      "source": "study with AI",
+      "value": "AIతో అధ్యయనం"
+    },
+    {
+      "key": "site.3c328d5333fc21a14a",
+      "source": "Study with AI without cheating",
+      "value": "మోసం చేయకుండా AIతో అధ్యయనం చేయండి"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "అధ్యయన పని ప్రవాహంలు that connect గెస్ట్ విధానాలు, సూచనలు, అభ్యాసం, and సంబంధిత మార్గదర్శి‌లు."
+    },
+    {
+      "key": "site.f44d7e8cc3553fbecb",
+      "source": "Studying with AI works best when the tool keeps you in the driver's seat.",
+      "value": "AIతో అధ్యయనం ఉత్తమంగా పనిచేస్తుంది సాధనం నియంత్రణను మీ చేతుల్లో ఉంచినప్పుడు."
+    },
+    {
+      "key": "site.066ca7bdd036368736",
+      "source": "Subject hub",
+      "value": "విషయ హబ్"
+    },
+    {
+      "key": "site.2feff266cc115ac2a6",
+      "source": "Subject hubs",
+      "value": "విషయ హబ్‌లు"
+    },
+    {
+      "key": "site.44c887b5d77a86fb07",
+      "source": "subject hubs mapped to learner intent",
+      "value": "అభ్యాసకుడి ఉద్దేశ్యానికి మ్యాప్ చేసిన విషయం హబ్‌లు"
+    },
+    {
+      "key": "site.d0921b314798adbd36",
+      "source": "Subject hubs organize public AI learning modes by learning intent, such as math, writing, coding, history, homework, and exam prep. Each hub links to live guest modes, prompt starters, guides, workflows, and review loops.",
+      "value": "విషయ హబ్‌లు ప్రత్యక్ష సహాయాన్ని లోతైన మార్గదర్శి‌లు, లెర్నింగ్ మార్గాలు, పని ప్రవాహంలు, పునరావృత సమీక్ష దశలతో కలుపుతాయి."
+    },
+    {
+      "key": "site.edb0f4eb8d8e6cc0b9",
+      "source": "Subscriptions and Competitions",
+      "value": "సబ్‌స్క్రిప్షన్‌లు మరియు పోటీలు"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "విజయం: అభ్యాసకుడు పొందేది స్పష్టమైన మానసిక నమూనా, తదుపరి దశ, and ముందుకు సాగేందుకు ఆత్మవిశ్వాసం."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "చర్చను సంగ్రహించండి"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "అధ్యాయం 2 సారాంశం"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "పెద్ద టెక్స్ట్‌ను ముఖ్యమైన అంశాలు, నిర్మాణం, నిర్వచనాలు, ఉదాహరణలు మరియు రీకాల్ ప్రశ్నలుగా సంగ్రహించు."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "నా పురోగతిని సంగ్రహించండి"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "నా రఫ్ నోట్స్‌ను సంగ్రహించండి"
+    },
+    {
+      "key": "site.8b0fbf296ebcf69e30",
+      "source": "summarize notes AI",
+      "value": "గమనికలను సారాంశం చేసే AI"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "నమూనాలను సారాంశం చేయండి, ముఖ్య అంశాలను స్పష్టం చేయండి, బలహీన ప్రాంతాలను గుర్తించండి, తదుపరి చర్యలను సూచించండి."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "నమూనాలను సారాంశం చేయండి, ముఖ్య అంశాలను స్పష్టం చేయండి, బలహీన ప్రాంతాలను గుర్తించండి, తదుపరి చర్యలను సూచించండి."
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "సందర్భాన్ని సారాంశం చేయండి"
+    },
+    {
+      "key": "site.68fdf8f5a74ec70a64",
+      "source": "Summarize the tradeoff",
+      "value": "ట్రేడ్‌ఆఫ్‌ను సారాంశం చేయండి"
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "ఈ వ్యాసాన్ని సంగ్రహించు"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "విజయాలు, లోపాలు మరియు వచ్చే వారం ప్రణాళికను సంగ్రహించండి"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "నమూనాలను సారాంశం చేయండి, ముఖ్య అంశాలను స్పష్టం చేయండి, బలహీన ప్రాంతాలను గుర్తించండి, తదుపరి చర్యలను సూచించండి."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "నమూనాలను సారాంశం చేయండి, ముఖ్య అంశాలను స్పష్టం చేయండి, బలహీన ప్రాంతాలను గుర్తించండి, తదుపరి చర్యలను సూచించండి."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "నమూనాలను సారాంశం చేయండి, ముఖ్య అంశాలను స్పష్టం చేయండి, బలహీన ప్రాంతాలను గుర్తించండి, తదుపరి చర్యలను సూచించండి."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "నమూనాలను సారాంశం చేయండి, ముఖ్య అంశాలను స్పష్టం చేయండి, బలహీన ప్రాంతాలను గుర్తించండి, తదుపరి చర్యలను సూచించండి."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "అభ్యాసం, ఏకాగ్రత, ప్రేరణ, నిధుల సహాయం అవసరమైన సముదాయాలకు ఉపయోగకరమైన మద్దతు ఇవ్వండి."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "అభ్యాసం, ఏకాగ్రత, ప్రేరణ, నిధుల సహాయం అవసరమైన సముదాయాలకు ఉపయోగకరమైన మద్దతు ఇవ్వండి."
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "అభ్యాసం, ఏకాగ్రత, ప్రేరణ, నిధుల సహాయం అవసరమైన సముదాయాలకు ఉపయోగకరమైన మద్దతు ఇవ్వండి."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "అభ్యాసం, ఏకాగ్రత, ప్రేరణ, నిధుల సహాయం అవసరమైన సముదాయాలకు ఉపయోగకరమైన మద్దతు ఇవ్వండి."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "అభ్యాసం, ఏకాగ్రత, ప్రేరణ, నిధుల సహాయం అవసరమైన సముదాయాలకు ఉపయోగకరమైన మద్దతు ఇవ్వండి."
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "పాఠ్యేతర అభ్యాసం, విద్యా సాధన, కుతూహలానికి మద్దతు ఇస్తుంది."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "తప్పుదారణను బయటపెట్టండి, దాన్ని సరైన నమూనాతో పోల్చండి, and అభ్యాసం transfer."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "జవాబును నిష్క్రియంగా చదవడం బదులు, ఊహలను బయటపెట్టి లోటులను నింపేందుకు ప్రశ్నలలోకి మారండి."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "సిండికేటెడ్ కవరేజ్ కోసం విస్తృత వినియోగదారుల చేరిక."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "నోట్స్‌ను ట్యాగ్ చేయండి, క్రమబద్ధీకరించండి మరియు అనుసంధానించండి"
+    },
+    {
+      "key": "site.9899cc2856ebc766b7",
+      "source": "Talk to a historical figure",
+      "value": "చారిత్రక వ్యక్తితో మాట్లాడండి"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "సృష్టించిన సంభాషణను పత్రబద్ధమైన ఉటంకణం నుంచి వేరు ఉంచుతూ చారిత్రక వ్యక్తితో మాట్లాడండి."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "చారిత్రక వ్యక్తితో మాట్లాడండి"
+    },
+    {
+      "key": "site.f498d9559a8e2aaedd",
+      "source": "Talk to a historical person prompts and study loop",
+      "value": "Talk to a historical person సూచనలు మరియు అధ్యయన లూప్"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "క్లియోపేట్రాతో మాట్లాడండి"
+    },
+    {
+      "key": "site.75f35e209bf368c2f5",
+      "source": "talk to historical figure AI",
+      "value": "చారిత్రక వ్యక్తితో మాట్లాడే AI"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "చారిత్రక వ్యక్తులతో మాట్లాడే AI"
+    },
+    {
+      "key": "site.8479e8174d72f35dd6",
+      "source": "Talk To Historical Figures With AI",
+      "value": "AIతో చారిత్రక వ్యక్తులతో మాట్లాడండి"
+    },
+    {
+      "key": "site.fd491be7a558f38bc7",
+      "source": "Talk To Historical Figures With AI is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "AIతో చారిత్రక వ్యక్తులతో మాట్లాడడం అనేది సమాధానాల సేకరణ కాదు; చారిత్రక సందర్భం, విలువలు, పరిమితుల మధ్య ప్రశ్నించడం నేర్పే కేంద్రీకృత లెర్నింగ్ విధానం."
+    },
+    {
+      "key": "site.3183f69986b7ceed7c",
+      "source": "Talk To Historical Figures With AI: practical guide",
+      "value": "Talk To Historical Figures With AI: ఆచరణాత్మక మార్గదర్శి"
+    },
+    {
+      "key": "site.c9a1ac167eee122c72",
+      "source": "Talking to a historical figure is not magic access to the past. It is a learning format.",
+      "value": "చారిత్రక వ్యక్తితో మాట్లాడటం గతానికి మాయాజాల యాక్సెస్ కాదు; అది ఒక అభ్యాస ఫార్మాట్."
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "పని టైమర్"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "టాస్క్ టైమర్"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "భాగాల్ని కథలా నేర్పుకోండి"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "నన్ను ఫైనాన్షియల్ మోడలింగ్ నేర్పుకోండి"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "వడ్డీ ఎలా పనిచేస్తుందో నాకు నేర్పు"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "నాకూ పోర్టర్ ఫైవ్ ఫోర్స్ బోధించండి"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "నాకు Python లూపులను నేర్పించు"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "రిధమ్ ప్రాథమికాలు బోధించండి"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "ఉపాధ్యాయులు"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.ece53407c8b8eb8957",
+      "source": "Teachers or parents evaluating focused AI learning behaviors before a school deployment.",
+      "value": "స్పష్టమైన ఉదాహరణలు, ప్రశ్నలు, ఆధారాలు, అభ్యాసంతో అంశాన్ని నేర్పండి."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Tell a scene, pause కోసం prediction or reflection, and connect back to the concept."
+    },
+    {
+      "key": "site.7d1142e4547e426c6b",
+      "source": "Tell the mode what you are trying to learn or produce.",
+      "value": "Tell the విధానం what you are trying to learn or produce."
+    },
+    {
+      "key": "site.03772c455a07fe5998",
+      "source": "Ten focused questions give immediate feedback and a simple review path.",
+      "value": "Ten focused questions give immediate feedback and a simple పునఃసమీక్ష path."
+    },
+    {
+      "key": "site.2ee85218866a19e0d9",
+      "source": "Termination",
+      "value": "రద్దు"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "నిబంధనలు"
+    },
+    {
+      "key": "site.7d8a0b2b8dd1648336",
+      "source": "Terms And Conditions",
+      "value": "నిబంధనలు మరియు షరతులు"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "సమీక్షకు ముందు పరీక్షించండి"
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "టెస్ట్ బిల్డర్"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "నాకు ద్రవ్యోల్బణం యొక్క అవగాహనను పరీక్షించండి"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "వాదనను పరీక్షించండి"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "మీ తర్కాన్ని పరీక్షించండి"
+    },
+    {
+      "key": "site.8830e1bafdc17f85ed",
+      "source": "Testing a position, seeing both sides, and learning what makes an argument stronger.",
+      "value": "ఒక స్థితిని పరీక్షించడం, రెండు వైపులనూ చూడడం, and వాదనను బలంగా చేసే అంశాలను నేర్చుకోవడం."
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "టెక్స్ట్ సమ్మరైజర్"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "టెక్స్ట్-ముందు డిస్కవరీ ఫైల్ కోసం AI సమాధాన ఇంజిన్‌లు, అసిస్టెంట్‌లు, విద్యావేత్తలు, and ఉల్లేఖన సాధనాలు."
+    },
+    {
+      "key": "site.a151d8eb37c7baff02",
+      "source": "Thank you for choosing to be part of our community at Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), doing business as inspir (\"inspir\", \"we\", \"us\", \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices concerning your personal information, please contact us at support@inspir.app. When you visit our website https://web.archive.org/web/20221016155759/https://www.inspir.app, use our mobile applications, as the case may be (the \"App\") and more generally, use any of our services (the \"Services\", which include the Website and App), we appreciate that you are trusting us with your personal information. We take your privacy very seriously. In this privacy notice, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy notice that you disagree with, please discontinue the use of our Services immediately. This privacy notice applies to all information collected through our Services (which, as described above, includes our Website and App), as well as, any related services, sales, marketing or events. Please read this privacy notice carefully as it will help you understand what we do with the information that we collect. Our Terms and Conditions govern all use of our Service and together with the Privacy Policy constitute your agreement with us (“Agreement”).",
+      "value": "ఈ విభాగం సేవ, గోప్యత, చెల్లింపులు, వినియోగదారు హక్కులు లేదా చట్టపరమైన నిబంధనలను వివరిస్తుంది. వర్తించే చోట inspir, Great Indian Company, URLs, ఇమెయిల్ చిరునామాలు, GST వివరాలు మరియు చట్టపరమైన పదాలను అసలు రూపంలో ఉంచుతూ, వినియోగదారులు తమ బాధ్యతలు, డేటా వినియోగం, భద్రతా పరిమితులు మరియు సేవా షరతులను అర్థం చేసుకోవాలని చెబుతుంది."
+    },
+    {
+      "key": "site.cb9e42e0794ef92f15",
+      "source": "That combination is more useful than either layer alone. A plain encyclopedia summary can be forgettable. Pure roleplay can be misleading. Voice plus evidence creates a better learning surface.",
+      "value": "That combination is more useful than either layer alone. A plain encyclopedia summary can be forgettable. Pure పాత్రాభినయం can be misleading. Voice plus evidence creates a better అభ్యాసం surface."
+    },
+    {
+      "key": "site.24bfafe7fcd793bad9",
+      "source": "That difference shows up in the flow. Instead of one giant response, the best sessions move through a loop: set a goal, try something, get feedback, repair the weak spot, and choose the next action.",
+      "value": "ఆ తేడా ప్రవాహంలో కనిపిస్తుంది. ఒక భారీ సమాధానం బదులు, ఉత్తమ సెషన్‌లు ఒక చక్రంలా సాగుతాయి: లక్ష్యం పెట్టుకోవడం, ఏదో ప్రయత్నించడం, అభిప్రాయం పొందడం, బలహీన భాగాన్ని సరిచేయడం, తర్వాతి చర్యను ఎంచుకోవడం."
+    },
+    {
+      "key": "site.268eb13efa27e9b28d",
+      "source": "That does not replace teachers, communities, books, or schools. It gives learners another route in. It can help a student start homework, a parent explain a concept, a self-taught builder learn code, or a curious person follow a question that might otherwise disappear.",
+      "value": "అది ఉపాధ్యాయులు, సమాజాలు, పుస్తకాలు లేదా పాఠశాలలను భర్తీ చేయదు. అది విద్యార్థులకు ఇంకొక ప్రవేశ మార్గాన్ని ఇస్తుంది. ఒక విద్యార్థి హోంవర్క్ ప్రారంభించడానికి, తల్లిదండ్రులు ఒక భావనను వివరించడానికి, స్వయంగా నేర్చుకునే వ్యక్తి కోడ్ నేర్చుకోవడానికి, లేదా ఆసక్తి ఉన్న వ్యక్తి లేకపోతే మాయమైపోయే ప్రశ్నను కొనసాగించడానికి ఇది సహాయపడుతుంది."
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "ఆ చివరి సారాంశం ముఖ్యం. ఆ ఆలోచనను మీరు తిరిగి వివరించినప్పుడు, ఏది పక్కాగా ఉంది, ఏది ఇంకా AI నుంచి అప్పుగా తీసుకున్నదే అనేది బయటపడుతుంది."
+    },
+    {
+      "key": "site.0470f1fc951f113fe7",
+      "source": "That focus matters. A general chatbot can answer almost anything, but a learning mode gives the conversation a shape. It nudges you toward the kind of thinking, practice, feedback, or exploration that helps the idea stick.",
+      "value": "That focus matters. A general chatbot can answer almost anything, but a అభ్యాసం విధానం gives the conversation a shape. It nudges you toward the kind of thinking, అభ్యాసం, feedback, or exploration that helps the idea stick."
+    },
+    {
+      "key": "site.6cdfaef656eb34290d",
+      "source": "That gap is why an AI learning companion matters. A good companion does more than answer a question. It helps a learner choose a starting point, explains the idea in plain language, checks whether it made sense, and keeps going when the first explanation does not land.",
+      "value": "That gap is why an AI అభ్యాసం companion matters. A good companion does more than answer a question. It helps a learner choose a starting point, explains the idea in plain language, checks whether it made sense, and keeps going when the first explanation does not land."
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "inspir యొక్క ఫ్లాష్ కార్డ్ బిల్డర్ ఈ రివెల్-అండ్-రేట్ లూప్ కోసం రూపొందించబడిందిః మొదట ప్రయత్నించండి, రెండవది రివెల్ చేయండి, నిజాయితీగా రేట్ చేయండి, ఆపై బలహీనమైన కార్డులను ముందుగానే తిరిగి తీసుకురండి."
+    },
+    {
+      "key": "site.589e7677c2025f653b",
+      "source": "That is a warning sign. Recognition is not recall. Reading a clear explanation is not the same as being able to solve a new problem, write a paragraph, or answer a question under pressure.",
+      "value": "అది హెచ్చరిక సంకేతం. గుర్తించడం అంటే జ్ఞాపకం తెచ్చుకోవడం కాదు. స్పష్టమైన వివరణ చదవడం, కొత్త సమస్యను పరిష్కరించడం, పేరా రాయడం, లేదా ఒత్తిడిలో ప్రశ్నకు సమాధానం ఇవ్వగలగడం వంటిదే కాదు."
+    },
+    {
+      "key": "site.01543c7d158fee3694",
+      "source": "That is especially important for homework. The useful question is not \"Can AI produce the answer?\" It usually can. The useful question is \"Can AI help the learner understand the path to the answer?\" That is why the guide on studying with AI without cheating yourself focuses on hints, checks, and transfer practice.",
+      "value": "ఇది హోంవర్క్ విషయంలో ప్రత్యేకంగా ముఖ్యం. ఉపయోగకరమైన ప్రశ్న \"AI సమాధానం ఇవ్వగలదా?\" కాదు; సాధారణంగా అది ఇవ్వగలదు. ఉపయోగకరమైన ప్రశ్న \"సమాధానానికి వెళ్లే మార్గాన్ని విద్యార్థి అర్థం చేసుకోవడానికి AI సహాయపడగలదా?\" అన్నదే. అందుకే AIతో నిజాయితీగా చదవడం గురించి ఉన్న మార్గదర్శి సూచనలు, తనిఖీలు, బదిలీ అభ్యాసంపై దృష్టి పెడుతుంది."
+    },
+    {
+      "key": "site.e50e170a860c454100",
+      "source": "That is how inspir approaches historical conversation: a persona card, an in-character reply, and context notes that keep imagination connected to evidence.",
+      "value": "చారిత్రక సంభాషణను inspir ఇలా చూస్తుంది: ఒక వ్యక్తిత్వ కార్డ్, పాత్రలో ఉన్న సమాధానం, అలాగే ఊహను ఆధారాలతో కలిపి ఉంచే సందర్భ గమనికలు."
+    },
+    {
+      "key": "site.3e1b806040630fa184",
+      "source": "That is the standard inspir is aiming for: learning that feels accessible, personal, playful, and useful for anyone with curiosity and an internet connection.",
+      "value": "inspir లక్ష్యంగా పెట్టుకున్న ప్రమాణం ఇదే: జిజ్ఞాసా మరియు ఇంటర్నెట్ ఉన్న ఎవరికి అయినా అందుబాటులోగా, వ్యక్తిగతంగా, సరదాగా, ఉపయోగకరంగా అనిపించే అభ్యాసం."
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "That is the strength of Socratic అభ్యాసం. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "That is what inspir's సోక్రటిక్ మార్గదర్శనం విధానం is కోసం నిర్మించబడింది: one question at a time, తో hints before answers and synthesis after genuine thinking."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation కోసం the evidence that the learner is actually building the idea."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "That is why సక్రియ స్మరణ matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work."
+    },
+    {
+      "key": "site.7b4f39d4e67c8e463f",
+      "source": "That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with Learn Anything. If you want to reason through a concept instead of being lectured, use Socratic Instruction. If you are stuck on an assignment, Homework Coach is a better fit than a generic answer engine. The format should serve the learning job.",
+      "value": "అందుకే inspir అభ్యాస పనులను ప్రజా విధానాలుగా వేరు చేస్తుంది. మృదువైన వివరణ కావాలంటే ఏదైనా నేర్చుకోండి తో ప్రారంభించండి. ఉపన్యాసం వినడం కాకుండా ఒక భావనపై ఆలోచిస్తూ ముందుకు వెళ్లాలంటే సోక్రటిక్ మార్గదర్శనం ఉపయోగించండి. పనిలో ఇరుక్కుపోతే సాధారణ సమాధాన యంత్రం కంటే హోంవర్క్ మార్గదర్శి సరైనది. రూపం అభ్యాస పనికి సేవ చేయాలి."
+    },
+    {
+      "key": "site.39bd49585733a4b7c0",
+      "source": "That kind of questioning turns history from a list into a context.",
+      "value": "ఆ రకమైన ప్రశ్నించడం చరిత్రను జాబితా నుంచి సందర్భంగా మార్చుతుంది."
+    },
+    {
+      "key": "site.8319e387c9c67aabff",
+      "source": "That loop appears across the platform. Math Step Coach breaks a problem into steps. Flashcard Builder turns notes into recall practice. Quiz Me On Trivia adds pressure-tested retrieval. Writing Coach helps improve a draft without replacing the writer.",
+      "value": "ఆ చక్రం ప్లాట్‌ఫారమ్ అంతటా కనిపిస్తుంది. గణిత దశల మార్గదర్శి సమస్యను దశలుగా విభజిస్తుంది. ఫ్లాష్‌కార్డ్ నిర్మాణకర్త గమనికలను స్మరణాభ్యాసంగా మారుస్తుంది. సామాన్య జ్ఞానంపై నన్ను క్విజ్ చేయండి ఒత్తిడిలో గుర్తుచేసే అభ్యాసాన్ని జోడిస్తుంది. రచయితను భర్తీ చేయకుండా ముసాయిదాను మెరుగుపరచడానికి రైటింగ్ కోచ్ సహాయపడుతుంది."
+    },
+    {
+      "key": "site.bad49c0caffac284bf",
+      "source": "That loop is slower than copying, but it is much faster than staying confused.",
+      "value": "ఆ చక్రం కాపీ చేయడం కంటే నెమ్మదిగా ఉంటుంది, కానీ అయోమయంలోనే ఉండిపోవడం కంటే చాలా వేగంగా ముందుకు తీసుకెళ్తుంది."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "That rhythm is especially useful కోసం abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure."
+    },
+    {
+      "key": "site.27dab9808cd949861d",
+      "source": "The AI should separate character from evidence. It can answer in a historically grounded voice, but it should also add notes when records are incomplete, interpretations differ, or the response is a reconstruction.",
+      "value": "AI పాత్రను ఆధారాల నుంచి వేరు చేయాలి. అది చారిత్రకంగా ఆధారపడిన స్వరంలో సమాధానం ఇవ్వగలదు, కానీ రికార్డులు అసంపూర్ణంగా ఉన్నప్పుడు, వ్యాఖ్యానాలు భిన్నంగా ఉన్నప్పుడు, లేదా సమాధానం పునర్నిర్మాణం అయినప్పుడు గమనికలు కూడా జోడించాలి."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "ఈ యాప్ సోక్రటిక్ ప్రశ్నలు, హోంవర్క్ సూచనలు, ప్రశ్నోత్తర పరీక్షలు, ఫ్లాష్ కార్డ్లు, రోల్ ప్లే, ప్లానింగ్ వంటి బోధన ప్రవర్తనల చుట్టూ నిర్వహించబడుతుంది."
+    },
+    {
+      "key": "site.ce7d73f3a107aa5b1d",
+      "source": "The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "అనువర్తనం, పాత్రలో సంభాషణను రికార్డుల గురించి సంక్షిప్త సందర్భ టీప్పణల నుండి వేరుచేసుతుంది మరియు అనిశ్చితిని సూచిస్తుంది."
+    },
+    {
+      "key": "site.9e0e0122b7452f3c5c",
+      "source": "The best AI learning sessions are not one long answer. They look more like a loop:",
+      "value": "The best AI అభ్యాసం sessions are not one long answer. They look more like a loop:"
+    },
+    {
+      "key": "site.1a1cf3c6d5b17b8a3f",
+      "source": "The best homework help reduces friction without removing the student's responsibility to reason, explain, and revise.",
+      "value": "ఉత్తమ హోంవర్క్ సహాయం విద్యార్థి ఆలోచించడం, వివరించడం, సవరించడం అనే బాధ్యతను తీసేయకుండా అడ్డంకిని తగ్గిస్తుంది."
+    },
+    {
+      "key": "site.06220ee349c07fc1d9",
+      "source": "The best learning sessions are adjustable. Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "The best అభ్యాసం sessions are adjustable. Cards ask one thing at a time and include traps so పునఃసమీక్ష builds understanding, not just recognition."
+    },
+    {
+      "key": "site.c20e2669eb9a8307b3",
+      "source": "The best learning sessions are adjustable. Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example.",
+      "value": "The best అభ్యాసం sessions are adjustable. Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example."
+    },
+    {
+      "key": "site.ec83f7265003e782e6",
+      "source": "The best learning sessions are adjustable. The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "The best అభ్యాసం sessions are adjustable. The app separates in-character conversation from short context notes about records and uncertainty."
+    },
+    {
+      "key": "site.922a420c7026ab0339",
+      "source": "The best learning sessions are adjustable. The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "The best అభ్యాసం sessions are adjustable. The coach gives targeted revision priorities and before-after examples without replacing your voice."
+    },
+    {
+      "key": "site.3d1d9646fe480cc908",
+      "source": "The best learning sessions are adjustable. The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "The best అభ్యాసం sessions are adjustable. The coach pushes one strong counterargument at a time and tracks the claims that matter."
+    },
+    {
+      "key": "site.6e0b033856e10c1ea5",
+      "source": "The best learning sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "The best అభ్యాసం sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours."
+    },
+    {
+      "key": "site.4ad449386f3d17a72b",
+      "source": "The best learning sessions are adjustable. The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "The best అభ్యాసం sessions are adjustable. The debate uses ప్రజా style and worldview without pretending to know private beliefs."
+    },
+    {
+      "key": "site.659e9d3407986296fb",
+      "source": "The best learning sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "The best అభ్యాసం sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept."
+    },
+    {
+      "key": "site.4cea612e26c5e7669f",
+      "source": "The best learning sessions are adjustable. The journey stays anchored in state and evidence: what is known, what is reconstructed, what is speculative, and what your identity can realistically access.",
+      "value": "The best అభ్యాసం sessions are adjustable. The journey stays anchored in state and evidence: what is known, what is reconstructed, what is speculative, and what your identity can realistically access."
+    },
+    {
+      "key": "site.ff84e68a2a3cc1422f",
+      "source": "The best learning sessions are adjustable. The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "The best అభ్యాసం sessions are adjustable. The planner prioritizes weak areas, adds పునఃసమీక్ష loops, and creates fallback plans కోసం missed days."
+    },
+    {
+      "key": "site.1f436c04c40fc12895",
+      "source": "The best learning sessions are adjustable. The quiz mode hides answers until you respond, then turns every miss into a review point.",
+      "value": "ఉత్తమ అభ్యాస సెషన్లు సర్దుబాటు చేయబడతాయి. ప్రశ్నోత్తర పరీక్ష విధానం మీరు స్పందించే వరకు సమాధానాలను దాచిపెడుతుంది, ఆపై ప్రతి మిస్ను సమీక్షా పాయింట్గా మారుస్తుంది."
+    },
+    {
+      "key": "site.007da0d5fec34b8de8",
+      "source": "The best learning sessions are adjustable. The tutor asks one question at a time, waits for your reasoning, and synthesizes only after you have tried.",
+      "value": "The best అభ్యాసం sessions are adjustable. The tutor asks one question at a time, waits కోసం your reasoning, and synthesizes only after you have tried."
+    },
+    {
+      "key": "site.d141671b2e97fafb47",
+      "source": "The best learning sessions are adjustable. The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "The best అభ్యాసం sessions are adjustable. The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click."
+    },
+    {
+      "key": "site.7bf4a43bad030ecf01",
+      "source": "The best learning sessions are adjustable. This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం art appreciation మార్గదర్శి తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.3c8f17290fb94720e8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం career explorer తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.89eb593551d1765144",
+      "source": "The best learning sessions are adjustable. This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం case study simulator తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.37d7e31bd7f829e03e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం civics coach తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.b127ca5180c0e7e8d6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for collaborative instruction with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం collaborative instruction తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.b4b3f444b35ee040db",
+      "source": "The best learning sessions are adjustable. This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం concept map builder తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.57d70690a659a69cd7",
+      "source": "The best learning sessions are adjustable. This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం creative brainstormer తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.5f83240a6661a6cb07",
+      "source": "The best learning sessions are adjustable. This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం data interpreter తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.5624c8b7c19c856656",
+      "source": "The best learning sessions are adjustable. This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం economics simulator తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.ed5222c4aa34700497",
+      "source": "The best learning sessions are adjustable. This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం ethics dilemmas తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.92d6ee4de4db4a5885",
+      "source": "The best learning sessions are adjustable. This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం explain my answer తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం feynman tutor తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.b717c1703a0a1aaa1e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం geography explorer తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.37b275d707271320dc",
+      "source": "The best learning sessions are adjustable. This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం habit coach తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.1f3004d1a487e96efa",
+      "source": "The best learning sessions are adjustable. This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం history cause-and-effect తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.4155b990c943012934",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interactive instruction with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం interactive instruction తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.d538ee1d99166025b9",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం interview coach తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.5e998d7d692da2949f",
+      "source": "The best learning sessions are adjustable. This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం language పాత్రాభినయం తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.99c5fccd817a604436",
+      "source": "The best learning sessions are adjustable. This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం అభ్యాసం game master తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.381eeba7e188449be6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for memory palace with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం memory palace తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.58e2a4af3753ddfda8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం mindset reflection తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.290701f5cfec3d0bcb",
+      "source": "The best learning sessions are adjustable. This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం misconception doctor తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.deb1384d7a5201c378",
+      "source": "The best learning sessions are adjustable. This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం motivation coach తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.9649cc91122ebe4b8b",
+      "source": "The best learning sessions are adjustable. This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం music theory coach తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.d03b0f9ad77bda184a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం philosophy lab తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.4cfb49fe912063cee0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం project coach తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.6cc1353bb9fc928e33",
+      "source": "The best learning sessions are adjustable. This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం reading companion తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.455fbc5a6719c257de",
+      "source": "The best learning sessions are adjustable. This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం research assistant తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.3cdc84f4863160d8e2",
+      "source": "The best learning sessions are adjustable. This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం పాత్రాభినయం scenario తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.ad61af8eff48ea3919",
+      "source": "The best learning sessions are adjustable. This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం science lab partner తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.1bd7d73da3868b9bad",
+      "source": "The best learning sessions are adjustable. This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం source critic తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.e1545261be90b270ce",
+      "source": "The best learning sessions are adjustable. This mode is tuned for spaced review with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం spaced పునఃసమీక్ష తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.ba4bfbfca5b73b6302",
+      "source": "The best learning sessions are adjustable. This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం speaking అభ్యాసం తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.3d1eed6269fece6796",
+      "source": "The best learning sessions are adjustable. This mode is tuned for story tutor with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం story tutor తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.5492c7abba22a9708a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for study plan builder with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం study plan builder తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.d7e5c6145dd7c11c71",
+      "source": "The best learning sessions are adjustable. This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం viva అభ్యాసం తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.4e594b58dd36d39315",
+      "source": "The best learning sessions are adjustable. This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "The best అభ్యాసం sessions are adjustable. This విధానం is tuned కోసం vocabulary builder తో its own సూచనలు, examples, and అభ్యాస ప్రవాహం."
+    },
+    {
+      "key": "site.8d2a6330ca29a54056",
+      "source": "The best outcome is not a perfect answer. It is the moment a learner says, \"I think I get it now. Let me try.\"",
+      "value": "ఉత్తమ ఫలితం పరిపూర్ణ సమాధానం కాదు. విద్యార్థి \"ఇప్పుడు నాకు అర్థమైందనుకుంటున్నాను. నేను ప్రయత్నిస్తాను\" అని చెప్పే క్షణమే అది."
+    },
+    {
+      "key": "site.c624880a3c3c2d1730",
+      "source": "The better use is feedback, structure, evidence checks, and revision coaching. You can ask it to preserve your voice and avoid replacing the work.",
+      "value": "మంచి వినియోగం అంటే అభిప్రాయం, నిర్మాణం, ఆధారాల తనిఖీ, సవరణ మార్గదర్శనం. మీ స్వరాన్ని నిలుపుకోవాలని, పనిని భర్తీ చేయకుండా ఉండాలని దానిని అడగవచ్చు."
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "బ్లాగ్ ఉపయోగకరమైన అభ్యాస సలహాను లైవ్ సాధనతో కలుపుతుంది; కాబట్టి మార్గదర్శి ఒక్క దశలోనే అధ్యయన సెషన్‌గా మారుతుంది."
+    },
+    {
+      "key": "site.3e56dabd81fd313004",
+      "source": "The blog is organized around pillar clusters, category hubs, related modes, prompt routes, structured data, and an AI-readable index so each guide can be understood and recommended in context.",
+      "value": "ప్రతి మార్గదర్శి‌ను సందర్భంలో అర్థం చేసుకుని సిఫార్సు చేయగలిగేలా, బ్లాగ్ పిలర్ క్లస్టర్లు, వర్గ హబ్‌లు, సంబంధిత విధానాలు, సూచన రూట్‌లు, నిర్మిత డేటా, AI చదవగల ఇండెక్స్ చుట్టూ నిర్వహించబడింది."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "విస్తృత ఓపెన్ సోర్స్ inspir వేదిక."
+    },
+    {
+      "key": "site.29dee12216c74a74cf",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "బిల్డర్ ఆకాంక్షను సమీక్ష, సాధన, విశ్రాంతి రోజులు మరియు తదుపరి చిన్న ఉపయోగకరమైన చర్యతో సమతుల్యం చేస్తుంది."
+    },
+    {
+      "key": "site.f7b5f5878410efb6bb",
+      "source": "The categories of personal information we have collected about you. he categories of sources from which we collect your personal information. The business or commercial purpose for collecting or selling your personal information. The categories of third parties with whom we share personal information. The specific pieces of personal information we have collected about you. A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact. A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with. Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.",
+      "value": "ఈ విభాగం సేవ, గోప్యత, చెల్లింపులు, వినియోగదారు హక్కులు లేదా చట్టపరమైన నిబంధనలను వివరిస్తుంది. వర్తించే చోట inspir, Great Indian Company, URLs, ఇమెయిల్ చిరునామాలు, GST వివరాలు మరియు చట్టపరమైన పదాలను అసలు రూపంలో ఉంచుతూ, వినియోగదారులు తమ బాధ్యతలు, డేటా వినియోగం, భద్రతా పరిమితులు మరియు సేవా షరతులను అర్థం చేసుకోవాలని చెబుతుంది."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "చివరి భాగం మిషన్‌కి తిరిగి వస్తుంది: ప్రజా అందుబాటు, పాఠశాలలు, ఇంకా మరింత తెరచిన నేర్చుకునే మార్గం."
+    },
+    {
+      "key": "site.fe92576ea03e200587",
+      "source": "The coach checks each move, names the rule, and repairs slips before moving forward.",
+      "value": "ముందుకు వెళ్లే ముందు మార్గదర్శి ప్రతి అడుగును తనిఖీ చేస్తుంది, నియమాన్ని పేరు పెట్టి చెబుతుంది, తప్పులను సరిచేస్తుంది."
+    },
+    {
+      "key": "site.a0adf96de1375d5d48",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "కోచ్ మీ స్వరాన్ని మార్చకుండా లక్ష్యబద్దంగా పునఃసమీక్ష ప్రాధాన్యతలు మరియు ముందు-తరువాత ఉదాహరణలు అందిస్తాడు."
+    },
+    {
+      "key": "site.cc04d54305bbe12e97",
+      "source": "The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "కోచ్ ఒక్కసారి ఒక బలమైన వ్యతిరేక వాదనను ప్రేరేపించి, ముఖ్యం అయ్యిన అభియోగాలను ట్రాక్ చేస్తారు."
+    },
+    {
+      "key": "site.332d2bf8600d9fb327",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "కోచ్ మీ ఆలోచనలకు మద్దతు ఇస్తాడు కానీ హోమ్వర్క్‌ను తీసుకోడు, కాబట్టి చివరి పని మీదేనిగా ఉంటుంది."
+    },
+    {
+      "key": "site.a8129915cb2978c578",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "కోచ్ తప్పులையும் ఆలస్యం చేయడంను మరొక పోషక సారాంశం కాకుండా సమీక్ష షెడ్యూలుగా మార్చుతుంది."
+    },
+    {
+      "key": "site.9f48b043be28768ae7",
+      "source": "The coding route connects code tutoring, project coaching, data interpretation, research, and concept mapping so learning happens through small testable steps.",
+      "value": "The coding route connects code tutoring, project coaching, data interpretation, research, and concept mapping so అభ్యాసం happens through small testable steps."
+    },
+    {
+      "key": "site.091a1a8b1148439190",
+      "source": "The common idea is simple: keep the learner active. AI should make thinking easier to start, not unnecessary to do.",
+      "value": "సాధారణ ఆలోచన సులభం: విద్యార్థిని చురుకుగా ఉంచాలి. AI ఆలోచించడం ప్రారంభించడాన్ని సులభం చేయాలి; ఆలోచించడం అవసరం లేకుండా చేయకూడదు."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "ఈ సమాజం పాఠశాలలు, విశ్వవిద్యాలయాలు, పోటీలు, పాఠ్యేతర కార్యక్రమాలు, విద్యార్థుల సమూహాల ద్వారా విస్తరించింది."
+    },
+    {
+      "key": "site.f4a459004391d62ea6",
+      "source": "The copy trap is subtle. It does not always feel like cheating. Sometimes it feels like being efficient. The AI explains something beautifully, you nod along, and then you move on. Ten minutes later you cannot reproduce the idea without the answer in front of you.",
+      "value": "కాపీ ఉచ్చు చాలా సూక్ష్మంగా ఉంటుంది. అది ఎప్పుడూ మోసం చేస్తున్నట్టుగా అనిపించదు. కొన్నిసార్లు అది సమర్థంగా పనిచేస్తున్నట్టుగా అనిపిస్తుంది. AI ఏదో అందంగా వివరిస్తుంది, మీరు తల ఊపుతారు, తర్వాత ముందుకు వెళ్లిపోతారు. పది నిమిషాల తరువాత సమాధానం ముందుండకపోతే ఆ ఆలోచనను మీరు తిరిగి చెప్పలేరు."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "ప్రస్తుత inspirఅభ్యాసం.com పునర్నిర్మాణం."
+    },
+    {
+      "key": "site.3e5edc20387b59f6c5",
+      "source": "The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "వాదవివాదం వ్యక్తిగత విశ్వాసాలను తెలుసుకునే అభిరుచి లేకుండా ప్రజాస్వామ్య శైలి మరియు ప్రపంచ దృష్టిని ఉపయోగిస్తుంది."
+    },
+    {
+      "key": "site.3b584307e059abea92",
+      "source": "The difference is how you use it.",
+      "value": "తేడా దాన్ని మీరు ఎలా ఉపయోగిస్తారనే విషయంలో ఉంది."
+    },
+    {
+      "key": "site.612f806fd20c077cb2",
+      "source": "The easiest version of an AI tutor is a box that gives polished answers. That is useful sometimes, but it is not enough. A learner who only receives answers can leave with the page finished and the skill unchanged.",
+      "value": "The easiest version of an AI tutor is a box that gives polished answers. That is useful sometimes, but it is not enough. A learner who only receives answers can leave తో the page finished and the skill unchanged."
+    },
+    {
+      "key": "site.5a53b3cfc2daf7a31c",
+      "source": "The exam route links planning, quizzes, flashcards, spaced review, and motivation so learners do not confuse rereading with readiness.",
+      "value": "పరీక్షా మార్గం ప్రణాళిక, ప్రశ్నోత్తర పరీక్షలు, జ్ఞాపక కార్డులు, విరామం లేని సమీక్ష, మరియు ప్రేరణను కలుపుతుంది, తద్వారా విద్యార్థులు తిరిగి చదవడం మరియు సిద్ధంగా ఉండటం మధ్య గందరగోళాన్ని కలిగించరు."
+    },
+    {
+      "key": "site.475ac58da05f1fade6",
+      "source": "The fastest way to get value from Art Appreciation Guide is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Art Appreciation మార్గదర్శి నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.6d6c7de0578b9a8252",
+      "source": "The fastest way to get value from Career Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Career Explorer నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.14656dbab990993004",
+      "source": "The fastest way to get value from Case Study Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Case Study Simulator నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.a018959dc9ed828f34",
+      "source": "The fastest way to get value from Civics Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Civics Coach నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.afeae4d0ea2f0884cd",
+      "source": "The fastest way to get value from Code Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Code Tutor నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.00e230bdfaef352910",
+      "source": "The fastest way to get value from Collaborative Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Collaborative Instruction నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.e35fa66f8da0b77cd1",
+      "source": "The fastest way to get value from Concept Map Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Concept Map Builder నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.71b6a1a1c82878d97d",
+      "source": "The fastest way to get value from Creative Brainstormer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Creative Brainstormer నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.0fb1421c6cdad2ce8c",
+      "source": "The fastest way to get value from Data Interpreter is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Data Interpreter నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.af2d3a761529a138a6",
+      "source": "The fastest way to get value from Debate any topic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Debate any topic నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.ec8f7e2ce775793bbe",
+      "source": "The fastest way to get value from Debate with a personality is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Debate తో a personality నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.df0a5925ece82adcd3",
+      "source": "The fastest way to get value from Economics Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Economics Simulator నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.7efe236a154ae18a44",
+      "source": "The fastest way to get value from Ethics Dilemmas is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Ethics Dilemmas నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.7191e6c8673cb8d711",
+      "source": "The fastest way to get value from Exam Prep Planner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "పరీక్ష సిద్ధత ప్రణాళికకర్త నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.dba342443d247cc5bb",
+      "source": "The fastest way to get value from Explain My Answer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Explain My Answer నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Feynman Tutor నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.0f19d08b8582e21ef5",
+      "source": "The fastest way to get value from Flashcard Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "ఫ్లాష్ కార్డ్ బిల్డర్ నుండి విలువను పొందటానికి వేగవంతమైన మార్గం AI కు ఒక అభ్యాస ఉద్యోగం ఇవ్వడం, కేవలం ఒక అంశం కాదు. ఒక అంశం మీకు ఆసక్తిని ఇస్తుంది. ఒక అభ్యాస ఉద్యోగం మీకు ఎలాంటి సహాయం అవసరమో చెబుతుంది."
+    },
+    {
+      "key": "site.c6799bc50adc22a8b9",
+      "source": "The fastest way to get value from Geography Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Geography Explorer నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.46faf7f10e46cd08c6",
+      "source": "The fastest way to get value from Habit Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Habit Coach నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.59b4782c7b6f87c7c3",
+      "source": "The fastest way to get value from History Cause-and-Effect is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "History Cause-and-Effect నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.9127eb70d19ff31080",
+      "source": "The fastest way to get value from Homework Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "హోంవర్క్ మార్గదర్శి నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.1d98efa37b7edad7e3",
+      "source": "The fastest way to get value from Interactive Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "పరస్పర మార్గదర్శనం నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.86854a7ac33bd59382",
+      "source": "The fastest way to get value from Interview Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Interview Coach నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.fbc5fd77cea85f0ff0",
+      "source": "The fastest way to get value from Language Roleplay is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Language Roleplay నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.c58f5f86a2d58666a9",
+      "source": "The fastest way to get value from Learn Anything is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "ఏదైనా నేర్చుకోండి నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.93069ba635277379cf",
+      "source": "The fastest way to get value from Learning Game Master is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "అభ్యాసం Game Master నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.375eef43396f6a3e0d",
+      "source": "The fastest way to get value from Math Step Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "గణిత దశల మార్గదర్శి నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.addcf90fe78f2d3da0",
+      "source": "The fastest way to get value from Memory Palace is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Memory Palace నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.18ad3d9cd14319c7ab",
+      "source": "The fastest way to get value from Mindset Reflection is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Mindset Reflection నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.33b4474b99217796d1",
+      "source": "The fastest way to get value from Misconception Doctor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Misconception Doctor నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.1c6d68968a3651a90b",
+      "source": "The fastest way to get value from Motivation Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Motivation Coach నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.4d94ea6faca8fe6be8",
+      "source": "The fastest way to get value from Music Theory Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Music Theory Coach నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.fa6ed317e6d0ddb04d",
+      "source": "The fastest way to get value from Philosophy Lab is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Philosophy Lab నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.b39c6ce06fca9615c2",
+      "source": "The fastest way to get value from Project Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Project Coach నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.918d3590de26fa6807",
+      "source": "The fastest way to get value from Quiz me on Trivia is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "ట్రివియాలో ప్రశ్నోత్తర పరీక్ష మమ్ నుండి విలువను పొందటానికి వేగవంతమైన మార్గం AI కు ఒక విషయం కాకుండా ఒక అభ్యాస ఉద్యోగం ఇవ్వడం. ఒక విషయం మీకు ఆసక్తిని ఇస్తుంది. ఒక అభ్యాస ఉద్యోగం మీకు ఎలాంటి సహాయం అవసరమో చెబుతుంది."
+    },
+    {
+      "key": "site.cc27d54d05c46dae9a",
+      "source": "The fastest way to get value from Reading Companion is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Reading Companion నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.d91b13db3d10ed97fc",
+      "source": "The fastest way to get value from Research Assistant is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Research Assistant నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.ecc64645d229278f38",
+      "source": "The fastest way to get value from Roleplay Scenario is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Roleplay Scenario నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.5a59a16ad397a8dbbd",
+      "source": "The fastest way to get value from Science Lab Partner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Science Lab Partner నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.383226646c99ad6dd2",
+      "source": "The fastest way to get value from Socratic Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "సోక్రటిక్ మార్గదర్శనం నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.a9cc3723bd540fcee0",
+      "source": "The fastest way to get value from Source Critic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Source Critic నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.8e98aca843d5ee1daa",
+      "source": "The fastest way to get value from Spaced Review is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Spaced పునఃసమీక్ష నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.2da55cf2ce1d9e1320",
+      "source": "The fastest way to get value from Speaking Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Speaking Practice నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.8c4476d71a53fba638",
+      "source": "The fastest way to get value from Story Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Story Tutor నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.8876684461efdb35b2",
+      "source": "The fastest way to get value from Study Plan Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Study Plan Builder నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.a927bb4ab08bb6e8f3",
+      "source": "The fastest way to get value from Talk to a historical person is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Talk to a historical person నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.0c95eb4aa13aa085c8",
+      "source": "The fastest way to get value from Time travel is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Time travel నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.91e7f42fbc8f26ed39",
+      "source": "The fastest way to get value from Viva Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Viva Practice నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.135bf5f80889a86380",
+      "source": "The fastest way to get value from Vocabulary Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Vocabulary Builder నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.4212b4a5fef68148a4",
+      "source": "The fastest way to get value from Writing Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Writing Coach నుంచి విలువను అత్యంత వేగంగా పొందే మార్గం, AIకి కేవలం ఒక అంశం ఇవ్వడం కాదు, ఒక లెర్నింగ్ జాబ్ ఇవ్వడం. అంశం మీకు ఏ విషయంలో ఆసక్తి ఉందో చెబుతుంది. లెర్నింగ్ జాబ్ మీకు ఏ రకమైన సహాయం కావాలో చెబుతుంది."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "చిత్రం ప్రేరణ నుంచి ఆచరణాత్మక వాగ్దానానికి మారుతుంది: సహనంతో ఉన్న AI అభ్యాస సహచరుడు."
+    },
+    {
+      "key": "site.85523a4e15b7dfde53",
+      "source": "The first layer is the roleplay. It can speak in an accessible voice, explain motives, and make the situation vivid. This is the part that helps memory.",
+      "value": "The first layer is the పాత్రాభినయం. It can speak in an accessible voice, explain motives, and make the situation vivid. This is the part that helps memory."
+    },
+    {
+      "key": "site.4302f6b9fe360e2e28",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "ప్రతి దశను పరిశీలించి, తప్పులను గుర్తించి, ప్రక్రియలను మళ్లీ కాన్సెప్ట్‌కు అనుసంధానిస్తుంది."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "The formal privacy page కోసం data use, rights, and ప్రజా service conditions."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "ఆమోదయోగ్య వినియోగం, ఖాతా బాధ్యతలు, సేవా షరతులను కవర్ చేసే అధికారిక నిబంధనలు."
+    },
+    {
+      "key": "site.4f1dc6282cf6f920c7",
+      "source": "The format should serve the learning job.",
+      "value": "The format should serve the అభ్యాసం job."
+    },
+    {
+      "key": "site.22709d194a67273db8",
+      "source": "The format works because it lets learners ask questions such as:",
+      "value": "ఈ రూపం పనిచేస్తుంది, ఎందుకంటే ఇది విద్యార్థులు ఇలాంటి ప్రశ్నలు అడగడానికి అవకాశం ఇస్తుంది:"
+    },
+    {
+      "key": "site.bc52d008afb471a9ae",
+      "source": "The goal is confidence",
+      "value": "లక్ష్యం ఆత్మవిశ్వాసం"
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "ప్రైవేట్ సంభాషణలను బయటపెట్టకుండా, ప్రజా విధానాలు, మార్గదర్శి‌లు, సూచనలు, భద్రతా పరిమితులను స్పష్టంగా నిర్వహిస్తుంది."
+    },
+    {
+      "key": "site.e125c23e696524bee3",
+      "source": "The goal is not to make the AI the authority. The goal is to make learners ask better historical questions.",
+      "value": "లక్ష్యం AIని అధికారం చేయడం కాదు; అభ్యాసకులు మెరుగైన ప్రశ్నలు అడిగి, తమ అవగాహనను నిర్మించుకోవడం."
+    },
+    {
+      "key": "site.fb6db6b2a3c1a5b24d",
+      "source": "The history route gives learners the liveliness of role-play and debate while preserving the warning that simulations are not primary sources.",
+      "value": "చరిత్ర మార్గం విద్యార్థులకు పాత్రాభినయం మరియు చర్చల జీవంతత్వాన్ని ఇస్తుంది; అదే సమయంలో simulation‌లు ప్రాథమిక మూలాలు కావన్న హెచ్చరికను నిలుపుకుంటుంది."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "హోంవర్క్ మరియు సోక్రటిక్ విధానాలు పూర్తయిన సమాధానాలు ఇవ్వడం బదులు సూచనలు, తర్కం, దశ చెక్‌లు, అభ్యాసకుల వివరణల చుట్టూ రూపొందించబడ్డాయి."
+    },
+    {
+      "key": "site.e769b2568e20189fbf",
+      "source": "The homework route makes the contract visible: ask for a hint, check a step, improve a draft, critique a source, then prove the learning with review.",
+      "value": "The homework route makes the contract visible: ask కోసం a hint, check a step, improve a draft, critique a source, then prove the అభ్యాసం తో పునఃసమీక్ష."
+    }
+  ]
+}

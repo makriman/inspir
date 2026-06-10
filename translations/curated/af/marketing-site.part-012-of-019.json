@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Afrikaans",
+  "locale": "af",
+  "namespace": "marketing-site",
+  "sourceHash": "2b4cd69ecc5256ca0dbf3432326edf95ccc960f491311923a509002b2ab0e628",
+  "part": {
+    "index": 12,
+    "total": 19
+  },
+  "entries": [
+    {
+      "key": "site.254afb955c048081de",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Talk to a historical person on inspir.",
+      "value": "Promptidees en 'n herhaalbare studielus om nuttige leeruitkomste te haal uit Talk to a historical person op inspir."
+    },
+    {
+      "key": "site.6d700ff97463496cdf",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Time travel on inspir.",
+      "value": "Promptidees en 'n herhaalbare studielus om nuttige leeruitkomste te haal uit Time travel op inspir."
+    },
+    {
+      "key": "site.dabf44aa485fb89a43",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Viva Practice on inspir.",
+      "value": "Promptidees en 'n herhaalbare studielus om nuttige leeruitkomste te haal uit Viva Practice op inspir."
+    },
+    {
+      "key": "site.45e25677f55c0b305e",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Vocabulary Builder on inspir.",
+      "value": "Promptidees en 'n herhaalbare studielus om nuttige leeruitkomste te haal uit Vocabulary Builder op inspir."
+    },
+    {
+      "key": "site.0aa19746e27798950b",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Writing Coach on inspir.",
+      "value": "Promptidees en 'n herhaalbare studielus om nuttige leeruitkomste te haal uit Writing Coach op inspir."
+    },
+    {
+      "key": "site.f720893be8bad3b45c",
+      "source": "Prompt labels, offer hints, check answers, and revisit missed parts.",
+      "value": "Gee labels as prompts, bied wenke, kontroleer antwoorde en kom terug op gemiste dele."
+    },
+    {
+      "key": "site.f693e7340a47d4b552",
+      "source": "Prompt library",
+      "value": "Promptbiblioteek"
+    },
+    {
+      "key": "site.398bbc5b7ba9739c49",
+      "source": "prompt loop",
+      "value": "promptlus"
+    },
+    {
+      "key": "site.4260d572af0bfa711b",
+      "source": "Prompt patterns for explanations, tutoring, roleplay, quizzes, feedback, planning, debate, and active recall.",
+      "value": "Promptpatronen vir verduideliking, begeleiding, rolspel, vasvrae, terugvoer, beplanning, debat en active recall."
+    },
+    {
+      "key": "site.6649d4e8eb4e273234",
+      "source": "Prompt starter",
+      "value": "Startprompt"
+    },
+    {
+      "key": "site.daea5033a425dce087",
+      "source": "Prompt the learner's next step, inspect their work, and escalate hints gradually.",
+      "value": "Verander die leerder aan tot die volgende stap, bekyk wat werk en bou wenke geleidelijk op."
+    },
+    {
+      "key": "site.699d7d647a55d31b60",
+      "source": "Prompt, let the learner answer, give feedback, and repeat with tighter constraints.",
+      "value": "Gee 'n prompt, laat die leerder antwoorde, gee terugvoer en herhaal met strakkere beperkings."
+    },
+    {
+      "key": "site.eea5311d723f2493a5",
+      "source": "Prompts",
+      "value": "Vrae"
+    },
+    {
+      "key": "site.e6f5db8a4f933a2b88",
+      "source": "Prompts to try",
+      "value": "Prompts om te probeer"
+    },
+    {
+      "key": "site.fd68174dbf4cb79615",
+      "source": "Protect focus with healthy pauses",
+      "value": "Beskerm fokus met gesonde pouses"
+    },
+    {
+      "key": "site.ea284567fd00d8660f",
+      "source": "Public explanation of guest mode, private chats, crawler policy, learner safety, and school trust.",
+      "value": "Openbare verduideliking oor gasmodus, privaatchats, kruipbeleid, leerderveiligheid en skoolvertroue."
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Openbare gasmodusse gee almal 'n nuttige plek om te starten, terwyl skool- en vennootimplementaties die ervaring kan aanpas aan lokale behoeften."
+    },
+    {
+      "key": "site.71b82653ef6edd94cb",
+      "source": "Public guest-mode URLs exist so learners can land directly in useful learning modes from search, social links, schools, and AI answer engines.",
+      "value": "Openbare gasmodus-URL's bestaan zodat leerders regstreeks in nuttige leermodusse kan lande vanuit zoektake, sociale skakels, skole en AI-antwoordmasjiene."
+    },
+    {
+      "key": "site.30592755367762bc9a",
+      "source": "Public learning pages are crawlable; private saved chats, accounts, admin tools, and user data are not discovery surfaces.",
+      "value": "Openbare leerbladsye is deursoekbaar; privaat gestoorde kletse, rekeninge, adminnutsgoed en gebruikersdata is nie ontdekkingsoppervlakke nie."
+    },
+    {
+      "key": "site.84b54a439cdb819ab9",
+      "source": "Public learning should be discoverable without making private chats public.",
+      "value": "Openbaar leer moet vindbaar is sonder privaatchats openbaar te maak."
+    },
+    {
+      "key": "site.3d6d128c6cdb66da13",
+      "source": "Public modes are tuned for explanations, Socratic questions, hints, step checks, quizzes, and review.",
+      "value": "Openbare modusse is afgestem op verduideliking, Sokratiese vrae, wenke, stapkontroles, vasvrae en herhaling."
+    },
+    {
+      "key": "site.21a54ba78cbbf2ad55",
+      "source": "Public pages are open to search and AI retrieval crawlers, while admin tools, API routes, reset flows, and private utilities are disallowed.",
+      "value": "Openbare bladsye staan oopmaak vir zoek- en AI-retrievalcrawlers, terwyl beheerhulpmiddels, API-roetes, resetflows en private hulpprogramme is uitgesloten."
+    },
+    {
+      "key": "site.65d29b939cb4e76cfe",
+      "source": "Public pages for subjects, private chats for learners.",
+      "value": "Openbare bladsye vir onderwerpe, privaatchats vir leerders."
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "Openbare bladsye tonen produkgedrag, geen privaatwerk van studente."
+    },
+    {
+      "key": "site.5f7bb65a7b9c9c271a",
+      "source": "Public pages, topic chats, learning paths, blog guides, and authority pages are intended to be discoverable.",
+      "value": "Openbare bladsye, onderwerpchats, leerpaden, bloggidsen en autoriteitsbladsye is bedoel om vindbaar te is."
+    },
+    {
+      "key": "site.b35b251ac0299ad18b",
+      "source": "Public topic URLs let searches such as AI Socratic tutor, AI homework coach, AI flashcard builder, and talk to historical figures AI land directly in the matching mode.",
+      "value": "Openbare onderwerp-URL's laat zoektake soos AI Socratic tutor, AI homework afrigter, AI flitskaart builder en talk to historical figures AI regstreeks in die gepaste modus lande."
+    },
+    {
+      "key": "site.6c4e94f10417cf4b01",
+      "source": "Purchases",
+      "value": "Aankopen"
+    },
+    {
+      "key": "site.a0fb821bdaf93ed9a1",
+      "source": "Purpose",
+      "value": "Doel"
+    },
+    {
+      "key": "site.e81b57193d3efb7a11",
+      "source": "Purpose: {value1}",
+      "value": "Doel: {value1}"
+    },
+    {
+      "key": "site.26a22dce184ef527d6",
+      "source": "Quality learning should feel available, human, and alive.",
+      "value": "Goed leer moet beskikbaar, menslike en lewedig aanvoelen."
+    },
+    {
+      "key": "site.002ff598115d84595f",
+      "source": "Question",
+      "value": "Vraag"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Bevraeken 'n figuur"
+    },
+    {
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Bevraeken 'n historiese perspektief"
+    },
+    {
+      "key": "site.a9e29fcc0927aaf210",
+      "source": "Question a perspective",
+      "value": "Bevraag 'n perspectief"
+    },
+    {
+      "key": "site.150d2f992817c46a31",
+      "source": "Question the model",
+      "value": "Bevraag wat model"
+    },
+    {
+      "key": "site.9a1fc1731f624d1f9d",
+      "source": "Questions",
+      "value": "Vragen"
+    },
+    {
+      "key": "site.75f36e189ec21f82aa",
+      "source": "Questions expose assumptions and gaps, so the learner builds the answer instead of copying one.",
+      "value": "Vragen leggen aannames en gaanten bloot, zodat die leerder die antwoord opbouwt in plaas van er 'n te kopieer."
+    },
+    {
+      "key": "site.6ee3d132b388d5785d",
+      "source": "Questions learners ask",
+      "value": "Vragen wat leerders vra"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Vrae laat jou jou eie model van die onderwerp blootlê; dit is waar verwarring, valse selfvertroue en ontbrekende voorkennis gewoonlik verskyn."
+    },
+    {
+      "key": "site.d79bc85e35eb5bbf98",
+      "source": "Questions must have 4 answer options, one correct answer, concise explanations, and no answer leakage.",
+      "value": "Vragen moet 4 antwoordopsies wat, een correct antwoord, beknopte verduideliking en geen verklapping van die antwoord."
+    },
+    {
+      "key": "site.70bc8bc72d32fcb39d",
+      "source": "Questions reveal the shape of confusion. A learner might know a formula but not when to use it. They might remember a historical fact but not understand the cause. They might have a strong opinion but weak evidence.",
+      "value": "Vragen onthullen die vorm van verwarring. 'n leerder kan 'n formule kennen maar nie weten wanneer wat te gebruik. 'n leerder kan 'n histories feit onthou maar die oorzaak nie begrijpen. 'n leerder kan 'n sterke mening wat maar swak bewyse."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Vinnige antwoorde"
+    },
+    {
+      "key": "site.ede707f5525b037e86",
+      "source": "Quiz before rereading",
+      "value": "Quiz vir wat herlezen"
+    },
+    {
+      "key": "site.0705cbecb9a0fcc515",
+      "source": "Quiz before rereading so weak areas become visible.",
+      "value": "Quiz vir wat herlezen zodat swak plekken sigbaar word."
+    },
+    {
+      "key": "site.87179a6c468d91e595",
+      "source": "Quiz before rereading.",
+      "value": "Quiz vir wat herlezen."
+    },
+    {
+      "key": "site.e1f81a66a58f50d674",
+      "source": "quiz generation",
+      "value": "vasvra-generering"
+    },
+    {
+      "key": "site.155b3f31faa6fb376d",
+      "source": "quiz me on any topic",
+      "value": "vasvra my oor elke onderwerp"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Toets my oor hierdie onderwerpe, een vraag op 'n slag. Verduidelik ná elke antwoord die gaanping en verhoog die moeilikheid stadig."
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Toets my met trivia"
+    },
+    {
+      "key": "site.547ad1c9ccc1450f9f",
+      "source": "Quiz me on Trivia prompts and study loop",
+      "value": "Quiz my on Trivia-prompts en studielus"
+    },
+    {
+      "key": "site.dec92fd0ee6f4742e9",
+      "source": "Quiz me on vocabulary again",
+      "value": "Oorhoor my weer oor woordeskat"
+    },
+    {
+      "key": "site.3d576fd7be89f72774",
+      "source": "Quiz the concept",
+      "value": "Quiz wat konsep"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Toets swak areas"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Toets jouself"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Toets jouself eers sodat jy kan sien wat jy werklik onthou en waar selfvertroue misleid is."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Vasvrae wys gewoonlik meer omdat hulle herwinvordering toets. Herlees kan help nadat 'n vasvra wys wat herstel moet word."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "Beoordeel jy herinnering eerlik."
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Bereikt via wat gratis openbare platform en vennotechoolimplementaties."
+    },
+    {
+      "key": "site.19ab6e1be73f0637d0",
+      "source": "Reached learners across the free platform and partner schools.",
+      "value": "Bereikte leerders via wat gratis platform en vennootskole."
+    },
+    {
+      "key": "site.0ed1b9242ce701465a",
+      "source": "Read 20 minutes daily",
+      "value": "Lees daagliks 20 minute"
+    },
+    {
+      "key": "site.ad57a1d91829d22fa8",
+      "source": "Read a guide and review",
+      "value": "Lees 'n gids en herhaal"
+    },
+    {
+      "key": "site.60c6e57985630384ba",
+      "source": "Read a guide, then open Learn Anything to get a plain-language model of the topic.",
+      "value": "Lees 'n gids en oopmaak daarna Learn Anything om 'n model van die onderwerp in gewone taal te kry."
+    },
+    {
+      "key": "site.9c5d31c0108b32eee3",
+      "source": "Read a guide, then practise here.",
+      "value": "Lees 'n gids en oefen daarna hier."
+    },
+    {
+      "key": "site.8c3de3a18090316640",
+      "source": "Read a hard text more actively",
+      "value": "Lees 'n moeilijke teks aktiewer"
+    },
+    {
+      "key": "site.e68512f97ec29e03ac",
+      "source": "Read article",
+      "value": "Lees artikel"
+    },
+    {
+      "key": "site.9eb1c3d6e13d90c45b",
+      "source": "Read comparison",
+      "value": "Lees vergelyking"
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "Lees gids"
+    },
+    {
+      "key": "site.754ad0ae13604b5bad",
+      "source": "Read guides",
+      "value": "Lees gidse"
+    },
+    {
+      "key": "site.7afde2ae4e5b07f084",
+      "source": "Read mission",
+      "value": "Lees missie"
+    },
+    {
+      "key": "site.31ccd63060476c0813",
+      "source": "Read one guide",
+      "value": "Lees een gids"
+    },
+    {
+      "key": "site.92506d90d872d742ef",
+      "source": "Read one thing, then do the next thing.",
+      "value": "Lees een ding en doe daarna die volgende."
+    },
+    {
+      "key": "site.1d7b496968ae37b955",
+      "source": "Read the learning guides",
+      "value": "Lees die leergidsen"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Lees die missie"
+    },
+    {
+      "key": "site.651f1545059ebf3e75",
+      "source": "Read the response back and mark what sounds unlike you.",
+      "value": "Lees die reaksie terug en markeer wat nie as jy klinkt."
+    },
+    {
+      "key": "site.38b0d531fde2ea9c99",
+      "source": "Read these first, then move into practice.",
+      "value": "Lees hierdie eers en gaan daarna oefen."
+    },
+    {
+      "key": "site.6d0751ef920339f4e0",
+      "source": "Read, summarize, and question texts",
+      "value": "Lees, som op en bevraeken tekse"
+    },
+    {
+      "key": "site.b88517ae95fe024ba8",
+      "source": "Read, summarize, and question texts.",
+      "value": "Lees, som op en bevraag teksen."
+    },
+    {
+      "key": "site.49ea3bdd0fcf15cab2",
+      "source": "Read, then practise immediately.",
+      "value": "Lees en oefen daarna meteen."
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "'n AI-antwoord lees is nie dieselfde as leer. Vra die modus oor wat eerste antwoord om jy iets met die idee te laat doen."
+    },
+    {
+      "key": "site.63ce795b57192cbcf4",
+      "source": "Reading Companion",
+      "value": "Leesgenoot"
+    },
+    {
+      "key": "site.e038052361a204a0f1",
+      "source": "Reading Companion AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Reading Companion AI Learning Mode is 'n gefokusde manier om AI te gebruik om te leer in plaas van passief antwoorde te versamel. Die modus is gebou rondom 'n spesifieke taak: neem 'n passage of boekidee mee en bou begrip op via opsommings, woordeskat, gevolgtrekking en discussie."
+    },
+    {
+      "key": "site.c57cdf5c6b1b016fe4",
+      "source": "Reading Companion AI Learning Mode: practical guide",
+      "value": "Reading Companion AI Learning Mode: praktiese gids"
+    },
+    {
+      "key": "site.8c596b957def911ecc",
+      "source": "Reading Companion prompts and study loop",
+      "value": "Reading Companion-prompts en studielus"
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "Leesnotas maak voel produkief. Hulle later onthou is die regte test."
+    },
+    {
+      "key": "site.810fcee272d9478268",
+      "source": "Reading time",
+      "value": "Leestijd"
+    },
+    {
+      "key": "site.00b440d3a50e804c97",
+      "source": "Ready to try one?",
+      "value": "Gereed om er 'n te probeer?"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "Gereed om die eerste modus te probeer?"
+    },
+    {
+      "key": "site.f435cc551f55cc23c2",
+      "source": "Ready to try the learning modes?",
+      "value": "Gereed om die leermodusse te probeer?"
+    },
+    {
+      "key": "site.eb0f9cadc2e176ea52",
+      "source": "Ready to try this subject route?",
+      "value": "Gereed om hierdie vakroete te probeer?"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Realistiese skedule"
+    },
+    {
+      "key": "site.7aeb50ab5ba1dd26d0",
+      "source": "Reason through a hard idea",
+      "value": "Redeneer deur 'n moeilik idee heen"
+    },
+    {
+      "key": "site.36411a2455d4e74b9f",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Redeneer deur skermkiekies, diagramme en huiswerkbeelde"
+    },
+    {
+      "key": "site.2ea9af7c66f9137fe5",
+      "source": "Recall first, correct, reschedule missed items sooner, and summarize next review.",
+      "value": "Haal eers op uit jy geheugen, corrigeer, plan gemiste items eerder weer in en vat die volgende herhaling saam."
+    },
+    {
+      "key": "site.eb7a2f0e1b8f586950",
+      "source": "Recall later. Turn the weak spot into a card in Flashcard Builder or a short quiz in Quiz Me On Trivia.",
+      "value": "Haal wat later weer op. Verander die swak plek om in 'n kaart in Flashcard Builder of 'n kort vasvra in Quiz My On Trivia."
+    },
+    {
+      "key": "site.92c18facbbdd3710d9",
+      "source": "Receive a temporal passport, clear a travel advisory, then explore a specific historical society through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Ontvang 'n tydelike paspoort, maak 'n reisadvies skoon, en verken dan 'n spesifieke historiese samelewing deur tonele, kaarte, tydlyne, mense, reëls, voorraad en bewyse."
+    },
+    {
+      "key": "site.8b061442b539ffd1d0",
+      "source": "Recommend a focus preset based on the learner's task and environment.",
+      "value": "Beveel 'n focuspreset aan op basis van die taak en omgeving van die leerder."
+    },
+    {
+      "key": "site.496fafca8c61f5d503",
+      "source": "Recommended inspir citation and backlink targets",
+      "value": "Aanbevolen inspir-citatie- en backlinkdoelen"
+    },
+    {
+      "key": "site.b3cc5b5a154ff95753",
+      "source": "Recommended pages and anchor text for citations.",
+      "value": "Aanbevolen bladsye en ankerteks vir citaties."
+    },
+    {
+      "key": "site.91e9d662302cbdfe84",
+      "source": "Recover after missing a day",
+      "value": "Herstel nadat jy 'n dag gemis het"
+    },
+    {
+      "key": "site.d1489c278e5fc2d344",
+      "source": "Recover after missing a goal",
+      "value": "Herstel nadat jy 'n doelwit gemis het"
+    },
+    {
+      "key": "site.174109cf98cd5dc171",
+      "source": "Reference files",
+      "value": "Referentieleers"
+    },
+    {
+      "key": "site.488c7c84c8d8d3bc4a",
+      "source": "Reference links",
+      "value": "Referentieskakels"
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Referentieskakels, openbare feiten, perskonteks en citatievriendelijke details."
+    },
+    {
+      "key": "site.c4ae3cf1805191f644",
+      "source": "Reference notes",
+      "value": "Referentienotas"
+    },
+    {
+      "key": "site.8f5393039e3b0b5dcd",
+      "source": "Reference page",
+      "value": "Referentiebladsy"
+    },
+    {
+      "key": "site.82a55d25aabf131916",
+      "source": "Reference these pages when writing about inspir.",
+      "value": "Verwijs na hierdie bladsye wanneer jy oor inspir skryf."
+    },
+    {
+      "key": "site.a70fe4c5eb8c9f2cab",
+      "source": "Refine questions, organize evidence, identify gaps, and draft outlines.",
+      "value": "Verfijn vrae, orden bewyse, identifiseer hiaten en maak conceptoverzichten."
+    },
+    {
+      "key": "site.63815c7c61ce44696e",
+      "source": "Reflect after a bad test",
+      "value": "Reflekteer na 'n slegte toets"
+    },
+    {
+      "key": "site.882c481af81e9e798c",
+      "source": "Reflect after the scene",
+      "value": "Reflecteer na die scène"
+    },
+    {
+      "key": "site.a20fe38e0a2c87acaf",
+      "source": "Reflect on how you learn",
+      "value": "Besin oor hoe jy leer"
+    },
+    {
+      "key": "site.47a36c3cb687aa611e",
+      "source": "Reflect on how you learn.",
+      "value": "Reflecteer op hoe jy leert."
+    },
+    {
+      "key": "site.6beede5895c851d863",
+      "source": "Reflect on what blocked progress before changing the plan.",
+      "value": "Reflecteer op wat die voortgaanng blokkeerde voordat jy wat plan wijzigt."
+    },
+    {
+      "key": "site.335ef27d68b7e237b0",
+      "source": "Reflect, reframe, plan tiny actions, and celebrate evidence of progress.",
+      "value": "Reflecteer, herkader, plan klein aksies en vier bewyse van vooruitgaanng."
+    },
+    {
+      "key": "site.be32adaa88deb9217e",
+      "source": "Refunds",
+      "value": "Terugbetalings"
+    },
+    {
+      "key": "site.fdd7575c8d80ece683",
+      "source": "Rehearse out loud with prompts",
+      "value": "Oefen hardop met aansporings"
+    },
+    {
+      "key": "site.3066922df7665dde19",
+      "source": "Rehearse out loud with prompts.",
+      "value": "Oefen hardop met prompts."
+    },
+    {
+      "key": "site.4ff5ecc5064708f2fe",
+      "source": "Reject unsafe experiments and offer safe simulations or household-safe alternatives.",
+      "value": "Wijs onveilige eksperimente af en bied veilige simulaties of alternatieven aan wat thuis veilig is."
+    },
+    {
+      "key": "site.45d1942ecb370c8047",
+      "source": "Related category hubs help search visitors and learners find the next useful branch without falling back to a generic blog archive.",
+      "value": "Gerelateerde categoriehubs help zoekbesoekers en leerders die volgende nuttige tak te vind sonder terug te vallen op 'n algemeen blogaanrchief."
+    },
+    {
+      "key": "site.81ca7c70bf7153808b",
+      "source": "related guides",
+      "value": "verwante gidse"
+    },
+    {
+      "key": "site.90d6ba7bc1f3987015",
+      "source": "Related guides",
+      "value": "Gerelateerde gidse"
+    },
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "Gerelateerde leerpaden"
+    },
+    {
+      "key": "site.56622c7d914100d55a",
+      "source": "Related live modes",
+      "value": "Gerelateerde lewendig modusse"
+    },
+    {
+      "key": "site.d6c4656b0c6072b055",
+      "source": "Related modes",
+      "value": "Gerelateerde modusse"
+    },
+    {
+      "key": "site.6c06154faf803da7b2",
+      "source": "Related reading",
+      "value": "Gerelateerde lectuur"
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "'n reeks onthou;"
+    },
+    {
+      "key": "site.4d1c5becc592d9fdd3",
+      "source": "Remember ideas with vivid places",
+      "value": "Onthou idees met lewendige plekke"
+    },
+    {
+      "key": "site.5e4d5a5284455238f0",
+      "source": "Remember ideas with vivid places.",
+      "value": "Onthoud idees met lewedige plekken."
+    },
+    {
+      "key": "site.8031cd7a11b9063117",
+      "source": "Remember the planets",
+      "value": "Onthou die planete"
+    },
+    {
+      "key": "site.f441aa62eca627097e",
+      "source": "Remind, suggest break activities, and help the learner restart cleanly.",
+      "value": "Herinner, stel pauzeaktiwiteite vir en help die leerder skoon weer te starten."
+    },
+    {
+      "key": "site.b033e95fafb8120436",
+      "source": "Repair misses",
+      "value": "Herstel foute"
+    },
+    {
+      "key": "site.ee5a4e665d03aa733b",
+      "source": "Repair misses with flashcards",
+      "value": "Herstel missers met flitskaarte"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Herstel een fout"
+    },
+    {
+      "key": "site.806ba412384de3e800",
+      "source": "Repair one weak concept with an explanation or worked example.",
+      "value": "Herstel een swak konsep met 'n verduideliking of uitgewerkt voorbeeld."
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Herstel die swak plek"
+    },
+    {
+      "key": "site.65ad6379478cff5c4d",
+      "source": "Repair the weak spot.",
+      "value": "Herstel die swak plek."
+    },
+    {
+      "key": "site.1650f1dcaacc0ba87f",
+      "source": "Repair the weakest concept with a simpler explanation.",
+      "value": "Herstel die swakste konsep met 'n eenvoudigere verduideliking."
+    },
+    {
+      "key": "site.df1a662753b72561e4",
+      "source": "Repair weak spots",
+      "value": "Herstel swak punte"
+    },
+    {
+      "key": "site.394a69c3a72c14fb81",
+      "source": "Replace passive rereading with retrieval, feedback, correction, and spaced review.",
+      "value": "Vdaarvang passief herlezen deur ophalen uit wat geheugen, terugvoer, correctie en gespreide herhaling."
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Opnieuw afspelen"
+    },
+    {
+      "key": "site.9dcff3e9f4eb3bed20",
+      "source": "Request diagnosis. Ask what your answer reveals about your understanding.",
+      "value": "Vra om diagnose. Vra wat jy antwoord laat sien oor jy begrip."
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "Vra terugvoer op wat deel dat onzeker voelde."
+    },
+    {
+      "key": "site.341ee879ad9cf7d89c",
+      "source": "required name=search_term_string",
+      "value": "vereiste naam=search_term_string"
+    },
+    {
+      "key": "site.1a23773989b1dda3cc",
+      "source": "Requires a modern web browser with JavaScript enabled.",
+      "value": "Vereis ’n moderne webblaaier met JavaScript geaktiveer."
+    },
+    {
+      "key": "site.37a21c2b6b0edd6da8",
+      "source": "Research Assistant",
+      "value": "Navorsingsassistent"
+    },
+    {
+      "key": "site.742a67e2a02c54782d",
+      "source": "Research Assistant AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Research Assistant AI Learning Mode is 'n gefokusde manier om AI te gebruik om te leer in plaas van passief antwoorde te versamel. Die modus is gebou rondom 'n spesifieke taak: 'n breed onderwerp omstapten in navorsingsvrae, zoektermen, overzichten en bronnotas."
+    },
+    {
+      "key": "site.8db100ca77c94397aa",
+      "source": "Research Assistant AI Learning Mode: practical guide",
+      "value": "Research Assistant AI Learning Mode: praktiese gids"
+    },
+    {
+      "key": "site.18853c45070f68e87b",
+      "source": "Research Assistant prompts and study loop",
+      "value": "Research Assistant-prompts en studielus"
+    },
+    {
+      "key": "site.7e62cdf51dd090c770",
+      "source": "Research renewable energy",
+      "value": "Doen navorsing oor hernubare energie"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "Onderzoek sonder die draad kwijt te raken"
+    },
+    {
+      "key": "site.bf6d0c21d6e8fce617",
+      "source": "Research, source criticism, metacognition, systems thinking, and decision support for sharper judgment.",
+      "value": "Onderzoek, bronkritiek, metacognitie, systeemdenken en besluitsondersteuning vir scherper oordeel."
+    },
+    {
+      "key": "site.5c4bc97ee5d0ac3448",
+      "source": "Reset password",
+      "value": "Wachtwoord resetten"
+    },
+    {
+      "key": "site.bf8804f07772036fc4",
+      "source": "Reset your password",
+      "value": "Reset jy wagwoord"
+    },
+    {
+      "key": "site.8c13b484df07283c72",
+      "source": "resource sharing",
+      "value": "bronne deel"
+    },
+    {
+      "key": "site.8eacabe89c632f936a",
+      "source": "Resource Sharing",
+      "value": "Hulpbrondeling"
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "Antwoord voordat jy om die oplossing vra."
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Film weer starten"
+    },
+    {
+      "key": "site.c7eeb0f050bd0c1473",
+      "source": "Restart when learning feels hard",
+      "value": "Begin weer wanneer leer moeilik voel"
+    },
+    {
+      "key": "site.6526825faefe51287e",
+      "source": "Restart when learning feels hard.",
+      "value": "Begin weer wanneer leer moeilik voel."
+    },
+    {
+      "key": "site.f8154d38ef8382ea76",
+      "source": "Restate the problem, ask for the learner's first step, or provide the smallest useful hint.",
+      "value": "Formuleer die probleem weer, vraag om die eerste stap van die leerder of gee die kleinste nuttige wenk."
+    },
+    {
+      "key": "site.1b195d00c81b635aad",
+      "source": "Retention of Data",
+      "value": "Bewaring van data"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Herwinvorderingsoefening"
+    },
+    {
+      "key": "site.50b7fc94e20310d3a3",
+      "source": "retrieval practice with AI",
+      "value": "oefen met ophalen uit wat geheugen met AI"
+    },
+    {
+      "key": "site.d5b7b5df83c06fa3ce",
+      "source": "Retrieval, feedback, homework hints, oral practice, and game-like study loops that make learners answer.",
+      "value": "Ophalen uit wat geheugen, terugvoer, huiswerktips, mondelinge oefening en spelachtige studielusse wat leerders laat antwoorde."
+    },
+    {
+      "key": "site.e9547469db2c30bfcc",
+      "source": "Reveal answers when ready",
+      "value": "Wys antwoorde wanneer jy gereed is"
+    },
+    {
+      "key": "site.8a950cc377da5f967c",
+      "source": "Reveal answers when ready.",
+      "value": "Toon antwoorde wanneer jy gereed is."
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "Herhaling"
+    },
+    {
+      "key": "site.f4cc169357ff174c73",
+      "source": "Review before you forget",
+      "value": "Hersien voordat jy vergeet"
+    },
+    {
+      "key": "site.0ef1170504d8d40025",
+      "source": "Review before you forget.",
+      "value": "Herhaal voordat jy wat vergeet."
+    },
+    {
+      "key": "site.9826211f55e2f51509",
+      "source": "Review learning activity and next moves",
+      "value": "Hersien leeraktiwiteit en volgende stappe"
+    },
+    {
+      "key": "site.4f2746faadb683dd56",
+      "source": "Review loop",
+      "value": "Herhalingslus"
+    },
+    {
+      "key": "site.c9f03e794cc02b7858",
+      "source": "Review misses sooner",
+      "value": "Hersien foute vinniger"
+    },
+    {
+      "key": "site.191de80c23c006ded4",
+      "source": "Review misses sooner.",
+      "value": "Herhaal missers eerder."
+    },
+    {
+      "key": "site.f4ff8c72d42624ef9a",
+      "source": "Review my study goals",
+      "value": "Hersien my studiedoelwitte"
+    },
+    {
+      "key": "site.414b586bd70e4e3bf1",
+      "source": "Review my week",
+      "value": "Hersien my week"
+    },
+    {
+      "key": "site.4ee566fbb26035c980",
+      "source": "Review the public/private boundaries behind guest modes and saved chats.",
+      "value": "Bekyk die openbare/privégrenzen agter gasmodusse en gestoor chats."
+    },
+    {
+      "key": "site.defa52f48e46565048",
+      "source": "Review the weak spot later",
+      "value": "Herhaal die swak plek later"
+    },
+    {
+      "key": "site.9d14c71b70a1bb9eba",
+      "source": "Review weak areas",
+      "value": "Hersien swak areas"
+    },
+    {
+      "key": "site.94553c6cf31bf47994",
+      "source": "Review weak areas.",
+      "value": "Herhaal swak plekken."
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Hersien met flitskaarte"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "Herhaal sonder na die achterkant te kijken."
+    },
+    {
+      "key": "site.0d3c05c1af0f9b9400",
+      "source": "Review yesterday's chemistry",
+      "value": "Hersien gister se chemie"
+    },
+    {
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Hersien my konsep"
+    },
+    {
+      "key": "site.b238599ce8c1f09d2a",
+      "source": "Revise with a reason",
+      "value": "Hersien met 'n rede"
+    },
+    {
+      "key": "site.10843f8950ff1a37bd",
+      "source": "Revise with a reason.",
+      "value": "Herzie met 'n reden."
+    },
+    {
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Hersien sonder om jou stem te verloor"
+    },
+    {
+      "key": "site.31496d6f0847ac3e2d",
+      "source": "revision guide",
+      "value": "herhalingsgids"
+    },
+    {
+      "key": "site.9a463796741cd24e49",
+      "source": "Revision that tests memory",
+      "value": "Herhaling wat wat geheugen test"
+    },
+    {
+      "key": "site.a392fb45ad185d8e53",
+      "source": "Reward milestones that matter",
+      "value": "Beloon mylpale wat saak maak"
+    },
+    {
+      "key": "site.efd7e996be12779265",
+      "source": "Reward revision milestones",
+      "value": "Beloon hersieningsmylpale"
+    },
+    {
+      "key": "site.91a3388d87f4ce21ad",
+      "source": "Rewrite in your own words and ask what improved or weakened.",
+      "value": "Herschrijf in jy eie woorde en vraag wat beter of swakr werd."
+    },
+    {
+      "key": "site.4f501be387290c7eae",
+      "source": "Robots policy",
+      "value": "Robotsbeleid"
+    },
+    {
+      "key": "site.c8a5fde868171bdf70",
+      "source": "Robots rules allow Google, standard search crawlers, and major AI discovery crawlers on public pages, while blocking API routes, admin routes, and reset flows.",
+      "value": "Robotsregels staan Google, standaardzoekcrawlers en grote AI-discoverycrawlers by op openbare bladsye, terwyl API-roetes, beheerroetes en resetflows word geblokkeerd."
+    },
+    {
+      "key": "site.2c5ed85494686ddb84",
+      "source": "Roleplay one turn at a time, correct gently, and add better phrasing.",
+      "value": "Speel een beurt tegelyk as rolspel, corrigeer voorzichtig en voeg beter formuleringen by."
+    },
+    {
+      "key": "site.55233ce3d9f6f75f85",
+      "source": "Roleplay one turn, respond naturally, pause for feedback when useful, and retry.",
+      "value": "Speel een beurt as rolspel, reageer natuurlijk, paubaie vir terugvoer wanneer nuttig en probeer weer."
+    },
+    {
+      "key": "site.74b2e163ceed60c12c",
+      "source": "roleplay practice AI",
+      "value": "AI vir rolspeloefening"
+    },
+    {
+      "key": "site.e1860601a25415104f",
+      "source": "Roleplay Scenario",
+      "value": "Rolspel-scenario"
+    },
+    {
+      "key": "site.93f68ed0e1964ad554",
+      "source": "Roleplay Scenario AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "Roleplay Scenario AI Learning Mode is 'n gefokusde manier om AI te gebruik om te leer in plaas van passief antwoorde te versamel. Die modus is gebou rondom 'n spesifieke taak: onderhandeel, conflict, klantendiens, leiderschap of elke gesprek met hoge instap oefen."
+    },
+    {
+      "key": "site.90cd34f310bfc155ca",
+      "source": "Roleplay Scenario AI Learning Mode: practical guide",
+      "value": "Roleplay Scenario AI Learning Mode: praktiese gids"
+    },
+    {
+      "key": "site.15bb536ae0b0868eb3",
+      "source": "Roleplay Scenario prompts and study loop",
+      "value": "Roleplay Scenario-prompts en studielus"
+    },
+    {
+      "key": "site.050220dc04d444a445",
+      "source": "Routes to continue learning",
+      "value": "Routes om verder te leer"
+    },
+    {
+      "key": "site.d73d62c23277b234a6",
+      "source": "Run a 45 minute group session",
+      "value": "Hou 'n groep-sessie van 45 minute"
+    },
+    {
+      "key": "site.453c284b6718f1f6ca",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Bestuur 'n gedeelde studieritme vir vriende of klasmaats met gesinchroniseerde doelwitte, inweegsessies en debrief-vrae."
+    },
+    {
+      "key": "site.ba65c13fe365ab9bd4",
+      "source": "Run a Socratic thinking environment where the learner discovers understanding through disciplined questioning rather than passive explanation.",
+      "value": "Draai 'n Sokratiese denkomgeving waarin die leerder begrip ontdekt via gedisciplineerde vrae in plaas van passiewe verduideliking."
+    },
+    {
+      "key": "site.99b502a80598eca73a",
+      "source": "Run an adaptive lesson canvas where the learner acts early and the interface changes around their evidence of understanding.",
+      "value": "Draai 'n adaptief lescanvas waarin die leerder vroeg handelt en die interface verander rondom bewyse van begrip."
+    },
+    {
+      "key": "site.aa69c937a8a7f5068c",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Begin fokus- en pousesessies wat aanhou tel terwyl jy tussen kletse, oortjies en mini-toepassings beweeg. Dit kan vanaf die agtergrond lui wanneer 'n sessie eindig."
+    },
+    {
+      "key": "site.1977bf3ff0ffb5a140",
+      "source": "Run or reason through the change yourself.",
+      "value": "Voer die verandering self uit of redeneer er self doorheen."
+    },
+    {
+      "key": "site.4e9a78549282788d0c",
+      "source": "Run spaced retrieval sessions and build review schedules.",
+      "value": "Draai sessies vir gespreid ophalen uit wat geheugen en bou herhalingsskedule's."
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "veilige AI-leerhulpmiddel vir studente"
+    },
+    {
+      "key": "site.a51ac380dfd2bc496e",
+      "source": "Safeguards",
+      "value": "Waarborgen"
+    },
+    {
+      "key": "site.7ee0b056217799c21b",
+      "source": "SAT vocabulary",
+      "value": "SAT-woordeskat"
+    },
+    {
+      "key": "site.9cefe5199e48490e3a",
+      "source": "Save the corrected mistake as a checklist or flashcard.",
+      "value": "Sla die gecorrigeerde fout op as kontrolelist of flitskaart."
+    },
+    {
+      "key": "site.f444ef8d34a10b234b",
+      "source": "Save the final mistake or insight as review material.",
+      "value": "Sla die laaste fout of inzicht op as herhalingsmateriaal."
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Stoor die fout"
+    },
+    {
+      "key": "site.28e8bb837378c5399c",
+      "source": "Save the next review step",
+      "value": "Sla die volgende herhalingsstap op"
+    },
+    {
+      "key": "site.346a3af900118a9795",
+      "source": "Saved user conversations use private identifiers, are not included in the sitemap or AI discovery files, and should not be treated as public source material.",
+      "value": "Opgeslaag gebruikersgesprekken gebruik privé-ID's, is nie opgenomen in die sitemap of AI-discoveryleers en moet nie word behandeld as openbaar bronmateriaal."
+    },
+    {
+      "key": "site.d8c3070d7f11d6c224",
+      "source": "Say the goal in ordinary language.",
+      "value": "Se die doel in gewone taal."
+    },
+    {
+      "key": "site.a5338ab885f5726493",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Sê wat jy dink gebeur, en jou maat diagnoseer verborge wanbegrippe met sagte toetse."
+    },
+    {
+      "key": "site.a5a8b2d6598b30f354",
+      "source": "Schedule practice",
+      "value": "Skeduleer oefening"
+    },
+    {
+      "key": "site.fc6aaea6992bd9607c",
+      "source": "Schedule quizzes and recall before rereading so the plan reveals weak spots.",
+      "value": "Plan vasvrae en herinnering vir wat herlezen zodat wat plan swak plekken sigbaar maak."
+    },
+    {
+      "key": "site.ad51e8881dc28ebef8",
+      "source": "Schedule recall",
+      "value": "Skeduleer herroeping"
+    },
+    {
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Skeduleer die volgende herhaling"
+    },
+    {
+      "key": "site.2d559d0ff867dd21ca",
+      "source": "Schedule the next repetition while the miss is still fresh.",
+      "value": "Plan die volgende herhaling terwyl die misser nog vers is."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "School- en CSR-trajecten vir gefinansiere toegang"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "School- en vennoottraject"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Schoolhoek"
+    },
+    {
+      "key": "site.bdc19e95e851e38624",
+      "source": "School deployment paths",
+      "value": "Schoolimplementatiepaden"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Schoolimplementatietraject"
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Schoolimplementaties kan word aangepast rondom aangepaste inhoud, werkvloeie, prompts en NCERT-afgestemde leerbehoeften waar gepas."
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Schoolleiders"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Schooluitrollen kan word gepland rondom studenteprivaatheid, toesig deur personeel en die praktiese grenzen wat 'n leergemeenskap nodig wat."
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Skoolspesifieke werkvloeie"
+    },
+    {
+      "key": "site.06c76a46e432118770",
+      "source": "Schools",
+      "value": "Skole"
+    },
+    {
+      "key": "site.15ac9e5563deb5be22",
+      "source": "Schools and CSR",
+      "value": "Scholen en CSR"
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Scholen en CSR-vennote"
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Scholen en vennote"
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Scholen en vennote kan vanuit wat openbare produk bouwen richting aangepaste, vertroulike en gesubsidieerde implementaties."
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Scholen kan inspir eers via openbare gasmodusse evalueren en daarna aangepaste AI-leerruimtes verkennen met maatwerkwerkvloeie, vertroulikheidsbeplanning, kurrikulumbehoeften en paden vir gefinansiere toegang."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Scholen kan eers openbare modusse evalueren en daarna maatwerkwerkvloeie, vertroulikheidsbeplanning, inhoudbehoeften en gefinansiere toegang bepraat."
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Skole kan white-labelled AI-kletservarings aanbied wat op hul leerders afgestem is, insluitend NCERT-belynde inhoud en werkvloeie, met gebruik wat deur vennootskole of CSR-borgskap befonds word."
+    },
+    {
+      "key": "site.e2066562417df70fb3",
+      "source": "Schools can start by trying the public modes, then move toward a tailored version when they need custom workflows, content alignment, or funded access.",
+      "value": "Scholen kan begin met probeer van die openbare modusse en daarna na 'n maatwerkversie gaan wanneer hulle aangepaste werkvloeie, inhoudafstemming of gefinansiere toegang nodig wat."
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Scholen kan eers openbare gasmodusse testen en daarna die skolebladsy gebruik om maatwerkwerkvloeie, vertroulikheidsbeplanning, NCERT-afgestemde opsies en gefinansiere toegang te verkennen."
+    },
+    {
+      "key": "site.662605cea1c14c8a36",
+      "source": "Science Lab Partner",
+      "value": "Wetenskap-laboratoriumvennoot"
+    },
+    {
+      "key": "site.43b1041c4830b87379",
+      "source": "Science Lab Partner AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "Science Lab Partner AI Learning Mode is 'n gefokusde manier om AI te gebruik om te leer in plaas van passief antwoorde te versamel. Die modus is gebou rondom 'n spesifieke taak: veilige demonstraties plannen, variabelen begrijpen, uitkomsten voorspellen en as 'n wetenschapper vanuit bewyse redeneer."
+    },
+    {
+      "key": "site.6f1f12f0064ba6c964",
+      "source": "Science Lab Partner AI Learning Mode: practical guide",
+      "value": "Science Lab Partner AI Learning Mode: praktiese gids"
+    },
+    {
+      "key": "site.e24618ba1b4bd73298",
+      "source": "Science Lab Partner prompts and study loop",
+      "value": "Science Lab Partner-prompts en studielus"
+    },
+    {
+      "key": "site.e208dad84896ef8b90",
+      "source": "science tutor AI",
+      "value": "AI vir natuurwetenschapstutoring"
+    },
+    {
+      "key": "site.ec234852b970262451",
+      "source": "Search engines see pages. Learners need sequences. These paths connect the public modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Soekenjins sien bladsye. Leerders het reekse nodig. Hierdie paaie verbind die openbare modusse in praktiese studie-lusse vir begrip, huiswerk, eksamenvoorbereiding en verkenning."
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "Soekintentie"
+    },
+    {
+      "key": "site.dab06a16ebca6a965e",
+      "source": "Search landing pages",
+      "value": "Soeklandingsbladsye"
+    },
+    {
+      "key": "site.baf2010da7876dfe01",
+      "source": "Search pages, AI answer engines, and learners all get the same promise: public, useful, canonical entrypoints that open directly inside the learning experience.",
+      "value": "Soekbladsye, AI-antwoordmasjiene en leerders kry almal dieselfde belofte: openbare, nuttige, kanonieke toegangspunte wat regstreeks in die leerervaring oopmaak."
+    }
+  ]
+}

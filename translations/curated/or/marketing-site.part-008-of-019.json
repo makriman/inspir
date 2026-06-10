@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Odia",
+  "locale": "or",
+  "namespace": "marketing-site",
+  "sourceHash": "2b4cd69ecc5256ca0dbf3432326edf95ccc960f491311923a509002b2ab0e628",
+  "part": {
+    "index": 8,
+    "total": 19
+  },
+  "entries": [
+    {
+      "key": "site.79443e8e2ae25af484",
+      "source": "Generate and shape original ideas.",
+      "value": "ମୂଳ ଧାରଣା ତିଆରି କରି ଆକାର ଦିଅନ୍ତୁ।"
+    },
+    {
+      "key": "site.0e2b94f596aa9eac3f",
+      "source": "Generate exactly 10 MCQs, present one at a time, grade server-side, and review only after answers.",
+      "value": "Generate exactly 10 MCQs, present ଏକ at a time, grade server-side, ଓ ସମୀକ୍ଷା only ପରେ ଉତ୍ତର."
+    },
+    {
+      "key": "site.3edf41d4f8c6c62215",
+      "source": "Generate exercises, answer key, grading notes, and follow-up practice.",
+      "value": "Generate exercises, ଉତ୍ତର key, grading notes, ଓ follow-up ଅଭ୍ୟାସ."
+    },
+    {
+      "key": "site.90f1fb687b31c01ebe",
+      "source": "Generate ideas, shape them, test them, and turn creative curiosity into a useful next step.",
+      "value": "Generate ଧାରଣା, shape them, test them, ଓ turn creative curiosity into a ଉପଯୋଗୀ ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ."
+    },
+    {
+      "key": "site.59cd34b52535f0d6a3",
+      "source": "Generate mixed practice worksheets",
+      "value": "ମିଶ୍ରିତ ଅଭ୍ୟାସ ୱାର୍କସିଟ୍ ପ୍ରସ୍ତୁତ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.541db5f77fff1f5d04",
+      "source": "Generate options",
+      "value": "ବିକଳ୍ପ ତିଆରି କରନ୍ତୁ"
+    },
+    {
+      "key": "site.0c3778cab048c75aa8",
+      "source": "Generate pairs, scramble practice, check answers, and explain misses.",
+      "value": "Generate pairs, scramble ଅଭ୍ୟାସ, ଯାଞ୍ଚ ଉତ୍ତର, ଓ ବୁଝାନ୍ତୁ misses."
+    },
+    {
+      "key": "site.fd3f10448e52c851f1",
+      "source": "Generated soundscapes for calm study",
+      "value": "ଶାନ୍ତ ଅଧ୍ୟୟନ ପାଇଁ ଜେନେରେଟ୍ ହୋଇଥିବା ସାଉଣ୍ଡସ୍କେପ୍"
+    },
+    {
+      "key": "site.d12e883ae7e6ec948a",
+      "source": "Generating ideas, interpreting art, hearing structure in music, and making concepts memorable.",
+      "value": "Generating ଧାରଣା, interpreting art, hearing structure ରେ music, ଓ making ଧାରଣା memorable."
+    },
+    {
+      "key": "site.8f51299e03ff916b88",
+      "source": "Geography Explorer",
+      "value": "ଭୂଗୋଳ ଅନୁସନ୍ଧାନକାରୀ"
+    },
+    {
+      "key": "site.5998c2c45202f436f9",
+      "source": "Geography Explorer AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Geography Explorer AI Learning Mode ହେଉଛି ନିଷ୍କ୍ରିୟ ଉତ୍ତର ସଂଗ୍ରହ ପରିବର୍ତ୍ତେ ଶିକ୍ଷା ପାଇଁ AI ବ୍ୟବହାର କରିବାର କେନ୍ଦ୍ରିତ ଉପାୟ। ଏହି ମୋଡ୍ ଏହି ନିର୍ଦ୍ଦିଷ୍ଟ କାମକୁ କେନ୍ଦ୍ର କରି ତିଆରି: ଅନୁସନ୍ଧାନ କରନ୍ତୁ countries, cities, rivers, climates, migration, resources, ଓ how geography shapes life।"
+    },
+    {
+      "key": "site.f282838e19ff9ed78c",
+      "source": "Geography Explorer AI Learning Mode: practical guide",
+      "value": "Geography Explorer AI ଶିକ୍ଷା ମୋଡ୍: ବ୍ୟବହାରିକ ଗାଇଡ୍"
+    },
+    {
+      "key": "site.103db26385c1a75bb1",
+      "source": "Geography Explorer prompts and study loop",
+      "value": "Geography Explorer ପ୍ରମ୍ପ୍ଟ ଓ ଅଧ୍ୟୟନ ଲୁପ୍"
+    },
+    {
+      "key": "site.7a17689b0e1f8cfe53",
+      "source": "Get a hint without losing ownership",
+      "value": "ନିଜ ଦାୟିତ୍ୱ ହରାଇନଥିବା ଭାବେ ସଙ୍କେତ ପାଆନ୍ତୁ"
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "ଅଧ୍ୟୟନ ସୂଚୀ ନିଅନ୍ତୁ, ଦୁର୍ବଳ ଅଞ୍ଚଳରେ ନିଜକୁ କ୍ୱିଜ୍ କରନ୍ତୁ, ଏବଂ ଭୁଲଗୁଡ଼ିକୁ ପୁନରାବୃତ୍ତି review ପାଇଁ ଫ୍ଲାଶକାର୍ଡରେ ବଦଳାନ୍ତୁ।"
+    },
+    {
+      "key": "site.6a7d454438d4bec651",
+      "source": "Get examples at your level",
+      "value": "ଆପଣଙ୍କ ସ୍ତର ଅନୁଯାୟୀ ଉଦାହରଣ ପାଆନ୍ତୁ"
+    },
+    {
+      "key": "site.797fdec6173bdf1a9b",
+      "source": "Get examples at your level.",
+      "value": "ଆପଣଙ୍କ ସ୍ତରର ଉଦାହରଣ ପାଆନ୍ତୁ।"
+    },
+    {
+      "key": "site.434992ddb5aa522fc5",
+      "source": "Get homework help without cheating",
+      "value": "ନକଲ୍ ନକରି ହୋମୱର୍କ ସହାୟତା ପାଆନ୍ତୁ"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "ନକଲ୍ ନକରି ହୋମୱର୍କ ସହାୟତା ପାଆନ୍ତୁ"
+    },
+    {
+      "key": "site.a143705ea389c9b1eb",
+      "source": "Get instant feedback",
+      "value": "ତୁରନ୍ତ ମତାମତ ପାଆନ୍ତୁ"
+    },
+    {
+      "key": "site.9124684d23e0c5e46d",
+      "source": "Get instant feedback.",
+      "value": "ତୁରନ୍ତ ମତାମତ ପାଆନ୍ତୁ।"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "ପ୍ରଥମେ ସରଳ model ନିଅନ୍ତୁ"
+    },
+    {
+      "key": "site.03a9ef834faab0396a",
+      "source": "Get unstuck",
+      "value": "ଅଟକିଥିବାଠାରୁ ବାହାରନ୍ତୁ"
+    },
+    {
+      "key": "site.57cdb97869fb0319cd",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "ଆବେଗିକ ଭାବେ ଅଟକି ରହିଥିଲେ ବାହାରି ଆସନ୍ତୁ, ଏକ ଛୋଟ ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ ଖୋଜନ୍ତୁ ଏବଂ ଅନୁତାପ ବିନା ପୁଣି ଗତିଶୀଳ ହୁଅନ୍ତୁ।"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "ହୋମୱର୍କରେ ଅଟକିଲେ ସହାୟତା ନିଅନ୍ତୁ"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "ନୈତିକ ସଙ୍କେତ, ଉଦାହରଣ, ଯାଞ୍ଚ ଏବଂ ପଦକ୍ଷେପ-ଅନୁଯାୟୀ କୋଚିଂ ସହିତ ହୋମୱାର୍କରେ ଅଟକି ଯାଇଥିବା ସମସ୍ୟାର ସମାଧାନ କରନ୍ତୁ।"
+    },
+    {
+      "key": "site.c4d65955570aba3646",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "ସଙ୍କେତ, ଉଦାହରଣ ଏବଂ ଯାଞ୍ଚ ସହିତ ହୋମୱାର୍କରେ ଅଟକି ଯାଇଥିବା ସମସ୍ୟାର ସମାଧାନ କରନ୍ତୁ, ଯାହା ଆପଣଙ୍କୁ ନିଜେ ଚିନ୍ତା କରିବାରେ ସାହାଯ୍ୟ କରିବ।"
+    },
+    {
+      "key": "site.eb06bebbbda703ca8f",
+      "source": "Get unstuck without copying",
+      "value": "ନକଲ୍ ନକରି ଅଟକା ଅବସ୍ଥାରୁ ବାହାରନ୍ତୁ"
+    },
+    {
+      "key": "site.a2e736ae979d28c989",
+      "source": "Getting your learning space ready.",
+      "value": "ଆପଣଙ୍କ ଶିକ୍ଷା ସ୍ଥାନ ପ୍ରସ୍ତୁତ କରୁଛି।"
+    },
+    {
+      "key": "site.5442e2b64fa09764b9",
+      "source": "GitHub",
+      "value": "GitHub"
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "ଗଠନ, ସ୍ପଷ୍ଟତା ଓ ପ୍ରମାଣ ଉପରେ ମତାମତ ଦିଅନ୍ତୁ। ମୋର ଶବ୍ଦ ରଖନ୍ତୁ ଏବଂ ସମ୍ପୂର୍ଣ୍ଣ ଉତ୍ତରଟି ପୁଣି ଲେଖନ୍ତୁ ନାହିଁ।"
+    },
+    {
+      "key": "site.c73d28b901c59b4758",
+      "source": "Give me a hint for this physics problem",
+      "value": "ଏହି ପଦାର୍ଥ ବିଜ୍ଞାନ ସମସ୍ୟା ପାଇଁ ମୋତେ ଏକ ସଙ୍କେତ ଦିଅନ୍ତୁ"
+    },
+    {
+      "key": "site.ef44087b12b392409f",
+      "source": "Give targeted explanations for a learner's answer, especially mistakes.",
+      "value": "Give targeted ବ୍ୟାଖ୍ୟା ପାଇଁ a ଶିକ୍ଷାର୍ଥୀ's ଉତ୍ତର, especially ଭୁଲ."
+    },
+    {
+      "key": "site.b912216ffb6533b260",
+      "source": "giving examples before abstractions when needed;",
+      "value": "giving ଉଦାହରଣ ପୂର୍ବରୁ abstractions କେବେ needed;"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "ଭଲ ପ୍ରଥମ ଅଞ୍ଚଳ:"
+    },
+    {
+      "key": "site.21195156571df6473d",
+      "source": "Good guardrails for students",
+      "value": "ଛାତ୍ରଛାତ୍ରୀଙ୍କ ପାଇଁ ଭଲ ସୁରକ୍ଷାସୀମା"
+    },
+    {
+      "key": "site.b8a964ec7b3f5a9dcb",
+      "source": "Good output for this mode should feel usable: {value1}. If the response is too broad, ask for one example, one misconception, or one check question.",
+      "value": "Good output ପାଇଁ ଏହି ମୋଡ୍ ଉଚିତ feel usable: {value1}. If the response ହେଉଛି too ବିସ୍ତୃତ, ପଚାରନ୍ତୁ ପାଇଁ ଏକ ଉଦାହରଣ, ଏକ ଭୁଲ ଧାରଣା, କିମ୍ବା ଏକ ଯାଞ୍ଚ ପ୍ରଶ୍ନ."
+    },
+    {
+      "key": "site.1e82e82012178525a5",
+      "source": "Good output should make the next action obvious. If the response is too broad, ask for one example, one misconception, or one check question.",
+      "value": "Good output ଉଚିତ ତିଆରି the ପରବର୍ତ୍ତୀ action obvious. If the response ହେଉଛି too ବିସ୍ତୃତ, ପଚାରନ୍ତୁ ପାଇଁ ଏକ ଉଦାହରଣ, ଏକ ଭୁଲ ଧାରଣା, କିମ୍ବା ଏକ ଯାଞ୍ଚ ପ୍ରଶ୍ନ."
+    },
+    {
+      "key": "site.d4b368d1681934d441",
+      "source": "Good prompts for honest studying",
+      "value": "ସତ୍ୟନିଷ୍ଠ ଅଧ୍ୟୟନ ପାଇଁ ଭଲ ପ୍ରମ୍ପ୍ଟ"
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "ଭଲ prompts ସାଧାରଣତଃ ତିନୋଟି କଥା ଧରେ: subject, ଆପଣଙ୍କ current level, ଏବଂ କେମିତି ସାହାଯ୍ୟ ଦରକାର। Perfect wording ଦରକାର ନାହିଁ। Session ଆରମ୍ଭ ହେବା ପାଇଁ ଯଥେଷ୍ଟ context ଦରକାର।"
+    },
+    {
+      "key": "site.12172064ab44019034",
+      "source": "Good Socratic prompts ask:",
+      "value": "ଭଲ ସୋକ୍ରାଟିକ୍ ପ୍ରମ୍ପ୍ଟ ପଚାରେ:"
+    },
+    {
+      "key": "site.5783ac814f03e9fa6e",
+      "source": "Good ways to start this chat.",
+      "value": "ଏହି ଚାଟ୍ ଆରମ୍ଭ କରିବାର ଭଲ ଉପାୟ।"
+    },
+    {
+      "key": "site.acd65c79a9b63ab61e",
+      "source": "Good writing help should sharpen the claim, evidence, structure, and clarity while leaving the final words and judgment with the learner.",
+      "value": "Good ଲେଖନ ସାହାଯ୍ୟ ଉଚିତ sharpen the ଦାବି, ପ୍ରମାଣ, structure, ଓ clarity while leaving the ଶେଷ words ଓ judgment ସହିତ the ଶିକ୍ଷାର୍ଥୀ."
+    },
+    {
+      "key": "site.152ec0a990b8f44f08",
+      "source": "Google and standard search crawlers",
+      "value": "Google ଓ ସାଧାରଣ ସର୍ଚ୍ଚ କ୍ରଲର୍"
+    },
+    {
+      "key": "site.2d8c3f55570fe2e0d7",
+      "source": "Governing Law",
+      "value": "ଶାସକ ଆଇନ"
+    },
+    {
+      "key": "site.ddbae73a7570c99a1f",
+      "source": "Grade & GPA Calculator",
+      "value": "ଗ୍ରେଡ୍ ଏବଂ GPA କ୍ୟାଲକୁଲେଟର୍"
+    },
+    {
+      "key": "site.2dc3f387c57a6f6069",
+      "source": "grade calculator",
+      "value": "grade calculator ବିଷୟ"
+    },
+    {
+      "key": "site.511f63bba3a9fbcfff",
+      "source": "Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ) may, at its sole discretion, offer a Subscription with a free trial for a limited period of time (\"Free Trial\"). You may be required to enter your billing information in order to sign up for Free Trial. If you do enter your billing information when signing up for Free Trial, you will not be charged by Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ) until Free Trial has expired. On the last day of Free Trial period, unless you cancelled your Subscription, you will be automatically charged the applicable Subscription fees for the type of Subscription you have selected. At any time and without notice, Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ) reserves the right to (i) modify Terms of Service of Free Trial offer, or (ii) cancel such Free Trial offer.",
+      "value": "Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ) ନିଜ ସ୍ୱଇଚ୍ଛାନୁସାରେ ସୀମିତ ସମୟ ପାଇଁ free trial (“Free Trial”) ସହ Subscription offer କରିପାରେ। Free Trial ପାଇଁ sign up କରିବାକୁ ଆପଣଙ୍କୁ billing information ଦେବାକୁ ପଡ଼ିପାରେ। Free Trial sign up ବେଳେ billing information ଦେଲେ, Free Trial ସମାପ୍ତ ହେଉପର୍ଯ୍ୟନ୍ତ Great Indian Company ଆପଣଙ୍କୁ charge କରିବ ନାହିଁ। Free Trial period ର ଶେଷ ଦିନ, ଆପଣ Subscription cancel ନକରିଥିଲେ, ବାଛିଥିବା Subscription ପ୍ରକାର ପାଇଁ ଲାଗୁ Subscription fees ସ୍ୱୟଂଚାଳିତ ଭାବେ charge ହେବ। କୌଣସି ସମୟରେ ଓ notice ବିନା, Great Indian Company (i) Free Trial offer ର Terms of Service modify କରିବା କିମ୍ବା (ii) Free Trial offer cancel କରିବାର ଅଧିକାର ରଖେ।"
+    },
+    {
+      "key": "site.c848c02f365b793db1",
+      "source": "Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), in its sole discretion and at any time, may modify Subscription fees for the Subscriptions. Any Subscription fee change will become effective at the end of the then-current Billing Cycle. Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ) will provide you, but not bound to provide a reasonable prior notice of any change in Subscription fees to give you an opportunity to terminate your Subscription before such change becomes effective. Your continued use of Service after Subscription fee change comes into effect constitutes your agreement to pay the modified Subscription fee amount.",
+      "value": "Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ) ନିଜ ସ୍ୱଇଚ୍ଛାନୁସାରେ ଓ କୌଣସି ସମୟରେ Subscriptions ପାଇଁ Subscription fees ପରିବର୍ତ୍ତନ କରିପାରେ। Subscription fee ର କୌଣସି ପରିବର୍ତ୍ତନ ସେତେବେଳେ ଚାଲୁ ଥିବା Billing Cycle ଶେଷରେ ପ୍ରଭାବୀ ହେବ। Subscription fees ପରିବର୍ତ୍ତନ ବିଷୟରେ ଆପଣଙ୍କୁ reasonable prior notice ଦେବାକୁ Great Indian Company ଚେଷ୍ଟା କରିପାରେ, କିନ୍ତୁ ସେଥିରେ ବାଧ୍ୟ ନୁହେଁ, ଯାହାଦ୍ୱାରା ପରିବର୍ତ୍ତନ ପ୍ରଭାବୀ ହେବା ପୂର୍ବରୁ ଆପଣ Subscription terminate କରିବାର ସୁଯୋଗ ପାଇବେ। Subscription fee ପରିବର୍ତ୍ତନ ପ୍ରଭାବୀ ହେବା ପରେ Service ବ୍ୟବହାର ଜାରି ରଖିବା, modified Subscription fee amount ଦେବାକୁ ଆପଣଙ୍କ ସମ୍ମତି ଭାବେ ଧରାଯିବ।"
+    },
+    {
+      "key": "site.6b01fa7ae728a91168",
+      "source": "group study",
+      "value": "group ଅଧ୍ୟୟନ"
+    },
+    {
+      "key": "site.4493b02636d374cd91",
+      "source": "Group Study Timer",
+      "value": "ଗ୍ରୁପ୍ ଷ୍ଟଡି ଟାଇମର୍"
+    },
+    {
+      "key": "site.1e6110672c09f5c22e",
+      "source": "group timer",
+      "value": "group timer ବିଷୟ"
+    },
+    {
+      "key": "site.2db8868061f2f29045",
+      "source": "Guardrails: {value1}",
+      "value": "ସୁରକ୍ଷାସୀମା: {value1}"
+    },
+    {
+      "key": "site.2ac5cdad2988ba0c40",
+      "source": "Guest learner",
+      "value": "ଗେଷ୍ଟ ଶିକ୍ଷାର୍ଥୀ"
+    },
+    {
+      "key": "site.ef70574161c4a2145f",
+      "source": "Guest mode and private chats",
+      "value": "ଗେଷ୍ଟ ମୋଡ୍ ଓ ବ୍ୟକ୍ତିଗତ ଚାଟ୍"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "ଗେଷ୍ଟ ମୋଡ୍ ପ୍ରବେଶବିନ୍ଦୁ"
+    },
+    {
+      "key": "site.a68765c5fe45eea4c3",
+      "source": "Guest mode for public access",
+      "value": "ସାର୍ବଜନୀନ ଅଭିଗମ୍ୟତା ପାଇଁ ଗେଷ୍ଟ ମୋଡ୍"
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "ଗେଷ୍ଟ-ମୋଡ୍ କୋଣ"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "ଗାଇଡ୍"
+    },
+    {
+      "key": "site.359cca3d8731cc1684",
+      "source": "Guide philosophical thinking with clarity and curiosity.",
+      "value": "ଗାଇଡ୍ philosophical thinking ସହିତ clarity ଓ curiosity."
+    },
+    {
+      "key": "site.929a28d261428029e6",
+      "source": "Guides",
+      "value": "ଗାଇଡ୍‌ଗୁଡିକ"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "ଗାଇଡ୍ ଓ କାର୍ଯ୍ୟପ୍ରବାହ"
+    },
+    {
+      "key": "site.7780a00040ead45ec1",
+      "source": "Guides for brainstorming, storytelling, creative practice, idea generation, and making playful learning productive.",
+      "value": "ଗାଇଡ୍ ପାଇଁ brainstorming, storytelling, creative ଅଭ୍ୟାସ, ଧାରଣା generation, ଓ making playful ଶିକ୍ଷା productive."
+    },
+    {
+      "key": "site.1427919ff033fcde7c",
+      "source": "Guides for choosing, prompting, and learning with AI tutors that explain, question, coach, and adapt to the learner.",
+      "value": "ଗାଇଡ୍ ପାଇଁ choosing, prompting, ଓ ଶିକ୍ଷା ସହିତ AI tutors ସେହି ବୁଝାନ୍ତୁ, ପ୍ରଶ୍ନ, coach, ଓ adapt କୁ the ଶିକ୍ଷାର୍ଥୀ."
+    },
+    {
+      "key": "site.1b7b40b2b7d216caf1",
+      "source": "Guides for debate practice, argument maps, evidence checks, counterarguments, and clearer reasoning.",
+      "value": "ଗାଇଡ୍ ପାଇଁ ତର୍କ ଅଭ୍ୟାସ, ତର୍କ maps, ପ୍ରମାଣ ଯାଞ୍ଚ, ପ୍ରତିଯୁକ୍ତି, ଓ clearer reasoning."
+    },
+    {
+      "key": "site.8c36b4412069b8cbf6",
+      "source": "Guides for history, literature, philosophy, debate, historical simulations, evidence labels, and perspective-taking.",
+      "value": "ଗାଇଡ୍ ପାଇଁ ଇତିହାସ, literature, philosophy, ତର୍କ, historical simulations, ପ୍ରମାଣ labels, ଓ perspective-taking."
+    },
+    {
+      "key": "site.4e579aecaf7e43c2be",
+      "source": "Guides for maths, science, coding, step-by-step reasoning, debugging, and concept practice.",
+      "value": "ଗାଇଡ୍ ପାଇଁ maths, ବିଜ୍ଞାନ, କୋଡିଂ, ପଦକ୍ଷେପ-ଦ୍ୱାରା-ପଦକ୍ଷେପ reasoning, debugging, ଓ ଧାରଣା ଅଭ୍ୟାସ."
+    },
+    {
+      "key": "site.bf5069602ff735667d",
+      "source": "Guides for quizzes, flashcards, retrieval practice, weak-area review, and making learning stick.",
+      "value": "ଗାଇଡ୍ ପାଇଁ କ୍ୱିଜ୍, ଫ୍ଲାଶକାର୍ଡ, retrieval ଅଭ୍ୟାସ, weak-area ସମୀକ୍ଷା, ଓ making ଶିକ୍ଷା stick."
+    },
+    {
+      "key": "site.e437ebb6e331d41ee8",
+      "source": "Guides for reasoning, asking better questions, comparing claims, debugging assumptions, and thinking from multiple angles.",
+      "value": "ଗାଇଡ୍ ପାଇଁ reasoning, asking ଭଲ ପ୍ରଶ୍ନ, comparing ଦାବି, debugging ଧାରଣା, ଓ thinking ରୁ multiple angles."
+    },
+    {
+      "key": "site.fd2180039a66f21457",
+      "source": "Guides for time travel, roleplay, simulations, language practice, historical context, and experiential learning.",
+      "value": "ଗାଇଡ୍ ପାଇଁ time travel, ରୋଲପ୍ଲେ, simulations, ଭାଷା ଅଭ୍ୟାସ, historical context, ଓ experiential ଶିକ୍ଷା."
+    },
+    {
+      "key": "site.bac9ae1c3b76bcb69d",
+      "source": "guides for tutoring, memory, active practice, historical roleplay, homework help, writing feedback, coding, and learning without becoming passive.",
+      "value": "ଗାଇଡ୍ ପାଇଁ tutoring, ସ୍ମୃତି, ସକ୍ରିୟ ଅଭ୍ୟାସ, historical ରୋଲପ୍ଲେ, ହୋମୱର୍କ ସହାୟତା, ଲେଖନ ମତାମତ, କୋଡିଂ, ଓ ଶିକ୍ଷା ଛଡ଼ା becoming passive."
+    },
+    {
+      "key": "site.c8861d999bb79a5389",
+      "source": "Guides for writing, speaking, feedback, tone, structure, and explaining ideas more clearly.",
+      "value": "ଗାଇଡ୍ ପାଇଁ ଲେଖନ, speaking, ମତାମତ, tone, structure, ଓ explaining ଧାରଣା more clearly."
+    },
+    {
+      "key": "site.725a58fb1f107bf51b",
+      "source": "guides in the crawlable content engine",
+      "value": "crawlable content engine ରେ guides"
+    },
+    {
+      "key": "site.7f1be4a712e5eb651d",
+      "source": "Habit Coach",
+      "value": "ଅଭ୍ୟାସ କୋଚ୍ (Habit Coach)"
+    },
+    {
+      "key": "site.790dbced167e15d580",
+      "source": "Habit Coach AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Habit Coach AI Learning Mode ହେଉଛି ନିଷ୍କ୍ରିୟ ଉତ୍ତର ସଂଗ୍ରହ ପରିବର୍ତ୍ତେ ଶିକ୍ଷା ପାଇଁ AI ବ୍ୟବହାର କରିବାର କେନ୍ଦ୍ରିତ ଉପାୟ। ଏହି ମୋଡ୍ ଏହି ନିର୍ଦ୍ଦିଷ୍ଟ କାମକୁ କେନ୍ଦ୍ର କରି ତିଆରି: Turn intentions into small repeatable learning habits ସହ triggers, rewards, ଓ recovery plans।"
+    },
+    {
+      "key": "site.f566f221da2555baa4",
+      "source": "Habit Coach AI Learning Mode: practical guide",
+      "value": "ଅଭ୍ୟାସ Coach AI ଶିକ୍ଷା ମୋଡ୍: ବ୍ୟବହାରିକ ଗାଇଡ୍"
+    },
+    {
+      "key": "site.75aab585ecc01ea953",
+      "source": "Habit Coach prompts and study loop",
+      "value": "ଅଭ୍ୟାସ Coach ପ୍ରମ୍ପ୍ଟ ଓ ଅଧ୍ୟୟନ ଲୁପ୍"
+    },
+    {
+      "key": "site.1a706d77741a3f5cca",
+      "source": "Handle a rude customer",
+      "value": "ଜଣେ ଅସଭ୍ୟ ଗ୍ରାହକଙ୍କୁ ସମ୍ଭାଳନ୍ତୁ"
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "କଠିନ। ଛୋଟ ବିଳମ୍ବ ପରେ ସମୀକ୍ଷା କରନ୍ତୁ।"
+    },
+    {
+      "key": "site.0dbbdbf69e047f014b",
+      "source": "Harvard",
+      "value": "Harvard"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "ଶିଶୁକୁ ଅଟକା ଅବସ୍ଥାରୁ ବାହାରିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.b88ff2a9be16f2063b",
+      "source": "Help debug this error",
+      "value": "ଏହି ଏରର୍ ଡିବଗ୍ କରିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.9f490462268b892e49",
+      "source": "Help groups study actively instead of drifting.",
+      "value": "ସାହାଯ୍ୟ groups ଅଧ୍ୟୟନ actively instead of drifting."
+    },
+    {
+      "key": "site.aaad39e1a8e4d7ffb2",
+      "source": "Help groups study together with structure and accountability.",
+      "value": "ସାହାଯ୍ୟ groups ଅଧ୍ୟୟନ together ସହିତ structure ଓ accountability."
+    },
+    {
+      "key": "site.add814e291817399ae",
+      "source": "Help interpret a graph",
+      "value": "ଏକ ଗ୍ରାଫ୍ ବୁଝିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.3a5c23b51d7c07f478",
+      "source": "Help learners add restorative breaks to focused work.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ add restorative breaks କୁ କେନ୍ଦ୍ରିତ work."
+    },
+    {
+      "key": "site.05f17e37901e80fa84",
+      "source": "Help learners ask and answer better community questions.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ ପଚାରନ୍ତୁ ଓ ଉତ୍ତର ଭଲ community ପ୍ରଶ୍ନ."
+    },
+    {
+      "key": "site.7dd6af6f00018c30ed",
+      "source": "Help learners build sustainable study habits.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ ଗଢ଼ନ୍ତୁ sustainable ଅଧ୍ୟୟନ ଅଭ୍ୟାସ."
+    },
+    {
+      "key": "site.11f31fb99184957cc4",
+      "source": "Help learners calculate grade scenarios and plan realistic targets.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ calculate grade scenarios ଓ ଯୋଜନା realistic targets."
+    },
+    {
+      "key": "site.81975d2a50b5f8c240",
+      "source": "Help learners choose ambient sounds that support focus.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ ବାଛନ୍ତୁ ambient sounds ସେହି ସହାୟତା focus."
+    },
+    {
+      "key": "site.61d1179a45b948f288",
+      "source": "Help learners create mind maps and organize ideas visually in text.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ ତିଆରି କରନ୍ତୁ mind maps ଓ organize ଧାରଣା visually ରେ text."
+    },
+    {
+      "key": "site.266267ec71e9f15bac",
+      "source": "Help learners create supportive accountability systems.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ ତିଆରି କରନ୍ତୁ supportive accountability systems."
+    },
+    {
+      "key": "site.529c8b913f1a7b72fa",
+      "source": "Help learners explore careers realistically and personally.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ explore careers realistically ଓ personally."
+    },
+    {
+      "key": "site.71640344a8576e495e",
+      "source": "Help learners focus with timed work and break sessions.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ focus ସହିତ timed work ଓ break ଅଧିବେଶନ."
+    },
+    {
+      "key": "site.0cb27beb75aefbc82c",
+      "source": "Help learners format references and understand citation fields.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ format references ଓ ବୁଝନ୍ତୁ citation fields."
+    },
+    {
+      "key": "site.8a3dd09ff31d105991",
+      "source": "Help learners generate, select, and refine creative ideas.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ generate, select, ଓ refine creative ଧାରଣା."
+    },
+    {
+      "key": "site.b58cdd01b2178bfcf6",
+      "source": "Help learners interpret data responsibly.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ interpret ଡାଟା responsibly."
+    },
+    {
+      "key": "site.14a3de8d1e8c83c275",
+      "source": "Help learners interpret learning progress and decide what to do next.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ interpret ଶିକ୍ଷା progress ଓ decide କ’ଣ କୁ do ପରବର୍ତ୍ତୀ."
+    },
+    {
+      "key": "site.5b3f6cc33566d346f7",
+      "source": "Help learners organize courses and study workload.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ organize courses ଓ ଅଧ୍ୟୟନ workload."
+    },
+    {
+      "key": "site.4a2a49e361db6b99a9",
+      "source": "Help learners organize knowledge into connected mental models.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ organize knowledge into connected mental models."
+    },
+    {
+      "key": "site.30e2f0fab4411cf9da",
+      "source": "Help learners plan and time individual study tasks.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ ଯୋଜନା ଓ time individual ଅଧ୍ୟୟନ tasks."
+    },
+    {
+      "key": "site.9e4471842030e03e69",
+      "source": "Help learners practice argument by debating in the style of a chosen public or fictional personality.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ ଅଭ୍ୟାସ ତର୍କ ଦ୍ୱାରା debating ରେ the style of a chosen ସାର୍ବଜନୀନ କିମ୍ବା fictional personality."
+    },
+    {
+      "key": "site.a2c14e648c0f9d23a8",
+      "source": "Help learners reason from visual material they describe or provide.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ reason ରୁ visual material ସେମାନେ describe କିମ୍ବା provide."
+    },
+    {
+      "key": "site.a3964e4457ee1e10f2",
+      "source": "Help learners reflect metacognitively on learning patterns.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ reflect metacognitively ଉପରେ ଶିକ୍ଷା patterns."
+    },
+    {
+      "key": "site.d332099439df962c74",
+      "source": "Help learners rehearse spoken responses through text prompts and feedback.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ rehearse spoken responses through text ପ୍ରମ୍ପ୍ଟ ଓ ମତାମତ."
+    },
+    {
+      "key": "site.d02efb0288c388047a",
+      "source": "Help learners share useful, well-contextualized study resources.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ share ଉପଯୋଗୀ, well-contextualized ଅଧ୍ୟୟନ ସମ୍ପଦ."
+    },
+    {
+      "key": "site.8a52f09caec82a94fe",
+      "source": "Help learners structure research and synthesize evidence.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ structure ଗବେଷଣା ଓ synthesize ପ୍ରମାଣ."
+    },
+    {
+      "key": "site.06faca4091cd527bdc",
+      "source": "Help learners track assignments and avoid last-minute panic.",
+      "value": "ସାହାଯ୍ୟ ଶିକ୍ଷାର୍ଥୀ track assignments ଓ ଏଡ଼ାନ୍ତୁ last-minute panic."
+    },
+    {
+      "key": "site.05efd023b23f11a3e5",
+      "source": "Help me answer interview questions",
+      "value": "ଇଣ୍ଟରଭ୍ୟୁ ପ୍ରଶ୍ନର ଉତ୍ତର ଦେବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.521b2ca70d60b1c5e6",
+      "source": "Help me focus on coding",
+      "value": "କୋଡିଂ ଉପରେ ଧ୍ୟାନ ଦେବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.02af01cf134413e60c",
+      "source": "Help me learn supply and demand",
+      "value": "ମୋତେ ଚାହିଦା ଓ ଯୋଗାଣ ଶିଖିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.7230de0f0d282dc8db",
+      "source": "Help me outline a story",
+      "value": "କାହାଣୀର ରୂପରେଖ ପ୍ରସ୍ତୁତ କରିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.6868e8f33e9bf25463",
+      "source": "Help me plan an essay",
+      "value": "ମୋତେ ଏକ ପ୍ରବନ୍ଧ ଯୋଜନା କରିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.f7a727ca08b1e384e8",
+      "source": "Help me prepare for finals",
+      "value": "ଫାଇନାଲ୍ ପରୀକ୍ଷା ପାଇଁ ପ୍ରସ୍ତୁତ ହେବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.7663fd682b7091a848",
+      "source": "Help me simplify recursion",
+      "value": "ରିକର୍ସନ୍ (recursion) କୁ ସରଳ କରିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.a071bf6407d100dd55",
+      "source": "Help me start this word problem",
+      "value": "ଏହି ଶବ୍ଦ ସମସ୍ୟା ଆରମ୍ଭ କରିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.d0e1544c4e48e3ed49",
+      "source": "Help me stop overstudying",
+      "value": "ଅତ୍ୟଧିକ ପଢ଼ିବା ବନ୍ଦ କରିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.2140e760711b2fcbb0",
+      "source": "Help me understand photosynthesis",
+      "value": "ଆଲୋକ ସଂଶ୍ଳେଷଣ ବୁଝିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.2ef392362b103e9ea8",
+      "source": "Help me understand this paragraph",
+      "value": "ଏହି ଅନୁଚ୍ଛେଦଟି ବୁଝିବାରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.62d7e3451b80fc0f26",
+      "source": "Help me with {value1}",
+      "value": "{value1} ରେ ମୋତେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.b0ae9a233b9194a113",
+      "source": "Help read this diagram",
+      "value": "ଏହି ଚିତ୍ରଟି ପଢ଼ିବାରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.ac01f0751e1ec43831",
+      "source": "Help with quadratic equations",
+      "value": "ଦ୍ୱିଘାତ ସମୀକରଣରେ ସାହାଯ୍ୟ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.10dd16829ddcea8e41",
+      "source": "Here is a slightly stronger version you can reuse:",
+      "value": "Here ହେଉଛି a slightly ଅଧିକ ଶକ୍ତିଶାଳୀ version ଆପଣ ପାରେ reuse:"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "ଏଠାରେ ପ୍ରଶ୍ନ ଓ ମୁଁ ଯାହା ଚେଷ୍ଟା କରିଛି। ଅନ୍ତିମ ଉତ୍ତର ନୁହେଁ, ସବୁଠାରୁ ଛୋଟ ଉପଯୋଗୀ ସଙ୍କେତ ଦିଅନ୍ତୁ।"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "ଫିଲ୍ମ ଅଧ୍ୟାୟ ଲୁଚାନ୍ତୁ"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "ଫିଲ୍ମ ଟ୍ରାନ୍ସକ୍ରିପ୍ଟ ଲୁଚାନ୍ତୁ"
+    },
+    {
+      "key": "site.8c28d73def0816f7a9",
+      "source": "High-intent learning searches should land in a useful chat, not a brochure.",
+      "value": "High-intent ଶିକ୍ଷା searches ଉଚିତ land ରେ a ଉପଯୋଗୀ ଚାଟ୍, ନୁହେଁ a brochure."
+    },
+    {
+      "key": "site.895093b81f9bf96e69",
+      "source": "High-intent searches deserve a clear answer, not a vague landing page.",
+      "value": "High-intent searches deserve a ସ୍ପଷ୍ଟ ଉତ୍ତର, ନୁହେଁ a vague landing ପୃଷ୍ଠା."
+    },
+    {
+      "key": "site.762340e98d62d0abee",
+      "source": "Hindi market bargaining",
+      "value": "ହିନ୍ଦୀ ବଜାର ଦରଦାମ"
+    },
+    {
+      "key": "site.01a1a62796e1bb2f06",
+      "source": "Hint-first coaching keeps the final work with the learner while still removing the block.",
+      "value": "ସଙ୍କେତ-ପ୍ରଥମ coaching keeps the ଶେଷ work ସହିତ the ଶିକ୍ଷାର୍ଥୀ while still removing the block."
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "ସଙ୍କେତ-ପ୍ରଥମ ସହାୟତା"
+    },
+    {
+      "key": "site.cba04ec2ef5ed18dc0",
+      "source": "Hint-first homework help, step checks, ethical study habits, and revision that keeps the learner responsible.",
+      "value": "ସଙ୍କେତ-ପ୍ରଥମ ହୋମୱର୍କ ସହାୟତା, ପଦକ୍ଷେପ ଯାଞ୍ଚ, ethical ଅଧ୍ୟୟନ ଅଭ୍ୟାସ, ଓ ପୁନରାବୃତ୍ତି ସେହି keeps the ଶିକ୍ଷାର୍ଥୀ responsible."
+    },
+    {
+      "key": "site.efb2448895f5076f23",
+      "source": "Hint-first support",
+      "value": "ସଙ୍କେତ-ପ୍ରଥମ ସହାୟତା"
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "ସଙ୍କେତ: \"Think ବିଷୟରେ forgetting ଓ retrieval.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "ସଙ୍କେତ ହେଉଛି ଉପଯୋଗୀ କେବେ ସେମାନେ preserve effort. A bad ସଙ୍କେତ ହେଉଛି the ଉତ୍ତର ରେ disguise. A good ସଙ୍କେତ narrows the search space."
+    },
+    {
+      "key": "site.ffd9d19ded71422721",
+      "source": "Hints without answer dumping",
+      "value": "ସିଧାସଳଖ ଉତ୍ତର ନ ଦେଇ ସଙ୍କେତ (hints) ପ୍ରଦାନ"
+    },
+    {
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "ଇତିହାସିକ ସମ୍ବାଦ"
+    },
+    {
+      "key": "site.98dd48a39cdf95490d",
+      "source": "Historical persona mode separates simulation from documented fact while making context memorable.",
+      "value": "Historical persona ମୋଡ୍ separates simulation ରୁ documented fact while making context memorable."
+    },
+    {
+      "key": "site.d88fe26f76efa488ec",
+      "source": "Historical roleplay can make context, choices, and ideas easier to remember when it separates imagination from evidence.",
+      "value": "Historical ରୋଲପ୍ଲେ ପାରେ ତିଆରି context, choices, ଓ ଧାରଣା easier କୁ remember କେବେ ଏହା separates imagination ରୁ ପ୍ରମାଣ."
+    },
+    {
+      "key": "site.311fbb8241881c42d3",
+      "source": "Historical roleplay is especially powerful when learners compare perspectives. After speaking with one figure, ask for another point of view:",
+      "value": "Historical ରୋଲପ୍ଲେ ହେଉଛି especially powerful କେବେ ଶିକ୍ଷାର୍ଥୀ ତୁଳନା କରନ୍ତୁ perspectives. ପରେ speaking ସହିତ ଏକ figure, ପଚାରନ୍ତୁ ପାଇଁ another point of view:"
+    },
+    {
+      "key": "site.73e202a8baeba423a5",
+      "source": "Historical worlds, persona conversations, case simulations, and roleplay for learning through situation.",
+      "value": "Historical worlds, persona conversations, case simulations, ଓ ରୋଲପ୍ଲେ ପାଇଁ ଶିକ୍ଷା through situation."
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "ଇତିହାସ"
+    },
+    {
+      "key": "site.3c7061bac6c7b630f9",
+      "source": "History and ideas",
+      "value": "ଇତିହାସ ଓ ଧାରଣା"
+    },
+    {
+      "key": "site.070f89767e7a690a7a",
+      "source": "History becomes easier to remember when learners can enter the context, ask better questions, compare causes, and keep source boundaries clear.",
+      "value": "ଇତିହାସ becomes easier କୁ remember କେବେ ଶିକ୍ଷାର୍ଥୀ ପାରେ enter the context, ପଚାରନ୍ତୁ ଭଲ ପ୍ରଶ୍ନ, ତୁଳନା କରନ୍ତୁ causes, ଓ keep source boundaries ସ୍ପଷ୍ଟ."
+    },
+    {
+      "key": "site.6c3b3e34eb59477b81",
+      "source": "History becomes more memorable without pretending uncertainty has disappeared.",
+      "value": "ଇତିହାସ becomes more memorable ଛଡ଼ା pretending uncertainty has disappeared."
+    },
+    {
+      "key": "site.8173e1263dde95cbf1",
+      "source": "history cause and effect tutor",
+      "value": "ଇତିହାସ cause ଓ effect tutor"
+    },
+    {
+      "key": "site.993a465489197d29f6",
+      "source": "History Cause-and-Effect",
+      "value": "ଇତିହାସ କାରଣ ଏବଂ ପ୍ରଭାବ"
+    },
+    {
+      "key": "site.1c4cbf76f4e5db99ea",
+      "source": "History Cause-and-Effect AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "History Cause-and-Effect AI Learning Mode ହେଉଛି ନିଷ୍କ୍ରିୟ ଉତ୍ତର ସଂଗ୍ରହ ପରିବର୍ତ୍ତେ ଶିକ୍ଷା ପାଇଁ AI ବ୍ୟବହାର କରିବାର କେନ୍ଦ୍ରିତ ଉପାୟ। ଏହି ମୋଡ୍ ଏହି ନିର୍ଦ୍ଦିଷ୍ଟ କାମକୁ କେନ୍ଦ୍ର କରି ତିଆରି: Unpack historical events through causes, triggers, consequences, ଓ alternative possibilities।"
+    },
+    {
+      "key": "site.b9b5e3e0a9030cf462",
+      "source": "History Cause-and-Effect AI Learning Mode: practical guide",
+      "value": "ଇତିହାସ Cause-ଓ-Effect AI ଶିକ୍ଷା ମୋଡ୍: ବ୍ୟବହାରିକ ଗାଇଡ୍"
+    },
+    {
+      "key": "site.1695116016b31c0954",
+      "source": "History Cause-and-Effect prompts and study loop",
+      "value": "ଇତିହାସ Cause-ଓ-Effect ପ୍ରମ୍ପ୍ଟ ଓ ଅଧ୍ୟୟନ ଲୁପ୍"
+    },
+    {
+      "key": "site.e7d5917b84f093eb7a",
+      "source": "History is easier to remember when it feels inhabited.",
+      "value": "ଇତିହାସ ହେଉଛି easier କୁ remember କେବେ ଏହା feels inhabited."
+    },
+    {
+      "key": "site.873bb3dca9f68e0619",
+      "source": "History learners who want a specific society, identity, and set of constraints rather than a generic period summary.",
+      "value": "ଇତିହାସ ଶିକ୍ଷାର୍ଥୀ ଯେଉଁମାନେ ଏକ ସାଧାରଣ ସମୟ ସାରାଂଶ ଅପେକ୍ଷା ଏକ ନିର୍ଦ୍ଦିଷ୍ଟ ସମାଜ, ପରିଚୟ ଏବଂ ନିୟମାବଳୀ ଚାହାଁନ୍ତି।"
+    },
+    {
+      "key": "site.4daccf08182693fc88",
+      "source": "history tutor AI",
+      "value": "ଇତିହାସ tutor AI"
+    },
+    {
+      "key": "site.402dfdc02356b30e36",
+      "source": "History, civics, geography, economics, philosophy, and ethics modes for context-rich understanding.",
+      "value": "ଇତିହାସ, civics, geography, economics, philosophy, ଓ ethics ମୋଡ୍‌ଗୁଡିକ ପାଇଁ context-rich understanding."
+    },
+    {
+      "key": "site.9e6133f2db8dfef361",
+      "source": "History, ideas, and debate",
+      "value": "ଇତିହାସ, ଧାରଣା ଓ ତର୍କ"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "ମୁଖ୍ୟ ପୃଷ୍ଠା"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "ହୋମୱର୍କ"
+    },
+    {
+      "key": "site.e6143903397be43d26",
+      "source": "Homework behavior",
+      "value": "ହୋମୱର୍କ ବ୍ୟବହାର"
+    },
+    {
+      "key": "site.d8b2c8c7bd633fe77e",
+      "source": "homework coach",
+      "value": "ହୋମୱର୍କ କୋଚ୍"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "ହୋମୱାର୍କ କୋଚ୍"
+    },
+    {
+      "key": "site.1f2797f9270f64d421",
+      "source": "Homework Coach and Math Step Coach are tuned for hint-first support, step checks, and ownership of the final answer.",
+      "value": "ହୋମୱର୍କ କୋଚ୍ ଓ ଗଣିତ ପଦକ୍ଷେପ କୋଚ୍ ହେଉଛି tuned ପାଇଁ ସଙ୍କେତ-ପ୍ରଥମ ସହାୟତା, ପଦକ୍ଷେପ ଯାଞ୍ଚ, ଓ ownership of the ଶେଷ ଉତ୍ତର."
+    },
+    {
+      "key": "site.f9570116511bd9f5a0",
+      "source": "Homework Coach prompts and study loop",
+      "value": "ହୋମୱର୍କ କୋଚ୍ ପ୍ରମ୍ପ୍ଟ ଓ ଅଧ୍ୟୟନ ଲୁପ୍"
+    },
+    {
+      "key": "site.d7de14f0e779c0fc1c",
+      "source": "homework coaching",
+      "value": "ହୋମୱର୍କ କୋଚିଂ"
+    },
+    {
+      "key": "site.a8b1af1d0b2825cd8f",
+      "source": "homework hints",
+      "value": "ହୋମୱର୍କ ସଙ୍କେତ"
+    },
+    {
+      "key": "site.b167c5ba5f867e823b",
+      "source": "homework photo",
+      "value": "ହୋମୱର୍କ photo"
+    },
+    {
+      "key": "site.d02fccb306c1c5f6c9",
+      "source": "homework prompt examples",
+      "value": "ହୋମୱର୍କ ପ୍ରମ୍ପ୍ଟ ଉଦାହରଣ"
+    },
+    {
+      "key": "site.c9fa3a3edcaf3f4750",
+      "source": "Homework support",
+      "value": "ହୋମୱର୍କ ସହାୟତା"
+    },
+    {
+      "key": "site.620762c59455869a06",
+      "source": "How are these different from a generic AI chatbot page?",
+      "value": "କିପରି ହେଉଛି ଏହିଗୁଡିକ different ରୁ a ସାଧାରଣ AI ଚାଟବଟ୍ ପୃଷ୍ଠା?"
+    },
+    {
+      "key": "site.078af72f7d6e77cb07",
+      "source": "How are these prompts different from answer-copying?",
+      "value": "କିପରି ହେଉଛି ଏହିଗୁଡିକ ପ୍ରମ୍ପ୍ଟ different ରୁ ଉତ୍ତର-copying?"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "କିପରି ପାରେ access ହେବା funded ପାଇଁ ଶିକ୍ଷାର୍ଥୀ?"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "କିପରି ପାରେ ଛାତ୍ରଛାତ୍ରୀ ଏଡ଼ାନ୍ତୁ cheating ସହିତ AI?"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "inspir କିପରି ଆରମ୍ଭ ହେଲା?"
+    },
+    {
+      "key": "site.720430e79308c16d31",
+      "source": "How do chords work?",
+      "value": "କର୍ଡଗୁଡ଼ିକ କିପରି କାମ କରେ?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "କିପରି do I ଏଡ଼ାନ୍ତୁ drifting between ବିଷୟ?"
+    },
+    {
+      "key": "site.91995c4adaa9940de2",
+      "source": "How do I avoid treating AI history as a source?",
+      "value": "କିପରି do I ଏଡ଼ାନ୍ତୁ treating AI ଇତିହାସ as a source?"
+    },
+    {
+      "key": "site.a3faf7ff18ef6e58ce",
+      "source": "How do I look at a painting?",
+      "value": "ମୁଁ ଗୋଟିଏ ଚିତ୍ରକୁ କିପରି ଦେଖିବି?"
+    },
+    {
+      "key": "site.1061fe635e2351374f",
+      "source": "How does a bill become law?",
+      "value": "ଏକ ବିଲ୍ କିପରି ଆଇନରେ ପରିଣତ ହୁଏ?"
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "କିପରି does inspir reduce ଉତ୍ତର-copying?"
+    },
+    {
+      "key": "site.5f462850ee4eb9a66b",
+      "source": "How does this help search engines and AI answer engines?",
+      "value": "କିପରି does ଏହି ସାହାଯ୍ୟ search engines ଓ AI ଉତ୍ତର ଇଞ୍ଜିନ୍?"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "ପରୀକ୍ଷା ପ୍ରସ୍ତୁତି ଯୋଜନା କେତେ ଶୀଘ୍ର କରିବା ଉଚିତ?"
+    },
+    {
+      "key": "site.505874cd722e64378f",
+      "source": "How inspir describes data use, privacy practices, and user rights for the public learning platform.",
+      "value": "କିପରି inspir describes ଡାଟା ବ୍ୟବହାର, ଗୋପନୀୟତା practices, ଓ user rights ପାଇଁ the ସାର୍ବଜନୀନ ଶିକ୍ଷା ପ୍ଲାଟଫର୍ମ."
+    },
+    {
+      "key": "site.7a2e1e944759905224",
+      "source": "How inspir handles public guest learning pages, private saved chats, crawler access, learner safety, and school trust.",
+      "value": "କିପରି inspir handles ସାର୍ବଜନୀନ guest ଶିକ୍ଷା ପୃଷ୍ଠା, ସଞ୍ଚିତ ବ୍ୟକ୍ତିଗତ ଚାଟ୍, crawler access, ଶିକ୍ଷାର୍ଥୀ ସୁରକ୍ଷା, ଓ ସ୍କୁଲ୍ ଭରସା."
+    },
+    {
+      "key": "site.2a90a8b22a57c0b210",
+      "source": "How is {value1} different from a generic chatbot?",
+      "value": "କିପରି ହେଉଛି {value1} different ରୁ a generic chatbot?"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir ସାଧାରଣ AI chatbot ଠାରୁ କେମିତି ଭିନ୍ନ?"
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "କିପରି ହେଉଛି ଏହି different ରୁ giving ଛାତ୍ରଛାତ୍ରୀ a ସାଧାରଣ AI ଚାଟବଟ୍?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "କିପରି ହେଉଛି ଏହି different ରୁ giving ଛାତ୍ରଛାତ୍ରୀ a generic chatbot?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "ଏହା କିପରି କାମ କରେ"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "କିପରି ସାର୍ବଜନୀନ guest ଶିକ୍ଷା ପାରେ extend into ସ୍କୁଲ୍-specific AI ଶିକ୍ଷା spaces."
+    },
+    {
+      "key": "site.d5ca6891c5510b0f94",
+      "source": "How should I use the inspir blog?",
+      "value": "ମୁଁ inspir ବ୍ଲଗ୍ କିପରି ବ୍ୟବହାର କରିବି?"
+    },
+    {
+      "key": "site.e67051684a0a7efe2e",
+      "source": "How to combine them",
+      "value": "ସେଗୁଡିକୁ କିପରି ମିଶାଇବେ"
+    },
+    {
+      "key": "site.55680701f00ceb9366",
+      "source": "How to compare",
+      "value": "କିପରି ତୁଳନା କରିବେ"
+    },
+    {
+      "key": "site.2d24058f88b11ae757",
+      "source": "How to know it worked",
+      "value": "ଏହା କାମ କଲା କିପରି ଜାଣିବେ"
+    },
+    {
+      "key": "site.5ecea09f437915bb3c",
+      "source": "how to learn with AI",
+      "value": "କିପରି କୁ ଶିଖନ୍ତୁ ସହିତ AI"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "କିପରି କୁ ଅଧ୍ୟୟନ ସହିତ AI ନକଲ୍ ଛଡ଼ା yourself"
+    },
+    {
+      "key": "site.28d966d8857b39aba7",
+      "source": "How to turn this {value1} into active learning",
+      "value": "କିପରି କୁ turn ଏହି {value1} into active ଶିକ୍ଷା"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "AI ସହ କଠିନ ବିଷୟ କେମିତି ବୁଝିବେ"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "AI ସହ କଠିନ ବିଷୟ କେମିତି ବୁଝିବେ"
+    },
+    {
+      "key": "site.89916747947fddf0ad",
+      "source": "How to use AI for clear explanations, adaptive tutoring, Socratic questions, and better first steps.",
+      "value": "କିପରି କୁ ବ୍ୟବହାର AI ପାଇଁ ସ୍ପଷ୍ଟ ବ୍ୟାଖ୍ୟା, adaptive tutoring, ସୋକ୍ରାଟିକ୍ ପ୍ରଶ୍ନ, ଓ ଭଲ ପ୍ରଥମ ପଦକ୍ଷେପ."
+    },
+    {
+      "key": "site.d6a9da15b5dc334d40",
+      "source": "How to use the guide library",
+      "value": "ଗାଇଡ୍ ଲାଇବ୍ରେରୀ କିପରି ବ୍ୟବହାର କରିବେ"
+    },
+    {
+      "key": "site.f51c774a517439e3e6",
+      "source": "How to use this guide cluster.",
+      "value": "ଏହି ଗାଇଡ୍ କ୍ଲଷ୍ଟର୍ କିପରି ବ୍ୟବହାର କରିବେ।"
+    },
+    {
+      "key": "site.f27383221552d2bb47",
+      "source": "HowToStep",
+      "value": "କିପରି କରିବେ"
+    },
+    {
+      "key": "site.f8ad269d8d1ff89348",
+      "source": "Humanities",
+      "value": "ମାନବିକ ବିଦ୍ୟା (Humanities)"
+    },
+    {
+      "key": "site.61f35576cfac6b6ad6",
+      "source": "Humanities guides",
+      "value": "ମାନବିକ ବିଷୟ ଗାଇଡ୍"
+    },
+    {
+      "key": "site.749acce2e082de4c24",
+      "source": "I don't get negative numbers",
+      "value": "ମୁଁ ଋଣାତ୍ମକ ସଂଖ୍ୟା ବୁଝିପାରୁନାହିଁ"
+    },
+    {
+      "key": "site.56c34bc0a40041bc59",
+      "source": "I failed a test and feel bad",
+      "value": "ମୁଁ ପରୀକ୍ଷାରେ ବିଫଳ ହୋଇଛି ଏବଂ ଖରାପ ଅନୁଭବ କରୁଛି"
+    },
+    {
+      "key": "site.b83b6099cc7b7cd3f4",
+      "source": "I feel behind",
+      "value": "ମୁଁ ପଛରେ ପଡ଼ିଯାଇଥିବା ଅନୁଭବ କରୁଛି"
+    },
+    {
+      "key": "site.dc9845ead34b4a1fb5",
+      "source": "I keep procrastinating",
+      "value": "ମୁଁ କାମକୁ ଘୁଞ୍ଚାଇ ଚାଲିଛି"
+    },
+    {
+      "key": "site.dd26311ac9fe3941ab",
+      "source": "I like biology and art",
+      "value": "ମୁଁ ଜୀବବିଜ୍ଞାନ ଏବଂ କଳା ପସନ୍ଦ କରେ"
+    },
+    {
+      "key": "site.778422b8e1f88970a1",
+      "source": "I need homework help without cheating.",
+      "value": "I need ହୋମୱର୍କ ସହାୟତା ନକଲ୍ ଛଡ଼ା."
+    },
+    {
+      "key": "site.c0f88a7be6e39754a8",
+      "source": "I need to remember this for an exam.",
+      "value": "I need କୁ remember ଏହି ପାଇଁ an ପରୀକ୍ଷା."
+    },
+    {
+      "key": "site.ffda75d1d127be21cf",
+      "source": "I picked B. Why is C right?",
+      "value": "ମୁଁ B ବାଛିଥିଲି। C କାହିଁକି ସଠିକ୍?"
+    },
+    {
+      "key": "site.9d7d671276da4ad328",
+      "source": "I think heavier objects fall faster",
+      "value": "ମୁଁ ଭାବୁଛି ଭାରୀ ବସ୍ତୁଗୁଡ଼ିକ ଅଧିକ ଦ୍ରୁତ ଗତିରେ ତଳକୁ ପଡ଼ନ୍ତି"
+    },
+    {
+      "key": "site.dbe2f41ef4ff955e5b",
+      "source": "I want history to feel alive but still evidence-aware.",
+      "value": "I want ଇତିହାସ କୁ feel alive but still ପ୍ରମାଣ-aware."
+    },
+    {
+      "key": "site.e6cf030a4409f4caf0",
+      "source": "I watched a lesson but still do not get it.",
+      "value": "I watched a lesson but still do ନୁହେଁ get ଏହା."
+    },
+    {
+      "key": "site.5d3234f01608cc69dc",
+      "source": "I'll explain gravity",
+      "value": "ମୁଁ ମାଧ୍ୟାକର୍ଷଣ ଶକ୍ତି ବିଷୟରେ ବୁଝାଇବି"
+    },
+    {
+      "key": "site.ea06471f3be02b2d74",
+      "source": "Ideas for a science project",
+      "value": "ବିଜ୍ଞାନ ପ୍ରକଳ୍ପ ପାଇଁ ଧାରଣା"
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "identify a common ଭୁଲ;"
+    },
+    {
+      "key": "site.8a713abb2e67a113b1",
+      "source": "Identify gaps, ask clarifying questions, rebuild the explanation, and retry.",
+      "value": "Identify gaps, ପଚାରନ୍ତୁ clarifying ପ୍ରଶ୍ନ, rebuild the ବ୍ୟାଖ୍ୟା, ଓ retry."
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Identify the ସ୍କୁଲ୍ goals ସେହି matter most: conceptual ସହାୟତା, ହୋମୱର୍କ ସଙ୍କେତ, ପରୀକ୍ଷା prep, ସକ୍ରିୟ ସ୍ମରଣ, ଲେଖନ ମତାମତ, କିମ୍ବା enrichment."
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "If a card keeps failing, do ନୁହେଁ only repeat ଏହା. ପଚାରନ୍ତୁ କାହିଁକି ଏହା ହେଉଛି କଠିନ. ବ୍ୟବହାର Socratic Instruction କୁ uncover the ଭୁଲ ଧାରଣା, ଗଣିତ ପଦକ୍ଷେପ କୋଚ୍ ପାଇଁ procedural gaps, କିମ୍ବା the AI ଶିକ୍ଷା ପ୍ରମ୍ପ୍ଟ ଲାଇବ୍ରେରୀ କୁ find a ଭଲ ଅଧ୍ୟୟନ ପ୍ରମ୍ପ୍ଟ."
+    },
+    {
+      "key": "site.75b595c9dba7fbeee5",
+      "source": "If the answer is yes, AI helped you study. If the answer is no, the next move is not more reading. It is active practice. Open Learn Anything, Socratic Instruction, or the AI learning prompt library and turn the topic into a task you have to attempt.",
+      "value": "Answer “ହଁ” ହେଲେ AI ଆପଣଙ୍କୁ study କରିବାରେ ସାହାଯ୍ୟ କଲା। Answer “ନା” ହେଲେ ପରବର୍ତ୍ତୀ move ଆଉ ଅଧିକ reading ନୁହେଁ; ଏହା active practice। Learn Anything, Socratic Instruction କିମ୍ବା AI learning prompt library ଖୋଲନ୍ତୁ ଏବଂ topic କୁ ଚେଷ୍ଟା କରିବାକୁ ପଡ଼ିବା task ରେ ପରିଣତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "site.8cefea12f94368c78f",
+      "source": "If the learner gives a vague request, suggest 3 to 5 people with reasons, best modes, controversy level, and evidence quality. If a person is named but the time slice is missing, offer meaningful versions of that person before any in-character dialogue. Once person and time slice are clear, build the room and dossier before the person speaks.",
+      "value": "Learner ଯଦି vague request ଦିଅନ୍ତି, 3 ରୁ 5 ଜଣ ବ୍ୟକ୍ତିକୁ reasons, best modes, controversy level ଓ evidence quality ସହ suggest କରନ୍ତୁ ଏବଂ choice ପାଇଁ ରୁହନ୍ତୁ। ବ୍ୟକ୍ତିର ନାମ ଦିଆଯାଇଛି କିନ୍ତୁ time slice ନାହିଁ ହେଲେ, in-character dialogue ପୂର୍ବରୁ ସେ ବ୍ୟକ୍ତିଙ୍କ meaningful versions offer କରନ୍ତୁ। Person ଓ time slice ସ୍ପଷ୍ଟ ହେଲେ, ବ୍ୟକ୍ତି କଥା କହିବା ପୂର୍ବରୁ room ଓ dossier ତିଆରି କରନ୍ତୁ।"
+    },
+    {
+      "key": "site.76acbef5ffcbe22b59",
+      "source": "If the learner's intent is vague, resolve it into 3 concrete arrival options and stop for a choice. If the passport is already clear, open the world with modular cards rather than a paragraph.",
+      "value": "Learner ଙ୍କ intent vague ହେଲେ, ତାହାକୁ 3ଟି concrete arrival options ରେ ଭାଙ୍ଗନ୍ତୁ ଏବଂ choice ପାଇଁ ରୁହନ୍ତୁ। Passport ପୂର୍ବରୁ ସ୍ପଷ୍ଟ ଥିଲେ, paragraph ପରିବର୍ତ୍ତେ modular cards ସହ world ଖୋଲନ୍ତୁ।"
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "If the response feels too ବିସ୍ତୃତ, narrow ଏହା. ପଚାରନ୍ତୁ ପାଇଁ ଏକ ଉଦାହରଣ, ଏକ ଭୁଲ ଧାରଣା, ଏକ ଯାଞ୍ଚ ପ୍ରଶ୍ନ, କିମ୍ବା ଏକ ପରବର୍ତ୍ତୀ ପଦକ୍ଷେପ. If ଏହା feels too easy, ପଚାରନ୍ତୁ ପାଇଁ a challenge. If ଏହା feels too କଠିନ, ପଚାରନ୍ତୁ ପାଇଁ a bridge ରୁ କ’ଣ ଆପଣ already know."
+    },
+    {
+      "key": "site.0e52cbcd42546a412e",
+      "source": "If the work is homework, start in Homework Coach. If it is math, use Math Step Coach and ask it to check one step at a time. If you are trying to understand a concept deeply, use Socratic Instruction and answer the questions before asking for a summary.",
+      "value": "କାମଟି homework ହେଲେ Homework Coach ରୁ ଆରମ୍ଭ କରନ୍ତୁ। Math ହେଲେ Math Step Coach ବ୍ୟବହାର କରନ୍ତୁ ଏବଂ ଏକେକ step check କରିବାକୁ କହନ୍ତୁ। Concept କୁ ଗଭୀରରେ ବୁଝିବାକୁ ଚାହୁଁଥିଲେ Socratic Instruction ବ୍ୟବହାର କରନ୍ତୁ ଏବଂ summary ମାଗିବା ପୂର୍ବରୁ questions ର answer ଦିଅନ୍ତୁ।"
+    },
+    {
+      "key": "site.9b884eb638d2c88d65",
+      "source": "If you are a California resident, you are entitled to learn what data we collect about you, ask to delete your data and not to sell (share) it. To exercise your data protection rights, you can make certain requests and ask us:",
+      "value": "If ଆପଣ ହେଉଛି a California resident, ଆପଣ ହେଉଛି entitled କୁ ଶିଖନ୍ତୁ କ’ଣ ଡାଟା ଆମେ collect ବିଷୟରେ ଆପଣ, ପଚାରନ୍ତୁ କୁ delete ଆପଣଙ୍କ ଡାଟା ଓ ନୁହେଁ କୁ sell (share) ଏହା. କୁ exercise ଆପଣଙ୍କ ଡାଟା ସୁରକ୍ଷା ଅଧିକାର, ଆପଣ ପାରେ ତିଆରି certain requests ଓ ପଚାରନ୍ତୁ us:"
+    },
+    {
+      "key": "site.a14da78996f4b056cc",
+      "source": "If you are a resident of the European Union (EU) and European Economic Area (EEA), you have certain data protection rights, covered by GDPR. We aim to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data. If you wish to be informed what Personal Data we hold about you and if you want it to be removed from our systems, please email us at support@inspir.app If you are a resident of the European Union (EU) and European Economic Area (EEA), you have certain data protection rights, covered by GDPR. We aim to take reasonable steps to allow you to correct, amend, delete, or limit the use of your Personal Data. In certain circumstances, you have the following data protection rights:",
+      "value": "ଆପଣ European Union (EU) ଓ European Economic Area (EEA) ର resident ହେଲେ, GDPR ଅଧୀନରେ ଆପଣଙ୍କ କିଛି data protection rights ଅଛି। ଆପଣଙ୍କ Personal Data correct, amend, delete କିମ୍ବା use limit କରିବାରେ ସାହାଯ୍ୟ କରିବାକୁ ଆମେ ଯୁକ୍ତିସଂଗତ ପଦକ୍ଷେପ ନେବାକୁ ଚେଷ୍ଟା କରୁ। ଆମେ ଆପଣ ବିଷୟରେ କେଉଁ Personal Data ରଖିଛୁ ଜାଣିବାକୁ କିମ୍ବା ସେହି data ଆମ systems ରୁ remove କରାଇବାକୁ ଚାହିଁଲେ support@inspir.app କୁ email କରନ୍ତୁ। EU/EEA resident ଭାବେ GDPR ଅଧୀନରେ ଆପଣଙ୍କ data protection rights ରହିଛି; କିଛି ପରିସ୍ଥିତିରେ ତଳୋକ୍ତ ଅଧିକାର ଆପଣଙ୍କୁ ମିଳେ।"
+    },
+    {
+      "key": "site.a568a3f3067298ec2c",
+      "source": "If you have any questions about this Privacy Policy, please contact us by email: support@inspir.app",
+      "value": "If ଆପଣ have any ପ୍ରଶ୍ନ ବିଷୟରେ ଏହି ଗୋପନୀୟତା ନୀତି, please contact us ଦ୍ୱାରା email: support@inspir.app"
+    },
+    {
+      "key": "site.07b0fbd7b0ac2b260a",
+      "source": "If you paste a homework question and copy the final answer, you may finish the task, but you have not built the skill. If you ask for a hint, explain your thinking, compare your answer, and try a similar problem, AI becomes a study partner instead of a shortcut.",
+      "value": "ଆପଣ homework ପ୍ରଶ୍ନ paste କରି final answer copy କଲେ task ଶେଷ ହୋଇପାରେ, କିନ୍ତୁ skill ଗଢ଼ାଯାଏ ନାହିଁ। ଆପଣ hint ମାଗିଲେ, ନିଜ thinking ବୁଝାଇଲେ, ନିଜ answer compare କଲେ, ଏବଂ ସମାନ problem ଚେଷ୍ଟା କଲେ AI shortcut ପରିବର୍ତ୍ତେ study partner ହୋଇଯାଏ।"
+    },
+    {
+      "key": "site.db1175b305d1d240f3",
+      "source": "If you wish to purchase any product or service made available through Service (“Purchase”), you may be asked to supply certain information relevant to your Purchase including but not limited to, your credit or debit card number, the expiration date of your card, your billing address, and your shipping information. You represent and warrant that: (i) you have the legal right to use any card(s) or other payment method(s) in connection with any Purchase; and that (ii) the information you supply to us is true, correct and complete. We may employ the use of third-party services to facilitate payment and the completion of Purchases. By submitting your information, you grant us the right to provide the information to these third parties subject to our Privacy Policy. We reserve the right to refuse or cancel your order at any time for reasons including but not limited to: product or service availability, errors in the description or price of the product or service, error in your order or other reasons. We reserve the right to refuse or cancel your order if fraud or an unauthorized or illegal transaction is suspected; the decision will be ours and cannot be contested.",
+      "value": "Service (“Purchase”) ମାଧ୍ୟମରେ ଉପଲବ୍ଧ କୌଣସି product କିମ୍ବା service କିଣିବାକୁ ଚାହିଁଲେ, ଆପଣଙ୍କ Purchase ସହ ସମ୍ବନ୍ଧିତ କିଛି ସୂଚନା ଦେବାକୁ ପଚାରାଯାଇପାରେ, ଯାହାରେ credit/debit card number, card expiration date, billing address ଓ shipping information ଅନ୍ତର୍ଭୁକ୍ତ ହୋଇପାରେ। ଆପଣ ଘୋଷଣା ଓ ନିଶ୍ଚିତ କରୁଛନ୍ତି ଯେ: (i) କୌଣସି Purchase ସମ୍ବନ୍ଧରେ card(s) କିମ୍ବା payment method(s) ବ୍ୟବହାର କରିବାର legal right ଆପଣଙ୍କ ପାଖରେ ଅଛି; ଏବଂ (ii) ଆପଣ ଦେଉଥିବା ସୂଚନା ସତ୍ୟ, ସଠିକ୍ ଓ ସମ୍ପୂର୍ଣ୍ଣ। Payment ଓ Purchases ସମ୍ପୂର୍ଣ୍ଣ କରିବାକୁ ଆମେ third-party services ବ୍ୟବହାର କରିପାରୁ। ଆପଣ ସୂଚନା submit କରିବା ଦ୍ୱାରା, Privacy Policy ଅନୁସାରେ ସେହି ସୂଚନା third parties କୁ ଦେବାର ଅଧିକାର ଆମକୁ ଦେଉଛନ୍ତି। Product/service availability, description କିମ୍ବା price ର error, order ର error କିମ୍ବା ଅନ୍ୟ କାରଣ ସମେତ, ଯେକେବେଳେ ଆମେ ଆପଣଙ୍କ order refuse ବା cancel କରିବାର ଅଧିକାର ରଖୁଛୁ। Fraud କିମ୍ବା unauthorized/illegal transaction ସନ୍ଦେହ ହେଲେ ମଧ୍ୟ order refuse ବା cancel କରିପାରୁ; ନିଷ୍ପତ୍ତି ଆମର ହେବ ଏବଂ ତାହାକୁ ଆପତ୍ତି କରାଯାଇପାରିବ ନାହିଁ।"
+    },
+    {
+      "key": "site.f6e3a0e10ab703b2dd",
+      "source": "Image Analysis Coach",
+      "value": "ଇମେଜ୍ ଆନାଲିସିସ୍ କୋଚ୍"
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "ଇମର୍ସନ"
+    },
+    {
+      "key": "site.4ef423e4406683146c",
+      "source": "immersive AI learning",
+      "value": "immersive AI ଶିକ୍ଷା"
+    },
+    {
+      "key": "site.b99b32186ce8632a12",
+      "source": "Improve a draft without losing your voice",
+      "value": "Improve a draft ଛଡ଼ା losing ଆପଣଙ୍କ voice"
+    },
+    {
+      "key": "site.595c01e91be11db8ac",
+      "source": "Improve an essay without outsourcing it",
+      "value": "Improve an essay ଛଡ଼ା outsourcing ଏହା"
+    },
+    {
+      "key": "site.eff4abc3af213e377a",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "ଆପଣଙ୍କର ନିଜସ୍ୱ ଶୈଳୀକୁ ବଜାୟ ରଖି ଲକ୍ଷ୍ୟଭେଦୀ ମତାମତ ସହିତ ପ୍ରବନ୍ଧ, କାହାଣୀ, ଇମେଲ୍ ଏବଂ ଯୁକ୍ତିଗୁଡ଼ିକୁ ଉନ୍ନତ କରନ୍ତୁ।"
+    },
+    {
+      "key": "site.8a33b330bae1c4719f",
+      "source": "Improve my essay introduction",
+      "value": "ମୋ ପ୍ରବନ୍ଧର ଭୂମିକାକୁ ଉନ୍ନତ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.6da54588a236fe5d62",
+      "source": "Improve reading comprehension through active discussion.",
+      "value": "Improve ପଢ଼ା comprehension through active discussion."
+    },
+    {
+      "key": "site.972f761a15dc348359",
+      "source": "Improve structure",
+      "value": "ଗଠନକୁ ଉନ୍ନତ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.9a69a594c314e2bd83",
+      "source": "Improve structure.",
+      "value": "ଗଠନ ସୁଧାରନ୍ତୁ।"
+    },
+    {
+      "key": "site.1af77ff2a341c8c9d1",
+      "source": "Improve tell me about yourself",
+      "value": "ନିଜ ବିଷୟରେ କହିବା କଳାକୁ ଉନ୍ନତ କରନ୍ତୁ"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "ଖସଡ଼ା ସୁଧାରନ୍ତୁ"
+    },
+    {
+      "key": "site.4f256b83ed8e4a2f48",
+      "source": "Improve the final version",
+      "value": "ଶେଷ ଭାର୍ସନ୍ ସୁଧାରନ୍ତୁ"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "ଯୋଜନା, ସଂଶୋଧନ, ଗଠନ ଏବଂ ମତାମତ ସହିତ ଲେଖାକୁ ଉନ୍ନତ କରନ୍ତୁ ଯାହା ଆପଣଙ୍କର ନିଜସ୍ୱ ଶୈଳୀକୁ ବଜାୟ ରଖେ।"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "Improve ଲେଖନ ଛଡ଼ା losing ଆପଣଙ୍କ voice"
+    },
+    {
+      "key": "site.eec13b82e533daba18",
+      "source": "In a world where AI is rapidly advancing, it will only be human consciousness and creativity that can survive. Albert Einstein once said, \"Creativity is intelligence having fun.\"",
+      "value": "ରେ a world କେଉଁଠି AI ହେଉଛି rapidly advancing, ଏହା ହେବ only ହେବା human consciousness ଓ ସୃଜନଶୀଳତା ସେହି ପାରେ survive. Albert Einstein once said, \"ସୃଜନଶୀଳତା ହେଉଛି intelligence having fun.\""
+    },
+    {
+      "key": "site.8a967acb49c8f7f201",
+      "source": "In any way that violates any applicable national or international law or regulation. For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way by exposing them to inappropriate content or otherwise To transmit, or procure the sending of, any advertising or promotional material, including any “junk mail”, “chain letter,” “spam,” or any other similar solicitation. To impersonate or attempt to impersonate Company, a Company employee, another user, or any other person or entity. In any way that infringes upon the rights of others, or in any way is illegal, threatening, fraudulent, or harmful, or in connection with any unlawful, illegal, fraudulent, or harmful purpose or activity. To engage in any other conduct that restricts or inhibits anyone’s use or enjoyment of Service, or which, as determined by us, may harm or offend Company or users of Service or expose them to liability.",
+      "value": "କୌଣସି applicable national କିମ୍ବା international law/regulation ଉଲ୍ଲଂଘନ କରୁଥିବା ଭାବରେ Service ବ୍ୟବହାର କରନ୍ତୁ ନାହିଁ। Minors କୁ inappropriate content ଦେଖାଇ କିମ୍ବା ଅନ୍ୟ ଭାବେ exploit, harm କିମ୍ବା exploit/harm କରିବାର ଚେଷ୍ଟା ପାଇଁ ବ୍ୟବହାର କରନ୍ତୁ ନାହିଁ। “junk mail”, “chain letter”, “spam” କିମ୍ବା ଅନ୍ୟ ସମାନ solicitation ସମେତ advertising/promotional material transmit କିମ୍ବା ପଠାଇବାକୁ procure କରନ୍ତୁ ନାହିଁ। Company, Company employee, ଅନ୍ୟ user, କିମ୍ବା ଅନ୍ୟ person/entity ଭାବେ impersonate କିମ୍ବା impersonate କରିବା ଚେଷ୍ଟା କରନ୍ତୁ ନାହିଁ। ଅନ୍ୟମାନଙ୍କ ଅଧିକାର ଉଲ୍ଲଂଘନ କରୁଥିବା, illegal, threatening, fraudulent, harmful ଥିବା, କିମ୍ବା unlawful/illegal/fraudulent/harmful purpose/activity ସହ ସମ୍ପର୍କିତ ଭାବରେ Service ବ୍ୟବହାର କରନ୍ତୁ ନାହିଁ। ଅନ୍ୟ କାହାର Service ବ୍ୟବହାର କିମ୍ବା ଉପଭୋଗକୁ restrict/inhibit କରୁଥିବା, କିମ୍ବା ଆମ ମତରେ Company କିମ୍ବା Service users କୁ harm/offend କରିପାରୁଥିବା କିମ୍ବା liability ରେ ପକାଇପାରୁଥିବା ଅନ୍ୟ conduct ରେ ଲିପ୍ତ ହେବେ ନାହିଁ।"
+    },
+    {
+      "key": "site.fec75f8524e2e53cd4",
+      "source": "In this guide",
+      "value": "ଏହି ଗାଇଡ୍‌ରେ"
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "ପ୍ରଶ୍ନ, ଆପଣ ପୂର୍ବରୁ କ’ଣ ଚେଷ୍ଟା କରିଛନ୍ତି, କେଉଁଠି ଅଟକିଲେ, ଏବଂ ସଙ୍କେତ, step check କିମ୍ବା feedback ଚାହୁଁଛନ୍ତି କି ନାହିଁ ସାମିଲ କରନ୍ତୁ।"
+    },
+    {
+      "key": "site.0249e336d4c60e92b0",
+      "source": "Include what you know, what you tried, what level you need, and what kind of help you want.",
+      "value": "Include କ’ଣ ଆପଣ know, କ’ଣ ଆପଣ tried, କ’ଣ level ଆପଣ need, ଓ କ’ଣ kind of ସାହାଯ୍ୟ ଆପଣ want."
+    }
+  ]
+}

@@ -1,0 +1,1194 @@
+{
+  "schemaVersion": 1,
+  "language": "Lithuanian",
+  "locale": "lt",
+  "namespace": "route:trust",
+  "sourceHash": "7552bed24b6f42acd0182d1173a14133c4a0100f39387ed028b4bfc8e90d0a36",
+  "entries": [
+    {
+      "key": "site.1d3641443de0df089b",
+      "source": "{value1}: {value2}",
+      "value": "{value1}: {value2}"
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ šalių"
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "1 mln.+ besimokančiųjų"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "Gabus mokymosi palydovas neturėtų priklausyti nuo geografijos, šeimos pajamų ar nuo to, ar besimokantysis jau pažįsta tinkamą žmogų, kurio gali paklausti."
+    },
+    {
+      "key": "site.ea1fb773501bcea092",
+      "source": "A crawlable directory of every guest learning chat entrypoint.",
+      "value": "Nuskaitomas visų svečio mokymosi pokalbių įėjimo taškų katalogas."
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "Besimokančiųjų bazė, kuri jau išsiplėtė už Indijos ribų į platesnę tarptautinę auditoriją."
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "Besimokantysis gali atidaryti Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, testus arba mokymosi korteles tiesiogiai svečio režimu iš viešųjų mokymosi režimų katalogo."
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "Mokymosi bendruomenė prasideda"
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "Mokyklai pritaikytą mokymosi patirtį galima formuoti pagal jūsų mokinių bendruomenę, toną ir mokymosi prioritetus."
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "Apie inspir"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "Prieiga gali būti finansuojama partnerių mokyklų arba remiama per ĮSA rėmimo kelius bendruomenėms, kurioms reikia subsidijuoto DI mokymosi."
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "Pirmiausia prieiga"
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "Pritaikykite mokinio patirtį pagal mokyklos kontekstą, ugdymo programos prioritetus, turinio saugiklius ir reikalingą darbuotojų matomumo lygį."
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "Pardavus inspir.app domeną, kad būtų finansuojama tęstinė nemokama prieiga, veikiantis produktas persikėlė į inspirlearning.com."
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "DI turinio indeksas"
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "DI namų darbų treneris mokiniams"
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "DI mokymosi prieiga gali būti finansuojama partnerių mokyklų arba remiama per ĮSA rėmimą bendruomenėms, kurioms reikia subsidijuotos prieigos."
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "DI mokymosi tinklaraštis"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "DI mokymosi gidų biblioteka"
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "DI mokymosi gidai"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "DI mokymosi infrastruktūra"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "DI mokymasis be pasyvaus atsakymų kopijavimo"
+    },
+    {
+      "key": "site.cb148a24995ab1732c",
+      "source": "AI search, retrieval, and assistant crawlers",
+      "value": "DI paieškos, ištraukimo ir asistentų naršyklės"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "DI mokymosi įrankiai mokykloms"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "DI korepetitorius bet kam mokytis"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "DI korepetitorius mokykloms"
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "Leidžiama viešuosiuose puslapiuose"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "API, admin, reset, privačių įrankių ir privačių išsaugotų pokalbių paviršiai nėra viešas šaltinio turinys."
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "Ar privatūs išsaugoti naudotojų pokalbiai rodomi paieškai?"
+    },
+    {
+      "key": "site.9c92fab4fc828b830d",
+      "source": "Are public guest chats indexable?",
+      "value": "Ar viešieji svečių pokalbiai indeksuojami?"
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Naršyti visus režimus"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Kuriama viešai"
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "Kuriama nuo 2013 m."
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "Ar diegimą galima pradėti mažai?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "Ar mokykla pirmiausia gali naudoti inspir kaip svečio mokymosi įrankį?"
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "Ar inspir gali palaikyti mokyklai būdingą turinį arba ugdymo programos poreikius?"
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "Ar žmonės gali naudoti inspir neprisijungę?"
+    },
+    {
+      "key": "site.4524f0053a00ac4881",
+      "source": "Canonical /chat/{topicSlug} pages open public learning modes such as Learn Anything, Socratic Instruction, Homework Coach, and flashcards.",
+      "value": "Kanoniniai /chat/{topicSlug} puslapiai atidaro viešuosius mokymosi režimus, tokius kaip Learn Anything, Socratic Instruction, Homework Coach ir mokymosi korteles."
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Kategorija"
+    },
+    {
+      "key": "site.0216059508323bc711",
+      "source": "Clear boundaries for a public AI learning platform.",
+      "value": "Aiškios ribos viešai DI mokymosi platformai."
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "Bendruomenės puslapis, susietas su DeepHack pripažinimu."
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "Konfidencialus diegimo dizainas"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "Konfigūruoti darbo eigas"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "Vartotojiško DI paleidimas"
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "inspir vizijos apie nemokamą, prieinamą švietimą aprėptis."
+    },
+    {
+      "key": "site.c9a53af29721a00ad2",
+      "source": "Crawler policy",
+      "value": "Naršyklių politika"
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "Sukurkite saugesnį kelią praktikai, paaiškinimams, grįžtamajam ryšiui ir kartojimo užklausoms, nesiųsdami mokinių į bendrą pokalbių robotą."
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "ĮSA ir švietimo partneriai"
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "ĮSA švietimo technologijų partnerystė"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "Dabartinė GitHub saugykla"
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "Individualų turinį, užklausas ir darbo eigas galima pritaikyti pagal NCERT poreikius ir konkrečios mokyklos klasės prioritetus."
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "Dailyhunt aprėptis"
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "Deccan Business aprėptis"
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "DeepHack bendruomenės puslapis"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "DeepHack pripažinimas"
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "Numatytasis svečio korepetitorius"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "Skirtingoms mokymosi užduotims reikia skirtingų sąveikos formų, todėl inspir naudoja aktyvų, konkrečiam režimui pritaikytą mokymą. Namų darbų užuomina, sokratiškas klausimas, istorinė simuliacija, kortelių kartojimas ir rašymo kritika neturėtų veikti kaip tas pats bendras pokalbis."
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "Skirtingoms mokymosi užduotims reikia skirtingų formų: sokratiškų klausimų, namų darbų užuominų, mokymosi kortelių, debatų, istorijos vaidmenų žaidimų, rašymo kritikos ir mokymosi planavimo."
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "Neleidžiama"
+    },
+    {
+      "key": "site.af5ea84f4731dbae43",
+      "source": "Discovery is open where the content is public.",
+      "value": "Atradimas atviras ten, kur turinys yra viešas."
+    },
+    {
+      "key": "site.3bf2649a6448eef824",
+      "source": "Each learning mode has a public URL so learners can arrive from search directly inside the right learning experience.",
+      "value": "Kiekvienas mokymosi režimas turi viešą URL, kad besimokantieji iš paieškos galėtų patekti tiesiai į tinkamą mokymosi patirtį."
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "Pirmiausia įvertinkite viešą DI mokymosi sluoksnį, tada tyrinėkite individualias darbo eigas, konfidencialumo poreikius, turinio suderinimą ir naudojimo finansavimą."
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "Kiekvienas pagrindinis mokymosi režimas turi viešą svečio įėjimo tašką, kad žmonės galėtų pradėti iš paieškos, socialinių tinklų arba bendrinamos nuorodos."
+    },
+    {
+      "key": "site.4a55ac9e7e0e98e7af",
+      "source": "Every indexable guest learning chat, organized by teaching behavior and learning need.",
+      "value": "Kiekvienas indeksuojamas svečio mokymosi pokalbis, suskirstytas pagal mokymo elgesį ir mokymosi poreikį."
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Įkurta"
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "nemokama DI mokymosi platforma"
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Nemokama DI mokymosi platforma"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "Nuo Facebook testų ir neprisijungus vykusių renginių iki taikomojo DI mokymosi infrastruktūros."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "Nuo inspir.app iki inspirlearning.com"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "Nuo mokinių bendruomenės iki DI mokymosi infrastruktūros"
+    },
+    {
+      "key": "site.ca96a06d69633b2a8e",
+      "source": "Full AI-readable index",
+      "value": "Visas DI skaitomas indeksas"
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Finansuojamos prieigos keliai"
+    },
+    {
+      "key": "site.152ec0a990b8f44f08",
+      "source": "Google and standard search crawlers",
+      "value": "Google ir standartinės paieškos naršyklės"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "Svečio režimo įėjimo taškai"
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "Svečio režimo kampas"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Pradžia"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "Kaip gali būti finansuojama prieiga besimokantiesiems?"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "Kaip prasidėjo inspir?"
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "Kaip inspir mažina atsakymų kopijavimą?"
+    },
+    {
+      "key": "site.7a2e1e944759905224",
+      "source": "How inspir handles public guest learning pages, private saved chats, crawler access, learner safety, and school trust.",
+      "value": "Kaip inspir tvarko viešuosius svečio mokymosi puslapius, privačius išsaugotus pokalbius, naršyklių prieigą, besimokančiųjų saugumą ir mokyklų pasitikėjimą."
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Kuo inspir skiriasi nuo bendrinio DI pokalbių roboto?"
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "Kuo tai skiriasi nuo bendro DI pokalbių roboto davimo mokiniams?"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "Kaip viešas svečio mokymasis gali išsiplėsti į mokyklai pritaikytas DI mokymosi erdves."
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "Nustatykite svarbiausius mokyklos tikslus: konceptualų palaikymą, namų darbų užuominas, pasiruošimą egzaminams, aktyvų prisiminimą, rašymo grįžtamąjį ryšį arba praturtinimą."
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir prasidėjo 2013 m. kaip vieša testų ir mokymosi bendruomenė, augo per mokyklas ir mokinių tinklus, o vėliau sukūrė DI mokymosi infrastruktūrą ir viešas DI korepetitorystės patirtis."
+    },
+    {
+      "key": "site.cff23cea6d05e2352e",
+      "source": "inspir crawler and indexing policy",
+      "value": "inspir naršyklių ir indeksavimo politika"
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir egzistuoja tam, kad mokymasis būtų prieinamas, įtraukiantis, malonus ir naudingas kiekvienam smalsiam žmogui per nemokamus viešuosius DI mokymosi įrankius ir mokykloms paruoštas mokymosi erdves."
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir yra nemokama DI mokymosi platforma su viešais svečio režimais paaiškinimams, sokratiškai korepetitorystei, namų darbų treniravimui, testams, mokymosi kortelėms, debatams, vaidmenų žaidimams, rašymo grįžtamajam ryšiui ir mokymosi planavimui."
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir yra nemokama DI mokymosi platforma su viešais svečio režimais paaiškinimams, sokratiškai korepetitorystei, namų darbų treniravimui, testams, mokymosi kortelėms, debatams, rašymo grįžtamajam ryšiui, programavimo pagalbai ir mokymosi planavimui."
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir sukurtas aplink samprotavimą, praktiką, prisiminimą ir paaiškinimą, o ne baigtų darbų pateikimą besimokantiesiems."
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir organizuotas aplink užuominas, klausimus, testus, mokymosi korteles, debatus, kartojimą ir paaiškinimą, o ne pasyvų atsakymų kopijavimą."
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir organizuotas aplink mokymosi režimus, tokius kaip sokratiška korepetitorystė, namų darbų užuominos, testai, mokymosi kortelės, matematikos žingsniai, rašymo kritika ir egzaminų planavimas, kad mokiniai patektų į kryptingesnį mokymosi elgesį."
+    },
+    {
+      "key": "site.944a9bdb9a6595a728",
+      "source": "inspir makes learning modes public and indexable at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir daro mokymosi režimus viešus ir indeksuojamus adresu /chat/{topicSlug}, leisdamas besimokantiesiems patekti tiesiai į tinkamą DI mokymosi patirtį be išsaugoto privataus pokalbio."
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir organizuoja DI aplink aktyvaus mokymosi elgesį: užuominas, klausimus, testus, mokymosi korteles, kritiką ir kartojimą."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir organizuoja DI aplink mokymosi režimus su konkrečiu mokymo elgesiu: paaiškinimais, sokratiškais klausimais, namų darbų užuominomis, testais, mokymosi kortelėmis, debatais, vaidmenų žaidimais, rašymo grįžtamuoju ryšiu ir mokymosi planavimu."
+    },
+    {
+      "key": "site.40e6ffb1ecf7e40523",
+      "source": "inspir public trust safeguards",
+      "value": "inspir viešo pasitikėjimo saugikliai"
+    },
+    {
+      "key": "site.9f15945c0ca653a70f",
+      "source": "inspir separates public guest learning pages from private saved conversations, so learners, schools, search engines, and AI answer engines can understand what is meant to be public.",
+      "value": "inspir atskiria viešuosius svečio mokymosi puslapius nuo privačių išsaugotų pokalbių, kad besimokantieji, mokyklos, paieškos sistemos ir DI atsakymų sistemos suprastų, kas skirta viešumai."
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir prasidėjo kaip Facebook puslapis, skelbęs testus ir kūręs užklasinio mokymosi įprotį."
+    },
+    {
+      "key": "site.4eae7b60f07a135b8c",
+      "source": "inspir supports search and AI retrieval for public learning pages. Training crawlers and private or operational surfaces are treated differently.",
+      "value": "inspir palaiko paiešką ir DI ištraukimą viešiesiems mokymosi puslapiams. Mokymo naršyklės ir privatūs ar operaciniai paviršiai vertinami kitaip."
+    },
+    {
+      "key": "site.4ac2909a95b5cb3155",
+      "source": "inspir trust principles",
+      "value": "inspir pasitikėjimo principai"
+    },
+    {
+      "key": "site.1112a96675c333239f",
+      "source": "inspir trust reference links",
+      "value": "inspir pasitikėjimo nuorodos"
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "inspir tapo vartotojams skirtu DI mokymosi produktu per kelias savaites nuo viešo ChatGPT išleidimo."
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "inspir.uk naujos kartos kūrimas"
+    },
+    {
+      "key": "site.f9fc9dbf3888825aed",
+      "source": "Journalists, directory editors, partners, schools, AI answer engines, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Žurnalistai, katalogų redaktoriai, partneriai, mokyklos, DI atsakymų sistemos ir visi, rašantys apie inspir, gali naudoti tai faktams, nuorodoms, istorijų kampams ir citavimui patogioms nuorodoms."
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "Jury's Choice pripažinimas iš Amod Malviya DeepHack renginyje už DI mokymosi darbą."
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "2022 m. pabaiga"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "Paleisti ir finansuoti prieigą"
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "Besimokantieji, tėvai, mokytojai, mokyklos ir savarankiškai besimokantys kūrėjai"
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "Pirmiausia mokymosi elgesys"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "Mokymosi keliai"
+    },
+    {
+      "key": "site.1add8abe67bf72c7bc",
+      "source": "llms.txt, llms-full.txt, and ai-content-index.json summarize public pages, routes, modes, guides, and citation boundaries for assistants.",
+      "value": "llms.txt, llms-full.txt ir ai-content-index.json apibendrina viešuosius puslapius, maršrutus, režimus, gidus ir citavimo ribas asistentams."
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "Ilgos formos mokymosi biblioteka"
+    },
+    {
+      "key": "site.97b20326308a3837ba",
+      "source": "Machine-readable catalog of public pages, modes, learning paths, blog clusters, and indexing boundaries.",
+      "value": "Mašinoms skaitomas viešųjų puslapių, režimų, mokymosi kelių, tinklaraščio klasterių ir indeksavimo ribų katalogas."
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "Žemėlapyje dėliokite mokymosi poreikius"
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "Žiniasklaida ir citatos"
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "Misija"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "Konkrečiam režimui pritaikytas mokymasis"
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "Konkrečiam režimui pritaikytas produkto dizainas"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "Daugiau nei 100 gidų apie korepetitorystę, užklausas, mokymosi ciklus, aktyvų prisiminimą ir režimus."
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "Daugiau nei 100 gidų, užklausų ciklų ir pagrindinių klasterių mokymuisi su DI."
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "Pereikite nuo piloto prie platesnės prieigos per mokyklos finansavimą, partnerių palaikymą arba ĮSA kelius besimokantiesiems, kuriems reikia subsidijuotos prieigos."
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "Vardas"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "NCERT suderintas DI mokymasis"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Su NCERT suderintos parinktys"
+    },
+    {
+      "key": "site.7c1b9f4b40124c5f1d",
+      "source": "No. Private saved chats use private identifiers, are not listed in the sitemap, and are not included in AI discovery files such as llms.txt, llms-full.txt, or ai-content-index.json.",
+      "value": "Ne. Privatūs išsaugoti pokalbiai naudoja privačius identifikatorius, nėra išvardyti svetainės žemėlapyje ir nėra įtraukti į DI atradimo failus, tokius kaip llms.txt, llms-full.txt arba ai-content-index.json."
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "Dabar"
+    },
+    {
+      "key": "site.88ea2841944dece5d9",
+      "source": "OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User, ClaudeBot, Applebot, Google-Extended, and CCBot are allowed for public discovery.",
+      "value": "OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User, ClaudeBot, Applebot, Google-Extended ir CCBot leidžiami viešam atradimui."
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "Neprisijungę tinklai ir mokinių renginiai"
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "Atidaryti nuorodą"
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "Pagrindinė auditorija"
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "Pagrindinė pagrindinio puslapio citata"
+    },
+    {
+      "key": "site.4a8cf08007961260be",
+      "source": "Principles",
+      "value": "Principai"
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "Privatumo politika"
+    },
+    {
+      "key": "site.e5b8d25913817dc462",
+      "source": "Private saved chat URLs are not sitemap-listed and are not included in llms.txt, llms-full.txt, or the JSON AI content catalog.",
+      "value": "Privatūs išsaugotų pokalbių URL nėra įtraukiami į svetainės žemėlapį ir nėra įtraukti į llms.txt, llms-full.txt ar JSON DI turinio katalogą."
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "Produkto kampas"
+    },
+    {
+      "key": "site.ea284567fd00d8660f",
+      "source": "Public explanation of guest mode, private chats, crawler policy, learner safety, and school trust.",
+      "value": "Viešas svečio režimo, privačių pokalbių, robotų politikos, besimokančiųjų saugumo ir mokyklų pasitikėjimo paaiškinimas."
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "Vieši svečio režimai suteikia kiekvienam naudingą vietą pradėti, o mokyklų ir partnerių diegimai gali pritaikyti patirtį vietos poreikiams."
+    },
+    {
+      "key": "site.71b82653ef6edd94cb",
+      "source": "Public guest-mode URLs exist so learners can land directly in useful learning modes from search, social links, schools, and AI answer engines.",
+      "value": "Viešo svečio režimo URL yra tam, kad besimokantieji galėtų patekti tiesiai į naudingus mokymosi režimus iš paieškos, socialinių nuorodų, mokyklų ir DI atsakymų sistemų."
+    },
+    {
+      "key": "site.84b54a439cdb819ab9",
+      "source": "Public learning should be discoverable without making private chats public.",
+      "value": "Viešas mokymasis turi būti atrandamas nepaverčiant privačių pokalbių viešais."
+    },
+    {
+      "key": "site.21a54ba78cbbf2ad55",
+      "source": "Public pages are open to search and AI retrieval crawlers, while admin tools, API routes, reset flows, and private utilities are disallowed.",
+      "value": "Vieši puslapiai yra atviri paieškai ir DI informacijos gavimo robotams, o administravimo įrankiai, API maršrutai, atkūrimo srautai ir privatūs pagalbiniai įrankiai yra neleidžiami."
+    },
+    {
+      "key": "site.5f7bb65a7b9c9c271a",
+      "source": "Public pages, topic chats, learning paths, blog guides, and authority pages are intended to be discoverable.",
+      "value": "Vieši puslapiai, temų pokalbiai, mokymosi keliai, tinklaraščio gidai ir autoriteto puslapiai skirti būti atrandami."
+    },
+    {
+      "key": "site.9a1fc1731f624d1f9d",
+      "source": "Questions",
+      "value": "Klausimai"
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Pasiekė besimokančiuosius per nemokamą viešą platformą ir partnerių mokyklų diegimus."
+    },
+    {
+      "key": "site.174109cf98cd5dc171",
+      "source": "Reference files",
+      "value": "Nuorodiniai failai"
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Nuorodos, vieši faktai, kontekstas spaudai ir citavimui patogios detalės."
+    },
+    {
+      "key": "site.4f501be387290c7eae",
+      "source": "Robots policy",
+      "value": "Robotų politika"
+    },
+    {
+      "key": "site.c8a5fde868171bdf70",
+      "source": "Robots rules allow Google, standard search crawlers, and major AI discovery crawlers on public pages, while blocking API routes, admin routes, and reset flows.",
+      "value": "Robotų taisyklės leidžia Google, standartinius paieškos robotus ir pagrindinius DI atradimo robotus viešuose puslapiuose, bet blokuoja API maršrutus, administravimo maršrutus ir atkūrimo srautus."
+    },
+    {
+      "key": "site.a51ac380dfd2bc496e",
+      "source": "Safeguards",
+      "value": "Apsaugos priemonės"
+    },
+    {
+      "key": "site.346a3af900118a9795",
+      "source": "Saved user conversations use private identifiers, are not included in the sitemap or AI discovery files, and should not be treated as public source material.",
+      "value": "Išsaugoti naudotojų pokalbiai naudoja privačius identifikatorius, nėra įtraukti į svetainės žemėlapį ar DI atradimo failus ir neturėtų būti laikomi vieša šaltinių medžiaga."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "Mokyklų ir CSR keliai finansuojamai prieigai"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "Mokyklų ir partnerių kelias"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "Mokyklos kampas"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "Mokyklinio diegimo kelias"
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "Mokykliniai diegimai gali būti pritaikyti pagal tinkintą turinį, darbo eigas, užklausas ir su NCERT suderintus mokymosi poreikius, kai tai tinkama."
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "Mokyklų vadovai"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "Mokykliniai paleidimai gali būti planuojami atsižvelgiant į mokinių privatumą, darbuotojų priežiūrą ir praktines ribas, kurių reikia mokymosi bendruomenei."
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "Mokyklos ir CSR partneriai"
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "Mokyklos ir partneriai"
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "Mokyklos ir partneriai gali remtis viešu produktu ir pereiti prie pritaikytų, konfidencialių ir subsidijuojamų diegimų."
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "Mokyklos gali pirmiausia įvertinti inspir per viešus svečio režimus, tada nagrinėti pritaikytas DI mokymosi erdves su tinkintomis darbo eigomis, konfidencialumo planavimu, ugdymo turinio poreikiais ir finansuojamos prieigos keliais."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "Mokyklos gali pirmiausia įvertinti viešus režimus, tada aptarti pritaikytas darbo eigas, konfidencialumo planavimą, turinio poreikius ir finansuojamą prieigą."
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "Mokyklos gali pirmiausia išbandyti viešus svečio režimus, tada naudoti mokyklų puslapį pritaikytoms darbo eigoms, konfidencialumo planavimui, su NCERT suderintoms parinktims ir finansuojamai prieigai nagrinėti."
+    },
+    {
+      "key": "site.2552c2a4aed60948fd",
+      "source": "Search visibility has boundaries",
+      "value": "Paieškos matomumas turi ribas"
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "Trumpas aprašymas"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "Pradėkite tiesiai tinkamame mokymosi režime namų darbų užuominoms, matematikos žingsniams, rašymo kritikai, testams, mokomosioms kortelėms ar egzaminų planavimui."
+    },
+    {
+      "key": "site.0dd6cb070f2300793a",
+      "source": "Start from a public learning mode with clear boundaries.",
+      "value": "Pradėkite nuo viešo mokymosi režimo su aiškiomis ribomis."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Pradėti mokytis"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "Studentai"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Mokymosi darbo eigos, jungiančios svečio režimus, užklausas, praktiką ir susijusius gidus."
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Remkite finansuojamą DI mokymosi prieigą bendruomenėms, kurioms reikia aukštos kokybės pagalbos nepridedant išlaidų šeimoms."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Sindikatuota aprėptis platesniam vartotojų pasiekiamumui."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Mokytojai"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Mokytojai ir vadovai gali pradėti nuo Learn Anything, Socratic Instruction, Homework Coach, testų ir mokomųjų kortelių prieš formalų diegimą."
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Sąlygos"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "Tekstinis atradimo failas DI atsakymų sistemoms, asistentams, pedagogams ir citavimo įrankiams."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Programėlė organizuota aplink mokymo elgesį, pvz., sokratišką klausinėjimą, namų darbų užuominas, testus, mokomąsias korteles, vaidmenų žaidimą ir planavimą."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Bendruomenė plėtėsi per mokyklas, universitetus, konkursus, papildomo ugdymo programas ir besimokančiųjų bendruomenes."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Formalus privatumo puslapis apie duomenų naudojimą, teises ir viešosios paslaugos sąlygas."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Formalios sąlygos, apimančios priimtiną naudojimą, paskyros atsakomybes ir paslaugos sąlygas."
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "Tikslas yra viešų mokymosi puslapių atradimas ir citavimas. Vieši maršrutai, gidai ir mokymosi centrai yra atviri pagrindiniams DI paieškos, informacijos gavimo ir asistentų robotams, o API, administravimo, atkūrimo ir privatūs pagalbiniai maršrutai lieka neleidžiami."
+    },
+    {
+      "key": "site.c1ff0e8e91783079b7",
+      "source": "The live robots rules used by search crawlers and AI retrieval systems.",
+      "value": "Tiesioginės robotų taisyklės, naudojamos paieškos robotų ir DI informacijos gavimo sistemų."
+    },
+    {
+      "key": "site.0ce48230ddbb02a90b",
+      "source": "The live, crawlable learning surface that turns the mission into product behavior.",
+      "value": "Tiesioginis, indeksuojamas mokymosi paviršius, kuris misiją paverčia produkto elgesiu."
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "Kitas etapas yra atvirojo kodo, draugiškas prisidedantiesiems ir susietas su platesne tarptautine plėtra inspir.uk."
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "Atvirojo kodo perstatymas kūrėjams, pedagogams ir prisidedantiesiems."
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "Platforma dirbo su ugdymo turinio įkėlimu, informacijos gavimu, struktūruotais mokymosi srautais ir ankstyvomis DI mokymo patirtimis."
+    },
+    {
+      "key": "site.c929cb2467916d3fb4",
+      "source": "The practical trust layer behind guest mode.",
+      "value": "Praktinis pasitikėjimo sluoksnis už svečio režimo."
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "Viešame tinklaraštyje yra daugiau nei 100 gidų, užklausų ciklų ir pagrindinių temų klasterių, susietų su tiesioginiais mokymosi režimais."
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "Viešas paaiškinimas, kodėl inspir egzistuoja ir kodėl mokymosi prieiga svarbi."
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "Vieši režimai sukurti apie mokymosi elgesį: užuominas, sokratiškus klausimus, žingsnių patikrinimus, testus, mokomąsias korteles, rašymo grįžtamąjį ryšį, kartojimo ciklus ir aktyvų paaiškinimą."
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "Viešą produktą lengva išbandyti pirmiausia, o mokyklos ir partneriai gali nagrinėti pritaikytus diegimus bendruomenių poreikiams."
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "Viešas produktas išlaiko mokymąsi lengvai išbandomą, o mokyklos ir CSR partneriai gali remti pritaikytus diegimus, kai bendruomenėms reikia konfidencialumo, ugdymo turinio suderinimo ar finansuojamos prieigos."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "Viešas pareiškimas, kodėl inspir egzistuoja ir ką reiškia mokymosi prieiga."
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "Mokyklų kelias pritaikytoms DI mokymosi erdvėms ir finansuojamai prieigai."
+    },
+    {
+      "key": "site.3778ada14b0cef6053",
+      "source": "The SEO system is designed to make useful public learning resources findable while keeping private user material, admin surfaces, and utility routes outside discovery.",
+      "value": "SEO sistema sukurta taip, kad naudingi vieši mokymosi ištekliai būtų randami, o privati naudotojų medžiaga, administravimo paviršiai ir pagalbiniai maršrutai liktų už atradimo ribų."
+    },
+    {
+      "key": "site.214ab6d09b71cecbd4",
+      "source": "The source links search systems and schools can inspect.",
+      "value": "Šaltinių nuorodos, kurias gali patikrinti paieškos sistemos ir mokyklos."
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "Istorija nuo testų ir mokinių bendruomenių iki nemokamų DI mokymosi įrankių, kuriamų viešai."
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "Istorija apima testus, neprisijungusias mokyklų bendruomenes, ugdymo turinio įkėlimą ir viešus DI mokymosi režimus."
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "Stipriausias kampas yra nemokamas viešas DI mokymasis, kuris atsidaro tiesiai svečio režime ir išlaiko besimokančiuosius aktyvius per konkretiems režimams būdingą mokymą, o ne bendrą atsakymų generavimą."
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "Platesnė tarptautinė plėtra, susieta su inspir projektu."
+    },
+    {
+      "key": "site.dcad6a998776bf850c",
+      "source": "The written learning library that supports prompts, study loops, and long-tail discovery.",
+      "value": "Rašytinė mokymosi biblioteka, palaikanti užklausas, mokymosi ciklus ir ilgųjų užklausų atradimą."
+    },
+    {
+      "key": "site.089d27a3f826ccffe5",
+      "source": "These public files explain what should be indexed, what should not, and where the formal policies live.",
+      "value": "Šie vieši failai paaiškina, kas turėtų būti indeksuojama, kas neturėtų, ir kur yra formalios politikos."
+    },
+    {
+      "key": "site.fa6200bb631b85f29c",
+      "source": "These safeguards connect product behavior, private boundaries, crawler rules, and school deployment needs into one public explanation.",
+      "value": "Šios apsaugos priemonės sujungia produkto elgesį, privačias ribas, robotų taisykles ir mokyklų diegimo poreikius į vieną viešą paaiškinimą."
+    },
+    {
+      "key": "site.33a579ffc0dccbff15",
+      "source": "Trust",
+      "value": "Pasitikėjimas"
+    },
+    {
+      "key": "site.ec14ede85a3d47de35",
+      "source": "Trust and crawler policy",
+      "value": "Pasitikėjimo ir robotų politika"
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "Pasitikėjimas ir saugumas"
+    },
+    {
+      "key": "site.040e1bd63118e833bf",
+      "source": "Trust And Safety",
+      "value": "Pasitikėjimas ir saugumas"
+    },
+    {
+      "key": "site.da6973728d582d5692",
+      "source": "Trust And Safety | inspir",
+      "value": "Pasitikėjimas ir saugumas | inspir"
+    },
+    {
+      "key": "site.388a47ad9ae3f0946c",
+      "source": "Trust questions for learners, schools, and crawlers.",
+      "value": "Pasitikėjimo klausimai besimokantiesiems, mokykloms ir robotams."
+    },
+    {
+      "key": "site.f5c3ac083506af9531",
+      "source": "Trust safeguard",
+      "value": "Pasitikėjimo apsauga"
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "Išbandykite viešus svečio režimus"
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "Supratimas svarbiau už atsakymus"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "Skirtingai nei bendras pokalbių robotas, inspir organizuoja DI aplink mokymosi režimus, kad besimokantieji galėtų pradėti nuo tokios pagalbos, kokios jiems reikia: užuominų, klausimų, testų, aktyvaus atgaminimo, vaidmenų žaidimo, debatų ar grįžtamojo ryšio."
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "Naudokite https://inspirlearning.com svetainei, /mission misijai, /topics viešų mokymosi režimų katalogui ir /chat/learn-anything numatytajai svečio mokymosi patirčiai."
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "Naudokite tai mokyklų, partnerių, CSR ir švietimo prieigos nuorodoms."
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "Naudokite tai cituodami ilgos formos gidų biblioteką, mokymosi užklausas ir konkretiems režimams skirtus straipsnius."
+    },
+    {
+      "key": "site.dd485991c01b4d13ad",
+      "source": "Use this when describing the full set of guest-mode learning tools that are meant to be indexed.",
+      "value": "Naudokite tai aprašydami visą svečio režimo mokymosi įrankių rinkinį, kuris skirtas indeksuoti."
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "Naudokite tai pristatydami inspir kaip pagrindinį produktą arba pateikdami nuorodą iš katalogo, profilio ar straipsnio."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "Naudokite tai, kai skaitytojus norite nukreipti tiesiai į tiesioginę mokymosi patirtį."
+    },
+    {
+      "key": "site.3c3e380006aa99ab8b",
+      "source": "Use this when referencing public/private boundaries, crawler policy, and school trust.",
+      "value": "Naudokite tai kalbėdami apie viešas ir privačias ribas, robotų politiką ir mokyklų pasitikėjimą."
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "Svetainė"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "Ką kas nors gali išbandyti pirmiausia?"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "Kas yra inspir?"
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "Kokia yra inspir misija?"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "Koks produkto kampas naudingiausias aprėpčiai?"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "Koks trumpas inspir aprašymas?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "Nuo ko mokykloms pradėti?"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "Į kurį URL straipsniai turėtų pirmiausia nukreipti?"
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "prekės ženklui pritaikoma DI mokymosi platforma"
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "Prekės ženklui pritaikytas DI pokalbis"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "Kas gali naudoti žiniasklaidos puslapį?"
+    },
+    {
+      "key": "site.196529c670971f3378",
+      "source": "Why does inspir allow AI discovery crawlers?",
+      "value": "Kodėl inspir leidžia DI atradimo robotus?"
+    },
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Kodėl inspir palaiko mokyklų ir partnerių diegimus?"
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Kodėl inspir sukurtas aplink režimus, o ne vieną pokalbio laukelį?"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Taip. Mokykla gali pradėti išbandydama viešus režimus, tada pereiti prie piloto ar pritaikyto diegimo, kai naudojimo atvejis, turinio poreikiai ir finansavimo kelias aiškūs."
+    },
+    {
+      "key": "site.43e69afa661b737928",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from canonical /chat/{topicSlug} URLs.",
+      "value": "Taip. Vieši svečio režimai, tokie kaip Learn Anything, Socratic Instruction, Homework Coach, testai ir mokomosios kortelės, atsidaro tiesiai iš kanoninių /chat/{topicSlug} URL."
+    },
+    {
+      "key": "site.86c3dcb99e53cbe5fb",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are intended to be indexable learning pages.",
+      "value": "Taip. Vieši temų įėjimo taškai, tokie kaip /chat/learn-anything ir /chat/socratic-instruction, skirti būti indeksuojami mokymosi puslapiai."
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Taip. Vieši svečio režimai leidžia mokyklų vadovams ir mokytojams išbandyti mokymosi patirtį prieš aptariant pritaikytą mokyklinį diegimą."
+    }
+  ]
+}

@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Arabic",
+  "locale": "ar",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمدرب التربية المدنية مع مطالباته وأمثلته وسير التعلم الخاصة به."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "فهم الحقوق، الحكومة، والمجتمع"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة بما يتناسب مع هدفك"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "كيف يتحول مشروع القانون إلى قانون؟"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "اشرح الحقوق الأساسية"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "ماذا يفعل القضاء؟"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "دليل تقدير الفن"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "انظر عن قرب ولاحظ المزيد"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "استكشف الأعمال الفنية والأوضاع والفنانين والاختيارات البصرية وما يجعل الصورة قوية."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "أي عمل فني، فنان، أو نمط؟"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "الإبداع"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "استكشف الأعمال الفنية، الأساليب، الفنانين، الخيارات البصرية، وما يجعل الصورة قوية."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع الإبداع ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذه الوضعية لتكون دليلاً لتقدير الفن مع مطالباتها الخاصة، وأمثلتها، وتدفق التعلم الخاص بها."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "انظر عن قرب ولاحظ المزيد"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بأمثلة على التنبيهات"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "اشرح الانطباعية"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "كيف أنظر إلى لوحة فنية؟"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "قارن بين الفن النهضوي والفن الحديث"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "مدرب نظريات الموسيقى"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "فهم الصوت، الإيقاع، والتناغم"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "تعلم النوتات، الأوتار، السلالم الموسقية، الإيقاع، تدريب الأذن، وكيفية بناء الأغاني."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "أي فكرة موسيقية نعمل عليها؟"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "الإبداع"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "تعلم النوتات، الأوتار، المقامات، الإيقاع، تمارين تدريب الأذن، وكيفية بناء الأغاني."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات الإبداع ويرغبون في توجيه عملي بدلاً من إجابة عامة."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمدرب نظرية الموسيقى مع التعليمات، الأمثلة، وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "فهم الصوت والإيقاع والتناغم"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "خصص الجلسة لهدفك"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "شرح الكبير والصغير"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "كيف تعمل الأوتار؟"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "علّم أساسيات الإيقاع"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "تأمل العقلية"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "تأمل في طريقة تعلمك"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "لاحظ ما يساعدك على التعلم، وما يعيقك، وكيف تصبح متعلماً أقوى."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "أي لحظة تعليمية يجب أن نتأمل فيها؟"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "التخطيط"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "لاحظ ما يساعدك على التعلم، وما يعيقك، وكيف تصبح متعلماً أقوى."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التخطيط ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع للتفكير في نمط التفكير مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "تأمل في طريقة تعلمك"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة حسب هدفك"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "لماذا تجنبت الدراسة؟"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "تأمل بعد اختبار سيئ"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "ما هي استراتيجية التعلم التي تناسبني؟"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "سيد ألعاب التعلم"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "حوّل الدراسة إلى تحدي"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "اجعل التعلم يشبه اللعبة من خلال المهام، المستويات، النقاط، التحديات، وجولات الزعماء."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "ما الذي ينبغي أن يتحول إلى لعبة تعليمية؟"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "ممارسة"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "اجعل التعلم كأنه لعبة مع مهام، مستويات، نقاط، تحديات، وجولات مع زعماء."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التدريب ويرغبون في توجيه عملي بدلاً من إجابة عامة."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع ليكون سيد ألعاب التعلم مع طلباته وأمثلته وتدفق التعلم الخاصة به."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "حوّل الدراسة إلى تحدٍ"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بنماذج توضيحية"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة وفقًا لهدفك"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "اجعل علم الأحياء مهمة"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "حوّل المفردات إلى مستويات"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "ابدأ معركة رئيس في الرياضيات"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "تدريب المذاكرة الشفوية"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "استعد للأسئلة الشفوية"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "تمرن على الأسئلة الشفهية، الامتحانات الشفوية، الدفاع عن المشاريع، والأسئلة السريعة مع تقييم هادئ."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "ما هو الامتحان الشفهي أو المقابلة التي تستعد لها؟"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "الممارسة"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "تمرّن على الامتحانات الشفوية، والمناقشات الشفهية، ودفاعات المشاريع، والأسئلة السريعة مع تغذية راجعة هادئة."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات الممارسة ويرغبون في توجيهات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصًا لممارسة الامتحانات الشفوية مع تعليمات وأمثلة وتدفق تعليمي خاص به."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "التحضير للأسئلة الشفوية"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بجمل نموذجية"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "تدريب على مناقشة مشروعي العلمي"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "اطرح عليّ أسئلة مناقشة الرسالة"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "أسئلة امتحان عملي تجريبي"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "مؤقت الدراسة"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "مؤقت بومودورو مستمر مع تنبيهات"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "قم بتشغيل جلسات التركيز والاستراحة التي تستمر في العد أثناء تنقلك بين الدردشات وعلامات التبويب والتطبيقات المصغرة. يمكنه إصدار رنين من الخلفية عند انتهاء الجلسة."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "ما الذي يجب أن تدور حوله جلسة التركيز هذه؟"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "التركيز والإنتاجية"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "قم بتشغيل جلسات التركيز والاستراحة التي تستمر في العد أثناء تنقلك بين الدردشات وعلامات التبويب والتطبيقات المصغرة. يمكنه إصدار رنين من الخلفية عند انتهاء الجلسة."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات التركيز والإنتاجية والذين يرغبون في توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمؤقت الدراسة مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "مؤقت بومودورو مستمر مع تنبيهات"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "ابدأ جلسة أحياء لمدة 25 دقيقة"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "اضبط إيقاع عمل عميق 50/10"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "تتبع تركيز صياغة المقال"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "موسيقى للتركيز"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "صوت تركيز في الخلفية يستمر في التشغيل"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "اختر صوت تركيز تم إنشاؤه للقراءة أو الكتابة أو حل المشكلات أو العمل العميق. يستمر في التشغيل أثناء التبديل إلى دردشات أخرى."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "ما نوع التركيز الذي تريده اليوم؟"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "التركيز والإنتاجية"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "اختر صوت تركيز تم إنشاؤه للقراءة أو الكتابة أو حل المشكلات أو العمل العميق. يستمر في التشغيل أثناء التبديل إلى دردشات أخرى."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات التركيز والإنتاجية والذين يرغبون في توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لموسيقى التركيز مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "صوت تركيز في الخلفية يستمر في التشغيل"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "تشغيل موسيقى هادئة للتركيز أثناء القراءة"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "إعداد صوتيات للعمل العميق"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "استخدام أصوات المطر للمراجعة"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "لوحة الرسم والتخطيط"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "فكر من خلال الرسوم التوضيحية والمرئيات الأولية"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "استخدم الرسم كأداة للتعلم: خطط للرسوم التوضيحية، ضع تسميات للخرائط الأولية، اشرح العمليات، أو حوّل فكرة غير منظمة إلى مرئيات أكثر وضوحاً."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "ما الذي يجب أن نرسمه أو نخطط له؟"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "التعلم البصري"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "استخدم الرسم كأداة للتعلم: خطط للرسوم التوضيحية، ضع تسميات للخرائط الأولية، اشرح العمليات، أو حوّل فكرة غير منظمة إلى مرئيات أكثر وضوحاً."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التعلم البصري ويرغبون في توجيه عملي بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع للوحة الرسم/التخطيط مع مطالباته الخاصة، وأمثلة، ومسار تعلم مخصص."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "فكر من خلال الرسوم التوضيحية والمرئيات الأولية"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "ارسم مخططاً للخلية"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "ارسم منحنى العرض والطلب"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "حدد أسباب الحرب العالمية الأولى"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "منشئ اختبارات الممارسة"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "أنشئ اختباراً كاملاً من موادك الدراسية"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "حوّل موضوعاً أو منهجاً أو ملاحظات إلى اختبار ممارسة واقعي يتضمن أقساماً، وتوقيتاً، وتوجيهات للتقييم، وخطوات للمراجعة."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "ما الذي يجب أن يغطيه اختبار الممارسة؟"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "التعلم النشط"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "حوّل موضوعاً أو منهجاً أو ملاحظات إلى اختبار ممارسة واقعي يتضمن أقساماً، وتوقيتاً، وتوجيهات للتقييم، وخطوات للمراجعة."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التعلم النشط ويرغبون في توجيه عملي بدلاً من مجرد الحصول على إجابات عامة."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمنشئ اختبارات الممارسة مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "بناء اختبار كامل من موادك الدراسية"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ باستخدام مطالبات نموذجية"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "بناء اختبار وحدة في علم الأحياء"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "إنشاء اختبار ممارسة متنوع في الرياضيات"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "إنشاء ورقة اختبار تاريخ على نمط الامتحانات"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "مدرب تحليل الصور"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "استوعب لقطات الشاشة والرسوم البيانية وصور الواجبات المنزلية"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "صف الصورة أو الصق تفاصيل منها واحصل على مساعدة في قراءة الرسوم البيانية، والمخططات، والمسائل، والملاحظات المكتوبة بخط اليد، أو الأدلة البصرية."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "صف الصورة أو الصق ما هو مرئي"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "مساعدة الذكاء الاصطناعي"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "صف الصورة أو الصق تفاصيل منها واحصل على مساعدة في قراءة الرسوم البيانية، والمخططات، والمسائل، والملاحظات المكتوبة بخط اليد، أو الأدلة البصرية."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع مساعدة الذكاء الاصطناعي ويرغبون في توجيه عملي بدلاً من مجرد الحصول على إجابات عامة."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لمدرب تحليل الصور مع مطالبات وأمثلة ومسار تعلم خاص به."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "استوعب لقطات الشاشة والرسوم البيانية وصور الواجبات المنزلية"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ باستخدام مطالبات نموذجية"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "ساعدني في قراءة هذا الرسم البياني"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "حلل مخططاً من كتابي الدراسي"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "اشرح ما توضحه لقطة الشاشة هذه"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "ملاحظات كورنيل"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "هيكلة الملاحظات إلى إشارات وتفاصيل وملخص"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "حوّل المحاضرات أو القراءات أو الملاحظات الأولية إلى طريقة كورنيل مع أسئلة تلميحية، وملاحظات أساسية، وملخص، ومطالبات للمراجعة."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "الصق الملاحظات أو قم بتسمية الدرس"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "التنظيم"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "حوّل المحاضرات أو القراءات أو الملاحظات الأولية إلى طريقة كورنيل مع أسئلة تلميحية، وملاحظات أساسية، وملخص، ومطالبات للمراجعة."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التنظيم ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لملاحظات كورنيل مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "هيكلة الملاحظات إلى تلميحات وتفاصيل وملخص"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "حوّل هذه المحاضرة إلى ملاحظات كورنيل"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "أنشئ أسئلة تلميحية للفصل الثالث"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "لخّص ملاحظاتي الأولية"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "مولد الاقتباسات"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "أنشئ مراجع بالتنسيقات الشائعة"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "أنشئ إدخالات ببليوغرافية بتنسيقات APA أو MLA أو Chicago أو Harvard أو تنسيقات بسيطة من تفاصيل المصدر مع التحقق من الحقول المفقودة."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "الصق تفاصيل المصدر أو معلومات الرابط"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "مساعدة الذكاء الاصطناعي"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "أنشئ إدخالات ببليوغرافية بتنسيقات APA أو MLA أو Chicago أو Harvard أو تنسيقات بسيطة من تفاصيل المصدر مع التحقق من الحقول المفقودة."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع مساعدة الذكاء الاصطناعي ويريدون توجيهاً عملياً بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمولد الاقتباسات مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "أنشئ مراجع بالتنسيقات الشائعة"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "أنشئ اقتباساً بتنسيق APA"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "نسق هذا الموقع بصيغة MLA"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "تحقق من الحقول المفقودة في توثيقي"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "ملخص النصوص"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "كثف القراءات في ملاحظات دراسية مفيدة"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "لخص النصوص الطويلة إلى أفكار رئيسية، وهيكل، وتعريفات، وأمثلة، وأسئلة استرجاع."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "الصق النص لتلخيصه"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "مساعدة الذكاء الاصطناعي"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "لخص النصوص الطويلة إلى أفكار رئيسية، وهيكل، وتعريفات، وأمثلة، وأسئلة استرجاع."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع مساعدة الذكاء الاصطناعي ويريدون توجيهاً عملياً بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لملخص النصوص مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "كثف القراءات في ملاحظات دراسية مفيدة"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "لخص هذا المقال"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "استخرج النقاط الرئيسية من ملاحظاتي"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "اصنع ملخصاً للفصل"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "مولد دليل الدراسة"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "حول المواد إلى دليل مراجعة"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "أنشئ دليل دراسة يتضمن أهدافاً، وملخصات مفاهيم، وأمثلة، وأخطاء شائعة، وأسئلة تدريبية، وخطة مراجعة."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "ما هي المادة التي يجب تحويلها إلى دليل دراسة؟"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "مساعدة الذكاء الاصطناعي"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "أنشئ دليل دراسة يتضمن أهدافاً، وملخصات مفاهيم، وأمثلة، وأخطاء شائعة، وأسئلة تدريبية، وخطة مراجعة."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع مساعدة الذكاء الاصطناعي ويريدون توجيهاً عملياً بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمولد دليل الدراسة مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "حوّل المواد الدراسية إلى دليل مراجعة"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ باستخدام نماذج من المطالبات"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "أنشئ دليلاً عن التمثيل الضوئي"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "حوّل ملاحظاتي إلى ورقة مراجعة"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "ابنِ دليل دراسة للاختبارات النهائية"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "حاسبة الدرجات والمعدل التراكمي"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "توقع الدرجات وخطط لأهدافك"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "احسب الدرجات الموزونة، وسيناريوهات المعدل التراكمي، والدرجات النهائية المطلوبة، وخطط الفصل الدراسي الافتراضية."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "شارك أوزان درجاتك ونتائجك"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "التنظيم"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "احسب الدرجات الموزونة، وسيناريوهات المعدل التراكمي، والدرجات النهائية المطلوبة، وخطط الفصل الدراسي الافتراضية."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التنظيم ويريدون توجيهاً عملياً بدلاً من مجرد صندوق إجابات عام."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصاً لحاسبة الدرجات والمعدل التراكمي مع مطالبات وأمثلة ومسار تعليمي خاص بها."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "توقع الدرجات وخطط لأهدافك"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ باستخدام نماذج من المطالبات"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة لتناسب هدفك"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "ما هي الدرجة النهائية التي أحتاجها؟"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "احسب درجتي الموزونة"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "خطط لهدف المعدل التراكمي الخاص بي"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "منشئ الخرائط الذهنية"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "فرّع موضوعاً إلى أفكار مترابطة"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "أنشئ خريطة ذهنية للعصف الذهني، أو المراجعة، أو التخطيط، أو ربط المفاهيم قبل الكتابة أو الدراسة."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "ما هو الموضوع الذي تريد تحويله إلى خريطة ذهنية؟"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "التعلم البصري"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "أنشئ خريطة ذهنية للعصف الذهني، أو المراجعة، أو التخطيط، أو ربط المفاهيم قبل الكتابة أو الدراسة."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التعلم البصري ويرغبون في الحصول على توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمنشئ الخرائط الذهنية مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "تفريغ موضوع إلى أفكار مترابطة"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "خريطة ذهنية لتعلم الآلة"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "خطط لمقال تاريخي"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "عصف ذهني لمشروع علمي"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "أهداف الدراسة اليومية"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "حدد وتتبع أهداف التعلم لهذا اليوم"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "خطط لمجموعة واقعية من أهداف الدراسة اليومية مع تقديرات الجهد، والأولوية، وفحوصات الصعوبات، وطقوس المراجعة السريعة."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "ما الذي تريد إنجازه اليوم؟"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "التلعيب"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "خطط لمجموعة واقعية من أهداف الدراسة اليومية مع تقديرات الجهد، والأولوية، وفحوصات الصعوبات، وطقوس المراجعة السريعة."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التلعيب ويرغبون في الحصول على توجيه عملي بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لأهداف الدراسة اليومية مع مطالباته وأمثلته ومسار التعلم الخاص به."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "حدد وتتبع أهداف التعلم لهذا اليوم"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيفية تكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "حدد ثلاثة أهداف لهذا اليوم"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "اجعل أهدافي واقعية"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "راجع أهدافي الدراسية"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "مؤقت المهام"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "احسب وقت المهام الفردية واطلع على الجهد المبذول"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "قسّم عملك إلى مهام محددة، واحسب وقت كل منها، وراجع أين ذهب جهدك الدراسي بعد كل جلسة تركيز."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "ما المهمة التي نود حساب وقتها؟"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "التركيز والإنتاجية"
+    }
+  ]
+}

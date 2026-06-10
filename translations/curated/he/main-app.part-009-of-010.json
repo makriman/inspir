@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hebrew",
+  "locale": "he",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "חלקו את העבודה למשימות בעלות שם, מדדו זמן לכל אחת מהן, ובדקו לאן הופנה מאמץ הלמידה לאחר כל סשן ממוקד."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי מיקוד ופרודוקטיביות שרוצים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לטיימר משימות עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "מדדו זמן למשימות בודדות וראו את המאמץ שהושקע"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאימו את הסשן למטרה שלכם"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "מדדו זמן לסט תרגילים"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "עקבו אחר עבודה על ראשי פרקים לחיבור"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "חלקו משימה גדולה לבלוקים של זמן"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "תזכורת להפסקה"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "שמרו על המיקוד בעזרת הפסקות בריאות"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "קבעו מקצבי עבודה והפסקה, תכננו התרעננות אמיתית, והימנעו מגלישה לעייפות למידה מתמשכת."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "איזה מקצב עבודה/הפסקה תרצו?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "מיקוד ופרודוקטיביות"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "קבעו מקצבי עבודה והפסקה, תכננו התרעננות אמיתית, והימנעו מגלישה לעייפות למידה מתמשכת."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי מיקוד ופרודוקטיביות שרוצים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לתזכורת הפסקה עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "שמרו על המיקוד בעזרת הפסקות בריאות"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "השתמש בהפסקות של 50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "תכנן הפסקה בריאה"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "עזור לי להפסיק ללמוד יותר מדי"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "סשנים של עבודה עמוקה"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "תכנן בלוק מיקוד ללא הסחות דעת"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "הכן סשן עבודה עמוקה עם תוצאה ברורה, מגבלות, חוקי מיקוד, נקודת ביקורת ותוכנית גיבוי."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "איזו תוצאה סשן העבודה העמוקה הזה צריך להניב?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "מיקוד ופרודוקטיביות"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "הכן סשן עבודה עמוקה עם תוצאה ברורה, מגבלות, חוקי מיקוד, נקודת ביקורת ותוכנית גיבוי."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי מיקוד ופרודוקטיביות שרוצים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לסשנים של עבודה עמוקה עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "תכנן בלוק מיקוד ללא הסחות דעת"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "תכנן בלוק עבודה עמוקה של 90 דקות"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "עזור לי להתמקד בתכנות"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "קבע חוקים לכתיבת תזה"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "טיימר ללמידה קבוצתית"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "תאם סבבי מיקוד עם אחרים"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "נהל קצב למידה משותף לחברים או לכיתה עם מטרות מסונכרנות, צ'ק-אינים ושאלות סיכום."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "מי לומד יחד ומה המטרה?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "חברתי"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "נהל קצב למידה משותף לחברים או לכיתה עם מטרות מסונכרנות, צ'ק-אינים ושאלות סיכום."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאים חברתיים ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לטיימר למידה קבוצתי עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "תיאום סבבי מיקוד עם אחרים"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "תכנון פומודורו קבוצתי"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "בניית מבנה לחדר למידה"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "ניהול מפגש קבוצתי של 45 דקות"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "צלילי אווירה"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "נופי צליל מופקים ללמידה רגועה"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "השתמש בהגדרות קבועות מראש של צלילי אווירה פשוטים כדי להפחית הסחות דעת בזמן קריאה, כתיבה, חזרה על חומר או פתרון בעיות."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "איזה סוג של אווירת מיקוד תרצה?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "מיקוד ופרודוקטיביות"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "השתמש בהגדרות קבועות מראש של צלילי אווירה פשוטים כדי להפחית הסחות דעת בזמן קריאה, כתיבה, חזרה על חומר או פתרון בעיות."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי מיקוד ופרודוקטיביות ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לצלילי אווירה עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "נופי צליל מופקים ללמידה רגועה"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "שימוש בצלילי גשם לקריאה"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "בחירת אודיו רגוע למתמטיקה"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "הגדרת אווירה שקטה לעבודה עמוקה"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "רצפי למידה"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "בניית עקביות ללא רגשות אשם"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "עקבו אחר רצפי למידה, השלימו ימים שהוחמצו, ועצבו הרגל למידה מינימלי ששורד את המציאות."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "איזה רצף או שגרה אתם בונים?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "ניתוח נתונים"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "עקבו אחר רצפי למידה, השלימו ימים שהוחמצו, ועצבו הרגל למידה מינימלי ששורד את המציאות."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ניתוח נתונים ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לרצפי למידה עם הנחיות, דוגמאות ותהליך למידה ייחודי משלו."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "בניית עקביות ללא רגשות אשם"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת המפגש למטרה שלכם"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "התחלת רצף למידה"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "התאוששות לאחר החמצת יום"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "עיצוב חזרה יומית קצרה"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "לוח מחוונים להתקדמות"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "סקירת פעילות הלמידה והצעדים הבאים"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "הפכו פעילות למידה, תוצאות מבחנים, הערות וטיימרים לסקירה בסגנון לוח מחוונים עם מגמות ופעולות להמשך."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "איזו התקדמות עלינו לסקור?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "ניתוח נתונים"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "הפכו פעילות למידה, תוצאות מבחנים, הערות וטיימרים לסקירה בסגנון לוח מחוונים עם מגמות ופעולות להמשך."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ניתוח נתונים ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם ללוח מחוונים של התקדמות עם הנחיות, דוגמאות ותהליך למידה ייחודי משלו."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "סקירת פעילות הלמידה והצעדים הבאים"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת המפגש למטרה שלכם"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "סקירת השבוע שלי"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "מציאת נקודות תורפה"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "הפיכת פעילות לצעדים הבאים"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "דוחות שבועיים"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "סיכום הישגים, פספוסים והשבוע הבא"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "הפקת דוח למידה שבועי או חודשי הכולל מאמץ, תוצאות, חסמים, הישגים ותוכנית ממוקדת."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "מה קרה השבוע?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "ניתוח נתונים"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "הפקת דוח למידה שבועי או חודשי הכולל מאמץ, תוצאות, חסמים, הישגים ותוכנית ממוקדת."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ניתוח נתונים ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לדוחות שבועיים עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "סיכום הישגים, פספוסים והשבוע הבא"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "כתוב את דוח הלמידה השבועי שלי"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "סכם את ההתקדמות שלי"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "תכנן את השבוע הבא על בסיס השבוע הנוכחי"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "מעקב משימות"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "מעקב אחר מועדים ופעולות הבאות"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "ארגון משימות לפי תאריך יעד, מאמץ, סטטוס, סיכון והפעולה הקטנה הבאה."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "אילו משימות עומדות על הפרק?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "ארגון"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "ארגון משימות לפי תאריך יעד, מאמץ, סטטוס, סיכון והפעולה הקטנה הבאה."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ארגון ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למעקב משימות עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "מעקב אחר מועדים ופעולות הבאות"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "ארגון המועדים שלי"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "תעדוף מטלות"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "תכנון הגשת פרויקט זה"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "מנהל קורסים"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "ארגון קורסים, נושאים ועומס עבודה"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "מיפוי קורסים, יחידות לימוד, מטלות, משאבים ועומס עבודה שבועי למערכת למידה מאורגנת אחת."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "אילו קורסים או מקצועות אתה מנהל?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "ארגון"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "מיפוי קורסים, יחידות לימוד, מטלות, משאבים ועומס עבודה שבועי למערכת למידה מאורגנת אחת."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ארגון שרוצים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למנהל קורסים עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "ארגון קורסים, נושאים ועומס עבודה"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "הגדרת הקורסים שלי"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "ארגון הסמסטר שלי"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "מיפוי נושאים לכל מקצוע"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "מארגן הערות"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "תיוג, מיון וקישור הערות"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "הפיכת הערות מפוזרות לתיקיות, תגיות, סיכומים, קישורים ופעולות חזרה שמקלות על השליפה."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "הדבק או תאר את ההערות לארגון"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "ארגון"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "הפוך הערות מפוזרות לתיקיות, תגיות, סיכומים, קישורים ופעולות חזרה שהופכים את השליפה לקלה יותר."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ארגון שרוצים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לארגון הערות עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "תייג, מיין וחבר הערות"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "ארגן את סיכומי השיעור שלי"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "צור תגיות עבור ההערות האלה"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "מצא נושאים במחברת שלי"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "שיתוף משאבים"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "ארוז ושתף משאבי למידה"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "הכן משאבי למידה עבור חברים לכיתה או קבוצה: סיכומים, קישורים, הערות, הסברים והנחיות לשימוש."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "איזה משאב תרצה לשתף?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "חברתי"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "הכן משאבי למידה עבור חברים לכיתה או קבוצה: סיכומים, קישורים, הערות, הסברים והנחיות לשימוש."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאים חברתיים שרוצים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לשיתוף משאבים עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "ארוז ושתף משאבי למידה"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "ארוז את ההערות שלי עבור קבוצה"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "צור סיכום משאבים"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "צור הנחיות לשיתוף"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "קבוצות למידה"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "הפכו את הלמידה הקבוצתית למובנית"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "תכננו קבוצת למידה פרודוקטיבית עם תפקידים, סדר יום, סבבי שאלות, משאבים משותפים וסיכומי פגישות."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "מה קבוצת הלמידה צריכה לעשות?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "חברתי"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "תכננו קבוצת למידה פרודוקטיבית עם תפקידים, סדר יום, סבבי שאלות, משאבים משותפים וסיכומי פגישות."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאים חברתיים ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לקבוצות למידה עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "הפכו את הלמידה הקבוצתית למובנית"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאימו את המפגש למטרה שלכם"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "תכננו מפגש קבוצתי"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "צרו תפקידים לקבוצת למידה"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "תקנו קבוצה לא פרודוקטיבית"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "פורום סטודנטים"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "נסחו שאלות לקבלת עזרה מהקהילה"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "הכינו שאלות ברורות לפורום, תשובות, סיכומים ובקשות להמשך דיון שהופכים את השיח הסטודנטיאלי למועיל יותר."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "איזו שאלה או דיון ברצונכם לפרסם?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "חברתי"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "הכינו שאלות ברורות לפורום, תשובות, סיכומים ובקשות להמשך דיון שהופכים את השיח הסטודנטיאלי למועיל יותר."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאים חברתיים ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לפורום סטודנטים עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "נסחו שאלות לקבלת עזרה מהקהילה"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "כתוב שאלה טובה לפורום"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "סכם דיון"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "בקש משוב מעמיתים"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "בונה דפי עבודה"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "צור דפי עבודה לתרגול משולב"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "צור דפי עבודה עם סוגי שאלות כגון השלמת משפטים, שאלות אמריקאיות, נכון/לא נכון, תשובות קצרות והתאמה."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "מה דף העבודה צריך לכלול?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "למידה פעילה"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "צור דפי עבודה עם סוגי שאלות כגון השלמת משפטים, שאלות אמריקאיות, נכון/לא נכון, תשובות קצרות והתאמה."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי למידה פעילה ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לבונה דפי עבודה עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "צור דפי עבודה לתרגול משולב"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "צור דף עבודה על שברים"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "צור תרגול משולב בכימיה"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "בנה תרגילי אוצר מילים"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "תרגול תיוג תרשימים"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "תרגל תיוג של תרשימים ומערכות"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "הפוך תרשימים, מערכות גוף, מפות, תהליכי עבודה או מערכי מעבדה לתרגול תיוג עם רמזים ובדיקת תשובות."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "איזה תרשים נתרגל בתיוג?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "למידה פעילה"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "הפוך תרשימים, מערכות גוף, מפות, תהליכי עבודה או מערכי מעבדה לתרגול תיוג עם רמזים ובדיקת תשובות."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי למידה פעילה ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לתרגול תיוג תרשימים עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "תרגול תיוג תרשימים ומערכות"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "תיוג תא צמח"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "תרגול תרשים לב"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "יצירת שאלות תיוג מפה"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "מחולל משחקי התאמה"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "התאמת מונחים, הגדרות, סיבות ודוגמאות"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "הפוך סיכומים למשחקי התאמה עבור אוצר מילים, מושגים, אנשים/אירועים, נוסחאות, דוגמאות או זוגות של סיבה ותוצאה."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "אילו זוגות צריכים להפוך למשחק התאמה?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "למידה פעילה"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "הפוך סיכומים למשחקי התאמה עבור אוצר מילים, מושגים, אנשים/אירועים, נוסחאות, דוגמאות או זוגות של סיבה ותוצאה."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי למידה פעילה ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למחולל משחקי התאמה עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "התאמת מונחים, הגדרות, סיבות ודוגמאות"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "התאמת מונחים והגדרות"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "יצירת זוגות של סיבה ותוצאה"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "יצירת תרגול התאמת נוסחאות"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP ועליית רמות"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "הפיכת התקדמות לרמות ומשימות"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "עצבו מערכת של נקודות, רמות, משימות ותגמולים סביב התקדמות למידה אמיתית."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "איזו מטרה לימודית צריכה להפוך למערכת של רמות?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "גיימיפיקציה"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "עצבו מערכת של נקודות, רמות, משימות ותגמולים סביב התקדמות למידה אמיתית."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי גיימיפיקציה ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לנקודות ניסיון (XP) ורמות, עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "הפכו התקדמות לרמות ומשימות"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאימו את הסשן למטרה שלכם"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "צרו נקודות ניסיון (XP) להכנה למבחן"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "עצבו רמות לתרגול תכנות"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "הפכו קריאה למשימות"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "תגים והישגים"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "תגמלו אבני דרך משמעותיות"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "צרו תגים עבור עקביות, שליטה, אומץ, חזרה על חומר, שיתוף פעולה ותוצרים סופיים."
+    }
+  ]
+}

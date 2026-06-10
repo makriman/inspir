@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "language": "Tamil",
+  "locale": "ta",
+  "namespace": "blog:feynman-tutor-prompts-and-study-loop",
+  "sourceHash": "6b7520e7377252680efcd790b849d380475d7f64160b55f2350cd1c3c5c57c2a",
+  "entries": [
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"அதிகமாக விளக்குவதற்கு முன் என்னிடம் கேள்விகள் கேளுங்கள்.\""
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"உங்கள் பதிலைத் தருவதற்கு முன் என் பதிலைச் சரிபார்க்கவும்.\""
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"எனக்கு கொடுங்கள் a கடினமான பதிப்பு பிறகு I try.\""
+    },
+    {
+      "key": "site.1d42dc0bfb9b08e820",
+      "source": "\"Help me simplify recursion\"",
+      "value": "\"எனக்கு உதவுங்கள் simplify recursion\""
+    },
+    {
+      "key": "site.67ad0ccec8a0f07868",
+      "source": "\"I'll explain gravity\"",
+      "value": "\"I'll விளக்குங்கள் gravity\""
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"Keep it தொடக்கநிலைக்கு ஏற்ற.\""
+    },
+    {
+      "key": "site.4ad90215ccef01e1b6",
+      "source": "\"Test my understanding of inflation\"",
+      "value": "\"தமிழில்: Test my understanding of inflation\""
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "\"Use எடுத்துக்காட்டுகள் from my தேர்வு, திட்டம், அல்லது தினசரி வாழ்க்கை.\""
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "AI தூண்டல்கள்"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "மிகச் சிறிய முதல் பணியைக் கேளுங்கள்."
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "நீங்களே எழுதும் recap-உடன் முடிக்கவும்."
+    },
+    {
+      "key": "site.f8b5d22910d6837d65",
+      "source": "Feynman Tutor prompts and study loop",
+      "value": "Feynman வழிகாட்டி தூண்டல்கள் மற்றும் படிப்பு சுற்று"
+    },
+    {
+      "key": "site.c77b422a4c9fb1ca67",
+      "source": "For Feynman Tutor, a useful practice loop is:",
+      "value": "Feynman வழிகாட்டிக்கு, பயனுள்ள பயிற்சி சுற்று:"
+    },
+    {
+      "key": "site.18dcb876cb96e9cee5",
+      "source": "For this mode, the job is simple: Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "இந்த முறை-இல் பணி எளியது: ஒரு கருத்தை எளிமையாக விளக்க முயலுங்கள். உங்கள் வழிகாட்டி இடைவெளிகளை கண்டுபிடித்து, கேள்விகள் கேட்டு, விளக்கத்தை மீண்டும் கட்ட உதவுகிறது."
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "தமிழில்: Good தூண்டல்கள் usually include three things: the பாடம், your current level, and the kind of உதவி you want. You do not need perfect wording. You only need enough சூழல் for the session to begin."
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "எனில் the response feels too broad, narrow it. Ask for one எடுத்துக்காட்டு, one தவறான புரிதல், one சரிபார்க்க கேள்வி, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know."
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "உருவாக்குங்கள்: the output more பயனுள்ள"
+    },
+    {
+      "key": "site.c39efca26acbacc063",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Feynman Tutor on inspir.",
+      "value": "inspir-இல் Feynman வழிகாட்டி மூலம் பயனுள்ள கற்றல் முடிவுகளைப் பெற தூண்டல் யோசனைகளும் மீண்டும் பயன்படுத்தக்கூடிய படிப்பு சுழற்சி-மும்."
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "Reading an AI response is not the same as கற்றல். After the first பதில், ask the முறை to make you do something with the கருத்து."
+    },
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "தொடர்புடைய கற்றல் பாதைகள்"
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "கோருங்கள்: பின்னூட்டம் on the part that felt uncertain."
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "பதிலளிக்கவும்: before asking for the solution."
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "ஒரு தெளிவான கோரிக்கையுடன் தொடங்குங்கள்"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "இலக்கை ஒரு வாக்கியத்தில் சொல்லுங்கள்."
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "படிப்பு திறன்கள்"
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "இந்த உள்ளடக்கம் கற்பவரை செயலில் வைத்துக் கொண்டு, தெளிவான வழிகாட்டல், சிந்தனை, பயிற்சி, மற்றும் மீளாய்வு மூலம் கற்றலை முன்னேற்றுகிறது."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "சிறந்த கற்றல் அமர்வுகள் மாற்றிக்கொள்ளக்கூடியவை. இந்த முறை feynman வழிகாட்டி க்காக, தனிப்பட்ட தூண்டல்கள், எடுத்துக்காட்டுகள், மற்றும் கற்றல் ஓட்டத்துடன் அமைக்கப்பட்டுள்ளது."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Feynman வழிகாட்டி இலிருந்து விரைவாக பயன் பெற, AI-க்கு வெறும் தலைப்பை அல்ல, ஒரு கற்றல் பணியை கொடுங்கள். தலைப்பு உங்கள் ஆர்வத்தைச் சொல்கிறது. கற்றல் பணி உங்களுக்கு எந்த வகை உதவி தேவை என்பதைச் சொல்கிறது."
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "பிறகு அமர்வை மேலும் தனிப்பட்டதாக மாற்றும் ஒரு கட்டுப்பாட்டைச் சேர்க்கவும்:"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "போதனை"
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "இந்த தொடக்கங்களில் ஒன்றை முயற்சிக்கவும்:"
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "முறையைப் பயிற்சியாக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.1f51099bf0f757ebc2",
+      "source": "Use Feynman Tutor when this is the right mode for the job. If you want a related path, try Misconception Doctor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "இந்த பணிக்கு Feynman வழிகாட்டி சரியான முறை என்றால் அதை பயன்படுத்துங்கள். தொடர்புடைய பாதை வேண்டுமெனில் Misconception Doctor முயற்சிக்கவும். படிப்பு முறைகள், Socratic கற்றல், நினைவுக் கார்டுகள், பாத்திரமேற்று நடிப்பு, செயலில் நினைவுகூர்தல் ஆகியவற்றுக்கான AI கற்றல் வலைப்பதிவு-ஐயும் உலாவலாம்."
+    }
+  ]
+}

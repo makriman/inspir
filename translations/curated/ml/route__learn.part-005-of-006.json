@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Malayalam",
+  "locale": "ml",
+  "namespace": "route:learn",
+  "sourceHash": "6b67cb58949582f0d63c0de58034de706fb1def479bd47caff347771e08a7cc3",
+  "part": {
+    "index": 5,
+    "total": 6
+  },
+  "entries": [
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "കാലയാത്ര"
+    },
+    {
+      "key": "site.b5de165cd236398a33",
+      "source": "timed test",
+      "value": "സമയപരിധിയുള്ള പരീക്ഷ"
+    },
+    {
+      "key": "site.c1f2f784477421cc0f",
+      "source": "Tiny explanation, example, user action, specific feedback, targeted repair or progress, recap, and mastery checkpoint.",
+      "value": "ചെറിയ വിശദീകരണം, ഉദാഹരണം, ഉപയോക്താവ് നടപടി, വ്യക്തമായ പ്രതികരണം, ലക്ഷ്യമിട്ട ശരിയാക്കൽ അല്ലെങ്കിൽ പുരോഗതി, recap, mastery checkpoint."
+    },
+    {
+      "key": "site.a31ae9a6964e2f0a17",
+      "source": "Trace chains, compare importance, discuss consequences, and ask counterfactual questions.",
+      "value": "പിന്തുടരുക: chains, താരതമ്യം ചെയ്യുക importance, discuss ഫലങ്ങൾ, മറ്റും ചോദിക്കുക counterfactual ചോദ്യങ്ങൾ."
+    },
+    {
+      "key": "site.895a7dace1b9ada67b",
+      "source": "Trace why events happened",
+      "value": "เหตุผลที่เหตุการณ์เกิดขึ้น"
+    },
+    {
+      "key": "site.7ac967e6972ee5e7f5",
+      "source": "Track attempts, shrink goals when needed, and repair broken streaks.",
+      "value": "ട്രാക്ക് ചെയ്യുക: attempts, shrink ലക്ഷ്യങ്ങൾ എപ്പോൾ needed, മറ്റും ശരിയാക്കൽ broken streaks."
+    },
+    {
+      "key": "site.c675fc274ad17a1cb4",
+      "source": "Track deadlines and next actions",
+      "value": "അവസാനത്തീയതകളും അടുത്ത നടപടി തുടങ്ങി നിയന്ത്രിക്കുക"
+    },
+    {
+      "key": "site.af26deb023c5d0063d",
+      "source": "Track essay drafting focus",
+      "value": "എസ്സേ തയ്യാറാക്കൽ ശ്രദ്ധ പിന്തുടരുക"
+    },
+    {
+      "key": "site.d0d8eff92e1afc3d45",
+      "source": "Track essay outline work",
+      "value": "എസേ ആശയരേഖാ പ്രവൃത്തി ട്രാക്ക് ചെയ്യുക"
+    },
+    {
+      "key": "site.fd1f501b443adac02b",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "അദ്ധ്യാപന തുടർച്ചകൾ പിന്തുടരുക, നഷ്ടപ്പെട്ട ദിവസങ്ങൾ പൂരിപ്പിക്കുക, യാഥാർത്ഥ്യ ജീവിതത്തിൽ നിലനിൽക്കുന്ന കുറഞ്ഞപക്ഷം സാധനീയമായ പഠനപ്രവൃത്തികൾ രൂപകൽപ്പന ചെയ്യുക."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "ഒരു കാലഘട്ടത്തിലൂടെ സഞ്ചരിക്കുക"
+    },
+    {
+      "key": "site.fc86028b09428f3fbc",
+      "source": "Treat each turn as collaborative work: draft, critique, revise, ask for a decision, update open questions, and hand the next useful move to either the user or AI. Challenge weak ideas when the selected mode calls for it.",
+      "value": "ഓരോ മാറ്റുക-വും സഹകരണ പ്രവർത്തനമായി കാണുക: കരട് ചെയ്യുക, വിമർശനം ചെയ്യുക, തിരുത്തുക ചെയ്യുക, തീരുമാനം ചോദിക്കുക, തുറന്ന ചോദ്യങ്ങൾ പുതുക്കുക ചെയ്യുക, അടുത്ത പ്രയോജനകരമായ നീക്കം ഉപയോക്താവ്-നോ AI-നോ കൈമാറുക. തെരഞ്ഞെടുത്ത മോഡ് ആവശ്യപ്പെടുമ്പോൾ ദുർബലമായ ആശയങ്ങളെ challenge ചെയ്യുക."
+    },
+    {
+      "key": "site.93f978228f89334d15",
+      "source": "true false",
+      "value": "ശരി തെറ്റ്"
+    },
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ഒരു ആശയം സരളമായി വിശദീകരിക്കാൻ ശ്രമിക്കുക. നിങ്ങളുടെ ട്യൂട്ടർ വീഴ്ചകൾ കണ്ടെത്തുകയും, ചോദ്യങ്ങൾ ചോദിക്കുകയും, വിശദീകരണം പുനർനിർമിക്കുന്നതിൽ സഹായിക്കുകയും ചെയ്യും."
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "ഹോംവർക്ക് കോച്ച് പരീക്ഷിക്കുക"
+    },
+    {
+      "key": "site.cf66660c72e079e266",
+      "source": "Try this prompt in {value1}: {value2}",
+      "value": "{value1}-ൽ ഈ പ്രോംപ്റ്റ് പരീക്ഷിക്കുക: {value2}"
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "വ്യാപകമായ വിഷയത്തെ ഗവേഷണ ചോദ്യങ്ങളായി, തിരയൽ വാക്കുകളായി, രൂപരേഖകളായി, ഉറവിട കുറിപ്പുകളായി മാറ്റുക."
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "ഒരു ആശയം, വാദം, പ്രശ്നം, വാചകം, അല്ലെങ്കിൽ തീരുമാനത്തെ ശ്രദ്ധ കേന്ദ്രീകരിച്ച ചോദ്യം ദൈർഘ്യത്തിലാക്കി മാറ്റുക. നിങ്ങളുടെ കൂട്ടുകാരൻ ഓരോ ಉತ್ತರവും കേൾക്കുകയും, അനുമാനങ്ങളും പാളികളുമൊപ്പം മനസ്സിലാക്കി, നിങ്ങളെ നിങ്ങളുടെ സ്വന്തം അന്തിമ സമാഹാരത്തിലേക്ക് വഴിവൽക്കരിക്കുന്നു. ശ്രമിക്കുക: \"എനിക്ക് അവസരച്ചെലവിനെക്കുറിച്ച് സഹായിക്കുക.\""
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "അഭ്യസംസ്‌കൃതിയെ പഠന പദ്ധതിയാക്കി മാറ്റുക"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "വിഭാഗങ്ങൾ, സമയക്രമം, മാർക്കിങ് മാർഗ്ഗനിർദേശം, അവലോകന ഘട്ടങ്ങളോടുകൂടിയുള്ള യാഥാർത്ഥ്യപരമായ പരിശീലന പരീക്ഷയായി ഒരു വിഷയം, സിലബസ്, അല്ലെങ്കിൽ കുറിപ്പുകൾ മാറ്റുക."
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "പ്രവർത്തനത്തെ അടുത്ത ഘട്ടങ്ങളായി മാറ്റുക"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "സങ്കൽപ്പങ്ങളെ കഥകളാക്കി, കഥാപാത്രങ്ങളാക്കി, സംഘർഷങ്ങളാക്കി, ഓർമപ്പക-userexperience ഉണ്ടാക്കുന്ന രംഗങ്ങളാക്കി മാറ്റൂ."
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "ഡയഗ്രാമുകൾ, ശരീരപ്രണാളികൾ, നകശകൾ, പ്രവൃത്തിനിരകൾ, ലാബ് ഒരുക്കങ്ങൾ എന്നിവയെ നിർദ്ദേശങ്ങളും ഉത്തരം പരിശോധിക്കലും ഉള്ള ലേബൽ അഭ്യാസമായി മാറിക്കുക."
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "യോചനകൾ വിജയലക്ഷ്യങ്ങളാക്കുക"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "ഉദ്ദേശങ്ങൾ ട്രിഗറുകൾ, പുരസ്കാരങ്ങൾ, വീണ്ടെടുക്കൽ പദ്ധതികളുമായി ചേർന്ന് ചെറിയ ആവർത്തനീയമായ പഠന പതികളാക്കൂ."
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "ഫ്ലാഷ്കാർഡുകളാക്കി മാറ്റുക"
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "പഠനത്തെ ചെറുതും ഘടനാപരവുമായ വെല്ലുവിളികളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "പഠന മെറ്റീരിയൽ ഒരു പുനരാവലോകന ഗൈഡാക്കി മാറ്റുക"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "തെറ്റുകൾ അവലോകനം ചക്രങ്ങൾ ആക്കുക"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "എന്റെ заметുകൾ ഒരു പുനപരിശോധന ഷീറ്റാക്കി മാറ്റൂ"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "ശബ്ദസമ്പത്ത്, ആശയങ്ങൾ, വ്യക്തികൾ/സംഭവങ്ങൾ, സൂത്രവാക്യങ്ങൾ, ഉദാഹരണങ്ങൾ, അല്ലെങ്കിൽ കാരണഫലജോഡികൾ എന്നിവയ്ക്ക് വേണ്ടി കുറിപ്പുകൾ നൽകുന്നതിന് മേച്ചിംഗ് ഗെയിംസ് രൂപപ്പെടുത്തി."
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "കുറിപ്പുകളും വിഷയങ്ങളും മറുപടികളും, പിഴവുകളും അവലോകന സന്ദേശങ്ങളും ഉൾക്കൊള്ളുന്ന വ്യക്തമായ ഫ്ലാഷ്കാർഡുകളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "പ്രോഗ്രസ്സ് ലെവലുകളിലും ചവിട്ടലുകളിലുമായി മാറ്റുക"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "വായനയെ ദൗത്യമാക്കിയൂ"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "ചിതറിപ്പോകുന്ന കുറിപ്പുകൾ ഫോളഡറുകളായി, ടാഗുകളായി, സംക്ഷിപ്തരൂപങ്ങളായി, ലിങ്കുകളായി, അവലോകന നടപടികളായി മാറ്റി ഓർമിപ്പിക്കൽ എളുപ്പമാക്കൂ."
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "അഭ്യാസ പ്രവർത്തനങ്ങൾ, ക്വിസ് ഫലങ്ങൾ, കുറിപ്പുകൾ, ടൈമറുകൾ എല്ലാം ട്രെൻഡുകളും അടുത്ത നടപടികളും ഉൾപ്പെടുത്തിയ ഡാഷ്ബോർഡ് സ്റ്റൈൽ അവലോകനമായി മാറുക."
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "പഠനം വെല്ലുവിളിയായി മാറ്റൂ"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "ടെക്സ്റ്റിനെ ചുരുങ്ങിയതും ഓർക്കാൻ എളുപ്പവുമായ പഠനസാമഗ്രിയാക്കുക."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "ശരിയാക്കിയ പിഴവ് പിന്നീട് കാണാനായി ഫ്ലാഷ്കാർഡ് അല്ലെങ്കിൽ ചെറിയ checklist ആക്കി മാറ്റുക."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "വിശദീകരണം സജീവം ഓർത്തെടുക്കൽ കാർഡുകൾ ആക്കി മാറ്റുക: ഒരു conceptual കാർഡ്, ഒരു ഉദാഹരണം കാർഡ്, ഒരു തെറ്റിദ്ധാരണ കാർഡ്."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "ഏറ്റവും കഠിനമായ തെറ്റിച്ച ചോദ്യം ഫ്ലാഷ്കാർഡ് ആക്കി പിന്നീട് അവലോകനം ചെയ്യുക."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "ഈ തെറ്റിച്ച ചോദ്യങ്ങളെ ആശയം, formula, definition, ഉദാഹരണം എന്നിവ പ്രകാരം കൂട്ടിച്ചേർത്ത് ഫ്ലാഷ്കാർഡുകൾ ആക്കുക."
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "ഈ ലക്ചർ കോർണൽ കുറിപ്പുകളാക്കി മാറ്റൂ"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "ഈ കുറിപ്പിന് അധികാരംചോദ്യം ആയി മാറ്റുക"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "അവ്യക്തമായ ഉദ്ദേശങ്ങളെ കൈവരിക്കാവുന്ന ദിനപഠന ലക്ഷ്യങ്ങളാക്കുക."
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "വാക്ക് അറിവിനെ ലെവലുകളാക്കി മാറിക്കുക"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "ഘട്ടംഘട്ടമായ യുക്തിയും പഠിതാവിന്റെ പങ്കാളിത്തവും ഉപയോഗിച്ച് ഗണിതം പഠിപ്പിക്കുക."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "പഠന സഹായം"
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "കഠിന വിഷയം മനസ്സിലാക്കുക"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "ഒരു ചരിത്ര പശ്ചാത്തലം മനസ്സിലാക്കുക, ഒരു perspective ചോദ്യം ചെയ്യുക, അവകാശവാദങ്ങൾ താരതമ്യം ചെയ്യുക, സിമുലേഷൻ-നെ documented fact-ൽ നിന്ന് വേർതിരിക്കുക."
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "കോഡ് മനസിലാക്കുക, പിശകുകൾ കണ്ടെത്തുക, ആശയങ്ങൾ പഠിക്കുക, ഘട്ടം ഘട്ടമായി ചെറിയ പ്രോജెక్టുകൾ നിർമ്മിക്കുക."
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "സ്ഥലങ്ങള്‍, ഭൂപടങ്ങള്‍, ജനങ്ങള്‍ എന്നിവയെക്കുറിച്ച് മനസ്സിലാക്കുക"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "അുരവാകര്‍ക്കുക അവകാശങ്ങള്‍, സര്‍ക്കാര്‍, സമൂഹം"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "ശബ്ദം, താളം, ഹാർമണി എന്നിവ മനസിലാക്കുക"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "ഉത്തരം വിജയിപ്പിക്കുന്നത് എങ്ങനെ എന്നതു് മനസിലാക്കുക"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ചരിത്രസംഭവങ്ങളെ കാരണം, പ്രവർത്തിപ്പിക്കുന്ന ഘടകങ്ങൾ, ഫലം, രേഖാപരമായ മറ്റ് സാധ്യതകൾ എന്നിവയുടെ മുഖേന വിശകലനം ചെയ്യുക."
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "ഉപയോഗിക്കുക: 50/10 breaks"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "ഉപയോഗിക്കുക: compact table ക്കായി given ഉത്തരം, ശരിയാക്കുക ആശയം, തെറ്റിദ്ധാരണ, മറ്റും അടുത്തത് നീങ്ങുക."
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "ഉപയോഗിക്കുക: credibility scorecard മറ്റും ചോദ്യങ്ങൾ investigate അടുത്തത്."
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "ഉപയോഗിക്കുക: deep പ്രവർത്തനം contract ഉപയോഗിച്ച് outcome, ബ്ലോക്ക് പദ്ധതി, നിയമങ്ങൾ, മറ്റും അവലോകനം."
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "ഉപയോഗിക്കുക: table ഉപയോഗിച്ച് front, തിരിച്ച്, സൂചന, മറ്റും സാധാരണ കുരുക്ക്."
+    },
+    {
+      "key": "site.b09316e95362266ac0",
+      "source": "Use AI as a study workflow, not a shortcut.",
+      "value": "ഉപയോഗിക്കുക: AI പഠന പ്രവർത്തനരീതി, അല്ല shortcut."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "ഉപയോഗിക്കുക: AI ഹോംവർക്ക് coaching ക്കായി സൂചനകൾ, ഘട്ടം പരിശോധനകൾ, ഗണിതം യുക്തിചിന്ത, മറ്റും എഴുത്ത് പ്രതികരണം അതേസമയം നിലനിർത്തി അവസാന പ്രവർത്തനം yours."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "ഉപയോഗിക്കുക: AI സമയം യാത്ര, ചരിത്രപരമായ സംഭാഷണങ്ങൾ, മറ്റും വാദപ്രതിവാദം പരിശീലനം അന്വേഷിക്കുക സന്ദർഭം, തെളിവ്, വാദങ്ങൾ, മറ്റും perspectives."
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "ഉപയോഗിക്കുക: badge പേരിടുന്നു, criteria, tiers, മറ്റും proof ഉദാഹരണങ്ങൾ."
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "ഉപയോഗിക്കുക: before/after snippets, തിരുത്തൽ മുൻഗണനകൾ, മറ്റും സംക്ഷിപ്തമായ rationale."
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "ഉപയോഗിക്കുക: calendars, checklists, മറ്റും അപകടസാധ്യത flags."
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "ഉപയോഗിക്കുക: കേസ് file, choices, outcome, മറ്റും പഠനം note."
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "ഉപയോഗിക്കുക: challenge കാർഡുകൾ, points, rounds, മറ്റും debrief."
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "ഉപയോഗിക്കുക: citation entries plus missing-fields checklist."
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "ഉപയോഗിക്കുക: commitment കാർഡുകൾ, പരിശോധന- scripts, മറ്റും recovery പദ്ധതികൾ."
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "ഉപയോഗിക്കുക: compact staged വിഭാഗങ്ങൾ: setting, സമയം slice, persona kernel, ഡോസിയർ wall, historian sidecar, recommended opening ചോദ്യങ്ങൾ, തുടർന്ന് -character exchanges ഉപയോഗിച്ച് occasional അവകാശവാദം ലേബലുകൾ മറ്റും debrief on request."
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "ഉപയോഗിക്കുക: compact UI-like വിഭാഗങ്ങൾ: പാസ്‌പോർട്ട്, യാത്ര ഉപദേശം, Arrival രംഗം, Location, Identity, Social നിയമങ്ങൾ, Event Clock, Nearby ആളുകൾ, Objects, Choices, തെളിവ്, മറ്റും Field കുറിപ്പുകൾ. End major മാറുന്നു ഉപയോഗിച്ച് meaningful choices."
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "ഉപയോഗിക്കുക: compact പ്രവർത്തനമുറി വിഭാഗങ്ങൾ such പങ്കിട്ട സൃഷ്ടി, AI സംഭാവന, ഉപയോക്താവ് നീങ്ങുക, ഇൻലൈൻ കമന്റുകൾ, തീരുമാനം ലോഗ്, തുറക്കുക ചോദ്യങ്ങൾ, മറ്റും അടുത്തത് നടപടി. Show suggested edits അല്ലെങ്കിൽ diffs മുമ്പ് merging എപ്പോൾ rewriting."
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "ഉപയോഗിക്കുക: താരതമ്യം tables മറ്റും അടുത്തത്-ഘട്ടം experiments."
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "ഉപയോഗിക്കുക: സംക്ഷിപ്തമായ അവകാശവാദങ്ങൾ, തെളിവ് പ്രോംപ്റ്റുകൾ, മറ്റും അവസാന വാദപ്രതിവാദം recap എപ്പോൾ asked."
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "ഉപയോഗിക്കുക: സംക്ഷിപ്തമായ കോഡ് snippets, കമന്റുകൾ മാത്രം എപ്പോൾ ഉപകാരപ്രദമായ, മറ്റും പരിശോധിക്കുക cases."
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "ഉപയോഗിക്കുക: സംക്ഷിപ്തമായ drawing instructions, ലേബൽ lists, മറ്റും ദൃശ്യം checkpoints."
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "ഉപയോഗിക്കുക: Cornell വിഭാഗങ്ങൾ: cues, കുറിപ്പുകൾ, summary, മറ്റും ഓർത്തെടുക്കൽ പരിശോധനകൾ."
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "ഉപയോഗിക്കുക: course കാർഡുകൾ, സ്രോതസ് lists, മറ്റും weekly workload tables."
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "ഉപയോഗിക്കുക: ഡാഷ്ബോർഡ് കാർഡുകൾ, trend കുറിപ്പുകൾ, ദുർബല spots, മറ്റും അടുത്തത് actions."
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "ഉപയോഗിക്കുക: അവസാന തീയതി tables, അപകടസാധ്യത flags, മറ്റും അടുത്തത് actions."
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "ഉപയോഗിക്കുക: വാദപ്രതിവാദം കാർഡുകൾ, സംക്ഷിപ്തമായ rebuttals, മറ്റും occasional scorekeeping വാദം quality."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "ഉപയോഗിക്കുക: വാദപ്രതിവാദം താരതമ്യം ചെയ്യുക ഏറ്റവും ശക്തമായ അവകാശവാദം മറ്റും ഏറ്റവും ശക്തമായ counterclaim."
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "ഉപയോഗിക്കുക: diagnosis, മെച്ചപ്പെട്ട മാതൃക, why ഇത് works, മറ്റും ഒന്ന് പരിശോധന ചോദ്യം."
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "ഉപയോഗിക്കുക: ഡയഗ്രാമുകൾ വാചകം, വേഷം വിശദീകരണങ്ങൾ, മറ്റും യഥാർത്ഥ-world scenarios."
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "ഉപയോഗിക്കുക: equations, ഒത്തിണങ്ങിയ ഘട്ടങ്ങൾ, മറ്റും ചുരുങ്ങിയ why-ഈ-works കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "ഉപയോഗിക്കുക: examiner ചോദ്യങ്ങൾ, മാതൃക ഉത്തരം shapes, മറ്റും പ്രതികരണം scorecards."
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "ഉപയോഗിക്കുക: ഉദാഹരണങ്ങൾ, താരതമ്യം ചെയ്യുക സിസ്റ്റങ്ങൾ, ചോദിക്കുക application ചോദ്യങ്ങൾ, മറ്റും വേർതിരിച്ച facts നിന്ന് opinions."
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "ഉപയോഗിക്കുക: folders, tags, note സംഗ്രഹങ്ങൾ, ലിങ്കുകൾ, മറ്റും അവലോകനം actions."
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "ഉപയോഗിക്കുക: formulas, tables, മറ്റും ലക്ഷ്യം score പദ്ധതികൾ."
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "ഉപയോഗിക്കുക: forum-ready posts, മറുപടി കരടുകൾ, മറ്റും discussion സംഗ്രഹങ്ങൾ."
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "ഉപയോഗിക്കുക: ലക്ഷ്യം കാർഡുകൾ, priority, സമയം estimate, blocker, മറ്റും done criteria."
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "ഉപയോഗിക്കുക: group agenda, roles, rounds, resources, മറ്റും പിന്തുടരുക-up ചുമതലകൾ."
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "ഉപയോഗിക്കുക: group roles, timer rounds, പരിശോധന-ins, മറ്റും debrief പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "ഉപയോഗിക്കുക: ശീലം recipe, തടസം പദ്ധതി, മറ്റും 7-day experiment."
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "ഉപയോഗിക്കുക: സൂചനകൾ, checkpoints, മറ്റും ചെറിയ ഉദാഹരണങ്ങൾ rather കാൾ പൂർണ്ണ അവസാന ഉത്തരങ്ങൾ."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "ഉപയോഗിക്കുക: സൂചനകൾ, ഘട്ടം പരിശോധനകൾ, മറ്റും എഴുത്ത് പ്രതികരണം ഇല്ലാതെ മാറ്റുന്നത് പഠനം ആക്കി ഉത്തരം പകർത്തൽ."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "ഉപയോഗിക്കുക: hypothesis, ഉള്ളടക്കങ്ങൾ, method, observation, മറ്റും വിശദീകരണം വിഭാഗങ്ങൾ എപ്പോൾ ഉപകാരപ്രദമായ."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "ഉപയോഗിക്കുക: ആശയം menus, selection criteria, മറ്റും അടുത്തത്-ഘട്ടം sketches."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "ഉപയോഗിക്കുക: -character dialogue മറ്റും ചുരുങ്ങിയ coaching കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "ഉപയോഗിക്കുക: key takeaways, outline, definitions, മറ്റും അവലോകനം ചോദ്യങ്ങൾ."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "ഉപയോഗിക്കുക: leaderboard നിയമങ്ങൾ, scoring, safeguards, മറ്റും പ്രതിഫലനം."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "ഉപയോഗിക്കുക: നില tables, XP നിയമങ്ങൾ, quest കാർഡുകൾ, മറ്റും anti-grind safeguards."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "ഉപയോഗിക്കുക: narrative ആക്കുക ആശയങ്ങൾ memorable."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "ഉപയോഗിക്കുക: nested bullets, tables, അല്ലെങ്കിൽ Mermaid വാചകം എപ്പോൾ helpful."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "ഉപയോഗിക്കുക: numbered locations, images, മറ്റും ഓർത്തെടുക്കൽ checkpoints."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "ഉപയോഗിക്കുക: objectives, സംഗ്രഹങ്ങൾ, ഉദാഹരണങ്ങൾ, കുരുക്കുകൾ, ചോദ്യങ്ങൾ, മറ്റും അടുത്തത് അവലോകനം."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "ഉപയോഗിക്കുക: observation, interpretation, തെളിവ്, മറ്റും അടുത്തത്-ചോദ്യം വിഭാഗങ്ങൾ."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "ഉപയോഗിക്കുക: ജോഡിക്കൂ banks, scrambled lists, ഉത്തരം key, മറ്റും അവലോകനം കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "ഉപയോഗിക്കുക: സ്ഥലം കാർഡുകൾ, താരതമ്യം tables, മറ്റും മാപ്പ് പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "ഉപയോഗിക്കുക: പ്രായോഗിക ഓഡിയോ tips മറ്റും പഠനം-സെഷൻ setup കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "ഉപയോഗിക്കുക: quests, നിലകൾ, badges, മറ്റും boss ചോദ്യങ്ങൾ."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "ഉപയോഗിക്കുക: മഴ ക്കായി വായന"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "ഉപയോഗിക്കുക: മഴ ശബ്ദങ്ങൾ ക്കായി തിരുത്തൽ"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "ഉപയോഗിക്കുക: പ്രതിഫലനം പ്രോംപ്റ്റുകൾ, പഠിതാവ് ശക്തികൾ, മറ്റും ഒന്ന് അടുത്തത് experiment."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "ഉപയോഗിക്കുക: report വിഭാഗങ്ങൾ: wins, തെളിവ്, blockers, lessons, അടുത്തത് week."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "ഉപയോഗിക്കുക: ഗവേഷണം ചോദ്യങ്ങൾ, സ്രോതസ് matrices, മറ്റും synthesis കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "ഉപയോഗിക്കുക: സ്രോതസ് കാർഡുകൾ, പ്രേക്ഷകർ കുറിപ്പുകൾ, മറ്റും ഉപയോഗം tips."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "ഉപയോഗിക്കുക: അവലോകനം queues, due dates, മറ്റും ആത്മവിശ്വാസം ratings."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "ഉപയോഗിക്കുക: scorecards ക്കായി clarity, ഘടന, തെളിവ്, മറ്റും delivery കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "ഉപയോഗിക്കുക: ചുരുങ്ങിയ ശ്രദ്ധ പദ്ധതികൾ, checklists, മറ്റും post-സെഷൻ പ്രതിഫലനം പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "ഉപയോഗിക്കുക: ചുരുങ്ങിയ വിഭാഗങ്ങൾ, ഉദാഹരണങ്ങൾ, analogies, മറ്റും GFM-friendly lists അല്ലെങ്കിൽ tables എപ്പോൾ അവർ സഹായം."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "ഉപയോഗിക്കുക: ചുരുങ്ങിയ സംഗ്രഹങ്ങൾ, quote-light references, മറ്റും ചോദ്യം sets."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "ഉപയോഗിക്കുക: ചുരുങ്ങിയ supportive കുറിപ്പുകൾ മറ്റും പ്രായോഗിക അടുത്തത് actions."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "ഉപയോഗിക്കുക: ലളിതമായ പരിസര ശബ്ദം ക്രമീകരണങ്ങൾ കുറയ്ക്കുക ശ്രദ്ധചിതറൽ during വായന, എഴുത്ത്, തിരുത്തൽ, അല്ലെങ്കിൽ പ്രശ്നം പരിഹരിക്കൽ."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "ഉപയോഗിക്കുക: ലളിതമായ notation, ഉദാഹരണങ്ങൾ, മറ്റും പരിശീലനം പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "ഉപയോഗിക്കുക: ലളിതമായ tables, കാരണം-effect chains, മറ്റും caveat കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "ഉപയോഗിക്കുക: ലളിതമായ-ഭാഷ rewrites മറ്റും വിടവ് checklists."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "ഉപയോഗിക്കുക: സ്കെച്ച് ചെയ്യൽ പഠനം നീങ്ങുക: പദ്ധതി ഡയഗ്രാമുകൾ, ലേബൽ കരട് മാപ്പുകൾ, വിശദീകരിക്കുക പ്രക്രിയകൾ, അല്ലെങ്കിൽ മാറ്റുക കുഴഞ്ഞ ആശയം ആക്കി കൂടുതൽ വ്യക്തമായ ദൃശ്യം."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "ഉപയോഗിക്കുക: സോക്രാറ്റിക് ചോദ്യങ്ങൾ"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "ഉപയോഗിക്കുക: ശബ്ദം recommendations മറ്റും ശ്രദ്ധ setup കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "ഉപയോഗിക്കുക: stakeholder tables മറ്റും balanced pro/con analysis."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "ഉപയോഗിക്കുക: STAR അല്ലെങ്കിൽ situation-നടപടി-ഫലം frameworks എപ്പോൾ appropriate."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "ഉപയോഗിക്കുക: കഥ beats plus പഠനം കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "ഉപയോഗിക്കുക: streak നില, tiny നടപടി, recovery rule, മറ്റും weekly പ്രതിഫലനം."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "ഉപയോഗിക്കുക: tables ഉപയോഗിച്ച് വാക്ക്, meaning, ഉദാഹരണം, ഓർമ്മ hook, മറ്റും പരിശീലനം പ്രോംപ്റ്റ്."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "ഉപയോഗിക്കുക: tables, ലളിതഭാഷാ takeaways, മറ്റും caution കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "ഉപയോഗിക്കുക: ലക്ഷ്യം ഭാഷ ആദ്യം, തുടർന്ന് ചുരുക്കം പ്രതികരണം പഠിതാവ്'s preferred പിന്തുണ ഭാഷ."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "ഉപയോഗിക്കുക: ചുമതല boards, അവസാന തീയതികൾ, മറ്റും അടുത്തത്-നടപടി lists."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "ഉപയോഗിക്കുക: ചുമതല കാർഡുകൾ, elapsed സമയം, കുറിപ്പുകൾ, മറ്റും പിന്തുടരുക-up ബ്ലോക്ക് suggestions."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "ഉപയോഗിക്കുക: പരിശോധിക്കുക വിഭാഗങ്ങൾ, timing, ഉത്തരം keys, rubrics, മറ്റും അവലോകനം പദ്ധതികൾ."
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "ഉപയോഗിക്കുക: പരീക്ഷ തീയതി, പാഠ്യപദ്ധതി, ലഭ്യമായ സമയം, മറ്റും ദുർബല മേഖലകൾ സൃഷ്ടിക്കുക പദ്ധതി അത് കഴിയും survive യഥാർത്ഥ life."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "ഉപയോഗിക്കുക: Feynman technique വെളിപ്പെടുത്തുക വിടവുകൾ മറ്റും simplify ബോധ്യം."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "ഉപയോഗിക്കുക: ഈ compact രൂപം: ചുരുക്കം വായിക്കുക: ഒന്ന് sentence. മാപ്പ് പുതുക്കുക: സംക്ഷിപ്തമായ അവകാശവാദം, Assumption, വിടവ്, അല്ലെങ്കിൽ Correction bullets relevant. അടുത്തത് ചോദ്യം: കൃത്യമായി ഒന്ന് ചോദ്യം. ക്കായി ആദ്യം മറുപടി, ഉപയോഗിക്കുക ലക്ഷ്യം, Contract, മറ്റും ആദ്യം ചോദ്യം."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "ഉപയോഗിക്കുക: thought experiments, വാദം മാപ്പുകൾ, മറ്റും balanced സംഗ്രഹങ്ങൾ."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "ഉപയോഗിക്കുക: timelines, കാരണം layers, മറ്റും consequence മാപ്പുകൾ."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "ഉപയോഗിക്കുക: tree structures, node ലേബലുകൾ, ലിങ്കുകൾ, മറ്റും അടുത്തത്-ഘട്ടം പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "ഉപയോഗിക്കുക: unlabeled parts, സൂചന tiers, ഉത്തരം key, മറ്റും അവലോകനം പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "ഉപയോഗിക്കുക: ദൃശ്യം vocabulary മറ്റും guided looking പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "ഉപയോഗിക്കുക: weekly പദ്ധതികൾ, fallback പദ്ധതികൾ, മറ്റും tiny അടുത്തത് actions."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "ഉപയോഗിക്കുക: പ്രവർത്തനം/break cycles, break menus, മറ്റും return പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "ഉപയോഗിക്കുക: വർക്ക്‌ഷീറ്റ് വിഭാഗങ്ങൾ, ഉത്തരം keys, മറ്റും പ്രയാസനില ലേബലുകൾ."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "ഉപയോഗിക്കുക: എഴുത്ത് പ്രതികരണം ക്കായി ഘടന, clarity, മറ്റും തെളിവ് അതേസമയം നിലനിർത്തി അവസാന കരട് recognizably yours."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "വികാരം അംഗീകരിക്കുക, തടസ്സം തിരിച്ചറിയുക, ചെറിയൊരു അടുത്ത ഘട്ടം തിരഞ്ഞെടുക്കുക."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "ദൃശ്യ വിശകലനം"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "ദൃശ്യ പഠനം"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "ദൃശ്യ അധ്യയനം"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "വിവാ പരിശീലനം"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "വാക്ക് സമാഹാരıcıുണ്ടാക്കുന്ന സംവിധാനം"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "ശബ്ദം നിലനിർത്തുന്ന പ്രതികരണം"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "ദുർബല മേഖല ചക്രങ്ങൾ"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "വാര റിപ്പോർട്ട്"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "ആഴ്ചവാര റിപ്പോർട്ടുകൾ"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "വെയ്റ്റഡ് സ്കോർ"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "ഞങ്ങൾ ഏത് സാദ്ധ്യതാ സമ്പ്രദായം രൂപകൽപ്പന ചെയ്യണം?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "നാം എന്തിനായി കൃത്രിമചിന്തന നടത്തുകയാണ്?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "നാം എന്ത് വായിക്കുന്നു?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "ഇന്നത്തെ നിങ്ങളുടെ ജിജ്ഞാസ എന്താണു?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "നീങ്ങള്‍ പറയാനുള്ളത് എന്താണ് തയ്യാറാക്കുന്നത്?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "നിങ്ങൾ എന്താണ് ഗവേഷണം നടത്തുന്നത്?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "നിങ്ങൾ എന്ത് എഴുതുകയാണ്?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "ഏത് കലാപ്രദർശനം, കലാകാരൻ, അല്ലെങ്കിൽ ശൈലി?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "നിങ്ങളുടെ കയ്യിൽ ഏതു അസൈൻമെന്റുകൾ ഉണ്ട്?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "നാം ഏത് വലിയ ചോദ്യം അന്വേഷിക്കുകയാണ്?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "ഏത് കരിയർ അല്ലെങ്കിൽ താൽപ്പര്യം നമുക്ക് അന്വേഷിക്കണം?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "ഞങ്ങൾ പഠിക്കേണ്ട പൗരത്വ വിഷയമെന്ന് നിങ്ങൾക്ക് എന്താണ് വിചാരിക്കുന്നത്?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "നാം ഏത് കോഡിംഗ് വിഷയം അല്ലെങ്കിൽ ബഗ് പരിഹരിക്കുകയാണ്?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "എന്ത് പ്രതിജ്ഞയ്ക്ക് ഉത്തരവാദിത്വം വേണം?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "നാം ഏത് ആശയം നಕ್ಷയിടണം?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "നീങ്ങൾ ഏത് കോഴ്സുകളും വിഷയങ്ങളും നിയന്ത്രിക്കുന്നു?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "ഞങ്ങൾ ഏത് ചിത്രരൂപം ലേബലിംഗ് പ്രാക്ടീസ് ചെയ്യണം?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "ഞങ്ങൾ പരിശോധിക്കേണ്ട പ്രശ്നമെന്താണ്?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "ഈ ലോകത്ത് നിങ്ങൾ അടുത്തതായി എന്ത് ചെയ്യുമെന്നാണ്?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "നിങ്ങൾക്ക് ഓർക്കേണ്ടത് എന്താണ്?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "നിങ്ങൾ എന്ത് പഠിക്കണമെന്ന് ആഗ്രഹിക്കുന്നു?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "ഇന്ന് നിങ്ങൾ പൂർത്തിയാക്കാൻ ആഗ്രഹിക്കുന്നത് എന്താണ്?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "ഗോടതി എന്ത് ചെയ്യുന്നു?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "ഒരു ഉൽ‌പന്ന മാനേജര്‍ എന്ത് ചെയ്യുന്നു?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "ഈ സർവേ എന്താണ് കാണിക്കുന്നത്?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "നാം ഏതാണ് സാമ്പത്തിക ആശയം അനുകരിക്കേണ്ടത്?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "നீங்கள் ഏത് പരീക്ഷയ്ക്ക് തയ്യാറെടുക്കുകയാണ്?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "എനിക്ക് എന്ത് അന്തിമ സ്കോർ വേണം?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "ഇ ആഴ്ച എന്തു വന്നു?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "നികുതികൾ മാറ്റപ്പെട്ടാൽ എന്താകും സംഭവിക്കുന്നത്?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "താപനില മാറ്റിയാൽ എന്ത് സംഭവിക്കും?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "നീങ്ങു പഠനപ്രശ്നം ഏതാണ്?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "എന്താണ് ആശയം ആശങ്കയോ സംശയമോ ജനിപ്പിക്കുന്നത്?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "നിങ്ങൾ ഏത് അഭിമുഖത്തിന് തയ്യാറെടുക്കുകയാണ്?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "ജ്ഞാനം എന്താണ്?"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "നിങ്ങൾക്ക് ഏത് തരത്തിലുള്ള അന്തരീക്ഷ ശ്രദ്ധ വേണ്ടാ?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "ഞങ്ങൾ ഏത് തരത്തിലുള്ള കേസ് അനുകരിക്കണം?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "നാളെ നിങ്ങൾക്ക് ഏത് തരത്തിലുള്ള ശ്രദ്ധ വേണം?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "എന്ത് പഠന ലക്ഷ്യമാണ് ਲെവലിംഗ് സിസ്റ്റമായി മാറേണ്ടത്?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "നിങ്ങള്‍ അഭ്യസിക്കാൻ ആഗ്രഹിക്കുന്ന ശീലമെന്താണ്?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "നാം ഏത് പഠന क्षണം പ്രതിഫലിപ്പിക്കണം?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "എനിക്ക് ഏത് പഠന തന്ത്രം യോജിക്കുന്നു?"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "ഒന്നുകിലും വാദം നിയമപരമായി ശരിക്കെന്താണ്?‌"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "ഏതുവഴി എന്തെങ്കിലും ന്യായമായിരിക്കും?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "പഠന ഗൈഡായി എന്ത് സാധനം മാറ്റണം?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "എന്ത് ഗണിത പ്രശ്നം നമ്മൾ birlikte പരിഹരിക്കണം?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "നമുക്ക് ഏത് സംഗീത ആശയത്തിൽ പ്രവർത്തിക്കണം?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "ഈ ഡീപ്പ് വാർക് സെഷൻ എന്ത് ഫലമുണ്ടാക്കണം?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "എന്ത് ജോഡികളാണ് മാച്ചിംഗ് ഗെയിമായി മാറേണ്ടത്?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "നമുക്ക് ഏത് പുരോഗതി പരിശോധിക്കണം?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "ഞങ്ങൾ ഏത് പ്രോജക്ട് നിർമ്മിക്കുകയാണ്?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "നീങ്ങള്‍ ഏത് ചോദ്യമോ ചര്‍ച്ചയോ പോസ്റ്റ് ചെയ്യാനാണ് ആഗ്രഹിക്കുന്നത്?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "നിങ്ങൾ എങ്ങനെ വിഭവം പങ്കുവെക്കണമെന്ന് ആഗ്രഹിക്കുന്നു?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "ഞങ്ങൾ哪ന്ത് സാഹചര്യത്തിൽ വേഷം മാറ്റണമെന്ന് ആഗ്രഹിക്കുന്നു?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "നാം ഏത് ശാസ്ത്ര ആശയം അല്ലെങ്കിൽ പരീക്ഷണം അന്വേഷിക്കുകയാണ്?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "ഞാൻ ഏത് ചിന്താഗതിയെ വെല്ലുവിളിയാക്കണമെന്ന് നിങ്ങൾ കരുതുന്നു?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "ഒരു പഠന ഗെയിം എന്താകണം?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "ഒരു കഥയായി മാറേണ്ടത് എന്തിന് ആയിരിക്കണം?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "ഫ്ളാഷ്‌കാർഡുകൾ എന്താകണം?"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "ഒരു വിഷയം വളരെ കഠിനമായി തോന്നുമ്പോൾ ആദ്യം എന്ത് ചോദിക്കണം?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "ഹോംവർക്ക് പ്രോംപ്റ്റ്-ൽ എന്തെല്ലാം ഉൾപ്പെടുത്തണം?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "ലീഡർബോർഡിൽ എന്തിനെ അളക്കണം?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "പൂർത്തിയാക്കേണ്ട പ്രാക്ടീസ് ടെസ്റ്റ് എന്തെല്ലാം ഉൾക്കൊള്ളിക്കണം?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "സ്റ്റഡി ഗ്രൂപ്പ് എന്ത് ചെയ്യണം?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "വർക്‌ഷീറ്റിൽ എന്ത് ഉൾക്കൊള്ളിക്കണമെന്ന് ആഗ്രഹിക്കുന്നു?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "ഈ ശ്രദ്ധാസെഷൻ എന്തിനെക്കുറിച്ചാകും?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "ഞങ്ങൾ എന്ത് പരിശോധിക്കണം?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "ഞങ്ങൾ എന്ത് ഡ്രോ ചെയ്യണം അല്ലെങ്കിൽ രൂപരേഖയിടണം?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "നിങ്ങൾ ഏത് തുടർച്ചയും പലിശയും സൃഷ്ടിച്ചുകൊണ്ടിരിക്കുകയാണ്?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "നാം ഏത് പ്രവർത്തനത്തിന് സമയമിടണം?"
+    },
+    {
+      "key": "site.834f5e34978fe93e4e",
+      "source": "What to avoid",
+      "value": "ഒഴിവാക്കേണ്ടത്"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "ഞങ്ങൾ ഏത് വിഷയത്തിൽ നിങ്ങളെ പരീക്ഷിക്കും?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "ഏത് വിഷയമാണ് മൈൻഡ് മാപ്പായിയാകേണ്ടത്?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "നിങ്ങള്‍ തയ്യാറെടുക്കുന്നത് ഏത് വിവ锣 അല്ലെങ്കില്‍ വായിക്കാനുള്ള പരീക്ഷയോ ആണ്?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "നീ എനിക്ക് തിരിച്ചുപറയുന്നത് എന്താകും?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "ഞങ്ങൾ ഏത് പദങ്ങൾ അല്ലെങ്കിൽ വിഷയങ്ങൾ അഭ്യസിക്കണമെന്ന് നിങ്ങൾക്ക് ഇഷ്ടമാണോ?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "നിങ്ങള്‍ക്കു വേണ്ടത് ഏത് ജോലി/വിശ്രമ ലയമാണ്?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "നിങ്ങൾ ഇന്ന് എന്തു പഠിക്കാൻ ആഗ്രഹിക്കുന്നു?"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "ഇപ്പോഴത്തെ പഠനം എതിർപ്പുള്ളത് എന്താണ്?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "നിങ്ങളുടെ ഇന്ന് ചർച്ചാ വിഷയം എന്താണ്?"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "നമുക്ക് എവിടെയൊരെക്‌സ്‌പ്ലോർ ചെയ്യണം?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "നാം ഏത് ചരിത്ര സംഭവത്തെ രേഖപ്പെടുത്തണം?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "നിങ്ങൾ കൂടിക്കാഴ്ച്ച നടത്താൻ ആഗ്രഹിക്കുന്ന ചരിത്രപ്രസിദ്ധ വ്യക്തി ആരാണ്?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "എന്ത് ഭാഷയും സാഹചര്യമോ?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "വൈറ്റ് നോയ്‌സ്"
+    }
+  ]
+}

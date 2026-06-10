@@ -2,15 +2,71 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { isKnownTopicSlug, isUuidPathSegment } from "@/lib/content/topic-routing";
+import { normalizeLanguage } from "@/lib/content/languages";
+import { recommendLanguage } from "@/lib/i18n/language-detection";
+import {
+  getLocalizedPathInfo,
+  localeCookieName,
+  localizePath,
+  requestLanguageHeader,
+  requestLocaleHeader,
+  requestLocalePrefixHeader,
+  requestPathnameHeader,
+  requestRecommendedLanguageHeader,
+} from "@/lib/i18n/routing";
 
 export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const chatSegment = pathname.match(/^\/chat\/([^/]+)$/)?.[1];
+  const localizedPath = getLocalizedPathInfo(pathname);
+  const effectivePathname = localizedPath.pathnameWithoutLocale;
+  const cookieLanguage = normalizeLanguage(request.cookies.get(localeCookieName)?.value);
+  const referrerLanguage = getReferrerLocaleLanguage(request.headers.get("referer"));
+  const language = localizedPath.hasLocalePrefix ? localizedPath.language : referrerLanguage ?? cookieLanguage;
+  const recommendedLanguage = recommendLanguage({
+    countryCode: request.headers.get("x-vercel-ip-country"),
+    acceptLanguage: request.headers.get("accept-language"),
+  });
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set(requestLanguageHeader, language);
+  requestHeaders.set(requestLocaleHeader, language);
+  requestHeaders.set(requestLocalePrefixHeader, localizedPath.hasLocalePrefix ? "1" : "0");
+  requestHeaders.set(requestPathnameHeader, effectivePathname);
+  requestHeaders.set(requestRecommendedLanguageHeader, recommendedLanguage);
+
+  const chatSegment = effectivePathname.match(/^\/chat\/([^/]+)$/)?.[1];
   const isPublicTopicChat = chatSegment ? isKnownTopicSlug(chatSegment) : false;
   const isPrivateChatThread = chatSegment ? isUuidPathSegment(chatSegment) : false;
-  const needsAuth = pathname.startsWith("/admin") || (isPrivateChatThread && !isPublicTopicChat);
+  const needsAuth = effectivePathname.startsWith("/admin") || (isPrivateChatThread && !isPublicTopicChat);
+  const shouldRedirectToLocale =
+    !localizedPath.hasLocalePrefix && language !== "English" && shouldLocaleRedirectPath(effectivePathname);
 
-  if (!needsAuth) return NextResponse.next();
+  if (shouldRedirectToLocale) {
+    const url = request.nextUrl.clone();
+    url.pathname = localizePath(effectivePathname, language);
+    return NextResponse.redirect(url);
+  }
+
+  const buildResponse = () => {
+    if (!localizedPath.hasLocalePrefix) {
+      return NextResponse.next({ request: { headers: requestHeaders } });
+    }
+
+    const url = request.nextUrl.clone();
+    url.pathname = effectivePathname;
+    return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
+  };
+
+  if (!needsAuth) {
+    const response = buildResponse();
+    if (localizedPath.hasLocalePrefix) {
+      response.cookies.set(localeCookieName, localizedPath.language, {
+        path: "/",
+        maxAge: 60 * 60 * 24 * 365,
+        sameSite: "lax",
+      });
+    }
+    return response;
+  }
 
   const token = await getToken({
     req: request,
@@ -18,12 +74,29 @@ export async function proxy(request: NextRequest) {
   });
 
   if (!token) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL(localizePath("/", language), request.url));
   }
 
-  return NextResponse.next();
+  return buildResponse();
 }
 
 export const config = {
-  matcher: ["/", "/chat/:path*", "/admin/:path*"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|icon.png|manifest.webmanifest|.*\\..*).*)"],
 };
+
+function getReferrerLocaleLanguage(referrer: string | null) {
+  if (!referrer) return null;
+  try {
+    const url = new URL(referrer);
+    const info = getLocalizedPathInfo(url.pathname);
+    return info.hasLocalePrefix ? info.language : null;
+  } catch {
+    return null;
+  }
+}
+
+function shouldLocaleRedirectPath(pathname: string) {
+  if (pathname.startsWith("/admin")) return false;
+  if (pathname.startsWith("/onboarding")) return false;
+  return true;
+}

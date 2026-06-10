@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Bulgarian",
+  "locale": "bg",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 12,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "Изучавателни умения"
+    },
+    {
+      "key": "site.c0be267ae7b9421ba9",
+      "source": "Study skills guides",
+      "value": "Ръководства за обучение"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "Учебни серии"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "Таймер за учене"
+    },
+    {
+      "key": "site.3b1f7ac98100c2db8d",
+      "source": "study with AI",
+      "value": "проучване с ВИ"
+    },
+    {
+      "key": "site.3c328d5333fc21a14a",
+      "source": "Study with AI without cheating",
+      "value": "Учене с ВИ без да се мами"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Проучвателни работни потоци, които свързват гостни режими, бързи, практика и свързани с тях водачи."
+    },
+    {
+      "key": "site.f44d7e8cc3553fbecb",
+      "source": "Studying with AI works best when the tool keeps you in the driver's seat.",
+      "value": "Ученето с ВИ работи най-добре, когато инструментът ви държи на седалката на шофьора."
+    },
+    {
+      "key": "site.066ca7bdd036368736",
+      "source": "Subject hub",
+      "value": "Тематичен хъб"
+    },
+    {
+      "key": "site.2feff266cc115ac2a6",
+      "source": "Subject hubs",
+      "value": "Тематични хъбове"
+    },
+    {
+      "key": "site.44c887b5d77a86fb07",
+      "source": "subject hubs mapped to learner intent",
+      "value": "предметни центрове, картографирани към намерението на учещия"
+    },
+    {
+      "key": "site.d0921b314798adbd36",
+      "source": "Subject hubs organize public AI learning modes by learning intent, such as math, writing, coding, history, homework, and exam prep. Each hub links to live guest modes, prompt starters, guides, workflows, and review loops.",
+      "value": "Тематичните центрове организират обществени режими на обучение на ВИ чрез обучение на намерения, като математика, писане, кодиране, история, домашно и изпит подготовка. Всеки хъб връзки до живи режими на гости, бърз старт, водачи, работни потоци, и преглед петли."
+    },
+    {
+      "key": "site.edb0f4eb8d8e6cc0b9",
+      "source": "Subscriptions and Competitions",
+      "value": "Абонаменти и състезания"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "Успех: ученикът си тръгва с по-ясен умствен модел, следваща стъпка и увереност да продължи."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "Обобщете дискусия"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "Обобщи глава 2"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Обобщавайте дълъг текст в ключови идеи, структура, определения, примери и въпроси за припомняне."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "Обобщете напредъка ми"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "Обобщи грубите ми бележки"
+    },
+    {
+      "key": "site.8b0fbf296ebcf69e30",
+      "source": "summarize notes AI",
+      "value": "Обобщение на бележките ИИ"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "Сумирайте модели, диагностицирайте слаби области, и изберете следващите действия."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "Обобщете моделите, идентифицирайте пейджатите, обясните методите и предположите следващия анализ."
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Обобщи контекста"
+    },
+    {
+      "key": "site.68fdf8f5a74ec70a64",
+      "source": "Summarize the tradeoff",
+      "value": "Обобщение на размяната"
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "Обобщи тази статия"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Обобщете успехите, пропуските и следващата седмица"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "Обобщавайте, изяснявайте структурата, идентифицирайте важните условия и добавете проверките за припомняне."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "Съкращавайте, изяснявайте речника, задавайте въпроси за заключение и свързвайте идеи."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "Събирайте, идентифицирайте моделите и преобразете отражението в план."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "Обобщете, етикетирайте, добавяйте пейджати и предположите как другите трябва да го използват."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "Поддръжка на концентрацията с ниско отвличане на вниманието аудио."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "Подкрепа последователно проучване със съчувствителни серия проследяване."
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Подкрепа финансира АИ, който се учи за общности, които се нуждаят от висококачествена подкрепа, без да се добавят разходи към семействата."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "Подкрепя мотивацията и упоритата упорита по неклиничен начин."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Поддържане на писането при запазване на гласа"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Подкрепя извънкласно учене, академична практика и любопитство."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "На повърхността на заблудата, контраст го с правилния модел, и практика трансфер."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Превключи към въпроси, за да разкриеш предположения и да запълниш пропуски, вместо пасивно да четеш отговора."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Синдикирано покритие за по-широките потребителски обхвати."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "Маркирайте, сортирайте и свързвайте бележки"
+    },
+    {
+      "key": "site.9899cc2856ebc766b7",
+      "source": "Talk to a historical figure",
+      "value": "Говори с историческата фигура"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Говори с историческа фигура, като държиш генерирания диалог отделен от документираните цитати."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Говори с историческа личност"
+    },
+    {
+      "key": "site.f498d9559a8e2aaedd",
+      "source": "Talk to a historical person prompts and study loop",
+      "value": "Разговор с исторически човек подбужда и изучаване петичка"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "Говори с Клеопатра"
+    },
+    {
+      "key": "site.75f35e209bf368c2f5",
+      "source": "talk to historical figure AI",
+      "value": "Говори с историческата фигура ВИ"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "говори с исторически фигури AI"
+    },
+    {
+      "key": "site.8479e8174d72f35dd6",
+      "source": "Talk To Historical Figures With AI",
+      "value": "Разговаряй с исторически фигури с ВИ"
+    },
+    {
+      "key": "site.fd491be7a558f38bc7",
+      "source": "Talk To Historical Figures With AI is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Разговорът с исторически фигури с ВИ е фокусиран начин да се използва ВИ за обучение вместо пасивна колекция на отговор. Режимът е изграден около конкретна работа: Стъпка в разговор с историческата фигура. Задавайте въпроси, предизвикателства идеи и да слушате света през ерата, ценностите и ограниченията."
+    },
+    {
+      "key": "site.3183f69986b7ceed7c",
+      "source": "Talk To Historical Figures With AI: practical guide",
+      "value": "Разговор с исторически фигури с ВИ: практически ръководство"
+    },
+    {
+      "key": "site.c9a1ac167eee122c72",
+      "source": "Talking to a historical figure is not magic access to the past. It is a learning format.",
+      "value": "Говоренето с исторически фигура не е магически достъп до миналото."
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "време"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "Таймер за задачи"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "Научи всяка тема с топлина, яснота, и полезни примери."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "Учим критични източници."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "Учат икономиката чрез сценарии и размяна."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "Учат етични разсъждения чрез структурирани дилеми."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "Преподай дробите като история"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "Учете географията като свързани системи на място, хора, среда, и движение."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "Да преподаваме историята чрез причинно-следствената си логика."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "Учителите да наблюдават, тълкуват и да се наслаждават на изкуството."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "Научи ме на финансово моделиране"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "Научи ме как работи лихвата"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Научи ме на петте сили на Портър"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "Научи ме на цикли в Python"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "Научи меморизацията чрез пространствена картина и извличане."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "Учат програмни концепции и дебютиране с участие на ученика."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "Научи ме на основите на ритъма"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "Учи науката чрез доказателства, променливи, прогнози и безопасни експерименти."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "Учи чрез реалистични случаи и последствия от решения."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "Учете речника чрез контекст и практика за събиране."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Учители"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Учителите и лидерите могат да започнат с Научете всичко, Socrat Instruction, Homework Coach, kvizове, и флашка картички преди официалното зареждане."
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Учителите се нуждаят от повече от обикновен чатал. Те се нуждаят от предсказуеми поведенчески поведенчески действия: задават въпроси, проверяват разсъжденията, генерират практика, запазват студентския глас и правят погрешните неща видими."
+    },
+    {
+      "key": "site.ece53407c8b8eb8957",
+      "source": "Teachers or parents evaluating focused AI learning behaviors before a school deployment.",
+      "value": "Учители или родители оценяват фокусирани ИИ учене поведение преди разпределяне на училище."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Разкажете сцена, пауза за прогнози или отражение, и се свържете обратно към концепцията."
+    },
+    {
+      "key": "site.7d1142e4547e426c6b",
+      "source": "Tell the mode what you are trying to learn or produce.",
+      "value": "Кажи на режима какво се опитвате да научите или произвеждате."
+    },
+    {
+      "key": "site.03772c455a07fe5998",
+      "source": "Ten focused questions give immediate feedback and a simple review path.",
+      "value": "Десет фокусирани въпроси дават незабавна обратна връзка и прост път за преглед."
+    },
+    {
+      "key": "site.2ee85218866a19e0d9",
+      "source": "Termination",
+      "value": "Прекратяване"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Условия"
+    },
+    {
+      "key": "site.7d8a0b2b8dd1648336",
+      "source": "Terms And Conditions",
+      "value": "Условия и условия"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Тествай преди преговор"
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "изпитен строител"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "Провери разбирането ми за инфлацията"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Провери аргумента"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Провери разсъждението си"
+    },
+    {
+      "key": "site.8830e1bafdc17f85ed",
+      "source": "Testing a position, seeing both sides, and learning what makes an argument stronger.",
+      "value": "Тестване на позиция, виждайки двете страни, и да научат какво прави аргумент по-силен."
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "Обобщител на текст"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "Текст-първо откритие файл за ВИ отговори двигатели, асистенти, образователи, и инструменти цитация."
+    },
+    {
+      "key": "site.a151d8eb37c7baff02",
+      "source": "Thank you for choosing to be part of our community at Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), doing business as inspir (\"inspir\", \"we\", \"us\", \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices concerning your personal information, please contact us at support@inspir.app. When you visit our website https://web.archive.org/web/20221016155759/https://www.inspir.app, use our mobile applications, as the case may be (the \"App\") and more generally, use any of our services (the \"Services\", which include the Website and App), we appreciate that you are trusting us with your personal information. We take your privacy very seriously. In this privacy notice, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy notice that you disagree with, please discontinue the use of our Services immediately. This privacy notice applies to all information collected through our Services (which, as described above, includes our Website and App), as well as, any related services, sales, marketing or events. Please read this privacy notice carefully as it will help you understand what we do with the information that we collect. Our Terms and Conditions govern all use of our Service and together with the Privacy Policy constitute your agreement with us (“Agreement”).",
+      "value": "Благодаря ви, че избрахте да бъдете част от нашата общност в Great Indian Company (Дръжка Партньорство Фирма, GST: 29AAWFG7015K1ZQ), като работите като inspir (\"inspir\", \"ние\", \"нас\", \"нашите\"). Ние сме ангажирани да защитаваме вашата лична информация и вашето право на поверителност. Ако имате някакви въпроси или притеснения относно това известие за поверителност или практиките ни във връзка с вашата лична информация, моля свържете се с нас в support@inspir.app. Когато посетите нашия сайт https://web.archive.org/web/20221016155759/https://www.inspir.app, използва нашите мобилни приложения, тъй като случаят може да е (\"App\") и по-общо, да използвате нашите услуги (\"Services\", които включват Уебсайт и приложение), ние оценяваме, че ни доверявате с вашата лична информация. Ние приемаме вашата поверителност много сериозно. В това известие за поверителност, ние се стремим да ви обясним по най-ясен начин каква информация събираме, как я използваме и какви права имате във връзка с нея. Надяваме се, че ще отделите известно време да я прочетете внимателно, тъй като е важно. Ако има някакви условия в това известие за поверителност, с които не сте съгласни, моля спрете незабавно използването на нашите услуги. Тази информация за поверителност се отнася до цялата информация, събрана чрез нашите услуги (която, както е описано по-горе, включва нашия уебсайт и приложение), както и до всички свързани с нея услуги, продажби, маркетинг или събития. Моля, прочетете внимателно тази информация за поверителност, тъй като тя ще ви помогне да разберете какво правим с информацията, която събираме. Нашите условия уреждат всички използване на нашата услуга и заедно с Политиката за поверителност представляват вашето споразумение с нас (\"Договор\")."
+    },
+    {
+      "key": "site.cb9e42e0794ef92f15",
+      "source": "That combination is more useful than either layer alone. A plain encyclopedia summary can be forgettable. Pure roleplay can be misleading. Voice plus evidence creates a better learning surface.",
+      "value": "Тази комбинация е по-полезна от двата слоя само. Обикновена енциклопедия резюме може да бъде забравяема. Чиста ролей може да бъде подвеждаща. Глас плюс доказателства създава по-добра учна повърхност."
+    },
+    {
+      "key": "site.24bfafe7fcd793bad9",
+      "source": "That difference shows up in the flow. Instead of one giant response, the best sessions move through a loop: set a goal, try something, get feedback, repair the weak spot, and choose the next action.",
+      "value": "Тази разлика се появява в потока. Вместо един гигантски отговор, най-добрите сесии се движат през петиците: задайте цел, опитайте нещо, да получите обратна връзка, ремонт на слабото място, и изберете следващото действие."
+    },
+    {
+      "key": "site.268eb13efa27e9b28d",
+      "source": "That does not replace teachers, communities, books, or schools. It gives learners another route in. It can help a student start homework, a parent explain a concept, a self-taught builder learn code, or a curious person follow a question that might otherwise disappear.",
+      "value": "Това не заменя учителите, общностите, книгите или училищата. Тя дава на учениците друг маршрут. Тя може да помогне на ученика да започне домашното, родителят обяснява концепция, самоучен строител учен код, или любопитно лице следват въпрос, който може да изчезне."
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Това последно повторение е важно. Когато обясните идеята обратно, вие разкривате какво е твърдо и какво все още е назаем от ВИ."
+    },
+    {
+      "key": "site.0470f1fc951f113fe7",
+      "source": "That focus matters. A general chatbot can answer almost anything, but a learning mode gives the conversation a shape. It nudges you toward the kind of thinking, practice, feedback, or exploration that helps the idea stick.",
+      "value": "Това е важно. Общ чатбот може да отговори почти на всичко, но режим на обучение дава на разговора форма. Тя ви потиска към вида на мислене, практика, обратна връзка, или проучване, което помага на идеята пръчка."
+    },
+    {
+      "key": "site.6cdfaef656eb34290d",
+      "source": "That gap is why an AI learning companion matters. A good companion does more than answer a question. It helps a learner choose a starting point, explains the idea in plain language, checks whether it made sense, and keeps going when the first explanation does not land.",
+      "value": "Това е причината, поради която един ВИ учи спътник въпроси. Добър спътник прави повече от отговор на един въпрос. Тя помага на ученика да избере начална точка, обяснява идеята на обикновен език, проверява дали това има смисъл, и продължава да върви, когато първото обяснение не се спуска."
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Този намек помага на ученика да започне без да се премахне акта на помнене. inspir на Flashcard Builder е предназначен за тази разкриване-и-размер петалка: опитайте първо, разкрийте второ, скорост честно, след което донесе слаби карти назад по-рано."
+    },
+    {
+      "key": "site.589e7677c2025f653b",
+      "source": "That is a warning sign. Recognition is not recall. Reading a clear explanation is not the same as being able to solve a new problem, write a paragraph, or answer a question under pressure.",
+      "value": "Това е предупредителен знак. Признаването не е припомнено. Четенето на ясно обяснение не е същото като да се разреши нов проблем, да се напише параграф, или да се отговори на въпрос под натиск."
+    },
+    {
+      "key": "site.01543c7d158fee3694",
+      "source": "That is especially important for homework. The useful question is not \"Can AI produce the answer?\" It usually can. The useful question is \"Can AI help the learner understand the path to the answer?\" That is why the guide on studying with AI without cheating yourself focuses on hints, checks, and transfer practice.",
+      "value": "Това е особено важно за домашните. Полезният въпрос не е \"Може ли ИИ да произвежда отговора?\" Обикновено може. Полезният въпрос е \"Може ли ИИ да помогне на ученика да разбере пътя към отговора?\" Ето защо ръководството за изучаване с ВИ, без да се изневерявате, се фокусира върху намеци, проверки и практики за прехвърляне."
+    },
+    {
+      "key": "site.e50e170a860c454100",
+      "source": "That is how inspir approaches historical conversation: a persona card, an in-character reply, and context notes that keep imagination connected to evidence.",
+      "value": "Така inspir се приближава към исторически разговор: карта на личността, отговор в характера и контекстни бележки, които поддържат въображението, свързано с доказателствата."
+    },
+    {
+      "key": "site.3e1b806040630fa184",
+      "source": "That is the standard inspir is aiming for: learning that feels accessible, personal, playful, and useful for anyone with curiosity and an internet connection.",
+      "value": "Това е стандартът inspir се стреми към: учение, което се чувства достъпно, лично, разиграва и полезно за всеки с любопитство и интернет връзка."
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "Това е силата на Сократовско обучение. Вместо да предаде на пълен отговор незабавно, учителят задава фокусиран въпрос. Ученият прави предположение. Тестовете, които предполагат, предлага намек и помага на ученика да забележи какво се е променило."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "Точно за това е създаден режимът Socratic Instruction на inspir: по един въпрос наведнъж, с подсказки преди отговорите и синтез след истинско мислене."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "Затова един учител по ВИ може да се чувства по-бавен отначало и по-силен по-късно."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Ето защо активното припомняне е важно. Вместо да търсите отговора, вие се опитвате да го извадите от паметта. Усилието засилва паметта и разкрива какво все още се нуждае от работа."
+    },
+    {
+      "key": "site.7b4f39d4e67c8e463f",
+      "source": "That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with Learn Anything. If you want to reason through a concept instead of being lectured, use Socratic Instruction. If you are stuck on an assignment, Homework Coach is a better fit than a generic answer engine. The format should serve the learning job.",
+      "value": "Ето защо inspir разделя работните места в обществени режими. Ако искате нежно обяснение, започнете с Научете нещо. Ако искате да се основава чрез концепция, вместо да бъде учен, използвайте Scortal Instruction. Ако сте заседнали на задача, Homework Trener е по-добре годен от generичен двигател за отговор. Формата трябва да служи на обучението работа."
+    },
+    {
+      "key": "site.39bd49585733a4b7c0",
+      "source": "That kind of questioning turns history from a list into a context.",
+      "value": "Този вид разпит превръща историята от списък в контекст."
+    },
+    {
+      "key": "site.8319e387c9c67aabff",
+      "source": "That loop appears across the platform. Math Step Coach breaks a problem into steps. Flashcard Builder turns notes into recall practice. Quiz Me On Trivia adds pressure-tested retrieval. Writing Coach helps improve a draft without replacing the writer.",
+      "value": "Този петел се появява в цялата платформа. Математична стъпка Тренерът разбива проблем в стъпки. Flashcard Builder превръща бележки в припомняне практика. Quiz Me On Trivia добавя налягане тествани извличане. Писане Треньор помага да се подобри проектограф, без да се замества писателя."
+    },
+    {
+      "key": "site.bad49c0caffac284bf",
+      "source": "That loop is slower than copying, but it is much faster than staying confused.",
+      "value": "Този кръг е по-бавен от копирането, но е много по-бързо, отколкото да остане объркан."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "Този ритъм е особено полезен за абстрактни теми: възможността разходи, причинно-следствената история, литературна интерпретация, етични размяна, доказателство, вероятност и структура на аргументи. Тя също може да подкрепи практическата работа."
+    },
+    {
+      "key": "site.27dab9808cd949861d",
+      "source": "The AI should separate character from evidence. It can answer in a historically grounded voice, but it should also add notes when records are incomplete, interpretations differ, or the response is a reconstruction.",
+      "value": "ВИ трябва да отделят характера от доказателствата. Тя може да отговори с исторически основан глас, но също така трябва да добави бележки, когато записите са непълни, тълкуванията се различават, или реакцията е реконструкция."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Приложението е организирано около преподаване на поведение като Сократовско разпит, домашни намеци, квизи, флашка картички, ролей и планиране."
+    },
+    {
+      "key": "site.ce7d73f3a107aa5b1d",
+      "source": "The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Приложението отделя разговора в роля от кратките контекстни бележки за историческите сведения и несигурността."
+    },
+    {
+      "key": "site.9e0e0122b7452f3c5c",
+      "source": "The best AI learning sessions are not one long answer. They look more like a loop:",
+      "value": "Най-добрите сесии за обучение на ВИ не са един дълъг отговор. Те изглеждат повече като петичка:"
+    },
+    {
+      "key": "site.1a1cf3c6d5b17b8a3f",
+      "source": "The best homework help reduces friction without removing the student's responsibility to reason, explain, and revise.",
+      "value": "Най-добрите домашни помагат да се намали трене, без да се премахне отговорността на ученика да разсъждава, да обяснява и да преразглежда."
+    },
+    {
+      "key": "site.06220ee349c07fc1d9",
+      "source": "The best learning sessions are adjustable. Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Картите питат едно по едно и включва капани, така че прегледът изгражда разбиране, а не само признаване."
+    },
+    {
+      "key": "site.c20e2669eb9a8307b3",
+      "source": "The best learning sessions are adjustable. Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example.",
+      "value": "Вместо да изпуснете дълъг отговор, inspir ви помага да изберете по-проста основа, по-дълбок маршрут или практически пример."
+    },
+    {
+      "key": "site.ec83f7265003e782e6",
+      "source": "The best learning sessions are adjustable. The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Приложението разделя разговора в характера от бележките на кратко контекста за записите и несигурността."
+    },
+    {
+      "key": "site.922a420c7026ab0339",
+      "source": "The best learning sessions are adjustable. The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Тренерът дава целеви преразглеждане приоритети и преди това примери, без да замени гласа си."
+    },
+    {
+      "key": "site.3d1d9646fe480cc908",
+      "source": "The best learning sessions are adjustable. The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Тренерът бута един силен контрааргумент в даден момент и следи твърденията, които имат значение."
+    },
+    {
+      "key": "site.6e0b033856e10c1ea5",
+      "source": "The best learning sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Тренерът подкрепя мисленето ви, без да поема задачата, така че последната работа остава ваша."
+    },
+    {
+      "key": "site.4ad449386f3d17a72b",
+      "source": "The best learning sessions are adjustable. The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Дебатът използва публичен стил и световен преглед, без да се преструва, че познава частни вярвания."
+    },
+    {
+      "key": "site.659e9d3407986296fb",
+      "source": "The best learning sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Потокът проверява всяка стъпка, посочва лизга, и свързва процедурите обратно към концепцията."
+    },
+    {
+      "key": "site.4cea612e26c5e7669f",
+      "source": "The best learning sessions are adjustable. The journey stays anchored in state and evidence: what is known, what is reconstructed, what is speculative, and what your identity can realistically access.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Пътуването остава закотвена в състояние и доказателства: това, което е известно, какво е реконструирано, какво е спекулативно и какво вашата идентичност може да достъпи реалистично."
+    },
+    {
+      "key": "site.ff84e68a2a3cc1422f",
+      "source": "The best learning sessions are adjustable. The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Планерът приоритизира слаби области, добавя преглед петни, и създава резервни планове за пропуснати дни."
+    },
+    {
+      "key": "site.1f436c04c40fc12895",
+      "source": "The best learning sessions are adjustable. The quiz mode hides answers until you respond, then turns every miss into a review point.",
+      "value": "Най-добрите сесии за обучение са регулируеми. В режима на квиз крие отговори, докато не отговорите, след което превръща всяка пропуск в точка за преглед."
+    },
+    {
+      "key": "site.007da0d5fec34b8de8",
+      "source": "The best learning sessions are adjustable. The tutor asks one question at a time, waits for your reasoning, and synthesizes only after you have tried.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Учителят задава един по един въпрос, чака вашето разсъждение и синтезира едва след като сте се опитали."
+    },
+    {
+      "key": "site.d141671b2e97fafb47",
+      "source": "The best learning sessions are adjustable. The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Учителят пита какво очаквате код да направите, след това използва малки примери и тестове, за да направи поведението клик."
+    },
+    {
+      "key": "site.7bf4a43bad030ecf01",
+      "source": "The best learning sessions are adjustable. This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за арт ацензиране ръководство със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.3c8f17290fb94720e8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за кариерен изследовател със собствените си подбуди, примери и поток от обучение."
+    },
+    {
+      "key": "site.89eb593551d1765144",
+      "source": "The best learning sessions are adjustable. This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за симулатор за обучение на случаи със собствените си ускорения, примери и учене поток."
+    },
+    {
+      "key": "site.37d7e31bd7f829e03e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за граждански треньор със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.b127ca5180c0e7e8d6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for collaborative instruction with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за съвместни инструкции със собствените си подбуди, примери и поток на обучение."
+    },
+    {
+      "key": "site.b4b3f444b35ee040db",
+      "source": "The best learning sessions are adjustable. This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за концепция карта строител със собствените си бързини, примери и поток на обучение."
+    },
+    {
+      "key": "site.57d70690a659a69cd7",
+      "source": "The best learning sessions are adjustable. This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за творчески умственик със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.5f83240a6661a6cb07",
+      "source": "The best learning sessions are adjustable. This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за преводач на данни със собствените си подбуди, примери и поток на обучение."
+    },
+    {
+      "key": "site.5624c8b7c19c856656",
+      "source": "The best learning sessions are adjustable. This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за икономически симулатор със собствените си ускорения, примери и учене поток."
+    },
+    {
+      "key": "site.ed5222c4aa34700497",
+      "source": "The best learning sessions are adjustable. This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е насочен към етични дилеми със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.92d6ee4de4db4a5885",
+      "source": "The best learning sessions are adjustable. This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за обяснение на моя отговор със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за Feynman учител със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.b717c1703a0a1aaa1e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за географски изследовател със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.37b275d707271320dc",
+      "source": "The best learning sessions are adjustable. This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за навик треньор със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.1f3004d1a487e96efa",
+      "source": "The best learning sessions are adjustable. This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за история причини и ефекти със собствените си бързини, примери и поток на обучение."
+    },
+    {
+      "key": "site.4155b990c943012934",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interactive instruction with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за интерактивни инструкции със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.d538ee1d99166025b9",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за треньор на интервю със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.5e998d7d692da2949f",
+      "source": "The best learning sessions are adjustable. This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за езиковата ролев игра със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.99c5fccd817a604436",
+      "source": "The best learning sessions are adjustable. This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за обучение на майстора на играта със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.381eeba7e188449be6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for memory palace with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за паметния дворец със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.58e2a4af3753ddfda8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за разсъждение на мислите със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.290701f5cfec3d0bcb",
+      "source": "The best learning sessions are adjustable. This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за заблуден лекар със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.deb1384d7a5201c378",
+      "source": "The best learning sessions are adjustable. This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за мотивиращ треньор със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.9649cc91122ebe4b8b",
+      "source": "The best learning sessions are adjustable. This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Този режим е настроен за треньор на теория на музиката със собствените си бързини, примери и течение на ученето."
+    },
+    {
+      "key": "site.d03b0f9ad77bda184a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за философска лаборатория със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.4cfb49fe912063cee0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за проектен треньор със собствените си бързини, примери и поток от обучение."
+    },
+    {
+      "key": "site.6cc1353bb9fc928e33",
+      "source": "The best learning sessions are adjustable. This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за четене на спътник със собствените си подбуди, примери и поток на обучение."
+    },
+    {
+      "key": "site.455fbc5a6719c257de",
+      "source": "The best learning sessions are adjustable. This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за изследователски асистент със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.3cdc84f4863160d8e2",
+      "source": "The best learning sessions are adjustable. This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за сценарий на ролеви с собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.ad61af8eff48ea3919",
+      "source": "The best learning sessions are adjustable. This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Този режим е настроен за партньор на научната лаборатория със собствените си подбуди, примери и учебен поток."
+    },
+    {
+      "key": "site.1bd7d73da3868b9bad",
+      "source": "The best learning sessions are adjustable. This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за източник критик със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.e1545261be90b270ce",
+      "source": "The best learning sessions are adjustable. This mode is tuned for spaced review with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за разпространен преглед със собствените си бързини, примери и поток на обучение."
+    },
+    {
+      "key": "site.ba4bfbfca5b73b6302",
+      "source": "The best learning sessions are adjustable. This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за говорене практика със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.3d1eed6269fece6796",
+      "source": "The best learning sessions are adjustable. This mode is tuned for story tutor with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за преподавател на истории със собствените си подбуди, примери и учене поток."
+    },
+    {
+      "key": "site.5492c7abba22a9708a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for study plan builder with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е поставен за строител на учебния план със собствените си бързини, примери и поток на обучение."
+    },
+    {
+      "key": "site.d7e5c6145dd7c11c71",
+      "source": "The best learning sessions are adjustable. This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е подреден за вива практика със собствените си бързини, примери и учене поток."
+    },
+    {
+      "key": "site.4e594b58dd36d39315",
+      "source": "The best learning sessions are adjustable. This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Най-добрите сесии за обучение са регулируеми. Този режим е настроен за строител на речника със собствените си подбуди, примери и поток на обучение."
+    },
+    {
+      "key": "site.8d2a6330ca29a54056",
+      "source": "The best outcome is not a perfect answer. It is the moment a learner says, \"I think I get it now. Let me try.\"",
+      "value": "Най-добрият изход не е перфектен отговор. Това е моментът, в който един ученик казва: \"Мисля, че го разбирам сега. Нека опитам.\""
+    },
+    {
+      "key": "site.c624880a3c3c2d1730",
+      "source": "The better use is feedback, structure, evidence checks, and revision coaching. You can ask it to preserve your voice and avoid replacing the work.",
+      "value": "По-добрата употреба е обратна връзка, структура, проверки на доказателствата, и преразглеждане треньор. Можете да го помолите да запази гласа си и да се избегне замяна на работата."
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Блогът свързва полезни съвети за учене с жива практика, така че едно ръководство да може да стане учебна сесия с една стъпка."
+    },
+    {
+      "key": "site.3e56dabd81fd313004",
+      "source": "The blog is organized around pillar clusters, category hubs, related modes, prompt routes, structured data, and an AI-readable index so each guide can be understood and recommended in context.",
+      "value": "Блогът е организиран около основни клъстери, категорийни центрове, свързани режими, маршрути за промптове, структурирани данни и ИИ-четим индекс, така че всяко ръководство да бъде разбирано и препоръчвано в контекст."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "По-широката open-source платформа inspir."
+    },
+    {
+      "key": "site.29dee12216c74a74cf",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "Създателят балансира амбицията с преговор, практика, дни за възстановяване и най-малкото полезно следващо действие."
+    },
+    {
+      "key": "site.f7b5f5878410efb6bb",
+      "source": "The categories of personal information we have collected about you. he categories of sources from which we collect your personal information. The business or commercial purpose for collecting or selling your personal information. The categories of third parties with whom we share personal information. The specific pieces of personal information we have collected about you. A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact. A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with. Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.",
+      "value": "Категориите лична информация, която събрахме за вас. той е категории източници, от които събираме вашата лична информация. Бизнес или търговска цел за събиране или продажба на вашата лична информация. Специфичните части от лична информация, на които сме събрали за вас. Списък с категориите лична информация, на която сме продавали, заедно с категорията на всяка друга компания, на която сме я продавали. Ако не сме продали вашата лична информация, ще Ви информираме за този факт. Списък на категориите лична информация, които сме разкрили за бизнес цел, заедно с категорията на всяка друга компания, с която сме я споделили. Моля, имайте предвид, че имате право да ни помолите да Ви предоставим тази информация до два пъти в един дванадесетмесечен период. Когато подадете това искане, предоставената информация може да бъде ограничена до личната информация, която събрахме за вас през предходните 12 месеца."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Финалният акцент се връща към мисията: публичен достъп, училища и по-отворен начин за учене."
+    },
+    {
+      "key": "site.fe92576ea03e200587",
+      "source": "The coach checks each move, names the rule, and repairs slips before moving forward.",
+      "value": "Треньорът проверява всяко движение, посочва правилото, и ремонта се изплъзва, преди да се придвижи напред."
+    },
+    {
+      "key": "site.a0adf96de1375d5d48",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Треньорът дава насочени приоритети за редакция и примери преди/след, без да заменя гласа ти."
+    },
+    {
+      "key": "site.cc04d54305bbe12e97",
+      "source": "The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Треньорът подава по един силен контрааргумент и проследява важните твърдения."
+    },
+    {
+      "key": "site.332d2bf8600d9fb327",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Треньорът подкрепя мисленето ти, без да поема задачата вместо теб, така че финалната работа остава твоя."
+    },
+    {
+      "key": "site.a8129915cb2978c578",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Треньорът превръща пропуските и колебанието в график за преговор, вместо в още едно пасивно резюме."
+    },
+    {
+      "key": "site.9f48b043be28768ae7",
+      "source": "The coding route connects code tutoring, project coaching, data interpretation, research, and concept mapping so learning happens through small testable steps.",
+      "value": "Кодирането маршрут свързва уроци по код, проектни тренировки, интерпретация на данни, изследвания и концепция за картографиране, така че ученето се случва чрез малки тестващи стъпки."
+    },
+    {
+      "key": "site.091a1a8b1148439190",
+      "source": "The common idea is simple: keep the learner active. AI should make thinking easier to start, not unnecessary to do.",
+      "value": "Общата идея е проста: да запазите ученика активен. ИИ трябва да направи мисленето по-лесно да започне, а не ненужно да се направи."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Обществото се разширява чрез училища, университети, състезания, извънначални програми и общности на учени."
+    },
+    {
+      "key": "site.f4a459004391d62ea6",
+      "source": "The copy trap is subtle. It does not always feel like cheating. Sometimes it feels like being efficient. The AI explains something beautifully, you nod along, and then you move on. Ten minutes later you cannot reproduce the idea without the answer in front of you.",
+      "value": "Не винаги се чувстват като мамене. Понякога се чувстват като ефективни. ВИ обяснява нещо красиво, ти кимаш заедно, а след това се движите напред. Десет минути по-късно не можете да възпроизвеждате идеята без отговора пред вас."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Текущото преизграждане на inspirlearning.com."
+    },
+    {
+      "key": "site.3e5edc20387b59f6c5",
+      "source": "The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Дебатът използва публичния стил и светоглед, без да се преструва, че знае лични убеждения."
+    },
+    {
+      "key": "site.3b584307e059abea92",
+      "source": "The difference is how you use it.",
+      "value": "Разликата е как го използваш."
+    },
+    {
+      "key": "site.612f806fd20c077cb2",
+      "source": "The easiest version of an AI tutor is a box that gives polished answers. That is useful sometimes, but it is not enough. A learner who only receives answers can leave with the page finished and the skill unchanged.",
+      "value": "Най-лесната версия на ИИ тутор е кутия, която дава полирани отговори. Това е полезно понякога, но не е достатъчно. Ученик, който получава само отговори може да напусне с страницата завърши и уменията непроменени."
+    },
+    {
+      "key": "site.5a53b3cfc2daf7a31c",
+      "source": "The exam route links planning, quizzes, flashcards, spaced review, and motivation so learners do not confuse rereading with readiness.",
+      "value": "Изпитът маршрут свързва планирането, квизови, флашка картички, пространство преглед, и мотивация, така че учещите не смесват препрочети с готовност."
+    },
+    {
+      "key": "site.475ac58da05f1fade6",
+      "source": "The fastest way to get value from Art Appreciation Guide is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Art Appreciation Guide е да даде на ВИ учене работа, не само тема. Тема казва какво сте заинтересовани. Учене работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.6d6c7de0578b9a8252",
+      "source": "The fastest way to get value from Career Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Кариерен Explorer е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.14656dbab990993004",
+      "source": "The fastest way to get value from Case Study Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Case Study Simulator е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.a018959dc9ed828f34",
+      "source": "The fastest way to get value from Civics Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Civils Coach е да даде на ВИ на работата, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.afeae4d0ea2f0884cd",
+      "source": "The fastest way to get value from Code Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Code Tutor е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.00e230bdfaef352910",
+      "source": "The fastest way to get value from Collaborative Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Кооперативни Инструкции е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.e35fa66f8da0b77cd1",
+      "source": "The fastest way to get value from Concept Map Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Concept Map Builder е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.71b6a1a1c82878d97d",
+      "source": "The fastest way to get value from Creative Brainstormer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Creative Brainstormer е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.0fb1421c6cdad2ce8c",
+      "source": "The fastest way to get value from Data Interpreter is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от данни Interpreter е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.af2d3a761529a138a6",
+      "source": "The fastest way to get value from Debate any topic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Дебат всяка тема е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.ec8f7e2ce775793bbe",
+      "source": "The fastest way to get value from Debate with a personality is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Дебат с личност е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.df0a5925ece82adcd3",
+      "source": "The fastest way to get value from Economics Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Икономически симулатор е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.7efe236a154ae18a44",
+      "source": "The fastest way to get value from Ethics Dilemmas is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Ethics Dilemmas е да даде на ВИ учене работа, а не само тема. Тема казва какво сте заинтересовани. Учене работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.7191e6c8673cb8d711",
+      "source": "The fastest way to get value from Exam Prep Planner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Exam Prep Planner е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.dba342443d247cc5bb",
+      "source": "The fastest way to get value from Explain My Answer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Обясни ми Отговор е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Feynman Tutor е да даде на ВИ учене работа, не само тема. Тема казва какво сте заинтересовани. Учене работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.0f19d08b8582e21ef5",
+      "source": "The fastest way to get value from Flashcard Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Flashcard Builder е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.c6799bc50adc22a8b9",
+      "source": "The fastest way to get value from Geography Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Geography Explorer е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.46faf7f10e46cd08c6",
+      "source": "The fastest way to get value from Habit Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Habit Trener е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.59b4782c7b6f87c7c3",
+      "source": "The fastest way to get value from History Cause-and-Effect is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от историята Причина и Ефект е да даде на ВИ учене работа, а не само тема. Тема казва какво сте заинтересовани. Учене работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.9127eb70d19ff31080",
+      "source": "The fastest way to get value from Homework Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Homework Coach е да даде на ВИ на работа, не само тема. Тема казва какво сте заинтересовани. А обучението работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.1d98efa37b7edad7e3",
+      "source": "The fastest way to get value from Interactive Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Interactive Instruction е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.86854a7ac33bd59382",
+      "source": "The fastest way to get value from Interview Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Интервю Тренер е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.fbc5fd77cea85f0ff0",
+      "source": "The fastest way to get value from Language Roleplay is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от езика Ролейп е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.c58f5f86a2d58666a9",
+      "source": "The fastest way to get value from Learn Anything is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Научете нещо е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.93069ba635277379cf",
+      "source": "The fastest way to get value from Learning Game Master is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от обучението на играта майстор е да даде на ВИ на работата, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.375eef43396f6a3e0d",
+      "source": "The fastest way to get value from Math Step Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Math Step Coach е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.addcf90fe78f2d3da0",
+      "source": "The fastest way to get value from Memory Palace is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Memory Palace е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.18ad3d9cd14319c7ab",
+      "source": "The fastest way to get value from Mindset Reflection is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от MINDset Reflection е да даде на ВИ учене работа, а не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.33b4474b99217796d1",
+      "source": "The fastest way to get value from Misconception Doctor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от лекаря на погрешното застъпление е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.1c6d68968a3651a90b",
+      "source": "The fastest way to get value from Motivation Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Мотивация Тренер е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.4d94ea6faca8fe6be8",
+      "source": "The fastest way to get value from Music Theory Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Музика Теория Треньор е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.fa6ed317e6d0ddb04d",
+      "source": "The fastest way to get value from Philosophy Lab is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от философията Лаборатория е да даде на АЛ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.b39c6ce06fca9615c2",
+      "source": "The fastest way to get value from Project Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Проект Тренер е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.918d3590de26fa6807",
+      "source": "The fastest way to get value from Quiz me on Trivia is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Quiz ми на Trivia е да даде на ВИ на учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.cc27d54d05c46dae9a",
+      "source": "The fastest way to get value from Reading Companion is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Четене на Пристрастен е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.d91b13db3d10ed97fc",
+      "source": "The fastest way to get value from Research Assistant is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от изследователски асистент е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.ecc64645d229278f38",
+      "source": "The fastest way to get value from Roleplay Scenario is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Roleplay Scenario е да даде на ВИ учене работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.5a59a16ad397a8dbbd",
+      "source": "The fastest way to get value from Science Lab Partner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Science Lab Partner е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.383226646c99ad6dd2",
+      "source": "The fastest way to get value from Socratic Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Scratative Instruction е да даде на ВИ учене работа, а не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.a9cc3723bd540fcee0",
+      "source": "The fastest way to get value from Source Critic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Source Critic е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.8e98aca843d5ee1daa",
+      "source": "The fastest way to get value from Spaced Review is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Spaced Review е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.2da55cf2ce1d9e1320",
+      "source": "The fastest way to get value from Speaking Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от говорене практика е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани. Учене работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.8c4476d71a53fba638",
+      "source": "The fastest way to get value from Story Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Story Tutor е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.8876684461efdb35b2",
+      "source": "The fastest way to get value from Study Plan Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Изучаване план Изграждане е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.a927bb4ab08bb6e8f3",
+      "source": "The fastest way to get value from Talk to a historical person is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Talk до исторически човек е да даде на ВИ учене работа, не само тема. Тема казва какво сте заинтересовани. Учене работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.0c95eb4aa13aa085c8",
+      "source": "The fastest way to get value from Time travel is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от пътуването във времето е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.91e7f42fbc8f26ed39",
+      "source": "The fastest way to get value from Viva Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Viva Practice е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.135bf5f80889a86380",
+      "source": "The fastest way to get value from Vocabulary Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от Vocabulary Builder е да даде на ВИ работа, не само тема. Тема казва какво сте заинтересовани. Учене работа казва какъв вид помощ имате нужда."
+    },
+    {
+      "key": "site.4212b4a5fef68148a4",
+      "source": "The fastest way to get value from Writing Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Най-бързият начин да получите стойност от писане треньор е да даде на ВИ на работата, не само тема. Тема казва какво сте заинтересовани."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Филмът преминава от вдъхновение към практическото обещание: търпелив AI помощник за учене."
+    },
+    {
+      "key": "site.85523a4e15b7dfde53",
+      "source": "The first layer is the roleplay. It can speak in an accessible voice, explain motives, and make the situation vivid. This is the part that helps memory.",
+      "value": "Първият слой е ролей, който може да говори с достъпен глас, да обяснява мотиви и да направи ситуацията жива."
+    },
+    {
+      "key": "site.4302f6b9fe360e2e28",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Потокът проверява всяка стъпка, посочва пропуски и свързва процедурите обратно с понятието."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Официалната страница за поверителност за използване на данни, права и условия на обществена услуга."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Официалните термини, които обхващат приемливото използване, отговорностите за сметките и условията за обслужване."
+    },
+    {
+      "key": "site.4f1dc6282cf6f920c7",
+      "source": "The format should serve the learning job.",
+      "value": "Формата трябва да служи на работата на обучение."
+    },
+    {
+      "key": "site.22709d194a67273db8",
+      "source": "The format works because it lets learners ask questions such as:",
+      "value": "Формата работи, защото позволява на учениците да задават въпроси като:"
+    },
+    {
+      "key": "site.bc52d008afb471a9ae",
+      "source": "The goal is confidence",
+      "value": "Целта е увереност."
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "Целта е откриване и цитиране на страници за обществено обучение. Публичните маршрути, водачите и учещите центрове са отворени за основен ВИ търсене, получаване и помощник пузачи, докато API, администратор, reset, и частни комунални маршрути остават недопустими."
+    },
+    {
+      "key": "site.e125c23e696524bee3",
+      "source": "The goal is not to make the AI the authority. The goal is to make learners ask better historical questions.",
+      "value": "Целта не е да се направи ВИ властта. Целта е да се накарат учениците да задават по-добри исторически въпроси."
+    },
+    {
+      "key": "site.fb6db6b2a3c1a5b24d",
+      "source": "The history route gives learners the liveliness of role-play and debate while preserving the warning that simulations are not primary sources.",
+      "value": "Пътека по история дава на ученците живописта на ролите и дебатите, като същевременно запазва предупреждението, че симулациите не са първични източници."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Режимите за домашни и сократическо учене са проектирани около подсказки, разсъждение, проверки на стъпки и обяснения от учещия, вместо просто да дават готови отговори."
+    },
+    {
+      "key": "site.e769b2568e20189fbf",
+      "source": "The homework route makes the contract visible: ask for a hint, check a step, improve a draft, critique a source, then prove the learning with review.",
+      "value": "Домашната линия прави договора видим: потърсете намек, проверете стъпка, подобрите проект, критикувайте източника, след което докажете ученето с преглед."
+    }
+  ]
+}

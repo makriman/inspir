@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hausa",
+  "locale": "ha",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Raba aiki zuwa ayyuka da aka ba su suna, ƙidaya lokacin kowane ɗaya, kuma ka duba inda ƙoƙarin karatu ya tafi bayan kowane zama na mayar da hankali."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan mayar da hankali & ƙwarewa waɗanda suke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don mai ƙidayar lokacin aiki tare da nasa saƙonnin, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "Ƙidaya lokacin kowane aiki kuma ka ga ƙoƙarin da aka yi"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "Ƙidaya lokacin saitin matsala"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "Bibiyar aikin tsara kasida"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "Raba babban aiki zuwa sassan lokaci"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "Tunatarwa don hutu"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "Kare mayar da hankali tare da hutun lafiya"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Saita yanayin aiki da hutu, tsara hutun gaske, kuma guje wa faɗawa cikin gajiya ta karatu mara iyaka."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "Wane yanayin aiki/hutu kake so?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "Mayar da hankali & Ƙwarewa"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Saita yanayin aiki da hutu, tsara hutun gaske, kuma guje wa faɗawa cikin gajiya ta karatu mara iyaka."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan mayar da hankali & ƙwarewa waɗanda suke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don tunatarwa don hutu tare da nasa saƙonnin, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "Kare mayar da hankali tare da hutun lafiya"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman karatunka da burinka"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "Yi amfani da hutun minti 50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "Tsara hutun da zai amfane ka"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "Taimaka mini in daina yawan karatu"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "Zaman Karatu Mai Zurfi"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "Tsara lokacin mai da hankali ba tare da katsalandan ba"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Shirya zaman karatu mai zurfi tare da bayyanannen buri, iyakoki, dokokin mai da hankali, wurin duba ci gaba, da kuma shirin madadin."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Wane sakamako wannan zaman karatun mai zurfi ya kamata ya samar?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "Mai da Hankali & Aiki"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Shirya zaman karatu mai zurfi tare da bayyanannen buri, iyakoki, dokokin mai da hankali, wurin duba ci gaba, da kuma shirin madadin."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Daliban da ke binciken batutuwan mai da hankali da aiki waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don zaman karatu mai zurfi tare da nasa tambayoyi, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "Tsara lokacin mai da hankali ba tare da katsalandan ba"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan tambayoyi"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman karatun da burinka"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "Tsara lokacin karatu mai zurfi na minti 90"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "Taimaka mini in mai da hankali kan rubuta lambobin kwamfuta"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "Sanya dokoki don rubuta kundin digiri"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "Agogon Karatu na Rukuni"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "Daidaita zagayen mai da hankali tare da wasu"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Gudanar da tsarin karatu na rukuni don abokai ko abokan karatu tare da buri, dubawa, da tambayoyin tattaunawa da aka daidaita."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Su waye suke karatu tare kuma menene burin?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "Zamantakewa"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Gudanar da tsarin karatu na rukuni don abokai ko abokan karatu tare da buri, dubawa, da tambayoyin tattaunawa da aka daidaita."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Daliban da ke binciken batutuwan zamantakewa waɗanda suke son jagora mai amfani maimakon amsa ta gaba ɗaya."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don lokacin karatun rukuni tare da nasa saƙonnin, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "Daidaita lokutan mayar da hankali tare da wasu"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman karatun da burinka"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "Tsara Pomodoro na rukuni"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "Tsara ɗakin karatu"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "Gudanar da zaman rukuni na minti 45"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "Sautunan Muhalli"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "Sautunan da aka samar don nutsuwar karatu"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Yi amfani da sautunan muhalli masu sauƙi don rage shagala yayin karatu, rubutu, bita, ko warware matsaloli."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Wane irin sautin muhalli kake so don mayar da hankali?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "Mayar da Hankali & Ƙwarewa"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Yi amfani da sautunan muhalli masu sauƙi don rage shagala yayin karatu, rubutu, bita, ko warware matsaloli."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Daliban da ke binciken batutuwan mayar da hankali & ƙwarewa waɗanda suke son jagora mai amfani maimakon amsa ta gaba ɗaya."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don sautunan muhalli tare da nasa saƙonnin, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "Sautunan da aka samar don nutsuwar karatu"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman karatun da burinka"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "Yi amfani da sautin ruwan sama don karatu"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "Zaɓi sautin nutsuwa don lissafi"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "Saita yanayin nutsuwa don zurfafa aiki"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "Jerin Karatu"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "Gina daidaito ba tare da jin laifi ba"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Kula da yadda kake karatu a jere, gyara kwanakin da ka rasa, kuma tsara mafi ƙarancin lokacin karatu da zai dace da rayuwarka ta yau da kullum."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "Wane jerin karatu ko tsari kake ginawa?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "Nazari"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Kula da yadda kake karatu a jere, gyara kwanakin da ka rasa, kuma tsara mafi ƙarancin lokacin karatu da zai dace da rayuwarka ta yau da kullum."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan nazari waɗanda suke son jagora mai amfani maimakon amsa ta gaba ɗaya."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don jerin karatu tare da nasa tambayoyi, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "Gina daidaito ba tare da jin laifi ba"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan tambayoyi"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "Fara jerin karatu"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "Farfaɗo bayan rasa rana ɗaya"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "Tsara ƙaramin bita na yau da kullum"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "Dashboard na Ci gaba"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "Bita ayyukan koyo da matakai na gaba"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Maida ayyukan karatu, sakamakon jarabawa, bayanin kula, da agogo zuwa bita irin na dashboard tare da yanayin ci gaba da matakai na gaba."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "Wane ci gaba ya kamata mu duba?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "Nazari"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Maida ayyukan karatu, sakamakon jarabawa, bayanin kula, da agogo zuwa bita irin na dashboard tare da yanayin ci gaba da matakai na gaba."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan nazari waɗanda suke son jagora mai amfani maimakon amsa ta gaba ɗaya."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don dashboard na ci gaba tare da nasa tambayoyi, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "Bita ayyukan koyo da matakai na gaba"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan tambayoyi"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "Bita mako na"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "Gano wuraren da kake da rauni"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "Maida ayyuka zuwa matakai na gaba"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "Rahoton Mako-mako"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Takaita nasarori, gazawa, da kuma makon da ke tafe"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Kirkiri rahoton koyo na mako-mako ko na wata-wata wanda ya kunshi kokari, sakamako, matsaloli, nasarori, da kuma tsari mai ma'ana."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "Me ya faru a wannan makon?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "Nazari"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Kirkiri rahoton koyo na mako-mako ko na wata-wata wanda ya kunshi kokari, sakamako, matsaloli, nasarori, da kuma tsari mai ma'ana."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Daliban da ke binciken batutuwan nazari wadanda suke son jagora mai amfani maimakon akwatin amsa na gaba daya."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don rahoton mako-mako tare da nasa tambayoyi, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Takaita nasarori, gazawa, da kuma makon da ke tafe"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan tambayoyi"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "Rubuta rahoton karatuna na mako-mako"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "Takaita ci gabana"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "Tsara makon da ke tafe daga wannan makon"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "Mai Bibiyar Ayyuka"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "Bibiyar wa'adin karshe da matakai na gaba"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Tsara ayyuka bisa ga ranar da za a kammala, kokari, matsayi, hadari, da kuma mataki mafi kankanta na gaba."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "Wadanne ayyuka kake da su a gabanka?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "Tsari"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Tsara ayyuka bisa ga ranar da za a kammala, kokari, matsayi, hadari, da kuma mataki mafi kankanta na gaba."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Daliban da ke binciken batutuwan tsari wadanda suke son jagora mai amfani maimakon akwatin amsa na gaba daya."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don mai bibiyar ayyuka tare da nasa tambayoyi, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "Bibiyar wa'adin karshe da matakai na gaba"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan tambayoyi"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da manufarka"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "Tsara wa'adin karshe na"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "Ba da fifiko ga ayyuka"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "Tsara mika wannan aikin"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "Manajan Darasi"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "Tsara darussa, batutuwa, da nauyin aiki"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Tsara darussa, rukunai, ayyuka, albarkatu, da nauyin aiki na mako-mako cikin tsarin karatu guda daya."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "Wadanne darussa ko batutuwa kake sarrafawa?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "Tsari"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Tsara darussa, rukunai, ayyuka, albarkatu, da nauyin aiki na mako-mako cikin tsarin karatu guda daya."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan tsari wadanda suke son jagora mai amfani maimakon akwatin amsa na gaba daya."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don manajan darasi tare da nasa tambayoyi, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "Tsara darussa, batutuwa, da nauyin aiki"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan tambayoyi"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da manufarka"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "Kafa darussana"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "Tsara zangon karatuna"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "Tsara batutuwa ga kowane darasi"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "Mai Tsara Bayanan kula"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "Sanya alama, rarrabawa, da kuma hada bayanan kula"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Maida bayanan kula da suka watse zuwa manyan fayiloli, alamomi, takaitawa, hanyoyin sadarwa, da ayyukan bita wadanda ke saukaka tunawa."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "Manne ko bayyana bayanan kula don tsarawa"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "Tsari"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Canza bayanan da suka watse zuwa manyan fayiloli, alamomi, taƙaitaccen bayani, hanyoyin haɗi, da ayyukan bita waɗanda ke sauƙaƙe tunawa."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Daliban da ke binciken batutuwan tsari waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don mai tsara bayanin kula tare da nasa saƙonni, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "Sanya alama, rarrabawa, da haɗa bayanan kula"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "Tsara bayanan ajina"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "Ƙirƙiri alamomi don waɗannan bayanan"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "Nemo jigogi a cikin littafina na bayanan kula"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "Raba Albarkatu"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "Haɗa da raba albarkatun karatu"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Shirya albarkatun karatu don abokan karatu ko ƙungiya: taƙaitaccen bayani, hanyoyin haɗi, bayanan kula, bayani, da jagorar amfani."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "Wane albarkatu kake son rabawa?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "Zamantakewa"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Shirya albarkatun karatu don abokan karatu ko ƙungiya: taƙaitaccen bayani, hanyoyin haɗi, bayanan kula, bayani, da jagorar amfani."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Daliban da ke binciken batutuwan zamantakewa waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don raba albarkatu tare da nasa saƙonni, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "Haɗa da raba albarkatun karatu"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "Haɗa bayanaina don ƙungiya"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "Ƙirƙiri taƙaitaccen bayanin albarkatu"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "Yi jagororin rabawa"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "Ƙungiyoyin Nazari"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "Sanya nazarin ƙungiya ya zama mai tsari"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Tsara ƙungiyar nazari mai amfani tare da ayyuka, ajanda, zagayen tambayoyi, albarkatun da aka raba, da bayanan taƙaitawa."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "Me ƙungiyar nazarin ya kamata ta yi?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "Zamantakewa"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Tsara ƙungiyar nazari mai amfani tare da ayyuka, ajanda, zagayen tambayoyi, albarkatun da aka raba, da bayanan taƙaitawa."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan zamantakewa waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don ƙungiyoyin nazari tare da nasa saƙonnin, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "Sanya nazarin ƙungiya ya zama mai tsari"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "Tsara zaman ƙungiya"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "Ƙirƙiri ayyuka don ƙungiyar nazari"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "Gyara ƙungiyar da ba ta da amfani"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "Dandalin Dalibai"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "Tsara tambayoyi don taimakon al'umma"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Shirya tambayoyin dandalin da suka bayyana sarai, martani, taƙaitawa, da buƙatun biyo baya waɗanda ke sa tattaunawar ɗalibai ta zama mai amfani."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "Wace tambaya ko tattaunawa kake son sakawa?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "Zamantakewa"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Shirya tambayoyin dandalin da suka bayyana sarai, martani, taƙaitawa, da buƙatun biyo baya waɗanda ke sa tattaunawar ɗalibai ta zama mai amfani."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan zamantakewa waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don dandalin ɗalibai tare da nasa saƙonnin, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "Tsara tambayoyi don taimakon al'umma"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "Rubuta tambayar dandalin tattaunawa mai kyau"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "Takaita tattaunawa"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "Nemi ra'ayin takwarorinka"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "Mai Gina Takardar Aiki"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "Samar da takardun aiki na darussan da aka gauraya"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Ƙirƙiri takardun aiki tare da nau'ikan tambayoyi kamar cike gurbi, zaɓi ɗaya daga cikin amsoshi da aka bayar (MCQs), gaskiya/ƙarya, gajerun amsoshi, da kuma daidaitawa."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "Me ya kamata takardar aikin ta ƙunsa?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "Koyon Aiki"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Ƙirƙiri takardun aiki tare da nau'ikan tambayoyi kamar cike gurbi, zaɓi ɗaya daga cikin amsoshi da aka bayar (MCQs), gaskiya/ƙarya, gajerun amsoshi, da kuma daidaitawa."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan koyon aiki waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don mai gina takardar aiki tare da nasa gaggawar, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "Samar da takardun aiki na darussan da aka gauraya"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan gaggawa"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "Yi takardar aiki akan ɓangarori"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "Ƙirƙiri aikin gaurayen ilimin sinadarai"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "Gina darussan ƙamus"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "Aikin Sanya Alama a Zane"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Yi aikin sanya alamomi don zane-zane da tsarin aiki"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Maida zane-zane, tsarin jiki, taswirori, hanyoyin aiki, ko saitin dakin gwaje-gwaje zuwa aikin sanya alama tare da alamomi da binciken amsa."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "Wane zane ya kamata mu yi aikin sanya alama a kai?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "Koyon Aiki"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Maida zane-zane, tsarin jiki, taswirori, hanyoyin aiki, ko saitin dakin gwaje-gwaje zuwa aikin sanya alama tare da alamomi da binciken amsa."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan koyo na aiki waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "An tsara wannan yanayin don aikin lakabin zane tare da nasa saƙonni, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Yi aikin lakabi don zane-zane da tsarin aiki"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "Sanya lakabi ga tantanin halittar shuka"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "Yi aikin zane na zuciya"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "Ƙirƙiri tambayoyin lakabin taswira"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "Mai samar da wasan daidaitawa"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Haɗa kalmomi, ma'anoni, dalilai, da misalai"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Maida bayanin kula zuwa wasannin daidaitawa don ƙamus, ra'ayoyi, mutane/abubuwan da suka faru, dabaru, misalai, ko nau'i-nau'i na dalili da sakamako."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "Wadanne nau'i-nau'i ne ya kamata su zama wasan daidaitawa?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "Koyo na Aiki"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Maida bayanin kula zuwa wasannin daidaitawa don ƙamus, ra'ayoyi, mutane/abubuwan da suka faru, dabaru, misalai, ko nau'i-nau'i na dalili da sakamako."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan koyo na aiki waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "An tsara wannan yanayin don mai samar da wasan daidaitawa tare da nasa saƙonni, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Haɗa kalmomi, ma'anoni, dalilai, da misalai"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "Daidaita kalmomi da ma'anoni"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "Ƙirƙiri nau'i-nau'i na dalili da sakamako"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "Yi aikin daidaita dabaru"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP & Matsayi"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "Maida ci gaba zuwa matakai da ayyuka"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Tsara tsarin maki, matakai, ayyuka, da lada dangane da ci gaban koyo na gaske."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Wane burin koyo ya kamata ya zama tsarin matakai?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "Wasanni a cikin koyo"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Tsara tsarin maki, matakai, ayyuka, da lada dangane da ci gaban koyo na gaske."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Masu koyo da ke binciken batutuwan wasanni a cikin koyo waɗanda ke son jagora mai amfani maimakon akwatin amsa na gaba ɗaya."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "Wannan yanayin an tsara shi ne don XP da matakai tare da nasa saƙonni, misalai, da tsarin koyo."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "Maida ci gaba zuwa matakai da ayyuka"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Fara da misalan saƙonni"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Daidaita zaman da burinka"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "Ƙirƙiri XP don shirin jarabawa"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "Tsara matakai don aikin coding"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "Maida karatu zuwa ayyuka"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "Lambobin yabo & Nasarori"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "Ba da lada ga mahimman matakai"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Ƙirƙiri lambobin yabo don daidaito, ƙwarewa, ƙarfin hali, bita, haɗin gwiwa, da kammala ayyuka."
+    }
+  ]
+}

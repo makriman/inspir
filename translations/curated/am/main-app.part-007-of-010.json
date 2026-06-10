@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Amharic",
+  "locale": "am",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "የጊዜ ገደብ ይደራደሩ"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "ጨዋ ያልሆነ ደንበኛን ይያዙ"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "አስተማሪን እርዳታ ይጠይቁ"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "የሙያ አሳሽ"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "የሚስማሙዎትን መንገዶች ያግኙ"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "ሙያዎችን በፍላጎቶች፣ ክህሎቶች፣ የዕለት ተዕለት የሕይወት ምሳሌዎች እና ቀጣይ እርምጃዎች ያስሱ።"
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "ምን ዓይነት ሙያ ወይም ፍላጎት ነው ማሰስ ያለብን?"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "ዕቅድ"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "ሙያዎችን በፍላጎቶች፣ ክህሎቶች፣ የዕለት ተዕለት የሕይወት ምሳሌዎች እና ቀጣይ እርምጃዎች ያስሱ።"
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ የመልስ ሳጥን ከመጠቀም ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የዕቅድ ርዕሶችን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የሙያ አሳሽ ላይ የተስተካከለ ነው።"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "የሚስማሙዎትን መንገዶች ያግኙ"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "ባዮሎጂ እና ስነ-ጥበብ እወዳለሁ"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "የምርት ስራ አስኪያጅ ምን ይሰራል?"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "ህግ እና ስነ-ልቦናን ያወዳድሩ"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "የቃለ-መጠይቅ አሰልጣኝ"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "የተሻሉ መልሶችን ይለማመዱ"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "ለአጠቃላይ ትምህርት፣ ለስራ ልምምድ፣ ለስራ ወይም ለስኮላርሺፕ ቃለ-መጠይቆች በተጨባጭ ጥያቄዎች እና ግብረ-መልስ ይዘጋጁ።"
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "ለየትኛው ቃለ-መጠይቅ እየተዘጋጁ ነው?"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "እቅድ ማውጣት"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "ለአጠቃላይ ትምህርት፣ ለስራ ልምምድ፣ ለስራ ወይም ለስኮላርሺፕ ቃለ-መጠይቆች በተጨባጭ ጥያቄዎች እና ግብረ-መልስ ይዘጋጁ።"
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የእቅድ ርዕሶችን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የቃለ-መጠይቅ አሰልጣኝ የተስተካከለ ነው።"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "የተሻሉ መልሶችን ይለማመዱ"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "የኮሌጅ ቃለ-መጠይቅ ልምምድ"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "የስራ ልምምድ ጥያቄዎችን ይለማመዱ"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "ስለራስዎ የመናገር ችሎታን ያሻሽሉ"
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "የኮድ አሰልጣኝ"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "በመገንባት ፕሮግራሚንግ ይማሩ"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "ኮድን ይረዱ፣ ስህተቶችን ያስተካክሉ፣ ፅንሰ-ሀሳቦችን ይማሩ እና ትናንሽ ፕሮጀክቶችን ደረጃ በደረጃ ይገንቡ።"
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "ምን አይነት የኮዲንግ ርዕስ ወይም ስህተት እየፈታን ነው?"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "ኮድን ይረዱ፣ ስህተቶችን ያስተካክሉ፣ የፕሮግራሚንግ ፅንሰ-ሀሳቦችን ይማሩ እና ትናንሽ ፕሮጀክቶችን ደረጃ በደረጃ ይገንቡ።"
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "ማብራሪያ፣ የሳንካ ማስተካከያ እገዛ ወይም የፕሮጀክት ምክር ለሚፈልጉ ጀማሪ እና መካከለኛ ደረጃ ፕሮግራም አውጪዎች።"
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "አሰልጣኙ ኮዱ ምን እንዲያደርግ እንደሚጠብቁ ይጠይቅዎታል፣ ከዚያም ባህሪው እንዲገባዎት ትናንሽ ምሳሌዎችን እና ሙከራዎችን ይጠቀማል።"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "ሳንካውን ያብራሩ"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "ፅንሰ-ሀሳቡን ይረዱ"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "ትንሽ ማስተካከያ ይሞክሩ"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "በJavaScript ውስጥ ስለ ሪከርዥን (recursion) ያብራሩልኝ"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "ይህንን ስህተት ለማስተካከል እርዱኝ"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "የPython ሉፕስ (loops) አስተምሩኝ"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "የፕሮጀክት አሰልጣኝ"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "ሀሳቦችን ወደ ምዕራፎች ይለውጡ"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "የትምህርት ቤት፣ የፈጠራ፣ የኮዲንግ ወይም የግል ፕሮጀክትን በስፋት፣ በምዕራፎች፣ በመከላከያዎች እና በሚቀጥሉት እርምጃዎች ያቅዱ።"
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "ምን አይነት ፕሮጀክት እየገነባን ነው?"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "ዕቅድ"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "የትምህርት ቤት፣ የፈጠራ፣ የኮዲንግ ወይም የግል ፕሮጀክትን በስፋት፣ በምዕራፎች፣ በመከላከያዎች እና በሚቀጥሉት እርምጃዎች ያቅዱ።"
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከመጠበቅ ይልቅ ተግባራዊ መመሪያ የሚፈልጉ እና የዕቅድ ርዕሶችን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የፕሮጀክት አሰልጣኝ የተስተካከለ ነው።"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "ሀሳቦችን ወደ ምዕራፎች ይለውጡ"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "የሳይንስ ትርኢት ፕሮጀክት ያቅዱ"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "የፖርትፎሊዮ ድረ-ገጽ ይገንቡ"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "የታሪክ አቀራረብ ያደራጁ"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "የምርምር ረዳት"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "ጥያቄዎችን ይቅረጹ እና ምንጮችን ያዋህዱ"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "ሰፊ ርዕስን ወደ የምርምር ጥያቄዎች፣ የፍለጋ ቃላት፣ ዝርዝር ማውጫዎች እና የመረጃ ምንጭ ማስታወሻዎች ይለውጡ።"
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "ምን እየመረመሩ ነው?"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "ማሰብ"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "ሰፊ ርዕስን ወደ የምርምር ጥያቄዎች፣ የፍለጋ ቃላት፣ ዝርዝር ማውጫዎች እና የመረጃ ምንጭ ማስታወሻዎች ይለውጡ።"
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የማሰብ ችሎታን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የምርምር ረዳት የተስተካከለ ነው።"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "ጥያቄዎችን ይቅረጹ እና የመረጃ ምንጮችን ያዋህዱ"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን እንደ ግብዎ ያስተካክሉ"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "ታዳሽ ኃይልን ይመርምሩ"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "ስለ AI ስነ-ምግባር የተለያዩ አመለካከቶችን ይፈልጉ"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "ስለ ከተሜነት (urbanization) ወረቀት ያቅዱ"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "የምንጭ ተቺ"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "ታማኝነትን እና አድልዎትን ይገምግሙ"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "ጽሑፎችን፣ የይገባኛል ጥያቄዎችን፣ ቪዲዮዎችን ወይም ልጥፎችን ለማስረጃ፣ ለአድልዎ፣ ለታማኝነት እና ለጎደለ አውድ ይገምግሙ።"
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "ምንጩን ይለጥፉ ወይም ይግለጹ"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "ማሰብ"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "ጽሑፎችን፣ የይገባኛል ጥያቄዎችን፣ ቪዲዮዎችን ወይም ልጥፎችን ለማስረጃ፣ ለአድልዎ፣ ለታማኝነት እና ለጎደለ አውድ ይገምግሙ።"
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የማሰብ ችሎታን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የምንጭ ተቺ የተስተካከለ ነው።"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "ታማኝነትን እና አድልዎትን ይገምግሙ"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን እንደ ግብዎ ያስተካክሉ"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "ይህ ጽሑፍ አስተማማኝ ነው?"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "የዚህን የይገባኛል ጥያቄ ማስረጃ ያረጋግጡ"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "በዚህ አንቀጽ ውስጥ ያለውን አድልዎ ይለዩ"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "የመረጃ ተርጓሚ"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "ቁጥሮችን እና ገበታዎችን ይረዱ"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "መረጃዎችን፣ የገበታ መግለጫዎችን ወይም ውጤቶችን ይለጥፉ እና ምን ማለት እንደሆኑ፣ ምን ማለት እንዳልሆኑ እና ቀጥሎ ምን መጠየቅ እንዳለብዎ ይወቁ።"
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "መረጃውን ይለጥፉ ወይም ገበታውን ይግለጹ"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "መረጃዎችን፣ የገበታ መግለጫዎችን ወይም ውጤቶችን ይለጥፉ እና ምን ማለት እንደሆኑ፣ ምን ማለት እንዳልሆኑ እና ቀጥሎ ምን መጠየቅ እንዳለብዎ ይወቁ።"
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ የመልስ ሳጥን ከመጠቀም ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የSTEM ርዕሶችን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የመረጃ ተርጓሚ የተስተካከለ ነው።"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "ቁጥሮችን እና ገበታዎችን ይረዱ"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "ይህንን ሰንጠረዥ ያብራሩ"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "ይህ የዳሰሳ ጥናት ምን ያሳያል?"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "ግራፍ ለመተርጎም እርዳታ"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "የጥናት እቅድ አውጪ"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "በእውነተኛ ህይወት ውስጥ የሚሰራ የጥናት መርሃ ግብር ይገንቡ"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "በጊዜዎ፣ በጉልበትዎ፣ በግቦችዎ እና በደካማ ጎኖችዎ ዙሪያ የጥናት እቅድ ይፍጠሩ።"
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "ምን ማጥናት ያስፈልግዎታል?"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "ዕቅድ ማውጣት"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "በጊዜዎ፣ በጉልበትዎ፣ በግቦችዎ፣ በደካማ ጎኖችዎ፣ በግምገማ ዑደቶችዎ እና በተግባር መርሃ ግብርዎ ዙሪያ ተጨባጭ የጥናት እቅድ ይፍጠሩ።"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "እቅዱን ወደ የማይቻል ዝርዝር ሳይቀይሩ መዋቅር የሚፈልጉ ተማሪዎች እና በራሳቸው የሚማሩ።"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "አውጪው ምኞትን ከግምገማ፣ ከተግባር፣ ከማገገሚያ ቀናት እና ከሚቀጥለው ትንሹ ጠቃሚ እርምጃ ጋር ያስተካክላል።"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "ግቡን ይግለጹ"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "ልምምድን ያቅዱ"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "የክለሳ ዑደቶችን ይገንቡ"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "የሳምንቱን የሂሳብ ጥናት እቅድ ያውጡ"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "የዕለት ተዕለት የእንግሊዝኛ መማሪያ ልማድ ይፍጠሩ"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "የትምህርት ቤት እና የፈተና ዝግጅትን ማመጣጠን"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "የልማድ አሰልጣኝ"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "መማርን ወጥነት ያለው ያድርጉ"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "አላማዎችን በቀስቀሳዎች፣ ሽልማቶች እና የማገገሚያ እቅዶች አማካኝነት ወደ ትናንሽ እና ሊደገሙ የሚችሉ የመማሪያ ልማዶች ይለውጡ።"
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "ምን አይነት የመማሪያ ልማድ ይፈልጋሉ?"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "ማቀድ"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "አላማዎችን በቀስቀሳዎች፣ ሽልማቶች እና የማገገሚያ እቅዶች አማካኝነት ወደ ትናንሽ እና ሊደገሙ የሚችሉ የመማሪያ ልማዶች ይለውጡ።"
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ እና ስለ እቅድ ማውጣት ርዕሶች የሚማሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የልማድ አሰልጣኝ ላይ የተመሰረተ ነው።"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "መማርን ወጥነት ያለው ያድርጉ"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "በየቀኑ ለ20 ደቂቃ ያንብቡ"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "የሂሳብ ትምህርትን ማዘግየት ያቁሙ"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "በየቀኑ የኮዲንግ ልምምድ ያድርጉ"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "የተነሳሽነት አሰልጣኝ"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "መማር አስቸጋሪ በሚሆንበት ጊዜ እንደገና ይጀምሩ"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "በስሜታዊነት ከመቀዛቀዝ ይውጡ፣ ቀጣዩን ትንሹን እርምጃ ይፈልጉ እና ያለ ጥፋተኝነት ስሜት መነሳሳትን እንደገና ይገንቡ።"
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "አሁን መማርን አስቸጋሪ የሚያደርገው ምንድን ነው?"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "ዕቅድ"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "በስሜታዊነት ከመቀዛቀዝ ይውጡ፣ ቀጣዩን አነስተኛ እርምጃ ይፈልጉ እና ያለ ጥፋተኝነት ስሜት መነሳሳትን መልሰው ይገንቡ።"
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የዕቅድ ርዕሶችን የሚቃኙ ተማሪዎች።"
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የማበረታቻ አሰልጣኝ (motivation coach) ላይ የተመሰረተ ነው።"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "መማር አስቸጋሪ ሆኖ ሲሰማዎት እንደገና ይጀምሩ"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "ከኋላ የቀረሁ ይሰማኛል"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "ማዘግየቴን እቀጥላለሁ"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "ፈተና ወድቄ መጥፎ ስሜት ይሰማኛል"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "የፈጠራ አእምሮ ማጎልበቻ"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "ኦሪጅናል ሀሳቦችን ይፍጠሩ እና ይቅረጹ"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "ፕሮጀክቶችን፣ ታሪኮችን፣ ዲዛይኖችን፣ ርዕሶችን፣ ሙከራዎችን እና ያልተጠበቁ አቅጣጫዎችን በአእምሮ ማጎልበቻ ይፈልጉ።"
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "ምን ላይ ነው አእምሮ የምናጎለብተው?"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "ፈጠራ"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "ፕሮጀክቶችን፣ ታሪኮችን፣ ዲዛይኖችን፣ ርዕሶችን፣ ሙከራዎችን እና ያልተጠበቁ አቅጣጫዎችን በአእምሮ ማጎልበቻ ይፈልጉ።"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የፈጠራ ርዕሶችን የሚቃኙ ተማሪዎች።"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የፈጠራ አእምሮ ማጎልበቻ ላይ የተመሰረተ ነው።"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "ኦሪጅናል ሀሳቦችን ይፍጠሩ እና ይቅረጹ"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "ለሳይንስ ፕሮጀክት ሀሳቦች"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "ስለ ወዳጅነት የታሪክ ፅንሰ-ሀሳቦች"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "የፈጠራ አቀራረብ መክፈቻዎች"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "የታሪክ አስተማሪ"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "በታሪኮች አማካኝነት ይማሩ"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "ሃሳቦችን ወደ ታሪኮች፣ ገጸ-ባህሪያት፣ ግጭቶች እና የማይረሱ ትዕይንቶች ይለውጡ።"
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "ወደ ታሪክ መቀየር ያለበት ምንድን ነው?"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "ፈጠራ"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "ሃሳቦችን ወደ ታሪኮች፣ ገጸ-ባህሪያት፣ ግጭቶች እና የማይረሱ ትዕይንቶች በመቀየር አስቸጋሪ የሆኑ ሃሳቦችን ለማስታወስ ቀላል ያድርጉ።"
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "ሃሳቦችን በታሪክ፣ በምሳሌ፣ በገጸ-ባህሪያት እና በግልጽ ምሳሌዎች በተሻለ ሁኔታ የሚያስታውሱ ተማሪዎች።"
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "አስተማሪው ረቂቅ ነገሮችን ወደ ታሪክ መዋቅር ይለውጣል፣ በተመሳሳይ ጊዜ ዋናውን ሃሳብ ግልጽ አድርጎ ይይዛል።"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "ሃሳቡን ይምረጡ"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "ታሪክ ይገንቡ"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "ትምህርቱን ያብራሩ"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "ክፍልፋዮችን እንደ ታሪክ ያስተምሩ"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "ስለ ስነ-ምህዳር ታሪክ ይስሩ"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "ዲሞክራሲን በገጸ-ባህሪያት ያብራሩ"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "የፍልስፍና ላብራቶሪ"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "ስለ ትልልቅ ጥያቄዎች በጥንቃቄ ያስቡ"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "ስለ ማንነት፣ እውቀት፣ ፍትህ፣ ነፃነት፣ ደስታ እና ሌሎች ጥልቅ ጥያቄዎች በጥንቃቄ በማመዛዘን ይመርምሩ።"
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "ምን ትልቅ ጥያቄ እየመረመርን ነው?"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "ሰብአዊነት"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "ስለ ማንነት፣ እውቀት፣ ፍትህ፣ ነፃነት፣ ደስታ እና ሌሎች ጥልቅ ጥያቄዎች በጥንቃቄ በማመዛዘን ይመርምሩ።"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "የሰብአዊነት ርዕሶችን የሚመረምሩ እና አጠቃላይ መልስ ከመስጠት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ ተማሪዎች።"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ ለፍልስፍና ላብራቶሪ የተዘጋጀ ሲሆን የራሱ የሆነ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት አለው።"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "ስለ ትልልቅ ጥያቄዎች በጥንቃቄ ያስቡ"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን እንደ ግብዎ ያስተካክሉ"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "አንድን ነገር ፍትሃዊ የሚያደርገው ምንድን ነው?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "ነጻ ምርጫ አለን?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "እውቀት ምንድን ነው?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "የስነ-ምግባር አጣብቂኞች"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "የሞራል አመክንዮ ይለማመዱ"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "ባለድርሻ አካላትን፣ ውጤቶችን፣ ግዴታዎችን፣ መብቶችን እና የንግድ ልውውጦችን በመመዘን በአጣብቂኝ ሁኔታዎች ውስጥ ይስሩ።"
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "ምን ዓይነት አጣብቂኝ ሁኔታን እንመርምር?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "ሰብአዊነት"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "ባለድርሻ አካላትን፣ ውጤቶችን፣ ግዴታዎችን፣ መብቶችን እና የንግድ ልውውጦችን በመመዘን በአጣብቂኝ ሁኔታዎች ውስጥ ይስሩ።"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ የመልስ ሳጥን ሳይሆን ተግባራዊ መመሪያ የሚፈልጉ የሰብአዊነት ርዕሶችን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ በራሱ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ለስነ-ምግባር አጣብቂኞች የተስተካከለ ነው።"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "የሞራል አመክንዮ ይለማመዱ"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን እንደ ግብዎ ያስተካክሉ"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "በክፍል ውስጥ AI"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "በእንስሳት ላይ የሚደረግ ሙከራ"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "መዋሸት መቼም ቢሆን ተገቢ ሊሆን ይችላል?"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "ጂኦግራፊ አሳሽ"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "ቦታዎችን፣ ካርታዎችን እና ሰዎችን ይረዱ"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "ሀገራትን፣ ከተሞችን፣ ወንዞችን፣ የአየር ንብረትን፣ ስደትን፣ ሀብቶችን እና ጂኦግራፊ ህይወትን እንዴት እንደሚቀርጽ ያስሱ።"
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "የት ማሰስ አለብን?"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "ሰብአዊነት"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "ሀገራትን፣ ከተሞችን፣ ወንዞችን፣ የአየር ንብረትን፣ ስደትን፣ ሀብቶችን እና ጂኦግራፊ ህይወትን እንዴት እንደሚቀርጽ ያስሱ።"
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የሰብአዊ ሳይንስ ርዕሶችን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የጂኦግራፊ አሳሽ ላይ የተመሰረተ ነው።"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "ቦታዎችን፣ ካርታዎችን እና ሰዎችን ይረዱ"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "ከተሞች ለምን በወንዞች አቅራቢያ ይገኛሉ?"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "ሂማላያን ያስሱ"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "ህንድን እና ጃፓንን ያወዳድሩ"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "የኢኮኖሚክስ አስመሳይ"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "ምርጫዎችን፣ ማበረታቻዎችን እና የንግድ ልውውጦችን ይማሩ"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "በቀላል ማስመሰያዎች አማካኝነት ገበያዎችን፣ እጥረትን፣ ማበረታቻዎችን፣ ፖሊሲን እና የግል ፋይናንስን ይለማመዱ።"
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "ምን ዓይነት የኢኮኖሚ ሃሳብ እንመስል?"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "ሰብአዊ ሳይንስ"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "በቀላል ማስመሰያዎች አማካኝነት ገበያዎችን፣ እጥረትን፣ ማበረታቻዎችን፣ ፖሊሲን እና የግል ፋይናንስን ይለማመዱ።"
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የሰብአዊ ሳይንስ ርዕሶችን የሚመረምሩ ተማሪዎች።"
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ የራሱ የሆኑ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት ባለው የኢኮኖሚክስ አስመሳይ ላይ የተመሰረተ ነው።"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "ምርጫዎችን፣ ማበረታቻዎችን እና የንግድ ልውውጦችን ይማሩ"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ-ጊዜውን ከግቦችዎ ጋር ያስተካክሉ"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "የአቅርቦት እና የፍላጎት ሁኔታን ያስመስሉ"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "የዋጋ ግሽበትን ያብራሩ"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "ግብር ቢቀየር ምን ይከሰታል?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "የታሪክ ምክንያት እና ውጤት"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "ክስተቶች ለምን እንደተከሰቱ ይከታተሉ"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ታሪካዊ ክስተቶችን በምክንያቶች፣ በተቀሰቀሱ ሁኔታዎች፣ በውጤቶች እና በአማራጭ ዕድሎች አማካኝነት ይመርምሩ።"
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "የትኛውን ታሪካዊ ክስተት እንመርምር?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "ሰብአዊ ጥናቶች"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ታሪካዊ ክስተቶችን በምክንያቶች፣ በተቀሰቀሱ ሁኔታዎች፣ በውጤቶች እና በአማራጭ ዕድሎች አማካኝነት ይመርምሩ።"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የሰብአዊ ጥናቶች ተማሪዎች።"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "ይህ ሁነታ ለታሪክ ምክንያት እና ውጤት በራሱ ጥያቄዎች፣ ምሳሌዎች እና የመማሪያ ፍሰት የተዘጋጀ ነው።"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "ክስተቶች ለምን እንደተከሰቱ ይከታተሉ"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "በምሳሌ ጥያቄዎች ይጀምሩ"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ክፍለ ጊዜውን እንደ ግብዎ ያስተካክሉ"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "የአንደኛው የዓለም ጦርነት ምክንያቶች"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "የሮማ ግዛት ለምን ተዳከመ?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "የማተሚያ ማሽን ውጤቶች"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "የሲቪክስ አሰልጣኝ"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "መብቶችን፣ መንግስትን እና ማህበረሰብን ይረዱ"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "ሕገ-መንግስቶችን፣ ዲሞክራሲን፣ ምርጫዎችን፣ ፍርድ ቤቶችን፣ መብቶችን፣ ግዴታዎችን እና የህዝብ ፖሊሲን ይማሩ።"
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "የትኛውን የሲቪክስ ርዕስ እናጥና?"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "ሰብአዊ ጥናቶች"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "ሕገ-መንግስቶችን፣ ዲሞክራሲን፣ ምርጫዎችን፣ ፍርድ ቤቶችን፣ መብቶችን፣ ግዴታዎችን እና የህዝብ ፖሊሲን ይማሩ።"
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "አጠቃላይ መልስ ከማግኘት ይልቅ ተግባራዊ መመሪያ የሚፈልጉ የሰብአዊ ጥናቶች ተማሪዎች።"
+    }
+  ]
+}

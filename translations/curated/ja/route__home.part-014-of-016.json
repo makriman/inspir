@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Japanese",
+  "locale": "ja",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 14,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.3b78b9b7264612be50",
+      "source": "Understand why an answer works.",
+      "value": "答えがなぜ成り立つのかを理解する。"
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "答えより理解"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "一般的なチャットボットとは異なり、inspirはAIを学習モードを中心に整理しているため、学習者は必要な助けの種類から始められます。ヒント、質問、クイズ、能動的想起、ロールプレイ、ディベート、フィードバックなどです。"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "映像のミュートを解除"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "歴史的な出来事を、原因、きっかけ、結果、そして別の可能性という観点から紐解きます。"
+    },
+    {
+      "key": "site.0cb2a98d176c0d6e0a",
+      "source": "Use \"{value1}\" as a launchpad, not a stopping point. The strongest learning session moves from reading into recall, feedback, and one visible next step.",
+      "value": "「{value1}」を出発点として使い、終点にしないでください。最も強い学習セッションは、読むことから想起、フィードバック、目に見える次の一歩へ進みます。"
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "50分学習・10分休憩のサイクルを使う"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "提示された答え、正しい考え、誤解、次の一手を示すコンパクトな表を使う。"
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "信頼性スコアカードと質問を使って次に調べる。"
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "成果、ブロック計画、ルール、振り返りを含むディープワーク契約を使う。"
+    },
+    {
+      "key": "site.25f3436cf8f027c0a4",
+      "source": "Use a guided path for moving from confusion to examples, checks, and recall.",
+      "value": "混乱から例、確認、想起へ進むためのガイド付きパスを使う。"
+    },
+    {
+      "key": "site.263aad3876df3730dc",
+      "source": "Use a live AI learning mode to turn this guide into questions, feedback, examples, and next steps.",
+      "value": "ライブAI学習モードを使って、このガイドを質問、フィードバック、例、次のステップに変える。"
+    },
+    {
+      "key": "site.c2a0beae2becd36b3e",
+      "source": "Use a live mode when you know the exact point of confusion and want the next explanation, question, hint, or review loop.",
+      "value": "混乱している正確な点がわかっていて、次の説明、質問、ヒント、復習ループが欲しいときはライブモードを使います。"
+    },
+    {
+      "key": "site.4ba44f615dee2344fd",
+      "source": "Use a structured lesson when you know the course area and want a sequenced explanation or practice set.",
+      "value": "コース領域がわかっていて、順序立てた説明や練習セットが欲しいときは構造化レッスンを使います。"
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "表面、裏面、ヒント、よくある落とし穴を含む表を使う。"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "AIを、学習を静かに取り除く近道ではなく、理解、練習、フィードバックのためのコーチとして使う。"
+    },
+    {
+      "key": "site.4726b0ac594e351581",
+      "source": "Use AI as a programming coach, project partner, data interpreter, and research helper while keeping the learner in the loop.",
+      "value": "学習者を輪の中に保ちながら、AIをプログラミングコーチ、プロジェクトパートナー、データ解釈者、研究補助として使う。"
+    },
+    {
+      "key": "site.822197e35efa4dbf68",
+      "source": "Use AI feedback to sharpen structure and clarity without losing your own voice.",
+      "value": "自分の声を失わずに、AIのフィードバックで構成と明確さを磨く。"
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "AIはヒント、説明、間違い確認、復習ループに使います。自分で説明できない最終答案を作らせてはいけません。"
+    },
+    {
+      "key": "site.e0ecab1fdd63f7ec14",
+      "source": "Use AI for the next hint, a step check, or draft feedback while keeping the final reasoning and voice yours.",
+      "value": "最終的な推論と声は自分のものに保ちながら、次のヒント、手順確認、下書きフィードバックにAIを使います。"
+    },
+    {
+      "key": "site.c27741d4fa1c4735e0",
+      "source": "Use AI for the thinking around the answer",
+      "value": "答えの周辺にある思考にAIを使う"
+    },
+    {
+      "key": "site.3c15a1badabd630acb",
+      "source": "Use AI historical worlds, persona simulations, debate, philosophy, and evidence labels without confusing roleplay for sources.",
+      "value": "ロールプレイを出典と混同せずに、AIの歴史世界、人物シミュレーション、ディベート、哲学、証拠ラベルを使う。"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "ヒント、手順確認、数学的推論、文章へのフィードバックにAI宿題コーチングを使いながら、最終成果は自分のものに保つ。"
+    },
+    {
+      "key": "site.f454c3bcff623f2f24",
+      "source": "Use AI simulations as learning scaffolds while keeping sources, evidence, and interpretation clear.",
+      "value": "出典、証拠、解釈を明確に保ちながら、AIシミュレーションを学習の足場として使う。"
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "AIタイムトラベル、歴史上の会話、ディベート練習を使って、文脈、証拠、論点、視点を探究する。"
+    },
+    {
+      "key": "site.74978cdedb6b898dad",
+      "source": "Use AI to pressure-test your reasoning, surface assumptions, and improve decisions.",
+      "value": "AIを使って推論に圧力をかけ、前提を表に出し、意思決定を改善する。"
+    },
+    {
+      "key": "site.938cad8945c8f12abf",
+      "source": "Use AI to slow down reasoning, check steps, debug mistakes, and practise concepts.",
+      "value": "AIを使って推論をゆっくり進め、手順を確認し、間違いをデバッグし、概念を練習する。"
+    },
+    {
+      "key": "site.32feb61d4aa3606efc",
+      "source": "Use Art Appreciation Guide when this is the right mode for the job. If you want a related path, try Civics Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Art Appreciation Guideがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Civics Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.6a001db9ced5bfb232",
+      "source": "Use Art Appreciation Guide when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Art Appreciation Guideは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "バッジ名、基準、段階、証明例を使う。"
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "修正前後の抜粋、改訂の優先順位、簡潔な理由を使う。"
+    },
+    {
+      "key": "site.2f4a3f9ce995ca37de",
+      "source": "Use Brainstorm Ideas to create several routes before choosing one.",
+      "value": "Creative Brainstormerを使って、1つを選ぶ前に複数の道筋を作る。"
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "カレンダー、チェックリスト、リスクフラグを使う。"
+    },
+    {
+      "key": "site.b7e479a8da805c14af",
+      "source": "Use Career Explorer when this is the right mode for the job. If you want a related path, try Roleplay Scenario. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Career Explorerがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Roleplay Scenarioを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.5fa0d275390380b147",
+      "source": "Use Career Explorer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Career Explorerは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "ケースファイル、選択肢、結果、学びのメモを使う。"
+    },
+    {
+      "key": "site.d835e997c12945b8ec",
+      "source": "Use Case Study Simulator when this is the right mode for the job. If you want a related path, try Feynman Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Case Study Simulatorがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Feynman Tutorを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.718c202fac629655a7",
+      "source": "Use Case Study Simulator when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Case Study Simulatorは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "チャレンジカード、ポイント、ラウンド、振り返りを使う。"
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "引用項目と不足フィールドのチェックリストを使う。"
+    },
+    {
+      "key": "site.962c32260471c9ecdd",
+      "source": "Use Civics Coach when this is the right mode for the job. If you want a related path, try History Cause-and-Effect. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Civics Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、History Cause-and-Effectを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.307747761ccd6ec09c",
+      "source": "Use Civics Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Civics Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "クライアントを使用"
+    },
+    {
+      "key": "site.67ab2fa1194e620987",
+      "source": "Use Code Tutor for concepts, Project Coach for product ideas, Data Interpreter for datasets, and Study Plan Builder for a learning roadmap.",
+      "value": "概念にはCode Tutor、製品アイデアにはProject Coach、データセットにはData Interpreter、学習ロードマップにはStudy Plan Builderを使います。"
+    },
+    {
+      "key": "site.6d2e9178319cdae5c6",
+      "source": "Use Code Tutor or homework modes to isolate the exact point where reasoning breaks.",
+      "value": "Code Tutorまたは宿題モードを使って、推論が崩れる正確な箇所を切り分けます。"
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "Code TutorまたはProject Coachを使って、あいまいな目標を小さくテスト可能な次の一歩に変えます。"
+    },
+    {
+      "key": "site.bbe4b5cbcff3a78ba8",
+      "source": "Use Code Tutor when this is the right mode for the job. If you want a related path, try Interview Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Code Tutorがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Interview Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.65fb48b213ba1d00a8",
+      "source": "Use Code Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Code Tutorは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.cc86f8ca8f2b01fe01",
+      "source": "Use Collaborative Instruction when this is the right mode for the job. If you want a related path, try Socratic Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Collaborative Instructionがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Socratic Instructionを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.6f8e91eb4525f32413",
+      "source": "Use Collaborative Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Collaborative Instructionは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "コミットメントカード、チェックイン台本、リカバリープランを使う。"
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "設定、時間の切り出し、人物の核、資料ウォール、歴史家サイドカー、おすすめの最初の質問、その後の人物になりきったやり取りと、ときどき入る主張ラベル、求められたときの振り返りという、コンパクトな段階セクションを使います。"
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "Passport、Travel Advisory、Arrival Scene、Location、Identity、Social Rules、Event Clock、Nearby People、Objects、Choices、Evidence、Field NotesといったコンパクトなUI風セクションを使います。主要なターンは意味のある選択肢で終えます。"
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "Shared artifact、AI contribution、User move、Inline comments、Decision log、Open questions、Next actionなどのコンパクトな作業室セクションを使います。書き換えるときは、統合前に提案編集や差分を示します。"
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "比較表と次のステップの実験を使う。"
+    },
+    {
+      "key": "site.29b8400b4540e7d418",
+      "source": "Use Concept Map Builder when this is the right mode for the job. If you want a related path, try Spaced Review. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Concept Map Builderがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Spaced Reviewを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.bb38dee9a6cd6fff36",
+      "source": "Use Concept Map Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Concept Map Builderは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "簡潔な主張、証拠プロンプト、求められたときの最終ディベート要約を使う。"
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "簡潔なコードスニペット、有用な場合だけのコメント、テストケースを使う。"
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "簡潔な描画指示、ラベル一覧、視覚チェックポイントを使う。"
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "Cornell形式のセクションを使います。手がかり、ノート、要約、想起チェックです。"
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "コースカード、リソースリスト、週ごとの作業量表を使う。"
+    },
+    {
+      "key": "site.cec8c6e4945f7c202b",
+      "source": "Use Creative Brainstormer when this is the right mode for the job. If you want a related path, try Motivation Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Creative Brainstormerがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Motivation Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.c7f0d6a9fe1f0f0f1f",
+      "source": "Use Creative Brainstormer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Creative Brainstormerは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "ダッシュボードカード、傾向メモ、弱点、次の行動を使う。"
+    },
+    {
+      "key": "site.21bcc1ab289563ea0a",
+      "source": "Use Data Interpreter to ask what the data says, what it does not say, and what to check next.",
+      "value": "Data Interpreterを使って、データが何を示すか、何を示さないか、次に何を確認すべきかを尋ねる。"
+    },
+    {
+      "key": "site.13f6aa5dbc34a1c855",
+      "source": "Use Data Interpreter when this is the right mode for the job. If you want a related path, try Source Critic. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Data Interpreterがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Source Criticを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.8dcd885d4d2885f7be",
+      "source": "Use Data Interpreter when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Data Interpreterは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "締め切り表、リスクフラグ、次の行動を使う。"
+    },
+    {
+      "key": "site.5e7b8bf8fda0b72c8d",
+      "source": "Use debate and cause-effect modes to compare explanations and write a stronger argument.",
+      "value": "ディベートと因果関係モードを使って説明を比較し、より強い論点を書く。"
+    },
+    {
+      "key": "site.67ce2e1733e0413da2",
+      "source": "Use Debate Any Topic to define the position, burden of proof, and opposing view.",
+      "value": "Debate Any Topicを使って、立場、立証責任、反対意見を定義します。"
+    },
+    {
+      "key": "site.0a7246989e8a5277ee",
+      "source": "Use Debate Any Topic to separate evidence, values, and assumptions.",
+      "value": "Debate Any Topicを使って、証拠、価値観、前提を分けます。"
+    },
+    {
+      "key": "site.bf18b2089e2f217da8",
+      "source": "Use Debate Any Topic to test claims against counterarguments.",
+      "value": "Debate Any Topicを使って、反論に対して主張を検証します。"
+    },
+    {
+      "key": "site.0df474b49f89092030",
+      "source": "Use Debate any topic when this is the right mode for the job. If you want a related path, try Debate with a personality. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Debate any topicがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Debate with a personalityを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.b6d7ea92de5267382e",
+      "source": "Use Debate any topic when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Debate any topicは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "ディベートカード、簡潔な反論、ときどき行う議論品質の採点を使う。"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "最も強い主張と最も強い反論を比較するためにディベートを使う。"
+    },
+    {
+      "key": "site.27069a04f2fe87017e",
+      "source": "Use Debate with a personality when this is the right mode for the job. If you want a related path, try Talk to a historical person. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Debate with a personalityがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Talk to a historical personを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.a5d02d6f499f36bba7",
+      "source": "Use Debate with a personality when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Debate with a personalityは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "診断、よりよいモデル、なぜそれが機能するか、確認質問を1つ使う。"
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "テキスト内の図解、役割説明、現実世界のシナリオを使う。"
+    },
+    {
+      "key": "site.404747c655d4bae525",
+      "source": "Use Economics Simulator when this is the right mode for the job. If you want a related path, try Geography Explorer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Economics Simulatorがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Geography Explorerを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.4e7a277dd87ebfeba6",
+      "source": "Use Economics Simulator when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Economics Simulatorは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "方程式、揃えた手順、短い「なぜこれでよいか」メモを使う。"
+    },
+    {
+      "key": "site.082e7690af7eb04c5d",
+      "source": "Use Ethics Dilemmas when this is the right mode for the job. If you want a related path, try Philosophy Lab. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Ethics Dilemmasがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Philosophy Labを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.b2f3bcf1d78931ce13",
+      "source": "Use Ethics Dilemmas when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Ethics Dilemmasは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.32342ae4ffd3ccbc2f",
+      "source": "Use Exam Prep Planner to split a syllabus into sessions, practice, rest, and review checkpoints.",
+      "value": "Exam Prep Plannerを使って、シラバスをセッション、練習、休憩、復習チェックポイントに分けます。"
+    },
+    {
+      "key": "site.364c2ff6739024d5e5",
+      "source": "Use Exam Prep Planner when this is the right mode for the job. If you want a related path, try Speaking Practice. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Exam Prep Plannerがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Speaking Practiceを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.028f98cd50e70b89d2",
+      "source": "Use Exam Prep Planner when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Exam Prep Plannerは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.9f4a4c5d3ac1cd1ed6",
+      "source": "Use Exam Prep Planner with the date, syllabus, available time, and weak areas.",
+      "value": "日付、シラバス、使える時間、弱点を指定してExam Prep Plannerを使います。"
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "試験官の質問、模範解答の形、フィードバックスコアカードを使う。"
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "例を使い、仕組みを比較し、応用問題を尋ね、事実と意見を分ける。"
+    },
+    {
+      "key": "site.fc3672b94854abb4d7",
+      "source": "Use Explain My Answer when this is the right mode for the job. If you want a related path, try Debate any topic. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Explain My Answerがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Debate any topicを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.0347d734092168c24f",
+      "source": "Use Explain My Answer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Explain My Answerは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.1f51099bf0f757ebc2",
+      "source": "Use Feynman Tutor when this is the right mode for the job. If you want a related path, try Misconception Doctor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Feynman Tutorがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Misconception Doctorを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.8d436f99bc40e1c969",
+      "source": "Use Feynman Tutor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Feynman Tutorは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.68e3ce9dbf6dd60b61",
+      "source": "Use Flashcard Builder to convert misses into focused recall prompts.",
+      "value": "Flashcard Builderを使って、間違いを焦点の合った想起プロンプトに変えます。"
+    },
+    {
+      "key": "site.99edef639ccbb31b6c",
+      "source": "Use Flashcard Builder when this is the right mode for the job. If you want a related path, try Exam Prep Planner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Flashcard Builderがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Exam Prep Plannerを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.c1fb32683ce831e8e1",
+      "source": "Use Flashcard Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Flashcard Builderは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.5ab4fb5e9add990671",
+      "source": "Use Flashcards and Spaced Review to turn misses into repeatable memory work.",
+      "value": "FlashcardsとSpaced Reviewを使って、間違いを繰り返せる記憶作業に変えます。"
+    },
+    {
+      "key": "site.32307cc36733b653d6",
+      "source": "Use flashcards or quizzes so the article becomes a practice loop, not just advice.",
+      "value": "記事が単なる助言ではなく練習ループになるように、フラッシュカードやクイズを使います。"
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "フォルダー、タグ、ノート要約、リンク、復習アクションを使う。"
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "公式、表、目標スコア計画を使う。"
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "フォーラム投稿用の文、返信下書き、ディスカッション要約を使う。"
+    },
+    {
+      "key": "site.f52be16701e83ab73b",
+      "source": "Use Geography Explorer when this is the right mode for the job. If you want a related path, try Ethics Dilemmas. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Geography Explorerがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Ethics Dilemmasを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.97f31fa0d1b629b922",
+      "source": "Use Geography Explorer when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Geography Explorerは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "目標カード、優先度、所要時間の見積もり、障害、完了条件を使う。"
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "グループの議題、役割、ラウンド、リソース、フォローアップタスクを使う。"
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "グループの役割、タイマー付きラウンド、チェックイン、振り返りプロンプトを使う。"
+    },
+    {
+      "key": "site.6fc373d0f67386667d",
+      "source": "Use Habit Coach when this is the right mode for the job. If you want a related path, try Study Plan Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Habit Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Study Plan Builderを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.87b80b81d1d72e5932",
+      "source": "Use Habit Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Habit Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "習慣レシピ、障害への計画、7日間の実験を使う。"
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "宿題サポートには、ヒント優先と説明し返しのワークフローを使う。"
+    },
+    {
+      "key": "site.dd987e4b1aaffc7617",
+      "source": "Use hints before answers",
+      "value": "答えの前にヒントを活用する"
+    },
+    {
+      "key": "site.b2f99254c634dd4f39",
+      "source": "Use hints before answers.",
+      "value": "答えの前にヒントを使う。"
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "完成した最終答案ではなく、ヒント、チェックポイント、小さな例を使う。"
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "学びを答えのコピーに変えずに、ヒント、手順確認、文章へのフィードバックを使う。"
+    },
+    {
+      "key": "site.2433805f11d2eb611c",
+      "source": "Use historical AI roleplay with three rules:",
+      "value": "歴史AIロールプレイは3つのルールで使う:"
+    },
+    {
+      "key": "site.0e7e091d76613071b3",
+      "source": "Use historical modes with labels for documented facts versus simulation.",
+      "value": "記録された事実とシミュレーションを区別するラベル付きで歴史モードを使う。"
+    },
+    {
+      "key": "site.0d10ce798bdb416719",
+      "source": "Use Historical Person mode while treating generated dialogue as simulation.",
+      "value": "生成された対話をシミュレーションとして扱いながら、Historical Personモードを使う。"
+    },
+    {
+      "key": "site.2adb066629a09b3fc0",
+      "source": "Use History Cause-and-Effect when this is the right mode for the job. If you want a related path, try Economics Simulator. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "History Cause-and-Effectがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Economics Simulatorを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.a5ba0d88b06ad8eb5d",
+      "source": "Use History Cause-and-Effect when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "History Cause-and-Effectは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "Homework Coachを使ってヒントを求め、その後で学習者に次の一手を説明してもらう。"
+    },
+    {
+      "key": "site.f786d63302707a26e8",
+      "source": "Use Homework Coach to move one step at a time instead of asking for the final answer.",
+      "value": "最終答案を求めるのではなく、Homework Coachを使って一歩ずつ進む。"
+    },
+    {
+      "key": "site.b7f1b5070a6f617745",
+      "source": "Use Homework Coach to narrow the stuck point, then explain the next line in your own words.",
+      "value": "Homework Coachを使ってつまずきの箇所を絞り込み、次の行を自分の言葉で説明する。"
+    },
+    {
+      "key": "site.7289c50293ffe86821",
+      "source": "Use Homework Coach when this is the right mode for the job. If you want a related path, try Explain My Answer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Homework Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Explain My Answerを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.8d74b261c3e3ee8d1b",
+      "source": "Use Homework Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Homework Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "サイトにはhttps://inspirlearning.com ミッションには/mission、公開学習モード一覧には/topics、標準のゲスト学習体験には/chat/learn-anythingを使います。"
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "有用な場合は、仮説、材料、方法、観察、説明のセクションを使う。"
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "アイデアメニュー、選択基準、次のステップのスケッチを使う。"
+    },
+    {
+      "key": "site.121af804d864e3b164",
+      "source": "Use immersion for engagement while keeping learning goals, evidence, and reflection visible.",
+      "value": "没入感を使って関心を高めながら、学習目標、証拠、振り返りを見える状態に保つ。"
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "人物になりきった対話と短いコーチングメモを使う。"
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "inspirを学生向けの無料AIチューターとして使います。宿題のヒント、ソクラテス式質問、数学の手順確認、文章フィードバック、クイズ、フラッシュカード、試験準備に役立ちます。"
+    },
+    {
+      "key": "site.d8fe052e025fdee3e6",
+      "source": "Use inspir first when your search is about an action: explain this simply, ask me Socratic questions, give me a homework hint, check my math step, quiz me, build flashcards, debate this topic, or help me plan revision.",
+      "value": "検索が行動に関するものなら、まずinspirを使ってください。簡単に説明して、ソクラテス式に質問して、宿題のヒントを出して、数学の手順を確認して、クイズして、フラッシュカードを作って、このトピックでディベートして、復習計画を手伝って、といった場面です。"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "学習者自身の声を置き換えずに構成を改善する、エッセイフィードバック、読解サポート、スピーキング練習、出典批評、復習ループにinspirを使います。"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "非公開チャットを公開せずに、宿題のヒント、数学の手順確認、文章フィードバック、出典批評、ソクラテス式質問、フラッシュカードにinspirを使います。"
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "答え写しなしで、段階的な数学ヘルプ、宿題のヒント、ソクラテス式推論、クイズ、フラッシュカード、試験準備にinspirを使います。"
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "説明、コードチュータリング、プロジェクトコーチング、研究支援、コンセプトマップ、学習計画、習慣サポートを使って、自分で何でも学ぶためにinspirを使います。"
+    },
+    {
+      "key": "site.cb34eb52e96d4923a8",
+      "source": "Use inspir to turn confusion into questions, examples, retrieval practice, writing feedback, debate, and a personal study plan.",
+      "value": "混乱を質問、例、想起練習、文章フィードバック、ディベート、個人用学習計画に変えるためにinspirを使います。"
+    },
+    {
+      "key": "site.7d662811b7005e34b8",
+      "source": "Use inspir when you want a free public AI learning mode that can explain, question, quiz, coach homework, build flashcards, and adapt to the exact thing you are stuck on.",
+      "value": "説明、質問、クイズ、宿題コーチ、フラッシュカード作成ができ、つまずいている内容に正確に合わせてくれる無料の公開AI学習モードが欲しいときはinspirを使います。"
+    },
+    {
+      "key": "site.2e8595f94f7e64615d",
+      "source": "Use Interactive Instruction when this is the right mode for the job. If you want a related path, try Collaborative Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Interactive Instructionがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Collaborative Instructionを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.bfc97ba28152235951",
+      "source": "Use Interactive Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Interactive Instructionは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.014cfbab2db3818e0b",
+      "source": "Use Interview Coach when this is the right mode for the job. If you want a related path, try Career Explorer. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Interview Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Career Explorerを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.80d83b53e452d83225",
+      "source": "Use Interview Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Interview Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.ce853d13955f6bfaab",
+      "source": "Use Interview or debate modes to test whether the explanation survives questions.",
+      "value": "Interviewまたはディベートモードを使って、説明が質問に耐えられるかを確認する。"
+    },
+    {
+      "key": "site.b2c3bbfbb2ff0b8d17",
+      "source": "Use it for comparison",
+      "value": "比較に使う"
+    },
+    {
+      "key": "site.3cc91c4bf9fc851004",
+      "source": "Use it for debugging as a learning exercise: share the symptom, your expectation, and what you already tried, then ask for the next diagnostic step.",
+      "value": "デバッグを学習演習として使います。症状、期待していたこと、すでに試したことを共有し、次の診断ステップを尋ねます。"
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "重要ポイント、アウトライン、定義、復習問題を使う。"
+    },
+    {
+      "key": "site.9f4c89b6edb43dca90",
+      "source": "Use Language Roleplay when this is the right mode for the job. If you want a related path, try Vocabulary Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Language Roleplayがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Vocabulary Builderを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.dba045905f6b5388dd",
+      "source": "Use Language Roleplay when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Language Roleplayは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "ランキングルール、採点、保護策、振り返りを使う。"
+    },
+    {
+      "key": "site.da5019d16ef439db02",
+      "source": "Use Learn Anything for broad explanations, Socratic Instruction for reasoning, Homework Coach for hint-first help, Math Step Coach for equations, and Flashcard Builder or Quiz me on Trivia for recall practice.",
+      "value": "幅広い説明にはLearn Anything、推論にはSocratic Instruction、ヒント優先の助けにはHomework Coach、方程式にはMath Step Coach、想起練習にはFlashcard BuilderまたはQuiz me on Triviaを使います。"
+    },
+    {
+      "key": "site.85af502408684be219",
+      "source": "Use Learn Anything to clarify the concept and find examples.",
+      "value": "Learn Anythingを使って概念を明確にし、例を見つけます。"
+    },
+    {
+      "key": "site.7556fab79a251a4cb7",
+      "source": "Use Learn Anything to convert the reasoning into a concise explanation.",
+      "value": "Learn Anythingを使って、推論を簡潔な説明に変えます。"
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "Learn Anythingを使って、より簡単なモデル、前提となる考え、適切なレベルの例を得ます。"
+    },
+    {
+      "key": "site.1d231214a16d5e196d",
+      "source": "Use Learn Anything to turn a message into a simpler explanation and examples.",
+      "value": "Learn Anythingを使って、メッセージをより簡単な説明と例に変えます。"
+    },
+    {
+      "key": "site.796fd58553cd1e520b",
+      "source": "Use Learn Anything when this is the right mode for the job. If you want a related path, try Viva Practice. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Learn Anythingがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Viva Practiceを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.7e1410918eae1ff0f9",
+      "source": "Use Learn Anything when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Learn Anythingは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.ece30e133ea6fb09af",
+      "source": "Use Learning Game Master when this is the right mode for the job. If you want a related path, try Mindset Reflection. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Learning Game Masterがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Mindset Reflectionを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.7bd9b1af11e6c97f57",
+      "source": "Use Learning Game Master when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Learning Game Masterは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "レベル表、XPルール、クエストカード、作業量が増えすぎないための保護策を使う。"
+    },
+    {
+      "key": "site.c138353994a69a1461",
+      "source": "Use Math Step Coach for reasoning checks and Writing Coach for revision priorities.",
+      "value": "推論確認にはMath Step Coach、改訂優先事項にはWriting Coachを使います。"
+    },
+    {
+      "key": "site.466d73af702c7677e4",
+      "source": "Use Math Step Coach to explain why each move is valid.",
+      "value": "Math Step Coachを使って、各手順がなぜ有効なのかを説明します。"
+    },
+    {
+      "key": "site.f9e69911e2bc7cd9e9",
+      "source": "Use Math Step Coach when this is the right mode for the job. If you want a related path, try Homework Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Math Step Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Homework Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.b73352517f50ac734a",
+      "source": "Use Math Step Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Math Step Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.fcd2c6c11047c94e2f",
+      "source": "Use Memory Palace when this is the right mode for the job. If you want a related path, try Flashcard Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Memory Palaceがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Flashcard Builderを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.d821ea36357e976a31",
+      "source": "Use Memory Palace when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Memory Palaceは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.4887019842f0724851",
+      "source": "Use Mindset Reflection when this is the right mode for the job. If you want a related path, try Music Theory Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Mindset Reflectionがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Music Theory Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.2d2e0a9dc56d5901b3",
+      "source": "Use Mindset Reflection when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Mindset Reflectionは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.72a7705d332c277b81",
+      "source": "Use Misconception Doctor when this is the right mode for the job. If you want a related path, try Concept Map Builder. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Misconception Doctorがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Concept Map Builderを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.f9e7695f5bdac90694",
+      "source": "Use Misconception Doctor when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Misconception Doctorは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.d334db8b730b03e40c",
+      "source": "Use Motivation Coach when this is the right mode for the job. If you want a related path, try Habit Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Motivation Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Habit Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.bdbaf136c7b7688af8",
+      "source": "Use Motivation Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Motivation Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.1e1ab9defd562ff660",
+      "source": "Use Music Theory Coach when this is the right mode for the job. If you want a related path, try Art Appreciation Guide. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Music Theory Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Art Appreciation Guideを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.ccb419e01315d58ef6",
+      "source": "Use Music Theory Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Music Theory Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "概念を覚えやすくするために物語を使う。"
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "役立つ場合は、入れ子の箇条書き、表、Mermaidテキストを使う。"
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "番号付きの場所、画像、想起チェックポイントを使う。"
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "目標、要約、例、落とし穴、質問、次の復習を使う。"
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "観察、解釈、証拠、次の質問のセクションを使う。"
+    },
+    {
+      "key": "site.8f15bbb949bbe55996",
+      "source": "Use of Data",
+      "value": "データの利用"
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "ペアのバンク、並べ替えリスト、解答キー、復習メモを使う。"
+    },
+    {
+      "key": "site.f59e37cae52db37732",
+      "source": "Use Philosophy Lab when this is the right mode for the job. If you want a related path, try Story Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Philosophy Labがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Story Tutorを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.95acbe6e96ee9cf931",
+      "source": "Use Philosophy Lab when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Philosophy Labは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "場所カード、比較表、地図プロンプトを使う。"
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "実用的な音声のコツと学習セッションの設定メモを使う。"
+    },
+    {
+      "key": "site.43f312328ff3dea7a6",
+      "source": "Use Project Coach to turn a vague idea into the next testable feature or learning checkpoint.",
+      "value": "Project Coachを使って、あいまいなアイデアを次にテスト可能な機能や学習チェックポイントに変えます。"
+    },
+    {
+      "key": "site.4801ac355f155a1a4e",
+      "source": "Use Project Coach when this is the right mode for the job. If you want a related path, try Code Tutor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Project Coachがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Code Tutorを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.57a45af1e9e70d79ae",
+      "source": "Use Project Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Project Coachは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.f140bd34a9fa9cde77",
+      "source": "Use prompts that make the AI slow down:",
+      "value": "AIにゆっくり進ませるプロンプトを使う:"
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "無料の公開ゲストモードを使い、その後オープンソースの取り組みや学校向け導入パスを探る。"
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "セッションを始める前に、公開モードの説明を使って動作を選びます。"
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "クエスト、レベル、バッジ、ボス問題を使う。"
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "能動的想起にはクイズとフラッシュカードモードを使い、間違えた項目を復習に回します。"
+    },
+    {
+      "key": "site.b0e2d270322f3134ca",
+      "source": "Use Quiz and Flashcards after the explanation so the same error becomes easier to spot.",
+      "value": "説明の後にQuizとFlashcardsを使い、同じ誤りを見つけやすくします。"
+    },
+    {
+      "key": "site.33d9813f108b6aa7db",
+      "source": "Use Quiz Me On Trivia to reveal what you actually remember.",
+      "value": "Quiz Me On Triviaを使って、実際に何を覚えているかを明らかにします。"
+    },
+    {
+      "key": "site.22c25a848f18347f87",
+      "source": "Use Quiz me on Trivia when this is the right mode for the job. If you want a related path, try Interactive Instruction. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Quiz me on Triviaがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Interactive Instructionを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.b79428a954bf308588",
+      "source": "Use Quiz me on Trivia when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Quiz me on Triviaは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.e2a9ec9823fba748bf",
+      "source": "Use Quiz mode to test recall first, then repair only the topics that need attention.",
+      "value": "Quizモードを使ってまず想起をテストし、注意が必要なトピックだけを修復します。"
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "間違えた問題を見える化し、繰り返せるようにするためにクイズとフラッシュカードを使う。"
+    },
+    {
+      "key": "site.748c2c2802819d3ced",
+      "source": "Use quizzes and flashcards to practise formulas, definitions, and problem types.",
+      "value": "公式、定義、問題タイプを練習するためにクイズとフラッシュカードを使う。"
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "学習者が理解したことを示せるように、クイズ、フラッシュカード、ソクラテス式質問を使う。"
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "読書に雨の音を使う"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "復習用に雨の音を使う"
+    },
+    {
+      "key": "site.ff8acf76ddef517cbf",
+      "source": "Use Reading Companion to summarize, question, and explain the passage before citing it.",
+      "value": "Reading Companionを使って、引用する前に文章を要約し、質問し、説明します。"
+    },
+    {
+      "key": "site.ab1e6ba7d128549f8c",
+      "source": "Use Reading Companion when this is the right mode for the job. If you want a related path, try Writing Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Reading Companionがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Writing Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.a9209e87bd56b691af",
+      "source": "Use Reading Companion when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Reading Companionは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "振り返りプロンプト、学習者の強み、次に試す実験を1つ使う。"
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "成果、証拠、障害、学び、来週の予定というレポートセクションを使う。"
+    },
+    {
+      "key": "site.1c663cd386081888fa",
+      "source": "Use Research Assistant when this is the right mode for the job. If you want a related path, try Project Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Research Assistantがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Project Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.62a22abb2f8ba94eda",
+      "source": "Use Research Assistant when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Research Assistantは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "Research Assistant、Source Critic、Concept Map Builderを使って、主張と証拠を整理します。"
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "研究質問、出典マトリクス、統合メモを使う。"
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "リソースカード、対象者メモ、利用のコツを使う。"
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "復習キュー、期日、自信度評価を使う。"
+    },
+    {
+      "key": "site.70dbffe904664c5bed",
+      "source": "Use Roleplay Scenario when this is the right mode for the job. If you want a related path, try Case Study Simulator. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Roleplay Scenarioがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Case Study Simulatorを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.60d591ab277dc02d31",
+      "source": "Use Roleplay Scenario when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Roleplay Scenarioは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.7674e4599c4c2d592d",
+      "source": "Use Science Lab Partner when this is the right mode for the job. If you want a related path, try Math Step Coach. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Science Lab Partnerがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Math Step Coachを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.9f52ae61e48a05c844",
+      "source": "Use Science Lab Partner when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Science Lab Partnerは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "明確さ、構成、証拠、発表メモのためのスコアカードを使う。"
+    },
+    {
+      "key": "site.243ee1b67f1e36ad05",
+      "source": "Use Service in any manner that could disable, overburden, damage, or impair Service or interfere with any other party’s use of Service, including their ability to engage in real time activities through Service. Use any robot, spider, or other automatic device, process, or means to access Service for any purpose, including monitoring or copying any of the material on Service. Use any manual process to monitor or copy any of the material on Service or for any other unauthorized purpose without our prior written consent. Use any device, software, or routine that interferes with the proper working of Service. Introduce any viruses, trojan horses, worms, logic bombs, or other material which is malicious or technologically harmful. Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of Service, the server on which Service is stored, or any server, computer, or database connected to Service. Attack Service via a denial-of-service attack or a distributed denial-of-service attack. Take any action that may damage or falsify Company rating. Otherwise attempt to interfere with the proper working of Service.",
+      "value": "Serviceを無効化、過負荷、損傷、または機能低下させる可能性のある方法、またはServiceを通じたリアルタイム活動への参加能力を含め、他の当事者によるServiceの利用を妨げる方法でServiceを使用すること。Service上の資料の監視またはコピーを含むいかなる目的でも、ロボット、スパイダー、その他の自動装置、プロセス、手段を使ってServiceにアクセスすること。当社の事前の書面による同意なく、Service上の資料を監視またはコピーするため、またはその他の無許可の目的のために手動プロセスを使用すること。Serviceの適切な動作を妨げる装置、ソフトウェア、またはルーチンを使用すること。ウイルス、トロイの木馬、ワーム、ロジックボム、その他悪意がある、または技術的に有害な素材を持ち込むこと。Serviceの一部、Serviceが保存されているサーバー、またはServiceに接続されたサーバー、コンピューター、データベースに対して、不正アクセス、干渉、損傷、妨害を試みること。サービス拒否攻撃または分散型サービス拒否攻撃によってServiceを攻撃すること。Companyの評価を損なう、または改ざんする可能性のある行為を行うこと。その他、Serviceの適切な動作を妨げようとすること。"
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "短い集中計画、チェックリスト、セッション後の振り返りプロンプトを使う。"
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "役立つ場合は、短いセクション、例、たとえ、GFM対応のリストや表を使う。"
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "短い要約、引用を控えめにした参照、質問セットを使う。"
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "短い支援メモと実用的な次の行動を使う。"
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "シンプルな環境音プリセットを使用して、読書、執筆、復習、問題解決中の集中力を高め、気を散らすものを減らします。"
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "シンプルな表記、例、練習プロンプトを使う。"
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "シンプルな表、因果連鎖、注意メモを使う。"
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "やさしい言葉への書き換えとギャップチェックリストを使う。"
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "スケッチを学習に取り入れましょう。図の計画、ラフな地図へのラベル付け、プロセスの説明、あるいは複雑なアイデアを明確なビジュアルに変換するのに役立ちます。"
+    },
+    {
+      "key": "site.272400d94547e9d58f",
+      "source": "Use Socratic Instruction to ask what would change your mind.",
+      "value": "Socratic Instructionを使って、何があれば考えが変わるかを尋ねます。"
+    },
+    {
+      "key": "site.41b0540546b4a3543a",
+      "source": "Use Socratic Instruction to expose assumptions and weak links.",
+      "value": "Socratic Instructionを使って、前提と弱い結びつきを明らかにします。"
+    },
+    {
+      "key": "site.a52a9da60c21adfd4f",
+      "source": "Use Socratic Instruction to make sure you can justify the next move in your own words.",
+      "value": "Socratic Instructionを使って、次の一手を自分の言葉で正当化できることを確認します。"
+    },
+    {
+      "key": "site.86906db6a53679221d",
+      "source": "Use Socratic Instruction to uncover missing assumptions and shallow confidence.",
+      "value": "Socratic Instructionを使って、抜けている前提と浅い自信を明らかにします。"
+    },
+    {
+      "key": "site.4cf3a926ba31474f03",
+      "source": "Use Socratic Instruction when this is the right mode for the job. If you want a related path, try Learn Anything. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Socratic Instructionがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Learn Anythingを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.09be51f50be6c84f1c",
+      "source": "Use Socratic Instruction when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Socratic Instructionは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "ソクラテス式の質問を使う"
+    },
+    {
+      "key": "site.3df2bcdb866aa5cb8d",
+      "source": "Use Socratic questions to extract what changed in your understanding.",
+      "value": "ソクラテス式質問を使って、理解の何が変わったかを引き出す。"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "音のおすすめと集中環境の設定メモを使う。"
+    },
+    {
+      "key": "site.89d82da89b4e4384ea",
+      "source": "Use Source Critic when this is the right mode for the job. If you want a related path, try Research Assistant. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Source Criticがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Research Assistantを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.3a79c2d033f365c49a",
+      "source": "Use Source Critic when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Source Criticは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.673383be4080ccee8e",
+      "source": "Use source critique for any claim you might cite.",
+      "value": "引用する可能性のある主張には出典批評を使う。"
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "引用したり行動の根拠にしたりする可能性のある主張には出典批評を使う。"
+    },
+    {
+      "key": "site.f035a4dcdcb6a8b442",
+      "source": "Use source critique or speaking practice to test whether the argument holds.",
+      "value": "出典批評またはスピーキング練習を使って、議論が成り立つかを確認する。"
+    },
+    {
+      "key": "site.cac7d3193398affd53",
+      "source": "Use Spaced Review when this is the right mode for the job. If you want a related path, try Memory Palace. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Spaced Reviewがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Memory Palaceを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.61ca222de56e1486eb",
+      "source": "Use Spaced Review when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Spaced Reviewは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.e61a20ed03ef5f151c",
+      "source": "Use Speaking Practice or Viva Practice to defend a claim out loud and find weak spots.",
+      "value": "Speaking PracticeまたはViva Practiceを使って、主張を声に出して守り、弱点を見つけます。"
+    },
+    {
+      "key": "site.203b1008124e793875",
+      "source": "Use Speaking Practice when this is the right mode for the job. If you want a related path, try Language Roleplay. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Speaking Practiceがこの目的に合うモードなら使ってください。関連する道筋が必要なら、Language Roleplayを試してください。学習法、ソクラテス式学習、フラッシュカード、ロールプレイ、能動的想起についてはAI学習ブログも閲覧できます。"
+    },
+    {
+      "key": "site.0c2b0d301ed9b1b185",
+      "source": "Use Speaking Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Speaking Practiceは、すぐ始められて、それでも自分に合わせて変わるセッションが欲しいときに使ってください。最初の目標は立派に聞こえることではありません。次の一歩を可能に感じられるようにすることです。"
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "関係者表とバランスの取れた賛否分析を使う。"
+    }
+  ]
+}

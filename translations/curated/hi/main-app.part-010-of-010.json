@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "language": "Hindi",
+  "locale": "hi",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.badges-achievements.inputboxText",
+      "source": "What achievement system should we design?",
+      "value": "हमें किस उपलब्धि प्रणाली को डिज़ाइन करना चाहिए?"
+    },
+    {
+      "key": "topic.badges-achievements.category",
+      "source": "Gamification",
+      "value": "गेमिफिकेशन"
+    },
+    {
+      "key": "topic.badges-achievements.seo.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "निरंतरता, महारत, साहस, पुनरीक्षण, सहयोग और पूर्ण किए गए कार्यों के लिए बैज बनाएं।"
+    },
+    {
+      "key": "topic.badges-achievements.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "गेमिफिकेशन विषयों को जानने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.badges-achievements.seo.whyDifferent",
+      "source": "This mode is tuned for badges & achievements with its own prompts, examples, and learning flow.",
+      "value": "यह मोड अपने स्वयं के प्रॉम्प्ट, उदाहरणों और सीखने के प्रवाह के साथ बैज और उपलब्धियों के लिए तैयार किया गया है।"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.0",
+      "source": "Reward milestones that matter",
+      "value": "महत्वपूर्ण मील के पत्थरों को पुरस्कृत करें"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट के साथ शुरुआत करें"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार अनुकूलित करें"
+    },
+    {
+      "key": "topic.badges-achievements.starter.0",
+      "source": "Create badges for my class",
+      "value": "मेरी कक्षा के लिए बैज बनाएं"
+    },
+    {
+      "key": "topic.badges-achievements.starter.1",
+      "source": "Reward revision milestones",
+      "value": "रिवीजन माइलस्टोन के लिए रिवॉर्ड"
+    },
+    {
+      "key": "topic.badges-achievements.starter.2",
+      "source": "Make achievement rules",
+      "value": "उपलब्धि के नियम बनाएं"
+    },
+    {
+      "key": "topic.leaderboards.name",
+      "source": "Leaderboards",
+      "value": "लीडरबोर्ड"
+    },
+    {
+      "key": "topic.leaderboards.subText",
+      "source": "Make competition healthier",
+      "value": "प्रतिस्पर्धा को स्वस्थ बनाएं"
+    },
+    {
+      "key": "topic.leaderboards.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "निष्पक्ष लीडरबोर्ड बनाएं जो प्रयास, सुधार, टीम वर्क या निरंतरता को पुरस्कृत करें, बिना धीमे सीखने वालों को हतोत्साहित किए।"
+    },
+    {
+      "key": "topic.leaderboards.inputboxText",
+      "source": "What should the leaderboard measure?",
+      "value": "लीडरबोर्ड को किस आधार पर मापा जाना चाहिए?"
+    },
+    {
+      "key": "topic.leaderboards.category",
+      "source": "Gamification",
+      "value": "गेमिफिकेशन"
+    },
+    {
+      "key": "topic.leaderboards.seo.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "निष्पक्ष लीडरबोर्ड बनाएं जो प्रयास, सुधार, टीम वर्क या निरंतरता को पुरस्कृत करें, बिना धीमे सीखने वालों को हतोत्साहित किए।"
+    },
+    {
+      "key": "topic.leaderboards.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "गेमिफिकेशन विषयों को जानने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.leaderboards.seo.whyDifferent",
+      "source": "This mode is tuned for leaderboards with its own prompts, examples, and learning flow.",
+      "value": "यह मोड लीडरबोर्ड के लिए अपने स्वयं के प्रॉम्प्ट, उदाहरणों और लर्निंग फ्लो के साथ तैयार किया गया है।"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.0",
+      "source": "Make competition healthier",
+      "value": "प्रतिस्पर्धा को स्वस्थ बनाएं"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट के साथ शुरुआत करें"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार ढालें"
+    },
+    {
+      "key": "topic.leaderboards.starter.0",
+      "source": "Design a class leaderboard",
+      "value": "क्लास लीडरबोर्ड डिज़ाइन करें"
+    },
+    {
+      "key": "topic.leaderboards.starter.1",
+      "source": "Measure improvement fairly",
+      "value": "सुधार को निष्पक्ष रूप से मापें"
+    },
+    {
+      "key": "topic.leaderboards.starter.2",
+      "source": "Make a team challenge board",
+      "value": "टीम चैलेंज बोर्ड बनाएं"
+    },
+    {
+      "key": "topic.accountability-partner.name",
+      "source": "Accountability Partner",
+      "value": "अकाउंटेबिलिटी पार्टनर"
+    },
+    {
+      "key": "topic.accountability-partner.subText",
+      "source": "Build check-ins that keep you moving",
+      "value": "चेक-इन बनाएं जो आपको आगे बढ़ाते रहें"
+    },
+    {
+      "key": "topic.accountability-partner.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "स्पष्ट प्रतिबद्धताओं, प्रमाण, रिकवरी नियमों और सहायक फॉलो-अप के साथ अकाउंटेबिलिटी चेक-इन बनाएं।"
+    },
+    {
+      "key": "topic.accountability-partner.inputboxText",
+      "source": "What commitment needs accountability?",
+      "value": "किस प्रतिबद्धता के लिए अकाउंटेबिलिटी की आवश्यकता है?"
+    },
+    {
+      "key": "topic.accountability-partner.category",
+      "source": "Gamification",
+      "value": "गेमिफिकेशन"
+    },
+    {
+      "key": "topic.accountability-partner.seo.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "स्पष्ट प्रतिबद्धताओं, प्रमाण, रिकवरी नियमों और सहायक फॉलो-अप के साथ अकाउंटेबिलिटी चेक-इन बनाएं।"
+    },
+    {
+      "key": "topic.accountability-partner.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "गेमिफिकेशन विषयों को जानने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.accountability-partner.seo.whyDifferent",
+      "source": "This mode is tuned for accountability partner with its own prompts, examples, and learning flow.",
+      "value": "यह मोड अकाउंटेबिलिटी पार्टनर के लिए अपने स्वयं के प्रॉम्प्ट, उदाहरणों और लर्निंग फ्लो के साथ तैयार किया गया है।"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.0",
+      "source": "Build check-ins that keep you moving",
+      "value": "ऐसे चेक-इन बनाएं जो आपको आगे बढ़ाते रहें"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्स के साथ शुरुआत करें"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार ढालें"
+    },
+    {
+      "key": "topic.accountability-partner.starter.0",
+      "source": "Set up weekly accountability",
+      "value": "साप्ताहिक जवाबदेही (जवाबदेही) सेट करें"
+    },
+    {
+      "key": "topic.accountability-partner.starter.1",
+      "source": "Write a check-in script",
+      "value": "एक चेक-इन स्क्रिप्ट लिखें"
+    },
+    {
+      "key": "topic.accountability-partner.starter.2",
+      "source": "Recover after missing a goal",
+      "value": "लक्ष्य चूकने के बाद वापसी करें"
+    },
+    {
+      "key": "topic.study-challenges.name",
+      "source": "Study Challenges",
+      "value": "अध्ययन चुनौतियाँ"
+    },
+    {
+      "key": "topic.study-challenges.subText",
+      "source": "Create short challenges and boss rounds",
+      "value": "छोटी चुनौतियाँ और बॉस राउंड बनाएं"
+    },
+    {
+      "key": "topic.study-challenges.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "स्पष्ट नियमों, स्कोरिंग, स्तरों, बॉस राउंड और रिफ्लेक्शन के साथ अध्ययन चुनौतियाँ बनाएं।"
+    },
+    {
+      "key": "topic.study-challenges.inputboxText",
+      "source": "What should become a challenge?",
+      "value": "किसे एक चुनौती बनाया जाना चाहिए?"
+    },
+    {
+      "key": "topic.study-challenges.category",
+      "source": "Gamification",
+      "value": "गेमिफिकेशन"
+    },
+    {
+      "key": "topic.study-challenges.seo.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "स्पष्ट नियमों, स्कोरिंग, स्तरों, बॉस राउंड और रिफ्लेक्शन के साथ अध्ययन चुनौतियाँ बनाएं।"
+    },
+    {
+      "key": "topic.study-challenges.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "गेमिफिकेशन विषयों को जानने वाले शिक्षार्थी जो सामान्य उत्तर बॉक्स के बजाय व्यावहारिक मार्गदर्शन चाहते हैं।"
+    },
+    {
+      "key": "topic.study-challenges.seo.whyDifferent",
+      "source": "This mode is tuned for study challenges with its own prompts, examples, and learning flow.",
+      "value": "यह मोड अपने स्वयं के प्रॉम्प्ट्स, उदाहरणों और सीखने के प्रवाह के साथ अध्ययन चुनौतियों के लिए तैयार किया गया है।"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.0",
+      "source": "Create short challenges and boss rounds",
+      "value": "छोटी चुनौतियाँ और बॉस राउंड बनाएं"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "उदाहरण प्रॉम्प्ट्स के साथ शुरुआत करें"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "सत्र को अपने लक्ष्य के अनुसार ढालें"
+    },
+    {
+      "key": "topic.study-challenges.starter.0",
+      "source": "Make a 7 day math challenge",
+      "value": "7-दिवसीय गणित चुनौती बनाएं"
+    },
+    {
+      "key": "topic.study-challenges.starter.1",
+      "source": "Create a vocabulary boss round",
+      "value": "शब्दावली का बॉस राउंड बनाएं"
+    },
+    {
+      "key": "topic.study-challenges.starter.2",
+      "source": "Design a revision sprint",
+      "value": "एक रिवीजन स्प्रिंट डिज़ाइन करें"
+    }
+  ]
+}

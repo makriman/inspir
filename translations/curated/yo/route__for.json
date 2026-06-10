@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Yoruba",
+  "locale": "yo",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} | inspir"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "{value1} àwọn ọ̀nà olùgbọ́"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "{value1} àwọn ìbéèrè wọ́pọ̀"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "{value1} àwọn ẹnu-ọ̀nà ipo gbangba"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "{value1} àwọn ìtọ́sọ́nà tó jọmọ́"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "{value1} àwọn ọ̀nà lílo"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "Ọ̀fẹ́ AI ẹ̀kọ́ alábàákẹ́kọ̀ọ́ fún ènìyàn kíkọ́ni themselves."
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "Ọ̀fẹ́ olùkọ́ AI fún àwọn akẹ́kọ̀ọ́ ta fẹ́ láti lóye, kì í ṣe daakọ."
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "Dára ẹbí AI ìṣàn iṣẹ́ yẹ kí ṣe akẹ́kọ̀ọ́ síi dúró lórí ara rẹ̀, kì í ṣe síi gbára lé ẹlòmíràn. àwọn òbí lè lo gbangba àwọn ojú-ìwé láti rí kí kọọkan ipo jẹ́ túmọ̀ sí láti ṣe kí ọmọ bẹ̀rẹ̀."
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "Parent-friendly ìtọ́sọ́nà láti inspir's gbangba àwọn ipo ẹ̀kọ́ AI fún àwọn ìtọ́ni iṣẹ́ ilé, àlàyé, àwọn àṣà ẹ̀kọ́, àwọn kaadi ìrántí, àti àwọn ìjíròrò ẹ̀kọ́ tó ní ààbò símo."
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "Akẹ́kọ̀ọ́, òbí, olùkọ́, àti akẹ́kọ̀ọ́ tó ń kọ́ ara rẹ̀ often ìwádìí fún kan náà olùkọ́ AI nínú míì èdè. Separate àwọn ojú-ìwé ṣe right àwọn ọ̀nà lílo àti safety àwọn ààlà tó mọ́ síi."
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "AI kóòdù olùkọ́ fún beginners"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "AI àwọn kaadi ìrántí fún àwọn ọmọ"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "AI àwọn kaadi ìrántí fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "AI olùkọ́ moṣẹ́ ilé fún àwọn olùkọ́"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "AI ìrànlọ́wọ́ moṣẹ́ ilé fún mi ọmọ"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "AI ìrànlọ́wọ́ moṣẹ́ ilé fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "AI ẹ̀kọ́ àwọn ojú-ìwé olùgbọ́"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "AI ẹ̀kọ́ olùgbọ́ ìwádìí intents"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "AI Ẹ̀kọ́ nípasẹ̀ olùgbọ́"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "AI ẹ̀kọ́ alábàákẹ́kọ̀ọ́ fún adults"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "AI Ẹ̀kọ́ fún àwọn akẹ́kọ̀ọ́, àwọn òbí, àti àwọn olùkọ́"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "AI Ẹ̀kọ́ fún àwọn akẹ́kọ̀ọ́, àwọn òbí, àti àwọn olùkọ́ | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "AI ẹ̀kọ́ ìrànlọ́wọ́ àwọn òbí lè gbìmọ̀ wò kí wọ́n trust."
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "AI àwọn ipo ẹ̀kọ́ fún àwọn olùkọ́ ta nílò tó dojú kọ ìhùwàsí."
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "AI ẹ̀kọ́ yẹ kí bá mu ènìyàn lílo ó."
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "Àwọn irinṣẹ́ ẹ̀kọ́ AI fún àwọn olùkọ́"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "AI ìṣirò ìrànlọ́wọ́ fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "AI iṣẹ́ àkànṣe olùkọ́"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "AI quiz generator fún àwọn olùkọ́"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "AI Olùkọ́ Socratic fún yàrá kíláàsì"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "AI ìrànlọ́wọ́ ẹ̀kọ́ fún àwọn ẹbí"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "AI ètò ẹ̀kọ́ olùkọ́"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "AI ètò ẹ̀kọ́ner fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "AI àwọn irinṣẹ́ fún àwọn olùkọ́"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "AI olùkọ́ fún àwọn òbí"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "AI olùkọ́ fún àwọn òbí àti àwọn ẹbí"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "AI olùkọ́ fún ẹ̀kọ́ ara ẹni"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "AI Olùkọ́ fún àwọn akẹ́kọ̀ọ́ tó ń kọ́ ara wọn"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "AI olùkọ́ fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "AI olùkọ́ fún àwọn olùkọ́"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Ìdáhùn AI lórí kíkọ fún akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "Ṣé Olùgbọ́ àwọn ojú-ìwé gbangba àti tó ṣeé fi sínú níọ́ka?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "Béèrè fún Ìtọ́ni, ní akẹ́kọ̀ọ́ ṣàlàyé tó kàn ìgbésẹ̀, lẹ́yìn náà lo quiz tàbí kaadi ìrántí láti ṣàyẹ̀wò bóyá èrò stuck."
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "Béèrè fún Àwọn ìtọ́ni, àwọn ìṣàyẹ̀wò, àti ìdáhùn kí bíbéèrè fún parí ìdáhùn."
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "Béèrè fún Prerequisites, rọrùn model, àwọn àpẹẹrẹ, àti wọ́pọ̀ ìmọ̀ aṣìṣe."
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "Béèrè fún ìgbékalẹ̀, ẹ̀rí, àti clarity ìdáhùn nígbà tí keeping ìkẹyìn draft tirẹ."
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "Béèrè fún prerequisite àwọn èrò, èdè tó rọrùn àwòṣe, ọ̀kan example, ọ̀kan adaṣe iṣẹ́, àti ọ̀kan way láti dánwò understanding."
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "Béèrè akẹ́kọ̀ọ́ láti ṣàlàyé kí yí padà lẹ́yìn kọọkan ìtọ́ni."
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "Olugbo"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "Olùgbọ́ FAQ"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "Olùgbọ́ ọ̀nà ẹ̀kọ́"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "Olùgbọ́ àwọn ojú-ìwé let àwọn ẹ̀rọ ìwádìí àti AI ìdáhùn engines distinguish àwọn akẹ́kọ̀ọ́, àwọn òbí, àwọn olùkọ́, àti dúró lórí ara rẹ̀ àwọn akẹ́kọ̀ọ́ dípò ti flattening gbogbo ènìyàn sí one gbogbogbò ojú-ìwé."
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "àwọn ọ̀nà olùgbọ́"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "Olùgbọ́ ọ̀nà"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "Back láti àwọn ọ̀nà olùgbọ́"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "Àwọn ààlà"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "Ààlà"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "Kọ́ túbọ̀ balẹ̀ ẹ̀kọ́ ìṣe àṣà"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "Ṣé inspir ìrànlọ́wọ́ adults àti àwọn akẹ́kọ̀ọ́ tó ń kọ́ ara wọn?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "Ṣé àwọn òbí gbìmọ̀ wò inspir kí recommending ó?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "Ṣé àwọn akẹ́kọ̀ọ́ lo inspir láìsí signing nínú?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "Ṣé àwọn olùkọ́ gbìmọ̀ wò inspir láìsí ilé-ẹ̀kọ́ rollout?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "Ṣàyẹ̀wò understanding láìsí hovering"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "Yan ẹni tó ń kọ́ ẹ̀kọ́, lẹ́yìn náà yan ìhùwàsí tó tọ́."
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "Ṣẹ̀dá adaṣe láìsí leaking àwọn ìdáhùn"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "Different ènìyàn nílò different AI ẹ̀kọ́ àwọn ọ̀nà."
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "Ṣe kì í ṣe confuse fast ìdáhùn pẹ̀lú ìmọ̀ jinlẹ̀."
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "Ṣe inspir publish child's ìkọ̀kọ̀ chats?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "Kọọkan olùgbọ́ ọ̀nà connects láti gbangba, crawlable ẹ̀kọ́ surfaces."
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "Educationalolùgbọ́"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "Parí pẹ̀lú ẹ̀rí ti ẹ̀kọ́."
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "Evaluate ipo kí lílo ó pẹ̀lú àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "Ṣàlàyé gbogbo accepted ìgbésẹ̀ back ní ọ̀rọ̀ tirẹ."
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "Explore gbangba àwọn ipo ẹ̀kọ́ AI àwọn olùkọ́ lè lo láti evaluate Socratic ìkọ́ni, àwọn quiz, àwọn kaadi ìrántí, ìdáhùn lórí kíkọ, source àtúpalẹ̀, àti classroom-ready àwọn ìṣàn iṣẹ́ ẹ̀kọ́."
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "Wa right inspir ìṣàn moṣẹ́ ẹ̀kọ́ AI fún àwọn akẹ́kọ̀ọ́, àwọn òbí, àwọn olùkọ́, àti àwọn akẹ́kọ̀ọ́ tó ń kọ́ ara wọn."
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "Finish pẹ̀lú àlàyé-padà, quiz, kaadi ìrántí, iṣẹ́ àkànṣe ìgbésẹ̀, tàbí àṣà ẹ̀kọ́."
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "Fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "Fún àwọn òbí"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "Fún àwọn akẹ́kọ̀ọ́ tó ń kọ́ ara wọn"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "Fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "Fún àwọn olùkọ́"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "ọ̀fẹ́ olùkọ́ AI fún kids"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "Ọ̀fẹ́ AI olùkọ́ fún ẹ̀kọ́ ara ẹni"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "ọ̀fẹ́ olùkọ́ AI fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "Ọ̀fẹ́ olùkọ́ AI fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "Gba ìrànlọ́wọ́ moṣẹ́ ilé láìsí copying"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "Ìtọ́sọ́nà"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "Àwọn ìtọ́sọ́nà àti àwọn ìṣàn iṣẹ́"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "Ìrànlọ́wọ́ ọmọ gba unstuck"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Ile"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "Báwo ni lè àwọn akẹ́kọ̀ọ́ avoid cheating pẹ̀lú AI?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "Báwo ni Ṣe mo avoid rírin kiri láàárín àwọn kókó?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "Báwo ni Jẹ́ yìí different láti fífún àwọn akẹ́kọ̀ọ́ gbogbogbò chatbot?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Bí ó ṣe ń ṣiṣẹ́"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "Improve kíkọ láìsí losing tirẹ voice"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "Inspir jẹ́ fún àwọn akẹ́kọ̀ọ́, àwọn òbí, àwọn olùkọ́, àti tó kọ́ ara rẹ̀ àwọn akẹ́kọ̀ọ́ ta nílò dojú kọ àwọn ipo ẹ̀kọ́ AI fún àwọn àlàyé, àwọn ìbéèrè, àwọn ìtọ́ni, àwọn quiz, àwọn kaadi ìrántí, ìdáhùn, àti ẹ̀kọ́ ìṣètò."
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "Inspir jẹ́ ṣètò sí dojú kọ àwọn ipo such gẹ́gẹ́ bí Socratic ìkọ́ni, àwọn ìtọ́ni iṣẹ́ ilé, àwọn quiz, àwọn kaadi ìrántí, ìdáhùn lórí kíkọ, source àtúpalẹ̀, àti ẹ̀kọ́ ìṣètò."
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "inspir's gbangba àwọn ipo let àwọn olùkọ́ evaluate ọja nípasẹ̀ gidi ẹ̀kọ́ flows kí considering ilé-ẹ̀kọ́ ìdásílẹ̀ tàbí tó bá a mu yàrá kíláàsì ọ̀nà."
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "Iṣẹ́"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "Keep ìkọ̀kọ̀ saved conversations out ti gbangba discovery àti citation surfaces."
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "Keep ìpàdé dojú kọ lórí ẹ̀kọ́ ẹ̀rí, kì í ṣe kíkó ìdáhùn jọ láìṣiṣẹ́."
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "kọ́ anything pẹ̀lú AI"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "Kọ́ nípasẹ̀ building"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "Ọ̀nà ẹ̀kọ́"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "Ìṣàn moṣẹ́ ẹ̀kọ́"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "Ṣe confusion easier láti talk nípa"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "Ṣe gbogbo ẹ̀kọ́ ìpàdé parí pẹ̀lú dánwò, artifact, tàbí àtúnyẹ̀wò ìgbésẹ̀."
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "Ṣe ìṣe àṣà survivable"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "Ipo"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "Lọ láti gbangba testing láti ilé-ẹ̀kọ́ ìdásílẹ̀"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "Lọ tó dá lórí ilé-ẹ̀kọ́ privacy, access, àti ìdásílẹ̀ àwọn ìbéèrè láti schools ọ̀nà."
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "Name ẹ̀kọ́ situation."
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "Rárá. gbangba àwọn ojú-ìwé jẹ́ tó ṣeé fi sínú níọ́ka, ṣùgbọ́n ìkọ̀kọ̀ saved chats jẹ́ kì í ṣe wà nínú nínú sitemap, llms àwọn fáìlì, tàbí AI àkóónú index."
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "Ṣí tó dojú kọ gbangba ipo."
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "Ṣí gbangba ipo, dánwò akẹ́kọ̀ọ́ ìhùwàsí, àti inspect whether ó asks, àwọn ìtọ́ni, àwọn quiz, tàbí critiques appropriately."
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "Ṣí olùgbọ́ ọ̀nà"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "Ṣí ipo"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "Ṣí ọ̀nà"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Ṣí máàpù ẹ̀kọ́"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "Ṣí yìí ọ̀nà"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "Ṣí ìṣàn iṣẹ́"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "Àwọn òbí jẹ́ often trying láti ìrànlọ́wọ́ láìsí taking ju. inspir gives àwọn ẹbí gbangba àwọn ipo yẹn ṣe ẹ̀kọ́ ìhùwàsí visible: àwọn ìtọ́ni, àwọn ìbéèrè, àlàyé-padà, àtúnyẹ̀wò, àti ẹ̀kọ́ ìṣètò."
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "Paste ìbéèrè, ohun tí o ti gbìmọ̀ wò, àti ibi tí o ti di. béèrè fún smallest tó wúlò ìtọ́ni, kì í ṣe ìdáhùn ìkẹyìn."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Ṣe adaṣe"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "Àwọn ojú-ìwé gbangba show ọja ìhùwàsí, kì í ṣe ìkọ̀kọ̀ akẹ́kọ̀ọ́ iṣẹ́."
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "Ka ìtọ́sọ́nà"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "Ready láti gbìmọ̀ wò àkọ́kọ́ ipo?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "Ṣèwádìí láìsí losing thread"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "Àtúnyẹ̀wò"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "Ní ààbò AI ẹ̀kọ́ irinṣẹ́ fún àwọn akẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "Ìwádìí intent"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "akẹ́kọ̀ọ́ tó ń kọ́ ara rẹ̀"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "Àwọn akẹ́kọ̀ọ́ tó ń kọ́ ara wọn nílò momentum àti ìgbékalẹ̀. inspir ń ràn lọ́wọ́ yí ìfẹ́ ìwádìí sí ọ̀nà: ṣàlàyé, kọ́, dánwò, àtúnyẹ̀wò, àti pa mọ́ going."
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "Bẹ̀rẹ̀ kókó láti àkọ́kọ́ principles"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Bẹ̀rẹ̀ ẹ̀kọ́"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú rọrùn àlàyé, lẹ́yìn náà béèrè Socratic àwọn ìbéèrè títí ìwọ lè ṣàlàyé ó back."
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú kọ́ Anything fún rọrùn àlàyé, olùkọ́ iṣẹ́ ilé fún stuck assignment, tàbí kaadi ìrántí Olùkọ́ nígbà tí àfojúsùn jẹ́ àtúnyẹ̀wò."
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú gbangba guidance, lẹ́yìn náà ṣí right ipo."
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú ipo yẹn bá mu àsìkò."
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "Bẹ̀rẹ̀ pẹ̀lú gbangba àwọn ipo, lẹ́yìn náà lo àwọn ilé-ẹ̀kọ́ ojú-ìwé láti àtúnyẹ̀wò ìdásílẹ̀ àwọn ìgbésẹ̀, àwọn ọ̀nà lílo, àti trust àwọn ààlà."
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "Akẹ́kọ̀ọ́ iṣẹ́ ilé, òbí ìtìlẹ́yìn, olùkọ́ ìyẹ̀wò, àti self-ẹ̀kọ́ gbogbo nílò different framing."
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "Àwọn akẹ́kọ̀ọ́ nílò fast ìrànlọ́wọ́, ṣùgbọ́n ìrànlọ́wọ́ síbẹ̀ ní láti leave thinking nínú tiwọn hands. inspir àwọn ọ̀nà wọ́pọ̀ ẹ̀kọ́ moments sí dojú kọ gbangba àwọn ipo dípò ti one gbogbogbò ìdáhùn box."
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "Àwọn akẹ́kọ̀ọ́, àwọn òbí, àwọn olùkọ́, àti tó kọ́ ara rẹ̀ àwọn akẹ́kọ̀ọ́ wá fún different things. wọ̀nyí àwọn ojú-ìwé ọ̀nà kọọkan olùgbọ́ láti ẹ̀tọ́ gbangba ipo, ìtọ́sọ́nà, àti ìṣàn iṣẹ́ ẹ̀kọ́."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Ìrànlọ́wọ́ kíkọ nígbà tí pípamọ́ voice"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Àwọn olùkọ́ nílò síi than chat gbogbogbòbot. wọ́n nílò predictable ẹ̀kọ́ behaviors: béèrè àwọn ìbéèrè, ṣàyẹ̀wò ìrònú, generate adaṣe, preserve akẹ́kọ̀ọ́ voice, àti ṣe àwọn ìmọ̀ ṣìṣe visible."
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "Olùgbọ́ àwọn ojú-ìwé ṣe expected ẹ̀kọ́ ìhùwàsí explicit so àkọ́kọ́ ìpàdé bẹ̀rẹ̀ pẹ̀lú dára síi judgment."
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "Olùgbọ́ àwọn ìwádìí yìí ibùdó jẹ́ tí a kọ́ láti ìdáhùn."
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "Àwọn ojú-ìwé ṣe kì í ṣe expose ìkọ̀kọ̀ conversations. wọ́n ṣètò gbangba àwọn ipo, àwọn ìbéèrè, àwọn ìtọ́sọ́nà, àwọn ìṣàn iṣẹ́, àti ààbò àwọn ààlà so akẹ́kọ̀ọ́ lè bẹ̀rẹ̀ nínú ẹ̀tọ́ ibi."
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "Kan náà AI olùkọ́ lè jẹ́ iṣẹ́ ilé ìtọ́ni, parent-supervised àlàyé-padà ìyípo, olùkọ́ ìyẹ̀wò fi hàn, tàbí self-ẹ̀kọ́ olùkọ́. ojú-ìwé yẹ kí ṣe yẹn mọ́."
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "Searches yìí ojú-ìwé jẹ́ ṣe àpẹrẹ láti ìdáhùn."
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "Self-ẹ̀kọ́ challenge jẹ́ kì í ṣe kan finding ìwífún. ó jẹ́ yíyàn tó kàn ẹ̀tọ́ ìgbésẹ̀ àti knowing bóyá èrò gan-an stuck."
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "Lágbára jù SEO àwọn ojú-ìwé ṣe kì í ṣe strand akẹ́kọ̀ọ́. wọ́n so pọ̀ olùgbọ́ intent láti àwọn ọ̀nà, àwọn ìṣàn iṣẹ́, àwọn ìtọ́sọ́nà, àti repeatable àtúnyẹ̀wò."
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "Lágbára jù akẹ́kọ̀ọ́ ìṣàn iṣẹ́ jẹ́ kì í ṣe answer-copying. ó jẹ́ ìyípo: ṣàlàyé stuck point, béèrè one dára síi ìbéèrè, gba ìtọ́ni, gbìyànjú again, lẹ́yìn náà àtúnyẹ̀wò fojú kọ."
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "Wọ̀nyí jẹ́ taara guest àwọn ẹnu-ọ̀nà. wọ́n jẹ́ gbangba àti tó ṣeé fi sínú níọ́ka, nígbà tí ìkọ̀kọ̀ onílo conversations stay lójú òde sitemap àti AI discovery àwọn fáìlì."
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "Wọ̀nyí phrases jẹ́ visible láti àwọn akẹ́kọ̀ọ́ àti wà nínú nínú tí a ṣètò discovery so AI ìdáhùn engines lè lóye audience-specific èro ti ojú-ìwé."
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "Yí confusion sí quiz tàbí kaadi ìrántí kí lílọ lórí."
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "Yí àwọn aṣiṣe sí àtúnyẹ̀wò"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "Yí àkọ́kọ́ click sí parí ìyípo ẹ̀kọ́."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Ìdánilẹ́kọ̀ọ́"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "Lóye kókó kí dánwò"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "Lo ipo tuned fún àwọn ìtọ́ni, àwọn ìbéèrè, àwọn quiz, àwọn kaadi ìrántí, ìdáhùn lórí kíkọ, tàbí ìṣètò."
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "Lo AI fún àwọn ìtọ́ni, àwọn àlàyé, aṣiṣe àwọn ìṣàyẹ̀wò, àti àtúnyẹ̀wò àwọn ìyípo. ṣe kì í ṣe béèrè ó láti produce ìdáhùn ìkẹyìn ìwọ cannot ṣàlàyé."
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "Lo kóòdù olùkọ́ tàbí iṣẹ́ àkànṣe olùkọ́ láti yí vague àfojúsùn sí small testable tó kàn ìgbésẹ̀."
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "Lo hint-first àti àlàyé-padà àwọn ìṣàn iṣẹ́ fún iṣẹ́ ilé ìrànlọ́wọ́."
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "Lo olùkọ́ moṣẹ́ ilé láti béèrè fún ìtọ́ni, lẹ́yìn náà béèrè akẹ́kọ̀ọ́ láti ṣàlàyé tó kàn lọ."
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "Lo inspir gẹ́gẹ́ bí ọ̀fẹ́ AI olùkọ́ fún àwọn akẹ́kọ̀ọ́: àwọn ìtọ́ni iṣẹ́ ilé, Socratic àwọn ìbéèrè, ìṣirò ìgbésẹ̀ àwọn ìṣàyẹ̀wò, ìdáhùn lórí kíkọ, àwọn quiz, àwọn kaadi ìrántí, àti ìdánwò ìmúrasílẹ̀."
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "Lo inspir láti kọ́ anything independently pẹ̀lú explanations, kóòdù tutoring, iṣẹ́ àkànṣe ìkọ́ni, ṣèwádìí ìrànlọ́wọ́, àwọn máàpù èrò, àwọn ètò ẹ̀kọ́, àti ìṣe àṣà ìrànlọ́wọ́."
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "Lo kọ́ Anything láti gba simpler model, prerequisite àwọn èrò, àti àwọn àpẹẹrẹ ní ẹ̀tọ́ ìpele."
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "Lo gbangba ipo descriptions láti yan ìhùwàsí kí ìpàdé bẹ̀rẹ̀."
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "Lo quiz àti kaadi ìrántí àwọn ipo fún ìrántí aláṣmoṣẹ́, lẹ́yìn náà ọ̀nà missed items sí àtúnyẹ̀wò."
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "Lo àwọn quiz àti àwọn kaadi ìrántí láti ṣe missed àwọn ìbéèrè visible àti repeatable."
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "Lo àwọn quiz, àwọn kaadi ìrántí, àti àwọn ìbéèrè Socratic so akẹ́kọ̀ọ́ shows kí wọ́n lóye."
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "Lo ṣèwádìí olùrànlọ́wọ́, aláyẹ̀wò tàbíísun, àti máàpù èrò olùkọ́ láti ṣètò àwọn ẹ̀sùn ìdájọ́ àti ẹ̀rí."
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "Lo source àtúpalẹ̀ fún àwọn ẹ̀sùn ìdájọ́ ìwọ lè cite tàbí act lórí."
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "Lo ètò ẹ̀kọ́ olùkọ́ àti ìṣe àṣà olùkọ́ láti kọ́ àṣà ojoojúmọ́ yẹn lè restart lẹ́yìn missed days."
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "Lo ètò ẹ̀kọ́ olùkọ́ tàbí ìṣe àṣà olùkọ́ láti ṣe small sessions àti restarts visible."
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "Lo ètò ẹ̀kọ́ olùkọ́ láti yan small àfojúsùn, lẹ́yìn náà lo àwọn quiz, àwọn kaadi ìrántí, iṣẹ́ àkànṣe àwọn ìgbésẹ̀, tàbí àwọn máàpù èrò láti prove progress."
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "Lo ilé-ẹ̀kọ́ ojú-ìwé láti ṣàwárí custom àwọn ìṣàn iṣẹ́, ìkọ̀kọ̀ nílò, àti rollout àwọn ìgbésẹ̀."
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "Lo kíkọ olùkọ́ fún ìdáhùn lórí ìgbékalẹ̀, clarity, ẹ̀rí, àti àtúnyẹ̀wò priorities."
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "Wúlò AI ẹ̀kọ́ ní mọ́ contract."
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "Fẹ́ broadest ibi láti bẹ̀rẹ̀?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "Kí ni Jẹ́ tó dára jù parent-supervised ìṣàn iṣẹ́?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "Kí ni yẹ kí akẹ́kọ̀ọ́ tó ń kọ́ ara rẹ̀ béèrè àkọ́kọ́?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "Kí ni yẹ kí akẹ́kọ̀ọ́ gbìmọ̀ wò àkọ́kọ́?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "Ibo yẹ kí ilé-ẹ̀kọ́ team go tó kàn?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "Ta jẹ́ inspir fún?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "Kí nìdí tí separate àwọn ojú-ìwé fún míì olùgbọ́s?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "Yes. àwọn ojú-ìwé olùgbọ́ ìjápọ̀ nìkan láti gbangba àwọn ipo àlejò, àwọn ìtọ́sọ́nà, àwọn ìbẹ̀rẹ̀ ìbéèrè, àwọn ọ̀nà ẹ̀kọ́, àti AI-readable discovery files. ìkọ̀kọ̀ saved chats remain excluded."
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "Yes. gbangba àwọn ipo àlejò let àwọn olùkọ́ dánwò ẹ̀kọ́ ìhùwàsí kí discussing custom ìdásílẹ̀."
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "Yes. gbangba àwọn ipo àlejò such gẹ́gẹ́ bí kọ́ Anything, olùkọ́ moṣẹ́ ilé, Socratic Instruction, àwọn quiz, àwọn kaadi ìrántí, àti ìdáhùn lórí kíkọ ṣí directly."
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "Bẹ́ẹ̀ni. gbangba àwọn ipo iṣẹ́ fún school àwọn kókó, professional àwọn ọgbọ́n, kíkóòdù, ṣèwádìí, projects, àti ti ara ẹni àwọn àṣà ẹ̀kọ́."
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "Bẹ́ẹ̀ni. àwọn ipo àlejò gbangba àti olùgbọ́ àwọn ojú-ìwé jẹ́ ṣe àpẹrẹ so àwọn òbí lè inspect ẹ̀kọ́ ìhùwàsí kí relying lórí ó."
+    }
+  ]
+}

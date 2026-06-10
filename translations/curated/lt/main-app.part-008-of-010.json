@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Lithuanian",
+  "locale": "lt",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas pilietiškumo treneriui ir turi savo užklausas, pavyzdžius bei mokymosi eigą."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "Suprask teises, valdžią ir visuomenę"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėk nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "Kaip įstatymo projektas tampa įstatymu?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "Paaiškink pagrindines teises"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "Ką daro teismas?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "Meno pažinimo gidas"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "Žvelkite atidžiau ir pastebėkite daugiau"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Nagrinėkite meno kūrinius, stilius, menininkus, vizualinius sprendimus ir tai, kas vaizdą daro paveikų."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "Koks meno kūrinys, menininkas ar stilius?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "Kūrybiškumas"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Nagrinėkite meno kūrinius, stilius, menininkus, vizualinius sprendimus ir tai, kas vaizdą daro paveikų."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems kūrybiškumo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas meno pažinimo gidui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "Žvelkite atidžiau ir pastebėkite daugiau"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "Paaiškink impresionizmą"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "Kaip žiūrėti į paveikslą?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "Palygink Renesanso ir šiuolaikinį meną"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "Muzikos teorijos treneris"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Supraskite garsą, ritmą ir harmoniją"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Mokykitės natų, akordų, gamų, ritmo, klausos lavinimo idėjų ir to, kaip kuriamos dainos."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "Kurią muzikos idėją nagrinėsime?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "Kūrybiškumas"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Mokykitės natų, akordų, gamų, ritmo, klausos lavinimo idėjų ir to, kaip kuriamos dainos."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems kūrybiškumo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas muzikos teorijos treneriui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Supraskite garsą, ritmą ir harmoniją"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "Paaiškink mažorą ir minorą"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "Kaip veikia akordai?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "Išmokyk ritmo pagrindų"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "Mokymosi nuostatų refleksija"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "Apmąstykite, kaip mokotės"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Pastebėkite, kas padeda mokytis, kas trukdo ir kaip tapti stipresniu besimokančiuoju."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "Kurį mokymosi momentą norite apmąstyti?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "Planavimas"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Pastebėkite, kas padeda mokytis, kas trukdo ir kaip tapti stipresniu besimokančiuoju."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems planavimo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas mokymosi nuostatų refleksijai: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "Apmąstykite, kaip mokotės"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "Kodėl vengiau mokytis?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "Apmąstyk prastą testo rezultatą"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "Kokia mokymosi strategija man tinka?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "Mokymosi žaidimo meistras"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "Paverskite mokymąsi iššūkiu"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Paverskite mokymąsi žaidimu su užduotimis, lygiais, taškais, iššūkiais ir boso raundais."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "Ką paversime mokymosi žaidimu?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "Praktika"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Paverskite mokymąsi žaidimu su užduotimis, lygiais, taškais, iššūkiais ir boso raundais."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems praktikos temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas mokymosi žaidimo meistrui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "Paverskite mokymąsi iššūkiu"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "Paversk biologiją užduotimi"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "Paversk žodyną lygiais"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "Sukurk matematikos boso kovą"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "Žodinio egzamino praktika"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "Pasiruoškite žodinei apklausai"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Ruoškitės viva, žodiniams egzaminams, projektų gynimams ir greitiems papildomiems klausimams su ramiu grįžtamuoju ryšiu."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Kokiai viva procedūrai ar žodiniam egzaminui ruošiatės?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "Praktika"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Ruoškitės viva, žodiniams egzaminams, projektų gynimams ir greitiems papildomiems klausimams su ramiu grįžtamuoju ryšiu."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems praktikos temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas žodinio egzamino praktikai: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "Pasiruoškite žodinei apklausai"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "Padėk pasiruošti mano gamtos mokslų projekto viva gynimui"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "Užduok man baigiamojo darbo gynimo klausimų"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "Pateik bandomųjų praktinio egzamino klausimų"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "Mokymosi laikmatis"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Nuolatinis Pomodoro laikmatis su įspėjimais"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Leiskite susikaupimo ir pertraukų sesijas, kurios toliau skaičiuoja laiką jums pereinant tarp pokalbių, skirtukų ir mini programų. Pasibaigus sesijai, jis gali suskambėti fone."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "Kam skirsime šią susikaupimo sesiją?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Susikaupimas ir produktyvumas"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Leiskite susikaupimo ir pertraukų sesijas, kurios toliau skaičiuoja laiką jums pereinant tarp pokalbių, skirtukų ir mini programų. Pasibaigus sesijai, jis gali suskambėti fone."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems susikaupimo ir produktyvumo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas mokymosi laikmačiui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Nuolatinis Pomodoro laikmatis su įspėjimais"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "Pradėk 25 minučių biologijos sesiją"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "Nustatyk 50/10 gilaus darbo ritmą"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "Stebėk susikaupimą rengiant esė juodraštį"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "Muzika susikaupimui"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "Foninis susikaupimo garsas, kuris groja toliau"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Pasirinkite sugeneruotą susikaupimo garsą skaitymui, rašymui, problemų sprendimui ar giliam darbui. Jis groja toliau, kai pereinate į kitus pokalbius."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "Kokio susikaupimo šiandien norite?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "Susikaupimas ir produktyvumas"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Pasirinkite sugeneruotą susikaupimo garsą skaitymui, rašymui, problemų sprendimui ar giliam darbui. Jis groja toliau, kai pereinate į kitus pokalbius."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems susikaupimo ir produktyvumo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas susikaupimui skirtai muzikai: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "Foninis susikaupimo garsas, kuris groja toliau"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "Paleisk ramią muziką susikaupusiam skaitymui"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "Parink garsą giliam darbui"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "Naudok lietaus garsus kartojimui"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "Piešimo / eskizų lenta"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Apmąstykite diagramas ir pirminius vaizdinius"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Naudokite eskizavimą kaip mokymosi žingsnį: planuokite diagramas, žymėkite pirminius žemėlapius, aiškinkite procesus arba paverskite padriką idėją aiškesniu vaizdu."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "Ką eskizuosime ar pavaizduosime diagrama?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "Vizualinis mokymasis"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Naudokite eskizavimą kaip mokymosi žingsnį: planuokite diagramas, žymėkite pirminius žemėlapius, aiškinkite procesus arba paverskite padriką idėją aiškesniu vaizdu."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems vizualinio mokymosi temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas piešimo / eskizų lentai: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Apmąstykite diagramas ir pirminius vaizdinius"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "Nubraižyk ląstelės schemą"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "Nubrėžk pasiūlos ir paklausos grafiką"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "Sudaryk Pirmojo pasaulinio karo priežasčių žemėlapį"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "Bandomojo testo kūrimo įrankis"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "Sukurkite visą testą iš savo medžiagos"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Paverskite temą, programą ar užrašus realistišku bandomuoju testu su skyriais, laiku, vertinimo gairėmis ir peržiūros žingsniais."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "Ką turėtų apimti bandomasis testas?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "Aktyvus mokymasis"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Paverskite temą, programą ar užrašus realistišku bandomuoju testu su skyriais, laiku, vertinimo gairėmis ir peržiūros žingsniais."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems aktyvaus mokymosi temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas bandomojo testo kūrimo įrankiui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "Sukurkite visą testą iš savo medžiagos"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "Sukurk biologijos skyriaus testą"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "Sukurk mišrų matematikos bandomąjį testą"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "Sukurk egzamino formato istorijos testą"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "Vaizdų analizės treneris"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Samprotaukite apie ekrano kopijas, diagramas ir namų darbų vaizdus"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Aprašykite arba įklijuokite vaizdo detales ir gaukite pagalbos skaitant diagramas, grafikus, uždavinius, ranka rašytus užrašus ar vizualinius įrodymus."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "Aprašykite vaizdą arba įklijuokite, kas matoma"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "DI pagalba"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Aprašykite arba įklijuokite vaizdo detales ir gaukite pagalbos skaitant diagramas, grafikus, uždavinius, ranka rašytus užrašus ar vizualinius įrodymus."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems DI pagalbos temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas vaizdų analizės treneriui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Samprotaukite apie ekrano kopijas, diagramas ir namų darbų vaizdus"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "Padėk suprasti šią diagramą"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "Išanalizuok grafiką iš mano vadovėlio"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "Paaiškink, ką rodo ši ekrano kopija"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "Kornelio užrašai"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Struktūruokite užrašus į užuominas, detales ir santrauką"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Paverskite paskaitas, skaitinius ar juodraštinius užrašus Kornelio metodu su užuominų klausimais, pagrindiniais užrašais, santrauka ir kartojimo užklausomis."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "Įklijuokite užrašus arba nurodykite pamoką"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "Organizavimas"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Paverskite paskaitas, skaitinius ar juodraštinius užrašus Kornelio metodu su užuominų klausimais, pagrindiniais užrašais, santrauka ir kartojimo užklausomis."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems organizavimo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas Kornelio užrašams: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Struktūruokite užrašus į užuominas, detales ir santrauką"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Paversk šią paskaitą Kornelio užrašais"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "Sukurk užuominų klausimus 3 skyriui"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "Apibendrink mano juodraštinius užrašus"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "Citatų generatorius"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "Kurkite nuorodas į šaltinius įprastais formatais"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Kurkite APA, MLA, Chicago, Harvard ar paprastus bibliografijos įrašus iš šaltinio duomenų ir tikrinkite, ar netrūksta laukų."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "Įklijuokite šaltinio duomenis arba URL informaciją"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "DI pagalba"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Kurkite APA, MLA, Chicago, Harvard ar paprastus bibliografijos įrašus iš šaltinio duomenų ir tikrinkite, ar netrūksta laukų."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems DI pagalbos temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas citatų generatoriui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "Kurkite nuorodas į šaltinius įprastais formatais"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "Sukurk APA citatą"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "Suformatuok šią svetainę MLA stiliumi"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "Patikrink, kokių laukų trūksta mano citatai"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "Teksto santraukų kūrimo įrankis"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "Sutrumpinkite skaitinius į naudingus mokymosi užrašus"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Apibendrinkite ilgą tekstą į pagrindines idėjas, struktūrą, apibrėžimus, pavyzdžius ir prisiminimo klausimus."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "Įklijuokite tekstą santraukai"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "DI pagalba"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Apibendrinkite ilgą tekstą į pagrindines idėjas, struktūrą, apibrėžimus, pavyzdžius ir prisiminimo klausimus."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems DI pagalbos temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas teksto santraukų kūrimo įrankiui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "Sutrumpinkite skaitinius į naudingus mokymosi užrašus"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "Apibendrink šį straipsnį"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "Ištrauk pagrindinius punktus iš mano užrašų"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "Sukurk skyriaus santrauką"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "Mokymosi vadovo generatorius"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "Paverskite medžiagą kartojimo gidu"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Sukurkite mokymosi vadovą su tikslais, sąvokų santraukomis, pavyzdžiais, dažnomis klaidomis, praktikos klausimais ir kartojimo planu."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "Kokią medžiagą paversime mokymosi vadovu?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "DI pagalba"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Sukurkite mokymosi vadovą su tikslais, sąvokų santraukomis, pavyzdžiais, dažnomis klaidomis, praktikos klausimais ir kartojimo planu."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems DI pagalbos temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas mokymosi vadovo generatoriui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "Paverskite medžiagą kartojimo gidu"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "Sukurk fotosintezės gidą"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Paversk mano užrašus kartojimo lapu"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "Sukurk baigiamųjų egzaminų mokymosi vadovą"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "Pažymių ir GPA skaičiuoklė"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "Prognozuokite pažymius ir planuokite balų tikslus"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Apskaičiuokite svertinius pažymius, GPA scenarijus, reikiamus galutinius balus ir semestro „kas būtų, jei“ planus."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "Pateikite pažymių svorius ir balus"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "Organizavimas"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Apskaičiuokite svertinius pažymius, GPA scenarijus, reikiamus galutinius balus ir semestro „kas būtų, jei“ planus."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems organizavimo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas pažymių ir GPA skaičiuoklei: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "Prognozuokite pažymius ir planuokite balų tikslus"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "Kokio galutinio balo man reikia?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "Apskaičiuok mano svertinį pažymį"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "Suplanuok mano GPA tikslą"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "Minčių žemėlapio kūrimo įrankis"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "Išskaidykite temą į susijusias idėjas"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Sukurkite minčių žemėlapį idėjų generavimui, kartojimui, planavimui ar sąvokų susiejimui prieš rašant ar mokantis."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "Kuri tema turėtų tapti minčių žemėlapiu?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "Vizualinis mokymasis"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Sukurkite minčių žemėlapį idėjų generavimui, kartojimui, planavimui ar sąvokų susiejimui prieš rašant ar mokantis."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems vizualinio mokymosi temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas minčių žemėlapio kūrimo įrankiui: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "Išskaidykite temą į susijusias idėjas"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "Sudaryk mašininio mokymosi minčių žemėlapį"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "Suplanuok istorijos esė žemėlapiu"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "Sugeneruok idėjų gamtos mokslų projektui"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "Dienos mokymosi tikslai"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "Nustatykite ir stebėkite šiandienos mokymosi tikslus"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Suplanuokite realistišką dienos mokymosi tikslų rinkinį su pastangų įverčiais, prioritetais, kliūčių patikromis ir greitu peržiūros ritualu."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "Ką šiandien norite nuveikti?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "Žaidybinimas"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Suplanuokite realistišką dienos mokymosi tikslų rinkinį su pastangų įverčiais, prioritetais, kliūčių patikromis ir greitu peržiūros ritualu."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Besimokantiesiems, nagrinėjantiems žaidybinimo temas ir norintiems praktinių gairių, o ne universalaus atsakymų laukelio."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "Šis režimas pritaikytas dienos mokymosi tikslams: turi savas užklausas, pavyzdžius ir mokymosi eigą."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "Nustatykite ir stebėkite šiandienos mokymosi tikslus"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Pradėkite nuo pavyzdinių užklausų"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Pritaikykite užsiėmimą savo tikslui"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "Nustatyk tris šiandienos tikslus"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "Padaryk mano tikslus realistiškus"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "Peržiūrėk mano mokymosi tikslus"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "Užduočių laikmatis"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "Matuokite atskirų užduočių laiką ir matykite pastangas"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Suskirstykite darbą į pavadintas užduotis, matuokite kiekvienos laiką ir po kiekvienos susikaupimo sesijos peržiūrėkite, kur nuėjo mokymosi pastangos."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "Kurios užduoties laiką matuosime?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Susikaupimas ir produktyvumas"
+    }
+  ]
+}

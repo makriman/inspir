@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Irish",
+  "locale": "ga",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "Tosach soiléir a chuireann smaoineamh amháin."
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "Gaiste choitianta a thugann rabhadh faoi bhotún dóchúil."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "Cúl gairid a chríochnaíonn an smaoineamh."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "Leid a chabhraíonn gan gach rud a thabhairt uaidh."
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "Rogha athbhreithnithe ionas go bhfillfidh cártaí caillte níos luaithe."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "Sreabhadh simplí spléachchártaí"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "Iarrann cárta níos láidre cuimhne ghníomhach:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "Iarrann cárta úsáideach rud amháin. Níor chóir dó cúig cheist a cheilt taobh istigh d’aon phras amháin. Ba chóir dó a bheith sách sonrach le freagairt, ach gan a bheith chomh cúng sin go n-éiríonn sé gan bhrí."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "Deir spléachchárta lag IS:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "athghairm ghníomhach"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "Cuir leideanna leis gan an freagra a thabhairt uaidh"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "Is féidir le IS cabhrú spléachchártaí a dhéanamh níos tapúla, ach tagann an fhoghlaim fós ón aisghabháil. Má scríobhann an uirlis na cártaí agus mura mbíonn ar an bhfoghlaimeoir streachailt riamh chun iad a fhreagairt, ní athraíonn beagnach tada. Tiontaíonn an leagan úsáideach nótaí míshlachtmhara ina bprasaí dírithe, ansin cuireann sé ar an bhfoghlaimeoir cuimhneamh sula nochtar an freagra."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "Is féidir le IS nótaí garbha a iompú ina bprasaí aisghabhála níos glaine. Is féidir leis smaointe leathana a roinnt ina gcártaí níos lú, samplaí a chur leis, agus gaistí a d’fhéadfadh foghlaimeoir a chailleadh a aithint."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "Spléachchártaí IS agus cuimhne ghníomhach: conas níos mó a mheabhrú"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "cuir coincheap i bhfeidhm ar shampla beag."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "Iarr cártaí aon-smaoinimh le leideanna agus gaistí coitianta."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Cúl: \"Cuireann spásáil iallach ar an gcuimhne an freagra a atógáil tar éis roinnt dearmadta, rud a neartaíonn aisghairm níos déanaí.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "déan comparáid idir dhá smaoineamh;"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "sainmhínigh téarma;"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "Scrios cártaí atá róleathan nó róshoiléir."
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "Ná hathbhreithnigh gach rud ar an mbealach céanna"
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "Éasca. Brúigh níos déanaí é."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "mínigh cúis;"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "Tá spléachchártaí ar cheann de na bealaí is simplí chun é seo a dhéanamh."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "Tá spléachchártaí cumhachtach, ach ní hé an próiseas staidéir iomlán iad. Is fearr iad don aisghabháil, stór focal, sainmhínithe, foirmlí, idirdhealuithe, agus príomhshamplaí. Bíonn siad níos laige nuair nár thuig an foghlaimeoir an smaoineamh ar an gcéad dul síos."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Oibríonn spléachchártaí is fearr nuair a thástálann siad smaoineamh amháin ag an am, nuair nach nochtann siad freagraí ach tar éis iarrachta, agus nuair a athbhreithníonn siad cártaí caillte níos luaithe."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "Le haghaidh bealach níos doimhne, léigh treoir Flashcard Builder agus prasaí agus lúb staidéir Flashcard Builder. Ní deic álainn an sprioc. Is é an sprioc níos mó a mheabhrú nuair atá na nótaí imithe."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "Mar shampla:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "Tosach: \"Cén fáth a n-oibríonn athbhreithniú spásáilte níos fearr ná brú ag an nóiméad deireanach?\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "Deacair. Athbhreithnigh tar éis moill ghearr."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "Leid: \"Smaoinigh ar dhearmad agus aisghabháil.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "Tá leideanna úsáideach nuair a chaomhnaíonn siad iarracht. Is drochleid í leid atá mar fhreagra faoi cheilt. Laghdaíonn leid mhaith an spás cuardaigh."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "sainaithin botún coitianta;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "Má leanann cárta de theip, ná déan é a athrá amháin. Fiafraigh cén fáth a bhfuil sé deacair. Úsáid Socratic Instruction chun an mhíthuiscint a aimsiú, Math Step Coach le haghaidh bearnaí nós imeachta, nó leabharlann prasanna foghlama IS chun pras staidéir níos fearr a aimsiú."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "Tá Flashcard Builder inspir deartha timpeall ar an lúb chuimhne ghníomhach sin: tóg deic, bain triail as an tosach, nocht an freagra, rátáil do chuimhne, agus athbhreithnigh na botúin go dtí go bhfanann an smaoineamh."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "Caillte. Athbhreithnigh go luath."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "Botún amháin a dhéanann foghlaimeoirí ná gach cárta a láimhseáil mar an gcéanna. Má tá cárta ar eolas agat láithreach, b’fhéidir gur cur amú ama é a athbhreithniú arís amárach. Má theipeann ort cárta, b’fhéidir go bhfuil fanacht seachtain rófhada."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "Péireáil spléachchártaí le tuiscint"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "Greamaigh píosa beag nótaí isteach i Flashcard Builder."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "Fótaisintéis: an próiseas a úsáideann plandaí chun bia a dhéanamh."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "Rátáil cuimhne go hionraic."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "Mothaíonn léamh nótaí táirgiúil. Is é cuimhneamh orthu níos déanaí an fíorthástáil."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "cuimhnigh seicheamh;"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "Athbhreithnigh gan féachaint ar an gcúl."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "Is minic a bhíonn sna cártaí láidre:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "scileanna staidéir"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Cabhraíonn an leid sin leis an bhfoghlaimeoir tosú gan an gníomh cuimhneamh a bhaint. Tá Flashcard Builder inspir deartha don lúb nocht-agus-rátáil seo: bain triail as ar dtús, nocht sa dara háit, rátáil go hionraic, ansin tabhair cártaí laga ar ais níos luaithe."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Sin é an fáth a bhfuil cuimhne ghníomhach tábhachtach. In ionad féachaint ar an bhfreagra, déanann tú iarracht é a tharraingt ón gcuimhne. Neartaíonn an iarracht an chuimhne agus nochtann sí cad atá fós le hoibriú air."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "Caithfidh an foghlaimeoir fós an cuimhneamh a dhéanamh. Sin é an pointe."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "Cuireann an dara cárta ar an bhfoghlaimeoir caidreamh a aisghabháil, ní abairt a aithint amháin. De ghnáth díríonn cártaí maithe ar cheann de na poist seo:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "Ní gá go mbeadh sé seo casta. Is é an chuid thábhachtach go bhfreagraíonn do sceideal athbhreithnithe don chuimhne seachas an deic a láimhseáil mar liosta statach."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "Bain triail as i Flashcard Builder. Más gá duit an topaic a thuiscint sula ndéanann tú cártaí, tosaigh i Learn Anything. Más mian leat brú tar éis cártaí a athbhreithniú, bog chuig Quiz Me On Trivia nó Viva Practice."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "Déan cártaí níos fearr de nótaí"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "Déan ceist do Learn Anything d’earráidí arís agus arís eile."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "Úsáid an lúb seo:"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Úsáid trí rátáil:"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Cad é ról clóraifille i bhfótaisintéis?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "Cad a dhéanann spléachchárta maith"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "Nuair a ghreamaíonn tú nótaí isteach in IS, iarr air smaointe leathana a roinnt sna poist sin. Is fearr de ghnáth deic le 18 gcárta shonracha ná deic le 5 chárta ollmhóra a bhfuil alt iomlán i ngach ceann acu."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "Áit a gcabhraíonn IS"
+    }
+  ]
+}

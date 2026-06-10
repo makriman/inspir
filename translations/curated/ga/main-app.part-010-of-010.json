@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "language": "Irish",
+  "locale": "ga",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.badges-achievements.inputboxText",
+      "source": "What achievement system should we design?",
+      "value": "Cén córas éachtaí ba cheart dúinn a dhearadh?"
+    },
+    {
+      "key": "topic.badges-achievements.category",
+      "source": "Gamification",
+      "value": "Cluichíocht"
+    },
+    {
+      "key": "topic.badges-achievements.seo.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Cruthaigh suaitheantais le haghaidh comhsheasmhachta, máistreachta, misnigh, athbhreithnithe, comhoibrithe, agus déantúsán críochnaithe."
+    },
+    {
+      "key": "topic.badges-achievements.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Foghlaimeoirí atá ag fiosrú ábhair chluichíochta agus ar mhaith leo treoir phraiticiúil seachas bosca freagraí cineálach."
+    },
+    {
+      "key": "topic.badges-achievements.seo.whyDifferent",
+      "source": "This mode is tuned for badges & achievements with its own prompts, examples, and learning flow.",
+      "value": "Tá an mód seo curtha in oiriúint do shuaitheantais agus éachtaí, lena spreagcheisteanna, samplaí agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.0",
+      "source": "Reward milestones that matter",
+      "value": "Bronn luach saothair ar gharspriocanna fiúntacha"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Tosaigh le spreagcheisteanna samplacha"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Cuir an seisiún in oiriúint do do sprioc"
+    },
+    {
+      "key": "topic.badges-achievements.starter.0",
+      "source": "Create badges for my class",
+      "value": "Cruthaigh suaitheantais do mo rang"
+    },
+    {
+      "key": "topic.badges-achievements.starter.1",
+      "source": "Reward revision milestones",
+      "value": "Bronn luach saothair ar gharspriocanna don athbhreithniú"
+    },
+    {
+      "key": "topic.badges-achievements.starter.2",
+      "source": "Make achievement rules",
+      "value": "Cruthaigh rialacha éachta"
+    },
+    {
+      "key": "topic.leaderboards.name",
+      "source": "Leaderboards",
+      "value": "Cláir Cheannais"
+    },
+    {
+      "key": "topic.leaderboards.subText",
+      "source": "Make competition healthier",
+      "value": "Déan an iomaíocht níos folláine"
+    },
+    {
+      "key": "topic.leaderboards.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Cruthaigh cláir cheannais chothroma a thugann luach saothair d'iarracht, d'fheabhsú, d'obair foirne nó do chomhsheasmhacht gan foghlaimeoirí níos moille a dhíspreagadh."
+    },
+    {
+      "key": "topic.leaderboards.inputboxText",
+      "source": "What should the leaderboard measure?",
+      "value": "Cad ba cheart don chlár ceannais a thomhas?"
+    },
+    {
+      "key": "topic.leaderboards.category",
+      "source": "Gamification",
+      "value": "Cluichíocht"
+    },
+    {
+      "key": "topic.leaderboards.seo.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Cruthaigh cláir cheannais chothroma a thugann luach saothair d'iarracht, d'fheabhsú, d'obair foirne nó do chomhsheasmhacht gan foghlaimeoirí níos moille a dhíspreagadh."
+    },
+    {
+      "key": "topic.leaderboards.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Foghlaimeoirí atá ag fiosrú ábhair chluichíochta agus ar mhaith leo treoir phraiticiúil seachas bosca freagraí cineálach."
+    },
+    {
+      "key": "topic.leaderboards.seo.whyDifferent",
+      "source": "This mode is tuned for leaderboards with its own prompts, examples, and learning flow.",
+      "value": "Tá an mód seo curtha in oiriúint do chláir cheannais, lena spreagcheisteanna, samplaí agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.0",
+      "source": "Make competition healthier",
+      "value": "Déan an iomaíocht níos folláine"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Tosaigh le spreagcheisteanna samplacha"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Cuir an seisiún in oiriúint do do sprioc"
+    },
+    {
+      "key": "topic.leaderboards.starter.0",
+      "source": "Design a class leaderboard",
+      "value": "Dear clár ceannais don rang"
+    },
+    {
+      "key": "topic.leaderboards.starter.1",
+      "source": "Measure improvement fairly",
+      "value": "Tomhais feabhsú go cothrom"
+    },
+    {
+      "key": "topic.leaderboards.starter.2",
+      "source": "Make a team challenge board",
+      "value": "Cruthaigh clár dúshlán foirne"
+    },
+    {
+      "key": "topic.accountability-partner.name",
+      "source": "Accountability Partner",
+      "value": "Comhpháirtí Cuntasachta"
+    },
+    {
+      "key": "topic.accountability-partner.subText",
+      "source": "Build check-ins that keep you moving",
+      "value": "Cruthaigh seiceálacha rialta a choinníonn ar aghaidh thú"
+    },
+    {
+      "key": "topic.accountability-partner.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Cruthaigh seiceálacha cuntasachta le gealltanais shoiléire, fianaise, rialacha téarnaimh agus obair leantach thacúil."
+    },
+    {
+      "key": "topic.accountability-partner.inputboxText",
+      "source": "What commitment needs accountability?",
+      "value": "Cén gealltanas a bhfuil cuntasacht de dhíth air?"
+    },
+    {
+      "key": "topic.accountability-partner.category",
+      "source": "Gamification",
+      "value": "Cluichíocht"
+    },
+    {
+      "key": "topic.accountability-partner.seo.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Cruthaigh seiceálacha cuntasachta le gealltanais shoiléire, fianaise, rialacha téarnaimh agus obair leantach thacúil."
+    },
+    {
+      "key": "topic.accountability-partner.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Foghlaimeoirí atá ag fiosrú ábhair chluichíochta agus ar mhaith leo treoir phraiticiúil seachas bosca freagraí cineálach."
+    },
+    {
+      "key": "topic.accountability-partner.seo.whyDifferent",
+      "source": "This mode is tuned for accountability partner with its own prompts, examples, and learning flow.",
+      "value": "Tá an mód seo curtha in oiriúint do chomhpháirtí cuntasachta, lena spreagcheisteanna, samplaí agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.0",
+      "source": "Build check-ins that keep you moving",
+      "value": "Cruthaigh seiceálacha rialta a choinníonn ar aghaidh thú"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Tosaigh le spreagcheisteanna samplacha"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Cuir an seisiún in oiriúint do do sprioc"
+    },
+    {
+      "key": "topic.accountability-partner.starter.0",
+      "source": "Set up weekly accountability",
+      "value": "Socraigh cuntasacht sheachtainiúil"
+    },
+    {
+      "key": "topic.accountability-partner.starter.1",
+      "source": "Write a check-in script",
+      "value": "Scríobh script seiceála isteach"
+    },
+    {
+      "key": "topic.accountability-partner.starter.2",
+      "source": "Recover after missing a goal",
+      "value": "Téarnaigh tar éis sprioc a chailleadh"
+    },
+    {
+      "key": "topic.study-challenges.name",
+      "source": "Study Challenges",
+      "value": "Dúshláin Staidéir"
+    },
+    {
+      "key": "topic.study-challenges.subText",
+      "source": "Create short challenges and boss rounds",
+      "value": "Cruthaigh dúshláin ghearra agus babhtaí ceannais"
+    },
+    {
+      "key": "topic.study-challenges.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Cruthaigh dúshláin staidéir le rialacha soiléire, scóráil, leibhéil, babhtaí ceannais agus machnamh."
+    },
+    {
+      "key": "topic.study-challenges.inputboxText",
+      "source": "What should become a challenge?",
+      "value": "Cad ba cheart a dhéanamh ina dhúshlán?"
+    },
+    {
+      "key": "topic.study-challenges.category",
+      "source": "Gamification",
+      "value": "Cluichíocht"
+    },
+    {
+      "key": "topic.study-challenges.seo.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Cruthaigh dúshláin staidéir le rialacha soiléire, scóráil, leibhéil, babhtaí ceannais agus machnamh."
+    },
+    {
+      "key": "topic.study-challenges.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Foghlaimeoirí atá ag fiosrú ábhair chluichíochta agus ar mhaith leo treoir phraiticiúil seachas bosca freagraí cineálach."
+    },
+    {
+      "key": "topic.study-challenges.seo.whyDifferent",
+      "source": "This mode is tuned for study challenges with its own prompts, examples, and learning flow.",
+      "value": "Tá an mód seo curtha in oiriúint do dhúshláin staidéir, lena spreagcheisteanna, samplaí agus sreabhadh foghlama féin."
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.0",
+      "source": "Create short challenges and boss rounds",
+      "value": "Cruthaigh dúshláin ghearra agus babhtaí ceannais"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Tosaigh le spreagcheisteanna samplacha"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Cuir an seisiún in oiriúint do do sprioc"
+    },
+    {
+      "key": "topic.study-challenges.starter.0",
+      "source": "Make a 7 day math challenge",
+      "value": "Cruthaigh dúshlán matamaitice 7 lá"
+    },
+    {
+      "key": "topic.study-challenges.starter.1",
+      "source": "Create a vocabulary boss round",
+      "value": "Cruthaigh babhta ceannais foclóra"
+    },
+    {
+      "key": "topic.study-challenges.starter.2",
+      "source": "Design a revision sprint",
+      "value": "Dear sprint athbhreithnithe"
+    }
+  ]
+}

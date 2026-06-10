@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Lithuanian",
+  "locale": "lt",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} | inspir"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "{value1} auditorijos keliai"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "{value1} DUK"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "{value1} viešųjų režimų įėjimo taškai"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "{value1} susiję gidai"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "{value1} naudojimo atvejai"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "Nemokamas DI mokymosi palydovas savarankiškai besimokantiems žmonėms."
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "Nemokamas DI korepetitorius mokiniams, kurie nori suprasti, o ne kopijuoti."
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "Gera šeimos DI darbo eiga turėtų besimokantįjį daryti savarankiškesnį, o ne labiau priklausomą. Prieš vaikui pradedant, tėvai gali naudoti viešuosius puslapius ir pamatyti, kam skirtas kiekvienas režimas."
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "Tėvams draugiškas gidas po viešuosius inspir DI mokymosi režimus namų darbų užuominoms, paaiškinimams, mokymosi rutinoms, kortelėms ir saugesniems mokymosi pokalbiams."
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "Mokinys, tėvas, mokytojas ir savarankiškai besimokantis žmogus dažnai ieško to paties DI korepetitoriaus skirtingais žodžiais. Atskiri puslapiai aiškiau parodo tinkamus naudojimo atvejus ir saugumo ribas."
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "DI programavimo korepetitorius pradedantiesiems"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "DI mokymosi kortelės vaikams"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "DI mokymosi kortelės mokiniams"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "DI namų darbų treneris mokytojams"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "DI pagalba su namų darbais mano vaikui"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "DI pagalba su namų darbais mokiniams"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "DI mokymosi auditorijų puslapiai"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "DI mokymosi auditorijų paieškos ketinimai"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "DI mokymasis pagal auditoriją"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "DI mokymosi palydovas suaugusiesiems"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "DI mokymasis mokiniams, tėvams ir mokytojams"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "DI mokymasis mokiniams, tėvams ir mokytojams | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "DI mokymosi pagalba, kurią tėvai gali išbandyti prieš ja pasitikėdami."
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "DI mokymosi režimai mokytojams, kuriems reikia kryptingo veikimo."
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "DI mokymasis turėtų tikti jį naudojančiam žmogui."
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "DI mokymosi įrankiai mokytojams"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "DI matematikos pagalba mokiniams"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "DI projektų treneris"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "DI testų generatorius mokytojams"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "DI sokratiškas korepetitorius klasei"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "DI mokymosi pagalba šeimoms"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "DI mokymosi plano kūrėjas"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "DI mokymosi planuotojas mokiniams"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "DI įrankiai mokytojams"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "DI korepetitorius tėvams"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "DI korepetitorius tėvams ir šeimoms"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "DI korepetitorius savarankiškam mokymuisi"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "DI korepetitorius savarankiškai besimokantiems"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "DI korepetitorius mokiniams"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "DI korepetitorius mokytojams"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "DI rašymo grįžtamasis ryšys mokiniams"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "Ar auditorijų puslapiai yra vieši ir indeksuojami?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "Paprašykite užuominos, leiskite besimokančiajam paaiškinti kitą žingsnį, tada naudokite testą arba mokymosi kortelę patikrinti, ar idėja įsitvirtino."
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "Paprašykite užuominų, patikrų ir grįžtamojo ryšio prieš prašydami užbaigto atsakymo."
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "Paklauskite būtinų žinių, paprasto modelio, pavyzdžių ir dažno klaidingo supratimo."
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "Paprašykite struktūros, įrodymų ir aiškumo grįžtamojo ryšio, išlaikydami galutinį juodraštį savą."
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "Paklauskite būtinų pradinių idėjų, paprasta kalba pateikto modelio, vieno pavyzdžio, vienos praktikos užduoties ir vieno būdo patikrinti supratimą."
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "Paprašykite besimokančiojo paaiškinti, kas pasikeitė po kiekvienos užuominos."
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "Auditorija"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "Auditorijos DUK"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "Auditorijos mokymosi kelias"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "Auditorijų puslapiai leidžia paieškos sistemoms ir DI atsakymų sistemoms atskirti mokinius, tėvus, mokytojus ir savarankiškus besimokančiuosius, o ne suplokštinti visus į vieną bendrą puslapį."
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "auditorijos keliai"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "Auditorijos maršrutas"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "Grįžti į auditorijos kelius"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "Ribos"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "Riba"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "Susikurkite ramesnį mokymosi įprotį"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "Ar inspir gali padėti suaugusiesiems ir savarankiškai besimokantiems?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "Ar tėvai gali išbandyti inspir prieš rekomenduodami?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "Ar mokiniai gali naudoti inspir neprisijungę?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "Ar mokytojai gali išbandyti inspir be mokyklos diegimo?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "Tikrinkite supratimą nestovėdami virš galvos"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "Pasirinkite, kas mokosi, tada pasirinkite tinkamą elgesį."
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "Kurkite praktiką neišduodami atsakymų"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "Skirtingiems žmonėms reikia skirtingų DI mokymosi maršrutų."
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "Nepainiokite greito atsakymo su meistriškumu."
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "Ar inspir skelbia vaiko privačius pokalbius?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "Kiekvienas auditorijos kelias jungiasi su viešais, nuskaitomais mokymosi paviršiais."
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "EducationalAudience"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "Užbaikite mokymosi įrodymu."
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "Įvertinkite režimą prieš naudodami jį su besimokančiaisiais"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "Kiekvieną priimtą žingsnį paaiškinkite savais žodžiais."
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "Tyrinėkite viešuosius DI mokymosi režimus, kuriuos mokytojai gali naudoti sokratiškai korepetitorystei, testams, mokymosi kortelėms, rašymo grįžtamajam ryšiui, šaltinių kritikai ir klasei paruoštoms mokymosi darbo eigoms įvertinti."
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "Raskite tinkamą inspir DI mokymosi darbo eigą mokiniams, tėvams, mokytojams ir savarankiškai besimokantiems."
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "Užbaikite paaiškinimu atgal, testu, mokymosi kortele, projekto žingsniu arba mokymosi rutina."
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "Besimokantiesiems"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "Tėvams"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "Savarankiškai besimokantiems"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "Mokiniams"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "Mokytojams"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "nemokamas DI korepetitorius vaikams"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "nemokamas DI korepetitorius savarankiškam mokymuisi"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "nemokamas DI korepetitorius mokiniams"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "Nemokamas DI korepetitorius mokiniams"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "Gaukite pagalbą su namų darbais nekopijuodami"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "Gidas"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "Gidai ir darbo eigos"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "Padėkite vaikui išsivaduoti iš užstrigimo"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Pradžia"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "Kaip mokiniai gali išvengti sukčiavimo su DI?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "Kaip išvengti klaidžiojimo tarp temų?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "Kuo tai skiriasi nuo bendro pokalbių roboto davimo mokiniams?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Kaip tai veikia"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "Gerinkite rašymą neprarasdami savo balso"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "inspir skirtas mokiniams, tėvams, mokytojams ir savarankiškai besimokantiems, kuriems reikia kryptingų DI mokymosi režimų paaiškinimams, klausimams, užuominoms, testams, mokymosi kortelėms, grįžtamajam ryšiui ir mokymosi planavimui."
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "inspir organizuotas į kryptingus režimus, tokius kaip sokratiška korepetitorystė, namų darbų užuominos, testai, mokymosi kortelės, rašymo grįžtamasis ryšys, šaltinių kritika ir mokymosi planavimas."
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "inspir viešieji režimai leidžia mokytojams įvertinti produktą per tikras mokymosi eigas prieš svarstant mokyklos diegimą arba pritaikytą klasės kelią."
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "Užduotis"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "Privatus išsaugotus pokalbius laikykite už viešo atradimo ir citavimo paviršių ribų."
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "Išlaikykite sesiją sutelktą į mokymosi įrodymus, o ne pasyvų atsakymų rinkimą."
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "mokykis bet ko su DI"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "Mokykitės kurdami"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "Mokymosi kelias"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "Mokymosi darbo eiga"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "Padarykite painiavą lengviau aptariamą"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "Padarykite, kad kiekviena mokymosi sesija baigtųsi testu, artefaktu arba kartojimo žingsniu."
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "Padarykite įprotį išgyvenamą"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "Režimas"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "Pereikite nuo viešo testavimo prie mokyklos diegimo"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "Mokyklai būdingus privatumo, prieigos ir diegimo klausimus perkelkite į mokyklų kelią."
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "Įvardykite mokymosi situaciją."
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "Ne. Viešieji puslapiai indeksuojami, bet privatūs išsaugoti pokalbiai neįtraukiami į svetainės žemėlapį, llms failus arba DI turinio indeksą."
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "Atidarykite kryptingą viešą režimą."
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "Atidarykite viešą režimą, patikrinkite mokinio elgesį ir įvertinkite, ar jis tinkamai klausia, duoda užuominų, testuoja arba kritikuoja."
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "Atidaryti auditorijos kelią"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "Atidaryti režimą"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "Atidaryti kelią"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Atidaryti mokymosi žemėlapį"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "Atidaryti šį maršrutą"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "Atidaryti darbo eigą"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "Tėvai dažnai bando padėti neperimdami mokymosi už vaiką. inspir šeimoms suteikia viešus režimus, kuriuose mokymosi elgesys tampa matomas: užuominos, klausimai, paaiškinimas savais žodžiais, kartojimas ir mokymosi planavimas."
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "Įklijuokite klausimą, tai, ką bandėte, ir vietą, kur užstrigote. Paprašykite mažiausios naudingos užuominos, o ne galutinio atsakymo."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Praktika"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "Vieši puslapiai rodo produkto veikimą, o ne privačius mokinių darbus."
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "Skaityti gidą"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "Pasiruošę išbandyti pirmąjį režimą?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "Tyrinėkite nepamesdami minties"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "Kartojimas"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "saugus DI mokymosi įrankis mokiniams"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "Paieškos intencija"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "savarankiškai besimokantis žmogus"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "Savarankiškai besimokantiems žmonėms reikia impulso ir struktūros. inspir padeda smalsumą paversti keliu: paaiškinti, kurti, testuoti, kartoti ir judėti toliau."
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "Pradėkite temą nuo pirmųjų principų"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Pradėti mokytis"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "Pradėkite nuo paprasto paaiškinimo, tada užduokite sokratiškus klausimus, kol galėsite paaiškinti savais žodžiais."
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "Pradėkite nuo Learn Anything, jei reikia paprasto paaiškinimo, Homework Coach, jei užstrigote su užduotimi, arba Flashcard Builder, kai tikslas yra kartojimas."
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "Pradėkite nuo viešų gairių, tada atidarykite tinkamą režimą."
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "Pradėkite nuo režimo, kuris atitinka akimirką."
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "Pradėkite nuo viešų režimų, tada naudokite mokyklų puslapį diegimo žingsniams, naudojimo atvejams ir pasitikėjimo riboms peržiūrėti."
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "Mokinių namų darbams, tėvų pagalbai, mokytojų vertinimui ir savarankiškam mokymuisi reikia skirtingo rėminimo."
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "Mokiniams reikia greitos pagalbos, bet pagalba vis tiek turi palikti mąstymą jų rankose. inspir nukreipia įprastas mokymosi akimirkas į sutelktus viešus režimus, o ne į vieną bendrą atsakymų laukelį."
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "Mokiniai, tėvai, mokytojai ir savarankiškai besimokantieji ieško skirtingų dalykų. Šie puslapiai nukreipia kiekvieną auditoriją į tinkamą viešą režimą, gidą ir mokymosi darbo eigą."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Palaikykite rašymą išsaugodami balsą"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Mokytojams reikia daugiau nei bendro pokalbių roboto. Jiems reikia nuspėjamo mokymosi elgesio: užduoti klausimus, tikrinti samprotavimą, kurti praktiką, išsaugoti mokinio balsą ir padaryti klaidingą supratimą matomą."
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "Auditorijų puslapiai aiškiai parodo laukiamą mokymosi elgesį, kad pirmoji sesija prasidėtų geresniu sprendimu."
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "Auditorijos paieškos, į kurias sukurtas atsakyti šis centras."
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "Puslapiai neatskleidžia privačių pokalbių. Jie organizuoja viešus režimus, užklausas, gidus, darbo eigas ir saugumo ribas, kad besimokantysis galėtų pradėti tinkamoje vietoje."
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "Tas pats DI mokytojas gali būti namų darbų užuomina, tėvų prižiūrimas paaiškinimo savais žodžiais ciklas, mokytojų vertinimo paviršius arba savarankiško mokymosi treneris. Puslapis turėtų tai aiškiai parodyti."
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "Paieškos, į kurias sukurtas atsakyti šis puslapis."
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "Savarankiško mokymosi iššūkis yra ne tik rasti informaciją. Tai pasirinkti kitą teisingą veiksmą ir žinoti, ar idėja iš tikrųjų įsitvirtino."
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "Stipriausi SEO puslapiai nepalieka besimokančiojo aklavietėje. Jie susieja auditorijos intenciją su keliais, darbo eigomis, gidais ir pakartojamu kartojimu."
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "Stipriausia mokinio darbo eiga nėra atsakymų kopijavimas. Tai ciklas: paaiškinti, kur užstrigai, užduoti vieną geresnį klausimą, gauti užuominą, bandyti dar kartą, tada pakartoti klaidą."
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "Tai tiesioginiai svečio įėjimo taškai. Jie yra vieši ir indeksuojami, o privatūs naudotojų pokalbiai lieka už svetainės žemėlapio ir DI atradimo failų ribų."
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "Šios frazės matomos besimokantiesiems ir įtrauktos į struktūruotą atradimą, kad DI atsakymų sistemos suprastų auditorijai būdingą puslapio tikslą."
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "Prieš judėdami toliau painiavą paverskite testu arba mokomąja kortele."
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "Paverskite klaidas kartojimu"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "Paverskite pirmą paspaudimą pilnu mokymosi ciklu."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Individualios pamokos"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "Supraskite temą prieš testą"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "Naudokite režimą, pritaikytą užuominoms, klausimams, testams, mokomosioms kortelėms, rašymo grįžtamajam ryšiui ar planavimui."
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "Naudokite DI užuominoms, paaiškinimams, klaidų patikrinimams ir kartojimo ciklams. Neprašykite jo sukurti galutinio atsakymo, kurio negalite paaiškinti."
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "Naudokite Code Tutor arba Project Coach, kad neaiškų tikslą paverstumėte mažu patikrinamu kitu žingsniu."
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "Naudokite užuominų pirmumo ir paaiškinimo savais žodžiais darbo eigas namų darbų pagalbai."
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "Naudokite Homework Coach, kad paprašytumėte užuominos, tada paprašykite besimokančiojo paaiškinti kitą veiksmą."
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "Naudokite inspir kaip nemokamą DI mokytoją mokiniams: namų darbų užuominoms, sokratiškiems klausimams, matematikos žingsnių patikrinimams, rašymo grįžtamajam ryšiui, testams, mokomosioms kortelėms ir pasiruošimui egzaminams."
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "Naudokite inspir savarankiškai mokytis bet ko su paaiškinimais, kodo mokymu, projektų konsultavimu, tyrimų pagalba, sąvokų žemėlapiais, mokymosi planais ir įpročių palaikymu."
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "Naudokite Learn Anything, kad gautumėte paprastesnį modelį, būtinas ankstesnes idėjas ir tinkamo lygio pavyzdžius."
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "Naudokite viešų režimų aprašymus, kad pasirinktumėte elgesį prieš prasidedant sesijai."
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "Naudokite testų ir mokomųjų kortelių režimus aktyviam atgaminimui, tada praleistus elementus nukreipkite į kartojimą."
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "Naudokite testus ir mokomąsias korteles, kad praleisti klausimai taptų matomi ir pakartojami."
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "Naudokite testus, mokomąsias korteles ir sokratiškus klausimus, kad besimokantysis parodytų, ką supranta."
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "Naudokite Research Assistant, Source Critic ir Concept Map Builder, kad sutvarkytumėte teiginius ir įrodymus."
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "Naudokite šaltinių kritiką teiginiams, kuriuos galbūt cituosite arba pagal kuriuos veiksite."
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "Naudokite Study Plan Builder ir Habit Coach, kad sukurtumėte rutiną, kuri gali atsinaujinti po praleistų dienų."
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "Naudokite Study Plan Builder arba Habit Coach, kad mažos sesijos ir pradėjimai iš naujo būtų matomi."
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "Naudokite Study Plan Builder, kad pasirinktumėte mažą tikslą, tada naudokite testus, mokomąsias korteles, projekto žingsnius ar sąvokų žemėlapius pažangai įrodyti."
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "Naudokite mokyklų puslapį tinkintoms darbo eigoms, konfidencialumo poreikiams ir diegimo žingsniams nagrinėti."
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "Naudokite Writing Coach grįžtamajam ryšiui apie struktūrą, aiškumą, įrodymus ir taisymo prioritetus."
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "Naudingas DI mokymasis turi aiškų susitarimą."
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "Norite plačiausios vietos pradėti?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "Kokia geriausia tėvų prižiūrima darbo eiga?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "Ko pirmiausia turėtų klausti savarankiškai besimokantis žmogus?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "Ką pirmiausia turėtų išbandyti mokinys?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "Kur mokyklos komanda turėtų eiti toliau?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "Kam skirtas inspir?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "Kodėl atskiri puslapiai skirtingoms auditorijoms?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "Taip. Auditorijų puslapiai susieja tik su viešais svečio režimais, gidais, pradinėmis užklausomis, mokymosi keliais ir DI skaitomais atradimo failais. Privatūs išsaugoti pokalbiai lieka neįtraukti."
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "Taip. Vieši svečio režimai leidžia mokytojams išbandyti mokymosi elgesį prieš aptariant tinkintą diegimą."
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "Taip. Vieši svečio režimai, tokie kaip Learn Anything, Homework Coach, Socratic Instruction, testai, mokomosios kortelės ir rašymo grįžtamasis ryšys, atsidaro tiesiogiai."
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "Taip. Vieši režimai tinka mokyklos temoms, profesiniams įgūdžiams, programavimui, tyrimams, projektams ir asmeninėms mokymosi rutinoms."
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "Taip. Vieši svečio režimai ir auditorijų puslapiai sukurti taip, kad tėvai galėtų apžiūrėti mokymosi elgesį prieš juo pasikliaudami."
+    }
+  ]
+}

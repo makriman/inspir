@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Georgian",
+  "locale": "ka",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "დაყავით სამუშაო დასახელებულ დავალებებად, გაზომეთ თითოეულის დრო და ყოველი ფოკუსირებული სესიის შემდეგ გადახედეთ, სად დაიხარჯა სასწავლო ძალისხმევა."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "ფოკუსისა და პროდუქტიულობის თემებით დაინტერესებული მოსწავლეები, რომლებსაც ზოგადი პასუხების ველის ნაცვლად პრაქტიკული გზამკვლევი სურთ."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია დავალების ტაიმერზე და აქვს საკუთარი მინიშნებები, მაგალითები და სწავლის ნაკადი."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "გაზომეთ ცალკეული დავალებების დრო და დაინახეთ დახარჯული ძალისხმევა"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "გაზომეთ ამოცანების ნაკრებზე მუშაობის დრო"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "აკონტროლეთ ესეს გეგმის შედგენაზე მუშაობა"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "დაყავით დიდი დავალება დროში განსაზღვრულ ბლოკებად"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "შესვენების შემახსენებელი"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "დაიცავით კონცენტრაცია ჯანსაღი პაუზებით"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "დააყენეთ მუშაობისა და შესვენების რიტმი, დაგეგმეთ ნამდვილი განტვირთვა და თავიდან აიცილეთ უსასრულო სწავლის დაღლილობაში ჩაძირვა."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "მუშაობისა და შესვენების როგორი რიტმი გსურთ?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "ფოკუსი და პროდუქტიულობა"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "დააყენეთ მუშაობისა და შესვენების რიტმი, დაგეგმეთ ნამდვილი განტვირთვა და თავიდან აიცილეთ უსასრულო სწავლის დაღლილობაში ჩაძირვა."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ფოკუსისა და პროდუქტიულობის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია შესვენების შემახსენებელზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "დაიცავით კონცენტრაცია ჯანსაღი პაუზებით"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "გამოიყენეთ 50/10 შესვენებები"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "დაგეგმეთ ჯანსაღი შესვენება"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "დამეხმარე, ზედმეტად ბევრ სწავლას შევეშვა"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "ღრმა მუშაობის სესიები"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "დაგეგმეთ ფოკუსის ბლოკი ნაკლები გამფანტველით"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "მოამზადეთ ღრმა მუშაობის სესია მკაფიო შედეგით, შეზღუდვებით, ფოკუსის წესებით, გადახედვის საკონტროლო წერტილით და სათადარიგო გეგმით."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "რა შედეგი უნდა მოიტანოს ამ ღრმა მუშაობის სესიამ?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "ფოკუსი და პროდუქტიულობა"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "მოამზადეთ ღრმა მუშაობის სესია მკაფიო შედეგით, შეზღუდვებით, ფოკუსის წესებით, გადახედვის საკონტროლო წერტილით და სათადარიგო გეგმით."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ფოკუსისა და პროდუქტიულობის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია ღრმა მუშაობის სესიებზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "დაგეგმეთ ფოკუსის ბლოკი ნაკლები გამფანტველით"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "დაგეგმეთ 90-წუთიანი ღრმა მუშაობის ბლოკი"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "დამეხმარე კოდირებაზე კონცენტრირებაში"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "დააწესეთ წესები თეზისის წერისთვის"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "ჯგუფური სწავლის ტაიმერი"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "შეათანხმეთ ფოკუსის რაუნდები სხვებთან"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "ჩაატარეთ საერთო სწავლის რიტმი მეგობრებისთვის ან თანაკლასელებისთვის სინქრონული მიზნებით, შემოწმებებითა და შეჯამების კითხვებით."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "ვინ სწავლობს ერთად და რა არის მიზანი?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "სოციალური"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "ჩაატარეთ საერთო სწავლის რიტმი მეგობრებისთვის ან თანაკლასელებისთვის სინქრონული მიზნებით, შემოწმებებითა და შეჯამების კითხვებით."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ სოციალურ თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია ჯგუფური სწავლის ტაიმერზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "შეათანხმეთ ფოკუსის რაუნდები სხვებთან"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "დაგეგმეთ ჯგუფური Pomodoro"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "მოაწყვეთ სასწავლო ოთახის სტრუქტურა"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "ჩაატარეთ 45-წუთიანი ჯგუფური სესია"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "ფონური ხმები"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "გენერირებული ხმოვანი გარემო მშვიდი სწავლისთვის"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "გამოიყენეთ მარტივი ფონური ხმის წინასწარი პარამეტრები, რათა შეამციროთ ყურადღების გაფანტვა კითხვის, წერის, გამეორების ან ამოცანების ამოხსნის დროს."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "როგორი ფონური ფოკუსი გსურთ?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "ფოკუსი და პროდუქტიულობა"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "გამოიყენეთ მარტივი ფონური ხმის წინასწარი პარამეტრები, რათა შეამციროთ ყურადღების გაფანტვა კითხვის, წერის, გამეორების ან ამოცანების ამოხსნის დროს."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ფოკუსისა და პროდუქტიულობის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია ფონურ ხმებზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "გენერირებული ხმოვანი გარემო მშვიდი სწავლისთვის"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "გამოიყენეთ წვიმის ხმა კითხვისთვის"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "შეარჩიეთ მშვიდი აუდიო მათემატიკისთვის"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "მოაწყვეთ წყნარი ღრმა მუშაობის გარემო"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "სწავლის სერიები"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "შექმენით თანმიმდევრულობა დანაშაულის გრძნობის გარეშე"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "აკონტროლეთ სწავლის უწყვეტი სერიები, გამოასწორეთ გამოტოვებული დღეები და შექმენით მინიმალური სიცოცხლისუნარიანი სწავლის ჩვევა, რომელიც რეალურ ცხოვრებას გაუძლებს."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "რა სერიას ან რუტინას აყალიბებთ?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "ანალიტიკა"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "აკონტროლეთ სწავლის უწყვეტი სერიები, გამოასწორეთ გამოტოვებული დღეები და შექმენით მინიმალური სიცოცხლისუნარიანი სწავლის ჩვევა, რომელიც რეალურ ცხოვრებას გაუძლებს."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ანალიტიკის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია სწავლის სერიებზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "შექმენით თანმიმდევრულობა დანაშაულის გრძნობის გარეშე"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "დაიწყეთ სწავლის სერია"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "გამოტოვებული დღის შემდეგ აღდგენა"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "შექმენით მცირე ყოველდღიური გამეორება"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "პროგრესის დაფა"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "გადახედეთ სწავლის აქტივობას და შემდეგ ნაბიჯებს"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "გადააქციეთ სწავლის აქტივობა, ტესტის შედეგები, შენიშვნები და ტაიმერები დაფის სტილის მიმოხილვად ტენდენციებითა და შემდეგი მოქმედებებით."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "რომელ პროგრესს გადავხედოთ?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "ანალიტიკა"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "გადააქციეთ სწავლის აქტივობა, ტესტის შედეგები, შენიშვნები და ტაიმერები დაფის სტილის მიმოხილვად ტენდენციებითა და შემდეგი მოქმედებებით."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ანალიტიკის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია პროგრესის დაფაზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "გადახედეთ სწავლის აქტივობას და შემდეგ ნაბიჯებს"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "გადახედე ჩემს კვირას"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "იპოვე სუსტი ადგილები"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "გადააქციე აქტივობა შემდეგ ნაბიჯებად"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "ყოველკვირეული ანგარიშები"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "შეაჯამეთ მიღწევები, ჩავარდნები და შემდეგი კვირა"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "შექმენით ყოველკვირეული ან ყოველთვიური სწავლის ანგარიში ძალისხმევით, შედეგებით, დაბრკოლებებით, მიღწევებითა და ფოკუსირებული გეგმით."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "რა მოხდა ამ კვირაში?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "ანალიტიკა"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "შექმენით ყოველკვირეული ან ყოველთვიური სწავლის ანგარიში ძალისხმევით, შედეგებით, დაბრკოლებებით, მიღწევებითა და ფოკუსირებული გეგმით."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ანალიტიკის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია ყოველკვირეულ ანგარიშებზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "შეაჯამეთ მიღწევები, ჩავარდნები და შემდეგი კვირა"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "დაწერე ჩემი ყოველკვირეული სწავლის ანგარიში"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "შეაჯამე ჩემი პროგრესი"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "დაგეგმე შემდეგი კვირა ამ კვირის მიხედვით"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "დავალებების ტრეკერი"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "აკონტროლეთ ვადები და შემდეგი მოქმედებები"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "დაალაგეთ დავალებები ჩაბარების ვადის, ძალისხმევის, სტატუსის, რისკისა და შემდეგი უმცირესი მოქმედების მიხედვით."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "რა დავალებები გაქვთ შესასრულებელი?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "ორგანიზება"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "დაალაგეთ დავალებები ჩაბარების ვადის, ძალისხმევის, სტატუსის, რისკისა და შემდეგი უმცირესი მოქმედების მიხედვით."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ორგანიზების თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია დავალებების ტრეკერზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "აკონტროლეთ ვადები და შემდეგი მოქმედებები"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "დაალაგე ჩემი ვადები"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "დაალაგე დავალებები პრიორიტეტების მიხედვით"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "დაგეგმე ამ პროექტის ჩაბარება"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "კურსების მენეჯერი"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "დაალაგეთ კურსები, თემები და სამუშაო დატვირთვა"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "მოაქციეთ კურსები, მოდულები, დავალებები, რესურსები და ყოველკვირეული დატვირთვა ერთ ორგანიზებულ სასწავლო სისტემაში."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "რომელ კურსებს ან საგნებს მართავთ?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "ორგანიზება"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "მოაქციეთ კურსები, მოდულები, დავალებები, რესურსები და ყოველკვირეული დატვირთვა ერთ ორგანიზებულ სასწავლო სისტემაში."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ორგანიზების თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია კურსების მენეჯერზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "დაალაგეთ კურსები, თემები და სამუშაო დატვირთვა"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "დააყენე ჩემი კურსები"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "დაალაგე ჩემი სემესტრი"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "შეადგინე თემების რუკა თითოეული საგნისთვის"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "შენიშვნების ორგანიზატორი"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "მიანიჭეთ ტეგები, დაალაგეთ და დააკავშირეთ შენიშვნები"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "გადააქციეთ არეულად მიმოფანტული შენიშვნები საქაღალდეებად, ტეგებად, შეჯამებებად, ბმულებად და გამეორების მოქმედებებად, რომლებიც გახსენებას ამარტივებს."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "ჩასვით ან აღწერეთ დასალაგებელი შენიშვნები"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "ორგანიზება"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "გადააქციეთ არეულად მიმოფანტული შენიშვნები საქაღალდეებად, ტეგებად, შეჯამებებად, ბმულებად და გამეორების მოქმედებებად, რომლებიც გახსენებას ამარტივებს."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ ორგანიზების თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია შენიშვნების ორგანიზატორზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "მიანიჭეთ ტეგები, დაალაგეთ და დააკავშირეთ შენიშვნები"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "დაალაგე ჩემი საკლასო შენიშვნები"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "შექმენი ტეგები ამ შენიშვნებისთვის"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "იპოვე თემები ჩემს რვეულში"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "რესურსების გაზიარება"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "მოამზადეთ და გააზიარეთ სასწავლო რესურსები"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "მოამზადეთ სასწავლო რესურსები თანაკლასელებისთვის ან ჯგუფისთვის: შეჯამებები, ბმულები, შენიშვნები, ახსნები და გამოყენების მითითებები."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "რომელი რესურსის გაზიარება გსურთ?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "სოციალური"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "მოამზადეთ სასწავლო რესურსები თანაკლასელებისთვის ან ჯგუფისთვის: შეჯამებები, ბმულები, შენიშვნები, ახსნები და გამოყენების მითითებები."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ სოციალურ თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია რესურსების გაზიარებაზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "მოამზადეთ და გააზიარეთ სასწავლო რესურსები"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "მოამზადე ჩემი შენიშვნები ჯგუფისთვის"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "შექმენი რესურსის შეჯამება"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "შექმენი გაზიარების მითითებები"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "სასწავლო ჯგუფები"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "გახადეთ ჯგუფური სწავლა სტრუქტურირებული"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "დაგეგმეთ პროდუქტიული სასწავლო ჯგუფი როლებით, დღის წესრიგით, კითხვების რაუნდებით, საერთო რესურსებითა და შეჯამების შენიშვნებით."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "რა უნდა გააკეთოს სასწავლო ჯგუფმა?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "სოციალური"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "დაგეგმეთ პროდუქტიული სასწავლო ჯგუფი როლებით, დღის წესრიგით, კითხვების რაუნდებით, საერთო რესურსებითა და შეჯამების შენიშვნებით."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ სოციალურ თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია სასწავლო ჯგუფებზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "გახადეთ ჯგუფური სწავლა სტრუქტურირებული"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "დაგეგმე ჯგუფური სესია"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "შექმენი როლები სასწავლო ჯგუფისთვის"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "გამოასწორე არაპროდუქტიული ჯგუფი"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "სტუდენტური ფორუმი"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "ჩამოაყალიბეთ კითხვები საზოგადოებისგან დახმარების მისაღებად"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "მოამზადეთ მკაფიო ფორუმის კითხვები, პასუხები, შეჯამებები და შემდგომი მოთხოვნები, რომლებიც სტუდენტურ დისკუსიებს უფრო სასარგებლოს ხდის."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "რომელი კითხვის ან დისკუსიის გამოქვეყნება გსურთ?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "სოციალური"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "მოამზადეთ მკაფიო ფორუმის კითხვები, პასუხები, შეჯამებები და შემდგომი მოთხოვნები, რომლებიც სტუდენტურ დისკუსიებს უფრო სასარგებლოს ხდის."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ სოციალურ თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია სტუდენტურ ფორუმზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "ჩამოაყალიბეთ კითხვები საზოგადოებისგან დახმარების მისაღებად"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "დაწერე კარგი ფორუმის კითხვა"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "შეაჯამე დისკუსია"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "ითხოვე თანატოლების უკუკავშირი"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "სამუშაო ფურცლის შემქმნელი"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "შექმენით შერეული პრაქტიკის სამუშაო ფურცლები"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "შექმენით სამუშაო ფურცლები ისეთი ტიპის კითხვებით, როგორიცაა გამოტოვებული ადგილის შევსება, MCQ, სწორია/მცდარია, მოკლე პასუხები და შეხამება."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "რას უნდა ფარავდეს სამუშაო ფურცელი?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "აქტიური სწავლა"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "შექმენით სამუშაო ფურცლები ისეთი ტიპის კითხვებით, როგორიცაა გამოტოვებული ადგილის შევსება, MCQ, სწორია/მცდარია, მოკლე პასუხები და შეხამება."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ აქტიური სწავლის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია სამუშაო ფურცლის შემქმნელზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "შექმენით შერეული პრაქტიკის სამუშაო ფურცლები"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "შექმენი სამუშაო ფურცელი წილადებზე"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "შექმენი შერეული ქიმიის პრაქტიკა"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "შექმენი ლექსიკის სავარჯიშოები"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "დიაგრამის წარწერების პრაქტიკა"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "ივარჯიშეთ დიაგრამებისა და სისტემების წარწერებზე"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "გადააქციეთ დიაგრამები, სხეულის სისტემები, რუკები, სამუშაო პროცესები ან ლაბორატორიული წყობები წარწერების პრაქტიკად მინიშნებებითა და პასუხების შემოწმებით."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "რომელ დიაგრამაზე ვივარჯიშოთ წარწერების დასმით?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "აქტიური სწავლა"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "გადააქციეთ დიაგრამები, სხეულის სისტემები, რუკები, სამუშაო პროცესები ან ლაბორატორიული წყობები წარწერების პრაქტიკად მინიშნებებითა და პასუხების შემოწმებით."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ აქტიური სწავლის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია დიაგრამის წარწერების პრაქტიკაზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "ივარჯიშეთ დიაგრამებისა და სისტემების წარწერებზე"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "დააწერე წარწერები მცენარის უჯრედს"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "ივარჯიშე გულის დიაგრამაზე"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "შექმენი რუკის წარწერების კითხვები"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "შეხამების თამაშის გენერატორი"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "შეაწყვილეთ ტერმინები, განმარტებები, მიზეზები და მაგალითები"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "გადააქციეთ შენიშვნები შეხამების თამაშებად ლექსიკისთვის, ცნებებისთვის, ადამიანებისთვის/მოვლენებისთვის, ფორმულებისთვის, მაგალითებისთვის ან მიზეზ-შედეგობრივი წყვილებისთვის."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "რომელი წყვილები უნდა იქცეს შეხამების თამაშად?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "აქტიური სწავლა"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "გადააქციეთ შენიშვნები შეხამების თამაშებად ლექსიკისთვის, ცნებებისთვის, ადამიანებისთვის/მოვლენებისთვის, ფორმულებისთვის, მაგალითებისთვის ან მიზეზ-შედეგობრივი წყვილებისთვის."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ აქტიური სწავლის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია შეხამების თამაშის გენერატორზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "შეაწყვილეთ ტერმინები, განმარტებები, მიზეზები და მაგალითები"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "შეახამე ტერმინები და განმარტებები"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "შექმენი მიზეზ-შედეგობრივი წყვილები"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "შექმენი ფორმულების შეხამების პრაქტიკა"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP და დონეები"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "გადააქციეთ პროგრესი დონეებად და მისიებად"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "შექმენით ქულების, დონეების, მისიებისა და ჯილდოების სისტემა რეალური სასწავლო პროგრესის გარშემო."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "რომელი სასწავლო მიზანი უნდა იქცეს დონეების სისტემად?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "გეიმიფიკაცია"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "შექმენით ქულების, დონეების, მისიებისა და ჯილდოების სისტემა რეალური სასწავლო პროგრესის გარშემო."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "მოსწავლეებისთვის, რომლებიც იკვლევენ გეიმიფიკაციის თემებს და სურთ პრაქტიკული გზამკვლევი ზოგადი პასუხების ველის ნაცვლად."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "ეს რეჟიმი მორგებულია XP-სა და დონეებზე, საკუთარი მოთხოვნებით, მაგალითებითა და სწავლის პროცესით."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "გადააქციეთ პროგრესი დონეებად და მისიებად"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "დაიწყეთ მაგალითი მოთხოვნებით"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "მოარგეთ სესია თქვენს მიზანს"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "შექმენი XP გამოცდისთვის მომზადებისთვის"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "შექმენი დონეები კოდირების პრაქტიკისთვის"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "გადააქციე კითხვა მისიებად"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "ბეჯები და მიღწევები"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "დააჯილდოვეთ მნიშვნელოვანი ეტაპები"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "შექმენით ბეჯები თანმიმდევრულობისთვის, ოსტატობისთვის, გამბედაობისთვის, გამეორებისთვის, თანამშრომლობისთვის და დასრულებული ნამუშევრებისთვის."
+    }
+  ]
+}

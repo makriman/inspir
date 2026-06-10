@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Basque",
+  "locale": "eu",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 4,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "component.911283fe2232",
+      "source": "Quick Check",
+      "value": "Egiaztapen azkarra"
+    },
+    {
+      "key": "component.d614793e93c0",
+      "source": "Quiz me",
+      "value": "Egin galdetegia"
+    },
+    {
+      "key": "component.f4fd71bdcc3d",
+      "source": "Quiz on",
+      "value": "Galdetegia honi buruz"
+    },
+    {
+      "key": "component.750127052ffa",
+      "source": "Rajput retainer",
+      "value": "Rajputen zerbitzaria"
+    },
+    {
+      "key": "component.2cb0220c7fb5",
+      "source": "Rank controls speech",
+      "value": "Mailak hizketa baldintzatzen du"
+    },
+    {
+      "key": "component.47f2291b96b5",
+      "source": "Raw options",
+      "value": "Aukera gordinak"
+    },
+    {
+      "key": "component.b0fb2e2755f6",
+      "source": "Read the guide",
+      "value": "Irakurri gida"
+    },
+    {
+      "key": "component.1ba9285c4dbb",
+      "source": "Read the pamphlet aloud",
+      "value": "Irakurri panfletoa ozen"
+    },
+    {
+      "key": "component.8df33e186224",
+      "source": "Reading knowledge plus formal speech routines",
+      "value": "Irakurtzeko ezagutza eta hizkera formaleko errutinak"
+    },
+    {
+      "key": "component.e27e7173e91e",
+      "source": "Ready for a 10-minute checkpoint",
+      "value": "10 minutuko kontrol-punturako prest"
+    },
+    {
+      "key": "component.9ee1d87c6cd7",
+      "source": "Ready for next handoff",
+      "value": "Hurrengo eskualdaketarako prest"
+    },
+    {
+      "key": "component.8c2d9db100f4",
+      "source": "Ready for review",
+      "value": "Berrikusteko prest"
+    },
+    {
+      "key": "component.370cdd29a525",
+      "source": "Real life",
+      "value": "Bizitza erreala"
+    },
+    {
+      "key": "component.8e10fdd77b25",
+      "source": "Real-world mode",
+      "value": "Mundu errealeko modua"
+    },
+    {
+      "key": "component.7d2085c16e37",
+      "source": "Reasoning depth",
+      "value": "Arrazoiketaren sakontasuna"
+    },
+    {
+      "key": "component.12814e474612",
+      "source": "Reasoning link",
+      "value": "Arrazoiketa-lotura"
+    },
+    {
+      "key": "component.410a5fd0ec61",
+      "source": "Reasoning log",
+      "value": "Arrazoiketa-erregistroa"
+    },
+    {
+      "key": "component.08c753ccf87c",
+      "source": "Recall before reveal",
+      "value": "Gogoratu erakutsi aurretik"
+    },
+    {
+      "key": "component.28220567a702",
+      "source": "Recent political wounds remain raw",
+      "value": "Azken zauri politikoak oraindik bizi-bizirik daude"
+    },
+    {
+      "key": "component.7d4b454370c7",
+      "source": "Recognition is useful, but it is weaker evidence than applying the idea without the answer in front of you.",
+      "value": "Ezagutzea erabilgarria da, baina froga ahulagoa da ideia erantzuna aurrean izan gabe aplikatzea baino."
+    },
+    {
+      "key": "component.afbf9a099120",
+      "source": "Recommend opening questions for this encounter, grouped by interview, debate, contradiction, and legacy.",
+      "value": "Gomendatu topaketa honetarako hasierako galderak, elkarrizketa, eztabaida, kontraesana eta ondarea multzotan banatuta."
+    },
+    {
+      "key": "component.c783910b44b6",
+      "source": "Reconstruct a decision, alternatives, constraints, and outcomes.",
+      "value": "Berreraiki erabaki bat, alternatibak, mugak eta emaitzak."
+    },
+    {
+      "key": "component.a72a8f73dc11",
+      "source": "Red Fort approaches",
+      "value": "Red Forterako hurbilbideak"
+    },
+    {
+      "key": "component.2ce8b9e121f0",
+      "source": "Red sandstone heat, ink, perfumed paper, controlled silence, and many languages orbiting power.",
+      "value": "Hareharri gorriaren beroa, tinta, paper lurrindua, isiltasun kontrolatua eta boterearen inguruan orbitatzen duten hizkuntza ugari."
+    },
+    {
+      "key": "component.0ccc7909b5fb",
+      "source": "Reframe my next question as a student trying to understand the mental model, not just the biography.",
+      "value": "Birformulatu nire hurrengo galdera eredu mentala ulertu nahi duen ikasle baten moduan, ez biografia hutsa."
+    },
+    {
+      "key": "component.a24c276ac12d",
+      "source": "Religious debate is politically charged",
+      "value": "Eztabaida erlijiosoak karga politikoa du"
+    },
+    {
+      "key": "component.e0e026276557",
+      "source": "Religious language needs care",
+      "value": "Hizkera erlijiosoak kontu handia eskatzen du"
+    },
+    {
+      "key": "component.0c5330d19ead",
+      "source": "Remote work is better",
+      "value": "Urrutiko lana hobea da"
+    },
+    {
+      "key": "component.037bbfc29028",
+      "source": "Remove weak, generic, or low-fit ideas quickly.",
+      "value": "Kendu azkar ideia ahulak, generikoak edo gutxi egokitzen direnak."
+    },
+    {
+      "key": "component.2988f3dfb74c",
+      "source": "Removes the failing path instead of understanding it.",
+      "value": "Huts egiten duen bidea kentzen du, ulertu beharrean."
+    },
+    {
+      "key": "component.90b8131b4d1f",
+      "source": "Renaissance Florence in 1490",
+      "value": "Errenazimentuko Florentzia 1490ean"
+    },
+    {
+      "key": "component.66325effd9f8",
+      "source": "Rename the variable everywhere.",
+      "value": "Aldagaiari izena aldatu leku guztietan."
+    },
+    {
+      "key": "component.f7fb183346d9",
+      "source": "Repaired gaps",
+      "value": "Konpondutako hutsuneak"
+    },
+    {
+      "key": "component.971339da94e1",
+      "source": "Repairing the misconception makes the next problem easier instead of just more familiar.",
+      "value": "Uste okerra konpontzeak hurrengo arazoa errazago bihurtzen du, ez soilik ezagunago."
+    },
+    {
+      "key": "component.4883a9d371cf",
+      "source": "Repeating a definition without applying it can feel fluent while hiding gaps.",
+      "value": "Definizio bat aplikatu gabe errepikatzea arin senti daiteke, hutsuneak ezkutatzen dituen bitartean."
+    },
+    {
+      "key": "component.6bcff7ac2de1",
+      "source": "Rephrase the active question in simpler language. Ask only one question.",
+      "value": "Birformulatu galdera aktiboa hizkera sinpleagoan. Egin galdera bakarra."
+    },
+    {
+      "key": "component.8fe6a933e8a8",
+      "source": "Reply in this compact shape:",
+      "value": "Erantzun forma trinko honetan:"
+    },
+    {
+      "key": "component.cf0cbc5ccf37",
+      "source": "Request debrief and passport stamp",
+      "value": "Eskatu balorazio-saioa eta pasaporteko zigilua"
+    },
+    {
+      "key": "component.9ed885c7e35d",
+      "source": "Request source confidence",
+      "value": "Eskatu iturriaren konfiantza-maila"
+    },
+    {
+      "key": "component.2f79ec2e3c66",
+      "source": "Required flow:",
+      "value": "Beharrezko fluxua:"
+    },
+    {
+      "key": "component.17f2bb4b3ffd",
+      "source": "Reset the controls, move only one slider, and describe the before-and-after in plain language.",
+      "value": "Berrezarri kontrolak, mugitu graduatzaile bakarra, eta deskribatu aurrekoa eta ondorengoa hizkera arruntean."
+    },
+    {
+      "key": "component.6b51f64dd73e",
+      "source": "Resolve access limits",
+      "value": "Ebatzi sarbide-mugak"
+    },
+    {
+      "key": "component.2c934f39de2e",
+      "source": "Resolve language risk",
+      "value": "Ebatzi hizkuntza-arriskua"
+    },
+    {
+      "key": "component.803dbfad3fc6",
+      "source": "Resolve status rules",
+      "value": "Ebatzi estatus-arauak"
+    },
+    {
+      "key": "component.7aa618d54a21",
+      "source": "Resolve the event clock before opening the world",
+      "value": "Ebatzi gertaeraren erlojua mundua ireki aurretik"
+    },
+    {
+      "key": "component.e77ea1a2315f",
+      "source": "respectful but challenging interlocutor",
+      "value": "solaskide errespetuzkoa baina erronka egiten duena"
+    },
+    {
+      "key": "component.68fcff7df5ce",
+      "source": "Restaurants and drivers can be suppliers, but this specific clue is about customers comparing and switching.",
+      "value": "Jatetxeak eta gidariak hornitzaileak izan daitezke, baina pista zehatz hau bezeroek alderatu eta aldatzeari buruzkoa da."
+    },
+    {
+      "key": "component.4c027317545d",
+      "source": "Restoration London faces plague memory, dense timber housing, and a fire that will reshape the city.",
+      "value": "Berrezarkuntzako Londresek izurriaren oroitzapena, egurrezko etxebizitza trinkoak eta hiria berritxuratuko duen sute bat ditu aurrean."
+    },
+    {
+      "key": "component.343b38bb71c5",
+      "source": "Reveal the starting model before the lesson explains it.",
+      "value": "Erakutsi hasierako eredua ikasgaiak azaldu aurretik."
+    },
+    {
+      "key": "component.78df3f31215b",
+      "source": "Rewrite the current rough section as a suggested edit. Show what changed and why before asking me to merge it.",
+      "value": "Berridatzi uneko atal zirriborratua iradokitako edizio gisa. Erakutsi zer aldatu den eta zergatik, niri bateratzeko eskatu aurretik."
+    },
+    {
+      "key": "component.ca5560da5759",
+      "source": "Rewrite this",
+      "value": "Berridatzi hau"
+    },
+    {
+      "key": "component.7ab132020523",
+      "source": "Right. Transfer to a fresh example is stronger evidence than recognition.",
+      "value": "Ondo. Adibide berri batera transferitzea froga sendoagoa da ezagutzea baino."
+    },
+    {
+      "key": "component.d81e83b6c2b3",
+      "source": "Right. You identified a seller-side cost shock and predicted the pressure on price.",
+      "value": "Ondo. Saltzailearen aldeko kostu-kolpea identifikatu duzu, eta prezioaren gaineko presioa aurreikusi."
+    },
+    {
+      "key": "component.1743f14ce624",
+      "source": "River boatman",
+      "value": "Ibaiko txaluparia"
+    },
+    {
+      "key": "component.a031a7b57338",
+      "source": "River stairs",
+      "value": "Ibaiko eskailerak"
+    },
+    {
+      "key": "component.d6f443f51ba3",
+      "source": "Roman Empire",
+      "value": "Erromatar Inperioa"
+    },
+    {
+      "key": "component.e720ae03ad93",
+      "source": "Roman trade used amphorae and contracts",
+      "value": "Erromatar merkataritzak anforak eta kontratuak erabiltzen zituen"
+    },
+    {
+      "key": "component.959a5e064b58",
+      "source": "Rubric-aware prompts.",
+      "value": "Errubrika kontuan hartzen duten promptak."
+    },
+    {
+      "key": "component.08957554ee0d",
+      "source": "Rumor can turn against outsiders",
+      "value": "Zurrumurrua kanpotarren aurka bihur daiteke"
+    },
+    {
+      "key": "component.7bb279bd578d",
+      "source": "Rumors about royal troops spread",
+      "value": "Errege-tropei buruzko zurrumurruak zabaltzen dira"
+    },
+    {
+      "key": "component.4ffbaba7cfe7",
+      "source": "Rumors move faster than verified news",
+      "value": "Zurrumurruak albiste egiaztatuak baino azkarrago mugitzen dira"
+    },
+    {
+      "key": "component.f406a98a85fd",
+      "source": "Rupee, dam, gifts, patronage obligations",
+      "value": "Errupia, dam, opariak, babesletza-betebeharrak"
+    },
+    {
+      "key": "component.0f3dd7548a25",
+      "source": "Rupees, silver coin, credit through trusted households",
+      "value": "Errupiak, zilarrezko txanpona, konfiantzazko etxeen bidezko kreditua"
+    },
+    {
+      "key": "component.ce4c40a824ca",
+      "source": "Safe, explanatory, and easier to pause for context.",
+      "value": "Segurua, azalpenekoa eta testuingururako pausatzen errazagoa."
+    },
+    {
+      "key": "component.36c12e82b1e3",
+      "source": "Safer, more explanatory, and allowed to ask modern comparisons.",
+      "value": "Seguruagoa, azalpen handiagokoa, eta konparazio modernoak galdetzeko baimena duena."
+    },
+    {
+      "key": "component.758625ed4fc7",
+      "source": "Salt air, olive oil, rope fiber, shouted accounts, and the heavy logistics behind imperial abundance.",
+      "value": "Gatz-usaina airean, oliba-olioa, sokaren zuntza, oihukatutako kontuak, eta ugaritasun inperialaren atzeko logistika astuna."
+    },
+    {
+      "key": "component.2f7b7ad341e0",
+      "source": "Salt March strategist, St. Helena retrospective, 1946 committee room...",
+      "value": "Gatzaren Martxaren estratega, St. Helenako atzera-begirada, 1946ko batzorde-gela..."
+    },
+    {
+      "key": "component.7605cf4afbe7",
+      "source": "Same level",
+      "value": "Maila bera"
+    },
+    {
+      "key": "component.98d5309ca571",
+      "source": "Sanskrit in Buddhist contexts",
+      "value": "Sanskritoa testuinguru budistetan"
+    },
+    {
+      "key": "component.d69ca0d332d1",
+      "source": "Save note",
+      "value": "Gorde oharra"
+    },
+    {
+      "key": "component.613d9d44835c",
+      "source": "Saved arrival point",
+      "value": "Gordetako iritsiera-puntua"
+    },
+    {
+      "key": "component.1fdbc928c5f7",
+      "source": "Saved expedition",
+      "value": "Gordetako espedizioa"
+    },
+    {
+      "key": "component.31db64ffad28",
+      "source": "Saved notes",
+      "value": "Gordetako oharrak"
+    },
+    {
+      "key": "component.72498e1de0b8",
+      "source": "Say why the mistake is tempting, then name the missing link.",
+      "value": "Esan zergatik den tentagarria akatsa, eta gero izendatu falta den lotura."
+    },
+    {
+      "key": "component.ae1f10df8a38",
+      "source": "Saying revenue is up, so the company is worth more ignores margins, reinvestment, working capital, and risk.",
+      "value": "Diru-sarrerak igo direla eta, beraz, enpresak gehiago balio duela esateak marjinak, berrinbertsioa, kapital zirkulatzailea eta arriskua alde batera uzten ditu."
+    },
+    {
+      "key": "component.aa4986e9edb4",
+      "source": "Scanning the topic",
+      "value": "Gaia arakatzen"
+    },
+    {
+      "key": "component.95a63c58f054",
+      "source": "Scene Choices",
+      "value": "Eszenaren aukerak"
+    },
+    {
+      "key": "component.8c09328917b9",
+      "source": "Scholarly gathering",
+      "value": "Jakintsuen bilkura"
+    },
+    {
+      "key": "component.943e915ec679",
+      "source": "Science, leadership, democracy, daily life...",
+      "value": "Zientzia, lidergoa, demokrazia, eguneroko bizitza..."
+    },
+    {
+      "key": "component.c32b5d9ea958",
+      "source": "Scribe or translator",
+      "value": "Eskriba edo itzultzailea"
+    },
+    {
+      "key": "component.631a600e6190",
+      "source": "Seeing the output change but not naming the mechanism.",
+      "value": "Irteera aldatzen dela ikustea, baina mekanismoa ez izendatzea."
+    },
+    {
+      "key": "component.291a85699c85",
+      "source": "Send answer",
+      "value": "Bidali erantzuna"
+    },
+    {
+      "key": "component.03bf0b770e02",
+      "source": "Send me somewhere consequential",
+      "value": "Bidali nazazu ondorioak dituen leku batera"
+    },
+    {
+      "key": "component.c70a890d1411",
+      "source": "Send message",
+      "value": "Bidali mezua"
+    },
+    {
+      "key": "component.e34837b56e99",
+      "source": "Sepoy courier",
+      "value": "Sepoy mezularia"
+    },
+    {
+      "key": "component.cdf2d39e903c",
+      "source": "September 1857",
+      "value": "1857ko iraila"
+    },
+    {
+      "key": "component.ae720381a40f",
+      "source": "Session details",
+      "value": "Saioaren xehetasunak"
+    },
+    {
+      "key": "component.a2a3d6a1542f",
+      "source": "Session setup",
+      "value": "Saioaren konfigurazioa"
+    },
+    {
+      "key": "component.1ba59c4d3dd8",
+      "source": "Set a place, period, and mission. Your guide will keep the trip bounded to the era and mark speculation clearly.",
+      "value": "Ezarri leku bat, garaia eta misioa. Zure gidak bidaia garai horretara mugatuko du eta espekulazioa argi markatuko du."
+    },
+    {
+      "key": "component.697f7a980cbb",
+      "source": "Set a thinking target and I will ask the first diagnostic question.",
+      "value": "Ezarri pentsamendu-helburu bat, eta nik lehen galdera diagnostikoa egingo dut."
+    },
+    {
+      "key": "component.792f7f7dcd69",
+      "source": "Set in the opening message",
+      "value": "Hasierako mezuan ezarria"
+    },
+    {
+      "key": "component.8a705896a4cd",
+      "source": "Set the shared task.",
+      "value": "Ezarri partekatutako zeregina."
+    },
+    {
+      "key": "component.cb09bfd23c1c",
+      "source": "Several locations, figures, artifacts, and field notes.",
+      "value": "Hainbat kokaleku, pertsonaia, artefaktu eta landa-ohar."
+    },
+    {
+      "key": "component.32c79cbb745e",
+      "source": "Shared draft room",
+      "value": "Zirriborro partekaturako gela"
+    },
+    {
+      "key": "component.b95ef75a6977",
+      "source": "Shared goal",
+      "value": "Helburu partekatua"
+    },
+    {
+      "key": "component.12264cf9af73",
+      "source": "Shared workroom",
+      "value": "Lan-gela partekatua"
+    },
+    {
+      "key": "component.a043f6325d8b",
+      "source": "Sharp sparring partner",
+      "value": "Entrenamendu-kide zorrotza"
+    },
+    {
+      "key": "component.6d03e52b9f64",
+      "source": "Ships unload grain and oil",
+      "value": "Ontziek alea eta olioa deskargatzen dituzte"
+    },
+    {
+      "key": "component.b5c30a43f61f",
+      "source": "Short factual notes clarify uncertainty, bias, and interpretation.",
+      "value": "Ohar faktiko laburrek ziurgabetasuna, alborapena eta interpretazioa argitzen dituzte."
+    },
+    {
+      "key": "component.9eee3f2520ec",
+      "source": "short run",
+      "value": "epe laburra"
+    },
+    {
+      "key": "component.cd5ee6d32c79",
+      "source": "Short summaries keep both sides aligned before moving on.",
+      "value": "Laburpen laburrek bi aldeak lerrokatuta mantentzen dituzte aurrera egin aurretik."
+    },
+    {
+      "key": "component.d30f4c170784",
+      "source": "Should a company enter this market?",
+      "value": "Enpresa batek merkatu honetan sartu beharko luke?"
+    },
+    {
+      "key": "component.46cd61f538a3",
+      "source": "Should I take this job?",
+      "value": "Lan hau hartu beharko nuke?"
+    },
+    {
+      "key": "component.1ccfd398d4b0",
+      "source": "Show a similar solved case.",
+      "value": "Erakutsi antzeko kasu ebatzia."
+    },
+    {
+      "key": "component.ba314d24a638",
+      "source": "Show changes before merging",
+      "value": "Erakutsi aldaketak bateratu aurretik"
+    },
+    {
+      "key": "component.18073a08edd8",
+      "source": "Show more uncertainty, anachronism, and source-boundary notes.",
+      "value": "Erakutsi ziurgabetasun, anakronismo eta iturri-mugei buruzko ohar gehiago."
+    },
+    {
+      "key": "component.f927d36bbccb",
+      "source": "Show the person's major beliefs at this time, their blind spots, and what they would likely resist understanding.",
+      "value": "Erakutsi pertsona horrek une honetan dituen sinesmen nagusiak, haren puntu itsuak eta seguruenik ulertzeari aurre egingo liokeena."
+    },
+    {
+      "key": "component.9a2cc71fc80f",
+      "source": "Shuffling the challenge",
+      "value": "Erronka nahasten"
+    },
+    {
+      "key": "component.b731c4a36a3f",
+      "source": "Siege pressure is rising",
+      "value": "Setioaren presioa handitzen ari da"
+    },
+    {
+      "key": "component.2bf03d063535",
+      "source": "Silver rupee",
+      "value": "Zilarrezko errupia"
+    },
+    {
+      "key": "component.7782e521b837",
+      "source": "Simulation state:",
+      "value": "Simulazioaren egoera:"
+    },
+    {
+      "key": "component.3afde4662953",
+      "source": "Sketch the outline, sections, or table before polishing language.",
+      "value": "Zirriborratu eskema, atalak edo taula hizkera leundu aurretik."
+    },
+    {
+      "key": "component.3e6c81f343a2",
+      "source": "Skill being trained",
+      "value": "Entrenatzen ari den trebetasuna"
+    },
+    {
+      "key": "component.e5601a411aad",
+      "source": "Slow down",
+      "value": "Moteldu"
+    },
+    {
+      "key": "component.88481fc98d2b",
+      "source": "Small nudges arrive before direct explanations.",
+      "value": "Bultzada txikiak azalpen zuzenen aurretik iristen dira."
+    },
+    {
+      "key": "component.4e6245ea3ddf",
+      "source": "Small reserve in local coin or credit",
+      "value": "Erreserba txikia tokiko txanponetan edo kredituan"
+    },
+    {
+      "key": "component.80d2a8d1ff01",
+      "source": "Small silver or copper reserve",
+      "value": "Zilarrezko edo kobrezko erreserba txikia"
+    },
+    {
+      "key": "component.660ae3f3c3cb",
+      "source": "Small supervised purse",
+      "value": "Gainbegiratutako diru-poltsa txikia"
+    },
+    {
+      "key": "component.18777af6d137",
+      "source": "Socrates was tried and executed in 399 BCE",
+      "value": "Sokrates K.a. 399an epaitu eta exekutatu zuten"
+    },
+    {
+      "key": "component.aba1434a8b61",
+      "source": "Socratic contract",
+      "value": "Kontratu sokratikoa"
+    },
+    {
+      "key": "component.bfac28b8b6c0",
+      "source": "Socratic Instruction",
+      "value": "Irakaskuntza sokratikoa"
+    },
+    {
+      "key": "component.26da7d97a7ba",
+      "source": "Socratic mode",
+      "value": "Modu sokratikoa"
+    },
+    {
+      "key": "component.687e60d68b03",
+      "source": "Socratic Question Ladder",
+      "value": "Galdera sokratikoen eskailera"
+    },
+    {
+      "key": "component.2762c36d8393",
+      "source": "Socratic target",
+      "value": "Helburu sokratikoa"
+    },
+    {
+      "key": "component.1f0bef28ebb0",
+      "source": "Sogdian among some merchants",
+      "value": "Sogdiera merkatari batzuen artean"
+    },
+    {
+      "key": "component.1a9bed8b911d",
+      "source": "Sogdian trader",
+      "value": "Merkatari sogdiarra"
+    },
+    {
+      "key": "component.123362322dd4",
+      "source": "someone who changed education and faced serious opposition",
+      "value": "hezkuntza aldatu eta oposizio gogorrari aurre egin zion norbait"
+    },
+    {
+      "key": "component.b97348873c90",
+      "source": "Source notes",
+      "value": "Iturri-oharrak"
+    },
+    {
+      "key": "component.9ae0bd32a926",
+      "source": "Sources, confidence, uncertainty, and forbidden quotes.",
+      "value": "Iturriak, konfiantza-maila, ziurgabetasuna eta debekatutako aipuak."
+    },
+    {
+      "key": "component.234633855523",
+      "source": "Space exploration, Indian history, algebra...",
+      "value": "Espazioaren esplorazioa, Indiako historia, aljebra..."
+    },
+    {
+      "key": "component.ec020737163e",
+      "source": "Sparring partner",
+      "value": "Entrenamendu-kidea"
+    },
+    {
+      "key": "component.2e7acac22156",
+      "source": "Specific intent of unnamed participants",
+      "value": "Izenik gabeko parte-hartzaileen asmo zehatza"
+    },
+    {
+      "key": "component.d3edf0ff6ce5",
+      "source": "Specific price comparisons vary",
+      "value": "Prezio-konparazio zehatzak aldatu egiten dira"
+    },
+    {
+      "key": "component.88cb2d329aac",
+      "source": "Specific prices vary by evidence and period",
+      "value": "Prezio zehatzak ebidentziaren eta garaiaren arabera aldatzen dira"
+    },
+    {
+      "key": "component.9b1ded6a8dc1",
+      "source": "Specific private opinions of unnamed residents",
+      "value": "Izenik gabeko bizilagunen iritzi pribatu zehatzak"
+    },
+    {
+      "key": "component.d3c1b72b26e7",
+      "source": "Specific repair",
+      "value": "Konponketa zehatza"
+    },
+    {
+      "key": "component.ca4ffaf33a74",
+      "source": "Split work into AI-owned, user-owned, and shared moves.",
+      "value": "Banatu lana AIaren ardurako, erabiltzailearen ardurako eta partekatutako mugimenduetan."
+    },
+    {
+      "key": "component.292cf95a6473",
+      "source": "Sprint clock",
+      "value": "Sprintaren erlojua"
+    },
+    {
+      "key": "component.21bc3678d8af",
+      "source": "Sprint running",
+      "value": "Sprinta martxan"
+    },
+    {
+      "key": "component.fb9e565113d9",
+      "source": "St Paul's area",
+      "value": "St Paul's ingurua"
+    },
+    {
+      "key": "component.082ef68d29be",
+      "source": "St Paul's Cathedral was destroyed",
+      "value": "St Paul's katedrala suntsitu zuten"
+    },
+    {
+      "key": "component.d84b0b06fe79",
+      "source": "Stacking the deck",
+      "value": "Jokoa aldez aurretik baldintzatzen"
+    },
+    {
+      "key": "component.7ae1cbe15e94",
+      "source": "Stage the person, year, room, and relationship.",
+      "value": "Kokatu pertsona, urtea, gela eta harremana."
+    },
+    {
+      "key": "component.f711569ede42",
+      "source": "Standing idle with strange questions during a disaster invites suspicion.",
+      "value": "Hondamendi batean galdera arraroekin geldirik egoteak susmoa pizten du."
+    },
+    {
+      "key": "component.0c424b7d86c2",
+      "source": "Start 10 min",
+      "value": "Hasi 10 min"
+    },
+    {
+      "key": "component.9b9e76c02192",
+      "source": "Start 10-minute sprint",
+      "value": "Hasi 10 minutuko sprinta"
+    },
+    {
+      "key": "component.11f6c8d9c9f9",
+      "source": "Start a Time Travel expedition. Do not open a generic chat and do not write a broad period summary.",
+      "value": "Hasi Time Travel espedizio bat. Ez ireki txat generikorik eta ez idatzi garaiaren laburpen orokorrik."
+    },
+    {
+      "key": "component.6b9d6a34d557",
+      "source": "Start the loop",
+      "value": "Hasi begizta"
+    },
+    {
+      "key": "component.e3ad6391f7bf",
+      "source": "Start with a concept, case, argument, decision, or text.",
+      "value": "Hasi kontzeptu, kasu, argudio, erabaki edo testu batekin."
+    },
+    {
+      "key": "component.f556c89a8b4d",
+      "source": "Start with a question, not a lecture.",
+      "value": "Hasi galdera batekin, ez hitzaldi batekin."
+    },
+    {
+      "key": "component.ef5156a056b4",
+      "source": "Start with a tiny lesson, one check question, a mastery meter, and wait for my answer before continuing.",
+      "value": "Hasi ikasgai txiki batekin, egiaztapen-galdera batekin eta menderatze-neurgailu batekin, eta itxaron nire erantzuna jarraitu aurretik."
+    },
+    {
+      "key": "component.142d438e5e04",
+      "source": "Start with an era passport, a vivid arrival scene, three choices for what to do next, and a compact timeline log.",
+      "value": "Hasi garaiko pasaporte batekin, iritsiera-eszena bizi batekin, hurrena zer egin aukeratzeko hiru aukerarekin eta denbora-lerroaren erregistro trinko batekin."
+    },
+    {
+      "key": "component.c37ca604e2dc",
+      "source": "Start with one specific question or task.",
+      "value": "Hasi galdera edo zeregin zehatz batekin."
+    },
+    {
+      "key": "component.2b7453257f4f",
+      "source": "Starting level",
+      "value": "Hasierako maila"
+    },
+    {
+      "key": "component.4f5e3c332f19",
+      "source": "State the idea in one sentence so it can be tested.",
+      "value": "Adierazi ideia esaldi bakarrean, probatu ahal izateko."
+    },
+    {
+      "key": "component.c74d4b02e52c",
+      "source": "State your starting idea so the tutor has something to test.",
+      "value": "Adierazi zure hasierako ideia, tutoreak probatzeko zerbait izan dezan."
+    },
+    {
+      "key": "component.46e32d8f91f3",
+      "source": "Stateful exploration with consequences and evolving risk.",
+      "value": "Egoera gordetzen duen esplorazioa, ondorioekin eta eboluzionatzen duen arriskuarekin."
+    },
+    {
+      "key": "component.f9e0ee67a1d7",
+      "source": "Status follows legal category",
+      "value": "Estatusak kategoria juridikoari jarraitzen dio"
+    },
+    {
+      "key": "component.ceb551000f2f",
+      "source": "Step by step, brainstorm first, solve together...",
+      "value": "Pausoz pauso, lehenik ideia-jasa, elkarrekin ebatzi..."
+    },
+    {
+      "key": "component.8adabdb3486e",
+      "source": "Step out of character briefly. Explain the historical context, evidence quality, and uncertainties behind the last exchange.",
+      "value": "Irten pertsonaiatik une batez. Azaldu azken trukearen atzean dauden testuinguru historikoa, ebidentziaren kalitatea eta ziurgabetasunak."
+    },
+    {
+      "key": "component.081a9237b493",
+      "source": "Stoa Basileios",
+      "value": "Stoa Basileios"
+    },
+    {
+      "key": "component.4b2fa093d4ce",
+      "source": "Stone dust, wool dye, bells, and sharp political glances under a crowded square.",
+      "value": "Harri-hautsa, artile-tindagaia, kanpaiak eta begirada politiko zorrotzak plaza jendetsu baten azpian."
+    },
+    {
+      "key": "component.2aca6afb4778",
+      "source": "Stop editing directly for this turn. Give concise advice and one practical next move.",
+      "value": "Utzi txanda honetan zuzenean editatzeari. Eman aholku laburra eta hurrengo mugimendu praktiko bat."
+    },
+    {
+      "key": "component.68a76b55a28a",
+      "source": "Stop response",
+      "value": "Gelditu erantzuna"
+    },
+    {
+      "key": "component.e01e169ee3c4",
+      "source": "Stopped. Send another message whenever you are ready.",
+      "value": "Geldituta. Bidali beste mezu bat prest zaudenean."
+    },
+    {
+      "key": "component.467ff09a3d78",
+      "source": "strategy analyst",
+      "value": "estrategia-analista"
+    },
+    {
+      "key": "component.12c6d113a829",
+      "source": "Strategy room",
+      "value": "Estrategia-gela"
+    },
+    {
+      "key": "component.1e8c49009561",
+      "source": "Street routes are approximate",
+      "value": "Kale-ibilbideak gutxi gorabeherakoak dira"
+    },
+    {
+      "key": "component.9a266da321cf",
+      "source": "Street-level life",
+      "value": "Kale-mailako bizitza"
+    },
+    {
+      "key": "component.671334a5dc3f",
+      "source": "Strict mode keeps modern knowledge out of the world and applies social consequences sooner.",
+      "value": "Modu zorrotzak ezagutza modernoa mundutik kanpo mantentzen du, eta ondorio sozialak lehenago aplikatzen ditu."
+    },
+    {
+      "key": "component.5d20c7acc540",
+      "source": "Strict questioning, minimal explanation.",
+      "value": "Galdera zorrotzak, azalpen minimoa."
+    },
+    {
+      "key": "component.3468a42615ce",
+      "source": "Strong work.",
+      "value": "Lan bikaina."
+    },
+    {
+      "key": "component.9da9de583a66",
+      "source": "Strong writing is a chain of claim, reason, evidence, and consequence. Each sentence should do a job in that chain.",
+      "value": "Idazketa sendoa baieztapenaren, arrazoiaren, ebidentziaren eta ondorioaren kate bat da. Esaldi bakoitzak lan bat egin behar du kate horretan."
+    },
+    {
+      "key": "component.891a3118e913",
+      "source": "Structured operator",
+      "value": "Operadore egituratua"
+    },
+    {
+      "key": "component.bb081145e157",
+      "source": "Student, rival, journalist, citizen...",
+      "value": "Ikaslea, arerioa, kazetaria, herritarra..."
+    },
+    {
+      "key": "component.3dc6eae27c61",
+      "source": "Study buddy",
+      "value": "Ikasketa-laguna"
+    },
+    {
+      "key": "component.8d961c0c8d91",
+      "source": "Submit my sentence",
+      "value": "Bidali nire esaldia"
+    },
+    {
+      "key": "component.63e6139fa622",
+      "source": "Submit repair",
+      "value": "Bidali konponketa"
+    },
+    {
+      "key": "component.a294528c7533",
+      "source": "Substitute threat",
+      "value": "Ordezkoen mehatxua"
+    },
+    {
+      "key": "component.f513dc207def",
+      "source": "Substitutes are alternatives like cooking or pickup. Comparing apps is buyer leverage inside the category.",
+      "value": "Ordezkoak sukaldatzea edo jasotzera joatea bezalako alternatibak dira. Aplikazioak alderatzea eroslearen palanka da kategoriaren barruan."
+    },
+    {
+      "key": "component.512d13df792b",
+      "source": "Suggest candidates with strong evidence and vivid settings.",
+      "value": "Iradoki ebidentzia sendoa eta giro biziak dituzten hautagaiak."
+    },
+    {
+      "key": "component.68dfa0817fe0",
+      "source": "Supplier power",
+      "value": "Hornitzaileen boterea"
+    },
+    {
+      "key": "component.904290a8efd8",
+      "source": "Supplies and loyalties are strained",
+      "value": "Hornidurak eta leialtasunak tentsiopean daude"
+    },
+    {
+      "key": "component.7ca47ca1d959",
+      "source": "Supply capacity",
+      "value": "Eskaintza-ahalmena"
+    },
+    {
+      "key": "component.fba6cccea3d2",
+      "source": "Supply shifts left and price tends to rise.",
+      "value": "Eskaintza ezkerrera mugitzen da eta prezioak igotzeko joera du."
+    },
+    {
+      "key": "component.a2193b649f30",
+      "source": "supportive peer and co-builder",
+      "value": "laguntzailea den parekoa eta elkarrekin eraikitzeko kidea"
+    },
+    {
+      "key": "component.0d21fa45e97f",
+      "source": "Synthesis Locked",
+      "value": "Sintesia blokeatuta"
+    },
+    {
+      "key": "component.9477a2cecb7c",
+      "source": "Take the first pass on the shared artifact. Make the structure visible, mark assumptions, and ask me to accept, edit, or reject.",
+      "value": "Egin lehen saiakera artefaktu partekatuan. Egin egitura ikusgarri, markatu suposizioak, eta eskatu niri onartzeko, editatzeko edo baztertzeko."
+    },
+    {
+      "key": "component.968d8ccd3939",
+      "source": "Tang Chang'an is a cosmopolitan imperial capital linked to steppe, Central Asian, and Buddhist networks.",
+      "value": "Tang garaiko Chang'an hiriburu inperial kosmopolita da, estepako, Erdialdeko Asiako eta sare budistekin lotua."
+    },
+    {
+      "key": "component.9430e8ebb24c",
+      "source": "Tang Empire under Emperor Xuanzong",
+      "value": "Tang Inperioa Xuanzong enperadorearen agintepean"
+    },
+    {
+      "key": "component.815b9c1f8eaf",
+      "source": "Target input",
+      "value": "Helburuko sarrera"
+    },
+    {
+      "key": "component.1e8d87abfdd2",
+      "source": "Target: one sentence describing the learning target.",
+      "value": "Helburua: ikaskuntza-helburua deskribatzen duen esaldi bat."
+    },
+    {
+      "key": "component.b91b91417d97",
+      "source": "Task board",
+      "value": "Zereginen taula"
+    },
+    {
+      "key": "component.b4965316bf71",
+      "source": "Task Board",
+      "value": "Zereginen taula"
+    },
+    {
+      "key": "component.db83c6c41bea",
+      "source": "Tavern near the docks",
+      "value": "Kaien inguruko taberna"
+    },
+    {
+      "key": "component.f5e0b35ab0a4",
+      "source": "Tax or friction",
+      "value": "Zerga edo frikzioa"
+    },
+    {
+      "key": "component.03c0ab897f85",
+      "source": "Teach me financial modeling",
+      "value": "Irakatsi finantza-modelizazioa"
+    },
+    {
+      "key": "component.6d3e7f92132e",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Irakatsi Porterren Bost Indarrak"
+    },
+    {
+      "key": "component.1a3b09e25613",
+      "source": "Teach me ratios",
+      "value": "Irakatsi ratioak"
+    },
+    {
+      "key": "component.e691ca1cc2d6",
+      "source": "Teammate log",
+      "value": "Taldekidearen erregistroa"
+    },
+    {
+      "key": "component.642847a78523",
+      "source": "Temporal passport",
+      "value": "Denborazko pasaportea"
+    },
+    {
+      "key": "component.894031ed8d34",
+      "source": "Terms and Conditions",
+      "value": "Baldintzak eta zehaztapenak"
+    },
+    {
+      "key": "component.1f5fb2d7968f",
+      "source": "That catches the revenue movement, but misses the margin and cash timing links. Sales alone do not prove cash flow improved.",
+      "value": "Horrek diru-sarreren mugimendua harrapatzen du, baina marjinaren eta diruaren denboraren loturak galtzen ditu. Salmentek bakarrik ez dute frogatzen kutxa-fluxua hobetu denik."
+    },
+    {
+      "key": "component.e09b451125fe",
+      "source": "That may hide the symptom, but it does not teach you where the data flow broke.",
+      "value": "Horrek sintoma ezkuta dezake, baina ez dizu irakasten datu-fluxua non hautsi den."
+    },
+    {
+      "key": "component.8702e66c501a",
+      "source": "The assistant must identify known facts before simulating",
+      "value": "Laguntzaileak ezagutzen diren gertakariak identifikatu behar ditu simulatu aurretik"
+    },
+    {
+      "key": "component.3d7ec899f5c7",
+      "source": "The Athenian agora was a civic center",
+      "value": "Atenasko agora zentro zibikoa zen"
+    },
+    {
+      "key": "component.d2acbb41caee",
+      "source": "The Bastille fell on 14 July 1789",
+      "value": "Bastilla 1789ko uztailaren 14an erori zen"
+    },
+    {
+      "key": "component.fe8b62f4c6f7",
+      "source": "The explanation that links evidence back to the claim.",
+      "value": "Ebidentzia berriro baieztapenarekin lotzen duen azalpena."
+    },
+    {
+      "key": "component.4f3c6c46372c",
+      "source": "The final summary waits until you have done real thinking.",
+      "value": "Azken laburpena benetan pentsatu arte zain geratzen da."
+    },
+    {
+      "key": "component.170a298af4bb",
+      "source": "The first scene should become concrete only after the destination is resolved.",
+      "value": "Lehen eszena zehatza helmuga ebatzi ondoren bakarrik bihurtu behar da."
+    },
+    {
+      "key": "component.dda3745f7c3f",
+      "source": "The Great Fire began in 1666",
+      "value": "Sute Handia 1666an hasi zen"
+    },
+    {
+      "key": "component.7848d16b1941",
+      "source": "The Indian Rebellion of 1857 has made Delhi a contested imperial and military space.",
+      "value": "1857ko Indiako Matxinadak Delhi espazio inperial eta militar gatazkatsu bihurtu du."
+    },
+    {
+      "key": "component.791488b22528",
+      "source": "The learner can connect a variable change to an outcome.",
+      "value": "Ikasleak aldagai baten aldaketa emaitza batekin lotu dezake."
+    },
+    {
+      "key": "component.e8e1ab2cb31d",
+      "source": "The learner can explain the key link in their own words.",
+      "value": "Ikasleak lotura nagusia bere hitzekin azaldu dezake."
+    },
+    {
+      "key": "component.41dbc5b54014",
+      "source": "The learner can identify and fix the misconception.",
+      "value": "Ikasleak uste okerra identifikatu eta konpondu dezake."
+    },
+    {
+      "key": "component.cf756f58116b",
+      "source": "The learner can make a first prediction.",
+      "value": "Ikasleak lehen aurreikuspen bat egin dezake."
+    },
+    {
+      "key": "component.06a1b27fe4f6",
+      "source": "The learner demonstrates transfer.",
+      "value": "Ikasleak transferentzia erakusten du."
+    },
+    {
+      "key": "component.8a807bf79ab9",
+      "source": "The learner explains it back in their own words.",
+      "value": "Ikasleak berriro azalduko du bere hitzekin."
+    },
+    {
+      "key": "component.9d8ad585667c",
+      "source": "The longest sentence, because shorter is always stronger.",
+      "value": "Esaldirik luzeena, laburragoa beti indartsuagoa delako."
+    },
+    {
+      "key": "component.7e2e56647be9",
+      "source": "The person should not know future events unless you explicitly open modern confrontation.",
+      "value": "Pertsonak ez luke etorkizuneko gertakaririk jakin behar, konfrontazio modernoa esplizituki irekitzen ez baduzu."
+    },
+    {
+      "key": "component.f0fd6cd67e39",
+      "source": "The question path starts now.",
+      "value": "Galderen bidea orain hasten da."
+    },
+    {
+      "key": "component.a2bd49b45f3d",
+      "source": "The Roman Empire under Trajan's final year depends on ports, credit, labor, and imperial logistics.",
+      "value": "Trajanoren azken urteko Erromatar Inperioa portuen, kredituaren, lanaren eta logistika inperialaren mende dago."
+    },
+    {
+      "key": "component.f476ed3acdff",
+      "source": "The scene is being established by the dossier.",
+      "value": "Dosierrak eszena ezartzen du."
+    },
+    {
+      "key": "component.4d51e9042d90",
+      "source": "The simulation will prioritize different people, risks, objects, and explanations.",
+      "value": "Simulazioak pertsona, arrisku, objektu eta azalpen desberdinak lehenetsiko ditu."
+    },
+    {
+      "key": "component.f8c2de640fab",
+      "source": "The title, because every weak paragraph has a weak title.",
+      "value": "Izenburua, paragrafo ahul bakoitzak izenburu ahula duelako."
+    },
+    {
+      "key": "component.4623da54a0a9",
+      "source": "The Travel Designer should resolve this intent into a specific historical place, date, and political moment before arrival.",
+      "value": "Travel Designerrek asmo hau leku historiko, data eta une politiko zehatz batean ebatzi behar du iritsi aurretik."
+    },
+    {
+      "key": "component.e30ca6ff4334",
+      "source": "The version of a person matters more than the name.",
+      "value": "Pertsona baten bertsioak izenak baino garrantzi handiagoa du."
+    },
+    {
+      "key": "component.21b15b46e5b8",
+      "source": "The West Market hosted long-distance trade",
+      "value": "Mendebaldeko Merkatuak distantzia luzeko merkataritza hartzen zuen"
+    },
+    {
+      "key": "component.68b4b19c0766",
+      "source": "Thinking map",
+      "value": "Pentsamendu-mapa"
+    },
+    {
+      "key": "component.7a4d98aa3cd3",
+      "source": "Thinking target",
+      "value": "Pentsamendu-helburua"
+    },
+    {
+      "key": "component.8f2396f4c96a",
+      "source": "This is the evidence checkpoint. You advance only by showing the skill.",
+      "value": "Hau ebidentziaren kontrol-puntua da. Trebetasuna erakutsiz bakarrik egingo duzu aurrera."
+    },
+    {
+      "key": "component.9096eabdd4d6",
+      "source": "This lets you explain why a model moves instead of just copying formulas.",
+      "value": "Honek aukera ematen dizu eredu bat zergatik mugitzen den azaltzeko, formulak kopiatu besterik egin gabe."
+    },
+    {
+      "key": "component.2347008c82bd",
+      "source": "Threat of substitutes",
+      "value": "Ordezkoen mehatxua"
+    },
+    {
+      "key": "component.6f38f52d9c52",
+      "source": "Time slice",
+      "value": "Denbora-zatia"
+    },
+    {
+      "key": "component.04bb104a9e9b",
+      "source": "Time slice required",
+      "value": "Denbora-zatia beharrezkoa da"
+    },
+    {
+      "key": "component.d107ef10266d",
+      "source": "Time slice: not chosen yet. If a specific person is named, offer 4 to 5 historically meaningful versions of this person before any in-character dialogue. Explain how each version changes the worldview, stakes, and setting.",
+      "value": "Denbora-zatia: oraindik ez da aukeratu. Pertsona zehatz bat izendatzen bada, eskaini pertsona horren 4 edo 5 bertsio historikoki esanguratsu pertsonaia barruko elkarrizketarik hasi aurretik. Azaldu bertsio bakoitzak nola aldatzen dituen mundu-ikuskera, jokoan dagoena eta ingurunea."
+    },
+    {
+      "key": "component.ddbe343f845c",
+      "source": "Time Travel Console",
+      "value": "Time Travel kontsola"
+    },
+    {
+      "key": "component.8f6171fc6ace",
+      "source": "Timeline Log",
+      "value": "Denbora-lerroaren erregistroa"
+    },
+    {
+      "key": "component.a03a44a893eb",
+      "source": "Timeline so far",
+      "value": "Orain arteko denbora-lerroa"
+    },
+    {
+      "key": "component.fcf34335919b",
+      "source": "Titles matter, but this clue points to reasoning inside the paragraph.",
+      "value": "Izenburuek garrantzia dute, baina pista honek paragrafo barruko arrazoiketara seinalatzen du."
+    },
+    {
+      "key": "component.7106eda1bee9",
+      "source": "To be resolved",
+      "value": "Ebazteko"
+    },
+    {
+      "key": "component.1f1bdf16e6c7",
+      "source": "Tokyo in 2120",
+      "value": "Tokio 2120an"
+    },
+    {
+      "key": "component.ad110d0cf8a4",
+      "source": "Topic or question",
+      "value": "Gaia edo galdera"
+    },
+    {
+      "key": "component.926364936c28",
+      "source": "tough critic and editor",
+      "value": "kritikari eta editore zorrotza"
+    },
+    {
+      "key": "component.36975a502081",
+      "source": "Trace a trade route on the map",
+      "value": "Jarraitu merkataritza-ibilbide bat mapan"
+    },
+    {
+      "key": "component.c6d3da081bdd",
+      "source": "trace cause and effect in code",
+      "value": "jarraitu kausa eta efektua kodean"
+    },
+    {
+      "key": "component.2f18f5776cc7",
+      "source": "Trace depth",
+      "value": "Jarraipenaren sakontasuna"
+    },
+    {
+      "key": "component.b6254d0fed3a",
+      "source": "Track accepted changes, rejected changes, and the next edit.",
+      "value": "Jarraitu onartutako aldaketei, baztertutako aldaketei eta hurrengo edizioari."
+    },
+    {
+      "key": "component.30fbe484599f",
+      "source": "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
+      "value": "Jarraitu erabakiei eta galdera irekiei. Mantendu nire ahotsa idazketa-zereginetan. Testuingurua falta bada, egin gehienez galdera praktiko bat."
+    },
+    {
+      "key": "component.20369d07cf56",
+      "source": "Trade phrases plus household vocabulary",
+      "value": "Merkataritzako esaldiak eta etxeko hiztegia"
+    }
+  ]
+}

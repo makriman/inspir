@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Basque",
+  "locale": "eu",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Banatu lana izendatutako zereginetan, neurtu bakoitzaren denbora, eta berrikusi foku-saio bakoitzaren ondoren ikasketa-ahalegina nora joan den."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Fokuaren eta produktibitatearen gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "Modu hau zereginen tenporizadorerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "Neurtu zeregin bakoitzaren denbora eta ikusi ahalegina"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "Neurtu ariketa multzo baten denbora"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "Jarraitu idazlanaren eskema-lana"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "Banatu zeregin handi bat denboraz neurtutako bloketan"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "Atseden-gogorarazlea"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "Babestu fokua atsedenaldi osasungarriekin"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Ezarri lan- eta atseden-erritmoak, planifikatu benetako berrabiarazte bat, eta saihestu ikasketa-neke amaigabean sartzea."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "Zein lan/atseden erritmo nahi duzu?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "Fokua eta produktibitatea"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Ezarri lan- eta atseden-erritmoak, planifikatu benetako berrabiarazte bat, eta saihestu ikasketa-neke amaigabean sartzea."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Fokuaren eta produktibitatearen gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "Modu hau atseden-gogorarazlerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "Babestu fokua atsedenaldi osasungarriekin"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "Erabili 50/10 atsedenaldiak"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "Planifikatu atsedenaldi osasungarri bat"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "Lagundu gehiegi ikasteari uzten"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "Lan sakoneko saioak"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "Planifikatu distrakzio gutxiko foku-bloke bat"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Prestatu lan sakoneko saio bat emaitza argi batekin, mugekin, foku-arauekin, berrikuspen-kontrolgune batekin eta ordezko plan batekin."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Zer emaitza sortu behar du lan sakoneko saio honek?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "Fokua eta produktibitatea"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Prestatu lan sakoneko saio bat emaitza argi batekin, mugekin, foku-arauekin, berrikuspen-kontrolgune batekin eta ordezko plan batekin."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Fokuaren eta produktibitatearen gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "Modu hau lan sakoneko saioetarako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "Planifikatu distrakzio gutxiko foku-bloke bat"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "Planifikatu 90 minutuko lan sakoneko bloke bat"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "Lagundu kodean fokua jartzen"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "Ezarri tesia idazteko arauak"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "Taldeko ikasketa-tenporizadorea"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "Koordinatu foku-txandak besteekin"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Ezarri ikasketa-erritmo partekatu bat lagunentzat edo ikaskideentzat, helburu sinkronizatuekin, kontrol-saioekin eta saioaren osteko galderekin."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Nor ari da elkarrekin ikasten eta zein da helburua?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "Soziala"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Ezarri ikasketa-erritmo partekatu bat lagunentzat edo ikaskideentzat, helburu sinkronizatuekin, kontrol-saioekin eta saioaren osteko galderekin."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Gai sozialak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "Modu hau taldeko ikasketa-tenporizadorerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "Koordinatu foku-txandak besteekin"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "Planifikatu taldeko Pomodoro bat"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "Antolatu ikasketa-gela bat"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "Gidatu 45 minutuko talde-saio bat"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "Giro-soinuak"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "Ikasketa lasaierako sortutako soinu-giroak"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Erabili giro-soinu aurrezarpen sinpleak distrakzioa murrizteko irakurketan, idazketan, errepasoan edo problemak ebaztean."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Zer motatako giro-fokua nahi duzu?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "Fokua eta produktibitatea"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Erabili giro-soinu aurrezarpen sinpleak distrakzioa murrizteko irakurketan, idazketan, errepasoan edo problemak ebaztean."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Fokuaren eta produktibitatearen gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "Modu hau giro-soinuetarako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "Ikasketa lasaierako sortutako soinu-giroak"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "Erabili euria irakurtzeko"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "Aukeratu audio lasaia matematikarako"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "Konfiguratu lan sakon lasairako giroa"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "Ikasketa-segidak"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "Eraiki jarraitasuna errurik gabe"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Jarraitu ikasketa-segidei, konpondu huts egindako egunak, eta diseinatu bizitza errealari eusten dion gutxieneko ikasketa-ohitura bideragarri bat."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "Zein segida edo errutina ari zara eraikitzen?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Jarraitu ikasketa-segidei, konpondu huts egindako egunak, eta diseinatu bizitza errealari eusten dion gutxieneko ikasketa-ohitura bideragarri bat."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Analitika-gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "Modu hau ikasketa-segidetarako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "Eraiki jarraitasuna errurik gabe"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "Hasi ikasketa-segida bat"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "Berreskuratu egun bat huts egin ondoren"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "Diseinatu eguneroko berrikuspen txiki bat"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "Aurrerapen-panela"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "Berrikusi ikaskuntza-jarduera eta hurrengo urratsak"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Bihurtu ikasketa-jarduera, galdetegien emaitzak, oharrak eta tenporizadoreak panel estiloko berrikuspen batean, joerekin eta hurrengo ekintzekin."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "Zer aurrerapen berrikusi behar dugu?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Bihurtu ikasketa-jarduera, galdetegien emaitzak, oharrak eta tenporizadoreak panel estiloko berrikuspen batean, joerekin eta hurrengo ekintzekin."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Analitika-gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "Modu hau aurrerapen-panelerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "Berrikusi ikaskuntza-jarduera eta hurrengo urratsak"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "Berrikusi nire astea"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "Aurkitu nire ahulguneak"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "Bihurtu jarduera hurrengo urratsetan"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "Asteko txostenak"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Laburbildu lorpenak, hutsak eta datorren astea"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Sortu asteko edo hileko ikaskuntza-txosten bat ahaleginarekin, emaitzekin, oztopoekin, lorpenekin eta plan fokatu batekin."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "Zer gertatu da aste honetan?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "Analitika"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Sortu asteko edo hileko ikaskuntza-txosten bat ahaleginarekin, emaitzekin, oztopoekin, lorpenekin eta plan fokatu batekin."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Analitika-gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "Modu hau asteko txostenetarako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Laburbildu lorpenak, hutsak eta datorren astea"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "Idatzi nire asteko ikasketa-txostena"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "Laburbildu nire aurrerapena"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "Planifikatu datorren astea aste honetatik abiatuta"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "Ikaslanen jarraitzailea"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "Jarraitu epemugei eta hurrengo ekintzei"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Antolatu ikaslanak entrega-dataren, ahaleginaren, egoeraren, arriskuaren eta hurrengo ekintza txikienaren arabera."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "Zein ikaslan dituzu esku artean?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "Antolaketa"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Antolatu ikaslanak entrega-dataren, ahaleginaren, egoeraren, arriskuaren eta hurrengo ekintza txikienaren arabera."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Antolaketa-gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "Modu hau ikaslanen jarraitzailerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "Jarraitu epemugei eta hurrengo ekintzei"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "Antolatu nire epemugak"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "Lehenetsi ikaslanak"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "Planifikatu proiektu honen entrega"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "Ikastaroen kudeatzailea"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "Antolatu ikastaroak, gaiak eta lan-karga"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Mapatu ikastaroak, unitateak, ikaslanak, baliabideak eta asteko lan-karga ikasketa-sistema antolatu bakar batean."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "Zein ikastaro edo irakasgai ari zara kudeatzen?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "Antolaketa"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Mapatu ikastaroak, unitateak, ikaslanak, baliabideak eta asteko lan-karga ikasketa-sistema antolatu bakar batean."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Antolaketa-gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "Modu hau ikastaroen kudeatzailerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "Antolatu ikastaroak, gaiak eta lan-karga"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "Konfiguratu nire ikastaroak"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "Antolatu nire seihilekoa"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "Mapatu irakasgai bakoitzeko gaiak"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "Oharren antolatzailea"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "Etiketatu, ordenatu eta lotu oharrak"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Bihurtu sakabanatutako oharrak karpetetan, etiketetan, laburpenetan, esteketan eta gogoratzea errazten duten berrikuspen-ekintzetan."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "Itsatsi edo deskribatu antolatu beharreko oharrak"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "Antolaketa"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Bihurtu sakabanatutako oharrak karpetetan, etiketetan, laburpenetan, esteketan eta gogoratzea errazten duten berrikuspen-ekintzetan."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Antolaketa-gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "Modu hau oharren antolatzailerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "Etiketatu, ordenatu eta lotu oharrak"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "Antolatu nire klaseko oharrak"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "Sortu etiketak ohar hauetarako"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "Aurkitu gaiak nire koadernoan"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "Baliabideen partekatzea"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "Prestatu eta partekatu ikasketa-baliabideak"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Prestatu ikasketa-baliabideak ikaskideentzat edo talde baterako: laburpenak, estekak, oharrak, azalpenak eta erabiltzeko jarraibideak."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "Zein baliabide partekatu nahi duzu?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "Soziala"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Prestatu ikasketa-baliabideak ikaskideentzat edo talde baterako: laburpenak, estekak, oharrak, azalpenak eta erabiltzeko jarraibideak."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Gai sozialak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "Modu hau baliabideen partekatzerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "Prestatu eta partekatu ikasketa-baliabideak"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "Prestatu nire oharrak talde baterako"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "Sortu baliabide-laburpen bat"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "Sortu partekatzeko jarraibideak"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "Ikasketa-taldeak"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "Egin talde-ikasketa egituratua"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Planifikatu ikasketa-talde produktibo bat rolekin, agendarekin, galdera-txandekin, baliabide partekatuekin eta laburpen-oharrekin."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "Zer egin behar du ikasketa-taldeak?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "Soziala"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Planifikatu ikasketa-talde produktibo bat rolekin, agendarekin, galdera-txandekin, baliabide partekatuekin eta laburpen-oharrekin."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Gai sozialak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "Modu hau ikasketa-taldeetarako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "Egin talde-ikasketa egituratua"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "Planifikatu talde-saio bat"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "Sortu rolak ikasketa-talde baterako"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "Konpondu talde ez-produktibo bat"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "Ikasleen foroa"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "Moldatu galderak komunitatearen laguntza jasotzeko"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Prestatu foro-galdera argiak, erantzunak, laburpenak eta jarraipen-eskaerak, ikasleen eztabaidak erabilgarriagoak izan daitezen."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "Zein galdera edo eztabaida argitaratu nahi duzu?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "Soziala"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Prestatu foro-galdera argiak, erantzunak, laburpenak eta jarraipen-eskaerak, ikasleen eztabaidak erabilgarriagoak izan daitezen."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Gai sozialak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "Modu hau ikasleen fororako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "Moldatu galderak komunitatearen laguntza jasotzeko"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "Idatzi foro-galdera on bat"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "Laburbildu eztabaida bat"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "Eskatu ikaskideen iritzia"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "Lan-fitxen sortzailea"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "Sortu praktika mistoko lan-fitxak"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Sortu lan-fitxak honelako galdera motekin: hutsuneak betetzea, aukera anitzeko galderak, egia/gezurra, erantzun laburrak eta parekatzea."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "Zer landu behar du lan-fitxak?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "Ikaskuntza aktiboa"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Sortu lan-fitxak honelako galdera motekin: hutsuneak betetzea, aukera anitzeko galderak, egia/gezurra, erantzun laburrak eta parekatzea."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ikaskuntza aktiboko gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "Modu hau lan-fitxen sortzailerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "Sortu praktika mistoko lan-fitxak"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "Sortu zatikiei buruzko lan-fitxa bat"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "Sortu kimikako praktika mistoa"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "Eraiki hiztegi-ariketak"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "Diagramak etiketatzeko praktika"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Praktikatu diagramen eta sistemen etiketak"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Bihurtu diagramak, gorputz-sistemak, mapak, lan-fluxuak edo laborategiko muntaiak etiketatzeko praktika, pistekin eta erantzunen egiaztapenekin."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "Zein diagrama praktikatu behar dugu etiketatzen?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "Ikaskuntza aktiboa"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Bihurtu diagramak, gorputz-sistemak, mapak, lan-fluxuak edo laborategiko muntaiak etiketatzeko praktika, pistekin eta erantzunen egiaztapenekin."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ikaskuntza aktiboko gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "Modu hau diagramak etiketatzeko praktikarako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Praktikatu diagramen eta sistemen etiketak"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "Etiketatu landare-zelula bat"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "Praktikatu bihotz-diagrama bat"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "Sortu mapa etiketatzeko galderak"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "Parekatze-jokoen sortzailea"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Parekatu terminoak, definizioak, kausak eta adibideak"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Bihurtu oharrak parekatze-jokoetan hiztegirako, kontzeptuetarako, pertsona/gertaeretarako, formuletarako, adibideetarako edo kausa-ondorio bikoteetarako."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "Zein bikotek bihurtu behar dute parekatze-joko?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "Ikaskuntza aktiboa"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Bihurtu oharrak parekatze-jokoetan hiztegirako, kontzeptuetarako, pertsona/gertaeretarako, formuletarako, adibideetarako edo kausa-ondorio bikoteetarako."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ikaskuntza aktiboko gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "Modu hau parekatze-jokoen sortzailerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Parekatu terminoak, definizioak, kausak eta adibideak"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "Parekatu terminoak eta definizioak"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "Sortu kausa-ondorio bikoteak"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "Sortu formulak parekatzeko praktika"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP eta mailakatzea"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "Bihurtu aurrerapena mailetan eta misioetan"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Diseinatu puntuen, mailen, misioen eta sarien sistema bat benetako ikaskuntza-aurrerapenaren inguruan."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Zein ikaskuntza-helburu bihurtu behar da mailakatze-sistema?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "Gamifikazioa"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Diseinatu puntuen, mailen, misioen eta sarien sistema bat benetako ikaskuntza-aurrerapenaren inguruan."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Gamifikazio-gaiak aztertzen ari diren eta erantzun-kutxa generiko baten ordez orientazio praktikoa nahi duten ikasleak."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "Modu hau XP eta mailakatzerako egokituta dago, bere proposamen, adibide eta ikaskuntza-fluxu propioekin."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "Bihurtu aurrerapena mailetan eta misioetan"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Hasi adibidezko proposamenekin"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Egokitu saioa zure helburura"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "Sortu XP azterketa-prestakuntzarako"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "Diseinatu mailak programazio-praktikarako"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "Bihurtu irakurketa misioetan"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "Insigniak eta lorpenak"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "Saritu benetan garrantzitsuak diren mugarriak"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Sortu insigniak jarraitasunerako, maisutasunerako, ausardiarako, errepasorako, lankidetzarako eta amaitutako artefaktuetarako."
+    }
+  ]
+}

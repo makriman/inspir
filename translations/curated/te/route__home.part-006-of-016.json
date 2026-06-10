@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Telugu",
+  "locale": "te",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 6,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.ea5d632bfb62ffe205",
+      "source": "Explain this table",
+      "value": "ఈ పట్టికను వివరించండి"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "ఈ విషయాన్ని సాధారణ భాషలో వివరించండి. నాకు అవసరమైన మూడు ముందస్తు భావనలు, ఒక ఉపమానం, ఒక సాధారణ అపోహ చెప్పండి."
+    },
+    {
+      "key": "site.5ee724e530ff7c1b14",
+      "source": "Explain what this screenshot is showing",
+      "value": "ఈ స్క్రీన్‌షాట్ ఏమి చూపుతుందో వివరించండి"
+    },
+    {
+      "key": "site.9e8f5c7da3dabe27bb",
+      "source": "Explain why the hint works before moving on.",
+      "value": "why the hint works before moving on ను వివరించండి."
+    },
+    {
+      "key": "site.6e279c868717fc125e",
+      "source": "Explain why the method works",
+      "value": "ఈ పద్ధతి ఎందుకీ పనిచేస్తుందో వివరణ ఇవ్వండి"
+    },
+    {
+      "key": "site.4de3d025ae2df0ea03",
+      "source": "Explain why the method works.",
+      "value": "why the method works ను వివరించండి."
+    },
+    {
+      "key": "site.acbb56b7faa3921226",
+      "source": "Explain your move. Tell the AI why you chose the next step.",
+      "value": "your move. Tell the AI why you chose the next దశ ను వివరించండి."
+    },
+    {
+      "key": "site.83ae1f486404506725",
+      "source": "Explain, check for understanding, adapt the level, and invite the learner to apply the idea.",
+      "value": "Explain, తనిఖీ చేయండి కోసం understanding, adapt the స్థాయి, and invite the అభ్యాసకుడు to apply the ఆలోచన."
+    },
+    {
+      "key": "site.01b57cdc25634f10bb",
+      "source": "Explain, give a listening or playing prompt, check understanding, and build upward.",
+      "value": "Explain, give a listening or playing సూచన, తనిఖీ చేయండి understanding, and నిర్మించండి upward."
+    },
+    {
+      "key": "site.a8cc77077c5198e6a6",
+      "source": "Explanations become review cards so learners can test memory rather than reread passively.",
+      "value": "వివరణలు సమీక్ష కార్డ్‌లుగా మారుతాయి, కాబట్టి అభ్యాసకులు నిష్క్రియంగా మళ్లీ చదవకుండా జ్ఞాపకాన్ని పరీక్షించగలరు."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "వివరణలు, సోక్రటిక్ ట్యూటరింగ్, హోంవర్క్ కోచింగ్, ప్రశ్నోత్తర పరీక్షలు, జ్ఞాపక కార్డులు, రచన, కోడ్, వాదన, అధ్యయన ప్రణాళిక."
+    },
+    {
+      "key": "site.036ec8c6eeda560094",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "చిత్రకళల్ని, శైలులను, చిత్రకారులను, దృశ్య ఎంపికలను, అలాగే ఒక చిత్రాన్ని శక్తివంతంగా చేసే అంశాలన్నీ అన్వేషించండి."
+    },
+    {
+      "key": "site.9f320126ab4e28f90e",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "ఆకర్షణలు, నైపుణ్యాలు, రోజువారీ జీవిత ఉదాహరణలు మరియు తదుపరి చర్యల ద్వారా వృత్తులను అన్వేషించండి."
+    },
+    {
+      "key": "site.62f65c8f24985b955b",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "దేశాలు, నగరాలు, నదులు, వాతావరణాలు, వలసలు, వనరులు మరియు భూగోళ శాస్త్రం జీవనాన్ని ఎలా ప్రభావితం చేస్తుందో అన్వేషించండి."
+    },
+    {
+      "key": "site.c8a13fb874f6b02610",
+      "source": "Explore experiments and concepts safely",
+      "value": "ప్రయోగాలు మరియు ధార్మికాలను సురక్షితంగా అన్వేషించండి"
+    },
+    {
+      "key": "site.b193ca8681cdcd7cf4",
+      "source": "Explore experiments and concepts safely.",
+      "value": "experiments and భావనs safely ను అన్వేషించండి."
+    },
+    {
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "AIతో చరిత్ర మరియు పెద్ద ఆలోచనలను అన్వేషించండి"
+    },
+    {
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "చరిత్ర మరియు ఆలోచనలను అన్వేషించండి"
+    },
+    {
+      "key": "site.12cb7ec30c8f72207b",
+      "source": "Explore history, ideas, and debate",
+      "value": "చరిత్ర, ఆలోచనలు మరియు వాదనలను అన్వేషించండి"
+    },
+    {
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "అన్వేషించండి చరిత్ర, ప్రజా ప్రముఖులు, కారణాలు, చర్చలు, తత్వశాస్త్రం, and మూలాల విమర్శనాత్మక పరిశీలన తో AI అభ్యాస విధానాలు that separate ఆధారాలు from అనుకరణ."
+    },
+    {
+      "key": "site.730f4dd59d59cb16b0",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "సూక్ష్మమైన తార్కికతతో గుర్తింపు, జ్ఞానం, న్యాయం, స్వాతంత్ర్యం, సంతోషం మరియు ఇతర లోతైన ప్రశ్నలను ఆవిష్కరించండి."
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "అన్వేషించండి ప్రజా AI అభ్యాస విధానాలు ఉపాధ్యాయులు can use to evaluate సోక్రటిక్ ట్యూటరింగ్, ప్రశ్నోత్తర పరీక్షలు, జ్ఞాపక కార్డు‌లు, రచనపై ఫీడ్‌బ్యాక్, మూలాల విమర్శనాత్మక పరిశీలన, and తరగతి గదికి సిద్ధమైన అధ్యయన పని ప్రవాహంలు."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "పాఠశాలలను అన్వేషించండి"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "మార్గదర్శి లైబ్రరీని అన్వేషించండి"
+    },
+    {
+      "key": "site.0d30b96846deaf626b",
+      "source": "Explore the Himalayas",
+      "value": "హిమాలయాలను అన్వేషించండి"
+    },
+    {
+      "key": "site.ce88b5fcc74e6bf9b2",
+      "source": "Exploring context, practicing conversations, and making abstract ideas feel concrete.",
+      "value": "Exploring సందర్భం, practicing సంభాషణలు, and making అమూర్త ఆలోచనలు feel concrete."
+    },
+    {
+      "key": "site.bb43d5d20365a233e6",
+      "source": "Extract cue questions, concise notes, summaries, and review prompts.",
+      "value": "సూచన ప్రశ్నలు, సంక్షిప్త నోట్లు, సారాంశాలు మరియు పునర్విమర్శ సూచన‌లను తీసుకోండి."
+    },
+    {
+      "key": "site.fe9fb7193344433ef8",
+      "source": "Extract key points from my notes",
+      "value": "నా నోట్స్ నుండి ముఖ్యమైన పాయింట్లను సేకరించు"
+    },
+    {
+      "key": "site.2dfb8cc34faf2c2ce5",
+      "source": "Extract the claim before judging it.",
+      "value": "తీర్పు ఇవ్వడానికి ముందు వాదనను బయటకు తీయండి."
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "వేగమైన అభ్యాస మార్గాలు"
+    },
+    {
+      "key": "site.0ea6fedea2b3f7234f",
+      "source": "Fee Changes",
+      "value": "ఫీజు మార్పులు"
+    },
+    {
+      "key": "site.7da0bedd37d364e9b9",
+      "source": "Feedback focuses on structure, clarity, evidence, and revision choices instead of ghostwriting.",
+      "value": "Feedback focuses on నిర్మాణం, స్పష్టత, ఆధారాలు, and సవరణ ఎంపికలు instead of ఇతరుల పేరుతో పూర్తిగా రాయడం."
+    },
+    {
+      "key": "site.764862676d38cfa1b5",
+      "source": "Feedback without losing your voice",
+      "value": "మీ స్వరాన్ని కోల్పోకుండా ఫీడ్‌బ్యాక్"
+    },
+    {
+      "key": "site.72abbc92844007d6a4",
+      "source": "Fees",
+      "value": "ఫీజులు"
+    },
+    {
+      "key": "site.e432ca14e7c051fcc6",
+      "source": "Feynman Tutor",
+      "value": "ఫేఈన్మన్ ట్యుటర్"
+    },
+    {
+      "key": "site.76506817436f2576b3",
+      "source": "Feynman Tutor AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Feynman Tutor AI అభ్యాస విధానం అనేది నిష్క్రియంగా సమాధానాలు సేకరించకుండా, నేర్చుకోవడానికి AIని ఉపయోగించే కేంద్రీకృత మార్గం. ఈ విధానం ఒక నిర్దిష్ట పనిని చుట్టూ నిర్మించబడింది: Try explaining a భావన simply. Your tutor spots లోపాలు, asks ప్రశ్నలు, and helps you rebuild the వివరణ."
+    },
+    {
+      "key": "site.d5b76ff0a85f514d76",
+      "source": "Feynman Tutor AI Learning Mode: practical guide",
+      "value": "Feynman Tutor AI అభ్యాస విధానం: ప్రాయోగిక మార్గదర్శి"
+    },
+    {
+      "key": "site.f8b5d22910d6837d65",
+      "source": "Feynman Tutor prompts and study loop",
+      "value": "Feynman Tutor సూచనలు మరియు అధ్యయన లూప్"
+    },
+    {
+      "key": "site.de04a674c5cca67d66",
+      "source": "fill blank",
+      "value": "ఖాళీని పూరించండి"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "చిత్ర అధ్యాయాలు"
+    },
+    {
+      "key": "site.a69ebd3494c47ab0a3",
+      "source": "Film transcript",
+      "value": "చిత్ర ట్రాన్స్‌క్రిప్ట్"
+    },
+    {
+      "key": "site.98cf439cd4688b2cb1",
+      "source": "final exam",
+      "value": "చివరి పరీక్ష"
+    },
+    {
+      "key": "site.5cf6fcc4146bcb2486",
+      "source": "Find and fix wrong mental models",
+      "value": "తప్పుడు మానసిక నమూనాలను కనుగొని సరిచేయండి"
+    },
+    {
+      "key": "site.3fc341a4d7991052aa",
+      "source": "Find and fix wrong mental models.",
+      "value": "తప్పు మానసిక నమూనాలను కనుగొని సరిచేయండి."
+    },
+    {
+      "key": "site.76457b8165609e3cb4",
+      "source": "Find angles on AI ethics",
+      "value": "AI నైతికతపై కోణాలను కనుగొనండి"
+    },
+    {
+      "key": "site.5dac244a7283fb83c1",
+      "source": "Find starter prompts for explanations, checks, practice, planning, and revision.",
+      "value": "కనుగొనండి ప్రారంభ సూచనలు కోసం వివరణs, తనిఖీలు, అభ్యాసం, ప్రణాళిక, and సవరణ."
+    },
+    {
+      "key": "site.5daa57244620ea06b2",
+      "source": "Find subject-specific routes for math, writing, coding, history, homework, and exams.",
+      "value": "కనుగొనండి విషయానుసార మార్గాలు కోసం గణితం, రచన, కోడింగ్, చరిత్ర, హోంవర్క్, and పరీక్షs."
+    },
+    {
+      "key": "site.fa6308a7d3dc7d31f6",
+      "source": "Find the next step",
+      "value": "తదుపరి దశ కనుగొనండి"
+    },
+    {
+      "key": "site.6f586c9a178399cc59",
+      "source": "Find the next step.",
+      "value": "తదుపరి దశను కనుగొనండి."
+    },
+    {
+      "key": "site.7b99b4c244499e71b3",
+      "source": "Find the weak link",
+      "value": "బలహీన కడిని కనుగొనండి"
+    },
+    {
+      "key": "site.fbff8559c6363b44f9",
+      "source": "Find themes in my notebook",
+      "value": "నా నోట్‌బుక్‌లో అంశాలను కనుగొను"
+    },
+    {
+      "key": "site.84e0cc3028772fae91",
+      "source": "Find weak areas",
+      "value": "బలహీనమైన అంశాలను కనుగొనండి"
+    },
+    {
+      "key": "site.49c6971a3a938dd4b0",
+      "source": "Find weak areas before rereading",
+      "value": "మళ్లీ చదవడానికి ముందు బలహీన ప్రాంతాలను కనుగొనండి"
+    },
+    {
+      "key": "site.f7f5b73308cbcca473",
+      "source": "Finish by writing a five-bullet recap from memory, then ask for the one weak spot to review tomorrow.",
+      "value": "ముగించండి by రచన a five-bullet recap from జ్ఞాపకం, then ask కోసం the one weak spot to పునఃసమీక్ష tomorrow."
+    },
+    {
+      "key": "site.88f39658d8034604e0",
+      "source": "Finish by writing the idea back from memory.",
+      "value": "ఆ ఆలోచనను జ్ఞాపకం నుంచి తిరిగి రాయడం ద్వారా ముగించండి."
+    },
+    {
+      "key": "site.45f58c9b7eb5c3a913",
+      "source": "Finish with a quiz, flashcard, or Socratic check so the session leaves a trace.",
+      "value": "ముగించండి తో a ప్రశ్నోత్తర పరీక్ష, జ్ఞాపక కార్డు, or Socratic check so the session leaves a trace."
+    },
+    {
+      "key": "site.be34c20d0505622a59",
+      "source": "First Published and Effective date: 2023-04-01",
+      "value": "మొదట ప్రచురించిన మరియు అమల్లోకి వచ్చిన తేదీ: 2023-04-01"
+    },
+    {
+      "key": "site.959bc7635fa55f9077",
+      "source": "First turn: {value1}",
+      "value": "మొదటి టర్న్: {value1}"
+    },
+    {
+      "key": "site.ea2e864a0ad76da9c9",
+      "source": "First-principles learning",
+      "value": "ప్రథమ సూత్రాల ఆధారిత అభ్యాసం"
+    },
+    {
+      "key": "site.239a1681ee458f631a",
+      "source": "First, the tutor identifies the target. \"I want to understand opportunity cost\" is different from \"I need to solve this economics homework question\" or \"I need to defend a position in debate.\" The target shapes the questions.",
+      "value": "First, the tutor identifies the లక్ష్యం. \"I want to understand అవకాశ వ్యయం\" is different from \"I need to solve this ఆర్థికశాస్త్ర హోంవర్క్ ప్రశ్న\" or \"I need to defend a చర్చలో స్థానం.\" The లక్ష్యం shapes the ప్రశ్నలు."
+    },
+    {
+      "key": "site.99b20ef1b4d828a984",
+      "source": "Fix an unproductive group",
+      "value": "ఉత్పాదకత లేని గ్రూపును సరిచేయండి"
+    },
+    {
+      "key": "site.3c22f541142cb4ab5b",
+      "source": "Fix the misconception.",
+      "value": "తప్పుబాటును సరిచేయండి."
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "జ్ఞాపక కార్డు బిల్డర్"
+    },
+    {
+      "key": "site.f793961501afc5eeb2",
+      "source": "Flashcard Builder prompts and study loop",
+      "value": "ఫ్లాష్ కార్డ్ బిల్డర్ సూచనలు మరియు అధ్యయనం లూప్"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "ఇది చేయడానికి జ్ఞాపక కార్డు‌లు అత్యంత సులభమైన మార్గాలలో ఒకటి."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "జ్ఞాపక కార్డులు శక్తివంతమైనవి, కానీ అవి మొత్తం అధ్యయన ప్రక్రియ కాదు. అవి శోధన, పదజాలం, నిర్వచనాలు, సూత్రాలు, విభజనలు మరియు ముఖ్య ఉదాహరణలకు ఉత్తమమైనవి. విద్యార్థి మొదట ఆలోచనను అర్థం చేసుకోనప్పుడు అవి బలహీనంగా ఉంటాయి."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "జ్ఞాపక కార్డులు ఒక ఆలోచనను ఒక్కొక్కసారి పరీక్షించినప్పుడు, ప్రయత్నం చేసిన తర్వాత మాత్రమే సమాధానాలు వెల్లడిస్తే, మరియు కోల్పోయిన కార్డులను ముందుగానే సమీక్షించినప్పుడు ఉత్తమంగా పనిచేస్తాయి."
+    },
+    {
+      "key": "site.3453a1dbedf1f3ae41",
+      "source": "Florence, 1504",
+      "value": "ఫ్లోరెన్స్, 1504"
+    },
+    {
+      "key": "site.2595dea0846970c6b1",
+      "source": "Focus & Productivity",
+      "value": "ఫోకస్ & ప్రొడక్టివిటీ"
+    },
+    {
+      "key": "site.c3511fe0a0027374a6",
+      "source": "focus audio",
+      "value": "ఫోకస్ ఆడియో"
+    },
+    {
+      "key": "site.a924d6055c51e5fa88",
+      "source": "focus mode",
+      "value": "ఫోకస్ విధానం"
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "ఒక లోతైన మార్గం కోసం, ఫ్లాష్కార్డ్ బిల్డర్ మార్గదర్శి మరియు ఫ్లాష్కార్డ్ బిల్డర్ సూచనలను మరియు అధ్యయనం లూప్ చదవండి. లక్ష్యం ఒక అందమైన డెక్ కాదు. లక్ష్యం గమనికలు పోయినప్పుడు మరింత గుర్తుంచుకోవడం."
+    },
+    {
+      "key": "site.460f44494744df4b77",
+      "source": "For a learner, that can feel very different from searching the web. Search gives pages. A learning companion gives a path.",
+      "value": "For a learner, that can feel very different from searching the వెబ్. Search gives pages. A అభ్యాస సహచరి gives a మార్గం."
+    },
+    {
+      "key": "site.e46c5f5d9d7bee8381",
+      "source": "For a wider view of how the public pages connect, browse the AI learning map, the subject hubs, or the AI learning prompt library. Those pages are designed to make the product understandable to learners and discoverable to search systems without hiding the useful parts behind an account wall.",
+      "value": "For a wider view of how the ప్రజా pages connect, browse the AI అభ్యాస మ్యాప్, the విషయ కేంద్రాలు, or the AI అభ్యాసం సూచన లైబ్రరీ. Those pages are designed to make the product understandable to అభ్యాసకులు and discoverable to search systems without hiding the useful parts behind an ఖాతా గోడ."
+    },
+    {
+      "key": "site.9966764746f966abe5",
+      "source": "For Art Appreciation Guide, a useful practice loop is:",
+      "value": "Art Appreciation మార్గదర్శి కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.8d15058a8e130497ca",
+      "source": "For Career Explorer, a useful practice loop is:",
+      "value": "Career Explorer కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.b58f166c0530a2b1d1",
+      "source": "For Case Study Simulator, a useful practice loop is:",
+      "value": "Case Study Simulator కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.7087af3d661d853cc8",
+      "source": "For Civics Coach, a useful practice loop is:",
+      "value": "Civics Coach కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.642615d2798f6cb6a6",
+      "source": "For Code Tutor, a useful practice loop is:",
+      "value": "Code Tutor కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.e2cbefc1077313b1d3",
+      "source": "For Collaborative Instruction, a useful practice loop is:",
+      "value": "Collaborative Instruction కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.feeafe5feac502c526",
+      "source": "For Concept Map Builder, a useful practice loop is:",
+      "value": "Concept Map Builder కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.0dcd17349d74df1133",
+      "source": "For Creative Brainstormer, a useful practice loop is:",
+      "value": "Creative Brainstormer కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.dab92d0ac532cd3cce",
+      "source": "For Data Interpreter, a useful practice loop is:",
+      "value": "Data Interpreter కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.12e9b51273cbb20deb",
+      "source": "For Debate any topic, a useful practice loop is:",
+      "value": "Debate any topic కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.6061c4a8bf7a6cbc31",
+      "source": "For Debate with a personality, a useful practice loop is:",
+      "value": "Debate తో a personality కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.8f698150aeec33c849",
+      "source": "For Economics Simulator, a useful practice loop is:",
+      "value": "Economics Simulator కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.7708fdb7e7d26c9067",
+      "source": "For Ethics Dilemmas, a useful practice loop is:",
+      "value": "Ethics Dilemmas కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.e7ad97340f8d9c6834",
+      "source": "For Exam Prep Planner, a useful practice loop is:",
+      "value": "పరీక్ష సిద్ధత ప్రణాళికకర్త కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.d7e7da498fdfc9a512",
+      "source": "For example, a learner studying democracy might talk with Ambedkar, then ask Source Critic to evaluate a speech or constitutional passage. A learner studying a city can start with Geography Explorer to understand place, then move into historical conversation.",
+      "value": "For పరీక్షple, a learner studying ప్రజాస్వామ్యం might talk తో Ambedkar, then ask Source Critic to evaluate a speech or constitutional passage. A learner studying a city can start తో Geography Explorer to understand place, then move into historical conversation."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "ఉదాహరణకు:"
+    },
+    {
+      "key": "site.7ba804f54d66dc8d42",
+      "source": "For Explain My Answer, a useful practice loop is:",
+      "value": "Explain My Answer కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.c77b422a4c9fb1ca67",
+      "source": "For Feynman Tutor, a useful practice loop is:",
+      "value": "Feynman Tutor కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.93b7c872788d1cb1fe",
+      "source": "For Flashcard Builder, a useful practice loop is:",
+      "value": "ఫ్లాష్కార్డ్ బిల్డర్ కోసం, ఉపయోగకరమైన ప్రాక్టీస్ లూప్ః"
+    },
+    {
+      "key": "site.f648657225584ee1d7",
+      "source": "For Geography Explorer, a useful practice loop is:",
+      "value": "Geography Explorer కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.44e521d2c699bb4f9a",
+      "source": "For Habit Coach, a useful practice loop is:",
+      "value": "Habit Coach కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.1d374b4253e82b6bcb",
+      "source": "For History Cause-and-Effect, a useful practice loop is:",
+      "value": "History Cause-and-Effect కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.327c6c47082f6e0457",
+      "source": "For Homework Coach, a useful practice loop is:",
+      "value": "హోంవర్క్ మార్గదర్శి కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.891dafce220a23a852",
+      "source": "For Interactive Instruction, a useful practice loop is:",
+      "value": "పరస్పర మార్గదర్శనం కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.37d5a7b1d1ac148591",
+      "source": "For Interview Coach, a useful practice loop is:",
+      "value": "Interview Coach కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.9eeaaeb7907877b81a",
+      "source": "For Language Roleplay, a useful practice loop is:",
+      "value": "Language Roleplay కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.55be074e9504a91d4e",
+      "source": "For Learn Anything, a useful practice loop is:",
+      "value": "ఏదైనా నేర్చుకోండి కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.c8a87e52e7f4472d62",
+      "source": "For Learning Game Master, a useful practice loop is:",
+      "value": "అభ్యాసం Game Master కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "గణితం లేదా తర్కం కోసం, ఒక్కో దశగా పని చేసి, ముందుకు వెళ్లే ముందు ప్రతి కదలిక ఎందుకు అనుమతించబడుతుందో అడగండి."
+    },
+    {
+      "key": "site.8ccc57dfebf0ed0089",
+      "source": "For Math Step Coach, a useful practice loop is:",
+      "value": "గణిత దశల మార్గదర్శి కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.88f5996ce78d3ad115",
+      "source": "For Memory Palace, a useful practice loop is:",
+      "value": "Memory Palace కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.1828272fb817f4ee62",
+      "source": "For Mindset Reflection, a useful practice loop is:",
+      "value": "Mindset Reflection కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.b7eaf90dd74af453f6",
+      "source": "For Misconception Doctor, a useful practice loop is:",
+      "value": "Misconception Doctor కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.5767a106a35eac9d22",
+      "source": "For more practice, pair this with the Socratic Instruction guide, the Socratic prompts and study loop, or the broader guide on studying with AI without cheating yourself.",
+      "value": "For more అభ్యాసం, pair this తో the సోక్రటిక్ మార్గదర్శనం మార్గదర్శి, the Socratic సూచనలు and అధ్యయన లూప్, or the broader మార్గదర్శి on studying తో AI without cheating yourself."
+    },
+    {
+      "key": "site.ce4982aca8b05521c6",
+      "source": "For Motivation Coach, a useful practice loop is:",
+      "value": "Motivation Coach కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.32102512d7a15b0cb5",
+      "source": "For Music Theory Coach, a useful practice loop is:",
+      "value": "Music Theory Coach కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "తల్లిదండ్రుల కోసం"
+    },
+    {
+      "key": "site.22cb8e2b533e535dfc",
+      "source": "For Philosophy Lab, a useful practice loop is:",
+      "value": "Philosophy Lab కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.42e7dd02292a472240",
+      "source": "For Project Coach, a useful practice loop is:",
+      "value": "Project Coach కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.232ce4fbf29e038d86",
+      "source": "For Quiz me on Trivia, a useful practice loop is:",
+      "value": "ట్రివియా లో ప్రశ్నోత్తర పరీక్ష కోసం, ఉపయోగకరమైన ప్రాక్టీస్ లూప్ః"
+    },
+    {
+      "key": "site.d58f97ad5928630438",
+      "source": "For Reading Companion, a useful practice loop is:",
+      "value": "Reading Companion కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.f7ca620cbe287702cd",
+      "source": "For Research Assistant, a useful practice loop is:",
+      "value": "Research Assistant కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.bb99a24d256987bc8d",
+      "source": "For Roleplay Scenario, a useful practice loop is:",
+      "value": "Roleplay Scenario కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.524e4b1e45046a700f",
+      "source": "For school assignments, guide and revise with the learner rather than ghostwriting the full piece.",
+      "value": "For school assignments, మార్గదర్శి and revise తో the learner rather than ఇతరుల పేరుతో పూర్తిగా రాయడం the full piece."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "పాఠశాలలు మరియు CSR భాగస్వాముల కోసం"
+    },
+    {
+      "key": "site.1672c4bb2b119b6e49",
+      "source": "For Science Lab Partner, a useful practice loop is:",
+      "value": "Science Lab Partner కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "స్వయంగా నేర్చుకునే వారి కోసం"
+    },
+    {
+      "key": "site.01f8d04a7594883f26",
+      "source": "For Socratic Instruction, a useful practice loop is:",
+      "value": "సోక్రటిక్ మార్గదర్శనం కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.3af4a178e1c418d93c",
+      "source": "For Source Critic, a useful practice loop is:",
+      "value": "Source Critic కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.d37570df26a47d631e",
+      "source": "For Spaced Review, a useful practice loop is:",
+      "value": "Spaced పునఃసమీక్ష కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.8cc00630a56b1128d7",
+      "source": "For Speaking Practice, a useful practice loop is:",
+      "value": "Speaking Practice కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.4dfc6d8ed088b5ee60",
+      "source": "For Story Tutor, a useful practice loop is:",
+      "value": "Story Tutor కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "విద్యార్థుల కోసం"
+    },
+    {
+      "key": "site.416588393e01f4dfc0",
+      "source": "For Study Plan Builder, a useful practice loop is:",
+      "value": "Study Plan Builder కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.d4180c6ad459be9b0f",
+      "source": "For Talk to a historical person, a useful practice loop is:",
+      "value": "Talk to a historical person కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "ఉపాధ్యాయుల కోసం"
+    },
+    {
+      "key": "site.babff00150d04fccf8",
+      "source": "For the first time, a former colony with no prior national history became a global power. The kings and queens of Europe were overthrown, and the United States of America emerged as a symbol of democracy, capitalism, and a free world. At the same time, a new ideology of communism emerged and the Soviet Union became its practical embodiment.",
+      "value": "For the first time, a మాజీ వలస దేశం తో no prior national చరిత్ర became a ప్రపంచ శక్తి. The kings and queens of Europe were overthrown, and the United States of America emerged as a symbol of ప్రజాస్వామ్యం, పూంజీవాదం, and a స్వేచ్ఛా ప్రపంచం. At the same time, a new ideology of కమ్యూనిజం emerged and the Soviet Union became its practical embodiment."
+    },
+    {
+      "key": "site.9d20305d0a7b5fb540",
+      "source": "For this mode, the job is simple: Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "ఈ విధానం‌లో పని సులభం: అడగండి any question and learn through clear వివరణs, ఉదాహరణలు, follow-up సూచనలు, and patient AI tutoring."
+    },
+    {
+      "key": "site.7fe82254166d1328f9",
+      "source": "For this mode, the job is simple: Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "ఈ విధానం‌లో పని సులభం: అడగండి ప్రశ్నలు, challenge ఆలోచనలు, and learn చరిత్ర through grounded సంభాషణలు తో ప్రజా ప్రముఖులు from the past."
+    },
+    {
+      "key": "site.197be851cfac06100c",
+      "source": "For this mode, the job is simple: Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "ఈ విధానం‌లో పని సులభం: Brainstorm ప్రాజెక్టులు, కథలు, designs, titles, experiments, and unexpected angles."
+    },
+    {
+      "key": "site.9ca17170e41375b0b3",
+      "source": "For this mode, the job is simple: Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ఈ విధానం‌లో పని సులభం: Bring a passage or book idea and build comprehension through సారాంశాలు, పదజాలం, inference, and discussion."
+    },
+    {
+      "key": "site.641d2f0a41224d028d",
+      "source": "For this mode, the job is simple: Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "ఈ విధానం‌లో పని సులభం: నిర్మించండి a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and ఆధారాలు."
+    },
+    {
+      "key": "site.c96149b05f6974834a",
+      "source": "For this mode, the job is simple: Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "ఈ విధానం‌లో పని సులభం: నిర్మించండి పదజాలం తో meaning, ఉదాహరణలు, pronunciation cues, జ్ఞాపకం hooks, and quick అభ్యాసం."
+    },
+    {
+      "key": "site.25d83b73942bf4c855",
+      "source": "For this mode, the job is simple: Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "ఈ విధానం‌లో పని సులభం: Convert నిజాలు, lists, speeches, or sequences into memorable mental scenes."
+    },
+    {
+      "key": "site.8f3976d889901c671b",
+      "source": "For this mode, the job is simple: Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "ఈ విధానం‌లో పని సులభం: సృష్టించండి a study plan around your time, energy, goals, and weak spots."
+    },
+    {
+      "key": "site.4ae35d5191b94bb138",
+      "source": "For this mode, the job is simple: Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "ఈ విధానం‌లో పని సులభం: Debate any topic, get challenged, compare వాదనs, and learn how to make stronger arguments."
+    },
+    {
+      "key": "site.87f3e77f6d3cb48bd7",
+      "source": "For this mode, the job is simple: Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "ఈ విధానం‌లో పని సులభం: Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice. - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.1282993e76ae847230",
+      "source": "For this mode, the job is simple: Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "ఈ విధానం‌లో పని సులభం: అంచనా వేయండి articles, వాదనs, videos, or posts కోసం ఆధారాలు, పక్షపాతం, reliability, and missing సందర్భం."
+    },
+    {
+      "key": "site.b884213b592537a37a",
+      "source": "For this mode, the job is simple: Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "ఈ విధానం‌లో పని సులభం: అన్వేషించండి artworks, styles, artists, visual choices, and what makes an image powerful."
+    },
+    {
+      "key": "site.39396185973285bab5",
+      "source": "For this mode, the job is simple: Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "ఈ విధానం‌లో పని సులభం: అన్వేషించండి careers through interests, skills, day-in-the-life ఉదాహరణలు, and తదుపరి steps."
+    },
+    {
+      "key": "site.009ef97d27fae3d802",
+      "source": "For this mode, the job is simple: Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "ఈ విధానం‌లో పని సులభం: అన్వేషించండి countries, cities, rivers, climates, migration, resources, and how geography shapes life."
+    },
+    {
+      "key": "site.f74db23afa9fe155ab",
+      "source": "For this mode, the job is simple: Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "ఈ విధానం‌లో పని సులభం: అన్వేషించండి identity, knowledge, fairness, freedom, happiness, and other deep ప్రశ్నలు through careful reasoning."
+    },
+    {
+      "key": "site.bd9c7aedd377b78d69",
+      "source": "For this mode, the job is simple: Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "ఈ విధానం‌లో పని సులభం: Generate a focused multiple-choice ప్రశ్నోత్తర పరీక్ష on any విషయం and పునఃసమీక్ష వివరణs after each సమాధానం."
+    },
+    {
+      "key": "site.a8803ae71d1961890a",
+      "source": "For this mode, the job is simple: Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "ఈ విధానం‌లో పని సులభం: Get unstuck emotionally, find a smaller తదుపరి step, and rebuild momentum without guilt."
+    },
+    {
+      "key": "site.85e24421e08fce72b3",
+      "source": "For this mode, the job is simple: Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "ఈ విధానం‌లో పని సులభం: Get unstuck on హోంవర్క్ తో ethical hints, ఉదాహరణలు, తనిఖీలు, and step-by-step coaching."
+    },
+    {
+      "key": "site.96dd71a6fa55c54e65",
+      "source": "For this mode, the job is simple: Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "ఈ విధానం‌లో పని సులభం: మెరుగుపరచండి రచన తో ప్రణాళిక, సవరణ, నిర్మాణం, and feedback that keeps your మీ స్వరం intact."
+    },
+    {
+      "key": "site.a402228317bc3715eb",
+      "source": "For this mode, the job is simple: Learn by doing, seeing, comparing, repairing, and proving mastery. The app builds a live lesson canvas around your goal instead of turning instruction into a long chat. Try: \"Teach me financial modeling.\"",
+      "value": "ఈ విధానం‌లో పని సులభం: నేర్చుకోండి by doing, seeing, comparing, repairing, and proving mastery. The app builds a live lesson canvas around your goal instead of turning instruction into a long chat. Try: \"Teach me financial విధానంling.\""
+    },
+    {
+      "key": "site.e5728079acc24acbdf",
+      "source": "For this mode, the job is simple: Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "ఈ విధానం‌లో పని సులభం: నేర్చుకోండి constitutions, ప్రజాస్వామ్యం, elections, courts, rights, duties, and ప్రజా policy."
+    },
+    {
+      "key": "site.cbf6e132ed111893f3",
+      "source": "For this mode, the job is simple: Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "ఈ విధానం‌లో పని సులభం: నేర్చుకోండి notes, chords, scales, rhythm, ear training ఆలోచనలు, and how songs are built."
+    },
+    {
+      "key": "site.ea411096236356c8db",
+      "source": "For this mode, the job is simple: Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "ఈ విధానం‌లో పని సులభం: నేర్చుకోండి through focused ప్రశ్నలు, hints, and reflection instead of passive సమాధానం reading."
+    },
+    {
+      "key": "site.f787e9e39c3c573b05",
+      "source": "For this mode, the job is simple: Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "ఈ విధానం‌లో పని సులభం: Make అభ్యాసం feel like a game తో quests, levels, points, challenges, and boss rounds. - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.51c84bc05aa44414d5",
+      "source": "For this mode, the job is simple: Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "ఈ విధానం‌లో పని సులభం: Map how ఆలోచనలు relate, from కారణాలు and effects to categories, ఉదాహరణలు, and contradictions."
+    },
+    {
+      "key": "site.5c0fa5769685390a4f",
+      "source": "For this mode, the job is simple: Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "ఈ విధానం‌లో పని సులభం: Notice what helps you learn, what gets in the way, and how to become a stronger learner. - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.7fa5b697fe327b7e6e",
+      "source": "For this mode, the job is simple: Open a shared workspace with an AI collaborator. Make a rough artifact, trade edits, challenge weak spots, log decisions, and leave with concrete progress.",
+      "value": "ఈ విధానం‌లో పని సులభం: Open a shared workspace తో an AI collaborator. Make a rough artifact, trade edits, challenge weak spots, log decisions, and leave తో concrete progress. - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.f2568499eb5c9146ba",
+      "source": "For this mode, the job is simple: Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "ఈ విధానం‌లో పని సులభం: Paste a question, your సమాధానం, and the expected సమాధానం if you have it. Your buddy explains the reasoning and helps you avoid the same mistake తదుపరి time."
+    },
+    {
+      "key": "site.a51a8150178739fce6",
+      "source": "For this mode, the job is simple: Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "ఈ విధానం‌లో పని సులభం: Paste డేటా, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask తదుపరి."
+    },
+    {
+      "key": "site.b115f2f6fd7ebb6922",
+      "source": "For this mode, the job is simple: Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "ఈ విధానం‌లో పని సులభం: ప్రణాళిక చేయండి a school, creative, కోడింగ్, or personal project తో scope, milestones, blockers, and తదుపరి actions."
+    },
+    {
+      "key": "site.71cb145cdd43e81e29",
+      "source": "For this mode, the job is simple: Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "ఈ విధానం‌లో పని సులభం: ప్రణాళిక చేయండి and run quick పునఃసమీక్ష sessions that strengthen long-term జ్ఞాపకం."
+    },
+    {
+      "key": "site.8e5def06c11fbdf0f7",
+      "source": "For this mode, the job is simple: Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "ఈ విధానం‌లో పని సులభం: ప్రణాళిక చేయండి safe demonstrations, understand variables, predict outcomes, and reason from ఆధారాలు like a scientist."
+    },
+    {
+      "key": "site.9338643d81936e1b35",
+      "source": "For this mode, the job is simple: Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "ఈ విధానం‌లో పని సులభం: Play తో markets, scarcity, incentives, policy, and personal finance through simple అనుకరణs."
+    },
+    {
+      "key": "site.efb82282cbdbbc8507",
+      "source": "For this mode, the job is simple: Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "ఈ విధానం‌లో పని సులభం: అభ్యాసం చేయండి a language in realistic scenarios like cafes, interviews, travel, and daily life, తో corrections after each turn."
+    },
+    {
+      "key": "site.f75f75b80404676d62",
+      "source": "For this mode, the job is simple: Practice argument by debating a public or fictional personality on a topic you choose.",
+      "value": "ఈ విధానం‌లో పని సులభం: అభ్యాసం చేయండి argument by debating a ప్రజా or fictional personality on a topic you choose."
+    },
+    {
+      "key": "site.199c909d3cfe8a416a",
+      "source": "For this mode, the job is simple: Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "ఈ విధానం‌లో పని సులభం: అభ్యాసం చేయండి negotiation, conflict, అనుకూలer support, leadership, or any high-stakes conversation."
+    },
+    {
+      "key": "site.27179d91108c6832cd",
+      "source": "For this mode, the job is simple: Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "ఈ విధానం‌లో పని సులభం: అభ్యాసం చేయండి viva, oral పరీక్షs, project defenses, and rapid follow-up ప్రశ్నలు తో calm feedback."
+    },
+    {
+      "key": "site.f5156ba3d337d7c240",
+      "source": "For this mode, the job is simple: Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "ఈ విధానం‌లో పని సులభం: సిద్ధం అవ్వండి కోసం school, internship, job, or scholarship interviews తో realistic ప్రశ్నలు and feedback."
+    },
+    {
+      "key": "site.f1cf09034b443eee86",
+      "source": "For this mode, the job is simple: Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "ఈ విధానం‌లో పని సులభం: సిద్ధం అవ్వండి speeches, presentations, interviews, or oral పరీక్షs తో సూచనలు, timing, and feedback on నిర్మాణం."
+    },
+    {
+      "key": "site.4306849940707fce45",
+      "source": "For this mode, the job is simple: Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "ఈ విధానం‌లో పని సులభం: Say what you think is happening, and your buddy diagnoses hidden తప్పుబాటుs తో gentle tests."
+    },
+    {
+      "key": "site.18dcb876cb96e9cee5",
+      "source": "For this mode, the job is simple: Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ఈ విధానం‌లో పని సులభం: Try explaining a భావన simply. Your tutor spots లోపాలు, asks ప్రశ్నలు, and helps you rebuild the వివరణ."
+    },
+    {
+      "key": "site.56f39d8b843b6a3583",
+      "source": "For this mode, the job is simple: Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "ఈ విధానం‌లో పని సులభం: Turn a broad topic into పరిశోధన ప్రశ్నలు, search terms, outlines, and source notes."
+    },
+    {
+      "key": "site.4d2982971a5e7712e2",
+      "source": "For this mode, the job is simple: Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "ఈ విధానం‌లో పని సులభం: Turn భావనs into కథలు, characters, conflicts, and memorable scenes."
+    },
+    {
+      "key": "site.c94864f0763cec4168",
+      "source": "For this mode, the job is simple: Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "ఈ విధానం‌లో పని సులభం: Turn intentions into small repeatable అభ్యాసం habits తో triggers, rewards, and recovery plans. - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.250fc0188abcbcf33d",
+      "source": "For this mode, the job is simple: Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "ఈ విధానం‌లో పని సులభం: Turn notes or విషయాలు into focused జ్ఞాపక కార్డు‌లు తో hints, సమాధానంs, ఉదాహరణలు, and common traps."
+    },
+    {
+      "key": "site.4be4aa3c4a4fd89390",
+      "source": "For this mode, the job is simple: Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "ఈ విధానం‌లో పని సులభం: Turn your syllabus, పరీక్ష తేదీ, time, and బలహీన ప్రాంతాలు into a practical study plan."
+    },
+    {
+      "key": "site.069e5ca8b0d8620650",
+      "source": "For this mode, the job is simple: Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "ఈ విధానం‌లో పని సులభం: Understand కోడ్, డీబగ్ చేయండి errors, learn ప్రోగ్రామింగ్ భావనs, and build small ప్రాజెక్టులు step by step."
+    },
+    {
+      "key": "site.3f63c55f0c6a84021a",
+      "source": "For this mode, the job is simple: Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "ఈ విధానం‌లో పని సులభం: Unpack historical events through కారణాలు, triggers, consequences, and alternative possibilities."
+    },
+    {
+      "key": "site.5dcc96f11d0efbf6f2",
+      "source": "For this mode, the job is simple: Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "ఈ విధానం‌లో పని సులభం: Work through algebra, calculus, word problems, and గణితం భావనs one step at a time తో an AI coach."
+    },
+    {
+      "key": "site.c06326dac9b0eeecd2",
+      "source": "For this mode, the job is simple: Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "ఈ విధానం‌లో పని సులభం: Work through dilemmas by weighing stakeholders, consequences, duties, rights, and రాజీలు."
+    },
+    {
+      "key": "site.023d4658979cdf7dff",
+      "source": "For Time travel, a useful practice loop is:",
+      "value": "Time travel కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.9e6ed65fcc5440fb71",
+      "source": "For Viva Practice, a useful practice loop is:",
+      "value": "Viva Practice కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.8f64c3c3ef05359110",
+      "source": "For Vocabulary Builder, a useful practice loop is:",
+      "value": "Vocabulary Builder కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.c70dd76aa9dc26e9b6",
+      "source": "For Writing Coach, a useful practice loop is:",
+      "value": "Writing Coach కోసం ఉపయోగకరమైన అభ్యాస లూప్ ఇది:"
+    },
+    {
+      "key": "site.f37be4447d2aac1d49",
+      "source": "For writing, that means using Writing Coach to improve a thesis, structure, or paragraph while keeping your voice. For code, it means using Code Tutor to explain errors, ask you to predict output, and help you debug rather than pasting a complete solution. For exams, it means using Exam Prep Planner to decide what to review first and how to test yourself.",
+      "value": "For రచన, that means using Writing Coach to improve a thesis, నిర్మాణం, or paragraph while keeping your మీ స్వరం. For కోడ్, it means using Code Tutor to explain errors, ask you to predict output, and help you డీబగ్ చేయండి rather than pasting a complete solution. For పరీక్షs, it means using పరీక్ష సిద్ధత ప్రణాళికకర్త to decide what to పునఃసమీక్ష first and how to test yourself."
+    },
+    {
+      "key": "site.ec970e12f905839e31",
+      "source": "Format this website in MLA",
+      "value": "ఈ వెబ్‌సైట్‌ను MLA ఫార్మాట్‌లో రూపొందించు"
+    },
+    {
+      "key": "site.c0f312295321b36082",
+      "source": "Format, flag missing data, and explain how to verify the source details.",
+      "value": "Format, flag missing డేటా, and explain how to verify the source details."
+    },
+    {
+      "key": "site.a8e4c02bd496888dd9",
+      "source": "Foundational guides for explanations, tutoring behavior, study habits, prompt quality, and choosing the right learning mode.",
+      "value": "వివరణలు, ట్యూషన్ ప్రవర్తన, అధ్యయనం అలవాట్లు, శీఘ్ర నాణ్యత, సరైన అభ్యాస విధానంను ఎంచుకోవడం కోసం ప్రాథమిక మార్గదర్శకాలు."
+    },
+    {
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "అవస్థలు"
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "Founded - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.87d186c70c40994969",
+      "source": "Fourth, the tutor asks one next-best question. Not five questions. Not a lecture. One move that keeps the learner thinking.",
+      "value": "Fourth, the tutor asks one తదుపరి-best question. Not five ప్రశ్నలు. Not a lecture. One move that keeps the learner thinking."
+    },
+    {
+      "key": "site.26d546a26f067843fb",
+      "source": "Frame questions and synthesize sources",
+      "value": "ప్రశ్నలు రూపకల్పన చేసి వనరులను సంగ్రహించండి"
+    },
+    {
+      "key": "site.df844cc73ad83b6c07",
+      "source": "Frame questions and synthesize sources.",
+      "value": "Fraనన్ను ప్రశ్నలు and synthesize sources."
+    },
+    {
+      "key": "site.e39742f376b00484ae",
+      "source": "free AI homework tutor",
+      "value": "free AI హోంవర్క్ tutor"
+    },
+    {
+      "key": "site.32ac28bd365c30112c",
+      "source": "free AI learning app",
+      "value": "free AI అభ్యాసం app - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "అందరికీ ఉచిత AI అభ్యాసం"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "అందరికీ ఉచిత AI అభ్యాసం | inspir"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "అందరికీ ఉచిత AI అభ్యాసం."
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "free AI అభ్యాసం వేదిక - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "Free AI అభ్యాసం వేదిక - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.e6ea75bbded872228f",
+      "source": "Free AI Quiz Builder For Any Topic",
+      "value": "ఉచిత AI ప్రశ్నోత్తర పరీక్ష బిల్డర్ ఏదైనా అంశానికి"
+    },
+    {
+      "key": "site.920c6f271d04ba2f7a",
+      "source": "Free AI Quiz Builder For Any Topic is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Pick any topic and face a focused 10-question multiple-choice quiz. You answer one question at a time, get instant feedback, and finish with a score and review.",
+      "value": "ఉచిత AI ప్రశ్నోత్తర పరీక్ష బిల్డర్ ఫర్ ఏ టాపిక్ అనేది పాసివ్ జవాబు సేకరణకు బదులుగా AIను నేర్చుకోవడానికి ఒక దృష్టి మార్గం. విధానం ఒక నిర్దిష్ట పని చుట్టూ నిర్మించబడిందిః ఏదైనా అంశాన్ని ఎంచుకోండి మరియు దృష్టి పెట్టబడిన 10-ప్రశ్న బహుళ-ఎంపిక ప్రశ్నోత్తర పరీక్షను ఎదుర్కొంటారు. మీరు ఒక సమయంలో ఒక ప్రశ్నకు సమాధానం ఇస్తారు, తక్షణ అభిప్రాయాన్ని పొందుతారు మరియు స్కోరు మరియు సమీక్షతో ముగించండి."
+    },
+    {
+      "key": "site.98f8116347b719dcdc",
+      "source": "Free AI Quiz Builder For Any Topic: practical guide",
+      "value": "ఉచిత AI ప్రశ్నోత్తర పరీక్ష బిల్డర్ ఏదైనా అంశానికిః ఆచరణాత్మక మార్గదర్శి"
+    },
+    {
+      "key": "site.faa96620a82dcb0ac8",
+      "source": "free AI tutor",
+      "value": "free AI tutor - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.e20bf3652cd69e5fe7",
+      "source": "free AI tutor alternative",
+      "value": "free AI tutor alternative - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.f6c2aa0f0bb0533403",
+      "source": "free AI tutor by subject",
+      "value": "free AI tutor by విషయం"
+    },
+    {
+      "key": "site.f7db18e45d310a3740",
+      "source": "free AI tutor compared",
+      "value": "free AI tutor compared - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.bf9b3267d37a0ddd7b",
+      "source": "free AI tutor for homework and exams",
+      "value": "free AI tutor కోసం హోంవర్క్ and పరీక్షs"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "free AI tutor కోసం kids - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "free AI tutor కోసం self study - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "free AI tutor కోసం students - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "Free AI Tutor కోసం Students - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.0835d199794c83c769",
+      "source": "free flashcard builder",
+      "value": "free జ్ఞాపక కార్డు builder"
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "ఉచిత గెస్ట్ అభ్యాసం"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "ఉచిత ప్రజా AI అభ్యాస వేదిక"
+    },
+    {
+      "key": "site.79bfda09989e0f1bea",
+      "source": "free quiz maker",
+      "value": "free ప్రశ్నోత్తర పరీక్ష maker"
+    },
+    {
+      "key": "site.11d1f91ab01d7c51ff",
+      "source": "Free Trial",
+      "value": "Free Trial - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.b6091d355a84c8463b",
+      "source": "French airport conversation",
+      "value": "ఫ్రెంచ్ విమానాశ్రయ సంభాషణ"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "From Facebook ప్రశ్నోత్తర పరీక్షలు and offline events to applied AI అభ్యాసం infraనిర్మాణం."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "From inspir.app to inspirఅభ్యాసం.com - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "From student community to AI అభ్యాసం infraనిర్మాణం"
+    },
+    {
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "బ్లాగ్ నుంచి"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "Front: \"Why does spaced పునఃసమీక్ష work better than cramming?\" - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.ca96a06d69633b2a8e",
+      "source": "Full AI-readable index",
+      "value": "Full AI-readable index - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "Funded access మార్గంs"
+    },
+    {
+      "key": "site.e32e40425dc912fbf0",
+      "source": "Gamification",
+      "value": "గేమిఫికేషన్"
+    },
+    {
+      "key": "site.022187cef1321d7ae7",
+      "source": "Gamify learning while keeping real understanding at the center.",
+      "value": "Gamify అభ్యాసం while keeping real understanding at the center. - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.0677f2964259bc8d3a",
+      "source": "Gamify study while preserving meaningful learning evidence.",
+      "value": "Gamify study while preserving meaningful అభ్యాసం ఆధారాలు."
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "ఏదేనైనా విషయంపై లక్ష్యచేసిన బహుళ ఎంపిక ప్రశ్నావళిని రూపొందించండి మరియు ప్రతి జవాబు తరువాత వివరణలను సమీక్షించండి."
+    },
+    {
+      "key": "site.a33b40336357d4d6c4",
+      "source": "Generate a quick practice quiz",
+      "value": "Generate a quick అభ్యాసం ప్రశ్నోత్తర పరీక్ష"
+    },
+    {
+      "key": "site.ac7bcef6d0cbdeff63",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "ప్రయత్నం, ఫలితాలు, అడ్డంకులు, విజయాలు మరియు దృష్టి కేంద్రీకరించిన ప్రణాళికతో వారపు లేదా నెలవారీ అభ్యాస నివేదికను రూపొందించండి."
+    },
+    {
+      "key": "site.ca95d14604f30afdba",
+      "source": "Generate and shape original ideas",
+      "value": "మూల ఆలోచనలను సృష్టించి రూపొందించండి"
+    },
+    {
+      "key": "site.79443e8e2ae25af484",
+      "source": "Generate and shape original ideas.",
+      "value": "Generate and shape original ఆలోచనలు."
+    },
+    {
+      "key": "site.0e2b94f596aa9eac3f",
+      "source": "Generate exactly 10 MCQs, present one at a time, grade server-side, and review only after answers.",
+      "value": "Generate exactly 10 MCQs, present one at a time, grade server-side, and పునఃసమీక్ష only after సమాధానంs."
+    },
+    {
+      "key": "site.3edf41d4f8c6c62215",
+      "source": "Generate exercises, answer key, grading notes, and follow-up practice.",
+      "value": "Generate exercises, సమాధానం key, grading notes, and follow-up అభ్యాసం."
+    },
+    {
+      "key": "site.90f1fb687b31c01ebe",
+      "source": "Generate ideas, shape them, test them, and turn creative curiosity into a useful next step.",
+      "value": "Generate ఆలోచనలు, shape them, test them, and turn creative curiosity into a useful తదుపరి step."
+    },
+    {
+      "key": "site.59cd34b52535f0d6a3",
+      "source": "Generate mixed practice worksheets",
+      "value": "మిశ్రమ అభ్యాస వర్క్‌షీట్‌లను రూపొందించండి"
+    },
+    {
+      "key": "site.541db5f77fff1f5d04",
+      "source": "Generate options",
+      "value": "Generate options - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.0c3778cab048c75aa8",
+      "source": "Generate pairs, scramble practice, check answers, and explain misses.",
+      "value": "Generate pairs, scramble అభ్యాసం, check సమాధానంs, and explain తప్పిన కార్డ్‌లు."
+    },
+    {
+      "key": "site.fd3f10448e52c851f1",
+      "source": "Generated soundscapes for calm study",
+      "value": "ప్రశాంతమైన అధ్యయనం కోసం రూపొందించబడిన సౌండ్‌స్కేప్‌లు"
+    },
+    {
+      "key": "site.d12e883ae7e6ec948a",
+      "source": "Generating ideas, interpreting art, hearing structure in music, and making concepts memorable.",
+      "value": "Generating ఆలోచనలు, interpreting art, hearing నిర్మాణం in music, and making భావనs memorable."
+    },
+    {
+      "key": "site.8f51299e03ff916b88",
+      "source": "Geography Explorer",
+      "value": "భూగోళ పరిశోధకుడు"
+    },
+    {
+      "key": "site.5998c2c45202f436f9",
+      "source": "Geography Explorer AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Geography Explorer AI అభ్యాస విధానం అనేది నిష్క్రియంగా సమాధానాలు సేకరించకుండా, నేర్చుకోవడానికి AIని ఉపయోగించే కేంద్రీకృత మార్గం. ఈ విధానం ఒక నిర్దిష్ట పనిని చుట్టూ నిర్మించబడింది: అన్వేషించండి countries, cities, rivers, climates, migration, resources, and how geography shapes life."
+    },
+    {
+      "key": "site.f282838e19ff9ed78c",
+      "source": "Geography Explorer AI Learning Mode: practical guide",
+      "value": "Geography Explorer AI అభ్యాస విధానం: ప్రాయోగిక మార్గదర్శి"
+    },
+    {
+      "key": "site.103db26385c1a75bb1",
+      "source": "Geography Explorer prompts and study loop",
+      "value": "Geography Explorer సూచనలు మరియు అధ్యయన లూప్"
+    },
+    {
+      "key": "site.7a17689b0e1f8cfe53",
+      "source": "Get a hint without losing ownership",
+      "value": "Get a hint without losing ownership - తెలుగులో నేర్చుకునే సందర్భం"
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "అధ్యయన షెడ్యూల్ పొందండి, బలహీన ప్రాంతాలపై మీరే ప్రశ్నోత్తర పరీక్ష చేసుకోండి, తప్పులను మళ్లీ మళ్లీ సమీక్షించేందుకు జ్ఞాపక కార్డులుగా మార్చండి."
+    },
+    {
+      "key": "site.6a7d454438d4bec651",
+      "source": "Get examples at your level",
+      "value": "మీ స్థాయి కోసం ఉదాహరణలు పొందండి"
+    },
+    {
+      "key": "site.797fdec6173bdf1a9b",
+      "source": "Get examples at your level.",
+      "value": "Get ఉదాహరణలు at your level."
+    }
+  ]
+}

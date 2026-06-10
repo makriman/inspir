@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, SearchCheck, Sparkles, UsersRound } from "lucide-react";
 import {
   ArrowLink,
@@ -13,6 +13,7 @@ import {
   audiencePath,
   getAudiencePages,
 } from "@/lib/content/audiences";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -25,7 +26,7 @@ import {
 const description =
   "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Learning for Students, Parents, and Teachers",
   description,
   alternates: metadataAlternates("/for"),
@@ -55,6 +56,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/for");
+}
 
 export default function AudienceHubPage() {
   const pages = getAudiencePages();

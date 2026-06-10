@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Greek",
+  "locale": "el",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "Ένα καθαρό μέτωπο που ζητάει μια ιδέα."
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "Μια κοινή παγίδα που προειδοποιεί για ένα πιθανό λάθος."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "Μια σύντομη πλάτη που ολοκληρώνει τη σκέψη."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "Μια υπόδειξη που βοηθάει χωρίς να τα χαρίζει όλα."
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "Μια επιλογή κριτικής τόσο χαμένες κάρτες επιστρέφουν νωρίτερα."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "Μια απλή ροή εργασιών καρτών μνήμης"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "Μια πιο δυνατή κάρτα ζητάει ανάκληση:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "Μια χρήσιμη κάρτα ρωτάει ένα πράγμα. Δεν πρέπει να κρύβει πέντε ερωτήσεις μέσα σε μία παραμικρή στιγμή. Θα πρέπει να είναι αρκετά συγκεκριμένη για να απαντήσει, αλλά όχι τόσο στενή που γίνεται χωρίς νόημα."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "Μια αδύναμη κάρτα ανάκλησης AI λέει:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "ενεργή ανάκληση"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "Προσθέστε υποδείξεις χωρίς να δώσει μακριά την απάντηση"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI μπορεί να βοηθήσει να κάνει τις κάρτες μνήμης γρηγορότερα, αλλά η μάθηση εξακολουθεί να προέρχεται από την ανάκτηση. Αν το εργαλείο γράφει τις κάρτες και ο μαθητής ποτέ δεν αγωνίζεται να απαντήσει, σχεδόν τίποτα δεν έχει αλλάξει. Η χρήσιμη έκδοση μετατρέπει τις νότες σε συγκεντρωμένες προτάσεις, τότε κάνει τον μαθητή να θυμάται πριν αποκαλύψει την απάντηση."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "Μπορεί να χωρίσει τις ευρείες ιδέες σε μικρότερες κάρτες, να προσθέσει παραδείγματα, και να προσδιορίσει παγίδες που μπορεί να αστοχήσει ένας μαθητής."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI κάρτες μνήμης και ενεργή ανάκληση: πώς να θυμηθείτε περισσότερα"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "να εφαρμόσει μια έννοια σε ένα μικρό παράδειγμα."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "Ζητήστε μία-ιδέα κάρτες με υπαινιγμούς και κοινές παγίδες."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Πίσω: \"Η διασπορά της μνήμης αναγκάζει να αναπαραστήσει την απάντηση μετά από κάποιο ξεχασμένο, το οποίο ενισχύει αργότερα την ανάκληση.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "να συγκρίνει δύο ιδέες·"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "καθορίζει έναν όρο·"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "Διαγραφή καρτών που είναι πολύ ευρύ ή προφανές."
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "Μην τα ξανασκεφτείτε όλα εξίσου."
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "Ήρεμα, σπρώξε το αργότερα."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "να εξηγήσει μια αιτία·"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "Οι κάρτες μνήμης είναι ένας από τους απλούστερους τρόπους για να το κάνουμε αυτό."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "Είναι καλύτερο για την ανάκτηση, λεξιλόγιο, ορισμούς, τύπους, διακρίσεις και βασικά παραδείγματα. Είναι πιο αδύναμα όταν ο μαθητής δεν έχει καταλάβει ποτέ την ιδέα."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Θυμηθείτε κάρτες λειτουργούν καλύτερα όταν δοκιμάζουν μια ιδέα κάθε φορά, αποκαλύπτουν απαντήσεις μόνο μετά από προσπάθεια, και αναθεώρηση χαμένες κάρτες νωρίτερα."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "Για μια βαθύτερη διαδρομή, διαβάστε τον οδηγό του Builder και τον οδηγό της κάρτας του Builder και το κύκλο μελέτης. Ο στόχος δεν είναι ένα όμορφο κατάστρωμα. Ο στόχος είναι να θυμάστε περισσότερα όταν οι νότες έχουν φύγει."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "Για παράδειγμα:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "Μπροστινό: \"Γιατί η διαστημική κριτική λειτουργεί καλύτερα από το να γράφεις;\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "Δύσκολο. Ανασκόπηση μετά από μια σύντομη καθυστέρηση."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "\"Σκέψου να ξεχάσεις και να ανακτήσεις.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "Μια κακή υπόδειξη είναι η απάντηση μεταμφιεσμένη. Μια καλή υπόδειξη περιορίζει τον χώρο αναζήτησης."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "προσδιορίζει ένα κοινό λάθος·"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "Αν μια κάρτα συνεχίσει να αποτυγχάνει, μην την επαναλάβετε μόνο. Ρωτήστε γιατί είναι δύσκολο. Χρησιμοποιήστε τη Σοκρατική Οδηγίες για να αποκαλύψετε την παρανόηση, Βοηθό μαθηματικών βημάτων για διαδικαστικά κενά, ή τη βιβλιοθήκη AI εκμάθησης προτροπή για να βρείτε μια καλύτερη ώθηση μελέτης."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "Η κάρτα μνήμης inspir είναι σχεδιασμένη γύρω από αυτό το ενεργό βρόχο ανάκλησης: φτιάξτε μια τράπουλα, δοκιμάστε το μπροστινό μέρος, αποκαλύψτε την απάντηση, βαθμολογήστε την ανάκληση σας, και ελέγξτε τις αστοχίες μέχρι να κολλήσει η ιδέα."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "Αστόχησα, σύντομα θα το ανασκοπήσω."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "Ένα λάθος που κάνουν οι μαθητές είναι η μεταχείριση κάθε κάρτας το ίδιο. Αν γνωρίζετε μια κάρτα αμέσως, την αναθεώρηση και πάλι αύριο μπορεί να χάσετε χρόνο. Αν χάσετε μια κάρτα, περιμένοντας μια εβδομάδα μπορεί να είναι πάρα πολύ μεγάλη."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "Ζεύγος καρτών μνήμης με κατανόηση"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "Επικόλληση ένα μικρό κομμάτι σημειώσεις στο Foundation κάρτα Builder."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "Φωτοσύνθεση: τα φυτά που χρησιμοποιούν για την παρασκευή τροφίμων."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "Να θυμάσαι ειλικρινά."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "Το να τις θυμάσαι αργότερα είναι η πραγματική δοκιμασία."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "να θυμάστε μια ακολουθία·"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "Ανασκόπηση χωρίς να κοιτάξουμε πίσω."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "Τα δυνατά χαρτιά συχνά περιλαμβάνουν:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "δεξιότητες μελέτης"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Αυτό το στοιχείο βοηθά τον μαθητή να ξεκινήσει χωρίς να αφαιρέσει την πράξη της μνήμης. inspir κάρτα μνήμης Builder έχει σχεδιαστεί για αυτό το αποκαλυπτικό-και-rate βρόχο: δοκιμάστε πρώτα, αποκαλύψτε δεύτερο, ειλικρινά ποσοστό, στη συνέχεια να φέρει αδύναμες κάρτες πίσω νωρίτερα."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Αντί να κοιτάτε την απάντηση, προσπαθείτε να την βγάλετε από τη μνήμη."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "Ο μαθητής πρέπει να κάνει ακόμα τη μνήμη."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "Το δεύτερο φύλλο κάνει τον μαθητή να ανακτήσει μια σχέση, όχι απλά να αναγνωρίσει μια πρόταση. Καλές κάρτες συνήθως επικεντρώνονται σε μια από αυτές τις θέσεις εργασίας:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "Το σημαντικό είναι ότι το πρόγραμμα αναθεώρησης σας ανταποκρίνεται στη μνήμη αντί να αντιμετωπίζει το κατάστρωμα σαν στατική λίστα."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "Δοκιμάστε το στο Foundation Card Builder. Αν πρέπει να καταλάβετε το θέμα πριν από την κατασκευή καρτών, ξεκινήστε από Μάθετε οτιδήποτε. Αν θέλετε πίεση μετά την αναθεώρηση των καρτών, μετακινηθείτε στο Quiz Me On Trivia ή Viva Πρακτική."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "Μετατρέπουν σημειώσεις σε καλύτερα χαρτιά"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "Να μετατρέψετε επαναλαμβανόμενες αστοχίες σε ερώτηση για Μάθετε Οτιδήποτε."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "Χρησιμοποιήστε αυτόν τον βρόχο:"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Χρησιμοποιήστε τρεις βαθμολογίες:"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Ποιος είναι ο ρόλος της χλωροφύλλης στη φωτοσύνθεση;"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "Τι κάνει μια καλή κάρτα ανάκλησης"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "Όταν επικολλάτε σημειώσεις σε AI, ζητήστε του να χωρίσει τις ευρείες ιδέες σε αυτές τις εργασίες. Μια τράπουλα με 18 συγκεκριμένα φύλλα είναι συνήθως καλύτερη από μια τράπουλα με 5 γιγάντιες κάρτες που το καθένα περιέχει μια ολόκληρη παράγραφο."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "Όπου το AI βοηθά"
+    }
+  ]
+}

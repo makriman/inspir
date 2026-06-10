@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Tamil",
+  "locale": "ta",
+  "namespace": "route:learn",
+  "sourceHash": "6b67cb58949582f0d63c0de58034de706fb1def479bd47caff347771e08a7cc3",
+  "part": {
+    "index": 5,
+    "total": 6
+  },
+  "entries": [
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "நேரப் பயணம்"
+    },
+    {
+      "key": "site.b5de165cd236398a33",
+      "source": "timed test",
+      "value": "நேர வரையறையுள்ள தேர்வு"
+    },
+    {
+      "key": "site.c1f2f784477421cc0f",
+      "source": "Tiny explanation, example, user action, specific feedback, targeted repair or progress, recap, and mastery checkpoint.",
+      "value": "சிறிய விளக்கம், எடுத்துக்காட்டு, பயனர் செயல், குறிப்பிட்ட கருத்து, இலக்கு திருத்தம் அல்லது முன்னேற்றம், சுருக்கம், மற்றும் திறன் சரிபார்ப்பு."
+    },
+    {
+      "key": "site.a31ae9a6964e2f0a17",
+      "source": "Trace chains, compare importance, discuss consequences, and ask counterfactual questions.",
+      "value": "காரணத் தொடர்களைப் பின்தொடருங்கள், முக்கியத்துவத்தை ஒப்பிடுங்கள், விளைவுகளை விவாதியுங்கள், மாற்றாக நடந்திருந்தால் என்ன என்பதைக் கேளுங்கள்."
+    },
+    {
+      "key": "site.895a7dace1b9ada67b",
+      "source": "Trace why events happened",
+      "value": "இருந்த காரணங்களைத் தொடர் வினை மூலம் பின்தொடர"
+    },
+    {
+      "key": "site.7ac967e6972ee5e7f5",
+      "source": "Track attempts, shrink goals when needed, and repair broken streaks.",
+      "value": "முயற்சிகளை கண்காணிக்கவும், தேவைப்பட்டால் இலக்குகளைச் சிறிதாக்கவும், முறிந்த தொடர்ச்சிகளைச் சரிசெய்யவும்."
+    },
+    {
+      "key": "site.c675fc274ad17a1cb4",
+      "source": "Track deadlines and next actions",
+      "value": "காலக்கெடு மற்றும் அடுத்தகட்ட நடவடிக்கைகளைக் கண்காணிக்கவும்"
+    },
+    {
+      "key": "site.af26deb023c5d0063d",
+      "source": "Track essay drafting focus",
+      "value": " கட்டுரையுரைக்கும் கவனத்தை கண்காணி"
+    },
+    {
+      "key": "site.d0d8eff92e1afc3d45",
+      "source": "Track essay outline work",
+      "value": "கட்டுரை வரைவுப் பணியைக் கண்காணியுங்கள்"
+    },
+    {
+      "key": "site.fd1f501b443adac02b",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "படிக்கும் தொடர்ச்சியை கண்காணிக்கவும், தவறவிட்ட நாட்களைச் சரிசெய்யவும், நிஜ வாழ்க்கையிலும் கடைப்பிடிக்கக்கூடிய குறைந்தபட்ச படிப்புப் பழக்கத்தை உருவாக்கவும்."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "ஒரு காலப்பகுதி வழியாக பயணம் செய்யுங்கள்"
+    },
+    {
+      "key": "site.fc86028b09428f3fbc",
+      "source": "Treat each turn as collaborative work: draft, critique, revise, ask for a decision, update open questions, and hand the next useful move to either the user or AI. Challenge weak ideas when the selected mode calls for it.",
+      "value": "ஒவ்வொரு முறையையும் கூட்டுப்பணியாக நடத்துங்கள்: வரைவு உருவாக்குதல், விமர்சித்தல், திருத்துதல், முடிவு கேட்குதல், திறந்த கேள்விகளை புதுப்பித்தல், அடுத்த பயனுள்ள நகர்வை பயனருக்கோ AI-க்கோ ஒப்படைத்தல். தேர்ந்தெடுத்த முறை வேண்டுமெனில் பலவீனமான யோசனைகளை சவால் செய்யுங்கள்."
+    },
+    {
+      "key": "site.93f978228f89334d15",
+      "source": "true false",
+      "value": "சரி தவறு"
+    },
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ஒரு கருத்தை எளிதாக விளக்க முயற்சியுங்கள். உங்கள் டியூட்டர் குறைவுகளை கண்டுபிடித்து, கேள்விகளை எழுப்பி, விளக்கத்தை மீண்டும் கட்டியெழுப்ப உதவுகிறது."
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "வீட்டுப்பாடம் பயிற்சியாளர்-ஐ முயற்சிக்கவும்"
+    },
+    {
+      "key": "site.cf66660c72e079e266",
+      "source": "Try this prompt in {value1}: {value2}",
+      "value": "இந்தத் தூண்டலை {value1}-இல் முயற்சிக்கவும்: {value2}"
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "பரந்த தலைப்பை ஆராய்ச்சி கேள்விகளாக, தேடல் சொற்களாக, வரைபடங்களாக மற்றும் மூல குறிப்புகளாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "ஒரு கருத்து, வாதம், பிரச்சனை, உரை, அல்லது முடிவை கவனமாகக் கேட்கப்பட்ட கேள்விகளின் சங்கிலியாக மாற்றுங்கள். உங்கள் நண்பர் ஒவ்வொரு பதிலையும் கவனித்து, முன்னிலை மற்றும் காலிச் சோம்பல்களை குறிப்பு செய்து, உங்கள் இறுதி சுருக்கத்திற்கு வழி காட்டுவார். முயற்சி செய்யவும்: \"எனக்கு வாய்ப்பு செலவு (opportunity cost) புரிந்துகொள்ள உதவவும்.\""
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "பாடத்திட்டத்தை ஒரு படிப்பு திட்டமாக மாற்றவும்"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "ஒரு தலைப்பு, பாடத்திட்டம் அல்லது குறிப்புகளைப் பிரிவுகள், நேரம், மதிப்பெண் வழிகாட்டுதல் மற்றும் மறுஆய்வு படிகளுடன் கூடிய யதார்த்தமான பயிற்சித் தேர்வாக மாற்றவும்."
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "செயல்பாட்டை அடுத்தகட்ட நடவடிக்கைகளாக மாற்றவும்"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "கருத்துகளை கதைகள், பாத்திரங்கள், முரண்பாடுகள் மற்றும் நினைவாகும் காட்சிகளாக மாற்றுக."
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "வரைபடங்கள், உடல் அமைப்புகள், வரைபடங்கள், பணிப்பாய்வுகள் அல்லது ஆய்வக அமைப்புகளை குறிப்புகள் மற்றும் விடை சரிபார்ப்புகளுடன் பெயரிடல் பயிற்சியாக மாற்றவும்."
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "கருத்துக்களை மைல்கல்லாக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "எதிர்பார்ப்புகளை சிறிய, மீண்டும் செய்யக்கூடிய கற்றல் பழக்கங்களில் மாற்றுங்கள், அமர்வுகள், பரிசுகள் மற்றும் மீட்பு திட்டங்களுடன்."
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "அதை நினைவுக் கார்டுகளாக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "கற்றலைச் சிறிய கட்டமைக்கப்பட்ட சவால்களாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "பாடங்களை திருப்புதல் வழிகாட்டியாக மாற்றவும்"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "தவறுகளை மீளாய்வு சுழற்சிகள் ஆக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "எனது குறிப்புகளை திருப்புதல் தாளாக மாற்றவும்"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "குறிப்புகளை சொல்லகராதி, கருத்துக்கள், நபர்கள்/நிகழ்வுகள், சூத்திரங்கள், எடுத்துக்காட்டுகள் அல்லது காரண-விளைவு ஜோடிகளுக்கான பொருத்துதல் விளையாட்டுகளாக மாற்றவும்."
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "குறிப்புகள் அல்லது தலைப்புகளை பதில்கள், இரகசியங்கள் மற்றும் மதிப்பாய்வு அழைப்புகளுடன் தெளிவான ஃபிளாஷ்கார்ட்களாக மாற்றவும்."
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "முன்னேற்றத்தை நிலைகளாகவும் தேடல்களாகவும் மாற்றவும்"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "வாசிப்பை தேடல்களாக மாற்றவும்"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "சிதறிய குறிப்புகளை கோப்புறைகள், குறிச்சொற்கள், சுருக்கங்கள், இணைப்புகள் மற்றும் நினைவுபடுத்துவதை எளிதாக்கும் மறுஆய்வுச் செயல்களாக மாற்றவும்."
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "படிப்புச் செயல்பாடுகள், வினாடி வினா முடிவுகள், குறிப்புகள் மற்றும் நேர அளவீடுகளைப் பயன்படுத்தி, போக்குகள் மற்றும் அடுத்தகட்ட நடவடிக்கைகளைக் கொண்ட கட்டுப்பாட்டுப் பலகையாக மாற்றவும்."
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "படிப்பை சவாலாக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "உரையைச் சுருக்கமான, நினைவில் நிற்கும் படிப்பு பொருளாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "சரிசெய்யப்பட்ட தவறை பின்னர் பார்க்க நினைவுக் கார்டு அல்லது short checklist ஆக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "விளக்கத்தை செயலில் நினைவுகூர்தல் கார்டுகள் ஆக மாற்றுங்கள்: ஒரு conceptual கார்டு, ஒரு எடுத்துக்காட்டு கார்டு, ஒரு தவறான புரிதல் கார்டு."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "மிகக் கடினமாகத் தவறிய கேள்வியை நினைவுக் கார்டாக மாற்றி பின்னர் மீளாய்வு செய்யுங்கள்."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "இந்த missed கேள்விகள்-ஐ concept, formula, definition, எடுத்துக்காட்டு எனக் குழுவாக்கப்பட்ட நினைவுக் கார்டுகளாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "இந்த விரிவுரையை கார்னெல் குறிப்புகளாக மாற்றவும்"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "இந்த குறிப்பை கேள்வி & பதிலாக மாற்றவும்"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "தெளிவில்லாத நோக்கங்களை அடையக்கூடிய தினசரி படிப்பு இலக்குகளாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "சொற்பொருளை நிலைகளாக மாற்றுங்கள்"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "படிப்படையான தர்க்கமும் கற்றவரின் பங்கேற்பும் கொண்டு கணிதம் கற்பிக்கவும்."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "தனிப்பயிற்சி"
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "கடினமான தலைப்பை புரிந்துகொள்ளுங்கள்"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "historical சூழல்-ஐப் புரிந்துகொள்ளுங்கள், perspective-ஐ கேள்விக்குட்படுத்துங்கள், கூற்றுகள்-ஐ ஒப்பிடுங்கள், ஒப்புமைச் செயற்பாடு-ஐ ஆவணப்படுத்தப்பட்டது fact-இலிருந்து பிரியுங்கள்."
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "கோடை புரிந்து கொள்ளவும், பிழைகள் சரி பாருங்கள், கருத்துக்களை கற்றுக்கொள்ளவும், சிறிய திட்டங்களை படிப்படியாக உருவாக்கவும்."
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "இடங்கள், வரைபடங்கள் மற்றும் மக்கள் பற்றி புரிந்து கொள்ளுங்கள்"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "உரிமைகள், அரசு மற்றும் சமுதாயத்தை புரிந்துகொள்ளுங்கள்"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "ஒலி, தாளம் மற்றும் இசை இணக்கத்தை புரிந்து கொள்"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "ஒரு பதில் ஏன் சரியானது என்பதை புரிந்துகொள்ளுங்கள்"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "காரணங்கள், தூண்டுதல்கள், விளைவுகள் மற்றும் மாற்று சாத்தியங்கள் மூலம் வரலாற்று நிகழ்வுகளை ஆராய்க."
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "50/10 இடைவேளைகளைப் பயன்படுத்தவும்"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "பயன்படுத்துங்கள்: a compact table for given பதில், correct கருத்து, தவறான புரிதல், and next நடவடிக்கை."
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "பயன்படுத்துங்கள்: a credibility scorecard and கேள்விகள் to investigate next."
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "பயன்படுத்துங்கள்: a deep work contract with outcome, block plan, rules, and மீளாய்வு."
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "பயன்படுத்துங்கள்: a table with front, back, குறிப்பு, and common trap."
+    },
+    {
+      "key": "site.b09316e95362266ac0",
+      "source": "Use AI as a study workflow, not a shortcut.",
+      "value": "பயன்படுத்துங்கள்: AI as a study பணிச்செயல்முறை, not a shortcut."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "குறிப்புகள், step சரிபார்ப்புகள், math reasoning, எழுத்து பின்னூட்டம் ஆகியவற்றுக்காக AI வீட்டுப்பாட வழிகாட்டுதல் பயன்படுத்துங்கள்; final work உங்களுடையதாகவே இருக்கட்டும்."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "சூழல், ஆதாரம், arguments, perspectives ஆகியவற்றை ஆராய AI time travel, historical conversations, விவாதம் practice பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "பயன்படுத்துங்கள்: badge names, criteria, tiers, and proof எடுத்துக்காட்டுகள்."
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "பயன்படுத்துங்கள்: before/after snippets, மீள்பார்வை priorities, and concise rationale."
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "பயன்படுத்துங்கள்: calendars, checklists, and risk flags."
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "பயன்படுத்துங்கள்: case file, choices, outcome, and கற்றல் note."
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "பயன்படுத்துங்கள்: challenge கார்டுகள், points, rounds, and debrief."
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "பயன்படுத்துங்கள்: citation entries plus a missing-fields checklist."
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "பயன்படுத்துங்கள்: commitment கார்டுகள், சரிபார்க்க-in scripts, and recovery plans."
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "பயன்படுத்துங்கள்: compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening கேள்விகள், then in-character exchanges with occasional கூற்று குறிச்சொற்கள் and debrief on request."
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "பயன்படுத்துங்கள்: compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices."
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "பயன்படுத்துங்கள்: compact workroom sections such as Shared artifact, AI contribution, பயனர் நடவடிக்கை, Inline comments, Decision log, Open கேள்விகள், and Next action. Show suggested edits or diffs before merging when rewriting."
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "பயன்படுத்துங்கள்: comparison tables and next-step experiments."
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "பயன்படுத்துங்கள்: concise கூற்றுகள், ஆதாரம் தூண்டல்கள், and a final விவாதம் recap when asked."
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "பயன்படுத்துங்கள்: concise நிரல் snippets, comments only when useful, and சோதனை cases."
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "பயன்படுத்துங்கள்: concise drawing instructions, குறிக்க lists, and visual checkpoints."
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "பயன்படுத்துங்கள்: Cornell sections: cues, குறிப்புகள், சுருக்கம், and recall சரிபார்ப்புகள்."
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "பயன்படுத்துங்கள்: course கார்டுகள், resource lists, and weekly workload tables."
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "பயன்படுத்துங்கள்: dashboard கார்டுகள், trend குறிப்புகள், weak spots, and next actions."
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "பயன்படுத்துங்கள்: deadline tables, risk flags, and next actions."
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "பயன்படுத்துங்கள்: விவாதம் கார்டுகள், concise rebuttals, and occasional scorekeeping of argument quality."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "மிக வலுவான கூற்று மற்றும் மிக வலுவான counterclaim-ஐ ஒப்பிட விவாதம் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "பயன்படுத்துங்கள்: diagnosis, better மாதிரி, why it works, and one சரிபார்க்க கேள்வி."
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "பயன்படுத்துங்கள்: diagrams in text, role explanations, and real-world scenarios."
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "பயன்படுத்துங்கள்: equations, aligned steps, and short why-this-works குறிப்புகள்."
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "பயன்படுத்துங்கள்: examiner கேள்விகள், மாதிரி பதில் shapes, and பின்னூட்டம் scorecards."
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "பயன்படுத்துங்கள்: எடுத்துக்காட்டுகள், compare அமைப்புகள், ask application கேள்விகள், and separate facts from opinions."
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "பயன்படுத்துங்கள்: folders, tags, note summaries, இணைப்புகள், and மீளாய்வு actions."
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "பயன்படுத்துங்கள்: formulas, tables, and target score plans."
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "பயன்படுத்துங்கள்: forum-ready posts, reply drafts, and discussion summaries."
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "பயன்படுத்துங்கள்: goal கார்டுகள், priority, time estimate, blocker, and done criteria."
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "பயன்படுத்துங்கள்: group agenda, roles, rounds, resources, and follow-up tasks."
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "பயன்படுத்துங்கள்: group roles, timer rounds, சரிபார்க்க-ins, and debrief தூண்டல்கள்."
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "பயன்படுத்துங்கள்: habit recipe, obstacle plan, and 7-day experiment."
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "பயன்படுத்துங்கள்: குறிப்புகள், checkpoints, and small எடுத்துக்காட்டுகள் rather than full final answers."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "கற்றலை பதில் copying ஆக மாற்றாமல் குறிப்புகள், step சரிபார்ப்புகள், எழுத்து பின்னூட்டம் பயன்படுத்துங்கள்."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "பயன்படுத்துங்கள்: hypothesis, materials, method, observation, and explanation sections when useful."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "பயன்படுத்துங்கள்: கருத்து menus, selection criteria, and next-step sketches."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "பயன்படுத்துங்கள்: in-character dialogue and short வழிகாட்டுதல் குறிப்புகள்."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "பயன்படுத்துங்கள்: key takeaways, outline, definitions, and மீளாய்வு கேள்விகள்."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "பயன்படுத்துங்கள்: leaderboard rules, scoring, safeguards, and reflection."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "பயன்படுத்துங்கள்: level tables, XP rules, quest கார்டுகள், and anti-grind safeguards."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "பயன்படுத்துங்கள்: narrative to make concepts memorable."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "பயன்படுத்துங்கள்: nested bullets, tables, or Mermaid text when உதவிful."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "பயன்படுத்துங்கள்: numbered locations, images, and recall checkpoints."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "பயன்படுத்துங்கள்: objectives, summaries, எடுத்துக்காட்டுகள், traps, கேள்விகள், and next மீளாய்வு."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "பயன்படுத்துங்கள்: observation, interpretation, ஆதாரம், and next-கேள்வி sections."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "பயன்படுத்துங்கள்: pair banks, scrambled lists, பதில் key, and மீளாய்வு குறிப்புகள்."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "பயன்படுத்துங்கள்: place கார்டுகள், comparison tables, and வரைபடம் தூண்டல்கள்."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "பயன்படுத்துங்கள்: practical audio tips and study-session setup குறிப்புகள்."
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "பயன்படுத்துங்கள்: quests, levels, badges, and boss கேள்விகள்."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "வாசிப்பதற்கு மழையின் ஒலியைப் பயன்படுத்தவும்"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "திருப்புதல் செய்ய மழை ஒலிகளைப் பயன்படுத்தவும்"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "பயன்படுத்துங்கள்: reflection தூண்டல்கள், learner strengths, and one next experiment."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "பயன்படுத்துங்கள்: report sections: wins, ஆதாரம், blockers, lessons, next week."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "பயன்படுத்துங்கள்: research கேள்விகள், மூலம் matrices, and synthesis குறிப்புகள்."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "பயன்படுத்துங்கள்: resource கார்டுகள், audience குறிப்புகள், and usage tips."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "பயன்படுத்துங்கள்: மீளாய்வு queues, due dates, and confidence ratings."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "பயன்படுத்துங்கள்: scorecards for தெளிவு, அமைப்பு, ஆதாரம், and delivery குறிப்புகள்."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "பயன்படுத்துங்கள்: short focus plans, checklists, and post-session reflection தூண்டல்கள்."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "பயன்படுத்துங்கள்: short sections, எடுத்துக்காட்டுகள், analogies, and GFM-friendly lists or tables when they உதவி."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "பயன்படுத்துங்கள்: short summaries, மேற்கோள்-light references, and கேள்வி sets."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "பயன்படுத்துங்கள்: short supportive குறிப்புகள் and practical next actions."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "வாசித்தல், எழுதுதல், திருத்துதல் அல்லது சிக்கல்களைத் தீர்க்கும் போது கவனச்சிதறலைக் குறைக்க எளிய சூழல் ஒலி முன்னமைவுகளைப் பயன்படுத்தவும்."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "பயன்படுத்துங்கள்: simple notation, எடுத்துக்காட்டுகள், and practice தூண்டல்கள்."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "பயன்படுத்துங்கள்: simple tables, cause-effect chains, and caveat குறிப்புகள்."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "பயன்படுத்துங்கள்: simple-language rewrites and gap checklists."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "வரைதலை ஒரு கற்றல் முறையாகப் பயன்படுத்துங்கள்: வரைபடங்களைத் திட்டமிடுங்கள், தோராயமான வரைபடங்களுக்குப் பெயரிடுங்கள், செயல்முறைகளை விளக்குங்கள் அல்லது குழப்பமான யோசனையைத் தெளிவான காட்சியாக மாற்றுங்கள்."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Socratic கேள்விகள் பயன்படுத்துங்கள்"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "பயன்படுத்துங்கள்: sound recommendations and focus setup குறிப்புகள்."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "பயன்படுத்துங்கள்: stakeholder tables and balanced pro/con analysis."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "பயன்படுத்துங்கள்: STAR or situation-action-result frameworks when appropriate."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "பயன்படுத்துங்கள்: story beats plus கற்றல் குறிப்புகள்."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "பயன்படுத்துங்கள்: streak status, tiny action, recovery rule, and weekly reflection."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "பயன்படுத்துங்கள்: tables with word, meaning, எடுத்துக்காட்டு, memory hook, and practice தூண்டல்."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "பயன்படுத்துங்கள்: tables, எளிய மொழி takeaways, and caution குறிப்புகள்."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "பயன்படுத்துங்கள்: target language first, then brief பின்னூட்டம் in the learner's preferred ஆதரிக்க language."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "பயன்படுத்துங்கள்: task boards, deadlines, and next-action lists."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "பயன்படுத்துங்கள்: task கார்டுகள், elapsed time, குறிப்புகள், and follow-up block suggestions."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "பயன்படுத்துங்கள்: சோதனை sections, timing, பதில் keys, rubrics, and மீளாய்வு plans."
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "exam date, பாடத்திட்டம், available time, பலவீனப் பகுதிகள் ஆகியவற்றைப் பயன்படுத்தி real life-ஐத் தாங்கக்கூடிய திட்டம் உருவாக்குங்கள்."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "பயன்படுத்துங்கள்: the Feynman technique to reveal gaps and simplify understanding."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "பயன்படுத்துங்கள்: this compact format: Brief read: one sentence. வரைபடம் update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next கேள்வி: exactly one கேள்வி. For the first reply, use Target, Contract, and First கேள்வி."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "பயன்படுத்துங்கள்: thought experiments, argument maps, and balanced summaries."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "பயன்படுத்துங்கள்: timelines, cause layers, and consequence maps."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "பயன்படுத்துங்கள்: tree structures, node குறிச்சொற்கள், இணைப்புகள், and next-step தூண்டல்கள்."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "பயன்படுத்துங்கள்: unகுறிக்கed parts, குறிப்பு tiers, பதில் key, and மீளாய்வு தூண்டல்கள்."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "பயன்படுத்துங்கள்: visual vocabulary and வழிகாட்டப்பட்ட looking தூண்டல்கள்."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "பயன்படுத்துங்கள்: weekly plans, fallback plans, and tiny next actions."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "பயன்படுத்துங்கள்: work/break cycles, break menus, and return தூண்டல்கள்."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "பயன்படுத்துங்கள்: worksheet sections, பதில் keys, and difficulty குறிச்சொற்கள்."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "அமைப்பு, தெளிவு, ஆதாரம் குறித்து எழுத்து பின்னூட்டம் பயன்படுத்துங்கள்; final வரைவு தெளிவாக உங்களுடையதாகவே இருக்கட்டும்."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "உணர்வை ஏற்றுக்கொள்ளுங்கள், தடையை அடையாளம் காணுங்கள், சிறிய அடுத்த படியைத் தேர்வுசெய்யுங்கள்."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "காட்சி பகுப்பாய்வு"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "காட்சி கற்றல்"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "காட்சி வழி கற்றல்"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "விவா பயிற்சி"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "சொற்பிரிவு கட்டுமானி"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "குரலை காக்கும் பின்னூட்டம்"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "பலவீனப் பகுதி சுழற்சிகள்"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "வாராந்திர அறிக்கை"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "வாராந்திர அறிக்கைகள்"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "எடையிட்ட மதிப்பெண்"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "நாம் எந்த சாதனை அமைப்பை வடிவமைக்க வேண்டும்?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "நாமெதைப் பற்றிச் சிந்திக்கிறோம்?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "நாம் படிக்கப் போவது என்ன?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "இன்று நீங்கள் எந்த விஷயத்தில் ஆர்வமாக இருக்கிறீர்கள்?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "நீங்கள் சொல்ல தயாராயிருக்கிறீர்கள் என்ன?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "நீங்கள் என்ன ஆராய்கிறீர்கள்?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "நீங்கள் என்ன எழுதுகிறீர்கள்?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "எந்தக் கலைப் படைப்பு, கலைஞர், அல்லது பாணி?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "உங்களிடம் என்ன ஒப்படைப்புகள் உள்ளன?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "நாம் ஆராயும் பெரிய கேள்வி என்ன?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "எந்த தொழிலோ அல்லது ஆர்வத்தையோ நாம் ஆராய வேண்டும்?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "நாம் எந்த தமிழ்நாடு பாடத்திட்டத்தைப் பற்றி படிக்க வேண்டும்?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "நாம் எந்த கோடிங் தலைப்போ அல்லது பிழையோ சரிசெய்வதாக உள்ளோம்?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "எந்தக் கடமைக்கு பொறுப்புக்கூறல் தேவை?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "நாம் எந்த கருத்துக்களை வரைபடமாக காண்பிப்பது?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "நீங்கள் எந்தப் பாடங்கள் அல்லது தலைப்புகளை நிர்வகிக்கிறீர்கள்?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "எந்த வரைபடத்திற்கு பெயரிட பயிற்சி செய்ய வேண்டும்?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "எந்த நெருக்கடியை நாம் ஆய்வு செய்வது?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "இந்த உலகில் நீங்கள் அடுத்து என்ன செய்வீர்கள்?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "நீங்கள் என்ன நினைவில் வைத்துக் கொள்ள வேண்டுமென நினைக்கின்றீர்கள்?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "நீங்கள் என்ன படிக்க வேண்டும்?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "இன்று நீங்கள் எதைச் சாதிக்க விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "ஒரு நீதிமன்றம் என்ன செய்யும்?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "ஒரு தயாரிப்பு மேலாளர் என்ன செய்கிறார்?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "இந்த ஆய்வு என்ன காட்டுகிறது?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "நாம் எங்கு பொருளாதார கருத்தை அதிரடியாகச் செயல்படுத்த வேண்டும்?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "நீங்கள் எந்த பரீட்சைக்கு தயார் செய்து கொண்டிருக்கிறீர்கள்?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "எனக்கு என்ன இறுதி மதிப்பெண் தேவை?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "இந்த வாரம் என்ன நடந்தது?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "வரி மாற்றினால் என்ன நடக்கும்?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "வெப்பநிலையை மாற்றினால் என்ன நிகழும்?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "நீங்கள் எந்த பாடப்பண்பாட்டில் சிக்கியுள்ளீர்கள்?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "எந்த கருத்து குழப்பமாக அல்லது சந்தேகமாக தோன்றுகிறது?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "நீங்கள் எந்த நேர்காணலுக்காக தயார் ஆகிக்கொண்டிருக்கிறீர்கள்?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "அறிவு என்பது என்ன?"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "நீங்கள் எந்த வகையான சூழல் கவனத்தை விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "எ哪ாறு வகை வழக்கை நாங்கள் சிமுலேட் செய்ய வேண்டும்?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "இன்று நீங்கள் எந்த வகையான கவனத்தை விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "எந்தக் கற்றல் இலக்கை நிலைப்படுத்தும் அமைப்பாக மாற்ற வேண்டும்?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "நீங்கள் எந்த கற்றல் பழக்கத்தை விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "எந்த கற்றல் தருணத்தை நாங்கள் பின்தொடர வேண்டும்?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "எனக்கு ஏற்ற கற்றல் மூலோபாயம் எது?"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "எந்த காரணத்தால் ஒரு வாதம் செல்லுபடியாகும்?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "ஏதாவதொன்றை நீதி வாய்ந்ததாக 만드는 காரணம் என்ன?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "எந்தப் பொருளைப் படிப்பு வழிகாட்டியாக மாற்ற வேண்டும்?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "நாம் எந்த கணிதப் பிரச்சனையை தீர்க்க வேண்டும்?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "நாம் எந்த இசை концеп்டில் பணிபுரிய வேண்டும்?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "இந்த ஆழ்ந்த பணி அமர்வு என்ன முடிவைத் தர வேண்டும்?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "எந்த ஜோடிகள் பொருத்துதல் விளையாட்டாக மாற வேண்டும்?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "நாம் எந்த முன்னேற்றத்தை மறுஆய்வு செய்ய வேண்டும்?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "நாம் எந்தத் திட்டத்தை உருவாக்குகிறோம்?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "நீங்கள் என்ன கேள்வியை அல்லது விவாதத்தை பதிவிட விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "நீங்கள் எந்த வளத்தைப் பகிர விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "எந்த சூழ்நிலையை நாம் வேடிக்காட்ட வேண்டும்?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "நாம் எந்த அறிவியல் கருத்து அல்லது тәжіperimentை ஆராய்கிறோம்?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "எதை சவாலாக மாற்ற வேண்டும்?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "எது கற்றல் விளையாட்டாக மாற வேண்டும்?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "எது ஒரு கதை ஆக வேண்டும்?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "என்னவாக ஃபிளாஷ்கார்ட்கள் உருவாக வேண்டும்?"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "தலைப்பு மிகவும் கடினமாகத் தோன்றும்போது முதலில் என்ன கேட்க வேண்டும்?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "வீட்டுப்பாடம் தூண்டல்-இல் என்ன சேர்க்க வேண்டும்?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "லீடர்போர்டு எதை அளவிட வேண்டும்?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "பயிற்சித் தேர்வு எதை உள்ளடக்கியிருக்க வேண்டும்?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "படிப்பு குழு என்ன செய்ய வேண்டும்?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "பணித்தாள் எதைப் பற்றியதாக இருக்க வேண்டும்?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "இந்த கவனச்செஷன் எந்த विषयத்தை சார்ந்தே இருக்க வேண்டும்?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "எதை நாம் மீண்டும் பாராய்ந்துக் கொள்ள வேண்டும்?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "நாம் எதை வரைய வேண்டும் அல்லது வரைபடமாக்க வேண்டும்?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "நீங்கள் என்ன மாதிரியான தொடர்ச்சியை அல்லது வழக்கத்தை உருவாக்குகிறீர்கள்?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "நாம் எந்தப் பணிக்கு நேரத்தை ஒதுக்க வேண்டும்?"
+    },
+    {
+      "key": "site.834f5e34978fe93e4e",
+      "source": "What to avoid",
+      "value": "எதைத் தவிர்க்க வேண்டும்"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "நாம் எது குறித்து உங்களைப் பரீட்சிப்போம்?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "எந்த தலைப்பை மைண்ட் மேப்பாக மாற்ற வேண்டும்?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "நீங்கள் எந்த வாய்மொழி அல்லது வாய்மொழி தேர்வுக்குப் தயாராகுகிறீர்கள்?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "நீங்கள் என்னைத் திரும்பவும் எதை விளக்கப்போகிறீர்கள்?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "நாம் எந்த சொற்கள் அல்லது தலைப்பை பயிற்சி செய்ய வேண்டும்?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "நீங்கள் என்ன வேலை/இடைவேளை காலத்தை விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "இன்று நீங்கள் என்ன கற்றுக் கொள்ள விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "கற்றல் இப்போது கடினமாக உள்ளதற்கு காரணம் என்ன?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "இன்று உங்கள் விவாத தலைப்பு என்ன?"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "எங்கு ஆராய்வது சரியானது?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "எந்த வரலாற்று நிகழ்வை நாங்கள் சுருங்க வேண்டும்?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "எந்த வரலாற்று நபரை நீங்கள் சந்திக்க விரும்புகிறீர்கள்?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "எந்த மொழி மற்றும் சூழல்?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "வெள்ளை இரைச்சல்"
+    }
+  ]
+}

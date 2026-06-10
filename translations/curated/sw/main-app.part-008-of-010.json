@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Swahili",
+  "locale": "sw",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mkufunzi wa uraia ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "Elewa haki, serikali, na jamii"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "Mswada unakuwa sheria vipi?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "Eleza haki za msingi"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "Mahakama hufanya nini?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "Mwongozo wa Kuthamini Sanaa"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "Angalia kwa karibu na uone zaidi"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Chunguza kazi za sanaa, mitindo, wasanii, chaguzi za taswira, na kile kinachofanya picha kuwa na nguvu."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "Ni kazi gani ya sanaa, msanii, au mtindo?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "Ubunifu"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Chunguza kazi za sanaa, mitindo, wasanii, chaguzi za taswira, na kile kinachofanya picha kuwa na nguvu."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za ubunifu ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mwongozo wa kuthamini sanaa ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "Angalia kwa karibu na uone zaidi"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "Eleza usanii wa impressionism"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "Ninawezaje kutazama mchoro?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "Linganisha sanaa ya Renaissance na sanaa ya kisasa"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "Mkufunzi wa Nadharia ya Muziki"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Elewa sauti, mdundo, na upatanifu"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Jifunze noti, chord, mizani, mdundo, mawazo ya mafunzo ya kusikia, na jinsi nyimbo zinavyoundwa."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "Ni wazo gani la muziki tunapaswa kulifanyia kazi?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "Ubunifu"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Jifunze noti, chord, mizani, mdundo, mawazo ya mafunzo ya kusikia, na jinsi nyimbo zinavyoundwa."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za ubunifu ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mkufunzi wa nadharia ya muziki ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Elewa sauti, mahadhi, na upatanifu"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "Eleza major na minor"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "Chords hufanyaje kazi?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "Fundisha misingi ya mahadhi"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "Tafakari ya Mtazamo"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "Tafakari jinsi unavyojifunza"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Tambua kile kinachokusaidia kujifunza, kinachokwamisha, na jinsi ya kuwa mwanafunzi bora zaidi."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "Ni wakati gani wa kujifunza tunapaswa kutafakari?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "Upangaji"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Tambua kile kinachokusaidia kujifunza, kinachokwamisha, na jinsi ya kuwa mwanafunzi bora zaidi."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za upangaji ambao wanataka mwongozo wa vitendo badala ya kisanduku cha majibu ya jumla."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya tafakari ya mtazamo ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "Tafakari jinsi unavyojifunza"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "Kwa nini niliepuka kusoma?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "Tafakari baada ya mtihani mbaya"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "Ni mkakati gani wa kujifunza unaonifaa?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "Mwalimu wa Mchezo wa Kujifunza"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "Badilisha masomo kuwa changamoto"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Fanya kujifunza kuhisi kama mchezo wenye misheni, viwango, pointi, changamoto, na raundi za wakubwa."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "Ni nini kinapaswa kuwa mchezo wa kujifunza?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "Mazoezi"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Fanya ujifunzaji uwe kama mchezo kwa kutumia misheni, viwango, pointi, changamoto, na raundi za wakubwa."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mazoezi ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mwalimu wa mchezo wa kujifunza ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "Badilisha masomo kuwa changamoto"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "Fanya biolojia kuwa misheni"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "Badilisha msamiati kuwa viwango"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "Unda vita vya wakubwa vya hisabati"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "Mazoezi ya Viva"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "Jitayarishe kwa maswali ya mdomo"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Fanya mazoezi ya viva, mitihani ya mdomo, utetezi wa miradi, na maswali ya haraka ya kufuatilia kwa maoni tulivu."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Unajitayarisha kwa viva au mtihani gani wa mdomo?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "Mazoezi"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Fanya mazoezi ya viva, mitihani ya mdomo, utetezi wa miradi, na maswali ya haraka ya kufuatilia kwa maoni tulivu."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mazoezi ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mazoezi ya viva ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "Jitayarishe kwa maswali ya mdomo"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "Fanya mazoezi ya viva ya mradi wangu wa sayansi"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "Niulize maswali ya utetezi wa tasnifu"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "Maswali ya mtihani wa vitendo wa majaribio"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "Kipima Muda cha Kusoma"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Kipima muda cha Pomodoro kinachoendelea na arifa"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Endesha vipindi vya umakini na mapumziko vinavyoendelea kuhesabu wakati unapohama kati ya soga, vichupo, na programu ndogo. Inaweza kulia kutoka chinichini kipindi kinapomalizika."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "Kipindi hiki cha umakini kinapaswa kuhusu nini?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Umakini na Uzalishaji"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Endesha vipindi vya umakini na mapumziko vinavyoendelea kuhesabu wakati unapohama kati ya soga, vichupo, na programu ndogo. Inaweza kulia kutoka chinichini kipindi kinapomalizika."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za umakini na uzalishaji wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya kipima muda cha kusoma ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Kipima muda cha Pomodoro kinachoendelea na arifa"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "Anza kipindi cha biolojia cha dakika 25"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "Weka mdundo wa kazi ya kina wa 50/10"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "Fuatilia umakini wa kuandaa insha"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "Muziki wa Umakini"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "Sauti ya chinichini ya umakini inayoendelea kucheza"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Chagua sauti ya umakini iliyotengenezwa kwa ajili ya kusoma, kuandika, kutatua matatizo, au kazi ya kina. Inaendelea kucheza wakati unapobadilisha kwenda kwenye soga nyingine."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "Unataka aina gani ya umakini leo?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "Umakini na Uzalishaji"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Chagua sauti ya umakini iliyotengenezwa kwa ajili ya kusoma, kuandika, kutatua matatizo, au kazi ya kina. Inaendelea kucheza wakati unapobadilisha kwenda kwenye soga nyingine."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za umakini na uzalishaji wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya muziki wa umakini ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "Sauti ya chinichini ya umakini inayoendelea kucheza"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "Cheza muziki tulivu wa kusoma kwa umakini"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "Weka sauti kwa ajili ya kazi nzito"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "Tumia sauti za mvua kwa ajili ya marudio"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "Ubao wa Kuchora/Michoro"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Fikiria kupitia michoro na taswira rahisi"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Tumia kuchora kama mbinu ya kujifunza: panga michoro, weka lebo kwenye ramani mbichi, eleza michakato, au badilisha wazo lisiloeleweka kuwa taswira iliyo wazi zaidi."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "Tunapaswa kuchora au kuweka mchoro wa nini?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "Kujifunza kwa Taswira"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Tumia kuchora kama mbinu ya kujifunza: panga michoro, weka lebo kwenye ramani mbichi, eleza michakato, au badilisha wazo lisiloeleweka kuwa taswira iliyo wazi zaidi."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za kujifunza kwa taswira ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya ubao wa kuchora/michoro ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Fikiria kupitia michoro na taswira rahisi"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "Chora mchoro wa seli"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "Chora grafu ya mahitaji na usambazaji"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "Chora ramani ya visababishi vya Vita vya Kwanza vya Dunia"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "Mjenzi wa Mtihani wa Mazoezi"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "Jenga mtihani kamili kutoka kwa nyenzo zako"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Badilisha mada, mtaala, au madokezo kuwa mtihani wa mazoezi wa kweli wenye sehemu, muda, mwongozo wa uwekaji alama, na hatua za mapitio."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "Mtihani wa mazoezi unapaswa kuhusu nini?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "Kujifunza kwa Vitendo"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Badilisha mada, mtaala, au madokezo kuwa mtihani wa mazoezi wa kweli wenye sehemu, muda, mwongozo wa uwekaji alama, na hatua za mapitio."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za ujifunzaji amilifu wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya kijenzi cha majaribio ya mazoezi ikiwa na vidokezo vyake, mifano, na mtiririko wa ujifunzaji."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "Jenga jaribio kamili kutoka kwa nyenzo zako"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "Jenga jaribio la kitengo cha biolojia"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "Tengeneza jaribio la mazoezi ya hisabati mchanganyiko"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "Tengeneza karatasi ya historia ya mtindo wa mtihani"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "Mkufunzi wa Uchanganuzi wa Picha"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Fikiri kupitia picha za skrini, michoro, na picha za kazi za nyumbani"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Elezea au bandika maelezo kutoka kwa picha na upate usaidizi wa kusoma michoro, chati, matatizo, madokezo yaliyoandikwa kwa mkono, au ushahidi wa kuona."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "Elezea picha au bandika kile kinachoonekana"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "Usaidizi wa AI"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Elezea au bandika maelezo kutoka kwa picha na upate usaidizi wa kusoma michoro, chati, matatizo, madokezo yaliyoandikwa kwa mkono, au ushahidi wa kuona."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za usaidizi wa AI wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mkufunzi wa uchanganuzi wa picha ikiwa na vidokezo vyake, mifano, na mtiririko wa ujifunzaji."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Fikiri kupitia picha za skrini, michoro, na picha za kazi za nyumbani"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "Saidia kusoma mchoro huu"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "Changanua chati kutoka kwa kitabu changu cha kiada"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "Elezea kile ambacho picha hii ya skrini inaonyesha"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "Madokezo ya Cornell"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Panga madokezo katika vidokezo, maelezo, na muhtasari"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Badilisha mihadhara, usomaji, au madokezo mabichi kuwa mbinu ya Cornell yenye maswali ya kidokezo, madokezo makuu, muhtasari, na vidokezo vya mapitio."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "Bandika madokezo au taja somo"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "Mpangilio"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Badilisha mihadhara, usomaji, au madokezo mabichi kuwa mbinu ya Cornell yenye maswali ya kidokezo, madokezo makuu, muhtasari, na vidokezo vya mapitio."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za mpangilio wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya madokezo ya Cornell ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Panga madokezo katika vidokezo, maelezo, na muhtasari"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Badilisha mhadhara huu kuwa madokezo ya Cornell"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "Tengeneza maswali ya kidokezo kwa sura ya 3"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "Fanya muhtasari wa madokezo yangu mabichi"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "Jenereta ya Nukuu"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "Jenga marejeleo katika miundo ya kawaida"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Tengeneza APA, MLA, Chicago, Harvard, au viingilio rahisi vya bibliografia kutoka kwa maelezo ya chanzo huku ukikagua sehemu zinazokosekana."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "Bandika maelezo ya chanzo au taarifa ya URL"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "Msaada wa AI"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Tengeneza APA, MLA, Chicago, Harvard, au viingilio rahisi vya bibliografia kutoka kwa maelezo ya chanzo huku ukikagua sehemu zinazokosekana."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za msaada wa AI wanaotaka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya jenereta ya nukuu ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "Jenga marejeleo katika miundo ya kawaida"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "Tengeneza nukuu ya APA"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "Umbiza tovuti hii katika MLA"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "Angalia ni sehemu zipi ambazo nukuu yangu imekosa"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "Muhtasari wa Maandishi"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "Fupisha usomaji kuwa madokezo muhimu ya kusomea"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Fupisha maandishi marefu kuwa mawazo makuu, muundo, ufafanuzi, mifano, na maswali ya kukumbuka."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "Bandika maandishi ya kufupishwa"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "Msaada wa AI"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Fupisha maandishi marefu kuwa mawazo makuu, muundo, ufafanuzi, mifano, na maswali ya kukumbuka."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za msaada wa AI ambao wanataka mwongozo wa vitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya muhtasari wa maandishi ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "Fupisha usomaji kuwa madokezo muhimu ya kusomea"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na mifano ya vidokezo"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "Fupisha makala haya"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "Ondoa hoja kuu kutoka kwa madokezo yangu"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "Tengeneza muhtasari wa sura"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "Jenereta ya Mwongozo wa Kusomea"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "Badilisha nyenzo kuwa mwongozo wa marudio"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Jenga mwongozo wa kusomea wenye malengo, muhtasari wa dhana, mifano, makosa ya kawaida, maswali ya mazoezi, na mpango wa mapitio."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "Ni nyenzo gani inapaswa kuwa mwongozo wa kusomea?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "Msaada wa AI"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Jenga mwongozo wa kusomea wenye malengo, muhtasari wa dhana, mifano, makosa ya kawaida, maswali ya mazoezi, na mpango wa mapitio."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za msaada wa AI ambao wanataka mwongozo wa vitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya jenereta ya mwongozo wa kusomea ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "Badilisha nyenzo kuwa mwongozo wa marudio"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Rekebisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "Tengeneza mwongozo wa usanisinuru"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Badilisha madokezo yangu kuwa karatasi ya marudio"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "Jenga mwongozo wa kusomea mitihani ya mwisho"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "Kikokotoo cha Alama na GPA"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "Tabiri alama na panga malengo ya matokeo"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Kokotoa alama zenye uzito, hali za GPA, alama za mwisho zinazohitajika, na mipango ya nini kitatokea katika muhula."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "Shiriki uzito wa alama zako na matokeo"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "Uratibu"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Kokotoa alama zenye uzito, hali za GPA, alama za mwisho zinazohitajika, na mipango ya nini kitatokea katika muhula."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za uratibu ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu ya kawaida."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya kikokotoo cha alama na GPA ikiwa na vidokezo vyake, mifano, na mtiririko wa kujifunza."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "Tabiri alama na panga malengo ya matokeo"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mfano"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Rekebisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "Je, ninahitaji alama gani ya mwisho?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "Kokotoa alama yangu yenye uzito"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "Panga lengo langu la GPA"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "Muundaji wa Ramani ya Mawazo"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "Gawa mada katika mawazo yaliyounganishwa"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Tengeneza ramani ya mawazo kwa ajili ya kubuni, kurudia, kupanga, au kuunganisha dhana kabla ya kuandika au kusoma."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "Ni mada gani inapaswa kuwa ramani ya mawazo?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "Ujifunzaji wa Kuona"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Tengeneza ramani ya mawazo kwa ajili ya kubuni, kufanya marejeo, kupanga, au kuunganisha dhana kabla ya kuandika au kusoma."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za ujifunzaji wa kuona ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya mtengenezaji wa ramani ya mawazo ikiwa na vidokezo vyake, mifano, na mtiririko wa ujifunzaji."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "Gawa mada katika mawazo yaliyounganishwa"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "Ramani ya mawazo ya ujifunzaji wa mashine"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "Chora ramani ya insha ya historia"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "Buni mradi wa sayansi"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "Malengo ya Kila Siku ya Kusoma"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "Weka na ufuatilie malengo ya leo ya ujifunzaji"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Panga malengo ya kweli ya kila siku ya kusoma ukiwa na makadirio ya juhudi, kipaumbele, ukaguzi wa vikwazo, na utaratibu wa mapitio ya haraka."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "Unataka kukamilisha nini leo?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "Uchezaji"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Panga malengo ya kweli ya kila siku ya kusoma ukiwa na makadirio ya juhudi, kipaumbele, ukaguzi wa vikwazo, na utaratibu wa mapitio ya haraka."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Wanafunzi wanaochunguza mada za uchezaji ambao wanataka mwongozo wa kivitendo badala ya kisanduku cha majibu cha kawaida."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "Hali hii imesanifiwa kwa ajili ya malengo ya kila siku ya kusoma ikiwa na vidokezo vyake, mifano, na mtiririko wa ujifunzaji."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "Weka na ufuatilie malengo ya leo ya ujifunzaji"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Anza na vidokezo vya mifano"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Badilisha kipindi kulingana na lengo lako"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "Weka malengo matatu kwa leo"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "Fanya malengo yangu yawe ya kweli"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "Kagua malengo yangu ya kusoma"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "Kipima Muda cha Kazi"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "Pima muda wa kazi mahususi na uone juhudi zako"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Gawa kazi katika sehemu zenye majina, pima muda wa kila moja, na uhakiki mahali ambapo juhudi zako za kusoma zimeelekezwa baada ya kila kipindi cha umakini."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "Ni kazi gani tunapaswa kupima muda wake?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Umakini na Uzalishaji"
+    }
+  ]
+}

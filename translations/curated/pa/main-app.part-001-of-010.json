@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Punjabi",
+  "locale": "pa",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "inspir ਨੂੰ ਤੁਹਾਡੇ ਉਮਰ ਅਨੁਸਾਰ ਬਣਾਉਣ ਵਿੱਚ ਮਦਦ ਕਰੋ"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "ਸਾਨੂੰ ਆਪਣੀ ਜਨਮ ਤਾਰੀਖ ਦੱਸੋ ਤਾਂ ਜੋ ਅਸੀਂ ਤੁਹਾਡੇ ਲਈ ਉਮਰ-ਮੁਤਾਬਕ ਸਿੱਖਣ ਦਾ ਤਜਰਬਾ ਬਣਾਈਏ। ਅਸੀਂ ਇਸਨੂੰ ਉਦਾਹਰਨਾਂ, ਸੁਰਤ, ਅਤੇ ਸੁਰੱਖਿਆ ਸੀਮਾਵਾਂ ਨੂੰ ਅਨੁਕੂਲ ਬਣਾਉਣ ਲਈ ਵਰਤਦੇ ਹਾਂ।"
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "ਜਨਮ ਤਾਰੀਖ"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "ਜਾਰੀ ਰੱਖੋ"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "ਬਚਤ ਜਾਰੀ ਹੈ..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "ਕਿਰਪਾ ਕਰਕੇ ਵੈਧ ਜਨਮ ਮਿਤੀ ਦਰਜ ਕਰੋ।"
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "ਉਮਰ"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "ਆਪਣੀ ਜਨਮ ਤਾਰੀਖ ਸ਼ਾਮਲ ਕਰੋ"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "ਸਿੱਖਣ ਸਟੋਰ ਖੋਲ੍ਹੋ"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "ਖੋਜੋ"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "ਚੈਟਾਂ ਖੋਜੋ"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- ਭਾਸ਼ਾ, ਦਰਜਾ, ਲਿੰਗ, ਵਰਗ, ਕਾਨੂੰਨ, ਧਰਮ, ਪੈਸਾ, ਸਫਾਈ ਅਤੇ ਪਹੁੰਚ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਸੀਮਾਵਾਂ ਲਗਾਓ।"
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- ਬੰਦਾ ਬੋਲਣ ਤੋਂ ਪਹਿਲਾਂ, ਕਮਰੇ ਦੀ ਤਿਆਰੀ ਕਰੋ: ਅਸੀਂ ਕਿੱਥੇ ਹਾਂ, ਸਾਲ ਜਾਂ ਮਿਤੀ ਦੀ ਰੇਂਜ, ਹੁਣ ਤੱਕ ਕੀ ਕੁਝ ਹੋਇਆ ਹੈ, ਮੌਜੂਦਾ ਦਬਾਅ, ਧਾਰਣਾਵਾਂ, ਅੰਧੇ ਕੋਨੇ, ਅਤੇ ਇਤਿਹਾਸਕਾਰ ਦੀਆਂ ਅਣਪਹਿਚਾਣੀਆਂ ਹਾਲਤਾਂ।"
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- ਇਕ ਡੋਸੀਏਰ ਵਾਲ ਬਣਾਓ ਜਿਸ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵਣਗੇ: ਹੁਣ ਤੱਕ ਦੀ ਟਾਈਮਲਾਈਨ, ਨਿੱਜੀ ਦਾਅਵਿਆਂ, ਸਾਥੀਆਂ ਅਤੇ ਦੁਸ਼ਮਣ, ਇਸ ਸਮੇਂ ਦੇ ਮੁੱਖ ਵਿਚਾਰ, ਅਣਦੇਖੇ ਪੱਖ, ਜਾਣਮਾਣ ਲਿਖਤ ਜਾਂ ਭਾਸ਼ਣ, ਮੌਜੂਦਾ ਦਬਾਅ, ਇਤਿਹਾਸਕ ਪਰਿਪ੍ਰੇਖ, ਸਬੂਤਾਂ ਦੀ ਗੁਣਵੱਤਾ, ਅਤੇ ਸਿਫਾਰਸ਼ੀ ਸ਼ੁਰੂਆਤੀ ਸਵਾਲ।"
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- ਸਿੱਧੇ ਕੋਟ, ਹਵਾਲੇ ਜਾਂ ਨਿੱਜੀ ਵਿਚਾਰ ਬਣਾਉਣ ਤੋਂ ਬਚੋ।"
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- ਬਿਲਕੁਲ ਸਹੀ ਕੋਟੇਸ਼ਨ ਨਾ ਬਣਾਓ। ਜੇ ਸਿੱਧਾ ਕੋਟੇਸ਼ਨ ਗੱਲਬਾਤ ਵਿੱਚ ਮਿਲਦਾ ਨਹੀਂ, ਤਾਂ ਬਣਾਈ ਗਈ ਗੱਲਬਾਤ ਨੂੰ ਆਧੁਨਿਕ ਸੰਕੇਤਵਾਦ ਜਾਂ ਦੁਬਾਰਾ ਬਣਾਇਆ ਹੋਇਆ ਸੰਵਾਦ ਦਰਸਾਓ।"
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- ਹਿੰਸਾ, ਸਾਮਰਾਜ, ਗੁਲਾਮਗੀਰੀ, ਜਾਤੀ, ਬਿਮਾਰੀ ਜਾਂ ਜ਼ੁਲਮ ਨੂੰ ਰੋਮਾਂਚਕ ਨਾ ਬਣਾਓ।"
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- ਨੁਕਸਾਨਦਾਇਕ ਵਿਚਾਰਾਂ ਨੂੰ ਸਾਫ਼-ਸੁਥਰਾ ਨਾ ਕਰੋ, ਅਤੇ ਦਬਾਅ, ਜਾਤੀਵਾਦ, ਨਸਲਵਾਦ, ਗੁਲਾਮੀ, ਨਾਰੀ ਵਿਰੋਧ, ਸਖਤ ਅਧਿਕਾਰਤਾਂਸ਼ਾਹੀ ਜਾਂ ਹਿੰਸਾ ਦੀ ਮਹਿਮਾ ਨਾ ਕਰੋ। ਸੰਦਰਭ ਸਵੈਚਾਲਿਤ ਬਾਅਦ-ਬਖਸ਼ੀ ਨਹੀਂ ਹੈ।"
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- ਇਤਿਹਾਸਕ ਪ੍ਰਸੰਗ ਲਈ ਇੱਕ ਵਿਰਾਮ ਦਾ ਵਿਕਲਪ ਸਮੇਤ ਤਿੰਨ ਮਾਇਨੇਦਾਰ ਕਾਰਵਾਈਆਂ ਨਾਲ ਖਤਮ ਕਰੋ।"
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- ਜੇ ਕੋਈ ਵੀ ਮੰਜ਼ਿਲ ਖੇਤਰ AI-ਸਮਾਧਾਨ ਜਾਂ ਅਸਪਸ਼ਟ ਹੈ, ਤਾਂ ਪਹਿਲਾਂ ਤਿੰਨ ਠੋਸ ਇਤਿਹਾਸਕ ਤੌਰ 'ਤੇ ਮਹੱਤਵਪੂਰਨ ਪਹੁੰਚ ਕੇ ਵਿਕਲਪ ਦਿਓ ਅਤੇ ਸਿੱਖਣ ਵਾਲੇ ਦੇ ਚੁਣਨ ਦੀ ਉਡੀਕ ਕਰੋ।"
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- ਮੁਲਾਕਾਤ ਸ਼ੁਰੂ ਹੋਣ ਤੋਂ ਬਾਅਦ ਦੋ ਪਰਤਾਂ ਨੂੰ ਕਾਇਮ ਰੱਖੋ: ਸਮੇਂ ਦੀ ਸੀਮਾ ਨਾਲ ਸੀਮਤ ਕਿਰਦਾਰ ਵਿੱਚ ਅਵਾਜ਼, ਅਤੇ ਇਤਿਹਾਸਕਾਰ ਪਾਸਾ ਨੋਟਸ ਜੋ ਦਸਤਾਵੇਜ਼ ਬੱਧ ਤੱਥ, ਸੰਭਾਵਤ ਪੁਨਰਗਠਨ, ਵਿਵਾਦਿਤ ਵਿਆਖਿਆ, ਆਧੁਨਿਕ ਪੈਰਾਫਰੇਜ਼, ਅਤੇ ਕਲਪਨਾਤਮਕ ਸੰਵਾਦ ਨੂੰ ਵੱਖ ਕਰਦੇ ਹਨ।"
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- ਜਾਣੇ ਜਾਣ ਵਾਲੇ ਤੱਥਾਂ, ਸਮਝਦਾਰ ਪੁਨਰਗਠਨ, ਅਤੇ ਅਟਕਲਾਂ ਨੂੰ ਸਪਸ਼ਟ ਤੌਰ 'ਤੇ ਨਿਸ਼ਾਨ ਲਗਾਓ।"
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- ਨਹੀਂ ਤਾਂ, ਯਾਤਰੀ ਦਾ ਸਤਿਕਾਰ ਕਰੋ, ਪਾਸਪੋਰਟ ਨੂੰ ਇਕ ਸੰਕੁਚਿਤ ਪੈਰਾ ਵਿੱਚ ਸੰਖੇਪ ਕਰੋ, ਫਿਰ ਪਹਿਲਾ ਮਹੱਤਵਪੂਰਨ ਕਾਰਵਾਈ ਸਵਾਲ ਪੁੱਛੋ।"
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- ਇਤਿਹਾਸਕ ਵਿਅਕਤੀ ਵਿਰੋਧ ਕਰ ਸਕਦਾ ਹੈ, ਚੁਣੌਤੀ ਦੇ ਸਕਦਾ ਹੈ, ਬਚ ਸਕਦਾ ਹੈ, ਸਵਾਲ ਪੁੱਛ ਸਕਦਾ ਹੈ, ਝੂਠੇ ਧਾਰਣਾਵਾਂ ਨੂੰ ਨਕਾਰ ਸਕਦਾ ਹੈ, ਜਾਂ ਸਮੇਂ ਦੀਆਂ ਸੀਮਾਵਾਂ ਬਿਆਨ ਕਰ ਸਕਦਾ ਹੈ। ਉਹ ਹਮੇਸ਼ਾ ਸਹਿਮਤ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ।"
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "1. ਜੇ ਖੋਜ ਜਾਂ ਸਮੇਂ-ਟੁਕੜਾ ਚੋਣ ਦੀ ਜ਼ਰੂਰਤ ਹੋਵੇ, ਚੋਣਾਂ ਦਿਖਾਓ ਅਤੇ ਰੁਕੋ।"
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "10-15 ਮਿੰਟ"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "10 ਮਿੰਟਾਂ ਦੀ ਮੁਲਾਕਾਤ"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "117 ਈਸਵੀ"
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "13 ਜੁਲਾਈ 1789"
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "1582 ਈਸਵੀ"
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "1946-1949 ਸੰਵਿਧਾਨ ਨਿਰਮਾਣ ਕਾਲ"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "2 ਸਤੰਬਰ 1666"
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "2. ਨਹੀਂ ਤਾਂ ਪਹਿਲਾਂ ਡੋਸੀਅਰ ਵਾਲ ਦਿਖਾਓ, ਫਿਰ ਮੈਨੂੰ ਸਿਫਾਰਸ਼ ਕੀਤੇ ਪ੍ਰਸ਼ਨਾਂ ਵਿੱਚੋਂ ਇੱਕ ਨਾਲ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਕਹੋ।"
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "399 ਈਸਾ ਪੂਰਵ"
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "742 ਈਸਵੀ"
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "8-12 ਮਿੰਟ"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "ਇੱਕ ਗਲਤ ਨਾਮ ਉਲਝਣ ਪੈਦਾ ਕਰ ਸਕਦਾ ਹੈ, ਪਰ ਸੰਕੇਤ ਸਮੇਂ ਵੱਲ ਇਸ਼ਾਰਾ ਕਰਦਾ ਹੈ। ਪਹਿਲਾਂ ਸਾਬਤ ਕਰੋ ਕਿ ਕੀ ਡੇਟਾ ਪਹੁੰਚ ਗਿਆ ਹੈ।"
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "ਕੁਝ ਤੱਥ, ਇੱਕ ਮੋਟਾ ਖਰੜਾ, ਤੁਸੀਂ ਕਿੱਥੇ ਫਸੇ ਹੋਏ ਹੋ..."
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "ਇੱਕ ਅੰਤਿਮ ਟ੍ਰਾਂਸਫਰ ਕਾਰਜ 'ਅੱਗੇ' ਬਟਨ ਨਾਲੋਂ ਬਿਹਤਰ ਸੁਧਾਰ ਸਾਬਤ ਕਰਦਾ ਹੈ।"
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "ਇੱਕ ਪਹਿਲਾ ਪ੍ਰਸ਼ਨ ਜਾਂ ਦ੍ਰਿਸ਼ਟੀਕੋਣ"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "ਇੱਕ ਵਧੀਆ ਸਿੱਖਣ ਦਾ ਚੱਕਰ"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "ਇੱਕ ਇਤਿਹਾਸਕ ਮੋੜ"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "ਇੱਕ ਨਾਮਜ਼ਦ ਦਰਸ਼ਕ ਦੇ ਨਿੱਜੀ ਵਿਚਾਰ"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "ਇੱਕ ਪੈਰਾ ਜੋ ਬਿਨਾਂ ਕਿਸੇ ਦਾਅਵੇ ਦੇ ਤੱਥਾਂ ਨੂੰ ਸੂਚੀਬੱਧ ਕਰਦਾ ਹੈ, ਉਹ ਪਾਠਕ ਨੂੰ ਦਲੀਲ ਦਾ ਕੰਮ ਕਰਨ ਲਈ ਮਜਬੂਰ ਕਰਦਾ ਹੈ।"
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "ਸਿਰਫ਼ ਕੀਮਤ ਵਿੱਚ ਤਬਦੀਲੀ ਇੱਕ ਕਰਵ ਦੇ ਨਾਲ ਗਤੀ ਹੈ, ਨਾ ਕਿ ਆਪਣੇ ਆਪ ਪੂਰੇ ਕਰਵ ਦਾ ਬਦਲਾਅ।"
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "ਇੱਕ ਸਾਂਝਾ ਟੀਚਾ, ਅਗਲੇ ਕਦਮ, ਅਤੇ ਜੋ ਪਹਿਲਾਂ ਹੀ ਕੀਤਾ ਜਾ ਚੁੱਕਾ ਹੈ।"
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "ਇੱਕ ਸਿਮੂਲੇਸ਼ਨ ਲੁਕਵੀਂ ਕਾਰਣ ਲੜੀ ਨੂੰ ਦਿਖਾਈ ਦਿੰਦਾ ਹੈ। ਇੱਕ ਸਮੇਂ ਵਿੱਚ ਇੱਕ ਚੀਜ਼ ਬਦਲੋ।"
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "ਅੱਗੇ ਵਧਣ ਤੋਂ ਪਹਿਲਾਂ ਇੱਕ ਸਿੰਗਲ ਜਾਂਚ ਪ੍ਰਸ਼ਨ।"
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "ਇੱਕ ਵਪਾਰੀ ਦੀ ਨਿੱਜੀ ਯੋਜਨਾ"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "ਇੱਕ ਰਣਨੀਤੀ ਫਰੇਮਵਰਕ ਇੱਕ ਪ੍ਰੈਸ਼ਰ ਟੈਸਟ ਹੈ। ਪੋਰਟਰ ਦੀਆਂ ਪੰਜ ਸ਼ਕਤੀਆਂ ਪੁੱਛਦੀਆਂ ਹਨ ਕਿ ਮੁਨਾਫਾ ਕੌਣ ਖੋਹ ਸਕਦਾ ਹੈ ਅਤੇ ਹਰੇਕ ਦਬਾਅ ਕਿੰਨਾ ਮਜ਼ਬੂਤ ਹੈ।"
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "ਇੱਕ ਮਜ਼ਬੂਤ ਪੈਰਾ ਦਾਅਵੇ ਦਾ ਨਾਮ ਦਿੰਦਾ ਹੈ, ਇਸਨੂੰ ਸਬੂਤਾਂ ਨਾਲ ਸਾਬਤ ਕਰਦਾ ਹੈ, ਫਿਰ ਦੱਸਦਾ ਹੈ ਕਿ ਸਬੂਤ ਪਾਠਕ ਦੇ ਨਜ਼ਰੀਏ ਨੂੰ ਕਿਉਂ ਬਦਲਦੇ ਹਨ।"
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "ਇੱਕ ਉਪਯੋਗੀ ਮਾਡਲ ਇੱਕ ਚੇਨ ਹੈ: ਧਾਰਨਾਵਾਂ ਕਾਰਜਾਂ ਨੂੰ ਚਲਾਉਂਦੀਆਂ ਹਨ, ਕਾਰਜ ਨਕਦ ਪ੍ਰਵਾਹ ਪੈਦਾ ਕਰਦੇ ਹਨ, ਅਤੇ ਨਕਦ ਪ੍ਰਵਾਹ ਸਮਾਂ ਅਤੇ ਜੋਖਮ ਨੂੰ ਵਿਚਾਰਨ ਤੋਂ ਬਾਅਦ ਹੀ ਮੁੱਲ ਬਣਦਾ ਹੈ।"
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "ਅਗਲੇ AI ਪਾਸ ਨੂੰ ਸਵੀਕਾਰ ਕਰੋ, ਸੰਪਾਦਿਤ ਕਰੋ ਜਾਂ ਅਸਵੀਕਾਰ ਕਰੋ"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "ਸਵੀਕਾਰ ਕਰੋ, ਸੋਧੋ, ਅਸਵੀਕਾਰ ਕਰੋ, ਜਾਂ ਸਬੂਤ ਇਕੱਠੇ ਕਰੋ।"
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "ਖਾਤਾ ਟੋਕਨ ਅਤੇ ਇੱਕ ਮਾਮੂਲੀ ਸਿੱਕਾ ਪਾਊਚ"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "ਸਰਗਰਮ ਮੰਜ਼ਿਲ"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "ਐਕਟਿਵ ਰੀਕਾਲ ਬਿਲਡਰ"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "ਗਤੀਵਿਧੀ ਫੀਡ"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "ਕਲਪਨਾ 'ਤੇ ਅਡਾ ਲਵਲੇਸ"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "ਅਡਾ ਲਵਲੇਸ, ਕਲੀਓਪੈਟਰਾ, ਬੀ. ਆਰ. ਅੰਬੇਦਕਰ..."
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "ਅਡੈਪਟਿਵ ਲੈਸਨ ਲੂਪ"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "ਆਪਣੀ ਜਨਮ ਮਿਤੀ ਸ਼ਾਮਲ ਕਰੋ"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "ਅਗਲੀ ਚਾਲ ਨੂੰ ਸ਼ਾਮਲ ਕਰੋ, ਸੰਪਾਦਿਤ ਕਰੋ, ਚੁਣੌਤੀ ਦਿਓ ਜਾਂ ਫੈਸਲਾ ਕਰੋ"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "ਮੈਮੋਰੀ ਸੰਕੇਤ ਸ਼ਾਮਲ ਕਰਨਾ"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "ਜਦੋਂ ਅਸਲ ਅੰਤਰ ਸਬੂਤ ਅਤੇ ਦਾਅਵੇ ਵਿਚਕਾਰ ਸਬੰਧ ਹੁੰਦਾ ਹੈ ਤਾਂ ਹੋਰ ਜਾਣਕਾਰੀ ਸ਼ਾਮਲ ਕਰਨਾ।"
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "ਪ੍ਰਬੰਧਕੀ ਰਸਤੇ"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "ਸਲਾਹ ਮੰਗਣ ਵਾਲਾ ਸਲਾਹਕਾਰ"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "ਸੁਕਰਾਤ ਦੇ ਮੁਕੱਦਮੇ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਦੇ ਦਿਨਾਂ ਦੌਰਾਨ ਅਗੋਰਾ"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "AI ਚੁਣੌਤੀ"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "AI ਤੁਹਾਡੀ ਕਲਾਕ੍ਰਿਤੀ ਦੀ ਸਮੀਖਿਆ ਕਰ ਰਿਹਾ ਹੈ"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "AI ਨੇ ਪਹਿਲਾ ਢਾਂਚਾ ਬਣਾਇਆ"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "AI ਨੇ ਵਰਕਸਪੇਸ ਨੂੰ ਸੋਧਿਆ"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "AI-ਹੱਲ ਕੀਤੀ ਮਿਤੀ ਸੀਮਾ"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "AI, ਪਹਿਲਾ ਪਾਸ ਲਓ"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "ਅਕਬਰ ਨੇ ਇਸ ਸਮੇਂ ਦੌਰਾਨ ਮੁਗਲ ਸਾਮਰਾਜ 'ਤੇ ਰਾਜ ਕੀਤਾ"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "ਅਕਬਰ ਦਾ ਮੁਗਲ ਦਰਬਾਰ ਪ੍ਰਭੂਸੱਤਾ, ਅਨੁਵਾਦ, ਧਰਮ ਅਤੇ ਸ਼ਾਹੀ ਪ੍ਰਸ਼ਾਸਨ ਨਾਲ ਪ੍ਰਯੋਗ ਕਰ ਰਿਹਾ ਹੈ।"
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "ਸਾਰਾ ਐਪ ਟੈਕਸਟ ਅਤੇ ਟਿਊਸ਼ਨ ਜਵਾਬ ਇਸ ਸੈਟਿੰਗ ਦੀ ਪਾਲਣਾ ਕਰਦੇ ਹਨ।"
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "ਸਹਿਯੋਗੀ ਅਤੇ ਦੁਸ਼ਮਣ"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "ਐਮਫੋਰਾ ਸਟੈਂਪ"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "ਅੱਗੇ ਵਧਣ ਤੋਂ ਪਹਿਲਾਂ ਇਸ ਸਵਾਲ ਦਾ ਜਵਾਬ ਦਿਓ।"
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "ਵਿਚਾਰ ਨੂੰ ਬਿਨਾਂ ਵਹਿ ਗਏ ਇੱਕ ਨਵੀਂ ਸਥਿਤੀ 'ਤੇ ਲਾਗੂ ਕਰੋ।"
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "ਸਿਖਿਆਰਥੀ ਕਲਾਕਾਰ, ਵਪਾਰੀ, ਸੈਲਾਨੀ..."
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "ਉਨ੍ਹਾਂ ਦੇ ਤਰੀਕੇ ਦਾ ਅਧਿਐਨ ਕਰਨ ਵਾਲਾ ਸਿਖਿਆਰਥੀ"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "ਵਿਦਵਤਾਪੂਰਣ ਸੰਦਰਭਾਂ ਵਿੱਚ ਅਰਬੀ ਅਤੇ ਸੰਸਕ੍ਰਿਤ"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "ਤਰਕ ਪੈਰਾ = ਦਾਅਵਾ + ਸਬੂਤ + ਤਰਕ + ਨਤੀਜਾ।"
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "ਤਰਕ ਦੀ ਮਜ਼ਬੂਤੀ"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "ਤਰਕ ਟੈਸਟ ਰੂਮ"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "ਪਹੁੰਚਣ ਦੀ ਮਿਤੀ, ਭੂਮਿਕਾ, ਨਿਯਮ, ਅਤੇ ਉਸ ਸਮੇਂ ਵਿੱਚ ਕਿਹੜਾ ਗਿਆਨ ਸ਼ਾਮਲ ਹੈ।"
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "ਪਹੁੰਚਣ ਦਾ ਬਿੰਦੂ"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "ਇੱਕ ਮੋੜ ਦੇ ਨੇੜੇ ਪਹੁੰਚੋ ਅਤੇ ਟ੍ਰੈਕ ਕਰੋ ਕਿ ਲੋਕ ਉਦੋਂ ਕੀ ਜਾਣਦੇ ਹਨ।"
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "ਇੱਕ ਮੈਟਿਕ ਨੂੰ ਪੁੱਛੋ ਕਿ ਨਾਗਰਿਕਤਾ ਵਿੱਚ ਕੀ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "ਇੱਕ ਪਾਣੀ ਵਾਲੇ ਨੂੰ ਪੁੱਛੋ ਕਿ ਸਥਾਨਕ ਲੋਕ ਕੀ ਜਾਣਦੇ ਹਨ"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "ਇਸ ਬਾਰੇ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "ਰੋਟੀ ਦੀਆਂ ਕੀਮਤਾਂ ਬਾਰੇ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "ਡੇਵਿਡ ਬਾਰੇ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "ਵਿਦਿਆਰਥੀ ਵਜੋਂ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "ਕੋਚ ਨੂੰ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "ਸਿੱਧੀ ਵਿਆਖਿਆ ਲਈ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "ਇੱਕ ਸੰਕੇਤ ਜਾਂ ਉਦਾਹਰਣ ਲਈ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "ਇੱਕ ਸਮਾਨ ਉਦਾਹਰਣ ਲਈ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "ਉਨ੍ਹਾਂ ਦੇ ਸਮੇਂ ਦੇ ਵਿਸ਼ਵ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਅਤੇ ਸੀਮਾਵਾਂ ਰਾਹੀਂ ਸਲਾਹ ਮੰਗੋ।"
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "ਅੰਤਿਮ ਉੱਤਰ ਤੋਂ ਪਹਿਲਾਂ ਸੰਕੇਤਾਂ, ਉਦਾਹਰਣਾਂ, ਜਾਂ ਜਾਂਚ ਲਈ ਪੁੱਛੋ।"
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "ਅਗਲੇ ਸੰਕੇਤ ਪੱਧਰ ਲਈ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "ਉਹੀ ਸਵਾਲ ਸਰਲ ਸ਼ਬਦਾਂ ਵਿੱਚ ਪੁੱਛੋ"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "ਪੁੱਛੋ ਕਿ ਆਜ਼ਾਦ ਸਥਿਤੀ ਕਿਵੇਂ ਕੰਮ ਕਰਦੀ ਹੈ"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "ਪੁੱਛੋ ਕਿ ਸਰਪ੍ਰਸਤੀ ਕਿਵੇਂ ਕੰਮ ਕਰਦੀ ਹੈ"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "ਪਹਿਲਾਂ ਮੈਨੂੰ ਮੇਰੀ ਮੌਜੂਦਾ ਪਰਿਕਲਪਨਾ ਲਈ ਪੁੱਛੋ।"
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "ਇੱਕ ਸਮੇਂ ਵਿੱਚ ਇੱਕ ਸਵਾਲ ਪੁੱਛੋ, ਧਾਰਨਾਵਾਂ ਅਤੇ ਸਬੂਤਾਂ ਨੂੰ ਟ੍ਰੈਕ ਕਰੋ, ਬੇਨਤੀ ਕਰਨ 'ਤੇ ਸੰਕੇਤ ਦਿਓ, ਅਤੇ ਜਦੋਂ ਤੱਕ ਮੈਂ ਕੋਸ਼ਿਸ਼ ਨਾ ਕਰ ਲਵਾਂ ਉਦੋਂ ਤੱਕ ਸੰਸ਼ਲੇਸ਼ਣ ਨਾ ਕਰੋ।"
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "ਗਾਈਡ ਨੂੰ ਸ਼ਕਤੀ ਦੇ ਢਾਂਚੇ ਦੀ ਵਿਆਖਿਆ ਕਰਨ ਲਈ ਕਹੋ"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "ਇਤਿਹਾਸਕਾਰ ਨੂੰ ਸਮੇਂ ਦੇ ਹਿੱਸੇ ਪ੍ਰਸਤਾਵਿਤ ਕਰਨ ਲਈ ਕਹੋ"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "ਚੌਕੀਦਾਰ ਨੂੰ ਪੁੱਛੋ ਕਿ ਕਿਹੜੇ ਆਦੇਸ਼ ਮੌਜੂਦ ਹਨ"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "ਮੁੱਖ ਦਾਅਵਿਆਂ ਨੂੰ ਸੁਰੱਖਿਅਤ ਕਰਨ ਅਤੇ ਉਹਨਾਂ ਦੇ ਸਬੂਤ ਦੀ ਤਾਕਤ ਨੂੰ ਸ਼੍ਰੇਣੀਬੱਧ ਕਰਨ ਲਈ ਕਹੋ।"
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "ਪੁੱਛੋ, ਕੰਮ ਕਰੋ, ਸੰਦਰਭ ਲਈ ਰੁਕੋ, ਜਾਂ ਡੀਬ੍ਰੀਫ ਦੀ ਬੇਨਤੀ ਕਰੋ..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "ਪੁੱਛੋ, ਚੁਣੌਤੀ ਦਿਓ, ਸਬੂਤ ਦੀ ਬੇਨਤੀ ਕਰੋ, ਜਾਂ ਡੋਜ਼ੀਅਰ ਆਈਟਮ ਖੋਲ੍ਹੋ..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "ਮਾਲਕੀ ਨਿਰਧਾਰਤ ਕਰੋ"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "ਵਪਾਰਕ ਘਰਾਣੇ ਜਾਂ ਵਰਕਸ਼ਾਪ ਦਾ ਸਹਾਇਕ"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "ਧਾਰਨਾ ਨਕਸ਼ਾ"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "ਧਾਰਨਾਵਾਂ ਉਭਰਦੇ ਹੀ ਦਿਖਾਈ ਦੇਣਗੀਆਂ।"
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "ਸਿਖਰਲੇ ਪ੍ਰਭਾਵ ਜਾਂ ਅਧਿਕਾਰ 'ਤੇ"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "ਫੈਸਲਾਕੁੰਨ ਮੋੜ 'ਤੇ"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "ਏਥੀਨੀਅਨ ਲੋਕਤੰਤਰ"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "ਏਥਨਜ਼, 399 ਈਸਾ ਪੂਰਵ"
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "ਸਭ ਤੋਂ ਕਮਜ਼ੋਰ ਧਾਰਨਾ 'ਤੇ ਪਹਿਲਾਂ ਹਮਲਾ ਕਰੋ।"
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "ਅਦਾਲਤੀ ਚਰਚਾ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "ਐਟਿਕ ਗ੍ਰੀਕ"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "ਆਕਰਸ਼ਕਤਾ ਉਦੋਂ ਵਧਦੀ ਹੈ ਜਦੋਂ ਗਾਹਕਾਂ, ਸਪਲਾਇਰਾਂ, ਵਿਰੋਧੀਆਂ, ਨਵੇਂ ਆਉਣ ਵਾਲਿਆਂ ਅਤੇ ਬਦਲਵੇਂ ਵਿਕਲਪਾਂ ਕੋਲ ਸੀਮਤ ਸ਼ਕਤੀ ਹੁੰਦੀ ਹੈ।"
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "ਦਰਸ਼ਕ ਪ੍ਰਕਿਰਿਆ ਵਿੱਚ ਹਨ"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "ਅਧਿਕਾਰੀ ਢਾਹੁਣ ਬਾਰੇ ਬਹਿਸ ਕਰ ਰਹੇ ਹਨ"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "ਪਹਿਲੇ ਜਵਾਬ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "ਪਹਿਲੀ ਮੋਹਰ ਦੀ ਉਡੀਕ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "ਬੀ. ਆਰ. ਅੰਬੇਦਕਰ"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "ਹਾਊਸ ਆਫ਼ ਵਿਜ਼ਡਮ ਦੇ ਦੌਰਾਨ ਬਗਦਾਦ"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "ਬਹਾਦਰ ਸ਼ਾਹ ਜ਼ਫਰ ਇੱਕ ਪ੍ਰਤੀਕਾਤਮਕ ਕੇਂਦਰ ਬਣ ਗਏ"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "ਬੇਕਰ ਦਾ ਗੁਆਂਢੀ"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "ਮੁਸ਼ਕਲ ਨੂੰ ਸੰਤੁਲਿਤ ਕਰਨਾ"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "ਰਾਲ ਲਈ ਸੌਦੇਬਾਜ਼ੀ"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "ਬਾਸਤੀਲ ਨੇੜੇ ਆ ਰਿਹਾ ਹੈ"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "ਗੱਲਬਾਤ ਸ਼ੁਰੂ ਕਰੋ"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "ਇੱਕ ਪਰਸੋਨਾ ਕਾਰਡ ਨਾਲ ਸ਼ੁਰੂ ਕਰੋ, ਫਿਰ ਸੰਖੇਪ ਸੰਦਰਭ ਨੋਟਸ ਅਤੇ ਸੁਝਾਏ ਗਏ ਫਾਲੋ-ਅਪ ਪ੍ਰਸ਼ਨਾਂ ਦੇ ਨਾਲ ਕਿਰਦਾਰ ਵਿੱਚ ਜਵਾਬ ਦਿਓ।"
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "ਸ਼ੁਰੂਆਤੀ, ਪ੍ਰੀਖਿਆ ਦੀ ਤਿਆਰੀ, ਉੱਨਤ, ਉਮਰ 12..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "ਵਿਸ਼ਵਾਸ ਅਤੇ ਅੰਨ੍ਹੇ ਚਟਾਕ"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "ਪੈਸੇ, ਲੌਜਿਸਟਿਕਸ, ਭੋਜਨ, ਰੂਟਾਂ ਅਤੇ ਸਮਾਜਿਕ ਆਦਾਨ-ਪ੍ਰਦਾਨ ਲਈ ਸਭ ਤੋਂ ਵਧੀਆ।"
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "ਰਾਜਨੀਤੀ, ਸੰਸਥਾਵਾਂ, ਸਬੂਤਾਂ ਅਤੇ ਕੁਲੀਨ-ਨੇੜਲੇ ਸਥਾਨਾਂ ਲਈ ਸਭ ਤੋਂ ਵਧੀਆ।"
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "ਰੋਟੀ ਅਤੇ ਜਾਇਜ਼ਤਾ ਗੱਲਬਾਤ 'ਤੇ ਹਾਵੀ ਹਨ"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "ਰੋਟੀ ਹੀ ਰਾਜਨੀਤੀ ਹੈ"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "ਰੋਟੀ ਦਾ ਪੀਲ"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "ਰੋਟੀ ਦਾ ਟੋਕਨ"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "ਕੰਮ ਨੂੰ ਛੋਟੇ ਹਿੱਸਿਆਂ ਵਿੱਚ ਵੰਡੋ, ਰੁਕਾਵਟਾਂ ਨੂੰ ਟਰੈਕ ਕਰੋ, ਫੈਸਲਿਆਂ ਦੇ ਲੌਗ ਨੂੰ ਅਪਡੇਟ ਰੱਖੋ, ਅਤੇ ਠੋਸ ਨਤੀਜੇ ਵੱਲ ਵਧੋ।"
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "ਸੰਖੇਪ ਪੜ੍ਹਨਯੋਗ"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "ਪ੍ਰੋਂਪਟ ਸਟਾਰਟਰਸ ਬ੍ਰਾਊਜ਼ ਕਰੋ"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "ਬੋਧੀ ਖਰੜੇ ਦਾ ਟੁਕੜਾ"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "ਬੋਧੀ ਮੱਠ"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "ਬੱਡੀ ਬਿਲਡ"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "ਬੱਗ ਫਿਕਸ ਲੂਪ = ਦੁਹਰਾਓ, ਅਲੱਗ ਕਰੋ, ਅਨੁਮਾਨ ਲਗਾਓ, ਇੱਕ ਬਦਲਾਅ ਦਾ ਟੈਸਟ ਕਰੋ, ਤਸਦੀਕ ਕਰੋ।"
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "ਇੱਕ ਅਜਿਹਾ ਪਾਠ ਤਿਆਰ ਕਰੋ ਜੋ ਤੁਹਾਡੇ ਅਨੁਸਾਰ ਪ੍ਰਤੀਕਿਰਿਆ ਕਰੇ।"
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "ਵਿਗਿਆਨ ਪ੍ਰੋਜੈਕਟ ਦਾ ਵਿਚਾਰ ਤਿਆਰ ਕਰੋ"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "ਇੱਕ ਉਪਯੋਗੀ ਮਾਨਸਿਕ ਮਾਡਲ ਬਣਾਓ"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "ਜਲਵਾਯੂ ਅਨੁਕੂਲਨ 'ਤੇ ਇੱਕ ਲੇਖ ਦੀ ਰੂਪਰੇਖਾ ਤਿਆਰ ਕਰੋ"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "ਗਤੀ ਵਧਾਓ, ਇੱਕ ਉਪਯੋਗੀ ਪਹਿਲੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ, ਅਤੇ ਬਿਨਾਂ ਵਜ੍ਹਾ ਤਾਰੀਫ਼ ਕੀਤੇ ਫੈਸਲਿਆਂ ਲਈ ਪੁੱਛੋ।"
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "ਪਾਸਪੋਰਟ ਬਣਾਓ"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "ਪਾਠ ਨੂੰ ਉਸ ਚੀਜ਼ ਦੇ ਆਲੇ-ਦੁਆਲੇ ਬਣਾਓ ਜੋ ਤੁਸੀਂ ਸਿੱਖਣਾ ਚਾਹੁੰਦੇ ਹੋ।"
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "ਸਧਾਰਨ ਭਾਸ਼ਾ ਵਿੱਚ ਵਿਆਖਿਆ ਮਿਲ ਕੇ ਤਿਆਰ ਕਰੋ।"
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "ਇੱਕ ਸਮੇਂ ਵਿੱਚ ਇੱਕ ਸਟੀਕ ਸਵਾਲ ਦਾ ਜਵਾਬ ਦੇ ਕੇ ਸਮਝ ਵਧਾਓ।"
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "ਤੁਹਾਡੀ ਡੈੱਕ ਤਿਆਰ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "ਤੁਹਾਡੀ ਕਵਿਜ਼ ਤਿਆਰ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "ਖਰੀਦਦਾਰ ਦੀ ਸ਼ਕਤੀ"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "ਖਰੀਦਦਾਰ ਦੀ ਪਸੰਦ ਸਿਰਫ਼ ਇੱਕ ਕਾਰਕ ਹੈ। ਲਾਗਤਾਂ, ਤਕਨਾਲੋਜੀ, ਟੈਕਸ ਅਤੇ ਇਨਪੁਟ ਕੀਮਤਾਂ ਸਪਲਾਈ ਨੂੰ ਪ੍ਰਭਾਵਿਤ ਕਰ ਸਕਦੀਆਂ ਹਨ।"
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "ਜੰਗ ਦੇ ਸਮੇਂ ਬ੍ਰਿਟੇਨ ਦਾ ਕੈਬਨਿਟ ਰੂਮ"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "ਹਰ ਕੀਮਤ ਦੇ ਬਦਲਾਅ ਨੂੰ ਮੰਗ ਵਿੱਚ ਤਬਦੀਲੀ ਕਹਿਣਾ।"
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "ਸੱਤਾ ਦਾ ਕੇਂਦਰ"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "ਸੱਤਾ ਦਾ ਕੇਂਦਰ, ਜ਼ਮੀਨੀ ਪੱਧਰ ਦਾ ਜੀਵਨ, ਅਤੇ ਸਿਸਟਮ ਦਾ ਕਿਨਾਰਾ ਵੱਖੋ-ਵੱਖਰੇ ਇਤਿਹਾਸ ਨੂੰ ਉਜਾਗਰ ਕਰਦੇ ਹਨ।"
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "ਸਾਮਰਾਜ ਉੱਤੇ ਚਰਚਿਲ ਨੂੰ ਚੁਣੌਤੀ ਦਿਓ"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "ਵਿਚਾਰਾਂ ਨੂੰ ਚੁਣੌਤੀ ਦਿਓ ਜਦੋਂ ਕਿ ਵਿਅਕਤੀ ਆਪਣੇ ਸਮੇਂ ਦੇ ਵਿਸ਼ਵ ਦ੍ਰਿਸ਼ਟੀਕੋਣ ਦਾ ਬਚਾਅ ਕਰ ਰਿਹਾ ਹੋਵੇ।"
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "ਮੈਨੂੰ ਚੁਣੌਤੀ ਦਿਓ"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "ਮੇਰੇ ਆਖਰੀ ਜਵਾਬ ਨੂੰ ਇੱਕ ਉਲਟ ਉਦਾਹਰਣ, ਸੀਮਾ ਕੇਸ, ਜਾਂ ਲੁਕਵੀਂ ਧਾਰਨਾ ਨਾਲ ਚੁਣੌਤੀ ਦਿਓ। ਸਿਰਫ਼ ਇੱਕ ਸਵਾਲ ਪੁੱਛੋ।"
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "ਯੂਰਪ ਵਿੱਚ ਤਾਨਾਸ਼ਾਹੀ ਨਾਲ ਲੜਨ ਅਤੇ ਸਾਮਰਾਜ ਦੀ ਰੱਖਿਆ ਕਰਨ ਵਿਚਕਾਰ ਤਣਾਅ ਨੂੰ ਚੁਣੌਤੀ ਦਿਓ।"
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "ਮੌਜੂਦਾ ਕਲਾਕ੍ਰਿਤੀ ਦੇ ਸਭ ਤੋਂ ਕਮਜ਼ੋਰ ਹਿੱਸੇ ਨੂੰ ਚੁਣੌਤੀ ਦਿਓ। ਸਿੱਧੇ ਬਣੋ, ਧਾਰਨਾ ਦਾ ਨਾਮ ਦੱਸੋ, ਅਤੇ ਮੈਨੂੰ ਇਸਦਾ ਬਚਾਅ ਕਰਨ ਜਾਂ ਇਸਨੂੰ ਸੋਧਣ ਲਈ ਕਹੋ।"
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "ਕਮਜ਼ੋਰ ਧਾਰਨਾਵਾਂ, ਅਸਪਸ਼ਟ ਦਾਅਵਿਆਂ, ਅਤੇ ਗੁੰਮ ਹੋਏ ਸਬੂਤਾਂ ਨੂੰ ਚੁਣੌਤੀ ਦਿਓ ਜਦੋਂ ਕਿ ਉਪਭੋਗਤਾ ਨੂੰ ਫੈਸਲਾ ਲੈਣ ਵਾਲੇ ਵਜੋਂ ਬਰਕਰਾਰ ਰੱਖੋ।"
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "ਚਾਂਦਨੀ ਚੌਕ"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "ਚਾਂਗਆਨ"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "ਚਾਂਗਆਨ ਤਾਂਗ ਦੀ ਰਾਜਧਾਨੀ ਸੀ"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "ਚਾਂਗਆਨ, 742"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "ਦਰਸ਼ਕ ਬਦਲੋ"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "ਡੈੱਕ ਬਦਲੋ"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "ਇਨਪੁਟਸ ਬਦਲੋ ਅਤੇ ਆਉਟਪੁੱਟ ਦੀ ਵਿਆਖਿਆ ਕਰੋ।"
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "ਪਾਸਪੋਰਟ ਬਦਲੋ"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "ਸੈੱਟਅੱਪ ਬਦਲੋ"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "ਇੱਕੋ ਵਾਰ ਵਿੱਚ ਬਦਲਾਅ"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "ਐਗਜ਼ੀਕਿਊਸ਼ਨ ਆਰਡਰ ਦੀ ਜਾਂਚ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਸਿੰਟੈਕਸ ਬਦਲਦਾ ਹੈ।"
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "ਇੱਕੋ ਸਮੇਂ ਕਈ ਫਾਈਲਾਂ ਨੂੰ ਬਦਲਣਾ ਅਸਲ ਕਾਰਨ ਨੂੰ ਲੁਕਾ ਸਕਦਾ ਹੈ ਭਾਵੇਂ ਲੱਛਣ ਗਾਇਬ ਹੋ ਜਾਵੇ।"
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "ਮੇਰੀ ਭਵਿੱਖਬਾਣੀ ਦੀ ਜਾਂਚ ਕਰੋ"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "ਅੱਗੇ ਵਧਣ ਤੋਂ ਪਹਿਲਾਂ ਸਮਝ ਦੀ ਜਾਂਚ ਕਰੋ"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "ਜਾਂਚ ਕਰੋ ਕਿ ਕੀ ਅਸਿੰਕ ਨਤੀਜਾ ਪੜ੍ਹਨ ਤੋਂ ਪਹਿਲਾਂ ਉਸਦੀ ਉਡੀਕ ਕੀਤੀ ਗਈ ਹੈ।"
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "ਆਮ ਜਾਲਾਂ ਦੀ ਜਾਂਚ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "ਇੱਕ ਸੰਕਲਪ ਅਤੇ ਸ਼ੁਰੂਆਤੀ ਪੱਧਰ ਚੁਣੋ। ਤੁਹਾਡਾ ਟਿਊਟਰ ਇੱਕ ਛੋਟਾ ਹਿੱਸਾ ਸਿਖਾਉਂਦਾ ਹੈ, ਇਸਦੀ ਜਾਂਚ ਕਰਦਾ ਹੈ, ਫਿਰ ਹਰ ਜਵਾਬ ਤੋਂ ਬਾਅਦ ਵਿਵਸਥਿਤ ਕਰਦਾ ਹੈ।"
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "ਪਹੁੰਚਣ ਦਾ ਬਿੰਦੂ ਚੁਣੋ"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "ਸਹੀ ਦਾਖਲਾ ਬਿੰਦੂ ਚੁਣੋ"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "ਅਗਲਾ ਚੁਣੋ"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "ਮੰਜ਼ਿਲ ਚੁਣੋ।"
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "ਕਮਰੇ ਦਾ ਸਬੰਧ ਅਤੇ ਉਦੇਸ਼ ਚੁਣੋ।"
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "ਸਭ ਤੋਂ ਮਜ਼ਬੂਤ ਦਾਖਲਾ ਬਿੰਦੂ ਚੁਣੋ।"
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "ਸਮਾਂ ਸਲਾਈਸ ਚੁਣੋ"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "ਆਪਣਾ ਪਹੁੰਚਣ ਦਾ ਬਿੰਦੂ ਚੁਣੋ।"
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "ਨਾਗਰਿਕ-ਵਕੀਲ ਸ਼ਾਹੀ ਧਾਰਨਾਵਾਂ ਦੀ ਜਾਂਚ ਕਰ ਰਿਹਾ ਹੈ"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "ਨਾਗਰਿਕ ਧਾਰਮਿਕਤਾ, ਸਿੱਖਿਆ ਅਤੇ ਵਫ਼ਾਦਾਰੀ ਨੂੰ ਤੋਲਦੇ ਹਨ"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "ਨਾਗਰਿਕਤਾ ਰਾਜਨੀਤਿਕ ਆਵਾਜ਼ ਨਿਰਧਾਰਤ ਕਰਦੀ ਹੈ"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "ਨਾਗਰਿਕਤਾ ਸੀਮਤ ਸੀ"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "ਦਾਅਵੇ ਦੀ ਸਪੱਸ਼ਟਤਾ"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "ਦਾਅਵਾ ਟਰੈਕਰ"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "ਦਰਸ਼ਕਾਂ ਨੂੰ ਸਪੱਸ਼ਟ ਕਰੋ"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "ਵਿਵਹਾਰ ਨੂੰ ਪੜ੍ਹਨ ਤੋਂ ਪਹਿਲਾਂ ਅਦਾਕਾਰਾਂ ਨੂੰ ਸ਼੍ਰੇਣੀਬੱਧ ਕਰਦਾ ਹੈ।"
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "ਕਲੀਅਰੈਂਸ ਬਾਕੀ ਹੈ"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "ਪੌੜੀ ਚੜ੍ਹੋ"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "ਪ੍ਰੋਫਾਈਲ ਬੰਦ ਕਰੋ"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "ਵਿਸ਼ੇ ਬੰਦ ਕਰੋ"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "ਨੇੜੇ, ਪਰ ਇੱਕ ਲਿੰਕ ਗੁੰਮ ਹੈ"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "ਕੱਪੜੇ ਦੇ ਰਾਸ਼ਨ ਦਾ ਬੰਡਲ"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "ਕੱਪੜੇ ਤੇਜ਼ੀ ਨਾਲ ਰੈਂਕ ਦਾ ਸੰਕੇਤ ਦਿੰਦੇ ਹਨ"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "ਕੋਚ ਦੀਆਂ ਕਾਰਵਾਈਆਂ"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "ਕੋਚ ਨਿਯੰਤਰਣ"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "ਕੋਚ ਪ੍ਰਤੀਕਿਰਿਆ"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "ਕੋਚ ਸਾਈਡਕਾਰ"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "ਬੋਧਾਤਮਕ ਭਾਰ"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "ਸਹਿਯੋਗ ਸ਼ੈਲੀ"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "ਸਹਿਯੋਗੀ ਹਦਾਇਤ"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "ਸਹਿਯੋਗੀ ਅਧਿਐਨ ਕਮਰਾ"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "ਉਦਾਹਰਣਾਂ, ਤੱਥ, ਹਵਾਲੇ, ਜਾਂ ਰੁਕਾਵਟਾਂ ਇਕੱਠੀਆਂ ਕਰੋ ਜੋ ਕੰਮ ਦਾ ਸਮਰਥਨ ਕਰਦੇ ਹਨ।"
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "ਵਪਾਰਕ ਮਨਜ਼ੂਰੀ"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "ਦਿੱਲੀ ਵਿੱਚ ਕਮੇਟੀ ਰੂਮ"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "ਆਮ ਗਲਤੀ"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "ਸਾਰੇ ਮੋਡਾਂ ਦੀ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "ਇਰਾਦਿਆਂ, ਸਮਕਾਲੀ ਆਲੋਚਨਾ, ਬਾਅਦ ਦੇ ਨਤੀਜਿਆਂ, ਅਤੇ ਆਧੁਨਿਕ ਨਿਰਣੇ ਦੀ ਤੁਲਨਾ ਕਰੋ, ਬਿਨਾਂ ਵਿਅਕਤੀ ਨੂੰ ਹੀਰੋ ਜਾਂ ਖਲਨਾਇਕ ਬਣਾਏ।"
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "ਵਿਰਾਸਤ ਦੀ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "ਬਾਗੀ ਅਤੇ ਕੰਪਨੀ ਦੀ ਜਾਣਕਾਰੀ ਦੀ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "ਇਸ ਦੀ ਅੱਜ ਦੇ ਸਮੇਂ ਨਾਲ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "ਅੱਜ ਦੇ ਸਮੇਂ ਨਾਲ ਤੁਲਨਾ ਕਰੋ"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "ਦੋ ਨੇੜਲੇ ਕੇਸਾਂ ਦੀ ਤੁਲਨਾ ਕਰੋ।"
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "ਵਿਚਾਰ ਨੂੰ ਇੱਕ ਉਪਯੋਗੀ ਮਾਨਸਿਕ ਮਾਡਲ ਵਿੱਚ ਸੰਕੁਚਿਤ ਕਰੋ।"
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "ਕਨਸੈਪਟ ਬੋਰਡ"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "ਸੰਖੇਪਤਾ ਉਦੋਂ ਹੀ ਮਦਦ ਕਰਦੀ ਹੈ ਜਦੋਂ ਦਲੀਲ ਕੰਮ ਕਰਦੀ ਹੈ। ਲੰਬਾਈ ਇੱਥੇ ਮੁੱਖ ਨਿਦਾਨ ਨਹੀਂ ਹੈ।"
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "ਸਬੂਤਾਂ ਦੇ ਸਮਰਥਨ ਨਾਲ ਵਿਰੋਧਾਭਾਸਾਂ, ਬਚਾਅ ਅਤੇ ਨਤੀਜਿਆਂ ਦਾ ਸਾਹਮਣਾ ਕਰੋ।"
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "ਮੰਗ ਦੇ ਨਾਲ ਗਤੀ ਨੂੰ ਮੰਗ ਵਿੱਚ ਤਬਦੀਲੀ ਨਾਲ ਉਲਝਾਉਂਦਾ ਹੈ।"
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "ਲੇਖਾ ਮੁਨਾਫੇ ਨੂੰ ਉਸ ਨਕਦੀ ਨਾਲ ਉਲਝਾਉਣਾ ਜੋ ਅਸਲ ਵਿੱਚ ਵੰਡੀ ਜਾਂ ਮੁੜ ਨਿਵੇਸ਼ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ।"
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "ਧਾਰਨਾਵਾਂ, ਨਕਦ ਪ੍ਰਵਾਹ, ਅਤੇ ਮੁਲਾਂਕਣ ਨੂੰ ਜੋੜੋ"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "ਗਾਈਡ ਦੁਆਰਾ ਚੁਣੀਆਂ ਗਈਆਂ ਰੂੜੀਵਾਦੀ ਸਥਾਨਕ ਬਾਹਰੀ ਪਰਤਾਂ"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "ਸੰਦਰਭ ਸਮਰਥਨ ਨਹੀਂ ਹੈ"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "ਸੰਦਰਭ ਨੋਟਸ"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "ਸਿੱਖਣਾ ਜਾਰੀ ਰੱਖੋ"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "Google ਨਾਲ ਜਾਰੀ ਰੱਖੋ"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "ਇਕਰਾਰਨਾਮਾ ਕਾਨੂੰਨ ਵਿਚਾਰ"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "language": "Portuguese",
+  "locale": "pt",
+  "namespace": "blog:feynman-tutor-prompts-and-study-loop",
+  "sourceHash": "6b7520e7377252680efcd790b849d380475d7f64160b55f2350cd1c3c5c57c2a",
+  "entries": [
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"Faça-me perguntas antes de explicar demasiado.\""
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"Verifique a minha resposta antes de dar a sua.\""
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"Dê-me uma versão mais difícil depois de eu tentar.\""
+    },
+    {
+      "key": "site.1d42dc0bfb9b08e820",
+      "source": "\"Help me simplify recursion\"",
+      "value": "\"Ajude-me a simplificar recursão\""
+    },
+    {
+      "key": "site.67ad0ccec8a0f07868",
+      "source": "\"I'll explain gravity\"",
+      "value": "\"Vou explicar a gravidade\""
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"Mantenha-o adequado para iniciantes.\""
+    },
+    {
+      "key": "site.4ad90215ccef01e1b6",
+      "source": "\"Test my understanding of inflation\"",
+      "value": "\"Teste a minha compreensão da inflação\""
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "\"Use exemplos do meu exame, projeto ou vida diária.\""
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "Prompts de IA"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "Peça uma primeira tarefa minúscula."
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "Termine com uma recapitulação escrita por você mesmo."
+    },
+    {
+      "key": "site.f8b5d22910d6837d65",
+      "source": "Feynman Tutor prompts and study loop",
+      "value": "Prompts do Feynman Tutor e ciclo de estudo"
+    },
+    {
+      "key": "site.c77b422a4c9fb1ca67",
+      "source": "For Feynman Tutor, a useful practice loop is:",
+      "value": "Para Feynman Tutor, um ciclo de prática útil é:"
+    },
+    {
+      "key": "site.18dcb876cb96e9cee5",
+      "source": "For this mode, the job is simple: Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Neste modo, a tarefa é simples: tente explicar um conceito de forma simples. Seu tutor identifica lacunas, faz perguntas e ajuda você a reconstruir a explicação."
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "Bons prompts geralmente incluem três coisas: a disciplina, seu nível atual e o tipo de ajuda que você quer. Você não precisa de uma formulação perfeita. Só precisa de contexto suficiente para a sessão começar."
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "Se a resposta parecer ampla demais, estreite-a. Peça um exemplo, um equívoco, uma pergunta de verificação ou um próximo passo. Se parecer fácil demais, peça um desafio. Se parecer difícil demais, peça uma ponte a partir do que você já sabe."
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "Torne a saída mais útil"
+    },
+    {
+      "key": "site.c39efca26acbacc063",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Feynman Tutor on inspir.",
+      "value": "Ideias de prompt e um ciclo de estudo repetível para obter resultados úteis de aprendizagem com Tutor Feynman no inspir."
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "Ler uma resposta de IA não é o mesmo que aprender. Depois da primeira resposta, peça ao modo que faça você fazer algo com a ideia."
+    },
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "Percursos de aprendizagem relacionados"
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "Peça feedback sobre a parte que pareceu incerta."
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "Responda antes de pedir a solução."
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "Comece com um pedido claro"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "Declare o objetivo em uma frase."
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "habilidades de estudo"
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Essa recapitulação final é importante. Quando você explica a ideia de volta, revela o que está sólido e o que ainda foi emprestado da IA."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "As melhores sessões de aprendizagem são ajustáveis. Este modo é ajustado para Tutor Feynman com seus próprios prompts, exemplos e fluxo de aprendizagem."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "A forma mais rápida de obter valor com Tutor Feynman é dar à IA uma tarefa de aprendizagem, não apenas um tema. Um tema diz aquilo em que você está interessado. Uma tarefa de aprendizagem diz que tipo de ajuda você precisa."
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "Depois, acrescente uma restrição que torne a sessão mais pessoal:"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "Pensamento"
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "Experimente um destes inícios:"
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "Transforme o modo em prática"
+    },
+    {
+      "key": "site.1f51099bf0f757ebc2",
+      "source": "Use Feynman Tutor when this is the right mode for the job. If you want a related path, try Misconception Doctor. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Use Tutor Feynman quando este for o modo certo para a tarefa. Se quiser um caminho relacionado, experimente Doutor em Equívocos. Você também pode explorar o Blog de aprendizagem com IA para ver métodos de estudo, aprendizagem socrática, flashcards, roleplay e recordação ativa."
+    }
+  ]
+}

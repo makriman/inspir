@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Basque",
+  "locale": "eu",
+  "namespace": "route:prompts",
+  "sourceHash": "52bbfc34cc3a087619a8c0a53a101d03dc7252f34f52d3fa43b2e29e83344528",
+  "part": {
+    "index": 4,
+    "total": 5
+  },
+  "entries": [
+    {
+      "key": "site.26edff5d5495ab0c1b",
+      "source": "starter prompts",
+      "value": "hasierako promptak"
+    },
+    {
+      "key": "site.9c208cdb56de14af4f",
+      "source": "State the dilemma and identify stakeholders.",
+      "value": "Adierazi dilema eta identifikatu interesdunak."
+    },
+    {
+      "key": "site.e3cfac713ef7dae49c",
+      "source": "Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Sartu pertsonaia historiko batekin elkarrizketan. Egin galderak, jarri ideiak zalantzan, eta entzun mundua haren garaiaren, balioen eta mugen bidez."
+    },
+    {
+      "key": "site.814b66298cd294012b",
+      "source": "Stop procrastinating on math",
+      "value": "Utzi matematika atzeratzeari"
+    },
+    {
+      "key": "site.9f5c1a336c12972e0f",
+      "source": "Story concepts about friendship",
+      "value": "Adiskidetasunari buruzko istorio-kontzeptuak"
+    },
+    {
+      "key": "site.3ceff448ddf58eb6f8",
+      "source": "Story Tutor",
+      "value": "Istorio tutorea"
+    },
+    {
+      "key": "site.84185234696ee78adc",
+      "source": "Structure a study room",
+      "value": "Antolatu ikasketa-gela bat"
+    },
+    {
+      "key": "site.f151b055e376ea853c",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Antolatu apunteak gakoetan, xehetasunetan eta laburpenean"
+    },
+    {
+      "key": "site.2896f2375e8fe16d84",
+      "source": "Student Forum",
+      "value": "Ikasleen foroa"
+    },
+    {
+      "key": "site.0bd4a138ccf2fdb113",
+      "source": "study activity",
+      "value": "ikasketa-jarduera"
+    },
+    {
+      "key": "site.bce65c6d857e0764a5",
+      "source": "study challenge",
+      "value": "ikasketa-erronka"
+    },
+    {
+      "key": "site.20a47421a6093a9f3f",
+      "source": "Study Challenges",
+      "value": "Ikasketa-erronkak"
+    },
+    {
+      "key": "site.d7dc630f49231c6164",
+      "source": "study goals",
+      "value": "ikasketa-helburuak"
+    },
+    {
+      "key": "site.dd1400a8f4de4b4168",
+      "source": "study groups",
+      "value": "ikasketa-taldeak"
+    },
+    {
+      "key": "site.c8bb344d09ab3987e8",
+      "source": "Study Groups",
+      "value": "Ikasketa-taldeak"
+    },
+    {
+      "key": "site.79d5732db1f79a3cd3",
+      "source": "study guide",
+      "value": "ikasketa-gida"
+    },
+    {
+      "key": "site.29cff366f23f6fafe9",
+      "source": "Study Guide Generator",
+      "value": "Ikasketa-gida sortzailea"
+    },
+    {
+      "key": "site.9331a629f68113aa86",
+      "source": "Study Plan Builder",
+      "value": "Ikasketa-planen sortzailea"
+    },
+    {
+      "key": "site.81d4b02268c4e99003",
+      "source": "study resources",
+      "value": "ikasketa-baliabideak"
+    },
+    {
+      "key": "site.3c46a0b4d80a98cf5c",
+      "source": "study room",
+      "value": "ikasketa-gela"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "Ikasketa-segidak"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "Ikasketa-tenporizadorea"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "Arrakasta: ikaslea eredu mental argiago batekin, hurrengo urrats batekin eta jarraitzeko konfiantzarekin ateratzen da."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "Laburbildu eztabaida bat"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "Laburtu 2. kapitulua"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Laburtu testu luzea ideia nagusi, egitura, definizio, adibide eta gogoratzeko galderetan."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "Laburbildu nire aurrerapena"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "Laburtu nire apunte zakarrak"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "Laburbildu ereduak, diagnostikatu eremu ahulak eta aukeratu hurrengo ekintzak."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "Laburbildu ereduak, identifikatu oharrak, azaldu metodoak eta proposatu hurrengo analisiak."
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "Laburtu artikulu hau"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Laburbildu lorpenak, hutsak eta datorren astea"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "Laburbildu, argitu egitura, identifikatu termino garrantzitsuak eta gehitu gogoratze-egiaztapenak."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "Laburbildu, argitu hiztegia, egin inferentzia-galderak eta lotu ideiak."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "Laburbildu, identifikatu ereduak eta bihurtu hausnarketa plan batean."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "Laburbildu, etiketatu, gehitu oharrak eta proposatu besteek nola erabili beharko luketen."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "Babestu kontzentrazioa distrakzio gutxiko atzeko audioarekin."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "Babestu ikasketa koherentea errenkaden jarraipen errukitsuarekin."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "Babestu motibazioa eta iraunkortasuna modu oinarritu eta ez-klinikoan."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "Azaleratu uste okerra, kontrastatu eredu zuzenarekin eta praktikatu transferentzia."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "Etiketatu, ordenatu eta lotu oharrak"
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Hitz egin pertsona historiko batekin"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "Hitz egin Cleopatrarekin"
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "zeregin-tenporizadorea"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "Zereginen tenporizadorea"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "Irakatsi edozein gai berotasunez, argitasunez eta adibide erabilgarriekin."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "Irakatsi iturrien ebaluazio kritikoa."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "Irakatsi ekonomia agertokien eta trukeen bidez."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "Irakatsi arrazoiketa etikoa dilema egituratuen bidez."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "Irakatsi zatikiak istorio gisa"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "Irakatsi geografia lekuaren, pertsonen, ingurumenaren eta mugimenduaren sistema konektatu gisa."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "Irakatsi historia kausa-arrazoiketaren bidez."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "Irakatsi ikasleei artea behatzen, interpretatzen eta gozatzen."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "Irakatsi modelizazio finantzarioa"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "Erakutsi nola funtzionatzen duen interesak"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Irakatsi Porterren bost indarrak"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "Irakatsi Python-eko begiztak"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "Irakatsi memorizazioa espazio-irudien eta gogoratzearen bidez."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "Irakatsi programazio-kontzeptuak eta arazketa ikaslearen parte-hartzearekin."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "Irakatsi erritmoaren oinarriak"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "Irakatsi zientzia frogen, aldagaien, aurreikuspenaren eta esperimentazio seguruaren bidez."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "Irakatsi kasu errealisten eta erabakien ondorioen bidez."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "Irakatsi hiztegia testuinguruaren eta gogoratze-praktikaren bidez."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Kontatu eszena bat, pausatu aurreikuspenerako edo hausnarketarako, eta lotu berriro kontzeptuarekin."
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "proba-sortzailea"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "Probatu inflazioari buruz dudan ulermena"
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "Testu-laburtzailea"
+    },
+    {
+      "key": "site.9d5ac14201d63dade2",
+      "source": "The prompt searches this library is built to answer.",
+      "value": "Liburutegi hau erantzuteko eraikita dagoen prompt-bilaketak."
+    },
+    {
+      "key": "site.ec1bb861632e4a60ff",
+      "source": "The prompts are designed to start active learning loops: explanation, Socratic questioning, homework hints, quizzes, flashcards, critique, debate, planning, and review.",
+      "value": "Promptak ikaskuntza-ziklo aktiboak hasteko diseinatuta daude: azalpena, galdeketa sokratikoa, etxeko lanetarako pistak, galdetegiak, ikasketa-txartelak, kritika, debatea, plangintza eta berrikuspena."
+    },
+    {
+      "key": "site.beb3b6eaa65f4e2abe",
+      "source": "The same topic can need a different prompt depending on whether the learner needs an explanation, a hint, a quiz, a debate, or a plan.",
+      "value": "Gai berak prompt desberdina behar dezake ikasleak azalpena, pista, galdetegia, debatea edo plana behar duenaren arabera."
+    },
+    {
+      "key": "site.1227208dc6bf29e482",
+      "source": "These are not generic copy-paste tricks. Each starter is attached to a public mode with a specific teaching behavior: questioning, hints, quizzes, flashcards, critique, roleplay, planning, or review.",
+      "value": "Hauek ez dira kopia-itsatsi trikimailu generikoak. Hasiera bakoitza irakaskuntza-jokabide zehatza duen modu publiko bati lotuta dago: galdeketa, pistak, galdetegiak, ikasketa-txartelak, kritika, roleplaya, plangintza edo berrikuspena."
+    },
+    {
+      "key": "site.bb59ae830423e9875f",
+      "source": "They are written for inspir's public learning modes, but the patterns also show how to ask AI for better explanations, hints, questions, practice, and feedback.",
+      "value": "inspir-en ikaskuntza-modu publikoetarako idatzita daude, baina ereduek AIari azalpen, pista, galdera, praktika eta feedback hobeak eskatzeko modua ere erakusten dute."
+    },
+    {
+      "key": "site.ca6bb397632a998774",
+      "source": "Think carefully about big questions",
+      "value": "Pentsatu arretaz galdera handiei buruz"
+    },
+    {
+      "key": "site.802eda09a2d1478256",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Pentsatu diagramen eta ikusizko zirriborroen bidez"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "Pentsamendua"
+    },
+    {
+      "key": "site.b8b3a2029c82928fec",
+      "source": "Time a problem set",
+      "value": "Neurtu ariketa multzo baten denbora"
+    },
+    {
+      "key": "site.00cdcfa826b547a2c0",
+      "source": "Time individual tasks and see effort",
+      "value": "Neurtu zeregin bakoitzaren denbora eta ikusi ahalegina"
+    },
+    {
+      "key": "site.8393c4718a0ab930e7",
+      "source": "time tracking",
+      "value": "denbora-jarraipena"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Denbora-bidaia"
+    },
+    {
+      "key": "site.b5de165cd236398a33",
+      "source": "timed test",
+      "value": "denboratutako proba"
+    },
+    {
+      "key": "site.c1f2f784477421cc0f",
+      "source": "Tiny explanation, example, user action, specific feedback, targeted repair or progress, recap, and mastery checkpoint.",
+      "value": "Azalpen txikia, adibidea, erabiltzailearen ekintza, feedback zehatza, konponketa edo aurrerapen fokuratua, laburpena eta menperatze-kontrolgunea."
+    },
+    {
+      "key": "site.a31ae9a6964e2f0a17",
+      "source": "Trace chains, compare importance, discuss consequences, and ask counterfactual questions.",
+      "value": "Jarraitu kateak, konparatu garrantzia, eztabaidatu ondorioak eta egin kontrafaktiko galderak."
+    },
+    {
+      "key": "site.895a7dace1b9ada67b",
+      "source": "Trace why events happened",
+      "value": "Aztertu zergatik gertatu ziren gertaerak"
+    },
+    {
+      "key": "site.7ac967e6972ee5e7f5",
+      "source": "Track attempts, shrink goals when needed, and repair broken streaks.",
+      "value": "Jarraitu saiakerak, txikitu helburuak behar denean eta konpondu hautsitako errenkadak."
+    },
+    {
+      "key": "site.c675fc274ad17a1cb4",
+      "source": "Track deadlines and next actions",
+      "value": "Jarraitu epemugei eta hurrengo ekintzei"
+    },
+    {
+      "key": "site.af26deb023c5d0063d",
+      "source": "Track essay drafting focus",
+      "value": "Neurtu idazlana zirriborratzeko foku-denbora"
+    },
+    {
+      "key": "site.d0d8eff92e1afc3d45",
+      "source": "Track essay outline work",
+      "value": "Jarraitu idazlanaren eskema-lana"
+    },
+    {
+      "key": "site.fd1f501b443adac02b",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Jarraitu ikasketa-segidei, konpondu huts egindako egunak, eta diseinatu bizitza errealari eusten dion gutxieneko ikasketa-ohitura bideragarri bat."
+    },
+    {
+      "key": "site.fc86028b09428f3fbc",
+      "source": "Treat each turn as collaborative work: draft, critique, revise, ask for a decision, update open questions, and hand the next useful move to either the user or AI. Challenge weak ideas when the selected mode calls for it.",
+      "value": "Tratatu txanda bakoitza lan kolaboratibo gisa: zirriborratu, kritikatu, berrikusi, eskatu erabaki bat, eguneratu galdera irekiak eta eman hurrengo mugimendu erabilgarria erabiltzaileari edo AIari. Jarri erronka ideia ahulei hautatutako moduak hala eskatzen duenean."
+    },
+    {
+      "key": "site.93f978228f89334d15",
+      "source": "true false",
+      "value": "egia gezurra"
+    },
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Saiatu kontzeptu bat modu sinplean azaltzen. Zure tutoreak hutsuneak antzematen ditu, galderak egiten ditu eta azalpena berreraikitzen laguntzen dizu."
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Bihurtu gai zabal bat ikerketa-galdera, bilaketa-termino, eskema eta iturri-oharretan."
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "Bihurtu kontzeptu, argudio, problema, testu edo erabaki bat galdera-kate fokalizatu batean. Zure lagunak erantzun bakoitza entzuten du, suposizioak eta hutsuneak mapatzen ditu, eta zure azken sintesira bultzatzen zaitu. Saiatu: \"Lagundu aukera-kostua ulertzen.\""
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Bihurtu syllabusa ikasketa-plan"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Bihurtu gai bat, ikasketa-programa edo apunteak praktika-proba errealista batean, atalekin, denborarekin, kalifikazio-gidarekin eta berrikusteko urratsekin."
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "Bihurtu jarduera hurrengo urratsetan"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "Bihurtu kontzeptuak istorio, pertsonaia, gatazka eta eszena gogoangarri."
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Bihurtu diagramak, gorputz-sistemak, mapak, lan-fluxuak edo laborategiko muntaiak etiketatzeko praktika, pistekin eta erantzunen egiaztapenekin."
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "Bihurtu ideiak mugarri"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Bihurtu asmoak errepika daitezkeen ikaskuntza-ohitura txikitan, abiarazleekin, sariekin eta errekuperazio-planekin."
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "Bihurtu ikaskuntza erronka labur eta egituratuetan."
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "Bihurtu materiala errepaso-gida"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Bihurtu nire apunteak errepaso-fitxa"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Bihurtu oharrak parekatze-jokoetan hiztegirako, kontzeptuetarako, pertsona/gertaeretarako, formuletarako, adibideetarako edo kausa-ondorio bikoteetarako."
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Bihurtu apunteak edo gaiak ikasteko txartel argi, erantzunekin, tranpekin eta errepasorako prompt-ekin."
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "Bihurtu aurrerapena mailetan eta misioetan"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "Bihurtu irakurketa misioetan"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Bihurtu sakabanatutako oharrak karpetetan, etiketetan, laburpenetan, esteketan eta gogoratzea errazten duten berrikuspen-ekintzetan."
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Bihurtu ikasketa-jarduera, galdetegien emaitzak, oharrak eta tenporizadoreak panel estiloko berrikuspen batean, joerekin eta hurrengo ekintzekin."
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "Bihurtu ikastea erronka"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "Bihurtu testua ikasketa-material trinko eta gogoangarri."
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Bihurtu hitzaldi hau Cornell apunte"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "Bihurtu ohar hau Q&A"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "Bihurtu asmo lausoak lor daitezkeen eguneroko ikasketa-helburuetan."
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "Bihurtu hiztegia mailatan"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "Tutoretzatu matematika pausoz pausoko arrazoiketarekin eta ikaslearen parte-hartzearekin."
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "Ulertu kodea, araztu erroreak, ikasi kontzeptuak eta eraiki proiektu txikiak urratsez urrats."
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "Ulertu lekuak, mapak eta pertsonak"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "Ulertu eskubideak, gobernua eta gizartea"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Ulertu soinua, erritmoa eta harmonia"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "Ulertu zergatik den egokia erantzun bat"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Aztertu gertaera historikoak kausen, eragileen, ondorioen eta aukera alternatiboen bidez."
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "Erabili 50/10 atsedenaldiak"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "Erabili taula trinko bat emandako erantzuna, ideia zuzena, uste okerra eta hurrengo mugimendua jasotzeko."
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "Erabili sinesgarritasun-scorecard bat eta hurrena ikertzeko galderak."
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "Erabili lan sakoneko kontratu bat emaitzarekin, bloke-planarekin, arauekin eta berrikuspenarekin."
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "Erabili taula bat aurrealdea, atzealdea, pista eta ohiko tranpa jasotzeko."
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "Erabili domina-izenak, irizpideak, mailak eta froga-adibideak."
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "Erabili aurretik/ondoren zatiak, berrikuspen-lehentasunak eta arrazoi laburrak."
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "Erabili egutegiak, kontrol-zerrendak eta arrisku-markak."
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "Erabili kasu-fitxategia, aukerak, emaitza eta ikaskuntza-oharra."
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "Erabili erronka-txartelak, puntuak, txandak eta azalpen amaierakoa."
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "Erabili aipamen-sarrerak eta falta diren eremuen kontrol-zerrenda."
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "Erabili konpromiso-txartelak, check-in gidoiak eta berreskuratze-planak."
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "Erabili atal trinko eta eszenifikatuak: agertokia, denbora-zatia, pertsonaia-muina, dosier-horma, historialari sidecarra, gomendatutako hasierako galderak, gero pertsonaia barruko trukeak noizbehinkako baieztapen-etiketekin eta eskatuz gero azalpen amaierakoarekin."
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "Erabili UI moduko atal trinkoak: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence eta Field Notes. Amaitu txanda nagusiak aukera esanguratsuekin."
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "Erabili lan-gela atal trinkoak, hala nola Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions eta Next action. Berridaztean, erakutsi proposatutako edizioak edo diff-ak batu aurretik."
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "Erabili alderaketa-taulak eta hurrengo urratseko esperimentuak."
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "Erabili baieztapen laburrak, froga-promptak eta azken debate-laburpena eskatzen denean."
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "Erabili kode-zati laburrak, iruzkinak erabilgarriak direnean bakarrik, eta test-kasuak."
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "Erabili marrazketa-argibide laburrak, etiketa-zerrendak eta kontrol bisualak."
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "Erabili Cornell atalak: seinaleak, oharrak, laburpena eta gogoratze-egiaztapenak."
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "Erabili ikastaro-txartelak, baliabide-zerrendak eta asteko lan-karga taulak."
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "Erabili panel-txartelak, joera-oharrak, puntu ahulak eta hurrengo ekintzak."
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "Erabili epe-taulak, arrisku-markak eta hurrengo ekintzak."
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "Erabili debate-txartelak, erantzun laburrak eta argudio-kalitatearen noizbehinkako puntuazioa."
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "Erabili diagnostikoa, eredu hobea, zergatik funtzionatzen duen eta egiaztapen-galdera bat."
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "Erabili diagramak testuan, rol-azalpenak eta mundu errealeko agertokiak."
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "Erabili ekuazioak, lerrokatutako urratsak eta zergatik-funtzionatzen-duen ohar laburrak."
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "Erabili aztertzaile-galderak, eredu-erantzunen formak eta feedback-scorecardak."
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "Erabili adibideak, konparatu sistemak, egin aplikazio-galderak eta bereizi datuak iritzietatik."
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "Erabili karpetak, etiketak, ohar-laburpenak, estekak eta berrikuspen-ekintzak."
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "Erabili formulak, taulak eta helburuko puntuazio-planak."
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "Erabili foroetarako prest dauden argitalpenak, erantzun-zirriborroak eta eztabaida-laburpenak."
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "Erabili helburu-txartelak, lehentasuna, denbora-estimazioa, blokeatzailea eta amaituta irizpideak."
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "Erabili talde-agenda, rolak, txandak, baliabideak eta jarraipen-zereginak."
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "Erabili talde-rolak, tenporizadore-txandak, check-in-ak eta azalpen amaierako promptak."
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "Erabili ohitura-errezeta, oztopo-plana eta 7 eguneko esperimentua."
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "Erabili pistak, kontrolguneak eta adibide txikiak azken erantzun osoen ordez."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "Erabili hipotesia, materialak, metodoa, behaketa eta azalpen atalak erabilgarriak direnean."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "Erabili ideia-menuak, hautaketa-irizpideak eta hurrengo urratseko zirriborroak."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "Erabili pertsonaia barruko elkarrizketa eta coaching-ohar laburrak."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "Erabili ideia nagusiak, eskema, definizioak eta berrikuspen-galderak."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "Erabili sailkapen-taulako arauak, puntuazioa, babes-neurriak eta hausnarketa."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "Erabili maila-taulak, XP arauak, misio-txartelak eta grindaren aurkako babes-neurriak."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "Erabili narrazioa kontzeptuak gogoangarri egiteko."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "Erabili koska-buletak, taulak edo Mermaid testua lagungarri direnean."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "Erabili zenbakidun kokapenak, irudiak eta gogoratze-kontrolguneak."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "Erabili helburuak, laburpenak, adibideak, tranpak, galderak eta hurrengo berrikuspena."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "Erabili behaketa, interpretazioa, froga eta hurrengo-galdera atalak."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "Erabili pare-bankuak, zerrenda nahasiak, erantzun-gakoa eta berrikuspen-oharrak."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "Erabili leku-txartelak, alderaketa-taulak eta mapa-promptak."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "Erabili audio-aholku praktikoak eta ikasketa-saioen konfigurazio-oharrak."
+    },
+    {
+      "key": "site.82e0284431babe11b9",
+      "source": "Use prompts to learn actively, not passively.",
+      "value": "Erabili promptak aktiboki ikasteko, ez pasiboki."
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "Erabili misioak, mailak, dominak eta boss galderak."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "Erabili euria irakurtzeko"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "Erabili euri-soinuak errepasorako"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "Erabili hausnarketa-promptak, ikaslearen indarguneak eta hurrengo esperimentu bat."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "Erabili txosten-atalak: garaipenak, frogak, blokeatzaileak, ikasgaiak, hurrengo astea."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "Erabili ikerketa-galderak, iturri-matrizeak eta sintesi-oharrak."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "Erabili baliabide-txartelak, audientzia-oharrak eta erabilera-aholkuak."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "Erabili berrikuspen-ilarak, epemugak eta konfiantza-balorazioak."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "Erabili scorecardak argitasunerako, egiturarako, frogetarako eta aurkezpen-oharretarako."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "Erabili foku-plan laburrak, kontrol-zerrendak eta saio ondoko hausnarketa-promptak."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "Erabili atal laburrak, adibideak, analogiak eta GFMrekin bateragarriak diren zerrenda edo taulak laguntzen dutenean."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "Erabili laburpen laburrak, aipu gutxiko erreferentziak eta galdera multzoak."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "Erabili ohar labur eta lagungarriak eta hurrengo ekintza praktikoak."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Erabili giro-soinu aurrezarpen sinpleak distrakzioa murrizteko irakurketan, idazketan, errepasoan edo problemak ebaztean."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "Erabili notazio sinplea, adibideak eta praktika-promptak."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "Erabili taula sinpleak, kausa-ondorio kateak eta ohar-oharrak."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "Erabili hizkera sinpleko berridazketak eta hutsune-kontrol zerrendak."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Erabili zirriborroak ikasteko tresna gisa: planifikatu diagramak, etiketatu mapa zakarrak, azaldu prozesuak edo bihurtu ideia nahasi bat bisual argiago."
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "Erabili soinu-gomendioak eta foku-konfigurazio oharrak."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "Erabili interesdunen taulak eta pro/kontra analisi orekatuak."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "Erabili STAR edo egoera-ekintza-emaitza markoak egokia denean."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "Erabili istorio-beatak eta ikaskuntza-oharrak."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "Erabili errenkada-egoera, ekintza txikia, berreskuratze-araua eta asteko hausnarketa."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "Erabili hitza, esanahia, adibidea, memoria-lotura eta praktika-prompta dituen taula."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "Erabili taulak, hizkera arrunteko ondorioak eta kontuzko oharrak."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "Erabili helburuko hizkuntza lehenik, gero feedback laburra ikasleak nahiago duen laguntza-hizkuntzan."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "Erabili zeregin-taulak, epemugak eta hurrengo-ekintza zerrendak."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "Erabili zeregin-txartelak, igarotako denbora, oharrak eta jarraipen-bloke proposamenak."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "Erabili proba-atalak, denboraketa, erantzun-gakoak, errubrikak eta berrikuspen-planak."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "Erabili Feynman teknika hutsuneak agerian uzteko eta ulermena sinplifikatzeko."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "Erabili formatu trinko hau: Irakurketa laburra: esaldi bat. Maparen eguneraketa: Claim, Assumption, Gap edo Correction bulet laburrak dagokionean. Hurrengo galdera: galdera bakarra. Lehen erantzunerako, erabili Target, Contract eta First question."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "Erabili pentsamendu-esperimentuak, argudio-mapak eta laburpen orekatuak."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Erabili denbora-lerroak, kausa-geruzak eta ondorio-mapak."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Erabili zuhaitz-egiturak, nodo-etiketak, estekak eta hurrengo urratseko promptak."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Erabili etiketatu gabeko zatiak, pista-mailak, erantzun-gakoa eta berrikuspen-promptak."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Erabili hiztegi bisuala eta begirada gidatuko promptak."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Erabili asteko planak, ordezko planak eta hurrengo ekintza txikiak."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Erabili lan/atseden zikloak, atseden-menuak eta itzultzeko promptak."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Erabili fitxa-atalak, erantzun-gakoak eta zailtasun-etiketak."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Balioztatu sentimendua, identifikatu blokeatzailea eta aukeratu hurrengo urrats txiki bat."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "analisi bisuala"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "ikaskuntza bisuala"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Ikaskuntza bisuala"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Ahozko azterketen praktika"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Hiztegi-eraikitzailea"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "asteroko txostena"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Asteko txostenak"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "puntuazio haztatua"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Zein lorpen-sistema diseinatu behar dugu?"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "Zeren inguruan egingo dugu ideia-jasa?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Zer irakurriko dugu?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Zeri buruz duzu jakin-mina gaur?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Zer esateko prestatzen ari zara?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Zer ari zara ikertzen?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Zer ari zara idazten?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Zein artelan, artista edo estilo?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Zein ikaslan dituzu esku artean?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Zein galdera handi aztertuko dugu?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Zein lanbide edo interes aztertuko dugu?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Herritartasuneko zein gai ikasiko dugu?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Zein programazio-gai edo akats landuko dugu?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Zein konpromisok behar du kontu-ematea?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Zein kontzeptu mapatu behar dugu?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Zein ikastaro edo irakasgai ari zara kudeatzen?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Zein diagrama praktikatu behar dugu etiketatzen?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Zein dilema aztertu behar dugu?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Zer egingo duzu hurrena mundu honetan?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Zer gogoratu behar duzu?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Zer ikasi behar duzu?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Zer amaitu nahi duzu gaur?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Zer egiten du auzitegi batek?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Zer egiten du produktu-kudeatzaile batek?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Zer erakusten du inkesta honek?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Ekonomiako zein ideia simulatu behar dugu?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Zein azterketarako prestatzen ari zara?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Zein azken puntuazio behar dut?"
+    }
+  ]
+}

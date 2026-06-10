@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { BookMarked, LockKeyhole, School, Sparkles } from "lucide-react";
 import {
   ArrowLink,
@@ -14,6 +14,7 @@ import {
   schoolSearchIntents,
   schoolUseCases,
 } from "@/lib/content/authority";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -23,7 +24,7 @@ import {
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Tutor For Schools",
   description:
     "White-labelled AI tutoring for schools, with guest learning modes, custom workflows, confidentiality planning, NCERT-aligned options, and funded access paths.",
@@ -59,6 +60,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/schools");
+}
 
 const featureIcons = [School, LockKeyhole, BookMarked, Sparkles] as const;
 

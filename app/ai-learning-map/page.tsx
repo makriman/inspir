@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import {
   ArrowUpRight,
   BrainCircuit,
@@ -19,6 +19,7 @@ import {
   learningMapFaqs,
   learningMapSearchIntents,
 } from "@/lib/content/learning-map";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { absoluteUrl, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -31,7 +32,7 @@ import {
 const description =
   "A crawlable map of AI learning workflows that connects public guest modes, prompt starters, learning paths, and practical guides.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Learning Map",
   description,
   alternates: metadataAlternates("/ai-learning-map"),
@@ -62,6 +63,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/ai-learning-map");
+}
 
 function workflowHowToJsonLd(workflows: ReturnType<typeof getLearningMapWorkflows>) {
   return workflows.map((workflow) => {

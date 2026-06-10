@@ -1,9 +1,25 @@
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import type { ReactNode } from "react";
 import { ArrowUpRight, Code2 } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { MarketingVideoEngine } from "@/components/marketing/MarketingVideoEngine";
+import { MarketingDomLocalizer } from "@/components/i18n/MarketingDomLocalizer";
+import { MarketingLanguageControls } from "@/components/marketing/LanguageControls";
+import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
+import type { TranslationBundle } from "@/lib/i18n/translation-types";
+import {
+  getRequestLanguage,
+  getRequestPathname,
+  getRequestRecommendedLanguage,
+  requestHasLocalePrefix,
+} from "@/lib/i18n/request-locale";
+import { localizeHref } from "@/lib/i18n/routing";
+import {
+  getCachedSiteTranslationBundle,
+  getCachedSiteTranslationEntries,
+  getSiteTranslationNamespaces,
+} from "@/lib/i18n/site-translations";
 
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
@@ -15,50 +31,73 @@ const navLinks = [
   { href: "/trust", label: "Trust" },
 ] as const;
 
-export function MarketingHeader({ hero = false }: { hero?: boolean }) {
+export async function MarketingHeader({ hero = false }: { hero?: boolean }) {
+  const chrome = await getMarketingChrome();
   return (
     <header className={`marketing-header ${hero ? "is-hero" : ""}`}>
-      <Link href="/" aria-label="inspir home" className="marketing-brand">
+      <MarketingDomLocalizer
+        language={chrome.language}
+        namespaces={chrome.translationNamespaces}
+        initialEntries={chrome.translationEntries}
+      />
+      <Link href={localizeHref("/", chrome.language)} aria-label="inspir home" className="marketing-brand">
         <InspirLogo variant="white" className="marketing-brand-mark" />
       </Link>
       <nav className="marketing-nav" aria-label="Primary navigation">
         {navLinks.map((link) => (
-          <Link key={link.href} href={link.href} className={link.href.startsWith("/chat") ? "is-primary" : ""}>
-            {link.label}
+          <Link
+            key={link.href}
+            href={localizeHref(link.href, chrome.language)}
+            className={link.href.startsWith("/chat") ? "is-primary" : ""}
+          >
+            {chrome.t(link.label)}
           </Link>
         ))}
         <a href="https://github.com/makriman/inspir" target="_blank" rel="noreferrer">
           <Code2 size={17} />
           GitHub
         </a>
+        <MarketingLanguageControls
+          currentLanguage={chrome.language}
+          recommendedLanguage={chrome.recommendedLanguage}
+          currentPathname={chrome.currentPathname}
+          hasLocalePrefix={chrome.hasLocalePrefix}
+        />
       </nav>
     </header>
   );
 }
 
-export function MarketingFooter() {
+export async function MarketingFooter() {
+  const chrome = await getMarketingChrome();
   return (
     <footer className="marketing-footer">
       <div>
         <InspirLogo variant="white" className="marketing-footer-logo" />
-        <p>Learning is for everyone.</p>
+        <p>{chrome.t("Learning is for everyone.")}</p>
       </div>
       <nav className="marketing-footer-links" aria-label="Footer links">
-        <Link href="/mission">Mission</Link>
-        <Link href="/topics">Modes</Link>
-        <Link href="/subjects">Subjects</Link>
-        <Link href="/prompts">Prompts</Link>
-        <Link href="/learn">Paths</Link>
-        <Link href="/for">For</Link>
-        <Link href="/ai-learning-map">Map</Link>
-        <Link href="/compare">Compare</Link>
-        <Link href="/schools">Schools</Link>
-        <Link href="/blog">Blog</Link>
-        <Link href="/media">Media</Link>
-        <Link href="/trust">Trust</Link>
-        <Link href="/about">About</Link>
-        <Link href="/terms">Terms</Link>
-        <Link href="/privacy">Privacy</Link>
+        {[
+          ["/mission", "Mission"],
+          ["/topics", "Modes"],
+          ["/subjects", "Subjects"],
+          ["/prompts", "Prompts"],
+          ["/learn", "Paths"],
+          ["/for", "For"],
+          ["/ai-learning-map", "Map"],
+          ["/compare", "Compare"],
+          ["/schools", "Schools"],
+          ["/blog", "Blog"],
+          ["/media", "Media"],
+          ["/trust", "Trust"],
+          ["/about", "About"],
+          ["/terms", "Terms"],
+          ["/privacy", "Privacy"],
+        ].map(([href, label]) => (
+          <Link key={href} href={localizeHref(href, chrome.language)}>
+            {chrome.t(label)}
+          </Link>
+        ))}
       </nav>
       <SocialLinks compact className="marketing-footer-social" />
     </footer>
@@ -126,7 +165,7 @@ export function MarketingHeroVideo({
   return <MarketingVideoEngine chapters={chapters} transcript={transcript} />;
 }
 
-export function ArrowLink({
+export async function ArrowLink({
   href,
   children,
   external = false,
@@ -144,10 +183,55 @@ export function ArrowLink({
     );
   }
 
+  const language = await getRequestLanguage();
   return (
-    <Link className="marketing-arrow-link" href={href}>
+    <Link className="marketing-arrow-link" href={localizeHref(href, language)}>
       {children}
       <ArrowUpRight size={17} />
     </Link>
   );
+}
+
+async function getMarketingChrome() {
+  const language = await getRequestLanguage();
+  const recommendedLanguage = await getRequestRecommendedLanguage();
+  const currentPathname = await getRequestPathname();
+  const hasLocalePrefix = await requestHasLocalePrefix();
+  const translationNamespaces = getSiteTranslationNamespaces(currentPathname);
+  const bundles =
+    language === defaultLanguage
+      ? []
+      : await Promise.all(translationNamespaces.map((namespace) => getCachedSiteTranslationBundle(language, namespace)));
+  const translationEntries =
+    language === defaultLanguage ? [] : await getCachedSiteTranslationEntries(language, translationNamespaces);
+  const textMap = buildTextMap(bundles.filter((bundle) => bundle !== null));
+
+  return {
+    language,
+    recommendedLanguage,
+    currentPathname,
+    hasLocalePrefix,
+    translationNamespaces,
+    translationEntries,
+    t: (value: string) => textMap.get(value) ?? value,
+  } satisfies {
+    language: SupportedLanguage;
+    recommendedLanguage: SupportedLanguage;
+    currentPathname: string;
+    hasLocalePrefix: boolean;
+    translationNamespaces: string[];
+    translationEntries: Array<[string, string]>;
+    t: (value: string) => string;
+  };
+}
+
+function buildTextMap(bundles: TranslationBundle[]) {
+  const map = new Map<string, string>();
+  for (const bundle of bundles) {
+    for (const [key, source] of Object.entries(bundle.sourceStrings)) {
+      const translated = bundle.strings[key];
+      if (translated) map.set(source, translated);
+    }
+  }
+  return map;
 }

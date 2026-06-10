@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates } from "@/lib/seo/config";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "Reset password",
   description: "Set a new inspir password from a secure account reset link.",
   alternates: metadataAlternates("/reset_pw"),
   robots: { index: false, follow: false, nocache: true },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/reset_pw");
+}
 
 export default function ResetPasswordPage() {
   return (

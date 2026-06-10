@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Gujarati",
+  "locale": "gu",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "શું સોશિયલ મીડિયા હાનિકારક છે?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "શું હોમવર્ક હોવું જોઈએ?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "શું અવકાશ સંશોધન યોગ્ય છે?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "મારા જવાબની સમજૂતી"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "જવાબ કેમ સાચો છે તે સમજો"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "પ્રશ્ન, તમારો જવાબ અને જો તમારી પાસે હોય તો અપેક્ષિત જવાબ પેસ્ટ કરો. તમારો મિત્ર તમને તર્ક સમજાવશે અને તમને આગલી વખતે આવી ભૂલ ટાળવામાં મદદ કરશે."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "પ્રશ્ન અને તમારો જવાબ પેસ્ટ કરો"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "પ્રેક્ટિસ"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "પ્રશ્ન, તમારો જવાબ અને જો તમારી પાસે હોય તો અપેક્ષિત જવાબ પેસ્ટ કરો. તમારો મિત્ર તમને તર્ક સમજાવશે અને તમને આગલી વખતે આવી ભૂલ ટાળવામાં મદદ કરશે."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "પ્રેક્ટિસ વિષયો શીખનારાઓ જેમને સામાન્ય જવાબ બોક્સને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને લર્નિંગ ફ્લો સાથે મારા જવાબની સમજૂતી માટે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "જવાબ કેમ સાચો છે તે સમજો"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સેશનને અનુકૂળ બનાવો"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "મારો બીજગણિતનો જવાબ ખોટો કેમ છે?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "આ વ્યાકરણ સુધારાની સમજૂતી આપો"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "મેં B પસંદ કર્યો. C સાચો કેમ છે?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "હોમવર્ક કોચ"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "સીધા જવાબ આપ્યા વગર સંકેતો"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "સંકેતો, ઉદાહરણો અને તપાસ દ્વારા હોમવર્કમાં અટવાઈ ગયા હોવ તો મદદ મેળવો, જે તમને જાતે વિચારવામાં મદદ કરશે."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "તમે કયા હોમવર્ક પ્રશ્નમાં અટવાયા છો?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "પ્રેક્ટિસ"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "નૈતિક સંકેતો, ઉદાહરણો, તપાસ અને સ્ટેપ-બાય-સ્ટેપ કોચિંગ સાથે હોમવર્કમાં અટવાઈ ગયા હોવ તો મદદ મેળવો."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "વિદ્યાર્થીઓ જેમને કોઈ પ્રશ્ન શરૂ કરવામાં, કામ તપાસવામાં અથવા ભૂલ સમજવામાં મદદની જરૂર છે."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "કોચ તમારા કામને પોતાના હાથમાં લીધા વગર તમારી વિચારવાની પ્રક્રિયાને ટેકો આપે છે, જેથી અંતિમ કામ તમારું જ રહે છે."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "આગળનું પગલું શોધો"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "ભૂલ સમજો"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "સમાન દાખલાનો અભ્યાસ કરો"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "આ શબ્દ સમસ્યા શરૂ કરવામાં મને મદદ કરો"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "મારા નિબંધના વિષય (thesis) ને તપાસો"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "મને આ ભૌતિકશાસ્ત્રના દાખલા માટે એક સંકેત આપો"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "ગણિત સ્ટેપ કોચ"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "ગણિતને એક સમયે એક પગલું કરીને ઉકેલો"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "દરેક પગલાને સમજીને ગણિત ઉકેલો. તમારો કોચ તમારા કામને તપાસે છે, ભૂલો દર્શાવે છે અને તમારો આત્મવિશ્વાસ વધારે છે."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "આપણે કયો ગણિતનો દાખલો ઉકેલવો જોઈએ?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "AI કોચ સાથે બીજગણિત, કેલ્ક્યુલસ, શબ્દ સમસ્યાઓ અને ગણિતના ખ્યાલોને એક સમયે એક પગલું કરીને ઉકેલો."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "જે વિદ્યાર્થીઓ માત્ર જવાબની નકલ કરવાને બદલે દરેક ગણિતનું પગલું કેવી રીતે કામ કરે છે તે જાણવા માંગે છે."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "આ પ્રક્રિયા દરેક પગલાને તપાસે છે, ભૂલો દર્શાવે છે અને પદ્ધતિઓને ખ્યાલ સાથે જોડે છે."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "પ્રથમ પગલું પસંદ કરો"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "દરેક પગલું તપાસો"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "પદ્ધતિ શા માટે કામ કરે છે તે સમજાવો"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "મારી સાથે 2x + 5 = 17 ઉકેલો"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "દ્વિઘાત સમીકરણોમાં મદદ કરો"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "વિકલન (derivatives) ને સ્ટેપ બાય સ્ટેપ સમજાવો"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "સાયન્સ લેબ પાર્ટનર"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "પ્રયોગો અને ખ્યાલોને સુરક્ષિત રીતે અન્વેષણ કરો"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "સુરક્ષિત નિદર્શનનું આયોજન કરો, ચલો (variables) ને સમજો, પરિણામોની આગાહી કરો અને વૈજ્ઞાનિકની જેમ પુરાવાઓ પરથી તર્ક કરો."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "આપણે કયો વિજ્ઞાનનો વિચાર કે પ્રયોગ અન્વેષણ કરી રહ્યા છીએ?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "સુરક્ષિત પ્રદર્શનોનું આયોજન કરો, ચલોને સમજો, પરિણામોની આગાહી કરો અને વૈજ્ઞાનિકની જેમ પુરાવાઓ પરથી તર્ક કરો."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "STEM વિષયો શીખનારાઓ જેમને સામાન્ય જવાબના બોક્સને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને શીખવાની પ્રક્રિયા સાથે સાયન્સ લેબ પાર્ટનર માટે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "પ્રયોગો અને ખ્યાલોને સુરક્ષિત રીતે અન્વેષણ કરો"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સત્રને અનુકૂલિત કરો"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "છોડના વિકાસનો પ્રયોગ ડિઝાઇન કરો"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "એસિડ અને બેઝ સમજાવો"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "જો આપણે તાપમાન બદલીએ તો શું થાય?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "રાઈટિંગ કોચ"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "લેખનનું આયોજન, ડ્રાફ્ટિંગ, સુધારા અને મજબૂતીકરણ કરો"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "નિબંધો, વાર્તાઓ, ઈમેઈલ અને દલીલોને લક્ષિત પ્રતિસાદ સાથે સુધારો જે તમારા અવાજને અકબંધ રાખે છે."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "તમે શું લખી રહ્યા છો?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "કોમ્યુનિકેશન"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "આયોજન, સુધારા, માળખું અને પ્રતિસાદ સાથે લેખનમાં સુધારો કરો જે તમારા અવાજને અકબંધ રાખે છે."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "નિબંધો, વાર્તાઓ, ઈમેઈલ, સ્કોલરશિપ નોટ્સ અથવા દલીલો લખતા શીખનારાઓ."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "કોચ તમારા અવાજને બદલ્યા વિના લક્ષિત સુધારાની પ્રાથમિકતાઓ અને પહેલા-પછીના ઉદાહરણો આપે છે."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "તમારા મુદ્દાને સ્પષ્ટ કરો"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "માળખામાં સુધારો કરો"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "કારણ સાથે સુધારો કરો"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "મારા નિબંધની પ્રસ્તાવનામાં સુધારો કરો"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "મને વાર્તાની રૂપરેખા બનાવવામાં મદદ કરો"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "આ ફકરાને વધુ સ્પષ્ટ બનાવો"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "રીડિંગ કમ્પેનિયન"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "વાંચો, સારાંશ આપો અને ટેક્સ્ટ વિશે પ્રશ્નો પૂછો"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "કોઈ ફકરો અથવા પુસ્તકનો વિચાર લાવો અને સારાંશ, શબ્દભંડોળ, અનુમાન અને ચર્ચા દ્વારા સમજણ કેળવો."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "આપણે શું વાંચી રહ્યા છીએ?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "કોમ્યુનિકેશન"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "કોઈ ફકરો અથવા પુસ્તકનો વિચાર લાવો અને સારાંશ, શબ્દભંડોળ, અનુમાન અને ચર્ચા દ્વારા સમજણ કેળવો."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "કોમ્યુનિકેશનના વિષયો શીખનારાઓ જેઓ સામાન્ય જવાબ બોક્સને બદલે વ્યવહારુ માર્ગદર્શન ઈચ્છે છે."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ રીડિંગ કમ્પેનિયન માટે તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને લર્નિંગ ફ્લો સાથે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "વાંચો, સારાંશ આપો અને ટેક્સ્ટ વિશે પ્રશ્નો પૂછો"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સેશનને અનુકૂળ બનાવો"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "આ ફકરો સમજવામાં મારી મદદ કરો"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "પ્રકરણ ૨ નો સારાંશ આપો"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "મને આ કવિતા વિશે પ્રશ્નો પૂછો"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "વોકેબ્યુલરી બિલ્ડર"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "સંદર્ભમાં શબ્દો શીખો"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "અર્થ, ઉદાહરણો, ઉચ્ચારણ સંકેતો, મેમરી હુક્સ અને ઝડપી પ્રેક્ટિસ સાથે શબ્દભંડોળ બનાવો."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "આપણે કયા શબ્દો અથવા વિષયનો અભ્યાસ કરવો જોઈએ?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "કોમ્યુનિકેશન"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "અર્થ, ઉદાહરણો, ઉચ્ચારણ સંકેતો, મેમરી હુક્સ અને ઝડપી પ્રેક્ટિસ સાથે શબ્દભંડોળ બનાવો."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "કોમ્યુનિકેશનના વિષયો શીખનારાઓ જેઓ સામાન્ય જવાબ બોક્સને બદલે વ્યવહારુ માર્ગદર્શન ઈચ્છે છે."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ વોકેબ્યુલરી બિલ્ડર માટે તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને લર્નિંગ ફ્લો સાથે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "સંદર્ભમાં શબ્દો શીખો"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સત્રને અનુકૂળ બનાવો"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "SAT શબ્દભંડોળ"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "વ્યાપારિક અંગ્રેજી શબ્દો"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "હવામાન વિશેના શબ્દો"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "ભાષા રોલપ્લે"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "વાસ્તવિક વાતચીતનો અભ્યાસ કરો"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "કેફે, ઇન્ટરવ્યુ, મુસાફરી અને દૈનિક જીવન જેવી વાસ્તવિક પરિસ્થિતિઓમાં ભાષાનો અભ્યાસ કરો, જેમાં દરેક વારા પછી સુધારા કરવામાં આવશે."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "કઈ ભાષા અને પરિસ્થિતિ?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "સંદેશાવ્યવહાર"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "કેફે, ઇન્ટરવ્યુ, મુસાફરી અને દૈનિક જીવન જેવી વાસ્તવિક પરિસ્થિતિઓમાં ભાષાનો અભ્યાસ કરો, જેમાં દરેક વારા પછી સુધારા કરવામાં આવશે."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "સંદેશાવ્યવહારના વિષયો શીખનારાઓ જે સામાન્ય જવાબ બોક્સને બદલે વ્યવહારુ માર્ગદર્શન ઈચ્છે છે."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને શીખવાની પ્રક્રિયા સાથે ભાષાના રોલપ્લે માટે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "વાસ્તવિક વાતચીતનો અભ્યાસ કરો"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સત્રને અનુકૂળ બનાવો"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "સ્પેનિશ કેફે રોલપ્લે"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "ફ્રેન્ચ એરપોર્ટ વાતચીત"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "હિન્દી બજારમાં ભાવતાલ"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "બોલવાનો અભ્યાસ"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "પ્રોમ્પ્ટ્સ સાથે મોટેથી રિહર્સલ કરો"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "પ્રોમ્પ્ટ્સ, ટાઈમિંગ અને માળખા પર પ્રતિસાદ સાથે ભાષણો, પ્રસ્તુતિઓ, ઇન્ટરવ્યુ અથવા મૌખિક પરીક્ષાઓની તૈયારી કરો."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "તમે શું બોલવાની તૈયારી કરી રહ્યા છો?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "સંદેશાવ્યવહાર"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "પ્રોમ્પ્ટ્સ, ટાઈમિંગ અને માળખા પર પ્રતિસાદ સાથે ભાષણો, પ્રસ્તુતિઓ, ઇન્ટરવ્યુ અથવા મૌખિક પરીક્ષાઓની તૈયારી કરો."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "સંદેશાવ્યવહારના વિષયો શીખતા વિદ્યાર્થીઓ જેમને સામાન્ય જવાબને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ ખાસ કરીને બોલવાની પ્રેક્ટિસ માટે તૈયાર કરવામાં આવ્યો છે, જેમાં તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને શીખવાની પ્રક્રિયા છે."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "પ્રોમ્પ્ટ્સ સાથે મોટેથી પ્રેક્ટિસ કરો"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સથી શરૂઆત કરો"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સેશનને અનુકૂળ બનાવો"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "મારી સ્કૂલ પ્રેઝન્ટેશનની પ્રેક્ટિસ કરો"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "IELTS સ્પીકિંગની મોક ટેસ્ટ"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "ઇન્ટરવ્યુના પ્રશ્નોના જવાબ આપવામાં મને મદદ કરો"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "પરીક્ષા તૈયારી પ્લાનર"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "અભ્યાસક્રમને સ્ટડી પ્લાનમાં ફેરવો"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "તમારી તારીખ, અભ્યાસક્રમ, મજબૂત અને નબળા વિસ્તારોના આધારે વાસ્તવિક પરીક્ષા પ્લાન બનાવો."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "તમે કઈ પરીક્ષાની તૈયારી કરી રહ્યા છો?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "આયોજન"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "તમારા અભ્યાસક્રમ, પરીક્ષાની તારીખ, સમય અને નબળા વિસ્તારોને વ્યવહારુ સ્ટડી પ્લાનમાં ફેરવો."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "જે વિદ્યાર્થીઓને એવા પ્લાનની જરૂર છે જે રિવિઝન, પ્રેક્ટિસ, આત્મવિશ્વાસ અને વાસ્તવિક જીવન વચ્ચે સંતુલન જાળવે."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "આ પ્લાનર નબળા વિસ્તારોને પ્રાથમિકતા આપે છે, રિવ્યુ લૂપ્સ ઉમેરે છે અને ચૂકી ગયેલા દિવસો માટે બેકઅપ પ્લાન બનાવે છે."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "વિષયોને પ્રાથમિકતા આપો"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "રિવ્યુનું આયોજન કરો"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "જોખમી વિસ્તારોને ટ્રેક કરો"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "બાયોલોજી માટે ૨ અઠવાડિયાનું આયોજન કરો"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "JEE રિવિઝન શેડ્યૂલ બનાવો"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "ફાઈનલ પરીક્ષાની તૈયારીમાં મને મદદ કરો"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "ફ્લેશકાર્ડ બિલ્ડર"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "યાદ રાખવા માટે સ્માર્ટ કાર્ડ્સ બનાવો"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "નોંધો અથવા વિષયોને સ્પષ્ટ ફ્લેશકાર્ડ્સમાં ફેરવો, જેમાં જવાબો, ટ્રેપ્સ અને રિવ્યુ પ્રોમ્પ્ટ્સ હોય."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "શું ફ્લેશકાર્ડ્સ બનવું જોઈએ?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "પ્રેક્ટિસ"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "નોંધો અથવા વિષયોને સંકેતો, જવાબો, ઉદાહરણો અને સામાન્ય ટ્રેપ્સ સાથેના ફોકસ્ડ ફ્લેશકાર્ડ્સમાં ફેરવો."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "પરીક્ષાની તૈયારી કરતા વિદ્યાર્થીઓ, ભાષા શીખનારાઓ અને રિટ્રાઇવલ પ્રેક્ટિસનો ઉપયોગ કરનાર કોઈપણ વ્યક્તિ."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "કાર્ડ્સ એક સમયે એક જ વસ્તુ પૂછે છે અને તેમાં ટ્રેપ્સનો સમાવેશ થાય છે જેથી રિવ્યુ માત્ર ઓળખ જ નહીં, પણ સમજણ પણ વધારે છે."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "રિકોલ કાર્ડ્સ બનાવો"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "તૈયાર હોવ ત્યારે જવાબો જાહેર કરો"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "ચૂકી ગયેલા પ્રશ્નોનું વહેલું રિવ્યુ કરો"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "માઈટોસિસ માટે ફ્લેશકાર્ડ્સ બનાવો"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "આ નોંધને Q&A માં ફેરવો"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "ભૂગોળના ફ્લેશકાર્ડ્સ બનાવો"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "મેમરી પેલેસ"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "આબેહૂબ સ્થળો સાથે વિચારો યાદ રાખો"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "તથ્યો, યાદીઓ, ભાષણો અથવા ક્રમબદ્ધ માહિતીને યાદગાર માનસિક દ્રશ્યોમાં રૂપાંતરિત કરો."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "તમારે શું યાદ રાખવાની જરૂર છે?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "પ્રેક્ટિસ"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "તથ્યો, ભાષણો, યાદીઓ અથવા ક્રમબદ્ધ માહિતીને યાદગાર દ્રશ્યોમાં રૂપાંતરિત કરો જે અભ્યાસ અને પરીક્ષા દરમિયાન યાદ રાખવાનું સરળ બનાવે છે."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "ક્રમબદ્ધ વિચારો, શબ્દભંડોળ, ભાષણો, સૂત્રો અથવા તથ્યો યાદ રાખતા શીખનારાઓ, જેમને મજબૂત માનસિક હૂકની જરૂર હોય છે."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "આ મોડ તમને નોંધો ફરીથી વાંચવા માટે કહેવાને બદલે આબેહૂબ સ્થાનો, માર્ગો અને રિટ્રાઇવલ સંકેતો ડિઝાઇન કરે છે."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "એક રૂટ પસંદ કરો"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "આબેહૂબ સંકેતો મૂકો"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "રિકોલની પ્રેક્ટિસ કરો"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "ગ્રહોને યાદ રાખો"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "સ્પીચ આઉટલાઇન યાદ રાખો"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "બાયોલોજી ટેક્સનોમી શીખો"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "સ્પેસ્ડ રિવ્યુ"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "તમે ભૂલી જાઓ તે પહેલાં રિવ્યુ કરો"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "ઝડપી રિવ્યુ સત્રોનું આયોજન કરો અને તેને અમલમાં મૂકો જે તમારી લાંબા ગાળાની યાદશક્તિને મજબૂત બનાવે છે."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "આપણે શું રિવ્યુ કરવું જોઈએ?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "પ્રેક્ટિસ"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "ઝડપી રિવ્યુ સત્રોનું આયોજન કરો, નબળા વિચારોને ફરીથી જુઓ અને AI-માર્ગદર્શિત સ્પેસ્ડ રિપિટિશન સાથે લાંબા ગાળાની યાદશક્તિને મજબૂત કરો."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "જે શીખનારાઓ વાંચ્યા પછી ભૂલી જાય છે અને તેમને ખ્યાલો, શબ્દો અથવા પરીક્ષાની સામગ્રી માટે વ્યવહારુ રિવ્યુ લયની જરૂર છે."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "કોચ ભૂલો અને ખચકાટને બીજા નિષ્ક્રિય સારાંશને બદલે રિવ્યુ શેડ્યૂલમાં ફેરવે છે."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "રિવ્યુના લક્ષ્યો પસંદ કરો"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "રિકોલનું શેડ્યૂલ બનાવો"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "ભૂલો સુધારો"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "ગઈકાલના કેમિસ્ટ્રીનું રિવ્યુ કરો"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "7-દિવસનો રિવ્યુ પ્લાન બનાવો"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "મને ફરીથી શબ્દભંડોળ પર ક્વિઝ આપો"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "કોન્સેપ્ટ મેપ બિલ્ડર"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "ટેક્સ્ટમાં વિચારોને દ્રશ્ય રીતે જોડો"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "કારણો અને અસરોથી લઈને શ્રેણીઓ, ઉદાહરણો અને વિરોધાભાસ સુધીના વિચારો કેવી રીતે સંબંધિત છે તેનો નકશો બનાવો."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "આપણે કયા કોન્સેપ્ટનો નકશો બનાવવો જોઈએ?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "વિચારવું"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "કારણો અને અસરોથી લઈને શ્રેણીઓ, ઉદાહરણો અને વિરોધાભાસ સુધીના વિચારો કેવી રીતે સંબંધિત છે તેનો નકશો બનાવો."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "વિચારવાના વિષયોનું અન્વેષણ કરતા શીખનારાઓ જેમને સામાન્ય જવાબ બોક્સને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને લર્નિંગ ફ્લો સાથે કોન્સેપ્ટ મેપ બિલ્ડર માટે ટ્યુન કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "વિચારોને ટેક્સ્ટમાં દ્રશ્ય રીતે જોડો"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "સત્રને તમારા લક્ષ્ય મુજબ અનુકૂલિત કરો"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "આબોહવા પરિવર્તનનો નકશો બનાવો"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "બીજગણિતના ખ્યાલોને જોડો"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "લોકશાહીનો નકશો બનાવો"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "ગેરસમજ નિવારક (Misconception Doctor)"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "ખોટા માનસિક મોડેલો શોધો અને સુધારો"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "તમને શું લાગે છે કે શું થઈ રહ્યું છે તે જણાવો, અને તમારો સાથી સૌમ્ય પરીક્ષણો દ્વારા છુપાયેલી ગેરસમજોનું નિદાન કરશે."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "કયો વિચાર મૂંઝવણભર્યો કે શંકાસ્પદ લાગે છે?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "વિચારસરણી"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "તમને શું લાગે છે કે શું થઈ રહ્યું છે તે જણાવો, અને તમારો સાથી સૌમ્ય પરીક્ષણો દ્વારા છુપાયેલી ગેરસમજોનું નિદાન કરશે."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "વિચારસરણીના વિષયો શોધતા શીખનારાઓ જેમને સામાન્ય જવાબ બોક્સને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને શીખવાની પ્રક્રિયા સાથે ગેરસમજ નિવારક માટે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "ખોટા માનસિક મોડેલો શોધો અને સુધારો"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "સત્રને તમારા લક્ષ્ય મુજબ અનુકૂલિત કરો"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "મને લાગે છે કે ભારે વસ્તુઓ ઝડપથી નીચે પડે છે"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "મને ઋણ સંખ્યાઓ સમજાતી નથી"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "આ વ્યાકરણનો નિયમ વિચિત્ર કેમ છે?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "ફેનમેન ટ્યુટર (Feynman Tutor)"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "જ્યાં સુધી તે યાદ ન રહી જાય ત્યાં સુધી તેને સરળતાથી સમજાવો"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "કોઈ ખ્યાલને સરળતાથી સમજાવવાનો પ્રયાસ કરો. તમારો ટ્યુટર ખામીઓ શોધી કાઢશે, પ્રશ્નો પૂછશે અને તમને સમજૂતી ફરીથી બનાવવામાં મદદ કરશે."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "તમે મને શું સમજાવશો?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "વિચારસરણી"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "કોઈ ખ્યાલને સરળતાથી સમજાવવાનો પ્રયાસ કરો. તમારા ટ્યુટર ખામીઓ શોધી કાઢશે, પ્રશ્નો પૂછશે અને તમને સમજૂતી ફરીથી બનાવવામાં મદદ કરશે."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "વિચારસરણીના વિષયો શીખનારાઓ જેમને સામાન્ય જવાબના બોક્સને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ ફેનમેન ટ્યુટર માટે તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને શીખવાની પ્રક્રિયા સાથે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "જ્યાં સુધી યાદ ન રહી જાય ત્યાં સુધી તેને સરળતાથી સમજાવો"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સત્રને અનુકૂળ બનાવો"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "હું ગુરુત્વાકર્ષણ સમજાવીશ"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "મોંઘવારી વિશે મારી સમજ ચકાસો"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "રિકર્ઝનને સરળ બનાવવામાં મને મદદ કરો"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "કેસ સ્ટડી સિમ્યુલેટર"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "વાસ્તવિક નિર્ણયો દ્વારા શીખો"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "એક વાસ્તવિક કેસ દાખલ કરો, નિર્ણયો લો, પરિણામો જુઓ અને દરેક પસંદગી પાછળનો સિદ્ધાંત શીખો."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "આપણે કેવા પ્રકારના કેસનું અનુકરણ કરવું જોઈએ?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "ઇમર્સન"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "એક વાસ્તવિક કેસ દાખલ કરો, નિર્ણયો લો, પરિણામો જુઓ અને દરેક પસંદગી પાછળનો સિદ્ધાંત શીખો."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "ઇમર્સન વિષયો શીખનારાઓ જેમને સામાન્ય જવાબના બોક્સને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ કેસ સ્ટડી સિમ્યુલેટર માટે તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને શીખવાની પ્રક્રિયા સાથે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "વાસ્તવિક નિર્ણયો દ્વારા શીખો"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ઉદાહરણ પ્રોમ્પ્ટ્સ સાથે શરૂઆત કરો"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "તમારા લક્ષ્ય મુજબ સત્રને અનુકૂળ બનાવો"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "વ્યવસાય વ્યૂહરચના કેસ"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "તબીબી નૈતિકતા કેસ"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "પર્યાવરણીય નીતિ કેસ"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "રોલપ્લે સિનારીયો"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "વાસ્તવિક જીવનની મુશ્કેલ વાતચીતનો અભ્યાસ કરો"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "વાટાઘાટો, સંઘર્ષ, ગ્રાહક સહાય, નેતૃત્વ અથવા કોઈપણ મહત્વપૂર્ણ વાતચીતનો અભ્યાસ કરો."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "આપણે કયા સિનારીયોનું રોલપ્લે કરવું જોઈએ?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "ઇમર્શન"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "વાટાઘાટો, સંઘર્ષ, ગ્રાહક સહાય, નેતૃત્વ અથવા કોઈપણ મહત્વપૂર્ણ વાતચીતનો અભ્યાસ કરો."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "ઇમર્શન વિષયો શોધતા શીખનારાઓ જેમને સામાન્ય જવાબ બોક્સને બદલે વ્યવહારુ માર્ગદર્શન જોઈએ છે."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "આ મોડ તેના પોતાના પ્રોમ્પ્ટ્સ, ઉદાહરણો અને લર્નિંગ ફ્લો સાથે રોલપ્લે સિનારીયો માટે તૈયાર કરવામાં આવ્યો છે."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "વાસ્તવિક જીવનની મુશ્કેલ વાતચીતનો અભ્યાસ કરો"
+    }
+  ]
+}

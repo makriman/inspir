@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hungarian",
+  "locale": "hu",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "Segíts az inspir-nek beállítani az életkorodat"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "Add meg a születési dátumodat, hogy életkornak megfelelő tanulási élményt alakíthassunk ki. Ezt a példák, a hangnem és a biztonsági korlátok beállításához használjuk."
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "Születési dátum"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "Folytatás"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "Mentés..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "Kérjük, adj meg egy érvényes születési dátumot."
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "Életkor"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "Add meg a születési dátumodat"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "Tanulási áruház megnyitása"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "Keresés"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "Csevegések keresése"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- Alkalmazz korlátozásokat a nyelv, rang, nem, osztály, törvény, vallás, pénz, higiénia és hozzáférés tekintetében."
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- Mielőtt a személy megszólalna, építsd fel a környezetet: hol vagyunk, év vagy dátumtartomány, mi történt eddig, jelenlegi nyomások, hiedelmek, vakfoltok és történészi bizonytalanságok."
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- Hozz létre egy dossziéfalat a következőkkel: eddigi idővonal, személyes tétek, szövetségesek és ellenségek, az adott kor főbb hiedelmei, vakfoltok, ismert írások vagy beszédek, jelenlegi nyomás, történelmi kontextus, bizonyítékok minősége és ajánlott nyitókérdések."
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- Ne találj ki közvetlen idézeteket, hivatkozásokat vagy belső gondolatokat."
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- Ne találj ki pontos idézeteket. Ha egy közvetlen idézet nem forrásolt a beszélgetésben, jelöld a generált szöveget modernizált parafrázisként vagy rekonstruált párbeszédként."
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- Ne romantizáld az erőszakot, a birodalmat, a rabszolgaságot, a kasztrendszert, a betegségeket vagy az elnyomást."
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- Ne szépítsd meg a káros nézeteket, és ne dicsőítsd az elnyomást, a kasztrendszert, a rasszizmust, a rabszolgaságot, a nőgyűlöletet, az autoriter rendszereket vagy az erőszakot. A kontextus nem automatikus mentség."
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- Zárd három értelmes cselekvéssel, plusz egy lehetőséggel a történészi kontextus miatti szünetre."
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- Ha bármely célmező AI által meghatározott vagy homályos, először kínálj fel három konkrét, történelmileg értelmes érkezési lehetőséget, és várd meg, amíg a tanuló választ."
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- A találkozás kezdete után tarts fenn két réteget: a karakteren belüli hangot, amelyet az időszak korlátoz, és a történészi oldalsó jegyzeteket, amelyek megkülönböztetik a dokumentált tényeket, a hihető rekonstrukciót, a vitatott értelmezést, a modern parafrázist és a fikcionalizált párbeszédet."
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- Világosan jelöld az ismert tényeket, a hihető rekonstrukciót és a spekulációt."
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- Egyébként üdvözöld az utazót, foglald össze az útlevelet egy tömör bekezdésben, majd tedd fel az első értelmes cselekvési kérdést."
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- A történelmi személy ellenállhat, kihívhat, kitérhet, visszakérdezhet, elutasíthat hamis előfeltevéseket vagy felfedheti az adott kor korlátait. Nem lehet végtelenül egyetértő."
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "1. Ha felfedezésre vagy időszakválasztásra van szükség, mutasd meg a választási lehetőségeket és állj meg."
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "10-15 perc"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "10 perces látogatás"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "117. évszázad"
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "1789. július 13."
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "1582. évszázad"
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "1946–1949 alkotmányozási időszak"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "1666. szeptember 2."
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "2. Egyébként mutasd először a dossziéfalat, majd kérj meg, hogy kezdjem az egyik ajánlott kérdéssel."
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "Kr. e. 399."
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "742. évszázad"
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "8-12 perc"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "Egy rossz név összezavarhat, de a nyom az időzítésre utal. Először bizonyítsd be, hogy az adatok megérkeztek."
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "Néhány tény, egy vázlat, ahol elakadtál..."
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "Egy végső átadási feladat jobban bizonyítja a fejlődést, mint egy Tovább gomb."
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "Egy első kérdés vagy szempont"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "Egy jó tanulási ciklus"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "Egy történelmi fordulópont"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "Egy megnevezett szemtanú privát gondolatai"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "Egy bekezdés, amely állítás nélkül sorolja fel a tényeket, az olvasóra hárítja az érvelés munkáját."
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "Az árváltozás önmagában csak mozgás a görbe mentén, nem automatikusan a teljes görbe eltolódása."
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "Közös cél, következő lépések és ami már kész van."
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "Egy szimuláció láthatóvá teszi a rejtett ok-okozati láncot. Egyszerre csak egy dolgot változtass."
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "Egyetlen ellenőrző kérdés a továbblépés előtt."
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "Egy kereskedő privát terve"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "A stratégiai keretrendszer egy nyomáspróba. Porter öt erő modellje azt kérdezi, ki veheti el a profitot, és milyen erős az egyes nyomások hatása."
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "Egy erős bekezdés megnevezi az állítást, bizonyítékokkal támasztja alá, majd elmagyarázza, miért változtatja meg a bizonyíték az olvasó nézőpontját."
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "Egy hasznos modell egy láncolat: a feltételezések vezérlik a műveleteket, a műveletek cash flow-t hoznak létre, a cash flow pedig csak az időzítés és a kockázat figyelembevételét követően válik értékké."
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "Elfogadás, szerkesztés vagy elutasítás a következő AI-javaslatnál"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "Elfogadás, átdolgozás, elutasítás vagy bizonyítékgyűjtés."
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "Fiókzsetonok és egy szerény érmetartó"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "Aktív célállomás"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "Aktív felidézés építő"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "Tevékenységfolyam"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "Ada Lovelace a képzelőerőről"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "Ada Lovelace, Kleopátra, B. R. Ambedkar..."
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "Adaptív leckeciklus"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "Adja meg születési dátumát"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "Hozzáadás, szerkesztés, kihívás vagy a következő lépés eldöntése"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "Memóriasegítők hozzáadása"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "Több információ hozzáadása, amikor a valódi hiányosság a bizonyíték és az állítás közötti kapcsolatban rejlik."
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "Adminisztratív utak"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "tanácsot kérő tanácsadó"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "Agora Szókratész perének napjaiban"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "AI-kihívás"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "Az AI éppen áttekinti az alkotásodat"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "Az AI készítette az első struktúrát"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "Az AI átdolgozta a munkaterületet"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "AI által feloldott dátumtartomány"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "AI, készítsd el az első változatot"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "Akbar ebben az időszakban uralkodott a Mogul Birodalomban"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "Akbar mogul udvara a szuverenitással, a fordítással, a vallással és a birodalmi adminisztrációval kísérletezik."
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "Az alkalmazás összes szövege és a korrepetálási válaszok ezt a beállítást követik."
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "Szövetségesek és ellenségek"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "Amfórapecsét"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "Válaszolj erre a kérdésre, mielőtt továbblépnél."
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "Alkalmazd az ötletet egy új helyzetre anélkül, hogy elragadtatnád magad."
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "Tanonc művész, kereskedő, látogató..."
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "a módszerüket tanulmányozó tanonc"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "Arab és szanszkrit tudományos kontextusban"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "Érvelő bekezdés = állítás + bizonyíték + érvelés + következmény."
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "Érvelés ereje"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "Érveléstesztelő szoba"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "Érkezés dátuma, szerep, normák és hogy milyen tudás tartozik az adott korszakhoz."
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "Érkezési pont"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "Érkezz meg egy fordulópont közelébe, és kövesd nyomon, mit tudnak akkor az emberek."
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "Kérdezz meg egy metoikoszt, mit zár ki az állampolgárság"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "Kérdezz meg egy vízhordót, mit tudnak a helyiek"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "Kérdezés erről"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "Kérdezz a kenyérárakról"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "Kérdezz a Dávid-szoborról"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "Kérdezés diákként"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "Kérdezd az oktatót"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "Kérj közvetlen magyarázatot"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "Kérj tippet vagy példát"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "Kérj egy párhuzamos példát"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "Kérj tanácsot az akkori világnézetük és korlátaik alapján."
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "Kérj útmutatást, példákat vagy ellenőrzést a végső válasz előtt."
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "Kérd a következő szintű útmutatást"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "Kérd ugyanazt a kérdést egyszerűbb szavakkal"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "Kérdezz rá, hogyan működik a felszabadított státusz"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "Kérdezz rá, hogyan működik a pártfogás"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "Először kérdezz rá az aktuális hipotézisemre."
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "Egyszerre csak egy kérdést tegyél fel, kövesd a feltételezéseket és a bizonyítékokat, kérésre adj útmutatást, és ne vonj le következtetéseket, amíg nem próbáltam meg."
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "Kérd meg az útmutatót, hogy magyarázza el a hatalmi struktúrát"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "Kérd meg a történészt, hogy javasoljon időszakokat"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "Kérdezd meg az őrt, milyen parancsok vannak érvényben"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "Kérd a főbb állítások mentését és a bizonyítékaik erősségének osztályozását."
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "Kérdezz, cselekedj, tarts szünetet a kontextusért, vagy kérj összefoglalót..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "Kérdezz, vitass, kérj bizonyítékot, vagy nyiss meg egy dosszié elemet..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "Tulajdonjog hozzárendelése"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "Kereskedelmi háztartás vagy műhely asszisztense"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "Feltételezéstérkép"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "A feltételezések megjelennek, amint felszínre kerülnek."
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "A befolyás vagy hatalom csúcsán"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "A döntő fordulópontnál"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "Athéni demokrácia"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "Athén, i.e. 399"
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "Támadd meg először a leggyengébb feltételezést."
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "Udvari pletykák követése"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "Attikai görög"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "A vonzerő növekszik, ha a vásárlók, beszállítók, versenytársak, új belépők és helyettesítő termékek hatalma korlátozott."
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "Közönség folyamatban"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "A hatóságok a bontásról vitáznak"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "Az első válaszra várva"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "Az első bélyegzőre várva"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "B. R. Ambedkar"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "Bagdad a Bölcsesség Háza idején"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "Bahadur Sah Zafar szimbolikus központtá vált"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "A pék szomszédja"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "Nehézségi szint kiegyensúlyozása"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "Alkudozás gyantáért"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "A Bastille közeledik"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "Kezdje el a beszélgetést"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "Kezdje egy személyiségkártyával, majd válaszoljon a karakter bőrébe bújva, rövid kontextusjegyzetekkel és javasolt követő kérdésekkel."
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "Kezdő, vizsgafelkészítő, haladó, 12 éves kor..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "Hiedelmek és vakfoltok"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "A legjobb pénz, logisztika, élelmiszer, útvonalak és társadalmi csere tekintetében."
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "A legjobb politika, intézmények, bizonyítékok és az elithez közeli terek tekintetében."
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "A kenyér és a legitimitás uralja a beszélgetést"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "A kenyér politika"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "Pék lapát"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "Kenyérjegy"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "Bontsa a munkát feladatokra, kövesse nyomon az akadályokat, tartsa naprakészen a döntési naplót, és törekedjen a konkrét eredményre."
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "Rövid olvasmány"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "Böngésszen a prompt-kezdők között"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "Buddhista kézirattöredék"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "Buddhista kolostor"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "Társas építés"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "Hibajavítási ciklus = reprodukálás, izolálás, hipotézisalkotás, egy változtatás tesztelése, ellenőrzés."
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "Készítsen olyan leckét, amely reagál önre."
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "Tudományos projektötlet kidolgozása"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "használható mentális modell építése"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "Esszévázlat készítése a klímaadaptációról"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "Teremtsen lendületet, készítsen egy hasznos első vázlatot, és kérjen döntéseket túlzott dicséret nélkül."
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "Útlevél építése"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "Építse a leckét aköré, amire képessé szeretne válni."
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "Készítsék el együtt az egyszerű nyelvezetű magyarázatot."
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "Építse a megértést azzal, hogy egyszerre egy pontos kérdésre válaszol."
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "A pakli összeállítása"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "A kvíz összeállítása"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "Vevői hatalom"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "A vevői ízlés csak az egyik tényező. A költségek, a technológia, az adók és a bemeneti árak mind elmozdíthatják a kínálatot."
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "Kabinetiroda a háborús Nagy-Britanniában"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "Minden ármozgást keresleteltolódásnak nevezni."
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "A hatalom központja"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "A hatalom központja, az utcai élet és a rendszer pereme különböző történelmeket tár fel."
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "Kihívás Churchillnek a birodalomról"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "Kérdőjelezz meg ötleteket, miközben az illető a saját korának világnézetét védi."
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "Kihívás nekem"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "Kérdőjelezd meg az utolsó válaszomat egy ellenpéldával, határesetettel vagy rejtett feltételezéssel. Csak egy kérdést tegyél fel."
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "Kérdőjelezd meg az európai zsarnokság elleni küzdelem és a birodalom védelme közötti feszültséget."
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "Kérdőjelezd meg a jelenlegi alkotás leggyengébb részét. Légy közvetlen, nevezd meg a feltételezést, és kérj meg, hogy védjem meg vagy módosítsam azt."
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "Kérdőjelezd meg a gyenge feltételezéseket, a homályos állításokat és a hiányzó bizonyítékokat, miközben a döntési jogot a felhasználónál hagyod."
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "Chandni Chowk"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "Chang'an"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "Chang'an volt a Tang-dinasztia fővárosa"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "Chang'an, 742"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "Célközönség módosítása"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "Pakli módosítása"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "Módosítsd a bemeneteket és magyarázd meg a kimenetet."
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "Útlevél módosítása"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "Beállítások módosítása"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "Változtatások egyszerre"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "Módosítja a szintaxist a végrehajtási sorrend ellenőrzése előtt."
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "Több fájl egyidejű módosítása elrejtheti a valódi okot, még akkor is, ha a tünet megszűnik."
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "Jóslatom ellenőrzése"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "Ellenőrizd a megértést, mielőtt továbblépnél"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "Ellenőrizd, hogy az aszinkron eredmény várva van-e, mielőtt elolvasnád."
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "Gyakori csapdák ellenőrzése"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "Válassz egy koncepciót és egy kezdő szintet. A tutorod megtanít egy kis részt, ellenőrzi, majd minden válasz után módosít."
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "Válasszon érkezési pontot"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "Válasszon pontos belépési pontot"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "Válassza a következőt"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "Válassza ki a célállomást."
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "Válassza ki a kapcsolatot és a helyiség célját."
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "Válassza ki a legerősebb belépési pontot."
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "válasszon időintervallumot"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "Válassza ki az érkezési pontját."
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "polgári ügyész teszteli a birodalmi feltételezéseket"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "A polgárok mérlegelik a jámborságot, az oktatást és a hűséget"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "Az állampolgárság határozza meg a politikai hangot"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "Az állampolgárság korlátozott volt"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "Állítás tisztázása"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "Állításkövető"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "Tisztázza a célközönséget"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "Osztályozza a szereplőket a viselkedés olvasása előtt."
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "Engedélyezés folyamatban"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "Másszon fel a létrán"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "Profil bezárása"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "Témák bezárása"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "Közel volt, de egy láncszem hiányzik"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "Ruhajegy-csomag"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "A ruházat gyorsan jelzi a rangot"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "Edzői tevékenységek"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "Oktatói vezérlők"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "Oktatói válasz"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "Oktatói kiegészítő panel"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "Kognitív terhelés"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "Együttműködési stílus"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "Együttműködő oktatás"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "Közös tanulószoba"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "Gyűjtsön példákat, tényeket, idézeteket vagy korlátozó tényezőket, amelyek alátámasztják a munkát."
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "Kereskedelmi engedélyezés"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "bizottsági ülés Delhi-ben"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "Gyakori hiba"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "Minden mód összehasonlítása"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "Hasonlítsa össze a szándékokat, a korabeli kritikákat, a későbbi következményeket és a modern megítélést anélkül, hogy az illetőt hősre vagy gazemberre egyszerűsítené."
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "Örökség összehasonlítása"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "A lázadók és a Társaság információinak összehasonlítása"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "Hasonlítsa össze ezt a mai helyzettel"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "Összehasonlítás a jelennel"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "Hasonlítson össze két közeli esetet."
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "Sűrítse az ötletet egy használható mentális modellé."
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "Koncepciótábla"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "A tömörség csak akkor segít, ha az érvelés már működik. Itt nem a hossz a fő probléma."
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "Szembesítse az ellentmondásokat, a kibúvókat és a következményeket bizonyítékokkal."
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "Összekeveri a keresleti görbén való elmozdulást a kereslet eltolódásával."
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "Összekeveri a számviteli nyereséget a ténylegesen kifizethető vagy visszaforgatható készpénzzel."
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "feltételezések, cash flow és értékelés összekapcsolása"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "Az útmutató által választott konzervatív külső rétegek"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "A kontextus nem jelent jóváhagyást"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "Kontextusjegyzetek"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "Tanulás folytatása"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "Folytatás Google-fiókkal"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "szerződésjogi megfontolás"
+    }
+  ]
+}

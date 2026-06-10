@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "language": "German",
+  "locale": "de",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.badges-achievements.inputboxText",
+      "source": "What achievement system should we design?",
+      "value": "Welches Erfolgssystem sollen wir entwerfen?"
+    },
+    {
+      "key": "topic.badges-achievements.category",
+      "source": "Gamification",
+      "value": "Gamification"
+    },
+    {
+      "key": "topic.badges-achievements.seo.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Erstelle Abzeichen für Beständigkeit, Meisterschaft, Mut, Wiederholung, Zusammenarbeit und abgeschlossene Projekte."
+    },
+    {
+      "key": "topic.badges-achievements.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Lernende, die sich mit Gamification beschäftigen und praktische Anleitung statt allgemeiner Antworten suchen."
+    },
+    {
+      "key": "topic.badges-achievements.seo.whyDifferent",
+      "source": "This mode is tuned for badges & achievements with its own prompts, examples, and learning flow.",
+      "value": "Dieser Modus ist speziell auf Abzeichen und Erfolge abgestimmt, mit eigenen Prompts, Beispielen und Lernabläufen."
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.0",
+      "source": "Reward milestones that matter",
+      "value": "Belohne Meilensteine, die zählen"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Starte mit Beispiel-Prompts"
+    },
+    {
+      "key": "topic.badges-achievements.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Passe die Sitzung an dein Ziel an"
+    },
+    {
+      "key": "topic.badges-achievements.starter.0",
+      "source": "Create badges for my class",
+      "value": "Erstelle Abzeichen für meinen Kurs"
+    },
+    {
+      "key": "topic.badges-achievements.starter.1",
+      "source": "Reward revision milestones",
+      "value": "Belohnungen für Meilensteine bei der Wiederholung"
+    },
+    {
+      "key": "topic.badges-achievements.starter.2",
+      "source": "Make achievement rules",
+      "value": "Regeln für Erfolge festlegen"
+    },
+    {
+      "key": "topic.leaderboards.name",
+      "source": "Leaderboards",
+      "value": "Bestenlisten"
+    },
+    {
+      "key": "topic.leaderboards.subText",
+      "source": "Make competition healthier",
+      "value": "Wettbewerb gesünder gestalten"
+    },
+    {
+      "key": "topic.leaderboards.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Erstellen Sie faire Bestenlisten, die Anstrengung, Verbesserung, Teamarbeit oder Beständigkeit belohnen, ohne langsamere Lernende zu entmutigen."
+    },
+    {
+      "key": "topic.leaderboards.inputboxText",
+      "source": "What should the leaderboard measure?",
+      "value": "Was soll die Bestenliste messen?"
+    },
+    {
+      "key": "topic.leaderboards.category",
+      "source": "Gamification",
+      "value": "Gamification"
+    },
+    {
+      "key": "topic.leaderboards.seo.description",
+      "source": "Create fair leaderboards that reward effort, improvement, teamwork, or consistency without discouraging slower learners.",
+      "value": "Erstellen Sie faire Bestenlisten, die Anstrengung, Verbesserung, Teamarbeit oder Beständigkeit belohnen, ohne langsamere Lernende zu entmutigen."
+    },
+    {
+      "key": "topic.leaderboards.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Lernende, die sich mit Gamification-Themen befassen und praktische Anleitungen statt allgemeiner Antworten suchen."
+    },
+    {
+      "key": "topic.leaderboards.seo.whyDifferent",
+      "source": "This mode is tuned for leaderboards with its own prompts, examples, and learning flow.",
+      "value": "Dieser Modus ist speziell auf Bestenlisten abgestimmt, mit eigenen Prompts, Beispielen und Lernabläufen."
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.0",
+      "source": "Make competition healthier",
+      "value": "Wettbewerb gesünder gestalten"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Mit Beispiel-Prompts starten"
+    },
+    {
+      "key": "topic.leaderboards.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Die Sitzung an Ihr Ziel anpassen"
+    },
+    {
+      "key": "topic.leaderboards.starter.0",
+      "source": "Design a class leaderboard",
+      "value": "Eine Klassen-Bestenliste entwerfen"
+    },
+    {
+      "key": "topic.leaderboards.starter.1",
+      "source": "Measure improvement fairly",
+      "value": "Verbesserungen fair messen"
+    },
+    {
+      "key": "topic.leaderboards.starter.2",
+      "source": "Make a team challenge board",
+      "value": "Eine Team-Herausforderungstafel erstellen"
+    },
+    {
+      "key": "topic.accountability-partner.name",
+      "source": "Accountability Partner",
+      "value": "Accountability-Partner"
+    },
+    {
+      "key": "topic.accountability-partner.subText",
+      "source": "Build check-ins that keep you moving",
+      "value": "Check-ins erstellen, die Sie am Ball halten"
+    },
+    {
+      "key": "topic.accountability-partner.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Erstellen Sie Accountability-Check-ins mit klaren Verpflichtungen, Nachweisen, Wiederherstellungsregeln und unterstützendem Follow-up."
+    },
+    {
+      "key": "topic.accountability-partner.inputboxText",
+      "source": "What commitment needs accountability?",
+      "value": "Welche Verpflichtung benötigt Accountability?"
+    },
+    {
+      "key": "topic.accountability-partner.category",
+      "source": "Gamification",
+      "value": "Gamification"
+    },
+    {
+      "key": "topic.accountability-partner.seo.description",
+      "source": "Create accountability check-ins with clear commitments, proof, recovery rules, and supportive follow-up.",
+      "value": "Erstellen Sie Accountability-Check-ins mit klaren Verpflichtungen, Nachweisen, Wiederherstellungsregeln und unterstützendem Follow-up."
+    },
+    {
+      "key": "topic.accountability-partner.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Lernende, die sich mit Gamification-Themen befassen und praktische Anleitungen statt allgemeiner Antworten suchen."
+    },
+    {
+      "key": "topic.accountability-partner.seo.whyDifferent",
+      "source": "This mode is tuned for accountability partner with its own prompts, examples, and learning flow.",
+      "value": "Dieser Modus ist speziell auf Accountability-Partner abgestimmt, mit eigenen Prompts, Beispielen und Lernabläufen."
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.0",
+      "source": "Build check-ins that keep you moving",
+      "value": "Erstelle Check-ins, die dich am Ball halten"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Beginne mit Beispiel-Prompts"
+    },
+    {
+      "key": "topic.accountability-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Passe die Sitzung an dein Ziel an"
+    },
+    {
+      "key": "topic.accountability-partner.starter.0",
+      "source": "Set up weekly accountability",
+      "value": "Wöchentliche Rechenschaftspflicht einrichten"
+    },
+    {
+      "key": "topic.accountability-partner.starter.1",
+      "source": "Write a check-in script",
+      "value": "Ein Check-in-Skript schreiben"
+    },
+    {
+      "key": "topic.accountability-partner.starter.2",
+      "source": "Recover after missing a goal",
+      "value": "Nach einem verpassten Ziel wieder durchstarten"
+    },
+    {
+      "key": "topic.study-challenges.name",
+      "source": "Study Challenges",
+      "value": "Lern-Challenges"
+    },
+    {
+      "key": "topic.study-challenges.subText",
+      "source": "Create short challenges and boss rounds",
+      "value": "Erstelle kurze Challenges und Boss-Runden"
+    },
+    {
+      "key": "topic.study-challenges.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Erstelle Lern-Challenges mit klaren Regeln, Punktesystemen, Levels, Boss-Runden und Reflexion."
+    },
+    {
+      "key": "topic.study-challenges.inputboxText",
+      "source": "What should become a challenge?",
+      "value": "Was soll zu einer Challenge werden?"
+    },
+    {
+      "key": "topic.study-challenges.category",
+      "source": "Gamification",
+      "value": "Gamification"
+    },
+    {
+      "key": "topic.study-challenges.seo.description",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Erstelle Lern-Challenges mit klaren Regeln, Punktesystemen, Levels, Boss-Runden und Reflexion."
+    },
+    {
+      "key": "topic.study-challenges.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Lernende, die Gamification-Themen erkunden und praktische Anleitung statt allgemeiner Antworten suchen."
+    },
+    {
+      "key": "topic.study-challenges.seo.whyDifferent",
+      "source": "This mode is tuned for study challenges with its own prompts, examples, and learning flow.",
+      "value": "Dieser Modus ist mit eigenen Prompts, Beispielen und Lernabläufen speziell auf Lern-Challenges abgestimmt."
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.0",
+      "source": "Create short challenges and boss rounds",
+      "value": "Erstelle kurze Challenges und Boss-Runden"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Beginne mit Beispiel-Prompts"
+    },
+    {
+      "key": "topic.study-challenges.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Passe die Sitzung an dein Ziel an"
+    },
+    {
+      "key": "topic.study-challenges.starter.0",
+      "source": "Make a 7 day math challenge",
+      "value": "Erstelle eine 7-Tage-Mathe-Challenge"
+    },
+    {
+      "key": "topic.study-challenges.starter.1",
+      "source": "Create a vocabulary boss round",
+      "value": "Erstelle eine Vokabel-Boss-Runde"
+    },
+    {
+      "key": "topic.study-challenges.starter.2",
+      "source": "Design a revision sprint",
+      "value": "Entwirf einen Wiederholungs-Sprint"
+    }
+  ]
+}

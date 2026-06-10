@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Greek",
+  "locale": "el",
+  "namespace": "route:learn",
+  "sourceHash": "6b67cb58949582f0d63c0de58034de706fb1def479bd47caff347771e08a7cc3",
+  "part": {
+    "index": 5,
+    "total": 6
+  },
+  "entries": [
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Ταξίδι στο χρόνο"
+    },
+    {
+      "key": "site.b5de165cd236398a33",
+      "source": "timed test",
+      "value": "δοκιμή χρόνου"
+    },
+    {
+      "key": "site.c1f2f784477421cc0f",
+      "source": "Tiny explanation, example, user action, specific feedback, targeted repair or progress, recap, and mastery checkpoint.",
+      "value": "Μικροσκοπική εξήγηση, παράδειγμα, δράση χρήστη, συγκεκριμένη ανατροφοδότηση, στοχευμένη επισκευή ή πρόοδο, ανακεφαλαίωση, και σημείο ελέγχου mastery."
+    },
+    {
+      "key": "site.a31ae9a6964e2f0a17",
+      "source": "Trace chains, compare importance, discuss consequences, and ask counterfactual questions.",
+      "value": "Αλυσίδες ιχνοστοιχείων, συγκρίνετε τη σημασία, συζητήστε τις συνέπειες και ρωτήστε αντίστροφα ερωτήματα."
+    },
+    {
+      "key": "site.895a7dace1b9ada67b",
+      "source": "Trace why events happened",
+      "value": "Ανακαλύψτε γιατί συνέβησαν τα γεγονότα"
+    },
+    {
+      "key": "site.7ac967e6972ee5e7f5",
+      "source": "Track attempts, shrink goals when needed, and repair broken streaks.",
+      "value": "Να παρακολουθείτε απόπειρες, να συρρικνώνετε τους στόχους όταν χρειάζεται, και να επισκευάζετε σπασμένα ραβδιά."
+    },
+    {
+      "key": "site.c675fc274ad17a1cb4",
+      "source": "Track deadlines and next actions",
+      "value": "Παρακολουθήστε προθεσμίες και επόμενες ενέργειες"
+    },
+    {
+      "key": "site.af26deb023c5d0063d",
+      "source": "Track essay drafting focus",
+      "value": "Παρακολουθήστε την εστίαση στη σύνταξη δοκιμίου"
+    },
+    {
+      "key": "site.d0d8eff92e1afc3d45",
+      "source": "Track essay outline work",
+      "value": "Παρακολουθήστε την εργασία στο περίγραμμα μιας έκθεσης"
+    },
+    {
+      "key": "site.fd1f501b443adac02b",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Παρακολουθήστε τα σερί μελέτης, αναπληρώστε τις χαμένες ημέρες και σχεδιάστε μια ελάχιστη βιώσιμη συνήθεια μελέτης που αντέχει στην καθημερινότητα."
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Ταξίδεψε μέσα σε μια περίοδο"
+    },
+    {
+      "key": "site.fc86028b09428f3fbc",
+      "source": "Treat each turn as collaborative work: draft, critique, revise, ask for a decision, update open questions, and hand the next useful move to either the user or AI. Challenge weak ideas when the selected mode calls for it.",
+      "value": "Αντιμετωπίστε κάθε στροφή ως συνεργατική εργασία: σχέδιο, κριτική, αναθεώρηση, ζητήστε μια απόφαση, ενημέρωση ανοικτές ερωτήσεις, και δώστε την επόμενη χρήσιμη κίνηση είτε στο χρήστη είτε στο AI. Προκαλέστε αδύναμες ιδέες όταν η επιλεγμένη λειτουργία το απαιτεί."
+    },
+    {
+      "key": "site.93f978228f89334d15",
+      "source": "true false",
+      "value": "αληθινό ψέμα."
+    },
+    {
+      "key": "site.f1b7889f1761c08757",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "Δοκιμάστε να εξηγήσετε μια έννοια απλά. Ο δάσκαλός σας εντοπίζει κενά, κάνει ερωτήσεις και σας βοηθά να αναδομήσετε την εξήγησή σας."
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Δοκίμασε το Homework Coach"
+    },
+    {
+      "key": "site.cf66660c72e079e266",
+      "source": "Try this prompt in {value1}: {value2}",
+      "value": "Δοκιμάστε αυτό το μήνυμα στο {value1}: {value2}"
+    },
+    {
+      "key": "site.234ae0c3efb5a4cbc6",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "Μετατρέψτε ένα ευρύ θέμα σε ερευνητικά ερωτήματα, όρους αναζήτησης, περιγράμματα και σημειώσεις πηγών."
+    },
+    {
+      "key": "site.f6ec33c709aa4ef2c5",
+      "source": "Turn a concept, argument, problem, text, or decision into a focused chain of questions. Your buddy listens to each answer, maps assumptions and gaps, and pushes you toward your own final synthesis. Try: \"Help me understand opportunity cost.\"",
+      "value": "Μετατρέψτε μια έννοια, ένα επιχείρημα, ένα πρόβλημα, ένα κείμενο ή μια απόφαση σε μια εστιασμένη αλυσίδα ερωτήσεων. Ο βοηθός σας ακούει κάθε απάντηση, χαρτογραφεί υποθέσεις και κενά, και σας ωθεί προς τη δική σας τελική σύνθεση. Δοκιμάστε: \"Βοήθησέ με να κατανοήσω το κόστος ευκαιρίας.\""
+    },
+    {
+      "key": "site.295f0745e8dec6b80c",
+      "source": "Turn a syllabus into a study plan",
+      "value": "Μετατρέψτε μια διδακτέα ύλη σε πρόγραμμα μελέτης"
+    },
+    {
+      "key": "site.28785ab5d871a014bb",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Μετατρέψτε ένα θέμα, ένα πρόγραμμα σπουδών ή σημειώσεις σε ένα ρεαλιστικό τεστ εξάσκησης με ενότητες, χρονισμό, καθοδήγηση βαθμολόγησης και βήματα αναθεώρησης."
+    },
+    {
+      "key": "site.99e9d2387782fc440e",
+      "source": "Turn activity into next steps",
+      "value": "Μετατρέψτε τη δραστηριότητα σε επόμενα βήματα"
+    },
+    {
+      "key": "site.0969aee44500ae4f09",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "Μετατρέψτε έννοιες σε ιστορίες, χαρακτήρες, συγκρούσεις και αξιομνημόνευτες σκηνές."
+    },
+    {
+      "key": "site.9b635304818a007306",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Μετατρέψτε διαγράμματα, συστήματα του σώματος, χάρτες, ροές εργασίας ή εργαστηριακές διατάξεις σε εξάσκηση ονοματοδοσίας με υποδείξεις και έλεγχο απαντήσεων."
+    },
+    {
+      "key": "site.0cabbd882791a435a2",
+      "source": "Turn ideas into milestones",
+      "value": "Μετατρέψτε τις ιδέες σε ορόσημα"
+    },
+    {
+      "key": "site.637b08221a415df2f6",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "Μετάτρεψε τις προθέσεις σου σε μικρές, επαναλαμβανόμενες μαθησιακές συνήθειες με ερεθίσματα, επιβραβεύσεις και σχέδια αποκατάστασης."
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Μετέτρεψέ το σε κάρτες μνήμης"
+    },
+    {
+      "key": "site.d4a20aadcf3fe67678",
+      "source": "Turn learning into short structured challenges.",
+      "value": "Να μετατρέψουμε τη μάθηση σε σύντομες δομημένες προκλήσεις."
+    },
+    {
+      "key": "site.9abdd33cdf814feb63",
+      "source": "Turn material into a revision guide",
+      "value": "Μετατρέψτε το υλικό σε οδηγό αναθεώρησης"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Μετέτρεψε τα λάθη σε κύκλους επανάληψης"
+    },
+    {
+      "key": "site.d7dc15460461b3bc2e",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Μετάτρεψε τις σημειώσεις μου σε φύλλο αναθεώρησης"
+    },
+    {
+      "key": "site.d93b2e7b8937b31dd2",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Μετατρέψτε τις σημειώσεις σας σε παιχνίδια αντιστοίχισης για λεξιλόγιο, έννοιες, πρόσωπα/γεγονότα, τύπους, παραδείγματα ή ζεύγη αιτίας-αποτελέσματος."
+    },
+    {
+      "key": "site.bac0e3ee3b38810ae6",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "Μετατρέψτε σημειώσεις ή θέματα σε σαφείς κάρτες flashcards με απαντήσεις, παγίδες και προτροπές επανάληψης."
+    },
+    {
+      "key": "site.2984ec7ae642950900",
+      "source": "Turn progress into levels and quests",
+      "value": "Μετατρέψτε την πρόοδο σε επίπεδα και αποστολές"
+    },
+    {
+      "key": "site.ce382fbe0f069117ce",
+      "source": "Turn reading into quests",
+      "value": "Μετατροπή της ανάγνωσης σε αποστολές"
+    },
+    {
+      "key": "site.ab599d2a1dd2dc07de",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Μετατρέψτε τις διάσπαρτες σημειώσεις σε φακέλους, ετικέτες, περιλήψεις, συνδέσμους και ενέργειες αναθεώρησης που διευκολύνουν την ανάκληση."
+    },
+    {
+      "key": "site.58ef824e7219c95926",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Μετατρέψτε τη δραστηριότητα μελέτης, τα αποτελέσματα των κουίζ, τις σημειώσεις και τα χρονόμετρα σε μια ανασκόπηση τύπου πίνακα ελέγχου με τάσεις και επόμενες ενέργειες."
+    },
+    {
+      "key": "site.0ff0563a0a6c4919be",
+      "source": "Turn study into a challenge",
+      "value": "Μετατρέψτε τη μελέτη σε πρόκληση"
+    },
+    {
+      "key": "site.41d98e8a39ab3c039b",
+      "source": "Turn text into compact, memorable study material.",
+      "value": "Μετατρέψτε το κείμενο σε συμπαγές, αξέχαστο υλικό μελέτης."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Μετέτρεψε το διορθωμένο λάθος σε κάρτα μνήμης ή μικρή λίστα ελέγχου για αργότερα."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Μετέτρεψε την εξήγηση σε κάρτες ενεργής ανάκλησης με μία εννοιολογική κάρτα, μία κάρτα παραδείγματος και μία κάρτα παρανόησης."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Μετέτρεψε την πιο δύσκολη χαμένη ερώτηση σε κάρτα μνήμης και επανάλαβέ τη αργότερα."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Μετέτρεψε αυτές τις χαμένες ερωτήσεις σε κάρτες μνήμης ομαδοποιημένες ανά έννοια, τύπο, ορισμό και παράδειγμα."
+    },
+    {
+      "key": "site.01eb91460fd9f019ed",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Μετατρέψτε αυτή τη διάλεξη σε σημειώσεις Cornell"
+    },
+    {
+      "key": "site.54d17569b6c3d23617",
+      "source": "Turn this note into Q&A",
+      "value": "Μετάτρεψε αυτή τη σημείωση σε ερωταπαντήσεις"
+    },
+    {
+      "key": "site.537ea3c182fecbf998",
+      "source": "Turn vague intentions into achievable daily study goals.",
+      "value": "Μετατρέψτε ασαφείς προθέσεις σε εφικτούς στόχους καθημερινής μελέτης."
+    },
+    {
+      "key": "site.fcc8bc81cab0880a64",
+      "source": "Turn vocabulary into levels",
+      "value": "Μετατρέψτε το λεξιλόγιο σε επίπεδα"
+    },
+    {
+      "key": "site.e156a58e0269c54031",
+      "source": "Tutor math with step-by-step reasoning and learner participation.",
+      "value": "Μαθηματικά με βήμα προς βήμα λογίκευση και συμμετοχή μαθητή."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Ιδιωτικά μαθήματα"
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "Κατανόησε ένα δύσκολο θέμα"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Κατανόησε ένα ιστορικό πλαίσιο, ρώτα μια οπτική, σύγκρινε ισχυρισμούς και ξεχώρισε την προσομοίωση από το τεκμηριωμένο γεγονός."
+    },
+    {
+      "key": "site.64d18497b7e5acdb10",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "Κατανοήστε τον κώδικα, διορθώστε σφάλματα, μάθετε έννοιες και δημιουργήστε μικρά έργα βήμα προς βήμα."
+    },
+    {
+      "key": "site.74bc640c25d0ab91b9",
+      "source": "Understand places, maps, and people",
+      "value": "Κατανοήστε μέρη, χάρτες και ανθρώπους"
+    },
+    {
+      "key": "site.4df23e3856b60bc498",
+      "source": "Understand rights, government, and society",
+      "value": "Κατανοήστε τα δικαιώματα, την κυβέρνηση και την κοινωνία"
+    },
+    {
+      "key": "site.302931202f770938c2",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Κατανοήστε τον ήχο, τον ρυθμό και την αρμονία"
+    },
+    {
+      "key": "site.630cc81644c3f77939",
+      "source": "Understand why an answer works",
+      "value": "Κατάλαβε γιατί μια απάντηση είναι σωστή"
+    },
+    {
+      "key": "site.56a961a2d17df64402",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Αναλύστε ιστορικά γεγονότα μέσα από αιτίες, αφορμές, συνέπειες και εναλλακτικές δυνατότητες."
+    },
+    {
+      "key": "site.a429ef361735858614",
+      "source": "Use 50/10 breaks",
+      "value": "Χρησιμοποιήστε διαλείμματα 50/10"
+    },
+    {
+      "key": "site.ce2eb0f0f1391e3df9",
+      "source": "Use a compact table for given answer, correct idea, misconception, and next move.",
+      "value": "Χρησιμοποιήστε ένα συμπαγές τραπέζι για δεδομένη απάντηση, σωστή ιδέα, παρανόηση, και την επόμενη κίνηση."
+    },
+    {
+      "key": "site.1f8fe78bde2402a3d0",
+      "source": "Use a credibility scorecard and questions to investigate next.",
+      "value": "Χρησιμοποιήστε μια κάρτα βαθμολογίας αξιοπιστίας και ερωτήσεις για να ερευνήσετε τη συνέχεια."
+    },
+    {
+      "key": "site.9ff96eb2493c866c0a",
+      "source": "Use a deep work contract with outcome, block plan, rules, and review.",
+      "value": "Χρησιμοποιήστε ένα βαθύ συμβόλαιο εργασίας με αποτέλεσμα, σχέδιο μπλοκ, κανόνες, και αναθεώρηση."
+    },
+    {
+      "key": "site.f9662385f712516704",
+      "source": "Use a table with front, back, hint, and common trap.",
+      "value": "Χρησιμοποιήστε ένα τραπέζι με μπροστά, πίσω, υπαινιγμό και κοινή παγίδα."
+    },
+    {
+      "key": "site.b09316e95362266ac0",
+      "source": "Use AI as a study workflow, not a shortcut.",
+      "value": "Χρησιμοποιήστε AI ως ροή εργασίας μελέτης, όχι συντόμευση."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Χρησιμοποίησε AI coaching εργασιών για υποδείξεις, ελέγχους βημάτων, μαθηματικό συλλογισμό και σχόλια γραπτού, κρατώντας την τελική δουλειά δική σου."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Χρησιμοποίησε AI ταξίδι στον χρόνο, ιστορικές συνομιλίες και εξάσκηση debate για να εξερευνήσεις πλαίσιο, στοιχεία, επιχειρήματα και οπτικές."
+    },
+    {
+      "key": "site.59b74a801b29425f58",
+      "source": "Use badge names, criteria, tiers, and proof examples.",
+      "value": "Χρησιμοποιήστε ονόματα σημάτων, κριτήρια, κατηγορίες, και παραδείγματα απόδειξης."
+    },
+    {
+      "key": "site.864fdfa8c1f8d5417a",
+      "source": "Use before/after snippets, revision priorities, and concise rationale.",
+      "value": "Χρήση πριν/μετά την ολοκλήρωση, προτεραιότητες αναθεώρησης και συνοπτική λογική."
+    },
+    {
+      "key": "site.8e11a4bda986faa580",
+      "source": "Use calendars, checklists, and risk flags.",
+      "value": "Χρησιμοποιήστε ημερολόγια, καταλόγους και σημαίες κινδύνου."
+    },
+    {
+      "key": "site.03d79fc9ee1eac834e",
+      "source": "Use case file, choices, outcome, and learning note.",
+      "value": "Χρησιμοποιήστε αρχείο υπόθεσης, επιλογές, αποτέλεσμα, και να μάθει σημείωμα."
+    },
+    {
+      "key": "site.e80d3aeef54a7e0c21",
+      "source": "Use challenge cards, points, rounds, and debrief.",
+      "value": "Χρησιμοποιήστε κάρτες πρόκλησης, πόντους, γύρους, και ενημέρωση."
+    },
+    {
+      "key": "site.d10ad17e04532a5f97",
+      "source": "Use citation entries plus a missing-fields checklist.",
+      "value": "Χρησιμοποιήστε καταχωρήσεις αναφοράς συν μια λίστα ελέγχου εξαφανισμένων πεδίων."
+    },
+    {
+      "key": "site.c6f64b0d405a627501",
+      "source": "Use commitment cards, check-in scripts, and recovery plans.",
+      "value": "Χρησιμοποιήστε κάρτες δέσμευσης, check-in σενάρια, και τα σχέδια αποκατάστασης."
+    },
+    {
+      "key": "site.2192a31deee18013bd",
+      "source": "Use compact staged sections: setting, time slice, persona kernel, dossier wall, historian sidecar, recommended opening questions, then in-character exchanges with occasional claim labels and debrief on request.",
+      "value": "Χρησιμοποιήστε συμπαγείς ενότητες staged: ρύθμιση, χρονική φέτα, πυρήνας persona, τοίχος φακέλου, ιστορικός sidecar, συνιστάται να ανοίξετε ερωτήσεις, στη συνέχεια, σε ανταλλαγή χαρακτήρων με περιστασιακές ετικέτες διεκδικήσεων και ενημέρωση κατόπιν αιτήματος."
+    },
+    {
+      "key": "site.28ae06188e9415f06f",
+      "source": "Use compact UI-like sections: Passport, Travel Advisory, Arrival Scene, Location, Identity, Social Rules, Event Clock, Nearby People, Objects, Choices, Evidence, and Field Notes. End major turns with meaningful choices.",
+      "value": "Χρησιμοποιήστε συμπαγή τμήματα UI-όπως: Διαβατήριο, Ταξιδιωτική συμβουλευτική, Άφιξη Σκηνή, Τοποθεσία, Ταυτότητα, Κοινωνικοί κανόνες, Ρολόι Εκδήλωση, Κοντινή Άτομα, Αντικείμενα, Επιλογές, Αποδείξεις, και Σημειώσεις Πεδίου. Τέλος μεγάλες στροφές με σημαντικές επιλογές."
+    },
+    {
+      "key": "site.72323b4252dcf6382a",
+      "source": "Use compact workroom sections such as Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, and Next action. Show suggested edits or diffs before merging when rewriting.",
+      "value": "Χρησιμοποιήστε συμπαγείς ενότητες του χώρου εργασίας, όπως κοινόχρηστο τεχνούργημα, συμβολή AI, κίνηση χρήστη, σχόλια Inline, log απόφασης, Open ερωτήσεις, και επόμενη δράση."
+    },
+    {
+      "key": "site.0c3f7f2a3259a7716b",
+      "source": "Use comparison tables and next-step experiments.",
+      "value": "Χρησιμοποιήστε πίνακες σύγκρισης και πειράματα επόμενο βήμα."
+    },
+    {
+      "key": "site.b8ce28b13c9104473d",
+      "source": "Use concise claims, evidence prompts, and a final debate recap when asked.",
+      "value": "Χρησιμοποιήστε συνοπτικούς ισχυρισμούς, αποδεικτικά στοιχεία και μια τελική συζήτηση ανακεφαλαιώνεται όταν ζητείται."
+    },
+    {
+      "key": "site.19129718ac47364fe9",
+      "source": "Use concise code snippets, comments only when useful, and test cases.",
+      "value": "Χρησιμοποιήστε συνοπτικές κωδικές εικόνες, σχόλια μόνο όταν είναι χρήσιμες και περιπτώσεις δοκιμής."
+    },
+    {
+      "key": "site.0b1a10bf202e84c268",
+      "source": "Use concise drawing instructions, label lists, and visual checkpoints.",
+      "value": "Χρησιμοποιήστε συνοπτικές οδηγίες σχεδίασης, λίστες ετικετών και οπτικά σημεία ελέγχου."
+    },
+    {
+      "key": "site.fdf5f6975b9c66add2",
+      "source": "Use Cornell sections: cues, notes, summary, and recall checks.",
+      "value": "Χρησιμοποιήστε τα τμήματα Cornell: στέκες, σημειώσεις, περίληψη, και να θυμάστε ελέγχους."
+    },
+    {
+      "key": "site.a20a28de8ada0e843f",
+      "source": "Use course cards, resource lists, and weekly workload tables.",
+      "value": "Χρησιμοποιήστε κάρτες μαθημάτων, λίστες πόρων, και εβδομαδιαίους πίνακες εργασίας."
+    },
+    {
+      "key": "site.18371a296726393000",
+      "source": "Use dashboard cards, trend notes, weak spots, and next actions.",
+      "value": "Χρησιμοποιήστε ταμπλό κάρτες, σημειώσεις τάσης, αδύναμα σημεία, και τις επόμενες ενέργειες."
+    },
+    {
+      "key": "site.c3a4fcdf4ebbbd4ce0",
+      "source": "Use deadline tables, risk flags, and next actions.",
+      "value": "Χρησιμοποιήστε πίνακες προθεσμίας, σημαίες κινδύνου και τις επόμενες ενέργειες."
+    },
+    {
+      "key": "site.922cae7ead43b09491",
+      "source": "Use debate cards, concise rebuttals, and occasional scorekeeping of argument quality.",
+      "value": "Χρησιμοποιήστε κάρτες διαλόγου, συνοπτικές αντικρουόμενες και περιστασιακή διατήρηση της ποιότητας των επιχειρημάτων."
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Χρησιμοποίησε το debate για να συγκρίνεις τον ισχυρότερο ισχυρισμό και τον ισχυρότερο αντίλογο."
+    },
+    {
+      "key": "site.58ff327f58a59ac6cf",
+      "source": "Use diagnosis, better model, why it works, and one check question.",
+      "value": "Χρησιμοποιήστε διάγνωση, καλύτερο μοντέλο, γιατί λειτουργεί, και μια ερώτηση ελέγχου."
+    },
+    {
+      "key": "site.83b8fa80617de18c49",
+      "source": "Use diagrams in text, role explanations, and real-world scenarios.",
+      "value": "Χρησιμοποιήστε διαγράμματα σε κείμενα, εξηγήσεις ρόλων και σενάρια πραγματικού κόσμου."
+    },
+    {
+      "key": "site.49fd656ecea750f378",
+      "source": "Use equations, aligned steps, and short why-this-works notes.",
+      "value": "Χρησιμοποιήστε εξισώσεις, ευθυγραμμισμένα βήματα, και σύντομη γιατί-αυτό-δουλεύει σημειώσεις."
+    },
+    {
+      "key": "site.6e12d1f31894cfcd22",
+      "source": "Use examiner questions, model answer shapes, and feedback scorecards.",
+      "value": "Χρησιμοποιήστε ερωτήσεις εξεταστή, μοντέλα απαντήσεων σχήματα, και ανατροφοδότηση κάρτες βαθμολογίας."
+    },
+    {
+      "key": "site.ec24f978d1ebe25fcd",
+      "source": "Use examples, compare systems, ask application questions, and separate facts from opinions.",
+      "value": "Χρησιμοποιήστε παραδείγματα, συγκρίνετε τα συστήματα, να κάνετε ερωτήσεις αίτησης, και ξεχωριστά γεγονότα από τις γνώμες."
+    },
+    {
+      "key": "site.becac4d668bf225ed0",
+      "source": "Use folders, tags, note summaries, links, and review actions.",
+      "value": "Χρησιμοποιήστε φακέλους, ετικέτες, περιλήψεις σημειώσεων, συνδέσμους, και τις ενέργειες αναθεώρησης."
+    },
+    {
+      "key": "site.4017fdba59c2902aaf",
+      "source": "Use formulas, tables, and target score plans.",
+      "value": "Χρησιμοποιήστε τύπους, πίνακες, και σχέδια σκοράρει στόχο."
+    },
+    {
+      "key": "site.9d3acc7508e8909024",
+      "source": "Use forum-ready posts, reply drafts, and discussion summaries.",
+      "value": "Χρησιμοποιήστε θέσεις εργασίας, σχέδια απάντησης και περιλήψεις συζητήσεων."
+    },
+    {
+      "key": "site.3277683081f54fa276",
+      "source": "Use goal cards, priority, time estimate, blocker, and done criteria.",
+      "value": "Χρησιμοποιήστε κάρτες στόχου, προτεραιότητα, εκτίμηση χρόνου, αποκλεισμούς και έκανε τα κριτήρια."
+    },
+    {
+      "key": "site.cedebca17e2223ed64",
+      "source": "Use group agenda, roles, rounds, resources, and follow-up tasks.",
+      "value": "Χρησιμοποιήστε ομαδική ατζέντα, ρόλους, γύρους, πόρους και καθήκοντα παρακολούθησης."
+    },
+    {
+      "key": "site.c2f20bb8f31248b2d8",
+      "source": "Use group roles, timer rounds, check-ins, and debrief prompts.",
+      "value": "Χρησιμοποιήστε ρόλους ομάδας, χρονόμετρο γύρους, check-in, και ενημέρωση οδηγίες."
+    },
+    {
+      "key": "site.05541ff7be977a89df",
+      "source": "Use habit recipe, obstacle plan, and 7-day experiment.",
+      "value": "Χρησιμοποιήστε συνταγή συνήθειας, σχέδιο εμποδίων, και 7-ημερών πείραμα."
+    },
+    {
+      "key": "site.34030f0977ce607111",
+      "source": "Use hints, checkpoints, and small examples rather than full final answers.",
+      "value": "Χρησιμοποιήστε υποδείξεις, σημεία ελέγχου και μικρά παραδείγματα αντί για πλήρεις τελικές απαντήσεις."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Χρησιμοποίησε υποδείξεις, ελέγχους βημάτων και σχόλια γραπτού χωρίς να μετατρέπεις τη μάθηση σε αντιγραφή απαντήσεων."
+    },
+    {
+      "key": "site.2efdc4423deb221be1",
+      "source": "Use hypothesis, materials, method, observation, and explanation sections when useful.",
+      "value": "Χρησιμοποιήστε τις υποθέσεις, τα υλικά, τη μέθοδο, την παρατήρηση και τις ενότητες εξήγησης όταν είναι χρήσιμες."
+    },
+    {
+      "key": "site.89b684b63de7d3d7df",
+      "source": "Use idea menus, selection criteria, and next-step sketches.",
+      "value": "Χρησιμοποιήστε μενού ιδέας, κριτήρια επιλογής, και τα επόμενα βήματα σκίτσα."
+    },
+    {
+      "key": "site.06ced2954f0f8606d6",
+      "source": "Use in-character dialogue and short coaching notes.",
+      "value": "Χρησιμοποιήστε διάλογο και σύντομες σημειώσεις προπονήσεων."
+    },
+    {
+      "key": "site.3a713fe86f5ba869c0",
+      "source": "Use key takeaways, outline, definitions, and review questions.",
+      "value": "Χρησιμοποιήστε βασικές απολαβές, περιγράμματα, ορισμούς, και ερωτήσεις αναθεώρησης."
+    },
+    {
+      "key": "site.945e746456fe5c8aac",
+      "source": "Use leaderboard rules, scoring, safeguards, and reflection.",
+      "value": "Χρησιμοποιήστε κανόνες του πίνακα, βαθμολόγηση, διασφαλίσεις, και αντανάκλαση."
+    },
+    {
+      "key": "site.234fac65f83abaf88e",
+      "source": "Use level tables, XP rules, quest cards, and anti-grind safeguards.",
+      "value": "Χρησιμοποιήστε πίνακες επιπέδων, κανόνες XP, κάρτες αναζήτησης και αντι-άγριες διασφαλίσεις."
+    },
+    {
+      "key": "site.6e19c9d5372207d030",
+      "source": "Use narrative to make concepts memorable.",
+      "value": "Χρησιμοποιήστε αφήγηση για να κάνετε τις έννοιες αξέχαστες."
+    },
+    {
+      "key": "site.8dcc9b728b8833130e",
+      "source": "Use nested bullets, tables, or Mermaid text when helpful.",
+      "value": "Χρησιμοποιήστε ένθετες σφαίρες, τραπέζια, ή κείμενο Γοργόνας όταν βοηθάτε."
+    },
+    {
+      "key": "site.f8b9429f1412636a08",
+      "source": "Use numbered locations, images, and recall checkpoints.",
+      "value": "Χρησιμοποιήστε αριθμημένες τοποθεσίες, εικόνες και σημεία ελέγχου."
+    },
+    {
+      "key": "site.0ebaec4bd6a2e50d54",
+      "source": "Use objectives, summaries, examples, traps, questions, and next review.",
+      "value": "Χρησιμοποιήστε στόχους, περιλήψεις, παραδείγματα, παγίδες, ερωτήσεις και επόμενη αναθεώρηση."
+    },
+    {
+      "key": "site.c40d3ad9489963a756",
+      "source": "Use observation, interpretation, evidence, and next-question sections.",
+      "value": "Χρησιμοποιήστε τμήματα παρατήρησης, ερμηνείας, αποδεικτικών στοιχείων και επόμενης ερώτησης."
+    },
+    {
+      "key": "site.d310f5dee48ac12fe2",
+      "source": "Use pair banks, scrambled lists, answer key, and review notes.",
+      "value": "Χρησιμοποιήστε ζευγάρι τράπεζες, ομελέτες λίστες, το κλειδί απάντησης, και σημειώσεις επανεξέτασης."
+    },
+    {
+      "key": "site.95b2e301538b2326b3",
+      "source": "Use place cards, comparison tables, and map prompts.",
+      "value": "Χρησιμοποιήστε κάρτες, πίνακες σύγκρισης και προτάσεις χάρτη."
+    },
+    {
+      "key": "site.837ba6ce3d59e2e2ad",
+      "source": "Use practical audio tips and study-session setup notes.",
+      "value": "Χρησιμοποιήστε πρακτικές συμβουλές ήχου και σημειώσεις εγκατάστασης μελέτης-συνεδρίας."
+    },
+    {
+      "key": "site.02746eb2fd2ca8b250",
+      "source": "Use quests, levels, badges, and boss questions.",
+      "value": "Χρησιμοποιήστε αναζητήσεις, επίπεδα, σήματα, και ερωτήσεις αφεντικό."
+    },
+    {
+      "key": "site.67178309734cc33970",
+      "source": "Use rain for reading",
+      "value": "Χρησιμοποιήστε ήχο βροχής για διάβασμα"
+    },
+    {
+      "key": "site.4a690c13598e44482f",
+      "source": "Use rain sounds for revision",
+      "value": "Χρήση ήχων βροχής για επανάληψη"
+    },
+    {
+      "key": "site.e30d7f63a7b088cd74",
+      "source": "Use reflection prompts, learner strengths, and one next experiment.",
+      "value": "Χρησιμοποιήστε προτροπές αντανάκλασης, δύναμη μαθητή, και ένα επόμενο πείραμα."
+    },
+    {
+      "key": "site.64f585fa82dd1dbffa",
+      "source": "Use report sections: wins, evidence, blockers, lessons, next week.",
+      "value": "Χρησιμοποιήστε τμήματα αναφοράς: νίκες, αποδείξεις, μπλοκάρουν, μαθήματα, την επόμενη εβδομάδα."
+    },
+    {
+      "key": "site.59b71700f4b1cc46c2",
+      "source": "Use research questions, source matrices, and synthesis notes.",
+      "value": "Χρησιμοποιήστε ερωτήσεις έρευνας, πίνακες πηγής, και σημειώσεις σύνθεσης."
+    },
+    {
+      "key": "site.95d9182b7b0330b238",
+      "source": "Use resource cards, audience notes, and usage tips.",
+      "value": "Χρησιμοποιήστε κάρτες πόρων, σημειώσεις του κοινού, και συμβουλές χρήσης."
+    },
+    {
+      "key": "site.f87888801cf2e35b88",
+      "source": "Use review queues, due dates, and confidence ratings.",
+      "value": "Χρησιμοποιήστε τις ουρές κριτική, τις ημερομηνίες λήξης, και τις αξιολογήσεις εμπιστοσύνης."
+    },
+    {
+      "key": "site.6728a301a5e398eed4",
+      "source": "Use scorecards for clarity, structure, evidence, and delivery notes.",
+      "value": "Χρησιμοποιήστε κάρτες βαθμολογίας για σαφήνεια, δομή, στοιχεία και σημειώσεις παράδοσης."
+    },
+    {
+      "key": "site.c3f1c91298ef096e99",
+      "source": "Use short focus plans, checklists, and post-session reflection prompts.",
+      "value": "Χρησιμοποιήστε μικρά σχέδια εστίασης, καταλόγους και οδηγίες μετά τη σύνοδο."
+    },
+    {
+      "key": "site.d9572820ced7738c78",
+      "source": "Use short sections, examples, analogies, and GFM-friendly lists or tables when they help.",
+      "value": "Χρησιμοποιήστε σύντομες ενότητες, παραδείγματα, αναλογίες, και φιλικούς προς το GFM καταλόγους ή πίνακες όταν βοηθούν."
+    },
+    {
+      "key": "site.962d3dfa3d1d49cf7f",
+      "source": "Use short summaries, quote-light references, and question sets.",
+      "value": "Χρησιμοποιήστε σύντομες περιλήψεις, παραπομπές από το φως, και σύνολα ερωτήσεων."
+    },
+    {
+      "key": "site.afb60385116d26c6c1",
+      "source": "Use short supportive notes and practical next actions.",
+      "value": "Χρησιμοποιήστε σύντομες υποστηρικτικές σημειώσεις και πρακτικές επόμενες ενέργειες."
+    },
+    {
+      "key": "site.ee14af5749aef0a76e",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Χρησιμοποιήστε απλές προεπιλογές ήχων περιβάλλοντος για να μειώσετε τους περισπασμούς κατά την ανάγνωση, τη γραφή, την αναθεώρηση ή την επίλυση προβλημάτων."
+    },
+    {
+      "key": "site.e8923cf2ef6df01837",
+      "source": "Use simple notation, examples, and practice prompts.",
+      "value": "Χρησιμοποιήστε απλές σημειώσεις, παραδείγματα και πρακτικές οδηγίες."
+    },
+    {
+      "key": "site.ef515aecdbb0513ea9",
+      "source": "Use simple tables, cause-effect chains, and caveat notes.",
+      "value": "Χρησιμοποιήστε απλά τραπέζια, αλυσίδες αιτιών και σημειώσεις."
+    },
+    {
+      "key": "site.a52d7889d3ad0ebc29",
+      "source": "Use simple-language rewrites and gap checklists.",
+      "value": "Χρησιμοποιήστε απλές γλώσσες ξαναγράφει και λίστες χάσματος."
+    },
+    {
+      "key": "site.4f66ce0e77fbc87da3",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Χρησιμοποιήστε το σκίτσο ως μαθησιακή κίνηση: σχεδιάστε διαγράμματα, επισημάνετε πρόχειρους χάρτες, εξηγήστε διαδικασίες ή μετατρέψτε μια ακατάστατη ιδέα σε μια πιο καθαρή οπτική απεικόνιση."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Χρησιμοποίησε Σωκρατικές ερωτήσεις"
+    },
+    {
+      "key": "site.fdab9680438b05d475",
+      "source": "Use sound recommendations and focus setup notes.",
+      "value": "Χρησιμοποιήστε σωστές συστάσεις και σημειώσεις εγκατάστασης εστίασης."
+    },
+    {
+      "key": "site.09dcea02899af0313e",
+      "source": "Use stakeholder tables and balanced pro/con analysis.",
+      "value": "Χρησιμοποιήστε τους πίνακες ενδιαφερομένων και ισορροπημένη ανάλυση υπέρ/κατά."
+    },
+    {
+      "key": "site.97b3e2f3eb59a118b0",
+      "source": "Use STAR or situation-action-result frameworks when appropriate.",
+      "value": "Χρήση πλαισίων STAR ή πλαισίων δράσης κατά περίπτωση."
+    },
+    {
+      "key": "site.a834b5552e078b5fe6",
+      "source": "Use story beats plus learning notes.",
+      "value": "Χρησιμοποιήστε την ιστορία beats συν τις σημειώσεις εκμάθησης."
+    },
+    {
+      "key": "site.d01f38f5525134b72f",
+      "source": "Use streak status, tiny action, recovery rule, and weekly reflection.",
+      "value": "Χρησιμοποιήστε κατάσταση ραβδώσεων, μικροσκοπική δράση, κανόνας ανάκτησης, και εβδομαδιαία αντανάκλαση."
+    },
+    {
+      "key": "site.d63b36b9f1da564b90",
+      "source": "Use tables with word, meaning, example, memory hook, and practice prompt.",
+      "value": "Χρησιμοποιήστε πίνακες με λέξη, έννοια, παράδειγμα, γάντζο μνήμης, και την πρακτική ώθηση."
+    },
+    {
+      "key": "site.bc34082c611fb98583",
+      "source": "Use tables, plain-language takeaways, and caution notes.",
+      "value": "Χρησιμοποιήστε τραπέζια, απλές λήψεις, και σημειώσεις προσοχής."
+    },
+    {
+      "key": "site.2a33aba8bd6239f1bf",
+      "source": "Use target language first, then brief feedback in the learner's preferred support language.",
+      "value": "Χρησιμοποιήστε τη γλώσσα-στόχος πρώτα, στη συνέχεια, σύντομη ανατροφοδότηση στην προτιμώμενη γλώσσα υποστήριξης του μαθητή."
+    },
+    {
+      "key": "site.2e724a19987218b2d6",
+      "source": "Use task boards, deadlines, and next-action lists.",
+      "value": "Χρησιμοποιήστε πίνακες εργασιών, προθεσμίες και καταλόγους επόμενης δράσης."
+    },
+    {
+      "key": "site.6b6d15043f25d071f2",
+      "source": "Use task cards, elapsed time, notes, and follow-up block suggestions.",
+      "value": "Χρησιμοποιήστε κάρτες εργασίας, περάσει ο χρόνος, σημειώσεις, και τις προτάσεις μπλοκ παρακολούθησης."
+    },
+    {
+      "key": "site.01620db0be888e1c97",
+      "source": "Use test sections, timing, answer keys, rubrics, and review plans.",
+      "value": "Χρησιμοποιήστε τμήματα δοκιμών, χρονοδιάγραμμα, τα πλήκτρα απάντησης, τα ρούβλια και τα σχέδια αναθεώρησης."
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Χρησιμοποίησε την ημερομηνία εξέτασης, την ύλη, τον διαθέσιμο χρόνο και τα αδύναμα σημεία για να δημιουργήσεις ένα πλάνο που αντέχει στην πραγματική ζωή."
+    },
+    {
+      "key": "site.d194096346441562de",
+      "source": "Use the Feynman technique to reveal gaps and simplify understanding.",
+      "value": "Χρησιμοποιήστε την τεχνική Feynman για να αποκαλύψετε κενά και να απλοποιήσετε την κατανόηση."
+    },
+    {
+      "key": "site.e8b7379c9a09d7996b",
+      "source": "Use this compact format: Brief read: one sentence. Map update: concise Claim, Assumption, Gap, or Correction bullets as relevant. Next question: exactly one question. For the first reply, use Target, Contract, and First question.",
+      "value": "Χρησιμοποιήστε αυτή τη συμπαγή μορφή: Σύντομη ανάγνωση: μία πρόταση. Χάρτης ενημέρωση: συνοπτικό Ισχυρισμός, Κοίμηση, Χάσιμο, ή Σφαίρες Διόρθωσης ως σχετικό. Επόμενη ερώτηση: ακριβώς μία ερώτηση. Για την πρώτη απάντηση, χρήση Target, Συμβόλαιο, και Πρώτη ερώτηση."
+    },
+    {
+      "key": "site.5c7682d5552945b68b",
+      "source": "Use thought experiments, argument maps, and balanced summaries.",
+      "value": "Χρησιμοποιήστε πειράματα σκέψης, χάρτες επιχειρημάτων και ισορροπημένες περιλήψεις."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Χρησιμοποιήστε χρονοδιαγράμματα, στρώματα αιτίας, και χάρτες συνέπειες."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Χρησιμοποιήστε δομές δέντρων, ετικέτες κόμβου, συνδέσεις, και το επόμενο βήμα υποκινεί."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Χρησιμοποιήστε μη επισημοποιημένα μέρη, υπονοούμενα επίπεδα, το κλειδί απάντησης και σχόλια."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Χρησιμοποιήστε οπτικό λεξιλόγιο και καθοδηγείται αναζητούν προτροπές."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Χρησιμοποιήστε εβδομαδιαία σχέδια, σχέδια επιστροφής, και μικροσκοπικές επόμενες ενέργειες."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Χρησιμοποιήστε κύκλους εργασίας/διαλείμματα, σπάστε μενού, και να επιστρέψει τα προτροπές."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Χρησιμοποιήστε τα τμήματα φύλλων εργασίας, απαντήστε τα κλειδιά και ετικέτες δυσκολίας."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Χρησιμοποίησε σχόλια γραπτού για δομή, σαφήνεια και στοιχεία, κρατώντας το τελικό προσχέδιο αναγνωρίσιμα δικό σου."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Επιβεβαιώστε την αίσθηση, αναγνωρίστε τον αναστολέα και επιλέξτε ένα μικρό επόμενο βήμα."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "οπτική ανάλυση"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "Οπτική μάθηση"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Οπτική μάθηση"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Εξάσκηση σε προφορικές εξετάσεις"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Εμπλουτισμός Λεξιλογίου"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Σχόλια που διατηρούν τη φωνή"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Κύκλοι αδύναμων σημείων"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "εβδομαδιαία έκθεση"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Εβδομαδιαίες αναφορές"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "σταθμισμένη βαθμολογία"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Τι σύστημα επιτευγμάτων πρέπει να σχεδιάσουμε;"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "Τι ιδέες αναζητούμε;"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Τι διαβάζουμε;"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Για τι είστε περίεργοι σήμερα;"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Τι ετοιμάζεστε να πείτε;"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Τι ερευνάτε;"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Τι γράφετε;"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Ποιο έργο τέχνης, καλλιτέχνης ή τεχνοτροπία;"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Ποιες εργασίες έχετε να κάνετε;"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Ποιο μεγάλο ερώτημα εξερευνούμε;"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Ποια καριέρα ή ενδιαφέρον να εξερευνήσουμε;"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Ποιο θέμα πολιτικής αγωγής να μελετήσουμε;"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Ποιο θέμα προγραμματισμού ή σφάλμα αντιμετωπίζουμε;"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Ποια δέσμευση χρειάζεται υπευθυνότητα;"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Ποια έννοια να χαρτογραφήσουμε;"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Ποια μαθήματα ή θέματα διαχειρίζεστε;"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Ποιο διάγραμμα να εξασκηθούμε να ονομάζουμε;"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Ποιο δίλημμα να εξετάσουμε;"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Τι θα κάνεις στη συνέχεια σε αυτόν τον κόσμο;"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Τι χρειάζεται να θυμάστε;"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Τι χρειάζεται να μελετήσετε;"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Τι θέλετε να ολοκληρώσετε σήμερα;"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Τι κάνει ένα δικαστήριο;"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Τι κάνει ένας product manager;"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Τι δείχνει αυτή η έρευνα;"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Ποια οικονομική ιδέα να προσομοιώσουμε;"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Για ποια εξέταση προετοιμάζεστε;"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Τι τελικό βαθμό χρειάζομαι;"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "Τι συνέβη αυτή την εβδομάδα;"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "Τι συμβαίνει αν αλλάξουν οι φόροι;"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "Τι συμβαίνει αν αλλάξουμε τη θερμοκρασία;"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "Σε ποιο πρόβλημα της εργασίας σου έχεις κολλήσει;"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Ποια ιδέα σας φαίνεται μπερδεμένη ή ύποπτη;"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "Για ποια συνέντευξη προετοιμάζεστε;"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "Τι είναι η γνώση;"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Τι είδους ήχους περιβάλλοντος για συγκέντρωση θέλετε;"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "Τι είδους περίπτωση να προσομοιώσουμε;"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "Τι είδους εστίαση θέλετε σήμερα;"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Ποιος μαθησιακός στόχος θα έπρεπε να μετατραπεί σε σύστημα επιπέδων;"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "Ποια μαθησιακή συνήθεια θέλεις να αποκτήσεις;"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "Πάνω σε ποια μαθησιακή στιγμή πρέπει να αναστοχαστούμε;"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "Ποια στρατηγική μάθησης μου ταιριάζει;"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "Τι καθιστά ένα επιχείρημα έγκυρο;"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "Τι κάνει κάτι δίκαιο;"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "Ποιο υλικό θα έπρεπε να γίνει οδηγός μελέτης;"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "Ποιο μαθηματικό πρόβλημα να λύσουμε;"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "Πάνω σε ποια μουσική ιδέα να δουλέψουμε;"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Ποιο αποτέλεσμα πρέπει να παράγει αυτή η συνεδρία βαθιάς εργασίας;"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "Ποια ζεύγη θα έπρεπε να γίνουν παιχνίδι αντιστοίχισης;"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "Ποια πρόοδο πρέπει να επανεξετάσουμε;"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "Ποιο έργο χτίζουμε;"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "Ποια ερώτηση ή συζήτηση θέλετε να δημοσιεύσετε;"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "Ποιον πόρο θέλετε να μοιραστείτε;"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "Ποιο σενάριο να υποδυθούμε;"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Ποια επιστημονική ιδέα ή πείραμα εξερευνούμε;"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "Τι θα έπρεπε να γίνει πρόκληση;"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "Τι θα έπρεπε να γίνει παιχνίδι μάθησης;"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "Τι θα θέλατε να γίνει ιστορία;"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "Τι θα θέλατε να γίνει flashcards;"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Τι πρέπει να ρωτήσω πρώτα όταν ένα θέμα φαίνεται πολύ δύσκολο;"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Τι πρέπει να συμπεριλάβω σε ένα prompt εργασίας;"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "Τι πρέπει να μετράει ο πίνακας κατάταξης;"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "Τι πρέπει να καλύπτει το τεστ εξάσκησης;"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "Τι πρέπει να κάνει η ομάδα μελέτης;"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "Τι πρέπει να καλύπτει το φύλλο εργασίας;"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "Ποιο θα είναι το θέμα αυτής της συνεδρίας εστίασης;"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "Τι πρέπει να επαναλάβουμε;"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "Τι πρέπει να σχεδιάσουμε ή να απεικονίσουμε;"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "Ποιο σερί ή ρουτίνα χτίζετε;"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "Ποια εργασία να χρονομετρήσουμε;"
+    },
+    {
+      "key": "site.834f5e34978fe93e4e",
+      "source": "What to avoid",
+      "value": "Τι να αποφύγετε"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "Σε ποιο θέμα να σε εξετάσουμε;"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "Ποιο θέμα πρέπει να γίνει νοητικός χάρτης;"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Για ποια προφορική εξέταση προετοιμάζεστε;"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "Τι θα μου εξηγήσετε;"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "Ποιες λέξεις ή θέμα πρέπει να εξασκήσουμε;"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "Τι ρυθμό εργασίας/διαλείμματος θέλετε;"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "Τι θα θέλατε να μάθετε σήμερα;"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "Τι κάνει τη μάθηση δύσκολη αυτή τη στιγμή;"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "Ποιο είναι το θέμα της συζήτησής σας σήμερα;"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "Πού να εξερευνήσουμε;"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "Ποιο ιστορικό γεγονός να εξετάσουμε;"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "Ποιο ιστορικό πρόσωπο θα θέλατε να συναντήσετε;"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "Ποια γλώσσα και ποια κατάσταση;"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "λευκός θόρυβος"
+    }
+  ]
+}

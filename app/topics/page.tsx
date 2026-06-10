@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, Compass, SearchCheck, Sparkles } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
 import {
@@ -9,6 +9,7 @@ import {
 } from "@/lib/content/topic-directory";
 import { topicSeeds } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -19,7 +20,7 @@ import {
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Learning Modes",
   description:
     "Browse every public inspir AI learning mode: Socratic tutoring, homework coaching, math help, writing feedback, flashcards, quizzes, history roleplay, debate, and more.",
@@ -55,6 +56,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/topics");
+}
 
 export default function TopicsPage() {
   const categoryHubs = getTopicCategoryHubs();

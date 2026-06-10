@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Czech",
+  "locale": "cs",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 12,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "studijní dovednosti"
+    },
+    {
+      "key": "site.c0be267ae7b9421ba9",
+      "source": "Study skills guides",
+      "value": "Průvodci studijními dovednostmi"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "Studijní série"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "Studijní časovač"
+    },
+    {
+      "key": "site.3b1f7ac98100c2db8d",
+      "source": "study with AI",
+      "value": "učit se s AI"
+    },
+    {
+      "key": "site.3c328d5333fc21a14a",
+      "source": "Study with AI without cheating",
+      "value": "Učte se s AI bez podvádění"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Studijní pracovní postupy, které propojují režimy pro hosty, prompty, procvičování a související průvodce."
+    },
+    {
+      "key": "site.f44d7e8cc3553fbecb",
+      "source": "Studying with AI works best when the tool keeps you in the driver's seat.",
+      "value": "Studium s AI funguje nejlépe, když vás nástroj nechává na místě řidiče."
+    },
+    {
+      "key": "site.066ca7bdd036368736",
+      "source": "Subject hub",
+      "value": "Centrum předmětu"
+    },
+    {
+      "key": "site.2feff266cc115ac2a6",
+      "source": "Subject hubs",
+      "value": "Centra předmětů"
+    },
+    {
+      "key": "site.44c887b5d77a86fb07",
+      "source": "subject hubs mapped to learner intent",
+      "value": "předmětové huby mapované podle záměru studenta"
+    },
+    {
+      "key": "site.d0921b314798adbd36",
+      "source": "Subject hubs organize public AI learning modes by learning intent, such as math, writing, coding, history, homework, and exam prep. Each hub links to live guest modes, prompt starters, guides, workflows, and review loops.",
+      "value": "Centra předmětů organizují veřejné režimy učení s AI podle studijního záměru, například matematika, psaní, kódování, historie, domácí úkoly a příprava na zkoušky. Každé centrum odkazuje na živé režimy pro hosty, úvodní prompty, průvodce, pracovní postupy a smyčky opakování."
+    },
+    {
+      "key": "site.edb0f4eb8d8e6cc0b9",
+      "source": "Subscriptions and Competitions",
+      "value": "Předplatná a soutěže"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "Úspěch: student odchází s jasnějším mentálním modelem, dalším krokem a sebedůvěrou pokračovat."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "Shrňte diskuzi"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "Shrň 2. kapitolu"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Shrňte dlouhý text do klíčových myšlenek, struktury, definic, příkladů a opakovacích otázek."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "Shrň můj pokrok"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "Shrňte mé hrubé poznámky"
+    },
+    {
+      "key": "site.8b0fbf296ebcf69e30",
+      "source": "summarize notes AI",
+      "value": "AI na shrnutí poznámek"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "Shrňte vzorce, diagnostikujte slabé oblasti a vyberte další kroky."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "Shrňte vzorce, určete výhrady, vysvětlete metody a navrhněte další analýzy."
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Shrň kontext"
+    },
+    {
+      "key": "site.68fdf8f5a74ec70a64",
+      "source": "Summarize the tradeoff",
+      "value": "Shrňte kompromis"
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "Shrň tento článek"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Shrňte úspěchy, neúspěchy a plány na příští týden"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "Shrňte, vyjasněte strukturu, určete důležité pojmy a přidejte kontroly vybavování."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "Shrňte, vyjasněte slovní zásobu, položte inferenční otázky a propojte myšlenky."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "Shrňte, určete vzorce a proměňte reflexi v plán."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "Shrňte, označte, přidejte výhrady a navrhněte, jak by to měli ostatní použít."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "Podpořte soustředění nerušivým zvukem na pozadí."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "Podpořte pravidelné učení laskavým sledováním série."
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Podpořte financovaný přístup k učení s AI pro komunity, které potřebují kvalitní podporu bez dalších nákladů pro rodiny."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "Podpořte motivaci a vytrvalost uzemněným, neklinickým způsobem."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Podpořte psaní a zároveň zachovejte hlas autora"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Podporuje mimoškolní učení, akademické procvičování a zvídavost."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "Vytáhněte omyl na povrch, porovnejte ho se správným modelem a procvičte přenos."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Přepni do otázek, abys odhalil předpoklady a doplnil mezery místo pasivního čtení odpovědi."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Syndikované pokrytí pro širší dosah ke spotřebitelům."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "Označujte, třiďte a propojujte poznámky"
+    },
+    {
+      "key": "site.9899cc2856ebc766b7",
+      "source": "Talk to a historical figure",
+      "value": "Mluvte s historickou osobností"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Mluv s historickou postavou a zároveň odděluj vygenerovaný dialog od doloženého citátu."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Mluv s historickou osobou"
+    },
+    {
+      "key": "site.f498d9559a8e2aaedd",
+      "source": "Talk to a historical person prompts and study loop",
+      "value": "Prompty a studijní smyčka pro Mluv s historickou osobou"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "Promluvte si s Kleopatrou"
+    },
+    {
+      "key": "site.75f35e209bf368c2f5",
+      "source": "talk to historical figure AI",
+      "value": "AI pro rozhovor s historickou osobností"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "mluvit s historickými postavami AI"
+    },
+    {
+      "key": "site.8479e8174d72f35dd6",
+      "source": "Talk To Historical Figures With AI",
+      "value": "Mluv s historickými osobnostmi pomocí AI"
+    },
+    {
+      "key": "site.fd491be7a558f38bc7",
+      "source": "Talk To Historical Figures With AI is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Mluv s historickými osobnostmi pomocí AI je soustředěný způsob, jak používat AI k učení místo pasivního sbírání odpovědí. Režim je postavený kolem konkrétní práce: vstup do rozhovoru s historickou osobností. Pokládej otázky, zpochybňuj myšlenky a slyš svět skrze jejich dobu, hodnoty a omezení."
+    },
+    {
+      "key": "site.3183f69986b7ceed7c",
+      "source": "Talk To Historical Figures With AI: practical guide",
+      "value": "Mluv s historickými osobnostmi pomocí AI: praktický průvodce"
+    },
+    {
+      "key": "site.c9a1ac167eee122c72",
+      "source": "Talking to a historical figure is not magic access to the past. It is a learning format.",
+      "value": "Mluvit s historickou osobností není kouzelný přístup do minulosti. Je to formát učení."
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "časovač úkolů"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "Časovač úkolů"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "Učte jakékoli téma s vřelostí, jasností a užitečnými příklady."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "Učte kritické hodnocení zdrojů."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "Učte ekonomii prostřednictvím scénářů a kompromisů."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "Učte etické uvažování prostřednictvím strukturovaných dilemat."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "Vysvětli zlomky jako příběh"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "Učte geografii jako propojené systémy místa, lidí, prostředí a pohybu."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "Učte historii prostřednictvím kauzálního uvažování."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "Učte studenty pozorovat, interpretovat a užívat si umění."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "Nauč mě finanční modelování"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "Nauč mě, jak fungují úroky"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Nauč mě Porterův model pěti sil"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "Nauč mě cykly v Pythonu"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "Učte zapamatování prostřednictvím prostorových představ a vybavování."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "Učte programovací koncepty a ladění se zapojením studenta."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "Nauč mě základy rytmu"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "Učte vědu prostřednictvím důkazů, proměnných, předpovědí a bezpečného experimentování."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "Učte prostřednictvím realistických případů a důsledků rozhodnutí."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "Učte slovní zásobu prostřednictvím kontextu a procvičování vybavování."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Učitelé"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Učitelé a vedoucí mohou před formálním zavedením začít režimy Nauč se cokoli, Sókratovská výuka, Kouč domácích úkolů, kvízy a kartičky."
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Učitelé potřebují víc než obecného chatbota. Potřebují předvídatelné učební chování: klást otázky, kontrolovat uvažování, generovat procvičování, zachovat hlas studenta a zviditelňovat mylné představy."
+    },
+    {
+      "key": "site.ece53407c8b8eb8957",
+      "source": "Teachers or parents evaluating focused AI learning behaviors before a school deployment.",
+      "value": "Učitelé nebo rodiče, kteří vyhodnocují cílené chování učení s AI před školním nasazením."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Vyprávějte scénu, zastavte se kvůli předpovědi nebo reflexi a propojte ji zpět s pojmem."
+    },
+    {
+      "key": "site.7d1142e4547e426c6b",
+      "source": "Tell the mode what you are trying to learn or produce.",
+      "value": "Řekněte režimu, co se snažíte naučit nebo vytvořit."
+    },
+    {
+      "key": "site.03772c455a07fe5998",
+      "source": "Ten focused questions give immediate feedback and a simple review path.",
+      "value": "Deset cílených otázek dá okamžitou zpětnou vazbu a jednoduchou cestu k opakování."
+    },
+    {
+      "key": "site.2ee85218866a19e0d9",
+      "source": "Termination",
+      "value": "Ukončení"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Podmínky"
+    },
+    {
+      "key": "site.7d8a0b2b8dd1648336",
+      "source": "Terms And Conditions",
+      "value": "Podmínky používání"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Test před opakováním"
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "tvůrce testů"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "Otestuj mé porozumění inflaci"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Otestovat argument"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Otestuj své uvažování"
+    },
+    {
+      "key": "site.8830e1bafdc17f85ed",
+      "source": "Testing a position, seeing both sides, and learning what makes an argument stronger.",
+      "value": "Testování stanoviska, vidění obou stran a učení se, co posiluje argument."
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "Sumarizátor textu"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "Textový soubor pro objevování určený AI odpovědním enginům, asistentům, pedagogům a citačním nástrojům."
+    },
+    {
+      "key": "site.a151d8eb37c7baff02",
+      "source": "Thank you for choosing to be part of our community at Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), doing business as inspir (\"inspir\", \"we\", \"us\", \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices concerning your personal information, please contact us at support@inspir.app. When you visit our website https://web.archive.org/web/20221016155759/https://www.inspir.app, use our mobile applications, as the case may be (the \"App\") and more generally, use any of our services (the \"Services\", which include the Website and App), we appreciate that you are trusting us with your personal information. We take your privacy very seriously. In this privacy notice, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy notice that you disagree with, please discontinue the use of our Services immediately. This privacy notice applies to all information collected through our Services (which, as described above, includes our Website and App), as well as, any related services, sales, marketing or events. Please read this privacy notice carefully as it will help you understand what we do with the information that we collect. Our Terms and Conditions govern all use of our Service and together with the Privacy Policy constitute your agreement with us (“Agreement”).",
+      "value": "Děkujeme, že jste se rozhodli být součástí naší komunity ve společnosti Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), podnikající pod názvem inspir (\"inspir\", \"my\", \"nás\", \"naše\"). Zavazujeme se chránit vaše osobní údaje a vaše právo na soukromí. Pokud máte jakékoli otázky nebo obavy týkající se tohoto oznámení o ochraně osobních údajů nebo našich postupů v souvislosti s vašimi osobními údaji, kontaktujte nás prosím na support@inspir.app. Když navštívíte náš web https://web.archive.org/web/20221016155759/https://www.inspir.app, případně používáte naše mobilní aplikace (\"Aplikace\") a obecně používáte kteroukoli z našich služeb (\"Služby\", které zahrnují Web a Aplikaci), vážíme si toho, že nám svěřujete své osobní údaje. Vaše soukromí bereme velmi vážně. V tomto oznámení o ochraně osobních údajů se vám snažíme co nejjasněji vysvětlit, jaké informace shromažďujeme, jak je používáme a jaká práva k nim máte. Doufáme, že si uděláte čas a pečlivě si je přečtete, protože je důležité. Pokud s některými podmínkami v tomto oznámení o ochraně osobních údajů nesouhlasíte, okamžitě přestaňte naše Služby používat. Toto oznámení o ochraně osobních údajů se vztahuje na všechny informace shromážděné prostřednictvím našich Služeb (které, jak je popsáno výše, zahrnují náš Web a Aplikaci), jakož i na jakékoli související služby, prodeje, marketing nebo události. Pečlivě si prosím přečtěte toto oznámení o ochraně osobních údajů, protože vám pomůže pochopit, co děláme s informacemi, které shromažďujeme. Naše Podmínky používání upravují veškeré používání naší Služby a společně se Zásadami ochrany osobních údajů tvoří vaši dohodu s námi (\"Dohoda\")."
+    },
+    {
+      "key": "site.cb9e42e0794ef92f15",
+      "source": "That combination is more useful than either layer alone. A plain encyclopedia summary can be forgettable. Pure roleplay can be misleading. Voice plus evidence creates a better learning surface.",
+      "value": "Tato kombinace je užitečnější než kterákoli vrstva sama o sobě. Prosté encyklopedické shrnutí může být zapomenutelné. Čisté hraní rolí může být zavádějící. Hlas plus důkazy vytvářejí lepší učební plochu."
+    },
+    {
+      "key": "site.24bfafe7fcd793bad9",
+      "source": "That difference shows up in the flow. Instead of one giant response, the best sessions move through a loop: set a goal, try something, get feedback, repair the weak spot, and choose the next action.",
+      "value": "Tento rozdíl se projeví v průběhu. Místo jedné obří odpovědi se nejlepší sezení pohybují ve smyčce: nastavit cíl, něco zkusit, získat zpětnou vazbu, opravit slabé místo a vybrat další akci."
+    },
+    {
+      "key": "site.268eb13efa27e9b28d",
+      "source": "That does not replace teachers, communities, books, or schools. It gives learners another route in. It can help a student start homework, a parent explain a concept, a self-taught builder learn code, or a curious person follow a question that might otherwise disappear.",
+      "value": "To nenahrazuje učitele, komunity, knihy ani školy. Dává to studentům další cestu dovnitř. Může pomoci studentovi začít s domácím úkolem, rodiči vysvětlit pojem, samoukovi naučit se kódovat nebo zvědavému člověku sledovat otázku, která by jinak zmizela."
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Toto závěrečné shrnutí je důležité. Když myšlenku vysvětlíte zpět, ukážete, co je pevné a co je stále vypůjčené od AI."
+    },
+    {
+      "key": "site.0470f1fc951f113fe7",
+      "source": "That focus matters. A general chatbot can answer almost anything, but a learning mode gives the conversation a shape. It nudges you toward the kind of thinking, practice, feedback, or exploration that helps the idea stick.",
+      "value": "Na tomto zaměření záleží. Obecný chatbot dokáže odpovědět téměř na cokoli, ale režim učení dává konverzaci tvar. Pošťouchne vás k takovému přemýšlení, procvičování, zpětné vazbě nebo zkoumání, které pomáhá myšlence zakořenit."
+    },
+    {
+      "key": "site.6cdfaef656eb34290d",
+      "source": "That gap is why an AI learning companion matters. A good companion does more than answer a question. It helps a learner choose a starting point, explains the idea in plain language, checks whether it made sense, and keeps going when the first explanation does not land.",
+      "value": "Právě tato mezera ukazuje, proč na AI studijním společníkovi záleží. Dobrý společník dělá víc než jen odpovídá na otázku. Pomáhá studentovi vybrat výchozí bod, vysvětluje myšlenku srozumitelným jazykem, ověřuje, zda dávala smysl, a pokračuje, když první vysvětlení nezabere."
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Tato nápověda pomáhá studentovi začít, aniž by odstranila samotný akt vybavování. Tvůrce kartiček v inspir je navržený pro tuto smyčku odhalení a hodnocení: nejdřív zkuste, potom odkryjte, upřímně ohodnoťte a slabé kartičky vraťte dřív."
+    },
+    {
+      "key": "site.589e7677c2025f653b",
+      "source": "That is a warning sign. Recognition is not recall. Reading a clear explanation is not the same as being able to solve a new problem, write a paragraph, or answer a question under pressure.",
+      "value": "To je varovný signál. Rozpoznání není vybavení. Přečíst si jasné vysvětlení není totéž jako umět vyřešit nový problém, napsat odstavec nebo odpovědět na otázku pod tlakem."
+    },
+    {
+      "key": "site.01543c7d158fee3694",
+      "source": "That is especially important for homework. The useful question is not \"Can AI produce the answer?\" It usually can. The useful question is \"Can AI help the learner understand the path to the answer?\" That is why the guide on studying with AI without cheating yourself focuses on hints, checks, and transfer practice.",
+      "value": "To je zvlášť důležité u domácích úkolů. Užitečná otázka nezní \"Dokáže AI vytvořit odpověď?\" Obvykle dokáže. Užitečná otázka zní \"Dokáže AI pomoci studentovi pochopit cestu k odpovědi?\" Proto se průvodce učením s AI bez podvádění sebe sama soustředí na nápovědy, kontroly a procvičování přenosu."
+    },
+    {
+      "key": "site.e50e170a860c454100",
+      "source": "That is how inspir approaches historical conversation: a persona card, an in-character reply, and context notes that keep imagination connected to evidence.",
+      "value": "Takto inspir přistupuje k historickému rozhovoru: karta osobnosti, odpověď v roli a kontextové poznámky, které udržují představivost propojenou s důkazy."
+    },
+    {
+      "key": "site.3e1b806040630fa184",
+      "source": "That is the standard inspir is aiming for: learning that feels accessible, personal, playful, and useful for anyone with curiosity and an internet connection.",
+      "value": "To je standard, ke kterému inspir míří: učení, které působí přístupně, osobně, hravě a užitečně pro každého, kdo má zvědavost a připojení k internetu."
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "V tom je síla sókratovského učení. Místo toho, aby tutor hned předal celou odpověď, položí cílenou otázku. Student vysloví odhad. Tutor tento odhad otestuje, nabídne nápovědu a pomůže studentovi všimnout si, co se změnilo."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "Právě k tomu je režim Sókratovská výuka v inspir postavený: jedna otázka po druhé, s nápovědami před odpověďmi a syntézou po skutečném přemýšlení."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "Proto může sókratovský AI tutor zpočátku působit pomaleji a později silněji. Vyměňuje pohodlí hotového vysvětlení za důkaz, že student myšlenku opravdu buduje."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Proto záleží na aktivním vybavování. Místo dívání se na odpověď se ji snažíte vytáhnout z paměti. Úsilí posiluje paměť a ukazuje, co ještě potřebuje práci."
+    },
+    {
+      "key": "site.7b4f39d4e67c8e463f",
+      "source": "That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with Learn Anything. If you want to reason through a concept instead of being lectured, use Socratic Instruction. If you are stuck on an assignment, Homework Coach is a better fit than a generic answer engine. The format should serve the learning job.",
+      "value": "Proto inspir rozděluje studijní úkoly do veřejných režimů. Pokud chcete jemné vysvětlení, začněte režimem Nauč se cokoli. Pokud chcete promyslet pojem místo přednášky, použijte Sókratovskou výuku. Pokud jste se zasekli na zadání, Kouč domácích úkolů se hodí lépe než obecný odpovědní engine. Formát má sloužit studijnímu úkolu."
+    },
+    {
+      "key": "site.39bd49585733a4b7c0",
+      "source": "That kind of questioning turns history from a list into a context.",
+      "value": "Takový druh otázek proměňuje historii ze seznamu v kontext."
+    },
+    {
+      "key": "site.8319e387c9c67aabff",
+      "source": "That loop appears across the platform. Math Step Coach breaks a problem into steps. Flashcard Builder turns notes into recall practice. Quiz Me On Trivia adds pressure-tested retrieval. Writing Coach helps improve a draft without replacing the writer.",
+      "value": "Tato smyčka se objevuje napříč platformou. Kouč matematických kroků rozkládá problém na kroky. Tvůrce kartiček mění poznámky na procvičování vybavování. Vyzkoušej mě v kvízu přidává vybavování prověřené tlakem. Kouč psaní pomáhá zlepšit návrh, aniž by nahradil autora."
+    },
+    {
+      "key": "site.bad49c0caffac284bf",
+      "source": "That loop is slower than copying, but it is much faster than staying confused.",
+      "value": "Tato smyčka je pomalejší než opisování, ale je mnohem rychlejší než zůstat zmatený."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "Tento rytmus je obzvlášť užitečný pro abstraktní témata: náklady obětované příležitosti, kauzalita v historii, literární interpretace, etické kompromisy, důkaz, pravděpodobnost a struktura argumentu. Může podpořit i praktickou práci. Student může po sókratovském sezení použít režim Debata na jakékoli téma, aby otestoval, zda jeho uvažování obstojí pod tlakem."
+    },
+    {
+      "key": "site.27dab9808cd949861d",
+      "source": "The AI should separate character from evidence. It can answer in a historically grounded voice, but it should also add notes when records are incomplete, interpretations differ, or the response is a reconstruction.",
+      "value": "AI by měla oddělit postavu od důkazů. Může odpovídat historicky ukotveným hlasem, ale měla by také přidat poznámky, když jsou záznamy neúplné, výklady se liší nebo je odpověď rekonstrukcí."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Aplikace je uspořádaná kolem výukového chování, jako jsou sókratovské otázky, nápovědy k domácím úkolům, kvízy, kartičky, hraní rolí a plánování."
+    },
+    {
+      "key": "site.ce7d73f3a107aa5b1d",
+      "source": "The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Aplikace odděluje konverzaci v roli od krátkých kontextových poznámek o záznamech a nejistotách."
+    },
+    {
+      "key": "site.9e0e0122b7452f3c5c",
+      "source": "The best AI learning sessions are not one long answer. They look more like a loop:",
+      "value": "Nejlepší sezení učení s AI nejsou jedna dlouhá odpověď. Vypadají spíš jako smyčka:"
+    },
+    {
+      "key": "site.1a1cf3c6d5b17b8a3f",
+      "source": "The best homework help reduces friction without removing the student's responsibility to reason, explain, and revise.",
+      "value": "Nejlepší pomoc s domácími úkoly snižuje tření, aniž by studentovi brala odpovědnost uvažovat, vysvětlovat a revidovat."
+    },
+    {
+      "key": "site.06220ee349c07fc1d9",
+      "source": "The best learning sessions are adjustable. Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Kartičky se ptají vždy na jednu věc a obsahují nástrahy, aby opakování budovalo porozumění, nejen rozpoznávání."
+    },
+    {
+      "key": "site.c20e2669eb9a8307b3",
+      "source": "The best learning sessions are adjustable. Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Místo dlouhé odpovědi ti inspir pomůže zvolit jednodušší základ, hlubší cestu nebo praktický příklad."
+    },
+    {
+      "key": "site.ec83f7265003e782e6",
+      "source": "The best learning sessions are adjustable. The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Aplikace odděluje rozhovor v roli od krátkých kontextových poznámek o záznamech a nejistotě."
+    },
+    {
+      "key": "site.922a420c7026ab0339",
+      "source": "The best learning sessions are adjustable. The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Kouč dává cílené priority pro úpravy a příklady před a po, aniž by nahrazoval tvůj hlas."
+    },
+    {
+      "key": "site.3d1d9646fe480cc908",
+      "source": "The best learning sessions are adjustable. The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Kouč předkládá vždy jeden silný protiargument a sleduje tvrzení, na kterých záleží."
+    },
+    {
+      "key": "site.6e0b033856e10c1ea5",
+      "source": "The best learning sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Kouč podporuje tvé myšlení, aniž by převzal zadání, takže výsledná práce zůstává tvoje."
+    },
+    {
+      "key": "site.4ad449386f3d17a72b",
+      "source": "The best learning sessions are adjustable. The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Debata používá veřejný styl a světonázor, aniž by předstírala znalost soukromých přesvědčení."
+    },
+    {
+      "key": "site.659e9d3407986296fb",
+      "source": "The best learning sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Postup kontroluje každý krok, upozorňuje na přehlédnutí a propojuje procedury zpět s pojmem."
+    },
+    {
+      "key": "site.4cea612e26c5e7669f",
+      "source": "The best learning sessions are adjustable. The journey stays anchored in state and evidence: what is known, what is reconstructed, what is speculative, and what your identity can realistically access.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Cesta zůstává ukotvená ve stavu a důkazech: co je známo, co je rekonstruováno, co je spekulativní a k čemu má tvoje identita realisticky přístup."
+    },
+    {
+      "key": "site.ff84e68a2a3cc1422f",
+      "source": "The best learning sessions are adjustable. The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Plánovač upřednostní slabé oblasti, přidá smyčky opakování a vytvoří záložní plány pro vynechané dny."
+    },
+    {
+      "key": "site.1f436c04c40fc12895",
+      "source": "The best learning sessions are adjustable. The quiz mode hides answers until you respond, then turns every miss into a review point.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Kvízový režim skrývá odpovědi, dokud neodpovíš, a pak promění každou chybu v bod k opakování."
+    },
+    {
+      "key": "site.007da0d5fec34b8de8",
+      "source": "The best learning sessions are adjustable. The tutor asks one question at a time, waits for your reasoning, and synthesizes only after you have tried.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tutor pokládá vždy jednu otázku, čeká na tvoje uvažování a shrnuje až poté, co to zkusíš."
+    },
+    {
+      "key": "site.d141671b2e97fafb47",
+      "source": "The best learning sessions are adjustable. The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tutor se zeptá, co od kódu očekáváš, a pak použije malé příklady a testy, aby chování zapadlo."
+    },
+    {
+      "key": "site.7bf4a43bad030ecf01",
+      "source": "The best learning sessions are adjustable. This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Průvodce oceňováním umění s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.3c8f17290fb94720e8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Průzkumník kariéry s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.89eb593551d1765144",
+      "source": "The best learning sessions are adjustable. This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Simulátor případových studií s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.37d7e31bd7f829e03e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kouč občanské výchovy s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.b127ca5180c0e7e8d6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for collaborative instruction with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Výuka založená na spolupráci s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.b4b3f444b35ee040db",
+      "source": "The best learning sessions are adjustable. This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Tvůrce myšlenkových map s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.57d70690a659a69cd7",
+      "source": "The best learning sessions are adjustable. This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kreativní brainstormer s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.5f83240a6661a6cb07",
+      "source": "The best learning sessions are adjustable. This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Interpret dat s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.5624c8b7c19c856656",
+      "source": "The best learning sessions are adjustable. This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Simulátor ekonomiky s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.ed5222c4aa34700497",
+      "source": "The best learning sessions are adjustable. This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Etická dilemata s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.92d6ee4de4db4a5885",
+      "source": "The best learning sessions are adjustable. This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Vysvětli mou odpověď s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Feynmanův tutor s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.b717c1703a0a1aaa1e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Průzkumník geografie s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.37b275d707271320dc",
+      "source": "The best learning sessions are adjustable. This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kouč návyků s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.1f3004d1a487e96efa",
+      "source": "The best learning sessions are adjustable. This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Historická příčina a následek s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.4155b990c943012934",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interactive instruction with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Interaktivní výuka s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.d538ee1d99166025b9",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kouč pohovorů s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.5e998d7d692da2949f",
+      "source": "The best learning sessions are adjustable. This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Jazykové hraní rolí s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.99c5fccd817a604436",
+      "source": "The best learning sessions are adjustable. This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Mistr výukových her s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.381eeba7e188449be6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for memory palace with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Paměťový palác s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.58e2a4af3753ddfda8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Reflexe myšlení s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.290701f5cfec3d0bcb",
+      "source": "The best learning sessions are adjustable. This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Doktor na omyly s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.deb1384d7a5201c378",
+      "source": "The best learning sessions are adjustable. This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kouč motivace s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.9649cc91122ebe4b8b",
+      "source": "The best learning sessions are adjustable. This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kouč hudební teorie s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.d03b0f9ad77bda184a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Filozofická laboratoř s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.4cfb49fe912063cee0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kouč projektů s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.6cc1353bb9fc928e33",
+      "source": "The best learning sessions are adjustable. This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Společník při čtení s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.455fbc5a6719c257de",
+      "source": "The best learning sessions are adjustable. This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Výzkumný asistent s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.3cdc84f4863160d8e2",
+      "source": "The best learning sessions are adjustable. This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Scénář hraní rolí s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.ad61af8eff48ea3919",
+      "source": "The best learning sessions are adjustable. This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Partner do vědecké laboratoře s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.1bd7d73da3868b9bad",
+      "source": "The best learning sessions are adjustable. This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Kritik zdrojů s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.e1545261be90b270ce",
+      "source": "The best learning sessions are adjustable. This mode is tuned for spaced review with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Intervalové opakování s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.ba4bfbfca5b73b6302",
+      "source": "The best learning sessions are adjustable. This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Procvičování mluvení s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.3d1eed6269fece6796",
+      "source": "The best learning sessions are adjustable. This mode is tuned for story tutor with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Tutor příběhů s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.5492c7abba22a9708a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for study plan builder with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Tvůrce studijního plánu s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.d7e5c6145dd7c11c71",
+      "source": "The best learning sessions are adjustable. This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Nácvik ústní zkoušky s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.4e594b58dd36d39315",
+      "source": "The best learning sessions are adjustable. This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Nejlepší studijní relace se dají přizpůsobit. Tento režim je vyladěný pro Budování slovní zásoby s vlastními prompty, příklady a studijním tokem."
+    },
+    {
+      "key": "site.8d2a6330ca29a54056",
+      "source": "The best outcome is not a perfect answer. It is the moment a learner says, \"I think I get it now. Let me try.\"",
+      "value": "Nejlepší výsledek není dokonalá odpověď. Je to okamžik, kdy student řekne: \"Myslím, že už tomu rozumím. Zkusím to.\""
+    },
+    {
+      "key": "site.c624880a3c3c2d1730",
+      "source": "The better use is feedback, structure, evidence checks, and revision coaching. You can ask it to preserve your voice and avoid replacing the work.",
+      "value": "Lepší použití je zpětná vazba, struktura, kontroly důkazů a koučování revizí. Můžete požádat, aby zachovala váš hlas a nenahrazovala práci."
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Blog propojuje užitečné rady k učení s živým procvičováním, takže se průvodce může jedním krokem proměnit ve studijní lekci."
+    },
+    {
+      "key": "site.3e56dabd81fd313004",
+      "source": "The blog is organized around pillar clusters, category hubs, related modes, prompt routes, structured data, and an AI-readable index so each guide can be understood and recommended in context.",
+      "value": "Blog je uspořádaný kolem pilířových klastrů, kategoriálních hubů, souvisejících režimů, promptových tras, strukturovaných dat a indexu čitelného pro AI, aby každý průvodce mohl být pochopen a doporučen v kontextu."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Širší open-source platforma inspir."
+    },
+    {
+      "key": "site.29dee12216c74a74cf",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "Tvůrce plánu vyvažuje ambice s opakováním, procvičováním, dny na zotavenou a dalším nejmenším užitečným krokem."
+    },
+    {
+      "key": "site.f7b5f5878410efb6bb",
+      "source": "The categories of personal information we have collected about you. he categories of sources from which we collect your personal information. The business or commercial purpose for collecting or selling your personal information. The categories of third parties with whom we share personal information. The specific pieces of personal information we have collected about you. A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact. A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with. Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.",
+      "value": "Kategorie osobních údajů, které jsme o vás shromáždili. Kategorie zdrojů, ze kterých vaše osobní údaje shromažďujeme. Obchodní nebo komerční účel shromažďování nebo prodeje vašich osobních údajů. Kategorie třetích stran, se kterými osobní údaje sdílíme. Konkrétní části osobních údajů, které jsme o vás shromáždili. Seznam kategorií osobních údajů, které jsme prodali, spolu s kategorií jakékoli jiné společnosti, které jsme je prodali. Pokud jsme vaše osobní údaje neprodali, budeme vás o tom informovat. Seznam kategorií osobních údajů, které jsme zpřístupnili pro obchodní účel, spolu s kategorií jakékoli jiné společnosti, se kterou jsme je sdíleli. Upozorňujeme, že máte právo požádat nás o poskytnutí těchto informací až dvakrát během průběžného dvanáctiměsíčního období. Když tuto žádost podáte, poskytnuté informace mohou být omezeny na osobní údaje, které jsme o vás shromáždili v předchozích 12 měsících."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Závěrečný moment se vrací k misi: veřejný přístup, školy a otevřenější způsob učení."
+    },
+    {
+      "key": "site.fe92576ea03e200587",
+      "source": "The coach checks each move, names the rule, and repairs slips before moving forward.",
+      "value": "Kouč kontroluje každý krok, pojmenuje pravidlo a opraví uklouznutí, než se posune dál."
+    },
+    {
+      "key": "site.a0adf96de1375d5d48",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Kouč poskytuje cílené priority pro revizi a příklady před a po, aniž by nahradil váš vlastní hlas."
+    },
+    {
+      "key": "site.cc04d54305bbe12e97",
+      "source": "The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Kouč předkládá vždy jeden silný protiargument a sleduje podstatná tvrzení."
+    },
+    {
+      "key": "site.332d2bf8600d9fb327",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Kouč podporuje vaše vlastní myšlení, aniž by za vás úkol vypracoval, takže konečná práce zůstává vaše."
+    },
+    {
+      "key": "site.a8129915cb2978c578",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Náš kouč mění chyby a váhání v plán opakování, místo aby nabízel jen další pasivní shrnutí."
+    },
+    {
+      "key": "site.9f48b043be28768ae7",
+      "source": "The coding route connects code tutoring, project coaching, data interpretation, research, and concept mapping so learning happens through small testable steps.",
+      "value": "Cesta kódování propojuje kódovací doučování, projektové koučování, interpretaci dat, výzkum a mapování pojmů, aby učení probíhalo v malých ověřitelných krocích."
+    },
+    {
+      "key": "site.091a1a8b1148439190",
+      "source": "The common idea is simple: keep the learner active. AI should make thinking easier to start, not unnecessary to do.",
+      "value": "Společná myšlenka je jednoduchá: udržet studenta aktivního. AI má usnadnit začátek přemýšlení, ne ho udělat zbytečným."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Komunita se rozšířila prostřednictvím škol, univerzit, soutěží, mimoškolních programů a komunit studentů."
+    },
+    {
+      "key": "site.f4a459004391d62ea6",
+      "source": "The copy trap is subtle. It does not always feel like cheating. Sometimes it feels like being efficient. The AI explains something beautifully, you nod along, and then you move on. Ten minutes later you cannot reproduce the idea without the answer in front of you.",
+      "value": "Past opisování je nenápadná. Ne vždy působí jako podvádění. Někdy působí jako efektivita. AI něco krásně vysvětlí, vy přikývnete a jdete dál. O deset minut později už myšlenku nedokážete zopakovat bez odpovědi před sebou."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Současná přestavba inspirlearning.com."
+    },
+    {
+      "key": "site.3e5edc20387b59f6c5",
+      "source": "The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Debata využívá veřejný styl a světonázor dané osobnosti, aniž by předstírala znalost jejích soukromých názorů."
+    },
+    {
+      "key": "site.3b584307e059abea92",
+      "source": "The difference is how you use it.",
+      "value": "Rozdíl je v tom, jak ji používáte."
+    },
+    {
+      "key": "site.612f806fd20c077cb2",
+      "source": "The easiest version of an AI tutor is a box that gives polished answers. That is useful sometimes, but it is not enough. A learner who only receives answers can leave with the page finished and the skill unchanged.",
+      "value": "Nejjednodušší verze AI tutora je pole, které dává uhlazené odpovědi. Někdy je to užitečné, ale nestačí to. Student, který jen přijímá odpovědi, může odejít s hotovou stránkou a nezměněnou dovedností."
+    },
+    {
+      "key": "site.5a53b3cfc2daf7a31c",
+      "source": "The exam route links planning, quizzes, flashcards, spaced review, and motivation so learners do not confuse rereading with readiness.",
+      "value": "Cesta ke zkouškám propojuje plánování, kvízy, kartičky, intervalové opakování a motivaci, aby si studenti nepletli opakované čtení s připraveností."
+    },
+    {
+      "key": "site.475ac58da05f1fade6",
+      "source": "The fastest way to get value from Art Appreciation Guide is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Průvodce oceňováním umění, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.6d6c7de0578b9a8252",
+      "source": "The fastest way to get value from Career Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Průzkumník kariéry, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.14656dbab990993004",
+      "source": "The fastest way to get value from Case Study Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Simulátor případových studií, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.a018959dc9ed828f34",
+      "source": "The fastest way to get value from Civics Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč občanské výchovy, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.afeae4d0ea2f0884cd",
+      "source": "The fastest way to get value from Code Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kódovací tutor, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.00e230bdfaef352910",
+      "source": "The fastest way to get value from Collaborative Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Výuka založená na spolupráci, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.e35fa66f8da0b77cd1",
+      "source": "The fastest way to get value from Concept Map Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Tvůrce myšlenkových map, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.71b6a1a1c82878d97d",
+      "source": "The fastest way to get value from Creative Brainstormer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kreativní brainstormer, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.0fb1421c6cdad2ce8c",
+      "source": "The fastest way to get value from Data Interpreter is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Interpret dat, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.af2d3a761529a138a6",
+      "source": "The fastest way to get value from Debate any topic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Debata na jakékoli téma, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.ec8f7e2ce775793bbe",
+      "source": "The fastest way to get value from Debate with a personality is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Debata s osobností, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.df0a5925ece82adcd3",
+      "source": "The fastest way to get value from Economics Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Simulátor ekonomiky, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.7efe236a154ae18a44",
+      "source": "The fastest way to get value from Ethics Dilemmas is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Etická dilemata, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.7191e6c8673cb8d711",
+      "source": "The fastest way to get value from Exam Prep Planner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Plánovač přípravy na zkoušky, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.dba342443d247cc5bb",
+      "source": "The fastest way to get value from Explain My Answer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Vysvětli mou odpověď, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Feynmanův tutor, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.0f19d08b8582e21ef5",
+      "source": "The fastest way to get value from Flashcard Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Tvůrce kartiček, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.c6799bc50adc22a8b9",
+      "source": "The fastest way to get value from Geography Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Průzkumník geografie, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.46faf7f10e46cd08c6",
+      "source": "The fastest way to get value from Habit Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč návyků, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.59b4782c7b6f87c7c3",
+      "source": "The fastest way to get value from History Cause-and-Effect is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Historická příčina a následek, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.9127eb70d19ff31080",
+      "source": "The fastest way to get value from Homework Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč domácích úkolů, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.1d98efa37b7edad7e3",
+      "source": "The fastest way to get value from Interactive Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Interaktivní výuka, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.86854a7ac33bd59382",
+      "source": "The fastest way to get value from Interview Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč pohovorů, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.fbc5fd77cea85f0ff0",
+      "source": "The fastest way to get value from Language Roleplay is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Jazykové hraní rolí, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.c58f5f86a2d58666a9",
+      "source": "The fastest way to get value from Learn Anything is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Nauč se cokoli, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.93069ba635277379cf",
+      "source": "The fastest way to get value from Learning Game Master is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Mistr výukových her, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.375eef43396f6a3e0d",
+      "source": "The fastest way to get value from Math Step Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč matematických kroků, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.addcf90fe78f2d3da0",
+      "source": "The fastest way to get value from Memory Palace is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Paměťový palác, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.18ad3d9cd14319c7ab",
+      "source": "The fastest way to get value from Mindset Reflection is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Reflexe myšlení, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.33b4474b99217796d1",
+      "source": "The fastest way to get value from Misconception Doctor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Doktor na omyly, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.1c6d68968a3651a90b",
+      "source": "The fastest way to get value from Motivation Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč motivace, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.4d94ea6faca8fe6be8",
+      "source": "The fastest way to get value from Music Theory Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč hudební teorie, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.fa6ed317e6d0ddb04d",
+      "source": "The fastest way to get value from Philosophy Lab is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Filozofická laboratoř, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.b39c6ce06fca9615c2",
+      "source": "The fastest way to get value from Project Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč projektů, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.918d3590de26fa6807",
+      "source": "The fastest way to get value from Quiz me on Trivia is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Vyzkoušej mě v kvízu, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.cc27d54d05c46dae9a",
+      "source": "The fastest way to get value from Reading Companion is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Společník při čtení, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.d91b13db3d10ed97fc",
+      "source": "The fastest way to get value from Research Assistant is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Výzkumný asistent, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.ecc64645d229278f38",
+      "source": "The fastest way to get value from Roleplay Scenario is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Scénář hraní rolí, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.5a59a16ad397a8dbbd",
+      "source": "The fastest way to get value from Science Lab Partner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Partner do vědecké laboratoře, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.383226646c99ad6dd2",
+      "source": "The fastest way to get value from Socratic Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Sókratovská výuka, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.a9cc3723bd540fcee0",
+      "source": "The fastest way to get value from Source Critic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kritik zdrojů, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.8e98aca843d5ee1daa",
+      "source": "The fastest way to get value from Spaced Review is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Intervalové opakování, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.2da55cf2ce1d9e1320",
+      "source": "The fastest way to get value from Speaking Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Procvičování mluvení, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.8c4476d71a53fba638",
+      "source": "The fastest way to get value from Story Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Tutor příběhů, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.8876684461efdb35b2",
+      "source": "The fastest way to get value from Study Plan Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Tvůrce studijního plánu, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.a927bb4ab08bb6e8f3",
+      "source": "The fastest way to get value from Talk to a historical person is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Mluv s historickou osobou, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.0c95eb4aa13aa085c8",
+      "source": "The fastest way to get value from Time travel is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Cestování časem, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.91e7f42fbc8f26ed39",
+      "source": "The fastest way to get value from Viva Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Nácvik ústní zkoušky, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.135bf5f80889a86380",
+      "source": "The fastest way to get value from Vocabulary Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Budování slovní zásoby, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.4212b4a5fef68148a4",
+      "source": "The fastest way to get value from Writing Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Nejrychlejší způsob, jak získat hodnotu z režimu Kouč psaní, je dát AI studijní úkol, ne jen téma. Téma říká, co tě zajímá. Studijní úkol říká, jaký druh pomoci potřebuješ."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Film přechází od inspirace k praktickému slibu: trpělivému AI průvodci učením."
+    },
+    {
+      "key": "site.85523a4e15b7dfde53",
+      "source": "The first layer is the roleplay. It can speak in an accessible voice, explain motives, and make the situation vivid. This is the part that helps memory.",
+      "value": "První vrstva je hraní rolí. Může mluvit přístupným hlasem, vysvětlovat motivy a udělat situaci živou. To je část, která pomáhá paměti."
+    },
+    {
+      "key": "site.4302f6b9fe360e2e28",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Tento postup kontroluje každý krok, upozorňuje na drobné chyby a propojuje postupy se samotným konceptem."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Formální stránka ochrany soukromí pro používání dat, práva a podmínky veřejné služby."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Formální podmínky pokrývající přijatelné použití, odpovědnosti účtu a podmínky služby."
+    },
+    {
+      "key": "site.4f1dc6282cf6f920c7",
+      "source": "The format should serve the learning job.",
+      "value": "Formát by měl sloužit studijnímu úkolu."
+    },
+    {
+      "key": "site.22709d194a67273db8",
+      "source": "The format works because it lets learners ask questions such as:",
+      "value": "Formát funguje, protože studentům umožňuje klást otázky jako:"
+    },
+    {
+      "key": "site.bc52d008afb471a9ae",
+      "source": "The goal is confidence",
+      "value": "Cílem je sebedůvěra"
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "Cílem je objevování a citování veřejných výukových stránek. Veřejné trasy, průvodci a vzdělávací centra jsou otevřené hlavním crawlerům pro AI vyhledávání, načítání a asistenty, zatímco API, administrace, reset a soukromé pomocné trasy zůstávají zakázané."
+    },
+    {
+      "key": "site.e125c23e696524bee3",
+      "source": "The goal is not to make the AI the authority. The goal is to make learners ask better historical questions.",
+      "value": "Cílem není udělat z AI autoritu. Cílem je přimět studenty klást lepší historické otázky."
+    },
+    {
+      "key": "site.fb6db6b2a3c1a5b24d",
+      "source": "The history route gives learners the liveliness of role-play and debate while preserving the warning that simulations are not primary sources.",
+      "value": "Historická cesta dává studentům živost hraní rolí a debaty, ale zachovává upozornění, že simulace nejsou primární zdroje."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Režimy domácích úkolů a sokratovského učení jsou navržené kolem nápověd, uvažování, kontrol kroků a studentských vysvětlení místo prostého předávání hotových odpovědí."
+    },
+    {
+      "key": "site.e769b2568e20189fbf",
+      "source": "The homework route makes the contract visible: ask for a hint, check a step, improve a draft, critique a source, then prove the learning with review.",
+      "value": "Cesta domácích úkolů zviditelňuje dohodu: požádejte o nápovědu, zkontrolujte krok, zlepšete návrh, kriticky posuďte zdroj a pak prokažte učení opakováním."
+    }
+  ]
+}

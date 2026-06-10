@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, BookOpenCheck, SearchCheck, Sparkles, Waypoints } from "lucide-react";
 import {
   ArrowLink,
@@ -13,6 +13,7 @@ import {
   subjectHubSearchIntents,
   subjectPath,
 } from "@/lib/content/subjects";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -25,7 +26,7 @@ import {
 const description =
   "Explore inspir AI learning by subject: math, writing, coding, history, homework, and exam prep, each connected to public guest modes, guides, prompts, and review loops.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "AI Tutors by Subject",
   description,
   alternates: metadataAlternates("/subjects"),
@@ -56,6 +57,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/subjects");
+}
 
 export default function SubjectHubPage() {
   const pages = getSubjectPages();

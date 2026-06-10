@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Malayalam",
+  "locale": "ml",
+  "namespace": "route:media",
+  "sourceHash": "7c60c0f3497b7b2e8d0e1994984509c40ee5cbe7a85307130976ad447a9a111b",
+  "part": {
+    "index": 1,
+    "total": 2
+  },
+  "entries": [
+    {
+      "key": "site.1d3641443de0df089b",
+      "source": "{value1}: {value2}",
+      "value": "{value1}: {value2} വിശദാംശങ്ങൾ"
+    },
+    {
+      "key": "site.2667906444f06bcf63",
+      "source": "100+ countries",
+      "value": "100+ രാജ്യങ്ങൾ"
+    },
+    {
+      "key": "site.136939046eaff1af73",
+      "source": "1M+ learners",
+      "value": "1M+ പഠിതാക്കൾ"
+    },
+    {
+      "key": "site.5b76e6ff6a764ae736",
+      "source": "A capable learning companion should not depend on geography, family income, or whether a learner already knows the right person to ask.",
+      "value": "ഒരു കഴിവുള്ള പഠന കൂട്ടായി ഭൂമിശാസ്ത്രത്തെയോ കുടുംബ വരുമാനത്തെയോ ചോദിക്കാൻ ശരിയായ ആളെ പഠിതാവ് ഇതിനകം അറിയുന്നുണ്ടോ എന്നതെയോ ആശ്രയിക്കരുത്."
+    },
+    {
+      "key": "site.a8858450635c4c0458",
+      "source": "A citeable public record for inspir.",
+      "value": "inspir-ന് ഉദ്ധരിക്കാവുന്ന പൊതുരേഖ."
+    },
+    {
+      "key": "site.ea1fb773501bcea092",
+      "source": "A crawlable directory of every guest learning chat entrypoint.",
+      "value": "ഓരോ അതിഥി പഠന ചാറ്റ് പ്രവേശനസ്ഥാനത്തിന്റെയും ക്രോൾ ചെയ്യാവുന്ന ഡയറക്ടറി."
+    },
+    {
+      "key": "site.81316b0ed9486bb0d9",
+      "source": "A learner base that already extends beyond India into a wider international audience.",
+      "value": "ഇന്ത്യയ്ക്ക് പുറത്തേക്കും വിശാലമായ അന്താരാഷ്ട്ര പ്രേക്ഷകരിലേക്കും ഇതിനകം വ്യാപിക്കുന്ന പഠിതൃ അടിസ്ഥാനം."
+    },
+    {
+      "key": "site.4c095391949dc8594e",
+      "source": "A learner can open Learn Anything, Socratic Instruction, Homework Coach, Math Step Coach, quizzes, or flashcards directly in guest mode from the public learning modes directory.",
+      "value": "പഠിതാവ് കഴിയും തുറക്കുക പഠിക്കുക ഏതും, സോക്രാറ്റിക് പഠനം, ഹോംവർക്ക് കോച്ച്, ഗണിത ഘട്ടം കോച്ച്, ക്വിസുകൾ, അല്ലെങ്കിൽ ഫ്ലാഷ്കാർഡ്s നേരിട്ട് അതിഥി മോഡ് നിന്ന് പൊതു പഠനം മോഡ്s ഡയറക്ടറി."
+    },
+    {
+      "key": "site.a2f0ee1d62361c7b8d",
+      "source": "A learning community begins",
+      "value": "ഒരു പഠന സമൂഹം ആരംഭിക്കുന്നു"
+    },
+    {
+      "key": "site.36ace2b0a5146bab0a",
+      "source": "A school-specific learning experience can be shaped around your student community, tone, and learning priorities.",
+      "value": "സ്കൂൾ-നിർദ്ദിഷ്ട പഠനം അനുഭവം കഴിയും ആകുക shaped ചുറ്റിപ്പറ്റി നിങ്ങളുടെ വിദ്യാർത്ഥി സമൂഹം, സ്വരം, മറ്റും പഠനം മുൻഗണനകൾ."
+    },
+    {
+      "key": "site.8d6df50d746ac270d0",
+      "source": "About inspir",
+      "value": "inspir-നെ കുറിച്ച്"
+    },
+    {
+      "key": "site.218e5744861c7972b3",
+      "source": "Access can be funded by partner schools or supported through CSR sponsorship paths for communities that need subsidised AI learning.",
+      "value": "പ്രവേശനം കഴിയും ആകുക ധനസഹായമുള്ള വഴി പങ്കാളി സ്കൂളുകൾ അല്ലെങ്കിൽ supported വഴി CSR സ്പോൺസർഷിപ്പ് പാതകൾ ക്കുള്ള സമൂഹങ്ങൾ അത് ആവശ്യം സബ്സിഡിയുള്ള AI പഠനം."
+    },
+    {
+      "key": "site.15f4bc0c8ba56456fb",
+      "source": "Access first",
+      "value": "ആദ്യം പ്രവേശനം"
+    },
+    {
+      "key": "site.889aa49fb7ee054aeb",
+      "source": "Adapt the student experience around school context, curriculum priorities, content guardrails, and the level of staff visibility needed.",
+      "value": "പൊരുത്തപ്പെടുത്തുക വിദ്യാർത്ഥി അനുഭവം ചുറ്റിപ്പറ്റി സ്കൂൾ സന്ദർഭം, പാഠ്യപദ്ധതി മുൻഗണനകൾ, ഉള്ളടക്കം പരിധിനിയമങ്ങൾ, മറ്റും നില സ്റ്റാഫ് ദൃശ്യത needed."
+    },
+    {
+      "key": "site.5db8abc8a39a43ed81",
+      "source": "After the inspir.app domain was sold to fund continued free access, the live product moved to inspirlearning.com.",
+      "value": "ശേഷം inspir.app domain was sold fund തുടർന്നുള്ള സൗജന്യ പ്രവേശനം, തത്സമയ ഉൽപ്പന്നം മാറി inspirlearning.com."
+    },
+    {
+      "key": "site.075200c04a55786008",
+      "source": "AI content index",
+      "value": "AI ഉള്ളടക്ക സൂചിക"
+    },
+    {
+      "key": "site.3dfc3d4bd6838fd7f0",
+      "source": "AI homework coach for students",
+      "value": "AI ഹോംവർക്ക് കോച്ച് ക്കുള്ള വിദ്യാർത്ഥിs"
+    },
+    {
+      "key": "site.452c941b2cdaf856f3",
+      "source": "AI learning access can be funded by partner schools or supported through CSR sponsorship for communities that need subsidised access.",
+      "value": "AI പഠനം പ്രവേശനം കഴിയും ആകുക ധനസഹായമുള്ള വഴി പങ്കാളി സ്കൂളുകൾ അല്ലെങ്കിൽ supported വഴി CSR സ്പോൺസർഷിപ്പ് ക്കുള്ള സമൂഹങ്ങൾ അത് ആവശ്യം സബ്സിഡിയുള്ള പ്രവേശനം."
+    },
+    {
+      "key": "site.a5381504271ade50c4",
+      "source": "AI learning blog",
+      "value": "AI പഠനം ബ്ലോഗ്"
+    },
+    {
+      "key": "site.6378c1db3edc2b27fc",
+      "source": "AI learning guide library",
+      "value": "AI പഠന ഗൈഡ് ലൈബ്രറി"
+    },
+    {
+      "key": "site.a7ca70214d31704e26",
+      "source": "AI learning guides",
+      "value": "AI പഠന ഗൈഡുകൾ"
+    },
+    {
+      "key": "site.e63c65ad11d3a07532",
+      "source": "AI learning infrastructure",
+      "value": "AI പഠന അടിസ്ഥാനസൗകര്യം"
+    },
+    {
+      "key": "site.a3b1e8f4d86fd02df9",
+      "source": "AI learning without passive answer-copying",
+      "value": "നിഷ്ക്രിയ ഉത്തരപകർത്തൽ ഇല്ലാത്ത AI പഠനം"
+    },
+    {
+      "key": "site.cb148a24995ab1732c",
+      "source": "AI search, retrieval, and assistant crawlers",
+      "value": "AI തിരയൽ, വീണ്ടെടുപ്പ്, അസിസ്റ്റന്റ് ക്രോളറുകൾ"
+    },
+    {
+      "key": "site.a61a7131dff82166ec",
+      "source": "AI study tools for schools",
+      "value": "സ്കൂളുകൾക്കുള്ള AI പഠന ഉപകരണങ്ങൾ"
+    },
+    {
+      "key": "site.969b70b2aa7c26a2b5",
+      "source": "AI tutor for learning anything",
+      "value": "എന്തും പഠിക്കാൻ AI ട്യൂട്ടർ"
+    },
+    {
+      "key": "site.70e4f8445dc3f0d14c",
+      "source": "AI tutor for schools",
+      "value": "സ്കൂളുകൾക്കുള്ള AI ട്യൂട്ടർ"
+    },
+    {
+      "key": "site.e6a4dbed0d8e112703",
+      "source": "AI tutor guides",
+      "value": "AI ട്യൂട്ടർ ഗൈഡുകൾ"
+    },
+    {
+      "key": "site.d1bbc25af2c6922944",
+      "source": "Allowed on public pages",
+      "value": "പൊതു പേജുകളിൽ അനുവദിച്ചിരിക്കുന്നു"
+    },
+    {
+      "key": "site.ef08a6e0b619a0196d",
+      "source": "API, admin, reset, private utility, and private saved-chat surfaces are not public source content.",
+      "value": "API, admin, reset, സ്വകാര്യ utility, സ്വകാര്യ saved-ചാറ്റ് ഭാഗങ്ങൾ പൊതു സോഴ്‌സ് ഉള്ളടക്കം അല്ല."
+    },
+    {
+      "key": "site.b0dd1b2c2bdb4fe71c",
+      "source": "Applied AI learning work before the current AI wave.",
+      "value": "ഇപ്പോഴത്തെ AI തരംഗത്തിന് മുമ്പുള്ള പ്രയോഗാത്മക AI പഠന പ്രവർത്തനം."
+    },
+    {
+      "key": "site.9197f1aba38a47a1c2",
+      "source": "Are private saved user conversations exposed to search?",
+      "value": "സ്വകാര്യമായി സംരക്ഷിച്ച ഉപയോക്തൃ സംഭാഷണങ്ങൾ തിരയലിൽ കാണിക്കപ്പെടുമോ?"
+    },
+    {
+      "key": "site.9c92fab4fc828b830d",
+      "source": "Are public guest chats indexable?",
+      "value": "പൊതു അതിഥി ചാറ്റുകൾ ഇൻഡെക്‌സ് ചെയ്യാവുന്നതാണോ?"
+    },
+    {
+      "key": "site.a4d81396d4ea19197d",
+      "source": "Attribution",
+      "value": "ആട്രിബ്യൂഷൻ"
+    },
+    {
+      "key": "site.a01f43638fff4b148e",
+      "source": "Browse public modes",
+      "value": "പൊതു മോഡുകൾ ബ്രൗസ് ചെയ്യുക"
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "തുറന്ന രീതിയിൽ നിർമ്മിച്ചത്"
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "2013 മുതൽ നിർമ്മിച്ചത്"
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "rollout ആരംഭിക്കുക ചെറിയ കഴിയുമോ?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "സ്കൂൾ ഉപയോഗിക്കുക inspir അതിഥി പഠനം ഉപകരണം ആദ്യം കഴിയുമോ?"
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "inspir പിന്തുണ സ്കൂൾ-നിർദ്ദിഷ്ട ഉള്ളടക്കം അല്ലെങ്കിൽ പാഠ്യപദ്ധതി ആവശ്യങ്ങൾ കഴിയുമോ?"
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "ആളുകൾ ഉപയോഗിക്കുക inspir ഇല്ലാതെ signing കഴിയുമോ?"
+    },
+    {
+      "key": "site.4524f0053a00ac4881",
+      "source": "Canonical /chat/{topicSlug} pages open public learning modes such as Learn Anything, Socratic Instruction, Homework Coach, and flashcards.",
+      "value": "Canonical /chat/{topicSlug} പേജുകൾ പഠിക്കുക ഏതും, സോക്രാറ്റിക് പഠനം, ഹോംവർക്ക് കോച്ച്, ഫ്ലാഷ്കാർഡുകൾ പോലുള്ള പൊതു പഠന മോഡുകൾ തുറക്കുന്നു."
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "വിഭാഗം"
+    },
+    {
+      "key": "site.df56348fc2216fc294",
+      "source": "Citation copy",
+      "value": "സൈറ്റേഷൻ പകർപ്പ്"
+    },
+    {
+      "key": "site.32d872324876ab22a1",
+      "source": "Community page connected to DeepHack recognition.",
+      "value": "DeepHack അംഗീകാരവുമായി ബന്ധിപ്പിച്ച കമ്മ്യൂണിറ്റി പേജ്."
+    },
+    {
+      "key": "site.b6e64de04cea6a9e65",
+      "source": "Confidential deployment design",
+      "value": "രഹസ്യ വിന്യാസ രൂപകൽപ്പന"
+    },
+    {
+      "key": "site.20afd69043886b6ae3",
+      "source": "Configure workflows",
+      "value": "പ്രവർത്തനരീതികൾ ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "site.4917b456b4aeba9ffc",
+      "source": "Consumer AI launch",
+      "value": "ഉപഭോക്തൃ AI ലോഞ്ച്"
+    },
+    {
+      "key": "site.3ac09b2dbb4f4bf1e9",
+      "source": "Coverage angle",
+      "value": "കവറേജ് കോണം"
+    },
+    {
+      "key": "site.27b9e7cbf744609926",
+      "source": "Coverage ideas that link back to real public pages.",
+      "value": "Coverage ആശയങ്ങൾ അത് ലിങ്ക് തിരിച്ച് യഥാർത്ഥ പൊതു പേജുകൾ."
+    },
+    {
+      "key": "site.163e7c772643da4674",
+      "source": "Coverage of inspir's vision for free, accessible education.",
+      "value": "സൗജന്യവും എല്ലാവർക്കും ലഭ്യമുമായ വിദ്യാഭ്യാസത്തെക്കുറിച്ചുള്ള inspir-ന്റെ ദർശനത്തിന്റെ കവറേജ്."
+    },
+    {
+      "key": "site.c9a53af29721a00ad2",
+      "source": "Crawler policy",
+      "value": "ക്രോളർ നയം"
+    },
+    {
+      "key": "site.e11f6e1b97aa97858a",
+      "source": "Create a safer route for practice, explanations, feedback, and revision prompts without sending students into a generic chatbot.",
+      "value": "കൂടുതൽ സുരക്ഷിതമായ റൂട്ടു ക്കായി പരിശീലനം, വിശദീകരണങ്ങൾ, പ്രതികരണം, മറ്റും തിരുത്തൽ പ്രോംപ്റ്റുകൾ ഇല്ലാതെ sending വിദ്യാർത്ഥികൾ ആക്കി പൊതുവായ chatbot. സൃഷ്ടിക്കുക."
+    },
+    {
+      "key": "site.db32ea2fd30fd44068",
+      "source": "CSR and education partners",
+      "value": "CSR, വിദ്യാഭ്യാസ പങ്കാളികൾ"
+    },
+    {
+      "key": "site.60e3d1564bc2436a82",
+      "source": "CSR education technology partnership",
+      "value": "CSR വിദ്യാഭ്യാസ സാങ്കേതിക പങ്കാളിത്തം"
+    },
+    {
+      "key": "site.f2b8bd6783ce6393b5",
+      "source": "Current GitHub repo",
+      "value": "നിലവിലെ GitHub റെപ്പോ"
+    },
+    {
+      "key": "site.74b4c0477f6a6960ee",
+      "source": "Custom content, prompts, and workflows can be adapted around NCERT needs and school-specific classroom priorities.",
+      "value": "ഇഷ്ടാനുസൃത ഉള്ളടക്കം, പ്രോംപ്റ്റുകൾ, മറ്റും പ്രവർത്തനരീതിs കഴിയും ആകുക adapted ചുറ്റിപ്പറ്റി NCERT ആവശ്യങ്ങൾ മറ്റും സ്കൂൾ-നിർദ്ദിഷ്ട classroom മുൻഗണനകൾ."
+    },
+    {
+      "key": "site.a3e158e602652c160a",
+      "source": "Dailyhunt coverage",
+      "value": "Dailyhunt കവറേജ്"
+    },
+    {
+      "key": "site.82427157fea881dd10",
+      "source": "Deccan Business coverage",
+      "value": "Deccan Business കവറേജ്"
+    },
+    {
+      "key": "site.9c1a0664bee68f21cf",
+      "source": "DeepHack community page",
+      "value": "DeepHack കമ്മ്യൂണിറ്റി പേജ്"
+    },
+    {
+      "key": "site.bb6c35921782e96ac7",
+      "source": "DeepHack recognition",
+      "value": "DeepHack അംഗീകാരം"
+    },
+    {
+      "key": "site.53892c8b6c1ee5b9a4",
+      "source": "Default guest tutor",
+      "value": "ഡീഫോൾട്ട് ഗസ്റ്റ് ട്യൂട്ടർ"
+    },
+    {
+      "key": "site.54cbf7c267f2bc4b14",
+      "source": "Different learning jobs need different interaction shapes, so inspir uses active, mode-specific teaching. A homework hint, Socratic question, historical simulation, flashcard review, and writing critique should not behave like the same generic chat.",
+      "value": "വ്യത്യസ്തമായ പഠനം ജോലികൾ ആവശ്യം വ്യത്യസ്തമായ interaction shapes, so inspir uses സജീവം, മോഡ്-നിർദ്ദിഷ്ട പഠിപ്പിക്കൽ. ഹോംവർക്ക് സൂചന, സോക്രാറ്റിക് ചോദ്യം, ചരിത്രപരമായ സിമുലേഷൻ, ഫ്ലാഷ്കാർഡ് റിവ്യൂ, മറ്റും എഴുത്ത് വിമർശനം ചെയ്യണം അല്ല behave like അതേ പൊതുവായ ചാറ്റ്."
+    },
+    {
+      "key": "site.87f1c595d44b5c8609",
+      "source": "Different learning jobs need different shapes: Socratic questions, homework hints, flashcards, debate, history roleplay, writing critique, and study planning.",
+      "value": "വ്യത്യസ്തമായ പഠനം ജോലികൾ ആവശ്യം വ്യത്യസ്തമായ shapes: സോക്രാറ്റിക് ചോദ്യംs, ഹോംവർക്ക് സൂചനകൾ, ഫ്ലാഷ്കാർഡുകൾ, വാദപ്രതിവാദം, ചരിത്രം റോൾപ്ലേ, എഴുത്ത് വിമർശനം, മറ്റും പഠനം പദ്ധതിയിടൽ."
+    },
+    {
+      "key": "site.c118be4848fe4bc138",
+      "source": "Disallowed",
+      "value": "അനുവദനീയമല്ല"
+    },
+    {
+      "key": "site.3bf2649a6448eef824",
+      "source": "Each learning mode has a public URL so learners can arrive from search directly inside the right learning experience.",
+      "value": "ഓരോന്നും പഠനം മോഡ് has പൊതു URL so പഠിതാവ്s കഴിയും arrive നിന്ന് തിരയുക നേരിട്ട് അകത്ത് ശരിയായ പഠനം അനുഭവം."
+    },
+    {
+      "key": "site.8686cd7bf2e3720a07",
+      "source": "Evaluate a public AI learning layer first, then explore custom workflows, confidentiality needs, content alignment, and usage funding.",
+      "value": "പൊതു AI പഠനം layer ആദ്യം, തുടർന്ന് അന്വേഷിക്കുക ഇഷ്ടാനുസൃത പ്രവർത്തനരീതിs, രഹസ്യത ആവശ്യങ്ങൾ, ഉള്ളടക്കം alignment, മറ്റും ഉപയോഗം funding. വിലയിരുത്തുക."
+    },
+    {
+      "key": "site.0ecfe7f2f8bc0a6d39",
+      "source": "Every core learning mode has a public guest entrypoint so people can start from search, social, or a shared link.",
+      "value": "എല്ലാ core പഠനം മോഡ് has പൊതു അതിഥി entrypoint so ആളുകൾ കഴിയും ആരംഭിക്കുക നിന്ന് തിരയുക, social, അല്ലെങ്കിൽ പങ്കിട്ട ലിങ്ക്."
+    },
+    {
+      "key": "site.4a55ac9e7e0e98e7af",
+      "source": "Every indexable guest learning chat, organized by teaching behavior and learning need.",
+      "value": "എല്ലാ indexable അതിഥി പഠനം ചാറ്റ്, organized വഴി പഠിപ്പിക്കൽ പെരുമാറ്റം മറ്റും പഠനം ആവശ്യം."
+    },
+    {
+      "key": "site.8d10c693b773b327ec",
+      "source": "External",
+      "value": "ബാഹ്യം"
+    },
+    {
+      "key": "site.d42040a1997535a297",
+      "source": "External coverage and reference links",
+      "value": "ബാഹ്യ കവറേജും റഫറൻസ് ലിങ്കുകളും"
+    },
+    {
+      "key": "site.cbb10b84bb7f975503",
+      "source": "Facts, source links, official URLs, and context for anyone writing about inspir&apos;s work in free AI learning, schools, and public education access.",
+      "value": "Facts, സ്രോതസ് ലിങ്കുകൾ, ഔദ്യോഗിക URLകൾ, മറ്റും സന്ദർഭം ക്കായി anyone എഴുത്ത് കുറിച്ച് inspir&apos;s പ്രവർത്തനം സൗജന്യ AI പഠനം, സ്കൂളുകൾ, മറ്റും പൊതു education പ്രവേശനം."
+    },
+    {
+      "key": "site.c4b007e8c68f43dbbc",
+      "source": "For press and school partnership notes.",
+      "value": "ക്കായി press മറ്റും സ്കൂൾ partnership കുറിപ്പുകൾ."
+    },
+    {
+      "key": "site.7cfbb4fa15b0617ef7",
+      "source": "Founded",
+      "value": "സ്ഥാപിച്ചത്"
+    },
+    {
+      "key": "site.3a98d3e13b5ee958c1",
+      "source": "free AI learning platform",
+      "value": "സൗജന്യ AI പഠനം പ്ലാറ്റ്ഫോം"
+    },
+    {
+      "key": "site.4c520d9eb839dbf2c7",
+      "source": "Free AI learning platform",
+      "value": "സൗജന്യ AI പഠനം പ്ലാറ്റ്ഫോം"
+    },
+    {
+      "key": "site.4fed554d48247e2189",
+      "source": "From Facebook quizzes and offline events to applied AI learning infrastructure.",
+      "value": "നിന്ന് Facebook ക്വിസുകൾ മറ്റും offline events applied AI പഠനം infraഘടന."
+    },
+    {
+      "key": "site.3009179f5bfc602eea",
+      "source": "From inspir.app to inspirlearning.com",
+      "value": "inspir.app മുതൽ inspirlearning.com വരെ"
+    },
+    {
+      "key": "site.215d60f7fb289021c8",
+      "source": "From student community to AI learning infrastructure",
+      "value": "നിന്ന് വിദ്യാർത്ഥി സമൂഹം AI പഠനം infraഘടന"
+    },
+    {
+      "key": "site.ca96a06d69633b2a8e",
+      "source": "Full AI-readable index",
+      "value": "AI വായിക്കാൻ കഴിയുന്ന പൂർണ്ണ ഇൻഡക്സ്"
+    },
+    {
+      "key": "site.d38012005bd9ca64d9",
+      "source": "Funded access paths",
+      "value": "ധനസഹായമുള്ള പ്രവേശന പാതകൾ"
+    },
+    {
+      "key": "site.152ec0a990b8f44f08",
+      "source": "Google and standard search crawlers",
+      "value": "Googleയും സാധാരണ തിരയൽ ക്രോളറുകളും"
+    },
+    {
+      "key": "site.79628ad00273b0b228",
+      "source": "Guest mode entrypoints",
+      "value": "അതിഥി മോഡ് entryപോയിന്റുകൾ"
+    },
+    {
+      "key": "site.38ca51b9198ad548da",
+      "source": "Guest-mode angle",
+      "value": "ഗസ്റ്റ്-മോഡ് കോണം"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "ഹോം"
+    },
+    {
+      "key": "site.f48c1251cd06451521",
+      "source": "How can access be funded for learners?",
+      "value": "എങ്ങനെ കഴിയും പ്രവേശനം ആകുക ധനസഹായമുള്ള ക്കായി പഠിതാക്കൾ?"
+    },
+    {
+      "key": "site.bd662541e151c7b1f0",
+      "source": "How did inspir start?",
+      "value": "inspir എങ്ങനെ തുടങ്ങി?"
+    },
+    {
+      "key": "site.edd015aef3b465db08",
+      "source": "How does inspir reduce answer-copying?",
+      "value": "എങ്ങനെ does inspir കുറയ്ക്കുക ഉത്തരം-പകർത്തൽ?"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "സാധാരണ AI chatbot-നോട് താരതമ്യത്തിൽ inspir എങ്ങനെ വ്യത്യസ്തമാണ്?"
+    },
+    {
+      "key": "site.7501bb65d127a3640f",
+      "source": "How is this different from giving students a generic AI chatbot?",
+      "value": "എങ്ങനെ ആണ് ഈ വ്യത്യസ്തമായ നിന്ന് നൽകൽ വിദ്യാർത്ഥികൾ പൊതുവായ AI chatbot?"
+    },
+    {
+      "key": "site.a72868fe96fe335a4b",
+      "source": "How public guest learning can extend into school-specific AI learning spaces.",
+      "value": "എങ്ങനെ പൊതു അതിഥി പഠനം കഴിയും extend ആക്കി സ്കൂൾ-നിർദ്ദിഷ്ട AI പഠനം spaces."
+    },
+    {
+      "key": "site.3e9a0b8015949c9253",
+      "source": "Identify the school goals that matter most: conceptual support, homework hints, exam prep, active recall, writing feedback, or enrichment.",
+      "value": "തിരിച്ചറിയുക സ്കൂൾ ലക്ഷ്യങ്ങൾ അത് matter most: ആശയംual പിന്തുണ, ഹോംവർക്ക് സൂചനകൾ, പരീക്ഷാ തയ്യാറെടുപ്പ്, സജീവം ഓർമ്മപ്പെടുത്തൽ, എഴുത്ത് ഫീഡ്‌ബാക്ക്, അല്ലെങ്കിൽ enrichment."
+    },
+    {
+      "key": "site.e8d2e1560d03882d72",
+      "source": "inspir began in 2013 as a public quiz and learning community, grew through schools and student networks, and later developed AI learning infrastructure and public AI tutoring experiences.",
+      "value": "inspir began 2013 പൊതു ക്വിസ് മറ്റും പഠനം സമൂഹം, grew വഴി സ്കൂളുകൾ മറ്റും വിദ്യാർത്ഥി networks, മറ്റും later developed AI പഠനം infraഘടന മറ്റും പൊതു AI ട്യൂട്ടർing experiences."
+    },
+    {
+      "key": "site.434ff946ce0862dc81",
+      "source": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
+      "value": "inspir exists ആക്കുക പഠനം ലഭ്യമായ, ആകർഷകമായ, ആസ്വാദ്യമായ, മറ്റും ഉപകാരപ്രദമായ ക്കായി anyone ഉപയോഗിച്ച് ജിജ്ഞാസ വഴി സൗജന്യ പൊതു AI പഠനം ഉപകരണങ്ങൾ മറ്റും സ്കൂൾ-ready പഠനം spaces."
+    },
+    {
+      "key": "site.4826f7cef0965f87fd",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir ആണ് സൗജന്യ AI പഠനം പ്ലാറ്റ്ഫോം ഉപയോഗിച്ച് പൊതു ഗസ്റ്റ് മോഡുകൾ ക്കായി വിശദീകരണങ്ങൾ, സോക്രാറ്റിക് ട്യൂട്ടറിംഗ്, ഹോംവർക്ക് കോച്ചിംഗ്, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, വാദപ്രതിവാദം, റോൾപ്ലേ, എഴുത്ത് ഫീഡ്‌ബാക്ക്, മറ്റും പഠന പദ്ധതി."
+    },
+    {
+      "key": "site.65fe9d3a3f19f5e776",
+      "source": "inspir is a free AI learning platform with public guest modes for explanations, Socratic tutoring, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "inspir ആണ് സൗജന്യ AI പഠനം പ്ലാറ്റ്ഫോം ഉപയോഗിച്ച് പൊതു ഗസ്റ്റ് മോഡുകൾ ക്കായി വിശദീകരണങ്ങൾ, സോക്രാറ്റിക് ട്യൂട്ടറിംഗ്, ഹോംവർക്ക് കോച്ചിംഗ്, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, വാദപ്രതിവാദം, എഴുത്ത് ഫീഡ്‌ബാക്ക്, കോഡിംഗ് സഹായം, മറ്റും പഠന പദ്ധതി."
+    },
+    {
+      "key": "site.f5eebdef7c1e47ffca",
+      "source": "inspir is designed around reasoning, practice, recall, and explanation instead of handing learners finished work.",
+      "value": "inspir ആണ് രൂപകൽപ്പന ചെയ്തത് ചുറ്റിപ്പറ്റി തർക്കശക്തി, പരിശീലനം, ഓർമ്മപ്പെടുത്തൽ, മറ്റും വിശദീകരണം പകരം handing പഠിതാക്കൾ പൂർണ്ണമായ തയ്യാറുത്തരം."
+    },
+    {
+      "key": "site.516d0e6bcf145f26f2",
+      "source": "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
+      "value": "inspir ആണ് organized ചുറ്റിപ്പറ്റി സൂചനകൾ, ചോദ്യങ്ങൾ, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, വാദപ്രതിവാദം, അവലോകനം, മറ്റും വിശദീകരണം പകരം നിഷ്ക്രിയ ഉത്തരം-പകർത്തൽ."
+    },
+    {
+      "key": "site.27cfd82897c1595ef5",
+      "source": "inspir is organized around learning modes such as Socratic tutoring, homework hints, quizzes, flashcards, maths steps, writing critique, and exam planning, so students land in a more focused learning behavior.",
+      "value": "inspir ആണ് organized ചുറ്റിപ്പറ്റി പഠന മോഡുകൾ such സോക്രാറ്റിക് ട്യൂട്ടറിംഗ്, ഹോംവർക്ക് സൂചനകൾ, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, ഗണിതംs ഘട്ടങ്ങൾ, എഴുത്ത് വിമർശനം, മറ്റും പരീക്ഷ പദ്ധതി തയ്യാറാക്കൽ, so വിദ്യാർത്ഥികൾ land കൂടുതൽ കേന്ദ്രീകൃത പഠനം പെരുമാറ്റം."
+    },
+    {
+      "key": "site.944a9bdb9a6595a728",
+      "source": "inspir makes learning modes public and indexable at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+      "value": "inspir ആക്കുന്നു പഠന മോഡുകൾ പൊതു മറ്റും indexable at /chat/{topicSlug}, letting പഠിതാക്കൾ land നേരിട്ട് അകത്ത് ശരിയായ AI പഠനം അനുഭവം ഇല്ലാതെ needing saved സ്വകാര്യ ചാറ്റ്."
+    },
+    {
+      "key": "site.9abd85ad18567a2915",
+      "source": "inspir media story angles",
+      "value": "inspir മീഡിയ കഥാ കോണുകൾ"
+    },
+    {
+      "key": "site.8181ad89425a1c91f3",
+      "source": "inspir organizes AI around active learning behaviors: hints, questions, quizzes, flashcards, critique, and review.",
+      "value": "inspir organizes AI ചുറ്റിപ്പറ്റി സജീവം പഠനം പെരുമാറ്റങ്ങൾ: സൂചനകൾ, ചോദ്യങ്ങൾ, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, വിമർശനം, മറ്റും അവലോകനം."
+    },
+    {
+      "key": "site.ba1c76f00effe32bbd",
+      "source": "inspir organizes AI around learning modes with specific teaching behavior: explanations, Socratic questions, homework hints, quizzes, flashcards, debate, roleplay, writing feedback, and study planning.",
+      "value": "inspir organizes AI ചുറ്റിപ്പറ്റി പഠന മോഡുകൾ ഉപയോഗിച്ച് നിർദ്ദിഷ്ട പഠിപ്പിക്കൽ പെരുമാറ്റം: വിശദീകരണങ്ങൾ, സോക്രാറ്റിക് ചോദ്യങ്ങൾ, ഹോംവർക്ക് സൂചനകൾ, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, വാദപ്രതിവാദം, റോൾപ്ലേ, എഴുത്ത് ഫീഡ്‌ബാക്ക്, മറ്റും പഠന പദ്ധതി."
+    },
+    {
+      "key": "site.89faa73d9dd280935c",
+      "source": "inspir started as a Facebook page publishing quizzes and building a habit of extracurricular learning.",
+      "value": "inspir ആരംഭിച്ചു Facebook പേജ് publishing ക്വിസുകൾ മറ്റും building ശീലം extracurricular പഠനം."
+    },
+    {
+      "key": "site.9a918550bd051e01ee",
+      "source": "inspir went live as a consumer-facing AI learning product within weeks of ChatGPT's public release.",
+      "value": "inspir went തത്സമയ consumer-facing AI പഠനം ഉൽപ്പന്നം അകത്ത് weeks ChatGPT's പൊതു release."
+    },
+    {
+      "key": "site.71cfe5d0d8c29009a6",
+      "source": "inspir.uk next-generation buildout",
+      "value": "inspir.uk അടുത്ത തലമുറ വികസനം"
+    },
+    {
+      "key": "site.9fbce84dcd4f62749c",
+      "source": "inspir&apos;s work includes retrieval-based learning systems, NCERT content ingestion, structured prompting, custom LLM evaluation, and open-source engagement around RAG evaluation. The current platform lives at inspirlearning.com while the next generation is being built in public through inspir.uk and GitHub.",
+      "value": "inspir&apos;s പ്രവർത്തനം ഉൾപ്പെടുന്നു റിട്രീവൽ അടിസ്ഥാനത്തിലുള്ള പഠന സംവിധാനങ്ങൾ, NCERT ഉള്ളടക്കം ingestion, ഘടനd പ്രോംപ്റ്റ്ing, കസ്റ്റം LLM മൂല്യനിർണ്ണയം, മറ്റും തുറക്കുക-സ്രോതസ് engagement ചുറ്റിപ്പറ്റി RAG മൂല്യനിർണ്ണയം. നിലവിലെ പ്ലാറ്റ്ഫോം lives at inspirlearning.com അതേസമയം അടുത്തത് generation ആണ് being നിർമ്മിച്ച പൊതു വഴി inspir.uk മറ്റും GitHub."
+    },
+    {
+      "key": "site.f9fc9dbf3888825aed",
+      "source": "Journalists, directory editors, partners, schools, AI answer engines, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "value": "Journalists, ഡയറക്ടറി editors, partners, സ്കൂളുകൾ, AI ഉത്തരം എഞ്ചിനുകൾ, മറ്റും anyone എഴുത്ത് കുറിച്ച് inspir കഴിയും ഉപയോഗിക്കുക ഇത് ക്കായി വസ്തുതകൾ, ലിങ്കുകൾ, കഥ angles, മറ്റും citation-friendly references."
+    },
+    {
+      "key": "site.42291a643dfaba7e7c",
+      "source": "Jury's Choice recognition from Amod Malviya at DeepHack for AI learning work.",
+      "value": "Jury's Choice recognition നിന്ന് Amod Malviya at DeepHack ക്കായി AI പഠനം പ്രവർത്തനം."
+    },
+    {
+      "key": "site.1cb78690e3dadfb1b0",
+      "source": "Key facts",
+      "value": "പ്രധാന വസ്തുതകൾ"
+    },
+    {
+      "key": "site.1f683bad50d2662168",
+      "source": "Late 2022",
+      "value": "2022 അവസാനം"
+    },
+    {
+      "key": "site.6a0c70c152bc741c72",
+      "source": "Launch and fund access",
+      "value": "പ്രവേശനം ആരംഭിക്കുകയും ധനസഹായം നൽകുകയും ചെയ്യുക"
+    },
+    {
+      "key": "site.1cdc13506ff7254ed7",
+      "source": "Learners, parents, teachers, schools, and self-taught builders",
+      "value": "പഠിതാക്കൾ, മാതാപിതാക്കൾ, അധ്യാപകർ, സ്കൂളുകൾ, മറ്റും സ്വയം പഠിക്കുന്ന builders"
+    },
+    {
+      "key": "site.0b8c6ffefb37026cf1",
+      "source": "Learning behavior comes first",
+      "value": "പഠന പെരുമാറ്റമാണ് ആദ്യം"
+    },
+    {
+      "key": "site.be81c1c0d0706156da",
+      "source": "Learning paths",
+      "value": "പഠന പാതകൾ"
+    },
+    {
+      "key": "site.869080323bcd31a6e9",
+      "source": "Linking guide",
+      "value": "ലിങ്കിംഗ് ഗൈഡ്"
+    },
+    {
+      "key": "site.1add8abe67bf72c7bc",
+      "source": "llms.txt, llms-full.txt, and ai-content-index.json summarize public pages, routes, modes, guides, and citation boundaries for assistants.",
+      "value": "llms.txt, llms-പൂർണ്ണ.txt, മറ്റും ai-ഉള്ളടക്കം-index.json summarize പൊതു പേജുകൾ, റൂട്ടുകൾ, മോഡുകൾ, ഗൈഡ്s, മറ്റും citation പരിധികൾ ക്കായി assistants."
+    },
+    {
+      "key": "site.bcdbb7a8a250385dba",
+      "source": "Long-form learning library",
+      "value": "വിശദമായ പഠന ലൈബ്രറി"
+    },
+    {
+      "key": "site.97b20326308a3837ba",
+      "source": "Machine-readable catalog of public pages, modes, learning paths, blog clusters, and indexing boundaries.",
+      "value": "പൊതു പേജുകൾ, മോഡുകൾ, പഠന പാതകൾ, ബ്ലോഗ് ക്ലസ്റ്ററുകൾ, ഇൻഡക്സിംഗ് പരിധികൾ എന്നിവയുടെ യന്ത്രം വായിക്കാവുന്ന കാറ്റലോഗ്."
+    },
+    {
+      "key": "site.697cdcebc09e11a04b",
+      "source": "Map learning needs",
+      "value": "പഠന ആവശ്യങ്ങൾ മാപ്പ് ചെയ്യുക"
+    },
+    {
+      "key": "site.0c77aeece8c2581131",
+      "source": "Media",
+      "value": "മീഡിയ"
+    },
+    {
+      "key": "site.1687989496c04b7aad",
+      "source": "Media and citations",
+      "value": "മാധ്യമങ്ങളും ഉദ്ധരണികളും"
+    },
+    {
+      "key": "site.6b1154839ba7f095b7",
+      "source": "Media And Press",
+      "value": "മീഡിയയും പ്രസ്സും"
+    },
+    {
+      "key": "site.bf88d7298a33f89ff5",
+      "source": "Media And Press | inspir",
+      "value": "മീഡിയയും പ്രസ്സും | inspir"
+    },
+    {
+      "key": "site.6d83952cf6d2396ebf",
+      "source": "Media FAQ",
+      "value": "മീഡിയ ചോദ്യോത്തരങ്ങൾ"
+    },
+    {
+      "key": "site.0273cd5a88e8bf841f",
+      "source": "Media notes, source links, citation facts, and official reference URLs for inspir, the free AI-powered learning platform.",
+      "value": "inspir എന്ന സൗജന്യ AI-ശക്തിയുള്ള പഠന പ്ലാറ്റ്ഫോമിനുള്ള മീഡിയ കുറിപ്പുകൾ, ഉറവിട ലിങ്കുകൾ, ഉദ്ധരണി വസ്തുതകൾ, ഔദ്യോഗിക റഫറൻസ് URL-കൾ."
+    },
+    {
+      "key": "site.e4698d4ceacbe68b86",
+      "source": "Mission",
+      "value": "ദൗത്യം"
+    },
+    {
+      "key": "site.99f6b1b76e10895d1b",
+      "source": "Mode-specific learning",
+      "value": "മോഡിനനുസരിച്ചുള്ള പഠനം"
+    },
+    {
+      "key": "site.f79c5d4f68e609a42f",
+      "source": "Mode-specific product design",
+      "value": "മോഡിനനുസരിച്ചുള്ള ഉൽപ്പന്ന രൂപകൽപ്പന"
+    },
+    {
+      "key": "site.63bcd7acd9a02a647c",
+      "source": "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
+      "value": "ട്യൂട്ടറിംഗ്, പ്രോംപ്റ്റുകൾ, പഠന ലൂപ്പുകൾ, സജീവ ഓർമ്മപ്പെടുത്തൽ, മോഡുകൾ എന്നിവയെക്കുറിച്ചുള്ള 100-ലധികം ഗൈഡുകൾ."
+    },
+    {
+      "key": "site.7c25dbf4c80716fe2a",
+      "source": "More than 100 guides, prompt loops, and pillar clusters for AI-assisted learning.",
+      "value": "AI സഹായിക്കുന്ന പഠനത്തിനായി 100-ലധികം ഗൈഡുകൾ, പ്രോംപ്റ്റ് ലൂപ്പുകൾ, പ്രധാന ക്ലസ്റ്ററുകൾ."
+    },
+    {
+      "key": "site.727575fe0bff2db9c3",
+      "source": "Move from pilot to wider access through school funding, partner support, or CSR pathways for learners who need subsidised access.",
+      "value": "സബ്സിഡിയുള്ള ആക്സസ് ആവശ്യമായ പഠിതാക്കൾക്കായി സ്കൂൾ ഫണ്ടിംഗ്, പങ്കാളി പിന്തുണ, CSR പാതകൾ എന്നിവയിലൂടെ പൈലറ്റിൽ നിന്ന് വ്യാപക ആക്സസിലേക്കു നീങ്ങുക."
+    },
+    {
+      "key": "site.709a23220f2c3d64d1",
+      "source": "Name",
+      "value": "പേര്"
+    },
+    {
+      "key": "site.890bbec1994108df83",
+      "source": "NCERT aligned AI learning",
+      "value": "NCERT-നോട് ഒത്തിണങ്ങിയ AI പഠനം"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-നോട് പൊരുത്തപ്പെടുന്ന ഓപ്ഷനുകൾ"
+    },
+    {
+      "key": "site.7c1b9f4b40124c5f1d",
+      "source": "No. Private saved chats use private identifiers, are not listed in the sitemap, and are not included in AI discovery files such as llms.txt, llms-full.txt, or ai-content-index.json.",
+      "value": "ഇല്ല. സ്വകാര്യമായി സേവ് ചെയ്ത ചാറ്റുകൾ സ്വകാര്യ തിരിച്ചറിയലുകൾ ഉപയോഗിക്കുന്നു, സൈറ്റ്മാപ്പിൽ ലിസ്റ്റ് ചെയ്യുന്നില്ല, llms.txt, llms-പൂർണ്ണ.txt, ai-ഉള്ളടക്കം-index.json പോലുള്ള AI കണ്ടെത്തൽ ഫയലുകളിൽ ഉൾപ്പെടുത്തുന്നില്ല."
+    },
+    {
+      "key": "site.e3b82040565bb4be6b",
+      "source": "Now",
+      "value": "ഇപ്പോൾ"
+    },
+    {
+      "key": "site.88ea2841944dece5d9",
+      "source": "OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User, ClaudeBot, Applebot, Google-Extended, and CCBot are allowed for public discovery.",
+      "value": "OAI-SearchBot, ChatGPT-ഉപയോക്താവ്, GPTBot, PerplexityBot, Perplexity-ഉപയോക്താവ്, Claude-SearchBot, Claude-ഉപയോക്താവ്, ClaudeBot, Applebot, Google-Extended, CCBot എന്നിവയ്ക്ക് പൊതു കണ്ടെത്തൽ അനുവദിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "site.152d1dbef4d9f1b900",
+      "source": "Official citation links",
+      "value": "ഔദ്യോഗിക ഉദ്ധരണി ലിങ്കുകൾ"
+    },
+    {
+      "key": "site.0c2e8b5a7777e3bfa5",
+      "source": "Official inspir reference links",
+      "value": "ഔദ്യോഗിക inspir റഫറൻസ് ലിങ്കുകൾ"
+    },
+    {
+      "key": "site.90385b4ca5d52feae4",
+      "source": "Offline networks and student events",
+      "value": "ഓഫ്‌ലൈൻ നെറ്റ്‌വർക്കുകളും വിദ്യാർത്ഥി ഇവന്റുകളും"
+    },
+    {
+      "key": "site.babd8fc46baf0489a2",
+      "source": "Open reference",
+      "value": "റഫറൻസ് തുറക്കുക"
+    },
+    {
+      "key": "site.ceb52dd3c27073fa6a",
+      "source": "Open source page",
+      "value": "ഉറവിട പേജ് തുറക്കുക"
+    },
+    {
+      "key": "site.1f8ece4a41c47eadd0",
+      "source": "Open target",
+      "value": "ലക്ഷ്യം തുറക്കുക"
+    },
+    {
+      "key": "site.eab5e67f53b3147ab6",
+      "source": "Press facts",
+      "value": "പ്രസ് വസ്തുതകൾ"
+    },
+    {
+      "key": "site.87164ea45313b56015",
+      "source": "Primary audience",
+      "value": "പ്രധാന പ്രേക്ഷകർ"
+    },
+    {
+      "key": "site.757bf92ac4123d6db4",
+      "source": "Primary homepage citation",
+      "value": "പ്രധാന ഹോംപേജ് ഉദ്ധരണം"
+    },
+    {
+      "key": "site.7ceacdcaab4c898f58",
+      "source": "Privacy policy",
+      "value": "സ്വകാര്യതാ നയം"
+    },
+    {
+      "key": "site.e5b8d25913817dc462",
+      "source": "Private saved chat URLs are not sitemap-listed and are not included in llms.txt, llms-full.txt, or the JSON AI content catalog.",
+      "value": "സ്വകാര്യ സംരക്ഷിച്ച ചാറ്റ് URLs ആണ് അല്ല sitemap-listed മറ്റും ആണ് അല്ല included llms.txt, llms-പൂർണ്ണ.txt, അല്ലെങ്കിൽ JSON AI ഉള്ളടക്ക കാറ്റലോഗ്."
+    },
+    {
+      "key": "site.6dc60d3e04c92e4fe6",
+      "source": "Product angle",
+      "value": "ഉൽപ്പന്ന കാഴ്ചപ്പാട്"
+    },
+    {
+      "key": "site.ea284567fd00d8660f",
+      "source": "Public explanation of guest mode, private chats, crawler policy, learner safety, and school trust.",
+      "value": "പൊതു വിശദീകരണം അതിഥി മോഡ്, സ്വകാര്യ ചാറ്റുകൾ, crawler നയം, പഠിതാവ് safety, മറ്റും സ്കൂൾ trust."
+    },
+    {
+      "key": "site.0d39a9ba5b54ac590b",
+      "source": "Public guest modes give anyone a useful place to start, while school and partner deployments can adapt the experience for local needs.",
+      "value": "പൊതു അതിഥി മോഡുകൾ നൽകുക anyone ഉപകാരപ്രദമായ സ്ഥലം ആരംഭിക്കുക, അതേസമയം സ്കൂൾ മറ്റും പങ്കാളി വിന്യാസങ്ങൾ കഴിയും പൊരുത്തപ്പെടുത്തുക അനുഭവം ക്കായി local ആവശ്യങ്ങൾ."
+    },
+    {
+      "key": "site.71b82653ef6edd94cb",
+      "source": "Public guest-mode URLs exist so learners can land directly in useful learning modes from search, social links, schools, and AI answer engines.",
+      "value": "പൊതു അതിഥി-മോഡ് URLs exist so പഠിതാവ്s കഴിയും land നേരിട്ട് ഉപകാരപ്രദമായ പഠന മോഡുകൾ നിന്ന് തിരയുക, social ലിങ്കുകൾ, സ്കൂൾs, മറ്റും AI ഉത്തരം എഞ്ചിനുകൾ."
+    },
+    {
+      "key": "site.21a54ba78cbbf2ad55",
+      "source": "Public pages are open to search and AI retrieval crawlers, while admin tools, API routes, reset flows, and private utilities are disallowed.",
+      "value": "പൊതു പേജുകൾ ആണ് തുറക്കുക തിരയുക മറ്റും AI വീണ്ടെടുക്കൽ crawlers, അതേസമയം admin ഉപകരണങ്ങൾ, API റൂട്ടുകൾ, reset flows, മറ്റും സ്വകാര്യ utilities ആണ് disallowed."
+    },
+    {
+      "key": "site.5f7bb65a7b9c9c271a",
+      "source": "Public pages, topic chats, learning paths, blog guides, and authority pages are intended to be discoverable.",
+      "value": "പൊതു പേജുകൾ, വിഷയം ചാറ്റുകൾ, പഠന പാതകൾ, ബ്ലോഗ് ഗൈഡ്s, മറ്റും അധികാരം പേജുകൾ ആണ് intended ആകുക discoverable."
+    },
+    {
+      "key": "site.3a2768596b728bfa4c",
+      "source": "Reached across the free public platform and partner school deployments.",
+      "value": "Reached across സൗജന്യ പൊതു പ്ലാറ്റ്ഫോം മറ്റും പങ്കാളി സ്കൂൾ വിന്യാസങ്ങൾ."
+    },
+    {
+      "key": "site.7afde2ae4e5b07f084",
+      "source": "Read mission",
+      "value": "മിഷൻ വായിക്കുക"
+    },
+    {
+      "key": "site.496fafca8c61f5d503",
+      "source": "Recommended inspir citation and backlink targets",
+      "value": "ശുപാർശ ചെയ്യുന്ന inspir ഉദ്ധരണി, ബാക്ക്‌ലിങ്ക് ലക്ഷ്യങ്ങൾ"
+    },
+    {
+      "key": "site.b3cc5b5a154ff95753",
+      "source": "Recommended pages and anchor text for citations.",
+      "value": "ഉദ്ധരണികൾക്കായി ശുപാർശ ചെയ്യുന്ന പേജുകളും ആങ്കർ ടെക്സ്റ്റും."
+    },
+    {
+      "key": "site.1bc43cdcc15f68522e",
+      "source": "Reference links, public facts, press context, and citation-friendly details.",
+      "value": "Reference ലിങ്കുകൾ, പൊതു facts, press സന്ദർഭം, മറ്റും citation-friendly details."
+    },
+    {
+      "key": "site.82a55d25aabf131916",
+      "source": "Reference these pages when writing about inspir.",
+      "value": "inspir-നെക്കുറിച്ച് എഴുതുമ്പോൾ ഈ പേജുകൾ റഫറൻസ് ചെയ്യുക."
+    },
+    {
+      "key": "site.4f501be387290c7eae",
+      "source": "Robots policy",
+      "value": "റോബോട്ട്സ് നയം"
+    },
+    {
+      "key": "site.c8a5fde868171bdf70",
+      "source": "Robots rules allow Google, standard search crawlers, and major AI discovery crawlers on public pages, while blocking API routes, admin routes, and reset flows.",
+      "value": "Robots നിയമങ്ങൾ allow Google, standard സേർച്ച് ക്രോളറുകൾ, മറ്റും major AI കണ്ടെത്തൽ crawlers on പൊതു പേജുകൾ, അതേസമയം blocking API റൂട്ടുകൾ, admin റൂട്ടുകൾ, മറ്റും reset flows."
+    },
+    {
+      "key": "site.346a3af900118a9795",
+      "source": "Saved user conversations use private identifiers, are not included in the sitemap or AI discovery files, and should not be treated as public source material.",
+      "value": "Saved ഉപയോക്താവ് സംഭാഷണങ്ങൾ ഉപയോഗിക്കുക സ്വകാര്യ identifiers, ആണ് അല്ല included sitemap അല്ലെങ്കിൽ AI കണ്ടെത്തൽ files, മറ്റും ചെയ്യണം അല്ല ആകുക treated പൊതു ഉറവിടം ഉള്ളടക്കം."
+    },
+    {
+      "key": "site.ce66c3094464dbaf27",
+      "source": "School and CSR pathways for funded access",
+      "value": "ധനസഹായമുള്ള ആക്സസിന് സ്കൂൾ, CSR പാതകൾ"
+    },
+    {
+      "key": "site.1cfee6b53a749be8f0",
+      "source": "School and partner pathway",
+      "value": "സ്കൂൾ, പങ്കാളിത്ത പാത"
+    },
+    {
+      "key": "site.4cd884de984a99bd04",
+      "source": "School angle",
+      "value": "സ്കൂൾ കാഴ്ചപ്പാട്"
+    },
+    {
+      "key": "site.6bc41467fd478b80e2",
+      "source": "School deployment pathway",
+      "value": "സ്കൂൾ വിന്യാസ പാത"
+    },
+    {
+      "key": "site.0932a94e5d6a298f32",
+      "source": "School deployments can be adapted around custom content, workflows, prompts, and NCERT-aligned learning needs where appropriate.",
+      "value": "സ്കൂൾ വിന്യാസങ്ങൾ കഴിയും ആകുക adapted ചുറ്റിപ്പറ്റി ഇഷ്ടാനുസൃത ഉള്ളടക്കം, പ്രവർത്തനരീതികൾ, പ്രോംപ്റ്റുകൾ, മറ്റും NCERT-ഒത്തിണങ്ങിയ പഠന ആവശ്യങ്ങൾ എവിടെ appropriate."
+    },
+    {
+      "key": "site.fb8a562ed5a2ef48b1",
+      "source": "School leaders",
+      "value": "സ്കൂൾ നേതാക്കൾ"
+    },
+    {
+      "key": "site.dfcc75effae975f1f2",
+      "source": "School rollouts can be planned around student privacy, staff oversight, and the practical boundaries a learning community needs.",
+      "value": "സ്കൂൾ rollouts കഴിയും ആകുക planned ചുറ്റിപ്പറ്റി വിദ്യാർത്ഥി സ്വകാര്യത, സ്റ്റാഫ് oversight, മറ്റും പ്രായോഗിക പരിധികൾ പഠന സമൂഹം ആവശ്യങ്ങൾ."
+    },
+    {
+      "key": "site.19ba50e2b48686263a",
+      "source": "Schools and CSR partners",
+      "value": "സ്കൂളുകളും CSR പങ്കാളികളും"
+    },
+    {
+      "key": "site.80ab611d8013cec3e2",
+      "source": "Schools and partners",
+      "value": "സ്കൂളുകളും പങ്കാളികളും"
+    },
+    {
+      "key": "site.341cd17bedeac35477",
+      "source": "Schools and partners can build from the public product toward tailored, confidential, and subsidized deployments.",
+      "value": "സ്കൂളുകൾ മറ്റും partners കഴിയും നിർമ്മിക്കുക നിന്ന് പൊതു ഉൽപ്പന്നം toward അനുയോജ്യമായി രൂപപ്പെടുത്തിയ, confidential, മറ്റും subsidized വിന്യാസങ്ങൾ."
+    },
+    {
+      "key": "site.c64f97bc689af465da",
+      "source": "Schools can evaluate inspir through public guest modes first, then explore tailored AI learning spaces with custom workflows, confidentiality planning, curriculum needs, and funded access paths.",
+      "value": "സ്കൂളുകൾ കഴിയും evaluate inspir വഴി പൊതു അതിഥി മോഡുകൾ ആദ്യം, തുടർന്ന് അന്വേഷിക്കുക അനുയോജ്യമായി രൂപപ്പെടുത്തിയ AI പഠന spaces ഉപയോഗിച്ച് ഇഷ്ടാനുസൃത പ്രവർത്തനരീതികൾ, രഹസ്യതാ പദ്ധതി, പാഠ്യപദ്ധതി ആവശ്യങ്ങൾ, മറ്റും ധനസഹായമുള്ള പ്രവേശന പാതകൾ."
+    },
+    {
+      "key": "site.43d5179e32da3aee00",
+      "source": "Schools can evaluate public modes first, then discuss tailored workflows, confidentiality planning, content needs, and funded access.",
+      "value": "സ്കൂളുകൾ കഴിയും evaluate പൊതു മോഡുകൾ ആദ്യം, തുടർന്ന് discuss അനുയോജ്യമായി രൂപപ്പെടുത്തിയ പ്രവർത്തനരീതികൾ, രഹസ്യതാ പദ്ധതി, ഉള്ളടക്കം ആവശ്യങ്ങൾ, മറ്റും ധനസഹായമുള്ള പ്രവേശനം."
+    },
+    {
+      "key": "site.58d68211fdd6de8ff7",
+      "source": "Schools can test public guest modes first, then use the schools page to explore tailored workflows, confidentiality planning, NCERT-aligned options, and funded access.",
+      "value": "സ്കൂളുകൾ കഴിയും പരിശോധിക്കുക പൊതു അതിഥി മോഡുകൾ ആദ്യം, തുടർന്ന് ഉപയോഗിക്കുക സ്കൂൾs പേജ് അന്വേഷിക്കുക അനുയോജ്യമായി രൂപപ്പെടുത്തിയ പ്രവർത്തനരീതികൾ, രഹസ്യതാ പദ്ധതി, NCERT-ഒത്തിണങ്ങിയ ഓപ്ഷനുകൾ, മറ്റും ധനസഹായമുള്ള പ്രവേശനം."
+    },
+    {
+      "key": "site.2552c2a4aed60948fd",
+      "source": "Search visibility has boundaries",
+      "value": "തിരയൽ ദൃശ്യതയ്ക്ക് പരിധികളുണ്ട്"
+    },
+    {
+      "key": "site.29ebde2964c1503bdb",
+      "source": "Short answers for citations, directories, and AI summaries.",
+      "value": "citationകൾക്കും ഡയറക്ടറികൾക്കും AI സംഗ്രഹങ്ങൾക്കും ചുരുക്ക ഉത്തരങ്ങൾ."
+    },
+    {
+      "key": "site.396c2137a0b503759e",
+      "source": "Short description",
+      "value": "ചുരുക്ക വിവരണം"
+    },
+    {
+      "key": "site.01dbfcc2ca422bae6a",
+      "source": "Short descriptions writers can reuse with attribution.",
+      "value": "അട്രിബ്യൂഷനോടെ എഴുത്തുകാർക്ക് വീണ്ടും ഉപയോഗിക്കാവുന്ന ചുരുക്ക വിവരണങ്ങൾ."
+    },
+    {
+      "key": "site.93df543cdc3a10ce4d",
+      "source": "Short facts for articles, directories, and partner pages.",
+      "value": "ലേഖനങ്ങൾക്കും ഡയറക്ടറികൾക്കും പങ്കാളി പേജുകൾക്കും ചുരുക്ക വസ്തുതകൾ."
+    },
+    {
+      "key": "site.bac4b415b203fe0ffb",
+      "source": "Source page",
+      "value": "ഉറവിട പേജ്"
+    },
+    {
+      "key": "site.b8be87ac79be1e4f67",
+      "source": "Start directly in the right learning mode for homework hints, maths steps, writing critique, quizzes, flashcards, or exam planning.",
+      "value": "ഹോംവർക്ക് സൂചനകൾ, maths ഘട്ടങ്ങൾ, എഴുത്ത് വിമർശനം, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, പരീക്ഷ പദ്ധതിയിടൽ എന്നിവയ്ക്കായി ശരിയായ പഠന മോഡിൽ നേരിട്ട് തുടങ്ങുക."
+    },
+    {
+      "key": "site.395684062682614aad",
+      "source": "Story angles",
+      "value": "കഥാ കോണുകൾ"
+    },
+    {
+      "key": "site.fcfac3efb6ae696fcb",
+      "source": "Students",
+      "value": "വിദ്യാർത്ഥികൾ"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "അതിഥി മോഡുകൾ, പ്രോംപ്റ്റുകൾ, പരിശീലനം, ബന്ധപ്പെട്ട ഗൈഡുകൾ എന്നിവ ബന്ധിപ്പിക്കുന്ന പഠന പ്രവർത്തനരീതികൾ."
+    },
+    {
+      "key": "site.2c07e513b5dd0f555c",
+      "source": "Suggested anchor:",
+      "value": "ശുപാർശ ചെയ്യുന്ന ആങ്കർ:"
+    },
+    {
+      "key": "site.80afcfdfb9a248a7e1",
+      "source": "Suggested anchor: {value1}",
+      "value": "ശുപാർശ ചെയ്യുന്ന ആങ്കർ: {value1}"
+    },
+    {
+      "key": "site.2db931bd76bd186e1f",
+      "source": "Suggested inspir citation snippets",
+      "value": "ശുപാർശ ചെയ്യുന്ന inspir citation snippets"
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "കുടുംബങ്ങൾക്ക് അധിക ചെലവ് ചേർക്കാതെ ഉയർന്ന നിലവാരമുള്ള പിന്തുണ ആവശ്യമുള്ള സമൂഹങ്ങൾക്ക് ധനസഹായമുള്ള AI പഠനം പ്രവേശനം പിന്തുണയ്ക്കുക."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "വ്യാപകമായ consumer reachക്കായുള്ള syndicated coverage."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "അധ്യാപകർ"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "formal rolloutക്കുമുമ്പ് അധ്യാപകരും നേതാക്കളും പഠിക്കുക ഏതും, സോക്രാറ്റിക് പഠനം, ഹോംവർക്ക് കോച്ച്, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ എന്നിവ ഉപയോഗിച്ച് തുടങ്ങാം."
+    },
+    {
+      "key": "site.02cb46a174d057cb83",
+      "source": "Technical story",
+      "value": "സാങ്കേതിക കഥ"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "നിബന്ധനകൾ"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "AI ഉത്തരം എഞ്ചിനുകൾ, assistants, educators, citation ഉപകരണങ്ങൾ എന്നിവയ്ക്കായുള്ള വാചകം-ആദ്യം കണ്ടെത്തൽ file."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "സോക്രാറ്റിക് questioning, ഹോംവർക്ക് സൂചനകൾ, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, റോൾപ്ലേ, പദ്ധതിയിടൽ പോലുള്ള പഠിപ്പിക്കൽ പെരുമാറ്റങ്ങൾയെ ചുറ്റിപ്പറ്റിയാണ് ആപ്പ് ക്രമീകരിച്ചിരിക്കുന്നത്."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "സ്കൂളുകൾ, universities, competitions, extracurricular programmes, പഠിതാവ് സമൂഹങ്ങൾ എന്നിവയിലൂടെ സമൂഹം വിപുലമായി."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "ഡാറ്റ ഉപയോഗിക്കുക, അവകാശങ്ങൾ, പൊതു സേവനം conditions എന്നിവയ്ക്കായുള്ള ഔപചാരിക സ്വകാര്യത പേജ്."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "acceptable ഉപയോഗിക്കുക, അക്കൗണ്ട് responsibilities, സേവനം conditions എന്നിവ ഉൾക്കൊള്ളുന്ന ഔപചാരിക നിബന്ധനകൾ."
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "ലക്ഷ്യം പൊതു പഠനം പേജുകൾ കണ്ടെത്തലും citationഉം ആണ്. പൊതു റൂട്ടുകൾ, ഗൈഡുകൾ, പഠനം hubs എന്നിവ പ്രധാന AI തിരയുക, വീണ്ടെടുക്കൽ, assistant crawlersക്കായി തുറന്നിരിക്കുന്നു; API, admin, reset, സ്വകാര്യ utility റൂട്ടുകൾ എന്നിവ disallow ചെയ്തിരിക്കുന്നു."
+    },
+    {
+      "key": "site.c1ff0e8e91783079b7",
+      "source": "The live robots rules used by search crawlers and AI retrieval systems.",
+      "value": "സേർച്ച് ക്രോളറുകൾഉം AI വീണ്ടെടുക്കൽ സിസ്റ്റങ്ങൾഉം ഉപയോഗിക്കുന്ന തത്സമയ robots നിയമങ്ങൾ."
+    },
+    {
+      "key": "site.0ce48230ddbb02a90b",
+      "source": "The live, crawlable learning surface that turns the mission into product behavior.",
+      "value": "ദൗത്യംനെ ഉൽപ്പന്നം പെരുമാറ്റം ആയി മാറ്റുന്ന തത്സമയ, crawlable പഠനം മുന്നിൽ കൊണ്ടുവരുക."
+    },
+    {
+      "key": "site.cc1cf401efc5eb8129",
+      "source": "The next phase is open-source, contributor-friendly, and connected to the wider international buildout at inspir.uk.",
+      "value": "അടുത്ത ഘട്ടം തുറക്കുക-സ്രോതസ്, contributor-friendly, inspir.ukയിലെ വിശാലമായ international buildoutനോട് ബന്ധിപ്പിച്ചതാണ്."
+    },
+    {
+      "key": "site.28d20a8ac18159f705",
+      "source": "The open-source rebuild for developers, educators, and contributors.",
+      "value": "developers, educators, contributors എന്നിവർക്കായുള്ള തുറക്കുക-സ്രോതസ് rebuild."
+    },
+    {
+      "key": "site.7b40bef2257ef20729",
+      "source": "The platform worked on curriculum ingestion, retrieval, structured learning flows, and early AI tutoring experiences.",
+      "value": "പ്ലാറ്റ്ഫോം പാഠ്യപദ്ധതി ingestion, വീണ്ടെടുക്കൽ, ഘടനാപരമായ പഠനം flows, നേരത്തെ AI ട്യൂട്ടറിംഗ് experiences എന്നിവയിൽ പ്രവർത്തിച്ചു."
+    },
+    {
+      "key": "site.2f43cb98604fb87f4b",
+      "source": "The public blog contains more than 100 guides, prompt loops, and pillar clusters connected to live learning modes.",
+      "value": "പൊതു ബ്ലോഗ്ൽ തത്സമയ പഠനം മോഡുകൾനോട് ബന്ധിപ്പിച്ച 100ൽ കൂടുതൽ ഗൈഡുകൾ, പ്രോംപ്റ്റ് ചക്രങ്ങൾ, pillar clusters ഉണ്ട്."
+    },
+    {
+      "key": "site.cd1c2df7a40adc8918",
+      "source": "The public explanation of why inspir exists and why learning access matters.",
+      "value": "inspir എന്തിനാണ് നിലനിൽക്കുന്നത്, പഠനം പ്രവേശനം എന്തുകൊണ്ട് പ്രധാനമാണ് എന്നതിന്റെ പൊതു വിശദീകരണം."
+    },
+    {
+      "key": "site.1a560827f6f4063078",
+      "source": "The public modes are designed around learning behavior: hints, Socratic questions, step checks, quizzes, flashcards, writing feedback, review loops, and active explanation.",
+      "value": "പൊതു മോഡുകൾ സൂചനകൾ, സോക്രാറ്റിക് ചോദ്യങ്ങൾ, ഘട്ടം പരിശോധനകൾ, ക്വിസുകൾ, ഫ്ലാഷ്കാർഡുകൾ, എഴുത്ത് പ്രതികരണം, അവലോകനം ചക്രങ്ങൾ, സജീവം വിശദീകരണം പോലുള്ള പഠനം പെരുമാറ്റം ചുറ്റിപ്പറ്റിയാണ് രൂപകൽപ്പന ചെയ്തത്."
+    },
+    {
+      "key": "site.8d9dd466b2bb393181",
+      "source": "The public product is easy to try first, while schools and partners can explore tailored deployments for community needs.",
+      "value": "പൊതു ഉൽപ്പന്നം ആദ്യം പരീക്ഷിക്കാൻ എളുപ്പമാണ്; സ്കൂളുകൾ മറ്റും partners സമൂഹം ആവശ്യങ്ങൾക്കായി അനുയോജ്യമായി രൂപപ്പെടുത്തിയ വിന്യാസങ്ങൾ പരിശോധിക്കാം."
+    },
+    {
+      "key": "site.8bf78ce7f393aef11b",
+      "source": "The public product keeps learning easy to try, while schools and CSR partners can support tailored deployments when communities need confidentiality, curriculum alignment, or funded access.",
+      "value": "പൊതു ഉൽപ്പന്നം പഠനം പരീക്ഷിക്കാൻ എളുപ്പമാക്കി നിലനിർത്തുന്നു; സമൂഹങ്ങൾക്ക് രഹസ്യത, പാഠ്യപദ്ധതി alignment, ധനസഹായമുള്ള പ്രവേശനം ആവശ്യമുള്ളപ്പോൾ സ്കൂളുകൾ മറ്റും CSR partners അനുയോജ്യമായി രൂപപ്പെടുത്തിയ വിന്യാസങ്ങൾ പിന്തുണയ്ക്കാം."
+    },
+    {
+      "key": "site.1156df2895fe03db82",
+      "source": "The public statement of why inspir exists and what learning access means.",
+      "value": "inspir എന്തിനാണ് നിലനിൽക്കുന്നത്, പഠനം പ്രവേശനം എന്താണെന്ന് പറയുന്ന പൊതു statement."
+    },
+    {
+      "key": "site.cea59ef50b530ec865",
+      "source": "The school pathway for tailored AI learning spaces and funded access.",
+      "value": "അനുയോജ്യമായി രൂപപ്പെടുത്തിയ AI പഠനം spacesനും ധനസഹായമുള്ള പ്രവേശനംനും വേണ്ട സ്കൂൾ pathway."
+    },
+    {
+      "key": "site.1e958c1dbf49c2dc3e",
+      "source": "The story from quizzes and student communities to free AI learning tools built in public.",
+      "value": "ക്വിസുകൾഉം വിദ്യാർത്ഥി സമൂഹങ്ങൾഉം മുതൽ പൊതു ആയി നിർമ്മിച്ച സൗജന്യ AI പഠനം ഉപകരണങ്ങൾവരെ ഉള്ള കഥ."
+    },
+    {
+      "key": "site.47373de172b1b2a6cb",
+      "source": "The story spans quizzes, offline school networks, curriculum ingestion, and public AI learning modes.",
+      "value": "കഥ ക്വിസുകൾ, offline സ്കൂൾ networks, പാഠ്യപദ്ധതി ingestion, പൊതു AI പഠനം മോഡുകൾ എന്നിവയിലൂടെ വ്യാപിക്കുന്നു."
+    },
+    {
+      "key": "site.500e3a21005f09965c",
+      "source": "The strongest angle is free public AI learning that opens directly in guest mode and keeps learners active through mode-specific teaching rather than generic answer generation.",
+      "value": "ഏറ്റവും ശക്തമായ angle അതിഥി മോഡ്ൽ നേരിട്ട് തുറക്കുകയും പൊതുവായ ഉത്തരം generationനെക്കാൾ മോഡ്-നിർദ്ദിഷ്ട പഠിപ്പിക്കൽ വഴി പഠിതാക്കൾനെ സജീവം ആയി നിലനിർത്തുകയും ചെയ്യുന്ന സൗജന്യ പൊതു AI പഠനം ആണ്."
+    },
+    {
+      "key": "site.d0f882b17719ce7412",
+      "source": "The wider international buildout connected to the inspir project.",
+      "value": "inspir പ്രോജക്റ്റ്നോട് ബന്ധിപ്പിച്ചിരിക്കുന്ന വിശാലമായ international buildout."
+    },
+    {
+      "key": "site.dcad6a998776bf850c",
+      "source": "The written learning library that supports prompts, study loops, and long-tail discovery.",
+      "value": "പ്രോംപ്റ്റുകൾ, പഠനം ചക്രങ്ങൾ, long-tail കണ്ടെത്തൽ എന്നിവ പിന്തുണയ്ക്കുന്ന written പഠനം ലൈബ്രറി."
+    },
+    {
+      "key": "site.1ca8755a0971c67678",
+      "source": "These angles are written for journalists, directory editors, school partners, and AI answer systems that need a useful summary plus a verifiable URL.",
+      "value": "ഉപകാരപ്രദമായ summaryയും സ്ഥിരീകരിക്കുക ചെയ്യാവുന്ന URLഉം വേണ്ട journalists, ഡയറക്ടറി editors, സ്കൂൾ partners, AI ഉത്തരം സിസ്റ്റങ്ങൾ എന്നിവർക്കായി ഈ angles എഴുതിയതാണ്."
+    },
+    {
+      "key": "site.d6891538c10a9dc71f",
+      "source": "These facts are written to be easy to cite while keeping the claim precise and connected to public pages people can verify.",
+      "value": "അവകാശവാദം precise ആയി നിലനിർത്തുകയും ആളുകൾക്ക് സ്ഥിരീകരിക്കുക ചെയ്യാവുന്ന പൊതു പേജുകൾനോട് ബന്ധിപ്പിക്കുകയും ചെയ്ത് ഉദ്ധരിക്കുക ചെയ്യാൻ എളുപ്പമാകുന്ന രീതിയിൽ ഈ facts എഴുതിയതാണ്."
+    },
+    {
+      "key": "site.006d6a83a861ac26a6",
+      "source": "These snippets keep citations accurate, linkable, and aligned with the public product surface people can inspect.",
+      "value": "citations accurate, linkable, ആളുകൾക്ക് inspect ചെയ്യാവുന്ന പൊതു ഉൽപ്പന്നം മുന്നിൽ കൊണ്ടുവരുകനോട് ഒത്തിണങ്ങിയ ആയി നിലനിർത്താൻ ഈ snippets സഹായിക്കുന്നു."
+    },
+    {
+      "key": "site.9f55051f395ab515e4",
+      "source": "These targets make backlinks and directory listings point to the most useful public page for the context, instead of sending every reference to the same place.",
+      "value": "ഓരോ referenceഉം ഒരേ സ്ഥലത്തേക്ക് അയക്കുന്നതിനുപകരം, സന്ദർഭംക്ക് ഏറ്റവും ഉപകാരപ്രദമായ ആയ പൊതു പേജ്ലേക്ക് backlinksയും ഡയറക്ടറി listingsഉം ബിന്ദു ചെയ്യാൻ ഈ ലക്ഷ്യങ്ങൾ സഹായിക്കുന്നു."
+    },
+    {
+      "key": "site.9f8b91fdb66f885dcf",
+      "source": "These URLs are stable entrypoints for the mission, product surface, learning content, and open-source work.",
+      "value": "ദൗത്യം, ഉൽപ്പന്നം മുന്നിൽ കൊണ്ടുവരുക, പഠനം ഉള്ളടക്കം, തുറക്കുക-സ്രോതസ് പ്രവർത്തനം എന്നിവയ്ക്കുള്ള stable പ്രവേശനബിന്ദുക്കൾ ആണ് ഈ URLs."
+    },
+    {
+      "key": "site.ec14ede85a3d47de35",
+      "source": "Trust and crawler policy",
+      "value": "വിശ്വാസവും ക്രോളർ നയവും"
+    },
+    {
+      "key": "site.b50bc9876b19b2737e",
+      "source": "Trust and safety",
+      "value": "വിശ്വാസവും സുരക്ഷയും"
+    },
+    {
+      "key": "site.28820a18db87efd0c9",
+      "source": "Try public guest modes",
+      "value": "പബ്ലിക് ഗസ്റ്റ് മോഡുകൾ പരീക്ഷിക്കുക"
+    },
+    {
+      "key": "site.d88fb11d2e6d2ff168",
+      "source": "Understanding over answers",
+      "value": "ഉത്തരങ്ങളെക്കാൾ മനസ്സിലാക്കലിന് മുൻഗണന"
+    },
+    {
+      "key": "site.0885443dc31e170524",
+      "source": "Unlike a generic chatbot, inspir organizes AI around learning modes so learners can start with the kind of help they need: hints, questions, quizzes, active recall, roleplay, debate, or feedback.",
+      "value": "ഒരു പൊതുവായ chatbot-നെപ്പോലെ അല്ല, inspir AI-യെ പഠനം മോഡുകൾ ചുറ്റിപ്പറ്റി ക്രമീകരിക്കുന്നു; അതിലൂടെ പഠിതാക്കൾക്ക് സൂചനകൾ, ചോദ്യങ്ങൾ, ക്വിസുകൾ, സജീവം ഓർത്തെടുക്കൽ, റോൾപ്ലേ, വാദപ്രതിവാദം, പ്രതികരണം എന്നിങ്ങനെ തങ്ങൾക്ക് വേണ്ട സഹായത്തോടെ തുടങ്ങാം."
+    },
+    {
+      "key": "site.d915c021851d2ab6be",
+      "source": "Use https://inspirlearning.com for the site, /mission for the mission, /topics for the public learning mode directory, and /chat/learn-anything for the default guest learning experience.",
+      "value": "ഉപയോഗിക്കുക: https://inspirlearning.com ക്കായി സൈറ്റ്, /mission ക്കായി ദൗത്യം, /topics ക്കായി പൊതു പഠനം മോഡ് ഡയറക്ടറി, മറ്റും /chat/learn-anything ക്കായി default അതിഥി പഠനം അനുഭവം."
+    },
+    {
+      "key": "site.fd81aacd403872d662",
+      "source": "Use these facts when describing inspir in articles, partner pages, education directories, school notes, and AI-generated summaries.",
+      "value": "ഉപയോഗിക്കുക: these facts എപ്പോൾ describing inspir ലേഖനങ്ങൾ, പങ്കാളി പേജുകൾ, education directories, സ്കൂൾ കുറിപ്പുകൾ, മറ്റും AI-generated സംഗ്രഹങ്ങൾ."
+    },
+    {
+      "key": "site.404a208f4cc7082fde",
+      "source": "Use this for school, partner, CSR, and education access references.",
+      "value": "ഉപയോഗിക്കുക: ഈ ക്കായി സ്കൂൾ, പങ്കാളി, CSR, മറ്റും education പ്രവേശനം references."
+    },
+    {
+      "key": "site.d818b2192b55bd9fc0",
+      "source": "Use this when citing the long-form guide library, study prompts, and mode-specific articles.",
+      "value": "ഉപയോഗിക്കുക: ഈ എപ്പോൾ citing ദീർഘരൂപത്തിലുള്ള ഗൈഡ് ലൈബ്രറി, പഠനം പ്രോംപ്റ്റുകൾ, മറ്റും മോഡ്-നിർദ്ദിഷ്ട ലേഖനങ്ങൾ."
+    },
+    {
+      "key": "site.dd485991c01b4d13ad",
+      "source": "Use this when describing the full set of guest-mode learning tools that are meant to be indexed.",
+      "value": "ഉപയോഗിക്കുക: ഈ എപ്പോൾ describing പൂർണ്ണ set അതിഥി-മോഡ് പഠനം ഉപകരണങ്ങൾ അത് ആണ് ഉദ്ദേശിച്ചത് ആകുക indexed."
+    },
+    {
+      "key": "site.d32a533ca96e273cd4",
+      "source": "Use this when introducing inspir as the main product or linking from a directory, profile, or article.",
+      "value": "ഉപയോഗിക്കുക: ഈ എപ്പോൾ introducing inspir main ഉൽപ്പന്നം അല്ലെങ്കിൽ linking നിന്ന് ഡയറക്ടറി, profile, അല്ലെങ്കിൽ ലേഖനം."
+    },
+    {
+      "key": "site.74e47e43a961fb793b",
+      "source": "Use this when linking readers straight into the live learning experience.",
+      "value": "ഉപയോഗിക്കുക: ഈ എപ്പോൾ linking readers straight ആക്കി തത്സമയ പഠനം അനുഭവം."
+    },
+    {
+      "key": "site.3c3e380006aa99ab8b",
+      "source": "Use this when referencing public/private boundaries, crawler policy, and school trust.",
+      "value": "ഉപയോഗിക്കുക: ഈ എപ്പോൾ referencing public/private പരിധികൾ, crawler നയം, മറ്റും സ്കൂൾ trust."
+    },
+    {
+      "key": "site.417b0db3c3e321bdae",
+      "source": "Useful reference points for coverage and partners.",
+      "value": "കവറേജിനും പങ്കാളികൾക്കുമുള്ള പ്രയോജനകരമായ റഫറൻസ് പോയിന്റുകൾ."
+    },
+    {
+      "key": "site.2e8a57cc5c472f4ac3",
+      "source": "Website",
+      "value": "വെബ്സൈറ്റ്"
+    },
+    {
+      "key": "site.db44fd2275ca17d6e9",
+      "source": "What can someone try first?",
+      "value": "ആദ്യം എന്ത് പരീക്ഷിക്കാം?"
+    },
+    {
+      "key": "site.69f83ae5c81e48c351",
+      "source": "What is inspir?",
+      "value": "inspir എന്താണ്?"
+    },
+    {
+      "key": "site.7886326d6e286cac20",
+      "source": "What is inspir's mission?",
+      "value": "inspir-ന്റെ ദൗത്യം എന്താണ്?"
+    },
+    {
+      "key": "site.5426ead123e002b03b",
+      "source": "What is the most useful product angle for coverage?",
+      "value": "കവറേജിന് ഏറ്റവും പ്രയോജനകരമായ ഉൽപ്പന്ന കോണം ഏതാണ്?"
+    },
+    {
+      "key": "site.711e47a21dd1f27197",
+      "source": "What is the short description of inspir?",
+      "value": "inspir-ന്റെ ചുരുക്ക വിവരണം എന്താണ്?"
+    },
+    {
+      "key": "site.dcef0c4977cc5f5506",
+      "source": "Where should schools start?",
+      "value": "സ്കൂളുകൾ എവിടെ നിന്ന് തുടങ്ങണം?"
+    },
+    {
+      "key": "site.6a159e637d8b52cab1",
+      "source": "Which URL should articles link to first?",
+      "value": "ലേഖനങ്ങൾ ആദ്യം ഏത് URL-ലേക്കാണ് ലിങ്ക് ചെയ്യേണ്ടത്?"
+    },
+    {
+      "key": "site.ebef06673b1bbfedd6",
+      "source": "white label AI learning platform",
+      "value": "വൈറ്റ്-ലേബൽ AI പഠന പ്ലാറ്റ്ഫോം"
+    },
+    {
+      "key": "site.790d6791323a475c39",
+      "source": "White-labelled AI chat",
+      "value": "വൈറ്റ്-ലേബൽ AI ചാറ്റ്"
+    },
+    {
+      "key": "site.ce76ad61efdaa2b7a3",
+      "source": "Who can use the media page?",
+      "value": "മീഡിയ പേജ് ആർക്ക് ഉപയോഗിക്കാം?"
+    },
+    {
+      "key": "site.196529c670971f3378",
+      "source": "Why does inspir allow AI discovery crawlers?",
+      "value": "AI കണ്ടെത്തൽ crawlers-നെ inspir അനുവദിക്കുന്നത് എന്തുകൊണ്ട്?"
+    }
+  ]
+}

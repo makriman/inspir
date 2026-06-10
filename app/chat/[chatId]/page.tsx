@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { ArrowUpRight, CornerDownRight, Sparkles } from "lucide-react";
@@ -25,7 +25,14 @@ import {
   getUserById,
 } from "@/lib/db/queries";
 import { getCachedMainAppTranslationBundle } from "@/lib/i18n/main-app-translations";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { getEnglishMainAppTranslationBundle } from "@/lib/i18n/main-app-source";
+import { getRequestLanguage } from "@/lib/i18n/request-locale";
+import {
+  getCachedSiteTranslationEntries,
+  getSiteTranslationNamespaces,
+} from "@/lib/i18n/site-translations";
+import { createTranslationLookup } from "@/lib/i18n/translation-lookup";
 import { calculateAge } from "@/lib/profile/age";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { faqPageJsonLd, itemListJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
@@ -44,14 +51,14 @@ function findSeedTopic(slug: string) {
   return topicSeeds.find((topic) => topic.slug === slug);
 }
 
-function guestUser() {
+function guestUser(preferredLanguage = "English") {
   return {
     id: "guest",
     name: "Guest learner",
     email: "",
     image: null,
     score: 0,
-    preferredLanguage: "English",
+    preferredLanguage,
     dateOfBirth: null,
     age: null,
     createdAt: new Date(),
@@ -59,7 +66,13 @@ function guestUser() {
   };
 }
 
-function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number] }) {
+function PublicTopicSeoCompanion({
+  topic,
+  t = (value) => value,
+}: {
+  topic: (typeof topicSeeds)[number];
+  t?: (value: string) => string;
+}) {
   const seo = getTopicSeo(topic);
   const starters = topic.metadata.starters;
   const relatedPaths = getRelatedLearningPathsForTopic(topic);
@@ -77,34 +90,36 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
       aria-labelledby={`${topic.slug}-seo-title`}
     >
       <div className="public-topic-seo-head">
-        <span>{topic.metadata.category} learning mode</span>
-        <h1 id={`${topic.slug}-seo-title`}>{seo.title}</h1>
-        <p>{seo.description}</p>
+        <span>
+          {t(topic.metadata.category)} {t("learning mode")}
+        </span>
+        <h1 id={`${topic.slug}-seo-title`}>{t(seo.title)}</h1>
+        <p>{t(seo.description)}</p>
         <div className="public-topic-seo-actions">
           <Link href={topicPath(topic.slug)} className="marketing-primary-cta">
-            Start {topic.name}
+            {t("Start")} {t(topic.name)}
             <Sparkles size={18} />
           </Link>
           <Link href="/topics" className="marketing-secondary-cta">
-            Browse all modes
+            {t("Browse all modes")}
           </Link>
         </div>
       </div>
 
       <div className="public-topic-seo-grid">
         <article>
-          <strong>Who it helps</strong>
-          <p>{seo.who}</p>
+          <strong>{t("Who it helps")}</strong>
+          <p>{t(seo.who)}</p>
         </article>
         <article>
-          <strong>Why it is different</strong>
-          <p>{seo.whyDifferent}</p>
+          <strong>{t("Why it is different")}</strong>
+          <p>{t(seo.whyDifferent)}</p>
         </article>
         <article>
-          <strong>What you can practise</strong>
+          <strong>{t("What you can practise")}</strong>
           <ul>
             {seo.outcomes.map((outcome) => (
-              <li key={outcome}>{outcome}</li>
+              <li key={outcome}>{t(outcome)}</li>
             ))}
           </ul>
         </article>
@@ -113,14 +128,14 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
       {starters.length ? (
         <div className="public-topic-prompt-panel">
           <div>
-            <span>Example prompts</span>
-            <h3>Good ways to start this chat.</h3>
+            <span>{t("Example prompts")}</span>
+            <h3>{t("Good ways to start this chat.")}</h3>
           </div>
           <div className="public-topic-prompt-list">
             {starters.map((starter) => (
               <Link key={starter} href={topicPath(topic.slug)}>
                 <CornerDownRight size={16} />
-                {starter}
+                {t(starter)}
               </Link>
             ))}
           </div>
@@ -131,15 +146,15 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
         <div className="public-topic-related">
           {relatedPaths.length ? (
             <section>
-              <span>Learning paths</span>
-              <h3>Use this mode inside a study workflow.</h3>
+              <span>{t("Learning paths")}</span>
+              <h3>{t("Use this mode inside a study workflow.")}</h3>
               <div>
                 {relatedPaths.map((path) => (
                   <Link key={path.href} href={path.href}>
-                    <strong>{path.title}</strong>
-                    <p>{path.description}</p>
+                    <strong>{t(path.title)}</strong>
+                    <p>{t(path.description)}</p>
                     <small>
-                      Open path
+                      {t("Open path")}
                       <ArrowUpRight size={14} />
                     </small>
                   </Link>
@@ -149,15 +164,15 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
           ) : null}
           {relatedGuides.length ? (
             <section>
-              <span>Related guides</span>
-              <h3>Read a guide, then practise here.</h3>
+              <span>{t("Related guides")}</span>
+              <h3>{t("Read a guide, then practise here.")}</h3>
               <div>
                 {relatedGuides.map((guide) => (
                   <Link key={guide.href} href={guide.href}>
-                    <strong>{guide.title}</strong>
-                    <p>{guide.description}</p>
+                    <strong>{t(guide.title)}</strong>
+                    <p>{t(guide.description)}</p>
                     <small>
-                      Read guide
+                      {t("Read guide")}
                       <ArrowUpRight size={14} />
                     </small>
                   </Link>
@@ -167,15 +182,15 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
           ) : null}
           {relatedModes.length ? (
             <section>
-              <span>Related modes</span>
-              <h3>Keep learning with the right next chat.</h3>
+              <span>{t("Related modes")}</span>
+              <h3>{t("Keep learning with the right next chat.")}</h3>
               <div>
                 {relatedModes.map((mode) => (
                   <Link key={mode.href} href={mode.href}>
-                    <strong>{mode.title}</strong>
-                    <p>{mode.description}</p>
+                    <strong>{t(mode.title)}</strong>
+                    <p>{t(mode.description)}</p>
                     <small>
-                      Start mode
+                      {t("Start mode")}
                       <ArrowUpRight size={14} />
                     </small>
                   </Link>
@@ -188,14 +203,16 @@ function PublicTopicSeoCompanion({ topic }: { topic: (typeof topicSeeds)[number]
 
       <div className="public-topic-faq">
         <div>
-          <span>Questions learners ask</span>
-          <h3>Before you start {topic.name}.</h3>
+          <span>{t("Questions learners ask")}</span>
+          <h3>
+            {t("Before you start")} {t(topic.name)}.
+          </h3>
         </div>
         <div className="public-topic-faq-list">
           {faqs.map((item) => (
             <details key={item.question}>
-              <summary>{item.question}</summary>
-              <p>{item.answer}</p>
+              <summary>{t(item.question)}</summary>
+              <p>{t(item.answer)}</p>
             </details>
           ))}
         </div>
@@ -230,7 +247,7 @@ export async function generateMetadata({ params }: ChatRoutePageProps): Promise<
       eyebrow: "Learning mode",
       description: seo.description,
     });
-    return {
+    return localizeMarketingMetadata({
       title: seo.title,
       description: seo.description,
       alternates: metadataAlternates(topicPath(topic.slug)),
@@ -249,7 +266,7 @@ export async function generateMetadata({ params }: ChatRoutePageProps): Promise<
         description: seo.description,
         images: [image.url],
       },
-    };
+    }, topicPath(topic.slug));
   }
 
   if (isUuidPathSegment(chatId)) {
@@ -299,6 +316,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
 
     const topic = topics.find((candidate) => candidate.slug === topicSlug) ?? topicFromSeed(seedTopic);
     if (!topic) notFound();
+    const requestLanguage = await getRequestLanguage();
     const profileUser = session?.user?.id && savedChatsAvailable
       ? {
           id: session.user.id,
@@ -311,11 +329,14 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           age: calculateAge(user?.dateOfBirth),
           createdAt: user?.createdAt ?? new Date(),
           profileImageHash: user?.profileImageHash ?? null,
-        }
-      : guestUser();
+      }
+      : guestUser(requestLanguage);
     const translationBundle =
       (await getCachedMainAppTranslationBundle(profileUser.preferredLanguage)) ??
       getEnglishMainAppTranslationBundle();
+    const siteTranslationNamespaces = getSiteTranslationNamespaces(topicPath(seedTopic.slug));
+    const siteTranslationEntries = await getCachedSiteTranslationEntries(requestLanguage, siteTranslationNamespaces);
+    const siteT = createTranslationLookup(siteTranslationEntries).translate;
 
     const topicFaqs = topicPublicFaqs(seedTopic);
     const relatedPaths = getRelatedLearningPathsForTopic(seedTopic);
@@ -363,7 +384,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           initialActivityRun={null}
           initialTranslationBundle={translationBundle}
         />
-        <PublicTopicSeoCompanion topic={seedTopic} />
+        <PublicTopicSeoCompanion topic={seedTopic} t={siteT} />
       </>
     );
   }
@@ -383,6 +404,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     getUserById(session.user.id),
     getLatestActivityRun(chatId),
   ]);
+  const requestLanguage = await getRequestLanguage();
   return (
     <ChatClient
       authMode="authenticated"
@@ -392,7 +414,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
         email: user?.email ?? session.user.email ?? "user@example.com",
         image: user?.image ?? session.user.image ?? null,
         score: user?.score ?? 0,
-        preferredLanguage: user?.preferredLanguage ?? "English",
+        preferredLanguage: user?.preferredLanguage ?? requestLanguage,
         dateOfBirth: user?.dateOfBirth ?? null,
         age: calculateAge(user?.dateOfBirth),
         createdAt: user?.createdAt ?? "",
@@ -413,7 +435,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
       }))}
       initialActivityRun={sanitizeActivityRun(activityRun)}
       initialTranslationBundle={
-        (await getCachedMainAppTranslationBundle(user?.preferredLanguage ?? "English")) ??
+        (await getCachedMainAppTranslationBundle(user?.preferredLanguage ?? requestLanguage)) ??
         getEnglishMainAppTranslationBundle()
       }
     />

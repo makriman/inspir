@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hungarian",
+  "locale": "hu",
+  "namespace": "marketing-site",
+  "sourceHash": "2b4cd69ecc5256ca0dbf3432326edf95ccc960f491311923a509002b2ab0e628",
+  "part": {
+    "index": 4,
+    "total": 19
+  },
+  "entries": [
+    {
+      "key": "site.ff7bb65608584ee316",
+      "source": "Ask for subject, level, time limit, and question types if missing.",
+      "value": "Kérj tantárgyat, szintet, időkorlátot és kérdéstípusokat, ha hiányoznak."
+    },
+    {
+      "key": "site.a8da551efd61e46661",
+      "source": "Ask for subjects, deadlines, resources, and pain points.",
+      "value": "Kérj tantárgyakat, határidőket, forrásokat és fájó pontokat."
+    },
+    {
+      "key": "site.4354a840106e740e0f",
+      "source": "Ask for subjects, time spent, wins, misses, and upcoming deadlines.",
+      "value": "Kérj tantárgyakat, ráfordított időt, sikereket, kihagyásokat és közelgő határidőket."
+    },
+    {
+      "key": "site.a8b2580a67452045b9",
+      "source": "Ask for the data, context, and question being answered.",
+      "value": "Kérd el az adatokat, a kontextust és a megválaszolandó kérdést."
+    },
+    {
+      "key": "site.5b4fd2270651097e04",
+      "source": "Ask for the diagram parts or subject, then generate a label list and practice round.",
+      "value": "Kérd el a diagram részeit vagy a tantárgyat, majd készíts címkelistát és gyakorlókört."
+    },
+    {
+      "key": "site.c7c1f2d7322a3ab6d1",
+      "source": "Ask for the habit, current obstacle, and easiest starting version.",
+      "value": "Kérdezz a szokásról, a jelenlegi akadályról és a legegyszerűbb kezdő változatról."
+    },
+    {
+      "key": "site.f3692ccb931fbce24d",
+      "source": "Ask for the learning context and behaviors worth rewarding.",
+      "value": "Kérj tanulási kontextust és jutalmazásra érdemes viselkedéseket."
+    },
+    {
+      "key": "site.5ea1010e190756e791",
+      "source": "Ask for the note set, subject, and desired organization style.",
+      "value": "Kérj jegyzetkészletet, tantárgyat és kívánt rendszerezési stílust."
+    },
+    {
+      "key": "site.09ec9e602e93ce5381",
+      "source": "Ask for the one highest-impact revision priority, then rewrite the paragraph yourself.",
+      "value": "Kérd a legnagyobb hatású egyetlen javítási prioritást, majd írd át a bekezdést saját magad."
+    },
+    {
+      "key": "site.996c6a99589be01eba",
+      "source": "Ask for the passage or title and the learner's goal.",
+      "value": "Kérd el a szövegrészt vagy címet és a tanuló célját."
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "Kérd az előfeltétel-ötleteket, egy közérthető modellt, egy példát, egy gyakorlófeladatot és egy módszert a megértés tesztelésére."
+    },
+    {
+      "key": "site.a4e68fc032bb4ddf56",
+      "source": "Ask for the question, learner answer, and expected answer if any part is missing.",
+      "value": "Kérd el a kérdést, a tanuló válaszát és a várt választ, ha bármelyik rész hiányzik."
+    },
+    {
+      "key": "site.620e81fdba7e3522c5",
+      "source": "Ask for the smallest explanation or next experiment.",
+      "value": "Kérd a legkisebb magyarázatot vagy a következő kísérletet."
+    },
+    {
+      "key": "site.ddeaa9ff153bcc68d2",
+      "source": "Ask for the smallest hint or a check on your attempted step.",
+      "value": "Kérd a legkisebb tippet vagy a megpróbált lépésed ellenőrzését."
+    },
+    {
+      "key": "site.70b479f4419d8a1cea",
+      "source": "Ask for the smallest useful hint",
+      "value": "Kérd a legkisebb hasznos tippet"
+    },
+    {
+      "key": "site.a54855f42d844443f5",
+      "source": "Ask for the source text, claim, author, date, and context if missing.",
+      "value": "Kérd el a forrásszöveget, az állítást, a szerzőt, a dátumot és a kontextust, ha hiányzik."
+    },
+    {
+      "key": "site.b2fa2f1b57f733ce3d",
+      "source": "Ask for the study block length and suggest a break rhythm.",
+      "value": "Kérd a tanulási blokk hosszát, és javasolj szünetritmust."
+    },
+    {
+      "key": "site.c6fdc44d059fa472e5",
+      "source": "Ask for the task, target duration, and completion criteria.",
+      "value": "Kérd el a feladatot, a célidőtartamot és a befejezési kritériumokat."
+    },
+    {
+      "key": "site.aef265161171456bcb",
+      "source": "Ask for the text and desired length if missing.",
+      "value": "Kérd el a szöveget és a kívánt hosszt, ha hiányzik."
+    },
+    {
+      "key": "site.c408791abeb19834eb",
+      "source": "Ask for the topic and which side the learner wants; take the opposite side.",
+      "value": "Kérd a témát és azt, melyik oldalt választja a tanuló; te képviseld az ellenkező oldalt."
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Kérd a téma közérthető magyarázatát, majd kérj egy analógiát, egy példát és egy gyakori félreértést."
+    },
+    {
+      "key": "site.d37746fbd262e5dea5",
+      "source": "Ask for the topic, context, what they tried, and desired help.",
+      "value": "Kérd a témát, a kontextust, amit már kipróbáltak, és a kívánt segítséget."
+    },
+    {
+      "key": "site.283f49692c65a20536",
+      "source": "Ask for the visible text, labels, and the learner's question if the image is not attached.",
+      "value": "Kérd a látható szöveget, címkéket és a tanuló kérdését, ha nincs csatolva kép."
+    },
+    {
+      "key": "site.078c7e0919ee44705b",
+      "source": "Ask for topic and purpose, then propose the central node and first branches.",
+      "value": "Kérj témát és célt, majd javasold a központi csomópontot és az első ágakat."
+    },
+    {
+      "key": "site.ffefb04913a46b3b93",
+      "source": "Ask for topic and scope, then propose a first map structure.",
+      "value": "Kérj témát és hatókört, majd javasolj első térképszerkezetet."
+    },
+    {
+      "key": "site.a6af2a3120e22424d8",
+      "source": "Ask for topic, age/level, and tone; then create a short story setup.",
+      "value": "Kérj témát, életkort vagy szintet és hangnemet; majd készíts rövid történetfelütést."
+    },
+    {
+      "key": "site.eadbb8b829a747f2bd",
+      "source": "Ask for topic, duration, level, and scoring preference.",
+      "value": "Kérj témát, időtartamot, szintet és pontozási preferenciát."
+    },
+    {
+      "key": "site.935e95f744b8ef5b51",
+      "source": "Ask for topic, level, and examiner style; then begin with a warm-up question.",
+      "value": "Kérj témát, szintet és vizsgáztatói stílust; majd kezdj bemelegítő kérdéssel."
+    },
+    {
+      "key": "site.458da4b67cd64d08ed",
+      "source": "Ask for topic, level, and preferred game vibe; then create the first quest.",
+      "value": "Kérj témát, szintet és kívánt játékhangulatot; majd készítsd el az első küldetést."
+    },
+    {
+      "key": "site.97bb872f6d8903b468",
+      "source": "Ask for topic, level, exam date, and source material if needed.",
+      "value": "Kérj témát, szintet, vizsgadátumot és forrásanyagot, ha szükséges."
+    },
+    {
+      "key": "site.fd666c3e4cc0c190f3",
+      "source": "Ask for topic, level, question types, and number of items.",
+      "value": "Kérj témát, szintet, kérdéstípusokat és elemszámot."
+    },
+    {
+      "key": "site.b5eb36c5449ff4f87b",
+      "source": "Ask group size, topic, time, and desired outcome.",
+      "value": "Kérj csoportméretet, témát, időt és kívánt eredményt."
+    },
+    {
+      "key": "site.eb13e0b413d547707a",
+      "source": "Ask instrument/level if relevant, then teach one small concept.",
+      "value": "Kérj hangszert vagy szintet, ha releváns, majd taníts egy kis fogalmat."
+    },
+    {
+      "key": "site.aa9c8abf089531cddf",
+      "source": "Ask interests, constraints, and curiosity level before recommending paths.",
+      "value": "Kérdezz érdeklődési körökről, korlátokról és kíváncsisági szintről, mielőtt útvonalakat ajánlanál."
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Tegyél fel öt szókratészi kérdést erről a témáról. Minden válasz után mondd el, milyen feltételezéssel éltem, és mit érdemes legközelebb tesztelni."
+    },
+    {
+      "key": "site.06c20370c8fa9c9eea",
+      "source": "Ask me one check question",
+      "value": "Tegyél fel egy ellenőrző kérdést"
+    },
+    {
+      "key": "site.384bbc7a4ac852e0e8",
+      "source": "Ask me questions about this poem",
+      "value": "Tegyél fel kérdéseket erről a versről"
+    },
+    {
+      "key": "site.a8672051a0f5c02117",
+      "source": "Ask me thesis defense questions",
+      "value": "Tegyél fel nekem szakdolgozatvédési kérdéseket"
+    },
+    {
+      "key": "site.44978f965047043b57",
+      "source": "Ask one focused diagnostic question quickly. Convert the learner's target into a mastery target internally, then start with a simple question that reveals their mental model.",
+      "value": "Tegyél fel gyorsan egy fókuszált diagnosztikai kérdést. A tanuló célját belsőleg alakítsd mesterszintű céllá, majd kezdj egy egyszerű kérdéssel, amely feltárja a mentális modelljét."
+    },
+    {
+      "key": "site.dd04e773fa0353ffbf",
+      "source": "Ask one sharp goal question, infer sensible defaults, then create a compact learning map with a try-first activity.",
+      "value": "Tegyél fel egy éles célkérdést, következtess ésszerű alapbeállításokra, majd készíts tömör tanulási térképet egy először kipróbálandó tevékenységgel."
+    },
+    {
+      "key": "site.c1fc0749d21528e35c",
+      "source": "Ask predictions, reveal consequences, adjust variables, and summarize principles.",
+      "value": "Kérj előrejelzéseket, fedd fel a következményeket, állíts változókat, és foglald össze az alapelveket."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Tegyél fel kérdéseket, vitass meg eszméket, és tanuld meg a történelmet a múltbéli közszereplőkkel folytatott megalapozott beszélgetéseken keresztül."
+    },
+    {
+      "key": "site.bba473170426c96f3e",
+      "source": "Ask Socratic Instruction to find the weak link.",
+      "value": "Kérd meg a Szókratészi oktatást, hogy találja meg a gyenge láncszemet."
+    },
+    {
+      "key": "site.be291f23ccb1dbe8a9",
+      "source": "Ask the AI to check that step.",
+      "value": "Kérd meg az AI-t, hogy ellenőrizze ezt a lépést."
+    },
+    {
+      "key": "site.0c144a354468dbee40",
+      "source": "Ask the AI to check your reasoning, not just the result.",
+      "value": "Kérd meg az AI-t, hogy az érvelésedet ellenőrizze, ne csak az eredményt."
+    },
+    {
+      "key": "site.47a9847978bef7fe5c",
+      "source": "Ask the AI to check your reasoning.",
+      "value": "Kérd meg az AI-t, hogy ellenőrizze az érvelésedet."
+    },
+    {
+      "key": "site.88308d9ad6946ed778",
+      "source": "Ask the AI to label uncertainty.",
+      "value": "Kérd meg az AI-t, hogy címkézze a bizonytalanságot."
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Kérd meg a történelmi módot, hogy jelölje, mi dokumentált, mi következtetés és mi szimuláció."
+    },
+    {
+      "key": "site.8a4dfc8a1a3954bbdd",
+      "source": "Ask the learner to explain the topic in plain language first.",
+      "value": "Kérd meg a tanulót, hogy először közérthetően magyarázza el a témát."
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "Kérd meg a tanulót, hogy magyarázza el, mi változott minden tipp után."
+    },
+    {
+      "key": "site.95a1accde33b8d972e",
+      "source": "Ask the learner to state their current belief, then test it with a small example.",
+      "value": "Kérd meg a tanulót, hogy mondja ki jelenlegi meggyőződését, majd tesztelje egy kis példával."
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Tedd fel az igazi kérdést"
+    },
+    {
+      "key": "site.62a08e2f40dc0b6597",
+      "source": "Ask what a different side would claim.",
+      "value": "Kérdezd meg, mit állítana egy másik oldal."
+    },
+    {
+      "key": "site.f9fad814b8cc7946e4",
+      "source": "Ask what a different side, class, era, or source might say.",
+      "value": "Kérdezd meg, mit mondana egy másik oldal, osztály, korszak vagy forrás."
+    },
+    {
+      "key": "site.853517f968ce1f1a51",
+      "source": "Ask what data or observations they have and what decision they need.",
+      "value": "Kérdezd meg, milyen adataik vagy megfigyeléseik vannak, és milyen döntést kell meghozniuk."
+    },
+    {
+      "key": "site.06736eedb0d142242c",
+      "source": "Ask what happened, what they felt, and what they want to improve.",
+      "value": "Kérdezd meg, mi történt, mit éreztek, és min szeretnének javítani."
+    },
+    {
+      "key": "site.c332825ec386824009",
+      "source": "Ask what must be remembered and what familiar place the learner wants to use.",
+      "value": "Kérdezd meg, mit kell megjegyezni, és milyen ismerős helyet szeretne használni a tanuló."
+    },
+    {
+      "key": "site.a4cf0278718ddda061",
+      "source": "Ask what the learner wants to be quizzed on if the topic is missing.",
+      "value": "Kérdezd meg, miből szeretné, hogy kikérdezzék, ha hiányzik a téma."
+    },
+    {
+      "key": "site.2f4bcf33af3c996ab9",
+      "source": "Ask what the learner wants to represent, then propose a simple visual layout.",
+      "value": "Kérdezd meg, mit szeretne ábrázolni a tanuló, majd javasolj egyszerű vizuális elrendezést."
+    },
+    {
+      "key": "site.13d29ea274b9e4966b",
+      "source": "Ask what the resource is, audience, and what context they need.",
+      "value": "Kérdezd meg, mi az erőforrás, ki a közönség, és milyen kontextusra van szükségük."
+    },
+    {
+      "key": "site.4f41d5c8ebc0ebdea8",
+      "source": "Ask what they are doing and suggest a low-distraction sound preset.",
+      "value": "Kérdezd meg, mit csinálnak, és javasolj kevésbé zavaró hangbeállítást."
+    },
+    {
+      "key": "site.73ad590b59591d428a",
+      "source": "Ask what they have tried, then give a hint or worked miniature example.",
+      "value": "Kérdezd meg, mit próbáltak már, majd adj tippet vagy kidolgozott minipéldát."
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Tedd fel az első kérdésedet, és térj rögtön a gyakorlásra."
+    },
+    {
+      "key": "site.3330b0e4b9329b8d24",
+      "source": "Ask, evaluate, improve with structure, and retry.",
+      "value": "Kérdezz, értékelj, strukturáltan javíts, majd próbáltasd újra."
+    },
+    {
+      "key": "site.ef136f10083ce00d64",
+      "source": "Assessment",
+      "value": "Értékelés"
+    },
+    {
+      "key": "site.451319a8325c91de90",
+      "source": "Assign XP, levels, quests, and reflection checkpoints.",
+      "value": "Ossz ki XP-t, szinteket, küldetéseket és reflexiós ellenőrzőpontokat."
+    },
+    {
+      "key": "site.9e3e3f75496ae44f8c",
+      "source": "assignment tracker",
+      "value": "feladatkövető"
+    },
+    {
+      "key": "site.9f652ed2e7f9977eee",
+      "source": "Assignment Tracker",
+      "value": "Feladatkövető"
+    },
+    {
+      "key": "site.3d156ee3c17dec2436",
+      "source": "At Inspir, our mission is to democratize learning by making it accessible, engaging, and enjoyable for all. We believe that everyone has the right to quality education, regardless of their background or circumstances. Our platform is designed to provide students with the tools and resources they need to succeed, while also fostering a love of learning. We strive to create a community that is inclusive, supportive, and empowering, where students can connect with each other and with educators from around the world. By making learning fun and accessible, we aim to inspir a generation of lifelong learners who are equipped to tackle the challenges of the future.",
+      "value": "Az Inspirnél küldetésünk a tanulás demokratizálása azzal, hogy mindenki számára hozzáférhetővé, vonzóvá és élvezetessé tesszük. Hisszük, hogy mindenkinek joga van a minőségi oktatáshoz, háttértől vagy körülményektől függetlenül. Platformunkat úgy terveztük, hogy megadja a diákoknak a sikerhez szükséges eszközöket és forrásokat, miközben a tanulás szeretetét is erősíti. Olyan befogadó, támogató és felhatalmazó közösséget igyekszünk teremteni, ahol a diákok kapcsolatba léphetnek egymással és a világ minden tájáról érkező oktatókkal. A tanulás szórakoztatóvá és hozzáférhetővé tételével célunk, hogy az élethosszig tanulók olyan generációját inspiráljuk, amely felkészült a jövő kihívásaira."
+    },
+    {
+      "key": "site.cf1bc68ec98b241b5b",
+      "source": "At the end of a study session, ask yourself three questions:",
+      "value": "Egy tanulási munkamenet végén tegyél fel magadnak három kérdést:"
+    },
+    {
+      "key": "site.635eab82738464165f",
+      "source": "Athens, 399 BCE",
+      "value": "Athén, i.e. 399"
+    },
+    {
+      "key": "site.b5714de6bfd4ed349d",
+      "source": "Attempt first. Spend three minutes trying without AI.",
+      "value": "Először próbáld meg. Tölts három percet AI nélküli próbálkozással."
+    },
+    {
+      "key": "site.a4d81396d4ea19197d",
+      "source": "Attribution",
+      "value": "Hivatkozás"
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "Közönség"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "Célcsoport GYIK"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "Célcsoport tanulási útvonal"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "A célcsoportoldalak lehetővé teszik, hogy a keresőmotorok és AI-válaszmotorok megkülönböztessék a diákokat, szülőket, tanárokat és önálló tanulókat, ahelyett hogy mindenkit egyetlen általános oldalba lapítanának."
+    },
+    {
+      "key": "site.4068d895849a9baf7d",
+      "source": "Audience path",
+      "value": "Célcsoport útvonal"
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "célcsoporti útvonalak"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "Célcsoport útvonal"
+    },
+    {
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Nyilvánosan elérhető, miközben az iskolák bizalmas, egyedi verziókat futtathatnak."
+    },
+    {
+      "key": "site.e8233b2ed73a8dc411",
+      "source": "Avoid {value1}",
+      "value": "Kerüld ezt: {value1}"
+    },
+    {
+      "key": "site.676f0595835b0415b7",
+      "source": "Avoid claiming private beliefs. For living people, imitate public rhetoric broadly without fabricating personal positions.",
+      "value": "Kerüld a privát meggyőződések állítását. Élő embereknél széles körben utánozd a nyilvános retorikát, de ne gyárts személyes álláspontokat."
+    },
+    {
+      "key": "site.8484779ea6b71f2eaf",
+      "source": "Avoid the copy trap",
+      "value": "Kerüld a másolási csapdát"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "Vissza a célcsoporti útvonalakhoz"
+    },
+    {
+      "key": "site.03c2ef723b2904e872",
+      "source": "Back to comparisons",
+      "value": "Vissza az összehasonlításokhoz"
+    },
+    {
+      "key": "site.22e85f78d6eb0a0556",
+      "source": "Back to subjects",
+      "value": "Vissza a tantárgyakhoz"
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Hátoldal: „A térközös ismétlés arra kényszeríti a memóriát, hogy némi felejtés után újra felépítse a választ, ami erősíti a későbbi felidézést.”"
+    },
+    {
+      "key": "site.9e6aed6a8f30dd169d",
+      "source": "Background focus audio that keeps playing",
+      "value": "Háttérben szóló fókusz-zene, amely folyamatosan játszik"
+    },
+    {
+      "key": "site.0765a400abe3f60770",
+      "source": "Badges & Achievements",
+      "value": "Jelvények és eredmények"
+    },
+    {
+      "key": "site.8bb5ab62fb43bb6f1e",
+      "source": "Balance school and exam prep",
+      "value": "Egyensúlyozzam az iskolát és a vizsgára való felkészülést"
+    },
+    {
+      "key": "site.1862701f023a90dba6",
+      "source": "Balanced, action-oriented differences for learners arriving from search.",
+      "value": "Kiegyensúlyozott, cselekvésorientált különbségek a keresésből érkező tanulóknak."
+    },
+    {
+      "key": "site.b8e6a2dfb6864d491d",
+      "source": "Before leaving the article, prove that the idea is yours. Write a short recap from memory, answer a fresh question, or explain the concept to an imaginary beginner without copying the AI's phrasing.",
+      "value": "Mielőtt elhagynád a cikket, bizonyítsd be, hogy az ötlet a tiéd. Írj rövid összefoglalót emlékezetből, válaszolj egy új kérdésre, vagy magyarázd el a fogalmat egy képzeletbeli kezdőnek anélkül, hogy az AI megfogalmazását másolnád."
+    },
+    {
+      "key": "site.1417da516dbf6b2938",
+      "source": "Before you leave the guide",
+      "value": "Mielőtt elhagyod az útmutatót"
+    },
+    {
+      "key": "site.2c445dd5994fd48a7f",
+      "source": "Before you start",
+      "value": "Mielőtt elkezded"
+    },
+    {
+      "key": "site.0117c800c91789e147",
+      "source": "Before you start {value1}.",
+      "value": "Mielőtt elkezded: {value1}."
+    },
+    {
+      "key": "site.5481594ee8f840efd3",
+      "source": "Before you start.",
+      "value": "Mielőtt elkezded."
+    },
+    {
+      "key": "site.b1c64e2e1f12c4ad50",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "Kezdő és középhaladó programozók, akiknek magyarázatra, hibakeresési segítségre vagy projekt-coachingra van szükségük."
+    },
+    {
+      "key": "site.e5471b300aea9a706d",
+      "source": "Beginners, builders, and self-taught learners who need small, testable next steps.",
+      "value": "Kezdők, építők és önálló tanulók, akiknek kis, tesztelhető következő lépésekre van szükségük."
+    },
+    {
+      "key": "site.5f9304e2b12cb3191e",
+      "source": "Behavioural Remarketing",
+      "value": "Viselkedésalapú remarketing"
+    },
+    {
+      "key": "site.832da3a447993780e4",
+      "source": "best AI learning app",
+      "value": "legjobb AI tanulási alkalmazás"
+    },
+    {
+      "key": "site.99878ea89ca2e20085",
+      "source": "best AI tutor for students",
+      "value": "legjobb AI-tanár diákoknak"
+    },
+    {
+      "key": "site.21d54ec065f8fc96a3",
+      "source": "best AI tutor workflow",
+      "value": "legjobb AI-tanári munkafolyamat"
+    },
+    {
+      "key": "site.752acb3eb4ff880788",
+      "source": "Best first click",
+      "value": "Legjobb első kattintás"
+    },
+    {
+      "key": "site.a532bc7e473242297b",
+      "source": "Best first clicks",
+      "value": "Legjobb első kattintások"
+    },
+    {
+      "key": "site.042ac53ccdf980ca64",
+      "source": "Best first stop when a learner has a question and needs a simple model before practice.",
+      "value": "Legjobb első megálló, amikor a tanulónak kérdése van, és gyakorlás előtt egyszerű modellre van szüksége."
+    },
+    {
+      "key": "site.7ccbb2a2b1e1d3a3ff",
+      "source": "Best starting points",
+      "value": "Legjobb kiindulópontok"
+    },
+    {
+      "key": "site.234bd62fef5f32b987",
+      "source": "Better AI learning starts with better prompts.",
+      "value": "A jobb AI-tanulás jobb promptokkal kezdődik."
+    },
+    {
+      "key": "site.ac4e022dcce61d7352",
+      "source": "Better ways to learn with AI.",
+      "value": "Jobb módszerek az AI-val való tanuláshoz."
+    },
+    {
+      "key": "site.5c7ab07082c50faf29",
+      "source": "Block practice before review",
+      "value": "Blokkos gyakorlás az ismétlés előtt"
+    },
+    {
+      "key": "site.0b9d2b2362bc33581b",
+      "source": "Blog",
+      "value": "Blog"
+    },
+    {
+      "key": "site.c03df7b158358059c7",
+      "source": "Blog hub",
+      "value": "Blogközpont"
+    },
+    {
+      "key": "site.4c6ae02f43d11ee70b",
+      "source": "Blog library summary",
+      "value": "Blogkönyvtár összefoglaló"
+    },
+    {
+      "key": "site.b2d931d89f172453fe",
+      "source": "Blog post {value1} has invalid frontmatter",
+      "value": "A(z) {value1} blogbejegyzés érvénytelen frontmattert tartalmaz"
+    },
+    {
+      "key": "site.506d1b8d90b4b16c8d",
+      "source": "Blog post {value1} is missing {value2}",
+      "value": "A(z) {value1} blogbejegyzésből hiányzik: {value2}"
+    },
+    {
+      "key": "site.7b5e81924e818eefc8",
+      "source": "Blog post {value1} is missing frontmatter",
+      "value": "A(z) {value1} blogbejegyzésből hiányzik a frontmatter"
+    },
+    {
+      "key": "site.5a76a3441c174afa4d",
+      "source": "Blog theme",
+      "value": "Blogtéma"
+    },
+    {
+      "key": "site.97a19c47a7d6922aa7",
+      "source": "BlogPosting",
+      "value": "Blogbejegyzés"
+    },
+    {
+      "key": "site.d9904990e5def571e7",
+      "source": "boss round",
+      "value": "főellenfél-kör"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "Határok"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "Határ"
+    },
+    {
+      "key": "site.7623c291c5375ec686",
+      "source": "Brainstorm a science project",
+      "value": "Ötletelés egy tudományos projekthez"
+    },
+    {
+      "key": "site.98d1637b91a6152002",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Ötletelj projektekről, történetekről, tervekről, címekről, kísérletekről és váratlan szempontokról."
+    },
+    {
+      "key": "site.4a6f649ba281e4af94",
+      "source": "brainstorming AI",
+      "value": "ötletelő AI"
+    },
+    {
+      "key": "site.c5c0f10e94a219b55b",
+      "source": "Branch a topic into connected ideas",
+      "value": "Bonts egy témát kapcsolódó ötletekre"
+    },
+    {
+      "key": "site.dab5887f0a9a846248",
+      "source": "Break a big task into timed blocks",
+      "value": "Nagy feladat bontása időzített blokkokra"
+    },
+    {
+      "key": "site.55d85e820f7a471c1f",
+      "source": "break reminder",
+      "value": "szünetemlékeztető"
+    },
+    {
+      "key": "site.b8b946b425ddf8de86",
+      "source": "Break Reminder",
+      "value": "Szünetemlékeztető"
+    },
+    {
+      "key": "site.b6ecb7306b4c115a78",
+      "source": "Break tasks into timed steps, reflect on actual effort, and update the next block.",
+      "value": "Bontsd a feladatokat időzített lépésekre, reflektálj a tényleges erőfeszítésre, és frissítsd a következő blokkot."
+    },
+    {
+      "key": "site.4b45b2d5e966454c84",
+      "source": "Break the visual into shapes, labels, relationships, and checks for missing information.",
+      "value": "Bontsd a vizuális anyagot formákra, címkékre, kapcsolatokra és hiányzó információt ellenőrző lépésekre."
+    },
+    {
+      "key": "site.87a956984274e6d2b5",
+      "source": "Break work into milestones, inspect progress, remove blockers, and adapt scope.",
+      "value": "Bontsd a munkát mérföldkövekre, vizsgáld meg a haladást, távolítsd el az akadályokat, és igazítsd a hatókört."
+    },
+    {
+      "key": "site.a56e1e195f7a4c2a02",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Bontsd a munkát elnevezett feladatokra, időzítsd mindegyiket, és minden koncentrált munkamenet után tekintsd át, hová irányult a tanulási erőfeszítésed."
+    },
+    {
+      "key": "site.0794d5b8029d8aa800",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "Hozz egy szövegrészletet vagy könyvötletet, és fejleszd a szövegértésedet összefoglalók, szókincs, következtetések és beszélgetés segítségével."
+    },
+    {
+      "key": "site.6f4a0705ddd3bea273",
+      "source": "Broad subject queries are competitive, so these pages pair the subject keyword with interactive behaviors: tutoring, hints, feedback, quizzes, flashcards, debate, and planning.",
+      "value": "A tág tantárgyi keresések versengők, ezért ezek az oldalak a tantárgyi kulcsszót interaktív viselkedésekkel párosítják: korrepetálás, tippek, visszajelzés, kvízek, tanulókártyák, vita és tervezés."
+    },
+    {
+      "key": "site.25c515faf7679ffee0",
+      "source": "Browse all modes",
+      "value": "Összes mód böngészése"
+    },
+    {
+      "key": "site.55aab08a29dee22636",
+      "source": "Browse all public learning modes.",
+      "value": "Böngészd az összes nyilvános tanulási módot."
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Böngéssz az összes mód között"
+    },
+    {
+      "key": "site.5f363ecb3947e98119",
+      "source": "Browse every public inspir AI learning mode and land directly inside the matching guest chat.",
+      "value": "Böngészd az inspir minden nyilvános AI tanulási módját, és lépj közvetlenül a hozzá illő vendégcsevegésbe."
+    },
+    {
+      "key": "site.7c340f71aae9de7c65",
+      "source": "Browse every public inspir AI learning mode: Socratic tutoring, homework coaching, math help, writing feedback, flashcards, quizzes, history roleplay, debate, and more.",
+      "value": "Böngészd az inspir minden nyilvános AI tanulási módját: szókratészi korrepetálás, házi feladat edzés, matematikai segítség, írásbeli visszajelzés, tanulókártyák, kvízek, történelmi szerepjáték, vita és még sok más."
+    },
+    {
+      "key": "site.a8acd33fb26c75b460",
+      "source": "Browse learning modes",
+      "value": "Tanulási módok böngészése"
+    },
+    {
+      "key": "site.79e57cc56be34d7da4",
+      "source": "Browse modes",
+      "value": "Módok böngészése"
+    },
+    {
+      "key": "site.3d7e5b4e8e227a2755",
+      "source": "Browse prompts",
+      "value": "Promptok böngészése"
+    },
+    {
+      "key": "site.a01f43638fff4b148e",
+      "source": "Browse public modes",
+      "value": "Nyilvános módok böngészése"
+    },
+    {
+      "key": "site.17e0b707a903394f33",
+      "source": "Browse Socratic tutoring, homework coaching, math help, flashcards, quizzes, history roleplay, debate, and more.",
+      "value": "Böngéssz szókratészi korrepetálást, házi feladat edzést, matematikai segítséget, tanulókártyákat, kvízeket, történelmi szerepjátékot, vitát és még sok mást."
+    },
+    {
+      "key": "site.b726419f6e326d9f17",
+      "source": "Browse starter prompts for every public inspir mode, then open the matching guest chat to turn the prompt into a live learning loop.",
+      "value": "Böngéssz kezdő promptokat minden nyilvános inspir módhoz, majd nyisd meg a megfelelő vendégcsevegést, hogy a prompt élő tanulási ciklussá váljon."
+    },
+    {
+      "key": "site.33e39531a67c02e586",
+      "source": "Browse starter prompts that turn reading into questions, checks, and practice.",
+      "value": "Böngéssz kezdő promptokat, amelyek az olvasást kérdésekké, ellenőrzésekké és gyakorlássá alakítják."
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Böngéssz tantárgyak között"
+    },
+    {
+      "key": "site.16c44e40f340b55d97",
+      "source": "Browse the complete cluster, then follow the internal links into learning paths, public modes, and related guides.",
+      "value": "Böngészd a teljes klasztert, majd kövesd a belső linkeket tanulási útvonalakhoz, nyilvános módokhoz és kapcsolódó útmutatókhoz."
+    },
+    {
+      "key": "site.4245c885e4d72e5162",
+      "source": "Browse the full library of AI tutor guides, prompt loops, and study methods.",
+      "value": "Böngészd az AI-tanár útmutatók, promptciklusok és tanulási módszerek teljes könyvtárát."
+    },
+    {
+      "key": "site.cdf4cb489c1367a73a",
+      "source": "Build a biology unit test",
+      "value": "Biológia témazáró teszt készítése"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "Építs nyugodtabb tanulási szokást"
+    },
+    {
+      "key": "site.afdc6e2a6ea519b6ce",
+      "source": "Build a finals study guide",
+      "value": "Készíts vizsgafelkészítő útmutatót"
+    },
+    {
+      "key": "site.9a490168399d934cbc",
+      "source": "Build a full test from your material",
+      "value": "Állítson össze egy teljes tesztet az anyagából"
+    },
+    {
+      "key": "site.13b4221624a546e87f",
+      "source": "Build a hypothesis",
+      "value": "Építs fel egy hipotézist"
+    },
+    {
+      "key": "site.6540929220e989bb91",
+      "source": "Build a hypothesis.",
+      "value": "Építs hipotézist."
+    },
+    {
+      "key": "site.57d84860ab8c5f7666",
+      "source": "Build a loop",
+      "value": "Építs ciklust"
+    },
+    {
+      "key": "site.dfb957acc42e99196a",
+      "source": "Build a map of democracy",
+      "value": "Építs térképet a demokráciáról"
+    },
+    {
+      "key": "site.0fcd3c6df198757937",
+      "source": "Build a photosynthesis explanation with me",
+      "value": "Építs velem egy magyarázatot a fotoszintézisről"
+    },
+    {
+      "key": "site.3adbd46eba6a77ffa4",
+      "source": "Build a portfolio website",
+      "value": "Építs egy portfólió weboldalt"
+    },
+    {
+      "key": "site.89891cce3de9b436cc",
+      "source": "Build a project in smaller moves",
+      "value": "Építs projektet kisebb lépésekben"
+    },
+    {
+      "key": "site.ba586de92a117bdea2",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "Készíts reális vizsgatervet a dátumod, a tanterved, az erősségeid és a gyenge pontjaid alapján."
+    },
+    {
+      "key": "site.c671132c113a477fb6",
+      "source": "Build a realistic study plan, quiz weak areas first, then convert mistakes into a repeatable review loop.",
+      "value": "Építs reális tanulási tervet, először kérdezd ki a gyenge területeket, majd alakítsd a hibákat ismételhető ismétlési ciklussá."
+    },
+    {
+      "key": "site.7336722867b005f684",
+      "source": "Build a repeatable study workflow that gives support without replacing the learner.",
+      "value": "Építs ismételhető tanulási munkafolyamatot, amely támogatást ad anélkül, hogy helyettesítené a tanulót."
+    },
+    {
+      "key": "site.ad4088a84aec8817e3",
+      "source": "Build a revision plan that fits real life",
+      "value": "Építs valós élethez illő ismétlési tervet"
+    },
+    {
+      "key": "site.4716c697251a6f7672",
+      "source": "Build a routine that survives real life",
+      "value": "Építs olyan rutint, ami a való életben is működik"
+    },
+    {
+      "key": "site.9bbfa550ce88c17d3e",
+      "source": "Build a routine that survives real life.",
+      "value": "Építs rutint, amely túléli a való életet."
+    },
+    {
+      "key": "site.cafdadb2e7df26ec3d",
+      "source": "Build a story",
+      "value": "Építs fel egy történetet"
+    },
+    {
+      "key": "site.ded45628bcad4e1a1a",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Építs tanulási útmutatót célkitűzésekkel, fogalomösszefoglalókkal, példákkal, gyakori hibákkal, gyakorló kérdésekkel és áttekintési tervvel."
+    },
+    {
+      "key": "site.2641447afbb6fdefac",
+      "source": "Build a study system you can keep",
+      "value": "Építs fenntartható tanulási rendszert"
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Készíts időutazó útlevelet, oldd meg az utazási tanácsokat, és fedezz fel egy történelmi világot jelenetek, térképek, idővonalak, személyek, szabályok, leltár és bizonyítékok segítségével."
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Építs AI vizsgafelkészülési folyamatot reális tanulási tervvel, felidézési gyakorlással, kvízekkel, tanulókártyákkal és gyenge pontok ismétlésével."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Készíts vizsgatervet"
+    },
+    {
+      "key": "site.3240b80dda5595eafb",
+      "source": "Build arguments that can survive counterexamples, evidence checks, and opposing views.",
+      "value": "Építs olyan érveket, amelyek kiállják az ellenpéldákat, bizonyítékellenőrzéseket és ellentétes nézőpontokat."
+    },
+    {
+      "key": "site.acb15923b205de7d8d",
+      "source": "Build check-ins that keep you moving",
+      "value": "Építs olyan ellenőrzési pontokat, amelyek segítenek a haladásban"
+    },
+    {
+      "key": "site.e5d9ce14875b463ee3",
+      "source": "Build communication skill through realistic roleplay and feedback.",
+      "value": "Építs kommunikációs készséget valósághű szerepjátékkal és visszajelzéssel."
+    },
+    {
+      "key": "site.1ebdac7f888fa84e98",
+      "source": "Build consistency without guilt",
+      "value": "Építs ki következetességet bűntudat nélkül"
+    },
+    {
+      "key": "site.a5cc98fbee44c930a8",
+      "source": "Build mixed practice worksheets from a topic or notes.",
+      "value": "Építs vegyes gyakorlófeladatlapokat témából vagy jegyzetekből."
+    },
+    {
+      "key": "site.951d8c65343997c00b",
+      "source": "Build references in common formats",
+      "value": "Hivatkozások készítése gyakori formátumokban"
+    },
+    {
+      "key": "site.5ce34a8d2fe753bba5",
+      "source": "Build review loops",
+      "value": "Építsen ismétlési ciklusokat"
+    },
+    {
+      "key": "site.95ec3bfab65a54a0ae",
+      "source": "Build sections, administer questions, mark responses, and identify weak areas.",
+      "value": "Építs szakaszokat, kezeld a kérdéseket, értékeld a válaszokat, és azonosítsd a gyenge területeket."
+    },
+    {
+      "key": "site.3a2394e40526963d52",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "Építs tanulási kihívásokat világos szabályokkal, pontozással, szintekkel, főellenség körökkel és reflexióval."
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Építsd fel a tervet"
+    },
+    {
+      "key": "site.ae571198fc6c604352",
+      "source": "Build to understand",
+      "value": "Építs, hogy megértsd"
+    },
+    {
+      "key": "site.54511757696b263ebe",
+      "source": "Build vocabulary exercises",
+      "value": "Építsen szókincsfejlesztő gyakorlatokat"
+    },
+    {
+      "key": "site.dc326fcc24ba471506",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Bővítsd a szókincsedet jelentésekkel, példákkal, kiejtési tippekkel, memóriasegítőkkel és gyors gyakorlatokkal."
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Építs velünk"
+    },
+    {
+      "key": "site.b0bb0056cf4be7c005",
+      "source": "Build, critique, and learn in a shared workroom",
+      "value": "Építs, kritizálj és tanulj egy közös munkateremben"
+    },
+    {
+      "key": "site.7af639dbd49809e80d",
+      "source": "Build, critique, and learn in a shared workroom.",
+      "value": "Építs, kritizálj és tanulj egy közös munkatérben."
+    },
+    {
+      "key": "site.4db4e674ee0f39a1ac",
+      "source": "Building realistic routines, preparing for deadlines, and choosing the next concrete move.",
+      "value": "Reális rutinok építése, határidőkre készülés és a következő konkrét lépés kiválasztása."
+    },
+    {
+      "key": "site.e51993c84c68f21bf0",
+      "source": "Built around real learners",
+      "value": "Valódi tanulók köré építve"
+    },
+    {
+      "key": "site.5cf6e50426bd25ccf6",
+      "source": "Built around the searches learners actually make.",
+      "value": "Azokra a keresésekre építve, amelyeket a tanulók ténylegesen végeznek."
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Kíváncsiságra, gyakorlásra és hozzáférésre építve."
+    },
+    {
+      "key": "site.945d3e817915e3482d",
+      "source": "Built for people arriving from search.",
+      "value": "Keresésből érkező emberekre építve."
+    },
+    {
+      "key": "site.cd83c865f673f5338e",
+      "source": "Built for scale",
+      "value": "Skálázásra építve"
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Valódi tanulói viselkedésből épül, nem általános chatdobozból."
+    },
+    {
+      "key": "site.f3e61b5e807acbd0d9",
+      "source": "Built in public",
+      "value": "Nyilvánosan építve"
+    },
+    {
+      "key": "site.2ad6f266506c62583b",
+      "source": "Built since 2013",
+      "value": "2013 óta épül"
+    },
+    {
+      "key": "site.656c80a2ad3a8a54f7",
+      "source": "Built through real school and university networks.",
+      "value": "Valódi iskolai és egyetemi hálózatokon keresztül építve."
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Használatra tervezve"
+    },
+    {
+      "key": "site.6c3cb499ed00d5b778",
+      "source": "Business English words",
+      "value": "Üzleti angol szavak"
+    },
+    {
+      "key": "site.5647b2b0fc91eaaf30",
+      "source": "Business strategy case",
+      "value": "Üzleti stratégiai eset"
+    },
+    {
+      "key": "site.7a8bf1b57222c96ce1",
+      "source": "By using our Service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at support@inspir.app",
+      "value": "Szolgáltatásunk használatával beleegyezel, hogy feliratkozol hírlevelekre, marketing- vagy promóciós anyagokra és más általunk küldött információkra. Ugyanakkor bármelyik vagy az összes ilyen kommunikációról leiratkozhatsz a leiratkozási link követésével vagy a support@inspir.app címre küldött e-maillel."
+    },
+    {
+      "key": "site.1e4abf51030518b215",
+      "source": "BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.",
+      "value": "A SZOLGÁLTATÁS VAGY AZ ÁLTALUNK NYÚJTOTT EGYÉB SZOLGÁLTATÁSOK HASZNÁLATÁVAL ELISMERED, HOGY ELOLVASTAD EZEKET A SZOLGÁLTATÁSI FELTÉTELEKET, ÉS ELFOGADOD, HOGY KÖTELEZŐEK RÁD NÉZVE."
+    },
+    {
+      "key": "site.36d72c2f5ce776d5f7",
+      "source": "Calculate my weighted grade",
+      "value": "Számítsd ki a súlyozott osztályzatomat"
+    },
+    {
+      "key": "site.da5dac17c249919859",
+      "source": "CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law’s reach stretches well beyond California to require a person or company in the United States (and conceivable the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared, and to comply with this policy.",
+      "value": "A CalOPPA az ország első állami törvénye, amely előírja a kereskedelmi weboldalaknak és online szolgáltatásoknak adatvédelmi irányelv közzétételét. A törvény hatálya jóval Kalifornián túlra nyúlik, és megköveteli, hogy az Egyesült Államokban (és elképzelhetően a világon) működő, kaliforniai fogyasztóktól személyazonosításra alkalmas információkat gyűjtő weboldalakat üzemeltető személy vagy vállalat jól látható adatvédelmi irányelvet tegyen közzé a weboldalán, amely pontosan megnevezi a gyűjtött információkat és azokat a személyeket, akikkel azokat megosztják, valamint megfeleljen ennek az irányelvnek."
+    },
+    {
+      "key": "site.1c9bd0175d893a3a1f",
+      "source": "Can a learner open a mode without an account?",
+      "value": "Megnyithat egy tanuló módot fiók nélkül?"
+    },
+    {
+      "key": "site.0f25ba5caa7b64e1da",
+      "source": "Can a rollout start small?",
+      "value": "Indulhat egy bevezetés kicsiben?"
+    },
+    {
+      "key": "site.4db45ae42beca7215b",
+      "source": "Can a school use inspir as a guest learning tool first?",
+      "value": "Használhatja egy iskola először vendég tanulási eszközként az inspir-t?"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "Lehet etikus az AI házifeladat-segítség?"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "Hivatkozhatok AI történelmi párbeszédre forrásként?"
+    },
+    {
+      "key": "site.fa16baa10b1f34bf86",
+      "source": "Can I do a new example?",
+      "value": "Csinálhatok új példát?"
+    },
+    {
+      "key": "site.2003f057f7f77bf2a4",
+      "source": "Can I explain the idea without looking?",
+      "value": "El tudom magyarázni az ötletet anélkül, hogy belenéznék?"
+    },
+    {
+      "key": "site.f4c13f2c7594216665",
+      "source": "Can I talk to historical figures with inspir?",
+      "value": "Beszélhetek történelmi alakokkal az inspir segítségével?"
+    },
+    {
+      "key": "site.e9a598077a28c214d2",
+      "source": "Can I use {value1} without signing in?",
+      "value": "Használhatom ezt: {value1} bejelentkezés nélkül?"
+    },
+    {
+      "key": "site.e15aa13c72bb6766e4",
+      "source": "Can I use inspir alongside Khan Academy?",
+      "value": "Használhatom az inspir-t a Khan Academy mellett?"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "Használhatom az inspir-t bejelentkezés nélkül?"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "Segíthet az inspir felnőtteknek és önálló tanulóknak?"
+    },
+    {
+      "key": "site.e16d86f80344bff4aa",
+      "source": "Can inspir help with history essays?",
+      "value": "Segíthet az inspir történelemesszékben?"
+    },
+    {
+      "key": "site.bb0ea7371e270cb4c1",
+      "source": "Can inspir help with homework without cheating?",
+      "value": "Segíthet az inspir házi feladatban csalás nélkül?"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "Segíthet az inspir házi feladatban anélkül, hogy csalásra ösztönözne?"
+    },
+    {
+      "key": "site.dcb78e2d7020a2929b",
+      "source": "Can inspir make an exam study plan?",
+      "value": "Készíthet az inspir vizsgatanulási tervet?"
+    },
+    {
+      "key": "site.f452e762401f9cd4da",
+      "source": "Can inspir solve math problems step by step?",
+      "value": "Meg tud az inspir oldani matekfeladatokat lépésről lépésre?"
+    },
+    {
+      "key": "site.cae1f09ed3621881bf",
+      "source": "Can inspir support school-specific content or curriculum needs?",
+      "value": "Támogathat az inspir iskolaspecifikus tartalmat vagy tantervi igényeket?"
+    },
+    {
+      "key": "site.94e5736baf016ce277",
+      "source": "Can inspir teach programming from scratch?",
+      "value": "Meg tudja az inspir tanítani a programozást a nulláról?"
+    },
+    {
+      "key": "site.e380f20372ba4944e7",
+      "source": "Can it debug my code?",
+      "value": "Tudja hibakeresni a kódomat?"
+    },
+    {
+      "key": "site.3a65bcd044b7b6f6fe",
+      "source": "Can it help with reading comprehension?",
+      "value": "Segíthet szövegértésben?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "Kipróbálhatják a szülők az inspir-t, mielőtt ajánlanák?"
+    },
+    {
+      "key": "site.bca5a60ab0168ff315",
+      "source": "Can people use inspir without signing in?",
+      "value": "Használhatják az emberek az inspir-t bejelentkezés nélkül?"
+    },
+    {
+      "key": "site.86be60cf7dd31dd24b",
+      "source": "Can schools use this prompt library?",
+      "value": "Használhatják az iskolák ezt a promptkönyvtárat?"
+    },
+    {
+      "key": "site.0465d8d9b4d781085b",
+      "source": "Can students land directly on homework help?",
+      "value": "Érkezhetnek a diákok közvetlenül a házi feladat segítséghez?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "Használhatják a diákok az inspir-t bejelentkezés nélkül?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "Kipróbálhatják a tanárok az inspir-t iskolai bevezetés nélkül?"
+    },
+    {
+      "key": "site.1da3a07de9521aee52",
+      "source": "Can you explain the main idea without looking back at the article?",
+      "value": "El tudod magyarázni a fő gondolatot anélkül, hogy visszanéznél a cikkre?"
+    },
+    {
+      "key": "site.9413c5736b4da64196",
+      "source": "Can you test that idea with a simple example?",
+      "value": "Le tudod tesztelni ezt az ötletet egy egyszerű példával?"
+    },
+    {
+      "key": "site.4524f0053a00ac4881",
+      "source": "Canonical /chat/{topicSlug} pages open public learning modes such as Learn Anything, Socratic Instruction, Homework Coach, and flashcards.",
+      "value": "A kanonikus /chat/{topicSlug} oldalak nyilvános tanulási módokat nyitnak meg, például a Tanulj meg bármit, a Szókratészi oktatás, a Házi feladat edző és a tanulókártyák módot."
+    },
+    {
+      "key": "site.091611327ab7c64b52",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "A kártyák egyszerre egy dologra kérdeznek rá, és buktatókat is tartalmaznak, így az ismétlés megértést épít, nem csak felismerést."
+    },
+    {
+      "key": "site.dc429c7fae68e05082",
+      "source": "Career Explorer",
+      "value": "Karrierkereső"
+    },
+    {
+      "key": "site.e7f2011285d34a8ba5",
+      "source": "career explorer AI",
+      "value": "karrierkereső AI"
+    },
+    {
+      "key": "site.670d174e610533e575",
+      "source": "Career Explorer AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "A Karrierkereső AI tanulási mód fókuszált módja annak, hogy az AI-t tanulásra használd passzív válaszgyűjtés helyett. A mód egy konkrét feladatra épül: fedezz fel karriereket érdeklődési körökön, készségeken, egy nap az életben példákon és következő lépéseken keresztül."
+    },
+    {
+      "key": "site.b0655b84e267b75928",
+      "source": "Career Explorer AI Learning Mode: practical guide",
+      "value": "Karrierkereső AI tanulási mód: gyakorlati útmutató"
+    },
+    {
+      "key": "site.5bbbe2b52bbf9a8c4c",
+      "source": "Career Explorer prompts and study loop",
+      "value": "Karrierkereső promptok és tanulási ciklus"
+    },
+    {
+      "key": "site.5e518f5df8caac34a7",
+      "source": "Case Study Simulator",
+      "value": "Esettanulmány-szimulátor"
+    },
+    {
+      "key": "site.bd625253c9210ae090",
+      "source": "case study simulator AI",
+      "value": "esettanulmány-szimulátor AI"
+    },
+    {
+      "key": "site.bc64634fca85b780b9",
+      "source": "Case Study Simulator AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "Az Esettanulmány-szimulátor AI tanulási mód fókuszált módja annak, hogy az AI-t tanulásra használd passzív válaszgyűjtés helyett. A mód egy konkrét feladatra épül: lépj be egy reális esetbe, hozz döntéseket, lásd a következményeket, és tanuld meg az egyes választások mögötti alapelvet."
+    },
+    {
+      "key": "site.89321d3157232b4128",
+      "source": "Case Study Simulator AI Learning Mode: practical guide",
+      "value": "Esettanulmány-szimulátor AI tanulási mód: gyakorlati útmutató"
+    },
+    {
+      "key": "site.68f23b2e55a47b3239",
+      "source": "Case Study Simulator prompts and study loop",
+      "value": "Esettanulmány-szimulátor promptok és tanulási ciklus"
+    },
+    {
+      "key": "site.a3c686e711e4720f99",
+      "source": "Category",
+      "value": "Kategória"
+    },
+    {
+      "key": "site.5e6fc6eb235712390e",
+      "source": "Category questions",
+      "value": "Kategóriakérdések"
+    },
+    {
+      "key": "site.d379874eb54c85b8b3",
+      "source": "Causes of World War I",
+      "value": "Az első világháború okai"
+    },
+    {
+      "key": "site.63125e6a136a736ab5",
+      "source": "Challenge, score, give feedback, unlock next level, and review missed ideas.",
+      "value": "Adj kihívást, pontozz, adj visszajelzést, oldd fel a következő szintet, és ismételd át a kihagyott ötleteket."
+    }
+  ]
+}

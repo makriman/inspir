@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Ukrainian",
+  "locale": "uk",
+  "namespace": "route:blog",
+  "sourceHash": "762d420b9f13b1cc699a706144898529d4f40445ebccafee49979a5a5e1c4a2e",
+  "part": {
+    "index": 4,
+    "total": 7
+  },
+  "entries": [
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Головна"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Репетитор з домашніх завдань"
+    },
+    {
+      "key": "site.f9570116511bd9f5a0",
+      "source": "Homework Coach prompts and study loop",
+      "value": "Підказки для «Homework Coach» і навчальний цикл"
+    },
+    {
+      "key": "site.d02fccb306c1c5f6c9",
+      "source": "homework prompt examples",
+      "value": "приклади підказок для домашніх завдань"
+    },
+    {
+      "key": "site.d5ca6891c5510b0f94",
+      "source": "How should I use the inspir blog?",
+      "value": "Як користуватися блогом inspir?"
+    },
+    {
+      "key": "site.2d24058f88b11ae757",
+      "source": "How to know it worked",
+      "value": "Як зрозуміти, що це спрацювало"
+    },
+    {
+      "key": "site.5ecea09f437915bb3c",
+      "source": "how to learn with AI",
+      "value": "як навчатися з ШІ"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Як навчатися з ШІ й не обманювати себе"
+    },
+    {
+      "key": "site.28d966d8857b39aba7",
+      "source": "How to turn this {value1} into active learning",
+      "value": "Як перетворити {value1} на активне навчання"
+    },
+    {
+      "key": "site.89916747947fddf0ad",
+      "source": "How to use AI for clear explanations, adaptive tutoring, Socratic questions, and better first steps.",
+      "value": "Як використовувати ШІ для чітких пояснень, адаптивного наставництва, сократівських запитань і кращих перших кроків."
+    },
+    {
+      "key": "site.d6a9da15b5dc334d40",
+      "source": "How to use the guide library",
+      "value": "Як користуватися бібліотекою посібників"
+    },
+    {
+      "key": "site.f51c774a517439e3e6",
+      "source": "How to use this guide cluster.",
+      "value": "Як користуватися цією групою посібників."
+    },
+    {
+      "key": "site.f8ad269d8d1ff89348",
+      "source": "Humanities",
+      "value": "Гуманітарні науки"
+    },
+    {
+      "key": "site.61f35576cfac6b6ad6",
+      "source": "Humanities guides",
+      "value": "Посібники з гуманітарних наук"
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "визначте поширену помилку;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "Якщо картка постійно провалюється, не просто повторюйте її. Запитайте, чому вона складна. Використайте Socratic Instruction, щоб виявити хибне уявлення, Math Step Coach для процедурних прогалин або бібліотеку навчальних підказок ШІ, щоб знайти кращу навчальну підказку."
+    },
+    {
+      "key": "site.75b595c9dba7fbeee5",
+      "source": "If the answer is yes, AI helped you study. If the answer is no, the next move is not more reading. It is active practice. Open Learn Anything, Socratic Instruction, or the AI learning prompt library and turn the topic into a task you have to attempt.",
+      "value": "Якщо відповідь так, ШІ допоміг вам навчатися. Якщо відповідь ні, наступний крок — не ще більше читання. Це активна практика. Відкрийте Learn Anything, Socratic Instruction або бібліотеку навчальних підказок ШІ та перетворіть тему на завдання, яке потрібно спробувати."
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "Якщо відповідь здається надто широкою, звузьте її. Попросіть один приклад, одне хибне уявлення, одне контрольне запитання або один наступний крок. Якщо здається надто легкою, попросіть виклик. Якщо здається надто складною, попросіть місток від того, що ви вже знаєте."
+    },
+    {
+      "key": "site.0e52cbcd42546a412e",
+      "source": "If the work is homework, start in Homework Coach. If it is math, use Math Step Coach and ask it to check one step at a time. If you are trying to understand a concept deeply, use Socratic Instruction and answer the questions before asking for a summary.",
+      "value": "Якщо це домашнє завдання, почніть у Homework Coach. Якщо це математика, використайте Math Step Coach і попросіть перевіряти по одному кроку. Якщо ви намагаєтеся глибоко зрозуміти поняття, використайте Socratic Instruction і відповідайте на запитання, перш ніж просити підсумок."
+    },
+    {
+      "key": "site.07b0fbd7b0ac2b260a",
+      "source": "If you paste a homework question and copy the final answer, you may finish the task, but you have not built the skill. If you ask for a hint, explain your thinking, compare your answer, and try a similar problem, AI becomes a study partner instead of a shortcut.",
+      "value": "Якщо ви вставите запитання з домашнього завдання й скопіюєте фінальну відповідь, ви можете завершити завдання, але не сформуєте навичку. Якщо ви попросите підказку, поясните своє мислення, порівняєте свою відповідь і спробуєте схожу задачу, ШІ стане навчальним партнером, а не коротким шляхом."
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Занурення"
+    },
+    {
+      "key": "site.4ef423e4406683146c",
+      "source": "immersive AI learning",
+      "value": "імерсивне навчання з ШІ"
+    },
+    {
+      "key": "site.9a69a594c314e2bd83",
+      "source": "Improve structure.",
+      "value": "Покращте структуру."
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Покращити чернетку"
+    },
+    {
+      "key": "site.4f256b83ed8e4a2f48",
+      "source": "Improve the final version",
+      "value": "Покращити фінальну версію"
+    },
+    {
+      "key": "site.fec75f8524e2e53cd4",
+      "source": "In this guide",
+      "value": "У цьому посібнику"
+    },
+    {
+      "key": "site.0249e336d4c60e92b0",
+      "source": "Include what you know, what you tried, what level you need, and what kind of help you want.",
+      "value": "Укажіть, що ви знаєте, що пробували, який рівень вам потрібен і якої допомоги хочете."
+    },
+    {
+      "key": "site.40e2c08da2160a0ea3",
+      "source": "Information is everywhere. Understanding is still unevenly distributed.",
+      "value": "Інформація всюди. Розуміння досі розподілене нерівномірно."
+    },
+    {
+      "key": "site.310100649b9dc0e375",
+      "source": "Inside the live mode, the core job is: {value1}. That focus keeps the session pointed at progress instead of another long explanation.",
+      "value": "У живому режимі головне завдання таке: {value1}. Цей фокус спрямовує сесію на прогрес, а не на ще одне довге пояснення."
+    },
+    {
+      "key": "site.f1897f08369e9e129a",
+      "source": "Inside the live mode, the goal is to turn a vague question into a focused session with examples, checks, and a useful next action.",
+      "value": "У живому режимі мета - перетворити нечітке запитання на сфокусовану сесію з прикладами, перевірками та корисним наступним кроком."
+    },
+    {
+      "key": "site.1d71e7544104ab669e",
+      "source": "Inspect evidence.",
+      "value": "Перевірте докази."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "Flashcard Builder від inspir побудований навколо цього циклу активного пригадування: створіть колоду, спробуйте відповісти на лицьовий бік, відкрийте відповідь, оцініть пригадування та повторюйте пропущене, доки ідея не закріпиться."
+    },
+    {
+      "key": "site.a47c353d55869e468a",
+      "source": "Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example.",
+      "value": "Замість того, щоб просто дати розгорнуту відповідь, inspir допомагає вам обрати простішу основу, глибший шлях або практичний приклад."
+    },
+    {
+      "key": "site.138701c79818d1f1b0",
+      "source": "Interactive Instruction",
+      "value": "Інтерактивне навчання"
+    },
+    {
+      "key": "site.881292aeb90a0fd156",
+      "source": "Interactive Instruction AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Learn by doing, seeing, comparing, repairing, and proving mastery. The app builds a live lesson canvas around your goal instead of turning instruction into a long chat. Try: \"Teach me financial modeling.\"",
+      "value": "Навчальний режим ШІ «Інтерактивне навчання» - це сфокусований спосіб використовувати ШІ для навчання, а не пасивного збирання відповідей. Режим побудований навколо конкретного завдання: Навчайтеся через дію, спостереження, порівняння, виправлення та доведення майстерності. Застосунок будує живе полотно уроку навколо вашої мети, а не перетворює навчання на довгий чат. Спробуйте: \"Навчи мене фінансового моделювання.\""
+    },
+    {
+      "key": "site.8d2f80e2a8bbdd9229",
+      "source": "Interactive Instruction AI Learning Mode: practical guide",
+      "value": "Навчальний режим ШІ «Інтерактивне навчання»: практичний посібник"
+    },
+    {
+      "key": "site.867df5a900e4ee1297",
+      "source": "Interactive Instruction prompts and study loop",
+      "value": "Підказки для «Інтерактивне навчання» і навчальний цикл"
+    },
+    {
+      "key": "site.61a69e2ee0d9f6dae5",
+      "source": "Interview Coach",
+      "value": "Тренер з інтерв'ю"
+    },
+    {
+      "key": "site.991b1619b5b850481b",
+      "source": "Interview Coach AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "Навчальний режим ШІ «Тренер з інтерв'ю» - це сфокусований спосіб використовувати ШІ для навчання, а не пасивного збирання відповідей. Режим побудований навколо конкретного завдання: Готуйтеся до шкільних, стажувальних, робочих або стипендіальних співбесід із реалістичними запитаннями та відгуками."
+    },
+    {
+      "key": "site.da0103a3e1af7c2c7d",
+      "source": "Interview Coach AI Learning Mode: practical guide",
+      "value": "Навчальний режим ШІ «Тренер з інтерв'ю»: практичний посібник"
+    },
+    {
+      "key": "site.d5ebd86e2d5fce2969",
+      "source": "Interview Coach prompts and study loop",
+      "value": "Підказки для «Тренер з інтерв'ю» і навчальний цикл"
+    },
+    {
+      "key": "site.3992d0603fedb06b44",
+      "source": "It is useful for learners who want guidance, practice, and a clearer next move.",
+      "value": "Це корисно для учнів, які хочуть отримати спрямування, практику й чіткіший наступний крок."
+    },
+    {
+      "key": "site.71785ed159f5689380",
+      "source": "Judge credibility and bias.",
+      "value": "Оцініть достовірність і упередженість."
+    },
+    {
+      "key": "site.2977629c5ee3883bca",
+      "source": "Keep moving through the learning library.",
+      "value": "Продовжуйте рухатися навчальною бібліотекою."
+    },
+    {
+      "key": "site.52608470edb0a903d0",
+      "source": "Keep the study loop going.",
+      "value": "Підтримуйте навчальний цикл."
+    },
+    {
+      "key": "site.60fb047a8f4c294e9f",
+      "source": "Language Roleplay",
+      "value": "Мовна рольова гра"
+    },
+    {
+      "key": "site.2174f874975c4a3b60",
+      "source": "Language Roleplay AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "Навчальний режим ШІ «Мовна рольова гра» - це сфокусований спосіб використовувати ШІ для навчання, а не пасивного збирання відповідей. Режим побудований навколо конкретного завдання: Практикуйте мову в реалістичних сценаріях: кав'ярні, співбесіди, подорожі та повсякденне життя, з виправленнями після кожного ходу."
+    },
+    {
+      "key": "site.3ae125ae77c06a264a",
+      "source": "Language Roleplay AI Learning Mode: practical guide",
+      "value": "Навчальний режим ШІ «Мовна рольова гра»: практичний посібник"
+    },
+    {
+      "key": "site.bcf428f889e3e3f56b",
+      "source": "Language Roleplay prompts and study loop",
+      "value": "Підказки для «Мовна рольова гра» і навчальний цикл"
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Навчися будь-чого"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Підказки для «Навчися будь-чого» і навчальний цикл"
+    },
+    {
+      "key": "site.48d0a6916b6c7e9da0",
+      "source": "Learn Anything With a Free AI Tutor is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Curious about absolutely anything? Ask, explore, and go deeper at your pace. Your buddy makes ideas practical, memorable, and easy to build on. Try: \"Explain how the stock market actually works.\"",
+      "value": "Навчайтеся будь-чого з безкоштовним ШІ-репетитором - це сфокусований спосіб використовувати ШІ для навчання, а не пасивного збирання відповідей. Режим побудований навколо конкретного завдання: цікавить абсолютно будь-що? Запитуйте, досліджуйте й заглиблюйтеся у власному темпі. Ваш напарник робить ідеї практичними, пам'ятними та легкими для розвитку. Спробуйте: \"Поясни, як насправді працює фондовий ринок.\""
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Навчайтеся будь-чого з безкоштовним ШІ-репетитором: практичний посібник"
+    },
+    {
+      "key": "site.93e416a6469b71614d",
+      "source": "Learn choices, incentives, and tradeoffs.",
+      "value": "Вивчайте вибори, стимули та компроміси."
+    },
+    {
+      "key": "site.40e6f2bd9b93c584dc",
+      "source": "Learn through realistic decisions.",
+      "value": "Навчайтеся через реалістичні рішення."
+    },
+    {
+      "key": "site.d8f2e5d61c0aa6b2ea",
+      "source": "Learn through stories.",
+      "value": "Навчайтеся через історії."
+    },
+    {
+      "key": "site.c4f0999d41c7b401af",
+      "source": "Learn words in context.",
+      "value": "Вивчайте слова в контексті."
+    },
+    {
+      "key": "site.d10f9f7a44e025a9c9",
+      "source": "Learners and educators who want better questions and more useful AI learning sessions.",
+      "value": "Учні та освітяни, які хочуть кращих запитань і корисніших навчальних сесій із ШІ."
+    },
+    {
+      "key": "site.bc672253fda7a9ad1e",
+      "source": "Learners exploring {value1} with AI support.",
+      "value": "Учні, які досліджують {value1} з підтримкою ШІ."
+    },
+    {
+      "key": "site.5a6156641ad245f5a5",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, що вивчають теми комунікації та потребують практичних порад, а не загальних відповідей."
+    },
+    {
+      "key": "site.11fb10c305f169a612",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, що вивчають теми творчості та хочуть отримати практичні поради, а не загальні відповіді."
+    },
+    {
+      "key": "site.b9200f08c55fac98ef",
+      "source": "Learners exploring foundations topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, що вивчають основи та потребують практичних порад, а не просто загальних відповідей."
+    },
+    {
+      "key": "site.ace804dff155dec4df",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, що вивчають гуманітарні дисципліни та шукають практичні поради, а не просто загальні відповіді."
+    },
+    {
+      "key": "site.8c93ac096469355666",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, які вивчають теми занурення і хочуть отримати практичні поради, а не загальну відповідь."
+    },
+    {
+      "key": "site.9d06e5b943caea12c9",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, які вивчають теми планування і хочуть отримати практичні поради, а не загальні відповіді."
+    },
+    {
+      "key": "site.dec3daccea3b695b23",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, що вивчають практичні теми та потребують практичних порад замість звичайного поля для відповідей."
+    },
+    {
+      "key": "site.a6e5129f35fdf2ee92",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, що вивчають STEM-дисципліни та потребують практичних порад, а не просто загальних відповідей."
+    },
+    {
+      "key": "site.a8886ce543382c3c18",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Учні, що вивчають теми з розвитку мислення і потребують практичних порад, а не просто загальних відповідей."
+    },
+    {
+      "key": "site.a3398f4cf6e028ff8a",
+      "source": "Learners improving essays, presentations, messages, and public explanations.",
+      "value": "Учні, які покращують есе, презентації, повідомлення та публічні пояснення."
+    },
+    {
+      "key": "site.8b8a9df9f740d2b667",
+      "source": "Learners preparing essays, discussions, debates, interviews, or decisions.",
+      "value": "Учні, які готують есе, обговорення, дебати, інтерв'ю або рішення."
+    },
+    {
+      "key": "site.3bf7be89c5ec9c813e",
+      "source": "Learners preparing for tests or trying to remember ideas beyond the first explanation.",
+      "value": "Учні, які готуються до тестів або намагаються запам'ятати ідеї після першого пояснення."
+    },
+    {
+      "key": "site.6d221129cbde70b8d6",
+      "source": "Learners preparing for tests who need to remember, practise, and repair weak spots.",
+      "value": "Учні, які готуються до тестів і мають запам'ятовувати, практикуватися та виправляти слабкі місця."
+    },
+    {
+      "key": "site.57222a248ea0c57524",
+      "source": "Learners who understand better when they can step into a scene, role, or simulated context.",
+      "value": "Учні, які краще розуміють, коли можуть увійти в сцену, роль або симульований контекст."
+    },
+    {
+      "key": "site.fc6d37fe711acf6802",
+      "source": "Learners who want active recall, quick practice, and a score they can improve.",
+      "value": "Учні, які прагнуть активного відтворення знань, швидкої практики та результату, який можна покращити."
+    },
+    {
+      "key": "site.4399e0a4626bf10cc2",
+      "source": "Learners who want lively debate practice with memorable voices and fair challenge.",
+      "value": "Для тих, хто хоче практикувати жваві дискусії з яскравими особистостями та отримувати чесні виклики."
+    },
+    {
+      "key": "site.3e9dc40dd5d0e074ce",
+      "source": "Learners who want sharper judgment instead of faster answer generation.",
+      "value": "Учні, які хочуть гострішого судження, а не швидшої генерації відповідей."
+    },
+    {
+      "key": "site.88d596f382a119c455",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "Учні, які хочуть зрозуміти, чому працює кожен математичний крок, а не просто скопіювати відповідь."
+    },
+    {
+      "key": "site.001d88ce2003f59d14",
+      "source": "Learners who want to think through a topic, test assumptions, and build durable understanding.",
+      "value": "Учні, які хочуть обдумати тему, перевірити припущення та сформувати стійке розуміння."
+    },
+    {
+      "key": "site.3299e779bee5e155be",
+      "source": "Learners who want to understand people, choices, and ideas in historical context.",
+      "value": "Для тих, хто хоче зрозуміти людей, вибір та ідеї в історичному контексті."
+    },
+    {
+      "key": "site.8ea89f078527f3b277",
+      "source": "Learners with limited time, large goals, or a syllabus that needs structure.",
+      "value": "Учні з обмеженим часом, великими цілями або програмою, якій потрібна структура."
+    },
+    {
+      "key": "site.a5e34d4564633610b8",
+      "source": "Learners working through technical subjects where one unclear step can block the rest.",
+      "value": "Учні, які працюють із технічними предметами, де один незрозумілий крок може заблокувати все інше."
+    },
+    {
+      "key": "site.dfca5195c1f6758134",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "Учні, які пишуть есе, історії, електронні листи, мотиваційні листи або аргументовані тексти."
+    },
+    {
+      "key": "site.8f932b570c5304856a",
+      "source": "Learners, parents, educators, and builders comparing AI tutoring experiences.",
+      "value": "Учні, батьки, освітяни та розробники, які порівнюють досвіди ШІ-наставництва."
+    },
+    {
+      "key": "site.9a6cb25e8dd4d25cb2",
+      "source": "Learners, parents, educators, and builders evaluating AI tutors.",
+      "value": "Учні, батьки, освітяни та розробники, які оцінюють ШІ-репетиторів."
+    },
+    {
+      "key": "site.2ccf37411de8b358aa",
+      "source": "Learners, writers, makers, and curious people who want ideas without losing direction.",
+      "value": "Учні, автори, творці та допитливі люди, які хочуть ідей, не втрачаючи напрямку."
+    },
+    {
+      "key": "site.dad899bd1d9fdf5288",
+      "source": "Learning Game Master",
+      "value": "Майстер навчальних ігор"
+    },
+    {
+      "key": "site.dd383ea59f9f4c1371",
+      "source": "Learning Game Master AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Навчальний режим ШІ «Майстер навчальних ігор» - це сфокусований спосіб використовувати ШІ для навчання, а не пасивного збирання відповідей. Режим побудований навколо конкретного завдання: Зробіть навчання схожим на гру з квестами, рівнями, балами, викликами та раундами з босом."
+    },
+    {
+      "key": "site.d73df447801a782f35",
+      "source": "Learning Game Master AI Learning Mode: practical guide",
+      "value": "Навчальний режим ШІ «Майстер навчальних ігор»: практичний посібник"
+    },
+    {
+      "key": "site.c05631938635dfd8ee",
+      "source": "Learning Game Master prompts and study loop",
+      "value": "Підказки для «Майстер навчальних ігор» і навчальний цикл"
+    },
+    {
+      "key": "site.0919ed6c25041821be",
+      "source": "Learning graph",
+      "value": "Граф навчання"
+    },
+    {
+      "key": "site.4a5b17460e4ef3a2b0",
+      "source": "Learning guide",
+      "value": "Навчальний посібник"
+    },
+    {
+      "key": "site.93b8ca3815e0aefa88",
+      "source": "Learning history by talking to historical figures with AI",
+      "value": "Вивчення історії через розмови з історичними постатями за допомогою ШІ"
+    },
+    {
+      "key": "site.2c16b55d489b86b0dc",
+      "source": "Learning loop",
+      "value": "Навчальний цикл"
+    },
+    {
+      "key": "site.eed89827dc6323a058",
+      "source": "Learning map",
+      "value": "Мапа навчання"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "Навчальний маршрут"
+    },
+    {
+      "key": "site.ec8fb13610fbf4e0bb",
+      "source": "Leave with a useful next question.",
+      "value": "Завершіть із корисним наступним запитанням."
+    },
+    {
+      "key": "site.5c0e4b9e589b860159",
+      "source": "Live learning mode",
+      "value": "Живий режим навчання"
+    },
+    {
+      "key": "site.de22ba5fb77adf951e",
+      "source": "Live mode",
+      "value": "Живий режим"
+    },
+    {
+      "key": "site.e0964a3a242913b39a",
+      "source": "live modes",
+      "value": "живі режими"
+    },
+    {
+      "key": "site.007954fb6a9f543850",
+      "source": "Look closer and notice more.",
+      "value": "Дивіться уважніше й помічайте більше."
+    },
+    {
+      "key": "site.38e105be8045e76116",
+      "source": "Make it teachable",
+      "value": "Зробіть це придатним для навчання"
+    },
+    {
+      "key": "site.66b4b7668dd92bc6b8",
+      "source": "Make learning consistent.",
+      "value": "Зробіть навчання послідовним."
+    },
+    {
+      "key": "site.878fbc51cf6b6d38f3",
+      "source": "Make sense of numbers and charts.",
+      "value": "Розбирайтеся в числах і графіках."
+    },
+    {
+      "key": "site.b18191b446b3480cab",
+      "source": "Make the AI test your thinking",
+      "value": "Нехай ШІ перевіряє твоє мислення"
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "Зробіть результат кориснішим"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Math Step Coach"
+    },
+    {
+      "key": "site.23a793241e2a9bc431",
+      "source": "Math Step Coach For Solving Problems With Understanding is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "Math Step Coach для розв’язання задач із розумінням — це сфокусований спосіб використовувати ШІ для навчання, а не пасивного збирання відповідей. Режим побудований навколо конкретного завдання: розв’язувати математику, розуміючи кожен крок. Ваш коуч перевіряє роботу, вказує на помилки й зміцнює впевненість."
+    },
+    {
+      "key": "site.c6703354e9977e8918",
+      "source": "Math Step Coach For Understanding: practical guide",
+      "value": "Math Step Coach для розуміння: практичний гайд"
+    },
+    {
+      "key": "site.2f03659a282a25dde8",
+      "source": "Math Step Coach prompts and study loop",
+      "value": "Промпти Math Step Coach і навчальний цикл"
+    },
+    {
+      "key": "site.d4652156d799d9d020",
+      "source": "Meet a figure.",
+      "value": "Зустріньте постать."
+    },
+    {
+      "key": "site.b99ec927357ccd739a",
+      "source": "Memory Palace",
+      "value": "Палац пам'яті"
+    },
+    {
+      "key": "site.b89149629548ebdc49",
+      "source": "Memory Palace AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "Memory Palace AI Learning Mode — це сфокусований спосіб використовувати ШІ для навчання замість пасивного збирання відповідей. Режим побудований навколо конкретного завдання: перетворювати факти, списки, промови або послідовності на пам’ятні уявні сцени."
+    },
+    {
+      "key": "site.bf147ee8b5b4920769",
+      "source": "Memory Palace AI Learning Mode: practical guide",
+      "value": "Memory Palace AI Learning Mode: практичний гайд"
+    },
+    {
+      "key": "site.9fdcad7e3083de5bff",
+      "source": "Memory Palace prompts and study loop",
+      "value": "Промпти Memory Palace і навчальний цикл"
+    },
+    {
+      "key": "site.950cbdd5a6dc35ffaf",
+      "source": "Mindset Reflection",
+      "value": "Рефлексія мислення"
+    },
+    {
+      "key": "site.31773af5bc0c1a99d6",
+      "source": "Mindset Reflection AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Mindset Reflection AI Learning Mode — це сфокусований спосіб використовувати ШІ для навчання замість пасивного збирання відповідей. Режим побудований навколо конкретного завдання: помічати, що допомагає вам навчатися, що заважає і як стати сильнішим учнем."
+    },
+    {
+      "key": "site.abf695020c5418ae36",
+      "source": "Mindset Reflection AI Learning Mode: practical guide",
+      "value": "Mindset Reflection AI Learning Mode: практичний гайд"
+    },
+    {
+      "key": "site.80d5e42bc073748f35",
+      "source": "Mindset Reflection prompts and study loop",
+      "value": "Промпти Mindset Reflection і навчальний цикл"
+    },
+    {
+      "key": "site.1c824ca8bbe0a31673",
+      "source": "Misconception Doctor",
+      "value": "Доктор хибних уявлень"
+    },
+    {
+      "key": "site.6b532f8a5ff75fc06b",
+      "source": "Misconception Doctor AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "Misconception Doctor AI Learning Mode — це сфокусований спосіб використовувати ШІ для навчання замість пасивного збирання відповідей. Режим побудований навколо конкретного завдання: сказати, що, на вашу думку, відбувається, а ваш помічник діагностує приховані хибні уявлення за допомогою м’яких перевірок."
+    },
+    {
+      "key": "site.0e0818631571e8102d",
+      "source": "Misconception Doctor AI Learning Mode: practical guide",
+      "value": "Misconception Doctor AI Learning Mode: практичний гайд"
+    },
+    {
+      "key": "site.83a0b3a9cd16f6d117",
+      "source": "Misconception Doctor prompts and study loop",
+      "value": "Промпти Misconception Doctor і навчальний цикл"
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "Помилка. Повторіть незабаром."
+    },
+    {
+      "key": "site.e258d8e9632fdd7f48",
+      "source": "Mode directory",
+      "value": "Каталог режимів"
+    },
+    {
+      "key": "site.0913a39f249d2c3bf1",
+      "source": "More clusters",
+      "value": "Більше кластерів"
+    },
+    {
+      "key": "site.2aa9cb2084eff99846",
+      "source": "Motivation Coach",
+      "value": "Тренер з мотивації"
+    },
+    {
+      "key": "site.15847617cf1f5a3999",
+      "source": "Motivation Coach AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "Motivation Coach AI Learning Mode — це сфокусований спосіб використовувати ШІ для навчання замість пасивного збирання відповідей. Режим побудований навколо конкретного завдання: емоційно вийти зі ступору, знайти менший наступний крок і повернути рух без провини."
+    },
+    {
+      "key": "site.07b4ec62ac7d7ef831",
+      "source": "Motivation Coach AI Learning Mode: practical guide",
+      "value": "Motivation Coach AI Learning Mode: практичний гайд"
+    },
+    {
+      "key": "site.4fd53c1168c430f2c0",
+      "source": "Motivation Coach prompts and study loop",
+      "value": "Промпти Motivation Coach і навчальний цикл"
+    },
+    {
+      "key": "site.4939abb719e1076bb3",
+      "source": "Move from advice into a public guest chat so the idea becomes practice.",
+      "value": "Перейдіть від поради до публічного гостьового чату, щоб ідея стала практикою."
+    },
+    {
+      "key": "site.84b8563da95f287356",
+      "source": "Move from AI tutor research into a live mode that teaches through explanation, questions, and practice.",
+      "value": "Перейдіть від дослідження ШІ-тьютора до живого режиму, який навчає через пояснення, запитання й практику."
+    },
+    {
+      "key": "site.8c5bdd9f195978c178",
+      "source": "Move from reading into active practice with a live public learning mode.",
+      "value": "Перейдіть від читання до активної практики в живому публічному навчальному режимі."
+    },
+    {
+      "key": "site.9cb6e0e2cca90d1147",
+      "source": "Music Theory Coach",
+      "value": "Тренер з теорії музики"
+    },
+    {
+      "key": "site.0696568fca4af96ae1",
+      "source": "Music Theory Coach AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Music Theory Coach AI Learning Mode — це сфокусований спосіб використовувати ШІ для навчання замість пасивного збирання відповідей. Режим побудований навколо конкретного завдання: вивчати ноти, акорди, гами, ритм, ідеї тренування слуху й те, як побудовані пісні."
+    },
+    {
+      "key": "site.9be05ca4f5a0264957",
+      "source": "Music Theory Coach AI Learning Mode: practical guide",
+      "value": "Music Theory Coach AI Learning Mode: практичний гайд"
+    },
+    {
+      "key": "site.bc09edc6bbc8ee819e",
+      "source": "Music Theory Coach prompts and study loop",
+      "value": "Промпти Music Theory Coach і навчальний цикл"
+    },
+    {
+      "key": "site.86373003ff929831a2",
+      "source": "Name the learning job",
+      "value": "Назвіть навчальне завдання"
+    },
+    {
+      "key": "site.847d04773c3bdcbdd4",
+      "source": "Name the misconception or assumption that changed.",
+      "value": "Назвіть хибне уявлення або припущення, яке змінилося."
+    },
+    {
+      "key": "site.69babd91b4b46290e9",
+      "source": "Name the topic or skill you want to understand.",
+      "value": "Назвіть тему або навичку, яку хочете зрозуміти."
+    },
+    {
+      "key": "site.da8a2b667c38394628",
+      "source": "New inspir users and learners building a better AI learning habit from the start.",
+      "value": "Нові користувачі inspir й учні, які з самого початку формують кращу звичку навчання з ШІ."
+    },
+    {
+      "key": "site.ea47a874140471872a",
+      "source": "No. The category structure helps search engines understand the library, but each page is meant to help a learner choose a guide, open the right mode, and keep studying actively.",
+      "value": "Ні. Структура категорій допомагає пошуковим системам зрозуміти бібліотеку, але кожна сторінка покликана допомогти учневі вибрати гайд, відкрити потрібний режим і продовжити активно навчатися."
+    },
+    {
+      "key": "site.24802d55bd8c084723",
+      "source": "noticing what the learner already understands;",
+      "value": "помічати, що учень уже розуміє;"
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "Одна з помилок учнів — ставитися до всіх карток однаково. Якщо ви миттєво знаєте картку, повторювати її завтра може бути марною витратою часу. Якщо ви помилилися з карткою, чекати тиждень може бути задовго."
+    },
+    {
+      "key": "site.cf9b77061f7b3126b4",
+      "source": "Open",
+      "value": "Відкрити"
+    },
+    {
+      "key": "site.2efa60c97c9c9699a7",
+      "source": "Open {value1}",
+      "value": "Відкрити {value1}"
+    },
+    {
+      "key": "site.9c40ebbf00ffb6b298",
+      "source": "Open {value1} and turn the guide into a live tutoring session.",
+      "value": "Відкрийте {value1} і перетворіть гайд на живу тьюторську сесію."
+    },
+    {
+      "key": "site.e792bf488eb8dca6b7",
+      "source": "Open a learning mode",
+      "value": "Відкрити навчальний режим"
+    },
+    {
+      "key": "site.ce7b49aa6ebbab2ed3",
+      "source": "Open a related mode",
+      "value": "Відкрити пов’язаний режим"
+    },
+    {
+      "key": "site.bb202f48f6b37ab3e0",
+      "source": "Open Learn Anything when an answer needs a simpler model before review.",
+      "value": "Відкрийте Learn Anything, коли відповідь потребує простішої моделі перед повторенням."
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "Відкрити режим"
+    },
+    {
+      "key": "site.c2936aa2e966c54c38",
+      "source": "Open next",
+      "value": "Відкрити наступне"
+    },
+    {
+      "key": "site.4d45909516505a9cb9",
+      "source": "Open route",
+      "value": "Відкрити маршрут"
+    },
+    {
+      "key": "site.ae11376c59da10ce2f",
+      "source": "Open the AI learning tools behind this category.",
+      "value": "Відкрити навчальні інструменти ШІ за цією категорією."
+    },
+    {
+      "key": "site.4355f5f9928d3ece4a",
+      "source": "Open the default tutor",
+      "value": "Відкрити типового тьютора"
+    },
+    {
+      "key": "site.12dc1586cb29ad7480",
+      "source": "Output style",
+      "value": "Стиль результату"
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "Поєднуйте картки з розумінням"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "Вставте невеликий фрагмент нотаток у Flashcard Builder."
+    },
+    {
+      "key": "site.60fc78644b7a3747a8",
+      "source": "Philosophy Lab",
+      "value": "Філософська лабораторія"
+    },
+    {
+      "key": "site.e69872889bf1819177",
+      "source": "Philosophy Lab AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "Philosophy Lab AI Learning Mode — це сфокусований спосіб використовувати ШІ для навчання замість пасивного збирання відповідей. Режим побудований навколо конкретного завдання: досліджувати ідентичність, знання, справедливість, свободу, щастя та інші глибокі питання через уважне міркування."
+    },
+    {
+      "key": "site.f2c5ae1f72cd3f2955",
+      "source": "Philosophy Lab AI Learning Mode: practical guide",
+      "value": "Philosophy Lab AI Learning Mode: практичний гайд"
+    },
+    {
+      "key": "site.8bc2bc639656d875fd",
+      "source": "Philosophy Lab prompts and study loop",
+      "value": "Промпти Philosophy Lab і навчальний цикл"
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "Фотосинтез: процес, за допомогою якого рослини виробляють їжу."
+    },
+    {
+      "key": "site.2a178e5b00f33e905e",
+      "source": "Pick the mode that matches the task before writing a prompt.",
+      "value": "Виберіть режим, що відповідає завданню, перш ніж писати промпт."
+    },
+    {
+      "key": "site.bccd63822eaa7b5cd2",
+      "source": "Pillar clusters",
+      "value": "Основні кластери"
+    },
+    {
+      "key": "site.b56b2e2c9ca6c37ee3",
+      "source": "Plan review.",
+      "value": "Заплануйте повторення."
+    },
+    {
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Планування"
+    },
+    {
+      "key": "site.d06066697df6421acb",
+      "source": "Planning guides for study schedules, exam prep, project breakdowns, goals, and realistic learning systems.",
+      "value": "Гайди з планування навчальних розкладів, підготовки до іспитів, розбиття проєктів, цілей і реалістичних навчальних систем."
+    },
+    {
+      "key": "site.9772c7a8d444022683",
+      "source": "Practical learning ideas, not hype.",
+      "value": "Практичні ідеї для навчання, а не хайп."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Практика"
+    },
+    {
+      "key": "site.0a661c173527a8ef37",
+      "source": "Practice a new version.",
+      "value": "Попрактикуйтеся з новою версією."
+    },
+    {
+      "key": "site.1c136883d21daed452",
+      "source": "Practice a similar problem.",
+      "value": "Попрактикуйтеся на схожій задачі."
+    },
+    {
+      "key": "site.8e1923f568be1fd9ee",
+      "source": "Practice guides",
+      "value": "Гайди з практики"
+    },
+    {
+      "key": "site.e23f9e80acb13348ad",
+      "source": "Practice map",
+      "value": "Карта практики"
+    },
+    {
+      "key": "site.53c2f225f3b47789c4",
+      "source": "Practice moral reasoning.",
+      "value": "Практикуйте моральне мислення."
+    },
+    {
+      "key": "site.24ee56e4e1b52d8107",
+      "source": "Practice real conversations.",
+      "value": "Практикуйте реальні розмови."
+    },
+    {
+      "key": "site.93946977aa7adaebf1",
+      "source": "Practice rebuttals.",
+      "value": "Практикуйте спростування."
+    },
+    {
+      "key": "site.90a1163a9abab3fa55",
+      "source": "Practice retrieval.",
+      "value": "Практикуйте пригадування."
+    },
+    {
+      "key": "site.6f6b869fd94999cd18",
+      "source": "Practice stronger answers.",
+      "value": "Практикуйте сильніші відповіді."
+    },
+    {
+      "key": "site.85395b13e76abe5b88",
+      "source": "Practice tough real-life conversations.",
+      "value": "Практикуйте складні розмови з реального життя."
+    },
+    {
+      "key": "site.ae189d122c34458e04",
+      "source": "Practice transfer. Ask for a similar problem with different numbers, wording, or context.",
+      "value": "Практикуйте перенесення. Попросіть схожу задачу з іншими числами, формулюванням або контекстом."
+    },
+    {
+      "key": "site.172c48ad19f31add89",
+      "source": "Practise saying it",
+      "value": "Попрактикуйтеся це вимовляти"
+    },
+    {
+      "key": "site.68cd78078b30795422",
+      "source": "Prepare for oral questioning.",
+      "value": "Підготуйтеся до усного опитування."
+    },
+    {
+      "key": "site.896e3e1aea9d196547",
+      "source": "Prioritize topics.",
+      "value": "Визначте пріоритетні теми."
+    },
+    {
+      "key": "site.e50e46d05b1d14196b",
+      "source": "Private tutoring is powerful, but it is not equally available. A free public AI learning platform can help reduce that access gap by giving more people a patient first place to learn.",
+      "value": "Приватне репетиторство потужне, але доступне не всім однаково. Безкоштовна публічна навчальна платформа з ШІ може допомогти зменшити цей розрив доступу, даючи більшій кількості людей терпляче перше місце для навчання."
+    },
+    {
+      "key": "site.c3c70aa174126d7f80",
+      "source": "Project Coach",
+      "value": "Коуч проєктів"
+    },
+    {
+      "key": "site.ffa547df7ada19ae32",
+      "source": "Project Coach AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "Project Coach AI Learning Mode — це сфокусований спосіб використовувати ШІ для навчання замість пасивного збирання відповідей. Режим побудований навколо конкретного завдання: планувати навчальний, творчий, програмістський або особистий проєкт з обсягом, етапами, блокерами й наступними діями."
+    },
+    {
+      "key": "site.b37d18a549aa0a6698",
+      "source": "Project Coach AI Learning Mode: practical guide",
+      "value": "Project Coach AI Learning Mode: практичний гайд"
+    },
+    {
+      "key": "site.c7f871721c09fd4ba5",
+      "source": "Project Coach prompts and study loop",
+      "value": "Промпти Project Coach і навчальний цикл"
+    },
+    {
+      "key": "site.48e3f3f29813b600f1",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Art Appreciation Guide on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Art Appreciation Guide на inspir."
+    },
+    {
+      "key": "site.32a3798c6d9c3aa469",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Career Explorer on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Career Explorer на inspir."
+    },
+    {
+      "key": "site.2ba064cdf72b11e130",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Case Study Simulator on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Case Study Simulator на inspir."
+    },
+    {
+      "key": "site.329c9c0fcd4450c272",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Civics Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Civics Coach на inspir."
+    },
+    {
+      "key": "site.c9b8843cf85c7a7aec",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Code Tutor on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Code Tutor на inspir."
+    },
+    {
+      "key": "site.0487360490eb39295e",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Collaborative Instruction on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Collaborative Instruction на inspir."
+    },
+    {
+      "key": "site.6bdddc97af69ed0da9",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Concept Map Builder on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Concept Map Builder на inspir."
+    },
+    {
+      "key": "site.db96b17c96c300773f",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Creative Brainstormer on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Creative Brainstormer на inspir."
+    },
+    {
+      "key": "site.304a9d6c03d45217c4",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Data Interpreter on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Data Interpreter на inspir."
+    },
+    {
+      "key": "site.12749856da8b537916",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Debate any topic on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Debate any topic на inspir."
+    },
+    {
+      "key": "site.e9895ac0ad3e1479a9",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Debate with a personality on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Debate with a personality на inspir."
+    },
+    {
+      "key": "site.6e0c9efde3fd858a7c",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Economics Simulator on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Economics Simulator на inspir."
+    },
+    {
+      "key": "site.76c1a11ed2b3cfa993",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Ethics Dilemmas on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Ethics Dilemmas на inspir."
+    },
+    {
+      "key": "site.0192449dc8022f28d4",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Exam Prep Planner on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Exam Prep Planner на inspir."
+    },
+    {
+      "key": "site.7fda36543a6ff1c400",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Explain My Answer on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Explain My Answer на inspir."
+    },
+    {
+      "key": "site.c39efca26acbacc063",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Feynman Tutor on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Feynman Tutor на inspir."
+    },
+    {
+      "key": "site.654ae47b8ce6cc2e94",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Flashcard Builder on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Flashcard Builder на inspir."
+    },
+    {
+      "key": "site.bc2cd38bf9b9c3ea8f",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Geography Explorer on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Geography Explorer на inspir."
+    },
+    {
+      "key": "site.3a4a2faec523e15e5f",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Habit Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Habit Coach на inspir."
+    },
+    {
+      "key": "site.da58769a5909bed0dc",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from History Cause-and-Effect on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з History Cause-and-Effect на inspir."
+    },
+    {
+      "key": "site.ca7b798ce80eba0e84",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Homework Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Homework Coach на inspir."
+    },
+    {
+      "key": "site.0ba42cc66c14af1789",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Interactive Instruction on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Interactive Instruction на inspir."
+    },
+    {
+      "key": "site.ea57eccab3efe34afc",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Interview Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Interview Coach на inspir."
+    },
+    {
+      "key": "site.149b0ebe772e6322d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Language Roleplay on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Language Roleplay на inspir."
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Learn Anything на inspir."
+    },
+    {
+      "key": "site.26d9ae8de099c01006",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learning Game Master on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Learning Game Master на inspir."
+    },
+    {
+      "key": "site.5fcefec1f3858099aa",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Math Step Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Math Step Coach на inspir."
+    },
+    {
+      "key": "site.f8ae64e2e7f1edfae0",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Memory Palace on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Memory Palace на inspir."
+    },
+    {
+      "key": "site.4d4d30fffc3a8149d1",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Mindset Reflection on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Mindset Reflection на inspir."
+    },
+    {
+      "key": "site.e0bd77bcecb0f98405",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Misconception Doctor on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Misconception Doctor на inspir."
+    },
+    {
+      "key": "site.2de390d4f97add7eee",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Motivation Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Motivation Coach на inspir."
+    },
+    {
+      "key": "site.b5febae11dcde64fd0",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Music Theory Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Music Theory Coach на inspir."
+    },
+    {
+      "key": "site.cd6e5628d89fcad9d1",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Philosophy Lab on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Philosophy Lab на inspir."
+    },
+    {
+      "key": "site.5e152c661b984652b0",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Project Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Project Coach на inspir."
+    },
+    {
+      "key": "site.2c24649be77a83ecdf",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Quiz me on Trivia on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Quiz me on Trivia на inspir."
+    },
+    {
+      "key": "site.c238cdaae3d1fd2843",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Reading Companion on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Reading Companion на inspir."
+    },
+    {
+      "key": "site.a7b9d86f3fd2401122",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Research Assistant on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Research Assistant на inspir."
+    },
+    {
+      "key": "site.61fdc3e94874cdece2",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Roleplay Scenario on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Roleplay Scenario на inspir."
+    },
+    {
+      "key": "site.6a9a85c968e9aea5df",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Science Lab Partner on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Science Lab Partner на inspir."
+    },
+    {
+      "key": "site.3bbd232b786047cb97",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Socratic Instruction on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Socratic Instruction на inspir."
+    },
+    {
+      "key": "site.d969a1be1117741d0b",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Source Critic on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Source Critic на inspir."
+    },
+    {
+      "key": "site.a352316c42909b3aa2",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Spaced Review on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Spaced Review на inspir."
+    },
+    {
+      "key": "site.1ecfa862cd3813b90c",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Speaking Practice on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Speaking Practice на inspir."
+    },
+    {
+      "key": "site.9cabe0c0f24cca8d77",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Story Tutor on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Story Tutor на inspir."
+    },
+    {
+      "key": "site.c0371f7d4e06d7becb",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Study Plan Builder on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Study Plan Builder на inspir."
+    },
+    {
+      "key": "site.254afb955c048081de",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Talk to a historical person on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Talk to a historical person на inspir."
+    },
+    {
+      "key": "site.6d700ff97463496cdf",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Time travel on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Time travel на inspir."
+    },
+    {
+      "key": "site.dabf44aa485fb89a43",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Viva Practice on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Viva Practice на inspir."
+    },
+    {
+      "key": "site.45e25677f55c0b305e",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Vocabulary Builder on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Vocabulary Builder на inspir."
+    },
+    {
+      "key": "site.0aa19746e27798950b",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Writing Coach on inspir.",
+      "value": "Ідеї промптів і повторюваний навчальний цикл, щоб отримувати корисні навчальні результати з Writing Coach на inspir."
+    },
+    {
+      "key": "site.f693e7340a47d4b552",
+      "source": "Prompt library",
+      "value": "Бібліотека промптів"
+    },
+    {
+      "key": "site.398bbc5b7ba9739c49",
+      "source": "prompt loop",
+      "value": "цикл промптів"
+    },
+    {
+      "key": "site.4260d572af0bfa711b",
+      "source": "Prompt patterns for explanations, tutoring, roleplay, quizzes, feedback, planning, debate, and active recall.",
+      "value": "Шаблони промптів для пояснень, тьюторства, рольової гри, тестів, зворотного зв’язку, планування, дебатів і активного пригадування."
+    },
+    {
+      "key": "site.e6f5db8a4f933a2b88",
+      "source": "Prompts to try",
+      "value": "Промпти, які варто спробувати"
+    },
+    {
+      "key": "site.a0fb821bdaf93ed9a1",
+      "source": "Purpose",
+      "value": "Мета"
+    },
+    {
+      "key": "site.a9e29fcc0927aaf210",
+      "source": "Question a perspective",
+      "value": "Поставте запитання перспективі"
+    },
+    {
+      "key": "site.150d2f992817c46a31",
+      "source": "Question the model",
+      "value": "Поставте запитання моделі"
+    },
+    {
+      "key": "site.70bc8bc72d32fcb39d",
+      "source": "Questions reveal the shape of confusion. A learner might know a formula but not when to use it. They might remember a historical fact but not understand the cause. They might have a strong opinion but weak evidence.",
+      "value": "Запитання показують форму плутанини. Учень може знати формулу, але не розуміти, коли її застосовувати. Може пам’ятати історичний факт, але не розуміти причину. Може мати сильну думку, але слабкі докази."
+    },
+    {
+      "key": "site.ede707f5525b037e86",
+      "source": "Quiz before rereading",
+      "value": "Тестуйте себе перед перечитуванням"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Вікторина на ерудицію"
+    },
+    {
+      "key": "site.547ad1c9ccc1450f9f",
+      "source": "Quiz me on Trivia prompts and study loop",
+      "value": "Промпти Quiz me on Trivia і навчальний цикл"
+    },
+    {
+      "key": "site.3d576fd7be89f72774",
+      "source": "Quiz the concept",
+      "value": "Перевірте поняття тестом"
+    }
+  ]
+}

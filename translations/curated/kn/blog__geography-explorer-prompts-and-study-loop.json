@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "language": "Kannada",
+  "locale": "kn",
+  "namespace": "blog:geography-explorer-prompts-and-study-loop",
+  "sourceHash": "30ab1435cfbe6fee7484d8257db15ca774af5ea156bab61db839e50be6f68add",
+  "entries": [
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"ತುಂಬಾ ವಿವರಿಸುವ ಮೊದಲು ನನಗೆ ಪ್ರಶ್ನೆಗಳು ಕೇಳಿ.\""
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"ನಿಮ್ಮ ಉತ್ತರ ಕೊಡುವ ಮೊದಲು ನನ್ನ ಉತ್ತರ ಪರಿಶೀಲಿಸಿ.\""
+    },
+    {
+      "key": "site.5637d5d3a384f92ca0",
+      "source": "\"Compare India and Japan\"",
+      "value": "\"ಭಾರತ ಮತ್ತು ಜಪಾನ್ ಹೋಲಿಸಿ\""
+    },
+    {
+      "key": "site.88df11c3d80e018744",
+      "source": "\"Explore the Himalayas\"",
+      "value": "\"ಹಿಮಾಲಯಗಳನ್ನು ಅನ್ವೇಷಿಸಿ\""
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"ನಾನು ಪ್ರಯತ್ನಿಸಿದ ನಂತರ ಇನ್ನೂ ಕಠಿಣ ಆವೃತ್ತಿ ನೀಡಿ.\""
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"ಆರಂಭಿಕರಿಗೆ ಸ್ನೇಹಪರವಾಗಿರಲಿ.\""
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "\"ನನ್ನ ಪರೀಕ್ಷೆ, ಯೋಜನೆ ಅಥವಾ ದೈನಂದಿನ ಜೀವನದಿಂದ ಉದಾಹರಣೆಗಳನ್ನು ಬಳಸಿ.\""
+    },
+    {
+      "key": "site.a9a6af3c45e58fb774",
+      "source": "\"Why are cities near rivers?\"",
+      "value": "\"ನಗರಗಳು ನದಿಗಳ ಬಳಿಯಲ್ಲಿ ಏಕೆ ಇರುತ್ತವೆ?\""
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "AI ಪ್ರಾಂಪ್ಟ್‌ಗಳು"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "ಅತಿ ಚಿಕ್ಕ ಮೊದಲ ಕಾರ್ಯ ಕೇಳಿ."
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "ನೀವೇ ಬರೆಯುವ recap ನೊಂದಿಗೆ ಮುಗಿಸಿ."
+    },
+    {
+      "key": "site.f648657225584ee1d7",
+      "source": "For Geography Explorer, a useful practice loop is:",
+      "value": "Geography Explorerಗಾಗಿ ಉಪಯುಕ್ತ ಅಭ್ಯಾಸ ಚಕ್ರ:"
+    },
+    {
+      "key": "site.009ef97d27fae3d802",
+      "source": "For this mode, the job is simple: Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "ಈ ಮೋಡ್‌ನಲ್ಲಿ ಕೆಲಸ ಸರಳವಾಗಿದೆ: ಸ್ಪಷ್ಟ ವಿವರಣೆಗಳು, ಉದಾಹರಣೆಗಳು, ಪರಿಶೀಲನೆಗಳು ಮತ್ತು ಮುಂದಿನ ಉಪಯುಕ್ತ ಹೆಜ್ಜೆಗಳ ಮೂಲಕ ಕಲಿಯುವವರಿಗೆ ವಿಷಯವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡಿ."
+    },
+    {
+      "key": "site.103db26385c1a75bb1",
+      "source": "Geography Explorer prompts and study loop",
+      "value": "Geography Explorer ಪ್ರಾಂಪ್ಟ್‌ಗಳು ಮತ್ತು ಅಧ್ಯಯನ ಚಕ್ರ"
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "ವಿಷಯ, ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಮಟ್ಟ, ಬೇಕಾದ ಸಹಾಯದ ರೀತಿಯೊಂದಿಗೆ ಪ್ರಾಂಪ್ಟ್ ಆರಂಭಿಸಿ; ನಂತರ ಉದಾಹರಣೆ, ತಪ್ಪು ಕಲ್ಪನೆ, ಪರಿಶೀಲನಾ ಪ್ರಶ್ನೆ ಅಥವಾ ಮುಂದಿನ ಹಂತವನ್ನು ಕೇಳಿ."
+    },
+    {
+      "key": "site.f8ad269d8d1ff89348",
+      "source": "Humanities",
+      "value": "ಮಾನವಶಾಸ್ತ್ರ"
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "ಪರೀಕ್ಷೆಗೆ ಮುಖ್ಯ ವಿಷಯಗಳು, ದುರ್ಬಲ ಭಾಗಗಳು ಮತ್ತು ಅಭ್ಯಾಸ ಹಂತಗಳನ್ನು ಯೋಜಿಸಿ."
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "ಮಾಡಿ the output more useful"
+    },
+    {
+      "key": "site.bc2cd38bf9b9c3ea8f",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Geography Explorer on inspir.",
+      "value": "inspir ನಲ್ಲಿ Geography Explorer ನಿಂದ ಉಪಯುಕ್ತ ಕಲಿಕಾ ಫಲಿತಾಂಶಗಳನ್ನು ಪಡೆಯಲು ಪ್ರಾಂಪ್ಟ್ ಕಲ್ಪನೆಗಳು ಮತ್ತು ಮರುಬಳಕೆಯ ಅಧ್ಯಯನ ಚಕ್ರ."
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "Reading an AI response is not the same as ಕಲಿಕೆ. After the first ಉತ್ತರ, ask the ಮೋಡ್ to make you do something with the idea."
+    },
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "ಸಂಬಂಧಿತ ಕಲಿಕಾ ಮಾರ್ಗಗಳು"
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "Request ಪ್ರತಿಕ್ರಿಯೆ on the part that felt uncertain."
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "ಪರಿಹಾರ ಕೇಳುವ ಮೊದಲು ಪ್ರತಿಕ್ರಿಯಿಸಿ."
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "ಇದರಿಂದ ಆರಂಭಿಸಿ one ಸ್ಪಷ್ಟ request"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "ಸ್ಪಷ್ಟವಾಗಿ ಹೇಳಿ ಗುರಿ in one sentence."
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "ಅಧ್ಯಯನ ಕೌಶಲ್ಯಗಳು"
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "ಆ ಅಂತಿಮ ಸಾರಾಂಶ is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI."
+    },
+    {
+      "key": "site.b717c1703a0a1aaa1e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "ಉತ್ತಮ ಕಲಿಕಾ ಸೆಷನ್‌ಗಳು ಹೊಂದಿಕೊಳ್ಳುವಂತಿರುತ್ತವೆ. ಈ ಮೋಡ್ ಹೊಂದಿಸಲಾಗಿದೆ: geography explorer ಅದರದೇ ಪ್ರಾಂಪ್ಟ್‌ಗಳು, ಉದಾಹರಣೆಗಳು ಮತ್ತು ಕಲಿಕಾ ಹರಿವಿನೊಂದಿಗೆ."
+    },
+    {
+      "key": "site.c6799bc50adc22a8b9",
+      "source": "The fastest way to get value from Geography Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Geography Explorer ನಿಂದ ಮೌಲ್ಯವನ್ನು ಬೇಗ ಪಡೆಯುವ ಉತ್ತಮ ಮಾರ್ಗವೆಂದರೆ AI ಗೆ ಕೇವಲ ವಿಷಯವನ್ನಲ್ಲ, ಕಲಿಕೆಯ ಕೆಲಸವನ್ನು ನೀಡುವುದು. ವಿಷಯವು ನಿಮಗೆ ಯಾವದರ ಮೇಲೆ ಆಸಕ್ತಿ ಇದೆ ಎಂದು ಹೇಳುತ್ತದೆ. ಕಲಿಕೆಯ ಕೆಲಸವು ನಿಮಗೆ ಯಾವ ರೀತಿಯ ಸಹಾಯ ಬೇಕು ಎಂದು ಹೇಳುತ್ತದೆ."
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "ನಂತರ ಒಂದು ಮಿತಿಯನ್ನು ಸೇರಿಸಿ that makes the session more personal:"
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "one of these starters: ಪ್ರಯತ್ನಿಸಿ."
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "ಮೋಡ್ ಅನ್ನು ಅಭ್ಯಾಸ ಆಗಿ ಮಾಡಿ."
+    },
+    {
+      "key": "site.f52be16701e83ab73b",
+      "source": "Use Geography Explorer when this is the right mode for the job. If you want a related path, try Ethics Dilemmas. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "ಈ ಕೆಲಸಕ್ಕೆ Geography Explorer ಸರಿಯಾದ ಮೋಡ್ ಆಗಿರುವಾಗ ಅದನ್ನು ಬಳಸಿ. ಸಂಬಂಧಿತ ಮಾರ್ಗ ಬೇಕಿದ್ದರೆ Ethics Dilemmas ಪ್ರಯತ್ನಿಸಿ. ಅಧ್ಯಯನ ವಿಧಾನಗಳು, ಸಾಕ್ರಟಿಕ್ ಕಲಿಕೆ, ಫ್ಲ್ಯಾಶ್‌ಕಾರ್ಡ್‌ಗಳು, ಪಾತ್ರಾಭಿನಯ ಮತ್ತು ಸಕ್ರಿಯ ಸ್ಮರಣೆ ಗಾಗಿ AI learning blog ಅನ್ನು ಕೂಡ ಬ್ರೌಸ್ ಮಾಡಬಹುದು."
+    }
+  ]
+}

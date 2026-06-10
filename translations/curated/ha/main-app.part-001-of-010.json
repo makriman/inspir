@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hausa",
+  "locale": "ha",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 1,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "onboarding.age.title",
+      "source": "Help inspir fit your age",
+      "value": "Taimaka wa inspir ya dace da shekarunka"
+    },
+    {
+      "key": "onboarding.age.body",
+      "source": "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.",
+      "value": "Faɗa mana ranar haihuwarka domin mu gina ƙwarewar koyo da ta dace da shekarunka. Muna amfani da ita don daidaita misalai, sautin magana, da iyakokin tsaro."
+    },
+    {
+      "key": "onboarding.age.label",
+      "source": "Date of birth",
+      "value": "Ranar haihuwa"
+    },
+    {
+      "key": "onboarding.age.submit",
+      "source": "Continue",
+      "value": "Ci gaba"
+    },
+    {
+      "key": "onboarding.age.saving",
+      "source": "Saving...",
+      "value": "Ana adanawa..."
+    },
+    {
+      "key": "onboarding.age.error",
+      "source": "Please enter a valid date of birth.",
+      "value": "Da fatan za a shigar da ranar haihuwa ingantacciya."
+    },
+    {
+      "key": "profile.age",
+      "source": "Age",
+      "value": "Shekaru"
+    },
+    {
+      "key": "profile.ageUnknown",
+      "source": "Add your date of birth",
+      "value": "Ƙara ranar haihuwarka"
+    },
+    {
+      "key": "sidebar.openLearningStore",
+      "source": "Open learning store",
+      "value": "Bude shagon koyo"
+    },
+    {
+      "key": "sidebar.search",
+      "source": "Search",
+      "value": "Bincika"
+    },
+    {
+      "key": "sidebar.searchChats",
+      "source": "Search chats",
+      "value": "Bincika tattaunawa"
+    },
+    {
+      "key": "component.f1d4d7957321",
+      "source": "- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access.",
+      "value": "- Aiwatar da ƙuntatawa game da harshe, matsayi, jinsi, aji, doka, addini, kuɗi, tsafta, da damar shiga."
+    },
+    {
+      "key": "component.de2cb1c532d3",
+      "source": "- Before the person speaks, build the room: where we are, year or date range, what has happened so far, current pressures, beliefs, blind spots, and historian uncertainties.",
+      "value": "- Kafin mutumin ya yi magana, gina ɗakin: inda muke, shekara ko lokacin da muke ciki, abin da ya faru ya zuwa yanzu, matsin lamba na yanzu, imani, abubuwan da ba a gani ba, da rashin tabbas na masanin tarihi."
+    },
+    {
+      "key": "component.671d0e44bf2f",
+      "source": "- Create a dossier wall with: timeline so far, personal stakes, allies and enemies, major beliefs at this time, blind spots, known writings or speeches, current pressure, historical context, evidence quality, and recommended opening questions.",
+      "value": "- Ƙirƙiri bangon fayil tare da: lokacin da aka ɗauka ya zuwa yanzu, abubuwan da ke cikin haɗari, abokai da makiya, manyan imanin wannan lokacin, abubuwan da ba a gani ba, rubuce-rubuce ko jawabai da aka sani, matsin lamba na yanzu, mahallin tarihi, ingancin shaida, da shawarar tambayoyin buɗewa."
+    },
+    {
+      "key": "component.e4e3c0086d98",
+      "source": "- Do not fabricate direct quotes, citations, or private thoughts.",
+      "value": "- Kada a ƙirƙiri zantuka kai tsaye, ambato, ko tunani na sirri."
+    },
+    {
+      "key": "component.1752fdeccd95",
+      "source": "- Do not fabricate exact quotations. If a direct quotation is not sourced in the conversation, mark generated wording as a modernized paraphrase or reconstructed dialogue.",
+      "value": "- Kada a ƙirƙiri ainihin zantuka. Idan ba a samo zance kai tsaye a cikin tattaunawar ba, yi alama ga kalmomin da aka samar a matsayin fassarar zamani ko tattaunawar da aka sake ginawa."
+    },
+    {
+      "key": "component.b29fa4561fe0",
+      "source": "- Do not romanticize violence, empire, slavery, caste, disease, or oppression.",
+      "value": "- Kada a ɗaukaka tashin hankali, daular mulki, bauta, tsarin zamantakewa, cuta, ko zalunci."
+    },
+    {
+      "key": "component.1085e735c6e8",
+      "source": "- Do not sanitize harmful views, and do not glorify oppression, casteism, racism, slavery, misogyny, authoritarianism, or violence. Context is not automatic excuse.",
+      "value": "- Kada a rage girman ra'ayoyi masu cutarwa, kuma kada a ɗaukaka zalunci, nuna wariya, wariyar launin fata, bauta, kyamar mata, mulkin kama-karya, ko tashin hankali. Mahallin ba uzuri ba ne na atomatik."
+    },
+    {
+      "key": "component.801795b0fb38",
+      "source": "- End with three meaningful actions plus one option to pause for historian context.",
+      "value": "- Ƙare da ayyuka guda uku masu ma'ana tare da zaɓi ɗaya na dakatawa don mahallin masanin tarihi."
+    },
+    {
+      "key": "component.de013cc30a42",
+      "source": "- If any destination field is AI-resolved or vague, first offer three concrete historically meaningful arrival options and wait for the learner to choose.",
+      "value": "- Idan kowane filin makoma AI ne ya warware shi ko kuma bai bayyana ba, da farko bayar da zaɓuɓɓukan zuwa guda uku na tarihi masu ma'ana kuma jira mai koyo ya zaɓa."
+    },
+    {
+      "key": "component.9bd19f4fd8e4",
+      "source": "- Maintain two layers after the encounter begins: in-character voice bounded by the time slice, and historian sidecar notes that distinguish documented fact, plausible reconstruction, contested interpretation, modern paraphrase, and fictionalized dialogue.",
+      "value": "- Kula da matakai biyu bayan haɗuwar ta fara: muryar hali wanda lokacin ya iyakance, da bayanin gefe na masanin tarihi wanda ke bambanta gaskiyar da aka rubuta, sake ginawa mai yiwuwa, fassarar da ake jayayya, fassarar zamani, da tattaunawar da aka ƙirƙira."
+    },
+    {
+      "key": "component.de222cf7278e",
+      "source": "- Mark known facts, plausible reconstruction, and speculation clearly.",
+      "value": "- Yi alama ga gaskiyar da aka sani, sake ginawa mai yiwuwa, da zato a fili."
+    },
+    {
+      "key": "component.577c1740ce66",
+      "source": "- Otherwise, greet the traveler, summarize the passport in one compact paragraph, then ask the first meaningful action question.",
+      "value": "- In ba haka ba, gaishe da matafiyi, taƙaita fasfo ɗin a cikin sakin layi ɗaya, sannan ka tambayi tambayar aiki ta farko mai ma'ana."
+    },
+    {
+      "key": "component.b2e1db809745",
+      "source": "- The historical person may resist, challenge, evade, ask questions back, reject false premises, or reveal period constraints. They should not be infinitely agreeable.",
+      "value": "- Mutumin tarihi na iya yin tirjiya, ƙalubalantar, kaucewa, mayar da tambayoyi, ƙin yarda da ƙarya, ko bayyana ƙuntatawar lokacin. Bai kamata su kasance masu yarda da komai ba."
+    },
+    {
+      "key": "component.dbf03f594e9a",
+      "source": "1. If discovery or time-slice choice is needed, show choices and stop.",
+      "value": "1. Idan ana buƙatar gano abu ko zaɓin lokaci, nuna zaɓuɓɓuka kuma dakata."
+    },
+    {
+      "key": "component.d7c10a3a280a",
+      "source": "10-15 min",
+      "value": "Minti 10-15"
+    },
+    {
+      "key": "component.f54fb79a2c7b",
+      "source": "10-minute visit",
+      "value": "Ziyarar minti 10"
+    },
+    {
+      "key": "component.ac6b07830dc8",
+      "source": "117 CE",
+      "value": "117 CE"
+    },
+    {
+      "key": "component.74569c3a21db",
+      "source": "13 July 1789",
+      "value": "13 Yuli 1789"
+    },
+    {
+      "key": "component.888a8c62cad1",
+      "source": "1582 CE",
+      "value": "1582 CE"
+    },
+    {
+      "key": "component.7927f10024f8",
+      "source": "1946-1949 constitution-making period",
+      "value": "Lokacin tsara kundin tsarin mulki na 1946-1949"
+    },
+    {
+      "key": "component.7929b59ace63",
+      "source": "2 September 1666",
+      "value": "2 Satumba 1666"
+    },
+    {
+      "key": "component.93279f37d48e",
+      "source": "2. Otherwise show the dossier wall first, then invite me to begin with one of the recommended questions.",
+      "value": "2. In ba haka ba, nuna bangon fayil din tukuna, sannan ka gayyace ni in fara da daya daga cikin tambayoyin da aka ba da shawarar."
+    },
+    {
+      "key": "component.5ba8d2095acf",
+      "source": "399 BCE",
+      "value": "399 BCE"
+    },
+    {
+      "key": "component.e86db0bd6466",
+      "source": "742 CE",
+      "value": "742 CE"
+    },
+    {
+      "key": "component.479332a4ee5d",
+      "source": "8-12 min",
+      "value": "8-12 min"
+    },
+    {
+      "key": "component.92b97bd2656b",
+      "source": "A bad name can confuse, but the clue points to timing. First prove whether the data has arrived.",
+      "value": "Sunan da bai dace ba zai iya haifar da rudani, amma alamar tana nuna lokaci. Da farko tabbatar ko bayanan sun iso."
+    },
+    {
+      "key": "component.73be2535a7ef",
+      "source": "A few facts, a rough draft, where you are stuck...",
+      "value": "Wasu gaskiyar magana, daftarin farko, inda kake makale..."
+    },
+    {
+      "key": "component.3a5490dd465c",
+      "source": "A final transfer task proves improvement better than a Next button.",
+      "value": "Aikin canja wurin na karshe yana tabbatar da ci gaba fiye da maɓallin Gaba."
+    },
+    {
+      "key": "component.e76981a6130c",
+      "source": "A first question or angle",
+      "value": "Tambaya ko mahangar farko"
+    },
+    {
+      "key": "component.fc3548da826f",
+      "source": "A good learning loop",
+      "value": "Kyakkyawan tsarin koyo"
+    },
+    {
+      "key": "component.8b485f912dc9",
+      "source": "A historical turning point",
+      "value": "Wani muhimmin lokaci a tarihi"
+    },
+    {
+      "key": "component.509238ca336a",
+      "source": "A named bystander's private thoughts",
+      "value": "Tunanin sirri na wanda aka ambata a matsayin mai kallo"
+    },
+    {
+      "key": "component.70e45fc0a076",
+      "source": "A paragraph that lists facts without a claim makes the reader do the argument work.",
+      "value": "Sakin layi wanda ke lissafa gaskiyar magana ba tare da ikirari ba yana sa mai karatu ya yi aikin muhawara."
+    },
+    {
+      "key": "component.efddac11b07f",
+      "source": "A price change alone is movement along a curve, not automatically a shift of the whole curve.",
+      "value": "Canjin farashi kadai motsi ne tare da lanƙwasa, ba ta atomatik ba ne motsi na dukan lanƙwasa."
+    },
+    {
+      "key": "component.2c2d4478e960",
+      "source": "A shared goal, next actions, and what is already done.",
+      "value": "Manufa daya, matakai na gaba, da abin da aka riga aka yi."
+    },
+    {
+      "key": "component.7ccb7eaf2c91",
+      "source": "A simulation makes the hidden causal chain visible. Change one thing at a time.",
+      "value": "Wani kwaikwayo yana sa sarkar dalili da aka ɓoye ta bayyana. Canja abu daya a lokaci guda."
+    },
+    {
+      "key": "component.05dd6afd03c7",
+      "source": "A single check question before moving forward.",
+      "value": "Tambayar bincike guda daya kafin ci gaba."
+    },
+    {
+      "key": "component.45bcd09aaf93",
+      "source": "A single merchant's private plan",
+      "value": "Tsarin sirri na dan kasuwa guda daya"
+    },
+    {
+      "key": "component.9ddedccd5dfe",
+      "source": "A strategy framework is a pressure test. Porter's Five Forces asks who can take profit away and how strong each pressure is.",
+      "value": "Tsarin dabarun gwajin matsin lamba ne. Porter's Five Forces yana tambayar wa zai iya daukar riba kuma yadda kowane matsin lamba yake da karfi."
+    },
+    {
+      "key": "component.c54212476e61",
+      "source": "A strong paragraph names the claim, proves it with evidence, then explains why the evidence changes the reader's view.",
+      "value": "Sakin layi mai karfi yana ambaton ikirari, yana tabbatar da shi da shaida, sannan yana bayyana dalilin da ya sa shaidar ke canza ra'ayin mai karatu."
+    },
+    {
+      "key": "component.060424977eb9",
+      "source": "A useful model is a chain: assumptions drive operations, operations create cash flow, and cash flow becomes value only after timing and risk are considered.",
+      "value": "Wani samfuri mai amfani shi ne sarkar: zato yana tafiyar da ayyuka, ayyuka suna samar da kudaden shiga, kuma kudaden shiga suna zama daraja ne kawai bayan an yi la'akari da lokaci da kuma hadari."
+    },
+    {
+      "key": "component.eeaa5ed03e9b",
+      "source": "Accept, edit, or reject the next AI pass",
+      "value": "Amince, gyara, ko ki na gaba da AI ta yi"
+    },
+    {
+      "key": "component.1300b29b2088",
+      "source": "Accept, revise, reject, or gather evidence.",
+      "value": "Amince, sake dubawa, ki, ko tattara hujjoji."
+    },
+    {
+      "key": "component.0e79c5cbf292",
+      "source": "Account tokens and a modest coin pouch",
+      "value": "Alamar asusu da kuma karamin jakar tsabar kudi"
+    },
+    {
+      "key": "component.551dde7d6f46",
+      "source": "Active destination",
+      "value": "Wurin da ake nufa a halin yanzu"
+    },
+    {
+      "key": "component.a3a7c2d5255a",
+      "source": "Active recall builder",
+      "value": "Mai gina tunawa mai aiki"
+    },
+    {
+      "key": "component.35ed39add1a5",
+      "source": "Activity feed",
+      "value": "Abincin ayyuka"
+    },
+    {
+      "key": "component.09d382d5e515",
+      "source": "Ada Lovelace on imagination",
+      "value": "Ada Lovelace akan tunani"
+    },
+    {
+      "key": "component.e46f5454cef1",
+      "source": "Ada Lovelace, Cleopatra, B. R. Ambedkar...",
+      "value": "Ada Lovelace, Cleopatra, B. R. Ambedkar..."
+    },
+    {
+      "key": "component.0515fc165d38",
+      "source": "Adaptive Lesson Loop",
+      "value": "Madauki na Darasi mai dacewa"
+    },
+    {
+      "key": "component.2db9cee8eaab",
+      "source": "Add your date of birth",
+      "value": "Saka ranar haihuwarka"
+    },
+    {
+      "key": "component.6c8eb1d6c413",
+      "source": "Add, edit, challenge, or decide the next move",
+      "value": "Kara, gyara, kalubalanci, ko yanke shawarar mataki na gaba"
+    },
+    {
+      "key": "component.1cd62e4c8a62",
+      "source": "Adding memory hints",
+      "value": "Kara bayanan tunawa"
+    },
+    {
+      "key": "component.edb26c036b21",
+      "source": "Adding more information when the real gap is the link between evidence and claim.",
+      "value": "Kara karin bayani lokacin da ainihin gibin shi ne hanyar haɗi tsakanin shaida da da'awar."
+    },
+    {
+      "key": "component.7a3153d9c8bb",
+      "source": "Administrative avenues",
+      "value": "Hanyoyin gudanarwa"
+    },
+    {
+      "key": "component.b626fa8f5231",
+      "source": "advisor seeking counsel",
+      "value": "mai ba da shawara yana neman shawara"
+    },
+    {
+      "key": "component.b2f31dc5dc8c",
+      "source": "Agora during the days around Socrates' trial",
+      "value": "Agora a lokacin kwanakin shari'ar Socrates"
+    },
+    {
+      "key": "component.3792ca70acf3",
+      "source": "AI challenge",
+      "value": "Kalubalen AI"
+    },
+    {
+      "key": "component.1f3b4e685d50",
+      "source": "AI is reviewing your artifact",
+      "value": "AI tana nazarin kayan aikinka"
+    },
+    {
+      "key": "component.e15d8549a1e2",
+      "source": "AI made the first structure",
+      "value": "AI ta yi tsarin farko"
+    },
+    {
+      "key": "component.0eb366481b22",
+      "source": "AI revised the workspace",
+      "value": "AI ta sake duba wurin aiki"
+    },
+    {
+      "key": "component.5aa26a431afe",
+      "source": "AI-resolved date range",
+      "value": "Kewayon kwanan wata da AI ta warware"
+    },
+    {
+      "key": "component.1865919bd346",
+      "source": "AI, take first pass",
+      "value": "AI, yi wucewa ta farko"
+    },
+    {
+      "key": "component.2af7dda56864",
+      "source": "Akbar ruled the Mughal Empire in this period",
+      "value": "Akbar ya mulki Daular Mughal a wannan lokacin"
+    },
+    {
+      "key": "component.37a47ccb9a5e",
+      "source": "Akbar's Mughal court is experimenting with sovereignty, translation, religion, and imperial administration.",
+      "value": "Kotun Mughal ta Akbar tana gwada ikon mallaka, fassara, addini, da gudanar da mulkin daular."
+    },
+    {
+      "key": "component.ee8274d56a51",
+      "source": "All app text and tutoring replies follow this setting.",
+      "value": "Dukkan rubutun manhajar da amsoshin koyarwa suna bin wannan saitin."
+    },
+    {
+      "key": "component.057736e008e1",
+      "source": "Allies and enemies",
+      "value": "Abokai da makiya"
+    },
+    {
+      "key": "component.81858bfb1080",
+      "source": "Amphora stamp",
+      "value": "Tambarin tulu"
+    },
+    {
+      "key": "component.4674310a3089",
+      "source": "Answer this question before moving on.",
+      "value": "Amsa wannan tambayar kafin ka ci gaba."
+    },
+    {
+      "key": "component.170fbf477bcc",
+      "source": "Apply the idea to a new situation without being carried.",
+      "value": "Aiwatar da ra'ayin a wani sabon yanayi ba tare da an kwashe ka ba."
+    },
+    {
+      "key": "component.027e967d96f9",
+      "source": "Apprentice artist, merchant, visitor...",
+      "value": "Dalibin mai fasaha, dan kasuwa, bako..."
+    },
+    {
+      "key": "component.400ccec7eae9",
+      "source": "apprentice studying their method",
+      "value": "dalibi yana nazarin hanyarsu"
+    },
+    {
+      "key": "component.1b0045ede253",
+      "source": "Arabic and Sanskrit in scholarly contexts",
+      "value": "Larabci da Sanskrit a cikin mahallin ilimi"
+    },
+    {
+      "key": "component.f886c82fb8d5",
+      "source": "Argument paragraph = claim + evidence + reasoning + consequence.",
+      "value": "Sakin layi na hujja = da'awa + shaida + dalili + sakamako."
+    },
+    {
+      "key": "component.0c2ff99ae149",
+      "source": "Argument strength",
+      "value": "Karfin hujja"
+    },
+    {
+      "key": "component.0ab3ac6e44df",
+      "source": "Argument test room",
+      "value": "Dakin gwajin hujja"
+    },
+    {
+      "key": "component.80adc5b26c2a",
+      "source": "Arrival date, role, norms, and what knowledge belongs in that period.",
+      "value": "Ranar isowa, matsayi, ka'idoji, da kuma ilimin da ya dace da wancan lokacin."
+    },
+    {
+      "key": "component.6c1fa4c7f4b5",
+      "source": "Arrival point",
+      "value": "Wurin isowa"
+    },
+    {
+      "key": "component.b0e837299713",
+      "source": "Arrive near a turning point and track what people know then.",
+      "value": "Isowa kusa da wani muhimmin lokaci kuma ka bibiyi abin da mutane suka sani a lokacin."
+    },
+    {
+      "key": "component.3b4ffe6071d7",
+      "source": "Ask a metic what citizenship excludes",
+      "value": "Tambayi wani bako abin da zama dan kasa ya ke warewa"
+    },
+    {
+      "key": "component.83e95f7269a9",
+      "source": "Ask a water carrier what locals know",
+      "value": "Tambayi mai daukar ruwa abin da mazauna wurin suka sani"
+    },
+    {
+      "key": "component.346fde1cec8a",
+      "source": "Ask About",
+      "value": "Tambaya Game Da"
+    },
+    {
+      "key": "component.a6864c427fbe",
+      "source": "Ask about bread prices",
+      "value": "Tambaya game da farashin burodi"
+    },
+    {
+      "key": "component.ad6a9fdf7f34",
+      "source": "Ask about the David",
+      "value": "Tambaya game da David"
+    },
+    {
+      "key": "component.801d72f793cc",
+      "source": "Ask as student",
+      "value": "Tambaya a matsayin dalibi"
+    },
+    {
+      "key": "component.0d1512edb3d1",
+      "source": "Ask coach",
+      "value": "Tambayi kocin"
+    },
+    {
+      "key": "component.540aa91c8a8c",
+      "source": "Ask for a direct explanation",
+      "value": "Nemi bayani kai tsaye"
+    },
+    {
+      "key": "component.0a729d6e83a1",
+      "source": "Ask for a hint or example",
+      "value": "Nemi karin haske ko misali"
+    },
+    {
+      "key": "component.d5ca92bd8779",
+      "source": "Ask for a parallel example",
+      "value": "Nemi misali mai kama da wannan"
+    },
+    {
+      "key": "component.e357cf94dea0",
+      "source": "Ask for advice through their period worldview and constraints.",
+      "value": "Nemi shawara ta hanyar hangen nesa da matsalolin lokacinsu."
+    },
+    {
+      "key": "component.210d9be5dff2",
+      "source": "Ask for hints, examples, or checks before a final answer.",
+      "value": "Nemi alamomi, misalai, ko bincike kafin amsar karshe."
+    },
+    {
+      "key": "component.90aab03ae672",
+      "source": "Ask for the next hint level",
+      "value": "Nemi matakin alama na gaba"
+    },
+    {
+      "key": "component.83da0c6ba9d9",
+      "source": "Ask for the same question in simpler words",
+      "value": "Nemi a sake tambayar tambaya daya da kalmomi mafi sauki"
+    },
+    {
+      "key": "component.3f485290dc35",
+      "source": "Ask how freed status works",
+      "value": "Tambayi yadda matsayin 'yanci yake aiki"
+    },
+    {
+      "key": "component.2dfa6e9d7e40",
+      "source": "Ask how patronage works",
+      "value": "Tambayi yadda tallafi yake aiki"
+    },
+    {
+      "key": "component.a17bffa43da6",
+      "source": "Ask me for my current hypothesis first.",
+      "value": "Tambaye ni hasashena na yanzu da farko."
+    },
+    {
+      "key": "component.9974f49b5e04",
+      "source": "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+      "value": "Tambayi tambaya daya a lokaci guda, bi diddigin zato da hujjoji, bayar da alamomi idan aka nema, kuma kada ka hada komai har sai na gwada."
+    },
+    {
+      "key": "component.a403caec3493",
+      "source": "Ask the guide to explain the power structure",
+      "value": "Tambayi jagoran ya bayyana tsarin iko"
+    },
+    {
+      "key": "component.99cea111050d",
+      "source": "Ask the historian to propose time slices",
+      "value": "Tambayi masanin tarihi ya ba da shawarar rarraba lokaci"
+    },
+    {
+      "key": "component.6ff1fa0220cd",
+      "source": "Ask the watchman what orders exist",
+      "value": "Tambayi mai gadin irin umarnin da ke akwai"
+    },
+    {
+      "key": "component.85028b8a98e5",
+      "source": "Ask to save major claims and classify their evidence strength.",
+      "value": "Nemi a adana manyan ikirari kuma a rarraba karfin hujjojinsu."
+    },
+    {
+      "key": "component.0167bc74d95b",
+      "source": "Ask, act, pause for context, or request a debrief...",
+      "value": "Tambaya, yi aiki, dakata don mahallin, ko neman bayani..."
+    },
+    {
+      "key": "component.68aa53be5d31",
+      "source": "Ask, challenge, request evidence, or open a dossier item...",
+      "value": "Tambaya, kalubalanci, neman hujja, ko bude wani abu na fayil..."
+    },
+    {
+      "key": "component.f37bbb0cf7b7",
+      "source": "Assign ownership",
+      "value": "Sanya mallaka"
+    },
+    {
+      "key": "component.90a5f15a7a51",
+      "source": "Assistant to a trading household or workshop",
+      "value": "Mataimaki ga gidan kasuwanci ko bitar sana'a"
+    },
+    {
+      "key": "component.17afbb8ead41",
+      "source": "Assumption map",
+      "value": "Taswirar zato"
+    },
+    {
+      "key": "component.810bd11f9e00",
+      "source": "Assumptions will appear as they surface.",
+      "value": "Zato zai bayyana yayin da suka fito fili."
+    },
+    {
+      "key": "component.ad65747527cd",
+      "source": "At peak influence or authority",
+      "value": "A kololuwar tasiri ko iko"
+    },
+    {
+      "key": "component.6c9db2bfba6f",
+      "source": "At the decisive turning point",
+      "value": "A lokacin yanke hukunci mai mahimmanci"
+    },
+    {
+      "key": "component.bdd3536627a0",
+      "source": "Athenian democracy",
+      "value": "Dimokradiyyar Athens"
+    },
+    {
+      "key": "component.635eab827384",
+      "source": "Athens, 399 BCE",
+      "value": "Athens, 399 BCE"
+    },
+    {
+      "key": "component.db1d0c337817",
+      "source": "Attack the most fragile assumption first.",
+      "value": "Kai hari ga zato mafi rauni da farko."
+    },
+    {
+      "key": "component.b0aa7864622e",
+      "source": "Attend court gossip",
+      "value": "Halartar gulmar fada"
+    },
+    {
+      "key": "component.0ebcd3e2ebef",
+      "source": "Attic Greek",
+      "value": "Tsohon Girkanci"
+    },
+    {
+      "key": "component.8fdb9a32ffeb",
+      "source": "Attractiveness rises when customers, suppliers, rivals, entrants, and substitutes have limited power.",
+      "value": "Jan hankali yana karuwa lokacin da abokan ciniki, masu kaya, abokan hamayya, sabbin shiga, da kuma masu maye gurbin suka sami iyakantaccen iko."
+    },
+    {
+      "key": "component.250e6f644386",
+      "source": "Audience in progress",
+      "value": "Masu sauraro suna ci gaba"
+    },
+    {
+      "key": "component.bbd509406e59",
+      "source": "Authorities debate demolition",
+      "value": "Hukumomi suna tattaunawa kan rugujewa"
+    },
+    {
+      "key": "component.94de0cd574b6",
+      "source": "Awaiting first answer",
+      "value": "Ana jiran amsa ta farko"
+    },
+    {
+      "key": "component.24a531142756",
+      "source": "Awaiting first stamp",
+      "value": "Ana jiran tambari na farko"
+    },
+    {
+      "key": "component.1fffc1bebb3a",
+      "source": "B. R. Ambedkar",
+      "value": "B. R. Ambedkar"
+    },
+    {
+      "key": "component.72ab13d909f2",
+      "source": "Baghdad during the House of Wisdom",
+      "value": "Baghdad a lokacin Gidan Hikima"
+    },
+    {
+      "key": "component.45251643f6be",
+      "source": "Bahadur Shah Zafar became a symbolic focus",
+      "value": "Bahadur Shah Zafar ya zama abin da ake kallo a matsayin alama"
+    },
+    {
+      "key": "component.db2eda1f51bf",
+      "source": "Baker's neighbor",
+      "value": "Makwabcin mai yin burodi"
+    },
+    {
+      "key": "component.8c4f395470f9",
+      "source": "Balancing difficulty",
+      "value": "Daidaita wahala"
+    },
+    {
+      "key": "component.cde87afc07a9",
+      "source": "Bargain for resin",
+      "value": "Yin ciniki don resin"
+    },
+    {
+      "key": "component.85c7e4463795",
+      "source": "Bastille approaches",
+      "value": "Bastille na gabatowa"
+    },
+    {
+      "key": "component.c34f9be08e48",
+      "source": "Begin the conversation",
+      "value": "Fara tattaunawar"
+    },
+    {
+      "key": "component.eae14245354c",
+      "source": "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+      "value": "Fara da katin hali, sannan ka amsa a matsayin halin tare da taƙaitaccen bayanin mahallin da shawarwarin tambayoyin da za a biyo baya."
+    },
+    {
+      "key": "component.a629a2f36d27",
+      "source": "Beginner, exam prep, advanced, age 12...",
+      "value": "Mai farawa, shiri don jarrabawa, ci gaba, shekaru 12..."
+    },
+    {
+      "key": "component.50a6960d7ebc",
+      "source": "Beliefs and blind spots",
+      "value": "Imani da wuraren da ba a gani"
+    },
+    {
+      "key": "component.b8b483d64210",
+      "source": "Best for money, logistics, food, routes, and social exchange.",
+      "value": "Mafi kyau don kuɗi, dabaru, abinci, hanyoyi, da musayar zamantakewa."
+    },
+    {
+      "key": "component.beb7f7f65b94",
+      "source": "Best for politics, institutions, evidence, and elite-adjacent spaces.",
+      "value": "Mafi kyau don siyasa, cibiyoyi, shaida, da wuraren da ke kusa da manyan mutane."
+    },
+    {
+      "key": "component.42fca3c30055",
+      "source": "Bread and legitimacy dominate talk",
+      "value": "Burodi da halasci ne suka mamaye magana"
+    },
+    {
+      "key": "component.b06cfa41aea5",
+      "source": "Bread is politics",
+      "value": "Burodi siyasa ne"
+    },
+    {
+      "key": "component.db2e4f0fe5a6",
+      "source": "Bread peel",
+      "value": "Kwallon burodi"
+    },
+    {
+      "key": "component.8a6d03a4eab8",
+      "source": "Bread token",
+      "value": "Alamar burodi"
+    },
+    {
+      "key": "component.4c3fbc933403",
+      "source": "Break the work into tasks, track blockers, keep the decision log current, and push toward a concrete output.",
+      "value": "Raba aikin zuwa ayyuka, sa ido kan abubuwan da ke kawo cikas, kiyaye bayanan yanke shawara, kuma matsa zuwa ga sakamako na zahiri."
+    },
+    {
+      "key": "component.198f812877b4",
+      "source": "Brief read",
+      "value": "Takaitaccen karatu"
+    },
+    {
+      "key": "component.93d635432e8e",
+      "source": "Browse prompt starters",
+      "value": "Bincika abubuwan da za su taimaka wajen fara magana"
+    },
+    {
+      "key": "component.b4d7b4198fc5",
+      "source": "Buddhist manuscript fragment",
+      "value": "Yanki na rubutun addinin Buddha"
+    },
+    {
+      "key": "component.76c011f0d9f1",
+      "source": "Buddhist monastery",
+      "value": "Gidan sufi na addinin Buddha"
+    },
+    {
+      "key": "component.1c42b93b313a",
+      "source": "Buddy build",
+      "value": "Ginin abokantaka"
+    },
+    {
+      "key": "component.6cc11866dd7d",
+      "source": "Bug fix loop = reproduce, isolate, hypothesize, test one change, verify.",
+      "value": "Zagayen gyaran kuskure = sake yin sa, ware shi, yin hasashe, gwada canji guda daya, tabbatar da shi."
+    },
+    {
+      "key": "component.41dc33777f8e",
+      "source": "Build a lesson that reacts to you.",
+      "value": "Gina darasi wanda yake amsa maka."
+    },
+    {
+      "key": "component.5eab7918da26",
+      "source": "Build a science project idea",
+      "value": "Gina ra'ayin aikin kimiyya"
+    },
+    {
+      "key": "component.8cbf31717577",
+      "source": "build a usable mental model",
+      "value": "gina tsarin tunani mai amfani"
+    },
+    {
+      "key": "component.d2b5a2b01a29",
+      "source": "Build an essay outline on climate adaptation",
+      "value": "Gina tsarin kasida kan dacewa da sauyin yanayi"
+    },
+    {
+      "key": "component.b1043cd879de",
+      "source": "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+      "value": "Gina kwarin gwiwa, yin farkon aiki mai amfani, da kuma neman yanke shawara ba tare da yawan yabo ba."
+    },
+    {
+      "key": "component.32d9cdb06b28",
+      "source": "Build passport",
+      "value": "Gina fasfo"
+    },
+    {
+      "key": "component.739748ad11b7",
+      "source": "Build the lesson around what you want to become able to do.",
+      "value": "Gina darasin a kusa da abin da kake son zama mai iya yi."
+    },
+    {
+      "key": "component.2b7b0f40d1f9",
+      "source": "Build the plain-language explanation together.",
+      "value": "Gina bayanin da ke da saukin fahimta tare."
+    },
+    {
+      "key": "component.cd3125fae316",
+      "source": "Build understanding by answering one precise question at a time.",
+      "value": "Gina fahimta ta hanyar amsa tambaya daya tak a kowane lokaci."
+    },
+    {
+      "key": "component.1b5bea7e0b29",
+      "source": "Building your deck",
+      "value": "Gina katin karatunka"
+    },
+    {
+      "key": "component.99024d036fb3",
+      "source": "Building your quiz",
+      "value": "Gina tambayoyinka"
+    },
+    {
+      "key": "component.1ad5a54834de",
+      "source": "Buyer power",
+      "value": "Ikon mai saye"
+    },
+    {
+      "key": "component.5f95db67b0fa",
+      "source": "Buyer tastes are only one driver. Costs, technology, taxes, and input prices can move supply.",
+      "value": "Abubuwan da mai saye yake so daya ne kawai daga cikin abubuwan da ke motsa kasuwa. Kudade, fasaha, haraji, da farashin kayan aiki na iya motsa samar da kaya."
+    },
+    {
+      "key": "component.26f6c271eb79",
+      "source": "Cabinet room during wartime Britain",
+      "value": "Dakin majalisa a lokacin yakin Biritaniya"
+    },
+    {
+      "key": "component.83dba54d54bc",
+      "source": "Calling every price movement a demand shift.",
+      "value": "Kiran kowane motsin farashi a matsayin sauyin bukata."
+    },
+    {
+      "key": "component.ba5512e7a8ea",
+      "source": "Center of power",
+      "value": "Cibiyar iko"
+    },
+    {
+      "key": "component.f2f308d5edfc",
+      "source": "Center of power, street-level life, and the edge of the system reveal different histories.",
+      "value": "Cibiyar iko, rayuwar kan titi, da kuma gefen tsarin suna bayyana tarihai daban-daban."
+    },
+    {
+      "key": "component.fe63cc96918a",
+      "source": "Challenge Churchill on empire",
+      "value": "Kalubalanci Churchill kan mulkin mallaka"
+    },
+    {
+      "key": "component.0baa085bb9a6",
+      "source": "Challenge ideas while the person defends the worldview of their moment.",
+      "value": "Kalubalanci ra'ayoyi yayin da mutumin yake kare hangen nesan lokacinsa."
+    },
+    {
+      "key": "component.5230975c3d1f",
+      "source": "Challenge me",
+      "value": "Kalubalance ni"
+    },
+    {
+      "key": "component.3b01a7555064",
+      "source": "Challenge my last answer with one counterexample, boundary case, or hidden assumption. Ask only one question.",
+      "value": "Kalubalanci amsata ta karshe da misali daya na sabani, yanayin iyaka, ko zato na boye. Yi tambaya daya kacal."
+    },
+    {
+      "key": "component.474e76e1fe00",
+      "source": "Challenge the tension between fighting tyranny in Europe and defending empire.",
+      "value": "Kalubalanci takaddamar da ke tsakanin yaki da zalunci a Turai da kuma kare mulkin mallaka."
+    },
+    {
+      "key": "component.682419485b88",
+      "source": "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+      "value": "Kalubalanci bangaren da ya fi rauni na abin da aka kirkira a halin yanzu. Kasance kai tsaye, ambaci zato, kuma ka bukace ni da in kare ko in gyara shi."
+    },
+    {
+      "key": "component.c3e6abb3d6f7",
+      "source": "Challenge weak assumptions, vague claims, and missing evidence while keeping the user as decision owner.",
+      "value": "Kalubalanci zato maras tushe, ikirari maras tabbas, da hujjojin da suka bace yayin da kake barin mai amfani ya kasance mai yanke shawara."
+    },
+    {
+      "key": "component.5bc2fef00702",
+      "source": "Chandni Chowk",
+      "value": "Chandni Chowk"
+    },
+    {
+      "key": "component.774b417f0716",
+      "source": "Chang'an",
+      "value": "Chang'an"
+    },
+    {
+      "key": "component.c794af5803ea",
+      "source": "Chang'an was the Tang capital",
+      "value": "Chang'an ita ce babban birnin Tang"
+    },
+    {
+      "key": "component.bb2825214fc1",
+      "source": "Chang'an, 742",
+      "value": "Chang'an, 742"
+    },
+    {
+      "key": "component.c4df26f4bcb5",
+      "source": "Change audience",
+      "value": "Canza masu sauraro"
+    },
+    {
+      "key": "component.940024138a3f",
+      "source": "Change deck",
+      "value": "Canza katin karatu"
+    },
+    {
+      "key": "component.c2f2f6b6735d",
+      "source": "Change inputs and explain the output.",
+      "value": "Canza bayanan shigarwa kuma ka bayyana abin da ya fito."
+    },
+    {
+      "key": "component.aaaf0ecc59a4",
+      "source": "Change passport",
+      "value": "Canza fasfo"
+    },
+    {
+      "key": "component.5793c71debb6",
+      "source": "Change setup",
+      "value": "Canza tsari"
+    },
+    {
+      "key": "component.9dc2d01374e4",
+      "source": "Changes at once",
+      "value": "Canje-canje a lokaci guda"
+    },
+    {
+      "key": "component.73e249e25da6",
+      "source": "Changes syntax before checking execution order.",
+      "value": "Canza tsarin nahawu kafin a duba tsarin aiwatarwa."
+    },
+    {
+      "key": "component.013c40a9358f",
+      "source": "Changing several files at once may hide the actual cause even if the symptom disappears.",
+      "value": "Canza fayiloli da yawa a lokaci guda na iya boye ainihin dalilin ko da alamar ta bace."
+    },
+    {
+      "key": "component.cac317ffce30",
+      "source": "Check my prediction",
+      "value": "Duba hasashena"
+    },
+    {
+      "key": "component.e4080fd0105c",
+      "source": "Check understanding before moving on",
+      "value": "Duba fahimta kafin ci gaba"
+    },
+    {
+      "key": "component.44cdb58c831a",
+      "source": "Check whether the async result is awaited before reading it.",
+      "value": "Duba ko sakamakon async yana jiran kafin a karanta shi."
+    },
+    {
+      "key": "component.858ea6548154",
+      "source": "Checking common traps",
+      "value": "Duba tarkon gama-gari"
+    },
+    {
+      "key": "component.48509721ec0e",
+      "source": "Choose a concept and starting level. Your tutor teaches a small piece, checks it, then adjusts after every reply.",
+      "value": "Zabi wani ra'ayi da matakin farawa. Malaminka zai koyar da wani karamin bangare, ya duba shi, sannan ya daidaita bayan kowane martani."
+    },
+    {
+      "key": "component.c9624ef26d64",
+      "source": "Choose an arrival point",
+      "value": "Zaɓi wurin isowa"
+    },
+    {
+      "key": "component.ba5912675bb9",
+      "source": "Choose exact entry point",
+      "value": "Zaɓi ainihin wurin shiga"
+    },
+    {
+      "key": "component.ed5edd730edb",
+      "source": "Choose next",
+      "value": "Zaɓi na gaba"
+    },
+    {
+      "key": "component.ad6d8880f040",
+      "source": "Choose the destination.",
+      "value": "Zaɓi inda za a nufa."
+    },
+    {
+      "key": "component.d1271a01a99c",
+      "source": "Choose the relationship and the purpose of the room.",
+      "value": "Zaɓi dangantaka da manufar ɗakin."
+    },
+    {
+      "key": "component.d12046b0f168",
+      "source": "Choose the strongest entry point.",
+      "value": "Zaɓi wurin shiga mafi ƙarfi."
+    },
+    {
+      "key": "component.57e10063bad9",
+      "source": "choose time slice",
+      "value": "zaɓi lokacin da aka ware"
+    },
+    {
+      "key": "component.8d518baa7b44",
+      "source": "Choose your arrival point.",
+      "value": "Zaɓi wurin isowarka."
+    },
+    {
+      "key": "component.2c3a54901b71",
+      "source": "citizen-prosecutor testing imperial assumptions",
+      "value": "ɗan ƙasa-mai gabatar da ƙara yana gwada zato na daular"
+    },
+    {
+      "key": "component.f93a97180ba0",
+      "source": "Citizens weigh piety, education, and loyalty",
+      "value": "Yan ƙasa suna auna tsoron Allah, ilimi, da aminci"
+    },
+    {
+      "key": "component.65a751c1ea95",
+      "source": "Citizenship determines political voice",
+      "value": "Zama ɗan ƙasa yana ƙayyade muryar siyasa"
+    },
+    {
+      "key": "component.0e8e20c2d52d",
+      "source": "Citizenship was restricted",
+      "value": "An taƙaita zama ɗan ƙasa"
+    },
+    {
+      "key": "component.4fc7f7fa1c23",
+      "source": "Claim clarity",
+      "value": "Bayyana da'awa"
+    },
+    {
+      "key": "component.2ef9624eb964",
+      "source": "Claim tracker",
+      "value": "Mai sa ido kan da'awa"
+    },
+    {
+      "key": "component.cce876ac0eef",
+      "source": "Clarify the audience",
+      "value": "Bayyana masu sauraro"
+    },
+    {
+      "key": "component.dda3cf370ef4",
+      "source": "Classifies actors before reading the behavior.",
+      "value": "Yana rarraba ƴan wasan kwaikwayo kafin karanta halayen."
+    },
+    {
+      "key": "component.35ea09c1bcf0",
+      "source": "Clearance pending",
+      "value": "Ana jiran izini"
+    },
+    {
+      "key": "component.a546440f3f66",
+      "source": "Climb the ladder",
+      "value": "Hau matakala"
+    },
+    {
+      "key": "component.c32c06424e70",
+      "source": "Close profile",
+      "value": "Rufe bayanin martaba"
+    },
+    {
+      "key": "component.56de821eed1a",
+      "source": "Close topics",
+      "value": "Rufe batutuwa"
+    },
+    {
+      "key": "component.0aafbac8c911",
+      "source": "Close, but one link is missing",
+      "value": "Kusa, amma hanyar haɗi ɗaya ta ɓace"
+    },
+    {
+      "key": "component.52e08926ca52",
+      "source": "Cloth ration bundle",
+      "value": "Kunshe-kunshin rabo na tufafi"
+    },
+    {
+      "key": "component.da18bf5711a7",
+      "source": "Clothing signals rank quickly",
+      "value": "Tufafi yana nuna matsayi da sauri"
+    },
+    {
+      "key": "component.5e1255f86eb8",
+      "source": "Coach actions",
+      "value": "Ayyukan kocin"
+    },
+    {
+      "key": "component.0a887c84c516",
+      "source": "Coach controls",
+      "value": "Ikonan kocin"
+    },
+    {
+      "key": "component.c7b867574eaa",
+      "source": "Coach response",
+      "value": "Amsar kocin"
+    },
+    {
+      "key": "component.efe37a89f7c7",
+      "source": "Coach sidecar",
+      "value": "Kocin gefe"
+    },
+    {
+      "key": "component.41fb4c8096f0",
+      "source": "Cognitive load",
+      "value": "Nauyin tunani"
+    },
+    {
+      "key": "component.31bc6a75a4de",
+      "source": "Collaboration style",
+      "value": "Salon haɗin gwiwa"
+    },
+    {
+      "key": "component.cdb1652b4d2c",
+      "source": "Collaborative Instruction",
+      "value": "Umarni na haɗin gwiwa"
+    },
+    {
+      "key": "component.91d85c478cd9",
+      "source": "Collaborative Study Room",
+      "value": "Dakin nazari na haɗin gwiwa"
+    },
+    {
+      "key": "component.0a846b9df8cc",
+      "source": "Collect examples, facts, quotes, or constraints that support the work.",
+      "value": "Tara misalai, gaskiyar al'amura, zantuka, ko ƙuntatawa waɗanda ke tallafawa aikin."
+    },
+    {
+      "key": "component.843961f4035d",
+      "source": "Commercial clearance",
+      "value": "Izinin kasuwanci"
+    },
+    {
+      "key": "component.7b58927ba9a2",
+      "source": "committee room in Delhi",
+      "value": "dakin kwamiti a Delhi"
+    },
+    {
+      "key": "component.3256e92018cd",
+      "source": "Common mistake",
+      "value": "Kuskuren gama-gari"
+    },
+    {
+      "key": "component.2acb033a7c79",
+      "source": "Compare all modes",
+      "value": "Kwatanta dukkan hanyoyin"
+    },
+    {
+      "key": "component.ed762f41f5ff",
+      "source": "Compare intentions, contemporary criticism, later consequences, and modern judgement without reducing the person to hero or villain.",
+      "value": "Kwatanta niyya, sukar zamani, sakamakon baya, da hukuncin zamani ba tare da rage mutumin zuwa gwarzo ko mugu ba."
+    },
+    {
+      "key": "component.90cada760853",
+      "source": "Compare legacy",
+      "value": "Kwatanta gadon tarihi"
+    },
+    {
+      "key": "component.6d5607bac2d9",
+      "source": "Compare rebel and Company information",
+      "value": "Kwatanta bayanan tawaye da na Kamfani"
+    },
+    {
+      "key": "component.9b64e2ca221c",
+      "source": "Compare this with today",
+      "value": "Kwatanta wannan da yau"
+    },
+    {
+      "key": "component.6b6655f5e878",
+      "source": "Compare to today",
+      "value": "Kwatanta da yau"
+    },
+    {
+      "key": "component.67bfd2f6c501",
+      "source": "Compare two nearby cases.",
+      "value": "Kwatanta shari'o'i biyu na kusa."
+    },
+    {
+      "key": "component.b8c1a1d003e5",
+      "source": "Compress the idea into one usable mental model.",
+      "value": "Takaita ra'ayin zuwa samfurin tunani guda ɗaya mai amfani."
+    },
+    {
+      "key": "component.a8b250dc84cb",
+      "source": "Concept board",
+      "value": "Allon ra'ayi"
+    },
+    {
+      "key": "component.b93436f71f8d",
+      "source": "Concision helps only after the argument works. Length is not the main diagnosis here.",
+      "value": "Takaitawa tana taimakawa ne kawai bayan hujjar ta yi aiki. Tsayi ba shi ne babban abin dubawa a nan ba."
+    },
+    {
+      "key": "component.8143c098b27b",
+      "source": "Confront contradictions, evasions, and consequences with evidence support.",
+      "value": "Fuskantar saɓani, kaucewa, da sakamako tare da tallafin shaida."
+    },
+    {
+      "key": "component.82129babdba0",
+      "source": "Confuses movement along demand with a demand shift.",
+      "value": "Yana rikitar da motsi tare da buƙata tare da sauyin buƙata."
+    },
+    {
+      "key": "component.8352558bfce0",
+      "source": "Confusing accounting profit with cash that can actually be distributed or reinvested.",
+      "value": "Rikitar da ribar lissafi da tsabar kuɗi waɗanda za a iya rarrabawa ko sake saka hannun jari."
+    },
+    {
+      "key": "component.850cb650821d",
+      "source": "connect assumptions, cash flow, and valuation",
+      "value": "haɗa zato, kwararar kuɗi, da ƙima"
+    },
+    {
+      "key": "component.ccce96381a48",
+      "source": "Conservative local outer layers chosen by the guide",
+      "value": "An zaɓi shimfiɗar waje ta gida mai kiyayewa ta jagora"
+    },
+    {
+      "key": "component.31c6e717bf21",
+      "source": "Context is not endorsement",
+      "value": "Yanayi ba yana nufin amincewa ba ne"
+    },
+    {
+      "key": "component.68ca7a6ccfd4",
+      "source": "Context Notes",
+      "value": "Bayanan Yanayi"
+    },
+    {
+      "key": "component.46a692116cad",
+      "source": "Continue learning",
+      "value": "Ci gaba da koyo"
+    },
+    {
+      "key": "component.ccc5b0edaae6",
+      "source": "Continue with Google",
+      "value": "Ci gaba da Google"
+    },
+    {
+      "key": "component.705ee7850503",
+      "source": "contract law consideration",
+      "value": "la'akari da dokar kwangila"
+    }
+  ]
+}

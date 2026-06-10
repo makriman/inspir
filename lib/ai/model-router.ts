@@ -15,15 +15,6 @@ export function resolveModelName(profile: ModelProfile = "fast") {
   return fastModel;
 }
 
-export function resolveTranslationModelName() {
-  return (
-    readModelEnv("GEMINI_TRANSLATION_MODEL") ??
-    readModelEnv("GOOGLE_TRANSLATION_MODEL") ??
-    readModelEnv("TRANSLATION_MODEL") ??
-    "gemini-3.1-flash-lite"
-  );
-}
-
 export function resolveEmbeddingModelName() {
   return readModelEnv("OPENAI_EMBEDDING_MODEL") ?? "text-embedding-3-small";
 }

@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Welsh",
+  "locale": "cy",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Rhannu gwaith yn dasgau wedi'u henwi, amseru pob un, ac adolygu i ble aeth yr ymdrech astudio ar ôl pob sesiwn ffocws."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau ffocws a chynhyrchiant ac sydd eisiau arweiniad ymarferol yn hytrach na blwch atebion cyffredinol."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer amserydd tasgau, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "Amseru tasgau unigol a gweld yr ymdrech"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "Amseru set o broblemau"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "Olrhain gwaith amlinellu traethawd"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "Rhannu tasg fawr yn flociau wedi'u hamseru"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "Atgoffa am Egwyliau"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "Diogelu ffocws gyda seibiannau iach"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Gosod rhythmau gwaith ac egwyl, cynllunio ailosodiad go iawn, ac osgoi llithro i flinder astudio diddiwedd."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "Pa rhythm gwaith/egwyl wyt ti eisiau?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "Ffocws a Chynhyrchiant"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Gosod rhythmau gwaith ac egwyl, cynllunio ailosodiad go iawn, ac osgoi llithro i flinder astudio diddiwedd."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau ffocws a chynhyrchiant ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer atgoffa am egwyliau, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "Diogelu ffocws gyda seibiannau iach"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "Defnyddio egwyliau 50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "Cynllunio egwyl iach"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "Helpa fi i stopio gorastudio"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "Sesiynau Gwaith Dwfn"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "Cynllunio bloc ffocws ag ychydig o darfu"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Paratoi sesiwn gwaith dwfn gyda chanlyniad clir, cyfyngiadau, rheolau ffocws, pwynt gwirio adolygu, a chynllun wrth gefn."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Pa ganlyniad ddylai'r sesiwn gwaith dwfn hon ei gynhyrchu?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "Ffocws a Chynhyrchiant"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Paratoi sesiwn gwaith dwfn gyda chanlyniad clir, cyfyngiadau, rheolau ffocws, pwynt gwirio adolygu, a chynllun wrth gefn."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau ffocws a chynhyrchiant ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer sesiynau gwaith dwfn, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "Cynllunio bloc ffocws ag ychydig o darfu"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "Cynllunio bloc gwaith dwfn 90 munud"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "Helpa fi i ganolbwyntio ar godio"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "Gosod rheolau ar gyfer ysgrifennu thesis"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "Amserydd Astudio Grŵp"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "Cydlynu rowndiau ffocws gydag eraill"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Rhedeg rhythm astudio a rennir ar gyfer ffrindiau neu gyd-ddisgyblion gyda nodau cydamserol, sesiynau gwirio, a chwestiynau ôl-drafod."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Pwy sy'n astudio gyda'i gilydd a beth yw'r nod?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "Cymdeithasol"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Rhedeg rhythm astudio a rennir ar gyfer ffrindiau neu gyd-ddisgyblion gyda nodau cydamserol, sesiynau gwirio, a chwestiynau ôl-drafod."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cymdeithasol ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer amserydd astudio grŵp, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "Cydlynu rowndiau ffocws gydag eraill"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "Cynllunio Pomodoro grŵp"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "Strwythuro ystafell astudio"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "Rhedeg sesiwn grŵp 45 munud"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "Seiniau Amgylchynol"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "Tirluniau sain wedi'u cynhyrchu ar gyfer astudio tawel"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Defnyddio rhagosodiadau sain amgylchynol syml i leihau tarfu wrth ddarllen, ysgrifennu, adolygu neu ddatrys problemau."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Pa fath o ffocws amgylchynol wyt ti eisiau?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "Ffocws a Chynhyrchiant"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Defnyddio rhagosodiadau sain amgylchynol syml i leihau tarfu wrth ddarllen, ysgrifennu, adolygu neu ddatrys problemau."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau ffocws a chynhyrchiant ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer seiniau amgylchynol, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "Tirluniau sain wedi'u cynhyrchu ar gyfer astudio tawel"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "Defnyddio glaw ar gyfer darllen"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "Dewis sain dawel ar gyfer mathemateg"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "Gosod awyrgylch tawel ar gyfer gwaith dwfn"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "Cyfresi Astudio"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "Meithrin cysondeb heb euogrwydd"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Olrhain cyfresi astudio, trwsio diwrnodau a gollwyd, a dylunio arfer astudio lleiaf ymarferol sy'n goroesi bywyd go iawn."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "Pa gyfres neu drefn wyt ti'n ei meithrin?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "Dadansoddeg"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Olrhain cyfresi astudio, trwsio diwrnodau a gollwyd, a dylunio arfer astudio lleiaf ymarferol sy'n goroesi bywyd go iawn."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau dadansoddeg ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer cyfresi astudio, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "Meithrin cysondeb heb euogrwydd"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "Dechrau cyfres astudio"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "Dod yn ôl ar ôl colli diwrnod"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "Dylunio adolygiad dyddiol bach iawn"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "Dangosfwrdd Cynnydd"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "Adolygu gweithgarwch dysgu a'r camau nesaf"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Troi gweithgarwch astudio, canlyniadau cwisiau, nodiadau ac amseryddion yn adolygiad tebyg i ddangosfwrdd gyda thueddiadau a chamau nesaf."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "Pa gynnydd ddylen ni ei adolygu?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "Dadansoddeg"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Troi gweithgarwch astudio, canlyniadau cwisiau, nodiadau ac amseryddion yn adolygiad tebyg i ddangosfwrdd gyda thueddiadau a chamau nesaf."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau dadansoddeg ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer dangosfwrdd cynnydd, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "Adolygu gweithgarwch dysgu a'r camau nesaf"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "Adolygu fy wythnos"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "Dod o hyd i feysydd gwan"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "Troi gweithgarwch yn gamau nesaf"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "Adroddiadau Wythnosol"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Crynhoi llwyddiannau, methiannau a'r wythnos nesaf"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Cynhyrchu adroddiad dysgu wythnosol neu fisol gydag ymdrech, canlyniadau, rhwystrau, llwyddiannau a chynllun â ffocws."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "Beth ddigwyddodd yr wythnos hon?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "Dadansoddeg"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Cynhyrchu adroddiad dysgu wythnosol neu fisol gydag ymdrech, canlyniadau, rhwystrau, llwyddiannau a chynllun â ffocws."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau dadansoddeg ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer adroddiadau wythnosol, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Crynhoi llwyddiannau, methiannau a'r wythnos nesaf"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "Ysgrifennu fy adroddiad astudio wythnosol"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "Crynhoi fy nghynnydd"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "Cynllunio'r wythnos nesaf o'r wythnos hon"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "Traciwr Aseiniadau"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "Olrhain terfynau amser a chamau nesaf"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Trefnu aseiniadau yn ôl dyddiad cyflwyno, ymdrech, statws, risg a'r cam lleiaf nesaf."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "Pa aseiniadau sydd gen ti ar y gweill?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "Trefnu"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Trefnu aseiniadau yn ôl dyddiad cyflwyno, ymdrech, statws, risg a'r cam lleiaf nesaf."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau trefnu ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer traciwr aseiniadau, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "Olrhain terfynau amser a chamau nesaf"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "Trefnu fy nherfynau amser"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "Blaenoriaethu aseiniadau"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "Cynllunio'r cyflwyniad prosiect hwn"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "Rheolwr Cyrsiau"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "Trefnu cyrsiau, pynciau a llwyth gwaith"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Mapio cyrsiau, unedau, aseiniadau, adnoddau a llwyth gwaith wythnosol i un system astudio drefnus."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "Pa gyrsiau neu bynciau wyt ti'n eu rheoli?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "Trefnu"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Mapio cyrsiau, unedau, aseiniadau, adnoddau a llwyth gwaith wythnosol i un system astudio drefnus."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau trefnu ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer rheolwr cyrsiau, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "Trefnu cyrsiau, pynciau a llwyth gwaith"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "Sefydlu fy nghyrsiau"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "Trefnu fy semester"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "Mapio pynciau ar gyfer pob pwnc"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "Trefnydd Nodiadau"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "Tagio, trefnu a chysylltu nodiadau"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Troi nodiadau gwasgaredig yn ffolderi, tagiau, crynodebau, dolenni a chamau adolygu sy'n gwneud cofio'n haws."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "Gluda neu disgrifia'r nodiadau i'w trefnu"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "Trefnu"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Troi nodiadau gwasgaredig yn ffolderi, tagiau, crynodebau, dolenni a chamau adolygu sy'n gwneud cofio'n haws."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau trefnu ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer trefnydd nodiadau, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "Tagio, trefnu a chysylltu nodiadau"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "Trefnu fy nodiadau dosbarth"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "Creu tagiau ar gyfer y nodiadau hyn"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "Dod o hyd i themâu yn fy llyfr nodiadau"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "Rhannu Adnoddau"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "Pecynnu a rhannu adnoddau astudio"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Paratoi adnoddau astudio ar gyfer cyd-ddisgyblion neu grŵp: crynodebau, dolenni, nodiadau, esboniadau ac arweiniad defnyddio."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "Pa adnodd wyt ti eisiau ei rannu?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "Cymdeithasol"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Paratoi adnoddau astudio ar gyfer cyd-ddisgyblion neu grŵp: crynodebau, dolenni, nodiadau, esboniadau ac arweiniad defnyddio."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cymdeithasol ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer rhannu adnoddau, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "Pecynnu a rhannu adnoddau astudio"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "Pecynnu fy nodiadau ar gyfer grŵp"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "Creu crynodeb adnodd"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "Creu canllawiau rhannu"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "Grwpiau Astudio"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "Gwneud astudio mewn grŵp yn strwythuredig"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Cynllunio grŵp astudio cynhyrchiol gyda rolau, agenda, rowndiau cwestiynau, adnoddau a rennir, a nodiadau crynhoi."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "Beth ddylai'r grŵp astudio ei wneud?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "Cymdeithasol"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Cynllunio grŵp astudio cynhyrchiol gyda rolau, agenda, rowndiau cwestiynau, adnoddau a rennir, a nodiadau crynhoi."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cymdeithasol ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer grwpiau astudio, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "Gwneud astudio mewn grŵp yn strwythuredig"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "Cynllunio sesiwn grŵp"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "Creu rolau ar gyfer grŵp astudio"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "Trwsio grŵp anghynhyrchiol"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "Fforwm Myfyrwyr"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "Llunio cwestiynau ar gyfer cymorth cymunedol"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Paratoi cwestiynau fforwm clir, ymatebion, crynodebau a cheisiadau dilynol sy'n gwneud trafodaethau myfyrwyr yn fwy defnyddiol."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "Pa gwestiwn neu drafodaeth wyt ti eisiau ei bostio?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "Cymdeithasol"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Paratoi cwestiynau fforwm clir, ymatebion, crynodebau a cheisiadau dilynol sy'n gwneud trafodaethau myfyrwyr yn fwy defnyddiol."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau cymdeithasol ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer fforwm myfyrwyr, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "Llunio cwestiynau ar gyfer cymorth cymunedol"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "Ysgrifennu cwestiwn fforwm da"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "Crynhoi trafodaeth"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "Gofyn am adborth gan gyfoedion"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "Adeiladydd Taflenni Gwaith"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "Cynhyrchu taflenni gwaith ymarfer cymysg"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Creu taflenni gwaith gyda mathau o gwestiynau fel llenwi'r bylchau, cwestiynau amlddewis, gwir/anghywir, atebion byr a pharu."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "Beth ddylai'r daflen waith ei gynnwys?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "Dysgu Gweithredol"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Creu taflenni gwaith gyda mathau o gwestiynau fel llenwi'r bylchau, cwestiynau amlddewis, gwir/anghywir, atebion byr a pharu."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau dysgu gweithredol ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer adeiladydd taflenni gwaith, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "Cynhyrchu taflenni gwaith ymarfer cymysg"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "Creu taflen waith ar ffracsiynau"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "Creu ymarfer cemeg cymysg"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "Adeiladu ymarferion geirfa"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "Ymarfer Labelu Diagramau"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Ymarfer labeli ar gyfer diagramau a systemau"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Troi diagramau, systemau'r corff, mapiau, llifoedd gwaith neu osodiadau labordy yn ymarfer labelu gydag awgrymiadau a gwiriadau atebion."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "Pa ddiagram ddylen ni ymarfer ei labelu?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "Dysgu Gweithredol"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Troi diagramau, systemau'r corff, mapiau, llifoedd gwaith neu osodiadau labordy yn ymarfer labelu gydag awgrymiadau a gwiriadau atebion."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau dysgu gweithredol ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer ymarfer labelu diagramau, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Ymarfer labeli ar gyfer diagramau a systemau"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "Labelu cell planhigyn"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "Ymarfer diagram o'r galon"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "Creu cwestiynau labelu mapiau"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "Cynhyrchydd Gêm Baru"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Paru termau, diffiniadau, achosion ac enghreifftiau"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Troi nodiadau yn gemau paru ar gyfer geirfa, cysyniadau, pobl/digwyddiadau, fformiwlâu, enghreifftiau neu barau achos-ac-effaith."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "Pa barau ddylai droi'n gêm baru?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "Dysgu Gweithredol"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Troi nodiadau yn gemau paru ar gyfer geirfa, cysyniadau, pobl/digwyddiadau, fformiwlâu, enghreifftiau neu barau achos-ac-effaith."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau dysgu gweithredol ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer cynhyrchydd gêm baru, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Paru termau, diffiniadau, achosion ac enghreifftiau"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "Paru termau a diffiniadau"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "Creu parau achos-ac-effaith"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "Creu ymarfer paru fformiwlâu"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP a Lefelu"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "Troi cynnydd yn lefelau a chwestiau"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Dylunio system pwyntiau, lefelau, cwestiau a gwobrau o amgylch cynnydd dysgu go iawn."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Pa nod dysgu ddylai droi'n system lefelu?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "Gêmoleiddio"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Dylunio system pwyntiau, lefelau, cwestiau a gwobrau o amgylch cynnydd dysgu go iawn."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Dysgwyr sy'n archwilio pynciau gêmoleiddio ac sydd eisiau arweiniad ymarferol yn hytrach na blwch ateb cyffredinol."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "Mae'r modd hwn wedi'i deilwra ar gyfer XP a lefelu, gyda'i awgrymiadau, enghreifftiau a llif dysgu ei hun."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "Troi cynnydd yn lefelau a chwestiau"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Dechrau gydag awgrymiadau enghreifftiol"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Addasu'r sesiwn i dy nod"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "Creu XP ar gyfer paratoi at arholiad"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "Dylunio lefelau ar gyfer ymarfer codio"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "Troi darllen yn gwestiau"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "Bathodynnau a Chyflawniadau"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "Gwobrwyo cerrig milltir sy'n bwysig"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Creu bathodynnau ar gyfer cysondeb, meistrolaeth, dewrder, adolygu, cydweithio ac arteffactau gorffenedig."
+    }
+  ]
+}

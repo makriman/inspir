@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, LockKeyhole, School, Search, ShieldCheck, Sparkles } from "lucide-react";
 import {
   ArrowLink,
@@ -14,6 +14,7 @@ import {
   trustReferenceLinks,
   trustSafeguards,
 } from "@/lib/content/authority";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -26,7 +27,7 @@ import {
 const description =
   "How inspir handles public guest learning pages, private saved chats, crawler access, learner safety, and school trust.";
 
-export const metadata: Metadata = {
+const pageMetadata: Metadata = {
   title: "Trust And Safety",
   description,
   alternates: metadataAlternates("/trust"),
@@ -57,6 +58,10 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export function generateMetadata() {
+  return localizeMarketingMetadata(pageMetadata, "/trust");
+}
 
 const principleIcons = [ShieldCheck, LockKeyhole, Sparkles, Search] as const;
 const safeguardIcons = [Sparkles, LockKeyhole, Search, School] as const;

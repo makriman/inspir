@@ -1,0 +1,974 @@
+{
+  "schemaVersion": 1,
+  "language": "Italian",
+  "locale": "it",
+  "namespace": "route:for",
+  "sourceHash": "2beb294b4f3e4bf5877b96abf0ce4a5d471e8ebf2097cbe7cf7ce047b0792a5d",
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} su inspir"
+    },
+    {
+      "key": "site.3f3ce67e95c198fe73",
+      "source": "{value1} audience paths",
+      "value": "Percorsi per pubblico di {value1}"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "FAQ su {value1}"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "Punti di accesso pubblici alla modalità {value1}"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "Guide correlate a {value1}"
+    },
+    {
+      "key": "site.0b6b5adb849c91ed86",
+      "source": "{value1} use cases",
+      "value": "Casi d'uso {value1}"
+    },
+    {
+      "key": "site.f118088494e591a92f",
+      "source": "A free AI learning companion for people teaching themselves.",
+      "value": "Un compagno di apprendimento AI gratuito per chi studia da solo."
+    },
+    {
+      "key": "site.f26460a14583402afb",
+      "source": "A free AI tutor for students who want to understand, not copy.",
+      "value": "Un tutor AI gratuito per studenti che vogliono capire, non copiare."
+    },
+    {
+      "key": "site.6e55610b266bd02c28",
+      "source": "A good family AI workflow should make the learner more independent, not more dependent. Parents can use public pages to see what each mode is meant to do before a child starts.",
+      "value": "Un buon workflow AI per la famiglia dovrebbe rendere chi impara più autonomo, non più dipendente. I genitori possono usare le pagine pubbliche per capire a cosa serve ogni modalità prima che un figlio inizi."
+    },
+    {
+      "key": "site.edd641891286547302",
+      "source": "A parent-friendly guide to inspir's public AI learning modes for homework hints, explanation, study routines, flashcards, and safer learning conversations.",
+      "value": "Una guida adatta ai genitori sulle modalità pubbliche di apprendimento AI di inspir per indizi sui compiti, spiegazioni, routine di studio, flashcard e conversazioni di apprendimento più sicure."
+    },
+    {
+      "key": "site.31a16818822d796414",
+      "source": "A student, parent, teacher, and self-taught learner often search for the same AI tutor in different language. Separate pages make the right use cases and safety boundaries clearer.",
+      "value": "Studente, genitore, insegnante e autodidatta spesso cercano lo stesso tutor AI con linguaggi diversi. Pagine separate rendono più chiari i casi d'uso corretti e i confini di sicurezza."
+    },
+    {
+      "key": "site.536f42d14260484247",
+      "source": "AI code tutor for beginners",
+      "value": "Tutor AI di codice per principianti"
+    },
+    {
+      "key": "site.c4e769a9ff8569fdcd",
+      "source": "AI flashcards for children",
+      "value": "Flashcard AI per bambini"
+    },
+    {
+      "key": "site.807c5fb50233b04ccc",
+      "source": "AI flashcards for students",
+      "value": "Flashcard AI per studenti"
+    },
+    {
+      "key": "site.3fb9a24035a31cb85f",
+      "source": "AI homework coach for teachers",
+      "value": "Coach AI per i compiti per insegnanti"
+    },
+    {
+      "key": "site.819b5cd5912dad894a",
+      "source": "AI homework help for my child",
+      "value": "Aiuto AI con i compiti per mio figlio"
+    },
+    {
+      "key": "site.78b84b37113ca4624d",
+      "source": "AI homework help for students",
+      "value": "Aiuto AI con i compiti per studenti"
+    },
+    {
+      "key": "site.ca366dead5f44e17b6",
+      "source": "AI learning audience pages",
+      "value": "Pagine per pubblici dell'apprendimento AI"
+    },
+    {
+      "key": "site.509b12e733554d51a5",
+      "source": "AI learning audience search intents",
+      "value": "Intenti di ricerca per pubblici dell'apprendimento AI"
+    },
+    {
+      "key": "site.db0083bbf32bea1c3c",
+      "source": "AI Learning by Audience",
+      "value": "Apprendimento AI per pubblico"
+    },
+    {
+      "key": "site.1398874c11e9ca5ede",
+      "source": "AI learning companion for adults",
+      "value": "Compagno di apprendimento AI per adulti"
+    },
+    {
+      "key": "site.007f49afb5157e9177",
+      "source": "AI Learning for Students, Parents, and Teachers",
+      "value": "Apprendimento AI per studenti, genitori e insegnanti"
+    },
+    {
+      "key": "site.d793832fd38f6094e5",
+      "source": "AI Learning for Students, Parents, and Teachers | inspir",
+      "value": "Apprendimento AI per studenti, genitori e insegnanti | inspir"
+    },
+    {
+      "key": "site.13e4dc7462e48cefb9",
+      "source": "AI learning help parents can try before they trust.",
+      "value": "Aiuto all'apprendimento AI che i genitori possono provare prima di fidarsi."
+    },
+    {
+      "key": "site.8bf4ce06d157f0f949",
+      "source": "AI learning modes for teachers who need focused behavior.",
+      "value": "Modalità di apprendimento AI per insegnanti che hanno bisogno di comportamenti mirati."
+    },
+    {
+      "key": "site.c79efb69519c9ed0dd",
+      "source": "AI learning should fit the person using it.",
+      "value": "L'apprendimento AI dovrebbe adattarsi alla persona che lo usa."
+    },
+    {
+      "key": "site.0efbe8911042f6b1af",
+      "source": "AI Learning Tools for Teachers",
+      "value": "Strumenti di apprendimento AI per insegnanti"
+    },
+    {
+      "key": "site.79c72809c8bff01368",
+      "source": "AI math help for students",
+      "value": "Aiuto AI di matematica per studenti"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "Coach AI per progetti"
+    },
+    {
+      "key": "site.dd5ef1785e8822f59a",
+      "source": "AI quiz generator for teachers",
+      "value": "Generatore di quiz AI per insegnanti"
+    },
+    {
+      "key": "site.9d9bd561316a0e4d06",
+      "source": "AI Socratic tutor for classroom",
+      "value": "Tutor socratico AI per la classe"
+    },
+    {
+      "key": "site.09dc24f51368d71d46",
+      "source": "AI study help for families",
+      "value": "Aiuto allo studio AI per famiglie"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "Costruttore AI di piani di studio"
+    },
+    {
+      "key": "site.5aefdf8649c0a693f9",
+      "source": "AI study planner for students",
+      "value": "Planner di studio AI per studenti"
+    },
+    {
+      "key": "site.0f9b11fd135a5a1e71",
+      "source": "AI tools for teachers",
+      "value": "Strumenti AI per insegnanti"
+    },
+    {
+      "key": "site.4bb3461592197b32fa",
+      "source": "AI tutor for parents",
+      "value": "Tutor AI per genitori"
+    },
+    {
+      "key": "site.d41b28ada9b11c3341",
+      "source": "AI Tutor for Parents and Families",
+      "value": "Tutor AI per genitori e famiglie"
+    },
+    {
+      "key": "site.9f78a0b2c5715e8e93",
+      "source": "AI tutor for self study",
+      "value": "Tutor AI per studio autonomo"
+    },
+    {
+      "key": "site.04d88507d7c7c23aae",
+      "source": "AI Tutor for Self-Taught Learners",
+      "value": "Tutor AI per autodidatti"
+    },
+    {
+      "key": "site.1cb1cecde3098425cf",
+      "source": "AI tutor for students",
+      "value": "Tutor AI per studenti"
+    },
+    {
+      "key": "site.e4bcbad6900fc8811d",
+      "source": "AI tutor for teachers",
+      "value": "Tutor AI per insegnanti"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Feedback AI sulla scrittura per studenti"
+    },
+    {
+      "key": "site.bb3dc41135df062a54",
+      "source": "Are audience pages public and indexable?",
+      "value": "Le pagine per pubblico sono pubbliche e indicizzabili?"
+    },
+    {
+      "key": "site.5318b289f0b6ef336c",
+      "source": "Ask for a hint, have the learner explain the next step, then use a quiz or flashcard to check whether the idea stuck.",
+      "value": "Chiedi un indizio, fai spiegare allo studente il passo successivo, poi usa un quiz o una flashcard per verificare se l'idea è rimasta."
+    },
+    {
+      "key": "site.dbb3b225e46fdbb35a",
+      "source": "Ask for hints, checks, and feedback before asking for a finished answer.",
+      "value": "Chiedi indizi, controlli e feedback prima di chiedere una risposta finita."
+    },
+    {
+      "key": "site.e8bcb5adf3009b4bb8",
+      "source": "Ask for prerequisites, a simple model, examples, and a common misconception.",
+      "value": "Chiedi prerequisiti, un modello semplice, esempi e un fraintendimento comune."
+    },
+    {
+      "key": "site.6d7404661aed38f53d",
+      "source": "Ask for structure, evidence, and clarity feedback while keeping the final draft yours.",
+      "value": "Chiedi feedback su struttura, prove e chiarezza mantenendo tua la bozza finale."
+    },
+    {
+      "key": "site.19fc63a7245dd737f0",
+      "source": "Ask for the prerequisite ideas, a plain-language model, one example, one practice task, and one way to test understanding.",
+      "value": "Chiedi le idee preliminari, un modello in linguaggio semplice, un esempio, un esercizio e un modo per verificare la comprensione."
+    },
+    {
+      "key": "site.b385a24faa58462e11",
+      "source": "Ask the learner to explain what changed after each hint.",
+      "value": "Chiedi allo studente di spiegare cosa è cambiato dopo ogni suggerimento."
+    },
+    {
+      "key": "site.51d9934555e29c55ec",
+      "source": "Audience",
+      "value": "Pubblico"
+    },
+    {
+      "key": "site.8f24f568729e503266",
+      "source": "Audience FAQ",
+      "value": "FAQ sul pubblico"
+    },
+    {
+      "key": "site.7a5b718ff87434c85a",
+      "source": "Audience learning path",
+      "value": "Percorso di apprendimento per pubblico"
+    },
+    {
+      "key": "site.c056e3afcf151857ee",
+      "source": "Audience pages let search engines and AI answer engines distinguish students, parents, teachers, and independent learners instead of flattening everyone into one generic page.",
+      "value": "Le pagine dedicate ai pubblici aiutano i motori di ricerca e i motori di risposta IA a distinguere studenti, genitori, insegnanti e autodidatti invece di appiattire tutti in una pagina generica."
+    },
+    {
+      "key": "site.0bfa1f66285ae5eebb",
+      "source": "audience paths",
+      "value": "percorsi per pubblico"
+    },
+    {
+      "key": "site.ce678932980f4794b0",
+      "source": "Audience route",
+      "value": "Route per pubblico"
+    },
+    {
+      "key": "site.c0940d04955ebfec23",
+      "source": "Back to audience paths",
+      "value": "Torna ai percorsi per pubblico"
+    },
+    {
+      "key": "site.676167cbb2c97275c4",
+      "source": "Boundaries",
+      "value": "Confini"
+    },
+    {
+      "key": "site.0a5e7a05836b400f9d",
+      "source": "Boundary",
+      "value": "Confine"
+    },
+    {
+      "key": "site.cc83629ef0af87e6fc",
+      "source": "Build a calmer study habit",
+      "value": "Costruisci un'abitudine di studio più calma"
+    },
+    {
+      "key": "site.8675fe5fa9585b61c8",
+      "source": "Can inspir help adults and self-taught learners?",
+      "value": "inspir può aiutare adulti e autodidatti?"
+    },
+    {
+      "key": "site.e9891d38e4e9dd850b",
+      "source": "Can parents try inspir before recommending it?",
+      "value": "I genitori possono provare inspir prima di consigliarlo?"
+    },
+    {
+      "key": "site.29bfa7231721d5c818",
+      "source": "Can students use inspir without signing in?",
+      "value": "Gli studenti possono usare inspir senza accedere?"
+    },
+    {
+      "key": "site.08c23ca593ae934493",
+      "source": "Can teachers try inspir without a school rollout?",
+      "value": "Gli insegnanti possono provare inspir senza un rollout scolastico?"
+    },
+    {
+      "key": "site.021b1bbf2274604a34",
+      "source": "Check understanding without hovering",
+      "value": "Verifica la comprensione senza stare addosso"
+    },
+    {
+      "key": "site.28e25a8dfbb0d8e191",
+      "source": "Choose who is learning, then choose the right behavior.",
+      "value": "Scegli chi sta imparando, poi scegli il comportamento giusto."
+    },
+    {
+      "key": "site.e788450700bd1f7b9b",
+      "source": "Create practice without leaking answers",
+      "value": "Crea pratica senza rivelare le risposte"
+    },
+    {
+      "key": "site.4446ba74c2780d08c6",
+      "source": "Different people need different AI learning routes.",
+      "value": "Persone diverse hanno bisogno di percorsi diversi di apprendimento con IA."
+    },
+    {
+      "key": "site.0b64b0646ae04485d5",
+      "source": "Do not confuse a fast answer with mastery.",
+      "value": "Non confondere una risposta veloce con la padronanza."
+    },
+    {
+      "key": "site.0c8b27aca2d5e45f71",
+      "source": "Does inspir publish a child's private chats?",
+      "value": "inspir pubblica le chat private di un bambino?"
+    },
+    {
+      "key": "site.af9dfd11b4d1a8d972",
+      "source": "Each audience path connects to public, crawlable learning surfaces.",
+      "value": "Ogni percorso per pubblico si collega a superfici di apprendimento pubbliche e accessibili ai crawler."
+    },
+    {
+      "key": "site.227a67fcbce8739d2d",
+      "source": "EducationalAudience",
+      "value": "EducationalAudience"
+    },
+    {
+      "key": "site.5af75a5f8561131e7a",
+      "source": "End with evidence of learning.",
+      "value": "Termina con una prova di apprendimento."
+    },
+    {
+      "key": "site.f39e7e35897912c6ca",
+      "source": "Evaluate a mode before using it with learners",
+      "value": "Valuta una modalità prima di usarla con gli studenti"
+    },
+    {
+      "key": "site.20ab440ee76d74d006",
+      "source": "Explain every accepted step back in your own words.",
+      "value": "Rispiega con parole tue ogni passaggio accettato."
+    },
+    {
+      "key": "site.3a9e66e6429e28be05",
+      "source": "Explore public AI learning modes teachers can use to evaluate Socratic tutoring, quizzes, flashcards, writing feedback, source critique, and classroom-ready study workflows.",
+      "value": "Esplora le modalità pubbliche di apprendimento AI che gli insegnanti possono usare per valutare tutoraggio socratico, quiz, flashcard, feedback sulla scrittura, critica delle fonti e flussi di studio pronti per la classe."
+    },
+    {
+      "key": "site.458d8b0eb6c21674a4",
+      "source": "Find the right inspir AI learning workflow for students, parents, teachers, and self-taught learners.",
+      "value": "Trova il flusso di apprendimento AI inspir giusto per studenti, genitori, insegnanti e autodidatti."
+    },
+    {
+      "key": "site.df8fd80facab7af4a6",
+      "source": "Finish with explain-back, a quiz, a flashcard, a project step, or a study routine.",
+      "value": "Concludi con una spiegazione a ritroso, un quiz, una flashcard, un passo di progetto o una routine di studio."
+    },
+    {
+      "key": "site.51751b1b168fac71f2",
+      "source": "For learners",
+      "value": "Per chi impara"
+    },
+    {
+      "key": "site.2317ee1df96b3260db",
+      "source": "For parents",
+      "value": "Per genitori"
+    },
+    {
+      "key": "site.60edb436e4b8977394",
+      "source": "For self-taught learners",
+      "value": "Per autodidatti"
+    },
+    {
+      "key": "site.58ed8376786af695f3",
+      "source": "For students",
+      "value": "Per studenti"
+    },
+    {
+      "key": "site.f0110ad483f4253081",
+      "source": "For teachers",
+      "value": "Per insegnanti"
+    },
+    {
+      "key": "site.6bcd9dae1c00422884",
+      "source": "free AI tutor for kids",
+      "value": "tutor AI gratuito per bambini"
+    },
+    {
+      "key": "site.1a1a395d6461bd2dec",
+      "source": "free AI tutor for self study",
+      "value": "tutor AI gratuito per studio autonomo"
+    },
+    {
+      "key": "site.a0a5cb8c871d52b46a",
+      "source": "free AI tutor for students",
+      "value": "tutor AI gratuito per studenti"
+    },
+    {
+      "key": "site.67feb4a5330a74b085",
+      "source": "Free AI Tutor for Students",
+      "value": "Tutor AI gratuito per studenti"
+    },
+    {
+      "key": "site.5ad1a0aa62a2684b36",
+      "source": "Get homework help without copying",
+      "value": "Ricevi aiuto sui compiti senza copiare"
+    },
+    {
+      "key": "site.bf073fae640ded81ee",
+      "source": "Guide",
+      "value": "Guida"
+    },
+    {
+      "key": "site.3f3159d2489bd03d74",
+      "source": "Guides and workflows",
+      "value": "Guide e flussi di lavoro"
+    },
+    {
+      "key": "site.cab6c99d56fe4d28f2",
+      "source": "Help a child get unstuck",
+      "value": "Aiuta un bambino a sbloccarsi"
+    },
+    {
+      "key": "site.70f8bb9a8a5393ef08",
+      "source": "Home",
+      "value": "Home"
+    },
+    {
+      "key": "site.7d98465f4d5cfd44b7",
+      "source": "How can students avoid cheating with AI?",
+      "value": "Come possono gli studenti evitare di barare con l'AI?"
+    },
+    {
+      "key": "site.cf0e4a4f69c69bf56a",
+      "source": "How do I avoid drifting between topics?",
+      "value": "Come evito di saltare da un argomento all'altro?"
+    },
+    {
+      "key": "site.da6f21c485ded0e34e",
+      "source": "How is this different from giving students a generic chatbot?",
+      "value": "In che cosa è diverso dal dare agli studenti un chatbot generico?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Come funziona"
+    },
+    {
+      "key": "site.8bf41fd11b7e0ede8e",
+      "source": "Improve writing without losing your voice",
+      "value": "Migliora la scrittura senza perdere la tua voce"
+    },
+    {
+      "key": "site.b2edb97113b1eb1a2e",
+      "source": "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
+      "value": "inspir è per studenti, genitori, insegnanti e autodidatti che hanno bisogno di modalità di apprendimento AI mirate per spiegazioni, domande, suggerimenti, quiz, flashcard, feedback e pianificazione dello studio."
+    },
+    {
+      "key": "site.aa31d2dc86d94d8d11",
+      "source": "inspir is organized into focused modes such as Socratic tutoring, homework hints, quizzes, flashcards, writing feedback, source critique, and study planning.",
+      "value": "inspir è organizzata in modalità mirate come tutoraggio socratico, suggerimenti sui compiti, quiz, flashcard, feedback sulla scrittura, critica delle fonti e pianificazione dello studio."
+    },
+    {
+      "key": "site.3bd9a50d0e640143be",
+      "source": "inspir's public modes let teachers evaluate the product through real learning flows before considering a school deployment or a tailored classroom pathway.",
+      "value": "Le modalità pubbliche di inspir permettono agli insegnanti di valutare il prodotto attraverso flussi di apprendimento reali prima di considerare una distribuzione scolastica o un percorso didattico su misura."
+    },
+    {
+      "key": "site.30c8cb83b9acd93bea",
+      "source": "Job",
+      "value": "Compito"
+    },
+    {
+      "key": "site.fed171ce58dd397bc4",
+      "source": "Keep private saved conversations out of public discovery and citation surfaces.",
+      "value": "Tieni le conversazioni private salvate fuori dalle superfici pubbliche di scoperta e citazione."
+    },
+    {
+      "key": "site.e6cdaea43a4aaf9fed",
+      "source": "Keep the session focused on learning evidence, not passive answer collection.",
+      "value": "Mantieni la sessione concentrata sulle prove di apprendimento, non sulla raccolta passiva di risposte."
+    },
+    {
+      "key": "site.89b1e97b318cc8f046",
+      "source": "learn anything with AI",
+      "value": "impara qualsiasi cosa con l'AI"
+    },
+    {
+      "key": "site.e7bfb0d69ba1d90d42",
+      "source": "Learn by building",
+      "value": "Impara costruendo"
+    },
+    {
+      "key": "site.94a617f56eb38c3105",
+      "source": "Learning path",
+      "value": "Percorso di apprendimento"
+    },
+    {
+      "key": "site.1dcdd18b09b3ab7e12",
+      "source": "Learning workflow",
+      "value": "Flusso di apprendimento"
+    },
+    {
+      "key": "site.29b517e6538fe43d19",
+      "source": "Make confusion easier to talk about",
+      "value": "Rendi più facile parlare della confusione"
+    },
+    {
+      "key": "site.a1a32a9adc935d480e",
+      "source": "Make every learning session end with a test, artifact, or review step.",
+      "value": "Fai terminare ogni sessione di apprendimento con un test, un artefatto o un passaggio di revisione."
+    },
+    {
+      "key": "site.53ccda870697906427",
+      "source": "Make the habit survivable",
+      "value": "Rendi sostenibile l'abitudine"
+    },
+    {
+      "key": "site.a7b93d2128e820f861",
+      "source": "Mode",
+      "value": "Modalità"
+    },
+    {
+      "key": "site.117702bcbab2b1ff3f",
+      "source": "Move from public testing to school deployment",
+      "value": "Passa dai test pubblici alla distribuzione nelle scuole"
+    },
+    {
+      "key": "site.2d128d206ee8751038",
+      "source": "Move school-specific privacy, access, and deployment questions to the schools pathway.",
+      "value": "Sposta le domande specifiche della scuola su privacy, accesso e distribuzione nel percorso per le scuole."
+    },
+    {
+      "key": "site.a4bfb7b3eb6ea701f6",
+      "source": "Name the learning situation.",
+      "value": "Descrivi la situazione di apprendimento."
+    },
+    {
+      "key": "site.ed8af815d720885afc",
+      "source": "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+      "value": "No. Le pagine pubbliche sono indicizzabili, ma le chat salvate private non sono incluse nella sitemap, nei file llms o nell'indice dei contenuti AI."
+    },
+    {
+      "key": "site.015a045216ca459243",
+      "source": "Open a focused public mode.",
+      "value": "Apri una modalità pubblica focalizzata."
+    },
+    {
+      "key": "site.bd219670332e828087",
+      "source": "Open a public mode, test the student behavior, and inspect whether it asks, hints, quizzes, or critiques appropriately.",
+      "value": "Apri una modalità pubblica, testa il comportamento dello studente e verifica se pone domande, dà suggerimenti, propone quiz o formula critiche in modo appropriato."
+    },
+    {
+      "key": "site.64209300303f2d05e1",
+      "source": "Open audience path",
+      "value": "Apri il percorso per il pubblico"
+    },
+    {
+      "key": "site.f579b310c623579c04",
+      "source": "Open mode",
+      "value": "Apri la modalità"
+    },
+    {
+      "key": "site.45de3417dc19871110",
+      "source": "Open path",
+      "value": "Apri il percorso"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Apri la mappa di apprendimento"
+    },
+    {
+      "key": "site.2c96b391c15e199eb8",
+      "source": "Open this route",
+      "value": "Apri questa route"
+    },
+    {
+      "key": "site.d6159273dec809735b",
+      "source": "Open workflow",
+      "value": "Apri il flusso di lavoro"
+    },
+    {
+      "key": "site.6fac9f52368e39d91f",
+      "source": "Parents are often trying to help without taking over. inspir gives families public modes that make learning behavior visible: hints, questions, explain-back, review, and study planning.",
+      "value": "Spesso i genitori cercano di aiutare senza prendere il controllo. inspir offre alle famiglie modalità pubbliche che rendono visibile il comportamento di apprendimento: suggerimenti, domande, spiegazione a parole proprie, revisione e pianificazione dello studio."
+    },
+    {
+      "key": "site.f472423dd7ed509f76",
+      "source": "Paste the question, what you tried, and the stuck point. Ask for the smallest useful hint, not the final answer.",
+      "value": "Incolla la domanda, ciò che hai provato e il punto in cui sei bloccato. Chiedi il suggerimento utile più piccolo, non la risposta finale."
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Esercitati"
+    },
+    {
+      "key": "site.ac230ff068e34d03dc",
+      "source": "Public pages show product behavior, not private student work.",
+      "value": "Le pagine pubbliche mostrano il comportamento del prodotto, non il lavoro privato degli studenti."
+    },
+    {
+      "key": "site.cf34ec51c207b35978",
+      "source": "Read guide",
+      "value": "Leggi la guida"
+    },
+    {
+      "key": "site.475fd65863064fa656",
+      "source": "Ready to try the first mode?",
+      "value": "Pronto a provare la prima modalità?"
+    },
+    {
+      "key": "site.5371eced4672e4a092",
+      "source": "Research without losing the thread",
+      "value": "Fai ricerca senza perdere il filo"
+    },
+    {
+      "key": "site.e29a79fe0c349724ca",
+      "source": "Review",
+      "value": "Ripassa"
+    },
+    {
+      "key": "site.a39004b1aa8f31d550",
+      "source": "safe AI learning tool for students",
+      "value": "strumento di apprendimento AI sicuro per studenti"
+    },
+    {
+      "key": "site.f27e7b1470ab6becc6",
+      "source": "Search intent",
+      "value": "Intento di ricerca"
+    },
+    {
+      "key": "site.fcff144343c86582f5",
+      "source": "self-taught learner",
+      "value": "discente autodidatta"
+    },
+    {
+      "key": "site.200445f78f9de23900",
+      "source": "Self-taught learners need momentum and structure. inspir helps turn curiosity into a path: explain, build, test, review, and keep going.",
+      "value": "Gli autodidatti hanno bisogno di slancio e struttura. inspir aiuta a trasformare la curiosità in un percorso: spiegare, costruire, testare, ripassare e continuare."
+    },
+    {
+      "key": "site.ab12d4c2183313c114",
+      "source": "Start a topic from first principles",
+      "value": "Inizia un argomento dai principi primi"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Inizia a imparare"
+    },
+    {
+      "key": "site.584903a264f3830b30",
+      "source": "Start with a simple explanation, then ask Socratic questions until you can explain it back.",
+      "value": "Inizia con una spiegazione semplice, poi fai domande socratiche finché riesci a rispiegarla."
+    },
+    {
+      "key": "site.4d27a4365d4632bb55",
+      "source": "Start with Learn Anything for a simple explanation, Homework Coach for a stuck assignment, or Flashcard Builder when the goal is review.",
+      "value": "Inizia con Learn Anything per una spiegazione semplice, Homework Coach per un compito bloccato o Flashcard Builder quando l'obiettivo è ripassare."
+    },
+    {
+      "key": "site.43a1c6e0d64cef2586",
+      "source": "Start with public guidance, then open the right mode.",
+      "value": "Inizia con una guida pubblica, poi apri la modalità giusta."
+    },
+    {
+      "key": "site.cc8d906e2386ecdc7f",
+      "source": "Start with the mode that matches the moment.",
+      "value": "Inizia con la modalità adatta al momento."
+    },
+    {
+      "key": "site.bc3d4521c41cfb94c8",
+      "source": "Start with the public modes, then use the schools page to review deployment steps, use cases, and trust boundaries.",
+      "value": "Inizia con le modalità pubbliche, poi usa la pagina per le scuole per rivedere passaggi di distribuzione, casi d'uso e confini di fiducia."
+    },
+    {
+      "key": "site.cc90dc177fb091bed4",
+      "source": "Student homework, parent support, teacher evaluation, and self-study all need different framing.",
+      "value": "Compiti degli studenti, supporto dei genitori, valutazione degli insegnanti e autoapprendimento hanno tutti bisogno di inquadramenti diversi."
+    },
+    {
+      "key": "site.a90f77b9d0d006ce59",
+      "source": "Students need fast help, but the help still has to leave the thinking in their hands. inspir routes common study moments into focused public modes instead of one generic answer box.",
+      "value": "Gli studenti hanno bisogno di aiuto rapido, ma l'aiuto deve comunque lasciare il ragionamento nelle loro mani. inspir indirizza i momenti di studio comuni verso modalità pubbliche mirate invece che verso una casella di risposta generica."
+    },
+    {
+      "key": "site.3f7326f7bef1a51c76",
+      "source": "Students, parents, teachers, and self-taught learners search for different things. These pages route each audience to the right public mode, guide, and study workflow.",
+      "value": "Studenti, genitori, insegnanti e autodidatti cercano cose diverse. Queste pagine indirizzano ogni pubblico alla modalità pubblica, alla guida e al flusso di studio più adatti."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Sostieni la scrittura preservando la voce"
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Gli insegnanti hanno bisogno di più di un chatbot generico. Hanno bisogno di comportamenti di apprendimento prevedibili: porre domande, controllare il ragionamento, generare pratica, preservare la voce dello studente e rendere visibili i fraintendimenti."
+    },
+    {
+      "key": "site.1d737bc462fed10acb",
+      "source": "The audience pages make the expected learning behavior explicit so the first session starts with better judgment.",
+      "value": "Le pagine per pubblico rendono esplicito il comportamento di apprendimento atteso, così la prima sessione parte con un giudizio migliore."
+    },
+    {
+      "key": "site.a5327928673d3d596d",
+      "source": "The audience searches this hub is built to answer.",
+      "value": "Le ricerche del pubblico a cui questo hub è pensato per rispondere."
+    },
+    {
+      "key": "site.a764f5185c460529c3",
+      "source": "The pages do not expose private conversations. They organize public modes, prompts, guides, workflows, and safety boundaries so a learner can start in the right place.",
+      "value": "Le pagine non espongono conversazioni private. Organizzano modalità pubbliche, prompt, guide, flussi di lavoro e confini di sicurezza, così un discente può iniziare nel posto giusto."
+    },
+    {
+      "key": "site.a52b11b8c16d29c1d4",
+      "source": "The same AI tutor can be a homework hint, a parent-supervised explain-back loop, a teacher evaluation surface, or a self-study coach. The page should make that clear.",
+      "value": "Lo stesso tutor AI può essere un suggerimento per i compiti, un ciclo di rispiegazione supervisionato da un genitore, una superficie di valutazione per insegnanti o un coach per lo studio autonomo. La pagina dovrebbe renderlo chiaro."
+    },
+    {
+      "key": "site.cefe985640fd33ef92",
+      "source": "The searches this page is designed to answer.",
+      "value": "Le ricerche a cui questa pagina è progettata per rispondere."
+    },
+    {
+      "key": "site.be264fde5aa5eeda56",
+      "source": "The self-study challenge is not just finding information. It is choosing the next right action and knowing whether the idea actually stuck.",
+      "value": "La sfida dello studio autonomo non è solo trovare informazioni. È scegliere la prossima azione giusta e sapere se l'idea si è davvero fissata."
+    },
+    {
+      "key": "site.1b428c0b1065ca8e5f",
+      "source": "The strongest SEO pages do not strand a learner. They connect the audience intent to paths, workflows, guides, and repeatable review.",
+      "value": "Le pagine SEO più forti non lasciano il discente isolato. Collegano l'intento del pubblico a percorsi, flussi di lavoro, guide e ripasso ripetibile."
+    },
+    {
+      "key": "site.4407fe7c1d3979a8c3",
+      "source": "The strongest student workflow is not answer-copying. It is a loop: explain the stuck point, ask one better question, get a hint, try again, then review the miss.",
+      "value": "Il flusso di lavoro più forte per lo studente non è copiare risposte. È un ciclo: spiegare il punto bloccato, fare una domanda migliore, ricevere un suggerimento, riprovare, poi rivedere l'errore."
+    },
+    {
+      "key": "site.cfd062601947f58b8e",
+      "source": "These are live guest entrypoints. They are public and indexable, while private user conversations stay outside sitemap and AI discovery files.",
+      "value": "Questi sono punti di ingresso ospite live. Sono pubblici e indicizzabili, mentre le conversazioni private degli utenti restano fuori dalla sitemap e dai file di discovery AI."
+    },
+    {
+      "key": "site.d685fb8edf12c02ce7",
+      "source": "These phrases are visible to learners and included in structured discovery so AI answer engines can understand the audience-specific purpose of the page.",
+      "value": "Queste frasi sono visibili ai discenti e incluse nella discovery strutturata, così i motori di risposta AI possono capire lo scopo specifico per pubblico della pagina."
+    },
+    {
+      "key": "site.22b57b9f79b632bc89",
+      "source": "Turn confusion into a quiz or flashcard before moving on.",
+      "value": "Trasforma la confusione in un quiz o in una flashcard prima di andare avanti."
+    },
+    {
+      "key": "site.90683218b2683484b4",
+      "source": "Turn mistakes into review",
+      "value": "Trasforma gli errori in ripasso"
+    },
+    {
+      "key": "site.cd9e3fb3c1c5e2b918",
+      "source": "Turn the first click into a complete learning loop.",
+      "value": "Trasforma il primo clic in un ciclo di apprendimento completo."
+    },
+    {
+      "key": "site.c19625cf10ea355c0e",
+      "source": "Tutoring",
+      "value": "Lezioni private"
+    },
+    {
+      "key": "site.6e2065f50f9ab1475a",
+      "source": "Understand a topic before the test",
+      "value": "Capire un argomento prima del test"
+    },
+    {
+      "key": "site.c8d6666b4d0afcf95c",
+      "source": "Use a mode tuned for hints, questions, quizzes, flashcards, writing feedback, or planning.",
+      "value": "Usa una modalità calibrata per suggerimenti, domande, quiz, flashcard, feedback sulla scrittura o pianificazione."
+    },
+    {
+      "key": "site.ffcf0de73f419294ce",
+      "source": "Use AI for hints, explanations, mistake checks, and review loops. Do not ask it to produce a final answer you cannot explain.",
+      "value": "Usa l'IA per suggerimenti, spiegazioni, controlli sugli errori e cicli di ripasso. Non chiederle di produrre una risposta finale che non sai spiegare."
+    },
+    {
+      "key": "site.2dda915cbbd4ca28ac",
+      "source": "Use Code Tutor or Project Coach to turn a vague goal into a small testable next step.",
+      "value": "Usa Code Tutor o Project Coach per trasformare un obiettivo vago in un piccolo passo successivo verificabile."
+    },
+    {
+      "key": "site.874a0a013ab85ff778",
+      "source": "Use hint-first and explain-back workflows for homework support.",
+      "value": "Usa flussi di lavoro prima-suggerimento e spiegazione di ritorno per il supporto ai compiti."
+    },
+    {
+      "key": "site.1000b6e8ea01d29d5e",
+      "source": "Use Homework Coach to ask for a hint, then ask the learner to explain the next move.",
+      "value": "Usa Homework Coach per chiedere un suggerimento, poi chiedi allo studente di spiegare la prossima mossa."
+    },
+    {
+      "key": "site.565fa49f174e8d9b9d",
+      "source": "Use inspir as a free AI tutor for students: homework hints, Socratic questions, math step checks, writing feedback, quizzes, flashcards, and exam prep.",
+      "value": "Usa inspir come tutor IA gratuito per studenti: suggerimenti per i compiti, domande socratiche, controlli dei passaggi di matematica, feedback sulla scrittura, quiz, flashcard e preparazione agli esami."
+    },
+    {
+      "key": "site.97988324c9aa68103c",
+      "source": "Use inspir to learn anything independently with explanations, code tutoring, project coaching, research help, concept maps, study plans, and habit support.",
+      "value": "Usa inspir per imparare qualsiasi cosa in autonomia con spiegazioni, tutoraggio di codice, coaching di progetto, aiuto alla ricerca, mappe concettuali, piani di studio e supporto alle abitudini."
+    },
+    {
+      "key": "site.1d5f486971fb724d0e",
+      "source": "Use Learn Anything to get a simpler model, prerequisite ideas, and examples at the right level.",
+      "value": "Usa Learn Anything per ottenere un modello più semplice, idee prerequisite ed esempi al livello giusto."
+    },
+    {
+      "key": "site.c1d74f8d8c14622e28",
+      "source": "Use public mode descriptions to choose the behavior before a session starts.",
+      "value": "Usa le descrizioni delle modalità pubbliche per scegliere il comportamento prima che inizi una sessione."
+    },
+    {
+      "key": "site.4f0aa1f25313866e27",
+      "source": "Use quiz and flashcard modes for active recall, then route missed items into review.",
+      "value": "Usa modalità quiz e flashcard per il richiamo attivo, poi indirizza gli elementi sbagliati al ripasso."
+    },
+    {
+      "key": "site.1b95f15418babcc9fd",
+      "source": "Use quizzes and flashcards to make missed questions visible and repeatable.",
+      "value": "Usa quiz e flashcard per rendere visibili e ripetibili le domande sbagliate."
+    },
+    {
+      "key": "site.68dd39cec3f82db538",
+      "source": "Use quizzes, flashcards, and Socratic questions so the learner shows what they understand.",
+      "value": "Usa quiz, flashcard e domande socratiche così lo studente mostra ciò che capisce."
+    },
+    {
+      "key": "site.cdc864c35645f5684f",
+      "source": "Use Research Assistant, Source Critic, and Concept Map Builder to organize claims and evidence.",
+      "value": "Usa Research Assistant, Source Critic e Concept Map Builder per organizzare affermazioni e prove."
+    },
+    {
+      "key": "site.2687e45dde60d68539",
+      "source": "Use source critique for claims you might cite or act on.",
+      "value": "Usa la critica delle fonti per affermazioni che potresti citare o su cui potresti agire."
+    },
+    {
+      "key": "site.a29ed944f2d3a91c7f",
+      "source": "Use Study Plan Builder and Habit Coach to build a routine that can restart after missed days.",
+      "value": "Usa Study Plan Builder e Habit Coach per costruire una routine che possa ripartire dopo i giorni mancati."
+    },
+    {
+      "key": "site.3e939374690504dfaa",
+      "source": "Use Study Plan Builder or Habit Coach to make small sessions and restarts visible.",
+      "value": "Usa Study Plan Builder o Habit Coach per rendere visibili sessioni piccole e ripartenze."
+    },
+    {
+      "key": "site.a93d795818eef68115",
+      "source": "Use Study Plan Builder to choose a small goal, then use quizzes, flashcards, project steps, or concept maps to prove progress.",
+      "value": "Usa Study Plan Builder per scegliere un piccolo obiettivo, poi usa quiz, flashcard, passaggi di progetto o mappe concettuali per dimostrare il progresso."
+    },
+    {
+      "key": "site.2e70f72096c6eab75b",
+      "source": "Use the school page to explore custom workflows, confidentiality needs, and rollout steps.",
+      "value": "Usa la pagina per le scuole per esplorare flussi di lavoro personalizzati, esigenze di riservatezza e passaggi di implementazione."
+    },
+    {
+      "key": "site.5d9bb768150af8e301",
+      "source": "Use Writing Coach for feedback on structure, clarity, evidence, and revision priorities.",
+      "value": "Usa Writing Coach per feedback su struttura, chiarezza, prove e priorità di revisione."
+    },
+    {
+      "key": "site.babb6412809e8916fc",
+      "source": "Useful AI learning has a clear contract.",
+      "value": "L'apprendimento utile con l'IA ha un contratto chiaro."
+    },
+    {
+      "key": "site.bed16c00ce035e9208",
+      "source": "Want the broadest place to start?",
+      "value": "Vuoi il punto di partenza più ampio?"
+    },
+    {
+      "key": "site.2d1f8f5439490ed46b",
+      "source": "What is the best parent-supervised workflow?",
+      "value": "Qual è il miglior flusso supervisionato dai genitori?"
+    },
+    {
+      "key": "site.5ec0f8ea1ae4891569",
+      "source": "What should a self-taught learner ask first?",
+      "value": "Cosa dovrebbe chiedere prima chi studia da autodidatta?"
+    },
+    {
+      "key": "site.562c3fdd4c8b02b5f0",
+      "source": "What should a student try first?",
+      "value": "Cosa dovrebbe provare prima uno studente?"
+    },
+    {
+      "key": "site.ef1545e7900ec6f915",
+      "source": "Where should a school team go next?",
+      "value": "Dove dovrebbe andare dopo un team scolastico?"
+    },
+    {
+      "key": "site.565557754d90d3800d",
+      "source": "Who is inspir for?",
+      "value": "Per chi è pensato inspir?"
+    },
+    {
+      "key": "site.88bb787052c8591aa2",
+      "source": "Why separate pages for different audiences?",
+      "value": "Perché pagine separate per pubblici diversi?"
+    },
+    {
+      "key": "site.6b4933f7a17eafdf03",
+      "source": "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "value": "Sì. Le pagine per pubblico collegano solo a modalità pubbliche per ospiti, guide, spunti di prompt, percorsi di apprendimento e file di scoperta leggibili dall'IA. Le chat private salvate restano escluse."
+    },
+    {
+      "key": "site.d0785057d3d8a854f0",
+      "source": "Yes. Public guest modes let teachers test learning behavior before discussing a custom deployment.",
+      "value": "Sì. Le modalità pubbliche per ospiti permettono agli insegnanti di testare il comportamento di apprendimento prima di discutere un'implementazione personalizzata."
+    },
+    {
+      "key": "site.fb3ce2efc0f47cc202",
+      "source": "Yes. Public guest modes such as Learn Anything, Homework Coach, Socratic Instruction, quizzes, flashcards, and writing feedback open directly.",
+      "value": "Sì. Le modalità pubbliche per ospiti come Learn Anything, Homework Coach, Socratic Instruction, quiz, flashcard e feedback sulla scrittura si aprono direttamente."
+    },
+    {
+      "key": "site.32ef7942a2e5d15094",
+      "source": "Yes. Public modes work for school topics, professional skills, coding, research, projects, and personal study routines.",
+      "value": "Sì. Le modalità pubbliche funzionano per materie scolastiche, competenze professionali, coding, ricerca, progetti e routine di studio personali."
+    },
+    {
+      "key": "site.85b381c060267b87f2",
+      "source": "Yes. The public guest modes and audience pages are designed so parents can inspect the learning behavior before relying on it.",
+      "value": "Sì. Le modalità pubbliche per ospiti e le pagine per pubblico sono progettate affinché i genitori possano ispezionare il comportamento di apprendimento prima di farvi affidamento."
+    }
+  ]
+}

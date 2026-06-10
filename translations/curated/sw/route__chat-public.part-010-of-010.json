@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "language": "Swahili",
+  "locale": "sw",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Tumia viwango vitatu:"
+    },
+    {
+      "key": "site.0b74139d26786c31a9",
+      "source": "Use Time travel when this is the right mode for the job. If you want a related path, try Quiz me on Trivia. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Tumia Time travel wakati hii ndiyo hali inayofaa kwa kazi hiyo. Ukitaka njia inayohusiana, jaribu Quiz me on Trivia. Unaweza pia kuvinjari blogu ya kujifunza kwa AI kwa mbinu za kusoma, kujifunza kwa Kisokrati, flashcards, uigizaji wa majukumu, na kukumbuka kwa bidii."
+    },
+    {
+      "key": "site.a2f81eb61f9a3c9bd0",
+      "source": "Use Time travel when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Tumia Time travel unapotaka kipindi kinachoanza haraka lakini bado kinajirekebisha kulingana nawe. Lengo la kwanza si kusikika wa kuvutia. Lengo la kwanza ni kufanya hatua inayofuata ihisi inawezekana."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Tumia mistari ya wakati, safu za sababu, na ramani za matokeo."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Tumia miundo ya miti, lebo za nodi, viungo, na vidokezo vya hatua inayofuata."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Tumia sehemu zisizo na lebo, viwango vya vidokezo, ufunguo wa majibu, na vidokezo vya marudio."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Tumia msamiati wa kuona na vidokezo vya kutazama vilivyoongozwa."
+    },
+    {
+      "key": "site.d238305bf168b268ff",
+      "source": "Use Viva Practice when this is the right mode for the job. If you want a related path, try Learning Game Master. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Tumia Viva Practice wakati hii ndiyo hali inayofaa kwa kazi hiyo. Ukitaka njia inayohusiana, jaribu Learning Game Master. Unaweza pia kuvinjari blogu ya kujifunza kwa AI kwa mbinu za kusoma, kujifunza kwa Kisokrati, flashcards, uigizaji wa majukumu, na kukumbuka kwa bidii."
+    },
+    {
+      "key": "site.9d0a10626774c99800",
+      "source": "Use Viva Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Tumia Viva Practice unapotaka kipindi kinachoanza haraka lakini bado kinajirekebisha kulingana nawe. Lengo la kwanza si kusikika wa kuvutia. Lengo la kwanza ni kufanya hatua inayofuata ihisi inawezekana."
+    },
+    {
+      "key": "site.bd69cd3ea825ed4970",
+      "source": "Use Vocabulary Builder when this is the right mode for the job. If you want a related path, try Reading Companion. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Tumia Vocabulary Builder wakati hii ndiyo hali inayofaa kwa kazi hiyo. Ukitaka njia inayohusiana, jaribu Reading Companion. Unaweza pia kuvinjari blogu ya kujifunza kwa AI kwa mbinu za kusoma, kujifunza kwa Kisokrati, flashcards, uigizaji wa majukumu, na kukumbuka kwa bidii."
+    },
+    {
+      "key": "site.cd4070756edded8a69",
+      "source": "Use Vocabulary Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Tumia Vocabulary Builder unapotaka kipindi kinachoanza haraka lakini bado kinajirekebisha kulingana nawe. Lengo la kwanza si kusikika wa kuvutia. Lengo la kwanza ni kufanya hatua inayofuata ihisi inawezekana."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Tumia mipango ya kila wiki, mipango mbadala, na hatua ndogo zinazofuata."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Tumia mizunguko ya kazi/mapumziko, menyu za mapumziko, na vidokezo vya kurudi."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Tumia sehemu za karatasi ya kazi, funguo za majibu, na lebo za ugumu."
+    },
+    {
+      "key": "site.3fb5408e7457bf73c1",
+      "source": "Use Writing Coach when this is the right mode for the job. If you want a related path, try Science Lab Partner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Tumia Writing Coach wakati hii ndiyo hali inayofaa kwa kazi hiyo. Ukitaka njia inayohusiana, jaribu Science Lab Partner. Unaweza pia kuvinjari blogu ya kujifunza kwa AI kwa mbinu za kusoma, kujifunza kwa Kisokrati, flashcards, uigizaji wa majukumu, na kukumbuka kwa bidii."
+    },
+    {
+      "key": "site.74c889d60e73579cf5",
+      "source": "Use Writing Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Tumia Writing Coach unapotaka kipindi kinachoanza haraka lakini bado kinajirekebisha kulingana nawe. Lengo la kwanza si kusikika wa kuvutia. Lengo la kwanza ni kufanya hatua inayofuata ihisi inawezekana."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Thibitisha hisia, tambua kikwazo, na chagua hatua moja ndogo inayofuata."
+    },
+    {
+      "key": "site.754f12f4e5a90a1566",
+      "source": "Verify important facts with trusted sources, textbooks, or teacher-provided materials.",
+      "value": "Thibitisha ukweli muhimu kwa vyanzo vinavyoaminika, vitabu vya kiada, au nyenzo zilizotolewa na mwalimu."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "uchambuzi wa kuona"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "kujifunza kwa kuona"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Ujifunzaji wa Kuona"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Mazoezi ya Viva"
+    },
+    {
+      "key": "site.9bb9921e99ff1e258d",
+      "source": "Viva Practice AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Hali ya Kujifunza kwa AI ya Viva Practice ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: fanya mazoezi ya viva, mitihani ya mdomo, utetezi wa miradi, na maswali ya haraka ya kufuatilia kwa mrejesho mtulivu."
+    },
+    {
+      "key": "site.c4255e0bb155f796af",
+      "source": "Viva Practice AI Learning Mode: practical guide",
+      "value": "Hali ya Kujifunza kwa AI ya Viva Practice: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.40d5123891b796f2de",
+      "source": "Viva Practice prompts and study loop",
+      "value": "Vidokezo na mzunguko wa masomo wa Viva Practice"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Mjenzi wa Msamiati"
+    },
+    {
+      "key": "site.19637f7cace496a827",
+      "source": "Vocabulary Builder AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Hali ya Kujifunza kwa AI ya Vocabulary Builder ni njia iliyolenga kutumia AI kwa kujifunza badala ya kukusanya majibu bila kushiriki. Hali hii imejengwa kuzunguka kazi maalum: jenga msamiati kwa maana, mifano, vidokezo vya matamshi, viungo vya kumbukumbu, na mazoezi ya haraka."
+    },
+    {
+      "key": "site.afd2aa4628a25e2ad6",
+      "source": "Vocabulary Builder AI Learning Mode: practical guide",
+      "value": "Hali ya Kujifunza kwa AI ya Vocabulary Builder: mwongozo wa vitendo"
+    },
+    {
+      "key": "site.7ae5014c2f1de184ce",
+      "source": "Vocabulary Builder prompts and study loop",
+      "value": "Vidokezo na mzunguko wa masomo wa Vocabulary Builder"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "ripoti ya kila wiki"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Ripoti za Kila Wiki"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "alama iliyopimwa kwa uzito"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "Kipindi kizuri cha Kisokrati kinaonekanaje"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Ni mfumo gani wa mafanikio tunapaswa kuusanifu?"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Mwenzi wa kujifunza wa AI anapaswa kufanya nini kwa kila mtu"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "Tunabuni nini?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Tunasoma nini?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Una hamu ya kujua nini leo?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Unajitayarisha kusema nini?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Unatafiti nini?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Unaandika nini?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Ni kazi gani ya sanaa, msanii, au mtindo?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Ni kazi zipi unazopaswa kufanya?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Tunachunguza swali gani kubwa?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Tunapaswa kuchunguza kazi au jambo gani linalokuvutia?"
+    },
+    {
+      "key": "site.5e290b0b81a3592a09",
+      "source": "What choices were available?",
+      "value": "Ni chaguo gani zilizokuwepo?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Ni mada gani ya uraia tunapaswa kuisoma?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Ni mada gani ya programu au hitilafu tunayoshughulikia?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Ni ahadi gani inayohitaji uwajibikaji?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Tunapaswa kuchora ramani ya dhana gani?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Ni kozi au masomo gani unayoyasimamia?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Ni mchoro upi tunapaswa kufanya mazoezi ya kuweka lebo?"
+    },
+    {
+      "key": "site.4ccb447427a6acda9a",
+      "source": "What did their society assume?",
+      "value": "Jamii yao ilichukulia nini kuwa kawaida?"
+    },
+    {
+      "key": "site.8bc608a9306d319a8b",
+      "source": "What did this person care about?",
+      "value": "Mtu huyu alijali nini?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Ni dilema gani tunapaswa kuichunguza?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Unafanya nini baadaye katika ulimwengu huu?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Ni nini unahitaji kukumbuka?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Unahitaji kusoma nini?"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "Unadhani nini kinaendelea?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Unataka kukamilisha nini leo?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Mahakama hufanya nini?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Meneja wa bidhaa hufanya nini?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Utafiti huu unaonyesha nini?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Ni wazo gani la kiuchumi tunapaswa kuliiga?"
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "Ni ushahidi gani unaounga mkono hilo?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Unajitayarisha kwa mtihani upi?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Je, ninahitaji alama gani ya mwisho?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "Nini kimetokea wiki hii?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "Nini kitatokea ikiwa kodi zitabadilika?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "Nini kitatokea tukibadilisha halijoto?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "Ni tatizo gani la kazi ya nyumbani ambalo umekwama nalo?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Ni wazo gani linalokuchanganya au linalotia shaka?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "Unajitayarisha kwa mahojiano gani?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "Maarifa ni nini?"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Jukumu la klorofili katika usanisinuru ni nini?"
+    },
+    {
+      "key": "site.7b4cc8d27ce0650610",
+      "source": "What it should not do",
+      "value": "Haipaswi kufanya nini"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Je, unataka aina gani ya sauti za mazingira kwa ajili ya umakini?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "Ni aina gani ya uchunguzi kifani tunapaswa kuiga?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "Unataka aina gani ya umakini leo?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Ni lengo gani la kujifunza linapaswa kuwa mfumo wa viwango?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "Je, unataka tabia gani ya ujifunzaji?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "Ni wakati gani wa kujifunza tunapaswa kutafakari?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "Ni mkakati gani wa kujifunza unaonifaa?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "Kinachofanya flashcard iwe nzuri"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "Ni nini hufanya hoja kuwa halali?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "Ni nini kinachofanya kitu kuwa cha haki?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "Ni nyenzo gani inapaswa kuwa mwongozo wa kusomea?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "Ni tatizo gani la hisabati tunapaswa kulitatua?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "Ni wazo gani la muziki tunapaswa kulifanyia kazi?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Kipindi hiki cha kazi ya kina kinapaswa kuleta matokeo gani?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "Ni jozi zipi zinapaswa kuwa mchezo wa kulinganisha?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "Je, ni maendeleo gani tunapaswa kuyakagua?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "Tunajenga mradi gani?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "Ni swali au mjadala gani ungependa kuchapisha?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "Ni rasilimali gani ungependa kushiriki?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "Tunapaswa kuigiza hali gani?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Ni wazo gani la kisayansi au jaribio tunalochunguza?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "Ni nini kinapaswa kuwa changamoto?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "Ni nini kinapaswa kuwa mchezo wa kujifunza?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "Ni nini kinapaswa kuwa hadithi?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "Ni nini kinapaswa kuwa flashcards?"
+    },
+    {
+      "key": "site.08aa84aad475334414",
+      "source": "What should I ask {value1} first?",
+      "value": "Nimuulize nini {value1} kwanza?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "Ubao wa wanaoongoza unapaswa kupima nini?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "Mtihani wa mazoezi unapaswa kuhusu nini?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "Kikundi cha kusoma kifanye nini?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "Karatasi ya mazoezi inapaswa kuhusu nini?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "Kipindi hiki cha umakini kinapaswa kuhusu nini?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "Tunapaswa kukagua nini?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "Tunapaswa kuchora au kuweka mchoro wa nini?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "Je, unajenga mfululizo au utaratibu gani wa kusoma?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "Ni kazi gani tunapaswa kupima muda wake?"
+    },
+    {
+      "key": "site.f4877740cc39cf8b66",
+      "source": "What the companion should provide",
+      "value": "Mwenzi anapaswa kutoa nini"
+    },
+    {
+      "key": "site.231fbf27878f2698ea",
+      "source": "What this mode helps with",
+      "value": "Hali hii husaidia nini"
+    },
+    {
+      "key": "site.a29b4b5ee632ee4d44",
+      "source": "What to ask a historical figure",
+      "value": "Cha kumuuliza mhusika wa kihistoria"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "Ni mada gani ungependa tukujaribu kwayo?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "Ni mada gani inapaswa kuwa ramani ya mawazo?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Unajitayarisha kwa viva au mtihani gani wa mdomo?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "Ni nini utanieleza?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "Ni maneno au mada gani tunapaswa kufanya mazoezi?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "Unataka mdundo gani wa kazi/mapumziko?"
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "Ni nini kingebadilisha mawazo yako?"
+    },
+    {
+      "key": "site.3ab45d2d5936f0cebc",
+      "source": "What would modern readers misunderstand?",
+      "value": "Wasomaji wa kisasa wangeelewa vibaya nini?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "Ungependa kujifunza nini leo?"
+    },
+    {
+      "key": "site.2fb41d86e92cebbf5a",
+      "source": "What you can practise",
+      "value": "Unachoweza kufanya mazoezi"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "Ni nini kinachofanya ujifunzaji kuwa mgumu kwa sasa?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "Mada yako ya mjadala leo ni nini?"
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "Wakati ufundishaji wa Kisokrati ni zana isiyofaa"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "Unapobandika noti kwenye AI, iombe igawanye mawazo mapana katika kazi hizo. Seti yenye kadi 18 mahususi kwa kawaida ni bora kuliko seti yenye kadi 5 kubwa ambazo kila moja ina aya nzima."
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "Mahali AI inaweza kusaidia"
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "Mahali AI husaidia"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "Tunapaswa kuchunguza wapi?"
+    },
+    {
+      "key": "site.0320ac9cef49bf6819",
+      "source": "Where to go next",
+      "value": "Pa kwenda baadaye"
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "Ni dhana gani ya msingi inayobeba mzigo mkubwa zaidi?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "Ni tukio gani la kihistoria tunapaswa kulifuatilia?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "Ni mtu gani wa kihistoria ungependa kukutana naye?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "Lugha gani na hali gani?"
+    },
+    {
+      "key": "site.0f2909e7b85147ae50",
+      "source": "Which parts are well documented and which parts are uncertain?",
+      "value": "Ni sehemu gani zimeandikwa vizuri na ni sehemu gani hazina uhakika?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "kelele nyeupe"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "Unataka kubishana na nani, na kuhusu nini?"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Nani anasoma pamoja na lengo ni nini?"
+    },
+    {
+      "key": "site.f4ff361d2bbe9cfce0",
+      "source": "Who it helps",
+      "value": "Inamsaidia nani"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Kwa nini mkufunzi wa AI wa Kisokrati anaweza kufanya mawazo yashikane"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "Kwa nini miji iko karibu na mito?"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "Kwa nini niliepuka kusoma?"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "Kwa nini Dola ya Roma ilidhoofika?"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Kwa nini jibu langu la aljebra si sahihi?"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "Kwa nini kanuni hii ya sarufi ni ya ajabu?"
+    },
+    {
+      "key": "site.3b784ed5faff65ac4d",
+      "source": "Why it is different",
+      "value": "Kwa nini ni tofauti"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "Kwa nini maswali husaidia"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "Maneno kuhusu hali ya hewa"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Kokotoa alama zenye uzito, hali za GPA, alama za mwisho zinazohitajika, na mipango ya nini kitatokea katika muhula."
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Tatua aljebra, kalkulasi, matatizo ya maneno, na dhana za hisabati hatua kwa hatua ukiwa na mkufunzi wa AI."
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Tatua dilema kwa kupima wadau, matokeo, wajibu, haki, na maelewano."
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "Tatua hisabati hatua kwa hatua"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "Kitengeneza Karatasi za Mazoezi"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "Miji mikuu ya dunia"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "Andika mwongozo wa kufuatilia maendeleo"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "Andika swali zuri la jukwaani"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "Andika ripoti yangu ya masomo ya kila wiki"
+    },
+    {
+      "key": "site.26837fdfbdc6470aba",
+      "source": "Write your next step.",
+      "value": "Andika hatua yako inayofuata."
+    },
+    {
+      "key": "site.2906041145ba13b814",
+      "source": "writing coach",
+      "value": "kocha wa uandishi"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Mkufunzi wa Uandishi"
+    },
+    {
+      "key": "site.d0cad315c201ae8f56",
+      "source": "Writing Coach prompts and study loop",
+      "value": "Vidokezo na mzunguko wa masomo wa Writing Coach"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP na Kupanda Ngazi"
+    },
+    {
+      "key": "site.9711f0284628a152bd",
+      "source": "Yes. {value1} opens as a public guest learning mode at {value2}, so you can start with a few free guest messages before creating an account.",
+      "value": "Ndiyo. {value1} hufunguka kama hali ya umma ya kujifunza kama mgeni katika {value2}, kwa hiyo unaweza kuanza kwa ujumbe michache ya bure kama mgeni kabla ya kufungua akaunti."
+    },
+    {
+      "key": "site.1a3740fa59d6eb6490",
+      "source": "You can also start with a rough version of your real problem. A messy first prompt is fine. The session can clarify the level, audience, deadline, and style once you begin.",
+      "value": "Unaweza pia kuanza na toleo lisilo kamili la tatizo lako halisi. Kidokezo cha kwanza kisicho safi ni sawa. Kipindi kinaweza kufafanua kiwango, hadhira, muda wa mwisho, na mtindo mara tu unapoanza."
+    },
+    {
+      "key": "site.f2e043b75e8b159ec8",
+      "source": "You can try the format in Talk to a Historical Person. If you want the wider scene before meeting a person, use Time Travel to visit a period, inspect constraints, and then ask what choices people actually had.",
+      "value": "Unaweza kujaribu muundo katika Talk to a Historical Person. Ikiwa unataka mandhari pana kabla ya kukutana na mtu, tumia Time Travel kutembelea kipindi, kuchunguza vikwazo, kisha kuuliza watu walikuwa na chaguo gani kweli."
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "Unajua mkufunzi wa AI wa Kisokrati amefanya kazi wakati mwanafunzi anaweza kufanya mambo matatu:"
+    }
+  ]
+}

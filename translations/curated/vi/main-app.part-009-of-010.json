@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Vietnamese",
+  "locale": "vi",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 9,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.task-timer.seo.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Chia nhỏ công việc thành các tác vụ cụ thể, tính thời gian cho từng tác vụ và xem lại nỗ lực học tập đã dành ra sau mỗi phiên tập trung."
+    },
+    {
+      "key": "topic.task-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề về sự tập trung và năng suất, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.task-timer.seo.whyDifferent",
+      "source": "This mode is tuned for task timer with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho bộ đếm thời gian tác vụ với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.0",
+      "source": "Time individual tasks and see effort",
+      "value": "Tính thời gian cho từng tác vụ và xem mức độ nỗ lực"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.task-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên làm việc theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.task-timer.starter.0",
+      "source": "Time a problem set",
+      "value": "Tính thời gian cho một bộ bài tập"
+    },
+    {
+      "key": "topic.task-timer.starter.1",
+      "source": "Track essay outline work",
+      "value": "Theo dõi quá trình lập dàn ý bài luận"
+    },
+    {
+      "key": "topic.task-timer.starter.2",
+      "source": "Break a big task into timed blocks",
+      "value": "Chia nhỏ một tác vụ lớn thành các khối thời gian"
+    },
+    {
+      "key": "topic.break-reminder.name",
+      "source": "Break Reminder",
+      "value": "Nhắc nhở nghỉ giải lao"
+    },
+    {
+      "key": "topic.break-reminder.subText",
+      "source": "Protect focus with healthy pauses",
+      "value": "Bảo vệ sự tập trung bằng những khoảng nghỉ lành mạnh"
+    },
+    {
+      "key": "topic.break-reminder.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Thiết lập nhịp độ làm việc và nghỉ ngơi, lên kế hoạch nghỉ ngơi thực sự và tránh rơi vào tình trạng mệt mỏi khi học tập kéo dài."
+    },
+    {
+      "key": "topic.break-reminder.inputboxText",
+      "source": "What work/break rhythm do you want?",
+      "value": "Bạn muốn nhịp độ làm việc/nghỉ ngơi như thế nào?"
+    },
+    {
+      "key": "topic.break-reminder.category",
+      "source": "Focus & Productivity",
+      "value": "Tập trung & Năng suất"
+    },
+    {
+      "key": "topic.break-reminder.seo.description",
+      "source": "Set work and break rhythms, plan a real reset, and avoid drifting into endless study fatigue.",
+      "value": "Thiết lập nhịp độ làm việc và nghỉ ngơi, lên kế hoạch nghỉ ngơi thực sự và tránh rơi vào tình trạng mệt mỏi khi học tập kéo dài."
+    },
+    {
+      "key": "topic.break-reminder.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề về sự tập trung và năng suất, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.break-reminder.seo.whyDifferent",
+      "source": "This mode is tuned for break reminder with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho tính năng nhắc nhở nghỉ giải lao với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.0",
+      "source": "Protect focus with healthy pauses",
+      "value": "Bảo vệ sự tập trung bằng những khoảng nghỉ lành mạnh"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.break-reminder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.break-reminder.starter.0",
+      "source": "Use 50/10 breaks",
+      "value": "Sử dụng quy tắc nghỉ 50/10"
+    },
+    {
+      "key": "topic.break-reminder.starter.1",
+      "source": "Plan a healthy break",
+      "value": "Lên kế hoạch nghỉ ngơi lành mạnh"
+    },
+    {
+      "key": "topic.break-reminder.starter.2",
+      "source": "Help me stop overstudying",
+      "value": "Giúp tôi ngừng học quá sức"
+    },
+    {
+      "key": "topic.deep-work-sessions.name",
+      "source": "Deep Work Sessions",
+      "value": "Các phiên làm việc sâu"
+    },
+    {
+      "key": "topic.deep-work-sessions.subText",
+      "source": "Plan a distraction-light focus block",
+      "value": "Lên kế hoạch cho một khoảng thời gian tập trung không bị xao nhãng"
+    },
+    {
+      "key": "topic.deep-work-sessions.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Chuẩn bị một phiên làm việc sâu với kết quả rõ ràng, các ràng buộc, quy tắc tập trung, điểm kiểm tra lại và kế hoạch dự phòng."
+    },
+    {
+      "key": "topic.deep-work-sessions.inputboxText",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Phiên làm việc sâu này nên tạo ra kết quả gì?"
+    },
+    {
+      "key": "topic.deep-work-sessions.category",
+      "source": "Focus & Productivity",
+      "value": "Tập trung & Năng suất"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.description",
+      "source": "Prepare a deep work session with a clear outcome, constraints, focus rules, review checkpoint, and fallback plan.",
+      "value": "Chuẩn bị một phiên làm việc sâu với kết quả rõ ràng, các ràng buộc, quy tắc tập trung, điểm kiểm tra lại và kế hoạch dự phòng."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề về sự tập trung và năng suất, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.whyDifferent",
+      "source": "This mode is tuned for deep work sessions with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho các phiên làm việc sâu với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.0",
+      "source": "Plan a distraction-light focus block",
+      "value": "Lên kế hoạch cho một khoảng thời gian tập trung không bị xao nhãng"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.deep-work-sessions.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.0",
+      "source": "Plan a 90 minute deep work block",
+      "value": "Lên kế hoạch cho một khối làm việc sâu 90 phút"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.1",
+      "source": "Help me focus on coding",
+      "value": "Giúp tôi tập trung vào việc lập trình"
+    },
+    {
+      "key": "topic.deep-work-sessions.starter.2",
+      "source": "Set rules for thesis writing",
+      "value": "Đặt quy tắc cho việc viết luận văn"
+    },
+    {
+      "key": "topic.group-study-timer.name",
+      "source": "Group Study Timer",
+      "value": "Hẹn giờ học nhóm"
+    },
+    {
+      "key": "topic.group-study-timer.subText",
+      "source": "Coordinate focus rounds with others",
+      "value": "Phối hợp các vòng tập trung với những người khác"
+    },
+    {
+      "key": "topic.group-study-timer.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Thực hiện nhịp độ học tập chung cho bạn bè hoặc bạn cùng lớp với các mục tiêu được đồng bộ hóa, kiểm tra tiến độ và các câu hỏi tổng kết."
+    },
+    {
+      "key": "topic.group-study-timer.inputboxText",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Ai đang học cùng nhau và mục tiêu là gì?"
+    },
+    {
+      "key": "topic.group-study-timer.category",
+      "source": "Social",
+      "value": "Xã hội"
+    },
+    {
+      "key": "topic.group-study-timer.seo.description",
+      "source": "Run a shared study rhythm for friends or classmates with synchronized goals, check-ins, and debrief questions.",
+      "value": "Thực hiện nhịp độ học tập chung cho bạn bè hoặc bạn cùng lớp với các mục tiêu được đồng bộ hóa, kiểm tra tiến độ và các câu hỏi tổng kết."
+    },
+    {
+      "key": "topic.group-study-timer.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề xã hội, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.group-study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for group study timer with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho bộ hẹn giờ học nhóm với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.0",
+      "source": "Coordinate focus rounds with others",
+      "value": "Phối hợp các vòng tập trung cùng người khác"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.group-study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.group-study-timer.starter.0",
+      "source": "Plan a group Pomodoro",
+      "value": "Lên kế hoạch học nhóm theo phương pháp Pomodoro"
+    },
+    {
+      "key": "topic.group-study-timer.starter.1",
+      "source": "Structure a study room",
+      "value": "Thiết lập cấu trúc phòng học"
+    },
+    {
+      "key": "topic.group-study-timer.starter.2",
+      "source": "Run a 45 minute group session",
+      "value": "Chạy một phiên học nhóm 45 phút"
+    },
+    {
+      "key": "topic.ambient-sounds.name",
+      "source": "Ambient Sounds",
+      "value": "Âm thanh môi trường"
+    },
+    {
+      "key": "topic.ambient-sounds.subText",
+      "source": "Generated soundscapes for calm study",
+      "value": "Các khung cảnh âm thanh được tạo ra để học tập bình tĩnh"
+    },
+    {
+      "key": "topic.ambient-sounds.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Sử dụng các cài đặt âm thanh môi trường đơn giản để giảm bớt sự xao nhãng khi đọc, viết, ôn tập hoặc giải quyết vấn đề."
+    },
+    {
+      "key": "topic.ambient-sounds.inputboxText",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Bạn muốn loại âm thanh tập trung nào?"
+    },
+    {
+      "key": "topic.ambient-sounds.category",
+      "source": "Focus & Productivity",
+      "value": "Tập trung & Năng suất"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.description",
+      "source": "Use simple ambient sound presets to reduce distraction during reading, writing, revision, or problem solving.",
+      "value": "Sử dụng các cài đặt âm thanh môi trường đơn giản để giảm bớt sự xao nhãng khi đọc, viết, ôn tập hoặc giải quyết vấn đề."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề tập trung & năng suất, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.whyDifferent",
+      "source": "This mode is tuned for ambient sounds with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho âm thanh môi trường với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.0",
+      "source": "Generated soundscapes for calm study",
+      "value": "Các khung cảnh âm thanh được tạo ra để học tập bình tĩnh"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.ambient-sounds.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.0",
+      "source": "Use rain for reading",
+      "value": "Sử dụng tiếng mưa để đọc sách"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.1",
+      "source": "Choose calm audio for math",
+      "value": "Chọn âm thanh bình tĩnh cho môn toán"
+    },
+    {
+      "key": "topic.ambient-sounds.starter.2",
+      "source": "Set up quiet deep work ambience",
+      "value": "Thiết lập không gian làm việc sâu lắng và yên tĩnh"
+    },
+    {
+      "key": "topic.study-streaks.name",
+      "source": "Study Streaks",
+      "value": "Chuỗi ngày học tập"
+    },
+    {
+      "key": "topic.study-streaks.subText",
+      "source": "Build consistency without guilt",
+      "value": "Xây dựng sự nhất quán mà không cảm thấy tội lỗi"
+    },
+    {
+      "key": "topic.study-streaks.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Theo dõi chuỗi học tập, khôi phục những ngày bị bỏ lỡ và thiết kế thói quen học tập tối thiểu khả thi để duy trì trong cuộc sống thực."
+    },
+    {
+      "key": "topic.study-streaks.inputboxText",
+      "source": "What streak or routine are you building?",
+      "value": "Bạn đang xây dựng chuỗi hoặc thói quen nào?"
+    },
+    {
+      "key": "topic.study-streaks.category",
+      "source": "Analytics",
+      "value": "Phân tích"
+    },
+    {
+      "key": "topic.study-streaks.seo.description",
+      "source": "Track study streaks, repair missed days, and design a minimum viable study habit that survives real life.",
+      "value": "Theo dõi chuỗi học tập, khôi phục những ngày bị bỏ lỡ và thiết kế thói quen học tập tối thiểu khả thi để duy trì trong cuộc sống thực."
+    },
+    {
+      "key": "topic.study-streaks.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề phân tích, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.study-streaks.seo.whyDifferent",
+      "source": "This mode is tuned for study streaks with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho các chuỗi học tập với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.0",
+      "source": "Build consistency without guilt",
+      "value": "Xây dựng sự nhất quán mà không cảm thấy tội lỗi"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.study-streaks.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.study-streaks.starter.0",
+      "source": "Start a study streak",
+      "value": "Bắt đầu một chuỗi học tập"
+    },
+    {
+      "key": "topic.study-streaks.starter.1",
+      "source": "Recover after missing a day",
+      "value": "Khôi phục sau khi bỏ lỡ một ngày"
+    },
+    {
+      "key": "topic.study-streaks.starter.2",
+      "source": "Design a tiny daily review",
+      "value": "Thiết kế một bài ôn tập hàng ngày nhỏ gọn"
+    },
+    {
+      "key": "topic.progress-dashboard.name",
+      "source": "Progress Dashboard",
+      "value": "Bảng điều khiển tiến độ"
+    },
+    {
+      "key": "topic.progress-dashboard.subText",
+      "source": "Review learning activity and next moves",
+      "value": "Xem lại hoạt động học tập và các bước tiếp theo"
+    },
+    {
+      "key": "topic.progress-dashboard.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Biến hoạt động học tập, kết quả bài kiểm tra, ghi chú và bộ đếm thời gian thành một bản đánh giá theo phong cách bảng điều khiển với các xu hướng và hành động tiếp theo."
+    },
+    {
+      "key": "topic.progress-dashboard.inputboxText",
+      "source": "What progress should we review?",
+      "value": "Chúng ta nên xem lại tiến độ nào?"
+    },
+    {
+      "key": "topic.progress-dashboard.category",
+      "source": "Analytics",
+      "value": "Phân tích"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.description",
+      "source": "Turn study activity, quiz results, notes, and timers into a dashboard-style review with trends and next actions.",
+      "value": "Biến hoạt động học tập, kết quả bài kiểm tra, ghi chú và bộ đếm thời gian thành một bản đánh giá theo phong cách bảng điều khiển với các xu hướng và hành động tiếp theo."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề phân tích, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.whyDifferent",
+      "source": "This mode is tuned for progress dashboard with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho bảng điều khiển tiến độ với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.0",
+      "source": "Review learning activity and next moves",
+      "value": "Xem lại hoạt động học tập và các bước tiếp theo"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.progress-dashboard.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.0",
+      "source": "Review my week",
+      "value": "Xem lại tuần của tôi"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.1",
+      "source": "Find weak areas",
+      "value": "Tìm các lĩnh vực còn yếu"
+    },
+    {
+      "key": "topic.progress-dashboard.starter.2",
+      "source": "Turn activity into next steps",
+      "value": "Biến hoạt động thành các bước tiếp theo"
+    },
+    {
+      "key": "topic.weekly-reports.name",
+      "source": "Weekly Reports",
+      "value": "Báo cáo hàng tuần"
+    },
+    {
+      "key": "topic.weekly-reports.subText",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Tóm tắt những thành công, thiếu sót và kế hoạch tuần tới"
+    },
+    {
+      "key": "topic.weekly-reports.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Tạo báo cáo học tập hàng tuần hoặc hàng tháng với nỗ lực, kết quả, rào cản, thành công và kế hoạch trọng tâm."
+    },
+    {
+      "key": "topic.weekly-reports.inputboxText",
+      "source": "What happened this week?",
+      "value": "Điều gì đã xảy ra trong tuần này?"
+    },
+    {
+      "key": "topic.weekly-reports.category",
+      "source": "Analytics",
+      "value": "Phân tích"
+    },
+    {
+      "key": "topic.weekly-reports.seo.description",
+      "source": "Generate a weekly or monthly learning report with effort, outcomes, blockers, wins, and a focused plan.",
+      "value": "Tạo báo cáo học tập hàng tuần hoặc hàng tháng với nỗ lực, kết quả, rào cản, thành công và kế hoạch trọng tâm."
+    },
+    {
+      "key": "topic.weekly-reports.seo.who",
+      "source": "Learners exploring analytics topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề phân tích và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.weekly-reports.seo.whyDifferent",
+      "source": "This mode is tuned for weekly reports with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho các báo cáo hàng tuần với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.0",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Tóm tắt những thành công, thiếu sót và kế hoạch tuần tới"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.weekly-reports.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.weekly-reports.starter.0",
+      "source": "Write my weekly study report",
+      "value": "Viết báo cáo học tập hàng tuần của tôi"
+    },
+    {
+      "key": "topic.weekly-reports.starter.1",
+      "source": "Summarize my progress",
+      "value": "Tóm tắt tiến độ của tôi"
+    },
+    {
+      "key": "topic.weekly-reports.starter.2",
+      "source": "Plan next week from this week",
+      "value": "Lên kế hoạch cho tuần tới dựa trên tuần này"
+    },
+    {
+      "key": "topic.assignment-tracker.name",
+      "source": "Assignment Tracker",
+      "value": "Trình theo dõi bài tập"
+    },
+    {
+      "key": "topic.assignment-tracker.subText",
+      "source": "Track deadlines and next actions",
+      "value": "Theo dõi thời hạn và các hành động tiếp theo"
+    },
+    {
+      "key": "topic.assignment-tracker.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Sắp xếp bài tập theo ngày đến hạn, nỗ lực, trạng thái, rủi ro và hành động nhỏ nhất tiếp theo."
+    },
+    {
+      "key": "topic.assignment-tracker.inputboxText",
+      "source": "What assignments are on your plate?",
+      "value": "Bạn đang có những bài tập nào cần hoàn thành?"
+    },
+    {
+      "key": "topic.assignment-tracker.category",
+      "source": "Organization",
+      "value": "Tổ chức"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.description",
+      "source": "Organize assignments by due date, effort, status, risk, and the next smallest action.",
+      "value": "Sắp xếp bài tập theo ngày đến hạn, nỗ lực, trạng thái, rủi ro và hành động nhỏ nhất tiếp theo."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề tổ chức và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.whyDifferent",
+      "source": "This mode is tuned for assignment tracker with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho trình theo dõi bài tập với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.0",
+      "source": "Track deadlines and next actions",
+      "value": "Theo dõi thời hạn và các hành động tiếp theo"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý mẫu"
+    },
+    {
+      "key": "topic.assignment-tracker.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên làm việc theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.0",
+      "source": "Organize my deadlines",
+      "value": "Sắp xếp thời hạn của tôi"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.1",
+      "source": "Prioritize assignments",
+      "value": "Ưu tiên các bài tập"
+    },
+    {
+      "key": "topic.assignment-tracker.starter.2",
+      "source": "Plan this project submission",
+      "value": "Lập kế hoạch nộp dự án này"
+    },
+    {
+      "key": "topic.course-manager.name",
+      "source": "Course Manager",
+      "value": "Quản lý khóa học"
+    },
+    {
+      "key": "topic.course-manager.subText",
+      "source": "Organize courses, topics, and workload",
+      "value": "Sắp xếp các khóa học, chủ đề và khối lượng công việc"
+    },
+    {
+      "key": "topic.course-manager.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Lập bản đồ các khóa học, đơn vị bài học, bài tập, tài nguyên và khối lượng công việc hàng tuần vào một hệ thống học tập có tổ chức."
+    },
+    {
+      "key": "topic.course-manager.inputboxText",
+      "source": "What courses or subjects are you managing?",
+      "value": "Bạn đang quản lý những khóa học hoặc môn học nào?"
+    },
+    {
+      "key": "topic.course-manager.category",
+      "source": "Organization",
+      "value": "Tổ chức"
+    },
+    {
+      "key": "topic.course-manager.seo.description",
+      "source": "Map courses, units, assignments, resources, and weekly workload into one organized study system.",
+      "value": "Lập bản đồ các khóa học, đơn vị bài học, bài tập, tài nguyên và khối lượng công việc hàng tuần vào một hệ thống học tập có tổ chức."
+    },
+    {
+      "key": "topic.course-manager.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề về tổ chức, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.course-manager.seo.whyDifferent",
+      "source": "This mode is tuned for course manager with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho trình quản lý khóa học với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.0",
+      "source": "Organize courses, topics, and workload",
+      "value": "Sắp xếp các khóa học, chủ đề và khối lượng công việc"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý mẫu"
+    },
+    {
+      "key": "topic.course-manager.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên làm việc theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.course-manager.starter.0",
+      "source": "Set up my courses",
+      "value": "Thiết lập các khóa học của tôi"
+    },
+    {
+      "key": "topic.course-manager.starter.1",
+      "source": "Organize my semester",
+      "value": "Sắp xếp học kỳ của tôi"
+    },
+    {
+      "key": "topic.course-manager.starter.2",
+      "source": "Map topics for each subject",
+      "value": "Lập bản đồ các chủ đề cho từng môn học"
+    },
+    {
+      "key": "topic.note-organizer.name",
+      "source": "Note Organizer",
+      "value": "Trình sắp xếp ghi chú"
+    },
+    {
+      "key": "topic.note-organizer.subText",
+      "source": "Tag, sort, and connect notes",
+      "value": "Gắn thẻ, phân loại và kết nối các ghi chú"
+    },
+    {
+      "key": "topic.note-organizer.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Biến các ghi chú rời rạc thành các thư mục, thẻ, bản tóm tắt, liên kết và các hành động ôn tập giúp việc ghi nhớ dễ dàng hơn."
+    },
+    {
+      "key": "topic.note-organizer.inputboxText",
+      "source": "Paste or describe the notes to organize",
+      "value": "Dán hoặc mô tả các ghi chú cần sắp xếp"
+    },
+    {
+      "key": "topic.note-organizer.category",
+      "source": "Organization",
+      "value": "Tổ chức"
+    },
+    {
+      "key": "topic.note-organizer.seo.description",
+      "source": "Turn scattered notes into folders, tags, summaries, links, and review actions that make recall easier.",
+      "value": "Biến các ghi chú rời rạc thành các thư mục, thẻ, bản tóm tắt, liên kết và các hành động ôn tập giúp việc ghi nhớ trở nên dễ dàng hơn."
+    },
+    {
+      "key": "topic.note-organizer.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề về tổ chức, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.note-organizer.seo.whyDifferent",
+      "source": "This mode is tuned for note organizer with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho trình sắp xếp ghi chú với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.0",
+      "source": "Tag, sort, and connect notes",
+      "value": "Gắn thẻ, sắp xếp và kết nối các ghi chú"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.note-organizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.note-organizer.starter.0",
+      "source": "Organize my class notes",
+      "value": "Sắp xếp ghi chú lớp học của tôi"
+    },
+    {
+      "key": "topic.note-organizer.starter.1",
+      "source": "Create tags for these notes",
+      "value": "Tạo thẻ cho các ghi chú này"
+    },
+    {
+      "key": "topic.note-organizer.starter.2",
+      "source": "Find themes in my notebook",
+      "value": "Tìm các chủ đề trong sổ tay của tôi"
+    },
+    {
+      "key": "topic.resource-sharing.name",
+      "source": "Resource Sharing",
+      "value": "Chia sẻ tài nguyên"
+    },
+    {
+      "key": "topic.resource-sharing.subText",
+      "source": "Package and share study resources",
+      "value": "Đóng gói và chia sẻ tài nguyên học tập"
+    },
+    {
+      "key": "topic.resource-sharing.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Chuẩn bị tài nguyên học tập cho bạn cùng lớp hoặc một nhóm: bản tóm tắt, liên kết, ghi chú, giải thích và hướng dẫn sử dụng."
+    },
+    {
+      "key": "topic.resource-sharing.inputboxText",
+      "source": "What resource do you want to share?",
+      "value": "Bạn muốn chia sẻ tài nguyên nào?"
+    },
+    {
+      "key": "topic.resource-sharing.category",
+      "source": "Social",
+      "value": "Xã hội"
+    },
+    {
+      "key": "topic.resource-sharing.seo.description",
+      "source": "Prepare study resources for classmates or a group: summaries, links, notes, explanations, and usage guidance.",
+      "value": "Chuẩn bị tài nguyên học tập cho bạn cùng lớp hoặc một nhóm: bản tóm tắt, liên kết, ghi chú, giải thích và hướng dẫn sử dụng."
+    },
+    {
+      "key": "topic.resource-sharing.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề xã hội, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.resource-sharing.seo.whyDifferent",
+      "source": "This mode is tuned for resource sharing with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho việc chia sẻ tài nguyên với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.0",
+      "source": "Package and share study resources",
+      "value": "Đóng gói và chia sẻ tài nguyên học tập"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.resource-sharing.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.resource-sharing.starter.0",
+      "source": "Package my notes for a group",
+      "value": "Đóng gói ghi chú của tôi cho một nhóm"
+    },
+    {
+      "key": "topic.resource-sharing.starter.1",
+      "source": "Create a resource summary",
+      "value": "Tạo bản tóm tắt tài nguyên"
+    },
+    {
+      "key": "topic.resource-sharing.starter.2",
+      "source": "Make sharing guidelines",
+      "value": "Tạo hướng dẫn chia sẻ"
+    },
+    {
+      "key": "topic.study-groups.name",
+      "source": "Study Groups",
+      "value": "Nhóm học tập"
+    },
+    {
+      "key": "topic.study-groups.subText",
+      "source": "Make group study structured",
+      "value": "Làm cho việc học nhóm trở nên có cấu trúc"
+    },
+    {
+      "key": "topic.study-groups.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Lên kế hoạch cho một buổi học nhóm hiệu quả với các vai trò, chương trình nghị sự, vòng câu hỏi, tài nguyên chia sẻ và ghi chú tóm tắt."
+    },
+    {
+      "key": "topic.study-groups.inputboxText",
+      "source": "What should the study group do?",
+      "value": "Nhóm học tập nên làm gì?"
+    },
+    {
+      "key": "topic.study-groups.category",
+      "source": "Social",
+      "value": "Xã hội"
+    },
+    {
+      "key": "topic.study-groups.seo.description",
+      "source": "Plan a productive study group with roles, agenda, question rounds, shared resources, and recap notes.",
+      "value": "Lên kế hoạch cho một buổi học nhóm hiệu quả với các vai trò, chương trình nghị sự, vòng câu hỏi, tài nguyên chia sẻ và ghi chú tóm tắt."
+    },
+    {
+      "key": "topic.study-groups.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề xã hội và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.study-groups.seo.whyDifferent",
+      "source": "This mode is tuned for study groups with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho các nhóm học tập với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.0",
+      "source": "Make group study structured",
+      "value": "Làm cho việc học nhóm trở nên có cấu trúc"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý mẫu"
+    },
+    {
+      "key": "topic.study-groups.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.study-groups.starter.0",
+      "source": "Plan a group session",
+      "value": "Lên kế hoạch cho một phiên học nhóm"
+    },
+    {
+      "key": "topic.study-groups.starter.1",
+      "source": "Make roles for a study group",
+      "value": "Phân công vai trò cho nhóm học tập"
+    },
+    {
+      "key": "topic.study-groups.starter.2",
+      "source": "Fix an unproductive group",
+      "value": "Khắc phục tình trạng nhóm kém hiệu quả"
+    },
+    {
+      "key": "topic.student-forum.name",
+      "source": "Student Forum",
+      "value": "Diễn đàn sinh viên"
+    },
+    {
+      "key": "topic.student-forum.subText",
+      "source": "Shape questions for community help",
+      "value": "Định hình câu hỏi để nhận sự trợ giúp từ cộng đồng"
+    },
+    {
+      "key": "topic.student-forum.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Chuẩn bị các câu hỏi, phản hồi, tóm tắt và yêu cầu theo dõi rõ ràng trên diễn đàn để giúp các cuộc thảo luận của sinh viên trở nên hữu ích hơn."
+    },
+    {
+      "key": "topic.student-forum.inputboxText",
+      "source": "What question or discussion do you want to post?",
+      "value": "Bạn muốn đăng câu hỏi hoặc thảo luận nào?"
+    },
+    {
+      "key": "topic.student-forum.category",
+      "source": "Social",
+      "value": "Xã hội"
+    },
+    {
+      "key": "topic.student-forum.seo.description",
+      "source": "Prepare clear forum questions, replies, summaries, and follow-up requests that make student discussions more useful.",
+      "value": "Chuẩn bị các câu hỏi, phản hồi, tóm tắt và yêu cầu theo dõi rõ ràng trên diễn đàn để giúp các cuộc thảo luận của sinh viên trở nên hữu ích hơn."
+    },
+    {
+      "key": "topic.student-forum.seo.who",
+      "source": "Learners exploring social topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề xã hội và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.student-forum.seo.whyDifferent",
+      "source": "This mode is tuned for student forum with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho diễn đàn sinh viên với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.0",
+      "source": "Shape questions for community help",
+      "value": "Định hình câu hỏi để nhận sự trợ giúp từ cộng đồng"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý mẫu"
+    },
+    {
+      "key": "topic.student-forum.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.student-forum.starter.0",
+      "source": "Write a good forum question",
+      "value": "Viết một câu hỏi hay trên diễn đàn"
+    },
+    {
+      "key": "topic.student-forum.starter.1",
+      "source": "Summarize a discussion",
+      "value": "Tóm tắt một cuộc thảo luận"
+    },
+    {
+      "key": "topic.student-forum.starter.2",
+      "source": "Ask for peer feedback",
+      "value": "Yêu cầu phản hồi từ bạn học"
+    },
+    {
+      "key": "topic.worksheet-builder.name",
+      "source": "Worksheet Builder",
+      "value": "Trình tạo phiếu bài tập"
+    },
+    {
+      "key": "topic.worksheet-builder.subText",
+      "source": "Generate mixed practice worksheets",
+      "value": "Tạo các phiếu bài tập thực hành hỗn hợp"
+    },
+    {
+      "key": "topic.worksheet-builder.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Tạo phiếu bài tập với các dạng câu hỏi như điền vào chỗ trống, trắc nghiệm, đúng/sai, trả lời ngắn và nối câu."
+    },
+    {
+      "key": "topic.worksheet-builder.inputboxText",
+      "source": "What should the worksheet cover?",
+      "value": "Phiếu bài tập nên bao gồm nội dung gì?"
+    },
+    {
+      "key": "topic.worksheet-builder.category",
+      "source": "Active Learning",
+      "value": "Học tập chủ động"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.description",
+      "source": "Create worksheets with question types such as fill-in-the-blank, MCQs, true/false, short answers, and matching.",
+      "value": "Tạo phiếu bài tập với các dạng câu hỏi như điền vào chỗ trống, trắc nghiệm, đúng/sai, trả lời ngắn và nối câu."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề học tập chủ động, những người muốn có hướng dẫn thực tế thay vì một ô trả lời chung chung."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.whyDifferent",
+      "source": "This mode is tuned for worksheet builder with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho trình tạo phiếu bài tập với các gợi ý, ví dụ và quy trình học tập riêng."
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.0",
+      "source": "Generate mixed practice worksheets",
+      "value": "Tạo các phiếu bài tập thực hành hỗn hợp"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.worksheet-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.0",
+      "source": "Make a worksheet on fractions",
+      "value": "Tạo phiếu bài tập về phân số"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.1",
+      "source": "Create mixed chemistry practice",
+      "value": "Tạo bài thực hành hóa học hỗn hợp"
+    },
+    {
+      "key": "topic.worksheet-builder.starter.2",
+      "source": "Build vocabulary exercises",
+      "value": "Xây dựng các bài tập từ vựng"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.name",
+      "source": "Diagram Labeling Practice",
+      "value": "Luyện tập dán nhãn sơ đồ"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.subText",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Luyện tập dán nhãn cho các sơ đồ và hệ thống"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Biến các sơ đồ, hệ cơ thể, bản đồ, quy trình làm việc hoặc thiết lập phòng thí nghiệm thành bài tập dán nhãn với gợi ý và kiểm tra đáp án."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.inputboxText",
+      "source": "What diagram should we practice labeling?",
+      "value": "Chúng ta nên luyện tập dán nhãn sơ đồ nào?"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.category",
+      "source": "Active Learning",
+      "value": "Học tập chủ động"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.description",
+      "source": "Turn diagrams, body systems, maps, workflows, or lab setups into label practice with hints and answer checks.",
+      "value": "Biến các sơ đồ, hệ cơ thể, bản đồ, quy trình làm việc hoặc thiết lập phòng thí nghiệm thành bài tập dán nhãn với gợi ý và kiểm tra đáp án."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề học tập chủ động, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.whyDifferent",
+      "source": "This mode is tuned for diagram labeling practice with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho việc thực hành dán nhãn sơ đồ với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.0",
+      "source": "Practice labels for diagrams and systems",
+      "value": "Thực hành dán nhãn cho các sơ đồ và hệ thống"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.0",
+      "source": "Label a plant cell",
+      "value": "Dán nhãn tế bào thực vật"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.1",
+      "source": "Practice a heart diagram",
+      "value": "Thực hành với sơ đồ tim"
+    },
+    {
+      "key": "topic.diagram-labeling-practice.starter.2",
+      "source": "Make map labeling questions",
+      "value": "Tạo câu hỏi dán nhãn bản đồ"
+    },
+    {
+      "key": "topic.matching-game-generator.name",
+      "source": "Matching Game Generator",
+      "value": "Trình tạo trò chơi ghép cặp"
+    },
+    {
+      "key": "topic.matching-game-generator.subText",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Ghép các thuật ngữ, định nghĩa, nguyên nhân và ví dụ"
+    },
+    {
+      "key": "topic.matching-game-generator.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Biến ghi chú thành trò chơi ghép cặp cho từ vựng, khái niệm, nhân vật/sự kiện, công thức, ví dụ hoặc các cặp nguyên nhân-kết quả."
+    },
+    {
+      "key": "topic.matching-game-generator.inputboxText",
+      "source": "What pairs should become a matching game?",
+      "value": "Những cặp nào nên trở thành trò chơi ghép cặp?"
+    },
+    {
+      "key": "topic.matching-game-generator.category",
+      "source": "Active Learning",
+      "value": "Học tập chủ động"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.description",
+      "source": "Turn notes into matching games for vocabulary, concepts, people/events, formulas, examples, or cause-effect pairs.",
+      "value": "Biến ghi chú thành trò chơi ghép cặp cho từ vựng, khái niệm, nhân vật/sự kiện, công thức, ví dụ hoặc các cặp nguyên nhân-kết quả."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề học tập chủ động, những người muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.whyDifferent",
+      "source": "This mode is tuned for matching game generator with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho trình tạo trò chơi ghép cặp với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.0",
+      "source": "Pair terms, definitions, causes, and examples",
+      "value": "Ghép các thuật ngữ, định nghĩa, nguyên nhân và ví dụ"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.matching-game-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.0",
+      "source": "Match terms and definitions",
+      "value": "Ghép thuật ngữ và định nghĩa"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.1",
+      "source": "Create cause-effect pairs",
+      "value": "Tạo các cặp nguyên nhân-kết quả"
+    },
+    {
+      "key": "topic.matching-game-generator.starter.2",
+      "source": "Make formula matching practice",
+      "value": "Tạo bài tập ghép công thức"
+    },
+    {
+      "key": "topic.xp-leveling.name",
+      "source": "XP & Leveling",
+      "value": "XP & Cấp độ"
+    },
+    {
+      "key": "topic.xp-leveling.subText",
+      "source": "Turn progress into levels and quests",
+      "value": "Biến tiến trình thành cấp độ và nhiệm vụ"
+    },
+    {
+      "key": "topic.xp-leveling.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Thiết kế hệ thống điểm, cấp độ, nhiệm vụ và phần thưởng dựa trên tiến trình học tập thực tế."
+    },
+    {
+      "key": "topic.xp-leveling.inputboxText",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Mục tiêu học tập nào nên trở thành một hệ thống thăng cấp?"
+    },
+    {
+      "key": "topic.xp-leveling.category",
+      "source": "Gamification",
+      "value": "Gamification"
+    },
+    {
+      "key": "topic.xp-leveling.seo.description",
+      "source": "Design a points, levels, quests, and rewards system around real learning progress.",
+      "value": "Thiết kế hệ thống điểm, cấp độ, nhiệm vụ và phần thưởng dựa trên tiến trình học tập thực tế."
+    },
+    {
+      "key": "topic.xp-leveling.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Người học đang khám phá các chủ đề gamification và muốn có hướng dẫn thực tế thay vì một hộp trả lời chung chung."
+    },
+    {
+      "key": "topic.xp-leveling.seo.whyDifferent",
+      "source": "This mode is tuned for xp & leveling with its own prompts, examples, and learning flow.",
+      "value": "Chế độ này được tinh chỉnh cho XP và thăng cấp với các gợi ý, ví dụ và luồng học tập riêng."
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.0",
+      "source": "Turn progress into levels and quests",
+      "value": "Biến tiến trình thành các cấp độ và nhiệm vụ"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Bắt đầu với các gợi ý ví dụ"
+    },
+    {
+      "key": "topic.xp-leveling.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Điều chỉnh phiên học theo mục tiêu của bạn"
+    },
+    {
+      "key": "topic.xp-leveling.starter.0",
+      "source": "Make XP for exam prep",
+      "value": "Tạo XP cho việc luyện thi"
+    },
+    {
+      "key": "topic.xp-leveling.starter.1",
+      "source": "Design levels for coding practice",
+      "value": "Thiết kế cấp độ cho việc thực hành lập trình"
+    },
+    {
+      "key": "topic.xp-leveling.starter.2",
+      "source": "Turn reading into quests",
+      "value": "Biến việc đọc sách thành các nhiệm vụ"
+    },
+    {
+      "key": "topic.badges-achievements.name",
+      "source": "Badges & Achievements",
+      "value": "Huy hiệu & Thành tựu"
+    },
+    {
+      "key": "topic.badges-achievements.subText",
+      "source": "Reward milestones that matter",
+      "value": "Khen thưởng những cột mốc quan trọng"
+    },
+    {
+      "key": "topic.badges-achievements.description",
+      "source": "Create badges for consistency, mastery, courage, revision, collaboration, and finished artifacts.",
+      "value": "Tạo huy hiệu cho sự kiên trì, sự thông thạo, lòng dũng cảm, việc ôn tập, sự hợp tác và các sản phẩm hoàn thiện."
+    }
+  ]
+}

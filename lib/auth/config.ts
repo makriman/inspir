@@ -6,6 +6,12 @@ import { db } from "@/lib/db/client";
 import { accounts, sessions, users, verificationTokens } from "@/lib/db/schema";
 import { refreshProfilePhoto } from "./profile-photo";
 
+for (const key of ["NEXTAUTH_URL", "AUTH_URL"] as const) {
+  if (process.env[key] !== undefined && !process.env[key]?.trim()) {
+    delete process.env[key];
+  }
+}
+
 const googleClientId = process.env.AUTH_GOOGLE_ID ?? process.env.GOOGLE_CLIENT_ID ?? "";
 const googleClientSecret = process.env.AUTH_GOOGLE_SECRET ?? process.env.GOOGLE_CLIENT_SECRET ?? "";
 
@@ -30,7 +36,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET?.trim() || process.env.AUTH_SECRET?.trim() || undefined,
   session: {
     strategy: "jwt",
   },

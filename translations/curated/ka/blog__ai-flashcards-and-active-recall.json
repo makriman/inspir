@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Georgian",
+  "locale": "ka",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "მკაფიო საწყისი, რომელიც ერთ იდეას სვამს."
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "ხშირი ხაფანგი, რომელიც სავარაუდო შეცდომაზე გაფრთხილებს."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "მოკლე პასუხის მხარე, რომელიც აზრს ასრულებს."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "მინიშნება, რომელიც გეხმარება ისე, რომ ყველაფერს არ გიმხელს."
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "გამეორების არჩევანი, რათა გამორჩენილი ბარათები უფრო მალე დაბრუნდეს."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "მარტივი ფლეშბარათების სამუშაო ნაკადი"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "უფრო ძლიერი ბარათი გახსენებას ითხოვს:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "სასარგებლო ბარათი ერთ რამეს ეკითხება. მან ერთი პრომპტის შიგნით ხუთი კითხვა არ უნდა დამალოს. ის საკმარისად კონკრეტული უნდა იყოს საპასუხოდ, მაგრამ იმდენად ვიწრო არა, რომ აზრი დაკარგოს."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "სუსტი AI ფლეშბარათი ამბობს:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "აქტიური გახსენება"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "დაამატე მინიშნებები ისე, რომ პასუხი არ გაამჟღავნო"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI ფლეშბარათების უფრო სწრაფად შექმნაში დაგეხმარება, მაგრამ სწავლა მაინც გახსენებიდან მოდის. თუ ინსტრუმენტი ბარათებს წერს და მოსწავლე მათ პასუხზე არასდროს იწვალებს, თითქმის არაფერი იცვლება. სასარგებლო ვერსია არეულ ჩანაწერებს ფოკუსირებულ პრომპტებად აქცევს, შემდეგ კი მოსწავლეს პასუხის გამჟღავნებამდე გახსენებას აიძულებს."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "AI-ს შეუძლია უხეში ჩანაწერები უფრო სუფთა გახსენების პრომპტებად აქციოს. მას შეუძლია ფართო იდეები პატარა ბარათებად დაყოს, მაგალითები დაამატოს და ის ხაფანგები ამოიცნოს, რომლებიც მოსწავლეს შეიძლება გამორჩეს."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI ფლეშბარათები და აქტიური გახსენება: როგორ დავიმახსოვროთ მეტი"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "გამოიყენე ცნება პატარა მაგალითზე."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "ითხოვე ერთიდეიანი ბარათები მინიშნებებით და ხშირი ხაფანგებით."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "უკანა მხარე: \"ინტერვალები მეხსიერებას აიძულებს პასუხი გარკვეული დავიწყების შემდეგ ხელახლა ააგოს, რაც მოგვიანებით გახსენებას აძლიერებს.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "შეადარე ორი იდეა;"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "განსაზღვრე ტერმინი;"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "წაშალე ზედმეტად ფართო ან აშკარა ბარათები."
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "ყველაფერს თანაბრად ნუ გადახედავ"
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "მარტივია. მოგვიანებით გადადე."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "ახსენი მიზეზი;"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "ფლეშბარათები ამის გაკეთების ერთ-ერთი ყველაზე მარტივი გზაა."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "ფლეშბარათები ძლიერია, მაგრამ ისინი მთელი სასწავლო პროცესი არ არის. ისინი საუკეთესოა გახსენებისთვის, ლექსიკისთვის, განმარტებებისთვის, ფორმულებისთვის, განსხვავებებისთვის და საკვანძო მაგალითებისთვის. ისინი უფრო სუსტია, როცა მოსწავლეს იდეა თავიდანვე არ გაუგია."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "ფლეშბარათები საუკეთესოდ მუშაობს, როცა ერთ ჯერზე ერთ იდეას ამოწმებს, პასუხებს მხოლოდ ძალისხმევის შემდეგ აჩვენებს და გამოტოვებულ ბარათებს უფრო მალე აბრუნებს."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "უფრო ღრმა მარშრუტისთვის წაიკითხე Flashcard Builder-ის გზამკვლევი და Flashcard Builder-ის პრომპტები და სასწავლო ციკლი. მიზანი ლამაზი დასტა არ არის. მიზანი არის მეტი დამახსოვრება, როცა ჩანაწერები აღარ გაქვს."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "მაგალითად:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "წინა მხარე: \"რატომ მუშაობს ინტერვალებით გამეორება უკეთ, ვიდრე ჩატენა?\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "რთულია. გაიმეორე მოკლე დაყოვნების შემდეგ."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "მინიშნება: \"იფიქრე დავიწყებასა და გახსენებაზე.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "მინიშნებები სასარგებლოა, როცა ძალისხმევას ინარჩუნებს. ცუდი მინიშნება შენიღბული პასუხია. კარგი მინიშნება ძიების სივრცეს ავიწროებს."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "ამოიცანი ხშირი შეცდომა;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "თუ ბარათი ისევ ვერ მუშაობს, მხოლოდ ნუ გაიმეორებ. იკითხე, რატომ არის რთული. გამოიყენე Socratic Instruction არასწორი წარმოდგენის გამოსავლენად, Math Step Coach პროცედურული ხარვეზებისთვის, ან AI სასწავლო პრომპტების ბიბლიოთეკა უკეთესი სასწავლო პრომპტის საპოვნელად."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "inspir-ის Flashcard Builder შექმნილია აქტიური გახსენების ამ ციკლის გარშემო: ააგე დასტა, სცადე წინა მხარე, გამოაჩინე პასუხი, შეაფასე შენი გახსენება და გაიმეორე გამოტოვებულები, სანამ იდეა დამკვიდრდება."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "გამოგრჩა. მალე გაიმეორე."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "ერთ-ერთი შეცდომა, რომელსაც მოსწავლეები უშვებენ, არის ყველა ბარათის ერთნაირად აღქმა. თუ ბარათი მყისიერად იცი, მისი ხვალ ხელახლა გამეორება შეიძლება დროის დაკარგვა იყოს. თუ ბარათი გამოგრჩება, ერთი კვირის ლოდინი შეიძლება მეტისმეტად დიდი იყოს."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "ფლეშბარათები გაგებას შეუწყვილე"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "ჩასვი პატარა ჩანაწერების ნაწილი Flashcard Builder-ში."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "ფოტოსინთეზი: პროცესი, რომელსაც მცენარეები საკვების შესაქმნელად იყენებენ."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "გახსენება გულწრფელად შეაფასე."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "ჩანაწერების კითხვა პროდუქტიულად იგრძნობა. მათი მოგვიანებით დამახსოვრება ნამდვილი ტესტია."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "დაიმახსოვრე მიმდევრობა;"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "უკანა მხარის ნახვის გარეშე გაიმეორე."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "ძლიერი ბარათები ხშირად მოიცავს:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "სასწავლო უნარები"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "ეს მინიშნება მოსწავლეს დაწყებაში ეხმარება ისე, რომ გახსენების მოქმედებას არ აშორებს. inspir-ის Flashcard Builder ამ გამოჩენა-და-შეფასების ციკლისთვის არის შექმნილი: ჯერ სცადე, მერე გამოაჩინე, გულწრფელად შეაფასე, შემდეგ სუსტი ბარათები უფრო მალე დააბრუნე."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "ამიტომ არის აქტიური გახსენება მნიშვნელოვანი. პასუხის ყურების ნაცვლად ცდილობ ის მეხსიერებიდან ამოიღო. ძალისხმევა მეხსიერებას აძლიერებს და აჩვენებს, რა ჯერ კიდევ საჭიროებს მუშაობას."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "დამახსოვრება მაინც მოსწავლემ უნდა შეასრულოს. სწორედ ეს არის არსი."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "მეორე ბარათი მოსწავლეს აიძულებს ურთიერთობის გახსენებას და არა უბრალოდ წინადადების ამოცნობას. კარგი ბარათები ჩვეულებრივ ერთ-ერთ ასეთ ამოცანაზე ფოკუსირდება:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "ეს რთული არ უნდა იყოს. მთავარი ისაა, რომ შენი გამეორების განრიგი მეხსიერებას პასუხობდეს და deck-ს სტატიკურ სიად არ უყურებდეს."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "სცადე Flashcard Builder-ში. თუ ბარათების შექმნამდე თემის გაგება გჭირდება, დაიწყე Learn Anything-ში. თუ ბარათების გამეორების შემდეგ ზეწოლა გინდა, გადადი Quiz Me On Trivia-ში ან Viva Practice-ში."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "ჩანაწერები უკეთეს ბარათებად აქციე"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "განმეორებული შეცდომები Learn Anything-ისთვის კითხვად აქციე."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "გამოიყენე ეს ციკლი:"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "გამოიყენე სამი შეფასება:"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "რა როლი აქვს ქლოროფილს ფოტოსინთეზში?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "რა ქმნის კარგ ფლეშბარათს"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "როცა ჩანაწერებს AI-ში ჩასვამ, სთხოვე ფართო იდეები ასეთ ამოცანებად დაყოს. 18 კონკრეტული ბარათის მქონე deck ჩვეულებრივ უკეთესია, ვიდრე 5 უზარმაზარი ბარათის მქონე deck, სადაც თითოეული მთელი აბზაცს შეიცავს."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "სად ეხმარება AI"
+    }
+  ]
+}

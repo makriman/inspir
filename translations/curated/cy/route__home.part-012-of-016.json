@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Welsh",
+  "locale": "cy",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 12,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "Sgiliau astudio"
+    },
+    {
+      "key": "site.c0be267ae7b9421ba9",
+      "source": "Study skills guides",
+      "value": "Sgiliau astudio canllawiau"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "Cyfresi Astudio"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "Amserydd Astudio"
+    },
+    {
+      "key": "site.3b1f7ac98100c2db8d",
+      "source": "study with AI",
+      "value": "Astudio gyda AI"
+    },
+    {
+      "key": "site.3c328d5333fc21a14a",
+      "source": "Study with AI without cheating",
+      "value": "Astudio gyda AI heb cheating"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Llifoedd gwaith astudio hynny connect guest moddau, promptiau, ymarfer, a related canllawiau."
+    },
+    {
+      "key": "site.f44d7e8cc3553fbecb",
+      "source": "Studying with AI works best when the tool keeps you in the driver's seat.",
+      "value": "Studying gyda AI works best pan y tool keeps chi in y driver's seat."
+    },
+    {
+      "key": "site.066ca7bdd036368736",
+      "source": "Subject hub",
+      "value": "Canolfan bwnc"
+    },
+    {
+      "key": "site.2feff266cc115ac2a6",
+      "source": "Subject hubs",
+      "value": "Canolfannau pwnc"
+    },
+    {
+      "key": "site.44c887b5d77a86fb07",
+      "source": "subject hubs mapped to learner intent",
+      "value": "Subject hubs mapped to dysgwr intent"
+    },
+    {
+      "key": "site.d0921b314798adbd36",
+      "source": "Subject hubs organize public AI learning modes by learning intent, such as math, writing, coding, history, homework, and exam prep. Each hub links to live guest modes, prompt starters, guides, workflows, and review loops.",
+      "value": "Subject hubs organize cyhoeddus AI moddau dysgu by dysgu intent, such as math, writing, coding, history, gwaith cartref, a exam prep. Each hub links to live guest moddau, promptiau cychwynnol, canllawiau, workflows, a review dolenni."
+    },
+    {
+      "key": "site.edb0f4eb8d8e6cc0b9",
+      "source": "Subscriptions and Competitions",
+      "value": "Subscriptions a Competitions"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "Success: y dysgwr leaves gyda clearer model meddyliol, next cam, a confidence to keep going."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "Crynhoi trafodaeth"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "Crynhoi pennod 2"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Crynhoi testun hir yn brif syniadau, strwythur, diffiniadau, enghreifftiau a chwestiynau cofio."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "Crynhoi fy nghynnydd"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "Crynhoi fy nodiadau bras"
+    },
+    {
+      "key": "site.8b0fbf296ebcf69e30",
+      "source": "summarize notes AI",
+      "value": "Summarize notes AI"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "Summarize patterns, diagnose meysydd gwan, a choose next gweithredoedd."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "Summarize patterns, identify caveats, explain methods, a suggest next analyses."
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Crynhoi'r cyd-destun"
+    },
+    {
+      "key": "site.68fdf8f5a74ec70a64",
+      "source": "Summarize the tradeoff",
+      "value": "Summarize y tradeoff"
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "Crynhoi'r erthygl hon"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Crynhoi llwyddiannau, methiannau a'r wythnos nesaf"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "Summarize, clarify structure, identify important telerau, a add recall checks."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "Summarize, clarify geirfa, gofyn inference cwestiynau, a connect ideas."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "Summarize, identify patterns, a turn reflection i mewn i plan."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "Summarize, label, add caveats, a suggest sut eraill dylai defnyddio it."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "Cymorth concentration gyda low-distraction cefndir audio."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "Cymorth consistent astudio gyda compassionate streak tracking."
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Cymorth funded dysgu AI access ar gyfer communities hynny angen high-quality cymorth heb adding cost to families."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "Cymorth cymhelliant a persistence yn a grounded, non-clinical way."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Cymorth writing tra preserving voice"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Yn cefnogi dysgu allgyrsiol, ymarfer academaidd, a chwilfrydedd."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "Surface y misconception, contrast it gyda y correct model, a ymarfer transfer."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Newidia i gwestiynau fel y gelli ddatgelu rhagdybiaethau a llenwi bylchau yn lle darllen yr ateb yn oddefol."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Syndicated coverage ar gyfer wider consumer reach."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "Tagio, trefnu a chysylltu nodiadau"
+    },
+    {
+      "key": "site.9899cc2856ebc766b7",
+      "source": "Talk to a historical figure",
+      "value": "Talk to historical figure"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Siarad â ffigwr hanesyddol gan gadw deialog a gynhyrchwyd ar wahân i ddyfyniad wedi ei ddogfennu."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Siarad â pherson hanesyddol"
+    },
+    {
+      "key": "site.f498d9559a8e2aaedd",
+      "source": "Talk to a historical person prompts and study loop",
+      "value": "Talk to a historical person: promptiau a dolen astudio"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "Siarad â Cleopatra"
+    },
+    {
+      "key": "site.75f35e209bf368c2f5",
+      "source": "talk to historical figure AI",
+      "value": "Talk to historical figure AI"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "siarad â ffigurau hanesyddol AI"
+    },
+    {
+      "key": "site.8479e8174d72f35dd6",
+      "source": "Talk To Historical Figures With AI",
+      "value": "Talk To Historical Figures gyda AI"
+    },
+    {
+      "key": "site.fd491be7a558f38bc7",
+      "source": "Talk To Historical Figures With AI is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Talk To Historical Figures gyda AI yw focused way to defnyddio AI ar gyfer dysgu instead of passive casglu atebion. y modd yw built around specific job: cam i mewn i conversation gyda historical figure. gofyn cwestiynau, challenge ideas, a hear yr world through eu era, values, a limits."
+    },
+    {
+      "key": "site.3183f69986b7ceed7c",
+      "source": "Talk To Historical Figures With AI: practical guide",
+      "value": "Talk To Historical Figures gyda AI: canllaw ymarferol"
+    },
+    {
+      "key": "site.c9a1ac167eee122c72",
+      "source": "Talking to a historical figure is not magic access to the past. It is a learning format.",
+      "value": "Talking to historical figure yw nid magic access to y past. It yw dysgu format."
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "Task timer"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "Amserydd Tasgau"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "Teach unrhyw topic gyda warmth, clarity, a useful examples."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "Addysgwch werthuso ffynonellau’n feirniadol."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "Teach economics trwy scenarios a tradeoffs."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "Teach ethical rhesymu trwy strwythuredig dilemmas."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "Dysgu ffracsiynau fel stori"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "Teach daearyddiaeth as connected systems o place, people, environment, a movement."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "Teach hanes trwy causal rhesymu."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "Teach dysgwyr to observe, interpret, a enjoy art."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "Dysga fodelu ariannol imi"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "Dysga imi sut mae llog yn gweithio"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Dysga Bum Grym Porter imi"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "Dysgwch ddolenni Python i mi"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "Teach memorization trwy spatial imagery a adfer."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "Teach programming cysyniadau a dadfygio gyda dysgwr participation."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "Dysgu hanfodion rhythm"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "Teach science trwy evidence, variables, prediction, a safe experimentation."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "Teach trwy realistic cases a decision consequences."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "Teach vocabulary through context a retrieval ymarfer."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Athrawon"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Athrawon a leaders gall start gyda Learn Anything, Socratic Instruction, Homework Coach, cwisiau, a cardiau cof cyn formal rollout."
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Athrawon angen more than chatbot cyffredinol. They angen predictable dysgu behaviors: gofyn cwestiynau, gwirio reasoning, generate ymarfer, preserve myfyriwr voice, a gwneud misconceptions visible."
+    },
+    {
+      "key": "site.ece53407c8b8eb8957",
+      "source": "Teachers or parents evaluating focused AI learning behaviors before a school deployment.",
+      "value": "Athrawon neu rhieni evaluating focused dysgu AI behaviors cyn ysgol deployment."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Tell scene, pause ar gyfer prediction neu reflection, a connect back to y concept."
+    },
+    {
+      "key": "site.7d1142e4547e426c6b",
+      "source": "Tell the mode what you are trying to learn or produce.",
+      "value": "Tell y modd beth chi yw trying to dysgu neu produce."
+    },
+    {
+      "key": "site.03772c455a07fe5998",
+      "source": "Ten focused questions give immediate feedback and a simple review path.",
+      "value": "Ten focused cwestiynau rhoi immediate feedback a simple review path."
+    },
+    {
+      "key": "site.2ee85218866a19e0d9",
+      "source": "Termination",
+      "value": "Termination"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Telerau"
+    },
+    {
+      "key": "site.7d8a0b2b8dd1648336",
+      "source": "Terms And Conditions",
+      "value": "Telerau ac Amodau"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Profi cyn adolygu"
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "Test builder"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "Profa fy nealltwriaeth o chwyddiant"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Profi'r ddadl"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Profi dy resymu"
+    },
+    {
+      "key": "site.8830e1bafdc17f85ed",
+      "source": "Testing a position, seeing both sides, and learning what makes an argument stronger.",
+      "value": "Testing position, seeing both sides, a dysgu beth makes argument stronger."
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "Crynhoydd Testun"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "Text-first discovery file ar gyfer Peiriannau ateb AI, assistants, educators, a citation offer."
+    },
+    {
+      "key": "site.a151d8eb37c7baff02",
+      "source": "Thank you for choosing to be part of our community at Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), doing business as inspir (\"inspir\", \"we\", \"us\", \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices concerning your personal information, please contact us at support@inspir.app. When you visit our website https://web.archive.org/web/20221016155759/https://www.inspir.app, use our mobile applications, as the case may be (the \"App\") and more generally, use any of our services (the \"Services\", which include the Website and App), we appreciate that you are trusting us with your personal information. We take your privacy very seriously. In this privacy notice, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy notice that you disagree with, please discontinue the use of our Services immediately. This privacy notice applies to all information collected through our Services (which, as described above, includes our Website and App), as well as, any related services, sales, marketing or events. Please read this privacy notice carefully as it will help you understand what we do with the information that we collect. Our Terms and Conditions govern all use of our Service and together with the Privacy Policy constitute your agreement with us (“Agreement”).",
+      "value": "Thank chi ar gyfer choosing to be part of ein community at Great Indian cwmni (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), doing busnes as inspir (\"inspir\", \"ni\", \"us\", \"ein\"). ni yw committed to protecting eich Gwybodaeth Bersonol a eich right to preifatrwydd. os chi mae gan unrhyw cwestiynau neu concerns about hwn preifatrwydd notice neu ein practices concerning eich Gwybodaeth Bersonol, please contact us at support@inspir.app. pan chi visit ein website https://web.archive.org/web/20221016155759/https://www.inspir.app, defnyddio ein mobile applications, as y case gall be (y \"App\") a more generally, defnyddio unrhyw of ein services (y \"Services\", which include yr Website a App), ni appreciate hynny chi yw trusting us gyda eich Gwybodaeth Bersonol. ni take eich preifatrwydd very seriously. In hwn preifatrwydd notice, ni seek to explain to chi in y clearest way possible beth gwybodaeth ni casglu, sut ni defnyddio it a beth rights chi mae gan in relation to it. ni hope chi take some time to read through it carefully, as it yw important. os there yw unrhyw telerau in hwn preifatrwydd notice hynny chi disagree gyda, please discontinue y defnyddio of ein Services immediately. hwn preifatrwydd notice applies to pob gwybodaeth collected through ein Services (which, as described above, includes ein Website a App), as well as, unrhyw related services, sales, marketing neu events. Please read hwn preifatrwydd notice carefully as it bydd cymorth chi understand beth ni do gyda y gwybodaeth hynny ni casglu. ein telerau a Conditions govern pob defnyddio of ein gwasanaeth a together gyda y Polisi Preifatrwydd constitute eich agreement gyda us (“Agreement”)."
+    },
+    {
+      "key": "site.cb9e42e0794ef92f15",
+      "source": "That combination is more useful than either layer alone. A plain encyclopedia summary can be forgettable. Pure roleplay can be misleading. Voice plus evidence creates a better learning surface.",
+      "value": "Hynny combination yw more useful than either layer alone. plain encyclopedia summary gall be forgettable. Pure roleplay gall be misleading. Voice plus evidence creates gwell dysgu surface."
+    },
+    {
+      "key": "site.24bfafe7fcd793bad9",
+      "source": "That difference shows up in the flow. Instead of one giant response, the best sessions move through a loop: set a goal, try something, get feedback, repair the weak spot, and choose the next action.",
+      "value": "Hynny difference shows up in y flow. Instead of un giant response, y best sessions move through dolen: set goal, try something, get feedback, repair y man gwan, a choose y next action."
+    },
+    {
+      "key": "site.268eb13efa27e9b28d",
+      "source": "That does not replace teachers, communities, books, or schools. It gives learners another route in. It can help a student start homework, a parent explain a concept, a self-taught builder learn code, or a curious person follow a question that might otherwise disappear.",
+      "value": "Hynny mae nid replace athrawon, communities, books, neu ysgolion. It gives dysgwyr another llwybr in. It gall cymorth myfyriwr start gwaith cartref, rhiant explain concept, hunanddysgedig builder dysgu code, neu curious person follow cwestiwn hynny efallai otherwise disappear."
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Hynny final recap yw important. pan chi explain yr idea back, chi reveal beth yw solid a beth yw still borrowed o yr AI."
+    },
+    {
+      "key": "site.0470f1fc951f113fe7",
+      "source": "That focus matters. A general chatbot can answer almost anything, but a learning mode gives the conversation a shape. It nudges you toward the kind of thinking, practice, feedback, or exploration that helps the idea stick.",
+      "value": "Hynny focus matters. general chatbot gall ateb almost anything, but modd dysgu gives y conversation shape. It nudges chi toward y kind of thinking, ymarfer, feedback, neu exploration hynny helps yr idea stick."
+    },
+    {
+      "key": "site.6cdfaef656eb34290d",
+      "source": "That gap is why an AI learning companion matters. A good companion does more than answer a question. It helps a learner choose a starting point, explains the idea in plain language, checks whether it made sense, and keeps going when the first explanation does not land.",
+      "value": "Hynny gap yw pam dysgu AI companion matters. good companion mae more than ateb cwestiwn. It helps dysgwr choose starting point, explains yr idea in plain language, checks whether it made sense, a keeps going pan y first esboniad mae nid land."
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Hynny awgrym helps y dysgwr start heb removing yr act of remembering. inspir's Flashcard Builder yw designed ar gyfer hwn reveal-and-rate dolen: try first, reveal second, rate honestly, then bring weak cards back sooner."
+    },
+    {
+      "key": "site.589e7677c2025f653b",
+      "source": "That is a warning sign. Recognition is not recall. Reading a clear explanation is not the same as being able to solve a new problem, write a paragraph, or answer a question under pressure.",
+      "value": "Hynny yw warning sign. Recognition yw nid recall. Reading clear esboniad yw nid y same as being able to solve newydd problem, write paragraph, neu ateb cwestiwn under pressure."
+    },
+    {
+      "key": "site.01543c7d158fee3694",
+      "source": "That is especially important for homework. The useful question is not \"Can AI produce the answer?\" It usually can. The useful question is \"Can AI help the learner understand the path to the answer?\" That is why the guide on studying with AI without cheating yourself focuses on hints, checks, and transfer practice.",
+      "value": "Hynny yw especially important ar gyfer gwaith cartref. y useful cwestiwn yw nid \"gall AI produce yr ateb?\" It usually gall. y useful cwestiwn yw \"gall AI cymorth y dysgwr understand y path to yr ateb?\" hynny yw pam y canllaw on studying gyda AI heb cheating yourself focuses on awgrymiadau, checks, a transfer ymarfer."
+    },
+    {
+      "key": "site.e50e170a860c454100",
+      "source": "That is how inspir approaches historical conversation: a persona card, an in-character reply, and context notes that keep imagination connected to evidence.",
+      "value": "Hynny yw sut inspir approaches historical conversation: persona card, in-character reply, a context notes hynny keep imagination connected to evidence."
+    },
+    {
+      "key": "site.3e1b806040630fa184",
+      "source": "That is the standard inspir is aiming for: learning that feels accessible, personal, playful, and useful for anyone with curiosity and an internet connection.",
+      "value": "Hynny yw y standard inspir yw aiming ar gyfer: dysgu hynny feels accessible, personal, playful, a useful ar gyfer anyone gyda curiosity a internet connection."
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "Hynny yw y strength of dysgu Socratig. Instead of handing over y full ateb immediately, y tutor asks focused cwestiwn. y dysgwr makes guess. y tutor tests hynny guess, offers awgrym, a helps y dysgwr notice beth changed."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "Hynny yw beth inspir's Socratic Instruction modd yw built ar gyfer: un cwestiwn at time, gyda awgrymiadau cyn atebion a synthesis ar ôl genuine thinking."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "Hynny yw pam Socratic tiwtor AI gall feel slower at first a more powerful later. It trades y comfort of finished esboniad ar gyfer yr evidence hynny y dysgwr yw actually building yr idea."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Hynny yw pam adfer gweithredol matters. Instead of looking at yr ateb, chi try to pull it o memory. y effort strengthens y memory a reveals beth still angen work."
+    },
+    {
+      "key": "site.7b4f39d4e67c8e463f",
+      "source": "That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with Learn Anything. If you want to reason through a concept instead of being lectured, use Socratic Instruction. If you are stuck on an assignment, Homework Coach is a better fit than a generic answer engine. The format should serve the learning job.",
+      "value": "Hynny yw pam inspir separates tasgau dysgu i mewn i cyhoeddus moddau. os chi eisiau gentle esboniad, start gyda Learn Anything. os chi eisiau to reason through concept instead of being lectured, defnyddio Socratic Instruction. os chi yw stuck on assignment, Homework Coach yw gwell fit than ateb cyffredinol engine. y format dylai serve y tasg ddysgu."
+    },
+    {
+      "key": "site.39bd49585733a4b7c0",
+      "source": "That kind of questioning turns history from a list into a context.",
+      "value": "Hynny kind of questioning turns history o list i mewn i context."
+    },
+    {
+      "key": "site.8319e387c9c67aabff",
+      "source": "That loop appears across the platform. Math Step Coach breaks a problem into steps. Flashcard Builder turns notes into recall practice. Quiz Me On Trivia adds pressure-tested retrieval. Writing Coach helps improve a draft without replacing the writer.",
+      "value": "Hynny dolen appears across y platform. Math Step Coach breaks problem i mewn i camau. Flashcard Builder turns notes i mewn i recall ymarfer. cwis fi On Trivia adds pressure-tested retrieval. Writing Coach helps improve draft heb replacing yr writer."
+    },
+    {
+      "key": "site.bad49c0caffac284bf",
+      "source": "That loop is slower than copying, but it is much faster than staying confused.",
+      "value": "Hynny dolen yw slower than copying, but it yw much faster than staying confused."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "Hynny rhythm yw especially useful ar gyfer abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, a argument structure. It gall also cymorth practical work. dysgwr gall defnyddio Debate unrhyw Topic ar ôl Socratic session to test whether eu reasoning survives pressure."
+    },
+    {
+      "key": "site.27dab9808cd949861d",
+      "source": "The AI should separate character from evidence. It can answer in a historically grounded voice, but it should also add notes when records are incomplete, interpretations differ, or the response is a reconstruction.",
+      "value": "Y AI dylai separate character o evidence. It gall ateb in historically grounded voice, but it dylai also add notes pan records yw incomplete, interpretations differ, neu y response yw reconstruction."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Y app yw organized around teaching behaviors such as Socratic questioning, awgrymiadau gwaith cartref, cwisiau, cardiau cof, roleplay, a planning."
+    },
+    {
+      "key": "site.ce7d73f3a107aa5b1d",
+      "source": "The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Mae'r ap yn gwahanu sgwrs mewn cymeriad oddi wrth nodiadau cyd-destun byr am gofnodion ac ansicrwydd."
+    },
+    {
+      "key": "site.9e0e0122b7452f3c5c",
+      "source": "The best AI learning sessions are not one long answer. They look more like a loop:",
+      "value": "Y best dysgu AI sessions yw nid un long ateb. They look more like dolen:"
+    },
+    {
+      "key": "site.1a1cf3c6d5b17b8a3f",
+      "source": "The best homework help reduces friction without removing the student's responsibility to reason, explain, and revise.",
+      "value": "Y best cymorth gwaith cartref reduces friction heb removing y student's responsibility to reason, explain, a revise."
+    },
+    {
+      "key": "site.06220ee349c07fc1d9",
+      "source": "The best learning sessions are adjustable. Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Cards gofyn un thing at time a include traps so review builds understanding, nid just recognition."
+    },
+    {
+      "key": "site.c20e2669eb9a8307b3",
+      "source": "The best learning sessions are adjustable. Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Instead of dropping long ateb, inspir helps chi choose simpler foundation, deeper llwybr, neu practical example."
+    },
+    {
+      "key": "site.ec83f7265003e782e6",
+      "source": "The best learning sessions are adjustable. The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Ap separates yn-character conversation o short context notes am records a uncertainty."
+    },
+    {
+      "key": "site.922a420c7026ab0339",
+      "source": "The best learning sessions are adjustable. The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Coach gives targeted revision priorities a cyn-ar ôl examples heb replacing eich voice."
+    },
+    {
+      "key": "site.3d1d9646fe480cc908",
+      "source": "The best learning sessions are adjustable. The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y coach pushes un strong counterargument at time a tracks y claims hynny matter."
+    },
+    {
+      "key": "site.6e0b033856e10c1ea5",
+      "source": "The best learning sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y coach supports eich thinking heb taking over yr assignment, so y final work stays yours."
+    },
+    {
+      "key": "site.4ad449386f3d17a72b",
+      "source": "The best learning sessions are adjustable. The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y debate uses cyhoeddus style a worldview heb pretending to know private beliefs."
+    },
+    {
+      "key": "site.659e9d3407986296fb",
+      "source": "The best learning sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y flow checks each cam, points out slips, a connects procedures back to y concept."
+    },
+    {
+      "key": "site.4cea612e26c5e7669f",
+      "source": "The best learning sessions are adjustable. The journey stays anchored in state and evidence: what is known, what is reconstructed, what is speculative, and what your identity can realistically access.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y journey stays anchored in state a evidence: beth yw hysbys, beth yw reconstructed, beth yw speculative, a beth eich identity gall realistically access."
+    },
+    {
+      "key": "site.ff84e68a2a3cc1422f",
+      "source": "The best learning sessions are adjustable. The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Planner prioritizes meysydd gwan, adds dolenni adolygu, a creates fallback plans ar gyfer missed days."
+    },
+    {
+      "key": "site.1f436c04c40fc12895",
+      "source": "The best learning sessions are adjustable. The quiz mode hides answers until you respond, then turns every miss into a review point.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y cwis modd hides atebion until chi respond, then turns every miss i mewn i review point."
+    },
+    {
+      "key": "site.007da0d5fec34b8de8",
+      "source": "The best learning sessions are adjustable. The tutor asks one question at a time, waits for your reasoning, and synthesizes only after you have tried.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y tutor asks un cwestiwn at time, waits ar gyfer eich reasoning, a synthesizes only ar ôl chi mae gan tried."
+    },
+    {
+      "key": "site.d141671b2e97fafb47",
+      "source": "The best learning sessions are adjustable. The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Y tutor asks beth chi expect code to do, then uses small examples a tests to gwneud y behavior click."
+    },
+    {
+      "key": "site.7bf4a43bad030ecf01",
+      "source": "The best learning sessions are adjustable. This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer art appreciation canllaw gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.3c8f17290fb94720e8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer career explorer gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.89eb593551d1765144",
+      "source": "The best learning sessions are adjustable. This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer case astudio simulator gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.37d7e31bd7f829e03e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer civics coach gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.b127ca5180c0e7e8d6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for collaborative instruction with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer collaborative instruction gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.b4b3f444b35ee040db",
+      "source": "The best learning sessions are adjustable. This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer concept map builder gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.57d70690a659a69cd7",
+      "source": "The best learning sessions are adjustable. This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer creative brainstormer gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.5f83240a6661a6cb07",
+      "source": "The best learning sessions are adjustable. This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer data interpreter gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.5624c8b7c19c856656",
+      "source": "The best learning sessions are adjustable. This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer economics simulator gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.ed5222c4aa34700497",
+      "source": "The best learning sessions are adjustable. This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer ethics dilemmas gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.92d6ee4de4db4a5885",
+      "source": "The best learning sessions are adjustable. This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer explain fy ateb gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer feynman tutor gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.b717c1703a0a1aaa1e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer geography explorer gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.37b275d707271320dc",
+      "source": "The best learning sessions are adjustable. This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer habit coach gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.1f3004d1a487e96efa",
+      "source": "The best learning sessions are adjustable. This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer history cause-and-effect gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.4155b990c943012934",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interactive instruction with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer interactive instruction gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.d538ee1d99166025b9",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer interview coach gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.5e998d7d692da2949f",
+      "source": "The best learning sessions are adjustable. This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer language roleplay gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.99c5fccd817a604436",
+      "source": "The best learning sessions are adjustable. This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer dysgu game master gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.381eeba7e188449be6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for memory palace with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer memory palace gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.58e2a4af3753ddfda8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer mindset reflection gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.290701f5cfec3d0bcb",
+      "source": "The best learning sessions are adjustable. This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer misconception doctor gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.deb1384d7a5201c378",
+      "source": "The best learning sessions are adjustable. This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer motivation coach gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.9649cc91122ebe4b8b",
+      "source": "The best learning sessions are adjustable. This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer music theory coach gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.d03b0f9ad77bda184a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer philosophy lab gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.4cfb49fe912063cee0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer project coach gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.6cc1353bb9fc928e33",
+      "source": "The best learning sessions are adjustable. This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer reading companion gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.455fbc5a6719c257de",
+      "source": "The best learning sessions are adjustable. This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer research assistant gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.3cdc84f4863160d8e2",
+      "source": "The best learning sessions are adjustable. This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer roleplay scenario gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.ad61af8eff48ea3919",
+      "source": "The best learning sessions are adjustable. This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer science lab partner gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.1bd7d73da3868b9bad",
+      "source": "The best learning sessions are adjustable. This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer source critic gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.e1545261be90b270ce",
+      "source": "The best learning sessions are adjustable. This mode is tuned for spaced review with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer spaced review gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.ba4bfbfca5b73b6302",
+      "source": "The best learning sessions are adjustable. This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer speaking ymarfer gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.3d1eed6269fece6796",
+      "source": "The best learning sessions are adjustable. This mode is tuned for story tutor with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer story tutor gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.5492c7abba22a9708a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for study plan builder with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer astudio plan builder gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.d7e5c6145dd7c11c71",
+      "source": "The best learning sessions are adjustable. This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer viva ymarfer gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.4e594b58dd36d39315",
+      "source": "The best learning sessions are adjustable. This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Mae’r sesiynau dysgu gorau yn addasadwy. Hwn modd yw tuned ar gyfer vocabulary builder gyda its own promptiau, examples, a dysgu flow."
+    },
+    {
+      "key": "site.8d2a6330ca29a54056",
+      "source": "The best outcome is not a perfect answer. It is the moment a learner says, \"I think I get it now. Let me try.\"",
+      "value": "Y best outcome yw nid perfect ateb. It yw y moment dysgwr says, \"rwy’n think rwy’n get it now. Let fi try.\""
+    },
+    {
+      "key": "site.c624880a3c3c2d1730",
+      "source": "The better use is feedback, structure, evidence checks, and revision coaching. You can ask it to preserve your voice and avoid replacing the work.",
+      "value": "Y gwell defnyddio yw feedback, structure, evidence checks, a revision coaching. chi gall gofyn it to preserve eich voice a avoid replacing yr work."
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Mae'r blog yn cysylltu cyngor dysgu defnyddiol ag ymarfer byw, fel y gall canllaw droi'n sesiwn astudio mewn un cam."
+    },
+    {
+      "key": "site.3e56dabd81fd313004",
+      "source": "The blog is organized around pillar clusters, category hubs, related modes, prompt routes, structured data, and an AI-readable index so each guide can be understood and recommended in context.",
+      "value": "Y blog yw organized around pillar clusters, category hubs, related moddau, prompt routes, structured data, a AI-readable index so each canllaw gall be understood a recommended in context."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Y llwyfan inspir ffynhonnell agored ehangach."
+    },
+    {
+      "key": "site.29dee12216c74a74cf",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "Mae'r adeiladwr yn cydbwyso uchelgais ag adolygu, ymarfer, dyddiau adfer, a'r cam defnyddiol lleiaf nesaf."
+    },
+    {
+      "key": "site.f7b5f5878410efb6bb",
+      "source": "The categories of personal information we have collected about you. he categories of sources from which we collect your personal information. The business or commercial purpose for collecting or selling your personal information. The categories of third parties with whom we share personal information. The specific pieces of personal information we have collected about you. A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact. A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with. Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.",
+      "value": "Y categories of Gwybodaeth Bersonol ni mae gan collected about chi. he categories of sources o which ni casglu eich Gwybodaeth Bersonol. y busnes neu commercial diben ar gyfer collecting neu selling eich Gwybodaeth Bersonol. y categories of third parties gyda whom ni share Gwybodaeth Bersonol. y specific pieces of Gwybodaeth Bersonol ni mae gan collected about chi. list of categories of Gwybodaeth Bersonol hynny ni mae gan sold, along gyda y category of unrhyw arall cwmni ni sold it to. os ni mae gan nid sold eich Gwybodaeth Bersonol, ni bydd inform chi of hynny fact. list of categories of Gwybodaeth Bersonol hynny ni mae gan disclosed ar gyfer busnes diben, along gyda y category of unrhyw arall cwmni ni shared it gyda. Please note, chi yw entitled to gofyn us to darparu chi gyda hwn gwybodaeth up to two times in rolling twelve-month period. pan chi gwneud hwn request, y gwybodaeth darparwyd gall be limited to y Gwybodaeth Bersonol ni collected about chi in y previous 12 months."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Mae'r curiad clo yn dychwelyd at y genhadaeth: mynediad cyhoeddus, ysgolion, a ffordd fwy agored o ddysgu."
+    },
+    {
+      "key": "site.fe92576ea03e200587",
+      "source": "The coach checks each move, names the rule, and repairs slips before moving forward.",
+      "value": "Y coach checks each move, names y rule, a repairs slips cyn moving forward."
+    },
+    {
+      "key": "site.a0adf96de1375d5d48",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Mae'r hyfforddwr yn rhoi blaenoriaethau adolygu penodol ac enghreifftiau cyn ac ar ôl heb ddisodli dy lais."
+    },
+    {
+      "key": "site.cc04d54305bbe12e97",
+      "source": "The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Mae'r hyfforddwr yn gwthio un gwrthddadl gref ar y tro ac yn olrhain yr honiadau sy'n bwysig."
+    },
+    {
+      "key": "site.332d2bf8600d9fb327",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Y coach supports eich thinking heb taking over yr assignment, so y final work stays yours."
+    },
+    {
+      "key": "site.a8129915cb2978c578",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Mae'r hyfforddwr yn troi methiannau ac oedi yn amserlen adolygu yn hytrach na chrynodeb goddefol arall."
+    },
+    {
+      "key": "site.9f48b043be28768ae7",
+      "source": "The coding route connects code tutoring, project coaching, data interpretation, research, and concept mapping so learning happens through small testable steps.",
+      "value": "Y coding llwybr connects code tutoring, project coaching, data interpretation, research, a concept mapping so dysgu happens through small testable camau."
+    },
+    {
+      "key": "site.091a1a8b1148439190",
+      "source": "The common idea is simple: keep the learner active. AI should make thinking easier to start, not unnecessary to do.",
+      "value": "Y common idea yw simple: keep y dysgwr active. AI dylai gwneud thinking easier to start, nid unnecessary to do."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Community expanded trwy ysgolion, universities, competitions, extracurricular programmes, a dysgwr communities."
+    },
+    {
+      "key": "site.f4a459004391d62ea6",
+      "source": "The copy trap is subtle. It does not always feel like cheating. Sometimes it feels like being efficient. The AI explains something beautifully, you nod along, and then you move on. Ten minutes later you cannot reproduce the idea without the answer in front of you.",
+      "value": "Y copy trap yw subtle. It mae nid always feel like cheating. Sometimes it feels like being efficient. y AI explains something beautifully, chi nod along, a then chi move on. Ten minutes later chi cannot reproduce yr idea heb yr ateb in front of chi."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Ailadeiladu presennol inspirlearning.com."
+    },
+    {
+      "key": "site.3e5edc20387b59f6c5",
+      "source": "The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Mae'r ddadl yn defnyddio arddull gyhoeddus a golwg ar y byd heb esgus gwybod credoau preifat."
+    },
+    {
+      "key": "site.3b584307e059abea92",
+      "source": "The difference is how you use it.",
+      "value": "Y difference yw sut chi defnyddio it."
+    },
+    {
+      "key": "site.612f806fd20c077cb2",
+      "source": "The easiest version of an AI tutor is a box that gives polished answers. That is useful sometimes, but it is not enough. A learner who only receives answers can leave with the page finished and the skill unchanged.",
+      "value": "Y easiest version of tiwtor AI yw box hynny gives polished atebion. hynny yw useful sometimes, but it yw nid enough. dysgwr who only receives atebion gall leave gyda y page finished a y skill unchanged."
+    },
+    {
+      "key": "site.5a53b3cfc2daf7a31c",
+      "source": "The exam route links planning, quizzes, flashcards, spaced review, and motivation so learners do not confuse rereading with readiness.",
+      "value": "Y exam llwybr links planning, cwisiau, cardiau cof, spaced review, a motivation so dysgwyr do nid confuse rereading gyda readiness."
+    },
+    {
+      "key": "site.475ac58da05f1fade6",
+      "source": "The fastest way to get value from Art Appreciation Guide is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Art Appreciation Guide yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.6d6c7de0578b9a8252",
+      "source": "The fastest way to get value from Career Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Career Explorer yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.14656dbab990993004",
+      "source": "The fastest way to get value from Case Study Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Case Study Simulator yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.a018959dc9ed828f34",
+      "source": "The fastest way to get value from Civics Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Civics Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.afeae4d0ea2f0884cd",
+      "source": "The fastest way to get value from Code Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Code Tutor yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.00e230bdfaef352910",
+      "source": "The fastest way to get value from Collaborative Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Collaborative Instruction yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.e35fa66f8da0b77cd1",
+      "source": "The fastest way to get value from Concept Map Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Concept Map Builder yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.71b6a1a1c82878d97d",
+      "source": "The fastest way to get value from Creative Brainstormer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Creative Brainstormer yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.0fb1421c6cdad2ce8c",
+      "source": "The fastest way to get value from Data Interpreter is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Data Interpreter yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.af2d3a761529a138a6",
+      "source": "The fastest way to get value from Debate any topic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Debate any topic yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.ec8f7e2ce775793bbe",
+      "source": "The fastest way to get value from Debate with a personality is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Debate with a personality yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.df0a5925ece82adcd3",
+      "source": "The fastest way to get value from Economics Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Economics Simulator yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.7efe236a154ae18a44",
+      "source": "The fastest way to get value from Ethics Dilemmas is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Ethics Dilemmas yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.7191e6c8673cb8d711",
+      "source": "The fastest way to get value from Exam Prep Planner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Exam Prep Planner yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.dba342443d247cc5bb",
+      "source": "The fastest way to get value from Explain My Answer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Explain My Answer yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Feynman Tutor yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.0f19d08b8582e21ef5",
+      "source": "The fastest way to get value from Flashcard Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Flashcard Builder yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.c6799bc50adc22a8b9",
+      "source": "The fastest way to get value from Geography Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Geography Explorer yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.46faf7f10e46cd08c6",
+      "source": "The fastest way to get value from Habit Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Habit Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.59b4782c7b6f87c7c3",
+      "source": "The fastest way to get value from History Cause-and-Effect is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o History Cause-and-Effect yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.9127eb70d19ff31080",
+      "source": "The fastest way to get value from Homework Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Homework Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.1d98efa37b7edad7e3",
+      "source": "The fastest way to get value from Interactive Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Interactive Instruction yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.86854a7ac33bd59382",
+      "source": "The fastest way to get value from Interview Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Interview Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.fbc5fd77cea85f0ff0",
+      "source": "The fastest way to get value from Language Roleplay is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Language Roleplay yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.c58f5f86a2d58666a9",
+      "source": "The fastest way to get value from Learn Anything is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Learn Anything yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.93069ba635277379cf",
+      "source": "The fastest way to get value from Learning Game Master is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Learning Game Master yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.375eef43396f6a3e0d",
+      "source": "The fastest way to get value from Math Step Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Math Step Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.addcf90fe78f2d3da0",
+      "source": "The fastest way to get value from Memory Palace is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Memory Palace yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.18ad3d9cd14319c7ab",
+      "source": "The fastest way to get value from Mindset Reflection is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Mindset Reflection yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.33b4474b99217796d1",
+      "source": "The fastest way to get value from Misconception Doctor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Misconception Doctor yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.1c6d68968a3651a90b",
+      "source": "The fastest way to get value from Motivation Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Motivation Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.4d94ea6faca8fe6be8",
+      "source": "The fastest way to get value from Music Theory Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Music Theory Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.fa6ed317e6d0ddb04d",
+      "source": "The fastest way to get value from Philosophy Lab is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Philosophy Lab yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.b39c6ce06fca9615c2",
+      "source": "The fastest way to get value from Project Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Project Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.918d3590de26fa6807",
+      "source": "The fastest way to get value from Quiz me on Trivia is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Quiz me on Trivia yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.cc27d54d05c46dae9a",
+      "source": "The fastest way to get value from Reading Companion is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Reading Companion yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.d91b13db3d10ed97fc",
+      "source": "The fastest way to get value from Research Assistant is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Research Assistant yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.ecc64645d229278f38",
+      "source": "The fastest way to get value from Roleplay Scenario is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Roleplay Scenario yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.5a59a16ad397a8dbbd",
+      "source": "The fastest way to get value from Science Lab Partner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Science Lab Partner yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.383226646c99ad6dd2",
+      "source": "The fastest way to get value from Socratic Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Socratic Instruction yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.a9cc3723bd540fcee0",
+      "source": "The fastest way to get value from Source Critic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Source Critic yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.8e98aca843d5ee1daa",
+      "source": "The fastest way to get value from Spaced Review is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Spaced Review yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.2da55cf2ce1d9e1320",
+      "source": "The fastest way to get value from Speaking Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Speaking Practice yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.8c4476d71a53fba638",
+      "source": "The fastest way to get value from Story Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Story Tutor yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.8876684461efdb35b2",
+      "source": "The fastest way to get value from Study Plan Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Study Plan Builder yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.a927bb4ab08bb6e8f3",
+      "source": "The fastest way to get value from Talk to a historical person is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Talk to a historical person yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.0c95eb4aa13aa085c8",
+      "source": "The fastest way to get value from Time travel is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Time travel yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.91e7f42fbc8f26ed39",
+      "source": "The fastest way to get value from Viva Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Viva Practice yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.135bf5f80889a86380",
+      "source": "The fastest way to get value from Vocabulary Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Vocabulary Builder yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.4212b4a5fef68148a4",
+      "source": "The fastest way to get value from Writing Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Y ffordd gyflymaf o gael gwerth o Writing Coach yw rhoi tasg ddysgu i’r AI, nid dim ond pwnc. Mae pwnc yn dweud beth sydd o ddiddordeb i chi. Mae tasg ddysgu yn dweud pa fath o gymorth sydd ei angen arnoch."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Mae'r ffilm yn symud o ysbrydoliaeth i'r addewid ymarferol: cydymaith dysgu AI amyneddgar."
+    },
+    {
+      "key": "site.85523a4e15b7dfde53",
+      "source": "The first layer is the roleplay. It can speak in an accessible voice, explain motives, and make the situation vivid. This is the part that helps memory.",
+      "value": "Y first layer yw y roleplay. It gall speak in accessible voice, explain motives, a gwneud y situation vivid. hwn yw y part hynny helps memory."
+    },
+    {
+      "key": "site.4302f6b9fe360e2e28",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Mae'r llif yn gwirio pob cam, yn tynnu sylw at lithriadau, ac yn cysylltu gweithdrefnau'n ôl â'r cysyniad."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Y formal preifatrwydd page ar gyfer data defnyddio, rights, a cyhoeddus gwasanaeth conditions."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Y formal telerau covering acceptable defnyddio, account responsibilities, a gwasanaeth conditions."
+    },
+    {
+      "key": "site.4f1dc6282cf6f920c7",
+      "source": "The format should serve the learning job.",
+      "value": "Y format dylai serve y tasg ddysgu."
+    },
+    {
+      "key": "site.22709d194a67273db8",
+      "source": "The format works because it lets learners ask questions such as:",
+      "value": "Y format works oherwydd it lets dysgwyr gofyn cwestiynau such as:"
+    },
+    {
+      "key": "site.bc52d008afb471a9ae",
+      "source": "The goal is confidence",
+      "value": "Y goal yw confidence"
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "Y goal yw discovery a citation of cyhoeddus dysgu pages. cyhoeddus routes, canllawiau, a dysgu hubs yw open to major AI search, retrieval, a assistant crawlers, tra API, admin, reset, a private utility routes stay disallowed."
+    },
+    {
+      "key": "site.e125c23e696524bee3",
+      "source": "The goal is not to make the AI the authority. The goal is to make learners ask better historical questions.",
+      "value": "Y goal yw nid to gwneud yr AI yr authority. y goal yw to gwneud dysgwyr gofyn gwell historical cwestiynau."
+    },
+    {
+      "key": "site.fb6db6b2a3c1a5b24d",
+      "source": "The history route gives learners the liveliness of role-play and debate while preserving the warning that simulations are not primary sources.",
+      "value": "Y history llwybr gives dysgwyr y liveliness of role-play a debate tra preserving yr warning hynny simulations yw nid primary sources."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Mae'r moddau gwaith cartref a Socratig wedi eu dylunio o amgylch awgrymiadau, rhesymu, gwiriadau cam, ac esboniadau dysgwyr yn lle rhoi atebion gorffenedig yn syml."
+    },
+    {
+      "key": "site.e769b2568e20189fbf",
+      "source": "The homework route makes the contract visible: ask for a hint, check a step, improve a draft, critique a source, then prove the learning with review.",
+      "value": "Y gwaith cartref llwybr makes y contract visible: gofyn ar gyfer awgrym, gwirio cam, improve draft, critique source, then prove y dysgu gyda review."
+    }
+  ]
+}

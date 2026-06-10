@@ -29,6 +29,7 @@ export async function POST(request: NextRequest) {
   const user = await getUserById(session.user.id);
   const flashcards = await generateFlashcards(parsed.data.topic, parsed.data.source, {
     learnerAge: calculateAge(user?.dateOfBirth),
+    preferredLanguage: user?.preferredLanguage,
   });
   const run = await createActivityRun({
     chatId: parsed.data.chatId,

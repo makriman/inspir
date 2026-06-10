@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "language": "Somali",
+  "locale": "so",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Isticmaal saddex ratings:"
+    },
+    {
+      "key": "site.0b74139d26786c31a9",
+      "source": "Use Time travel when this is the right mode for the job. If you want a related path, try Quiz me on Trivia. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Isticmaal Safar Waqti marka tani tahay qaabka saxda ah ee hawsha. Haddii aad rabto jid la xiriira, isku day Iga Imtixaan Aqoonta Guud. Waxa kale oo aad baadhi kartaa blogga waxbarashada AI si aad u hesho hababka waxbarashada, barasho Socratic ah, flashcards, jilid door, iyo xasuusin firfircoon."
+    },
+    {
+      "key": "site.a2f81eb61f9a3c9bd0",
+      "source": "Use Time travel when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Isticmaal Safar Waqti marka aad rabto kalfadhi si degdeg ah u bilaabma isla markaana adiga kula qabsada. Yoolka koowaad ma aha in la dhawaaqo si cajaa'ib leh. Yoolka koowaad waa in tallaabada xigta laga dhigo mid suuragal u muuqata."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "Isticmaal timelines, sabab layers, iyo consequence khariidado."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "Isticmaal tree structures, node labels, xiriiriyo, iyo xiga-step Prompts."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "Isticmaal unlabeled parts, tilmaan tiers, jawaab key, iyo dib-u-eegis Prompts."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "Isticmaal visual eray-bixin iyo guided looking Prompts."
+    },
+    {
+      "key": "site.d238305bf168b268ff",
+      "source": "Use Viva Practice when this is the right mode for the job. If you want a related path, try Learning Game Master. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Isticmaal Tababar Viva marka tani tahay qaabka saxda ah ee hawsha. Haddii aad rabto jid la xiriira, isku day Maamulaha Ciyaarta Waxbarashada. Waxa kale oo aad baadhi kartaa blogga waxbarashada AI si aad u hesho hababka waxbarashada, barasho Socratic ah, flashcards, jilid door, iyo xasuusin firfircoon."
+    },
+    {
+      "key": "site.9d0a10626774c99800",
+      "source": "Use Viva Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Isticmaal Tababar Viva marka aad rabto kalfadhi si degdeg ah u bilaabma isla markaana adiga kula qabsada. Yoolka koowaad ma aha in la dhawaaqo si cajaa'ib leh. Yoolka koowaad waa in tallaabada xigta laga dhigo mid suuragal u muuqata."
+    },
+    {
+      "key": "site.bd69cd3ea825ed4970",
+      "source": "Use Vocabulary Builder when this is the right mode for the job. If you want a related path, try Reading Companion. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Isticmaal Dhisaha Eray-bixinta marka tani tahay qaabka saxda ah ee hawsha. Haddii aad rabto jid la xiriira, isku day Wehelka Akhriska. Waxa kale oo aad baadhi kartaa blogga waxbarashada AI si aad u hesho hababka waxbarashada, barasho Socratic ah, flashcards, jilid door, iyo xasuusin firfircoon."
+    },
+    {
+      "key": "site.cd4070756edded8a69",
+      "source": "Use Vocabulary Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Isticmaal Dhisaha Eray-bixinta marka aad rabto kalfadhi si degdeg ah u bilaabma isla markaana adiga kula qabsada. Yoolka koowaad ma aha in la dhawaaqo si cajaa'ib leh. Yoolka koowaad waa in tallaabada xigta laga dhigo mid suuragal u muuqata."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "Isticmaal toddobaadle plans, fallback plans, iyo aad u yar xiga actions."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "Isticmaal work/break cycles, break menus, iyo return Prompts."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "Isticmaal worksheet qaybo, jawaab keys, iyo adkaan labels."
+    },
+    {
+      "key": "site.3fb5408e7457bf73c1",
+      "source": "Use Writing Coach when this is the right mode for the job. If you want a related path, try Science Lab Partner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Isticmaal Tababaraha Qoraalka marka tani tahay qaabka saxda ah ee hawsha. Haddii aad rabto jid la xiriira, isku day Lammaanaha Shaybaarka Sayniska. Waxa kale oo aad baadhi kartaa blogga waxbarashada AI si aad u hesho hababka waxbarashada, barasho Socratic ah, flashcards, jilid door, iyo xasuusin firfircoon."
+    },
+    {
+      "key": "site.74c889d60e73579cf5",
+      "source": "Use Writing Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "Isticmaal Tababaraha Qoraalka marka aad rabto kalfadhi si degdeg ah u bilaabma isla markaana adiga kula qabsada. Yoolka koowaad ma aha in la dhawaaqo si cajaa'ib leh. Yoolka koowaad waa in tallaabada xigta laga dhigo mid suuragal u muuqata."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Validate feeling, identify blocker, iyo dooro hal yar tallaabada xigta."
+    },
+    {
+      "key": "site.754f12f4e5a90a1566",
+      "source": "Verify important facts with trusted sources, textbooks, or teacher-provided materials.",
+      "value": "Verify important facts leh trusted ilo, textbooks, ama macallin-provided agab."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "falanqayn muuqaal ah"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "visual waxbarasho"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "Barashada Muuqaalka ah"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "Tababarka Viva"
+    },
+    {
+      "key": "site.9bb9921e99ff1e258d",
+      "source": "Viva Practice AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Tababar Viva qaab waxbarasho AI waa qaab diiradda saaran oo AI loogu isticmaalo waxbarasho halkii si dadban jawaabo loo ururin lahaa. Qaabkan waxaa loo dhisay hawl gaar ah: Ku tababar viva, oral exams, mashruuc defenses, iyo rapid follow-up su'aalo leh calm jawaab-celin."
+    },
+    {
+      "key": "site.c4255e0bb155f796af",
+      "source": "Viva Practice AI Learning Mode: practical guide",
+      "value": "Tababar Viva qaab waxbarasho AI: hage wax ku ool ah"
+    },
+    {
+      "key": "site.40d5123891b796f2de",
+      "source": "Viva Practice prompts and study loop",
+      "value": "Tababar Viva Prompts iyo wareeg waxbarasho"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "Dhisaha Ereyada"
+    },
+    {
+      "key": "site.19637f7cace496a827",
+      "source": "Vocabulary Builder AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "Dhisaha Eray-bixinta qaab waxbarasho AI waa qaab diiradda saaran oo AI loogu isticmaalo waxbarasho halkii si dadban jawaabo loo ururin lahaa. Qaabkan waxaa loo dhisay hawl gaar ah: dhis eray-bixin leh meaning, tusaalooyin, pronunciation cues, xusuus hooks, iyo quick tababar."
+    },
+    {
+      "key": "site.afd2aa4628a25e2ad6",
+      "source": "Vocabulary Builder AI Learning Mode: practical guide",
+      "value": "Dhisaha Eray-bixinta qaab waxbarasho AI: hage wax ku ool ah"
+    },
+    {
+      "key": "site.7ae5014c2f1de184ce",
+      "source": "Vocabulary Builder prompts and study loop",
+      "value": "Dhisaha Eray-bixinta Prompts iyo wareeg waxbarasho"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "toddobaadle report"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "Warbixinnada Toddobaadlaha ah"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "dhibco miisaan leh"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "waxa good Socratic session looks like"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "Nidaamkee guulaha ah ee ay tahay inaan naqshadeynaa?"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "waxa wehel waxbarasho AI waa gudaha do loogu talagalay everyone"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "Maxaan maskax-fur ku samaynaynaa?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "Maxaan akhrinaynaa?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "Maxaad xiisaynaysaa maanta?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "Maxaad u diyaargarowday inaad tiraahdo?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "Maxaad cilmi-baaris ku samaynaysaa?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "Maxaad qoraysaa?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "Farshaxan, fannaan, mise qaabkee?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "Waa maxay hawlaha kuu yaalla?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "Waa maxay su'aasha weyn ee aan baarayno?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "Waa maxay shaqo ama dan aan sahaminno?"
+    },
+    {
+      "key": "site.5e290b0b81a3592a09",
+      "source": "What choices were available?",
+      "value": "waxa choices were la heli karo?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "Waa maxay mawduuca madaniga ah ee aan baranno?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Waa maxay mawduuca koodhka ama khaladaadka aan ka shaqaynayno?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "Ballanqaadkee u baahan isla-xisaabtan?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "Waa maxay fikradda aan khariidad ka dhigno?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "Waa maxay koorsooyinka ama maadooyinka aad maamulayso?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "Jaantuskee ayaan ku celcelinaa calaamadayntiisa?"
+    },
+    {
+      "key": "site.4ccb447427a6acda9a",
+      "source": "What did their society assume?",
+      "value": "waxa did their society assume?"
+    },
+    {
+      "key": "site.8bc608a9306d319a8b",
+      "source": "What did this person care about?",
+      "value": "waxa did tan qof care ku saabsan?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "Waa maxay dhibaatada ay tahay inaan baarno?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "Maxaad ku samaynaysaa adduunkan xiga?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "Maxaad u baahan tahay inaad xusuusato?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "Maxaad u baahan tahay inaad barato?"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "waxa do aad think waa happening?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "Maxaad rabtaa inaad maanta qabato?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "Maxay qabataa maxkamaddu?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "Maxuu qabtaa maareeyaha badeecaddu?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "Maxay muujinaysaa sahan-cilmiyeedkani?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "Waa maxay fikradda dhaqaale ee ay tahay inaan jilno?"
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "waxa caddeyn supports taas?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "Imtixaan noocee ah ayaad u diyaar garoobaysaa?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "Waa maxay dhibcaha kama dambaysta ah ee aan u baahanahay?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "Maxaa dhacay toddobaadkan?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "Maxaa dhacaya haddii canshuuraha la beddelo?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "Maxaa dhacaya haddii aan beddelno heerkulka?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "Waa maxay dhibaatada shaqada guriga ee aad ku xayiran tahay?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "Waa maxay fikradda kuu muuqata mid jahawareer leh ama shaki leh?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "Waa maxay waraysiga aad u diyaar garoobayso?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "Waa maxay aqoontu?"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Waa maxay door ee chlorophyll gudaha photosynthesis?"
+    },
+    {
+      "key": "site.7b4cc8d27ce0650610",
+      "source": "What it should not do",
+      "value": "waxa taas waa gudaha ma do"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "Noocee ah diiradda deegaanka ayaad rabtaa?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "Noocee kiis ah ayaan jilnaa?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "Noocee diirad-saarid ah ayaad rabtaa maanta?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "Yoolkee waxbarasho ayay tahay inuu noqdo nidaam heer-sare ah?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "Waa maxay caadada waxbarasho ee aad rabto?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "Waa maxay xilliga waxbarasho ee ay tahay inaan ka milicsano?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "Waa maxay xeeladda waxbarasho ee igu habboon?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "waxa makes good flashcard"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "Maxaa dood ka dhigaya mid sax ah?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "Maxaa shay ka dhiga mid caddaalad ah?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "Waa maxay qalabka ay tahay inuu noqdo hage waxbarasho?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "Waa maxay dhibaatada xisaabta ee aan ka shaqeyno?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "Waa maxay fikradda muusig ee ay tahay inaan ka shaqeyno?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "Waa maxay natiijada ay tahay in kalfadhigan shaqada qoto dheer uu soo saaro?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "Waa maxay lammaanaha ay tahay inay noqdaan ciyaar isbarbardhig?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "Waa maxay horumarka aan dib u eegis ku samayno?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "Mashruuc noocee ah ayaan dhisaynaa?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "Waa maxay su'aasha ama doodda aad rabto inaad soo dhigto?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "Waa maxay khayraadka aad rabto inaad wadaagto?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "Waa maxay xaaladda aan door-ciyaareed ka samayno?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "Waa maxay fikradda sayniska ama tijaabada aan baarayno?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "Maxaa noqon kara caqabad?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "Maxaa loo beddeli karaa ciyaar waxbarasho?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "Maxaa loo beddelaa sheeko?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "Maxaa loo baahan yahay in laga dhigo kaararka xusuusta?"
+    },
+    {
+      "key": "site.08aa84aad475334414",
+      "source": "What should I ask {value1} first?",
+      "value": "waxa waa gudaha I weydii {value1} koowaad?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "Maxay tahay in looxada hoggaamintu cabbirto?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "Maxaa imtixaanka tababarku uu dabooli karaa?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "Maxay tahay inay kooxda waxbarashadu qabato?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "Maxay tahay inay waraaqda shaqadu daboosho?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "Maxay tahay waxa kalfadhigan diirad-saaridu ku saabsan yahay?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "Maxaan dib u eegnaa?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "Maxaan sawirnaa ama jaantus ka dhignaa?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "Waa maxay xariirka ama jadwalka aad dhisayso?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "Waa maxay hawsha ay tahay inaan waqtiga u qabanno?"
+    },
+    {
+      "key": "site.f4877740cc39cf8b66",
+      "source": "What the companion should provide",
+      "value": "waxa wehel waa gudaha provide"
+    },
+    {
+      "key": "site.231fbf27878f2698ea",
+      "source": "What this mode helps with",
+      "value": "waxa tan qaab caawisaa leh"
+    },
+    {
+      "key": "site.a29b4b5ee632ee4d44",
+      "source": "What to ask a historical figure",
+      "value": "waxa si weydii taariikhi shakhsi"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "Waa maxay mawduuca aan kugu imtixaanno?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "Mawduuc noocee ah ayaa loo beddelaa khariidadda maskaxda?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Waa maxay viva ama imtixaanka afka ee aad u diyaar garoobayso?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "Maxaad ii sharxi doontaa?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "Waa maxay ereyada ama mawduuca aan ku celcelinayno?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "Waa maxay laxanka shaqada/nasashada ee aad rabto?"
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "waxa would change kaaga mind?"
+    },
+    {
+      "key": "site.3ab45d2d5936f0cebc",
+      "source": "What would modern readers misunderstand?",
+      "value": "waxa would casri ah readers misunderstand?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "Maxaad jeclaan lahayd inaad maanta barato?"
+    },
+    {
+      "key": "site.2fb41d86e92cebbf5a",
+      "source": "What you can practise",
+      "value": "waxa aad wuu karaa practise"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "Maxaa waxbarashada ka dhigaya mid adag hadda?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "Waa maxay mawduucaaga doodda maanta?"
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "marka Socratic tutoring waa wrong tool"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "marka aad paste notes u rogo AI, weydii taas si split broad fikrado u rogo kuwaas jobs. deck leh 18 gaar ah cards waa usually ka fiican ka badan deck leh 5 giant cards taas kasta contain whole faqradda."
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "halkee AI wuu karaa caawin"
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "halkee AI caawisaa"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "Xaggee ayaan baarnaa?"
+    },
+    {
+      "key": "site.0320ac9cef49bf6819",
+      "source": "Where to go next",
+      "value": "halkee si go xiga"
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "kee assumption waa doing most work?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "Waa maxay dhacdada taariikhiga ah ee aan raadraacno?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "Qofkee taariikhiga ah ayaad jeclaan lahayd inaad la kulanto?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "Luuqaddee iyo xaaladdee?"
+    },
+    {
+      "key": "site.0f2909e7b85147ae50",
+      "source": "Which parts are well documented and which parts are uncertain?",
+      "value": "kee parts waa well documented iyo kee parts waa aan la hubin?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "buuq cad"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "Yaa aad rabtaa inaad la dooddo, maxaase ku saabsan?"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "Yaa wada baranaya maxaase ah yoolka?"
+    },
+    {
+      "key": "site.f4ff361d2bbe9cfce0",
+      "source": "Who it helps",
+      "value": "Cidda ay caawiso"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "sababta Socratic AI macallin wuu karaa samee fikrado stick"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "Maxay magaalooyinku ugu dhow yihiin wabiyada?"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "Maxaan uga fogaaday waxbarashada?"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "Maxay Boqortooyadii Roomaanku u daciiftay?"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "Maxay jawaabtayda xisaabtu u khaldan tahay?"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "Maxay xeerkan naxwaha u yahay mid qariib ah?"
+    },
+    {
+      "key": "site.3b784ed5faff65ac4d",
+      "source": "Why it is different",
+      "value": "Sababta ay u duwan tahay"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "sababta su'aalo caawin"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "Erayada ku saabsan cimilada"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Xisaabi darajooyinka miisaaman, xaaladaha GPA-ga, dhibcaha kama dambaysta ah ee loo baahan yahay, iyo qorshayaasha semester-ka."
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Ku shaqee algebra, calculus, dhibaatooyinka ereyada, iyo fikradaha xisaabta hal tallaabo markiiba adigoo isticmaalaya tababare AI ah."
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Ka shaqee dhibaatooyinka adiga oo miisaamaya daneeyayaasha, cawaaqibka, waajibaadka, xuquuqda, iyo waxyaabaha la isku beddelayo."
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "Ku shaqee xisaabta hal tallaabo markiiba"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "Dhisaha Waraaqaha Shaqada"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "Caasimadaha adduunka"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "Qor qoraal hubin ah"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "Qor su'aal wanaagsan oo madal dood ah"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "Qor warbixintayda waxbarasho ee toddobaadlaha ah"
+    },
+    {
+      "key": "site.26837fdfbdc6470aba",
+      "source": "Write your next step.",
+      "value": "qor kaaga tallaabada xigta."
+    },
+    {
+      "key": "site.2906041145ba13b814",
+      "source": "writing coach",
+      "value": "qoraal tababare"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Tababaraha Qoraalka"
+    },
+    {
+      "key": "site.d0cad315c201ae8f56",
+      "source": "Writing Coach prompts and study loop",
+      "value": "Tababaraha Qoraalka Prompts iyo wareeg waxbarasho"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP & Heerarka"
+    },
+    {
+      "key": "site.9711f0284628a152bd",
+      "source": "Yes. {value1} opens as a public guest learning mode at {value2}, so you can start with a few free guest messages before creating an account.",
+      "value": "Yes. {value1} furaa as dadweyne guest qaab waxbarasho ee {value2}, so aad wuu karaa bilow leh yar bilaash guest messages ka hor creating account."
+    },
+    {
+      "key": "site.1a3740fa59d6eb6490",
+      "source": "You can also start with a rough version of your real problem. A messy first prompt is fine. The session can clarify the level, audience, deadline, and style once you begin.",
+      "value": "aad wuu karaa also bilow leh rough version ee kaaga dhab ah problem. messy koowaad prompt waa fine. session wuu karaa clarify heer, dhagaystayaal, waqti kama dambays ah, iyo style once aad begin."
+    },
+    {
+      "key": "site.f2e043b75e8b159ec8",
+      "source": "You can try the format in Talk to a Historical Person. If you want the wider scene before meeting a person, use Time Travel to visit a period, inspect constraints, and then ask what choices people actually had.",
+      "value": "aad wuu karaa isku day qaab gudaha La hadal Qof Taariikhi ah. haddii aad rabto wider scene ka hor meeting qof, isticmaal Safar Waqti si visit period, inspect constraints, iyo kadib weydii waxa choices dad actually had."
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "aad know Socratic AI macallin worked marka arday wuu karaa do saddex things:"
+    }
+  ]
+}

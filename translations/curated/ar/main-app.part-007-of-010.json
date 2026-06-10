@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Arabic",
+  "locale": "ar",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بالمطالبات النموذجية"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "التفاوض على الموعد النهائي"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "التعامل مع زبون وقح"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "اطلب مساعدة من المعلم"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "مستكشف المهن"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "اكتشف المسارات التي تناسبك"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "استكشف المهن من خلال الاهتمامات والمهارات وأمثلة يومية وخطوات لاحقة."
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "أي مجال مهني أو اهتمام نريد استكشافه؟"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "التخطيط"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "استكشف المهن من خلال الاهتمامات والمهارات وأمثلة يوم في الحياة والخطوات التالية."
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التخطيط ويرغبون في إرشادات عملية بدلًا من إجابة عامة."
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لاستكشاف المهن مع مطالباته وأمثلته الخاصة وتدفق التعلم."
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "اكتشف المسارات التي تناسبك"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بنماذج جاهزة"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "أنا أحب علم الأحياء والفن"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "ماذا يفعل مدير المنتج؟"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "قارن بين القانون وعلم النفس"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "مدرب المقابلات"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "تمرن على أجوبة أقوى"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "استعد للمقابلات المدرسية أو التدريبية أو الوظيفية أو الخاصة بالمنح الدراسية من خلال أسئلة واقعية وتقديم ملاحظات."
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "ما المقابلة التي تستعد لها؟"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "التخطيط"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "استعد للمقابلات الدراسية أو التدريبية أو الوظيفية أو المنح الدراسية بأسئلة حقيقية وتعليقات مفيدة."
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التخطيط ويرغبون في إرشادات عملية بدلاً من صندوق إجابات عام."
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لتدريب المقابلات مع تعليماته الخاصة، الأمثلة، وتدفق التعلم."
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "تدريب على أجوبة أقوى"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة وفقًا لهدفك"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "محاكاة مقابلة جامعية"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "تدريب على أسئلة التدريب الداخلي"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "حسّن أداء \"أخبرني عن نفسك\""
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "مدرّس البرمجة"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "تعلم البرمجة من خلال البناء"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "افهم الكود، صحح الأخطاء، تعلّم المفاهيم، وابنِ مشاريع صغيرة خطوة بخطوة."
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "ما الموضوع البرمجي أو الخطأ الذي نتعامل معه؟"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "العلوم والتقنية والهندسة والرياضيات"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "فهم الشيفرة، تصحيح الأخطاء، تعلم مفاهيم البرمجة، وبناء مشاريع صغيرة خطوة بخطوة."
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "المبرمجون المبتدئون والمتوسطون الذين يحتاجون إلى تفسيرات، أو مساعدة في تصحيح الأخطاء، أو إرشاد في المشاريع."
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "المعلم يسألك عما تتوقع أن يفعله الكود، ثم يستخدم أمثلة صغيرة واختبارات لجعل السلوك واضحًا."
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "اشرح الخطأ البرمجي"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "فهم المفهوم"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "جرّب إصلاحًا بسيطًا"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "اشرح العودية في جافاسكريبت"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "مساعدة في تصحيح هذا الخطأ"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "علّمني حلقات بايثون"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "مدرب المشاريع"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "حوّل الأفكار إلى مراحل هامة"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "خطط لمشروع مدرسي أو إبداعي أو برمجي أو شخصي مع تحديد النطاق والمعالم والعقبات والإجراءات التالية."
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "ما المشروع الذي نبنيها؟"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "التخطيط"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "خطط لمشروع مدرسي أو إبداعي أو برمجي أو شخصي مع تحديد النطاق والمعالم والعقبات والخطوات التالية."
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات التخطيط ويرغبون في إرشادات عملية بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع ليكون مدرب المشاريع مع طلباته الخاصة وأمثلة وتدفق تعلم مناسب."
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "حوّل الأفكار إلى مراحل مهمة"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بنماذج جاهزة"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "عدل الجلسة حسب هدفك"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "خطط لمشروع معرض علوم"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "إنشاء موقع محفظة إلكترونية"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "نظّم عرضًا تقديميًّا في التاريخ"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "مساعد بحث"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "صِغ الأسئلة وركّب المصادر"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "حوّل موضوعًا عامًا إلى أسئلة بحثية، مصطلحات بحث، مخططات، وملاحظات مصادر."
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "بماذا تبحث؟"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "التفكير"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "حوّل موضوعًا واسعًا إلى أسئلة بحثية، مصطلحات بحث، مخططات، وملاحظات مصادر."
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات التفكير ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "تم تهيئة هذا الوضع لمساعد البحث مع مطالبات وأمثلة وتدفق تعلم خاص به."
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "صياغة الأسئلة وتجميع المصادر"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "تكيف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "ابحث في الطاقة المتجددة"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "اكتشف زوايا أخلاقيات الذكاء الاصطناعي"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "خطط لمقال عن التحضر"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "ناقد المصادر"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "تقييم المصداقية والتحيز"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "قيّم المقالات أو الادعاءات أو الفيديوهات أو المنشورات من حيث الأدلة، التحيز، الموثوقية، والسياق المفقود."
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "الصق المصدر أو وصفه"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "التفكير"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "قيّم المقالات والمزاعم والفيديوهات أو المنشورات من حيث الأدلة والانحياز والموثوقية والسياق المفقود."
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التفكير ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لنقد المصادر مع أوامره، وأمثلته، وتسلسل تعلمه الخاص."
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "تقييم المصداقية والتحيز"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "هل هذه المقالة موثوقة؟"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "تحقق من أدلة هذا الادعاء"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "اكتشف التحيز في هذه الفقرة"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "مُفسِّر البيانات"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "فهم الأرقام والرسوم البيانية"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "ألصق البيانات أو أوصاف المخططات أو النتائج وتعرّف على معناها، وما لا تعنيه، والأسئلة التي يجب طرحها بعد ذلك."
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "الصق البيانات أو وصف الرسم البياني"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "العلوم والتقنية والهندسة والرياضيات"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "الصق البيانات أو أوصاف الرسوم البيانية أو النتائج وتعلم ما تعنيه، وما لا تعنيه، وماذا تسأل بعد ذلك."
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات العلوم والتكنولوجيا والهندسة والرياضيات ويرغبون في إرشادات عملية بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمفسر البيانات مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "فهم الأرقام والرسوم البيانية"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمحفزات نموذجية"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "خصص الجلسة لهدفك"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "اشرح هذا الجدول"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "ماذا تُظهر هذه الدراسة الاستقصائية؟"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "مساعدة في تفسير رسم بياني"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "منشئ خطة الدراسة"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "ابنِ روتيناً يدوم في ظل ظروف الحياة الحقيقية"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "أنشئ خطة دراسية تتناسب مع وقتك، طاقتك، أهدافك، ونقاط ضعفك."
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "ماذا تحتاج أن تدرس؟"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "التخطيط"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "أنشئ خطة دراسة واقعية تأخذ في الاعتبار وقتك، نشاطك، أهدافك، نقاط ضعفك، جولات المراجعة، وجدول التمرين."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "الطلاب والمتعلمون الذاتي الذين يحتاجون إلى تنظيم دون تحويل الخطة إلى قائمة مهام مستحيلة التنفيذ."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "يوازن المُنشئ بين الطموح والمراجعة والممارسة وأيام الاستراحة وأصغر إجراء مفيد تالي."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "حدد الهدف"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "جدولة التمارين"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "بناء حلقات المراجعة"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "خطط لي أسبوعي في الرياضيات"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "إنشاء روتين يومي للغة الإنجليزية"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "وازن بين المدرسة والتحضير للامتحانات"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "مدرب العادات"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "اجعل التعلم منتظمًا"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "حوّل النوايا إلى عادات تعلم صغيرة قابلة للتكرار باستخدام المحفزات والمكافآت وخطط التعافي."
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "ما هي عادة التعلم التي تريدها؟"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "التخطيط"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "حوّل النوايا إلى عادات تعلم صغيرة ومتكررة باستخدام المحفزات والمكافآت وخطط الاسترداد."
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التخطيط ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "تم تخصيص هذا الوضع لمدرب العادات مع مطالباته الخاصة، وأمثلة، وتدفق التعلم المميز."
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "اجعل التعلم مستمرًا"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "تكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "اقرأ لمدة 20 دقيقة يوميًا"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "توقف عن تأجيل دراسة الرياضيات"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "تمرن على الترميز يوميًا"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "مدرب التحفيز"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "أعد البدء عندما يصبح التعلم صعبًا"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "تحرر من الجمود العاطفي، وابحث عن خطوة صغيرة تالية، وأعد بناء الزخم دون شعور بالذنب."
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "ما الذي يجعل التعلم صعبًا في هذه اللحظة؟"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "التخطيط"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "تخلص من الجمود العاطفي، وابحث عن خطوة صغيرة تالية، وأعد بناء الزخم دون شعور بالذنب."
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع التخطيط ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "تم تهيئة هذا الوضع لمدرب التحفيز مع دعائمه الخاصة وأمثلته وسير التعلم."
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "أعد المحاولة عندما يصبح التعلم صعبًا"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات مثال"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "كيّف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "أشعر أنني متأخر"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "أستمر في المماطلة"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "لقد رسبت في اختبار وأشعر بالسوء"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "مُبدع العصف الذهني"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "ابتكر وشكل أفكارًا أصلية"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "ابتكر أفكارًا للمشاريع، القصص، التصاميم، العناوين، التجارب، والزوايا غير المتوقعة."
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "عمّا نفكر بشكل إبداعي؟"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "الإبداع"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "ابتكر مشاريع وقصص وتصاميم وعناوين وتجارب وزوايا غير متوقعة."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات الإبداع ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لعصف ذهني إبداعي مع مطالباته وأمثلته الخاصة وسير التعلم."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "توليد وصياغة أفكار أصلية"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "أفكار لمشروع علمي"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "أفكار قصص عن الصداقة"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "مقدمات عرض تقديمي إبداعية"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "مدرّس القصص"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "تعلّم من خلال القصص"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "حوّل المفاهيم إلى قصص وشخصيات وصراعات ومشاهد لا تُنسى."
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "ما الذي يجب أن يتحول إلى قصة؟"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "الإبداع"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "حوّل المفاهيم إلى قصص وشخصيات وصراعات ومشاهد لا تُنسى تسهّل استرجاع الأفكار الصعبة."
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "المتعلمون الذين يتذكرون الأفكار بشكل أفضل من خلال السرد، والتشبيهات، والشخصيات، والأمثلة الحية."
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "يقوم المعلم بتحويل المادة المجردة إلى بنية سردية مع الحفاظ على وضوح المفهوم الأساسي."
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "اختر المفهوم"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "بناء قصة"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "اشرح الدرس"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "علّم الكسور كقصة"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "اصنع قصة عن الأنظمة البيئية"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "اشرح الديمقراطية باستخدام شخصيات"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "مختبر الفلسفة"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "فكّر مليًا في الأسئلة الكبرى"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "اِستكشف الهوية والمعرفة والعدل والحرية والسعادة وأسئلة عميقة أخرى من خلال التفكير الدقيق."
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "ما السؤال الكبير الذي نستكشفه؟"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "العلوم الإنسانية"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "استكشف الهوية والمعرفة والإنصاف والحرية والسعادة وأسئلة عميقة أخرى من خلال التفكير الدقيق."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات العلوم الإنسانية ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمختبر الفلسفة مع مطالبه وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "فكّر جيدًا في الأسئلة الكبيرة"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بنماذج أسئلة"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ضبط الجلسة حسب هدفك"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "ما الذي يجعل شيئًا ما عادلاً؟"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "هل لدينا إرادة حُرّة؟"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "ما هي المعرفة؟"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "مآزق أخلاقية"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "تمرن على التفكير الأخلاقي"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "تعامل مع المعضلات من خلال موازنة أصحاب المصلحة، العواقب، الواجبات، الحقوق، والمقايضات."
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "ما المعضلة التي يجب أن ندرسها؟"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "العلوم الإنسانية"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "تعامَل مع المعضلات من خلال تقييم الأطراف المعنية، العواقب، الواجبات، الحقوق، والمقايضات."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات العلوم الإنسانية ويرغبون في إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع خصيصًا لمعضلات الأخلاقيات مع التعليمات، الأمثلة، وسير التعلم الخاصة به."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "تمرّن على التفكير الأخلاقي"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات نموذجية"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "الذكاء الاصطناعي في الفصول الدراسية"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "اختبار الحيوانات"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "هل يجوز الكذب في بعض الأحيان؟"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "مستكشف الجغرافيا"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "فهم الأماكن والخرائط والبشر"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "اكتشف البلدان، المدن، الأنهار، المناخات، الهجرة، الموارد، وكيف تشكل الجغرافيا الحياة."
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "أين نبحث للاستكشاف؟"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "العلوم الإنسانية"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "استكشف البلدان والمدن والأنهار والمناخ والهجرة والموارد، وكيف تشكّل الجغرافيا الحياة."
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات العلوم الإنسانية ويرغبون في إرشادات عملية بدلاً من إجابة عامة."
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "هذا الوضع مخصص لمستكشف الجغرافيا مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "فهم الأماكن والخرائط والبشر"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ مع مطالبات المثال"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "لماذا تقع المدن قرب الأنهار؟"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "اكتشف جبال الهيمالايا"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "قارن بين الهند واليابان"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "محاكٍ الاقتصاد"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "تعلّم الاختيارات، الحوافز، والمقايضات"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "تفاعل مع الأسواق والندرة والحوافز والسياسات والتمويل الشخصي عبر محاكاة بسيطة."
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "ما هي فكرة الاقتصاد التي ينبغي علينا محاكاتها؟"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "العلوم الإنسانية"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "تفاعل مع الأسواق، الندرة، الحوافز، السياسات، والمالية الشخصية من خلال محاكاة بسيطة."
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات العلوم الإنسانية ويرغبون في إرشادات عملية بدلاً من مربع إجابة عام."
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "تم ضبط هذا الوضع لمحاكاة الاقتصاد مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "تعلّم الخيارات، الحوافز، والمقايضات"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات المثال"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "قم بتكييف الجلسة مع هدفك"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "حاكي العرض والطلب"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "اشرح التضخم"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "ماذا يحدث إذا تغيرت الضرائب؟"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "التاريخ: السبب والنتيجة"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "تتبّع أسباب وقوع الأحداث"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "حلل الأحداث التاريخية من خلال الأسباب والمحفزات والنتائج والاحتمالات البديلة."
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "أي حدث تاريخي يجب أن نتتبعه؟"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "العلوم الإنسانية"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "استكشف الأحداث التاريخية من خلال الأسباب والمحركات والعواقب والاحتمالات البديلة."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون مواضيع العلوم الإنسانية ويبحثون عن إرشادات عملية بدلاً من صندوق إجابة عام."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "هذا الوضع مخصص لتسلسل الأسباب والنتائج في التاريخ مع مطالباته وأمثلته وتدفق التعلم الخاص به."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "تتبع أسباب حدوث الأحداث"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ابدأ بمطالبات أمثلة"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "اضبط الجلسة وفق هدفك"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "أسباب الحرب العالمية الأولى"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "لماذا ضعُف الإمبراطورية الرومانية؟"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "تأثيرات المطبعة"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "مدرب التربية المدنية"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "فهم الحقوق والحكومة والمجتمع"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "تعلّم الدساتير والديمقراطية والانتخابات والمحاكم والحقوق والواجبات والسياسات العامة."
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "ما الموضوع المدني الذي يجب أن ندرسه؟"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "العلوم الإنسانية"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "تعلم الدساتير، الديمقراطية، الانتخابات، المحاكم، الحقوق، الواجبات، والسياسات العامة."
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "المتعلمون الذين يستكشفون موضوعات العلوم الإنسانية ويرغبون في إرشادات عملية بدلاً من خانة إجابة عامة."
+    }
+  ]
+}

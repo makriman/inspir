@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Somali",
+  "locale": "so",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 7,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.0",
+      "source": "Negotiate a deadline",
+      "value": "Gorgortan ka gal waqti kama dambays ah"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.1",
+      "source": "Handle a rude customer",
+      "value": "Maaree macmiil xun"
+    },
+    {
+      "key": "topic.roleplay-scenario.starter.2",
+      "source": "Ask a teacher for help",
+      "value": "Macallin ka codso caawimaad"
+    },
+    {
+      "key": "topic.career-explorer.name",
+      "source": "Career Explorer",
+      "value": "Sahamiyaha Shaqada"
+    },
+    {
+      "key": "topic.career-explorer.subText",
+      "source": "Discover paths that fit you",
+      "value": "Soo hel waddooyin kugu habboon"
+    },
+    {
+      "key": "topic.career-explorer.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "Sahami shaqooyinka iyada oo loo marayo danaha, xirfadaha, tusaalooyinka nolol-maalmeedka, iyo tallaabooyinka xiga."
+    },
+    {
+      "key": "topic.career-explorer.inputboxText",
+      "source": "What career or interest should we explore?",
+      "value": "Waa maxay shaqo ama dan aan sahaminno?"
+    },
+    {
+      "key": "topic.career-explorer.category",
+      "source": "Planning",
+      "value": "Qorshayn"
+    },
+    {
+      "key": "topic.career-explorer.seo.description",
+      "source": "Explore careers through interests, skills, day-in-the-life examples, and next steps.",
+      "value": "Sahami shaqooyinka iyada oo loo marayo danaha, xirfadaha, tusaalooyinka nolol-maalmeedka, iyo tallaabooyinka xiga."
+    },
+    {
+      "key": "topic.career-explorer.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaya mawduucyada qorshaynta ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab oo guud."
+    },
+    {
+      "key": "topic.career-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyay sahamiyaha shaqada oo leh dhiirigelinno, tusaalooyin, iyo hab-socod waxbarasho oo u gaar ah."
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.0",
+      "source": "Discover paths that fit you",
+      "value": "Soo hel waddooyin kugu habboon"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.career-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Kalfadhiga u habee hadafkaaga"
+    },
+    {
+      "key": "topic.career-explorer.starter.0",
+      "source": "I like biology and art",
+      "value": "Waxaan jeclahay bayoolaji iyo farshaxan"
+    },
+    {
+      "key": "topic.career-explorer.starter.1",
+      "source": "What does a product manager do?",
+      "value": "Maxuu qabtaa maareeyaha badeecaddu?"
+    },
+    {
+      "key": "topic.career-explorer.starter.2",
+      "source": "Compare law and psychology",
+      "value": "Isbarbar dhig sharciga iyo cilmi-nafsiga"
+    },
+    {
+      "key": "topic.interview-coach.name",
+      "source": "Interview Coach",
+      "value": "Tababaraha Waraysiga"
+    },
+    {
+      "key": "topic.interview-coach.subText",
+      "source": "Practice stronger answers",
+      "value": "Ku celceli jawaabo ka xoog badan"
+    },
+    {
+      "key": "topic.interview-coach.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "U diyaar garow waraysiyada dugsiga, tababarka shaqada, shaqada, ama deeqaha waxbarasho adigoo isticmaalaya su'aalo dhab ah iyo jawaab celin."
+    },
+    {
+      "key": "topic.interview-coach.inputboxText",
+      "source": "What interview are you preparing for?",
+      "value": "Waa maxay waraysiga aad u diyaar garoobayso?"
+    },
+    {
+      "key": "topic.interview-coach.category",
+      "source": "Planning",
+      "value": "Qorshaynta"
+    },
+    {
+      "key": "topic.interview-coach.seo.description",
+      "source": "Prepare for school, internship, job, or scholarship interviews with realistic questions and feedback.",
+      "value": "U diyaar garow waraysiyada dugsiga, tababarka shaqada, shaqada, ama deeqaha waxbarasho adigoo isticmaalaya su'aalo dhab ah iyo jawaab celin."
+    },
+    {
+      "key": "topic.interview-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaya mawduucyada qorshaynta ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.interview-coach.seo.whyDifferent",
+      "source": "This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyey tababaraha waraysiga oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarasho."
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.0",
+      "source": "Practice stronger answers",
+      "value": "Ku celceli jawaabo ka xoog badan"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.interview-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Kalfadhiga u habee hadafkaaga"
+    },
+    {
+      "key": "topic.interview-coach.starter.0",
+      "source": "Mock college interview",
+      "value": "Waraysiga kuliyadda ee been-abuurka ah"
+    },
+    {
+      "key": "topic.interview-coach.starter.1",
+      "source": "Practice internship questions",
+      "value": "Ku celceli su'aalaha tababarka shaqada"
+    },
+    {
+      "key": "topic.interview-coach.starter.2",
+      "source": "Improve tell me about yourself",
+      "value": "Hagaaji 'ii sheeg wax adiga kugu saabsan'"
+    },
+    {
+      "key": "topic.code-tutor.name",
+      "source": "Code Tutor",
+      "value": "Macallinka Koodhka"
+    },
+    {
+      "key": "topic.code-tutor.subText",
+      "source": "Learn programming by building",
+      "value": "Baro barnaamijyada adigoo dhisaya"
+    },
+    {
+      "key": "topic.code-tutor.description",
+      "source": "Understand code, debug errors, learn concepts, and build small projects step by step.",
+      "value": "Fahan koodhka, sax khaladaadka, bar fikradaha, oo dhis mashaariic yaryar tallaabo tallaabo."
+    },
+    {
+      "key": "topic.code-tutor.inputboxText",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "Waa maxay mawduuca koodhka ama khaladaadka aan ka shaqaynayno?"
+    },
+    {
+      "key": "topic.code-tutor.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.code-tutor.seo.description",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "Fahan koodhka, sax khaladaadka, bar fikradaha barnaamijyada, oo dhis mashaariic yaryar tallaabo tallaabo."
+    },
+    {
+      "key": "topic.code-tutor.seo.who",
+      "source": "Beginner and intermediate programmers who need explanations, debugging help, or project coaching.",
+      "value": "Barnaamij-sameeyayaasha bilowga ah iyo kuwa dhexe ee u baahan sharraxaad, caawimaad xagga khalad-saaridda (debugging), ama tababar mashruuc."
+    },
+    {
+      "key": "topic.code-tutor.seo.whyDifferent",
+      "source": "The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "Macallinku wuxuu ku weydiinayaa waxa aad ka filayso in koodhku sameeyo, ka dibna wuxuu isticmaalaa tusaalooyin yaryar iyo imtixaanno si uu kaaga caawiyo fahamka hab-dhaqanka koodhka."
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.0",
+      "source": "Explain the bug",
+      "value": "Sharax khaladka"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.1",
+      "source": "Understand the concept",
+      "value": "Fahan fikradda"
+    },
+    {
+      "key": "topic.code-tutor.seo.outcome.2",
+      "source": "Try a small fix",
+      "value": "Isku day hagaajin yar"
+    },
+    {
+      "key": "topic.code-tutor.starter.0",
+      "source": "Explain recursion in JavaScript",
+      "value": "Sharax recursion-ka JavaScript"
+    },
+    {
+      "key": "topic.code-tutor.starter.1",
+      "source": "Help debug this error",
+      "value": "Iga caawi khaladkan"
+    },
+    {
+      "key": "topic.code-tutor.starter.2",
+      "source": "Teach me Python loops",
+      "value": "I bar Python loops"
+    },
+    {
+      "key": "topic.project-coach.name",
+      "source": "Project Coach",
+      "value": "Tababaraha Mashruuca"
+    },
+    {
+      "key": "topic.project-coach.subText",
+      "source": "Turn ideas into milestones",
+      "value": "Fikradaha u beddel marxalado muhiim ah"
+    },
+    {
+      "key": "topic.project-coach.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "Qorshee mashruuc dugsi, hal-abuur, koodh-qoris, ama mid gaar ah oo leh baaxad, marxalado, caqabado, iyo tallaabooyinka xiga."
+    },
+    {
+      "key": "topic.project-coach.inputboxText",
+      "source": "What project are we building?",
+      "value": "Mashruuc noocee ah ayaan dhisaynaa?"
+    },
+    {
+      "key": "topic.project-coach.category",
+      "source": "Planning",
+      "value": "Qorshayn"
+    },
+    {
+      "key": "topic.project-coach.seo.description",
+      "source": "Plan a school, creative, coding, or personal project with scope, milestones, blockers, and next actions.",
+      "value": "Qorshee mashruuc dugsi, hal-abuur, koodh-qoris, ama mid gaar ah oo leh baaxad, marxalado, caqabado, iyo tallaabooyinka xiga."
+    },
+    {
+      "key": "topic.project-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaya mawduucyada qorshaynta ee raba hage wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.project-coach.seo.whyDifferent",
+      "source": "This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyey tababaraha mashruuca iyadoo la adeegsanayo dhiirigelinno, tusaalooyin, iyo hab-socod waxbarasho oo u gaar ah."
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.0",
+      "source": "Turn ideas into milestones",
+      "value": "Fikradaha u beddel marxalado muhiim ah"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.project-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.project-coach.starter.0",
+      "source": "Plan a science fair project",
+      "value": "Qorshee mashruuc bandhig cilmiyeed"
+    },
+    {
+      "key": "topic.project-coach.starter.1",
+      "source": "Build a portfolio website",
+      "value": "Dhis degel fayl-maareed (portfolio website)"
+    },
+    {
+      "key": "topic.project-coach.starter.2",
+      "source": "Organize a history presentation",
+      "value": "Habee bandhig taariikhi ah"
+    },
+    {
+      "key": "topic.research-assistant.name",
+      "source": "Research Assistant",
+      "value": "Kaaliyaha Cilmi-baarista"
+    },
+    {
+      "key": "topic.research-assistant.subText",
+      "source": "Frame questions and synthesize sources",
+      "value": "Qaabayn su'aalaha iyo isku-dubbaridka ilaha"
+    },
+    {
+      "key": "topic.research-assistant.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "U beddel mawduuc ballaaran su'aalo cilmi-baaris, ereyo raadin, qorsheyaal, iyo qoraallo ilo ah."
+    },
+    {
+      "key": "topic.research-assistant.inputboxText",
+      "source": "What are you researching?",
+      "value": "Maxaad cilmi-baaris ku samaynaysaa?"
+    },
+    {
+      "key": "topic.research-assistant.category",
+      "source": "Thinking",
+      "value": "Fikirka"
+    },
+    {
+      "key": "topic.research-assistant.seo.description",
+      "source": "Turn a broad topic into research questions, search terms, outlines, and source notes.",
+      "value": "U beddel mawduuc ballaaran su'aalo cilmi-baaris, ereyo raadin, qorsheyaal, iyo qoraallo ilo ah."
+    },
+    {
+      "key": "topic.research-assistant.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaysa mawduucyada fikirka ee doonaya hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.research-assistant.seo.whyDifferent",
+      "source": "This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Qaabkan waxaa loo habeeyey kaaliyaha cilmi-baarista oo leh dhiirigelin u gaar ah, tusaalooyin, iyo hab-socod waxbarasho."
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.0",
+      "source": "Frame questions and synthesize sources",
+      "value": "Qaabeynta su'aalaha iyo isku-dubbaridka ilaha"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.research-assistant.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.research-assistant.starter.0",
+      "source": "Research renewable energy",
+      "value": "Cilmi-baaris ku samee tamarta dib loo cusboonaysiin karo"
+    },
+    {
+      "key": "topic.research-assistant.starter.1",
+      "source": "Find angles on AI ethics",
+      "value": "Ka hel dhinacyo kala duwan anshaxa AI"
+    },
+    {
+      "key": "topic.research-assistant.starter.2",
+      "source": "Plan a paper on urbanization",
+      "value": "Qorshee warqad ku saabsan magaalo-gelinta"
+    },
+    {
+      "key": "topic.source-critic.name",
+      "source": "Source Critic",
+      "value": "Naqdiyaha Isha"
+    },
+    {
+      "key": "topic.source-critic.subText",
+      "source": "Judge credibility and bias",
+      "value": "Qiimee kalsoonida iyo eexda"
+    },
+    {
+      "key": "topic.source-critic.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "Qiimee maqaallada, sheegashooyinka, fiidiyowyada, ama qoraallada si aad u ogaato caddaynta, eexda, kalsoonida, iyo macluumaadka maqan."
+    },
+    {
+      "key": "topic.source-critic.inputboxText",
+      "source": "Paste or describe the source",
+      "value": "Dheji ama sharax isha"
+    },
+    {
+      "key": "topic.source-critic.category",
+      "source": "Thinking",
+      "value": "Fikirka"
+    },
+    {
+      "key": "topic.source-critic.seo.description",
+      "source": "Evaluate articles, claims, videos, or posts for evidence, bias, reliability, and missing context.",
+      "value": "Qiimee maqaallada, sheegashooyinka, fiidiyowyada, ama qoraallada si aad u ogaato caddaynta, eexda, kalsoonida, iyo macluumaadka maqan."
+    },
+    {
+      "key": "topic.source-critic.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaysa mawduucyada fikirka ee doonaya hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.source-critic.seo.whyDifferent",
+      "source": "This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Qaabkan waxaa loo habeeyey naqdiyaha isha oo leh dhiirigelin u gaar ah, tusaalooyin, iyo hab-socod waxbarasho."
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.0",
+      "source": "Judge credibility and bias",
+      "value": "Qiimee kalsoonida iyo eexda"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.source-critic.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.source-critic.starter.0",
+      "source": "Is this article reliable?",
+      "value": "Maqaalkani ma yahay mid la isku halayn karo?"
+    },
+    {
+      "key": "topic.source-critic.starter.1",
+      "source": "Check this claim's evidence",
+      "value": "Hubi cadaynta sheegashadan"
+    },
+    {
+      "key": "topic.source-critic.starter.2",
+      "source": "Spot bias in this paragraph",
+      "value": "Ka hel eexasho cutubkan"
+    },
+    {
+      "key": "topic.data-interpreter.name",
+      "source": "Data Interpreter",
+      "value": "Falanqeeyaha Xogta"
+    },
+    {
+      "key": "topic.data-interpreter.subText",
+      "source": "Make sense of numbers and charts",
+      "value": "Fahan tirooyinka iyo jaantusyada"
+    },
+    {
+      "key": "topic.data-interpreter.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "Dheji xogta, sharraxaadaha jaantuska, ama natiijooyinka oo baro waxa ay ka dhigan yihiin, waxa aysan ka dhignayn, iyo waxa xiga ee la weydiinayo."
+    },
+    {
+      "key": "topic.data-interpreter.inputboxText",
+      "source": "Paste the data or describe the chart",
+      "value": "Dheji xogta ama sharrax jaantuska"
+    },
+    {
+      "key": "topic.data-interpreter.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.data-interpreter.seo.description",
+      "source": "Paste data, chart descriptions, or results and learn what they mean, what they do not mean, and what to ask next.",
+      "value": "Dheji xogta, sharraxaadaha jaantuska, ama natiijooyinka oo baro waxa ay ka dhigan yihiin, waxa aysan ka dhignayn, iyo waxa xiga ee la weydiinayo."
+    },
+    {
+      "key": "topic.data-interpreter.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaysa mawduucyada STEM ee raba hage wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.data-interpreter.seo.whyDifferent",
+      "source": "This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Qaabkan waxaa loo habeeyey falanqeeyaha xogta oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarashada."
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.0",
+      "source": "Make sense of numbers and charts",
+      "value": "Fahan tirooyinka iyo jaantusyada"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.data-interpreter.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.data-interpreter.starter.0",
+      "source": "Explain this table",
+      "value": "Sharax miiskan"
+    },
+    {
+      "key": "topic.data-interpreter.starter.1",
+      "source": "What does this survey show?",
+      "value": "Maxay muujinaysaa sahan-cilmiyeedkani?"
+    },
+    {
+      "key": "topic.data-interpreter.starter.2",
+      "source": "Help interpret a graph",
+      "value": "Caawi turjumida garaafka"
+    },
+    {
+      "key": "topic.study-plan-builder.name",
+      "source": "Study Plan Builder",
+      "value": "Dhisaha Qorshaha Waxbarashada"
+    },
+    {
+      "key": "topic.study-plan-builder.subText",
+      "source": "Build a routine that survives real life",
+      "value": "Dhis jadwal u adkeysan kara nolosha dhabta ah"
+    },
+    {
+      "key": "topic.study-plan-builder.description",
+      "source": "Create a study plan around your time, energy, goals, and weak spots.",
+      "value": "Samee qorshe waxbarasho oo ku salaysan wakhtigaaga, tamartaada, yoolalkaaga, iyo meelaha aad daciifka ka tahay."
+    },
+    {
+      "key": "topic.study-plan-builder.inputboxText",
+      "source": "What do you need to study?",
+      "value": "Maxaad u baahan tahay inaad barato?"
+    },
+    {
+      "key": "topic.study-plan-builder.category",
+      "source": "Planning",
+      "value": "Qorshaynta"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.description",
+      "source": "Create a realistic study plan around your time, energy, goals, weak spots, review loops, and practice schedule.",
+      "value": "Samee qorshe waxbarasho oo dhab ah oo ku salaysan wakhtigaaga, tamartaada, yoolalkaaga, meelaha aad daciifka ka tahay, wareegyada dib-u-eegista, iyo jadwalka ku-dhaqanka."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.who",
+      "source": "Students and self-taught learners who need structure without turning the plan into an impossible checklist.",
+      "value": "Ardayda iyo kuwa wax baranaya ee u baahan qaab-dhismeed iyada oo aan qorshaha loo beddelin liis aan suurtagal ahayn."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.whyDifferent",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "Dhisuhu wuxuu dheelitiraa hamiga iyo dib-u-eegista, ku-dhaqanka, maalmaha soo kabashada, iyo tallaabada xigta ee ugu yar ee waxtarka leh."
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.0",
+      "source": "Define the goal",
+      "value": "Qeex hadafka"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.1",
+      "source": "Schedule practice",
+      "value": "Qorshee ku-celcelinta"
+    },
+    {
+      "key": "topic.study-plan-builder.seo.outcome.2",
+      "source": "Build review loops",
+      "value": "Dhis wareegyo dib-u-eegis ah"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.0",
+      "source": "Plan my week for math",
+      "value": "Qorshee usbuucayga xisaabta"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.1",
+      "source": "Create a daily English routine",
+      "value": "Samee jadwal maalinle ah oo Ingiriisi ah"
+    },
+    {
+      "key": "topic.study-plan-builder.starter.2",
+      "source": "Balance school and exam prep",
+      "value": "Isku dheellitir dugsiga iyo u diyaar garowga imtixaanka"
+    },
+    {
+      "key": "topic.habit-coach.name",
+      "source": "Habit Coach",
+      "value": "Tababaraha Caadooyinka"
+    },
+    {
+      "key": "topic.habit-coach.subText",
+      "source": "Make learning consistent",
+      "value": "Ka dhig waxbarashada mid joogto ah"
+    },
+    {
+      "key": "topic.habit-coach.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "U beddel ujeedooyinkaaga caadooyin waxbarasho oo yaryar oo lagu celcelin karo, kuwaas oo leh kiciyeyaal, abaalmarinno, iyo qorshayaal soo kabasho."
+    },
+    {
+      "key": "topic.habit-coach.inputboxText",
+      "source": "What learning habit do you want?",
+      "value": "Waa maxay caadada waxbarasho ee aad rabto?"
+    },
+    {
+      "key": "topic.habit-coach.category",
+      "source": "Planning",
+      "value": "Qorshaynta"
+    },
+    {
+      "key": "topic.habit-coach.seo.description",
+      "source": "Turn intentions into small repeatable learning habits with triggers, rewards, and recovery plans.",
+      "value": "U beddel ujeedooyinkaaga caadooyin waxbarasho oo yaryar oo lagu celcelin karo, kuwaas oo leh kiciyeyaal, abaalmarinno, iyo qorshayaal soo kabasho."
+    },
+    {
+      "key": "topic.habit-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaya mawduucyada qorshaynta ee raba hage wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud ah."
+    },
+    {
+      "key": "topic.habit-coach.seo.whyDifferent",
+      "source": "This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyey tababaraha caadooyinka iyadoo leh dhiirigelinno u gaar ah, tusaalooyin, iyo habsocod waxbarasho."
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.0",
+      "source": "Make learning consistent",
+      "value": "Ka dhig waxbarashada mid joogto ah"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.habit-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga hadafkaaga"
+    },
+    {
+      "key": "topic.habit-coach.starter.0",
+      "source": "Read 20 minutes daily",
+      "value": "Akhriso 20 daqiiqo maalin kasta"
+    },
+    {
+      "key": "topic.habit-coach.starter.1",
+      "source": "Stop procrastinating on math",
+      "value": "Jooji dib-u-dhigista xisaabta"
+    },
+    {
+      "key": "topic.habit-coach.starter.2",
+      "source": "Practice coding every day",
+      "value": "Ku celceli barnaamij-samaynta maalin kasta"
+    },
+    {
+      "key": "topic.motivation-coach.name",
+      "source": "Motivation Coach",
+      "value": "Tababaraha Dhiirigelinta"
+    },
+    {
+      "key": "topic.motivation-coach.subText",
+      "source": "Restart when learning feels hard",
+      "value": "Dib u bilow marka waxbarashadu ay dareento mid adag"
+    },
+    {
+      "key": "topic.motivation-coach.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "Ka gudub caqabadaha shucuureed, hel tallaabo xigta oo yar, oo dib u dhis dardargelinta adigoon dareemin dambi."
+    },
+    {
+      "key": "topic.motivation-coach.inputboxText",
+      "source": "What's making learning hard right now?",
+      "value": "Maxaa waxbarashada ka dhigaya mid adag hadda?"
+    },
+    {
+      "key": "topic.motivation-coach.category",
+      "source": "Planning",
+      "value": "Qorshayn"
+    },
+    {
+      "key": "topic.motivation-coach.seo.description",
+      "source": "Get unstuck emotionally, find a smaller next step, and rebuild momentum without guilt.",
+      "value": "Ka gudub caqabadaha shucuureed, hel tallaabo xigta oo yar, oo dib u dhis dardargelinta adigoon dareemin dambi."
+    },
+    {
+      "key": "topic.motivation-coach.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaya mawduucyada qorshaynta ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab oo guud."
+    },
+    {
+      "key": "topic.motivation-coach.seo.whyDifferent",
+      "source": "This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyay tababaraha dhiirigelinta oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarasho."
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.0",
+      "source": "Restart when learning feels hard",
+      "value": "Dib u bilow marka waxbarashadu ay dareento adag"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.motivation-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.motivation-coach.starter.0",
+      "source": "I feel behind",
+      "value": "Waxaan dareemayaa inaan dib u dhacay"
+    },
+    {
+      "key": "topic.motivation-coach.starter.1",
+      "source": "I keep procrastinating",
+      "value": "Waan sii wadaa dib-u-dhigista"
+    },
+    {
+      "key": "topic.motivation-coach.starter.2",
+      "source": "I failed a test and feel bad",
+      "value": "Imtixaan ayaan ku guuldarraystay, waxaana dareemayaa xumaan"
+    },
+    {
+      "key": "topic.creative-brainstormer.name",
+      "source": "Creative Brainstormer",
+      "value": "Maskax-furka Hal-abuurka"
+    },
+    {
+      "key": "topic.creative-brainstormer.subText",
+      "source": "Generate and shape original ideas",
+      "value": "Soo saar oo qaabee fikrado asal ah"
+    },
+    {
+      "key": "topic.creative-brainstormer.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Maskax-fur mashaariic, sheekooyin, naqshado, cinwaanno, tijaabooyin, iyo xaglo aan la filayn."
+    },
+    {
+      "key": "topic.creative-brainstormer.inputboxText",
+      "source": "What are we brainstorming?",
+      "value": "Maxaan maskax-fur ku samaynaynaa?"
+    },
+    {
+      "key": "topic.creative-brainstormer.category",
+      "source": "Creativity",
+      "value": "Hal-abuur"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.description",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "Maskax-fur mashaariic, sheekooyin, naqshado, cinwaanno, tijaabooyin, iyo xaglo aan la filayn."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaya mawduucyada hal-abuurka ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab oo guud."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.whyDifferent",
+      "source": "This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyay maskax-furka hal-abuurka oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarasho."
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.0",
+      "source": "Generate and shape original ideas",
+      "value": "Soo saar oo qaabee fikrado asal ah"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.creative-brainstormer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.0",
+      "source": "Ideas for a science project",
+      "value": "Fikrado mashruuc saynis ah"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.1",
+      "source": "Story concepts about friendship",
+      "value": "Fikradaha sheekada ee ku saabsan saaxiibtinimada"
+    },
+    {
+      "key": "topic.creative-brainstormer.starter.2",
+      "source": "Creative presentation openings",
+      "value": "Furitaanka bandhig hal-abuur leh"
+    },
+    {
+      "key": "topic.story-tutor.name",
+      "source": "Story Tutor",
+      "value": "Macallinka Sheekooyinka"
+    },
+    {
+      "key": "topic.story-tutor.subText",
+      "source": "Learn through stories",
+      "value": "Ku baro sheekooyin"
+    },
+    {
+      "key": "topic.story-tutor.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes.",
+      "value": "U beddel fikradaha sheekooyin, jilayaal, iska horimaadyo, iyo muuqaallo xusuus mudan."
+    },
+    {
+      "key": "topic.story-tutor.inputboxText",
+      "source": "What should become a story?",
+      "value": "Maxaa loo beddelaa sheeko?"
+    },
+    {
+      "key": "topic.story-tutor.category",
+      "source": "Creativity",
+      "value": "Hal-abuur"
+    },
+    {
+      "key": "topic.story-tutor.seo.description",
+      "source": "Turn concepts into stories, characters, conflicts, and memorable scenes that make difficult ideas easier to recall.",
+      "value": "U beddel fikradaha sheekooyin, jilayaal, iska horimaadyo, iyo muuqaallo xusuus mudan kuwaas oo ka dhigaya fikradaha adag kuwo si fudud loo xasuusan karo."
+    },
+    {
+      "key": "topic.story-tutor.seo.who",
+      "source": "Learners who remember ideas better through narrative, analogy, characters, and vivid examples.",
+      "value": "Ardayda fikradaha si fiican u xasuusta iyagoo adeegsanaya sheeko-xariir, tusaalooyin, jilayaal, iyo tusaalooyin cad."
+    },
+    {
+      "key": "topic.story-tutor.seo.whyDifferent",
+      "source": "The tutor translates abstract material into story structure while keeping the underlying concept visible.",
+      "value": "Macallinku wuxuu u beddelaa agabka aan la taaban karin qaab-dhismeed sheeko isagoo ilaalinaya fikradda aasaasiga ah."
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.0",
+      "source": "Choose the concept",
+      "value": "Dooro fikradda"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.1",
+      "source": "Build a story",
+      "value": "Dhis sheeko"
+    },
+    {
+      "key": "topic.story-tutor.seo.outcome.2",
+      "source": "Explain the lesson",
+      "value": "Sharax casharka"
+    },
+    {
+      "key": "topic.story-tutor.starter.0",
+      "source": "Teach fractions as a story",
+      "value": "Jajabka u dhig sidii sheeko"
+    },
+    {
+      "key": "topic.story-tutor.starter.1",
+      "source": "Make a story about ecosystems",
+      "value": "Samee sheeko ku saabsan nidaamka deegaanka"
+    },
+    {
+      "key": "topic.story-tutor.starter.2",
+      "source": "Explain democracy with characters",
+      "value": "Ku sharax dimuqraadiyadda jilayaal"
+    },
+    {
+      "key": "topic.philosophy-lab.name",
+      "source": "Philosophy Lab",
+      "value": "Sheybaarka Falsafadda"
+    },
+    {
+      "key": "topic.philosophy-lab.subText",
+      "source": "Think carefully about big questions",
+      "value": "Si taxaddar leh uga fikir su'aalaha waaweyn"
+    },
+    {
+      "key": "topic.philosophy-lab.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "Baadh aqoonsiga, aqoonta, caddaaladda, xorriyadda, farxadda, iyo su'aalo kale oo qoto dheer adigoo adeegsanaya sababaynta taxaddarka leh."
+    },
+    {
+      "key": "topic.philosophy-lab.inputboxText",
+      "source": "What big question are we exploring?",
+      "value": "Waa maxay su'aasha weyn ee aan baarayno?"
+    },
+    {
+      "key": "topic.philosophy-lab.category",
+      "source": "Humanities",
+      "value": "Aadanaha"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.description",
+      "source": "Explore identity, knowledge, fairness, freedom, happiness, and other deep questions through careful reasoning.",
+      "value": "Baadh aqoonsiga, aqoonta, caddaaladda, xorriyadda, farxadda, iyo su'aalo kale oo qoto dheer adigoo adeegsanaya sababaynta taxaddarka leh."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda baranaysa mawduucyada aadanaha ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.whyDifferent",
+      "source": "This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyey sheybaarka falsafadda oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarashada."
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.0",
+      "source": "Think carefully about big questions",
+      "value": "Si taxaddar leh uga fikir su'aalaha waaweyn"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.philosophy-lab.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Kalfadhiga u habee yoolkaaga"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.0",
+      "source": "What makes something fair?",
+      "value": "Maxaa shay ka dhiga mid caddaalad ah?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.1",
+      "source": "Do we have free will?",
+      "value": "Ma leenahay xorriyad doorasho?"
+    },
+    {
+      "key": "topic.philosophy-lab.starter.2",
+      "source": "What is knowledge?",
+      "value": "Waa maxay aqoontu?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.name",
+      "source": "Ethics Dilemmas",
+      "value": "Dhibaatooyinka Anshaxa"
+    },
+    {
+      "key": "topic.ethics-dilemmas.subText",
+      "source": "Practice moral reasoning",
+      "value": "Ku tababaro garashada anshaxa"
+    },
+    {
+      "key": "topic.ethics-dilemmas.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Ka shaqee dhibaatooyinka adiga oo miisaamaya daneeyayaasha, cawaaqibka, waajibaadka, xuquuqda, iyo waxyaabaha la isku beddelayo."
+    },
+    {
+      "key": "topic.ethics-dilemmas.inputboxText",
+      "source": "What dilemma should we examine?",
+      "value": "Waa maxay dhibaatada ay tahay inaan baarno?"
+    },
+    {
+      "key": "topic.ethics-dilemmas.category",
+      "source": "Humanities",
+      "value": "Aadanaha"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.description",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "Ka shaqee dhibaatooyinka adiga oo miisaamaya daneeyayaasha, cawaaqibka, waajibaadka, xuquuqda, iyo waxyaabaha la isku beddelayo."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda baranaysa mawduucyada aadanaha ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.whyDifferent",
+      "source": "This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Habkan waxaa loo habeeyay dhibaatooyinka anshaxa iyadoo la adeegsanayo dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarashada."
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.0",
+      "source": "Practice moral reasoning",
+      "value": "Ku tababaro garashada anshaxa"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.ethics-dilemmas.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Kalfadhiga u habee yoolkaaga"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.0",
+      "source": "AI in classrooms",
+      "value": "AI-ga fasallada dhexdiisa"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.1",
+      "source": "Animal testing",
+      "value": "Tijaabinta xayawaanka"
+    },
+    {
+      "key": "topic.ethics-dilemmas.starter.2",
+      "source": "Should lying ever be okay?",
+      "value": "Been ma noqon kartaa mid sax ah mararka qaarkood?"
+    },
+    {
+      "key": "topic.geography-explorer.name",
+      "source": "Geography Explorer",
+      "value": "Baaraha Juqraafiga"
+    },
+    {
+      "key": "topic.geography-explorer.subText",
+      "source": "Understand places, maps, and people",
+      "value": "Fahan meelaha, khariidadaha, iyo dadka"
+    },
+    {
+      "key": "topic.geography-explorer.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Baar waddamada, magaalooyinka, webiyada, cimilada, socdaalka, kheyraadka, iyo sida juqraafidu u qaabeyso nolosha."
+    },
+    {
+      "key": "topic.geography-explorer.inputboxText",
+      "source": "Where should we explore?",
+      "value": "Xaggee ayaan baarnaa?"
+    },
+    {
+      "key": "topic.geography-explorer.category",
+      "source": "Humanities",
+      "value": "Aadanaha"
+    },
+    {
+      "key": "topic.geography-explorer.seo.description",
+      "source": "Explore countries, cities, rivers, climates, migration, resources, and how geography shapes life.",
+      "value": "Baar waddamada, magaalooyinka, webiyada, cimilada, socdaalka, kheyraadka, iyo sida juqraafidu u qaabeyso nolosha."
+    },
+    {
+      "key": "topic.geography-explorer.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaysa mowduucyada bini'aadantinimada ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.geography-explorer.seo.whyDifferent",
+      "source": "This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Qaabkan waxaa loo habeeyay sahamiyaha juqraafiga oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarasho."
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.0",
+      "source": "Understand places, maps, and people",
+      "value": "Faham meelaha, khariidadaha, iyo dadka"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.geography-explorer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.geography-explorer.starter.0",
+      "source": "Why are cities near rivers?",
+      "value": "Maxay magaalooyinku ugu dhow yihiin wabiyada?"
+    },
+    {
+      "key": "topic.geography-explorer.starter.1",
+      "source": "Explore the Himalayas",
+      "value": "Sahami Himalayas"
+    },
+    {
+      "key": "topic.geography-explorer.starter.2",
+      "source": "Compare India and Japan",
+      "value": "Isbarbar dhig Hindiya iyo Jabaan"
+    },
+    {
+      "key": "topic.economics-simulator.name",
+      "source": "Economics Simulator",
+      "value": "Jilidda Dhaqaalaha"
+    },
+    {
+      "key": "topic.economics-simulator.subText",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "Baro doorashooyinka, dhiirigelinta, iyo is-dhaafsiga"
+    },
+    {
+      "key": "topic.economics-simulator.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "Ku ciyaar suuqyada, yaraanta, dhiirigelinta, siyaasadda, iyo maaliyadda shakhsi ahaaneed iyada oo loo marayo jilid fudud."
+    },
+    {
+      "key": "topic.economics-simulator.inputboxText",
+      "source": "What economy idea should we simulate?",
+      "value": "Waa maxay fikradda dhaqaale ee ay tahay inaan jilno?"
+    },
+    {
+      "key": "topic.economics-simulator.category",
+      "source": "Humanities",
+      "value": "Bini'aadantinimo"
+    },
+    {
+      "key": "topic.economics-simulator.seo.description",
+      "source": "Play with markets, scarcity, incentives, policy, and personal finance through simple simulations.",
+      "value": "Ku ciyaar suuqyada, yaraanta, dhiirigelinta, siyaasadda, iyo maaliyadda shakhsi ahaaneed iyada oo loo marayo jilid fudud."
+    },
+    {
+      "key": "topic.economics-simulator.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda sahaminaysa mowduucyada bini'aadantinimada ee raba hagitaan wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.economics-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Qaabkan waxaa loo habeeyay jilidda dhaqaalaha oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarasho."
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.0",
+      "source": "Learn choices, incentives, and tradeoffs",
+      "value": "Baro doorashooyinka, dhiirigelinta, iyo is-dhaafsiga"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.economics-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.economics-simulator.starter.0",
+      "source": "Simulate supply and demand",
+      "value": "Jil sahayda iyo baahida"
+    },
+    {
+      "key": "topic.economics-simulator.starter.1",
+      "source": "Explain inflation",
+      "value": "Sharax sicir-bararka"
+    },
+    {
+      "key": "topic.economics-simulator.starter.2",
+      "source": "What happens if taxes change?",
+      "value": "Maxaa dhacaya haddii canshuuraha la beddelo?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.name",
+      "source": "History Cause-and-Effect",
+      "value": "Sababta iyo Saamaynta Taariikhda"
+    },
+    {
+      "key": "topic.history-cause-and-effect.subText",
+      "source": "Trace why events happened",
+      "value": "Raadso sababta ay dhacdooyinku u dhaceen"
+    },
+    {
+      "key": "topic.history-cause-and-effect.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Falanqee dhacdooyinka taariikhiga ah adigoo eegaya sababaha, kiciyeyaasha, cawaaqibka, iyo suurtagalnimada kale."
+    },
+    {
+      "key": "topic.history-cause-and-effect.inputboxText",
+      "source": "Which historical event should we trace?",
+      "value": "Waa maxay dhacdada taariikhiga ah ee aan raadraacno?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.category",
+      "source": "Humanities",
+      "value": "Aadanaha"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.description",
+      "source": "Unpack historical events through causes, triggers, consequences, and alternative possibilities.",
+      "value": "Falanqee dhacdooyinka taariikhiga ah adigoo eegaya sababaha, kiciyeyaasha, cawaaqibka, iyo suurtagalnimada kale."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda baranaysa mawduucyada aadanaha ee raba hage wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.whyDifferent",
+      "source": "This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Qaabkan waxaa loo habeeyay sabab-iyo-saameyn taariikhi ah oo leh dhiirigelin u gaar ah, tusaalooyin, iyo habka waxbarasho."
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.0",
+      "source": "Trace why events happened",
+      "value": "Raadraac sababta ay dhacdooyinku u dhaceen"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ku bilow tusaalooyin dhiirigelin ah"
+    },
+    {
+      "key": "topic.history-cause-and-effect.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "La qabso kalfadhiga yoolkaaga"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.0",
+      "source": "Causes of World War I",
+      "value": "Sababaha Dagaalkii Koowaad ee Adduunka"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.1",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "Maxay Boqortooyadii Roomaanku u daciiftay?"
+    },
+    {
+      "key": "topic.history-cause-and-effect.starter.2",
+      "source": "Effects of the printing press",
+      "value": "Saamaynta mashiinka daabacaadda"
+    },
+    {
+      "key": "topic.civics-coach.name",
+      "source": "Civics Coach",
+      "value": "Tababaraha Madaniga"
+    },
+    {
+      "key": "topic.civics-coach.subText",
+      "source": "Understand rights, government, and society",
+      "value": "Fahan xuquuqda, dawladda, iyo bulshada"
+    },
+    {
+      "key": "topic.civics-coach.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "Baro dastuurrada, dimuqraadiyadda, doorashooyinka, maxkamadaha, xuquuqda, waajibaadka, iyo siyaasadda dadweynaha."
+    },
+    {
+      "key": "topic.civics-coach.inputboxText",
+      "source": "What civics topic should we study?",
+      "value": "Waa maxay mawduuca madaniga ah ee aan baranno?"
+    },
+    {
+      "key": "topic.civics-coach.category",
+      "source": "Humanities",
+      "value": "Aadanaha"
+    },
+    {
+      "key": "topic.civics-coach.seo.description",
+      "source": "Learn constitutions, democracy, elections, courts, rights, duties, and public policy.",
+      "value": "Baro dastuurrada, dimuqraadiyadda, doorashooyinka, maxkamadaha, xuquuqda, waajibaadka, iyo siyaasadda dadweynaha."
+    },
+    {
+      "key": "topic.civics-coach.seo.who",
+      "source": "Learners exploring humanities topics who want practical guidance instead of a generic answer box.",
+      "value": "Ardayda baranaysa mawduucyada aadanaha ee raba hage wax ku ool ah halkii ay ka heli lahaayeen sanduuq jawaab guud."
+    }
+  ]
+}

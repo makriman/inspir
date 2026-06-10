@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Greek",
+  "locale": "el",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 4,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "component.911283fe2232",
+      "source": "Quick Check",
+      "value": "Γρήγορος έλεγχος"
+    },
+    {
+      "key": "component.d614793e93c0",
+      "source": "Quiz me",
+      "value": "Κάνε μου κουίζ"
+    },
+    {
+      "key": "component.f4fd71bdcc3d",
+      "source": "Quiz on",
+      "value": "Κουίζ στο"
+    },
+    {
+      "key": "component.750127052ffa",
+      "source": "Rajput retainer",
+      "value": "Ακόλουθος των Ρατζπούτ"
+    },
+    {
+      "key": "component.2cb0220c7fb5",
+      "source": "Rank controls speech",
+      "value": "Το αξίωμα ελέγχει τον λόγο"
+    },
+    {
+      "key": "component.47f2291b96b5",
+      "source": "Raw options",
+      "value": "Ακατέργαστες επιλογές"
+    },
+    {
+      "key": "component.b0fb2e2755f6",
+      "source": "Read the guide",
+      "value": "Διάβασε τον οδηγό"
+    },
+    {
+      "key": "component.1ba9285c4dbb",
+      "source": "Read the pamphlet aloud",
+      "value": "Διάβασε το φυλλάδιο δυνατά"
+    },
+    {
+      "key": "component.8df33e186224",
+      "source": "Reading knowledge plus formal speech routines",
+      "value": "Γνώση ανάγνωσης συν τυπικές ρουτίνες ομιλίας"
+    },
+    {
+      "key": "component.e27e7173e91e",
+      "source": "Ready for a 10-minute checkpoint",
+      "value": "Έτοιμος για ένα σημείο ελέγχου 10 λεπτών"
+    },
+    {
+      "key": "component.9ee1d87c6cd7",
+      "source": "Ready for next handoff",
+      "value": "Έτοιμος για την επόμενη παράδοση"
+    },
+    {
+      "key": "component.8c2d9db100f4",
+      "source": "Ready for review",
+      "value": "Έτοιμο για αναθεώρηση"
+    },
+    {
+      "key": "component.370cdd29a525",
+      "source": "Real life",
+      "value": "Πραγματική ζωή"
+    },
+    {
+      "key": "component.8e10fdd77b25",
+      "source": "Real-world mode",
+      "value": "Λειτουργία πραγματικού κόσμου"
+    },
+    {
+      "key": "component.7d2085c16e37",
+      "source": "Reasoning depth",
+      "value": "Βάθος συλλογισμού"
+    },
+    {
+      "key": "component.12814e474612",
+      "source": "Reasoning link",
+      "value": "Σύνδεσμος συλλογισμού"
+    },
+    {
+      "key": "component.410a5fd0ec61",
+      "source": "Reasoning log",
+      "value": "Αρχείο καταγραφής συλλογισμού"
+    },
+    {
+      "key": "component.08c753ccf87c",
+      "source": "Recall before reveal",
+      "value": "Ανάκληση πριν από την αποκάλυψη"
+    },
+    {
+      "key": "component.28220567a702",
+      "source": "Recent political wounds remain raw",
+      "value": "Οι πρόσφατες πολιτικές πληγές παραμένουν ανοιχτές"
+    },
+    {
+      "key": "component.7d4b454370c7",
+      "source": "Recognition is useful, but it is weaker evidence than applying the idea without the answer in front of you.",
+      "value": "Η αναγνώριση είναι χρήσιμη, αλλά αποτελεί ασθενέστερη απόδειξη από την εφαρμογή της ιδέας χωρίς να έχετε την απάντηση μπροστά σας."
+    },
+    {
+      "key": "component.afbf9a099120",
+      "source": "Recommend opening questions for this encounter, grouped by interview, debate, contradiction, and legacy.",
+      "value": "Προτείνετε εναρκτήριες ερωτήσεις για αυτή τη συνάντηση, ομαδοποιημένες ανά συνέντευξη, συζήτηση, αντίφαση και κληρονομιά."
+    },
+    {
+      "key": "component.c783910b44b6",
+      "source": "Reconstruct a decision, alternatives, constraints, and outcomes.",
+      "value": "Ανασυνθέστε μια απόφαση, τις εναλλακτικές λύσεις, τους περιορισμούς και τα αποτελέσματα."
+    },
+    {
+      "key": "component.a72a8f73dc11",
+      "source": "Red Fort approaches",
+      "value": "Προσεγγίσεις στο Κόκκινο Φρούριο"
+    },
+    {
+      "key": "component.2ce8b9e121f0",
+      "source": "Red sandstone heat, ink, perfumed paper, controlled silence, and many languages orbiting power.",
+      "value": "Η ζέστη του κόκκινου ψαμμίτη, μελάνι, αρωματισμένο χαρτί, ελεγχόμενη σιωπή και πολλές γλώσσες που περιφέρονται γύρω από την εξουσία."
+    },
+    {
+      "key": "component.0ccc7909b5fb",
+      "source": "Reframe my next question as a student trying to understand the mental model, not just the biography.",
+      "value": "Αναδιατυπώστε την επόμενη ερώτησή μου ως μαθητής που προσπαθεί να κατανοήσει το νοητικό μοντέλο, όχι μόνο τη βιογραφία."
+    },
+    {
+      "key": "component.a24c276ac12d",
+      "source": "Religious debate is politically charged",
+      "value": "Η θρησκευτική συζήτηση είναι πολιτικά φορτισμένη"
+    },
+    {
+      "key": "component.e0e026276557",
+      "source": "Religious language needs care",
+      "value": "Η θρησκευτική γλώσσα απαιτεί προσοχή"
+    },
+    {
+      "key": "component.0c5330d19ead",
+      "source": "Remote work is better",
+      "value": "Η απομακρυσμένη εργασία είναι καλύτερη"
+    },
+    {
+      "key": "component.037bbfc29028",
+      "source": "Remove weak, generic, or low-fit ideas quickly.",
+      "value": "Αφαιρέστε γρήγορα τις αδύναμες, γενικές ή ακατάλληλες ιδέες."
+    },
+    {
+      "key": "component.2988f3dfb74c",
+      "source": "Removes the failing path instead of understanding it.",
+      "value": "Αφαιρεί την αποτυχημένη διαδρομή αντί να την κατανοεί."
+    },
+    {
+      "key": "component.90b8131b4d1f",
+      "source": "Renaissance Florence in 1490",
+      "value": "Η Φλωρεντία της Αναγέννησης το 1490"
+    },
+    {
+      "key": "component.66325effd9f8",
+      "source": "Rename the variable everywhere.",
+      "value": "Μετονομάστε τη μεταβλητή παντού."
+    },
+    {
+      "key": "component.f7fb183346d9",
+      "source": "Repaired gaps",
+      "value": "Επισκευασμένα κενά"
+    },
+    {
+      "key": "component.971339da94e1",
+      "source": "Repairing the misconception makes the next problem easier instead of just more familiar.",
+      "value": "Η διόρθωση της παρανόησης καθιστά το επόμενο πρόβλημα ευκολότερο, αντί απλώς πιο οικείο."
+    },
+    {
+      "key": "component.4883a9d371cf",
+      "source": "Repeating a definition without applying it can feel fluent while hiding gaps.",
+      "value": "Η επανάληψη ενός ορισμού χωρίς την εφαρμογή του μπορεί να δίνει την αίσθηση ευχέρειας, ενώ κρύβει κενά."
+    },
+    {
+      "key": "component.6bcff7ac2de1",
+      "source": "Rephrase the active question in simpler language. Ask only one question.",
+      "value": "Αναδιατυπώστε την ενεργή ερώτηση σε απλούστερη γλώσσα. Κάντε μόνο μία ερώτηση."
+    },
+    {
+      "key": "component.8fe6a933e8a8",
+      "source": "Reply in this compact shape:",
+      "value": "Απαντήστε με αυτή τη συνοπτική μορφή:"
+    },
+    {
+      "key": "component.cf0cbc5ccf37",
+      "source": "Request debrief and passport stamp",
+      "value": "Αίτημα για ενημέρωση και σφραγίδα διαβατηρίου"
+    },
+    {
+      "key": "component.9ed885c7e35d",
+      "source": "Request source confidence",
+      "value": "Αίτημα για αξιοπιστία πηγής"
+    },
+    {
+      "key": "component.2f79ec2e3c66",
+      "source": "Required flow:",
+      "value": "Απαιτούμενη ροή:"
+    },
+    {
+      "key": "component.17f2bb4b3ffd",
+      "source": "Reset the controls, move only one slider, and describe the before-and-after in plain language.",
+      "value": "Επαναφέρετε τα χειριστήρια, μετακινήστε μόνο ένα ρυθμιστικό και περιγράψτε το πριν και το μετά με απλά λόγια."
+    },
+    {
+      "key": "component.6b51f64dd73e",
+      "source": "Resolve access limits",
+      "value": "Επίλυση ορίων πρόσβασης"
+    },
+    {
+      "key": "component.2c934f39de2e",
+      "source": "Resolve language risk",
+      "value": "Επίλυση γλωσσικού κινδύνου"
+    },
+    {
+      "key": "component.803dbfad3fc6",
+      "source": "Resolve status rules",
+      "value": "Επίλυση κανόνων κατάστασης"
+    },
+    {
+      "key": "component.7aa618d54a21",
+      "source": "Resolve the event clock before opening the world",
+      "value": "Επίλυση του ρολογιού συμβάντων πριν από το άνοιγμα του κόσμου"
+    },
+    {
+      "key": "component.e77ea1a2315f",
+      "source": "respectful but challenging interlocutor",
+      "value": "σεβαστικός αλλά απαιτητικός συνομιλητής"
+    },
+    {
+      "key": "component.68fcff7df5ce",
+      "source": "Restaurants and drivers can be suppliers, but this specific clue is about customers comparing and switching.",
+      "value": "Τα εστιατόρια και οι οδηγοί μπορεί να είναι προμηθευτές, αλλά αυτό το συγκεκριμένο στοιχείο αφορά πελάτες που συγκρίνουν και αλλάζουν επιλογές."
+    },
+    {
+      "key": "component.4c027317545d",
+      "source": "Restoration London faces plague memory, dense timber housing, and a fire that will reshape the city.",
+      "value": "Το Λονδίνο της Παλινόρθωσης αντιμετωπίζει τη μνήμη της πανώλης, την πυκνή ξύλινη δόμηση και μια πυρκαγιά που θα αναδιαμορφώσει την πόλη."
+    },
+    {
+      "key": "component.343b38bb71c5",
+      "source": "Reveal the starting model before the lesson explains it.",
+      "value": "Αποκαλύψτε το αρχικό μοντέλο πριν το εξηγήσει το μάθημα."
+    },
+    {
+      "key": "component.78df3f31215b",
+      "source": "Rewrite the current rough section as a suggested edit. Show what changed and why before asking me to merge it.",
+      "value": "Ξαναγράψτε την τρέχουσα πρόχειρη ενότητα ως προτεινόμενη επεξεργασία. Δείξτε τι άλλαξε και γιατί, πριν μου ζητήσετε να το συγχωνεύσω."
+    },
+    {
+      "key": "component.ca5560da5759",
+      "source": "Rewrite this",
+      "value": "Ξαναγράψτε το"
+    },
+    {
+      "key": "component.7ab132020523",
+      "source": "Right. Transfer to a fresh example is stronger evidence than recognition.",
+      "value": "Σωστά. Η μεταφορά σε ένα νέο παράδειγμα αποτελεί ισχυρότερη απόδειξη από την απλή αναγνώριση."
+    },
+    {
+      "key": "component.d81e83b6c2b3",
+      "source": "Right. You identified a seller-side cost shock and predicted the pressure on price.",
+      "value": "Σωστά. Εντοπίσατε ένα σοκ κόστους από την πλευρά του πωλητή και προβλέψατε την πίεση στην τιμή."
+    },
+    {
+      "key": "component.1743f14ce624",
+      "source": "River boatman",
+      "value": "Βαρκάρης ποταμού"
+    },
+    {
+      "key": "component.a031a7b57338",
+      "source": "River stairs",
+      "value": "Σκάλες ποταμού"
+    },
+    {
+      "key": "component.d6f443f51ba3",
+      "source": "Roman Empire",
+      "value": "Ρωμαϊκή Αυτοκρατορία"
+    },
+    {
+      "key": "component.e720ae03ad93",
+      "source": "Roman trade used amphorae and contracts",
+      "value": "Το ρωμαϊκό εμπόριο χρησιμοποιούσε αμφορείς και συμβόλαια"
+    },
+    {
+      "key": "component.959a5e064b58",
+      "source": "Rubric-aware prompts.",
+      "value": "Προτροπές με επίγνωση των κριτηρίων αξιολόγησης."
+    },
+    {
+      "key": "component.08957554ee0d",
+      "source": "Rumor can turn against outsiders",
+      "value": "Οι φήμες μπορούν να στραφούν εναντίον των ξένων"
+    },
+    {
+      "key": "component.7bb279bd578d",
+      "source": "Rumors about royal troops spread",
+      "value": "Διαδόθηκαν φήμες για τα βασιλικά στρατεύματα"
+    },
+    {
+      "key": "component.4ffbaba7cfe7",
+      "source": "Rumors move faster than verified news",
+      "value": "Οι φήμες διαδίδονται ταχύτερα από τις επαληθευμένες ειδήσεις"
+    },
+    {
+      "key": "component.f406a98a85fd",
+      "source": "Rupee, dam, gifts, patronage obligations",
+      "value": "Ρουπία, νταμ, δώρα, υποχρεώσεις πατρωνίας"
+    },
+    {
+      "key": "component.0f3dd7548a25",
+      "source": "Rupees, silver coin, credit through trusted households",
+      "value": "Ρουπίες, ασημένιο νόμισμα, πίστωση μέσω έμπιστων νοικοκυριών"
+    },
+    {
+      "key": "component.ce4c40a824ca",
+      "source": "Safe, explanatory, and easier to pause for context.",
+      "value": "Ασφαλές, επεξηγηματικό και πιο εύκολο να διακοπεί για πλαίσιο."
+    },
+    {
+      "key": "component.36c12e82b1e3",
+      "source": "Safer, more explanatory, and allowed to ask modern comparisons.",
+      "value": "Πιο ασφαλές, πιο επεξηγηματικό και με δυνατότητα υποβολής ερωτήσεων για σύγχρονες συγκρίσεις."
+    },
+    {
+      "key": "component.758625ed4fc7",
+      "source": "Salt air, olive oil, rope fiber, shouted accounts, and the heavy logistics behind imperial abundance.",
+      "value": "Αλμυρός αέρας, ελαιόλαδο, ίνες σχοινιού, προφορικές αναφορές και η βαριά εφοδιαστική πίσω από την αυτοκρατορική αφθονία."
+    },
+    {
+      "key": "component.2f7b7ad341e0",
+      "source": "Salt March strategist, St. Helena retrospective, 1946 committee room...",
+      "value": "Στρατηγός της Πορείας του Αλατιού, αναδρομή στην Αγία Ελένη, αίθουσα επιτροπής του 1946..."
+    },
+    {
+      "key": "component.7605cf4afbe7",
+      "source": "Same level",
+      "value": "Ίδιο επίπεδο"
+    },
+    {
+      "key": "component.98d5309ca571",
+      "source": "Sanskrit in Buddhist contexts",
+      "value": "Σανσκριτικά σε βουδιστικά πλαίσια"
+    },
+    {
+      "key": "component.d69ca0d332d1",
+      "source": "Save note",
+      "value": "Αποθήκευση σημείωσης"
+    },
+    {
+      "key": "component.613d9d44835c",
+      "source": "Saved arrival point",
+      "value": "Αποθηκευμένο σημείο άφιξης"
+    },
+    {
+      "key": "component.1fdbc928c5f7",
+      "source": "Saved expedition",
+      "value": "Αποθηκευμένη αποστολή"
+    },
+    {
+      "key": "component.31db64ffad28",
+      "source": "Saved notes",
+      "value": "Αποθηκευμένες σημειώσεις"
+    },
+    {
+      "key": "component.72498e1de0b8",
+      "source": "Say why the mistake is tempting, then name the missing link.",
+      "value": "Πείτε γιατί το λάθος είναι δελεαστικό και, στη συνέχεια, ονομάστε τον κρίκο που λείπει."
+    },
+    {
+      "key": "component.ae1f10df8a38",
+      "source": "Saying revenue is up, so the company is worth more ignores margins, reinvestment, working capital, and risk.",
+      "value": "Το να λέτε ότι τα έσοδα αυξάνονται, άρα η εταιρεία αξίζει περισσότερο, αγνοεί τα περιθώρια κέρδους, την επανεπένδυση, το κεφάλαιο κίνησης και τον κίνδυνο."
+    },
+    {
+      "key": "component.aa4986e9edb4",
+      "source": "Scanning the topic",
+      "value": "Σάρωση του θέματος"
+    },
+    {
+      "key": "component.95a63c58f054",
+      "source": "Scene Choices",
+      "value": "Επιλογές σκηνής"
+    },
+    {
+      "key": "component.8c09328917b9",
+      "source": "Scholarly gathering",
+      "value": "Επιστημονική συγκέντρωση"
+    },
+    {
+      "key": "component.943e915ec679",
+      "source": "Science, leadership, democracy, daily life...",
+      "value": "Επιστήμη, ηγεσία, δημοκρατία, καθημερινή ζωή..."
+    },
+    {
+      "key": "component.c32b5d9ea958",
+      "source": "Scribe or translator",
+      "value": "Γραφέας ή μεταφραστής"
+    },
+    {
+      "key": "component.631a600e6190",
+      "source": "Seeing the output change but not naming the mechanism.",
+      "value": "Βλέποντας την αλλαγή στο αποτέλεσμα, αλλά χωρίς να ονομάζετε τον μηχανισμό."
+    },
+    {
+      "key": "component.291a85699c85",
+      "source": "Send answer",
+      "value": "Αποστολή απάντησης"
+    },
+    {
+      "key": "component.03bf0b770e02",
+      "source": "Send me somewhere consequential",
+      "value": "Στείλε με κάπου σημαντικά"
+    },
+    {
+      "key": "component.c70a890d1411",
+      "source": "Send message",
+      "value": "Αποστολή μηνύματος"
+    },
+    {
+      "key": "component.e34837b56e99",
+      "source": "Sepoy courier",
+      "value": "Αγγελιαφόρος Σιπάι"
+    },
+    {
+      "key": "component.cdf2d39e903c",
+      "source": "September 1857",
+      "value": "Σεπτέμβριος 1857"
+    },
+    {
+      "key": "component.ae720381a40f",
+      "source": "Session details",
+      "value": "Λεπτομέρειες συνεδρίας"
+    },
+    {
+      "key": "component.a2a3d6a1542f",
+      "source": "Session setup",
+      "value": "Ρύθμιση συνεδρίας"
+    },
+    {
+      "key": "component.1ba59c4d3dd8",
+      "source": "Set a place, period, and mission. Your guide will keep the trip bounded to the era and mark speculation clearly.",
+      "value": "Ορίστε έναν τόπο, μια περίοδο και μια αποστολή. Ο οδηγός σας θα διατηρήσει το ταξίδι εντός της εποχής και θα επισημαίνει τις εικασίες με σαφήνεια."
+    },
+    {
+      "key": "component.697f7a980cbb",
+      "source": "Set a thinking target and I will ask the first diagnostic question.",
+      "value": "Ορίστε έναν στόχο σκέψης και θα σας κάνω την πρώτη διαγνωστική ερώτηση."
+    },
+    {
+      "key": "component.792f7f7dcd69",
+      "source": "Set in the opening message",
+      "value": "Ορίστηκε στο αρχικό μήνυμα"
+    },
+    {
+      "key": "component.8a705896a4cd",
+      "source": "Set the shared task.",
+      "value": "Ορίστε την κοινή εργασία."
+    },
+    {
+      "key": "component.cb09bfd23c1c",
+      "source": "Several locations, figures, artifacts, and field notes.",
+      "value": "Αρκετές τοποθεσίες, πρόσωπα, αντικείμενα και σημειώσεις πεδίου."
+    },
+    {
+      "key": "component.32c79cbb745e",
+      "source": "Shared draft room",
+      "value": "Κοινόχρηστο δωμάτιο προσχεδίων"
+    },
+    {
+      "key": "component.b95ef75a6977",
+      "source": "Shared goal",
+      "value": "Κοινός στόχος"
+    },
+    {
+      "key": "component.12264cf9af73",
+      "source": "Shared workroom",
+      "value": "Κοινόχρηστο εργαστήριο"
+    },
+    {
+      "key": "component.a043f6325d8b",
+      "source": "Sharp sparring partner",
+      "value": "Οξύς συνεργάτης αντιπαράθεσης"
+    },
+    {
+      "key": "component.6d03e52b9f64",
+      "source": "Ships unload grain and oil",
+      "value": "Τα πλοία ξεφορτώνουν σιτηρά και πετρέλαιο"
+    },
+    {
+      "key": "component.b5c30a43f61f",
+      "source": "Short factual notes clarify uncertainty, bias, and interpretation.",
+      "value": "Σύντομες πραγματικές σημειώσεις αποσαφηνίζουν την αβεβαιότητα, την προκατάληψη και την ερμηνεία."
+    },
+    {
+      "key": "component.9eee3f2520ec",
+      "source": "short run",
+      "value": "βραχυπρόθεσμα"
+    },
+    {
+      "key": "component.cd5ee6d32c79",
+      "source": "Short summaries keep both sides aligned before moving on.",
+      "value": "Οι σύντομες περιλήψεις διατηρούν και τις δύο πλευρές ευθυγραμμισμένες πριν προχωρήσουν."
+    },
+    {
+      "key": "component.d30f4c170784",
+      "source": "Should a company enter this market?",
+      "value": "Πρέπει μια εταιρεία να εισέλθει σε αυτή την αγορά;"
+    },
+    {
+      "key": "component.46cd61f538a3",
+      "source": "Should I take this job?",
+      "value": "Πρέπει να δεχτώ αυτή τη δουλειά;"
+    },
+    {
+      "key": "component.1ccfd398d4b0",
+      "source": "Show a similar solved case.",
+      "value": "Εμφάνιση παρόμοιας επιλυμένης υπόθεσης."
+    },
+    {
+      "key": "component.ba314d24a638",
+      "source": "Show changes before merging",
+      "value": "Εμφάνιση αλλαγών πριν από τη συγχώνευση"
+    },
+    {
+      "key": "component.18073a08edd8",
+      "source": "Show more uncertainty, anachronism, and source-boundary notes.",
+      "value": "Εμφάνιση περισσότερων σημειώσεων αβεβαιότητας, αναχρονισμού και ορίων πηγών."
+    },
+    {
+      "key": "component.f927d36bbccb",
+      "source": "Show the person's major beliefs at this time, their blind spots, and what they would likely resist understanding.",
+      "value": "Εμφάνιση των κύριων πεποιθήσεων του ατόμου εκείνη την εποχή, των τυφλών σημείων του και τι πιθανότατα θα δυσκολευόταν να κατανοήσει."
+    },
+    {
+      "key": "component.9a2cc71fc80f",
+      "source": "Shuffling the challenge",
+      "value": "Ανακάτεμα της πρόκλησης"
+    },
+    {
+      "key": "component.b731c4a36a3f",
+      "source": "Siege pressure is rising",
+      "value": "Η πίεση της πολιορκίας αυξάνεται"
+    },
+    {
+      "key": "component.2bf03d063535",
+      "source": "Silver rupee",
+      "value": "Ασημένια ρουπία"
+    },
+    {
+      "key": "component.7782e521b837",
+      "source": "Simulation state:",
+      "value": "Κατάσταση προσομοίωσης:"
+    },
+    {
+      "key": "component.3afde4662953",
+      "source": "Sketch the outline, sections, or table before polishing language.",
+      "value": "Σχεδιάστε το περίγραμμα, τις ενότητες ή τον πίνακα πριν βελτιώσετε τη γλώσσα."
+    },
+    {
+      "key": "component.3e6c81f343a2",
+      "source": "Skill being trained",
+      "value": "Δεξιότητα που εκπαιδεύεται"
+    },
+    {
+      "key": "component.e5601a411aad",
+      "source": "Slow down",
+      "value": "Επιβράδυνση"
+    },
+    {
+      "key": "component.88481fc98d2b",
+      "source": "Small nudges arrive before direct explanations.",
+      "value": "Μικρές υποδείξεις εμφανίζονται πριν από άμεσες εξηγήσεις."
+    },
+    {
+      "key": "component.4e6245ea3ddf",
+      "source": "Small reserve in local coin or credit",
+      "value": "Μικρό απόθεμα σε τοπικό νόμισμα ή πίστωση"
+    },
+    {
+      "key": "component.80d2a8d1ff01",
+      "source": "Small silver or copper reserve",
+      "value": "Μικρό απόθεμα σε ασήμι ή χαλκό"
+    },
+    {
+      "key": "component.660ae3f3c3cb",
+      "source": "Small supervised purse",
+      "value": "Μικρό εποπτευόμενο πορτοφόλι"
+    },
+    {
+      "key": "component.18777af6d137",
+      "source": "Socrates was tried and executed in 399 BCE",
+      "value": "Ο Σωκράτης δικάστηκε και εκτελέστηκε το 399 π.Χ."
+    },
+    {
+      "key": "component.aba1434a8b61",
+      "source": "Socratic contract",
+      "value": "Σωκρατικό συμβόλαιο"
+    },
+    {
+      "key": "component.bfac28b8b6c0",
+      "source": "Socratic Instruction",
+      "value": "Σωκρατική διδασκαλία"
+    },
+    {
+      "key": "component.26da7d97a7ba",
+      "source": "Socratic mode",
+      "value": "Σωκρατικός τρόπος"
+    },
+    {
+      "key": "component.687e60d68b03",
+      "source": "Socratic Question Ladder",
+      "value": "Σωκρατική κλίμακα ερωτήσεων"
+    },
+    {
+      "key": "component.2762c36d8393",
+      "source": "Socratic target",
+      "value": "Σωκρατικός στόχος"
+    },
+    {
+      "key": "component.1f0bef28ebb0",
+      "source": "Sogdian among some merchants",
+      "value": "Σογδιανός ανάμεσα σε κάποιους εμπόρους"
+    },
+    {
+      "key": "component.1a9bed8b911d",
+      "source": "Sogdian trader",
+      "value": "Σογδιανός έμπορος"
+    },
+    {
+      "key": "component.123362322dd4",
+      "source": "someone who changed education and faced serious opposition",
+      "value": "κάποιος που άλλαξε την εκπαίδευση και αντιμετώπισε σοβαρή αντίθεση"
+    },
+    {
+      "key": "component.b97348873c90",
+      "source": "Source notes",
+      "value": "Σημειώσεις πηγών"
+    },
+    {
+      "key": "component.9ae0bd32a926",
+      "source": "Sources, confidence, uncertainty, and forbidden quotes.",
+      "value": "Πηγές, εμπιστοσύνη, αβεβαιότητα και απαγορευμένα αποσπάσματα."
+    },
+    {
+      "key": "component.234633855523",
+      "source": "Space exploration, Indian history, algebra...",
+      "value": "Διαστημική εξερεύνηση, ινδική ιστορία, άλγεβρα..."
+    },
+    {
+      "key": "component.ec020737163e",
+      "source": "Sparring partner",
+      "value": "Σύντροφος προπόνησης"
+    },
+    {
+      "key": "component.2e7acac22156",
+      "source": "Specific intent of unnamed participants",
+      "value": "Συγκεκριμένη πρόθεση ανώνυμων συμμετεχόντων"
+    },
+    {
+      "key": "component.d3edf0ff6ce5",
+      "source": "Specific price comparisons vary",
+      "value": "Οι συγκεκριμένες συγκρίσεις τιμών ποικίλλουν"
+    },
+    {
+      "key": "component.88cb2d329aac",
+      "source": "Specific prices vary by evidence and period",
+      "value": "Οι συγκεκριμένες τιμές ποικίλλουν ανάλογα με τα στοιχεία και την περίοδο"
+    },
+    {
+      "key": "component.9b1ded6a8dc1",
+      "source": "Specific private opinions of unnamed residents",
+      "value": "Συγκεκριμένες προσωπικές απόψεις ανώνυμων κατοίκων"
+    },
+    {
+      "key": "component.d3c1b72b26e7",
+      "source": "Specific repair",
+      "value": "Συγκεκριμένη επισκευή"
+    },
+    {
+      "key": "component.ca4ffaf33a74",
+      "source": "Split work into AI-owned, user-owned, and shared moves.",
+      "value": "Χωρίστε την εργασία σε κινήσεις που ανήκουν στην τεχνητή νοημοσύνη, στον χρήστη και σε κοινές κινήσεις."
+    },
+    {
+      "key": "component.292cf95a6473",
+      "source": "Sprint clock",
+      "value": "Χρονόμετρο σπριντ"
+    },
+    {
+      "key": "component.21bc3678d8af",
+      "source": "Sprint running",
+      "value": "Τρέξιμο σπριντ"
+    },
+    {
+      "key": "component.fb9e565113d9",
+      "source": "St Paul's area",
+      "value": "Περιοχή του Αγίου Παύλου"
+    },
+    {
+      "key": "component.082ef68d29be",
+      "source": "St Paul's Cathedral was destroyed",
+      "value": "Ο Καθεδρικός Ναός του Αγίου Παύλου καταστράφηκε"
+    },
+    {
+      "key": "component.d84b0b06fe79",
+      "source": "Stacking the deck",
+      "value": "Στήνοντας το σκηνικό"
+    },
+    {
+      "key": "component.7ae1cbe15e94",
+      "source": "Stage the person, year, room, and relationship.",
+      "value": "Προσδιόρισε το πρόσωπο, το έτος, τον χώρο και τη σχέση."
+    },
+    {
+      "key": "component.f711569ede42",
+      "source": "Standing idle with strange questions during a disaster invites suspicion.",
+      "value": "Η αδράνεια με περίεργες ερωτήσεις κατά τη διάρκεια μιας καταστροφής προκαλεί υποψίες."
+    },
+    {
+      "key": "component.0c424b7d86c2",
+      "source": "Start 10 min",
+      "value": "Έναρξη 10 λεπτών"
+    },
+    {
+      "key": "component.9b9e76c02192",
+      "source": "Start 10-minute sprint",
+      "value": "Έναρξη σπριντ 10 λεπτών"
+    },
+    {
+      "key": "component.11f6c8d9c9f9",
+      "source": "Start a Time Travel expedition. Do not open a generic chat and do not write a broad period summary.",
+      "value": "Ξεκίνα μια αποστολή Ταξιδιού στο Χρόνο. Μην ανοίξεις μια γενική συνομιλία και μην γράψεις μια ευρεία περίληψη της περιόδου."
+    },
+    {
+      "key": "component.6b9d6a34d557",
+      "source": "Start the loop",
+      "value": "Ξεκίνα τον βρόχο"
+    },
+    {
+      "key": "component.e3ad6391f7bf",
+      "source": "Start with a concept, case, argument, decision, or text.",
+      "value": "Ξεκίνα με μια έννοια, μια περίπτωση, ένα επιχείρημα, μια απόφαση ή ένα κείμενο."
+    },
+    {
+      "key": "component.f556c89a8b4d",
+      "source": "Start with a question, not a lecture.",
+      "value": "Ξεκίνα με μια ερώτηση, όχι με διάλεξη."
+    },
+    {
+      "key": "component.ef5156a056b4",
+      "source": "Start with a tiny lesson, one check question, a mastery meter, and wait for my answer before continuing.",
+      "value": "Ξεκίνα με ένα μικρό μάθημα, μια ερώτηση ελέγχου, έναν μετρητή γνώσεων και περίμενε την απάντησή μου πριν συνεχίσεις."
+    },
+    {
+      "key": "component.142d438e5e04",
+      "source": "Start with an era passport, a vivid arrival scene, three choices for what to do next, and a compact timeline log.",
+      "value": "Ξεκίνα με ένα διαβατήριο εποχής, μια ζωντανή σκηνή άφιξης, τρεις επιλογές για το τι να κάνεις στη συνέχεια και ένα συνοπτικό χρονολόγιο."
+    },
+    {
+      "key": "component.c37ca604e2dc",
+      "source": "Start with one specific question or task.",
+      "value": "Ξεκίνα με μία συγκεκριμένη ερώτηση ή εργασία."
+    },
+    {
+      "key": "component.2b7453257f4f",
+      "source": "Starting level",
+      "value": "Επίπεδο εκκίνησης"
+    },
+    {
+      "key": "component.4f5e3c332f19",
+      "source": "State the idea in one sentence so it can be tested.",
+      "value": "Διατύπωσε την ιδέα σε μία πρόταση ώστε να μπορεί να ελεγχθεί."
+    },
+    {
+      "key": "component.c74d4b02e52c",
+      "source": "State your starting idea so the tutor has something to test.",
+      "value": "Διατύπωσε την αρχική σου ιδέα ώστε ο δάσκαλος να έχει κάτι να ελέγξει."
+    },
+    {
+      "key": "component.46e32d8f91f3",
+      "source": "Stateful exploration with consequences and evolving risk.",
+      "value": "Εξερεύνηση με κατάσταση, συνέπειες και εξελισσόμενο ρίσκο."
+    },
+    {
+      "key": "component.f9e0ee67a1d7",
+      "source": "Status follows legal category",
+      "value": "Το καθεστώς ακολουθεί τη νομική κατηγορία"
+    },
+    {
+      "key": "component.ceb551000f2f",
+      "source": "Step by step, brainstorm first, solve together...",
+      "value": "Βήμα προς βήμα, πρώτα καταιγισμός ιδεών, μετά επίλυση μαζί..."
+    },
+    {
+      "key": "component.8adabdb3486e",
+      "source": "Step out of character briefly. Explain the historical context, evidence quality, and uncertainties behind the last exchange.",
+      "value": "Βγες για λίγο από τον ρόλο σου. Εξήγησε το ιστορικό πλαίσιο, την ποιότητα των αποδεικτικών στοιχείων και τις αβεβαιότητες πίσω από την τελευταία ανταλλαγή απόψεων."
+    },
+    {
+      "key": "component.081a9237b493",
+      "source": "Stoa Basileios",
+      "value": "Βασίλειος Στοά"
+    },
+    {
+      "key": "component.4b2fa093d4ce",
+      "source": "Stone dust, wool dye, bells, and sharp political glances under a crowded square.",
+      "value": "Σκόνη πέτρας, βαφή μαλλιού, καμπάνες και αιχμηρά πολιτικά βλέμματα κάτω από μια πολυσύχναστη πλατεία."
+    },
+    {
+      "key": "component.2aca6afb4778",
+      "source": "Stop editing directly for this turn. Give concise advice and one practical next move.",
+      "value": "Σταμάτα την άμεση επεξεργασία για αυτόν τον γύρο. Δώσε συνοπτικές συμβουλές και μία πρακτική επόμενη κίνηση."
+    },
+    {
+      "key": "component.68a76b55a28a",
+      "source": "Stop response",
+      "value": "Διακοπή απόκρισης"
+    },
+    {
+      "key": "component.e01e169ee3c4",
+      "source": "Stopped. Send another message whenever you are ready.",
+      "value": "Διακόπηκε. Στείλε άλλο μήνυμα όποτε είσαι έτοιμος."
+    },
+    {
+      "key": "component.467ff09a3d78",
+      "source": "strategy analyst",
+      "value": "αναλυτής στρατηγικής"
+    },
+    {
+      "key": "component.12c6d113a829",
+      "source": "Strategy room",
+      "value": "Αίθουσα στρατηγικής"
+    },
+    {
+      "key": "component.1e8c49009561",
+      "source": "Street routes are approximate",
+      "value": "Οι διαδρομές στους δρόμους είναι κατά προσέγγιση"
+    },
+    {
+      "key": "component.9a266da321cf",
+      "source": "Street-level life",
+      "value": "Ζωή στο επίπεδο του δρόμου"
+    },
+    {
+      "key": "component.671334a5dc3f",
+      "source": "Strict mode keeps modern knowledge out of the world and applies social consequences sooner.",
+      "value": "Η αυστηρή λειτουργία κρατά τη σύγχρονη γνώση εκτός του κόσμου και εφαρμόζει κοινωνικές συνέπειες νωρίτερα."
+    },
+    {
+      "key": "component.5d20c7acc540",
+      "source": "Strict questioning, minimal explanation.",
+      "value": "Αυστηρή υποβολή ερωτήσεων, ελάχιστη επεξήγηση."
+    },
+    {
+      "key": "component.3468a42615ce",
+      "source": "Strong work.",
+      "value": "Καλή δουλειά."
+    },
+    {
+      "key": "component.9da9de583a66",
+      "source": "Strong writing is a chain of claim, reason, evidence, and consequence. Each sentence should do a job in that chain.",
+      "value": "Η δυνατή γραφή είναι μια αλυσίδα ισχυρισμού, αιτιολογίας, αποδεικτικών στοιχείων και συνεπειών. Κάθε πρόταση πρέπει να επιτελεί έναν ρόλο σε αυτή την αλυσίδα."
+    },
+    {
+      "key": "component.891a3118e913",
+      "source": "Structured operator",
+      "value": "Δομημένος χειριστής"
+    },
+    {
+      "key": "component.bb081145e157",
+      "source": "Student, rival, journalist, citizen...",
+      "value": "Μαθητής, αντίπαλος, δημοσιογράφος, πολίτης..."
+    },
+    {
+      "key": "component.3dc6eae27c61",
+      "source": "Study buddy",
+      "value": "Σύντροφος μελέτης"
+    },
+    {
+      "key": "component.8d961c0c8d91",
+      "source": "Submit my sentence",
+      "value": "Υποβολή της πρότασής μου"
+    },
+    {
+      "key": "component.63e6139fa622",
+      "source": "Submit repair",
+      "value": "Υποβολή διόρθωσης"
+    },
+    {
+      "key": "component.a294528c7533",
+      "source": "Substitute threat",
+      "value": "Υποκατάστατη απειλή"
+    },
+    {
+      "key": "component.f513dc207def",
+      "source": "Substitutes are alternatives like cooking or pickup. Comparing apps is buyer leverage inside the category.",
+      "value": "Τα υποκατάστατα είναι εναλλακτικές λύσεις όπως το μαγείρεμα ή η παραλαβή. Η σύγκριση εφαρμογών αποτελεί μοχλό πίεσης του αγοραστή εντός της κατηγορίας."
+    },
+    {
+      "key": "component.512d13df792b",
+      "source": "Suggest candidates with strong evidence and vivid settings.",
+      "value": "Προτείνετε υποψηφίους με ισχυρά αποδεικτικά στοιχεία και ζωντανά σκηνικά."
+    },
+    {
+      "key": "component.68dfa0817fe0",
+      "source": "Supplier power",
+      "value": "Δύναμη προμηθευτή"
+    },
+    {
+      "key": "component.904290a8efd8",
+      "source": "Supplies and loyalties are strained",
+      "value": "Οι προμήθειες και οι αφοσιώσεις είναι τεταμένες"
+    },
+    {
+      "key": "component.7ca47ca1d959",
+      "source": "Supply capacity",
+      "value": "Ικανότητα προσφοράς"
+    },
+    {
+      "key": "component.fba6cccea3d2",
+      "source": "Supply shifts left and price tends to rise.",
+      "value": "Η προσφορά μετατοπίζεται προς τα αριστερά και η τιμή τείνει να αυξάνεται."
+    },
+    {
+      "key": "component.a2193b649f30",
+      "source": "supportive peer and co-builder",
+      "value": "υποστηρικτικός συνομήλικος και συν-δημιουργός"
+    },
+    {
+      "key": "component.0d21fa45e97f",
+      "source": "Synthesis Locked",
+      "value": "Η σύνθεση είναι κλειδωμένη"
+    },
+    {
+      "key": "component.9477a2cecb7c",
+      "source": "Take the first pass on the shared artifact. Make the structure visible, mark assumptions, and ask me to accept, edit, or reject.",
+      "value": "Κάντε το πρώτο πέρασμα στο κοινόχρηστο τεχνούργημα. Κάντε τη δομή ορατή, επισημάνετε τις υποθέσεις και ζητήστε μου να αποδεχτώ, να επεξεργαστώ ή να απορρίψω."
+    },
+    {
+      "key": "component.968d8ccd3939",
+      "source": "Tang Chang'an is a cosmopolitan imperial capital linked to steppe, Central Asian, and Buddhist networks.",
+      "value": "Η Τσανγκάν της δυναστείας Τανγκ είναι μια κοσμοπολίτικη αυτοκρατορική πρωτεύουσα που συνδέεται με τη στέπα, την Κεντρική Ασία και τα βουδιστικά δίκτυα."
+    },
+    {
+      "key": "component.9430e8ebb24c",
+      "source": "Tang Empire under Emperor Xuanzong",
+      "value": "Η Αυτοκρατορία των Τανγκ υπό τον Αυτοκράτορα Σουανζόνγκ"
+    },
+    {
+      "key": "component.815b9c1f8eaf",
+      "source": "Target input",
+      "value": "Είσοδος στόχου"
+    },
+    {
+      "key": "component.1e8d87abfdd2",
+      "source": "Target: one sentence describing the learning target.",
+      "value": "Στόχος: μία πρόταση που περιγράφει τον μαθησιακό στόχο."
+    },
+    {
+      "key": "component.b91b91417d97",
+      "source": "Task board",
+      "value": "Πίνακας εργασιών"
+    },
+    {
+      "key": "component.b4965316bf71",
+      "source": "Task Board",
+      "value": "Πίνακας Εργασιών"
+    },
+    {
+      "key": "component.db83c6c41bea",
+      "source": "Tavern near the docks",
+      "value": "Ταβέρνα κοντά στις αποβάθρες"
+    },
+    {
+      "key": "component.f5e0b35ab0a4",
+      "source": "Tax or friction",
+      "value": "Φόρος ή τριβή"
+    },
+    {
+      "key": "component.03c0ab897f85",
+      "source": "Teach me financial modeling",
+      "value": "Δίδαξέ με χρηματοοικονομική μοντελοποίηση"
+    },
+    {
+      "key": "component.6d3e7f92132e",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Δίδαξέ με τις Πέντε Δυνάμεις του Πόρτερ"
+    },
+    {
+      "key": "component.1a3b09e25613",
+      "source": "Teach me ratios",
+      "value": "Δίδαξέ με τους δείκτες"
+    },
+    {
+      "key": "component.e691ca1cc2d6",
+      "source": "Teammate log",
+      "value": "Αρχείο καταγραφής συμπαίκτη"
+    },
+    {
+      "key": "component.642847a78523",
+      "source": "Temporal passport",
+      "value": "Χρονικό διαβατήριο"
+    },
+    {
+      "key": "component.894031ed8d34",
+      "source": "Terms and Conditions",
+      "value": "Όροι και Προϋποθέσεις"
+    },
+    {
+      "key": "component.1f5fb2d7968f",
+      "source": "That catches the revenue movement, but misses the margin and cash timing links. Sales alone do not prove cash flow improved.",
+      "value": "Αυτό αποτυπώνει την κίνηση των εσόδων, αλλά χάνει τις συνδέσεις με το περιθώριο κέρδους και τον χρονισμό των ταμειακών ροών. Οι πωλήσεις από μόνες τους δεν αποδεικνύουν ότι βελτιώθηκαν οι ταμειακές ροές."
+    },
+    {
+      "key": "component.e09b451125fe",
+      "source": "That may hide the symptom, but it does not teach you where the data flow broke.",
+      "value": "Αυτό μπορεί να κρύψει το σύμπτωμα, αλλά δεν σας διδάσκει πού διακόπηκε η ροή δεδομένων."
+    },
+    {
+      "key": "component.8702e66c501a",
+      "source": "The assistant must identify known facts before simulating",
+      "value": "Ο βοηθός πρέπει να εντοπίσει τα γνωστά γεγονότα πριν από την προσομοίωση"
+    },
+    {
+      "key": "component.3d7ec899f5c7",
+      "source": "The Athenian agora was a civic center",
+      "value": "Η αθηναϊκή αγορά ήταν ένα αστικό κέντρο"
+    },
+    {
+      "key": "component.d2acbb41caee",
+      "source": "The Bastille fell on 14 July 1789",
+      "value": "Η Βαστίλη έπεσε στις 14 Ιουλίου 1789"
+    },
+    {
+      "key": "component.fe8b62f4c6f7",
+      "source": "The explanation that links evidence back to the claim.",
+      "value": "Η εξήγηση που συνδέει τα αποδεικτικά στοιχεία με τον ισχυρισμό."
+    },
+    {
+      "key": "component.4f3c6c46372c",
+      "source": "The final summary waits until you have done real thinking.",
+      "value": "Η τελική σύνοψη περιμένει μέχρι να έχετε κάνει πραγματική σκέψη."
+    },
+    {
+      "key": "component.170a298af4bb",
+      "source": "The first scene should become concrete only after the destination is resolved.",
+      "value": "Η πρώτη σκηνή πρέπει να γίνει συγκεκριμένη μόνο αφού επιλυθεί ο προορισμός."
+    },
+    {
+      "key": "component.dda3745f7c3f",
+      "source": "The Great Fire began in 1666",
+      "value": "Η Μεγάλη Πυρκαγιά ξεκίνησε το 1666"
+    },
+    {
+      "key": "component.7848d16b1941",
+      "source": "The Indian Rebellion of 1857 has made Delhi a contested imperial and military space.",
+      "value": "Η Ινδική Εξέγερση του 1857 μετέτρεψε το Δελχί σε έναν αμφισβητούμενο αυτοκρατορικό και στρατιωτικό χώρο."
+    },
+    {
+      "key": "component.791488b22528",
+      "source": "The learner can connect a variable change to an outcome.",
+      "value": "Ο εκπαιδευόμενος μπορεί να συνδέσει μια μεταβολή μεταβλητής με ένα αποτέλεσμα."
+    },
+    {
+      "key": "component.e8e1ab2cb31d",
+      "source": "The learner can explain the key link in their own words.",
+      "value": "Ο εκπαιδευόμενος μπορεί να εξηγήσει τον βασικό σύνδεσμο με δικά του λόγια."
+    },
+    {
+      "key": "component.41dbc5b54014",
+      "source": "The learner can identify and fix the misconception.",
+      "value": "Ο εκπαιδευόμενος μπορεί να εντοπίσει και να διορθώσει την παρανόηση."
+    },
+    {
+      "key": "component.cf756f58116b",
+      "source": "The learner can make a first prediction.",
+      "value": "Ο εκπαιδευόμενος μπορεί να κάνει μια πρώτη πρόβλεψη."
+    },
+    {
+      "key": "component.06a1b27fe4f6",
+      "source": "The learner demonstrates transfer.",
+      "value": "Ο εκπαιδευόμενος επιδεικνύει μεταφορά γνώσης."
+    },
+    {
+      "key": "component.8a807bf79ab9",
+      "source": "The learner explains it back in their own words.",
+      "value": "Ο εκπαιδευόμενος το εξηγεί πίσω με δικά του λόγια."
+    },
+    {
+      "key": "component.9d8ad585667c",
+      "source": "The longest sentence, because shorter is always stronger.",
+      "value": "Η μεγαλύτερη πρόταση, επειδή η συντομότερη είναι πάντα πιο δυνατή."
+    },
+    {
+      "key": "component.7e2e56647be9",
+      "source": "The person should not know future events unless you explicitly open modern confrontation.",
+      "value": "Το άτομο δεν πρέπει να γνωρίζει μελλοντικά γεγονότα, εκτός εάν ανοίξετε ρητά μια σύγχρονη αντιπαράθεση."
+    },
+    {
+      "key": "component.f0fd6cd67e39",
+      "source": "The question path starts now.",
+      "value": "Η διαδρομή της ερώτησης ξεκινά τώρα."
+    },
+    {
+      "key": "component.a2bd49b45f3d",
+      "source": "The Roman Empire under Trajan's final year depends on ports, credit, labor, and imperial logistics.",
+      "value": "Η Ρωμαϊκή Αυτοκρατορία κατά το τελευταίο έτος του Τραϊανού εξαρτάται από λιμάνια, πίστωση, εργασία και αυτοκρατορική εφοδιαστική."
+    },
+    {
+      "key": "component.f476ed3acdff",
+      "source": "The scene is being established by the dossier.",
+      "value": "Η σκηνή καθορίζεται από τον φάκελο."
+    },
+    {
+      "key": "component.4d51e9042d90",
+      "source": "The simulation will prioritize different people, risks, objects, and explanations.",
+      "value": "Η προσομοίωση θα δώσει προτεραιότητα σε διαφορετικά άτομα, κινδύνους, αντικείμενα και εξηγήσεις."
+    },
+    {
+      "key": "component.f8c2de640fab",
+      "source": "The title, because every weak paragraph has a weak title.",
+      "value": "Ο τίτλος, επειδή κάθε αδύναμη παράγραφος έχει έναν αδύναμο τίτλο."
+    },
+    {
+      "key": "component.4623da54a0a9",
+      "source": "The Travel Designer should resolve this intent into a specific historical place, date, and political moment before arrival.",
+      "value": "Ο Σχεδιαστής Ταξιδιών πρέπει να επιλύσει αυτή την πρόθεση σε μια συγκεκριμένη ιστορική τοποθεσία, ημερομηνία και πολιτική στιγμή πριν από την άφιξη."
+    },
+    {
+      "key": "component.e30ca6ff4334",
+      "source": "The version of a person matters more than the name.",
+      "value": "Η εκδοχή ενός ατόμου έχει μεγαλύτερη σημασία από το όνομα."
+    },
+    {
+      "key": "component.21b15b46e5b8",
+      "source": "The West Market hosted long-distance trade",
+      "value": "Η Δυτική Αγορά φιλοξενούσε εμπόριο μεγάλων αποστάσεων"
+    },
+    {
+      "key": "component.68b4b19c0766",
+      "source": "Thinking map",
+      "value": "Χάρτης σκέψης"
+    },
+    {
+      "key": "component.7a4d98aa3cd3",
+      "source": "Thinking target",
+      "value": "Στόχος σκέψης"
+    },
+    {
+      "key": "component.8f2396f4c96a",
+      "source": "This is the evidence checkpoint. You advance only by showing the skill.",
+      "value": "Αυτό είναι το σημείο ελέγχου αποδεικτικών στοιχείων. Προχωράτε μόνο επιδεικνύοντας την ικανότητα."
+    },
+    {
+      "key": "component.9096eabdd4d6",
+      "source": "This lets you explain why a model moves instead of just copying formulas.",
+      "value": "Αυτό σας επιτρέπει να εξηγήσετε γιατί ένα μοντέλο κινείται αντί να αντιγράφετε απλώς τύπους."
+    },
+    {
+      "key": "component.2347008c82bd",
+      "source": "Threat of substitutes",
+      "value": "Απειλή υποκατάστατων"
+    },
+    {
+      "key": "component.6f38f52d9c52",
+      "source": "Time slice",
+      "value": "Χρονικό τμήμα"
+    },
+    {
+      "key": "component.04bb104a9e9b",
+      "source": "Time slice required",
+      "value": "Απαιτείται χρονικό τμήμα"
+    },
+    {
+      "key": "component.d107ef10266d",
+      "source": "Time slice: not chosen yet. If a specific person is named, offer 4 to 5 historically meaningful versions of this person before any in-character dialogue. Explain how each version changes the worldview, stakes, and setting.",
+      "value": "Χρονικό τμήμα: δεν έχει επιλεγεί ακόμα. Εάν κατονομάζεται συγκεκριμένο άτομο, προσφέρετε 4 έως 5 ιστορικά σημαντικές εκδοχές αυτού του ατόμου πριν από οποιονδήποτε διάλογο εντός χαρακτήρα. Εξηγήστε πώς κάθε εκδοχή αλλάζει την κοσμοθεωρία, τα διακυβεύματα και το σκηνικό."
+    },
+    {
+      "key": "component.ddbe343f845c",
+      "source": "Time Travel Console",
+      "value": "Κονσόλα Ταξιδιού στο Χρόνο"
+    },
+    {
+      "key": "component.8f6171fc6ace",
+      "source": "Timeline Log",
+      "value": "Αρχείο καταγραφής χρονολογίου"
+    },
+    {
+      "key": "component.a03a44a893eb",
+      "source": "Timeline so far",
+      "value": "Χρονολόγιο μέχρι στιγμής"
+    },
+    {
+      "key": "component.fcf34335919b",
+      "source": "Titles matter, but this clue points to reasoning inside the paragraph.",
+      "value": "Οι τίτλοι έχουν σημασία, αλλά αυτό το στοιχείο υποδεικνύει τη συλλογιστική μέσα στην παράγραφο."
+    },
+    {
+      "key": "component.7106eda1bee9",
+      "source": "To be resolved",
+      "value": "Προς επίλυση"
+    },
+    {
+      "key": "component.1f1bdf16e6c7",
+      "source": "Tokyo in 2120",
+      "value": "Το Τόκιο το 2120"
+    },
+    {
+      "key": "component.ad110d0cf8a4",
+      "source": "Topic or question",
+      "value": "Θέμα ή ερώτηση"
+    },
+    {
+      "key": "component.926364936c28",
+      "source": "tough critic and editor",
+      "value": "αυστηρός κριτικός και επιμελητής"
+    },
+    {
+      "key": "component.36975a502081",
+      "source": "Trace a trade route on the map",
+      "value": "Εντοπίστε μια εμπορική διαδρομή στον χάρτη"
+    },
+    {
+      "key": "component.c6d3da081bdd",
+      "source": "trace cause and effect in code",
+      "value": "εντοπίστε την αιτία και το αποτέλεσμα στον κώδικα"
+    },
+    {
+      "key": "component.2f18f5776cc7",
+      "source": "Trace depth",
+      "value": "Βάθος ίχνους"
+    },
+    {
+      "key": "component.b6254d0fed3a",
+      "source": "Track accepted changes, rejected changes, and the next edit.",
+      "value": "Παρακολουθήστε τις αποδεκτές αλλαγές, τις απορριφθείσες αλλαγές και την επόμενη επεξεργασία."
+    },
+    {
+      "key": "component.30fbe484599f",
+      "source": "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
+      "value": "Παρακολουθήστε τις αποφάσεις και τις ανοιχτές ερωτήσεις. Διατηρήστε τη φωνή μου στις εργασίες γραφής. Κάντε το πολύ μία πρακτική ερώτηση εάν λείπει το πλαίσιο."
+    },
+    {
+      "key": "component.20369d07cf56",
+      "source": "Trade phrases plus household vocabulary",
+      "value": "Εμπορικές φράσεις συν οικιακό λεξιλόγιο"
+    }
+  ]
+}

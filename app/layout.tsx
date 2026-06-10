@@ -19,6 +19,7 @@ import {
   webApplicationJsonLd,
   websiteJsonLd,
 } from "@/lib/seo/json-ld";
+import { getRequestLanguageConfig } from "@/lib/i18n/request-locale";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -117,13 +118,14 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const languageConfig = await getRequestLanguageConfig();
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang={languageConfig.locale} dir={languageConfig.dir} className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-[#171614] text-white">
         <JsonLdScripts items={rootJsonLd} />
         {children}

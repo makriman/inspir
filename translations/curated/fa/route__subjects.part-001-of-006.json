@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Persian",
+  "locale": "fa",
+  "namespace": "route:subjects",
+  "sourceHash": "480251a76b7ac147108b72d0c9732342b12c95b2a5fb1bc33af0ca23f8e5d014",
+  "part": {
+    "index": 1,
+    "total": 6
+  },
+  "entries": [
+    {
+      "key": "site.c737278d536db3a59e",
+      "source": "{value1} | inspir",
+      "value": "{value1} در inspir"
+    },
+    {
+      "key": "site.525096e97c272a4bd5",
+      "source": "{value1} by inspir",
+      "value": "{value1} از inspir"
+    },
+    {
+      "key": "site.c9593802fe019f3165",
+      "source": "{value1} FAQ",
+      "value": "پرسش‌های متداول {value1}"
+    },
+    {
+      "key": "site.4218dd4eb711dc6b32",
+      "source": "{value1} learning jobs",
+      "value": "کارهای یادگیری {value1}"
+    },
+    {
+      "key": "site.1adeefc9962379963a",
+      "source": "{value1} public mode entrypoints",
+      "value": "ورودی‌های حالت عمومی {value1}"
+    },
+    {
+      "key": "site.c6a0698369a8945180",
+      "source": "{value1} related guides",
+      "value": "راهنماهای مرتبط {value1}"
+    },
+    {
+      "key": "site.c6d8180abdab526769",
+      "source": "{value1} starter prompts",
+      "value": "پرامپت‌های شروع {value1}"
+    },
+    {
+      "key": "site.6026908b0f9167a4d2",
+      "source": "{value1} subject hubs",
+      "value": "هاب‌های موضوعی {value1}"
+    },
+    {
+      "key": "site.1d3641443de0df089b",
+      "source": "{value1}: {value2}",
+      "value": "{value1}: {value2}"
+    },
+    {
+      "key": "site.8270bbbae0970dc932",
+      "source": "10 MCQs on any topic with a score",
+      "value": "۱۰ سوال چهارگزینه‌ای در هر موضوعی همراه با نمره"
+    },
+    {
+      "key": "site.be9d3367b7e6c7dcfb",
+      "source": "A generic answer can make a worksheet look finished while leaving the misconception untouched. The math route links hints, step checks, Socratic questions, quizzes, and flashcards into one learning loop.",
+      "value": "یک پاسخ کلی می‌تواند برگه تمرین را تمام‌شده نشان دهد، در حالی که برداشت نادرست دست‌نخورده می‌ماند. مسیر ریاضی، راهنمایی‌ها، بررسی گام‌ها، پرسش‌های سقراطی، آزمون‌ها و فلش‌کارت‌ها را در یک چرخه یادگیری به هم وصل می‌کند."
+    },
+    {
+      "key": "site.293efcb73e2cdd9886",
+      "source": "A guided reasoning chamber for disciplined questioning",
+      "value": "اتاق استدلال هدایت‌شده برای پرسشگری نظام‌مند"
+    },
+    {
+      "key": "site.656a120c3cef3e1730",
+      "source": "Accountability Partner",
+      "value": "شریک پاسخگویی"
+    },
+    {
+      "key": "site.b484114207a28812a8",
+      "source": "Act as an intelligent collaborator in a shared workroom, helping the user learn, think, and produce through visible shared work.",
+      "value": "به‌عنوان همکاری هوشمند در یک اتاق کار مشترک عمل کن و به کاربر کمک کن از راه کار مشترک قابل مشاهده یاد بگیرد، فکر کند و تولید کند."
+    },
+    {
+      "key": "site.5297eaca5251bfeb03",
+      "source": "Active Learning",
+      "value": "یادگیری فعال"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "یادآوریِ فعال"
+    },
+    {
+      "key": "site.9d3c8506ef510c151d",
+      "source": "Adaptive lessons that make you do",
+      "value": "درس‌های تطبیقی که شما را به عمل وامی‌دارند"
+    },
+    {
+      "key": "site.d61a66c51f682dcb84",
+      "source": "Add nodes, test relationships, find gaps, and revise the map.",
+      "value": "گره‌ها را اضافه کنید، رابطه‌ها را بیازمایید، شکاف‌ها را پیدا کنید و نقشه را بازبینی کنید."
+    },
+    {
+      "key": "site.7b951c0ab5479c1615",
+      "source": "Add your next edit, decision, question, or handoff",
+      "value": "ویرایش، تصمیم، سوال یا انتقال بعدی خود را اضافه کنید"
+    },
+    {
+      "key": "site.badffd4897cc89d905",
+      "source": "Adjust audio and pair it with a realistic work block.",
+      "value": "صدا را تنظیم کنید و آن را با یک بلوک کاری واقع‌بینانه همراه کنید."
+    },
+    {
+      "key": "site.9b5fe90fbbcef2909b",
+      "source": "Adjust sound choice and pair it with a focus block.",
+      "value": "انتخاب صدا را تنظیم کنید و آن را با یک بلوک تمرکز همراه کنید."
+    },
+    {
+      "key": "site.761806a78bc96d1e13",
+      "source": "After every learner answer, identify the claim, reasoning, assumptions, gaps, contradictions, or corrected insight. Give one brief read of their answer, update the reasoning map with concise labels, then ask exactly one next-best question.",
+      "value": "پس از هر پاسخ یادگیرنده، ادعا، استدلال، فرض‌ها، شکاف‌ها، تناقض‌ها یا بینش اصلاح‌شده را شناسایی کن. یک خوانش کوتاه از پاسخ او بده، نقشه استدلال را با برچسب‌های کوتاه به‌روز کن، سپس دقیقا یک سوال بعدیِ بهترین بپرس."
+    },
+    {
+      "key": "site.dca13a86f6c6a345c3",
+      "source": "AI algebra tutor",
+      "value": "معلم هوش مصنوعی جبر"
+    },
+    {
+      "key": "site.0456e630dff070eaed",
+      "source": "AI calculus help",
+      "value": "کمک حسابان با هوش مصنوعی"
+    },
+    {
+      "key": "site.8438f854213c85aee7",
+      "source": "AI code tutor",
+      "value": "معلم هوش مصنوعی کدنویسی"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI Code Tutor"
+    },
+    {
+      "key": "site.3cb4844d9bc6e7d22a",
+      "source": "AI code tutoring for people who want to build and understand.",
+      "value": "تدریس کدنویسی با هوش مصنوعی برای کسانی که می‌خواهند بسازند و بفهمند."
+    },
+    {
+      "key": "site.db3f2ff82684ae5482",
+      "source": "AI coding help for beginners",
+      "value": "کمک کدنویسی با هوش مصنوعی برای مبتدیان"
+    },
+    {
+      "key": "site.b05b106f2f4cc171db",
+      "source": "AI data interpreter",
+      "value": "مفسر داده با هوش مصنوعی"
+    },
+    {
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "تمرین مناظره با هوش مصنوعی"
+    },
+    {
+      "key": "site.48efe6c9f27d314dfe",
+      "source": "AI essay feedback",
+      "value": "بازخورد مقاله با هوش مصنوعی"
+    },
+    {
+      "key": "site.27b9521837b6f0588a",
+      "source": "AI essay feedback for homework",
+      "value": "بازخورد مقاله با هوش مصنوعی برای تکلیف"
+    },
+    {
+      "key": "site.77f6c1fadefabbdea4",
+      "source": "AI exam prep planner",
+      "value": "برنامه‌ریز آمادگی امتحان با هوش مصنوعی"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI Exam Prep Planner"
+    },
+    {
+      "key": "site.5e2b28168f6ce0914b",
+      "source": "AI exam prep that turns stress into a study loop.",
+      "value": "آمادگی امتحان با هوش مصنوعی که استرس را به چرخه مطالعه تبدیل می‌کند."
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "فلش‌کارت‌های هوش مصنوعی برای مرور"
+    },
+    {
+      "key": "site.56f848e0f9e7bbad77",
+      "source": "AI Help",
+      "value": "کمک هوش مصنوعی"
+    },
+    {
+      "key": "site.feb988696cd145ec2b",
+      "source": "AI history learning that makes context feel alive.",
+      "value": "یادگیری تاریخ با هوش مصنوعی که زمینه را زنده حس می‌کند."
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "معلم تاریخ با هوش مصنوعی"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI History Tutor"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "مربی تکلیف با هوش مصنوعی"
+    },
+    {
+      "key": "site.336472612840bbcc95",
+      "source": "AI homework help that keeps the learning honest.",
+      "value": "کمک تکلیف با هوش مصنوعی که یادگیری را صادقانه نگه می‌دارد."
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "کمک هوش مصنوعی برای تکلیف بدون تقلب"
+    },
+    {
+      "key": "site.3d3f1221e1d276649c",
+      "source": "AI homework helper",
+      "value": "کمک‌یار تکلیف با هوش مصنوعی"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI Homework Helper"
+    },
+    {
+      "key": "site.7817d99167cca36454",
+      "source": "AI in classrooms",
+      "value": "هوش مصنوعی در کلاس‌های درس"
+    },
+    {
+      "key": "site.631d80aada8b745e0b",
+      "source": "AI math homework helper",
+      "value": "کمک‌یار تکلیف ریاضی با هوش مصنوعی"
+    },
+    {
+      "key": "site.0f50523d01f07dcc9f",
+      "source": "AI math tutor",
+      "value": "معلم ریاضی با هوش مصنوعی"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI Math Tutor"
+    },
+    {
+      "key": "site.bcc3ba68c52994e11d",
+      "source": "AI math tutoring that works one step at a time.",
+      "value": "تدریس ریاضی با هوش مصنوعی که هر بار یک گام پیش می‌رود."
+    },
+    {
+      "key": "site.18dc8650a030a32f32",
+      "source": "AI philosophy tutor",
+      "value": "معلم فلسفه با هوش مصنوعی"
+    },
+    {
+      "key": "site.a42eb88ba8699b253b",
+      "source": "AI programming tutor",
+      "value": "معلم برنامه‌نویسی با هوش مصنوعی"
+    },
+    {
+      "key": "site.82f5060cbe4022e48c",
+      "source": "AI project coach",
+      "value": "مربی پروژه با هوش مصنوعی"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "سازنده آزمونک امتحانی با هوش مصنوعی"
+    },
+    {
+      "key": "site.8a05e944f9f9301cc4",
+      "source": "AI reading companion",
+      "value": "همراه خواندن با هوش مصنوعی"
+    },
+    {
+      "key": "site.147276b9b05c69d773",
+      "source": "AI source critic",
+      "value": "منتقد منبع با هوش مصنوعی"
+    },
+    {
+      "key": "site.751bdd7ceaaff7757b",
+      "source": "AI spaced repetition",
+      "value": "تکرار فاصله‌دار با هوش مصنوعی"
+    },
+    {
+      "key": "site.e513ef34abebeb05eb",
+      "source": "AI speaking practice",
+      "value": "تمرین گفتاری با هوش مصنوعی"
+    },
+    {
+      "key": "site.5fdc6d116779bcc747",
+      "source": "AI study plan builder",
+      "value": "سازنده برنامه مطالعه با هوش مصنوعی"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "برنامه مطالعه با هوش مصنوعی"
+    },
+    {
+      "key": "site.477e2a79088d5ae457",
+      "source": "AI subject tutor hub",
+      "value": "هاب معلم موضوعی با هوش مصنوعی"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "یادگیری سفر در زمان با هوش مصنوعی"
+    },
+    {
+      "key": "site.fa0d1873c6334d23a9",
+      "source": "AI tutor subject pages",
+      "value": "صفحه‌های موضوعی معلم هوش مصنوعی"
+    },
+    {
+      "key": "site.9b4429dbc7884cf6c6",
+      "source": "AI tutor subject search intents",
+      "value": "نیت‌های جست‌وجوی موضوعی معلم هوش مصنوعی"
+    },
+    {
+      "key": "site.61c71671ec2bf9ba70",
+      "source": "AI Tutors by Subject",
+      "value": "معلم‌های هوش مصنوعی بر اساس موضوع"
+    },
+    {
+      "key": "site.31444a93f76f5b5dde",
+      "source": "AI Tutors by Subject | inspir",
+      "value": "معلم‌های هوش مصنوعی بر اساس موضوع | inspir"
+    },
+    {
+      "key": "site.091300c3d98249ae31",
+      "source": "AI writing coach",
+      "value": "مربی نوشتن با هوش مصنوعی"
+    },
+    {
+      "key": "site.b4d70b8a29130d4dfc",
+      "source": "AI writing feedback that keeps your voice intact.",
+      "value": "بازخورد نوشتاری با هوش مصنوعی که صدای شما را حفظ می‌کند."
+    },
+    {
+      "key": "site.bf133915e9402e77df",
+      "source": "AI writing tutor",
+      "value": "معلم نوشتن با هوش مصنوعی"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI Writing Tutor"
+    },
+    {
+      "key": "site.5cb48f858250c1b226",
+      "source": "ai-learning-platform, ai-study-platform",
+      "value": "پلتفرم یادگیری با هوش مصنوعی، پلتفرم مطالعه با هوش مصنوعی"
+    },
+    {
+      "key": "site.1c56d2d141ea93a984",
+      "source": "ambient sounds",
+      "value": "صداهای محیطی"
+    },
+    {
+      "key": "site.0bb179274b1375c2c7",
+      "source": "Ambient Sounds",
+      "value": "صداهای محیطی"
+    },
+    {
+      "key": "site.25bc96295797b5371a",
+      "source": "Analytics",
+      "value": "تحلیل‌ها"
+    },
+    {
+      "key": "site.630dff24d48bbe9e5f",
+      "source": "Analyze a chart from my textbook",
+      "value": "تحلیل یک جدول از کتاب درسی من"
+    },
+    {
+      "key": "site.f3d82372406438fc15",
+      "source": "Animal testing",
+      "value": "آزمایش روی حیوانات"
+    },
+    {
+      "key": "site.4a562a9b337e6bcf7b",
+      "source": "Answer the active question in your own words",
+      "value": "به پرسش فعال با کلمات خودتان پاسخ دهید"
+    },
+    {
+      "key": "site.24631ae56fdf2458b4",
+      "source": "Answer the learner directly, then offer two possible paths: simpler foundations or deeper exploration.",
+      "value": "مستقیما به یادگیرنده پاسخ دهید، سپس دو مسیر ممکن پیشنهاد کنید: پایه‌های ساده‌تر یا کاوش عمیق‌تر."
+    },
+    {
+      "key": "site.20ced4ef6a389a9b24",
+      "source": "Are quizzes and flashcards included?",
+      "value": "آیا آزمون‌ها و فلش‌کارت‌ها هم شامل می‌شوند؟"
+    },
+    {
+      "key": "site.29b5f9195c5f3a2420",
+      "source": "Are subject hubs indexable?",
+      "value": "آیا هاب‌های موضوعی قابل نمایه‌سازی هستند؟"
+    },
+    {
+      "key": "site.5724fa519df604c68f",
+      "source": "Argue both sides and sharpen thinking",
+      "value": "از هر دو طرف بحث کنید و تفکر خود را تقویت کنید"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "استدلال"
+    },
+    {
+      "key": "site.59e0b5e990e4abcd08",
+      "source": "Art Appreciation Guide",
+      "value": "راهنمای درک هنر"
+    },
+    {
+      "key": "site.8cf49371813924ee9b",
+      "source": "Ask a teacher for help",
+      "value": "درخواست کمک از معلم"
+    },
+    {
+      "key": "site.f3596efe3970f77e47",
+      "source": "Ask about goals, deadlines, available time, and current confidence.",
+      "value": "درباره هدف‌ها، ضرب‌الاجل‌ها، زمان در دسترس و اعتمادبه‌نفس فعلی بپرسید."
+    },
+    {
+      "key": "site.d5e602864e9aae0c25",
+      "source": "Ask Ambedkar about democracy",
+      "value": "پرسش از آمبدکار درباره دموکراسی"
+    },
+    {
+      "key": "site.537d2b3dc7097b9871",
+      "source": "Ask audience, metric, risks, and how to include improvement.",
+      "value": "مخاطب، معیار، ریسک‌ها و روش گنجاندن بهبود را بپرسید."
+    },
+    {
+      "key": "site.593e3dc443e37d29dd",
+      "source": "Ask Code Tutor for the simplest mental model, one example, and one thing beginners often misunderstand.",
+      "value": "از Code Tutor ساده‌ترین مدل ذهنی، یک مثال و یک چیزی را که مبتدی‌ها اغلب بد می‌فهمند بخواهید."
+    },
+    {
+      "key": "site.04e52aeabc0b08909c",
+      "source": "Ask current routine, target habit, and easiest daily version.",
+      "value": "روتین فعلی، عادت هدف و آسان‌ترین نسخه روزانه را بپرسید."
+    },
+    {
+      "key": "site.7ab7c687e52242e47a",
+      "source": "Ask follow-ups, evaluate accuracy and confidence, correct gaps, and retry.",
+      "value": "پیگیری بپرسید، دقت و اعتمادبه‌نفس را ارزیابی کنید، شکاف‌ها را اصلاح کنید و دوباره تلاش کنید."
+    },
+    {
+      "key": "site.feee317d205f8a0e0e",
+      "source": "Ask for a hint, question, or step check before the answer.",
+      "value": "پیش از پاسخ، یک راهنمایی، سوال یا بررسی گام بخواهید."
+    },
+    {
+      "key": "site.285ea4c174d1520547",
+      "source": "Ask for a topic, level, or word list; then introduce a small set.",
+      "value": "موضوع، سطح یا فهرست واژه‌ها را بخواهید؛ سپس یک مجموعه کوچک معرفی کنید."
+    },
+    {
+      "key": "site.427fb050d7dc2dc514",
+      "source": "Ask for artwork/style or provide a looking framework.",
+      "value": "اثر هنری/سبک را بخواهید یا چارچوبی برای نگاه کردن بدهید."
+    },
+    {
+      "key": "site.6e665f7600e0c89537",
+      "source": "Ask for assignment names, due dates, effort, and current status.",
+      "value": "نام تکلیف‌ها، موعد تحویل، میزان تلاش و وضعیت فعلی را بخواهید."
+    },
+    {
+      "key": "site.084423923bd784bb4d",
+      "source": "Ask for audience, goal, and draft status if unclear; then give focused feedback.",
+      "value": "اگر نامشخص است، مخاطب، هدف و وضعیت پیش‌نویس را بپرسید؛ سپس بازخورد متمرکز بدهید."
+    },
+    {
+      "key": "site.0e2b6597354136d2cf",
+      "source": "Ask for author, title, date, publisher, URL, and access date when needed.",
+      "value": "در صورت نیاز نویسنده، عنوان، تاریخ، ناشر، URL و تاریخ دسترسی را بخواهید."
+    },
+    {
+      "key": "site.119b48cd9bad369d89",
+      "source": "Ask for available time, must-do tasks, and energy level.",
+      "value": "زمان در دسترس، کارهای ضروری و سطح انرژی را بخواهید."
+    },
+    {
+      "key": "site.a6b51d42cf02c49b7d",
+      "source": "Ask for commitment, partner/context, check-in frequency, and proof.",
+      "value": "تعهد، شریک/زمینه، بسامد پیگیری و مدرک انجام را بخواهید."
+    },
+    {
+      "key": "site.2d392770c0b100f840",
+      "source": "Ask for domain and difficulty, then set the case brief and first decision.",
+      "value": "حوزه و دشواری را بخواهید، سپس خلاصه مورد و تصمیم اول را تعیین کنید."
+    },
+    {
+      "key": "site.a98ced627266f72c48",
+      "source": "Ask for event and depth, then separate background causes from immediate triggers.",
+      "value": "رویداد و عمق را بخواهید، سپس علت‌های زمینه‌ای را از محرک‌های فوری جدا کنید."
+    },
+    {
+      "key": "site.0471a9c6156fd1be0c",
+      "source": "Ask for exam date, syllabus, available time, and confidence by topic.",
+      "value": "تاریخ امتحان، سرفصل، زمان در دسترس و اعتمادبه‌نفس هر موضوع را بخواهید."
+    },
+    {
+      "key": "site.b8b85519e2e1a47fc9",
+      "source": "Ask for format, time limit, and audience; then begin a practice round.",
+      "value": "قالب، محدودیت زمان و مخاطب را بخواهید؛ سپس یک دور تمرین را شروع کنید."
+    },
+    {
+      "key": "site.98db5f82ec3a2af323",
+      "source": "Ask for goal, constraints, and desired vibe; then offer a varied idea set.",
+      "value": "هدف، محدودیت‌ها و حال‌وهوای دلخواه را بخواهید؛ سپس مجموعه‌ای متنوع از ایده‌ها پیشنهاد کنید."
+    },
+    {
+      "key": "site.963106b4f414d94e70",
+      "source": "Ask for goal, timeline, tasks, and what counts as real progress.",
+      "value": "هدف، خط زمانی، کارها و آنچه پیشرفت واقعی محسوب می‌شود را بخواهید."
+    },
+    {
+      "key": "site.e62b9ae3a1c383622b",
+      "source": "Ask for grading scale, weights, current scores, and target.",
+      "value": "مقیاس نمره‌دهی، وزن‌ها، نمره‌های فعلی و هدف را بخواهید."
+    },
+    {
+      "key": "site.7bc9a6a4e0eb9f0b3e",
+      "source": "Ask for group size, goal, duration, and check-in cadence.",
+      "value": "اندازه گروه، هدف، مدت و آهنگ پیگیری را بخواهید."
+    },
+    {
+      "key": "site.8da5e289a4d94213bf",
+      "source": "Ask for language, goal, and code/error if relevant.",
+      "value": "زبان، هدف و در صورت ارتباط کد/خطا را بخواهید."
+    },
+    {
+      "key": "site.a510b85398e6ed0fb1",
+      "source": "Ask for language, learner level, and scenario; then start in character.",
+      "value": "زبان، سطح یادگیرنده و سناریو را بخواهید؛ سپس در نقش شروع کنید."
+    },
+    {
+      "key": "site.46b04eed1ce5b240d0",
+      "source": "Ask for material, deadline, and prior confidence.",
+      "value": "ماده آموزشی، ضرب‌الاجل و اعتمادبه‌نفس قبلی را بخواهید."
+    },
+    {
+      "key": "site.d0357c5394e2321895",
+      "source": "Ask for one revision priority, not a finished replacement.",
+      "value": "یک اولویت بازبینی بخواهید، نه جایگزین کامل."
+    },
+    {
+      "key": "site.315bb1251ce7e3b500",
+      "source": "Ask for outcome, duration, distractions, and starting state.",
+      "value": "نتیجه، مدت، حواس‌پرتی‌ها و وضعیت شروع را بخواهید."
+    },
+    {
+      "key": "site.05e25251a393a3e9c2",
+      "source": "Ask for peer feedback",
+      "value": "درخواست بازخورد از هم‌کلاسی‌ها"
+    },
+    {
+      "key": "site.e5efa3b02f4022b1bc",
+      "source": "Ask for place or theme, then orient with location, scale, and key features.",
+      "value": "مکان یا درون‌مایه را بخواهید، سپس با موقعیت، مقیاس و ویژگی‌های کلیدی جهت‌دهی کنید."
+    },
+    {
+      "key": "site.f7b5131ac12cc08b60",
+      "source": "Ask for research goal, level, and available sources.",
+      "value": "هدف پژوهش، سطح و منابع در دسترس را بخواهید."
+    },
+    {
+      "key": "site.2afb2438829f1297ed",
+      "source": "Ask for role, audience, and background; then run a first question.",
+      "value": "نقش، مخاطب و پیش‌زمینه را بخواهید؛ سپس سوال اول را اجرا کنید."
+    },
+    {
+      "key": "site.11f2bfb8e5edb1b7b1",
+      "source": "Ask for source material and pair type.",
+      "value": "ماده منبع و نوع جفت را بخواهید."
+    },
+    {
+      "key": "site.884bdf7600ff57f01f",
+      "source": "Ask for source material or topic and target difficulty.",
+      "value": "ماده منبع یا موضوع و دشواری هدف را بخواهید."
+    },
+    {
+      "key": "site.4c19533f1f78e3db1e",
+      "source": "Ask for source material, topic, and target detail if missing.",
+      "value": "اگر کم است، ماده منبع، موضوع و میزان جزئیات هدف را بخواهید."
+    },
+    {
+      "key": "site.ff7bb65608584ee316",
+      "source": "Ask for subject, level, time limit, and question types if missing.",
+      "value": "اگر کم است، موضوع، سطح، محدودیت زمان و نوع سوال‌ها را بخواهید."
+    },
+    {
+      "key": "site.a8da551efd61e46661",
+      "source": "Ask for subjects, deadlines, resources, and pain points.",
+      "value": "موضوع‌ها، ضرب‌الاجل‌ها، منابع و نقاط درد را بخواهید."
+    },
+    {
+      "key": "site.4354a840106e740e0f",
+      "source": "Ask for subjects, time spent, wins, misses, and upcoming deadlines.",
+      "value": "موضوع‌ها، زمان صرف‌شده، موفقیت‌ها، ناکامی‌ها و ضرب‌الاجل‌های پیش‌رو را بخواهید."
+    },
+    {
+      "key": "site.a8b2580a67452045b9",
+      "source": "Ask for the data, context, and question being answered.",
+      "value": "داده‌ها، زمینه و سوالی را که قرار است پاسخ داده شود بخواهید."
+    },
+    {
+      "key": "site.5b4fd2270651097e04",
+      "source": "Ask for the diagram parts or subject, then generate a label list and practice round.",
+      "value": "بخش‌های نمودار یا موضوع را بخواهید، سپس فهرست برچسب‌ها و یک دور تمرین بسازید."
+    },
+    {
+      "key": "site.c7c1f2d7322a3ab6d1",
+      "source": "Ask for the habit, current obstacle, and easiest starting version.",
+      "value": "عادت، مانع فعلی و آسان‌ترین نسخه شروع را بخواهید."
+    },
+    {
+      "key": "site.f3692ccb931fbce24d",
+      "source": "Ask for the learning context and behaviors worth rewarding.",
+      "value": "زمینه یادگیری و رفتارهایی را که ارزش پاداش دادن دارند بخواهید."
+    },
+    {
+      "key": "site.5ea1010e190756e791",
+      "source": "Ask for the note set, subject, and desired organization style.",
+      "value": "مجموعه یادداشت‌ها، موضوع و سبک سازمان‌دهی دلخواه را بخواهید."
+    },
+    {
+      "key": "site.09ec9e602e93ce5381",
+      "source": "Ask for the one highest-impact revision priority, then rewrite the paragraph yourself.",
+      "value": "یک اولویت بازبینی با بیشترین اثر را بخواهید، سپس خودتان پاراگراف را بازنویسی کنید."
+    },
+    {
+      "key": "site.996c6a99589be01eba",
+      "source": "Ask for the passage or title and the learner's goal.",
+      "value": "متن یا عنوان و هدف یادگیرنده را بخواهید."
+    },
+    {
+      "key": "site.a4e68fc032bb4ddf56",
+      "source": "Ask for the question, learner answer, and expected answer if any part is missing.",
+      "value": "اگر بخشی کم است، سوال، پاسخ یادگیرنده و پاسخ مورد انتظار را بخواهید."
+    },
+    {
+      "key": "site.620e81fdba7e3522c5",
+      "source": "Ask for the smallest explanation or next experiment.",
+      "value": "کوچک‌ترین توضیح یا آزمایش بعدی را بخواهید."
+    },
+    {
+      "key": "site.ddeaa9ff153bcc68d2",
+      "source": "Ask for the smallest hint or a check on your attempted step.",
+      "value": "کوچک‌ترین راهنمایی یا بررسی گامی را که تلاش کرده‌اید بخواهید."
+    },
+    {
+      "key": "site.a54855f42d844443f5",
+      "source": "Ask for the source text, claim, author, date, and context if missing.",
+      "value": "اگر کم است، متن منبع، ادعا، نویسنده، تاریخ و زمینه را بخواهید."
+    },
+    {
+      "key": "site.b2fa2f1b57f733ce3d",
+      "source": "Ask for the study block length and suggest a break rhythm.",
+      "value": "طول بلوک مطالعه را بخواهید و ریتم استراحت پیشنهاد کنید."
+    },
+    {
+      "key": "site.c6fdc44d059fa472e5",
+      "source": "Ask for the task, target duration, and completion criteria.",
+      "value": "کار، مدت هدف و معیارهای تکمیل را بخواهید."
+    },
+    {
+      "key": "site.aef265161171456bcb",
+      "source": "Ask for the text and desired length if missing.",
+      "value": "اگر کم است، متن و طول دلخواه را بخواهید."
+    },
+    {
+      "key": "site.c408791abeb19834eb",
+      "source": "Ask for the topic and which side the learner wants; take the opposite side.",
+      "value": "موضوع و طرفی را که یادگیرنده می‌خواهد بپرسید؛ طرف مقابل را بگیرید."
+    },
+    {
+      "key": "site.d37746fbd262e5dea5",
+      "source": "Ask for the topic, context, what they tried, and desired help.",
+      "value": "موضوع، زمینه، چیزی را که امتحان کرده‌اند و نوع کمک دلخواه را بخواهید."
+    },
+    {
+      "key": "site.283f49692c65a20536",
+      "source": "Ask for the visible text, labels, and the learner's question if the image is not attached.",
+      "value": "اگر تصویر پیوست نشده است، متن قابل مشاهده، برچسب‌ها و سوال یادگیرنده را بخواهید."
+    },
+    {
+      "key": "site.078c7e0919ee44705b",
+      "source": "Ask for topic and purpose, then propose the central node and first branches.",
+      "value": "موضوع و هدف را بخواهید، سپس گره مرکزی و شاخه‌های اول را پیشنهاد کنید."
+    },
+    {
+      "key": "site.ffefb04913a46b3b93",
+      "source": "Ask for topic and scope, then propose a first map structure.",
+      "value": "موضوع و دامنه را بخواهید، سپس ساختار اولیه نقشه را پیشنهاد کنید."
+    },
+    {
+      "key": "site.a6af2a3120e22424d8",
+      "source": "Ask for topic, age/level, and tone; then create a short story setup.",
+      "value": "موضوع، سن/سطح و لحن را بخواهید؛ سپس شروع کوتاه داستانی بسازید."
+    },
+    {
+      "key": "site.eadbb8b829a747f2bd",
+      "source": "Ask for topic, duration, level, and scoring preference.",
+      "value": "موضوع، مدت، سطح و ترجیح نمره‌دهی را بخواهید."
+    },
+    {
+      "key": "site.935e95f744b8ef5b51",
+      "source": "Ask for topic, level, and examiner style; then begin with a warm-up question.",
+      "value": "موضوع، سطح و سبک ممتحن را بخواهید؛ سپس با یک سوال گرم‌کننده شروع کنید."
+    },
+    {
+      "key": "site.458da4b67cd64d08ed",
+      "source": "Ask for topic, level, and preferred game vibe; then create the first quest.",
+      "value": "موضوع، سطح و حال‌وهوای بازی دلخواه را بخواهید؛ سپس نخستین ماموریت را بسازید."
+    },
+    {
+      "key": "site.97bb872f6d8903b468",
+      "source": "Ask for topic, level, exam date, and source material if needed.",
+      "value": "موضوع، سطح، تاریخ امتحان و در صورت نیاز ماده منبع را بخواهید."
+    },
+    {
+      "key": "site.fd666c3e4cc0c190f3",
+      "source": "Ask for topic, level, question types, and number of items.",
+      "value": "موضوع، سطح، نوع سوال‌ها و تعداد موارد را بخواهید."
+    },
+    {
+      "key": "site.b5eb36c5449ff4f87b",
+      "source": "Ask group size, topic, time, and desired outcome.",
+      "value": "اندازه گروه، موضوع، زمان و نتیجه دلخواه را بپرسید."
+    },
+    {
+      "key": "site.eb13e0b413d547707a",
+      "source": "Ask instrument/level if relevant, then teach one small concept.",
+      "value": "اگر مرتبط است ساز/سطح را بپرسید، سپس یک مفهوم کوچک را آموزش دهید."
+    },
+    {
+      "key": "site.aa9c8abf089531cddf",
+      "source": "Ask interests, constraints, and curiosity level before recommending paths.",
+      "value": "پیش از پیشنهاد مسیرها، علاقه‌ها، محدودیت‌ها و سطح کنجکاوی را بپرسید."
+    },
+    {
+      "key": "site.384bbc7a4ac852e0e8",
+      "source": "Ask me questions about this poem",
+      "value": "درباره این شعر از من سوال بپرس"
+    },
+    {
+      "key": "site.a8672051a0f5c02117",
+      "source": "Ask me thesis defense questions",
+      "value": "از من سوالات دفاع پایان‌نامه بپرس"
+    },
+    {
+      "key": "site.44978f965047043b57",
+      "source": "Ask one focused diagnostic question quickly. Convert the learner's target into a mastery target internally, then start with a simple question that reveals their mental model.",
+      "value": "سریع یک سوال تشخیصی متمرکز بپرس. هدف یادگیرنده را در درون به هدف تسلط تبدیل کن، سپس با سوالی ساده شروع کن که مدل ذهنی او را آشکار کند."
+    },
+    {
+      "key": "site.dd04e773fa0353ffbf",
+      "source": "Ask one sharp goal question, infer sensible defaults, then create a compact learning map with a try-first activity.",
+      "value": "یک سوال تیز درباره هدف بپرس، پیش‌فرض‌های معقول را حدس بزن، سپس نقشه یادگیری فشرده‌ای با فعالیت «اول امتحان کن» بساز."
+    },
+    {
+      "key": "site.c1fc0749d21528e35c",
+      "source": "Ask predictions, reveal consequences, adjust variables, and summarize principles.",
+      "value": "پیش‌بینی‌ها را بپرسید، پیامدها را آشکار کنید، متغیرها را تنظیم کنید و اصول را خلاصه کنید."
+    },
+    {
+      "key": "site.8a4dfc8a1a3954bbdd",
+      "source": "Ask the learner to explain the topic in plain language first.",
+      "value": "از یادگیرنده بخواهید ابتدا موضوع را به زبان ساده توضیح دهد."
+    },
+    {
+      "key": "site.95a1accde33b8d972e",
+      "source": "Ask the learner to state their current belief, then test it with a small example.",
+      "value": "از یادگیرنده بخواهید باور فعلی خود را بگوید، سپس آن را با مثالی کوچک بیازماید."
+    },
+    {
+      "key": "site.f9fad814b8cc7946e4",
+      "source": "Ask what a different side, class, era, or source might say.",
+      "value": "بپرسید طرف، طبقه، دوره یا منبعی متفاوت چه می‌گفت."
+    },
+    {
+      "key": "site.853517f968ce1f1a51",
+      "source": "Ask what data or observations they have and what decision they need.",
+      "value": "بپرسید چه داده‌ها یا مشاهده‌هایی دارند و چه تصمیمی باید بگیرند."
+    },
+    {
+      "key": "site.06736eedb0d142242c",
+      "source": "Ask what happened, what they felt, and what they want to improve.",
+      "value": "بپرسید چه اتفاقی افتاد، چه احساسی داشتند و چه چیزی را می‌خواهند بهتر کنند."
+    },
+    {
+      "key": "site.c332825ec386824009",
+      "source": "Ask what must be remembered and what familiar place the learner wants to use.",
+      "value": "بپرسید چه چیزی باید به خاطر سپرده شود و یادگیرنده می‌خواهد از چه مکان آشنایی استفاده کند."
+    },
+    {
+      "key": "site.a4cf0278718ddda061",
+      "source": "Ask what the learner wants to be quizzed on if the topic is missing.",
+      "value": "اگر موضوع کم است، بپرسید یادگیرنده می‌خواهد درباره چه چیزی آزمون شود."
+    },
+    {
+      "key": "site.2f4bcf33af3c996ab9",
+      "source": "Ask what the learner wants to represent, then propose a simple visual layout.",
+      "value": "بپرسید یادگیرنده می‌خواهد چه چیزی را نمایش دهد، سپس یک چیدمان بصری ساده پیشنهاد کنید."
+    },
+    {
+      "key": "site.13d29ea274b9e4966b",
+      "source": "Ask what the resource is, audience, and what context they need.",
+      "value": "بپرسید منبع چیست، مخاطب کیست و چه زمینه‌ای لازم دارند."
+    },
+    {
+      "key": "site.4f41d5c8ebc0ebdea8",
+      "source": "Ask what they are doing and suggest a low-distraction sound preset.",
+      "value": "بپرسید چه کاری انجام می‌دهند و یک پیش‌تنظیم صدای کم‌حواس‌پرتی پیشنهاد کنید."
+    },
+    {
+      "key": "site.73ad590b59591d428a",
+      "source": "Ask what they have tried, then give a hint or worked miniature example.",
+      "value": "بپرسید چه چیزهایی را امتحان کرده‌اند، سپس یک راهنمایی یا مثال کوچک حل‌شده بدهید."
+    },
+    {
+      "key": "site.3330b0e4b9329b8d24",
+      "source": "Ask, evaluate, improve with structure, and retry.",
+      "value": "بپرسید، ارزیابی کنید، با ساختار بهبود دهید و دوباره تلاش کنید."
+    },
+    {
+      "key": "site.ef136f10083ce00d64",
+      "source": "Assessment",
+      "value": "ارزیابی"
+    },
+    {
+      "key": "site.451319a8325c91de90",
+      "source": "Assign XP, levels, quests, and reflection checkpoints.",
+      "value": "XP، سطح‌ها، ماموریت‌ها و نقاط تأمل اختصاص دهید."
+    },
+    {
+      "key": "site.9e3e3f75496ae44f8c",
+      "source": "assignment tracker",
+      "value": "ردیاب تکلیف"
+    },
+    {
+      "key": "site.9f652ed2e7f9977eee",
+      "source": "Assignment Tracker",
+      "value": "ردیاب تکالیف"
+    },
+    {
+      "key": "site.635eab82738464165f",
+      "source": "Athens, 399 BCE",
+      "value": "آتن، ۳۹۹ پیش از میلاد"
+    },
+    {
+      "key": "site.676f0595835b0415b7",
+      "source": "Avoid claiming private beliefs. For living people, imitate public rhetoric broadly without fabricating personal positions.",
+      "value": "از ادعای باورهای خصوصی پرهیز کنید. برای افراد زنده، گفتار عمومی را به‌طور کلی تقلید کنید، بدون ساختن مواضع شخصی جعلی."
+    },
+    {
+      "key": "site.22e85f78d6eb0a0556",
+      "source": "Back to subjects",
+      "value": "بازگشت به موضوع‌ها"
+    },
+    {
+      "key": "site.9e6aed6a8f30dd169d",
+      "source": "Background focus audio that keeps playing",
+      "value": "صدای پس‌زمینه برای تمرکز که در حال پخش باقی می‌ماند"
+    },
+    {
+      "key": "site.0765a400abe3f60770",
+      "source": "Badges & Achievements",
+      "value": "نشان‌ها و دستاوردها"
+    },
+    {
+      "key": "site.8bb5ab62fb43bb6f1e",
+      "source": "Balance school and exam prep",
+      "value": "ایجاد تعادل بین مدرسه و آمادگی برای آزمون"
+    },
+    {
+      "key": "site.d9904990e5def571e7",
+      "source": "boss round",
+      "value": "دور غول‌آخر"
+    },
+    {
+      "key": "site.7623c291c5375ec686",
+      "source": "Brainstorm a science project",
+      "value": "طوفان فکری برای پروژه علمی"
+    },
+    {
+      "key": "site.98d1637b91a6152002",
+      "source": "Brainstorm projects, stories, designs, titles, experiments, and unexpected angles.",
+      "value": "برای پروژه‌ها، داستان‌ها، طراحی‌ها، عناوین، آزمایش‌ها و زوایای غیرمنتظره ایده‌پردازی کنید."
+    },
+    {
+      "key": "site.c5c0f10e94a219b55b",
+      "source": "Branch a topic into connected ideas",
+      "value": "شاخه بندی یک موضوع به ایده‌های مرتبط"
+    },
+    {
+      "key": "site.dab5887f0a9a846248",
+      "source": "Break a big task into timed blocks",
+      "value": "تقسیم یک وظیفه بزرگ به بلوک‌های زمان‌بندی شده"
+    },
+    {
+      "key": "site.55d85e820f7a471c1f",
+      "source": "break reminder",
+      "value": "یادآور استراحت"
+    },
+    {
+      "key": "site.b8b946b425ddf8de86",
+      "source": "Break Reminder",
+      "value": "یادآور استراحت"
+    },
+    {
+      "key": "site.b6ecb7306b4c115a78",
+      "source": "Break tasks into timed steps, reflect on actual effort, and update the next block.",
+      "value": "کارها را به گام‌های زمان‌بندی‌شده بشکنید، درباره تلاش واقعی تأمل کنید و بلوک بعدی را به‌روز کنید."
+    },
+    {
+      "key": "site.4b45b2d5e966454c84",
+      "source": "Break the visual into shapes, labels, relationships, and checks for missing information.",
+      "value": "تصویر را به شکل‌ها، برچسب‌ها، رابطه‌ها و بررسی‌های اطلاعات گمشده بشکنید."
+    },
+    {
+      "key": "site.87a956984274e6d2b5",
+      "source": "Break work into milestones, inspect progress, remove blockers, and adapt scope.",
+      "value": "کار را به نقطه‌های عطف بشکنید، پیشرفت را بررسی کنید، مانع‌ها را بردارید و دامنه را سازگار کنید."
+    },
+    {
+      "key": "site.a56e1e195f7a4c2a02",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "کارها را به وظایف مشخص تقسیم کنید، برای هر کدام زمان بگیرید و پس از هر جلسه متمرکز، بررسی کنید که تلاش مطالعاتی شما کجا صرف شده است."
+    },
+    {
+      "key": "site.0794d5b8029d8aa800",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "یک متن یا ایده کتاب بیاورید و از طریق خلاصه‌سازی، واژگان، استنباط و بحث، درک مطلب خود را تقویت کنید."
+    },
+    {
+      "key": "site.6f4a0705ddd3bea273",
+      "source": "Broad subject queries are competitive, so these pages pair the subject keyword with interactive behaviors: tutoring, hints, feedback, quizzes, flashcards, debate, and planning.",
+      "value": "پرس‌وجوهای موضوعی گسترده رقابتی‌اند، پس این صفحه‌ها کلیدواژه موضوع را با رفتارهای تعاملی جفت می‌کنند: تدریس خصوصی، راهنمایی، بازخورد، آزمون‌ها، فلش‌کارت‌ها، مناظره و برنامه‌ریزی."
+    },
+    {
+      "key": "site.cdf4cb489c1367a73a",
+      "source": "Build a biology unit test",
+      "value": "ساخت یک آزمون واحد زیست‌شناسی"
+    },
+    {
+      "key": "site.afdc6e2a6ea519b6ce",
+      "source": "Build a finals study guide",
+      "value": "ساخت راهنمای مطالعه برای امتحانات نهایی"
+    },
+    {
+      "key": "site.9a490168399d934cbc",
+      "source": "Build a full test from your material",
+      "value": "ساخت یک آزمون کامل از مطالب خود"
+    },
+    {
+      "key": "site.dfb957acc42e99196a",
+      "source": "Build a map of democracy",
+      "value": "ساخت نقشه‌ای از دموکراسی"
+    },
+    {
+      "key": "site.0fcd3c6df198757937",
+      "source": "Build a photosynthesis explanation with me",
+      "value": "با من یک توضیح درباره فتوسنتز بساز"
+    },
+    {
+      "key": "site.3adbd46eba6a77ffa4",
+      "source": "Build a portfolio website",
+      "value": "ساخت یک وب‌سایت نمونه‌کار"
+    },
+    {
+      "key": "site.89891cce3de9b436cc",
+      "source": "Build a project in smaller moves",
+      "value": "پروژه‌ای را با حرکت‌های کوچک‌تر بسازید"
+    },
+    {
+      "key": "site.ba586de92a117bdea2",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "بر اساس تاریخ آزمون، سرفصل‌ها، نقاط قوت و ضعف خود، یک برنامه واقع‌بینانه برای امتحان بسازید."
+    },
+    {
+      "key": "site.ad4088a84aec8817e3",
+      "source": "Build a revision plan that fits real life",
+      "value": "برنامه مروری بسازید که با زندگی واقعی جور دربیاید"
+    },
+    {
+      "key": "site.4716c697251a6f7672",
+      "source": "Build a routine that survives real life",
+      "value": "روالی بسازید که با زندگی واقعی سازگار باشد"
+    },
+    {
+      "key": "site.ded45628bcad4e1a1a",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "یک راهنمای مطالعه شامل اهداف، خلاصه‌های مفهومی، مثال‌ها، اشتباهات رایج، سوالات تمرینی و برنامه مرور بسازید."
+    },
+    {
+      "key": "site.acb15923b205de7d8d",
+      "source": "Build check-ins that keep you moving",
+      "value": "بررسی‌هایی ایجاد کنید که شما را در مسیر پیشرفت نگه دارد"
+    },
+    {
+      "key": "site.e5d9ce14875b463ee3",
+      "source": "Build communication skill through realistic roleplay and feedback.",
+      "value": "مهارت ارتباطی را از راه نقش‌آفرینی واقع‌بینانه و بازخورد بسازید."
+    },
+    {
+      "key": "site.1ebdac7f888fa84e98",
+      "source": "Build consistency without guilt",
+      "value": "ایجاد ثبات بدون احساس گناه"
+    },
+    {
+      "key": "site.a5cc98fbee44c930a8",
+      "source": "Build mixed practice worksheets from a topic or notes.",
+      "value": "از یک موضوع یا یادداشت‌ها، برگه‌های تمرین ترکیبی بسازید."
+    },
+    {
+      "key": "site.951d8c65343997c00b",
+      "source": "Build references in common formats",
+      "value": "ایجاد ارجاعات در قالب‌های رایج"
+    },
+    {
+      "key": "site.95ec3bfab65a54a0ae",
+      "source": "Build sections, administer questions, mark responses, and identify weak areas.",
+      "value": "بخش‌ها را بسازید، سوال‌ها را اجرا کنید، پاسخ‌ها را نمره دهید و ناحیه‌های ضعیف را شناسایی کنید."
+    },
+    {
+      "key": "site.3a2394e40526963d52",
+      "source": "Build study challenges with clear rules, scoring, levels, boss rounds, and reflection.",
+      "value": "چالش‌های مطالعاتی با قوانین مشخص، امتیازدهی، سطوح، مراحل غول‌آسا و بازتاب ایجاد کنید."
+    },
+    {
+      "key": "site.54511757696b263ebe",
+      "source": "Build vocabulary exercises",
+      "value": "تمرین‌های واژگان بسازید"
+    },
+    {
+      "key": "site.dc326fcc24ba471506",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "دایره واژگان خود را با استفاده از معانی، مثال‌ها، نشانه‌های تلفظ، ترفندهای حافظه و تمرین سریع گسترش دهید."
+    },
+    {
+      "key": "site.b0bb0056cf4be7c005",
+      "source": "Build, critique, and learn in a shared workroom",
+      "value": "در یک اتاق کار مشترک بسازید، نقد کنید و یاد بگیرید"
+    },
+    {
+      "key": "site.6c3cb499ed00d5b778",
+      "source": "Business English words",
+      "value": "واژگان انگلیسی تجاری"
+    },
+    {
+      "key": "site.5647b2b0fc91eaaf30",
+      "source": "Business strategy case",
+      "value": "مطالعه موردی استراتژی کسب‌وکار"
+    },
+    {
+      "key": "site.36d72c2f5ce776d5f7",
+      "source": "Calculate my weighted grade",
+      "value": "محاسبه نمره وزنی من"
+    },
+    {
+      "key": "site.f4c13f2c7594216665",
+      "source": "Can I talk to historical figures with inspir?",
+      "value": "می‌توانم با چهره‌های تاریخی در inspir صحبت کنم؟"
+    },
+    {
+      "key": "site.e16d86f80344bff4aa",
+      "source": "Can inspir help with history essays?",
+      "value": "آیا inspir می‌تواند به مقاله‌های تاریخ کمک کند؟"
+    },
+    {
+      "key": "site.bb0ea7371e270cb4c1",
+      "source": "Can inspir help with homework without cheating?",
+      "value": "آیا inspir می‌تواند بدون تقلب به تکلیف کمک کند؟"
+    },
+    {
+      "key": "site.dcb78e2d7020a2929b",
+      "source": "Can inspir make an exam study plan?",
+      "value": "آیا inspir می‌تواند برنامه مطالعه امتحان بسازد؟"
+    },
+    {
+      "key": "site.f452e762401f9cd4da",
+      "source": "Can inspir solve math problems step by step?",
+      "value": "آیا inspir می‌تواند مسئله‌های ریاضی را گام‌به‌گام حل کند؟"
+    },
+    {
+      "key": "site.94e5736baf016ce277",
+      "source": "Can inspir teach programming from scratch?",
+      "value": "آیا inspir می‌تواند برنامه‌نویسی را از صفر آموزش دهد؟"
+    },
+    {
+      "key": "site.e380f20372ba4944e7",
+      "source": "Can it debug my code?",
+      "value": "آیا می‌تواند کد من را دیباگ کند؟"
+    },
+    {
+      "key": "site.3a65bcd044b7b6f6fe",
+      "source": "Can it help with reading comprehension?",
+      "value": "آیا می‌تواند به درک مطلب کمک کند؟"
+    },
+    {
+      "key": "site.0465d8d9b4d781085b",
+      "source": "Can students land directly on homework help?",
+      "value": "آیا دانش‌آموزان می‌توانند مستقیم وارد کمک تکلیف شوند؟"
+    },
+    {
+      "key": "site.dc429c7fae68e05082",
+      "source": "Career Explorer",
+      "value": "کاوشگر شغلی"
+    },
+    {
+      "key": "site.5e518f5df8caac34a7",
+      "source": "Case Study Simulator",
+      "value": "شبیه‌ساز مطالعه موردی"
+    },
+    {
+      "key": "site.d379874eb54c85b8b3",
+      "source": "Causes of World War I",
+      "value": "علل جنگ جهانی اول"
+    },
+    {
+      "key": "site.63125e6a136a736ab5",
+      "source": "Challenge, score, give feedback, unlock next level, and review missed ideas.",
+      "value": "چالش بدهید، امتیاز دهید، بازخورد بدهید، سطح بعدی را باز کنید و ایده‌های از دست‌رفته را مرور کنید."
+    },
+    {
+      "key": "site.bb2825214fc1d21e26",
+      "source": "Chang'an, 742",
+      "value": "چانگ‌آن، ۷۴۲"
+    },
+    {
+      "key": "site.76932ffa6108b2fbc7",
+      "source": "Check each step, correct errors, and connect procedures to concepts.",
+      "value": "هر گام را بررسی کنید، خطاها را اصلاح کنید و رویه‌ها را به مفاهیم وصل کنید."
+    },
+    {
+      "key": "site.5e1157d2307faa302f",
+      "source": "Check math or writing work",
+      "value": "کار ریاضی یا نوشتاری را بررسی کنید"
+    },
+    {
+      "key": "site.310ba61389fd4b98e1",
+      "source": "Check my essay thesis",
+      "value": "پایان‌نامه مقاله من را بررسی کن"
+    },
+    {
+      "key": "site.93854f792603925264",
+      "source": "Check one step before the whole answer",
+      "value": "پیش از کل پاسخ، یک گام را بررسی کنید"
+    },
+    {
+      "key": "site.1c7b90644fa2254a97",
+      "source": "Check this claim's evidence",
+      "value": "شواهد این ادعا را بررسی کنید"
+    },
+    {
+      "key": "site.9685b5120a71193129",
+      "source": "Check what fields my citation is missing",
+      "value": "بررسی کن که استناد من چه فیلدهایی کم دارد"
+    },
+    {
+      "key": "site.34971b8fb11caeb1c1",
+      "source": "Chicago",
+      "value": "شیکاگو"
+    },
+    {
+      "key": "site.819f9fa9c5b5a32fa1",
+      "source": "Choose calm audio for math",
+      "value": "انتخاب صدای آرام برای ریاضی"
+    },
+    {
+      "key": "site.d300974784997be48d",
+      "source": "Choose fair metrics, anti-gaming rules, and reset cadence.",
+      "value": "معیارهای منصفانه، قوانین ضدبازی‌دادن و آهنگ بازنشانی را انتخاب کنید."
+    },
+    {
+      "key": "site.bb0b90624c2a48575b",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "صدای تمرکز تولیدشده را برای مطالعه، نوشتن، حل مسئله یا کار عمیق انتخاب کنید. این صدا هنگام جابجایی به چت‌های دیگر همچنان پخش می‌شود."
+    },
+    {
+      "key": "site.e25c21d5e0e188b76a",
+      "source": "Citation Generator",
+      "value": "منبع‌نویس"
+    },
+    {
+      "key": "site.7c1a06cc179d00a1f3",
+      "source": "Civics Coach",
+      "value": "مربی مدنی"
+    },
+    {
+      "key": "site.7efd372bf333ca8b10",
+      "source": "Clarify country/context if needed, then explain the institution or idea simply.",
+      "value": "در صورت نیاز کشور/زمینه را روشن کنید، سپس نهاد یا ایده را ساده توضیح دهید."
+    },
+    {
+      "key": "site.fa61db3fd2a4dffddb",
+      "source": "Clarify goal, deadline, resources, and done criteria.",
+      "value": "هدف، ضرب‌الاجل، منابع و معیارهای انجام‌شده را روشن کنید."
+    },
+    {
+      "key": "site.3ab4e0b2c8e3138246",
+      "source": "Clarify role, goal, stakes, and tone; then begin in character.",
+      "value": "نقش، هدف، اهمیت و لحن را روشن کنید؛ سپس در نقش شروع کنید."
+    },
+    {
+      "key": "site.f8100ab23d5de09ed1",
+      "source": "Clarify the personality, topic, and learner's side before beginning.",
+      "value": "پیش از شروع، شخصیت، موضوع و طرف یادگیرنده را روشن کنید."
+    },
+    {
+      "key": "site.722bf0c4aac42c0afb",
+      "source": "Clarify the question and identify variables or the core concept.",
+      "value": "سوال را روشن کنید و متغیرها یا مفهوم اصلی را شناسایی کنید."
+    },
+    {
+      "key": "site.a73b33aff646400025",
+      "source": "Clarify the question and offer two or three angles.",
+      "value": "سوال را روشن کنید و دو یا سه زاویه پیشنهاد دهید."
+    },
+    {
+      "key": "site.e0a856db3b72e09372",
+      "source": "Clarify the question, add evidence, summarize replies, and plan follow-up.",
+      "value": "سوال را روشن کنید، شواهد اضافه کنید، پاسخ‌ها را خلاصه کنید و پیگیری را برنامه‌ریزی کنید."
+    },
+    {
+      "key": "site.5b41dd35b060436cd0",
+      "source": "Clear explanations for any curiosity",
+      "value": "توضیحات شفاف برای هر کنجکاوی"
+    },
+    {
+      "key": "site.b84375a2dec620c9d0",
+      "source": "Cluster, tag, summarize, connect, and turn notes into review prompts.",
+      "value": "یادداشت‌ها را خوشه‌بندی، برچسب‌گذاری، خلاصه و وصل کنید و به پرامپت‌های مرور تبدیل کنید."
+    },
+    {
+      "key": "site.c94effc9dd9d4d8f50",
+      "source": "Coach homework ethically by supporting the learner's process.",
+      "value": "تکلیف را اخلاقی مربی‌گری کنید و از فرایند یادگیرنده پشتیبانی کنید."
+    },
+    {
+      "key": "site.29b14d5a17735fa13a",
+      "source": "Coach interview preparation through practice and feedback.",
+      "value": "آمادگی مصاحبه را از راه تمرین و بازخورد مربی‌گری کنید."
+    }
+  ]
+}

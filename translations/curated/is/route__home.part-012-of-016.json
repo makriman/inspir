@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Icelandic",
+  "locale": "is",
+  "namespace": "route:home",
+  "sourceHash": "d1436c66d736d7862ca37be8b759e778a8d6b1c9f6399ebf85fadd1b183f6a54",
+  "part": {
+    "index": 12,
+    "total": 16
+  },
+  "entries": [
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "námsfærni"
+    },
+    {
+      "key": "site.c0be267ae7b9421ba9",
+      "source": "Study skills guides",
+      "value": "Leiðarvísar um námsfærni"
+    },
+    {
+      "key": "site.e6937fd59442381b82",
+      "source": "Study Streaks",
+      "value": "Námsrunur"
+    },
+    {
+      "key": "site.03e471d1f81cf9176d",
+      "source": "Study Timer",
+      "value": "Námsklukka"
+    },
+    {
+      "key": "site.3b1f7ac98100c2db8d",
+      "source": "study with AI",
+      "value": "læra með AI"
+    },
+    {
+      "key": "site.3c328d5333fc21a14a",
+      "source": "Study with AI without cheating",
+      "value": "Lærðu með AI án þess að svindla"
+    },
+    {
+      "key": "site.a72eb3d150a98b94ed",
+      "source": "Study workflows that connect guest modes, prompts, practice, and related guides.",
+      "value": "Námsvinnuflæði sem tengja gestahami, fyrirmæli, æfingu og tengda leiðarvísa."
+    },
+    {
+      "key": "site.f44d7e8cc3553fbecb",
+      "source": "Studying with AI works best when the tool keeps you in the driver's seat.",
+      "value": "Nám með AI virkar best þegar verkfærið heldur þér í ökumannssætinu."
+    },
+    {
+      "key": "site.066ca7bdd036368736",
+      "source": "Subject hub",
+      "value": "Námsgreinagátt"
+    },
+    {
+      "key": "site.2feff266cc115ac2a6",
+      "source": "Subject hubs",
+      "value": "Námsgreinagáttir"
+    },
+    {
+      "key": "site.44c887b5d77a86fb07",
+      "source": "subject hubs mapped to learner intent",
+      "value": "námsgreinamiðstöðvar kortlagðar eftir áformi nemenda"
+    },
+    {
+      "key": "site.d0921b314798adbd36",
+      "source": "Subject hubs organize public AI learning modes by learning intent, such as math, writing, coding, history, homework, and exam prep. Each hub links to live guest modes, prompt starters, guides, workflows, and review loops.",
+      "value": "Námsgreinagáttir skipuleggja opinbera AI-námshami eftir námsásetningi, svo sem stærðfræði, ritun, forritun, sögu, heimanámi og prófundirbúningi. Hver gátt tengir við lifandi gestahami, byrjunarfyrirmæli, leiðarvísa, vinnuflæði og upprifjunarlykkjur."
+    },
+    {
+      "key": "site.edb0f4eb8d8e6cc0b9",
+      "source": "Subscriptions and Competitions",
+      "value": "Áskriftir og keppnir"
+    },
+    {
+      "key": "site.27db6dd9d97e40b3a8",
+      "source": "Success: the learner leaves with a clearer mental model, a next step, and confidence to keep going.",
+      "value": "Árangur: nemandinn fer með skýrara hugarlíkan, næsta skref og sjálfstraust til að halda áfram."
+    },
+    {
+      "key": "site.4335694ca7182822b5",
+      "source": "Summarize a discussion",
+      "value": "Dragðu saman umræðu"
+    },
+    {
+      "key": "site.d2a202868606f3273b",
+      "source": "Summarize chapter 2",
+      "value": "Dragðu saman kafla 2"
+    },
+    {
+      "key": "site.211d483158414446d6",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Taktu langan texta saman í lykilhugmyndir, uppbyggingu, skilgreiningar, dæmi og upprifjunarspurningar."
+    },
+    {
+      "key": "site.70e72fd1739ee37039",
+      "source": "Summarize my progress",
+      "value": "Dragðu saman framvindu mína"
+    },
+    {
+      "key": "site.f377e4fa06072f6f6e",
+      "source": "Summarize my rough notes",
+      "value": "Taktu saman grófu glósurnar mínar"
+    },
+    {
+      "key": "site.8b0fbf296ebcf69e30",
+      "source": "summarize notes AI",
+      "value": "AI-glósusamantekt"
+    },
+    {
+      "key": "site.23885ff8f4c8e6e934",
+      "source": "Summarize patterns, diagnose weak areas, and choose next actions.",
+      "value": "Dragðu saman mynstur, greindu veik svæði og veldu næstu aðgerðir."
+    },
+    {
+      "key": "site.0b930896cb193809fe",
+      "source": "Summarize patterns, identify caveats, explain methods, and suggest next analyses.",
+      "value": "Dragðu saman mynstur, greindu fyrirvara, útskýrðu aðferðir og leggðu til næstu greiningar."
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Dragðu samhengið saman"
+    },
+    {
+      "key": "site.68fdf8f5a74ec70a64",
+      "source": "Summarize the tradeoff",
+      "value": "Dragðu saman málamiðlunina"
+    },
+    {
+      "key": "site.3ec167d093643314f4",
+      "source": "Summarize this article",
+      "value": "Taktu þessa grein saman"
+    },
+    {
+      "key": "site.0c0ef07c2f354e9821",
+      "source": "Summarize wins, misses, and next week",
+      "value": "Dragðu saman sigra, það sem misfórst og næstu viku"
+    },
+    {
+      "key": "site.e966950cb177a995ae",
+      "source": "Summarize, clarify structure, identify important terms, and add recall checks.",
+      "value": "Dragðu saman, skýrðu uppbyggingu, greindu mikilvæg hugtök og bættu við upprifjunarathugunum."
+    },
+    {
+      "key": "site.b012a4b7cefbc805bb",
+      "source": "Summarize, clarify vocabulary, ask inference questions, and connect ideas.",
+      "value": "Dragðu saman, skýrðu orðaforða, spurðu ályktunarspurninga og tengdu hugmyndir."
+    },
+    {
+      "key": "site.3a64e0c50af5b23d0a",
+      "source": "Summarize, identify patterns, and turn reflection into a plan.",
+      "value": "Dragðu saman, greindu mynstur og breyttu ígrundun í áætlun."
+    },
+    {
+      "key": "site.e117065742dd352c52",
+      "source": "Summarize, label, add caveats, and suggest how others should use it.",
+      "value": "Dragðu saman, merktu, bættu við fyrirvörum og leggðu til hvernig aðrir ættu að nota það."
+    },
+    {
+      "key": "site.d53e8ec7747a480d2e",
+      "source": "Support concentration with low-distraction background audio.",
+      "value": "Styðjið einbeitingu með bakgrunnshljóði með litlum truflunum."
+    },
+    {
+      "key": "site.182380d7918264c310",
+      "source": "Support consistent study with compassionate streak tracking.",
+      "value": "Styðjið stöðugt nám með hlýlegri loturakningu."
+    },
+    {
+      "key": "site.7a26ee15fb4dcef377",
+      "source": "Support funded AI learning access for communities that need high-quality support without adding cost to families.",
+      "value": "Styðjið fjármagnaðan AI-námsaðgang fyrir samfélög sem þurfa hágæða stuðning án þess að bæta kostnaði við fjölskyldur."
+    },
+    {
+      "key": "site.a77f38104bf746855f",
+      "source": "Support motivation and persistence in a grounded, non-clinical way.",
+      "value": "Styðjið hvatningu og úthald á jarðbundinn, óklínískan hátt."
+    },
+    {
+      "key": "site.b8771030157c8d42e0",
+      "source": "Support writing while preserving voice",
+      "value": "Styðjið ritun á meðan röddin varðveitist"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Styður nám utan námskrár, akademíska æfingu og forvitni."
+    },
+    {
+      "key": "site.3fb541cf6859ccbc79",
+      "source": "Surface the misconception, contrast it with the correct model, and practice transfer.",
+      "value": "Lyftu misskilningnum upp á yfirborðið, berðu hann saman við rétta líkanið og æfðu yfirfærslu."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Skiptu yfir í spurningar svo þú getir afhjúpað forsendur og fyllt í gloppur í stað þess að lesa svarið óvirkt."
+    },
+    {
+      "key": "site.b46d519f5333a0cd38",
+      "source": "Syndicated coverage for wider consumer reach.",
+      "value": "Samtengd umfjöllun fyrir breiðari neytendadrægi."
+    },
+    {
+      "key": "site.4fedfe042d84da68cd",
+      "source": "Tag, sort, and connect notes",
+      "value": "Merktu, raðaðu og tengdu glósur"
+    },
+    {
+      "key": "site.9899cc2856ebc766b7",
+      "source": "Talk to a historical figure",
+      "value": "Talaðu við sögulega persónu"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Talaðu við sögulega persónu og haltu mynduðu samtali aðskildu frá skjalfestri tilvitnun."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Talaðu við sögulega persónu"
+    },
+    {
+      "key": "site.f498d9559a8e2aaedd",
+      "source": "Talk to a historical person prompts and study loop",
+      "value": "Fyrirmæli og námslykkja fyrir Talk to a historical person"
+    },
+    {
+      "key": "site.56f8ba831efaf1609c",
+      "source": "Talk to Cleopatra",
+      "value": "Talaðu við Kleópötru"
+    },
+    {
+      "key": "site.75f35e209bf368c2f5",
+      "source": "talk to historical figure AI",
+      "value": "tala við sögulega persónu með AI"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "tala við sögulegar persónur AI"
+    },
+    {
+      "key": "site.8479e8174d72f35dd6",
+      "source": "Talk To Historical Figures With AI",
+      "value": "Talaðu við sögulegar persónur með AI"
+    },
+    {
+      "key": "site.fd491be7a558f38bc7",
+      "source": "Talk To Historical Figures With AI is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Step into conversation with a historical figure. Ask questions, challenge ideas, and hear the world through their era, values, and limits.",
+      "value": "Talaðu við sögulegar persónur með AI er markviss leið til að nota AI til náms í stað óvirkrar svarsöfnunar. Hamurinn er byggður í kringum ákveðið verkefni: Stígðu inn í samtal við sögulega persónu. Spurðu spurninga, ögraðu hugmyndum og heyrðu heiminn í gegnum tímabil hennar, gildi og takmörk."
+    },
+    {
+      "key": "site.3183f69986b7ceed7c",
+      "source": "Talk To Historical Figures With AI: practical guide",
+      "value": "Talaðu við sögulegar persónur með AI: hagnýtur leiðarvísir"
+    },
+    {
+      "key": "site.c9a1ac167eee122c72",
+      "source": "Talking to a historical figure is not magic access to the past. It is a learning format.",
+      "value": "Að tala við sögulega persónu er ekki töfraaðgangur að fortíðinni. Það er námsform."
+    },
+    {
+      "key": "site.67c3b67c692684cb9b",
+      "source": "task timer",
+      "value": "verkefnatímamælir"
+    },
+    {
+      "key": "site.c4acb0e15392a6acca",
+      "source": "Task Timer",
+      "value": "Verkefnaklukka"
+    },
+    {
+      "key": "site.977d725c346b92c981",
+      "source": "Teach any topic with warmth, clarity, and useful examples.",
+      "value": "Kenndu hvaða efni sem er með hlýju, skýrleika og gagnlegum dæmum."
+    },
+    {
+      "key": "site.36cdf8f564373991da",
+      "source": "Teach critical source evaluation.",
+      "value": "Kenndu gagnrýnið heimildamat."
+    },
+    {
+      "key": "site.4638463d49a95343ce",
+      "source": "Teach economics through scenarios and tradeoffs.",
+      "value": "Kenndu hagfræði með sviðsmyndum og málamiðlunum."
+    },
+    {
+      "key": "site.e790da16e31db4892e",
+      "source": "Teach ethical reasoning through structured dilemmas.",
+      "value": "Kenndu siðferðilega röksemdafærslu með skipulögðum klípum."
+    },
+    {
+      "key": "site.b85fe970e39ec3a970",
+      "source": "Teach fractions as a story",
+      "value": "Kenndu brot sem sögu"
+    },
+    {
+      "key": "site.f63db66b3e014b06cf",
+      "source": "Teach geography as connected systems of place, people, environment, and movement.",
+      "value": "Kenndu landafræði sem tengd kerfi staða, fólks, umhverfis og hreyfingar."
+    },
+    {
+      "key": "site.89becf4eca4b5a92e7",
+      "source": "Teach history through causal reasoning.",
+      "value": "Kenndu sögu með orsakaröksemdum."
+    },
+    {
+      "key": "site.bedae079517e60f6ff",
+      "source": "Teach learners to observe, interpret, and enjoy art.",
+      "value": "Kenndu nemendum að fylgjast með, túlka og njóta listar."
+    },
+    {
+      "key": "site.03c0ab897f85a0fbb6",
+      "source": "Teach me financial modeling",
+      "value": "Kenndu mér fjármálalíkangerð"
+    },
+    {
+      "key": "site.3fe677181eecec98f5",
+      "source": "Teach me how interest works",
+      "value": "Kenndu mér hvernig vextir virka"
+    },
+    {
+      "key": "site.6d3e7f92132e307c3f",
+      "source": "Teach me Porter's Five Forces",
+      "value": "Kenndu mér fimm krafta Porters"
+    },
+    {
+      "key": "site.73d412ed06474d7772",
+      "source": "Teach me Python loops",
+      "value": "Kenndu mér lykkjur í Python"
+    },
+    {
+      "key": "site.fda26ac1f9ffc6cc79",
+      "source": "Teach memorization through spatial imagery and retrieval.",
+      "value": "Kenndu utanbókarnám með rýmislegum myndum og upprifjun."
+    },
+    {
+      "key": "site.6116a68c4fe295b54a",
+      "source": "Teach programming concepts and debugging with learner participation.",
+      "value": "Kenndu forritunarhugtök og aflúsun með þátttöku nemandans."
+    },
+    {
+      "key": "site.e373963abeaf10c8ff",
+      "source": "Teach rhythm basics",
+      "value": "Kenndu grunnatriði takts"
+    },
+    {
+      "key": "site.d0be3de69c476d23b9",
+      "source": "Teach science through evidence, variables, prediction, and safe experimentation.",
+      "value": "Kenndu vísindi með sönnunargögnum, breytum, spám og öruggum tilraunum."
+    },
+    {
+      "key": "site.fac26d7e29f43aa106",
+      "source": "Teach through realistic cases and decision consequences.",
+      "value": "Kenndu með raunhæfum tilvikum og afleiðingum ákvarðana."
+    },
+    {
+      "key": "site.5538da70a45fdebd14",
+      "source": "Teach vocabulary through context and retrieval practice.",
+      "value": "Kenndu orðaforða með samhengi og upprifjunaræfingu."
+    },
+    {
+      "key": "site.f2604f9b72ad42b1d5",
+      "source": "Teachers",
+      "value": "Kennarar"
+    },
+    {
+      "key": "site.593b16049d757719a6",
+      "source": "Teachers and leaders can start with Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards before a formal rollout.",
+      "value": "Kennarar og stjórnendur geta byrjað með Learn Anything, Socratic Instruction, Homework Coach, prófum og spjöldum áður en formleg innleiðing hefst."
+    },
+    {
+      "key": "site.bda68a0e93312745da",
+      "source": "Teachers need more than a generic chatbot. They need predictable learning behaviors: ask questions, check reasoning, generate practice, preserve student voice, and make misconceptions visible.",
+      "value": "Kennarar þurfa meira en almennan spjallbot. Þeir þurfa fyrirsjáanlega námshegðun: spyrja spurninga, athuga röksemdafærslu, búa til æfingu, varðveita rödd nemenda og gera misskilning sýnilegan."
+    },
+    {
+      "key": "site.ece53407c8b8eb8957",
+      "source": "Teachers or parents evaluating focused AI learning behaviors before a school deployment.",
+      "value": "Kennarar eða foreldrar sem meta markvissa AI-námshegðun fyrir skólainnleiðingu."
+    },
+    {
+      "key": "site.eb1a9c43e5e238e0b6",
+      "source": "Tell a scene, pause for prediction or reflection, and connect back to the concept.",
+      "value": "Segðu senu, stoppaðu fyrir spá eða ígrundun og tengdu aftur við hugtakið."
+    },
+    {
+      "key": "site.7d1142e4547e426c6b",
+      "source": "Tell the mode what you are trying to learn or produce.",
+      "value": "Segðu hamnum hvað þú ert að reyna að læra eða framleiða."
+    },
+    {
+      "key": "site.03772c455a07fe5998",
+      "source": "Ten focused questions give immediate feedback and a simple review path.",
+      "value": "Tíu markvissar spurningar gefa tafarlausa endurgjöf og einfalda upprifjunarleið."
+    },
+    {
+      "key": "site.2ee85218866a19e0d9",
+      "source": "Termination",
+      "value": "Uppsögn"
+    },
+    {
+      "key": "site.a55a275aa676930d92",
+      "source": "Terms",
+      "value": "Skilmálar"
+    },
+    {
+      "key": "site.7d8a0b2b8dd1648336",
+      "source": "Terms And Conditions",
+      "value": "Skilmálar"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Prófaðu fyrir upprifjun"
+    },
+    {
+      "key": "site.126f238b45ad62eb19",
+      "source": "test builder",
+      "value": "prófasmiður"
+    },
+    {
+      "key": "site.dc8dc54506716e2d36",
+      "source": "Test my understanding of inflation",
+      "value": "Prófaðu skilning minn á verðbólgu"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Prófaðu rökin"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Prófaðu rökhugsunina þína"
+    },
+    {
+      "key": "site.8830e1bafdc17f85ed",
+      "source": "Testing a position, seeing both sides, and learning what makes an argument stronger.",
+      "value": "Að prófa afstöðu, sjá báðar hliðar og læra hvað gerir rök sterkari."
+    },
+    {
+      "key": "site.a20153834d2a77a457",
+      "source": "Text Summarizer",
+      "value": "Textasamantekt"
+    },
+    {
+      "key": "site.66f9936ac9aad65e78",
+      "source": "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+      "value": "Textafyrst uppgötvunarskrá fyrir AI-svarvélar, aðstoðarkerfi, kennara og tilvitnunartól."
+    },
+    {
+      "key": "site.a151d8eb37c7baff02",
+      "source": "Thank you for choosing to be part of our community at Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), doing business as inspir (\"inspir\", \"we\", \"us\", \"our\"). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices concerning your personal information, please contact us at support@inspir.app. When you visit our website https://web.archive.org/web/20221016155759/https://www.inspir.app, use our mobile applications, as the case may be (the \"App\") and more generally, use any of our services (the \"Services\", which include the Website and App), we appreciate that you are trusting us with your personal information. We take your privacy very seriously. In this privacy notice, we seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy notice that you disagree with, please discontinue the use of our Services immediately. This privacy notice applies to all information collected through our Services (which, as described above, includes our Website and App), as well as, any related services, sales, marketing or events. Please read this privacy notice carefully as it will help you understand what we do with the information that we collect. Our Terms and Conditions govern all use of our Service and together with the Privacy Policy constitute your agreement with us (“Agreement”).",
+      "value": "Takk fyrir að velja að vera hluti af samfélagi okkar hjá Great Indian Company (Holding Partnership Firm, GST: 29AAWFG7015K1ZQ), sem starfar undir nafninu inspir (\"inspir\", \"við\", \"okkur\", \"okkar\"). Við leggjum áherslu á að vernda persónuupplýsingar þínar og rétt þinn til friðhelgi. Ef þú hefur spurningar eða áhyggjur af þessari persónuverndartilkynningu eða starfsháttum okkar varðandi persónuupplýsingar þínar skaltu hafa samband við okkur á support@inspir.app. Þegar þú heimsækir vefsíðu okkar https://web.archive.org/web/20221016155759/https://www.inspir.app, notar farsímaforrit okkar, eftir því sem við á („Appið“), og almennt notar einhverja þjónustu okkar („Þjónustan“, sem inniheldur vefsíðuna og appið), kunnum við að meta að þú treystir okkur fyrir persónuupplýsingum þínum. Við tökum persónuvernd þína mjög alvarlega. Í þessari persónuverndartilkynningu leitumst við við að útskýra eins skýrt og mögulegt er hvaða upplýsingum við söfnum, hvernig við notum þær og hvaða réttindi þú hefur í tengslum við þær. Við vonum að þú gefir þér tíma til að lesa hana vandlega, þar sem hún er mikilvæg. Ef einhver skilmáli í þessari persónuverndartilkynningu er þér ekki samþykkur skaltu hætta notkun þjónustu okkar þegar í stað. Þessi persónuverndartilkynning gildir um allar upplýsingar sem safnað er í gegnum þjónustu okkar (sem, eins og lýst er hér að ofan, inniheldur vefsíðuna og appið), sem og tengda þjónustu, sölu, markaðssetningu eða viðburði. Lestu þessa persónuverndartilkynningu vandlega þar sem hún hjálpar þér að skilja hvað við gerum við upplýsingarnar sem við söfnum. Skilmálar okkar stjórna allri notkun þjónustu okkar og ásamt persónuverndarstefnunni mynda þeir samning þinn við okkur („Samningur“)."
+    },
+    {
+      "key": "site.cb9e42e0794ef92f15",
+      "source": "That combination is more useful than either layer alone. A plain encyclopedia summary can be forgettable. Pure roleplay can be misleading. Voice plus evidence creates a better learning surface.",
+      "value": "Sú samsetning er gagnlegri en hvort lagið eitt og sér. Venjuleg alfræðisamantekt getur gleymst. Hreinn hlutverkaleikur getur verið villandi. Rödd auk sönnunargagna skapar betra námsyfirborð."
+    },
+    {
+      "key": "site.24bfafe7fcd793bad9",
+      "source": "That difference shows up in the flow. Instead of one giant response, the best sessions move through a loop: set a goal, try something, get feedback, repair the weak spot, and choose the next action.",
+      "value": "Sá munur birtist í flæðinu. Í stað eins risasvars fara bestu loturnar í gegnum lykkju: setja markmið, prófa eitthvað, fá endurgjöf, laga veika punktinn og velja næstu aðgerð."
+    },
+    {
+      "key": "site.268eb13efa27e9b28d",
+      "source": "That does not replace teachers, communities, books, or schools. It gives learners another route in. It can help a student start homework, a parent explain a concept, a self-taught builder learn code, or a curious person follow a question that might otherwise disappear.",
+      "value": "Það kemur ekki í stað kennara, samfélaga, bóka eða skóla. Það gefur nemendum aðra leið inn. Það getur hjálpað nemanda að byrja heimanám, foreldri að útskýra hugtak, sjálfmenntandi smið að læra kóða eða forvitinni manneskju að fylgja spurningu sem annars gæti horfið."
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Sú lokasamantekt er mikilvæg. Þegar þú útskýrir hugmyndina til baka sýnirðu hvað er traust og hvað er enn fengið að láni frá AI."
+    },
+    {
+      "key": "site.0470f1fc951f113fe7",
+      "source": "That focus matters. A general chatbot can answer almost anything, but a learning mode gives the conversation a shape. It nudges you toward the kind of thinking, practice, feedback, or exploration that helps the idea stick.",
+      "value": "Sú áhersla skiptir máli. Almennur spjallbot getur svarað næstum öllu, en námshamur gefur samtalinu form. Hann ýtir þér í átt að þeirri hugsun, æfingu, endurgjöf eða könnun sem hjálpar hugmyndinni að festast."
+    },
+    {
+      "key": "site.6cdfaef656eb34290d",
+      "source": "That gap is why an AI learning companion matters. A good companion does more than answer a question. It helps a learner choose a starting point, explains the idea in plain language, checks whether it made sense, and keeps going when the first explanation does not land.",
+      "value": "Þetta bil er ástæðan fyrir því að AI-námsfélagi skiptir máli. Góður félagi gerir meira en að svara spurningu. Hann hjálpar nemanda að velja upphafspunkt, útskýrir hugmyndina á einföldu máli, athugar hvort hún hafi skilst og heldur áfram þegar fyrsta útskýringin lendir ekki."
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Sú vísbending hjálpar nemandanum að byrja án þess að fjarlægja athöfnina að muna. Flashcard Builder hjá inspir er hannaður fyrir þessa sýna-og-meta lykkju: reyna fyrst, sýna síðan, meta heiðarlega og koma veikum spjöldum fyrr aftur."
+    },
+    {
+      "key": "site.589e7677c2025f653b",
+      "source": "That is a warning sign. Recognition is not recall. Reading a clear explanation is not the same as being able to solve a new problem, write a paragraph, or answer a question under pressure.",
+      "value": "Það er viðvörunarmerki. Að þekkja er ekki að rifja upp. Að lesa skýra útskýringu er ekki það sama og að geta leyst nýtt dæmi, skrifað málsgrein eða svarað spurningu undir þrýstingi."
+    },
+    {
+      "key": "site.01543c7d158fee3694",
+      "source": "That is especially important for homework. The useful question is not \"Can AI produce the answer?\" It usually can. The useful question is \"Can AI help the learner understand the path to the answer?\" That is why the guide on studying with AI without cheating yourself focuses on hints, checks, and transfer practice.",
+      "value": "Það er sérstaklega mikilvægt fyrir heimanám. Gagnlega spurningin er ekki \"Getur AI framleitt svarið?\" Það getur það yfirleitt. Gagnlega spurningin er \"Getur AI hjálpað nemandanum að skilja leiðina að svarinu?\" Þess vegna einblínir leiðarvísirinn um að læra með AI án þess að svindla á sjálfum sér á vísbendingar, athuganir og yfirfærsluæfingu."
+    },
+    {
+      "key": "site.e50e170a860c454100",
+      "source": "That is how inspir approaches historical conversation: a persona card, an in-character reply, and context notes that keep imagination connected to evidence.",
+      "value": "Þannig nálgast inspir söguleg samtöl: persónuspjald, svar í persónu og samhengisglósur sem halda ímyndun tengdri sönnunargögnum."
+    },
+    {
+      "key": "site.3e1b806040630fa184",
+      "source": "That is the standard inspir is aiming for: learning that feels accessible, personal, playful, and useful for anyone with curiosity and an internet connection.",
+      "value": "Það er staðallinn sem inspir stefnir að: nám sem finnst aðgengilegt, persónulegt, leikandi og gagnlegt öllum með forvitni og nettengingu."
+    },
+    {
+      "key": "site.167146118d846317c2",
+      "source": "That is the strength of Socratic learning. Instead of handing over the full answer immediately, the tutor asks a focused question. The learner makes a guess. The tutor tests that guess, offers a hint, and helps the learner notice what changed.",
+      "value": "Það er styrkur sókratísks náms. Í stað þess að afhenda allt svarið strax spyr kennarinn markvissrar spurningar. Nemandinn giskar. Kennarinn prófar þá ágiskun, býður vísbendingu og hjálpar nemandanum að taka eftir hvað breyttist."
+    },
+    {
+      "key": "site.84da0a4e3ebacc8dae",
+      "source": "That is what inspir's Socratic Instruction mode is built for: one question at a time, with hints before answers and synthesis after genuine thinking.",
+      "value": "Það er það sem Socratic Instruction-hamur inspir er byggður fyrir: eina spurningu í einu, með vísbendingum fyrir svör og samantekt eftir raunverulega hugsun."
+    },
+    {
+      "key": "site.8807179517ed4961f8",
+      "source": "That is why a Socratic AI tutor can feel slower at first and more powerful later. It trades the comfort of a finished explanation for the evidence that the learner is actually building the idea.",
+      "value": "Þess vegna getur sókratískur AI-einkakennari fundist hægari fyrst og öflugri síðar. Hann skiptir þægindum fullbúinnar útskýringar út fyrir sönnun um að nemandinn sé raunverulega að byggja hugmyndina."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Þess vegna skiptir virk upprifjun máli. Í stað þess að horfa á svarið reynir þú að sækja það úr minni. Áreynslan styrkir minnið og sýnir hvað þarf enn vinnu."
+    },
+    {
+      "key": "site.7b4f39d4e67c8e463f",
+      "source": "That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with Learn Anything. If you want to reason through a concept instead of being lectured, use Socratic Instruction. If you are stuck on an assignment, Homework Coach is a better fit than a generic answer engine. The format should serve the learning job.",
+      "value": "Þess vegna aðgreinir inspir námsverk í opinbera hami. Ef þú vilt milda útskýringu skaltu byrja með Learn Anything. Ef þú vilt rökhugsa í gegnum hugtak í stað fyrirlesturs skaltu nota Socratic Instruction. Ef þú ert föst/fastur í verkefni passar Homework Coach betur en almenn svarvél. Sniðið ætti að þjóna námsverkinu."
+    },
+    {
+      "key": "site.39bd49585733a4b7c0",
+      "source": "That kind of questioning turns history from a list into a context.",
+      "value": "Slík spurning breytir sögu úr lista í samhengi."
+    },
+    {
+      "key": "site.8319e387c9c67aabff",
+      "source": "That loop appears across the platform. Math Step Coach breaks a problem into steps. Flashcard Builder turns notes into recall practice. Quiz Me On Trivia adds pressure-tested retrieval. Writing Coach helps improve a draft without replacing the writer.",
+      "value": "Sú lykkja birtist um allan vettvanginn. Math Step Coach brýtur vandamál í skref. Flashcard Builder breytir glósum í upprifjunaræfingu. Quiz Me On Trivia bætir við upprifjun undir þrýstingi. Writing Coach hjálpar að bæta drög án þess að leysa rithöfundinn af hólmi."
+    },
+    {
+      "key": "site.bad49c0caffac284bf",
+      "source": "That loop is slower than copying, but it is much faster than staying confused.",
+      "value": "Sú lykkja er hægari en að afrita, en hún er miklu hraðari en að vera áfram ruglaður."
+    },
+    {
+      "key": "site.54759fbf425cba5ecf",
+      "source": "That rhythm is especially useful for abstract topics: opportunity cost, causation in history, literary interpretation, ethical tradeoffs, proof, probability, and argument structure. It can also support practical work. A learner can use Debate Any Topic after a Socratic session to test whether their reasoning survives pressure.",
+      "value": "Sá taktur er sérstaklega gagnlegur fyrir óhlutbundin efni: fórnarkostnað, orsakasamhengi í sögu, bókmenntatúlkun, siðferðilegar málamiðlanir, sannanir, líkur og rökauppbyggingu. Hann getur einnig stutt hagnýta vinnu. Nemandi getur notað Debate Any Topic eftir sókratíska lotu til að prófa hvort röksemdafærslan þoli þrýsting."
+    },
+    {
+      "key": "site.27dab9808cd949861d",
+      "source": "The AI should separate character from evidence. It can answer in a historically grounded voice, but it should also add notes when records are incomplete, interpretations differ, or the response is a reconstruction.",
+      "value": "AI ætti að aðgreina persónu frá sönnunargögnum. Það getur svarað með sögulega grunduðum rödd, en ætti líka að bæta við glósum þegar heimildir eru ófullnægjandi, túlkanir eru ólíkar eða svarið er endurgerð."
+    },
+    {
+      "key": "site.75315bf01cc1885d78",
+      "source": "The app is organized around teaching behaviors such as Socratic questioning, homework hints, quizzes, flashcards, roleplay, and planning.",
+      "value": "Appið er skipulagt í kringum kennsluhegðun eins og sókratískar spurningar, heimanámsvísbendingar, próf, spjöld, hlutverkaleik og skipulag."
+    },
+    {
+      "key": "site.ce7d73f3a107aa5b1d",
+      "source": "The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Forritið aðgreinir samtal í persónu frá stuttum samhengisathugasemdum um heimildir og óvissu."
+    },
+    {
+      "key": "site.9e0e0122b7452f3c5c",
+      "source": "The best AI learning sessions are not one long answer. They look more like a loop:",
+      "value": "Bestu AI-námsloturnar eru ekki eitt langt svar. Þær líta frekar út eins og lykkja:"
+    },
+    {
+      "key": "site.1a1cf3c6d5b17b8a3f",
+      "source": "The best homework help reduces friction without removing the student's responsibility to reason, explain, and revise.",
+      "value": "Besta heimanámshjálpin minnkar núning án þess að fjarlægja ábyrgð nemandans á að rökhugsa, útskýra og endurskoða."
+    },
+    {
+      "key": "site.06220ee349c07fc1d9",
+      "source": "The best learning sessions are adjustable. Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "Bestu námsloturnar eru stillanlegar. Spjöld spyrja um eitt atriði í einu og innihalda gildrur svo upprifjun byggi skilning, ekki bara þekkingu."
+    },
+    {
+      "key": "site.c20e2669eb9a8307b3",
+      "source": "The best learning sessions are adjustable. Instead of dropping a long answer, inspir helps you choose a simpler foundation, a deeper route, or a practical example.",
+      "value": "Bestu námsloturnar eru stillanlegar. Í stað þess að sleppa löngu svari hjálpar inspir þér að velja einfaldari grunn, dýpri leið eða hagnýtt dæmi."
+    },
+    {
+      "key": "site.ec83f7265003e782e6",
+      "source": "The best learning sessions are adjustable. The app separates in-character conversation from short context notes about records and uncertainty.",
+      "value": "Bestu námsloturnar eru stillanlegar. Appið aðgreinir samtal í persónu frá stuttum samhengisglósum um heimildir og óvissu."
+    },
+    {
+      "key": "site.922a420c7026ab0339",
+      "source": "The best learning sessions are adjustable. The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þjálfarinn gefur markvissa endurskoðunarforganga og fyrir-eftir dæmi án þess að skipta röddinni þinni út."
+    },
+    {
+      "key": "site.3d1d9646fe480cc908",
+      "source": "The best learning sessions are adjustable. The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þjálfarinn ýtir fram einu sterku mótröki í einu og fylgist með fullyrðingunum sem skipta máli."
+    },
+    {
+      "key": "site.6e0b033856e10c1ea5",
+      "source": "The best learning sessions are adjustable. The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þjálfarinn styður hugsun þína án þess að taka yfir verkefnið, svo lokaverkið er áfram þitt."
+    },
+    {
+      "key": "site.4ad449386f3d17a72b",
+      "source": "The best learning sessions are adjustable. The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Bestu námsloturnar eru stillanlegar. Rökræðan notar opinberan stíl og heimsmynd án þess að þykjast þekkja einkaskoðanir."
+    },
+    {
+      "key": "site.659e9d3407986296fb",
+      "source": "The best learning sessions are adjustable. The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Bestu námsloturnar eru stillanlegar. Flæðið athugar hvert skref, bendir á mistök og tengir verklag aftur við hugtakið."
+    },
+    {
+      "key": "site.4cea612e26c5e7669f",
+      "source": "The best learning sessions are adjustable. The journey stays anchored in state and evidence: what is known, what is reconstructed, what is speculative, and what your identity can realistically access.",
+      "value": "Bestu námsloturnar eru stillanlegar. Ferðin helst fest í stöðu og sönnunargögnum: hvað er vitað, hvað er endurgert, hvað er vangavelta og hvað sjálfsmynd þín getur raunhæft nálgast."
+    },
+    {
+      "key": "site.ff84e68a2a3cc1422f",
+      "source": "The best learning sessions are adjustable. The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "Bestu námsloturnar eru stillanlegar. Áætlunin forgangsraðar veikum svæðum, bætir við upprifjunarlykkjum og býr til varaplön fyrir daga sem misfarast."
+    },
+    {
+      "key": "site.1f436c04c40fc12895",
+      "source": "The best learning sessions are adjustable. The quiz mode hides answers until you respond, then turns every miss into a review point.",
+      "value": "Bestu námsloturnar eru stillanlegar. Prófahamurinn felur svör þar til þú svarar og breytir síðan hverju mistaki í upprifjunarpunkt."
+    },
+    {
+      "key": "site.007da0d5fec34b8de8",
+      "source": "The best learning sessions are adjustable. The tutor asks one question at a time, waits for your reasoning, and synthesizes only after you have tried.",
+      "value": "Bestu námsloturnar eru stillanlegar. Kennarinn spyr einnar spurningar í einu, bíður eftir röksemdafærslu þinni og samþættir aðeins eftir að þú hefur reynt."
+    },
+    {
+      "key": "site.d141671b2e97fafb47",
+      "source": "The best learning sessions are adjustable. The tutor asks what you expect code to do, then uses small examples and tests to make the behavior click.",
+      "value": "Bestu námsloturnar eru stillanlegar. Kennarinn spyr hvað þú búist við að kóði geri og notar síðan lítil dæmi og próf til að láta hegðunina smella."
+    },
+    {
+      "key": "site.7bf4a43bad030ecf01",
+      "source": "The best learning sessions are adjustable. This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Art Appreciation Guide með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.3c8f17290fb94720e8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for career explorer with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Career Explorer með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.89eb593551d1765144",
+      "source": "The best learning sessions are adjustable. This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Case Study Simulator með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.37d7e31bd7f829e03e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Civics Coach með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.b127ca5180c0e7e8d6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for collaborative instruction with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Collaborative Instruction með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.b4b3f444b35ee040db",
+      "source": "The best learning sessions are adjustable. This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Concept Map Builder með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.57d70690a659a69cd7",
+      "source": "The best learning sessions are adjustable. This mode is tuned for creative brainstormer with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Creative Brainstormer með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.5f83240a6661a6cb07",
+      "source": "The best learning sessions are adjustable. This mode is tuned for data interpreter with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Data Interpreter með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.5624c8b7c19c856656",
+      "source": "The best learning sessions are adjustable. This mode is tuned for economics simulator with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Economics Simulator með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.ed5222c4aa34700497",
+      "source": "The best learning sessions are adjustable. This mode is tuned for ethics dilemmas with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Ethics Dilemmas með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.92d6ee4de4db4a5885",
+      "source": "The best learning sessions are adjustable. This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Explain My Answer með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.fed812fcc12d84b5c0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Feynman Tutor með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.b717c1703a0a1aaa1e",
+      "source": "The best learning sessions are adjustable. This mode is tuned for geography explorer with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Geography Explorer með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.37b275d707271320dc",
+      "source": "The best learning sessions are adjustable. This mode is tuned for habit coach with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Habit Coach með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.1f3004d1a487e96efa",
+      "source": "The best learning sessions are adjustable. This mode is tuned for history cause-and-effect with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir History Cause-and-Effect með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.4155b990c943012934",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interactive instruction with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Interactive Instruction með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.d538ee1d99166025b9",
+      "source": "The best learning sessions are adjustable. This mode is tuned for interview coach with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Interview Coach með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.5e998d7d692da2949f",
+      "source": "The best learning sessions are adjustable. This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Language Roleplay með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.99c5fccd817a604436",
+      "source": "The best learning sessions are adjustable. This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Learning Game Master með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.381eeba7e188449be6",
+      "source": "The best learning sessions are adjustable. This mode is tuned for memory palace with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Memory Palace með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.58e2a4af3753ddfda8",
+      "source": "The best learning sessions are adjustable. This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Mindset Reflection með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.290701f5cfec3d0bcb",
+      "source": "The best learning sessions are adjustable. This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Misconception Doctor með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.deb1384d7a5201c378",
+      "source": "The best learning sessions are adjustable. This mode is tuned for motivation coach with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Motivation Coach með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.9649cc91122ebe4b8b",
+      "source": "The best learning sessions are adjustable. This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Music Theory Coach með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.d03b0f9ad77bda184a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for philosophy lab with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Philosophy Lab með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.4cfb49fe912063cee0",
+      "source": "The best learning sessions are adjustable. This mode is tuned for project coach with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Project Coach með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.6cc1353bb9fc928e33",
+      "source": "The best learning sessions are adjustable. This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Reading Companion með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.455fbc5a6719c257de",
+      "source": "The best learning sessions are adjustable. This mode is tuned for research assistant with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Research Assistant með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.3cdc84f4863160d8e2",
+      "source": "The best learning sessions are adjustable. This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Roleplay Scenario með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.ad61af8eff48ea3919",
+      "source": "The best learning sessions are adjustable. This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Science Lab Partner með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.1bd7d73da3868b9bad",
+      "source": "The best learning sessions are adjustable. This mode is tuned for source critic with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Source Critic með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.e1545261be90b270ce",
+      "source": "The best learning sessions are adjustable. This mode is tuned for spaced review with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Spaced Review með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.ba4bfbfca5b73b6302",
+      "source": "The best learning sessions are adjustable. This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Speaking Practice með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.3d1eed6269fece6796",
+      "source": "The best learning sessions are adjustable. This mode is tuned for story tutor with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Story Tutor með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.5492c7abba22a9708a",
+      "source": "The best learning sessions are adjustable. This mode is tuned for study plan builder with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Study Plan Builder með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.d7e5c6145dd7c11c71",
+      "source": "The best learning sessions are adjustable. This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Viva Practice með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.4e594b58dd36d39315",
+      "source": "The best learning sessions are adjustable. This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "Bestu námsloturnar eru stillanlegar. Þessi hamur er stilltur fyrir Vocabulary Builder með eigin fyrirmælum, dæmum og námsflæði."
+    },
+    {
+      "key": "site.8d2a6330ca29a54056",
+      "source": "The best outcome is not a perfect answer. It is the moment a learner says, \"I think I get it now. Let me try.\"",
+      "value": "Besta útkoman er ekki fullkomið svar. Hún er augnablikið þegar nemandi segir: \"Ég held að ég skilji þetta núna. Leyfðu mér að prófa.\""
+    },
+    {
+      "key": "site.c624880a3c3c2d1730",
+      "source": "The better use is feedback, structure, evidence checks, and revision coaching. You can ask it to preserve your voice and avoid replacing the work.",
+      "value": "Betri notkunin er endurgjöf, uppbygging, sönnunargagnaathuganir og endurskoðunarþjálfun. Þú getur beðið það að varðveita röddina þína og forðast að skipta verkinu út."
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Bloggið tengir gagnleg námsráð við lifandi æfingu, svo leiðbeining getur orðið að námslotu í einu skrefi."
+    },
+    {
+      "key": "site.3e56dabd81fd313004",
+      "source": "The blog is organized around pillar clusters, category hubs, related modes, prompt routes, structured data, and an AI-readable index so each guide can be understood and recommended in context.",
+      "value": "Bloggið er skipulagt í kringum stoðklasa, flokksmiðstöðvar, tengda hami, fyrirmælaleiðir, skipulögð gögn og AI-læsilegt yfirlit svo hver leiðbeining sé skiljanleg og hægt sé að mæla með henni í samhengi."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Víðari opni inspir-vettvangurinn."
+    },
+    {
+      "key": "site.29dee12216c74a74cf",
+      "source": "The builder balances ambition with review, practice, recovery days, and the next smallest useful action.",
+      "value": "Smiðurinn jafnar metnað við upprifjun, æfingu, hvíldardaga og minnsta næsta gagnlega skrefið."
+    },
+    {
+      "key": "site.f7b5f5878410efb6bb",
+      "source": "The categories of personal information we have collected about you. he categories of sources from which we collect your personal information. The business or commercial purpose for collecting or selling your personal information. The categories of third parties with whom we share personal information. The specific pieces of personal information we have collected about you. A list of categories of personal information that we have sold, along with the category of any other company we sold it to. If we have not sold your personal information, we will inform you of that fact. A list of categories of personal information that we have disclosed for a business purpose, along with the category of any other company we shared it with. Please note, you are entitled to ask us to provide you with this information up to two times in a rolling twelve-month period. When you make this request, the information provided may be limited to the personal information we collected about you in the previous 12 months.",
+      "value": "Flokkar persónuupplýsinga sem við höfum safnað um þig. Flokkar heimilda sem við söfnum persónuupplýsingum þínum frá. Viðskipta- eða markaðstilgangur söfnunar eða sölu persónuupplýsinga þinna. Flokkar þriðju aðila sem við deilum persónuupplýsingum með. Nákvæmu persónuupplýsingarnar sem við höfum safnað um þig. Listi yfir flokka persónuupplýsinga sem við höfum selt, ásamt flokki hvers annars fyrirtækis sem við seldum þær til. Ef við höfum ekki selt persónuupplýsingar þínar munum við upplýsa þig um það. Listi yfir flokka persónuupplýsinga sem við höfum birt í viðskiptatilgangi, ásamt flokki hvers annars fyrirtækis sem við deildum þeim með. Athugaðu að þú átt rétt á að biðja okkur um að veita þér þessar upplýsingar allt að tvisvar á rúllandi tólf mánaða tímabili. Þegar þú leggur fram þessa beiðni kunna upplýsingarnar sem veittar eru að takmarkast við persónuupplýsingar sem við söfnuðum um þig á síðustu 12 mánuðum."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Lokahnykkurinn snýr aftur að verkefninu: opinbert aðgengi, skólar og opnari leið til að læra."
+    },
+    {
+      "key": "site.fe92576ea03e200587",
+      "source": "The coach checks each move, names the rule, and repairs slips before moving forward.",
+      "value": "Þjálfarinn athugar hverja aðgerð, nefnir regluna og lagar mistök áður en haldið er áfram."
+    },
+    {
+      "key": "site.a0adf96de1375d5d48",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "Þjálfinn gefur markviss forgangsatriði fyrir endurskoðun og fyrir-og-eftir dæmi án þess að skipta út þínum eigin tóni."
+    },
+    {
+      "key": "site.cc04d54305bbe12e97",
+      "source": "The coach pushes one strong counterargument at a time and tracks the claims that matter.",
+      "value": "Þjálfarinn ýtir undir ein sterk mótrök í einu og fylgist með fullyrðingunum sem skipta máli."
+    },
+    {
+      "key": "site.332d2bf8600d9fb327",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "Þjálfinn styður hugsunina þína án þess að taka verkefnið yfir, svo lokavinnan er áfram þín."
+    },
+    {
+      "key": "site.a8129915cb2978c578",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "Þjálfinn breytir mistökum og hik í upprifjunaráætlun í stað enn einnar óvirkrar samantektar."
+    },
+    {
+      "key": "site.9f48b043be28768ae7",
+      "source": "The coding route connects code tutoring, project coaching, data interpretation, research, and concept mapping so learning happens through small testable steps.",
+      "value": "Forritunarleiðin tengir kóðakennslu, verkefnaþjálfun, gagnatúlkun, rannsóknir og hugtakakort svo nám gerist í litlum prófanlegum skrefum."
+    },
+    {
+      "key": "site.091a1a8b1148439190",
+      "source": "The common idea is simple: keep the learner active. AI should make thinking easier to start, not unnecessary to do.",
+      "value": "Sameiginlega hugmyndin er einföld: halda nemandanum virkum. AI ætti að gera auðveldara að byrja að hugsa, ekki óþarft að gera það."
+    },
+    {
+      "key": "site.ca06b087a01c80e9bf",
+      "source": "The community expanded through schools, universities, competitions, extracurricular programmes, and learner communities.",
+      "value": "Samfélagið stækkaði í gegnum skóla, háskóla, keppnir, utanskólanám og námssamfélög."
+    },
+    {
+      "key": "site.f4a459004391d62ea6",
+      "source": "The copy trap is subtle. It does not always feel like cheating. Sometimes it feels like being efficient. The AI explains something beautifully, you nod along, and then you move on. Ten minutes later you cannot reproduce the idea without the answer in front of you.",
+      "value": "Afritunargildran er lúmsk. Hún finnst ekki alltaf eins og svindl. Stundum finnst hún eins og skilvirkni. AI útskýrir eitthvað fallega, þú kinkar kolli og heldur áfram. Tíu mínútum síðar geturðu ekki endurskapað hugmyndina án svarsins fyrir framan þig."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Núverandi endurbygging inspirlearning.com."
+    },
+    {
+      "key": "site.3e5edc20387b59f6c5",
+      "source": "The debate uses public style and worldview without pretending to know private beliefs.",
+      "value": "Rökræðan notar opinberan stíl og heimsmynd án þess að þykjast þekkja einkaskoðanir."
+    },
+    {
+      "key": "site.3b584307e059abea92",
+      "source": "The difference is how you use it.",
+      "value": "Munurinn er hvernig þú notar það."
+    },
+    {
+      "key": "site.612f806fd20c077cb2",
+      "source": "The easiest version of an AI tutor is a box that gives polished answers. That is useful sometimes, but it is not enough. A learner who only receives answers can leave with the page finished and the skill unchanged.",
+      "value": "Auðveldasta útgáfan af AI-einkakennara er reitur sem gefur fáguð svör. Það er stundum gagnlegt, en ekki nóg. Nemandi sem fær aðeins svör getur farið með síðuna kláraða en færnina óbreytta."
+    },
+    {
+      "key": "site.5a53b3cfc2daf7a31c",
+      "source": "The exam route links planning, quizzes, flashcards, spaced review, and motivation so learners do not confuse rereading with readiness.",
+      "value": "Prófaleiðin tengir skipulag, próf, spjöld, dreifða upprifjun og hvatningu svo nemendur rugli ekki endurlestri saman við tilbúinleika."
+    },
+    {
+      "key": "site.475ac58da05f1fade6",
+      "source": "The fastest way to get value from Art Appreciation Guide is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Hraðasta leiðin til að fá gildi úr Art Appreciation Guide er að gefa AI námsverk, ekki bara efni. Efni segir hvað þú hefur áhuga á. Námsverk segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.6d6c7de0578b9a8252",
+      "source": "The fastest way to get value from Career Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Hraðasta leiðin til að fá gildi úr Career Explorer er að gefa AI námsverk, ekki bara efni. Efni segir hvað þú hefur áhuga á. Námsverk segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.14656dbab990993004",
+      "source": "The fastest way to get value from Case Study Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Hraðasta leiðin til að fá gildi úr Case Study Simulator er að gefa AI námsverk, ekki bara efni. Efni segir hvað þú hefur áhuga á. Námsverk segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.a018959dc9ed828f34",
+      "source": "The fastest way to get value from Civics Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Civics Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.afeae4d0ea2f0884cd",
+      "source": "The fastest way to get value from Code Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Code Tutor er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.00e230bdfaef352910",
+      "source": "The fastest way to get value from Collaborative Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Collaborative Instruction er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.e35fa66f8da0b77cd1",
+      "source": "The fastest way to get value from Concept Map Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Concept Map Builder er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.71b6a1a1c82878d97d",
+      "source": "The fastest way to get value from Creative Brainstormer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Creative Brainstormer er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.0fb1421c6cdad2ce8c",
+      "source": "The fastest way to get value from Data Interpreter is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Data Interpreter er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.af2d3a761529a138a6",
+      "source": "The fastest way to get value from Debate any topic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Debate any topic er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.ec8f7e2ce775793bbe",
+      "source": "The fastest way to get value from Debate with a personality is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Debate with a personality er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.df0a5925ece82adcd3",
+      "source": "The fastest way to get value from Economics Simulator is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Economics Simulator er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.7efe236a154ae18a44",
+      "source": "The fastest way to get value from Ethics Dilemmas is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Ethics Dilemmas er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.7191e6c8673cb8d711",
+      "source": "The fastest way to get value from Exam Prep Planner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Exam Prep Planner er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.dba342443d247cc5bb",
+      "source": "The fastest way to get value from Explain My Answer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Explain My Answer er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.46650dfa85cc68a416",
+      "source": "The fastest way to get value from Feynman Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Feynman Tutor er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.0f19d08b8582e21ef5",
+      "source": "The fastest way to get value from Flashcard Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Flashcard Builder er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.c6799bc50adc22a8b9",
+      "source": "The fastest way to get value from Geography Explorer is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Geography Explorer er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.46faf7f10e46cd08c6",
+      "source": "The fastest way to get value from Habit Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Habit Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.59b4782c7b6f87c7c3",
+      "source": "The fastest way to get value from History Cause-and-Effect is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af History Cause-and-Effect er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.9127eb70d19ff31080",
+      "source": "The fastest way to get value from Homework Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Homework Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.1d98efa37b7edad7e3",
+      "source": "The fastest way to get value from Interactive Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Interactive Instruction er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.86854a7ac33bd59382",
+      "source": "The fastest way to get value from Interview Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Interview Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.fbc5fd77cea85f0ff0",
+      "source": "The fastest way to get value from Language Roleplay is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Language Roleplay er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.c58f5f86a2d58666a9",
+      "source": "The fastest way to get value from Learn Anything is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Learn Anything er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.93069ba635277379cf",
+      "source": "The fastest way to get value from Learning Game Master is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Learning Game Master er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.375eef43396f6a3e0d",
+      "source": "The fastest way to get value from Math Step Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Math Step Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.addcf90fe78f2d3da0",
+      "source": "The fastest way to get value from Memory Palace is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Memory Palace er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.18ad3d9cd14319c7ab",
+      "source": "The fastest way to get value from Mindset Reflection is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Mindset Reflection er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.33b4474b99217796d1",
+      "source": "The fastest way to get value from Misconception Doctor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Misconception Doctor er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.1c6d68968a3651a90b",
+      "source": "The fastest way to get value from Motivation Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Motivation Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.4d94ea6faca8fe6be8",
+      "source": "The fastest way to get value from Music Theory Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Music Theory Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.fa6ed317e6d0ddb04d",
+      "source": "The fastest way to get value from Philosophy Lab is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Philosophy Lab er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.b39c6ce06fca9615c2",
+      "source": "The fastest way to get value from Project Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Project Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.918d3590de26fa6807",
+      "source": "The fastest way to get value from Quiz me on Trivia is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Quiz me on Trivia er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.cc27d54d05c46dae9a",
+      "source": "The fastest way to get value from Reading Companion is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Reading Companion er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.d91b13db3d10ed97fc",
+      "source": "The fastest way to get value from Research Assistant is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Research Assistant er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.ecc64645d229278f38",
+      "source": "The fastest way to get value from Roleplay Scenario is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Roleplay Scenario er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.5a59a16ad397a8dbbd",
+      "source": "The fastest way to get value from Science Lab Partner is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Science Lab Partner er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.383226646c99ad6dd2",
+      "source": "The fastest way to get value from Socratic Instruction is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Socratic Instruction er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.a9cc3723bd540fcee0",
+      "source": "The fastest way to get value from Source Critic is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Source Critic er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.8e98aca843d5ee1daa",
+      "source": "The fastest way to get value from Spaced Review is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Spaced Review er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.2da55cf2ce1d9e1320",
+      "source": "The fastest way to get value from Speaking Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Speaking Practice er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.8c4476d71a53fba638",
+      "source": "The fastest way to get value from Story Tutor is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Story Tutor er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.8876684461efdb35b2",
+      "source": "The fastest way to get value from Study Plan Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Study Plan Builder er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.a927bb4ab08bb6e8f3",
+      "source": "The fastest way to get value from Talk to a historical person is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Talk to a historical person er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.0c95eb4aa13aa085c8",
+      "source": "The fastest way to get value from Time travel is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Time travel er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.91e7f42fbc8f26ed39",
+      "source": "The fastest way to get value from Viva Practice is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Viva Practice er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.135bf5f80889a86380",
+      "source": "The fastest way to get value from Vocabulary Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Vocabulary Builder er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.4212b4a5fef68148a4",
+      "source": "The fastest way to get value from Writing Coach is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Fljótlegasta leiðin til að fá gagn af Writing Coach er að gefa AI-kerfinu námsverkefni, ekki bara efni. Efni segir hvað vekur áhuga þinn. Námsverkefni segir hvers konar hjálp þú þarft."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Myndin færist frá innblæstri yfir í hagnýta loforðið: þolinmóðan AI-námsfélaga."
+    },
+    {
+      "key": "site.85523a4e15b7dfde53",
+      "source": "The first layer is the roleplay. It can speak in an accessible voice, explain motives, and make the situation vivid. This is the part that helps memory.",
+      "value": "Fyrsta lagið er hlutverkaleikurinn. Hann getur talað með aðgengilegri rödd, útskýrt hvatir og gert aðstæðurnar lifandi. Þetta er hlutinn sem styður minnið."
+    },
+    {
+      "key": "site.4302f6b9fe360e2e28",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "Flæðið yfirfer hvert skref, bendir á smávillur og tengir aðferðirnar aftur við hugtakið."
+    },
+    {
+      "key": "site.e696316178c72e9eb7",
+      "source": "The formal privacy page for data use, rights, and public service conditions.",
+      "value": "Formlega persónuverndarsíðan um gagnanotkun, réttindi og skilyrði fyrir opinbera þjónustu."
+    },
+    {
+      "key": "site.880ee7075c5a4ca8d5",
+      "source": "The formal terms covering acceptable use, account responsibilities, and service conditions.",
+      "value": "Formlegu skilmálarnir um viðunandi notkun, ábyrgð reikninga og þjónustuskilyrði."
+    },
+    {
+      "key": "site.4f1dc6282cf6f920c7",
+      "source": "The format should serve the learning job.",
+      "value": "Sniðið ætti að þjóna námsverkefninu."
+    },
+    {
+      "key": "site.22709d194a67273db8",
+      "source": "The format works because it lets learners ask questions such as:",
+      "value": "Sniðið virkar vegna þess að það leyfir nemendum að spyrja spurninga eins og:"
+    },
+    {
+      "key": "site.bc52d008afb471a9ae",
+      "source": "The goal is confidence",
+      "value": "Markmiðið er öryggi"
+    },
+    {
+      "key": "site.f777057783c50c7b62",
+      "source": "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "value": "Markmiðið er uppgötvun og tilvísun í opinberar námssíður. Opinberar slóðir, leiðarvísar og námsmiðstöðvar eru opnar helstu AI-leit, endurheimt og aðstoðarskriðum, en API-, stjórnenda-, endurstillingar- og einka nytjaslóðir eru áfram bannaðar."
+    },
+    {
+      "key": "site.e125c23e696524bee3",
+      "source": "The goal is not to make the AI the authority. The goal is to make learners ask better historical questions.",
+      "value": "Markmiðið er ekki að gera AI að yfirvaldinu. Markmiðið er að hjálpa nemendum að spyrja betri sögulegra spurninga."
+    },
+    {
+      "key": "site.fb6db6b2a3c1a5b24d",
+      "source": "The history route gives learners the liveliness of role-play and debate while preserving the warning that simulations are not primary sources.",
+      "value": "Söguleiðin gefur nemendum lífleika hlutverkaleiks og rökræðu en heldur í viðvörunina um að eftirlíkingar séu ekki frumheimildir."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Heimavinnu- og sókratísku hamirnir eru hannaðir í kringum vísbendingar, rökhugsun, skrefaskoðanir og útskýringar nemenda í stað þess að afhenda einfaldlega fullbúin svör."
+    },
+    {
+      "key": "site.e769b2568e20189fbf",
+      "source": "The homework route makes the contract visible: ask for a hint, check a step, improve a draft, critique a source, then prove the learning with review.",
+      "value": "Heimanámsleiðin gerir samninginn sýnilegan: biðja um vísbendingu, athuga skref, bæta uppkast, gagnrýna heimild og sýna svo námið með upprifjun."
+    }
+  ]
+}

@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Hebrew",
+  "locale": "he",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למאמן אזרחות עם הנחיות, דוגמאות ותהליך למידה ייעודיים."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "הבינו זכויות, ממשל וחברה"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאימו את המפגש למטרה שלכם"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "איך הצעת חוק הופכת לחוק?"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "הסבר על זכויות יסוד"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "מה עושה בית משפט?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "מדריך להערכת אמנות"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "התבונן מקרוב ושים לב ליותר"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "חקור יצירות אמנות, סגנונות, אמנים, בחירות ויזואליות ומה הופך תמונה לעוצמתית."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "איזו יצירת אמנות, אמן או סגנון?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "יצירתיות"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "חקור יצירות אמנות, סגנונות, אמנים, בחירות ויזואליות ומה הופך תמונה לעוצמתית."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי יצירתיות שרוצים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למדריך להערכת אמנות עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "התבונן מקרוב ושים לב ליותר"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "הסבר על אימפרסיוניזם"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "איך אני מסתכל על ציור?"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "השווה בין אמנות הרנסאנס לאמנות מודרנית"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "מאמן תיאוריה מוזיקלית"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "הבן צליל, קצב והרמוניה"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "למד תווים, אקורדים, סולמות, קצב, רעיונות לאימון שמיעה ואיך שירים בנויים."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "על איזה רעיון מוזיקלי כדאי שנעבוד?"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "יצירתיות"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "למד תווים, אקורדים, סולמות, קצב, רעיונות לאימון שמיעה ואיך שירים בנויים."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי יצירתיות שרוצים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למאמן תיאוריה מוזיקלית עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "הבנת סאונד, קצב והרמוניה"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "הסבר על מז'ור ומינור"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "איך אקורדים עובדים?"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "לימוד יסודות הקצב"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "רפלקציית חשיבה"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "חשוב על הדרך שבה אתה לומד"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "שים לב למה שעוזר לך ללמוד, מה מפריע לך, ואיך להפוך ללומד חזק יותר."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "על איזה רגע למידה כדאי לנו להרהר?"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "תכנון"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "שים לב למה שעוזר לך ללמוד, מה מפריע לך, ואיך להפוך ללומד חזק יותר."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים שחוקרים נושאי תכנון ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מכוון לרפלקציית חשיבה עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "חשוב על הדרך שבה אתה לומד"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "למה נמנעתי מללמוד?"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "רפלקציה לאחר מבחן גרוע"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "איזו אסטרטגיית למידה מתאימה לי?"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "מאסטר משחקי למידה"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "הפוך את הלמידה לאתגר"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "הפוך את הלמידה למשחק עם משימות, שלבים, נקודות, אתגרים ושלבי בוס."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "מה צריך להפוך למשחק למידה?"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "תרגול"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "הפכו את הלמידה למשחק עם משימות, שלבים, נקודות, אתגרים וסיבובי בוס."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים שחוקרים נושאי תרגול ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם ללמידה משחקית עם הנחיות, דוגמאות וזרימת למידה ייחודית משלו."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "הפכו את הלימודים לאתגר"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאימו את הסשן למטרה שלכם"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "הפכו את הביולוגיה למשימה"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "הפכו את אוצר המילים לשלבים"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "צרו קרב בוס במתמטיקה"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "תרגול בחינה בעל פה"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "התכוננו לשאלות בעל פה"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "תרגלו בחינות בעל פה, הגנות על פרויקטים ושאלות המשך מהירות עם משוב רגוע."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "לאיזו בחינה בעל פה אתם מתכוננים?"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "תרגול"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "תרגלו בחינות בעל פה, הגנות על פרויקטים ושאלות המשך מהירות עם משוב רגוע."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים שחוקרים נושאי תרגול ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לתרגול בחינות בעל פה עם הנחיות, דוגמאות וזרימת למידה ייחודית משלו."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "התכוננו לשאלות בעל פה"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחילו עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאימו את הסשן למטרה שלכם"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "תרגול בחינה בעל פה על פרויקט המדע שלי"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "שאלו אותי שאלות להגנת התזה"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "שאלות תרגול למבחן מעשי"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "טיימר למידה"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "טיימר פומודורו מתמשך עם התראות"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "הפעל סשנים של ריכוז והפסקות שממשיכים לפעול בזמן שאתה עובר בין צ'אטים, כרטיסיות ואפליקציות קטנות. הוא יכול לצלצל מהרקע כשהסשן מסתיים."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "על מה צריך להיות סשן הריכוז הזה?"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "ריכוז ופרודוקטיביות"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "הפעל סשנים של ריכוז והפסקות שממשיכים לפעול בזמן שאתה עובר בין צ'אטים, כרטיסיות ואפליקציות קטנות. הוא יכול לצלצל מהרקע כשהסשן מסתיים."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים שחוקרים נושאי ריכוז ופרודוקטיביות ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לטיימר למידה עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "טיימר פומודורו מתמשך עם התראות"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "התחל סשן ביולוגיה של 25 דקות"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "קבע קצב עבודה עמוקה של 50/10"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "עקוב אחר הריכוז בכתיבת חיבור"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "מוזיקה לריכוז"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "אודיו לריכוז ברקע שממשיך להתנגן"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "בחר אודיו לריכוז שנוצר במיוחד עבור קריאה, כתיבה, פתרון בעיות או עבודה עמוקה. הוא ממשיך להתנגן בזמן שאתה עובר לצ'אטים אחרים."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "איזה סוג של ריכוז אתה מחפש היום?"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "ריכוז ופרודוקטיביות"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "בחר אודיו לריכוז שנוצר במיוחד עבור קריאה, כתיבה, פתרון בעיות או עבודה עמוקה. הוא ממשיך להתנגן בזמן שאתה עובר לצ'אטים אחרים."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים שחוקרים נושאי ריכוז ופרודוקטיביות ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למוזיקה לריכוז עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "אודיו לריכוז ברקע שממשיך להתנגן"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "הפעל מוזיקה רגועה לריכוז בקריאה"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "הגדר אודיו לעבודה עמוקה"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "השתמש בצלילי גשם לחזרה על חומר"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "לוח ציור/סקיצות"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "חשוב באמצעות תרשימים וויזואליזציות גולמיות"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "השתמש בשרטוט ככלי למידה: תכנן תרשימים, סמן מפות גולמיות, הסבר תהליכים או הפוך רעיון מבולגן לוויזואליה ברורה יותר."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "מה כדאי לנו לצייר או לשרטט?"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "למידה חזותית"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "השתמש בשרטוט ככלי למידה: תכנן תרשימים, סמן מפות גולמיות, הסבר תהליכים או הפוך רעיון מבולגן לוויזואליה ברורה יותר."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי למידה חזותית ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם ללוח ציור/סקיצות עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "חשוב באמצעות תרשימים וויזואליזציות גולמיות"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "שרטט תרשים של תא"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "צייר גרף היצע וביקוש"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "מפה את הגורמים למלחמת העולם הראשונה"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "בונה מבחני תרגול"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "בנה מבחן מלא מהחומר שלך"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "הפוך נושא, סילבוס או סיכומים למבחן תרגול ריאלי עם חלקים, תזמון, הנחיות לציון ושלבי סקירה."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "מה צריך לכלול מבחן התרגול?"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "למידה פעילה"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "הפוך נושא, סילבוס או סיכומים למבחן תרגול ריאלי עם חלקים, תזמון, הנחיות לציון ושלבי סקירה."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי למידה פעילה ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם לבניית מבחני תרגול עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "בנה מבחן מלא מהחומר שלך"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "בנה מבחן יחידה בביולוגיה"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "צור מבחן תרגול משולב במתמטיקה"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "צור עבודת היסטוריה בסגנון בחינה"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "מאמן ניתוח תמונות"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "הסק מסקנות מצילומי מסך, תרשימים ותמונות של שיעורי בית"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "תאר או הדבק פרטים מתמונה וקבל עזרה בקריאת תרשימים, גרפים, בעיות, הערות בכתב יד או ראיות חזותיות."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "תאר את התמונה או הדבק את מה שגלוי לעין"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "עזרה מבוססת בינה מלאכותית"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "תאר או הדבק פרטים מתמונה וקבל עזרה בקריאת תרשימים, גרפים, בעיות, הערות בכתב יד או ראיות חזותיות."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי עזרה מבוססת בינה מלאכותית ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למאמן ניתוח תמונות עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "הסק מסקנות מצילומי מסך, תרשימים ותמונות של שיעורי בית"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "עזור לי לקרוא את התרשים הזה"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "נתח גרף מתוך ספר הלימוד שלי"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "הסבר מה רואים בצילום המסך הזה"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "שיטת קורנל לרישום הערות"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "ארגן הערות לרמזים, פרטים וסיכום"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "המר הרצאות, קריאות או הערות גולמיות לשיטת קורנל עם שאלות רמז, הערות ליבה, סיכום והנחיות לחזרה."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "הדבק הערות או תן שם לשיעור"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "ארגון"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "המר הרצאות, קריאות או הערות גולמיות לשיטת קורנל עם שאלות רמז, הערות ליבה, סיכום והנחיות לחזרה."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ארגון ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם להערות קורנל עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "ארגן הערות לרמזים, פרטים וסיכום"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "הפוך את ההרצאה הזו להערות קורנל"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "צור שאלות רמז לפרק 3"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "סכם את ההערות הגולמיות שלי"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "מחולל ציטוטים"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "בנה הפניות בפורמטים נפוצים"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "צור ערכי ביבליוגרפיה בפורמט APA, MLA, Chicago, Harvard או פשוט מפרטי המקור תוך בדיקת שדות חסרים."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "הדבק את פרטי המקור או מידע ה-URL"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "עזרה ב-AI"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "צור ערכי ביבליוגרפיה בפורמט APA, MLA, Chicago, Harvard או פשוט מפרטי המקור תוך בדיקת שדות חסרים."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי עזרה ב-AI ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למחולל ציטוטים עם הנחיות, דוגמאות ותהליך למידה משלו."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "בנה הפניות בפורמטים נפוצים"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את המפגש למטרה שלך"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "צור ציטוט בפורמט APA"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "עצב את האתר הזה בפורמט MLA"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "בדוק אילו שדות חסרים בציטוט שלי"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "מסכם טקסט"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "צמצם חומרי קריאה לסיכומי למידה שימושיים"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "סכם טקסט ארוך לרעיונות מרכזיים, מבנה, הגדרות, דוגמאות ושאלות חזרה."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "הדבק את הטקסט לסיכום"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "עזרה מבוססת AI"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "סכם טקסט ארוך לרעיונות מרכזיים, מבנה, הגדרות, דוגמאות ושאלות חזרה."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי עזרה מבוססת AI ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למסכם טקסט עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "צמצם חומרי קריאה לסיכומי למידה שימושיים"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "סכם את המאמר הזה"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "חלץ נקודות מפתח מהסיכומים שלי"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "צור סיכום פרק"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "מחולל מדריכי למידה"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "הפוך חומר לימודי למדריך חזרה"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "בנה מדריך למידה עם מטרות, סיכומי מושגים, דוגמאות, טעויות נפוצות, שאלות תרגול ותוכנית חזרה."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "איזה חומר להפוך למדריך למידה?"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "עזרה מבוססת AI"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "בנה מדריך למידה עם מטרות, סיכומי מושגים, דוגמאות, טעויות נפוצות, שאלות תרגול ותוכנית חזרה."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי עזרה מבוססת AI ומחפשים הדרכה מעשית במקום תיבת תשובה גנרית."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למחולל מדריכי למידה עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "הפוך חומר לימודי למדריך חזרה"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "צור מדריך על פוטוסינתזה"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "הפוך את הסיכומים שלי לדף חזרה"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "בנה מדריך למידה למבחני גמר"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "מחשבון ציונים וממוצע (GPA)"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "חזה ציונים ותכנן יעדי ציון"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "חשב ציונים משוקללים, תרחישי ממוצע, ציונים נדרשים במבחני גמר ותכניות 'מה אם' לסמסטר."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "שתף את משקלי הציונים והתוצאות שלך"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "ארגון"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "חשב ציונים משוקללים, תרחישי ממוצע, ציונים נדרשים במבחני גמר ותכניות 'מה אם' לסמסטר."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי ארגון ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם למחשבון ציונים וממוצע עם הנחיות, דוגמאות ותהליך למידה ייעודי."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "חזה ציונים ותכנן יעדי ציון"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחל עם דוגמאות להנחיות"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאם את הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "איזה ציון אני צריך במבחן הגמר?"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "חשב את הציון המשוקלל שלי"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "תכנן את יעד הממוצע שלי"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "יוצר מפות חשיבה"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "פצל נושא לרעיונות מקושרים"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "צור מפת חשיבה לסיעור מוחות, חזרה, תכנון או קישור מושגים לפני כתיבה או למידה."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "איזה נושא להפוך למפת חשיבה?"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "למידה חזותית"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "צרו מפת חשיבה לסיעור מוחות, חזרה, תכנון או חיבור רעיונות לפני כתיבה או למידה."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי למידה חזותית ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם ליצירת מפות חשיבה עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "פיצול נושא לרעיונות מקושרים"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "מפת חשיבה ללמידת מכונה"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "מיפוי חיבור בהיסטוריה"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "סיעור מוחות לפרויקט מדעים"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "יעדי למידה יומיים"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "הגדירו ועקבו אחר יעדי הלמידה של היום"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "תכננו מערך ריאלי של יעדי למידה יומיים עם הערכות מאמץ, סדרי עדיפויות, בדיקת קשיים וטקס סקירה מהיר."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "מה תרצה להספיק היום?"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "גיימיפיקציה"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "תכננו מערך ריאלי של יעדי למידה יומיים עם הערכות מאמץ, סדרי עדיפויות, בדיקת קשיים וטקס סקירה מהיר."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "לומדים החוקרים נושאי גיימיפיקציה ומחפשים הדרכה מעשית במקום תיבת תשובות גנרית."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "מצב זה מותאם ליעדי למידה יומיים עם הנחיות, דוגמאות ותהליך למידה ייחודיים משלו."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "הגדרה ומעקב אחר יעדי הלמידה של היום"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "התחלה עם הנחיות לדוגמה"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "התאמת הסשן למטרה שלך"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "הגדר שלושה יעדים להיום"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "הפוך את היעדים שלי לריאליים"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "סקור את יעדי הלמידה שלי"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "טיימר משימות"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "מדדו זמן למשימות בודדות וראו את המאמץ שהושקע"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "חלקו את העבודה למשימות בעלות שם, מדדו זמן לכל אחת מהן, ובדקו לאן הופנה מאמץ הלמידה לאחר כל סשן ממוקד."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "איזו משימה נמדוד?"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "מיקוד ופרודוקטיביות"
+    }
+  ]
+}

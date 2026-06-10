@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Sinhala",
+  "locale": "si",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "සමාජ මාධ්‍ය හානිකරද?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "ගෙදර වැඩ තිබිය යුතුද?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "අභ්‍යවකාශ ගවේෂණය වටිනවාද?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "මගේ පිළිතුර පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "පිළිතුරක් නිවැරදි වන්නේ ඇයිදැයි තේරුම් ගන්න"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "ප්‍රශ්නයක්, ඔබේ පිළිතුර සහ ඔබ සතුව ඇත්නම් අපේක්ෂිත පිළිතුර අලවන්න. ඔබේ සහකරු තර්කය පැහැදිලි කරන අතර ඊළඟ වතාවේ එම වැරැද්දම සිදු නොවීමට ඔබට උපකාර කරයි."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "ප්‍රශ්නය සහ ඔබේ පිළිතුර අලවන්න"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "පුහුණුව"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "ප්‍රශ්නයක්, ඔබේ පිළිතුර සහ ඔබ සතුව ඇත්නම් අපේක්ෂිත පිළිතුර අලවන්න. ඔබේ සහකරු තර්කය පැහැදිලි කරන අතර ඊළඟ වතාවේ එම වැරැද්දම සිදු නොවීමට ඔබට උපකාර කරයි."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන පුහුණු මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන්."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ මගේ පිළිතුර පැහැදිලි කිරීම සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "පිළිතුරක් නිවැරදි වන්නේ ඇයිදැයි තේරුම් ගන්න"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "සැසිය ඔබේ ඉලක්කයට අනුව සකස් කරගන්න"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "මගේ වීජ ගණිත පිළිතුර වැරදි ඇයි?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "මෙම ව්‍යාකරණ නිවැරදි කිරීම පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "මම B තෝරා ගත්තා. C නිවැරදි වන්නේ ඇයි?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "ගෙදර වැඩ පුහුණුකරු"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "පිළිතුරු ලබා නොදී ඉඟි ලබා දීම"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "ඔබටම සිතා බැලීමට උපකාර වන ඉඟි, උදාහරණ සහ පරීක්ෂාවන් සමඟ ගෙදර වැඩවලදී හිර නොවී ඉදිරියට යන්න."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "ඔබ හිර වී සිටින ගෙදර වැඩ ගැටලුව කුමක්ද?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "පුහුණුව"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "සදාචාරාත්මක ඉඟි, උදාහරණ, පරීක්ෂාවන් සහ පියවරෙන් පියවර පුහුණු කිරීම් සමඟ ගෙදර වැඩවලදී හිර නොවී ඉදිරියට යන්න."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "ගැටලුවක් ආරම්භ කිරීමට, වැඩ පරීක්ෂා කිරීමට හෝ වැරැද්දක් තේරුම් ගැනීමට උදව් අවශ්‍ය සිසුන්."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "පුහුණුකරු ඔබේ පැවරුම භාර නොගෙන ඔබේ චින්තනයට සහය දක්වයි, එබැවින් අවසාන කාර්යය ඔබ සතු වේ."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "ඊළඟ පියවර සොයා ගන්න"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "වැරැද්ද තේරුම් ගන්න"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "සමාන ගැටලුවක් පුහුණු වන්න"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "මෙම වචන ගැටලුව ආරම්භ කිරීමට මට උදව් කරන්න"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "මගේ රචනයේ තීසිස් එක පරීක්ෂා කරන්න"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "මෙම භෞතික විද්‍යා ගැටලුව සඳහා මට ඉඟියක් දෙන්න"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "ගණිත පියවර පුහුණුකරු"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "ගණිතය එක් වරකට එක් පියවරක් බැගින් විසඳන්න"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "සෑම පියවරක්ම තේරුම් ගනිමින් ගණිතය විසඳන්න. ඔබේ පුහුණුකරු ඔබේ වැඩ පරීක්ෂා කර, වැරදි පෙන්වා දී, ඔබේ විශ්වාසය ගොඩනඟයි."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "අපි විසඳිය යුතු ගණිත ගැටලුව කුමක්ද?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "AI පුහුණුකරුවෙකු සමඟ වීජ ගණිතය, කලනය, වචන ගැටලු සහ ගණිත සංකල්ප එක් වරකට එක් පියවරක් බැගින් විසඳන්න."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "පිළිතුර පිටපත් කිරීමට පමණක් නොව, සෑම ගණිත පියවරක්ම ක්‍රියා කරන්නේ ඇයි දැයි දැන ගැනීමට කැමති ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "මෙම ක්‍රියාවලිය සෑම පියවරක්ම පරීක්ෂා කරයි, වැරදි පෙන්වා දෙයි, සහ ක්‍රියා පටිපාටි සංකල්පය සමඟ සම්බන්ධ කරයි."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "පළමු පියවර තෝරන්න"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "සෑම පියවරක්ම පරීක්ෂා කරන්න"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "මෙම ක්‍රමය ක්‍රියා කරන්නේ ඇයි දැයි පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "මා සමඟ 2x + 5 = 17 විසඳන්න"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "වර්ගජ සමීකරණ සඳහා උදව් කරන්න"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "අවකලනය පියවරෙන් පියවර පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "විද්‍යාගාර සහකරු"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "අත්හදා බැලීම් සහ සංකල්ප ආරක්ෂිතව ගවේෂණය කරන්න"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "ආරක්ෂිත නිරූපණ සැලසුම් කරන්න, විචල්‍යයන් තේරුම් ගන්න, ප්‍රතිඵල පුරෝකථනය කරන්න, සහ විද්‍යාඥයෙකු මෙන් සාක්ෂි මත පදනම්ව තර්ක කරන්න."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "අපි ගවේෂණය කරන විද්‍යාත්මක අදහස හෝ අත්හදා බැලීම කුමක්ද?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "STEM"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "ආරක්ෂිත පරීක්ෂණ සැලසුම් කරන්න, විචල්‍යයන් තේරුම් ගන්න, ප්‍රතිඵල පුරෝකථනය කරන්න සහ විද්‍යාඥයෙකු මෙන් සාක්ෂි මත පදනම්ව තර්ක කරන්න."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන STEM මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ විද්‍යාගාර සහකරුවෙකු සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "පරීක්ෂණ සහ සංකල්ප ආරක්ෂිතව ගවේෂණය කරන්න"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කය අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "ශාක වර්ධන පරීක්ෂණයක් සැලසුම් කරන්න"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "අම්ල සහ භෂ්ම පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "අපි උෂ්ණත්වය වෙනස් කළහොත් කුමක් සිදුවේද?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "ලිවීමේ පුහුණුකරු"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "සැලසුම් කරන්න, කෙටුම්පත් කරන්න, සංශෝධනය කරන්න සහ ලිවීම ශක්තිමත් කරන්න"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "ඔබේ ස්වරය නොවෙනස්ව තබා ගනිමින් ඉලක්කගත ප්‍රතිපෝෂණ සමඟ රචනා, කථා, ඊමේල් සහ තර්ක වැඩිදියුණු කරන්න."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "ඔබ ලියන්නේ කුමක්ද?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "සන්නිවේදනය"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "ඔබේ ස්වරය නොවෙනස්ව තබා ගනිමින් සැලසුම් කිරීම, සංශෝධනය කිරීම, ව්‍යුහය සහ ප්‍රතිපෝෂණ සමඟ ලිවීම වැඩිදියුණු කරන්න."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "රචනා, කථා, ඊමේල්, ශිෂ්‍යත්ව සටහන් හෝ තර්ක ලියන ඉගෙනුම්කරුවන් සඳහා."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "මෙම පුහුණුකරු ඔබේ ස්වරය වෙනස් නොකර ඉලක්කගත සංශෝධන ප්‍රමුඛතා සහ පෙර-පසු උදාහරණ ලබා දෙයි."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "ඔබේ අදහස පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "ව්‍යුහය වැඩිදියුණු කරන්න"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "හේතුවක් සහිතව සංශෝධනය කරන්න"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "මගේ රචනා හැඳින්වීම වැඩිදියුණු කරන්න"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "කතාවක් ගොඩනැගීමට මට උදව් කරන්න"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "මෙම ඡේදය වඩාත් පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "කියවීමේ සහායකයා"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "කියවන්න, සාරාංශ කරන්න සහ පෙළ පිළිබඳ ප්‍රශ්න අසන්න"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ඡේදයක් හෝ පොතක් පිළිබඳ අදහසක් ගෙනැවිත් සාරාංශ, වචන මාලාව, අනුමාන කිරීම් සහ සාකච්ඡා හරහා අවබෝධය වර්ධනය කරගන්න."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "අපි කියවන්නේ කුමක්ද?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "සන්නිවේදනය"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ඡේදයක් හෝ පොතක් පිළිබඳ අදහසක් ගෙනැවිත් සාරාංශ, වචන මාලාව, අනුමාන කිරීම් සහ සාකච්ඡා හරහා අවබෝධය වර්ධනය කරගන්න."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන සන්නිවේදන මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ කියවීමේ සහායකයා සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "කියවන්න, සාරාංශ කරන්න සහ පෙළ පිළිබඳ ප්‍රශ්න අසන්න"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "මෙම ඡේදය තේරුම් ගැනීමට මට උදව් කරන්න"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "2 වන පරිච්ඡේදය සාරාංශ කරන්න"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "මෙම කවිය ගැන මගෙන් ප්‍රශ්න අසන්න"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "වචන මාලා ගොඩනැගීම"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "සන්දර්භය තුළ වචන ඉගෙන ගන්න"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "අර්ථය, උදාහරණ, උච්චාරණ ඉඟි, මතක තබා ගැනීමේ ක්‍රම සහ ඉක්මන් පුහුණුවීම් සමඟ වචන මාලාව ගොඩනඟන්න."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "අපි පුහුණු විය යුත්තේ කුමන වචන හෝ මාතෘකාවද?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "සන්නිවේදනය"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "අර්ථය, උදාහරණ, උච්චාරණ ඉඟි, මතක තබා ගැනීමේ ක්‍රම සහ ඉක්මන් පුහුණුවීම් සමඟ වචන මාලාව ගොඩනඟන්න."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන සන්නිවේදන මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ වචන මාලා ගොඩනැගීම සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "සන්දර්භය තුළ වචන ඉගෙන ගන්න"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ආදර්ශ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "SAT වචන මාලාව"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "ව්‍යාපාරික ඉංග්‍රීසි වචන"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "කාලගුණය පිළිබඳ වචන"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "භාෂා භූමිකා රංගනය"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "සැබෑ සංවාද පුහුණු වන්න"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "ආපනශාලා, සම්මුඛ පරීක්ෂණ, සංචාර සහ දෛනික ජීවිතය වැනි යථාර්ථවාදී අවස්ථාවන්හිදී භාෂාවක් පුහුණු වන්න, සෑම වාරයකටම පසු නිවැරදි කිරීම් ලබා ගන්න."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "කුමන භාෂාව සහ කුමන අවස්ථාවද?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "සන්නිවේදනය"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "ආපනශාලා, සම්මුඛ පරීක්ෂණ, සංචාර සහ දෛනික ජීවිතය වැනි යථාර්ථවාදී අවස්ථාවන්හිදී භාෂාවක් පුහුණු වන්න, සෑම වාරයකටම පසු නිවැරදි කිරීම් ලබා ගන්න."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු කොටුවකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන සන්නිවේදන මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ භාෂා භූමිකා රංගනය සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "සැබෑ සංවාද පුහුණු වන්න"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "ස්පාඤ්ඤ ආපනශාලා භූමිකා රංගනය"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "ප්‍රංශ ගුවන් තොටුපළ සංවාදය"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "හින්දි වෙළඳපොළ කේවල් කිරීම"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "කථන පුහුණුව"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "ප්‍රේරක සමඟ හයියෙන් පුහුණු වන්න"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "ප්‍රේරක, කාලය සහ ව්‍යුහය පිළිබඳ ප්‍රතිපෝෂණ සමඟ කතා, ඉදිරිපත් කිරීම්, සම්මුඛ පරීක්ෂණ හෝ වාචික විභාග සඳහා සූදානම් වන්න."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "ඔබ පැවසීමට සූදානම් වන්නේ කුමක්ද?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "සන්නිවේදනය"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "ප්‍රේරක, කාලය සහ ව්‍යුහය පිළිබඳ ප්‍රතිපෝෂණ සමඟ කතා, ඉදිරිපත් කිරීම්, සම්මුඛ පරීක්ෂණ හෝ වාචික විභාග සඳහා සූදානම් වන්න."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන සන්නිවේදන මාතෘකා ගවේෂණය කරන ඉගෙනුම්කරුවන් සඳහා වේ."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ආවේණික ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ක්‍රියාවලියක් සමඟ කථන පුහුණුව සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "ප්‍රේරක සමඟ හයියෙන් පුහුණු වන්න"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ ප්‍රේරක සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "මගේ පාසල් ඉදිරිපත් කිරීම පුහුණු වන්න"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "IELTS කථන පරීක්ෂණය සඳහා පෙරහුරුවක්"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "සම්මුඛ පරීක්ෂණ ප්‍රශ්නවලට පිළිතුරු දීමට මට උදව් කරන්න"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "විභාග සූදානම් වීමේ සැලසුම්කරු"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "විෂය නිර්දේශයක් අධ්‍යයන සැලැස්මක් බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "ඔබේ දිනය, විෂය නිර්දේශය, ශක්තීන් සහ දුර්වලතා මත පදනම්ව යථාර්ථවාදී විභාග සැලැස්මක් ගොඩනඟන්න."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "ඔබ සූදානම් වන්නේ කුමන විභාගය සඳහාද?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "සැලසුම් කිරීම"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "ඔබේ විෂය නිර්දේශය, විභාග දිනය, කාලය සහ දුර්වලතා ප්‍රායෝගික අධ්‍යයන සැලැස්මක් බවට පත් කරන්න."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "පුනරීක්ෂණ, පුහුණුව, විශ්වාසය සහ එදිනෙදා ජීවිතය සමතුලිත කරන සැලැස්මක් අවශ්‍ය සිසුන් සඳහා වේ."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "මෙම සැලසුම්කරු දුර්වලතා සඳහා ප්‍රමුඛත්වය ලබා දෙයි, සමාලෝචන වට එකතු කරයි සහ මග හැරුණු දින සඳහා විකල්ප සැලසුම් නිර්මාණය කරයි."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "මාතෘකා සඳහා ප්‍රමුඛත්වය දෙන්න"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "සමාලෝචනය සැලසුම් කරන්න"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "අවදානම් සහිත ප්‍රදේශ හඳුනා ගන්න"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "ජීව විද්‍යාව සඳහා සති 2ක සැලැස්මක්"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "JEE පුනරීක්ෂණ කාලසටහනක් සාදන්න"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "අවසාන විභාග සඳහා සූදානම් වීමට මට උදව් කරන්න"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "ෆ්ලෑෂ් කාඩ් සාදන්නා"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "මතක තබා ගැනීම සඳහා ස්මාර්ට් කාඩ්පත් සාදන්න"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "සටහන් හෝ මාතෘකා පිළිතුරු, උගුල් සහ සමාලෝචන විමසුම් සහිත පැහැදිලි ෆ්ලෑෂ් කාඩ්පත් බවට පත් කරන්න."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "ෆ්ලෑෂ් කාඩ්පත් බවට පත් කළ යුත්තේ මොනවාද?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "පුහුණුව"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "සටහන් හෝ මාතෘකා ඉඟි, පිළිතුරු, උදාහරණ සහ පොදු උගුල් සහිත අවධානය යොමු කළ ෆ්ලෑෂ් කාඩ්පත් බවට පත් කරන්න."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "විභාග සඳහා සූදානම් වන සිසුන්, භාෂා ඉගෙන ගන්නන් සහ ප්‍රතිප්‍රාප්ති පුහුණුව භාවිතා කරන ඕනෑම අයෙකු සඳහා."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "කාඩ්පත් මගින් වරකට එක් දෙයක් පමණක් අසන අතර උගුල් ද ඇතුළත් වන බැවින් සමාලෝචනය මගින් හුදෙක් හඳුනාගැනීම පමණක් නොව අවබෝධය ද වර්ධනය වේ."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "මතක තබා ගැනීමේ කාඩ්පත් සාදන්න"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "සූදානම් වූ විට පිළිතුරු හෙළි කරන්න"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "මග හැරුණු දේ ඉක්මනින් සමාලෝචනය කරන්න"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "mitosis සඳහා ෆ්ලෑෂ් කාඩ්පත් සාදන්න"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "මෙම සටහන ප්‍රශ්නෝත්තර බවට පත් කරන්න"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "භූගෝල විද්‍යාව සඳහා ෆ්ලෑෂ් කාඩ්පත් සාදන්න"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "මතක මාලිගාව"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "විචිත්‍රවත් ස්ථාන සමඟ අදහස් මතක තබා ගන්න"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "කරුණු, ලැයිස්තු, කථා හෝ අනුක්‍රමයන් මතක තබා ගත හැකි මානසික දර්ශන බවට පරිවර්තනය කරන්න."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "ඔබට මතක තබා ගත යුත්තේ කුමක්ද?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "පුහුණුව"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "කරුණු, කථා, ලැයිස්තු හෝ අනුක්‍රමයන් අධ්‍යයනය සහ විභාග අතරතුර මතක තබා ගැනීම පහසු කරන මතක තබා ගත හැකි දර්ශන බවට පරිවර්තනය කරන්න."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "පිළිවෙලට ඇති අදහස්, වචන මාලාව, කථා, සූත්‍ර හෝ ශක්තිමත් මානසික සම්බන්ධයක් අවශ්‍ය කරුණු කටපාඩම් කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "මෙම මාදිලිය සටහන් නැවත කියවීමට ඔබට පැවසීමට වඩා විචිත්‍රවත් ස්ථාන, මාර්ග සහ ප්‍රතිප්‍රාප්ති ඉඟි නිර්මාණය කරයි."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "මාර්ගයක් තෝරන්න"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "විචිත්‍රවත් ඉඟි තබන්න"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "මතක තබා ගැනීමේ පුහුණුව"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "ග්‍රහලෝක ගැන මතක තබා ගන්න"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "කථාවක දළ සටහනක් කටපාඩම් කරන්න"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "ජීව විද්‍යා වර්ගීකරණය ඉගෙන ගන්න"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "අතරින් පතර පුනරීක්ෂණය (Spaced Review)"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "අමතක වීමට පෙර පුනරීක්ෂණය කරන්න"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "දිගුකාලීන මතකය ශක්තිමත් කරන ඉක්මන් පුනරීක්ෂණ සැසි සැලසුම් කර ක්‍රියාත්මක කරන්න."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "අප පුනරීක්ෂණය කළ යුත්තේ කුමක්ද?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "පුහුණුව"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "AI මගින් මෙහෙයවනු ලබන අතරින් පතර පුනරීක්ෂණ ක්‍රමය භාවිතයෙන් ඉක්මන් පුනරීක්ෂණ සැසි සැලසුම් කරන්න, දුර්වල කරුණු නැවත බලන්න සහ දිගුකාලීන මතකය ශක්තිමත් කරන්න."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "කියවීමෙන් පසු අමතක වන සහ සංකල්ප, පද හෝ විභාග ද්‍රව්‍ය සඳහා ප්‍රායෝගික පුනරීක්ෂණ රටාවක් අවශ්‍ය ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "මෙම පුහුණුකරු මගින් වැරදීම් සහ පැකිලීම් හඳුනාගෙන ඒවා තවත් නිෂ්ක්‍රීය සාරාංශයක් ලෙස නොව පුනරීක්ෂණ කාලසටහනක් ලෙස සකස් කරයි."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "පුනරීක්ෂණ ඉලක්ක තෝරා ගන්න"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "මතකයට නැගීමේ කාලසටහනක් සකසන්න"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "වැරදීම් නිවැරදි කර ගන්න"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "ඊයේ ඉගෙන ගත් රසායන විද්‍යාව පුනරීක්ෂණය කරන්න"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "දින 7ක පුනරීක්ෂණ සැලැස්මක් සාදන්න"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "වචන මාලාව ගැන මගෙන් නැවත ප්‍රශ්න අසන්න"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "සංකල්ප සිතියම් නිර්මාපකය (Concept Map Builder)"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "අදහස් පෙළ හරහා දෘශ්‍යමය වශයෙන් සම්බන්ධ කරන්න"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "හේතු සහ ප්‍රතිඵලවල සිට වර්ගීකරණයන්, උදාහරණ සහ පරස්පරතා දක්වා අදහස් එකිනෙක සම්බන්ධ වන ආකාරය සිතියම්ගත කරන්න."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "අප සිතියම්ගත කළ යුත්තේ කුමන සංකල්පයද?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "සිතීම"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "හේතු සහ ප්‍රතිඵලවල සිට වර්ගීකරණයන්, උදාහරණ සහ පරස්පරතා දක්වා අදහස් එකිනෙක සම්බන්ධ වන ආකාරය සිතියම්ගත කරන්න."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, සිතීමේ මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම ප්‍රේරක, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ සංකල්ප සිතියම් නිර්මාණය සඳහාම සකස් කර ඇත."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "අදහස් දෘශ්‍යමය වශයෙන් පෙළෙහි සම්බන්ධ කරන්න"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කය අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "දේශගුණික විපර්යාස සිතියම්ගත කරන්න"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "බීජගණිත සංකල්ප සම්බන්ධ කරන්න"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "ප්‍රජාතන්ත්‍රවාදය පිළිබඳ සිතියමක් ගොඩනඟන්න"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "වැරදි මත නිවැරදි කරන්නා"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "වැරදි මානසික ආකෘති සොයාගෙන නිවැරදි කරන්න"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "සිදුවන්නේ කුමක්දැයි ඔබ සිතන දේ පවසන්න, එවිට ඔබේ සහායකයා මෘදු පරීක්ෂණ මගින් සැඟවුණු වැරදි මත හඳුනා ගනු ඇත."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "කුමන අදහස ව්‍යාකූල හෝ සැක සහිත බවක් දැනේද?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "සිතීම"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "සිදුවන්නේ කුමක්දැයි ඔබ සිතන දේ පවසන්න, එවිට ඔබේ සහායකයා මෘදු පරීක්ෂණ මගින් සැඟවුණු වැරදි මත හඳුනා ගනු ඇත."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන, චින්තන මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ වැරදි මත නිවැරදි කරන්නා සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "වැරදි මානසික ආකෘති සොයාගෙන නිවැරදි කරන්න"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කය අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "බර වැඩි වස්තූන් වේගයෙන් වැටෙන බව මම සිතමි"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "මට සෘණ සංඛ්‍යා තේරුම් ගැනීමට අපහසුයි"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "මෙම ව්‍යාකරණ රීතිය අමුතු ඇයි?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "ෆයින්මන් උපදේශක"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "එය හොඳින් මතක හිටින තුරු සරලව පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "සංකල්පයක් සරලව පැහැදිලි කිරීමට උත්සාහ කරන්න. ඔබේ උපදේශකයා අඩුපාඩු හඳුනාගෙන, ප්‍රශ්න අසමින්, පැහැදිලි කිරීම නැවත ගොඩනඟා ගැනීමට ඔබට උදව් කරනු ඇත."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "ඔබ මට නැවත පැහැදිලි කරන්නේ කුමක්ද?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "සිතීම"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "සංකල්පයක් සරලව පැහැදිලි කිරීමට උත්සාහ කරන්න. ඔබේ උපදේශකයා අඩුපාඩු හඳුනාගෙන, ප්‍රශ්න අසමින්, පැහැදිලි කිරීම නැවත ගොඩනඟා ගැනීමට ඔබට උපකාර කරයි."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන සිතීමේ මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය ෆයින්මන් උපදේශක (Feynman tutor) සඳහාම සකස් කර ඇති අතර, එයටම ආවේණික විමසුම්, උදාහරණ සහ ඉගෙනුම් ක්‍රියාවලියක් ඇත."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "හොඳින් මතක හිටින තුරු සරලව පැහැදිලි කරන්න"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "මම ගුරුත්වාකර්ෂණය ගැන පැහැදිලි කරන්නම්"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "උද්ධමනය පිළිබඳ මගේ අවබෝධය පරීක්ෂා කරන්න"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "පුනරාවර්තනය (recursion) සරල කර ගැනීමට මට උදව් කරන්න"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "සිද්ධි අධ්‍යයන සිමියුලේටරය"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "යථාර්ථවාදී තීරණ හරහා ඉගෙන ගන්න"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "යථාර්ථවාදී සිද්ධියකට ඇතුළු වී, තීරණ ගෙන, එහි ප්‍රතිවිපාක දැක, සෑම තේරීමක් පිටුපසම ඇති මූලධර්මය ඉගෙන ගන්න."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "අප අනුකරණය කළ යුත්තේ කුමන ආකාරයේ සිද්ධියක්ද?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "ගිල්වීම"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "යථාර්ථවාදී සිද්ධියකට ඇතුළු වී, තීරණ ගෙන, එහි ප්‍රතිවිපාක දැක, සෑම තේරීමක් පිටුපසම ඇති මූලධර්මය ඉගෙන ගන්න."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියක් වෙනුවට ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන ගිල්වීමේ මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන් සඳහා."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය සිද්ධි අධ්‍යයන සිමියුලේටරය සඳහාම සකස් කර ඇති අතර, එයටම ආවේණික විමසුම්, උදාහරණ සහ ඉගෙනුම් ක්‍රියාවලියක් ඇත."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "යථාර්ථවාදී තීරණ හරහා ඉගෙන ගන්න"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "උදාහරණ විමසුම් සමඟ ආරම්භ කරන්න"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "ඔබේ ඉලක්කයට අනුව සැසිය සකස් කරගන්න"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "ව්‍යාපාරික උපාය මාර්ගික සිද්ධියක්"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "වෛද්‍ය ආචාරධර්ම පිළිබඳ සිද්ධියක්"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "පාරිසරික ප්‍රතිපත්ති පිළිබඳ සිද්ධියක්"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "භූමිකා රංගන අවස්ථාව"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "සැබෑ ජීවිතයේ දුෂ්කර සංවාද පුහුණු වන්න"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "සාකච්ඡා කිරීම, ගැටුම් නිරාකරණය, පාරිභෝගික සහාය, නායකත්වය හෝ ඕනෑම වැදගත් සංවාදයක් පුහුණු වන්න."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "අප පුහුණු විය යුතු අවස්ථාව කුමක්ද?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "ගිල්වීම"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "සාකච්ඡා කිරීම, ගැටුම් නිරාකරණය, පාරිභෝගික සහාය, නායකත්වය හෝ ඕනෑම වැදගත් සංවාදයක් පුහුණු වන්න."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "සාමාන්‍ය පිළිතුරු පෙට්ටියකට වඩා ප්‍රායෝගික මගපෙන්වීමක් බලාපොරොත්තු වන ගිල්වීමේ මාතෘකා ගවේෂණය කරන ඉගෙන ගන්නන්."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "මෙම මාදිලිය එහිම විමසුම්, උදාහරණ සහ ඉගෙනුම් ප්‍රවාහය සමඟ භූමිකා රංගන අවස්ථා සඳහා සකස් කර ඇත."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "සැබෑ ජීවිතයේ දුෂ්කර සංවාද පුහුණු වන්න"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "language": "Filipino",
+  "locale": "fil",
+  "namespace": "route:media",
+  "sourceHash": "7c60c0f3497b7b2e8d0e1994984509c40ee5cbe7a85307130976ad447a9a111b",
+  "part": {
+    "index": 2,
+    "total": 2
+  },
+  "entries": [
+    {
+      "key": "site.cb75e42f757e62e655",
+      "source": "Why does inspir support school and partner deployments?",
+      "value": "Bakit sinusuportahan ng inspir ang paaralan at partner deployments?"
+    },
+    {
+      "key": "site.1ecd92426534a2d5f6",
+      "source": "Why is inspir built around modes instead of one chat box?",
+      "value": "Bakit ginawa ang inspir sa paligid ng mga mode sa halip na iisang chat box?"
+    },
+    {
+      "key": "site.9b13983e2e1a6d9c81",
+      "source": "Yes. A school can begin by testing public modes, then move toward a pilot or tailored deployment when the use case, content needs, and funding path are clear.",
+      "value": "Oo. Isang paaralan Maaari bang magsimula ng testing pampubliko mga mode, pagkatapos lumipat toward isang pilot o iniangkop deployment kapag ang Gamitin kaso, content kailangan, at funding landas ay malinaw."
+    },
+    {
+      "key": "site.43e69afa661b737928",
+      "source": "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from canonical /chat/{topicSlug} URLs.",
+      "value": "Oo. Mga pampublikong guest mode such bilang Matutunan ang Anything, Socratic Instruction, Homework Coach, mga quiz, at mga flashcard Buksan directly mula sa canonical /chat/{topicSlug} URLs."
+    },
+    {
+      "key": "site.86c3dcb99e53cbe5fb",
+      "source": "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are intended to be indexable learning pages.",
+      "value": "Oo. Pampubliko mga entrypoint ng paksa such bilang /chat/learn-anything at /chat/socratic-instruction ay intended sa maging indexable pag-aaral mga pahina."
+    },
+    {
+      "key": "site.853daa2c560c44eabb",
+      "source": "Yes. The public guest modes let school leaders and teachers try the learning experience before discussing a tailored school deployment.",
+      "value": "Oo. Hinahayaan ng mga pampublikong guest mode ang mga paaralan leader at guro na subukan ang karanasan sa pag-aaral bago pag-usapan ang iniangkop na paaralan deployment."
+    }
+  ]
+}

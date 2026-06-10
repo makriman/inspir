@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "language": "Estonian",
+  "locale": "et",
+  "namespace": "blog:concept-map-builder-prompts-and-study-loop",
+  "sourceHash": "f298dfb378c5283252a819189f9da471f7175e7f19e322bc5e8d8248c85fa548",
+  "entries": [
+    {
+      "key": "site.fbd0875be91d12ed1f",
+      "source": "\"Ask me questions before explaining too much.\"",
+      "value": "\"Küsige enne, kui liiga palju selgitad\"."
+    },
+    {
+      "key": "site.ac77f4dd354288c3d1",
+      "source": "\"Build a map of democracy\"",
+      "value": "\"Mööda demokraatia kaarti\""
+    },
+    {
+      "key": "site.2c2a82b4f1cdf0977f",
+      "source": "\"Check my answer before giving yours.\"",
+      "value": "\"Vaadake minu vastust enne, kui oma annate\"."
+    },
+    {
+      "key": "site.b159be1a7842fcdce2",
+      "source": "\"Connect algebra concepts\"",
+      "value": "\"Sisuta algbeeride kontseptsioonid\""
+    },
+    {
+      "key": "site.6e260fa2bd0be72927",
+      "source": "\"Give me a harder version after I try.\"",
+      "value": "\"Lase mulle raskem versioon pärast seda, kui ma proovin\"."
+    },
+    {
+      "key": "site.4d7d2a10206673f8d7",
+      "source": "\"Keep it beginner friendly.\"",
+      "value": "\"Hoia see algajatele sõbralik\"."
+    },
+    {
+      "key": "site.eb51e1d691fd01a4e5",
+      "source": "\"Map climate change\"",
+      "value": "\"Klimamuutuste kaart\""
+    },
+    {
+      "key": "site.f220c4da97503ce8a6",
+      "source": "\"Use examples from my exam, project, or daily life.\"",
+      "value": "Kasuta näiteid mu eksamidest, tööst või igapäevastest elust\"."
+    },
+    {
+      "key": "site.c07cedd8f400fab1d3",
+      "source": "AI prompts",
+      "value": "AI-i nõuded"
+    },
+    {
+      "key": "site.3334a6e430d61212aa",
+      "source": "Ask for a tiny first task.",
+      "value": "Paluge väikese esimese ülesande."
+    },
+    {
+      "key": "site.7d94dbb1aee7050211",
+      "source": "Concept Map Builder prompts and study loop",
+      "value": "Kontseptsioonikaardi ehitaja küsib ja õpib silmust"
+    },
+    {
+      "key": "site.c7ade179f07b420526",
+      "source": "End with a recap you write yourself.",
+      "value": "Lõpetage uuesti kokkuvõtva kokkuvõttega, kirjutage ise."
+    },
+    {
+      "key": "site.feeafe5feac502c526",
+      "source": "For Concept Map Builder, a useful practice loop is:",
+      "value": "Kontseptsioonikaardi ehitaja jaoks on kasulik praktika silmus:"
+    },
+    {
+      "key": "site.51c84bc05aa44414d5",
+      "source": "For this mode, the job is simple: Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "Selle režiimi jaoks on töö lihtne: Kaart, kuidas ideed on seotud, alates põhjustest ja mõjudest kuni kategooriate, näidete ja vastuoludeni."
+    },
+    {
+      "key": "site.c077bcb35f8f76b879",
+      "source": "Good prompts usually include three things: the subject, your current level, and the kind of help you want. You do not need perfect wording. You only need enough context for the session to begin.",
+      "value": "Head ajendid sisaldavad tavaliselt kolme asja: teema, sinu praegune tase ja millist abi sa soovid. Sul ei ole vaja täiuslikku sõnastust. Seansi alustamiseks on vaja ainult piisavalt konteksti."
+    },
+    {
+      "key": "site.3cb8399fd818707e38",
+      "source": "If the response feels too broad, narrow it. Ask for one example, one misconception, one check question, or one next step. If it feels too easy, ask for a challenge. If it feels too hard, ask for a bridge from what you already know.",
+      "value": "Kui vastus tundub liiga lai, siis seda kitsendada. Küsi näiteks üht väärarusaama, üht küsimust või üht järgmist sammu. Kui see tundub liiga lihtne, küsi väljakutset. Kui see tundub liiga raske, küsi sillalt seda, mida sa juba tead."
+    },
+    {
+      "key": "site.b09eea5a1f8bf16685",
+      "source": "Make the output more useful",
+      "value": "Muuda väljund kasulikumaks"
+    },
+    {
+      "key": "site.6bdddc97af69ed0da9",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Concept Map Builder on inspir.",
+      "value": "Kiire ideid ja korduv õppetsükkel saada kasulikke õpitulemusi kontseptsiooni Map Ehitaja inspir."
+    },
+    {
+      "key": "site.62656f47e151dcabf2",
+      "source": "Reading an AI response is not the same as learning. After the first answer, ask the mode to make you do something with the idea.",
+      "value": "AI vastuse lugemine ei ole sama mis õppimine. Pärast esimest vastust küsi režiimilt, kuidas teha midagi selle mõttega."
+    },
+    {
+      "key": "site.0db366bee7d789e937",
+      "source": "Related learning paths",
+      "value": "Seotud õppesuunad"
+    },
+    {
+      "key": "site.34703e01be53e56487",
+      "source": "Request feedback on the part that felt uncertain.",
+      "value": "Palun tagasisidet selle kohta, mis oli ebakindel."
+    },
+    {
+      "key": "site.d13ed52829ac8f9ae5",
+      "source": "Respond before asking for the solution.",
+      "value": "Vastake enne, kui soovite lahendust."
+    },
+    {
+      "key": "site.725c328ba96c60fa28",
+      "source": "Start with one clear request",
+      "value": "Alustatakse ühe selge taotlusega"
+    },
+    {
+      "key": "site.7b1511f40db7799020",
+      "source": "State the goal in one sentence.",
+      "value": "Ütle eesmärk ühes lauses."
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "õpioskused;"
+    },
+    {
+      "key": "site.e85f78644fc8f2af1a",
+      "source": "That final recap is important. When you explain the idea back, you reveal what is solid and what is still borrowed from the AI.",
+      "value": "Viimane kordus on oluline, kui sa selgitad seda ideed tagasi, siis sa paljastad, mis on kindel ja mis on ikka laenatud tehisintellektilt."
+    },
+    {
+      "key": "site.b4b3f444b35ee040db",
+      "source": "The best learning sessions are adjustable. This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "Parimad õppetunnid on reguleeritavad. See režiim on häälestatud kontseptsiooni kaardi ehitaja oma initsiaalid, näited, ja õppimine voolu."
+    },
+    {
+      "key": "site.e35fa66f8da0b77cd1",
+      "source": "The fastest way to get value from Concept Map Builder is to give the AI a learning job, not just a topic. A topic says what you are interested in. A learning job says what kind of help you need.",
+      "value": "Kiireim viis saada väärtust kontseptsiooni kaardil ehitaja on anda AI õppetöö, mitte ainult teema. Teema ütleb, mida olete huvitatud. Õppetöö ütleb, millist abi vajate."
+    },
+    {
+      "key": "site.eb51e27d05cde20872",
+      "source": "Then add a constraint that makes the session more personal:",
+      "value": "Lisa siis piirang, mis muudab seansi isiklikumaks:"
+    },
+    {
+      "key": "site.d08d8da0b3e1128942",
+      "source": "Thinking",
+      "value": "Mõtlemine"
+    },
+    {
+      "key": "site.2e70d2b0915c157e36",
+      "source": "Try one of these starters:",
+      "value": "Proovige ühte neist:"
+    },
+    {
+      "key": "site.fda025881ab1d825c7",
+      "source": "Turn the mode into practice",
+      "value": "Režiimi praktikas"
+    },
+    {
+      "key": "site.29b8400b4540e7d418",
+      "source": "Use Concept Map Builder when this is the right mode for the job. If you want a related path, try Spaced Review. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "Kasutage kontseptsioonikaarti Ehitaja, kui see on õige režiim töö. Kui soovite seotud tee, proovige Spaced Review. Samuti saate sirvida AI õppimise blogi õppemeetodeid, Sokratese õppimine, flashcards, rollimäng, ja aktiivne tagasi."
+    }
+  ]
+}

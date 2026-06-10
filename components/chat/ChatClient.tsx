@@ -16,7 +16,6 @@ import {
 } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { signOut } from "next-auth/react";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
 import remarkGfm from "remark-gfm";
@@ -90,6 +89,7 @@ import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { defaultLanguage, languageDisplayName, supportedLanguages } from "@/lib/content/languages";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicPath } from "@/lib/content/topic-routing";
+import { localizeHref } from "@/lib/i18n/routing";
 import { formatBubbleDate } from "@/lib/utils/dates";
 import { buildMiniAppInstruction, getVisibleMessageContent } from "@/lib/ai/visible-content";
 import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
@@ -531,38 +531,6 @@ function useAutoTranslate(
   }, [bundle?.language, bundle?.sourceHash, ref, textMap]);
 }
 
-function sleep(ms: number) {
-  return new Promise((resolve) => window.setTimeout(resolve, ms));
-}
-
-async function pollMainAppTranslation({
-  language,
-  loadSeq,
-  getCurrentLoadSeq,
-  onBundle,
-  attempt = 0,
-}: {
-  language: string;
-  loadSeq: number;
-  getCurrentLoadSeq: () => number;
-  onBundle: (bundle: MainAppTranslationBundle) => void;
-  attempt?: number;
-}): Promise<void> {
-  const maxAttempts = 120;
-  if (getCurrentLoadSeq() !== loadSeq) return;
-  if (attempt >= maxAttempts) return;
-  const response = await fetch(`/api/main-app-translations?language=${encodeURIComponent(language)}`);
-  if (!response.ok) throw new Error("Could not load translation");
-  if (getCurrentLoadSeq() !== loadSeq) return;
-
-  const data = await response.json();
-  if (getCurrentLoadSeq() === loadSeq && data.bundle) onBundle(data.bundle);
-  if (getCurrentLoadSeq() !== loadSeq || data.complete !== false) return;
-
-  await sleep(data.retryAfterMs ?? 1500);
-  return pollMainAppTranslation({ language, loadSeq, getCurrentLoadSeq, onBundle, attempt: attempt + 1 });
-}
-
 type MergeStateAction<State> = Partial<State> | ((state: State) => Partial<State>);
 
 function mergeStateReducer<State>(state: State, nextState: MergeStateAction<State>) {
@@ -597,6 +565,7 @@ type ChatClientState = {
   languageSaving: boolean;
   guestMessagesUsed: number;
   guestPromptOpen: boolean;
+  guestLanguagePromptOpen: boolean;
   workspaceResetCount: number;
   memoryDashboard: MemoryDashboard | null;
   memoryLoading: boolean;
@@ -661,6 +630,7 @@ function useChatClientController({
       languageSaving,
       guestMessagesUsed,
       guestPromptOpen,
+      guestLanguagePromptOpen,
       workspaceResetCount,
       memoryDashboard,
       memoryLoading,
@@ -691,6 +661,7 @@ function useChatClientController({
     languageSaving: false,
     guestMessagesUsed: 0,
     guestPromptOpen: false,
+    guestLanguagePromptOpen: false,
     workspaceResetCount: 0,
     memoryDashboard: null,
     memoryLoading: false,
@@ -743,6 +714,8 @@ function useChatClientController({
     updateChatField("guestMessagesUsed", value);
   const setGuestPromptOpen = (value: SetStateAction<ChatClientState["guestPromptOpen"]>) =>
     updateChatField("guestPromptOpen", value);
+  const setGuestLanguagePromptOpen = (value: SetStateAction<ChatClientState["guestLanguagePromptOpen"]>) =>
+    updateChatField("guestLanguagePromptOpen", value);
   const setWorkspaceResetCount = (value: SetStateAction<ChatClientState["workspaceResetCount"]>) =>
     updateChatField("workspaceResetCount", value);
   const setMemoryDashboard = (value: SetStateAction<ChatClientState["memoryDashboard"]>) =>
@@ -758,7 +731,6 @@ function useChatClientController({
   const translationRootRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const requestSeqRef = useRef(0);
-  const translationLoadSeqRef = useRef(0);
   const sidebarHydratedRef = useRef(false);
   const [sidebarPersonalizationReady, setSidebarPersonalizationReady] = useState(false);
   const translationTextMap = useMemo(() => buildTranslationTextMap(translationBundle), [translationBundle]);
@@ -801,6 +773,7 @@ function useChatClientController({
   const miniAppMode = isMiniAppMode ? (uiMode as MiniMode) : null;
   const visibleChatMessages = displayMessages(messages);
   const userDisplayName = profileUser.name?.trim() || "Learner";
+  const currentLanguage = profileUser.preferredLanguage || defaultLanguage;
 
   function saveGuestUsage(used: number) {
     setGuestMessagesUsed(used);
@@ -836,24 +809,10 @@ function useChatClientController({
   }, [guestMessageLimit]);
 
   useEffect(() => {
-    const preferredLanguage = profileUser.preferredLanguage;
-    if (!preferredLanguage) return;
-    if (translationBundle.language === preferredLanguage) return;
-    const loadSeq = translationLoadSeqRef.current + 1;
-    translationLoadSeqRef.current = loadSeq;
-
-    const timeoutId = window.setTimeout(() => {
-      void pollMainAppTranslation({
-        language: preferredLanguage,
-        loadSeq,
-        getCurrentLoadSeq: () => translationLoadSeqRef.current,
-        onBundle: (bundle) => updateChatState({ translationBundle: bundle }),
-      }).catch(() => {
-        // Keep the saved profile language; English UI remains available until translation loads.
-      });
-    }, 0);
-    return () => window.clearTimeout(timeoutId);
-  }, [profileUser.preferredLanguage, translationBundle.language]);
+    if (!isGuest) return;
+    if (window.localStorage.getItem("inspir_guest_language_selected") === "1") return;
+    updateChatState({ guestLanguagePromptOpen: true });
+  }, [isGuest, profileUser.preferredLanguage]);
 
   const loadMemoryDashboard = useCallback(async () => {
     if (isGuest) return;
@@ -934,7 +893,7 @@ function useChatClientController({
       setActivityRun(null);
       setInput("");
       setRecentOpen(false);
-      window.history.replaceState(null, "", topicPath(activeTopic.slug));
+      window.history.replaceState(null, "", localizeHref(topicPath(activeTopic.slug), currentLanguage));
       return;
     }
     const chatId = await createChat(activeTopicId);
@@ -947,6 +906,10 @@ function useChatClientController({
   async function sendMessage(content: string, appendUser = true) {
     const trimmed = content.trim();
     if (!trimmed || sending || isQuizMode || isFlashcardMode) return;
+    if (isGuest && window.localStorage.getItem("inspir_guest_language_selected") !== "1") {
+      setGuestLanguagePromptOpen(true);
+      return;
+    }
     if (isGuest && guestMessagesUsed >= guestMessageLimit) {
       setGuestPromptOpen(true);
       return;
@@ -1168,7 +1131,7 @@ function useChatClientController({
     setRecentOpen(false);
     setStoreOpen(false);
     setMobileSidebarOpen(false);
-    window.history.replaceState(null, "", nextTopic ? topicPath(nextTopic.slug) : "/chat");
+    window.history.replaceState(null, "", localizeHref(nextTopic ? topicPath(nextTopic.slug) : "/chat", currentLanguage));
   }
 
   async function openRecentConversations() {
@@ -1200,11 +1163,30 @@ function useChatClientController({
       if (data.user) {
         setProfileUser(profileFromApiUser(data.user));
       }
+      window.location.assign(localizeHref(window.location.pathname + window.location.search, preferredLanguage));
     } catch {
       setProfileUser(previous);
     } finally {
       setLanguageSaving(false);
     }
+  }
+
+  async function saveGuestLanguage(preferredLanguage: string) {
+    window.localStorage.setItem("inspir_guest_language_selected", "1");
+    window.localStorage.setItem("inspir_locale_prompt_dismissed", "1");
+    setGuestLanguagePromptOpen(false);
+    setProfileUser((current) => ({ ...current, preferredLanguage }));
+    const response = await fetch("/api/language-preference", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        preferredLanguage,
+        language: preferredLanguage,
+        pathname: window.location.pathname + window.location.search,
+      }),
+    }).catch(() => undefined);
+    const data = response ? await response.json().catch(() => null) : null;
+    if (data?.redirectTo) window.location.assign(data.redirectTo);
   }
 
   async function patchMemorySettings(input: {
@@ -1345,10 +1327,12 @@ function useChatClientController({
     awaitingResponse,
     avatarSrc,
     createChat,
+    currentLanguage,
     displayTopics,
     filteredTopics,
     guestMessageLimit,
     guestMessagesUsed,
+    guestLanguagePromptOpen,
     guestPromptOpen,
     handleComposerKeyDown,
     input,
@@ -1388,6 +1372,7 @@ function useChatClientController({
     sending,
     setActivityRun,
     setAgePromptOpen,
+    setGuestLanguagePromptOpen,
     setGuestPromptOpen,
     setInput,
     setMobileSidebarOpen,
@@ -1407,6 +1392,7 @@ function useChatClientController({
     createMemoryItem,
     updateMemoryItem,
     updatePreferredLanguage,
+    saveGuestLanguage,
     deleteMemoryItem,
     clearMemory,
     removeSidebarTopic,
@@ -1452,6 +1438,7 @@ function ChatClientLayout(controller: ChatClientController) {
           topics={displayTopics}
           sidebarTopics={sidebarTopics}
           filteredTopics={filteredTopics}
+          currentLanguage={controller.currentLanguage}
           activeTopicId={activeTopicId}
           addedTopicIds={addedTopicIds}
           search={search}
@@ -1546,6 +1533,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     isFocusTimerMode,
     isGuest,
     isQuizMode,
+    currentLanguage,
     learningTools,
     listRef,
     loadChat,
@@ -1594,7 +1582,9 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
   }
 
   if (isQuizMode) {
-    if (isGuest) return <GuestFeatureGate topic={activeTopic} featureName="scored AI quizzes" />;
+    if (isGuest) {
+      return <GuestFeatureGate topic={activeTopic} featureName="scored AI quizzes" language={currentLanguage} />;
+    }
     return (
       <QuizWorkspace
         activeChatId={activeChatId}
@@ -1607,7 +1597,9 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
   }
 
   if (isFlashcardMode) {
-    if (isGuest) return <GuestFeatureGate topic={activeTopic} featureName="AI flashcard decks" />;
+    if (isGuest) {
+      return <GuestFeatureGate topic={activeTopic} featureName="AI flashcard decks" language={currentLanguage} />;
+    }
     return (
       <FlashcardWorkspace
         activeChatId={activeChatId}
@@ -1635,6 +1627,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     awaitingResponse,
     inputRef,
     listRef,
+    language: currentLanguage,
     onInput: setInput,
     onSend: sendMessage,
     onSubmit: submitMessage,
@@ -1644,7 +1637,14 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
   };
 
   if (miniAppMode === "interactive-instruction") {
-    return <InteractiveInstructionWorkspace key={miniAppProps.key} topic={activeTopic} onReset={resetChat} />;
+    return (
+      <InteractiveInstructionWorkspace
+        key={miniAppProps.key}
+        topic={activeTopic}
+        language={currentLanguage}
+        onReset={resetChat}
+      />
+    );
   }
   if (miniAppMode === "time-travel") return <TimeTravelWorkspace {...miniAppProps} />;
   if (miniAppMode === "socratic-instruction") return <SocraticWorkspace {...miniAppProps} />;
@@ -1660,6 +1660,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
     inputRef,
     listRef,
     metadata,
+    currentLanguage,
     sendMessage,
     sending,
     setInput,
@@ -1673,7 +1674,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
   return (
     <main className="bubble-workspace">
       <div ref={listRef} className="bubble-message-scroll app-scrollbar">
-        {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} /> : null}
+        {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} language={currentLanguage} /> : null}
         {visibleChatMessages.length === 0 ? (
           <StarterGrid starters={metadata?.starters ?? []} onStart={(starter) => void sendMessage(starter)} />
         ) : null}
@@ -1732,9 +1733,11 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
     clearMemory,
     createMemoryItem,
     deleteMemoryItem,
+    guestLanguagePromptOpen,
     guestMessageLimit,
     guestMessagesUsed,
     guestPromptOpen,
+    currentLanguage,
     isGuest,
     languageSaving,
     learningTools,
@@ -1747,6 +1750,7 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
     patchMemorySettings,
     profileOpen,
     profileUser,
+    saveGuestLanguage,
     setAgePromptOpen,
     setGuestPromptOpen,
     setMemorySourceModal,
@@ -1782,16 +1786,24 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
         onOpenTimer={() => openFirstTopicWithMode("study-timer")}
         onOpenMusic={() => openFirstTopicWithMode("focus-music")}
       />
+      {isGuest && guestLanguagePromptOpen ? (
+        <GuestLanguagePromptModal
+          currentLanguage={profileUser.preferredLanguage || defaultLanguage}
+          onSave={(language) => void saveGuestLanguage(language)}
+          onClose={() => void saveGuestLanguage(defaultLanguage)}
+        />
+      ) : null}
       {isGuest && guestPromptOpen ? (
         <GuestContinueModal
           used={guestMessagesUsed}
           limit={guestMessageLimit}
-          callbackUrl={activeTopic ? topicPath(activeTopic.slug) : "/chat"}
+          callbackUrl={localizeHref(activeTopic ? topicPath(activeTopic.slug) : "/chat", currentLanguage)}
           onClose={() => setGuestPromptOpen(false)}
         />
       ) : null}
       {!isGuest && agePromptOpen && !profileUser.dateOfBirth ? (
         <AgePromptModal
+          initialLanguage={profileUser.preferredLanguage || defaultLanguage}
           onClose={() => setAgePromptOpen(false)}
           onSaved={(updatedUser) => {
             setProfileUser(updatedUser);
@@ -1816,6 +1828,7 @@ function TopicSidebar({
   topics,
   sidebarTopics,
   filteredTopics,
+  currentLanguage,
   activeTopicId,
   addedTopicIds,
   search,
@@ -1830,6 +1843,7 @@ function TopicSidebar({
   topics: Topic[];
   sidebarTopics: Topic[];
   filteredTopics: Topic[];
+  currentLanguage: string;
   activeTopicId: string;
   addedTopicIds: string[];
   search: string;
@@ -1855,7 +1869,7 @@ function TopicSidebar({
         {isGuest ? (
           <GoogleContinueButton
             className="bubble-guest-auth-button"
-            callbackUrl={activeTopic ? topicPath(activeTopic.slug) : "/chat"}
+            callbackUrl={localizeHref(activeTopic ? topicPath(activeTopic.slug) : "/chat", currentLanguage)}
           >
             Continue with Google
           </GoogleContinueButton>
@@ -2017,7 +2031,7 @@ function TopBar({
   );
 }
 
-function TopicIntroCard({ topic }: { topic: Topic }) {
+function TopicIntroCard({ topic, language }: { topic: Topic; language: string }) {
   const seo = topicSeo(topic);
 
   return (
@@ -2050,19 +2064,20 @@ function TopicIntroCard({ topic }: { topic: Topic }) {
           <li>Turn the weak spot into a quiz, flashcards, or a follow-up chat.</li>
         </ol>
       </section>
-      <TopicResourceLinks topic={topic} />
+      <TopicResourceLinks topic={topic} language={language} />
     </article>
   );
 }
 
-function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: string }) {
+function GuestFeatureGate({ topic, featureName, language }: { topic: Topic; featureName: string; language: string }) {
   const seo = topicSeo(topic);
   const starters = topicMetadata(topic)?.starters ?? [];
+  const topicHref = localizeHref(topicPath(topic.slug), language);
 
   return (
     <main className="bubble-workspace">
       <section className="bubble-guest-feature-gate">
-        <TopicIntroCard topic={topic} />
+        <TopicIntroCard topic={topic} language={language} />
         <div className="bubble-guest-feature-card">
           <Sparkles size={26} />
           <span>Free public learning mode</span>
@@ -2071,14 +2086,14 @@ function GuestFeatureGate({ topic, featureName }: { topic: Topic; featureName: s
             {seo.description} Sign in keeps your progress, score, generated activities, and
             future conversations saved.
           </p>
-          <GoogleContinueButton className="bubble-guest-modal-primary" callbackUrl={topicPath(topic.slug)}>
+          <GoogleContinueButton className="bubble-guest-modal-primary" callbackUrl={topicHref}>
             Continue with Google
           </GoogleContinueButton>
         </div>
         {starters.length ? (
           <div className="bubble-starter-grid">
             {starters.map((starter) => (
-              <a key={starter} href={topicPath(topic.slug)}>
+              <a key={starter} href={topicHref}>
                 <Sparkles size={16} />
                 <span>{starter}</span>
               </a>
@@ -2755,6 +2770,7 @@ const miniAppConfigs: Record<MiniMode, MiniAppConfig> = {
 
 function TimeTravelWorkspace({
   topic,
+  language,
   userName,
   messages,
   input,
@@ -2770,6 +2786,7 @@ function TimeTravelWorkspace({
   onReset,
 }: {
   topic: Topic;
+  language: string;
   userName: string;
   messages: Message[];
   input: string;
@@ -2959,7 +2976,7 @@ function TimeTravelWorkspace({
             realism={realism}
             depth={depth}
           />
-          <TopicResourceLinks topic={topic} />
+          <TopicResourceLinks topic={topic} language={language} />
         </section>
       </div>
     </main>
@@ -4000,6 +4017,7 @@ function formatSprintTime(seconds: number) {
 
 function CollaborativeInstructionWorkspace({
   topic,
+  language,
   userName,
   messages,
   input,
@@ -4015,6 +4033,7 @@ function CollaborativeInstructionWorkspace({
   onReset,
 }: {
   topic: Topic;
+  language: string;
   userName: string;
   messages: Message[];
   input: string;
@@ -4160,6 +4179,7 @@ function CollaborativeInstructionWorkspace({
       roomIcon={RoomIcon}
       sending={sending}
       topic={topic}
+      language={language}
       onGoal={(value) => updateCollaborationState({ goal: value })}
       onMode={(value) => updateCollaborationState({ modeId: value })}
       onStartWorkroom={startWorkroom}
@@ -4276,6 +4296,7 @@ function CollaborativeSession({
 function CollaborativeSetup({
   activeMode,
   goal,
+  language,
   listRef,
   modeId,
   room,
@@ -4288,6 +4309,7 @@ function CollaborativeSetup({
 }: {
   activeMode: (typeof collaborationModeOptions)[number];
   goal: string;
+  language: string;
   listRef: RefObject<HTMLDivElement | null>;
   modeId: CollaborationModeId;
   room: (typeof collaborationRoomTemplates)[CollaborationRoomType];
@@ -4372,7 +4394,7 @@ function CollaborativeSetup({
               </div>
             </section>
           </div>
-          <TopicResourceLinks topic={topic} />
+          <TopicResourceLinks topic={topic} language={language} />
         </section>
       </div>
     </main>
@@ -4382,6 +4404,7 @@ function CollaborativeSetup({
 function GuidedMiniAppWorkspace({
   topic,
   mode,
+  language,
   userName,
   messages,
   input,
@@ -4398,6 +4421,7 @@ function GuidedMiniAppWorkspace({
 }: {
   topic: Topic;
   mode: MiniMode;
+  language: string;
   userName: string;
   messages: Message[];
   input: string;
@@ -4422,6 +4446,7 @@ function GuidedMiniAppWorkspace({
     return (
       <CollaborativeInstructionWorkspace
         topic={topic}
+        language={language}
         userName={userName}
         messages={messages}
         input={input}
@@ -4443,6 +4468,7 @@ function GuidedMiniAppWorkspace({
     return (
       <HistoricalPersonWorkspace
         topic={topic}
+        language={language}
         userName={userName}
         messages={messages}
         input={input}
@@ -4513,7 +4539,7 @@ function GuidedMiniAppWorkspace({
       <div ref={listRef} className="bubble-mini-scroll app-scrollbar">
         {!hasSession ? (
           <section className="bubble-mini-start">
-            <TopicIntroCard topic={topic} />
+            <TopicIntroCard topic={topic} language={language} />
             <div className="bubble-mini-start-copy">
               <span>{config.eyebrow}</span>
               <h2>{config.setupTitle}</h2>
@@ -4659,6 +4685,7 @@ type HistoricalState = {
 
 type HistoricalPersonWorkspaceProps = {
   topic: Topic;
+  language: string;
   userName: string;
   messages: Message[];
   input: string;
@@ -4680,6 +4707,7 @@ function HistoricalPersonWorkspace(props: HistoricalPersonWorkspaceProps) {
 
 function useHistoricalPersonWorkspace({
   topic,
+  language,
   userName,
   messages,
   input,
@@ -4857,7 +4885,7 @@ function useHistoricalPersonWorkspace({
         {!hasSession ? (
           <section className="historical-start">
             <div className="historical-start-main">
-              <TopicIntroCard topic={topic} />
+              <TopicIntroCard topic={topic} language={language} />
               <header className="historical-audience-hero">
                 <span>Historical Audience Chamber</span>
                 <h2>Stage the person, year, room, and relationship.</h2>
@@ -6059,14 +6087,64 @@ function GuestContinueModal({
   );
 }
 
+function GuestLanguagePromptModal({
+  currentLanguage,
+  onSave,
+  onClose,
+}: {
+  currentLanguage: string;
+  onSave: (language: string) => void;
+  onClose: () => void;
+}) {
+  const [language, setLanguage] = useState(currentLanguage || defaultLanguage);
+
+  return (
+    <div className="bubble-guest-modal-backdrop" role="presentation">
+      <dialog open className="bubble-guest-modal bubble-language-start-modal" aria-modal="true" aria-labelledby="guest-language-title">
+        <button type="button" onClick={onClose} aria-label="Close" className="bubble-guest-modal-close">
+          <X size={20} />
+        </button>
+        <span className="bubble-guest-modal-kicker">Preferred Language</span>
+        <h2 id="guest-language-title">Choose your learning language</h2>
+        <p>Use inspir in the language that feels easiest. You can change this later from your profile.</p>
+        <label className="bubble-age-label" htmlFor="guest-preferred-language">
+          Preferred Language
+        </label>
+        <select
+          id="guest-preferred-language"
+          value={language}
+          onChange={(event) => setLanguage(event.target.value)}
+          className="bubble-age-input"
+          data-no-auto-translate="true"
+        >
+          {supportedLanguages.map((supportedLanguage) => (
+            <option key={supportedLanguage} value={supportedLanguage} data-no-auto-translate="true">
+              {languageDisplayName(supportedLanguage)}
+            </option>
+          ))}
+        </select>
+        <button type="button" onClick={() => onSave(language)} className="bubble-guest-modal-primary">
+          Continue
+        </button>
+        <button type="button" onClick={() => onSave(defaultLanguage)} className="bubble-guest-modal-secondary">
+          Continue with English
+        </button>
+      </dialog>
+    </div>
+  );
+}
+
 function AgePromptModal({
   onClose,
   onSaved,
+  initialLanguage,
 }: {
   onClose: () => void;
   onSaved: (user: UserProfile) => void;
+  initialLanguage: string;
 }) {
   const [dateOfBirth, setDateOfBirth] = useState("");
+  const [preferredLanguage, setPreferredLanguage] = useState(initialLanguage || defaultLanguage);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const today = new Date().toISOString().slice(0, 10);
@@ -6084,7 +6162,7 @@ function AgePromptModal({
       const response = await fetch("/api/me", {
         method: "PATCH",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ dateOfBirth }),
+        body: JSON.stringify({ dateOfBirth, preferredLanguage }),
       });
       const data = await response.json().catch(() => null);
       if (!response.ok || !data?.user) {
@@ -6112,8 +6190,8 @@ function AgePromptModal({
         <span className="bubble-guest-modal-kicker">Age-appropriate learning</span>
         <h2 id="age-modal-title">Help inspir fit your age</h2>
         <p>
-          Add your date of birth so inspir can adapt examples, tone, and safety boundaries for an
-          age-appropriate experience.
+          Add your date of birth and preferred language so inspir can adapt examples, tone,
+          safety boundaries, and app text for your learning experience.
         </p>
         <form onSubmit={submitDateOfBirth} className="bubble-age-form">
           <label className="bubble-age-label" htmlFor="date-of-birth">
@@ -6128,6 +6206,22 @@ function AgePromptModal({
             className="bubble-age-input"
             required
           />
+          <label className="bubble-age-label" htmlFor="age-preferred-language">
+            Preferred Language
+          </label>
+          <select
+            id="age-preferred-language"
+            value={preferredLanguage}
+            onChange={(event) => setPreferredLanguage(event.target.value)}
+            className="bubble-age-input"
+            data-no-auto-translate="true"
+          >
+            {supportedLanguages.map((language) => (
+              <option key={language} value={language} data-no-auto-translate="true">
+                {languageDisplayName(language)}
+              </option>
+            ))}
+          </select>
           {error ? <span className="bubble-age-error">{error}</span> : null}
           <button type="submit" disabled={saving} className="bubble-guest-modal-primary">
             {saving ? "Saving..." : "Continue"}
@@ -6253,7 +6347,7 @@ function ProfilePanel({
           onClear={onMemoryClear}
         />
 
-        <button type="button" onClick={() => signOut({ callbackUrl: "/" })} className="bubble-profile-logout">
+        <button type="button" onClick={() => void signOutToHome()} className="bubble-profile-logout">
           Logout
         </button>
         <footer className="bubble-profile-footer">
@@ -6267,6 +6361,25 @@ function ProfilePanel({
       </div>
     </aside>
   );
+}
+
+async function signOutToHome() {
+  try {
+    const csrfResponse = await fetch("/api/auth/csrf");
+    const csrf = (await csrfResponse.json().catch(() => null)) as { csrfToken?: string } | null;
+    const body = new URLSearchParams({
+      callbackUrl: "/",
+      json: "true",
+    });
+    if (csrf?.csrfToken) body.set("csrfToken", csrf.csrfToken);
+    await fetch("/api/auth/signout", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body,
+    });
+  } finally {
+    window.location.assign("/");
+  }
 }
 
 function getMessageMemorySources(message: Message): MessageMemorySource[] {

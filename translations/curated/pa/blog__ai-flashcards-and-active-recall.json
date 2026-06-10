@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Punjabi",
+  "locale": "pa",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "ਇੱਕ ਸ੍ਪਸ਼੍ਟ ਸਾਮਨੇ ਵਾਲਾ ਭਾਗ ਜੋ ਇੱਕ ਵਿਚਾਰ ਪੂਛਤਾ ਹੈ।"
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "ਇੱਕ ਸਾਮਾਨ੍ਯ ਜਾਲ ਜੋ ਸੰਭਾਵਿਤ ਗਲਤੀ ਤੋਂ ਸਾਵਧਾਨ ਕਰਤਾ ਹੈ।"
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "ਇੱਕ ਸੰਕਸ਼ਿਪ੍ਤ ਪਿਛਲਾ ਭਾਗ ਜੋ ਵਿਚਾਰ ਨੂੰ ਪੂਰਾ ਕਰਤਾ ਹੈ।"
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "ਅਜਿਹਾ ਸੰਕੇਤ ਜੋ ਸਬ ਕੁਛ ਬਤਾਏ ਬਿਨਾ ਮਦਦ ਕਰੇ।"
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "A ਦੁਹਰਾਈ choice ਤਾਂ ਕਿ missed ਕਾਰਡ return sooner."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "ਇੱਕ simple ਫਲੈਸ਼ਕਾਰਡ ਵਰ੍ਕਫ੍ਲੋ"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "A ਹੋਰ ਮਜ਼ਬੂਤ ਕਾਰਡ asks ਲਈ recall:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "A ਲਾਭਦਾਇਕ ਕਾਰਡ asks ਇੱਕ ਗੱਲ. ਇਹ ਚਾਹੀਦਾ ਹੈ ਨਹੀਂ hide five ਸਵਾਲ inside one ਪ੍ਰੌਮਪਟ. ਇਹ ਚਾਹੀਦਾ ਹੈ ਹੋਣਾ ਖਾਸ enough ਨੂੰ ਜਵਾਬ, but ਨਹੀਂ ਤਾਂ ਕਿ narrow ਕਿ ਇਹ becomes meaningless."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "ਇੱਕ weak AI ਫਲੈਸ਼ਕਾਰਡ says:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "ਸਕ੍ਰਿਆਤਮਕ ਰੀਕਾਲ"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "Add ਇਸ਼ਾਰੇ ਬਿਨਾਂ giving away ਜਵਾਬ"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI ਕਰ ਸਕਦਾ ਹੈ ਮਦਦ ਬਣਾਓ ਫਲੈਸ਼ਕਾਰਡ faster, but learning still comes ਤੋਂ retrieval. ਜੇ ਟੂਲ writes ਕਾਰਡ ਅਤੇ ਸਿੱਖਣ ਵਾਲਾ never struggles ਨੂੰ ਜਵਾਬ them, almost nothing has changed. ਲਾਭਦਾਇਕ version turns messy ਨੋਟ ਵਿੱਚ ਕੇਂਦਰਿਤ ਪ੍ਰੌਮਪਟ, ਫਿਰ makes ਸਿੱਖਣ ਵਾਲਾ recall ਤੋਂ ਪਹਿਲਾਂ revealing ਜਵਾਬ."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "AI ਕਰ ਸਕਦਾ ਹੈ ਬਦਲੋ rough ਨੋਟ ਵਿੱਚ cleaner retrieval ਪ੍ਰੌਮਪਟ. ਇਹ ਕਰ ਸਕਦਾ ਹੈ split broad ਵਿਚਾਰ ਵਿੱਚ smaller ਕਾਰਡ, add ਉਦਾਹਰਣਾਂ, ਅਤੇ identify traps ਇੱਕ ਸਿੱਖਣ ਵਾਲਾ might miss."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI ਫਲੈਸ਼ਕਾਰਡ ਅਤੇ ਐਕਟਿਵ ਰੀਕਾਲ: how ਨੂੰ remember more"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "apply ਇੱਕ concept ਨੂੰ ਇੱਕ small ਉਦਾਹਰਣ."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "one-ਵਿਚਾਰ ਕਾਰਡ ਨਾਲ ਇਸ਼ਾਰੇ ਅਤੇ common traps. ਮੰਗੋ"
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Back: \"Spacing forces memory ਨੂੰ reconstruct ਜਵਾਬ ਤੋਂ ਬਾਅਦ some forgetting, which strengthens later recall.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "compare two ਵਿਚਾਰ;"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "define ਇੱਕ term;"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "ਬਹੁਤ ਵ੍ਜਾਂਪਕ ਜਾਂ ਬਹੁਤ ਸ੍ਪਸ਼੍ਟ ਕਾਰ੍ਡ ਹਟਾਏੰ।"
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "Do ਨਹੀਂ ਦੁਹਰਾਈ everything equally"
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "ਆਸਾਨ। ਇਤੋਂ ਬਾਦ ਵਿੱਚ ਆਗੇ ਬਢ਼ਾਏੰ।"
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "ਇੱਕ ਕਾਰਨ ਸਮਝਾਏੰ;"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "ਫਲੈਸ਼ਕਾਰਡ ਹਨ one ਦਾ simplest ways ਨੂੰ do this."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "ਫਲੈਸ਼ਕਾਰਡ ਹਨ powerful, but ਉਹ ਹਨ ਨਹੀਂ whole study process. ਉਹ ਹਨ ਸਭ ਤੋਂ ਵਧੀਆ ਲਈ retrieval, vocabulary, definitions, formulas, distinctions, ਅਤੇ key ਉਦਾਹਰਣਾਂ. ਉਹ ਹਨ weaker ਜਦੋਂ ਸਿੱਖਣ ਵਾਲਾ has never understood ਵਿਚਾਰ ਵਿੱਚ first place."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "ਫਲੈਸ਼ਕਾਰਡ ਕੰਮ ਸਭ ਤੋਂ ਵਧੀਆ ਜਦੋਂ ਉਹ test one ਵਿਚਾਰ ਤੇ ਇੱਕ ਸਮਾਂ, reveal ਜਵਾਬ only ਤੋਂ ਬਾਅਦ effort, ਅਤੇ ਦੁਹਰਾਈ missed ਕਾਰਡ sooner."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "For ਇੱਕ deeper ਰਾਹ, ਪੜ੍ਹੋ Flashcard Builder ਗਾਈਡ ਅਤੇ Flashcard Builder ਪ੍ਰੌਮਪਟ ਅਤੇ ਪੜ੍ਹਾਈ ਲੂਪ. ਟੀਚਾ ਹੈ ਨਹੀਂ ਇੱਕ beautiful ਡੈਕ. ਟੀਚਾ ਹੈ remembering more ਜਦੋਂ ਨੋਟ ਹਨ gone."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "ਉਦਾਹਰਣ ਲਈ:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "Front: \"Why does spaced ਦੁਹਰਾਈ ਕੰਮ better than cramming?\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "Hard. ਦੁਹਰਾਈ ਤੋਂ ਬਾਅਦ ਇੱਕ short delay."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "ਇਸ਼ਾਰਾ: \"Think ਬਾਰੇ forgetting ਅਤੇ retrieval.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "ਇਸ਼ਾਰੇ ਹਨ ਲਾਭਦਾਇਕ ਜਦੋਂ ਉਹ preserve effort. ਇੱਕ bad ਇਸ਼ਾਰਾ ਹੈ ਜਵਾਬ ਵਿੱਚ disguise. ਇੱਕ ਚੰਗਾ ਇਸ਼ਾਰਾ narrows search space."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "identify ਇੱਕ common ਗਲਤੀ;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "If ਇੱਕ ਕਾਰਡ keeps failing, do ਨਹੀਂ only repeat it. ਪੁੱਛੋ why ਇਹ ਹੈ hard. ਵਰਤੋ Socratic Instruction ਨੂੰ uncover ਗਲਤਫ਼ਹਮੀ, ਗਣਿਤ Step Coach ਲਈ procedural gaps, ਜਾਂ AI learning ਪ੍ਰੌਮਪਟ ਲਾਇਬ੍ਰੇਰੀ ਨੂੰ find ਇੱਕ better study ਪ੍ਰੌਮਪਟ."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "inspir's Flashcard Builder ਹੈ designed ਦੇ ਆਲੇ-ਦੁਆਲੇ ਕਿ ਐਕਟਿਵ ਰੀਕਾਲ loop: ਬਣਾਓ ਇੱਕ ਡੈਕ, ਅਜ਼ਮਾਓ front, reveal ਜਵਾਬ, rate ਤੁਹਾਡਾ recall, ਅਤੇ ਦੁਹਰਾਈ misses until ਵਿਚਾਰ sticks."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "Missed. ਦੁਹਰਾਈ soon."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "One ਗਲਤੀ ਸਿੱਖਣ ਵਾਲੇ ਬਣਾਓ ਹੈ treating every ਕਾਰਡ ਉਹੀ. ਜੇ ਤੁਸੀਂ know ਇੱਕ ਕਾਰਡ instantly, ਦੁਹਰਾਈing ਇਹ again tomorrow ਕਰ ਸਕਦਾ ਹੈ waste ਸਮਾਂ. ਜੇ ਤੁਸੀਂ miss ਇੱਕ ਕਾਰਡ, waiting ਇੱਕ week ਕਰ ਸਕਦਾ ਹੈ ਹੋਣਾ too long."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "Pair ਫਲੈਸ਼ਕਾਰਡ ਨਾਲ ਸਮਝ"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "Paste ਇੱਕ small chunk ਦਾ ਨੋਟ ਵਿੱਚ Flashcard Builder."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "Photosynthesis: process plants ਵਰਤੋ ਨੂੰ ਬਣਾਓ food."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "ਰੀਕਾਲ ਨੂੰ ਇਮਾਨਦਾਰੀ ਨਾਲ ਰੇਟ ਕਰੋ।"
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "ਪੜ੍ਹਨ ਨੋਟ feels productive. Remembering them later ਹੈ real test."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "remember ਇੱਕ sequence;"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "ਦੁਹਰਾਈ ਬਿਨਾਂ looking ਤੇ back."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "ਮਜਬੂਤ cards ਵਿੱਚ ਅਕ੍ਸਰ ਯੇ ਸ਼ਾਮਿਲ ਹੋਤੇ ਹਨ:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "study skills ਕੌਸ਼ਲ"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "That ਇਸ਼ਾਰਾ helps ਸਿੱਖਣ ਵਾਲਾ ਸ਼ੁਰੂ ਕਰੋ ਬਿਨਾਂ removing act ਦਾ remembering. inspir's Flashcard Builder ਹੈ designed ਲਈ ਇਹ reveal-and-rate loop: ਅਜ਼ਮਾਓ first, reveal second, rate honestly, ਫਿਰ bring weak ਕਾਰਡ back sooner."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "That ਹੈ why ਐਕਟਿਵ ਰੀਕਾਲ matters. ਦੀ ਥਾਂ looking ਤੇ ਜਵਾਬ, ਤੁਸੀਂ ਅਜ਼ਮਾਓ ਨੂੰ pull ਇਹ ਤੋਂ memory. effort strengthens memory ਅਤੇ reveals what still needs ਕੰਮ."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "learner ਨੂੰ ਜਾਂਦ ਕਰਨਾ ਫਿਰ ਭੀ ਖੁਦ ਕਰਨਾ ਪਡ਼ਤਾ ਹੈ। ਇਹੀ point ਹੈ।"
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "The second ਕਾਰਡ makes ਸਿੱਖਣ ਵਾਲਾ retrieve ਇੱਕ relationship, ਨਹੀਂ simply recognize ਇੱਕ sentence. ਚੰਗਾ ਕਾਰਡ usually focus ਤੇ one ਦਾ ਇਹ ਕੰਮ:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "This does ਨਹੀਂ need ਨੂੰ ਹੋਣਾ complicated. important part ਹੈ ਕਿ ਤੁਹਾਡਾ ਦੁਹਰਾਈ schedule responds ਨੂੰ memory ਦੀ ਥਾਂ treating ਡੈਕ like ਇੱਕ static list."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "ਅਜ਼ਮਾਓ ਇਹ ਵਿੱਚ Flashcard Builder. ਜੇ ਤੁਸੀਂ need ਨੂੰ ਸਮਝੋ ਵਿਸ਼ਾ ਤੋਂ ਪਹਿਲਾਂ making ਕਾਰਡ, ਸ਼ੁਰੂ ਕਰੋ ਵਿੱਚ ਸਿੱਖੋ Anything. ਜੇ ਤੁਸੀਂ want pressure ਤੋਂ ਬਾਅਦ ਦੁਹਰਾਈing ਕਾਰਡ, ਅੱਗੇ ਵਧੋ ਵਿੱਚ ਕਵਿਜ਼ Me ਤੇ Trivia ਜਾਂ Viva ਅਭਿਆਸ."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "ਨੋਟ੍ਸ ਨੂੰ ਬੇਹਤਰ ਕਾਰ੍ਡ ਵਿੱਚ ਬਦਲੇੰ"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "ਬਦਲੋ repeated misses ਵਿੱਚ ਇੱਕ ਸਵਾਲ ਲਈ ਸਿੱਖੋ Anything."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "this loop: ਵਰਤੋ"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "three ratings: ਵਰਤੋ"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "What ਹੈ role ਦਾ chlorophyll ਵਿੱਚ photosynthesis?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "ਦੀ makes a good ਫ਼੍ਲੈਸ਼ਕਾਰ੍ਡ"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "When ਤੁਸੀਂ paste ਨੋਟ ਵਿੱਚ AI, ਪੁੱਛੋ ਇਹ ਨੂੰ split broad ਵਿਚਾਰ ਵਿੱਚ ਉਹ ਕੰਮ. ਇੱਕ ਡੈਕ ਨਾਲ 18 ਖਾਸ ਕਾਰਡ ਹੈ usually better than ਇੱਕ ਡੈਕ ਨਾਲ 5 giant ਕਾਰਡ ਕਿ each contain ਇੱਕ whole paragraph."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "AI ਕਹਾੰ ਮਦਦ ਕਰਤਾ ਹੈ"
+    }
+  ]
+}

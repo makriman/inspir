@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "language": "Korean",
+  "locale": "ko",
+  "namespace": "route:chat-public",
+  "sourceHash": "936b73dfc2653bf7624a9c7518d8966a79b622da99335a5fc8b094146576c214",
+  "part": {
+    "index": 10,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "사용 three ratings:"
+    },
+    {
+      "key": "site.0b74139d26786c31a9",
+      "source": "Use Time travel when this is the right mode for the job. If you want a related path, try Quiz me on Trivia. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "이 과제에 맞는 모드라면 시간 여행를 사용하세요. 관련 경로를 원한다면 상식 퀴즈 내기도 시도해 보세요. 학습 방법, 소크라테스식 학습, 플래시카드, 롤플레이, 능동 회상에 관한 AI 학습 블로그도 둘러볼 수 있습니다."
+    },
+    {
+      "key": "site.a2f81eb61f9a3c9bd0",
+      "source": "Use Time travel when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "빠르게 시작하면서도 나에게 맞게 조정되는 세션을 원할 때 시간 여행를 사용하세요. 첫 목표는 그럴듯하게 보이는 것이 아니라 다음 단계가 가능하다고 느끼게 하는 것입니다."
+    },
+    {
+      "key": "site.8ce405732f784c6c00",
+      "source": "Use timelines, cause layers, and consequence maps.",
+      "value": "timelines, cause layers, and consequence maps을/를 사용하세요."
+    },
+    {
+      "key": "site.d9b59b5cd28cc947b9",
+      "source": "Use tree structures, node labels, links, and next-step prompts.",
+      "value": "tree structures, node labels, 연결합니다, and 다음-단계 프롬프트을/를 사용하세요."
+    },
+    {
+      "key": "site.dc595ba2b6eb07879a",
+      "source": "Use unlabeled parts, hint tiers, answer key, and review prompts.",
+      "value": "unlabeled parts, 힌트 tiers, 답 key, and 복습 프롬프트을/를 사용하세요."
+    },
+    {
+      "key": "site.06d6cc61813524c8e5",
+      "source": "Use visual vocabulary and guided looking prompts.",
+      "value": "visual vocabulary and guided looking 프롬프트을/를 사용하세요."
+    },
+    {
+      "key": "site.d238305bf168b268ff",
+      "source": "Use Viva Practice when this is the right mode for the job. If you want a related path, try Learning Game Master. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "이 과제에 맞는 모드라면 구술시험 연습를 사용하세요. 관련 경로를 원한다면 학습 게임 마스터도 시도해 보세요. 학습 방법, 소크라테스식 학습, 플래시카드, 롤플레이, 능동 회상에 관한 AI 학습 블로그도 둘러볼 수 있습니다."
+    },
+    {
+      "key": "site.9d0a10626774c99800",
+      "source": "Use Viva Practice when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "빠르게 시작하면서도 나에게 맞게 조정되는 세션을 원할 때 구술시험 연습를 사용하세요. 첫 목표는 그럴듯하게 보이는 것이 아니라 다음 단계가 가능하다고 느끼게 하는 것입니다."
+    },
+    {
+      "key": "site.bd69cd3ea825ed4970",
+      "source": "Use Vocabulary Builder when this is the right mode for the job. If you want a related path, try Reading Companion. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "이 과제에 맞는 모드라면 어휘 빌더를 사용하세요. 관련 경로를 원한다면 읽기 동반자도 시도해 보세요. 학습 방법, 소크라테스식 학습, 플래시카드, 롤플레이, 능동 회상에 관한 AI 학습 블로그도 둘러볼 수 있습니다."
+    },
+    {
+      "key": "site.cd4070756edded8a69",
+      "source": "Use Vocabulary Builder when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "빠르게 시작하면서도 나에게 맞게 조정되는 세션을 원할 때 어휘 빌더를 사용하세요. 첫 목표는 그럴듯하게 보이는 것이 아니라 다음 단계가 가능하다고 느끼게 하는 것입니다."
+    },
+    {
+      "key": "site.70e08eef9e8898741f",
+      "source": "Use weekly plans, fallback plans, and tiny next actions.",
+      "value": "weekly plans, fallback plans, and tiny 다음 행동s을/를 사용하세요."
+    },
+    {
+      "key": "site.9d6b1d2e9407a9b510",
+      "source": "Use work/break cycles, break menus, and return prompts.",
+      "value": "작업/break cycles, break menus, and return 프롬프트을/를 사용하세요."
+    },
+    {
+      "key": "site.af5042183b0ad33208",
+      "source": "Use worksheet sections, answer keys, and difficulty labels.",
+      "value": "worksheet 섹션, 답 keys, and difficulty labels을/를 사용하세요."
+    },
+    {
+      "key": "site.3fb5408e7457bf73c1",
+      "source": "Use Writing Coach when this is the right mode for the job. If you want a related path, try Science Lab Partner. You can also browse the AI learning blog for study methods, Socratic learning, flashcards, roleplay, and active recall.",
+      "value": "이 과제에 맞는 모드라면 글쓰기 코치를 사용하세요. 관련 경로를 원한다면 과학 실험 파트너도 시도해 보세요. 학습 방법, 소크라테스식 학습, 플래시카드, 롤플레이, 능동 회상에 관한 AI 학습 블로그도 둘러볼 수 있습니다."
+    },
+    {
+      "key": "site.74c889d60e73579cf5",
+      "source": "Use Writing Coach when you want a session that starts quickly but still adapts to you. The first goal is not to sound impressive. The first goal is to make the next step feel possible.",
+      "value": "빠르게 시작하면서도 나에게 맞게 조정되는 세션을 원할 때 글쓰기 코치를 사용하세요. 첫 목표는 그럴듯하게 보이는 것이 아니라 다음 단계가 가능하다고 느끼게 하는 것입니다."
+    },
+    {
+      "key": "site.e3fe6cbb44e8f7e1e0",
+      "source": "Validate the feeling, identify the blocker, and choose one small next step.",
+      "value": "Validate the feeling, identify the blocker, and choose 하나 small 다음 단계."
+    },
+    {
+      "key": "site.754f12f4e5a90a1566",
+      "source": "Verify important facts with trusted sources, textbooks, or teacher-provided materials.",
+      "value": "Verify 중요한 facts 함께 trusted sources, textbooks, or 교사-provided materials."
+    },
+    {
+      "key": "site.07331fad32728578cb",
+      "source": "visual analysis",
+      "value": "시각 분석"
+    },
+    {
+      "key": "site.007a06574cb0fb9586",
+      "source": "visual learning",
+      "value": "visual 학습"
+    },
+    {
+      "key": "site.5a1cb0b0e96ed11a8b",
+      "source": "Visual Learning",
+      "value": "시각적 학습"
+    },
+    {
+      "key": "site.2365f31a23b256dde0",
+      "source": "Viva Practice",
+      "value": "구술 시험 연습"
+    },
+    {
+      "key": "site.9bb9921e99ff1e258d",
+      "source": "Viva Practice AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "구술시험 연습는 수동적으로 답만 모으는 대신 AI를 학습에 집중해 활용하는 방식입니다. 이 모드는 특정 학습 과제를 중심으로 만들어졌습니다. 연습 viva, oral 시험, project defenses, and rapid follow-up 질문 함께 calm 피드백."
+    },
+    {
+      "key": "site.c4255e0bb155f796af",
+      "source": "Viva Practice AI Learning Mode: practical guide",
+      "value": "구술시험 연습 AI 학습 모드: 실전 가이드"
+    },
+    {
+      "key": "site.40d5123891b796f2de",
+      "source": "Viva Practice prompts and study loop",
+      "value": "구술시험 연습 프롬프트와 학습 루프"
+    },
+    {
+      "key": "site.dcdcefcef74b939582",
+      "source": "Vocabulary Builder",
+      "value": "어휘 빌더"
+    },
+    {
+      "key": "site.19637f7cace496a827",
+      "source": "Vocabulary Builder AI Learning Mode is a focused way to use AI for learning instead of passive answer collection. The mode is built around a specific job: Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "어휘 빌더는 수동적으로 답만 모으는 대신 AI를 학습에 집중해 활용하는 방식입니다. 이 모드는 특정 학습 과제를 중심으로 만들어졌습니다. Build vocabulary 함께 meaning, 예시, pronunciation cues, memory hooks, and quick 연습."
+    },
+    {
+      "key": "site.afd2aa4628a25e2ad6",
+      "source": "Vocabulary Builder AI Learning Mode: practical guide",
+      "value": "어휘 빌더 AI 학습 모드: 실전 가이드"
+    },
+    {
+      "key": "site.7ae5014c2f1de184ce",
+      "source": "Vocabulary Builder prompts and study loop",
+      "value": "어휘 빌더 프롬프트와 학습 루프"
+    },
+    {
+      "key": "site.5dc36b30853cf22798",
+      "source": "weekly report",
+      "value": "주간 보고서"
+    },
+    {
+      "key": "site.251e95b9ac24ea8a13",
+      "source": "Weekly Reports",
+      "value": "주간 보고서"
+    },
+    {
+      "key": "site.6a240976e3eee6244a",
+      "source": "weighted score",
+      "value": "가중 점수"
+    },
+    {
+      "key": "site.e1e106f63bbbc8bd3b",
+      "source": "What a good Socratic session looks like",
+      "value": "무엇 a good Socratic 세션 looks like"
+    },
+    {
+      "key": "site.0981074c59b3d17b95",
+      "source": "What achievement system should we design?",
+      "value": "어떤 업적 시스템을 설계할까요?"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "무엇 an AI 학습 동반자 should 하다 위한 everyone"
+    },
+    {
+      "key": "site.99bf92a50982fca403",
+      "source": "What are we brainstorming?",
+      "value": "무엇을 브레인스토밍할까요?"
+    },
+    {
+      "key": "site.7a17c6674aba6f483f",
+      "source": "What are we reading?",
+      "value": "무엇을 읽어볼까요?"
+    },
+    {
+      "key": "site.ea4c2f610f1ececeea",
+      "source": "What are you curious about today?",
+      "value": "오늘은 무엇이 궁금하신가요?"
+    },
+    {
+      "key": "site.cd2bfd968fc16c5821",
+      "source": "What are you preparing to say?",
+      "value": "무엇을 준비하고 계신가요?"
+    },
+    {
+      "key": "site.3ab320d9a43d0e6584",
+      "source": "What are you researching?",
+      "value": "어떤 주제를 연구하고 계신가요?"
+    },
+    {
+      "key": "site.1dd47797c770018e8a",
+      "source": "What are you writing?",
+      "value": "어떤 글을 쓰고 계신가요?"
+    },
+    {
+      "key": "site.97c424262ca267397f",
+      "source": "What artwork, artist, or style?",
+      "value": "어떤 예술 작품, 예술가, 또는 양식에 대해 궁금하신가요?"
+    },
+    {
+      "key": "site.33b587c34bfad5eb70",
+      "source": "What assignments are on your plate?",
+      "value": "어떤 과제를 수행해야 하나요?"
+    },
+    {
+      "key": "site.2a64045de6a22c820f",
+      "source": "What big question are we exploring?",
+      "value": "어떤 중요한 질문을 탐구해 볼까요?"
+    },
+    {
+      "key": "site.0f208ef91c06e8d1cb",
+      "source": "What career or interest should we explore?",
+      "value": "어떤 커리어나 관심사를 탐색해 볼까요?"
+    },
+    {
+      "key": "site.5e290b0b81a3592a09",
+      "source": "What choices were available?",
+      "value": "무엇 선택 were 이용 가능한?"
+    },
+    {
+      "key": "site.34192e05f77af49ffb",
+      "source": "What civics topic should we study?",
+      "value": "어떤 시민 교육 주제를 공부할까요?"
+    },
+    {
+      "key": "site.e273b94bab3e371790",
+      "source": "What coding topic or bug are we tackling?",
+      "value": "어떤 코딩 주제나 버그를 다뤄볼까요?"
+    },
+    {
+      "key": "site.913f09e477010afc26",
+      "source": "What commitment needs accountability?",
+      "value": "어떤 약속에 책임이 필요한가요?"
+    },
+    {
+      "key": "site.b67adfddcd2d9ee753",
+      "source": "What concept should we map?",
+      "value": "어떤 개념을 지도로 만들까요?"
+    },
+    {
+      "key": "site.7ce882ee2ad2ebb04f",
+      "source": "What courses or subjects are you managing?",
+      "value": "어떤 코스나 과목을 관리하고 계신가요?"
+    },
+    {
+      "key": "site.bc1ad1db71809d0aea",
+      "source": "What diagram should we practice labeling?",
+      "value": "어떤 다이어그램 라벨링을 연습할까요?"
+    },
+    {
+      "key": "site.4ccb447427a6acda9a",
+      "source": "What did their society assume?",
+      "value": "무엇 did their society assume?"
+    },
+    {
+      "key": "site.8bc608a9306d319a8b",
+      "source": "What did this person care about?",
+      "value": "무엇 did this person care about?"
+    },
+    {
+      "key": "site.e9f4a4fe62409c1c8e",
+      "source": "What dilemma should we examine?",
+      "value": "어떤 딜레마를 살펴볼까요?"
+    },
+    {
+      "key": "site.81e4d09d2a59c87143",
+      "source": "What do you do next in this world?",
+      "value": "이 세계에서 다음으로 무엇을 하시겠습니까?"
+    },
+    {
+      "key": "site.c1eeabf3357761317e",
+      "source": "What do you need to remember?",
+      "value": "무엇을 기억해야 하나요?"
+    },
+    {
+      "key": "site.1ddd54c7aba2982859",
+      "source": "What do you need to study?",
+      "value": "무엇을 공부해야 하나요?"
+    },
+    {
+      "key": "site.994831c82791ad6f05",
+      "source": "What do you think is happening?",
+      "value": "무엇 하다 당신 think is happening?"
+    },
+    {
+      "key": "site.1dea1b5f0836bda6a0",
+      "source": "What do you want to get done today?",
+      "value": "오늘 무엇을 완료하고 싶으신가요?"
+    },
+    {
+      "key": "site.d4ed9c784870dcc7d7",
+      "source": "What does a court do?",
+      "value": "법원은 어떤 일을 하나요?"
+    },
+    {
+      "key": "site.e626ff47ddc92dfe6c",
+      "source": "What does a product manager do?",
+      "value": "프로덕트 매니저는 무슨 일을 하나요?"
+    },
+    {
+      "key": "site.dcbc3d94a036c706cc",
+      "source": "What does this survey show?",
+      "value": "이 설문조사는 무엇을 보여주나요?"
+    },
+    {
+      "key": "site.e7465e6539a79e83f4",
+      "source": "What economy idea should we simulate?",
+      "value": "어떤 경제 아이디어를 시뮬레이션해 볼까요?"
+    },
+    {
+      "key": "site.50c9f2f00a083f86b4",
+      "source": "What evidence supports that?",
+      "value": "무엇 evidence supports that?"
+    },
+    {
+      "key": "site.540008a1b429cd7d37",
+      "source": "What exam are you preparing for?",
+      "value": "어떤 시험을 준비하고 계신가요?"
+    },
+    {
+      "key": "site.cf2d143a1c608d6fba",
+      "source": "What final score do I need?",
+      "value": "기말고사에서 몇 점을 받아야 하나요?"
+    },
+    {
+      "key": "site.5c071e5f464dd18760",
+      "source": "What happened this week?",
+      "value": "이번 주에 어떤 일이 있었나요?"
+    },
+    {
+      "key": "site.eadbd1e3b68f19aa29",
+      "source": "What happens if taxes change?",
+      "value": "세금이 변하면 어떻게 될까요?"
+    },
+    {
+      "key": "site.2ba4ac0fb871e9156b",
+      "source": "What happens if we change temperature?",
+      "value": "온도를 바꾸면 어떤 일이 일어날까?"
+    },
+    {
+      "key": "site.221d0dba1e60583dbd",
+      "source": "What homework problem are you stuck on?",
+      "value": "어떤 숙제 문제에서 막혔나요?"
+    },
+    {
+      "key": "site.e166f09eeb9d809841",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "어떤 아이디어가 혼란스럽거나 의심스럽나요?"
+    },
+    {
+      "key": "site.31b25ae22f06912d11",
+      "source": "What interview are you preparing for?",
+      "value": "어떤 인터뷰를 준비하고 계신가요?"
+    },
+    {
+      "key": "site.f129d74479b44af85d",
+      "source": "What is knowledge?",
+      "value": "지식이란 무엇인가?"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "무엇 is the role of chlorophyll in photosynthesis?"
+    },
+    {
+      "key": "site.7b4cc8d27ce0650610",
+      "source": "What it should not do",
+      "value": "무엇 it should 아닌 하다"
+    },
+    {
+      "key": "site.9494ab8da8b3c55cd9",
+      "source": "What kind of ambient focus do you want?",
+      "value": "어떤 종류의 집중 환경을 원하시나요?"
+    },
+    {
+      "key": "site.12ea4eefabcfd1e4e8",
+      "source": "What kind of case should we simulate?",
+      "value": "어떤 사례를 시뮬레이션해 볼까요?"
+    },
+    {
+      "key": "site.d41f842c849f5a5be4",
+      "source": "What kind of focus do you want today?",
+      "value": "오늘은 어떤 종류의 집중이 필요하신가요?"
+    },
+    {
+      "key": "site.19a7a8f10b577a32ef",
+      "source": "What learning goal should become a leveling system?",
+      "value": "어떤 학습 목표를 레벨 시스템으로 만들까요?"
+    },
+    {
+      "key": "site.9fca806c4da9258db2",
+      "source": "What learning habit do you want?",
+      "value": "어떤 학습 습관을 만들고 싶으신가요?"
+    },
+    {
+      "key": "site.06ac9014c02719535a",
+      "source": "What learning moment should we reflect on?",
+      "value": "어떤 학습 경험에 대해 성찰해 볼까요?"
+    },
+    {
+      "key": "site.46ed64970bbf5f828e",
+      "source": "What learning strategy fits me?",
+      "value": "나에게 맞는 학습 전략은 무엇일까?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "무엇 makes a good flashcard"
+    },
+    {
+      "key": "site.66f70e5df79e3e9c5d",
+      "source": "What makes an argument valid?",
+      "value": "논증이 타당하려면 무엇이 필요한가?"
+    },
+    {
+      "key": "site.1a8e11c9d5e283c22e",
+      "source": "What makes something fair?",
+      "value": "무엇이 공정함을 만드는가?"
+    },
+    {
+      "key": "site.781013fa9de6c14ce7",
+      "source": "What material should become a study guide?",
+      "value": "어떤 자료를 학습 가이드로 만들까요?"
+    },
+    {
+      "key": "site.bab56d4734ec13db90",
+      "source": "What math problem should we work through?",
+      "value": "어떤 수학 문제를 풀어볼까요?"
+    },
+    {
+      "key": "site.cf044cbcf91bc20f3f",
+      "source": "What music idea should we work on?",
+      "value": "어떤 음악적 아이디어를 다뤄볼까요?"
+    },
+    {
+      "key": "site.84a416a71e9b805ce4",
+      "source": "What outcome should this deep work session produce?",
+      "value": "이번 딥 워크 세션으로 어떤 결과물을 만들어야 하나요?"
+    },
+    {
+      "key": "site.9ebec24d07a6780134",
+      "source": "What pairs should become a matching game?",
+      "value": "어떤 쌍으로 매칭 게임을 만들까요?"
+    },
+    {
+      "key": "site.f64151e5fbb7a90449",
+      "source": "What progress should we review?",
+      "value": "어떤 진도를 검토할까요?"
+    },
+    {
+      "key": "site.fffe3456ff942ee391",
+      "source": "What project are we building?",
+      "value": "어떤 프로젝트를 만들고 계신가요?"
+    },
+    {
+      "key": "site.29f0074d84a4e42189",
+      "source": "What question or discussion do you want to post?",
+      "value": "어떤 질문이나 토론을 게시하고 싶으신가요?"
+    },
+    {
+      "key": "site.06b3517795da8b0c90",
+      "source": "What resource do you want to share?",
+      "value": "어떤 자료를 공유하고 싶으신가요?"
+    },
+    {
+      "key": "site.e367f2e39965489fd5",
+      "source": "What scenario should we roleplay?",
+      "value": "어떤 시나리오로 역할극을 해볼까요?"
+    },
+    {
+      "key": "site.d814380c069519e740",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "어떤 과학 개념이나 실험을 탐구해 볼까요?"
+    },
+    {
+      "key": "site.4d0bbff26b9f024152",
+      "source": "What should become a challenge?",
+      "value": "어떤 것을 챌린지로 만들까요?"
+    },
+    {
+      "key": "site.4d5da2c434f427c24e",
+      "source": "What should become a learning game?",
+      "value": "어떤 내용을 학습 게임으로 만들까요?"
+    },
+    {
+      "key": "site.1093c77f96b6df0c6c",
+      "source": "What should become a story?",
+      "value": "어떤 내용을 이야기로 만들어 볼까요?"
+    },
+    {
+      "key": "site.62deb09d8926abf1e0",
+      "source": "What should become flashcards?",
+      "value": "어떤 내용을 플래시카드로 만들까요?"
+    },
+    {
+      "key": "site.08aa84aad475334414",
+      "source": "What should I ask {value1} first?",
+      "value": "무엇 should I 질문하다 {value1} first?"
+    },
+    {
+      "key": "site.aa5ca6cb45ab0bd5aa",
+      "source": "What should the leaderboard measure?",
+      "value": "리더보드는 무엇을 측정해야 할까요?"
+    },
+    {
+      "key": "site.c2554176efdc13934f",
+      "source": "What should the practice test cover?",
+      "value": "연습 시험에서 어떤 내용을 다룰까요?"
+    },
+    {
+      "key": "site.f990c1b3d9e9aaac33",
+      "source": "What should the study group do?",
+      "value": "스터디 그룹에서 무엇을 할까요?"
+    },
+    {
+      "key": "site.ee2d8ab95cfea753ed",
+      "source": "What should the worksheet cover?",
+      "value": "워크시트에서 어떤 내용을 다룰까요?"
+    },
+    {
+      "key": "site.4fcac6816413aa4067",
+      "source": "What should this focus session be about?",
+      "value": "이번 집중 세션의 주제는 무엇인가요?"
+    },
+    {
+      "key": "site.f64afd68f46c590398",
+      "source": "What should we review?",
+      "value": "무엇을 복습할까요?"
+    },
+    {
+      "key": "site.dc1fb22a51627da2ec",
+      "source": "What should we sketch or diagram?",
+      "value": "무엇을 스케치하거나 다이어그램으로 그려볼까요?"
+    },
+    {
+      "key": "site.f95d3bf0c245a14c4d",
+      "source": "What streak or routine are you building?",
+      "value": "어떤 연속 기록이나 루틴을 만들고 계신가요?"
+    },
+    {
+      "key": "site.fade81bae60e35ebef",
+      "source": "What task should we time?",
+      "value": "어떤 작업을 측정할까요?"
+    },
+    {
+      "key": "site.f4877740cc39cf8b66",
+      "source": "What the companion should provide",
+      "value": "무엇 the 동반자 should provide"
+    },
+    {
+      "key": "site.231fbf27878f2698ea",
+      "source": "What this mode helps with",
+      "value": "무엇 this 모드 helps 함께"
+    },
+    {
+      "key": "site.a29b4b5ee632ee4d44",
+      "source": "What to ask a historical figure",
+      "value": "무엇 to 질문하다 a historical figure"
+    },
+    {
+      "key": "site.6044e2564efcabd80d",
+      "source": "What topic shall we put you to the test on?",
+      "value": "어떤 주제로 테스트를 진행해 볼까요?"
+    },
+    {
+      "key": "site.8a087360a84a5ac842",
+      "source": "What topic should become a mind map?",
+      "value": "어떤 주제로 마인드맵을 만들까요?"
+    },
+    {
+      "key": "site.66ff8da3c410e943d7",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "어떤 구술 시험이나 면접을 준비 중이신가요?"
+    },
+    {
+      "key": "site.ff412deb70e1a3844a",
+      "source": "What will you explain back to me?",
+      "value": "어떤 내용을 설명해 주시겠어요?"
+    },
+    {
+      "key": "site.daf2eb2da3e5a060a3",
+      "source": "What words or topic should we practice?",
+      "value": "어떤 단어나 주제를 연습할까요?"
+    },
+    {
+      "key": "site.68bdc7d281675a6cf8",
+      "source": "What work/break rhythm do you want?",
+      "value": "어떤 작업/휴식 리듬을 원하시나요?"
+    },
+    {
+      "key": "site.5d87e0b2c178c83a36",
+      "source": "What would change your mind?",
+      "value": "무엇 would change 당신의 mind?"
+    },
+    {
+      "key": "site.3ab45d2d5936f0cebc",
+      "source": "What would modern readers misunderstand?",
+      "value": "무엇 would modern readers misunderstand?"
+    },
+    {
+      "key": "site.c52ea02f02e5ee2825",
+      "source": "What would you like to learn today?",
+      "value": "오늘은 무엇을 배우고 싶으신가요?"
+    },
+    {
+      "key": "site.2fb41d86e92cebbf5a",
+      "source": "What you can practise",
+      "value": "무엇 당신 can practise"
+    },
+    {
+      "key": "site.3abc488d3bc83c9c6a",
+      "source": "What's making learning hard right now?",
+      "value": "지금 무엇 때문에 학습이 힘드신가요?"
+    },
+    {
+      "key": "site.16ca7ae85fc38b08f3",
+      "source": "What's your debate topic today?",
+      "value": "오늘의 토론 주제는 무엇인가요?"
+    },
+    {
+      "key": "site.23ed22107e266940e1",
+      "source": "When Socratic tutoring is the wrong tool",
+      "value": "언제 Socratic 튜터링 is the wrong tool"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "언제 당신 paste 노트 into AI, 질문하다 it to split broad 아이디어 into those 과제. A deck 함께 18 specific cards is usually 더 나은 than a deck 함께 5 giant cards that each contain a whole paragraph."
+    },
+    {
+      "key": "site.4335b162337ad74d7f",
+      "source": "Where AI can help",
+      "value": "어디서 AI can 도움"
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "어디서 AI helps"
+    },
+    {
+      "key": "site.daf70f0e8664ca7eff",
+      "source": "Where should we explore?",
+      "value": "어디를 탐험해 볼까요?"
+    },
+    {
+      "key": "site.0320ac9cef49bf6819",
+      "source": "Where to go next",
+      "value": "어디서 to go 다음"
+    },
+    {
+      "key": "site.1881624eb98fd1038a",
+      "source": "Which assumption is doing the most work?",
+      "value": "어느 assumption is doing the most 작업?"
+    },
+    {
+      "key": "site.e1d18bbdfb45b5bdf5",
+      "source": "Which historical event should we trace?",
+      "value": "어떤 역사적 사건을 추적해 볼까요?"
+    },
+    {
+      "key": "site.1456608d8fd2b9f5fc",
+      "source": "Which historical figure would you like to meet?",
+      "value": "어떤 역사적 인물을 만나고 싶으신가요?"
+    },
+    {
+      "key": "site.1e76ba609d93b32fca",
+      "source": "Which language and situation?",
+      "value": "어떤 언어와 상황인가요?"
+    },
+    {
+      "key": "site.0f2909e7b85147ae50",
+      "source": "Which parts are well documented and which parts are uncertain?",
+      "value": "어느 parts are well documented and 어느 parts are uncertain?"
+    },
+    {
+      "key": "site.8780176d6941a495e6",
+      "source": "white noise",
+      "value": "화이트 노이즈"
+    },
+    {
+      "key": "site.6810100b38ea5ed6b5",
+      "source": "Who do you want to debate, and on what?",
+      "value": "누구와 어떤 주제로 토론하고 싶으신가요?"
+    },
+    {
+      "key": "site.0bc31ff5cdbc6f73eb",
+      "source": "Who is studying together and what is the goal?",
+      "value": "누구와 함께 공부하며 목표는 무엇인가요?"
+    },
+    {
+      "key": "site.f4ff361d2bbe9cfce0",
+      "source": "Who it helps",
+      "value": "도움이 되는 대상"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "왜 a Socratic AI 튜터 can make 아이디어 stick"
+    },
+    {
+      "key": "site.76e0ab3a6794d6cd46",
+      "source": "Why are cities near rivers?",
+      "value": "왜 도시는 강 근처에 있을까요?"
+    },
+    {
+      "key": "site.254532ccca427334f2",
+      "source": "Why did I avoid studying?",
+      "value": "왜 공부를 미뤘을까?"
+    },
+    {
+      "key": "site.daf6766cd4b2b6d7f8",
+      "source": "Why did the Roman Empire weaken?",
+      "value": "로마 제국은 왜 쇠퇴했는가?"
+    },
+    {
+      "key": "site.a915d691c6ae16cfbc",
+      "source": "Why is my algebra answer wrong?",
+      "value": "내 대수학 답변이 왜 틀렸을까?"
+    },
+    {
+      "key": "site.245c35ddaa92d6c2f9",
+      "source": "Why is this grammar rule weird?",
+      "value": "이 문법 규칙은 왜 이상한가요?"
+    },
+    {
+      "key": "site.3b784ed5faff65ac4d",
+      "source": "Why it is different",
+      "value": "다른 점"
+    },
+    {
+      "key": "site.25f4f1d4c8936dc3d0",
+      "source": "Why questions help",
+      "value": "왜 질문 도움"
+    },
+    {
+      "key": "site.cb51f0efe1f58d6e32",
+      "source": "Words about weather",
+      "value": "날씨 관련 단어"
+    },
+    {
+      "key": "site.9fada6e3378baf47ee",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "가중치 성적, GPA 시나리오, 필요한 기말고사 점수 및 학기별 가상 계획을 계산해 보세요."
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "AI 코치와 함께 대수학, 미적분, 문장제 문제 및 수학 개념을 한 단계씩 학습하세요."
+    },
+    {
+      "key": "site.2f485333af4db92bed",
+      "source": "Work through dilemmas by weighing stakeholders, consequences, duties, rights, and tradeoffs.",
+      "value": "이해관계자, 결과, 의무, 권리 및 상충 관계를 따져보며 딜레마를 해결해 보세요."
+    },
+    {
+      "key": "site.8e20eace2482358115",
+      "source": "Work through math one step at a time",
+      "value": "수학 문제를 한 단계씩 해결하세요"
+    },
+    {
+      "key": "site.71b0424286f0ac6cbc",
+      "source": "Worksheet Builder",
+      "value": "워크시트 빌더"
+    },
+    {
+      "key": "site.c1565a2541478adcb4",
+      "source": "World capitals",
+      "value": "세계의 수도"
+    },
+    {
+      "key": "site.3502cddaf320fe93ea",
+      "source": "Write a check-in script",
+      "value": "체크인 스크립트 작성하기"
+    },
+    {
+      "key": "site.4c4feaf5478938214b",
+      "source": "Write a good forum question",
+      "value": "좋은 포럼 질문 작성하기"
+    },
+    {
+      "key": "site.8a57eab4bf3b64cf91",
+      "source": "Write my weekly study report",
+      "value": "주간 학습 보고서 작성하기"
+    },
+    {
+      "key": "site.26837fdfbdc6470aba",
+      "source": "Write your next step.",
+      "value": "Write 당신의 다음 단계."
+    },
+    {
+      "key": "site.2906041145ba13b814",
+      "source": "writing coach",
+      "value": "글쓰기 코치"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "글쓰기 코치"
+    },
+    {
+      "key": "site.d0cad315c201ae8f56",
+      "source": "Writing Coach prompts and study loop",
+      "value": "글쓰기 코치 프롬프트와 학습 루프"
+    },
+    {
+      "key": "site.472db54c5bf1afe70c",
+      "source": "XP & Leveling",
+      "value": "XP 및 레벨링"
+    },
+    {
+      "key": "site.9711f0284628a152bd",
+      "source": "Yes. {value1} opens as a public guest learning mode at {value2}, so you can start with a few free guest messages before creating an account.",
+      "value": "네. {value1} opens as a 공개 guest 학습 모드 at {value2}, so 당신 can 시작 함께 a few 무료 guest messages 전에 creating an 계정."
+    },
+    {
+      "key": "site.1a3740fa59d6eb6490",
+      "source": "You can also start with a rough version of your real problem. A messy first prompt is fine. The session can clarify the level, audience, deadline, and style once you begin.",
+      "value": "당신 can 또한 시작 함께 a rough 버전 of 당신의 실제 문제. A messy first 프롬프트 is fine. The 세션 can clarify the 수준, audience, deadline, and style once 당신 begin."
+    },
+    {
+      "key": "site.f2e043b75e8b159ec8",
+      "source": "You can try the format in Talk to a Historical Person. If you want the wider scene before meeting a person, use Time Travel to visit a period, inspect constraints, and then ask what choices people actually had.",
+      "value": "당신 can try the format in Talk to a Historical Person. If 당신 원하다 the wider scene 전에 meeting a person, 사용 Time Travel to visit a period, inspect constraints, and then 질문하다 무엇 선택 people actually had."
+    },
+    {
+      "key": "site.c94e43c9c2d97a9af5",
+      "source": "You know a Socratic AI tutor worked when the learner can do three things:",
+      "value": "당신 know a Socratic AI 튜터 worked 언제 the 학습자 can 하다 three things:"
+    }
+  ]
+}

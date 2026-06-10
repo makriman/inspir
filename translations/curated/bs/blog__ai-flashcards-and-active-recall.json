@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "language": "Bosnian",
+  "locale": "bs",
+  "namespace": "blog:ai-flashcards-and-active-recall",
+  "sourceHash": "98b4c6f97d305c542bf445f7c0426ea64704c47443cf94aeec951af63816343d",
+  "entries": [
+    {
+      "key": "site.8c5564fef0237e6b5e",
+      "source": "A clear front that asks one idea.",
+      "value": "Jasan front koji pita jednu ideju."
+    },
+    {
+      "key": "site.cd701f237fff703b2b",
+      "source": "A common trap that warns against a likely mistake.",
+      "value": "Zajednička zamka koja upozorava na verovatnu grešku."
+    },
+    {
+      "key": "site.dbd2be631774d26dd1",
+      "source": "A concise back that completes the thought.",
+      "value": "Povratak koji upotpunjuje misao."
+    },
+    {
+      "key": "site.638869a2cf45def852",
+      "source": "A hint that helps without giving everything away.",
+      "value": "Nagovještaj koji pomaže bez davanja svega."
+    },
+    {
+      "key": "site.5c616707942c6456ec",
+      "source": "A review choice so missed cards return sooner.",
+      "value": "Izbor pregleda tako propuštenih karata vratiti ranije."
+    },
+    {
+      "key": "site.6fa56fab6ac136147e",
+      "source": "A simple flashcard workflow",
+      "value": "Jednostavan protok kartica za ponavljanje radnog toka"
+    },
+    {
+      "key": "site.54ce67ca4ad72e6143",
+      "source": "A stronger card asks for recall:",
+      "value": "Jača karta traži opoziv:"
+    },
+    {
+      "key": "site.06c23cd9959a36b98c",
+      "source": "A useful card asks one thing. It should not hide five questions inside one prompt. It should be specific enough to answer, but not so narrow that it becomes meaningless.",
+      "value": "Korisna kartica postavlja jednu stvar. Ne bi trebala skrivati pet pitanja unutar jednog prompt. Trebala bi biti dovoljno specifična da odgovori, ali ne toliko uska da postaje besmislena."
+    },
+    {
+      "key": "site.c2751a7d7252649785",
+      "source": "A weak AI flashcard says:",
+      "value": "Slaba AI kartica za ponavljanje kaže:"
+    },
+    {
+      "key": "site.36019c92743104254d",
+      "source": "active recall",
+      "value": "aktivno prisjećanje"
+    },
+    {
+      "key": "site.4fa4c37611a956fc47",
+      "source": "Add hints without giving away the answer",
+      "value": "Dodaj savjete bez davanja odgovora"
+    },
+    {
+      "key": "site.2af597d76da25f0ebd",
+      "source": "AI can help make flashcards faster, but the learning still comes from retrieval. If the tool writes the cards and the learner never struggles to answer them, almost nothing has changed. The useful version turns messy notes into focused prompts, then makes the learner recall before revealing the answer.",
+      "value": "AI može pomoći da se kartice za ponavljanje brže, ali učenje još uvijek dolazi iz dobivanja. Ako alat piše kartice i učenik nikada ne bori za odgovor na njih, gotovo ništa se nije promijenilo. Korisna verzija pretvara neuredne bilješke u fokusirane poticaje, onda čini učenik prisjeća prije otkrivanja odgovora."
+    },
+    {
+      "key": "site.1a6c8fd1b88d1659de",
+      "source": "AI can turn rough notes into cleaner retrieval prompts. It can split broad ideas into smaller cards, add examples, and identify traps a learner might miss.",
+      "value": "AI može pretvoriti grube bilješke u čistijih poticaja za dobivanje. To može podijeliti široke ideje na manje kartice, dodati primjere, i identificirati zamke učenika može propustiti."
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI kartice za ponavljanje i aktivni opoziv: kako zapamtiti više"
+    },
+    {
+      "key": "site.2fa61836e8078087df",
+      "source": "apply a concept to a small example.",
+      "value": "primijeniti koncept na mali primjer."
+    },
+    {
+      "key": "site.d3d5396991fb53538d",
+      "source": "Ask for one-idea cards with hints and common traps.",
+      "value": "Tražite jednu ideju s nagovještajima i zajedničkim zamkama."
+    },
+    {
+      "key": "site.e3e10fe82007a2d94f",
+      "source": "Back: \"Spacing forces memory to reconstruct the answer after some forgetting, which strengthens later recall.\"",
+      "value": "Povratak: \"Promicanje prisiljava pamćenje na rekonstrukciju odgovora nakon što neki zaborave, što jača kasnije opoziv.\""
+    },
+    {
+      "key": "site.df9536d4b64b2905c8",
+      "source": "compare two ideas;",
+      "value": "uporediti dvije ideje;"
+    },
+    {
+      "key": "site.eee8065f90d71c4f5f",
+      "source": "define a term;",
+      "value": "umeće se sljedeći stavak 1. tačka (a) podtačka (b) i (c) zamjenjuje se sljedećim:"
+    },
+    {
+      "key": "site.b5012df47739973894",
+      "source": "Delete cards that are too broad or obvious.",
+      "value": "Obriši karte koje su preširoke ili očite."
+    },
+    {
+      "key": "site.ca4405979b3215e903",
+      "source": "Do not review everything equally",
+      "value": "Ne razmatrajte sve jednako"
+    },
+    {
+      "key": "site.66b7d13b486fa7a134",
+      "source": "Easy. Push it later.",
+      "value": "Polako, guraj kasnije."
+    },
+    {
+      "key": "site.894ff25dc6b08f0661",
+      "source": "explain a cause;",
+      "value": "objašnjenje uzroka;"
+    },
+    {
+      "key": "site.930075ed955b3c40bc",
+      "source": "Flashcards are one of the simplest ways to do this.",
+      "value": "Fleš-kartice su jedan od najjednostavnijih režima za to."
+    },
+    {
+      "key": "site.417ef8e018cc5949dd",
+      "source": "Flashcards are powerful, but they are not the whole study process. They are best for retrieval, vocabulary, definitions, formulas, distinctions, and key examples. They are weaker when the learner has never understood the idea in the first place.",
+      "value": "Flashcards su moćni, ali oni nisu cijeli proces učenja. Oni su najbolji za dobivanje, rječnik, definicije, formule, razlike, i ključni primjeri. Oni su slabiji kada učenik nikada nije razumio ideju na prvom mjestu."
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Flashcards rade najbolje kada testiraju jednu ideju u isto vrijeme, otkrivaju odgovore tek nakon napora, i pregledati propuštene karte prije."
+    },
+    {
+      "key": "site.a77fe5b642d7671059",
+      "source": "For a deeper route, read the Flashcard Builder guide and the Flashcard Builder prompts and study loop. The goal is not a beautiful deck. The goal is remembering more when the notes are gone.",
+      "value": "Za dublju rutu, pročitajte Flashcard Builder vodič i Flashcard Builder pokreće i studij petlju. Cilj nije lijepa paluba. Cilj je sjećanje više kada su bilješke nestale."
+    },
+    {
+      "key": "site.059c3e8cce263b2945",
+      "source": "For example:",
+      "value": "Na primjer:"
+    },
+    {
+      "key": "site.ea7589a6750c48a4f2",
+      "source": "Front: \"Why does spaced review work better than cramming?\"",
+      "value": "Prednji: \"Zašto svemirska revizija radi bolje od cramming?\""
+    },
+    {
+      "key": "site.00e8cf841f46b9be6c",
+      "source": "Hard. Review after a short delay.",
+      "value": "Pregledaj nakon kratkog kašnjenja."
+    },
+    {
+      "key": "site.019f6da5650f70fec0",
+      "source": "Hint: \"Think about forgetting and retrieval.\"",
+      "value": "Nagovještaj: \"Razmislite o zaboravu i vraćanju.\""
+    },
+    {
+      "key": "site.16b7d4b33f41c98b5d",
+      "source": "Hints are useful when they preserve effort. A bad hint is the answer in disguise. A good hint narrows the search space.",
+      "value": "Nagovještaj je koristan kada sačuva trud. Loš nagovještaj je prerušeni odgovor. Dobar nagovještaj sužava prostor pretraživanja."
+    },
+    {
+      "key": "site.3c31092bdcff46f958",
+      "source": "identify a common mistake;",
+      "value": "utvrditi zajedničku pogrešku;"
+    },
+    {
+      "key": "site.1fa454fac7322ccec6",
+      "source": "If a card keeps failing, do not only repeat it. Ask why it is hard. Use Socratic Instruction to uncover the misconception, Math Step Coach for procedural gaps, or the AI learning prompt library to find a better study prompt.",
+      "value": "Ako kartica i dalje ne uspijeva, ne samo da je ponoviti. Pitajte zašto je teško. Koristite Socrat Instrukcije za otkrivanje pogreške, Math Step Trener za proceduralne praznine, ili AI učenje brzo biblioteku pronaći bolji prompt studija."
+    },
+    {
+      "key": "site.e4a80a99ebbb651c60",
+      "source": "inspir's Flashcard Builder is designed around that active recall loop: build a deck, try the front, reveal the answer, rate your recall, and review the misses until the idea sticks.",
+      "value": "inspir's Flashcard Builder je dizajniran oko te aktivne opoziv petlje: izgraditi palubu, pokušati naprijed, otkriti odgovor, procijeniti svoj opoziv, i pregledati propusnice dok ideja ne zalijepi."
+    },
+    {
+      "key": "site.56c889432fb0a555d8",
+      "source": "Missed. Review soon.",
+      "value": "Promašio sam."
+    },
+    {
+      "key": "site.dfbc64277be2f5a449",
+      "source": "One mistake learners make is treating every card the same. If you know a card instantly, reviewing it again tomorrow may waste time. If you miss a card, waiting a week may be too long.",
+      "value": "Jedna pogreška koja uče uče je liječenje svake karte isto. Ako odmah znate karticu, ponovno je pregledati sutra može izgubiti vrijeme. Ako propustite karticu, čekanje sedmica dana može biti predugo."
+    },
+    {
+      "key": "site.122fda4a9050598743",
+      "source": "Pair flashcards with understanding",
+      "value": "Pair kartice za ponavljanje s razumijevanjem"
+    },
+    {
+      "key": "site.88c08f6865efbd8dc8",
+      "source": "Paste a small chunk of notes into Flashcard Builder.",
+      "value": "Nalijepite mali komad nota u Flashcard Builder."
+    },
+    {
+      "key": "site.d8eb7066315ef95edb",
+      "source": "Photosynthesis: the process plants use to make food.",
+      "value": "Fotosinteza: procesne biljke koriste za izradu hrane."
+    },
+    {
+      "key": "site.c0599102d19bad2a2f",
+      "source": "Rate recall honestly.",
+      "value": "Stopa opoziv iskreno."
+    },
+    {
+      "key": "site.d6b801afe137857e4e",
+      "source": "Reading notes feels productive. Remembering them later is the real test.",
+      "value": "Čitanje nota je produktivno, pamćenje kasnije je pravi test."
+    },
+    {
+      "key": "site.a5fa6483515606cacb",
+      "source": "remember a sequence;",
+      "value": "zapamtite niz;"
+    },
+    {
+      "key": "site.30447373509e7c559f",
+      "source": "Review without looking at the back.",
+      "value": "Pregled bez gledanja u leđa."
+    },
+    {
+      "key": "site.78ab83db2d59defb62",
+      "source": "Strong cards often include:",
+      "value": "Jake karte često uključuju:"
+    },
+    {
+      "key": "site.1115e8dcfc987db693",
+      "source": "study skills",
+      "value": "vještine učenja"
+    },
+    {
+      "key": "site.d20a3e28a31850ff21",
+      "source": "That hint helps the learner start without removing the act of remembering. inspir's Flashcard Builder is designed for this reveal-and-rate loop: try first, reveal second, rate honestly, then bring weak cards back sooner.",
+      "value": "Taj nagovještaj pomaže učeniku da počne bez uklanjanja čina pamćenja. inspir's Flashcard Builder je dizajniran za ovaj otkrivanje-i-razred petlja: pokušajte prvo, otkriti drugi, stopa iskreno, zatim donijeti slabe kartice natrag ranije."
+    },
+    {
+      "key": "site.632c55f20bdb63d1d4",
+      "source": "That is why active recall matters. Instead of looking at the answer, you try to pull it from memory. The effort strengthens the memory and reveals what still needs work.",
+      "value": "Zato je važno aktivno opozivanje. Umjesto da pogledate odgovor, pokušate ga izvući iz pamćenja. Napor jača pamćenje i otkriva što još uvijek treba raditi."
+    },
+    {
+      "key": "site.e7c56a3c4302676f30",
+      "source": "The learner still has to do the remembering. That is the point.",
+      "value": "Učenik se još uvijek mora sjetiti."
+    },
+    {
+      "key": "site.68305ca33893e83fcd",
+      "source": "The second card makes the learner retrieve a relationship, not simply recognize a sentence. Good cards usually focus on one of these jobs:",
+      "value": "Druga kartica čini učenik dobiva odnos, ne samo prepoznati rečenicu. Dobre karte obično fokusiran na jedan od ovih poslova:"
+    },
+    {
+      "key": "site.578649dce210f48777",
+      "source": "This does not need to be complicated. The important part is that your review schedule responds to memory instead of treating the deck like a static list.",
+      "value": "To ne treba biti komplicirano. Važno je da vaš pregled raspored odgovara na memoriju umjesto tretiranja palube kao statički popis."
+    },
+    {
+      "key": "site.d5514935a76e0a9d66",
+      "source": "Try it in Flashcard Builder. If you need to understand the topic before making cards, start in Learn Anything. If you want pressure after reviewing cards, move into Quiz Me On Trivia or Viva Practice.",
+      "value": "Pokušajte u Flashcard Builder. Ako trebate razumjeti temu prije izrade karata, počnite u Saznajte bilo šta. Ako želite tlak nakon pregleda karata, pređite u Quiz Me On Trivia ili Viva Practice."
+    },
+    {
+      "key": "site.bed097fb42e51e8b84",
+      "source": "Turn notes into better cards",
+      "value": "Pretvori bilješke u bolje karte"
+    },
+    {
+      "key": "site.a9cdd3236baaf63de6",
+      "source": "Turn repeated misses into a question for Learn Anything.",
+      "value": "Pretvoriti ponovljene propuste u pitanje za Nauči bilo šta."
+    },
+    {
+      "key": "site.09807d6297260eb591",
+      "source": "Use this loop:",
+      "value": "Koristi ovu petlju:"
+    },
+    {
+      "key": "site.43b0bf2614bc3ab050",
+      "source": "Use three ratings:",
+      "value": "Koristite tri ocjene:"
+    },
+    {
+      "key": "site.75a174a114c1f740aa",
+      "source": "What is the role of chlorophyll in photosynthesis?",
+      "value": "Koja je uloga klorofila u fotosintezi?"
+    },
+    {
+      "key": "site.de38596d1c644242c3",
+      "source": "What makes a good flashcard",
+      "value": "Što čini dobru bljesak karticu"
+    },
+    {
+      "key": "site.90c45801d6b2f1d37a",
+      "source": "When you paste notes into AI, ask it to split broad ideas into those jobs. A deck with 18 specific cards is usually better than a deck with 5 giant cards that each contain a whole paragraph.",
+      "value": "Kada umetnete bilješke u AI, zatražite da podijelite široke ideje na te poslove. Paluba s 18 posebnih kartica je obično bolje od palube s 5 divovskih kartica koje svaka sadrži cijeli pasus."
+    },
+    {
+      "key": "site.58e77f5d4a10288d16",
+      "source": "Where AI helps",
+      "value": "Gdje AI pomaže"
+    }
+  ]
+}

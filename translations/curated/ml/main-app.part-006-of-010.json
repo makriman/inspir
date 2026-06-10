@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Malayalam",
+  "locale": "ml",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 6,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.debate-any-topic.starter.0",
+      "source": "Is social media harmful?",
+      "value": "സോഷ്യൽ മീഡിയ ഹാനികരം ആണോ?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.1",
+      "source": "Should homework exist?",
+      "value": "ഹോംവർക്കുകൾ ഉണ്ടാകണമോയെന്ന്?"
+    },
+    {
+      "key": "topic.debate-any-topic.starter.2",
+      "source": "Is space exploration worth it?",
+      "value": "അന്താരാഷ്ട്ര ബഹിരാകാശ ഗവേഷണം പണമുടക്കുന്നത് പ്രാപ്‌തമാക്കാനായിക്കയാണോ?"
+    },
+    {
+      "key": "topic.explain-my-answer.name",
+      "source": "Explain My Answer",
+      "value": "എന്റെ ഉത്തരം വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.explain-my-answer.subText",
+      "source": "Understand why an answer works",
+      "value": "ഒരു ഉത്തരം പ്രയോജനപ്പെടുന്നതെന്തുകൊണ്ടാണെന്ന് മനസിലാക്കുക"
+    },
+    {
+      "key": "topic.explain-my-answer.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "ഒരു ചോദ്യം, നിങ്ങളുടെ ഉത്തരം, ലഭ്യമാണ് എങ്കിൽ പ്രതീക്ഷിച്ച ഉത്തരം പകർത്തി വെക്കുക. നിങ്ങളുടെ പങ്കാളി കാരണભ്ജയി വിശദീകരിക്കുകയും അടുത്ത തവണ അതേ പിഴവ് ചെയ്തിരിക്കാൻ നിങ്ങൾക്ക് സഹായിക്കുകയും ചെയ്യും."
+    },
+    {
+      "key": "topic.explain-my-answer.inputboxText",
+      "source": "Paste the question and your answer",
+      "value": "ചോദ്യം കൂടാതെ നിങ്ങളുടെ ഉത്തരം പതിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.explain-my-answer.category",
+      "source": "Practice",
+      "value": "പരിശീലനം"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.description",
+      "source": "Paste a question, your answer, and the expected answer if you have it. Your buddy explains the reasoning and helps you avoid the same mistake next time.",
+      "value": "ഒരു ചോദ്യവും നിങ്ങളുടെ ഉത്തരവും ഉണ്ടെങ്കിൽ പ്രതീക്ഷിച്ച ഉത്തരവും പതിപ്പിക്കുക. നിങ്ങളുടെ കൂട്ടുകാരൻ കാരണം വിശദീകരിക്കുകയും അടുത്ത തവണ അതേ പിശകു ആവർത്തിക്കാതിരിക്കാൻ സഹായിക്കുകയും ചെയ്യും."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "പൊതുവായ ഉത്തരം ബോക്സിനേക്കാൾ പ്രായോഗിക మార്ഗനിർദ്ദേശം വേണമെന്നു അഭ്യസകർ പരിശീലന വിഷയങ്ങൾ അന്വേഷിക്കുമ്പോൾ."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.whyDifferent",
+      "source": "This mode is tuned for explain my answer with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് അതിന്റെ സ്വന്തം പ്രൊമ്പ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവഹം എന്നിവയോടെ എൻ്റെ ഉത്തരം وضح ചെയ്യുന്നതിനുള്ളതായി ക്രമീകരിച്ചിട്ടുണ്ട്."
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.0",
+      "source": "Understand why an answer works",
+      "value": "ഉത്തരം വിജയിപ്പിക്കുന്നത് എങ്ങനെ എന്നതു് മനസിലാക്കുക"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രചോദനങ്ങളിൽ ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.explain-my-answer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തോട് ചേർത്ത് ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.0",
+      "source": "Why is my algebra answer wrong?",
+      "value": "എന്തുകൊണ്ടാണ് എന്റെ എല്ജിബ്രാ ഉത്തരം തെറ്റായത്?"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.1",
+      "source": "Explain this grammar correction",
+      "value": "ഈ വ്യാകരണശുദ്ധിവിവരണം നൽകുക"
+    },
+    {
+      "key": "topic.explain-my-answer.starter.2",
+      "source": "I picked B. Why is C right?",
+      "value": "ഞാൻ B തിരഞ്ഞെടുത്തു. C ശരിയാകുന്നത് എന്തുകൊണ്ടാണ്?"
+    },
+    {
+      "key": "topic.homework-coach.name",
+      "source": "Homework Coach",
+      "value": "ഹോംവർക്ക്ക് കോച്ച്"
+    },
+    {
+      "key": "topic.homework-coach.subText",
+      "source": "Hints without answer dumping",
+      "value": "ഉത്തരം ലഘൂകരിക്കാതെ സൂചനകൾ"
+    },
+    {
+      "key": "topic.homework-coach.description",
+      "source": "Get unstuck on homework with hints, examples, and checks that help you do the thinking yourself.",
+      "value": "സഹായം, ഉദാഹരണങ്ങൾ, പരിശോധനകൾ എന്നിവയോടെ നിങ്ങളുടെ വീടുപണി തട്ടിപ്പിൽ നിന്ന് മോചിതരാകൂ, നിങ്ങൾ തന്നെ ആലോചിക്കാൻ സഹായിക്കുന്നവ."
+    },
+    {
+      "key": "topic.homework-coach.inputboxText",
+      "source": "What homework problem are you stuck on?",
+      "value": "നീങ്ങു പഠനപ്രശ്നം ഏതാണ്?"
+    },
+    {
+      "key": "topic.homework-coach.category",
+      "source": "Practice",
+      "value": "പ്രാക്റ്റീസ്"
+    },
+    {
+      "key": "topic.homework-coach.seo.description",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "നീതിപൂർണ സൂചനകൾ, ഉദാഹരണങ്ങൾ, പരിശോധിക്കൽ, ഘട്ടംഘട്ടമായ പരിശീലനം എന്നിവയോടെ ഗൃഹപാഠങ്ങളിൽ മുന്നോട്ടുപോകൂ."
+    },
+    {
+      "key": "topic.homework-coach.seo.who",
+      "source": "Students who need help starting a problem, checking work, or understanding a mistake.",
+      "value": "പ്രശ്നം തുടങ്ങുന്നതിൽ, പ്രവര്‍ത്തനം പരിശോധിക്കുന്നതില്‍ അല്ലെങ്കില്‍ പിശകു മനസ്സിലാക്കുന്നതിൽ സഹായം ആവശ്യമുള്ള വിദ്യാർഥികൾ."
+    },
+    {
+      "key": "topic.homework-coach.seo.whyDifferent",
+      "source": "The coach supports your thinking without taking over the assignment, so the final work stays yours.",
+      "value": "അസൈൻമെന്റ് നമുക്ക് കൈമാറാതെ നിങ്ങളുടെ ആലോചനയെ സഹായിക്കുന്നതിനാൽ അവസാന പ്രവർത്തി നിങ്ങൾക്കായത് തന്നെയാകും."
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.0",
+      "source": "Find the next step",
+      "value": "അടുത്ത ഘട്ടം കണ്ടെത്തുക"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.1",
+      "source": "Understand the mistake",
+      "value": "തെറ്റായത് മനസിലാക്കുക"
+    },
+    {
+      "key": "topic.homework-coach.seo.outcome.2",
+      "source": "Practice a similar problem",
+      "value": "അസംഖ്യ പ്രശ്നം അഭ്യാസവും"
+    },
+    {
+      "key": "topic.homework-coach.starter.0",
+      "source": "Help me start this word problem",
+      "value": "ഈ വാക്ക് പ്രശ്നം ആരംഭിക്കാന്‍ സഹായിക്കൂ"
+    },
+    {
+      "key": "topic.homework-coach.starter.1",
+      "source": "Check my essay thesis",
+      "value": "എന്റെ പ്രബന്ധത്തെസി പരിശോധിക്കുക"
+    },
+    {
+      "key": "topic.homework-coach.starter.2",
+      "source": "Give me a hint for this physics problem",
+      "value": "ഈ ഫിസിക്സ് പ്രശ്നത്തിന് ഒരു സൂചന നൽകൂ"
+    },
+    {
+      "key": "topic.math-step-coach.name",
+      "source": "Math Step Coach",
+      "value": "ഗണിത ചുവടു പരിശീലകൻ"
+    },
+    {
+      "key": "topic.math-step-coach.subText",
+      "source": "Work through math one step at a time",
+      "value": "ഓരോ ചുവടും അനുസരിച്ച് ഗണിതം പഠിക്കുക"
+    },
+    {
+      "key": "topic.math-step-coach.description",
+      "source": "Solve math by understanding each step. Your coach checks your work, points out slips, and builds confidence.",
+      "value": "ഓരോ ചുവടും മനസിലാക്കിയാണ് ഗണിത പ്രശ്‌നങ്ങൾ പരിഹരിക്കേണ്ടത്. നിങ്ങളുടെ പരിശീലകൻ നിങ്ങളുടെ പണി പരിശോധിച്ച് പിശകുകൾ കാണിക്കുകയും ആത്മവിശ്വാസം വളർത്തുകയും ചെയ്യും."
+    },
+    {
+      "key": "topic.math-step-coach.inputboxText",
+      "source": "What math problem should we work through?",
+      "value": "എന്ത് ഗണിത പ്രശ്നം നമ്മൾ birlikte പരിഹരിക്കണം?"
+    },
+    {
+      "key": "topic.math-step-coach.category",
+      "source": "STEM",
+      "value": "എസ്എടി‌ഇഎം"
+    },
+    {
+      "key": "topic.math-step-coach.seo.description",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "ഒരു AI കോച്ചിൻ്റെ സഹായത്തോടെ ആൽജ brat.sbebra, കാൽക്കുലസ്, വാക്ക് പ്രശ്‌നങ്ങൾ, ഗണിത ആശയങ്ങൾ ക്രമശ: പഠിക്കുക."
+    },
+    {
+      "key": "topic.math-step-coach.seo.who",
+      "source": "Learners who want to see why each math step works, not just copy an answer.",
+      "value": "ഒരു ഉത്തരം പകർപ്പതല്ല, ഓരോ ഗണിത ഘട്ടവും എങ്ങനെ പ്രവർത്തിക്കുന്നു എന്ന് അറിയാൻ ആഗ്രഹിക്കുന്ന പഠിതാക്കള്ക്ക്."
+    },
+    {
+      "key": "topic.math-step-coach.seo.whyDifferent",
+      "source": "The flow checks each step, points out slips, and connects procedures back to the concept.",
+      "value": "പ്രവൃത്തി ഓരോ ഘട്ടവും പരിശോധിക്കുകയും തകരാറുകൾ കാണിക്കുകയും പ്രക്രിയകൾ ആശയവുമായി ബന്ധിപ്പിക്കുകയും ചെയ്യുന്നു."
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.0",
+      "source": "Choose a first move",
+      "value": "ആദ്യ നീക്കം തിരഞ്ഞെടുക്കൂ"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.1",
+      "source": "Check each step",
+      "value": "ഓരോ ഘട്ടവും പരിശോധിക്കുക"
+    },
+    {
+      "key": "topic.math-step-coach.seo.outcome.2",
+      "source": "Explain why the method works",
+      "value": "ഈ രീതി എന്തുകൊണ്ട് പ്രവർത്തിക്കുന്നതാണെന്ന് وضاحت ചെയ്യുക"
+    },
+    {
+      "key": "topic.math-step-coach.starter.0",
+      "source": "Solve 2x + 5 = 17 with me",
+      "value": "എന്നോടൊപ്പം 2x + 5 = 17 പരിഹരിക്കൂ"
+    },
+    {
+      "key": "topic.math-step-coach.starter.1",
+      "source": "Help with quadratic equations",
+      "value": "ക്യുവാട്രാറ്റിക് സമവാക്യങ്ങളിൽ സഹായം"
+    },
+    {
+      "key": "topic.math-step-coach.starter.2",
+      "source": "Explain derivatives step by step",
+      "value": "ഡെറിവേറ്റീവുകൾ ഘട്ടം ഘട്ടമായി വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.science-lab-partner.name",
+      "source": "Science Lab Partner",
+      "value": "സയൻസ് ലാബ് പാർٹنർ"
+    },
+    {
+      "key": "topic.science-lab-partner.subText",
+      "source": "Explore experiments and concepts safely",
+      "value": "പരീക്ഷണങ്ങളും ആശയങ്ങളും സുരക്ഷിതമായി അന്വേഷിക്കുക"
+    },
+    {
+      "key": "topic.science-lab-partner.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "സുരക്ഷിതമായ പ്രകടനങ്ങൾ പദ്ധതിയിടുക, വ്യത്യാസങ്ങൾ മനസ്സിലാക്കുക, ഫലങ്ങൾ മുൻകൂർ പറയുക, ശാസ്ത്രജ്ഞനുപോലെ തെളിവുകളിൽ നിന്ന് ന്യായീകരിക്കുക."
+    },
+    {
+      "key": "topic.science-lab-partner.inputboxText",
+      "source": "What science idea or experiment are we exploring?",
+      "value": "നാം ഏത് ശാസ്ത്ര ആശയം അല്ലെങ്കിൽ പരീക്ഷണം അന്വേഷിക്കുകയാണ്?"
+    },
+    {
+      "key": "topic.science-lab-partner.category",
+      "source": "STEM",
+      "value": "എസ്‌ടിഇഎം"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.description",
+      "source": "Plan safe demonstrations, understand variables, predict outcomes, and reason from evidence like a scientist.",
+      "value": "സുരക്ഷിതമായ പ്രദർശനങ്ങൾ പദ്ധതിയിടുക, ചാരപരമായ ഘടകങ്ങൾ മനസ്സിലാക്കുക, ഫലങ്ങൾ പ്രവചിക്കുക, ശാസ്ത്രജ്ഞനെ പോലെ തെളിവുകളിൽ നിന്നു കാരണം കണ്ടെത്തുക."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.who",
+      "source": "Learners exploring stem topics who want practical guidance instead of a generic answer box.",
+      "value": "സാധാരണ ഉത്തരം കൊടുക്കുന്ന ബോക്സിന് പകരം പ്രായോഗിക മാർഗ്ഗനിർദ്ദേശം ആവശ്യമുള്ള സ്റ്റ stems വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.whyDifferent",
+      "source": "This mode is tuned for science lab partner with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് സയൻസ് ലാബ് പങ്കാളിക്ക് അനുയോജ്യമായതായാണ് സജ്ജമാക്കിയിരിക്കുന്നത്, പ്രത്യേക പ്രോംപ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹവും ഉൾപ്പെടുത്തി."
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.0",
+      "source": "Explore experiments and concepts safely",
+      "value": "സുരക്ഷിതമായി പരീക്ഷണങ്ങളും ആശയങ്ങളും അന്വേഷിക്കുക"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രാരംഭങ്ങൾ മുതൽ തുടങ്ങുക"
+    },
+    {
+      "key": "topic.science-lab-partner.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷനെ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യം ആക്കുക"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.0",
+      "source": "Design a plant growth experiment",
+      "value": "ഒരു സസ്യവളർച്ച പരീക്ഷണം രൂപകൽപ്പന ചെയ്യുക"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.1",
+      "source": "Explain acids and bases",
+      "value": "അമ്ളങ്ങളും ഘടകങ്ങളും വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.science-lab-partner.starter.2",
+      "source": "What happens if we change temperature?",
+      "value": "താപനില മാറ്റിയാൽ എന്ത് സംഭവിക്കും?"
+    },
+    {
+      "key": "topic.writing-coach.name",
+      "source": "Writing Coach",
+      "value": "എഴുത്ത് പരിശീലകൻ"
+    },
+    {
+      "key": "topic.writing-coach.subText",
+      "source": "Plan, draft, revise, and strengthen writing",
+      "value": "രചനയുടെ പദ്ധതി ഒരുക്കുക, രൂപകല്‍പ്പന ചെയുക, പുനഃസമീപനം ചെയ്യുക, ശക്തിപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.writing-coach.description",
+      "source": "Improve essays, stories, emails, and arguments with targeted feedback that keeps your voice intact.",
+      "value": "നിങ്ങളുടെ ശൈലം നിലനിർത്തുന്നതോടെ ലക്ഷ്യമിട്ട പ്രതികരണത്തോടെ ലേഖനങ്ങൾ, കഥകൾ, ഇമെയിലുകൾ, വാദങ്ങൾ എന്നിവ മെച്ചപ്പെടുത്തുക."
+    },
+    {
+      "key": "topic.writing-coach.inputboxText",
+      "source": "What are you writing?",
+      "value": "നിങ്ങൾ എന്ത് എഴുതുകയാണ്?"
+    },
+    {
+      "key": "topic.writing-coach.category",
+      "source": "Communication",
+      "value": "സംവാദം"
+    },
+    {
+      "key": "topic.writing-coach.seo.description",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "നിങ്ങളുടെ ശൈലി നിലനിർത്തുന്നതിനുള്ള പദ്ധതി രൂപവത്കരണം, തിരുത്തൽ, ഘടന, പ്രതികരണം എന്നിവയോടെ എഴുത്ത് മെച്ചപ്പെടുത്തുക."
+    },
+    {
+      "key": "topic.writing-coach.seo.who",
+      "source": "Learners writing essays, stories, emails, scholarship notes, or arguments.",
+      "value": "എസ്സേകൾ, കഥകൾ, ഇമെയിലുകൾ, സ്‌കോളർഷിപ്പ് നോട്ടുകൾ, തർക്കങ്ങൾ എന്നിവ എഴുതുന്ന പഠനാർത്ഥികൾ."
+    },
+    {
+      "key": "topic.writing-coach.seo.whyDifferent",
+      "source": "The coach gives targeted revision priorities and before-after examples without replacing your voice.",
+      "value": "കോച്ച് നിങ്ങളുടെ ശൈലിക്ക് പരിവർത്തനമില്ലാതെ ലക്ഷ്യഭേദം ഉള്ള പുനഃസംവീപ് ആധാരവും മുമ്പ്-പിന്ന पछि ഉദാഹരണങ്ങളും നൽകുന്നു."
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.0",
+      "source": "Clarify your point",
+      "value": "നിങ്ങളുടെ കാഴ്ചപ്പാട് വ്യക്തമാക്കുക"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.1",
+      "source": "Improve structure",
+      "value": "സംരചന മെച്ചമാക്കുക"
+    },
+    {
+      "key": "topic.writing-coach.seo.outcome.2",
+      "source": "Revise with a reason",
+      "value": "കാരണം മനസ്സിലാക്കി വീണ്ടും തിരുത്തുക"
+    },
+    {
+      "key": "topic.writing-coach.starter.0",
+      "source": "Improve my essay introduction",
+      "value": "എന്റെ നിരൂപണ പരിചയം മെച്ചപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.writing-coach.starter.1",
+      "source": "Help me outline a story",
+      "value": "എനിക്ക് ഒരു കഥയുടെ രൂപരേഖ തയ്യാറാക്കാൻ സഹായിക്കൂ"
+    },
+    {
+      "key": "topic.writing-coach.starter.2",
+      "source": "Make this paragraph clearer",
+      "value": "ഈ പാരഗ്രാഫ് കൂടുതൽ واضحമാക്കുക"
+    },
+    {
+      "key": "topic.reading-companion.name",
+      "source": "Reading Companion",
+      "value": "പാഠം വായന കൂടാതെ"
+    },
+    {
+      "key": "topic.reading-companion.subText",
+      "source": "Read, summarize, and question texts",
+      "value": "വായിക്കുക, സംഗ്രഹിക്കുക, വാചകങ്ങളെക്കുറിച്ച് ചോദ്യങ്ങൾ ഉന്നയിക്കുക"
+    },
+    {
+      "key": "topic.reading-companion.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ഒരു പാസേജ് അല്ലെങ്കിൽ പുസ്തക നിർദേശം കൊണ്ടുവരിക, സംക്ഷേപം, വാക്കുലക്കം, അനുമാനങ്ങൾ, ചർച്ച എന്നിവയിലൂടെ മനസിലാക്കൽ വികസിപ്പിക്കുക."
+    },
+    {
+      "key": "topic.reading-companion.inputboxText",
+      "source": "What are we reading?",
+      "value": "നാം എന്ത് വായിക്കുന്നു?"
+    },
+    {
+      "key": "topic.reading-companion.category",
+      "source": "Communication",
+      "value": "സംവരണം"
+    },
+    {
+      "key": "topic.reading-companion.seo.description",
+      "source": "Bring a passage or book idea and build comprehension through summaries, vocabulary, inference, and discussion.",
+      "value": "ഒരു പാസ്‌സേജ് അല്ലെങ്കിൽ പുസ്തക ആശയം കൊണ്ടുവരിക, സംഗ്രഹങ്ങൾ, വാക്കുകൂടിയുള്ളവ, ഊഹക്കണക്കുകൾ,തിരുശീലനം എന്നിവയിലൂടെ ഗ്രഹിക്കാൻ സഹായിക്കുക."
+    },
+    {
+      "key": "topic.reading-companion.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "ചുരുക്കം ഉത്തരം പെട്ടതിൻ്റെ പകരം പ്രായോഗിക മാർഗ്ദർശനം അന്വേഷിക്കുന്ന ആശയവിനിമയം വിഷയങ്ങൾ പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.reading-companion.seo.whyDifferent",
+      "source": "This mode is tuned for reading companion with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് വായനാ സംഘാടകർക്കായി പ്രത്യേകമായി ക്രമീകരിച്ചിരിക്കുന്നു, അതിന് സ്വന്തം പ്രോമ്പ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയുണ്ട്."
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.0",
+      "source": "Read, summarize, and question texts",
+      "value": "വായിക്കുക, സംഗ്രഹിക്കുക, ടെക്സ്റ്റുകളോട് ചോദ്യംചെയ്യുക"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകൾ കൊണ്ട് തുടങ്ങുക"
+    },
+    {
+      "key": "topic.reading-companion.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിൽ ചേർന്ന് ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.reading-companion.starter.0",
+      "source": "Help me understand this paragraph",
+      "value": "ഈ പാരഗ്രാൻഡ് എനിക്കു മനസ്സിലാക്കാൻ സഹായിക്കുക"
+    },
+    {
+      "key": "topic.reading-companion.starter.1",
+      "source": "Summarize chapter 2",
+      "value": "അധ്യായം 2 സാരാംശപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.reading-companion.starter.2",
+      "source": "Ask me questions about this poem",
+      "value": "ഈ കവിതയെക്കുറിച്ചുള്ള ചോദ്യങ്ങൾ എനിക്ക് ചോദിക്കൂ"
+    },
+    {
+      "key": "topic.vocabulary-builder.name",
+      "source": "Vocabulary Builder",
+      "value": "വാക്ക് സമാഹാരıcıുണ്ടാക്കുന്ന സംവിധാനം"
+    },
+    {
+      "key": "topic.vocabulary-builder.subText",
+      "source": "Learn words in context",
+      "value": "സന്ദർഭത്തിൽ പദങ്ങൾ പഠിക്കുക"
+    },
+    {
+      "key": "topic.vocabulary-builder.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "അർത്ഥം, ഉദാഹരണങ്ങൾ, ഉച്ചാരണം, ഓർമ്മക്കുറിപ്പുകൾ, വേഗത്തിലുള്ള പരിശീലനം എന്നിവയുമായുള്ള വാക്കുകൾ വികസിപ്പിക്കുക."
+    },
+    {
+      "key": "topic.vocabulary-builder.inputboxText",
+      "source": "What words or topic should we practice?",
+      "value": "ഞങ്ങൾ ഏത് പദങ്ങൾ അല്ലെങ്കിൽ വിഷയങ്ങൾ അഭ്യസിക്കണമെന്ന് നിങ്ങൾക്ക് ഇഷ്ടമാണോ?"
+    },
+    {
+      "key": "topic.vocabulary-builder.category",
+      "source": "Communication",
+      "value": "സംവേദനം"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.description",
+      "source": "Build vocabulary with meaning, examples, pronunciation cues, memory hooks, and quick practice.",
+      "value": "അർത്ഥം, ഉദാഹരണങ്ങൾ, ഉച്ചാരണ സൂചനകൾ, ഓർമ്മയ്ക്ക് സഹായകമായ മാർക്കുകൾ, അതിരുനേരിയ അഭ്യാസത്തോടെ പദസമ്മേളനം വികസിപ്പിക്കുക."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "ജനറൽ ഉത്തര പെട്ടികയെ ഒഴിവാക്കി പ്രായോഗിക മാർഗനിർദ്ദേശം നേടാൻ അഭിരുചി ഉള്ള ആശയവിനിമയ വിഷയങ്ങൾ പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.whyDifferent",
+      "source": "This mode is tuned for vocabulary builder with its own prompts, examples, and learning flow.",
+      "value": "ഈ മേധോം പ്രത്യേക പ്രേരണകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയോടെ വാക്കു സമ്പ്രദായം വികസിപ്പിക്കാൻ അനുയോജ്യമാണ്."
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.0",
+      "source": "Learn words in context",
+      "value": "സന്ദർഭത്തിൽ പദങ്ങൾ പഠിക്കൂ"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളില്‍ നിന്ന് ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.vocabulary-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "അഭ്യാസം നിങ്ങളുടെ ലക്ഷ്യങ്ങൾക്ക് അനുയോജ്യമാക്കുക"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.0",
+      "source": "SAT vocabulary",
+      "value": "SAT വാക്കുകളുടെ സമാഹാരം"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.1",
+      "source": "Business English words",
+      "value": "ബിസിനസ് ഇംഗ്ലീഷ് വാക്കുകൾ"
+    },
+    {
+      "key": "topic.vocabulary-builder.starter.2",
+      "source": "Words about weather",
+      "value": "വെള്ളപ്പൊക്കത്തെ പറ്റിയുള്ള വാക്കുകൾ"
+    },
+    {
+      "key": "topic.language-roleplay.name",
+      "source": "Language Roleplay",
+      "value": "ഭാഷാ വേഷം മാറ്റം"
+    },
+    {
+      "key": "topic.language-roleplay.subText",
+      "source": "Practice real conversations",
+      "value": "യഥാർത്ഥ സംഭാഷണങ്ങൾ അഭ്യസിക്കുക"
+    },
+    {
+      "key": "topic.language-roleplay.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "കാഫേകൾ, അഭിമുഖങ്ങൾ, യാത്ര, ദൈനംദിന ജീവിതം പോലുള്ള യാഥാർത്ഥ്യമായ സാഹചര്യങ്ങളിൽ ഒരു ഭാഷ പരിശീലിക്കുക, प्रत्येक ചുറ്റിലും ശരിയാക്കലുകൾക്ക് ശേഷം."
+    },
+    {
+      "key": "topic.language-roleplay.inputboxText",
+      "source": "Which language and situation?",
+      "value": "എന്ത് ഭാഷയും സാഹചര്യമോ?"
+    },
+    {
+      "key": "topic.language-roleplay.category",
+      "source": "Communication",
+      "value": "സംവാദം"
+    },
+    {
+      "key": "topic.language-roleplay.seo.description",
+      "source": "Practice a language in realistic scenarios like cafes, interviews, travel, and daily life, with corrections after each turn.",
+      "value": "കഫേ, അഭിമുഖം, യാത്ര, ദിനചര്യ എന്നിവ പോലുള്ള യഥാർത്ഥ സാഹചര്യങ്ങളിൽ ഭാഷ അഭ്യസിച്ച് ഓരോ വഴിയിലും തെറ്റുകൾ തിരുത്തിക്കൊണ്ടു പഠിക്കൂ."
+    },
+    {
+      "key": "topic.language-roleplay.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "പൊതുഉത്തരം നൽകുന്നതിനോട് പകരം പ്രായോഗിക മാർഗനിർദേശങ്ങൾ അന്വേഷിക്കുന്ന, ആശയവിനിമയം സംബന്ധിച്ച വിഷയങ്ങൾ പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.language-roleplay.seo.whyDifferent",
+      "source": "This mode is tuned for language roleplay with its own prompts, examples, and learning flow.",
+      "value": "ഭാഷാ റോളുപ്ലെയ്ക്ക് പ്രത്യേകം രൂപപ്പെടുത്തിയ ഈ മോഡ് അതിൻറെ സ്വന്തം പ്രോംപ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയോടുകൂടിയാണ്."
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.0",
+      "source": "Practice real conversations",
+      "value": "യഥാർത്ഥ സംവാദങ്ങൾ അഭ്യാസമാക്കുക"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രേരണകൾനിന്ന് തുടങ്ങുക"
+    },
+    {
+      "key": "topic.language-roleplay.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായി മാറ്റാം"
+    },
+    {
+      "key": "topic.language-roleplay.starter.0",
+      "source": "Spanish cafe roleplay",
+      "value": "സ്പാനിഷ് കഫേ റോള്പ്ലേ"
+    },
+    {
+      "key": "topic.language-roleplay.starter.1",
+      "source": "French airport conversation",
+      "value": "ഫ്രഞ്ച് വിമാനത്താവിള്‍ സംഭാഷണം"
+    },
+    {
+      "key": "topic.language-roleplay.starter.2",
+      "source": "Hindi market bargaining",
+      "value": "ഹിന്ദി മാർക്കറ്റ് വിലക്ക് ചർച്ച"
+    },
+    {
+      "key": "topic.speaking-practice.name",
+      "source": "Speaking Practice",
+      "value": "സംഭാഷണ പരിശീലനം"
+    },
+    {
+      "key": "topic.speaking-practice.subText",
+      "source": "Rehearse out loud with prompts",
+      "value": "പ്രേരണകള്‍ ഉപയോഗിച്ച് മുഴുവനായും വായിച്ചുകൊണ്ട് അഭ്യാസം ചെയ്യുക"
+    },
+    {
+      "key": "topic.speaking-practice.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "ഉദ്ദേശപ്രകാരണങ്ങൾ, സമയ നിയന്ത്രണം, ഘടന സംബന്ധിച്ച പ്രതികരണത്തോടെ പ്രസംഗങ്ങൾ, പ്രസന്റേഷങ്ങൾ, അഭിമുഖങ്ങൾ, വായ്മൊഴി പരീക്ഷകൾ തയ്യാറാക്കുക."
+    },
+    {
+      "key": "topic.speaking-practice.inputboxText",
+      "source": "What are you preparing to say?",
+      "value": "നീങ്ങള്‍ പറയാനുള്ളത് എന്താണ് തയ്യാറാക്കുന്നത്?"
+    },
+    {
+      "key": "topic.speaking-practice.category",
+      "source": "Communication",
+      "value": "സംവാദം"
+    },
+    {
+      "key": "topic.speaking-practice.seo.description",
+      "source": "Prepare speeches, presentations, interviews, or oral exams with prompts, timing, and feedback on structure.",
+      "value": "സ്പീച്ചുകൾ, പ്രезന്റേഷനുകൾ, അഭിമുഖങ്ങൾ, അല്ലെങ്കിൽ വായ്മൊഴി പരീക്ഷകൾ പ്രോംപ്റ്റുകൾ, സമയം, ഘടനയ്ക്കുള്ള പ്രതികരണങ്ങൾ എന്നിവയോടുകൂടി തയ്യാറാക്കുക."
+    },
+    {
+      "key": "topic.speaking-practice.seo.who",
+      "source": "Learners exploring communication topics who want practical guidance instead of a generic answer box.",
+      "value": "ഒരു പൊതു ഉത്തര ബോക്സിന് പകരം പ്രായോഗിക മാർഗ്ഗനിർദേശങ്ങൾ ആവശ്യമുള്ള ആശയവിനിമയ വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.speaking-practice.seo.whyDifferent",
+      "source": "This mode is tuned for speaking practice with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡില്‍ സംസാര പരിശീലനത്തിന് തകൃതിയായ പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉണ്ട്."
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.0",
+      "source": "Rehearse out loud with prompts",
+      "value": "പ്രോംപ്റ്റുകളോടെ ചൊല്ലി അഭ്യാസം നടത്തുക"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകൾ ഉപയോഗിച്ച് ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.speaking-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുസരിച്ചു പരിഷ്‌ക്കരിക്കുക"
+    },
+    {
+      "key": "topic.speaking-practice.starter.0",
+      "source": "Practice my school presentation",
+      "value": "എന്റെ സ്കൂൾ പ്രസന്റേഷൻ അഭ്യസിക്കുക"
+    },
+    {
+      "key": "topic.speaking-practice.starter.1",
+      "source": "Mock IELTS speaking",
+      "value": "മോക്ക് IELTS സംസാര അഭ്യസനം"
+    },
+    {
+      "key": "topic.speaking-practice.starter.2",
+      "source": "Help me answer interview questions",
+      "value": "എന്നെ അഭിമുഖ ചോദ്യങ്ങൾക്ക് ഉത്തരം നൽകാൻ സഹായിക്കുക"
+    },
+    {
+      "key": "topic.exam-prep-planner.name",
+      "source": "Exam Prep Planner",
+      "value": "പരീക്ഷാ തയ്യാറെടുപ്പ് പ്ലാനർ"
+    },
+    {
+      "key": "topic.exam-prep-planner.subText",
+      "source": "Turn a syllabus into a study plan",
+      "value": "അഭ്യസംസ്‌കൃതിയെ പഠന പദ്ധതിയാക്കി മാറ്റുക"
+    },
+    {
+      "key": "topic.exam-prep-planner.description",
+      "source": "Build a realistic exam plan from your date, syllabus, strengths, and weak areas.",
+      "value": "താങ്കളുടെ തീയതി, പാഠ്യപരിയोजना, ശക്തിയും ദുർബലമായ മേഖലകളും അടിസ്ഥാനമാക്കി യാഥാർത്ഥ്യപരമായ പരീക്ഷാ പദ്ധതി രൂപീകരിക്കുക."
+    },
+    {
+      "key": "topic.exam-prep-planner.inputboxText",
+      "source": "What exam are you preparing for?",
+      "value": "നீங்கள் ഏത് പരീക്ഷയ്ക്ക് തയ്യാറെടുക്കുകയാണ്?"
+    },
+    {
+      "key": "topic.exam-prep-planner.category",
+      "source": "Planning",
+      "value": "യോജിതമാക്കൽ"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.description",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "നിങ്ങളുടെ സിലബസ്, പരീക്ഷ തീയതിയും സമയം കൂടാതെ ദുർബലമായ വിഷയങ്ങളും പ്രായോഗികമായ പഠന പദ്ധതിയാക്കി മാറ്റുക."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.who",
+      "source": "Students who need a plan that balances revision, practice, confidence, and real life.",
+      "value": "പരിശോധനയ്ക്ക് തയ്യാറെടുക്കുന്നതിനായി ഭരണം, അഭ്യാസം, ആത്മവിശ്വാസം, യാഥാർത്ഥ്യമെല്ലാം സംയോജിപ്പിക്കുന്ന പദ്ധതിയുണ്ടാകേണ്ട വിദ്യാർത്ഥികൾ."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.whyDifferent",
+      "source": "The planner prioritizes weak areas, adds review loops, and creates fallback plans for missed days.",
+      "value": "താഴ്ന്ന നിലയിലുള്ള ഭാഗങ്ങളെ മുൻഗണന നൽകുകയും, അവലോകന ചുഞ്ചുരുകൾ சேரിക്കുകയും, സഹിക്കാത്ത ദിവസങ്ങൾക്കായി ബാക്കപ്പ് പദ്ധതികൾ സൃഷ്ടിക്കുകയും ചെയ്യുന്ന പ്ലാനറാണ് ഇത്."
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.0",
+      "source": "Prioritize topics",
+      "value": "വിഷയങ്ങള്‍ പ്രാഥമ്യം കൊടുക്കുക"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.1",
+      "source": "Plan review",
+      "value": "പരിശോധനാ അവലോകന പദ്ധതി"
+    },
+    {
+      "key": "topic.exam-prep-planner.seo.outcome.2",
+      "source": "Track risk areas",
+      "value": "അപകട സാധ്യതയുള്ള മേഖലകൾ പിന്തുടരുക"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.0",
+      "source": "Plan 2 weeks for biology",
+      "value": "ജൈവശാസ്ത്രത്തിന് 2 ആഴ്ചകൾ പദ്ധതിയിടുക"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.1",
+      "source": "Make a JEE revision schedule",
+      "value": "JEE പുനപരിശോധന ഷെഡ്യൂൾ ഒരുക്കൂ"
+    },
+    {
+      "key": "topic.exam-prep-planner.starter.2",
+      "source": "Help me prepare for finals",
+      "value": "എന്നെ ഫൈനലിനു തയ്യാറാക്കാൻ സഹായിക്കൂ"
+    },
+    {
+      "key": "topic.flashcard-builder.name",
+      "source": "Flashcard Builder",
+      "value": "ഫ്ലാഷ്കാർഡ് നിർമ്മിതാവ്"
+    },
+    {
+      "key": "topic.flashcard-builder.subText",
+      "source": "Make smart cards for recall",
+      "value": "ഓർമ്മിപ്പിക്കാനുള്ള ബുദ്ധിമുട്ടില്ലാത്ത കാർഡുകൾ കാണിക്കുക"
+    },
+    {
+      "key": "topic.flashcard-builder.description",
+      "source": "Turn notes or topics into clear flashcards with answers, traps, and review prompts.",
+      "value": "കുറിപ്പുകളും വിഷയങ്ങളും മറുപടികളും, പിഴവുകളും അവലോകന സന്ദേശങ്ങളും ഉൾക്കൊള്ളുന്ന വ്യക്തമായ ഫ്ലാഷ്കാർഡുകളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "topic.flashcard-builder.inputboxText",
+      "source": "What should become flashcards?",
+      "value": "ഫ്ളാഷ്‌കാർഡുകൾ എന്താകണം?"
+    },
+    {
+      "key": "topic.flashcard-builder.category",
+      "source": "Practice",
+      "value": "പ്രാക്ടീസ്"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.description",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "കുറിപ്പുകളോ വിഷയങ്ങളോ സൂചനകൾ, ഉത്തരങ്ങൾ, ഉദാഹരണങ്ങൾ, പൊതുവിൽ സംഭവിക്കുന്ന പിഴവുകൾ എന്നിവയോടെ കേന്ദ്രീകൃത ഫ്ലാഷ്കാർഡുകളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.who",
+      "source": "Students preparing for exams, language learners, and anyone using retrieval practice.",
+      "value": "പരീക്ഷയ്ക്ക് തയ്യാറെടുക്കുന്ന വിദ്യാർത്ഥികൾ, ഭാഷ പഠിക്കുന്നവർ, மற்றும் തിരിച്ച് സ്വാധീനിപ്പിക്കല്‍ പരിശീലനം നടത്തുന്ന ആരും."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.whyDifferent",
+      "source": "Cards ask one thing at a time and include traps so review builds understanding, not just recognition.",
+      "value": "കാർഡുകൾ ഒരുമിച്ച് ഒന്നാം കാര്യമാണ് ചോദിക്കുന്നത്, ഉൾപ്പെടുത്തുന്നത് പിഴവുകൾ കൊണ്ട് അവലോകനം തിരിച്ചറിയലിൽ മാത്രമല്ല, മനസ്സിലാക്കലും നിർമ്മിക്കുന്നു."
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.0",
+      "source": "Create recall cards",
+      "value": "റിക്കോൾ കാർഡുകൾ സൃഷ്ടിക്കുക"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.1",
+      "source": "Reveal answers when ready",
+      "value": "പ്രതികരണങ്ങൾ തയ്യാറായപ്പോൾ വെളിപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.flashcard-builder.seo.outcome.2",
+      "source": "Review misses sooner",
+      "value": "കുറവ് വേഗത്തിൽ ആവലോകനം ചെയ്യുക"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.0",
+      "source": "Make flashcards for mitosis",
+      "value": "മൈറ്റോസിസിനായി ഫ്ലാഷ്‌കാർഡുകൾ നിർമ്മിക്കുക"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.1",
+      "source": "Turn this note into Q&A",
+      "value": "ഈ കുറിപ്പിന് അധികാരംചോദ്യം ആയി മാറ്റുക"
+    },
+    {
+      "key": "topic.flashcard-builder.starter.2",
+      "source": "Create geography flashcards",
+      "value": "ഭൂഗോള ഫ്ലാഷ്കാർഡുകൾ സൃഷ്ടിക്കുക"
+    },
+    {
+      "key": "topic.memory-palace.name",
+      "source": "Memory Palace",
+      "value": "മെമ്മറി പാലസ്"
+    },
+    {
+      "key": "topic.memory-palace.subText",
+      "source": "Remember ideas with vivid places",
+      "value": "ജീവിച്ചിരുന്ന സ്ഥലങ്ങളുമായി ആശയങ്ങൾ ഓർമ്മിക്കുക"
+    },
+    {
+      "key": "topic.memory-palace.description",
+      "source": "Convert facts, lists, speeches, or sequences into memorable mental scenes.",
+      "value": "വాస్తവങ്ങൾ, പട്ടികകൾ, പ്രസംഗങ്ങൾ, അല്ലെങ്കിൽ നിരകൾ ഓർമെയായി മനസ്സിൽ ചിത്രങ്ങളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "topic.memory-palace.inputboxText",
+      "source": "What do you need to remember?",
+      "value": "നിങ്ങൾക്ക് ഓർക്കേണ്ടത് എന്താണ്?"
+    },
+    {
+      "key": "topic.memory-palace.category",
+      "source": "Practice",
+      "value": "അഭ്യാസ്"
+    },
+    {
+      "key": "topic.memory-palace.seo.description",
+      "source": "Convert facts, speeches, lists, or sequences into memorable scenes that make recall easier during study and exams.",
+      "value": "തഥ്യങ്ങൾ, പ്രസംഗങ്ങൾ, ലിസ്റ്റുകൾ, അല്ലെങ്കിൽ അനുക്രമങ്ങൾ പഠനവും പരീക്ഷകളിലും ഓർമ്മപ്പെടുത്തൽ ചെയ്യാൻ എളുപ്പമാക്കുന്ന സ്മരണയുള്ള ദൃശ്യങ്ങളായി മാറ്റുക."
+    },
+    {
+      "key": "topic.memory-palace.seo.who",
+      "source": "Learners memorizing ordered ideas, vocabulary, speeches, formulas, or facts that need a stronger mental hook.",
+      "value": "ക്രമപ്പെടുത്തിയ ആശയങ്ങൾ, പദസമ്പത്ത്, പ്രസംഗങ്ങൾ, സൂத்திரങ്ങൾ, അല്ലെങ്കിൽ കൂടുതൽ ശക്തമായ മനസിലാക്കലിന് ആവശ്യമുള്ള വസ്തുതകൾ ഓർക്കാൻ പോകുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.memory-palace.seo.whyDifferent",
+      "source": "The mode designs vivid locations, paths, and retrieval cues instead of asking you to reread notes.",
+      "value": "ഈ മോഡ്, നോട്ടുകൾ വീണ്ടും വായിക്കാൻ ആവശ്യപ്പെടുന്നത് കഴിയും അഥവാ പുനരാവർത്തനം ചെയ്യുന്നതിനുപകരം, വ്യക്തമായ സ്ഥലങ്ങൾ, മാര്‍ഗ്ഗങ്ങൾ, ഓർമ്മപ്പെടുത്തലുകൾ രൂപകല്‍പ്പന ചെയ്യുന്നു."
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.0",
+      "source": "Choose a route",
+      "value": "ഒരു വഴി തിരഞ്ഞെടുക്കുക"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.1",
+      "source": "Place vivid cues",
+      "value": "ജൈവര്‍ദ്ദമായ സൂചനകൾ നിർത്തുക"
+    },
+    {
+      "key": "topic.memory-palace.seo.outcome.2",
+      "source": "Practise recall",
+      "value": "ഓര്‍മ്മയെടുത്ത് അഭ്യാസം ചെയ്യുക"
+    },
+    {
+      "key": "topic.memory-palace.starter.0",
+      "source": "Remember the planets",
+      "value": "ഗ്രഹങ്ങൾ ഓർത്തിരിക്കാൻ"
+    },
+    {
+      "key": "topic.memory-palace.starter.1",
+      "source": "Memorize a speech outline",
+      "value": "ഒരു പ്രസംഗത്തിന്റെ ഘടന ഓർമ്മയിൽ സൂക്ഷിക്കുക"
+    },
+    {
+      "key": "topic.memory-palace.starter.2",
+      "source": "Learn biology taxonomy",
+      "value": "ജീവശാസ്ത്ര ടാക്സോണോമി പഠിക്കുക"
+    },
+    {
+      "key": "topic.spaced-review.name",
+      "source": "Spaced Review",
+      "value": "വ്യവസ്ഥിത അവലോകനം"
+    },
+    {
+      "key": "topic.spaced-review.subText",
+      "source": "Review before you forget",
+      "value": "മറക്കുന്നതിന് മുമ്പ് അവലോകനം ചെയ്യുക"
+    },
+    {
+      "key": "topic.spaced-review.description",
+      "source": "Plan and run quick review sessions that strengthen long-term memory.",
+      "value": "ദീര്‍ഘകാല മെമ്മറി ശക്തിപ്പെടുത്തുന്ന വേഗമായ അവലോകന സെഷനുകള്‍ പദ്ധതി രൂപീകരിച്ച് നടത്തി."
+    },
+    {
+      "key": "topic.spaced-review.inputboxText",
+      "source": "What should we review?",
+      "value": "ഞങ്ങൾ എന്ത് പരിശോധിക്കണം?"
+    },
+    {
+      "key": "topic.spaced-review.category",
+      "source": "Practice",
+      "value": "പരിശീലനം"
+    },
+    {
+      "key": "topic.spaced-review.seo.description",
+      "source": "Plan quick review sessions, revisit weak ideas, and strengthen long-term memory with AI-guided spaced repetition.",
+      "value": "അധികൃത AI-നിർദ്ദേശിച്ച സ്പേസ്‌ഡ് റിപിറ്റിഷൻ ഉപയോഗിച്ച് ദ്രുതമായ സമീക്ഷ സെഷനുകൾ ആസൂത്രണം ചെയ്യുകയും ദുർബല ആശയങ്ങൾ വീണ്ടും സന്ദർശിക്കുകയും ദീർഘകാല ഓർമ്മ ശക്തിപ്പെടുത്തുകയും ചെയ്യുക."
+    },
+    {
+      "key": "topic.spaced-review.seo.who",
+      "source": "Learners who forget after reading and need a practical review rhythm for concepts, terms, or exam material.",
+      "value": "വായിച്ച് മറന്നുപോകുന്ന, ആശയങ്ങൾ, പദങ്ങൾ, അല്ലെങ്കിൽ പരീക്ഷാ സാധനങ്ങൾ പ്രായോഗിക അവലോകന താളമുറി ആവശ്യപ്പെടുന്ന പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.spaced-review.seo.whyDifferent",
+      "source": "The coach turns misses and hesitation into a review schedule rather than another passive summary.",
+      "value": "കോച്ച് തെറ്റുകളും സംശയങ്ങളും മറ്റൊരു പാസ്സീവ് സംക്ഷേപമല്ല, മറിച്ച് ഒരു അവലോകന സമയക്രമമാക്കി മാറ്റുന്നു."
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.0",
+      "source": "Pick review targets",
+      "value": "പരിശോധന ലക്ഷ്യങ്ങൾ തിരഞ്ഞെടുക്കുക"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.1",
+      "source": "Schedule recall",
+      "value": "പുനഃസ്മരണം തിരിച്ച് നിശ്ചയിക്കുക"
+    },
+    {
+      "key": "topic.spaced-review.seo.outcome.2",
+      "source": "Repair misses",
+      "value": "പരിഷ്ക്കരണ ലംഘനങ്ങൾ"
+    },
+    {
+      "key": "topic.spaced-review.starter.0",
+      "source": "Review yesterday's chemistry",
+      "value": "ഇന്നലെ നടന്ന രസതന്ത്രം വീണ്ടെടുക്കുക"
+    },
+    {
+      "key": "topic.spaced-review.starter.1",
+      "source": "Make a 7-day review plan",
+      "value": "7-ദിവസ അവലോകന പദ്ധതി തയ്യാറാക്കുക"
+    },
+    {
+      "key": "topic.spaced-review.starter.2",
+      "source": "Quiz me on vocabulary again",
+      "value": "ഇനിയും വാക്കുകൾ സംബന്ധിച്ച് എനിക്ക് ചോദ്യങ്ങൾ എഴുതി"
+    },
+    {
+      "key": "topic.concept-map-builder.name",
+      "source": "Concept Map Builder",
+      "value": "ധാരണാ മാപ്പ് നിർമ്മാതാവ്"
+    },
+    {
+      "key": "topic.concept-map-builder.subText",
+      "source": "Connect ideas visually in text",
+      "value": "ടെക്സ്റ്റിൽ ആശയങ്ങൾ ദൃശ്യമായി ബന്ധിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.concept-map-builder.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "വിവിധ ആശയങ്ങൾ പരസ്പരം എങ്ങനെ ബന്ധപ്പെട്ടിരിക്കുന്നുവെന്ന് രേഖപ്പെടുത്തുക; കാരണങ്ങൾ, ഫലങ്ങൾ, വർഗ്ഗങ്ങൾ, ഉദാഹരണങ്ങൾ, വിരുദ്ധതകൾ എന്നിവ ഉൾപ്പെടെ."
+    },
+    {
+      "key": "topic.concept-map-builder.inputboxText",
+      "source": "What concept should we map?",
+      "value": "നാം ഏത് ആശയം നಕ್ಷയിടണം?"
+    },
+    {
+      "key": "topic.concept-map-builder.category",
+      "source": "Thinking",
+      "value": "ചിന്തനം"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.description",
+      "source": "Map how ideas relate, from causes and effects to categories, examples, and contradictions.",
+      "value": "കാരണം-ഫലങ്ങൾ മുതൽ വിഭാഗങ്ങൾ, ഉദാഹരണങ്ങൾ, വിരുദ്ധതകൾ വരെ ആശയങ്ങൾ എങ്ങനെ ബന്ധപ്പെടുന്നു എന്ന് ചിത്രം വരയ്ക്കുക."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "സാധാരണ ഉത്തര ബോക്സിന് പകരം പ്രായോഗിക മാർഗനിർദ്ദേശം അന്വേഷിക്കുന്ന ചിന്താവിഷയങ്ങൾ പഠിക്കുന്ന പ്ര Lerners."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.whyDifferent",
+      "source": "This mode is tuned for concept map builder with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് ത своരൂപിക്കുന്ന കോൺസെപ്റ്റ് മാപ്പ് നിർമ്മാതാവിനായി പ്രത്യേകമായി ക്രമീകരിച്ചിരിക്കുന്നു, സ്വതന്ത്ര പ്രോംപ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയോടുകൂടിയാണ്."
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.0",
+      "source": "Connect ideas visually in text",
+      "value": "ആർട്ടിക്കളിൽ ആശയങ്ങളെ ദൃശ്യരൂപത്തിൽ ബന്ധിപ്പിക്കുക"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "രൂപകൽപ്പന പ്രോമ്പ്റ്റുകൾ ഉപയോഗിച്ച് തുടങ്ങുക"
+    },
+    {
+      "key": "topic.concept-map-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷന്‍ നിങ്ങളുടെ ലക്ഷ്യത്തിനു അനുയോജ്യമായി തരിക"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.0",
+      "source": "Map climate change",
+      "value": "കാലാവസ്ഥ 변화 മാപ്പ് ചെയ്യുക"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.1",
+      "source": "Connect algebra concepts",
+      "value": "അൽജിബ്ര ആശയങ്ങൾ ചേർക്കുക"
+    },
+    {
+      "key": "topic.concept-map-builder.starter.2",
+      "source": "Build a map of democracy",
+      "value": "പ്രജനന വ്യവസ്ഥയുടെ ഒരു മാപ്പ് നിർമ്മിക്കുക"
+    },
+    {
+      "key": "topic.misconception-doctor.name",
+      "source": "Misconception Doctor",
+      "value": "ഭ്രാന്തിദ്ധാരണ ഡോക്ടര്‍"
+    },
+    {
+      "key": "topic.misconception-doctor.subText",
+      "source": "Find and fix wrong mental models",
+      "value": "തെറ്റായ മനസ്സുസൃഷ്ടികളെ കണ്ടെത്തി ശരിയാക്കുക"
+    },
+    {
+      "key": "topic.misconception-doctor.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "നിങ്ങൾ സംഭവിക്കുമെന്ന് കരുതുന്നതു പറയൂ, നിങ്ങളുടെ സുഹൃത്ത് സന്പ്രേഷണ പരീക്ഷണങ്ങളിലൂടെ മറഞ്ഞുവെന്ന തെറ്റിദ്ധാരണകൾ കണ്ടെത്തും."
+    },
+    {
+      "key": "topic.misconception-doctor.inputboxText",
+      "source": "What idea feels confusing or suspicious?",
+      "value": "എന്താണ് ആശയം ആശങ്കയോ സംശയമോ ജനിപ്പിക്കുന്നത്?"
+    },
+    {
+      "key": "topic.misconception-doctor.category",
+      "source": "Thinking",
+      "value": "ആലോചന"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.description",
+      "source": "Say what you think is happening, and your buddy diagnoses hidden misconceptions with gentle tests.",
+      "value": "നിങ്ങൾ എന്തായിരിക്കും സംഭവിക്കുന്നത് എന്ന് പറയൂ, നിങ്ങളുടെ കൂട്ടുകാരൻ സ്നേഹപൂർവ്വകമായ പരിശോധനകളിലൂടെ മറഞ്ഞിരിക്കുന്ന തെറ്റിദ്ധാരണകൾ കണ്ടെത്തും."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "ജനറിക് ഉത്തരം നൽകുന്ന ബോക്സിന് பதിൽ പ്രയോജനപരമായ മാർഗ്ഗ നിർദ്ദേശങ്ങൾ ആഗ്രഹിക്കുന്ന ചിന്താ വിഷയങ്ങൾ പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.whyDifferent",
+      "source": "This mode is tuned for misconception doctor with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോട്ടോർ സ്വതന്ത്ര ഉത്തരം പറയുന്ന 'മിസ്‌കൺസപ്ഷൻ ഡോക്ടർ' ന്റെ ആവശ്യങ്ങൾക്കായി പ്രോംപ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉൾപ്പെടെ പ്രത്യേകമായി ക്രമീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.0",
+      "source": "Find and fix wrong mental models",
+      "value": "തെറ്റായ മാനസിക മാതൃകകൾ കണ്ടെത്തി ശരിയാക്കുക"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോമ്പ്ടുകളുമായി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.misconception-doctor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുസരിച്ച് ക്രമീകരിക്കുക"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.0",
+      "source": "I think heavier objects fall faster",
+      "value": "എനിക്ക് തോന്നുന്നത് ഭാരമുള്ള വസ്തുക്കൾ വേഗത്തിൽ വീഴുന്നതാണ്"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.1",
+      "source": "I don't get negative numbers",
+      "value": "എനിക്ക് നാനാകാര സംഖ്യകൾ മനസാകുന്നില്ല"
+    },
+    {
+      "key": "topic.misconception-doctor.starter.2",
+      "source": "Why is this grammar rule weird?",
+      "value": "ഈ വ്യാകരണ നിയമം എന്തുകൊണ്ട് വിചിത്രമാണ്?"
+    },
+    {
+      "key": "topic.feynman-tutor.name",
+      "source": "Feynman Tutor",
+      "value": "ഫെയ്‌ന്മാൻ ട്യൂട്ടർ"
+    },
+    {
+      "key": "topic.feynman-tutor.subText",
+      "source": "Explain it simply until it sticks",
+      "value": "ഇത് ഉറപ്പേർക്കുംവരെ എളുപ്പത്തിൽ വിശദീകരിക്കുക"
+    },
+    {
+      "key": "topic.feynman-tutor.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ഒരു ആശയം എളുപ്പത്തിൽ വിശദീകരിക്കാൻ ശ്രമിക്കൂ. നിങ്ങളുടെ ട്യൂട്ടർ വീഴ്ചകൾ കണ്ടെത്തുകയും, ചോദ്യങ്ങൾ ചോദിക്കുകയും, വിശദീകരണം പുനർനിർമ്മിക്കാൻ സഹായിക്കുകയും ചെയ്യും."
+    },
+    {
+      "key": "topic.feynman-tutor.inputboxText",
+      "source": "What will you explain back to me?",
+      "value": "നീ എനിക്ക് തിരിച്ചുപറയുന്നത് എന്താകും?"
+    },
+    {
+      "key": "topic.feynman-tutor.category",
+      "source": "Thinking",
+      "value": "ചിന്തിന€“"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.description",
+      "source": "Try explaining a concept simply. Your tutor spots gaps, asks questions, and helps you rebuild the explanation.",
+      "value": "ഒരു ആശയം സരളമായി വിശദീകരിക്കാൻ ശ്രമിക്കുക. നിങ്ങളുടെ ട്യൂട്ടർ വീഴ്ചകൾ കണ്ടെത്തുകയും, ചോദ്യങ്ങൾ ചോദിക്കുകയും, വിശദീകരണം പുനർനിർമിക്കുന്നതിൽ സഹായിക്കുകയും ചെയ്യും."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.who",
+      "source": "Learners exploring thinking topics who want practical guidance instead of a generic answer box.",
+      "value": "ആത്മനിർഭരമായ ഉത്തരത്തിന് പകരം പ്രായോഗിക മാർഗനം തേടുന്ന ചിന്തന വിഷയങ്ങളിൽ പഠിക്കുന്നവർ."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.whyDifferent",
+      "source": "This mode is tuned for feynman tutor with its own prompts, examples, and learning flow.",
+      "value": "ഈ ಮೋഡ് ഫെയ്ൻമാൻ ട്യൂട്ടറിനായി പ്രത്യേകമായി ക്രമീകരിച്ചിരിക്കുന്നു, അതിന്റെ സ്വതന്ത്ര പ്രോമ്പ്റ്റുകളും ഉദാഹരണങ്ങളും പഠന പ്രവാഹവും ഉൾക്കൊള്ളുന്നു."
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.0",
+      "source": "Explain it simply until it sticks",
+      "value": "അറിഞ്ഞുപിടിക്കാൻ എളുപ്പത്തിൽ വിശദീകരിക്കൂ"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളിലൂടെ തുടങ്ങുക"
+    },
+    {
+      "key": "topic.feynman-tutor.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായി രൂപപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.0",
+      "source": "I'll explain gravity",
+      "value": "ഞാൻ ഗുരുത്വാകർഷണത്തെ വിശദീകരിക്കും"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.1",
+      "source": "Test my understanding of inflation",
+      "value": "വിലക്‌ഷ്യയുടെ എന്റെ ബോധം പരീക്ഷിക്കാനാകുമോ"
+    },
+    {
+      "key": "topic.feynman-tutor.starter.2",
+      "source": "Help me simplify recursion",
+      "value": "റികർഷനെ എളുപ്പമാക്കാൻ സഹായിക്കൂ"
+    },
+    {
+      "key": "topic.case-study-simulator.name",
+      "source": "Case Study Simulator",
+      "value": "കേസ് സ്റ്റഡി സിമുലേറ്റർ"
+    },
+    {
+      "key": "topic.case-study-simulator.subText",
+      "source": "Learn through realistic decisions",
+      "value": "യാഥാർത്ഥ്യ തീരുമാനങ്ങളിലൂടെ सीखുക"
+    },
+    {
+      "key": "topic.case-study-simulator.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "യഥാർത്ഥ സാഹചര്യങ്ങളിലെ ഒരു കേസ് ഉൾപ്പെടുത്തുക, തീരുമാനം എടുക്കുക, ഫലങ്ങൾ കാണുക, ഓരോ தேர்வിനും പിന്നിലുള്ള സിദ്ധാന്തം പഠിക്കുക."
+    },
+    {
+      "key": "topic.case-study-simulator.inputboxText",
+      "source": "What kind of case should we simulate?",
+      "value": "ഞങ്ങൾ ഏത് തരത്തിലുള്ള കേസ് അനുകരിക്കണം?"
+    },
+    {
+      "key": "topic.case-study-simulator.category",
+      "source": "Immersion",
+      "value": "പൂർണ്ണഗര്‍ഭം"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.description",
+      "source": "Enter a realistic case, make decisions, see consequences, and learn the principle behind each choice.",
+      "value": "ഒരു യാഥാർത്ഥ്യസമാന കേസ് നൽകുക, തീരുമാനങ്ങൾ എടുക്കുക, ഫലങ്ങൾ കാണുക, ഓരോ തിരഞ്ഞെടുപ്പിന്റെയും അടിസ്ഥാന സിദ്ധാന്തം പഠിക്കുക."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "അഭ്യാസപരമായ മാർഗ്ഗനിർദ്ദേശം ആഗ്രഹിക്കുന്ന, പൊതുവായ മറുപടിയല്ലാത്ത, ഇമേഴ്‌സൻ വിഷയങ്ങൾ അന്വേഷിക്കുന്ന പഠിതാക്കൾ."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.whyDifferent",
+      "source": "This mode is tuned for case study simulator with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് കേസ്ഡ് സ്റ്റഡി സിമുലേറ്ററിനായി അതിന്റെ സ്വന്തം പ്രോമ്പ്റ്റുകൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയോടുകൂടി ക്രമീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.0",
+      "source": "Learn through realistic decisions",
+      "value": "യഥാർത്ഥത്തിലുള്ള തീരുമാനങ്ങളിലൂടെ പഠിക്കുക"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "ഉദാഹരണ പ്രോംപ്റ്റുകളുമായി ആരംഭിക്കുക"
+    },
+    {
+      "key": "topic.case-study-simulator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "സെഷൻ നിങ്ങളുടെ ലക്ഷ്യത്തിന് അനുയോജ്യമായവായി രൂപപ്പെടുത്തുക"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.0",
+      "source": "Business strategy case",
+      "value": "വ്യവസായ മാസ്റ്ററി കേസ്"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.1",
+      "source": "Medical ethics case",
+      "value": "മെഡിക്കൽ ഫലസന്ധിയുക്തി കേസ്"
+    },
+    {
+      "key": "topic.case-study-simulator.starter.2",
+      "source": "Environmental policy case",
+      "value": "പരിസ്ഥിതി നীতি കേസ്"
+    },
+    {
+      "key": "topic.roleplay-scenario.name",
+      "source": "Roleplay Scenario",
+      "value": "പങ്കാളിത്ത കഥാവസ്തുത"
+    },
+    {
+      "key": "topic.roleplay-scenario.subText",
+      "source": "Practice tough real-life conversations",
+      "value": "സംഘർഷപ്രധാനമായ യാഥാർത്ഥ്യസംവാദങ്ങൾ അഭ്യാസം ചെയ്യുക"
+    },
+    {
+      "key": "topic.roleplay-scenario.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "കോളം, കലഹം, ഉപഭോക്തൃ പിന്തുണ, നേതൃത്വം, അല്ലെങ്കിൽ മറ്റ് സാംവിധാനപരമായ സംഭാഷണങ്ങൾ അഭ്യാസം ചെയ്യുക."
+    },
+    {
+      "key": "topic.roleplay-scenario.inputboxText",
+      "source": "What scenario should we roleplay?",
+      "value": "ഞങ്ങൾ哪ന്ത് സാഹചര്യത്തിൽ വേഷം മാറ്റണമെന്ന് ആഗ്രഹിക്കുന്നു?"
+    },
+    {
+      "key": "topic.roleplay-scenario.category",
+      "source": "Immersion",
+      "value": "ഇമ്മേഴ്സൻ"
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.description",
+      "source": "Practice negotiation, conflict, customer support, leadership, or any high-stakes conversation.",
+      "value": "സംവാദം, സംഘർഷം, ഉപഭോക്തൃ പിന്തുണ, നേതൃത്വക്ഷമത, അല്ലെങ്കിൽ ഏതെങ്കിലും ഗുണഗണനാപൂർണ്ണമായ സംഭാഷണങ്ങൾ അഭ്യസിക്കുക."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.who",
+      "source": "Learners exploring immersion topics who want practical guidance instead of a generic answer box.",
+      "value": "ഒരു സാധാരണ മറുപടി ബോക്‌സിനേക്കാള്‍ പ്രായോഗിക മാര്‍ഗനിര്‍ദ്ദേശം തേടുന്ന ആഴത്തിലുള്ള വിഷയങ്ങള്‍ അന്വേഷിക്കുന്ന ശിഷ്യര്‍."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.whyDifferent",
+      "source": "This mode is tuned for roleplay scenario with its own prompts, examples, and learning flow.",
+      "value": "ഈ മോഡ് തന്റെ സ്വന്തം പ്രചോദനങ്ങൾ, ഉദാഹരണങ്ങൾ, പഠന പ്രവാഹം എന്നിവയുമായി റോള്പ്ലേ സംവിധാനത്തിനായി ക്രമപ്പെടുത്തപ്പെട്ടതാണ്."
+    },
+    {
+      "key": "topic.roleplay-scenario.seo.outcome.0",
+      "source": "Practice tough real-life conversations",
+      "value": "പ്രായോഗികമായ കഠിനമായ യഥാർത്ഥ ജീവിത സംഭാഷണങ്ങൾ അഭ്യസിക്കുക"
+    }
+  ]
+}

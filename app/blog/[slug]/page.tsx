@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import ReactMarkdown, { type Components } from "react-markdown";
@@ -19,6 +19,9 @@ import { getBlogPostLearningGraph } from "@/lib/content/blog-link-graph";
 import { getBlogPostPracticePlan } from "@/lib/content/blog-practice";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
+import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
+import { getRequestLanguage } from "@/lib/i18n/request-locale";
+import { localizeHref } from "@/lib/i18n/routing";
 import { defaultSocialImage, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate, formatLongDate } from "@/lib/utils/dates";
@@ -50,7 +53,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
         eyebrow: "Learning guide",
         description: post.description,
       });
-  return {
+  return localizeMarketingMetadata({
     title: post.title,
     description: post.description,
     alternates: metadataAlternates(`/blog/${post.slug}`),
@@ -72,7 +75,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.description,
       images: [image.url],
     },
-  };
+  }, `/blog/${post.slug}`);
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -92,9 +95,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const headings = extractBlogHeadings(post);
   const readingMinutes = estimateBlogIndexedReadingMinutes(post);
   const headingIdByLine = new Map(headings.map((heading) => [heading.line, heading.id]));
+  const language = await getRequestLanguage();
   const markdownComponents: Components = {
     h2: ({ children, node }) => <h2 id={headingIdByLine.get(node?.position?.start.line ?? -1)}>{children}</h2>,
     h3: ({ children, node }) => <h3 id={headingIdByLine.get(node?.position?.start.line ?? -1)}>{children}</h3>,
+    a: ({ children, href }) => <a href={href ? localizeHref(href, language) : undefined}>{children}</a>,
   };
 
   const jsonLd = [

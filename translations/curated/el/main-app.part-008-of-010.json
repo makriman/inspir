@@ -1,0 +1,1263 @@
+{
+  "schemaVersion": 1,
+  "language": "Greek",
+  "locale": "el",
+  "namespace": "main-app",
+  "sourceHash": "94c21e72dd998300713cf3b0a03a9ce5c35a4216e112c91075342b1c64fa8953",
+  "part": {
+    "index": 8,
+    "total": 10
+  },
+  "entries": [
+    {
+      "key": "topic.civics-coach.seo.whyDifferent",
+      "source": "This mode is tuned for civics coach with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι προσαρμοσμένη για τον Civics Coach, με δικά της μηνύματα, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.0",
+      "source": "Understand rights, government, and society",
+      "value": "Κατανοήστε τα δικαιώματα, την κυβέρνηση και την κοινωνία"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με ενδεικτικά μηνύματα"
+    },
+    {
+      "key": "topic.civics-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.civics-coach.starter.0",
+      "source": "How does a bill become law?",
+      "value": "Πώς ένα νομοσχέδιο γίνεται νόμος;"
+    },
+    {
+      "key": "topic.civics-coach.starter.1",
+      "source": "Explain fundamental rights",
+      "value": "Εξήγησε τα θεμελιώδη δικαιώματα"
+    },
+    {
+      "key": "topic.civics-coach.starter.2",
+      "source": "What does a court do?",
+      "value": "Τι κάνει ένα δικαστήριο;"
+    },
+    {
+      "key": "topic.art-appreciation-guide.name",
+      "source": "Art Appreciation Guide",
+      "value": "Οδηγός Εκτίμησης Τέχνης"
+    },
+    {
+      "key": "topic.art-appreciation-guide.subText",
+      "source": "Look closer and notice more",
+      "value": "Παρατήρησε πιο προσεκτικά και δες περισσότερα"
+    },
+    {
+      "key": "topic.art-appreciation-guide.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Εξερεύνησε έργα τέχνης, τεχνοτροπίες, καλλιτέχνες, οπτικές επιλογές και τι κάνει μια εικόνα δυνατή."
+    },
+    {
+      "key": "topic.art-appreciation-guide.inputboxText",
+      "source": "What artwork, artist, or style?",
+      "value": "Ποιο έργο τέχνης, καλλιτέχνης ή τεχνοτροπία;"
+    },
+    {
+      "key": "topic.art-appreciation-guide.category",
+      "source": "Creativity",
+      "value": "Δημιουργικότητα"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.description",
+      "source": "Explore artworks, styles, artists, visual choices, and what makes an image powerful.",
+      "value": "Εξερεύνησε έργα τέχνης, τεχνοτροπίες, καλλιτέχνες, οπτικές επιλογές και τι κάνει μια εικόνα δυνατή."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Μαθητές που εξερευνούν θέματα δημιουργικότητας και θέλουν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.whyDifferent",
+      "source": "This mode is tuned for art appreciation guide with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για τον οδηγό εκτίμησης τέχνης με τις δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.0",
+      "source": "Look closer and notice more",
+      "value": "Παρατήρησε πιο προσεκτικά και δες περισσότερα"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκίνα με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.art-appreciation-guide.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσάρμοσε τη συνεδρία στον στόχο σου"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.0",
+      "source": "Explain impressionism",
+      "value": "Εξήγησε τον ιμπρεσιονισμό"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.1",
+      "source": "How do I look at a painting?",
+      "value": "Πώς να κοιτάζω έναν πίνακα;"
+    },
+    {
+      "key": "topic.art-appreciation-guide.starter.2",
+      "source": "Compare Renaissance and modern art",
+      "value": "Σύγκρινε την Αναγεννησιακή με τη μοντέρνα τέχνη"
+    },
+    {
+      "key": "topic.music-theory-coach.name",
+      "source": "Music Theory Coach",
+      "value": "Coach Θεωρίας Μουσικής"
+    },
+    {
+      "key": "topic.music-theory-coach.subText",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Κατανόησε τον ήχο, τον ρυθμό και την αρμονία"
+    },
+    {
+      "key": "topic.music-theory-coach.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Μάθε νότες, συγχορδίες, κλίμακες, ρυθμό, ιδέες για εξάσκηση ακοής και πώς δομούνται τα τραγούδια."
+    },
+    {
+      "key": "topic.music-theory-coach.inputboxText",
+      "source": "What music idea should we work on?",
+      "value": "Πάνω σε ποια μουσική ιδέα να δουλέψουμε;"
+    },
+    {
+      "key": "topic.music-theory-coach.category",
+      "source": "Creativity",
+      "value": "Δημιουργικότητα"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.description",
+      "source": "Learn notes, chords, scales, rhythm, ear training ideas, and how songs are built.",
+      "value": "Μάθε νότες, συγχορδίες, κλίμακες, ρυθμό, ιδέες για εξάσκηση ακοής και πώς δομούνται τα τραγούδια."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.who",
+      "source": "Learners exploring creativity topics who want practical guidance instead of a generic answer box.",
+      "value": "Μαθητές που εξερευνούν θέματα δημιουργικότητας και θέλουν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.whyDifferent",
+      "source": "This mode is tuned for music theory coach with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για τον coach θεωρίας μουσικής με τις δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.0",
+      "source": "Understand sound, rhythm, and harmony",
+      "value": "Κατανοήστε τον ήχο, τον ρυθμό και την αρμονία"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.music-theory-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.0",
+      "source": "Explain major and minor",
+      "value": "Εξηγήστε τη μείζονα και την ελάσσονα κλίμακα"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.1",
+      "source": "How do chords work?",
+      "value": "Πώς λειτουργούν οι συγχορδίες;"
+    },
+    {
+      "key": "topic.music-theory-coach.starter.2",
+      "source": "Teach rhythm basics",
+      "value": "Διδάξτε τα βασικά του ρυθμού"
+    },
+    {
+      "key": "topic.mindset-reflection.name",
+      "source": "Mindset Reflection",
+      "value": "Αναστοχασμός Νοοτροπίας"
+    },
+    {
+      "key": "topic.mindset-reflection.subText",
+      "source": "Reflect on how you learn",
+      "value": "Σκεφτείτε πώς μαθαίνετε"
+    },
+    {
+      "key": "topic.mindset-reflection.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Παρατηρήστε τι σας βοηθά να μαθαίνετε, τι σας εμποδίζει και πώς να γίνετε πιο αποτελεσματικοί μαθητές."
+    },
+    {
+      "key": "topic.mindset-reflection.inputboxText",
+      "source": "What learning moment should we reflect on?",
+      "value": "Πάνω σε ποια μαθησιακή στιγμή πρέπει να αναστοχαστούμε;"
+    },
+    {
+      "key": "topic.mindset-reflection.category",
+      "source": "Planning",
+      "value": "Σχεδιασμός"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.description",
+      "source": "Notice what helps you learn, what gets in the way, and how to become a stronger learner.",
+      "value": "Παρατηρήστε τι σας βοηθά να μαθαίνετε, τι σας εμποδίζει και πώς να γίνετε πιο αποτελεσματικοί μαθητές."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.who",
+      "source": "Learners exploring planning topics who want practical guidance instead of a generic answer box.",
+      "value": "Μαθητές που εξερευνούν θέματα σχεδιασμού και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.whyDifferent",
+      "source": "This mode is tuned for mindset reflection with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για αναστοχασμό νοοτροπίας με τις δικές της προτροπές, παραδείγματα και μαθησιακή ροή."
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.0",
+      "source": "Reflect on how you learn",
+      "value": "Σκεφτείτε πώς μαθαίνετε"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.mindset-reflection.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.0",
+      "source": "Why did I avoid studying?",
+      "value": "Γιατί απέφυγα το διάβασμα;"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.1",
+      "source": "Reflect after a bad test",
+      "value": "Αναστοχασμός μετά από ένα κακό τεστ"
+    },
+    {
+      "key": "topic.mindset-reflection.starter.2",
+      "source": "What learning strategy fits me?",
+      "value": "Ποια στρατηγική μάθησης μου ταιριάζει;"
+    },
+    {
+      "key": "topic.learning-game-master.name",
+      "source": "Learning Game Master",
+      "value": "Master Παιχνιδιών Μάθησης"
+    },
+    {
+      "key": "topic.learning-game-master.subText",
+      "source": "Turn study into a challenge",
+      "value": "Μετατρέψτε τη μελέτη σε πρόκληση"
+    },
+    {
+      "key": "topic.learning-game-master.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Κάντε τη μάθηση να μοιάζει με παιχνίδι με αποστολές, επίπεδα, πόντους, προκλήσεις και γύρους με αρχηγούς."
+    },
+    {
+      "key": "topic.learning-game-master.inputboxText",
+      "source": "What should become a learning game?",
+      "value": "Τι θα έπρεπε να γίνει παιχνίδι μάθησης;"
+    },
+    {
+      "key": "topic.learning-game-master.category",
+      "source": "Practice",
+      "value": "Εξάσκηση"
+    },
+    {
+      "key": "topic.learning-game-master.seo.description",
+      "source": "Make learning feel like a game with quests, levels, points, challenges, and boss rounds.",
+      "value": "Κάντε τη μάθηση να μοιάζει με παιχνίδι με αποστολές, επίπεδα, πόντους, προκλήσεις και γύρους με αρχηγούς."
+    },
+    {
+      "key": "topic.learning-game-master.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα εξάσκησης και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.learning-game-master.seo.whyDifferent",
+      "source": "This mode is tuned for learning game master with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για τον master του παιχνιδιού μάθησης με τα δικά της μηνύματα, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.0",
+      "source": "Turn study into a challenge",
+      "value": "Μετατρέψτε τη μελέτη σε πρόκληση"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα μηνυμάτων"
+    },
+    {
+      "key": "topic.learning-game-master.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.learning-game-master.starter.0",
+      "source": "Make biology a quest",
+      "value": "Κάντε τη βιολογία μια αποστολή"
+    },
+    {
+      "key": "topic.learning-game-master.starter.1",
+      "source": "Turn vocabulary into levels",
+      "value": "Μετατρέψτε το λεξιλόγιο σε επίπεδα"
+    },
+    {
+      "key": "topic.learning-game-master.starter.2",
+      "source": "Create a math boss battle",
+      "value": "Δημιουργήστε μια μάχη με αρχηγό στα μαθηματικά"
+    },
+    {
+      "key": "topic.viva-practice.name",
+      "source": "Viva Practice",
+      "value": "Εξάσκηση σε προφορικές εξετάσεις"
+    },
+    {
+      "key": "topic.viva-practice.subText",
+      "source": "Prepare for oral questioning",
+      "value": "Προετοιμαστείτε για προφορικές ερωτήσεις"
+    },
+    {
+      "key": "topic.viva-practice.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Εξασκηθείτε σε προφορικές εξετάσεις, υπερασπίσεις εργασιών και γρήγορες ερωτήσεις παρακολούθησης με ήρεμη ανατροφοδότηση."
+    },
+    {
+      "key": "topic.viva-practice.inputboxText",
+      "source": "What viva or oral exam are you preparing for?",
+      "value": "Για ποια προφορική εξέταση προετοιμάζεστε;"
+    },
+    {
+      "key": "topic.viva-practice.category",
+      "source": "Practice",
+      "value": "Εξάσκηση"
+    },
+    {
+      "key": "topic.viva-practice.seo.description",
+      "source": "Practice viva, oral exams, project defenses, and rapid follow-up questions with calm feedback.",
+      "value": "Εξασκηθείτε σε προφορικές εξετάσεις, υπερασπίσεις εργασιών και γρήγορες ερωτήσεις παρακολούθησης με ήρεμη ανατροφοδότηση."
+    },
+    {
+      "key": "topic.viva-practice.seo.who",
+      "source": "Learners exploring practice topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα εξάσκησης και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.viva-practice.seo.whyDifferent",
+      "source": "This mode is tuned for viva practice with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για εξάσκηση σε προφορικές εξετάσεις με τα δικά της μηνύματα, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.0",
+      "source": "Prepare for oral questioning",
+      "value": "Προετοιμαστείτε για προφορικές ερωτήσεις"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα μηνυμάτων"
+    },
+    {
+      "key": "topic.viva-practice.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.viva-practice.starter.0",
+      "source": "Practice my science project viva",
+      "value": "Εξάσκηση στην προφορική παρουσίαση της επιστημονικής μου εργασίας"
+    },
+    {
+      "key": "topic.viva-practice.starter.1",
+      "source": "Ask me thesis defense questions",
+      "value": "Κάντε μου ερωτήσεις για την υπεράσπιση της διπλωματικής μου"
+    },
+    {
+      "key": "topic.viva-practice.starter.2",
+      "source": "Mock practical exam questions",
+      "value": "Ερωτήσεις προσομοίωσης πρακτικών εξετάσεων"
+    },
+    {
+      "key": "topic.study-timer.name",
+      "source": "Study Timer",
+      "value": "Χρονόμετρο Μελέτης"
+    },
+    {
+      "key": "topic.study-timer.subText",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Μόνιμο χρονόμετρο Pomodoro με ειδοποιήσεις"
+    },
+    {
+      "key": "topic.study-timer.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Εκτελέστε συνεδρίες εστίασης και διαλείμματος που συνεχίζουν να μετρούν καθώς μετακινείστε μεταξύ συνομιλιών, καρτελών και mini εφαρμογών. Μπορεί να ηχήσει από το παρασκήνιο όταν τελειώνει μια συνεδρία."
+    },
+    {
+      "key": "topic.study-timer.inputboxText",
+      "source": "What should this focus session be about?",
+      "value": "Ποιο θα είναι το θέμα αυτής της συνεδρίας εστίασης;"
+    },
+    {
+      "key": "topic.study-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Εστίαση & Παραγωγικότητα"
+    },
+    {
+      "key": "topic.study-timer.seo.description",
+      "source": "Run focus and break sessions that keep counting while you move between chats, tabs, and mini apps. It can ring from the background when a session ends.",
+      "value": "Εκτελέστε συνεδρίες εστίασης και διαλείμματος που συνεχίζουν να μετρούν καθώς μετακινείστε μεταξύ συνομιλιών, καρτελών και mini εφαρμογών. Μπορεί να ηχήσει από το παρασκήνιο όταν τελειώνει μια συνεδρία."
+    },
+    {
+      "key": "topic.study-timer.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Μαθητές που εξερευνούν θέματα εστίασης και παραγωγικότητας και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.study-timer.seo.whyDifferent",
+      "source": "This mode is tuned for study timer with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για χρονόμετρο μελέτης με τις δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.0",
+      "source": "Persistent Pomodoro timer with alerts",
+      "value": "Μόνιμο χρονόμετρο Pomodoro με ειδοποιήσεις"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.study-timer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.study-timer.starter.0",
+      "source": "Start a 25 minute biology session",
+      "value": "Ξεκινήστε μια συνεδρία βιολογίας 25 λεπτών"
+    },
+    {
+      "key": "topic.study-timer.starter.1",
+      "source": "Set a 50/10 deep work rhythm",
+      "value": "Ορίστε έναν ρυθμό βαθιάς εργασίας 50/10"
+    },
+    {
+      "key": "topic.study-timer.starter.2",
+      "source": "Track essay drafting focus",
+      "value": "Παρακολουθήστε την εστίαση στη σύνταξη δοκιμίου"
+    },
+    {
+      "key": "topic.music-for-focus.name",
+      "source": "Music for Focus",
+      "value": "Μουσική για Εστίαση"
+    },
+    {
+      "key": "topic.music-for-focus.subText",
+      "source": "Background focus audio that keeps playing",
+      "value": "Ήχος εστίασης στο παρασκήνιο που συνεχίζει να παίζει"
+    },
+    {
+      "key": "topic.music-for-focus.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Επιλέξτε παραγόμενο ήχο εστίασης για ανάγνωση, γραφή, επίλυση προβλημάτων ή βαθιά εργασία. Συνεχίζει να παίζει ενώ μεταβαίνετε σε άλλες συνομιλίες."
+    },
+    {
+      "key": "topic.music-for-focus.inputboxText",
+      "source": "What kind of focus do you want today?",
+      "value": "Τι είδους εστίαση θέλετε σήμερα;"
+    },
+    {
+      "key": "topic.music-for-focus.category",
+      "source": "Focus & Productivity",
+      "value": "Εστίαση & Παραγωγικότητα"
+    },
+    {
+      "key": "topic.music-for-focus.seo.description",
+      "source": "Choose generated focus audio for reading, writing, problem solving, or deep work. It keeps playing while you switch to other chats.",
+      "value": "Επιλέξτε παραγόμενο ήχο εστίασης για ανάγνωση, γραφή, επίλυση προβλημάτων ή βαθιά εργασία. Συνεχίζει να παίζει ενώ μεταβαίνετε σε άλλες συνομιλίες."
+    },
+    {
+      "key": "topic.music-for-focus.seo.who",
+      "source": "Learners exploring focus & productivity topics who want practical guidance instead of a generic answer box.",
+      "value": "Μαθητές που εξερευνούν θέματα εστίασης και παραγωγικότητας και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.music-for-focus.seo.whyDifferent",
+      "source": "This mode is tuned for music for focus with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για μουσική εστίασης με τις δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.0",
+      "source": "Background focus audio that keeps playing",
+      "value": "Ήχος εστίασης στο παρασκήνιο που συνεχίζει να παίζει"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.music-for-focus.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.music-for-focus.starter.0",
+      "source": "Play calm reading focus",
+      "value": "Αναπαραγωγή ήρεμης μουσικής για συγκέντρωση στο διάβασμα"
+    },
+    {
+      "key": "topic.music-for-focus.starter.1",
+      "source": "Set up deep work audio",
+      "value": "Ρύθμιση ήχου για βαθιά εργασία"
+    },
+    {
+      "key": "topic.music-for-focus.starter.2",
+      "source": "Use rain sounds for revision",
+      "value": "Χρήση ήχων βροχής για επανάληψη"
+    },
+    {
+      "key": "topic.draw-sketch-board.name",
+      "source": "Draw/Sketch Board",
+      "value": "Πίνακας Σχεδίασης/Σκίτσων"
+    },
+    {
+      "key": "topic.draw-sketch-board.subText",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Σκεφτείτε μέσα από διαγράμματα και πρόχειρα οπτικά στοιχεία"
+    },
+    {
+      "key": "topic.draw-sketch-board.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Χρησιμοποιήστε το σκίτσο ως μαθησιακή κίνηση: σχεδιάστε διαγράμματα, επισημάνετε πρόχειρους χάρτες, εξηγήστε διαδικασίες ή μετατρέψτε μια ακατάστατη ιδέα σε μια πιο καθαρή οπτική απεικόνιση."
+    },
+    {
+      "key": "topic.draw-sketch-board.inputboxText",
+      "source": "What should we sketch or diagram?",
+      "value": "Τι πρέπει να σχεδιάσουμε ή να απεικονίσουμε;"
+    },
+    {
+      "key": "topic.draw-sketch-board.category",
+      "source": "Visual Learning",
+      "value": "Οπτική Μάθηση"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.description",
+      "source": "Use sketching as a learning move: plan diagrams, label rough maps, explain processes, or turn a messy idea into a clearer visual.",
+      "value": "Χρησιμοποιήστε το σκίτσο ως μαθησιακή κίνηση: σχεδιάστε διαγράμματα, επισημάνετε πρόχειρους χάρτες, εξηγήστε διαδικασίες ή μετατρέψτε μια ακατάστατη ιδέα σε μια πιο καθαρή οπτική απεικόνιση."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα οπτικής μάθησης και θέλουν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.whyDifferent",
+      "source": "This mode is tuned for draw/sketch board with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για τον πίνακα σχεδίασης/σκίτσων με τα δικά της μηνύματα, παραδείγματα και μαθησιακή ροή."
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.0",
+      "source": "Think through diagrams and rough visuals",
+      "value": "Σκεφτείτε μέσα από διαγράμματα και πρόχειρα οπτικά στοιχεία"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.draw-sketch-board.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.0",
+      "source": "Sketch a cell diagram",
+      "value": "Σχεδιάστε ένα διάγραμμα κυττάρου"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.1",
+      "source": "Draw a supply-demand graph",
+      "value": "Σχεδιάστε ένα γράφημα προσφοράς-ζήτησης"
+    },
+    {
+      "key": "topic.draw-sketch-board.starter.2",
+      "source": "Map the causes of World War I",
+      "value": "Χαρτογραφήστε τα αίτια του Α' Παγκοσμίου Πολέμου"
+    },
+    {
+      "key": "topic.practice-test-builder.name",
+      "source": "Practice Test Builder",
+      "value": "Δημιουργός Τεστ Εξάσκησης"
+    },
+    {
+      "key": "topic.practice-test-builder.subText",
+      "source": "Build a full test from your material",
+      "value": "Δημιουργήστε ένα πλήρες τεστ από το υλικό σας"
+    },
+    {
+      "key": "topic.practice-test-builder.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Μετατρέψτε ένα θέμα, ένα πρόγραμμα σπουδών ή σημειώσεις σε ένα ρεαλιστικό τεστ εξάσκησης με ενότητες, χρονισμό, καθοδήγηση βαθμολόγησης και βήματα αναθεώρησης."
+    },
+    {
+      "key": "topic.practice-test-builder.inputboxText",
+      "source": "What should the practice test cover?",
+      "value": "Τι πρέπει να καλύπτει το τεστ εξάσκησης;"
+    },
+    {
+      "key": "topic.practice-test-builder.category",
+      "source": "Active Learning",
+      "value": "Ενεργητική Μάθηση"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.description",
+      "source": "Turn a topic, syllabus, or notes into a realistic practice test with sections, timing, marking guidance, and review steps.",
+      "value": "Μετατρέψτε ένα θέμα, ένα πρόγραμμα σπουδών ή σημειώσεις σε ένα ρεαλιστικό τεστ εξάσκησης με ενότητες, χρονισμό, καθοδήγηση βαθμολόγησης και βήματα αναθεώρησης."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.who",
+      "source": "Learners exploring active learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα ενεργητικής μάθησης και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.whyDifferent",
+      "source": "This mode is tuned for practice test builder with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι προσαρμοσμένη για το εργαλείο δημιουργίας δοκιμαστικών τεστ, με δικά της μηνύματα προτροπής, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.0",
+      "source": "Build a full test from your material",
+      "value": "Δημιουργήστε ένα πλήρες τεστ από το υλικό σας"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.practice-test-builder.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.0",
+      "source": "Build a biology unit test",
+      "value": "Δημιουργία τεστ ενότητας βιολογίας"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.1",
+      "source": "Make a mixed math practice test",
+      "value": "Δημιουργία μικτού τεστ εξάσκησης στα μαθηματικά"
+    },
+    {
+      "key": "topic.practice-test-builder.starter.2",
+      "source": "Create an exam-style history paper",
+      "value": "Δημιουργία γραπτού ιστορίας σε στυλ εξετάσεων"
+    },
+    {
+      "key": "topic.image-analysis-coach.name",
+      "source": "Image Analysis Coach",
+      "value": "Εκπαιδευτής Ανάλυσης Εικόνας"
+    },
+    {
+      "key": "topic.image-analysis-coach.subText",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Αναλύστε στιγμιότυπα οθόνης, διαγράμματα και εικόνες εργασιών"
+    },
+    {
+      "key": "topic.image-analysis-coach.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Περιγράψτε ή επικολλήστε λεπτομέρειες από μια εικόνα και λάβετε βοήθεια στην ανάγνωση διαγραμμάτων, γραφημάτων, προβλημάτων, χειρόγραφων σημειώσεων ή οπτικών αποδεικτικών στοιχείων."
+    },
+    {
+      "key": "topic.image-analysis-coach.inputboxText",
+      "source": "Describe the image or paste what is visible",
+      "value": "Περιγράψτε την εικόνα ή επικολλήστε ό,τι είναι ορατό"
+    },
+    {
+      "key": "topic.image-analysis-coach.category",
+      "source": "AI Help",
+      "value": "Βοήθεια AI"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.description",
+      "source": "Describe or paste details from an image and get help reading diagrams, charts, problems, handwritten notes, or visual evidence.",
+      "value": "Περιγράψτε ή επικολλήστε λεπτομέρειες από μια εικόνα και λάβετε βοήθεια στην ανάγνωση διαγραμμάτων, γραφημάτων, προβλημάτων, χειρόγραφων σημειώσεων ή οπτικών αποδεικτικών στοιχείων."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα βοήθειας AI και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.whyDifferent",
+      "source": "This mode is tuned for image analysis coach with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι προσαρμοσμένη για τον εκπαιδευτή ανάλυσης εικόνας, με δικά της μηνύματα προτροπής, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.0",
+      "source": "Reason through screenshots, diagrams, and homework images",
+      "value": "Αναλύστε στιγμιότυπα οθόνης, διαγράμματα και εικόνες εργασιών"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.image-analysis-coach.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.0",
+      "source": "Help read this diagram",
+      "value": "Βοήθεια στην ανάγνωση αυτού του διαγράμματος"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.1",
+      "source": "Analyze a chart from my textbook",
+      "value": "Ανάλυση γραφήματος από το σχολικό μου βιβλίο"
+    },
+    {
+      "key": "topic.image-analysis-coach.starter.2",
+      "source": "Explain what this screenshot is showing",
+      "value": "Εξήγηση του τι δείχνει αυτό το στιγμιότυπο οθόνης"
+    },
+    {
+      "key": "topic.cornell-notes.name",
+      "source": "Cornell Notes",
+      "value": "Σημειώσεις Cornell"
+    },
+    {
+      "key": "topic.cornell-notes.subText",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Δομήστε τις σημειώσεις σας σε ενδείξεις, λεπτομέρειες και σύνοψη"
+    },
+    {
+      "key": "topic.cornell-notes.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Μετατρέψτε διαλέξεις, αναγνώσματα ή πρόχειρες σημειώσεις στη μέθοδο Cornell με ερωτήσεις-κλειδιά, κύριες σημειώσεις, σύνοψη και προτροπές αναθεώρησης."
+    },
+    {
+      "key": "topic.cornell-notes.inputboxText",
+      "source": "Paste notes or name the lesson",
+      "value": "Επικολλήστε σημειώσεις ή ονομάστε το μάθημα"
+    },
+    {
+      "key": "topic.cornell-notes.category",
+      "source": "Organization",
+      "value": "Οργάνωση"
+    },
+    {
+      "key": "topic.cornell-notes.seo.description",
+      "source": "Convert lectures, readings, or rough notes into the Cornell method with cue questions, core notes, summary, and review prompts.",
+      "value": "Μετατρέψτε διαλέξεις, αναγνώσματα ή πρόχειρες σημειώσεις στη μέθοδο Cornell με ερωτήσεις-κλειδιά, κύριες σημειώσεις, σύνοψη και προτροπές αναθεώρησης."
+    },
+    {
+      "key": "topic.cornell-notes.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα οργάνωσης και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.cornell-notes.seo.whyDifferent",
+      "source": "This mode is tuned for cornell notes with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι προσαρμοσμένη για σημειώσεις Cornell με τις δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.0",
+      "source": "Structure notes into cues, details, and summary",
+      "value": "Δομήστε τις σημειώσεις σε ενδείξεις, λεπτομέρειες και σύνοψη"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.cornell-notes.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.cornell-notes.starter.0",
+      "source": "Turn this lecture into Cornell notes",
+      "value": "Μετατρέψτε αυτή τη διάλεξη σε σημειώσεις Cornell"
+    },
+    {
+      "key": "topic.cornell-notes.starter.1",
+      "source": "Make cue questions for chapter 3",
+      "value": "Δημιουργήστε ερωτήσεις-κλειδιά για το κεφάλαιο 3"
+    },
+    {
+      "key": "topic.cornell-notes.starter.2",
+      "source": "Summarize my rough notes",
+      "value": "Συνοψίστε τις πρόχειρες σημειώσεις μου"
+    },
+    {
+      "key": "topic.citation-generator.name",
+      "source": "Citation Generator",
+      "value": "Γεννήτρια Παραπομπών"
+    },
+    {
+      "key": "topic.citation-generator.subText",
+      "source": "Build references in common formats",
+      "value": "Δημιουργήστε αναφορές σε κοινές μορφές"
+    },
+    {
+      "key": "topic.citation-generator.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Δημιουργήστε καταχωρήσεις βιβλιογραφίας σε μορφή APA, MLA, Chicago, Harvard ή απλή μορφή από τα στοιχεία της πηγής, ελέγχοντας παράλληλα για πεδία που λείπουν."
+    },
+    {
+      "key": "topic.citation-generator.inputboxText",
+      "source": "Paste the source details or URL information",
+      "value": "Επικολλήστε τα στοιχεία της πηγής ή τις πληροφορίες URL"
+    },
+    {
+      "key": "topic.citation-generator.category",
+      "source": "AI Help",
+      "value": "Βοήθεια AI"
+    },
+    {
+      "key": "topic.citation-generator.seo.description",
+      "source": "Create APA, MLA, Chicago, Harvard, or simple bibliography entries from source details while checking for missing fields.",
+      "value": "Δημιουργήστε καταχωρήσεις βιβλιογραφίας σε μορφή APA, MLA, Chicago, Harvard ή απλή μορφή από τα στοιχεία της πηγής, ελέγχοντας παράλληλα για πεδία που λείπουν."
+    },
+    {
+      "key": "topic.citation-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα βοήθειας AI και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.citation-generator.seo.whyDifferent",
+      "source": "This mode is tuned for citation generator with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι προσαρμοσμένη για τη γεννήτρια παραπομπών με τις δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.0",
+      "source": "Build references in common formats",
+      "value": "Δημιουργήστε αναφορές σε κοινές μορφές"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.citation-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.citation-generator.starter.0",
+      "source": "Make an APA citation",
+      "value": "Δημιουργήστε μια παραπομπή APA"
+    },
+    {
+      "key": "topic.citation-generator.starter.1",
+      "source": "Format this website in MLA",
+      "value": "Μορφοποίησε αυτόν τον ιστότοπο σε MLA"
+    },
+    {
+      "key": "topic.citation-generator.starter.2",
+      "source": "Check what fields my citation is missing",
+      "value": "Έλεγξε ποια πεδία λείπουν από την παραπομπή μου"
+    },
+    {
+      "key": "topic.text-summarizer.name",
+      "source": "Text Summarizer",
+      "value": "Εργαλείο Περίληψης Κειμένου"
+    },
+    {
+      "key": "topic.text-summarizer.subText",
+      "source": "Condense readings into useful study notes",
+      "value": "Συμπύκνωσε αναγνώσματα σε χρήσιμες σημειώσεις μελέτης"
+    },
+    {
+      "key": "topic.text-summarizer.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Σύνοψισε μεγάλα κείμενα σε βασικές ιδέες, δομή, ορισμούς, παραδείγματα και ερωτήσεις ανάκλησης."
+    },
+    {
+      "key": "topic.text-summarizer.inputboxText",
+      "source": "Paste the text to summarize",
+      "value": "Επικόλλησε το κείμενο για σύνοψη"
+    },
+    {
+      "key": "topic.text-summarizer.category",
+      "source": "AI Help",
+      "value": "Βοήθεια AI"
+    },
+    {
+      "key": "topic.text-summarizer.seo.description",
+      "source": "Summarize long text into key ideas, structure, definitions, examples, and recall questions.",
+      "value": "Σύνοψισε μεγάλα κείμενα σε βασικές ιδέες, δομή, ορισμούς, παραδείγματα και ερωτήσεις ανάκλησης."
+    },
+    {
+      "key": "topic.text-summarizer.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Μαθητές που εξερευνούν θέματα βοήθειας AI και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.text-summarizer.seo.whyDifferent",
+      "source": "This mode is tuned for text summarizer with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για περίληψη κειμένου με τα δικά της prompts, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.0",
+      "source": "Condense readings into useful study notes",
+      "value": "Συμπύκνωσε αναγνώσματα σε χρήσιμες σημειώσεις μελέτης"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκίνα με παραδείγματα prompts"
+    },
+    {
+      "key": "topic.text-summarizer.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσάρμοσε τη συνεδρία στον στόχο σου"
+    },
+    {
+      "key": "topic.text-summarizer.starter.0",
+      "source": "Summarize this article",
+      "value": "Σύνοψισε αυτό το άρθρο"
+    },
+    {
+      "key": "topic.text-summarizer.starter.1",
+      "source": "Extract key points from my notes",
+      "value": "Εξήγαγε τα βασικά σημεία από τις σημειώσεις μου"
+    },
+    {
+      "key": "topic.text-summarizer.starter.2",
+      "source": "Make a chapter summary",
+      "value": "Φτιάξε μια περίληψη κεφαλαίου"
+    },
+    {
+      "key": "topic.study-guide-generator.name",
+      "source": "Study Guide Generator",
+      "value": "Γεννήτρια Οδηγών Μελέτης"
+    },
+    {
+      "key": "topic.study-guide-generator.subText",
+      "source": "Turn material into a revision guide",
+      "value": "Μετάτρεψε το υλικό σε οδηγό αναθεώρησης"
+    },
+    {
+      "key": "topic.study-guide-generator.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Δημιούργησε έναν οδηγό μελέτης με στόχους, περιλήψεις εννοιών, παραδείγματα, κοινά λάθη, ερωτήσεις εξάσκησης και ένα πλάνο αναθεώρησης."
+    },
+    {
+      "key": "topic.study-guide-generator.inputboxText",
+      "source": "What material should become a study guide?",
+      "value": "Ποιο υλικό θα έπρεπε να γίνει οδηγός μελέτης;"
+    },
+    {
+      "key": "topic.study-guide-generator.category",
+      "source": "AI Help",
+      "value": "Βοήθεια AI"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.description",
+      "source": "Build a study guide with objectives, concept summaries, examples, common mistakes, practice questions, and a review plan.",
+      "value": "Δημιούργησε έναν οδηγό μελέτης με στόχους, περιλήψεις εννοιών, παραδείγματα, κοινά λάθη, ερωτήσεις εξάσκησης και ένα πλάνο αναθεώρησης."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.who",
+      "source": "Learners exploring ai help topics who want practical guidance instead of a generic answer box.",
+      "value": "Μαθητές που εξερευνούν θέματα βοήθειας AI και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.whyDifferent",
+      "source": "This mode is tuned for study guide generator with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για τη γεννήτρια οδηγών μελέτης με τα δικά της prompts, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.0",
+      "source": "Turn material into a revision guide",
+      "value": "Μετατρέψτε το υλικό σε οδηγό αναθεώρησης"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.study-guide-generator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.0",
+      "source": "Make a guide for photosynthesis",
+      "value": "Φτιάξε έναν οδηγό για τη φωτοσύνθεση"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.1",
+      "source": "Turn my notes into a revision sheet",
+      "value": "Μετάτρεψε τις σημειώσεις μου σε φύλλο αναθεώρησης"
+    },
+    {
+      "key": "topic.study-guide-generator.starter.2",
+      "source": "Build a finals study guide",
+      "value": "Δημιούργησε έναν οδηγό μελέτης για τις τελικές εξετάσεις"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.name",
+      "source": "Grade & GPA Calculator",
+      "value": "Υπολογιστής Βαθμών & GPA"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.subText",
+      "source": "Predict grades and plan score targets",
+      "value": "Προβλέψτε βαθμούς και σχεδιάστε στόχους βαθμολογίας"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Υπολογίστε σταθμισμένους βαθμούς, σενάρια GPA, απαιτούμενες τελικές βαθμολογίες και υποθετικά σενάρια εξαμήνου."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.inputboxText",
+      "source": "Share your grade weights and scores",
+      "value": "Μοιραστείτε τους συντελεστές βαρύτητας και τους βαθμούς σας"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.category",
+      "source": "Organization",
+      "value": "Οργάνωση"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.description",
+      "source": "Work out weighted grades, GPA scenarios, needed final scores, and semester what-if plans.",
+      "value": "Υπολογίστε σταθμισμένους βαθμούς, σενάρια GPA, απαιτούμενες τελικές βαθμολογίες και υποθετικά σενάρια εξαμήνου."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.who",
+      "source": "Learners exploring organization topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα οργάνωσης και θέλουν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.whyDifferent",
+      "source": "This mode is tuned for grade & gpa calculator with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι ρυθμισμένη για τον υπολογιστή βαθμών & GPA με τις δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.0",
+      "source": "Predict grades and plan score targets",
+      "value": "Προβλέψτε βαθμούς και σχεδιάστε στόχους βαθμολογίας"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με παραδείγματα προτροπών"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.0",
+      "source": "What final score do I need?",
+      "value": "Τι τελικό βαθμό χρειάζομαι;"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.1",
+      "source": "Calculate my weighted grade",
+      "value": "Υπολόγισε τον σταθμισμένο βαθμό μου"
+    },
+    {
+      "key": "topic.grade-gpa-calculator.starter.2",
+      "source": "Plan my GPA target",
+      "value": "Σχεδίασε τον στόχο του GPA μου"
+    },
+    {
+      "key": "topic.mind-map-creator.name",
+      "source": "Mind Map Creator",
+      "value": "Δημιουργός Νοητικών Χαρτών"
+    },
+    {
+      "key": "topic.mind-map-creator.subText",
+      "source": "Branch a topic into connected ideas",
+      "value": "Αναλύστε ένα θέμα σε συνδεδεμένες ιδέες"
+    },
+    {
+      "key": "topic.mind-map-creator.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Δημιουργήστε έναν νοητικό χάρτη για καταιγισμό ιδεών, αναθεώρηση, σχεδιασμό ή σύνδεση εννοιών πριν από τη συγγραφή ή τη μελέτη."
+    },
+    {
+      "key": "topic.mind-map-creator.inputboxText",
+      "source": "What topic should become a mind map?",
+      "value": "Ποιο θέμα πρέπει να γίνει νοητικός χάρτης;"
+    },
+    {
+      "key": "topic.mind-map-creator.category",
+      "source": "Visual Learning",
+      "value": "Οπτική μάθηση"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.description",
+      "source": "Create a mind map for brainstorming, revision, planning, or connecting concepts before writing or studying.",
+      "value": "Δημιουργήστε έναν εννοιολογικό χάρτη για καταιγισμό ιδεών, επανάληψη, σχεδιασμό ή σύνδεση εννοιών πριν από τη συγγραφή ή τη μελέτη."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.who",
+      "source": "Learners exploring visual learning topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα οπτικής μάθησης και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.whyDifferent",
+      "source": "This mode is tuned for mind map creator with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι προσαρμοσμένη για τον δημιουργό εννοιολογικών χαρτών με δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.0",
+      "source": "Branch a topic into connected ideas",
+      "value": "Αναλύστε ένα θέμα σε συνδεδεμένες ιδέες"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με ενδεικτικές προτροπές"
+    },
+    {
+      "key": "topic.mind-map-creator.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.0",
+      "source": "Mind map machine learning",
+      "value": "Εννοιολογικός χάρτης για τη μηχανική μάθηση"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.1",
+      "source": "Map a history essay",
+      "value": "Χαρτογράφηση μιας έκθεσης ιστορίας"
+    },
+    {
+      "key": "topic.mind-map-creator.starter.2",
+      "source": "Brainstorm a science project",
+      "value": "Καταιγισμός ιδεών για ένα επιστημονικό έργο"
+    },
+    {
+      "key": "topic.daily-study-goals.name",
+      "source": "Daily Study Goals",
+      "value": "Καθημερινοί στόχοι μελέτης"
+    },
+    {
+      "key": "topic.daily-study-goals.subText",
+      "source": "Set and track today's learning targets",
+      "value": "Ορίστε και παρακολουθήστε τους σημερινούς μαθησιακούς στόχους"
+    },
+    {
+      "key": "topic.daily-study-goals.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Σχεδιάστε ένα ρεαλιστικό σύνολο καθημερινών στόχων μελέτης με εκτιμήσεις προσπάθειας, προτεραιότητα, ελέγχους δυσκολίας και μια τελετουργία γρήγορης ανασκόπησης."
+    },
+    {
+      "key": "topic.daily-study-goals.inputboxText",
+      "source": "What do you want to get done today?",
+      "value": "Τι θέλετε να ολοκληρώσετε σήμερα;"
+    },
+    {
+      "key": "topic.daily-study-goals.category",
+      "source": "Gamification",
+      "value": "Παιχνιδοποίηση"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.description",
+      "source": "Plan a realistic set of daily study goals with effort estimates, priority, friction checks, and a quick review ritual.",
+      "value": "Σχεδιάστε ένα ρεαλιστικό σύνολο καθημερινών στόχων μελέτης με εκτιμήσεις προσπάθειας, προτεραιότητα, ελέγχους δυσκολίας και μια τελετουργία γρήγορης ανασκόπησης."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.who",
+      "source": "Learners exploring gamification topics who want practical guidance instead of a generic answer box.",
+      "value": "Εκπαιδευόμενοι που εξερευνούν θέματα παιχνιδοποίησης και αναζητούν πρακτική καθοδήγηση αντί για ένα γενικό πλαίσιο απαντήσεων."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.whyDifferent",
+      "source": "This mode is tuned for daily study goals with its own prompts, examples, and learning flow.",
+      "value": "Αυτή η λειτουργία είναι προσαρμοσμένη για τους καθημερινούς στόχους μελέτης με δικές της προτροπές, παραδείγματα και ροή μάθησης."
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.0",
+      "source": "Set and track today's learning targets",
+      "value": "Ορίστε και παρακολουθήστε τους σημερινούς μαθησιακούς στόχους"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.1",
+      "source": "Start with example prompts",
+      "value": "Ξεκινήστε με ενδεικτικές προτροπές"
+    },
+    {
+      "key": "topic.daily-study-goals.seo.outcome.2",
+      "source": "Adapt the session to your goal",
+      "value": "Προσαρμόστε τη συνεδρία στον στόχο σας"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.0",
+      "source": "Set three goals for today",
+      "value": "Ορίστε τρεις στόχους για σήμερα"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.1",
+      "source": "Make my goals realistic",
+      "value": "Κάντε τους στόχους μου ρεαλιστικούς"
+    },
+    {
+      "key": "topic.daily-study-goals.starter.2",
+      "source": "Review my study goals",
+      "value": "Ανασκόπηση των στόχων μελέτης μου"
+    },
+    {
+      "key": "topic.task-timer.name",
+      "source": "Task Timer",
+      "value": "Χρονόμετρο εργασιών"
+    },
+    {
+      "key": "topic.task-timer.subText",
+      "source": "Time individual tasks and see effort",
+      "value": "Χρονομετρήστε μεμονωμένες εργασίες και δείτε την προσπάθεια"
+    },
+    {
+      "key": "topic.task-timer.description",
+      "source": "Break work into named tasks, time each one, and review where study effort went after each focused session.",
+      "value": "Χωρίστε την εργασία σας σε ονομασμένες εργασίες, χρονομετρήστε την καθεμία και δείτε πού κατευθύνθηκε η προσπάθεια μελέτης σας μετά από κάθε συνεδρία εστίασης."
+    },
+    {
+      "key": "topic.task-timer.inputboxText",
+      "source": "What task should we time?",
+      "value": "Ποια εργασία να χρονομετρήσουμε;"
+    },
+    {
+      "key": "topic.task-timer.category",
+      "source": "Focus & Productivity",
+      "value": "Εστίαση & Παραγωγικότητα"
+    }
+  ]
+}
