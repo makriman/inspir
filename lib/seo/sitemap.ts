@@ -23,7 +23,7 @@ function isoDurationToSeconds(value: string) {
 }
 
 function withLanguageAlternates(routes: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
-  return routes.flatMap((entry) => {
+  return routes.map((entry) => {
     const url = new URL(entry.url);
     const path = url.pathname === "/" ? "/" : `${url.pathname}${url.search}`;
     const languages = Object.fromEntries(
@@ -33,16 +33,15 @@ function withLanguageAlternates(routes: MetadataRoute.Sitemap): MetadataRoute.Si
       ]),
     );
 
-    return supportedLanguages.map((language) => ({
+    return {
       ...entry,
-      url: absoluteUrl(localizePath(path, language)),
       alternates: {
         languages: {
           ...languages,
           "x-default": entry.url,
         },
       },
-    }));
+    };
   });
 }
 
