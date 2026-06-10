@@ -27,6 +27,7 @@
     "memory:synthesize": "tsx scripts/synthesize-memory.ts",
     "translations:status": "tsx scripts/status-curated-translations.ts",
     "translations:export": "tsx scripts/export-curated-translations.ts",
+    "translations:bundle": "tsx scripts/bundle-curated-translations.ts",
     "translations:export-cache": "tsx scripts/export-cached-translations.ts",
     "translations:import": "tsx scripts/import-curated-translations.ts",
     "import:bubble": "tsx scripts/import-bubble.ts --mode=best-effort",

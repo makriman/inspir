@@ -1,8 +1,8 @@
 # Localization Workflow
 
 The app does not translate text at user request time. Production reads completed static bundles from
-`translations/curated/<locale>/<namespace>.json`; missing bundles are a data-prep problem, not a
-runtime model call.
+`translations/curated-bundles/<locale>.json`; missing bundles are a data-prep problem, not a runtime
+model call.
 
 ## Manual Curated Packs
 
@@ -19,7 +19,12 @@ pnpm translations:export -- --languages=Icelandic --namespace=main-app --dir=tra
 ```
 
 Chunk files are named like `main-app.part-001-of-010.json`. The runtime merges all complete files
-for the same language and namespace into one bundle.
+for the same language and namespace into one bundle. Before deploy, compact the chunk files into the
+production bundle format:
+
+```bash
+pnpm translations:bundle -- --dir=translations/curated --out-dir=translations/curated-bundles --clean
+```
 
 Fill every `entries[].value` in the exported JSON file. Preserve:
 
@@ -32,6 +37,12 @@ Validate a completed pack:
 
 ```bash
 pnpm translations:import -- --languages=Hindi --namespace=route:home --dir=translations/curated --dry-run
+```
+
+Validate the compact production bundles:
+
+```bash
+pnpm translations:import -- --all-languages --all-namespaces --dir=translations/curated-bundles --dry-run
 ```
 
 Validate an incomplete chunk set while work is still in progress:

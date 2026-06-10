@@ -22,8 +22,25 @@ type CuratedTranslationPack = {
   }>;
 };
 
+type CuratedLanguageBundle = {
+  schemaVersion?: number;
+  kind?: string;
+  language?: string;
+  locale?: string;
+  namespaces?: Record<
+    string,
+    {
+      sourceHash?: string;
+      translations?: Record<string, string>;
+      entries?: CuratedTranslationPack["entries"];
+    }
+  >;
+};
+
 const curatedRoot = "translations/curated";
+const curatedBundleRoot = "translations/curated-bundles";
 const bundleCache = new Map<string, TranslationBundle | null>();
+const languagePackCache = new Map<SupportedLanguage, CuratedLanguageBundle | null>();
 
 export function getCuratedTranslationBundle(source: TranslationSource, language: string) {
   const normalized = normalizeLanguage(language);
@@ -32,16 +49,15 @@ export function getCuratedTranslationBundle(source: TranslationSource, language:
   const cacheKey = `${source.namespace}\u0000${normalized}\u0000${source.sourceHash}`;
   if (bundleCache.has(cacheKey)) return bundleCache.get(cacheKey) ?? null;
 
-  const packFiles = curatedPackFiles(normalized, source.namespace);
-  if (!packFiles.length) {
+  const packs = curatedPacksForNamespace(normalized, source.namespace);
+  if (!packs.length) {
     const fallbackBundle = getMarketingSiteFallbackBundle(source, normalized);
     bundleCache.set(cacheKey, fallbackBundle);
     return fallbackBundle;
   }
 
   const strings: Record<string, string> = {};
-  for (const file of packFiles) {
-    const pack = JSON.parse(readFileSync(file, "utf8")) as CuratedTranslationPack;
+  for (const pack of packs) {
     if (pack.namespace !== source.namespace || pack.language !== normalized || pack.sourceHash !== source.sourceHash) {
       bundleCache.set(cacheKey, null);
       return null;
@@ -102,6 +118,51 @@ function curatedPackFiles(language: SupportedLanguage, namespace: string) {
     .map((file) => join(languageDir, file));
 }
 
+function curatedPacksForNamespace(language: SupportedLanguage, namespace: string) {
+  const bundledPack = curatedBundledPack(language, namespace);
+  if (bundledPack) return [bundledPack];
+
+  return curatedPackFiles(language, namespace).map(
+    (file) => JSON.parse(readFileSync(file, "utf8")) as CuratedTranslationPack,
+  );
+}
+
+function curatedBundledPack(language: SupportedLanguage, namespace: string): CuratedTranslationPack | null {
+  const bundle = curatedLanguageBundle(language);
+  const namespacePack = bundle?.namespaces?.[namespace];
+  if (!bundle || !namespacePack) return null;
+
+  return {
+    schemaVersion: bundle.schemaVersion,
+    language: bundle.language,
+    locale: bundle.locale,
+    namespace,
+    sourceHash: namespacePack.sourceHash,
+    translations: namespacePack.translations,
+    entries: namespacePack.entries,
+  };
+}
+
+function curatedLanguageBundle(language: SupportedLanguage) {
+  if (languagePackCache.has(language)) return languagePackCache.get(language) ?? null;
+
+  const locale = languageConfigs[language].prefix || languageConfigs[language].locale;
+  const filePath = join(resolve(process.cwd(), curatedBundleRoot), `${locale}.json`);
+  if (!existsSync(filePath)) {
+    languagePackCache.set(language, null);
+    return null;
+  }
+
+  const bundle = JSON.parse(readFileSync(filePath, "utf8")) as CuratedLanguageBundle;
+  if (bundle.kind !== "curated-language-bundle" || bundle.language !== language) {
+    languagePackCache.set(language, null);
+    return null;
+  }
+
+  languagePackCache.set(language, bundle);
+  return bundle;
+}
+
 function fileSafeNamespace(namespace: string) {
   return namespace.replace(/[^a-z0-9.-]+/gi, "__");
 }
@@ -129,8 +190,7 @@ function getMarketingSiteFallbackBundle(
 
 function marketingSiteEntriesBySource(language: SupportedLanguage) {
   const entries = new Map<string, string>();
-  for (const file of curatedPackFiles(language, "marketing-site")) {
-    const pack = JSON.parse(readFileSync(file, "utf8")) as CuratedTranslationPack;
+  for (const pack of curatedPacksForNamespace(language, "marketing-site")) {
     if (pack.namespace !== "marketing-site" || pack.language !== language) continue;
 
     for (const entry of pack.entries ?? []) {

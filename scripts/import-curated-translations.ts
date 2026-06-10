@@ -25,6 +25,22 @@ type CuratedTranslationPack = {
   translations?: Record<string, string>;
 };
 
+type CuratedLanguageBundle = {
+  schemaVersion?: number;
+  kind?: string;
+  language?: string;
+  locale?: string;
+  namespaces?: Record<
+    string,
+    {
+      sourceHash?: string;
+      entries?: CuratedTranslationEntry[];
+      translations?: Record<string, string>;
+      model?: string;
+    }
+  >;
+};
+
 type LoadedCuratedTranslationPack = {
   filePath: string;
   pack: CuratedTranslationPack;
@@ -103,8 +119,11 @@ async function main() {
   if (hasFailure) process.exitCode = 1;
 }
 
-function loadPack(filePath: string, args: Args): LoadedCuratedTranslationPack | null {
-  const pack = JSON.parse(readFileSync(filePath, "utf8")) as CuratedTranslationPack;
+function loadPack(filePath: string, args: Args): LoadedCuratedTranslationPack[] | null {
+  const parsed = JSON.parse(readFileSync(filePath, "utf8")) as CuratedTranslationPack | CuratedLanguageBundle;
+  if (isCuratedLanguageBundle(parsed)) return loadLanguageBundle(filePath, parsed, args);
+
+  const pack = parsed as CuratedTranslationPack;
   const language = normalizeLanguage(pack.language);
   const namespace = pack.namespace?.trim();
 
@@ -113,7 +132,45 @@ function loadPack(filePath: string, args: Args): LoadedCuratedTranslationPack | 
   if (args.namespaces && !args.namespaces.has(namespace)) return null;
   if (args.files && !args.files.has(filePath)) return null;
 
-  return { filePath, pack, language, namespace };
+  return [{ filePath, pack, language, namespace }];
+}
+
+function loadLanguageBundle(
+  filePath: string,
+  bundle: CuratedLanguageBundle,
+  args: Args,
+): LoadedCuratedTranslationPack[] | null {
+  const language = normalizeLanguage(bundle.language ?? "");
+  if (language === defaultLanguage) return null;
+  if (args.languages && !args.languages.has(language)) return null;
+  if (args.files && !args.files.has(filePath)) return null;
+
+  const loaded: LoadedCuratedTranslationPack[] = [];
+  for (const [namespace, namespacePack] of Object.entries(bundle.namespaces ?? {})) {
+    const normalizedNamespace = namespace.trim();
+    if (args.namespaces && !args.namespaces.has(normalizedNamespace)) continue;
+
+    loaded.push({
+      filePath,
+      language,
+      namespace: normalizedNamespace,
+      pack: {
+        schemaVersion: bundle.schemaVersion,
+        language,
+        namespace: normalizedNamespace,
+        sourceHash: namespacePack.sourceHash,
+        model: namespacePack.model,
+        entries: namespacePack.entries,
+        translations: namespacePack.translations,
+      },
+    });
+  }
+
+  return loaded;
+}
+
+function isCuratedLanguageBundle(value: CuratedTranslationPack | CuratedLanguageBundle): value is CuratedLanguageBundle {
+  return "namespaces" in value && value.kind === "curated-language-bundle";
 }
 
 function groupLoadedPacks(packs: LoadedCuratedTranslationPack[]) {
