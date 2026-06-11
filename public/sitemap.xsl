@@ -193,14 +193,31 @@
         <main>
           <header>
             <span class="eyebrow">XML sitemap</span>
-            <h1>inspir public index</h1>
-            <p>This is the crawlable sitemap for the public inspir learning site. Private chats, admin routes, and account surfaces are intentionally excluded.</p>
+            <h1>
+              <xsl:choose>
+                <xsl:when test="sitemap:sitemapindex">inspir language sitemap index</xsl:when>
+                <xsl:otherwise>inspir public index</xsl:otherwise>
+              </xsl:choose>
+            </h1>
+            <p>
+              <xsl:choose>
+                <xsl:when test="sitemap:sitemapindex">This is the crawlable sitemap index for every supported inspir language. Each linked sitemap contains localized public SEO URLs with complete hreflang alternates.</xsl:when>
+                <xsl:otherwise>This is the crawlable sitemap for the public inspir learning site. Private chats, admin routes, and account surfaces are intentionally excluded.</xsl:otherwise>
+              </xsl:choose>
+            </p>
           </header>
 
           <section class="stats" aria-label="Sitemap summary">
             <div class="stat">
-              <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url)" /></strong>
-              <span>public URLs</span>
+              <strong>
+                <xsl:value-of select="count(sitemap:urlset/sitemap:url) + count(sitemap:sitemapindex/sitemap:sitemap)" />
+              </strong>
+              <span>
+                <xsl:choose>
+                  <xsl:when test="sitemap:sitemapindex">language sitemaps</xsl:when>
+                  <xsl:otherwise>public URLs</xsl:otherwise>
+                </xsl:choose>
+              </span>
             </div>
             <div class="stat">
               <strong><xsl:value-of select="count(sitemap:urlset/sitemap:url[image:image])" /></strong>
@@ -215,25 +232,48 @@
           <table>
             <thead>
               <tr>
-                <th>URL</th>
+                <th>
+                  <xsl:choose>
+                    <xsl:when test="sitemap:sitemapindex">Sitemap</xsl:when>
+                    <xsl:otherwise>URL</xsl:otherwise>
+                  </xsl:choose>
+                </th>
                 <th>Last modified</th>
                 <th>Change</th>
                 <th>Priority</th>
               </tr>
             </thead>
             <tbody>
-              <xsl:for-each select="sitemap:urlset/sitemap:url">
-                <tr>
-                  <td>
-                    <a href="{sitemap:loc}">
-                      <xsl:value-of select="sitemap:loc" />
-                    </a>
-                  </td>
-                  <td class="meta"><xsl:value-of select="sitemap:lastmod" /></td>
-                  <td class="meta"><xsl:value-of select="sitemap:changefreq" /></td>
-                  <td class="meta"><xsl:value-of select="sitemap:priority" /></td>
-                </tr>
-              </xsl:for-each>
+              <xsl:choose>
+                <xsl:when test="sitemap:sitemapindex">
+                  <xsl:for-each select="sitemap:sitemapindex/sitemap:sitemap">
+                    <tr>
+                      <td>
+                        <a href="{sitemap:loc}">
+                          <xsl:value-of select="sitemap:loc" />
+                        </a>
+                      </td>
+                      <td class="meta"><xsl:value-of select="sitemap:lastmod" /></td>
+                      <td class="meta">language file</td>
+                      <td class="meta">localized</td>
+                    </tr>
+                  </xsl:for-each>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:for-each select="sitemap:urlset/sitemap:url">
+                    <tr>
+                      <td>
+                        <a href="{sitemap:loc}">
+                          <xsl:value-of select="sitemap:loc" />
+                        </a>
+                      </td>
+                      <td class="meta"><xsl:value-of select="sitemap:lastmod" /></td>
+                      <td class="meta"><xsl:value-of select="sitemap:changefreq" /></td>
+                      <td class="meta"><xsl:value-of select="sitemap:priority" /></td>
+                    </tr>
+                  </xsl:for-each>
+                </xsl:otherwise>
+              </xsl:choose>
             </tbody>
           </table>
         </main>

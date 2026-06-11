@@ -6,13 +6,23 @@ import { homepageFilm, homepageLearningPaths, learningPathHref } from "@/lib/con
 import { getSubjectPages, subjectPath } from "@/lib/content/subjects";
 import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
-import { languageConfigs, supportedLanguages } from "@/lib/content/languages";
+import {
+  defaultLanguage,
+  languageConfigs,
+  normalizeLanguage,
+  supportedLanguages,
+  type SupportedLanguage,
+} from "@/lib/content/languages";
 import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, socialImage } from "@/lib/seo/config";
 
 const staticLastModified = new Date("2026-05-29T00:00:00.000Z");
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
+type SitemapIndexEntry = {
+  loc: string;
+  lastModified?: string | Date;
+};
 type SitemapVideo = NonNullable<SitemapEntry["videos"]>[number];
 
 function isoDurationToSeconds(value: string) {
@@ -22,24 +32,38 @@ function isoDurationToSeconds(value: string) {
   return Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
 }
 
-function withLanguageAlternates(routes: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+function canonicalPathForEntry(entry: SitemapEntry) {
+  const url = new URL(entry.url);
+  return url.pathname === "/" ? "/" : `${url.pathname}${url.search}`;
+}
+
+function languageAlternatesForEntry(entry: SitemapEntry) {
+  const path = canonicalPathForEntry(entry);
+  const languages = Object.fromEntries(
+    supportedLanguages.map((language) => [
+      languageConfigs[language].locale,
+      absoluteUrl(localizePath(path, language)),
+    ]),
+  );
+
+  return {
+    ...languages,
+    "x-default": entry.url,
+  };
+}
+
+function withLanguageAlternates(
+  routes: MetadataRoute.Sitemap,
+  language: SupportedLanguage = defaultLanguage,
+): MetadataRoute.Sitemap {
   return routes.map((entry) => {
-    const url = new URL(entry.url);
-    const path = url.pathname === "/" ? "/" : `${url.pathname}${url.search}`;
-    const languages = Object.fromEntries(
-      supportedLanguages.map((language) => [
-        languageConfigs[language].locale,
-        absoluteUrl(localizePath(path, language)),
-      ]),
-    );
+    const path = canonicalPathForEntry(entry);
 
     return {
       ...entry,
+      url: absoluteUrl(localizePath(path, language)),
       alternates: {
-        languages: {
-          ...languages,
-          "x-default": entry.url,
-        },
+        languages: languageAlternatesForEntry(entry),
       },
     };
   });
@@ -106,7 +130,49 @@ function renderEntry(entry: SitemapEntry) {
   return ["  <url>", ...fields, "  </url>"].join("\n");
 }
 
-export default function sitemapEntries(): MetadataRoute.Sitemap {
+function renderSitemapIndexEntry(entry: SitemapIndexEntry) {
+  const fields = [renderTag("loc", entry.loc), renderTag("lastmod", entry.lastModified)].filter(Boolean);
+  return ["  <sitemap>", ...fields, "  </sitemap>"].join("\n");
+}
+
+export function sitemapFileSlugForLanguage(language: SupportedLanguage | string) {
+  const config = languageConfigs[normalizeLanguage(language)];
+  return config.prefix || config.locale;
+}
+
+export function sitemapFilePathForLanguage(language: SupportedLanguage | string) {
+  return `/sitemap/${sitemapFileSlugForLanguage(language)}.xml`;
+}
+
+export function sitemapLanguages() {
+  return supportedLanguages;
+}
+
+export function languageFromSitemapFileSlug(value: string): SupportedLanguage | null {
+  const slug = value.trim().replace(/\.xml$/i, "").toLowerCase();
+  if (!slug) return null;
+
+  return (
+    supportedLanguages.find((language) => {
+      const config = languageConfigs[language];
+      return (
+        slug === language.toLowerCase() ||
+        slug === config.locale.toLowerCase() ||
+        slug === config.locale.toLowerCase().split("-")[0] ||
+        (Boolean(config.prefix) && slug === config.prefix.toLowerCase())
+      );
+    }) ?? null
+  );
+}
+
+export function sitemapIndexEntries(): SitemapIndexEntry[] {
+  return supportedLanguages.map((language) => ({
+    loc: absoluteUrl(sitemapFilePathForLanguage(language)),
+    lastModified: staticLastModified,
+  }));
+}
+
+export default function sitemapEntries(language: SupportedLanguage | string = defaultLanguage): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: absoluteUrl("/"),
@@ -271,16 +337,23 @@ export default function sitemapEntries(): MetadataRoute.Sitemap {
     ],
   }));
 
-  return withLanguageAlternates([
-    ...staticRoutes,
-    ...learningPathRoutes,
-    ...comparisonRoutes,
-    ...audienceRoutes,
-    ...subjectRoutes,
-    ...topicRoutes,
-    ...blogRoutes,
-    ...blogCategoryRoutes,
-  ]);
+  return withLanguageAlternates(
+    [
+      ...staticRoutes,
+      ...learningPathRoutes,
+      ...comparisonRoutes,
+      ...audienceRoutes,
+      ...subjectRoutes,
+      ...topicRoutes,
+      ...blogRoutes,
+      ...blogCategoryRoutes,
+    ],
+    normalizeLanguage(language),
+  );
+}
+
+export function sitemapEntriesForLanguage(language: SupportedLanguage | string) {
+  return sitemapEntries(language);
 }
 
 export function buildSitemapXml(entries = sitemapEntries()) {
@@ -290,6 +363,21 @@ export function buildSitemapXml(entries = sitemapEntries()) {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ...entries.map(renderEntry),
     "</urlset>",
+    "",
+  ].join("\n");
+}
+
+export function buildLanguageSitemapXml(language: SupportedLanguage | string) {
+  return buildSitemapXml(sitemapEntriesForLanguage(language));
+}
+
+export function buildSitemapIndexXml(entries = sitemapIndexEntries()) {
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>',
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...entries.map(renderSitemapIndexEntry),
+    "</sitemapindex>",
     "",
   ].join("\n");
 }
