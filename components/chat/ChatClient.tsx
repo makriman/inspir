@@ -15,6 +15,7 @@ import {
   useState,
 } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import rehypeKatex from "rehype-katex";
@@ -74,16 +75,13 @@ import {
 } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
-import { InteractiveInstructionWorkspace } from "@/components/chat/InteractiveInstructionWorkspace";
 import {
   getDefaultSidebarTopicIds,
   type LearningStoreTopic,
 } from "@/components/chat/learning-store-utils";
 import { LearningStore } from "@/components/chat/LearningStore";
-import { FocusMusicWorkspace } from "@/components/chat/FocusMusicWorkspace";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
-import { SocraticWorkspace } from "@/components/chat/SocraticWorkspace";
 import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { defaultLanguage, languageDisplayName, supportedLanguages } from "@/lib/content/languages";
@@ -93,6 +91,16 @@ import { localizeHref } from "@/lib/i18n/routing";
 import { formatBubbleDate } from "@/lib/utils/dates";
 import { buildMiniAppInstruction, getVisibleMessageContent } from "@/lib/ai/visible-content";
 import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
+
+const InteractiveInstructionWorkspace = dynamic(() =>
+  import("@/components/chat/InteractiveInstructionWorkspace").then((mod) => mod.InteractiveInstructionWorkspace),
+);
+const FocusMusicWorkspace = dynamic(() =>
+  import("@/components/chat/FocusMusicWorkspace").then((mod) => mod.FocusMusicWorkspace),
+);
+const SocraticWorkspace = dynamic(() =>
+  import("@/components/chat/SocraticWorkspace").then((mod) => mod.SocraticWorkspace),
+);
 
 type TopicMetadata = {
   category: string;
@@ -337,7 +345,7 @@ function writeStoredGuestUsage(used: number) {
   try {
     window.localStorage.setItem("inspir_guest_messages_used", String(used));
   } catch {
-    // Guest limits are also enforced by signed cookies on the server.
+    // Guest limits are enforced server-side; local storage is only a UX hint.
   }
 }
 
@@ -587,6 +595,7 @@ type ChatClientProps = {
   initialMessages: Message[];
   initialActivityRun: ActivityRun | null;
   initialTranslationBundle: MainAppTranslationBundle;
+  guestMessageLimit?: number;
 };
 
 export function ChatClient(props: ChatClientProps) {
@@ -604,9 +613,9 @@ function useChatClientController({
   initialMessages,
   initialActivityRun,
   initialTranslationBundle,
+  guestMessageLimit = 10,
 }: ChatClientProps) {
   const isGuest = authMode === "guest";
-  const guestMessageLimit = 5;
   const [
     {
       activeTopicId,

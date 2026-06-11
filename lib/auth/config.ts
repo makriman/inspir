@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { eq } from "drizzle-orm";
+import { after } from "next/server";
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/lib/db/client";
 import { accounts, sessions, users, verificationTokens } from "@/lib/db/schema";
@@ -26,6 +27,9 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: googleClientId,
       clientSecret: googleClientSecret,
+      // Safe only while Google is the sole sign-in provider and email
+      // verification is enforced in the signIn callback below. Revisit before
+      // adding any provider with weaker or optional email verification.
       allowDangerousEmailAccountLinking: true,
       authorization: {
         params: {
@@ -86,7 +90,9 @@ export const authOptions: NextAuthOptions = {
           .where(eq(users.id, user.id));
       }
 
-      await refreshProfilePhoto(user.id, profileImage);
+      after(async () => {
+        await refreshProfilePhoto(user.id, profileImage);
+      });
     },
   },
 };

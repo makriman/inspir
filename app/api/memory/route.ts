@@ -15,6 +15,7 @@ import {
   serializeMemorySettings,
   updateUserMemorySettings,
 } from "@/lib/db/memory";
+import { consumeFixedWindowQuota, numberFromEnv, quotaDefaults, safeQuotaKeyPart } from "@/lib/utils/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -92,6 +93,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Memory is turned off." }, { status: 409 });
   }
 
+  const limit = await consumeFixedWindowQuota(
+    `memory:create:${safeQuotaKeyPart(session.user.id)}`,
+    numberFromEnv("RATE_LIMIT_MEMORY_DAILY", quotaDefaults.memoryDaily),
+    24 * 60 * 60 * 1000,
+  );
+  if (!limit.ok) return quotaResponse("Daily memory limit reached", limit.retryAfterSeconds);
+
   const dashboard = await createManualMemoryAndLoadDashboard({
     userId: session.user.id,
     ...parsed.data,
@@ -105,6 +113,15 @@ export async function PATCH(request: NextRequest) {
 
   const parsed = memorySettingsSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid memory settings" }, { status: 400 });
+
+  if (parsed.data.refreshSummary || parsed.data.correction) {
+    const limit = await consumeFixedWindowQuota(
+      `memory:update:${safeQuotaKeyPart(session.user.id)}`,
+      numberFromEnv("RATE_LIMIT_MEMORY_DAILY", quotaDefaults.memoryDaily),
+      24 * 60 * 60 * 1000,
+    );
+    if (!limit.ok) return quotaResponse("Daily memory limit reached", limit.retryAfterSeconds);
+  }
 
   await updateUserMemorySettings(session.user.id, {
     enabled: parsed.data.enabled,
@@ -142,6 +159,16 @@ export async function DELETE() {
   await clearUserMemories(session.user.id);
   const dashboard = await getMemoryDashboard(session.user.id);
   return NextResponse.json(serializeDashboard(dashboard));
+}
+
+function quotaResponse(error: string, retryAfterSeconds: number) {
+  return NextResponse.json(
+    { error },
+    {
+      status: 429,
+      headers: { "Retry-After": String(retryAfterSeconds) },
+    },
+  );
 }
 
 function serializeDashboard(dashboard: Awaited<ReturnType<typeof getMemoryDashboard>>) {

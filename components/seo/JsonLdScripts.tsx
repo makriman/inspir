@@ -1,5 +1,4 @@
 import { localizeMarketingStructuredData } from "@/lib/i18n/metadata";
-import { getRequestPathname } from "@/lib/i18n/request-locale";
 import { serializeJsonLd } from "@/lib/seo/json-ld";
 
 type JsonLdScriptsProps = {
@@ -20,7 +19,7 @@ function jsonLdKey(entry: unknown) {
 }
 
 export async function JsonLdScripts({ items, path }: JsonLdScriptsProps) {
-  const pathname = path ?? (await getRequestPathname());
+  const pathname = path ?? "/";
   const localizedItems = await localizeMarketingStructuredData(items, pathname);
 
   return localizedItems.map((entry) => (

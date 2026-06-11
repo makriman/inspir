@@ -12,7 +12,10 @@ export function getDatabaseTranslationBundle(source: TranslationSource, language
   const cached = dbBundleCache.get(cacheKey);
   if (cached) return cached;
 
-  const promise = readDatabaseTranslationBundle(source, normalized);
+  const promise = readDatabaseTranslationBundle(source, normalized).catch((error) => {
+    dbBundleCache.delete(cacheKey);
+    throw error;
+  });
   dbBundleCache.set(cacheKey, promise);
   return promise;
 }

@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates } from "@/lib/seo/config";
 
 const pageMetadata: Metadata = {
   title: "Loading",
   description: "A temporary loading state for inspir.",
-  alternates: metadataAlternates("/loading"),
   robots: { index: false, follow: false, nocache: true },
 };
 

@@ -63,6 +63,7 @@ export async function proxy(request: NextRequest) {
         path: "/",
         maxAge: 60 * 60 * 24 * 365,
         sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
       });
     }
     return response;
@@ -70,7 +71,7 @@ export async function proxy(request: NextRequest) {
 
   const token = await getToken({
     req: request,
-    secret: process.env.NEXTAUTH_SECRET ?? process.env.AUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET?.trim() || process.env.AUTH_SECRET?.trim() || undefined,
   });
 
   if (!token) {

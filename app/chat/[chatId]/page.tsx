@@ -17,12 +17,13 @@ import { topicSeeds } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { isUuidPathSegment, resolveTopicSlug, topicPath } from "@/lib/content/topic-routing";
 import {
-  getActiveTopics,
   getChatMessages,
   getDefaultTopic,
   getLatestActivityRun,
   getOwnedChat,
-  getUserById,
+  getPublicActiveTopics,
+  getUserProfileById,
+  toPublicTopic,
 } from "@/lib/db/queries";
 import { getCachedMainAppTranslationBundle } from "@/lib/i18n/main-app-translations";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
@@ -36,6 +37,7 @@ import { createTranslationLookup } from "@/lib/i18n/translation-lookup";
 import { calculateAge } from "@/lib/profile/age";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { faqPageJsonLd, itemListJsonLd, topicJsonLd } from "@/lib/seo/json-ld";
+import { numberFromEnv, quotaDefaults } from "@/lib/utils/rate-limit";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 
 export const runtime = "nodejs";
@@ -46,6 +48,8 @@ type ChatRoutePageProps = {
 };
 
 const publicTopicDbTimeoutMs = 1500;
+
+const guestMessageLimit = numberFromEnv("RATE_LIMIT_GUEST_SESSION_DAILY", quotaDefaults.guestSessionDaily);
 
 function findSeedTopic(slug: string) {
   return topicSeeds.find((topic) => topic.slug === slug);
@@ -83,9 +87,7 @@ function PublicTopicSeoCompanion({
 
   return (
     <section
-      className="public-topic-seo is-hidden-for-app"
-      aria-hidden="true"
-      inert
+      className="public-topic-seo"
       data-no-auto-translate="true"
       aria-labelledby={`${topic.slug}-seo-title`}
     >
@@ -230,10 +232,6 @@ async function withPublicTopicTimeout<T>(promise: Promise<T>) {
   ]);
 }
 
-export function generateStaticParams() {
-  return topicSeeds.map((topic) => ({ chatId: topic.slug }));
-}
-
 export async function generateMetadata({ params }: ChatRoutePageProps): Promise<Metadata> {
   const { chatId } = await params;
   const slug = resolveTopicSlug(chatId);
@@ -292,7 +290,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     if (!seedTopic) notFound();
 
     const session = await getServerSession(authOptions);
-    const seedFallbackTopics = seededTopics();
+    const seedFallbackTopics = seededTopics().map(toPublicTopic);
     let topics = seedFallbackTopics;
     let user = null;
     let savedChatsAvailable = false;
@@ -300,7 +298,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     if (session?.user?.id) {
       try {
         const [dbTopics, dbUser] = await withPublicTopicTimeout(
-          Promise.all([getActiveTopics(), getUserById(session.user.id)]),
+          Promise.all([getPublicActiveTopics(), getUserProfileById(session.user.id)]),
         );
         const dbTopic = dbTopics.find((candidate) => candidate.slug === topicSlug);
         if (dbTopics.length > 0 && dbTopic) {
@@ -383,6 +381,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           initialMessages={[]}
           initialActivityRun={null}
           initialTranslationBundle={translationBundle}
+          guestMessageLimit={guestMessageLimit}
         />
         <PublicTopicSeoCompanion topic={seedTopic} t={siteT} />
       </>
@@ -398,10 +397,10 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
   if (!owned) notFound();
 
   const [topics, defaultTopic, messages, user, activityRun] = await Promise.all([
-    getActiveTopics(),
+    getPublicActiveTopics(),
     getDefaultTopic(),
     getChatMessages(chatId),
-    getUserById(session.user.id),
+    getUserProfileById(session.user.id),
     getLatestActivityRun(chatId),
   ]);
   const requestLanguage = await getRequestLanguage();

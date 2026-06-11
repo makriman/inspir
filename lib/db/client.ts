@@ -13,7 +13,7 @@ const globalForDb = globalThis as unknown as {
 export const sql =
   globalForDb.inspirSql ??
   postgres(connectionString, {
-    max: 10,
+    max: Number(process.env.DATABASE_MAX_CONNECTIONS ?? 2),
     prepare: false,
     idle_timeout: 20,
     connect_timeout: 10,

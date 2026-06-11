@@ -8,7 +8,7 @@ import {
   getActivityRunById,
   getOwnedChat,
   insertMessage,
-  updateActivityRun,
+  updateActivityRunGuarded,
 } from "@/lib/db/queries";
 import {
   answerQuizQuestion,
@@ -51,13 +51,32 @@ export async function POST(
     });
   }
 
-  const updated = await updateActivityRun(run.id, {
-    status: result.state.completed ? "completed" : "active",
-    state: result.state,
-    score: result.state.score,
-    maxScore: result.state.maxScore,
-    completedAt: result.state.completed ? new Date() : null,
-  });
+  const updated = await updateActivityRunGuarded(
+    run.id,
+    {
+      status: result.state.completed ? "completed" : "active",
+      state: result.state,
+      score: result.state.score,
+      maxScore: result.state.maxScore,
+      completedAt: result.state.completed ? new Date() : null,
+    },
+    { currentIndex: parsed.data.currentIndex, status: run.status },
+  );
+
+  if (!updated) {
+    const latest = await getActivityRunById(run.id);
+    const latestState = latest ? parseQuizState(latest.state) : null;
+    return NextResponse.json(
+      {
+        activityRun:
+          latest && latestState?.success
+            ? { ...latest, state: sanitizeQuizState(latestState.data) }
+            : latest,
+        wasCorrect: false,
+      },
+      { status: 409 },
+    );
+  }
 
   if (result.changed && result.state.completed && run.status !== "completed" && result.state.score > 0) {
     await db
@@ -76,7 +95,7 @@ export async function POST(
   }
 
   return NextResponse.json({
-    activityRun: updated ? { ...updated, state: sanitizeQuizState(result.state) } : null,
+    activityRun: { ...updated, state: sanitizeQuizState(result.state) },
     wasCorrect: result.wasCorrect,
   });
 }

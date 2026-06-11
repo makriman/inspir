@@ -41,6 +41,7 @@ import {
 } from "@/lib/db/memory";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
 import { resolveEmbeddingModelName, resolveModelName } from "@/lib/ai/model-router";
+import { consumeDailyLlmBudget, numberFromEnv, quotaDefaults } from "@/lib/utils/rate-limit";
 
 type TopicLike = Pick<Topic, "id" | "name" | "slug">;
 type PersistedMessage = Pick<Message, "id" | "role" | "content">;
@@ -909,7 +910,7 @@ export async function processMemoryAfterTurn(input: {
     }
   }
 
-  await Promise.all([...changedCategories].map((category) => compileUserMemoryProfile(input.userId, category)));
+  await Promise.all(profileCategoriesForTurn(changedCategories).map((category) => compileUserMemoryProfile(input.userId, category)));
 
   if (settings.dreamingEnabled && shouldSynthesizeAfterTurn(changedCategories.size)) {
     await runWithTimeout(synthesizeUserMemory(input.userId, "post_turn"), 25_000).catch((error) =>
@@ -1029,10 +1030,24 @@ async function shouldUseMemory(input: {
       query: input.message,
     };
   }
+  if (!fallback) {
+    return {
+      useMemory: false,
+      reason: "Heuristic found no personal, continuity, remember, or forget cue.",
+      query: input.message,
+    };
+  }
   if (!process.env.OPENAI_API_KEY) {
     return {
       useMemory: fallback,
       reason: fallback ? "Heuristic found a personal, continuity, remember, or forget cue." : "Generic turn.",
+      query: input.message,
+    };
+  }
+  if (!(await hasLlmBudget("memory_gate"))) {
+    return {
+      useMemory: fallback,
+      reason: fallback ? "Budget fallback heuristic found a relevant memory cue." : "Budget fallback found no memory need.",
       query: input.message,
     };
   }
@@ -1083,6 +1098,7 @@ async function extractMemoryUpdates(input: {
   });
   if (direct.clearAll || direct.forget.length) return direct;
   if (!process.env.OPENAI_API_KEY) return fallbackExtraction(input);
+  if (!(await hasLlmBudget("memory_extraction"))) return fallbackExtraction(input);
 
   const existing = await getActiveUserMemories(input.userId, 60);
   try {
@@ -1131,7 +1147,7 @@ export async function compileUserMemoryProfile(userId: string, category: string)
     return;
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.OPENAI_API_KEY || !(await hasLlmBudget("memory_profile"))) {
     await upsertUserMemoryProfile({
       userId,
       category,
@@ -1245,7 +1261,7 @@ export async function synthesizeUserMemory(userId: string, reason = "manual_refr
       version: 1,
     });
 
-    await Promise.all([...changedCategories].map((category) => compileUserMemoryProfile(userId, category)));
+    await Promise.all(profileCategoriesForTurn(changedCategories).map((category) => compileUserMemoryProfile(userId, category)));
     await finishMemorySynthesisRun(run.id, {
       status: "completed",
       outputCounts: {
@@ -1270,6 +1286,7 @@ async function generateMemorySynthesis(input: {
   existingSummary: Awaited<ReturnType<typeof getUserMemorySummary>>;
   feedback: Awaited<ReturnType<typeof getRecentMemorySourceFeedback>>;
 }): Promise<MemorySynthesis> {
+  if (!(await hasLlmBudget("memory_synthesis"))) return buildFallbackMemorySynthesis(input);
   try {
     const result = await generateObject({
       model: openai(resolveModelName("structured")),
@@ -1402,6 +1419,9 @@ export function buildFallbackMemorySynthesis(input: {
 
 async function applyMemorySynthesis(userId: string, synthesis: MemorySynthesis) {
   const changedCategories = new Set<string>();
+  const activeMemoriesById = synthesis.memoryUpdates.some((update) => update.id)
+    ? new Map((await getActiveUserMemories(userId, 250)).map((memory) => [memory.id, memory]))
+    : new Map();
   for (const update of synthesis.memoryUpdates) {
     if (!isUsefulMemoryContent(update.content) || looksSensitive(update.content)) continue;
     if (update.action === "suppress" && update.id) {
@@ -1416,7 +1436,7 @@ async function applyMemorySynthesis(userId: string, synthesis: MemorySynthesis) 
     const embedding = await embedText(update.content);
     const normalized = normalizeMemoryContent(update.content);
     const existing = update.id
-      ? (await getActiveUserMemories(userId, 250)).find((memory) => memory.id === update.id)
+      ? activeMemoriesById.get(update.id)
       : await findExistingMemoryByNormalized(userId, normalized);
 
     if (existing) {
@@ -1509,7 +1529,15 @@ function parseOptionalDate(value: string | null | undefined) {
 }
 
 function shouldSynthesizeAfterTurn(changedCategoryCount: number) {
-  return changedCategoryCount > 0;
+  return changedCategoryCount >= numberFromEnv(
+    "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD",
+    quotaDefaults.memoryPostTurnSynthesisThreshold,
+  );
+}
+
+function profileCategoriesForTurn(changedCategories: Set<string>) {
+  const limit = numberFromEnv("MEMORY_PROFILE_COMPILE_LIMIT", 2);
+  return [...changedCategories].slice(0, limit);
 }
 
 async function runWithTimeout<T>(promise: Promise<T>, timeoutMs: number) {
@@ -1530,6 +1558,7 @@ async function embedText(value: string) {
   if (!process.env.OPENAI_API_KEY) return null;
   const trimmed = value.trim();
   if (!trimmed) return null;
+  if (!(await hasLlmBudget("memory_embedding"))) return null;
   try {
     const result = await embed({
       model: openai.embedding(resolveEmbeddingModelName()),
@@ -1546,6 +1575,13 @@ async function embedText(value: string) {
   } catch {
     return null;
   }
+}
+
+async function hasLlmBudget(reason: string) {
+  const budget = await consumeDailyLlmBudget();
+  if (budget.ok) return true;
+  console.warn("llm_budget_exhausted", { reason, day: budget.day, limit: budget.limit });
+  return false;
 }
 
 export async function buildMemoryEmbedding(value: string) {

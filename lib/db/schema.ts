@@ -58,6 +58,9 @@ export const accounts = pgTable(
   }),
 );
 
+// NextAuth is configured for JWT sessions. This table stays for adapter
+// compatibility and future provider flexibility; live sessions are not read
+// from it unless the auth strategy changes.
 export const sessions = pgTable("sessions", {
   sessionToken: text("session_token").primaryKey(),
   userId: uuid("user_id")
@@ -77,6 +80,27 @@ export const verificationTokens = pgTable(
     pk: primaryKey({ columns: [table.identifier, table.token] }),
   }),
 );
+
+export const rateLimitWindows = pgTable("rate_limit_windows", {
+  key: text("key").primaryKey(),
+  count: integer("count").notNull().default(0),
+  resetAt: timestamp("reset_at", { withTimezone: true }).notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const llmUsageDaily = pgTable("llm_usage_daily", {
+  day: date("day", { mode: "string" }).primaryKey(),
+  callCount: integer("call_count").notNull().default(0),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const appMetadata = pgTable("app_metadata", {
+  key: text("key").primaryKey(),
+  value: text("value").notNull(),
+  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+});
 
 export const topics = pgTable("topics", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -456,6 +480,9 @@ export type Topic = typeof topics.$inferSelect;
 export type Chat = typeof chats.$inferSelect;
 export type Message = typeof messages.$inferSelect;
 export type User = typeof users.$inferSelect;
+export type RateLimitWindow = typeof rateLimitWindows.$inferSelect;
+export type LlmUsageDaily = typeof llmUsageDaily.$inferSelect;
+export type AppMetadata = typeof appMetadata.$inferSelect;
 export type ActivityRun = typeof activityRuns.$inferSelect;
 export type AppTranslation = typeof appTranslations.$inferSelect;
 export type UserMemorySetting = typeof userMemorySettings.$inferSelect;

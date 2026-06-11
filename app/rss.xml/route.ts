@@ -1,6 +1,8 @@
 import { getBlogPosts } from "@/lib/content/blog";
 import { buildRssFeed } from "@/lib/seo/rss";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   return new Response(buildRssFeed(getBlogPosts()), {
     headers: {

@@ -7,10 +7,9 @@ export const dynamic = "force-dynamic";
 export const maxDuration = 120;
 
 export async function GET(request: NextRequest) {
-  const secret = process.env.CRON_SECRET;
+  const secret = process.env.CRON_SECRET?.trim();
   const auth = request.headers.get("authorization");
-  const querySecret = request.nextUrl.searchParams.get("secret");
-  if (secret && auth !== `Bearer ${secret}` && querySecret !== secret) {
+  if (!secret || auth !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -23,17 +22,21 @@ export async function GET(request: NextRequest) {
     errors: [] as Array<{ userId: string; error: string }>,
   };
 
-  for (const row of dueUsers) {
-    try {
-      await synthesizeUserMemory(row.userId, "daily_cron");
-      stats.completed += 1;
-    } catch (error) {
+  const batchSize = 3;
+  for (let index = 0; index < dueUsers.length; index += batchSize) {
+    const batch = dueUsers.slice(index, index + batchSize);
+    const results = await Promise.allSettled(batch.map((row) => synthesizeUserMemory(row.userId, "daily_cron")));
+    results.forEach((result, resultIndex) => {
+      if (result.status === "fulfilled") {
+        stats.completed += 1;
+        return;
+      }
       stats.failed += 1;
       stats.errors.push({
-        userId: row.userId,
-        error: error instanceof Error ? error.message : String(error),
+        userId: batch[resultIndex].userId,
+        error: result.reason instanceof Error ? result.reason.message : String(result.reason),
       });
-    }
+    });
   }
 
   return NextResponse.json(stats);

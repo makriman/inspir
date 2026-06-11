@@ -14,9 +14,9 @@ import {
   type SupportedLanguage,
 } from "@/lib/content/languages";
 import { localizePath } from "@/lib/i18n/routing";
-import { absoluteUrl, socialImage } from "@/lib/seo/config";
+import { absoluteUrl, defaultSocialImage, socialImage } from "@/lib/seo/config";
 
-const staticLastModified = new Date("2026-05-29T00:00:00.000Z");
+const staticLastModified = new Date();
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type SitemapIndexEntry = {
@@ -113,7 +113,9 @@ function renderEntry(entry: SitemapEntry) {
       ([language, href]) =>
         `    <xhtml:link rel="alternate" hreflang="${escapeXml(language)}" href="${escapeXml(href)}" />`,
     );
-  const images = (entry.images ?? []).map(
+  const images = (entry.images ?? [])
+    .filter((image) => image !== defaultSocialImage.url)
+    .map(
     (image) => `    <image:image>\n      <image:loc>${escapeXml(image)}</image:loc>\n    </image:image>`,
   );
   const videos = (entry.videos ?? []).map(renderVideo);

@@ -1,10 +1,47 @@
-import { and, asc, count, desc, eq, ilike, inArray, or, sql as drizzleSql } from "drizzle-orm";
-import { db } from "./client";
-import { activityRuns, appTranslations, chats, messages, topics, users } from "./schema";
+import { createHash } from "node:crypto";
+import { and, asc, count, desc, eq, inArray, or, sql as drizzleSql } from "drizzle-orm";
+import { db, sql as postgresSql } from "./client";
+import { activityRuns, aiRuns, appMetadata, appTranslations, chats, messages, topics, users } from "./schema";
+import type { Topic } from "./schema";
 import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
 
+const topicSeedMetadataKey = "topic_seed_hash";
+let seedTopicsPromise: Promise<void> | null = null;
+
+export type PublicTopic = Pick<
+  Topic,
+  "id" | "slug" | "name" | "subText" | "description" | "inputboxText" | "iconUrl" | "sortOrder" | "metadata"
+>;
+
+const publicMetadataKeys = new Set([
+  "category",
+  "uiMode",
+  "modelProfile",
+  "starters",
+  "keywords",
+  "source",
+  "toolId",
+]);
+
 async function ensureSeedTopics() {
+  seedTopicsPromise ??= syncSeedTopicsOnce().catch((error) => {
+    seedTopicsPromise = null;
+    throw error;
+  });
+  return seedTopicsPromise;
+}
+
+async function syncSeedTopicsOnce() {
+  const seedHash = topicSeedHash();
+  const [state] = await db
+    .select({ value: appMetadata.value })
+    .from(appMetadata)
+    .where(eq(appMetadata.key, topicSeedMetadataKey))
+    .limit(1);
+
+  if (state?.value === seedHash) return;
+
   await Promise.all(
     topicSeeds.map((topic) =>
       db
@@ -20,22 +57,72 @@ async function ensureSeedTopics() {
           metadata: topic.metadata,
           status: "active",
         })
-        .onConflictDoUpdate({
-          target: topics.slug,
-          set: {
-            name: topic.name,
-            subText: topic.subText,
-            description: topic.description,
-            inputboxText: topic.inputboxText,
-            systemPrompt: topic.systemPrompt,
-            sortOrder: topic.sortOrder,
-            metadata: topic.metadata,
-            status: "active",
-            updatedAt: new Date(),
-          },
-        }),
+        .onConflictDoNothing({ target: topics.slug }),
     ),
   );
+  await db
+    .insert(appMetadata)
+    .values({ key: topicSeedMetadataKey, value: seedHash })
+    .onConflictDoUpdate({
+      target: appMetadata.key,
+      set: { value: seedHash, updatedAt: new Date() },
+    });
+}
+
+function topicSeedHash() {
+  return createHash("sha256")
+    .update(
+      JSON.stringify(
+        topicSeeds.map((topic) => ({
+          slug: topic.slug,
+          name: topic.name,
+          subText: topic.subText,
+          description: topic.description,
+          inputboxText: topic.inputboxText,
+          systemPrompt: topic.systemPrompt,
+          sortOrder: topic.sortOrder,
+          metadata: topic.metadata,
+        })),
+      ),
+    )
+    .digest("hex");
+}
+
+export function toPublicTopic(topic: Topic): PublicTopic {
+  return {
+    id: topic.id,
+    slug: topic.slug,
+    name: topic.name,
+    subText: topic.subText,
+    description: topic.description,
+    inputboxText: topic.inputboxText,
+    iconUrl: topic.iconUrl,
+    sortOrder: topic.sortOrder,
+    metadata: sanitizeTopicMetadata(topic.metadata),
+  };
+}
+
+function sanitizeTopicMetadata(metadata: Record<string, unknown> | null | undefined) {
+  const safe: Record<string, unknown> = {};
+  if (!metadata || typeof metadata !== "object") return safe;
+  for (const [key, value] of Object.entries(metadata)) {
+    if (publicMetadataKeys.has(key)) safe[key] = value;
+  }
+  return safe;
+}
+
+function publicTopicSelect() {
+  return {
+    id: topics.id,
+    slug: topics.slug,
+    name: topics.name,
+    subText: topics.subText,
+    description: topics.description,
+    inputboxText: topics.inputboxText,
+    iconUrl: topics.iconUrl,
+    sortOrder: topics.sortOrder,
+    metadata: topics.metadata,
+  };
 }
 
 export async function getActiveTopics() {
@@ -47,6 +134,16 @@ export async function getActiveTopics() {
     .orderBy(asc(topics.sortOrder), asc(topics.name));
 }
 
+export async function getPublicActiveTopics() {
+  await ensureSeedTopics();
+  const rows = await db
+    .select(publicTopicSelect())
+    .from(topics)
+    .where(eq(topics.status, "active"))
+    .orderBy(asc(topics.sortOrder), asc(topics.name));
+  return rows.map((topic) => ({ ...topic, metadata: sanitizeTopicMetadata(topic.metadata) }));
+}
+
 export async function getDefaultTopic() {
   await ensureSeedTopics();
   const [topic] = await db.select().from(topics).where(eq(topics.slug, defaultTopicSlug)).limit(1);
@@ -55,6 +152,49 @@ export async function getDefaultTopic() {
 
 export async function getUserById(userId: string) {
   const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
+  return user;
+}
+
+export async function getUserProfileById(userId: string) {
+  const [user] = await db
+    .select({
+      id: users.id,
+      name: users.name,
+      email: users.email,
+      image: users.image,
+      score: users.score,
+      preferredLanguage: users.preferredLanguage,
+      dateOfBirth: users.dateOfBirth,
+      createdAt: users.createdAt,
+      profileImageHash: users.profileImageHash,
+    })
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(1);
+  return user;
+}
+
+export async function getUserLearningProfileById(userId: string) {
+  const [user] = await db
+    .select({
+      preferredLanguage: users.preferredLanguage,
+      dateOfBirth: users.dateOfBirth,
+    })
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(1);
+  return user;
+}
+
+export async function getUserPhotoById(userId: string) {
+  const [user] = await db
+    .select({
+      profileImageData: users.profileImageData,
+      profileImageMime: users.profileImageMime,
+    })
+    .from(users)
+    .where(eq(users.id, userId))
+    .limit(1);
   return user;
 }
 
@@ -133,7 +273,7 @@ export async function deleteAppTranslation(namespace: string, language: string) 
 
 export async function createChatForUser(userId: string, topicId: string) {
   const [topic] = await db.select().from(topics).where(eq(topics.id, topicId)).limit(1);
-  if (!topic) throw new Error("Topic not found");
+  if (!topic) return null;
 
   const [chat] = await db
     .insert(chats)
@@ -171,15 +311,16 @@ export async function getChatMessages(chatId: string) {
 }
 
 export async function getRecentChats(userId: string, topicId?: string, q?: string) {
+  const searchPattern = q ? `%${escapeLikePattern(q)}%` : undefined;
   const where = [
     eq(chats.userId, userId),
     eq(chats.isArchived, false),
     topicId ? eq(chats.topicId, topicId) : undefined,
-    q
+    searchPattern
       ? or(
-          ilike(chats.title, `%${q}%`),
-          ilike(chats.topicNameSnapshot, `%${q}%`),
-          ilike(messages.content, `%${q}%`),
+          drizzleSql`${chats.title} ilike ${searchPattern} escape '\\'`,
+          drizzleSql`${chats.topicNameSnapshot} ilike ${searchPattern} escape '\\'`,
+          drizzleSql`${messages.content} ilike ${searchPattern} escape '\\'`,
         )
       : undefined,
   ].filter(Boolean);
@@ -202,6 +343,21 @@ export async function getRecentChats(userId: string, topicId?: string, q?: strin
     .limit(100);
 
   return rows;
+}
+
+export async function getChatPreviews(chatIds: string[]) {
+  const ids = [...new Set(chatIds)].filter(Boolean);
+  if (!ids.length) return new Map<string, string>();
+  const rows = await postgresSql<Array<{ chatId: string; content: string }>>`
+    select distinct on (chat_id)
+      chat_id as "chatId",
+      content
+    from messages
+    where role = 'user'
+      and chat_id in ${postgresSql(ids)}
+    order by chat_id, created_at asc
+  `;
+  return new Map(rows.map((row) => [row.chatId, getVisibleMessageContent(row.content)]));
 }
 
 export async function getChatPreview(chatId: string) {
@@ -304,6 +460,47 @@ export async function updateActivityRun(
   return run;
 }
 
+export async function updateActivityRunGuarded(
+  activityRunId: string,
+  input: {
+    status?: string;
+    state?: Record<string, unknown>;
+    score?: number | null;
+    maxScore?: number | null;
+    completedAt?: Date | null;
+  },
+  guard: {
+    currentIndex: number;
+    status?: string;
+  },
+) {
+  const [run] = await db
+    .update(activityRuns)
+    .set({ ...input, updatedAt: new Date() })
+    .where(
+      and(
+        eq(activityRuns.id, activityRunId),
+        guard.status ? eq(activityRuns.status, guard.status) : undefined,
+        drizzleSql`${activityRuns.state}->>'currentIndex' = ${String(guard.currentIndex)}`,
+      ),
+    )
+    .returning();
+  if (run?.chatId) {
+    await db.update(chats).set({ updatedAt: new Date() }).where(eq(chats.id, run.chatId));
+  }
+  return run;
+}
+
+export async function getOwnedAiRun(aiRunId: string, userId: string) {
+  const [run] = await db
+    .select({ id: aiRuns.id })
+    .from(aiRuns)
+    .innerJoin(chats, eq(aiRuns.chatId, chats.id))
+    .where(and(eq(aiRuns.id, aiRunId), eq(chats.userId, userId)))
+    .limit(1);
+  return run ?? null;
+}
+
 export async function getContextMessages(chatId: string, limit = 30) {
   const rows = await db
     .select()
@@ -312,4 +509,8 @@ export async function getContextMessages(chatId: string, limit = 30) {
     .orderBy(desc(messages.createdAt))
     .limit(limit);
   return rows.reverse();
+}
+
+function escapeLikePattern(value: string) {
+  return value.replace(/[\\%_]/g, (character) => `\\${character}`);
 }

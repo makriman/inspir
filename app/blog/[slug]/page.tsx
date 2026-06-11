@@ -20,8 +20,8 @@ import { getBlogPostPracticePlan } from "@/lib/content/blog-practice";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { getRequestLanguage } from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
+import { defaultLanguage } from "@/lib/content/languages";
 import { defaultSocialImage, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate, formatLongDate } from "@/lib/utils/dates";
@@ -95,11 +95,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const headings = extractBlogHeadings(post);
   const readingMinutes = estimateBlogIndexedReadingMinutes(post);
   const headingIdByLine = new Map(headings.map((heading) => [heading.line, heading.id]));
-  const language = await getRequestLanguage();
   const markdownComponents: Components = {
     h2: ({ children, node }) => <h2 id={headingIdByLine.get(node?.position?.start.line ?? -1)}>{children}</h2>,
     h3: ({ children, node }) => <h3 id={headingIdByLine.get(node?.position?.start.line ?? -1)}>{children}</h3>,
-    a: ({ children, href }) => <a href={href ? localizeHref(href, language) : undefined}>{children}</a>,
+    a: ({ children, href }) => <a href={href ? localizeHref(href, defaultLanguage) : undefined}>{children}</a>,
   };
 
   const jsonLd = [

@@ -19,7 +19,6 @@ import {
   webApplicationJsonLd,
   websiteJsonLd,
 } from "@/lib/seo/json-ld";
-import { getRequestLanguageConfig } from "@/lib/i18n/request-locale";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -80,7 +79,6 @@ export const metadata: Metadata = {
     url: "/",
     siteName,
     images: [rootSocialImage],
-    locale: "en_US",
     type: "website",
   },
   twitter: {
@@ -106,7 +104,6 @@ export const metadata: Metadata = {
     "ai-content-index": absoluteUrl("/ai-content-index.json"),
     "llms-txt": absoluteUrl("/llms.txt"),
     "llms-full": absoluteUrl("/llms-full.txt"),
-    "content-language": "en-US",
   },
 };
 
@@ -123,9 +120,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const languageConfig = await getRequestLanguageConfig();
   return (
-    <html lang={languageConfig.locale} dir={languageConfig.dir} className={`${inter.variable} h-full antialiased`}>
+    <html lang="en-US" dir="ltr" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-[#171614] text-white">
         <JsonLdScripts items={rootJsonLd} />
         {children}

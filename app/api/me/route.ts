@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth/session";
-import { getUserById, updateUserProfile } from "@/lib/db/queries";
+import { getUserProfileById, updateUserProfile } from "@/lib/db/queries";
 import { normalizeLanguage } from "@/lib/content/languages";
 import { calculateAge, validateDateOfBirth } from "@/lib/profile/age";
 import { updateProfileSchema } from "@/lib/profile/validation";
@@ -12,7 +12,7 @@ export async function GET() {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const user = await getUserById(session.user.id);
+  const user = await getUserProfileById(session.user.id);
   return NextResponse.json({ user: serializeUser(user) });
 }
 
@@ -38,10 +38,18 @@ export async function PATCH(request: NextRequest) {
   return NextResponse.json({ user: serializeUser(user) });
 }
 
-function serializeUser(user: Awaited<ReturnType<typeof getUserById>>) {
+function serializeUser(user: Awaited<ReturnType<typeof getUserProfileById>> | Awaited<ReturnType<typeof updateUserProfile>>) {
   if (!user) return null;
   return {
-    ...user,
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    image: user.image,
+    score: user.score,
+    preferredLanguage: user.preferredLanguage,
+    dateOfBirth: user.dateOfBirth,
+    createdAt: user.createdAt,
+    profileImageHash: user.profileImageHash,
     age: calculateAge(user.dateOfBirth),
   };
 }

@@ -6,15 +6,21 @@ import { resolveModelForTopic } from "@/lib/ai/model-router";
 import { getTopicMetadata } from "@/lib/ai/prompts";
 import { findSeededTopic } from "@/lib/content/seeded-topics";
 import { getActiveTopics } from "@/lib/db/queries";
-import { checkRateLimit } from "@/lib/utils/rate-limit";
+import {
+  consumeDailyLlmBudget,
+  consumeFixedWindowQuota,
+  numberFromEnv,
+  quotaDefaults,
+  safeQuotaKeyPart,
+} from "@/lib/utils/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const guestMessageLimit = 5;
 const guestSessionCookie = "inspir_guest_session";
 const guestUsageCookie = "inspir_guest_messages_used";
 const guestCookieMaxAge = 60 * 60 * 24 * 30;
+const guestUsageCookieMaxAge = 60 * 60 * 24;
 
 const guestChatSchema = z.object({
   topicId: z.string().trim().min(1).max(120),
@@ -32,10 +38,10 @@ const guestChatSchema = z.object({
     .default([]),
 });
 
-function parseUsage(value: string | undefined) {
+function parseUsage(value: string | undefined, limit: number) {
   const parsed = Number(value ?? "0");
   if (!Number.isFinite(parsed) || parsed < 0) return 0;
-  return Math.min(Math.floor(parsed), guestMessageLimit);
+  return Math.min(Math.floor(parsed), limit);
 }
 
 function requestIp(request: NextRequest) {
@@ -74,28 +80,10 @@ export async function POST(request: NextRequest) {
   const parsed = guestChatSchema.safeParse(payload);
   if (!parsed.success) return NextResponse.json({ error: "Invalid chat request" }, { status: 400 });
 
+  const guestMessageLimit = numberFromEnv("RATE_LIMIT_GUEST_SESSION_DAILY", quotaDefaults.guestSessionDaily);
   const cookieStore = await cookies();
   const sessionId = cookieStore.get(guestSessionCookie)?.value || crypto.randomUUID();
-  const used = parseUsage(cookieStore.get(guestUsageCookie)?.value);
-  if (used >= guestMessageLimit) {
-    return NextResponse.json(
-      { error: "Guest message limit reached", used, limit: guestMessageLimit },
-      { status: 429 },
-    );
-  }
-
-  const sessionRate = checkRateLimit(
-    `guest-chat-session:${sessionId}`,
-    guestMessageLimit,
-    guestCookieMaxAge * 1000,
-  );
-  const ipRate = checkRateLimit(`guest-chat-ip:${requestIp(request)}`, 50, 24 * 60 * 60 * 1000);
-  if (!sessionRate.ok || !ipRate.ok) {
-    return NextResponse.json(
-      { error: "Guest message limit reached", used, limit: guestMessageLimit },
-      { status: 429 },
-    );
-  }
+  const used = parseUsage(cookieStore.get(guestUsageCookie)?.value, guestMessageLimit);
 
   const topic = await getGuestTopic(parsed.data.topicId);
   const uiMode = topic ? getTopicMetadata(topic)?.uiMode : undefined;
@@ -103,7 +91,30 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Topic not available for guest chat" }, { status: 404 });
   }
 
-  const nextUsed = used + 1;
+  const ipRate = await consumeFixedWindowQuota(
+    `guest-chat:ip:${safeQuotaKeyPart(requestIp(request))}`,
+    numberFromEnv("RATE_LIMIT_GUEST_IP_DAILY", quotaDefaults.guestIpDaily),
+    guestUsageCookieMaxAge * 1000,
+  );
+  if (!ipRate.ok) {
+    return guestLimitResponse(used, guestMessageLimit, ipRate.retryAfterSeconds);
+  }
+
+  const sessionRate = await consumeFixedWindowQuota(
+    `guest-chat:session:${safeQuotaKeyPart(sessionId)}`,
+    guestMessageLimit,
+    guestUsageCookieMaxAge * 1000,
+  );
+  if (!sessionRate.ok) {
+    return guestLimitResponse(used, guestMessageLimit, sessionRate.retryAfterSeconds);
+  }
+
+  const budget = await consumeDailyLlmBudget();
+  if (!budget.ok) {
+    return guestLimitResponse(used, guestMessageLimit, budget.retryAfterSeconds, "Daily AI usage limit reached");
+  }
+
+  const nextUsed = Math.min(guestMessageLimit, sessionRate.limit - sessionRate.remaining);
   cookieStore.set(guestSessionCookie, sessionId, {
     httpOnly: true,
     maxAge: guestCookieMaxAge,
@@ -113,7 +124,7 @@ export async function POST(request: NextRequest) {
   });
   cookieStore.set(guestUsageCookie, String(nextUsed), {
     httpOnly: true,
-    maxAge: guestCookieMaxAge,
+    maxAge: guestUsageCookieMaxAge,
     path: "/",
     sameSite: "lax",
     secure: process.env.NODE_ENV === "production",
@@ -139,4 +150,19 @@ export async function POST(request: NextRequest) {
   } catch {
     return NextResponse.json({ error: "The assistant could not answer right now." }, { status: 500 });
   }
+}
+
+function guestLimitResponse(
+  used: number,
+  limit: number,
+  retryAfterSeconds: number,
+  error = "Guest message limit reached",
+) {
+  return NextResponse.json(
+    { error, used, limit },
+    {
+      status: 429,
+      headers: { "Retry-After": String(retryAfterSeconds) },
+    },
+  );
 }

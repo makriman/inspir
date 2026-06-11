@@ -8,12 +8,6 @@ import { MarketingDomLocalizer } from "@/components/i18n/MarketingDomLocalizer";
 import { MarketingLanguageControls } from "@/components/marketing/LanguageControls";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import type { TranslationBundle } from "@/lib/i18n/translation-types";
-import {
-  getRequestLanguage,
-  getRequestPathname,
-  getRequestRecommendedLanguage,
-  requestHasLocalePrefix,
-} from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
 import {
   getCachedSiteTranslationBundle,
@@ -183,9 +177,8 @@ export async function ArrowLink({
     );
   }
 
-  const language = await getRequestLanguage();
   return (
-    <Link className="marketing-arrow-link" href={localizeHref(href, language)}>
+    <Link className="marketing-arrow-link" href={localizeHref(href, defaultLanguage)}>
       {children}
       <ArrowUpRight size={17} />
     </Link>
@@ -193,10 +186,10 @@ export async function ArrowLink({
 }
 
 async function getMarketingChrome() {
-  const language = await getRequestLanguage();
-  const recommendedLanguage = await getRequestRecommendedLanguage();
-  const currentPathname = await getRequestPathname();
-  const hasLocalePrefix = await requestHasLocalePrefix();
+  const language = defaultLanguage;
+  const recommendedLanguage = defaultLanguage;
+  const currentPathname = "";
+  const hasLocalePrefix = false;
   const translationNamespaces = getSiteTranslationNamespaces(currentPathname);
   const bundles =
     language === defaultLanguage

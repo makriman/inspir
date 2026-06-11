@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
-import { createChatForUser, getChatPreview, getRecentChats } from "@/lib/db/queries";
+import { createChatForUser, getChatPreviews, getRecentChats } from "@/lib/db/queries";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,13 +18,12 @@ export async function GET(request: NextRequest) {
   const topicId = searchParams.get("topicId") ?? undefined;
   const q = searchParams.get("q") ?? undefined;
   const chats = await getRecentChats(session.user.id, topicId, q);
+  const previews = await getChatPreviews(chats.map((chat) => chat.id));
 
-  const rows = await Promise.all(
-    chats.map(async (chat) => ({
-      ...chat,
-      firstMessagePreview: (await getChatPreview(chat.id)) ?? chat.title ?? chat.topicName,
-    })),
-  );
+  const rows = chats.map((chat) => ({
+    ...chat,
+    firstMessagePreview: previews.get(chat.id) ?? chat.title ?? chat.topicName,
+  }));
 
   return NextResponse.json({ chats: rows });
 }
@@ -37,5 +36,6 @@ export async function POST(request: NextRequest) {
   if (!body.success) return NextResponse.json({ error: "Invalid chat request" }, { status: 400 });
 
   const chat = await createChatForUser(session.user.id, body.data.topicId);
+  if (!chat) return NextResponse.json({ error: "Topic not found" }, { status: 404 });
   return NextResponse.json({ chatId: chat.id, chat });
 }

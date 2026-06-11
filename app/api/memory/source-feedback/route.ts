@@ -9,6 +9,7 @@ import {
   updateUserMemory,
   upsertUserMemorySummary,
 } from "@/lib/db/memory";
+import { getOwnedAiRun } from "@/lib/db/queries";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -29,7 +30,12 @@ export async function POST(request: NextRequest) {
   const parsed = feedbackSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid feedback" }, { status: 400 });
 
-  const { memoryId, chatTurnId, summarySectionId, action } = parsed.data;
+  const { aiRunId, memoryId, chatTurnId, summarySectionId, action } = parsed.data;
+  if (aiRunId) {
+    const run = await getOwnedAiRun(aiRunId, session.user.id);
+    if (!run) return NextResponse.json({ error: "AI run not found" }, { status: 404 });
+  }
+
   if (memoryId) {
     const memory = await getUserMemory(session.user.id, memoryId);
     if (!memory) return NextResponse.json({ error: "Memory not found" }, { status: 404 });
@@ -61,7 +67,7 @@ export async function POST(request: NextRequest) {
 
   await insertMemorySourceFeedback({
     userId: session.user.id,
-    aiRunId: parsed.data.aiRunId ?? null,
+    aiRunId: aiRunId ?? null,
     memoryId: memoryId ?? null,
     chatTurnId: chatTurnId ?? null,
     summarySectionId: summarySectionId ?? null,

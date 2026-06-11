@@ -195,14 +195,22 @@ function fallbackQuiz(topic: string): QuizState {
     questions: base.map((prompt, index) => ({
       id: `q${index + 1}`,
       prompt: `${prompt} (${topic})`,
-      options: [
+      options: rotateOptions(
+        [
         "Memorize without checking",
         "Explain it in your own words",
         "Skip anything difficult",
         "Only read the answer key",
-      ],
-      correctIndex: 1,
+        ],
+        index,
+      ),
+      correctIndex: (1 - index + 4 * 10) % 4,
       explanation: "Explaining in your own words forces you to organize the idea and reveals gaps.",
     })),
   };
+}
+
+function rotateOptions(options: string[], offset: number) {
+  const amount = offset % options.length;
+  return [...options.slice(amount), ...options.slice(0, amount)];
 }

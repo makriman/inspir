@@ -29,6 +29,7 @@ export type BlogHeading = {
 };
 
 const blogDirectory = join(process.cwd(), "content", "blog");
+let blogPostCache: BlogPost[] | null = null;
 
 function parseArray(value: string) {
   const trimmed = value.trim();
@@ -76,6 +77,7 @@ function parseFrontmatter(source: string, slug: string): BlogPost {
 }
 
 export function getBlogPosts() {
+  if (blogPostCache) return blogPostCache;
   if (!existsSync(blogDirectory)) return [];
   const posts: BlogPost[] = [];
   for (const file of readdirSync(blogDirectory)) {
@@ -84,7 +86,8 @@ export function getBlogPosts() {
     const source = readFileSync(join(blogDirectory, file), "utf8");
     posts.push(parseFrontmatter(source, slug));
   }
-  return posts.toSorted((a, b) => b.date.localeCompare(a.date));
+  blogPostCache = posts.toSorted((a, b) => b.date.localeCompare(a.date));
+  return blogPostCache;
 }
 
 export function getBlogPost(slug: string) {

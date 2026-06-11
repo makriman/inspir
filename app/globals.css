@@ -12269,19 +12269,6 @@ a {
   color: var(--editorial-ink);
 }
 
-.public-topic-seo.is-hidden-for-app {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  border: 0;
-  white-space: nowrap;
-}
-
 .public-topic-seo-head {
   display: grid;
   max-width: 860px;

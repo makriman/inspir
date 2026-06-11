@@ -4,7 +4,13 @@ import { eq } from "drizzle-orm";
 import { requireSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
 import { aiRuns } from "@/lib/db/schema";
-import { getContextMessages, getOwnedChat, getUserById, insertMessage } from "@/lib/db/queries";
+import {
+  getContextMessages,
+  getDefaultTopic,
+  getOwnedChat,
+  getUserLearningProfileById,
+  insertMessage,
+} from "@/lib/db/queries";
 import { buildModelMessages } from "@/lib/ai/prompts";
 import { createLearningAgent } from "@/lib/ai/learning-agent";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
@@ -15,7 +21,7 @@ import {
   type MemoryRetrievalResult,
 } from "@/lib/ai/memory";
 import { normalizeLanguage } from "@/lib/content/languages";
-import { checkRateLimit } from "@/lib/utils/rate-limit";
+import { consumeAiQuota, numberFromEnv, quotaDefaults, safeQuotaKeyPart } from "@/lib/utils/rate-limit";
 import { calculateAge } from "@/lib/profile/age";
 
 export const runtime = "nodejs";
@@ -47,19 +53,26 @@ export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const rate = checkRateLimit(`chat:${session.user.id}`, 60, 24 * 60 * 60 * 1000);
-  if (!rate.ok) {
-    return NextResponse.json({ error: "Daily message limit reached" }, { status: 429 });
-  }
-
   const parsed = chatRequestSchema.safeParse(await request.json());
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid chat request" }, { status: 400 });
   }
 
   const owned = await getOwnedChat(parsed.data.chatId, session.user.id);
-  if (!owned?.topic) return NextResponse.json({ error: "Chat not found" }, { status: 404 });
-  const topic = owned.topic;
+  if (!owned) return NextResponse.json({ error: "Chat not found" }, { status: 404 });
+  const topic = owned.topic ?? (await getDefaultTopic());
+  if (!topic) return NextResponse.json({ error: "Chat topic not available" }, { status: 404 });
+
+  const limit = await consumeAiQuota({
+    key: `chat:user:${safeQuotaKeyPart(session.user.id)}`,
+    limit: numberFromEnv("RATE_LIMIT_USER_CHAT_DAILY", quotaDefaults.userChatDaily),
+  });
+  if (!limit.quota.ok) {
+    return quotaResponse("Daily message limit reached", limit.quota.retryAfterSeconds);
+  }
+  if (limit.budget && !limit.budget.ok) {
+    return quotaResponse("Daily AI usage limit reached", limit.budget.retryAfterSeconds);
+  }
 
   const [userMessage, user] = await Promise.all([
     insertMessage({
@@ -67,7 +80,7 @@ export async function POST(request: NextRequest) {
       role: "user",
       content: parsed.data.content,
     }),
-    getUserById(session.user.id),
+    getUserLearningProfileById(session.user.id),
   ]);
 
   const context = await getContextMessages(userMessage.chatId);
@@ -185,6 +198,16 @@ export async function POST(request: NextRequest) {
       .where(eq(aiRuns.id, run.id));
     return NextResponse.json({ error: "The assistant could not answer right now." }, { status: 500 });
   }
+}
+
+function quotaResponse(error: string, retryAfterSeconds: number) {
+  return NextResponse.json(
+    { error },
+    {
+      status: 429,
+      headers: { "Retry-After": String(retryAfterSeconds) },
+    },
+  );
 }
 
 async function memoryJobWithTimeout(memoryJob: Promise<MemoryJob>) {

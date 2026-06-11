@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
-import { createActivityRun, getOwnedChat, getUserById, insertMessage } from "@/lib/db/queries";
+import { createActivityRun, getOwnedChat, getUserLearningProfileById, insertMessage } from "@/lib/db/queries";
 import { generateQuiz, sanitizeQuizState } from "@/lib/activities/quiz";
 import { calculateAge } from "@/lib/profile/age";
+import { consumeAiQuota, numberFromEnv, quotaDefaults, safeQuotaKeyPart } from "@/lib/utils/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,7 +26,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Quiz chat not found" }, { status: 404 });
   }
 
-  const user = await getUserById(session.user.id);
+  const limit = await consumeAiQuota({
+    key: `activity:quiz:${safeQuotaKeyPart(session.user.id)}`,
+    limit: numberFromEnv("RATE_LIMIT_ACTIVITY_DAILY", quotaDefaults.activityDaily),
+  });
+  if (!limit.quota.ok) return quotaResponse("Daily activity limit reached", limit.quota.retryAfterSeconds);
+  if (limit.budget && !limit.budget.ok) return quotaResponse("Daily AI usage limit reached", limit.budget.retryAfterSeconds);
+
+  const user = await getUserLearningProfileById(session.user.id);
   const quiz = await generateQuiz(parsed.data.topic, {
     learnerAge: calculateAge(user?.dateOfBirth),
     preferredLanguage: user?.preferredLanguage,
@@ -52,4 +60,14 @@ export async function POST(request: NextRequest) {
   });
 
   return NextResponse.json({ activityRun: { ...run, state: sanitizeQuizState(quiz) } });
+}
+
+function quotaResponse(error: string, retryAfterSeconds: number) {
+  return NextResponse.json(
+    { error },
+    {
+      status: 429,
+      headers: { "Retry-After": String(retryAfterSeconds) },
+    },
+  );
 }

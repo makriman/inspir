@@ -22,11 +22,13 @@ export async function POST(request: NextRequest) {
     path: "/",
     maxAge: 60 * 60 * 24 * 365,
     sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
   });
   response.cookies.set(localePromptCookieName, "1", {
     path: "/",
     maxAge: 60 * 60 * 24 * 365,
     sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
   });
   return response;
 }

@@ -3,7 +3,7 @@ import { inArray } from "drizzle-orm";
 import { requireSession } from "@/lib/auth/session";
 import { sanitizeActivityRun } from "@/lib/activities/quiz";
 import { db } from "@/lib/db/client";
-import { getChatMessages, getLatestActivityRun, getOwnedChat } from "@/lib/db/queries";
+import { getChatMessages, getLatestActivityRun, getOwnedChat, toPublicTopic } from "@/lib/db/queries";
 import { aiRuns } from "@/lib/db/schema";
 
 export const runtime = "nodejs";
@@ -49,7 +49,7 @@ export async function GET(_request: NextRequest, { params }: { params: Promise<{
   });
   return NextResponse.json({
     chat: owned.chat,
-    topic: owned.topic,
+    topic: owned.topic ? toPublicTopic(owned.topic) : null,
     messages: messagesWithMemorySources,
     activityRun: sanitizeActivityRun(activityRun),
   });

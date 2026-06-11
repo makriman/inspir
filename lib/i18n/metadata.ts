@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { defaultLanguage, normalizeLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import { getRequestLanguage } from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
 import {
   getCachedSiteTranslationBundle,
@@ -24,9 +23,6 @@ export type LocalizedMetadataInput = {
   robots?: Metadata["robots"];
 };
 
-const metadataUrlKeys = new Set(["url", "canonical", "href", "publishedTime", "modifiedTime"]);
-const localizableMetadataUrlKeys = new Set(["url", "canonical", "href"]);
-const metadataIdentityKeys = new Set(["siteName", "authors", "creator", "publisher", "applicationName"]);
 const structuredDataUrlKeys = new Set([
   "@context",
   "@id",
@@ -59,20 +55,13 @@ const structuredDataCodeKeys = new Set([
 ]);
 
 export async function localizeMarketingMetadata(metadata: Metadata, path: string): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  if (language === defaultLanguage) return metadata;
-
-  const t = await getSiteMetadataTranslator(language, path);
-  return localizeMetadataValue(metadata, t, language) as Metadata;
+  void path;
+  return metadata;
 }
 
 export async function localizeMarketingStructuredData(items: ReadonlyArray<unknown>, path?: string) {
-  const language = await getRequestLanguage();
-  if (language === defaultLanguage) return items;
-
-  const pathname = path ?? "/";
-  const t = await getSiteMetadataTranslator(language, pathname);
-  return items.map((item) => localizeStructuredDataValue(item, t, undefined, language));
+  void path;
+  return items;
 }
 
 export function localizeStructuredDataValue(
@@ -101,7 +90,7 @@ export function localizeStructuredDataValue(
 }
 
 export async function localizedMarketingMetadata(input: LocalizedMetadataInput): Promise<Metadata> {
-  const language = await getRequestLanguage();
+  const language = defaultLanguage;
   const t = language === defaultLanguage ? (value: string) => value : await getSiteMetadataTranslator(language, input.path);
 
   const title = t(input.title);
@@ -146,37 +135,6 @@ function shouldPreserveStructuredDataString(key: string, value: string) {
   if (/^PT\d+[A-Z]$/i.test(value)) return true;
   if (/^\d+(?:\.\d+)?$/.test(value)) return true;
   return false;
-}
-
-function localizeMetadataValue(
-  value: unknown,
-  t: (value: string) => string,
-  language: string,
-  key?: string,
-): unknown {
-  if (typeof value === "string") {
-    const localizedUrl = key ? localizeMetadataUrl(key, value, language) : null;
-    if (localizedUrl) return localizedUrl;
-    if (key && (metadataUrlKeys.has(key) || metadataIdentityKeys.has(key))) return value;
-    return t(value);
-  }
-  if (!value || typeof value !== "object") return value;
-  if (value instanceof Date || value instanceof URL) return value;
-  if (Array.isArray(value)) {
-    if (key && metadataIdentityKeys.has(key)) return value;
-    return value.map((item) => localizeMetadataValue(item, t, language, key));
-  }
-
-  const localized: Record<string, unknown> = {};
-  for (const [objectKey, objectValue] of Object.entries(value)) {
-    localized[objectKey] = localizeMetadataValue(objectValue, t, language, objectKey);
-  }
-  return localized;
-}
-
-function localizeMetadataUrl(key: string, value: string, language: string) {
-  if (!localizableMetadataUrlKeys.has(key)) return null;
-  return localizeInternalUrl(value, normalizeLanguage(language));
 }
 
 function localizeStructuredDataUrl(key: string, value: string, language: string) {

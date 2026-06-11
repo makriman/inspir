@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { getActiveTopics } from "@/lib/db/queries";
+import { getPublicActiveTopics } from "@/lib/db/queries";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const topics = await getActiveTopics();
+  const topics = await getPublicActiveTopics();
   return NextResponse.json({ topics });
 }

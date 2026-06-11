@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { getServerSession } from "next-auth";
+import { eq } from "drizzle-orm";
 import { authOptions } from "@/lib/auth/config";
 import { isAdminEmail } from "@/lib/auth/admin";
 import { db } from "@/lib/db/client";
@@ -26,18 +27,20 @@ export async function POST(request: NextRequest) {
 
   const parsed = topicSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid topic" }, { status: 400 });
+  const slug = slugify(parsed.data.name);
+
+  const [existing] = await db.select({ id: topics.id }).from(topics).where(eq(topics.slug, slug)).limit(1);
+  if (existing) {
+    return NextResponse.json({ error: "A topic with this slug already exists", slug }, { status: 409 });
+  }
 
   const [topic] = await db
     .insert(topics)
     .values({
       ...parsed.data,
-      slug: slugify(parsed.data.name),
+      slug,
       status: "active",
       sortOrder: 100,
-    })
-    .onConflictDoUpdate({
-      target: topics.slug,
-      set: { ...parsed.data, updatedAt: new Date() },
     })
     .returning();
 
