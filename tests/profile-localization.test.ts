@@ -100,6 +100,7 @@ test("database translation payloads can serve partial verified strings", () => {
       title: "Learn Anything",
       action: "Continue",
       unchanged: "inspir",
+      languageSpecific: "Blog",
       empty: "Saved",
     },
   };
@@ -109,12 +110,15 @@ test("database translation payloads can serve partial verified strings", () => {
       title: "Aprende cualquier cosa",
       action: "Continuar",
       unchanged: "inspir",
+      languageSpecific: "Blog",
       empty: "",
       unknown: "Ignored",
-    }),
+    }, "Spanish"),
     {
       title: "Aprende cualquier cosa",
       action: "Continuar",
+      unchanged: "inspir",
+      languageSpecific: "Blog",
     },
   );
 });

@@ -1,5 +1,6 @@
 import { defaultLanguage, normalizeLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import { getAppTranslation } from "@/lib/db/queries";
+import { isValidFieldTranslation } from "@/lib/i18n/translation-field-validation";
 import type { TranslationBundle, TranslationSource } from "@/lib/i18n/translation-types";
 
 type CachedDbBundle = {
@@ -57,7 +58,7 @@ async function readDatabaseTranslationBundle(source: TranslationSource, language
     return null;
   }
 
-  const strings = translationStringsFromDbPayload(source, row.payload);
+  const strings = translationStringsFromDbPayload(source, row.payload, language);
   if (!Object.keys(strings).length) return null;
 
   return buildTranslationBundle(source, language, strings);
@@ -66,12 +67,15 @@ async function readDatabaseTranslationBundle(source: TranslationSource, language
 export function translationStringsFromDbPayload(
   source: Pick<TranslationSource, "sourceStrings">,
   payload: Record<string, unknown>,
+  language?: string,
 ) {
   const strings: Record<string, string> = {};
   for (const [key, sourceText] of Object.entries(source.sourceStrings)) {
     const translated = payload[key];
-    if (typeof translated !== "string" || !translated.trim() || translated === sourceText) continue;
-    strings[key] = translated;
+    const value = typeof translated === "string" ? translated : undefined;
+    if (value === undefined) continue;
+    if (!isValidFieldTranslation(sourceText, value, language)) continue;
+    strings[key] = value;
   }
   return strings;
 }

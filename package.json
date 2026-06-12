@@ -26,6 +26,7 @@
     "memory:materialize": "tsx scripts/materialize-chat-memory.ts",
     "memory:synthesize": "tsx scripts/synthesize-memory.ts",
     "translations:status": "tsx scripts/status-curated-translations.ts",
+    "translations:status-db": "tsx scripts/status-db-translations.ts",
     "translations:export": "tsx scripts/export-curated-translations.ts",
     "translations:export-missing": "tsx scripts/export-curated-translations.ts --missing-only",
     "translations:bundle": "tsx scripts/bundle-curated-translations.ts",
