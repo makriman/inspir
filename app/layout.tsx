@@ -4,7 +4,7 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
-import { getRequestLanguageConfig } from "@/lib/i18n/request-locale";
+import { getRequestLanguageConfig, getRequestPathname } from "@/lib/i18n/request-locale";
 import { localizedMarketingMetadata } from "@/lib/i18n/metadata";
 import {
   absoluteUrl,
@@ -112,11 +112,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const languageConfig = await getRequestLanguageConfig();
+  const [languageConfig, pathname] = await Promise.all([getRequestLanguageConfig(), getRequestPathname()]);
+  const isChatAppPath = pathname === "/chat" || pathname.startsWith("/chat/");
   return (
     <html lang={languageConfig.locale} dir={languageConfig.dir} className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-[#171614] text-white">
-        <JsonLdScripts items={rootJsonLd} />
+        {isChatAppPath ? null : <JsonLdScripts items={rootJsonLd} />}
         {children}
         <PwaInstallPrompt />
       </body>

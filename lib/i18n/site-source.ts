@@ -131,8 +131,10 @@ export function isKnownSiteTranslationNamespace(namespace: string) {
 
 export function getSiteTranslationNamespacesForPath(pathname: string) {
   const path = normalizePath(pathname);
-  const namespaces = new Set<string>([marketingShellTranslationNamespace]);
   const firstSegment = path === "/" ? "" : path.split("/").filter(Boolean)[0] ?? "";
+  if (firstSegment === "chat") return [];
+
+  const namespaces = new Set<string>([marketingShellTranslationNamespace]);
 
   if (path === "/") namespaces.add("route:home");
   else if (firstSegment === "privacy") namespaces.add("legal:privacy");
@@ -142,8 +144,6 @@ export function getSiteTranslationNamespacesForPath(pathname: string) {
     namespaces.add("route:blog");
     const [, maybeSlug] = path.match(/^\/blog\/([^/]+)$/) ?? [];
     if (maybeSlug && maybeSlug !== "category") namespaces.add(`blog:${maybeSlug}`);
-  } else if (firstSegment === "chat") {
-    namespaces.add("route:chat-public");
   } else {
     const routeNamespace = `route:${firstSegment || "home"}`;
     if (staticSiteTranslationNamespaces.includes(routeNamespace as (typeof staticSiteTranslationNamespaces)[number])) {

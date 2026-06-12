@@ -2100,7 +2100,7 @@ function TopicIntroCard({ topic, language }: { topic: Topic; language: string })
         <h2>{topic.name}</h2>
       </div>
       <p>{topic.description}</p>
-      <div className="bubble-topic-seo-grid">
+      <div className="bubble-topic-insight-grid">
         <section>
           <strong>Who it helps</strong>
           <span>{seo.who}</span>
@@ -2139,7 +2139,7 @@ function GuestFeatureGate({ topic, featureName, language }: { topic: Topic; feat
         <TopicIntroCard topic={topic} language={language} />
         <div className="bubble-guest-feature-card">
           <Sparkles size={26} />
-          <span>Free public learning mode</span>
+          <span>Sign in to keep learning</span>
           <h2>Continue with Google to use {featureName}.</h2>
           <p>
             {seo.description} Sign in keeps your progress, score, generated activities, and

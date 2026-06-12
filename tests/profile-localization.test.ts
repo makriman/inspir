@@ -154,10 +154,7 @@ test("site translation namespaces are segmented by route and content", () => {
     marketingShellTranslationNamespace,
     "legal:privacy",
   ]);
-  assert.deepEqual(getSiteTranslationNamespacesForPath("/chat/learn-anything"), [
-    marketingShellTranslationNamespace,
-    "route:chat-public",
-  ]);
+  assert.deepEqual(getSiteTranslationNamespacesForPath("/chat/learn-anything"), []);
 
   const shellValues = new Set(Object.values(getSiteSourceStrings(marketingShellTranslationNamespace)));
   assert.ok(shellValues.has("Start"));

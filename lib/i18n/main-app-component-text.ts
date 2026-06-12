@@ -422,7 +422,7 @@ export const mainAppComponentText = [
   "Foreignness can be useful and watched",
   "Formative years before public power",
   "Fractions, supply and demand, Newton's laws...",
-  "Free public learning mode",
+  "Sign in to keep learning",
   "Freedman accountant",
   "Frequent evidence notes and uncertainty labels.",
   "Friendly builder",

@@ -497,20 +497,20 @@ a {
   letter-spacing: 0;
 }
 
-.bubble-topic-seo-grid {
+.bubble-topic-insight-grid {
   display: grid;
   margin-top: 16px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
-.bubble-topic-seo-grid section {
+.bubble-topic-insight-grid section {
   border-radius: 8px;
   background: rgb(4 5 8 / 0.06);
   padding: 12px;
 }
 
-.bubble-topic-seo-grid strong {
+.bubble-topic-insight-grid strong {
   display: block;
   margin-bottom: 6px;
   color: rgb(4 5 8);
@@ -519,7 +519,7 @@ a {
   letter-spacing: 0;
 }
 
-.bubble-topic-seo-grid span {
+.bubble-topic-insight-grid span {
   margin: 0;
   color: rgb(42 46 54);
   font-size: 13px;
@@ -8697,7 +8697,7 @@ a {
     font-size: 11px;
   }
 
-  .bubble-topic-seo-grid {
+  .bubble-topic-insight-grid {
     grid-template-columns: 1fr;
   }
 
