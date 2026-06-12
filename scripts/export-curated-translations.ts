@@ -33,6 +33,7 @@ type Args = {
   languages: SupportedLanguage[];
   namespaces: string[];
   force: boolean;
+  missingOnly: boolean;
   chunkSize?: number;
 };
 
@@ -41,11 +42,27 @@ const args = parseArgs(process.argv.slice(2));
 for (const language of args.languages) {
   for (const namespace of args.namespaces) {
     const source = sourceForNamespace(namespace);
-    const sourceEntries = Object.entries(source.sourceStrings);
-    const entryChunks = args.chunkSize ? chunkArray(sourceEntries, args.chunkSize) : [sourceEntries];
     const existingValues = args.force
       ? new Map<string, string>()
       : readExistingValuesForNamespace(args.dir, language, namespace, source.sourceStrings);
+    const sourceEntries = Object.entries(source.sourceStrings).filter(([key]) => {
+      return !args.missingOnly || !existingValues.has(key);
+    });
+
+    if (!sourceEntries.length) {
+      console.log(
+        JSON.stringify({
+          event: "curated_translation_export_no_missing",
+          language,
+          namespace,
+          totalEntries: Object.keys(source.sourceStrings).length,
+          existingEntries: existingValues.size,
+        }),
+      );
+      continue;
+    }
+
+    const entryChunks = args.chunkSize ? chunkArray(sourceEntries, args.chunkSize) : [sourceEntries];
 
     for (let chunkIndex = 0; chunkIndex < entryChunks.length; chunkIndex += 1) {
       const filePath = packPath(args.dir, language, namespace, entryChunks.length > 1 ? chunkIndex : undefined, entryChunks.length);
@@ -79,6 +96,9 @@ for (const language of args.languages) {
           namespace,
           filePath,
           entries: pack.entries.length,
+          missingOnly: args.missingOnly,
+          existingEntries: existingValues.size,
+          totalEntries: Object.keys(source.sourceStrings).length,
           part: pack.part,
         }),
       );
@@ -182,6 +202,7 @@ function parseArgs(rawArgs: string[]): Args {
   let allNamespaces = false;
   let dir = "translations/curated";
   let force = false;
+  let missingOnly = false;
   let chunkSize: number | undefined;
 
   for (let index = 0; index < rawArgs.length; index += 1) {
@@ -207,6 +228,8 @@ function parseArgs(rawArgs: string[]): Args {
       allNamespaces = true;
     } else if (arg === "--force") {
       force = true;
+    } else if (arg === "--missing-only") {
+      missingOnly = true;
     } else if (arg === "--chunk-size") {
       chunkSize = readPositiveInteger(rawArgs[index + 1]);
       index += 1;
@@ -224,6 +247,7 @@ function parseArgs(rawArgs: string[]): Args {
       allNamespaces ? [mainAppTranslationNamespace, ...getAllSiteTranslationNamespaces()] : namespaces,
     ),
     force,
+    missingOnly,
     chunkSize,
   };
 }

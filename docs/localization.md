@@ -18,6 +18,16 @@ For large namespaces, split the pack into smaller files that can be assigned to 
 pnpm translations:export -- --languages=Icelandic --namespace=main-app --dir=translations/curated --chunk-size=250
 ```
 
+To continue a partially translated language, export only the missing keys:
+
+```bash
+pnpm translations:export-missing -- --languages=Hindi --namespace=main-app --dir=translations/curated --chunk-size=250
+```
+
+`translations:export-missing` reads existing curated packs for that language/namespace and writes only
+entries without a validated value. Use this for parallel translation batches so completed strings are
+not reworked or overwritten.
+
 Chunk files are named like `main-app.part-001-of-010.json`. Before import, compact the chunk files
 into the one-file-per-language bundle format:
 
