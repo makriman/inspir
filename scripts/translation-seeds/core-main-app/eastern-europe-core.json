@@ -1,0 +1,464 @@
+{
+  "translations": {
+    "Help inspir fit your age": {
+      "Russian": "Помогите inspir подстроиться под ваш возраст",
+      "Ukrainian": "Допоможіть inspir підлаштуватися під ваш вік",
+      "Polish": "Pomóż inspir dopasować się do Twojego wieku",
+      "Romanian": "Ajută inspir să se adapteze vârstei tale",
+      "Czech": "Pomozte inspir přizpůsobit se vašemu věku",
+      "Hungarian": "Segíts, hogy az inspir igazodjon az életkorodhoz",
+      "Greek": "Βοηθήστε το inspir να προσαρμοστεί στην ηλικία σας",
+      "Turkish": "inspir'in yaşınıza uyum sağlamasına yardımcı olun"
+    },
+    "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.": {
+      "Russian": "Укажите дату рождения, чтобы мы могли создать учебный опыт, подходящий вашему возрасту. Мы используем ее, чтобы настроить примеры, тон и границы безопасности.",
+      "Ukrainian": "Укажіть дату народження, щоб ми могли створити навчальний досвід, відповідний вашому віку. Ми використовуємо її, щоб налаштувати приклади, тон і межі безпеки.",
+      "Polish": "Podaj datę urodzenia, abyśmy mogli stworzyć naukę odpowiednią do Twojego wieku. Używamy jej do dostosowania przykładów, tonu i granic bezpieczeństwa.",
+      "Romanian": "Spune-ne data ta de naștere ca să putem crea o experiență de învățare potrivită vârstei. O folosim pentru a ajusta exemplele, tonul și limitele de siguranță.",
+      "Czech": "Zadejte své datum narození, abychom mohli vytvořit výuku přiměřenou vašemu věku. Používáme ho k úpravě příkladů, tónu a bezpečnostních hranic.",
+      "Hungarian": "Add meg a születési dátumodat, hogy az életkorodnak megfelelő tanulási élményt alakíthassunk ki. Ezzel igazítjuk a példákat, a hangnemet és a biztonsági határokat.",
+      "Greek": "Πείτε μας την ημερομηνία γέννησής σας, ώστε να δημιουργήσουμε μια μαθησιακή εμπειρία κατάλληλη για την ηλικία σας. Τη χρησιμοποιούμε για να προσαρμόζουμε παραδείγματα, ύφος και όρια ασφάλειας.",
+      "Turkish": "Yaşınıza uygun bir öğrenme deneyimi oluşturabilmemiz için doğum tarihinizi söyleyin. Bunu örnekleri, üslubu ve güvenlik sınırlarını ayarlamak için kullanırız."
+    },
+    "Date of birth": {
+      "Russian": "Дата рождения",
+      "Ukrainian": "Дата народження",
+      "Polish": "Data urodzenia",
+      "Romanian": "Data nașterii",
+      "Czech": "Datum narození",
+      "Hungarian": "Születési dátum",
+      "Greek": "Ημερομηνία γέννησης",
+      "Turkish": "Doğum tarihi"
+    },
+    "Continue": {
+      "Russian": "Продолжить",
+      "Ukrainian": "Продовжити",
+      "Polish": "Kontynuuj",
+      "Romanian": "Continuă",
+      "Czech": "Pokračovat",
+      "Hungarian": "Folytatás",
+      "Greek": "Συνέχεια",
+      "Turkish": "Devam et"
+    },
+    "Saving...": {
+      "Russian": "Сохранение...",
+      "Ukrainian": "Збереження...",
+      "Polish": "Zapisywanie...",
+      "Romanian": "Se salvează...",
+      "Czech": "Ukládání...",
+      "Hungarian": "Mentés...",
+      "Greek": "Αποθήκευση...",
+      "Turkish": "Kaydediliyor..."
+    },
+    "Please enter a valid date of birth.": {
+      "Russian": "Введите действительную дату рождения.",
+      "Ukrainian": "Введіть дійсну дату народження.",
+      "Polish": "Wpisz prawidłową datę urodzenia.",
+      "Romanian": "Introduceți o dată de naștere validă.",
+      "Czech": "Zadejte platné datum narození.",
+      "Hungarian": "Adj meg egy érvényes születési dátumot.",
+      "Greek": "Εισαγάγετε μια έγκυρη ημερομηνία γέννησης.",
+      "Turkish": "Lütfen geçerli bir doğum tarihi girin."
+    },
+    "Age": {
+      "Russian": "Возраст",
+      "Ukrainian": "Вік",
+      "Polish": "Wiek",
+      "Romanian": "Vârstă",
+      "Czech": "Věk",
+      "Hungarian": "Életkor",
+      "Greek": "Ηλικία",
+      "Turkish": "Yaş"
+    },
+    "Add your date of birth": {
+      "Russian": "Добавьте дату рождения",
+      "Ukrainian": "Додайте дату народження",
+      "Polish": "Dodaj datę urodzenia",
+      "Romanian": "Adaugă data nașterii",
+      "Czech": "Přidejte datum narození",
+      "Hungarian": "Add meg a születési dátumodat",
+      "Greek": "Προσθέστε την ημερομηνία γέννησής σας",
+      "Turkish": "Doğum tarihinizi ekleyin"
+    },
+    "Open learning store": {
+      "Russian": "Открыть магазин обучения",
+      "Ukrainian": "Відкрити магазин навчання",
+      "Polish": "Otwórz sklep z nauką",
+      "Romanian": "Deschide magazinul de învățare",
+      "Czech": "Otevřít obchod s učením",
+      "Hungarian": "Tanulási áruház megnyitása",
+      "Greek": "Άνοιγμα καταστήματος μάθησης",
+      "Turkish": "Öğrenme mağazasını aç"
+    },
+    "Search": {
+      "Russian": "Поиск",
+      "Ukrainian": "Пошук",
+      "Polish": "Szukaj",
+      "Romanian": "Caută",
+      "Czech": "Hledat",
+      "Hungarian": "Keresés",
+      "Greek": "Αναζήτηση",
+      "Turkish": "Ara"
+    },
+    "Search chats": {
+      "Russian": "Искать в чатах",
+      "Ukrainian": "Шукати в чатах",
+      "Polish": "Szukaj czatów",
+      "Romanian": "Caută conversații",
+      "Czech": "Hledat v chatech",
+      "Hungarian": "Csevegések keresése",
+      "Greek": "Αναζήτηση συνομιλιών",
+      "Turkish": "Sohbetlerde ara"
+    },
+    "free guest messages used": {
+      "Russian": "бесплатных гостевых сообщений использовано",
+      "Ukrainian": "безкоштовних гостьових повідомлень використано",
+      "Polish": "wykorzystano darmowe wiadomości gościa",
+      "Romanian": "mesaje gratuite pentru oaspeți folosite",
+      "Czech": "využité bezplatné zprávy hosta",
+      "Hungarian": "felhasznált ingyenes vendégüzenet",
+      "Greek": "δωρεάν μηνύματα επισκέπτη χρησιμοποιήθηκαν",
+      "Turkish": "ücretsiz misafir mesajı kullanıldı"
+    },
+    "Continue learning": {
+      "Russian": "Продолжить обучение",
+      "Ukrainian": "Продовжити навчання",
+      "Polish": "Kontynuuj naukę",
+      "Romanian": "Continuă să înveți",
+      "Czech": "Pokračovat v učení",
+      "Hungarian": "Tanulás folytatása",
+      "Greek": "Συνέχεια μάθησης",
+      "Turkish": "Öğrenmeye devam et"
+    },
+    "Easy Google login, then inspir stores your learning history, language preference, and chats so everything is ready next time. inspir stays free to use.": {
+      "Russian": "Простой вход через Google, затем inspir сохраняет вашу историю обучения, языковые настройки и чаты, чтобы в следующий раз все было готово. inspir остается бесплатным.",
+      "Ukrainian": "Простий вхід через Google, потім inspir зберігає вашу історію навчання, мовні налаштування та чати, щоб наступного разу все було готово. inspir залишається безкоштовним.",
+      "Polish": "Łatwe logowanie przez Google, a potem inspir zapisuje Twoją historię nauki, preferencje językowe i czaty, aby następnym razem wszystko było gotowe. inspir pozostaje bezpłatny.",
+      "Romanian": "Autentificare ușoară cu Google, apoi inspir îți salvează istoricul de învățare, preferința de limbă și conversațiile, ca totul să fie gata data viitoare. inspir rămâne gratuit.",
+      "Czech": "Snadné přihlášení přes Google, poté inspir uloží vaši historii učení, jazykové nastavení a chaty, aby bylo příště vše připravené. inspir zůstává zdarma.",
+      "Hungarian": "Egyszerű Google-bejelentkezés, majd az inspir menti a tanulási előzményeidet, a nyelvi beállításodat és a csevegéseidet, hogy legközelebb minden készen álljon. Az inspir továbbra is ingyenes.",
+      "Greek": "Εύκολη σύνδεση με Google και μετά το inspir αποθηκεύει το ιστορικό μάθησης, την προτίμηση γλώσσας και τις συνομιλίες σας, ώστε όλα να είναι έτοιμα την επόμενη φορά. Το inspir παραμένει δωρεάν.",
+      "Turkish": "Kolay Google girişiyle başlayın; ardından inspir öğrenme geçmişinizi, dil tercihinizi ve sohbetlerinizi kaydeder, böylece bir sonraki sefer her şey hazır olur. inspir ücretsiz kalır."
+    },
+    "Continue with Google": {
+      "Russian": "Продолжить с Google",
+      "Ukrainian": "Продовжити з Google",
+      "Polish": "Kontynuuj z Google",
+      "Romanian": "Continuă cu Google",
+      "Czech": "Pokračovat přes Google",
+      "Hungarian": "Folytatás Google-lal",
+      "Greek": "Συνέχεια με Google",
+      "Turkish": "Google ile devam et"
+    },
+    "Maybe later": {
+      "Russian": "Может быть позже",
+      "Ukrainian": "Можливо, пізніше",
+      "Polish": "Może później",
+      "Romanian": "Poate mai târziu",
+      "Czech": "Možná později",
+      "Hungarian": "Talán később",
+      "Greek": "Ίσως αργότερα",
+      "Turkish": "Belki sonra"
+    },
+    "Preferred Language": {
+      "Russian": "Предпочитаемый язык",
+      "Ukrainian": "Бажана мова",
+      "Polish": "Preferowany język",
+      "Romanian": "Limba preferată",
+      "Czech": "Preferovaný jazyk",
+      "Hungarian": "Előnyben részesített nyelv",
+      "Greek": "Προτιμώμενη γλώσσα",
+      "Turkish": "Tercih edilen dil"
+    },
+    "Choose your learning language": {
+      "Russian": "Выберите язык обучения",
+      "Ukrainian": "Оберіть мову навчання",
+      "Polish": "Wybierz język nauki",
+      "Romanian": "Alege limba de învățare",
+      "Czech": "Vyberte jazyk učení",
+      "Hungarian": "Válaszd ki a tanulási nyelvedet",
+      "Greek": "Επιλέξτε τη γλώσσα μάθησης",
+      "Turkish": "Öğrenme dilinizi seçin"
+    },
+    "Use inspir in the language that feels easiest. You can change this later from your profile.": {
+      "Russian": "Используйте inspir на языке, который кажется вам самым удобным. Позже это можно изменить в профиле.",
+      "Ukrainian": "Користуйтеся inspir мовою, яка здається вам найзручнішою. Пізніше це можна змінити у профілі.",
+      "Polish": "Używaj inspir w języku, który jest dla Ciebie najłatwiejszy. Możesz to później zmienić w profilu.",
+      "Romanian": "Folosește inspir în limba care ți se pare cea mai ușoară. Poți schimba asta mai târziu din profil.",
+      "Czech": "Používejte inspir v jazyce, který vám připadá nejjednodušší. Později to můžete změnit v profilu.",
+      "Hungarian": "Használd az inspir-t azon a nyelven, amelyik a legkönnyebbnek érződik. Ezt később a profilodban módosíthatod.",
+      "Greek": "Χρησιμοποιήστε το inspir στη γλώσσα που σας φαίνεται πιο εύκολη. Μπορείτε να το αλλάξετε αργότερα από το προφίλ σας.",
+      "Turkish": "inspir'i size en kolay gelen dilde kullanın. Bunu daha sonra profilinizden değiştirebilirsiniz."
+    },
+    "You can switch again later from Profile.": {
+      "Russian": "Позже вы сможете снова изменить это в профиле.",
+      "Ukrainian": "Пізніше ви зможете знову змінити це у профілі.",
+      "Polish": "Możesz zmienić to ponownie później w profilu.",
+      "Romanian": "Poți schimba din nou mai târziu din Profil.",
+      "Czech": "Později to můžete znovu změnit v profilu.",
+      "Hungarian": "Később újra válthatsz a Profilban.",
+      "Greek": "Μπορείτε να το αλλάξετε ξανά αργότερα από το Προφίλ.",
+      "Turkish": "Daha sonra Profil'den tekrar değiştirebilirsiniz."
+    },
+    "Continue with English": {
+      "Russian": "Продолжить на английском",
+      "Ukrainian": "Продовжити англійською",
+      "Polish": "Kontynuuj po angielsku",
+      "Romanian": "Continuă în engleză",
+      "Czech": "Pokračovat v angličtině",
+      "Hungarian": "Folytatás angolul",
+      "Greek": "Συνέχεια στα Αγγλικά",
+      "Turkish": "İngilizce devam et"
+    },
+    "Age-appropriate learning": {
+      "Russian": "Обучение по возрасту",
+      "Ukrainian": "Навчання відповідно до віку",
+      "Polish": "Nauka odpowiednia do wieku",
+      "Romanian": "Învățare potrivită vârstei",
+      "Czech": "Učení přiměřené věku",
+      "Hungarian": "Életkornak megfelelő tanulás",
+      "Greek": "Μάθηση κατάλληλη για την ηλικία",
+      "Turkish": "Yaşa uygun öğrenme"
+    },
+    "Add your date of birth and preferred language so inspir can adapt examples, tone, safety boundaries, and app text for your learning experience.": {
+      "Russian": "Добавьте дату рождения и предпочитаемый язык, чтобы inspir мог адаптировать примеры, тон, границы безопасности и текст приложения под ваш учебный опыт.",
+      "Ukrainian": "Додайте дату народження та бажану мову, щоб inspir міг адаптувати приклади, тон, межі безпеки й текст застосунку до вашого навчання.",
+      "Polish": "Dodaj datę urodzenia i preferowany język, aby inspir mógł dostosować przykłady, ton, granice bezpieczeństwa i tekst aplikacji do Twojej nauki.",
+      "Romanian": "Adaugă data nașterii și limba preferată, ca inspir să poată adapta exemplele, tonul, limitele de siguranță și textul aplicației pentru experiența ta de învățare.",
+      "Czech": "Přidejte datum narození a preferovaný jazyk, aby inspir mohl přizpůsobit příklady, tón, bezpečnostní hranice a text aplikace vašemu učení.",
+      "Hungarian": "Add meg a születési dátumodat és az előnyben részesített nyelvet, hogy az inspir a tanulási élményedhez igazíthassa a példákat, a hangnemet, a biztonsági határokat és az alkalmazás szövegét.",
+      "Greek": "Προσθέστε την ημερομηνία γέννησης και την προτιμώμενη γλώσσα σας, ώστε το inspir να προσαρμόζει παραδείγματα, ύφος, όρια ασφάλειας και κείμενο εφαρμογής στη μαθησιακή εμπειρία σας.",
+      "Turkish": "Doğum tarihinizi ve tercih ettiğiniz dili ekleyin; böylece inspir örnekleri, üslubu, güvenlik sınırlarını ve uygulama metnini öğrenme deneyiminize göre uyarlayabilir."
+    },
+    "App text and tutoring replies will follow this setting.": {
+      "Russian": "Текст приложения и ответы наставника будут следовать этой настройке.",
+      "Ukrainian": "Текст застосунку та відповіді наставника відповідатимуть цьому налаштуванню.",
+      "Polish": "Tekst aplikacji i odpowiedzi tutora będą zgodne z tym ustawieniem.",
+      "Romanian": "Textul aplicației și răspunsurile de tutorat vor urma această setare.",
+      "Czech": "Text aplikace a odpovědi při doučování se budou řídit tímto nastavením.",
+      "Hungarian": "Az alkalmazás szövege és a korrepetálási válaszok ezt a beállítást követik.",
+      "Greek": "Το κείμενο της εφαρμογής και οι απαντήσεις διδασκαλίας θα ακολουθούν αυτήν τη ρύθμιση.",
+      "Turkish": "Uygulama metni ve öğretici yanıtları bu ayarı izler."
+    },
+    "Please enter your date of birth.": {
+      "Russian": "Введите дату рождения.",
+      "Ukrainian": "Введіть дату народження.",
+      "Polish": "Wpisz swoją datę urodzenia.",
+      "Romanian": "Introduceți data nașterii.",
+      "Czech": "Zadejte své datum narození.",
+      "Hungarian": "Add meg a születési dátumodat.",
+      "Greek": "Εισαγάγετε την ημερομηνία γέννησής σας.",
+      "Turkish": "Lütfen doğum tarihinizi girin."
+    },
+    "Learning profile": {
+      "Russian": "Учебный профиль",
+      "Ukrainian": "Навчальний профіль",
+      "Polish": "Profil nauki",
+      "Romanian": "Profil de învățare",
+      "Czech": "Učební profil",
+      "Hungarian": "Tanulási profil",
+      "Greek": "Προφίλ μάθησης",
+      "Turkish": "Öğrenme profili"
+    },
+    "Make inspir feel like it knows how you learn.": {
+      "Russian": "Настройте inspir так, чтобы он понимал, как вы учитесь.",
+      "Ukrainian": "Налаштуйте inspir так, щоб він розумів, як ви навчаєтеся.",
+      "Polish": "Spraw, aby inspir lepiej rozumiał, jak się uczysz.",
+      "Romanian": "Fă ca inspir să simtă că știe cum înveți.",
+      "Czech": "Nastavte inspir tak, aby věděl, jak se učíte.",
+      "Hungarian": "Állítsd be úgy az inspir-t, mintha tudná, hogyan tanulsz.",
+      "Greek": "Κάντε το inspir να νιώθει σαν να ξέρει πώς μαθαίνετε.",
+      "Turkish": "inspir'in nasıl öğrendiğinizi biliyormuş gibi hissettirmesini sağlayın."
+    },
+    "Profile details": {
+      "Russian": "Данные профиля",
+      "Ukrainian": "Дані профілю",
+      "Polish": "Szczegóły profilu",
+      "Romanian": "Detalii profil",
+      "Czech": "Podrobnosti profilu",
+      "Hungarian": "Profil adatai",
+      "Greek": "Στοιχεία προφίλ",
+      "Turkish": "Profil ayrıntıları"
+    },
+    "Your app identity": {
+      "Russian": "Ваш профиль в приложении",
+      "Ukrainian": "Ваша особистість у застосунку",
+      "Polish": "Twoja tożsamość w aplikacji",
+      "Romanian": "Identitatea ta în aplicație",
+      "Czech": "Vaše identita v aplikaci",
+      "Hungarian": "Az alkalmazásbeli azonosítód",
+      "Greek": "Η ταυτότητά σας στην εφαρμογή",
+      "Turkish": "Uygulamadaki kimliğiniz"
+    },
+    "Display name": {
+      "Russian": "Отображаемое имя",
+      "Ukrainian": "Відображуване ім'я",
+      "Polish": "Wyświetlana nazwa",
+      "Romanian": "Nume afișat",
+      "Czech": "Zobrazované jméno",
+      "Hungarian": "Megjelenített név",
+      "Greek": "Εμφανιζόμενο όνομα",
+      "Turkish": "Görünen ad"
+    },
+    "Google email": {
+      "Russian": "Адрес электронной почты Google",
+      "Ukrainian": "Електронна адреса Google",
+      "Polish": "Adres e-mail Google",
+      "Romanian": "E-mail Google",
+      "Czech": "E-mail Google",
+      "Hungarian": "Google e-mail-cím",
+      "Greek": "Email Google",
+      "Turkish": "Google e-postası"
+    },
+    "Enter a display name.": {
+      "Russian": "Введите отображаемое имя.",
+      "Ukrainian": "Введіть відображуване ім'я.",
+      "Polish": "Wpisz wyświetlaną nazwę.",
+      "Romanian": "Introduceți un nume afișat.",
+      "Czech": "Zadejte zobrazované jméno.",
+      "Hungarian": "Adj meg egy megjelenített nevet.",
+      "Greek": "Εισαγάγετε ένα εμφανιζόμενο όνομα.",
+      "Turkish": "Bir görünen ad girin."
+    },
+    "Profile saved.": {
+      "Russian": "Профиль сохранен.",
+      "Ukrainian": "Профіль збережено.",
+      "Polish": "Profil zapisany.",
+      "Romanian": "Profil salvat.",
+      "Czech": "Profil uložen.",
+      "Hungarian": "Profil mentve.",
+      "Greek": "Το προφίλ αποθηκεύτηκε.",
+      "Turkish": "Profil kaydedildi."
+    },
+    "Could not save profile.": {
+      "Russian": "Не удалось сохранить профиль.",
+      "Ukrainian": "Не вдалося зберегти профіль.",
+      "Polish": "Nie udało się zapisać profilu.",
+      "Romanian": "Profilul nu a putut fi salvat.",
+      "Czech": "Profil se nepodařilo uložit.",
+      "Hungarian": "Nem sikerült menteni a profilt.",
+      "Greek": "Δεν ήταν δυνατή η αποθήκευση του προφίλ.",
+      "Turkish": "Profil kaydedilemedi."
+    },
+    "Save profile": {
+      "Russian": "Сохранить профиль",
+      "Ukrainian": "Зберегти профіль",
+      "Polish": "Zapisz profil",
+      "Romanian": "Salvează profilul",
+      "Czech": "Uložit profil",
+      "Hungarian": "Profil mentése",
+      "Greek": "Αποθήκευση προφίλ",
+      "Turkish": "Profili kaydet"
+    },
+    "Overview": {
+      "Russian": "Обзор",
+      "Ukrainian": "Огляд",
+      "Polish": "Przegląd",
+      "Romanian": "Prezentare generală",
+      "Czech": "Přehled",
+      "Hungarian": "Áttekintés",
+      "Greek": "Επισκόπηση",
+      "Turkish": "Genel bakış"
+    },
+    "Your learning snapshot": {
+      "Russian": "Краткий обзор вашего обучения",
+      "Ukrainian": "Короткий огляд вашого навчання",
+      "Polish": "Twój krótki przegląd nauki",
+      "Romanian": "Rezumatul învățării tale",
+      "Czech": "Stručný přehled vašeho učení",
+      "Hungarian": "Tanulási pillanatképed",
+      "Greek": "Στιγμιότυπο της μάθησής σας",
+      "Turkish": "Öğrenme özetiniz"
+    },
+    "Learning score": {
+      "Russian": "Учебный балл",
+      "Ukrainian": "Навчальний бал",
+      "Polish": "Wynik nauki",
+      "Romanian": "Scor de învățare",
+      "Czech": "Skóre učení",
+      "Hungarian": "Tanulási pontszám",
+      "Greek": "Βαθμολογία μάθησης",
+      "Turkish": "Öğrenme puanı"
+    },
+    "What inspir can remember": {
+      "Russian": "Что inspir может запомнить",
+      "Ukrainian": "Що inspir може запам'ятати",
+      "Polish": "Co inspir może zapamiętać",
+      "Romanian": "Ce poate reține inspir",
+      "Czech": "Co si může inspir zapamatovat",
+      "Hungarian": "Mire emlékezhet az inspir",
+      "Greek": "Τι μπορεί να θυμάται το inspir",
+      "Turkish": "inspir'in hatırlayabilecekleri"
+    },
+    "Account and privacy": {
+      "Russian": "Аккаунт и конфиденциальность",
+      "Ukrainian": "Обліковий запис і конфіденційність",
+      "Polish": "Konto i prywatność",
+      "Romanian": "Cont și confidențialitate",
+      "Czech": "Účet a soukromí",
+      "Hungarian": "Fiók és adatvédelem",
+      "Greek": "Λογαριασμός και απόρρητο",
+      "Turkish": "Hesap ve gizlilik"
+    },
+    "Control what stays with you": {
+      "Russian": "Управляйте тем, что сохраняется за вами",
+      "Ukrainian": "Керуйте тим, що зберігається для вас",
+      "Polish": "Kontroluj, co zostaje z Tobą",
+      "Romanian": "Controlează ce rămâne cu tine",
+      "Czech": "Mějte pod kontrolou, co u vás zůstane",
+      "Hungarian": "Te döntöd el, mi marad meg rólad",
+      "Greek": "Ελέγξτε τι παραμένει μαζί σας",
+      "Turkish": "Sizinle neyin kalacağını kontrol edin"
+    },
+    "Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful for you.": {
+      "Russian": "Ваши сохраненные чаты, языковые настройки, дата рождения и учебная память используются, чтобы сделать приложение полезнее для вас.",
+      "Ukrainian": "Ваші збережені чати, мовні налаштування, дата народження та навчальна пам'ять використовуються, щоб зробити застосунок кориснішим для вас.",
+      "Polish": "Twoje zapisane czaty, preferencje językowe, data urodzenia i pamięć nauki są używane, aby aplikacja była dla Ciebie bardziej przydatna.",
+      "Romanian": "Conversațiile salvate, preferința de limbă, data nașterii și memoria de învățare sunt folosite pentru a face aplicația mai utilă pentru tine.",
+      "Czech": "Vaše uložené chaty, jazykové nastavení, datum narození a učební paměť se používají k tomu, aby pro vás byla aplikace užitečnější.",
+      "Hungarian": "A mentett csevegéseidet, nyelvi beállításodat, születési dátumodat és tanulási memóriádat arra használjuk, hogy az alkalmazás hasznosabb legyen számodra.",
+      "Greek": "Οι αποθηκευμένες συνομιλίες, η προτίμηση γλώσσας, η ημερομηνία γέννησης και η μνήμη μάθησης χρησιμοποιούνται για να γίνει η εφαρμογή πιο χρήσιμη για εσάς.",
+      "Turkish": "Kaydedilen sohbetleriniz, dil tercihiniz, doğum tarihiniz ve öğrenme belleğiniz uygulamayı sizin için daha kullanışlı hale getirmek için kullanılır."
+    },
+    "Terms": {
+      "Russian": "Условия",
+      "Ukrainian": "Умови",
+      "Polish": "Warunki",
+      "Romanian": "Termeni",
+      "Czech": "Podmínky",
+      "Hungarian": "Feltételek",
+      "Greek": "Όροι",
+      "Turkish": "Şartlar"
+    },
+    "Privacy": {
+      "Russian": "Конфиденциальность",
+      "Ukrainian": "Конфіденційність",
+      "Polish": "Prywatność",
+      "Romanian": "Confidențialitate",
+      "Czech": "Soukromí",
+      "Hungarian": "Adatvédelem",
+      "Greek": "Απόρρητο",
+      "Turkish": "Gizlilik"
+    },
+    "Logout": {
+      "Russian": "Выйти",
+      "Ukrainian": "Вийти",
+      "Polish": "Wyloguj",
+      "Romanian": "Deconectare",
+      "Czech": "Odhlásit se",
+      "Hungarian": "Kijelentkezés",
+      "Greek": "Αποσύνδεση",
+      "Turkish": "Çıkış yap"
+    },
+    "Memory": {
+      "Russian": "Память",
+      "Ukrainian": "Пам'ять",
+      "Polish": "Pamięć",
+      "Romanian": "Memorie",
+      "Czech": "Paměť",
+      "Hungarian": "Memória",
+      "Greek": "Μνήμη",
+      "Turkish": "Bellek"
+    }
+  }
+}
