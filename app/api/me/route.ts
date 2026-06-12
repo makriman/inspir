@@ -29,6 +29,7 @@ export async function PATCH(request: NextRequest) {
   }
 
   const user = await updateUserProfile(session.user.id, {
+    name: parsed.data.name,
     preferredLanguage: parsed.data.preferredLanguage
       ? normalizeLanguage(parsed.data.preferredLanguage)
       : undefined,

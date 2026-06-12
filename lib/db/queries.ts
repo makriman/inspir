@@ -201,17 +201,21 @@ export async function getUserPhotoById(userId: string) {
 export async function updateUserProfile(
   userId: string,
   input: {
+    name?: string;
     preferredLanguage?: string;
-    dateOfBirth?: string;
+    dateOfBirth?: string | null;
     dateOfBirthSource?: string;
   },
 ) {
   const [user] = await db
     .update(users)
     .set({
+      ...(input.name !== undefined ? { name: input.name } : {}),
       ...(input.preferredLanguage ? { preferredLanguage: input.preferredLanguage } : {}),
-      ...(input.dateOfBirth ? { dateOfBirth: input.dateOfBirth } : {}),
-      ...(input.dateOfBirth ? { dateOfBirthSource: input.dateOfBirthSource ?? "user" } : {}),
+      ...(input.dateOfBirth !== undefined ? { dateOfBirth: input.dateOfBirth } : {}),
+      ...(input.dateOfBirth !== undefined
+        ? { dateOfBirthSource: input.dateOfBirth ? input.dateOfBirthSource ?? "user" : null }
+        : {}),
       updatedAt: new Date(),
     })
     .where(eq(users.id, userId))

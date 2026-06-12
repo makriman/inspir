@@ -179,7 +179,7 @@ test("site translation namespaces are segmented by route and content", () => {
   assert.ok(topicValues.has("{value1} AI learning modes"));
 
   const publicChatValues = new Set(Object.values(getSiteSourceStrings("route:chat-public")));
-  assert.ok(publicChatValues.has("learning mode"));
+  assert.ok(!publicChatValues.has("learning mode"));
 });
 
 test("structured data localization translates text while preserving schema identifiers", () => {

@@ -7597,6 +7597,83 @@ a {
   line-height: 1.05;
 }
 
+.bubble-profile-details-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.bubble-profile-details-form label,
+.bubble-profile-details-language {
+  display: grid;
+  min-width: 0;
+  gap: 7px;
+}
+
+.bubble-profile-details-form label span,
+.bubble-profile-details-language > span {
+  color: rgb(255 255 255 / 0.62);
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.bubble-profile-details-form input {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  border: 1px solid rgb(255 255 255 / 0.13);
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.3);
+  color: #fff;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.bubble-profile-details-form input:disabled {
+  color: rgb(255 255 255 / 0.58);
+  background: rgb(255 255 255 / 0.045);
+}
+
+.bubble-profile-details-language {
+  grid-column: 1 / -1;
+}
+
+.bubble-profile-details-error,
+.bubble-profile-details-success {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.bubble-profile-details-error {
+  color: rgb(255 126 126);
+}
+
+.bubble-profile-details-success {
+  color: rgb(125 235 143);
+}
+
+.bubble-profile-save-button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: rgb(38 148 63);
+  color: #fff;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.bubble-profile-save-button:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
 .bubble-profile-workspace .bubble-profile-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -7665,6 +7742,10 @@ a {
   }
 
   .bubble-profile-workspace .bubble-profile-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bubble-profile-details-form {
     grid-template-columns: 1fr;
   }
 }

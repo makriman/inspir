@@ -45,7 +45,6 @@ import {
   Languages,
   Lightbulb,
   ListChecks,
-  Mail,
   MapPin,
   Menu,
   MessageCircle,
@@ -165,6 +164,12 @@ type ApiProfileUser = {
   age?: number | null;
   createdAt: string | Date;
   profileImageHash?: string | null;
+};
+
+type ProfileDetailsInput = {
+  name: string;
+  dateOfBirth: string | null;
+  preferredLanguage: string;
 };
 
 type RecentChat = {
@@ -1184,6 +1189,22 @@ function useChatClientController({
     }
   }
 
+  async function updateProfileDetails(input: ProfileDetailsInput) {
+    if (isGuest) return profileUser;
+    const response = await fetch("/api/me", {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    const data = await response.json().catch(() => null);
+    if (!response.ok || !data?.user) {
+      throw new Error(data?.error || "Could not save profile");
+    }
+    const updatedUser = profileFromApiUser(data.user);
+    setProfileUser(updatedUser);
+    return updatedUser;
+  }
+
   async function saveGuestLanguage(preferredLanguage: string) {
     window.localStorage.setItem("inspir_guest_language_selected", "1");
     window.localStorage.setItem("inspir_locale_prompt_dismissed", "1");
@@ -1404,6 +1425,7 @@ function useChatClientController({
     patchMemorySettings,
     createMemoryItem,
     updateMemoryItem,
+    updateProfileDetails,
     updatePreferredLanguage,
     saveGuestLanguage,
     deleteMemoryItem,
@@ -1600,7 +1622,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     languageSaving,
     patchMemorySettings,
     updateMemoryItem,
-    updatePreferredLanguage,
+    updateProfileDetails,
     userDisplayName,
     workspaceResetCount,
   } = controller;
@@ -1615,7 +1637,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         memoryLoading={memoryLoading}
         memorySaving={memorySaving}
         memoryError={memoryError}
-        onLanguageChange={updatePreferredLanguage}
+        onProfileSave={updateProfileDetails}
         onMemorySettings={patchMemorySettings}
         onMemoryCreate={createMemoryItem}
         onMemoryUpdate={updateMemoryItem}
@@ -6266,7 +6288,7 @@ function ProfilePanel({
   memoryLoading,
   memorySaving,
   memoryError,
-  onLanguageChange,
+  onProfileSave,
   onMemorySettings,
   onMemoryCreate,
   onMemoryUpdate,
@@ -6281,7 +6303,7 @@ function ProfilePanel({
   memoryLoading: boolean;
   memorySaving: boolean;
   memoryError: string | null;
-  onLanguageChange: (language: string) => void;
+  onProfileSave: (input: ProfileDetailsInput) => Promise<UserProfile>;
   onMemorySettings: (input: {
     enabled?: boolean;
     savedMemoryEnabled?: boolean;
@@ -6300,6 +6322,49 @@ function ProfilePanel({
   onMemoryClear: () => void;
   onClose: () => void;
 }) {
+  const [name, setName] = useState(user.name ?? "");
+  const [dateOfBirth, setDateOfBirth] = useState(user.dateOfBirth ?? "");
+  const [preferredLanguage, setPreferredLanguage] = useState<SupportedLanguage>(
+    (user.preferredLanguage as SupportedLanguage) || defaultLanguage,
+  );
+  const [detailsSaving, setDetailsSaving] = useState(false);
+  const [detailsMessage, setDetailsMessage] = useState("");
+  const [detailsError, setDetailsError] = useState("");
+  const today = new Date().toISOString().slice(0, 10);
+
+  async function submitProfileDetails(event: FormEvent) {
+    event.preventDefault();
+    const trimmedName = name.trim();
+    if (!trimmedName) {
+      setDetailsError("Enter a display name.");
+      setDetailsMessage("");
+      return;
+    }
+
+    setDetailsSaving(true);
+    setDetailsError("");
+    setDetailsMessage("");
+    const previousLanguage = user.preferredLanguage || defaultLanguage;
+    try {
+      const updatedUser = await onProfileSave({
+        name: trimmedName,
+        dateOfBirth: dateOfBirth || null,
+        preferredLanguage,
+      });
+      setName(updatedUser.name ?? "");
+      setDateOfBirth(updatedUser.dateOfBirth ?? "");
+      setPreferredLanguage((updatedUser.preferredLanguage as SupportedLanguage) || defaultLanguage);
+      setDetailsMessage("Profile saved.");
+      if ((updatedUser.preferredLanguage || defaultLanguage) !== previousLanguage) {
+        window.location.assign(localizeHref(window.location.pathname + window.location.search, updatedUser.preferredLanguage));
+      }
+    } catch (saveError) {
+      setDetailsError(saveError instanceof Error ? saveError.message : "Could not save profile.");
+    } finally {
+      setDetailsSaving(false);
+    }
+  }
+
   return (
     <main className="bubble-profile-panel bubble-profile-workspace app-scrollbar">
       <div className="bubble-profile-header">
@@ -6322,9 +6387,55 @@ function ProfilePanel({
           </div>
         </section>
 
-        <div className="bubble-profile-info">
-          <ProfileLine label="Email" value={user.email || "user@example.com"} />
-        </div>
+        <section className="bubble-profile-section">
+          <div className="bubble-profile-section-head">
+            <span>Profile details</span>
+            <h3>Your app identity</h3>
+          </div>
+          <form className="bubble-profile-details-form" onSubmit={submitProfileDetails}>
+            <label>
+              <span>Display name</span>
+              <input
+                type="text"
+                value={name}
+                maxLength={120}
+                autoComplete="name"
+                onChange={(event) => setName(event.target.value)}
+              />
+            </label>
+            <label>
+              <span>Google email</span>
+              <input type="email" value={user.email || ""} disabled aria-readonly="true" />
+            </label>
+            <label>
+              <span>Date of birth</span>
+              <input
+                type="date"
+                value={dateOfBirth}
+                max={today}
+                onChange={(event) => setDateOfBirth(event.target.value)}
+              />
+            </label>
+            <div className="bubble-profile-details-language">
+              <span>Preferred Language</span>
+              <LanguagePicker
+                currentLanguage={preferredLanguage}
+                recommendedLanguage={preferredLanguage}
+                disabled={detailsSaving || languageSaving}
+                buttonLabel="Preferred Language"
+                title="Choose your learning language"
+                description="All app text and tutoring replies follow this setting."
+                onSelect={setPreferredLanguage}
+                className="bubble-profile-language-picker"
+              />
+            </div>
+            {detailsError ? <span className="bubble-profile-details-error">{detailsError}</span> : null}
+            {detailsMessage ? <span className="bubble-profile-details-success">{detailsMessage}</span> : null}
+            <button type="submit" disabled={detailsSaving || languageSaving} className="bubble-profile-save-button">
+              {detailsSaving || languageSaving ? "Saving..." : "Save profile"}
+            </button>
+          </form>
+        </section>
 
         <section className="bubble-profile-section">
           <div className="bubble-profile-section-head">
@@ -6339,29 +6450,6 @@ function ProfilePanel({
             <ProfileStat label="Learning score" value={String(user.score ?? 0)} />
             <ProfileStat label="inspir'ed since" value={formatBubbleDate(user.createdAt)} />
           </div>
-        </section>
-
-        <section className="bubble-language-card">
-          <div className="bubble-language-card-head">
-            <div className="bubble-profile-line-icon">
-              <Languages size={22} />
-            </div>
-            <div>
-              <strong>Preferred Language</strong>
-              <span>All app text and tutoring replies follow this setting.</span>
-            </div>
-          </div>
-          <LanguagePicker
-            currentLanguage={user.preferredLanguage || defaultLanguage}
-            recommendedLanguage={user.preferredLanguage || defaultLanguage}
-            disabled={languageSaving}
-            buttonLabel="Preferred Language"
-            title="Choose your learning language"
-            description="All app text and tutoring replies follow this setting."
-            onSelect={onLanguageChange}
-            className="bubble-profile-language-picker"
-          />
-          {languageSaving ? <span className="bubble-language-saving">Saving…</span> : null}
         </section>
 
         <section className="bubble-profile-section">
@@ -6941,26 +7029,6 @@ function memoryCategoryLabel(category: string) {
     .filter(Boolean)
     .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
     .join(" ");
-}
-
-function ProfileLine({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="bubble-profile-line">
-      <div className="bubble-profile-line-icon">
-        <Mail size={32} fill="currentColor" />
-      </div>
-      <div className="bubble-profile-line-text">
-        <span>{label}</span>
-        <strong>{value}</strong>
-      </div>
-    </div>
-  );
 }
 
 function ProfileStat({ label, value }: { label: string; value: string }) {
