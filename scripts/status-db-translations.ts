@@ -18,6 +18,7 @@ import type { TranslationSource } from "@/lib/i18n/translation-types";
 type Args = {
   languages: SupportedLanguage[];
   namespaces: string[];
+  summaryOnly: boolean;
 };
 
 type DbTranslationRow = {
@@ -27,7 +28,7 @@ type DbTranslationRow = {
   payload: Record<string, unknown>;
 };
 
-const explicitEnv = new Set(Object.keys(process.env));
+const explicitEnv = new Set(Object.entries(process.env).filter(([, value]) => Boolean(value?.trim())).map(([key]) => key));
 loadEnvFile(".env.local", explicitEnv);
 loadEnvFile(".env.vercel.production.local", explicitEnv);
 loadEnvFile(".env.production.local", explicitEnv);
@@ -41,7 +42,7 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
   const queries = await import("@/lib/db/queries");
   const client = await import("@/lib/db/client");
-  const rows = (await queries.getAppTranslations(args.namespaces, args.languages)) as DbTranslationRow[];
+  const rows = (await withRetry(() => queries.getAppTranslations(args.namespaces, args.languages))) as DbTranslationRow[];
   const rowByKey = new Map(rows.map((row) => [`${row.namespace}\u0000${row.language}`, row]));
 
   const byNamespace: Record<string, { complete: number; incomplete: number; total: number }> = {};
@@ -52,6 +53,7 @@ async function main() {
     totalCount: number;
     sourceHashFresh: boolean;
     rowExists: boolean;
+    missingByBucket: Record<string, number>;
   }> = [];
   let complete = 0;
 
@@ -73,6 +75,7 @@ async function main() {
         const strings = row && sourceHashFresh ? translationStringsFromDbPayload(source, row.payload, language) : {};
         const translatedCount = Object.keys(strings).length;
         const isComplete = sourceHashFresh && translatedCount === totalCount;
+        const missingByBucket = countMissingByBucket(source.sourceStrings, strings);
 
         if (isComplete) {
           complete += 1;
@@ -86,6 +89,7 @@ async function main() {
             totalCount,
             sourceHashFresh,
             rowExists: Boolean(row),
+            missingByBucket,
           });
         }
       }
@@ -101,10 +105,24 @@ async function main() {
       incompleteCount: incomplete.length,
       byNamespace,
       total: args.languages.length * args.namespaces.length,
-      incomplete: incomplete.slice(0, 120),
-      incompleteTruncated: incomplete.length > 120,
+      ...(args.summaryOnly
+        ? {}
+        : {
+            incomplete: incomplete.slice(0, 120),
+            incompleteTruncated: incomplete.length > 120,
+          }),
     }),
   );
+}
+
+function countMissingByBucket(sourceStrings: Record<string, string>, strings: Record<string, string>) {
+  const missingByBucket: Record<string, number> = {};
+  for (const key of Object.keys(sourceStrings)) {
+    if (strings[key]?.trim()) continue;
+    const bucket = key.split(".")[0] || "other";
+    missingByBucket[bucket] = (missingByBucket[bucket] ?? 0) + 1;
+  }
+  return missingByBucket;
 }
 
 function sourceForNamespace(namespace: string): TranslationSource {
@@ -126,6 +144,7 @@ function parseArgs(rawArgs: string[]): Args {
   const namespaces: string[] = [];
   let allLanguages = false;
   let allNamespaces = false;
+  let summaryOnly = false;
 
   for (let index = 0; index < rawArgs.length; index += 1) {
     const arg = rawArgs[index];
@@ -143,6 +162,8 @@ function parseArgs(rawArgs: string[]): Args {
       namespaces.push(arg.slice("--namespace=".length));
     } else if (arg === "--all-namespaces") {
       allNamespaces = true;
+    } else if (arg === "--summary-only") {
+      summaryOnly = true;
     }
   }
 
@@ -151,6 +172,7 @@ function parseArgs(rawArgs: string[]): Args {
     namespaces: normalizeRequestedNamespaces(
       allNamespaces ? [mainAppTranslationNamespace, ...getAllSiteTranslationNamespaces()] : namespaces,
     ),
+    summaryOnly,
   };
 }
 
@@ -196,8 +218,8 @@ function loadEnvFile(filename: string, protectedKeys: Set<string>) {
     if (!match) continue;
 
     const [, key, rawValue] = match;
-    if (protectedKeys.has(key)) continue;
     const value = parseEnvValue(rawValue);
+    if (protectedKeys.has(key) && process.env[key]?.trim()) continue;
     if (value) process.env[key] = value;
   }
 }
@@ -208,4 +230,18 @@ function parseEnvValue(rawValue: string) {
     return value.slice(1, -1);
   }
   return value;
+}
+
+async function withRetry<T>(operation: () => Promise<T>, attempts = 3): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      return await operation();
+    } catch (error) {
+      lastError = error;
+      if (attempt === attempts) break;
+      await new Promise((resolve) => setTimeout(resolve, 400 * attempt));
+    }
+  }
+  throw lastError;
 }

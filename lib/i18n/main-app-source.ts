@@ -177,6 +177,9 @@ function isTranslatableComponentText(text: string) {
   if (!value) return false;
   if (/^[-–]\s+/.test(value)) return false;
   if (/^\d+\.\s+/.test(value)) return false;
+  if (/^\d{1,4}\s*(?:BCE|CE)$/.test(value)) return false;
+  if (/^\d+\s*[-–]\s*\d+\s*(?:min|mins|minutes|sec|secs|hours?|hrs?)$/i.test(value)) return false;
+  if (/^\d+-minute\b/i.test(value)) return false;
   if (internalPromptComponentText.has(value)) return false;
   if (/^\[[^\]]+\]$/.test(value)) return false;
   if (/\b[a-z]+(?:\s*\|\s*)[A-Z]?[A-Za-z]+\b/.test(value)) return false;
