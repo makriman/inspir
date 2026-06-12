@@ -1,0 +1,418 @@
+{
+  "translations": {
+    "Help inspir fit your age": {
+      "Swahili": "Saidia inspir ilingane na umri wako",
+      "Afrikaans": "Help inspir by jou ouderdom pas",
+      "Amharic": "inspir ከዕድሜዎ ጋር እንዲስማማ ያግዙ",
+      "Yoruba": "Ran inspir lọwọ lati ba ọjọ-ori rẹ mu",
+      "Zulu": "Siza i-inspir ilingane neminyaka yakho",
+      "Hausa": "Taimaka wa inspir ya dace da shekarunka",
+      "Somali": "Ka caawi inspir inuu ku habboonaado da'daada"
+    },
+    "Tell us your date of birth so we can build an age-appropriate learning experience. We use it to adjust examples, tone, and safety boundaries.": {
+      "Swahili": "Tuambie tarehe yako ya kuzaliwa ili tujenge uzoefu wa kujifunza unaofaa umri wako. Tunaitumia kurekebisha mifano, mtindo wa lugha, na mipaka ya usalama.",
+      "Afrikaans": "Vertel ons jou geboortedatum sodat ons 'n ouderdomsgeskikte leerervaring kan bou. Ons gebruik dit om voorbeelde, toon en veiligheidsgrense aan te pas.",
+      "Amharic": "ዕድሜዎን የሚመጥን የመማር ተሞክሮ ለመገንባት የትውልድ ቀንዎን ይንገሩን። ምሳሌዎችን፣ የንግግር ቅርጽን እና የደህንነት ገደቦችን ለማስተካከል እንጠቀምበታለን።",
+      "Yoruba": "Sọ ọjọ ibi rẹ fun wa ki a le kọ iriri ẹkọ ti o yẹ fun ọjọ-ori rẹ. A nlo o lati ṣatunṣe awọn apẹẹrẹ, ohun orin, ati awọn aala aabo.",
+      "Zulu": "Sitshele usuku lwakho lokuzalwa ukuze sakhe ulwazi lokufunda olufanele iminyaka yakho. Silusebenzisa ukulungisa izibonelo, ithoni, nemingcele yokuphepha.",
+      "Hausa": "Ka gaya mana ranar haihuwarka domin mu gina ƙwarewar koyo da ta dace da shekarunka. Muna amfani da ita don daidaita misalai, salon magana, da iyakokin tsaro.",
+      "Somali": "Noo sheeg taariikhda dhalashadaada si aan u dhisno waayo-aragnimo waxbarasho oo ku habboon da'daada. Waxaan u isticmaalnaa inaan ku hagaajino tusaalooyin, codka hadalka, iyo xuduudaha badbaadada."
+    },
+    "Date of birth": {
+      "Swahili": "Tarehe ya kuzaliwa",
+      "Afrikaans": "Geboortedatum",
+      "Amharic": "የትውልድ ቀን",
+      "Yoruba": "Ọjọ ibi",
+      "Zulu": "Usuku lokuzalwa",
+      "Hausa": "Ranar haihuwa",
+      "Somali": "Taariikhda dhalashada"
+    },
+    "Continue": {
+      "Swahili": "Endelea",
+      "Afrikaans": "Gaan voort",
+      "Amharic": "ቀጥል",
+      "Yoruba": "Tẹsiwaju",
+      "Zulu": "Qhubeka",
+      "Hausa": "Ci gaba",
+      "Somali": "Sii wad"
+    },
+    "Saving...": {
+      "Swahili": "Inahifadhi...",
+      "Afrikaans": "Stoor tans...",
+      "Amharic": "በማስቀመጥ ላይ...",
+      "Yoruba": "N fipamọ...",
+      "Zulu": "Kuyalondolozwa...",
+      "Hausa": "Ana adanawa...",
+      "Somali": "Waa la kaydinayaa..."
+    },
+    "Please enter a valid date of birth.": {
+      "Swahili": "Tafadhali weka tarehe halali ya kuzaliwa.",
+      "Afrikaans": "Voer asseblief 'n geldige geboortedatum in.",
+      "Amharic": "እባክዎ ትክክለኛ የትውልድ ቀን ያስገቡ።",
+      "Yoruba": "Jọwọ tẹ ọjọ ibi to wulo sii.",
+      "Zulu": "Sicela ufake usuku lokuzalwa oluvumelekile.",
+      "Hausa": "Da fatan za a shigar da ranar haihuwa mai inganci.",
+      "Somali": "Fadlan geli taariikh dhalasho oo sax ah."
+    },
+    "Age": {
+      "Swahili": "Umri",
+      "Afrikaans": "Ouderdom",
+      "Amharic": "ዕድሜ",
+      "Yoruba": "Ọjọ-ori",
+      "Zulu": "Iminyaka",
+      "Hausa": "Shekaru",
+      "Somali": "Da'"
+    },
+    "Add your date of birth": {
+      "Swahili": "Ongeza tarehe yako ya kuzaliwa",
+      "Afrikaans": "Voeg jou geboortedatum by",
+      "Amharic": "የትውልድ ቀንዎን ያክሉ",
+      "Yoruba": "Fi ọjọ ibi rẹ kun",
+      "Zulu": "Engeza usuku lwakho lokuzalwa",
+      "Hausa": "Ƙara ranar haihuwarka",
+      "Somali": "Ku dar taariikhda dhalashadaada"
+    },
+    "Open learning store": {
+      "Swahili": "Fungua duka la kujifunza",
+      "Afrikaans": "Maak leerwinkel oop",
+      "Amharic": "የመማሪያ መደብርን ክፈት",
+      "Yoruba": "Ṣii ile itaja ẹkọ",
+      "Zulu": "Vula isitolo sokufunda",
+      "Hausa": "Buɗe shagon koyo",
+      "Somali": "Fur dukaanka waxbarashada"
+    },
+    "Search": {
+      "Swahili": "Tafuta",
+      "Afrikaans": "Soek",
+      "Amharic": "ፈልግ",
+      "Yoruba": "Wa",
+      "Zulu": "Sesha",
+      "Hausa": "Bincika",
+      "Somali": "Raadi"
+    },
+    "Search chats": {
+      "Swahili": "Tafuta mazungumzo",
+      "Afrikaans": "Soek kletse",
+      "Amharic": "ውይይቶችን ፈልግ",
+      "Yoruba": "Wa ninu awọn iwiregbe",
+      "Zulu": "Sesha izingxoxo",
+      "Hausa": "Bincika tattaunawa",
+      "Somali": "Raadi sheekaysiyada"
+    },
+    "free guest messages used": {
+      "Swahili": "ujumbe wa bure wa mgeni umetumika",
+      "Afrikaans": "gratis gasboodskappe gebruik",
+      "Amharic": "ነፃ የእንግዳ መልዕክቶች ተጠቅመዋል",
+      "Yoruba": "awọn ifiranṣẹ alejo ọfẹ ti lo",
+      "Zulu": "imilayezo yesivakashi yamahhala isetshenzisiwe",
+      "Hausa": "an yi amfani da saƙonnin baƙo kyauta",
+      "Somali": "farriimaha martida bilaashka ah waa la isticmaalay"
+    },
+    "Continue learning": {
+      "Swahili": "Endelea kujifunza",
+      "Afrikaans": "Hou aan leer",
+      "Amharic": "መማርዎን ይቀጥሉ",
+      "Yoruba": "Tẹsiwaju kikọ",
+      "Zulu": "Qhubeka nokufunda",
+      "Hausa": "Ci gaba da koyo",
+      "Somali": "Sii wad waxbarashada"
+    },
+    "Easy Google login, then inspir stores your learning history, language preference, and chats so everything is ready next time. inspir stays free to use.": {
+      "Swahili": "Ingia kwa Google kwa urahisi, kisha inspir huhifadhi historia yako ya kujifunza, upendeleo wa lugha, na mazungumzo ili kila kitu kiwe tayari wakati ujao. inspir inaendelea kuwa bure kutumia.",
+      "Afrikaans": "Maklike Google-aanmelding, dan bêre inspir jou leergeskiedenis, taalvoorkeur en kletse sodat alles volgende keer gereed is. inspir bly gratis om te gebruik.",
+      "Amharic": "ቀላል የGoogle መግቢያ ከዚያ inspir የመማር ታሪክዎን፣ የቋንቋ ምርጫዎን እና ውይይቶችዎን ይቆጥባል፣ ስለዚህ በሚቀጥለው ጊዜ ሁሉም ነገር ዝግጁ ይሆናል። inspir ለመጠቀም ነፃ ነው።",
+      "Yoruba": "Ìwọlé Google rọrùn, lẹhinna inspir máa n fipamọ itan ẹkọ rẹ, ayanfẹ ede, ati awọn iwiregbe rẹ ki ohun gbogbo le ṣetan nigbamii. inspir ṣi jẹ ọfẹ lati lo.",
+      "Zulu": "Ukungena nge-Google kulula, bese i-inspir igcina umlando wakho wokufunda, ulimi oluthandayo, nezingxoxo ukuze konke kulunge ngokuzayo. i-inspir ihlala imahhala ukuyisebenzisa.",
+      "Hausa": "Shiga da Google cikin sauƙi, sannan inspir yana adana tarihin koyonka, zaɓin harshe, da tattaunawarka don komai ya kasance a shirye gaba. inspir yana nan kyauta don amfani.",
+      "Somali": "Gelitaanka Google waa fudud yahay, kadib inspir wuxuu kaydiyaa taariikhdaada waxbarasho, doorashada luqadda, iyo sheekaysiyada si wax walba u diyaar ahaadaan marka xigta. inspir weli waa bilaash in la isticmaalo."
+    },
+    "Continue with Google": {
+      "Swahili": "Endelea kwa Google",
+      "Afrikaans": "Gaan voort met Google",
+      "Amharic": "በGoogle ቀጥል",
+      "Yoruba": "Tẹsiwaju pẹlu Google",
+      "Zulu": "Qhubeka nge-Google",
+      "Hausa": "Ci gaba da Google",
+      "Somali": "Ku sii wad Google"
+    },
+    "Maybe later": {
+      "Swahili": "Labda baadaye",
+      "Afrikaans": "Miskien later",
+      "Amharic": "ምናልባት በኋላ",
+      "Yoruba": "Boya nigbamii",
+      "Zulu": "Mhlawumbe kamuva",
+      "Hausa": "Wataƙila daga baya",
+      "Somali": "Malaha mar dambe"
+    },
+    "Preferred Language": {
+      "Swahili": "Lugha unayopendelea",
+      "Afrikaans": "Voorkeurtaal",
+      "Amharic": "የሚመርጡት ቋንቋ",
+      "Yoruba": "Ede ayanfẹ",
+      "Zulu": "Ulimi olukhethwayo",
+      "Hausa": "Harshen da aka fi so",
+      "Somali": "Luqadda la doorbiday"
+    },
+    "Choose your learning language": {
+      "Swahili": "Chagua lugha yako ya kujifunzia",
+      "Afrikaans": "Kies jou leertaal",
+      "Amharic": "የመማሪያ ቋንቋዎን ይምረጡ",
+      "Yoruba": "Yan ede ẹkọ rẹ",
+      "Zulu": "Khetha ulimi lwakho lokufunda",
+      "Hausa": "Zaɓi harshen koyonka",
+      "Somali": "Dooro luqaddaada waxbarashada"
+    },
+    "Use inspir in the language that feels easiest. You can change this later from your profile.": {
+      "Swahili": "Tumia inspir kwa lugha inayokurahisishia zaidi. Unaweza kubadilisha hili baadaye kwenye wasifu wako.",
+      "Afrikaans": "Gebruik inspir in die taal wat vir jou die maklikste voel. Jy kan dit later vanaf jou profiel verander.",
+      "Amharic": "inspirን ለእርስዎ ቀላል በሚመስለው ቋንቋ ይጠቀሙ። ይህንን በኋላ ከመገለጫዎ መቀየር ይችላሉ።",
+      "Yoruba": "Lo inspir ni ede ti o rọrun julọ fun ọ. O le yi e pada nigbamii lati profaili rẹ.",
+      "Zulu": "Sebenzisa i-inspir ngolimi oluzwakala lulula kuwe. Ungakushintsha lokhu kamuva kuphrofayela yakho.",
+      "Hausa": "Yi amfani da inspir a harshen da ya fi maka sauƙi. Za ka iya canza wannan daga baya a bayanan martabarka.",
+      "Somali": "Ku isticmaal inspir luqadda kuu fudud. Waxaad tan ka beddeli kartaa profile-kaaga mar dambe."
+    },
+    "You can switch again later from Profile.": {
+      "Swahili": "Unaweza kubadilisha tena baadaye kutoka kwenye Wasifu.",
+      "Afrikaans": "Jy kan later weer vanaf Profiel oorskakel.",
+      "Amharic": "በኋላ ከመገለጫ እንደገና መቀየር ይችላሉ።",
+      "Yoruba": "O le tun yipada nigbamii lati Profaili.",
+      "Zulu": "Ungashintsha futhi kamuva kusuka kuPhrofayela.",
+      "Hausa": "Za ka iya sake sauyawa daga baya daga Bayanan martaba.",
+      "Somali": "Mar dambe ayaad mar kale uga beddeli kartaa Profile-ka."
+    },
+    "Continue with English": {
+      "Swahili": "Endelea kwa Kiingereza",
+      "Afrikaans": "Gaan voort in Engels",
+      "Amharic": "በእንግሊዝኛ ቀጥል",
+      "Yoruba": "Tẹsiwaju pẹlu Gẹẹsi",
+      "Zulu": "Qhubeka ngesiNgisi",
+      "Hausa": "Ci gaba da Turanci",
+      "Somali": "Ku sii wad Ingiriisi"
+    },
+    "Age-appropriate learning": {
+      "Swahili": "Kujifunza kunakofaa umri",
+      "Afrikaans": "Ouderdomsgeskikte leer",
+      "Amharic": "ዕድሜን የሚመጥን መማር",
+      "Yoruba": "Ẹkọ ti o yẹ fun ọjọ-ori",
+      "Zulu": "Ukufunda okufanele iminyaka",
+      "Hausa": "Koyo da ya dace da shekaru",
+      "Somali": "Waxbarasho ku habboon da'da"
+    },
+    "Add your date of birth and preferred language so inspir can adapt examples, tone, safety boundaries, and app text for your learning experience.": {
+      "Swahili": "Ongeza tarehe yako ya kuzaliwa na lugha unayopendelea ili inspir iweze kubadilisha mifano, mtindo wa lugha, mipaka ya usalama, na maandishi ya app kwa uzoefu wako wa kujifunza.",
+      "Afrikaans": "Voeg jou geboortedatum en voorkeurtaal by sodat inspir voorbeelde, toon, veiligheidsgrense en appteks vir jou leerervaring kan aanpas.",
+      "Amharic": "inspir ለመማር ተሞክሮዎ ምሳሌዎችን፣ የንግግር ቅርጽን፣ የደህንነት ገደቦችን እና የመተግበሪያ ጽሑፍን እንዲያስተካክል የትውልድ ቀንዎን እና የሚመርጡትን ቋንቋ ያክሉ።",
+      "Yoruba": "Fi ọjọ ibi rẹ ati ede ayanfẹ rẹ kun ki inspir le ṣatunṣe awọn apẹẹrẹ, ohun orin, awọn aala aabo, ati ọrọ app fun iriri ẹkọ rẹ.",
+      "Zulu": "Engeza usuku lwakho lokuzalwa nolimi olukhethayo ukuze i-inspir ikwazi ukulungisa izibonelo, ithoni, imingcele yokuphepha, nombhalo wohlelo lokusebenza ukuze kuhambisane nokufunda kwakho.",
+      "Hausa": "Ƙara ranar haihuwarka da harshen da ka fi so domin inspir ya daidaita misalai, salon magana, iyakokin tsaro, da rubutun app don ƙwarewar koyonka.",
+      "Somali": "Ku dar taariikhda dhalashadaada iyo luqadda aad doorbidayso si inspir uu ugu habeeyo tusaalooyinka, codka hadalka, xuduudaha badbaadada, iyo qoraalka app-ka waayo-aragnimadaada waxbarasho."
+    },
+    "App text and tutoring replies will follow this setting.": {
+      "Swahili": "Maandishi ya app na majibu ya mwalimu yatafuata mpangilio huu.",
+      "Afrikaans": "Appteks en tutorantwoorde sal hierdie instelling volg.",
+      "Amharic": "የመተግበሪያ ጽሑፍ እና የአስተማሪ መልሶች ይህን ቅንብር ይከተላሉ።",
+      "Yoruba": "Ọrọ app ati awọn idahun olukọ yoo tẹle eto yii.",
+      "Zulu": "Umbhalo wohlelo lokusebenza nezimpendulo zokusiza ukufunda zizolandela lesi silungiselelo.",
+      "Hausa": "Rubutun app da amsoshin koyarwa za su bi wannan saitin.",
+      "Somali": "Qoraalka app-ka iyo jawaabaha macallinka waxay raaci doonaan dejintan."
+    },
+    "Please enter your date of birth.": {
+      "Swahili": "Tafadhali weka tarehe yako ya kuzaliwa.",
+      "Afrikaans": "Voer asseblief jou geboortedatum in.",
+      "Amharic": "እባክዎ የትውልድ ቀንዎን ያስገቡ።",
+      "Yoruba": "Jọwọ tẹ ọjọ ibi rẹ sii.",
+      "Zulu": "Sicela ufake usuku lwakho lokuzalwa.",
+      "Hausa": "Da fatan za a shigar da ranar haihuwarka.",
+      "Somali": "Fadlan geli taariikhda dhalashadaada."
+    },
+    "Learning profile": {
+      "Swahili": "Wasifu wa kujifunza",
+      "Afrikaans": "Leerprofiel",
+      "Amharic": "የመማር መገለጫ",
+      "Yoruba": "Profaili ẹkọ",
+      "Zulu": "Iphrofayela yokufunda",
+      "Hausa": "Bayanan martabar koyo",
+      "Somali": "Profile-ka waxbarashada"
+    },
+    "Make inspir feel like it knows how you learn.": {
+      "Swahili": "Fanya inspir ihisi kama inajua jinsi unavyojifunza.",
+      "Afrikaans": "Laat inspir voel asof dit weet hoe jy leer.",
+      "Amharic": "inspir እንዴት እንደሚማሩ የሚያውቅ እንዲመስል ያድርጉት።",
+      "Yoruba": "Jẹ ki inspir dabi ẹni pe o mọ bi o ṣe n kọ ẹkọ.",
+      "Zulu": "Yenza i-inspir izizwe sengathi iyazi ukuthi ufunda kanjani.",
+      "Hausa": "Ka sa inspir ya ji kamar ya san yadda kake koyo.",
+      "Somali": "Ka dhig inspir inuu dareemo inuu yaqaan sida aad wax u barato."
+    },
+    "Profile details": {
+      "Swahili": "Maelezo ya wasifu",
+      "Afrikaans": "Profielbesonderhede",
+      "Amharic": "የመገለጫ ዝርዝሮች",
+      "Yoruba": "Alaye profaili",
+      "Zulu": "Imininingwane yephrofayela",
+      "Hausa": "Bayanan martaba",
+      "Somali": "Faahfaahinta profile-ka"
+    },
+    "Your app identity": {
+      "Swahili": "Utambulisho wako kwenye app",
+      "Afrikaans": "Jou app-identiteit",
+      "Amharic": "የመተግበሪያ ማንነትዎ",
+      "Yoruba": "Idanimọ rẹ ninu app",
+      "Zulu": "Ubunikazi bakho kuhlelo lokusebenza",
+      "Hausa": "Shaidar ka a cikin app",
+      "Somali": "Aqoonsigaaga app-ka"
+    },
+    "Display name": {
+      "Swahili": "Jina linaloonyeshwa",
+      "Afrikaans": "Vertoonnaam",
+      "Amharic": "የሚታይ ስም",
+      "Yoruba": "Orukọ ifihan",
+      "Zulu": "Igama eliboniswayo",
+      "Hausa": "Sunan nunawa",
+      "Somali": "Magaca la muujiyo"
+    },
+    "Google email": {
+      "Swahili": "Barua pepe ya Google",
+      "Afrikaans": "Google-e-pos",
+      "Amharic": "የGoogle ኢሜይል",
+      "Yoruba": "Imeeli Google",
+      "Zulu": "I-imeyili ye-Google",
+      "Hausa": "Imel na Google",
+      "Somali": "Iimaylka Google"
+    },
+    "Enter a display name.": {
+      "Swahili": "Weka jina linaloonyeshwa.",
+      "Afrikaans": "Voer 'n vertoonnaam in.",
+      "Amharic": "የሚታይ ስም ያስገቡ።",
+      "Yoruba": "Tẹ orukọ ifihan sii.",
+      "Zulu": "Faka igama eliboniswayo.",
+      "Hausa": "Shigar da sunan nunawa.",
+      "Somali": "Geli magaca la muujiyo."
+    },
+    "Profile saved.": {
+      "Swahili": "Wasifu umehifadhiwa.",
+      "Afrikaans": "Profiel gestoor.",
+      "Amharic": "መገለጫው ተቀምጧል።",
+      "Yoruba": "A ti fipamọ profaili.",
+      "Zulu": "Iphrofayela ilondoloziwe.",
+      "Hausa": "An adana bayanan martaba.",
+      "Somali": "Profile-ka waa la kaydiyay."
+    },
+    "Could not save profile.": {
+      "Swahili": "Haikuweza kuhifadhi wasifu.",
+      "Afrikaans": "Kon nie profiel stoor nie.",
+      "Amharic": "መገለጫውን ማስቀመጥ አልተቻለም።",
+      "Yoruba": "Ko le fi profaili pamọ.",
+      "Zulu": "Ayikwazanga ukulondoloza iphrofayela.",
+      "Hausa": "Ba a iya adana bayanan martaba ba.",
+      "Somali": "Profile-ka lama kaydin karin."
+    },
+    "Save profile": {
+      "Swahili": "Hifadhi wasifu",
+      "Afrikaans": "Stoor profiel",
+      "Amharic": "መገለጫ አስቀምጥ",
+      "Yoruba": "Fi profaili pamọ",
+      "Zulu": "Londoloza iphrofayela",
+      "Hausa": "Adana bayanan martaba",
+      "Somali": "Kaydi profile-ka"
+    },
+    "Overview": {
+      "Swahili": "Muhtasari",
+      "Afrikaans": "Oorsig",
+      "Amharic": "አጠቃላይ እይታ",
+      "Yoruba": "Akopọ",
+      "Zulu": "Ukubuka konke",
+      "Hausa": "Taƙaitaccen bayani",
+      "Somali": "Dulmar"
+    },
+    "Your learning snapshot": {
+      "Swahili": "Muhtasari wako wa kujifunza",
+      "Afrikaans": "Jou leeroorsig",
+      "Amharic": "የመማርዎ አጭር ምስል",
+      "Yoruba": "Aworan kukuru ti ẹkọ rẹ",
+      "Zulu": "Isifinyezo sokufunda kwakho",
+      "Hausa": "Takaitaccen hoton koyonka",
+      "Somali": "Sawirka guud ee waxbarashadaada"
+    },
+    "Learning score": {
+      "Swahili": "Alama ya kujifunza",
+      "Afrikaans": "Leertelling",
+      "Amharic": "የመማር ነጥብ",
+      "Yoruba": "Dimegilio ẹkọ",
+      "Zulu": "Isikolo sokufunda",
+      "Hausa": "Makin koyo",
+      "Somali": "Dhibcaha waxbarashada"
+    },
+    "What inspir can remember": {
+      "Swahili": "Kile inspir inaweza kukumbuka",
+      "Afrikaans": "Wat inspir kan onthou",
+      "Amharic": "inspir ሊያስታውሰው የሚችለው",
+      "Yoruba": "Ohun ti inspir le ranti",
+      "Zulu": "Lokho i-inspir engakukhumbula",
+      "Hausa": "Abin da inspir zai iya tunawa",
+      "Somali": "Waxa inspir xasuusan karo"
+    },
+    "Account and privacy": {
+      "Swahili": "Akaunti na faragha",
+      "Afrikaans": "Rekening en privaatheid",
+      "Amharic": "መለያ እና ግላዊነት",
+      "Yoruba": "Akaunti ati ìpamọ́",
+      "Zulu": "I-akhawunti nobumfihlo",
+      "Hausa": "Asusu da sirri",
+      "Somali": "Akoon iyo asturnaan"
+    },
+    "Control what stays with you": {
+      "Swahili": "Dhibiti kinachobaki nawe",
+      "Afrikaans": "Beheer wat by jou bly",
+      "Amharic": "ከእርስዎ ጋር የሚቆየውን ይቆጣጠሩ",
+      "Yoruba": "Ṣakoso ohun ti o wa pẹlu rẹ",
+      "Zulu": "Lawula okugcina kuwe",
+      "Hausa": "Sarrafa abin da ya rage tare da kai",
+      "Somali": "Xakamee waxa kula sii jira"
+    },
+    "Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful for you.": {
+      "Swahili": "Mazungumzo yako yaliyohifadhiwa, upendeleo wa lugha, tarehe ya kuzaliwa, na kumbukumbu ya kujifunza hutumiwa kufanya app iwe na manufaa zaidi kwako.",
+      "Afrikaans": "Jou gestoorde kletse, taalvoorkeur, geboortedatum en leergeheue word gebruik om die app nuttiger vir jou te maak.",
+      "Amharic": "የተቀመጡ ውይይቶችዎ፣ የቋንቋ ምርጫዎ፣ የትውልድ ቀንዎ እና የመማር ትውስታዎ መተግበሪያውን ለእርስዎ የበለጠ ጠቃሚ ለማድረግ ይጠቅማሉ።",
+      "Yoruba": "Awọn iwiregbe ti o fipamọ, ayanfẹ ede, ọjọ ibi, ati iranti ẹkọ ni a nlo lati jẹ ki app wulo si ọ diẹ sii.",
+      "Zulu": "Izingxoxo zakho ezigciniwe, ulimi olukhethayo, usuku lokuzalwa, nenkumbulo yokufunda kusetshenziswa ukwenza uhlelo lokusebenza lube usizo kakhulu kuwe.",
+      "Hausa": "Tattaunawarka da aka adana, zaɓin harshe, ranar haihuwa, da ƙwaƙwalwar koyo ana amfani da su don sa app ya fi amfani a gare ka.",
+      "Somali": "Sheekaysiyadaada la kaydiyay, doorashada luqadda, taariikhda dhalashada, iyo xusuusta waxbarashada waxaa loo isticmaalaa in app-ku kuu noqdo mid ka faa'iido badan."
+    },
+    "Terms": {
+      "Swahili": "Masharti",
+      "Afrikaans": "Bepalings",
+      "Amharic": "ውሎች",
+      "Yoruba": "Awọn ofin",
+      "Zulu": "Imigomo",
+      "Hausa": "Sharuɗɗa",
+      "Somali": "Shuruudaha"
+    },
+    "Privacy": {
+      "Swahili": "Faragha",
+      "Afrikaans": "Privaatheid",
+      "Amharic": "ግላዊነት",
+      "Yoruba": "Ìpamọ́",
+      "Zulu": "Ubumfihlo",
+      "Hausa": "Sirri",
+      "Somali": "Asturnaan"
+    },
+    "Logout": {
+      "Swahili": "Ondoka",
+      "Afrikaans": "Meld af",
+      "Amharic": "ውጣ",
+      "Yoruba": "Jade",
+      "Zulu": "Phuma",
+      "Hausa": "Fita",
+      "Somali": "Ka bax"
+    },
+    "Memory": {
+      "Swahili": "Kumbukumbu",
+      "Afrikaans": "Geheue",
+      "Amharic": "ትውስታ",
+      "Yoruba": "Iranti",
+      "Zulu": "Inkumbulo",
+      "Hausa": "Ƙwaƙwalwa",
+      "Somali": "Xusuus"
+    }
+  }
+}
