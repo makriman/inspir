@@ -9,11 +9,14 @@ type CachedDbBundle = {
 
 const successfulCacheTtlMs = 5 * 60 * 1000;
 const failedCacheTtlMs = Number(process.env.TRANSLATION_DB_FAILURE_CACHE_MS ?? 60_000);
+const globalFailureCacheTtlMs = Number(process.env.TRANSLATION_DB_GLOBAL_FAILURE_CACHE_MS ?? 5 * 60_000);
 const dbBundleCache = new Map<string, CachedDbBundle>();
+let translationDbUnavailableUntil = 0;
 
 export function getDatabaseTranslationBundle(source: TranslationSource, language: string) {
   const normalized = normalizeLanguage(language);
   if (normalized === defaultLanguage) return Promise.resolve(buildTranslationBundle(source, normalized, source.sourceStrings));
+  if (translationDbUnavailableUntil > Date.now()) return Promise.resolve(null);
 
   const cacheKey = `${source.namespace}\u0000${normalized}\u0000${source.sourceHash}`;
   const cached = dbBundleCache.get(cacheKey);
@@ -22,6 +25,9 @@ export function getDatabaseTranslationBundle(source: TranslationSource, language
 
   const promise = readDatabaseTranslationBundle(source, normalized).catch((error) => {
     const ttlMs = Number.isFinite(failedCacheTtlMs) && failedCacheTtlMs > 0 ? failedCacheTtlMs : 60_000;
+    const globalTtlMs =
+      Number.isFinite(globalFailureCacheTtlMs) && globalFailureCacheTtlMs > 0 ? globalFailureCacheTtlMs : 5 * 60_000;
+    translationDbUnavailableUntil = Date.now() + globalTtlMs;
     dbBundleCache.set(cacheKey, { expiresAt: Date.now() + ttlMs, promise: Promise.resolve(null) });
     console.warn("translation_db_unavailable", {
       namespace: source.namespace,
