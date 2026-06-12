@@ -82,6 +82,9 @@ test("main app translation source has stable keys and validates placeholders", (
   assert.equal(Object.keys(bundle.sourceStrings).some((key) => key.includes(".seo.")), false);
   assert.equal(Object.values(bundle.sourceStrings).includes("Who it helps"), false);
   assert.equal(Object.values(bundle.sourceStrings).includes("Why it is different"), false);
+  assert.equal(Object.values(bundle.sourceStrings).includes("- Apply constraints around language, rank, gender, class, law, religion, money, sanitation, and access."), false);
+  assert.equal(Object.values(bundle.sourceStrings).includes("1. If discovery or time-slice choice is needed, show choices and stop."), false);
+  assert.equal(Object.values(bundle.sourceStrings).includes("Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried."), false);
   assert.equal(validateTranslationPayload(bundle.sourceStrings, bundle.strings), true);
   assert.equal(isFreshAppTranslation({ sourceHash }, sourceHash), true);
   assert.equal(isFreshAppTranslation({ sourceHash: "old" }, sourceHash), false);

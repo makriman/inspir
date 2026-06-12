@@ -159,6 +159,15 @@ export function buildMainAppTranslationBundle(
   };
 }
 
+const internalPromptComponentText = new Set([
+  "Ask one question at a time, track assumptions and evidence, offer hints on request, and do not synthesize until I have tried.",
+  "Begin with a persona card, then answer in character with brief context notes and suggested follow-up questions.",
+  "Build momentum, make a useful first pass, and ask for decisions without overpraising.",
+  "Challenge the weakest part of the current artifact. Be direct, name the assumption, and ask me to defend or revise it.",
+  "Track decisions and open questions. Preserve my voice in writing tasks. Ask at most one practical question if context is missing.",
+  "Use visible sections: Shared artifact, AI contribution, User move, Inline comments, Decision log, Open questions, Next action.",
+]);
+
 function stableTextKey(text: string) {
   return createHash("sha1").update(text).digest("hex").slice(0, 12);
 }
@@ -166,6 +175,9 @@ function stableTextKey(text: string) {
 function isTranslatableComponentText(text: string) {
   const value = text.trim();
   if (!value) return false;
+  if (/^[-–]\s+/.test(value)) return false;
+  if (/^\d+\.\s+/.test(value)) return false;
+  if (internalPromptComponentText.has(value)) return false;
   if (/^\[[^\]]+\]$/.test(value)) return false;
   if (/\b[a-z]+(?:\s*\|\s*)[A-Z]?[A-Za-z]+\b/.test(value)) return false;
   if (/\b(?:bubble|coach|historical|app)-[a-z0-9-]+\b/.test(value)) return false;
