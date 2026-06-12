@@ -35,7 +35,7 @@ The product preserves the behavior and visual language of the original Bubble ap
 - Pixel-focused Bubble rebuild across landing, legal pages, loading, reset, chat, profile, and history states.
 - Google sign-in through Auth.js / NextAuth.
 - Server-only OpenAI calls through the Vercel AI SDK.
-- Neon Postgres with Drizzle ORM.
+- Supabase Postgres with Drizzle ORM.
 - Persisted chats, messages, users, topics, profile data, and AI run telemetry.
 - Bubble CSV import pipeline with strict and best-effort migration modes.
 - Admin-only topic creation guarded by environment-based allowlists.
@@ -50,7 +50,7 @@ The product preserves the behavior and visual language of the original Bubble ap
 - OpenAI
 - Auth.js / NextAuth with Google OAuth
 - Drizzle ORM
-- Neon Postgres
+- Supabase Postgres
 - Tailwind CSS and custom CSS
 - Vercel
 - Node test runner and Playwright-ready visual QA

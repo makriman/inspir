@@ -36,7 +36,6 @@
   "dependencies": {
     "@ai-sdk/openai": "^3.0.65",
     "@auth/drizzle-adapter": "^1.11.2",
-    "@neondatabase/serverless": "^1.1.0",
     "ai": "^6.0.191",
     "drizzle-orm": "^0.45.2",
     "katex": "^0.17.0",
@@ -66,5 +65,10 @@
     "tailwindcss": "3.4.17",
     "tsx": "^4.22.3",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "drizzle-orm>@neondatabase/serverless": "-"
+    }
   }
 }

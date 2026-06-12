@@ -93,7 +93,7 @@ The locale cookie is set without `secure: true` both in the proxy ([proxy.ts:62]
 - every guest chat message (`getGuestTopic`).
 
 Two problems:
-1. **Write amplification** — hundreds of needless writes per minute under modest traffic; Neon bills compute for this.
+1. **Write amplification** — hundreds of needless writes per minute under modest traffic; hosted Postgres providers bill compute and transfer for this.
 2. **Correctness** — the `onConflictDoUpdate` resets `name/subText/description/inputboxText/systemPrompt/sortOrder/metadata/status` to the seed values. Any edit an admin makes to a seeded topic via `/api/admin/topics` is **silently overwritten on the next read**. Only newly created (non-seed-slug) topics survive.
 
 **Fix:** seed once — in a migration, a deploy step, or behind a "has seeding run for this seed-hash?" check (store a hash of `topicSeeds` in a one-row table and only upsert when it changes). Decide explicitly whether DB or code is the source of truth for seeded topics; right now it's both, and code wins at random times.
@@ -122,7 +122,7 @@ The root layout calls `getRequestLanguageConfig()` → `headers()` ([app/layout.
 - [app/globals.css](../app/globals.css) is **15,014 lines** served to every visitor. Audit for dead rules; consider splitting app-shell CSS from marketing CSS.
 
 ### 🟠 3.5 Database connection management on serverless
-[lib/db/client.ts](../lib/db/client.ts) uses `postgres-js` with `max: 10` per lambda instance. Under burst traffic on Vercel, N instances × 10 connections can exhaust Postgres/Neon connection limits. Either point `DATABASE_URL` at a pooled endpoint (Neon `-pooler`, PgBouncer) and drop `max` to 1–2 per instance, or actually use `@neondatabase/serverless` (HTTP driver) — it's in your dependencies but **never imported** (remove it if you don't adopt it).
+[lib/db/client.ts](../lib/db/client.ts) uses `postgres-js` with `max: 10` per lambda instance. Under burst traffic on Vercel, N instances × 10 connections can exhaust hosted Postgres connection limits. Point `DATABASE_URL` at a pooled endpoint and keep `max` to 1–2 per instance.
 
 ### 🟡 3.6 Query-level items
 - `GET /api/chats` does an N+1: `getChatPreview()` per chat, up to 100 sequential-ish queries ([app/api/chats/route.ts:22-27](../app/api/chats/route.ts)). One lateral join / `DISTINCT ON` query gets all previews.
@@ -188,7 +188,7 @@ Risks: Google may see 69 near-identical English pages per URL (duplicate cluster
 - `.env.example` is missing `CRON_SECRET`; it lists `APP_URL`, which nothing in the code reads — prune/extend so the example matches reality.
 - Repo-root clutter: `historical-person-*.png`, `time-travel-departure.png`, `tsconfig.tsbuildinfo`, `test-results/` are committed at the root; move screenshots to `docs/` or delete, and gitignore `test-results/`.
 - `public/media/inspir-learning-film.mp4` (2.3 MB) in git — fine today, but video iterations will bloat history; consider Blob storage/CDN for future media.
-- `@neondatabase/serverless` (unused), `@testing-library/react`/`jest-dom` (no component tests use them) — drop or use.
+- `@testing-library/react`/`jest-dom` (no component tests use them) — drop or use.
 - The cron processes users **sequentially** with `maxDuration: 120`; if synthesis takes ~10–20s/user, a limit of 10 already flirts with the timeout, and stats are lost on timeout. Process with `Promise.allSettled` in small batches and/or lower the default limit.
 - `ChatClient.tsx` (6.9k lines), `lib/ai/memory.ts` (1.9k), `globals.css` (15k) are the three maintainability hotspots — each is past the point where a newcomer (or future you) can safely modify it.
 

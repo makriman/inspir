@@ -1,6 +1,6 @@
 # Inspir Bubble Rebuild Notes
 
-- Rebuilt the Bubble app as a Next.js App Router application with Drizzle, Auth.js/NextAuth Google OAuth, Vercel AI SDK, and Postgres-compatible Neon storage.
+- Rebuilt the Bubble app as a Next.js App Router application with Drizzle, Auth.js/NextAuth Google OAuth, Vercel AI SDK, and Supabase Postgres storage.
 - Preserved the nine topic modules, Bubble-style dark chat shell, public routes, loading/reset/404 pages, social links, profile drawer, recent conversations, and text-in-chat quiz behavior.
 - Replaced Bubble's client/API-connector OpenAI pattern with a server-only `/api/chat` stream route. `OPENAI_API_KEY` is only read from environment variables.
 - Replaced the hard-coded Bubble admin check with `ADMIN_EMAILS`.
