@@ -28,6 +28,8 @@
     "translations:status": "tsx scripts/status-curated-translations.ts",
     "translations:status-db": "tsx scripts/status-db-translations.ts",
     "translations:export": "tsx scripts/export-curated-translations.ts",
+    "translations:export-lexicon": "tsx scripts/export-translation-lexicon.ts",
+    "translations:build-from-lexicon": "tsx scripts/build-curated-from-lexicon.ts",
     "translations:export-missing": "tsx scripts/export-curated-translations.ts --missing-only",
     "translations:bundle": "tsx scripts/bundle-curated-translations.ts",
     "translations:export-cache": "tsx scripts/export-cached-translations.ts",

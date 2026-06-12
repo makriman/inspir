@@ -7,6 +7,7 @@ import {
   getSiteTranslationSource,
   isKnownSiteTranslationNamespace,
 } from "@/lib/i18n/site-source";
+import { isValidFieldTranslation } from "@/lib/i18n/translation-field-validation";
 import type { SupportedLanguage } from "@/lib/content/languages";
 
 type CuratedTranslationEntry = {
@@ -63,9 +64,16 @@ for (const language of args.languages) {
     }
 
     const entryChunks = args.chunkSize ? chunkArray(sourceEntries, args.chunkSize) : [sourceEntries];
+    const forcePartFiles = args.missingOnly && basePackExists(args.dir, language, namespace);
 
     for (let chunkIndex = 0; chunkIndex < entryChunks.length; chunkIndex += 1) {
-      const filePath = packPath(args.dir, language, namespace, entryChunks.length > 1 ? chunkIndex : undefined, entryChunks.length);
+      const filePath = packPath(
+        args.dir,
+        language,
+        namespace,
+        entryChunks.length > 1 || forcePartFiles ? chunkIndex : undefined,
+        entryChunks.length > 1 ? entryChunks.length : forcePartFiles ? 1 : undefined,
+      );
       const pack: CuratedTranslationPack = {
         schemaVersion: 1,
         language,
@@ -138,6 +146,12 @@ function packPath(
   return join(resolve(process.cwd(), rootDir), locale, fileName);
 }
 
+function basePackExists(rootDir: string, language: SupportedLanguage, namespace: string) {
+  const locale = languageConfigs[language].prefix || languageConfigs[language].locale;
+  const safeNamespace = fileSafeNamespace(namespace);
+  return existsSync(join(resolve(process.cwd(), rootDir), locale, `${safeNamespace}.json`));
+}
+
 function fileSafeNamespace(namespace: string) {
   return namespace.replace(/[^a-z0-9.-]+/gi, "__");
 }
@@ -165,16 +179,20 @@ function readExistingValuesForNamespace(
 
     for (const entry of parsed.entries ?? []) {
       if (entry?.source && typeof entry.value === "string" && entry.value.trim()) {
-        valuesBySource.set(entry.source, entry.value);
+        if (isValidFieldTranslation(entry.source, entry.value, language)) valuesBySource.set(entry.source, entry.value);
       }
       if (isSameNamespace && entry?.key && typeof entry.value === "string" && entry.value.trim()) {
-        values.set(entry.key, entry.value);
+        const source = sourceStrings[entry.key];
+        if (source && isValidFieldTranslation(source, entry.value, language)) values.set(entry.key, entry.value);
       }
     }
 
     if (!isSameNamespace) continue;
     for (const [key, value] of Object.entries(parsed.translations ?? {})) {
-      if (typeof value === "string" && value.trim()) values.set(key, value);
+      const source = sourceStrings[key];
+      if (source && typeof value === "string" && value.trim() && isValidFieldTranslation(source, value, language)) {
+        values.set(key, value);
+      }
     }
   }
 
