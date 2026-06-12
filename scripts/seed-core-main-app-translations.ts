@@ -1,13 +1,13 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import { languageConfigs, type SupportedLanguage } from "@/lib/content/languages";
+import { languageConfigs, normalizeLanguage, supportedLanguages, type SupportedLanguage } from "@/lib/content/languages";
 import { getMainAppSourceHash, getMainAppSourceStrings, mainAppTranslationNamespace } from "@/lib/i18n/main-app-source";
 import { isValidFieldTranslation } from "@/lib/i18n/translation-field-validation";
 
-const languages = ["Hindi", "Kannada", "Tamil", "Malayalam", "Arabic", "Spanish", "Telugu"] as const;
-type SeedLanguage = (typeof languages)[number];
+const builtInLanguages = ["Hindi", "Kannada", "Tamil", "Malayalam", "Arabic", "Spanish", "Telugu"] as const;
+const externalSeedDir = "scripts/translation-seeds/core-main-app";
 
-const translations: Record<string, Record<SeedLanguage, string>> = {
+const translations: Record<string, Record<string, string>> = {
   "Help inspir fit your age": {
     Hindi: "inspir को आपकी उम्र के अनुसार ढालने में मदद करें",
     Kannada: "inspir ಅನ್ನು ನಿಮ್ಮ ವಯಸ್ಸಿಗೆ ಹೊಂದಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡಿ",
@@ -827,10 +827,14 @@ for (const [key, source] of Object.entries(sourceStrings)) {
   sourceToKeys.set(source, [...(sourceToKeys.get(source) ?? []), key]);
 }
 
+const mergedTranslations = mergeSeedTranslations(translations, ...loadExternalSeedFiles());
+const languages = seedLanguagesFromTranslations(mergedTranslations);
+
 for (const language of languages) {
-  const entries = Object.entries(translations).flatMap(([source, values]) => {
+  const entries = Object.entries(mergedTranslations).flatMap(([source, values]) => {
     const keys = sourceToKeys.get(source) ?? [];
     const value = values[language];
+    if (!value?.trim()) return [];
     if (!keys.length) throw new Error(`Missing main-app source string: ${source}`);
     if (!isValidFieldTranslation(source, value, language)) {
       throw new Error(`Invalid ${language} translation for ${source}: ${value}`);
@@ -858,4 +862,72 @@ for (const language of languages) {
     )}\n`,
   );
   console.log(JSON.stringify({ event: "core_main_app_translation_seeded", language, filePath, entries: entries.length }));
+}
+
+function loadExternalSeedFiles() {
+  const root = resolve(process.cwd(), externalSeedDir);
+  if (!existsSync(root)) return [];
+
+  return readdirSync(root)
+    .filter((file) => file.endsWith(".json"))
+    .sort()
+    .map((file) => {
+      const filePath = join(root, file);
+      return parseSeedFile(JSON.parse(readFileSync(filePath, "utf8")) as unknown, filePath);
+    });
+}
+
+function parseSeedFile(value: unknown, filePath: string) {
+  const record = isRecord(value) ? value : undefined;
+  const seed = isRecord(record?.translations) ? record.translations : record;
+  if (!isRecord(seed)) throw new Error(`Invalid translation seed file: ${filePath}`);
+
+  const parsed: Record<string, Record<string, string>> = {};
+  for (const [source, values] of Object.entries(seed)) {
+    if (!isRecord(values)) throw new Error(`Invalid translation seed source in ${filePath}: ${source}`);
+    parsed[source] = {};
+    for (const [language, translation] of Object.entries(values)) {
+      if (typeof translation !== "string") {
+        throw new Error(`Invalid ${language} translation in ${filePath}: ${source}`);
+      }
+      parsed[source][language] = translation;
+    }
+  }
+  return parsed;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value));
+}
+
+function mergeSeedTranslations(...seedSets: Array<Record<string, Record<string, string>>>) {
+  const merged: Record<string, Record<string, string>> = {};
+  for (const seedSet of seedSets) {
+    for (const [source, values] of Object.entries(seedSet)) {
+      const target = (merged[source] ??= {});
+      for (const [rawLanguage, value] of Object.entries(values)) {
+        const language = normalizeLanguage(rawLanguage);
+        if (!supportedLanguages.includes(language)) throw new Error(`Unsupported seed language: ${rawLanguage}`);
+        if (language === "English") continue;
+        if (target[language] && target[language] !== value) {
+          throw new Error(`Conflicting ${language} translation for source: ${source}`);
+        }
+        target[language] = value;
+      }
+    }
+  }
+  return merged;
+}
+
+function seedLanguagesFromTranslations(seed: Record<string, Record<string, string>>) {
+  const languageSet = new Set<SupportedLanguage>();
+  for (const values of Object.values(seed)) {
+    for (const rawLanguage of Object.keys(values)) {
+      const language = normalizeLanguage(rawLanguage);
+      if (supportedLanguages.includes(language) && language !== "English") languageSet.add(language);
+    }
+  }
+
+  for (const language of builtInLanguages) languageSet.add(language);
+  return supportedLanguages.filter((language) => languageSet.has(language));
 }
