@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ChangeEvent,
   FormEvent,
   KeyboardEvent,
   RefObject,
@@ -27,6 +28,7 @@ import {
   BookOpenCheck,
   Bot,
   BrainCircuit,
+  Camera,
   Check,
   CheckCircle2,
   Clipboard,
@@ -65,6 +67,7 @@ import {
   StickyNote,
   Thermometer,
   Timer,
+  Trash2,
   UserRound,
   Users,
   Waypoints,
@@ -1192,6 +1195,38 @@ function useChatClientController({
     return updatedUser;
   }
 
+  async function uploadProfilePhoto(file: File) {
+    if (isGuest) return null;
+    const formData = new FormData();
+    formData.set("photo", file);
+    const response = await fetch("/api/me/photo", {
+      method: "PATCH",
+      body: formData,
+    });
+    const data = (await response.json().catch(() => null)) as { profileImageHash?: string | null; error?: string } | null;
+    if (!response.ok) {
+      throw new Error(data?.error || "Could not update profile photo.");
+    }
+    setProfileUser((current) => ({
+      ...current,
+      profileImageHash: data?.profileImageHash ?? null,
+    }));
+    return data?.profileImageHash ?? null;
+  }
+
+  async function removeProfilePhoto() {
+    if (isGuest) return;
+    const response = await fetch("/api/me/photo", { method: "DELETE" });
+    const data = (await response.json().catch(() => null)) as { error?: string } | null;
+    if (!response.ok) {
+      throw new Error(data?.error || "Could not reset profile photo.");
+    }
+    setProfileUser((current) => ({
+      ...current,
+      profileImageHash: null,
+    }));
+  }
+
   async function saveGuestLanguage(preferredLanguage: string) {
     window.localStorage.setItem("inspir_guest_language_selected", "1");
     window.localStorage.setItem("inspir_locale_prompt_dismissed", "1");
@@ -1405,6 +1440,7 @@ function useChatClientController({
     setStoreOpen,
     stopGeneration,
     storeOpen,
+    uploadProfilePhoto,
     submitMemorySourceFeedback,
     submitMessage,
     translationBundle,
@@ -1417,6 +1453,7 @@ function useChatClientController({
     saveGuestLanguage,
     deleteMemoryItem,
     clearMemory,
+    removeProfilePhoto,
     removeSidebarTopic,
     userDisplayName,
     visibleChatMessages,
@@ -1608,8 +1645,10 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     deleteMemoryItem,
     languageSaving,
     patchMemorySettings,
+    removeProfilePhoto,
     updateMemoryItem,
     updateProfileDetails,
+    uploadProfilePhoto,
     userDisplayName,
     workspaceResetCount,
   } = controller;
@@ -1624,6 +1663,8 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         memoryLoading={memoryLoading}
         memorySaving={memorySaving}
         memoryError={memoryError}
+        onPhotoUpload={uploadProfilePhoto}
+        onPhotoRemove={removeProfilePhoto}
         onProfileSave={updateProfileDetails}
         onMemorySettings={patchMemorySettings}
         onMemoryCreate={createMemoryItem}
@@ -6233,6 +6274,8 @@ function ProfilePanel({
   memoryLoading,
   memorySaving,
   memoryError,
+  onPhotoUpload,
+  onPhotoRemove,
   onProfileSave,
   onMemorySettings,
   onMemoryCreate,
@@ -6248,6 +6291,8 @@ function ProfilePanel({
   memoryLoading: boolean;
   memorySaving: boolean;
   memoryError: string | null;
+  onPhotoUpload: (file: File) => Promise<string | null>;
+  onPhotoRemove: () => Promise<void>;
   onProfileSave: (input: ProfileDetailsInput) => Promise<UserProfile>;
   onMemorySettings: (input: {
     enabled?: boolean;
@@ -6275,7 +6320,42 @@ function ProfilePanel({
   const [detailsSaving, setDetailsSaving] = useState(false);
   const [detailsMessage, setDetailsMessage] = useState("");
   const [detailsError, setDetailsError] = useState("");
+  const [photoSaving, setPhotoSaving] = useState(false);
+  const [photoMessage, setPhotoMessage] = useState("");
+  const [photoError, setPhotoError] = useState("");
+  const photoInputRef = useRef<HTMLInputElement>(null);
   const today = new Date().toISOString().slice(0, 10);
+
+  async function handlePhotoChange(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setPhotoSaving(true);
+    setPhotoError("");
+    setPhotoMessage("");
+    try {
+      await onPhotoUpload(file);
+      setPhotoMessage("Profile photo updated.");
+    } catch (uploadError) {
+      setPhotoError(uploadError instanceof Error ? uploadError.message : "Could not update profile photo.");
+    } finally {
+      setPhotoSaving(false);
+      event.target.value = "";
+    }
+  }
+
+  async function resetPhoto() {
+    setPhotoSaving(true);
+    setPhotoError("");
+    setPhotoMessage("");
+    try {
+      await onPhotoRemove();
+      setPhotoMessage("Using your Google photo.");
+    } catch (removeError) {
+      setPhotoError(removeError instanceof Error ? removeError.message : "Could not reset profile photo.");
+    } finally {
+      setPhotoSaving(false);
+    }
+  }
 
   async function submitProfileDetails(event: FormEvent) {
     event.preventDefault();
@@ -6324,11 +6404,46 @@ function ProfilePanel({
       <div className="bubble-profile-body">
         <section className="bubble-profile-hero">
           <div className="bubble-profile-avatar">
-            {avatarSrc ? <Image src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized /> : null}
+            {avatarSrc ? (
+              <Image key={avatarSrc} src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized />
+            ) : (
+              <UserRound size={42} />
+            )}
           </div>
           <div>
             <h3>{user.name || "Learner"}</h3>
             <p>{user.email || "user@example.com"}</p>
+            <div className="bubble-profile-photo-actions">
+              <input
+                ref={photoInputRef}
+                type="file"
+                accept="image/jpeg,image/png,image/webp"
+                className="bubble-profile-photo-input"
+                onChange={(event) => void handlePhotoChange(event)}
+              />
+              <button
+                type="button"
+                disabled={photoSaving}
+                onClick={() => photoInputRef.current?.click()}
+                className="bubble-profile-photo-button"
+              >
+                <Camera size={16} />
+                <span>{photoSaving ? "Saving..." : "Change photo"}</span>
+              </button>
+              {user.profileImageHash ? (
+                <button
+                  type="button"
+                  disabled={photoSaving}
+                  onClick={() => void resetPhoto()}
+                  className="bubble-profile-photo-button is-muted"
+                >
+                  <Trash2 size={15} />
+                  <span>Use Google photo</span>
+                </button>
+              ) : null}
+            </div>
+            {photoError ? <span className="bubble-profile-details-error">{photoError}</span> : null}
+            {photoMessage ? <span className="bubble-profile-details-success">{photoMessage}</span> : null}
           </div>
         </section>
 

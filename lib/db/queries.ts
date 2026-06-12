@@ -198,6 +198,49 @@ export async function getUserPhotoById(userId: string) {
   return user;
 }
 
+export async function updateUserProfilePhoto(
+  userId: string,
+  input: {
+    profileImageData: string;
+    profileImageMime: string;
+    profileImageHash: string;
+  },
+) {
+  const [user] = await db
+    .update(users)
+    .set({
+      profilePictureUrl: null,
+      profileImageData: input.profileImageData,
+      profileImageMime: input.profileImageMime,
+      profileImageHash: input.profileImageHash,
+      profilePictureDownloadedAt: new Date(),
+      updatedAt: new Date(),
+    })
+    .where(eq(users.id, userId))
+    .returning({
+      profileImageHash: users.profileImageHash,
+    });
+  return user;
+}
+
+export async function clearUserProfilePhoto(userId: string) {
+  const [user] = await db
+    .update(users)
+    .set({
+      profilePictureUrl: null,
+      profileImageData: null,
+      profileImageMime: null,
+      profileImageHash: null,
+      profilePictureDownloadedAt: null,
+      updatedAt: new Date(),
+    })
+    .where(eq(users.id, userId))
+    .returning({
+      profileImageHash: users.profileImageHash,
+    });
+  return user;
+}
+
 export async function updateUserProfile(
   userId: string,
   input: {

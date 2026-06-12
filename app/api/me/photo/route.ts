@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth/session";
-import { getUserPhotoById } from "@/lib/db/queries";
+import { clearUserProfilePhoto, getUserPhotoById, updateUserProfilePhoto } from "@/lib/db/queries";
+import { prepareProfileImage } from "@/lib/profile/photo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -21,4 +22,36 @@ export async function GET() {
       "cache-control": "private, max-age=3600",
     },
   });
+}
+
+export async function PATCH(request: NextRequest) {
+  const session = await requireSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  const formData = await request.formData().catch(() => null);
+  const photo = formData?.get("photo");
+  if (!(photo instanceof File)) {
+    return NextResponse.json({ error: "Choose an image file." }, { status: 400 });
+  }
+
+  const prepared = prepareProfileImage(new Uint8Array(await photo.arrayBuffer()), photo.type);
+  if (!prepared.success) {
+    return NextResponse.json({ error: prepared.error }, { status: 400 });
+  }
+
+  const user = await updateUserProfilePhoto(session.user.id, {
+    profileImageData: prepared.base64,
+    profileImageMime: prepared.mimeType,
+    profileImageHash: prepared.hash,
+  });
+
+  return NextResponse.json({ profileImageHash: user?.profileImageHash ?? null });
+}
+
+export async function DELETE() {
+  const session = await requireSession();
+  if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  await clearUserProfilePhoto(session.user.id);
+  return NextResponse.json({ profileImageHash: null });
 }

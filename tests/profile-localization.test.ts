@@ -24,6 +24,7 @@ import { createTranslationLookup } from "../lib/i18n/translation-lookup";
 import { isValidFieldTranslation } from "../lib/i18n/translation-field-validation";
 import { isFreshAppTranslation, validateTranslationPayload } from "../lib/i18n/translation-validation";
 import { calculateAge, validateDateOfBirth } from "../lib/profile/age";
+import { maxProfileImageBytes, prepareProfileImage } from "../lib/profile/photo";
 import { updateProfileSchema } from "../lib/profile/validation";
 
 test("calculateAge handles birthday boundaries", () => {
@@ -42,6 +43,21 @@ test("date of birth validation rejects invalid and future dates", () => {
   assert.equal(validateDateOfBirth("2026-05-30", today).success, false);
   assert.equal(validateDateOfBirth("2026-02-31", today).success, false);
   assert.equal(updateProfileSchema.safeParse({ dateOfBirth: "2999-01-01" }).success, false);
+});
+
+test("profile photo validation accepts small real image types only", () => {
+  const jpeg = prepareProfileImage(new Uint8Array([0xff, 0xd8, 0xff, 0xdb]), "application/octet-stream");
+  assert.equal(jpeg.success, true);
+  if (jpeg.success) {
+    assert.equal(jpeg.mimeType, "image/jpeg");
+    assert.ok(jpeg.hash);
+  }
+
+  const invalid = prepareProfileImage(new Uint8Array([0x25, 0x50, 0x44, 0x46]), "application/pdf");
+  assert.equal(invalid.success, false);
+
+  const tooLarge = prepareProfileImage(new Uint8Array(maxProfileImageBytes + 1), "image/png");
+  assert.equal(tooLarge.success, false);
 });
 
 test("prompt assembly includes age context only when known", () => {
