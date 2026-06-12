@@ -2,7 +2,14 @@ import { defaultLanguage, normalizeLanguage, type SupportedLanguage } from "@/li
 import { getAppTranslation } from "@/lib/db/queries";
 import type { TranslationBundle, TranslationSource } from "@/lib/i18n/translation-types";
 
-const dbBundleCache = new Map<string, Promise<TranslationBundle | null>>();
+type CachedDbBundle = {
+  expiresAt: number;
+  promise: Promise<TranslationBundle | null>;
+};
+
+const successfulCacheTtlMs = 5 * 60 * 1000;
+const failedCacheTtlMs = Number(process.env.TRANSLATION_DB_FAILURE_CACHE_MS ?? 60_000);
+const dbBundleCache = new Map<string, CachedDbBundle>();
 
 export function getDatabaseTranslationBundle(source: TranslationSource, language: string) {
   const normalized = normalizeLanguage(language);
@@ -10,13 +17,21 @@ export function getDatabaseTranslationBundle(source: TranslationSource, language
 
   const cacheKey = `${source.namespace}\u0000${normalized}\u0000${source.sourceHash}`;
   const cached = dbBundleCache.get(cacheKey);
-  if (cached) return cached;
+  if (cached && cached.expiresAt > Date.now()) return cached.promise;
+  if (cached) dbBundleCache.delete(cacheKey);
 
   const promise = readDatabaseTranslationBundle(source, normalized).catch((error) => {
-    dbBundleCache.delete(cacheKey);
-    throw error;
+    const ttlMs = Number.isFinite(failedCacheTtlMs) && failedCacheTtlMs > 0 ? failedCacheTtlMs : 60_000;
+    dbBundleCache.set(cacheKey, { expiresAt: Date.now() + ttlMs, promise: Promise.resolve(null) });
+    console.warn("translation_db_unavailable", {
+      namespace: source.namespace,
+      language: normalized,
+      sourceHash: source.sourceHash,
+      error: getTranslationDbErrorDetails(error),
+    });
+    return null;
   });
-  dbBundleCache.set(cacheKey, promise);
+  dbBundleCache.set(cacheKey, { expiresAt: Date.now() + successfulCacheTtlMs, promise });
   return promise;
 }
 
@@ -57,5 +72,17 @@ function buildTranslationBundle(
     sourceHash: source.sourceHash,
     sourceStrings: source.sourceStrings,
     strings,
+  };
+}
+
+function getTranslationDbErrorDetails(error: unknown) {
+  const outer = error instanceof Error ? error : undefined;
+  const cause = outer && "cause" in outer ? outer.cause : undefined;
+  const causeRecord = cause && typeof cause === "object" ? (cause as Record<string, unknown>) : undefined;
+
+  return {
+    message: outer?.message ?? String(error),
+    causeMessage: cause instanceof Error ? cause.message : undefined,
+    code: typeof causeRecord?.code === "string" ? causeRecord.code : undefined,
   };
 }
