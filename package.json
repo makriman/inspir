@@ -30,6 +30,7 @@
     "translations:bundle": "tsx scripts/bundle-curated-translations.ts",
     "translations:export-cache": "tsx scripts/export-cached-translations.ts",
     "translations:import": "tsx scripts/import-curated-translations.ts",
+    "translations:seed-core": "tsx scripts/seed-core-main-app-translations.ts",
     "import:bubble": "tsx scripts/import-bubble.ts --mode=best-effort",
     "validate:import": "tsx scripts/validate-import.ts"
   },

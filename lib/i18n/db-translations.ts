@@ -57,14 +57,23 @@ async function readDatabaseTranslationBundle(source: TranslationSource, language
     return null;
   }
 
-  const strings: Record<string, string> = {};
-  for (const [key, sourceText] of Object.entries(source.sourceStrings)) {
-    const translated = row.payload[key];
-    if (typeof translated !== "string" || !translated.trim()) return null;
-    strings[key] = translated || sourceText;
-  }
+  const strings = translationStringsFromDbPayload(source, row.payload);
+  if (!Object.keys(strings).length) return null;
 
   return buildTranslationBundle(source, language, strings);
+}
+
+export function translationStringsFromDbPayload(
+  source: Pick<TranslationSource, "sourceStrings">,
+  payload: Record<string, unknown>,
+) {
+  const strings: Record<string, string> = {};
+  for (const [key, sourceText] of Object.entries(source.sourceStrings)) {
+    const translated = payload[key];
+    if (typeof translated !== "string" || !translated.trim() || translated === sourceText) continue;
+    strings[key] = translated;
+  }
+  return strings;
 }
 
 function buildTranslationBundle(

@@ -44,11 +44,13 @@ export async function getOrCreateMainAppTranslationResult(language: string): Pro
     normalized === defaultLanguage
       ? getEnglishMainAppTranslationBundle()
       : await getCachedMainAppTranslationBundle(normalized);
-  const complete = Boolean(bundle);
+  const translatedCount = bundle ? Object.keys(bundle.strings).length : 0;
+  const totalCount = Object.keys(source.sourceStrings).length;
+  const complete = translatedCount === totalCount;
   return {
     bundle: bundle ?? buildMainAppTranslationBundle(normalized, {}),
     complete,
-    translatedCount: bundle ? Object.keys(bundle.strings).length : 0,
-    totalCount: Object.keys(source.sourceStrings).length,
+    translatedCount,
+    totalCount,
   };
 }

@@ -18,6 +18,7 @@ import {
   legalEnglishControlsNotice,
   marketingShellTranslationNamespace,
 } from "../lib/i18n/site-source";
+import { translationStringsFromDbPayload } from "../lib/i18n/db-translations";
 import { getLocalizedPathInfo, languageAlternatesForPath, localizeHref, localizePath } from "../lib/i18n/routing";
 import { createTranslationLookup } from "../lib/i18n/translation-lookup";
 import { isValidFieldTranslation } from "../lib/i18n/translation-field-validation";
@@ -74,6 +75,31 @@ test("main app translation source has stable keys and validates placeholders", (
   const broken: Record<string, string> = { ...bundle.strings, "onboarding.age.body": "Missing" };
   broken["onboarding.age.title"] = "";
   assert.equal(validateTranslationPayload(bundle.sourceStrings, broken), false);
+});
+
+test("database translation payloads can serve partial verified strings", () => {
+  const source = {
+    sourceStrings: {
+      title: "Learn Anything",
+      action: "Continue",
+      unchanged: "inspir",
+      empty: "Saved",
+    },
+  };
+
+  assert.deepEqual(
+    translationStringsFromDbPayload(source, {
+      title: "Aprende cualquier cosa",
+      action: "Continuar",
+      unchanged: "inspir",
+      empty: "",
+      unknown: "Ignored",
+    }),
+    {
+      title: "Aprende cualquier cosa",
+      action: "Continuar",
+    },
+  );
 });
 
 test("language selector display names stay native and stable", () => {

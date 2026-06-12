@@ -56,6 +56,8 @@ export async function getOrCreateSiteTranslationResult(
   const normalized = normalizeLanguage(language);
   const source = getSiteTranslationSource(namespace);
   const bundle = normalized === defaultLanguage ? getEnglishSiteTranslationBundle(source.namespace) : await getCachedSiteTranslationBundle(normalized, source.namespace);
+  const translatedCount = bundle ? Object.keys(bundle.strings).length : 0;
+  const totalCount = Object.keys(source.sourceStrings).length;
   return {
     bundle: bundle ?? {
       namespace: source.namespace,
@@ -64,9 +66,9 @@ export async function getOrCreateSiteTranslationResult(
       sourceStrings: source.sourceStrings,
       strings: {},
     },
-    complete: Boolean(bundle),
-    translatedCount: bundle ? Object.keys(bundle.strings).length : 0,
-    totalCount: Object.keys(source.sourceStrings).length,
+    complete: translatedCount === totalCount,
+    translatedCount,
+    totalCount,
   };
 }
 
