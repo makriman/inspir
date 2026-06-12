@@ -117,13 +117,13 @@ const trustSignals = [
   },
   {
     icon: ShieldCheck,
-    title: "Trust boundaries",
-    text: "Public learning pages are crawlable; private saved chats, accounts, admin tools, and user data are not discovery surfaces.",
+    title: "Clear privacy boundaries",
+    text: "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
   },
   {
     icon: LibraryBig,
-    title: "Citable content engine",
-    text: "Every guide, path, subject hub, and prompt route is connected so learners and AI systems can understand the map.",
+    title: "Helpful learning map",
+    text: "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
   },
   {
     icon: Waypoints,
@@ -200,8 +200,8 @@ export default function LandingPage() {
   const featuredPosts = posts.slice(0, 6);
   const proofStats = [
     [`${topicSeeds.length}`, "public AI learning modes"],
-    [`${posts.length}`, "guides in the crawlable content engine"],
-    [`${subjectPages.length}`, "subject hubs mapped to learner intent"],
+    [`${posts.length}`, "learning guides and practice loops"],
+    [`${subjectPages.length}`, "subject hubs mapped to learner needs"],
   ] as const;
   const jsonLd = buildLandingJsonLd(subjectPages, posts);
 
@@ -269,8 +269,8 @@ function buildLandingJsonLd(subjectPages: SubjectPageSummary[], posts: LandingPo
     }),
     itemListJsonLd({
       path: "/",
-      id: "content-engine",
-      name: "inspir AI learning content engine",
+      id: "learning-guide-library",
+      name: "inspir AI learning guide library",
       items: posts.map((post) => ({
         name: post.title,
         url: `/blog/${post.slug}`,
@@ -326,8 +326,8 @@ function LandingImpactBand({ proofStats }: { proofStats: ProofStats }) {
         <span>Useful from the first click</span>
         <h2>Built for curiosity, practice, and access.</h2>
         <p>
-          The public site is structured like a learning map: live modes for immediate help, subject hubs for search
-          intent, and guides that turn reading into action.
+          The public site is structured like a learning map: live modes for immediate help, subject hubs for learner
+          questions, and guides that turn reading into action.
         </p>
       </div>
       <dl className="marketing-hero-stats">
@@ -499,8 +499,8 @@ function SubjectHubsSection({ subjectPages }: { subjectPages: SubjectPageSummary
         <span>AI tutors by subject</span>
         <h2>Start from the subject, then open the right learning mode.</h2>
         <p>
-          Math, writing, coding, history, homework, and exam prep each need different behavior. These public subject hubs
-          connect the search intent to live modes, prompts, guides, and review loops.
+          Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject,
+          then move into the mode, prompt, guide, or review loop that fits.
         </p>
       </div>
       <div className="marketing-mode-finder-grid">
@@ -531,8 +531,8 @@ function LearningPathsSection() {
         <span>Popular paths</span>
         <h2>Start with the job you need done.</h2>
         <p>
-          Search engines see pages. Learners need sequences. These paths connect the public modes into practical study
-          loops for understanding, homework, exam prep, and exploration.
+          Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for
+          understanding, homework, exam prep, and exploration.
         </p>
       </div>
       <div className="marketing-path-grid">
@@ -561,20 +561,20 @@ function LearningPathsSection() {
 
 function ContentEngineSection({ posts }: { posts: LandingPost[] }) {
   return (
-    <section className="marketing-band is-content-engine" aria-labelledby="content-engine-title">
+    <section className="marketing-band is-guide-library" aria-labelledby="guide-library-title">
       <div className="marketing-section-copy">
-        <span>Content engine</span>
-        <h2 id="content-engine-title">A {posts.length}-guide library built for learners, links, and AI discovery.</h2>
+        <span>Guide library</span>
+        <h2 id="guide-library-title">A {posts.length}-guide library built for learning that turns into action.</h2>
         <p>
-          The blog is organized around pillar clusters, category hubs, related modes, prompt routes, structured data,
-          and an AI-readable index so each guide can be understood and recommended in context.
+          The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing
+          for exams, and exploring ideas with a patient tutor.
         </p>
       </div>
       <div className="marketing-card-grid">
         <article className="marketing-card">
           <LibraryBig size={24} />
           <h3>{posts.length} practical guides</h3>
-          <p>Mode guides, prompt loops, study methods, and cornerstone articles for high-intent searches.</p>
+          <p>Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.</p>
         </article>
         <article className="marketing-card">
           <Route size={24} />
@@ -583,8 +583,8 @@ function ContentEngineSection({ posts }: { posts: LandingPost[] }) {
         </article>
         <article className="marketing-card">
           <Waypoints size={24} />
-          <h3>AI-readable map</h3>
-          <p>LLMs, crawlers, and learners can follow the sitemap, RSS feed, llms.txt, and JSON content index.</p>
+          <h3>Easy next steps</h3>
+          <p>Each guide points to a mode, prompt, or review loop so reading can become practice.</p>
         </article>
         <article className="marketing-card">
           <BookOpenCheck size={24} />

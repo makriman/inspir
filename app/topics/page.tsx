@@ -105,14 +105,14 @@ export default function TopicsPage() {
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Learning modes" title="Start from the exact kind of help you need.">
-        Every public inspir mode has its own guest URL, examples, and teaching behavior, so
-        learners can arrive directly from search and begin in the right flow.
+        Every public inspir mode has its own examples and teaching behavior, so learners can open the right kind of help
+        without starting from a blank chat box.
       </MarketingPageHero>
 
       <section className="marketing-band is-topic-finder">
         <div className="marketing-section-copy">
           <span>Best first clicks</span>
-          <h2>High-intent learning searches should land in a useful chat, not a brochure.</h2>
+          <h2>Common learning problems should open into useful help, not a brochure.</h2>
           <p>
             These entrypoints cover the searches learners make when they need immediate help:
             explanations, Socratic questions, homework hints, math steps, writing feedback,
@@ -208,10 +208,9 @@ export default function TopicsPage() {
       <section className="marketing-band is-topic-faq">
         <div className="marketing-section-copy">
           <span>Public guest mode FAQ</span>
-          <h2>Built for people arriving from search.</h2>
+          <h2>Built for people who want to start learning quickly.</h2>
           <p>
-            Search pages, AI answer engines, and learners all get the same promise: public,
-            useful, canonical entrypoints that open directly inside the learning experience.
+            Each public mode explains what it is for, shows examples, and opens directly inside the learning experience.
           </p>
         </div>
         <div className="marketing-mode-faq-list">

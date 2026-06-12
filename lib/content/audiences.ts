@@ -37,9 +37,9 @@ export const audienceHubFaqs = [
       "inspir is for students, parents, teachers, and self-taught learners who need focused AI learning modes for explanations, questions, hints, quizzes, flashcards, feedback, and study planning.",
   },
   {
-    question: "Are audience pages public and indexable?",
+    question: "Can people use these audience pages without an account?",
     answer:
-      "Yes. Audience pages link only to public guest modes, guides, prompt starters, learning paths, and AI-readable discovery files. Private saved chats remain excluded.",
+      "Yes. Audience pages link only to public guest modes, guides, prompt starters, and learning paths. Private saved chats remain private.",
   },
   {
     question: "Why separate pages for different audiences?",
@@ -208,7 +208,7 @@ const audiencePages: AudiencePage[] = [
     safeguards: [
       "Use public mode descriptions to choose the behavior before a session starts.",
       "Ask the learner to explain what changed after each hint.",
-      "Keep private saved conversations out of public discovery and citation surfaces.",
+      "Keep private saved conversations out of public references and shared links.",
     ],
     faqs: [
       {
@@ -219,7 +219,7 @@ const audiencePages: AudiencePage[] = [
       {
         question: "Does inspir publish a child's private chats?",
         answer:
-          "No. Public pages are indexable, but private saved chats are not included in the sitemap, llms files, or AI content index.",
+          "No. Public pages explain the product, but private saved chats are not included in public references or shared learning catalogs.",
       },
       {
         question: "What is the best parent-supervised workflow?",

@@ -86,8 +86,8 @@ export default function AudienceHubPage() {
     }),
     itemListJsonLd({
       path: "/for",
-      id: "audience-search-intents",
-      name: "AI learning audience search intents",
+      id: "audience-common-questions",
+      name: "AI learning audience questions",
       items: audienceHubSearchIntents.map((intent) => ({
         name: intent,
         url: "/for",
@@ -131,11 +131,11 @@ export default function AudienceHubPage() {
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>The audience searches this hub is built to answer.</h2>
+          <span>Who it helps</span>
+          <h2>The learning situations this hub helps with.</h2>
           <p>
-            Audience pages let search engines and AI answer engines distinguish students,
-            parents, teachers, and independent learners instead of flattening everyone into one generic page.
+            Students, parents, teachers, and independent learners need different kinds of support. These paths make the
+            first step clearer.
           </p>
         </div>
         <div className="learning-path-mode-list">
@@ -151,7 +151,7 @@ export default function AudienceHubPage() {
       <section className="marketing-band">
         <div className="marketing-section-copy">
           <span>How it works</span>
-          <h2>Each audience path connects to public, crawlable learning surfaces.</h2>
+          <h2>Each audience path connects to practical learning tools.</h2>
           <p>
             The pages do not expose private conversations. They organize public modes, prompts,
             guides, workflows, and safety boundaries so a learner can start in the right place.

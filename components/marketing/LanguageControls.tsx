@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { Globe2, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { X } from "lucide-react";
+import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import {
   defaultLanguage,
   languageDisplayName,
-  supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
 
@@ -61,27 +61,17 @@ export function MarketingLanguageControls({
     setPromptVisible(false);
   }
 
-  const pickerLabel = useMemo(
-    () => `${languageDisplayName(currentLanguage)} language selector`,
-    [currentLanguage],
-  );
-
   return (
     <>
-      <label className="marketing-language-picker" aria-label={pickerLabel} data-no-auto-translate="true">
-        <Globe2 size={16} />
-        <select
-          value={currentLanguage}
-          onChange={(event) => void saveLanguage(event.target.value as SupportedLanguage)}
-          data-no-auto-translate="true"
-        >
-          {supportedLanguages.map((language) => (
-            <option key={language} value={language} data-no-auto-translate="true">
-              {languageDisplayName(language)}
-            </option>
-          ))}
-        </select>
-      </label>
+      <LanguagePicker
+        currentLanguage={currentLanguage}
+        recommendedLanguage={recommendedLanguage}
+        buttonLabel="Language"
+        title="Choose your language"
+        description="Use inspir in the language that feels most natural."
+        onSelect={(language) => void saveLanguage(language)}
+        className="marketing-language-picker-shell"
+      />
       {promptVisible ? (
         <div className="marketing-language-bar" role="region" aria-label="Language options">
           <div>
@@ -97,23 +87,15 @@ export function MarketingLanguageControls({
             <button type="button" onClick={() => void saveLanguage(defaultLanguage)}>
               Continue with English
             </button>
-            <select
-              defaultValue=""
-              onChange={(event) => {
-                if (event.target.value) void saveLanguage(event.target.value as SupportedLanguage);
-              }}
-              data-no-auto-translate="true"
-              aria-label="Choose another language"
-            >
-              <option value="" disabled>
-                Choose another language
-              </option>
-              {supportedLanguages.map((language) => (
-                <option key={language} value={language}>
-                  {languageDisplayName(language)}
-                </option>
-              ))}
-            </select>
+            <LanguagePicker
+              currentLanguage={currentLanguage}
+              recommendedLanguage={recommendedLanguage}
+              buttonLabel="Choose"
+              title="Choose another language"
+              description="Search the full language list."
+              onSelect={(language) => void saveLanguage(language)}
+              className="marketing-language-bar-picker"
+            />
             <button type="button" onClick={dismissPrompt} aria-label="Dismiss language options">
               <X size={17} />
             </button>

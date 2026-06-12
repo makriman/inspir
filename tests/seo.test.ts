@@ -64,6 +64,7 @@ import {
   getBlogCategoryRelatedModes,
   getBlogPillarClusters,
 } from "../lib/content/blog-directory";
+import { categoryHasIndexedPosts, indexedBlogPosts, isIndexedBlogPost } from "../lib/content/blog-seo-policy";
 import {
   comparisonHubFaqs,
   comparisonHubSearchIntents,
@@ -105,10 +106,6 @@ import {
   topicDirectoryFaqs,
 } from "../lib/content/topic-directory";
 import {
-  supportedLanguages,
-  type SupportedLanguage,
-} from "../lib/content/languages";
-import {
   getRelatedBlogGuidesForTopic,
   getRelatedLearningPathsForTopic,
   getRelatedTopicModesForTopic,
@@ -146,6 +143,7 @@ import sitemap, {
   languageFromSitemapFileSlug,
   sitemapFilePathForLanguage,
   sitemapIndexEntries,
+  sitemapLanguages,
 } from "../lib/seo/sitemap";
 
 test("topic routing separates public slugs from private uuid chats", () => {
@@ -161,20 +159,30 @@ test("topic routing separates public slugs from private uuid chats", () => {
 test("sitemap includes public topic and blog pages but excludes private surfaces", () => {
   const urls = sitemap().map((entry) => entry.url);
   const posts = getBlogPosts();
+  const indexedPosts = indexedBlogPosts(posts);
 
   for (const topic of topicSeeds) {
     assert.ok(urls.includes(absoluteUrl(topicPath(topic.slug))), `${topic.slug} should be in sitemap`);
   }
 
-  for (const post of posts) {
+  for (const post of indexedPosts) {
     assert.ok(urls.includes(absoluteUrl(`/blog/${post.slug}`)), `${post.slug} should be in sitemap`);
   }
 
+  for (const post of posts.filter((post) => !isIndexedBlogPost(post))) {
+    assert.equal(urls.includes(absoluteUrl(`/blog/${post.slug}`)), false, `${post.slug} should stay out of sitemap`);
+  }
+
   for (const category of getBlogCategories()) {
-    assert.ok(urls.includes(absoluteUrl(`/blog/category/${category.slug}`)), `${category.slug} should be in sitemap`);
+    assert.equal(
+      urls.includes(absoluteUrl(`/blog/category/${category.slug}`)),
+      categoryHasIndexedPosts(category),
+      `${category.slug} sitemap inclusion should follow indexed guide availability`,
+    );
   }
 
   assert.ok(posts.length >= 100);
+  assert.ok(indexedPosts.length > 0);
   assert.ok(urls.includes(absoluteUrl("/")));
   assert.ok(urls.includes(absoluteUrl("/topics")));
   assert.ok(urls.includes(absoluteUrl("/subjects")));
@@ -198,73 +206,72 @@ test("sitemap includes public topic and blog pages but excludes private surfaces
   for (const page of getSubjectPages()) {
     assert.ok(urls.includes(absoluteUrl(subjectPath(page.slug))), `${page.slug} should be in sitemap`);
   }
-  assert.ok(sitemap().some((entry) => entry.images?.includes(absoluteUrl("/inspir-social-preview.png"))));
+  assert.ok(sitemap().some((entry) => entry.images?.some((image) => image.startsWith(absoluteUrl("/og?")))));
   const homeEntry = sitemap().find((entry) => entry.url === absoluteUrl("/"));
   assert.ok(homeEntry?.videos?.some((video) => video.content_loc === absoluteUrl(homepageFilm.contentUrl)));
   assert.ok(homeEntry?.videos?.some((video) => video.thumbnail_loc === absoluteUrl(homepageFilm.thumbnailUrl)));
   assert.equal(homeEntry?.videos?.[0]?.duration, 31);
   assert.equal(homeEntry?.videos?.[0]?.requires_subscription, "no");
   assert.equal(homeEntry?.alternates?.languages?.["en-US"], absoluteUrl("/"));
-  assert.equal(homeEntry?.alternates?.languages?.es, absoluteUrl("/es"));
-  assert.equal(homeEntry?.alternates?.languages?.ar, absoluteUrl("/ar"));
+  assert.equal(homeEntry?.alternates?.languages?.es, undefined);
+  assert.equal(homeEntry?.alternates?.languages?.ar, undefined);
   assert.equal(homeEntry?.alternates?.languages?.["x-default"], absoluteUrl("/"));
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
 });
 
-test("sitemap index advertises one crawlable sitemap per supported language", () => {
+test("sitemap index advertises source-current language sitemaps only", () => {
   const entries = sitemapIndexEntries();
   const xml = buildSitemapIndexXml();
 
-  assert.equal(entries.length, supportedLanguages.length);
+  assert.deepEqual(sitemapLanguages(), ["English"]);
+  assert.equal(entries.length, sitemapLanguages().length);
   assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
   assert.ok(xml.includes('<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>'));
   assert.ok(xml.includes('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'));
   assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("English"))}</loc>`));
-  assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("Spanish"))}</loc>`));
-  assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("Arabic"))}</loc>`));
+  assert.equal(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("Spanish"))}</loc>`), false);
+  assert.equal(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("Arabic"))}</loc>`), false);
   assert.ok(xml.endsWith("</sitemapindex>\n"));
   assert.equal(xml.includes("<urlset"), false);
   assert.equal(languageFromSitemapFileSlug("en-US.xml"), "English");
-  assert.equal(languageFromSitemapFileSlug("es.xml"), "Spanish");
-  assert.equal(languageFromSitemapFileSlug("ar"), "Arabic");
+  assert.equal(languageFromSitemapFileSlug("es.xml"), null);
+  assert.equal(languageFromSitemapFileSlug("ar"), null);
   assert.equal(languageFromSitemapFileSlug("made-up.xml"), null);
   assert.ok(xml.length < 1_000_000);
 });
 
-test("language sitemaps expose localized SEO URLs with complete hreflang clusters", () => {
+test("language sitemap helpers noindex incomplete locale clusters by omission", () => {
   const post = getBlogPosts()[0];
   assert.ok(post);
 
   const spanishUrls = sitemap("Spanish").map((entry) => entry.url);
-  assert.ok(spanishUrls.includes(absoluteUrl("/es")));
-  assert.ok(spanishUrls.includes(absoluteUrl("/es/topics")));
-  assert.ok(spanishUrls.includes(absoluteUrl(`/es/blog/${post.slug}`)));
-  assert.ok(spanishUrls.includes(absoluteUrl(`/es/blog/category/${getBlogCategories()[0].slug}`)));
-  assert.ok(spanishUrls.includes(absoluteUrl(`/es${topicPath(topicSeeds[0].slug)}`)));
+  assert.equal(spanishUrls.includes(absoluteUrl("/es")), false);
+  assert.equal(spanishUrls.includes(absoluteUrl("/es/topics")), false);
+  assert.equal(spanishUrls.includes(absoluteUrl(`/es/blog/${post.slug}`)), false);
+  assert.equal(spanishUrls.includes(absoluteUrl(`/es/blog/category/${getBlogCategories()[0].slug}`)), false);
+  assert.equal(spanishUrls.includes(absoluteUrl(`/es${topicPath(topicSeeds[0].slug)}`)), false);
   assert.equal(spanishUrls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(spanishUrls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
 
-  const spanishHome = sitemap("Spanish").find((entry) => entry.url === absoluteUrl("/es"));
+  const spanishHome = sitemap("Spanish").find((entry) => entry.url === absoluteUrl("/"));
   assert.equal(spanishHome?.alternates?.languages?.["en-US"], absoluteUrl("/"));
-  assert.equal(spanishHome?.alternates?.languages?.es, absoluteUrl("/es"));
-  assert.equal(spanishHome?.alternates?.languages?.ar, absoluteUrl("/ar"));
+  assert.equal(spanishHome?.alternates?.languages?.es, undefined);
+  assert.equal(spanishHome?.alternates?.languages?.ar, undefined);
   assert.equal(spanishHome?.alternates?.languages?.["x-default"], absoluteUrl("/"));
 
   const spanishXml = buildLanguageSitemapXml("Spanish");
   const arabicXml = buildLanguageSitemapXml("Arabic");
-  assert.ok(spanishXml.includes(`<loc>${absoluteUrl("/es")}</loc>`));
-  assert.ok(spanishXml.includes(`hreflang="es"`));
+  assert.ok(spanishXml.includes(`<loc>${absoluteUrl("/")}</loc>`));
+  assert.equal(spanishXml.includes(`hreflang="es"`), false);
   assert.ok(spanishXml.includes(`hreflang="x-default"`));
-  assert.ok(arabicXml.includes(`<loc>${absoluteUrl("/ar")}</loc>`));
-  assert.ok(arabicXml.includes(`href="${absoluteUrl("/ar")}"`));
-  assert.ok(arabicXml.includes(`hreflang="ar"`));
+  assert.ok(arabicXml.includes(`<loc>${absoluteUrl("/")}</loc>`));
+  assert.equal(arabicXml.includes(`href="${absoluteUrl("/ar")}"`), false);
+  assert.equal(arabicXml.includes(`hreflang="ar"`), false);
   assert.ok(spanishXml.length < 20_000_000);
   assert.ok(arabicXml.length < 20_000_000);
 
-  for (const language of ["English", "Spanish", "Hindi", "Malayalam", "Arabic"] satisfies SupportedLanguage[]) {
-    assert.ok(buildLanguageSitemapXml(language).includes(`<loc>${absoluteUrl(sitemap(language)[0].url)}</loc>`));
-  }
+  assert.ok(buildLanguageSitemapXml("English").includes(`<loc>${absoluteUrl(sitemap("English")[0].url)}</loc>`));
 });
 
 test("sitemap xml stays valid, styled, and crawler-readable", () => {
@@ -344,7 +351,7 @@ test("topic directory exposes category anchors, featured modes, and public faq s
   assert.ok(serialized.includes("public guest-mode entrypoints"));
 });
 
-test("prompt library exposes public starters, categories, search intent, and faq schema", () => {
+test("prompt library exposes public starters, categories, common questions, and faq schema", () => {
   const entries = getPromptEntries();
   const categoryHubs = getPromptCategoryHubs();
   const spotlight = getPromptSpotlightEntries();
@@ -370,8 +377,8 @@ test("prompt library exposes public starters, categories, search intent, and faq
   });
   const intentList = itemListJsonLd({
     path: "/prompts",
-    id: "prompt-search-intents",
-    name: "AI learning prompt search intents",
+    id: "prompt-common-questions",
+    name: "AI learning prompt questions",
     items: promptLibrarySearchIntents.map((intent) => ({
       name: intent,
       url: "/prompts",
@@ -408,8 +415,8 @@ test("learning map connects workflows to modes, prompts, paths, and guides", () 
   });
   const intentList = itemListJsonLd({
     path: "/ai-learning-map",
-    id: "search-intents",
-    name: "AI learning map search intents",
+    id: "common-questions",
+    name: "AI learning map questions",
     items: learningMapSearchIntents.map((intent) => ({
       name: intent,
       url: "/ai-learning-map",
@@ -455,8 +462,8 @@ test("comparison pages expose fair alternative intent and public learning entryp
   });
   const intentList = itemListJsonLd({
     path: "/compare",
-    id: "comparison-search-intents",
-    name: "AI tutor comparison search intents",
+    id: "comparison-common-questions",
+    name: "AI tutor comparison questions",
     items: comparisonHubSearchIntents.map((intent) => ({
       name: intent,
       url: "/compare",
@@ -514,8 +521,8 @@ test("audience pages route students, parents, teachers, and self-taught learners
   });
   const intentList = itemListJsonLd({
     path: "/for",
-    id: "audience-search-intents",
-    name: "AI learning audience search intents",
+    id: "audience-common-questions",
+    name: "AI learning audience questions",
     items: audienceHubSearchIntents.map((intent) => ({
       name: intent,
       url: "/for",
@@ -578,8 +585,8 @@ test("subject pages connect subject intent to public modes, prompts, guides, and
   });
   const intentList = itemListJsonLd({
     path: "/subjects",
-    id: "subject-search-intents",
-    name: "AI tutor subject search intents",
+    id: "subject-common-questions",
+    name: "AI tutor subject questions",
     items: subjectHubSearchIntents.map((intent) => ({
       name: intent,
       url: "/subjects",
@@ -862,10 +869,10 @@ test("media page exposes coverage links, story angles, citation facts, and faq s
   assert.ok(serialized.includes("citation-friendly"));
   assert.ok(serialized.includes("free public AI learning"));
   assert.ok(serialized.includes("AI tutor for schools"));
-  assert.ok(serialized.includes("inspir makes learning modes public and indexable"));
+  assert.ok(serialized.includes("inspir makes learning modes open at"));
 });
 
-test("schools page exposes deployment steps, use cases, search intent, and faq schema", () => {
+test("schools page exposes deployment steps, use cases, common questions, and faq schema", () => {
   const features = itemListJsonLd({
     path: "/schools",
     id: "school-features",
@@ -898,8 +905,8 @@ test("schools page exposes deployment steps, use cases, search intent, and faq s
   });
   const intents = itemListJsonLd({
     path: "/schools",
-    id: "school-search-intents",
-    name: "AI learning search intents for schools",
+    id: "school-common-questions",
+    name: "AI learning questions for schools",
     items: schoolSearchIntents.map((intent) => ({
       name: intent,
       url: "/schools",
@@ -920,7 +927,7 @@ test("schools page exposes deployment steps, use cases, search intent, and faq s
   assert.ok(serialized.includes("generic AI chatbot"));
 });
 
-test("trust page exposes public/private boundaries, crawler policy, references, and faq schema", () => {
+test("trust page exposes public/private boundaries, references, and faq schema", () => {
   const principles = itemListJsonLd({
     path: "/trust",
     id: "trust-principles",
@@ -941,13 +948,13 @@ test("trust page exposes public/private boundaries, crawler policy, references, 
       description: safeguard.text,
     })),
   });
-  const crawlers = itemListJsonLd({
+  const publicAccess = itemListJsonLd({
     path: "/trust",
-    id: "crawler-policy",
-    name: "inspir crawler and indexing policy",
+    id: "public-access-policy",
+    name: "inspir public access policy",
     items: trustCrawlerPolicies.map((policy) => ({
       name: `${policy.name}: ${policy.status}`,
-      url: "/trust#crawler-policy",
+      url: "/trust#public-private-boundaries",
       description: policy.text,
     })),
   });
@@ -962,19 +969,19 @@ test("trust page exposes public/private boundaries, crawler policy, references, 
     })),
   });
   const faq = faqPageJsonLd({ path: "/trust", questions: trustFaqs });
-  const serialized = serializeJsonLd([principles, safeguards, crawlers, references, faq]);
+  const serialized = serializeJsonLd([principles, safeguards, publicAccess, references, faq]);
 
   assert.equal(principles.itemListElement.length, trustPrinciples.length);
   assert.equal(safeguards.itemListElement.length, trustSafeguards.length);
-  assert.equal(crawlers.itemListElement.length, trustCrawlerPolicies.length);
+  assert.equal(publicAccess.itemListElement.length, trustCrawlerPolicies.length);
   assert.equal(references.itemListElement.length, trustReferenceLinks.length);
   assert.equal(faq.mainEntity.length, trustFaqs.length);
   assert.ok(safeguards.itemListElement.some((item) => item.url === absoluteUrl("/robots.txt")));
   assert.ok(references.itemListElement.some((item) => item.url === absoluteUrl("/ai-content-index.json")));
   assert.ok(serialized.includes("Private saved chats stay private"));
-  assert.ok(serialized.includes("GPTBot"));
-  assert.ok(serialized.includes("ClaudeBot"));
-  assert.ok(serialized.includes("public discovery"));
+  assert.ok(serialized.includes("Public access has boundaries"));
+  assert.ok(serialized.includes("Assistant and reference access"));
+  assert.ok(serialized.includes("not part of public learning references"));
 });
 
 test("video json-ld exposes the public learning film without unsafe markup", () => {
@@ -1045,7 +1052,7 @@ test("faq json-ld exposes questions as answerable entities", () => {
   assert.equal(faq.mainEntity[0].acceptedAnswer["@type"], "Answer");
 });
 
-test("homepage learning paths and faqs expose crawlable guest-mode guidance", () => {
+test("homepage learning paths and faqs expose guest-mode guidance", () => {
   assert.deepEqual(
     homepageHeroRoutes.map((route) => route.href),
     ["/chat/learn-anything", "/chat/socratic-instruction", "/chat/homework-coach"],
@@ -1443,7 +1450,7 @@ test("rss feed exposes the blog library with escaped public links", () => {
   assert.ok(feed.includes('xmlns:dc="http://purl.org/dc/elements/1.1/"'));
   assert.ok(feed.includes(`<atom:link href="${absoluteUrl("/rss.xml")}" rel="self" type="application/rss+xml" />`));
   assert.ok(feed.includes(absoluteUrl("/blog/ai-learn-anything-guide")));
-  assert.ok(feed.includes(absoluteUrl("/inspir-social-preview.png")));
+  assert.ok(feed.includes(absoluteUrl("/og?")));
   assert.ok(feed.includes(`<dc:creator>inspir</dc:creator>`));
   assert.ok(feed.includes("<content:encoded><![CDATA["));
   assert.ok(feed.includes(absoluteUrl("/chat/learn-anything")));
@@ -1648,7 +1655,7 @@ test("metadata alternates expose rss, llms, ai index, and language canonicals", 
   assert.equal(alternates.types["application/json"], "/ai-content-index.json");
 });
 
-test("social image helper uses the local branded preview image", () => {
+test("social image helper uses the dynamic branded preview image", () => {
   const image = socialImage({
     title: "AI Socratic Tutor <script>",
     eyebrow: "Learning mode",
@@ -1657,7 +1664,9 @@ test("social image helper uses the local branded preview image", () => {
 
   assert.equal(image.width, 1200);
   assert.equal(image.height, 630);
-  assert.equal(image.url, absoluteUrl("/inspir-social-preview.png"));
+  assert.ok(image.url.startsWith(absoluteUrl("/og?")));
+  assert.ok(image.url.includes("AI+Socratic+Tutor"));
+  assert.ok(image.url.includes("Learning+mode"));
   assert.equal(image.url.includes("bubble.io"), false);
   assert.equal(image.alt, "AI Socratic Tutor <script> | inspir");
 });

@@ -30,7 +30,7 @@ import {
 } from "@/lib/seo/json-ld";
 
 const description =
-  "A crawlable map of AI learning workflows that connects public guest modes, prompt starters, learning paths, and practical guides.";
+  "A map of AI learning workflows that connects public guest modes, prompt starters, learning paths, and practical guides.";
 
 const pageMetadata: Metadata = {
   title: "AI Learning Map",
@@ -144,8 +144,8 @@ export default function AiLearningMapPage() {
     }),
     itemListJsonLd({
       path: "/ai-learning-map",
-      id: "search-intents",
-      name: "AI learning map search intents",
+      id: "common-questions",
+      name: "AI learning map questions",
       items: learningMapSearchIntents.map((intent) => ({
         name: intent,
         url: "/ai-learning-map",
@@ -177,10 +177,10 @@ export default function AiLearningMapPage() {
       <section className="marketing-band is-topic-finder">
         <div className="marketing-section-copy">
           <span>{workflows.length} linked workflows</span>
-          <h2>The fastest route from search intent to learning action.</h2>
+          <h2>The fastest route from a learning need to a useful action.</h2>
           <p>
             Each map card connects a real learner need to live modes, prompt starters,
-            deeper guides, and a review loop. People can use it. Crawlers can understand it.
+            deeper guides, and a review loop.
           </p>
         </div>
         <div className="marketing-mode-finder-grid">
@@ -200,10 +200,10 @@ export default function AiLearningMapPage() {
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>Built around the searches learners actually make.</h2>
+          <span>Common questions</span>
+          <h2>Built around the learning questions people actually ask.</h2>
           <p>
-            The map is the connective tissue between AI tutor searches, homework help,
+            The map connects AI tutoring, homework help,
             study prompts, learning paths, and the public chat modes that answer those needs.
           </p>
         </div>
@@ -362,7 +362,7 @@ export default function AiLearningMapPage() {
       <section className="marketing-band is-home-faq">
         <div className="marketing-section-copy">
           <span>Learning map FAQ</span>
-          <h2>A public map for learners and answer engines.</h2>
+          <h2>A public map for learners.</h2>
         </div>
         <div className="marketing-faq-list">
           {learningMapFaqs.map((item) => (

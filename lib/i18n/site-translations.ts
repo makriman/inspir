@@ -1,4 +1,5 @@
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
+import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
 import { getDatabaseTranslationBundle } from "@/lib/i18n/db-translations";
 import type { TranslationResult } from "./translation-types";
 import {
@@ -28,13 +29,16 @@ export async function getCachedSiteTranslationBundle(language: string, namespace
   const source = getSiteTranslationSource(namespace);
   if (normalized === defaultLanguage) return getEnglishSiteTranslationBundle(source.namespace);
 
-  return getDatabaseTranslationBundle(source, normalized);
+  const curatedBundle = getCuratedTranslationBundle(source, normalized);
+  if (curatedBundle) return curatedBundle;
+
+  return translationDbFallbackWithTimeout(getDatabaseTranslationBundle(source, normalized));
 }
 
 export async function getCachedSiteTranslationEntries(language: string, namespaces: string[]) {
+  const bundles = await Promise.all(namespaces.map((namespace) => getCachedSiteTranslationBundle(language, namespace)));
   const entries: Array<[string, string]> = [];
-  for (const namespace of namespaces) {
-    const bundle = await getCachedSiteTranslationBundle(language, namespace);
+  for (const bundle of bundles) {
     if (!bundle) continue;
     for (const [key, source] of Object.entries(bundle.sourceStrings)) {
       const translated = bundle.strings[key];
@@ -64,4 +68,14 @@ export async function getOrCreateSiteTranslationResult(
     translatedCount: bundle ? Object.keys(bundle.strings).length : 0,
     totalCount: Object.keys(source.sourceStrings).length,
   };
+}
+
+function translationDbFallbackWithTimeout<T>(promise: Promise<T | null>) {
+  const timeoutMs = Number(process.env.SITE_TRANSLATION_DB_TIMEOUT_MS ?? 1200);
+  if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return promise;
+
+  return Promise.race<T | null>([
+    promise,
+    new Promise<null>((resolve) => setTimeout(() => resolve(null), timeoutMs)),
+  ]);
 }

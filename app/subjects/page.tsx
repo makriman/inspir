@@ -87,8 +87,8 @@ export default function SubjectHubPage() {
     }),
     itemListJsonLd({
       path: "/subjects",
-      id: "subject-search-intents",
-      name: "AI tutor subject search intents",
+      id: "subject-common-questions",
+      name: "AI tutor subject questions",
       items: subjectHubSearchIntents.map((intent) => ({
         name: intent,
         url: "/subjects",
@@ -111,8 +111,8 @@ export default function SubjectHubPage() {
           <span>{pages.length} subject hubs</span>
           <h2>Subject pages built around real learning jobs.</h2>
           <p>
-            Each hub is a crawlable subject guide, but it also sends learners straight into
-            live guest-mode learning instead of stranding them on a brochure page.
+            Each subject hub explains the learning need and sends learners straight into live guest-mode help instead
+            of leaving them on a brochure page.
           </p>
         </div>
         <div className="marketing-mode-finder-grid">
@@ -132,11 +132,11 @@ export default function SubjectHubPage() {
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>The subject searches this hub is built to answer.</h2>
+          <span>Common questions</span>
+          <h2>The subject questions this hub helps with.</h2>
           <p>
-            Broad subject queries are competitive, so these pages pair the subject keyword with
-            interactive behaviors: tutoring, hints, feedback, quizzes, flashcards, debate, and planning.
+            Broad subjects become easier when the help is specific: tutoring, hints, feedback, quizzes, flashcards,
+            debate, and planning.
           </p>
         </div>
         <div className="learning-path-mode-list">
@@ -154,8 +154,7 @@ export default function SubjectHubPage() {
           <span>How it works</span>
           <h2>Every subject page connects content to action.</h2>
           <p>
-            The goal is not only to rank. It is to make the first click useful for a learner and
-            easy for search engines to understand.
+            The goal is to make the first click useful: name the subject, choose the right mode, and keep practising.
           </p>
         </div>
         <div className="learning-path-step-grid">

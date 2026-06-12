@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { audiencePath, getAudiencePages } from "@/lib/content/audiences";
 import { getBlogCategories, getBlogPosts } from "@/lib/content/blog";
+import { categoryHasIndexedPosts, indexedBlogPosts } from "@/lib/content/blog-seo-policy";
 import { comparisonPath, getComparisonPages } from "@/lib/content/comparisons";
 import { homepageFilm, homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
 import { getSubjectPages, subjectPath } from "@/lib/content/subjects";
@@ -10,13 +11,13 @@ import {
   defaultLanguage,
   languageConfigs,
   normalizeLanguage,
-  supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
 import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, defaultSocialImage, socialImage } from "@/lib/seo/config";
 
 const staticLastModified = new Date();
+const sitemapSupportedLanguages: SupportedLanguage[] = [defaultLanguage];
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type SitemapIndexEntry = {
@@ -40,7 +41,7 @@ function canonicalPathForEntry(entry: SitemapEntry) {
 function languageAlternatesForEntry(entry: SitemapEntry) {
   const path = canonicalPathForEntry(entry);
   const languages = Object.fromEntries(
-    supportedLanguages.map((language) => [
+    sitemapSupportedLanguages.map((language) => [
       languageConfigs[language].locale,
       absoluteUrl(localizePath(path, language)),
     ]),
@@ -147,7 +148,7 @@ export function sitemapFilePathForLanguage(language: SupportedLanguage | string)
 }
 
 export function sitemapLanguages() {
-  return supportedLanguages;
+  return sitemapSupportedLanguages;
 }
 
 export function languageFromSitemapFileSlug(value: string): SupportedLanguage | null {
@@ -155,7 +156,7 @@ export function languageFromSitemapFileSlug(value: string): SupportedLanguage | 
   if (!slug) return null;
 
   return (
-    supportedLanguages.find((language) => {
+    sitemapSupportedLanguages.find((language) => {
       const config = languageConfigs[language];
       return (
         slug === language.toLowerCase() ||
@@ -168,13 +169,18 @@ export function languageFromSitemapFileSlug(value: string): SupportedLanguage | 
 }
 
 export function sitemapIndexEntries(): SitemapIndexEntry[] {
-  return supportedLanguages.map((language) => ({
+  return sitemapSupportedLanguages.map((language) => ({
     loc: absoluteUrl(sitemapFilePathForLanguage(language)),
     lastModified: staticLastModified,
   }));
 }
 
 export default function sitemapEntries(language: SupportedLanguage | string = defaultLanguage): MetadataRoute.Sitemap {
+  const normalizedLanguage = normalizeLanguage(language);
+  const effectiveLanguage = sitemapSupportedLanguages.includes(normalizedLanguage)
+    ? normalizedLanguage
+    : defaultLanguage;
+
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: absoluteUrl("/"),
@@ -260,7 +266,8 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
     images: [socialImage({ title: topic.name, eyebrow: "Learning mode", description: topic.description }).url],
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
+  const posts = getBlogPosts();
+  const blogRoutes: MetadataRoute.Sitemap = indexedBlogPosts(posts).map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),
     lastModified: new Date(post.updated ?? post.date),
     changeFrequency: "monthly",
@@ -275,7 +282,9 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
     ],
   }));
 
-  const blogCategoryRoutes: MetadataRoute.Sitemap = getBlogCategories().map((category) => ({
+  const blogCategoryRoutes: MetadataRoute.Sitemap = getBlogCategories()
+    .filter((category) => categoryHasIndexedPosts(category, posts))
+    .map((category) => ({
     url: absoluteUrl(`/blog/category/${category.slug}`),
     lastModified: staticLastModified,
     changeFrequency: "weekly",
@@ -350,7 +359,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
       ...blogRoutes,
       ...blogCategoryRoutes,
     ],
-    normalizeLanguage(language),
+    effectiveLanguage,
   );
 }
 

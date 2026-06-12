@@ -15,6 +15,7 @@ import {
   slugifyBlogTag,
 } from "@/lib/content/blog";
 import { estimateBlogIndexedReadingMinutes, getBlogPostDepth } from "@/lib/content/blog-depth";
+import { isIndexedBlogPost } from "@/lib/content/blog-seo-policy";
 import { getBlogPostLearningGraph } from "@/lib/content/blog-link-graph";
 import { getBlogPostPracticePlan } from "@/lib/content/blog-practice";
 import { topicPath } from "@/lib/content/topic-routing";
@@ -75,6 +76,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       description: post.description,
       images: [image.url],
     },
+    robots: isIndexedBlogPost(post)
+      ? { index: true, follow: true }
+      : { index: false, follow: true },
   }, `/blog/${post.slug}`);
 }
 

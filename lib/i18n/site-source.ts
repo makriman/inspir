@@ -62,15 +62,21 @@ const staticSiteTranslationNamespaces = [
 const legalNamespaces = new Set(["legal:privacy", "legal:terms", "legal:tnc"]);
 let cachedCandidateSourceFiles: string[] | undefined;
 const extractedSourceValueCache = new Map<string, string[]>();
+const siteTranslationSourceCache = new Map<string, TranslationSource>();
 
 export function getSiteTranslationSource(namespace = siteTranslationNamespace): TranslationSource {
+  const cached = siteTranslationSourceCache.get(namespace);
+  if (cached) return cached;
+
   const sourceStrings = getSiteSourceStrings(namespace);
-  return {
+  const source = {
     namespace,
     sourceHash: getSiteSourceHash(sourceStrings),
     sourceStrings,
     systemInstruction: buildSiteTranslationSystemInstruction(),
   };
+  siteTranslationSourceCache.set(namespace, source);
+  return source;
 }
 
 export function getEnglishSiteTranslationBundle(namespace = siteTranslationNamespace): TranslationBundle {
@@ -228,15 +234,15 @@ function fileBelongsToNamespace(relativePath: string, namespace: string) {
       relativePath === "app/page.tsx" ||
       relativePath === "components/marketing/MarketingVideoEngine.tsx" ||
       relativePath === "lib/content/landing.ts" ||
-      relativePath.startsWith("lib/content/") ||
-      relativePath.startsWith("content/blog/")
+      relativePath === "lib/content/subjects.ts" ||
+      relativePath === "lib/content/topics.ts" ||
+      relativePath === "lib/content/topic-seo.ts"
     );
   }
   if (route === "chat-public") {
     return (
       relativePath === "app/chat/page.tsx" ||
       relativePath === "app/chat/[chatId]/page.tsx" ||
-      relativePath.startsWith("content/blog/") ||
       contentFileBelongsToRoute(relativePath, route)
     );
   }

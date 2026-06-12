@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { defaultLanguage, normalizeLanguage, type SupportedLanguage } from "@/lib/content/languages";
+import { defaultLanguage, languageConfigs, normalizeLanguage, type SupportedLanguage } from "@/lib/content/languages";
+import { alternatesForAvailableLanguages, isSiteLanguageAvailableForPath, getAvailableSiteLanguagesForPath } from "@/lib/i18n/availability";
+import { getRequestLanguage } from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
 import {
   getCachedSiteTranslationBundle,
   getSiteTranslationNamespaces,
 } from "@/lib/i18n/site-translations";
 import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
-import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
+import { absoluteUrl, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 
 export type LocalizedMetadataInput = {
   path: string;
@@ -55,13 +57,56 @@ const structuredDataCodeKeys = new Set([
 ]);
 
 export async function localizeMarketingMetadata(metadata: Metadata, path: string): Promise<Metadata> {
-  void path;
-  return metadata;
+  const language = await getRequestLanguage();
+  const languageAvailable = await isSiteLanguageAvailableForPath(path, language);
+  const t =
+    language === defaultLanguage || !languageAvailable
+      ? (value: string) => value
+      : await getSiteMetadataTranslator(language, path);
+  const availableLanguages = await getAvailableSiteLanguagesForPath(path);
+
+  return {
+    ...metadata,
+    title: localizeTitle(metadata.title, t),
+    description: typeof metadata.description === "string" ? t(metadata.description) : metadata.description,
+    alternates: localizedAlternates(path, availableLanguages),
+    robots:
+      language === defaultLanguage || languageAvailable
+        ? metadata.robots
+        : { index: false, follow: true },
+    openGraph: metadata.openGraph
+        ? {
+          ...metadata.openGraph,
+          title: localizeOptionalTitle(metadata.openGraph.title, t),
+          description:
+            typeof metadata.openGraph.description === "string"
+              ? t(metadata.openGraph.description)
+              : metadata.openGraph.description,
+          url: localizeHref(path, languageAvailable ? language : defaultLanguage),
+          siteName,
+        }
+      : metadata.openGraph,
+    twitter: metadata.twitter
+      ? {
+          ...metadata.twitter,
+          title: localizeOptionalTitle(metadata.twitter.title, t),
+          description:
+            typeof metadata.twitter.description === "string"
+              ? t(metadata.twitter.description)
+              : metadata.twitter.description,
+        }
+      : metadata.twitter,
+  };
 }
 
 export async function localizeMarketingStructuredData(items: ReadonlyArray<unknown>, path?: string) {
-  void path;
-  return items;
+  const pathname = path ?? "/";
+  const language = await getRequestLanguage();
+  if (language === defaultLanguage) return items;
+  const languageAvailable = await isSiteLanguageAvailableForPath(pathname, language);
+  if (!languageAvailable) return items;
+  const t = await getSiteMetadataTranslator(language, pathname);
+  return items.map((item) => localizeStructuredDataValue(item, t, undefined, language));
 }
 
 export function localizeStructuredDataValue(
@@ -71,6 +116,7 @@ export function localizeStructuredDataValue(
   language: string = defaultLanguage,
 ): unknown {
   if (typeof value === "string") {
+    if (key === "inLanguage") return languageConfigs[normalizeLanguage(language)].locale;
     const localizedUrl = key ? localizeStructuredDataUrl(key, value, language) : null;
     if (localizedUrl) return localizedUrl;
     if (key && shouldPreserveStructuredDataString(key, value)) return value;
@@ -90,8 +136,13 @@ export function localizeStructuredDataValue(
 }
 
 export async function localizedMarketingMetadata(input: LocalizedMetadataInput): Promise<Metadata> {
-  const language = defaultLanguage;
-  const t = language === defaultLanguage ? (value: string) => value : await getSiteMetadataTranslator(language, input.path);
+  const language = await getRequestLanguage();
+  const languageAvailable = await isSiteLanguageAvailableForPath(input.path, language);
+  const t =
+    language === defaultLanguage || !languageAvailable
+      ? (value: string) => value
+      : await getSiteMetadataTranslator(language, input.path);
+  const availableLanguages = await getAvailableSiteLanguagesForPath(input.path);
 
   const title = t(input.title);
   const description = t(input.description);
@@ -108,12 +159,15 @@ export async function localizedMarketingMetadata(input: LocalizedMetadataInput):
   return {
     title,
     description,
-    alternates: metadataAlternates(input.path),
-    ...(input.robots ? { robots: input.robots } : {}),
+    alternates: localizedAlternates(input.path, availableLanguages),
+    robots:
+      language === defaultLanguage || languageAvailable
+        ? input.robots
+        : { index: false, follow: true },
     openGraph: {
       title: openGraphTitle,
       description: openGraphDescription,
-      url: input.path,
+      url: localizeHref(input.path, languageAvailable ? language : defaultLanguage),
       siteName,
       images: [image],
       type: input.type ?? "website",
@@ -125,6 +179,41 @@ export async function localizedMarketingMetadata(input: LocalizedMetadataInput):
       images: [image.url],
     },
   };
+}
+
+function localizedAlternates(path: string, languages: SupportedLanguage[]): NonNullable<Metadata["alternates"]> {
+  return {
+    canonical: path,
+    languages: {
+      ...alternatesForAvailableLanguages(path, languages),
+      "x-default": absoluteUrl(path),
+    },
+    types: {
+      "application/rss+xml": "/rss.xml",
+      "text/plain": "/llms.txt",
+      "application/json": "/ai-content-index.json",
+    },
+  };
+}
+
+function localizeTitle(title: Metadata["title"], t: (value: string) => string): Metadata["title"] {
+  if (typeof title === "string") return t(title);
+  if (!title || typeof title !== "object") return title;
+  const titleParts = title as {
+    default?: unknown;
+    template?: unknown;
+    absolute?: unknown;
+  };
+  const localized = { ...(title as Record<string, unknown>) };
+  if (typeof titleParts.default === "string") localized.default = t(titleParts.default);
+  if (typeof titleParts.template === "string") localized.template = t(titleParts.template);
+  if (typeof titleParts.absolute === "string") localized.absolute = t(titleParts.absolute);
+  return localized as Metadata["title"];
+}
+
+function localizeOptionalTitle(title: Metadata["title"], t: (value: string) => string): NonNullable<Metadata["title"]> | undefined {
+  const localized = localizeTitle(title, t);
+  return localized ?? undefined;
 }
 
 function shouldPreserveStructuredDataString(key: string, value: string) {

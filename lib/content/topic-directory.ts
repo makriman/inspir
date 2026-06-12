@@ -112,7 +112,7 @@ export const topicDirectoryFaqs = [
   {
     question: "Are these real public pages or just app screens?",
     answer:
-      "They are real public guest-mode entrypoints. Each mode has a canonical /chat/{topicSlug} URL, visible starter prompts, learning guidance, and structured data for search engines.",
+      "They are real public guest-mode entrypoints. Each mode has a /chat/{topicSlug} link, visible starter prompts, and learning guidance people can try right away.",
   },
   {
     question: "Can a learner open a mode without an account?",

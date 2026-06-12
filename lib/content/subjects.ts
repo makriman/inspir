@@ -38,9 +38,9 @@ export const subjectHubFaqs = [
       "Subject hubs organize public AI learning modes by learning intent, such as math, writing, coding, history, homework, and exam prep. Each hub links to live guest modes, prompt starters, guides, workflows, and review loops.",
   },
   {
-    question: "Are subject hubs indexable?",
+    question: "Can people use subject hubs without an account?",
     answer:
-      "Yes. Subject hubs are public pages built for learners, Google, and AI answer engines. They expose only public learning guidance and public guest-mode URLs, not private saved chats.",
+      "Yes. Subject hubs are public pages built for learners. They expose only public learning guidance and public guest-mode links, not private saved chats.",
   },
   {
     question: "How are these different from a generic AI chatbot page?",
@@ -530,7 +530,7 @@ const subjectPages: SubjectPage[] = [
       {
         question: "Does inspir expose private homework chats to Google?",
         answer:
-          "No. Public subject pages and guest mode entrypoints are indexable, but private saved chats are excluded from discovery files.",
+          "No. Public subject pages and guest mode entrypoints are open, but private saved chats are not part of public references or shared learning catalogs.",
       },
     ],
   },

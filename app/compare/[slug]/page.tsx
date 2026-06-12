@@ -211,8 +211,8 @@ export default async function ComparisonDetailPage({ params }: ComparisonPagePro
           <span>Use cases</span>
           <h2>Open the mode that matches the job.</h2>
           <p>
-            These are the high-intent moments where a learner usually needs a live teaching
-            behavior rather than another broad page.
+            These are the moments where a learner usually needs a live teaching behavior
+            rather than another broad page.
           </p>
         </div>
         <div className="learning-path-step-grid">
@@ -238,8 +238,7 @@ export default async function ComparisonDetailPage({ params }: ComparisonPagePro
           <span>Public entrypoints</span>
           <h2>Live modes, guides, and workflows related to this comparison.</h2>
           <p>
-            Every link here is public and crawlable. Private user chats stay out of comparison,
-            sitemap, and AI-readable discovery files.
+            Every link here opens public learning material. Private user chats stay private.
           </p>
         </div>
         <div className="marketing-topic-grid">
@@ -288,11 +287,10 @@ export default async function ComparisonDetailPage({ params }: ComparisonPagePro
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>The searches this page is designed to answer.</h2>
+          <span>Common questions</span>
+          <h2>The comparison questions this page is designed to answer.</h2>
           <p>
-            These phrases are surfaced naturally on the page and in structured discovery files
-            so crawlers can understand the exact comparison intent.
+            These are common ways learners compare tools before choosing where to study.
           </p>
         </div>
         <div className="learning-path-mode-list">

@@ -548,9 +548,9 @@ export function getBlogCategoryFaqs(category: BlogCategory) {
         "Yes. Category pages link into public guest modes, learning paths, and article clusters so learners can move from reading into tutoring, quizzes, flashcards, debate, planning, or feedback.",
     },
     {
-      question: "Are these pages written only for search engines?",
+      question: "Are these pages useful beyond browsing the blog?",
       answer:
-        "No. The category structure helps search engines understand the library, but each page is meant to help a learner choose a guide, open the right mode, and keep studying actively.",
+        "Yes. Each category is meant to help a learner choose a guide, open the right mode, and keep studying actively.",
     },
   ];
 }

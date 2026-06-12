@@ -105,8 +105,8 @@ export default function PromptLibraryPage() {
     }),
     itemListJsonLd({
       path: "/prompts",
-      id: "prompt-search-intents",
-      name: "AI learning prompt search intents",
+      id: "prompt-common-questions",
+      name: "AI learning prompt questions",
       items: promptLibrarySearchIntents.map((intent) => ({
         name: intent,
         url: "/prompts",
@@ -151,8 +151,8 @@ export default function PromptLibraryPage() {
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>The prompt searches this library is built to answer.</h2>
+          <span>Prompt help</span>
+          <h2>The prompt questions this library is built to answer.</h2>
           <p>
             Learners often search for prompts before they know which AI tool behavior they need.
             This page routes those searches into the right public learning mode.

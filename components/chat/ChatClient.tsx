@@ -83,8 +83,9 @@ import { LearningStore } from "@/components/chat/LearningStore";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
 import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
+import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
-import { defaultLanguage, languageDisplayName, supportedLanguages } from "@/lib/content/languages";
+import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicPath } from "@/lib/content/topic-routing";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -1120,6 +1121,7 @@ function useChatClientController({
 
   function openLearningStore() {
     setStoreOpen(true);
+    setProfileOpen(false);
     setRecentOpen(false);
     setMobileSidebarOpen(false);
   }
@@ -1139,6 +1141,7 @@ function useChatClientController({
     setInput("");
     setRecentOpen(false);
     setStoreOpen(false);
+    setProfileOpen(false);
     setMobileSidebarOpen(false);
     window.history.replaceState(null, "", localizeHref(nextTopic ? topicPath(nextTopic.slug) : "/chat", currentLanguage));
   }
@@ -1147,6 +1150,7 @@ function useChatClientController({
     if (isGuest) return;
     setRecentLoading(true);
     setRecentOpen(true);
+    setProfileOpen(false);
     try {
       const response = await fetch(`/api/chats?topicId=${activeTopicId}`);
       const data = await response.json();
@@ -1455,7 +1459,11 @@ function ChatClientLayout(controller: ChatClientController) {
           onOpenStore={openLearningStore}
           onProfile={() => {
             if (isGuest) setGuestPromptOpen(true);
-            else setProfileOpen(true);
+            else {
+              controller.setStoreOpen(false);
+              controller.setRecentOpen(false);
+              setProfileOpen(true);
+            }
             setMobileSidebarOpen(false);
           }}
           onSearch={setSearch}
@@ -1486,11 +1494,13 @@ function ChatMainSection({ controller }: { controller: ChatClientController }) {
     isQuizMode,
     messages,
     openRecentConversations,
+    profileOpen,
     recentOpen,
     regenerateLast,
     resetChat,
     sending,
     setMobileSidebarOpen,
+    setProfileOpen,
     setRecentOpen,
     setStoreOpen,
     stopGeneration,
@@ -1500,23 +1510,37 @@ function ChatMainSection({ controller }: { controller: ChatClientController }) {
   return (
     <section className="bubble-main-shell">
       <TopBar
-        title={storeOpen ? "Learning Store" : recentOpen ? `${activeTopic.name}'s Recent Conversations` : activeTopic.name}
-        recentOpen={recentOpen || storeOpen}
-        showRecent={!isGuest && !storeOpen}
+        title={
+          profileOpen
+            ? "Profile"
+            : storeOpen
+              ? "Learning Store"
+              : recentOpen
+                ? `${activeTopic.name}'s Recent Conversations`
+                : activeTopic.name
+        }
+        recentOpen={recentOpen || storeOpen || profileOpen}
+        showRecent={!isGuest && !storeOpen && !profileOpen}
         sending={sending}
         canRegenerate={
-          !storeOpen && !isGuest && !isQuizMode && !isFlashcardMode && messages.some((message) => message.role === "user")
+          !profileOpen &&
+          !storeOpen &&
+          !isGuest &&
+          !isQuizMode &&
+          !isFlashcardMode &&
+          messages.some((message) => message.role === "user")
         }
         onReset={resetChat}
         onRecent={() => void openRecentConversations()}
         onBack={() => {
-          if (storeOpen) setStoreOpen(false);
+          if (profileOpen) setProfileOpen(false);
+          else if (storeOpen) setStoreOpen(false);
           else setRecentOpen(false);
         }}
         onMenu={() => setMobileSidebarOpen(true)}
         onStop={stopGeneration}
         onRegenerate={regenerateLast}
-        showSessionActions={!storeOpen}
+        showSessionActions={!storeOpen && !profileOpen}
       />
       <ChatWorkspaceSwitch controller={controller} />
     </section>
@@ -1547,7 +1571,13 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     listRef,
     loadChat,
     messages,
+    memoryDashboard,
+    memoryError,
+    memoryLoading,
+    memorySaving,
     miniAppMode,
+    profileOpen,
+    profileUser,
     recentChats,
     recentLoading,
     recentOpen,
@@ -1559,12 +1589,42 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     setActivityRun,
     setInput,
     setRecentOpen,
+    setProfileOpen,
     stopGeneration,
     storeOpen,
     submitMessage,
+    avatarSrc,
+    clearMemory,
+    createMemoryItem,
+    deleteMemoryItem,
+    languageSaving,
+    patchMemorySettings,
+    updateMemoryItem,
+    updatePreferredLanguage,
     userDisplayName,
     workspaceResetCount,
   } = controller;
+
+  if (profileOpen) {
+    return (
+      <ProfilePanel
+        user={profileUser}
+        avatarSrc={avatarSrc}
+        languageSaving={languageSaving}
+        memoryDashboard={memoryDashboard}
+        memoryLoading={memoryLoading}
+        memorySaving={memorySaving}
+        memoryError={memoryError}
+        onLanguageChange={updatePreferredLanguage}
+        onMemorySettings={patchMemorySettings}
+        onMemoryCreate={createMemoryItem}
+        onMemoryUpdate={updateMemoryItem}
+        onMemoryDelete={deleteMemoryItem}
+        onMemoryClear={clearMemory}
+        onClose={() => setProfileOpen(false)}
+      />
+    );
+  }
 
   if (storeOpen) {
     return (
@@ -1738,58 +1798,26 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
   const {
     activeTopic,
     agePromptOpen,
-    avatarSrc,
-    clearMemory,
-    createMemoryItem,
-    deleteMemoryItem,
     guestLanguagePromptOpen,
     guestMessageLimit,
     guestMessagesUsed,
     guestPromptOpen,
     currentLanguage,
     isGuest,
-    languageSaving,
     learningTools,
-    memoryDashboard,
-    memoryError,
-    memoryLoading,
-    memorySaving,
     memorySourceModal,
     openFirstTopicWithMode,
-    patchMemorySettings,
-    profileOpen,
     profileUser,
     saveGuestLanguage,
     setAgePromptOpen,
     setGuestPromptOpen,
     setMemorySourceModal,
-    setProfileOpen,
     setProfileUser,
     submitMemorySourceFeedback,
-    updateMemoryItem,
-    updatePreferredLanguage,
   } = controller;
 
   return (
     <>
-      {profileOpen ? (
-        <ProfilePanel
-          user={profileUser}
-          avatarSrc={avatarSrc}
-          languageSaving={languageSaving}
-          memoryDashboard={memoryDashboard}
-          memoryLoading={memoryLoading}
-          memorySaving={memorySaving}
-          memoryError={memoryError}
-          onLanguageChange={updatePreferredLanguage}
-          onMemorySettings={patchMemorySettings}
-          onMemoryCreate={createMemoryItem}
-          onMemoryUpdate={updateMemoryItem}
-          onMemoryDelete={deleteMemoryItem}
-          onMemoryClear={clearMemory}
-          onClose={() => setProfileOpen(false)}
-        />
-      ) : null}
       <PersistentLearningDock
         tools={learningTools}
         onOpenTimer={() => openFirstTopicWithMode("study-timer")}
@@ -6105,7 +6133,7 @@ function GuestLanguagePromptModal({
   onSave: (language: string) => void;
   onClose: () => void;
 }) {
-  const [language, setLanguage] = useState(currentLanguage || defaultLanguage);
+  const [language, setLanguage] = useState<SupportedLanguage>((currentLanguage as SupportedLanguage) || defaultLanguage);
 
   return (
     <div className="bubble-guest-modal-backdrop" role="presentation">
@@ -6116,22 +6144,15 @@ function GuestLanguagePromptModal({
         <span className="bubble-guest-modal-kicker">Preferred Language</span>
         <h2 id="guest-language-title">Choose your learning language</h2>
         <p>Use inspir in the language that feels easiest. You can change this later from your profile.</p>
-        <label className="bubble-age-label" htmlFor="guest-preferred-language">
-          Preferred Language
-        </label>
-        <select
-          id="guest-preferred-language"
-          value={language}
-          onChange={(event) => setLanguage(event.target.value)}
-          className="bubble-age-input"
-          data-no-auto-translate="true"
-        >
-          {supportedLanguages.map((supportedLanguage) => (
-            <option key={supportedLanguage} value={supportedLanguage} data-no-auto-translate="true">
-              {languageDisplayName(supportedLanguage)}
-            </option>
-          ))}
-        </select>
+        <LanguagePicker
+          currentLanguage={language}
+          recommendedLanguage={language}
+          buttonLabel="Preferred Language"
+          title="Choose your learning language"
+          description="You can switch again later from Profile."
+          onSelect={setLanguage}
+          className="bubble-modal-language-picker"
+        />
         <button type="button" onClick={() => onSave(language)} className="bubble-guest-modal-primary">
           Continue
         </button>
@@ -6153,7 +6174,7 @@ function AgePromptModal({
   initialLanguage: string;
 }) {
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [preferredLanguage, setPreferredLanguage] = useState(initialLanguage || defaultLanguage);
+  const [preferredLanguage, setPreferredLanguage] = useState<SupportedLanguage>((initialLanguage as SupportedLanguage) || defaultLanguage);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const today = new Date().toISOString().slice(0, 10);
@@ -6215,22 +6236,15 @@ function AgePromptModal({
             className="bubble-age-input"
             required
           />
-          <label className="bubble-age-label" htmlFor="age-preferred-language">
-            Preferred Language
-          </label>
-          <select
-            id="age-preferred-language"
-            value={preferredLanguage}
-            onChange={(event) => setPreferredLanguage(event.target.value)}
-            className="bubble-age-input"
-            data-no-auto-translate="true"
-          >
-            {supportedLanguages.map((language) => (
-              <option key={language} value={language} data-no-auto-translate="true">
-                {languageDisplayName(language)}
-              </option>
-            ))}
-          </select>
+          <LanguagePicker
+            currentLanguage={preferredLanguage}
+            recommendedLanguage={preferredLanguage}
+            buttonLabel="Preferred Language"
+            title="Choose your learning language"
+            description="App text and tutoring replies will follow this setting."
+            onSelect={setPreferredLanguage}
+            className="bubble-modal-language-picker"
+          />
           {error ? <span className="bubble-age-error">{error}</span> : null}
           <button type="submit" disabled={saving} className="bubble-guest-modal-primary">
             {saving ? "Saving..." : "Continue"}
@@ -6287,14 +6301,17 @@ function ProfilePanel({
   onClose: () => void;
 }) {
   return (
-    <aside className="bubble-profile-panel">
+    <main className="bubble-profile-panel bubble-profile-workspace app-scrollbar">
       <div className="bubble-profile-header">
-        <h2>Profile</h2>
+        <div>
+          <span>Learning profile</span>
+          <h2>Make inspir feel like it knows how you learn.</h2>
+        </div>
         <button type="button" aria-label="Close profile" onClick={onClose}>
           <X size={24} strokeWidth={3.5} />
         </button>
       </div>
-      <div className="bubble-profile-body app-scrollbar">
+      <div className="bubble-profile-body">
         <section className="bubble-profile-hero">
           <div className="bubble-profile-avatar">
             {avatarSrc ? <Image src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized /> : null}
@@ -6309,6 +6326,21 @@ function ProfilePanel({
           <ProfileLine label="Email" value={user.email || "user@example.com"} />
         </div>
 
+        <section className="bubble-profile-section">
+          <div className="bubble-profile-section-head">
+            <span>Overview</span>
+            <h3>Your learning snapshot</h3>
+          </div>
+          <div className="bubble-profile-stats-grid">
+            <ProfileStat
+              label="Age"
+              value={typeof user.age === "number" ? String(user.age) : "Add your date of birth"}
+            />
+            <ProfileStat label="Learning score" value={String(user.score ?? 0)} />
+            <ProfileStat label="inspir'ed since" value={formatBubbleDate(user.createdAt)} />
+          </div>
+        </section>
+
         <section className="bubble-language-card">
           <div className="bubble-language-card-head">
             <div className="bubble-profile-line-icon">
@@ -6319,56 +6351,57 @@ function ProfilePanel({
               <span>All app text and tutoring replies follow this setting.</span>
             </div>
           </div>
-          <select
-            value={user.preferredLanguage || defaultLanguage}
+          <LanguagePicker
+            currentLanguage={user.preferredLanguage || defaultLanguage}
+            recommendedLanguage={user.preferredLanguage || defaultLanguage}
             disabled={languageSaving}
-            onChange={(event) => onLanguageChange(event.target.value)}
-            className="bubble-language-select"
-            data-no-auto-translate="true"
-          >
-            {supportedLanguages.map((language) => (
-              <option key={language} value={language} data-no-auto-translate="true">
-                {languageDisplayName(language)}
-              </option>
-            ))}
-          </select>
+            buttonLabel="Preferred Language"
+            title="Choose your learning language"
+            description="All app text and tutoring replies follow this setting."
+            onSelect={onLanguageChange}
+            className="bubble-profile-language-picker"
+          />
           {languageSaving ? <span className="bubble-language-saving">Saving…</span> : null}
         </section>
 
-        <div className="bubble-profile-stats-grid">
-          <ProfileStat
-            label="Age"
-            value={typeof user.age === "number" ? String(user.age) : "Add your date of birth"}
+        <section className="bubble-profile-section">
+          <div className="bubble-profile-section-head">
+            <span>Memory</span>
+            <h3>What inspir can remember</h3>
+          </div>
+          <MemoryPanel
+            dashboard={memoryDashboard}
+            loading={memoryLoading}
+            saving={memorySaving}
+            error={memoryError}
+            onSettings={onMemorySettings}
+            onCreate={onMemoryCreate}
+            onUpdate={onMemoryUpdate}
+            onDelete={onMemoryDelete}
+            onClear={onMemoryClear}
           />
-          <ProfileStat label="Learning score" value={String(user.score ?? 0)} />
-          <ProfileStat label="inspir'ed since" value={formatBubbleDate(user.createdAt)} />
-        </div>
+        </section>
 
-        <MemoryPanel
-          dashboard={memoryDashboard}
-          loading={memoryLoading}
-          saving={memorySaving}
-          error={memoryError}
-          onSettings={onMemorySettings}
-          onCreate={onMemoryCreate}
-          onUpdate={onMemoryUpdate}
-          onDelete={onMemoryDelete}
-          onClear={onMemoryClear}
-        />
-
-        <button type="button" onClick={() => void signOutToHome()} className="bubble-profile-logout">
-          Logout
-        </button>
-        <footer className="bubble-profile-footer">
-          <div className="bubble-profile-legal">
-            <Link href="/tnc">Terms and Conditions</Link>
-            <span>|</span>
-            <Link href="/privacy">Privacy Policy</Link>
+        <section className="bubble-profile-section bubble-profile-account-section">
+          <div className="bubble-profile-section-head">
+            <span>Account and privacy</span>
+            <h3>Control what stays with you</h3>
+          </div>
+          <p>
+            Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful
+            for you.
+          </p>
+          <div className="bubble-profile-account-actions">
+            <Link href="/terms">Terms</Link>
+            <Link href="/privacy">Privacy</Link>
+            <button type="button" onClick={() => void signOutToHome()} className="bubble-profile-logout">
+              Logout
+            </button>
           </div>
           <SocialLinks compact className="bubble-profile-social" />
-        </footer>
+        </section>
       </div>
-    </aside>
+    </main>
   );
 }
 

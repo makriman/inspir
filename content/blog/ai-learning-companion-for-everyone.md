@@ -24,7 +24,7 @@ A serious learning companion should help with the work around the answer:
 - turning passive reading into practice;
 - checking whether the learner can explain the idea back.
 
-That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with [Learn Anything](/chat/learn-anything). If you want to reason through a concept instead of being lectured, use [Socratic Instruction](/chat/socratic-instruction). If you are stuck on an assignment, [Homework Coach](/chat/homework-coach) is a better fit than a generic answer engine. The format should serve the learning job.
+That is why inspir separates learning jobs into public modes. If you want a gentle explanation, start with [Learn Anything](/chat/learn-anything). If you want to reason through a concept instead of being lectured, use [Socratic Instruction](/chat/socratic-instruction). If you are stuck on an assignment, [Homework Coach](/chat/homework-coach) is a better fit than a generic chatbot. The format should serve the learning job.
 
 ## What the companion should provide
 

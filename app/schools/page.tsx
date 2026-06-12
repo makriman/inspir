@@ -111,8 +111,8 @@ export default function SchoolsPage() {
     }),
     itemListJsonLd({
       path: "/schools",
-      id: "school-search-intents",
-      name: "AI learning search intents for schools",
+      id: "school-common-questions",
+      name: "AI learning questions for schools",
       items: schoolSearchIntents.map((intent) => ({
         name: intent,
         url: "/schools",

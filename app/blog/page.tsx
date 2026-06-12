@@ -3,6 +3,7 @@ import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { ArrowUpRight, BookOpenCheck, Library, Route } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
 import { getBlogCategories, getBlogPosts } from "@/lib/content/blog";
+import { indexedBlogPosts, isIndexedBlogPost } from "@/lib/content/blog-seo-policy";
 import { blogHubFaqs, getBlogPillarClusters } from "@/lib/content/blog-directory";
 import { topicSeeds } from "@/lib/content/topics";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
@@ -16,16 +17,8 @@ import {
   webPageJsonLd,
 } from "@/lib/seo/json-ld";
 
-const corePostSlugs = new Set([
-  "ai-learning-companion-for-everyone",
-  "how-to-study-with-ai-without-cheating-yourself",
-  "socratic-ai-tutor",
-  "talk-to-historical-figures-with-ai",
-  "ai-flashcards-and-active-recall",
-]);
-
 const blogDescription =
-  "Explore 100+ AI learning guides, prompt loops, and study workflows for tutoring, active recall, homework help, writing feedback, coding, and exam prep.";
+  "Explore practical AI learning guides for tutoring, active recall, homework help, writing feedback, coding, and exam prep.";
 
 const pageMetadata: Metadata = {
   title: "AI Learning Blog",
@@ -67,14 +60,14 @@ export default function BlogIndexPage() {
   const posts = getBlogPosts();
   const categories = getBlogCategories().slice(0, 12);
   const pillarClusters = getBlogPillarClusters(posts);
-  const corePosts = posts.filter((post) => corePostSlugs.has(post.slug));
-  const topicPosts = posts.filter((post) => !corePostSlugs.has(post.slug));
+  const corePosts = indexedBlogPosts(posts);
+  const topicPosts = posts.filter((post) => !isIndexedBlogPost(post));
   const jsonLd = [
     webPageJsonLd({
       path: "/blog",
       name: "AI Learning Blog",
       description:
-        "A crawlable guide library for AI tutoring, study skills, prompt loops, active recall, public learning modes, and practical AI-assisted learning.",
+        "A practical guide library for AI tutoring, study skills, active recall, public learning modes, and useful AI-assisted learning.",
       type: "CollectionPage",
     }),
     breadcrumbJsonLd([
@@ -103,9 +96,9 @@ export default function BlogIndexPage() {
     }),
     itemListJsonLd({
       path: "/blog",
-      id: "complete-guide-library",
-      name: "Complete AI learning guide library",
-      items: posts.map((post) => ({
+      id: "recommended-guide-library",
+      name: "Recommended AI learning guide library",
+      items: corePosts.map((post) => ({
         name: post.title,
         url: `/blog/${post.slug}`,
         description: post.description,

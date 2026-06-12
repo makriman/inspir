@@ -25,7 +25,7 @@ export default function LoadingPage() {
         <div className="marketing-status-copy is-compact">
           <span>Loading</span>
           <h1 id="loading-title">Getting your learning space ready.</h1>
-          <p>This page is a temporary app state and is intentionally kept out of search results.</p>
+          <p>This page is a temporary app state and is intentionally kept out of public browsing.</p>
         </div>
       </section>
       <MarketingFooter />

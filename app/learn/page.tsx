@@ -86,8 +86,8 @@ export default function LearningPathsPage() {
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
       <MarketingPageHero eyebrow="Learning paths" title="Use AI as a study workflow, not a shortcut.">
-        Each path connects the right public guest modes, prompts, and guides so learners can
-        move from a search intent into a real practice loop.
+        Each path connects the right guest modes, prompts, and guides so learners can move from a question into a real
+        practice loop.
       </MarketingPageHero>
 
       <section className="marketing-band">
@@ -95,8 +95,8 @@ export default function LearningPathsPage() {
           <span>Choose a path</span>
           <h2>Start with the job you need done.</h2>
           <p>
-            These pages are designed for both learners and search engines: clear intent, useful
-            steps, internal links to live modes, and related study guides.
+            Choose the path that matches the moment: understand a hard idea, get unstuck, prepare for an exam, or explore
+            a bigger question.
           </p>
         </div>
         <div className="marketing-path-grid is-directory">

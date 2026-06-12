@@ -86,8 +86,8 @@ export default function ComparePage() {
     }),
     itemListJsonLd({
       path: "/compare",
-      id: "comparison-search-intents",
-      name: "AI tutor comparison search intents",
+      id: "comparison-common-questions",
+      name: "AI tutor comparison questions",
       items: comparisonHubSearchIntents.map((intent) => ({
         name: intent,
         url: "/compare",
@@ -108,7 +108,7 @@ export default function ComparePage() {
       <section className="marketing-band is-topic-finder">
         <div className="marketing-section-copy">
           <span>{pages.length} comparison page</span>
-          <h2>High-intent searches deserve a clear answer, not a vague landing page.</h2>
+          <h2>Learners comparing tools deserve a clear answer, not a vague landing page.</h2>
           <p>
             Each comparison is written to be fair, useful, and action-oriented: what the known
             tool is good for, where inspir is different, and which public mode to open first.
@@ -131,8 +131,8 @@ export default function ComparePage() {
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>The comparison searches this hub is built to answer.</h2>
+          <span>Common questions</span>
+          <h2>The comparison questions this hub helps answer.</h2>
           <p>
             Learners often search with a product they already know. The useful answer is not
             winner-take-all; it is which tool behavior fits the job.
@@ -178,10 +178,10 @@ export default function ComparePage() {
           <article className="learning-path-step">
             <span>
               <SearchCheck size={16} />
-              Discovery
+              Next step
             </span>
-            <h3>Use comparison pages to route search into action.</h3>
-            <p>Each page links comparison intent to live modes, guides, prompts, and AI-readable discovery files.</p>
+            <h3>Use comparison pages to choose what to try next.</h3>
+            <p>Each page links the comparison to live modes, guides, prompts, and practical study paths.</p>
           </article>
         </div>
       </section>

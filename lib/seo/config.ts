@@ -49,9 +49,20 @@ export function metadataAlternates(canonical: string) {
   };
 }
 
-export function socialImage({ title }: SocialImageInput) {
+function encodeOgParam(value: string, maxLength: number) {
+  return value.replace(/\s+/g, " ").trim().slice(0, maxLength);
+}
+
+export function socialImage({ title, eyebrow, description }: SocialImageInput) {
+  const params = new URLSearchParams({
+    title: encodeOgParam(title, 120),
+  });
+
+  if (eyebrow) params.set("eyebrow", encodeOgParam(eyebrow, 64));
+  if (description) params.set("description", encodeOgParam(description, 180));
+
   return {
-    url: defaultSocialImage.url,
+    url: `${siteUrl}/og?${params.toString()}`,
     width: 1200,
     height: 630,
     alt: `${title} | ${siteName}`,

@@ -31,7 +31,7 @@ export const missionFaqs = [
   {
     question: "Can people use inspir without signing in?",
     answer:
-      "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from canonical /chat/{topicSlug} URLs.",
+      "Yes. Public guest modes such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly from simple /chat/{topicSlug} links.",
   },
   {
     question: "Why does inspir support school and partner deployments?",
@@ -44,7 +44,7 @@ export const authorityReferenceLinks = [
   {
     title: "Public learning modes",
     href: "/topics",
-    text: "Every indexable guest learning chat, organized by teaching behavior and learning need.",
+    text: "Every guest learning chat, organized by teaching behavior and learning need.",
   },
   {
     title: "Learning paths",
@@ -64,7 +64,7 @@ export const authorityReferenceLinks = [
   {
     title: "Trust and safety",
     href: "/trust",
-    text: "Public explanation of guest mode, private chats, crawler policy, learner safety, and school trust.",
+    text: "A clear explanation of guest mode, private chats, learner safety, and school trust.",
   },
   {
     title: "Media and citations",
@@ -81,36 +81,36 @@ export const authorityReferenceLinks = [
 export const trustPrinciples = [
   {
     title: "Public learning pages are intentional",
-    text: "Public guest-mode URLs exist so learners can land directly in useful learning modes from search, social links, schools, and AI answer engines.",
+    text: "Public guest-mode links exist so learners can start directly in useful learning modes from search, social links, schools, or shared recommendations.",
   },
   {
     title: "Private saved chats stay private",
-    text: "Saved user conversations use private identifiers, are not included in the sitemap or AI discovery files, and should not be treated as public source material.",
+    text: "Saved user conversations use private identifiers and should not be treated as public source material.",
   },
   {
     title: "Learning behavior comes first",
     text: "inspir is organized around hints, questions, quizzes, flashcards, debate, review, and explanation instead of passive answer-copying.",
   },
   {
-    title: "Search visibility has boundaries",
-    text: "Public pages are open to search and AI retrieval crawlers, while admin tools, API routes, reset flows, and private utilities are disallowed.",
+    title: "Public access has boundaries",
+    text: "Public pages can be shared and linked, while admin tools, API routes, reset flows, and private utilities stay closed.",
   },
 ] as const;
 
 export const trustSafeguards = [
   {
     title: "Guest mode entrypoints",
-    text: "Canonical /chat/{topicSlug} pages open public learning modes such as Learn Anything, Socratic Instruction, Homework Coach, and flashcards.",
+    text: "/chat/{topicSlug} pages open public learning modes such as Learn Anything, Socratic Instruction, Homework Coach, and flashcards.",
     href: "/topics",
   },
   {
     title: "Private conversation boundary",
-    text: "Private saved chat URLs are not sitemap-listed and are not included in llms.txt, llms-full.txt, or the JSON AI content catalog.",
+    text: "Private saved chat links are not part of public learning references, shared indexes, or citation material.",
     href: "/ai-content-index.json",
   },
   {
-    title: "Crawler policy",
-    text: "Robots rules allow Google, standard search crawlers, and major AI discovery crawlers on public pages, while blocking API routes, admin routes, and reset flows.",
+    title: "Public access policy",
+    text: "Public learning pages are open, while API routes, admin routes, reset flows, and private utility pages remain blocked.",
     href: "/robots.txt",
   },
   {
@@ -122,19 +122,19 @@ export const trustSafeguards = [
 
 export const trustCrawlerPolicies = [
   {
-    name: "Google and standard search crawlers",
+    name: "Search and directory access",
     status: "Allowed on public pages",
-    text: "Public pages, topic chats, learning paths, blog guides, and authority pages are intended to be discoverable.",
+    text: "Public pages, topic chats, learning paths, blog guides, and help pages are designed to be easy to find and share.",
   },
   {
-    name: "AI search, retrieval, and assistant crawlers",
+    name: "Assistant and reference access",
     status: "Allowed on public pages",
-    text: "OAI-SearchBot, ChatGPT-User, GPTBot, PerplexityBot, Perplexity-User, Claude-SearchBot, Claude-User, ClaudeBot, Applebot, Google-Extended, and CCBot are allowed for public discovery.",
+    text: "Assistant and reference tools can use public learning pages to point people toward the right guides and guest modes.",
   },
   {
-    name: "Public AI-readable files",
+    name: "Public reference files",
     status: "Allowed on public pages",
-    text: "llms.txt, llms-full.txt, and ai-content-index.json summarize public pages, routes, modes, guides, and citation boundaries for assistants.",
+    text: "Public reference files summarize learning pages, routes, modes, guides, and citation boundaries for tools that need a concise map.",
   },
   {
     name: "Private and utility routes",
@@ -157,35 +157,35 @@ export const trustReferenceLinks = [
   {
     title: "Robots policy",
     href: "/robots.txt",
-    text: "The live robots rules used by search crawlers and AI retrieval systems.",
+    text: "The live access rules for public and private routes.",
   },
   {
     title: "AI content index",
     href: "/ai-content-index.json",
-    text: "Machine-readable catalog of public pages, modes, learning paths, blog clusters, and indexing boundaries.",
+    text: "Structured catalog of public pages, modes, learning paths, blog clusters, and privacy boundaries.",
   },
   {
-    title: "Full AI-readable index",
+    title: "Full public reference index",
     href: "/llms-full.txt",
-    text: "Text-first discovery file for AI answer engines, assistants, educators, and citation tools.",
+    text: "Text-first reference file for assistants, educators, partners, and citation tools.",
   },
 ] as const;
 
 export const trustFaqs = [
   {
-    question: "Are public guest chats indexable?",
+    question: "Are public guest chats open?",
     answer:
-      "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are intended to be indexable learning pages.",
+      "Yes. Public topic entrypoints such as /chat/learn-anything and /chat/socratic-instruction are open learning pages that anyone can try.",
   },
   {
     question: "Are private saved user conversations exposed to search?",
     answer:
-      "No. Private saved chats use private identifiers, are not listed in the sitemap, and are not included in AI discovery files such as llms.txt, llms-full.txt, or ai-content-index.json.",
+      "No. Private saved chats use private identifiers and are not part of public pages, public reference files, or shared learning catalogs.",
   },
   {
-    question: "Why does inspir allow AI discovery crawlers?",
+    question: "Why are public learning pages easy to share?",
     answer:
-      "The goal is discovery and citation of public learning pages. Public routes, guides, and learning hubs are open to major AI search, retrieval, and assistant crawlers, while API, admin, reset, and private utility routes stay disallowed.",
+      "The goal is to help people find the right public learning page quickly. Public routes, guides, and learning hubs are open; API, admin, reset, and private utility routes stay closed.",
   },
   {
     question: "How does inspir reduce answer-copying?",
@@ -403,12 +403,12 @@ export const aboutStoryLinks = [
   {
     title: "Public learning modes",
     href: "/topics",
-    text: "The live, crawlable learning surface that turns the mission into product behavior.",
+    text: "The live learning experience that turns the mission into practical help.",
   },
   {
     title: "AI learning guide library",
     href: "/blog",
-    text: "The written learning library that supports prompts, study loops, and long-tail discovery.",
+    text: "The written learning library that supports prompts, study loops, and deeper practice.",
   },
   {
     title: "Schools and partners",
@@ -468,7 +468,7 @@ export const mediaOfficialLinks = [
   {
     href: "/topics",
     title: "Public AI learning modes",
-    text: "A crawlable directory of every guest learning chat entrypoint.",
+    text: "A clear directory of every guest learning chat entrypoint.",
   },
   {
     href: "/blog",
@@ -493,7 +493,7 @@ export const mediaLinkingTargets = [
     title: "Public learning modes",
     anchorText: "public AI learning modes",
     href: "/topics",
-    text: "Use this when describing the full set of guest-mode learning tools that are meant to be indexed.",
+    text: "Use this when describing the full set of guest-mode learning tools people can try immediately.",
   },
   {
     title: "Default guest tutor",
@@ -514,10 +514,10 @@ export const mediaLinkingTargets = [
     text: "Use this for school, partner, CSR, and education access references.",
   },
   {
-    title: "Trust and crawler policy",
+    title: "Trust and privacy boundaries",
     anchorText: "public AI learning trust policy",
     href: "/trust",
-    text: "Use this when referencing public/private boundaries, crawler policy, and school trust.",
+    text: "Use this when referencing public/private boundaries, learner safety, and school trust.",
   },
 ] as const;
 
@@ -534,7 +534,7 @@ export const mediaCitationSnippets = [
   },
   {
     title: "Guest-mode angle",
-    text: "inspir makes learning modes public and indexable at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
+    text: "inspir makes learning modes open at /chat/{topicSlug}, letting learners land directly inside the right AI learning experience without needing a saved private chat.",
     href: "/trust",
   },
   {
@@ -560,8 +560,8 @@ export const mediaStoryAngles = [
     href: "/blog/how-to-study-with-ai-without-cheating-yourself",
   },
   {
-    title: "Public guest mode as a discovery strategy",
-    text: "Each learning mode has a public URL so learners can arrive from search directly inside the right learning experience.",
+    title: "Public guest mode as a better first click",
+    text: "Each learning mode has a public link so learners can start directly inside the right learning experience.",
     href: "/topics",
   },
   {
@@ -595,6 +595,6 @@ export const mediaFaqs = [
   {
     question: "Who can use the media page?",
     answer:
-      "Journalists, directory editors, partners, schools, AI answer engines, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
+      "Journalists, directory editors, partners, schools, and anyone writing about inspir can use it for facts, links, story angles, and citation-friendly references.",
   },
 ] as const;

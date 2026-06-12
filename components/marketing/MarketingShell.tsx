@@ -10,6 +10,12 @@ import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages
 import type { TranslationBundle } from "@/lib/i18n/translation-types";
 import { localizeHref } from "@/lib/i18n/routing";
 import {
+  getRequestLanguage,
+  getRequestPathname,
+  getRequestRecommendedLanguage,
+  requestHasLocalePrefix,
+} from "@/lib/i18n/request-locale";
+import {
   getCachedSiteTranslationBundle,
   getCachedSiteTranslationEntries,
   getSiteTranslationNamespaces,
@@ -178,7 +184,7 @@ export async function ArrowLink({
   }
 
   return (
-    <Link className="marketing-arrow-link" href={localizeHref(href, defaultLanguage)}>
+    <Link className="marketing-arrow-link" href={localizeHref(href, await getRequestLanguage())}>
       {children}
       <ArrowUpRight size={17} />
     </Link>
@@ -186,10 +192,12 @@ export async function ArrowLink({
 }
 
 async function getMarketingChrome() {
-  const language = defaultLanguage;
-  const recommendedLanguage = defaultLanguage;
-  const currentPathname = "";
-  const hasLocalePrefix = false;
+  const [language, recommendedLanguage, currentPathname, hasLocalePrefix] = await Promise.all([
+    getRequestLanguage(),
+    getRequestRecommendedLanguage(),
+    getRequestPathname(),
+    requestHasLocalePrefix(),
+  ]);
   const translationNamespaces = getSiteTranslationNamespaces(currentPathname);
   const bundles =
     language === defaultLanguage

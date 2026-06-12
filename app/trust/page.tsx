@@ -25,7 +25,7 @@ import {
 } from "@/lib/seo/json-ld";
 
 const description =
-  "How inspir handles public guest learning pages, private saved chats, crawler access, learner safety, and school trust.";
+  "How inspir handles public guest learning, private saved chats, learner safety, and school trust.";
 
 const pageMetadata: Metadata = {
   title: "Trust And Safety",
@@ -99,11 +99,11 @@ export default function TrustPage() {
     }),
     itemListJsonLd({
       path: "/trust",
-      id: "crawler-policy",
-      name: "inspir crawler and indexing policy",
+      id: "public-private-boundaries",
+      name: "inspir public and private boundaries",
       items: trustCrawlerPolicies.map((policy) => ({
         name: `${policy.name}: ${policy.status}`,
-        url: "/trust#crawler-policy",
+        url: "/trust#public-private-boundaries",
         description: policy.text,
       })),
     }),
@@ -127,10 +127,9 @@ export default function TrustPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Trust and safety" title="Public learning should be discoverable without making private chats public.">
-        inspir separates public guest learning pages from private saved conversations, so
-        learners, schools, search engines, and AI answer engines can understand what is meant
-        to be public.
+      <MarketingPageHero eyebrow="Trust and safety" title="Public learning can be open without making private chats public.">
+        inspir separates free guest learning from saved personal conversations, so learners, families, and schools know
+        what is public and what stays private.
       </MarketingPageHero>
 
       <section className="marketing-band">
@@ -138,8 +137,8 @@ export default function TrustPage() {
           <span>Principles</span>
           <h2>Clear boundaries for a public AI learning platform.</h2>
           <p>
-            The SEO system is designed to make useful public learning resources findable while
-            keeping private user material, admin surfaces, and utility routes outside discovery.
+            Public learning modes are easy to open and share, while saved chats, account data, admin tools, and private
+            utilities stay out of public view.
           </p>
         </div>
         <div className="marketing-card-grid">
@@ -161,8 +160,8 @@ export default function TrustPage() {
           <span>Safeguards</span>
           <h2>The practical trust layer behind guest mode.</h2>
           <p>
-            These safeguards connect product behavior, private boundaries, crawler rules, and
-            school deployment needs into one public explanation.
+            These safeguards connect product behavior, private boundaries, learner safety, and school deployment needs
+            into one public explanation.
           </p>
         </div>
         <div className="marketing-topic-grid">
@@ -186,13 +185,13 @@ export default function TrustPage() {
         </div>
       </section>
 
-      <section id="crawler-policy" className="marketing-band">
+      <section id="public-private-boundaries" className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Crawler policy</span>
-          <h2>Discovery is open where the content is public.</h2>
+          <span>Public and private</span>
+          <h2>Open where it helps, private where it matters.</h2>
           <p>
-            inspir supports search and AI retrieval for public learning pages. Training crawlers
-            and private or operational surfaces are treated differently.
+            Public learning pages help people understand the product before signing in. Private chats, accounts, admin
+            tools, and operational routes are treated differently.
           </p>
         </div>
         <div className="marketing-card-grid">
@@ -209,10 +208,9 @@ export default function TrustPage() {
       <section className="marketing-band">
         <div className="marketing-section-copy">
           <span>Reference files</span>
-          <h2>The source links search systems and schools can inspect.</h2>
+          <h2>The source links schools and partners can inspect.</h2>
           <p>
-            These public files explain what should be indexed, what should not, and where the
-            formal policies live.
+            These public files explain the product, the public learning areas, and where formal policies live.
           </p>
         </div>
         <div className="learning-path-mode-list">
@@ -227,7 +225,7 @@ export default function TrustPage() {
       <section className="marketing-band is-home-faq">
         <div className="marketing-section-copy">
           <span>Questions</span>
-          <h2>Trust questions for learners, schools, and crawlers.</h2>
+          <h2>Trust questions for learners, families, and schools.</h2>
         </div>
         <div className="marketing-faq-list">
           {trustFaqs.map((item) => (

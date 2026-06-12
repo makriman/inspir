@@ -181,8 +181,9 @@ export default function AboutPage() {
           <span>Reference links</span>
           <h2>Follow the story into live public pages.</h2>
           <p>
-            These pages give people and AI answer engines a clear path from the company story
-            into the mission, the learning modes, the guide library, and school deployment notes.
+            These pages give learners, families, schools, and partners a clear path from the
+            company story into the mission, the learning modes, the guide library, and school
+            deployment notes.
           </p>
         </div>
         <div className="marketing-topic-grid">

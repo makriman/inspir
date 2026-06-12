@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
 import { getBlogCategories, getBlogCategory } from "@/lib/content/blog";
+import { categoryHasIndexedPosts } from "@/lib/content/blog-seo-policy";
 import {
   getBlogCategoryFaqs,
   getBlogCategoryFeaturedPosts,
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
   const title = profile.title;
   const description = `${profile.description} Browse ${category.count} guides linked to live AI learning modes.`;
   const image = socialImage({ title, eyebrow: "Blog theme", description });
+  const hasIndexedPosts = categoryHasIndexedPosts(category, getBlogCategories().flatMap((item) => item.posts));
 
   return localizeMarketingMetadata({
     title,
@@ -57,6 +59,7 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
       description,
       images: [image.url],
     },
+    robots: hasIndexedPosts ? { index: true, follow: true } : { index: false, follow: true },
   }, `/blog/category/${category.slug}`);
 }
 
@@ -214,11 +217,10 @@ export default async function BlogCategoryPage({ params }: BlogCategoryPageProps
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
+          <span>Common questions</span>
           <h2>The questions this hub is built to answer.</h2>
           <p>
-            Each category has its own search intent, live mode links, and guide structure so
-            the library is useful to people and legible to search systems.
+            Each category connects common learning questions to live modes, guide structure, and next steps.
           </p>
         </div>
         <div className="learning-path-mode-list">

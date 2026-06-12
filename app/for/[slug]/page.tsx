@@ -191,8 +191,7 @@ export default async function AudienceDetailPage({ params }: AudienceDetailPageP
           <span>Public modes</span>
           <h2>Start with the mode that matches the moment.</h2>
           <p>
-            These are live guest entrypoints. They are public and indexable, while private
-            user conversations stay outside sitemap and AI discovery files.
+            These live guest modes are open to try. Private user conversations stay private.
           </p>
         </div>
         <div className="marketing-topic-grid">
@@ -222,8 +221,7 @@ export default async function AudienceDetailPage({ params }: AudienceDetailPageP
           <span>Guides and workflows</span>
           <h2>Turn the first click into a complete learning loop.</h2>
           <p>
-            The strongest SEO pages do not strand a learner. They connect the audience intent
-            to paths, workflows, guides, and repeatable review.
+            A good first step should lead somewhere useful: paths, workflows, guides, and repeatable review.
           </p>
         </div>
         <div className="marketing-topic-grid">
@@ -268,11 +266,10 @@ export default async function AudienceDetailPage({ params }: AudienceDetailPageP
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>The searches this page is designed to answer.</h2>
+          <span>Common questions</span>
+          <h2>The questions this page is designed to answer.</h2>
           <p>
-            These phrases are visible to learners and included in structured discovery so AI
-            answer engines can understand the audience-specific purpose of the page.
+            These are common ways people describe the same learning need.
           </p>
         </div>
         <div className="learning-path-mode-list">

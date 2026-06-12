@@ -217,8 +217,8 @@ export default async function SubjectDetailPage({ params }: SubjectDetailPagePro
           <span>Public modes</span>
           <h2>Start with the mode that matches the learning problem.</h2>
           <p>
-            These are live guest entrypoints. They are public and indexable, while private
-            learner conversations stay outside sitemap and AI discovery files.
+            These are live guest entrypoints anyone can try. Private learner conversations
+            stay private and are not treated as public learning material.
           </p>
         </div>
         <div className="marketing-topic-grid">
@@ -248,7 +248,7 @@ export default async function SubjectDetailPage({ params }: SubjectDetailPagePro
           <span>Prompts</span>
           <h2>Starter prompts turn the subject page into a first action.</h2>
           <p>
-            Each prompt opens the matching public mode, so a learner can move from search result
+            Each prompt opens the matching public mode, so a learner can move from a question
             to a focused study session quickly.
           </p>
         </div>
@@ -324,11 +324,11 @@ export default async function SubjectDetailPage({ params }: SubjectDetailPagePro
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Search intent</span>
-          <h2>The searches this page is designed to answer.</h2>
+          <span>Common questions</span>
+          <h2>The questions this page helps learners answer.</h2>
           <p>
-            These phrases are visible to learners and included in structured discovery so answer
-            engines can understand the subject-specific purpose of the page.
+            These common starting points help learners choose a mode, ask a better question,
+            and leave with a useful next step.
           </p>
         </div>
         <div className="learning-path-mode-list">

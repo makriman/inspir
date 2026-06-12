@@ -178,7 +178,7 @@ export default function MediaPage() {
           <h2>Coverage ideas that link back to real public pages.</h2>
           <p>
             These angles are written for journalists, directory editors, school partners, and
-            AI answer systems that need a useful summary plus a verifiable URL.
+            readers who need a useful summary plus a verifiable URL.
           </p>
         </div>
         <div className="marketing-topic-grid">
@@ -201,7 +201,7 @@ export default function MediaPage() {
           <span>Official citation links</span>
           <h2>Reference these pages when writing about inspir.</h2>
           <p>
-            These URLs are stable entrypoints for the mission, product surface, learning content,
+            These URLs are stable entrypoints for the mission, product, learning content,
             and open-source work.
           </p>
         </div>
@@ -283,7 +283,7 @@ export default function MediaPage() {
           <h2>Short descriptions writers can reuse with attribution.</h2>
           <p>
             These snippets keep citations accurate, linkable, and aligned with the public
-            product surface people can inspect.
+            product people can inspect.
           </p>
         </div>
         <div className="marketing-card-grid">

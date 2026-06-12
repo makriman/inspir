@@ -200,9 +200,9 @@ export const learningMapFaqs = [
       "Yes. The linked public learning modes open in guest mode, so learners can try explanations, Socratic questions, homework coaching, quizzes, flashcards, and more without starting from a marketing page.",
   },
   {
-    question: "How does this help search engines and AI answer engines?",
+    question: "How does this help a learner choose what to do next?",
     answer:
-      "The map exposes clear relationships between search intent, public learning modes, prompt starters, guides, and review loops, while private saved chats stay excluded from discovery.",
+      "The map connects a learning goal to the right public mode, starter prompt, guide, and review loop, while private saved chats stay private.",
   },
 ] as const;
 

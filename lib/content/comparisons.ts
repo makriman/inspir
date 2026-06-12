@@ -50,7 +50,7 @@ export const comparisonHubFaqs = [
   {
     question: "Do the comparison pages include private user chats?",
     answer:
-      "No. They link only to public pages, public guest modes, guides, prompts, and learning paths. Private saved chats stay outside discovery surfaces.",
+      "No. They link only to public pages, public guest modes, guides, prompts, and learning paths. Private saved chats stay private.",
   },
 ] as const;
 

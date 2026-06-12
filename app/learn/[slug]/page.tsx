@@ -242,8 +242,7 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
           <span>Live modes</span>
           <h2>The public AI chats in this path.</h2>
           <p>
-            These are canonical guest entrypoints that search visitors and learners can open
-            directly without needing a saved private chat.
+            These guest modes open directly, so you can start practising without needing a saved private chat.
           </p>
         </div>
         <div className="learning-path-mode-list">
