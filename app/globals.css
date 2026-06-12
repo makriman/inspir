@@ -7604,6 +7604,36 @@ a {
   line-height: 1.5;
 }
 
+.bubble-profile-account-list {
+  display: grid;
+  gap: 8px;
+}
+
+.bubble-profile-account-row {
+  display: grid;
+  grid-template-columns: minmax(96px, 0.35fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 10px;
+  background: rgb(0 0 0 / 0.22);
+  padding: 11px 12px;
+}
+
+.bubble-profile-account-row span {
+  color: rgb(255 255 255 / 0.58);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.bubble-profile-account-row strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 850;
+}
+
 .bubble-profile-account-actions {
   display: flex;
   flex-wrap: wrap;
@@ -7650,6 +7680,11 @@ a {
 
   .bubble-profile-details-form {
     grid-template-columns: 1fr;
+  }
+
+  .bubble-profile-account-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 }
 

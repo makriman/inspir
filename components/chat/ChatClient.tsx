@@ -6464,10 +6464,6 @@ function ProfilePanel({
               />
             </label>
             <label>
-              <span>Google email</span>
-              <input type="email" value={user.email || ""} disabled aria-readonly="true" />
-            </label>
-            <label>
               <span>Date of birth</span>
               <input
                 type="date"
@@ -6539,6 +6535,12 @@ function ProfilePanel({
             Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful
             for you.
           </p>
+          <div className="bubble-profile-account-list">
+            <div className="bubble-profile-account-row">
+              <span>Google email</span>
+              <strong>{user.email || "Not connected"}</strong>
+            </div>
+          </div>
           <div className="bubble-profile-account-actions">
             <Link href="/terms">Terms</Link>
             <Link href="/privacy">Privacy</Link>
