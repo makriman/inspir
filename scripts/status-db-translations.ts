@@ -6,7 +6,6 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
-import { translationStringsFromDbPayload } from "@/lib/i18n/db-translations";
 import { getMainAppSourceHash, getMainAppSourceStrings, mainAppTranslationNamespace } from "@/lib/i18n/main-app-source";
 import {
   getAllSiteTranslationNamespaces,
@@ -14,6 +13,12 @@ import {
   isKnownSiteTranslationNamespace,
 } from "@/lib/i18n/site-source";
 import type { TranslationSource } from "@/lib/i18n/translation-types";
+
+type TranslationStringsFromDbPayload = (
+  source: Pick<TranslationSource, "sourceStrings">,
+  payload: Record<string, unknown>,
+  language?: string,
+) => Record<string, string>;
 
 type Args = {
   languages: SupportedLanguage[];
@@ -40,6 +45,8 @@ main().catch(async (error) => {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
+  const dbTranslations = await import("@/lib/i18n/db-translations");
+  const translationStringsFromDbPayload = dbTranslations.translationStringsFromDbPayload as TranslationStringsFromDbPayload;
   const queries = await import("@/lib/db/queries");
   const client = await import("@/lib/db/client");
   const rows = (await withRetry(() => queries.getAppTranslations(args.namespaces, args.languages))) as DbTranslationRow[];
