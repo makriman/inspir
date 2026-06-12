@@ -41,34 +41,48 @@ const securityHeaders = [
   },
 ];
 
+const contentTraceFiles = [
+  "./content/blog/**/*.md",
+  "./lib/content/**/*.ts",
+];
+
+const siteTranslationTraceFiles = [
+  "./app/**/*.ts",
+  "./app/**/*.tsx",
+  "./components/marketing/**/*.tsx",
+  "./components/legal/**/*.tsx",
+  "./lib/content/**/*.ts",
+  "./lib/seo/config.ts",
+  "./lib/seo/json-ld.ts",
+  "./content/blog/**/*.md",
+];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   outputFileTracingIncludes: {
-    "/blog/:path*": [
-      "./content/blog/**/*.md",
-      "./lib/content/**/*.ts",
-    ],
-    "/rss.xml": [
-      "./content/blog/**/*.md",
-      "./lib/content/**/*.ts",
-    ],
-    "/sitemap/:path*": [
-      "./content/blog/**/*.md",
-      "./lib/content/**/*.ts",
-    ],
-    "/llms.txt": [
-      "./content/blog/**/*.md",
-      "./lib/content/**/*.ts",
-    ],
-    "/llms-full.txt": [
-      "./content/blog/**/*.md",
-      "./lib/content/**/*.ts",
-    ],
-    "/ai-content-index.json": [
-      "./content/blog/**/*.md",
-      "./lib/content/**/*.ts",
-    ],
+    "/": siteTranslationTraceFiles,
+    "/about": siteTranslationTraceFiles,
+    "/ai-learning-map": siteTranslationTraceFiles,
+    "/blog/:path*": siteTranslationTraceFiles,
+    "/compare/:path*": siteTranslationTraceFiles,
+    "/for/:path*": siteTranslationTraceFiles,
+    "/learn/:path*": siteTranslationTraceFiles,
+    "/media": siteTranslationTraceFiles,
+    "/mission": siteTranslationTraceFiles,
+    "/privacy": siteTranslationTraceFiles,
+    "/prompts": siteTranslationTraceFiles,
+    "/schools": siteTranslationTraceFiles,
+    "/subjects/:path*": siteTranslationTraceFiles,
+    "/terms": siteTranslationTraceFiles,
+    "/topics": siteTranslationTraceFiles,
+    "/trust": siteTranslationTraceFiles,
+    "/api/site-translations": siteTranslationTraceFiles,
+    "/rss.xml": contentTraceFiles,
+    "/sitemap/:path*": contentTraceFiles,
+    "/llms.txt": contentTraceFiles,
+    "/llms-full.txt": contentTraceFiles,
+    "/ai-content-index.json": contentTraceFiles,
   },
   images: {
     remotePatterns: [
