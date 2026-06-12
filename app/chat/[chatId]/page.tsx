@@ -69,9 +69,22 @@ export async function generateMetadata({ params }: ChatRoutePageProps): Promise<
     const topic = findSeedTopic(slug);
     if (!topic) return {};
     return {
-      title: `${topic.name} | inspir`,
+      title: topic.name,
       description: topic.subText || topic.description,
       robots: { index: false, follow: true },
+      alternates: {},
+      keywords: [],
+      openGraph: {
+        title: `${topic.name} | inspir`,
+        description: topic.subText || topic.description,
+        type: "website",
+      },
+      twitter: {
+        card: "summary",
+        title: `${topic.name} | inspir`,
+        description: topic.subText || topic.description,
+      },
+      other: {},
     };
   }
 
@@ -80,12 +93,28 @@ export async function generateMetadata({ params }: ChatRoutePageProps): Promise<
       title: "Private chat",
       description: "A private saved inspir chat.",
       robots: { index: false, follow: false, nocache: true },
+      alternates: {},
+      keywords: [],
+      openGraph: {
+        title: "Private chat | inspir",
+        description: "A private saved inspir chat.",
+        type: "website",
+      },
+      twitter: {
+        card: "summary",
+        title: "Private chat | inspir",
+        description: "A private saved inspir chat.",
+      },
+      other: {},
     };
   }
 
   return {
     title: "Chat not found",
     robots: { index: false, follow: false },
+    alternates: {},
+    keywords: [],
+    other: {},
   };
 }
 

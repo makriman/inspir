@@ -7417,6 +7417,75 @@ a {
   height: 100dvh;
 }
 
+.bubble-chat-status {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgb(88 205 110 / 0.16), transparent 24rem),
+    linear-gradient(180deg, rgb(12 13 14), rgb(0 0 0));
+  color: #fff;
+  padding: 24px;
+}
+
+.bubble-chat-status > div {
+  display: grid;
+  width: min(460px, 100%);
+  gap: 14px;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  border-radius: 16px;
+  background: rgb(255 255 255 / 0.06);
+  padding: clamp(22px, 5vw, 34px);
+  text-align: left;
+}
+
+.bubble-chat-status span {
+  color: rgb(125 235 143);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.bubble-chat-status h1 {
+  margin: 0;
+  font-size: clamp(34px, 7vw, 56px);
+  font-weight: 950;
+  line-height: 0.96;
+}
+
+.bubble-chat-status p {
+  margin: 0;
+  color: rgb(255 255 255 / 0.68);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.bubble-chat-status a {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 44px;
+  align-items: center;
+  border-radius: 11px;
+  background: rgb(38 148 63);
+  color: #fff;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.bubble-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bubble-status-actions a:last-child {
+  border: 1px solid rgb(255 255 255 / 0.14);
+  background: rgb(255 255 255 / 0.07);
+}
+
 .bubble-profile-workspace .bubble-profile-header {
   display: grid;
   width: min(1180px, 100%);

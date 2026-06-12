@@ -28,6 +28,34 @@ const inter = Inter({
 const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
 
 export async function generateMetadata(): Promise<Metadata> {
+  const pathname = await getRequestPathname();
+  const isChatAppPath = pathname === "/chat" || pathname.startsWith("/chat/");
+
+  if (isChatAppPath) {
+    return {
+      metadataBase: new URL(siteUrl),
+      title: {
+        default: "Chat | inspir",
+        template: "%s | inspir",
+      },
+      applicationName: siteName,
+      manifest: "/manifest.webmanifest",
+      icons: {
+        icon: [
+          { url: "/inspir-app-icon-192.png", sizes: "192x192", type: "image/png" },
+          { url: "/inspir-app-icon-512.png", sizes: "512x512", type: "image/png" },
+        ],
+        shortcut: "/inspir-app-icon-192.png",
+        apple: [{ url: "/inspir-app-icon-180.png", sizes: "180x180", type: "image/png" }],
+      },
+      formatDetection: {
+        email: false,
+        address: false,
+        telephone: false,
+      },
+    };
+  }
+
   const localized = await localizedMarketingMetadata({
     path: "/",
     title: siteTitle,
