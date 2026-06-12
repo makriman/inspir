@@ -81,11 +81,9 @@ import {
 import { LearningStore } from "@/components/chat/LearningStore";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
-import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicPath } from "@/lib/content/topic-routing";
 import { localizeHref } from "@/lib/i18n/routing";
 import { formatBubbleDate } from "@/lib/utils/dates";
@@ -322,17 +320,6 @@ function topicMetadata(topic: Topic | undefined): TopicMetadata | undefined {
   if (!metadata || typeof metadata !== "object") return undefined;
   if (!("uiMode" in metadata) || !("starters" in metadata)) return undefined;
   return metadata as TopicMetadata;
-}
-
-function topicSeo(topic: Topic) {
-  const metadata = topicMetadata(topic);
-  return getTopicSeo({
-    slug: topic.slug,
-    name: topic.name,
-    description: topic.description,
-    subText: topic.subText,
-    metadata: { category: metadata?.category ?? "Learning" },
-  });
 }
 
 function readStoredGuestUsage(limit: number) {
@@ -1751,7 +1738,6 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
     inputRef,
     listRef,
     metadata,
-    currentLanguage,
     sendMessage,
     sending,
     setInput,
@@ -1765,7 +1751,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
   return (
     <main className="bubble-workspace">
       <div ref={listRef} className="bubble-message-scroll app-scrollbar">
-        {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} language={currentLanguage} /> : null}
+        {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} /> : null}
         {visibleChatMessages.length === 0 ? (
           <StarterGrid starters={metadata?.starters ?? []} onStart={(starter) => void sendMessage(starter)} />
         ) : null}
@@ -2090,9 +2076,7 @@ function TopBar({
   );
 }
 
-function TopicIntroCard({ topic, language }: { topic: Topic; language: string }) {
-  const seo = topicSeo(topic);
-
+function TopicIntroCard({ topic }: { topic: Topic }) {
   return (
     <article className="bubble-intro-card">
       <div>
@@ -2100,51 +2084,23 @@ function TopicIntroCard({ topic, language }: { topic: Topic; language: string })
         <h2>{topic.name}</h2>
       </div>
       <p>{topic.description}</p>
-      <div className="bubble-topic-insight-grid">
-        <section>
-          <strong>Who it helps</strong>
-          <span>{seo.who}</span>
-        </section>
-        <section>
-          <strong>Why it is different</strong>
-          <span>{seo.whyDifferent}</span>
-        </section>
-      </div>
-      <ul className="bubble-topic-outcomes">
-        {seo.outcomes.map((outcome) => (
-          <li key={outcome}>{outcome}</li>
-        ))}
-      </ul>
-      <section className="bubble-topic-study-flow" aria-label={`${topic.name} study flow`}>
-        <h3>A good learning loop</h3>
-        <ol>
-          <li>Start with one specific question or task.</li>
-          <li>Ask for hints, examples, or checks before a final answer.</li>
-          <li>Turn the weak spot into a quiz, flashcards, or a follow-up chat.</li>
-        </ol>
-      </section>
-      <TopicResourceLinks topic={topic} language={language} />
     </article>
   );
 }
 
 function GuestFeatureGate({ topic, featureName, language }: { topic: Topic; featureName: string; language: string }) {
-  const seo = topicSeo(topic);
   const starters = topicMetadata(topic)?.starters ?? [];
   const topicHref = localizeHref(topicPath(topic.slug), language);
 
   return (
     <main className="bubble-workspace">
       <section className="bubble-guest-feature-gate">
-        <TopicIntroCard topic={topic} language={language} />
+        <TopicIntroCard topic={topic} />
         <div className="bubble-guest-feature-card">
           <Sparkles size={26} />
           <span>Sign in to keep learning</span>
           <h2>Continue with Google to use {featureName}.</h2>
-          <p>
-            {seo.description} Sign in keeps your progress, score, generated activities, and
-            future conversations saved.
-          </p>
+          <p>Sign in keeps your progress, score, generated activities, and future conversations saved.</p>
           <GoogleContinueButton className="bubble-guest-modal-primary" callbackUrl={topicHref}>
             Continue with Google
           </GoogleContinueButton>
@@ -2829,7 +2785,6 @@ const miniAppConfigs: Record<MiniMode, MiniAppConfig> = {
 
 function TimeTravelWorkspace({
   topic,
-  language,
   userName,
   messages,
   input,
@@ -3035,7 +2990,6 @@ function TimeTravelWorkspace({
             realism={realism}
             depth={depth}
           />
-          <TopicResourceLinks topic={topic} language={language} />
         </section>
       </div>
     </main>
@@ -4076,7 +4030,6 @@ function formatSprintTime(seconds: number) {
 
 function CollaborativeInstructionWorkspace({
   topic,
-  language,
   userName,
   messages,
   input,
@@ -4237,8 +4190,6 @@ function CollaborativeInstructionWorkspace({
       room={room}
       roomIcon={RoomIcon}
       sending={sending}
-      topic={topic}
-      language={language}
       onGoal={(value) => updateCollaborationState({ goal: value })}
       onMode={(value) => updateCollaborationState({ modeId: value })}
       onStartWorkroom={startWorkroom}
@@ -4355,26 +4306,22 @@ function CollaborativeSession({
 function CollaborativeSetup({
   activeMode,
   goal,
-  language,
   listRef,
   modeId,
   room,
   roomIcon: RoomIcon,
   sending,
-  topic,
   onGoal,
   onMode,
   onStartWorkroom,
 }: {
   activeMode: (typeof collaborationModeOptions)[number];
   goal: string;
-  language: string;
   listRef: RefObject<HTMLDivElement | null>;
   modeId: CollaborationModeId;
   room: (typeof collaborationRoomTemplates)[CollaborationRoomType];
   roomIcon: ComponentType<{ size?: number }>;
   sending: boolean;
-  topic: Topic;
   onGoal: (value: string) => void;
   onMode: (value: CollaborationModeId) => void;
   onStartWorkroom: (event?: FormEvent) => void;
@@ -4453,7 +4400,6 @@ function CollaborativeSetup({
               </div>
             </section>
           </div>
-          <TopicResourceLinks topic={topic} language={language} />
         </section>
       </div>
     </main>
@@ -4598,7 +4544,7 @@ function GuidedMiniAppWorkspace({
       <div ref={listRef} className="bubble-mini-scroll app-scrollbar">
         {!hasSession ? (
           <section className="bubble-mini-start">
-            <TopicIntroCard topic={topic} language={language} />
+            <TopicIntroCard topic={topic} />
             <div className="bubble-mini-start-copy">
               <span>{config.eyebrow}</span>
               <h2>{config.setupTitle}</h2>
@@ -4766,7 +4712,6 @@ function HistoricalPersonWorkspace(props: HistoricalPersonWorkspaceProps) {
 
 function useHistoricalPersonWorkspace({
   topic,
-  language,
   userName,
   messages,
   input,
@@ -4944,7 +4889,7 @@ function useHistoricalPersonWorkspace({
         {!hasSession ? (
           <section className="historical-start">
             <div className="historical-start-main">
-              <TopicIntroCard topic={topic} language={language} />
+              <TopicIntroCard topic={topic} />
               <header className="historical-audience-hero">
                 <span>Historical Audience Chamber</span>
                 <h2>Stage the person, year, room, and relationship.</h2>

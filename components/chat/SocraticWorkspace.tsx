@@ -28,7 +28,6 @@ import {
   Target,
   Zap,
 } from "lucide-react";
-import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 import { formatBubbleDate } from "@/lib/utils/dates";
 
 type Topic = {
@@ -117,7 +116,6 @@ const mapSections: Array<{
 
 export function SocraticWorkspace({
   topic,
-  language,
   userName,
   messages,
   input,
@@ -194,8 +192,6 @@ export function SocraticWorkspace({
       <div ref={hasSession ? listRef : undefined} className="socratic-scroll app-scrollbar">
         {!hasSession ? (
           <SocraticStartScreen
-            topic={topic}
-            language={language}
             starters={starters}
             target={target}
             targetKind={targetKind}
@@ -236,8 +232,6 @@ export function SocraticWorkspace({
 }
 
 function SocraticStartScreen({
-  topic,
-  language,
   starters,
   target,
   targetKind,
@@ -248,8 +242,6 @@ function SocraticStartScreen({
   onTarget,
   onTargetKind,
 }: {
-  topic: Topic;
-  language?: string;
   starters: string[];
   target: string;
   targetKind: TargetKind;
@@ -345,7 +337,6 @@ function SocraticStartScreen({
           ))}
         </div>
       ) : null}
-      <TopicResourceLinks topic={topic} language={language} />
     </section>
   );
 }

@@ -63,11 +63,9 @@ test("main app translation source has stable keys and validates placeholders", (
   assert.equal(bundle.sourceHash, sourceHash);
   assert.equal(bundle.strings["onboarding.age.submit"], "Continue");
   assert.ok(Object.keys(bundle.sourceStrings).some((key) => key.startsWith("topic.learn-anything.")));
-  assert.equal(
-    bundle.strings["topic.learn-anything.seo.who"],
-    "Curious learners, students, parents, and self-taught builders who want a friendly place to start.",
-  );
-  assert.equal(bundle.strings["topic.learn-anything.seo.outcome.0"], "Understand the core idea");
+  assert.equal(Object.keys(bundle.sourceStrings).some((key) => key.includes(".seo.")), false);
+  assert.equal(Object.values(bundle.sourceStrings).includes("Who it helps"), false);
+  assert.equal(Object.values(bundle.sourceStrings).includes("Why it is different"), false);
   assert.equal(validateTranslationPayload(bundle.sourceStrings, bundle.strings), true);
   assert.equal(isFreshAppTranslation({ sourceHash }, sourceHash), true);
   assert.equal(isFreshAppTranslation({ sourceHash: "old" }, sourceHash), false);

@@ -1,6 +1,5 @@
 import { createHash } from "node:crypto";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
-import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicSeeds } from "@/lib/content/topics";
 import { mainAppComponentText } from "./main-app-component-text";
 import type { MainAppTranslationBundle } from "./main-app-types";
@@ -105,18 +104,11 @@ export function getMainAppSourceStrings() {
   }
 
   for (const topic of topicSeeds) {
-    const seo = getTopicSeo(topic);
     strings[`topic.${topic.slug}.name`] = topic.name;
     strings[`topic.${topic.slug}.subText`] = topic.subText;
     strings[`topic.${topic.slug}.description`] = topic.description;
     strings[`topic.${topic.slug}.inputboxText`] = topic.inputboxText;
     strings[`topic.${topic.slug}.category`] = topic.metadata.category;
-    strings[`topic.${topic.slug}.seo.description`] = seo.description;
-    strings[`topic.${topic.slug}.seo.who`] = seo.who;
-    strings[`topic.${topic.slug}.seo.whyDifferent`] = seo.whyDifferent;
-    seo.outcomes.forEach((outcome, index) => {
-      strings[`topic.${topic.slug}.seo.outcome.${index}`] = outcome;
-    });
     topic.metadata.starters.forEach((starter, index) => {
       strings[`topic.${topic.slug}.starter.${index}`] = starter;
     });

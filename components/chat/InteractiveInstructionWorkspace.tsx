@@ -10,7 +10,6 @@ import {
   Sparkles,
   XCircle,
 } from "lucide-react";
-import { TopicResourceLinks } from "@/components/chat/TopicResourceLinks";
 
 type TopicLike = {
   slug: string;
@@ -629,7 +628,6 @@ function buildInstructionEvaluationAction(
 
 export function InteractiveInstructionWorkspace({
   topic,
-  language,
   onReset,
 }: {
   topic: TopicLike;
@@ -825,7 +823,6 @@ export function InteractiveInstructionWorkspace({
     return (
       <InstructionSetupView
         topic={topic}
-        language={language}
         setupStage={setupStage}
         goal={goal}
         context={context}
@@ -895,7 +892,6 @@ type SimulationLabels = ReturnType<typeof simulationLabelsFor>;
 
 function InstructionSetupView({
   topic,
-  language,
   setupStage,
   goal,
   context,
@@ -910,7 +906,6 @@ function InstructionSetupView({
   onBackToGoal,
 }: {
   topic: TopicLike;
-  language?: string;
   setupStage: SetupStage;
   goal: string;
   context: string;
@@ -950,7 +945,6 @@ function InstructionSetupView({
             onBackToGoal={onBackToGoal}
           />
         )}
-        <TopicResourceLinks topic={topic} language={language} />
       </section>
     </main>
   );
