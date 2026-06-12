@@ -173,6 +173,8 @@ type ProfileDetailsInput = {
   preferredLanguage: string;
 };
 
+type UiTranslator = (source: string) => string;
+
 type RecentChat = {
   id: string;
   topicId: string | null;
@@ -739,6 +741,7 @@ function useChatClientController({
   const sidebarHydratedRef = useRef(false);
   const [sidebarPersonalizationReady, setSidebarPersonalizationReady] = useState(false);
   const translationTextMap = useMemo(() => buildTranslationTextMap(translationBundle), [translationBundle]);
+  const translateUi = useCallback((source: string) => translateRawText(source, translationTextMap), [translationTextMap]);
   const displayTopics = useMemo(
     () => topics.map((topic) => translateTopic(topic, translationTextMap)),
     [topics, translationTextMap],
@@ -1443,6 +1446,7 @@ function useChatClientController({
     uploadProfilePhoto,
     submitMemorySourceFeedback,
     submitMessage,
+    translateUi,
     translationBundle,
     translationRootRef,
     patchMemorySettings,
@@ -1639,6 +1643,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     stopGeneration,
     storeOpen,
     submitMessage,
+    translateUi,
     avatarSrc,
     clearMemory,
     createMemoryItem,
@@ -1672,6 +1677,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         onMemoryDelete={deleteMemoryItem}
         onMemoryClear={clearMemory}
         onClose={() => setProfileOpen(false)}
+        t={translateUi}
       />
     );
   }
@@ -1863,6 +1869,7 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
     setMemorySourceModal,
     setProfileUser,
     submitMemorySourceFeedback,
+    translateUi,
   } = controller;
 
   return (
@@ -1877,6 +1884,7 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
           currentLanguage={profileUser.preferredLanguage || defaultLanguage}
           onSave={(language) => void saveGuestLanguage(language)}
           onClose={() => void saveGuestLanguage(defaultLanguage)}
+          t={translateUi}
         />
       ) : null}
       {isGuest && guestPromptOpen ? (
@@ -1895,6 +1903,7 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
             setProfileUser(updatedUser);
             setAgePromptOpen(false);
           }}
+          t={translateUi}
         />
       ) : null}
       {memorySourceModal ? (
@@ -6136,36 +6145,38 @@ function GuestLanguagePromptModal({
   currentLanguage,
   onSave,
   onClose,
+  t,
 }: {
   currentLanguage: string;
   onSave: (language: string) => void;
   onClose: () => void;
+  t: UiTranslator;
 }) {
   const [language, setLanguage] = useState<SupportedLanguage>((currentLanguage as SupportedLanguage) || defaultLanguage);
 
   return (
     <div className="bubble-guest-modal-backdrop" role="presentation">
       <dialog open className="bubble-guest-modal bubble-language-start-modal" aria-modal="true" aria-labelledby="guest-language-title">
-        <button type="button" onClick={onClose} aria-label="Close" className="bubble-guest-modal-close">
+        <button type="button" onClick={onClose} aria-label={t("Close")} className="bubble-guest-modal-close">
           <X size={20} />
         </button>
-        <span className="bubble-guest-modal-kicker">Preferred Language</span>
-        <h2 id="guest-language-title">Choose your learning language</h2>
-        <p>Use inspir in the language that feels easiest. You can change this later from your profile.</p>
+        <span className="bubble-guest-modal-kicker">{t("Preferred Language")}</span>
+        <h2 id="guest-language-title">{t("Choose your learning language")}</h2>
+        <p>{t("Use inspir in the language that feels easiest. You can change this later from your profile.")}</p>
         <LanguagePicker
           currentLanguage={language}
           recommendedLanguage={language}
-          buttonLabel="Preferred Language"
-          title="Choose your learning language"
-          description="You can switch again later from Profile."
+          buttonLabel={t("Preferred Language")}
+          title={t("Choose your learning language")}
+          description={t("You can switch again later from Profile.")}
           onSelect={setLanguage}
           className="bubble-modal-language-picker"
         />
         <button type="button" onClick={() => onSave(language)} className="bubble-guest-modal-primary">
-          Continue
+          {t("Continue")}
         </button>
         <button type="button" onClick={() => onSave(defaultLanguage)} className="bubble-guest-modal-secondary">
-          Continue with English
+          {t("Continue with English")}
         </button>
       </dialog>
     </div>
@@ -6176,10 +6187,12 @@ function AgePromptModal({
   onClose,
   onSaved,
   initialLanguage,
+  t,
 }: {
   onClose: () => void;
   onSaved: (user: UserProfile) => void;
   initialLanguage: string;
+  t: UiTranslator;
 }) {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [preferredLanguage, setPreferredLanguage] = useState<SupportedLanguage>((initialLanguage as SupportedLanguage) || defaultLanguage);
@@ -6190,7 +6203,7 @@ function AgePromptModal({
   async function submitDateOfBirth(event: FormEvent) {
     event.preventDefault();
     if (!dateOfBirth) {
-      setError("Please enter your date of birth.");
+      setError(t("Please enter your date of birth."));
       return;
     }
 
@@ -6204,11 +6217,11 @@ function AgePromptModal({
       });
       const data = await response.json().catch(() => null);
       if (!response.ok || !data?.user) {
-        throw new Error(data?.error || "Could not save date of birth");
+        throw new Error(data?.error || t("Could not save date of birth"));
       }
       onSaved(profileFromApiUser(data.user));
     } catch (saveError) {
-      setError(saveError instanceof Error ? saveError.message : "Please enter a valid date of birth.");
+      setError(saveError instanceof Error ? saveError.message : t("Please enter a valid date of birth."));
     } finally {
       setSaving(false);
     }
@@ -6222,18 +6235,19 @@ function AgePromptModal({
         aria-modal="true"
         aria-labelledby="age-modal-title"
       >
-        <button type="button" onClick={onClose} aria-label="Close" className="bubble-guest-modal-close">
+        <button type="button" onClick={onClose} aria-label={t("Close")} className="bubble-guest-modal-close">
           <X size={20} />
         </button>
-        <span className="bubble-guest-modal-kicker">Age-appropriate learning</span>
-        <h2 id="age-modal-title">Help inspir fit your age</h2>
+        <span className="bubble-guest-modal-kicker">{t("Age-appropriate learning")}</span>
+        <h2 id="age-modal-title">{t("Help inspir fit your age")}</h2>
         <p>
-          Add your date of birth and preferred language so inspir can adapt examples, tone,
-          safety boundaries, and app text for your learning experience.
+          {t(
+            "Add your date of birth and preferred language so inspir can adapt examples, tone, safety boundaries, and app text for your learning experience.",
+          )}
         </p>
         <form onSubmit={submitDateOfBirth} className="bubble-age-form">
           <label className="bubble-age-label" htmlFor="date-of-birth">
-            Date of birth
+            {t("Date of birth")}
           </label>
           <input
             id="date-of-birth"
@@ -6247,18 +6261,18 @@ function AgePromptModal({
           <LanguagePicker
             currentLanguage={preferredLanguage}
             recommendedLanguage={preferredLanguage}
-            buttonLabel="Preferred Language"
-            title="Choose your learning language"
-            description="App text and tutoring replies will follow this setting."
+            buttonLabel={t("Preferred Language")}
+            title={t("Choose your learning language")}
+            description={t("App text and tutoring replies will follow this setting.")}
             onSelect={setPreferredLanguage}
             className="bubble-modal-language-picker"
           />
           {error ? <span className="bubble-age-error">{error}</span> : null}
           <button type="submit" disabled={saving} className="bubble-guest-modal-primary">
-            {saving ? "Saving..." : "Continue"}
+            {saving ? t("Saving...") : t("Continue")}
           </button>
           <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
-            Maybe later
+            {t("Maybe later")}
           </button>
         </form>
       </dialog>
@@ -6283,6 +6297,7 @@ function ProfilePanel({
   onMemoryDelete,
   onMemoryClear,
   onClose,
+  t,
 }: {
   user: UserProfile;
   avatarSrc?: string;
@@ -6311,6 +6326,7 @@ function ProfilePanel({
   onMemoryDelete: (memoryId: string) => void;
   onMemoryClear: () => void;
   onClose: () => void;
+  t: UiTranslator;
 }) {
   const [name, setName] = useState(user.name ?? "");
   const [dateOfBirth, setDateOfBirth] = useState(user.dateOfBirth ?? "");
@@ -6334,9 +6350,9 @@ function ProfilePanel({
     setPhotoMessage("");
     try {
       await onPhotoUpload(file);
-      setPhotoMessage("Profile photo updated.");
+      setPhotoMessage(t("Profile photo updated."));
     } catch (uploadError) {
-      setPhotoError(uploadError instanceof Error ? uploadError.message : "Could not update profile photo.");
+      setPhotoError(uploadError instanceof Error ? uploadError.message : t("Could not update profile photo."));
     } finally {
       setPhotoSaving(false);
       event.target.value = "";
@@ -6349,9 +6365,9 @@ function ProfilePanel({
     setPhotoMessage("");
     try {
       await onPhotoRemove();
-      setPhotoMessage("Using your Google photo.");
+      setPhotoMessage(t("Using your Google photo."));
     } catch (removeError) {
-      setPhotoError(removeError instanceof Error ? removeError.message : "Could not reset profile photo.");
+      setPhotoError(removeError instanceof Error ? removeError.message : t("Could not reset profile photo."));
     } finally {
       setPhotoSaving(false);
     }
@@ -6361,7 +6377,7 @@ function ProfilePanel({
     event.preventDefault();
     const trimmedName = name.trim();
     if (!trimmedName) {
-      setDetailsError("Enter a display name.");
+      setDetailsError(t("Enter a display name."));
       setDetailsMessage("");
       return;
     }
@@ -6379,12 +6395,12 @@ function ProfilePanel({
       setName(updatedUser.name ?? "");
       setDateOfBirth(updatedUser.dateOfBirth ?? "");
       setPreferredLanguage((updatedUser.preferredLanguage as SupportedLanguage) || defaultLanguage);
-      setDetailsMessage("Profile saved.");
+      setDetailsMessage(t("Profile saved."));
       if ((updatedUser.preferredLanguage || defaultLanguage) !== previousLanguage) {
         window.location.assign(localizeHref(window.location.pathname + window.location.search, updatedUser.preferredLanguage));
       }
     } catch (saveError) {
-      setDetailsError(saveError instanceof Error ? saveError.message : "Could not save profile.");
+      setDetailsError(saveError instanceof Error ? saveError.message : t("Could not save profile."));
     } finally {
       setDetailsSaving(false);
     }
@@ -6394,10 +6410,10 @@ function ProfilePanel({
     <main className="bubble-profile-panel bubble-profile-workspace app-scrollbar">
       <div className="bubble-profile-header">
         <div>
-          <span>Learning profile</span>
-          <h2>Make inspir feel like it knows how you learn.</h2>
+          <span>{t("Learning profile")}</span>
+          <h2>{t("Make inspir feel like it knows how you learn.")}</h2>
         </div>
-        <button type="button" aria-label="Close profile" onClick={onClose}>
+        <button type="button" aria-label={t("Close profile")} onClick={onClose}>
           <X size={24} strokeWidth={3.5} />
         </button>
       </div>
@@ -6428,7 +6444,7 @@ function ProfilePanel({
                 className="bubble-profile-photo-button"
               >
                 <Camera size={16} />
-                <span>{photoSaving ? "Saving..." : "Change photo"}</span>
+                <span>{photoSaving ? t("Saving...") : t("Change photo")}</span>
               </button>
               {user.profileImageHash ? (
                 <button
@@ -6438,7 +6454,7 @@ function ProfilePanel({
                   className="bubble-profile-photo-button is-muted"
                 >
                   <Trash2 size={15} />
-                  <span>Use Google photo</span>
+                  <span>{t("Use Google photo")}</span>
                 </button>
               ) : null}
             </div>
@@ -6449,12 +6465,12 @@ function ProfilePanel({
 
         <section className="bubble-profile-section">
           <div className="bubble-profile-section-head">
-            <span>Profile details</span>
-            <h3>Your app identity</h3>
+            <span>{t("Profile details")}</span>
+            <h3>{t("Your app identity")}</h3>
           </div>
           <form className="bubble-profile-details-form" onSubmit={submitProfileDetails}>
             <label>
-              <span>Display name</span>
+              <span>{t("Display name")}</span>
               <input
                 type="text"
                 value={name}
@@ -6464,7 +6480,7 @@ function ProfilePanel({
               />
             </label>
             <label>
-              <span>Date of birth</span>
+              <span>{t("Date of birth")}</span>
               <input
                 type="date"
                 value={dateOfBirth}
@@ -6473,14 +6489,14 @@ function ProfilePanel({
               />
             </label>
             <div className="bubble-profile-details-language">
-              <span>Preferred Language</span>
+              <span>{t("Preferred Language")}</span>
               <LanguagePicker
                 currentLanguage={preferredLanguage}
                 recommendedLanguage={preferredLanguage}
                 disabled={detailsSaving || languageSaving}
-                buttonLabel="Preferred Language"
-                title="Choose your learning language"
-                description="All app text and tutoring replies follow this setting."
+                buttonLabel={t("Preferred Language")}
+                title={t("Choose your learning language")}
+                description={t("All app text and tutoring replies follow this setting.")}
                 onSelect={setPreferredLanguage}
                 className="bubble-profile-language-picker"
               />
@@ -6488,30 +6504,30 @@ function ProfilePanel({
             {detailsError ? <span className="bubble-profile-details-error">{detailsError}</span> : null}
             {detailsMessage ? <span className="bubble-profile-details-success">{detailsMessage}</span> : null}
             <button type="submit" disabled={detailsSaving || languageSaving} className="bubble-profile-save-button">
-              {detailsSaving || languageSaving ? "Saving..." : "Save profile"}
+              {detailsSaving || languageSaving ? t("Saving...") : t("Save profile")}
             </button>
           </form>
         </section>
 
         <section className="bubble-profile-section">
           <div className="bubble-profile-section-head">
-            <span>Overview</span>
-            <h3>Your learning snapshot</h3>
+            <span>{t("Overview")}</span>
+            <h3>{t("Your learning snapshot")}</h3>
           </div>
           <div className="bubble-profile-stats-grid">
             <ProfileStat
-              label="Age"
-              value={typeof user.age === "number" ? String(user.age) : "Add your date of birth"}
+              label={t("Age")}
+              value={typeof user.age === "number" ? String(user.age) : t("Add your date of birth")}
             />
-            <ProfileStat label="Learning score" value={String(user.score ?? 0)} />
-            <ProfileStat label="inspir'ed since" value={formatBubbleDate(user.createdAt)} />
+            <ProfileStat label={t("Learning score")} value={String(user.score ?? 0)} />
+            <ProfileStat label={t("inspir'ed since")} value={formatBubbleDate(user.createdAt)} />
           </div>
         </section>
 
         <section className="bubble-profile-section">
           <div className="bubble-profile-section-head">
-            <span>Memory</span>
-            <h3>What inspir can remember</h3>
+            <span>{t("Memory")}</span>
+            <h3>{t("What inspir can remember")}</h3>
           </div>
           <MemoryPanel
             dashboard={memoryDashboard}
@@ -6528,24 +6544,25 @@ function ProfilePanel({
 
         <section className="bubble-profile-section bubble-profile-account-section">
           <div className="bubble-profile-section-head">
-            <span>Account and privacy</span>
-            <h3>Control what stays with you</h3>
+            <span>{t("Account and privacy")}</span>
+            <h3>{t("Control what stays with you")}</h3>
           </div>
           <p>
-            Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful
-            for you.
+            {t(
+              "Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful for you.",
+            )}
           </p>
           <div className="bubble-profile-account-list">
             <div className="bubble-profile-account-row">
-              <span>Google email</span>
+              <span>{t("Google email")}</span>
               <strong>{user.email || "Not connected"}</strong>
             </div>
           </div>
           <div className="bubble-profile-account-actions">
-            <Link href="/terms">Terms</Link>
-            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">{t("Terms")}</Link>
+            <Link href="/privacy">{t("Privacy")}</Link>
             <button type="button" onClick={() => void signOutToHome()} className="bubble-profile-logout">
-              Logout
+              {t("Logout")}
             </button>
           </div>
           <SocialLinks compact className="bubble-profile-social" />
