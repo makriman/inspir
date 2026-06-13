@@ -6539,6 +6539,7 @@ function ProfilePanel({
             onUpdate={onMemoryUpdate}
             onDelete={onMemoryDelete}
             onClear={onMemoryClear}
+            t={t}
           />
         </section>
 
@@ -6635,6 +6636,7 @@ function MemoryPanel({
   onUpdate,
   onDelete,
   onClear,
+  t,
 }: {
   dashboard: MemoryDashboard | null;
   loading: boolean;
@@ -6656,6 +6658,7 @@ function MemoryPanel({
   ) => void;
   onDelete: (memoryId: string) => void;
   onClear: () => void;
+  t: UiTranslator;
 }) {
   const settings = dashboard?.settings;
   const enabled = settings?.enabled ?? true;
@@ -6704,20 +6707,20 @@ function MemoryPanel({
           <BrainCircuit size={22} />
         </div>
         <div>
-          <strong>Memory</strong>
-          <span>{enabled ? "On for this account" : "Off for this account"}</span>
+          <strong>{t("Memory")}</strong>
+          <span>{enabled ? t("On for this account") : t("Off for this account")}</span>
         </div>
       </div>
 
       <div className="bubble-memory-status-row bubble-memory-master-row">
         <div>
-          <strong>{enabled ? "Memory is on" : "Memory is off"}</strong>
-          <span>{enabled ? "Used only when it helps." : "Nothing is saved or used."}</span>
+          <strong>{enabled ? t("Memory is on") : t("Memory is off")}</strong>
+          <span>{enabled ? t("Used only when it helps.") : t("Nothing is saved or used.")}</span>
         </div>
         <button
           type="button"
           className={`bubble-memory-toggle ${enabled ? "is-on" : ""}`}
-          aria-label={enabled ? "Turn memory off" : "Turn memory on"}
+          aria-label={enabled ? t("Off") : t("On")}
           aria-pressed={enabled}
           disabled={saving || loading}
           onClick={() => onSettings({ enabled: !enabled })}
@@ -6725,26 +6728,26 @@ function MemoryPanel({
           <span className="bubble-memory-toggle-track">
             <span className="bubble-memory-toggle-thumb" />
           </span>
-          <strong>{enabled ? "On" : "Off"}</strong>
+          <strong>{enabled ? t("On") : t("Off")}</strong>
         </button>
       </div>
 
       {enabled ? (
         <div className="bubble-memory-setting-list">
           <MemoryMiniToggle
-            label="Saved memory"
+            label={t("Saved memory")}
             checked={savedMemoryEnabled}
             disabled={saving || loading}
             onChange={(checked) => onSettings({ savedMemoryEnabled: checked })}
           />
           <MemoryMiniToggle
-            label="Past chats"
+            label={t("Past chats")}
             checked={chatHistoryEnabled}
             disabled={saving || loading || !savedMemoryEnabled}
             onChange={(checked) => onSettings({ chatHistoryEnabled: checked })}
           />
           <MemoryMiniToggle
-            label="Synthesis"
+            label={t("Synthesis")}
             checked={dreamingEnabled}
             disabled={saving || loading || !savedMemoryEnabled}
             onChange={(checked) => onSettings({ dreamingEnabled: checked })}
@@ -6752,15 +6755,19 @@ function MemoryPanel({
         </div>
       ) : null}
 
-      {loading ? <p className="bubble-memory-muted">Loading memory…</p> : null}
+      {loading ? <p className="bubble-memory-muted">{t("Loading memory...")}</p> : null}
       {error ? <p className="bubble-memory-error">{error}</p> : null}
 
       {settings && !settings.noticeSeenAt ? (
         <div className="bubble-memory-notice">
-          <strong>Memory is on for signed-in accounts.</strong>
-          <p>Everything Inspir remembers is shown below as editable memory cards. You can add, edit, delete, or clear them anytime.</p>
+          <strong>{t("Memory is on for signed-in accounts.")}</strong>
+          <p>
+            {t(
+              "Everything Inspir remembers is shown below as editable memory cards. You can add, edit, delete, or clear them anytime.",
+            )}
+          </p>
           <button type="button" disabled={saving} onClick={() => onSettings({ noticeSeen: true })}>
-            Got it
+            {t("Got it")}
           </button>
         </div>
       ) : null}
@@ -6775,19 +6782,21 @@ function MemoryPanel({
             onSaveCorrection={saveCorrection}
             onRefresh={() => onSettings({ refreshSummary: true })}
             onMuteSection={(section) => void muteSummarySection(section)}
+            t={t}
           />
 
           <div className="bubble-memory-summary">
             <span>
-              {dashboard.memories.length} saved {dashboard.memories.length === 1 ? "memory" : "memories"}
+              {dashboard.memories.length}{" "}
+              {dashboard.memories.length === 1 ? t("saved memory") : t("saved memories")}
             </span>
             <div className="bubble-memory-summary-actions">
               <button type="button" disabled={memoryControlsDisabled} onClick={() => setAdding((current) => !current)}>
                 <Plus size={15} />
-                <span>Add</span>
+                <span>{t("Add")}</span>
               </button>
               <button type="button" disabled={saving || dashboard.memories.length === 0} onClick={onClear}>
-                Clear all
+                {t("Clear all")}
               </button>
             </div>
           </div>
@@ -6795,29 +6804,29 @@ function MemoryPanel({
           {adding ? (
             <div className="bubble-memory-add">
               <textarea
-                aria-label="Add memory"
+                aria-label={t("Add")}
                 value={newMemory}
                 onChange={(event) => setNewMemory(event.target.value)}
-                placeholder="Example: Puttu Kadala is my favourite food."
+                placeholder={t("Correct or add what Inspir should remember.")}
                 rows={3}
                 maxLength={600}
                 disabled={memoryControlsDisabled}
               />
               <div className="bubble-memory-add-actions">
                 <select
-                  aria-label="Memory category"
+                  aria-label={t("Memory category")}
                   value={newCategory}
                   disabled={memoryControlsDisabled}
                   onChange={(event) => setNewCategory(event.target.value)}
                 >
                   {memoryCategoryOptions.map((option) => (
                     <option key={option.value} value={option.value}>
-                      {option.label}
+                      {t(option.label)}
                     </option>
                   ))}
                 </select>
                 <button type="button" disabled={memoryControlsDisabled || !newMemory.trim()} onClick={addMemory}>
-                  Save
+                  {t("Save")}
                 </button>
                 <button
                   type="button"
@@ -6828,7 +6837,7 @@ function MemoryPanel({
                     setNewCategory("preferences");
                   }}
                 >
-                  Cancel
+                  {t("Cancel")}
                 </button>
               </div>
             </div>
@@ -6836,11 +6845,11 @@ function MemoryPanel({
 
           <div className="bubble-memory-list">
             {dashboard.memories.length === 0 ? (
-              <p className="bubble-memory-muted">No saved memories yet.</p>
+              <p className="bubble-memory-muted">{t("No saved memories yet.")}</p>
             ) : (
               grouped.map((group) => (
                 <div key={group.category} className="bubble-memory-group">
-                  <h4>{memoryCategoryLabel(group.category)}</h4>
+                  <h4>{translatedMemoryCategoryLabel(group.category, t)}</h4>
                   {group.memories.map((memory) => (
                     <MemoryItemEditor
                       key={memory.id}
@@ -6848,6 +6857,7 @@ function MemoryPanel({
                       saving={saving}
                       onUpdate={onUpdate}
                       onDelete={onDelete}
+                      t={t}
                     />
                   ))}
                 </div>
@@ -6893,6 +6903,7 @@ function MemorySummaryCard({
   onSaveCorrection,
   onRefresh,
   onMuteSection,
+  t,
 }: {
   summary: MemorySummary | null;
   saving: boolean;
@@ -6901,16 +6912,21 @@ function MemorySummaryCard({
   onSaveCorrection: () => void;
   onRefresh: () => void;
   onMuteSection: (section: MemorySummarySection) => void;
+  t: UiTranslator;
 }) {
   const sections = summary?.sections?.filter((section) => !section.doNotMention) ?? [];
   return (
     <div className="bubble-memory-summary-card">
       <div className="bubble-memory-summary-card-head">
         <div>
-          <strong>Memory summary</strong>
-          <span>{summary?.lastSynthesizedAt ? `Updated ${formatBubbleDate(summary.lastSynthesizedAt)}` : "No summary yet"}</span>
+          <strong>{t("Memory summary")}</strong>
+          <span>
+            {summary?.lastSynthesizedAt
+              ? formatBubbleDate(summary.lastSynthesizedAt)
+              : t("No summary yet")}
+          </span>
         </div>
-        <button type="button" disabled={saving} onClick={onRefresh} aria-label="Refresh memory summary">
+        <button type="button" disabled={saving} onClick={onRefresh} aria-label={t("Memory summary")}>
           <RefreshCw size={15} />
         </button>
       </div>
@@ -6920,14 +6936,14 @@ function MemorySummaryCard({
           {sections.map((section) => (
             <article key={section.id} className="bubble-memory-summary-section">
               <div>
-                <strong>{section.title || memoryCategoryLabel(section.category)}</strong>
+                <strong>{section.title || translatedMemoryCategoryLabel(section.category, t)}</strong>
                 <p>{section.summary}</p>
               </div>
               <button
                 type="button"
                 disabled={saving}
                 onClick={() => onMuteSection(section)}
-                aria-label={`Don't mention ${section.title}`}
+                aria-label={t("Off")}
               >
                 <XCircle size={15} />
               </button>
@@ -6935,21 +6951,21 @@ function MemorySummaryCard({
           ))}
         </div>
       ) : (
-        <p className="bubble-memory-muted">No summary yet.</p>
+        <p className="bubble-memory-muted">{t("No summary yet")}</p>
       )}
 
       <div className="bubble-memory-correction">
         <textarea
-          aria-label="Correct memory"
+          aria-label={t("Correct or add what Inspir should remember.")}
           value={correction}
           onChange={(event) => onCorrection(event.target.value)}
-          placeholder="Correct or add what Inspir should remember."
+          placeholder={t("Correct or add what Inspir should remember.")}
           rows={2}
           maxLength={800}
           disabled={saving}
         />
         <button type="button" disabled={saving || !correction.trim()} onClick={onSaveCorrection}>
-          Save
+          {t("Save")}
         </button>
       </div>
     </div>
@@ -6961,6 +6977,7 @@ function MemoryItemEditor({
   saving,
   onUpdate,
   onDelete,
+  t,
 }: {
   memory: MemoryItem;
   saving: boolean;
@@ -6969,6 +6986,7 @@ function MemoryItemEditor({
     input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
   ) => void;
   onDelete: (memoryId: string) => void;
+  t: UiTranslator;
 }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState("");
@@ -6996,7 +7014,7 @@ function MemoryItemEditor({
       {editing ? (
         <>
           <textarea
-            aria-label="Edit saved memory"
+            aria-label={t("Saved memory")}
             value={draft}
             onChange={(event) => setDraft(event.target.value)}
             className="bubble-memory-edit"
@@ -7004,7 +7022,7 @@ function MemoryItemEditor({
             maxLength={600}
           />
           <select
-            aria-label="Memory category"
+            aria-label={t("Memory category")}
             value={draftCategory}
             disabled={saving}
             className="bubble-memory-edit-category"
@@ -7012,7 +7030,7 @@ function MemoryItemEditor({
           >
             {memoryCategoryOptions.map((option) => (
               <option key={option.value} value={option.value}>
-                {option.label}
+                {t(option.label)}
               </option>
             ))}
           </select>
@@ -7021,13 +7039,13 @@ function MemoryItemEditor({
         <p className={memory.doNotMention ? "is-muted-memory" : undefined}>{memory.displayContent ?? memory.content}</p>
       )}
       <div className="bubble-memory-item-meta">
-        <span>{memory.sourceLabel ?? (memory.kind === "explicit" ? "Remembered from chat" : "Learned from chats")}</span>
-        {memory.doNotMention ? <span>Muted</span> : null}
+        <span>{memory.sourceLabel ? t(memory.sourceLabel) : memory.kind === "explicit" ? t("Saved memory") : t("Past chats")}</span>
+        {memory.doNotMention ? <span>{t("Off")}</span> : null}
       </div>
       <div className="bubble-memory-actions">
         {editing ? (
           <>
-            <button type="button" disabled={saving} onClick={save} aria-label="Save memory">
+            <button type="button" disabled={saving} onClick={save} aria-label={t("Save")}>
               <CheckCircle2 size={16} />
             </button>
             <button
@@ -7038,7 +7056,7 @@ function MemoryItemEditor({
                 setDraft(editableMemoryText(memory));
                 setDraftCategory(memory.category || "general");
               }}
-              aria-label="Cancel memory edit"
+              aria-label={t("Cancel")}
             >
               <XCircle size={16} />
             </button>
@@ -7053,7 +7071,7 @@ function MemoryItemEditor({
                 setDraftCategory(memory.category || "general");
                 setEditing(true);
               }}
-              aria-label="Edit memory"
+              aria-label={t("Saved memory")}
             >
               <PencilLine size={16} />
             </button>
@@ -7061,11 +7079,11 @@ function MemoryItemEditor({
               type="button"
               disabled={saving}
               onClick={() => onUpdate(memory.id, { doNotMention: !memory.doNotMention })}
-              aria-label={memory.doNotMention ? "Allow memory in answers" : "Do not mention memory"}
+              aria-label={memory.doNotMention ? t("On") : t("Off")}
             >
               {memory.doNotMention ? <Eye size={16} /> : <EyeOff size={16} />}
             </button>
-            <button type="button" disabled={saving} onClick={() => onDelete(memory.id)} aria-label="Delete memory">
+            <button type="button" disabled={saving} onClick={() => onDelete(memory.id)} aria-label={t("Clear all")}>
               <XCircle size={16} />
             </button>
           </>
@@ -7108,6 +7126,10 @@ function memoryCategoryLabel(category: string) {
     .filter(Boolean)
     .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
     .join(" ");
+}
+
+function translatedMemoryCategoryLabel(category: string, t: UiTranslator) {
+  return t(memoryCategoryLabel(category));
 }
 
 function ProfileStat({ label, value }: { label: string; value: string }) {

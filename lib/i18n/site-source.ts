@@ -2,7 +2,17 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import ts from "typescript";
+import { getBlogPosts } from "@/lib/content/blog";
 import { defaultLanguage } from "@/lib/content/languages";
+import {
+  homepageFaqs,
+  homepageFilm,
+  homepageHeroRoutes,
+  homepageLearningPaths,
+} from "@/lib/content/landing";
+import { getSubjectPages } from "@/lib/content/subjects";
+import { getTopicSeo } from "@/lib/content/topic-seo";
+import { topicSeeds } from "@/lib/content/topics";
 import type { TranslationBundle, TranslationSource } from "./translation-types";
 
 export const siteTranslationNamespace = "marketing-site";
@@ -60,6 +70,20 @@ const staticSiteTranslationNamespaces = [
   "legal:tnc",
 ] as const;
 const legalNamespaces = new Set(["legal:privacy", "legal:terms", "legal:tnc"]);
+const homepageTopicSlugs = new Set([
+  "learn-anything",
+  "socratic-instruction",
+  "homework-coach",
+  "math-step-coach",
+  "writing-coach",
+  "code-tutor",
+  "quiz-me-on-trivia",
+  "flashcard-builder",
+  "time-travel",
+  "talk-to-a-historical-person",
+  "debate-any-topic",
+  "exam-prep-planner",
+]);
 let cachedCandidateSourceFiles: string[] | undefined;
 const extractedSourceValueCache = new Map<string, string[]>();
 const siteTranslationSourceCache = new Map<string, TranslationSource>();
@@ -101,6 +125,7 @@ export function getSiteSourceStrings(namespace = siteTranslationNamespace) {
       addSourceValue(values, value);
     }
   }
+  if (namespace === "route:home") addHomepageRuntimeSourceValues(values);
 
   return Object.fromEntries(
     Array.from(values)
@@ -233,10 +258,7 @@ function fileBelongsToNamespace(relativePath: string, namespace: string) {
     return (
       relativePath === "app/page.tsx" ||
       relativePath === "components/marketing/MarketingVideoEngine.tsx" ||
-      relativePath === "lib/content/landing.ts" ||
-      relativePath === "lib/content/subjects.ts" ||
-      relativePath === "lib/content/topics.ts" ||
-      relativePath === "lib/content/topic-seo.ts"
+      relativePath === "lib/content/landing.ts"
     );
   }
   if (route === "chat-public") {
@@ -289,6 +311,50 @@ function contentFileBelongsToRoute(relativePath: string, route: string) {
     trust: ["lib/content/authority.ts"],
   };
   return contentByRoute[route]?.includes(relativePath) ?? false;
+}
+
+function addHomepageRuntimeSourceValues(values: Set<string>) {
+  for (const route of homepageHeroRoutes) {
+    addSourceValue(values, route.eyebrow);
+    addSourceValue(values, route.title);
+  }
+
+  for (const path of homepageLearningPaths) {
+    addSourceValue(values, path.title);
+    addSourceValue(values, path.description);
+    for (const link of path.links) addSourceValue(values, link.label);
+  }
+
+  for (const item of homepageFaqs) {
+    addSourceValue(values, item.question);
+    addSourceValue(values, item.answer);
+  }
+
+  addSourceValue(values, homepageFilm.title);
+  addSourceValue(values, homepageFilm.description);
+  addSourceValue(values, homepageFilm.transcript);
+  for (const chapter of homepageFilm.chapters) {
+    addSourceValue(values, chapter.title);
+    addSourceValue(values, chapter.text);
+  }
+
+  for (const topic of topicSeeds.filter((topic) => homepageTopicSlugs.has(topic.slug))) {
+    const seo = getTopicSeo(topic);
+    addSourceValue(values, topic.metadata.category);
+    addSourceValue(values, topic.name);
+    addSourceValue(values, seo.description);
+  }
+
+  for (const subject of getSubjectPages()) {
+    addSourceValue(values, subject.eyebrow);
+    addSourceValue(values, subject.seoTitle);
+    addSourceValue(values, subject.description);
+  }
+
+  for (const post of getBlogPosts().slice(0, 6)) {
+    addSourceValue(values, post.title);
+    addSourceValue(values, post.description);
+  }
 }
 
 function getBlogSlugs() {
@@ -521,7 +587,8 @@ function stripMarkdownFormatting(value: string) {
   );
 }
 
-function addSourceValue(values: Set<string>, value: string) {
+function addSourceValue(values: Set<string>, value: unknown) {
+  if (typeof value !== "string") return;
   const normalized = normalizeVisibleText(value);
   if (!isTranslatableText(normalized)) return;
   values.add(normalized);
