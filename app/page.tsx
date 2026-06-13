@@ -35,6 +35,10 @@ import { topicSeeds } from "@/lib/content/topics";
 import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
+import { getCachedSiteTranslationEntries, getSiteTranslationNamespaces } from "@/lib/i18n/site-translations";
+import { getRequestLanguage, getRequestPathname } from "@/lib/i18n/request-locale";
+import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
+import { defaultLanguage } from "@/lib/content/languages";
 import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
@@ -286,30 +290,32 @@ function buildLandingJsonLd(subjectPages: SubjectPageSummary[], posts: LandingPo
   return jsonLd;
 }
 
-function LandingHero() {
+async function LandingHero() {
+  const t = await getLandingTranslator();
   return (
     <section className="marketing-hero" aria-labelledby="home-title">
       <div className="marketing-hero-content">
-        <span className="marketing-kicker">Free public AI learning platform</span>
-        <h1 id="home-title">Free AI learning for everyone.</h1>
+        <span className="marketing-kicker">{t("Free public AI learning platform")}</span>
+        <h1 id="home-title">{t("Free AI learning for everyone.")}</h1>
         <p>
-          inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain,
-          ask back, and help you practise.
+          {t(
+            "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+          )}
         </p>
         <div className="marketing-hero-actions">
           <Link href="/chat/learn-anything" className="marketing-primary-cta">
-            Start learning
+            {t("Start learning")}
             <Sparkles size={18} />
           </Link>
           <Link href="/mission" className="marketing-secondary-cta">
-            Read the mission
+            {t("Read the mission")}
           </Link>
         </div>
         <nav className="marketing-hero-routes" aria-label="Fast learning routes">
           {homepageHeroRoutes.map((route) => (
             <Link key={route.href} href={route.href}>
-              <span>{route.eyebrow}</span>
-              <strong>{route.title}</strong>
+              <span>{t(route.eyebrow)}</span>
+              <strong>{t(route.title)}</strong>
             </Link>
           ))}
         </nav>
@@ -317,6 +323,20 @@ function LandingHero() {
       <MarketingHeroVideo chapters={homepageFilm.chapters} transcript={homepageFilm.transcript} />
     </section>
   );
+}
+
+async function getLandingTranslator() {
+  const [language, pathname] = await Promise.all([getRequestLanguage(), getRequestPathname()]);
+  if (language === defaultLanguage) return (value: string) => value;
+  const entries = await getCachedSiteTranslationEntries(language, getSiteTranslationNamespaces(pathname));
+  const lookup = createTranslationLookup(entries);
+  return (value: string) => {
+    const normalized = normalizeTranslationText(value);
+    if (!normalized) return value;
+    const translated = lookup.translate(normalized);
+    if (!translated || translated === normalized) return value;
+    return translated;
+  };
 }
 
 function LandingImpactBand({ proofStats }: { proofStats: ProofStats }) {

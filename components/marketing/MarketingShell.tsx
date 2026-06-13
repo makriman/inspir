@@ -20,6 +20,7 @@ import {
   getCachedSiteTranslationEntries,
   getSiteTranslationNamespaces,
 } from "@/lib/i18n/site-translations";
+import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
 
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
@@ -104,7 +105,7 @@ export async function MarketingFooter() {
   );
 }
 
-export function MarketingPageHero({
+export async function MarketingPageHero({
   eyebrow,
   title,
   children,
@@ -113,12 +114,13 @@ export function MarketingPageHero({
   title: string;
   children: ReactNode;
 }) {
+  const chrome = await getMarketingChrome();
   return (
     <section className="marketing-page-hero">
       <div className="marketing-page-hero-copy">
-        <span>{eyebrow}</span>
-        <h1>{title}</h1>
-        <p>{children}</p>
+        <span>{chrome.t(eyebrow)}</span>
+        <h1>{chrome.t(title)}</h1>
+        <p>{translateInlineNode(children, chrome.t)}</p>
       </div>
       <div className="marketing-page-visual" aria-hidden="true">
         <figure className="is-film">
@@ -206,6 +208,7 @@ async function getMarketingChrome() {
   const translationEntries =
     language === defaultLanguage ? [] : await getCachedSiteTranslationEntries(language, translationNamespaces);
   const textMap = buildTextMap(bundles.filter((bundle) => bundle !== null));
+  const lookup = createTranslationLookup(translationEntries);
 
   return {
     language,
@@ -214,7 +217,7 @@ async function getMarketingChrome() {
     hasLocalePrefix,
     translationNamespaces,
     translationEntries,
-    t: (value: string) => textMap.get(value) ?? value,
+    t: (value: string) => translateMarketingText(value, lookup.translate, textMap),
   } satisfies {
     language: SupportedLanguage;
     recommendedLanguage: SupportedLanguage;
@@ -231,8 +234,28 @@ function buildTextMap(bundles: TranslationBundle[]) {
   for (const bundle of bundles) {
     for (const [key, source] of Object.entries(bundle.sourceStrings)) {
       const translated = bundle.strings[key];
-      if (translated) map.set(source, translated);
+      if (translated) map.set(normalizeTranslationText(source), translated);
     }
   }
   return map;
+}
+
+function translateMarketingText(
+  value: string,
+  translate: (value: string) => string,
+  textMap: Map<string, string>,
+) {
+  const normalized = normalizeTranslationText(value);
+  if (!normalized) return value;
+  const translated = textMap.get(normalized) ?? translate(normalized);
+  if (!translated || translated === normalized) return value;
+  const leading = value.match(/^\s*/)?.[0] ?? "";
+  const trailing = value.match(/\s*$/)?.[0] ?? "";
+  return `${leading}${translated}${trailing}`;
+}
+
+function translateInlineNode(node: ReactNode, t: (value: string) => string): ReactNode {
+  if (typeof node === "string") return t(node);
+  if (Array.isArray(node)) return node.map((child) => translateInlineNode(child, t));
+  return node;
 }

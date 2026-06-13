@@ -4,8 +4,8 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
-import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
 import { getSiteTranslationNamespacesForPath, getSiteTranslationSource } from "@/lib/i18n/site-source";
+import { getCachedSiteTranslationBundle } from "@/lib/i18n/site-translations";
 import { absoluteUrl } from "@/lib/seo/config";
 import { localizePath } from "@/lib/i18n/routing";
 
@@ -41,17 +41,18 @@ async function readSiteLanguageAvailabilityForPath(pathname: string): Promise<La
   const namespaces = getSiteTranslationNamespacesForPath(pathname);
   const sources = new Map(namespaces.map((namespace) => [namespace, getSiteTranslationSource(namespace)]));
 
-  return supportedLanguages.map((language) => {
+  return Promise.all(supportedLanguages.map(async (language) => {
     if (language === defaultLanguage) return { language, complete: true };
-    const complete = namespaces.every((namespace) => {
+    const checks = await Promise.all(namespaces.map(async (namespace) => {
       const source = sources.get(namespace);
       if (!source) return false;
-      const bundle = getCuratedTranslationBundle(source, language);
+      const bundle = await getCachedSiteTranslationBundle(language, namespace);
       if (!bundle || bundle.sourceHash !== source.sourceHash) return false;
       return Object.keys(source.sourceStrings).every((key) => typeof bundle.strings[key] === "string" && bundle.strings[key].trim());
-    });
+    }));
+    const complete = checks.every(Boolean);
     return { language, complete };
-  });
+  }));
 }
 
 export async function getAvailableSiteLanguagesForPath(pathname: string) {
