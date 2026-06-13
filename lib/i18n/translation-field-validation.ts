@@ -101,6 +101,8 @@ function canRemainUntranslated(source: string, language?: string) {
   if (!/[A-Za-z]/.test(value)) return true;
   if (globalIdenticalTranslations.has(value)) return true;
   if (isSchemaOrCodeIdentifier(value)) return true;
+  if (isEscapedCodeLiteral(value)) return true;
+  if (isSlugKeywordList(value)) return true;
   if (language && languageSpecificIdenticalTranslations[language]?.has(value)) return true;
   if (/^https?:\/\//i.test(value)) return true;
   if (/^\d+\s*[-–]\s*\d+\s*(?:min|mins|minutes|sec|secs|hours?|hrs?)$/i.test(value)) return true;
@@ -116,6 +118,14 @@ function isSchemaOrCodeIdentifier(value: string) {
   if (/^[a-z]+(?:\s+[a-z]+=[a-z_][a-z0-9_]*)+$/i.test(value)) return true;
   if (/^[A-Za-z_$][A-Za-z0-9_$]*(?:\.[A-Za-z_$][A-Za-z0-9_$]*)+$/.test(value)) return true;
   return false;
+}
+
+function isEscapedCodeLiteral(value: string) {
+  return /^\\u[0-9a-fA-F]{4}$/.test(value);
+}
+
+function isSlugKeywordList(value: string) {
+  return /^[a-z0-9]+(?:-[a-z0-9]+)+(?:,\s*[a-z0-9]+(?:-[a-z0-9]+)+)*$/.test(value);
 }
 
 function isProperNameLabel(value: string) {

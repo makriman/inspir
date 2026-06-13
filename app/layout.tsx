@@ -4,8 +4,9 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import { MarketingServerLocalizer } from "@/components/i18n/MarketingServerLocalizer";
 import { getRequestLanguageConfig, getRequestPathname } from "@/lib/i18n/request-locale";
-import { localizedMarketingMetadata } from "@/lib/i18n/metadata";
+import { localizedMarketingMetadata, localizeMarketingStructuredData } from "@/lib/i18n/metadata";
 import {
   absoluteUrl,
   siteDescription,
@@ -26,6 +27,8 @@ const inter = Inter({
 });
 
 const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = await getRequestPathname();
@@ -142,11 +145,12 @@ export default async function RootLayout({
 }>) {
   const [languageConfig, pathname] = await Promise.all([getRequestLanguageConfig(), getRequestPathname()]);
   const isChatAppPath = pathname === "/chat" || pathname.startsWith("/chat/");
+  const localizedRootJsonLd = isChatAppPath ? [] : await localizeMarketingStructuredData(rootJsonLd, pathname);
   return (
     <html lang={languageConfig.locale} dir={languageConfig.dir} className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-[#171614] text-white">
-        {isChatAppPath ? null : <JsonLdScripts items={rootJsonLd} />}
-        {children}
+        {isChatAppPath ? null : <JsonLdScripts items={localizedRootJsonLd} />}
+        {isChatAppPath ? children : <MarketingServerLocalizer>{children}</MarketingServerLocalizer>}
         <PwaInstallPrompt />
       </body>
     </html>

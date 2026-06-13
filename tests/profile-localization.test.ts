@@ -146,6 +146,15 @@ test("field translation validation rejects unchanged visible mode labels", () =>
   assert.equal(isValidFieldTranslation("Homework Coach", "Homework Coach", "Arabic"), false);
   assert.equal(isValidFieldTranslation("{value1} FAQ", "{value1} Preguntas frecuentes", "Spanish"), true);
   assert.equal(isValidFieldTranslation("GitHub", "GitHub", "Spanish"), true);
+  assert.equal(isValidFieldTranslation("\\u003c", "\\u003c", "Arabic"), true);
+  assert.equal(
+    isValidFieldTranslation(
+      "ai-learning-platform, ai-study-platform",
+      "ai-learning-platform, ai-study-platform",
+      "Hindi",
+    ),
+    true,
+  );
 });
 
 test("locale routing helpers preserve canonical English and prefix non-English paths", () => {
