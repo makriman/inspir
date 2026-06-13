@@ -16,6 +16,7 @@ export type LanguageAvailability = {
 
 const availabilityCacheTtlMs = 5 * 60 * 1000;
 const availabilityCache = new Map<string, { expiresAt: number; promise: Promise<LanguageAvailability[]> }>();
+const languageAvailabilityCache = new Map<string, { expiresAt: number; promise: Promise<LanguageAvailability> }>();
 
 export function defaultOnlyLanguageAvailability(): LanguageAvailability[] {
   return supportedLanguages.map((language) => ({
@@ -62,8 +63,38 @@ export async function getAvailableSiteLanguagesForPath(pathname: string) {
 
 export async function isSiteLanguageAvailableForPath(pathname: string, language: SupportedLanguage) {
   if (language === defaultLanguage) return true;
-  const available = await getAvailableSiteLanguagesForPath(pathname);
-  return available.includes(language);
+  const availability = await getSiteLanguageAvailabilityForLanguage(pathname, language);
+  return availability.complete;
+}
+
+async function getSiteLanguageAvailabilityForLanguage(pathname: string, language: SupportedLanguage) {
+  const cacheKey = `${pathname || "/"}\u0000${language}`;
+  const cached = languageAvailabilityCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) return cached.promise;
+
+  const promise = readSiteLanguageAvailabilityForLanguage(pathname, language).catch((error) => {
+    languageAvailabilityCache.delete(cacheKey);
+    throw error;
+  });
+  languageAvailabilityCache.set(cacheKey, { expiresAt: Date.now() + availabilityCacheTtlMs, promise });
+  return promise;
+}
+
+async function readSiteLanguageAvailabilityForLanguage(
+  pathname: string,
+  language: SupportedLanguage,
+): Promise<LanguageAvailability> {
+  if (language === defaultLanguage) return { language, complete: true };
+
+  const namespaces = getSiteTranslationNamespacesForPath(pathname);
+  const checks = await Promise.all(namespaces.map(async (namespace) => {
+    const source = getSiteTranslationSource(namespace);
+    const bundle = await getCachedSiteTranslationBundle(language, namespace);
+    if (!bundle || bundle.sourceHash !== source.sourceHash) return false;
+    return Object.keys(source.sourceStrings).every((key) => typeof bundle.strings[key] === "string" && bundle.strings[key].trim());
+  }));
+
+  return { language, complete: checks.every(Boolean) };
 }
 
 export function alternatesForAvailableLanguages(pathname: string, languages: SupportedLanguage[]) {
