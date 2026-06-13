@@ -18,7 +18,9 @@ import {
 } from "@/lib/db/queries";
 import { getCachedMainAppTranslationBundle } from "@/lib/i18n/main-app-translations";
 import { getEnglishMainAppTranslationBundle } from "@/lib/i18n/main-app-source";
+import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
 import { getRequestLanguage } from "@/lib/i18n/request-locale";
+import { localizePath } from "@/lib/i18n/routing";
 import { calculateAge } from "@/lib/profile/age";
 import { numberFromEnv, quotaDefaults } from "@/lib/utils/rate-limit";
 
@@ -52,6 +54,18 @@ function guestUser(preferredLanguage = "English") {
   };
 }
 
+function translateMainAppText(text: string, bundle: MainAppTranslationBundle) {
+  const leading = text.match(/^\s*/)?.[0] ?? "";
+  const trailing = text.match(/\s*$/)?.[0] ?? "";
+  const core = text.trim();
+  for (const [key, sourceText] of Object.entries(bundle.sourceStrings)) {
+    if (sourceText.trim() === core) {
+      return `${leading}${bundle.strings[key] ?? sourceText}${trailing}`;
+    }
+  }
+  return text;
+}
+
 async function withPublicTopicTimeout<T>(promise: Promise<T>) {
   return Promise.race([
     promise,
@@ -64,25 +78,30 @@ async function withPublicTopicTimeout<T>(promise: Promise<T>) {
 export async function generateMetadata({ params }: ChatRoutePageProps): Promise<Metadata> {
   const { chatId } = await params;
   const slug = resolveTopicSlug(chatId);
+  const requestLanguage = await getRequestLanguage();
 
   if (slug) {
     const topic = findSeedTopic(slug);
     if (!topic) return {};
+    const translationBundle =
+      (await getCachedMainAppTranslationBundle(requestLanguage)) ?? getEnglishMainAppTranslationBundle();
+    const title = translateMainAppText(topic.name, translationBundle);
+    const description = translateMainAppText(topic.subText || topic.description, translationBundle);
     return {
-      title: topic.name,
-      description: topic.subText || topic.description,
+      title,
+      description,
       robots: { index: false, follow: true },
       alternates: {},
       keywords: [],
       openGraph: {
-        title: `${topic.name} | inspir`,
-        description: topic.subText || topic.description,
+        title: `${title} | inspir`,
+        description,
         type: "website",
       },
       twitter: {
         card: "summary",
-        title: `${topic.name} | inspir`,
-        description: topic.subText || topic.description,
+        title: `${title} | inspir`,
+        description,
       },
       other: {},
     };
@@ -187,7 +206,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
   if (!isUuidPathSegment(chatId)) notFound();
 
   const session = await getServerSession(authOptions);
-  if (!session?.user?.id) redirect("/");
+  if (!session?.user?.id) redirect(localizePath("/", await getRequestLanguage()));
 
   const owned = await getOwnedChat(chatId, session.user.id);
   if (!owned) notFound();
