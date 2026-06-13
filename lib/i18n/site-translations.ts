@@ -73,7 +73,7 @@ export async function getOrCreateSiteTranslationResult(
 }
 
 function translationDbFallbackWithTimeout<T>(promise: Promise<T | null>) {
-  const timeoutMs = Number(process.env.SITE_TRANSLATION_DB_TIMEOUT_MS ?? 1200);
+  const timeoutMs = Number(process.env.SITE_TRANSLATION_DB_TIMEOUT_MS ?? 3500);
   if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) return promise;
 
   return Promise.race<T | null>([

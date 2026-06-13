@@ -15,6 +15,7 @@ export type LanguageAvailability = {
 };
 
 const availabilityCacheTtlMs = 5 * 60 * 1000;
+const languageAvailabilityCacheTtlMs = 30 * 1000;
 const availabilityCache = new Map<string, { expiresAt: number; promise: Promise<LanguageAvailability[]> }>();
 const languageAvailabilityCache = new Map<string, { expiresAt: number; promise: Promise<LanguageAvailability> }>();
 
@@ -76,7 +77,7 @@ async function getSiteLanguageAvailabilityForLanguage(pathname: string, language
     languageAvailabilityCache.delete(cacheKey);
     throw error;
   });
-  languageAvailabilityCache.set(cacheKey, { expiresAt: Date.now() + availabilityCacheTtlMs, promise });
+  languageAvailabilityCache.set(cacheKey, { expiresAt: Date.now() + languageAvailabilityCacheTtlMs, promise });
   return promise;
 }
 
