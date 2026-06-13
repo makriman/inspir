@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { defaultLanguage, languageConfigs, normalizeLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import { alternatesForAvailableLanguages, isSiteLanguageAvailableForPath, getAvailableSiteLanguagesForPath } from "@/lib/i18n/availability";
+import { alternatesForAvailableLanguages, isSiteLanguageAvailableForPath } from "@/lib/i18n/availability";
 import { getRequestLanguage } from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
 import {
@@ -63,7 +63,7 @@ export async function localizeMarketingMetadata(metadata: Metadata, path: string
     language === defaultLanguage || !languageAvailable
       ? (value: string) => value
       : await getSiteMetadataTranslator(language, path);
-  const availableLanguages = await getAvailableSiteLanguagesForPath(path);
+  const availableLanguages = metadataAvailableLanguages(language, languageAvailable);
 
   return {
     ...metadata,
@@ -142,7 +142,7 @@ export async function localizedMarketingMetadata(input: LocalizedMetadataInput):
     language === defaultLanguage || !languageAvailable
       ? (value: string) => value
       : await getSiteMetadataTranslator(language, input.path);
-  const availableLanguages = await getAvailableSiteLanguagesForPath(input.path);
+  const availableLanguages = metadataAvailableLanguages(language, languageAvailable);
 
   const title = t(input.title);
   const description = t(input.description);
@@ -194,6 +194,11 @@ function localizedAlternates(path: string, languages: SupportedLanguage[]): NonN
       "application/json": "/ai-content-index.json",
     },
   };
+}
+
+function metadataAvailableLanguages(language: SupportedLanguage, languageAvailable: boolean): SupportedLanguage[] {
+  if (language === defaultLanguage || !languageAvailable) return [defaultLanguage];
+  return [defaultLanguage, language];
 }
 
 function localizeTitle(title: Metadata["title"], t: (value: string) => string): Metadata["title"] {
