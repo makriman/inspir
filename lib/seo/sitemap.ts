@@ -11,13 +11,14 @@ import {
   defaultLanguage,
   languageConfigs,
   normalizeLanguage,
+  supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
 import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, defaultSocialImage, socialImage } from "@/lib/seo/config";
 
 const staticLastModified = new Date();
-const sitemapSupportedLanguages: SupportedLanguage[] = [defaultLanguage];
+const sitemapSupportedLanguages: readonly SupportedLanguage[] = supportedLanguages;
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type SitemapIndexEntry = {
