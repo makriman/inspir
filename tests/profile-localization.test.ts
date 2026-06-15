@@ -9,6 +9,7 @@ import {
 } from "../lib/content/languages";
 import { topicSeeds } from "../lib/content/topics";
 import { recommendLanguageFromCountry } from "../lib/i18n/language-detection";
+import { resolveRequestLanguage } from "../lib/i18n/language-preference";
 import { localizeStructuredDataValue } from "../lib/i18n/metadata";
 import { getEnglishMainAppTranslationBundle, getMainAppSourceHash } from "../lib/i18n/main-app-source";
 import {
@@ -175,6 +176,25 @@ test("locale routing helpers preserve canonical English and prefix non-English p
   assert.equal(alternates.es, "/es/subjects");
   assert.equal(alternates.ml, "/ml/subjects");
   assert.equal(languageConfigs.Arabic.dir, "rtl");
+});
+
+test("explicit English language cookie wins over localized referrer", () => {
+  assert.equal(
+    resolveRequestLanguage({
+      cookieLanguage: "English",
+      referrerLanguage: "Spanish",
+    }),
+    "English",
+  );
+  assert.equal(resolveRequestLanguage({ referrerLanguage: "Spanish" }), "Spanish");
+  assert.equal(
+    resolveRequestLanguage({
+      localeLanguage: "Malayalam",
+      cookieLanguage: "English",
+      referrerLanguage: "Spanish",
+    }),
+    "Malayalam",
+  );
 });
 
 test("chat app path helper is narrow to private app routes", () => {

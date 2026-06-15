@@ -4,6 +4,7 @@ import { getToken } from "next-auth/jwt";
 import { isKnownTopicSlug, isUuidPathSegment } from "@/lib/content/topic-routing";
 import { normalizeLanguage } from "@/lib/content/languages";
 import { recommendLanguage } from "@/lib/i18n/language-detection";
+import { resolveRequestLanguage } from "@/lib/i18n/language-preference";
 import {
   getLocalizedPathInfo,
   localeCookieName,
@@ -19,9 +20,12 @@ export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const localizedPath = getLocalizedPathInfo(pathname);
   const effectivePathname = localizedPath.pathnameWithoutLocale;
-  const cookieLanguage = normalizeLanguage(request.cookies.get(localeCookieName)?.value);
   const referrerLanguage = getReferrerLocaleLanguage(request.headers.get("referer"));
-  const language = localizedPath.hasLocalePrefix ? localizedPath.language : referrerLanguage ?? cookieLanguage;
+  const language = resolveRequestLanguage({
+    localeLanguage: localizedPath.hasLocalePrefix ? localizedPath.language : null,
+    cookieLanguage: request.cookies.get(localeCookieName)?.value,
+    referrerLanguage,
+  });
   const recommendedLanguage = recommendLanguage({
     countryCode: request.headers.get("x-vercel-ip-country"),
     acceptLanguage: request.headers.get("accept-language"),
