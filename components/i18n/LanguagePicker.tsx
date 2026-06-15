@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { Check, ChevronDown, Globe2, Search, X } from "lucide-react";
 import {
   defaultLanguage,
@@ -58,6 +59,59 @@ export function LanguagePicker({
     setQuery("");
   }
 
+  const panel = open ? (
+    <div className="language-picker-layer" role="presentation">
+      <section className="language-picker-panel" role="dialog" aria-modal="true" aria-label={title}>
+        <header className="language-picker-head">
+          <div>
+            <h2>{title}</h2>
+            <p>{description}</p>
+          </div>
+          <button type="button" aria-label={closeLabel || title} onClick={() => setOpen(false)}>
+            <X size={20} />
+          </button>
+        </header>
+        <div className="language-picker-quick" aria-label={quickChoicesLabel || title}>
+          {quickChoices.map((language) => (
+            <button
+              key={language}
+              type="button"
+              className={language === current ? "is-active" : ""}
+              onClick={() => choose(language)}
+            >
+              {language === recommended && recommended !== defaultLanguage && recommendedLabel ? (
+                <small>{recommendedLabel}</small>
+              ) : null}
+              <span>{languageDisplayName(language)}</span>
+            </button>
+          ))}
+        </div>
+        <label className="language-picker-search">
+          <Search size={17} />
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={searchPlaceholder}
+            autoFocus
+          />
+        </label>
+        <div className="language-picker-list app-scrollbar">
+          {filteredLanguages.map((language) => (
+            <button
+              key={language}
+              type="button"
+              className={language === current ? "is-active" : ""}
+              onClick={() => choose(language)}
+            >
+              <span>{languageDisplayName(language)}</span>
+              {language === current ? <Check size={17} /> : null}
+            </button>
+          ))}
+        </div>
+      </section>
+    </div>
+  ) : null;
+
   return (
     <div className={`language-picker ${className ?? ""}`} data-no-auto-translate="true">
       <button
@@ -74,58 +128,7 @@ export function LanguagePicker({
         </span>
         <ChevronDown size={16} />
       </button>
-      {open ? (
-        <div className="language-picker-layer" role="presentation">
-          <section className="language-picker-panel" role="dialog" aria-modal="true" aria-label={title}>
-            <header className="language-picker-head">
-              <div>
-                <h2>{title}</h2>
-                <p>{description}</p>
-              </div>
-              <button type="button" aria-label={closeLabel || title} onClick={() => setOpen(false)}>
-                <X size={20} />
-              </button>
-            </header>
-            <div className="language-picker-quick" aria-label={quickChoicesLabel || title}>
-              {quickChoices.map((language) => (
-                <button
-                  key={language}
-                  type="button"
-                  className={language === current ? "is-active" : ""}
-                  onClick={() => choose(language)}
-                >
-                  {language === recommended && recommended !== defaultLanguage && recommendedLabel ? (
-                    <small>{recommendedLabel}</small>
-                  ) : null}
-                  <span>{languageDisplayName(language)}</span>
-                </button>
-              ))}
-            </div>
-            <label className="language-picker-search">
-              <Search size={17} />
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={searchPlaceholder}
-                autoFocus
-              />
-            </label>
-            <div className="language-picker-list app-scrollbar">
-              {filteredLanguages.map((language) => (
-                <button
-                  key={language}
-                  type="button"
-                  className={language === current ? "is-active" : ""}
-                  onClick={() => choose(language)}
-                >
-                  <span>{languageDisplayName(language)}</span>
-                  {language === current ? <Check size={17} /> : null}
-                </button>
-              ))}
-            </div>
-          </section>
-        </div>
-      ) : null}
+      {panel && typeof document !== "undefined" ? createPortal(panel, document.body) : null}
     </div>
   );
 }
