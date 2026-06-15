@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X } from "lucide-react";
+import { createPortal } from "react-dom";
+import { Globe2, X } from "lucide-react";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import {
   defaultLanguage,
@@ -75,6 +76,46 @@ export function MarketingLanguageControls({
     setPromptVisible(false);
   }
 
+  const prompt = promptVisible ? (
+    <div className="marketing-language-bar" role="region" aria-label={copy.promptAriaLabel}>
+      <div className="marketing-language-bar-copy">
+        <span className="marketing-language-bar-icon" aria-hidden="true">
+          <Globe2 size={18} />
+        </span>
+        <div>
+          <strong>{copy.promptTitle}</strong>
+          <span>{copy.promptDescription}</span>
+        </div>
+      </div>
+      <div className="marketing-language-bar-actions">
+        {shouldRecommend ? (
+          <>
+            <button type="button" className="is-recommended" onClick={() => void saveLanguage(recommendedLanguage)}>
+              {recommendedLabel}
+            </button>
+            <button type="button" className="is-secondary" onClick={() => void saveLanguage(defaultLanguage)}>
+              {copy.continueEnglish}
+            </button>
+          </>
+        ) : null}
+        <LanguagePicker
+          currentLanguage={currentLanguage}
+          recommendedLanguage={recommendedLanguage}
+          buttonLabel={copy.chooseButtonLabel}
+          title={copy.chooseAnotherTitle}
+          description={copy.chooseAnotherDescription}
+          closeLabel={copy.dismissLabel}
+          quickChoicesLabel={copy.promptAriaLabel}
+          onSelect={(language) => void saveLanguage(language)}
+          className="marketing-language-bar-picker"
+        />
+        <button type="button" onClick={dismissPrompt} aria-label={copy.dismissLabel}>
+          <X size={17} />
+        </button>
+      </div>
+    </div>
+  ) : null;
+
   return (
     <>
       <LanguagePicker
@@ -88,38 +129,7 @@ export function MarketingLanguageControls({
         onSelect={(language) => void saveLanguage(language)}
         className="marketing-language-picker-shell"
       />
-      {promptVisible ? (
-        <div className="marketing-language-bar" role="region" aria-label={copy.promptAriaLabel}>
-          <div>
-            <strong>{copy.promptTitle}</strong>
-            <span>{copy.promptDescription}</span>
-          </div>
-          <div className="marketing-language-bar-actions">
-            {shouldRecommend ? (
-              <button type="button" onClick={() => void saveLanguage(recommendedLanguage)}>
-                {recommendedLabel}
-              </button>
-            ) : null}
-            <button type="button" onClick={() => void saveLanguage(defaultLanguage)}>
-              {copy.continueEnglish}
-            </button>
-            <LanguagePicker
-              currentLanguage={currentLanguage}
-              recommendedLanguage={recommendedLanguage}
-              buttonLabel={copy.chooseButtonLabel}
-              title={copy.chooseAnotherTitle}
-              description={copy.chooseAnotherDescription}
-              closeLabel={copy.dismissLabel}
-              quickChoicesLabel={copy.promptAriaLabel}
-              onSelect={(language) => void saveLanguage(language)}
-              className="marketing-language-bar-picker"
-            />
-            <button type="button" onClick={dismissPrompt} aria-label={copy.dismissLabel}>
-              <X size={17} />
-            </button>
-          </div>
-        </div>
-      ) : null}
+      {prompt && typeof document !== "undefined" ? createPortal(prompt, document.body) : null}
     </>
   );
 }

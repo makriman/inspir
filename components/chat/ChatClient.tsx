@@ -571,7 +571,6 @@ type ChatClientState = {
   languageSaving: boolean;
   guestMessagesUsed: number;
   guestPromptOpen: boolean;
-  guestLanguagePromptOpen: boolean;
   workspaceResetCount: number;
   memoryDashboard: MemoryDashboard | null;
   memoryLoading: boolean;
@@ -637,7 +636,6 @@ function useChatClientController({
       languageSaving,
       guestMessagesUsed,
       guestPromptOpen,
-      guestLanguagePromptOpen,
       workspaceResetCount,
       memoryDashboard,
       memoryLoading,
@@ -668,7 +666,6 @@ function useChatClientController({
     languageSaving: false,
     guestMessagesUsed: 0,
     guestPromptOpen: false,
-    guestLanguagePromptOpen: false,
     workspaceResetCount: 0,
     memoryDashboard: null,
     memoryLoading: false,
@@ -721,8 +718,6 @@ function useChatClientController({
     updateChatField("guestMessagesUsed", value);
   const setGuestPromptOpen = (value: SetStateAction<ChatClientState["guestPromptOpen"]>) =>
     updateChatField("guestPromptOpen", value);
-  const setGuestLanguagePromptOpen = (value: SetStateAction<ChatClientState["guestLanguagePromptOpen"]>) =>
-    updateChatField("guestLanguagePromptOpen", value);
   const setWorkspaceResetCount = (value: SetStateAction<ChatClientState["workspaceResetCount"]>) =>
     updateChatField("workspaceResetCount", value);
   const setMemoryDashboard = (value: SetStateAction<ChatClientState["memoryDashboard"]>) =>
@@ -816,12 +811,6 @@ function useChatClientController({
     if (used) updateChatState({ guestMessagesUsed: used });
   }, [guestMessageLimit]);
 
-  useEffect(() => {
-    if (!isGuest) return;
-    if (window.localStorage.getItem("inspir_guest_language_selected") === "1") return;
-    updateChatState({ guestLanguagePromptOpen: true });
-  }, [isGuest, profileUser.preferredLanguage]);
-
   const loadMemoryDashboard = useCallback(async () => {
     if (isGuest) return;
     updateChatState({ memoryLoading: true, memoryError: null });
@@ -914,10 +903,6 @@ function useChatClientController({
   async function sendMessage(content: string, appendUser = true) {
     const trimmed = content.trim();
     if (!trimmed || sending || isQuizMode || isFlashcardMode) return;
-    if (isGuest && window.localStorage.getItem("inspir_guest_language_selected") !== "1") {
-      setGuestLanguagePromptOpen(true);
-      return;
-    }
     if (isGuest && guestMessagesUsed >= guestMessageLimit) {
       setGuestPromptOpen(true);
       return;
@@ -1230,24 +1215,6 @@ function useChatClientController({
     }));
   }
 
-  async function saveGuestLanguage(preferredLanguage: string) {
-    window.localStorage.setItem("inspir_guest_language_selected", "1");
-    window.localStorage.setItem("inspir_locale_prompt_dismissed", "1");
-    setGuestLanguagePromptOpen(false);
-    setProfileUser((current) => ({ ...current, preferredLanguage }));
-    const response = await fetch("/api/language-preference", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        preferredLanguage,
-        language: preferredLanguage,
-        pathname: window.location.pathname + window.location.search,
-      }),
-    }).catch(() => undefined);
-    const data = response ? await response.json().catch(() => null) : null;
-    if (data?.redirectTo) window.location.assign(data.redirectTo);
-  }
-
   async function patchMemorySettings(input: {
     enabled?: boolean;
     savedMemoryEnabled?: boolean;
@@ -1391,7 +1358,6 @@ function useChatClientController({
     filteredTopics,
     guestMessageLimit,
     guestMessagesUsed,
-    guestLanguagePromptOpen,
     guestPromptOpen,
     handleComposerKeyDown,
     input,
@@ -1431,7 +1397,6 @@ function useChatClientController({
     sending,
     setActivityRun,
     setAgePromptOpen,
-    setGuestLanguagePromptOpen,
     setGuestPromptOpen,
     setInput,
     setMobileSidebarOpen,
@@ -1454,7 +1419,6 @@ function useChatClientController({
     updateMemoryItem,
     updateProfileDetails,
     updatePreferredLanguage,
-    saveGuestLanguage,
     deleteMemoryItem,
     clearMemory,
     removeProfilePhoto,
@@ -1853,7 +1817,6 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
   const {
     activeTopic,
     agePromptOpen,
-    guestLanguagePromptOpen,
     guestMessageLimit,
     guestMessagesUsed,
     guestPromptOpen,
@@ -1863,7 +1826,6 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
     memorySourceModal,
     openFirstTopicWithMode,
     profileUser,
-    saveGuestLanguage,
     setAgePromptOpen,
     setGuestPromptOpen,
     setMemorySourceModal,
@@ -1879,14 +1841,6 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
         onOpenTimer={() => openFirstTopicWithMode("study-timer")}
         onOpenMusic={() => openFirstTopicWithMode("focus-music")}
       />
-      {isGuest && guestLanguagePromptOpen ? (
-        <GuestLanguagePromptModal
-          currentLanguage={profileUser.preferredLanguage || defaultLanguage}
-          onSave={(language) => void saveGuestLanguage(language)}
-          onClose={() => void saveGuestLanguage(defaultLanguage)}
-          t={translateUi}
-        />
-      ) : null}
       {isGuest && guestPromptOpen ? (
         <GuestContinueModal
           used={guestMessagesUsed}
@@ -6135,50 +6089,6 @@ function GuestContinueModal({
         </GoogleContinueButton>
         <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
           Maybe later
-        </button>
-      </dialog>
-    </div>
-  );
-}
-
-function GuestLanguagePromptModal({
-  currentLanguage,
-  onSave,
-  onClose,
-  t,
-}: {
-  currentLanguage: string;
-  onSave: (language: string) => void;
-  onClose: () => void;
-  t: UiTranslator;
-}) {
-  const [language, setLanguage] = useState<SupportedLanguage>((currentLanguage as SupportedLanguage) || defaultLanguage);
-
-  return (
-    <div className="bubble-guest-modal-backdrop" role="presentation">
-      <dialog open className="bubble-guest-modal bubble-language-start-modal" aria-modal="true" aria-labelledby="guest-language-title">
-        <button type="button" onClick={onClose} aria-label={t("Close")} className="bubble-guest-modal-close">
-          <X size={20} />
-        </button>
-        <span className="bubble-guest-modal-kicker">{t("Preferred Language")}</span>
-        <h2 id="guest-language-title">{t("Choose your learning language")}</h2>
-        <p>{t("Use inspir in the language that feels easiest. You can change this later from your profile.")}</p>
-        <LanguagePicker
-          currentLanguage={language}
-          recommendedLanguage={language}
-          buttonLabel={t("Preferred Language")}
-          title={t("Choose your learning language")}
-          description={t("You can switch again later from Profile.")}
-          closeLabel={t("Close")}
-          quickChoicesLabel={t("Preferred Language")}
-          onSelect={setLanguage}
-          className="bubble-modal-language-picker"
-        />
-        <button type="button" onClick={() => onSave(language)} className="bubble-guest-modal-primary">
-          {t("Continue")}
-        </button>
-        <button type="button" onClick={() => onSave(defaultLanguage)} className="bubble-guest-modal-secondary">
-          {t("Continue with English")}
         </button>
       </dialog>
     </div>
