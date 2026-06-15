@@ -10,6 +10,7 @@ import {
   dailyLimitReset,
   numberFromEnv,
   safeQuotaKeyPart,
+  sqlTimestamp,
   utcDayKey,
 } from "../lib/utils/rate-limit";
 
@@ -45,6 +46,7 @@ test("quota utility defaults and key normalization are stable", () => {
   const now = new Date("2026-06-11T23:59:01.000Z");
   assert.equal(utcDayKey(now), "2026-06-11");
   assert.equal(dailyLimitReset(now).toISOString(), "2026-06-12T00:00:00.000Z");
+  assert.equal(sqlTimestamp(now), "2026-06-11T23:59:01.000Z");
 
   if (previous === undefined) delete process.env.TEST_LIMIT_VALUE;
   else process.env.TEST_LIMIT_VALUE = previous;
