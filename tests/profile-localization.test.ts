@@ -26,6 +26,7 @@ import { isFreshAppTranslation, validateTranslationPayload } from "../lib/i18n/t
 import { calculateAge, validateDateOfBirth } from "../lib/profile/age";
 import { maxProfileImageBytes, prepareProfileImage } from "../lib/profile/photo";
 import { updateProfileSchema } from "../lib/profile/validation";
+import { isChatAppPath } from "../lib/routes/chat-path";
 
 test("calculateAge handles birthday boundaries", () => {
   const today = new Date(Date.UTC(2026, 4, 29));
@@ -174,6 +175,14 @@ test("locale routing helpers preserve canonical English and prefix non-English p
   assert.equal(alternates.es, "/es/subjects");
   assert.equal(alternates.ml, "/ml/subjects");
   assert.equal(languageConfigs.Arabic.dir, "rtl");
+});
+
+test("chat app path helper is narrow to private app routes", () => {
+  assert.equal(isChatAppPath("/chat"), true);
+  assert.equal(isChatAppPath("/chat/learn-anything"), true);
+  assert.equal(isChatAppPath("/es/chat/learn-anything"), true);
+  assert.equal(isChatAppPath("/chat-public"), false);
+  assert.equal(isChatAppPath("/subjects/chat"), false);
 });
 
 test("country recommendation maps IP country signals to supported languages", () => {

@@ -6169,6 +6169,8 @@ function GuestLanguagePromptModal({
           buttonLabel={t("Preferred Language")}
           title={t("Choose your learning language")}
           description={t("You can switch again later from Profile.")}
+          closeLabel={t("Close")}
+          quickChoicesLabel={t("Preferred Language")}
           onSelect={setLanguage}
           className="bubble-modal-language-picker"
         />
@@ -6264,6 +6266,8 @@ function AgePromptModal({
             buttonLabel={t("Preferred Language")}
             title={t("Choose your learning language")}
             description={t("App text and tutoring replies will follow this setting.")}
+            closeLabel={t("Close")}
+            quickChoicesLabel={t("Preferred Language")}
             onSelect={setPreferredLanguage}
             className="bubble-modal-language-picker"
           />
@@ -6497,6 +6501,8 @@ function ProfilePanel({
                 buttonLabel={t("Preferred Language")}
                 title={t("Choose your learning language")}
                 description={t("All app text and tutoring replies follow this setting.")}
+                closeLabel={t("Close")}
+                quickChoicesLabel={t("Preferred Language")}
                 onSelect={setPreferredLanguage}
                 className="bubble-profile-language-picker"
               />

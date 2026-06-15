@@ -40,9 +40,9 @@ import {
   schoolFeatures,
   schoolSearchIntents,
   schoolUseCases,
-  trustCrawlerPolicies,
   trustFaqs,
   trustPrinciples,
+  trustPublicAccessPolicies,
   trustReferenceLinks,
   trustSafeguards,
 } from "@/lib/content/authority";
@@ -578,14 +578,14 @@ function authorityIndex() {
       url: absoluteUrl("/trust"),
       canonicalUrl: absoluteUrl("/trust"),
       summary:
-        "A public trust center explaining guest mode, private saved chats, crawler access, learner safety, school trust, and the boundaries between indexable public pages and private user content.",
+        "A public trust center explaining guest mode, private saved chats, public access, learner safety, school trust, and the boundaries between public pages and private user content.",
       principles: trustPrinciples,
       safeguards: trustSafeguards.map((item) => ({
         title: item.title,
         url: absoluteUrl(item.href),
         description: item.text,
       })),
-      crawlerPolicies: trustCrawlerPolicies,
+      publicAccessPolicies: trustPublicAccessPolicies,
       referenceLinks: trustReferenceLinks.map((link) => ({
         title: link.title,
         url: absoluteUrl(link.href),
@@ -1072,8 +1072,8 @@ export function buildLlmsFullTxt() {
     ...index.authority.trust.safeguards.map(
       (safeguard) => `- ${safeguard.title}: ${safeguard.url} - ${safeguard.description}`,
     ),
-    "Crawler policy:",
-    ...index.authority.trust.crawlerPolicies.map((policy) => `- ${policy.name}: ${policy.status} - ${policy.text}`),
+    "Public access policy:",
+    ...index.authority.trust.publicAccessPolicies.map((policy) => `- ${policy.name}: ${policy.status} - ${policy.text}`),
     "Reference links:",
     ...index.authority.trust.referenceLinks.map((link) => `- ${link.title}: ${link.url} - ${link.description}`),
     "FAQ:",
@@ -1093,7 +1093,7 @@ export function buildLlmsFullTxt() {
     ...index.authority.media.coverageLinks.map((link) => `- ${link.title}: ${link.url} - ${link.description}`),
     "Story angles:",
     ...index.authority.media.storyAngles.map((angle) => `- ${angle.title}: ${angle.url} - ${angle.description}`),
-    "Recommended citation and backlink targets:",
+    "Recommended citation targets:",
     ...index.authority.media.linkingTargets.map(
       (target) => `- ${target.title}: ${target.url} - Suggested anchor: ${target.anchorText}. ${target.description}`,
     ),

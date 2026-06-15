@@ -63,6 +63,19 @@ export async function MarketingHeader({ hero = false }: { hero?: boolean }) {
           recommendedLanguage={chrome.recommendedLanguage}
           currentPathname={chrome.currentPathname}
           hasLocalePrefix={chrome.hasLocalePrefix}
+          copy={{
+            buttonLabel: chrome.t("Language"),
+            chooseTitle: chrome.t("Choose your language"),
+            chooseDescription: chrome.t("Use inspir in the language that feels most natural."),
+            promptAriaLabel: chrome.t("Language options"),
+            promptTitle: chrome.t("Translate inspir?"),
+            promptDescription: chrome.t("Choose the language for this visit."),
+            continueEnglish: chrome.t("Continue with English"),
+            chooseButtonLabel: chrome.t("Choose"),
+            chooseAnotherTitle: chrome.t("Choose another language"),
+            chooseAnotherDescription: chrome.t("Search the full language list."),
+            dismissLabel: chrome.t("Dismiss language options"),
+          }}
         />
       </nav>
     </header>

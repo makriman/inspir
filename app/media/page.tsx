@@ -120,7 +120,7 @@ export default function MediaPage() {
     itemListJsonLd({
       path: "/media",
       id: "linking-targets",
-      name: "Recommended inspir citation and backlink targets",
+      name: "Recommended inspir citation targets",
       items: mediaLinkingTargets.map((target) => ({
         name: `${target.title}: ${target.anchorText}`,
         url: target.href,
@@ -255,11 +255,11 @@ export default function MediaPage() {
 
       <section className="marketing-band">
         <div className="marketing-section-copy">
-          <span>Linking guide</span>
-          <h2>Recommended pages and anchor text for citations.</h2>
+          <span>Citation guide</span>
+          <h2>Recommended pages and wording for references.</h2>
           <p>
-            These targets make backlinks and directory listings point to the most useful
-            public page for the context, instead of sending every reference to the same place.
+            These suggestions help articles, directories, and school notes point people
+            to the most useful public page for the context.
           </p>
         </div>
         <div className="marketing-topic-grid">

@@ -204,7 +204,7 @@ export default function MissionPage() {
           <span>Public evidence</span>
           <h2>The mission is connected to real product surfaces.</h2>
           <p>
-            These pages make the story easier to verify, cite, crawl, and use: public modes,
+            These pages make the story easier to verify, cite, share, and use: public modes,
             learning paths, long-form guides, school deployment notes, media facts, and the
             company background.
           </p>

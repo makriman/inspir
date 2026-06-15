@@ -7,6 +7,7 @@ import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { MarketingServerLocalizer } from "@/components/i18n/MarketingServerLocalizer";
 import { getRequestLanguageConfig, getRequestPathname } from "@/lib/i18n/request-locale";
 import { localizedMarketingMetadata, localizeMarketingStructuredData } from "@/lib/i18n/metadata";
+import { isChatAppPath } from "@/lib/routes/chat-path";
 import {
   absoluteUrl,
   siteDescription,
@@ -32,9 +33,9 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const pathname = await getRequestPathname();
-  const isChatAppPath = pathname === "/chat" || pathname.startsWith("/chat/");
+  const isChatApp = isChatAppPath(pathname);
 
-  if (isChatAppPath) {
+  if (isChatApp) {
     return {
       metadataBase: new URL(siteUrl),
       title: {
@@ -144,14 +145,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const [languageConfig, pathname] = await Promise.all([getRequestLanguageConfig(), getRequestPathname()]);
-  const isChatAppPath = pathname === "/chat" || pathname.startsWith("/chat/");
-  const localizedRootJsonLd = isChatAppPath ? [] : await localizeMarketingStructuredData(rootJsonLd, pathname);
+  const isChatApp = isChatAppPath(pathname);
+  const localizedRootJsonLd = isChatApp ? [] : await localizeMarketingStructuredData(rootJsonLd, pathname);
   return (
     <html lang={languageConfig.locale} dir={languageConfig.dir} className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-[#171614] text-white">
-        {isChatAppPath ? null : <JsonLdScripts items={localizedRootJsonLd} />}
-        {isChatAppPath ? children : <MarketingServerLocalizer>{children}</MarketingServerLocalizer>}
-        <PwaInstallPrompt />
+        {isChatApp ? null : <JsonLdScripts items={localizedRootJsonLd} />}
+        {isChatApp ? children : <MarketingServerLocalizer>{children}</MarketingServerLocalizer>}
+        {isChatApp ? null : <PwaInstallPrompt />}
       </body>
     </html>
   );

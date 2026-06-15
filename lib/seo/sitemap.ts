@@ -5,8 +5,6 @@ import { categoryHasIndexedPosts, indexedBlogPosts } from "@/lib/content/blog-se
 import { comparisonPath, getComparisonPages } from "@/lib/content/comparisons";
 import { homepageFilm, homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
 import { getSubjectPages, subjectPath } from "@/lib/content/subjects";
-import { topicSeeds } from "@/lib/content/topics";
-import { topicPath } from "@/lib/content/topic-routing";
 import {
   defaultLanguage,
   languageConfigs,
@@ -259,14 +257,6 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
     { url: absoluteUrl("/blog"), lastModified: staticLastModified, changeFrequency: "weekly", priority: 0.7 },
   ];
 
-  const topicRoutes: MetadataRoute.Sitemap = topicSeeds.map((topic) => ({
-    url: absoluteUrl(topicPath(topic.slug)),
-    lastModified: staticLastModified,
-    changeFrequency: "weekly",
-    priority: topic.slug === "learn-anything" ? 0.95 : 0.85,
-    images: [socialImage({ title: topic.name, eyebrow: "Learning mode", description: topic.description }).url],
-  }));
-
   const posts = getBlogPosts();
   const blogRoutes: MetadataRoute.Sitemap = indexedBlogPosts(posts).map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),
@@ -356,7 +346,6 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
       ...comparisonRoutes,
       ...audienceRoutes,
       ...subjectRoutes,
-      ...topicRoutes,
       ...blogRoutes,
       ...blogCategoryRoutes,
     ],

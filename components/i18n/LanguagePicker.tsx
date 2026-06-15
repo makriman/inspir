@@ -17,6 +17,10 @@ export type LanguagePickerProps = {
   buttonLabel?: string;
   title?: string;
   description?: string;
+  closeLabel?: string;
+  quickChoicesLabel?: string;
+  recommendedLabel?: string;
+  searchPlaceholder?: string;
   className?: string;
 };
 
@@ -28,6 +32,10 @@ export function LanguagePicker({
   buttonLabel = "Preferred Language",
   title = "Choose a language",
   description = "Pick the language that feels easiest for learning.",
+  closeLabel,
+  quickChoicesLabel,
+  recommendedLabel = "",
+  searchPlaceholder = "",
   className,
 }: LanguagePickerProps) {
   const [open, setOpen] = useState(false);
@@ -74,11 +82,11 @@ export function LanguagePicker({
                 <h2>{title}</h2>
                 <p>{description}</p>
               </div>
-              <button type="button" aria-label="Close language picker" onClick={() => setOpen(false)}>
+              <button type="button" aria-label={closeLabel || title} onClick={() => setOpen(false)}>
                 <X size={20} />
               </button>
             </header>
-            <div className="language-picker-quick" aria-label="Quick language choices">
+            <div className="language-picker-quick" aria-label={quickChoicesLabel || title}>
               {quickChoices.map((language) => (
                 <button
                   key={language}
@@ -86,7 +94,9 @@ export function LanguagePicker({
                   className={language === current ? "is-active" : ""}
                   onClick={() => choose(language)}
                 >
-                  {language === recommended && recommended !== defaultLanguage ? <small>Recommended</small> : null}
+                  {language === recommended && recommended !== defaultLanguage && recommendedLabel ? (
+                    <small>{recommendedLabel}</small>
+                  ) : null}
                   <span>{languageDisplayName(language)}</span>
                 </button>
               ))}
@@ -96,7 +106,7 @@ export function LanguagePicker({
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search languages"
+                placeholder={searchPlaceholder}
                 autoFocus
               />
             </label>

@@ -14,6 +14,19 @@ type LanguageControlsProps = {
   recommendedLanguage: SupportedLanguage;
   currentPathname: string;
   hasLocalePrefix: boolean;
+  copy: {
+    buttonLabel: string;
+    chooseTitle: string;
+    chooseDescription: string;
+    promptAriaLabel: string;
+    promptTitle: string;
+    promptDescription: string;
+    continueEnglish: string;
+    chooseButtonLabel: string;
+    chooseAnotherTitle: string;
+    chooseAnotherDescription: string;
+    dismissLabel: string;
+  };
 };
 
 const promptStorageKey = "inspir_locale_prompt_dismissed";
@@ -23,6 +36,7 @@ export function MarketingLanguageControls({
   recommendedLanguage,
   currentPathname,
   hasLocalePrefix,
+  copy,
 }: LanguageControlsProps) {
   const [promptVisible, setPromptVisible] = useState(false);
   const recommendedLabel = languageDisplayName(recommendedLanguage);
@@ -66,37 +80,41 @@ export function MarketingLanguageControls({
       <LanguagePicker
         currentLanguage={currentLanguage}
         recommendedLanguage={recommendedLanguage}
-        buttonLabel="Language"
-        title="Choose your language"
-        description="Use inspir in the language that feels most natural."
+        buttonLabel={copy.buttonLabel}
+        title={copy.chooseTitle}
+        description={copy.chooseDescription}
+        closeLabel={copy.dismissLabel}
+        quickChoicesLabel={copy.promptAriaLabel}
         onSelect={(language) => void saveLanguage(language)}
         className="marketing-language-picker-shell"
       />
       {promptVisible ? (
-        <div className="marketing-language-bar" role="region" aria-label="Language options">
+        <div className="marketing-language-bar" role="region" aria-label={copy.promptAriaLabel}>
           <div>
-            <strong>Translate inspir?</strong>
-            <span>Choose the language for this visit.</span>
+            <strong>{copy.promptTitle}</strong>
+            <span>{copy.promptDescription}</span>
           </div>
           <div className="marketing-language-bar-actions">
             {shouldRecommend ? (
               <button type="button" onClick={() => void saveLanguage(recommendedLanguage)}>
-                Switch to {recommendedLabel}
+                {recommendedLabel}
               </button>
             ) : null}
             <button type="button" onClick={() => void saveLanguage(defaultLanguage)}>
-              Continue with English
+              {copy.continueEnglish}
             </button>
             <LanguagePicker
               currentLanguage={currentLanguage}
               recommendedLanguage={recommendedLanguage}
-              buttonLabel="Choose"
-              title="Choose another language"
-              description="Search the full language list."
+              buttonLabel={copy.chooseButtonLabel}
+              title={copy.chooseAnotherTitle}
+              description={copy.chooseAnotherDescription}
+              closeLabel={copy.dismissLabel}
+              quickChoicesLabel={copy.promptAriaLabel}
               onSelect={(language) => void saveLanguage(language)}
               className="marketing-language-bar-picker"
             />
-            <button type="button" onClick={dismissPrompt} aria-label="Dismiss language options">
+            <button type="button" onClick={dismissPrompt} aria-label={copy.dismissLabel}>
               <X size={17} />
             </button>
           </div>

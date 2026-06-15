@@ -8,9 +8,9 @@ import {
   MarketingPageHero,
 } from "@/components/marketing/MarketingShell";
 import {
-  trustCrawlerPolicies,
   trustFaqs,
   trustPrinciples,
+  trustPublicAccessPolicies,
   trustReferenceLinks,
   trustSafeguards,
 } from "@/lib/content/authority";
@@ -101,7 +101,7 @@ export default function TrustPage() {
       path: "/trust",
       id: "public-private-boundaries",
       name: "inspir public and private boundaries",
-      items: trustCrawlerPolicies.map((policy) => ({
+      items: trustPublicAccessPolicies.map((policy) => ({
         name: `${policy.name}: ${policy.status}`,
         url: "/trust#public-private-boundaries",
         description: policy.text,
@@ -195,7 +195,7 @@ export default function TrustPage() {
           </p>
         </div>
         <div className="marketing-card-grid">
-          {trustCrawlerPolicies.map((policy) => (
+          {trustPublicAccessPolicies.map((policy) => (
             <article key={policy.name} className="learning-path-step">
               <span>{policy.status}</span>
               <h3>{policy.name}</h3>

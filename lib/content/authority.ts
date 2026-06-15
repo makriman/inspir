@@ -120,7 +120,7 @@ export const trustSafeguards = [
   },
 ] as const;
 
-export const trustCrawlerPolicies = [
+export const trustPublicAccessPolicies = [
   {
     name: "Search and directory access",
     status: "Allowed on public pages",
@@ -155,7 +155,7 @@ export const trustReferenceLinks = [
     text: "The formal terms covering acceptable use, account responsibilities, and service conditions.",
   },
   {
-    title: "Robots policy",
+    title: "Public access rules",
     href: "/robots.txt",
     text: "The live access rules for public and private routes.",
   },

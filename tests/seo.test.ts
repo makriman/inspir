@@ -50,9 +50,9 @@ import {
   schoolFeatures,
   schoolSearchIntents,
   schoolUseCases,
-  trustCrawlerPolicies,
   trustFaqs,
   trustPrinciples,
+  trustPublicAccessPolicies,
   trustReferenceLinks,
   trustSafeguards,
 } from "../lib/content/authority";
@@ -157,13 +157,13 @@ test("topic routing separates public slugs from private uuid chats", () => {
   assert.equal(isUuidPathSegment("learn-anything"), false);
 });
 
-test("sitemap includes public topic and blog pages but excludes private surfaces", () => {
+test("sitemap includes SEO pages but excludes chat app surfaces", () => {
   const urls = sitemap().map((entry) => entry.url);
   const posts = getBlogPosts();
   const indexedPosts = indexedBlogPosts(posts);
 
   for (const topic of topicSeeds) {
-    assert.ok(urls.includes(absoluteUrl(topicPath(topic.slug))), `${topic.slug} should be in sitemap`);
+    assert.equal(urls.includes(absoluteUrl(topicPath(topic.slug))), false, `${topic.slug} chat should stay out of sitemap`);
   }
 
   for (const post of indexedPosts) {
@@ -219,6 +219,7 @@ test("sitemap includes public topic and blog pages but excludes private surfaces
   assert.equal(homeEntry?.alternates?.languages?.hy, absoluteUrl("/hy"));
   assert.equal(homeEntry?.alternates?.languages?.["x-default"], absoluteUrl("/"));
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
+  assert.equal(urls.some((url) => url.includes("/chat")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
 });
 
@@ -254,8 +255,9 @@ test("language sitemap helpers emit localized complete locale clusters", () => {
   assert.ok(spanishUrls.includes(absoluteUrl("/es/topics")));
   assert.ok(spanishUrls.includes(absoluteUrl(`/es/blog/${post.slug}`)));
   assert.ok(spanishUrls.includes(absoluteUrl(`/es/blog/category/${getBlogCategories()[0].slug}`)));
-  assert.ok(spanishUrls.includes(absoluteUrl(`/es${topicPath(topicSeeds[0].slug)}`)));
+  assert.equal(spanishUrls.includes(absoluteUrl(`/es${topicPath(topicSeeds[0].slug)}`)), false);
   assert.equal(spanishUrls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
+  assert.equal(spanishUrls.some((url) => url.includes("/chat")), false);
   assert.equal(spanishUrls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
 
   const spanishHome = sitemap("Spanish").find((entry) => entry.url === absoluteUrl("/es"));
@@ -840,7 +842,7 @@ test("media page exposes coverage links, story angles, citation facts, and faq s
   const linkingTargets = itemListJsonLd({
     path: "/media",
     id: "linking-targets",
-    name: "Recommended inspir citation and backlink targets",
+    name: "Recommended inspir citation targets",
     items: mediaLinkingTargets.map((target) => ({
       name: `${target.title}: ${target.anchorText}`,
       url: target.href,
@@ -957,7 +959,7 @@ test("trust page exposes public/private boundaries, references, and faq schema",
     path: "/trust",
     id: "public-access-policy",
     name: "inspir public access policy",
-    items: trustCrawlerPolicies.map((policy) => ({
+    items: trustPublicAccessPolicies.map((policy) => ({
       name: `${policy.name}: ${policy.status}`,
       url: "/trust#public-private-boundaries",
       description: policy.text,
@@ -978,7 +980,7 @@ test("trust page exposes public/private boundaries, references, and faq schema",
 
   assert.equal(principles.itemListElement.length, trustPrinciples.length);
   assert.equal(safeguards.itemListElement.length, trustSafeguards.length);
-  assert.equal(publicAccess.itemListElement.length, trustCrawlerPolicies.length);
+  assert.equal(publicAccess.itemListElement.length, trustPublicAccessPolicies.length);
   assert.equal(references.itemListElement.length, trustReferenceLinks.length);
   assert.equal(faq.mainEntity.length, trustFaqs.length);
   assert.ok(safeguards.itemListElement.some((item) => item.url === absoluteUrl("/robots.txt")));
@@ -1500,7 +1502,7 @@ test("ai discovery files describe every public mode without exposing private cha
   assert.ok(index.authority.media.citationSnippets.some((snippet) => snippet.url === absoluteUrl("/trust")));
   assert.ok(full.includes("### Media and press"));
   assert.ok(full.includes("AI learning without passive answer-copying"));
-  assert.ok(full.includes("Recommended citation and backlink targets:"));
+  assert.ok(full.includes("Recommended citation targets:"));
   assert.ok(full.includes("Suggested citation snippets:"));
   assert.equal(index.authority.schools.features.length, schoolFeatures.length);
   assert.equal(index.authority.schools.deploymentSteps.length, schoolDeploymentSteps.length);
@@ -1512,7 +1514,7 @@ test("ai discovery files describe every public mode without exposing private cha
   assert.ok(full.includes("white-labelled AI tutoring"));
   assert.equal(index.authority.trust.principles.length, trustPrinciples.length);
   assert.equal(index.authority.trust.safeguards.length, trustSafeguards.length);
-  assert.equal(index.authority.trust.crawlerPolicies.length, trustCrawlerPolicies.length);
+  assert.equal(index.authority.trust.publicAccessPolicies.length, trustPublicAccessPolicies.length);
   assert.equal(index.authority.trust.referenceLinks.length, trustReferenceLinks.length);
   assert.equal(index.authority.trust.faq.length, trustFaqs.length);
   assert.ok(index.authority.trust.referenceLinks.some((link) => link.url === absoluteUrl("/robots.txt")));
