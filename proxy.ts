@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { isKnownTopicSlug, isUuidPathSegment } from "@/lib/content/topic-routing";
-import { normalizeLanguage } from "@/lib/content/languages";
 import { recommendLanguage } from "@/lib/i18n/language-detection";
 import { resolveRequestLanguage } from "@/lib/i18n/language-preference";
 import {
