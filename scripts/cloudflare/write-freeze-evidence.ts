@@ -6,7 +6,7 @@ import { cloudflareDir } from "./migration-config";
 export const WRITE_FREEZE_REPORT = "cloudflare/write-freeze-report.json";
 export const WRITE_FREEZE_READINESS_REPORT = "cloudflare/write-freeze-readiness-report.json";
 export const WRITE_FREEZE_EXTERNAL_EVIDENCE_FILE = "cloudflare/write-freeze-external-evidence.txt";
-export const DEFAULT_WRITE_FREEZE_STATUS_URL = "https://inspirlearning.com/api/migration/write-freeze";
+const DEFAULT_WRITE_FREEZE_STATUS_URL = "https://inspirlearning.com/api/migration/write-freeze";
 
 type EnvMap = Record<string, string | undefined>;
 
@@ -235,7 +235,7 @@ export function requiredWriteFreezeEvidenceFiles(backupDir: string, report?: Wri
   return files;
 }
 
-export function writeFreezeExternalEvidenceFileForManifest(
+function writeFreezeExternalEvidenceFileForManifest(
   backupDir: string,
   report: WriteFreezeEvidenceReport | null | undefined = readWriteFreezeEvidenceReport(backupDir),
 ) {

@@ -16,7 +16,6 @@ import {
   userMemoryProfiles,
   userMemorySummaries,
   userMemorySettings,
-  type ChatMemorySummary,
   type ChatMemoryTurn,
   type MemorySourceFeedback,
   type UserMemorySummary,
@@ -62,13 +61,6 @@ export type MemorySearchResult = Pick<
   | "doNotMention"
   | "createdAt"
   | "updatedAt"
-> & {
-  similarity?: number;
-};
-
-export type ChatSummarySearchResult = Pick<
-  ChatMemorySummary,
-  "chatId" | "userId" | "topicId" | "summary" | "topics" | "sourceMessageCount" | "lastMessageId" | "updatedAt"
 > & {
   similarity?: number;
 };
@@ -243,11 +235,6 @@ export async function findMemoriesBySourceMessage(userId: string, sourceMessageI
     .from(userMemories)
     .where(and(eq(userMemories.userId, userId), eq(userMemories.sourceMessageId, sourceMessageId)))
     .limit(20);
-}
-
-export async function findMemoryBySourceMessageTag(userId: string, sourceMessageId: string, tag: string) {
-  const rows = await findMemoriesBySourceMessage(userId, sourceMessageId);
-  return rows.find((memory) => (memory.tags ?? []).includes(tag));
 }
 
 export async function createUserMemory(input: {
@@ -473,30 +460,6 @@ export async function searchUserMemoriesByEmbedding(userId: string, embedding: n
   for (const match of matches) {
     const row = byId.get(match.rowId);
     if (!row || row.doNotMention || row.freshnessStatus === "expired") continue;
-    results.push({ ...row, similarity: match.score });
-    if (results.length >= limit) break;
-  }
-  return results;
-}
-
-export async function searchChatSummariesByEmbedding(userId: string, embedding: number[], limit = 4) {
-  const matches = await queryMemoryVectors({
-    namespace: "chat_memory_summaries",
-    userId,
-    embedding,
-    topK: limit * 4,
-  });
-  const ids = matches.map((match) => match.rowId);
-  if (!ids.length) return [];
-  const rows = await db
-    .select()
-    .from(chatMemorySummaries)
-    .where(and(eq(chatMemorySummaries.userId, userId), inArray(chatMemorySummaries.chatId, ids)));
-  const byId = new Map(rows.map((row) => [row.chatId, row]));
-  const results: ChatSummarySearchResult[] = [];
-  for (const match of matches) {
-    const row = byId.get(match.rowId);
-    if (!row) continue;
     results.push({ ...row, similarity: match.score });
     if (results.length >= limit) break;
   }

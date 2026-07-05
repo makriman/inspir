@@ -93,7 +93,7 @@ export function recommendLanguageFromCountry(countryCode?: string | null) {
   }
 }
 
-export function recommendLanguageFromAcceptLanguage(value?: string | null) {
+function recommendLanguageFromAcceptLanguage(value?: string | null) {
   if (!value) return null;
 
   const ranked = value

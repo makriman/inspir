@@ -868,11 +868,6 @@ function useChatClientController({
     };
   }, []);
 
-  useEffect(() => {
-    const used = readStoredGuestUsage(guestMessageLimit);
-    if (used) updateChatState({ guestMessagesUsed: used });
-  }, [guestMessageLimit]);
-
   const loadMemoryDashboard = useCallback(async () => {
     if (isGuest) return;
     updateChatState({ memoryLoading: true, memoryError: null });
@@ -1065,7 +1060,14 @@ function useChatClientController({
   async function sendMessage(content: string, appendUser = true) {
     const trimmed = content.trim();
     if (!trimmed || sending || isQuizMode || isFlashcardMode) return;
-    if (isGuest && guestMessagesUsed >= guestMessageLimit) {
+    const storedGuestMessagesUsed = isGuest ? readStoredGuestUsage(guestMessageLimit) : guestMessagesUsed;
+    const effectiveGuestMessagesUsed = isGuest
+      ? Math.max(guestMessagesUsed, storedGuestMessagesUsed)
+      : guestMessagesUsed;
+    if (isGuest && effectiveGuestMessagesUsed !== guestMessagesUsed) {
+      setGuestMessagesUsed(effectiveGuestMessagesUsed);
+    }
+    if (isGuest && effectiveGuestMessagesUsed >= guestMessageLimit) {
       setGuestPromptOpen(true);
       return;
     }
@@ -1239,7 +1241,7 @@ function useChatClientController({
         const usedFromServer = Number(response.headers.get("x-guest-messages-used"));
         const nextUsed = Number.isFinite(usedFromServer)
           ? usedFromServer
-          : Math.min(guestMessagesUsed + 1, guestMessageLimit);
+          : Math.min(effectiveGuestMessagesUsed + 1, guestMessageLimit);
         saveGuestUsage(Math.min(nextUsed, guestMessageLimit));
       }
       if (isCurrentRequest() && !isGuest && chatId) {
@@ -5667,9 +5669,28 @@ function MemorySourcesModal({
   onClose: () => void;
   onFeedback: (source: MessageMemorySource, action: "relevant" | "not_relevant" | "dont_mention") => void;
 }) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (!dialog.open) dialog.showModal();
+    return () => {
+      if (dialog.open) dialog.close();
+    };
+  }, []);
+
   return (
-    <div className="inspir-modal-backdrop" role="presentation">
-      <section className="inspir-memory-source-modal" role="dialog" aria-modal="true" aria-label="Memory sources">
+    <dialog
+      ref={dialogRef}
+      className="inspir-modal-backdrop"
+      aria-label="Memory sources"
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
+    >
+      <section className="inspir-memory-source-modal">
         <header>
           <div>
             <strong>Memory sources</strong>
@@ -5702,7 +5723,7 @@ function MemorySourcesModal({
           ))}
         </div>
       </section>
-    </div>
+    </dialog>
   );
 }
 

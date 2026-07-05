@@ -2,8 +2,8 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
-export const D1_PRE_IMPORT_BACKUP_SQL = "cloudflare/d1-pre-import-backup.sql";
-export const D1_PRE_IMPORT_BACKUP_REPORT = "cloudflare/d1-pre-import-backup-report.json";
+const D1_PRE_IMPORT_BACKUP_SQL = "cloudflare/d1-pre-import-backup.sql";
+const D1_PRE_IMPORT_BACKUP_REPORT = "cloudflare/d1-pre-import-backup-report.json";
 
 export type D1PreImportBackupReport = {
   createdAt?: string;
@@ -20,7 +20,7 @@ export function d1PreImportBackupSqlPath(backupDir: string) {
   return path.join(backupDir, D1_PRE_IMPORT_BACKUP_SQL);
 }
 
-export function d1PreImportBackupReportPath(backupDir: string) {
+function d1PreImportBackupReportPath(backupDir: string) {
   return path.join(backupDir, D1_PRE_IMPORT_BACKUP_REPORT);
 }
 

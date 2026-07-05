@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Check, ChevronDown, Globe2, Search, X } from "lucide-react";
 import {
@@ -41,6 +41,7 @@ export function LanguagePicker({
 }: LanguagePickerProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const current = normalizePickerLanguage(currentLanguage);
   const recommended = normalizePickerLanguage(recommendedLanguage);
   const filteredLanguages = useMemo(() => {
@@ -55,19 +56,40 @@ export function LanguagePicker({
 
   function choose(language: SupportedLanguage) {
     onSelect(language);
+    closePanel();
+  }
+
+  function closePanel() {
     setOpen(false);
     setQuery("");
   }
 
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!open || !dialog) return;
+    if (!dialog.open) dialog.showModal();
+    return () => {
+      if (dialog.open) dialog.close();
+    };
+  }, [open]);
+
   const panel = open ? (
-    <div className="language-picker-layer" role="presentation">
-      <section className="language-picker-panel" role="dialog" aria-modal="true" aria-label={title}>
+    <dialog
+      ref={dialogRef}
+      className="language-picker-layer"
+      aria-label={title}
+      onCancel={(event) => {
+        event.preventDefault();
+        closePanel();
+      }}
+    >
+      <section className="language-picker-panel">
         <header className="language-picker-head">
           <div>
             <h2>{title}</h2>
             <p>{description}</p>
           </div>
-          <button type="button" aria-label={closeLabel || title} onClick={() => setOpen(false)}>
+          <button type="button" aria-label={closeLabel || title} onClick={closePanel}>
             <X size={20} />
           </button>
         </header>
@@ -92,7 +114,6 @@ export function LanguagePicker({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={searchPlaceholder}
-            autoFocus
           />
         </label>
         <div className="language-picker-list app-scrollbar">
@@ -109,7 +130,7 @@ export function LanguagePicker({
           ))}
         </div>
       </section>
-    </div>
+    </dialog>
   ) : null;
 
   return (

@@ -1621,7 +1621,7 @@ export function buildChatHistoryMemoryContent(input: {
   );
 }
 
-export async function upsertChatHistoryMemoryFromTurn(input: {
+async function upsertChatHistoryMemoryFromTurn(input: {
   userId: string;
   chatId: string;
   topicName: string;

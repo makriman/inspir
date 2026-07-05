@@ -86,12 +86,6 @@ export function getCuratedTranslationBundle(source: TranslationSource, language:
   return bundle;
 }
 
-export function curatedTranslationEntriesForClient(bundle: TranslationBundle) {
-  return Object.entries(bundle.sourceStrings)
-    .map(([key, source]) => [source, bundle.strings[key]] as [string, string | undefined])
-    .filter((entry): entry is [string, string] => Boolean(entry[1]?.trim()));
-}
-
 function buildTranslationBundle(
   source: TranslationSource,
   language: SupportedLanguage,

@@ -1,7 +1,6 @@
 import {
   defaultLanguage,
   languageConfigs,
-  supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
 import {
@@ -17,56 +16,8 @@ export type LanguageAvailability = {
   complete: boolean;
 };
 
-const availabilityCacheTtlMs = 5 * 60 * 1000;
 const languageAvailabilityCacheTtlMs = 30 * 1000;
-const availabilityCache = new Map<string, { expiresAt: number; promise: Promise<LanguageAvailability[]> }>();
 const languageAvailabilityCache = new Map<string, { expiresAt: number; promise: Promise<LanguageAvailability> }>();
-
-export function defaultOnlyLanguageAvailability(): LanguageAvailability[] {
-  return supportedLanguages.map((language) => ({
-    language,
-    complete: language === defaultLanguage,
-  }));
-}
-
-export async function getSiteLanguageAvailabilityForPath(pathname: string): Promise<LanguageAvailability[]> {
-  const cacheKey = pathname || "/";
-  const cached = availabilityCache.get(cacheKey);
-  if (cached && cached.expiresAt > Date.now()) return cached.promise;
-
-  const promise = readSiteLanguageAvailabilityForPath(pathname).catch((error) => {
-    availabilityCache.delete(cacheKey);
-    throw error;
-  });
-  availabilityCache.set(cacheKey, { expiresAt: Date.now() + availabilityCacheTtlMs, promise });
-  return promise;
-}
-
-async function readSiteLanguageAvailabilityForPath(pathname: string): Promise<LanguageAvailability[]> {
-  const namespaces = getRuntimeSiteTranslationNamespacesForPath(pathname);
-  const sources = new Map(
-    (await Promise.all(namespaces.map(async (namespace) => [namespace, await getRuntimeSiteTranslationSource(namespace)] as const)))
-      .filter((entry): entry is readonly [string, NonNullable<Awaited<ReturnType<typeof getRuntimeSiteTranslationSource>>>] => Boolean(entry[1])),
-  );
-
-  return Promise.all(supportedLanguages.map(async (language) => {
-    if (language === defaultLanguage) return { language, complete: true };
-    const checks = await Promise.all(namespaces.map(async (namespace) => {
-      const source = sources.get(namespace);
-      if (!source) return false;
-      const bundle = await getCachedSiteTranslationBundle(language, namespace);
-      if (!bundle || bundle.sourceHash !== source.sourceHash) return false;
-      return Object.keys(source.sourceStrings).every((key) => typeof bundle.strings[key] === "string" && bundle.strings[key].trim());
-    }));
-    const complete = checks.every(Boolean);
-    return { language, complete };
-  }));
-}
-
-export async function getAvailableSiteLanguagesForPath(pathname: string) {
-  const availability = await getSiteLanguageAvailabilityForPath(pathname);
-  return availability.filter((item) => item.complete).map((item) => item.language);
-}
 
 export async function isSiteLanguageAvailableForPath(pathname: string, language: SupportedLanguage) {
   if (language === defaultLanguage) return true;

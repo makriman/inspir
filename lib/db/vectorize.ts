@@ -2,18 +2,18 @@ import { getVectorIndex } from "./client";
 
 export type MemoryVectorNamespace = "user_memories" | "chat_memory_summaries" | "chat_memory_turns";
 
-export const VECTORIZE_FULL_METADATA_TOP_K_LIMIT = 50;
+const VECTORIZE_FULL_METADATA_TOP_K_LIMIT = 50;
 
 export function vectorizeFullMetadataTopK(topK: number) {
   const normalized = Number.isFinite(topK) ? Math.floor(topK) : 1;
   return Math.min(Math.max(normalized, 1), VECTORIZE_FULL_METADATA_TOP_K_LIMIT);
 }
 
-export function memoryVectorId(namespace: MemoryVectorNamespace, rowId: string) {
+function memoryVectorId(namespace: MemoryVectorNamespace, rowId: string) {
   return `${namespace}:${rowId}`;
 }
 
-export function rowIdFromMemoryVectorId(namespace: MemoryVectorNamespace, vectorId: string) {
+function rowIdFromMemoryVectorId(namespace: MemoryVectorNamespace, vectorId: string) {
   const prefix = `${namespace}:`;
   return vectorId.startsWith(prefix) ? vectorId.slice(prefix.length) : vectorId;
 }

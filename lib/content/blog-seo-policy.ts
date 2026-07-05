@@ -1,6 +1,6 @@
 import type { BlogCategory, BlogPost } from "@/lib/content/blog";
 
-export const indexedBlogSlugs = new Set([
+const indexedBlogSlugs = new Set([
   "ai-learning-companion-for-everyone",
   "how-to-study-with-ai-without-cheating-yourself",
   "socratic-ai-tutor",

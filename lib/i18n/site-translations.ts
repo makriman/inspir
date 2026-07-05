@@ -2,7 +2,6 @@ import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 import { getDatabaseTranslationBundle } from "@/lib/i18n/db-translations";
 import type { TranslationResult } from "./translation-types";
 import {
-  getAllRuntimeSiteTranslationNamespaces,
   getRuntimeEnglishSiteTranslationBundle,
   getRuntimeSiteTranslationNamespacesForPath,
   getRuntimeSiteTranslationSource,
@@ -13,10 +12,6 @@ export type SiteTranslationResult = TranslationResult;
 
 export function isKnownSiteTranslationNamespace(namespace: string) {
   return isKnownRuntimeSiteTranslationNamespace(namespace);
-}
-
-export function getAllKnownSiteTranslationNamespaces() {
-  return getAllRuntimeSiteTranslationNamespaces();
 }
 
 export function getSiteTranslationNamespaces(pathname: string) {

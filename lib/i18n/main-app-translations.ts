@@ -33,10 +33,6 @@ export async function getCachedMainAppTranslationBundle(language: string) {
   return buildMainAppTranslationBundle(normalized, bundle.strings);
 }
 
-export async function getOrCreateMainAppTranslationBundle(language: string): Promise<MainAppTranslationBundle> {
-  return (await getOrCreateMainAppTranslationResult(language)).bundle;
-}
-
 export async function getOrCreateMainAppTranslationResult(language: string): Promise<MainAppTranslationResult> {
   const source = getMainAppTranslationSource();
   const normalized = normalizeLanguage(language);

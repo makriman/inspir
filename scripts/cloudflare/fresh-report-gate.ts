@@ -45,10 +45,3 @@ export function freshBackupScopedReportBlockers(options: FreshBackupScopedReport
 
   return blockers;
 }
-
-export function assertFreshBackupScopedReport(options: FreshBackupScopedReportOptions & { action: string }) {
-  const blockers = freshBackupScopedReportBlockers(options);
-  if (blockers.length) {
-    throw new Error(`Refusing ${options.action} because ${blockers.join("; ")}.`);
-  }
-}

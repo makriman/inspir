@@ -3,8 +3,6 @@ import { z } from "zod";
 import { processMemoryAfterTurn } from "./memory";
 import { runWithRuntimeCloudflareEnv } from "../runtime/cloudflare";
 
-export const memoryPostTurnQueueName = "inspirlearning-memory-post-turn-prod";
-
 const persistedMessageSchema = z.object({
   id: z.string().trim().min(1).max(120),
   role: z.string().trim().min(1).max(40),

@@ -2,6 +2,8 @@ import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
+import { MarkerContent } from "@/components/ui/marker-content"
+import { MarkerIcon } from "@/components/ui/marker-icon"
 import { cn } from "@/lib/utils"
 
 const markerVariants = cva(
@@ -39,31 +41,4 @@ function Marker({
   )
 }
 
-function MarkerIcon({ className, ...props }: React.ComponentProps<"span">) {
-  return (
-    <span
-      data-slot="marker-icon"
-      aria-hidden="true"
-      className={cn(
-        "size-4 shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function MarkerContent({ className, ...props }: React.ComponentProps<"span">) {
-  return (
-    <span
-      data-slot="marker-content"
-      className={cn(
-        "min-w-0 wrap-break-word group-data-[variant=separator]/marker:flex-none group-data-[variant=separator]/marker:text-center *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-export { Marker, MarkerIcon, MarkerContent, markerVariants }
+export { Marker, MarkerIcon, MarkerContent }

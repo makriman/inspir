@@ -3,8 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { stableStringify } from "./migration-config";
 
-export const VECTORIZE_PRE_IMPORT_BACKUP_NDJSON = "cloudflare/vectorize-pre-import-backup.ndjson";
-export const VECTORIZE_PRE_IMPORT_BACKUP_REPORT = "cloudflare/vectorize-pre-import-backup-report.json";
+const VECTORIZE_PRE_IMPORT_BACKUP_NDJSON = "cloudflare/vectorize-pre-import-backup.ndjson";
+const VECTORIZE_PRE_IMPORT_BACKUP_REPORT = "cloudflare/vectorize-pre-import-backup-report.json";
 const VECTORIZE_DIMENSIONS = 512;
 
 export type VectorizePreImportBackupReport = {
@@ -29,7 +29,7 @@ export function vectorizePreImportBackupNdjsonPath(backupDir: string) {
   return path.join(backupDir, VECTORIZE_PRE_IMPORT_BACKUP_NDJSON);
 }
 
-export function vectorizePreImportBackupReportPath(backupDir: string) {
+function vectorizePreImportBackupReportPath(backupDir: string) {
   return path.join(backupDir, VECTORIZE_PRE_IMPORT_BACKUP_REPORT);
 }
 
@@ -57,7 +57,7 @@ export function writeVectorizePreImportBackup(input: {
   return report;
 }
 
-export function buildVectorizePreImportBackupReport(input: {
+function buildVectorizePreImportBackupReport(input: {
   backupDir: string;
   index: string;
   listedIds: number;
@@ -78,7 +78,7 @@ export function buildVectorizePreImportBackupReport(input: {
   };
 }
 
-export function writeVectorizePreImportBackupReport(report: VectorizePreImportBackupReport, backupDir: string) {
+function writeVectorizePreImportBackupReport(report: VectorizePreImportBackupReport, backupDir: string) {
   fs.writeFileSync(vectorizePreImportBackupReportPath(backupDir), `${JSON.stringify(report, null, 2)}\n`, { mode: 0o600 });
 }
 
@@ -167,7 +167,7 @@ function parseBackupRows(content: string) {
   return rows;
 }
 
-export function vectorizeBackupRowProblems(rows: VectorizeBackupRow[], dimensions = VECTORIZE_DIMENSIONS) {
+function vectorizeBackupRowProblems(rows: VectorizeBackupRow[], dimensions = VECTORIZE_DIMENSIONS) {
   const problems: string[] = [];
   const seenIds = new Set<string>();
   rows.forEach((row, index) => {

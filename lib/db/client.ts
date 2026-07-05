@@ -5,7 +5,7 @@ import * as schema from "./schema";
 
 export type AppDb = DrizzleD1Database<typeof schema>;
 
-export function getD1() {
+function getD1() {
   return getRuntimeCloudflareEnv()?.DB ?? getCloudflareContext().env.DB;
 }
 
@@ -13,7 +13,7 @@ export function getVectorIndex() {
   return getRuntimeCloudflareEnv()?.MEMORY_VECTORIZE ?? getCloudflareContext().env.MEMORY_VECTORIZE;
 }
 
-export function getDb(): AppDb {
+function getDb(): AppDb {
   return drizzle(getD1(), { schema });
 }
 

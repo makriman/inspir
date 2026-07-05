@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { commandEnv } from "./migration-config";
 
-export const NEXT_ENV_FILES_LOADED_DURING_BUILD = [
+const NEXT_ENV_FILES_LOADED_DURING_BUILD = [
   ".env",
   ".env.local",
   ".env.production",
@@ -14,7 +14,7 @@ export const NEXT_ENV_FILES_LOADED_DURING_BUILD = [
   ".env.test.local",
 ] as const;
 
-export const WRANGLER_ENV_FILES_MASKED_DURING_BUILD = [".dev.vars", ".dev.vars.local", ".dev.vars.production"] as const;
+const WRANGLER_ENV_FILES_MASKED_DURING_BUILD = [".dev.vars", ".dev.vars.local", ".dev.vars.production"] as const;
 
 export const CURRENT_RUNTIME_SECRET_ENV_KEYS = [
   "ADMIN_EMAILS",

@@ -82,10 +82,6 @@ export function readCloudflareApiToken(env: EnvMap = process.env): CloudflareApi
   };
 }
 
-export function hasCloudflareApiToken(env: EnvMap = process.env) {
-  return Boolean(readCloudflareApiToken(env).token);
-}
-
 export function cloudflareApiTokenInstructions() {
   return {
     preferred: "CLOUDFLARE_API_TOKEN_FILE=<path-to-0600-token-file>",

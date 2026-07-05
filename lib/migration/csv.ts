@@ -1,5 +1,3 @@
-import { readFileSync } from "fs";
-
 export type CsvRow = Record<string, string>;
 
 export function parseCsv(input: string): CsvRow[] {
@@ -53,10 +51,6 @@ export function parseCsv(input: string): CsvRow[] {
     );
 }
 
-export function readCsv(path: string) {
-  return parseCsv(readFileSync(path, "utf8"));
-}
-
 export function duplicateAwareRows(rows: CsvRow[], preserveDuplicates: boolean) {
   if (preserveDuplicates) return { rows, skipped: 0 };
   const seen = new Set<string>();
@@ -74,8 +68,4 @@ export function duplicateAwareRows(rows: CsvRow[], preserveDuplicates: boolean) 
   }
 
   return { rows: deduped, skipped };
-}
-
-export function hasUniqueId(headers: string[]) {
-  return headers.some((header) => /unique\s*id|_id|id/i.test(header));
 }

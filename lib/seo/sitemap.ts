@@ -353,7 +353,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
   );
 }
 
-export function sitemapEntriesForLanguage(language: SupportedLanguage | string) {
+function sitemapEntriesForLanguage(language: SupportedLanguage | string) {
   return sitemapEntries(language);
 }
 

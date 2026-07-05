@@ -3,7 +3,6 @@ import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import ts from "typescript";
 import { getBlogPosts } from "@/lib/content/blog";
-import { defaultLanguage } from "@/lib/content/languages";
 import {
   homepageFaqs,
   homepageFilm,
@@ -20,7 +19,7 @@ import {
   staticSiteTranslationNamespaces,
 } from "./site-source-constants";
 import { siteSourceManifest } from "./site-source-manifest";
-import type { TranslationBundle, TranslationSource } from "./translation-types";
+import type { TranslationSource } from "./translation-types";
 
 export {
   legalEnglishControlsNotice,
@@ -96,17 +95,6 @@ export function getSiteTranslationSource(
   };
   siteTranslationSourceCache.set(cacheKey, source);
   return source;
-}
-
-export function getEnglishSiteTranslationBundle(namespace = siteTranslationNamespace): TranslationBundle {
-  const source = getSiteTranslationSource(namespace);
-  return {
-    namespace,
-    language: defaultLanguage,
-    sourceHash: source.sourceHash,
-    sourceStrings: source.sourceStrings,
-    strings: source.sourceStrings,
-  };
 }
 
 export function getSiteSourceStrings(namespace = siteTranslationNamespace, options: SiteSourceOptions = {}) {
@@ -192,7 +180,7 @@ export function getSiteSourceHash(sourceStrings = getSiteSourceStrings()) {
   return createHash("sha256").update(stablePayload).digest("hex");
 }
 
-export function buildSiteTranslationSystemInstruction() {
+function buildSiteTranslationSystemInstruction() {
   return [
     "You are a meticulous localization specialist for inspir, an education website and AI learning app.",
     "Translate exactly the provided visible website, article, metadata, legal, or app-adjacent text into the target language.",

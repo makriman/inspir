@@ -15,16 +15,6 @@ type CachedRuntimeSource = {
 const runtimeSourceCacheTtlMs = 5 * 60 * 1000;
 const runtimeSourceCache = new Map<string, CachedRuntimeSource>();
 
-export {
-  marketingShellTranslationNamespace,
-  siteTranslationNamespace,
-  staticSiteTranslationNamespaces,
-};
-
-export function getAllRuntimeSiteTranslationNamespaces() {
-  return [...staticSiteTranslationNamespaces];
-}
-
 export function isKnownRuntimeSiteTranslationNamespace(namespace: string) {
   return (
     namespace === siteTranslationNamespace ||

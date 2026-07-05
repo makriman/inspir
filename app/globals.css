@@ -761,6 +761,31 @@ a {
   background: rgb(255 255 255 / 0.13);
 }
 
+.inspir-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: none;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  place-items: center;
+  border: 0;
+  background: rgb(0 0 0 / 0.58);
+  color: inherit;
+  margin: 0;
+  padding: 18px;
+}
+
+.inspir-modal-backdrop[open] {
+  display: grid;
+}
+
+.inspir-modal-backdrop::backdrop {
+  background: transparent;
+}
+
 .inspir-memory-source-modal {
   display: grid;
   width: min(520px, calc(100vw - 28px));
@@ -15611,11 +15636,26 @@ a {
   position: fixed;
   inset: 0;
   z-index: 120;
-  display: grid;
+  display: none;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
   align-items: start;
   justify-items: end;
+  border: 0;
   padding: 72px 18px 18px;
   background: rgb(0 0 0 / 24%);
+  color: inherit;
+  margin: 0;
+}
+
+.language-picker-layer[open] {
+  display: grid;
+}
+
+.language-picker-layer::backdrop {
+  background: transparent;
 }
 
 .language-picker-panel {

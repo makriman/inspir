@@ -49,10 +49,6 @@ export function safeQuotaKeyPart(value: string, maxLength = 160) {
     .slice(0, maxLength);
 }
 
-export async function checkRateLimit(key: string, limit: number, windowMs: number) {
-  return consumeFixedWindowQuota(key, limit, windowMs);
-}
-
 export async function consumeFixedWindowQuota(
   key: string,
   limit: number,

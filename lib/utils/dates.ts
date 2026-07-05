@@ -30,14 +30,3 @@ export function formatMediumDate(value: Date | string) {
 export function formatLongDate(value: Date | string) {
   return longDateFormatter.format(coerceDate(value));
 }
-
-export function parseAppDate(value: string | undefined) {
-  if (!value) return undefined;
-  const trimmed = value.trim();
-  if (!trimmed) return undefined;
-  const direct = new Date(trimmed);
-  if (!Number.isNaN(direct.getTime())) return direct;
-  const normalized = trimmed.replace(" UTC", "Z").replace(" at ", " ");
-  const parsed = new Date(normalized);
-  return Number.isNaN(parsed.getTime()) ? undefined : parsed;
-}

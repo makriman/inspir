@@ -2,7 +2,6 @@ import crypto from "node:crypto";
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import readline from "node:readline";
 
 export const CLOUDFLARE_ACCOUNT_ID = "a1e5e542dc1d5fe5a5c6b2a10d755a81";
 export const D1_DATABASE_NAME = "inspirlearning-prod";
@@ -25,69 +24,9 @@ export const LOCAL_GATE_IDS = [
   "wrangler-check-startup",
 ] as const;
 
-export const TABLE_ORDER = [
-  "users",
-  "topics",
-  "app_metadata",
-  "llm_usage_daily",
-  "rate_limit_windows",
-  "accounts",
-  "sessions",
-  "verification_tokens",
-  "topic_legacy_ids",
-  "chats",
-  "messages",
-  "activity_runs",
-  "ai_runs",
-  "user_memory_settings",
-  "user_memories",
-  "chat_memory_summaries",
-  "chat_memory_turns",
-  "user_memory_profiles",
-  "user_memory_summaries",
-  "memory_synthesis_runs",
-  "memory_events",
-  "memory_source_feedback",
-  "legacy_chat_snapshots",
-  "legacy_dummy_data",
-  "app_translations",
-] as const;
+export const RUNTIME_MUTABLE_TABLES = ["llm_usage_daily", "rate_limit_windows"] as const;
 
-export type TableName = (typeof TABLE_ORDER)[number];
-
-export const RUNTIME_MUTABLE_TABLES = ["llm_usage_daily", "rate_limit_windows"] as const satisfies TableName[];
-export const PRIMARY_KEY_ORDER: Record<TableName, string[]> = {
-  accounts: ["provider", "provider_account_id"],
-  activity_runs: ["id"],
-  ai_runs: ["id"],
-  app_metadata: ["key"],
-  app_translations: ["namespace", "language"],
-  chat_memory_summaries: ["chat_id"],
-  chat_memory_turns: ["id"],
-  chats: ["id"],
-  legacy_chat_snapshots: ["id"],
-  legacy_dummy_data: ["id"],
-  llm_usage_daily: ["day"],
-  memory_events: ["id"],
-  memory_source_feedback: ["id"],
-  memory_synthesis_runs: ["id"],
-  messages: ["id"],
-  rate_limit_windows: ["key"],
-  sessions: ["session_token"],
-  topic_legacy_ids: ["legacy_id"],
-  topics: ["id"],
-  user_memories: ["id"],
-  user_memory_profiles: ["user_id", "category"],
-  user_memory_settings: ["user_id"],
-  user_memory_summaries: ["user_id"],
-  users: ["id"],
-  verification_tokens: ["identifier", "token"],
-};
-
-export type D1Value = string | number | null;
-export type D1Row = Record<string, D1Value>;
-
-export function getArg(name: string) {
+function getArg(name: string) {
   const index = process.argv.indexOf(name);
   if (index === -1) return undefined;
   return process.argv[index + 1];
@@ -115,7 +54,7 @@ export function runWrangler(args: string[], options: RunCommandOptions = {}) {
   return runWranglerResult(args, options).output;
 }
 
-export function runWranglerResult(args: string[], options: RunCommandOptions = {}): RunCommandResult {
+function runWranglerResult(args: string[], options: RunCommandOptions = {}): RunCommandResult {
   const attempts: RunCommandResult[] = [];
   for (const { command, argsPrefix } of wranglerCommandCandidates()) {
     const result = runCommand(command, [...argsPrefix, ...args], { ...options, allowFailure: true });
@@ -130,11 +69,6 @@ export function runWranglerResult(args: string[], options: RunCommandOptions = {
   if (!usable) throw new Error("No Wrangler command candidates were available");
   if (!usable.ok && !options.allowFailure) throw new Error(usable.output);
   return usable;
-}
-
-export function commandExists(command: string) {
-  const result = runCommand(command, ["--version"], { allowFailure: true, maxBuffer: 1024 * 1024 });
-  return result.ok;
 }
 
 export function commandEnv() {
@@ -228,17 +162,6 @@ export function cloudflareDir(backupDir: string) {
   return dir;
 }
 
-export async function* readNdjson(filePath: string): AsyncGenerator<Record<string, unknown>> {
-  if (!fs.existsSync(filePath)) throw new Error(`Missing NDJSON export: ${filePath}`);
-  const stream = fs.createReadStream(filePath, { encoding: "utf8" });
-  const rl = readline.createInterface({ input: stream, crlfDelay: Infinity });
-  for await (const line of rl) {
-    const trimmed = line.trim();
-    if (!trimmed) continue;
-    yield JSON.parse(trimmed) as Record<string, unknown>;
-  }
-}
-
 export function stableStringify(value: unknown): string {
   if (value === null || typeof value !== "object") return JSON.stringify(value);
   if (Array.isArray(value)) return `[${value.map((item) => stableStringify(item)).join(",")}]`;
@@ -251,41 +174,4 @@ export function stableStringify(value: unknown): string {
 
 export function createHash() {
   return crypto.createHash("sha256");
-}
-
-export function transformD1Row(raw: Record<string, unknown>): D1Row {
-  const row: D1Row = {};
-  for (const [key, value] of Object.entries(raw)) {
-    row[key] = transformD1Value(value);
-  }
-  return row;
-}
-
-export function transformD1Value(value: unknown): D1Value {
-  if (value === null || value === undefined) return null;
-  return scalarValue(value);
-}
-
-export function parseVector(value: unknown): number[] | null {
-  if (value === null || value === undefined) return null;
-  if (Array.isArray(value)) return value.map(Number);
-  if (typeof value !== "string") return null;
-  const trimmed = value.trim();
-  if (!trimmed) return null;
-  const parsed = trimmed.startsWith("[") ? JSON.parse(trimmed) : trimmed.split(",").map((part) => Number(part.trim()));
-  return Array.isArray(parsed) ? parsed.map(Number) : null;
-}
-
-function scalarValue(value: unknown): D1Value {
-  if (typeof value === "string" || typeof value === "number") return value;
-  if (typeof value === "boolean") return value ? 1 : 0;
-  return stableStringify(value);
-}
-
-export function quoteIdent(identifier: string) {
-  return `"${identifier.replaceAll('"', '""')}"`;
-}
-
-export function orderByClause(table: TableName) {
-  return PRIMARY_KEY_ORDER[table].map((column) => quoteIdent(column)).join(", ");
 }

@@ -74,7 +74,7 @@ export const supportedLanguages = [
 export const defaultLanguage = "English";
 export type SupportedLanguage = (typeof supportedLanguages)[number];
 
-export const nativeLanguageNames: Record<SupportedLanguage, string> = {
+const nativeLanguageNames: Record<SupportedLanguage, string> = {
   English: "English",
   Hindi: "हिन्दी",
   Spanish: "Español",
@@ -147,7 +147,7 @@ export const nativeLanguageNames: Record<SupportedLanguage, string> = {
   Azerbaijani: "Azərbaycanca",
 };
 
-export const languageLocaleCodes: Record<SupportedLanguage, string> = {
+const languageLocaleCodes: Record<SupportedLanguage, string> = {
   English: "en-US",
   Hindi: "hi",
   Spanish: "es",
@@ -226,7 +226,7 @@ export const languageUrlPrefixes: Record<SupportedLanguage, string> = {
   Filipino: "fil",
 } as Record<SupportedLanguage, string>;
 
-export const rtlLanguages = new Set<SupportedLanguage>(["Arabic", "Hebrew", "Persian", "Urdu"]);
+const rtlLanguages = new Set<SupportedLanguage>(["Arabic", "Hebrew", "Persian", "Urdu"]);
 
 export type LanguageConfig = {
   language: SupportedLanguage;
