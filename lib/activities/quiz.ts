@@ -1,8 +1,8 @@
-import { generateObject } from "ai";
 import { z } from "zod";
 import type { ActivityRun } from "@/lib/db/schema";
+import { generateOpenAiJsonObject } from "@/lib/ai/openai-client";
 import { resolveModelName } from "@/lib/ai/model-router";
-import { hasOpenAiRuntimeCredentials, openAiLanguageModel } from "@/lib/ai/openai-provider";
+import { hasOpenAiRuntimeCredentials } from "@/lib/ai/openai-provider";
 import { parseFlashcardState, sanitizeFlashcardState } from "@/lib/activities/flashcards";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 
@@ -61,8 +61,9 @@ export async function generateQuiz(
         ? `The learner is ${options.learnerAge} years old. Adapt content, examples, tone, and safety boundaries appropriately. Do not mention their age unless directly relevant or asked.`
         : undefined;
     const languageInstruction = `Write every learner-facing field in ${language}: question prompts, answer options, explanations, and topic wording.`;
-    const result = await generateObject({
-      model: openAiLanguageModel(resolveModelName("structured")),
+    const object = await generateOpenAiJsonObject({
+      model: resolveModelName("structured"),
+      schemaName: "generated_quiz",
       schema: generatedQuizSchema,
       system: [
         "You are an expert quiz designer for a learner-first education app. Create fair multiple-choice questions. Do not include answer labels inside option text.",
@@ -87,7 +88,7 @@ export async function generateQuiz(
       score: 0,
       maxScore: 10,
       completed: false,
-      questions: result.object.questions.map((question, index) => ({
+      questions: object.questions.map((question, index) => ({
         id: `q${index + 1}`,
         ...question,
       })),

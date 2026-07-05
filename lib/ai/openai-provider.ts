@@ -1,25 +1,18 @@
-import { createOpenAI, type OpenAIProviderSettings } from "@ai-sdk/openai";
 import { readRuntimeEnv } from "@/lib/runtime/cloudflare";
 
 const cloudflareGatewayHost = "gateway.ai.cloudflare.com";
+
+export type OpenAiProviderSettings = {
+  apiKey?: string;
+  baseURL?: string;
+  headers?: Record<string, string>;
+};
 
 export function hasOpenAiRuntimeCredentials() {
   return Boolean(readOpenAiApiKey(readOpenAiBaseURL()));
 }
 
-export function configuredOpenAIProvider() {
-  return createOpenAI(openAiProviderSettings());
-}
-
-export function openAiLanguageModel(model: string) {
-  return configuredOpenAIProvider()(model);
-}
-
-export function openAiEmbeddingModel(model: string) {
-  return configuredOpenAIProvider().embedding(model);
-}
-
-export function openAiProviderSettings(): OpenAIProviderSettings {
+export function openAiProviderSettings(): OpenAiProviderSettings {
   const baseURL = readOpenAiBaseURL();
   const gatewayToken = readRuntimeEnv("CLOUDFLARE_AI_GATEWAY_TOKEN");
   const apiKey = readOpenAiApiKey(baseURL);

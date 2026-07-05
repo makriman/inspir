@@ -1,5 +1,3 @@
-import { type OpenAIEmbeddingModelOptions } from "@ai-sdk/openai";
-import { embed, generateObject } from "ai";
 import { z } from "zod";
 import type { Message, Topic } from "@/lib/db/schema";
 import {
@@ -42,11 +40,8 @@ import {
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
 import { resolveEmbeddingModelName, resolveModelName } from "@/lib/ai/model-router";
 import { consumeDailyLlmBudget, numberFromEnv, quotaDefaults } from "@/lib/utils/rate-limit";
-import {
-  configuredOpenAIProvider,
-  hasOpenAiRuntimeCredentials,
-  openAiEmbeddingModel,
-} from "@/lib/ai/openai-provider";
+import { embedOpenAiText, generateOpenAiJsonObject } from "@/lib/ai/openai-client";
+import { hasOpenAiRuntimeCredentials } from "@/lib/ai/openai-provider";
 
 type TopicLike = Pick<Topic, "id" | "name" | "slug">;
 type PersistedMessage = Pick<Message, "id" | "role" | "content">;
@@ -1058,8 +1053,9 @@ async function shouldUseMemory(input: {
   }
 
   try {
-    const result = await generateObject({
-      model: openaiProvider()(resolveModelName("structured")),
+    const object = await generateOpenAiJsonObject({
+      model: resolveModelName("structured"),
+      schemaName: "memory_gate",
       schema: memoryGateSchema,
       system: [
         "Decide whether a tutor should retrieve long-term learner memory before answering.",
@@ -1078,7 +1074,7 @@ async function shouldUseMemory(input: {
       maxRetries: 0,
       abortSignal: AbortSignal.timeout(8_000),
     });
-    return result.object;
+    return object;
   } catch {
     return {
       useMemory: fallback,
@@ -1107,8 +1103,9 @@ async function extractMemoryUpdates(input: {
 
   const existing = await getActiveUserMemories(input.userId, 60);
   try {
-    const result = await generateObject({
-      model: openaiProvider()(resolveModelName("structured")),
+    const object = await generateOpenAiJsonObject({
+      model: resolveModelName("structured"),
+      schemaName: "memory_extraction",
       schema: memoryExtractionSchema,
       system: [
         "You update long-term memory for Inspir, an AI learning companion.",
@@ -1139,7 +1136,7 @@ async function extractMemoryUpdates(input: {
       maxRetries: 0,
       abortSignal: AbortSignal.timeout(25_000),
     });
-    return mergeMemoryExtractions(direct, result.object);
+    return mergeMemoryExtractions(direct, object);
   } catch {
     return fallbackExtraction(input);
   }
@@ -1166,8 +1163,9 @@ export async function compileUserMemoryProfile(userId: string, category: string)
   }
 
   try {
-    const result = await generateObject({
-      model: openaiProvider()(resolveModelName("structured")),
+    const object = await generateOpenAiJsonObject({
+      model: resolveModelName("structured"),
+      schemaName: "memory_profile",
       schema: memoryProfileSchema,
       system: [
         "Compile a dense but careful user knowledge memory for a learning companion.",
@@ -1189,7 +1187,7 @@ export async function compileUserMemoryProfile(userId: string, category: string)
     await upsertUserMemoryProfile({
       userId,
       category,
-      summary: result.object.summary,
+      summary: object.summary,
       sourceMemoryIds: memories.slice(0, 30).map((memory) => memory.id),
     });
   } catch {
@@ -1293,8 +1291,9 @@ async function generateMemorySynthesis(input: {
 }): Promise<MemorySynthesis> {
   if (!(await hasLlmBudget("memory_synthesis"))) return buildFallbackMemorySynthesis(input);
   try {
-    const result = await generateObject({
-      model: openaiProvider()(resolveModelName("structured")),
+    const object = await generateOpenAiJsonObject({
+      model: resolveModelName("structured"),
+      schemaName: "memory_synthesis",
       schema: memorySynthesisSchema,
       system: [
         "You synthesize long-term learner memory for Inspir.",
@@ -1345,7 +1344,7 @@ async function generateMemorySynthesis(input: {
       maxRetries: 0,
       abortSignal: AbortSignal.timeout(35_000),
     });
-    return result.object;
+    return object;
   } catch {
     return buildFallbackMemorySynthesis(input);
   }
@@ -1565,18 +1564,12 @@ async function embedText(value: string) {
   if (!trimmed) return null;
   if (!(await hasLlmBudget("memory_embedding"))) return null;
   try {
-    const result = await embed({
-      model: openAiEmbeddingModel(resolveEmbeddingModelName()),
+    return await embedOpenAiText({
+      model: resolveEmbeddingModelName(),
       value: trimmed.slice(0, 4000),
-      providerOptions: {
-        openai: {
-          dimensions: 512,
-        } satisfies OpenAIEmbeddingModelOptions,
-      },
-      maxRetries: 0,
+      dimensions: 512,
       abortSignal: AbortSignal.timeout(10_000),
     });
-    return result.embedding;
   } catch {
     return null;
   }
@@ -1584,10 +1577,6 @@ async function embedText(value: string) {
 
 function hasOpenAiApiKey() {
   return hasOpenAiRuntimeCredentials();
-}
-
-function openaiProvider() {
-  return configuredOpenAIProvider();
 }
 
 async function hasLlmBudget(reason: string) {

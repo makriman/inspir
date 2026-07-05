@@ -1,5 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { z } from "zod";
+import {
+  generateOpenAiJsonObject,
+  streamOpenAiChatCompletion,
+} from "../lib/ai/openai-client";
 import { openAiProviderSettings } from "../lib/ai/openai-provider";
 import { buildTopicSystemPrompt, INSPIR_TUTOR_CONTRACT } from "../lib/ai/prompts";
 import { resolveModelName } from "../lib/ai/model-router";
@@ -229,6 +234,125 @@ test("OpenAI provider ignores Gateway token without a Cloudflare Gateway base UR
       if (value === undefined) delete process.env[key];
       else process.env[key] = value;
     }
+  }
+});
+
+test("direct OpenAI client streams text deltas and finish usage", async () => {
+  const previousFetch = globalThis.fetch;
+  const previousEnv = {
+    CLOUDFLARE_AI_GATEWAY_TOKEN: process.env.CLOUDFLARE_AI_GATEWAY_TOKEN,
+    CLOUDFLARE_AI_GATEWAY_BASE_URL: process.env.CLOUDFLARE_AI_GATEWAY_BASE_URL,
+    CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS: process.env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+  };
+  process.env.CLOUDFLARE_AI_GATEWAY_TOKEN = "gateway-token";
+  process.env.CLOUDFLARE_AI_GATEWAY_BASE_URL = "https://gateway.ai.cloudflare.com/v1/account/gateway/openai";
+  process.env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS = "inspir";
+  process.env.OPENAI_API_KEY = "direct-openai-token";
+
+  try {
+    globalThis.fetch = async (input, init) => {
+      assert.equal(String(input), "https://gateway.ai.cloudflare.com/v1/account/gateway/openai/chat/completions");
+      const headers = new Headers(init?.headers);
+      assert.equal(headers.get("authorization"), "Bearer gateway-token");
+      assert.equal(headers.get("cf-aig-authorization"), "Bearer gateway-token");
+      assert.equal(headers.get("cf-aig-byok-alias"), "inspir");
+      const body = JSON.parse(String(init?.body));
+      assert.equal(body.stream, true);
+      assert.deepEqual(body.stream_options, { include_usage: true });
+
+      const encoder = new TextEncoder();
+      const stream = new ReadableStream<Uint8Array>({
+        start(controller) {
+          controller.enqueue(
+            encoder.encode(
+              [
+                'data: {"choices":[{"delta":{"content":"Hel"}}]}',
+                "",
+                'data: {"choices":[{"delta":{"content":"lo"},"finish_reason":"stop"}],"usage":{"prompt_tokens":3,"completion_tokens":2,"total_tokens":5}}',
+                "",
+                "data: [DONE]",
+                "",
+                "",
+              ].join("\n"),
+            ),
+          );
+          controller.close();
+        },
+      });
+      return new Response(stream, { status: 200 });
+    };
+
+    const result = await streamOpenAiChatCompletion({
+      model: "gpt-test",
+      messages: [
+        { role: "system", content: "You are concise." },
+        { role: "user", content: "Say hello" },
+      ],
+      maxOutputTokens: 20,
+    });
+    const reader = result.fullStream.getReader();
+    const first = await reader.read();
+    const second = await reader.read();
+    const third = await reader.read();
+    const done = await reader.read();
+
+    assert.deepEqual(first.value, { type: "text-delta", text: "Hel" });
+    assert.deepEqual(second.value, { type: "text-delta", text: "lo" });
+    assert.deepEqual(third.value, {
+      type: "finish",
+      finishReason: "stop",
+      totalUsage: { inputTokens: 3, outputTokens: 2, totalTokens: 5 },
+    });
+    assert.equal(done.done, true);
+  } finally {
+    globalThis.fetch = previousFetch;
+    for (const [key, value] of Object.entries(previousEnv)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
+});
+
+test("direct OpenAI client validates structured JSON output", async () => {
+  const previousFetch = globalThis.fetch;
+  const previousOpenAiKey = process.env.OPENAI_API_KEY;
+  process.env.OPENAI_API_KEY = "direct-openai-token";
+  delete process.env.CLOUDFLARE_AI_GATEWAY_TOKEN;
+  delete process.env.CLOUDFLARE_AI_GATEWAY_BASE_URL;
+
+  try {
+    globalThis.fetch = async (input, init) => {
+      assert.equal(String(input), "https://api.openai.com/v1/chat/completions");
+      const body = JSON.parse(String(init?.body));
+      assert.equal(body.response_format.type, "json_schema");
+      assert.equal(body.response_format.json_schema.name, "test_schema");
+      return Response.json({
+        choices: [
+          {
+            message: {
+              content: JSON.stringify({ answer: "yes", count: 2 }),
+            },
+          },
+        ],
+      });
+    };
+
+    const object = await generateOpenAiJsonObject({
+      model: "gpt-test",
+      schemaName: "test_schema",
+      schema: z.object({
+        answer: z.string(),
+        count: z.number().int(),
+      }),
+      system: "Return a tiny object.",
+      prompt: "Return yes and 2.",
+    });
+    assert.deepEqual(object, { answer: "yes", count: 2 });
+  } finally {
+    globalThis.fetch = previousFetch;
+    if (previousOpenAiKey === undefined) delete process.env.OPENAI_API_KEY;
+    else process.env.OPENAI_API_KEY = previousOpenAiKey;
   }
 });
 
