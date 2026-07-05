@@ -201,7 +201,6 @@ export async function getUserLearningProfileById(userId: string) {
 export async function getUserPhotoById(userId: string) {
   const [user] = await db
     .select({
-      profileImageData: users.profileImageData,
       profileImageMime: users.profileImageMime,
       profileImageHash: users.profileImageHash,
       profileImageR2Key: users.profileImageR2Key,
@@ -228,7 +227,6 @@ export async function updateUserProfilePhoto(
     .update(users)
     .set({
       profilePictureUrl: null,
-      profileImageData: null,
       profileImageMime: input.profileImageMime,
       profileImageHash: input.profileImageHash,
       profileImageR2Key: input.profileImageR2Key,
@@ -249,7 +247,6 @@ export async function clearUserProfilePhoto(userId: string) {
     .update(users)
     .set({
       profilePictureUrl: null,
-      profileImageData: null,
       profileImageMime: null,
       profileImageHash: null,
       profileImageR2Key: null,
@@ -261,73 +258,6 @@ export async function clearUserProfilePhoto(userId: string) {
     .where(eq(users.id, userId))
     .returning({
       profileImageHash: users.profileImageHash,
-    });
-  return user;
-}
-
-export type LegacyProfilePhotoForBackfill = {
-  userId: string;
-  profileImageData: string;
-  profileImageMime: string;
-  profileImageHash: string;
-};
-
-export async function listLegacyProfilePhotosForBackfill(limit = 100) {
-  return db
-    .select({
-      userId: users.id,
-      profileImageData: users.profileImageData,
-      profileImageMime: users.profileImageMime,
-      profileImageHash: users.profileImageHash,
-    })
-    .from(users)
-    .where(
-      and(
-        drizzleSql`${users.profileImageData} is not null`,
-        drizzleSql`${users.profileImageMime} is not null`,
-        drizzleSql`${users.profileImageHash} is not null`,
-        drizzleSql`${users.profileImageR2Key} is null`,
-      ),
-    )
-    .limit(limit)
-    .then((rows) =>
-      rows.filter(
-        (row): row is LegacyProfilePhotoForBackfill =>
-          Boolean(row.profileImageData && row.profileImageMime && row.profileImageHash),
-      ),
-    );
-}
-
-export async function markProfilePhotoBackfilledToR2(
-  userId: string,
-  input: {
-    expectedHash: string;
-    profileImageR2Key: string;
-    profileImageR2Etag?: string | null;
-    profileImageSize: number;
-  },
-) {
-  const [user] = await db
-    .update(users)
-    .set({
-      profileImageData: null,
-      profileImageR2Key: input.profileImageR2Key,
-      profileImageR2Etag: input.profileImageR2Etag ?? null,
-      profileImageSize: input.profileImageSize,
-      profilePictureDownloadedAt: new Date(),
-      updatedAt: new Date(),
-    })
-    .where(
-      and(
-        eq(users.id, userId),
-        eq(users.profileImageHash, input.expectedHash),
-        drizzleSql`${users.profileImageData} is not null`,
-        drizzleSql`${users.profileImageR2Key} is null`,
-      ),
-    )
-    .returning({
-      profileImageHash: users.profileImageHash,
-      profileImageR2Key: users.profileImageR2Key,
     });
   return user;
 }

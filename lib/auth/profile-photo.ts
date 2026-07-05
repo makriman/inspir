@@ -59,7 +59,6 @@ export async function refreshProfilePhoto(userId: string | undefined, imageUrl: 
         .set({
           image: imageUrl,
           profilePictureUrl: imageUrl,
-          profileImageData: null,
           profileImageMime: mimeType,
           profileImageHash: hash,
           profileImageR2Key: object.key,

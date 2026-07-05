@@ -25,7 +25,6 @@ export const users = sqliteTable("users", {
   image: text("image"),
   score: integer("score").notNull().default(0),
   profilePictureUrl: text("profile_picture_url"),
-  profileImageData: text("profile_image_data"),
   profileImageMime: text("profile_image_mime"),
   profileImageHash: text("profile_image_hash"),
   profileImageR2Key: text("profile_image_r2_key"),

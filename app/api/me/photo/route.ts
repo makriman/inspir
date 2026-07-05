@@ -29,17 +29,10 @@ export async function GET() {
     }
   }
 
-  if (!user.profileImageData) {
+  if (!user.profileImageR2Key) {
     return NextResponse.json({ error: "No cached photo" }, { status: 404 });
   }
-
-  const bytes = Buffer.from(user.profileImageData, "base64");
-  return new Response(bytes, {
-    headers: {
-      "content-type": user.profileImageMime,
-      "cache-control": "private, max-age=3600",
-    },
-  });
+  return NextResponse.json({ error: "Cached photo is unavailable" }, { status: 404 });
 }
 
 export async function PATCH(request: NextRequest) {
