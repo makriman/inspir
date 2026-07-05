@@ -1,35 +1,23 @@
 import { default as handler } from "./.open-next/worker.js";
-import { processMemoryPostTurnQueueBatch } from "./lib/ai/memory-queue";
+import { enqueueDueMemorySynthesis, processMemoryQueueBatch } from "./lib/ai/memory-queue";
 
 export default {
   fetch: handler.fetch,
 
   async scheduled(controller, env, ctx) {
-    const cronSecret = env.CRON_SECRET?.trim();
-    if (!cronSecret) {
-      console.error(JSON.stringify({ event: "cron_skipped", reason: "missing_cron_secret" }));
-      return;
-    }
-
-    const cronUrl = new URL("/api/cron/memory-dreaming", env.APP_URL ?? "https://inspirlearning.com");
-    console.log(JSON.stringify({ event: "cron_dispatch", cron: controller.cron, origin: cronUrl.origin }));
-
-    const request = new Request(cronUrl.toString(), {
-      headers: {
-        Authorization: `Bearer ${cronSecret}`,
-        "x-inspir-cron-source": "cloudflare-scheduled",
-      },
-    });
+    console.log(JSON.stringify({ event: "cron_dispatch", cron: controller.cron, target: "memory_daily_synthesis" }));
 
     ctx.waitUntil(
       (async () => {
-        const response = await handler.fetch(request, env, ctx);
-        if (!response.ok) {
+        try {
+          const stats = await enqueueDueMemorySynthesis(env, { reason: "daily_cron" });
+          console.log(JSON.stringify({ event: "cron_completed", cron: controller.cron, ...stats }));
+        } catch (error) {
           console.error(
             JSON.stringify({
               event: "cron_failed",
-              status: response.status,
-              statusText: response.statusText,
+              cron: controller.cron,
+              error: error instanceof Error ? error.message : String(error),
             }),
           );
         }
@@ -38,7 +26,7 @@ export default {
   },
 
   async queue(batch, env) {
-    await processMemoryPostTurnQueueBatch(batch, env);
+    await processMemoryQueueBatch(batch, env);
   },
 } satisfies ExportedHandler<CloudflareEnv>;
 

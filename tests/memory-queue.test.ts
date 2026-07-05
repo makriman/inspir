@@ -1,14 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  createMemoryDailySynthesisQueueMessage,
   createMemoryPostTurnQueueMessage,
   dispatchMemoryPostTurn,
+  enqueueDueMemorySynthesis,
+  processMemoryQueueBatch,
   processMemoryPostTurnQueueBatch,
-  type MemoryPostTurnQueueMessage,
+  type MemoryQueueMessage,
 } from "../lib/ai/memory-queue";
 
 test("memory post-turn dispatcher sends JSON messages to Cloudflare Queues", async () => {
-  const sent: Array<{ message: MemoryPostTurnQueueMessage; contentType?: QueueContentType }> = [];
+  const sent: Array<{ message: MemoryQueueMessage; contentType?: QueueContentType }> = [];
   const result = await dispatchMemoryPostTurn(sampleMessage(), {
     logger: silentLogger,
     queue: {
@@ -26,6 +29,59 @@ test("memory post-turn dispatcher sends JSON messages to Cloudflare Queues", asy
   assert.equal(sent.length, 1);
   assert.equal(sent[0]?.contentType, "json");
   assert.equal(sent[0]?.message.type, "memory.post_turn.v1");
+});
+
+test("memory daily synthesis enqueuer sends due users to Cloudflare Queues", async () => {
+  const sent: Array<{ message: MemoryQueueMessage; contentType?: QueueContentType }> = [];
+  const stats = await enqueueDueMemorySynthesis({} as CloudflareEnv, {
+    logger: silentLogger,
+    limit: 50,
+    lister: async (limit) => {
+      assert.equal(limit, 25);
+      return [{ userId: "user-a" }, { userId: "user-b" }];
+    },
+    queue: {
+      async send(message, options) {
+        sent.push({ message, contentType: options?.contentType });
+        return queueSendResponse();
+      },
+    },
+    reason: "daily_cron",
+  });
+
+  assert.deepEqual(
+    { due: stats.due, queued: stats.queued, failed: stats.failed, skipped: stats.skipped },
+    { due: 2, queued: 2, failed: 0, skipped: null },
+  );
+  assert.deepEqual(
+    sent.map((entry) => [entry.message.type, entry.message.userId, entry.contentType]),
+    [
+      ["memory.daily_synthesis.v1", "user-a", "json"],
+      ["memory.daily_synthesis.v1", "user-b", "json"],
+    ],
+  );
+});
+
+test("memory daily synthesis enqueuer respects write freeze", async () => {
+  let listed = false;
+  const stats = await enqueueDueMemorySynthesis({ APP_WRITE_FREEZE: "1" } as CloudflareEnv, {
+    logger: silentLogger,
+    lister: async () => {
+      listed = true;
+      return [{ userId: "user-a" }];
+    },
+    queue: {
+      async send() {
+        throw new Error("queue should not be called during write freeze");
+      },
+    },
+  });
+
+  assert.equal(listed, false);
+  assert.deepEqual(
+    { due: stats.due, queued: stats.queued, failed: stats.failed, skipped: stats.skipped },
+    { due: 0, queued: 0, failed: 0, skipped: "write_freeze_active" },
+  );
 });
 
 test("memory post-turn dispatcher falls back when no queue binding is available", async () => {
@@ -59,6 +115,25 @@ test("memory queue consumer acks invalid messages and successful jobs", async ()
   assert.equal(valid.acked, true);
   assert.equal(valid.retried, false);
   assert.deepEqual(processed, ["assistant-message"]);
+});
+
+test("memory queue consumer processes daily synthesis jobs", async () => {
+  const daily = fakeMessage(createMemoryDailySynthesisQueueMessage({ userId: "user-a", reason: "daily_cron" }));
+  const synthesized: Array<{ userId: string; reason: string }> = [];
+
+  await processMemoryQueueBatch(fakeBatch([daily]), {} as CloudflareEnv, {
+    dailySynthesizer: async (userId, reason) => {
+      synthesized.push({ userId, reason });
+    },
+    logger: silentLogger,
+    processor: async () => {
+      throw new Error("post-turn processor should not run for daily synthesis jobs");
+    },
+  });
+
+  assert.equal(daily.acked, true);
+  assert.equal(daily.retried, false);
+  assert.deepEqual(synthesized, [{ userId: "user-a", reason: "daily_cron" }]);
 });
 
 test("memory queue consumer retries failed jobs without acknowledging them", async () => {

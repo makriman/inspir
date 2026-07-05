@@ -1,11 +1,11 @@
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextRequest, NextResponse } from "next/server";
-import { synthesizeUserMemory } from "@/lib/ai/memory";
-import { listUsersDueForMemorySynthesis } from "@/lib/db/memory";
+import { enqueueDueMemorySynthesis } from "@/lib/ai/memory-queue";
 import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 120;
+export const maxDuration = 30;
 
 export async function GET(request: NextRequest) {
   const secret = process.env.CRON_SECRET?.trim();
@@ -16,31 +16,11 @@ export async function GET(request: NextRequest) {
   const freeze = writeFreezeResponse("cron-memory-dreaming");
   if (freeze) return freeze;
 
-  const limit = Math.min(Number(request.nextUrl.searchParams.get("limit") ?? 10) || 10, 25);
-  const dueUsers = await listUsersDueForMemorySynthesis(limit);
-  const stats = {
-    due: dueUsers.length,
-    completed: 0,
-    failed: 0,
-    errors: [] as Array<{ userId: string; error: string }>,
-  };
-
-  const batchSize = 3;
-  for (let index = 0; index < dueUsers.length; index += batchSize) {
-    const batch = dueUsers.slice(index, index + batchSize);
-    const results = await Promise.allSettled(batch.map((row) => synthesizeUserMemory(row.userId, "daily_cron")));
-    results.forEach((result, resultIndex) => {
-      if (result.status === "fulfilled") {
-        stats.completed += 1;
-        return;
-      }
-      stats.failed += 1;
-      stats.errors.push({
-        userId: batch[resultIndex].userId,
-        error: result.reason instanceof Error ? result.reason.message : String(result.reason),
-      });
-    });
-  }
+  const limit = Number(request.nextUrl.searchParams.get("limit") ?? 10) || 10;
+  const stats = await enqueueDueMemorySynthesis(getCloudflareContext().env, {
+    limit,
+    reason: "manual_cron",
+  });
 
   return NextResponse.json(stats);
 }

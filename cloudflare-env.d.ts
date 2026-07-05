@@ -5,7 +5,7 @@ declare global {
     ASSETS: Fetcher;
     DB: D1Database;
     MEMORY_VECTORIZE: VectorizeIndex;
-    MEMORY_POST_TURN_QUEUE: Queue<import("./lib/ai/memory-queue").MemoryPostTurnQueueMessage>;
+    MEMORY_POST_TURN_QUEUE: Queue<import("./lib/ai/memory-queue").MemoryQueueMessage>;
     NEXT_INC_CACHE_R2_BUCKET: R2Bucket;
     WORKER_SELF_REFERENCE: Fetcher;
     APP_URL: string;
