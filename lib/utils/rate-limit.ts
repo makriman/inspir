@@ -1,6 +1,8 @@
 import { d1All, d1First, d1Run } from "@/lib/db/client";
 
 const oneDayMs = 24 * 60 * 60 * 1000;
+const defaultLlmBudgetShardCount = 16;
+const maxLlmBudgetShardCount = 128;
 
 export type RateLimitResult = {
   ok: boolean;
@@ -31,6 +33,17 @@ export function numberFromEnv(name: string, fallback: number) {
   if (raw === undefined || raw.trim() === "") return fallback;
   const value = Number(raw);
   return Number.isFinite(value) ? Math.max(0, Math.floor(value)) : fallback;
+}
+
+export function normalizeLlmBudgetShardCount(value: number) {
+  if (!Number.isFinite(value)) return defaultLlmBudgetShardCount;
+  return Math.min(maxLlmBudgetShardCount, Math.max(1, Math.floor(value)));
+}
+
+export function llmBudgetShardCountFromEnv() {
+  return normalizeLlmBudgetShardCount(
+    numberFromEnv("LLM_GLOBAL_DAILY_SHARDS", defaultLlmBudgetShardCount),
+  );
 }
 
 export function dailyLimitReset(now = new Date()) {
@@ -109,24 +122,42 @@ export async function consumeDailyLlmBudget(
   if (limit <= 0) return { ...rateLimitResult(false, limit, 0, resetAt, now), day };
 
   try {
-    const rows = await d1All<{ callCount: number }>(
-      `insert into llm_usage_daily (day, call_count, created_at, updated_at)
-       values (?, 1, ?, ?)
-       on conflict (day) do update
-         set call_count = llm_usage_daily.call_count + 1,
+    const shardCount = llmBudgetShardCountFromEnv();
+    const shard = randomLlmBudgetShard(shardCount);
+    const rows = await d1All<{ shardCallCount: number }>(
+      `insert into llm_usage_daily_shards (day, shard, call_count, created_at, updated_at)
+       select ?, ?, 1, ?, ?
+       where (
+         coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?), 0) +
+         coalesce((select call_count from llm_usage_daily where day = ?), 0)
+       ) < ?
+       on conflict (day, shard) do update
+         set call_count = llm_usage_daily_shards.call_count + 1,
              updated_at = excluded.updated_at
-       where llm_usage_daily.call_count < ?
-       returning call_count as "callCount"`,
+       where (
+         coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?), 0) +
+         coalesce((select call_count from llm_usage_daily where day = ?), 0)
+       ) < ?
+       returning call_count as "shardCallCount"`,
       day,
+      shard,
       now.getTime(),
       now.getTime(),
+      day,
+      day,
+      limit,
+      day,
+      day,
       limit,
     );
-    if (!rows.length) return { ...rateLimitResult(false, limit, 0, resetAt, now), day };
-    const callCount = rows[0].callCount;
-    const result = rateLimitResult(true, limit, limit - callCount, resetAt, now);
+    const total = await getDailyLlmCallTotal(day);
+    if (!rows.length) return { ...rateLimitResult(false, limit, limit - total, resetAt, now), day };
+    const result = rateLimitResult(true, limit, limit - total, resetAt, now);
     return { ...result, day };
   } catch (error) {
+    if (isMissingLlmShardTableError(error)) {
+      return consumeLegacyDailyLlmBudget(limit, now, day, resetAt);
+    }
     console.error("llm_budget_check_failed", { day, error });
     return { ...quotaUnavailableResult(limit, resetAt, now), day };
   }
@@ -166,6 +197,59 @@ export function sqlTimestamp(value: Date) {
 
 function quotaUnavailableResult(limit: number, resetAt: Date, now: Date) {
   return rateLimitResult(true, limit, Math.max(0, limit - 1), resetAt, now);
+}
+
+async function consumeLegacyDailyLlmBudget(
+  limit: number,
+  now: Date,
+  day = utcDayKey(now),
+  resetAt = dailyLimitReset(now),
+): Promise<LlmBudgetResult> {
+  try {
+    const rows = await d1All<{ callCount: number }>(
+      `insert into llm_usage_daily (day, call_count, created_at, updated_at)
+       values (?, 1, ?, ?)
+       on conflict (day) do update
+         set call_count = llm_usage_daily.call_count + 1,
+             updated_at = excluded.updated_at
+       where llm_usage_daily.call_count < ?
+       returning call_count as "callCount"`,
+      day,
+      now.getTime(),
+      now.getTime(),
+      limit,
+    );
+    if (!rows.length) return { ...rateLimitResult(false, limit, 0, resetAt, now), day };
+    const callCount = rows[0].callCount;
+    const result = rateLimitResult(true, limit, limit - callCount, resetAt, now);
+    return { ...result, day };
+  } catch (error) {
+    console.error("llm_budget_legacy_check_failed", { day, error });
+    return { ...quotaUnavailableResult(limit, resetAt, now), day };
+  }
+}
+
+async function getDailyLlmCallTotal(day: string) {
+  const row = await d1First<{ total: number }>(
+    `select
+       coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?), 0) +
+       coalesce((select call_count from llm_usage_daily where day = ?), 0) as total`,
+    day,
+    day,
+  );
+  return Number(row?.total ?? 0);
+}
+
+function randomLlmBudgetShard(shardCount: number) {
+  const normalized = normalizeLlmBudgetShardCount(shardCount);
+  if (normalized === 1) return 0;
+  const values = new Uint32Array(1);
+  crypto.getRandomValues(values);
+  return (values[0] ?? 0) % normalized;
+}
+
+function isMissingLlmShardTableError(error: unknown) {
+  return /no such table:.*llm_usage_daily_shards/i.test(error instanceof Error ? error.message : String(error));
 }
 
 async function pruneExpiredRateLimits() {

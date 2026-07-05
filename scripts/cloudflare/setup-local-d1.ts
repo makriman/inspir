@@ -4,6 +4,7 @@ import { D1_DATABASE_NAME, RUNTIME_MUTABLE_TABLES, hasFlag, runWrangler } from "
 import { syncSiteTranslationSources } from "./sync-site-translation-sources";
 
 const migrationPath = path.resolve(process.cwd(), "drizzle-d1/0000_majestic_invisible_woman.sql");
+const migrationDir = path.dirname(migrationPath);
 
 void main();
 
@@ -28,9 +29,26 @@ function main() {
     localSchema = "created";
   }
 
+  const supplementalMigrations = applySupplementalMigrations();
   const sourceSync = syncSiteTranslationSources("local");
   const resetRuntimeTables = hasFlag("--reset-runtime-state") ? resetLocalRuntimeState() : [];
-  console.log(JSON.stringify({ database: D1_DATABASE_NAME, localSchema, sourceSync, resetRuntimeTables }));
+  console.log(
+    JSON.stringify({ database: D1_DATABASE_NAME, localSchema, supplementalMigrations, sourceSync, resetRuntimeTables }),
+  );
+}
+
+function applySupplementalMigrations() {
+  const baseMigration = path.basename(migrationPath);
+  const migrationFiles = fs
+    .readdirSync(migrationDir)
+    .filter((file) => file.endsWith(".sql") && file !== baseMigration)
+    .sort();
+
+  for (const file of migrationFiles) {
+    runWrangler(["d1", "execute", D1_DATABASE_NAME, "--local", "--file", path.join(migrationDir, file)]);
+  }
+
+  return migrationFiles;
 }
 
 function resetLocalRuntimeState() {

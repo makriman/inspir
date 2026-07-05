@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync, readdirSync } from "node:fs";
 import test from "node:test";
 import { NextRequest } from "next/server";
 import { GET as memoryCronGet } from "../app/api/cron/memory-dreaming/route";
@@ -16,6 +17,8 @@ import {
 } from "../lib/i18n/routing";
 import {
   dailyLimitReset,
+  llmBudgetShardCountFromEnv,
+  normalizeLlmBudgetShardCount,
   numberFromEnv,
   safeQuotaKeyPart,
   sqlTimestamp,
@@ -57,6 +60,34 @@ test("quota utility defaults and key normalization are stable", () => {
 
   if (previous === undefined) delete process.env.TEST_LIMIT_VALUE;
   else process.env.TEST_LIMIT_VALUE = previous;
+});
+
+test("LLM daily budget sharding stays bounded and D1-migrated", () => {
+  const previous = process.env.LLM_GLOBAL_DAILY_SHARDS;
+  delete process.env.LLM_GLOBAL_DAILY_SHARDS;
+
+  assert.equal(llmBudgetShardCountFromEnv(), 16);
+  assert.equal(normalizeLlmBudgetShardCount(0), 1);
+  assert.equal(normalizeLlmBudgetShardCount(1.9), 1);
+  assert.equal(normalizeLlmBudgetShardCount(999), 128);
+  assert.equal(normalizeLlmBudgetShardCount(Number.NaN), 16);
+
+  process.env.LLM_GLOBAL_DAILY_SHARDS = "64";
+  assert.equal(llmBudgetShardCountFromEnv(), 64);
+  process.env.LLM_GLOBAL_DAILY_SHARDS = "10000";
+  assert.equal(llmBudgetShardCountFromEnv(), 128);
+
+  const supplementalMigrations = readdirSync("drizzle-d1")
+    .filter((file) => file.endsWith(".sql") && !file.startsWith("0000_"))
+    .sort()
+    .map((file) => readFileSync(`drizzle-d1/${file}`, "utf8"))
+    .join("\n");
+  assert.match(supplementalMigrations, /CREATE TABLE IF NOT EXISTS `llm_usage_daily_shards`/);
+  assert.match(supplementalMigrations, /PRIMARY KEY\(`day`, `shard`\)/);
+  assert.match(supplementalMigrations, /CREATE INDEX IF NOT EXISTS `llm_usage_daily_shards_day_idx`/);
+
+  if (previous === undefined) delete process.env.LLM_GLOBAL_DAILY_SHARDS;
+  else process.env.LLM_GLOBAL_DAILY_SHARDS = previous;
 });
 
 test("D1 LIKE patterns stay within the platform byte limit", () => {

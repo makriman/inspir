@@ -94,6 +94,21 @@ export const llmUsageDaily = sqliteTable("llm_usage_daily", {
   updatedAt: timestampMsNow("updated_at"),
 });
 
+export const llmUsageDailyShards = sqliteTable(
+  "llm_usage_daily_shards",
+  {
+    day: text("day").notNull(),
+    shard: integer("shard").notNull(),
+    callCount: integer("call_count").notNull().default(0),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.day, table.shard] }),
+    dayIdx: index("llm_usage_daily_shards_day_idx").on(table.day),
+  }),
+);
+
 export const appMetadata = sqliteTable("app_metadata", {
   key: text("key").primaryKey(),
   value: text("value").notNull(),
@@ -542,6 +557,7 @@ export type Message = typeof messages.$inferSelect;
 export type User = typeof users.$inferSelect;
 export type RateLimitWindow = typeof rateLimitWindows.$inferSelect;
 export type LlmUsageDaily = typeof llmUsageDaily.$inferSelect;
+export type LlmUsageDailyShard = typeof llmUsageDailyShards.$inferSelect;
 export type AppMetadata = typeof appMetadata.$inferSelect;
 export type ActivityRun = typeof activityRuns.$inferSelect;
 export type AppTranslation = typeof appTranslations.$inferSelect;
