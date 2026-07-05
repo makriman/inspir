@@ -13,16 +13,16 @@
   },
   "observability": {
     "enabled": true,
-    "head_sampling_rate": 0.1,
+    "head_sampling_rate": 0.02,
     "logs": {
       "enabled": true,
-      "head_sampling_rate": 1,
+      "head_sampling_rate": 0.05,
       "invocation_logs": true,
       "persist": true
     },
     "traces": {
       "enabled": true,
-      "head_sampling_rate": 0.1,
+      "head_sampling_rate": 0.02,
       "persist": true
     }
   },
@@ -100,6 +100,7 @@
     "LLM_GLOBAL_DAILY_CALL_LIMIT": "200",
     "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD": "2",
     "MEMORY_PROFILE_COMPILE_LIMIT": "20",
+    "OBSERVABILITY_INCIDENT_MODE": "0",
     "APP_WRITE_FREEZE": "0",
     "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS": "300"
   },

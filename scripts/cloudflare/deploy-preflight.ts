@@ -93,6 +93,7 @@ const REQUIRED_WRANGLER_VARS = [
   "LLM_GLOBAL_DAILY_CALL_LIMIT",
   "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD",
   "MEMORY_PROFILE_COMPILE_LIMIT",
+  "OBSERVABILITY_INCIDENT_MODE",
   "APP_WRITE_FREEZE",
   "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS",
 ];
@@ -285,6 +286,14 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const observability = objectValue(config.observability);
   const observabilityLogs = objectValue(observability.logs);
   const observabilityTraces = objectValue(observability.traces);
+  const observabilityIncidentMode = vars.OBSERVABILITY_INCIDENT_MODE === "1";
+  const observabilitySamplingOk = observabilityIncidentMode
+    ? samplingRateAtMost(observability.head_sampling_rate, 1) &&
+      samplingRateAtMost(observabilityLogs.head_sampling_rate, 1) &&
+      samplingRateAtMost(observabilityTraces.head_sampling_rate, 1)
+    : samplingRateAtMost(observability.head_sampling_rate, 0.05) &&
+      samplingRateAtMost(observabilityLogs.head_sampling_rate, 0.1) &&
+      samplingRateAtMost(observabilityTraces.head_sampling_rate, 0.05);
 
   const problems = {
     missingVars: REQUIRED_WRANGLER_VARS.filter((key) => vars[key] === undefined || vars[key] === ""),
@@ -307,7 +316,14 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     observabilityOk:
       observability.enabled === true &&
       observabilityLogs.enabled === true &&
-      observabilityTraces.enabled === true,
+      observabilityTraces.enabled === true &&
+      observabilitySamplingOk,
+    observabilitySampling: {
+      incidentMode: observabilityIncidentMode,
+      worker: observability.head_sampling_rate,
+      logs: observabilityLogs.head_sampling_rate,
+      traces: observabilityTraces.head_sampling_rate,
+    },
   };
   const ok =
     !problems.missingVars.length &&
@@ -382,6 +398,11 @@ function arrayValue(value: unknown): Array<Record<string, string>> {
 
 function isString(value: unknown): value is string {
   return typeof value === "string";
+}
+
+function samplingRateAtMost(value: unknown, max: number) {
+  const numeric = Number(value);
+  return Number.isFinite(numeric) && numeric >= 0 && numeric <= max;
 }
 
 function stripJsonComments(input: string) {

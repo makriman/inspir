@@ -94,6 +94,45 @@ test("steady-state deploy preflight rejects build artifact scan from a different
   assert.equal((artifactScan?.detail as { sourceFingerprintOk?: boolean } | undefined)?.sourceFingerprintOk, false);
 });
 
+test("steady-state deploy preflight rejects high observability sampling outside incident mode", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    config.observability.head_sampling_rate = 1;
+    config.observability.logs.head_sampling_rate = 1;
+    config.observability.traces.head_sampling_rate = 1;
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+});
+
+test("steady-state deploy preflight allows high observability sampling in incident mode", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    config.vars.OBSERVABILITY_INCIDENT_MODE = "1";
+    config.observability.head_sampling_rate = 1;
+    config.observability.logs.head_sampling_rate = 1;
+    config.observability.traces.head_sampling_rate = 1;
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, true);
+});
+
 function makeFixture() {
   const repoDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-deploy-preflight-repo-"));
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-deploy-preflight-backup-"));
@@ -106,6 +145,17 @@ function makeFixture() {
   writeLocalEvidence(backupDir, fingerprint);
 
   return { repoDir, backupDir };
+}
+
+function replaceWranglerConfig(
+  repoDir: string,
+  backupDir: string,
+  mutate: (config: ReturnType<typeof wranglerConfig>) => void,
+) {
+  const config = wranglerConfig();
+  mutate(config);
+  fs.writeFileSync(path.join(repoDir, "wrangler.jsonc"), `${JSON.stringify(config, null, 2)}\n`);
+  writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
 }
 
 function writeLocalEvidence(backupDir: string, fingerprint: SourceFingerprint) {
@@ -161,7 +211,12 @@ function wranglerConfig() {
     },
     triggers: { crons: ["0 3 * * *"] },
     routes: [{ pattern: "inspirlearning.com" }, { pattern: "www.inspirlearning.com" }],
-    observability: { enabled: true, logs: { enabled: true }, traces: { enabled: true } },
+    observability: {
+      enabled: true,
+      head_sampling_rate: 0.02,
+      logs: { enabled: true, head_sampling_rate: 0.05 },
+      traces: { enabled: true, head_sampling_rate: 0.02 },
+    },
     secrets: {
       required: [
         "OPENAI_API_KEY",
@@ -192,6 +247,7 @@ function wranglerConfig() {
       LLM_GLOBAL_DAILY_CALL_LIMIT: "200",
       MEMORY_POST_TURN_SYNTHESIS_THRESHOLD: "2",
       MEMORY_PROFILE_COMPILE_LIMIT: "20",
+      OBSERVABILITY_INCIDENT_MODE: "0",
       APP_WRITE_FREEZE: "0",
       APP_WRITE_FREEZE_RETRY_AFTER_SECONDS: "300",
     },
