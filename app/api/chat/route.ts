@@ -23,6 +23,7 @@ import {
 import {
   memoryRunMetadata,
   processMemoryAfterTurn,
+  recordMemoryRetrievalUsage,
   retrieveRelevantMemoryForTurn,
   type MemoryRetrievalResult,
 } from "@/lib/ai/memory";
@@ -39,6 +40,8 @@ const chatRequestSchema = z.object({
   chatId: z.uuid(),
   content: z.string().trim().min(1).max(6000),
 });
+const defaultPreStreamMemoryTimeoutMs = 1200;
+const defaultPreStreamEmbeddingTimeoutMs = 700;
 
 type MemoryJob = MemoryPostTurnQueueMessage | null;
 
@@ -116,6 +119,21 @@ export async function POST(request: NextRequest) {
     priorChatTurns: memoryRetrieval.priorChatTurns,
     sources: memoryRetrieval.sources,
   };
+  after(async () => {
+    if (!memoryRetrieval.memoryIds.length && !memoryRetrieval.chatTurnIds.length) return;
+    try {
+      await recordMemoryRetrievalUsage({
+        userId,
+        chatId: userMessage.chatId,
+        userMessageId: userMessage.id,
+        memoryIds: memoryRetrieval.memoryIds,
+        chatTurnIds: memoryRetrieval.chatTurnIds,
+        reason: memoryRetrieval.gateReason,
+      });
+    } catch (memoryUsageError) {
+      console.warn("Memory retrieval usage recording failed", memoryUsageError);
+    }
+  });
   const assembled = buildModelMessages(topic, context, preferredLanguage, { learnerAge, memoryContext });
   const model = resolveModelForTopic(topic);
 
@@ -280,25 +298,54 @@ async function memoryJobWithTimeout(memoryJob: Promise<MemoryJob>) {
 }
 
 async function safeRetrieveMemory(input: Parameters<typeof retrieveRelevantMemoryForTurn>[0]): Promise<MemoryRetrievalResult> {
+  const timeoutMs = numberFromEnv("MEMORY_PRESTREAM_RETRIEVAL_TIMEOUT_MS", defaultPreStreamMemoryTimeoutMs);
+  const embeddingTimeoutMs = numberFromEnv("MEMORY_PRESTREAM_EMBEDDING_TIMEOUT_MS", defaultPreStreamEmbeddingTimeoutMs);
+  const retrieval = retrieveRelevantMemoryForTurn({
+    ...input,
+    embeddingTimeoutMs,
+    recordUsage: false,
+    skipLlmGate: true,
+  });
   try {
-    return await retrieveRelevantMemoryForTurn(input);
+    const result = await promiseWithTimeout(retrieval, Math.max(200, timeoutMs));
+    if (result) return result;
+    console.warn("Memory retrieval timed out before stream start", { timeoutMs });
+    return emptyMemoryRetrieval("Memory retrieval timed out; answered without long-term memory.");
   } catch (error) {
     console.warn("Memory retrieval failed", error);
-    return {
-      settingsEnabled: false,
-      used: false,
-      gateReason: "Memory retrieval failed; answered without long-term memory.",
-      memories: [],
-      summarySections: [],
-      profiles: [],
-      chatSummaries: [],
-      priorChatTurns: [],
-      sources: [],
-      memoryIds: [],
-      profileCategories: [],
-      chatSummaryIds: [],
-      chatTurnIds: [],
-      summarySectionIds: [],
-    };
+    return emptyMemoryRetrieval("Memory retrieval failed; answered without long-term memory.");
   }
+}
+
+async function promiseWithTimeout<T>(promise: Promise<T>, timeoutMs: number) {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<null>((resolve) => {
+        timer = setTimeout(() => resolve(null), timeoutMs);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+function emptyMemoryRetrieval(gateReason: string): MemoryRetrievalResult {
+  return {
+    settingsEnabled: false,
+    used: false,
+    gateReason,
+    memories: [],
+    summarySections: [],
+    profiles: [],
+    chatSummaries: [],
+    priorChatTurns: [],
+    sources: [],
+    memoryIds: [],
+    profileCategories: [],
+    chatSummaryIds: [],
+    chatTurnIds: [],
+    summarySectionIds: [],
+  };
 }

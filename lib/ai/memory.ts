@@ -132,6 +132,7 @@ const memoryGateSchema = z.object({
   reason: z.string().min(1),
   query: z.string().trim().max(500).optional(),
 });
+const defaultEmbeddingTimeoutMs = 10_000;
 
 const memoryExtractionSchema = z.object({
   memories: z
@@ -451,6 +452,9 @@ export async function retrieveRelevantMemoryForTurn(input: {
   message: string;
   topic: TopicLike;
   contextMessages: PersistedMessage[];
+  embeddingTimeoutMs?: number;
+  recordUsage?: boolean;
+  skipLlmGate?: boolean;
 }): Promise<MemoryRetrievalResult> {
   const intent = detectMemoryIntent(input.message);
   const settings = await ensureUserMemorySettings(input.userId);
@@ -470,6 +474,7 @@ export async function retrieveRelevantMemoryForTurn(input: {
     topicName: input.topic.name,
     contextMessages: input.contextMessages,
     intent,
+    skipLlmGate: input.skipLlmGate,
   });
 
   if (!gate.useMemory) {
@@ -485,7 +490,7 @@ export async function retrieveRelevantMemoryForTurn(input: {
 
   const query = gate.query || input.message;
   const [embedding, rawMemories, allProfiles, summary] = await Promise.all([
-    embedText(query),
+    embedText(query, input.embeddingTimeoutMs),
     getActiveUserMemories(input.userId, 100),
     getUserMemoryProfiles(input.userId),
     getUserMemorySummary(input.userId),
@@ -557,21 +562,13 @@ export async function retrieveRelevantMemoryForTurn(input: {
         })
       : [];
 
-  if (promptMemories.length) {
-    await markMemoriesUsed({
+  if (input.recordUsage !== false) {
+    await recordMemoryRetrievalUsage({
       userId: input.userId,
       memoryIds: promptMemories.map((memory) => memory.id),
+      chatTurnIds: priorChatTurns.map((turn) => turn.id),
       chatId: input.chatId,
-      messageId: input.userMessageId,
-      reason: gate.reason,
-    });
-  }
-  if (priorChatTurns.length) {
-    await markChatTurnsUsed({
-      userId: input.userId,
-      turnIds: priorChatTurns.map((turn) => turn.id),
-      chatId: input.chatId,
-      messageId: input.userMessageId,
+      userMessageId: input.userMessageId,
       reason: gate.reason,
     });
   }
@@ -625,6 +622,38 @@ export async function retrieveRelevantMemoryForTurn(input: {
     chatTurnIds: promptPriorChatTurns.map((turn) => turn.id),
     summarySectionIds: promptSummarySections.map((section) => section.id),
   };
+}
+
+export async function recordMemoryRetrievalUsage(input: {
+  userId: string;
+  memoryIds: string[];
+  chatTurnIds: string[];
+  chatId?: string | null;
+  userMessageId?: string | null;
+  reason?: string | null;
+}) {
+  const memoryIds = [...new Set(input.memoryIds)].filter(Boolean);
+  const chatTurnIds = [...new Set(input.chatTurnIds)].filter(Boolean);
+  await Promise.all([
+    memoryIds.length
+      ? markMemoriesUsed({
+          userId: input.userId,
+          memoryIds,
+          chatId: input.chatId,
+          messageId: input.userMessageId,
+          reason: input.reason ?? undefined,
+        })
+      : Promise.resolve(),
+    chatTurnIds.length
+      ? markChatTurnsUsed({
+          userId: input.userId,
+          turnIds: chatTurnIds,
+          chatId: input.chatId,
+          messageId: input.userMessageId,
+          reason: input.reason ?? undefined,
+        })
+      : Promise.resolve(),
+  ]);
 }
 
 function dedupeById<T extends { id: string }>(items: T[]) {
@@ -1009,6 +1038,7 @@ async function shouldUseMemory(input: {
   topicName: string;
   contextMessages: PersistedMessage[];
   intent: MemoryIntent;
+  skipLlmGate?: boolean;
 }) {
   if (
     input.intent === "explicit_remember" ||
@@ -1034,6 +1064,13 @@ async function shouldUseMemory(input: {
     return {
       useMemory: false,
       reason: "Heuristic found no personal, continuity, remember, or forget cue.",
+      query: input.message,
+    };
+  }
+  if (input.skipLlmGate) {
+    return {
+      useMemory: true,
+      reason: "Fast pre-stream heuristic found a relevant memory cue.",
       query: input.message,
     };
   }
@@ -1558,7 +1595,7 @@ async function runWithTimeout<T>(promise: Promise<T>, timeoutMs: number) {
   }
 }
 
-async function embedText(value: string) {
+async function embedText(value: string, timeoutMs = defaultEmbeddingTimeoutMs) {
   if (!hasOpenAiApiKey()) return null;
   const trimmed = value.trim();
   if (!trimmed) return null;
@@ -1568,7 +1605,7 @@ async function embedText(value: string) {
       model: resolveEmbeddingModelName(),
       value: trimmed.slice(0, 4000),
       dimensions: 512,
-      abortSignal: AbortSignal.timeout(10_000),
+      abortSignal: AbortSignal.timeout(timeoutMs),
     });
   } catch {
     return null;
