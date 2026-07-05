@@ -214,8 +214,9 @@ function getCandidateSourceFiles() {
 
   cachedCandidateSourceFiles = files.filter((path) => {
     const relativePath = relative(root, path);
-    if (relativePath.startsWith("app/api/") || relativePath.startsWith("app/admin/")) return false;
-    if (relativePath.startsWith("app/") && skippedAppSegments.has(relativePath.split("/")[1])) return false;
+    const routePath = stripRouteGroupSegments(relativePath);
+    if (routePath.startsWith("app/api/") || routePath.startsWith("app/admin/")) return false;
+    if (routePath.startsWith("app/") && skippedAppSegments.has(routePath.split("/")[1])) return false;
     if (relativePath === "lib/content/languages.ts") return false;
     return /\.(?:tsx?|md)$/.test(path) && !path.endsWith(".d.ts");
   });
@@ -223,6 +224,7 @@ function getCandidateSourceFiles() {
 }
 
 function fileBelongsToNamespace(relativePath: string, namespace: string) {
+  const routePath = stripRouteGroupSegments(relativePath);
   if (namespace === siteTranslationNamespace) return true;
   if (namespace === marketingShellTranslationNamespace) {
     return [
@@ -234,42 +236,50 @@ function fileBelongsToNamespace(relativePath: string, namespace: string) {
   }
   if (namespace.startsWith("blog:")) {
     const slug = namespace.slice("blog:".length);
-    return relativePath === `content/blog/${slug}.md`;
+    return routePath === `content/blog/${slug}.md`;
   }
   if (namespace.startsWith("legal:")) {
     const page = namespace.slice("legal:".length);
-    if (relativePath === `app/${page}/page.tsx`) return true;
-    if (relativePath.startsWith("components/legal/")) return true;
-    return page === "privacy" && relativePath === "lib/content/extracted-pages.ts";
+    if (routePath === `app/${page}/page.tsx`) return true;
+    if (routePath.startsWith("components/legal/")) return true;
+    return page === "privacy" && routePath === "lib/content/extracted-pages.ts";
   }
   if (!namespace.startsWith("route:")) return false;
 
   const route = namespace.slice("route:".length);
   if (route === "home") {
     return (
-      relativePath === "app/page.tsx" ||
-      relativePath === "components/marketing/MarketingVideoEngine.tsx" ||
-      relativePath === "lib/content/landing.ts"
+      routePath === "app/page.tsx" ||
+      routePath === "components/marketing/MarketingVideoEngine.tsx" ||
+      routePath === "lib/content/landing.ts"
     );
   }
   if (route === "chat-public") {
     return (
-      relativePath === "app/chat/page.tsx" ||
-      relativePath === "app/chat/[chatId]/page.tsx" ||
-      contentFileBelongsToRoute(relativePath, route)
+      routePath === "app/chat/page.tsx" ||
+      routePath === "app/chat/[chatId]/page.tsx" ||
+      contentFileBelongsToRoute(routePath, route)
     );
   }
   if (route === "blog") {
     return (
-      relativePath.startsWith("app/blog/") ||
-      relativePath === "app/blog/page.tsx" ||
-      /^lib\/content\/blog(?:-|\.ts)/.test(relativePath) ||
-      relativePath.startsWith("content/blog/")
+      routePath.startsWith("app/blog/") ||
+      routePath === "app/blog/page.tsx" ||
+      /^lib\/content\/blog(?:-|\.ts)/.test(routePath) ||
+      routePath.startsWith("content/blog/")
     );
   }
-  if (relativePath === `app/${route}/page.tsx` || relativePath.startsWith(`app/${route}/[`)) return true;
+  if (routePath === `app/${route}/page.tsx` || routePath.startsWith(`app/${route}/[`)) return true;
 
-  return contentFileBelongsToRoute(relativePath, route);
+  return contentFileBelongsToRoute(routePath, route);
+}
+
+function stripRouteGroupSegments(relativePath: string) {
+  if (!relativePath.startsWith("app/")) return relativePath;
+  return relativePath
+    .split("/")
+    .filter((segment, index) => index === 0 || !/^\([^)]+\)$/.test(segment))
+    .join("/");
 }
 
 function contentFileBelongsToRoute(relativePath: string, route: string) {
@@ -457,7 +467,11 @@ function isVisibleStringLiteral(node: ts.StringLiteral | ts.NoSubstitutionTempla
   if (!parent) return true;
   if (ts.isImportDeclaration(parent) || ts.isExportDeclaration(parent)) return false;
   if (ts.isExternalModuleReference(parent)) return false;
-  if (ts.isCallExpression(parent) && parent.expression.getText().includes("require")) return false;
+  if (ts.isCallExpression(parent)) {
+    const callee = parent.expression.getText();
+    if (callee.includes("require")) return false;
+    if (isClassNameHelperCall(callee)) return false;
+  }
   if (ts.isJsxAttribute(parent)) {
     const name = parent.name.getText();
     if (skippedJsxAttributes.has(name)) return false;
@@ -468,6 +482,10 @@ function isVisibleStringLiteral(node: ts.StringLiteral | ts.NoSubstitutionTempla
     if (["href", "src", "url", "path", "slug", "id", "icon", "className"].includes(name)) return false;
   }
   return true;
+}
+
+function isClassNameHelperCall(callee: string) {
+  return callee === "cn" || callee === "clsx" || callee === "cva" || callee === "twMerge";
 }
 
 function isVisibleTextExpression(node: ts.Expression) {

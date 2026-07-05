@@ -62,6 +62,9 @@ const siteTranslationTraceFiles = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  experimental: {
+    globalNotFound: true,
+  },
   outputFileTracingIncludes: {
     "/": siteTranslationTraceFiles,
     "/about": siteTranslationTraceFiles,

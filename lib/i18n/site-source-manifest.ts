@@ -2,7 +2,7 @@
 // Do not edit by hand.
 export const siteSourceManifest = {
   "marketing-site": {
-    "sourceHash": "d753ef7bc078ffb1c49fe4336129708db60eb5a3f4ef68db157fe1697d42d8aa",
+    "sourceHash": "f4b2e8b2987706eb7446996c7703d7e1e772fb13f00025b8ae9a70f3480d33b3",
     "sourceStrings": {
       "site.69de268ddc00988413": ", and when to open inspir.",
       "site.b6ad3fa84a3b2c302d": "\"AI in classrooms\"",
@@ -2524,6 +2524,7 @@ export const siteSourceManifest = {
       "site.dccd649923470ea5e7": "Package and share study resources",
       "site.50d7e53b69c42e76c1": "Package my notes for a group",
       "site.bc3023b36063a7681d": "Page not found",
+      "site.2b6cf29bbae83a405d": "Page not found | inspir",
       "site.3e915977da1859f65b": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
       "site.122fda4a9050598743": "Pair flashcards with understanding",
       "site.c6fc0dbcb37ace6b2e": "Pair terms, definitions, causes, and examples",

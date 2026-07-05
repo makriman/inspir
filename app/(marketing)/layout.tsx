@@ -1,12 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
-import "./globals.css";
+import "../globals.css";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { MarketingServerLocalizer } from "@/components/i18n/MarketingServerLocalizer";
 import { getRequestLanguageConfig, getRequestPathname } from "@/lib/i18n/request-locale";
 import { localizedMarketingMetadata, localizeMarketingStructuredData } from "@/lib/i18n/metadata";
-import { isChatAppPath } from "@/lib/routes/chat-path";
 import {
   absoluteUrl,
   siteDescription,
@@ -30,34 +29,6 @@ const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const pathname = await getRequestPathname();
-  const isChatApp = isChatAppPath(pathname);
-
-  if (isChatApp) {
-    return {
-      metadataBase: new URL(siteUrl),
-      title: {
-        default: "Chat | inspir",
-        template: "%s | inspir",
-      },
-      applicationName: siteName,
-      manifest: "/manifest.webmanifest",
-      icons: {
-        icon: [
-          { url: "/inspir-app-icon-192.png", sizes: "192x192", type: "image/png" },
-          { url: "/inspir-app-icon-512.png", sizes: "512x512", type: "image/png" },
-        ],
-        shortcut: "/inspir-app-icon-192.png",
-        apple: [{ url: "/inspir-app-icon-180.png", sizes: "180x180", type: "image/png" }],
-      },
-      formatDetection: {
-        email: false,
-        address: false,
-        telephone: false,
-      },
-    };
-  }
-
   const localized = await localizedMarketingMetadata({
     path: "/",
     title: siteTitle,
@@ -143,14 +114,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const [languageConfig, pathname] = await Promise.all([getRequestLanguageConfig(), getRequestPathname()]);
-  const isChatApp = isChatAppPath(pathname);
-  const localizedRootJsonLd = isChatApp ? [] : await localizeMarketingStructuredData(rootJsonLd, pathname);
+  const localizedRootJsonLd = await localizeMarketingStructuredData(rootJsonLd, pathname);
   return (
     <html lang={languageConfig.locale} dir={languageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full bg-[#171614] text-white">
-        {isChatApp ? null : <JsonLdScripts items={localizedRootJsonLd} />}
-        {isChatApp ? children : <MarketingServerLocalizer>{children}</MarketingServerLocalizer>}
-        {isChatApp ? null : <PwaInstallPrompt />}
+        <JsonLdScripts items={localizedRootJsonLd} />
+        <MarketingServerLocalizer>{children}</MarketingServerLocalizer>
+        <PwaInstallPrompt />
       </body>
     </html>
   );
