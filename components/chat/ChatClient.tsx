@@ -2018,6 +2018,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
           messageCount={visibleChatMessages.length}
           sending={sending}
           streamingMessageId={streamingMessageId}
+          viewportRef={listRef}
         />
         <MessageScroller className="inspir-message-scroller">
           <MessageScrollerViewport ref={listRef} className="inspir-message-scroll app-scrollbar">
@@ -2087,6 +2088,7 @@ function StandardChatScrollFollow({
   messageCount,
   sending,
   streamingMessageId,
+  viewportRef,
 }: {
   activeChatId: string | undefined;
   activeTopicId: string;
@@ -2094,13 +2096,41 @@ function StandardChatScrollFollow({
   messageCount: number;
   sending: boolean;
   streamingMessageId: string | null;
+  viewportRef: RefObject<HTMLDivElement | null>;
 }) {
   const { scrollToEnd } = useMessageScroller();
   const shouldFollow = sending || awaitingResponse || Boolean(streamingMessageId);
+  const autoFollowRef = useRef(true);
+
+  const isNearEnd = useCallback((element: HTMLElement, threshold = 240) => {
+    return element.scrollHeight - element.scrollTop - element.clientHeight <= threshold;
+  }, []);
+
+  const pinToEnd = useCallback(() => {
+    const element = viewportRef.current;
+    if (!element) {
+      scrollToEnd({ behavior: "auto" });
+      return;
+    }
+    if (!autoFollowRef.current && !isNearEnd(element)) return;
+    element.scrollTop = element.scrollHeight;
+  }, [isNearEnd, scrollToEnd, viewportRef]);
+
+  useEffect(() => {
+    const element = viewportRef.current;
+    if (!element) return;
+    const handleScroll = () => {
+      autoFollowRef.current = isNearEnd(element);
+    };
+    element.addEventListener("scroll", handleScroll, { passive: true });
+    return () => element.removeEventListener("scroll", handleScroll);
+  }, [isNearEnd, viewportRef]);
 
   useLayoutEffect(() => {
     if (!shouldFollow) return;
+    autoFollowRef.current = true;
     scrollToEnd({ behavior: "auto" });
+    pinToEnd();
   }, [
     activeChatId,
     activeTopicId,
@@ -2110,7 +2140,35 @@ function StandardChatScrollFollow({
     sending,
     shouldFollow,
     streamingMessageId,
+    pinToEnd,
   ]);
+
+  useEffect(() => {
+    if (!shouldFollow) return;
+    const element = viewportRef.current;
+    if (!element) return;
+
+    let frameId: number | null = null;
+    const sync = () => {
+      pinToEnd();
+      frameId = window.requestAnimationFrame(sync);
+    };
+
+    const content = element.querySelector<HTMLElement>('[data-slot="message-scroller-content"]');
+    const observer =
+      content && typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(() => {
+            pinToEnd();
+          })
+        : null;
+    if (content) observer?.observe(content);
+    frameId = window.requestAnimationFrame(sync);
+
+    return () => {
+      if (frameId !== null) window.cancelAnimationFrame(frameId);
+      observer?.disconnect();
+    };
+  }, [pinToEnd, shouldFollow, viewportRef]);
 
   return null;
 }
