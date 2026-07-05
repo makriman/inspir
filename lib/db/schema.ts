@@ -128,15 +128,6 @@ export const topics = sqliteTable("topics", {
   updatedAt: timestampMsNow("updated_at"),
 });
 
-export const topicLegacyIds = sqliteTable("topic_legacy_ids", {
-  legacyId: text("legacy_id").primaryKey(),
-  topicId: text("topic_id")
-    .references(() => topics.id, { onDelete: "cascade" })
-    .notNull(),
-  source: text("source").notNull(),
-  confidence: text("confidence").notNull().default("derived"),
-});
-
 export const chats = sqliteTable(
   "chats",
   {
@@ -144,7 +135,6 @@ export const chats = sqliteTable(
     userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
     userEmailSnapshot: text("user_email_snapshot"),
     topicId: text("topic_id").references(() => topics.id, { onDelete: "set null" }),
-    legacyTopicId: text("legacy_topic_id"),
     topicNameSnapshot: text("topic_name_snapshot"),
     title: text("title"),
     isArchived: booleanInt("is_archived").notNull().default(false),
@@ -169,9 +159,6 @@ export const messages = sqliteTable(
     metadata: jsonText<Record<string, unknown>>("metadata")
       .notNull()
       .$defaultFn(() => ({})),
-    legacySenderId: text("legacy_sender_id"),
-    legacyUserId: text("legacy_user_id"),
-    legacyTopicId: text("legacy_topic_id"),
     createdAt: timestampMsNow("created_at"),
   },
   (table) => ({
@@ -471,27 +458,6 @@ export const memoryEvents = sqliteTable(
   }),
 );
 
-export const legacyChatSnapshots = sqliteTable("legacy_chat_snapshots", {
-  id: uuidText("id").primaryKey(),
-  assistantRaw: text("assistant_raw"),
-  messagesRaw: text("messages_raw"),
-  questionsRaw: text("questions_raw"),
-  topicRaw: text("topic_raw"),
-  topicName: text("topic_name"),
-  legacyTopicId: text("legacy_topic_id"),
-  userEmail: text("user_email"),
-  importedAt: timestampMsNow("imported_at"),
-});
-
-export const legacyDummyData = sqliteTable("legacy_dummy_data", {
-  id: uuidText("id").primaryKey(),
-  dummy: text("dummy"),
-  legacyTopicId: text("legacy_topic_id"),
-  creatorLegacyId: text("creator_legacy_id"),
-  createdAt: timestampMs("created_at"),
-  modifiedAt: timestampMs("modified_at"),
-});
-
 export const appTranslations = sqliteTable(
   "app_translations",
   {
@@ -531,21 +497,6 @@ export const appTranslationSourceStrings = sqliteTable(
   }),
 );
 
-export const sourceTimestampPrecision = sqliteTable(
-  "source_timestamp_precision",
-  {
-    sourceTable: text("source_table").notNull(),
-    sourcePk: text("source_pk").notNull(),
-    columnName: text("column_name").notNull(),
-    originalTimestamp: text("original_timestamp").notNull(),
-    d1TimestampMs: integer("d1_timestamp_ms").notNull(),
-  },
-  (table) => ({
-    pk: primaryKey({ columns: [table.sourceTable, table.sourcePk, table.columnName] }),
-    tableIdx: index("source_timestamp_precision_table_idx").on(table.sourceTable, table.columnName),
-  }),
-);
-
 export type Topic = typeof topics.$inferSelect;
 export type Chat = typeof chats.$inferSelect;
 export type Message = typeof messages.$inferSelect;
@@ -566,6 +517,5 @@ export type UserMemorySummary = typeof userMemorySummaries.$inferSelect;
 export type MemorySynthesisRun = typeof memorySynthesisRuns.$inferSelect;
 export type MemorySourceFeedback = typeof memorySourceFeedback.$inferSelect;
 export type MemoryEvent = typeof memoryEvents.$inferSelect;
-export type SourceTimestampPrecision = typeof sourceTimestampPrecision.$inferSelect;
 
 export const sqlitePragmas = sql`pragma foreign_keys = on`;
