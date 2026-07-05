@@ -145,16 +145,23 @@ export function runSanitizedBuildCommand(
         }
       }
 
+      let localPreviewConfig: string | null = null;
+      let commandArgs = passthroughArgs;
       if (mode === "opennext-preview") {
         writeLocalPreviewRuntimeVars();
         Object.assign(env, localPreviewRuntimeEnv());
+        localPreviewConfig = writeLocalPreviewWranglerConfig();
+        commandArgs = passthroughArgs.some((arg) => arg === "--config" || arg === "-c" || arg.startsWith("--config="))
+          ? passthroughArgs
+          : ["--config", localPreviewConfig, ...passthroughArgs];
       }
 
-      const result = spawnSync(command.executable, [...command.args, ...passthroughArgs], {
+      const result = spawnSync(command.executable, [...command.args, ...commandArgs], {
         cwd: process.cwd(),
         env,
         stdio: "inherit",
       });
+      if (localPreviewConfig) fs.rmSync(localPreviewConfig, { force: true });
       if (result.status !== 0) {
         return deployEvidence.finish(result.status ?? 1, {
           commandExecuted: true,
@@ -230,6 +237,33 @@ function writeLocalPreviewRuntimeVars() {
     sanitizedDotEnvContent(process.cwd(), { includeLocalPreviewRuntimeSecrets: true }),
     { mode: 0o600 },
   );
+}
+
+function writeLocalPreviewWranglerConfig() {
+  const cwd = process.cwd();
+  const configPath = path.join(process.cwd(), "wrangler.jsonc");
+  const config = JSON.parse(fs.readFileSync(configPath, "utf8")) as {
+    main?: string;
+    assets?: { directory?: string };
+    secrets?: { required?: string[] };
+  };
+  if (typeof config.main === "string") config.main = path.resolve(cwd, config.main);
+  if (typeof config.assets?.directory === "string") {
+    config.assets = {
+      ...config.assets,
+      directory: path.resolve(cwd, config.assets.directory),
+    };
+  }
+  const requiredSecrets = new Set(config.secrets?.required ?? []);
+  requiredSecrets.add("E2E_TEST_AUTH_EMAIL");
+  requiredSecrets.add("E2E_TEST_AUTH_SECRET");
+  config.secrets = {
+    ...config.secrets,
+    required: [...requiredSecrets],
+  };
+  const previewConfigPath = ".wrangler.preview.local.jsonc";
+  fs.writeFileSync(path.join(cwd, previewConfigPath), `${JSON.stringify(config, null, 2)}\n`, { mode: 0o600 });
+  return previewConfigPath;
 }
 
 function createWorkerDeployEvidenceWriter(

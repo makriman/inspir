@@ -36,8 +36,6 @@ declare global {
     AUTH_GOOGLE_SECRET: string;
     ADMIN_EMAILS: string;
     CRON_SECRET: string;
-    E2E_TEST_AUTH_EMAIL: string;
-    E2E_TEST_AUTH_SECRET: string;
   }
 }
 
