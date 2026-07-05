@@ -1693,7 +1693,6 @@ function ChatClientLayout(controller: ChatClientController) {
     translationBundle,
     translationRootRef,
   } = controller;
-
   return (
     <div
       key={`${translationBundle.language}-${translationBundle.sourceHash}`}
