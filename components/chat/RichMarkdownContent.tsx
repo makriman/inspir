@@ -186,6 +186,13 @@ function lastStableBlockBoundary(content: string) {
 
 function parseStreamingMarkdownTail(content: string): StreamingMarkdownBlock[] {
   const lines = content.replace(/\r\n?/g, "\n").split("\n");
+  const firstFenceLineIndex = lines.findIndex((line) => /^`{1,3}[\w-]*\s*$/.test(line.trim()));
+  if (firstFenceLineIndex > 0) {
+    return [
+      ...parseStreamingMarkdownTail(lines.slice(0, firstFenceLineIndex).join("\n")),
+      ...parseStreamingMarkdownTail(lines.slice(firstFenceLineIndex).join("\n")),
+    ];
+  }
   const nonEmptyLines = lines.map((line) => line.trim()).filter(Boolean);
   const firstLine = nonEmptyLines[0] ?? "";
 
