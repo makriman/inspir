@@ -594,6 +594,7 @@ type ChatClientState = {
   activeTopicId: string;
   activeChatId: string | undefined;
   messages: Message[];
+  streamingMessageId: string | null;
   activityRun: ActivityRun | null;
   input: string;
   sending: boolean;
@@ -659,6 +660,7 @@ function useChatClientController({
       activeTopicId,
       activeChatId,
       messages,
+      streamingMessageId,
       activityRun,
       input,
       sending,
@@ -689,6 +691,7 @@ function useChatClientController({
     activeTopicId: initialTopicId,
     activeChatId: initialChatId,
     messages: initialMessages,
+    streamingMessageId: null,
     activityRun: initialActivityRun,
     input: "",
     sending: false,
@@ -729,6 +732,8 @@ function useChatClientController({
   const setActiveChatId = (value: SetStateAction<ChatClientState["activeChatId"]>) =>
     updateChatField("activeChatId", value);
   const setMessages = (value: SetStateAction<ChatClientState["messages"]>) => updateChatField("messages", value);
+  const setStreamingMessageId = (value: SetStateAction<ChatClientState["streamingMessageId"]>) =>
+    updateChatField("streamingMessageId", value);
   const setActivityRun = (value: SetStateAction<ChatClientState["activityRun"]>) =>
     updateChatField("activityRun", value);
   const setInput = (value: SetStateAction<ChatClientState["input"]>) => updateChatField("input", value);
@@ -774,6 +779,9 @@ function useChatClientController({
   const translationRootRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
   const requestSeqRef = useRef(0);
+  const scrollFrameRef = useRef<number | null>(null);
+  const shouldAutoFollowMessagesRef = useRef(true);
+  const forceAutoFollowMessagesRef = useRef(false);
   const sidebarHydratedRef = useRef(false);
   const [sidebarPersonalizationReady, setSidebarPersonalizationReady] = useState(false);
   const translationTextMap = useMemo(() => buildTranslationTextMap(translationBundle), [translationBundle]);
@@ -872,9 +880,107 @@ function useChatClientController({
     void loadMemoryDashboard();
   }, [isGuest, profileOpen, memoryDashboard, memoryLoading, loadMemoryDashboard]);
 
+  const isMessageScrollNearEnd = useCallback((threshold = 144) => {
+    const element = listRef.current;
+    if (!element) return true;
+    return element.scrollHeight - element.scrollTop - element.clientHeight <= threshold;
+  }, []);
+
+  const scheduleMessageScrollToEnd = useCallback((behavior: ScrollBehavior = "auto") => {
+    if (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current) return;
+    if (scrollFrameRef.current !== null) window.cancelAnimationFrame(scrollFrameRef.current);
+    scrollFrameRef.current = window.requestAnimationFrame(() => {
+      scrollFrameRef.current = null;
+      const element = listRef.current;
+      if (!element || (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current)) return;
+      element.scrollTo({ top: element.scrollHeight, behavior });
+    });
+  }, []);
+
   useEffect(() => {
-    listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages, sending, activityRun]);
+    return () => {
+      if (scrollFrameRef.current !== null) window.cancelAnimationFrame(scrollFrameRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    const element = listRef.current;
+    if (!element) return;
+
+    let pointerScrollIntent = false;
+    const handleScroll = () => {
+      if (pointerScrollIntent) {
+        handleUserScrollIntent();
+        return;
+      }
+      if (!isMessageScrollNearEnd()) return;
+      shouldAutoFollowMessagesRef.current = true;
+      forceAutoFollowMessagesRef.current = true;
+    };
+    const handleUserScrollIntent = () => {
+      window.requestAnimationFrame(() => {
+        const shouldFollow = isMessageScrollNearEnd();
+        shouldAutoFollowMessagesRef.current = shouldFollow;
+        forceAutoFollowMessagesRef.current = shouldFollow;
+      });
+    };
+    const handleScrollKey = (event: globalThis.KeyboardEvent) => {
+      if (["ArrowDown", "ArrowUp", "End", "Home", "PageDown", "PageUp", " "].includes(event.key)) {
+        handleUserScrollIntent();
+      }
+    };
+    const handlePointerDown = () => {
+      pointerScrollIntent = true;
+    };
+    const handlePointerUp = () => {
+      if (pointerScrollIntent) handleUserScrollIntent();
+      pointerScrollIntent = false;
+    };
+
+    element.addEventListener("scroll", handleScroll, { passive: true });
+    element.addEventListener("wheel", handleUserScrollIntent, { passive: true });
+    element.addEventListener("touchmove", handleUserScrollIntent, { passive: true });
+    element.addEventListener("keydown", handleScrollKey);
+    element.addEventListener("pointerdown", handlePointerDown);
+    window.addEventListener("pointerup", handlePointerUp);
+    return () => {
+      element.removeEventListener("scroll", handleScroll);
+      element.removeEventListener("wheel", handleUserScrollIntent);
+      element.removeEventListener("touchmove", handleUserScrollIntent);
+      element.removeEventListener("keydown", handleScrollKey);
+      element.removeEventListener("pointerdown", handlePointerDown);
+      window.removeEventListener("pointerup", handlePointerUp);
+    };
+  }, [isMessageScrollNearEnd]);
+
+  useEffect(() => {
+    const element = listRef.current;
+    if (!element || typeof ResizeObserver === "undefined") return;
+    const contentElement =
+      element.querySelector<HTMLElement>('[data-slot="message-scroller-content"]') ??
+      (element.firstElementChild instanceof HTMLElement ? element.firstElementChild : null);
+    if (!contentElement) return;
+
+    const observer = new ResizeObserver(() => {
+      scheduleMessageScrollToEnd("auto");
+    });
+    observer.observe(contentElement);
+    return () => observer.disconnect();
+  }, [activeChatId, activeTopicId, scheduleMessageScrollToEnd]);
+
+  useEffect(() => {
+    shouldAutoFollowMessagesRef.current = true;
+    forceAutoFollowMessagesRef.current = true;
+    scheduleMessageScrollToEnd("auto");
+  }, [activeChatId, activeTopicId, scheduleMessageScrollToEnd]);
+
+  useEffect(() => {
+    scheduleMessageScrollToEnd("auto");
+  }, [visibleChatMessages.length, activityRun, scheduleMessageScrollToEnd]);
+
+  useEffect(() => {
+    scheduleMessageScrollToEnd("auto");
+  }, [messages, streamingMessageId, scheduleMessageScrollToEnd]);
 
   useEffect(() => {
     const textarea = inputRef.current;
@@ -903,8 +1009,7 @@ function useChatClientController({
     requestSeqRef.current += 1;
     abortRef.current?.abort();
     abortRef.current = null;
-    setAwaitingResponse(false);
-    setSending(false);
+    updateChatState({ awaitingResponse: false, sending: false, streamingMessageId: null });
   }
 
   async function loadChat(chatId: string, options?: { preserveRequest?: boolean }) {
@@ -957,6 +1062,9 @@ function useChatClientController({
     setSending(true);
     setAwaitingResponse(true);
     setRecentOpen(false);
+    setStreamingMessageId(null);
+    shouldAutoFollowMessagesRef.current = true;
+    forceAutoFollowMessagesRef.current = true;
 
     const now = new Date();
     const userMessage: Message = {
@@ -967,9 +1075,11 @@ function useChatClientController({
     };
     const assistantMessageId = `local-assistant-${now.getTime()}`;
     if (appendUser) setMessages((current) => [...current, userMessage]);
+    scheduleMessageScrollToEnd("auto");
 
     const controller = new AbortController();
     abortRef.current = controller;
+    let cancelPendingAssistantFlush: (() => void) | null = null;
 
     try {
       const contextMessages = messages
@@ -1012,6 +1122,8 @@ function useChatClientController({
       const decoder = new TextDecoder();
       let assistantText = "";
       let assistantInserted = false;
+      let assistantFlushTimeout: number | null = null;
+      let assistantFlushFrame: number | null = null;
 
       function ensureCurrentStream() {
         if (isCurrentRequest()) return;
@@ -1019,36 +1131,81 @@ function useChatClientController({
         throw new StaleChatRequestError();
       }
 
+      function cancelAssistantFlush() {
+        if (assistantFlushTimeout !== null) {
+          window.clearTimeout(assistantFlushTimeout);
+          assistantFlushTimeout = null;
+        }
+        if (assistantFlushFrame !== null) {
+          window.cancelAnimationFrame(assistantFlushFrame);
+          assistantFlushFrame = null;
+        }
+      }
+      cancelPendingAssistantFlush = cancelAssistantFlush;
+
+      function flushAssistantText() {
+        cancelAssistantFlush();
+        if (!assistantText) return;
+        if (!assistantInserted) {
+          assistantInserted = true;
+          updateChatState((current) => ({
+            awaitingResponse: false,
+            streamingMessageId: assistantMessageId,
+            messages: [
+              ...current.messages,
+              {
+                id: assistantMessageId,
+                role: "assistant",
+                content: assistantText,
+                createdAt: new Date(),
+              },
+            ],
+          }));
+        } else {
+          updateChatState((current) => ({
+            messages: current.messages.map((message) =>
+              message.id === assistantMessageId ? { ...message, content: assistantText } : message,
+            ),
+          }));
+        }
+        scheduleMessageScrollToEnd("auto");
+      }
+
+      function scheduleAssistantFlush() {
+        if (!assistantInserted) {
+          flushAssistantText();
+          return;
+        }
+        if (assistantFlushTimeout !== null || assistantFlushFrame !== null) return;
+        assistantFlushTimeout = window.setTimeout(() => {
+          assistantFlushTimeout = null;
+          assistantFlushFrame = window.requestAnimationFrame(() => {
+            assistantFlushFrame = null;
+            flushAssistantText();
+          });
+        }, 48);
+      }
+
       async function readAssistantStream(): Promise<void> {
         ensureCurrentStream();
         const { value, done } = await reader.read();
         ensureCurrentStream();
-        if (done) return;
-        assistantText += decoder.decode(value, { stream: true });
-        if (!assistantInserted) {
-          assistantInserted = true;
-          setAwaitingResponse(false);
-          setMessages((current) => [
-            ...current,
-            {
-              id: assistantMessageId,
-              role: "assistant",
-              content: assistantText,
-              createdAt: new Date(),
-            },
-          ]);
-          return readAssistantStream();
+        if (done) {
+          const finalDecoderText = decoder.decode();
+          if (finalDecoderText) assistantText += finalDecoderText;
+          flushAssistantText();
+          return;
         }
-
-        setMessages((current) =>
-          current.map((message) =>
-            message.id === assistantMessageId ? { ...message, content: assistantText } : message,
-          ),
-        );
+        assistantText += decoder.decode(value, { stream: true });
+        scheduleAssistantFlush();
         return readAssistantStream();
       }
 
       await readAssistantStream();
+      if (isCurrentRequest()) {
+        setStreamingMessageId(null);
+        scheduleMessageScrollToEnd("auto");
+      }
       if (isCurrentRequest() && isGuest) {
         const usedFromServer = Number(response.headers.get("x-guest-messages-used"));
         const nextUsed = Number.isFinite(usedFromServer)
@@ -1065,9 +1222,11 @@ function useChatClientController({
         }
       }
     } catch (error) {
+      cancelPendingAssistantFlush?.();
       if (error instanceof StaleChatRequestError) return;
       if (!isCurrentRequest()) return;
       setAwaitingResponse(false);
+      setStreamingMessageId(null);
       if ((error as Error).name === "AbortError") {
         setMessages((current) => [
           ...current,
@@ -1089,10 +1248,14 @@ function useChatClientController({
           },
         ]);
       }
+      scheduleMessageScrollToEnd("auto");
     } finally {
+      cancelPendingAssistantFlush?.();
       if (isCurrentRequest()) {
         abortRef.current = null;
         setAwaitingResponse(false);
+        setStreamingMessageId(null);
+        scheduleMessageScrollToEnd("auto");
         setSending(false);
       }
     }
@@ -1119,6 +1282,7 @@ function useChatClientController({
     if (lastUserIndex < 0) return;
     const lastUser = messages[lastUserIndex];
     setMessages((current) => current.slice(0, lastUserIndex + 1));
+    shouldAutoFollowMessagesRef.current = true;
     void sendMessage(lastUser.content, false);
   }
 
@@ -1158,6 +1322,7 @@ function useChatClientController({
   function selectTopic(topicId: string) {
     const nextTopic = topics.find((topic) => topic.id === topicId);
     cancelActiveRequest();
+    shouldAutoFollowMessagesRef.current = true;
     setActiveTopicId(topicId);
     setActiveChatId(undefined);
     setMessages([]);
@@ -1413,6 +1578,7 @@ function useChatClientController({
     listRef,
     loadChat,
     messages,
+    streamingMessageId,
     memoryDashboard,
     memoryError,
     memoryLoading,
@@ -1795,6 +1961,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
     setInput,
     setMemorySourceModal,
     stopGeneration,
+    streamingMessageId,
     submitMessage,
     userDisplayName,
     visibleChatMessages,
@@ -1802,7 +1969,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
 
   return (
     <main className="bubble-workspace">
-      <MessageScrollerProvider autoScroll defaultScrollPosition="end" scrollMargin={112}>
+      <MessageScrollerProvider autoScroll={false} defaultScrollPosition="end" scrollMargin={112}>
         <MessageScroller className="bubble-message-scroller">
           <MessageScrollerViewport ref={listRef} className="bubble-message-scroll app-scrollbar">
             <MessageScrollerContent className="bubble-message-stack">
@@ -1820,6 +1987,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
                 <MessageScrollerItem key={message.id} messageId={message.id} scrollAnchor>
                   <MessageBubble
                     message={message}
+                    isStreaming={message.id === streamingMessageId}
                     userLabel={userDisplayName}
                     onMemorySources={(sources) => setMemorySourceModal({ messageId: message.id, sources })}
                   />
@@ -5356,11 +5524,13 @@ function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
 
 function MessageBubble({
   message,
+  isStreaming = false,
   userLabel = "Learner",
   assistantLabel = "Coach response",
   onMemorySources,
 }: {
   message: Message;
+  isStreaming?: boolean;
   userLabel?: string;
   assistantLabel?: string;
   onMemorySources?: (sources: MessageMemorySource[]) => void;
@@ -5395,7 +5565,7 @@ function MessageBubble({
                 {isUser ? <UserRound size={14} /> : <Bot size={14} />}
                 <strong>{isUser ? userLabel : assistantLabel}</strong>
               </MessageHeader>
-              <RichMarkdownContent content={message.content} />
+              <RichMarkdownContent content={message.content} streaming={isStreaming} />
               <MessageFooter className="bubble-message-footer">
                 <time>{formatBubbleDate(message.createdAt)}</time>
                 {!isUser && memorySources.length > 0 && onMemorySources ? (

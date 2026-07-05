@@ -2234,6 +2234,16 @@ a {
   overflow-wrap: anywhere;
 }
 
+.bubble-rich-content.is-streaming {
+  display: block;
+}
+
+.bubble-streaming-text {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .bubble-rich-content > * + * {
   margin-top: 12px;
 }

@@ -18,6 +18,7 @@ import remarkMath from "remark-math";
 type RichMarkdownContentProps = {
   content: string;
   className?: string;
+  streaming?: boolean;
 };
 
 const supportedCodeLanguages = new Set([
@@ -93,7 +94,19 @@ const richMarkdownComponents: Components = {
   code: MarkdownCode,
 };
 
-export function RichMarkdownContent({ content, className = "bubble-rich-content" }: RichMarkdownContentProps) {
+export function RichMarkdownContent({
+  content,
+  className = "bubble-rich-content",
+  streaming = false,
+}: RichMarkdownContentProps) {
+  if (streaming) {
+    return (
+      <div className={`${className} is-streaming`} data-no-auto-translate="true">
+        <p className="bubble-streaming-text">{content}</p>
+      </div>
+    );
+  }
+
   return (
     <div className={className} data-no-auto-translate="true">
       <ReactMarkdown
