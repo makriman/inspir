@@ -11,19 +11,6 @@ export const VECTORIZE_INDEX_NAME = "inspirlearning-memory-prod";
 export const R2_BUCKET_NAME = "inspirlearning-next-cache-prod";
 export const MEMORY_POST_TURN_QUEUE_NAME = "inspirlearning-memory-post-turn-prod";
 export const MEMORY_POST_TURN_DLQ_NAME = "inspirlearning-memory-post-turn-dlq";
-export const TIMESTAMP_PRECISION_TABLE = "source_timestamp_precision";
-export const TIMESTAMP_PRECISION_RELATIVE_PATH = "cloudflare/d1-timestamp-precision.ndjson";
-export const TIMESTAMP_PRECISION_SCHEMA_STATEMENTS = [
-  `create table if not exists ${TIMESTAMP_PRECISION_TABLE} (
-    source_table text not null,
-    source_pk text not null,
-    column_name text not null,
-    original_timestamp text not null,
-    d1_timestamp_ms integer not null,
-    primary key (source_table, source_pk, column_name)
-  )`,
-  `create index if not exists source_timestamp_precision_table_idx on ${TIMESTAMP_PRECISION_TABLE} (source_table, column_name)`,
-] as const;
 
 export const LOCAL_GATE_IDS = [
   "typecheck",
@@ -31,7 +18,6 @@ export const LOCAL_GATE_IDS = [
   "lint",
   "unit-tests",
   "source-secret-scan",
-  "runtime-provider-scan",
   "next-build",
   "opennext-build",
   "opennext-artifact-secret-scan",
@@ -70,32 +56,6 @@ export const TABLE_ORDER = [
 export type TableName = (typeof TABLE_ORDER)[number];
 
 export const RUNTIME_MUTABLE_TABLES = ["llm_usage_daily", "rate_limit_windows"] as const satisfies TableName[];
-export const POST_CUTOVER_TRANSIENT_TABLES = ["rate_limit_windows"] as const satisfies TableName[];
-
-export const POST_CUTOVER_MUTABLE_TABLES = [
-  "llm_usage_daily",
-  "rate_limit_windows",
-  "users",
-  "accounts",
-  "sessions",
-  "verification_tokens",
-  "topics",
-  "topic_legacy_ids",
-  "chats",
-  "messages",
-  "activity_runs",
-  "ai_runs",
-  "user_memory_settings",
-  "user_memories",
-  "chat_memory_summaries",
-  "chat_memory_turns",
-  "user_memory_profiles",
-  "user_memory_summaries",
-  "memory_synthesis_runs",
-  "memory_events",
-  "memory_source_feedback",
-] as const satisfies TableName[];
-
 export const PRIMARY_KEY_ORDER: Record<TableName, string[]> = {
   accounts: ["provider", "provider_account_id"],
   activity_runs: ["id"],
@@ -124,28 +84,8 @@ export const PRIMARY_KEY_ORDER: Record<TableName, string[]> = {
   verification_tokens: ["identifier", "token"],
 };
 
-export type PgColumn = {
-  column_name: string;
-  data_type: string;
-  udt_name: string;
-};
-
-export type ValidationSnapshot = {
-  createdAt: string;
-  tables: Record<string, number>;
-  columns: Record<string, PgColumn[]>;
-};
-
 export type D1Value = string | number | null;
 export type D1Row = Record<string, D1Value>;
-
-export type TimestampPrecisionRow = {
-  source_table: string;
-  source_pk: string;
-  column_name: string;
-  original_timestamp: string;
-  d1_timestamp_ms: number;
-};
 
 export function getArg(name: string) {
   const index = process.argv.indexOf(name);
@@ -284,42 +224,13 @@ export function resolveBackupDir() {
   const explicit = getArg("--backup");
   if (explicit) return path.resolve(explicit);
 
-  const root = path.resolve(process.cwd(), "../inspirlearning-local-backups");
-  const entries = fs
-    .readdirSync(root, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && entry.name.startsWith("cloudflare-migration-"))
-    .map((entry) => entry.name)
-    .sort();
-
-  const latest = entries.at(-1);
-  if (!latest) throw new Error(`No cloudflare-migration-* backup directories found in ${root}`);
-  return path.join(root, latest);
-}
-
-export function canonicalDir(backupDir: string) {
-  return path.join(backupDir, "supabase", "canonical");
+  return path.resolve(process.cwd(), "tmp", "cloudflare-reports");
 }
 
 export function cloudflareDir(backupDir: string) {
   const dir = path.join(backupDir, "cloudflare");
   fs.mkdirSync(dir, { recursive: true });
   return dir;
-}
-
-export function d1TransformedDir(backupDir: string) {
-  const dir = path.join(cloudflareDir(backupDir), "d1-transformed");
-  fs.mkdirSync(dir, { recursive: true });
-  return dir;
-}
-
-export function readValidationSnapshot(backupDir: string): ValidationSnapshot {
-  return JSON.parse(fs.readFileSync(path.join(backupDir, "supabase", "validation.json"), "utf8")) as ValidationSnapshot;
-}
-
-export function columnsForTable(validation: ValidationSnapshot, table: TableName) {
-  const columns = validation.columns[table];
-  if (!columns) throw new Error(`Missing column metadata for ${table}`);
-  return new Map(columns.map((column) => [column.column_name, column]));
 }
 
 export async function* readNdjson(filePath: string): AsyncGenerator<Record<string, unknown>> {
@@ -347,41 +258,16 @@ export function createHash() {
   return crypto.createHash("sha256");
 }
 
-export function transformD1Row(raw: Record<string, unknown>, columns: Map<string, PgColumn>): D1Row {
+export function transformD1Row(raw: Record<string, unknown>): D1Row {
   const row: D1Row = {};
   for (const [key, value] of Object.entries(raw)) {
-    const column = columns.get(key);
-    row[key] = transformD1Value(value, column);
+    row[key] = transformD1Value(value);
   }
   return row;
 }
 
-export function transformD1Value(value: unknown, column?: PgColumn): D1Value {
+export function transformD1Value(value: unknown): D1Value {
   if (value === null || value === undefined) return null;
-  if (!column) return scalarValue(value);
-
-  const dataType = column.data_type.toLowerCase();
-  const udtName = column.udt_name.toLowerCase();
-
-  if (dataType.includes("timestamp")) {
-    if (typeof value === "number") return value;
-    if (typeof value !== "string") throw new Error(`Expected timestamp string, got ${typeof value}`);
-    const millis = Date.parse(value);
-    if (!Number.isFinite(millis)) throw new Error(`Invalid timestamp: ${value}`);
-    return millis;
-  }
-
-  if (dataType === "boolean") return value ? 1 : 0;
-
-  if (dataType === "json" || dataType === "jsonb" || dataType === "array" || udtName.startsWith("_")) {
-    return stableStringify(value);
-  }
-
-  if (udtName === "vector") {
-    const vector = parseVector(value);
-    return vector ? stableStringify(vector) : null;
-  }
-
   return scalarValue(value);
 }
 
@@ -407,28 +293,4 @@ export function quoteIdent(identifier: string) {
 
 export function orderByClause(table: TableName) {
   return PRIMARY_KEY_ORDER[table].map((column) => quoteIdent(column)).join(", ");
-}
-
-export function timestampPrecisionOrderByClause() {
-  return ["source_table", "source_pk", "column_name"].map(quoteIdent).join(", ");
-}
-
-export function transformedTablePath(backupDir: string, table: TableName) {
-  return path.join(d1TransformedDir(backupDir), `${table}.ndjson`);
-}
-
-export function d1ManifestPath(backupDir: string) {
-  return path.join(cloudflareDir(backupDir), "d1-import-manifest.json");
-}
-
-export function timestampPrecisionPath(backupDir: string) {
-  return path.join(backupDir, TIMESTAMP_PRECISION_RELATIVE_PATH);
-}
-
-export function vectorizeNdjsonPath(backupDir: string) {
-  return path.join(cloudflareDir(backupDir), "vectorize-memory.ndjson");
-}
-
-export function vectorizeManifestPath(backupDir: string) {
-  return path.join(cloudflareDir(backupDir), "vectorize-manifest.json");
 }

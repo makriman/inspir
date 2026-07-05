@@ -1,4 +1,4 @@
-const bubbleDateFormatter = new Intl.DateTimeFormat("en-US", {
+const appDateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
   day: "numeric",
   year: "numeric",
@@ -13,11 +13,11 @@ function coerceDate(value: Date | string) {
   return typeof value === "string" ? new Date(value) : value;
 }
 
-export function formatBubbleDate(value: Date | string | null | undefined) {
+export function formatAppDate(value: Date | string | null | undefined) {
   if (!value) return "";
   const date = coerceDate(value);
   if (Number.isNaN(date.getTime())) return "";
-  return bubbleDateFormatter
+  return appDateFormatter
     .format(date)
     .replace("AM", "am")
     .replace("PM", "pm");
@@ -31,7 +31,7 @@ export function formatLongDate(value: Date | string) {
   return longDateFormatter.format(coerceDate(value));
 }
 
-export function parseBubbleDate(value: string | undefined) {
+export function parseAppDate(value: string | undefined) {
   if (!value) return undefined;
   const trimmed = value.trim();
   if (!trimmed) return undefined;

@@ -53,13 +53,12 @@ const gates: Gate[] = [
   { id: LOCAL_GATE_IDS[2], steps: [{ command: bin("eslint"), args: [] }] },
   { id: LOCAL_GATE_IDS[3], steps: [{ command: process.execPath, args: ["--import", "tsx", "--test", ...topLevelUnitTests] }] },
   { id: LOCAL_GATE_IDS[4], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts"] }] },
-  { id: LOCAL_GATE_IDS[5], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-runtime-providers.ts"] }] },
-  { id: LOCAL_GATE_IDS[6], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
-  { id: LOCAL_GATE_IDS[7], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
-  { id: LOCAL_GATE_IDS[8], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }] },
-  { id: LOCAL_GATE_IDS[9], steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run"] }] },
+  { id: LOCAL_GATE_IDS[5], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
+  { id: LOCAL_GATE_IDS[6], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
+  { id: LOCAL_GATE_IDS[7], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }] },
+  { id: LOCAL_GATE_IDS[8], steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run"] }] },
   {
-    id: LOCAL_GATE_IDS[10],
+    id: LOCAL_GATE_IDS[9],
     steps: [{ command: bin("wrangler"), args: ["check", "startup", "--outfile", startupProfilePath, "--args=--dry-run"] }],
   },
 ];

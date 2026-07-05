@@ -35,7 +35,6 @@ test("public topic serialization excludes private prompt and legacy fields", () 
   });
 
   assert.equal("systemPrompt" in publicTopic, false);
-  assert.equal("legacyBubbleId" in publicTopic, false);
   assert.equal("createdAt" in publicTopic, false);
   assert.equal("updatedAt" in publicTopic, false);
   assert.equal((publicTopic.metadata as Record<string, unknown>).systemPrompt, undefined);
@@ -105,7 +104,7 @@ test("middleware request forwarding strips spoofed provider and internal headers
     rsc: "1",
     "x-inspir-language": "English",
     "x-inspir-pathname": "/spoofed",
-    "x-vercel-ip-country": "US",
+    "x-worker-ip-country": "US",
   });
 
   const forwarded = buildForwardedRequestHeaders(source, [
@@ -120,7 +119,7 @@ test("middleware request forwarding strips spoofed provider and internal headers
   assert.equal(forwarded.get("next-router-state-tree"), "%5B%5D");
   assert.equal(forwarded.get("rsc"), "1");
   assert.equal(forwarded.get("authorization"), null);
-  assert.equal(forwarded.get("x-vercel-ip-country"), null);
+  assert.equal(forwarded.get("x-worker-ip-country"), null);
   assert.equal(forwarded.get(requestLanguageHeader), "Hindi");
   assert.equal(forwarded.get(requestPathnameHeader), "/chat");
   assert.equal(forwarded.get(requestRecommendedLanguageHeader), "Hindi");

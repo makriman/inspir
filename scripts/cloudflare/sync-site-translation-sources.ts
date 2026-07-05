@@ -4,7 +4,6 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { siteSourceManifest } from "@/lib/i18n/site-source-manifest";
 import { cloudflareDir, createHash, D1_DATABASE_NAME, resolveBackupDir, runWrangler } from "./migration-config";
-import { writeEvidenceManifest } from "./evidence-manifest";
 
 type SourceManifestEntry = {
   sourceHash: string;
@@ -22,7 +21,6 @@ export type SiteTranslationSourceSyncReport = {
   sourceStringCount: number;
   sha256: string;
   ok: boolean;
-  evidenceManifest?: string;
 };
 
 if (isMainModule()) void main();
@@ -31,11 +29,8 @@ function main() {
   const mode: SyncMode = process.argv.includes("--remote") ? "remote" : "local";
   const backupDir = resolveBackupDir();
   const report = syncSiteTranslationSources(mode, backupDir);
-  const manifest = writeEvidenceManifest(backupDir);
-  const finalReport = { ...report, evidenceManifest: manifest.manifestPath };
-  writeReport(finalReport, backupDir);
-  console.log(JSON.stringify(finalReport, null, 2));
-  if (!finalReport.ok) process.exitCode = 1;
+  console.log(JSON.stringify(report, null, 2));
+  if (!report.ok) process.exitCode = 1;
 }
 
 export function syncSiteTranslationSources(mode: SyncMode = "local", backupDir = resolveBackupDir()) {

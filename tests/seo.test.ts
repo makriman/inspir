@@ -1674,7 +1674,7 @@ test("social image helper uses the dynamic branded preview image", () => {
   assert.ok(image.url.startsWith(absoluteUrl("/og?")));
   assert.ok(image.url.includes("AI+Socratic+Tutor"));
   assert.ok(image.url.includes("Learning+mode"));
-  assert.equal(image.url.includes("bubble.io"), false);
+  assert.equal(image.url.includes("legacy.example"), false);
   assert.equal(image.alt, "AI Socratic Tutor <script> | inspir");
 });
 

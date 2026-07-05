@@ -20,10 +20,10 @@ export function PersistentLearningDock({
   if (!showTimer && !showMusic) return null;
 
   return (
-    <div className="bubble-persistent-dock" aria-live="polite">
+    <div className="inspir-persistent-dock" aria-live="polite">
       {showTimer ? (
-        <div className={`bubble-dock-item ${timer.ringing ? "is-ringing" : ""}`}>
-          <button type="button" onClick={onOpenTimer} className="bubble-dock-main">
+        <div className={`inspir-dock-item ${timer.ringing ? "is-ringing" : ""}`}>
+          <button type="button" onClick={onOpenTimer} className="inspir-dock-main">
             {timer.ringing ? <CheckCircle2 size={18} /> : <Timer size={18} />}
             <span>{timer.ringing ? "Timer done" : formatSeconds(timer.secondsLeft)}</span>
           </button>
@@ -39,8 +39,8 @@ export function PersistentLearningDock({
         </div>
       ) : null}
       {showMusic ? (
-        <div className="bubble-dock-item">
-          <button type="button" onClick={onOpenMusic} className="bubble-dock-main">
+        <div className="inspir-dock-item">
+          <button type="button" onClick={onOpenMusic} className="inspir-dock-main">
             <Music size={18} />
             <span>{activeMusicPreset.name}</span>
           </button>

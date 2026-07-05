@@ -7,8 +7,8 @@ import { hardenBackupPermissions } from "../scripts/cloudflare/harden-backup-per
 
 test("backup permission hardener restricts files and directories to owner access", async () => {
   await withFixture((backupDir) => {
-    const nestedDir = path.join(backupDir, "supabase");
-    const filePath = path.join(nestedDir, "data-public.sql");
+    const nestedDir = path.join(backupDir, "cloudflare");
+    const filePath = path.join(nestedDir, "d1-export.sql");
     fs.mkdirSync(nestedDir, { recursive: true, mode: 0o755 });
     fs.writeFileSync(filePath, "select 1;\n", { mode: 0o644 });
     fs.chmodSync(backupDir, 0o755);
@@ -52,4 +52,3 @@ async function withFixture(callback: (backupDir: string) => void | Promise<void>
 function mode(targetPath: string) {
   return fs.statSync(targetPath).mode & 0o777;
 }
-

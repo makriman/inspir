@@ -33,13 +33,11 @@ async function main() {
   checkResponse("home", home, {
     bodyIncludes: [/free ai learning/i, /learn/i],
     requireCloudflare: true,
-    requireNoVercel: true,
   });
 
   const localized = await request("/hi");
   checkResponse("localized Hindi route", localized, {
     bodyIncludes: [/learn|सीख|सीखने|शिक्ष/i],
-    requireNoVercel: true,
   });
   if ((localized.headers["set-cookie"] ?? "").includes("inspir_locale=Hindi")) {
     pass("localized Hindi route language cookie");
@@ -48,22 +46,22 @@ async function main() {
   }
 
   const robots = await request("/robots.txt");
-  checkResponse("robots", robots, { bodyIncludes: [/User-Agent/i], requireNoVercel: true });
+  checkResponse("robots", robots, { bodyIncludes: [/User-Agent/i] });
 
   const sitemap = await request("/sitemap");
-  checkResponse("sitemap index", sitemap, { bodyIncludes: [/<sitemapindex/i], requireNoVercel: true });
+  checkResponse("sitemap index", sitemap, { bodyIncludes: [/<sitemapindex/i] });
 
   const englishSitemap = await request("/sitemap/en-US.xml");
-  checkResponse("English sitemap", englishSitemap, { bodyIncludes: [/<urlset/i], requireNoVercel: true });
+  checkResponse("English sitemap", englishSitemap, { bodyIncludes: [/<urlset/i] });
 
   const rss = await request("/rss.xml");
-  checkResponse("RSS", rss, { bodyIncludes: [/<rss/i], requireNoVercel: true });
+  checkResponse("RSS", rss, { bodyIncludes: [/<rss/i] });
 
   const og = await request("/og");
-  checkResponse("OG image", og, { contentTypeIncludes: "image/png", requireNoVercel: true });
+  checkResponse("OG image", og, { contentTypeIncludes: "image/png" });
 
   const topics = await request("/api/topics");
-  checkResponse("topics API", topics, { contentTypeIncludes: "application/json", requireNoVercel: true });
+  checkResponse("topics API", topics, { contentTypeIncludes: "application/json" });
   checkTopicsPayload(topics);
 
   await checkGuestChat();
@@ -89,7 +87,7 @@ async function checkGuestChat() {
     }),
   });
 
-  checkResponse("live guest chat", response, { requireNoVercel: true });
+  checkResponse("live guest chat", response);
   if (response.ok && response.bodyPreview.trim().length > 0) {
     const used = Number(response.headers["x-guest-messages-used"]);
     const limit = Number(response.headers["x-guest-messages-limit"]);
@@ -145,7 +143,6 @@ function checkResponse(
     bodyIncludes?: RegExp[];
     contentTypeIncludes?: string;
     requireCloudflare?: boolean;
-    requireNoVercel?: boolean;
   } = {},
 ) {
   if (result.ok) pass(`${name} status`, { status: result.status, url: result.url });
@@ -175,11 +172,6 @@ function checkResponse(
     }
   }
 
-  if (options.requireNoVercel) {
-    const vercelHeaders = Object.keys(result.headers).filter((header) => header.startsWith("x-vercel"));
-    if (!vercelHeaders.length) pass(`${name} not served by Vercel`);
-    else fail(`${name} not served by Vercel`, { vercelHeaders });
-  }
 }
 
 function checkTopicsPayload(result: FetchResult) {

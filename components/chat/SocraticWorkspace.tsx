@@ -25,7 +25,7 @@ import {
   Zap,
 } from "lucide-react";
 import { RichMarkdownContent } from "@/components/chat/RichMarkdownContent";
-import { formatBubbleDate } from "@/lib/utils/dates";
+import { formatAppDate } from "@/lib/utils/dates";
 
 type Topic = {
   id: string;
@@ -185,7 +185,7 @@ export function SocraticWorkspace({
   }
 
   return (
-    <main className="bubble-workspace socratic-workspace">
+    <main className="inspir-workspace socratic-workspace">
       <div ref={hasSession ? listRef : undefined} className="socratic-scroll app-scrollbar">
         {!hasSession ? (
           <SocraticStartScreen
@@ -675,7 +675,7 @@ function SocraticTurn({ message, userName }: { message: Message; userName: strin
     <article className={`socratic-turn ${isUser ? "is-user" : "is-assistant"}`}>
       <header>
         <strong>{isUser ? userName : "Coach"}</strong>
-        <time>{formatBubbleDate(message.createdAt)}</time>
+        <time>{formatAppDate(message.createdAt)}</time>
       </header>
       <SocraticRichText content={message.content} />
     </article>

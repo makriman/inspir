@@ -28,18 +28,8 @@ test("source secret scan ignores empty env placeholders and documented key names
     "OPENAI_API_KEY=",
     "AUTH_SECRET=",
     "NEXTAUTH_SECRET=",
-    "SUPABASE_SERVICE_ROLE_KEY=your-service-role-key",
+    "CLOUDFLARE_AI_GATEWAY_TOKEN=",
   ].join("\n");
 
   assert.deepEqual(scanSourceText(".env.example", content), []);
-});
-
-test("source secret scan detects credentialed postgres URLs", () => {
-  const password = "p".repeat(24);
-  const scheme = "postgres" + "://";
-  const findings = scanSourceText("fixture.md", `DATABASE_URL=${scheme}user:${password}@db.example.com/app\n`);
-
-  assert.equal(findings.length, 1);
-  assert.equal(findings[0].rule, "credentialed-postgres-url");
-  assert.equal(findings[0].redactedSnippet.includes(password), false);
 });

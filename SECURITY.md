@@ -29,9 +29,9 @@ If you are unsure whether something is security-sensitive, report it privately f
 
 ## Secrets and data
 
-- Never commit `.env`, `.env.local`, raw Bubble CSV exports, provider keys, or production data.
+- Never commit `.env`, `.env.local`, local backups, provider keys, or production data.
 - OpenAI and Google credentials must stay server-side.
-- Migration logs should avoid printing real user emails or private message content.
+- Operational logs should avoid printing real user emails or private message content.
 
 ## Supported versions
 

@@ -49,16 +49,6 @@ const SECRET_RULES: SecretRule[] = [
     pattern: /\bsk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{20,}\b/g,
   },
   {
-    id: "supabase-service-role-jwt",
-    description: "Supabase service-role JWT assignment",
-    pattern: /\bSUPABASE_SERVICE_ROLE_KEY\s*[:=]\s*["']?eyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+/gi,
-  },
-  {
-    id: "vercel-token",
-    description: "Vercel token assignment",
-    pattern: /\bVERCEL_TOKEN\s*[:=]\s*["']?[A-Za-z0-9_-]{20,}/gi,
-  },
-  {
     id: "r2-or-s3-secret-access-key",
     description: "R2/S3 secret access key assignment",
     pattern: /\b(?:R2_|AWS_)?(?:SECRET_ACCESS_KEY|Secret Access Key)\s*[:=]\s*["']?[A-Za-z0-9/+=_-]{32,}/g,
@@ -72,11 +62,6 @@ const SECRET_RULES: SecretRule[] = [
     id: "private-key",
     description: "Private key block",
     pattern: /-----BEGIN (?:RSA |EC |OPENSSH |PRIVATE )?PRIVATE KEY-----/g,
-  },
-  {
-    id: "credentialed-postgres-url",
-    description: "Postgres URL containing a username and password",
-    pattern: /postgres(?:ql)?:\/\/[^:\s/@]+:[^@\s]+@[^"'\s)]+/gi,
   },
 ];
 

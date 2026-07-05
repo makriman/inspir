@@ -82,7 +82,7 @@ const codeLanguageAliases: Record<string, ShjLanguage> = {
 
 const richMarkdownComponents: Components = {
   table: ({ children }) => (
-    <div className="bubble-table-wrap">
+    <div className="inspir-table-wrap">
       <table>{children}</table>
     </div>
   ),
@@ -97,7 +97,7 @@ const richMarkdownComponents: Components = {
 
 export function RichMarkdownContent({
   content,
-  className = "bubble-rich-content",
+  className = "inspir-rich-content",
   streaming = false,
 }: RichMarkdownContentProps) {
   if (streaming) {
@@ -283,7 +283,7 @@ function renderStreamingBlock(block: StreamingMarkdownBlock, index: number) {
     }
     case "table":
       return (
-        <div key={index} className="bubble-table-wrap">
+        <div key={index} className="inspir-table-wrap">
           <table>
             <thead>
               <tr>
@@ -306,12 +306,12 @@ function renderStreamingBlock(block: StreamingMarkdownBlock, index: number) {
       );
     case "code":
       return (
-        <figure key={index} className="bubble-code-block is-streaming">
+        <figure key={index} className="inspir-code-block is-streaming">
           <figcaption>
             <span>{block.language.trim() || "code"}</span>
           </figcaption>
           <pre>
-            <code className="bubble-code-code">{block.code}</code>
+            <code className="inspir-code-code">{block.code}</code>
           </pre>
         </figure>
       );
@@ -414,7 +414,7 @@ function CodeBlock({
   }
 
   return (
-    <figure className="bubble-code-block">
+    <figure className="inspir-code-block">
       <figcaption>
         <span>{displayLanguage}</span>
         <button type="button" onClick={() => void copyCode()} aria-label="Copy code" title="Copy code">
@@ -422,7 +422,7 @@ function CodeBlock({
         </button>
       </figcaption>
       <pre>
-        <code ref={codeRef} className={`bubble-code-code shj-lang-${syntaxLanguage}`}>
+        <code ref={codeRef} className={`inspir-code-code shj-lang-${syntaxLanguage}`}>
           {code}
         </code>
       </pre>

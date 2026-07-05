@@ -2,7 +2,6 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { commandEnv } from "./migration-config";
-import { FORBIDDEN_ENV_AFTER_ROTATION, RETIRED_PROVIDER_ENV_KEYS } from "./retired-provider-env";
 
 export const NEXT_ENV_FILES_LOADED_DURING_BUILD = [
   ".env",
@@ -58,7 +57,7 @@ const LOCAL_PREVIEW_RUNTIME_ENV = {
   NEXTAUTH_SECRET: "local-preview-auth-secret",
 } as const;
 
-const OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS = ["MIGRATION_E2E_AUTH_SECRET", "MIGRATION_E2E_AUTH_EMAIL"] as const;
+const OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS = ["E2E_TEST_AUTH_SECRET", "E2E_TEST_AUTH_EMAIL"] as const;
 
 export function withSanitizedProjectEnvFiles<T>(
   callback: () => T,
@@ -135,11 +134,7 @@ function stringifyValues(values: Record<string, string | number | boolean>) {
 
 export function isForbiddenBuildEnvKey(key: string) {
   if (key === "SKIP_NEXT_APP_BUILD") return true;
-  if ((FORBIDDEN_ENV_AFTER_ROTATION as readonly string[]).includes(key)) return true;
-  if ((RETIRED_PROVIDER_ENV_KEYS as readonly string[]).includes(key)) return true;
   if ((CURRENT_RUNTIME_SECRET_ENV_KEYS as readonly string[]).includes(key)) return true;
-  if (/^(?:NEXT_PUBLIC_)?SUPABASE_/i.test(key)) return true;
-  if (/^(?:VERCEL|TURBO)_/i.test(key)) return true;
   if (/SECRET|TOKEN|PASSWORD|PRIVATE_KEY|API_KEY|ACCESS_KEY/i.test(key)) return key !== "CLOUDFLARE_ACCOUNT_ID";
   return false;
 }

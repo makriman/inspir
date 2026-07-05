@@ -2,15 +2,15 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
-import { FINAL_PRODUCTION_BASE_URL, normalizeBaseUrl } from "./final-cutover-evidence-chain";
 
 const backupDir = resolveBackupDir();
 const reportPath = path.join(cloudflareDir(backupDir), "playwright-production-report.json");
+const FINAL_PRODUCTION_BASE_URL = "https://inspirlearning.com/";
 const baseUrl = normalizeBaseUrl(process.env.PLAYWRIGHT_BASE_URL ?? process.env.PRODUCTION_BASE_URL ?? FINAL_PRODUCTION_BASE_URL);
-const usingMigrationSessionAuth = Boolean(process.env.E2E_TEST_AUTH_SECRET?.trim());
+const usingSessionAuth = Boolean(process.env.E2E_TEST_AUTH_SECRET?.trim());
 
 const missingEnv = ["E2E_GOOGLE_EMAIL"].filter((key) => !process.env[key]?.trim());
-if (!usingMigrationSessionAuth && !process.env.E2E_GOOGLE_PASSWORD?.trim()) missingEnv.push("E2E_GOOGLE_PASSWORD");
+if (!usingSessionAuth && !process.env.E2E_GOOGLE_PASSWORD?.trim()) missingEnv.push("E2E_GOOGLE_PASSWORD");
 if (process.env.REQUIRE_LIVE_AI !== "1") missingEnv.push("REQUIRE_LIVE_AI");
 if (process.env.E2E_GOOGLE_IS_ADMIN !== "1") missingEnv.push("E2E_GOOGLE_IS_ADMIN");
 if (baseUrl !== FINAL_PRODUCTION_BASE_URL) missingEnv.push("PLAYWRIGHT_BASE_URL=https://inspirlearning.com");
@@ -46,7 +46,7 @@ writeReport({
     googleEmail: Boolean(process.env.E2E_GOOGLE_EMAIL?.trim()),
     googlePassword: Boolean(process.env.E2E_GOOGLE_PASSWORD?.trim()),
     googleAdmin: process.env.E2E_GOOGLE_IS_ADMIN === "1",
-    migrationSessionAuth: usingMigrationSessionAuth,
+    sessionAuth: usingSessionAuth,
   },
   playwright: parsed,
 });
@@ -73,4 +73,8 @@ function parsePlaywrightJson(output: string) {
   } catch {
     return null;
   }
+}
+
+function normalizeBaseUrl(url: string) {
+  return url.endsWith("/") ? url : `${url}/`;
 }

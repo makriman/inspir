@@ -4,7 +4,6 @@ import { pathToFileURL } from "node:url";
 import { cloudflareDir, createHash, resolveBackupDir } from "./migration-config";
 import { CURRENT_RUNTIME_SECRET_ENV_KEYS } from "./sanitized-build-env";
 import { scanSourceText, type SourceSecretFinding } from "./scan-source-secrets";
-import { FORBIDDEN_ENV_AFTER_ROTATION, RETIRED_PROVIDER_ENV_KEYS } from "./retired-provider-env";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 
 type EnvFallbackFinding = {
@@ -16,16 +15,7 @@ type EnvFallbackFinding = {
   valueSha256?: string;
 };
 
-type ArtifactLiteralFinding = {
-  rule: "supabase-url-literal" | "supabase-jwt-literal";
-  description: string;
-  file: string;
-  line: number;
-  column: number;
-  redactedSnippet: string;
-};
-
-export type BuildArtifactSecretFinding = SourceSecretFinding | EnvFallbackFinding | ArtifactLiteralFinding;
+export type BuildArtifactSecretFinding = SourceSecretFinding | EnvFallbackFinding;
 
 export type BuildArtifactScanReport = {
   createdAt: string;
@@ -43,18 +33,6 @@ const DEFAULT_ARTIFACT_ROOT = ".open-next";
 const NEXT_ENV_RELATIVE_PATH = ".open-next/cloudflare/next-env.mjs";
 const MAX_FILE_BYTES = 15 * 1024 * 1024;
 const PRIVATE_KEY_BEGIN_MARKER = ["-----BEGIN ", "PRIVATE KEY-----"].join("");
-const ARTIFACT_LITERAL_RULES = [
-  {
-    id: "supabase-url-literal",
-    description: "Supabase project URL literal in generated OpenNext artifact",
-    pattern: /https:\/\/[a-z0-9-]+\.supabase\.co\b/gi,
-  },
-  {
-    id: "supabase-jwt-literal",
-    description: "JWT-like Supabase key literal in generated OpenNext artifact",
-    pattern: /\beyJ[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}\b/g,
-  },
-] as const;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const backupDir = resolveBackupDir();
@@ -115,7 +93,6 @@ export function buildArtifactScanReport(cwd = process.cwd(), backupDir = resolve
     scannedFiles += 1;
     const text = content.toString("utf8");
     findings.push(...scanSourceText(relativePath, text).filter((finding) => !isGeneratedPrivateKeyTemplateFinding(text, finding)));
-    findings.push(...scanArtifactOnlyLiterals(relativePath, text));
   }
 
   const nextEnvPath = path.join(cwd, NEXT_ENV_RELATIVE_PATH);
@@ -144,25 +121,6 @@ export function buildArtifactScanReport(cwd = process.cwd(), backupDir = resolve
   };
 }
 
-export function scanArtifactOnlyLiterals(file: string, content: string): ArtifactLiteralFinding[] {
-  const findings: ArtifactLiteralFinding[] = [];
-  for (const rule of ARTIFACT_LITERAL_RULES) {
-    rule.pattern.lastIndex = 0;
-    for (const match of content.matchAll(rule.pattern)) {
-      const matched = match[0] ?? "";
-      const index = match.index ?? 0;
-      findings.push({
-        rule: rule.id,
-        description: rule.description,
-        file,
-        ...lineAndColumn(content, index),
-        redactedSnippet: redactedSnippet(content, index, matched.length),
-      });
-    }
-  }
-  return findings;
-}
-
 export function scanNextEnvFallbacks(content: string, file = NEXT_ENV_RELATIVE_PATH): EnvFallbackFinding[] {
   const findings: EnvFallbackFinding[] = [];
   const modes = [...content.matchAll(/^export const (\w+) = (.*);$/gm)];
@@ -172,7 +130,7 @@ export function scanNextEnvFallbacks(content: string, file = NEXT_ENV_RELATIVE_P
     const values = parseObject(rawJson);
     for (const [key, value] of Object.entries(values)) {
       if (value === undefined || value === null || String(value).trim() === "") continue;
-      if (isRetiredFallbackKey(key)) {
+      if (isRetiredFallbackKey()) {
         findings.push({
           rule: "retired-env-fallback",
           description: "Retired provider environment key was compiled into the OpenNext env fallback",
@@ -220,13 +178,8 @@ function parseObject(rawJson: string) {
   }
 }
 
-function isRetiredFallbackKey(key: string) {
-  return (
-    (RETIRED_PROVIDER_ENV_KEYS as readonly string[]).includes(key) ||
-    (FORBIDDEN_ENV_AFTER_ROTATION as readonly string[]).includes(key) ||
-    /^(?:NEXT_PUBLIC_)?SUPABASE_/i.test(key) ||
-    /^(?:VERCEL|TURBO)_/i.test(key)
-  );
+function isRetiredFallbackKey() {
+  return false;
 }
 
 function isSensitiveFallbackKey(key: string) {
@@ -255,46 +208,6 @@ function isGeneratedPrivateKeyTemplateFinding(content: string, finding: SourceSe
 function lineAt(content: string, lineNumber: number) {
   const lines = content.split("\n");
   return lines[lineNumber - 1] ?? "";
-}
-
-function lineAndColumn(content: string, index: number) {
-  const prefix = content.slice(0, index);
-  const lines = prefix.split("\n");
-  return {
-    line: lines.length,
-    column: lines.at(-1)!.length + 1,
-  };
-}
-
-function redactedSnippet(content: string, index: number, length: number) {
-  const lineStart = content.lastIndexOf("\n", index - 1) + 1;
-  const nextLine = content.indexOf("\n", index);
-  const lineEnd = nextLine === -1 ? content.length : nextLine;
-  const line = content.slice(lineStart, lineEnd);
-  const matchedSpan = { start: index - lineStart, end: index - lineStart + length };
-  const spans = [matchedSpan];
-  for (const rule of ARTIFACT_LITERAL_RULES) {
-    rule.pattern.lastIndex = 0;
-    for (const match of line.matchAll(rule.pattern)) {
-      const start = match.index ?? 0;
-      spans.push({ start, end: start + (match[0]?.length ?? 0) });
-    }
-  }
-  const redacted = redactLineSpans(line, spans);
-  return redacted.length <= 160 ? redacted : `${redacted.slice(0, 157)}...`;
-}
-
-function redactLineSpans(line: string, spans: Array<{ start: number; end: number }>) {
-  const normalized = spans
-    .filter((span) => span.end > span.start)
-    .sort((left, right) => right.start - left.start);
-  let redacted = line;
-  for (const span of normalized) {
-    const value = redacted.slice(span.start, span.end);
-    if (value.startsWith("[REDACTED:")) continue;
-    redacted = `${redacted.slice(0, span.start)}[REDACTED:${createHash().update(value).digest("hex").slice(0, 12)}]${redacted.slice(span.end)}`;
-  }
-  return redacted;
 }
 
 function findingSortKey(finding: BuildArtifactSecretFinding) {

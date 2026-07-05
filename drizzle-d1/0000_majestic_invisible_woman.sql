@@ -128,7 +128,6 @@ CREATE INDEX `chat_memory_turns_topic_idx` ON `chat_memory_turns` (`topic_id`);-
 CREATE UNIQUE INDEX `chat_memory_turns_user_message_idx` ON `chat_memory_turns` (`user_message_id`);--> statement-breakpoint
 CREATE TABLE `chats` (
 	`id` text PRIMARY KEY NOT NULL,
-	`legacy_bubble_id` text,
 	`user_id` text,
 	`user_email_snapshot` text,
 	`topic_id` text,
@@ -142,7 +141,6 @@ CREATE TABLE `chats` (
 	FOREIGN KEY (`topic_id`) REFERENCES `topics`(`id`) ON UPDATE no action ON DELETE set null
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `chats_legacy_bubble_id_idx` ON `chats` (`legacy_bubble_id`);--> statement-breakpoint
 CREATE INDEX `chats_user_id_idx` ON `chats` (`user_id`);--> statement-breakpoint
 CREATE INDEX `chats_topic_id_idx` ON `chats` (`topic_id`);--> statement-breakpoint
 CREATE TABLE `legacy_chat_snapshots` (
@@ -228,7 +226,6 @@ CREATE INDEX `memory_synthesis_runs_user_status_idx` ON `memory_synthesis_runs` 
 CREATE INDEX `memory_synthesis_runs_started_idx` ON `memory_synthesis_runs` (`started_at`);--> statement-breakpoint
 CREATE TABLE `messages` (
 	`id` text PRIMARY KEY NOT NULL,
-	`legacy_bubble_id` text,
 	`chat_id` text NOT NULL,
 	`role` text NOT NULL,
 	`content` text NOT NULL,
@@ -267,7 +264,6 @@ CREATE TABLE `topic_legacy_ids` (
 CREATE TABLE `topics` (
 	`id` text PRIMARY KEY NOT NULL,
 	`slug` text NOT NULL,
-	`legacy_bubble_id` text,
 	`name` text NOT NULL,
 	`sub_text` text NOT NULL,
 	`description` text NOT NULL,
@@ -373,7 +369,6 @@ CREATE TABLE `users` (
 	`date_of_birth` text,
 	`date_of_birth_source` text,
 	`profile_picture_downloaded_at` integer,
-	`legacy_bubble_id` text,
 	`created_at` integer NOT NULL,
 	`updated_at` integer NOT NULL
 );

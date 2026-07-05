@@ -15,16 +15,7 @@ import {
   resolveBackupDir,
 } from "./migration-config";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
-import {
-  providerRetirementRunEvidenceBlockers,
-  type ProviderRetirementRunEvidence,
-} from "./provider-retirement-safety";
-import {
-  credentialRotationEvidenceBlockers,
-  type CredentialRotationReport,
-} from "./verify-credential-rotation";
 import { freshBackupScopedReportBlockers } from "./fresh-report-gate";
-import type { RuntimeProviderScanReport } from "./scan-runtime-providers";
 
 type CheckStatus = "pass" | "fail";
 
@@ -65,24 +56,11 @@ type BuildArtifactScanReport = {
   findings?: unknown[];
 };
 
-type MigrationStatusReport = {
-  ok?: boolean;
-  backupDir?: string;
-  providersRetired?: boolean;
-};
-
-type ProviderRetirementRunReport = ProviderRetirementRunEvidence & {
-  ok?: boolean;
-  backupDir?: string;
-};
-
 type DeployPreflightReport = {
   createdAt: string;
   backupDir: string;
-  mode: "migration" | "steady-state";
+  mode: "steady-state";
   ok: boolean;
-  delegatedCommand?: string;
-  delegatedStatus?: number | null;
   checks: DeployPreflightCheck[];
 };
 
@@ -131,17 +109,10 @@ const STEADY_STATE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const backupDir = resolveBackupDir();
-  const providerProof = providerRetirementProof(backupDir);
-  if (!providerProof.ok) {
-    const report = runMigrationPreflight(backupDir, providerProof.blockers);
-    writeReport(report);
-    if (!report.ok) process.exitCode = report.delegatedStatus ?? 1;
-  } else {
-    const report = buildSteadyStateDeployPreflightReport({ backupDir });
-    writeReport(report);
-    console.log(JSON.stringify(report, null, 2));
-    if (!report.ok) process.exitCode = 1;
-  }
+  const report = buildSteadyStateDeployPreflightReport({ backupDir });
+  writeReport(report);
+  console.log(JSON.stringify(report, null, 2));
+  if (!report.ok) process.exitCode = 1;
 }
 
 export function buildSteadyStateDeployPreflightReport(options: {
@@ -154,10 +125,8 @@ export function buildSteadyStateDeployPreflightReport(options: {
   const checks: DeployPreflightCheck[] = [];
   const currentSourceFingerprint = buildRepoSourceFingerprint(cwd);
 
-  checks.push(providerRetirementCheck(options.backupDir));
   checks.push(localGatesCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(sourceSecretScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
-  checks.push(runtimeProviderScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(buildArtifactScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(wranglerConfigCheck(cwd));
 
@@ -171,68 +140,6 @@ export function buildSteadyStateDeployPreflightReport(options: {
     mode: "steady-state",
     ok: checks.every((check) => check.status === "pass"),
     checks,
-  };
-}
-
-export function providerRetirementProof(backupDir: string) {
-  const status = readBackupJson<MigrationStatusReport>(backupDir, "cloudflare/migration-status-report.json");
-  const providerRun = readBackupJson<ProviderRetirementRunReport>(backupDir, "cloudflare/provider-retirement-run.json");
-  const credentialRotation = readBackupJson<CredentialRotationReport>(backupDir, "cloudflare/credential-rotation-report.json");
-  const blockers: string[] = [];
-
-  if (status?.ok !== true || status.providersRetired !== true) {
-    blockers.push("migration-status-report.json does not prove providersRetired=true");
-  }
-  if (path.resolve(status?.backupDir ?? "") !== path.resolve(backupDir)) {
-    blockers.push("migration-status-report.json was generated for a different backup directory");
-  }
-  if (providerRun?.ok !== true) blockers.push("provider-retirement-run.json is not clean");
-  if (path.resolve(providerRun?.backupDir ?? "") !== path.resolve(backupDir)) {
-    blockers.push("provider-retirement-run.json was generated for a different backup directory");
-  }
-  blockers.push(...providerRetirementRunEvidenceBlockers(providerRun));
-
-  if (credentialRotation?.ok !== true) blockers.push("credential-rotation-report.json is not clean");
-  if (path.resolve(credentialRotation?.backupDir ?? "") !== path.resolve(backupDir)) {
-    blockers.push("credential-rotation-report.json was generated for a different backup directory");
-  }
-  blockers.push(...credentialRotationEvidenceBlockers(credentialRotation));
-
-  return { ok: blockers.length === 0, blockers };
-}
-
-function runMigrationPreflight(backupDir: string, providerRetirementBlockers: string[]): DeployPreflightReport {
-  const result = spawnSync(process.execPath, ["--import", "tsx", "scripts/cloudflare/preflight-production.ts", ...process.argv.slice(2)], {
-    cwd: process.cwd(),
-    env: commandEnv(),
-    stdio: "inherit",
-  });
-  return {
-    createdAt: new Date().toISOString(),
-    backupDir,
-    mode: "migration",
-    ok: result.status === 0,
-    delegatedCommand: "tsx scripts/cloudflare/preflight-production.ts",
-    delegatedStatus: result.status,
-    checks: [
-      {
-        name: "migration production preflight",
-        status: result.status === 0 ? "pass" : "fail",
-        detail: {
-          providerRetirementBlockers,
-          delegatedStatus: result.status,
-        },
-      },
-    ],
-  };
-}
-
-function providerRetirementCheck(backupDir: string): DeployPreflightCheck {
-  const proof = providerRetirementProof(backupDir);
-  return {
-    name: "provider retirement proof",
-    status: proof.ok ? "pass" : "fail",
-    detail: proof.ok ? { providersRetired: true } : { blockers: proof.blockers },
   };
 }
 
@@ -309,46 +216,6 @@ function sourceSecretScanCheck(backupDir: string, currentSourceFingerprint: Sour
           backupDirOk,
           sourceFingerprintOk,
           findings,
-        },
-  };
-}
-
-function runtimeProviderScanCheck(backupDir: string, currentSourceFingerprint: SourceFingerprint, nowMs?: number): DeployPreflightCheck {
-  const report = readBackupJson<RuntimeProviderScanReport>(backupDir, "cloudflare/runtime-provider-scan-report.json");
-  const freshnessBlockers = freshBackupScopedReportBlockers({
-    relativePath: "cloudflare/runtime-provider-scan-report.json",
-    report,
-    backupDir,
-    maxAgeMs: STEADY_STATE_REPORT_MAX_AGE_MS,
-    nowMs,
-    requireOk: true,
-  });
-  const backupDirOk = path.resolve(report?.backupDir ?? "") === path.resolve(backupDir);
-  const sourceFingerprintOk =
-    report?.sourceFingerprint?.sha256 === currentSourceFingerprint.sha256 &&
-    report.sourceFingerprint?.fileCount === currentSourceFingerprint.fileCount;
-  const findings = report?.findings?.length ?? 0;
-  const scannedFiles = report?.scannedFiles?.length ?? 0;
-  const scannedFilesOk = scannedFiles > 0;
-  const ok =
-    report?.ok === true &&
-    !freshnessBlockers.length &&
-    backupDirOk &&
-    sourceFingerprintOk &&
-    findings === 0 &&
-    scannedFilesOk;
-  return {
-    name: "runtime provider dependency scan",
-    status: ok ? "pass" : "fail",
-    detail: ok
-      ? { sourceFingerprint: currentSourceFingerprint.sha256, scannedFiles }
-      : {
-          reportOk: report?.ok,
-          freshnessBlockers,
-          backupDirOk,
-          sourceFingerprintOk,
-          findings,
-          scannedFiles,
         },
   };
 }

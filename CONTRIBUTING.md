@@ -20,7 +20,7 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-You will need local environment variables for database, auth, and AI features. Never commit `.env`, `.env.local`, raw Bubble exports, provider keys, or production data.
+You will need local environment variables for database, auth, and AI features. Never commit `.env`, `.env.local`, local backups, provider keys, or production data.
 
 ## Checks
 
@@ -58,17 +58,13 @@ Keep PRs small when possible. A focused improvement is much easier to review tha
 
 Topic prompts should be clear, respectful, and useful. The app should help people understand, not just generate impressive text.
 
-### UI parity and polish
+### UI polish
 
-The app intentionally preserves much of the original Bubble product shape. When changing shared UI, check desktop, tablet, and mobile.
+When changing shared UI, check desktop, tablet, and mobile.
 
 ### Privacy and safety
 
 Keep API keys and provider secrets server-side. Avoid logging personal data. Do not expose raw migration data.
-
-### Migration work
-
-The Bubble export may be incomplete. Do not pretend historical ownership is exact when IDs are missing. Preserve data carefully and document assumptions.
 
 ## Good first contributions
 

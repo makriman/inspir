@@ -207,16 +207,6 @@ export function buildWriteFreezeDeploySafetyChecks(input: { backupDir: string; c
       extraOk: (report) => (report?.findings?.length ?? 0) === 0,
     }),
     sourceScopedCheck({
-      name: "runtime provider dependency scan",
-      relativePath: "cloudflare/runtime-provider-scan-report.json",
-      report: readBackupJson<SourceScopedReport>(input.backupDir, "cloudflare/runtime-provider-scan-report.json"),
-      backupDir: input.backupDir,
-      currentSourceFingerprint,
-      nowMs: input.nowMs,
-      fingerprintField: "sourceFingerprint",
-      extraOk: (report) => (report?.findings?.length ?? 0) === 0 && Array.isArray(report?.scannedFiles),
-    }),
-    sourceScopedCheck({
       name: "OpenNext build artifact secret scan",
       relativePath: "cloudflare/build-artifact-scan-report.json",
       report: readBackupJson<SourceScopedReport>(input.backupDir, "cloudflare/build-artifact-scan-report.json"),

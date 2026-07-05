@@ -2,7 +2,7 @@ import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 
 export default function ChatNotFound() {
   return (
-    <main className="bubble-chat-status" aria-labelledby="chat-not-found-title">
+    <main className="inspir-chat-status" aria-labelledby="chat-not-found-title">
       <div>
         <span>404</span>
         <h1 id="chat-not-found-title">Chat not found</h1>

@@ -36,7 +36,7 @@ yarn-error.log*
 .pnpm-debug.log*
 tmp/
 
-# local migration backups and provider snapshots
+# local backups and generated reports
 /backups/
 /inspirlearning-local-backups/
 
@@ -45,18 +45,13 @@ tmp/
 .env.*
 !.env.example
 
-# raw Bubble export and migration inputs
-Export from Bubble/
+# local data workbench
 data/raw/*.csv
-data/raw/*.bubble
 translations/curated/
 translations/curated-bundles/
 translations/workbench/
 translations/workbench-site-batch/
 translations/workbench-home-current/
-
-# vercel
-.vercel
 
 # typescript
 *.tsbuildinfo

@@ -2,7 +2,7 @@
 
 Learning is for everyone.
 
-inspir is an AI learning companion rebuilt from the original Bubble product into a production Next.js application. The goal is simple and ambitious: make learning feel accessible, personal, playful, and useful for anyone with curiosity and an internet connection.
+inspir is an AI learning companion rebuilt into a production Next.js application running on Cloudflare. The goal is simple and ambitious: make learning feel accessible, personal, playful, and useful for anyone with curiosity and an internet connection.
 
 Live app: [https://inspirlearning.com](https://inspirlearning.com)
 
@@ -28,18 +28,18 @@ inspir gives learners topic-based AI modes rather than a single generic chat box
 - Debate with a personality: debate a real or fictional personality.
 - Debate any topic: sharpen thinking by arguing both sides.
 
-The product preserves the behavior and visual language of the original Bubble app while replacing the implementation with a safer, faster, extensible production stack.
+The product preserves the core learning behavior while replacing earlier prototypes with a safer, faster, extensible production stack.
 
 ## Highlights
 
-- Pixel-focused Bubble rebuild across landing, legal pages, loading, reset, chat, profile, and history states.
+- Polished product UI across landing, legal pages, loading, reset, chat, profile, and history states.
 - Google sign-in through Auth.js / NextAuth.
 - Server-only OpenAI calls through the AI SDK.
 - Cloudflare D1 with Drizzle ORM.
 - Cloudflare Vectorize for memory embeddings.
 - Cloudflare R2 for OpenNext incremental cache.
 - Persisted chats, messages, users, topics, profile data, and AI run telemetry.
-- Bubble CSV import pipeline with strict and best-effort migration modes.
+- Cloudflare operational checks for local gates, source scans, build artifact scans, preview, and production smoke tests.
 - Admin-only topic creation guarded by environment-based allowlists.
 - Modernized chat experience with streaming responses and polished loading states.
 - Production deployment through OpenNext on Cloudflare Workers.
@@ -66,12 +66,12 @@ app/                 Next.js routes, layouts, API handlers, public pages
 components/          Brand, marketing, legal, admin, and chat UI
 lib/ai/              Topic prompts, agent setup, AI utilities
 lib/auth/            Auth config, session helpers, admin checks, photo sync
-lib/content/         Extracted Bubble legal, mission, and topic content
+lib/content/         Legal, mission, topic, blog, language, and SEO content
 lib/db/              Drizzle schema, database client, query helpers
-lib/migration/       CSV parsing and Bubble import helpers
+lib/migration/       Write-freeze utilities for guarded maintenance windows
 lib/utils/           Shared date, slug, and rate-limit utilities
-scripts/             Bubble import, validation, and content extraction scripts
-tests/               Unit tests for utility and migration behavior
+scripts/             Cloudflare deployment, translation, and maintenance scripts
+tests/               Unit tests for app behavior, Cloudflare operations, and SEO
 ```
 
 ## Getting started
@@ -139,40 +139,31 @@ Apply migrations:
 pnpm db:migrate
 ```
 
-## Cloudflare data migration
+## Cloudflare Operations
 
-The production migration path is backed by local timestamped backups and Cloudflare import/validation scripts:
+The app runs on Cloudflare Workers through OpenNext, with D1 for relational data, Vectorize for memory retrieval, R2 for the OpenNext cache, and a Queue for post-turn memory work.
+
+Useful commands:
 
 ```bash
-CONFIRM_WRITE_FREEZE=1 \
-CONFIRM_FINAL_BACKUP=1 \
-CONFIRM_BACKUP_SOURCE_WRITES_FROZEN=1 \
-MIGRATION_WRITE_FREEZE_STATUS_URL=https://inspirlearning.com/api/migration/write-freeze \
-pnpm cf:migration:backup -- --final
-pnpm cf:migration:prepare
-pnpm cf:migration:rehearse:d1:local
-pnpm cf:migration:rehearse:vectorize:local
-pnpm cf:harden:backup-permissions
-CONFIRM_WRITE_FREEZE=1 \
-CONFIRM_D1_IMPORT=1 \
-CONFIRM_D1_DATABASE_NAME=inspirlearning-prod \
-CONFIRM_D1_DATABASE_ID=7cb2ddf7-ca3d-4f46-a022-cc8b3a25b7b9 \
-CONFIRM_BACKUP_DIR="$(pwd)/../inspirlearning-local-backups/<cloudflare-migration-dir>" \
-pnpm cf:migration:import:d1
-pnpm cf:migration:validate:d1
-CONFIRM_WRITE_FREEZE=1 \
-CONFIRM_VECTORIZE_IMPORT=1 \
-CONFIRM_VECTORIZE_INDEX=inspirlearning-memory-prod \
-CONFIRM_BACKUP_DIR="$(pwd)/../inspirlearning-local-backups/<cloudflare-migration-dir>" \
-pnpm cf:migration:import:vectorize
-pnpm cf:status:migration
-pnpm cf:cutover:checklist
-pnpm cf:evidence:verify
+pnpm cf:d1:local:setup
+pnpm cf:preview
+pnpm cf:verify:local
+pnpm cf:preflight:deploy
+pnpm cf:deploy
+REQUIRE_LIVE_AI=1 pnpm cf:verify:production
 ```
 
-`pnpm cf:migration:prepare` also writes source-table coverage and D1 size-safety reports. Those fail the migration if a Supabase public table is not explicitly migrated, or if any transformed D1 row/value/statement exceeds Cloudflare limits.
+`pnpm cf:verify:local` records typecheck, Worker typecheck, lint, unit tests, source secret scan, Next build, OpenNext build, artifact scan, Wrangler dry run, and Worker startup evidence under `tmp/cloudflare-reports/`. The deploy wrapper uses the same report directory for preflight evidence and refuses production deploys when the local gates or artifact scans are stale.
 
-Important: raw exports, backups, provider snapshots, and secrets may contain personal data. Do not commit them. The final provider backup must run with `pnpm cf:migration:backup -- --final` after the serving app is frozen; it writes `cloudflare/write-freeze-report.json`, and production preflight refuses rehearsal backups or backups without frozen-source evidence. The Cloudflare import commands mutate production D1/Vectorize resources and require explicit write-freeze confirmations. Set `APP_WRITE_FREEZE=1` on the serving app during the final freeze so durable writes return `503 write_freeze_active` while read-only traffic continues. Run `pnpm cf:harden:backup-permissions` after regenerating final backup artifacts; preflight re-checks that the backup tree is owner-only and has no symlinks. The production preflight also writes a key-name-only env migration inventory, `pnpm cf:cleanup:duplicate-secrets` can remove reviewed Cloudflare secret/var duplicates, and the final cutover checklist is generated into the selected local backup directory with exact confirmation values but no secret values. `pnpm cf:verify:local` records a repo source fingerprint and writes `cloudflare/source-secret-scan-report.json` plus `cloudflare/runtime-provider-scan-report.json` so the preflight rejects stale build evidence, provider tokens accidentally added to source, or retired Vercel/Supabase/Postgres runtime dependencies. `pnpm cf:verify:credential-rotation` writes the final post-delete credential revocation report; migration status is not complete until that and provider hard-delete both pass. `pnpm cf:status:migration` and `pnpm cf:cutover:checklist` refresh `cloudflare/evidence-manifest.json`, a SHA-256 manifest for the local backup and generated migration evidence; `pnpm cf:evidence:verify` verifies that manifest. Rerun `pnpm cf:evidence:verify` after every manifest refresh and immediately before provider-retirement preflight/apply.
+Cloudflare data backups are explicit operational tasks, not part of every deploy:
+
+```bash
+pnpm cf:backup:frozen-cloudflare
+pnpm cf:harden:backup-permissions -- --backup <backup-dir>
+```
+
+Backups and generated reports can contain personal data or environment fingerprints. Keep them local and out of git.
 
 Cloudflare also owns post-turn memory work through the `inspirlearning-memory-post-turn-prod` Queue and `inspirlearning-memory-post-turn-dlq` dead-letter Queue. Chat responses enqueue memory extraction after the answer finishes; the Worker queue consumer processes memory against D1/Vectorize with retry support, keeping long-running memory synthesis off the request path.
 

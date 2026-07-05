@@ -42,14 +42,14 @@ export function LearningStore({
   }, []);
 
   return (
-    <main className="bubble-learning-store app-scrollbar">
-      <section className="bubble-store-head">
+    <main className="inspir-learning-store app-scrollbar">
+      <section className="inspir-store-head">
         <div>
           <span>Learning Store</span>
           <h2>Choose what lives in your sidebar.</h2>
           <p>Search every chat mode and mini app, open details, and keep your daily tools one click away.</p>
         </div>
-        <div className="bubble-store-search">
+        <div className="inspir-store-search">
           <Search size={18} />
           <input
             value={query}
@@ -60,7 +60,7 @@ export function LearningStore({
         </div>
       </section>
 
-      <div className="bubble-store-categories" role="tablist" aria-label="Learning store categories">
+      <div className="inspir-store-categories" role="tablist" aria-label="Learning store categories">
         {categories.map((item) => (
           <button
             key={item}
@@ -74,18 +74,18 @@ export function LearningStore({
       </div>
 
       {groups.length === 0 ? (
-        <div className="bubble-store-empty">
+        <div className="inspir-store-empty">
           <Search size={28} />
           <strong>No matching features</strong>
           <span>Try a broader search like quiz, timer, notes, focus, writing, or science.</span>
         </div>
       ) : null}
 
-      <div className="bubble-store-groups">
+      <div className="inspir-store-groups">
         {groups.map((group) => (
-          <section key={group.category} className="bubble-store-group">
+          <section key={group.category} className="inspir-store-group">
             <h3>{group.category}</h3>
-            <div className="bubble-store-grid">
+            <div className="inspir-store-grid">
               {group.topics.map((topic) => {
                 const metadata = storeTopicMetadata(topic);
                 const isAdded = addedTopicIds.includes(topic.id);
@@ -94,15 +94,15 @@ export function LearningStore({
                 return (
                   <article
                     key={topic.id}
-                    className={`bubble-store-tile ${isAdded ? "is-added" : ""} ${isActive ? "is-active" : ""}`}
+                    className={`inspir-store-tile ${isAdded ? "is-added" : ""} ${isActive ? "is-active" : ""}`}
                   >
                     <button
                       type="button"
-                      className="bubble-store-tile-main"
+                      className="inspir-store-tile-main"
                       onClick={() => setExpandedTopicId(isExpanded ? "" : topic.id)}
                       aria-expanded={isExpanded}
                     >
-                      <div className="bubble-store-tile-top">
+                      <div className="inspir-store-tile-top">
                         <span>{metadata.uiMode === "chat" || !metadata.uiMode ? "Chat" : "Mini app"}</span>
                         {isAdded ? (
                           <small>
@@ -114,10 +114,10 @@ export function LearningStore({
                       <strong>{topic.name}</strong>
                       <p>{topic.subText}</p>
                     </button>
-                    <div className="bubble-store-tile-actions">
+                    <div className="inspir-store-tile-actions">
                       <button
                         type="button"
-                        className="bubble-store-open-button"
+                        className="inspir-store-open-button"
                         onClick={() => onSelect(topic.id)}
                       >
                         Open
@@ -125,7 +125,7 @@ export function LearningStore({
                       {isAdded ? (
                         <button
                           type="button"
-                          className="bubble-store-remove-button"
+                          className="inspir-store-remove-button"
                           onClick={() => onRemove(topic.id)}
                           aria-label={`Remove ${topic.name} from sidebar`}
                           title={`Remove ${topic.name} from sidebar`}
@@ -135,7 +135,7 @@ export function LearningStore({
                       ) : (
                         <button
                           type="button"
-                          className="bubble-store-add-button"
+                          className="inspir-store-add-button"
                           onClick={() => onAdd(topic.id)}
                           aria-label={`Add ${topic.name} to sidebar`}
                           title={`Add ${topic.name} to sidebar`}
@@ -145,10 +145,10 @@ export function LearningStore({
                       )}
                     </div>
                     {isExpanded ? (
-                      <div className="bubble-store-detail">
+                      <div className="inspir-store-detail">
                         <p>{topic.description}</p>
                         {metadata.starters?.length ? (
-                          <div className="bubble-store-starters">
+                          <div className="inspir-store-starters">
                             {metadata.starters.slice(0, 3).map((starter) => (
                               <button key={starter} type="button" onClick={() => onSelect(topic.id)}>
                                 <Sparkles size={13} />

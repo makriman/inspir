@@ -11,7 +11,6 @@ const eslintConfig = defineConfig([
     ".next/**",
     ".open-next/**",
     ".wrangler/**",
-    ".vercel/**",
     "backups/**",
     "inspirlearning-local-backups/**",
     "out/**",

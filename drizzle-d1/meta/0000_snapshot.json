@@ -834,13 +834,6 @@
           "notNull": true,
           "autoincrement": false
         },
-        "legacy_bubble_id": {
-          "name": "legacy_bubble_id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
         "user_id": {
           "name": "user_id",
           "type": "text",
@@ -907,13 +900,6 @@
         }
       },
       "indexes": {
-        "chats_legacy_bubble_id_idx": {
-          "name": "chats_legacy_bubble_id_idx",
-          "columns": [
-            "legacy_bubble_id"
-          ],
-          "isUnique": true
-        },
         "chats_user_id_idx": {
           "name": "chats_user_id_idx",
           "columns": [
@@ -1537,13 +1523,6 @@
           "notNull": true,
           "autoincrement": false
         },
-        "legacy_bubble_id": {
-          "name": "legacy_bubble_id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
         "chat_id": {
           "name": "chat_id",
           "type": "text",
@@ -1789,13 +1768,6 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
-        },
-        "legacy_bubble_id": {
-          "name": "legacy_bubble_id",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
           "autoincrement": false
         },
         "name": {
@@ -2539,13 +2511,6 @@
         "profile_picture_downloaded_at": {
           "name": "profile_picture_downloaded_at",
           "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "legacy_bubble_id": {
-          "name": "legacy_bubble_id",
-          "type": "text",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false

@@ -7,16 +7,16 @@ export function FocusMusicWorkspace({ tools }: { tools: PersistentLearningToolsC
   const { music, musicActions, musicPresets: presets, activeMusicPreset } = tools;
 
   return (
-    <main className="bubble-tool-workspace app-scrollbar">
-      <section className="bubble-focus-tool">
-        <div className="bubble-focus-tool-copy">
+    <main className="inspir-tool-workspace app-scrollbar">
+      <section className="inspir-focus-tool">
+        <div className="inspir-focus-tool-copy">
           <span>Focus & Productivity</span>
           <h2>Music for Focus</h2>
           <p>Minimal generated audio keeps playing while you keep learning. No embedded player needs to stay open.</p>
         </div>
 
-        <div className="bubble-music-card">
-          <div className="bubble-music-now">
+        <div className="inspir-music-card">
+          <div className="inspir-music-now">
             <Music size={24} />
             <div>
               <span>{music.playing ? "Now playing" : "Ready"}</span>
@@ -24,7 +24,7 @@ export function FocusMusicWorkspace({ tools }: { tools: PersistentLearningToolsC
             </div>
           </div>
           <p>{activeMusicPreset.description}</p>
-          <div className="bubble-music-controls">
+          <div className="inspir-music-controls">
             {music.playing ? (
               <button type="button" onClick={musicActions.stop}>
                 <Pause size={18} />
@@ -50,7 +50,7 @@ export function FocusMusicWorkspace({ tools }: { tools: PersistentLearningToolsC
           </div>
         </div>
 
-        <div className="bubble-music-presets">
+        <div className="inspir-music-presets">
           {presets.map((preset) => (
             <button
               key={preset.id}

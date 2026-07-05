@@ -32,7 +32,6 @@ export const users = sqliteTable("users", {
   dateOfBirth: text("date_of_birth"),
   dateOfBirthSource: text("date_of_birth_source"),
   profilePictureDownloadedAt: timestampMs("profile_picture_downloaded_at"),
-  legacyBubbleId: text("legacy_bubble_id"),
   createdAt: timestampMsNow("created_at"),
   updatedAt: timestampMsNow("updated_at"),
 });
@@ -104,7 +103,6 @@ export const appMetadata = sqliteTable("app_metadata", {
 export const topics = sqliteTable("topics", {
   id: uuidText("id").primaryKey(),
   slug: text("slug").notNull().unique(),
-  legacyBubbleId: text("legacy_bubble_id"),
   name: text("name").notNull(),
   subText: text("sub_text").notNull(),
   description: text("description").notNull(),
@@ -133,7 +131,6 @@ export const chats = sqliteTable(
   "chats",
   {
     id: uuidText("id").primaryKey(),
-    legacyBubbleId: text("legacy_bubble_id"),
     userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
     userEmailSnapshot: text("user_email_snapshot"),
     topicId: text("topic_id").references(() => topics.id, { onDelete: "set null" }),
@@ -145,7 +142,6 @@ export const chats = sqliteTable(
     updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
-    legacyChatIdx: uniqueIndex("chats_legacy_bubble_id_idx").on(table.legacyBubbleId),
     userIdx: index("chats_user_id_idx").on(table.userId),
     topicIdx: index("chats_topic_id_idx").on(table.topicId),
   }),
@@ -155,7 +151,6 @@ export const messages = sqliteTable(
   "messages",
   {
     id: uuidText("id").primaryKey(),
-    legacyBubbleId: text("legacy_bubble_id"),
     chatId: text("chat_id")
       .references(() => chats.id, { onDelete: "cascade" })
       .notNull(),

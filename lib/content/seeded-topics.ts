@@ -7,7 +7,6 @@ export function topicFromSeed(seed: TopicSeed): Topic {
   return {
     id: seed.slug,
     slug: seed.slug,
-    legacyBubbleId: null,
     name: seed.name,
     subText: seed.subText,
     description: seed.description,

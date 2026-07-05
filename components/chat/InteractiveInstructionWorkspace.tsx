@@ -855,7 +855,7 @@ export function InteractiveInstructionWorkspace({
   if (!currentStep) return null;
 
   return (
-    <main className="bubble-workspace instruction-workspace">
+    <main className="inspir-workspace instruction-workspace">
       <InstructionSessionView
         lesson={lesson}
         currentStep={currentStep}
@@ -920,7 +920,7 @@ function InstructionSetupView({
   onBackToGoal: () => void;
 }) {
   return (
-    <main className="bubble-workspace instruction-workspace">
+    <main className="inspir-workspace instruction-workspace">
       <section className="instruction-setup">
         <div className="instruction-setup-copy">
           <span>{topic.name}</span>
@@ -1092,7 +1092,7 @@ function InstructionCompleteView({
   onRestart: () => void;
 }) {
   return (
-    <main className="bubble-workspace instruction-workspace">
+    <main className="inspir-workspace instruction-workspace">
       <section className="instruction-complete">
         <div className="instruction-complete-badge">
           <CheckCircle2 size={38} />

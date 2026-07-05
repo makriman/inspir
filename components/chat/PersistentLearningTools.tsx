@@ -443,24 +443,24 @@ export function FocusTimerWorkspace({ tools }: { tools: PersistentLearningToolsC
       : 100 - (timer.secondsLeft / (timer.breakMinutes * 60)) * 100;
 
   return (
-    <main className="bubble-tool-workspace app-scrollbar">
-      <section className="bubble-focus-tool">
-        <div className="bubble-focus-tool-copy">
+    <main className="inspir-tool-workspace app-scrollbar">
+      <section className="inspir-focus-tool">
+        <div className="inspir-focus-tool-copy">
           <span>Focus & Productivity</span>
           <h2>Study Timer</h2>
           <p>The timer keeps running while you move through chats, the store, or other tools.</p>
         </div>
 
-        <div className="bubble-timer-card">
-          <div className="bubble-timer-mode">
+        <div className="inspir-timer-card">
+          <div className="inspir-timer-mode">
             <Timer size={20} />
             <span>{timer.mode === "focus" ? "Focus time" : "Break time"}</span>
           </div>
           <strong>{formatSeconds(timer.secondsLeft)}</strong>
-          <div className="bubble-timer-progress" aria-hidden="true">
+          <div className="inspir-timer-progress" aria-hidden="true">
             <span style={{ width: `${Math.min(100, Math.max(0, percent))}%` }} />
           </div>
-          <div className="bubble-timer-controls">
+          <div className="inspir-timer-controls">
             {timer.running ? (
               <button type="button" onClick={timerActions.pause}>
                 <Pause size={18} />
@@ -479,7 +479,7 @@ export function FocusTimerWorkspace({ tools }: { tools: PersistentLearningToolsC
           </div>
         </div>
 
-        <div className="bubble-focus-settings">
+        <div className="inspir-focus-settings">
           <label>
             <span>Focus subject</span>
             <input
@@ -514,7 +514,7 @@ export function FocusTimerWorkspace({ tools }: { tools: PersistentLearningToolsC
           </button>
         </div>
 
-        <div className="bubble-focus-stats">
+        <div className="inspir-focus-stats">
           <article>
             <strong>{timer.completedFocusSessions}</strong>
             <span>focus sessions</span>

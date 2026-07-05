@@ -85,9 +85,9 @@ import { RichMarkdownContent } from "@/components/chat/RichMarkdownContent";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import {
-  Bubble as ChatBubblePrimitive,
-  BubbleContent as ChatBubbleContent,
-} from "@/components/ui/bubble";
+  MessageCard as ChatCardPrimitive,
+  MessageCardContent as ChatCardContent,
+} from "@/components/ui/message-card";
 import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker";
 import {
   Message as ChatMessagePrimitive,
@@ -108,7 +108,7 @@ import {
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import { topicPath } from "@/lib/content/topic-routing";
 import { localizeHref } from "@/lib/i18n/routing";
-import { formatBubbleDate } from "@/lib/utils/dates";
+import { formatAppDate } from "@/lib/utils/dates";
 import { buildMiniAppInstruction, getVisibleMessageContent } from "@/lib/ai/visible-content";
 import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
 
@@ -460,6 +460,7 @@ function isFlashcardState(value: Record<string, unknown>): value is PublicFlashc
 
 function toDisplayMessage(message: Message): Message | null {
   if (message.role === "system") return null;
+  if (isPendingAssistantMessage(message)) return message;
   const content = getVisibleMessageContent(message.content).trim();
   if (!content) return null;
   return content === message.content ? message : { ...message, content };
@@ -467,6 +468,17 @@ function toDisplayMessage(message: Message): Message | null {
 
 function displayMessages(messages: Message[]) {
   return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
+}
+
+function isPendingAssistantMessage(message: Message) {
+  return message.role === "assistant" && message.metadata?.pendingAssistant === true;
+}
+
+function clearPendingAssistantMetadata(metadata: Record<string, unknown> | undefined) {
+  if (!metadata?.pendingAssistant) return metadata;
+  const rest = { ...metadata };
+  delete rest.pendingAssistant;
+  return Object.keys(rest).length > 0 ? rest : undefined;
 }
 
 function isExplicitMemoryMutationRequest(value: string) {
@@ -1080,7 +1092,15 @@ function useChatClientController({
       createdAt: now,
     };
     const assistantMessageId = `local-assistant-${now.getTime()}`;
-    if (appendUser) setMessages((current) => [...current, userMessage]);
+    const assistantPlaceholder: Message = {
+      id: assistantMessageId,
+      role: "assistant",
+      content: "",
+      createdAt: now,
+      metadata: { pendingAssistant: true },
+    };
+    setMessages((current) => [...current, ...(appendUser ? [userMessage] : []), assistantPlaceholder]);
+    setStreamingMessageId(assistantMessageId);
     scheduleMessageScrollToEnd("auto");
 
     const controller = new AbortController();
@@ -1119,7 +1139,9 @@ function useChatClientController({
       ensureCurrentRequest();
       if (isGuest && response.status === 429) {
         setGuestPromptOpen(true);
-        setMessages((current) => current.filter((message) => message.id !== userMessage.id));
+        setMessages((current) =>
+          current.filter((message) => message.id !== userMessage.id && message.id !== assistantMessageId),
+        );
         return;
       }
       if (!response.ok || !response.body) throw new Error("No assistant response");
@@ -1127,7 +1149,7 @@ function useChatClientController({
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let assistantText = "";
-      let assistantInserted = false;
+      let assistantInserted = true;
       let assistantFlushTimeout: number | null = null;
       let assistantFlushFrame: number | null = null;
 
@@ -1169,8 +1191,11 @@ function useChatClientController({
           }));
         } else {
           updateChatState((current) => ({
+            awaitingResponse: false,
             messages: current.messages.map((message) =>
-              message.id === assistantMessageId ? { ...message, content: assistantText } : message,
+              message.id === assistantMessageId
+                ? { ...message, content: assistantText, metadata: clearPendingAssistantMetadata(message.metadata) }
+                : message,
             ),
           }));
         }
@@ -1234,25 +1259,29 @@ function useChatClientController({
       setAwaitingResponse(false);
       setStreamingMessageId(null);
       if ((error as Error).name === "AbortError") {
-        setMessages((current) => [
-          ...current,
-          {
-            id: assistantMessageId,
-            role: "assistant",
-            content: "Stopped. Send another message whenever you are ready.",
-            createdAt: new Date(),
-          },
-        ]);
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  content: "Stopped. Send another message whenever you are ready.",
+                  metadata: clearPendingAssistantMetadata(message.metadata),
+                }
+              : message,
+          ),
+        );
       } else {
-        setMessages((current) => [
-          ...current,
-          {
-            id: assistantMessageId,
-            role: "assistant",
-            content: "I could not answer right now. Please try again.",
-            createdAt: new Date(),
-          },
-        ]);
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  content: "I could not answer right now. Please try again.",
+                  metadata: clearPendingAssistantMetadata(message.metadata),
+                }
+              : message,
+          ),
+        );
       }
       scheduleMessageScrollToEnd("auto");
     } finally {
@@ -1669,9 +1698,9 @@ function ChatClientLayout(controller: ChatClientController) {
     <div
       key={`${translationBundle.language}-${translationBundle.sourceHash}`}
       ref={translationRootRef}
-      className={`bubble-chat-root ${profileOpen ? "profile-open" : ""}`}
+      className={`inspir-chat-root ${profileOpen ? "profile-open" : ""}`}
     >
-      <aside className={`bubble-sidebar ${mobileSidebarOpen ? "is-open" : ""}`}>
+      <aside className={`inspir-sidebar ${mobileSidebarOpen ? "is-open" : ""}`}>
         <TopicSidebar
           isGuest={isGuest}
           avatarSrc={avatarSrc}
@@ -1702,7 +1731,7 @@ function ChatClientLayout(controller: ChatClientController) {
         <button
           type="button"
           aria-label="Close topics"
-          className="bubble-sidebar-backdrop"
+          className="inspir-sidebar-backdrop"
           onClick={() => setMobileSidebarOpen(false)}
         />
       ) : null}
@@ -1735,7 +1764,7 @@ function ChatMainSection({ controller }: { controller: ChatClientController }) {
   } = controller;
 
   return (
-    <section className="bubble-main-shell">
+    <section className="inspir-main-shell">
       <TopBar
         title={
           profileOpen
@@ -1974,12 +2003,14 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
     userDisplayName,
     visibleChatMessages,
   } = controller;
-  const streamingMessageLength = streamingMessageId
-    ? (visibleChatMessages.find((message) => message.id === streamingMessageId)?.content.length ?? 0)
-    : 0;
+  const hasPendingAssistantCard = Boolean(
+    awaitingResponse &&
+      streamingMessageId &&
+      visibleChatMessages.some((message) => message.id === streamingMessageId && isPendingAssistantMessage(message)),
+  );
 
   return (
-    <main className="bubble-workspace">
+    <main className="inspir-workspace">
       <MessageScrollerProvider autoScroll defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
         <StandardChatScrollFollow
           activeChatId={activeChatId}
@@ -1988,11 +2019,10 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
           messageCount={visibleChatMessages.length}
           sending={sending}
           streamingMessageId={streamingMessageId}
-          streamingMessageLength={streamingMessageLength}
         />
-        <MessageScroller className="bubble-message-scroller">
-          <MessageScrollerViewport ref={listRef} className="bubble-message-scroll app-scrollbar">
-            <MessageScrollerContent className="bubble-message-stack">
+        <MessageScroller className="inspir-message-scroller">
+          <MessageScrollerViewport ref={listRef} className="inspir-message-scroll app-scrollbar">
+            <MessageScrollerContent className="inspir-message-stack">
               {visibleChatMessages.length === 0 ? (
                 <MessageScrollerItem>
                   <TopicIntroCard topic={activeTopic} />
@@ -2005,7 +2035,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
               ) : null}
               {visibleChatMessages.map((message) => (
                 <MessageScrollerItem key={message.id} messageId={message.id} scrollAnchor>
-                  <MessageBubble
+                  <MessageCard
                     message={message}
                     isStreaming={message.id === streamingMessageId}
                     userLabel={userDisplayName}
@@ -2013,18 +2043,18 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
                   />
                 </MessageScrollerItem>
               ))}
-              {awaitingResponse ? (
+              {awaitingResponse && !hasPendingAssistantCard ? (
                 <MessageScrollerItem scrollAnchor>
                   <ThinkingMarker label="Thinking" />
                 </MessageScrollerItem>
               ) : null}
             </MessageScrollerContent>
           </MessageScrollerViewport>
-          <MessageScrollerButton className="bubble-scroll-button" />
+          <MessageScrollerButton className="inspir-scroll-button" />
         </MessageScroller>
       </MessageScrollerProvider>
-      <form onSubmit={submitMessage} className="bubble-composer">
-        <div className="bubble-composer-inner">
+      <form onSubmit={submitMessage} className="inspir-composer">
+        <div className="inspir-composer-inner">
           <textarea
             aria-label="Message"
             ref={inputRef}
@@ -2033,7 +2063,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
             onKeyDown={handleComposerKeyDown}
             placeholder={activeTopic.inputboxText}
             disabled={sending}
-            className="bubble-composer-input"
+            className="inspir-composer-input"
             rows={1}
           />
           <button
@@ -2041,7 +2071,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
             onClick={sending ? stopGeneration : undefined}
             disabled={!sending && !input.trim()}
             aria-label={sending ? "Stop response" : "Send message"}
-            className="bubble-send-button"
+            className="inspir-send-button"
           >
             {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
           </button>
@@ -2058,7 +2088,6 @@ function StandardChatScrollFollow({
   messageCount,
   sending,
   streamingMessageId,
-  streamingMessageLength,
 }: {
   activeChatId: string | undefined;
   activeTopicId: string;
@@ -2066,7 +2095,6 @@ function StandardChatScrollFollow({
   messageCount: number;
   sending: boolean;
   streamingMessageId: string | null;
-  streamingMessageLength: number;
 }) {
   const { scrollToEnd } = useMessageScroller();
   const shouldFollow = sending || awaitingResponse || Boolean(streamingMessageId);
@@ -2083,7 +2111,6 @@ function StandardChatScrollFollow({
     sending,
     shouldFollow,
     streamingMessageId,
-    streamingMessageLength,
   ]);
 
   return null;
@@ -2189,79 +2216,79 @@ function TopicSidebar({
   }, []);
 
   return (
-    <div className="bubble-sidebar-inner">
-      <div className="bubble-sidebar-header">
+    <div className="inspir-sidebar-inner">
+      <div className="inspir-sidebar-header">
         {isGuest ? (
           <GoogleContinueButton
-            className="bubble-guest-auth-button"
+            className="inspir-guest-auth-button"
             callbackUrl={localizeHref(activeTopic ? topicPath(activeTopic.slug) : "/chat", currentLanguage)}
           >
             Continue with Google
           </GoogleContinueButton>
         ) : (
-          <button type="button" onClick={onProfile} aria-label="Open profile" className="bubble-avatar-button">
+          <button type="button" onClick={onProfile} aria-label="Open profile" className="inspir-avatar-button">
             {avatarSrc ? (
               <Image src={avatarSrc} alt="" width={40} height={40} sizes="40px" unoptimized />
             ) : null}
           </button>
         )}
-        <InspirLogo className="bubble-sidebar-logo" />
+        <InspirLogo className="inspir-sidebar-logo" />
         <button
           type="button"
           onClick={onOpenStore}
           aria-label="Open learning store"
           title="Open learning store"
-          className="bubble-sidebar-store-button"
+          className="inspir-sidebar-store-button"
         >
           <Plus size={20} />
         </button>
       </div>
-      <div className="bubble-search-row">
-        <div className="bubble-search-shell">
+      <div className="inspir-search-row">
+        <div className="inspir-search-shell">
           <input
             aria-label="Search chats"
             value={search}
             onChange={(event) => onSearch(event.target.value)}
             placeholder="Search"
-            className="bubble-search-input"
+            className="inspir-search-input"
           />
-          {search ? <Search className="bubble-search-icon" size={16} /> : null}
+          {search ? <Search className="inspir-search-icon" size={16} /> : null}
         </div>
       </div>
-      <div className="bubble-topic-list app-scrollbar">
+      <div className="inspir-topic-list app-scrollbar">
         {search && filteredTopics.length === 0 ? (
-          <div className="bubble-no-results">No search results</div>
+          <div className="inspir-no-results">No search results</div>
         ) : null}
         {!search && rows.length === 0 && activeTopic ? (
           <button
             type="button"
             onClick={() => onSelect(activeTopic.id)}
-            className={`bubble-topic-row ${activeTopic.id === activeTopicId ? "is-active" : ""}`}
+            className={`inspir-topic-row ${activeTopic.id === activeTopicId ? "is-active" : ""}`}
           >
-            <span className="bubble-topic-title">{activeTopic.name}</span>
-            <span className="bubble-topic-subtitle">{activeTopic.subText}</span>
+            <span className="inspir-topic-title">{activeTopic.name}</span>
+            <span className="inspir-topic-subtitle">{activeTopic.subText}</span>
           </button>
         ) : null}
         {groups.map((group) => (
-          <section key={group.category} className="bubble-topic-group">
+          <section key={group.category} className="inspir-topic-group">
             <h3>{group.category}</h3>
             {group.topics.map((topic) => {
               const isAdded = addedTopicIds.includes(topic.id);
               return (
-                <div key={topic.id} className="bubble-topic-row-shell">
+                <div key={topic.id} className="inspir-topic-row-shell">
                   <button
                     type="button"
                     onClick={() => onSelect(topic.id)}
-                    className={`bubble-topic-row ${search ? "has-sidebar-action" : ""} ${
+                    className={`inspir-topic-row ${search ? "has-sidebar-action" : ""} ${
                       topic.id === activeTopicId ? "is-active" : ""
                     }`}
                   >
-                    <span className="bubble-topic-title">{topic.name}</span>
-                    <span className="bubble-topic-subtitle">{topic.subText}</span>
+                    <span className="inspir-topic-title">{topic.name}</span>
+                    <span className="inspir-topic-subtitle">{topic.subText}</span>
                   </button>
                   {search ? (
                     isAdded ? (
-                      <span className="bubble-topic-row-action is-added" aria-label={`${topic.name} is added`}>
+                      <span className="inspir-topic-row-action is-added" aria-label={`${topic.name} is added`}>
                         <Check size={16} />
                       </span>
                     ) : (
@@ -2271,7 +2298,7 @@ function TopicSidebar({
                           event.stopPropagation();
                           onAddFeature(topic.id);
                         }}
-                        className="bubble-topic-row-action"
+                        className="inspir-topic-row-action"
                         aria-label={`Add ${topic.name} to sidebar`}
                         title={`Add ${topic.name} to sidebar`}
                       >
@@ -2317,22 +2344,22 @@ function TopBar({
   showSessionActions?: boolean;
 }) {
   return (
-    <header className="bubble-topbar">
-      <button type="button" onClick={onMenu} className="bubble-mobile-menu" aria-label="Open topics">
+    <header className="inspir-topbar">
+      <button type="button" onClick={onMenu} className="inspir-mobile-menu" aria-label="Open topics">
         <Menu size={26} />
       </button>
-      <div className="bubble-topbar-title">
+      <div className="inspir-topbar-title">
         {recentOpen ? (
-          <button type="button" onClick={onBack} aria-label="Back to chat" className="bubble-back-button">
+          <button type="button" onClick={onBack} aria-label="Back to chat" className="inspir-back-button">
             <ArrowLeft size={22} />
           </button>
         ) : null}
         <span>{title}</span>
       </div>
-      <div className="bubble-topbar-actions">
+      <div className="inspir-topbar-actions">
         {showSessionActions ? (
           <>
-            <button type="button" onClick={onReset} aria-label="Reset conversation" className="bubble-reset-button">
+            <button type="button" onClick={onReset} aria-label="Reset conversation" className="inspir-reset-button">
               <RotateCcw size={25} strokeWidth={3} />
             </button>
             <button
@@ -2340,12 +2367,12 @@ function TopBar({
               onClick={sending ? onStop : onRegenerate}
               disabled={!sending && !canRegenerate}
               aria-label={sending ? "Stop response" : "Regenerate response"}
-              className="bubble-regenerate-button"
+              className="inspir-regenerate-button"
             >
               {sending ? <Square size={18} fill="currentColor" /> : <RefreshCw size={24} strokeWidth={3} />}
             </button>
             {showRecent ? (
-              <button type="button" onClick={onRecent} aria-label="Recent conversations" className="bubble-history-button">
+              <button type="button" onClick={onRecent} aria-label="Recent conversations" className="inspir-history-button">
                 <History size={26} strokeWidth={3} />
               </button>
             ) : null}
@@ -2358,7 +2385,7 @@ function TopBar({
 
 function TopicIntroCard({ topic }: { topic: Topic }) {
   return (
-    <article className="bubble-intro-card">
+    <article className="inspir-intro-card">
       <div>
         <span>{topicMetadata(topic)?.category ?? "Learning"}</span>
         <h2>{topic.name}</h2>
@@ -2373,20 +2400,20 @@ function GuestFeatureGate({ topic, featureName, language }: { topic: Topic; feat
   const topicHref = localizeHref(topicPath(topic.slug), language);
 
   return (
-    <main className="bubble-workspace">
-      <section className="bubble-guest-feature-gate">
+    <main className="inspir-workspace">
+      <section className="inspir-guest-feature-gate">
         <TopicIntroCard topic={topic} />
-        <div className="bubble-guest-feature-card">
+        <div className="inspir-guest-feature-card">
           <Sparkles size={26} />
           <span>Sign in to keep learning</span>
           <h2>Continue with Google to use {featureName}.</h2>
           <p>Sign in keeps your progress, score, generated activities, and future conversations saved.</p>
-          <GoogleContinueButton className="bubble-guest-modal-primary" callbackUrl={topicHref}>
+          <GoogleContinueButton className="inspir-guest-modal-primary" callbackUrl={topicHref}>
             Continue with Google
           </GoogleContinueButton>
         </div>
         {starters.length ? (
-          <div className="bubble-starter-grid">
+          <div className="inspir-starter-grid">
             {starters.map((starter) => (
               <a key={starter} href={topicHref}>
                 <Sparkles size={16} />
@@ -2409,7 +2436,7 @@ function StarterGrid({
 }) {
   if (!starters.length) return null;
   return (
-    <div className="bubble-starter-grid">
+    <div className="inspir-starter-grid">
       {starters.map((starter) => (
         <button key={starter} type="button" onClick={() => onStart(starter)}>
           <Sparkles size={16} />
@@ -3182,10 +3209,10 @@ function TimeTravelWorkspace({
   }
 
   return (
-    <main className="bubble-workspace bubble-time-workspace">
-      <div className="bubble-time-scroll app-scrollbar">
-        <section className="bubble-time-onboarding">
-          <div className="bubble-time-stage">
+    <main className="inspir-workspace inspir-time-workspace">
+      <div className="inspir-time-scroll app-scrollbar">
+        <section className="inspir-time-onboarding">
+          <div className="inspir-time-stage">
             {step === "departure" ? (
               <TimeTravelDepartureBoard
                 intent={intent}
@@ -3294,19 +3321,19 @@ function TimeTravelDepartureBoard({
   const featured = timeTravelJourneyTemplates.slice(0, 5);
 
   return (
-    <div className="bubble-time-departure">
-      <header className="bubble-time-hero">
+    <div className="inspir-time-departure">
+      <header className="inspir-time-hero">
         <div>
           <span>{topic.name}</span>
           <h2>Departures beyond the present</h2>
         </div>
-        <button type="button" onClick={onRandom} className="bubble-time-icon-button">
+        <button type="button" onClick={onRandom} className="inspir-time-icon-button">
           <Waypoints size={18} />
           <span>Send me somewhere consequential</span>
         </button>
       </header>
 
-      <form className="bubble-time-search-board" onSubmit={onResolve}>
+      <form className="inspir-time-search-board" onSubmit={onResolve}>
         <Search size={20} />
         <input
           aria-label="Time travel destination"
@@ -3320,16 +3347,16 @@ function TimeTravelDepartureBoard({
         </button>
       </form>
 
-      <div className="bubble-time-map-board" aria-label="Historical hotspots">
+      <div className="inspir-time-map-board" aria-label="Historical hotspots">
         {featured.map((journey) => (
-          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="bubble-time-hotspot">
+          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="inspir-time-hotspot">
             <MapPin size={16} />
             <span>{journey.label}</span>
           </button>
         ))}
       </div>
 
-      <ol className="bubble-time-timeline-stops">
+      <ol className="inspir-time-timeline-stops">
         {featured.map((journey) => (
           <li key={journey.id}>
             <button type="button" onClick={() => onSelect(journey)}>
@@ -3340,9 +3367,9 @@ function TimeTravelDepartureBoard({
         ))}
       </ol>
 
-      <div className="bubble-time-journey-grid">
+      <div className="inspir-time-journey-grid">
         {timeTravelJourneyTemplates.slice(0, 6).map((journey) => (
-          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="bubble-time-journey-card">
+          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="inspir-time-journey-card">
             <span>{journey.label}</span>
             <strong>{journey.arrival}</strong>
             <small>{journey.context}</small>
@@ -3365,17 +3392,17 @@ function TimeTravelDestinationStep({
   onSelect: (journey: TimeTravelJourney) => void;
 }) {
   return (
-    <div className="bubble-time-question">
-      <button type="button" onClick={onBack} className="bubble-time-back">
+    <div className="inspir-time-question">
+      <button type="button" onClick={onBack} className="inspir-time-back">
         <ArrowLeft size={17} />
         <span>Departure board</span>
       </button>
       <span>Arrival point</span>
       <h2>{intent.trim() ? "Choose the strongest entry point." : "Choose your arrival point."}</h2>
       <p>Center of power, street-level life, and the edge of the system reveal different histories.</p>
-      <div className="bubble-time-option-grid">
+      <div className="inspir-time-option-grid">
         {options.map((journey) => (
-          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="bubble-time-option-card">
+          <button key={journey.id} type="button" onClick={() => onSelect(journey)} className="inspir-time-option-card">
             <strong>{journey.label}</strong>
             <span>{journey.arrival}</span>
             <small>{journey.context}</small>
@@ -3405,21 +3432,21 @@ function TimeTravelChoiceStep({
   onBack: () => void;
 }) {
   return (
-    <div className="bubble-time-question">
-      <button type="button" onClick={onBack} className="bubble-time-back">
+    <div className="inspir-time-question">
+      <button type="button" onClick={onBack} className="inspir-time-back">
         <ArrowLeft size={17} />
         <span>Back</span>
       </button>
       <span>{kicker}</span>
       <h2>{title}</h2>
       <p>{body}</p>
-      <div className="bubble-time-option-grid">
+      <div className="inspir-time-option-grid">
         {choices.map((choice) => (
           <button
             key={choice.id}
             type="button"
             onClick={() => onSelect(choice.id)}
-            className={`bubble-time-option-card ${choice.id === selectedId ? "is-selected" : ""}`}
+            className={`inspir-time-option-card ${choice.id === selectedId ? "is-selected" : ""}`}
           >
             <strong>{choice.label}</strong>
             <span>{"role" in choice ? choice.role : choice.description}</span>
@@ -3452,19 +3479,19 @@ function TimeTravelClearance({
 }) {
   const ready = Boolean(identity && purpose && realism && depth);
   return (
-    <div className="bubble-time-clearance">
-      <button type="button" onClick={onBack} className="bubble-time-back">
+    <div className="inspir-time-clearance">
+      <button type="button" onClick={onBack} className="inspir-time-back">
         <ArrowLeft size={17} />
         <span>Back</span>
       </button>
-      <div className="bubble-time-clearance-head">
+      <div className="inspir-time-clearance-head">
         <ShieldCheck size={28} />
         <div>
           <span>Travel advisory</span>
           <h2>{journey.arrival}</h2>
         </div>
       </div>
-      <div className="bubble-time-advisory-grid">
+      <div className="inspir-time-advisory-grid">
         <TimeTravelAdvisoryItem icon="language" label="Languages" value={journey.languages.join(", ")} />
         <TimeTravelAdvisoryItem icon="risk" label="Risk" value={`${journey.risk} - ${journey.exposureRisk}`} />
         <TimeTravelAdvisoryItem icon="money" label="Money" value={identity?.money ?? journey.currency} />
@@ -3472,11 +3499,11 @@ function TimeTravelClearance({
         <TimeTravelAdvisoryItem icon="rules" label="Do not forget" value={journey.socialRules[0] ?? "Local rules apply"} />
         <TimeTravelAdvisoryItem icon="evidence" label="Evidence" value={journey.confidence} />
       </div>
-      <div className="bubble-time-warning">
+      <div className="inspir-time-warning">
         <AlertTriangle size={20} />
         <span>{journey.exposureRisk}</span>
       </div>
-      <button type="button" disabled={!ready || sending} onClick={onBegin} className="bubble-time-enter-button">
+      <button type="button" disabled={!ready || sending} onClick={onBegin} className="inspir-time-enter-button">
         <Compass size={19} />
         <span>{journey.risk === "Very high" ? "Enter carefully" : "Enter the city"}</span>
       </button>
@@ -3506,7 +3533,7 @@ function TimeTravelAdvisoryItem({
 }) {
   const Icon = timeTravelAdvisoryIcons[icon];
   return (
-    <article className="bubble-time-advisory-item">
+    <article className="inspir-time-advisory-item">
       <Icon size={19} />
       <div>
         <strong>{label}</strong>
@@ -3540,15 +3567,15 @@ function TimeTravelPassport({
   ].filter(Boolean);
 
   return (
-    <aside className={`bubble-time-passport ${compact ? "is-compact" : ""}`}>
-      <div className="bubble-time-passport-cover">
+    <aside className={`inspir-time-passport ${compact ? "is-compact" : ""}`}>
+      <div className="inspir-time-passport-cover">
         <div>
           <span>Temporal passport</span>
           <h3>{journey?.label ?? "Clearance pending"}</h3>
         </div>
         <Stamp size={28} />
       </div>
-      <dl className="bubble-time-passport-fields">
+      <dl className="inspir-time-passport-fields">
         <div>
           <dt>Destination</dt>
           <dd>{journey?.arrival ?? "Choose an arrival point"}</dd>
@@ -3574,7 +3601,7 @@ function TimeTravelPassport({
           <dd>{purpose?.label ?? "Mission pending"}</dd>
         </div>
       </dl>
-      <div className="bubble-time-stamps">
+      <div className="inspir-time-stamps">
         {stamps.length ? (
           stamps.map((stamp) => <span key={stamp}>{stamp}</span>)
         ) : (
@@ -3645,7 +3672,7 @@ function CoachChatSession({
   const hasDetails = Boolean(details?.length);
 
   return (
-    <main className="bubble-workspace coach-chat-workspace">
+    <main className="inspir-workspace coach-chat-workspace">
       <section className={`coach-chat-shell ${detailsOpen ? "is-details-open" : ""}`}>
         <header className="coach-chat-top">
           <div className="coach-chat-avatar" aria-hidden="true">
@@ -3711,7 +3738,7 @@ function CoachChatSession({
           <div ref={listRef} className="coach-chat-log app-scrollbar">
             <div className="coach-chat-message-stack">
               {messages.map((message) => (
-                <MessageBubble
+                <MessageCard
                   key={message.id}
                   message={message}
                   userLabel={userName}
@@ -3724,8 +3751,8 @@ function CoachChatSession({
             </div>
           </div>
 
-          <form onSubmit={onSubmit} className="bubble-composer coach-chat-composer">
-            <div className="bubble-composer-inner">
+          <form onSubmit={onSubmit} className="inspir-composer coach-chat-composer">
+            <div className="inspir-composer-inner">
               <textarea
                 aria-label="Message coach"
                 ref={inputRef}
@@ -3734,7 +3761,7 @@ function CoachChatSession({
                 onKeyDown={onKeyDown}
                 placeholder={placeholder}
                 disabled={sending}
-                className="bubble-composer-input"
+                className="inspir-composer-input"
                 rows={1}
               />
               <button
@@ -3742,7 +3769,7 @@ function CoachChatSession({
                 onClick={sending ? onStop : undefined}
                 disabled={!sending && !input.trim()}
                 aria-label={sending ? "Stop response" : "Send message"}
-                className="bubble-send-button"
+                className="inspir-send-button"
               >
                 {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
               </button>
@@ -4603,21 +4630,21 @@ function CollaborativeSetup({
 }) {
   const ActiveModeIcon = activeMode.icon;
   return (
-    <main className="bubble-workspace bubble-collab-workspace">
-      <div ref={listRef} className="bubble-collab-scroll app-scrollbar">
-        <section className="bubble-collab-start">
-          <header className="bubble-collab-roombar">
+    <main className="inspir-workspace inspir-collab-workspace">
+      <div ref={listRef} className="inspir-collab-scroll app-scrollbar">
+        <section className="inspir-collab-start">
+          <header className="inspir-collab-roombar">
             <div>
               <span>Shared workroom</span>
               <h2>Collaborative Instruction</h2>
             </div>
-            <strong className="bubble-collab-status-pill">
+            <strong className="inspir-collab-status-pill">
               <ActiveModeIcon size={15} />
               Mode: {activeMode.label}
             </strong>
           </header>
-          <div className="bubble-collab-start-grid">
-            <form className="bubble-collab-intent-panel" onSubmit={onStartWorkroom}>
+          <div className="inspir-collab-start-grid">
+            <form className="inspir-collab-intent-panel" onSubmit={onStartWorkroom}>
               <label htmlFor="collab-goal">What are we trying to build, solve, learn, or improve?</label>
               <textarea
                 id="collab-goal"
@@ -4627,7 +4654,7 @@ function CollaborativeSetup({
                 rows={5}
                 disabled={sending}
               />
-              <fieldset className="bubble-collab-mode-picker">
+              <fieldset className="inspir-collab-mode-picker">
                 <legend className="sr-only">Collaboration style</legend>
                 {collaborationModeOptions.map((modeOption) => {
                   const ModeIcon = modeOption.icon;
@@ -4644,20 +4671,20 @@ function CollaborativeSetup({
                   );
                 })}
               </fieldset>
-              <button type="submit" disabled={!goal.trim() || sending} className="bubble-collab-open-button">
+              <button type="submit" disabled={!goal.trim() || sending} className="inspir-collab-open-button">
                 <Route size={18} />
                 Open workroom
               </button>
             </form>
-            <section className="bubble-collab-canvas-preview" aria-label="Workspace preview">
-              <div className="bubble-collab-preview-head">
+            <section className="inspir-collab-canvas-preview" aria-label="Workspace preview">
+              <div className="inspir-collab-preview-head">
                 <RoomIcon size={22} />
                 <div>
                   <span>{room.title}</span>
                   <strong>{room.artifactTitle}</strong>
                 </div>
               </div>
-              <div className="bubble-collab-preview-grid">
+              <div className="inspir-collab-preview-grid">
                 {room.sections.map((section) => (
                   <article key={section.title}>
                     <strong>{section.title}</strong>
@@ -4665,7 +4692,7 @@ function CollaborativeSetup({
                   </article>
                 ))}
               </div>
-              <div className="bubble-collab-quick-starts">
+              <div className="inspir-collab-quick-starts">
                 {collaborationQuickStarts.map((quickStart) => (
                   <button key={quickStart} type="button" onClick={() => onGoal(quickStart)}>
                     <Sparkles size={14} />
@@ -4815,17 +4842,17 @@ function GuidedMiniAppWorkspace({
   }
 
   return (
-    <main className="bubble-workspace bubble-mini-workspace">
-      <div ref={listRef} className="bubble-mini-scroll app-scrollbar">
+    <main className="inspir-workspace inspir-mini-workspace">
+      <div ref={listRef} className="inspir-mini-scroll app-scrollbar">
         {!hasSession ? (
-          <section className="bubble-mini-start">
+          <section className="inspir-mini-start">
             <TopicIntroCard topic={topic} />
-            <div className="bubble-mini-start-copy">
+            <div className="inspir-mini-start-copy">
               <span>{config.eyebrow}</span>
               <h2>{config.setupTitle}</h2>
               <p>{config.setupBody}</p>
             </div>
-            <form className="bubble-mini-start-form" onSubmit={startMiniApp}>
+            <form className="inspir-mini-start-form" onSubmit={startMiniApp}>
               <MiniIcon icon={config.icon} />
               <label>
                 <span>{config.primaryLabel}</span>
@@ -4859,7 +4886,7 @@ function GuidedMiniAppWorkspace({
                 {config.cta}
               </button>
             </form>
-            <div className="bubble-mini-example-row">
+            <div className="inspir-mini-example-row">
               {config.examples.map((example) => (
                 <button key={example} type="button" onClick={() => setPrimary(example)}>
                   <Sparkles size={15} />
@@ -4869,16 +4896,16 @@ function GuidedMiniAppWorkspace({
             </div>
           </section>
         ) : (
-          <section className="bubble-mini-session">
-            <aside className="bubble-mini-side">
-              <div className="bubble-mini-side-head">
+          <section className="inspir-mini-session">
+            <aside className="inspir-mini-side">
+              <div className="inspir-mini-side-head">
                 <MiniIcon icon={config.icon} />
                 <div>
                   <span>{config.eyebrow}</span>
                   <strong>{topic.name}</strong>
                 </div>
               </div>
-              <div className="bubble-mini-side-grid">
+              <div className="inspir-mini-side-grid">
                 {config.panels.map((panel) => (
                   <article key={panel.title}>
                     <strong>{panel.title}</strong>
@@ -4886,17 +4913,17 @@ function GuidedMiniAppWorkspace({
                   </article>
                 ))}
               </div>
-              <button type="button" onClick={onReset} className="bubble-mini-new-session">
+              <button type="button" onClick={onReset} className="inspir-mini-new-session">
                 New session
               </button>
             </aside>
-            <div className="bubble-mini-conversation">
-              <header className="bubble-mini-stage-header">
+            <div className="inspir-mini-conversation">
+              <header className="inspir-mini-stage-header">
                 <div>
                   <span>Live Session</span>
                   <strong>{config.milestones.join(" -> ")}</strong>
                 </div>
-                <div className="bubble-mini-stage-pills">
+                <div className="inspir-mini-stage-pills">
                   {config.milestones.map((milestone, index) => (
                     <span key={milestone} className={index === 0 ? "is-active" : ""}>
                       {milestone}
@@ -4904,9 +4931,9 @@ function GuidedMiniAppWorkspace({
                   ))}
                 </div>
               </header>
-              <div className="bubble-message-stack bubble-mini-message-stack">
+              <div className="inspir-message-stack inspir-mini-message-stack">
                 {visibleMessages.map((message) => (
-                  <MessageBubble key={message.id} message={message} userLabel={userName} />
+                  <MessageCard key={message.id} message={message} userLabel={userName} />
                 ))}
                 {awaitingResponse ? (
                   <ThinkingMarker label="Thinking" />
@@ -4917,8 +4944,8 @@ function GuidedMiniAppWorkspace({
         )}
       </div>
       {hasSession ? (
-        <form onSubmit={onSubmit} className="bubble-composer">
-          <div className="bubble-composer-inner">
+        <form onSubmit={onSubmit} className="inspir-composer">
+          <div className="inspir-composer-inner">
             <textarea
               aria-label="Debate message"
               ref={inputRef}
@@ -4927,7 +4954,7 @@ function GuidedMiniAppWorkspace({
               onKeyDown={onKeyDown}
               placeholder={topic.inputboxText}
               disabled={sending}
-              className="bubble-composer-input"
+              className="inspir-composer-input"
               rows={1}
             />
             <button
@@ -4935,7 +4962,7 @@ function GuidedMiniAppWorkspace({
               onClick={sending ? onStop : undefined}
               disabled={!sending && !input.trim()}
               aria-label={sending ? "Stop response" : "Send message"}
-              className="bubble-send-button"
+              className="inspir-send-button"
             >
               {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
             </button>
@@ -5154,7 +5181,7 @@ function useHistoricalPersonWorkspace({
   }
 
   return (
-    <main className="bubble-workspace historical-workspace">
+    <main className="inspir-workspace historical-workspace">
       <div ref={listRef} className="historical-scroll app-scrollbar">
         {!hasSession ? (
           <section className="historical-start">
@@ -5483,9 +5510,9 @@ function useHistoricalPersonWorkspace({
                 ))}
               </div>
 
-              <div className="bubble-message-stack historical-message-stack">
+              <div className="inspir-message-stack historical-message-stack">
                 {visibleMessages.map((message) => (
-                  <MessageBubble key={message.id} message={message} userLabel={userName} />
+                  <MessageCard key={message.id} message={message} userLabel={userName} />
                 ))}
                 {awaitingResponse ? (
                   <ThinkingMarker label="Thinking" />
@@ -5524,8 +5551,8 @@ function useHistoricalPersonWorkspace({
         )}
       </div>
       {hasSession ? (
-        <form onSubmit={onSubmit} className="bubble-composer">
-          <div className="bubble-composer-inner">
+        <form onSubmit={onSubmit} className="inspir-composer">
+          <div className="inspir-composer-inner">
             <textarea
               aria-label="Historical conversation message"
               ref={inputRef}
@@ -5534,7 +5561,7 @@ function useHistoricalPersonWorkspace({
               onKeyDown={onKeyDown}
               placeholder="Ask, challenge, request evidence, or open a dossier item..."
               disabled={sending}
-              className="bubble-composer-input"
+              className="inspir-composer-input"
               rows={1}
             />
             <button
@@ -5542,7 +5569,7 @@ function useHistoricalPersonWorkspace({
               onClick={sending ? onStop : undefined}
               disabled={!sending && !input.trim()}
               aria-label={sending ? "Stop response" : "Send message"}
-              className="bubble-send-button"
+              className="inspir-send-button"
             >
               {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
             </button>
@@ -5559,7 +5586,7 @@ function ClockIcon() {
 
 function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
   return (
-    <div className="bubble-mini-icon">
+    <div className="inspir-mini-icon">
       <MiniIconGlyph icon={icon} />
     </div>
   );
@@ -5580,7 +5607,7 @@ function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
   }
 }
 
-function MessageBubble({
+function MessageCard({
   message,
   isStreaming = false,
   userLabel = "Learner",
@@ -5594,6 +5621,7 @@ function MessageBubble({
   onMemorySources?: (sources: MessageMemorySource[]) => void;
 }) {
   const isUser = message.role === "user";
+  const isPending = isPendingAssistantMessage(message) && isStreaming;
   const memorySources = getMessageMemorySources(message);
   const [copied, setCopied] = useState(false);
 
@@ -5606,52 +5634,67 @@ function MessageBubble({
   return (
     <ChatMessagePrimitive
       align={isUser ? "end" : "start"}
-      className={`bubble-message-row ${isUser ? "is-user" : "is-assistant"}`}
+      className={`inspir-message-row ${isUser ? "is-user" : "is-assistant"}`}
     >
-      <MessageAvatar className="bubble-message-avatar" aria-hidden="true">
+      <MessageAvatar className="inspir-message-avatar" aria-hidden="true">
         {isUser ? <UserRound size={15} /> : <Bot size={15} />}
       </MessageAvatar>
-      <MessageContent className="bubble-message-content">
-        <ChatBubblePrimitive
+      <MessageContent className="inspir-message-content">
+        <ChatCardPrimitive
           align={isUser ? "end" : "start"}
           variant={isUser ? "default" : "ghost"}
-          className="bubble-message-bubble-shell"
+          className="inspir-message-card-shell"
         >
-          <ChatBubbleContent asChild>
-            <article className="bubble-message-bubble">
-              <MessageHeader className="bubble-message-author">
+          <ChatCardContent asChild>
+            <article className="inspir-message-card">
+              <MessageHeader className="inspir-message-author">
                 {isUser ? <UserRound size={14} /> : <Bot size={14} />}
                 <strong>{isUser ? userLabel : assistantLabel}</strong>
               </MessageHeader>
-              <RichMarkdownContent content={message.content} streaming={isStreaming} />
-              <MessageFooter className="bubble-message-footer">
-                <time>{formatBubbleDate(message.createdAt)}</time>
-                {!isUser && memorySources.length > 0 && onMemorySources ? (
-                  <button
-                    type="button"
-                    onClick={() => onMemorySources(memorySources)}
-                    aria-label="Show memory sources"
-                    className="bubble-memory-source-button"
-                  >
-                    <StickyNote size={14} />
+              {isPending ? <PendingAssistantBody /> : <RichMarkdownContent content={message.content} streaming={isStreaming} />}
+              {!isPending ? (
+                <MessageFooter className="inspir-message-footer">
+                  <time>{formatAppDate(message.createdAt)}</time>
+                  {!isUser && memorySources.length > 0 && onMemorySources ? (
+                    <button
+                      type="button"
+                      onClick={() => onMemorySources(memorySources)}
+                      aria-label="Show memory sources"
+                      className="inspir-memory-source-button"
+                    >
+                      <StickyNote size={14} />
+                    </button>
+                  ) : null}
+                  <button type="button" onClick={copyMessage} aria-label="Copy message">
+                    {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
                   </button>
-                ) : null}
-                <button type="button" onClick={copyMessage} aria-label="Copy message">
-                  {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
-                </button>
-              </MessageFooter>
+                </MessageFooter>
+              ) : null}
             </article>
-          </ChatBubbleContent>
-        </ChatBubblePrimitive>
+          </ChatCardContent>
+        </ChatCardPrimitive>
       </MessageContent>
     </ChatMessagePrimitive>
   );
 }
 
+function PendingAssistantBody() {
+  return (
+    <div className="inspir-pending-assistant" aria-live="polite" aria-label="Thinking">
+      <span className="inspir-thinking-dots">
+        <span />
+        <span />
+        <span />
+      </span>
+      <strong>Thinking</strong>
+    </div>
+  );
+}
+
 function ThinkingMarker({ label }: { label: string }) {
   return (
-    <Marker className="bubble-thinking" aria-live="polite">
-      <MarkerIcon className="bubble-thinking-dots">
+    <Marker className="inspir-thinking" aria-live="polite">
+      <MarkerIcon className="inspir-thinking-dots">
         <span />
         <span />
         <span />
@@ -5673,8 +5716,8 @@ function MemorySourcesModal({
   onFeedback: (source: MessageMemorySource, action: "relevant" | "not_relevant" | "dont_mention") => void;
 }) {
   return (
-    <div className="bubble-modal-backdrop" role="presentation">
-      <section className="bubble-memory-source-modal" role="dialog" aria-modal="true" aria-label="Memory sources">
+    <div className="inspir-modal-backdrop" role="presentation">
+      <section className="inspir-memory-source-modal" role="dialog" aria-modal="true" aria-label="Memory sources">
         <header>
           <div>
             <strong>Memory sources</strong>
@@ -5684,15 +5727,15 @@ function MemorySourcesModal({
             <X size={20} />
           </button>
         </header>
-        <div className="bubble-memory-source-list app-scrollbar">
+        <div className="inspir-memory-source-list app-scrollbar">
           {sources.map((source) => (
-            <article key={source.id} className="bubble-memory-source-card">
+            <article key={source.id} className="inspir-memory-source-card">
               <div>
                 <strong>{source.label}</strong>
                 {source.reason ? <span>{source.reason}</span> : null}
               </div>
               <p>{source.excerpt}</p>
-              <div className="bubble-memory-source-actions">
+              <div className="inspir-memory-source-actions">
                 <button type="button" onClick={() => onFeedback(source, "relevant")} aria-label="Mark source relevant">
                   <Check size={15} />
                 </button>
@@ -5806,18 +5849,18 @@ function QuizWorkspace({
   }
 
   return (
-    <main className="bubble-workspace bubble-quiz-workspace">
+    <main className="inspir-workspace inspir-quiz-workspace">
       {!quiz ? (
         loading ? (
           <QuizBuildLoader topic={topic} progress={buildProgress} />
         ) : (
-          <form onSubmit={startQuiz} className="bubble-quiz-start">
-            <div className="bubble-quiz-start-icon">
+          <form onSubmit={startQuiz} className="inspir-quiz-start">
+            <div className="inspir-quiz-start-icon">
               <Sparkles size={28} />
             </div>
             <h2>What would you like to be quizzed on today?</h2>
             <p>Pick any topic. I will build 10 multiple-choice questions and score you as you go.</p>
-            <div className="bubble-quiz-input-row">
+            <div className="inspir-quiz-input-row">
               <input
                 aria-label="Quiz topic"
                 value={topic}
@@ -5829,12 +5872,12 @@ function QuizWorkspace({
                 Start
               </button>
             </div>
-            {error ? <span className="bubble-quiz-error">{error}</span> : null}
+            {error ? <span className="inspir-quiz-error">{error}</span> : null}
           </form>
         )
       ) : (
-        <section className="bubble-quiz-card">
-          <header className="bubble-quiz-header">
+        <section className="inspir-quiz-card">
+          <header className="inspir-quiz-header">
             <div>
               <span>Quiz on</span>
               <h2>{quiz.topic}</h2>
@@ -5843,19 +5886,19 @@ function QuizWorkspace({
               {quiz.score}/{quiz.maxScore}
             </strong>
           </header>
-          <div className="bubble-quiz-progress">
+          <div className="inspir-quiz-progress">
             <span style={{ width: `${(quiz.questions.filter((q) => q.userAnswerIndex !== undefined).length / 10) * 100}%` }} />
           </div>
 
           {lastAnswered ? <QuizFeedback question={lastAnswered} /> : null}
 
           {!quiz.completed && currentQuestion ? (
-            <article className="bubble-question-card">
+            <article className="inspir-question-card">
               <span>
                 Question {quiz.currentIndex + 1} of {quiz.maxScore}
               </span>
               <h3>{currentQuestion.prompt}</h3>
-              <div className="bubble-option-grid">
+              <div className="inspir-option-grid">
                 {currentQuestion.options.map((option, index) => (
                   <button
                     key={option}
@@ -5872,7 +5915,7 @@ function QuizWorkspace({
           ) : (
             <QuizReview quiz={quiz} />
           )}
-          {error ? <span className="bubble-quiz-error">{error}</span> : null}
+          {error ? <span className="inspir-quiz-error">{error}</span> : null}
         </section>
       )}
     </main>
@@ -5882,22 +5925,22 @@ function QuizWorkspace({
 function QuizBuildLoader({ topic, progress }: { topic: string; progress: number }) {
   const stepIndex = Math.min(quizBuildSteps.length - 1, Math.floor((progress / 100) * quizBuildSteps.length));
   return (
-    <section className="bubble-quiz-loader" aria-live="polite">
-      <div className="bubble-quiz-loader-orbit">
+    <section className="inspir-quiz-loader" aria-live="polite">
+      <div className="inspir-quiz-loader-orbit">
         <Sparkles size={28} />
         <span />
         <span />
         <span />
       </div>
       <div>
-        <span className="bubble-quiz-loader-kicker">Building your quiz</span>
+        <span className="inspir-quiz-loader-kicker">Building your quiz</span>
         <h2>{topic.trim() || "Your topic"}</h2>
         <p>{quizBuildSteps[stepIndex]}</p>
       </div>
-      <div className="bubble-quiz-loader-track">
+      <div className="inspir-quiz-loader-track">
         <span style={{ width: `${progress}%` }} />
       </div>
-      <ol className="bubble-quiz-loader-steps">
+      <ol className="inspir-quiz-loader-steps">
         {quizBuildSteps.map((step, index) => (
           <li key={step} className={index <= stepIndex ? "is-active" : ""}>
             {step}
@@ -5911,7 +5954,7 @@ function QuizBuildLoader({ topic, progress }: { topic: string; progress: number 
 function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
   const correct = question.isCorrect;
   return (
-    <aside className={`bubble-quiz-feedback ${correct ? "is-correct" : "is-wrong"}`}>
+    <aside className={`inspir-quiz-feedback ${correct ? "is-correct" : "is-wrong"}`}>
       {correct ? <CheckCircle2 size={20} /> : <XCircle size={20} />}
       <div>
         <strong>{correct ? "Correct" : "Not quite"}</strong>
@@ -5923,10 +5966,10 @@ function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
 
 function QuizReview({ quiz }: { quiz: PublicQuizState }) {
   return (
-    <article className="bubble-quiz-review">
+    <article className="inspir-quiz-review">
       <h3>Final score: {quiz.score}/10</h3>
       <p>{quiz.score >= 8 ? "Strong work." : quiz.score >= 5 ? "Good base. Review the misses below." : "You have a starting map now. Let us rebuild the weak spots."}</p>
-      <div className="bubble-review-list">
+      <div className="inspir-review-list">
         {quiz.questions.map((question, index) => (
           <div key={question.id} className={question.isCorrect ? "is-correct" : "is-wrong"}>
             <strong>
@@ -6067,22 +6110,22 @@ function FlashcardWorkspace({
   }
 
   return (
-    <main className="bubble-workspace bubble-flashcard-workspace">
+    <main className="inspir-workspace inspir-flashcard-workspace">
       {!deck ? (
         loading ? (
           <FlashcardBuildLoader topic={topic} progress={buildProgress} />
         ) : (
-          <form onSubmit={startFlashcards} className="bubble-flashcard-start">
-            <div className="bubble-flashcard-start-copy">
-              <div className="bubble-flashcard-start-icon">
+          <form onSubmit={startFlashcards} className="inspir-flashcard-start">
+            <div className="inspir-flashcard-start-copy">
+              <div className="inspir-flashcard-start-icon">
                 <Clipboard size={28} />
               </div>
               <span>Active recall builder</span>
               <h2>Turn material into a deck you actually test yourself on.</h2>
               <p>Give me a topic or paste notes. I will build 12 focused cards with optional hints, traps, and examples.</p>
             </div>
-            <div className="bubble-flashcard-start-panel">
-              <div className="bubble-flashcard-input-stack">
+            <div className="inspir-flashcard-start-panel">
+              <div className="inspir-flashcard-input-stack">
                 <label>
                   <span>Deck topic</span>
                   <input
@@ -6106,18 +6149,18 @@ function FlashcardWorkspace({
               <button type="submit" disabled={loading || !topic.trim()}>
                 Build deck
               </button>
-              <div className="bubble-flashcard-start-rules" aria-label="Deck rules">
+              <div className="inspir-flashcard-start-rules" aria-label="Deck rules">
                 <span>Recall before reveal</span>
                 <span>Hints stay optional</span>
                 <span>Misses become a smaller review deck</span>
               </div>
-              {error ? <span className="bubble-quiz-error">{error}</span> : null}
+              {error ? <span className="inspir-quiz-error">{error}</span> : null}
             </div>
           </form>
         )
       ) : (
-        <section className="bubble-flashcard-shell">
-          <header className="bubble-flashcard-header">
+        <section className="inspir-flashcard-shell">
+          <header className="inspir-flashcard-header">
             <div>
               <span>Flashcards on</span>
               <h2>{deck.topic}</h2>
@@ -6127,10 +6170,10 @@ function FlashcardWorkspace({
               <span>Change deck</span>
             </button>
           </header>
-          <div className="bubble-quiz-progress">
+          <div className="inspir-quiz-progress">
             <span style={{ width: `${progressPercent}%` }} />
           </div>
-          <div className="bubble-flashcard-stats" aria-label="Deck progress">
+          <div className="inspir-flashcard-stats" aria-label="Deck progress">
             <FlashcardStat label="Known" value={`${deck.knownCount}/${deck.maxCards}`} />
             <FlashcardStat label="Again" value={String(missedCards.length)} />
             <FlashcardStat label="Left" value={String(remainingCount)} />
@@ -6139,8 +6182,8 @@ function FlashcardWorkspace({
           {deck.completed ? (
             <FlashcardReview deck={deck} onReviewMissed={reviewMissed} onStartOver={changeDeck} />
           ) : currentCard ? (
-            <article className={`bubble-flashcard-card ${currentCard.back ? "is-revealed" : ""}`}>
-              <div className="bubble-flashcard-card-top">
+            <article className={`inspir-flashcard-card ${currentCard.back ? "is-revealed" : ""}`}>
+              <div className="inspir-flashcard-card-top">
                 <span>
                   Card {deck.currentIndex + 1} of {deck.maxCards}
                 </span>
@@ -6152,14 +6195,14 @@ function FlashcardWorkspace({
               </div>
               <h3>{currentCard.front}</h3>
               {currentCard.hint && hintOpen && !currentCard.back ? (
-                <p className="bubble-flashcard-hint">
+                <p className="inspir-flashcard-hint">
                   <strong>Hint</strong>
                   {currentCard.hint}
                 </p>
               ) : null}
 
               {currentCard.back ? (
-                <div className="bubble-flashcard-answer">
+                <div className="inspir-flashcard-answer">
                   <strong>Answer</strong>
                   <p>{currentCard.back}</p>
                   {currentCard.example ? <span>Example: {currentCard.example}</span> : null}
@@ -6167,7 +6210,7 @@ function FlashcardWorkspace({
                 </div>
               ) : null}
 
-              <div className="bubble-flashcard-actions">
+              <div className="inspir-flashcard-actions">
                 {!currentCard.back ? (
                   <>
                     {currentCard.hint ? (
@@ -6196,7 +6239,7 @@ function FlashcardWorkspace({
               </div>
             </article>
           ) : null}
-          {error ? <span className="bubble-quiz-error">{error}</span> : null}
+          {error ? <span className="inspir-quiz-error">{error}</span> : null}
         </section>
       )}
     </main>
@@ -6209,22 +6252,22 @@ function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: nu
     Math.floor((progress / 100) * flashcardBuildSteps.length),
   );
   return (
-    <section className="bubble-quiz-loader bubble-flashcard-loader" aria-live="polite">
-      <div className="bubble-flashcard-loader-stack">
+    <section className="inspir-quiz-loader inspir-flashcard-loader" aria-live="polite">
+      <div className="inspir-flashcard-loader-stack">
         <span />
         <span />
         <span />
         <Clipboard size={26} />
       </div>
       <div>
-        <span className="bubble-quiz-loader-kicker">Building your deck</span>
+        <span className="inspir-quiz-loader-kicker">Building your deck</span>
         <h2>{topic.trim() || "Your topic"}</h2>
         <p>{flashcardBuildSteps[stepIndex]}</p>
       </div>
-      <div className="bubble-quiz-loader-track">
+      <div className="inspir-quiz-loader-track">
         <span style={{ width: `${progress}%` }} />
       </div>
-      <ol className="bubble-quiz-loader-steps">
+      <ol className="inspir-quiz-loader-steps">
         {flashcardBuildSteps.map((step, index) => (
           <li key={step} className={index <= stepIndex ? "is-active" : ""}>
             {step}
@@ -6255,14 +6298,14 @@ function FlashcardReview({
 }) {
   const missed = deck.cards.filter((card) => card.rating === "again");
   return (
-    <article className="bubble-flashcard-review">
+    <article className="inspir-flashcard-review">
       <h3>Deck complete: {deck.knownCount}/12 known</h3>
       <p>
         {missed.length
           ? "Review the cards marked again, then rebuild a smaller deck from those weak spots."
           : "Clean sweep. Come back later and test the same deck from memory."}
       </p>
-      <div className="bubble-flashcard-review-actions">
+      <div className="inspir-flashcard-review-actions">
         {missed.length ? (
           <button type="button" onClick={() => onReviewMissed(deck)}>
             Review missed cards
@@ -6272,7 +6315,7 @@ function FlashcardReview({
           Build another deck
         </button>
       </div>
-      <div className="bubble-review-list">
+      <div className="inspir-review-list">
         {deck.cards.map((card, index) => (
           <div key={card.id} className={card.rating === "known" ? "is-correct" : "is-wrong"}>
             <strong>
@@ -6299,22 +6342,22 @@ function RecentConversations({
   onOpen: (chatId: string) => void;
 }) {
   return (
-    <main className="bubble-recent app-scrollbar">
-      <button type="button" onClick={onBack} className="bubble-recent-back">
+    <main className="inspir-recent app-scrollbar">
+      <button type="button" onClick={onBack} className="inspir-recent-back">
         <ArrowLeft size={22} />
         Back
       </button>
-      {loading ? <p className="bubble-recent-empty">Loading…</p> : null}
-      {!loading && chats.length === 0 ? <p className="bubble-recent-empty">No search results</p> : null}
-      <div className="bubble-recent-list">
+      {loading ? <p className="inspir-recent-empty">Loading…</p> : null}
+      {!loading && chats.length === 0 ? <p className="inspir-recent-empty">No search results</p> : null}
+      <div className="inspir-recent-list">
         {chats.map((chat) => (
-          <button key={chat.id} type="button" onClick={() => onOpen(chat.id)} className="bubble-recent-card">
-            <span className="bubble-recent-title">{chat.firstMessagePreview || chat.title}</span>
-            <span className="bubble-recent-meta">
+          <button key={chat.id} type="button" onClick={() => onOpen(chat.id)} className="inspir-recent-card">
+            <span className="inspir-recent-title">{chat.firstMessagePreview || chat.title}</span>
+            <span className="inspir-recent-meta">
               <MessageCircle size={16} />
               {chat.replyCount} Replies
             </span>
-            <time>{formatBubbleDate(chat.updatedAt)}</time>
+            <time>{formatAppDate(chat.updatedAt)}</time>
           </button>
         ))}
       </div>
@@ -6334,12 +6377,12 @@ function GuestContinueModal({
   onClose: () => void;
 }) {
   return (
-    <div className="bubble-guest-modal-backdrop" role="presentation">
-      <dialog open className="bubble-guest-modal" aria-modal="true" aria-labelledby="guest-modal-title">
-        <button type="button" onClick={onClose} aria-label="Close" className="bubble-guest-modal-close">
+    <div className="inspir-guest-modal-backdrop" role="presentation">
+      <dialog open className="inspir-guest-modal" aria-modal="true" aria-labelledby="guest-modal-title">
+        <button type="button" onClick={onClose} aria-label="Close" className="inspir-guest-modal-close">
           <X size={20} />
         </button>
-        <span className="bubble-guest-modal-kicker">
+        <span className="inspir-guest-modal-kicker">
           {Math.min(used, limit)}/{limit} free guest messages used
         </span>
         <h2 id="guest-modal-title">Continue learning</h2>
@@ -6347,10 +6390,10 @@ function GuestContinueModal({
           Easy Google login, then inspir stores your learning history, language preference, and chats so
           everything is ready next time. inspir stays free to use.
         </p>
-        <GoogleContinueButton className="bubble-guest-modal-primary" callbackUrl={callbackUrl}>
+        <GoogleContinueButton className="inspir-guest-modal-primary" callbackUrl={callbackUrl}>
           Continue with Google
         </GoogleContinueButton>
-        <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
+        <button type="button" onClick={onClose} className="inspir-guest-modal-secondary">
           Maybe later
         </button>
       </dialog>
@@ -6403,25 +6446,25 @@ function AgePromptModal({
   }
 
   return (
-    <div className="bubble-guest-modal-backdrop" role="presentation">
+    <div className="inspir-guest-modal-backdrop" role="presentation">
       <dialog
         open
-        className="bubble-guest-modal bubble-age-modal"
+        className="inspir-guest-modal inspir-age-modal"
         aria-modal="true"
         aria-labelledby="age-modal-title"
       >
-        <button type="button" onClick={onClose} aria-label={t("Close")} className="bubble-guest-modal-close">
+        <button type="button" onClick={onClose} aria-label={t("Close")} className="inspir-guest-modal-close">
           <X size={20} />
         </button>
-        <span className="bubble-guest-modal-kicker">{t("Age-appropriate learning")}</span>
+        <span className="inspir-guest-modal-kicker">{t("Age-appropriate learning")}</span>
         <h2 id="age-modal-title">{t("Help inspir fit your age")}</h2>
         <p>
           {t(
             "Add your date of birth and preferred language so inspir can adapt examples, tone, safety boundaries, and app text for your learning experience.",
           )}
         </p>
-        <form onSubmit={submitDateOfBirth} className="bubble-age-form">
-          <label className="bubble-age-label" htmlFor="date-of-birth">
+        <form onSubmit={submitDateOfBirth} className="inspir-age-form">
+          <label className="inspir-age-label" htmlFor="date-of-birth">
             {t("Date of birth")}
           </label>
           <input
@@ -6430,7 +6473,7 @@ function AgePromptModal({
             value={dateOfBirth}
             max={today}
             onChange={(event) => setDateOfBirth(event.target.value)}
-            className="bubble-age-input"
+            className="inspir-age-input"
             required
           />
           <LanguagePicker
@@ -6442,13 +6485,13 @@ function AgePromptModal({
             closeLabel={t("Close")}
             quickChoicesLabel={t("Preferred Language")}
             onSelect={setPreferredLanguage}
-            className="bubble-modal-language-picker"
+            className="inspir-modal-language-picker"
           />
-          {error ? <span className="bubble-age-error">{error}</span> : null}
-          <button type="submit" disabled={saving} className="bubble-guest-modal-primary">
+          {error ? <span className="inspir-age-error">{error}</span> : null}
+          <button type="submit" disabled={saving} className="inspir-guest-modal-primary">
             {saving ? t("Saving...") : t("Continue")}
           </button>
-          <button type="button" onClick={onClose} className="bubble-guest-modal-secondary">
+          <button type="button" onClick={onClose} className="inspir-guest-modal-secondary">
             {t("Maybe later")}
           </button>
         </form>
@@ -6584,8 +6627,8 @@ function ProfilePanel({
   }
 
   return (
-    <main className="bubble-profile-panel bubble-profile-workspace app-scrollbar">
-      <div className="bubble-profile-header">
+    <main className="inspir-profile-panel inspir-profile-workspace app-scrollbar">
+      <div className="inspir-profile-header">
         <div>
           <span>{t("Learning profile")}</span>
           <h2>{t("Make inspir feel like it knows how you learn.")}</h2>
@@ -6594,9 +6637,9 @@ function ProfilePanel({
           <X size={24} strokeWidth={3.5} />
         </button>
       </div>
-      <div className="bubble-profile-body">
-        <section className="bubble-profile-hero">
-          <div className="bubble-profile-avatar">
+      <div className="inspir-profile-body">
+        <section className="inspir-profile-hero">
+          <div className="inspir-profile-avatar">
             {avatarSrc ? (
               <Image key={avatarSrc} src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized />
             ) : (
@@ -6606,19 +6649,19 @@ function ProfilePanel({
           <div>
             <h3>{user.name || "Learner"}</h3>
             <p>{user.email || "user@example.com"}</p>
-            <div className="bubble-profile-photo-actions">
+            <div className="inspir-profile-photo-actions">
               <input
                 ref={photoInputRef}
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
-                className="bubble-profile-photo-input"
+                className="inspir-profile-photo-input"
                 onChange={(event) => void handlePhotoChange(event)}
               />
               <button
                 type="button"
                 disabled={photoSaving}
                 onClick={() => photoInputRef.current?.click()}
-                className="bubble-profile-photo-button"
+                className="inspir-profile-photo-button"
               >
                 <Camera size={16} />
                 <span>{photoSaving ? t("Saving...") : t("Change photo")}</span>
@@ -6628,24 +6671,24 @@ function ProfilePanel({
                   type="button"
                   disabled={photoSaving}
                   onClick={() => void resetPhoto()}
-                  className="bubble-profile-photo-button is-muted"
+                  className="inspir-profile-photo-button is-muted"
                 >
                   <Trash2 size={15} />
                   <span>{t("Use Google photo")}</span>
                 </button>
               ) : null}
             </div>
-            {photoError ? <span className="bubble-profile-details-error">{photoError}</span> : null}
-            {photoMessage ? <span className="bubble-profile-details-success">{photoMessage}</span> : null}
+            {photoError ? <span className="inspir-profile-details-error">{photoError}</span> : null}
+            {photoMessage ? <span className="inspir-profile-details-success">{photoMessage}</span> : null}
           </div>
         </section>
 
-        <section className="bubble-profile-section">
-          <div className="bubble-profile-section-head">
+        <section className="inspir-profile-section">
+          <div className="inspir-profile-section-head">
             <span>{t("Profile details")}</span>
             <h3>{t("Your app identity")}</h3>
           </div>
-          <form className="bubble-profile-details-form" onSubmit={submitProfileDetails}>
+          <form className="inspir-profile-details-form" onSubmit={submitProfileDetails}>
             <label>
               <span>{t("Display name")}</span>
               <input
@@ -6665,7 +6708,7 @@ function ProfilePanel({
                 onChange={(event) => setDateOfBirth(event.target.value)}
               />
             </label>
-            <div className="bubble-profile-details-language">
+            <div className="inspir-profile-details-language">
               <span>{t("Preferred Language")}</span>
               <LanguagePicker
                 currentLanguage={preferredLanguage}
@@ -6677,34 +6720,34 @@ function ProfilePanel({
                 closeLabel={t("Close")}
                 quickChoicesLabel={t("Preferred Language")}
                 onSelect={setPreferredLanguage}
-                className="bubble-profile-language-picker"
+                className="inspir-profile-language-picker"
               />
             </div>
-            {detailsError ? <span className="bubble-profile-details-error">{detailsError}</span> : null}
-            {detailsMessage ? <span className="bubble-profile-details-success">{detailsMessage}</span> : null}
-            <button type="submit" disabled={detailsSaving || languageSaving} className="bubble-profile-save-button">
+            {detailsError ? <span className="inspir-profile-details-error">{detailsError}</span> : null}
+            {detailsMessage ? <span className="inspir-profile-details-success">{detailsMessage}</span> : null}
+            <button type="submit" disabled={detailsSaving || languageSaving} className="inspir-profile-save-button">
               {detailsSaving || languageSaving ? t("Saving...") : t("Save profile")}
             </button>
           </form>
         </section>
 
-        <section className="bubble-profile-section">
-          <div className="bubble-profile-section-head">
+        <section className="inspir-profile-section">
+          <div className="inspir-profile-section-head">
             <span>{t("Overview")}</span>
             <h3>{t("Your learning snapshot")}</h3>
           </div>
-          <div className="bubble-profile-stats-grid">
+          <div className="inspir-profile-stats-grid">
             <ProfileStat
               label={t("Age")}
               value={typeof user.age === "number" ? String(user.age) : t("Add your date of birth")}
             />
             <ProfileStat label={t("Learning score")} value={String(user.score ?? 0)} />
-            <ProfileStat label={t("inspir'ed since")} value={formatBubbleDate(user.createdAt)} />
+            <ProfileStat label={t("inspir'ed since")} value={formatAppDate(user.createdAt)} />
           </div>
         </section>
 
-        <section className="bubble-profile-section">
-          <div className="bubble-profile-section-head">
+        <section className="inspir-profile-section">
+          <div className="inspir-profile-section-head">
             <span>{t("Memory")}</span>
             <h3>{t("What inspir can remember")}</h3>
           </div>
@@ -6722,8 +6765,8 @@ function ProfilePanel({
           />
         </section>
 
-        <section className="bubble-profile-section bubble-profile-account-section">
-          <div className="bubble-profile-section-head">
+        <section className="inspir-profile-section inspir-profile-account-section">
+          <div className="inspir-profile-section-head">
             <span>{t("Account and privacy")}</span>
             <h3>{t("Control what stays with you")}</h3>
           </div>
@@ -6732,20 +6775,20 @@ function ProfilePanel({
               "Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful for you.",
             )}
           </p>
-          <div className="bubble-profile-account-list">
-            <div className="bubble-profile-account-row">
+          <div className="inspir-profile-account-list">
+            <div className="inspir-profile-account-row">
               <span>{t("Google email")}</span>
               <strong>{user.email || "Not connected"}</strong>
             </div>
           </div>
-          <div className="bubble-profile-account-actions">
+          <div className="inspir-profile-account-actions">
             <Link href="/terms">{t("Terms")}</Link>
             <Link href="/privacy">{t("Privacy")}</Link>
-            <button type="button" onClick={() => void signOutToHome()} className="bubble-profile-logout">
+            <button type="button" onClick={() => void signOutToHome()} className="inspir-profile-logout">
               {t("Logout")}
             </button>
           </div>
-          <SocialLinks compact className="bubble-profile-social" />
+          <SocialLinks compact className="inspir-profile-social" />
         </section>
       </div>
     </main>
@@ -6880,9 +6923,9 @@ function MemoryPanel({
   }
 
   return (
-    <section className="bubble-memory-card">
-      <div className="bubble-memory-head">
-        <div className="bubble-profile-line-icon">
+    <section className="inspir-memory-card">
+      <div className="inspir-memory-head">
+        <div className="inspir-profile-line-icon">
           <BrainCircuit size={22} />
         </div>
         <div>
@@ -6891,28 +6934,28 @@ function MemoryPanel({
         </div>
       </div>
 
-      <div className="bubble-memory-status-row bubble-memory-master-row">
+      <div className="inspir-memory-status-row inspir-memory-master-row">
         <div>
           <strong>{enabled ? t("Memory is on") : t("Memory is off")}</strong>
           <span>{enabled ? t("Used only when it helps.") : t("Nothing is saved or used.")}</span>
         </div>
         <button
           type="button"
-          className={`bubble-memory-toggle ${enabled ? "is-on" : ""}`}
+          className={`inspir-memory-toggle ${enabled ? "is-on" : ""}`}
           aria-label={enabled ? t("Off") : t("On")}
           aria-pressed={enabled}
           disabled={saving || loading}
           onClick={() => onSettings({ enabled: !enabled })}
         >
-          <span className="bubble-memory-toggle-track">
-            <span className="bubble-memory-toggle-thumb" />
+          <span className="inspir-memory-toggle-track">
+            <span className="inspir-memory-toggle-thumb" />
           </span>
           <strong>{enabled ? t("On") : t("Off")}</strong>
         </button>
       </div>
 
       {enabled ? (
-        <div className="bubble-memory-setting-list">
+        <div className="inspir-memory-setting-list">
           <MemoryMiniToggle
             label={t("Saved memory")}
             checked={savedMemoryEnabled}
@@ -6934,11 +6977,11 @@ function MemoryPanel({
         </div>
       ) : null}
 
-      {loading ? <p className="bubble-memory-muted">{t("Loading memory...")}</p> : null}
-      {error ? <p className="bubble-memory-error">{error}</p> : null}
+      {loading ? <p className="inspir-memory-muted">{t("Loading memory...")}</p> : null}
+      {error ? <p className="inspir-memory-error">{error}</p> : null}
 
       {settings && !settings.noticeSeenAt ? (
-        <div className="bubble-memory-notice">
+        <div className="inspir-memory-notice">
           <strong>{t("Memory is on for signed-in accounts.")}</strong>
           <p>
             {t(
@@ -6964,12 +7007,12 @@ function MemoryPanel({
             t={t}
           />
 
-          <div className="bubble-memory-summary">
+          <div className="inspir-memory-summary">
             <span>
               {dashboard.memories.length}{" "}
               {dashboard.memories.length === 1 ? t("saved memory") : t("saved memories")}
             </span>
-            <div className="bubble-memory-summary-actions">
+            <div className="inspir-memory-summary-actions">
               <button type="button" disabled={memoryControlsDisabled} onClick={() => setAdding((current) => !current)}>
                 <Plus size={15} />
                 <span>{t("Add")}</span>
@@ -6981,7 +7024,7 @@ function MemoryPanel({
           </div>
 
           {adding ? (
-            <div className="bubble-memory-add">
+            <div className="inspir-memory-add">
               <textarea
                 aria-label={t("Add")}
                 value={newMemory}
@@ -6991,7 +7034,7 @@ function MemoryPanel({
                 maxLength={600}
                 disabled={memoryControlsDisabled}
               />
-              <div className="bubble-memory-add-actions">
+              <div className="inspir-memory-add-actions">
                 <select
                   aria-label={t("Memory category")}
                   value={newCategory}
@@ -7022,12 +7065,12 @@ function MemoryPanel({
             </div>
           ) : null}
 
-          <div className="bubble-memory-list">
+          <div className="inspir-memory-list">
             {dashboard.memories.length === 0 ? (
-              <p className="bubble-memory-muted">{t("No saved memories yet.")}</p>
+              <p className="inspir-memory-muted">{t("No saved memories yet.")}</p>
             ) : (
               grouped.map((group) => (
-                <div key={group.category} className="bubble-memory-group">
+                <div key={group.category} className="inspir-memory-group">
                   <h4>{translatedMemoryCategoryLabel(group.category, t)}</h4>
                   {group.memories.map((memory) => (
                     <MemoryItemEditor
@@ -7063,13 +7106,13 @@ function MemoryMiniToggle({
   return (
     <button
       type="button"
-      className={`bubble-memory-mini-toggle ${checked ? "is-on" : ""}`}
+      className={`inspir-memory-mini-toggle ${checked ? "is-on" : ""}`}
       aria-pressed={checked}
       disabled={disabled}
       onClick={() => onChange(!checked)}
     >
       <span>{label}</span>
-      <span className="bubble-memory-mini-switch" />
+      <span className="inspir-memory-mini-switch" />
     </button>
   );
 }
@@ -7095,13 +7138,13 @@ function MemorySummaryCard({
 }) {
   const sections = summary?.sections?.filter((section) => !section.doNotMention) ?? [];
   return (
-    <div className="bubble-memory-summary-card">
-      <div className="bubble-memory-summary-card-head">
+    <div className="inspir-memory-summary-card">
+      <div className="inspir-memory-summary-card-head">
         <div>
           <strong>{t("Memory summary")}</strong>
           <span>
             {summary?.lastSynthesizedAt
-              ? formatBubbleDate(summary.lastSynthesizedAt)
+              ? formatAppDate(summary.lastSynthesizedAt)
               : t("No summary yet")}
           </span>
         </div>
@@ -7111,9 +7154,9 @@ function MemorySummaryCard({
       </div>
 
       {sections.length ? (
-        <div className="bubble-memory-summary-sections">
+        <div className="inspir-memory-summary-sections">
           {sections.map((section) => (
-            <article key={section.id} className="bubble-memory-summary-section">
+            <article key={section.id} className="inspir-memory-summary-section">
               <div>
                 <strong>{section.title || translatedMemoryCategoryLabel(section.category, t)}</strong>
                 <p>{section.summary}</p>
@@ -7130,10 +7173,10 @@ function MemorySummaryCard({
           ))}
         </div>
       ) : (
-        <p className="bubble-memory-muted">{t("No summary yet")}</p>
+        <p className="inspir-memory-muted">{t("No summary yet")}</p>
       )}
 
-      <div className="bubble-memory-correction">
+      <div className="inspir-memory-correction">
         <textarea
           aria-label={t("Correct or add what Inspir should remember.")}
           value={correction}
@@ -7189,14 +7232,14 @@ function MemoryItemEditor({
   }
 
   return (
-    <article className="bubble-memory-item">
+    <article className="inspir-memory-item">
       {editing ? (
         <>
           <textarea
             aria-label={t("Saved memory")}
             value={draft}
             onChange={(event) => setDraft(event.target.value)}
-            className="bubble-memory-edit"
+            className="inspir-memory-edit"
             rows={3}
             maxLength={600}
           />
@@ -7204,7 +7247,7 @@ function MemoryItemEditor({
             aria-label={t("Memory category")}
             value={draftCategory}
             disabled={saving}
-            className="bubble-memory-edit-category"
+            className="inspir-memory-edit-category"
             onChange={(event) => setDraftCategory(event.target.value)}
           >
             {memoryCategoryOptions.map((option) => (
@@ -7217,11 +7260,11 @@ function MemoryItemEditor({
       ) : (
         <p className={memory.doNotMention ? "is-muted-memory" : undefined}>{memory.displayContent ?? memory.content}</p>
       )}
-      <div className="bubble-memory-item-meta">
+      <div className="inspir-memory-item-meta">
         <span>{memory.sourceLabel ? t(memory.sourceLabel) : memory.kind === "explicit" ? t("Saved memory") : t("Past chats")}</span>
         {memory.doNotMention ? <span>{t("Off")}</span> : null}
       </div>
-      <div className="bubble-memory-actions">
+      <div className="inspir-memory-actions">
         {editing ? (
           <>
             <button type="button" disabled={saving} onClick={save} aria-label={t("Save")}>
@@ -7313,7 +7356,7 @@ function translatedMemoryCategoryLabel(category: string, t: UiTranslator) {
 
 function ProfileStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="bubble-profile-stat">
+    <div className="inspir-profile-stat">
       <strong>{label}</strong>
       <span>{value}</span>
     </div>
