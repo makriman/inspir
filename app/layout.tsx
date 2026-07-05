@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "katex/dist/katex.min.css";
 import "./globals.css";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
@@ -21,11 +20,10 @@ import {
   webApplicationJsonLd,
   websiteJsonLd,
 } from "@/lib/seo/json-ld";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
 
@@ -148,7 +146,7 @@ export default async function RootLayout({
   const isChatApp = isChatAppPath(pathname);
   const localizedRootJsonLd = isChatApp ? [] : await localizeMarketingStructuredData(rootJsonLd, pathname);
   return (
-    <html lang={languageConfig.locale} dir={languageConfig.dir} className={`${inter.variable} h-full antialiased`}>
+    <html lang={languageConfig.locale} dir={languageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full bg-[#171614] text-white">
         {isChatApp ? null : <JsonLdScripts items={localizedRootJsonLd} />}
         {isChatApp ? children : <MarketingServerLocalizer>{children}</MarketingServerLocalizer>}

@@ -5,6 +5,7 @@ import { createActivityRun, getOwnedChat, getUserLearningProfileById, insertMess
 import { generateQuiz, sanitizeQuizState } from "@/lib/activities/quiz";
 import { calculateAge } from "@/lib/profile/age";
 import { consumeAiQuota, numberFromEnv, quotaDefaults, safeQuotaKeyPart } from "@/lib/utils/rate-limit";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,6 +18,8 @@ const startQuizSchema = z.object({
 export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("activities");
+  if (freeze) return freeze;
 
   const parsed = startQuizSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid quiz request" }, { status: 400 });

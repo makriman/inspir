@@ -1,7 +1,19 @@
 import { createHash } from "node:crypto";
 import { and, asc, count, desc, eq, inArray, or, sql as drizzleSql } from "drizzle-orm";
-import { db, sql as postgresSql } from "./client";
-import { activityRuns, aiRuns, appMetadata, appTranslations, chats, messages, topics, users } from "./schema";
+import { db } from "./client";
+import { d1ContainsLikePattern } from "./like";
+import {
+  activityRuns,
+  aiRuns,
+  appMetadata,
+  appTranslationSourceStrings,
+  appTranslationSources,
+  appTranslations,
+  chats,
+  messages,
+  topics,
+  users,
+} from "./schema";
 import type { Topic } from "./schema";
 import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
@@ -283,6 +295,29 @@ export async function getAppTranslations(namespaces: string[], languages: string
     .where(and(inArray(appTranslations.namespace, namespaces), inArray(appTranslations.language, languages)));
 }
 
+export async function getAppTranslationSource(namespace: string) {
+  const [source] = await db
+    .select()
+    .from(appTranslationSources)
+    .where(eq(appTranslationSources.namespace, namespace))
+    .limit(1);
+  if (!source) return undefined;
+
+  const sourceStrings = await db
+    .select({
+      key: appTranslationSourceStrings.sourceKey,
+      value: appTranslationSourceStrings.sourceText,
+    })
+    .from(appTranslationSourceStrings)
+    .where(eq(appTranslationSourceStrings.namespace, namespace))
+    .orderBy(asc(appTranslationSourceStrings.sourceKey));
+
+  return {
+    ...source,
+    sourceStrings: Object.fromEntries(sourceStrings.map((row) => [row.key, row.value])),
+  };
+}
+
 export async function upsertAppTranslation(input: {
   namespace: string;
   language: string;
@@ -290,20 +325,17 @@ export async function upsertAppTranslation(input: {
   payload: Record<string, string>;
   model: string;
 }) {
+  const existing = await getAppTranslation(input.namespace, input.language);
+  const payload =
+    existing?.sourceHash === input.sourceHash ? { ...existing.payload, ...input.payload } : input.payload;
   const [translation] = await db
     .insert(appTranslations)
-    .values(input)
+    .values({ ...input, payload })
     .onConflictDoUpdate({
       target: [appTranslations.namespace, appTranslations.language],
       set: {
         sourceHash: input.sourceHash,
-        payload: drizzleSql`
-          case
-            when ${appTranslations.sourceHash} = ${input.sourceHash}
-              then ${appTranslations.payload} || excluded.payload
-            else excluded.payload
-          end
-        `,
+        payload,
         model: input.model,
         updatedAt: new Date(),
       },
@@ -358,16 +390,16 @@ export async function getChatMessages(chatId: string) {
 }
 
 export async function getRecentChats(userId: string, topicId?: string, q?: string) {
-  const searchPattern = q ? `%${escapeLikePattern(q)}%` : undefined;
+  const searchPattern = q ? d1ContainsLikePattern(q) : undefined;
   const where = [
     eq(chats.userId, userId),
     eq(chats.isArchived, false),
     topicId ? eq(chats.topicId, topicId) : undefined,
     searchPattern
       ? or(
-          drizzleSql`${chats.title} ilike ${searchPattern} escape '\\'`,
-          drizzleSql`${chats.topicNameSnapshot} ilike ${searchPattern} escape '\\'`,
-          drizzleSql`${messages.content} ilike ${searchPattern} escape '\\'`,
+          drizzleSql`lower(${chats.title}) like lower(${searchPattern}) escape '\\'`,
+          drizzleSql`lower(${chats.topicNameSnapshot}) like lower(${searchPattern}) escape '\\'`,
+          drizzleSql`lower(${messages.content}) like lower(${searchPattern}) escape '\\'`,
         )
       : undefined,
   ].filter(Boolean);
@@ -395,16 +427,16 @@ export async function getRecentChats(userId: string, topicId?: string, q?: strin
 export async function getChatPreviews(chatIds: string[]) {
   const ids = [...new Set(chatIds)].filter(Boolean);
   if (!ids.length) return new Map<string, string>();
-  const rows = await postgresSql<Array<{ chatId: string; content: string }>>`
-    select distinct on (chat_id)
-      chat_id as "chatId",
-      content
-    from messages
-    where role = 'user'
-      and chat_id in ${postgresSql(ids)}
-    order by chat_id, created_at asc
-  `;
-  return new Map(rows.map((row) => [row.chatId, getVisibleMessageContent(row.content)]));
+  const rows = await db
+    .select({ chatId: messages.chatId, content: messages.content })
+    .from(messages)
+    .where(and(eq(messages.role, "user"), inArray(messages.chatId, ids)))
+    .orderBy(asc(messages.chatId), asc(messages.createdAt));
+  const previews = new Map<string, string>();
+  for (const row of rows) {
+    if (!previews.has(row.chatId)) previews.set(row.chatId, getVisibleMessageContent(row.content));
+  }
+  return previews;
 }
 
 export async function getChatPreview(chatId: string) {
@@ -528,7 +560,7 @@ export async function updateActivityRunGuarded(
       and(
         eq(activityRuns.id, activityRunId),
         guard.status ? eq(activityRuns.status, guard.status) : undefined,
-        drizzleSql`${activityRuns.state}->>'currentIndex' = ${String(guard.currentIndex)}`,
+        drizzleSql`json_extract(${activityRuns.state}, '$.currentIndex') = ${guard.currentIndex}`,
       ),
     )
     .returning();
@@ -556,8 +588,4 @@ export async function getContextMessages(chatId: string, limit = 30) {
     .orderBy(desc(messages.createdAt))
     .limit(limit);
   return rows.reverse();
-}
-
-function escapeLikePattern(value: string) {
-  return value.replace(/[\\%_]/g, (character) => `\\${character}`);
 }

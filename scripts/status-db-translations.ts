@@ -35,7 +35,7 @@ type DbTranslationRow = {
 
 const explicitEnv = new Set(Object.entries(process.env).filter(([, value]) => Boolean(value?.trim())).map(([key]) => key));
 loadEnvFile(".env.local", explicitEnv);
-loadEnvFile(".env.vercel.production.local", explicitEnv);
+loadEnvFile(".dev.vars", explicitEnv);
 loadEnvFile(".env.production.local", explicitEnv);
 
 main().catch(async (error) => {
@@ -48,7 +48,6 @@ async function main() {
   const dbTranslations = await import("@/lib/i18n/db-translations");
   const translationStringsFromDbPayload = dbTranslations.translationStringsFromDbPayload as TranslationStringsFromDbPayload;
   const queries = await import("@/lib/db/queries");
-  const client = await import("@/lib/db/client");
   const rows = (await withRetry(() => queries.getAppTranslations(args.namespaces, args.languages))) as DbTranslationRow[];
   const rowByKey = new Map(rows.map((row) => [`${row.namespace}\u0000${row.language}`, row]));
 
@@ -64,45 +63,41 @@ async function main() {
   }> = [];
   let complete = 0;
 
-  try {
-    for (const namespace of args.namespaces) {
-      const source = sourceForNamespace(namespace);
-      byNamespace[namespace] = { complete: 0, incomplete: 0, total: args.languages.length };
+  for (const namespace of args.namespaces) {
+    const source = sourceForNamespace(namespace);
+    byNamespace[namespace] = { complete: 0, incomplete: 0, total: args.languages.length };
 
-      for (const language of args.languages) {
-        const totalCount = Object.keys(source.sourceStrings).length;
-        if (language === defaultLanguage) {
-          complete += 1;
-          byNamespace[namespace].complete += 1;
-          continue;
-        }
+    for (const language of args.languages) {
+      const totalCount = Object.keys(source.sourceStrings).length;
+      if (language === defaultLanguage) {
+        complete += 1;
+        byNamespace[namespace].complete += 1;
+        continue;
+      }
 
-        const row = rowByKey.get(`${namespace}\u0000${language}`);
-        const sourceHashFresh = row?.sourceHash === source.sourceHash;
-        const strings = row && sourceHashFresh ? translationStringsFromDbPayload(source, row.payload, language) : {};
-        const translatedCount = Object.keys(strings).length;
-        const isComplete = sourceHashFresh && translatedCount === totalCount;
-        const missingByBucket = countMissingByBucket(source.sourceStrings, strings);
+      const row = rowByKey.get(`${namespace}\u0000${language}`);
+      const sourceHashFresh = row?.sourceHash === source.sourceHash;
+      const strings = row && sourceHashFresh ? translationStringsFromDbPayload(source, row.payload, language) : {};
+      const translatedCount = Object.keys(strings).length;
+      const isComplete = sourceHashFresh && translatedCount === totalCount;
+      const missingByBucket = countMissingByBucket(source.sourceStrings, strings);
 
-        if (isComplete) {
-          complete += 1;
-          byNamespace[namespace].complete += 1;
-        } else {
-          byNamespace[namespace].incomplete += 1;
-          incomplete.push({
-            namespace,
-            language,
-            translatedCount,
-            totalCount,
-            sourceHashFresh,
-            rowExists: Boolean(row),
-            missingByBucket,
-          });
-        }
+      if (isComplete) {
+        complete += 1;
+        byNamespace[namespace].complete += 1;
+      } else {
+        byNamespace[namespace].incomplete += 1;
+        incomplete.push({
+          namespace,
+          language,
+          translatedCount,
+          totalCount,
+          sourceHashFresh,
+          rowExists: Boolean(row),
+          missingByBucket,
+        });
       }
     }
-  } finally {
-    await client.sql.end({ timeout: 5 });
   }
 
   console.log(

@@ -9,7 +9,11 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
+    ".open-next/**",
+    ".wrangler/**",
     ".vercel/**",
+    "backups/**",
+    "inspirlearning-local-backups/**",
     "out/**",
     "build/**",
     "next-env.d.ts",

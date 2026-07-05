@@ -63,7 +63,7 @@ export function MarketingLanguageControls({
         pathname: currentPathname || window.location.pathname + window.location.search,
       }),
     });
-    const data = await response.json().catch(() => null);
+    const data = (await response.json().catch(() => null)) as { redirectTo?: string } | null;
     if (data?.redirectTo) {
       window.location.assign(data.redirectTo);
       return;

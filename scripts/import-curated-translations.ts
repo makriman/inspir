@@ -70,26 +70,22 @@ let upsertTranslation:
       model: string;
     }) => Promise<unknown>)
   | undefined;
-let sqlConnection: { end(options: { timeout: number }): Promise<void> } | undefined;
 let validateFieldTranslation: ((source: string, value: string | undefined, language?: string) => boolean) | undefined;
 
 const explicitEnv = new Set(Object.keys(process.env));
 loadEnvFile(".env.local", explicitEnv);
-loadEnvFile(".env.vercel.production.local", explicitEnv);
+loadEnvFile(".dev.vars", explicitEnv);
 loadEnvFile(".env.production.local", explicitEnv);
 
 main().catch(async (error) => {
   console.error(summarizeError(error));
-  await sqlConnection?.end({ timeout: 5 });
   process.exit(1);
 });
 
 async function main() {
   const queries = await import("@/lib/db/queries");
-  const client = await import("@/lib/db/client");
   const validation = await import("@/lib/i18n/translation-field-validation");
   upsertTranslation = queries.upsertAppTranslation;
-  sqlConnection = client.sql;
   validateFieldTranslation = validation.isValidFieldTranslation;
 
   const args = parseArgs(process.argv.slice(2));
@@ -98,25 +94,21 @@ async function main() {
   const results: ImportPackResult[] = [];
   let hasFailure = false;
 
-  try {
-    let cursor = 0;
-    const workers = Array.from({ length: Math.min(args.concurrency, groups.length) }, async () => {
-      while (true) {
-        const index = cursor;
-        cursor += 1;
-        const group = groups[index];
-        if (!group) return;
+  let cursor = 0;
+  const workers = Array.from({ length: Math.min(args.concurrency, groups.length) }, async () => {
+    while (true) {
+      const index = cursor;
+      cursor += 1;
+      const group = groups[index];
+      if (!group) return;
 
-        const result = await importPackGroup(group, args);
-        results[index] = result;
-        if (!result.ok) hasFailure = true;
-        console.log(JSON.stringify({ event: "curated_translation_pack_checked", ...result }));
-      }
-    });
-    await Promise.all(workers);
-  } finally {
-    await sqlConnection?.end({ timeout: 5 });
-  }
+      const result = await importPackGroup(group, args);
+      results[index] = result;
+      if (!result.ok) hasFailure = true;
+      console.log(JSON.stringify({ event: "curated_translation_pack_checked", ...result }));
+    }
+  });
+  await Promise.all(workers);
 
   console.log(
     JSON.stringify({

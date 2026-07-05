@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth/session";
 import { clearUserProfilePhoto, getUserPhotoById, updateUserProfilePhoto } from "@/lib/db/queries";
 import { prepareProfileImage } from "@/lib/profile/photo";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -27,6 +28,8 @@ export async function GET() {
 export async function PATCH(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("profile-photo");
+  if (freeze) return freeze;
 
   const formData = await request.formData().catch(() => null);
   const photo = formData?.get("photo");
@@ -51,6 +54,8 @@ export async function PATCH(request: NextRequest) {
 export async function DELETE() {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("profile-photo");
+  if (freeze) return freeze;
 
   await clearUserProfilePhoto(session.user.id);
   return NextResponse.json({ profileImageHash: null });

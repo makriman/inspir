@@ -13,12 +13,20 @@ import {
 import { getSubjectPages } from "@/lib/content/subjects";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { topicSeeds } from "@/lib/content/topics";
+import {
+  legalEnglishControlsNotice,
+  marketingShellTranslationNamespace,
+  siteTranslationNamespace,
+  staticSiteTranslationNamespaces,
+} from "./site-source-constants";
+import { siteSourceManifest } from "./site-source-manifest";
 import type { TranslationBundle, TranslationSource } from "./translation-types";
 
-export const siteTranslationNamespace = "marketing-site";
-export const marketingShellTranslationNamespace = "marketing-shell";
-export const legalEnglishControlsNotice =
-  "This translation is provided for readability. If there is any conflict, the English version controls.";
+export {
+  legalEnglishControlsNotice,
+  marketingShellTranslationNamespace,
+  siteTranslationNamespace,
+};
 
 const sourceRoots = [
   "app",
@@ -48,27 +56,6 @@ const skippedJsxAttributes = new Set([
 ]);
 const visibleJsxAttributes = new Set(["aria-label", "title", "placeholder", "alt"]);
 const translatableFrontmatterKeys = new Set(["title", "description", "tags"]);
-const staticSiteTranslationNamespaces = [
-  marketingShellTranslationNamespace,
-  "route:home",
-  "route:about",
-  "route:ai-learning-map",
-  "route:blog",
-  "route:chat-public",
-  "route:compare",
-  "route:for",
-  "route:learn",
-  "route:media",
-  "route:mission",
-  "route:prompts",
-  "route:schools",
-  "route:subjects",
-  "route:topics",
-  "route:trust",
-  "legal:privacy",
-  "legal:terms",
-  "legal:tnc",
-] as const;
 const legalNamespaces = new Set(["legal:privacy", "legal:terms", "legal:tnc"]);
 const homepageTopicSlugs = new Set([
   "learn-anything",
@@ -88,18 +75,26 @@ let cachedCandidateSourceFiles: string[] | undefined;
 const extractedSourceValueCache = new Map<string, string[]>();
 const siteTranslationSourceCache = new Map<string, TranslationSource>();
 
-export function getSiteTranslationSource(namespace = siteTranslationNamespace): TranslationSource {
-  const cached = siteTranslationSourceCache.get(namespace);
+type SiteSourceOptions = {
+  mode?: "manifest" | "extract";
+};
+
+export function getSiteTranslationSource(
+  namespace = siteTranslationNamespace,
+  options: SiteSourceOptions = {},
+): TranslationSource {
+  const cacheKey = `${options.mode ?? "manifest"}\u0000${namespace}`;
+  const cached = siteTranslationSourceCache.get(cacheKey);
   if (cached) return cached;
 
-  const sourceStrings = getSiteSourceStrings(namespace);
+  const sourceStrings = getSiteSourceStrings(namespace, options);
   const source = {
     namespace,
     sourceHash: getSiteSourceHash(sourceStrings),
     sourceStrings,
     systemInstruction: buildSiteTranslationSystemInstruction(),
   };
-  siteTranslationSourceCache.set(namespace, source);
+  siteTranslationSourceCache.set(cacheKey, source);
   return source;
 }
 
@@ -114,7 +109,12 @@ export function getEnglishSiteTranslationBundle(namespace = siteTranslationNames
   };
 }
 
-export function getSiteSourceStrings(namespace = siteTranslationNamespace) {
+export function getSiteSourceStrings(namespace = siteTranslationNamespace, options: SiteSourceOptions = {}) {
+  if (options.mode !== "extract") {
+    const manifestEntry = siteSourceManifest[namespace as keyof typeof siteSourceManifest];
+    if (manifestEntry) return { ...manifestEntry.sourceStrings };
+  }
+
   const values = new Set<string>();
   if (namespace === siteTranslationNamespace || legalNamespaces.has(namespace)) {
     values.add(legalEnglishControlsNotice);
@@ -143,15 +143,18 @@ function getExtractedSourceValues(path: string) {
   return values;
 }
 
-export function getAllSiteTranslationNamespaces() {
+export function getAllSiteTranslationNamespaces(options: SiteSourceOptions = {}) {
+  if (options.mode !== "extract" && Object.keys(siteSourceManifest).length) {
+    return Object.keys(siteSourceManifest).filter((namespace) => namespace !== siteTranslationNamespace);
+  }
   return [
     ...staticSiteTranslationNamespaces,
     ...getBlogSlugs().map((slug) => `blog:${slug}`),
   ];
 }
 
-export function isKnownSiteTranslationNamespace(namespace: string) {
-  return namespace === siteTranslationNamespace || getAllSiteTranslationNamespaces().includes(namespace);
+export function isKnownSiteTranslationNamespace(namespace: string, options: SiteSourceOptions = {}) {
+  return namespace === siteTranslationNamespace || getAllSiteTranslationNamespaces(options).includes(namespace);
 }
 
 export function getSiteTranslationNamespacesForPath(pathname: string) {
@@ -178,7 +181,7 @@ export function getSiteTranslationNamespacesForPath(pathname: string) {
     }
   }
 
-  return Array.from(namespaces).filter(isKnownSiteTranslationNamespace);
+  return Array.from(namespaces).filter((namespace) => isKnownSiteTranslationNamespace(namespace));
 }
 
 export function getSiteSourceHash(sourceStrings = getSiteSourceStrings()) {
@@ -202,7 +205,7 @@ export function buildSiteTranslationSystemInstruction() {
 }
 
 function getSourceFiles(namespace = siteTranslationNamespace) {
-  if (!isKnownSiteTranslationNamespace(namespace)) return [];
+  if (!isKnownSiteTranslationNamespace(namespace, { mode: "extract" })) return [];
   const root = process.cwd();
   return getCandidateSourceFiles().filter((path) =>
     fileBelongsToNamespace(relative(root, path), namespace),

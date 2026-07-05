@@ -1,0 +1,179 @@
+import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { LOCAL_GATE_IDS, cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
+import { buildRepoSourceFingerprint, fingerprintFile } from "./source-fingerprint";
+
+type Gate = {
+  id: string;
+  steps: GateStep[];
+};
+
+type GateStep = {
+  command: string;
+  args: string[];
+};
+
+type GateResult = Gate & {
+  ok: boolean;
+  status: number | null;
+  durationMs: number;
+  outputTail: string;
+};
+
+const OUTPUT_TAIL_CHARS = 12_000;
+const backupDir = resolveBackupDir();
+const cfDir = cloudflareDir(backupDir);
+const reportPath = path.join(cfDir, "local-gates-report.json");
+const startupProfilePath = path.join(cfDir, "worker-startup.cpuprofile");
+const startupProfileRelativePath = "cloudflare/worker-startup.cpuprofile";
+const localCliBinDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-local-gates-"));
+process.once("exit", cleanupLocalCliWrappers);
+
+const bin = (name: string) => path.resolve(process.cwd(), "node_modules", ".bin", name);
+const topLevelUnitTests = fs
+  .readdirSync(path.resolve(process.cwd(), "tests"))
+  .filter((file) => file.endsWith(".test.ts"))
+  .sort()
+  .map((file) => path.join("tests", file));
+
+const gates: Gate[] = [
+  { id: LOCAL_GATE_IDS[0], steps: [{ command: bin("tsc"), args: ["--noEmit"] }] },
+  {
+    id: LOCAL_GATE_IDS[1],
+    steps: [
+      {
+        command: bin("wrangler"),
+        args: ["types", "cloudflare-env.generated.d.ts", "--include-runtime", "false", "--strict-vars", "false", "--env-interface", "CloudflareBindings"],
+      },
+      { command: bin("tsc"), args: ["--noEmit", "--project", "tsconfig.cloudflare-worker.json"] },
+    ],
+  },
+  { id: LOCAL_GATE_IDS[2], steps: [{ command: bin("eslint"), args: [] }] },
+  { id: LOCAL_GATE_IDS[3], steps: [{ command: process.execPath, args: ["--import", "tsx", "--test", ...topLevelUnitTests] }] },
+  { id: LOCAL_GATE_IDS[4], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts"] }] },
+  { id: LOCAL_GATE_IDS[5], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-runtime-providers.ts"] }] },
+  { id: LOCAL_GATE_IDS[6], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
+  { id: LOCAL_GATE_IDS[7], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
+  { id: LOCAL_GATE_IDS[8], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }] },
+  { id: LOCAL_GATE_IDS[9], steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run"] }] },
+  {
+    id: LOCAL_GATE_IDS[10],
+    steps: [{ command: bin("wrangler"), args: ["check", "startup", "--outfile", startupProfilePath, "--args=--dry-run"] }],
+  },
+];
+
+ensureLocalCliWrappers();
+
+const sourceFingerprintBefore = buildRepoSourceFingerprint();
+const results = gates.map(runGate);
+const sourceFingerprintAfter = buildRepoSourceFingerprint();
+const sourceFingerprintStable = sourceFingerprintBefore.sha256 === sourceFingerprintAfter.sha256;
+const startupProfile = fs.existsSync(startupProfilePath) ? fingerprintFile(backupDir, startupProfilePath) : null;
+const report = {
+  createdAt: new Date().toISOString(),
+  backupDir,
+  ok: results.every((result) => result.ok) && sourceFingerprintStable && startupProfile?.file === startupProfileRelativePath,
+  sourceFingerprintBefore,
+  sourceFingerprintAfter,
+  sourceFingerprintStable,
+  startupProfile,
+  results,
+};
+
+fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`, { mode: 0o600 });
+console.log(JSON.stringify(compactReport(report), null, 2));
+cleanupLocalCliWrappers();
+if (!report.ok) process.exitCode = 1;
+
+function runGate(gate: Gate): GateResult {
+  const start = Date.now();
+  const outputChunks: string[] = [];
+  let status: number | null = 0;
+
+  for (const step of gate.steps) {
+    const result = spawnSync(step.command, step.args, {
+      cwd: process.cwd(),
+      encoding: "utf8",
+      env: localGateEnv(),
+      maxBuffer: 256 * 1024 * 1024,
+    });
+    status = result.status;
+    outputChunks.push(`${step.command} ${step.args.join(" ")}`);
+    outputChunks.push(`${result.stdout ?? ""}${result.stderr ?? (result.error ? String(result.error) : "")}`);
+    if (result.status !== 0) break;
+  }
+
+  const output = outputChunks.join("\n");
+  return {
+    ...gate,
+    ok: status === 0,
+    status,
+    durationMs: Date.now() - start,
+    outputTail: output.slice(-OUTPUT_TAIL_CHARS),
+  };
+}
+
+function ensureLocalCliWrappers() {
+  fs.mkdirSync(localCliBinDir, { recursive: true, mode: 0o700 });
+  const realPnpm = "/Users/makriman/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm";
+  const wrapper = `#!/usr/bin/env node
+const { spawnSync } = require("node:child_process");
+const path = require("node:path");
+
+const repo = ${JSON.stringify(process.cwd())};
+const realPnpm = ${JSON.stringify(realPnpm)};
+const args = process.argv.slice(2);
+
+let command = realPnpm;
+let finalArgs = args;
+
+if (args[0] === "build") {
+  command = path.join(repo, "node_modules", ".bin", "next");
+  finalArgs = ["build", "--webpack", ...args.slice(1)];
+} else if (args[0] === "exec" && args[1]) {
+  command = path.join(repo, "node_modules", ".bin", args[1]);
+  finalArgs = args.slice(2);
+}
+
+const result = spawnSync(command, finalArgs, { cwd: repo, env: process.env, stdio: "inherit" });
+process.exit(result.status ?? 1);
+`;
+  const wrapperPath = path.join(localCliBinDir, "pnpm");
+  fs.writeFileSync(wrapperPath, wrapper, { mode: 0o700 });
+  fs.chmodSync(wrapperPath, 0o700);
+}
+
+function cleanupLocalCliWrappers() {
+  fs.rmSync(localCliBinDir, { recursive: true, force: true });
+}
+
+function localGateEnv() {
+  const env = commandEnv();
+  return {
+    ...env,
+    PATH: [localCliBinDir, env.PATH].join(path.delimiter),
+  };
+}
+
+function compactReport(fullReport: typeof report) {
+  return {
+    createdAt: fullReport.createdAt,
+    backupDir: fullReport.backupDir,
+    ok: fullReport.ok,
+    sourceFingerprint: {
+      before: fullReport.sourceFingerprintBefore.sha256,
+      after: fullReport.sourceFingerprintAfter.sha256,
+      stable: fullReport.sourceFingerprintStable,
+      fileCount: fullReport.sourceFingerprintAfter.fileCount,
+    },
+    startupProfile: fullReport.startupProfile,
+    results: fullReport.results.map((result) => ({
+      id: result.id,
+      ok: result.ok,
+      status: result.status,
+      durationMs: result.durationMs,
+    })),
+  };
+}

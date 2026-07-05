@@ -126,7 +126,7 @@ function readStoredTimer(): FocusTimerState {
 
 function readStoredMusic(): FocusMusicState {
   const storedMusic = readJson(musicStorageKey, defaultMusic());
-  return { ...storedMusic, playing: false };
+  return storedMusic.playing ? { ...storedMusic, playing: false } : storedMusic;
 }
 
 function clampMinutes(value: number, fallback: number) {

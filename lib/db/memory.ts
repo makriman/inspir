@@ -1,5 +1,11 @@
-import { and, asc, desc, eq, ilike, inArray } from "drizzle-orm";
-import { db, sql } from "./client";
+import { and, asc, desc, eq, inArray, sql as drizzleSql } from "drizzle-orm";
+import { d1All, db } from "./client";
+import { d1ContainsLikePattern } from "./like";
+import {
+  deleteMemoryVectors,
+  queryMemoryVectors,
+  upsertMemoryVector,
+} from "./vectorize";
 import {
   chatMemorySummaries,
   chatMemoryTurns,
@@ -138,6 +144,20 @@ export async function updateUserMemorySettings(
     metadata: input,
   });
   if (input.chatHistoryEnabled === false) {
+    const [priorMemoryRows, summaryRows, turnRows] = await Promise.all([
+      db
+        .select({ id: userMemories.id })
+        .from(userMemories)
+        .where(
+          and(
+            eq(userMemories.userId, userId),
+            eq(userMemories.status, "active"),
+            inArray(userMemories.sourceType, ["prior_chat", "synthesized"]),
+          ),
+        ),
+      db.select({ id: chatMemorySummaries.chatId }).from(chatMemorySummaries).where(eq(chatMemorySummaries.userId, userId)),
+      db.select({ id: chatMemoryTurns.id }).from(chatMemoryTurns).where(eq(chatMemoryTurns.userId, userId)),
+    ]);
     await Promise.all([
       db
         .update(userMemories)
@@ -152,6 +172,20 @@ export async function updateUserMemorySettings(
       db.delete(userMemorySummaries).where(eq(userMemorySummaries.userId, userId)),
       db.delete(chatMemorySummaries).where(eq(chatMemorySummaries.userId, userId)),
       db.delete(chatMemoryTurns).where(eq(chatMemoryTurns.userId, userId)),
+    ]);
+    await Promise.all([
+      deleteMemoryVectors(
+        "user_memories",
+        priorMemoryRows.map((row) => row.id),
+      ),
+      deleteMemoryVectors(
+        "chat_memory_summaries",
+        summaryRows.map((row) => row.id),
+      ),
+      deleteMemoryVectors(
+        "chat_memory_turns",
+        turnRows.map((row) => row.id),
+      ),
     ]);
     await insertMemoryEvent({
       userId,
@@ -259,6 +293,13 @@ export async function createUserMemory(input: {
       embedding: input.embedding ?? null,
     })
     .returning();
+  await upsertMemoryVector({
+    namespace: "user_memories",
+    rowId: memory.id,
+    embedding: input.embedding,
+    userId: input.userId,
+    chatId: input.sourceChatId,
+  });
   await insertMemoryEvent({
     userId: input.userId,
     memoryId: memory.id,
@@ -303,6 +344,21 @@ export async function updateUserMemory(
     .where(and(eq(userMemories.id, memoryId), eq(userMemories.userId, userId)))
     .returning();
   if (memory) {
+    if (input.status === "deleted" || input.deletedAt) {
+      await deleteMemoryVectors("user_memories", [memoryId]);
+    } else if (input.embedding !== undefined) {
+      if (input.embedding) {
+        await upsertMemoryVector({
+          namespace: "user_memories",
+          rowId: memory.id,
+          embedding: input.embedding,
+          userId,
+          chatId: memory.sourceChatId,
+        });
+      } else {
+        await deleteMemoryVectors("user_memories", [memoryId]);
+      }
+    }
     await insertMemoryEvent({
       userId,
       memoryId,
@@ -321,6 +377,11 @@ export async function deleteUserMemory(userId: string, memoryId: string) {
 }
 
 export async function clearUserMemories(userId: string) {
+  const [memoryRows, summaryRows, turnRows] = await Promise.all([
+    db.select({ id: userMemories.id }).from(userMemories).where(eq(userMemories.userId, userId)),
+    db.select({ id: chatMemorySummaries.chatId }).from(chatMemorySummaries).where(eq(chatMemorySummaries.userId, userId)),
+    db.select({ id: chatMemoryTurns.id }).from(chatMemoryTurns).where(eq(chatMemoryTurns.userId, userId)),
+  ]);
   await Promise.all([
     db
       .update(userMemories)
@@ -330,6 +391,20 @@ export async function clearUserMemories(userId: string) {
     db.delete(userMemorySummaries).where(eq(userMemorySummaries.userId, userId)),
     db.delete(chatMemorySummaries).where(eq(chatMemorySummaries.userId, userId)),
     db.delete(chatMemoryTurns).where(eq(chatMemoryTurns.userId, userId)),
+  ]);
+  await Promise.all([
+    deleteMemoryVectors(
+      "user_memories",
+      memoryRows.map((row) => row.id),
+    ),
+    deleteMemoryVectors(
+      "chat_memory_summaries",
+      summaryRows.map((row) => row.id),
+    ),
+    deleteMemoryVectors(
+      "chat_memory_turns",
+      turnRows.map((row) => row.id),
+    ),
   ]);
   await insertMemoryEvent({ userId, eventType: "cleared" });
 }
@@ -342,6 +417,8 @@ export async function findExistingMemoryByNormalized(userId: string, normalizedC
 export async function findMatchingMemoriesByText(userId: string, text: string, limit = 20) {
   const trimmed = text.trim();
   if (!trimmed) return [];
+  const searchPattern = d1ContainsLikePattern(trimmed);
+  if (!searchPattern) return [];
   return db
     .select()
     .from(userMemories)
@@ -349,7 +426,7 @@ export async function findMatchingMemoriesByText(userId: string, text: string, l
       and(
         eq(userMemories.userId, userId),
         eq(userMemories.status, "active"),
-        ilike(userMemories.content, `%${trimmed.slice(0, 96)}%`),
+        drizzleSql`lower(${userMemories.content}) like lower(${searchPattern}) escape '\\'`,
       ),
     )
     .orderBy(desc(userMemories.salience), desc(userMemories.updatedAt))
@@ -359,73 +436,71 @@ export async function findMatchingMemoriesByText(userId: string, text: string, l
 export async function deleteMatchingChatMemoryTurnsByText(userId: string, text: string, limit = 50) {
   const trimmed = text.trim();
   if (!trimmed) return [];
+  const searchPattern = d1ContainsLikePattern(trimmed);
+  if (!searchPattern) return [];
   const matches = await db
     .select({ id: chatMemoryTurns.id })
     .from(chatMemoryTurns)
-    .where(and(eq(chatMemoryTurns.userId, userId), ilike(chatMemoryTurns.searchableText, `%${trimmed.slice(0, 96)}%`)))
+    .where(
+      and(
+        eq(chatMemoryTurns.userId, userId),
+        drizzleSql`lower(${chatMemoryTurns.searchableText}) like lower(${searchPattern}) escape '\\'`,
+      ),
+    )
     .limit(limit);
   const ids = matches.map((match) => match.id);
   if (!ids.length) return [];
   await db.delete(chatMemoryTurns).where(and(eq(chatMemoryTurns.userId, userId), inArray(chatMemoryTurns.id, ids)));
+  await deleteMemoryVectors("chat_memory_turns", ids);
   return ids;
 }
 
 export async function searchUserMemoriesByEmbedding(userId: string, embedding: number[], limit = 8) {
-  const vector = toPgVector(embedding);
-  return sql<MemorySearchResult[]>`
-    select
-      id,
-      user_id as "userId",
-      kind,
-      category,
-      content,
-      tags,
-      confidence,
-      salience,
-      status,
-      source_type as "sourceType",
-      source_turn_ids as "sourceTurnIds",
-      source_memory_ids as "sourceMemoryIds",
-      source_chat_id as "sourceChatId",
-      source_message_id as "sourceMessageId",
-      valid_from as "validFrom",
-      valid_until as "validUntil",
-      freshness_status as "freshnessStatus",
-      pinned,
-      do_not_mention as "doNotMention",
-      created_at as "createdAt",
-      updated_at as "updatedAt",
-      (1 - (embedding <=> ${vector}::vector))::float as similarity
-    from user_memories
-    where user_id = ${userId}
-      and status = 'active'
-      and do_not_mention = false
-      and freshness_status <> 'expired'
-      and embedding is not null
-    order by embedding <=> ${vector}::vector
-    limit ${limit}
-  `;
+  const matches = await queryMemoryVectors({
+    namespace: "user_memories",
+    userId,
+    embedding,
+    topK: limit * 4,
+  });
+  const ids = matches.map((match) => match.rowId);
+  if (!ids.length) return [];
+  const rows = await db
+    .select()
+    .from(userMemories)
+    .where(and(eq(userMemories.userId, userId), eq(userMemories.status, "active"), inArray(userMemories.id, ids)));
+  const byId = new Map(rows.map((row) => [row.id, row]));
+  const results: MemorySearchResult[] = [];
+  for (const match of matches) {
+    const row = byId.get(match.rowId);
+    if (!row || row.doNotMention || row.freshnessStatus === "expired") continue;
+    results.push({ ...row, similarity: match.score });
+    if (results.length >= limit) break;
+  }
+  return results;
 }
 
 export async function searchChatSummariesByEmbedding(userId: string, embedding: number[], limit = 4) {
-  const vector = toPgVector(embedding);
-  return sql<ChatSummarySearchResult[]>`
-    select
-      chat_id as "chatId",
-      user_id as "userId",
-      topic_id as "topicId",
-      summary,
-      topics,
-      source_message_count as "sourceMessageCount",
-      last_message_id as "lastMessageId",
-      updated_at as "updatedAt",
-      (1 - (embedding <=> ${vector}::vector))::float as similarity
-    from chat_memory_summaries
-    where user_id = ${userId}
-      and embedding is not null
-    order by embedding <=> ${vector}::vector
-    limit ${limit}
-  `;
+  const matches = await queryMemoryVectors({
+    namespace: "chat_memory_summaries",
+    userId,
+    embedding,
+    topK: limit * 4,
+  });
+  const ids = matches.map((match) => match.rowId);
+  if (!ids.length) return [];
+  const rows = await db
+    .select()
+    .from(chatMemorySummaries)
+    .where(and(eq(chatMemorySummaries.userId, userId), inArray(chatMemorySummaries.chatId, ids)));
+  const byId = new Map(rows.map((row) => [row.chatId, row]));
+  const results: ChatSummarySearchResult[] = [];
+  for (const match of matches) {
+    const row = byId.get(match.rowId);
+    if (!row) continue;
+    results.push({ ...row, similarity: match.score });
+    if (results.length >= limit) break;
+  }
+  return results;
 }
 
 export async function searchChatMemoryTurnsByEmbedding(
@@ -434,28 +509,28 @@ export async function searchChatMemoryTurnsByEmbedding(
   currentChatId: string,
   limit = 6,
 ) {
-  const vector = toPgVector(embedding);
-  return sql<ChatTurnSearchResult[]>`
-    select
-      id,
-      user_id as "userId",
-      chat_id as "chatId",
-      topic_id as "topicId",
-      user_message_id as "userMessageId",
-      assistant_message_id as "assistantMessageId",
-      question,
-      answer_excerpt as "answerExcerpt",
-      searchable_text as "searchableText",
-      topics,
-      updated_at as "updatedAt",
-      (1 - (embedding <=> ${vector}::vector))::float as similarity
-    from chat_memory_turns
-    where user_id = ${userId}
-      and chat_id <> ${currentChatId}
-      and embedding is not null
-    order by embedding <=> ${vector}::vector
-    limit ${limit}
-  `;
+  const matches = await queryMemoryVectors({
+    namespace: "chat_memory_turns",
+    userId,
+    embedding,
+    topK: limit * 4,
+    excludeChatId: currentChatId,
+  });
+  const ids = matches.map((match) => match.rowId);
+  if (!ids.length) return [];
+  const rows = await db
+    .select()
+    .from(chatMemoryTurns)
+    .where(and(eq(chatMemoryTurns.userId, userId), inArray(chatMemoryTurns.id, ids)));
+  const byId = new Map(rows.map((row) => [row.id, row]));
+  const results: ChatTurnSearchResult[] = [];
+  for (const match of matches) {
+    const row = byId.get(match.rowId);
+    if (!row || row.chatId === currentChatId) continue;
+    results.push({ ...row, similarity: match.score });
+    if (results.length >= limit) break;
+  }
+  return results;
 }
 
 export async function searchChatMemoryTurnsByText(userId: string, query: string, currentChatId: string, limit = 6) {
@@ -517,6 +592,18 @@ export async function upsertChatMemorySummary(input: {
       },
     })
     .returning();
+  if (input.embedding) {
+    await upsertMemoryVector({
+      namespace: "chat_memory_summaries",
+      rowId: summary.chatId,
+      embedding: input.embedding,
+      userId: input.userId,
+      chatId: input.chatId,
+      topicId: input.topicId,
+    });
+  } else {
+    await deleteMemoryVectors("chat_memory_summaries", [summary.chatId]);
+  }
   await insertMemoryEvent({
     userId: input.userId,
     chatId: input.chatId,
@@ -566,6 +653,18 @@ export async function upsertChatMemoryTurn(input: {
       },
     })
     .returning();
+  if (input.embedding) {
+    await upsertMemoryVector({
+      namespace: "chat_memory_turns",
+      rowId: turn.id,
+      embedding: input.embedding,
+      userId: input.userId,
+      chatId: input.chatId,
+      topicId: input.topicId,
+    });
+  } else {
+    await deleteMemoryVectors("chat_memory_turns", [turn.id]);
+  }
   await insertMemoryEvent({
     userId: input.userId,
     chatId: input.chatId,
@@ -715,33 +814,34 @@ export async function finishMemorySynthesisRun(
 }
 
 export async function listUsersDueForMemorySynthesis(limit = 10) {
-  return sql<Array<{ userId: string }>>`
-    select distinct settings.user_id as "userId"
-    from user_memory_settings settings
-    left join user_memory_summaries summaries on summaries.user_id = settings.user_id
-    where settings.enabled = true
-      and settings.saved_memory_enabled = true
-      and settings.dreaming_enabled = true
-      and (
-        summaries.user_id is null
-        or exists (
-          select 1 from user_memories memories
-          where memories.user_id = settings.user_id
-            and memories.status = 'active'
-            and memories.updated_at > summaries.last_synthesized_at
-        )
-        or (
-          settings.chat_history_enabled = true
-          and exists (
-            select 1 from chat_memory_turns turns
-            where turns.user_id = settings.user_id
-              and turns.updated_at > summaries.last_synthesized_at
-          )
-        )
-      )
-    order by settings.user_id
-    limit ${limit}
-  `;
+  return d1All<{ userId: string }>(
+    `select distinct settings.user_id as "userId"
+     from user_memory_settings settings
+     left join user_memory_summaries summaries on summaries.user_id = settings.user_id
+     where settings.enabled = 1
+       and settings.saved_memory_enabled = 1
+       and settings.dreaming_enabled = 1
+       and (
+         summaries.user_id is null
+         or exists (
+           select 1 from user_memories memories
+           where memories.user_id = settings.user_id
+             and memories.status = 'active'
+             and memories.updated_at > summaries.last_synthesized_at
+         )
+         or (
+           settings.chat_history_enabled = 1
+           and exists (
+             select 1 from chat_memory_turns turns
+             where turns.user_id = settings.user_id
+               and turns.updated_at > summaries.last_synthesized_at
+           )
+         )
+       )
+     order by settings.user_id
+     limit ?`,
+    limit,
+  );
 }
 
 export async function getRecentChatMemoryTurnsForUser(userId: string, limit = 80) {
@@ -901,10 +1001,6 @@ export function serializeMemorySettings(settings: UserMemorySetting) {
 
 export function normalizeMemoryContent(content: string) {
   return content.trim().replace(/\s+/g, " ").toLowerCase();
-}
-
-function toPgVector(embedding: number[]) {
-  return `[${embedding.map((value) => (Number.isFinite(value) ? Number(value.toFixed(6)) : 0)).join(",")}]`;
 }
 
 export const memoryUseMetadata = (input: {

@@ -1,4 +1,4 @@
-import { sql } from "@/lib/db/client";
+import { d1All, d1First, d1Run } from "@/lib/db/client";
 
 const oneDayMs = 24 * 60 * 60 * 1000;
 
@@ -14,7 +14,7 @@ export type LlmBudgetResult = RateLimitResult & {
   day: string;
 };
 
-type DbTimestamp = Date | string;
+type DbTimestamp = Date | number | string;
 
 export const quotaDefaults = {
   userChatDaily: 150,
@@ -60,45 +60,42 @@ export async function consumeFixedWindowQuota(
   now = new Date(),
 ): Promise<RateLimitResult> {
   const resetAt = new Date(now.getTime() + windowMs);
-  const resetAtSql = sqlTimestamp(resetAt);
   if (limit <= 0) return rateLimitResult(false, limit, 0, resetAt, now);
 
   try {
-    return await sql.begin(async (tx) => {
-      const rows = await tx<Array<{ count: number; resetAt: DbTimestamp }>>`
-        select count, reset_at as "resetAt"
-        from rate_limit_windows
-        where "key" = ${key}
-        for update
-      `;
-      const existing = rows[0];
-
-      if (!existing || new Date(existing.resetAt).getTime() <= now.getTime()) {
-        const inserted = await tx<Array<{ count: number; resetAt: DbTimestamp }>>`
-          insert into rate_limit_windows ("key", count, reset_at, updated_at)
-          values (${key}, 1, ${resetAtSql}, now())
-          on conflict ("key") do update
-            set count = 1,
-                reset_at = excluded.reset_at,
-                updated_at = now()
-          returning count, reset_at as "resetAt"
-        `;
-        return rateLimitResult(true, limit, limit - inserted[0].count, inserted[0].resetAt, now);
-      }
-
-      if (existing.count >= limit) {
-        return rateLimitResult(false, limit, 0, existing.resetAt, now);
-      }
-
-      const updated = await tx<Array<{ count: number; resetAt: DbTimestamp }>>`
-        update rate_limit_windows
-        set count = count + 1,
-            updated_at = now()
-        where "key" = ${key}
-        returning count, reset_at as "resetAt"
-      `;
-      return rateLimitResult(true, limit, limit - updated[0].count, updated[0].resetAt, now);
-    });
+    const updated = await d1All<{ count: number; resetAt: DbTimestamp }>(
+      `insert into rate_limit_windows ("key", count, reset_at, created_at, updated_at)
+       values (?, 1, ?, ?, ?)
+       on conflict ("key") do update
+         set count = case
+               when rate_limit_windows.reset_at <= ? then 1
+               else rate_limit_windows.count + 1
+             end,
+             reset_at = case
+               when rate_limit_windows.reset_at <= ? then excluded.reset_at
+               else rate_limit_windows.reset_at
+             end,
+             updated_at = excluded.updated_at
+       where rate_limit_windows.reset_at <= ?
+          or rate_limit_windows.count < ?
+       returning count, reset_at as "resetAt"`,
+      key,
+      resetAt.getTime(),
+      now.getTime(),
+      now.getTime(),
+      now.getTime(),
+      now.getTime(),
+      now.getTime(),
+      limit,
+    );
+    if (!updated.length) {
+      const existing = await d1First<{ resetAt: DbTimestamp }>(
+        'select reset_at as "resetAt" from rate_limit_windows where "key" = ?',
+        key,
+      );
+      return rateLimitResult(false, limit, 0, existing?.resetAt ?? resetAt, now);
+    }
+    return rateLimitResult(true, limit, limit - updated[0].count, updated[0].resetAt, now);
   } catch (error) {
     console.error("rate_limit_check_failed", { key, error });
     return quotaUnavailableResult(limit, resetAt, now);
@@ -116,34 +113,22 @@ export async function consumeDailyLlmBudget(
   if (limit <= 0) return { ...rateLimitResult(false, limit, 0, resetAt, now), day };
 
   try {
-    const result = await sql.begin(async (tx) => {
-      const rows = await tx<Array<{ callCount: number }>>`
-        select call_count as "callCount"
-        from llm_usage_daily
-        where day = ${day}
-        for update
-      `;
-      const existing = rows[0];
-      if (!existing) {
-        const inserted = await tx<Array<{ callCount: number }>>`
-          insert into llm_usage_daily (day, call_count, updated_at)
-          values (${day}, 1, now())
-          returning call_count as "callCount"
-        `;
-        return rateLimitResult(true, limit, limit - inserted[0].callCount, resetAt, now);
-      }
-      if (existing.callCount >= limit) {
-        return rateLimitResult(false, limit, 0, resetAt, now);
-      }
-      const updated = await tx<Array<{ callCount: number }>>`
-        update llm_usage_daily
-        set call_count = call_count + 1,
-            updated_at = now()
-        where day = ${day}
-        returning call_count as "callCount"
-      `;
-      return rateLimitResult(true, limit, limit - updated[0].callCount, resetAt, now);
-    });
+    const rows = await d1All<{ callCount: number }>(
+      `insert into llm_usage_daily (day, call_count, created_at, updated_at)
+       values (?, 1, ?, ?)
+       on conflict (day) do update
+         set call_count = llm_usage_daily.call_count + 1,
+             updated_at = excluded.updated_at
+       where llm_usage_daily.call_count < ?
+       returning call_count as "callCount"`,
+      day,
+      now.getTime(),
+      now.getTime(),
+      limit,
+    );
+    if (!rows.length) return { ...rateLimitResult(false, limit, 0, resetAt, now), day };
+    const callCount = rows[0].callCount;
+    const result = rateLimitResult(true, limit, limit - callCount, resetAt, now);
     return { ...result, day };
   } catch (error) {
     console.error("llm_budget_check_failed", { day, error });
@@ -180,7 +165,7 @@ function rateLimitResult(
 }
 
 export function sqlTimestamp(value: Date) {
-  return value.toISOString();
+  return value.getTime();
 }
 
 function quotaUnavailableResult(limit: number, resetAt: Date, now: Date) {
@@ -190,10 +175,7 @@ function quotaUnavailableResult(limit: number, resetAt: Date, now: Date) {
 async function pruneExpiredRateLimits() {
   if (Math.random() > 0.01) return;
   try {
-    await sql`
-      delete from rate_limit_windows
-      where reset_at < now() - interval '2 days'
-    `;
+    await d1Run("delete from rate_limit_windows where reset_at < ?", Date.now() - 2 * oneDayMs);
   } catch {
     // Best-effort table hygiene; request quota decisions must not depend on it.
   }

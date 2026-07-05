@@ -1,36 +1,33 @@
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
-import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
 import { getDatabaseTranslationBundle } from "@/lib/i18n/db-translations";
 import type { TranslationResult } from "./translation-types";
 import {
-  getAllSiteTranslationNamespaces,
-  getEnglishSiteTranslationBundle,
-  getSiteTranslationSource,
-  getSiteTranslationNamespacesForPath,
-  isKnownSiteTranslationNamespace as isKnownSiteSourceNamespace,
-} from "./site-source";
+  getAllRuntimeSiteTranslationNamespaces,
+  getRuntimeEnglishSiteTranslationBundle,
+  getRuntimeSiteTranslationNamespacesForPath,
+  getRuntimeSiteTranslationSource,
+  isKnownRuntimeSiteTranslationNamespace,
+} from "./runtime-site-source";
 
 export type SiteTranslationResult = TranslationResult;
 
 export function isKnownSiteTranslationNamespace(namespace: string) {
-  return isKnownSiteSourceNamespace(namespace);
+  return isKnownRuntimeSiteTranslationNamespace(namespace);
 }
 
 export function getAllKnownSiteTranslationNamespaces() {
-  return getAllSiteTranslationNamespaces();
+  return getAllRuntimeSiteTranslationNamespaces();
 }
 
 export function getSiteTranslationNamespaces(pathname: string) {
-  return getSiteTranslationNamespacesForPath(pathname);
+  return getRuntimeSiteTranslationNamespacesForPath(pathname);
 }
 
 export async function getCachedSiteTranslationBundle(language: string, namespace?: string) {
   const normalized = normalizeLanguage(language);
-  const source = getSiteTranslationSource(namespace);
-  if (normalized === defaultLanguage) return getEnglishSiteTranslationBundle(source.namespace);
-
-  const curatedBundle = getCuratedTranslationBundle(source, normalized);
-  if (curatedBundle) return curatedBundle;
+  const source = await getRuntimeSiteTranslationSource(namespace);
+  if (!source) return null;
+  if (normalized === defaultLanguage) return getRuntimeEnglishSiteTranslationBundle(source.namespace);
 
   return translationDbFallbackWithTimeout(getDatabaseTranslationBundle(source, normalized));
 }
@@ -54,8 +51,26 @@ export async function getOrCreateSiteTranslationResult(
   namespace?: string,
 ): Promise<SiteTranslationResult> {
   const normalized = normalizeLanguage(language);
-  const source = getSiteTranslationSource(namespace);
-  const bundle = normalized === defaultLanguage ? getEnglishSiteTranslationBundle(source.namespace) : await getCachedSiteTranslationBundle(normalized, source.namespace);
+  const source = await getRuntimeSiteTranslationSource(namespace);
+  if (!source) {
+    return {
+      bundle: {
+        namespace: namespace ?? "",
+        language: normalized,
+        sourceHash: "",
+        sourceStrings: {},
+        strings: {},
+      },
+      complete: false,
+      translatedCount: 0,
+      totalCount: 0,
+    };
+  }
+
+  const bundle =
+    normalized === defaultLanguage
+      ? await getRuntimeEnglishSiteTranslationBundle(source.namespace)
+      : await getCachedSiteTranslationBundle(normalized, source.namespace);
   const translatedCount = bundle ? Object.keys(bundle.strings).length : 0;
   const totalCount = Object.keys(source.sourceStrings).length;
   return {

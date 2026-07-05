@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { isKnownTopicSlug, isUuidPathSegment } from "@/lib/content/topic-routing";
+import { buildForwardedRequestHeaders } from "@/lib/http/forwarded-request-headers";
 import { recommendLanguage } from "@/lib/i18n/language-detection";
 import { resolveRequestLanguage } from "@/lib/i18n/language-preference";
 import {
@@ -15,7 +16,9 @@ import {
   requestRecommendedLanguageHeader,
 } from "@/lib/i18n/routing";
 
-export async function proxy(request: NextRequest) {
+// OpenNext Cloudflare 1.19.11 does not yet support the Next 16 nodejs proxy output.
+// Keep Edge Middleware until the Cloudflare adapter supports proxy.ts.
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const localizedPath = getLocalizedPathInfo(pathname);
   const effectivePathname = localizedPath.pathnameWithoutLocale;
@@ -26,15 +29,16 @@ export async function proxy(request: NextRequest) {
     referrerLanguage,
   });
   const recommendedLanguage = recommendLanguage({
-    countryCode: request.headers.get("x-vercel-ip-country"),
+    countryCode: request.headers.get("cf-ipcountry"),
     acceptLanguage: request.headers.get("accept-language"),
   });
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set(requestLanguageHeader, language);
-  requestHeaders.set(requestLocaleHeader, language);
-  requestHeaders.set(requestLocalePrefixHeader, localizedPath.hasLocalePrefix ? "1" : "0");
-  requestHeaders.set(requestPathnameHeader, effectivePathname);
-  requestHeaders.set(requestRecommendedLanguageHeader, recommendedLanguage);
+  const requestHeaders = buildForwardedRequestHeaders(request.headers, [
+    [requestLanguageHeader, language],
+    [requestLocaleHeader, language],
+    [requestLocalePrefixHeader, localizedPath.hasLocalePrefix ? "1" : "0"],
+    [requestPathnameHeader, effectivePathname],
+    [requestRecommendedLanguageHeader, recommendedLanguage],
+  ]);
 
   const chatSegment = effectivePathname.match(/^\/chat\/([^/]+)$/)?.[1];
   const isPublicTopicChat = chatSegment ? isKnownTopicSlug(chatSegment) : false;

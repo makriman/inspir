@@ -10,6 +10,7 @@ import {
   upsertUserMemorySummary,
 } from "@/lib/db/memory";
 import { getOwnedAiRun } from "@/lib/db/queries";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -26,6 +27,8 @@ const feedbackSchema = z.object({
 export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("memory-feedback");
+  if (freeze) return freeze;
 
   const parsed = feedbackSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid feedback" }, { status: 400 });

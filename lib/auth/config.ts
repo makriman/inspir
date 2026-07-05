@@ -1,10 +1,10 @@
 import type { NextAuthOptions } from "next-auth";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { eq } from "drizzle-orm";
 import { after } from "next/server";
 import GoogleProvider from "next-auth/providers/google";
 import { db } from "@/lib/db/client";
-import { accounts, sessions, users, verificationTokens } from "@/lib/db/schema";
+import { users } from "@/lib/db/schema";
+import { D1AuthAdapter } from "./d1-adapter";
 import { refreshProfilePhoto } from "./profile-photo";
 
 for (const key of ["NEXTAUTH_URL", "AUTH_URL"] as const) {
@@ -17,12 +17,7 @@ const googleClientId = process.env.AUTH_GOOGLE_ID ?? process.env.GOOGLE_CLIENT_I
 const googleClientSecret = process.env.AUTH_GOOGLE_SECRET ?? process.env.GOOGLE_CLIENT_SECRET ?? "";
 
 export const authOptions: NextAuthOptions = {
-  adapter: DrizzleAdapter(db, {
-    usersTable: users,
-    accountsTable: accounts,
-    sessionsTable: sessions,
-    verificationTokensTable: verificationTokens,
-  }),
+  adapter: D1AuthAdapter(),
   providers: [
     GoogleProvider({
       clientId: googleClientId,

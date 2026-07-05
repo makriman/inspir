@@ -18,10 +18,6 @@ import {
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
-import rehypeKatex from "rehype-katex";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
 import {
   ArrowLeft,
   AlertTriangle,
@@ -84,8 +80,29 @@ import {
 import { LearningStore } from "@/components/chat/LearningStore";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
+import { RichMarkdownContent } from "@/components/chat/RichMarkdownContent";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
+import {
+  Bubble as ChatBubblePrimitive,
+  BubbleContent as ChatBubbleContent,
+} from "@/components/ui/bubble";
+import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker";
+import {
+  Message as ChatMessagePrimitive,
+  MessageAvatar,
+  MessageContent,
+  MessageFooter,
+  MessageHeader,
+} from "@/components/ui/message";
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
+} from "@/components/ui/message-scroller";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import { topicPath } from "@/lib/content/topic-routing";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -255,6 +272,30 @@ type MemoryDashboard = {
   summary: MemorySummary | null;
   memories: MemoryItem[];
   profiles: MemoryProfile[];
+};
+
+type ChatCreateResponse = {
+  chatId: string;
+};
+
+type ChatLoadResponse = {
+  chat: { id: string };
+  messages?: Message[];
+  topic?: { id?: string | null } | null;
+  activityRun?: ActivityRun | null;
+};
+
+type RecentChatsResponse = {
+  chats?: RecentChat[];
+};
+
+type ProfileResponse = {
+  user?: ApiProfileUser;
+  error?: string;
+};
+
+type ActivityRunResponse = {
+  activityRun: ActivityRun | null;
 };
 
 type MessageMemorySource = {
@@ -817,7 +858,7 @@ function useChatClientController({
     try {
       const response = await fetch("/api/memory");
       if (!response.ok) throw new Error("Could not load memory");
-      const data = await response.json();
+      const data = (await response.json()) as MemoryDashboard;
       updateChatState({ memoryDashboard: data });
     } catch {
       updateChatState({ memoryError: "Could not load memory right now." });
@@ -850,7 +891,7 @@ function useChatClientController({
       body: JSON.stringify({ topicId }),
     });
     if (!response.ok) throw new Error("Could not start chat");
-    const data = await response.json();
+    const data = (await response.json()) as ChatCreateResponse;
     if (activate) {
       setActiveChatId(data.chatId);
       window.history.replaceState(null, "", `/chat/${data.chatId}`);
@@ -871,7 +912,7 @@ function useChatClientController({
     if (!options?.preserveRequest) cancelActiveRequest();
     const response = await fetch(`/api/chats/${chatId}`);
     if (!response.ok) return;
-    const data = await response.json();
+    const data = (await response.json()) as ChatLoadResponse;
     if (data.topic?.id) setActiveTopicId(data.topic.id);
     setActiveChatId(data.chat.id);
     setMessages(data.messages ?? []);
@@ -1136,7 +1177,7 @@ function useChatClientController({
     setProfileOpen(false);
     try {
       const response = await fetch(`/api/chats?topicId=${activeTopicId}`);
-      const data = await response.json();
+      const data = (await response.json()) as RecentChatsResponse;
       setRecentChats(data.chats ?? []);
     } finally {
       setRecentLoading(false);
@@ -1155,7 +1196,7 @@ function useChatClientController({
         body: JSON.stringify({ preferredLanguage }),
       });
       if (!response.ok) throw new Error("Could not update language");
-      const data = await response.json();
+      const data = (await response.json()) as ProfileResponse;
       if (data.user) {
         setProfileUser(profileFromApiUser(data.user));
       }
@@ -1174,7 +1215,7 @@ function useChatClientController({
       headers: { "content-type": "application/json" },
       body: JSON.stringify(input),
     });
-    const data = await response.json().catch(() => null);
+    const data = (await response.json().catch(() => null)) as ProfileResponse | null;
     if (!response.ok || !data?.user) {
       throw new Error(data?.error || "Could not save profile");
     }
@@ -1234,7 +1275,7 @@ function useChatClientController({
         body: JSON.stringify(input),
       });
       if (!response.ok) throw new Error("Could not update memory settings");
-      const data = await response.json();
+      const data = (await response.json()) as MemoryDashboard;
       setMemoryDashboard(data);
     } catch {
       setMemoryError("Could not update memory settings.");
@@ -1254,7 +1295,7 @@ function useChatClientController({
         body: JSON.stringify(input),
       });
       if (!response.ok) throw new Error("Could not add memory");
-      const data = await response.json();
+      const data = (await response.json()) as MemoryDashboard;
       setMemoryDashboard(data);
     } catch {
       setMemoryError("Could not add that memory.");
@@ -1307,7 +1348,7 @@ function useChatClientController({
     try {
       const response = await fetch("/api/memory", { method: "DELETE" });
       if (!response.ok) throw new Error("Could not clear memory");
-      const data = await response.json();
+      const data = (await response.json()) as MemoryDashboard;
       setMemoryDashboard(data);
     } catch {
       setMemoryError("Could not clear memory.");
@@ -1761,30 +1802,39 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
 
   return (
     <main className="bubble-workspace">
-      <div ref={listRef} className="bubble-message-scroll app-scrollbar">
-        {visibleChatMessages.length === 0 ? <TopicIntroCard topic={activeTopic} /> : null}
-        {visibleChatMessages.length === 0 ? (
-          <StarterGrid starters={metadata?.starters ?? []} onStart={(starter) => void sendMessage(starter)} />
-        ) : null}
-        <div className="bubble-message-stack">
-          {visibleChatMessages.map((message) => (
-            <MessageBubble
-              key={message.id}
-              message={message}
-              userLabel={userDisplayName}
-              onMemorySources={(sources) => setMemorySourceModal({ messageId: message.id, sources })}
-            />
-          ))}
-          {awaitingResponse ? (
-            <div className="bubble-thinking" aria-live="polite">
-              <span />
-              <span />
-              <span />
-              <strong>Thinking</strong>
-            </div>
-          ) : null}
-        </div>
-      </div>
+      <MessageScrollerProvider autoScroll defaultScrollPosition="end" scrollMargin={112}>
+        <MessageScroller className="bubble-message-scroller">
+          <MessageScrollerViewport ref={listRef} className="bubble-message-scroll app-scrollbar">
+            <MessageScrollerContent className="bubble-message-stack">
+              {visibleChatMessages.length === 0 ? (
+                <MessageScrollerItem>
+                  <TopicIntroCard topic={activeTopic} />
+                </MessageScrollerItem>
+              ) : null}
+              {visibleChatMessages.length === 0 ? (
+                <MessageScrollerItem>
+                  <StarterGrid starters={metadata?.starters ?? []} onStart={(starter) => void sendMessage(starter)} />
+                </MessageScrollerItem>
+              ) : null}
+              {visibleChatMessages.map((message) => (
+                <MessageScrollerItem key={message.id} messageId={message.id} scrollAnchor>
+                  <MessageBubble
+                    message={message}
+                    userLabel={userDisplayName}
+                    onMemorySources={(sources) => setMemorySourceModal({ messageId: message.id, sources })}
+                  />
+                </MessageScrollerItem>
+              ))}
+              {awaitingResponse ? (
+                <MessageScrollerItem scrollAnchor>
+                  <ThinkingMarker label="Thinking" />
+                </MessageScrollerItem>
+              ) : null}
+            </MessageScrollerContent>
+          </MessageScrollerViewport>
+          <MessageScrollerButton className="bubble-scroll-button" />
+        </MessageScroller>
+      </MessageScrollerProvider>
       <form onSubmit={submitMessage} className="bubble-composer">
         <div className="bubble-composer-inner">
           <textarea
@@ -3443,12 +3493,7 @@ function CoachChatSession({
                 />
               ))}
               {awaitingResponse ? (
-                <div className="bubble-thinking" aria-live="polite">
-                  <span />
-                  <span />
-                  <span />
-                  <strong>{coachName} is thinking</strong>
-                </div>
+                <ThinkingMarker label={`${coachName} is thinking`} />
               ) : null}
             </div>
           </div>
@@ -4638,12 +4683,7 @@ function GuidedMiniAppWorkspace({
                   <MessageBubble key={message.id} message={message} userLabel={userName} />
                 ))}
                 {awaitingResponse ? (
-                  <div className="bubble-thinking" aria-live="polite">
-                    <span />
-                    <span />
-                    <span />
-                    <strong>Thinking</strong>
-                  </div>
+                  <ThinkingMarker label="Thinking" />
                 ) : null}
               </div>
             </div>
@@ -5222,12 +5262,7 @@ function useHistoricalPersonWorkspace({
                   <MessageBubble key={message.id} message={message} userLabel={userName} />
                 ))}
                 {awaitingResponse ? (
-                  <div className="bubble-thinking" aria-live="polite">
-                    <span />
-                    <span />
-                    <span />
-                    <strong>Thinking</strong>
-                  </div>
+                  <ThinkingMarker label="Thinking" />
                 ) : null}
               </div>
             </section>
@@ -5341,56 +5376,62 @@ function MessageBubble({
   }
 
   return (
-    <div className={`bubble-message-row ${isUser ? "is-user" : "is-assistant"}`}>
-      <article className="bubble-message-bubble">
-        <header className="bubble-message-author">
-          {isUser ? <UserRound size={14} /> : <Bot size={14} />}
-          <strong>{isUser ? userLabel : assistantLabel}</strong>
-        </header>
-        <RichMessageContent content={message.content} />
-        <footer>
-          <time>{formatBubbleDate(message.createdAt)}</time>
-          {!isUser && memorySources.length > 0 && onMemorySources ? (
-            <button
-              type="button"
-              onClick={() => onMemorySources(memorySources)}
-              aria-label="Show memory sources"
-              className="bubble-memory-source-button"
-            >
-              <StickyNote size={14} />
-            </button>
-          ) : null}
-          <button type="button" onClick={copyMessage} aria-label="Copy message">
-            {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
-          </button>
-        </footer>
-      </article>
-    </div>
+    <ChatMessagePrimitive
+      align={isUser ? "end" : "start"}
+      className={`bubble-message-row ${isUser ? "is-user" : "is-assistant"}`}
+    >
+      <MessageAvatar className="bubble-message-avatar" aria-hidden="true">
+        {isUser ? <UserRound size={15} /> : <Bot size={15} />}
+      </MessageAvatar>
+      <MessageContent className="bubble-message-content">
+        <ChatBubblePrimitive
+          align={isUser ? "end" : "start"}
+          variant={isUser ? "default" : "ghost"}
+          className="bubble-message-bubble-shell"
+        >
+          <ChatBubbleContent asChild>
+            <article className="bubble-message-bubble">
+              <MessageHeader className="bubble-message-author">
+                {isUser ? <UserRound size={14} /> : <Bot size={14} />}
+                <strong>{isUser ? userLabel : assistantLabel}</strong>
+              </MessageHeader>
+              <RichMarkdownContent content={message.content} />
+              <MessageFooter className="bubble-message-footer">
+                <time>{formatBubbleDate(message.createdAt)}</time>
+                {!isUser && memorySources.length > 0 && onMemorySources ? (
+                  <button
+                    type="button"
+                    onClick={() => onMemorySources(memorySources)}
+                    aria-label="Show memory sources"
+                    className="bubble-memory-source-button"
+                  >
+                    <StickyNote size={14} />
+                  </button>
+                ) : null}
+                <button type="button" onClick={copyMessage} aria-label="Copy message">
+                  {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
+                </button>
+              </MessageFooter>
+            </article>
+          </ChatBubbleContent>
+        </ChatBubblePrimitive>
+      </MessageContent>
+    </ChatMessagePrimitive>
   );
 }
 
-function RichMessageContent({ content }: { content: string }) {
+function ThinkingMarker({ label }: { label: string }) {
   return (
-    <div className="bubble-rich-content" data-no-auto-translate="true">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm, remarkMath]}
-        rehypePlugins={[rehypeKatex]}
-        components={{
-          table: ({ children }) => (
-            <div className="bubble-table-wrap">
-              <table>{children}</table>
-            </div>
-          ),
-          a: ({ children, href }) => (
-            <a href={href} target="_blank" rel="noreferrer">
-              {children}
-            </a>
-          ),
-        }}
-      >
-        {normalizeAssistantMarkdown(content)}
-      </ReactMarkdown>
-    </div>
+    <Marker className="bubble-thinking" aria-live="polite">
+      <MarkerIcon className="bubble-thinking-dots">
+        <span />
+        <span />
+        <span />
+      </MarkerIcon>
+      <MarkerContent>
+        <strong>{label}</strong>
+      </MarkerContent>
+    </Marker>
   );
 }
 
@@ -5440,12 +5481,6 @@ function MemorySourcesModal({
       </section>
     </div>
   );
-}
-
-function normalizeAssistantMarkdown(content: string) {
-  return content
-    .replace(/\\\[([\s\S]*?)\\\]/g, (_, expression: string) => `\n\n$$\n${expression.trim()}\n$$\n\n`)
-    .replace(/\\\(([\s\S]*?)\\\)/g, (_, expression: string) => `$${expression.trim()}$`);
 }
 
 const quizBuildSteps = [
@@ -5510,7 +5545,7 @@ function QuizWorkspace({
         body: JSON.stringify({ chatId, topic: quizTopic }),
       });
       if (!response.ok) throw new Error("Could not build quiz");
-      const data = await response.json();
+      const data = (await response.json()) as ActivityRunResponse;
       updateQuizState({ buildProgress: 100 });
       onActivityRun(data.activityRun);
     } catch {
@@ -5533,7 +5568,7 @@ function QuizWorkspace({
         body: JSON.stringify({ answerIndex }),
       });
       if (!response.ok) throw new Error("Could not score answer");
-      const data = await response.json();
+      const data = (await response.json()) as ActivityRunResponse;
       onActivityRun(data.activityRun);
     } catch {
       updateQuizState({ error: "I could not score that answer. Please try again." });
@@ -5751,7 +5786,7 @@ function FlashcardWorkspace({
         body: JSON.stringify({ chatId, topic: deckTopic, source: source.trim() || undefined }),
       });
       if (!response.ok) throw new Error("Could not build flashcards");
-      const data = await response.json();
+      const data = (await response.json()) as ActivityRunResponse;
       updateFlashcardState({ buildProgress: 100 });
       onActivityRun(data.activityRun);
     } catch {
@@ -5776,7 +5811,7 @@ function FlashcardWorkspace({
         ),
       });
       if (!response.ok) throw new Error("Could not review card");
-      const data = await response.json();
+      const data = (await response.json()) as ActivityRunResponse;
       onActivityRun(data.activityRun);
     } catch {
       updateFlashcardState({ error: "I could not save that card review. Please try again." });
@@ -6127,7 +6162,7 @@ function AgePromptModal({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ dateOfBirth, preferredLanguage }),
       });
-      const data = await response.json().catch(() => null);
+      const data = (await response.json().catch(() => null)) as ProfileResponse | null;
       if (!response.ok || !data?.user) {
         throw new Error(data?.error || t("Could not save date of birth"));
       }

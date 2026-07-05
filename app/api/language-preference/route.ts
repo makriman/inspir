@@ -11,7 +11,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  const body = await request.json().catch(() => ({}));
+  const body = (await request.json().catch(() => ({}))) as { language?: unknown; pathname?: unknown };
   const language = normalizeLanguage(body.language);
   const rawPathname = typeof body.pathname === "string" ? body.pathname : "/";
   const pathname = removeLocaleFromPath(rawPathname);

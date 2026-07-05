@@ -3,7 +3,7 @@ import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
 import { breadcrumbJsonLd, webPageJsonLd } from "@/lib/seo/json-ld";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
-import { legalEnglishControlsNotice } from "@/lib/i18n/site-source";
+import { legalEnglishControlsNotice } from "@/lib/i18n/site-source-constants";
 
 function isHeading(block: string) {
   if (block.length > 90) return false;

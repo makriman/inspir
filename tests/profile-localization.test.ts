@@ -14,6 +14,7 @@ import { localizeStructuredDataValue } from "../lib/i18n/metadata";
 import { getEnglishMainAppTranslationBundle, getMainAppSourceHash } from "../lib/i18n/main-app-source";
 import {
   getAllSiteTranslationNamespaces,
+  getSiteTranslationSource,
   getSiteSourceStrings,
   getSiteTranslationNamespacesForPath,
   legalEnglishControlsNotice,
@@ -265,6 +266,15 @@ test("site translation namespaces are segmented by route and content", () => {
 
   const publicChatValues = new Set(Object.values(getSiteSourceStrings("route:chat-public")));
   assert.ok(!publicChatValues.has("learning mode"));
+});
+
+test("site source manifest is fresh for Cloudflare runtime translation hashes", () => {
+  for (const namespace of [marketingShellTranslationNamespace, "route:home", "blog:socratic-ai-tutor"]) {
+    const manifestSource = getSiteTranslationSource(namespace);
+    const extractedSource = getSiteTranslationSource(namespace, { mode: "extract" });
+    assert.equal(manifestSource.sourceHash, extractedSource.sourceHash, namespace);
+    assert.equal(Object.keys(manifestSource.sourceStrings).length, Object.keys(extractedSource.sourceStrings).length);
+  }
 });
 
 test("structured data localization translates text while preserving schema identifiers", () => {

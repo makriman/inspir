@@ -15,6 +15,7 @@ import {
   parseQuizState,
   sanitizeQuizState,
 } from "@/lib/activities/quiz";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -29,6 +30,8 @@ export async function POST(
 ) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("activities");
+  if (freeze) return freeze;
 
   const body = answerSchema.safeParse(await request.json());
   if (!body.success) return NextResponse.json({ error: "Invalid answer" }, { status: 400 });

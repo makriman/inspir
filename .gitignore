@@ -13,10 +13,14 @@
 # testing
 /coverage
 /test-results/
+/playwright-report/
+/.playwright/
+/.wrangler/
 
 # next.js
 /.next/
 /out/
+/.open-next/
 
 # production
 /build
@@ -31,6 +35,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 tmp/
+
+# local migration backups and provider snapshots
+/backups/
+/inspirlearning-local-backups/
 
 # env files
 .env
@@ -54,3 +62,5 @@ translations/workbench-home-current/
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+.dev.vars*
+cloudflare-env.generated*.d.ts

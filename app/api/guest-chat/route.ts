@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { createLearningAgent } from "@/lib/ai/learning-agent";
+import { createLearningTextStreamResponse } from "@/lib/ai/streaming";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
 import { getTopicMetadata } from "@/lib/ai/prompts";
 import { findSeededTopic } from "@/lib/content/seeded-topics";
@@ -13,6 +14,7 @@ import {
   quotaDefaults,
   safeQuotaKeyPart,
 } from "@/lib/utils/rate-limit";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -46,6 +48,7 @@ function parseUsage(value: string | undefined, limit: number) {
 
 function requestIp(request: NextRequest) {
   return (
+    request.headers.get("cf-connecting-ip") ||
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     request.headers.get("x-real-ip") ||
     "unknown"
@@ -70,6 +73,9 @@ async function getGuestTopic(topicId: string) {
 }
 
 export async function POST(request: NextRequest) {
+  const freeze = writeFreezeResponse("guest-chat");
+  if (freeze) return freeze;
+
   let payload: unknown;
   try {
     payload = await request.json();
@@ -143,11 +149,17 @@ export async function POST(request: NextRequest) {
         { role: "user" as const, content: parsed.data.content },
       ],
     });
-    const response = result.toTextStreamResponse();
-    response.headers.set("x-guest-messages-used", String(nextUsed));
-    response.headers.set("x-guest-messages-limit", String(guestMessageLimit));
-    return response;
-  } catch {
+    return await createLearningTextStreamResponse({ fullStream: result.fullStream as ReadableStream<unknown> }, {
+      headers: {
+        "x-guest-messages-used": String(nextUsed),
+        "x-guest-messages-limit": String(guestMessageLimit),
+      },
+      onError(error) {
+        console.warn("Guest chat stream failed", error);
+      },
+    });
+  } catch (error) {
+    console.warn("Guest chat failed", error);
     return NextResponse.json({ error: "The assistant could not answer right now." }, { status: 500 });
   }
 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
 import { createChatForUser, getChatPreviews, getRecentChats } from "@/lib/db/queries";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -31,6 +32,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("chats");
+  if (freeze) return freeze;
 
   const body = createChatSchema.safeParse(await request.json());
   if (!body.success) return NextResponse.json({ error: "Invalid chat request" }, { status: 400 });

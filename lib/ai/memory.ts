@@ -1,4 +1,4 @@
-import { openai, type OpenAIEmbeddingModelOptions } from "@ai-sdk/openai";
+import { type OpenAIEmbeddingModelOptions } from "@ai-sdk/openai";
 import { embed, generateObject } from "ai";
 import { z } from "zod";
 import type { Message, Topic } from "@/lib/db/schema";
@@ -42,6 +42,11 @@ import {
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
 import { resolveEmbeddingModelName, resolveModelName } from "@/lib/ai/model-router";
 import { consumeDailyLlmBudget, numberFromEnv, quotaDefaults } from "@/lib/utils/rate-limit";
+import {
+  configuredOpenAIProvider,
+  hasOpenAiRuntimeCredentials,
+  openAiEmbeddingModel,
+} from "@/lib/ai/openai-provider";
 
 type TopicLike = Pick<Topic, "id" | "name" | "slug">;
 type PersistedMessage = Pick<Message, "id" | "role" | "content">;
@@ -1037,7 +1042,7 @@ async function shouldUseMemory(input: {
       query: input.message,
     };
   }
-  if (!process.env.OPENAI_API_KEY) {
+  if (!hasOpenAiApiKey()) {
     return {
       useMemory: fallback,
       reason: fallback ? "Heuristic found a personal, continuity, remember, or forget cue." : "Generic turn.",
@@ -1054,7 +1059,7 @@ async function shouldUseMemory(input: {
 
   try {
     const result = await generateObject({
-      model: openai(resolveModelName("structured")),
+      model: openaiProvider()(resolveModelName("structured")),
       schema: memoryGateSchema,
       system: [
         "Decide whether a tutor should retrieve long-term learner memory before answering.",
@@ -1097,13 +1102,13 @@ async function extractMemoryUpdates(input: {
     contextMessages: input.contextMessages,
   });
   if (direct.clearAll || direct.forget.length) return direct;
-  if (!process.env.OPENAI_API_KEY) return fallbackExtraction(input);
+  if (!hasOpenAiApiKey()) return fallbackExtraction(input);
   if (!(await hasLlmBudget("memory_extraction"))) return fallbackExtraction(input);
 
   const existing = await getActiveUserMemories(input.userId, 60);
   try {
     const result = await generateObject({
-      model: openai(resolveModelName("structured")),
+      model: openaiProvider()(resolveModelName("structured")),
       schema: memoryExtractionSchema,
       system: [
         "You update long-term memory for Inspir, an AI learning companion.",
@@ -1147,7 +1152,7 @@ export async function compileUserMemoryProfile(userId: string, category: string)
     return;
   }
 
-  if (!process.env.OPENAI_API_KEY || !(await hasLlmBudget("memory_profile"))) {
+  if (!hasOpenAiApiKey() || !(await hasLlmBudget("memory_profile"))) {
     await upsertUserMemoryProfile({
       userId,
       category,
@@ -1162,7 +1167,7 @@ export async function compileUserMemoryProfile(userId: string, category: string)
 
   try {
     const result = await generateObject({
-      model: openai(resolveModelName("structured")),
+      model: openaiProvider()(resolveModelName("structured")),
       schema: memoryProfileSchema,
       system: [
         "Compile a dense but careful user knowledge memory for a learning companion.",
@@ -1225,7 +1230,7 @@ export async function synthesizeUserMemory(userId: string, reason = "manual_refr
 
   try {
     const synthesis =
-      process.env.OPENAI_API_KEY
+      hasOpenAiApiKey()
         ? await generateMemorySynthesis({
             memories,
             turns,
@@ -1289,7 +1294,7 @@ async function generateMemorySynthesis(input: {
   if (!(await hasLlmBudget("memory_synthesis"))) return buildFallbackMemorySynthesis(input);
   try {
     const result = await generateObject({
-      model: openai(resolveModelName("structured")),
+      model: openaiProvider()(resolveModelName("structured")),
       schema: memorySynthesisSchema,
       system: [
         "You synthesize long-term learner memory for Inspir.",
@@ -1555,13 +1560,13 @@ async function runWithTimeout<T>(promise: Promise<T>, timeoutMs: number) {
 }
 
 async function embedText(value: string) {
-  if (!process.env.OPENAI_API_KEY) return null;
+  if (!hasOpenAiApiKey()) return null;
   const trimmed = value.trim();
   if (!trimmed) return null;
   if (!(await hasLlmBudget("memory_embedding"))) return null;
   try {
     const result = await embed({
-      model: openai.embedding(resolveEmbeddingModelName()),
+      model: openAiEmbeddingModel(resolveEmbeddingModelName()),
       value: trimmed.slice(0, 4000),
       providerOptions: {
         openai: {
@@ -1575,6 +1580,14 @@ async function embedText(value: string) {
   } catch {
     return null;
   }
+}
+
+function hasOpenAiApiKey() {
+  return hasOpenAiRuntimeCredentials();
+}
+
+function openaiProvider() {
+  return configuredOpenAIProvider();
 }
 
 async function hasLlmBudget(reason: string) {

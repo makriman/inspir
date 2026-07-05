@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import("@opennextjs/cloudflare").then((module) => module.initOpenNextCloudflareForDev());
+
 const securityHeaders = [
   {
     key: "Content-Security-Policy-Report-Only",

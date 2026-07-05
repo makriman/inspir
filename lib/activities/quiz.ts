@@ -1,8 +1,8 @@
-import { openai } from "@ai-sdk/openai";
 import { generateObject } from "ai";
 import { z } from "zod";
 import type { ActivityRun } from "@/lib/db/schema";
 import { resolveModelName } from "@/lib/ai/model-router";
+import { hasOpenAiRuntimeCredentials, openAiLanguageModel } from "@/lib/ai/openai-provider";
 import { parseFlashcardState, sanitizeFlashcardState } from "@/lib/activities/flashcards";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 
@@ -52,7 +52,7 @@ export async function generateQuiz(
   topic: string,
   options: { learnerAge?: number | null; preferredLanguage?: string | null } = {},
 ): Promise<QuizState> {
-  if (!process.env.OPENAI_API_KEY) return fallbackQuiz(topic);
+  if (!hasOpenAiRuntimeCredentials()) return fallbackQuiz(topic);
 
   try {
     const language = normalizeLanguage(options.preferredLanguage ?? defaultLanguage);
@@ -62,7 +62,7 @@ export async function generateQuiz(
         : undefined;
     const languageInstruction = `Write every learner-facing field in ${language}: question prompts, answer options, explanations, and topic wording.`;
     const result = await generateObject({
-      model: openai(resolveModelName("structured")),
+      model: openAiLanguageModel(resolveModelName("structured")),
       schema: generatedQuizSchema,
       system: [
         "You are an expert quiz designer for a learner-first education app. Create fair multiple-choice questions. Do not include answer labels inside option text.",

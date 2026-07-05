@@ -13,7 +13,13 @@ import {
 } from "@/lib/db/queries";
 import { buildModelMessages } from "@/lib/ai/prompts";
 import { createLearningAgent } from "@/lib/ai/learning-agent";
+import { createLearningTextStreamResponse, type LearningStreamFinishEvent } from "@/lib/ai/streaming";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
+import {
+  createMemoryPostTurnQueueMessage,
+  dispatchMemoryPostTurn,
+  type MemoryPostTurnQueueMessage,
+} from "@/lib/ai/memory-queue";
 import {
   memoryRunMetadata,
   processMemoryAfterTurn,
@@ -23,6 +29,7 @@ import {
 import { normalizeLanguage } from "@/lib/content/languages";
 import { consumeAiQuota, numberFromEnv, quotaDefaults, safeQuotaKeyPart } from "@/lib/utils/rate-limit";
 import { calculateAge } from "@/lib/profile/age";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -33,7 +40,7 @@ const chatRequestSchema = z.object({
   content: z.string().trim().min(1).max(6000),
 });
 
-type MemoryJob = (() => Promise<void>) | null;
+type MemoryJob = MemoryPostTurnQueueMessage | null;
 
 function createMemoryJobLatch() {
   let memoryJobSettled = false;
@@ -52,19 +59,23 @@ function createMemoryJobLatch() {
 export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("chat");
+  if (freeze) return freeze;
 
   const parsed = chatRequestSchema.safeParse(await request.json());
   if (!parsed.success) {
     return NextResponse.json({ error: "Invalid chat request" }, { status: 400 });
   }
+  const requestData = parsed.data;
+  const userId = session.user.id;
 
-  const owned = await getOwnedChat(parsed.data.chatId, session.user.id);
+  const owned = await getOwnedChat(requestData.chatId, userId);
   if (!owned) return NextResponse.json({ error: "Chat not found" }, { status: 404 });
   const topic = owned.topic ?? (await getDefaultTopic());
   if (!topic) return NextResponse.json({ error: "Chat topic not available" }, { status: 404 });
 
   const limit = await consumeAiQuota({
-    key: `chat:user:${safeQuotaKeyPart(session.user.id)}`,
+    key: `chat:user:${safeQuotaKeyPart(userId)}`,
     limit: numberFromEnv("RATE_LIMIT_USER_CHAT_DAILY", quotaDefaults.userChatDaily),
   });
   if (!limit.quota.ok) {
@@ -76,21 +87,21 @@ export async function POST(request: NextRequest) {
 
   const [userMessage, user] = await Promise.all([
     insertMessage({
-      chatId: parsed.data.chatId,
+      chatId: requestData.chatId,
       role: "user",
-      content: parsed.data.content,
+      content: requestData.content,
     }),
-    getUserLearningProfileById(session.user.id),
+    getUserLearningProfileById(userId),
   ]);
 
   const context = await getContextMessages(userMessage.chatId);
   const preferredLanguage = normalizeLanguage(user?.preferredLanguage);
   const learnerAge = calculateAge(user?.dateOfBirth);
   const memoryRetrieval = await safeRetrieveMemory({
-    userId: session.user.id,
+    userId,
     chatId: userMessage.chatId,
     userMessageId: userMessage.id,
-    message: parsed.data.content,
+    message: requestData.content,
     topic,
     contextMessages: context,
   });
@@ -111,7 +122,7 @@ export async function POST(request: NextRequest) {
   const [run] = await db
     .insert(aiRuns)
     .values({
-      chatId: parsed.data.chatId,
+      chatId: requestData.chatId,
       userMessageId: userMessage.id,
       model,
       memoryContext: memoryRunMetadata(memoryRetrieval),
@@ -120,13 +131,80 @@ export async function POST(request: NextRequest) {
     .returning();
   const { memoryJob, settleMemoryJob } = createMemoryJobLatch();
 
+  async function markRunFailed(error: unknown) {
+    settleMemoryJob(null);
+    await db
+      .update(aiRuns)
+      .set({
+        status: "failed",
+        error: error instanceof Error ? error.message : "Unknown AI error",
+        completedAt: new Date(),
+      })
+      .where(eq(aiRuns.id, run.id));
+  }
+
+  async function completeRun(event: LearningStreamFinishEvent) {
+    const assistant = await insertMessage({
+      chatId: requestData.chatId,
+      role: "assistant",
+      content: event.text,
+    });
+    await db
+      .update(aiRuns)
+      .set({
+        assistantMessageId: assistant.id,
+        promptTokens: event.totalUsage?.inputTokens ?? null,
+        completionTokens: event.totalUsage?.outputTokens ?? null,
+        totalTokens: event.totalUsage?.totalTokens ?? null,
+        status: "completed",
+        completedAt: new Date(),
+      })
+      .where(eq(aiRuns.id, run.id));
+    const memoryMessage = createMemoryPostTurnQueueMessage({
+      aiRunId: run.id,
+      userId,
+      chatId: requestData.chatId,
+      topic: {
+        id: topic.id,
+        name: topic.name,
+        slug: topic.slug,
+      },
+      userMessage: {
+        id: userMessage.id,
+        role: "user",
+        content: userMessage.content,
+      },
+      assistantMessage: {
+        id: assistant.id,
+        role: "assistant",
+        content: event.text,
+      },
+      contextMessages: context.map((message) => ({
+        id: message.id,
+        role: message.role,
+        content: message.content,
+      })),
+    });
+    settleMemoryJob(memoryMessage);
+  }
+
   after(async () => {
-    const job = await memoryJobWithTimeout(memoryJob);
-    if (!job) return;
+    const message = await memoryJobWithTimeout(memoryJob);
+    if (!message) return;
     try {
-      await job();
+      await dispatchMemoryPostTurn(message, {
+        fallback: () =>
+          processMemoryAfterTurn({
+            userId: message.userId,
+            chatId: message.chatId,
+            topic: message.topic,
+            userMessage: message.userMessage,
+            assistantMessage: message.assistantMessage,
+            contextMessages: message.contextMessages,
+          }),
+      });
     } catch (memoryError) {
-      console.warn("Memory processing failed", memoryError);
+      console.warn("Memory processing dispatch failed", memoryError);
     }
   });
 
@@ -137,65 +215,15 @@ export async function POST(request: NextRequest) {
       preferredLanguage,
       learnerAge,
       memoryContext,
-      onFinish: async (event) => {
-        try {
-          const assistant = await insertMessage({
-            chatId: parsed.data.chatId,
-            role: "assistant",
-            content: event.text,
-          });
-          await db
-            .update(aiRuns)
-            .set({
-              assistantMessageId: assistant.id,
-              promptTokens: event.totalUsage.inputTokens ?? null,
-              completionTokens: event.totalUsage.outputTokens ?? null,
-              totalTokens: event.totalUsage.totalTokens ?? null,
-              status: "completed",
-              completedAt: new Date(),
-            })
-            .where(eq(aiRuns.id, run.id));
-          settleMemoryJob(async () => {
-            await processMemoryAfterTurn({
-              userId: session.user.id,
-              chatId: parsed.data.chatId,
-              topic,
-              userMessage: {
-                id: userMessage.id,
-                role: "user",
-                content: userMessage.content,
-              },
-              assistantMessage: {
-                id: assistant.id,
-                role: "assistant",
-                content: event.text,
-              },
-              contextMessages: context.map((message) => ({
-                id: message.id,
-                role: message.role,
-                content: message.content,
-              })),
-            });
-          });
-        } catch (error) {
-          settleMemoryJob(null);
-          throw error;
-        }
-      },
     });
     const result = await agent.stream({ messages: assembled.messages });
 
-    return result.toTextStreamResponse();
+    return await createLearningTextStreamResponse({ fullStream: result.fullStream as ReadableStream<unknown> }, {
+      onError: markRunFailed,
+      onFinish: completeRun,
+    });
   } catch (error) {
-    settleMemoryJob(null);
-    await db
-      .update(aiRuns)
-      .set({
-        status: "failed",
-        error: error instanceof Error ? error.message : "Unknown AI error",
-        completedAt: new Date(),
-      })
-      .where(eq(aiRuns.id, run.id));
+    await markRunFailed(error);
     return NextResponse.json({ error: "The assistant could not answer right now." }, { status: 500 });
   }
 }

@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "incremental": false,
+    "types": ["@cloudflare/workers-types", "node"]
+  },
+  "include": [
+    "cloudflare-env.generated.d.ts",
+    "cloudflare-env.d.ts",
+    "types/cloudflare-env-contract.d.ts",
+    "types/open-next-worker.d.ts",
+    "cloudflare-worker.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next/standalone",
+    ".open-next",
+    ".wrangler",
+    "backups",
+    "inspirlearning-local-backups"
+  ]
+}

@@ -5,6 +5,7 @@ import { generateFlashcards, sanitizeFlashcardState } from "@/lib/activities/fla
 import { createActivityRun, getOwnedChat, getUserLearningProfileById, insertMessage } from "@/lib/db/queries";
 import { calculateAge } from "@/lib/profile/age";
 import { consumeAiQuota, numberFromEnv, quotaDefaults, safeQuotaKeyPart } from "@/lib/utils/rate-limit";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,6 +19,8 @@ const startFlashcardsSchema = z.object({
 export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("activities");
+  if (freeze) return freeze;
 
   const parsed = startFlashcardsSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid flashcard request" }, { status: 400 });

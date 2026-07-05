@@ -36,7 +36,8 @@ pnpm build
 For deployment or production-facing changes, also run:
 
 ```bash
-vercel build --prod --yes
+pnpm cf:build
+pnpm test:e2e
 ```
 
 ## Pull request expectations

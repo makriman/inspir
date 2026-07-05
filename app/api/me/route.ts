@@ -4,6 +4,7 @@ import { getUserProfileById, updateUserProfile } from "@/lib/db/queries";
 import { normalizeLanguage } from "@/lib/content/languages";
 import { calculateAge, validateDateOfBirth } from "@/lib/profile/age";
 import { updateProfileSchema } from "@/lib/profile/validation";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -19,6 +20,8 @@ export async function GET() {
 export async function PATCH(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("profile");
+  if (freeze) return freeze;
 
   const parsed = updateProfileSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid profile update" }, { status: 400 });

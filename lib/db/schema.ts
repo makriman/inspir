@@ -1,23 +1,27 @@
+import { sql } from "drizzle-orm";
 import {
-  boolean,
-  date,
   index,
   integer,
-  jsonb,
-  pgTable,
   primaryKey,
+  sqliteTable,
   text,
-  timestamp,
   uniqueIndex,
-  uuid,
-  vector,
-} from "drizzle-orm/pg-core";
+} from "drizzle-orm/sqlite-core";
 
-export const users = pgTable("users", {
-  id: uuid("id").defaultRandom().primaryKey(),
+const uuidText = (name: string) => text(name).$defaultFn(() => crypto.randomUUID());
+const timestampMs = (name: string) => integer(name, { mode: "timestamp_ms" });
+const timestampMsNow = (name: string) =>
+  integer(name, { mode: "timestamp_ms" })
+    .notNull()
+    .$defaultFn(() => new Date());
+const booleanInt = (name: string) => integer(name, { mode: "boolean" });
+const jsonText = <T>(name: string) => text(name, { mode: "json" }).$type<T>();
+
+export const users = sqliteTable("users", {
+  id: uuidText("id").primaryKey(),
   name: text("name"),
   email: text("email").notNull().unique(),
-  emailVerified: timestamp("email_verified", { mode: "date", withTimezone: true }),
+  emailVerified: timestampMs("email_verified"),
   image: text("image"),
   score: integer("score").notNull().default(0),
   profilePictureUrl: text("profile_picture_url"),
@@ -25,20 +29,18 @@ export const users = pgTable("users", {
   profileImageMime: text("profile_image_mime"),
   profileImageHash: text("profile_image_hash"),
   preferredLanguage: text("preferred_language").notNull().default("English"),
-  dateOfBirth: date("date_of_birth", { mode: "string" }),
+  dateOfBirth: text("date_of_birth"),
   dateOfBirthSource: text("date_of_birth_source"),
-  profilePictureDownloadedAt: timestamp("profile_picture_downloaded_at", {
-    withTimezone: true,
-  }),
+  profilePictureDownloadedAt: timestampMs("profile_picture_downloaded_at"),
   legacyBubbleId: text("legacy_bubble_id"),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  createdAt: timestampMsNow("created_at"),
+  updatedAt: timestampMsNow("updated_at"),
 });
 
-export const accounts = pgTable(
+export const accounts = sqliteTable(
   "accounts",
   {
-    userId: uuid("user_id")
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     type: text("type").notNull(),
@@ -58,52 +60,49 @@ export const accounts = pgTable(
   }),
 );
 
-// NextAuth is configured for JWT sessions. This table stays for adapter
-// compatibility and future provider flexibility; live sessions are not read
-// from it unless the auth strategy changes.
-export const sessions = pgTable("sessions", {
+export const sessions = sqliteTable("sessions", {
   sessionToken: text("session_token").primaryKey(),
-  userId: uuid("user_id")
+  userId: text("user_id")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  expires: timestamp("expires", { mode: "date", withTimezone: true }).notNull(),
+  expires: timestampMs("expires").notNull(),
 });
 
-export const verificationTokens = pgTable(
+export const verificationTokens = sqliteTable(
   "verification_tokens",
   {
     identifier: text("identifier").notNull(),
     token: text("token").notNull(),
-    expires: timestamp("expires", { mode: "date", withTimezone: true }).notNull(),
+    expires: timestampMs("expires").notNull(),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.identifier, table.token] }),
   }),
 );
 
-export const rateLimitWindows = pgTable("rate_limit_windows", {
+export const rateLimitWindows = sqliteTable("rate_limit_windows", {
   key: text("key").primaryKey(),
   count: integer("count").notNull().default(0),
-  resetAt: timestamp("reset_at", { withTimezone: true }).notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  resetAt: timestampMs("reset_at").notNull(),
+  createdAt: timestampMsNow("created_at"),
+  updatedAt: timestampMsNow("updated_at"),
 });
 
-export const llmUsageDaily = pgTable("llm_usage_daily", {
-  day: date("day", { mode: "string" }).primaryKey(),
+export const llmUsageDaily = sqliteTable("llm_usage_daily", {
+  day: text("day").primaryKey(),
   callCount: integer("call_count").notNull().default(0),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  createdAt: timestampMsNow("created_at"),
+  updatedAt: timestampMsNow("updated_at"),
 });
 
-export const appMetadata = pgTable("app_metadata", {
+export const appMetadata = sqliteTable("app_metadata", {
   key: text("key").primaryKey(),
   value: text("value").notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestampMsNow("updated_at"),
 });
 
-export const topics = pgTable("topics", {
-  id: uuid("id").defaultRandom().primaryKey(),
+export const topics = sqliteTable("topics", {
+  id: uuidText("id").primaryKey(),
   slug: text("slug").notNull().unique(),
   legacyBubbleId: text("legacy_bubble_id"),
   name: text("name").notNull(),
@@ -114,34 +113,36 @@ export const topics = pgTable("topics", {
   iconUrl: text("icon_url"),
   sortOrder: integer("sort_order").notNull().default(0),
   status: text("status").notNull().default("active"),
-  metadata: jsonb("metadata").$type<Record<string, unknown>>().default({}).notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  metadata: jsonText<Record<string, unknown>>("metadata")
+    .notNull()
+    .$defaultFn(() => ({})),
+  createdAt: timestampMsNow("created_at"),
+  updatedAt: timestampMsNow("updated_at"),
 });
 
-export const topicLegacyIds = pgTable("topic_legacy_ids", {
+export const topicLegacyIds = sqliteTable("topic_legacy_ids", {
   legacyId: text("legacy_id").primaryKey(),
-  topicId: uuid("topic_id")
+  topicId: text("topic_id")
     .references(() => topics.id, { onDelete: "cascade" })
     .notNull(),
   source: text("source").notNull(),
   confidence: text("confidence").notNull().default("derived"),
 });
 
-export const chats = pgTable(
+export const chats = sqliteTable(
   "chats",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
+    id: uuidText("id").primaryKey(),
     legacyBubbleId: text("legacy_bubble_id"),
-    userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
     userEmailSnapshot: text("user_email_snapshot"),
-    topicId: uuid("topic_id").references(() => topics.id, { onDelete: "set null" }),
+    topicId: text("topic_id").references(() => topics.id, { onDelete: "set null" }),
     legacyTopicId: text("legacy_topic_id"),
     topicNameSnapshot: text("topic_name_snapshot"),
     title: text("title"),
-    isArchived: boolean("is_archived").notNull().default(false),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+    isArchived: booleanInt("is_archived").notNull().default(false),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
     legacyChatIdx: uniqueIndex("chats_legacy_bubble_id_idx").on(table.legacyBubbleId),
@@ -150,42 +151,46 @@ export const chats = pgTable(
   }),
 );
 
-export const messages = pgTable(
+export const messages = sqliteTable(
   "messages",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
+    id: uuidText("id").primaryKey(),
     legacyBubbleId: text("legacy_bubble_id"),
-    chatId: uuid("chat_id")
+    chatId: text("chat_id")
       .references(() => chats.id, { onDelete: "cascade" })
       .notNull(),
     role: text("role").notNull(),
     content: text("content").notNull(),
-    metadata: jsonb("metadata").$type<Record<string, unknown>>().default({}).notNull(),
+    metadata: jsonText<Record<string, unknown>>("metadata")
+      .notNull()
+      .$defaultFn(() => ({})),
     legacySenderId: text("legacy_sender_id"),
     legacyUserId: text("legacy_user_id"),
     legacyTopicId: text("legacy_topic_id"),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    createdAt: timestampMsNow("created_at"),
   },
   (table) => ({
     chatCreatedIdx: index("messages_chat_created_idx").on(table.chatId, table.createdAt),
   }),
 );
 
-export const activityRuns = pgTable(
+export const activityRuns = sqliteTable(
   "activity_runs",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
-    chatId: uuid("chat_id")
+    id: uuidText("id").primaryKey(),
+    chatId: text("chat_id")
       .references(() => chats.id, { onDelete: "cascade" })
       .notNull(),
     type: text("type").notNull(),
     status: text("status").notNull().default("active"),
-    state: jsonb("state").$type<Record<string, unknown>>().default({}).notNull(),
+    state: jsonText<Record<string, unknown>>("state")
+      .notNull()
+      .$defaultFn(() => ({})),
     score: integer("score"),
     maxScore: integer("max_score"),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
-    completedAt: timestamp("completed_at", { withTimezone: true }),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
+    completedAt: timestampMs("completed_at"),
   },
   (table) => ({
     chatIdx: index("activity_runs_chat_id_idx").on(table.chatId),
@@ -193,73 +198,81 @@ export const activityRuns = pgTable(
   }),
 );
 
-export const aiRuns = pgTable("ai_runs", {
-  id: uuid("id").defaultRandom().primaryKey(),
-  chatId: uuid("chat_id")
+export const aiRuns = sqliteTable("ai_runs", {
+  id: uuidText("id").primaryKey(),
+  chatId: text("chat_id")
     .references(() => chats.id, { onDelete: "cascade" })
     .notNull(),
-  userMessageId: uuid("user_message_id").references(() => messages.id, {
+  userMessageId: text("user_message_id").references(() => messages.id, {
     onDelete: "set null",
   }),
-  assistantMessageId: uuid("assistant_message_id").references(() => messages.id, {
+  assistantMessageId: text("assistant_message_id").references(() => messages.id, {
     onDelete: "set null",
   }),
   model: text("model").notNull(),
   promptTokens: integer("prompt_tokens"),
   completionTokens: integer("completion_tokens"),
   totalTokens: integer("total_tokens"),
-  memoryContext: jsonb("memory_context").$type<Record<string, unknown>>().default({}).notNull(),
+  memoryContext: jsonText<Record<string, unknown>>("memory_context")
+    .notNull()
+    .$defaultFn(() => ({})),
   status: text("status").notNull().default("started"),
   error: text("error"),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  completedAt: timestamp("completed_at", { withTimezone: true }),
+  createdAt: timestampMsNow("created_at"),
+  completedAt: timestampMs("completed_at"),
 });
 
-export const userMemorySettings = pgTable("user_memory_settings", {
-  userId: uuid("user_id")
+export const userMemorySettings = sqliteTable("user_memory_settings", {
+  userId: text("user_id")
     .primaryKey()
     .references(() => users.id, { onDelete: "cascade" }),
-  enabled: boolean("enabled").notNull().default(true),
-  savedMemoryEnabled: boolean("saved_memory_enabled").notNull().default(true),
-  chatHistoryEnabled: boolean("chat_history_enabled").notNull().default(true),
-  dreamingEnabled: boolean("dreaming_enabled").notNull().default(true),
+  enabled: booleanInt("enabled").notNull().default(true),
+  savedMemoryEnabled: booleanInt("saved_memory_enabled").notNull().default(true),
+  chatHistoryEnabled: booleanInt("chat_history_enabled").notNull().default(true),
+  dreamingEnabled: booleanInt("dreaming_enabled").notNull().default(true),
   captureScope: text("capture_scope").notNull().default("broad"),
   retrievalMode: text("retrieval_mode").notNull().default("need_based"),
-  noticeSeenAt: timestamp("notice_seen_at", { withTimezone: true }),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  noticeSeenAt: timestampMs("notice_seen_at"),
+  createdAt: timestampMsNow("created_at"),
+  updatedAt: timestampMsNow("updated_at"),
 });
 
-export const userMemories = pgTable(
+export const userMemories = sqliteTable(
   "user_memories",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
-    userId: uuid("user_id")
+    id: uuidText("id").primaryKey(),
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     kind: text("kind").notNull().default("auto"),
     category: text("category").notNull().default("general"),
     content: text("content").notNull(),
-    tags: jsonb("tags").$type<string[]>().default([]).notNull(),
+    tags: jsonText<string[]>("tags")
+      .notNull()
+      .$defaultFn(() => []),
     confidence: integer("confidence").notNull().default(70),
     salience: integer("salience").notNull().default(50),
     status: text("status").notNull().default("active"),
     sourceType: text("source_type").notNull().default("auto"),
-    sourceTurnIds: jsonb("source_turn_ids").$type<string[]>().default([]).notNull(),
-    sourceMemoryIds: jsonb("source_memory_ids").$type<string[]>().default([]).notNull(),
-    sourceChatId: uuid("source_chat_id").references(() => chats.id, { onDelete: "set null" }),
-    sourceMessageId: uuid("source_message_id").references(() => messages.id, { onDelete: "set null" }),
-    supersededByMemoryId: uuid("superseded_by_memory_id"),
-    embedding: vector("embedding", { dimensions: 512 }),
-    validFrom: timestamp("valid_from", { withTimezone: true }),
-    validUntil: timestamp("valid_until", { withTimezone: true }),
+    sourceTurnIds: jsonText<string[]>("source_turn_ids")
+      .notNull()
+      .$defaultFn(() => []),
+    sourceMemoryIds: jsonText<string[]>("source_memory_ids")
+      .notNull()
+      .$defaultFn(() => []),
+    sourceChatId: text("source_chat_id").references(() => chats.id, { onDelete: "set null" }),
+    sourceMessageId: text("source_message_id").references(() => messages.id, { onDelete: "set null" }),
+    supersededByMemoryId: text("superseded_by_memory_id"),
+    embedding: jsonText<number[] | null>("embedding"),
+    validFrom: timestampMs("valid_from"),
+    validUntil: timestampMs("valid_until"),
     freshnessStatus: text("freshness_status").notNull().default("current"),
-    pinned: boolean("pinned").notNull().default(false),
-    doNotMention: boolean("do_not_mention").notNull().default(false),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
-    lastUsedAt: timestamp("last_used_at", { withTimezone: true }),
-    deletedAt: timestamp("deleted_at", { withTimezone: true }),
+    pinned: booleanInt("pinned").notNull().default(false),
+    doNotMention: booleanInt("do_not_mention").notNull().default(false),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
+    lastUsedAt: timestampMs("last_used_at"),
+    deletedAt: timestampMs("deleted_at"),
   },
   (table) => ({
     userStatusIdx: index("user_memories_user_status_idx").on(table.userId, table.status),
@@ -271,23 +284,25 @@ export const userMemories = pgTable(
   }),
 );
 
-export const chatMemorySummaries = pgTable(
+export const chatMemorySummaries = sqliteTable(
   "chat_memory_summaries",
   {
-    chatId: uuid("chat_id")
+    chatId: text("chat_id")
       .primaryKey()
       .references(() => chats.id, { onDelete: "cascade" }),
-    userId: uuid("user_id")
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
-    topicId: uuid("topic_id").references(() => topics.id, { onDelete: "set null" }),
+    topicId: text("topic_id").references(() => topics.id, { onDelete: "set null" }),
     summary: text("summary").notNull(),
-    topics: jsonb("topics").$type<string[]>().default([]).notNull(),
+    topics: jsonText<string[]>("topics")
+      .notNull()
+      .$defaultFn(() => []),
     sourceMessageCount: integer("source_message_count").notNull().default(0),
-    lastMessageId: uuid("last_message_id").references(() => messages.id, { onDelete: "set null" }),
-    embedding: vector("embedding", { dimensions: 512 }),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+    lastMessageId: text("last_message_id").references(() => messages.id, { onDelete: "set null" }),
+    embedding: jsonText<number[] | null>("embedding"),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
     userIdx: index("chat_memory_summaries_user_idx").on(table.userId),
@@ -295,30 +310,32 @@ export const chatMemorySummaries = pgTable(
   }),
 );
 
-export const chatMemoryTurns = pgTable(
+export const chatMemoryTurns = sqliteTable(
   "chat_memory_turns",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
-    userId: uuid("user_id")
+    id: uuidText("id").primaryKey(),
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
-    chatId: uuid("chat_id")
+    chatId: text("chat_id")
       .notNull()
       .references(() => chats.id, { onDelete: "cascade" }),
-    topicId: uuid("topic_id").references(() => topics.id, { onDelete: "set null" }),
-    userMessageId: uuid("user_message_id")
+    topicId: text("topic_id").references(() => topics.id, { onDelete: "set null" }),
+    userMessageId: text("user_message_id")
       .notNull()
       .references(() => messages.id, { onDelete: "cascade" }),
-    assistantMessageId: uuid("assistant_message_id")
+    assistantMessageId: text("assistant_message_id")
       .notNull()
       .references(() => messages.id, { onDelete: "cascade" }),
     question: text("question").notNull(),
     answerExcerpt: text("answer_excerpt").notNull(),
     searchableText: text("searchable_text").notNull(),
-    topics: jsonb("topics").$type<string[]>().default([]).notNull(),
-    embedding: vector("embedding", { dimensions: 512 }),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+    topics: jsonText<string[]>("topics")
+      .notNull()
+      .$defaultFn(() => []),
+    embedding: jsonText<number[] | null>("embedding"),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
     userIdx: index("chat_memory_turns_user_idx").on(table.userId),
@@ -328,66 +345,75 @@ export const chatMemoryTurns = pgTable(
   }),
 );
 
-export const userMemoryProfiles = pgTable(
+export const userMemoryProfiles = sqliteTable(
   "user_memory_profiles",
   {
-    userId: uuid("user_id")
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     category: text("category").notNull(),
     summary: text("summary").notNull(),
-    sourceMemoryIds: jsonb("source_memory_ids").$type<string[]>().default([]).notNull(),
-    lastCompiledAt: timestamp("last_compiled_at", { withTimezone: true }).defaultNow().notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+    sourceMemoryIds: jsonText<string[]>("source_memory_ids")
+      .notNull()
+      .$defaultFn(() => []),
+    lastCompiledAt: timestampMsNow("last_compiled_at"),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.userId, table.category] }),
   }),
 );
 
-export const userMemorySummaries = pgTable("user_memory_summaries", {
-  userId: uuid("user_id")
+export const userMemorySummaries = sqliteTable("user_memory_summaries", {
+  userId: text("user_id")
     .primaryKey()
     .references(() => users.id, { onDelete: "cascade" }),
   summary: text("summary").notNull().default(""),
-  sections: jsonb("sections")
-    .$type<
-      Array<{
-        id: string;
-        title: string;
-        category: string;
-        summary: string;
-        sourceMemoryIds?: string[];
-        sourceTurnIds?: string[];
-        doNotMention?: boolean;
-      }>
-    >()
-    .default([])
-    .notNull(),
-  sourceMemoryIds: jsonb("source_memory_ids").$type<string[]>().default([]).notNull(),
-  sourceTurnIds: jsonb("source_turn_ids").$type<string[]>().default([]).notNull(),
+  sections: jsonText<
+    Array<{
+      id: string;
+      title: string;
+      category: string;
+      summary: string;
+      sourceMemoryIds?: string[];
+      sourceTurnIds?: string[];
+      doNotMention?: boolean;
+    }>
+  >("sections")
+    .notNull()
+    .$defaultFn(() => []),
+  sourceMemoryIds: jsonText<string[]>("source_memory_ids")
+    .notNull()
+    .$defaultFn(() => []),
+  sourceTurnIds: jsonText<string[]>("source_turn_ids")
+    .notNull()
+    .$defaultFn(() => []),
   version: integer("version").notNull().default(1),
-  lastSynthesizedAt: timestamp("last_synthesized_at", { withTimezone: true }).defaultNow().notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  lastSynthesizedAt: timestampMsNow("last_synthesized_at"),
+  createdAt: timestampMsNow("created_at"),
+  updatedAt: timestampMsNow("updated_at"),
 });
 
-export const memorySynthesisRuns = pgTable(
+export const memorySynthesisRuns = sqliteTable(
   "memory_synthesis_runs",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
-    userId: uuid("user_id")
+    id: uuidText("id").primaryKey(),
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     reason: text("reason").notNull(),
     status: text("status").notNull().default("started"),
-    inputCounts: jsonb("input_counts").$type<Record<string, unknown>>().default({}).notNull(),
-    outputCounts: jsonb("output_counts").$type<Record<string, unknown>>().default({}).notNull(),
+    inputCounts: jsonText<Record<string, unknown>>("input_counts")
+      .notNull()
+      .$defaultFn(() => ({})),
+    outputCounts: jsonText<Record<string, unknown>>("output_counts")
+      .notNull()
+      .$defaultFn(() => ({})),
     error: text("error"),
-    startedAt: timestamp("started_at", { withTimezone: true }).defaultNow().notNull(),
-    finishedAt: timestamp("finished_at", { withTimezone: true }),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    startedAt: timestampMsNow("started_at"),
+    finishedAt: timestampMs("finished_at"),
+    createdAt: timestampMsNow("created_at"),
   },
   (table) => ({
     userStatusIdx: index("memory_synthesis_runs_user_status_idx").on(table.userId, table.status),
@@ -395,20 +421,20 @@ export const memorySynthesisRuns = pgTable(
   }),
 );
 
-export const memorySourceFeedback = pgTable(
+export const memorySourceFeedback = sqliteTable(
   "memory_source_feedback",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
-    userId: uuid("user_id")
+    id: uuidText("id").primaryKey(),
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
-    aiRunId: uuid("ai_run_id").references(() => aiRuns.id, { onDelete: "set null" }),
-    memoryId: uuid("memory_id").references(() => userMemories.id, { onDelete: "set null" }),
-    chatTurnId: uuid("chat_turn_id").references(() => chatMemoryTurns.id, { onDelete: "set null" }),
+    aiRunId: text("ai_run_id").references(() => aiRuns.id, { onDelete: "set null" }),
+    memoryId: text("memory_id").references(() => userMemories.id, { onDelete: "set null" }),
+    chatTurnId: text("chat_turn_id").references(() => chatMemoryTurns.id, { onDelete: "set null" }),
     summarySectionId: text("summary_section_id"),
     action: text("action").notNull(),
     note: text("note"),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    createdAt: timestampMsNow("created_at"),
   },
   (table) => ({
     userIdx: index("memory_source_feedback_user_idx").on(table.userId, table.createdAt),
@@ -417,20 +443,22 @@ export const memorySourceFeedback = pgTable(
   }),
 );
 
-export const memoryEvents = pgTable(
+export const memoryEvents = sqliteTable(
   "memory_events",
   {
-    id: uuid("id").defaultRandom().primaryKey(),
-    userId: uuid("user_id")
+    id: uuidText("id").primaryKey(),
+    userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
-    memoryId: uuid("memory_id").references(() => userMemories.id, { onDelete: "set null" }),
-    chatId: uuid("chat_id").references(() => chats.id, { onDelete: "set null" }),
-    messageId: uuid("message_id").references(() => messages.id, { onDelete: "set null" }),
+    memoryId: text("memory_id").references(() => userMemories.id, { onDelete: "set null" }),
+    chatId: text("chat_id").references(() => chats.id, { onDelete: "set null" }),
+    messageId: text("message_id").references(() => messages.id, { onDelete: "set null" }),
     eventType: text("event_type").notNull(),
     reason: text("reason"),
-    metadata: jsonb("metadata").$type<Record<string, unknown>>().default({}).notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    metadata: jsonText<Record<string, unknown>>("metadata")
+      .notNull()
+      .$defaultFn(() => ({})),
+    createdAt: timestampMsNow("created_at"),
   },
   (table) => ({
     userCreatedIdx: index("memory_events_user_created_idx").on(table.userId, table.createdAt),
@@ -438,8 +466,8 @@ export const memoryEvents = pgTable(
   }),
 );
 
-export const legacyChatSnapshots = pgTable("legacy_chat_snapshots", {
-  id: uuid("id").defaultRandom().primaryKey(),
+export const legacyChatSnapshots = sqliteTable("legacy_chat_snapshots", {
+  id: uuidText("id").primaryKey(),
   assistantRaw: text("assistant_raw"),
   messagesRaw: text("messages_raw"),
   questionsRaw: text("questions_raw"),
@@ -447,32 +475,69 @@ export const legacyChatSnapshots = pgTable("legacy_chat_snapshots", {
   topicName: text("topic_name"),
   legacyTopicId: text("legacy_topic_id"),
   userEmail: text("user_email"),
-  importedAt: timestamp("imported_at", { withTimezone: true }).defaultNow().notNull(),
+  importedAt: timestampMsNow("imported_at"),
 });
 
-export const legacyDummyData = pgTable("legacy_dummy_data", {
-  id: uuid("id").defaultRandom().primaryKey(),
+export const legacyDummyData = sqliteTable("legacy_dummy_data", {
+  id: uuidText("id").primaryKey(),
   dummy: text("dummy"),
   legacyTopicId: text("legacy_topic_id"),
   creatorLegacyId: text("creator_legacy_id"),
-  createdAt: timestamp("created_at", { withTimezone: true }),
-  modifiedAt: timestamp("modified_at", { withTimezone: true }),
+  createdAt: timestampMs("created_at"),
+  modifiedAt: timestampMs("modified_at"),
 });
 
-export const appTranslations = pgTable(
+export const appTranslations = sqliteTable(
   "app_translations",
   {
     namespace: text("namespace").notNull(),
     language: text("language").notNull(),
     sourceHash: text("source_hash").notNull(),
-    payload: jsonb("payload").$type<Record<string, string>>().default({}).notNull(),
+    payload: jsonText<Record<string, string>>("payload")
+      .notNull()
+      .$defaultFn(() => ({})),
     model: text("model").notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.namespace, table.language] }),
     languageIdx: index("app_translations_language_idx").on(table.language),
+  }),
+);
+
+export const appTranslationSources = sqliteTable("app_translation_sources", {
+  namespace: text("namespace").primaryKey(),
+  sourceHash: text("source_hash").notNull(),
+  updatedAt: timestampMsNow("updated_at"),
+});
+
+export const appTranslationSourceStrings = sqliteTable(
+  "app_translation_source_strings",
+  {
+    namespace: text("namespace")
+      .notNull()
+      .references(() => appTranslationSources.namespace, { onDelete: "cascade" }),
+    sourceKey: text("source_key").notNull(),
+    sourceText: text("source_text").notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.namespace, table.sourceKey] }),
+  }),
+);
+
+export const sourceTimestampPrecision = sqliteTable(
+  "source_timestamp_precision",
+  {
+    sourceTable: text("source_table").notNull(),
+    sourcePk: text("source_pk").notNull(),
+    columnName: text("column_name").notNull(),
+    originalTimestamp: text("original_timestamp").notNull(),
+    d1TimestampMs: integer("d1_timestamp_ms").notNull(),
+  },
+  (table) => ({
+    pk: primaryKey({ columns: [table.sourceTable, table.sourcePk, table.columnName] }),
+    tableIdx: index("source_timestamp_precision_table_idx").on(table.sourceTable, table.columnName),
   }),
 );
 
@@ -485,6 +550,8 @@ export type LlmUsageDaily = typeof llmUsageDaily.$inferSelect;
 export type AppMetadata = typeof appMetadata.$inferSelect;
 export type ActivityRun = typeof activityRuns.$inferSelect;
 export type AppTranslation = typeof appTranslations.$inferSelect;
+export type AppTranslationSource = typeof appTranslationSources.$inferSelect;
+export type AppTranslationSourceString = typeof appTranslationSourceStrings.$inferSelect;
 export type UserMemorySetting = typeof userMemorySettings.$inferSelect;
 export type UserMemory = typeof userMemories.$inferSelect;
 export type ChatMemorySummary = typeof chatMemorySummaries.$inferSelect;
@@ -494,3 +561,6 @@ export type UserMemorySummary = typeof userMemorySummaries.$inferSelect;
 export type MemorySynthesisRun = typeof memorySynthesisRuns.$inferSelect;
 export type MemorySourceFeedback = typeof memorySourceFeedback.$inferSelect;
 export type MemoryEvent = typeof memoryEvents.$inferSelect;
+export type SourceTimestampPrecision = typeof sourceTimestampPrecision.$inferSelect;
+
+export const sqlitePragmas = sql`pragma foreign_keys = on`;

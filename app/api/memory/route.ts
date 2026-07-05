@@ -16,6 +16,7 @@ import {
   updateUserMemorySettings,
 } from "@/lib/db/memory";
 import { consumeFixedWindowQuota, numberFromEnv, quotaDefaults, safeQuotaKeyPart } from "@/lib/utils/rate-limit";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -82,6 +83,8 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("memory");
+  if (freeze) return freeze;
 
   const parsed = memoryCreateSchema.safeParse(await request.json());
   if (!parsed.success || !isUsefulMemoryContent(parsed.data.content)) {
@@ -110,6 +113,8 @@ export async function POST(request: NextRequest) {
 export async function PATCH(request: NextRequest) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("memory");
+  if (freeze) return freeze;
 
   const parsed = memorySettingsSchema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid memory settings" }, { status: 400 });
@@ -155,6 +160,8 @@ export async function PATCH(request: NextRequest) {
 export async function DELETE() {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("memory");
+  if (freeze) return freeze;
 
   await clearUserMemories(session.user.id);
   const dashboard = await getMemoryDashboard(session.user.id);

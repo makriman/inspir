@@ -8,10 +8,6 @@ import {
   useState,
   type ComponentType,
 } from "react";
-import ReactMarkdown from "react-markdown";
-import rehypeKatex from "rehype-katex";
-import remarkGfm from "remark-gfm";
-import remarkMath from "remark-math";
 import {
   BookOpenCheck,
   CheckCircle2,
@@ -28,6 +24,7 @@ import {
   Target,
   Zap,
 } from "lucide-react";
+import { RichMarkdownContent } from "@/components/chat/RichMarkdownContent";
 import { formatBubbleDate } from "@/lib/utils/dates";
 
 type Topic = {
@@ -686,28 +683,7 @@ function SocraticTurn({ message, userName }: { message: Message; userName: strin
 }
 
 function SocraticRichText({ content }: { content: string }) {
-  return (
-    <div className="socratic-rich-text" data-no-auto-translate="true">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm, remarkMath]}
-        rehypePlugins={[rehypeKatex]}
-        components={{
-          table: ({ children }) => (
-            <div className="bubble-table-wrap">
-              <table>{children}</table>
-            </div>
-          ),
-          a: ({ children, href }) => (
-            <a href={href} target="_blank" rel="noreferrer">
-              {children}
-            </a>
-          ),
-        }}
-      >
-        {normalizeAssistantMarkdown(content)}
-      </ReactMarkdown>
-    </div>
-  );
+  return <RichMarkdownContent content={content} className="socratic-rich-text" />;
 }
 
 function ThinkingPulse() {
@@ -967,12 +943,6 @@ function cleanInline(content: string) {
     .replace(/^[-*]\s*/, "")
     .replace(/\s+/g, " ")
     .trim();
-}
-
-function normalizeAssistantMarkdown(content: string) {
-  return content
-    .replace(/\\\[([\s\S]*?)\\\]/g, (_, expression: string) => `\n\n$$\n${expression.trim()}\n$$\n\n`)
-    .replace(/\\\(([\s\S]*?)\\\)/g, (_, expression: string) => `$${expression.trim()}$`);
 }
 
 function escapeRegExp(value: string) {

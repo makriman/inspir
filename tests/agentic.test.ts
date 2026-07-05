@@ -1,9 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { openAiProviderSettings } from "../lib/ai/openai-provider";
 import { buildTopicSystemPrompt, INSPIR_TUTOR_CONTRACT } from "../lib/ai/prompts";
-import {
-  resolveModelName,
-} from "../lib/ai/model-router";
+import { resolveModelName } from "../lib/ai/model-router";
 import { buildMiniAppInstruction, getVisibleMessageContent } from "../lib/ai/visible-content";
 import {
   reviewFlashcard,
@@ -171,6 +170,65 @@ test("model router falls specialized profiles back to the configured fast model"
   for (const [key, value] of Object.entries(previous)) {
     if (value === undefined) delete process.env[key];
     else process.env[key] = value;
+  }
+});
+
+test("OpenAI provider prefers Cloudflare AI Gateway BYOK config when present", () => {
+  const previous = {
+    CLOUDFLARE_AI_GATEWAY_TOKEN: process.env.CLOUDFLARE_AI_GATEWAY_TOKEN,
+    CLOUDFLARE_AI_GATEWAY_BASE_URL: process.env.CLOUDFLARE_AI_GATEWAY_BASE_URL,
+    CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS: process.env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    OPENAI_BASE_URL: process.env.OPENAI_BASE_URL,
+  };
+  process.env.CLOUDFLARE_AI_GATEWAY_TOKEN = "gateway-token";
+  process.env.CLOUDFLARE_AI_GATEWAY_BASE_URL = "https://gateway.ai.cloudflare.com/v1/account/gateway/openai";
+  process.env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS = "inspir";
+  process.env.OPENAI_API_KEY = "direct-openai-token";
+  delete process.env.OPENAI_BASE_URL;
+
+  try {
+    const settings = openAiProviderSettings();
+
+    assert.equal(settings.apiKey, "gateway-token");
+    assert.equal(settings.baseURL, "https://gateway.ai.cloudflare.com/v1/account/gateway/openai");
+    assert.deepEqual(settings.headers, {
+      "cf-aig-authorization": "Bearer gateway-token",
+      "cf-aig-byok-alias": "inspir",
+    });
+  } finally {
+    for (const [key, value] of Object.entries(previous)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
+  }
+});
+
+test("OpenAI provider ignores Gateway token without a Cloudflare Gateway base URL", () => {
+  const previous = {
+    CLOUDFLARE_AI_GATEWAY_TOKEN: process.env.CLOUDFLARE_AI_GATEWAY_TOKEN,
+    CLOUDFLARE_AI_GATEWAY_BASE_URL: process.env.CLOUDFLARE_AI_GATEWAY_BASE_URL,
+    CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS: process.env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    OPENAI_BASE_URL: process.env.OPENAI_BASE_URL,
+  };
+  process.env.CLOUDFLARE_AI_GATEWAY_TOKEN = "gateway-token";
+  delete process.env.CLOUDFLARE_AI_GATEWAY_BASE_URL;
+  process.env.CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS = "inspir";
+  process.env.OPENAI_API_KEY = "direct-openai-token";
+  delete process.env.OPENAI_BASE_URL;
+
+  try {
+    const settings = openAiProviderSettings();
+
+    assert.equal(settings.apiKey, "direct-openai-token");
+    assert.equal(settings.baseURL, undefined);
+    assert.equal(settings.headers, undefined);
+  } finally {
+    for (const [key, value] of Object.entries(previous)) {
+      if (value === undefined) delete process.env[key];
+      else process.env[key] = value;
+    }
   }
 });
 

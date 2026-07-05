@@ -1,7 +1,7 @@
-import { openai } from "@ai-sdk/openai";
 import { generateObject } from "ai";
 import { z } from "zod";
 import { resolveModelName } from "@/lib/ai/model-router";
+import { hasOpenAiRuntimeCredentials, openAiLanguageModel } from "@/lib/ai/openai-provider";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 
 const flashcardRatingSchema = z.enum(["known", "again"]);
@@ -61,7 +61,7 @@ export async function generateFlashcards(
   source?: string,
   options: { learnerAge?: number | null; preferredLanguage?: string | null } = {},
 ): Promise<FlashcardState> {
-  if (!process.env.OPENAI_API_KEY) return fallbackFlashcards(topic, source);
+  if (!hasOpenAiRuntimeCredentials()) return fallbackFlashcards(topic, source);
 
   try {
     const language = normalizeLanguage(options.preferredLanguage ?? defaultLanguage);
@@ -71,7 +71,7 @@ export async function generateFlashcards(
         : undefined;
     const languageInstruction = `Write every learner-facing field in ${language}: card fronts, backs, hints, examples, traps, and tags.`;
     const result = await generateObject({
-      model: openai(resolveModelName("structured")),
+      model: openAiLanguageModel(resolveModelName("structured")),
       schema: generatedFlashcardsSchema,
       system: [
         "You are an expert learning designer. Build retrieval-practice flashcards that are specific, accurate, and useful. Fronts should ask one thing only. Backs should be concise but complete.",

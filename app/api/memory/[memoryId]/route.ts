@@ -3,6 +3,7 @@ import { z } from "zod";
 import { requireSession } from "@/lib/auth/session";
 import { buildMemoryEmbedding, compileUserMemoryProfile, displayMemoryContent, isUsefulMemoryContent } from "@/lib/ai/memory";
 import { deleteUserMemory, getUserMemory, updateUserMemory } from "@/lib/db/memory";
+import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -18,6 +19,8 @@ const memoryUpdateSchema = z.object({
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ memoryId: string }> }) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("memory");
+  if (freeze) return freeze;
 
   const { memoryId } = await params;
   const parsed = memoryUpdateSchema.safeParse(await request.json());
@@ -78,6 +81,8 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
 export async function DELETE(_request: NextRequest, { params }: { params: Promise<{ memoryId: string }> }) {
   const session = await requireSession();
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const freeze = writeFreezeResponse("memory");
+  if (freeze) return freeze;
 
   const { memoryId } = await params;
   const memory = await deleteUserMemory(session.user.id, memoryId);

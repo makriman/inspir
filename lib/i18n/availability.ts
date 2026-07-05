@@ -4,7 +4,10 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
-import { getSiteTranslationNamespacesForPath, getSiteTranslationSource } from "@/lib/i18n/site-source";
+import {
+  getRuntimeSiteTranslationNamespacesForPath,
+  getRuntimeSiteTranslationSource,
+} from "@/lib/i18n/runtime-site-source";
 import { getCachedSiteTranslationBundle } from "@/lib/i18n/site-translations";
 import { absoluteUrl } from "@/lib/seo/config";
 import { localizePath } from "@/lib/i18n/routing";
@@ -40,8 +43,11 @@ export async function getSiteLanguageAvailabilityForPath(pathname: string): Prom
 }
 
 async function readSiteLanguageAvailabilityForPath(pathname: string): Promise<LanguageAvailability[]> {
-  const namespaces = getSiteTranslationNamespacesForPath(pathname);
-  const sources = new Map(namespaces.map((namespace) => [namespace, getSiteTranslationSource(namespace)]));
+  const namespaces = getRuntimeSiteTranslationNamespacesForPath(pathname);
+  const sources = new Map(
+    (await Promise.all(namespaces.map(async (namespace) => [namespace, await getRuntimeSiteTranslationSource(namespace)] as const)))
+      .filter((entry): entry is readonly [string, NonNullable<Awaited<ReturnType<typeof getRuntimeSiteTranslationSource>>>] => Boolean(entry[1])),
+  );
 
   return Promise.all(supportedLanguages.map(async (language) => {
     if (language === defaultLanguage) return { language, complete: true };
@@ -87,9 +93,10 @@ async function readSiteLanguageAvailabilityForLanguage(
 ): Promise<LanguageAvailability> {
   if (language === defaultLanguage) return { language, complete: true };
 
-  const namespaces = getSiteTranslationNamespacesForPath(pathname);
+  const namespaces = getRuntimeSiteTranslationNamespacesForPath(pathname);
   const checks = await Promise.all(namespaces.map(async (namespace) => {
-    const source = getSiteTranslationSource(namespace);
+    const source = await getRuntimeSiteTranslationSource(namespace);
+    if (!source) return false;
     const bundle = await getCachedSiteTranslationBundle(language, namespace);
     if (!bundle || bundle.sourceHash !== source.sourceHash) return false;
     return Object.keys(source.sourceStrings).every((key) => typeof bundle.strings[key] === "string" && bundle.strings[key].trim());

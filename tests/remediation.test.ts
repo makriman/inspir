@@ -5,7 +5,15 @@ import { GET as memoryCronGet } from "../app/api/cron/memory-dreaming/route";
 import { generateQuiz } from "../lib/activities/quiz";
 import { topicFromSeed } from "../lib/content/seeded-topics";
 import { topicSeeds } from "../lib/content/topics";
+import { d1ContainsLikePattern } from "../lib/db/like";
 import { toPublicTopic } from "../lib/db/queries";
+import { vectorizeFullMetadataTopK } from "../lib/db/vectorize";
+import { buildForwardedRequestHeaders } from "../lib/http/forwarded-request-headers";
+import {
+  requestLanguageHeader,
+  requestPathnameHeader,
+  requestRecommendedLanguageHeader,
+} from "../lib/i18n/routing";
 import {
   dailyLimitReset,
   numberFromEnv,
@@ -46,10 +54,29 @@ test("quota utility defaults and key normalization are stable", () => {
   const now = new Date("2026-06-11T23:59:01.000Z");
   assert.equal(utcDayKey(now), "2026-06-11");
   assert.equal(dailyLimitReset(now).toISOString(), "2026-06-12T00:00:00.000Z");
-  assert.equal(sqlTimestamp(now), "2026-06-11T23:59:01.000Z");
+  assert.equal(sqlTimestamp(now), 1781222341000);
 
   if (previous === undefined) delete process.env.TEST_LIMIT_VALUE;
   else process.env.TEST_LIMIT_VALUE = previous;
+});
+
+test("D1 LIKE patterns stay within the platform byte limit", () => {
+  const pattern = d1ContainsLikePattern("हिन्दी_%_search_".repeat(10));
+  assert.ok(pattern);
+  assert.ok(new TextEncoder().encode(pattern).byteLength <= 50);
+  assert.match(pattern, /^%.*%$/);
+  assert.ok(pattern.includes("\\_"));
+  assert.ok(pattern.includes("\\%"));
+});
+
+test("Vectorize full metadata queries stay within Cloudflare's topK limit", () => {
+  assert.equal(vectorizeFullMetadataTopK(0), 1);
+  assert.equal(vectorizeFullMetadataTopK(1), 1);
+  assert.equal(vectorizeFullMetadataTopK(49.9), 49);
+  assert.equal(vectorizeFullMetadataTopK(50), 50);
+  assert.equal(vectorizeFullMetadataTopK(51), 50);
+  assert.equal(vectorizeFullMetadataTopK(100), 50);
+  assert.equal(vectorizeFullMetadataTopK(Number.NaN), 1);
 });
 
 test("memory cron fails closed and ignores query-string secrets", async () => {
@@ -66,6 +93,37 @@ test("memory cron fails closed and ignores query-string secrets", async () => {
 
   if (previous === undefined) delete process.env.CRON_SECRET;
   else process.env.CRON_SECRET = previous;
+});
+
+test("middleware request forwarding strips spoofed provider and internal headers", () => {
+  const source = new Headers({
+    accept: "text/html",
+    authorization: "Bearer user-controlled",
+    cookie: "session=abc",
+    "cf-ipcountry": "IN",
+    "next-router-state-tree": "%5B%5D",
+    rsc: "1",
+    "x-inspir-language": "English",
+    "x-inspir-pathname": "/spoofed",
+    "x-vercel-ip-country": "US",
+  });
+
+  const forwarded = buildForwardedRequestHeaders(source, [
+    [requestLanguageHeader, "Hindi"],
+    [requestPathnameHeader, "/chat"],
+    [requestRecommendedLanguageHeader, "Hindi"],
+  ]);
+
+  assert.equal(forwarded.get("accept"), "text/html");
+  assert.equal(forwarded.get("cookie"), "session=abc");
+  assert.equal(forwarded.get("cf-ipcountry"), "IN");
+  assert.equal(forwarded.get("next-router-state-tree"), "%5B%5D");
+  assert.equal(forwarded.get("rsc"), "1");
+  assert.equal(forwarded.get("authorization"), null);
+  assert.equal(forwarded.get("x-vercel-ip-country"), null);
+  assert.equal(forwarded.get(requestLanguageHeader), "Hindi");
+  assert.equal(forwarded.get(requestPathnameHeader), "/chat");
+  assert.equal(forwarded.get(requestRecommendedLanguageHeader), "Hindi");
 });
 
 test("fallback quiz rotates correct answer positions", async () => {

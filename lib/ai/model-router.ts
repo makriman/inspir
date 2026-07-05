@@ -1,5 +1,6 @@
 import type { Topic } from "@/lib/db/schema";
 import { getTopicMetadata } from "@/lib/ai/topic-metadata";
+import { readRuntimeEnv } from "@/lib/runtime/cloudflare";
 
 export type ModelProfile = "fast" | "reasoning" | "structured";
 
@@ -31,6 +32,5 @@ export function resolveTemperature(profile: ModelProfile = "fast") {
 }
 
 function readModelEnv(name: string) {
-  const value = process.env[name]?.trim();
-  return value || undefined;
+  return readRuntimeEnv(name);
 }
