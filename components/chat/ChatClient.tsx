@@ -39,7 +39,6 @@ import {
   MessageSquareText,
   PencilLine,
   Route,
-  RotateCcw,
   Scale,
   Search,
   Send,
@@ -56,9 +55,9 @@ import {
   Waypoints,
   Workflow,
 } from "lucide-react";
-import { AgePromptModal } from "@/components/chat/AgePromptModal";
 import type { ActivityRun } from "@/components/chat/activity-model";
 import { ChatMainSection } from "@/components/chat/ChatMainSection";
+import { ChatPanelOverlays } from "@/components/chat/ChatPanelOverlays";
 import {
   getDefaultSidebarTopicIds,
   type LearningStoreTopic,
@@ -71,8 +70,12 @@ import {
   type MessageMemorySource,
 } from "@/components/chat/chat-message-model";
 import { ClockIcon } from "@/components/chat/ClockIcon";
+import {
+  CoachChatSession,
+  type CoachChatAction,
+  type CoachChatDetail,
+} from "@/components/chat/CoachChatSession";
 import { FlashcardWorkspace } from "@/components/chat/FlashcardWorkspace";
-import { GuestContinueModal } from "@/components/chat/GuestContinueModal";
 import { GuestFeatureGate } from "@/components/chat/GuestFeatureGate";
 import {
   type MemoryCreateInput,
@@ -80,7 +83,6 @@ import {
   type MemorySettingsPatch,
   type MemoryUpdateInput,
 } from "@/components/chat/memory-model";
-import { MemorySourcesModal } from "@/components/chat/MemorySourcesModal";
 import { MessageCard } from "@/components/chat/MessageCard";
 import { MiniIcon } from "@/components/chat/MiniIcon";
 import type { MiniAppIcon } from "@/components/chat/mini-icon-types";
@@ -93,7 +95,7 @@ import {
 } from "@/components/chat/profile-model";
 import { QuizWorkspace } from "@/components/chat/QuizWorkspace";
 import { RecentConversations } from "@/components/chat/RecentConversations";
-import { StarterGrid } from "@/components/chat/StarterGrid";
+import { StandardChatWorkspace } from "@/components/chat/StandardChatWorkspace";
 import { ThinkingMarker } from "@/components/chat/ThinkingMarker";
 import { TopicIntroCard } from "@/components/chat/TopicIntroCard";
 import {
@@ -106,15 +108,6 @@ import {
 } from "@/components/chat/topic-model";
 import { TopicSidebar } from "@/components/chat/TopicSidebar";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
-import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
-import {
-  MessageScroller,
-  MessageScrollerButton,
-  MessageScrollerContent,
-  MessageScrollerItem,
-  MessageScrollerProvider,
-  MessageScrollerViewport,
-} from "@/components/ui/message-scroller";
 import { defaultLanguage } from "@/lib/content/languages";
 import { topicPath } from "@/lib/content/topic-routing";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -1471,17 +1464,26 @@ function ChatClientLayout(controller: ChatClientController) {
     activeTopicId,
     addSidebarTopic,
     addedTopicIds,
+    agePromptOpen,
     avatarSrc,
+    currentLanguage,
     displayTopics,
     filteredTopics,
+    guestMessageLimit,
+    guestMessagesUsed,
+    guestPromptOpen,
     isFlashcardMode,
     isGuest,
     isQuizMode,
+    learningTools,
+    memorySourceModal,
     messages,
     mobileSidebarOpen,
     openLearningStore,
     openRecentConversations,
+    openFirstTopicWithMode,
     profileOpen,
+    profileUser,
     recentOpen,
     regenerateLast,
     resetChat,
@@ -1490,13 +1492,18 @@ function ChatClientLayout(controller: ChatClientController) {
     sending,
     sidebarTopics,
     setGuestPromptOpen,
+    setAgePromptOpen,
+    setMemorySourceModal,
     setMobileSidebarOpen,
     setProfileOpen,
+    setProfileUser,
     setRecentOpen,
     setSearch,
     setStoreOpen,
     stopGeneration,
     storeOpen,
+    submitMemorySourceFeedback,
+    translateUi,
     translationBundle,
     translationRootRef,
   } = controller;
@@ -1577,7 +1584,26 @@ function ChatClientLayout(controller: ChatClientController) {
       >
         <ChatWorkspaceSwitch controller={controller} />
       </ChatMainSection>
-      <ChatPanelOverlays controller={controller} />
+      <ChatPanelOverlays
+        activeTopic={activeTopic}
+        agePromptOpen={agePromptOpen}
+        currentLanguage={currentLanguage}
+        guestMessageLimit={guestMessageLimit}
+        guestMessagesUsed={guestMessagesUsed}
+        guestPromptOpen={guestPromptOpen}
+        isGuest={isGuest}
+        learningTools={learningTools}
+        memorySourceModal={memorySourceModal}
+        profileUser={profileUser}
+        onAgePromptOpen={setAgePromptOpen}
+        onGuestPromptOpen={setGuestPromptOpen}
+        onMemorySourceFeedback={(source, action) => void submitMemorySourceFeedback(source, action)}
+        onMemorySourceModal={setMemorySourceModal}
+        onOpenMusic={() => openFirstTopicWithMode("focus-music")}
+        onOpenTimer={() => openFirstTopicWithMode("study-timer")}
+        onProfileUser={setProfileUser}
+        t={translateUi}
+      />
     </div>
   );
 }
@@ -1606,6 +1632,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     listRef,
     loadChat,
     messages,
+    metadata,
     memoryDashboard,
     memoryError,
     memoryLoading,
@@ -1623,9 +1650,11 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     sending,
     setActivityRun,
     setInput,
+    setMemorySourceModal,
     setRecentOpen,
     setProfileOpen,
     stopGeneration,
+    streamingMessageId,
     storeOpen,
     submitMessage,
     translateUi,
@@ -1640,6 +1669,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     updateProfileDetails,
     uploadProfilePhoto,
     userDisplayName,
+    visibleChatMessages,
     workspaceResetCount,
   } = controller;
 
@@ -1739,7 +1769,28 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
   if (isFocusTimerMode) return <FocusTimerWorkspace tools={learningTools} />;
   if (isFocusMusicMode) return <FocusMusicWorkspace tools={learningTools} />;
 
-  if (!miniAppMode) return <StandardChatWorkspace controller={controller} />;
+  if (!miniAppMode) {
+    return (
+      <StandardChatWorkspace
+        activeTopic={activeTopic}
+        awaitingResponse={awaitingResponse}
+        handleComposerKeyDown={handleComposerKeyDown}
+        input={input}
+        inputRef={inputRef}
+        listRef={listRef}
+        metadata={metadata}
+        sendMessage={sendMessage}
+        sending={sending}
+        setInput={setInput}
+        stopGeneration={stopGeneration}
+        streamingMessageId={streamingMessageId}
+        submitMessage={submitMessage}
+        userDisplayName={userDisplayName}
+        visibleChatMessages={visibleChatMessages}
+        onMemorySources={(messageId, sources) => setMemorySourceModal({ messageId, sources })}
+      />
+    );
+  }
 
   const miniAppProps = {
     key: `${activeTopic.id}-${workspaceResetCount}`,
@@ -1773,153 +1824,6 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
   if (miniAppMode === "time-travel") return <TimeTravelWorkspace {...miniAppProps} />;
   if (miniAppMode === "socratic-instruction") return <SocraticWorkspace {...miniAppProps} />;
   return <GuidedMiniAppWorkspace {...miniAppProps} mode={miniAppMode} />;
-}
-
-function StandardChatWorkspace({ controller }: { controller: ChatClientController }) {
-  const {
-    activeTopic,
-    awaitingResponse,
-    handleComposerKeyDown,
-    input,
-    inputRef,
-    listRef,
-    metadata,
-    sendMessage,
-    sending,
-    setInput,
-    setMemorySourceModal,
-    stopGeneration,
-    streamingMessageId,
-    submitMessage,
-    userDisplayName,
-    visibleChatMessages,
-  } = controller;
-  const hasPendingAssistantCard = Boolean(
-    awaitingResponse &&
-      streamingMessageId &&
-      visibleChatMessages.some((message) => message.id === streamingMessageId && isPendingAssistantMessage(message)),
-  );
-
-  return (
-    <main className="inspir-workspace">
-      <MessageScrollerProvider defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
-        <MessageScroller className="inspir-message-scroller">
-          <MessageScrollerViewport ref={listRef} className="inspir-message-scroll app-scrollbar">
-            <MessageScrollerContent className="inspir-message-stack">
-              {visibleChatMessages.length === 0 ? (
-                <MessageScrollerItem>
-                  <TopicIntroCard {...topicIntroProps(activeTopic)} />
-                </MessageScrollerItem>
-              ) : null}
-              {visibleChatMessages.length === 0 ? (
-                <MessageScrollerItem>
-                  <StarterGrid starters={metadata?.starters ?? []} onStart={(starter) => void sendMessage(starter)} />
-                </MessageScrollerItem>
-              ) : null}
-              {visibleChatMessages.map((message) => (
-                <MessageScrollerItem key={message.id} messageId={message.id}>
-                  <MessageCard
-                    message={message}
-                    isStreaming={message.id === streamingMessageId}
-                    userLabel={userDisplayName}
-                    onMemorySources={(sources) => setMemorySourceModal({ messageId: message.id, sources })}
-                  />
-                </MessageScrollerItem>
-              ))}
-              {awaitingResponse && !hasPendingAssistantCard ? (
-                <MessageScrollerItem>
-                  <ThinkingMarker label="Thinking" />
-                </MessageScrollerItem>
-              ) : null}
-            </MessageScrollerContent>
-          </MessageScrollerViewport>
-          <MessageScrollerButton className="inspir-scroll-button" />
-        </MessageScroller>
-      </MessageScrollerProvider>
-      <form onSubmit={submitMessage} className="inspir-composer">
-        <div className="inspir-composer-inner">
-          <textarea
-            aria-label="Message"
-            ref={inputRef}
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-            onKeyDown={handleComposerKeyDown}
-            placeholder={activeTopic.inputboxText}
-            disabled={sending}
-            className="inspir-composer-input"
-            rows={1}
-          />
-          <button
-            type={sending ? "button" : "submit"}
-            onClick={sending ? stopGeneration : undefined}
-            disabled={!sending && !input.trim()}
-            aria-label={sending ? "Stop response" : "Send message"}
-            className="inspir-send-button"
-          >
-            {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
-          </button>
-        </div>
-      </form>
-    </main>
-  );
-}
-
-function ChatPanelOverlays({ controller }: { controller: ChatClientController }) {
-  const {
-    activeTopic,
-    agePromptOpen,
-    guestMessageLimit,
-    guestMessagesUsed,
-    guestPromptOpen,
-    currentLanguage,
-    isGuest,
-    learningTools,
-    memorySourceModal,
-    openFirstTopicWithMode,
-    profileUser,
-    setAgePromptOpen,
-    setGuestPromptOpen,
-    setMemorySourceModal,
-    setProfileUser,
-    submitMemorySourceFeedback,
-    translateUi,
-  } = controller;
-
-  return (
-    <>
-      <PersistentLearningDock
-        tools={learningTools}
-        onOpenTimer={() => openFirstTopicWithMode("study-timer")}
-        onOpenMusic={() => openFirstTopicWithMode("focus-music")}
-      />
-      {isGuest && guestPromptOpen ? (
-        <GuestContinueModal
-          used={guestMessagesUsed}
-          limit={guestMessageLimit}
-          callbackUrl={localizeHref(activeTopic ? topicPath(activeTopic.slug) : "/chat", currentLanguage)}
-          onClose={() => setGuestPromptOpen(false)}
-        />
-      ) : null}
-      {!isGuest && agePromptOpen && !profileUser.dateOfBirth ? (
-        <AgePromptModal
-          initialLanguage={profileUser.preferredLanguage || defaultLanguage}
-          onClose={() => setAgePromptOpen(false)}
-          onSaved={(updatedUser) => {
-            setProfileUser(updatedUser);
-            setAgePromptOpen(false);
-          }}
-          t={translateUi}
-        />
-      ) : null}
-      {memorySourceModal ? (
-        <MemorySourcesModal
-          sources={memorySourceModal.sources}
-          onClose={() => setMemorySourceModal(null)}
-          onFeedback={(source, action) => void submitMemorySourceFeedback(source, action)}
-        />
-      ) : null}
-    </>
-  );
 }
 
 type TimeTravelStep = "departure" | "destination" | "identity" | "purpose" | "realism" | "depth" | "clearance";
@@ -3084,175 +2988,6 @@ function TimeTravelPassport({
         )}
       </div>
     </aside>
-  );
-}
-
-type CoachChatAction = {
-  label: string;
-  icon?: ComponentType<{ size?: number }>;
-  onClick: () => void;
-  disabled?: boolean;
-};
-
-type CoachChatDetail = {
-  title: string;
-  body: string;
-  icon?: ComponentType<{ size?: number }>;
-};
-
-function CoachChatSession({
-  eyebrow,
-  title,
-  subtitle,
-  userName,
-  coachName,
-  placeholder,
-  messages,
-  input,
-  sending,
-  awaitingResponse,
-  inputRef,
-  listRef,
-  actions,
-  details,
-  resetLabel,
-  onInput,
-  onSubmit,
-  onKeyDown,
-  onStop,
-  onReset,
-}: {
-  eyebrow: string;
-  title: string;
-  subtitle: string;
-  userName: string;
-  coachName: string;
-  placeholder: string;
-  messages: Message[];
-  input: string;
-  sending: boolean;
-  awaitingResponse: boolean;
-  inputRef: RefObject<HTMLTextAreaElement | null>;
-  listRef: RefObject<HTMLDivElement | null>;
-  actions?: CoachChatAction[];
-  details?: CoachChatDetail[];
-  resetLabel: string;
-  onInput: (value: string) => void;
-  onSubmit: (event?: FormEvent) => void;
-  onKeyDown: (event: KeyboardEvent<HTMLTextAreaElement>) => void;
-  onStop: () => void;
-  onReset: () => void;
-}) {
-  const [detailsOpen, setDetailsOpen] = useState(false);
-  const hasDetails = Boolean(details?.length);
-
-  return (
-    <main className="inspir-workspace coach-chat-workspace">
-      <section className={`coach-chat-shell ${detailsOpen ? "is-details-open" : ""}`}>
-        <header className="coach-chat-top">
-          <div className="coach-chat-avatar" aria-hidden="true">
-            <Bot size={24} />
-          </div>
-          <div className="coach-chat-title">
-            <span>{eyebrow}</span>
-            <h2>{title}</h2>
-            <p>{subtitle}</p>
-          </div>
-          <div className="coach-chat-toolbar">
-            {hasDetails ? (
-              <button type="button" onClick={() => setDetailsOpen((open) => !open)}>
-                <SlidersHorizontal size={17} />
-                <span>{detailsOpen ? "Hide details" : "Details"}</span>
-              </button>
-            ) : null}
-            <button type="button" onClick={onReset}>
-              <RotateCcw size={17} />
-              <span>{resetLabel}</span>
-            </button>
-          </div>
-        </header>
-
-        {actions?.length ? (
-          <div className="coach-chat-action-strip" aria-label="Coach actions">
-            {actions.map((action) => {
-              const ActionIcon = action.icon ?? Sparkles;
-              return (
-                <button key={action.label} type="button" onClick={action.onClick} disabled={action.disabled}>
-                  <ActionIcon size={16} />
-                  <span>{action.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        ) : null}
-
-        {detailsOpen && details?.length ? (
-          <aside className="coach-chat-details" aria-label="Session details">
-            <div className="coach-chat-details-head">
-              <ShieldCheck size={18} />
-              <strong>Session setup</strong>
-            </div>
-            <div className="coach-chat-details-grid">
-              {details.map((detail) => {
-                const DetailIcon = detail.icon ?? FileText;
-                return (
-                  <article key={detail.title}>
-                    <DetailIcon size={17} />
-                    <div>
-                      <strong>{detail.title}</strong>
-                      <span>{detail.body}</span>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </aside>
-        ) : null}
-
-        <section className="coach-chat-body">
-          <div ref={listRef} className="coach-chat-log app-scrollbar">
-            <div className="coach-chat-message-stack">
-              {messages.map((message) => (
-                <MessageCard
-                  key={message.id}
-                  message={message}
-                  userLabel={userName}
-                  assistantLabel={`${coachName} response`}
-                />
-              ))}
-              {awaitingResponse ? (
-                <ThinkingMarker label={`${coachName} is thinking`} />
-              ) : null}
-            </div>
-          </div>
-
-          <form onSubmit={onSubmit} className="inspir-composer coach-chat-composer">
-            <div className="inspir-composer-inner">
-              <textarea
-                aria-label="Message coach"
-                ref={inputRef}
-                value={input}
-                onChange={(event) => onInput(event.target.value)}
-                onKeyDown={onKeyDown}
-                placeholder={placeholder}
-                disabled={sending}
-                className="inspir-composer-input"
-                rows={1}
-              />
-              <button
-                type={sending ? "button" : "submit"}
-                onClick={sending ? onStop : undefined}
-                disabled={!sending && !input.trim()}
-                aria-label={sending ? "Stop response" : "Send message"}
-                className="inspir-send-button"
-              >
-                {sending ? <Square size={18} fill="currentColor" /> : <Send size={23} />}
-              </button>
-            </div>
-          </form>
-        </section>
-      </section>
-    </main>
   );
 }
 
