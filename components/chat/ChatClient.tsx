@@ -15,7 +15,6 @@ import {
   useRef,
   useState,
 } from "react";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import {
   ArrowLeft,
@@ -23,8 +22,6 @@ import {
   BookOpenCheck,
   Bot,
   BrainCircuit,
-  Check,
-  Clipboard,
   Compass,
   Coins,
   FileText,
@@ -41,7 +38,6 @@ import {
   MessageCircle,
   MessageSquareText,
   PencilLine,
-  Plus,
   Route,
   RotateCcw,
   Scale,
@@ -60,8 +56,9 @@ import {
   Waypoints,
   Workflow,
 } from "lucide-react";
-import { InspirLogo } from "@/components/brand/InspirLogo";
 import { AgePromptModal } from "@/components/chat/AgePromptModal";
+import type { ActivityRun } from "@/components/chat/activity-model";
+import { ChatMainSection } from "@/components/chat/ChatMainSection";
 import {
   getDefaultSidebarTopicIds,
   type LearningStoreTopic,
@@ -74,9 +71,7 @@ import {
   type MessageMemorySource,
 } from "@/components/chat/chat-message-model";
 import { ClockIcon } from "@/components/chat/ClockIcon";
-import { FlashcardBuildLoader } from "@/components/chat/FlashcardBuildLoader";
-import { FlashcardReview } from "@/components/chat/FlashcardReview";
-import { FlashcardStat } from "@/components/chat/FlashcardStat";
+import { FlashcardWorkspace } from "@/components/chat/FlashcardWorkspace";
 import { GuestContinueModal } from "@/components/chat/GuestContinueModal";
 import { GuestFeatureGate } from "@/components/chat/GuestFeatureGate";
 import {
@@ -96,17 +91,22 @@ import {
   type ProfileResponse,
   type UserProfile,
 } from "@/components/chat/profile-model";
-import { QuizBuildLoader } from "@/components/chat/QuizBuildLoader";
-import { QuizFeedback } from "@/components/chat/QuizFeedback";
-import { QuizReview } from "@/components/chat/QuizReview";
+import { QuizWorkspace } from "@/components/chat/QuizWorkspace";
 import { RecentConversations } from "@/components/chat/RecentConversations";
 import { StarterGrid } from "@/components/chat/StarterGrid";
 import { ThinkingMarker } from "@/components/chat/ThinkingMarker";
 import { TopicIntroCard } from "@/components/chat/TopicIntroCard";
-import { TopBar } from "@/components/chat/TopBar";
+import {
+  localizedTopicHref,
+  type Topic,
+  topicIntroProps,
+  type TopicMetadata,
+  topicMetadata,
+  topicSearchContent,
+} from "@/components/chat/topic-model";
+import { TopicSidebar } from "@/components/chat/TopicSidebar";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
-import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -131,36 +131,6 @@ const SocraticWorkspace = dynamic(() =>
   import("@/components/chat/SocraticWorkspace").then((mod) => mod.SocraticWorkspace),
 );
 
-type TopicMetadata = {
-  category: string;
-  uiMode:
-    | "chat"
-    | "quiz"
-    | "flashcards"
-    | "time-travel"
-    | "historical-person"
-    | "interactive-instruction"
-    | "collaborative-instruction"
-    | "socratic-instruction"
-    | "study-timer"
-    | "focus-music";
-  modelProfile: "fast" | "reasoning" | "structured";
-  starters: string[];
-  keywords?: string[];
-  source?: string;
-  toolId?: string;
-};
-
-type Topic = {
-  id: string;
-  slug: string;
-  name: string;
-  subText: string;
-  description: string;
-  inputboxText: string;
-  metadata?: TopicMetadata | Record<string, unknown> | null;
-};
-
 type RecentChat = {
   id: string;
   topicId: string | null;
@@ -170,19 +140,6 @@ type RecentChat = {
   replyCount: number;
   createdAt: string | Date;
   updatedAt: string | Date;
-};
-
-type ActivityRun = {
-  id: string;
-  chatId: string;
-  type: string;
-  status: string;
-  state: Record<string, unknown>;
-  score: number | null;
-  maxScore: number | null;
-  createdAt: string | Date;
-  updatedAt: string | Date;
-  completedAt: string | Date | null;
 };
 
 type ChatCreateResponse = {
@@ -200,10 +157,6 @@ type RecentChatsResponse = {
   chats?: RecentChat[];
 };
 
-type ActivityRunResponse = {
-  activityRun: ActivityRun | null;
-};
-
 class StaleChatRequestError extends Error {
   constructor() {
     super("Chat request was superseded");
@@ -211,69 +164,7 @@ class StaleChatRequestError extends Error {
   }
 }
 
-type PublicQuizQuestion = {
-  id: string;
-  prompt: string;
-  options: string[];
-  userAnswerIndex?: number;
-  correctIndex?: number;
-  explanation?: string;
-  isCorrect?: boolean;
-};
-
-type PublicQuizState = {
-  topic: string;
-  currentIndex: number;
-  score: number;
-  maxScore: 10;
-  completed: boolean;
-  questions: PublicQuizQuestion[];
-};
-
-type PublicFlashcard = {
-  id: string;
-  front: string;
-  back?: string;
-  hint?: string;
-  example?: string;
-  trap?: string;
-  tags?: string[];
-  isRevealed?: boolean;
-  rating?: "known" | "again";
-  reviewedAt?: string;
-};
-
-type PublicFlashcardState = {
-  topic: string;
-  source?: string;
-  currentIndex: number;
-  knownCount: number;
-  reviewedCount: number;
-  maxCards: 12;
-  completed: boolean;
-  cards: PublicFlashcard[];
-};
-
 type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards" | "study-timer" | "focus-music">;
-
-function topicMetadata(topic: Topic | undefined): TopicMetadata | undefined {
-  const metadata = topic?.metadata;
-  if (!metadata || typeof metadata !== "object") return undefined;
-  if (!("uiMode" in metadata) || !("starters" in metadata)) return undefined;
-  return metadata as TopicMetadata;
-}
-
-function topicIntroProps(topic: Topic) {
-  return {
-    category: topicMetadata(topic)?.category ?? "Learning",
-    name: topic.name,
-    description: topic.description,
-  };
-}
-
-function localizedTopicHref(topic: Topic, language: string) {
-  return localizeHref(topicPath(topic.slug), language);
-}
 
 function readStoredGuestUsage(limit: number) {
   if (typeof window === "undefined") return 0;
@@ -326,41 +217,6 @@ function uniqueValidTopicIds(ids: string[], topics: Topic[]) {
     seen.add(id);
     return true;
   });
-}
-
-function topicSearchContent(topic: Topic) {
-  const metadata = topicMetadata(topic);
-  return [
-    topic.name,
-    topic.subText,
-    topic.description,
-    topic.inputboxText,
-    metadata?.category,
-    metadata?.uiMode,
-    metadata?.source,
-    ...(metadata?.starters ?? []),
-    ...(metadata?.keywords ?? []),
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-}
-
-function isQuizState(value: Record<string, unknown>): value is PublicQuizState {
-  return (
-    typeof value.topic === "string" &&
-    Array.isArray(value.questions) &&
-    typeof value.currentIndex === "number"
-  );
-}
-
-function isFlashcardState(value: Record<string, unknown>): value is PublicFlashcardState {
-  return (
-    typeof value.topic === "string" &&
-    Array.isArray(value.cards) &&
-    typeof value.currentIndex === "number" &&
-    typeof value.reviewedCount === "number"
-  );
 }
 
 function toDisplayMessage(message: Message): Message | null {
@@ -1611,23 +1467,36 @@ function useChatClientController({
 
 function ChatClientLayout(controller: ChatClientController) {
   const {
+    activeTopic,
     activeTopicId,
     addSidebarTopic,
     addedTopicIds,
     avatarSrc,
     displayTopics,
     filteredTopics,
+    isFlashcardMode,
     isGuest,
+    isQuizMode,
+    messages,
     mobileSidebarOpen,
     openLearningStore,
+    openRecentConversations,
     profileOpen,
+    recentOpen,
+    regenerateLast,
+    resetChat,
     search,
     selectTopic,
+    sending,
     sidebarTopics,
     setGuestPromptOpen,
     setMobileSidebarOpen,
     setProfileOpen,
+    setRecentOpen,
     setSearch,
+    setStoreOpen,
+    stopGeneration,
+    storeOpen,
     translationBundle,
     translationRootRef,
   } = controller;
@@ -1673,36 +1542,7 @@ function ChatClientLayout(controller: ChatClientController) {
         />
       ) : null}
 
-      <ChatMainSection controller={controller} />
-      <ChatPanelOverlays controller={controller} />
-    </div>
-  );
-}
-
-function ChatMainSection({ controller }: { controller: ChatClientController }) {
-  const {
-    activeTopic,
-    isFlashcardMode,
-    isGuest,
-    isQuizMode,
-    messages,
-    openRecentConversations,
-    profileOpen,
-    recentOpen,
-    regenerateLast,
-    resetChat,
-    sending,
-    setMobileSidebarOpen,
-    setProfileOpen,
-    setRecentOpen,
-    setStoreOpen,
-    stopGeneration,
-    storeOpen,
-  } = controller;
-
-  return (
-    <section className="inspir-main-shell">
-      <TopBar
+      <ChatMainSection
         title={
           profileOpen
             ? "Profile"
@@ -1734,9 +1574,11 @@ function ChatMainSection({ controller }: { controller: ChatClientController }) {
         onStop={stopGeneration}
         onRegenerate={regenerateLast}
         showSessionActions={!storeOpen && !profileOpen}
-      />
-      <ChatWorkspaceSwitch controller={controller} />
-    </section>
+      >
+        <ChatWorkspaceSwitch controller={controller} />
+      </ChatMainSection>
+      <ChatPanelOverlays controller={controller} />
+    </div>
   );
 }
 
@@ -2077,148 +1919,6 @@ function ChatPanelOverlays({ controller }: { controller: ChatClientController })
         />
       ) : null}
     </>
-  );
-}
-
-function TopicSidebar({
-  isGuest,
-  avatarSrc,
-  topics,
-  sidebarTopics,
-  filteredTopics,
-  currentLanguage,
-  activeTopicId,
-  addedTopicIds,
-  search,
-  onAddFeature,
-  onOpenStore,
-  onProfile,
-  onSearch,
-  onSelect,
-}: {
-  isGuest: boolean;
-  avatarSrc?: string;
-  topics: Topic[];
-  sidebarTopics: Topic[];
-  filteredTopics: Topic[];
-  currentLanguage: string;
-  activeTopicId: string;
-  addedTopicIds: string[];
-  search: string;
-  onAddFeature: (topicId: string) => void;
-  onOpenStore: () => void;
-  onProfile: () => void;
-  onSearch: (value: string) => void;
-  onSelect: (topicId: string) => void;
-}) {
-  const activeTopic = topics.find((topic) => topic.id === activeTopicId);
-  const rows = search ? filteredTopics : sidebarTopics;
-  const groups = rows.reduce<Array<{ category: string; topics: Topic[] }>>((acc, topic) => {
-    const category = topicMetadata(topic)?.category ?? "Learning";
-    const existing = acc.find((group) => group.category === category);
-    if (existing) existing.topics.push(topic);
-    else acc.push({ category, topics: [topic] });
-    return acc;
-  }, []);
-
-  return (
-    <div className="inspir-sidebar-inner">
-      <div className="inspir-sidebar-header">
-        {isGuest ? (
-          <GoogleContinueButton
-            className="inspir-guest-auth-button"
-            callbackUrl={localizeHref(activeTopic ? topicPath(activeTopic.slug) : "/chat", currentLanguage)}
-          >
-            Continue with Google
-          </GoogleContinueButton>
-        ) : (
-          <button type="button" onClick={onProfile} aria-label="Open profile" className="inspir-avatar-button">
-            {avatarSrc ? (
-              <Image src={avatarSrc} alt="" width={40} height={40} sizes="40px" unoptimized />
-            ) : null}
-          </button>
-        )}
-        <InspirLogo className="inspir-sidebar-logo" />
-        <button
-          type="button"
-          onClick={onOpenStore}
-          aria-label="Open learning store"
-          title="Open learning store"
-          className="inspir-sidebar-store-button"
-        >
-          <Plus size={20} />
-        </button>
-      </div>
-      <div className="inspir-search-row">
-        <div className="inspir-search-shell">
-          <input
-            aria-label="Search chats"
-            value={search}
-            onChange={(event) => onSearch(event.target.value)}
-            placeholder="Search"
-            className="inspir-search-input"
-          />
-          {search ? <Search className="inspir-search-icon" size={16} /> : null}
-        </div>
-      </div>
-      <div className="inspir-topic-list app-scrollbar">
-        {search && filteredTopics.length === 0 ? (
-          <div className="inspir-no-results">No search results</div>
-        ) : null}
-        {!search && rows.length === 0 && activeTopic ? (
-          <button
-            type="button"
-            onClick={() => onSelect(activeTopic.id)}
-            className={`inspir-topic-row ${activeTopic.id === activeTopicId ? "is-active" : ""}`}
-          >
-            <span className="inspir-topic-title">{activeTopic.name}</span>
-            <span className="inspir-topic-subtitle">{activeTopic.subText}</span>
-          </button>
-        ) : null}
-        {groups.map((group) => (
-          <section key={group.category} className="inspir-topic-group">
-            <h3>{group.category}</h3>
-            {group.topics.map((topic) => {
-              const isAdded = addedTopicIds.includes(topic.id);
-              return (
-                <div key={topic.id} className="inspir-topic-row-shell">
-                  <button
-                    type="button"
-                    onClick={() => onSelect(topic.id)}
-                    className={`inspir-topic-row ${search ? "has-sidebar-action" : ""} ${
-                      topic.id === activeTopicId ? "is-active" : ""
-                    }`}
-                  >
-                    <span className="inspir-topic-title">{topic.name}</span>
-                    <span className="inspir-topic-subtitle">{topic.subText}</span>
-                  </button>
-                  {search ? (
-                    isAdded ? (
-                      <span className="inspir-topic-row-action is-added" aria-label={`${topic.name} is added`}>
-                        <Check size={16} />
-                      </span>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          onAddFeature(topic.id);
-                        }}
-                        className="inspir-topic-row-action"
-                        aria-label={`Add ${topic.name} to sidebar`}
-                        title={`Add ${topic.name} to sidebar`}
-                      >
-                        <Plus size={16} />
-                      </button>
-                    )
-                  ) : null}
-                </div>
-              );
-            })}
-          </section>
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -5351,412 +5051,6 @@ function useHistoricalPersonWorkspace({
           </div>
         </form>
       ) : null}
-    </main>
-  );
-}
-
-function QuizWorkspace({
-  activeChatId,
-  activeTopicId,
-  activityRun,
-  createChat,
-  onActivityRun,
-}: {
-  activeChatId?: string;
-  activeTopicId: string;
-  activityRun: ActivityRun | null;
-  createChat: (topicId?: string) => Promise<string>;
-  onActivityRun: (run: ActivityRun | null) => void;
-}) {
-  const [{ topic, loading, buildProgress, answering, error }, updateQuizState] = useReducer(
-    mergeStateReducer<{
-      topic: string;
-      loading: boolean;
-      buildProgress: number;
-      answering: boolean;
-      error: string;
-    }>,
-    { topic: "", loading: false, buildProgress: 0, answering: false, error: "" },
-  );
-  const quiz = activityRun?.type === "quiz" && isQuizState(activityRun.state) ? activityRun.state : null;
-  const currentQuestion = quiz?.questions[quiz.currentIndex];
-  const lastAnswered = quiz
-    ? [...quiz.questions].reverse().find((question) => question.userAnswerIndex !== undefined)
-    : undefined;
-
-  useEffect(() => {
-    if (!loading) return;
-    const interval = window.setInterval(() => {
-      updateQuizState((current) => ({
-        buildProgress: Math.min(94, current.buildProgress + Math.max(3, Math.round((100 - current.buildProgress) / 7))),
-      }));
-    }, 520);
-
-    return () => window.clearInterval(interval);
-  }, [loading]);
-
-  async function startQuiz(event?: FormEvent) {
-    event?.preventDefault();
-    const quizTopic = topic.trim();
-    if (!quizTopic || loading) return;
-    updateQuizState({ error: "", buildProgress: 8, loading: true });
-    try {
-      const chatId = activeChatId ?? (await createChat(activeTopicId));
-      const response = await fetch("/api/activities/quiz", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ chatId, topic: quizTopic }),
-      });
-      if (!response.ok) throw new Error("Could not build quiz");
-      const data = (await response.json()) as ActivityRunResponse;
-      updateQuizState({ buildProgress: 100 });
-      onActivityRun(data.activityRun);
-    } catch {
-      updateQuizState({
-        error: "I could not build that quiz right now. Try a simpler topic or try again.",
-        buildProgress: 0,
-      });
-    } finally {
-      updateQuizState({ loading: false });
-    }
-  }
-
-  async function answerQuestion(answerIndex: number) {
-    if (!activityRun || answering) return;
-    updateQuizState({ answering: true, error: "" });
-    try {
-      const response = await fetch(`/api/activities/quiz/${activityRun.id}/answer`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ answerIndex }),
-      });
-      if (!response.ok) throw new Error("Could not score answer");
-      const data = (await response.json()) as ActivityRunResponse;
-      onActivityRun(data.activityRun);
-    } catch {
-      updateQuizState({ error: "I could not score that answer. Please try again." });
-    } finally {
-      updateQuizState({ answering: false });
-    }
-  }
-
-  return (
-    <main className="inspir-workspace inspir-quiz-workspace">
-      {!quiz ? (
-        loading ? (
-          <QuizBuildLoader topic={topic} progress={buildProgress} />
-        ) : (
-          <form onSubmit={startQuiz} className="inspir-quiz-start">
-            <div className="inspir-quiz-start-icon">
-              <Sparkles size={28} />
-            </div>
-            <h2>What would you like to be quizzed on today?</h2>
-            <p>Pick any topic. I will build 10 multiple-choice questions and score you as you go.</p>
-            <div className="inspir-quiz-input-row">
-              <input
-                aria-label="Quiz topic"
-                value={topic}
-                onChange={(event) => updateQuizState({ topic: event.target.value })}
-                placeholder="Space exploration, Indian history, algebra..."
-                disabled={loading}
-              />
-              <button type="submit" disabled={loading || !topic.trim()}>
-                Start
-              </button>
-            </div>
-            {error ? <span className="inspir-quiz-error">{error}</span> : null}
-          </form>
-        )
-      ) : (
-        <section className="inspir-quiz-card">
-          <header className="inspir-quiz-header">
-            <div>
-              <span>Quiz on</span>
-              <h2>{quiz.topic}</h2>
-            </div>
-            <strong>
-              {quiz.score}/{quiz.maxScore}
-            </strong>
-          </header>
-          <div className="inspir-quiz-progress">
-            <span style={{ width: `${(quiz.questions.filter((q) => q.userAnswerIndex !== undefined).length / 10) * 100}%` }} />
-          </div>
-
-          {lastAnswered ? <QuizFeedback question={lastAnswered} /> : null}
-
-          {!quiz.completed && currentQuestion ? (
-            <article className="inspir-question-card">
-              <span>
-                Question {quiz.currentIndex + 1} of {quiz.maxScore}
-              </span>
-              <h3>{currentQuestion.prompt}</h3>
-              <div className="inspir-option-grid">
-                {currentQuestion.options.map((option, index) => (
-                  <button
-                    key={option}
-                    type="button"
-                    disabled={answering}
-                    onClick={() => void answerQuestion(index)}
-                  >
-                    <strong>{String.fromCharCode(65 + index)}</strong>
-                    <span>{option}</span>
-                  </button>
-                ))}
-              </div>
-            </article>
-          ) : (
-            <QuizReview quiz={quiz} />
-          )}
-          {error ? <span className="inspir-quiz-error">{error}</span> : null}
-        </section>
-      )}
-    </main>
-  );
-}
-
-function FlashcardWorkspace({
-  activeChatId,
-  activeTopicId,
-  activityRun,
-  createChat,
-  onActivityRun,
-  onReset,
-}: {
-  activeChatId?: string;
-  activeTopicId: string;
-  activityRun: ActivityRun | null;
-  createChat: (topicId?: string) => Promise<string>;
-  onActivityRun: (run: ActivityRun | null) => void;
-  onReset: () => void;
-}) {
-  const [{ topic, source, loading, buildProgress, reviewing, error, hintCardId }, updateFlashcardState] = useReducer(
-    mergeStateReducer<{
-      topic: string;
-      source: string;
-      loading: boolean;
-      buildProgress: number;
-      reviewing: boolean;
-      error: string;
-      hintCardId: string | null;
-    }>,
-    { topic: "", source: "", loading: false, buildProgress: 0, reviewing: false, error: "", hintCardId: null },
-  );
-  const deck = activityRun?.type === "flashcards" && isFlashcardState(activityRun.state) ? activityRun.state : null;
-  const currentCard = deck?.cards[deck.currentIndex];
-  const missedCards = deck?.cards.filter((card) => card.rating === "again") ?? [];
-  const remainingCount = deck ? Math.max(0, deck.maxCards - deck.reviewedCount) : 0;
-  const progressPercent = deck ? Math.round((deck.reviewedCount / deck.maxCards) * 100) : 0;
-  const hintOpen = Boolean(currentCard && hintCardId === currentCard.id);
-
-  useEffect(() => {
-    if (!loading) return;
-    const interval = window.setInterval(() => {
-      updateFlashcardState((current) => ({
-        buildProgress: Math.min(94, current.buildProgress + Math.max(4, Math.round((100 - current.buildProgress) / 6))),
-      }));
-    }, 520);
-
-    return () => window.clearInterval(interval);
-  }, [loading]);
-
-  async function startFlashcards(event?: FormEvent) {
-    event?.preventDefault();
-    const deckTopic = topic.trim();
-    if (!deckTopic || loading) return;
-    updateFlashcardState({ error: "", buildProgress: 8, loading: true });
-    try {
-      const chatId = activeChatId ?? (await createChat(activeTopicId));
-      const response = await fetch("/api/activities/flashcards", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ chatId, topic: deckTopic, source: source.trim() || undefined }),
-      });
-      if (!response.ok) throw new Error("Could not build flashcards");
-      const data = (await response.json()) as ActivityRunResponse;
-      updateFlashcardState({ buildProgress: 100 });
-      onActivityRun(data.activityRun);
-    } catch {
-      updateFlashcardState({
-        error: "I could not build that deck right now. Try a shorter topic or simpler notes.",
-        buildProgress: 0,
-      });
-    } finally {
-      updateFlashcardState({ loading: false });
-    }
-  }
-
-  async function reviewCard(action: "reveal" | "known" | "again") {
-    if (!activityRun || reviewing) return;
-    updateFlashcardState({ reviewing: true, error: "" });
-    try {
-      const response = await fetch(`/api/activities/flashcards/${activityRun.id}/review`, {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(
-          action === "reveal" ? { action: "reveal" } : { action: "rate", rating: action },
-        ),
-      });
-      if (!response.ok) throw new Error("Could not review card");
-      const data = (await response.json()) as ActivityRunResponse;
-      onActivityRun(data.activityRun);
-    } catch {
-      updateFlashcardState({ error: "I could not save that card review. Please try again." });
-    } finally {
-      updateFlashcardState({ reviewing: false });
-    }
-  }
-
-  function changeDeck() {
-    onReset();
-    updateFlashcardState({ topic: "", source: "", error: "", hintCardId: null, buildProgress: 0 });
-  }
-
-  function reviewMissed(deckState: PublicFlashcardState) {
-    const missed = deckState.cards.filter((card) => card.rating === "again");
-    updateFlashcardState({
-      topic: `Weak spots from ${deckState.topic}`,
-      source: missed
-        .map((card, index) => `${index + 1}. ${card.front}\nAnswer: ${card.back ?? ""}\nTrap: ${card.trap ?? ""}`)
-        .join("\n\n"),
-      error: "",
-      hintCardId: null,
-    });
-    onActivityRun(null);
-  }
-
-  return (
-    <main className="inspir-workspace inspir-flashcard-workspace">
-      {!deck ? (
-        loading ? (
-          <FlashcardBuildLoader topic={topic} progress={buildProgress} />
-        ) : (
-          <form onSubmit={startFlashcards} className="inspir-flashcard-start">
-            <div className="inspir-flashcard-start-copy">
-              <div className="inspir-flashcard-start-icon">
-                <Clipboard size={28} />
-              </div>
-              <span>Active recall builder</span>
-              <h2>Turn material into a deck you actually test yourself on.</h2>
-              <p>Give me a topic or paste notes. I will build 12 focused cards with optional hints, traps, and examples.</p>
-            </div>
-            <div className="inspir-flashcard-start-panel">
-              <div className="inspir-flashcard-input-stack">
-                <label>
-                  <span>Deck topic</span>
-                  <input
-                    value={topic}
-                    onChange={(event) => updateFlashcardState({ topic: event.target.value })}
-                    placeholder="Mitosis, climate zones, irregular verbs..."
-                    disabled={loading}
-                  />
-                </label>
-                <label>
-                  <span>Source notes</span>
-                  <textarea
-                    value={source}
-                    onChange={(event) => updateFlashcardState({ source: event.target.value })}
-                    placeholder="Optional: paste notes, syllabus points, or facts to prioritize"
-                    disabled={loading}
-                    rows={5}
-                  />
-                </label>
-              </div>
-              <button type="submit" disabled={loading || !topic.trim()}>
-                Build deck
-              </button>
-              <div className="inspir-flashcard-start-rules" aria-label="Deck rules">
-                <span>Recall before reveal</span>
-                <span>Hints stay optional</span>
-                <span>Misses become a smaller review deck</span>
-              </div>
-              {error ? <span className="inspir-quiz-error">{error}</span> : null}
-            </div>
-          </form>
-        )
-      ) : (
-        <section className="inspir-flashcard-shell">
-          <header className="inspir-flashcard-header">
-            <div>
-              <span>Flashcards on</span>
-              <h2>{deck.topic}</h2>
-            </div>
-            <button type="button" onClick={changeDeck}>
-              <RotateCcw size={16} />
-              <span>Change deck</span>
-            </button>
-          </header>
-          <div className="inspir-quiz-progress">
-            <span style={{ width: `${progressPercent}%` }} />
-          </div>
-          <div className="inspir-flashcard-stats" aria-label="Deck progress">
-            <FlashcardStat label="Known" value={`${deck.knownCount}/${deck.maxCards}`} />
-            <FlashcardStat label="Again" value={String(missedCards.length)} />
-            <FlashcardStat label="Left" value={String(remainingCount)} />
-          </div>
-
-          {deck.completed ? (
-            <FlashcardReview deck={deck} onReviewMissed={reviewMissed} onStartOver={changeDeck} />
-          ) : currentCard ? (
-            <article className={`inspir-flashcard-card ${currentCard.back ? "is-revealed" : ""}`}>
-              <div className="inspir-flashcard-card-top">
-                <span>
-                  Card {deck.currentIndex + 1} of {deck.maxCards}
-                </span>
-                <div>
-                  {(currentCard.tags ?? []).map((tag) => (
-                    <small key={tag}>{tag}</small>
-                  ))}
-                </div>
-              </div>
-              <h3>{currentCard.front}</h3>
-              {currentCard.hint && hintOpen && !currentCard.back ? (
-                <p className="inspir-flashcard-hint">
-                  <strong>Hint</strong>
-                  {currentCard.hint}
-                </p>
-              ) : null}
-
-              {currentCard.back ? (
-                <div className="inspir-flashcard-answer">
-                  <strong>Answer</strong>
-                  <p>{currentCard.back}</p>
-                  {currentCard.example ? <span>Example: {currentCard.example}</span> : null}
-                  {currentCard.trap ? <span>Watch out: {currentCard.trap}</span> : null}
-                </div>
-              ) : null}
-
-              <div className="inspir-flashcard-actions">
-                {!currentCard.back ? (
-                  <>
-                    {currentCard.hint ? (
-                      <button
-                        type="button"
-                        disabled={reviewing}
-                        onClick={() => updateFlashcardState({ hintCardId: hintOpen ? null : currentCard.id })}
-                      >
-                        {hintOpen ? "Hide hint" : "Need a hint"}
-                      </button>
-                    ) : null}
-                    <button type="button" disabled={reviewing} onClick={() => void reviewCard("reveal")}>
-                      Show answer
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button type="button" disabled={reviewing} onClick={() => void reviewCard("again")}>
-                      Review again
-                    </button>
-                    <button type="button" disabled={reviewing} onClick={() => void reviewCard("known")}>
-                      I knew it
-                    </button>
-                  </>
-                )}
-              </div>
-            </article>
-          ) : null}
-          {error ? <span className="inspir-quiz-error">{error}</span> : null}
-        </section>
-      )}
     </main>
   );
 }
