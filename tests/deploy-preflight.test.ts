@@ -56,6 +56,45 @@ test("steady-state deploy preflight rejects stale local-gate source evidence", (
   assert.equal(localGates?.status, "fail");
 });
 
+test("steady-state deploy preflight rejects missing React Doctor gate evidence", () => {
+  const { backupDir, repoDir } = makeFixture();
+  mutateLocalGatesReport(backupDir, (report) => {
+    report.results = report.results.filter((result) => result.id !== "react-doctor");
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const localGates = report.checks.find((check) => check.name === "local build and test gates");
+  assert.equal(localGates?.status, "fail");
+  assert.ok(localGateDetail(localGates).missingGateIds?.includes("react-doctor"));
+});
+
+test("steady-state deploy preflight rejects failed React Doctor gate evidence", () => {
+  const { backupDir, repoDir } = makeFixture();
+  mutateLocalGatesReport(backupDir, (report) => {
+    report.ok = false;
+    report.results = report.results.map((result) => (result.id === "react-doctor" ? { ...result, ok: false } : result));
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const localGates = report.checks.find((check) => check.name === "local build and test gates");
+  assert.equal(localGates?.status, "fail");
+  assert.ok(localGateDetail(localGates).failedGateIds?.includes("react-doctor"));
+});
+
 test("steady-state deploy preflight rejects stale build artifact scan evidence", () => {
   const { backupDir, repoDir } = makeFixture();
   const artifactReportPath = path.join(backupDir, "cloudflare/build-artifact-scan-report.json");
@@ -189,6 +228,24 @@ function writeLocalEvidence(backupDir: string, fingerprint: SourceFingerprint) {
     scannedFiles: 42,
     findings: [],
   });
+}
+
+function mutateLocalGatesReport(
+  backupDir: string,
+  mutate: (report: { ok: boolean; results: Array<{ id: string; ok: boolean }> }) => void,
+) {
+  const reportPath = path.join(backupDir, "cloudflare/local-gates-report.json");
+  const report = JSON.parse(fs.readFileSync(reportPath, "utf8")) as {
+    ok: boolean;
+    results: Array<{ id: string; ok: boolean }>;
+  };
+  mutate(report);
+  fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
+}
+
+function localGateDetail(check: { detail?: unknown } | undefined) {
+  assert.ok(check?.detail && typeof check.detail === "object");
+  return check.detail as { missingGateIds?: string[]; failedGateIds?: string[] };
 }
 
 function wranglerConfig() {

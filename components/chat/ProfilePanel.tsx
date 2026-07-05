@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useReducer, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Camera, Trash2, UserRound, X } from "lucide-react";
@@ -17,6 +17,36 @@ import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import { localizeHref } from "@/lib/i18n/routing";
 import { formatAppDate } from "@/lib/utils/dates";
+
+type ProfilePanelState = {
+  name: string;
+  dateOfBirth: string;
+  preferredLanguage: SupportedLanguage;
+  detailsSaving: boolean;
+  detailsMessage: string;
+  detailsError: string;
+  photoSaving: boolean;
+  photoMessage: string;
+  photoError: string;
+};
+
+function profilePanelStateFromUser(user: UserProfile): ProfilePanelState {
+  return {
+    name: user.name ?? "",
+    dateOfBirth: user.dateOfBirth ?? "",
+    preferredLanguage: (user.preferredLanguage as SupportedLanguage) || defaultLanguage,
+    detailsSaving: false,
+    detailsMessage: "",
+    detailsError: "",
+    photoSaving: false,
+    photoMessage: "",
+    photoError: "",
+  };
+}
+
+function profilePanelReducer(state: ProfilePanelState, patch: Partial<ProfilePanelState>) {
+  return { ...state, ...patch };
+}
 
 export function ProfilePanel({
   user,
@@ -55,48 +85,45 @@ export function ProfilePanel({
   onClose: () => void;
   t: UiTranslator;
 }) {
-  const [name, setName] = useState(user.name ?? "");
-  const [dateOfBirth, setDateOfBirth] = useState(user.dateOfBirth ?? "");
-  const [preferredLanguage, setPreferredLanguage] = useState<SupportedLanguage>(
-    (user.preferredLanguage as SupportedLanguage) || defaultLanguage,
-  );
-  const [detailsSaving, setDetailsSaving] = useState(false);
-  const [detailsMessage, setDetailsMessage] = useState("");
-  const [detailsError, setDetailsError] = useState("");
-  const [photoSaving, setPhotoSaving] = useState(false);
-  const [photoMessage, setPhotoMessage] = useState("");
-  const [photoError, setPhotoError] = useState("");
+  const [state, updateState] = useReducer(profilePanelReducer, user, profilePanelStateFromUser);
+  const {
+    name,
+    dateOfBirth,
+    preferredLanguage,
+    detailsSaving,
+    detailsMessage,
+    detailsError,
+    photoSaving,
+    photoMessage,
+    photoError,
+  } = state;
   const photoInputRef = useRef<HTMLInputElement>(null);
   const today = new Date().toISOString().slice(0, 10);
 
   async function handlePhotoChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
-    setPhotoSaving(true);
-    setPhotoError("");
-    setPhotoMessage("");
+    updateState({ photoSaving: true, photoError: "", photoMessage: "" });
     try {
       await onPhotoUpload(file);
-      setPhotoMessage(t("Profile photo updated."));
+      updateState({ photoMessage: t("Profile photo updated.") });
     } catch (uploadError) {
-      setPhotoError(uploadError instanceof Error ? uploadError.message : t("Could not update profile photo."));
+      updateState({ photoError: uploadError instanceof Error ? uploadError.message : t("Could not update profile photo.") });
     } finally {
-      setPhotoSaving(false);
+      updateState({ photoSaving: false });
       event.target.value = "";
     }
   }
 
   async function resetPhoto() {
-    setPhotoSaving(true);
-    setPhotoError("");
-    setPhotoMessage("");
+    updateState({ photoSaving: true, photoError: "", photoMessage: "" });
     try {
       await onPhotoRemove();
-      setPhotoMessage(t("Using your Google photo."));
+      updateState({ photoMessage: t("Using your Google photo.") });
     } catch (removeError) {
-      setPhotoError(removeError instanceof Error ? removeError.message : t("Could not reset profile photo."));
+      updateState({ photoError: removeError instanceof Error ? removeError.message : t("Could not reset profile photo.") });
     } finally {
-      setPhotoSaving(false);
+      updateState({ photoSaving: false });
     }
   }
 
@@ -104,14 +131,11 @@ export function ProfilePanel({
     event.preventDefault();
     const trimmedName = name.trim();
     if (!trimmedName) {
-      setDetailsError(t("Enter a display name."));
-      setDetailsMessage("");
+      updateState({ detailsError: t("Enter a display name."), detailsMessage: "" });
       return;
     }
 
-    setDetailsSaving(true);
-    setDetailsError("");
-    setDetailsMessage("");
+    updateState({ detailsSaving: true, detailsError: "", detailsMessage: "" });
     const previousLanguage = user.preferredLanguage || defaultLanguage;
     try {
       const updatedUser = await onProfileSave({
@@ -119,17 +143,19 @@ export function ProfilePanel({
         dateOfBirth: dateOfBirth || null,
         preferredLanguage,
       });
-      setName(updatedUser.name ?? "");
-      setDateOfBirth(updatedUser.dateOfBirth ?? "");
-      setPreferredLanguage((updatedUser.preferredLanguage as SupportedLanguage) || defaultLanguage);
-      setDetailsMessage(t("Profile saved."));
+      updateState({
+        name: updatedUser.name ?? "",
+        dateOfBirth: updatedUser.dateOfBirth ?? "",
+        preferredLanguage: (updatedUser.preferredLanguage as SupportedLanguage) || defaultLanguage,
+        detailsMessage: t("Profile saved."),
+      });
       if ((updatedUser.preferredLanguage || defaultLanguage) !== previousLanguage) {
         window.location.assign(localizeHref(window.location.pathname + window.location.search, updatedUser.preferredLanguage));
       }
     } catch (saveError) {
-      setDetailsError(saveError instanceof Error ? saveError.message : t("Could not save profile."));
+      updateState({ detailsError: saveError instanceof Error ? saveError.message : t("Could not save profile.") });
     } finally {
-      setDetailsSaving(false);
+      updateState({ detailsSaving: false });
     }
   }
 
@@ -204,7 +230,7 @@ export function ProfilePanel({
                 value={name}
                 maxLength={120}
                 autoComplete="name"
-                onChange={(event) => setName(event.target.value)}
+                onChange={(event) => updateState({ name: event.target.value })}
               />
             </label>
             <label>
@@ -213,7 +239,7 @@ export function ProfilePanel({
                 type="date"
                 value={dateOfBirth}
                 max={today}
-                onChange={(event) => setDateOfBirth(event.target.value)}
+                onChange={(event) => updateState({ dateOfBirth: event.target.value })}
               />
             </label>
             <div className="inspir-profile-details-language">
@@ -227,7 +253,7 @@ export function ProfilePanel({
                 description={t("All app text and tutoring replies follow this setting.")}
                 closeLabel={t("Close")}
                 quickChoicesLabel={t("Preferred Language")}
-                onSelect={setPreferredLanguage}
+                onSelect={(language) => updateState({ preferredLanguage: language })}
                 className="inspir-profile-language-picker"
               />
             </div>

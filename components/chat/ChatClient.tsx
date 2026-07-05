@@ -602,21 +602,26 @@ function useChatClientController({
     element.scrollTo({ top, behavior });
   }, [usesManagedMessageScroller]);
 
+  const cancelScheduledMessageScroll = useCallback(() => {
+    const frameId = scrollFrameRef.current;
+    if (frameId === null) return;
+    window.cancelAnimationFrame(frameId);
+    scrollFrameRef.current = null;
+  }, []);
+
   const scheduleMessageScrollToEnd = useCallback((behavior: ScrollBehavior = "auto") => {
     if (usesManagedMessageScroller) return;
     if (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current) return;
-    if (scrollFrameRef.current !== null) window.cancelAnimationFrame(scrollFrameRef.current);
+    cancelScheduledMessageScroll();
     scrollFrameRef.current = window.requestAnimationFrame(() => {
       scrollFrameRef.current = null;
       scrollMessageViewportToEnd(behavior);
     });
-  }, [scrollMessageViewportToEnd, usesManagedMessageScroller]);
+  }, [cancelScheduledMessageScroll, scrollMessageViewportToEnd, usesManagedMessageScroller]);
 
   useEffect(() => {
-    return () => {
-      if (scrollFrameRef.current !== null) window.cancelAnimationFrame(scrollFrameRef.current);
-    };
-  }, []);
+    return cancelScheduledMessageScroll;
+  }, [cancelScheduledMessageScroll]);
 
   useEffect(() => {
     if (usesManagedMessageScroller) return;

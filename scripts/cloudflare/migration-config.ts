@@ -16,6 +16,7 @@ export const LOCAL_GATE_IDS = [
   "typecheck",
   "cloudflare-worker-typecheck",
   "lint",
+  "react-doctor",
   "unit-tests",
   "source-secret-scan",
   "next-build",

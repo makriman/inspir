@@ -77,7 +77,7 @@ export function MarketingLanguageControls({
   }
 
   const prompt = promptVisible ? (
-    <div className="marketing-language-bar" role="region" aria-label={copy.promptAriaLabel}>
+    <section className="marketing-language-bar" aria-label={copy.promptAriaLabel}>
       <div className="marketing-language-bar-copy">
         <span className="marketing-language-bar-icon" aria-hidden="true">
           <Globe2 size={18} />
@@ -113,7 +113,7 @@ export function MarketingLanguageControls({
           <X size={17} />
         </button>
       </div>
-    </div>
+    </section>
   ) : null;
 
   return (

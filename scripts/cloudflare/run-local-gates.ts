@@ -5,8 +5,10 @@ import path from "node:path";
 import { LOCAL_GATE_IDS, cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
 import { buildRepoSourceFingerprint, fingerprintFile } from "./source-fingerprint";
 
+type LocalGateId = (typeof LOCAL_GATE_IDS)[number];
+
 type Gate = {
-  id: string;
+  id: LocalGateId;
   steps: GateStep[];
 };
 
@@ -38,10 +40,10 @@ const topLevelUnitTests = fs
   .sort()
   .map((file) => path.join("tests", file));
 
-const gates: Gate[] = [
-  { id: LOCAL_GATE_IDS[0], steps: [{ command: bin("tsc"), args: ["--noEmit"] }] },
-  {
-    id: LOCAL_GATE_IDS[1],
+const gatesById: Record<LocalGateId, Gate> = {
+  typecheck: { id: "typecheck", steps: [{ command: bin("tsc"), args: ["--noEmit"] }] },
+  "cloudflare-worker-typecheck": {
+    id: "cloudflare-worker-typecheck",
     steps: [
       {
         command: bin("wrangler"),
@@ -50,18 +52,24 @@ const gates: Gate[] = [
       { command: bin("tsc"), args: ["--noEmit", "--project", "tsconfig.cloudflare-worker.json"] },
     ],
   },
-  { id: LOCAL_GATE_IDS[2], steps: [{ command: bin("eslint"), args: [] }] },
-  { id: LOCAL_GATE_IDS[3], steps: [{ command: process.execPath, args: ["--import", "tsx", "--test", ...topLevelUnitTests] }] },
-  { id: LOCAL_GATE_IDS[4], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts"] }] },
-  { id: LOCAL_GATE_IDS[5], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
-  { id: LOCAL_GATE_IDS[6], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
-  { id: LOCAL_GATE_IDS[7], steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }] },
-  { id: LOCAL_GATE_IDS[8], steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run"] }] },
-  {
-    id: LOCAL_GATE_IDS[9],
+  lint: { id: "lint", steps: [{ command: bin("eslint"), args: [] }] },
+  "react-doctor": { id: "react-doctor", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-react-doctor-gate.ts"] }] },
+  "unit-tests": { id: "unit-tests", steps: [{ command: process.execPath, args: ["--import", "tsx", "--test", ...topLevelUnitTests] }] },
+  "source-secret-scan": { id: "source-secret-scan", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts"] }] },
+  "next-build": { id: "next-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
+  "opennext-build": { id: "opennext-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
+  "opennext-artifact-secret-scan": {
+    id: "opennext-artifact-secret-scan",
+    steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }],
+  },
+  "wrangler-deploy-dry-run": { id: "wrangler-deploy-dry-run", steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run"] }] },
+  "wrangler-check-startup": {
+    id: "wrangler-check-startup",
     steps: [{ command: bin("wrangler"), args: ["check", "startup", "--outfile", startupProfilePath, "--args=--dry-run"] }],
   },
-];
+};
+
+const gates = LOCAL_GATE_IDS.map((id) => gatesById[id]);
 
 ensureLocalCliWrappers();
 
