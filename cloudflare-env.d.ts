@@ -7,6 +7,7 @@ declare global {
     MEMORY_VECTORIZE: VectorizeIndex;
     MEMORY_POST_TURN_QUEUE: Queue<import("./lib/ai/memory-queue").MemoryQueueMessage>;
     NEXT_INC_CACHE_R2_BUCKET: R2Bucket;
+    PROFILE_IMAGES_R2_BUCKET: R2Bucket;
     WORKER_SELF_REFERENCE: Fetcher;
     APP_URL: string;
     NEXTAUTH_URL: string;
@@ -35,6 +36,8 @@ declare global {
     AUTH_GOOGLE_SECRET: string;
     ADMIN_EMAILS: string;
     CRON_SECRET: string;
+    E2E_TEST_AUTH_EMAIL: string;
+    E2E_TEST_AUTH_SECRET: string;
   }
 }
 

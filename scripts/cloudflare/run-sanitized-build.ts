@@ -7,6 +7,7 @@ import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config"
 import { writeBuildArtifactScanReport } from "./scan-build-artifacts";
 import {
   buildSanitizedCloudflareBuildEnv,
+  localPreviewRuntimeEnv,
   sanitizedDotEnvContent,
   withSanitizedProjectEnvFiles,
 } from "./sanitized-build-env";
@@ -146,6 +147,7 @@ export function runSanitizedBuildCommand(
 
       if (mode === "opennext-preview") {
         writeLocalPreviewRuntimeVars();
+        Object.assign(env, localPreviewRuntimeEnv());
       }
 
       const result = spawnSync(command.executable, [...command.args, ...passthroughArgs], {

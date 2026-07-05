@@ -38,17 +38,47 @@ function main() {
 }
 
 function applySupplementalMigrations() {
+  runWrangler([
+    "d1",
+    "execute",
+    D1_DATABASE_NAME,
+    "--local",
+    "--command",
+    'create table if not exists "__inspir_local_migrations" ("name" text primary key not null, "applied_at" integer not null);',
+  ]);
+  const existingOutput = runWrangler([
+    "d1",
+    "execute",
+    D1_DATABASE_NAME,
+    "--local",
+    "--json",
+    "--command",
+    'select "name" from "__inspir_local_migrations";',
+  ]);
+  const existingRows = parseJsonFromOutput<Array<{ results?: Array<{ name?: string }> }>>(existingOutput, []);
+  const applied = new Set(existingRows.flatMap((row) => row.results ?? []).map((row) => row.name).filter(Boolean));
   const baseMigration = path.basename(migrationPath);
   const migrationFiles = fs
     .readdirSync(migrationDir)
     .filter((file) => file.endsWith(".sql") && file !== baseMigration)
     .sort();
+  const appliedNow: string[] = [];
 
   for (const file of migrationFiles) {
+    if (applied.has(file)) continue;
     runWrangler(["d1", "execute", D1_DATABASE_NAME, "--local", "--file", path.join(migrationDir, file)]);
+    runWrangler([
+      "d1",
+      "execute",
+      D1_DATABASE_NAME,
+      "--local",
+      "--command",
+      `insert into "__inspir_local_migrations" ("name", "applied_at") values (${sqlString(file)}, ${Date.now()}) on conflict ("name") do update set "applied_at" = excluded."applied_at";`,
+    ]);
+    appliedNow.push(file);
   }
 
-  return migrationFiles;
+  return appliedNow;
 }
 
 function resetLocalRuntimeState() {
@@ -72,4 +102,8 @@ function parseJsonFromOutput<T>(output: string, fallback: T): T {
     if (first === -1 || last === -1 || last <= first) return fallback;
     return JSON.parse(trimmed.slice(first, last + 1)) as T;
   }
+}
+
+function sqlString(value: string) {
+  return `'${value.replaceAll("'", "''")}'`;
 }

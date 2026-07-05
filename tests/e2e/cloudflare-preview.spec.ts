@@ -184,6 +184,25 @@ test("Google sign-in and sign-out work with the dedicated test account", async (
     .toBe(false);
 });
 
+test("authenticated profile photo API stores, serves, and resets image bytes", async ({ page }) => {
+  test.setTimeout(120_000);
+  await signInWithGoogle(page);
+
+  const photo = await uploadTinyProfilePhoto(page);
+  expect(photo.status, photo.body).toBe(200);
+  expect(photo.json?.profileImageHash).toBeTruthy();
+
+  const photoGet = await api(page, "GET", "/api/me/photo");
+  expect(photoGet.status, photoGet.body).toBe(200);
+  expect(photoGet.headers["content-type"]).toContain("image/png");
+
+  const photoReset = await api(page, "DELETE", "/api/me/photo");
+  expect(photoReset.status, photoReset.body).toBe(200);
+
+  const photoAfterReset = await api(page, "GET", "/api/me/photo");
+  expect(photoAfterReset.status, photoAfterReset.body).toBe(404);
+});
+
 test("authenticated profile, activity, memory, admin, and private chat APIs work", async ({ page }) => {
   test.setTimeout(240_000);
   await signInWithGoogle(page);

@@ -7,7 +7,6 @@ const supportedProfileImageTypes = new Set(["image/jpeg", "image/png", "image/we
 export type PreparedProfileImage =
   | {
       success: true;
-      base64: string;
       hash: string;
       mimeType: string;
       byteLength: number;
@@ -35,7 +34,6 @@ export function prepareProfileImage(bytes: Uint8Array, providedMimeType?: string
   const buffer = Buffer.from(bytes);
   return {
     success: true,
-    base64: buffer.toString("base64"),
     hash: createHash("sha256").update(buffer).digest("hex"),
     mimeType,
     byteLength: bytes.length,

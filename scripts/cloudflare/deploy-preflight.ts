@@ -8,6 +8,7 @@ import {
   LOCAL_GATE_IDS,
   MEMORY_POST_TURN_DLQ_NAME,
   MEMORY_POST_TURN_QUEUE_NAME,
+  PROFILE_IMAGES_R2_BUCKET_NAME,
   R2_BUCKET_NAME,
   VECTORIZE_INDEX_NAME,
   cloudflareDir,
@@ -132,6 +133,7 @@ export function buildSteadyStateDeployPreflightReport(options: {
   checks.push(wranglerConfigCheck(cwd));
 
   if (options.runWranglerDryRun !== false) {
+    checks.push(remoteD1ProfilePhotoSchemaCheck());
     checks.push(wranglerDeployDryRunCheck());
   }
 
@@ -274,6 +276,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const d1 = arrayValue(config.d1_databases).find((binding) => binding.binding === "DB");
   const vectorize = arrayValue(config.vectorize).find((binding) => binding.binding === "MEMORY_VECTORIZE");
   const r2 = arrayValue(config.r2_buckets).find((binding) => binding.binding === "NEXT_INC_CACHE_R2_BUCKET");
+  const profileImagesR2 = arrayValue(config.r2_buckets).find((binding) => binding.binding === "PROFILE_IMAGES_R2_BUCKET");
   const queueProducer = arrayValue(objectValue(config.queues).producers).find(
     (binding) => binding.binding === "MEMORY_POST_TURN_QUEUE",
   );
@@ -302,6 +305,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     d1Ok: d1?.database_name === D1_DATABASE_NAME && d1?.database_id === D1_DATABASE_ID,
     vectorizeOk: vectorize?.index_name === VECTORIZE_INDEX_NAME,
     r2Ok: r2?.bucket_name === R2_BUCKET_NAME,
+    profileImagesR2Ok: profileImagesR2?.bucket_name === PROFILE_IMAGES_R2_BUCKET_NAME,
     queueProducerOk: queueProducer?.queue === MEMORY_POST_TURN_QUEUE_NAME,
     queueConsumerOk:
       queueConsumer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
@@ -332,6 +336,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     problems.d1Ok &&
     problems.vectorizeOk &&
     problems.r2Ok &&
+    problems.profileImagesR2Ok &&
     problems.queueProducerOk &&
     problems.queueConsumerOk &&
     problems.serviceOk &&
@@ -365,6 +370,42 @@ function wranglerDeployDryRunCheck(): DeployPreflightCheck {
             status: result.status,
             outputTail: `${result.stdout ?? ""}${result.stderr ?? ""}`.slice(-2000),
           },
+  };
+}
+
+function remoteD1ProfilePhotoSchemaCheck(): DeployPreflightCheck {
+  const requiredColumns = ["profile_image_r2_key", "profile_image_r2_etag", "profile_image_size"];
+  const result = spawnSync(
+    path.resolve(process.cwd(), "node_modules/.bin/wrangler"),
+    ["d1", "execute", D1_DATABASE_NAME, "--remote", "--json", "--command", "pragma table_info(users);"],
+    {
+      cwd: process.cwd(),
+      env: commandEnv(),
+      encoding: "utf8",
+      maxBuffer: 64 * 1024 * 1024,
+    },
+  );
+  if (result.status !== 0) {
+    return {
+      name: "remote D1 profile photo schema",
+      status: "fail",
+      detail: {
+        status: result.status,
+        outputTail: `${result.stdout ?? ""}${result.stderr ?? ""}`.slice(-2000),
+      },
+    };
+  }
+
+  const rows = parseJsonFromOutput<Array<{ results?: Array<{ name?: string }> }>>(
+    `${result.stdout ?? ""}${result.stderr ?? ""}`,
+    [],
+  ).flatMap((entry) => entry.results ?? []);
+  const columns = new Set(rows.map((row) => row.name).filter(Boolean));
+  const missingColumns = requiredColumns.filter((column) => !columns.has(column));
+  return {
+    name: "remote D1 profile photo schema",
+    status: missingColumns.length ? "fail" : "pass",
+    detail: missingColumns.length ? { missingColumns } : { columns: requiredColumns },
   };
 }
 
@@ -403,6 +444,22 @@ function isString(value: unknown): value is string {
 function samplingRateAtMost(value: unknown, max: number) {
   const numeric = Number(value);
   return Number.isFinite(numeric) && numeric >= 0 && numeric <= max;
+}
+
+function parseJsonFromOutput<T>(output: string, fallback: T): T {
+  const trimmed = output.trim();
+  if (!trimmed) return fallback;
+  try {
+    return JSON.parse(trimmed) as T;
+  } catch {
+    const firstObject = trimmed.indexOf("{");
+    const firstArray = trimmed.indexOf("[");
+    const first =
+      firstObject === -1 ? firstArray : firstArray === -1 ? firstObject : Math.min(firstObject, firstArray);
+    const last = Math.max(trimmed.lastIndexOf("}"), trimmed.lastIndexOf("]"));
+    if (first === -1 || last === -1 || last <= first) return fallback;
+    return JSON.parse(trimmed.slice(first, last + 1)) as T;
+  }
 }
 
 function stripJsonComments(input: string) {

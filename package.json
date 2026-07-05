@@ -35,6 +35,7 @@
     "cf:activate:write-freeze": "tsx scripts/cloudflare/activate-write-freeze.ts",
     "cf:backup:frozen-cloudflare": "tsx scripts/cloudflare/backup-frozen-cloudflare-production.ts",
     "cf:d1:local:setup": "tsx scripts/cloudflare/setup-local-d1.ts",
+    "cf:backfill:profile-images-r2": "tsx scripts/cloudflare/backfill-profile-images-r2.ts --remote",
     "cf:sync:site-translation-sources": "tsx scripts/cloudflare/sync-site-translation-sources.ts",
     "cf:preflight:deploy": "tsx scripts/cloudflare/deploy-preflight.ts",
     "cf:verify:cloudflare-token": "tsx scripts/cloudflare/verify-cloudflare-api-token.ts",

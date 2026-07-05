@@ -27,6 +27,7 @@ import { isValidFieldTranslation } from "../lib/i18n/translation-field-validatio
 import { isFreshAppTranslation, validateTranslationPayload } from "../lib/i18n/translation-validation";
 import { calculateAge, validateDateOfBirth } from "../lib/profile/age";
 import { maxProfileImageBytes, prepareProfileImage } from "../lib/profile/photo";
+import { profileImageObjectKey } from "../lib/profile/photo-key";
 import { updateProfileSchema } from "../lib/profile/validation";
 import { isChatAppPath } from "../lib/routes/chat-path";
 
@@ -61,6 +62,13 @@ test("profile photo validation accepts small real image types only", () => {
 
   const tooLarge = prepareProfileImage(new Uint8Array(maxProfileImageBytes + 1), "image/png");
   assert.equal(tooLarge.success, false);
+});
+
+test("profile photo R2 keys are deterministic and do not expose user ids", () => {
+  const key = profileImageObjectKey("user@example.com", "a".repeat(64));
+  assert.match(key, /^profile-images\/users\/[a-f0-9]{2}\/[a-f0-9]{64}\/a{64}$/);
+  assert.equal(key.includes("user@example.com"), false);
+  assert.equal(key.includes(".."), false);
 });
 
 test("prompt assembly includes age context only when known", () => {

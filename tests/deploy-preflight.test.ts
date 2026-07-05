@@ -11,6 +11,7 @@ import {
   LOCAL_GATE_IDS,
   MEMORY_POST_TURN_DLQ_NAME,
   MEMORY_POST_TURN_QUEUE_NAME,
+  PROFILE_IMAGES_R2_BUCKET_NAME,
   R2_BUCKET_NAME,
   VECTORIZE_INDEX_NAME,
 } from "../scripts/cloudflare/migration-config";
@@ -197,7 +198,10 @@ function wranglerConfig() {
     preview_urls: false,
     d1_databases: [{ binding: "DB", database_name: D1_DATABASE_NAME, database_id: D1_DATABASE_ID }],
     vectorize: [{ binding: "MEMORY_VECTORIZE", index_name: VECTORIZE_INDEX_NAME }],
-    r2_buckets: [{ binding: "NEXT_INC_CACHE_R2_BUCKET", bucket_name: R2_BUCKET_NAME }],
+    r2_buckets: [
+      { binding: "NEXT_INC_CACHE_R2_BUCKET", bucket_name: R2_BUCKET_NAME },
+      { binding: "PROFILE_IMAGES_R2_BUCKET", bucket_name: PROFILE_IMAGES_R2_BUCKET_NAME },
+    ],
     services: [{ binding: "WORKER_SELF_REFERENCE", service: "inspirlearning" }],
     queues: {
       producers: [{ binding: "MEMORY_POST_TURN_QUEUE", queue: MEMORY_POST_TURN_QUEUE_NAME }],

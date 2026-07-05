@@ -119,8 +119,13 @@ export function sanitizedDotEnvContent(cwd = process.cwd(), options: SanitizedPr
     .join("\n")}\n`;
 }
 
-function localPreviewRuntimeEnv() {
-  const env: Record<string, string> = { ...LOCAL_PREVIEW_RUNTIME_ENV };
+export function localPreviewRuntimeEnv() {
+  const localPreviewUrl = process.env.PLAYWRIGHT_BASE_URL?.trim() || "http://localhost:8787";
+  const env: Record<string, string> = {
+    ...LOCAL_PREVIEW_RUNTIME_ENV,
+    AUTH_URL: localPreviewUrl,
+    NEXTAUTH_URL: localPreviewUrl,
+  };
   for (const key of OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS) {
     const value = process.env[key]?.trim();
     if (value) env[key] = value;
