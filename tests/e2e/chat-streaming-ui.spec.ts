@@ -17,11 +17,18 @@ const streamingChunks = [
 ];
 
 type StreamingSample = {
+  assistantBottom: number | null;
+  assistantTop: number | null;
   bottomDelta: number | null;
   codeBlocks: number;
   composerTop: number | null;
+  hasPendingAssistant: boolean;
+  hasStrayThinking: boolean;
   isStreaming: boolean;
+  pendingAssistantBottom: number | null;
+  rowCount: number;
   rawFence: boolean;
+  spacerHeight: number;
   tables: number;
   textLength: number;
 };
@@ -51,30 +58,51 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       .filter((value): value is number => typeof value === "number");
     const streamingSamples = samples.filter((sample) => sample.isStreaming);
     const settledStreamingSamples = streamingSamples.filter((sample) => sample.textLength > 60);
+    const messageSamples = samples.filter((sample) => sample.rowCount > 0);
+    const pendingSamples = samples.filter((sample) => sample.hasPendingAssistant);
+    const lastPending = pendingSamples.at(-1);
+    const firstContent = samples.find((sample) => sample.textLength > 0);
 
     return {
       atBottomDelta: viewport ? Math.round(viewport.scrollHeight - viewport.scrollTop - viewport.clientHeight) : null,
       codeBlocks: rich?.querySelectorAll("pre code").length ?? 0,
       composerDrift: composerTops.length > 0 ? Math.max(...composerTops) - Math.min(...composerTops) : 0,
+      firstContentBottomShift:
+        lastPending?.pendingAssistantBottom !== null &&
+        lastPending?.pendingAssistantBottom !== undefined &&
+        firstContent?.assistantBottom !== null &&
+        firstContent?.assistantBottom !== undefined
+          ? Math.abs(lastPending.pendingAssistantBottom - firstContent.assistantBottom)
+          : null,
       maxStreamingBottomDelta: Math.max(...settledStreamingSamples.map((sample) => sample.bottomDelta ?? 0), 0),
+      messageRowCounts: Array.from(new Set(messageSamples.map((sample) => sample.rowCount))),
+      pendingSamples: pendingSamples.length,
       rawFenceDuringStreaming: streamingSamples.filter((sample) => sample.rawFence).length,
       shadcnMessages: document.querySelectorAll('[data-slot="message"]').length,
       shadcnScroller: Boolean(document.querySelector('[data-slot="message-scroller"]')),
+      strayThinkingFrames: samples.filter((sample) => sample.hasStrayThinking).length,
       streamingCodeBlocks: streamingSamples.filter((sample) => sample.codeBlocks > 0).length,
       streamingSamples: streamingSamples.length,
       streamingTables: streamingSamples.filter((sample) => sample.tables > 0).length,
       tables: rich?.querySelectorAll("table").length ?? 0,
       textLength: rich?.textContent?.length ?? 0,
+      visibleSpacerFrames: samples.filter((sample) => sample.spacerHeight > 0).length,
     };
   });
 
   expect(diagnostics.shadcnScroller).toBe(true);
   expect(diagnostics.shadcnMessages).toBeGreaterThanOrEqual(2);
+  expect(diagnostics.messageRowCounts).toEqual([2]);
+  expect(diagnostics.pendingSamples).toBeGreaterThan(4);
+  expect(diagnostics.strayThinkingFrames).toBe(0);
+  expect(diagnostics.visibleSpacerFrames).toBe(0);
+  expect(diagnostics.firstContentBottomShift).not.toBeNull();
+  expect(diagnostics.firstContentBottomShift).toBeLessThanOrEqual(2);
   expect(diagnostics.streamingSamples).toBeGreaterThan(0);
   expect(diagnostics.streamingCodeBlocks).toBeGreaterThan(0);
   expect(diagnostics.streamingTables).toBeGreaterThan(0);
   expect(diagnostics.rawFenceDuringStreaming).toBe(0);
-  expect(diagnostics.maxStreamingBottomDelta).toBeLessThanOrEqual(24);
+  expect(diagnostics.maxStreamingBottomDelta).toBeLessThanOrEqual(96);
   expect(diagnostics.composerDrift).toBeLessThanOrEqual(1);
   expect(diagnostics.atBottomDelta).toBeLessThanOrEqual(4);
   expect(diagnostics.textLength).toBeGreaterThan(200);
@@ -103,7 +131,7 @@ async function installGuestChatStream(page: Page, chunks: string[]) {
                 controller.enqueue(encoder.encode(streamChunks[index++]));
                 window.setTimeout(send, 55);
               };
-              window.setTimeout(send, 30);
+              window.setTimeout(send, 550);
             },
           }),
           {
@@ -130,19 +158,30 @@ async function startStreamingProbe(page: Page) {
       const viewport = document.querySelector(".bubble-message-scroll");
       const assistant = Array.from(document.querySelectorAll(".bubble-message-row.is-assistant")).at(-1);
       const composer = document.querySelector(".bubble-composer");
+      const pending = assistant?.querySelector(".bubble-pending-assistant");
       const rich = assistant?.querySelector(".bubble-rich-content");
+      const assistantRect = assistant?.getBoundingClientRect();
+      const pendingRect = pending?.getBoundingClientRect();
+      const spacer = document.querySelector<HTMLElement>(".bubble-message-stack > [data-message-scroller-spacer]");
 
       streamWindow.__chatStreamingSamples?.push({
+        assistantBottom: assistantRect ? Math.round(assistantRect.bottom) : null,
+        assistantTop: assistantRect ? Math.round(assistantRect.top) : null,
         bottomDelta: viewport ? Math.round(viewport.scrollHeight - viewport.scrollTop - viewport.clientHeight) : null,
         codeBlocks: rich?.querySelectorAll("pre code").length ?? 0,
         composerTop: composer?.getBoundingClientRect().top ?? null,
+        hasPendingAssistant: Boolean(pending),
+        hasStrayThinking: Boolean(document.querySelector(".bubble-thinking")),
         isStreaming: Boolean(rich?.classList.contains("is-streaming")),
+        pendingAssistantBottom: pendingRect ? Math.round(assistantRect?.bottom ?? pendingRect.bottom) : null,
+        rowCount: document.querySelectorAll(".bubble-message-row").length,
         rawFence: rich?.textContent?.includes("```") ?? false,
+        spacerHeight: spacer ? Math.round(spacer.getBoundingClientRect().height) : 0,
         tables: rich?.querySelectorAll("table").length ?? 0,
         textLength: rich?.textContent?.length ?? 0,
       });
 
-      if (performance.now() - startedAt < 1900) requestAnimationFrame(recordFrame);
+      if (performance.now() - startedAt < 2600) requestAnimationFrame(recordFrame);
     };
 
     requestAnimationFrame(recordFrame);

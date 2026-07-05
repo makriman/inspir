@@ -534,10 +534,16 @@ a {
 .bubble-message-stack {
   display: flex;
   width: min(860px, 100%);
+  min-height: 100%;
   margin: 0 auto;
   flex-direction: column;
   gap: 18px;
+  justify-content: flex-end;
   padding: 6px 0 38px;
+}
+
+.bubble-message-stack > [data-message-scroller-spacer] {
+  display: none !important;
 }
 
 .bubble-message-row {
@@ -1322,6 +1328,24 @@ a {
 
 .bubble-thinking-dots > span:nth-child(3) {
   animation-delay: 0.28s;
+}
+
+.bubble-pending-assistant {
+  display: inline-flex;
+  min-width: 132px;
+  align-items: center;
+  gap: 8px;
+  color: rgb(255 255 255 / 0.76);
+}
+
+.bubble-pending-assistant .bubble-thinking-dots {
+  color: rgb(88 205 110);
+}
+
+.bubble-pending-assistant strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgb(255 255 255 / 0.76);
 }
 
 .bubble-thinking strong {

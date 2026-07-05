@@ -460,6 +460,7 @@ function isFlashcardState(value: Record<string, unknown>): value is PublicFlashc
 
 function toDisplayMessage(message: Message): Message | null {
   if (message.role === "system") return null;
+  if (isPendingAssistantMessage(message)) return message;
   const content = getVisibleMessageContent(message.content).trim();
   if (!content) return null;
   return content === message.content ? message : { ...message, content };
@@ -467,6 +468,17 @@ function toDisplayMessage(message: Message): Message | null {
 
 function displayMessages(messages: Message[]) {
   return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
+}
+
+function isPendingAssistantMessage(message: Message) {
+  return message.role === "assistant" && message.metadata?.pendingAssistant === true;
+}
+
+function clearPendingAssistantMetadata(metadata: Record<string, unknown> | undefined) {
+  if (!metadata?.pendingAssistant) return metadata;
+  const rest = { ...metadata };
+  delete rest.pendingAssistant;
+  return Object.keys(rest).length > 0 ? rest : undefined;
 }
 
 function isExplicitMemoryMutationRequest(value: string) {
@@ -1080,7 +1092,15 @@ function useChatClientController({
       createdAt: now,
     };
     const assistantMessageId = `local-assistant-${now.getTime()}`;
-    if (appendUser) setMessages((current) => [...current, userMessage]);
+    const assistantPlaceholder: Message = {
+      id: assistantMessageId,
+      role: "assistant",
+      content: "",
+      createdAt: now,
+      metadata: { pendingAssistant: true },
+    };
+    setMessages((current) => [...current, ...(appendUser ? [userMessage] : []), assistantPlaceholder]);
+    setStreamingMessageId(assistantMessageId);
     scheduleMessageScrollToEnd("auto");
 
     const controller = new AbortController();
@@ -1119,7 +1139,9 @@ function useChatClientController({
       ensureCurrentRequest();
       if (isGuest && response.status === 429) {
         setGuestPromptOpen(true);
-        setMessages((current) => current.filter((message) => message.id !== userMessage.id));
+        setMessages((current) =>
+          current.filter((message) => message.id !== userMessage.id && message.id !== assistantMessageId),
+        );
         return;
       }
       if (!response.ok || !response.body) throw new Error("No assistant response");
@@ -1127,7 +1149,7 @@ function useChatClientController({
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let assistantText = "";
-      let assistantInserted = false;
+      let assistantInserted = true;
       let assistantFlushTimeout: number | null = null;
       let assistantFlushFrame: number | null = null;
 
@@ -1169,8 +1191,11 @@ function useChatClientController({
           }));
         } else {
           updateChatState((current) => ({
+            awaitingResponse: false,
             messages: current.messages.map((message) =>
-              message.id === assistantMessageId ? { ...message, content: assistantText } : message,
+              message.id === assistantMessageId
+                ? { ...message, content: assistantText, metadata: clearPendingAssistantMetadata(message.metadata) }
+                : message,
             ),
           }));
         }
@@ -1234,25 +1259,29 @@ function useChatClientController({
       setAwaitingResponse(false);
       setStreamingMessageId(null);
       if ((error as Error).name === "AbortError") {
-        setMessages((current) => [
-          ...current,
-          {
-            id: assistantMessageId,
-            role: "assistant",
-            content: "Stopped. Send another message whenever you are ready.",
-            createdAt: new Date(),
-          },
-        ]);
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  content: "Stopped. Send another message whenever you are ready.",
+                  metadata: clearPendingAssistantMetadata(message.metadata),
+                }
+              : message,
+          ),
+        );
       } else {
-        setMessages((current) => [
-          ...current,
-          {
-            id: assistantMessageId,
-            role: "assistant",
-            content: "I could not answer right now. Please try again.",
-            createdAt: new Date(),
-          },
-        ]);
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  content: "I could not answer right now. Please try again.",
+                  metadata: clearPendingAssistantMetadata(message.metadata),
+                }
+              : message,
+          ),
+        );
       }
       scheduleMessageScrollToEnd("auto");
     } finally {
@@ -1664,7 +1693,6 @@ function ChatClientLayout(controller: ChatClientController) {
     translationBundle,
     translationRootRef,
   } = controller;
-
   return (
     <div
       key={`${translationBundle.language}-${translationBundle.sourceHash}`}
@@ -1974,9 +2002,11 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
     userDisplayName,
     visibleChatMessages,
   } = controller;
-  const streamingMessageLength = streamingMessageId
-    ? (visibleChatMessages.find((message) => message.id === streamingMessageId)?.content.length ?? 0)
-    : 0;
+  const hasPendingAssistantCard = Boolean(
+    awaitingResponse &&
+      streamingMessageId &&
+      visibleChatMessages.some((message) => message.id === streamingMessageId && isPendingAssistantMessage(message)),
+  );
 
   return (
     <main className="bubble-workspace">
@@ -1988,7 +2018,6 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
           messageCount={visibleChatMessages.length}
           sending={sending}
           streamingMessageId={streamingMessageId}
-          streamingMessageLength={streamingMessageLength}
         />
         <MessageScroller className="bubble-message-scroller">
           <MessageScrollerViewport ref={listRef} className="bubble-message-scroll app-scrollbar">
@@ -2013,7 +2042,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
                   />
                 </MessageScrollerItem>
               ))}
-              {awaitingResponse ? (
+              {awaitingResponse && !hasPendingAssistantCard ? (
                 <MessageScrollerItem scrollAnchor>
                   <ThinkingMarker label="Thinking" />
                 </MessageScrollerItem>
@@ -2058,7 +2087,6 @@ function StandardChatScrollFollow({
   messageCount,
   sending,
   streamingMessageId,
-  streamingMessageLength,
 }: {
   activeChatId: string | undefined;
   activeTopicId: string;
@@ -2066,7 +2094,6 @@ function StandardChatScrollFollow({
   messageCount: number;
   sending: boolean;
   streamingMessageId: string | null;
-  streamingMessageLength: number;
 }) {
   const { scrollToEnd } = useMessageScroller();
   const shouldFollow = sending || awaitingResponse || Boolean(streamingMessageId);
@@ -2083,7 +2110,6 @@ function StandardChatScrollFollow({
     sending,
     shouldFollow,
     streamingMessageId,
-    streamingMessageLength,
   ]);
 
   return null;
@@ -5594,6 +5620,7 @@ function MessageBubble({
   onMemorySources?: (sources: MessageMemorySource[]) => void;
 }) {
   const isUser = message.role === "user";
+  const isPending = isPendingAssistantMessage(message) && isStreaming;
   const memorySources = getMessageMemorySources(message);
   const [copied, setCopied] = useState(false);
 
@@ -5623,28 +5650,43 @@ function MessageBubble({
                 {isUser ? <UserRound size={14} /> : <Bot size={14} />}
                 <strong>{isUser ? userLabel : assistantLabel}</strong>
               </MessageHeader>
-              <RichMarkdownContent content={message.content} streaming={isStreaming} />
-              <MessageFooter className="bubble-message-footer">
-                <time>{formatBubbleDate(message.createdAt)}</time>
-                {!isUser && memorySources.length > 0 && onMemorySources ? (
-                  <button
-                    type="button"
-                    onClick={() => onMemorySources(memorySources)}
-                    aria-label="Show memory sources"
-                    className="bubble-memory-source-button"
-                  >
-                    <StickyNote size={14} />
+              {isPending ? <PendingAssistantBody /> : <RichMarkdownContent content={message.content} streaming={isStreaming} />}
+              {!isPending ? (
+                <MessageFooter className="bubble-message-footer">
+                  <time>{formatBubbleDate(message.createdAt)}</time>
+                  {!isUser && memorySources.length > 0 && onMemorySources ? (
+                    <button
+                      type="button"
+                      onClick={() => onMemorySources(memorySources)}
+                      aria-label="Show memory sources"
+                      className="bubble-memory-source-button"
+                    >
+                      <StickyNote size={14} />
+                    </button>
+                  ) : null}
+                  <button type="button" onClick={copyMessage} aria-label="Copy message">
+                    {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
                   </button>
-                ) : null}
-                <button type="button" onClick={copyMessage} aria-label="Copy message">
-                  {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
-                </button>
-              </MessageFooter>
+                </MessageFooter>
+              ) : null}
             </article>
           </ChatBubbleContent>
         </ChatBubblePrimitive>
       </MessageContent>
     </ChatMessagePrimitive>
+  );
+}
+
+function PendingAssistantBody() {
+  return (
+    <div className="bubble-pending-assistant" aria-live="polite" aria-label="Thinking">
+      <span className="bubble-thinking-dots">
+        <span />
+        <span />
+        <span />
+      </span>
+      <strong>Thinking</strong>
+    </div>
   );
 }
 
