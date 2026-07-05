@@ -16,7 +16,7 @@ export default defineConfig({
       ? {
           command: "pnpm cf:preview",
           url: baseURL,
-          reuseExistingServer: !process.env.CI,
+          reuseExistingServer: false,
           timeout: 180_000,
         }
       : undefined,

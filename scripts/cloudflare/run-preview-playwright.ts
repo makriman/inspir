@@ -49,18 +49,47 @@ if (result.status !== 0 || !parsed || !sourceFingerprintStable) process.exitCode
 
 function createLocalCliWrappers() {
   const binDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-preview-playwright-bin-"));
-  const realPnpm = "/Users/makriman/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm";
   const wrapper = `#!/usr/bin/env node
 const { spawnSync } = require("node:child_process");
+const fs = require("node:fs");
 const path = require("node:path");
 
 const repo = ${JSON.stringify(process.cwd())};
-const realPnpm = ${JSON.stringify(realPnpm)};
 const args = process.argv.slice(2);
 
 function run(command, finalArgs) {
   const result = spawnSync(command, finalArgs, { cwd: repo, env: process.env, stdio: "inherit" });
   process.exit(result.status ?? 1);
+}
+
+function pathEntries() {
+  return (process.env.PATH || "")
+    .split(path.delimiter)
+    .filter((entry) => entry && path.resolve(entry) !== __dirname);
+}
+
+function executableNames(name) {
+  return process.platform === "win32" ? [name + ".cmd", name + ".exe", name] : [name];
+}
+
+function findOnPath(name) {
+  for (const entry of pathEntries()) {
+    for (const executable of executableNames(name)) {
+      const candidate = path.join(entry, executable);
+      if (fs.existsSync(candidate)) return candidate;
+    }
+  }
+  return null;
+}
+
+function packageManagerInvocation() {
+  const npmExecPath = process.env.npm_execpath;
+  if (npmExecPath && fs.existsSync(npmExecPath)) {
+    if (/\\.(?:cjs|mjs|js)$/.test(npmExecPath)) return { command: process.execPath, argsPrefix: [npmExecPath] };
+    return { command: npmExecPath, argsPrefix: [] };
+  }
+  const pnpm = findOnPath("pnpm");
+  return { command: pnpm || "pnpm", argsPrefix: [] };
 }
 
 if (args[0] === "cf:preview") {
@@ -79,7 +108,8 @@ if (args[0] === "exec" && args[1]) {
   run(path.join(repo, "node_modules", ".bin", args[1]), args.slice(2));
 }
 
-run(realPnpm, args);
+const packageManager = packageManagerInvocation();
+run(packageManager.command, [...packageManager.argsPrefix, ...args]);
 `;
   const wrapperPath = path.join(binDir, "pnpm");
   fs.writeFileSync(wrapperPath, wrapper, { mode: 0o700 });

@@ -542,10 +542,6 @@ a {
   padding: 6px 0 38px;
 }
 
-.inspir-message-stack > [data-message-scroller-spacer] {
-  display: none !important;
-}
-
 .inspir-message-row {
   display: flex;
   width: 100%;
@@ -1333,6 +1329,7 @@ a {
 .inspir-pending-assistant {
   display: inline-flex;
   min-width: 132px;
+  min-height: 43px;
   align-items: center;
   gap: 8px;
   color: rgb(255 255 255 / 0.76);
@@ -2270,6 +2267,14 @@ a {
 
 .inspir-rich-content > * + * {
   margin-top: 12px;
+}
+
+.inspir-rich-content > :first-child {
+  margin-top: 0;
+}
+
+.inspir-rich-content > :last-child {
+  margin-bottom: 0;
 }
 
 .inspir-rich-content h1,

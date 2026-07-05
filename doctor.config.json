@@ -1,0 +1,23 @@
+{
+  "$schema": "https://react.doctor/schema/config.json",
+  "ignore": {
+    "files": [
+      ".next/**",
+      ".open-next/**",
+      ".wrangler/**",
+      "node_modules/**",
+      "tmp/**",
+      "test-results/**",
+      "playwright-report/**",
+      ".playwright/**",
+      "coverage/**",
+      "backups/**",
+      "inspirlearning-local-backups/**",
+      "out/**",
+      "build/**",
+      "*.tsbuildinfo",
+      "next-env.d.ts",
+      "cloudflare-env.generated*.d.ts"
+    ]
+  }
+}

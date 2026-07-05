@@ -26,6 +26,10 @@ type StreamingSample = {
   hasStrayThinking: boolean;
   isStreaming: boolean;
   pendingAssistantBottom: number | null;
+  richChildCount: number;
+  richChildKeySignature: string;
+  richChildSignature: string;
+  richChildTagSignature: string;
   rowCount: number;
   rawFence: boolean;
   spacerHeight: number;
@@ -62,6 +66,39 @@ test("guest chat streaming stays visually stable and formats rich markdown after
     const pendingSamples = samples.filter((sample) => sample.hasPendingAssistant);
     const lastPending = pendingSamples.at(-1);
     const firstContent = samples.find((sample) => sample.textLength > 0);
+    const richChildRemountDetails: Array<{
+      from: string;
+      textLength: number;
+      to: string;
+      childCount: number;
+      fromTags: string;
+      fromKeys: string;
+      toTags: string;
+      toKeys: string;
+    }> = [];
+    let richChildRemounts = 0;
+    let previousRichSample: StreamingSample | null = null;
+    for (const sample of streamingSamples) {
+      if (sample.textLength === 0 || sample.richChildCount === 0) continue;
+      if (
+        previousRichSample &&
+        previousRichSample.richChildCount === sample.richChildCount &&
+        previousRichSample.richChildSignature !== sample.richChildSignature
+      ) {
+        richChildRemounts += 1;
+        richChildRemountDetails.push({
+          from: previousRichSample.richChildSignature,
+          fromKeys: previousRichSample.richChildKeySignature,
+          fromTags: previousRichSample.richChildTagSignature,
+          textLength: sample.textLength,
+          to: sample.richChildSignature,
+          toKeys: sample.richChildKeySignature,
+          toTags: sample.richChildTagSignature,
+          childCount: sample.richChildCount,
+        });
+      }
+      previousRichSample = sample;
+    }
 
     return {
       atBottomDelta: viewport ? Math.round(viewport.scrollHeight - viewport.scrollTop - viewport.clientHeight) : null,
@@ -78,6 +115,8 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       messageRowCounts: Array.from(new Set(messageSamples.map((sample) => sample.rowCount))),
       pendingSamples: pendingSamples.length,
       rawFenceDuringStreaming: streamingSamples.filter((sample) => sample.rawFence).length,
+      richChildRemountDetails,
+      richChildRemounts,
       shadcnMessages: document.querySelectorAll('[data-slot="message"]').length,
       shadcnScroller: Boolean(document.querySelector('[data-slot="message-scroller"]')),
       strayThinkingFrames: samples.filter((sample) => sample.hasStrayThinking).length,
@@ -86,7 +125,6 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       streamingTables: streamingSamples.filter((sample) => sample.tables > 0).length,
       tables: rich?.querySelectorAll("table").length ?? 0,
       textLength: rich?.textContent?.length ?? 0,
-      visibleSpacerFrames: samples.filter((sample) => sample.spacerHeight > 0).length,
     };
   });
 
@@ -95,13 +133,13 @@ test("guest chat streaming stays visually stable and formats rich markdown after
   expect(diagnostics.messageRowCounts).toEqual([2]);
   expect(diagnostics.pendingSamples).toBeGreaterThan(4);
   expect(diagnostics.strayThinkingFrames).toBe(0);
-  expect(diagnostics.visibleSpacerFrames).toBe(0);
   expect(diagnostics.firstContentBottomShift).not.toBeNull();
   expect(diagnostics.firstContentBottomShift).toBeLessThanOrEqual(2);
   expect(diagnostics.streamingSamples).toBeGreaterThan(0);
   expect(diagnostics.streamingCodeBlocks).toBeGreaterThan(0);
   expect(diagnostics.streamingTables).toBeGreaterThan(0);
   expect(diagnostics.rawFenceDuringStreaming).toBe(0);
+  expect(diagnostics.richChildRemounts, JSON.stringify(diagnostics.richChildRemountDetails)).toBe(0);
   expect(diagnostics.maxStreamingBottomDelta).toBeLessThanOrEqual(96);
   expect(diagnostics.composerDrift).toBeLessThanOrEqual(1);
   expect(diagnostics.atBottomDelta).toBeLessThanOrEqual(4);
@@ -150,9 +188,24 @@ async function installGuestChatStream(page: Page, chunks: string[]) {
 
 async function startStreamingProbe(page: Page) {
   await page.evaluate(() => {
-    const streamWindow = window as typeof window & { __chatStreamingSamples?: StreamingSample[] };
+    const streamWindow = window as typeof window & {
+      __chatNextNodeId?: number;
+      __chatNodeIds?: WeakMap<Element, number>;
+      __chatStreamingSamples?: StreamingSample[];
+    };
     streamWindow.__chatStreamingSamples = [];
+    streamWindow.__chatNodeIds = new WeakMap();
+    streamWindow.__chatNextNodeId = 1;
     const startedAt = performance.now();
+
+    const nodeId = (element: Element) => {
+      const existing = streamWindow.__chatNodeIds?.get(element);
+      if (existing) return existing;
+      const next = streamWindow.__chatNextNodeId ?? 1;
+      streamWindow.__chatNextNodeId = next + 1;
+      streamWindow.__chatNodeIds?.set(element, next);
+      return next;
+    };
 
     const recordFrame = () => {
       const viewport = document.querySelector(".inspir-message-scroll");
@@ -160,6 +213,7 @@ async function startStreamingProbe(page: Page) {
       const composer = document.querySelector(".inspir-composer");
       const pending = assistant?.querySelector(".inspir-pending-assistant");
       const rich = assistant?.querySelector(".inspir-rich-content");
+      const richChildren = rich ? Array.from(rich.children) : [];
       const assistantRect = assistant?.getBoundingClientRect();
       const pendingRect = pending?.getBoundingClientRect();
       const spacer = document.querySelector<HTMLElement>(".inspir-message-stack > [data-message-scroller-spacer]");
@@ -174,6 +228,12 @@ async function startStreamingProbe(page: Page) {
         hasStrayThinking: Boolean(document.querySelector(".inspir-thinking")),
         isStreaming: Boolean(rich?.classList.contains("is-streaming")),
         pendingAssistantBottom: pendingRect ? Math.round(assistantRect?.bottom ?? pendingRect.bottom) : null,
+        richChildCount: richChildren.length,
+        richChildKeySignature: richChildren
+          .map((child) => child.getAttribute("data-stream-block") ?? "")
+          .join(","),
+        richChildSignature: richChildren.map(nodeId).join(","),
+        richChildTagSignature: richChildren.map((child) => child.tagName.toLowerCase()).join(","),
         rowCount: document.querySelectorAll(".inspir-message-row").length,
         rawFence: rich?.textContent?.includes("```") ?? false,
         spacerHeight: spacer ? Math.round(spacer.getBoundingClientRect().height) : 0,

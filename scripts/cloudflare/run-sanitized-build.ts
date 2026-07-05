@@ -5,7 +5,11 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
 import { writeBuildArtifactScanReport } from "./scan-build-artifacts";
-import { buildSanitizedCloudflareBuildEnv, withSanitizedProjectEnvFiles } from "./sanitized-build-env";
+import {
+  buildSanitizedCloudflareBuildEnv,
+  sanitizedDotEnvContent,
+  withSanitizedProjectEnvFiles,
+} from "./sanitized-build-env";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 import { writeWorkerDeployEvidenceReport, type WorkerDeployEvidenceReport } from "./worker-deploy-evidence";
 
@@ -15,7 +19,10 @@ type RunSanitizedBuildOptions = {
   deployPreflight?: (backupDir: string) => DeployPreflightResult;
 };
 
-const COMMANDS: Record<CommandMode, { executable: string; args: string[]; scanBefore?: boolean; scanAfter?: boolean }> = {
+const COMMANDS: Record<
+  CommandMode,
+  { executable: string; args: string[]; buildBefore?: boolean; scanBefore?: boolean; scanAfter?: boolean }
+> = {
   "next-build": {
     executable: bin("next"),
     args: ["build", "--webpack"],
@@ -28,16 +35,19 @@ const COMMANDS: Record<CommandMode, { executable: string; args: string[]; scanBe
   "opennext-deploy": {
     executable: bin("opennextjs-cloudflare"),
     args: ["deploy"],
+    buildBefore: true,
     scanBefore: true,
   },
   "opennext-upload": {
     executable: bin("opennextjs-cloudflare"),
     args: ["upload"],
+    buildBefore: true,
     scanBefore: true,
   },
   "opennext-preview": {
     executable: bin("opennextjs-cloudflare"),
     args: ["preview"],
+    buildBefore: true,
     scanBefore: true,
   },
 };
@@ -97,6 +107,28 @@ export function runSanitizedBuildCommand(
   const localCliBinDir = createLocalCliWrappers();
   return withSanitizedProjectEnvFiles(() => {
     try {
+      const env = buildSanitizedCloudflareBuildEnv();
+      env.PATH = [localCliBinDir, env.PATH].filter(Boolean).join(path.delimiter);
+
+      if (command.buildBefore) {
+        const buildCommand = COMMANDS["opennext-build"];
+        const buildResult = spawnSync(buildCommand.executable, buildCommand.args, {
+          cwd: process.cwd(),
+          env,
+          stdio: "inherit",
+        });
+        if (buildResult.status !== 0) {
+          return deployEvidence.finish(buildResult.status ?? 1, {
+            commandExecuted: false,
+            deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+            deployPreflightStatus: productionDeployPreflightResult?.status,
+            scanBeforeOk: null,
+            scanAfterOk: null,
+            error: `OpenNext build before ${mode} exited with status ${buildResult.status ?? "unknown"}.`,
+          });
+        }
+      }
+
       if (command.scanBefore) {
         const report = writeBuildArtifactScanReport();
         if (!report.ok) {
@@ -112,8 +144,10 @@ export function runSanitizedBuildCommand(
         }
       }
 
-      const env = buildSanitizedCloudflareBuildEnv();
-      env.PATH = [localCliBinDir, env.PATH].filter(Boolean).join(path.delimiter);
+      if (mode === "opennext-preview") {
+        writeLocalPreviewRuntimeVars();
+      }
+
       const result = spawnSync(command.executable, [...command.args, ...passthroughArgs], {
         cwd: process.cwd(),
         env,
@@ -155,7 +189,7 @@ export function runSanitizedBuildCommand(
     } finally {
       fs.rmSync(localCliBinDir, { recursive: true, force: true });
     }
-  }, process.cwd(), { includeLocalPreviewRuntimeSecrets: mode === "opennext-preview" });
+  }, process.cwd());
 }
 
 export function requiresProductionDeployPreflight(mode: CommandMode) {
@@ -186,6 +220,14 @@ function printScanFailure(findings: number) {
 
 function bin(name: string) {
   return path.resolve(process.cwd(), "node_modules", ".bin", name);
+}
+
+function writeLocalPreviewRuntimeVars() {
+  fs.writeFileSync(
+    path.join(process.cwd(), ".dev.vars"),
+    sanitizedDotEnvContent(process.cwd(), { includeLocalPreviewRuntimeSecrets: true }),
+    { mode: 0o600 },
+  );
 }
 
 function createWorkerDeployEvidenceWriter(
@@ -262,17 +304,47 @@ function sourceFingerprintSummary(fingerprint: SourceFingerprint) {
 
 function createLocalCliWrappers() {
   const localCliBinDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-cf-build-bin-"));
-  const realPnpm = "/Users/makriman/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm";
   const wrapper = `#!/usr/bin/env node
 const { spawnSync } = require("node:child_process");
+const fs = require("node:fs");
 const path = require("node:path");
 
 const repo = ${JSON.stringify(process.cwd())};
-const realPnpm = ${JSON.stringify(realPnpm)};
 const args = process.argv.slice(2);
 
-let command = realPnpm;
-let finalArgs = args;
+function pathEntries() {
+  return (process.env.PATH || "")
+    .split(path.delimiter)
+    .filter((entry) => entry && path.resolve(entry) !== __dirname);
+}
+
+function executableNames(name) {
+  return process.platform === "win32" ? [name + ".cmd", name + ".exe", name] : [name];
+}
+
+function findOnPath(name) {
+  for (const entry of pathEntries()) {
+    for (const executable of executableNames(name)) {
+      const candidate = path.join(entry, executable);
+      if (fs.existsSync(candidate)) return candidate;
+    }
+  }
+  return null;
+}
+
+function packageManagerInvocation() {
+  const npmExecPath = process.env.npm_execpath;
+  if (npmExecPath && fs.existsSync(npmExecPath)) {
+    if (/\\.(?:cjs|mjs|js)$/.test(npmExecPath)) return { command: process.execPath, argsPrefix: [npmExecPath] };
+    return { command: npmExecPath, argsPrefix: [] };
+  }
+  const pnpm = findOnPath("pnpm");
+  return { command: pnpm || "pnpm", argsPrefix: [] };
+}
+
+const packageManager = packageManagerInvocation();
+let command = packageManager.command;
+let finalArgs = [...packageManager.argsPrefix, ...args];
 
 if (args[0] === "build") {
   command = path.join(repo, "node_modules", ".bin", "next");

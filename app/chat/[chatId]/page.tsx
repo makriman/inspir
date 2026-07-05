@@ -76,9 +76,8 @@ async function withPublicTopicTimeout<T>(promise: Promise<T>) {
 }
 
 export async function generateMetadata({ params }: ChatRoutePageProps): Promise<Metadata> {
-  const { chatId } = await params;
+  const [{ chatId }, requestLanguage] = await Promise.all([params, getRequestLanguage()]);
   const slug = resolveTopicSlug(chatId);
-  const requestLanguage = await getRequestLanguage();
 
   if (slug) {
     const topic = findSeedTopic(slug);
@@ -140,6 +139,7 @@ export async function generateMetadata({ params }: ChatRoutePageProps): Promise<
 export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
   const { chatId } = await params;
   const topicSlug = resolveTopicSlug(chatId);
+  const requestLanguagePromise = getRequestLanguage();
 
   if (topicSlug) {
     const seedTopic = findSeedTopic(topicSlug);
@@ -170,7 +170,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
 
     const topic = topics.find((candidate) => candidate.slug === topicSlug) ?? topicFromSeed(seedTopic);
     if (!topic) notFound();
-    const requestLanguage = await getRequestLanguage();
+    const requestLanguage = await requestLanguagePromise;
     const profileUser = session?.user?.id && savedChatsAvailable
       ? {
           id: session.user.id,
@@ -206,19 +206,19 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
   if (!isUuidPathSegment(chatId)) notFound();
 
   const session = await getServerSession(authOptions);
-  if (!session?.user?.id) redirect(localizePath("/", await getRequestLanguage()));
+  if (!session?.user?.id) redirect(localizePath("/", await requestLanguagePromise));
 
   const owned = await getOwnedChat(chatId, session.user.id);
   if (!owned) notFound();
 
-  const [topics, defaultTopic, messages, user, activityRun] = await Promise.all([
+  const [topics, defaultTopic, messages, user, activityRun, requestLanguage] = await Promise.all([
     getPublicActiveTopics(),
     getDefaultTopic(),
     getChatMessages(chatId),
     getUserProfileById(session.user.id),
     getLatestActivityRun(chatId),
+    requestLanguagePromise,
   ]);
-  const requestLanguage = await getRequestLanguage();
   return (
     <ChatClient
       authMode="authenticated"

@@ -188,9 +188,6 @@ function wranglerCommandCandidates() {
   }
 
   candidates.push({ command: "pnpm", argsPrefix: ["exec", "wrangler"] });
-
-  const bundledPnpm = "/Users/makriman/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm";
-  if (fs.existsSync(bundledPnpm)) candidates.push({ command: bundledPnpm, argsPrefix: ["exec", "wrangler"] });
   return candidates;
 }
 
@@ -213,8 +210,6 @@ function commandPath() {
   const entries = [
     path.dirname(process.execPath),
     path.resolve(process.cwd(), "node_modules", ".bin"),
-    "/Users/makriman/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin",
-    "/Users/makriman/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin",
     process.env.PATH ?? "",
   ];
   return entries.filter(Boolean).join(path.delimiter);

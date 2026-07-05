@@ -42,6 +42,8 @@
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts",
     "test:e2e": "playwright test",
+    "doctor": "npx react-doctor@latest . --yes --blocking warning",
+    "doctor:json": "npx react-doctor@latest . --yes --json --json-out tmp/react-doctor-report.json --output-dir tmp/react-doctor",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "memory:backfill": "tsx scripts/backfill-memory.ts",

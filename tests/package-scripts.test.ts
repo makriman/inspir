@@ -27,3 +27,18 @@ test("preview Playwright resets only declared local runtime counters", () => {
   assert.doesNotMatch(localD1Setup, /delete from "users"/);
   assert.doesNotMatch(localD1Setup, /drop table/i);
 });
+
+test("Cloudflare scripts avoid machine-local absolute tool paths", () => {
+  const scriptsDir = path.resolve("scripts/cloudflare");
+  const scriptFiles = fs
+    .readdirSync(scriptsDir)
+    .filter((file) => file.endsWith(".ts"))
+    .map((file) => path.join(scriptsDir, file));
+
+  for (const filePath of scriptFiles) {
+    const source = fs.readFileSync(filePath, "utf8");
+    const relativePath = path.relative(process.cwd(), filePath);
+    assert.doesNotMatch(source, /\/Users\//, `${relativePath} should not embed a user home path`);
+    assert.doesNotMatch(source, /codex-runtimes/, `${relativePath} should not embed Codex runtime paths`);
+  }
+});

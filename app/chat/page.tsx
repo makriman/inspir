@@ -20,8 +20,7 @@ type ChatPageProps = {
 };
 
 export default async function ChatPage({ searchParams }: ChatPageProps) {
-  const params = await searchParams;
-  const language = await getRequestLanguage();
+  const [params, language] = await Promise.all([searchParams, getRequestLanguage()]);
   const topicParam = Array.isArray(params.topic) ? params.topic[0] : params.topic;
   const requested = "askmeanything" in params ? "askmeanything" : topicParam;
   const slug = resolveTopicSlug(requested);

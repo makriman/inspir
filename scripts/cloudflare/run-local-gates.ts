@@ -116,17 +116,47 @@ function runGate(gate: Gate): GateResult {
 
 function ensureLocalCliWrappers() {
   fs.mkdirSync(localCliBinDir, { recursive: true, mode: 0o700 });
-  const realPnpm = "/Users/makriman/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/pnpm";
   const wrapper = `#!/usr/bin/env node
 const { spawnSync } = require("node:child_process");
+const fs = require("node:fs");
 const path = require("node:path");
 
 const repo = ${JSON.stringify(process.cwd())};
-const realPnpm = ${JSON.stringify(realPnpm)};
 const args = process.argv.slice(2);
 
-let command = realPnpm;
-let finalArgs = args;
+function pathEntries() {
+  return (process.env.PATH || "")
+    .split(path.delimiter)
+    .filter((entry) => entry && path.resolve(entry) !== __dirname);
+}
+
+function executableNames(name) {
+  return process.platform === "win32" ? [name + ".cmd", name + ".exe", name] : [name];
+}
+
+function findOnPath(name) {
+  for (const entry of pathEntries()) {
+    for (const executable of executableNames(name)) {
+      const candidate = path.join(entry, executable);
+      if (fs.existsSync(candidate)) return candidate;
+    }
+  }
+  return null;
+}
+
+function packageManagerInvocation() {
+  const npmExecPath = process.env.npm_execpath;
+  if (npmExecPath && fs.existsSync(npmExecPath)) {
+    if (/\\.(?:cjs|mjs|js)$/.test(npmExecPath)) return { command: process.execPath, argsPrefix: [npmExecPath] };
+    return { command: npmExecPath, argsPrefix: [] };
+  }
+  const pnpm = findOnPath("pnpm");
+  return { command: pnpm || "pnpm", argsPrefix: [] };
+}
+
+const packageManager = packageManagerInvocation();
+let command = packageManager.command;
+let finalArgs = [...packageManager.argsPrefix, ...args];
 
 if (args[0] === "build") {
   command = path.join(repo, "node_modules", ".bin", "next");

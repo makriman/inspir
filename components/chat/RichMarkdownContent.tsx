@@ -2,6 +2,7 @@
 
 import {
   ComponentPropsWithoutRef,
+  Fragment,
   isValidElement,
   ReactNode,
   useEffect,
@@ -130,7 +131,11 @@ function StreamingMarkdownPreview({ content, className }: { content: string; cla
 
   return (
     <div className={`${className} is-streaming`} data-no-auto-translate="true">
-      {blocks.length > 0 ? blocks.map((block, index) => renderStreamingBlock(block, index)) : null}
+      {blocks.length > 0
+        ? keyedStreamingBlocks(blocks).map(({ key, block }) => (
+            <StreamingBlock key={key} blockKey={key} block={block} />
+          ))
+        : null}
     </div>
   );
 }
@@ -141,7 +146,11 @@ function parseStreamingMarkdown(content: string): StreamingMarkdownBlock[] {
   let paragraphLines: string[] = [];
 
   function flushParagraph() {
-    const linesToFlush = paragraphLines.map((line) => line.trim()).filter(Boolean);
+    const linesToFlush: string[] = [];
+    for (const line of paragraphLines) {
+      const trimmed = line.trim();
+      if (trimmed) linesToFlush.push(trimmed);
+    }
     if (linesToFlush.length > 0) blocks.push({ type: "paragraph", lines: linesToFlush });
     paragraphLines = [];
   }
@@ -177,7 +186,7 @@ function parseStreamingMarkdown(content: string): StreamingMarkdownBlock[] {
         tableLines.push(tableLine);
       }
       index -= 1;
-      blocks.push({ type: "table", rows: tableLines.map(parseMarkdownTableRow).filter((row) => row.length > 0) });
+      blocks.push({ type: "table", rows: parseMarkdownTableRows(tableLines) });
       continue;
     }
 
@@ -242,61 +251,77 @@ function isMarkdownTableStart(lines: string[], index: number) {
   return current.includes("|") && /^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(next);
 }
 
-function parseMarkdownTableRow(line: string) {
-  return line
-    .replace(/^\|/, "")
-    .replace(/\|$/, "")
-    .split("|")
-    .map((cell) => cell.trim());
+function parseMarkdownTableRows(lines: string[]) {
+  const rows: string[][] = [];
+  for (const line of lines) {
+    const row = line
+      .replace(/^\|/, "")
+      .replace(/\|$/, "")
+      .split("|")
+      .map((cell) => cell.trim());
+    if (row.length > 0) rows.push(row);
+  }
+  return rows;
 }
 
-function renderStreamingBlock(block: StreamingMarkdownBlock, index: number) {
+function StreamingBlock({ block, blockKey }: { block: StreamingMarkdownBlock; blockKey: string }) {
   switch (block.type) {
     case "heading":
-      return renderStreamingHeading(block, index);
+      return <StreamingHeading block={block} blockKey={blockKey} />;
     case "paragraph":
       return (
-        <p key={index}>
-          {block.lines.map((line, lineIndex) => (
-            <span key={lineIndex}>
+        <p data-stream-block={blockKey}>
+          {keyedTextValues(block.lines).map(({ key, value: line }, lineIndex) => (
+            <span key={key}>
               {lineIndex > 0 ? <br /> : null}
-              {renderInlineMarkdown(line)}
+              <InlineMarkdown text={line} />
             </span>
           ))}
         </p>
       );
     case "blockquote":
       return (
-        <blockquote key={index}>
-          {block.lines.map((line) => renderInlineMarkdown(line)).reduce(joinWithSpaces, [])}
+        <blockquote data-stream-block={blockKey}>
+          {keyedTextValues(block.lines).map(({ key, value: line }, lineIndex) => (
+            <Fragment key={key}>
+              {lineIndex > 0 ? " " : null}
+              <InlineMarkdown text={line} />
+            </Fragment>
+          ))}
         </blockquote>
       );
     case "list": {
       const List = block.ordered ? "ol" : "ul";
       return (
-        <List key={index}>
-          {block.items.map((item, itemIndex) => (
-            <li key={itemIndex}>{renderInlineMarkdown(item)}</li>
+        <List data-stream-block={blockKey}>
+          {keyedTextValues(block.items).map(({ key, value: item }) => (
+            <li key={key}>
+              <InlineMarkdown text={item} />
+            </li>
           ))}
         </List>
       );
     }
     case "table":
       return (
-        <div key={index} className="inspir-table-wrap">
+        <div className="inspir-table-wrap" data-stream-block={blockKey}>
           <table>
             <thead>
               <tr>
-                {(block.rows[0] ?? []).map((cell, cellIndex) => (
-                  <th key={cellIndex}>{renderInlineMarkdown(cell)}</th>
+                {keyedTextValues(block.rows[0] ?? []).map(({ key, value: cell }) => (
+                  <th key={key}>
+                    <InlineMarkdown text={cell} />
+                  </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {block.rows.slice(2).map((row, rowIndex) => (
-                <tr key={rowIndex}>
-                  {row.map((cell, cellIndex) => (
-                    <td key={cellIndex}>{renderInlineMarkdown(cell)}</td>
+              {keyedTableRows(block.rows.slice(2)).map(({ key: rowKey, row }) => (
+                <tr key={rowKey}>
+                  {keyedTextValues(row).map(({ key, value: cell }) => (
+                    <td key={key}>
+                      <InlineMarkdown text={cell} />
+                    </td>
                   ))}
                 </tr>
               ))}
@@ -306,7 +331,7 @@ function renderStreamingBlock(block: StreamingMarkdownBlock, index: number) {
       );
     case "code":
       return (
-        <figure key={index} className="inspir-code-block is-streaming">
+        <figure className="inspir-code-block is-streaming" data-stream-block={blockKey}>
           <figcaption>
             <span>{block.language.trim() || "code"}</span>
           </figcaption>
@@ -318,49 +343,107 @@ function renderStreamingBlock(block: StreamingMarkdownBlock, index: number) {
   }
 }
 
-function renderStreamingHeading(block: Extract<StreamingMarkdownBlock, { type: "heading" }>, key: number) {
-  const children = renderInlineMarkdown(block.text);
+function StreamingHeading({
+  block,
+  blockKey,
+}: {
+  block: Extract<StreamingMarkdownBlock, { type: "heading" }>;
+  blockKey: string;
+}) {
+  const children = <InlineMarkdown text={block.text} />;
   switch (block.level) {
     case 1:
-      return <h1 key={key}>{children}</h1>;
+      return <h1 data-stream-block={blockKey}>{children}</h1>;
     case 2:
-      return <h2 key={key}>{children}</h2>;
+      return <h2 data-stream-block={blockKey}>{children}</h2>;
     case 3:
-      return <h3 key={key}>{children}</h3>;
+      return <h3 data-stream-block={blockKey}>{children}</h3>;
     case 4:
-      return <h4 key={key}>{children}</h4>;
+      return <h4 data-stream-block={blockKey}>{children}</h4>;
     case 5:
-      return <h5 key={key}>{children}</h5>;
+      return <h5 data-stream-block={blockKey}>{children}</h5>;
     case 6:
-      return <h6 key={key}>{children}</h6>;
+      return <h6 data-stream-block={blockKey}>{children}</h6>;
   }
 }
 
-function renderInlineMarkdown(text: string): ReactNode[] {
-  const nodes: ReactNode[] = [];
+function InlineMarkdown({ text }: { text: string }) {
+  return (
+    <>
+      {parseInlineMarkdownParts(text).map((part) => {
+        if (part.type === "code") return <code key={part.key}>{part.text}</code>;
+        if (part.type === "strong") return <strong key={part.key}>{part.text}</strong>;
+        return <Fragment key={part.key}>{part.text}</Fragment>;
+      })}
+    </>
+  );
+}
+
+type InlineMarkdownPart = {
+  key: string;
+  type: "text" | "code" | "strong";
+  text: string;
+};
+
+function parseInlineMarkdownParts(text: string): InlineMarkdownPart[] {
+  const parts: InlineMarkdownPart[] = [];
   const pattern = /(`[^`]+`|\*\*[^*]+\*\*)/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
   while ((match = pattern.exec(text)) !== null) {
-    if (match.index > lastIndex) nodes.push(text.slice(lastIndex, match.index));
+    if (match.index > lastIndex) {
+      pushInlineMarkdownPart(parts, "text", text.slice(lastIndex, match.index));
+    }
     const token = match[0];
     if (token.startsWith("`")) {
-      nodes.push(<code key={nodes.length}>{token.slice(1, -1)}</code>);
+      pushInlineMarkdownPart(parts, "code", token.slice(1, -1));
     } else {
-      nodes.push(<strong key={nodes.length}>{token.slice(2, -2)}</strong>);
+      pushInlineMarkdownPart(parts, "strong", token.slice(2, -2));
     }
     lastIndex = match.index + token.length;
   }
 
-  if (lastIndex < text.length) nodes.push(text.slice(lastIndex));
-  return nodes;
+  if (lastIndex < text.length) pushInlineMarkdownPart(parts, "text", text.slice(lastIndex));
+  return parts;
 }
 
-function joinWithSpaces(nodes: ReactNode[], lineNodes: ReactNode[], index: number) {
-  if (index > 0) nodes.push(" ");
-  nodes.push(...lineNodes);
-  return nodes;
+function pushInlineMarkdownPart(
+  parts: InlineMarkdownPart[],
+  type: InlineMarkdownPart["type"],
+  text: string,
+) {
+  parts.push({ key: `${type}-${parts.length}`, type, text });
+}
+
+function keyedStreamingBlocks(blocks: StreamingMarkdownBlock[]) {
+  const keyedBlocks: Array<{ key: string; block: StreamingMarkdownBlock }> = [];
+  let ordinal = 0;
+  for (const block of blocks) {
+    keyedBlocks.push({ key: `block-${ordinal}`, block });
+    ordinal += 1;
+  }
+  return keyedBlocks;
+}
+
+function keyedTextValues(values: string[]) {
+  const keyedValues: Array<{ key: string; value: string }> = [];
+  let ordinal = 0;
+  for (const value of values) {
+    keyedValues.push({ key: `text-${ordinal}`, value });
+    ordinal += 1;
+  }
+  return keyedValues;
+}
+
+function keyedTableRows(rows: string[][]) {
+  const keyedRows: Array<{ key: string; row: string[] }> = [];
+  let ordinal = 0;
+  for (const row of rows) {
+    keyedRows.push({ key: `row-${ordinal}`, row });
+    ordinal += 1;
+  }
+  return keyedRows;
 }
 
 function MarkdownCode({ children, className, node, ...props }: ComponentPropsWithoutRef<"code"> & { node?: unknown }) {

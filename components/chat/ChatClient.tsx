@@ -10,7 +10,6 @@ import {
   type SetStateAction,
   useCallback,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
@@ -103,7 +102,6 @@ import {
   MessageScrollerItem,
   MessageScrollerProvider,
   MessageScrollerViewport,
-  useMessageScroller,
 } from "@/components/ui/message-scroller";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import { topicPath } from "@/lib/content/topic-routing";
@@ -1984,8 +1982,6 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
 function StandardChatWorkspace({ controller }: { controller: ChatClientController }) {
   const {
     activeTopic,
-    activeChatId,
-    activeTopicId,
     awaitingResponse,
     handleComposerKeyDown,
     input,
@@ -2011,15 +2007,6 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
   return (
     <main className="inspir-workspace">
       <MessageScrollerProvider autoScroll defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
-        <StandardChatScrollFollow
-          activeChatId={activeChatId}
-          activeTopicId={activeTopicId}
-          awaitingResponse={awaitingResponse}
-          messageCount={visibleChatMessages.length}
-          sending={sending}
-          streamingMessageId={streamingMessageId}
-          viewportRef={listRef}
-        />
         <MessageScroller className="inspir-message-scroller">
           <MessageScrollerViewport ref={listRef} className="inspir-message-scroll app-scrollbar">
             <MessageScrollerContent className="inspir-message-stack">
@@ -2079,98 +2066,6 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
       </form>
     </main>
   );
-}
-
-function StandardChatScrollFollow({
-  activeChatId,
-  activeTopicId,
-  awaitingResponse,
-  messageCount,
-  sending,
-  streamingMessageId,
-  viewportRef,
-}: {
-  activeChatId: string | undefined;
-  activeTopicId: string;
-  awaitingResponse: boolean;
-  messageCount: number;
-  sending: boolean;
-  streamingMessageId: string | null;
-  viewportRef: RefObject<HTMLDivElement | null>;
-}) {
-  const { scrollToEnd } = useMessageScroller();
-  const shouldFollow = sending || awaitingResponse || Boolean(streamingMessageId);
-  const autoFollowRef = useRef(true);
-
-  const isNearEnd = useCallback((element: HTMLElement, threshold = 240) => {
-    return element.scrollHeight - element.scrollTop - element.clientHeight <= threshold;
-  }, []);
-
-  const pinToEnd = useCallback(() => {
-    const element = viewportRef.current;
-    if (!element) {
-      scrollToEnd({ behavior: "auto" });
-      return;
-    }
-    if (!autoFollowRef.current && !isNearEnd(element)) return;
-    element.scrollTop = element.scrollHeight;
-  }, [isNearEnd, scrollToEnd, viewportRef]);
-
-  useEffect(() => {
-    const element = viewportRef.current;
-    if (!element) return;
-    const handleScroll = () => {
-      autoFollowRef.current = isNearEnd(element);
-    };
-    element.addEventListener("scroll", handleScroll, { passive: true });
-    return () => element.removeEventListener("scroll", handleScroll);
-  }, [isNearEnd, viewportRef]);
-
-  useLayoutEffect(() => {
-    if (!shouldFollow) return;
-    autoFollowRef.current = true;
-    scrollToEnd({ behavior: "auto" });
-    pinToEnd();
-  }, [
-    activeChatId,
-    activeTopicId,
-    awaitingResponse,
-    messageCount,
-    scrollToEnd,
-    sending,
-    shouldFollow,
-    streamingMessageId,
-    pinToEnd,
-  ]);
-
-  useEffect(() => {
-    if (!shouldFollow) return;
-    const element = viewportRef.current;
-    if (!element) return;
-
-    let frameId: number | null = null;
-    const sync = () => {
-      pinToEnd();
-      frameId = window.requestAnimationFrame(sync);
-    };
-
-    const content = element.querySelector<HTMLElement>('[data-slot="message-scroller-content"]');
-    const observer =
-      content && typeof ResizeObserver !== "undefined"
-        ? new ResizeObserver(() => {
-            pinToEnd();
-          })
-        : null;
-    if (content) observer?.observe(content);
-    frameId = window.requestAnimationFrame(sync);
-
-    return () => {
-      if (frameId !== null) window.cancelAnimationFrame(frameId);
-      observer?.disconnect();
-    };
-  }, [pinToEnd, shouldFollow, viewportRef]);
-
-  return null;
 }
 
 function ChatPanelOverlays({ controller }: { controller: ChatClientController }) {
@@ -6710,6 +6605,7 @@ function ProfilePanel({
               <input
                 ref={photoInputRef}
                 type="file"
+                aria-label={t("Profile photo")}
                 accept="image/jpeg,image/png,image/webp"
                 className="inspir-profile-photo-input"
                 onChange={(event) => void handlePhotoChange(event)}
