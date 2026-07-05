@@ -9,6 +9,7 @@ import {
   type SetStateAction,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
@@ -805,17 +806,28 @@ function useChatClientController({
     return element.scrollHeight - element.scrollTop - element.clientHeight <= threshold;
   }, []);
 
+  const scrollMessageViewportToEnd = useCallback((behavior: ScrollBehavior = "auto") => {
+    if (usesManagedMessageScroller) return;
+    if (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current) return;
+    const element = listRef.current;
+    if (!element) return;
+    const top = Math.max(0, element.scrollHeight - element.clientHeight);
+    if (behavior === "auto") {
+      element.scrollTop = top;
+      return;
+    }
+    element.scrollTo({ top, behavior });
+  }, [usesManagedMessageScroller]);
+
   const scheduleMessageScrollToEnd = useCallback((behavior: ScrollBehavior = "auto") => {
     if (usesManagedMessageScroller) return;
     if (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current) return;
     if (scrollFrameRef.current !== null) window.cancelAnimationFrame(scrollFrameRef.current);
     scrollFrameRef.current = window.requestAnimationFrame(() => {
       scrollFrameRef.current = null;
-      const element = listRef.current;
-      if (!element || (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current)) return;
-      element.scrollTo({ top: element.scrollHeight, behavior });
+      scrollMessageViewportToEnd(behavior);
     });
-  }, [usesManagedMessageScroller]);
+  }, [scrollMessageViewportToEnd, usesManagedMessageScroller]);
 
   useEffect(() => {
     return () => {
@@ -890,19 +902,19 @@ function useChatClientController({
     return () => observer.disconnect();
   }, [activeChatId, activeTopicId, scheduleMessageScrollToEnd, usesManagedMessageScroller]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     shouldAutoFollowMessagesRef.current = true;
     forceAutoFollowMessagesRef.current = true;
-    scheduleMessageScrollToEnd("auto");
-  }, [activeChatId, activeTopicId, scheduleMessageScrollToEnd]);
+    scrollMessageViewportToEnd("auto");
+  }, [activeChatId, activeTopicId, scrollMessageViewportToEnd]);
 
-  useEffect(() => {
-    scheduleMessageScrollToEnd("auto");
-  }, [visibleChatMessages.length, activityRun, scheduleMessageScrollToEnd]);
+  useLayoutEffect(() => {
+    scrollMessageViewportToEnd("auto");
+  }, [visibleChatMessages.length, activityRun, scrollMessageViewportToEnd]);
 
-  useEffect(() => {
-    scheduleMessageScrollToEnd("auto");
-  }, [messages, streamingMessageId, scheduleMessageScrollToEnd]);
+  useLayoutEffect(() => {
+    scrollMessageViewportToEnd("auto");
+  }, [messages, streamingMessageId, scrollMessageViewportToEnd]);
 
   useEffect(() => {
     const textarea = inputRef.current;
