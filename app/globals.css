@@ -2284,6 +2284,19 @@ a {
   display: block;
 }
 
+.inspir-stream-block {
+  display: block;
+  min-width: 0;
+}
+
+.inspir-stream-block > :first-child {
+  margin-top: 0;
+}
+
+.inspir-stream-block > :last-child {
+  margin-bottom: 0;
+}
+
 .inspir-streaming-text {
   margin: 0;
   white-space: pre-wrap;

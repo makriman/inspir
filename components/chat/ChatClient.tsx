@@ -29,7 +29,6 @@ import {
   CheckCircle2,
   Clipboard,
   Compass,
-  Copy,
   Coins,
   Eye,
   EyeOff,
@@ -78,23 +77,22 @@ import {
   type LearningStoreTopic,
 } from "@/components/chat/learning-store-utils";
 import { LearningStore } from "@/components/chat/LearningStore";
+import {
+  clearPendingAssistantMetadata,
+  isPendingAssistantMessage,
+  type ChatMessage as Message,
+  type MessageMemorySource,
+} from "@/components/chat/chat-message-model";
+import { ClockIcon } from "@/components/chat/ClockIcon";
+import { MemorySourcesModal } from "@/components/chat/MemorySourcesModal";
+import { MessageCard } from "@/components/chat/MessageCard";
+import { MiniIcon } from "@/components/chat/MiniIcon";
+import type { MiniAppIcon } from "@/components/chat/mini-icon-types";
+import { ThinkingMarker } from "@/components/chat/ThinkingMarker";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
-import { RichMarkdownContent } from "@/components/chat/RichMarkdownContent";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
-import {
-  MessageCard as ChatCardPrimitive,
-  MessageCardContent as ChatCardContent,
-} from "@/components/ui/message-card";
-import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker";
-import {
-  Message as ChatMessagePrimitive,
-  MessageAvatar,
-  MessageContent,
-  MessageFooter,
-  MessageHeader,
-} from "@/components/ui/message";
 import {
   MessageScroller,
   MessageScrollerButton,
@@ -148,14 +146,6 @@ type Topic = {
   description: string;
   inputboxText: string;
   metadata?: TopicMetadata | Record<string, unknown> | null;
-};
-
-type Message = {
-  id: string;
-  role: "user" | "assistant" | "system";
-  content: string;
-  createdAt: string | Date;
-  metadata?: Record<string, unknown>;
 };
 
 type UserProfile = {
@@ -296,17 +286,6 @@ type ProfileResponse = {
 
 type ActivityRunResponse = {
   activityRun: ActivityRun | null;
-};
-
-type MessageMemorySource = {
-  type: "memory" | "summary" | "past_chat";
-  id: string;
-  label: string;
-  excerpt: string;
-  reason?: string;
-  memoryId?: string;
-  chatTurnId?: string;
-  summarySectionId?: string;
 };
 
 class StaleChatRequestError extends Error {
@@ -458,7 +437,7 @@ function isFlashcardState(value: Record<string, unknown>): value is PublicFlashc
 
 function toDisplayMessage(message: Message): Message | null {
   if (message.role === "system") return null;
-  if (isPendingAssistantMessage(message)) return message;
+  if (isPendingAssistantMessage(message) && message.content.trim().length === 0) return message;
   const content = getVisibleMessageContent(message.content).trim();
   if (!content) return null;
   return content === message.content ? message : { ...message, content };
@@ -466,17 +445,6 @@ function toDisplayMessage(message: Message): Message | null {
 
 function displayMessages(messages: Message[]) {
   return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
-}
-
-function isPendingAssistantMessage(message: Message) {
-  return message.role === "assistant" && message.metadata?.pendingAssistant === true;
-}
-
-function clearPendingAssistantMetadata(metadata: Record<string, unknown> | undefined) {
-  if (!metadata?.pendingAssistant) return metadata;
-  const rest = { ...metadata };
-  delete rest.pendingAssistant;
-  return Object.keys(rest).length > 0 ? rest : undefined;
 }
 
 function isExplicitMemoryMutationRequest(value: string) {
@@ -1171,9 +1139,9 @@ function useChatClientController({
       }
       cancelPendingAssistantFlush = cancelAssistantFlush;
 
-      function flushAssistantText() {
+      function flushAssistantText({ final = false }: { final?: boolean } = {}) {
         cancelAssistantFlush();
-        if (!assistantText) return;
+        if (!assistantText && !final) return;
         if (!assistantInserted) {
           assistantInserted = true;
           updateChatState((current) => ({
@@ -1186,6 +1154,7 @@ function useChatClientController({
                 role: "assistant",
                 content: assistantText,
                 createdAt: new Date(),
+                metadata: final ? undefined : { pendingAssistant: true },
               },
             ],
           }));
@@ -1194,7 +1163,11 @@ function useChatClientController({
             awaitingResponse: false,
             messages: current.messages.map((message) =>
               message.id === assistantMessageId
-                ? { ...message, content: assistantText, metadata: clearPendingAssistantMetadata(message.metadata) }
+                ? {
+                    ...message,
+                    content: assistantText,
+                    metadata: final ? clearPendingAssistantMetadata(message.metadata) : message.metadata,
+                  }
                 : message,
             ),
           }));
@@ -1224,7 +1197,7 @@ function useChatClientController({
         if (done) {
           const finalDecoderText = decoder.decode();
           if (finalDecoderText) assistantText += finalDecoderText;
-          flushAssistantText();
+          flushAssistantText({ final: true });
           return;
         }
         assistantText += decoder.decode(value, { stream: true });
@@ -2005,6 +1978,8 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
       streamingMessageId &&
       visibleChatMessages.some((message) => message.id === streamingMessageId && isPendingAssistantMessage(message)),
   );
+  const lastVisibleMessageId = visibleChatMessages.at(-1)?.id ?? null;
+  const activeScrollAnchorId = streamingMessageId ?? lastVisibleMessageId;
 
   return (
     <main className="inspir-workspace">
@@ -2023,7 +1998,11 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
                 </MessageScrollerItem>
               ) : null}
               {visibleChatMessages.map((message) => (
-                <MessageScrollerItem key={message.id} messageId={message.id} scrollAnchor>
+                <MessageScrollerItem
+                  key={message.id}
+                  messageId={message.id}
+                  scrollAnchor={message.id === activeScrollAnchorId}
+                >
                   <MessageCard
                     message={message}
                     isStreaming={message.id === streamingMessageId}
@@ -2033,7 +2012,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
                 </MessageScrollerItem>
               ))}
               {awaitingResponse && !hasPendingAssistantCard ? (
-                <MessageScrollerItem scrollAnchor>
+                <MessageScrollerItem scrollAnchor={!activeScrollAnchorId}>
                   <ThinkingMarker label="Thinking" />
                 </MessageScrollerItem>
               ) : null}
@@ -2879,7 +2858,7 @@ function buildTimeTravelPrompt({
 }
 
 type MiniAppConfig = {
-  icon: "compass" | "landmark" | "lesson" | "collab" | "socratic";
+  icon: MiniAppIcon;
   eyebrow: string;
   setupTitle: string;
   setupBody: string;
@@ -5534,199 +5513,6 @@ function useHistoricalPersonWorkspace({
   );
 }
 
-function ClockIcon() {
-  return <History size={20} />;
-}
-
-function MiniIcon({ icon }: { icon: MiniAppConfig["icon"] }) {
-  return (
-    <div className="inspir-mini-icon">
-      <MiniIconGlyph icon={icon} />
-    </div>
-  );
-}
-
-function MiniIconGlyph({ icon }: { icon: MiniAppConfig["icon"] }) {
-  switch (icon) {
-    case "compass":
-      return <Compass size={24} />;
-    case "landmark":
-      return <Landmark size={24} />;
-    case "lesson":
-      return <BookOpenCheck size={24} />;
-    case "collab":
-      return <Clipboard size={24} />;
-    case "socratic":
-      return <Gauge size={24} />;
-  }
-}
-
-function MessageCard({
-  message,
-  isStreaming = false,
-  userLabel = "Learner",
-  assistantLabel = "Coach response",
-  onMemorySources,
-}: {
-  message: Message;
-  isStreaming?: boolean;
-  userLabel?: string;
-  assistantLabel?: string;
-  onMemorySources?: (sources: MessageMemorySource[]) => void;
-}) {
-  const isUser = message.role === "user";
-  const isPending = isPendingAssistantMessage(message) && isStreaming;
-  const memorySources = getMessageMemorySources(message);
-  const [copied, setCopied] = useState(false);
-
-  async function copyMessage() {
-    await navigator.clipboard.writeText(message.content);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1200);
-  }
-
-  return (
-    <ChatMessagePrimitive
-      align={isUser ? "end" : "start"}
-      className={`inspir-message-row ${isUser ? "is-user" : "is-assistant"}`}
-    >
-      <MessageAvatar className="inspir-message-avatar" aria-hidden="true">
-        {isUser ? <UserRound size={15} /> : <Bot size={15} />}
-      </MessageAvatar>
-      <MessageContent className="inspir-message-content">
-        <ChatCardPrimitive
-          align={isUser ? "end" : "start"}
-          variant={isUser ? "default" : "ghost"}
-          className="inspir-message-card-shell"
-        >
-          <ChatCardContent asChild>
-            <article className="inspir-message-card">
-              <MessageHeader className="inspir-message-author">
-                {isUser ? <UserRound size={14} /> : <Bot size={14} />}
-                <strong>{isUser ? userLabel : assistantLabel}</strong>
-              </MessageHeader>
-              {isPending ? <PendingAssistantBody /> : <RichMarkdownContent content={message.content} streaming={isStreaming} />}
-              {!isPending ? (
-                <MessageFooter className="inspir-message-footer">
-                  <time>{formatAppDate(message.createdAt)}</time>
-                  {!isUser && memorySources.length > 0 && onMemorySources ? (
-                    <button
-                      type="button"
-                      onClick={() => onMemorySources(memorySources)}
-                      aria-label="Show memory sources"
-                      className="inspir-memory-source-button"
-                    >
-                      <StickyNote size={14} />
-                    </button>
-                  ) : null}
-                  <button type="button" onClick={copyMessage} aria-label="Copy message">
-                    {copied ? <CheckCircle2 size={14} /> : <Copy size={14} />}
-                  </button>
-                </MessageFooter>
-              ) : null}
-            </article>
-          </ChatCardContent>
-        </ChatCardPrimitive>
-      </MessageContent>
-    </ChatMessagePrimitive>
-  );
-}
-
-function PendingAssistantBody() {
-  return (
-    <div className="inspir-pending-assistant" aria-live="polite" aria-label="Thinking">
-      <span className="inspir-thinking-dots">
-        <span />
-        <span />
-        <span />
-      </span>
-      <strong>Thinking</strong>
-    </div>
-  );
-}
-
-function ThinkingMarker({ label }: { label: string }) {
-  return (
-    <Marker className="inspir-thinking" aria-live="polite">
-      <MarkerIcon className="inspir-thinking-dots">
-        <span />
-        <span />
-        <span />
-      </MarkerIcon>
-      <MarkerContent>
-        <strong>{label}</strong>
-      </MarkerContent>
-    </Marker>
-  );
-}
-
-function MemorySourcesModal({
-  sources,
-  onClose,
-  onFeedback,
-}: {
-  sources: MessageMemorySource[];
-  onClose: () => void;
-  onFeedback: (source: MessageMemorySource, action: "relevant" | "not_relevant" | "dont_mention") => void;
-}) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (!dialog.open) dialog.showModal();
-    return () => {
-      if (dialog.open) dialog.close();
-    };
-  }, []);
-
-  return (
-    <dialog
-      ref={dialogRef}
-      className="inspir-modal-backdrop"
-      aria-label="Memory sources"
-      onCancel={(event) => {
-        event.preventDefault();
-        onClose();
-      }}
-    >
-      <section className="inspir-memory-source-modal">
-        <header>
-          <div>
-            <strong>Memory sources</strong>
-            <span>{sources.length} used for this reply</span>
-          </div>
-          <button type="button" onClick={onClose} aria-label="Close memory sources">
-            <X size={20} />
-          </button>
-        </header>
-        <div className="inspir-memory-source-list app-scrollbar">
-          {sources.map((source) => (
-            <article key={source.id} className="inspir-memory-source-card">
-              <div>
-                <strong>{source.label}</strong>
-                {source.reason ? <span>{source.reason}</span> : null}
-              </div>
-              <p>{source.excerpt}</p>
-              <div className="inspir-memory-source-actions">
-                <button type="button" onClick={() => onFeedback(source, "relevant")} aria-label="Mark source relevant">
-                  <Check size={15} />
-                </button>
-                <button type="button" onClick={() => onFeedback(source, "not_relevant")} aria-label="Mark source not relevant">
-                  <XCircle size={15} />
-                </button>
-                <button type="button" onClick={() => onFeedback(source, "dont_mention")} aria-label="Do not mention this source">
-                  <EyeOff size={15} />
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-    </dialog>
-  );
-}
-
 const quizBuildSteps = [
   "Scanning the topic",
   "Balancing difficulty",
@@ -6786,34 +6572,6 @@ async function signOutToHome() {
   } finally {
     window.location.assign("/");
   }
-}
-
-function getMessageMemorySources(message: Message): MessageMemorySource[] {
-  const sources = message.metadata?.memorySources;
-  if (!Array.isArray(sources)) return [];
-  const parsed: MessageMemorySource[] = [];
-  for (const source of sources) {
-    if (!source || typeof source !== "object") continue;
-    const record = source as Record<string, unknown>;
-    if (typeof record.id !== "string" || typeof record.label !== "string" || typeof record.excerpt !== "string") {
-      continue;
-    }
-    const type =
-      record.type === "memory" || record.type === "summary" || record.type === "past_chat"
-        ? record.type
-        : "memory";
-    parsed.push({
-      type,
-      id: record.id,
-      label: record.label,
-      excerpt: record.excerpt,
-      reason: typeof record.reason === "string" ? record.reason : undefined,
-      memoryId: typeof record.memoryId === "string" ? record.memoryId : undefined,
-      chatTurnId: typeof record.chatTurnId === "string" ? record.chatTurnId : undefined,
-      summarySectionId: typeof record.summarySectionId === "string" ? record.summarySectionId : undefined,
-    });
-  }
-  return parsed;
 }
 
 function findAiRunIdForMessage(messages: Message[], messageId: string) {

@@ -133,7 +133,9 @@ function StreamingMarkdownPreview({ content, className }: { content: string; cla
     <div className={`${className} is-streaming`} data-no-auto-translate="true">
       {blocks.length > 0
         ? keyedStreamingBlocks(blocks).map(({ key, block }) => (
-            <StreamingBlock key={key} blockKey={key} block={block} />
+            <div key={key} className="inspir-stream-block" data-stream-block={key}>
+              <StreamingBlock block={block} />
+            </div>
           ))
         : null}
     </div>
@@ -264,13 +266,13 @@ function parseMarkdownTableRows(lines: string[]) {
   return rows;
 }
 
-function StreamingBlock({ block, blockKey }: { block: StreamingMarkdownBlock; blockKey: string }) {
+function StreamingBlock({ block }: { block: StreamingMarkdownBlock }) {
   switch (block.type) {
     case "heading":
-      return <StreamingHeading block={block} blockKey={blockKey} />;
+      return <StreamingHeading block={block} />;
     case "paragraph":
       return (
-        <p data-stream-block={blockKey}>
+        <p>
           {keyedTextValues(block.lines).map(({ key, value: line }, lineIndex) => (
             <span key={key}>
               {lineIndex > 0 ? <br /> : null}
@@ -281,7 +283,7 @@ function StreamingBlock({ block, blockKey }: { block: StreamingMarkdownBlock; bl
       );
     case "blockquote":
       return (
-        <blockquote data-stream-block={blockKey}>
+        <blockquote>
           {keyedTextValues(block.lines).map(({ key, value: line }, lineIndex) => (
             <Fragment key={key}>
               {lineIndex > 0 ? " " : null}
@@ -293,7 +295,7 @@ function StreamingBlock({ block, blockKey }: { block: StreamingMarkdownBlock; bl
     case "list": {
       const List = block.ordered ? "ol" : "ul";
       return (
-        <List data-stream-block={blockKey}>
+        <List>
           {keyedTextValues(block.items).map(({ key, value: item }) => (
             <li key={key}>
               <InlineMarkdown text={item} />
@@ -304,7 +306,7 @@ function StreamingBlock({ block, blockKey }: { block: StreamingMarkdownBlock; bl
     }
     case "table":
       return (
-        <div className="inspir-table-wrap" data-stream-block={blockKey}>
+        <div className="inspir-table-wrap">
           <table>
             <thead>
               <tr>
@@ -331,7 +333,7 @@ function StreamingBlock({ block, blockKey }: { block: StreamingMarkdownBlock; bl
       );
     case "code":
       return (
-        <figure className="inspir-code-block is-streaming" data-stream-block={blockKey}>
+        <figure className="inspir-code-block is-streaming">
           <figcaption>
             <span>{block.language.trim() || "code"}</span>
           </figcaption>
@@ -345,25 +347,23 @@ function StreamingBlock({ block, blockKey }: { block: StreamingMarkdownBlock; bl
 
 function StreamingHeading({
   block,
-  blockKey,
 }: {
   block: Extract<StreamingMarkdownBlock, { type: "heading" }>;
-  blockKey: string;
 }) {
   const children = <InlineMarkdown text={block.text} />;
   switch (block.level) {
     case 1:
-      return <h1 data-stream-block={blockKey}>{children}</h1>;
+      return <h1>{children}</h1>;
     case 2:
-      return <h2 data-stream-block={blockKey}>{children}</h2>;
+      return <h2>{children}</h2>;
     case 3:
-      return <h3 data-stream-block={blockKey}>{children}</h3>;
+      return <h3>{children}</h3>;
     case 4:
-      return <h4 data-stream-block={blockKey}>{children}</h4>;
+      return <h4>{children}</h4>;
     case 5:
-      return <h5 data-stream-block={blockKey}>{children}</h5>;
+      return <h5>{children}</h5>;
     case 6:
-      return <h6 data-stream-block={blockKey}>{children}</h6>;
+      return <h6>{children}</h6>;
   }
 }
 

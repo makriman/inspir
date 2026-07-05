@@ -1,20 +1,29 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const streamingChunks = [
-  "# Streaming stability check\n\n",
-  "This response arrives in many small chunks so the UI should not flash.\n\n",
-  "## Key ideas\n\n",
-  "- The page should stay pinned near the newest reply.\n",
-  "- The composer should not jump.\n",
-  "- Markdown should not re-layout violently.\n\n",
-  "| Metric | Expected |\n| --- | --- |\n",
-  "| Scroll | Stable |\n| Paint | Calm |\n\n",
-  "```ts\n",
-  "export function stable() {\n",
-  "  return \"smooth stream\";\n",
-  "}\n",
-  "```\n\nDone.",
-];
+const streamingText = `# Streaming stability check
+
+This response arrives in many small chunks so the UI should not flash.
+
+## Key ideas
+
+- The page should stay pinned near the newest reply.
+- The composer should not jump.
+- Markdown should not re-layout violently.
+
+| Metric | Expected |
+| --- | --- |
+| Scroll | Stable |
+| Paint | Calm |
+
+\`\`\`ts
+export function stable() {
+  return "smooth stream";
+}
+\`\`\`
+
+Done.`;
+
+const streamingChunks = chunkText(streamingText, 5);
 
 type StreamingSample = {
   assistantBottom: number | null;
@@ -114,6 +123,7 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       maxStreamingBottomDelta: Math.max(...settledStreamingSamples.map((sample) => sample.bottomDelta ?? 0), 0),
       messageRowCounts: Array.from(new Set(messageSamples.map((sample) => sample.rowCount))),
       pendingSamples: pendingSamples.length,
+      pendingWithContentFrames: samples.filter((sample) => sample.hasPendingAssistant && sample.textLength > 0).length,
       rawFenceDuringStreaming: streamingSamples.filter((sample) => sample.rawFence).length,
       richChildRemountDetails,
       richChildRemounts,
@@ -132,6 +142,7 @@ test("guest chat streaming stays visually stable and formats rich markdown after
   expect(diagnostics.shadcnMessages).toBeGreaterThanOrEqual(2);
   expect(diagnostics.messageRowCounts).toEqual([2]);
   expect(diagnostics.pendingSamples).toBeGreaterThan(4);
+  expect(diagnostics.pendingWithContentFrames).toBe(0);
   expect(diagnostics.strayThinkingFrames).toBe(0);
   expect(diagnostics.firstContentBottomShift).not.toBeNull();
   expect(diagnostics.firstContentBottomShift).toBeLessThanOrEqual(2);
@@ -147,6 +158,14 @@ test("guest chat streaming stays visually stable and formats rich markdown after
   expect(diagnostics.tables).toBe(1);
   expect(diagnostics.codeBlocks).toBe(1);
 });
+
+function chunkText(text: string, size: number) {
+  const chunks: string[] = [];
+  for (let index = 0; index < text.length; index += size) {
+    chunks.push(text.slice(index, index + size));
+  }
+  return chunks;
+}
 
 async function installGuestChatStream(page: Page, chunks: string[]) {
   await page.addInitScript(({ chunks: streamChunks }) => {
@@ -241,7 +260,7 @@ async function startStreamingProbe(page: Page) {
         textLength: rich?.textContent?.length ?? 0,
       });
 
-      if (performance.now() - startedAt < 2600) requestAnimationFrame(recordFrame);
+      if (performance.now() - startedAt < 8000) requestAnimationFrame(recordFrame);
     };
 
     requestAnimationFrame(recordFrame);
