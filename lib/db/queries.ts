@@ -410,10 +410,32 @@ export async function getChatMessagesByIds(chatId: string, messageIds: string[])
 
 export async function getRecentChats(userId: string, topicId?: string, q?: string) {
   const searchPattern = q ? d1ContainsLikePattern(q) : undefined;
-  const where = [
+  const baseWhere = [
     eq(chats.userId, userId),
     eq(chats.isArchived, false),
     topicId ? eq(chats.topicId, topicId) : undefined,
+  ].filter(Boolean);
+
+  if (!searchPattern) {
+    const chatRows = await db
+      .select({
+        id: chats.id,
+        topicId: chats.topicId,
+        topicName: chats.topicNameSnapshot,
+        title: chats.title,
+        createdAt: chats.createdAt,
+        updatedAt: chats.updatedAt,
+      })
+      .from(chats)
+      .where(and(...baseWhere))
+      .orderBy(desc(chats.updatedAt))
+      .limit(100);
+    const replyCounts = await getReplyCounts(chatRows.map((chat) => chat.id));
+    return chatRows.map((chat) => ({ ...chat, replyCount: replyCounts.get(chat.id) ?? 0 }));
+  }
+
+  const where = [
+    ...baseWhere,
     searchPattern
       ? or(
           drizzleSql`lower(${chats.title}) like lower(${searchPattern}) escape '\\'`,
@@ -441,6 +463,19 @@ export async function getRecentChats(userId: string, topicId?: string, q?: strin
     .limit(100);
 
   return rows;
+}
+
+async function getReplyCounts(chatIds: string[]) {
+  if (!chatIds.length) return new Map<string, number>();
+  const rows = await db
+    .select({
+      chatId: messages.chatId,
+      replyCount: count(messages.id),
+    })
+    .from(messages)
+    .where(inArray(messages.chatId, chatIds))
+    .groupBy(messages.chatId);
+  return new Map(rows.map((row) => [row.chatId, row.replyCount]));
 }
 
 export async function getChatPreviews(chatIds: string[]) {

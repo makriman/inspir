@@ -144,6 +144,11 @@ export const chats = sqliteTable(
   (table) => ({
     userIdx: index("chats_user_id_idx").on(table.userId),
     topicIdx: index("chats_topic_id_idx").on(table.topicId),
+    userArchiveUpdatedIdx: index("chats_user_archive_updated_idx").on(
+      table.userId,
+      table.isArchived,
+      table.updatedAt,
+    ),
   }),
 );
 
@@ -163,6 +168,7 @@ export const messages = sqliteTable(
   },
   (table) => ({
     chatCreatedIdx: index("messages_chat_created_idx").on(table.chatId, table.createdAt),
+    chatRoleCreatedIdx: index("messages_chat_role_created_idx").on(table.chatId, table.role, table.createdAt),
   }),
 );
 
@@ -268,8 +274,15 @@ export const userMemories = sqliteTable(
   },
   (table) => ({
     userStatusIdx: index("user_memories_user_status_idx").on(table.userId, table.status),
+    userStatusSalienceUpdatedIdx: index("user_memories_user_status_salience_updated_idx").on(
+      table.userId,
+      table.status,
+      table.salience,
+      table.updatedAt,
+    ),
     categoryIdx: index("user_memories_category_idx").on(table.category),
     sourceChatIdx: index("user_memories_source_chat_idx").on(table.sourceChatId),
+    userSourceMessageIdx: index("user_memories_user_source_message_idx").on(table.userId, table.sourceMessageId),
     sourceTypeIdx: index("user_memories_source_type_idx").on(table.sourceType),
     freshnessIdx: index("user_memories_freshness_idx").on(table.freshnessStatus),
     doNotMentionIdx: index("user_memories_do_not_mention_idx").on(table.doNotMention),
@@ -331,6 +344,7 @@ export const chatMemoryTurns = sqliteTable(
   },
   (table) => ({
     userIdx: index("chat_memory_turns_user_idx").on(table.userId),
+    userUpdatedIdx: index("chat_memory_turns_user_updated_idx").on(table.userId, table.updatedAt),
     chatIdx: index("chat_memory_turns_chat_idx").on(table.chatId),
     topicIdx: index("chat_memory_turns_topic_idx").on(table.topicId),
     userMessageIdx: uniqueIndex("chat_memory_turns_user_message_idx").on(table.userMessageId),
