@@ -141,6 +141,23 @@ test("next env fallback scan rejects sensitive compiled values", () => {
   assert.ok(findings.every((finding) => finding.valueSha256 && !JSON.stringify(finding).includes("sk-test")));
 });
 
+test("next env fallback scan rejects retired provider keys", () => {
+  const retiredKey = ["NEXT_PUBLIC", ["SUPA", "BASE"].join(""), "URL"].join("_");
+  const findings = scanNextEnvFallbacks(
+    [
+      `export const production = {"${retiredKey}":"https://old-provider.example","APP_URL":"https://inspirlearning.com"};`,
+      "export const development = {};",
+      "export const test = {};",
+    ].join("\n"),
+  );
+
+  assert.deepEqual(
+    findings.map((finding) => [finding.rule, finding.key]),
+    [["retired-env-fallback", retiredKey]],
+  );
+  assert.ok(findings.every((finding) => finding.valueSha256 && !JSON.stringify(finding).includes("old-provider")));
+});
+
 test("artifact scan allows runtime env references but rejects literal credentials", () => {
   const cwd = makeRepo();
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-build-artifact-backup-"));

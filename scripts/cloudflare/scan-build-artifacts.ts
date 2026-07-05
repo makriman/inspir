@@ -33,6 +33,14 @@ const DEFAULT_ARTIFACT_ROOT = ".open-next";
 const NEXT_ENV_RELATIVE_PATH = ".open-next/cloudflare/next-env.mjs";
 const MAX_FILE_BYTES = 15 * 1024 * 1024;
 const PRIVATE_KEY_BEGIN_MARKER = ["-----BEGIN ", "PRIVATE KEY-----"].join("");
+const RETIRED_PROVIDER_KEY_PATTERNS = [
+  [/(^|_)/, ["VER", "CEL"].join(""), /($|_)/],
+  [/(^|_)/, ["SUPA", "BASE"].join(""), /($|_)/],
+  [/(^|_)/, ["NE", "ON"].join(""), /($|_)/],
+  [/(^|_)/, ["POST", "GRES"].join(""), /($|_)/],
+  [/(^|_)/, ["PG", "VECTOR"].join(""), /($|_)/],
+  [/(^|_)/, ["BUB", "BLE"].join(""), /($|_)/],
+].map((parts) => new RegExp(parts.map((part) => (part instanceof RegExp ? part.source : part)).join(""), "i"));
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const backupDir = resolveBackupDir();
@@ -130,7 +138,7 @@ export function scanNextEnvFallbacks(content: string, file = NEXT_ENV_RELATIVE_P
     const values = parseObject(rawJson);
     for (const [key, value] of Object.entries(values)) {
       if (value === undefined || value === null || String(value).trim() === "") continue;
-      if (isRetiredFallbackKey()) {
+      if (isRetiredFallbackKey(key)) {
         findings.push({
           rule: "retired-env-fallback",
           description: "Retired provider environment key was compiled into the OpenNext env fallback",
@@ -178,8 +186,8 @@ function parseObject(rawJson: string) {
   }
 }
 
-function isRetiredFallbackKey() {
-  return false;
+function isRetiredFallbackKey(key: string) {
+  return RETIRED_PROVIDER_KEY_PATTERNS.some((pattern) => pattern.test(key));
 }
 
 function isSensitiveFallbackKey(key: string) {

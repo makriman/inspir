@@ -17,8 +17,10 @@ type E2EAuthPayload = {
 };
 
 export async function POST(request: Request) {
-  const configuredSecret = readRuntimeEnv("MIGRATION_E2E_AUTH_SECRET");
-  const configuredEmail = normalizeEmail(readRuntimeEnv("MIGRATION_E2E_AUTH_EMAIL"));
+  const configuredSecret = readRuntimeEnv("E2E_TEST_AUTH_SECRET") ?? readRuntimeEnv("MIGRATION_E2E_AUTH_SECRET");
+  const configuredEmail = normalizeEmail(
+    readRuntimeEnv("E2E_TEST_AUTH_EMAIL") ?? readRuntimeEnv("MIGRATION_E2E_AUTH_EMAIL"),
+  );
   if (!configuredSecret || !configuredEmail) return hiddenResponse();
 
   const providedSecret = request.headers.get("x-migration-e2e-auth-secret") ?? "";
