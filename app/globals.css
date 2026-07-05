@@ -486,6 +486,20 @@ a {
   overflow-y: auto;
   padding: 30px clamp(18px, 6vw, 72px) 128px;
   scroll-padding-bottom: 128px;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.inspir-message-scroll[data-autoscrolling] {
+  scrollbar-color: #343434 #050505;
+}
+
+.inspir-message-scroll[data-autoscrolling]::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+.inspir-message-scroll[data-autoscrolling]::-webkit-scrollbar-thumb {
+  background: #343434;
 }
 
 .inspir-intro-card {

@@ -127,10 +127,10 @@ type StreamingMarkdownBlock =
   | { type: "table"; rows: string[][] };
 
 function StreamingMarkdownPreview({ content, className }: { content: string; className: string }) {
-  const blocks = useMemo(() => parseStreamingMarkdown(content), [content]);
+  const blocks = useMemo(() => parseStableStreamingMarkdown(content), [content]);
 
   return (
-    <div className={`${className} is-streaming`} data-no-auto-translate="true">
+    <div className={`${className} is-streaming`} data-content-length={content.length} data-no-auto-translate="true">
       {blocks.length > 0
         ? keyedStreamingBlocks(blocks).map(({ key, block }) => (
             <div key={key} className="inspir-stream-block" data-stream-block={key}>
@@ -140,6 +140,103 @@ function StreamingMarkdownPreview({ content, className }: { content: string; cla
         : null}
     </div>
   );
+}
+
+function parseStableStreamingMarkdown(content: string) {
+  const normalized = normalizeAssistantMarkdown(content).replace(/\r\n?/g, "\n");
+  const openFenceStart = findOpenFenceStart(normalized);
+  if (openFenceStart !== null) {
+    return [
+      ...parseStreamingMarkdown(normalized.slice(0, openFenceStart)),
+      ...parseStreamingMarkdownTail(normalized.slice(openFenceStart)),
+    ];
+  }
+
+  const stableBoundary = lastStableBlockBoundary(normalized);
+  return [
+    ...parseStreamingMarkdown(normalized.slice(0, stableBoundary)),
+    ...parseStreamingMarkdownTail(normalized.slice(stableBoundary)),
+  ];
+}
+
+function findOpenFenceStart(content: string) {
+  const lines = content.split("\n");
+  let offset = 0;
+  let openStart: number | null = null;
+
+  for (const line of lines) {
+    if (/^\s*```[\w-]*\s*$/.test(line)) {
+      openStart = openStart === null ? offset : null;
+    }
+    offset += line.length + 1;
+  }
+
+  return openStart;
+}
+
+function lastStableBlockBoundary(content: string) {
+  let boundary = 0;
+  const paragraphBreak = /\n[ \t]*\n/g;
+  let match: RegExpExecArray | null;
+  while ((match = paragraphBreak.exec(content)) !== null) {
+    boundary = match.index + match[0].length;
+  }
+  return boundary;
+}
+
+function parseStreamingMarkdownTail(content: string): StreamingMarkdownBlock[] {
+  const lines = content.replace(/\r\n?/g, "\n").split("\n");
+  const nonEmptyLines = lines.map((line) => line.trim()).filter(Boolean);
+  const firstLine = nonEmptyLines[0] ?? "";
+
+  if (!firstLine) return [];
+  if (/^`{1,2}[\w-]*\s*$/.test(firstLine)) {
+    return [{ type: "code", language: firstLine.replace(/^`{1,2}/, "").trim(), code: "" }];
+  }
+  if (/^```[\w-]*\s*$/.test(firstLine) || /^#{1,6}\s+/.test(firstLine)) {
+    return parseStreamingMarkdown(content);
+  }
+  const heading = firstLine.match(/^(#{1,6})(?:\s+(.*)|\s*)$/);
+  if (heading) {
+    return [
+      {
+        type: "heading",
+        level: heading[1].length as 1 | 2 | 3 | 4 | 5 | 6,
+        text: heading[2] ?? "",
+      },
+    ];
+  }
+  if (nonEmptyLines.every((line) => line.includes("|"))) {
+    return [{ type: "table", rows: parseMarkdownTableRows(nonEmptyLines) }];
+  }
+  if (nonEmptyLines.every((line) => /^[-*+](?:\s+.*)?$/.test(line))) {
+    return [
+      {
+        type: "list",
+        ordered: false,
+        items: nonEmptyLines.map((line) => line.replace(/^[-*+]\s*/, "")),
+      },
+    ];
+  }
+  if (nonEmptyLines.every((line) => /^\d+[.)](?:\s+.*)?$/.test(line))) {
+    return [
+      {
+        type: "list",
+        ordered: true,
+        items: nonEmptyLines.map((line) => line.replace(/^\d+[.)]\s*/, "")),
+      },
+    ];
+  }
+  if (nonEmptyLines.every((line) => line.startsWith(">"))) {
+    return [
+      {
+        type: "blockquote",
+        lines: nonEmptyLines.map((line) => line.replace(/^>\s?/, "")).filter(Boolean),
+      },
+    ];
+  }
+
+  return [{ type: "paragraph", lines: nonEmptyLines }];
 }
 
 function parseStreamingMarkdown(content: string): StreamingMarkdownBlock[] {

@@ -43,7 +43,6 @@ import {
   Lightbulb,
   ListChecks,
   MapPin,
-  Menu,
   MessageCircle,
   MessageSquareText,
   PencilLine,
@@ -84,11 +83,25 @@ import {
   type MessageMemorySource,
 } from "@/components/chat/chat-message-model";
 import { ClockIcon } from "@/components/chat/ClockIcon";
+import { FlashcardBuildLoader } from "@/components/chat/FlashcardBuildLoader";
+import { FlashcardReview } from "@/components/chat/FlashcardReview";
+import { FlashcardStat } from "@/components/chat/FlashcardStat";
+import { GuestContinueModal } from "@/components/chat/GuestContinueModal";
+import { GuestFeatureGate } from "@/components/chat/GuestFeatureGate";
 import { MemorySourcesModal } from "@/components/chat/MemorySourcesModal";
+import { MemoryMiniToggle } from "@/components/chat/MemoryMiniToggle";
 import { MessageCard } from "@/components/chat/MessageCard";
 import { MiniIcon } from "@/components/chat/MiniIcon";
 import type { MiniAppIcon } from "@/components/chat/mini-icon-types";
+import { ProfileStat } from "@/components/chat/ProfileStat";
+import { QuizBuildLoader } from "@/components/chat/QuizBuildLoader";
+import { QuizFeedback } from "@/components/chat/QuizFeedback";
+import { QuizReview } from "@/components/chat/QuizReview";
+import { RecentConversations } from "@/components/chat/RecentConversations";
+import { StarterGrid } from "@/components/chat/StarterGrid";
 import { ThinkingMarker } from "@/components/chat/ThinkingMarker";
+import { TopicIntroCard } from "@/components/chat/TopicIntroCard";
+import { TopBar } from "@/components/chat/TopBar";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
@@ -345,6 +358,18 @@ function topicMetadata(topic: Topic | undefined): TopicMetadata | undefined {
   if (!metadata || typeof metadata !== "object") return undefined;
   if (!("uiMode" in metadata) || !("starters" in metadata)) return undefined;
   return metadata as TopicMetadata;
+}
+
+function topicIntroProps(topic: Topic) {
+  return {
+    category: topicMetadata(topic)?.category ?? "Learning",
+    name: topic.name,
+    description: topic.description,
+  };
+}
+
+function localizedTopicHref(topic: Topic, language: string) {
+  return localizeHref(topicPath(topic.slug), language);
 }
 
 function readStoredGuestUsage(limit: number) {
@@ -1886,7 +1911,14 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
 
   if (isQuizMode) {
     if (isGuest) {
-      return <GuestFeatureGate topic={activeTopic} featureName="scored AI quizzes" language={currentLanguage} />;
+      return (
+        <GuestFeatureGate
+          {...topicIntroProps(activeTopic)}
+          featureName="scored AI quizzes"
+          starters={topicMetadata(activeTopic)?.starters ?? []}
+          topicHref={localizedTopicHref(activeTopic, currentLanguage)}
+        />
+      );
     }
     return (
       <QuizWorkspace
@@ -1901,7 +1933,14 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
 
   if (isFlashcardMode) {
     if (isGuest) {
-      return <GuestFeatureGate topic={activeTopic} featureName="AI flashcard decks" language={currentLanguage} />;
+      return (
+        <GuestFeatureGate
+          {...topicIntroProps(activeTopic)}
+          featureName="AI flashcard decks"
+          starters={topicMetadata(activeTopic)?.starters ?? []}
+          topicHref={localizedTopicHref(activeTopic, currentLanguage)}
+        />
+      );
     }
     return (
       <FlashcardWorkspace
@@ -1978,8 +2017,6 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
       streamingMessageId &&
       visibleChatMessages.some((message) => message.id === streamingMessageId && isPendingAssistantMessage(message)),
   );
-  const lastVisibleMessageId = visibleChatMessages.at(-1)?.id ?? null;
-  const activeScrollAnchorId = streamingMessageId ?? lastVisibleMessageId;
 
   return (
     <main className="inspir-workspace">
@@ -1989,7 +2026,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
             <MessageScrollerContent className="inspir-message-stack">
               {visibleChatMessages.length === 0 ? (
                 <MessageScrollerItem>
-                  <TopicIntroCard topic={activeTopic} />
+                  <TopicIntroCard {...topicIntroProps(activeTopic)} />
                 </MessageScrollerItem>
               ) : null}
               {visibleChatMessages.length === 0 ? (
@@ -1998,11 +2035,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
                 </MessageScrollerItem>
               ) : null}
               {visibleChatMessages.map((message) => (
-                <MessageScrollerItem
-                  key={message.id}
-                  messageId={message.id}
-                  scrollAnchor={message.id === activeScrollAnchorId}
-                >
+                <MessageScrollerItem key={message.id} messageId={message.id}>
                   <MessageCard
                     message={message}
                     isStreaming={message.id === streamingMessageId}
@@ -2012,7 +2045,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
                 </MessageScrollerItem>
               ))}
               {awaitingResponse && !hasPendingAssistantCard ? (
-                <MessageScrollerItem scrollAnchor={!activeScrollAnchorId}>
+                <MessageScrollerItem>
                   <ThinkingMarker label="Thinking" />
                 </MessageScrollerItem>
               ) : null}
@@ -2245,137 +2278,6 @@ function TopicSidebar({
           </section>
         ))}
       </div>
-    </div>
-  );
-}
-
-function TopBar({
-  title,
-  recentOpen,
-  showRecent,
-  sending,
-  canRegenerate,
-  onReset,
-  onRecent,
-  onBack,
-  onMenu,
-  onStop,
-  onRegenerate,
-  showSessionActions = true,
-}: {
-  title: string;
-  recentOpen: boolean;
-  showRecent: boolean;
-  sending: boolean;
-  canRegenerate: boolean;
-  onReset: () => void;
-  onRecent: () => void;
-  onBack: () => void;
-  onMenu: () => void;
-  onStop: () => void;
-  onRegenerate: () => void;
-  showSessionActions?: boolean;
-}) {
-  return (
-    <header className="inspir-topbar">
-      <button type="button" onClick={onMenu} className="inspir-mobile-menu" aria-label="Open topics">
-        <Menu size={26} />
-      </button>
-      <div className="inspir-topbar-title">
-        {recentOpen ? (
-          <button type="button" onClick={onBack} aria-label="Back to chat" className="inspir-back-button">
-            <ArrowLeft size={22} />
-          </button>
-        ) : null}
-        <span>{title}</span>
-      </div>
-      <div className="inspir-topbar-actions">
-        {showSessionActions ? (
-          <>
-            <button type="button" onClick={onReset} aria-label="Reset conversation" className="inspir-reset-button">
-              <RotateCcw size={25} strokeWidth={3} />
-            </button>
-            <button
-              type="button"
-              onClick={sending ? onStop : onRegenerate}
-              disabled={!sending && !canRegenerate}
-              aria-label={sending ? "Stop response" : "Regenerate response"}
-              className="inspir-regenerate-button"
-            >
-              {sending ? <Square size={18} fill="currentColor" /> : <RefreshCw size={24} strokeWidth={3} />}
-            </button>
-            {showRecent ? (
-              <button type="button" onClick={onRecent} aria-label="Recent conversations" className="inspir-history-button">
-                <History size={26} strokeWidth={3} />
-              </button>
-            ) : null}
-          </>
-        ) : null}
-      </div>
-    </header>
-  );
-}
-
-function TopicIntroCard({ topic }: { topic: Topic }) {
-  return (
-    <article className="inspir-intro-card">
-      <div>
-        <span>{topicMetadata(topic)?.category ?? "Learning"}</span>
-        <h2>{topic.name}</h2>
-      </div>
-      <p>{topic.description}</p>
-    </article>
-  );
-}
-
-function GuestFeatureGate({ topic, featureName, language }: { topic: Topic; featureName: string; language: string }) {
-  const starters = topicMetadata(topic)?.starters ?? [];
-  const topicHref = localizeHref(topicPath(topic.slug), language);
-
-  return (
-    <main className="inspir-workspace">
-      <section className="inspir-guest-feature-gate">
-        <TopicIntroCard topic={topic} />
-        <div className="inspir-guest-feature-card">
-          <Sparkles size={26} />
-          <span>Sign in to keep learning</span>
-          <h2>Continue with Google to use {featureName}.</h2>
-          <p>Sign in keeps your progress, score, generated activities, and future conversations saved.</p>
-          <GoogleContinueButton className="inspir-guest-modal-primary" callbackUrl={topicHref}>
-            Continue with Google
-          </GoogleContinueButton>
-        </div>
-        {starters.length ? (
-          <div className="inspir-starter-grid">
-            {starters.map((starter) => (
-              <a key={starter} href={topicHref}>
-                <Sparkles size={16} />
-                <span>{starter}</span>
-              </a>
-            ))}
-          </div>
-        ) : null}
-      </section>
-    </main>
-  );
-}
-
-function StarterGrid({
-  starters,
-  onStart,
-}: {
-  starters: string[];
-  onStart: (starter: string) => void;
-}) {
-  if (!starters.length) return null;
-  return (
-    <div className="inspir-starter-grid">
-      {starters.map((starter) => (
-        <button key={starter} type="button" onClick={() => onStart(starter)}>
-          <Sparkles size={16} />
-          <span>{starter}</span>
-        </button>
-      ))}
     </div>
   );
 }
@@ -4779,7 +4681,7 @@ function GuidedMiniAppWorkspace({
       <div ref={listRef} className="inspir-mini-scroll app-scrollbar">
         {!hasSession ? (
           <section className="inspir-mini-start">
-            <TopicIntroCard topic={topic} />
+            <TopicIntroCard {...topicIntroProps(topic)} />
             <div className="inspir-mini-start-copy">
               <span>{config.eyebrow}</span>
               <h2>{config.setupTitle}</h2>
@@ -5119,7 +5021,7 @@ function useHistoricalPersonWorkspace({
         {!hasSession ? (
           <section className="historical-start">
             <div className="historical-start-main">
-              <TopicIntroCard topic={topic} />
+              <TopicIntroCard {...topicIntroProps(topic)} />
               <header className="historical-audience-hero">
                 <span>Historical Audience Chamber</span>
                 <h2>Stage the person, year, room, and relationship.</h2>
@@ -5513,15 +5415,6 @@ function useHistoricalPersonWorkspace({
   );
 }
 
-const quizBuildSteps = [
-  "Scanning the topic",
-  "Balancing difficulty",
-  "Writing clear options",
-  "Hiding the answers",
-  "Preparing explanations",
-  "Shuffling the challenge",
-];
-
 function QuizWorkspace({
   activeChatId,
   activeTopicId,
@@ -5680,83 +5573,6 @@ function QuizWorkspace({
     </main>
   );
 }
-
-function QuizBuildLoader({ topic, progress }: { topic: string; progress: number }) {
-  const stepIndex = Math.min(quizBuildSteps.length - 1, Math.floor((progress / 100) * quizBuildSteps.length));
-  return (
-    <section className="inspir-quiz-loader" aria-live="polite">
-      <div className="inspir-quiz-loader-orbit">
-        <Sparkles size={28} />
-        <span />
-        <span />
-        <span />
-      </div>
-      <div>
-        <span className="inspir-quiz-loader-kicker">Building your quiz</span>
-        <h2>{topic.trim() || "Your topic"}</h2>
-        <p>{quizBuildSteps[stepIndex]}</p>
-      </div>
-      <div className="inspir-quiz-loader-track">
-        <span style={{ width: `${progress}%` }} />
-      </div>
-      <ol className="inspir-quiz-loader-steps">
-        {quizBuildSteps.map((step, index) => (
-          <li key={step} className={index <= stepIndex ? "is-active" : ""}>
-            {step}
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
-function QuizFeedback({ question }: { question: PublicQuizQuestion }) {
-  const correct = question.isCorrect;
-  return (
-    <aside className={`inspir-quiz-feedback ${correct ? "is-correct" : "is-wrong"}`}>
-      {correct ? <CheckCircle2 size={20} /> : <XCircle size={20} />}
-      <div>
-        <strong>{correct ? "Correct" : "Not quite"}</strong>
-        <span>{question.explanation}</span>
-      </div>
-    </aside>
-  );
-}
-
-function QuizReview({ quiz }: { quiz: PublicQuizState }) {
-  return (
-    <article className="inspir-quiz-review">
-      <h3>Final score: {quiz.score}/10</h3>
-      <p>{quiz.score >= 8 ? "Strong work." : quiz.score >= 5 ? "Good base. Review the misses below." : "You have a starting map now. Let us rebuild the weak spots."}</p>
-      <div className="inspir-review-list">
-        {quiz.questions.map((question, index) => (
-          <div key={question.id} className={question.isCorrect ? "is-correct" : "is-wrong"}>
-            <strong>
-              {index + 1}. {question.prompt}
-            </strong>
-            <span>Your answer: {answerLabel(question, question.userAnswerIndex)}</span>
-            <span>Correct: {answerLabel(question, question.correctIndex)}</span>
-            <p>{question.explanation}</p>
-          </div>
-        ))}
-      </div>
-    </article>
-  );
-}
-
-function answerLabel(question: PublicQuizQuestion, index: number | undefined) {
-  if (index === undefined) return "Not answered";
-  return `${String.fromCharCode(65 + index)}. ${question.options[index] ?? ""}`;
-}
-
-const flashcardBuildSteps = [
-  "Finding atomic ideas",
-  "Writing recall prompts",
-  "Adding memory hints",
-  "Checking common traps",
-  "Stacking the deck",
-  "Ready for review",
-];
 
 function FlashcardWorkspace({
   activeChatId,
@@ -6002,161 +5818,6 @@ function FlashcardWorkspace({
         </section>
       )}
     </main>
-  );
-}
-
-function FlashcardBuildLoader({ topic, progress }: { topic: string; progress: number }) {
-  const stepIndex = Math.min(
-    flashcardBuildSteps.length - 1,
-    Math.floor((progress / 100) * flashcardBuildSteps.length),
-  );
-  return (
-    <section className="inspir-quiz-loader inspir-flashcard-loader" aria-live="polite">
-      <div className="inspir-flashcard-loader-stack">
-        <span />
-        <span />
-        <span />
-        <Clipboard size={26} />
-      </div>
-      <div>
-        <span className="inspir-quiz-loader-kicker">Building your deck</span>
-        <h2>{topic.trim() || "Your topic"}</h2>
-        <p>{flashcardBuildSteps[stepIndex]}</p>
-      </div>
-      <div className="inspir-quiz-loader-track">
-        <span style={{ width: `${progress}%` }} />
-      </div>
-      <ol className="inspir-quiz-loader-steps">
-        {flashcardBuildSteps.map((step, index) => (
-          <li key={step} className={index <= stepIndex ? "is-active" : ""}>
-            {step}
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
-function FlashcardStat({ label, value }: { label: string; value: string }) {
-  return (
-    <article>
-      <span>{label}</span>
-      <strong>{value}</strong>
-    </article>
-  );
-}
-
-function FlashcardReview({
-  deck,
-  onReviewMissed,
-  onStartOver,
-}: {
-  deck: PublicFlashcardState;
-  onReviewMissed: (deck: PublicFlashcardState) => void;
-  onStartOver: () => void;
-}) {
-  const missed = deck.cards.filter((card) => card.rating === "again");
-  return (
-    <article className="inspir-flashcard-review">
-      <h3>Deck complete: {deck.knownCount}/12 known</h3>
-      <p>
-        {missed.length
-          ? "Review the cards marked again, then rebuild a smaller deck from those weak spots."
-          : "Clean sweep. Come back later and test the same deck from memory."}
-      </p>
-      <div className="inspir-flashcard-review-actions">
-        {missed.length ? (
-          <button type="button" onClick={() => onReviewMissed(deck)}>
-            Review missed cards
-          </button>
-        ) : null}
-        <button type="button" onClick={onStartOver}>
-          Build another deck
-        </button>
-      </div>
-      <div className="inspir-review-list">
-        {deck.cards.map((card, index) => (
-          <div key={card.id} className={card.rating === "known" ? "is-correct" : "is-wrong"}>
-            <strong>
-              {index + 1}. {card.front}
-            </strong>
-            <span>{card.back}</span>
-            {card.trap ? <p>Trap: {card.trap}</p> : null}
-          </div>
-        ))}
-      </div>
-    </article>
-  );
-}
-
-function RecentConversations({
-  chats,
-  loading,
-  onBack,
-  onOpen,
-}: {
-  chats: RecentChat[];
-  loading: boolean;
-  onBack: () => void;
-  onOpen: (chatId: string) => void;
-}) {
-  return (
-    <main className="inspir-recent app-scrollbar">
-      <button type="button" onClick={onBack} className="inspir-recent-back">
-        <ArrowLeft size={22} />
-        Back
-      </button>
-      {loading ? <p className="inspir-recent-empty">Loading…</p> : null}
-      {!loading && chats.length === 0 ? <p className="inspir-recent-empty">No search results</p> : null}
-      <div className="inspir-recent-list">
-        {chats.map((chat) => (
-          <button key={chat.id} type="button" onClick={() => onOpen(chat.id)} className="inspir-recent-card">
-            <span className="inspir-recent-title">{chat.firstMessagePreview || chat.title}</span>
-            <span className="inspir-recent-meta">
-              <MessageCircle size={16} />
-              {chat.replyCount} Replies
-            </span>
-            <time>{formatAppDate(chat.updatedAt)}</time>
-          </button>
-        ))}
-      </div>
-    </main>
-  );
-}
-
-function GuestContinueModal({
-  used,
-  limit,
-  callbackUrl,
-  onClose,
-}: {
-  used: number;
-  limit: number;
-  callbackUrl: string;
-  onClose: () => void;
-}) {
-  return (
-    <div className="inspir-guest-modal-backdrop" role="presentation">
-      <dialog open className="inspir-guest-modal" aria-modal="true" aria-labelledby="guest-modal-title">
-        <button type="button" onClick={onClose} aria-label="Close" className="inspir-guest-modal-close">
-          <X size={20} />
-        </button>
-        <span className="inspir-guest-modal-kicker">
-          {Math.min(used, limit)}/{limit} free guest messages used
-        </span>
-        <h2 id="guest-modal-title">Continue learning</h2>
-        <p>
-          Easy Google login, then inspir stores your learning history, language preference, and chats so
-          everything is ready next time. inspir stays free to use.
-        </p>
-        <GoogleContinueButton className="inspir-guest-modal-primary" callbackUrl={callbackUrl}>
-          Continue with Google
-        </GoogleContinueButton>
-        <button type="button" onClick={onClose} className="inspir-guest-modal-secondary">
-          Maybe later
-        </button>
-      </dialog>
-    </div>
   );
 }
 
@@ -6824,31 +6485,6 @@ function MemoryPanel({
   );
 }
 
-function MemoryMiniToggle({
-  label,
-  checked,
-  disabled,
-  onChange,
-}: {
-  label: string;
-  checked: boolean;
-  disabled?: boolean;
-  onChange: (checked: boolean) => void;
-}) {
-  return (
-    <button
-      type="button"
-      className={`inspir-memory-mini-toggle ${checked ? "is-on" : ""}`}
-      aria-pressed={checked}
-      disabled={disabled}
-      onClick={() => onChange(!checked)}
-    >
-      <span>{label}</span>
-      <span className="inspir-memory-mini-switch" />
-    </button>
-  );
-}
-
 function MemorySummaryCard({
   summary,
   saving,
@@ -7084,13 +6720,4 @@ function memoryCategoryLabel(category: string) {
 
 function translatedMemoryCategoryLabel(category: string, t: UiTranslator) {
   return t(memoryCategoryLabel(category));
-}
-
-function ProfileStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="inspir-profile-stat">
-      <strong>{label}</strong>
-      <span>{value}</span>
-    </div>
-  );
 }

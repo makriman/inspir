@@ -35,12 +35,14 @@ type StreamingSample = {
   hasStrayThinking: boolean;
   isStreaming: boolean;
   pendingAssistantBottom: number | null;
+  richBlockInnerSignature: string;
   richChildCount: number;
   richChildKeySignature: string;
   richChildSignature: string;
   richChildTagSignature: string;
   rowCount: number;
   rawFence: boolean;
+  rawStreamLength: number;
   spacerHeight: number;
   tables: number;
   textLength: number;
@@ -86,8 +88,15 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       toKeys: string;
     }> = [];
     let richChildRemounts = 0;
+    let richBlockTypeFlips = 0;
+    let previousRawStreamLength = 0;
+    let rawStreamLengthRegressions = 0;
+    let emptyStreamingFramesAfterContent = 0;
     let previousRichSample: StreamingSample | null = null;
     for (const sample of streamingSamples) {
+      if (sample.rawStreamLength < previousRawStreamLength) rawStreamLengthRegressions += 1;
+      if (previousRawStreamLength > 0 && sample.textLength === 0) emptyStreamingFramesAfterContent += 1;
+      previousRawStreamLength = Math.max(previousRawStreamLength, sample.rawStreamLength);
       if (sample.textLength === 0 || sample.richChildCount === 0) continue;
       if (
         previousRichSample &&
@@ -105,6 +114,15 @@ test("guest chat streaming stays visually stable and formats rich markdown after
           toTags: sample.richChildTagSignature,
           childCount: sample.richChildCount,
         });
+      }
+      if (
+        previousRichSample &&
+        sample.textLength > 60 &&
+        previousRichSample.richChildCount === sample.richChildCount &&
+        previousRichSample.richChildKeySignature === sample.richChildKeySignature &&
+        previousRichSample.richBlockInnerSignature !== sample.richBlockInnerSignature
+      ) {
+        richBlockTypeFlips += 1;
       }
       previousRichSample = sample;
     }
@@ -125,6 +143,8 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       pendingSamples: pendingSamples.length,
       pendingWithContentFrames: samples.filter((sample) => sample.hasPendingAssistant && sample.textLength > 0).length,
       rawFenceDuringStreaming: streamingSamples.filter((sample) => sample.rawFence).length,
+      emptyStreamingFramesAfterContent,
+      richBlockTypeFlips,
       richChildRemountDetails,
       richChildRemounts,
       shadcnMessages: document.querySelectorAll('[data-slot="message"]').length,
@@ -134,6 +154,7 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       streamingSamples: streamingSamples.length,
       streamingTables: streamingSamples.filter((sample) => sample.tables > 0).length,
       tables: rich?.querySelectorAll("table").length ?? 0,
+      rawStreamLengthRegressions,
       textLength: rich?.textContent?.length ?? 0,
     };
   });
@@ -150,6 +171,9 @@ test("guest chat streaming stays visually stable and formats rich markdown after
   expect(diagnostics.streamingCodeBlocks).toBeGreaterThan(0);
   expect(diagnostics.streamingTables).toBeGreaterThan(0);
   expect(diagnostics.rawFenceDuringStreaming).toBe(0);
+  expect(diagnostics.rawStreamLengthRegressions).toBe(0);
+  expect(diagnostics.emptyStreamingFramesAfterContent).toBe(0);
+  expect(diagnostics.richBlockTypeFlips).toBe(0);
   expect(diagnostics.richChildRemounts, JSON.stringify(diagnostics.richChildRemountDetails)).toBe(0);
   expect(diagnostics.maxStreamingBottomDelta).toBeLessThanOrEqual(96);
   expect(diagnostics.composerDrift).toBeLessThanOrEqual(1);
@@ -233,6 +257,9 @@ async function startStreamingProbe(page: Page) {
       const pending = assistant?.querySelector(".inspir-pending-assistant");
       const rich = assistant?.querySelector(".inspir-rich-content");
       const richChildren = rich ? Array.from(rich.children) : [];
+      const richBlockInnerSignature = richChildren
+        .map((child) => child.firstElementChild?.tagName.toLowerCase() ?? "")
+        .join(",");
       const assistantRect = assistant?.getBoundingClientRect();
       const pendingRect = pending?.getBoundingClientRect();
       const spacer = document.querySelector<HTMLElement>(".inspir-message-stack > [data-message-scroller-spacer]");
@@ -247,6 +274,7 @@ async function startStreamingProbe(page: Page) {
         hasStrayThinking: Boolean(document.querySelector(".inspir-thinking")),
         isStreaming: Boolean(rich?.classList.contains("is-streaming")),
         pendingAssistantBottom: pendingRect ? Math.round(assistantRect?.bottom ?? pendingRect.bottom) : null,
+        richBlockInnerSignature,
         richChildCount: richChildren.length,
         richChildKeySignature: richChildren
           .map((child) => child.getAttribute("data-stream-block") ?? "")
@@ -255,6 +283,7 @@ async function startStreamingProbe(page: Page) {
         richChildTagSignature: richChildren.map((child) => child.tagName.toLowerCase()).join(","),
         rowCount: document.querySelectorAll(".inspir-message-row").length,
         rawFence: rich?.textContent?.includes("```") ?? false,
+        rawStreamLength: Number(rich?.getAttribute("data-content-length") ?? 0),
         spacerHeight: spacer ? Math.round(spacer.getBoundingClientRect().height) : 0,
         tables: rich?.querySelectorAll("table").length ?? 0,
         textLength: rich?.textContent?.length ?? 0,
