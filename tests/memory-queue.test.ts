@@ -5,8 +5,11 @@ import {
   createMemoryPostTurnQueueMessage,
   dispatchMemoryPostTurn,
   enqueueDueMemorySynthesis,
+  maxMemoryQueueMessageBytes,
+  memoryQueueMessageByteLength,
   processMemoryQueueBatch,
   processMemoryPostTurnQueueBatch,
+  type MemoryPostTurnQueueMessage,
   type MemoryQueueMessage,
 } from "../lib/ai/memory-queue";
 
@@ -20,15 +23,31 @@ test("memory post-turn dispatcher sends JSON messages to Cloudflare Queues", asy
         return queueSendResponse();
       },
     },
-    fallback: async () => {
-      throw new Error("fallback should not run when queue send succeeds");
-    },
   });
 
   assert.equal(result, "queued");
   assert.equal(sent.length, 1);
   assert.equal(sent[0]?.contentType, "json");
-  assert.equal(sent[0]?.message.type, "memory.post_turn.v1");
+  assert.equal(sent[0]?.message.type, "memory.post_turn.v2");
+});
+
+test("memory post-turn queue messages stay below Cloudflare Queue payload limits", () => {
+  const message = createMemoryPostTurnQueueMessage({
+    aiRunId: "a".repeat(120),
+    userId: "u".repeat(120),
+    chatId: "c".repeat(120),
+    topic: {
+      id: "t".repeat(120),
+      name: "Algebra ".repeat(30).slice(0, 240),
+      slug: "algebra-".repeat(30).slice(0, 240),
+    },
+    userMessageId: "m".repeat(120),
+    assistantMessageId: "a".repeat(120),
+    contextMessageIds: Array.from({ length: 40 }, (_, index) => `ctx-${String(index).padStart(2, "0")}-${"x".repeat(112)}`),
+  });
+
+  assert.ok(memoryQueueMessageByteLength(message) < 128 * 1024);
+  assert.ok(memoryQueueMessageByteLength(message) <= maxMemoryQueueMessageBytes);
 });
 
 test("memory daily synthesis enqueuer sends due users to Cloudflare Queues", async () => {
@@ -84,27 +103,47 @@ test("memory daily synthesis enqueuer respects write freeze", async () => {
   );
 });
 
-test("memory post-turn dispatcher falls back when no queue binding is available", async () => {
-  let fallbackCalls = 0;
+test("memory post-turn dispatcher drops noncritical memory work when no queue binding is available", async () => {
   const result = await dispatchMemoryPostTurn(sampleMessage(), {
     logger: silentLogger,
     queue: null,
-    fallback: async () => {
-      fallbackCalls += 1;
+  });
+
+  assert.equal(result, "dropped");
+});
+
+test("memory post-turn dispatcher drops noncritical memory work when queue send fails", async () => {
+  const warnings: unknown[] = [];
+  const result = await dispatchMemoryPostTurn(sampleMessage(), {
+    logger: {
+      log() {},
+      warn(...args: unknown[]) {
+        warnings.push(args);
+      },
+    },
+    queue: {
+      async send() {
+        throw new Error("queue unavailable");
+      },
     },
   });
 
-  assert.equal(result, "processed-inline");
-  assert.equal(fallbackCalls, 1);
+  assert.equal(result, "dropped");
+  assert.equal(warnings.some((entry) => JSON.stringify(entry).includes("queue_send_failed")), true);
 });
 
-test("memory queue consumer acks invalid messages and successful jobs", async () => {
+test("memory queue consumer rehydrates v2 post-turn jobs", async () => {
   const invalid = fakeMessage({ bad: true });
   const valid = fakeMessage(sampleMessage());
   const processed: string[] = [];
+  const rehydrated: string[] = [];
 
   await processMemoryPostTurnQueueBatch(fakeBatch([invalid, valid]), {} as CloudflareEnv, {
     logger: silentLogger,
+    postTurnRehydrator: async (message) => {
+      rehydrated.push(message.assistantMessageId);
+      return sampleProcessorInput(message);
+    },
     processor: async (input) => {
       processed.push(input.assistantMessage.id);
     },
@@ -114,7 +153,24 @@ test("memory queue consumer acks invalid messages and successful jobs", async ()
   assert.equal(invalid.retried, false);
   assert.equal(valid.acked, true);
   assert.equal(valid.retried, false);
+  assert.deepEqual(rehydrated, ["assistant-message"]);
   assert.deepEqual(processed, ["assistant-message"]);
+});
+
+test("memory queue consumer still accepts in-flight v1 post-turn jobs", async () => {
+  const valid = fakeMessage(sampleV1Message());
+  const processed: string[] = [];
+
+  await processMemoryPostTurnQueueBatch(fakeBatch([valid]), {} as CloudflareEnv, {
+    logger: silentLogger,
+    processor: async (input) => {
+      processed.push(input.assistantMessage.content);
+    },
+  });
+
+  assert.equal(valid.acked, true);
+  assert.equal(valid.retried, false);
+  assert.deepEqual(processed, ["Got it. I will use visual examples."]);
 });
 
 test("memory queue consumer processes daily synthesis jobs", async () => {
@@ -141,6 +197,7 @@ test("memory queue consumer retries failed jobs without acknowledging them", asy
 
   await processMemoryPostTurnQueueBatch(fakeBatch([failed]), {} as CloudflareEnv, {
     logger: silentLogger,
+    postTurnRehydrator: async (message) => sampleProcessorInput(message),
     processor: async () => {
       throw new Error("temporary failure");
     },
@@ -166,6 +223,49 @@ function sampleMessage() {
       name: "Algebra",
       slug: "algebra",
     },
+    userMessageId: "user-message",
+    assistantMessageId: "assistant-message",
+    contextMessageIds: ["context-message"],
+  });
+}
+
+function sampleProcessorInput(message: MemoryPostTurnQueueMessage) {
+  return {
+    userId: message.userId,
+    chatId: message.chatId,
+    topic: message.topic,
+    userMessage: {
+      id: message.userMessageId,
+      role: "user",
+      content: "Please remember I prefer visual examples.",
+    },
+    assistantMessage: {
+      id: message.assistantMessageId,
+      role: "assistant",
+      content: "Got it. I will use visual examples.",
+    },
+    contextMessages: [
+      {
+        id: "context-message",
+        role: "user",
+        content: "I like diagrams.",
+      },
+    ],
+  };
+}
+
+function sampleV1Message() {
+  return {
+    type: "memory.post_turn.v1",
+    enqueuedAt: new Date().toISOString(),
+    aiRunId: "ai-run",
+    userId: "user",
+    chatId: "chat",
+    topic: {
+      id: "topic",
+      name: "Algebra",
+      slug: "algebra",
+    },
     userMessage: {
       id: "user-message",
       role: "user",
@@ -177,7 +277,7 @@ function sampleMessage() {
       content: "Got it. I will use visual examples.",
     },
     contextMessages: [],
-  });
+  };
 }
 
 function fakeBatch(messages: Array<FakeMessage<unknown>>) {

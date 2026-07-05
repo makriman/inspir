@@ -398,6 +398,16 @@ export async function getChatMessages(chatId: string) {
     .orderBy(asc(messages.createdAt));
 }
 
+export async function getChatMessagesByIds(chatId: string, messageIds: string[]) {
+  const ids = [...new Set(messageIds)].filter(Boolean);
+  if (!ids.length) return [];
+  return db
+    .select()
+    .from(messages)
+    .where(and(eq(messages.chatId, chatId), inArray(messages.id, ids)))
+    .orderBy(asc(messages.createdAt));
+}
+
 export async function getRecentChats(userId: string, topicId?: string, q?: string) {
   const searchPattern = q ? d1ContainsLikePattern(q) : undefined;
   const where = [

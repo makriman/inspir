@@ -22,7 +22,6 @@ import {
 } from "@/lib/ai/memory-queue";
 import {
   memoryRunMetadata,
-  processMemoryAfterTurn,
   recordMemoryRetrievalUsage,
   retrieveRelevantMemoryForTurn,
   type MemoryRetrievalResult,
@@ -187,21 +186,9 @@ export async function POST(request: NextRequest) {
         name: topic.name,
         slug: topic.slug,
       },
-      userMessage: {
-        id: userMessage.id,
-        role: "user",
-        content: userMessage.content,
-      },
-      assistantMessage: {
-        id: assistant.id,
-        role: "assistant",
-        content: event.text,
-      },
-      contextMessages: context.map((message) => ({
-        id: message.id,
-        role: message.role,
-        content: message.content,
-      })),
+      userMessageId: userMessage.id,
+      assistantMessageId: assistant.id,
+      contextMessageIds: context.map((message) => message.id),
     });
     settleMemoryJob(memoryMessage);
   }
@@ -210,17 +197,7 @@ export async function POST(request: NextRequest) {
     const message = await memoryJobWithTimeout(memoryJob);
     if (!message) return;
     try {
-      await dispatchMemoryPostTurn(message, {
-        fallback: () =>
-          processMemoryAfterTurn({
-            userId: message.userId,
-            chatId: message.chatId,
-            topic: message.topic,
-            userMessage: message.userMessage,
-            assistantMessage: message.assistantMessage,
-            contextMessages: message.contextMessages,
-          }),
-      });
+      await dispatchMemoryPostTurn(message);
     } catch (memoryError) {
       console.warn("Memory processing dispatch failed", memoryError);
     }

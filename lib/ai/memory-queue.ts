@@ -1,9 +1,12 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { z } from "zod";
 import { isWriteFreezeEnabled } from "@/lib/migration/write-freeze";
+import { getChatMessagesByIds } from "../db/queries";
 import { listUsersDueForMemorySynthesis } from "../db/memory";
 import { runWithRuntimeCloudflareEnv } from "../runtime/cloudflare";
 import { processMemoryAfterTurn, synthesizeUserMemory } from "./memory";
+
+export const maxMemoryQueueMessageBytes = 120 * 1024;
 
 const persistedMessageSchema = z.object({
   id: z.string().trim().min(1).max(120),
@@ -11,20 +14,36 @@ const persistedMessageSchema = z.object({
   content: z.string().max(120_000),
 });
 
-const memoryPostTurnQueueMessageSchema = z.object({
+const memoryTopicSchema = z.object({
+  id: z.string().trim().min(1).max(120),
+  name: z.string().trim().min(1).max(240),
+  slug: z.string().trim().min(1).max(240),
+});
+
+const memoryPostTurnQueueMessageV1Schema = z.object({
   type: z.literal("memory.post_turn.v1"),
   enqueuedAt: z.string().datetime(),
   aiRunId: z.string().trim().min(1).max(120),
   userId: z.string().trim().min(1).max(120),
   chatId: z.string().trim().min(1).max(120),
-  topic: z.object({
-    id: z.string().trim().min(1).max(120),
-    name: z.string().trim().min(1).max(240),
-    slug: z.string().trim().min(1).max(240),
-  }),
+  topic: memoryTopicSchema,
   userMessage: persistedMessageSchema,
   assistantMessage: persistedMessageSchema,
   contextMessages: z.array(persistedMessageSchema).max(40),
+});
+
+const messageIdSchema = z.string().trim().min(1).max(120);
+
+const memoryPostTurnQueueMessageV2Schema = z.object({
+  type: z.literal("memory.post_turn.v2"),
+  enqueuedAt: z.string().datetime(),
+  aiRunId: z.string().trim().min(1).max(120),
+  userId: z.string().trim().min(1).max(120),
+  chatId: z.string().trim().min(1).max(120),
+  topic: memoryTopicSchema,
+  userMessageId: messageIdSchema,
+  assistantMessageId: messageIdSchema,
+  contextMessageIds: z.array(messageIdSchema).max(40),
 });
 
 const memoryDailySynthesisQueueMessageSchema = z.object({
@@ -35,19 +54,23 @@ const memoryDailySynthesisQueueMessageSchema = z.object({
 });
 
 const memoryQueueMessageSchema = z.discriminatedUnion("type", [
-  memoryPostTurnQueueMessageSchema,
+  memoryPostTurnQueueMessageV1Schema,
+  memoryPostTurnQueueMessageV2Schema,
   memoryDailySynthesisQueueMessageSchema,
 ]);
 
-export type MemoryPostTurnQueueMessage = z.infer<typeof memoryPostTurnQueueMessageSchema>;
+export type MemoryPostTurnQueueMessageV1 = z.infer<typeof memoryPostTurnQueueMessageV1Schema>;
+export type MemoryPostTurnQueueMessage = z.infer<typeof memoryPostTurnQueueMessageV2Schema>;
 export type MemoryDailySynthesisQueueMessage = z.infer<typeof memoryDailySynthesisQueueMessageSchema>;
 export type MemoryQueueMessage = z.infer<typeof memoryQueueMessageSchema>;
-export type MemoryPostTurnDispatchResult = "queued" | "processed-inline" | "dropped";
+export type MemoryPostTurnDispatchResult = "queued" | "dropped";
 
 type QueueProducer = Pick<Queue<MemoryQueueMessage>, "send">;
 
 type Logger = Pick<typeof console, "log" | "warn">;
-type MemoryProcessor = (input: Parameters<typeof processMemoryAfterTurn>[0]) => Promise<void>;
+type MemoryProcessorInput = Parameters<typeof processMemoryAfterTurn>[0];
+type MemoryProcessor = (input: MemoryProcessorInput) => Promise<void>;
+type PostTurnRehydrator = (message: MemoryPostTurnQueueMessage) => Promise<MemoryProcessorInput>;
 type DailySynthesizer = (userId: string, reason: string) => Promise<unknown>;
 type DueUserLister = (limit: number) => Promise<Array<{ userId: string }>>;
 
@@ -63,10 +86,10 @@ export function createMemoryPostTurnQueueMessage(
   input: Omit<MemoryPostTurnQueueMessage, "type" | "enqueuedAt">,
 ): MemoryPostTurnQueueMessage {
   return {
-    type: "memory.post_turn.v1",
+    type: "memory.post_turn.v2",
     enqueuedAt: new Date().toISOString(),
     ...input,
-    contextMessages: input.contextMessages.slice(-40),
+    contextMessageIds: input.contextMessageIds.slice(-40),
   };
 }
 
@@ -85,13 +108,23 @@ export function createMemoryDailySynthesisQueueMessage(input: {
 export async function dispatchMemoryPostTurn(
   message: MemoryPostTurnQueueMessage,
   options: {
-    fallback?: () => Promise<void>;
     logger?: Logger;
     queue?: QueueProducer | null;
   } = {},
 ): Promise<MemoryPostTurnDispatchResult> {
   const logger = options.logger ?? console;
   const queue = options.queue === undefined ? getMemoryQueueFromRequestContext() : options.queue;
+  const messageBytes = memoryQueueMessageByteLength(message);
+  let dropReason = "missing_queue_binding";
+
+  if (messageBytes > maxMemoryQueueMessageBytes) {
+    logger.warn("memory_post_turn_queue_message_too_large", {
+      aiRunId: message.aiRunId,
+      bytes: messageBytes,
+      maxBytes: maxMemoryQueueMessageBytes,
+    });
+    return "dropped";
+  }
 
   if (queue) {
     try {
@@ -106,6 +139,7 @@ export async function dispatchMemoryPostTurn(
       );
       return "queued";
     } catch (error) {
+      dropReason = "queue_send_failed";
       logger.warn("memory_post_turn_queue_send_failed", {
         aiRunId: message.aiRunId,
         error: error instanceof Error ? error.message : String(error),
@@ -113,12 +147,7 @@ export async function dispatchMemoryPostTurn(
     }
   }
 
-  if (options.fallback) {
-    await options.fallback();
-    return "processed-inline";
-  }
-
-  logger.warn("memory_post_turn_dropped", { aiRunId: message.aiRunId, reason: "missing_queue_binding" });
+  logger.warn("memory_post_turn_dropped", { aiRunId: message.aiRunId, reason: dropReason });
   return "dropped";
 }
 
@@ -191,11 +220,13 @@ export async function processMemoryQueueBatch(
   options: {
     dailySynthesizer?: DailySynthesizer;
     logger?: Logger;
+    postTurnRehydrator?: PostTurnRehydrator;
     processor?: MemoryProcessor;
   } = {},
 ) {
   const logger = options.logger ?? console;
   const dailySynthesizer = options.dailySynthesizer ?? synthesizeUserMemory;
+  const postTurnRehydrator = options.postTurnRehydrator ?? rehydrateMemoryPostTurnQueueMessage;
   const processor = options.processor ?? processMemoryAfterTurn;
 
   await runWithRuntimeCloudflareEnv(env, async () => {
@@ -211,15 +242,19 @@ export async function processMemoryQueueBatch(
       }
 
       try {
-        if (parsed.data.type === "memory.post_turn.v1") {
-          await processor({
-            userId: parsed.data.userId,
-            chatId: parsed.data.chatId,
-            topic: parsed.data.topic,
-            userMessage: parsed.data.userMessage,
-            assistantMessage: parsed.data.assistantMessage,
-            contextMessages: parsed.data.contextMessages,
-          });
+        if (parsed.data.type === "memory.post_turn.v1" || parsed.data.type === "memory.post_turn.v2") {
+          const processorInput =
+            parsed.data.type === "memory.post_turn.v1"
+              ? {
+                  userId: parsed.data.userId,
+                  chatId: parsed.data.chatId,
+                  topic: parsed.data.topic,
+                  userMessage: parsed.data.userMessage,
+                  assistantMessage: parsed.data.assistantMessage,
+                  contextMessages: parsed.data.contextMessages,
+                }
+              : await postTurnRehydrator(parsed.data);
+          await processor(processorInput);
         } else {
           await dailySynthesizer(parsed.data.userId, parsed.data.reason);
         }
@@ -250,6 +285,37 @@ export async function processMemoryQueueBatch(
 }
 
 export const processMemoryPostTurnQueueBatch = processMemoryQueueBatch;
+
+async function rehydrateMemoryPostTurnQueueMessage(message: MemoryPostTurnQueueMessage): Promise<MemoryProcessorInput> {
+  const messageIds = [message.userMessageId, message.assistantMessageId, ...message.contextMessageIds];
+  const rows = await getChatMessagesByIds(message.chatId, messageIds);
+  const byId = new Map(rows.map((row) => [row.id, row]));
+  const userMessage = byId.get(message.userMessageId);
+  const assistantMessage = byId.get(message.assistantMessageId);
+
+  if (!userMessage || userMessage.role !== "user") {
+    throw new Error(`Missing queued user message ${message.userMessageId}`);
+  }
+  if (!assistantMessage || assistantMessage.role !== "assistant") {
+    throw new Error(`Missing queued assistant message ${message.assistantMessageId}`);
+  }
+
+  return {
+    userId: message.userId,
+    chatId: message.chatId,
+    topic: message.topic,
+    userMessage,
+    assistantMessage,
+    contextMessages: message.contextMessageIds.flatMap((id) => {
+      const row = byId.get(id);
+      return row ? [row] : [];
+    }),
+  };
+}
+
+export function memoryQueueMessageByteLength(message: MemoryQueueMessage) {
+  return new TextEncoder().encode(JSON.stringify(message)).byteLength;
+}
 
 function getMemoryQueueFromRequestContext() {
   try {
