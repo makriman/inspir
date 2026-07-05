@@ -21,6 +21,8 @@ type StreamingSample = {
   codeBlocks: number;
   composerTop: number | null;
   isStreaming: boolean;
+  rawFence: boolean;
+  tables: number;
   textLength: number;
 };
 
@@ -48,15 +50,19 @@ test("guest chat streaming stays visually stable and formats rich markdown after
       .map((sample) => sample.composerTop)
       .filter((value): value is number => typeof value === "number");
     const streamingSamples = samples.filter((sample) => sample.isStreaming);
+    const settledStreamingSamples = streamingSamples.filter((sample) => sample.textLength > 60);
 
     return {
       atBottomDelta: viewport ? Math.round(viewport.scrollHeight - viewport.scrollTop - viewport.clientHeight) : null,
       codeBlocks: rich?.querySelectorAll("pre code").length ?? 0,
       composerDrift: composerTops.length > 0 ? Math.max(...composerTops) - Math.min(...composerTops) : 0,
-      richCodeDuringStreaming: streamingSamples.filter((sample) => sample.codeBlocks > 0).length,
+      maxStreamingBottomDelta: Math.max(...settledStreamingSamples.map((sample) => sample.bottomDelta ?? 0), 0),
+      rawFenceDuringStreaming: streamingSamples.filter((sample) => sample.rawFence).length,
       shadcnMessages: document.querySelectorAll('[data-slot="message"]').length,
       shadcnScroller: Boolean(document.querySelector('[data-slot="message-scroller"]')),
+      streamingCodeBlocks: streamingSamples.filter((sample) => sample.codeBlocks > 0).length,
       streamingSamples: streamingSamples.length,
+      streamingTables: streamingSamples.filter((sample) => sample.tables > 0).length,
       tables: rich?.querySelectorAll("table").length ?? 0,
       textLength: rich?.textContent?.length ?? 0,
     };
@@ -65,7 +71,10 @@ test("guest chat streaming stays visually stable and formats rich markdown after
   expect(diagnostics.shadcnScroller).toBe(true);
   expect(diagnostics.shadcnMessages).toBeGreaterThanOrEqual(2);
   expect(diagnostics.streamingSamples).toBeGreaterThan(0);
-  expect(diagnostics.richCodeDuringStreaming).toBe(0);
+  expect(diagnostics.streamingCodeBlocks).toBeGreaterThan(0);
+  expect(diagnostics.streamingTables).toBeGreaterThan(0);
+  expect(diagnostics.rawFenceDuringStreaming).toBe(0);
+  expect(diagnostics.maxStreamingBottomDelta).toBeLessThanOrEqual(24);
   expect(diagnostics.composerDrift).toBeLessThanOrEqual(1);
   expect(diagnostics.atBottomDelta).toBeLessThanOrEqual(4);
   expect(diagnostics.textLength).toBeGreaterThan(200);
@@ -128,6 +137,8 @@ async function startStreamingProbe(page: Page) {
         codeBlocks: rich?.querySelectorAll("pre code").length ?? 0,
         composerTop: composer?.getBoundingClientRect().top ?? null,
         isStreaming: Boolean(rich?.classList.contains("is-streaming")),
+        rawFence: rich?.textContent?.includes("```") ?? false,
+        tables: rich?.querySelectorAll("table").length ?? 0,
         textLength: rich?.textContent?.length ?? 0,
       });
 

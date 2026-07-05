@@ -10,6 +10,7 @@ import {
   type SetStateAction,
   useCallback,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useReducer,
   useRef,
@@ -102,6 +103,7 @@ import {
   MessageScrollerItem,
   MessageScrollerProvider,
   MessageScrollerViewport,
+  useMessageScroller,
 } from "@/components/ui/message-scroller";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import { topicPath } from "@/lib/content/topic-routing";
@@ -816,6 +818,7 @@ function useChatClientController({
   const isFlashcardMode = uiMode === "flashcards";
   const isFocusTimerMode = uiMode === "study-timer";
   const isFocusMusicMode = uiMode === "focus-music";
+  const usesManagedMessageScroller = uiMode === "chat";
   const isMiniAppMode =
     uiMode !== "chat" &&
     uiMode !== "quiz" &&
@@ -887,6 +890,7 @@ function useChatClientController({
   }, []);
 
   const scheduleMessageScrollToEnd = useCallback((behavior: ScrollBehavior = "auto") => {
+    if (usesManagedMessageScroller) return;
     if (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current) return;
     if (scrollFrameRef.current !== null) window.cancelAnimationFrame(scrollFrameRef.current);
     scrollFrameRef.current = window.requestAnimationFrame(() => {
@@ -895,7 +899,7 @@ function useChatClientController({
       if (!element || (!shouldAutoFollowMessagesRef.current && !forceAutoFollowMessagesRef.current)) return;
       element.scrollTo({ top: element.scrollHeight, behavior });
     });
-  }, []);
+  }, [usesManagedMessageScroller]);
 
   useEffect(() => {
     return () => {
@@ -904,6 +908,7 @@ function useChatClientController({
   }, []);
 
   useEffect(() => {
+    if (usesManagedMessageScroller) return;
     const element = listRef.current;
     if (!element) return;
 
@@ -951,9 +956,10 @@ function useChatClientController({
       element.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("pointerup", handlePointerUp);
     };
-  }, [isMessageScrollNearEnd]);
+  }, [isMessageScrollNearEnd, usesManagedMessageScroller]);
 
   useEffect(() => {
+    if (usesManagedMessageScroller) return;
     const element = listRef.current;
     if (!element || typeof ResizeObserver === "undefined") return;
     const contentElement =
@@ -966,7 +972,7 @@ function useChatClientController({
     });
     observer.observe(contentElement);
     return () => observer.disconnect();
-  }, [activeChatId, activeTopicId, scheduleMessageScrollToEnd]);
+  }, [activeChatId, activeTopicId, scheduleMessageScrollToEnd, usesManagedMessageScroller]);
 
   useEffect(() => {
     shouldAutoFollowMessagesRef.current = true;
@@ -1950,6 +1956,8 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
 function StandardChatWorkspace({ controller }: { controller: ChatClientController }) {
   const {
     activeTopic,
+    activeChatId,
+    activeTopicId,
     awaitingResponse,
     handleComposerKeyDown,
     input,
@@ -1966,10 +1974,22 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
     userDisplayName,
     visibleChatMessages,
   } = controller;
+  const streamingMessageLength = streamingMessageId
+    ? (visibleChatMessages.find((message) => message.id === streamingMessageId)?.content.length ?? 0)
+    : 0;
 
   return (
     <main className="bubble-workspace">
-      <MessageScrollerProvider autoScroll={false} defaultScrollPosition="end" scrollMargin={112}>
+      <MessageScrollerProvider autoScroll defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
+        <StandardChatScrollFollow
+          activeChatId={activeChatId}
+          activeTopicId={activeTopicId}
+          awaitingResponse={awaitingResponse}
+          messageCount={visibleChatMessages.length}
+          sending={sending}
+          streamingMessageId={streamingMessageId}
+          streamingMessageLength={streamingMessageLength}
+        />
         <MessageScroller className="bubble-message-scroller">
           <MessageScrollerViewport ref={listRef} className="bubble-message-scroll app-scrollbar">
             <MessageScrollerContent className="bubble-message-stack">
@@ -2029,6 +2049,44 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
       </form>
     </main>
   );
+}
+
+function StandardChatScrollFollow({
+  activeChatId,
+  activeTopicId,
+  awaitingResponse,
+  messageCount,
+  sending,
+  streamingMessageId,
+  streamingMessageLength,
+}: {
+  activeChatId: string | undefined;
+  activeTopicId: string;
+  awaitingResponse: boolean;
+  messageCount: number;
+  sending: boolean;
+  streamingMessageId: string | null;
+  streamingMessageLength: number;
+}) {
+  const { scrollToEnd } = useMessageScroller();
+  const shouldFollow = sending || awaitingResponse || Boolean(streamingMessageId);
+
+  useLayoutEffect(() => {
+    if (!shouldFollow) return;
+    scrollToEnd({ behavior: "auto" });
+  }, [
+    activeChatId,
+    activeTopicId,
+    awaitingResponse,
+    messageCount,
+    scrollToEnd,
+    sending,
+    shouldFollow,
+    streamingMessageId,
+    streamingMessageLength,
+  ]);
+
+  return null;
 }
 
 function ChatPanelOverlays({ controller }: { controller: ChatClientController }) {

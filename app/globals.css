@@ -2432,6 +2432,10 @@ a {
   padding: 8px 10px 8px 13px;
 }
 
+.bubble-code-block.is-streaming figcaption {
+  justify-content: flex-start;
+}
+
 .bubble-code-block figcaption span {
   color: rgb(125 235 143);
   font-size: 11px;
