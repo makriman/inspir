@@ -62,6 +62,7 @@ async function main() {
 
   const topics = await request("/api/topics");
   checkResponse("topics API", topics, { contentTypeIncludes: "application/json" });
+  checkCacheControl("topics API", topics, [/public/i, /max-age=300/i, /s-maxage=3600/i]);
   checkTopicsPayload(topics);
 
   await checkGuestChat();
@@ -185,6 +186,16 @@ function checkTopicsPayload(result: FetchResult) {
     }
   } catch (error) {
     fail("topics API payload", error instanceof Error ? error.message : String(error));
+  }
+}
+
+function checkCacheControl(name: string, result: FetchResult, patterns: RegExp[]) {
+  const cacheControl = result.headers["cache-control"] ?? "";
+  const missing = patterns.filter((pattern) => !pattern.test(cacheControl)).map((pattern) => pattern.source);
+  if (missing.length === 0) {
+    pass(`${name} cache policy`, { cacheControl });
+  } else {
+    fail(`${name} cache policy`, { cacheControl, missing });
   }
 }
 
