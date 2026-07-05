@@ -85,6 +85,9 @@ test("LLM daily budget sharding stays bounded and D1-migrated", () => {
   assert.match(supplementalMigrations, /CREATE TABLE IF NOT EXISTS `llm_usage_daily_shards`/);
   assert.match(supplementalMigrations, /PRIMARY KEY\(`day`, `shard`\)/);
   assert.match(supplementalMigrations, /CREATE INDEX IF NOT EXISTS `llm_usage_daily_shards_day_idx`/);
+  assert.match(supplementalMigrations, /INSERT INTO `llm_usage_daily_shards`/);
+  assert.match(supplementalMigrations, /FROM `llm_usage_daily`/);
+  assert.match(supplementalMigrations, /DROP TABLE `llm_usage_daily`/);
 
   if (previous === undefined) delete process.env.LLM_GLOBAL_DAILY_SHARDS;
   else process.env.LLM_GLOBAL_DAILY_SHARDS = previous;

@@ -89,13 +89,6 @@ export const rateLimitWindows = sqliteTable("rate_limit_windows", {
   updatedAt: timestampMsNow("updated_at"),
 });
 
-export const llmUsageDaily = sqliteTable("llm_usage_daily", {
-  day: text("day").primaryKey(),
-  callCount: integer("call_count").notNull().default(0),
-  createdAt: timestampMsNow("created_at"),
-  updatedAt: timestampMsNow("updated_at"),
-});
-
 export const llmUsageDailyShards = sqliteTable(
   "llm_usage_daily_shards",
   {
@@ -558,7 +551,6 @@ export type Chat = typeof chats.$inferSelect;
 export type Message = typeof messages.$inferSelect;
 export type User = typeof users.$inferSelect;
 export type RateLimitWindow = typeof rateLimitWindows.$inferSelect;
-export type LlmUsageDaily = typeof llmUsageDaily.$inferSelect;
 export type LlmUsageDailyShard = typeof llmUsageDailyShards.$inferSelect;
 export type AppMetadata = typeof appMetadata.$inferSelect;
 export type ActivityRun = typeof activityRuns.$inferSelect;
