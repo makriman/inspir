@@ -20,6 +20,8 @@ cp .env.example .env.local
 pnpm dev
 ```
 
+Use Node.js `20.9.0` or newer.
+
 You will need local environment variables for database, auth, and AI features. Never commit `.env`, `.env.local`, local backups, provider keys, or production data.
 
 ## Checks
@@ -36,8 +38,8 @@ pnpm build
 For deployment or production-facing changes, also run:
 
 ```bash
-pnpm cf:build
-pnpm test:e2e
+pnpm cf:verify:local
+pnpm cf:test:e2e:preview
 ```
 
 ## Pull request expectations

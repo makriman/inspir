@@ -82,31 +82,15 @@ Install dependencies:
 pnpm install
 ```
 
+Use Node.js `20.9.0` or newer. The package is marked `private` because this repo is an application, not an npm package.
+
 Create a local environment file:
 
 ```bash
 cp .env.example .env.local
 ```
 
-Fill in the required values:
-
-```txt
-OPENAI_API_KEY=
-CLOUDFLARE_AI_GATEWAY_TOKEN=
-CLOUDFLARE_AI_GATEWAY_BASE_URL=
-CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS=
-OPENAI_MODEL=gpt-5
-OPENAI_FAST_MODEL=gpt-5-mini
-OPENAI_REASONING_MODEL=gpt-5
-OPENAI_STRUCTURED_MODEL=gpt-5-mini
-AUTH_SECRET=
-NEXTAUTH_SECRET=
-AUTH_GOOGLE_ID=
-AUTH_GOOGLE_SECRET=
-ADMIN_EMAILS=
-APP_URL=http://localhost:3000
-NEXTAUTH_URL=http://localhost:3000
-```
+Fill in the values needed for the feature you are working on. Keep real provider keys, auth secrets, Cloudflare tokens, backups, and generated reports out of git.
 
 Run the app:
 
@@ -133,10 +117,19 @@ Generate migrations:
 pnpm db:generate
 ```
 
-Apply migrations:
+Apply remote D1 migrations only when you intentionally provide maintainer credentials:
 
 ```bash
+CLOUDFLARE_ACCOUNT_ID=<account-id> \
+CLOUDFLARE_D1_DATABASE_ID=<database-id> \
+CLOUDFLARE_API_TOKEN=<token> \
 pnpm db:migrate
+```
+
+For day-to-day local Cloudflare preview, prefer the local D1 setup command:
+
+```bash
+pnpm cf:d1:local:setup
 ```
 
 ## Cloudflare Operations

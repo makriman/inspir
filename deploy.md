@@ -43,10 +43,17 @@ The deploy wrapper builds with sanitized environment files, scans OpenNext artif
 
 ```bash
 REQUIRE_LIVE_AI=1 pnpm cf:verify:production
-PLAYWRIGHT_BASE_URL=https://inspirlearning.com REQUIRE_LIVE_AI=1 E2E_GOOGLE_IS_ADMIN=1 pnpm cf:test:e2e:production
+PLAYWRIGHT_BASE_URL=https://inspirlearning.com \
+REQUIRE_LIVE_AI=1 \
+E2E_GOOGLE_EMAIL=<test-admin-email> \
+E2E_GOOGLE_PASSWORD=<test-admin-password> \
+E2E_GOOGLE_IS_ADMIN=1 \
+pnpm cf:test:e2e:production
 ```
 
 The smoke script checks the home page, localized route, SEO endpoints, topic API, and a live guest chat call.
+
+Production Playwright can also use the hidden session-auth path instead of a browser Google password when `E2E_TEST_AUTH_SECRET` is configured for the Worker and present in the local shell.
 
 ## Data Backups
 

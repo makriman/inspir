@@ -86,3 +86,13 @@ pnpm translations:export-cache -- --all-languages --namespace=main-app --namespa
 ```
 
 This bridge never calls model providers; it only copies fresh, complete cache rows into static JSON.
+
+## Source Manifest
+
+`lib/i18n/site-source-manifest.ts` is generated and intentionally tracked so Cloudflare runtime translation hashes are deterministic. Regenerate it whenever route copy, SEO copy, legal copy, topic copy, or localization source extraction changes:
+
+```bash
+pnpm translations:generate-site-source-manifest
+```
+
+The unit suite includes a freshness check for the manifest, so stale source hashes should fail before deployment.
