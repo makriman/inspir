@@ -193,7 +193,10 @@ function parseStreamingMarkdownTail(content: string): StreamingMarkdownBlock[] {
       ...parseStreamingMarkdownTail(lines.slice(firstFenceLineIndex).join("\n")),
     ];
   }
-  const nonEmptyLines = lines.map((line) => line.trim()).filter(Boolean);
+  const nonEmptyLines = lines.flatMap((line) => {
+    const trimmed = line.trim();
+    return trimmed ? [trimmed] : [];
+  });
   const firstLine = nonEmptyLines[0] ?? "";
 
   if (!firstLine) return [];
@@ -238,7 +241,10 @@ function parseStreamingMarkdownTail(content: string): StreamingMarkdownBlock[] {
     return [
       {
         type: "blockquote",
-        lines: nonEmptyLines.map((line) => line.replace(/^>\s?/, "")).filter(Boolean),
+        lines: nonEmptyLines.flatMap((line) => {
+          const quoteLine = line.replace(/^>\s?/, "");
+          return quoteLine ? [quoteLine] : [];
+        }),
       },
     ];
   }

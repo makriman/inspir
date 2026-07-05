@@ -218,14 +218,41 @@ export async function POST(request: NextRequest) {
     });
     const result = await agent.stream({ messages: assembled.messages });
 
-    return await createLearningTextStreamResponse({ fullStream: result.fullStream as ReadableStream<unknown> }, {
-      onError: markRunFailed,
-      onFinish: completeRun,
-    });
+    return await createLearningTextStreamResponse(
+      { fullStream: result.fullStream as ReadableStream<unknown> },
+      {
+        headers: chatStreamHeaders({
+          aiRunId: run.id,
+          chatId: requestData.chatId,
+          memorySources: memoryContext.sources,
+          userMessageId: userMessage.id,
+        }),
+        onError: markRunFailed,
+        onFinish: completeRun,
+      },
+    );
   } catch (error) {
     await markRunFailed(error);
     return NextResponse.json({ error: "The assistant could not answer right now." }, { status: 500 });
   }
+}
+
+function chatStreamHeaders(input: {
+  aiRunId: string;
+  chatId: string;
+  memorySources: MemoryRetrievalResult["sources"];
+  userMessageId: string;
+}) {
+  const headers: Record<string, string> = {
+    "x-inspir-ai-run-id": input.aiRunId,
+    "x-inspir-chat-id": input.chatId,
+    "x-inspir-user-message-id": input.userMessageId,
+  };
+  if (input.memorySources.length > 0) {
+    const encodedSources = encodeURIComponent(JSON.stringify(input.memorySources));
+    if (encodedSources.length <= 6000) headers["x-inspir-memory-sources"] = encodedSources;
+  }
+  return headers;
 }
 
 function quotaResponse(error: string, retryAfterSeconds: number) {

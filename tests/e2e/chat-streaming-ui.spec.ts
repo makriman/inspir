@@ -43,6 +43,7 @@ type StreamingSample = {
   rowCount: number;
   rawFence: boolean;
   rawStreamLength: number;
+  scrollTop: number | null;
   spacerHeight: number;
   tables: number;
   textLength: number;
@@ -90,13 +91,19 @@ test("guest chat streaming stays visually stable and formats rich markdown after
     let richChildRemounts = 0;
     let richBlockTypeFlips = 0;
     let previousRawStreamLength = 0;
+    let previousScrollTop: number | null = null;
     let rawStreamLengthRegressions = 0;
+    let maxScrollTopRegression = 0;
     let emptyStreamingFramesAfterContent = 0;
     let previousRichSample: StreamingSample | null = null;
     for (const sample of streamingSamples) {
       if (sample.rawStreamLength < previousRawStreamLength) rawStreamLengthRegressions += 1;
+      if (previousScrollTop !== null && sample.scrollTop !== null && sample.scrollTop < previousScrollTop - 1) {
+        maxScrollTopRegression = Math.max(maxScrollTopRegression, previousScrollTop - sample.scrollTop);
+      }
       if (previousRawStreamLength > 0 && sample.textLength === 0) emptyStreamingFramesAfterContent += 1;
       previousRawStreamLength = Math.max(previousRawStreamLength, sample.rawStreamLength);
+      if (sample.scrollTop !== null) previousScrollTop = sample.scrollTop;
       if (sample.textLength === 0 || sample.richChildCount === 0) continue;
       if (
         previousRichSample &&
@@ -139,6 +146,8 @@ test("guest chat streaming stays visually stable and formats rich markdown after
           ? Math.abs(lastPending.pendingAssistantBottom - firstContent.assistantBottom)
           : null,
       maxStreamingBottomDelta: Math.max(...settledStreamingSamples.map((sample) => sample.bottomDelta ?? 0), 0),
+      maxScrollTopRegression,
+      maxSpacerHeight: Math.max(...streamingSamples.map((sample) => sample.spacerHeight), 0),
       messageRowCounts: Array.from(new Set(messageSamples.map((sample) => sample.rowCount))),
       pendingSamples: pendingSamples.length,
       pendingWithContentFrames: samples.filter((sample) => sample.hasPendingAssistant && sample.textLength > 0).length,
@@ -172,6 +181,8 @@ test("guest chat streaming stays visually stable and formats rich markdown after
   expect(diagnostics.streamingTables).toBeGreaterThan(0);
   expect(diagnostics.rawFenceDuringStreaming).toBe(0);
   expect(diagnostics.rawStreamLengthRegressions).toBe(0);
+  expect(diagnostics.maxScrollTopRegression).toBe(0);
+  expect(diagnostics.maxSpacerHeight).toBeLessThanOrEqual(2);
   expect(diagnostics.emptyStreamingFramesAfterContent).toBe(0);
   expect(diagnostics.richBlockTypeFlips).toBe(0);
   expect(diagnostics.richChildRemounts, JSON.stringify(diagnostics.richChildRemountDetails)).toBe(0);
@@ -284,6 +295,7 @@ async function startStreamingProbe(page: Page) {
         rowCount: document.querySelectorAll(".inspir-message-row").length,
         rawFence: rich?.textContent?.includes("```") ?? false,
         rawStreamLength: Number(rich?.getAttribute("data-content-length") ?? 0),
+        scrollTop: viewport ? Math.round(viewport.scrollTop) : null,
         spacerHeight: spacer ? Math.round(spacer.getBoundingClientRect().height) : 0,
         tables: rich?.querySelectorAll("table").length ?? 0,
         textLength: rich?.textContent?.length ?? 0,

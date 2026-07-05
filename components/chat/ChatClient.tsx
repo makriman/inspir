@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ChangeEvent,
   FormEvent,
   KeyboardEvent,
   RefObject,
@@ -17,21 +16,16 @@ import {
 } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import {
   ArrowLeft,
   AlertTriangle,
   BookOpenCheck,
   Bot,
   BrainCircuit,
-  Camera,
   Check,
-  CheckCircle2,
   Clipboard,
   Compass,
   Coins,
-  Eye,
-  EyeOff,
   FileText,
   Gauge,
   Gavel,
@@ -47,7 +41,6 @@ import {
   MessageSquareText,
   PencilLine,
   Plus,
-  RefreshCw,
   Route,
   RotateCcw,
   Scale,
@@ -61,16 +54,13 @@ import {
   StickyNote,
   Thermometer,
   Timer,
-  Trash2,
   UserRound,
   Users,
   Waypoints,
   Workflow,
-  X,
-  XCircle,
 } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
-import { SocialLinks } from "@/components/brand/SocialLinks";
+import { AgePromptModal } from "@/components/chat/AgePromptModal";
 import {
   getDefaultSidebarTopicIds,
   type LearningStoreTopic,
@@ -88,12 +78,23 @@ import { FlashcardReview } from "@/components/chat/FlashcardReview";
 import { FlashcardStat } from "@/components/chat/FlashcardStat";
 import { GuestContinueModal } from "@/components/chat/GuestContinueModal";
 import { GuestFeatureGate } from "@/components/chat/GuestFeatureGate";
+import {
+  type MemoryCreateInput,
+  type MemoryDashboard,
+  type MemorySettingsPatch,
+  type MemoryUpdateInput,
+} from "@/components/chat/memory-model";
 import { MemorySourcesModal } from "@/components/chat/MemorySourcesModal";
-import { MemoryMiniToggle } from "@/components/chat/MemoryMiniToggle";
 import { MessageCard } from "@/components/chat/MessageCard";
 import { MiniIcon } from "@/components/chat/MiniIcon";
 import type { MiniAppIcon } from "@/components/chat/mini-icon-types";
-import { ProfileStat } from "@/components/chat/ProfileStat";
+import { ProfilePanel } from "@/components/chat/ProfilePanel";
+import {
+  profileFromApiUser,
+  type ProfileDetailsInput,
+  type ProfileResponse,
+  type UserProfile,
+} from "@/components/chat/profile-model";
 import { QuizBuildLoader } from "@/components/chat/QuizBuildLoader";
 import { QuizFeedback } from "@/components/chat/QuizFeedback";
 import { QuizReview } from "@/components/chat/QuizReview";
@@ -104,7 +105,6 @@ import { TopicIntroCard } from "@/components/chat/TopicIntroCard";
 import { TopBar } from "@/components/chat/TopBar";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { PersistentLearningDock } from "@/components/chat/PersistentLearningDock";
-import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import {
   MessageScroller,
@@ -114,10 +114,9 @@ import {
   MessageScrollerProvider,
   MessageScrollerViewport,
 } from "@/components/ui/message-scroller";
-import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
+import { defaultLanguage } from "@/lib/content/languages";
 import { topicPath } from "@/lib/content/topic-routing";
 import { localizeHref } from "@/lib/i18n/routing";
-import { formatAppDate } from "@/lib/utils/dates";
 import { buildMiniAppInstruction, getVisibleMessageContent } from "@/lib/ai/visible-content";
 import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
 
@@ -161,40 +160,6 @@ type Topic = {
   metadata?: TopicMetadata | Record<string, unknown> | null;
 };
 
-type UserProfile = {
-  id: string;
-  name: string | null;
-  email: string;
-  image: string | null;
-  score: number;
-  preferredLanguage: string;
-  dateOfBirth?: string | null;
-  age?: number | null;
-  createdAt: string | Date;
-  profileImageHash?: string | null;
-};
-
-type ApiProfileUser = {
-  id: string;
-  name: string | null;
-  email: string;
-  image: string | null;
-  score?: number | null;
-  preferredLanguage?: string | null;
-  dateOfBirth?: string | null;
-  age?: number | null;
-  createdAt: string | Date;
-  profileImageHash?: string | null;
-};
-
-type ProfileDetailsInput = {
-  name: string;
-  dateOfBirth: string | null;
-  preferredLanguage: string;
-};
-
-type UiTranslator = (source: string) => string;
-
 type RecentChat = {
   id: string;
   topicId: string | null;
@@ -219,64 +184,6 @@ type ActivityRun = {
   completedAt: string | Date | null;
 };
 
-type MemorySettings = {
-  enabled: boolean;
-  savedMemoryEnabled: boolean;
-  chatHistoryEnabled: boolean;
-  dreamingEnabled: boolean;
-  captureScope: string;
-  retrievalMode: string;
-  noticeSeenAt: string | Date | null;
-};
-
-type MemoryItem = {
-  id: string;
-  kind: string;
-  category: string;
-  content: string;
-  displayContent?: string;
-  sourceLabel?: string;
-  tags: string[];
-  confidence: number;
-  salience: number;
-  sourceType?: string;
-  freshnessStatus?: string;
-  pinned?: boolean;
-  doNotMention?: boolean;
-  createdAt: string | Date;
-  updatedAt: string | Date;
-};
-
-type MemorySummarySection = {
-  id: string;
-  title: string;
-  category: string;
-  summary: string;
-  sourceMemoryIds?: string[];
-  sourceTurnIds?: string[];
-  doNotMention?: boolean;
-};
-
-type MemorySummary = {
-  summary: string;
-  sections: MemorySummarySection[];
-  lastSynthesizedAt: string | Date;
-  updatedAt: string | Date;
-};
-
-type MemoryProfile = {
-  category: string;
-  summary: string;
-  updatedAt: string | Date;
-};
-
-type MemoryDashboard = {
-  settings: MemorySettings;
-  summary: MemorySummary | null;
-  memories: MemoryItem[];
-  profiles: MemoryProfile[];
-};
-
 type ChatCreateResponse = {
   chatId: string;
 };
@@ -290,11 +197,6 @@ type ChatLoadResponse = {
 
 type RecentChatsResponse = {
   chats?: RecentChat[];
-};
-
-type ProfileResponse = {
-  user?: ApiProfileUser;
-  error?: string;
 };
 
 type ActivityRunResponse = {
@@ -472,25 +374,41 @@ function displayMessages(messages: Message[]) {
   return messages.map(toDisplayMessage).filter((message): message is Message => Boolean(message));
 }
 
+function assistantResponseMetadata(response: Response) {
+  const aiRunId = response.headers.get("x-inspir-ai-run-id")?.trim();
+  const memorySources = parseMemorySourcesHeader(response.headers.get("x-inspir-memory-sources"));
+  const metadata: Record<string, unknown> = {};
+  if (aiRunId) metadata.aiRunId = aiRunId;
+  if (memorySources.length > 0) metadata.memorySources = memorySources;
+  return Object.keys(metadata).length > 0 ? metadata : null;
+}
+
+function parseMemorySourcesHeader(value: string | null): MessageMemorySource[] {
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(decodeURIComponent(value)) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(isMessageMemorySource);
+  } catch {
+    return [];
+  }
+}
+
+function isMessageMemorySource(value: unknown): value is MessageMemorySource {
+  if (!value || typeof value !== "object") return false;
+  const source = value as Record<string, unknown>;
+  return (
+    typeof source.id === "string" &&
+    typeof source.label === "string" &&
+    typeof source.excerpt === "string" &&
+    (source.type === "memory" || source.type === "summary" || source.type === "past_chat")
+  );
+}
+
 function isExplicitMemoryMutationRequest(value: string) {
   return /\b(remember|remeber|rember|rememebr|remembr|remebr|keep in mind|save that|save this|forget|clear memory|clear memories|delete memory|delete memories)\b/i.test(
     value,
   );
-}
-
-function profileFromApiUser(user: ApiProfileUser): UserProfile {
-  return {
-    id: user.id,
-    name: user.name,
-    email: user.email,
-    image: user.image,
-    score: user.score ?? 0,
-    preferredLanguage: user.preferredLanguage ?? defaultLanguage,
-    dateOfBirth: user.dateOfBirth ?? null,
-    age: user.age ?? null,
-    createdAt: user.createdAt,
-    profileImageHash: user.profileImageHash ?? null,
-  };
 }
 
 const translatableAttributes = ["aria-label", "title", "placeholder"];
@@ -821,7 +739,7 @@ function useChatClientController({
   const isFlashcardMode = uiMode === "flashcards";
   const isFocusTimerMode = uiMode === "study-timer";
   const isFocusMusicMode = uiMode === "focus-music";
-  const usesManagedMessageScroller = uiMode === "chat";
+  const usesManagedMessageScroller = false;
   const isMiniAppMode =
     uiMode !== "chat" &&
     uiMode !== "quiz" &&
@@ -1139,6 +1057,23 @@ function useChatClientController({
       }
       if (!response.ok || !response.body) throw new Error("No assistant response");
 
+      const responseAssistantMetadata = assistantResponseMetadata(response);
+      if (responseAssistantMetadata) {
+        setMessages((current) =>
+          current.map((message) =>
+            message.id === assistantMessageId
+              ? {
+                  ...message,
+                  metadata: {
+                    ...(message.metadata ?? {}),
+                    ...responseAssistantMetadata,
+                  },
+                }
+              : message,
+          ),
+        );
+      }
+
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let assistantText = "";
@@ -1179,7 +1114,9 @@ function useChatClientController({
                 role: "assistant",
                 content: assistantText,
                 createdAt: new Date(),
-                metadata: final ? undefined : { pendingAssistant: true },
+                metadata: final
+                  ? responseAssistantMetadata ?? undefined
+                  : { ...(responseAssistantMetadata ?? {}), pendingAssistant: true },
               },
             ],
           }));
@@ -1243,7 +1180,6 @@ function useChatClientController({
         saveGuestUsage(Math.min(nextUsed, guestMessageLimit));
       }
       if (isCurrentRequest() && !isGuest && chatId) {
-        await loadChat(chatId, { preserveRequest: true });
         if (isExplicitMemoryMutationRequest(trimmed) && (profileOpen || memoryDashboard)) {
           window.setTimeout(() => {
             void loadMemoryDashboard();
@@ -1454,15 +1390,7 @@ function useChatClientController({
     }));
   }
 
-  async function patchMemorySettings(input: {
-    enabled?: boolean;
-    savedMemoryEnabled?: boolean;
-    chatHistoryEnabled?: boolean;
-    dreamingEnabled?: boolean;
-    noticeSeen?: boolean;
-    refreshSummary?: boolean;
-    correction?: string;
-  }) {
+  async function patchMemorySettings(input: MemorySettingsPatch) {
     if (isGuest) return;
     setMemorySaving(true);
     setMemoryError(null);
@@ -1482,7 +1410,7 @@ function useChatClientController({
     }
   }
 
-  async function createMemoryItem(input: { content: string; category?: string }) {
+  async function createMemoryItem(input: MemoryCreateInput) {
     if (isGuest) return;
     setMemorySaving(true);
     setMemoryError(null);
@@ -1504,7 +1432,7 @@ function useChatClientController({
 
   async function updateMemoryItem(
     memoryId: string,
-    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
+    input: MemoryUpdateInput,
   ) {
     if (isGuest) return;
     setMemorySaving(true);
@@ -2020,7 +1948,7 @@ function StandardChatWorkspace({ controller }: { controller: ChatClientControlle
 
   return (
     <main className="inspir-workspace">
-      <MessageScrollerProvider autoScroll defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
+      <MessageScrollerProvider defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
         <MessageScroller className="inspir-message-scroller">
           <MessageScrollerViewport ref={listRef} className="inspir-message-scroll app-scrollbar">
             <MessageScrollerContent className="inspir-message-stack">
@@ -5821,903 +5749,8 @@ function FlashcardWorkspace({
   );
 }
 
-function AgePromptModal({
-  onClose,
-  onSaved,
-  initialLanguage,
-  t,
-}: {
-  onClose: () => void;
-  onSaved: (user: UserProfile) => void;
-  initialLanguage: string;
-  t: UiTranslator;
-}) {
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [preferredLanguage, setPreferredLanguage] = useState<SupportedLanguage>((initialLanguage as SupportedLanguage) || defaultLanguage);
-  const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
-  const today = new Date().toISOString().slice(0, 10);
-
-  async function submitDateOfBirth(event: FormEvent) {
-    event.preventDefault();
-    if (!dateOfBirth) {
-      setError(t("Please enter your date of birth."));
-      return;
-    }
-
-    setSaving(true);
-    setError("");
-    try {
-      const response = await fetch("/api/me", {
-        method: "PATCH",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ dateOfBirth, preferredLanguage }),
-      });
-      const data = (await response.json().catch(() => null)) as ProfileResponse | null;
-      if (!response.ok || !data?.user) {
-        throw new Error(data?.error || t("Could not save date of birth"));
-      }
-      onSaved(profileFromApiUser(data.user));
-    } catch (saveError) {
-      setError(saveError instanceof Error ? saveError.message : t("Please enter a valid date of birth."));
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  return (
-    <div className="inspir-guest-modal-backdrop" role="presentation">
-      <dialog
-        open
-        className="inspir-guest-modal inspir-age-modal"
-        aria-modal="true"
-        aria-labelledby="age-modal-title"
-      >
-        <button type="button" onClick={onClose} aria-label={t("Close")} className="inspir-guest-modal-close">
-          <X size={20} />
-        </button>
-        <span className="inspir-guest-modal-kicker">{t("Age-appropriate learning")}</span>
-        <h2 id="age-modal-title">{t("Help inspir fit your age")}</h2>
-        <p>
-          {t(
-            "Add your date of birth and preferred language so inspir can adapt examples, tone, safety boundaries, and app text for your learning experience.",
-          )}
-        </p>
-        <form onSubmit={submitDateOfBirth} className="inspir-age-form">
-          <label className="inspir-age-label" htmlFor="date-of-birth">
-            {t("Date of birth")}
-          </label>
-          <input
-            id="date-of-birth"
-            type="date"
-            value={dateOfBirth}
-            max={today}
-            onChange={(event) => setDateOfBirth(event.target.value)}
-            className="inspir-age-input"
-            required
-          />
-          <LanguagePicker
-            currentLanguage={preferredLanguage}
-            recommendedLanguage={preferredLanguage}
-            buttonLabel={t("Preferred Language")}
-            title={t("Choose your learning language")}
-            description={t("App text and tutoring replies will follow this setting.")}
-            closeLabel={t("Close")}
-            quickChoicesLabel={t("Preferred Language")}
-            onSelect={setPreferredLanguage}
-            className="inspir-modal-language-picker"
-          />
-          {error ? <span className="inspir-age-error">{error}</span> : null}
-          <button type="submit" disabled={saving} className="inspir-guest-modal-primary">
-            {saving ? t("Saving...") : t("Continue")}
-          </button>
-          <button type="button" onClick={onClose} className="inspir-guest-modal-secondary">
-            {t("Maybe later")}
-          </button>
-        </form>
-      </dialog>
-    </div>
-  );
-}
-
-function ProfilePanel({
-  user,
-  avatarSrc,
-  languageSaving,
-  memoryDashboard,
-  memoryLoading,
-  memorySaving,
-  memoryError,
-  onPhotoUpload,
-  onPhotoRemove,
-  onProfileSave,
-  onMemorySettings,
-  onMemoryCreate,
-  onMemoryUpdate,
-  onMemoryDelete,
-  onMemoryClear,
-  onClose,
-  t,
-}: {
-  user: UserProfile;
-  avatarSrc?: string;
-  languageSaving: boolean;
-  memoryDashboard: MemoryDashboard | null;
-  memoryLoading: boolean;
-  memorySaving: boolean;
-  memoryError: string | null;
-  onPhotoUpload: (file: File) => Promise<string | null>;
-  onPhotoRemove: () => Promise<void>;
-  onProfileSave: (input: ProfileDetailsInput) => Promise<UserProfile>;
-  onMemorySettings: (input: {
-    enabled?: boolean;
-    savedMemoryEnabled?: boolean;
-    chatHistoryEnabled?: boolean;
-    dreamingEnabled?: boolean;
-    noticeSeen?: boolean;
-    refreshSummary?: boolean;
-    correction?: string;
-  }) => void;
-  onMemoryCreate: (input: { content: string; category?: string }) => void;
-  onMemoryUpdate: (
-    memoryId: string,
-    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
-  ) => void;
-  onMemoryDelete: (memoryId: string) => void;
-  onMemoryClear: () => void;
-  onClose: () => void;
-  t: UiTranslator;
-}) {
-  const [name, setName] = useState(user.name ?? "");
-  const [dateOfBirth, setDateOfBirth] = useState(user.dateOfBirth ?? "");
-  const [preferredLanguage, setPreferredLanguage] = useState<SupportedLanguage>(
-    (user.preferredLanguage as SupportedLanguage) || defaultLanguage,
-  );
-  const [detailsSaving, setDetailsSaving] = useState(false);
-  const [detailsMessage, setDetailsMessage] = useState("");
-  const [detailsError, setDetailsError] = useState("");
-  const [photoSaving, setPhotoSaving] = useState(false);
-  const [photoMessage, setPhotoMessage] = useState("");
-  const [photoError, setPhotoError] = useState("");
-  const photoInputRef = useRef<HTMLInputElement>(null);
-  const today = new Date().toISOString().slice(0, 10);
-
-  async function handlePhotoChange(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (!file) return;
-    setPhotoSaving(true);
-    setPhotoError("");
-    setPhotoMessage("");
-    try {
-      await onPhotoUpload(file);
-      setPhotoMessage(t("Profile photo updated."));
-    } catch (uploadError) {
-      setPhotoError(uploadError instanceof Error ? uploadError.message : t("Could not update profile photo."));
-    } finally {
-      setPhotoSaving(false);
-      event.target.value = "";
-    }
-  }
-
-  async function resetPhoto() {
-    setPhotoSaving(true);
-    setPhotoError("");
-    setPhotoMessage("");
-    try {
-      await onPhotoRemove();
-      setPhotoMessage(t("Using your Google photo."));
-    } catch (removeError) {
-      setPhotoError(removeError instanceof Error ? removeError.message : t("Could not reset profile photo."));
-    } finally {
-      setPhotoSaving(false);
-    }
-  }
-
-  async function submitProfileDetails(event: FormEvent) {
-    event.preventDefault();
-    const trimmedName = name.trim();
-    if (!trimmedName) {
-      setDetailsError(t("Enter a display name."));
-      setDetailsMessage("");
-      return;
-    }
-
-    setDetailsSaving(true);
-    setDetailsError("");
-    setDetailsMessage("");
-    const previousLanguage = user.preferredLanguage || defaultLanguage;
-    try {
-      const updatedUser = await onProfileSave({
-        name: trimmedName,
-        dateOfBirth: dateOfBirth || null,
-        preferredLanguage,
-      });
-      setName(updatedUser.name ?? "");
-      setDateOfBirth(updatedUser.dateOfBirth ?? "");
-      setPreferredLanguage((updatedUser.preferredLanguage as SupportedLanguage) || defaultLanguage);
-      setDetailsMessage(t("Profile saved."));
-      if ((updatedUser.preferredLanguage || defaultLanguage) !== previousLanguage) {
-        window.location.assign(localizeHref(window.location.pathname + window.location.search, updatedUser.preferredLanguage));
-      }
-    } catch (saveError) {
-      setDetailsError(saveError instanceof Error ? saveError.message : t("Could not save profile."));
-    } finally {
-      setDetailsSaving(false);
-    }
-  }
-
-  return (
-    <main className="inspir-profile-panel inspir-profile-workspace app-scrollbar">
-      <div className="inspir-profile-header">
-        <div>
-          <span>{t("Learning profile")}</span>
-          <h2>{t("Make inspir feel like it knows how you learn.")}</h2>
-        </div>
-        <button type="button" aria-label={t("Close profile")} onClick={onClose}>
-          <X size={24} strokeWidth={3.5} />
-        </button>
-      </div>
-      <div className="inspir-profile-body">
-        <section className="inspir-profile-hero">
-          <div className="inspir-profile-avatar">
-            {avatarSrc ? (
-              <Image key={avatarSrc} src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized />
-            ) : (
-              <UserRound size={42} />
-            )}
-          </div>
-          <div>
-            <h3>{user.name || "Learner"}</h3>
-            <p>{user.email || "user@example.com"}</p>
-            <div className="inspir-profile-photo-actions">
-              <input
-                ref={photoInputRef}
-                type="file"
-                aria-label={t("Profile photo")}
-                accept="image/jpeg,image/png,image/webp"
-                className="inspir-profile-photo-input"
-                onChange={(event) => void handlePhotoChange(event)}
-              />
-              <button
-                type="button"
-                disabled={photoSaving}
-                onClick={() => photoInputRef.current?.click()}
-                className="inspir-profile-photo-button"
-              >
-                <Camera size={16} />
-                <span>{photoSaving ? t("Saving...") : t("Change photo")}</span>
-              </button>
-              {user.profileImageHash ? (
-                <button
-                  type="button"
-                  disabled={photoSaving}
-                  onClick={() => void resetPhoto()}
-                  className="inspir-profile-photo-button is-muted"
-                >
-                  <Trash2 size={15} />
-                  <span>{t("Use Google photo")}</span>
-                </button>
-              ) : null}
-            </div>
-            {photoError ? <span className="inspir-profile-details-error">{photoError}</span> : null}
-            {photoMessage ? <span className="inspir-profile-details-success">{photoMessage}</span> : null}
-          </div>
-        </section>
-
-        <section className="inspir-profile-section">
-          <div className="inspir-profile-section-head">
-            <span>{t("Profile details")}</span>
-            <h3>{t("Your app identity")}</h3>
-          </div>
-          <form className="inspir-profile-details-form" onSubmit={submitProfileDetails}>
-            <label>
-              <span>{t("Display name")}</span>
-              <input
-                type="text"
-                value={name}
-                maxLength={120}
-                autoComplete="name"
-                onChange={(event) => setName(event.target.value)}
-              />
-            </label>
-            <label>
-              <span>{t("Date of birth")}</span>
-              <input
-                type="date"
-                value={dateOfBirth}
-                max={today}
-                onChange={(event) => setDateOfBirth(event.target.value)}
-              />
-            </label>
-            <div className="inspir-profile-details-language">
-              <span>{t("Preferred Language")}</span>
-              <LanguagePicker
-                currentLanguage={preferredLanguage}
-                recommendedLanguage={preferredLanguage}
-                disabled={detailsSaving || languageSaving}
-                buttonLabel={t("Preferred Language")}
-                title={t("Choose your learning language")}
-                description={t("All app text and tutoring replies follow this setting.")}
-                closeLabel={t("Close")}
-                quickChoicesLabel={t("Preferred Language")}
-                onSelect={setPreferredLanguage}
-                className="inspir-profile-language-picker"
-              />
-            </div>
-            {detailsError ? <span className="inspir-profile-details-error">{detailsError}</span> : null}
-            {detailsMessage ? <span className="inspir-profile-details-success">{detailsMessage}</span> : null}
-            <button type="submit" disabled={detailsSaving || languageSaving} className="inspir-profile-save-button">
-              {detailsSaving || languageSaving ? t("Saving...") : t("Save profile")}
-            </button>
-          </form>
-        </section>
-
-        <section className="inspir-profile-section">
-          <div className="inspir-profile-section-head">
-            <span>{t("Overview")}</span>
-            <h3>{t("Your learning snapshot")}</h3>
-          </div>
-          <div className="inspir-profile-stats-grid">
-            <ProfileStat
-              label={t("Age")}
-              value={typeof user.age === "number" ? String(user.age) : t("Add your date of birth")}
-            />
-            <ProfileStat label={t("Learning score")} value={String(user.score ?? 0)} />
-            <ProfileStat label={t("inspir'ed since")} value={formatAppDate(user.createdAt)} />
-          </div>
-        </section>
-
-        <section className="inspir-profile-section">
-          <div className="inspir-profile-section-head">
-            <span>{t("Memory")}</span>
-            <h3>{t("What inspir can remember")}</h3>
-          </div>
-          <MemoryPanel
-            dashboard={memoryDashboard}
-            loading={memoryLoading}
-            saving={memorySaving}
-            error={memoryError}
-            onSettings={onMemorySettings}
-            onCreate={onMemoryCreate}
-            onUpdate={onMemoryUpdate}
-            onDelete={onMemoryDelete}
-            onClear={onMemoryClear}
-            t={t}
-          />
-        </section>
-
-        <section className="inspir-profile-section inspir-profile-account-section">
-          <div className="inspir-profile-section-head">
-            <span>{t("Account and privacy")}</span>
-            <h3>{t("Control what stays with you")}</h3>
-          </div>
-          <p>
-            {t(
-              "Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful for you.",
-            )}
-          </p>
-          <div className="inspir-profile-account-list">
-            <div className="inspir-profile-account-row">
-              <span>{t("Google email")}</span>
-              <strong>{user.email || "Not connected"}</strong>
-            </div>
-          </div>
-          <div className="inspir-profile-account-actions">
-            <Link href="/terms">{t("Terms")}</Link>
-            <Link href="/privacy">{t("Privacy")}</Link>
-            <button type="button" onClick={() => void signOutToHome()} className="inspir-profile-logout">
-              {t("Logout")}
-            </button>
-          </div>
-          <SocialLinks compact className="inspir-profile-social" />
-        </section>
-      </div>
-    </main>
-  );
-}
-
-async function signOutToHome() {
-  try {
-    const csrfResponse = await fetch("/api/auth/csrf");
-    const csrf = (await csrfResponse.json().catch(() => null)) as { csrfToken?: string } | null;
-    const body = new URLSearchParams({
-      callbackUrl: "/",
-      json: "true",
-    });
-    if (csrf?.csrfToken) body.set("csrfToken", csrf.csrfToken);
-    await fetch("/api/auth/signout", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body,
-    });
-  } finally {
-    window.location.assign("/");
-  }
-}
-
 function findAiRunIdForMessage(messages: Message[], messageId: string) {
   const message = messages.find((item) => item.id === messageId);
   const aiRunId = message?.metadata?.aiRunId;
   return typeof aiRunId === "string" ? aiRunId : undefined;
-}
-
-function MemoryPanel({
-  dashboard,
-  loading,
-  saving,
-  error,
-  onSettings,
-  onCreate,
-  onUpdate,
-  onDelete,
-  onClear,
-  t,
-}: {
-  dashboard: MemoryDashboard | null;
-  loading: boolean;
-  saving: boolean;
-  error: string | null;
-  onSettings: (input: {
-    enabled?: boolean;
-    savedMemoryEnabled?: boolean;
-    chatHistoryEnabled?: boolean;
-    dreamingEnabled?: boolean;
-    noticeSeen?: boolean;
-    refreshSummary?: boolean;
-    correction?: string;
-  }) => void;
-  onCreate: (input: { content: string; category?: string }) => void;
-  onUpdate: (
-    memoryId: string,
-    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
-  ) => void;
-  onDelete: (memoryId: string) => void;
-  onClear: () => void;
-  t: UiTranslator;
-}) {
-  const settings = dashboard?.settings;
-  const enabled = settings?.enabled ?? true;
-  const savedMemoryEnabled = settings?.savedMemoryEnabled ?? true;
-  const chatHistoryEnabled = settings?.chatHistoryEnabled ?? true;
-  const dreamingEnabled = settings?.dreamingEnabled ?? true;
-  const grouped = useMemo(() => groupMemoriesByCategory(dashboard?.memories ?? []), [dashboard?.memories]);
-  const memoryControlsDisabled = saving || !enabled || !savedMemoryEnabled;
-  const [adding, setAdding] = useState(false);
-  const [newMemory, setNewMemory] = useState("");
-  const [newCategory, setNewCategory] = useState("preferences");
-  const [correction, setCorrection] = useState("");
-
-  function addMemory() {
-    const content = newMemory.trim();
-    if (!content) return;
-    onCreate({ content, category: newCategory });
-    setNewMemory("");
-    setNewCategory("preferences");
-    setAdding(false);
-  }
-
-  function saveCorrection() {
-    const content = correction.trim();
-    if (!content) return;
-    onSettings({ correction: content });
-    setCorrection("");
-  }
-
-  async function muteSummarySection(section: MemorySummarySection) {
-    await fetch("/api/memory/source-feedback", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        summarySectionId: section.id,
-        action: "dont_mention",
-      }),
-    }).catch(() => undefined);
-    onSettings({ refreshSummary: true });
-  }
-
-  return (
-    <section className="inspir-memory-card">
-      <div className="inspir-memory-head">
-        <div className="inspir-profile-line-icon">
-          <BrainCircuit size={22} />
-        </div>
-        <div>
-          <strong>{t("Memory")}</strong>
-          <span>{enabled ? t("On for this account") : t("Off for this account")}</span>
-        </div>
-      </div>
-
-      <div className="inspir-memory-status-row inspir-memory-master-row">
-        <div>
-          <strong>{enabled ? t("Memory is on") : t("Memory is off")}</strong>
-          <span>{enabled ? t("Used only when it helps.") : t("Nothing is saved or used.")}</span>
-        </div>
-        <button
-          type="button"
-          className={`inspir-memory-toggle ${enabled ? "is-on" : ""}`}
-          aria-label={enabled ? t("Off") : t("On")}
-          aria-pressed={enabled}
-          disabled={saving || loading}
-          onClick={() => onSettings({ enabled: !enabled })}
-        >
-          <span className="inspir-memory-toggle-track">
-            <span className="inspir-memory-toggle-thumb" />
-          </span>
-          <strong>{enabled ? t("On") : t("Off")}</strong>
-        </button>
-      </div>
-
-      {enabled ? (
-        <div className="inspir-memory-setting-list">
-          <MemoryMiniToggle
-            label={t("Saved memory")}
-            checked={savedMemoryEnabled}
-            disabled={saving || loading}
-            onChange={(checked) => onSettings({ savedMemoryEnabled: checked })}
-          />
-          <MemoryMiniToggle
-            label={t("Past chats")}
-            checked={chatHistoryEnabled}
-            disabled={saving || loading || !savedMemoryEnabled}
-            onChange={(checked) => onSettings({ chatHistoryEnabled: checked })}
-          />
-          <MemoryMiniToggle
-            label={t("Synthesis")}
-            checked={dreamingEnabled}
-            disabled={saving || loading || !savedMemoryEnabled}
-            onChange={(checked) => onSettings({ dreamingEnabled: checked })}
-          />
-        </div>
-      ) : null}
-
-      {loading ? <p className="inspir-memory-muted">{t("Loading memory...")}</p> : null}
-      {error ? <p className="inspir-memory-error">{error}</p> : null}
-
-      {settings && !settings.noticeSeenAt ? (
-        <div className="inspir-memory-notice">
-          <strong>{t("Memory is on for signed-in accounts.")}</strong>
-          <p>
-            {t(
-              "Everything Inspir remembers is shown below as editable memory cards. You can add, edit, delete, or clear them anytime.",
-            )}
-          </p>
-          <button type="button" disabled={saving} onClick={() => onSettings({ noticeSeen: true })}>
-            {t("Got it")}
-          </button>
-        </div>
-      ) : null}
-
-      {dashboard ? (
-        <>
-          <MemorySummaryCard
-            summary={dashboard.summary}
-            saving={memoryControlsDisabled}
-            correction={correction}
-            onCorrection={setCorrection}
-            onSaveCorrection={saveCorrection}
-            onRefresh={() => onSettings({ refreshSummary: true })}
-            onMuteSection={(section) => void muteSummarySection(section)}
-            t={t}
-          />
-
-          <div className="inspir-memory-summary">
-            <span>
-              {dashboard.memories.length}{" "}
-              {dashboard.memories.length === 1 ? t("saved memory") : t("saved memories")}
-            </span>
-            <div className="inspir-memory-summary-actions">
-              <button type="button" disabled={memoryControlsDisabled} onClick={() => setAdding((current) => !current)}>
-                <Plus size={15} />
-                <span>{t("Add")}</span>
-              </button>
-              <button type="button" disabled={saving || dashboard.memories.length === 0} onClick={onClear}>
-                {t("Clear all")}
-              </button>
-            </div>
-          </div>
-
-          {adding ? (
-            <div className="inspir-memory-add">
-              <textarea
-                aria-label={t("Add")}
-                value={newMemory}
-                onChange={(event) => setNewMemory(event.target.value)}
-                placeholder={t("Correct or add what Inspir should remember.")}
-                rows={3}
-                maxLength={600}
-                disabled={memoryControlsDisabled}
-              />
-              <div className="inspir-memory-add-actions">
-                <select
-                  aria-label={t("Memory category")}
-                  value={newCategory}
-                  disabled={memoryControlsDisabled}
-                  onChange={(event) => setNewCategory(event.target.value)}
-                >
-                  {memoryCategoryOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {t(option.label)}
-                    </option>
-                  ))}
-                </select>
-                <button type="button" disabled={memoryControlsDisabled || !newMemory.trim()} onClick={addMemory}>
-                  {t("Save")}
-                </button>
-                <button
-                  type="button"
-                  disabled={saving}
-                  onClick={() => {
-                    setAdding(false);
-                    setNewMemory("");
-                    setNewCategory("preferences");
-                  }}
-                >
-                  {t("Cancel")}
-                </button>
-              </div>
-            </div>
-          ) : null}
-
-          <div className="inspir-memory-list">
-            {dashboard.memories.length === 0 ? (
-              <p className="inspir-memory-muted">{t("No saved memories yet.")}</p>
-            ) : (
-              grouped.map((group) => (
-                <div key={group.category} className="inspir-memory-group">
-                  <h4>{translatedMemoryCategoryLabel(group.category, t)}</h4>
-                  {group.memories.map((memory) => (
-                    <MemoryItemEditor
-                      key={memory.id}
-                      memory={memory}
-                      saving={saving}
-                      onUpdate={onUpdate}
-                      onDelete={onDelete}
-                      t={t}
-                    />
-                  ))}
-                </div>
-              ))
-            )}
-          </div>
-        </>
-      ) : null}
-    </section>
-  );
-}
-
-function MemorySummaryCard({
-  summary,
-  saving,
-  correction,
-  onCorrection,
-  onSaveCorrection,
-  onRefresh,
-  onMuteSection,
-  t,
-}: {
-  summary: MemorySummary | null;
-  saving: boolean;
-  correction: string;
-  onCorrection: (value: string) => void;
-  onSaveCorrection: () => void;
-  onRefresh: () => void;
-  onMuteSection: (section: MemorySummarySection) => void;
-  t: UiTranslator;
-}) {
-  const sections = summary?.sections?.filter((section) => !section.doNotMention) ?? [];
-  return (
-    <div className="inspir-memory-summary-card">
-      <div className="inspir-memory-summary-card-head">
-        <div>
-          <strong>{t("Memory summary")}</strong>
-          <span>
-            {summary?.lastSynthesizedAt
-              ? formatAppDate(summary.lastSynthesizedAt)
-              : t("No summary yet")}
-          </span>
-        </div>
-        <button type="button" disabled={saving} onClick={onRefresh} aria-label={t("Memory summary")}>
-          <RefreshCw size={15} />
-        </button>
-      </div>
-
-      {sections.length ? (
-        <div className="inspir-memory-summary-sections">
-          {sections.map((section) => (
-            <article key={section.id} className="inspir-memory-summary-section">
-              <div>
-                <strong>{section.title || translatedMemoryCategoryLabel(section.category, t)}</strong>
-                <p>{section.summary}</p>
-              </div>
-              <button
-                type="button"
-                disabled={saving}
-                onClick={() => onMuteSection(section)}
-                aria-label={t("Off")}
-              >
-                <XCircle size={15} />
-              </button>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <p className="inspir-memory-muted">{t("No summary yet")}</p>
-      )}
-
-      <div className="inspir-memory-correction">
-        <textarea
-          aria-label={t("Correct or add what Inspir should remember.")}
-          value={correction}
-          onChange={(event) => onCorrection(event.target.value)}
-          placeholder={t("Correct or add what Inspir should remember.")}
-          rows={2}
-          maxLength={800}
-          disabled={saving}
-        />
-        <button type="button" disabled={saving || !correction.trim()} onClick={onSaveCorrection}>
-          {t("Save")}
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function MemoryItemEditor({
-  memory,
-  saving,
-  onUpdate,
-  onDelete,
-  t,
-}: {
-  memory: MemoryItem;
-  saving: boolean;
-  onUpdate: (
-    memoryId: string,
-    input: { content?: string; category?: string; tags?: string[]; pinned?: boolean; doNotMention?: boolean },
-  ) => void;
-  onDelete: (memoryId: string) => void;
-  t: UiTranslator;
-}) {
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState("");
-  const [draftCategory, setDraftCategory] = useState(memory.category || "general");
-
-  function save() {
-    const next = draft.trim();
-    const categoryChanged = draftCategory !== memory.category;
-    const contentChanged = next && next !== memory.content && next !== memory.displayContent;
-    if (!contentChanged && !categoryChanged) {
-      setEditing(false);
-      setDraft(editableMemoryText(memory));
-      setDraftCategory(memory.category || "general");
-      return;
-    }
-    onUpdate(memory.id, {
-      ...(contentChanged ? { content: next } : {}),
-      ...(categoryChanged ? { category: draftCategory } : {}),
-    });
-    setEditing(false);
-  }
-
-  return (
-    <article className="inspir-memory-item">
-      {editing ? (
-        <>
-          <textarea
-            aria-label={t("Saved memory")}
-            value={draft}
-            onChange={(event) => setDraft(event.target.value)}
-            className="inspir-memory-edit"
-            rows={3}
-            maxLength={600}
-          />
-          <select
-            aria-label={t("Memory category")}
-            value={draftCategory}
-            disabled={saving}
-            className="inspir-memory-edit-category"
-            onChange={(event) => setDraftCategory(event.target.value)}
-          >
-            {memoryCategoryOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {t(option.label)}
-              </option>
-            ))}
-          </select>
-        </>
-      ) : (
-        <p className={memory.doNotMention ? "is-muted-memory" : undefined}>{memory.displayContent ?? memory.content}</p>
-      )}
-      <div className="inspir-memory-item-meta">
-        <span>{memory.sourceLabel ? t(memory.sourceLabel) : memory.kind === "explicit" ? t("Saved memory") : t("Past chats")}</span>
-        {memory.doNotMention ? <span>{t("Off")}</span> : null}
-      </div>
-      <div className="inspir-memory-actions">
-        {editing ? (
-          <>
-            <button type="button" disabled={saving} onClick={save} aria-label={t("Save")}>
-              <CheckCircle2 size={16} />
-            </button>
-            <button
-              type="button"
-              disabled={saving}
-              onClick={() => {
-                setEditing(false);
-                setDraft(editableMemoryText(memory));
-                setDraftCategory(memory.category || "general");
-              }}
-              aria-label={t("Cancel")}
-            >
-              <XCircle size={16} />
-            </button>
-          </>
-        ) : (
-          <>
-            <button
-              type="button"
-              disabled={saving}
-              onClick={() => {
-                setDraft(editableMemoryText(memory));
-                setDraftCategory(memory.category || "general");
-                setEditing(true);
-              }}
-              aria-label={t("Saved memory")}
-            >
-              <PencilLine size={16} />
-            </button>
-            <button
-              type="button"
-              disabled={saving}
-              onClick={() => onUpdate(memory.id, { doNotMention: !memory.doNotMention })}
-              aria-label={memory.doNotMention ? t("On") : t("Off")}
-            >
-              {memory.doNotMention ? <Eye size={16} /> : <EyeOff size={16} />}
-            </button>
-            <button type="button" disabled={saving} onClick={() => onDelete(memory.id)} aria-label={t("Clear all")}>
-              <XCircle size={16} />
-            </button>
-          </>
-        )}
-      </div>
-    </article>
-  );
-}
-
-const memoryCategoryOptions = [
-  { value: "preferences", label: "Preferences" },
-  { value: "learning_style", label: "Learning style" },
-  { value: "projects", label: "Projects" },
-  { value: "goals", label: "Goals" },
-  { value: "knowledge", label: "Knowledge" },
-  { value: "constraints", label: "Constraints" },
-  { value: "interaction", label: "Interaction" },
-  { value: "identity", label: "Identity" },
-  { value: "general", label: "General" },
-];
-
-function editableMemoryText(memory: MemoryItem) {
-  return memory.displayContent ?? memory.content;
-}
-
-function groupMemoriesByCategory(memories: MemoryItem[]) {
-  const map = new Map<string, MemoryItem[]>();
-  for (const memory of memories) {
-    const key = memory.category || "general";
-    map.set(key, [...(map.get(key) ?? []), memory]);
-  }
-  return Array.from(map.entries())
-    .toSorted(([a], [b]) => memoryCategoryLabel(a).localeCompare(memoryCategoryLabel(b)))
-    .map(([category, items]) => ({ category, memories: items }));
-}
-
-function memoryCategoryLabel(category: string) {
-  return category
-    .split("_")
-    .filter(Boolean)
-    .map((part) => part.slice(0, 1).toUpperCase() + part.slice(1))
-    .join(" ");
-}
-
-function translatedMemoryCategoryLabel(category: string, t: UiTranslator) {
-  return t(memoryCategoryLabel(category));
 }
