@@ -6,6 +6,6 @@ type LocalizedLinkProps = LinkProps &
     children?: ReactNode;
   };
 
-export function LocalizedLink({ href, ...props }: LocalizedLinkProps) {
-  return <Link href={href} {...props} />;
+export function LocalizedLink({ href, prefetch = false, ...props }: LocalizedLinkProps) {
+  return <Link href={href} prefetch={prefetch} {...props} />;
 }

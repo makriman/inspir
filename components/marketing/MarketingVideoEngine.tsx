@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import type { CSSProperties } from "react";
 import { useReducer, useRef } from "react";
 import {
