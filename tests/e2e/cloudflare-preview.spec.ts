@@ -193,6 +193,9 @@ test("authenticated profile uses a full-width identity and details layout", asyn
   await expect(page.getByRole("heading", { name: /make inspir feel like it knows how you learn/i })).toBeVisible();
   await expect(page.getByRole("heading", { name: /your app identity/i })).toBeVisible();
   await expect(page.getByRole("button", { name: /use google photo/i })).toHaveCount(0);
+  await expect(page.locator(".inspir-profile-photo-button")).toHaveCount(0);
+  await expect(page.locator(".inspir-profile-avatar-button")).toBeVisible();
+  await expect(page.getByRole("button", { name: /change photo/i })).toBeVisible();
 
   const saveButton = page.getByRole("button", { name: /save profile/i });
   await expect(saveButton).toHaveCount(0);
@@ -207,6 +210,8 @@ test("authenticated profile uses a full-width identity and details layout", asyn
     const identity = document.querySelector<HTMLElement>(".inspir-profile-identity-section");
     const identityGrid = document.querySelector<HTMLElement>(".inspir-profile-identity-grid");
     const hero = document.querySelector<HTMLElement>(".inspir-profile-hero");
+    const avatar = document.querySelector<HTMLElement>(".inspir-profile-avatar-button");
+    const heroCopy = document.querySelector<HTMLElement>(".inspir-profile-hero-copy");
     const form = document.querySelector<HTMLElement>(".inspir-profile-details-form");
     const save = document.querySelector<HTMLElement>(".inspir-profile-save-button");
     const sections = Array.from(document.querySelectorAll<HTMLElement>(".inspir-profile-section"));
@@ -217,6 +222,8 @@ test("authenticated profile uses a full-width identity and details layout", asyn
     const bodyRect = rect(body);
     const identityRect = rect(identity);
     const heroRect = rect(hero);
+    const avatarRect = rect(avatar);
+    const heroCopyRect = rect(heroCopy);
     const formRect = rect(form);
     const saveRect = rect(save);
     const overviewRect = rect(overview);
@@ -233,6 +240,13 @@ test("authenticated profile uses a full-width identity and details layout", asyn
       identityWidthDelta: bodyRect && identityRect ? Math.abs(bodyRect.width - identityRect.width) : null,
       overviewWidthDelta: bodyRect && overviewRect ? Math.abs(bodyRect.width - overviewRect.width) : null,
       rowTopDelta: heroRect && formRect ? Math.abs(heroRect.top - formRect.top) : null,
+      heroFormGap: heroRect && formRect ? formRect.left - heroRect.right : null,
+      avatarIsClickable: avatar?.tagName === "BUTTON",
+      avatarSizeDelta: avatarRect ? Math.abs(avatarRect.width - avatarRect.height) : null,
+      avatarWidth: avatarRect?.width ?? null,
+      avatarLeftOverflow: heroRect && avatarRect ? heroRect.left - avatarRect.left : null,
+      avatarRightOverflow: heroRect && avatarRect ? avatarRect.right - heroRect.right : null,
+      heroCopyRightOverflow: heroRect && heroCopyRect ? heroCopyRect.right - heroRect.right : null,
       saveRightDelta: formRect && saveRect ? Math.abs(formRect.right - saveRect.right) : null,
       saveBottomDelta: formRect && saveRect ? Math.abs(formRect.bottom - saveRect.bottom) : null,
       statsWidthDelta: overviewRect && statsRect ? Math.abs(overviewRect.width - statsRect.width) : null,
@@ -249,6 +263,19 @@ test("authenticated profile uses a full-width identity and details layout", asyn
   expect(layout.overviewWidthDelta ?? 999).toBeLessThanOrEqual(2);
   expect(layout.rowTopDelta).not.toBeNull();
   expect(layout.rowTopDelta ?? 999).toBeLessThanOrEqual(4);
+  expect(layout.heroFormGap).not.toBeNull();
+  expect(layout.heroFormGap ?? -999).toBeGreaterThanOrEqual(16);
+  expect(layout.avatarIsClickable).toBe(true);
+  expect(layout.avatarSizeDelta).not.toBeNull();
+  expect(layout.avatarSizeDelta ?? 999).toBeLessThanOrEqual(1);
+  expect(layout.avatarWidth).not.toBeNull();
+  expect(layout.avatarWidth ?? 0).toBeGreaterThanOrEqual(72);
+  expect(layout.avatarLeftOverflow).not.toBeNull();
+  expect(layout.avatarLeftOverflow ?? 999).toBeLessThanOrEqual(1);
+  expect(layout.avatarRightOverflow).not.toBeNull();
+  expect(layout.avatarRightOverflow ?? 999).toBeLessThanOrEqual(1);
+  expect(layout.heroCopyRightOverflow).not.toBeNull();
+  expect(layout.heroCopyRightOverflow ?? 999).toBeLessThanOrEqual(1);
   expect(layout.saveRightDelta).not.toBeNull();
   expect(layout.saveRightDelta ?? 999).toBeLessThanOrEqual(2);
   expect(layout.saveBottomDelta).not.toBeNull();

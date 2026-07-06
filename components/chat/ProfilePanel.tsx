@@ -170,7 +170,14 @@ export function ProfilePanel({
           </div>
           <div className="inspir-profile-identity-grid">
             <div className="inspir-profile-hero">
-              <div className="inspir-profile-avatar">
+              <button
+                type="button"
+                className="inspir-profile-avatar inspir-profile-avatar-button"
+                aria-label={photoSaving ? t("Saving...") : t("Change photo")}
+                title={photoSaving ? t("Saving...") : t("Change photo")}
+                disabled={photoSaving}
+                onClick={() => photoInputRef.current?.click()}
+              >
                 <ProfileAvatarImage
                   src={avatarSrc}
                   fallbackSrc={user.image}
@@ -179,30 +186,22 @@ export function ProfilePanel({
                   sizes="96px"
                   iconSize={42}
                 />
-              </div>
+                <span className="inspir-profile-avatar-action" aria-hidden="true">
+                  <Camera size={15} strokeWidth={2.5} />
+                </span>
+              </button>
               <div className="inspir-profile-hero-copy">
                 <h3>{user.name || "Learner"}</h3>
                 <p>{user.email || "user@example.com"}</p>
               </div>
-              <div className="inspir-profile-photo-actions">
-                <input
-                  ref={photoInputRef}
-                  type="file"
-                  aria-label={t("Profile photo")}
-                  accept="image/jpeg,image/png,image/webp"
-                  className="inspir-profile-photo-input"
-                  onChange={(event) => void handlePhotoChange(event)}
-                />
-                <button
-                  type="button"
-                  disabled={photoSaving}
-                  onClick={() => photoInputRef.current?.click()}
-                  className="inspir-profile-photo-button"
-                >
-                  <Camera size={16} />
-                  <span>{photoSaving ? t("Saving...") : t("Change photo")}</span>
-                </button>
-              </div>
+              <input
+                ref={photoInputRef}
+                type="file"
+                aria-label={t("Profile photo")}
+                accept="image/jpeg,image/png,image/webp"
+                className="inspir-profile-photo-input"
+                onChange={(event) => void handlePhotoChange(event)}
+              />
               {photoError ? <span className="inspir-profile-details-error">{photoError}</span> : null}
               {photoMessage ? <span className="inspir-profile-details-success">{photoMessage}</span> : null}
             </div>

@@ -6369,39 +6369,6 @@ a {
   display: none;
 }
 
-.inspir-profile-photo-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.inspir-profile-photo-button {
-  display: inline-flex;
-  min-height: 34px;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  border: 1px solid rgb(125 235 143 / 0.35);
-  border-radius: 10px;
-  background: rgb(125 235 143 / 0.12);
-  color: #fff;
-  padding: 0 11px;
-  font-size: 12px;
-  font-weight: 900;
-}
-
-.inspir-profile-photo-button.is-muted {
-  border-color: rgb(255 255 255 / 0.14);
-  background: rgb(255 255 255 / 0.07);
-}
-
-.inspir-profile-photo-button:disabled {
-  cursor: wait;
-  opacity: 0.6;
-}
-
 .inspir-profile-info {
   display: grid;
   height: auto;
@@ -8015,42 +7982,110 @@ a {
 
 .inspir-profile-identity-grid {
   display: grid;
-  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
-  gap: clamp(16px, 3vw, 28px);
-  align-items: stretch;
+  grid-template-columns: minmax(320px, 0.42fr) minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 34px);
+  align-items: start;
 }
 
-.inspir-profile-workspace .inspir-profile-hero {
+.inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero {
   display: grid;
+  width: 100%;
+  grid-template-columns: 78px minmax(0, 1fr);
+  column-gap: 13px;
+  row-gap: 8px;
+  align-items: center;
   justify-items: start;
-  gap: 12px;
+  align-self: start;
   border: 0;
   background: transparent;
   padding: 0;
   text-align: left;
 }
 
-.inspir-profile-workspace .inspir-profile-avatar {
-  width: 82px;
-  height: 82px;
+.inspir-profile-panel.inspir-profile-workspace .inspir-profile-avatar {
+  position: relative;
+  top: auto;
+  left: auto;
+  display: grid;
+  width: 78px;
+  height: 78px;
+  place-items: center;
+  transform: none;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.055);
+  color: rgb(255 255 255 / 0.74);
+  padding: 0;
+}
+
+.inspir-profile-avatar-button {
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.inspir-profile-avatar-button:hover,
+.inspir-profile-avatar-button:focus-visible {
+  border-color: rgb(125 235 143 / 0.72);
+  box-shadow: 0 0 0 4px rgb(125 235 143 / 0.14);
+  outline: 0;
+}
+
+.inspir-profile-avatar-button:active {
+  transform: scale(0.98);
+}
+
+.inspir-profile-avatar-button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.inspir-profile-avatar-action {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border: 1px solid rgb(125 235 143 / 0.5);
+  border-radius: 999px;
+  background: rgb(8 20 12 / 0.86);
+  color: #fff;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 0.28);
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.inspir-profile-avatar-button:hover .inspir-profile-avatar-action,
+.inspir-profile-avatar-button:focus-visible .inspir-profile-avatar-action {
+  border-color: rgb(125 235 143 / 0.86);
+  background: rgb(38 148 63 / 0.95);
+  transform: translateY(-1px);
 }
 
 .inspir-profile-hero-copy {
+  grid-column: 2;
   min-width: 0;
+  max-width: 100%;
 }
 
-.inspir-profile-workspace .inspir-profile-hero h3 {
-  font-size: clamp(20px, 2.2vw, 28px);
+.inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero h3 {
+  max-width: 100%;
+  font-size: clamp(17px, 1.6vw, 23px);
+  overflow-wrap: anywhere;
 }
 
-.inspir-profile-workspace .inspir-profile-hero p {
+.inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero p {
+  max-width: 100%;
   margin-top: 5px;
-  font-size: 14px;
-}
-
-.inspir-profile-workspace .inspir-profile-photo-actions {
-  justify-content: flex-start;
-  margin-top: 0;
+  font-size: 13px;
+  overflow-wrap: anywhere;
 }
 
 .inspir-profile-details-form {

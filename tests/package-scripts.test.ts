@@ -81,6 +81,8 @@ test("profile layout merges identity into details and uses full-width sections",
 
   assert.match(profilePanel, /inspir-profile-section inspir-profile-identity-section/);
   assert.match(profilePanel, /<div className="inspir-profile-identity-grid">/);
+  assert.match(profilePanel, /inspir-profile-avatar inspir-profile-avatar-button/);
+  assert.doesNotMatch(profilePanel, /inspir-profile-photo-button/);
   assert.ok(
     profilePanel.indexOf('className="inspir-profile-hero"') >
       profilePanel.indexOf('className="inspir-profile-section inspir-profile-identity-section"'),
@@ -109,6 +111,19 @@ test("profile avatars fall back instead of rendering broken images", () => {
   assert.match(profilePanel, /fallbackSrc=\{user\.image\}/);
   assert.match(sidebar, /avatarFallbackSrc/);
   assert.match(chatClient, /const avatarFallbackSrc = profileUser\.image \|\| undefined/);
+});
+
+test("signed-in public chat routes stay authenticated when topic lookup falls back to seeds", () => {
+  const page = fs.readFileSync(path.resolve("app/(workspace)/chat/[chatId]/page.tsx"), "utf8");
+  const chatsRoute = fs.readFileSync(path.resolve("app/api/chats/route.ts"), "utf8");
+  const queries = fs.readFileSync(path.resolve("lib/db/queries.ts"), "utf8");
+
+  assert.match(page, /const savedChatsAvailable = Boolean\(session\?\.user\?\.id\)/);
+  assert.match(page, /withPublicTopicTimeout\(getPublicActiveTopics\(\)\)\.catch\(\(\) => \[\]\)/);
+  assert.doesNotMatch(page, /savedChatsAvailable = false/);
+  assert.match(chatsRoute, /topicId: z\.string\(\)\.trim\(\)\.min\(1\)\.max\(120\)/);
+  assert.match(queries, /export async function getTopicByIdOrSlug/);
+  assert.match(queries, /const topic = await getTopicByIdOrSlug\(topicId\)/);
 });
 
 test("Better Auth can safely link migrated Google-only users", () => {

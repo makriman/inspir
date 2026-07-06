@@ -162,6 +162,18 @@ export async function getDefaultTopic() {
   return topic;
 }
 
+export async function getTopicByIdOrSlug(topicIdentifier: string) {
+  await ensureSeedTopics();
+  const normalized = topicIdentifier.trim();
+  if (!normalized) return null;
+  const [topic] = await db
+    .select()
+    .from(topics)
+    .where(or(eq(topics.id, normalized), eq(topics.slug, normalized.toLowerCase())))
+    .limit(1);
+  return topic ?? null;
+}
+
 export async function getUserById(userId: string) {
   const [user] = await db.select().from(users).where(eq(users.id, userId)).limit(1);
   return user;
@@ -360,14 +372,14 @@ export async function deleteAppTranslation(namespace: string, language: string) 
 }
 
 export async function createChatForUser(userId: string, topicId: string) {
-  const [topic] = await db.select().from(topics).where(eq(topics.id, topicId)).limit(1);
+  const topic = await getTopicByIdOrSlug(topicId);
   if (!topic) return null;
 
   const [chat] = await db
     .insert(chats)
     .values({
       userId,
-      topicId,
+      topicId: topic.id,
       topicNameSnapshot: topic.name,
       title: topic.name,
     })
@@ -409,11 +421,13 @@ export async function getChatMessagesByIds(chatId: string, messageIds: string[])
 }
 
 export async function getRecentChats(userId: string, topicId?: string, q?: string) {
+  const topic = topicId ? await getTopicByIdOrSlug(topicId) : null;
+  if (topicId && !topic) return [];
   const searchPattern = q ? d1ContainsLikePattern(q) : undefined;
   const baseWhere = [
     eq(chats.userId, userId),
     eq(chats.isArchived, false),
-    topicId ? eq(chats.topicId, topicId) : undefined,
+    topic ? eq(chats.topicId, topic.id) : undefined,
   ].filter(Boolean);
 
   if (!searchPattern) {

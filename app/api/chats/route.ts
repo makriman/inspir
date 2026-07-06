@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const createChatSchema = z.object({
-  topicId: z.uuid(),
+  topicId: z.string().trim().min(1).max(120),
 });
 
 export async function GET(request: NextRequest) {

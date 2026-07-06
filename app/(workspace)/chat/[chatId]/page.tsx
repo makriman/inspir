@@ -156,22 +156,19 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     const seedFallbackTopics = seededTopics().map(toPublicTopic);
     let topics = seedFallbackTopics;
     let user = null;
-    let savedChatsAvailable = false;
+    const savedChatsAvailable = Boolean(session?.user?.id);
 
     if (session?.user?.id) {
-      try {
-        const [dbTopics, dbUser] = await withPublicTopicTimeout(
-          Promise.all([getPublicActiveTopics(), getUserProfileById(session.user.id)]),
-        );
+      const [dbTopics, dbUser] = await Promise.all([
+        withPublicTopicTimeout(getPublicActiveTopics()).catch(() => []),
+        getUserProfileById(session.user.id).catch(() => null),
+      ]);
+      user = dbUser;
+      if (dbTopics.length > 0) {
         const dbTopic = dbTopics.find((candidate) => candidate.slug === topicSlug);
         if (dbTopics.length > 0 && dbTopic) {
           topics = dbTopics;
-          user = dbUser;
-          savedChatsAvailable = true;
         }
-      } catch {
-        topics = seedFallbackTopics;
-        savedChatsAvailable = false;
       }
     }
 
