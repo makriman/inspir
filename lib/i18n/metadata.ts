@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { defaultLanguage, languageConfigs, normalizeLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import { alternatesForAvailableLanguages, isSiteLanguageAvailableForPath } from "@/lib/i18n/availability";
+import {
+  alternatesForAvailableLanguages,
+  availableSiteLanguagesForPath,
+  isSiteLanguageAvailableForPath,
+} from "@/lib/i18n/availability";
 import { getRequestLanguage } from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
 import {
@@ -63,13 +67,14 @@ export async function localizeMarketingMetadata(metadata: Metadata, path: string
     language === defaultLanguage || !languageAvailable
       ? (value: string) => value
       : await getSiteMetadataTranslator(language, path);
-  const availableLanguages = metadataAvailableLanguages(language, languageAvailable);
+  const availableLanguages = await metadataAvailableLanguages(path, metadata.robots);
+  const canonicalLanguage = languageAvailable ? language : defaultLanguage;
 
   return {
     ...metadata,
     title: localizeTitle(metadata.title, t),
     description: typeof metadata.description === "string" ? t(metadata.description) : metadata.description,
-    alternates: localizedAlternates(path, availableLanguages),
+    alternates: localizedAlternates(path, availableLanguages, canonicalLanguage, metadata.robots),
     robots:
       language === defaultLanguage || languageAvailable
         ? metadata.robots
@@ -142,7 +147,8 @@ export async function localizedMarketingMetadata(input: LocalizedMetadataInput):
     language === defaultLanguage || !languageAvailable
       ? (value: string) => value
       : await getSiteMetadataTranslator(language, input.path);
-  const availableLanguages = metadataAvailableLanguages(language, languageAvailable);
+  const availableLanguages = await metadataAvailableLanguages(input.path, input.robots);
+  const canonicalLanguage = languageAvailable ? language : defaultLanguage;
 
   const title = t(input.title);
   const description = t(input.description);
@@ -159,7 +165,7 @@ export async function localizedMarketingMetadata(input: LocalizedMetadataInput):
   return {
     title,
     description,
-    alternates: localizedAlternates(input.path, availableLanguages),
+    alternates: localizedAlternates(input.path, availableLanguages, canonicalLanguage, input.robots),
     robots:
       language === defaultLanguage || languageAvailable
         ? input.robots
@@ -181,9 +187,18 @@ export async function localizedMarketingMetadata(input: LocalizedMetadataInput):
   };
 }
 
-function localizedAlternates(path: string, languages: SupportedLanguage[]): NonNullable<Metadata["alternates"]> {
+function localizedAlternates(
+  path: string,
+  languages: SupportedLanguage[],
+  canonicalLanguage: SupportedLanguage,
+  robots: Metadata["robots"],
+): NonNullable<Metadata["alternates"]> {
+  if (!shouldExposeSearchAlternates(robots)) {
+    return { canonical: localizeHref(path, canonicalLanguage) };
+  }
+
   return {
-    canonical: path,
+    canonical: localizeHref(path, canonicalLanguage),
     languages: {
       ...alternatesForAvailableLanguages(path, languages),
       "x-default": absoluteUrl(path),
@@ -196,9 +211,15 @@ function localizedAlternates(path: string, languages: SupportedLanguage[]): NonN
   };
 }
 
-function metadataAvailableLanguages(language: SupportedLanguage, languageAvailable: boolean): SupportedLanguage[] {
-  if (language === defaultLanguage || !languageAvailable) return [defaultLanguage];
-  return [defaultLanguage, language];
+async function metadataAvailableLanguages(path: string, robots: Metadata["robots"]): Promise<SupportedLanguage[]> {
+  if (!shouldExposeSearchAlternates(robots)) return [defaultLanguage];
+  return availableSiteLanguagesForPath(path);
+}
+
+function shouldExposeSearchAlternates(robots: Metadata["robots"]) {
+  if (typeof robots === "string") return !/\bnoindex\b/i.test(robots);
+  if (robots && typeof robots === "object" && "index" in robots && robots.index === false) return false;
+  return true;
 }
 
 function localizeTitle(title: Metadata["title"], t: (value: string) => string): Metadata["title"] {

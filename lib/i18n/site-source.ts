@@ -18,6 +18,7 @@ import {
   siteTranslationNamespace,
   staticSiteTranslationNamespaces,
 } from "./site-source-constants";
+import { getPotentialSiteTranslationNamespacesForPath } from "./site-path-namespaces";
 import { siteSourceManifest } from "./site-source-manifest";
 import type { TranslationSource } from "./translation-types";
 
@@ -146,30 +147,9 @@ export function isKnownSiteTranslationNamespace(namespace: string, options: Site
 }
 
 export function getSiteTranslationNamespacesForPath(pathname: string) {
-  const path = normalizePath(pathname);
-  const firstSegment = path === "/" ? "" : path.split("/").filter(Boolean)[0] ?? "";
-  if (firstSegment === "chat") return [];
-
-  const namespaces = new Set<string>([marketingShellTranslationNamespace]);
-
-  if (path === "/") namespaces.add("route:home");
-  else if (firstSegment === "privacy") namespaces.add("legal:privacy");
-  else if (firstSegment === "terms") namespaces.add("legal:terms");
-  else if (firstSegment === "tnc") namespaces.add("legal:tnc");
-  else if (firstSegment === "blog") {
-    namespaces.add("route:blog");
-    const [, maybeSlug] = path.match(/^\/blog\/([^/]+)$/) ?? [];
-    if (maybeSlug && maybeSlug !== "category") namespaces.add(`blog:${maybeSlug}`);
-  } else {
-    const routeNamespace = `route:${firstSegment || "home"}`;
-    if (staticSiteTranslationNamespaces.includes(routeNamespace as (typeof staticSiteTranslationNamespaces)[number])) {
-      namespaces.add(routeNamespace);
-    } else {
-      namespaces.add("route:home");
-    }
-  }
-
-  return Array.from(namespaces).filter((namespace) => isKnownSiteTranslationNamespace(namespace));
+  return getPotentialSiteTranslationNamespacesForPath(pathname).filter((namespace) =>
+    isKnownSiteTranslationNamespace(namespace),
+  );
 }
 
 export function getSiteSourceHash(sourceStrings = getSiteSourceStrings()) {
@@ -217,6 +197,7 @@ function getCandidateSourceFiles() {
     const routePath = stripRouteGroupSegments(relativePath);
     if (routePath.startsWith("app/api/") || routePath.startsWith("app/admin/")) return false;
     if (routePath.startsWith("app/") && skippedAppSegments.has(routePath.split("/")[1])) return false;
+    if (routePath.startsWith("app/") && /\/route\.tsx?$/.test(routePath)) return false;
     if (relativePath === "lib/content/languages.ts") return false;
     return /\.(?:tsx?|md)$/.test(path) && !path.endsWith(".d.ts");
   });
@@ -365,12 +346,6 @@ function getBlogSlugs() {
     .filter((file) => file.endsWith(".md"))
     .map((file) => file.replace(/\.md$/, ""))
     .sort((a, b) => a.localeCompare(b));
-}
-
-function normalizePath(pathname: string) {
-  const withoutQuery = pathname.split(/[?#]/)[0] || "/";
-  const path = withoutQuery.startsWith("/") ? withoutQuery : `/${withoutQuery}`;
-  return path.length > 1 ? path.replace(/\/+$/, "") : path;
 }
 
 function collectFiles(path: string, files: string[]) {

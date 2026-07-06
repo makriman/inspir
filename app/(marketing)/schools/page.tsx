@@ -241,13 +241,11 @@ export default function SchoolsPage() {
       <section id="school-contact" className="marketing-cta-band">
         <h2>Try the platform, then talk to us about a school version.</h2>
         <div className="marketing-inline-actions">
-          <Link href="/chat/learn-anything" className="marketing-primary-cta is-dark">
-            Try platform
-            <Sparkles size={18} />
-          </Link>
-          <ArrowLink href="mailto:schools@inspirlearning.com" external>
+          <a href="mailto:schools@inspirlearning.com" className="marketing-primary-cta is-dark">
             schools@inspirlearning.com
-          </ArrowLink>
+            <Sparkles size={18} />
+          </a>
+          <ArrowLink href="/topics">Try public modes</ArrowLink>
         </div>
       </section>
 

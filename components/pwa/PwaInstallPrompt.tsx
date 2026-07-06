@@ -95,7 +95,7 @@ function registerVisit() {
   return nextVisits;
 }
 
-export function PwaInstallPrompt() {
+export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
   const [sheet, setSheet] = useState<SheetState>(hiddenSheetState);
   const canConsiderPromptRef = useRef(false);
   const hasMeaningfulInteractionRef = useRef(false);
@@ -171,6 +171,7 @@ export function PwaInstallPrompt() {
 
     try {
       if (
+        !enabled ||
         isStandaloneDisplayMode() ||
         window.localStorage.getItem(NEVER_SHOW_KEY) === "true" ||
         window.localStorage.getItem(INSTALLED_AT_KEY) ||
@@ -202,11 +203,11 @@ export function PwaInstallPrompt() {
         window.clearTimeout(timeout);
       }
     };
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
-      if (!isLikelyMobileOrTablet()) {
+      if (!enabled || !isLikelyMobileOrTablet()) {
         return;
       }
 
@@ -242,9 +243,11 @@ export function PwaInstallPrompt() {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
       window.removeEventListener("appinstalled", handleAppInstalled);
     };
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const standaloneQuery = window.matchMedia("(display-mode: standalone)");
     const handleStandaloneChange = () => {
       if (isStandaloneDisplayMode()) {
@@ -257,9 +260,11 @@ export function PwaInstallPrompt() {
     return () => {
       standaloneQuery.removeEventListener("change", handleStandaloneChange);
     };
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const markInteraction = () => {
       hasMeaningfulInteractionRef.current = true;
       tryShowPromptEvent();
@@ -280,9 +285,11 @@ export function PwaInstallPrompt() {
       window.removeEventListener("keydown", markInteraction);
       window.removeEventListener("scroll", markScrollInteraction);
     };
-  }, []);
+  }, [enabled]);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const timeout = window.setTimeout(() => {
       hasWaitedLongEnoughRef.current = true;
       tryShowPromptEvent();
@@ -291,7 +298,7 @@ export function PwaInstallPrompt() {
     return () => {
       window.clearTimeout(timeout);
     };
-  }, []);
+  }, [enabled]);
 
   const promptCopy =
     sheet.mode === "ios" && sheet.showIosSteps
@@ -332,7 +339,7 @@ export function PwaInstallPrompt() {
     }
   }, [dismissForLater, markInstalled, sheet.mode]);
 
-  if (!sheet.isVisible || !sheet.mode) {
+  if (!enabled || !sheet.isVisible || !sheet.mode) {
     return null;
   }
 

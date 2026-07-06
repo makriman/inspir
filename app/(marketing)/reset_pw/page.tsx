@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates } from "@/lib/seo/config";
 
 const pageMetadata: Metadata = {
   title: "Account sign-in",
   description: "Inspir accounts use Google sign-in, so there is no separate password to reset.",
-  alternates: metadataAlternates("/reset_pw"),
   robots: { index: false, follow: false, nocache: true },
 };
 

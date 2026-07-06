@@ -12,11 +12,13 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
+import { staticSiteTranslationNamespaceAvailability } from "@/lib/i18n/site-availability-manifest";
+import { getPotentialSiteTranslationNamespacesForPath } from "@/lib/i18n/site-path-namespaces";
 import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, defaultSocialImage, socialImage } from "@/lib/seo/config";
 
 const staticLastModified = new Date();
-const sitemapSupportedLanguages: readonly SupportedLanguage[] = supportedLanguages;
+const sitemapLanguageCache = new Map<string, SupportedLanguage[]>();
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type SitemapIndexEntry = {
@@ -37,17 +39,17 @@ function canonicalPathForEntry(entry: SitemapEntry) {
   return url.pathname === "/" ? "/" : `${url.pathname}${url.search}`;
 }
 
-function languageAlternatesForEntry(entry: SitemapEntry) {
+function languageAlternatesForEntry(entry: SitemapEntry, languages: readonly SupportedLanguage[]) {
   const path = canonicalPathForEntry(entry);
-  const languages = Object.fromEntries(
-    sitemapSupportedLanguages.map((language) => [
+  const alternates = Object.fromEntries(
+    languages.map((language) => [
       languageConfigs[language].locale,
       absoluteUrl(localizePath(path, language)),
     ]),
   );
 
   return {
-    ...languages,
+    ...alternates,
     "x-default": entry.url,
   };
 }
@@ -56,14 +58,16 @@ function withLanguageAlternates(
   routes: MetadataRoute.Sitemap,
   language: SupportedLanguage = defaultLanguage,
 ): MetadataRoute.Sitemap {
-  return routes.map((entry) => {
+  return routes.flatMap((entry) => {
     const path = canonicalPathForEntry(entry);
+    const languages = sitemapLanguagesForPath(path);
+    if (!languages.includes(language)) return [];
 
     return {
       ...entry,
       url: absoluteUrl(localizePath(path, language)),
       alternates: {
-        languages: languageAlternatesForEntry(entry),
+        languages: languageAlternatesForEntry(entry, languages),
       },
     };
   });
@@ -147,7 +151,7 @@ export function sitemapFilePathForLanguage(language: SupportedLanguage | string)
 }
 
 export function sitemapLanguages() {
-  return sitemapSupportedLanguages;
+  return sitemapLanguagesForPath("/");
 }
 
 export function languageFromSitemapFileSlug(value: string): SupportedLanguage | null {
@@ -155,7 +159,7 @@ export function languageFromSitemapFileSlug(value: string): SupportedLanguage | 
   if (!slug) return null;
 
   return (
-    sitemapSupportedLanguages.find((language) => {
+    sitemapLanguages().find((language) => {
       const config = languageConfigs[language];
       return (
         slug === language.toLowerCase() ||
@@ -168,7 +172,7 @@ export function languageFromSitemapFileSlug(value: string): SupportedLanguage | 
 }
 
 export function sitemapIndexEntries(): SitemapIndexEntry[] {
-  return sitemapSupportedLanguages.map((language) => ({
+  return sitemapLanguages().map((language) => ({
     loc: absoluteUrl(sitemapFilePathForLanguage(language)),
     lastModified: staticLastModified,
   }));
@@ -176,7 +180,7 @@ export function sitemapIndexEntries(): SitemapIndexEntry[] {
 
 export default function sitemapEntries(language: SupportedLanguage | string = defaultLanguage): MetadataRoute.Sitemap {
   const normalizedLanguage = normalizeLanguage(language);
-  const effectiveLanguage = sitemapSupportedLanguages.includes(normalizedLanguage)
+  const effectiveLanguage = sitemapLanguages().includes(normalizedLanguage)
     ? normalizedLanguage
     : defaultLanguage;
 
@@ -351,6 +355,26 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
     ],
     effectiveLanguage,
   );
+}
+
+function sitemapLanguagesForPath(pathname: string) {
+  const cacheKey = pathname || "/";
+  const cached = sitemapLanguageCache.get(cacheKey);
+  if (cached) return cached;
+
+  const languages = supportedLanguages.filter((language) => isStaticSiteLanguageAvailableForPath(pathname, language));
+  sitemapLanguageCache.set(cacheKey, languages);
+  return languages;
+}
+
+function isStaticSiteLanguageAvailableForPath(pathname: string, language: SupportedLanguage) {
+  if (language === defaultLanguage) return true;
+
+  const availableNamespaces = staticSiteTranslationNamespaceAvailability[language];
+  if (!availableNamespaces?.length) return false;
+  const available = new Set<string>(availableNamespaces);
+
+  return getPotentialSiteTranslationNamespacesForPath(pathname).every((namespace) => available.has(namespace));
 }
 
 function sitemapEntriesForLanguage(language: SupportedLanguage | string) {

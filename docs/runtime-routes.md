@@ -10,7 +10,7 @@ Inspir runs on Cloudflare Workers through OpenNext. Public and private routes sh
 
 ## Intentionally Dynamic Public Routes
 
-- Marketing HTML under `app/(marketing)` is intentionally dynamic today. The layout reads middleware-provided request language/path headers and the locale cookie so preserved DB-backed translations continue to render exactly without regeneration.
+- Marketing HTML under `app/(marketing)` is localization-sensitive. The layout reads middleware-provided request language/path headers and the locale cookie so DB-backed translations continue to render exactly without regeneration, but it must not declare segment-wide `force-dynamic` because file-backed public pages such as the blog need a static build path.
 - Localized marketing paths such as `/hi` rewrite to the canonical route tree while carrying the request language header. Do not add shared public HTML cache headers to those responses unless the cache key varies by original URL/language and `Set-Cookie` behavior is accounted for.
 - A future static-marketing project may export the preserved translation tables into build-time bundles and pre-render localized routes, but that is a separate migration because translation fidelity is a hard requirement.
 

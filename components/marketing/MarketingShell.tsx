@@ -1,6 +1,6 @@
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import type { ReactNode } from "react";
-import { ArrowUpRight, Code2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { MarketingVideoEngine } from "@/components/marketing/MarketingVideoEngine";
@@ -54,10 +54,6 @@ export async function MarketingHeader({ hero = false }: { hero?: boolean }) {
             {chrome.t(link.label)}
           </Link>
         ))}
-        <a href="https://github.com/makriman/inspir" target="_blank" rel="noreferrer">
-          <Code2 size={17} />
-          GitHub
-        </a>
         <MarketingLanguageControls
           currentLanguage={chrome.language}
           recommendedLanguage={chrome.recommendedLanguage}
@@ -112,6 +108,9 @@ export async function MarketingFooter() {
             {chrome.t(label)}
           </Link>
         ))}
+        <a href="https://github.com/makriman/inspir" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
       </nav>
       <SocialLinks compact className="marketing-footer-social" />
     </footer>
@@ -122,10 +121,12 @@ export async function MarketingPageHero({
   eyebrow,
   title,
   children,
+  showFilm = false,
 }: {
   eyebrow: string;
   title: string;
   children: ReactNode;
+  showFilm?: boolean;
 }) {
   const chrome = await getMarketingChrome();
   return (
@@ -135,19 +136,21 @@ export async function MarketingPageHero({
         <h1>{chrome.t(title)}</h1>
         <p>{translateInlineNode(children, chrome.t)}</p>
       </div>
-      <div className="marketing-page-visual" aria-hidden="true">
-        <figure className="is-film">
-          <video
-            aria-label="inspir learning film preview"
-            src="/media/inspir-learning-film.mp4"
-            poster="/inspir-social-preview.png"
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="metadata"
-          />
-        </figure>
+      <div className={`marketing-page-visual ${showFilm ? "has-film" : "is-map-only"}`} aria-hidden="true">
+        {showFilm ? (
+          <figure className="is-film">
+            <video
+              aria-label={chrome.t("inspir learning film preview")}
+              src="/media/inspir-learning-film.mp4"
+              poster="/inspir-social-preview.png"
+              muted
+              autoPlay
+              loop
+              playsInline
+              preload="metadata"
+            />
+          </figure>
+        ) : null}
         <figure className="is-map">
           <div className="marketing-page-map">
             <span />
@@ -177,7 +180,55 @@ export function MarketingHeroVideo({
   chapters?: ReadonlyArray<MarketingHeroVideoChapter>;
   transcript?: string;
 }) {
-  return <MarketingVideoEngine chapters={chapters} transcript={transcript} />;
+  return <LocalizedMarketingHeroVideo chapters={chapters} transcript={transcript} />;
+}
+
+async function LocalizedMarketingHeroVideo({
+  chapters,
+  transcript,
+}: {
+  chapters?: ReadonlyArray<MarketingHeroVideoChapter>;
+  transcript?: string;
+}) {
+  const chrome = await getMarketingChrome();
+  const localizedChapters = chapters?.map((chapter) => ({
+    ...chapter,
+    title: chrome.t(chapter.title),
+    text: chrome.t(chapter.text),
+  }));
+
+  return (
+    <MarketingVideoEngine
+      chapters={localizedChapters}
+      transcript={transcript ? chrome.t(transcript) : undefined}
+      copy={{
+        ariaLabel: chrome.t("inspir learning film"),
+        playLabel: chrome.t("Play inspir learning preview"),
+        kicker: chrome.t("Watch 31s"),
+        captionTitle: chrome.t("inspir in motion"),
+        captionText: chrome.t("Curiosity, practice, and AI that teaches."),
+        chaptersLabel: chrome.t("Film chapters"),
+        transcriptLabel: chrome.t("Transcript"),
+        nextStepLabel: chrome.t("Next step"),
+        nextStepTitle: chrome.t("Start a live learning session."),
+        nextStepText: chrome.t("Ask your first question and move straight into practice."),
+        startLearningLabel: chrome.t("Start learning"),
+        replayLabel: chrome.t("Replay"),
+        pauseLabel: chrome.t("Pause film"),
+        playFilmLabel: chrome.t("Play film"),
+        restartLabel: chrome.t("Restart film"),
+        hideChaptersLabel: chrome.t("Hide film chapters"),
+        showChaptersLabel: chrome.t("Show film chapters"),
+        hideTranscriptLabel: chrome.t("Hide film transcript"),
+        showTranscriptLabel: chrome.t("Show film transcript"),
+        controlsLabel: chrome.t("Video controls"),
+        progressLabel: chrome.t("Video progress"),
+        unmuteLabel: chrome.t("Unmute film"),
+        muteLabel: chrome.t("Mute film"),
+        fullscreenLabel: chrome.t("Open film fullscreen"),
+      }}
+    />
+  );
 }
 
 export async function ArrowLink({

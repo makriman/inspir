@@ -1,6 +1,7 @@
 import {
   defaultLanguage,
   languageConfigs,
+  supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
 import {
@@ -8,6 +9,7 @@ import {
   getRuntimeSiteTranslationSource,
 } from "@/lib/i18n/runtime-site-source";
 import { getCachedSiteTranslationBundle } from "@/lib/i18n/site-translations";
+import { isTranslationBundleCompleteAndFluent } from "@/lib/i18n/translation-quality";
 import { absoluteUrl } from "@/lib/seo/config";
 import { localizePath } from "@/lib/i18n/routing";
 
@@ -18,11 +20,25 @@ export type LanguageAvailability = {
 
 const languageAvailabilityCacheTtlMs = 30 * 1000;
 const languageAvailabilityCache = new Map<string, { expiresAt: number; promise: Promise<LanguageAvailability> }>();
+const pathAvailabilityCache = new Map<string, { expiresAt: number; promise: Promise<SupportedLanguage[]> }>();
 
 export async function isSiteLanguageAvailableForPath(pathname: string, language: SupportedLanguage) {
   if (language === defaultLanguage) return true;
   const availability = await getSiteLanguageAvailabilityForLanguage(pathname, language);
   return availability.complete;
+}
+
+export async function availableSiteLanguagesForPath(pathname: string) {
+  const cacheKey = pathname || "/";
+  const cached = pathAvailabilityCache.get(cacheKey);
+  if (cached && cached.expiresAt > Date.now()) return cached.promise;
+
+  const promise = readAvailableSiteLanguagesForPath(pathname).catch((error) => {
+    pathAvailabilityCache.delete(cacheKey);
+    throw error;
+  });
+  pathAvailabilityCache.set(cacheKey, { expiresAt: Date.now() + languageAvailabilityCacheTtlMs, promise });
+  return promise;
 }
 
 async function getSiteLanguageAvailabilityForLanguage(pathname: string, language: SupportedLanguage) {
@@ -49,11 +65,22 @@ async function readSiteLanguageAvailabilityForLanguage(
     const source = await getRuntimeSiteTranslationSource(namespace);
     if (!source) return false;
     const bundle = await getCachedSiteTranslationBundle(language, namespace);
-    if (!bundle || bundle.sourceHash !== source.sourceHash) return false;
-    return Object.keys(source.sourceStrings).every((key) => typeof bundle.strings[key] === "string" && bundle.strings[key].trim());
+    return isTranslationBundleCompleteAndFluent(source, bundle, language);
   }));
 
   return { language, complete: checks.every(Boolean) };
+}
+
+async function readAvailableSiteLanguagesForPath(pathname: string) {
+  const availability = await Promise.all(
+    supportedLanguages.map(async (language) => ({
+      language,
+      available: await isSiteLanguageAvailableForPath(pathname, language),
+    })),
+  );
+  return availability
+    .filter((item) => item.available)
+    .map((item) => item.language);
 }
 
 export function alternatesForAvailableLanguages(pathname: string, languages: SupportedLanguage[]) {

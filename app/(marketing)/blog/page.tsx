@@ -56,6 +56,8 @@ export function generateMetadata() {
   return localizeMarketingMetadata(pageMetadata, "/blog");
 }
 
+export const dynamic = "force-static";
+
 export default function BlogIndexPage() {
   const posts = getBlogPosts();
   const categories = getBlogCategories().slice(0, 12);
@@ -111,7 +113,7 @@ export default function BlogIndexPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Blog" title="Better ways to learn with AI.">
+      <MarketingPageHero eyebrow="Blog" title="Better ways to learn with AI." showFilm>
         {posts.length} guides for tutoring, memory, active practice, historical roleplay,
         homework help, writing feedback, coding, and learning without becoming passive.
       </MarketingPageHero>

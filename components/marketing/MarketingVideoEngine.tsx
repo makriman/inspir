@@ -27,6 +27,33 @@ type MarketingVideoChapter = {
   text: string;
 };
 
+export type MarketingVideoCopy = {
+  ariaLabel: string;
+  playLabel: string;
+  kicker: string;
+  captionTitle: string;
+  captionText: string;
+  chaptersLabel: string;
+  transcriptLabel: string;
+  nextStepLabel: string;
+  nextStepTitle: string;
+  nextStepText: string;
+  startLearningLabel: string;
+  replayLabel: string;
+  pauseLabel: string;
+  playFilmLabel: string;
+  restartLabel: string;
+  hideChaptersLabel: string;
+  showChaptersLabel: string;
+  hideTranscriptLabel: string;
+  showTranscriptLabel: string;
+  controlsLabel: string;
+  progressLabel: string;
+  unmuteLabel: string;
+  muteLabel: string;
+  fullscreenLabel: string;
+};
+
 type VideoEngineState = {
   started: boolean;
   playing: boolean;
@@ -39,6 +66,32 @@ type VideoEngineState = {
 };
 
 const emptyVideoChapters: ReadonlyArray<MarketingVideoChapter> = [];
+const defaultVideoCopy: MarketingVideoCopy = {
+  ariaLabel: "inspir learning film",
+  playLabel: "Play inspir learning preview",
+  kicker: "Watch 31s",
+  captionTitle: "inspir in motion",
+  captionText: "Curiosity, practice, and AI that teaches.",
+  chaptersLabel: "Film chapters",
+  transcriptLabel: "Transcript",
+  nextStepLabel: "Next step",
+  nextStepTitle: "Start a live learning session.",
+  nextStepText: "Ask your first question and move straight into practice.",
+  startLearningLabel: "Start learning",
+  replayLabel: "Replay",
+  pauseLabel: "Pause film",
+  playFilmLabel: "Play film",
+  restartLabel: "Restart film",
+  hideChaptersLabel: "Hide film chapters",
+  showChaptersLabel: "Show film chapters",
+  hideTranscriptLabel: "Hide film transcript",
+  showTranscriptLabel: "Show film transcript",
+  controlsLabel: "Video controls",
+  progressLabel: "Video progress",
+  unmuteLabel: "Unmute film",
+  muteLabel: "Mute film",
+  fullscreenLabel: "Open film fullscreen",
+};
 const initialVideoEngineState: VideoEngineState = {
   started: false,
   playing: false,
@@ -65,9 +118,11 @@ function formatTime(seconds: number, { roundUp = false } = {}) {
 export function MarketingVideoEngine({
   chapters = emptyVideoChapters,
   transcript,
+  copy = defaultVideoCopy,
 }: {
   chapters?: ReadonlyArray<MarketingVideoChapter>;
   transcript?: string;
+  copy?: MarketingVideoCopy;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -163,23 +218,16 @@ export function MarketingVideoEngine({
       } ${transcriptOpen ? "is-transcript-open" : ""} ${ended ? "is-ended" : ""}`}
       aria-describedby="learning-film-caption"
     >
-      <video
+      <div
         className="marketing-video-ambient"
-        src={filmSrc}
         aria-hidden="true"
-        tabIndex={-1}
-        playsInline
-        muted
-        autoPlay
-        loop
-        preload="metadata"
       />
       <video
         ref={videoRef}
         className="marketing-video-frame"
         src={filmSrc}
         poster="/inspir-social-preview.png"
-        aria-label="inspir learning film"
+        aria-label={copy.ariaLabel}
         playsInline
         preload="metadata"
         muted={muted}
@@ -201,25 +249,25 @@ export function MarketingVideoEngine({
         type="button"
         className="marketing-video-poster"
         onClick={() => void playVideo()}
-        aria-label="Play inspir learning preview"
+        aria-label={copy.playLabel}
       >
-        <span className="marketing-video-kicker">Watch 31s</span>
+        <span className="marketing-video-kicker">{copy.kicker}</span>
         <span className="marketing-hero-video-play">
           <Play size={26} fill="currentColor" />
         </span>
         <span id="learning-film-caption" className="marketing-video-caption">
-          <strong>inspir in motion</strong>
-          <span>Curiosity, practice, and AI that teaches.</span>
+          <strong>{copy.captionTitle}</strong>
+          <span>{copy.captionText}</span>
         </span>
       </button>
       {chapters.length ? (
         <div
           id="learning-film-chapters"
           className="marketing-video-chapters"
-          aria-label="Film chapters"
+          aria-label={copy.chaptersLabel}
           hidden={!chaptersOpen}
         >
-          <span>{activeChapter?.title ?? "Film chapters"}</span>
+          <span>{activeChapter?.title ?? copy.chaptersLabel}</span>
           <div>
             {chapters.map((chapter) => (
               <button
@@ -239,10 +287,10 @@ export function MarketingVideoEngine({
         <aside
           id="learning-film-transcript"
           className="marketing-video-transcript"
-          aria-label="Film transcript"
+          aria-label={copy.transcriptLabel}
           hidden={!transcriptOpen}
         >
-          <span>Transcript</span>
+          <span>{copy.transcriptLabel}</span>
           <p>{transcript}</p>
           {chapters.length ? (
             <div>
@@ -259,31 +307,31 @@ export function MarketingVideoEngine({
       <div className="marketing-video-sheen" aria-hidden="true" />
       {ended ? (
         <div className="marketing-video-end-card">
-          <span>Next step</span>
-          <strong>Start a live learning session.</strong>
-          <p>Ask your first question and move straight into practice.</p>
+          <span>{copy.nextStepLabel}</span>
+          <strong>{copy.nextStepTitle}</strong>
+          <p>{copy.nextStepText}</p>
           <div>
             <Link href="/chat/learn-anything">
-              Start learning
+              {copy.startLearningLabel}
               <ArrowUpRight size={15} />
             </Link>
             <button type="button" onClick={restartVideo}>
-              Replay
+              {copy.replayLabel}
             </button>
           </div>
         </div>
       ) : null}
-      <div className="marketing-video-controls" aria-label="Video controls">
-        <button type="button" onClick={togglePlay} aria-label={playing ? "Pause film" : "Play film"}>
+      <div className="marketing-video-controls" aria-label={copy.controlsLabel}>
+        <button type="button" onClick={togglePlay} aria-label={playing ? copy.pauseLabel : copy.playFilmLabel}>
           {playing ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
         </button>
-        <button type="button" onClick={restartVideo} aria-label="Restart film">
+        <button type="button" onClick={restartVideo} aria-label={copy.restartLabel}>
           <RotateCcw size={17} />
         </button>
         <button
           type="button"
           onClick={() => updateVideoState({ chaptersOpen: !chaptersOpen })}
-          aria-label={chaptersOpen ? "Hide film chapters" : "Show film chapters"}
+          aria-label={chaptersOpen ? copy.hideChaptersLabel : copy.showChaptersLabel}
           aria-expanded={chaptersOpen}
           aria-controls="learning-film-chapters"
         >
@@ -293,7 +341,7 @@ export function MarketingVideoEngine({
           <button
             type="button"
             onClick={() => updateVideoState({ transcriptOpen: !transcriptOpen })}
-            aria-label={transcriptOpen ? "Hide film transcript" : "Show film transcript"}
+            aria-label={transcriptOpen ? copy.hideTranscriptLabel : copy.showTranscriptLabel}
             aria-expanded={transcriptOpen}
             aria-controls="learning-film-transcript"
           >
@@ -301,7 +349,7 @@ export function MarketingVideoEngine({
           </button>
         ) : null}
         <label className="marketing-video-progress">
-          <span className="sr-only">Video progress</span>
+          <span className="sr-only">{copy.progressLabel}</span>
           <input
             type="range"
             min="0"
@@ -310,7 +358,7 @@ export function MarketingVideoEngine({
             value={progress}
             onChange={(event) => seek(event.currentTarget.value)}
             style={progressStyle}
-            aria-label="Video progress"
+            aria-label={copy.progressLabel}
           />
         </label>
         <span className="marketing-video-time">
@@ -318,10 +366,10 @@ export function MarketingVideoEngine({
           <span>/</span>
           {formatTime(duration, { roundUp: true })}
         </span>
-        <button type="button" onClick={toggleMute} aria-label={muted ? "Unmute film" : "Mute film"}>
+        <button type="button" onClick={toggleMute} aria-label={muted ? copy.unmuteLabel : copy.muteLabel}>
           {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>
-        <button type="button" onClick={() => void openFullscreen()} aria-label="Open film fullscreen">
+        <button type="button" onClick={() => void openFullscreen()} aria-label={copy.fullscreenLabel}>
           <Maximize2 size={17} />
         </button>
       </div>

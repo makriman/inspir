@@ -1,10 +1,12 @@
 import { defaultLanguage } from "@/lib/content/languages";
 import { getAppTranslationSource } from "@/lib/db/queries";
 import {
-  marketingShellTranslationNamespace,
   siteTranslationNamespace,
-  staticSiteTranslationNamespaces,
 } from "@/lib/i18n/site-source-constants";
+import {
+  getPotentialSiteTranslationNamespacesForPath,
+  isPotentialSiteTranslationNamespace,
+} from "@/lib/i18n/site-path-namespaces";
 import type { TranslationBundle, TranslationSource } from "@/lib/i18n/translation-types";
 
 type CachedRuntimeSource = {
@@ -16,38 +18,11 @@ const runtimeSourceCacheTtlMs = 5 * 60 * 1000;
 const runtimeSourceCache = new Map<string, CachedRuntimeSource>();
 
 export function isKnownRuntimeSiteTranslationNamespace(namespace: string) {
-  return (
-    namespace === siteTranslationNamespace ||
-    staticSiteTranslationNamespaces.includes(namespace as (typeof staticSiteTranslationNamespaces)[number]) ||
-    /^blog:[a-z0-9]+(?:-[a-z0-9]+)*$/.test(namespace)
-  );
+  return isPotentialSiteTranslationNamespace(namespace);
 }
 
 export function getRuntimeSiteTranslationNamespacesForPath(pathname: string) {
-  const path = normalizePath(pathname);
-  const firstSegment = path === "/" ? "" : path.split("/").filter(Boolean)[0] ?? "";
-  if (firstSegment === "chat") return [];
-
-  const namespaces = new Set<string>([marketingShellTranslationNamespace]);
-
-  if (path === "/") namespaces.add("route:home");
-  else if (firstSegment === "privacy") namespaces.add("legal:privacy");
-  else if (firstSegment === "terms") namespaces.add("legal:terms");
-  else if (firstSegment === "tnc") namespaces.add("legal:tnc");
-  else if (firstSegment === "blog") {
-    namespaces.add("route:blog");
-    const [, maybeSlug] = path.match(/^\/blog\/([^/]+)$/) ?? [];
-    if (maybeSlug && maybeSlug !== "category") namespaces.add(`blog:${maybeSlug}`);
-  } else {
-    const routeNamespace = `route:${firstSegment || "home"}`;
-    if (staticSiteTranslationNamespaces.includes(routeNamespace as (typeof staticSiteTranslationNamespaces)[number])) {
-      namespaces.add(routeNamespace);
-    } else {
-      namespaces.add("route:home");
-    }
-  }
-
-  return Array.from(namespaces).filter((namespace) => isKnownRuntimeSiteTranslationNamespace(namespace));
+  return getPotentialSiteTranslationNamespacesForPath(pathname);
 }
 
 export async function getRuntimeSiteTranslationSource(namespace = siteTranslationNamespace) {
@@ -102,11 +77,4 @@ function buildRuntimeSiteTranslationSystemInstruction() {
     "Legal translations must be clear and conservative; do not add legal obligations or remove limitations.",
     "Use natural educational product copy in the target language.",
   ].join("\n");
-}
-
-function normalizePath(pathname: string) {
-  if (!pathname) return "/";
-  const withoutQuery = pathname.split("?")[0]?.split("#")[0] || "/";
-  if (withoutQuery === "/") return withoutQuery;
-  return withoutQuery.replace(/\/+$/, "") || "/";
 }

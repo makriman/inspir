@@ -42,6 +42,9 @@ export function generateStaticParams() {
   return getBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPost(slug);

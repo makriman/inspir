@@ -335,8 +335,8 @@ export default function MediaPage() {
       <section className="marketing-cta-band">
         <h2>For press and school partnership notes.</h2>
         <div className="marketing-inline-actions">
-          <Link href="/mission" className="marketing-primary-cta is-dark">
-            Read mission
+          <Link href="/chat/learn-anything" className="marketing-primary-cta is-dark">
+            Start learning
             <Sparkles size={18} />
           </Link>
           <ArrowLink href="mailto:schools@inspirlearning.com" external>

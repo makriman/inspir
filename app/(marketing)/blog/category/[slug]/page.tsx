@@ -30,6 +30,9 @@ export function generateStaticParams() {
   return getBlogCategories().map((category) => ({ slug: category.slug }));
 }
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: BlogCategoryPageProps): Promise<Metadata> {
   const { slug } = await params;
   const category = getBlogCategory(slug);

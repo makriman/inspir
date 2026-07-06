@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import "katex/dist/katex.min.css";
 import "../globals.css";
 import { Suspense } from "react";
 import { headers } from "next/headers";
@@ -10,6 +9,7 @@ import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { MarketingServerLocalizer } from "@/components/i18n/MarketingServerLocalizer";
 import { getRequestLanguageConfig, getRequestPathname } from "@/lib/i18n/request-locale";
 import { localizedMarketingMetadata, localizeMarketingStructuredData } from "@/lib/i18n/metadata";
+import { defaultLanguage } from "@/lib/content/languages";
 import {
   absoluteUrl,
   siteDescription,
@@ -30,8 +30,6 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
-
-export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const localized = await localizedMarketingMetadata({
@@ -97,6 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
       apple: [{ url: "/inspir-app-icon-180.png", sizes: "180x180", type: "image/png" }],
     },
     manifest: "/manifest.webmanifest",
+    verification: siteVerificationMetadata(),
     other: {
       "ai-content-index": absoluteUrl("/ai-content-index.json"),
       "llms-txt": absoluteUrl("/llms.txt"),
@@ -130,8 +129,19 @@ export default async function RootLayout({
         </Suspense>
         <JsonLdScripts items={localizedRootJsonLd} nonce={nonce} />
         <MarketingServerLocalizer>{children}</MarketingServerLocalizer>
-        <PwaInstallPrompt />
+        <PwaInstallPrompt enabled={languageConfig.language === defaultLanguage} />
       </body>
     </html>
   );
+}
+
+function siteVerificationMetadata(): Metadata["verification"] | undefined {
+  const google = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+  const bing = process.env.BING_SITE_VERIFICATION?.trim();
+  if (!google && !bing) return undefined;
+
+  return {
+    ...(google ? { google } : {}),
+    ...(bing ? { other: { "msvalidate.01": bing } } : {}),
+  };
 }

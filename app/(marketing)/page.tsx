@@ -395,18 +395,7 @@ function TrustSignalsSection({ t }: { t: LandingTranslator }) {
 function MissionStorySection({ t }: { t: LandingTranslator }) {
   return (
     <section className="marketing-story-split">
-      <div className="marketing-story-media" aria-hidden="true">
-        <video
-          aria-label="inspir learning film preview"
-          src="/media/inspir-learning-film.mp4"
-          poster="/inspir-social-preview.png"
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="metadata"
-        />
-      </div>
+      <div className="marketing-story-media" aria-hidden="true" />
       <div className="marketing-story-copy">
         <span>{t("Mission first")}</span>
         <h2>{t("Not another answer box. A place to learn.")}</h2>
@@ -625,7 +614,7 @@ function ContentEngineSection({ posts, t }: { posts: LandingPost[]; t: LandingTr
       </div>
       <div className="marketing-inline-actions">
         <ArrowLink href="/blog">{t("Explore the guide library")}</ArrowLink>
-        <ArrowLink href="/ai-content-index.json">{t("Open the content index")}</ArrowLink>
+        <ArrowLink href="/ai-learning-map">{t("Open the learning map")}</ArrowLink>
       </div>
     </section>
   );

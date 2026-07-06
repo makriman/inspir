@@ -22,6 +22,11 @@ export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const nonce = createNonce();
   const csp = buildContentSecurityPolicy(nonce);
+  const canonicalUrl = canonicalOriginRedirectUrl(request);
+  if (canonicalUrl) {
+    return applySecurityHeaders(NextResponse.redirect(canonicalUrl, 308), csp);
+  }
+
   const localizedPath = getLocalizedPathInfo(pathname);
   const effectivePathname = localizedPath.pathnameWithoutLocale;
   const referrerLanguage = getReferrerLocaleLanguage(request.headers.get("referer"));
@@ -109,6 +114,23 @@ function shouldLocaleRedirectPath(pathname: string) {
   if (pathname.startsWith("/admin")) return false;
   if (pathname.startsWith("/onboarding")) return false;
   return true;
+}
+
+function canonicalOriginRedirectUrl(request: NextRequest) {
+  const url = request.nextUrl.clone();
+  const hostname = url.hostname.toLowerCase();
+  const isInspirHost = hostname === "inspirlearning.com" || hostname === "www.inspirlearning.com";
+  const needsHttps = isInspirHost && url.protocol === "http:";
+  const needsApex = hostname === "www.inspirlearning.com";
+
+  if (!needsHttps && !needsApex) return null;
+
+  url.protocol = "https:";
+  if (needsApex) {
+    url.hostname = "inspirlearning.com";
+    url.port = "";
+  }
+  return url;
 }
 
 function hasBetterAuthSessionCookie(request: NextRequest) {

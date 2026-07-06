@@ -223,7 +223,10 @@ export default function AboutPage() {
       <section className="marketing-cta-band">
         <h2>Explore the public learning surface.</h2>
         <div className="marketing-inline-actions">
-          <ArrowLink href="/topics">Browse every mode</ArrowLink>
+          <Link href="/chat/learn-anything" className="marketing-primary-cta is-dark">
+            Start learning
+            <Sparkles size={18} />
+          </Link>
           <ArrowLink href="/blog">Read the learning guides</ArrowLink>
         </div>
       </section>

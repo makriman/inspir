@@ -15,9 +15,10 @@ test("marketing dynamic rendering is documented as localization-sensitive", () =
   const layout = read("app/(marketing)/layout.tsx");
   const docs = read("docs/runtime-routes.md");
 
-  assert.match(layout, /export const dynamic = "force-dynamic"/);
-  assert.match(docs, /Marketing HTML under `app\/\(marketing\)` is intentionally dynamic today/);
-  assert.match(docs, /preserved DB-backed translations/);
+  assert.doesNotMatch(layout, /export const dynamic = "force-dynamic"/);
+  assert.match(docs, /Marketing HTML under `app\/\(marketing\)` is localization-sensitive/);
+  assert.match(docs, /must not declare segment-wide `force-dynamic`/);
+  assert.match(docs, /DB-backed translations/);
 });
 
 test("static SEO and AI discovery routes stay explicitly static or cached", () => {

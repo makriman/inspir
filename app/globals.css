@@ -12085,7 +12085,9 @@ a {
   width: 124%;
   height: 124%;
   border: 0;
-  object-fit: cover;
+  background:
+    linear-gradient(180deg, rgb(23 23 25 / 0.08), rgb(23 23 25 / 0.38)),
+    url("/inspir-social-preview.png") center / cover no-repeat;
   opacity: 0.72;
   filter: saturate(0.92) contrast(0.96) blur(10px);
   transform: scale(1.04);
@@ -12691,7 +12693,10 @@ a {
   position: relative;
   overflow: hidden;
   border-radius: 8px;
-  background: #111;
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(135deg, rgb(23 23 25 / 0.08), rgb(23 23 25 / 0.38)),
+    url("/inspir-social-preview.png") center / cover no-repeat;
   box-shadow: 0 24px 70px rgb(23 23 25 / 0.1);
 }
 
@@ -15283,6 +15288,11 @@ a {
   align-items: end;
 }
 
+.marketing-page-visual.is-map-only {
+  grid-template-columns: minmax(0, min(420px, 100%));
+  justify-content: center;
+}
+
 .marketing-page-visual figure {
   position: relative;
   width: 100%;
@@ -15313,6 +15323,10 @@ a {
   background:
     radial-gradient(circle at 28% 28%, rgb(255 56 92 / 0.2), transparent 30%),
     linear-gradient(145deg, #fffdf8 0%, #edf1f4 100%);
+}
+
+.marketing-page-visual.is-map-only .is-map {
+  aspect-ratio: 16 / 11;
 }
 
 .marketing-page-map {
@@ -15397,12 +15411,14 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .marketing-page-visual .is-film {
-    aspect-ratio: 16 / 9;
+  .marketing-page-visual.has-film .is-film {
+    display: none;
   }
 
-  .marketing-page-visual .is-map {
-    display: none;
+  .marketing-page-visual.has-film .is-map,
+  .marketing-page-visual.is-map-only .is-map {
+    display: block;
+    aspect-ratio: 16 / 9;
   }
 }
 

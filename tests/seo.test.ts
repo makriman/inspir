@@ -65,7 +65,7 @@ import {
   getBlogPillarClusters,
 } from "../lib/content/blog-directory";
 import { categoryHasIndexedPosts, indexedBlogPosts, isIndexedBlogPost } from "../lib/content/blog-seo-policy";
-import { supportedLanguages } from "../lib/content/languages";
+import { languageConfigs, supportedLanguages } from "../lib/content/languages";
 import {
   comparisonHubFaqs,
   comparisonHubSearchIntents,
@@ -214,11 +214,13 @@ test("sitemap includes SEO pages but excludes chat app surfaces", () => {
   assert.ok(homeEntry?.videos?.some((video) => video.thumbnail_loc === absoluteUrl(homepageFilm.thumbnailUrl)));
   assert.equal(homeEntry?.videos?.[0]?.duration, 31);
   assert.equal(homeEntry?.videos?.[0]?.requires_subscription, "no");
-  assert.equal(homeEntry?.alternates?.languages?.["en-US"], absoluteUrl("/"));
-  assert.equal(homeEntry?.alternates?.languages?.es, absoluteUrl("/es"));
-  assert.equal(homeEntry?.alternates?.languages?.ar, absoluteUrl("/ar"));
-  assert.equal(homeEntry?.alternates?.languages?.hy, absoluteUrl("/hy"));
-  assert.equal(homeEntry?.alternates?.languages?.["x-default"], absoluteUrl("/"));
+  const homeAlternates = new Map(Object.entries(homeEntry?.alternates?.languages ?? {}));
+  assert.equal(homeAlternates.get("en-US"), absoluteUrl("/"));
+  for (const language of sitemapLanguages()) {
+    const config = languageConfigs[language];
+    assert.equal(homeAlternates.get(config.locale), absoluteUrl(config.prefix ? `/${config.prefix}` : "/"));
+  }
+  assert.equal(homeAlternates.get("x-default"), absoluteUrl("/"));
   assert.equal(urls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(urls.some((url) => url.includes("/chat")), false);
   assert.equal(urls.some((url) => /\/chat\/[0-9a-f-]{36}$/i.test(url)), false);
@@ -228,34 +230,35 @@ test("sitemap index advertises every source-current language sitemap", () => {
   const entries = sitemapIndexEntries();
   const xml = buildSitemapIndexXml();
 
-  assert.deepEqual([...sitemapLanguages()], [...supportedLanguages]);
+  assert.ok(sitemapLanguages().includes("English"));
+  assert.equal(sitemapLanguages().every((language) => supportedLanguages.includes(language)), true);
   assert.equal(entries.length, sitemapLanguages().length);
   assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
   assert.ok(xml.includes('<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>'));
   assert.ok(xml.includes('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'));
-  assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("English"))}</loc>`));
-  assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("Spanish"))}</loc>`));
-  assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("Arabic"))}</loc>`));
-  assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage("Armenian"))}</loc>`));
+  for (const language of sitemapLanguages()) {
+    assert.ok(xml.includes(`<loc>${absoluteUrl(sitemapFilePathForLanguage(language))}</loc>`));
+  }
   assert.ok(xml.endsWith("</sitemapindex>\n"));
   assert.equal(xml.includes("<urlset"), false);
   assert.equal(languageFromSitemapFileSlug("en-US.xml"), "English");
-  assert.equal(languageFromSitemapFileSlug("es.xml"), "Spanish");
-  assert.equal(languageFromSitemapFileSlug("ar"), "Arabic");
-  assert.equal(languageFromSitemapFileSlug("hy.xml"), "Armenian");
+  assert.equal(languageFromSitemapFileSlug("es.xml"), sitemapLanguages().includes("Spanish") ? "Spanish" : null);
+  assert.equal(languageFromSitemapFileSlug("ar"), sitemapLanguages().includes("Arabic") ? "Arabic" : null);
+  assert.equal(languageFromSitemapFileSlug("hy.xml"), sitemapLanguages().includes("Armenian") ? "Armenian" : null);
   assert.equal(languageFromSitemapFileSlug("made-up.xml"), null);
   assert.ok(xml.length < 1_000_000);
 });
 
 test("language sitemap helpers emit localized complete locale clusters", () => {
-  const post = getBlogPosts()[0];
-  assert.ok(post);
+  const englishUrls = sitemap("English").map((entry) => entry.url);
+  assert.ok(englishUrls.includes(absoluteUrl("/")));
 
   const spanishUrls = sitemap("Spanish").map((entry) => entry.url);
-  assert.ok(spanishUrls.includes(absoluteUrl("/es")));
-  assert.ok(spanishUrls.includes(absoluteUrl("/es/topics")));
-  assert.ok(spanishUrls.includes(absoluteUrl(`/es/blog/${post.slug}`)));
-  assert.ok(spanishUrls.includes(absoluteUrl(`/es/blog/category/${getBlogCategories()[0].slug}`)));
+  if (sitemapLanguages().includes("Spanish")) {
+    assert.ok(spanishUrls.includes(absoluteUrl("/es")));
+  } else {
+    assert.deepEqual(spanishUrls, englishUrls);
+  }
   assert.equal(spanishUrls.includes(absoluteUrl(`/es${topicPath(topicSeeds[0].slug)}`)), false);
   assert.equal(spanishUrls.some((url) => url.includes("/admin") || url.includes("/api/")), false);
   assert.equal(spanishUrls.some((url) => url.includes("/chat")), false);
@@ -263,19 +266,27 @@ test("language sitemap helpers emit localized complete locale clusters", () => {
 
   const spanishHome = sitemap("Spanish").find((entry) => entry.url === absoluteUrl("/es"));
   assert.equal(spanishHome?.alternates?.languages?.["en-US"], absoluteUrl("/"));
-  assert.equal(spanishHome?.alternates?.languages?.es, absoluteUrl("/es"));
-  assert.equal(spanishHome?.alternates?.languages?.ar, absoluteUrl("/ar"));
-  assert.equal(spanishHome?.alternates?.languages?.hy, absoluteUrl("/hy"));
-  assert.equal(spanishHome?.alternates?.languages?.["x-default"], absoluteUrl("/"));
+  if (sitemapLanguages().includes("Spanish")) {
+    assert.equal(spanishHome?.alternates?.languages?.es, absoluteUrl("/es"));
+    assert.equal(spanishHome?.alternates?.languages?.["x-default"], absoluteUrl("/"));
+  }
 
   const spanishXml = buildLanguageSitemapXml("Spanish");
   const arabicXml = buildLanguageSitemapXml("Arabic");
-  assert.ok(spanishXml.includes(`<loc>${absoluteUrl("/es")}</loc>`));
-  assert.ok(spanishXml.includes(`hreflang="es"`));
+  if (sitemapLanguages().includes("Spanish")) {
+    assert.ok(spanishXml.includes(`<loc>${absoluteUrl("/es")}</loc>`));
+    assert.ok(spanishXml.includes(`hreflang="es"`));
+  } else {
+    assert.equal(spanishXml.includes(`<loc>${absoluteUrl("/es")}</loc>`), false);
+  }
   assert.ok(spanishXml.includes(`hreflang="x-default"`));
-  assert.ok(arabicXml.includes(`<loc>${absoluteUrl("/ar")}</loc>`));
-  assert.ok(arabicXml.includes(`href="${absoluteUrl("/ar")}"`));
-  assert.ok(arabicXml.includes(`hreflang="ar"`));
+  if (sitemapLanguages().includes("Arabic")) {
+    assert.ok(arabicXml.includes(`<loc>${absoluteUrl("/ar")}</loc>`));
+    assert.ok(arabicXml.includes(`href="${absoluteUrl("/ar")}"`));
+    assert.ok(arabicXml.includes(`hreflang="ar"`));
+  } else {
+    assert.equal(arabicXml.includes(`<loc>${absoluteUrl("/ar")}</loc>`), false);
+  }
   assert.ok(spanishXml.length < 20_000_000);
   assert.ok(arabicXml.length < 20_000_000);
 
