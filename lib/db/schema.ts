@@ -24,7 +24,6 @@ export const users = sqliteTable("users", {
   emailVerified: timestampMs("email_verified"),
   image: text("image"),
   score: integer("score").notNull().default(0),
-  profilePictureUrl: text("profile_picture_url"),
   profileImageMime: text("profile_image_mime"),
   profileImageHash: text("profile_image_hash"),
   profileImageR2Key: text("profile_image_r2_key"),
@@ -33,7 +32,6 @@ export const users = sqliteTable("users", {
   preferredLanguage: text("preferred_language").notNull().default("English"),
   dateOfBirth: text("date_of_birth"),
   dateOfBirthSource: text("date_of_birth_source"),
-  profilePictureDownloadedAt: timestampMs("profile_picture_downloaded_at"),
   createdAt: timestampMsNow("created_at"),
   updatedAt: timestampMsNow("updated_at"),
 });

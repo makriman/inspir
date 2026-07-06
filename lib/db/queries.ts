@@ -226,13 +226,11 @@ export async function updateUserProfilePhoto(
   const [user] = await db
     .update(users)
     .set({
-      profilePictureUrl: null,
       profileImageMime: input.profileImageMime,
       profileImageHash: input.profileImageHash,
       profileImageR2Key: input.profileImageR2Key,
       profileImageR2Etag: input.profileImageR2Etag ?? null,
       profileImageSize: input.profileImageSize,
-      profilePictureDownloadedAt: new Date(),
       updatedAt: new Date(),
     })
     .where(eq(users.id, userId))
@@ -246,13 +244,11 @@ export async function clearUserProfilePhoto(userId: string) {
   const [user] = await db
     .update(users)
     .set({
-      profilePictureUrl: null,
       profileImageMime: null,
       profileImageHash: null,
       profileImageR2Key: null,
       profileImageR2Etag: null,
       profileImageSize: null,
-      profilePictureDownloadedAt: null,
       updatedAt: new Date(),
     })
     .where(eq(users.id, userId))

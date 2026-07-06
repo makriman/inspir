@@ -38,8 +38,6 @@ export async function refreshProfilePhoto(userId: string | undefined, imageUrl: 
         .update(users)
         .set({
           image: imageUrl,
-          profilePictureUrl: imageUrl,
-          profilePictureDownloadedAt: new Date(),
           updatedAt: new Date(),
         })
         .where(eq(users.id, userId));
@@ -58,13 +56,11 @@ export async function refreshProfilePhoto(userId: string | undefined, imageUrl: 
         .update(users)
         .set({
           image: imageUrl,
-          profilePictureUrl: imageUrl,
           profileImageMime: mimeType,
           profileImageHash: hash,
           profileImageR2Key: object.key,
           profileImageR2Etag: object.etag,
           profileImageSize: object.size,
-          profilePictureDownloadedAt: new Date(),
           updatedAt: new Date(),
         })
         .where(eq(users.id, userId));
