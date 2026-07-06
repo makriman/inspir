@@ -2,17 +2,17 @@
 
 This file records recommendations from the external review that are not direct code changes in the current hardening batch.
 
-## Auth.js v5
+## Authentication Runtime
 
-Status: defer until stable release.
+Status: migrated to Better Auth.
 
-The review recommended moving from `next-auth` v4 because the reviewed snapshot believed v4 did not support Next 16. Re-checked on 2026-07-06: `next-auth@4.24.14` is still the `latest` dist tag, advertises peer support for Next 16 and React 19, and the v5 line is still published under the `beta` dist tag. The experimental `@auth/nextjs` package is not a stable replacement path either. Production auth should not move to a beta or experimental package as part of a broad hardening pass.
+The app now uses Better Auth with Google OAuth, D1-backed session rows, and Cloudflare Worker runtime configuration. The migration keeps the existing `users`, `accounts`, `sessions`, and `verification_tokens` table names so user IDs and app data survive the auth-library change.
 
-Before revisiting:
+Follow-up discipline:
 
 - Keep the auth route, middleware, admin, private chat, and session-auth E2E tests passing.
-- Re-check package metadata and official Auth.js migration notes.
-- Treat the migration as its own deployable project with production Google sign-in and session regression tests.
+- Re-check Better Auth release notes before future auth upgrades.
+- Treat any future auth-table schema change as its own deployable project with production Google sign-in and session regression tests.
 
 ## Render-Time I18n
 

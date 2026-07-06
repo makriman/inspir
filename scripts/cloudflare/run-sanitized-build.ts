@@ -246,6 +246,7 @@ function writeLocalPreviewWranglerConfig() {
     main?: string;
     assets?: { directory?: string };
     secrets?: { required?: string[] };
+    vars?: Record<string, unknown>;
   };
   if (typeof config.main === "string") config.main = path.resolve(cwd, config.main);
   if (typeof config.assets?.directory === "string") {
@@ -260,6 +261,13 @@ function writeLocalPreviewWranglerConfig() {
   config.secrets = {
     ...config.secrets,
     required: [...requiredSecrets],
+  };
+  const localPreviewUrl = process.env.PLAYWRIGHT_BASE_URL?.trim() || "http://localhost:8787";
+  config.vars = {
+    ...config.vars,
+    APP_URL: localPreviewUrl,
+    AUTH_URL: localPreviewUrl,
+    BETTER_AUTH_URL: localPreviewUrl,
   };
   const previewConfigPath = ".wrangler.preview.local.jsonc";
   fs.writeFileSync(path.join(cwd, previewConfigPath), `${JSON.stringify(config, null, 2)}\n`, { mode: 0o600 });

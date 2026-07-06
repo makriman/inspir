@@ -10,7 +10,8 @@ declare global {
     PROFILE_IMAGES_R2_BUCKET: R2Bucket;
     WORKER_SELF_REFERENCE: Fetcher;
     APP_URL: string;
-    NEXTAUTH_URL: string;
+    AUTH_URL: string;
+    BETTER_AUTH_URL: string;
     CLOUDFLARE_AI_GATEWAY_BASE_URL: string;
     CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS: string;
     OPENAI_MODEL: string;
@@ -31,7 +32,6 @@ declare global {
     OPENAI_API_KEY: string;
     CLOUDFLARE_AI_GATEWAY_TOKEN: string;
     AUTH_SECRET: string;
-    NEXTAUTH_SECRET: string;
     AUTH_GOOGLE_ID: string;
     AUTH_GOOGLE_SECRET: string;
     ADMIN_EMAILS: string;

@@ -69,7 +69,6 @@ const REQUIRED_SECRET_KEYS = [
   "OPENAI_API_KEY",
   "CLOUDFLARE_AI_GATEWAY_TOKEN",
   "AUTH_SECRET",
-  "NEXTAUTH_SECRET",
   "AUTH_GOOGLE_ID",
   "AUTH_GOOGLE_SECRET",
   "ADMIN_EMAILS",
@@ -78,7 +77,8 @@ const REQUIRED_SECRET_KEYS = [
 
 const REQUIRED_WRANGLER_VARS = [
   "APP_URL",
-  "NEXTAUTH_URL",
+  "AUTH_URL",
+  "BETTER_AUTH_URL",
   "CLOUDFLARE_AI_GATEWAY_BASE_URL",
   "CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS",
   "OPENAI_MODEL",
@@ -104,7 +104,6 @@ const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
   "OPENAI_API_KEY",
   "CLOUDFLARE_AI_GATEWAY_TOKEN",
   "AUTH_SECRET",
-  "NEXTAUTH_SECRET",
   "AUTH_GOOGLE_SECRET",
   "CRON_SECRET",
 ];
@@ -315,7 +314,10 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     serviceOk: services?.service === "inspirlearning",
     cronOk: Array.isArray(cron) && cron.includes("0 3 * * *"),
     routesOk: routes.includes("inspirlearning.com") && routes.includes("www.inspirlearning.com"),
-    appUrlOk: vars.APP_URL === "https://inspirlearning.com" && vars.NEXTAUTH_URL === "https://inspirlearning.com",
+    appUrlOk:
+      vars.APP_URL === "https://inspirlearning.com" &&
+      vars.AUTH_URL === "https://inspirlearning.com" &&
+      vars.BETTER_AUTH_URL === "https://inspirlearning.com",
     workersDevOk: config.workers_dev === false,
     previewUrlsOk: config.preview_urls === false,
     observabilityOk:

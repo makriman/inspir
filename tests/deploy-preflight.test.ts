@@ -283,7 +283,6 @@ function wranglerConfig() {
         "OPENAI_API_KEY",
         "CLOUDFLARE_AI_GATEWAY_TOKEN",
         "AUTH_SECRET",
-        "NEXTAUTH_SECRET",
         "AUTH_GOOGLE_ID",
         "AUTH_GOOGLE_SECRET",
         "ADMIN_EMAILS",
@@ -292,7 +291,8 @@ function wranglerConfig() {
     },
     vars: {
       APP_URL: "https://inspirlearning.com",
-      NEXTAUTH_URL: "https://inspirlearning.com",
+      AUTH_URL: "https://inspirlearning.com",
+      BETTER_AUTH_URL: "https://inspirlearning.com",
       CLOUDFLARE_AI_GATEWAY_BASE_URL: "https://gateway.ai.cloudflare.com/v1/account/inspir/openai",
       CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS: "inspir",
       OPENAI_MODEL: "gpt-5",

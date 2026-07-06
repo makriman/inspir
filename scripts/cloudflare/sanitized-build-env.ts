@@ -21,10 +21,10 @@ export const CURRENT_RUNTIME_SECRET_ENV_KEYS = [
   "AUTH_GOOGLE_ID",
   "AUTH_GOOGLE_SECRET",
   "AUTH_SECRET",
+  "BETTER_AUTH_SECRET",
   "CRON_SECRET",
   "GOOGLE_CLIENT_ID",
   "GOOGLE_CLIENT_SECRET",
-  "NEXTAUTH_SECRET",
   "CLOUDFLARE_AI_GATEWAY_TOKEN",
   "OPENAI_API_KEY",
 ] as const;
@@ -54,7 +54,6 @@ const LOCAL_PREVIEW_RUNTIME_ENV = {
   AUTH_GOOGLE_SECRET: "local-preview-google-client-secret",
   AUTH_SECRET: "local-preview-auth-secret",
   CRON_SECRET: "local-preview-cron-secret",
-  NEXTAUTH_SECRET: "local-preview-auth-secret",
 } as const;
 
 const OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS = ["E2E_TEST_AUTH_SECRET", "E2E_TEST_AUTH_EMAIL"] as const;
@@ -123,8 +122,9 @@ export function localPreviewRuntimeEnv() {
   const localPreviewUrl = process.env.PLAYWRIGHT_BASE_URL?.trim() || "http://localhost:8787";
   const env: Record<string, string> = {
     ...LOCAL_PREVIEW_RUNTIME_ENV,
+    APP_URL: localPreviewUrl,
     AUTH_URL: localPreviewUrl,
-    NEXTAUTH_URL: localPreviewUrl,
+    BETTER_AUTH_URL: localPreviewUrl,
   };
   for (const key of OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS) {
     const value = process.env[key]?.trim();

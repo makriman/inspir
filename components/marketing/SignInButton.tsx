@@ -1,23 +1,20 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { createAuthClient } from "better-auth/react";
 
 async function startGoogleSignIn(callbackUrl = "/chat") {
-  const response = await fetch("/api/auth/csrf");
-  const { csrfToken } = (await response.json()) as { csrfToken: string };
+  if (typeof window === "undefined") return;
+
   const nextUrl = callbackUrl || "/chat";
-  const form = document.createElement("form");
-  form.method = "post";
-  form.action = `/api/auth/signin/google?callbackUrl=${encodeURIComponent(nextUrl)}`;
+  const authClient = createAuthClient({
+    baseURL: new URL("/api/auth", window.location.origin).toString(),
+  });
 
-  const input = document.createElement("input");
-  input.type = "hidden";
-  input.name = "csrfToken";
-  input.value = csrfToken;
-  form.appendChild(input);
-
-  document.body.appendChild(form);
-  form.submit();
+  await authClient.signIn.social({
+    provider: "google",
+    callbackURL: nextUrl,
+  });
 }
 
 export function GoogleContinueButton({

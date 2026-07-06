@@ -334,18 +334,14 @@ export function ProfilePanel({
 }
 
 async function signOutToHome() {
+  if (typeof window === "undefined") return;
+
   try {
-    const csrfResponse = await fetch("/api/auth/csrf");
-    const csrf = (await csrfResponse.json().catch(() => null)) as { csrfToken?: string } | null;
-    const body = new URLSearchParams({
-      callbackUrl: "/",
-      json: "true",
-    });
-    if (csrf?.csrfToken) body.set("csrfToken", csrf.csrfToken);
-    await fetch("/api/auth/signout", {
+    await fetch("/api/logout", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body,
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
     });
   } finally {
     window.location.assign("/");

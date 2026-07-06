@@ -53,7 +53,16 @@ function serializeUser(user: Awaited<ReturnType<typeof getUserProfileById>> | Aw
     preferredLanguage: user.preferredLanguage,
     dateOfBirth: user.dateOfBirth,
     createdAt: user.createdAt,
-    profileImageHash: user.profileImageHash,
+    profileImageHash: hasUsableProfilePhoto(user) ? user.profileImageHash : null,
     age: calculateAge(user.dateOfBirth),
   };
+}
+
+function hasUsableProfilePhoto(user: {
+  profileImageHash?: string | null;
+  profileImageR2Key?: string | null;
+  profileImageMime?: string | null;
+}) {
+  if (!("profileImageR2Key" in user) && !("profileImageMime" in user)) return Boolean(user.profileImageHash);
+  return Boolean(user.profileImageHash && user.profileImageR2Key && user.profileImageMime);
 }

@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { getServerSession } from "next-auth";
 import { eq } from "drizzle-orm";
-import { authOptions } from "@/lib/auth/config";
 import { isAdminEmail } from "@/lib/auth/admin";
+import { requireSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
 import { topics } from "@/lib/db/schema";
 import { slugify } from "@/lib/utils/slug";
@@ -21,7 +20,7 @@ const topicSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  const session = await getServerSession(authOptions);
+  const session = await requireSession();
   if (!isAdminEmail(session?.user?.email)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 import { ChatClient } from "@/components/chat/ChatClient";
 import { sanitizeActivityRun } from "@/lib/activities/quiz";
-import { authOptions } from "@/lib/auth/config";
+import { requireSession } from "@/lib/auth/session";
 import { seededTopics, topicFromSeed } from "@/lib/content/seeded-topics";
 import { topicSeeds } from "@/lib/content/topics";
 import { isUuidPathSegment, resolveTopicSlug } from "@/lib/content/topic-routing";
@@ -67,12 +66,20 @@ function translateMainAppText(text: string, bundle: MainAppTranslationBundle) {
 }
 
 async function withPublicTopicTimeout<T>(promise: Promise<T>) {
-  return Promise.race([
-    promise,
-    new Promise<T>((_, reject) => {
-      setTimeout(() => reject(new Error("Public topic database lookup timed out")), publicTopicDbTimeoutMs);
-    }),
-  ]);
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise<T>((_, reject) => {
+        timeout = setTimeout(
+          () => reject(new Error("Public topic database lookup timed out")),
+          publicTopicDbTimeoutMs,
+        );
+      }),
+    ]);
+  } finally {
+    if (timeout) clearTimeout(timeout);
+  }
 }
 
 export async function generateMetadata({ params }: ChatRoutePageProps): Promise<Metadata> {
@@ -145,7 +152,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     const seedTopic = findSeedTopic(topicSlug);
     if (!seedTopic) notFound();
 
-    const session = await getServerSession(authOptions);
+    const session = await requireSession();
     const seedFallbackTopics = seededTopics().map(toPublicTopic);
     let topics = seedFallbackTopics;
     let user = null;
@@ -205,8 +212,8 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
 
   if (!isUuidPathSegment(chatId)) notFound();
 
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.id) redirect(localizePath("/", await requestLanguagePromise));
+  const session = await requireSession();
+  if (!session) redirect(localizePath("/", await requestLanguagePromise));
 
   const owned = await getOwnedChat(chatId, session.user.id);
   if (!owned) notFound();

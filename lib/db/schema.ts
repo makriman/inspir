@@ -21,7 +21,8 @@ export const users = sqliteTable("users", {
   id: uuidText("id").primaryKey(),
   name: text("name"),
   email: text("email").notNull().unique(),
-  emailVerified: timestampMs("email_verified"),
+  emailVerified: booleanInt("email_verified").notNull().default(false),
+  emailVerifiedAt: timestampMs("email_verified_at"),
   image: text("image"),
   score: integer("score").notNull().default(0),
   profileImageMime: text("profile_image_mime"),
@@ -39,6 +40,7 @@ export const users = sqliteTable("users", {
 export const accounts = sqliteTable(
   "accounts",
   {
+    id: uuidText("id"),
     userId: text("user_id")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
@@ -48,34 +50,52 @@ export const accounts = sqliteTable(
     refresh_token: text("refresh_token"),
     access_token: text("access_token"),
     expires_at: integer("expires_at"),
+    accessTokenExpiresAt: timestampMs("access_token_expires_at"),
+    refreshTokenExpiresAt: timestampMs("refresh_token_expires_at"),
     token_type: text("token_type"),
     scope: text("scope"),
     id_token: text("id_token"),
     session_state: text("session_state"),
+    password: text("password"),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.provider, table.providerAccountId] }),
+    idIdx: uniqueIndex("accounts_id_uidx").on(table.id),
     userIdx: index("accounts_user_id_idx").on(table.userId),
   }),
 );
 
 export const sessions = sqliteTable("sessions", {
+  id: uuidText("id"),
   sessionToken: text("session_token").primaryKey(),
   userId: text("user_id")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
   expires: timestampMs("expires").notNull(),
-});
+  createdAt: timestampMsNow("created_at"),
+  updatedAt: timestampMsNow("updated_at"),
+  ipAddress: text("ip_address"),
+  userAgent: text("user_agent"),
+}, (table) => ({
+  idIdx: uniqueIndex("sessions_id_uidx").on(table.id),
+  userIdx: index("sessions_user_id_idx").on(table.userId),
+}));
 
 export const verificationTokens = sqliteTable(
   "verification_tokens",
   {
+    id: uuidText("id"),
     identifier: text("identifier").notNull(),
     token: text("token").notNull(),
     expires: timestampMs("expires").notNull(),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
   },
   (table) => ({
     pk: primaryKey({ columns: [table.identifier, table.token] }),
+    idIdx: uniqueIndex("verification_tokens_id_uidx").on(table.id),
   }),
 );
 

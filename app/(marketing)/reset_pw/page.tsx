@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { MarketingFooter, MarketingHeader } from "@/components/marketing/MarketingShell";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { metadataAlternates } from "@/lib/seo/config";
@@ -31,9 +31,9 @@ export default function ResetPasswordPage() {
             To recover access, use the same Google account you used before. Password recovery is handled by Google, not
             by inspir.
           </p>
-          <Link className="marketing-auth-action" href="/api/auth/signin/google?callbackUrl=/chat">
+          <GoogleContinueButton className="marketing-auth-action" callbackUrl="/chat">
             Continue with Google
-          </Link>
+          </GoogleContinueButton>
         </div>
       </section>
       <MarketingFooter />

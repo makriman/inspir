@@ -1,8 +1,8 @@
-import { encode } from "next-auth/jwt";
+import { makeSignature } from "better-auth/crypto";
 
 import { isAdminEmail } from "@/lib/auth/admin";
 import { db } from "@/lib/db/client";
-import { users } from "@/lib/db/schema";
+import { sessions, users } from "@/lib/db/schema";
 import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 import { readRuntimeEnv } from "@/lib/runtime/cloudflare";
 
@@ -14,6 +14,7 @@ const sessionMaxAgeSeconds = 60 * 60;
 type E2EAuthPayload = {
   email?: unknown;
   name?: unknown;
+  image?: unknown;
 };
 
 export async function POST(request: Request) {
@@ -38,35 +39,32 @@ export async function POST(request: Request) {
     );
   }
 
-  const secret = readRuntimeEnv("NEXTAUTH_SECRET") || readRuntimeEnv("AUTH_SECRET");
+  const secret = readRuntimeEnv("BETTER_AUTH_SECRET") ?? readRuntimeEnv("AUTH_SECRET");
   if (!secret) {
     return Response.json(
-      { ok: false, error: "NextAuth secret is not configured." },
+      { ok: false, error: "Better Auth secret is not configured." },
       { status: 500, headers: noStoreHeaders() },
     );
   }
 
   const name = typeof payload.name === "string" && payload.name.trim() ? payload.name.trim() : "Inspir E2E";
-  const user = await upsertTestUser(requestedEmail, name);
-  const sessionToken = await encode({
-    secret,
-    maxAge: sessionMaxAgeSeconds,
-    token: {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      picture: user.image,
-      sub: user.id,
-    },
-  });
-
+  const image = normalizeImage(payload.image) ?? "/icon.png";
+  const user = await upsertTestUser(requestedEmail, name, image);
   const expires = new Date(Date.now() + sessionMaxAgeSeconds * 1000);
+  const sessionToken = await createMigrationSession({
+    request,
+    userId: user.id,
+    expires,
+  });
+  const signedSessionToken = await signCookieValue(sessionToken, secret);
+
   return Response.json(
     {
       ok: true,
       user: {
         id: user.id,
         email: user.email,
+        image: user.image,
         isAdmin: isAdminEmail(user.email),
       },
     },
@@ -74,13 +72,13 @@ export async function POST(request: Request) {
       status: 200,
       headers: {
         ...noStoreHeaders(),
-        "Set-Cookie": buildSessionCookie(request, sessionToken, expires),
+        "Set-Cookie": buildSessionCookie(request, signedSessionToken, expires),
       },
     },
   );
 }
 
-async function upsertTestUser(email: string, name: string) {
+async function upsertTestUser(email: string, name: string, image: string) {
   const now = new Date();
   const [created] = await db
     .insert(users)
@@ -88,19 +86,40 @@ async function upsertTestUser(email: string, name: string) {
       id: crypto.randomUUID(),
       name,
       email,
-      emailVerified: now,
+      emailVerified: true,
+      emailVerifiedAt: now,
+      image,
       preferredLanguage: "English",
     })
     .onConflictDoUpdate({
       target: users.email,
       set: {
-        emailVerified: now,
+        name,
+        emailVerified: true,
+        emailVerifiedAt: now,
+        image,
         updatedAt: now,
       },
     })
     .returning();
   if (!created) throw new Error("Failed to create migration E2E test user.");
   return created;
+}
+
+async function createMigrationSession(input: { request: Request; userId: string; expires: Date }) {
+  const now = new Date();
+  const sessionToken = crypto.randomUUID();
+  await db.insert(sessions).values({
+    id: crypto.randomUUID(),
+    sessionToken,
+    userId: input.userId,
+    expires: input.expires,
+    createdAt: now,
+    updatedAt: now,
+    ipAddress: input.request.headers.get("cf-connecting-ip"),
+    userAgent: input.request.headers.get("user-agent"),
+  });
+  return sessionToken;
 }
 
 async function readPayload(request: Request): Promise<E2EAuthPayload> {
@@ -114,7 +133,7 @@ async function readPayload(request: Request): Promise<E2EAuthPayload> {
 
 function buildSessionCookie(request: Request, sessionToken: string, expires: Date) {
   const secure = shouldUseSecureCookie(request);
-  const cookieName = `${secure ? "__Secure-" : ""}next-auth.session-token`;
+  const cookieName = `${secure ? "__Secure-" : ""}better-auth.session_token`;
   return [
     `${cookieName}=${sessionToken}`,
     "Path=/",
@@ -130,7 +149,7 @@ function buildSessionCookie(request: Request, sessionToken: string, expires: Dat
 
 function shouldUseSecureCookie(request: Request) {
   const requestUrl = new URL(request.url);
-  const authUrl = readRuntimeEnv("NEXTAUTH_URL") ?? readRuntimeEnv("AUTH_URL") ?? "";
+  const authUrl = readRuntimeEnv("BETTER_AUTH_URL") ?? readRuntimeEnv("AUTH_URL") ?? readRuntimeEnv("APP_URL") ?? "";
   return requestUrl.protocol === "https:" || authUrl.startsWith("https://");
 }
 
@@ -138,6 +157,23 @@ function normalizeEmail(value: unknown) {
   if (typeof value !== "string") return null;
   const normalized = value.trim().toLowerCase();
   return normalized.includes("@") ? normalized : null;
+}
+
+function normalizeImage(value: unknown) {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+  try {
+    const url = new URL(trimmed);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.toString() : null;
+  } catch {
+    return trimmed.startsWith("/") ? trimmed : null;
+  }
+}
+
+async function signCookieValue(value: string, secret: string) {
+  const signature = await makeSignature(value, secret);
+  return encodeURIComponent(`${value}.${signature}`);
 }
 
 function hiddenResponse() {

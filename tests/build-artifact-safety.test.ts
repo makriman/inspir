@@ -31,7 +31,8 @@ test("sanitized build env removes runtime secret keys", () => {
   assert.equal(env.AUTH_SECRET, undefined);
   assert.equal(env.CLOUDFLARE_ACCOUNT_ID, "account");
   assert.equal(env.APP_URL, "https://inspirlearning.com");
-  assert.equal(env.NEXTAUTH_URL, "https://inspirlearning.com");
+  assert.equal(env.AUTH_URL, "https://inspirlearning.com");
+  assert.equal(env.BETTER_AUTH_URL, "https://inspirlearning.com");
   assert.equal(env.NEXTJS_ENV, "production");
 });
 
@@ -233,7 +234,6 @@ test("sanitized preview dotenv can include local-only auth placeholders", () => 
   const content = sanitizedDotEnvContent(cwd, { includeLocalPreviewRuntimeSecrets: true });
 
   assert.match(content, /AUTH_SECRET=local-preview-auth-secret/);
-  assert.match(content, /NEXTAUTH_SECRET=local-preview-auth-secret/);
   assert.match(content, /AUTH_GOOGLE_ID=local-preview-google-client-id/);
   assert.equal(content.includes("OPENAI_API_KEY"), false);
   assert.equal(content.includes("CLOUDFLARE_AI_GATEWAY_TOKEN"), false);
@@ -272,7 +272,8 @@ function makeRepo() {
     JSON.stringify({
       vars: {
         APP_URL: "https://inspirlearning.com",
-        NEXTAUTH_URL: "https://inspirlearning.com",
+        AUTH_URL: "https://inspirlearning.com",
+        BETTER_AUTH_URL: "https://inspirlearning.com",
         OPENAI_MODEL: "gpt-5",
       },
     }),

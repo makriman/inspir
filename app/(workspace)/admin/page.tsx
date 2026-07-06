@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth/config";
 import { isAdminEmail } from "@/lib/auth/admin";
+import { requireSession } from "@/lib/auth/session";
 import { AdminTopicForm } from "@/components/admin/AdminTopicForm";
 
 export const runtime = "nodejs";
@@ -14,8 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminPage() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.id) redirect("/");
+  const session = await requireSession();
+  if (!session) redirect("/");
   if (!isAdminEmail(session.user.email)) redirect("/");
 
   return (

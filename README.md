@@ -33,7 +33,7 @@ The product preserves the core learning behavior while replacing earlier prototy
 ## Highlights
 
 - Polished product UI across landing, legal pages, loading, reset, chat, profile, and history states.
-- Google sign-in through Auth.js / NextAuth.
+- Google sign-in through Better Auth on Cloudflare D1.
 - Server-only OpenAI calls through the AI SDK.
 - Cloudflare D1 with Drizzle ORM.
 - Cloudflare Vectorize for memory embeddings.
@@ -50,7 +50,7 @@ The product preserves the core learning behavior while replacing earlier prototy
 - React and TypeScript
 - AI SDK
 - OpenAI
-- Auth.js / NextAuth with Google OAuth
+- Better Auth with Google OAuth
 - Drizzle ORM
 - Cloudflare D1
 - Cloudflare Vectorize

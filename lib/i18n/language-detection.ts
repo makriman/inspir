@@ -67,6 +67,8 @@ const countryLanguageOverrides: Record<string, SupportedLanguage> = {
   ZA: "Zulu",
 };
 
+const nonGeographicCountryCodes = new Set(["XX", "T1"]);
+
 export function recommendLanguage(input: {
   countryCode?: string | null;
   acceptLanguage?: string | null;
@@ -83,6 +85,7 @@ export function recommendLanguage(input: {
 export function recommendLanguageFromCountry(countryCode?: string | null) {
   const country = countryCode?.trim().toUpperCase();
   if (!country) return null;
+  if (nonGeographicCountryCodes.has(country)) return null;
   if (countryLanguageOverrides[country]) return countryLanguageOverrides[country];
 
   try {

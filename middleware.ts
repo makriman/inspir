@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
 import { isKnownTopicSlug, isUuidPathSegment } from "@/lib/content/topic-routing";
 import { buildForwardedRequestHeaders } from "@/lib/http/forwarded-request-headers";
 import { recommendLanguage } from "@/lib/i18n/language-detection";
@@ -76,12 +75,7 @@ export async function middleware(request: NextRequest) {
     return response;
   }
 
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET?.trim() || process.env.AUTH_SECRET?.trim() || undefined,
-  });
-
-  if (!token) {
+  if (!hasBetterAuthSessionCookie(request)) {
     return NextResponse.redirect(new URL(localizePath("/", language), request.url));
   }
 
@@ -107,4 +101,11 @@ function shouldLocaleRedirectPath(pathname: string) {
   if (pathname.startsWith("/admin")) return false;
   if (pathname.startsWith("/onboarding")) return false;
   return true;
+}
+
+function hasBetterAuthSessionCookie(request: NextRequest) {
+  return (
+    request.cookies.has("better-auth.session_token") ||
+    request.cookies.has("__Secure-better-auth.session_token")
+  );
 }

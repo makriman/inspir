@@ -176,10 +176,10 @@ test("Google sign-in and sign-out work with the dedicated test account", async (
   await expect
     .poll(
       async () => {
-        const session = await api<{ user?: { email?: string } }>(page, "GET", "/api/auth/session");
+        const session = await api<{ user?: { email?: string } }>(page, "GET", "/api/auth/get-session");
         return Boolean(session.json?.user?.email);
       },
-      { message: "logout should clear the authenticated NextAuth session", timeout: 30_000 },
+      { message: "logout should clear the authenticated Better Auth session", timeout: 30_000 },
     )
     .toBe(false);
 });
@@ -297,8 +297,11 @@ test("authenticated profile avatar falls back when cached photo cannot load", as
   await dismissBlockingDialogs(page);
   await page.getByRole("button", { name: /open profile/i }).click();
   const avatar = page.locator(".inspir-profile-avatar").first();
-  await expect(avatar.locator("svg")).toBeVisible();
-  await expect(avatar.locator("img")).toHaveCount(0);
+  const fallbackImage = avatar.locator("img").first();
+  await expect(fallbackImage).toBeVisible();
+  await expect
+    .poll(async () => fallbackImage.evaluate((image) => (image as HTMLImageElement).naturalWidth))
+    .toBeGreaterThan(0);
 
   await page.unroute("**/api/me/photo**");
   const photoReset = await api(page, "DELETE", "/api/me/photo");

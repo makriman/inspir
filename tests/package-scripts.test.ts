@@ -62,7 +62,8 @@ test("reset password page is honest about Google-only auth", () => {
   assert.doesNotMatch(source, /type="password"/);
   assert.doesNotMatch(source, /<form/);
   assert.match(source, /no inspir password to reset/i);
-  assert.match(source, /\/api\/auth\/signin\/google\?callbackUrl=\/chat/);
+  assert.match(source, /GoogleContinueButton/);
+  assert.match(source, /callbackUrl="\/chat"/);
 });
 
 test("chat auto-translation skips streaming markdown mutations", () => {

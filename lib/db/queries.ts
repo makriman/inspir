@@ -178,12 +178,16 @@ export async function getUserProfileById(userId: string) {
       preferredLanguage: users.preferredLanguage,
       dateOfBirth: users.dateOfBirth,
       createdAt: users.createdAt,
-      profileImageHash: users.profileImageHash,
+      profileImageHash: usableProfileImageHash(),
     })
     .from(users)
     .where(eq(users.id, userId))
     .limit(1);
   return user;
+}
+
+function usableProfileImageHash() {
+  return drizzleSql<string | null>`case when ${users.profileImageHash} is not null and ${users.profileImageR2Key} is not null and ${users.profileImageMime} is not null then ${users.profileImageHash} else null end`;
 }
 
 export async function getUserLearningProfileById(userId: string) {

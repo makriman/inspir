@@ -237,6 +237,8 @@ test("country recommendation maps IP country signals to supported languages", ()
   assert.equal(recommendLanguageFromCountry("ES"), "Spanish");
   assert.equal(recommendLanguageFromCountry("AE"), "Arabic");
   assert.equal(recommendLanguageFromCountry("JP"), "Japanese");
+  assert.equal(recommendLanguageFromCountry("XX"), null);
+  assert.equal(recommendLanguageFromCountry("T1"), null);
 });
 
 test("site translation source includes short UI labels and legal notice", () => {

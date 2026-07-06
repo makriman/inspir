@@ -139,6 +139,7 @@ test("middleware request forwarding strips spoofed provider and internal headers
     "x-inspir-language": "English",
     "x-inspir-pathname": "/spoofed",
     "x-worker-ip-country": "US",
+    "x-vercel-ip-country": "US",
   });
 
   const forwarded = buildForwardedRequestHeaders(source, [
@@ -154,6 +155,7 @@ test("middleware request forwarding strips spoofed provider and internal headers
   assert.equal(forwarded.get("rsc"), "1");
   assert.equal(forwarded.get("authorization"), null);
   assert.equal(forwarded.get("x-worker-ip-country"), null);
+  assert.equal(forwarded.get("x-vercel-ip-country"), null);
   assert.equal(forwarded.get(requestLanguageHeader), "Hindi");
   assert.equal(forwarded.get(requestPathnameHeader), "/chat");
   assert.equal(forwarded.get(requestRecommendedLanguageHeader), "Hindi");

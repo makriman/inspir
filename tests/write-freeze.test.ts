@@ -56,7 +56,7 @@ test("write freeze response is a 503 with retry guidance", async () => {
 
 test("durable mutation routes are covered by the migration write-freeze guard", () => {
   const durableMutationRoutes = [
-    "app/api/auth/[...nextauth]/route.ts",
+    "app/api/auth/[...all]/route.ts",
     "app/api/chat/route.ts",
     "app/api/guest-chat/route.ts",
     "app/api/chats/route.ts",

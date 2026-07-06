@@ -27,7 +27,7 @@ test("source secret scan ignores empty env placeholders and documented key names
   const content = [
     "OPENAI_API_KEY=",
     "AUTH_SECRET=",
-    "NEXTAUTH_SECRET=",
+    "BETTER_AUTH_SECRET=",
     "CLOUDFLARE_AI_GATEWAY_TOKEN=",
   ].join("\n");
 
