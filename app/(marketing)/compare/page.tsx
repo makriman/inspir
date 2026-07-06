@@ -100,7 +100,7 @@ export default function ComparePage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Compare" title="Choose the right learning tool for the moment.">
+      <MarketingPageHero eyebrow="Compare" title="Choose the right learning tool for the moment." visual="compare">
         Some searches need a course library. Some need a live AI tutor, a hint, a Socratic
         question, a quiz, or a flashcard deck. These pages make that choice clearer.
       </MarketingPageHero>

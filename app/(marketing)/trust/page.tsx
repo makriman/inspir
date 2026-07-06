@@ -127,7 +127,11 @@ export default function TrustPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Trust and safety" title="Public learning can be open without making private chats public.">
+      <MarketingPageHero
+        eyebrow="Trust and safety"
+        title="Public learning can be open without making private chats public."
+        visual="trust"
+      >
         inspir separates free guest learning from saved personal conversations, so learners, families, and schools know
         what is public and what stays private.
       </MarketingPageHero>

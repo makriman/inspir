@@ -15,6 +15,7 @@ import {
   learningPathHref,
   type HomepageLearningPath,
 } from "@/lib/content/landing";
+import { getLearningPathHeroVisual } from "@/lib/content/marketing-visuals";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
@@ -186,7 +187,7 @@ export default async function LearningPathPage({ params }: LearningPathPageProps
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Learning path" title={path.title}>
+      <MarketingPageHero eyebrow="Learning path" title={path.title} visual={getLearningPathHeroVisual(path.slug)}>
         {path.seoDescription}
       </MarketingPageHero>
 

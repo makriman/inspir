@@ -15304,6 +15304,173 @@ a {
   grid-template-columns: minmax(0, 1.35fr) minmax(180px, 0.65fr);
   gap: 14px;
   align-items: end;
+  --marketing-visual-image: url("/media/inspir-community-learning.jpg");
+  --marketing-visual-overlay: linear-gradient(180deg, rgb(0 0 0 / 0), rgb(0 0 0 / 0.1));
+}
+
+.marketing-page-visual.has-visual-about {
+  --marketing-visual-image: url("/media/inspir-community-learning.jpg");
+}
+
+.marketing-page-visual.has-visual-modes {
+  --marketing-visual-image: url("/media/inspir-visual-modes.jpg");
+}
+
+.marketing-page-visual.has-visual-subjects {
+  --marketing-visual-image: url("/media/inspir-visual-subjects.jpg");
+}
+
+.marketing-page-visual.has-visual-subject-math {
+  --marketing-visual-image: url("/media/inspir-visual-subject-math.jpg");
+}
+
+.marketing-page-visual.has-visual-subject-writing {
+  --marketing-visual-image: url("/media/inspir-visual-subject-writing.jpg");
+}
+
+.marketing-page-visual.has-visual-subject-coding {
+  --marketing-visual-image: url("/media/inspir-visual-subject-coding.jpg");
+}
+
+.marketing-page-visual.has-visual-subject-history {
+  --marketing-visual-image: url("/media/inspir-visual-subject-history.jpg");
+}
+
+.marketing-page-visual.has-visual-subject-exam-prep {
+  --marketing-visual-image: url("/media/inspir-visual-subject-exam-prep.jpg");
+}
+
+.marketing-page-visual.has-visual-subject-homework {
+  --marketing-visual-image: url("/media/inspir-visual-subject-homework.jpg");
+}
+
+.marketing-page-visual.has-visual-prompts {
+  --marketing-visual-image: url("/media/inspir-visual-prompts.jpg");
+}
+
+.marketing-page-visual.has-visual-map {
+  --marketing-visual-image: url("/media/inspir-visual-learning-map.jpg");
+}
+
+.marketing-page-visual.has-visual-media {
+  --marketing-visual-image: url("/media/inspir-visual-media.jpg");
+}
+
+.marketing-page-visual.has-visual-schools {
+  --marketing-visual-image: url("/media/inspir-school-workshop.jpg");
+}
+
+.marketing-page-visual.has-visual-trust {
+  --marketing-visual-image: url("/media/inspir-visual-trust.jpg");
+}
+
+.marketing-page-visual.has-visual-compare {
+  --marketing-visual-image: url("/media/inspir-visual-compare.jpg");
+}
+
+.marketing-page-visual.has-visual-compare-khan-academy-alternative {
+  --marketing-visual-image: url("/media/inspir-visual-compare-khan-academy-alternative.jpg");
+}
+
+.marketing-page-visual.has-visual-audience {
+  --marketing-visual-image: url("/media/inspir-visual-audience.jpg");
+}
+
+.marketing-page-visual.has-visual-audience-students {
+  --marketing-visual-image: url("/media/inspir-visual-audience-students.jpg");
+}
+
+.marketing-page-visual.has-visual-audience-parents {
+  --marketing-visual-image: url("/media/inspir-visual-audience-parents.jpg");
+}
+
+.marketing-page-visual.has-visual-audience-teachers {
+  --marketing-visual-image: url("/media/inspir-visual-audience-teachers.jpg");
+}
+
+.marketing-page-visual.has-visual-audience-self-taught-learners {
+  --marketing-visual-image: url("/media/inspir-visual-audience-self-taught-learners.jpg");
+}
+
+.marketing-page-visual.has-visual-paths {
+  --marketing-visual-image: url("/media/inspir-visual-paths.jpg");
+}
+
+.marketing-page-visual.has-visual-path-understand-a-hard-topic {
+  --marketing-visual-image: url("/media/inspir-visual-path-understand-a-hard-topic.jpg");
+}
+
+.marketing-page-visual.has-visual-path-get-unstuck-on-homework {
+  --marketing-visual-image: url("/media/inspir-visual-path-get-unstuck-on-homework.jpg");
+}
+
+.marketing-page-visual.has-visual-path-prepare-for-an-exam {
+  --marketing-visual-image: url("/media/inspir-visual-path-prepare-for-an-exam.jpg");
+}
+
+.marketing-page-visual.has-visual-path-explore-history-and-ideas {
+  --marketing-visual-image: url("/media/inspir-visual-path-explore-history-and-ideas.jpg");
+}
+
+.marketing-page-visual.has-visual-blog {
+  --marketing-visual-image: url("/media/inspir-visual-blog.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-ai-tutor {
+  --marketing-visual-image: url("/media/inspir-visual-blog-ai-tutor.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-study-skills {
+  --marketing-visual-image: url("/media/inspir-visual-blog-study-skills.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-ai-prompts {
+  --marketing-visual-image: url("/media/inspir-visual-blog-ai-prompts.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-planning {
+  --marketing-visual-image: url("/media/inspir-visual-blog-planning.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-practice {
+  --marketing-visual-image: url("/media/inspir-visual-blog-practice.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-humanities {
+  --marketing-visual-image: url("/media/inspir-visual-blog-humanities.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-communication {
+  --marketing-visual-image: url("/media/inspir-visual-blog-communication.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-thinking {
+  --marketing-visual-image: url("/media/inspir-visual-blog-thinking.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-creativity {
+  --marketing-visual-image: url("/media/inspir-visual-blog-creativity.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-foundations {
+  --marketing-visual-image: url("/media/inspir-visual-blog-foundations.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-immersion {
+  --marketing-visual-image: url("/media/inspir-visual-blog-immersion.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-stem {
+  --marketing-visual-image: url("/media/inspir-visual-blog-stem.jpg");
+}
+
+.marketing-page-visual.has-visual-blog-argument {
+  --marketing-visual-image: url("/media/inspir-visual-blog-argument.jpg");
+}
+
+.marketing-page-visual.has-photos {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
 }
 
 .marketing-page-visual.is-film-only {
@@ -15334,20 +15501,11 @@ a {
 }
 
 .marketing-page-visual .is-photo {
-  aspect-ratio: 4 / 3;
-  background: #e9edf3 center / cover no-repeat;
-}
-
-.marketing-page-visual .is-photo.is-1 {
-  background-image:
-    linear-gradient(180deg, rgb(0 0 0 / 0), rgb(0 0 0 / 0.08)),
-    url("/media/inspir-community-learning.jpg");
-}
-
-.marketing-page-visual .is-photo.is-2 {
-  background-image:
-    linear-gradient(180deg, rgb(0 0 0 / 0), rgb(0 0 0 / 0.08)),
-    url("/media/inspir-school-workshop.jpg");
+  aspect-ratio: 16 / 10;
+  background:
+    var(--marketing-visual-overlay),
+    var(--marketing-visual-image) center / cover no-repeat,
+    #e9edf3;
 }
 
 .marketing-page-visual .is-photo img {
@@ -15361,16 +15519,9 @@ a {
   transform: none;
 }
 
-.marketing-page-visual .is-photo.is-1 {
-  transform: translateY(18px);
-}
-
-.marketing-page-visual .is-photo.is-2 {
-  transform: translateY(-12px);
-}
-
 .marketing-page-visual.has-film .is-photo {
   aspect-ratio: 4 / 5;
+  transform: translateY(-12px);
 }
 
 .marketing-page-visual video {

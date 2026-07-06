@@ -128,7 +128,11 @@ export default function SchoolsPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="For schools" title="Custom AI learning spaces for every school community.">
+      <MarketingPageHero
+        eyebrow="For schools"
+        title="Custom AI learning spaces for every school community."
+        visual="schools"
+      >
         inspir works with schools to offer tailored AI chat experiences for students, built around
         confidentiality, curriculum needs, and the practical realities of school deployment.
       </MarketingPageHero>

@@ -144,7 +144,7 @@ export default function MediaPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Media" title="A citeable public record for inspir.">
+      <MarketingPageHero eyebrow="Media" title="A citeable public record for inspir." visual="media">
         Facts, source links, official URLs, and context for anyone writing about inspir&apos;s work
         in free AI learning, schools, and public education access.
       </MarketingPageHero>

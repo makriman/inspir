@@ -104,7 +104,7 @@ export default function TopicsPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Learning modes" title="Start from the exact kind of help you need.">
+      <MarketingPageHero eyebrow="Learning modes" title="Start from the exact kind of help you need." visual="modes">
         Every public inspir mode has its own examples and teaching behavior, so learners can open the right kind of help
         without starting from a blank chat box.
       </MarketingPageHero>

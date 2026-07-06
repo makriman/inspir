@@ -169,7 +169,7 @@ export default function AiLearningMapPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="AI learning map" title="One map for modes, prompts, paths, and guides.">
+      <MarketingPageHero eyebrow="AI learning map" title="One map for modes, prompts, paths, and guides." visual="map">
         Pick the learning job first, then jump into the right public guest mode, starter
         prompt, study path, or guide without hunting through a generic chatbot.
       </MarketingPageHero>

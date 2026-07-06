@@ -21,6 +21,7 @@ import {
   getSiteTranslationNamespaces,
 } from "@/lib/i18n/site-translations";
 import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
+import type { MarketingHeroVisual } from "@/lib/content/marketing-visuals";
 
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
@@ -122,6 +123,7 @@ export async function MarketingPageHero({
   eyebrow,
   title,
   children,
+  visual,
   showFilm = false,
   filmMuted = true,
   filmOnly = false,
@@ -129,12 +131,14 @@ export async function MarketingPageHero({
   eyebrow: string;
   title: string;
   children: ReactNode;
+  visual: MarketingHeroVisual;
   showFilm?: boolean;
   filmMuted?: boolean;
   filmOnly?: boolean;
 }) {
   const chrome = await getMarketingChrome();
   const filmHasAudio = showFilm && !filmMuted;
+  const showSupportingPhoto = showFilm && !filmOnly;
   return (
     <section className="marketing-page-hero">
       <div className="marketing-page-hero-copy">
@@ -143,7 +147,9 @@ export async function MarketingPageHero({
         <p>{translateInlineNode(children, chrome.t)}</p>
       </div>
       <div
-        className={`marketing-page-visual ${showFilm ? "has-film" : "has-photos"} ${filmOnly ? "is-film-only" : ""}`}
+        className={`marketing-page-visual has-visual-${visual} ${showFilm ? "has-film" : "has-photos"} ${
+          filmOnly ? "is-film-only" : ""
+        }`}
         aria-hidden={filmHasAudio ? undefined : true}
       >
         {showFilm ? (
@@ -164,9 +170,9 @@ export async function MarketingPageHero({
             </video>
           </figure>
         ) : (
-          <figure className="is-photo is-1" />
+          <figure className="is-photo" aria-hidden="true" />
         )}
-        {filmOnly ? null : <figure className="is-photo is-2" />}
+        {showSupportingPhoto ? <figure className="is-photo" aria-hidden="true" /> : null}
       </div>
     </section>
   );

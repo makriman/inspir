@@ -133,7 +133,14 @@ export default function MissionPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Mission" title="Learning is for everyone." showFilm filmMuted={false} filmOnly>
+      <MarketingPageHero
+        eyebrow="Mission"
+        title="Learning is for everyone."
+        visual="about"
+        showFilm
+        filmMuted={false}
+        filmOnly
+      >
         inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone
         with curiosity, whether they are a student, parent, teacher, or self-taught learner.
       </MarketingPageHero>

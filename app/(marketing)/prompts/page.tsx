@@ -119,7 +119,7 @@ export default function PromptLibraryPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Prompt library" title="Better AI learning starts with better prompts.">
+      <MarketingPageHero eyebrow="Prompt library" title="Better AI learning starts with better prompts." visual="prompts">
         Browse starter prompts for every public inspir mode, then open the matching guest chat
         to turn the prompt into a live learning loop.
       </MarketingPageHero>

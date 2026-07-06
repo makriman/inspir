@@ -23,6 +23,7 @@ import {
   getSubjectPages,
   subjectPath,
 } from "@/lib/content/subjects";
+import { getSubjectHeroVisual } from "@/lib/content/marketing-visuals";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
@@ -184,7 +185,7 @@ export default async function SubjectDetailPage({ params }: SubjectDetailPagePro
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow={page.eyebrow} title={page.title}>
+      <MarketingPageHero eyebrow={page.eyebrow} title={page.title} visual={getSubjectHeroVisual(page.slug)}>
         {page.description}
       </MarketingPageHero>
 

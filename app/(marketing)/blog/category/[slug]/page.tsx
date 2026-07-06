@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import { MarketingFooter, MarketingHeader, MarketingPageHero } from "@/components/marketing/MarketingShell";
 import { getBlogCategories, getBlogCategory } from "@/lib/content/blog";
+import { getBlogCategoryHeroVisual } from "@/lib/content/marketing-visuals";
 import { categoryHasIndexedPosts } from "@/lib/content/blog-seo-policy";
 import {
   getBlogCategoryFaqs,
@@ -139,7 +140,7 @@ export default async function BlogCategoryPage({ params }: BlogCategoryPageProps
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Blog theme" title={profile.title}>
+      <MarketingPageHero eyebrow="Blog theme" title={profile.title} visual={getBlogCategoryHeroVisual(category.slug)}>
         {profile.description}
       </MarketingPageHero>
 

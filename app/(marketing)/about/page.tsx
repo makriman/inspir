@@ -109,7 +109,11 @@ export default function AboutPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="About inspir" title="Learning is for everyone, and AI should make that more true.">
+      <MarketingPageHero
+        eyebrow="About inspir"
+        title="Learning is for everyone, and AI should make that more true."
+        visual="about"
+      >
         inspir is a free AI learning platform shaped by more than a decade of quizzes,
         extracurricular learning, school networks, and applied AI experimentation.
       </MarketingPageHero>

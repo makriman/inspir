@@ -100,7 +100,7 @@ export default function AudienceHubPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="For learners" title="AI learning should fit the person using it.">
+      <MarketingPageHero eyebrow="For learners" title="AI learning should fit the person using it." visual="audience">
         Students, parents, teachers, and self-taught learners search for different things.
         These pages route each audience to the right public mode, guide, and study workflow.
       </MarketingPageHero>

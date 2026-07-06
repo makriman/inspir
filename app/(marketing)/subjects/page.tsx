@@ -101,7 +101,7 @@ export default function SubjectHubPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Subjects" title="Find the right AI tutor for the subject in front of you.">
+      <MarketingPageHero eyebrow="Subjects" title="Find the right AI tutor for the subject in front of you." visual="subjects">
         Math, writing, coding, history, homework, and exam prep each need a different kind of help.
         These pages route learners into the public mode, prompt, guide, and review loop that fits.
       </MarketingPageHero>
