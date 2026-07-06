@@ -1,47 +1,7 @@
 import type { NextConfig } from "next";
+import { staticSecurityHeaders } from "./lib/security/headers";
 
 import("@opennextjs/cloudflare").then((module) => module.initOpenNextCloudflareForDev());
-
-const securityHeaders = [
-  {
-    key: "Content-Security-Policy",
-    value: [
-      "default-src 'self'",
-      "base-uri 'self'",
-      "frame-ancestors 'none'",
-      "form-action 'self' https://accounts.google.com",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "img-src 'self' data: blob: https://*.googleusercontent.com",
-      "font-src 'self' data: https://fonts.gstatic.com",
-      "connect-src 'self' https://api.openai.com",
-    ].join("; "),
-  },
-  {
-    key: "X-Frame-Options",
-    value: "DENY",
-  },
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains; preload",
-  },
-  {
-    key: "X-Content-Type-Options",
-    value: "nosniff",
-  },
-  {
-    key: "Referrer-Policy",
-    value: "origin-when-cross-origin",
-  },
-  {
-    key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=()",
-  },
-  {
-    key: "X-DNS-Prefetch-Control",
-    value: "on",
-  },
-];
 
 const contentTraceFiles = [
   "./content/blog/**/*.md",
@@ -121,7 +81,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        headers: securityHeaders,
+        headers: [...staticSecurityHeaders],
       },
       {
         source: "/api/:path*",

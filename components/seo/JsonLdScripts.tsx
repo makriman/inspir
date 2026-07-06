@@ -1,9 +1,12 @@
+import { headers } from "next/headers";
 import { localizeMarketingStructuredData } from "@/lib/i18n/metadata";
 import { serializeJsonLd } from "@/lib/seo/json-ld";
+import { cspNonceHeader } from "@/lib/security/headers";
 
 type JsonLdScriptsProps = {
   items: ReadonlyArray<unknown>;
   path?: string;
+  nonce?: string;
 };
 
 function jsonLdKey(entry: unknown) {
@@ -18,12 +21,13 @@ function jsonLdKey(entry: unknown) {
   return serializeJsonLd(entry);
 }
 
-export async function JsonLdScripts({ items, path }: JsonLdScriptsProps) {
+export async function JsonLdScripts({ items, path, nonce }: JsonLdScriptsProps) {
   const pathname = path ?? "/";
+  const scriptNonce = nonce ?? (await headers()).get(cspNonceHeader) ?? undefined;
   const localizedItems = await localizeMarketingStructuredData(items, pathname);
 
   return localizedItems.map((entry) => (
-    <script key={jsonLdKey(entry)} type="application/ld+json">
+    <script key={jsonLdKey(entry)} type="application/ld+json" nonce={scriptNonce}>
       {serializeJsonLd(entry)}
     </script>
   ));

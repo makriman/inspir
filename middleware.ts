@@ -14,11 +14,14 @@ import {
   requestPathnameHeader,
   requestRecommendedLanguageHeader,
 } from "@/lib/i18n/routing";
+import { buildContentSecurityPolicy, cspNonceHeader, staticSecurityHeaders } from "@/lib/security/headers";
 
 // OpenNext Cloudflare 1.19.11 does not yet support the Next 16 nodejs proxy output.
 // Keep Edge Middleware until the Cloudflare adapter supports proxy.ts.
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const nonce = createNonce();
+  const csp = buildContentSecurityPolicy(nonce);
   const localizedPath = getLocalizedPathInfo(pathname);
   const effectivePathname = localizedPath.pathnameWithoutLocale;
   const referrerLanguage = getReferrerLocaleLanguage(request.headers.get("referer"));
@@ -32,6 +35,8 @@ export async function middleware(request: NextRequest) {
     acceptLanguage: request.headers.get("accept-language"),
   });
   const requestHeaders = buildForwardedRequestHeaders(request.headers, [
+    [cspNonceHeader, nonce],
+    ["Content-Security-Policy", csp],
     [requestLanguageHeader, language],
     [requestLocaleHeader, language],
     [requestLocalePrefixHeader, localizedPath.hasLocalePrefix ? "1" : "0"],
@@ -49,17 +54,20 @@ export async function middleware(request: NextRequest) {
   if (shouldRedirectToLocale) {
     const url = request.nextUrl.clone();
     url.pathname = localizePath(effectivePathname, language);
-    return NextResponse.redirect(url);
+    return applySecurityHeaders(NextResponse.redirect(url), csp);
   }
 
   const buildResponse = () => {
+    let response: NextResponse;
     if (!localizedPath.hasLocalePrefix) {
-      return NextResponse.next({ request: { headers: requestHeaders } });
+      response = NextResponse.next({ request: { headers: requestHeaders } });
+      return applySecurityHeaders(response, csp);
     }
 
     const url = request.nextUrl.clone();
     url.pathname = effectivePathname;
-    return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
+    response = NextResponse.rewrite(url, { request: { headers: requestHeaders } });
+    return applySecurityHeaders(response, csp);
   };
 
   if (!needsAuth) {
@@ -76,7 +84,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!hasBetterAuthSessionCookie(request)) {
-    return NextResponse.redirect(new URL(localizePath("/", language), request.url));
+    return applySecurityHeaders(NextResponse.redirect(new URL(localizePath("/", language), request.url)), csp);
   }
 
   return buildResponse();
@@ -108,4 +116,16 @@ function hasBetterAuthSessionCookie(request: NextRequest) {
     request.cookies.has("better-auth.session_token") ||
     request.cookies.has("__Secure-better-auth.session_token")
   );
+}
+
+function createNonce() {
+  return btoa(crypto.randomUUID());
+}
+
+function applySecurityHeaders(response: NextResponse, csp: string) {
+  response.headers.set("Content-Security-Policy", csp);
+  for (const header of staticSecurityHeaders) {
+    response.headers.set(header.key, header.value);
+  }
+  return response;
 }

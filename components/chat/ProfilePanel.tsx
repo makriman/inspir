@@ -302,6 +302,7 @@ export function ProfilePanel({
             </div>
           </div>
           <div className="inspir-profile-account-actions">
+            {user.isAdmin ? <Link href="/admin">{t("Admin dashboard")}</Link> : null}
             <Link href="/terms">{t("Terms")}</Link>
             <Link href="/privacy">{t("Privacy")}</Link>
             <button type="button" onClick={() => void signOutToHome()} className="inspir-profile-logout">

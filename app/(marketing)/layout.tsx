@@ -1,6 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "../globals.css";
+import { Suspense } from "react";
+import { headers } from "next/headers";
+import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { MarketingServerLocalizer } from "@/components/i18n/MarketingServerLocalizer";
@@ -19,6 +23,7 @@ import {
   webApplicationJsonLd,
   websiteJsonLd,
 } from "@/lib/seo/json-ld";
+import { cspNonceHeader } from "@/lib/security/headers";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -114,11 +119,16 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const [languageConfig, pathname] = await Promise.all([getRequestLanguageConfig(), getRequestPathname()]);
+  const nonce = (await headers()).get(cspNonceHeader) ?? undefined;
   const localizedRootJsonLd = await localizeMarketingStructuredData(rootJsonLd, pathname);
   return (
     <html lang={languageConfig.locale} dir={languageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full bg-[#171614] text-white">
-        <JsonLdScripts items={localizedRootJsonLd} />
+        <AnalyticsScripts nonce={nonce} />
+        <Suspense fallback={null}>
+          <ProductAnalytics />
+        </Suspense>
+        <JsonLdScripts items={localizedRootJsonLd} nonce={nonce} />
         <MarketingServerLocalizer>{children}</MarketingServerLocalizer>
         <PwaInstallPrompt />
       </body>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { ChatClient } from "@/components/chat/ChatClient";
 import { sanitizeActivityRun } from "@/lib/activities/quiz";
+import { isAdminEmailAsync } from "@/lib/auth/admin";
 import { requireSession } from "@/lib/auth/session";
 import { seededTopics, topicFromSeed } from "@/lib/content/seeded-topics";
 import { topicSeeds } from "@/lib/content/topics";
@@ -189,6 +190,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
           profileImageHash: user?.profileImageHash ?? null,
       }
       : guestUser(requestLanguage);
+    const isAdmin = session?.user?.id ? await isAdminEmailAsync(user?.email ?? session.user.email) : false;
     const translationBundle =
       (await getCachedMainAppTranslationBundle(profileUser.preferredLanguage)) ??
       getEnglishMainAppTranslationBundle();
@@ -196,7 +198,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     return (
       <ChatClient
         authMode={savedChatsAvailable ? "authenticated" : "guest"}
-        user={profileUser}
+        user={{ ...profileUser, isAdmin }}
         topics={topics}
         initialTopicId={topic.id}
         initialMessages={[]}
@@ -223,6 +225,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
     getLatestActivityRun(chatId),
     requestLanguagePromise,
   ]);
+  const isAdmin = await isAdminEmailAsync(user?.email ?? session.user.email);
   return (
     <ChatClient
       authMode="authenticated"
@@ -237,6 +240,7 @@ export default async function ChatRoutePage({ params }: ChatRoutePageProps) {
         age: calculateAge(user?.dateOfBirth),
         createdAt: user?.createdAt ?? "",
         profileImageHash: user?.profileImageHash ?? null,
+        isAdmin,
       }}
       topics={topics}
       initialTopicId={owned.topic?.id ?? defaultTopic?.id ?? topics[0]?.id}

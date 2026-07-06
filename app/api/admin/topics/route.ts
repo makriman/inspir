@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { eq } from "drizzle-orm";
-import { isAdminEmail } from "@/lib/auth/admin";
+import { isAdminEmailAsync } from "@/lib/auth/admin";
 import { requireSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
 import { topics } from "@/lib/db/schema";
@@ -21,7 +21,7 @@ const topicSchema = z.object({
 
 export async function POST(request: NextRequest) {
   const session = await requireSession();
-  if (!isAdminEmail(session?.user?.email)) {
+  if (!(await isAdminEmailAsync(session?.user?.email))) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
   const freeze = writeFreezeResponse("admin-topics");

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isAdminEmailAsync } from "@/lib/auth/admin";
 import { requireSession } from "@/lib/auth/session";
 import { getUserProfileById, updateUserProfile } from "@/lib/db/queries";
 import { normalizeLanguage } from "@/lib/content/languages";
@@ -14,7 +15,7 @@ export async function GET() {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
   const user = await getUserProfileById(session.user.id);
-  return NextResponse.json({ user: serializeUser(user) });
+  return NextResponse.json({ user: await serializeUser(user) });
 }
 
 export async function PATCH(request: NextRequest) {
@@ -39,10 +40,10 @@ export async function PATCH(request: NextRequest) {
     dateOfBirth: parsed.data.dateOfBirth,
     dateOfBirthSource: parsed.data.dateOfBirth ? "user" : undefined,
   });
-  return NextResponse.json({ user: serializeUser(user) });
+  return NextResponse.json({ user: await serializeUser(user) });
 }
 
-function serializeUser(user: Awaited<ReturnType<typeof getUserProfileById>> | Awaited<ReturnType<typeof updateUserProfile>>) {
+async function serializeUser(user: Awaited<ReturnType<typeof getUserProfileById>> | Awaited<ReturnType<typeof updateUserProfile>>) {
   if (!user) return null;
   return {
     id: user.id,
@@ -55,6 +56,7 @@ function serializeUser(user: Awaited<ReturnType<typeof getUserProfileById>> | Aw
     createdAt: user.createdAt,
     profileImageHash: hasUsableProfilePhoto(user) ? user.profileImageHash : null,
     age: calculateAge(user.dateOfBirth),
+    isAdmin: await isAdminEmailAsync(user.email),
   };
 }
 

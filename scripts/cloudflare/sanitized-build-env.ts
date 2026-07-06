@@ -56,7 +56,11 @@ const LOCAL_PREVIEW_RUNTIME_ENV = {
   CRON_SECRET: "local-preview-cron-secret",
 } as const;
 
-const OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS = ["E2E_TEST_AUTH_SECRET", "E2E_TEST_AUTH_EMAIL"] as const;
+const OPTIONAL_LOCAL_PREVIEW_RUNTIME_ENV_KEYS = [
+  "E2E_TEST_AUTH_SECRET",
+  "E2E_TEST_AUTH_EMAIL",
+  "E2E_TEST_AUTH_IS_ADMIN",
+] as const;
 
 export function withSanitizedProjectEnvFiles<T>(
   callback: () => T,
@@ -120,8 +124,11 @@ export function sanitizedDotEnvContent(cwd = process.cwd(), options: SanitizedPr
 
 export function localPreviewRuntimeEnv() {
   const localPreviewUrl = process.env.PLAYWRIGHT_BASE_URL?.trim() || "http://localhost:8787";
+  const previewAdminEmail =
+    process.env.E2E_TEST_AUTH_IS_ADMIN === "1" ? process.env.E2E_TEST_AUTH_EMAIL?.trim() : undefined;
   const env: Record<string, string> = {
     ...LOCAL_PREVIEW_RUNTIME_ENV,
+    ...(previewAdminEmail ? { ADMIN_EMAILS: previewAdminEmail } : {}),
     APP_URL: localPreviewUrl,
     AUTH_URL: localPreviewUrl,
     BETTER_AUTH_URL: localPreviewUrl,

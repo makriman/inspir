@@ -11,6 +11,7 @@ export type UserProfile = {
   age?: number | null;
   createdAt: string | Date;
   profileImageHash?: string | null;
+  isAdmin?: boolean;
 };
 
 export type ApiProfileUser = {
@@ -24,6 +25,7 @@ export type ApiProfileUser = {
   age?: number | null;
   createdAt: string | Date;
   profileImageHash?: string | null;
+  isAdmin?: boolean;
 };
 
 export type ProfileDetailsInput = {
@@ -49,5 +51,6 @@ export function profileFromApiUser(user: ApiProfileUser): UserProfile {
     age: user.age ?? null,
     createdAt: user.createdAt,
     profileImageHash: user.profileImageHash ?? null,
+    isAdmin: user.isAdmin ?? false,
   };
 }

@@ -1,7 +1,8 @@
 import { makeSignature } from "better-auth/crypto";
 
-import { isAdminEmail } from "@/lib/auth/admin";
+import { isAdminEmailAsync } from "@/lib/auth/admin";
 import { db } from "@/lib/db/client";
+import { addAdminUser } from "@/lib/db/queries";
 import { sessions, users } from "@/lib/db/schema";
 import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 import { readRuntimeEnv } from "@/lib/runtime/cloudflare";
@@ -50,6 +51,14 @@ export async function POST(request: Request) {
   const name = typeof payload.name === "string" && payload.name.trim() ? payload.name.trim() : "Inspir E2E";
   const image = normalizeImage(payload.image) ?? "/icon.png";
   const user = await upsertTestUser(requestedEmail, name, image);
+  const testAdmin = isTestAdminRequested();
+  if (testAdmin) {
+    await addAdminUser({
+      email: user.email,
+      addedByUserId: user.id,
+      addedByEmail: "migration-e2e-auth",
+    });
+  }
   const expires = new Date(Date.now() + sessionMaxAgeSeconds * 1000);
   const sessionToken = await createMigrationSession({
     request,
@@ -65,7 +74,7 @@ export async function POST(request: Request) {
         id: user.id,
         email: user.email,
         image: user.image,
-        isAdmin: isAdminEmail(user.email),
+        isAdmin: testAdmin || (await isAdminEmailAsync(user.email)),
       },
     },
     {
@@ -75,6 +84,14 @@ export async function POST(request: Request) {
         "Set-Cookie": buildSessionCookie(request, signedSessionToken, expires),
       },
     },
+  );
+}
+
+function isTestAdminRequested() {
+  return (
+    readRuntimeEnv("E2E_TEST_AUTH_IS_ADMIN") === "1" ||
+    readRuntimeEnv("MIGRATION_E2E_AUTH_IS_ADMIN") === "1" ||
+    process.env.E2E_GOOGLE_IS_ADMIN === "1"
   );
 }
 

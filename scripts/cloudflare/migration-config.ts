@@ -26,7 +26,12 @@ export const LOCAL_GATE_IDS = [
   "wrangler-check-startup",
 ] as const;
 
-export const RUNTIME_MUTABLE_TABLES = ["llm_usage_daily_shards", "rate_limit_windows"] as const;
+export const RUNTIME_MUTABLE_TABLES = [
+  "llm_usage_daily_shards",
+  "rate_limit_windows",
+  "ops_events",
+  "product_events",
+] as const;
 
 function getArg(name: string) {
   const index = process.argv.indexOf(name);

@@ -63,6 +63,7 @@ const baseStrings: Record<string, string> = {
     "Your saved chats, language preference, date of birth, and learning memory are used to make the app more useful for you.",
   "profile.account.terms": "Terms",
   "profile.account.privacy": "Privacy",
+  "profile.account.admin": "Admin dashboard",
   "profile.account.logout": "Logout",
   "memory.status.on": "On for this account",
   "memory.status.off": "Off for this account",

@@ -54,6 +54,7 @@ test("GitHub CI runs the core quality and build gates", () => {
   assert.match(workflow, /pnpm build/);
   assert.match(workflow, /pnpm cf:build/);
   assert.match(workflow, /node-version: 22/);
+  assert.doesNotMatch(workflow, /NEXTAUTH_/);
 });
 
 test("reset password page is honest about Google-only auth", () => {
@@ -131,7 +132,48 @@ test("Better Auth can safely link migrated Google-only users", () => {
 
   assert.match(source, /trustedProviders:\s*\["google"\]/);
   assert.match(source, /requireLocalEmailVerified:\s*false/);
+  assert.match(source, /Revisit before adding any non-Google provider/);
   assert.match(source, /additionalFields:\s*{[\s\S]*?type:\s*{[\s\S]*?defaultValue:\s*"oauth"/);
+});
+
+test("admin dashboard is DB-backed and reachable from admin profiles", () => {
+  const adminAuth = fs.readFileSync(path.resolve("lib/auth/admin.ts"), "utf8");
+  const profilePanel = fs.readFileSync(path.resolve("components/chat/ProfilePanel.tsx"), "utf8");
+  const adminPage = fs.readFileSync(path.resolve("app/(workspace)/admin/page.tsx"), "utf8");
+  const schema = fs.readFileSync(path.resolve("lib/db/schema.ts"), "utf8");
+
+  assert.match(adminAuth, /makridroid@gmail\.com/);
+  assert.match(adminAuth, /isAdminEmailAsync/);
+  assert.match(schema, /sqliteTable\(\s*"admin_users"/);
+  assert.match(profilePanel, /user\.isAdmin/);
+  assert.match(profilePanel, /t\("Admin dashboard"\)/);
+  assert.match(adminPage, /getAdminDashboardData\(14\)/);
+  assert.match(adminPage, /AdminUserManager/);
+});
+
+test("analytics scripts and product events are installed without inline CSP fallback", () => {
+  const analyticsScripts = fs.readFileSync(path.resolve("components/analytics/AnalyticsScripts.tsx"), "utf8");
+  const productAnalytics = fs.readFileSync(path.resolve("components/analytics/ProductAnalytics.tsx"), "utf8");
+  const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
+  const csp = fs.readFileSync(path.resolve("lib/security/headers.ts"), "utf8");
+  const scriptDirective = csp.split("\n").find((line) => line.includes("script-src")) ?? "";
+
+  assert.match(analyticsScripts, /G-S3E1FV3RK8/);
+  assert.match(analyticsScripts, /xi5vqkce95/);
+  assert.match(productAnalytics, /auth_error_seen/);
+  assert.match(productAnalytics, /\/api\/analytics\/events/);
+  assert.match(middleware, /buildContentSecurityPolicy\(nonce\)/);
+  assert.match(csp, /'nonce-\$\{nonce\}'/);
+  assert.doesNotMatch(scriptDirective, /'unsafe-inline'/);
+});
+
+test("Better Auth schema keeps rollback columns documented during soak", () => {
+  const schema = fs.readFileSync(path.resolve("lib/db/schema.ts"), "utf8");
+
+  assert.match(schema, /Legacy NextAuth rollback data[\s\S]*expires_at/);
+  assert.match(schema, /Legacy NextAuth rollback data[\s\S]*token_type/);
+  assert.match(schema, /Legacy NextAuth rollback data[\s\S]*session_state/);
+  assert.match(schema, /avoided a risky D1 table rebuild[\s\S]*id: uuidText\("id"\)/);
 });
 
 test("deploy quality gates avoid floating CLI resolution", () => {

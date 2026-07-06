@@ -14,6 +14,7 @@ import {
   useState,
 } from "react";
 import dynamic from "next/dynamic";
+import { trackProductEvent } from "@/components/analytics/ProductAnalytics";
 import type { ActivityRun } from "@/components/chat/activity-model";
 import { ChatMainSection } from "@/components/chat/ChatMainSection";
 import { ChatPanelOverlays } from "@/components/chat/ChatPanelOverlays";
@@ -859,6 +860,10 @@ function useChatClientController({
         return;
       }
       if (!response.ok || !response.body) throw new Error("No assistant response");
+      trackProductEvent("chat_message_sent", {
+        guest: isGuest,
+        topic: activeTopic.slug,
+      });
 
       const responseAssistantMetadata = assistantResponseMetadata(response);
       if (responseAssistantMetadata) {
@@ -1477,6 +1482,7 @@ function ChatClientLayout(controller: ChatClientController) {
               controller.setStoreOpen(false);
               controller.setRecentOpen(false);
               setProfileOpen(true);
+              trackProductEvent("profile_opened");
             }
             setMobileSidebarOpen(false);
           }}

@@ -496,7 +496,7 @@ test("authenticated profile, activity, memory, admin, and private chat APIs work
 
   if (process.env.E2E_GOOGLE_IS_ADMIN === "1") {
     await page.goto("/admin");
-    await expect(page.getByRole("heading", { name: /^admin$/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /operations dashboard/i })).toBeVisible();
   } else {
     const admin = await api(page, "POST", "/api/admin/topics", {
       name: `Migration E2E Forbidden ${Date.now()}`,

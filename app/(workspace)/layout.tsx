@@ -1,9 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "../globals.css";
+import { Suspense } from "react";
+import { headers } from "next/headers";
+import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
+import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { Geist } from "next/font/google";
 import { getRequestLanguageConfig } from "@/lib/i18n/request-locale";
 import { siteName, siteUrl } from "@/lib/seo/config";
+import { cspNonceHeader } from "@/lib/security/headers";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
@@ -66,13 +71,20 @@ export default async function WorkspaceLayout({
   children: React.ReactNode;
 }>) {
   const languageConfig = await getRequestLanguageConfig();
+  const nonce = (await headers()).get(cspNonceHeader) ?? undefined;
   return (
     <html
       lang={languageConfig.locale}
       dir={languageConfig.dir}
       className={cn("h-full antialiased", "font-sans", geist.variable)}
     >
-      <body className="min-h-full bg-[#171614] text-white">{children}</body>
+      <body className="min-h-full bg-[#171614] text-white">
+        <AnalyticsScripts nonce={nonce} />
+        <Suspense fallback={null}>
+          <ProductAnalytics />
+        </Suspense>
+        {children}
+      </body>
     </html>
   );
 }

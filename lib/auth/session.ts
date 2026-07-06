@@ -20,11 +20,11 @@ type AuthenticatedSession = {
   };
 };
 
-export async function requireSession() {
+export async function requireSession(options: { refresh?: boolean } = {}) {
   const session = await createAuth().api.getSession({
     headers: await headers(),
     query: {
-      disableRefresh: true,
+      disableRefresh: options.refresh === false,
     },
   });
   if (!session?.user?.id) return null;

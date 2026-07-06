@@ -146,6 +146,7 @@ import sitemap, {
   sitemapIndexEntries,
   sitemapLanguages,
 } from "../lib/seo/sitemap";
+import { buildContentSecurityPolicy } from "../lib/security/headers";
 
 test("topic routing separates public slugs from private uuid chats", () => {
   assert.equal(defaultTopicPath(), "/chat/learn-anything");
@@ -681,21 +682,20 @@ test("next config preserves canonical legal route and crawler headers", async ()
   const apiHeaders = headers.find((entry) => entry.source === "/api/:path*");
   const mediaHeaders = headers.find((entry) => entry.source === "/media/:path*");
   const rootHeaders = headers.find((entry) => entry.source === "/:path*");
+  const csp = buildContentSecurityPolicy("test-nonce");
+  const scriptDirective = csp
+    .split("; ")
+    .find((directive) => directive.startsWith("script-src"));
 
   assert.equal(tncRedirect?.destination, "/terms");
   assert.equal(tncRedirect?.permanent, true);
   assert.equal(sitemapRewrite?.destination, "/sitemap");
-  assert.ok(
-    rootHeaders?.headers.some(
-      (header) => header.key === "Content-Security-Policy" && header.value.includes("frame-ancestors 'none'"),
-    ),
-  );
-  assert.ok(
-    rootHeaders?.headers.some(
-      (header) =>
-        header.key === "Content-Security-Policy" && header.value.includes("form-action 'self' https://accounts.google.com"),
-    ),
-  );
+  assert.ok(rootHeaders?.headers.some((header) => header.key === "X-Frame-Options" && header.value === "DENY"));
+  assert.ok(csp.includes("frame-ancestors 'none'"));
+  assert.ok(csp.includes("form-action 'self' https://accounts.google.com"));
+  assert.ok(scriptDirective?.includes("script-src 'self' 'nonce-test-nonce' 'strict-dynamic'"));
+  assert.equal(scriptDirective?.includes("'unsafe-inline'"), false);
+  assert.equal(scriptDirective?.includes("'unsafe-eval'"), process.env.NODE_ENV === "development");
   assert.equal(
     rootHeaders?.headers.some((header) => header.key === "Content-Security-Policy-Report-Only"),
     false,

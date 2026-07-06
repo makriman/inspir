@@ -58,6 +58,7 @@ export function createAuth() {
     session: {
       modelName: "sessions",
       expiresIn: 60 * 60 * 24 * 30,
+      // Session reads refresh by default through requireSession(); this one-day updateAge keeps D1 writes bounded.
       updateAge: 60 * 60 * 24,
       fields: {
         token: "sessionToken",
@@ -89,6 +90,8 @@ export function createAuth() {
       accountLinking: {
         enabled: true,
         trustedProviders: ["google"],
+        // Safe while Google is the only provider and email_verified is enforced in mapProfileToUser/database hooks.
+        // Revisit before adding any non-Google provider.
         requireLocalEmailVerified: false,
         updateUserInfoOnLink: true,
       },

@@ -1,4 +1,5 @@
 import { d1All, d1First, d1Run } from "@/lib/db/client";
+import { recordOpsEvent } from "@/lib/observability/events";
 
 const oneDayMs = 24 * 60 * 60 * 1000;
 const defaultLlmBudgetShardCount = 16;
@@ -70,7 +71,16 @@ export async function consumeFixedWindowQuota(
   now = new Date(),
 ): Promise<RateLimitResult> {
   const resetAt = new Date(now.getTime() + windowMs);
-  if (limit <= 0) return rateLimitResult(false, limit, 0, resetAt, now);
+  if (limit <= 0) {
+    await recordOpsEvent({
+      eventName: "rate_limit_denied",
+      severity: "warning",
+      surface: "quota",
+      message: "A fixed-window quota with a zero limit denied a request.",
+      metadata: { key: safeEventValue(key), limit, retryAfterSeconds: 1 },
+    });
+    return rateLimitResult(false, limit, 0, resetAt, now);
+  }
 
   try {
     const updated = await d1All<{ count: number; resetAt: DbTimestamp }>(
@@ -103,11 +113,30 @@ export async function consumeFixedWindowQuota(
         'select reset_at as "resetAt" from rate_limit_windows where "key" = ?',
         key,
       );
-      return rateLimitResult(false, limit, 0, existing?.resetAt ?? resetAt, now);
+      const denied = rateLimitResult(false, limit, 0, existing?.resetAt ?? resetAt, now);
+      await recordOpsEvent({
+        eventName: "rate_limit_denied",
+        severity: "warning",
+        surface: "quota",
+        message: "A fixed-window quota denied a request.",
+        metadata: {
+          key: safeEventValue(key),
+          limit,
+          retryAfterSeconds: denied.retryAfterSeconds,
+        },
+      });
+      return denied;
     }
     return rateLimitResult(true, limit, limit - updated[0].count, updated[0].resetAt, now);
   } catch (error) {
     console.error("rate_limit_check_failed", { key, error });
+    await recordOpsEvent({
+      eventName: "rate_limit_check_failed",
+      severity: "warning",
+      surface: "quota",
+      message: error instanceof Error ? error.message : "Rate limit check failed.",
+      metadata: { key: safeEventValue(key), limit },
+    });
     return quotaUnavailableResult(limit, resetAt, now);
   }
 }
@@ -118,7 +147,16 @@ export async function consumeDailyLlmBudget(
 ): Promise<LlmBudgetResult> {
   const day = utcDayKey(now);
   const resetAt = dailyLimitReset(now);
-  if (limit <= 0) return { ...rateLimitResult(false, limit, 0, resetAt, now), day };
+  if (limit <= 0) {
+    await recordOpsEvent({
+      eventName: "llm_budget_denied",
+      severity: "critical",
+      surface: "llm-budget",
+      message: "The global LLM daily budget is configured at zero.",
+      metadata: { day, limit },
+    });
+    return { ...rateLimitResult(false, limit, 0, resetAt, now), day };
+  }
 
   try {
     const shardCount = llmBudgetShardCountFromEnv();
@@ -142,7 +180,17 @@ export async function consumeDailyLlmBudget(
       limit,
     );
     const total = await getDailyLlmCallTotal(day);
-    if (!rows.length) return { ...rateLimitResult(false, limit, limit - total, resetAt, now), day };
+    if (!rows.length) {
+      const denied = { ...rateLimitResult(false, limit, limit - total, resetAt, now), day };
+      await recordOpsEvent({
+        eventName: "llm_budget_denied",
+        severity: "critical",
+        surface: "llm-budget",
+        message: "The global LLM daily budget denied a request.",
+        metadata: { day, limit, total, retryAfterSeconds: denied.retryAfterSeconds },
+      });
+      return denied;
+    }
     const result = rateLimitResult(true, limit, limit - total, resetAt, now);
     return { ...result, day };
   } catch (error) {
@@ -155,6 +203,13 @@ export async function consumeDailyLlmBudget(
         error: error instanceof Error ? error.message : String(error),
       }),
     );
+    await recordOpsEvent({
+      eventName: "llm_budget_check_failed",
+      severity: "critical",
+      surface: "llm-budget",
+      message: error instanceof Error ? error.message : "Global LLM budget check failed.",
+      metadata: { day, limit },
+    });
     return { ...budgetUnavailableResult(limit, resetAt, now), day };
   }
 }
@@ -213,6 +268,10 @@ function randomLlmBudgetShard(shardCount: number) {
   const values = new Uint32Array(1);
   crypto.getRandomValues(values);
   return (values[0] ?? 0) % normalized;
+}
+
+function safeEventValue(value: string) {
+  return value.slice(0, 220);
 }
 
 export async function pruneExpiredRateLimits(now = new Date(), retentionMs = 2 * oneDayMs) {

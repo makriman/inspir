@@ -40,6 +40,7 @@ export const users = sqliteTable("users", {
 export const accounts = sqliteTable(
   "accounts",
   {
+    // Nullable because the Better Auth migration avoided a risky D1 table rebuild; new rows still receive ids.
     id: uuidText("id"),
     userId: text("user_id")
       .notNull()
@@ -49,12 +50,15 @@ export const accounts = sqliteTable(
     providerAccountId: text("provider_account_id").notNull(),
     refresh_token: text("refresh_token"),
     access_token: text("access_token"),
+    // Legacy NextAuth rollback data. Drop after the Better Auth soak period.
     expires_at: integer("expires_at"),
     accessTokenExpiresAt: timestampMs("access_token_expires_at"),
     refreshTokenExpiresAt: timestampMs("refresh_token_expires_at"),
+    // Legacy NextAuth rollback data. Drop after the Better Auth soak period.
     token_type: text("token_type"),
     scope: text("scope"),
     id_token: text("id_token"),
+    // Legacy NextAuth rollback data. Drop after the Better Auth soak period.
     session_state: text("session_state"),
     password: text("password"),
     createdAt: timestampMsNow("created_at"),
@@ -68,6 +72,7 @@ export const accounts = sqliteTable(
 );
 
 export const sessions = sqliteTable("sessions", {
+  // Nullable because the Better Auth migration avoided a risky D1 table rebuild; new rows still receive ids.
   id: uuidText("id"),
   sessionToken: text("session_token").primaryKey(),
   userId: text("user_id")
@@ -119,6 +124,64 @@ export const llmUsageDailyShards = sqliteTable(
   (table) => ({
     pk: primaryKey({ columns: [table.day, table.shard] }),
     dayIdx: index("llm_usage_daily_shards_day_idx").on(table.day),
+  }),
+);
+
+export const adminUsers = sqliteTable(
+  "admin_users",
+  {
+    email: text("email").primaryKey(),
+    addedByUserId: text("added_by_user_id").references(() => users.id, { onDelete: "set null" }),
+    addedByEmail: text("added_by_email"),
+    createdAt: timestampMsNow("created_at"),
+  },
+  (table) => ({
+    createdIdx: index("admin_users_created_idx").on(table.createdAt),
+  }),
+);
+
+export const productEvents = sqliteTable(
+  "product_events",
+  {
+    id: uuidText("id").primaryKey(),
+    name: text("name").notNull(),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    userEmailSnapshot: text("user_email_snapshot"),
+    route: text("route"),
+    sessionId: text("session_id"),
+    userAgentHash: text("user_agent_hash"),
+    properties: jsonText<Record<string, unknown>>("properties")
+      .notNull()
+      .$defaultFn(() => ({})),
+    createdAt: timestampMsNow("created_at"),
+  },
+  (table) => ({
+    nameCreatedIdx: index("product_events_name_created_idx").on(table.name, table.createdAt),
+    routeCreatedIdx: index("product_events_route_created_idx").on(table.route, table.createdAt),
+    userCreatedIdx: index("product_events_user_created_idx").on(table.userId, table.createdAt),
+    createdIdx: index("product_events_created_idx").on(table.createdAt),
+  }),
+);
+
+export const opsEvents = sqliteTable(
+  "ops_events",
+  {
+    id: uuidText("id").primaryKey(),
+    eventName: text("event_name").notNull(),
+    severity: text("severity").notNull().default("info"),
+    surface: text("surface"),
+    userId: text("user_id").references(() => users.id, { onDelete: "set null" }),
+    message: text("message"),
+    metadata: jsonText<Record<string, unknown>>("metadata")
+      .notNull()
+      .$defaultFn(() => ({})),
+    createdAt: timestampMsNow("created_at"),
+  },
+  (table) => ({
+    eventCreatedIdx: index("ops_events_event_created_idx").on(table.eventName, table.createdAt),
+    severityCreatedIdx: index("ops_events_severity_created_idx").on(table.severity, table.createdAt),
+    surfaceCreatedIdx: index("ops_events_surface_created_idx").on(table.surface, table.createdAt),
+    createdIdx: index("ops_events_created_idx").on(table.createdAt),
   }),
 );
 
@@ -535,6 +598,9 @@ export type Message = typeof messages.$inferSelect;
 export type User = typeof users.$inferSelect;
 export type RateLimitWindow = typeof rateLimitWindows.$inferSelect;
 export type LlmUsageDailyShard = typeof llmUsageDailyShards.$inferSelect;
+export type AdminUser = typeof adminUsers.$inferSelect;
+export type ProductEvent = typeof productEvents.$inferSelect;
+export type OpsEvent = typeof opsEvents.$inferSelect;
 export type AppMetadata = typeof appMetadata.$inferSelect;
 export type ActivityRun = typeof activityRuns.$inferSelect;
 export type AppTranslation = typeof appTranslations.$inferSelect;

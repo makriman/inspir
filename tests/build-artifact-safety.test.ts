@@ -243,23 +243,30 @@ test("sanitized preview dotenv includes test auth only when explicitly supplied"
   const cwd = makeRepo();
   const previousSecret = process.env.E2E_TEST_AUTH_SECRET;
   const previousEmail = process.env.E2E_TEST_AUTH_EMAIL;
+  const previousAdmin = process.env.E2E_TEST_AUTH_IS_ADMIN;
 
   try {
     delete process.env.E2E_TEST_AUTH_SECRET;
     delete process.env.E2E_TEST_AUTH_EMAIL;
+    delete process.env.E2E_TEST_AUTH_IS_ADMIN;
     assert.equal(sanitizedDotEnvContent(cwd, { includeLocalPreviewRuntimeSecrets: true }).includes("E2E_TEST_AUTH"), false);
 
     process.env.E2E_TEST_AUTH_SECRET = "local-preview-session-secret";
     process.env.E2E_TEST_AUTH_EMAIL = "learner@example.com";
+    process.env.E2E_TEST_AUTH_IS_ADMIN = "1";
     const content = sanitizedDotEnvContent(cwd, { includeLocalPreviewRuntimeSecrets: true });
 
     assert.match(content, /E2E_TEST_AUTH_SECRET=local-preview-session-secret/);
     assert.match(content, /E2E_TEST_AUTH_EMAIL=learner@example\.com/);
+    assert.match(content, /E2E_TEST_AUTH_IS_ADMIN=1/);
+    assert.match(content, /ADMIN_EMAILS=learner@example\.com/);
   } finally {
     if (previousSecret === undefined) delete process.env.E2E_TEST_AUTH_SECRET;
     else process.env.E2E_TEST_AUTH_SECRET = previousSecret;
     if (previousEmail === undefined) delete process.env.E2E_TEST_AUTH_EMAIL;
     else process.env.E2E_TEST_AUTH_EMAIL = previousEmail;
+    if (previousAdmin === undefined) delete process.env.E2E_TEST_AUTH_IS_ADMIN;
+    else process.env.E2E_TEST_AUTH_IS_ADMIN = previousAdmin;
   }
 });
 

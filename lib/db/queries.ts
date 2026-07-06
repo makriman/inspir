@@ -1,14 +1,16 @@
 import { createHash } from "node:crypto";
 import { and, asc, count, desc, eq, inArray, or, sql as drizzleSql } from "drizzle-orm";
-import { db } from "./client";
+import { d1All, db } from "./client";
 import { d1ContainsLikePattern } from "./like";
 import {
   activityRuns,
+  adminUsers,
   aiRuns,
   appMetadata,
   appTranslationSourceStrings,
   appTranslationSources,
   appTranslations,
+  llmUsageDailyShards,
   chats,
   messages,
   topics,
@@ -297,6 +299,164 @@ export async function updateUserProfile(
     .where(eq(users.id, userId))
     .returning();
   return user;
+}
+
+export async function getAdminUsers() {
+  const rows = await db.select().from(adminUsers).orderBy(asc(adminUsers.email));
+  return rows;
+}
+
+export async function addAdminUser(input: { email: string; addedByUserId: string; addedByEmail: string | null }) {
+  const normalized = input.email.trim().toLowerCase();
+  const [admin] = await db
+    .insert(adminUsers)
+    .values({
+      email: normalized,
+      addedByUserId: input.addedByUserId,
+      addedByEmail: input.addedByEmail,
+    })
+    .onConflictDoUpdate({
+      target: adminUsers.email,
+      set: {
+        addedByUserId: input.addedByUserId,
+        addedByEmail: input.addedByEmail,
+      },
+    })
+    .returning();
+  return admin;
+}
+
+export async function removeAdminUser(email: string) {
+  const normalized = email.trim().toLowerCase();
+  await db.delete(adminUsers).where(eq(adminUsers.email, normalized));
+}
+
+export type AdminDashboardData = Awaited<ReturnType<typeof getAdminDashboardData>>;
+
+export async function getAdminDashboardData(days = 14) {
+  const since = Date.now() - Math.max(1, Math.min(days, 90)) * 24 * 60 * 60 * 1000;
+  const [aiDaily, productDaily, topRoutes, opsRecent, quotaEvents, llmUsage, totals] = await Promise.all([
+    d1All<{
+      day: string;
+      runs: number;
+      completed: number;
+      failed: number;
+      tokens: number;
+      promptTokens: number;
+      completionTokens: number;
+    }>(
+      `select
+         date(created_at / 1000, 'unixepoch') as day,
+         count(*) as runs,
+         sum(case when status = 'completed' then 1 else 0 end) as completed,
+         sum(case when status = 'failed' then 1 else 0 end) as failed,
+         coalesce(sum(total_tokens), 0) as tokens,
+         coalesce(sum(prompt_tokens), 0) as promptTokens,
+         coalesce(sum(completion_tokens), 0) as completionTokens
+       from ai_runs
+       where created_at >= ?
+       group by day
+       order by day desc`,
+      since,
+    ),
+    d1All<{ day: string; events: number; users: number }>(
+      `select
+         date(created_at / 1000, 'unixepoch') as day,
+         count(*) as events,
+         count(distinct user_id) as users
+       from product_events
+       where created_at >= ?
+       group by day
+       order by day desc`,
+      since,
+    ),
+    d1All<{ route: string; views: number; users: number }>(
+      `select
+         coalesce(route, '/') as route,
+         count(*) as views,
+         count(distinct user_id) as users
+       from product_events
+       where created_at >= ?
+         and name = 'page_view'
+       group by coalesce(route, '/')
+       order by views desc
+       limit 10`,
+      since,
+    ),
+    d1All<{
+      eventName: string;
+      severity: string;
+      surface: string | null;
+      message: string | null;
+      createdAt: number;
+    }>(
+      `select
+         event_name as eventName,
+         severity,
+         surface,
+         message,
+         created_at as createdAt
+       from ops_events
+       where created_at >= ?
+       order by created_at desc
+       limit 20`,
+      since,
+    ),
+    d1All<{ eventName: string; count: number }>(
+      `select event_name as eventName, count(*) as count
+       from ops_events
+       where created_at >= ?
+         and event_name in ('rate_limit_denied', 'rate_limit_check_failed', 'llm_budget_denied', 'llm_budget_check_failed')
+       group by event_name
+       order by count desc`,
+      since,
+    ),
+    db
+      .select({
+        day: llmUsageDailyShards.day,
+        callCount: drizzleSql<number>`coalesce(sum(${llmUsageDailyShards.callCount}), 0)`,
+      })
+      .from(llmUsageDailyShards)
+      .groupBy(llmUsageDailyShards.day)
+      .orderBy(desc(llmUsageDailyShards.day))
+      .limit(14),
+    d1All<{
+      users: number;
+      chats: number;
+      messages: number;
+      aiRuns: number;
+      productEvents: number;
+      opsEvents: number;
+    }>(
+      `select
+         (select count(*) from users) as users,
+         (select count(*) from chats) as chats,
+         (select count(*) from messages) as messages,
+         (select count(*) from ai_runs) as aiRuns,
+         (select count(*) from product_events where created_at >= ?) as productEvents,
+         (select count(*) from ops_events where created_at >= ?) as opsEvents`,
+      since,
+      since,
+    ),
+  ]);
+
+  return {
+    since,
+    aiDaily,
+    productDaily,
+    topRoutes,
+    opsRecent,
+    quotaEvents,
+    llmUsage,
+    totals: totals[0] ?? {
+      users: 0,
+      chats: 0,
+      messages: 0,
+      aiRuns: 0,
+      productEvents: 0,
+      opsEvents: 0,
+    },
+  };
 }
 
 export async function getAppTranslation(namespace: string, language: string) {
