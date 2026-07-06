@@ -82,8 +82,8 @@ test("profile photo upload preflight rejects oversized content length", () => {
   assert.equal(isOversizedProfileImageUpload(String(maxProfileImageUploadRequestBytes + 1)), true);
 });
 
-test("profile photo R2 keys are deterministic and do not expose user ids", () => {
-  const key = profileImageObjectKey("user@example.com", "a".repeat(64));
+test("profile photo R2 keys are deterministic and do not expose user ids", async () => {
+  const key = await profileImageObjectKey("user@example.com", "a".repeat(64));
   assert.match(key, /^profile-images\/users\/[a-f0-9]{2}\/[a-f0-9]{64}\/a{64}$/);
   assert.equal(key.includes("user@example.com"), false);
   assert.equal(key.includes(".."), false);

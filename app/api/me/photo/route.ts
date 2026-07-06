@@ -58,30 +58,32 @@ export async function PATCH(request: NextRequest) {
   }
 
   const previous = await getUserPhotoById(session.user.id);
-  const object = await putProfileImageObject({
-    userId: session.user.id,
-    bytes,
-    mimeType: prepared.mimeType,
-    hash: prepared.hash,
-  });
-  let user: Awaited<ReturnType<typeof updateUserProfilePhoto>>;
-  try {
-    user = await updateUserProfilePhoto(session.user.id, {
-      profileImageMime: prepared.mimeType,
-      profileImageHash: prepared.hash,
-      profileImageR2Key: object.key,
-      profileImageR2Etag: object.etag,
-      profileImageSize: object.size,
+  const { object, user } = await withProfilePhotoWriteRetry(async () => {
+    const nextObject = await putProfileImageObject({
+      userId: session.user.id,
+      bytes,
+      mimeType: prepared.mimeType,
+      hash: prepared.hash,
     });
-  } catch (error) {
-    await deleteProfileImageObject(object.key).catch((deleteError) =>
-      console.warn("profile_photo_new_r2_orphan_delete_failed", {
-        userId: session.user.id,
-        error: deleteError instanceof Error ? deleteError.message : String(deleteError),
-      }),
-    );
-    throw error;
-  }
+    try {
+      const nextUser = await updateUserProfilePhoto(session.user.id, {
+        profileImageMime: prepared.mimeType,
+        profileImageHash: prepared.hash,
+        profileImageR2Key: nextObject.key,
+        profileImageR2Etag: nextObject.etag,
+        profileImageSize: nextObject.size,
+      });
+      return { object: nextObject, user: nextUser };
+    } catch (error) {
+      await deleteProfileImageObject(nextObject.key).catch((deleteError) =>
+        console.warn("profile_photo_new_r2_orphan_delete_failed", {
+          userId: session.user.id,
+          error: deleteError instanceof Error ? deleteError.message : String(deleteError),
+        }),
+      );
+      throw error;
+    }
+  });
   if (previous?.profileImageR2Key && previous.profileImageR2Key !== object.key) {
     await deleteProfileImageObject(previous.profileImageR2Key).catch((error) =>
       console.warn("profile_photo_previous_r2_delete_failed", {
@@ -111,4 +113,23 @@ export async function DELETE() {
     );
   }
   return NextResponse.json({ profileImageHash: null });
+}
+
+async function withProfilePhotoWriteRetry<T>(write: () => Promise<T>) {
+  const maxAttempts = 3;
+  let lastError: unknown;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      return await write();
+    } catch (error) {
+      lastError = error;
+      if (attempt >= maxAttempts) break;
+      console.warn("profile_photo_write_retry", {
+        attempt,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      await new Promise((resolve) => setTimeout(resolve, 125 * attempt));
+    }
+  }
+  throw lastError;
 }

@@ -1,13 +1,13 @@
-import { createHash } from "node:crypto";
-
 const profileImagePrefix = "profile-images/users";
 
-export function profileImageUserHash(userId: string) {
-  return createHash("sha256").update(userId).digest("hex");
+export async function profileImageUserHash(userId: string) {
+  const encoded = new TextEncoder().encode(userId);
+  const digest = await crypto.subtle.digest("SHA-256", encoded);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
-export function profileImageObjectKey(userId: string, hash: string) {
-  const userHash = profileImageUserHash(userId);
+export async function profileImageObjectKey(userId: string, hash: string) {
+  const userHash = await profileImageUserHash(userId);
   return `${profileImagePrefix}/${userHash.slice(0, 2)}/${userHash}/${hash}`;
 }
 

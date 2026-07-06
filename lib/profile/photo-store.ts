@@ -16,8 +16,9 @@ export async function putProfileImageObject(input: {
   mimeType: string;
   hash: string;
 }) {
-  const key = profileImageObjectKey(input.userId, input.hash);
+  const key = await profileImageObjectKey(input.userId, input.hash);
   const body = new Uint8Array(input.bytes);
+  const userHash = await profileImageUserHash(input.userId);
   const object = await getProfileImagesBucket().put(key, body, {
     httpMetadata: {
       contentType: input.mimeType,
@@ -25,7 +26,7 @@ export async function putProfileImageObject(input: {
     },
     customMetadata: {
       kind: "profile-image",
-      userHash: profileImageUserHash(input.userId),
+      userHash,
       sha256: input.hash,
     },
     sha256: input.hash,
