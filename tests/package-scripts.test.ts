@@ -74,6 +74,28 @@ test("chat auto-translation skips streaming markdown mutations", () => {
   assert.match(richMarkdown, /data-no-auto-translate="true"/);
 });
 
+test("profile layout merges identity into details and uses full-width sections", () => {
+  const profilePanel = fs.readFileSync(path.resolve("components/chat/ProfilePanel.tsx"), "utf8");
+  const globals = fs.readFileSync(path.resolve("app/globals.css"), "utf8");
+
+  assert.match(profilePanel, /inspir-profile-section inspir-profile-identity-section/);
+  assert.match(profilePanel, /<div className="inspir-profile-identity-grid">/);
+  assert.ok(
+    profilePanel.indexOf('className="inspir-profile-hero"') >
+      profilePanel.indexOf('className="inspir-profile-section inspir-profile-identity-section"'),
+    "profile hero should live inside the details section instead of occupying its own column",
+  );
+  assert.match(
+    globals,
+    /\.inspir-profile-workspace \.inspir-profile-body\s*{[\s\S]*?grid-template-columns: minmax\(0, 1fr\)/,
+  );
+  assert.doesNotMatch(
+    globals,
+    /\.inspir-profile-workspace \.inspir-profile-body\s*{[\s\S]*?grid-template-columns: minmax\(260px, 340px\) minmax\(0, 1fr\)/,
+  );
+  assert.match(globals, /\.inspir-profile-identity-grid\s*{[\s\S]*?grid-template-columns:/);
+});
+
 test("deploy quality gates avoid floating CLI resolution", () => {
   const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
     scripts?: Record<string, string>;

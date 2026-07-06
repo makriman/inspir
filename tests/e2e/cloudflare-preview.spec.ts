@@ -184,6 +184,67 @@ test("Google sign-in and sign-out work with the dedicated test account", async (
     .toBe(false);
 });
 
+test("authenticated profile uses a full-width identity and details layout", async ({ page }, testInfo) => {
+  test.setTimeout(120_000);
+  await page.setViewportSize({ width: 1440, height: 960 });
+  await signInWithGoogle(page);
+
+  await page.getByRole("button", { name: /open profile/i }).click();
+  await expect(page.getByRole("heading", { name: /make inspir feel like it knows how you learn/i })).toBeVisible();
+  await expect(page.getByRole("heading", { name: /your app identity/i })).toBeVisible();
+
+  const layout = await page.evaluate(() => {
+    const panel = document.querySelector<HTMLElement>(".inspir-profile-workspace");
+    const body = document.querySelector<HTMLElement>(".inspir-profile-body");
+    const identity = document.querySelector<HTMLElement>(".inspir-profile-identity-section");
+    const identityGrid = document.querySelector<HTMLElement>(".inspir-profile-identity-grid");
+    const hero = document.querySelector<HTMLElement>(".inspir-profile-hero");
+    const form = document.querySelector<HTMLElement>(".inspir-profile-details-form");
+    const sections = Array.from(document.querySelectorAll<HTMLElement>(".inspir-profile-section"));
+    const overview = sections.find((section) => section.textContent?.includes("Your learning snapshot")) ?? null;
+    const stats = document.querySelector<HTMLElement>(".inspir-profile-stats-grid");
+
+    const rect = (element: HTMLElement | null) => element?.getBoundingClientRect() ?? null;
+    const bodyRect = rect(body);
+    const identityRect = rect(identity);
+    const heroRect = rect(hero);
+    const formRect = rect(form);
+    const overviewRect = rect(overview);
+    const statsRect = rect(stats);
+    const bodyColumnTracks = body ? getComputedStyle(body).gridTemplateColumns.trim().split(/\s+/).filter(Boolean) : [];
+    const identityColumnTracks = identityGrid
+      ? getComputedStyle(identityGrid).gridTemplateColumns.trim().split(/\s+/).filter(Boolean)
+      : [];
+
+    return {
+      bodyColumnCount: bodyColumnTracks.length,
+      detailsShareIdentitySection: Boolean(identity && hero && form && hero.closest("section") === identity && form.closest("section") === identity),
+      identityColumnCount: identityColumnTracks.length,
+      identityWidthDelta: bodyRect && identityRect ? Math.abs(bodyRect.width - identityRect.width) : null,
+      overviewWidthDelta: bodyRect && overviewRect ? Math.abs(bodyRect.width - overviewRect.width) : null,
+      rowTopDelta: heroRect && formRect ? Math.abs(heroRect.top - formRect.top) : null,
+      statsWidthDelta: overviewRect && statsRect ? Math.abs(overviewRect.width - statsRect.width) : null,
+      panelHorizontalOverflow: panel ? panel.scrollWidth - panel.clientWidth : null,
+    };
+  });
+
+  expect(layout.detailsShareIdentitySection).toBe(true);
+  expect(layout.bodyColumnCount).toBe(1);
+  expect(layout.identityColumnCount).toBe(2);
+  expect(layout.identityWidthDelta).not.toBeNull();
+  expect(layout.identityWidthDelta ?? 999).toBeLessThanOrEqual(2);
+  expect(layout.overviewWidthDelta).not.toBeNull();
+  expect(layout.overviewWidthDelta ?? 999).toBeLessThanOrEqual(2);
+  expect(layout.rowTopDelta).not.toBeNull();
+  expect(layout.rowTopDelta ?? 999).toBeLessThanOrEqual(4);
+  expect(layout.statsWidthDelta).not.toBeNull();
+  expect(layout.statsWidthDelta ?? 999).toBeLessThanOrEqual(36);
+  expect(layout.panelHorizontalOverflow).not.toBeNull();
+  expect(layout.panelHorizontalOverflow ?? 999).toBeLessThanOrEqual(2);
+
+  await page.screenshot({ path: testInfo.outputPath("profile-layout-desktop.png"), fullPage: true });
+});
+
 test("authenticated profile photo API stores, serves, and resets image bytes", async ({ page }) => {
   test.setTimeout(120_000);
   await signInWithGoogle(page);

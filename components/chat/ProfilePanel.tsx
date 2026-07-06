@@ -171,98 +171,99 @@ export function ProfilePanel({
         </button>
       </div>
       <div className="inspir-profile-body">
-        <section className="inspir-profile-hero">
-          <div className="inspir-profile-avatar">
-            {avatarSrc ? (
-              <Image key={avatarSrc} src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized />
-            ) : (
-              <UserRound size={42} />
-            )}
-          </div>
-          <div>
-            <h3>{user.name || "Learner"}</h3>
-            <p>{user.email || "user@example.com"}</p>
-            <div className="inspir-profile-photo-actions">
-              <input
-                ref={photoInputRef}
-                type="file"
-                aria-label={t("Profile photo")}
-                accept="image/jpeg,image/png,image/webp"
-                className="inspir-profile-photo-input"
-                onChange={(event) => void handlePhotoChange(event)}
-              />
-              <button
-                type="button"
-                disabled={photoSaving}
-                onClick={() => photoInputRef.current?.click()}
-                className="inspir-profile-photo-button"
-              >
-                <Camera size={16} />
-                <span>{photoSaving ? t("Saving...") : t("Change photo")}</span>
-              </button>
-              {user.profileImageHash ? (
-                <button
-                  type="button"
-                  disabled={photoSaving}
-                  onClick={() => void resetPhoto()}
-                  className="inspir-profile-photo-button is-muted"
-                >
-                  <Trash2 size={15} />
-                  <span>{t("Use Google photo")}</span>
-                </button>
-              ) : null}
-            </div>
-            {photoError ? <span className="inspir-profile-details-error">{photoError}</span> : null}
-            {photoMessage ? <span className="inspir-profile-details-success">{photoMessage}</span> : null}
-          </div>
-        </section>
-
-        <section className="inspir-profile-section">
+        <section className="inspir-profile-section inspir-profile-identity-section">
           <div className="inspir-profile-section-head">
             <span>{t("Profile details")}</span>
             <h3>{t("Your app identity")}</h3>
           </div>
-          <form className="inspir-profile-details-form" onSubmit={submitProfileDetails}>
-            <label>
-              <span>{t("Display name")}</span>
-              <input
-                type="text"
-                value={name}
-                maxLength={120}
-                autoComplete="name"
-                onChange={(event) => updateState({ name: event.target.value })}
-              />
-            </label>
-            <label>
-              <span>{t("Date of birth")}</span>
-              <input
-                type="date"
-                value={dateOfBirth}
-                max={today}
-                onChange={(event) => updateState({ dateOfBirth: event.target.value })}
-              />
-            </label>
-            <div className="inspir-profile-details-language">
-              <span>{t("Preferred Language")}</span>
-              <LanguagePicker
-                currentLanguage={preferredLanguage}
-                recommendedLanguage={preferredLanguage}
-                disabled={detailsSaving || languageSaving}
-                buttonLabel={t("Preferred Language")}
-                title={t("Choose your learning language")}
-                description={t("All app text and tutoring replies follow this setting.")}
-                closeLabel={t("Close")}
-                quickChoicesLabel={t("Preferred Language")}
-                onSelect={(language) => updateState({ preferredLanguage: language })}
-                className="inspir-profile-language-picker"
-              />
+          <div className="inspir-profile-identity-grid">
+            <div className="inspir-profile-hero">
+              <div className="inspir-profile-avatar">
+                {avatarSrc ? (
+                  <Image key={avatarSrc} src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized />
+                ) : (
+                  <UserRound size={42} />
+                )}
+              </div>
+              <div className="inspir-profile-hero-copy">
+                <h3>{user.name || "Learner"}</h3>
+                <p>{user.email || "user@example.com"}</p>
+              </div>
+              <div className="inspir-profile-photo-actions">
+                <input
+                  ref={photoInputRef}
+                  type="file"
+                  aria-label={t("Profile photo")}
+                  accept="image/jpeg,image/png,image/webp"
+                  className="inspir-profile-photo-input"
+                  onChange={(event) => void handlePhotoChange(event)}
+                />
+                <button
+                  type="button"
+                  disabled={photoSaving}
+                  onClick={() => photoInputRef.current?.click()}
+                  className="inspir-profile-photo-button"
+                >
+                  <Camera size={16} />
+                  <span>{photoSaving ? t("Saving...") : t("Change photo")}</span>
+                </button>
+                {user.profileImageHash ? (
+                  <button
+                    type="button"
+                    disabled={photoSaving}
+                    onClick={() => void resetPhoto()}
+                    className="inspir-profile-photo-button is-muted"
+                  >
+                    <Trash2 size={15} />
+                    <span>{t("Use Google photo")}</span>
+                  </button>
+                ) : null}
+              </div>
+              {photoError ? <span className="inspir-profile-details-error">{photoError}</span> : null}
+              {photoMessage ? <span className="inspir-profile-details-success">{photoMessage}</span> : null}
             </div>
-            {detailsError ? <span className="inspir-profile-details-error">{detailsError}</span> : null}
-            {detailsMessage ? <span className="inspir-profile-details-success">{detailsMessage}</span> : null}
-            <button type="submit" disabled={detailsSaving || languageSaving} className="inspir-profile-save-button">
-              {detailsSaving || languageSaving ? t("Saving...") : t("Save profile")}
-            </button>
-          </form>
+            <form className="inspir-profile-details-form" onSubmit={submitProfileDetails}>
+              <label>
+                <span>{t("Display name")}</span>
+                <input
+                  type="text"
+                  value={name}
+                  maxLength={120}
+                  autoComplete="name"
+                  onChange={(event) => updateState({ name: event.target.value })}
+                />
+              </label>
+              <label>
+                <span>{t("Date of birth")}</span>
+                <input
+                  type="date"
+                  value={dateOfBirth}
+                  max={today}
+                  onChange={(event) => updateState({ dateOfBirth: event.target.value })}
+                />
+              </label>
+              <div className="inspir-profile-details-language">
+                <span>{t("Preferred Language")}</span>
+                <LanguagePicker
+                  currentLanguage={preferredLanguage}
+                  recommendedLanguage={preferredLanguage}
+                  disabled={detailsSaving || languageSaving}
+                  buttonLabel={t("Preferred Language")}
+                  title={t("Choose your learning language")}
+                  description={t("All app text and tutoring replies follow this setting.")}
+                  closeLabel={t("Close")}
+                  quickChoicesLabel={t("Preferred Language")}
+                  onSelect={(language) => updateState({ preferredLanguage: language })}
+                  className="inspir-profile-language-picker"
+                />
+              </div>
+              {detailsError ? <span className="inspir-profile-details-error">{detailsError}</span> : null}
+              {detailsMessage ? <span className="inspir-profile-details-success">{detailsMessage}</span> : null}
+              <button type="submit" disabled={detailsSaving || languageSaving} className="inspir-profile-save-button">
+                {detailsSaving || languageSaving ? t("Saving...") : t("Save profile")}
+              </button>
+            </form>
+          </div>
         </section>
 
         <section className="inspir-profile-section">

@@ -680,10 +680,20 @@ test("next config preserves canonical legal route and crawler headers", async ()
       rewrites.fallback?.find((rewrite) => rewrite.source === "/sitemap.xml");
   const apiHeaders = headers.find((entry) => entry.source === "/api/:path*");
   const mediaHeaders = headers.find((entry) => entry.source === "/media/:path*");
+  const rootHeaders = headers.find((entry) => entry.source === "/:path*");
 
   assert.equal(tncRedirect?.destination, "/terms");
   assert.equal(tncRedirect?.permanent, true);
   assert.equal(sitemapRewrite?.destination, "/sitemap");
+  assert.ok(
+    rootHeaders?.headers.some(
+      (header) => header.key === "Content-Security-Policy" && header.value.includes("frame-ancestors 'none'"),
+    ),
+  );
+  assert.equal(
+    rootHeaders?.headers.some((header) => header.key === "Content-Security-Policy-Report-Only"),
+    false,
+  );
   assert.ok(apiHeaders?.headers.some((header) => header.key === "X-Robots-Tag" && header.value === "noindex, nofollow"));
   assert.ok(mediaHeaders?.headers.some((header) => header.key === "Cache-Control" && header.value.includes("immutable")));
 });

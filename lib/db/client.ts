@@ -17,6 +17,9 @@ function getDb(): AppDb {
   return drizzle(getD1(), { schema });
 }
 
+// Resolve the D1 binding on each access. OpenNext supplies Cloudflare env
+// per request, so a module-level Drizzle singleton can capture the wrong
+// binding during previews, cron, queues, or test contexts.
 export const db = new Proxy({} as AppDb, {
   get(_target, property, receiver) {
     const database = getDb() as unknown as Record<PropertyKey, unknown>;

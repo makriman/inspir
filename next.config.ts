@@ -4,7 +4,7 @@ import("@opennextjs/cloudflare").then((module) => module.initOpenNextCloudflareF
 
 const securityHeaders = [
   {
-    key: "Content-Security-Policy-Report-Only",
+    key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
       "base-uri 'self'",

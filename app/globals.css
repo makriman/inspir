@@ -7848,7 +7848,7 @@ a {
   background:
     radial-gradient(circle at 8% 0%, rgb(88 205 110 / 0.18), transparent 24rem),
     linear-gradient(180deg, rgb(8 9 10), rgb(0 0 0));
-  padding: clamp(18px, 4vw, 42px);
+  padding: clamp(16px, 3vw, 34px);
 }
 
 .inspir-chat-root.profile-open {
@@ -7930,12 +7930,12 @@ a {
 
 .inspir-profile-workspace .inspir-profile-header {
   display: grid;
-  width: min(1180px, 100%);
+  width: min(1120px, 100%);
   height: auto;
   grid-template-columns: minmax(0, 1fr) 42px;
   align-items: start;
   gap: 16px;
-  margin: 0 auto 18px;
+  margin: 0 auto 14px;
   background: transparent;
 }
 
@@ -7954,9 +7954,9 @@ a {
   position: static;
   margin: 10px 0 0;
   color: #fff;
-  font-size: clamp(30px, 5vw, 54px);
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: 900;
-  line-height: 0.98;
+  line-height: 1.04;
 }
 
 .inspir-profile-workspace .inspir-profile-header button {
@@ -7970,22 +7970,17 @@ a {
 
 .inspir-profile-workspace .inspir-profile-body {
   display: grid;
-  width: min(1180px, 100%);
-  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  width: min(1120px, 100%);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: 16px;
   margin: 0 auto;
   padding: 0 0 24px;
 }
 
-.inspir-profile-workspace .inspir-profile-info,
-.inspir-profile-workspace .inspir-profile-hero {
-  grid-column: 1;
-}
-
 .inspir-profile-workspace .inspir-profile-section,
 .inspir-profile-workspace .inspir-language-card {
-  grid-column: 2;
+  grid-column: 1;
   margin-top: 0;
 }
 
@@ -8011,10 +8006,55 @@ a {
   line-height: 1.05;
 }
 
+.inspir-profile-identity-section {
+  padding: clamp(16px, 2.2vw, 22px);
+}
+
+.inspir-profile-identity-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 28px);
+  align-items: start;
+}
+
+.inspir-profile-workspace .inspir-profile-hero {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-align: left;
+}
+
+.inspir-profile-workspace .inspir-profile-avatar {
+  width: 82px;
+  height: 82px;
+}
+
+.inspir-profile-hero-copy {
+  min-width: 0;
+}
+
+.inspir-profile-workspace .inspir-profile-hero h3 {
+  font-size: clamp(20px, 2.2vw, 28px);
+}
+
+.inspir-profile-workspace .inspir-profile-hero p {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.inspir-profile-workspace .inspir-profile-photo-actions {
+  justify-content: flex-start;
+  margin-top: 0;
+}
+
 .inspir-profile-details-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  align-content: start;
 }
 
 .inspir-profile-details-form label,
@@ -8090,7 +8130,7 @@ a {
 
 .inspir-profile-workspace .inspir-profile-stats-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
   gap: 10px;
 }
 
@@ -8178,11 +8218,13 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .inspir-profile-workspace .inspir-profile-info,
-  .inspir-profile-workspace .inspir-profile-hero,
   .inspir-profile-workspace .inspir-profile-section,
   .inspir-profile-workspace .inspir-language-card {
     grid-column: 1;
+  }
+
+  .inspir-profile-identity-grid {
+    grid-template-columns: 1fr;
   }
 
   .inspir-profile-workspace .inspir-profile-stats-grid {
