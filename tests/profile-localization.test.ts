@@ -26,7 +26,12 @@ import { createTranslationLookup } from "../lib/i18n/translation-lookup";
 import { isValidFieldTranslation } from "../lib/i18n/translation-field-validation";
 import { isFreshAppTranslation, validateTranslationPayload } from "../lib/i18n/translation-validation";
 import { calculateAge, validateDateOfBirth } from "../lib/profile/age";
-import { maxProfileImageBytes, prepareProfileImage } from "../lib/profile/photo";
+import {
+  isOversizedProfileImageUpload,
+  maxProfileImageBytes,
+  maxProfileImageUploadRequestBytes,
+  prepareProfileImage,
+} from "../lib/profile/photo";
 import { profileImageObjectKey } from "../lib/profile/photo-key";
 import { updateProfileSchema } from "../lib/profile/validation";
 import { isChatAppPath } from "../lib/routes/chat-path";
@@ -62,6 +67,13 @@ test("profile photo validation accepts small real image types only", () => {
 
   const tooLarge = prepareProfileImage(new Uint8Array(maxProfileImageBytes + 1), "image/png");
   assert.equal(tooLarge.success, false);
+});
+
+test("profile photo upload preflight rejects oversized content length", () => {
+  assert.equal(isOversizedProfileImageUpload(null), false);
+  assert.equal(isOversizedProfileImageUpload("not-a-number"), false);
+  assert.equal(isOversizedProfileImageUpload(String(maxProfileImageUploadRequestBytes)), false);
+  assert.equal(isOversizedProfileImageUpload(String(maxProfileImageUploadRequestBytes + 1)), true);
 });
 
 test("profile photo R2 keys are deterministic and do not expose user ids", () => {

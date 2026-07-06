@@ -53,7 +53,7 @@ pnpm cf:test:e2e:production
 
 The smoke script checks the home page, localized route, SEO endpoints, topic API, and a live guest chat call.
 
-Production Playwright can also use the hidden session-auth path instead of a browser Google password when `E2E_TEST_AUTH_SECRET` is configured for the Worker and present in the local shell.
+Production Playwright can also use the hidden session-auth path instead of a browser Google password when `E2E_TEST_AUTH_SECRET` is configured for the Worker and present in the local shell. Treat those E2E Worker secrets as temporary test-only credentials: create them for the focused production test, delete them immediately after the run, then verify `/api/migration/e2e-auth` returns `404` again.
 
 ## Data Backups
 

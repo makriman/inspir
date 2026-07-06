@@ -19,6 +19,9 @@ export async function refreshProfilePhoto(userId: string | undefined, imageUrl: 
     const contentType = response.headers.get("content-type") ?? "";
     if (!contentType.startsWith("image/")) return;
 
+    const contentLength = Number(response.headers.get("content-length") ?? "");
+    if (Number.isFinite(contentLength) && contentLength > MAX_PROFILE_IMAGE_BYTES) return;
+
     const bytes = Buffer.from(await response.arrayBuffer());
     if (bytes.length === 0 || bytes.length > MAX_PROFILE_IMAGE_BYTES) return;
 

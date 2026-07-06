@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 
 export const maxProfileImageBytes = 1_000_000;
+export const maxProfileImageUploadRequestBytes = maxProfileImageBytes + 64_000;
 
 const supportedProfileImageTypes = new Set(["image/jpeg", "image/png", "image/webp"]);
 
@@ -38,6 +39,12 @@ export function prepareProfileImage(bytes: Uint8Array, providedMimeType?: string
     mimeType,
     byteLength: bytes.length,
   };
+}
+
+export function isOversizedProfileImageUpload(contentLength: string | null) {
+  if (!contentLength) return false;
+  const parsed = Number(contentLength);
+  return Number.isFinite(parsed) && parsed > maxProfileImageUploadRequestBytes;
 }
 
 function normalizeMimeType(mimeType?: string | null) {

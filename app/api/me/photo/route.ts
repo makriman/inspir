@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireSession } from "@/lib/auth/session";
 import { clearUserProfilePhoto, getUserPhotoById, updateUserProfilePhoto } from "@/lib/db/queries";
-import { prepareProfileImage } from "@/lib/profile/photo";
+import { isOversizedProfileImageUpload, prepareProfileImage } from "@/lib/profile/photo";
 import { deleteProfileImageObject, getProfileImageObject, putProfileImageObject } from "@/lib/profile/photo-store";
 import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 
@@ -40,6 +40,10 @@ export async function PATCH(request: NextRequest) {
   if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const freeze = writeFreezeResponse("profile-photo");
   if (freeze) return freeze;
+
+  if (isOversizedProfileImageUpload(request.headers.get("content-length"))) {
+    return NextResponse.json({ error: "Choose an image under 1 MB." }, { status: 413 });
+  }
 
   const formData = await request.formData().catch(() => null);
   const photo = formData?.get("photo");
