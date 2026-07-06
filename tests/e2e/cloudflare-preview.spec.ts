@@ -257,11 +257,52 @@ test("authenticated profile photo API stores, serves, and resets image bytes", a
   expect(photoGet.status, photoGet.body).toBe(200);
   expect(photoGet.headers["content-type"]).toContain("image/png");
 
+  await page.goto("/chat/learn-anything");
+  await dismissBlockingDialogs(page);
+  await page.getByRole("button", { name: /open profile/i }).click();
+  const profilePhoto = page.locator(".inspir-profile-avatar img").first();
+  await expect(profilePhoto).toBeVisible();
+  await expect
+    .poll(async () => profilePhoto.evaluate((image) => (image as HTMLImageElement).naturalWidth))
+    .toBeGreaterThan(0);
+
   const photoReset = await api(page, "DELETE", "/api/me/photo");
   expect(photoReset.status, photoReset.body).toBe(200);
 
   const photoAfterReset = await api(page, "GET", "/api/me/photo");
   expect(photoAfterReset.status, photoAfterReset.body).toBe(404);
+});
+
+test("authenticated profile avatar falls back when cached photo cannot load", async ({ page }) => {
+  test.setTimeout(120_000);
+  await signInWithGoogle(page);
+
+  const photo = await uploadTinyProfilePhoto(page);
+  expect(photo.status, photo.body).toBe(200);
+  expect(photo.json?.profileImageHash).toBeTruthy();
+
+  await page.route("**/api/me/photo**", (route) => {
+    if (route.request().method() !== "GET") {
+      void route.continue();
+      return;
+    }
+    void route.fulfill({
+      status: 404,
+      contentType: "application/json",
+      body: JSON.stringify({ error: "No cached photo" }),
+    });
+  });
+
+  await page.goto("/chat/learn-anything");
+  await dismissBlockingDialogs(page);
+  await page.getByRole("button", { name: /open profile/i }).click();
+  const avatar = page.locator(".inspir-profile-avatar").first();
+  await expect(avatar.locator("svg")).toBeVisible();
+  await expect(avatar.locator("img")).toHaveCount(0);
+
+  await page.unroute("**/api/me/photo**");
+  const photoReset = await api(page, "DELETE", "/api/me/photo");
+  expect(photoReset.status, photoReset.body).toBe(200);
 });
 
 test("authenticated profile, activity, memory, admin, and private chat APIs work", async ({ page }) => {

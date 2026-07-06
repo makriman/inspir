@@ -1,10 +1,10 @@
 import { ChangeEvent, FormEvent, useReducer, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { Camera, Trash2, UserRound, X } from "lucide-react";
+import { Camera, Trash2, X } from "lucide-react";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import type { UiTranslator } from "@/components/chat/chat-ui-types";
 import { MemoryPanel } from "@/components/chat/MemoryPanel";
+import { ProfileAvatarImage } from "@/components/chat/ProfileAvatarImage";
 import {
   type MemoryCreateInput,
   type MemoryDashboard,
@@ -179,11 +179,14 @@ export function ProfilePanel({
           <div className="inspir-profile-identity-grid">
             <div className="inspir-profile-hero">
               <div className="inspir-profile-avatar">
-                {avatarSrc ? (
-                  <Image key={avatarSrc} src={avatarSrc} alt="" width={96} height={96} sizes="96px" unoptimized />
-                ) : (
-                  <UserRound size={42} />
-                )}
+                <ProfileAvatarImage
+                  src={avatarSrc}
+                  fallbackSrc={user.image}
+                  width={96}
+                  height={96}
+                  sizes="96px"
+                  iconSize={42}
+                />
               </div>
               <div className="inspir-profile-hero-copy">
                 <h3>{user.name || "Learner"}</h3>

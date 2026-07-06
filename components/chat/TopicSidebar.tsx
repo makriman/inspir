@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Check, Plus, Search } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
+import { ProfileAvatarImage } from "@/components/chat/ProfileAvatarImage";
 import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 import { topicPath } from "@/lib/content/topic-routing";
 import { localizeHref } from "@/lib/i18n/routing";
@@ -9,6 +9,7 @@ import { topicMetadata, type Topic } from "@/components/chat/topic-model";
 type TopicSidebarProps = {
   isGuest: boolean;
   avatarSrc?: string;
+  avatarFallbackSrc?: string;
   topics: Topic[];
   sidebarTopics: Topic[];
   filteredTopics: Topic[];
@@ -26,6 +27,7 @@ type TopicSidebarProps = {
 export function TopicSidebar({
   isGuest,
   avatarSrc,
+  avatarFallbackSrc,
   topics,
   sidebarTopics,
   filteredTopics,
@@ -61,9 +63,14 @@ export function TopicSidebar({
           </GoogleContinueButton>
         ) : (
           <button type="button" onClick={onProfile} aria-label="Open profile" className="inspir-avatar-button">
-            {avatarSrc ? (
-              <Image src={avatarSrc} alt="" width={40} height={40} sizes="40px" unoptimized />
-            ) : null}
+            <ProfileAvatarImage
+              src={avatarSrc}
+              fallbackSrc={avatarFallbackSrc}
+              width={40}
+              height={40}
+              sizes="40px"
+              iconSize={21}
+            />
           </button>
         )}
         <InspirLogo className="inspir-sidebar-logo" />

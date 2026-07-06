@@ -96,6 +96,20 @@ test("profile layout merges identity into details and uses full-width sections",
   assert.match(globals, /\.inspir-profile-identity-grid\s*{[\s\S]*?grid-template-columns:/);
 });
 
+test("profile avatars fall back instead of rendering broken images", () => {
+  const avatar = fs.readFileSync(path.resolve("components/chat/ProfileAvatarImage.tsx"), "utf8");
+  const profilePanel = fs.readFileSync(path.resolve("components/chat/ProfilePanel.tsx"), "utf8");
+  const sidebar = fs.readFileSync(path.resolve("components/chat/TopicSidebar.tsx"), "utf8");
+  const chatClient = fs.readFileSync(path.resolve("components/chat/ChatClient.tsx"), "utf8");
+
+  assert.match(avatar, /fallbackSrc/);
+  assert.match(avatar, /onError=\{\(\) =>\s*setFailureState/);
+  assert.match(avatar, /<UserRound size=\{iconSize\}/);
+  assert.match(profilePanel, /fallbackSrc=\{user\.image\}/);
+  assert.match(sidebar, /avatarFallbackSrc/);
+  assert.match(chatClient, /const avatarFallbackSrc = profileUser\.image \|\| undefined/);
+});
+
 test("deploy quality gates avoid floating CLI resolution", () => {
   const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
     scripts?: Record<string, string>;

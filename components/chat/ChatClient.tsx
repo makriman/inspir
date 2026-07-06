@@ -1324,6 +1324,7 @@ function useChatClientController({
   const avatarSrc = profileUser.profileImageHash
     ? `/api/me/photo?hash=${profileUser.profileImageHash}`
     : profileUser.image || undefined;
+  const avatarFallbackSrc = profileUser.image || undefined;
 
   return {
     activeChatId,
@@ -1335,6 +1336,7 @@ function useChatClientController({
     agePromptOpen,
     awaitingResponse,
     avatarSrc,
+    avatarFallbackSrc,
     createChat,
     currentLanguage,
     displayTopics,
@@ -1421,6 +1423,7 @@ function ChatClientLayout(controller: ChatClientController) {
     addedTopicIds,
     agePromptOpen,
     avatarSrc,
+    avatarFallbackSrc,
     currentLanguage,
     displayTopics,
     filteredTopics,
@@ -1472,6 +1475,7 @@ function ChatClientLayout(controller: ChatClientController) {
         <TopicSidebar
           isGuest={isGuest}
           avatarSrc={avatarSrc}
+          avatarFallbackSrc={avatarFallbackSrc}
           topics={displayTopics}
           sidebarTopics={sidebarTopics}
           filteredTopics={filteredTopics}
