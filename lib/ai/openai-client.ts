@@ -317,11 +317,16 @@ function normalizeOpenAiFinishReason(value: unknown): LearningFinishReason | nul
 function normalizeOpenAiUsage(value: unknown): LearningTokenUsage | null {
   if (!value || typeof value !== "object") return null;
   const usage = value as Record<string, unknown>;
-  return {
-    inputTokens: typeof usage.prompt_tokens === "number" ? usage.prompt_tokens : undefined,
-    outputTokens: typeof usage.completion_tokens === "number" ? usage.completion_tokens : undefined,
-    totalTokens: typeof usage.total_tokens === "number" ? usage.total_tokens : undefined,
-  };
+  const promptDetails =
+    usage.prompt_tokens_details && typeof usage.prompt_tokens_details === "object"
+      ? (usage.prompt_tokens_details as Record<string, unknown>)
+      : null;
+  const normalized: LearningTokenUsage = {};
+  if (typeof promptDetails?.cached_tokens === "number") normalized.cachedInputTokens = promptDetails.cached_tokens;
+  if (typeof usage.prompt_tokens === "number") normalized.inputTokens = usage.prompt_tokens;
+  if (typeof usage.completion_tokens === "number") normalized.outputTokens = usage.completion_tokens;
+  if (typeof usage.total_tokens === "number") normalized.totalTokens = usage.total_tokens;
+  return normalized;
 }
 
 async function openAiJsonFetch(

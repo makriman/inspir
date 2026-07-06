@@ -173,6 +173,7 @@ export async function POST(request: NextRequest) {
         promptTokens: event.totalUsage?.inputTokens ?? null,
         completionTokens: event.totalUsage?.outputTokens ?? null,
         totalTokens: event.totalUsage?.totalTokens ?? null,
+        cachedPromptTokens: event.totalUsage?.cachedInputTokens ?? null,
         status: "completed",
         completedAt: new Date(),
       })

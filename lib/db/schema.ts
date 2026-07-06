@@ -292,6 +292,7 @@ export const aiRuns = sqliteTable("ai_runs", {
   promptTokens: integer("prompt_tokens"),
   completionTokens: integer("completion_tokens"),
   totalTokens: integer("total_tokens"),
+  cachedPromptTokens: integer("cached_prompt_tokens"),
   memoryContext: jsonText<Record<string, unknown>>("memory_context")
     .notNull()
     .$defaultFn(() => ({})),
@@ -300,6 +301,45 @@ export const aiRuns = sqliteTable("ai_runs", {
   createdAt: timestampMsNow("created_at"),
   completedAt: timestampMs("completed_at"),
 });
+
+export const aiResponseCache = sqliteTable(
+  "ai_response_cache",
+  {
+    cacheKey: text("cache_key").primaryKey(),
+    scope: text("scope").notNull(),
+    surface: text("surface").notNull(),
+    topicId: text("topic_id"),
+    topicSlug: text("topic_slug").notNull(),
+    language: text("language").notNull(),
+    model: text("model").notNull(),
+    modelParams: jsonText<Record<string, unknown>>("model_params")
+      .notNull()
+      .$defaultFn(() => ({})),
+    promptHash: text("prompt_hash").notNull(),
+    questionHash: text("question_hash").notNull(),
+    responseText: text("response_text").notNull(),
+    promptTokens: integer("prompt_tokens"),
+    completionTokens: integer("completion_tokens"),
+    totalTokens: integer("total_tokens"),
+    cachedPromptTokens: integer("cached_prompt_tokens"),
+    hitCount: integer("hit_count").notNull().default(0),
+    lastHitAt: timestampMs("last_hit_at"),
+    expiresAt: timestampMs("expires_at").notNull(),
+    status: text("status").notNull().default("active"),
+    metadata: jsonText<Record<string, unknown>>("metadata")
+      .notNull()
+      .$defaultFn(() => ({})),
+    createdAt: timestampMsNow("created_at"),
+    updatedAt: timestampMsNow("updated_at"),
+  },
+  (table) => ({
+    statusExpiresIdx: index("ai_response_cache_status_expires_idx").on(table.status, table.expiresAt),
+    scopeTopicIdx: index("ai_response_cache_scope_topic_idx").on(table.scope, table.topicSlug),
+    promptIdx: index("ai_response_cache_prompt_idx").on(table.promptHash),
+    questionIdx: index("ai_response_cache_question_idx").on(table.questionHash),
+    lastHitIdx: index("ai_response_cache_last_hit_idx").on(table.lastHitAt),
+  }),
+);
 
 export const userMemorySettings = sqliteTable("user_memory_settings", {
   userId: text("user_id")
@@ -598,6 +638,7 @@ export type Message = typeof messages.$inferSelect;
 export type User = typeof users.$inferSelect;
 export type RateLimitWindow = typeof rateLimitWindows.$inferSelect;
 export type LlmUsageDailyShard = typeof llmUsageDailyShards.$inferSelect;
+export type AiResponseCache = typeof aiResponseCache.$inferSelect;
 export type AdminUser = typeof adminUsers.$inferSelect;
 export type ProductEvent = typeof productEvents.$inferSelect;
 export type OpsEvent = typeof opsEvents.$inferSelect;

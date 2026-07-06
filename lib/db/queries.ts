@@ -335,7 +335,18 @@ export type AdminDashboardData = Awaited<ReturnType<typeof getAdminDashboardData
 
 export async function getAdminDashboardData(days = 14) {
   const since = Date.now() - Math.max(1, Math.min(days, 90)) * 24 * 60 * 60 * 1000;
-  const [aiDaily, productDaily, topRoutes, opsRecent, quotaEvents, llmUsage, totals] = await Promise.all([
+  const [
+    aiDaily,
+    productDaily,
+    topRoutes,
+    opsRecent,
+    quotaEvents,
+    llmUsage,
+    responseCacheDaily,
+    responseCacheSummary,
+    responseCacheTopics,
+    totals,
+  ] = await Promise.all([
     d1All<{
       day: string;
       runs: number;
@@ -344,6 +355,7 @@ export async function getAdminDashboardData(days = 14) {
       tokens: number;
       promptTokens: number;
       completionTokens: number;
+      cachedPromptTokens: number;
     }>(
       `select
          date(created_at / 1000, 'unixepoch') as day,
@@ -352,7 +364,8 @@ export async function getAdminDashboardData(days = 14) {
          sum(case when status = 'failed' then 1 else 0 end) as failed,
          coalesce(sum(total_tokens), 0) as tokens,
          coalesce(sum(prompt_tokens), 0) as promptTokens,
-         coalesce(sum(completion_tokens), 0) as completionTokens
+         coalesce(sum(completion_tokens), 0) as completionTokens,
+         coalesce(sum(cached_prompt_tokens), 0) as cachedPromptTokens
        from ai_runs
        where created_at >= ?
        group by day
@@ -421,12 +434,71 @@ export async function getAdminDashboardData(days = 14) {
       .orderBy(desc(llmUsageDailyShards.day))
       .limit(14),
     d1All<{
+      day: string;
+      bypasses: number;
+      hits: number;
+      misses: number;
+      rejected: number;
+      stores: number;
+    }>(
+      `select
+         date(created_at / 1000, 'unixepoch') as day,
+         sum(case when name = 'ai_cache_hit' then 1 else 0 end) as hits,
+         sum(case when name = 'ai_cache_miss' then 1 else 0 end) as misses,
+         sum(case when name = 'ai_cache_store' then 1 else 0 end) as stores,
+         sum(case when name = 'ai_cache_bypass' then 1 else 0 end) as bypasses,
+         sum(case when name = 'ai_cache_reject' then 1 else 0 end) as rejected
+       from product_events
+       where created_at >= ?
+         and name in ('ai_cache_hit', 'ai_cache_miss', 'ai_cache_store', 'ai_cache_bypass', 'ai_cache_reject')
+       group by day
+       order by day desc`,
+      since,
+    ),
+    d1All<{
+      activeEntries: number;
+      staleEntries: number;
+      totalHits: number;
+      savedPromptTokens: number;
+      savedCompletionTokens: number;
+      savedTotalTokens: number;
+    }>(
+      `select
+         coalesce(sum(case when status = 'active' and expires_at > ? then 1 else 0 end), 0) as activeEntries,
+         coalesce(sum(case when status != 'active' or expires_at <= ? then 1 else 0 end), 0) as staleEntries,
+         coalesce(sum(hit_count), 0) as totalHits,
+         coalesce(sum(hit_count * coalesce(prompt_tokens, 0)), 0) as savedPromptTokens,
+         coalesce(sum(hit_count * coalesce(completion_tokens, 0)), 0) as savedCompletionTokens,
+         coalesce(sum(hit_count * coalesce(total_tokens, 0)), 0) as savedTotalTokens
+       from ai_response_cache`,
+      Date.now(),
+      Date.now(),
+    ),
+    d1All<{
+      entries: number;
+      hits: number;
+      savedTotalTokens: number;
+      topicSlug: string;
+    }>(
+      `select
+         topic_slug as topicSlug,
+         count(*) as entries,
+         coalesce(sum(hit_count), 0) as hits,
+         coalesce(sum(hit_count * coalesce(total_tokens, 0)), 0) as savedTotalTokens
+       from ai_response_cache
+       where status = 'active'
+       group by topic_slug
+       order by hits desc, entries desc
+       limit 10`,
+    ),
+    d1All<{
       users: number;
       chats: number;
       messages: number;
       aiRuns: number;
       productEvents: number;
       opsEvents: number;
+      responseCacheEntries: number;
     }>(
       `select
          (select count(*) from users) as users,
@@ -434,7 +506,8 @@ export async function getAdminDashboardData(days = 14) {
          (select count(*) from messages) as messages,
          (select count(*) from ai_runs) as aiRuns,
          (select count(*) from product_events where created_at >= ?) as productEvents,
-         (select count(*) from ops_events where created_at >= ?) as opsEvents`,
+         (select count(*) from ops_events where created_at >= ?) as opsEvents,
+         (select count(*) from ai_response_cache where status = 'active') as responseCacheEntries`,
       since,
       since,
     ),
@@ -448,6 +521,16 @@ export async function getAdminDashboardData(days = 14) {
     opsRecent,
     quotaEvents,
     llmUsage,
+    responseCacheDaily,
+    responseCacheSummary: responseCacheSummary[0] ?? {
+      activeEntries: 0,
+      staleEntries: 0,
+      totalHits: 0,
+      savedPromptTokens: 0,
+      savedCompletionTokens: 0,
+      savedTotalTokens: 0,
+    },
+    responseCacheTopics,
     totals: totals[0] ?? {
       users: 0,
       chats: 0,
@@ -455,6 +538,7 @@ export async function getAdminDashboardData(days = 14) {
       aiRuns: 0,
       productEvents: 0,
       opsEvents: 0,
+      responseCacheEntries: 0,
     },
   };
 }

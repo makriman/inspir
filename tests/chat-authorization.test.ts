@@ -16,3 +16,16 @@ test("authenticated chat route proves ownership before spend and message writes"
   assert.match(source, /if \(!owned\) return NextResponse\.json\(\{ error: "Chat not found" \}, \{ status: 404 \}\);/);
 });
 
+test("guest chat response cache can hit before the global LLM budget is consumed", () => {
+  const source = fs.readFileSync(path.resolve("app/api/guest-chat/route.ts"), "utf8");
+
+  const cacheRead = source.indexOf("const cached = await getCachedLearningResponse(cacheRequest)");
+  const cacheHitReturn = source.indexOf("cachedLearningResponseStream(cached.responseText)");
+  const budgetCheck = source.indexOf("const budget = await consumeDailyLlmBudget()");
+  const modelCall = source.indexOf("const result = await agent.stream");
+
+  assert.ok(cacheRead > -1, "guest chat should read the app response cache");
+  assert.ok(cacheHitReturn > cacheRead, "guest chat should return cached text from the cache-hit branch");
+  assert.ok(budgetCheck > cacheHitReturn, "global LLM budget must not be consumed before cache hits return");
+  assert.ok(modelCall > budgetCheck, "provider calls should still remain behind the global LLM budget");
+});

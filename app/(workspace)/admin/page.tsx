@@ -43,25 +43,27 @@ export default async function AdminPage() {
           </div>
         </header>
 
-        <section className="grid gap-3 md:grid-cols-3 xl:grid-cols-6">
+        <section className="grid gap-3 md:grid-cols-3 xl:grid-cols-7">
           <MetricCard label="Users" value={dashboard.totals.users} />
           <MetricCard label="Chats" value={dashboard.totals.chats} />
           <MetricCard label="Messages" value={dashboard.totals.messages} />
           <MetricCard label="AI runs" value={dashboard.totals.aiRuns} />
           <MetricCard label="Product events" value={dashboard.totals.productEvents} />
           <MetricCard label="Ops events" value={dashboard.totals.opsEvents} />
+          <MetricCard label="Cache entries" value={dashboard.totals.responseCacheEntries} />
         </section>
 
         <section className="grid gap-6 xl:grid-cols-[minmax(0,1.45fr)_minmax(360px,0.75fr)]">
           <DashboardPanel title="AI usage" kicker="Daily runs, tokens, failures">
             <DataTable
-              columns={["Day", "Runs", "Completed", "Failed", "Tokens"]}
+              columns={["Day", "Runs", "Completed", "Failed", "Tokens", "Cached in"]}
               rows={dashboard.aiDaily.map((row) => [
                 row.day,
                 row.runs,
                 row.completed,
                 row.failed,
                 row.tokens,
+                row.cachedPromptTokens,
               ])}
               empty="No AI runs recorded in this window."
             />
@@ -72,6 +74,61 @@ export default async function AdminPage() {
               columns={["Event", "Count"]}
               rows={dashboard.quotaEvents.map((row) => [row.eventName, row.count])}
               empty="No quota denials or limiter failures."
+            />
+          </DashboardPanel>
+        </section>
+
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+          <DashboardPanel title="Response cache" kicker="Hits, misses, stored answers">
+            <DataTable
+              columns={["Day", "Hits", "Misses", "Stores", "Bypasses", "Rejected"]}
+              rows={dashboard.responseCacheDaily.map((row) => [
+                row.day,
+                row.hits,
+                row.misses,
+                row.stores,
+                row.bypasses,
+                row.rejected,
+              ])}
+              empty="No response-cache events recorded yet."
+            />
+          </DashboardPanel>
+
+          <DashboardPanel title="Cache savings" kicker="Avoided provider work">
+            <DataTable
+              columns={["Metric", "Value"]}
+              rows={[
+                ["Active entries", dashboard.responseCacheSummary.activeEntries],
+                ["Stale entries", dashboard.responseCacheSummary.staleEntries],
+                ["Total hits", dashboard.responseCacheSummary.totalHits],
+                ["Saved prompt tokens", dashboard.responseCacheSummary.savedPromptTokens],
+                ["Saved completion tokens", dashboard.responseCacheSummary.savedCompletionTokens],
+                ["Saved total tokens", dashboard.responseCacheSummary.savedTotalTokens],
+              ]}
+              empty="No cache savings recorded yet."
+            />
+          </DashboardPanel>
+        </section>
+
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+          <DashboardPanel title="Cached topics" kicker="Top reusable public starters">
+            <DataTable
+              columns={["Topic", "Entries", "Hits", "Saved tokens"]}
+              rows={dashboard.responseCacheTopics.map((row) => [
+                row.topicSlug,
+                row.entries,
+                row.hits,
+                row.savedTotalTokens,
+              ])}
+              empty="No cached topics yet."
+            />
+          </DashboardPanel>
+
+          <DashboardPanel title="LLM budget shards" kicker="Global daily call ledger">
+            <DataTable
+              columns={["Day", "Calls"]}
+              rows={dashboard.llmUsage.map((row) => [row.day, row.callCount])}
+              empty="No global LLM budget usage recorded."
             />
           </DashboardPanel>
         </section>
@@ -95,14 +152,6 @@ export default async function AdminPage() {
         </section>
 
         <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          <DashboardPanel title="LLM budget shards" kicker="Global daily call ledger">
-            <DataTable
-              columns={["Day", "Calls"]}
-              rows={dashboard.llmUsage.map((row) => [row.day, row.callCount])}
-              empty="No global LLM budget usage recorded."
-            />
-          </DashboardPanel>
-
           <DashboardPanel title="Recent ops events" kicker="Auth, quota, admin">
             <DataTable
               columns={["Time", "Severity", "Event", "Surface"]}

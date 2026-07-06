@@ -260,6 +260,7 @@ test("direct OpenAI client streams text deltas and finish usage", async () => {
       const body = JSON.parse(String(init?.body));
       assert.equal(body.stream, true);
       assert.deepEqual(body.stream_options, { include_usage: true });
+      assert.equal(body.prompt_cache_key, undefined);
 
       const encoder = new TextEncoder();
       const stream = new ReadableStream<Uint8Array>({
@@ -269,7 +270,7 @@ test("direct OpenAI client streams text deltas and finish usage", async () => {
               [
                 'data: {"choices":[{"delta":{"content":"Hel"}}]}',
                 "",
-                'data: {"choices":[{"delta":{"content":"lo"},"finish_reason":"stop"}],"usage":{"prompt_tokens":3,"completion_tokens":2,"total_tokens":5}}',
+                'data: {"choices":[{"delta":{"content":"lo"},"finish_reason":"stop"}],"usage":{"prompt_tokens":3,"completion_tokens":2,"total_tokens":5,"prompt_tokens_details":{"cached_tokens":1}}}',
                 "",
                 "data: [DONE]",
                 "",
@@ -302,7 +303,7 @@ test("direct OpenAI client streams text deltas and finish usage", async () => {
     assert.deepEqual(third.value, {
       type: "finish",
       finishReason: "stop",
-      totalUsage: { inputTokens: 3, outputTokens: 2, totalTokens: 5 },
+      totalUsage: { cachedInputTokens: 1, inputTokens: 3, outputTokens: 2, totalTokens: 5 },
     });
     assert.equal(done.done, true);
   } finally {

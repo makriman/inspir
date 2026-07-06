@@ -19,3 +19,9 @@ Inspir runs on Cloudflare Workers through OpenNext. Public and private routes sh
 - Workspace pages, auth, chat, guest chat, profile, memory, activities, admin, migration, and cron endpoints remain `force-dynamic`.
 - Private and mutating endpoints should return `no-store` where they expose user state or operational state.
 - New public dynamic routes must either set bounded cache headers or be added here with the reason they cannot be cached.
+
+## Explicit Application Caches
+
+`/api/guest-chat` remains dynamic and is not a framework/CDN-cached POST route. It has an explicit app-owned D1 response cache for guest/public first-turn questions. This cache is keyed by normalized question, topic, language, model, model params, prompt hash, and cache policy version.
+
+The response cache only serves requests with empty guest history, replays cached answers through the normal streaming response path, and returns before the global LLM budget is consumed. History-bearing, signed-in, memory-backed, profile-personalized, admin, auth, and mutating routes bypass this response cache.

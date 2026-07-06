@@ -7,6 +7,7 @@ export type LearningStreamFinishEvent = {
 export type LearningFinishReason = "stop" | "length" | "content-filter" | "tool-calls" | "error" | "other";
 
 export type LearningTokenUsage = {
+  cachedInputTokens?: number;
   inputTokens?: number;
   outputTokens?: number;
   totalTokens?: number;
@@ -199,9 +200,10 @@ function isFinishReason(value: unknown): value is LearningFinishReason {
 function normalizeTokenUsage(value: unknown): LearningTokenUsage | null {
   if (!value || typeof value !== "object") return null;
   const usage = value as Record<string, unknown>;
-  return {
-    inputTokens: typeof usage.inputTokens === "number" ? usage.inputTokens : undefined,
-    outputTokens: typeof usage.outputTokens === "number" ? usage.outputTokens : undefined,
-    totalTokens: typeof usage.totalTokens === "number" ? usage.totalTokens : undefined,
-  };
+  const normalized: LearningTokenUsage = {};
+  if (typeof usage.cachedInputTokens === "number") normalized.cachedInputTokens = usage.cachedInputTokens;
+  if (typeof usage.inputTokens === "number") normalized.inputTokens = usage.inputTokens;
+  if (typeof usage.outputTokens === "number") normalized.outputTokens = usage.outputTokens;
+  if (typeof usage.totalTokens === "number") normalized.totalTokens = usage.totalTokens;
+  return normalized;
 }

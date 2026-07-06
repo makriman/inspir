@@ -42,6 +42,7 @@ The product preserves the core learning behavior on a Cloudflare-native stack th
 - Persisted chats, messages, users, topics, profile data, and AI run telemetry.
 - First-party product analytics and ops telemetry in D1, with GA and Clarity installed client-side.
 - Cloudflare operational checks for local gates, source scans, build artifact scans, preview, and production smoke tests.
+- App-owned D1 response cache for token-efficient guest/public starter questions.
 - Admin dashboard for AI usage, quota posture, product analytics, topics, and admin management.
 - Modernized chat experience with streaming responses and polished loading states.
 - Production deployment through OpenNext on Cloudflare Workers.
@@ -66,7 +67,7 @@ The product preserves the core learning behavior on a Cloudflare-native stack th
 ```txt
 app/                 Next.js routes, layouts, API handlers, public pages
 components/          Brand, marketing, legal, admin, and chat UI
-lib/ai/              Topic prompts, agent setup, AI utilities
+lib/ai/              Topic prompts, agent setup, AI utilities, response cache
 lib/auth/            Auth config, session helpers, admin checks, photo sync
 lib/content/         Legal, mission, topic, blog, language, and SEO content
 lib/db/              Drizzle schema, database client, query helpers
@@ -134,9 +135,13 @@ For day-to-day local Cloudflare preview, prefer the local D1 setup command:
 pnpm cf:d1:local:setup
 ```
 
+The guest/public starter response cache lives in D1 table `ai_response_cache`. Apply `drizzle-d1/0011_ai_response_cache.sql` before deploying code that reads cache metrics in admin. See [docs/ai-response-cache.md](docs/ai-response-cache.md).
+
 ## Cloudflare Operations
 
 The app runs on Cloudflare Workers through OpenNext, with D1 for relational data, Vectorize for memory retrieval, R2 for OpenNext cache/profile images, and a Queue for post-turn memory work.
+
+Guest/public first-turn AI answers are cached in D1 after successful streaming completion. Cache hits still respect guest abuse quotas but return before consuming the global LLM budget or calling OpenAI.
 
 Useful commands:
 

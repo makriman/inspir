@@ -1,9 +1,19 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { createLearningAgent } from "@/lib/ai/learning-agent";
+import { createLearningAgent, learningModelSettings } from "@/lib/ai/learning-agent";
 import { createLearningTextStreamResponse } from "@/lib/ai/streaming";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
 import { getTopicMetadata } from "@/lib/ai/prompts";
+import {
+  buildGuestStarterResponseCacheRequest,
+  cachedLearningResponseStream,
+  cacheDiagnosticHeaders,
+  getCachedLearningResponse,
+  isGuestStarterCacheCandidate,
+  recordAiCacheProductEvent,
+  recordCachedLearningResponseHit,
+  storeCachedLearningResponse,
+} from "@/lib/ai/response-cache";
 import { findSeededTopic } from "@/lib/content/seeded-topics";
 import { getActiveTopics } from "@/lib/db/queries";
 import {
@@ -101,11 +111,6 @@ export async function POST(request: NextRequest) {
     return guestLimitResponse(used, guestMessageLimit, sessionRate.retryAfterSeconds);
   }
 
-  const budget = await consumeDailyLlmBudget();
-  if (!budget.ok) {
-    return guestLimitResponse(used, guestMessageLimit, budget.retryAfterSeconds, "Daily AI usage limit reached");
-  }
-
   const nextUsed = Math.min(guestMessageLimit, sessionRate.limit - sessionRate.remaining);
   cookieStore.set(guestSessionCookie, sessionId, {
     httpOnly: true,
@@ -124,6 +129,80 @@ export async function POST(request: NextRequest) {
 
   try {
     const model = resolveModelForTopic(topic);
+    const modelParams = learningModelSettings(topic, model);
+    const cacheRequest = isGuestStarterCacheCandidate(parsed.data.messages)
+      ? await buildGuestStarterResponseCacheRequest({
+          content: parsed.data.content,
+          model,
+          modelParams,
+          preferredLanguage: parsed.data.preferredLanguage,
+          topic,
+        })
+      : null;
+    const guestHeaders = {
+      "x-guest-messages-used": String(nextUsed),
+      "x-guest-messages-limit": String(guestMessageLimit),
+    };
+
+    if (cacheRequest) {
+      const cached = await getCachedLearningResponse(cacheRequest);
+      if (cached) {
+        await Promise.all([
+          recordCachedLearningResponseHit(cached.cacheKey),
+          recordAiCacheProductEvent({
+            name: "ai_cache_hit",
+            sessionId,
+            properties: {
+              scope: cacheRequest.scope,
+              surface: cacheRequest.surface,
+              topicSlug: cacheRequest.topicSlug,
+              language: cacheRequest.language,
+              model,
+              savedPromptTokens: cached.promptTokens ?? 0,
+              savedCompletionTokens: cached.completionTokens ?? 0,
+              savedTotalTokens: cached.totalTokens ?? 0,
+            },
+          }),
+        ]);
+        return await createLearningTextStreamResponse(
+          { fullStream: cachedLearningResponseStream(cached.responseText) },
+          {
+            headers: {
+              ...guestHeaders,
+              ...cacheDiagnosticHeaders("hit", "public-starter"),
+            },
+          },
+        );
+      }
+      await recordAiCacheProductEvent({
+        name: "ai_cache_miss",
+        sessionId,
+        properties: {
+          scope: cacheRequest.scope,
+          surface: cacheRequest.surface,
+          topicSlug: cacheRequest.topicSlug,
+          language: cacheRequest.language,
+          model,
+        },
+      });
+    } else {
+      await recordAiCacheProductEvent({
+        name: "ai_cache_bypass",
+        sessionId,
+        properties: {
+          reason: "guest-history",
+          surface: "guest-chat",
+          topicSlug: topic.slug,
+          model,
+        },
+      });
+    }
+
+    const budget = await consumeDailyLlmBudget();
+    if (!budget.ok) {
+      return guestLimitResponse(used, guestMessageLimit, budget.retryAfterSeconds, "Daily AI usage limit reached");
+    }
+
     const agent = createLearningAgent({
       topic,
       model,
@@ -137,11 +216,32 @@ export async function POST(request: NextRequest) {
     });
     return await createLearningTextStreamResponse({ fullStream: result.fullStream as ReadableStream<unknown> }, {
       headers: {
-        "x-guest-messages-used": String(nextUsed),
-        "x-guest-messages-limit": String(guestMessageLimit),
+        ...guestHeaders,
+        ...cacheDiagnosticHeaders(cacheRequest ? "miss" : "bypass", cacheRequest ? "public-starter" : "guest-history"),
       },
       onError(error) {
         console.warn("Guest chat stream failed", error);
+      },
+      async onFinish(event) {
+        if (!cacheRequest) return;
+        const result = await storeCachedLearningResponse({
+          request: cacheRequest,
+          responseText: event.text,
+          finishReason: event.finishReason,
+          totalUsage: event.totalUsage,
+        });
+        await recordAiCacheProductEvent({
+          name: result.stored ? "ai_cache_store" : "ai_cache_reject",
+          sessionId,
+          properties: {
+            reason: result.reason,
+            scope: cacheRequest.scope,
+            surface: cacheRequest.surface,
+            topicSlug: cacheRequest.topicSlug,
+            language: cacheRequest.language,
+            model,
+          },
+        });
       },
     });
   } catch (error) {

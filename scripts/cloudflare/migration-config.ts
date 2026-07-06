@@ -31,6 +31,7 @@ export const RUNTIME_MUTABLE_TABLES = [
   "rate_limit_windows",
   "ops_events",
   "product_events",
+  "ai_response_cache",
 ] as const;
 
 function getArg(name: string) {

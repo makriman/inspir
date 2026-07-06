@@ -173,6 +173,25 @@ test("steady-state deploy preflight allows high observability sampling in incide
   assert.equal(report.ok, true);
 });
 
+test("steady-state deploy preflight rejects missing response cache runtime vars", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    delete (config.vars as Record<string, string | undefined>).AI_RESPONSE_CACHE_TTL_SECONDS;
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.ok((wrangler?.detail as { missingVars?: string[] } | undefined)?.missingVars?.includes("AI_RESPONSE_CACHE_TTL_SECONDS"));
+});
+
 function makeFixture() {
   const repoDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-deploy-preflight-repo-"));
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-deploy-preflight-backup-"));
@@ -300,6 +319,10 @@ function wranglerConfig() {
       OPENAI_REASONING_MODEL: "gpt-5",
       OPENAI_STRUCTURED_MODEL: "gpt-5-mini",
       OPENAI_EMBEDDING_MODEL: "text-embedding-3-small",
+      AI_RESPONSE_CACHE_ENABLED: "1",
+      AI_RESPONSE_CACHE_TTL_SECONDS: "2592000",
+      AI_RESPONSE_CACHE_MAX_RESPONSE_BYTES: "120000",
+      AI_RESPONSE_CACHE_SEMANTIC_ENABLED: "0",
       RATE_LIMIT_USER_CHAT_DAILY: "20",
       RATE_LIMIT_GUEST_SESSION_DAILY: "10",
       RATE_LIMIT_GUEST_FINGERPRINT_DAILY: "10",

@@ -17,8 +17,8 @@ export function createLearningAgent({
   learnerAge?: number | null;
   memoryContext?: MemoryPromptContext;
 }) {
-  const profile = getTopicMetadata(topic)?.modelProfile ?? "fast";
   const instructions = buildTopicSystemPrompt(topic, preferredLanguage, { learnerAge, memoryContext });
+  const settings = learningModelSettings(topic, model);
 
   return {
     id: `inspir-${topic.slug}`,
@@ -26,15 +26,23 @@ export function createLearningAgent({
       return streamOpenAiChatCompletion({
         messages: [{ role: "system", content: instructions }, ...messages],
         model,
-        maxOutputTokens: profile === "reasoning" ? 3200 : 2400,
-        reasoningEffort: isOpenAiReasoningModel(model)
-          ? profile === "reasoning"
-            ? "low"
-            : "minimal"
-          : undefined,
-        temperature: isOpenAiReasoningModel(model) ? undefined : resolveTemperature(profile),
+        ...settings,
       });
     },
+  };
+}
+
+export function learningModelSettings(topic: Topic, model = resolveModelForTopic(topic)) {
+  const profile = getTopicMetadata(topic)?.modelProfile ?? "fast";
+  const reasoningEffort = isOpenAiReasoningModel(model)
+    ? profile === "reasoning"
+      ? ("low" as const)
+      : ("minimal" as const)
+    : undefined;
+  return {
+    maxOutputTokens: profile === "reasoning" ? 3200 : 2400,
+    reasoningEffort,
+    temperature: isOpenAiReasoningModel(model) ? undefined : resolveTemperature(profile),
   };
 }
 

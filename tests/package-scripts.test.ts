@@ -149,6 +149,9 @@ test("admin dashboard is DB-backed and reachable from admin profiles", () => {
   assert.match(profilePanel, /t\("Admin dashboard"\)/);
   assert.match(adminPage, /getAdminDashboardData\(14\)/);
   assert.match(adminPage, /AdminUserManager/);
+  assert.match(adminPage, /Response cache/);
+  assert.match(adminPage, /Cache savings/);
+  assert.match(adminPage, /Cached topics/);
 });
 
 test("analytics scripts and product events are installed without inline CSP fallback", () => {
