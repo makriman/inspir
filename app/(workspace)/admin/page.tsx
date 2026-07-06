@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
+const adminDateTimeFormatter = new Intl.DateTimeFormat("en", {
+  month: "short",
+  day: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
 export default async function AdminPage() {
   const session = await requireSession();
   if (!session) redirect("/");
@@ -201,10 +208,5 @@ function mergeAdminRows(dbAdmins: Awaited<ReturnType<typeof getAdminUsers>>) {
 }
 
 function formatDateTime(value: number | string | Date) {
-  return new Intl.DateTimeFormat("en", {
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(new Date(value));
+  return adminDateTimeFormatter.format(new Date(value));
 }

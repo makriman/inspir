@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 import { adminUsers } from "@/lib/db/schema";
 
-export const bootstrapAdminEmails = ["makridroid@gmail.com"] as const;
+const bootstrapAdminEmails = ["makridroid@gmail.com"] as const;
 
 function getConfiguredAdminEmails() {
   return (process.env.ADMIN_EMAILS ?? "")

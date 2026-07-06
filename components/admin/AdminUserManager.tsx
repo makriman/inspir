@@ -67,17 +67,20 @@ export function AdminUserManager({ initialAdmins }: { initialAdmins: AdminUser[]
         <h2 className="mt-1 text-2xl font-black">Admins</h2>
       </div>
       <form className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto]" onSubmit={addAdmin}>
-        <input
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="name@example.com"
-          className="h-11 rounded-lg border border-white/15 bg-black/25 px-3 text-sm font-bold text-white outline-none focus:border-[#7deb8f]"
-        />
+        <label className="grid gap-2">
+          <span className="text-xs font-black uppercase tracking-[0.08em] text-white/50">Admin email</span>
+          <input
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="name@example.com"
+            className="h-11 rounded-lg border border-white/15 bg-black/25 px-3 text-sm font-bold text-white outline-none focus:border-[#7deb8f]"
+          />
+        </label>
         <button
           type="submit"
           disabled={saving}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-lg bg-[#26943f] px-4 text-sm font-black text-white disabled:opacity-60"
+          className="inline-flex h-11 items-center justify-center gap-2 self-end rounded-lg bg-[#26943f] px-4 text-sm font-black text-white disabled:opacity-60"
         >
           <Plus size={16} />
           Add admin

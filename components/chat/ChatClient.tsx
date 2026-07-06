@@ -14,7 +14,7 @@ import {
   useState,
 } from "react";
 import dynamic from "next/dynamic";
-import { trackProductEvent } from "@/components/analytics/ProductAnalytics";
+import { trackProductEvent } from "@/components/analytics/trackProductEvent";
 import type { ActivityRun } from "@/components/chat/activity-model";
 import { ChatMainSection } from "@/components/chat/ChatMainSection";
 import { ChatPanelOverlays } from "@/components/chat/ChatPanelOverlays";

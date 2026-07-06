@@ -154,6 +154,7 @@ test("admin dashboard is DB-backed and reachable from admin profiles", () => {
 test("analytics scripts and product events are installed without inline CSP fallback", () => {
   const analyticsScripts = fs.readFileSync(path.resolve("components/analytics/AnalyticsScripts.tsx"), "utf8");
   const productAnalytics = fs.readFileSync(path.resolve("components/analytics/ProductAnalytics.tsx"), "utf8");
+  const trackProductEvent = fs.readFileSync(path.resolve("components/analytics/trackProductEvent.ts"), "utf8");
   const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
   const csp = fs.readFileSync(path.resolve("lib/security/headers.ts"), "utf8");
   const scriptDirective = csp.split("\n").find((line) => line.includes("script-src")) ?? "";
@@ -161,7 +162,8 @@ test("analytics scripts and product events are installed without inline CSP fall
   assert.match(analyticsScripts, /G-S3E1FV3RK8/);
   assert.match(analyticsScripts, /xi5vqkce95/);
   assert.match(productAnalytics, /auth_error_seen/);
-  assert.match(productAnalytics, /\/api\/analytics\/events/);
+  assert.match(productAnalytics, /trackProductEvent/);
+  assert.match(trackProductEvent, /\/api\/analytics\/events/);
   assert.match(middleware, /buildContentSecurityPolicy\(nonce\)/);
   assert.match(csp, /'nonce-\$\{nonce\}'/);
   assert.doesNotMatch(scriptDirective, /'unsafe-inline'/);

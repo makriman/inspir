@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 export const googleAnalyticsId = "G-S3E1FV3RK8";
-export const clarityProjectId = "xi5vqkce95";
+const clarityProjectId = "xi5vqkce95";
 
 export function AnalyticsScripts({ nonce }: { nonce?: string }) {
   return (

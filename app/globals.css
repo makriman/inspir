@@ -7982,20 +7982,18 @@ a {
 
 .inspir-profile-identity-grid {
   display: grid;
-  grid-template-columns: minmax(320px, 0.42fr) minmax(0, 1fr);
-  gap: clamp(20px, 3vw, 34px);
+  grid-template-columns: minmax(220px, 0.32fr) minmax(0, 1fr);
+  gap: clamp(18px, 2.5vw, 28px);
   align-items: start;
 }
 
 .inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero {
-  display: grid;
+  display: flex;
   width: 100%;
-  grid-template-columns: 78px minmax(0, 1fr);
-  column-gap: 13px;
-  row-gap: 8px;
-  align-items: center;
-  justify-items: start;
+  min-width: 0;
+  align-items: flex-start;
   align-self: start;
+  gap: 13px;
   border: 0;
   background: transparent;
   padding: 0;
@@ -8070,7 +8068,7 @@ a {
 }
 
 .inspir-profile-hero-copy {
-  grid-column: 2;
+  flex: 1 1 auto;
   min-width: 0;
   max-width: 100%;
 }
@@ -8091,11 +8089,11 @@ a {
 .inspir-profile-details-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: auto auto auto minmax(0, 1fr);
   gap: 12px;
   align-content: start;
-  height: 100%;
-  min-height: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 0;
 }
 
 .inspir-profile-details-form label,
@@ -8153,9 +8151,8 @@ a {
 
 .inspir-profile-save-button {
   grid-column: 1 / -1;
-  grid-row: 4;
   justify-self: end;
-  align-self: end;
+  align-self: start;
   min-height: 44px;
   border: 0;
   border-radius: 10px;
@@ -8268,6 +8265,10 @@ a {
 
   .inspir-profile-identity-grid {
     grid-template-columns: 1fr;
+  }
+
+  .inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero {
+    align-items: center;
   }
 
   .inspir-profile-workspace .inspir-profile-stats-grid {
