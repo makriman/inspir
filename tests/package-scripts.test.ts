@@ -111,6 +111,14 @@ test("profile avatars fall back instead of rendering broken images", () => {
   assert.match(chatClient, /const avatarFallbackSrc = profileUser\.image \|\| undefined/);
 });
 
+test("Better Auth can safely link migrated Google-only users", () => {
+  const source = fs.readFileSync(path.resolve("lib/auth/better-auth.ts"), "utf8");
+
+  assert.match(source, /trustedProviders:\s*\["google"\]/);
+  assert.match(source, /requireLocalEmailVerified:\s*false/);
+  assert.match(source, /additionalFields:\s*{[\s\S]*?type:\s*{[\s\S]*?defaultValue:\s*"oauth"/);
+});
+
 test("deploy quality gates avoid floating CLI resolution", () => {
   const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
     scripts?: Record<string, string>;

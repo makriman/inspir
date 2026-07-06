@@ -192,6 +192,14 @@ test("authenticated profile uses a full-width identity and details layout", asyn
   await page.getByRole("button", { name: /open profile/i }).click();
   await expect(page.getByRole("heading", { name: /make inspir feel like it knows how you learn/i })).toBeVisible();
   await expect(page.getByRole("heading", { name: /your app identity/i })).toBeVisible();
+  await expect(page.getByRole("button", { name: /use google photo/i })).toHaveCount(0);
+
+  const saveButton = page.getByRole("button", { name: /save profile/i });
+  await expect(saveButton).toHaveCount(0);
+  const displayName = page.getByLabel(/display name/i);
+  const originalName = await displayName.inputValue();
+  await displayName.fill(`${originalName || "Inspir E2E"} edited`);
+  await expect(saveButton).toBeVisible();
 
   const layout = await page.evaluate(() => {
     const panel = document.querySelector<HTMLElement>(".inspir-profile-workspace");
@@ -200,6 +208,7 @@ test("authenticated profile uses a full-width identity and details layout", asyn
     const identityGrid = document.querySelector<HTMLElement>(".inspir-profile-identity-grid");
     const hero = document.querySelector<HTMLElement>(".inspir-profile-hero");
     const form = document.querySelector<HTMLElement>(".inspir-profile-details-form");
+    const save = document.querySelector<HTMLElement>(".inspir-profile-save-button");
     const sections = Array.from(document.querySelectorAll<HTMLElement>(".inspir-profile-section"));
     const overview = sections.find((section) => section.textContent?.includes("Your learning snapshot")) ?? null;
     const stats = document.querySelector<HTMLElement>(".inspir-profile-stats-grid");
@@ -209,6 +218,7 @@ test("authenticated profile uses a full-width identity and details layout", asyn
     const identityRect = rect(identity);
     const heroRect = rect(hero);
     const formRect = rect(form);
+    const saveRect = rect(save);
     const overviewRect = rect(overview);
     const statsRect = rect(stats);
     const bodyColumnTracks = body ? getComputedStyle(body).gridTemplateColumns.trim().split(/\s+/).filter(Boolean) : [];
@@ -223,6 +233,8 @@ test("authenticated profile uses a full-width identity and details layout", asyn
       identityWidthDelta: bodyRect && identityRect ? Math.abs(bodyRect.width - identityRect.width) : null,
       overviewWidthDelta: bodyRect && overviewRect ? Math.abs(bodyRect.width - overviewRect.width) : null,
       rowTopDelta: heroRect && formRect ? Math.abs(heroRect.top - formRect.top) : null,
+      saveRightDelta: formRect && saveRect ? Math.abs(formRect.right - saveRect.right) : null,
+      saveBottomDelta: formRect && saveRect ? Math.abs(formRect.bottom - saveRect.bottom) : null,
       statsWidthDelta: overviewRect && statsRect ? Math.abs(overviewRect.width - statsRect.width) : null,
       panelHorizontalOverflow: panel ? panel.scrollWidth - panel.clientWidth : null,
     };
@@ -237,6 +249,10 @@ test("authenticated profile uses a full-width identity and details layout", asyn
   expect(layout.overviewWidthDelta ?? 999).toBeLessThanOrEqual(2);
   expect(layout.rowTopDelta).not.toBeNull();
   expect(layout.rowTopDelta ?? 999).toBeLessThanOrEqual(4);
+  expect(layout.saveRightDelta).not.toBeNull();
+  expect(layout.saveRightDelta ?? 999).toBeLessThanOrEqual(2);
+  expect(layout.saveBottomDelta).not.toBeNull();
+  expect(layout.saveBottomDelta ?? 999).toBeLessThanOrEqual(2);
   expect(layout.statsWidthDelta).not.toBeNull();
   expect(layout.statsWidthDelta ?? 999).toBeLessThanOrEqual(36);
   expect(layout.panelHorizontalOverflow).not.toBeNull();

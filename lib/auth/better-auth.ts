@@ -76,9 +76,20 @@ export function createAuth() {
     account: {
       modelName: "accounts",
       updateAccountOnSignIn: true,
+      additionalFields: {
+        type: {
+          type: "string",
+          required: true,
+          defaultValue: "oauth",
+          fieldName: "type",
+          input: false,
+          returned: false,
+        },
+      },
       accountLinking: {
         enabled: true,
         trustedProviders: ["google"],
+        requireLocalEmailVerified: false,
         updateUserInfoOnLink: true,
       },
       fields: {

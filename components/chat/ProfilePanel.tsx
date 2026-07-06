@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useReducer, useRef } from "react";
 import Link from "next/link";
-import { Camera, Trash2, X } from "lucide-react";
+import { Camera, X } from "lucide-react";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import type { UiTranslator } from "@/components/chat/chat-ui-types";
 import { MemoryPanel } from "@/components/chat/MemoryPanel";
@@ -57,7 +57,6 @@ export function ProfilePanel({
   memorySaving,
   memoryError,
   onPhotoUpload,
-  onPhotoRemove,
   onProfileSave,
   onMemorySettings,
   onMemoryCreate,
@@ -75,7 +74,6 @@ export function ProfilePanel({
   memorySaving: boolean;
   memoryError: string | null;
   onPhotoUpload: (file: File) => Promise<string | null>;
-  onPhotoRemove: () => Promise<void>;
   onProfileSave: (input: ProfileDetailsInput) => Promise<UserProfile>;
   onMemorySettings: (input: MemorySettingsPatch) => void;
   onMemoryCreate: (input: MemoryCreateInput) => void;
@@ -99,6 +97,12 @@ export function ProfilePanel({
   } = state;
   const photoInputRef = useRef<HTMLInputElement>(null);
   const today = new Date().toISOString().slice(0, 10);
+  const persistedName = (user.name ?? "").trim();
+  const persistedDateOfBirth = user.dateOfBirth ?? "";
+  const persistedLanguage = (user.preferredLanguage as SupportedLanguage) || defaultLanguage;
+  const profileDetailsDirty =
+    name.trim() !== persistedName || dateOfBirth !== persistedDateOfBirth || preferredLanguage !== persistedLanguage;
+  const showSaveButton = profileDetailsDirty || detailsSaving || languageSaving;
 
   async function handlePhotoChange(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -112,18 +116,6 @@ export function ProfilePanel({
     } finally {
       updateState({ photoSaving: false });
       event.target.value = "";
-    }
-  }
-
-  async function resetPhoto() {
-    updateState({ photoSaving: true, photoError: "", photoMessage: "" });
-    try {
-      await onPhotoRemove();
-      updateState({ photoMessage: t("Using your Google photo.") });
-    } catch (removeError) {
-      updateState({ photoError: removeError instanceof Error ? removeError.message : t("Could not reset profile photo.") });
-    } finally {
-      updateState({ photoSaving: false });
     }
   }
 
@@ -210,17 +202,6 @@ export function ProfilePanel({
                   <Camera size={16} />
                   <span>{photoSaving ? t("Saving...") : t("Change photo")}</span>
                 </button>
-                {user.profileImageHash ? (
-                  <button
-                    type="button"
-                    disabled={photoSaving}
-                    onClick={() => void resetPhoto()}
-                    className="inspir-profile-photo-button is-muted"
-                  >
-                    <Trash2 size={15} />
-                    <span>{t("Use Google photo")}</span>
-                  </button>
-                ) : null}
               </div>
               {photoError ? <span className="inspir-profile-details-error">{photoError}</span> : null}
               {photoMessage ? <span className="inspir-profile-details-success">{photoMessage}</span> : null}
@@ -262,9 +243,11 @@ export function ProfilePanel({
               </div>
               {detailsError ? <span className="inspir-profile-details-error">{detailsError}</span> : null}
               {detailsMessage ? <span className="inspir-profile-details-success">{detailsMessage}</span> : null}
-              <button type="submit" disabled={detailsSaving || languageSaving} className="inspir-profile-save-button">
-                {detailsSaving || languageSaving ? t("Saving...") : t("Save profile")}
-              </button>
+              {showSaveButton ? (
+                <button type="submit" disabled={detailsSaving || languageSaving} className="inspir-profile-save-button">
+                  {detailsSaving || languageSaving ? t("Saving...") : t("Save profile")}
+                </button>
+              ) : null}
             </form>
           </div>
         </section>

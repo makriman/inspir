@@ -1193,19 +1193,6 @@ function useChatClientController({
     return data?.profileImageHash ?? null;
   }
 
-  async function removeProfilePhoto() {
-    if (isGuest) return;
-    const response = await fetch("/api/me/photo", { method: "DELETE" });
-    const data = (await response.json().catch(() => null)) as { error?: string } | null;
-    if (!response.ok) {
-      throw new Error(data?.error || "Could not reset profile photo.");
-    }
-    setProfileUser((current) => ({
-      ...current,
-      profileImageHash: null,
-    }));
-  }
-
   async function patchMemorySettings(input: MemorySettingsPatch) {
     if (isGuest) return;
     setMemorySaving(true);
@@ -1407,7 +1394,6 @@ function useChatClientController({
     updatePreferredLanguage,
     deleteMemoryItem,
     clearMemory,
-    removeProfilePhoto,
     removeSidebarTopic,
     userDisplayName,
     visibleChatMessages,
@@ -1623,7 +1609,6 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     deleteMemoryItem,
     languageSaving,
     patchMemorySettings,
-    removeProfilePhoto,
     updateMemoryItem,
     updateProfileDetails,
     uploadProfilePhoto,
@@ -1643,7 +1628,6 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         memorySaving={memorySaving}
         memoryError={memoryError}
         onPhotoUpload={uploadProfilePhoto}
-        onPhotoRemove={removeProfilePhoto}
         onProfileSave={updateProfileDetails}
         onMemorySettings={patchMemorySettings}
         onMemoryCreate={createMemoryItem}
