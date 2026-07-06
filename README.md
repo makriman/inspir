@@ -2,7 +2,7 @@
 
 Learning is for everyone.
 
-inspir is an AI learning companion rebuilt into a production Next.js application running on Cloudflare. The goal is simple and ambitious: make learning feel accessible, personal, playful, and useful for anyone with curiosity and an internet connection.
+inspir is an AI learning companion running as a production Next.js application on Cloudflare. The goal is simple and ambitious: make learning feel accessible, personal, playful, and useful for anyone with curiosity and an internet connection.
 
 Live app: [https://inspirlearning.com](https://inspirlearning.com)
 
@@ -28,7 +28,7 @@ inspir gives learners topic-based AI modes rather than a single generic chat box
 - Debate with a personality: debate a real or fictional personality.
 - Debate any topic: sharpen thinking by arguing both sides.
 
-The product preserves the core learning behavior while replacing earlier prototypes with a safer, faster, extensible production stack.
+The product preserves the core learning behavior on a Cloudflare-native stack that is portable, typed, tested, and built for careful operational work.
 
 ## Highlights
 
@@ -37,10 +37,12 @@ The product preserves the core learning behavior while replacing earlier prototy
 - Server-only OpenAI calls through the AI SDK.
 - Cloudflare D1 with Drizzle ORM.
 - Cloudflare Vectorize for memory embeddings.
-- Cloudflare R2 for OpenNext incremental cache.
+- Cloudflare R2 for OpenNext incremental cache and profile image storage.
+- Cloudflare Queues for post-turn memory work.
 - Persisted chats, messages, users, topics, profile data, and AI run telemetry.
+- First-party product analytics and ops telemetry in D1, with GA and Clarity installed client-side.
 - Cloudflare operational checks for local gates, source scans, build artifact scans, preview, and production smoke tests.
-- Admin-only topic creation guarded by environment-based allowlists.
+- Admin dashboard for AI usage, quota posture, product analytics, topics, and admin management.
 - Modernized chat experience with streaming responses and polished loading states.
 - Production deployment through OpenNext on Cloudflare Workers.
 
@@ -57,7 +59,7 @@ The product preserves the core learning behavior while replacing earlier prototy
 - Cloudflare R2
 - Tailwind CSS and custom CSS
 - Cloudflare Workers
-- Node test runner and Playwright-ready visual QA
+- Node test runner and Playwright production QA
 
 ## Repository map
 
@@ -134,7 +136,7 @@ pnpm cf:d1:local:setup
 
 ## Cloudflare Operations
 
-The app runs on Cloudflare Workers through OpenNext, with D1 for relational data, Vectorize for memory retrieval, R2 for the OpenNext cache, and a Queue for post-turn memory work.
+The app runs on Cloudflare Workers through OpenNext, with D1 for relational data, Vectorize for memory retrieval, R2 for OpenNext cache/profile images, and a Queue for post-turn memory work.
 
 Useful commands:
 
@@ -159,6 +161,15 @@ pnpm cf:harden:backup-permissions -- --backup <backup-dir>
 Backups and generated reports can contain personal data or environment fingerprints. Keep them local and out of git.
 
 Cloudflare also owns post-turn memory work through the `inspirlearning-memory-post-turn-prod` Queue and `inspirlearning-memory-post-turn-dlq` dead-letter Queue. Chat responses enqueue memory extraction after the answer finishes; the Worker queue consumer processes memory against D1/Vectorize with retry support, keeping long-running memory synthesis off the request path.
+
+The production Worker is `inspirlearning`, backed by:
+
+- D1: `inspirlearning-prod`
+- Vectorize: `inspirlearning-memory-prod`
+- R2: `inspirlearning-next-cache-prod`
+- R2: `inspirlearning-profile-images-prod`
+- Queue: `inspirlearning-memory-post-turn-prod`
+- DLQ: `inspirlearning-memory-post-turn-dlq`
 
 ## Quality checks
 
