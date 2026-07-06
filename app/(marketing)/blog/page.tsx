@@ -113,7 +113,7 @@ export default function BlogIndexPage() {
     <main className="marketing-site">
       <JsonLdScripts items={jsonLd} />
       <MarketingHeader />
-      <MarketingPageHero eyebrow="Blog" title="Better ways to learn with AI." showFilm>
+      <MarketingPageHero eyebrow="Blog" title="Better ways to learn with AI." showFilm filmMuted={false}>
         {posts.length} guides for tutoring, memory, active practice, historical roleplay,
         homework help, writing feedback, coding, and learning without becoming passive.
       </MarketingPageHero>

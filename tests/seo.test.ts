@@ -1033,10 +1033,10 @@ test("video json-ld exposes the public learning film without unsafe markup", () 
 
   assert.equal(video["@type"], "VideoObject");
   assert.equal(video["@id"], `${absoluteUrl("/")}#video`);
-  assert.equal(video.contentUrl, absoluteUrl("/media/inspir-hero-learning-loop.webm"));
-  assert.equal(video.thumbnailUrl[0], absoluteUrl("/media/inspir-hero-learning-studio.jpg"));
+  assert.equal(video.contentUrl, absoluteUrl("/media/inspir-learning-film.mp4"));
+  assert.equal(video.thumbnailUrl[0], absoluteUrl("/inspir-social-preview.png"));
   assert.equal(video.url, `${absoluteUrl("/")}#learning-film`);
-  assert.equal(video.encodingFormat, "video/webm");
+  assert.equal(video.encodingFormat, "video/mp4");
   assert.equal(video.isAccessibleForFree, true);
   assert.deepEqual(video.accessibilityFeature, ["captions", "transcript", "chapters"]);
   assert.equal(video.duration, "PT31S");

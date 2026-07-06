@@ -28,6 +28,7 @@ const navLinks = [
   { href: "/topics", label: "Modes" },
   { href: "/learn", label: "Paths" },
   { href: "/blog", label: "Blog" },
+  { href: "/mission", label: "Mission" },
   { href: "/schools", label: "Schools" },
   { href: "/trust", label: "Trust" },
 ] as const;
@@ -122,13 +123,18 @@ export async function MarketingPageHero({
   title,
   children,
   showFilm = false,
+  filmMuted = true,
+  filmOnly = false,
 }: {
   eyebrow: string;
   title: string;
   children: ReactNode;
   showFilm?: boolean;
+  filmMuted?: boolean;
+  filmOnly?: boolean;
 }) {
   const chrome = await getMarketingChrome();
+  const filmHasAudio = showFilm && !filmMuted;
   return (
     <section className="marketing-page-hero">
       <div className="marketing-page-hero-copy">
@@ -136,24 +142,31 @@ export async function MarketingPageHero({
         <h1>{chrome.t(title)}</h1>
         <p>{translateInlineNode(children, chrome.t)}</p>
       </div>
-      <div className={`marketing-page-visual ${showFilm ? "has-film" : "has-photos"}`} aria-hidden="true">
+      <div
+        className={`marketing-page-visual ${showFilm ? "has-film" : "has-photos"} ${filmOnly ? "is-film-only" : ""}`}
+        aria-hidden={filmHasAudio ? undefined : true}
+      >
         {showFilm ? (
           <figure className="is-film">
             <video
               aria-label={chrome.t("inspir learning film preview")}
-              src="/media/inspir-hero-learning-loop.webm"
-              poster="/media/inspir-hero-learning-studio.jpg"
-              muted
+              src="/media/inspir-learning-film.mp4"
+              poster="/inspir-social-preview.png"
+              muted={filmMuted}
+              controls={filmHasAudio}
               autoPlay
               loop
               playsInline
               preload="auto"
-            />
+            >
+              <track kind="captions" src="/media/inspir-learning-film.en.vtt" srcLang="en" label="English captions" />
+              <track kind="chapters" src="/media/inspir-learning-film.chapters.vtt" srcLang="en" label="Film chapters" />
+            </video>
           </figure>
         ) : (
           <figure className="is-photo is-1" />
         )}
-        <figure className="is-photo is-2" />
+        {filmOnly ? null : <figure className="is-photo is-2" />}
       </div>
     </section>
   );

@@ -7982,22 +7982,22 @@ a {
 
 .inspir-profile-identity-grid {
   display: grid;
-  grid-template-columns: minmax(220px, 0.32fr) minmax(0, 1fr);
-  gap: clamp(18px, 2.5vw, 28px);
+  grid-template-columns: minmax(84px, 104px) minmax(0, 1fr);
+  gap: clamp(16px, 2vw, 22px);
   align-items: start;
 }
 
 .inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero {
-  display: flex;
+  display: grid;
   width: 100%;
   min-width: 0;
-  align-items: flex-start;
+  justify-items: center;
   align-self: start;
-  gap: 13px;
+  gap: 9px;
   border: 0;
   background: transparent;
   padding: 0;
-  text-align: left;
+  text-align: center;
 }
 
 .inspir-profile-panel.inspir-profile-workspace .inspir-profile-avatar {
@@ -8075,25 +8075,6 @@ a {
   transform: translateY(-1px);
 }
 
-.inspir-profile-hero-copy {
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: 100%;
-}
-
-.inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero h3 {
-  max-width: 100%;
-  font-size: clamp(17px, 1.6vw, 23px);
-  overflow-wrap: anywhere;
-}
-
-.inspir-profile-panel.inspir-profile-workspace .inspir-profile-hero p {
-  max-width: 100%;
-  margin-top: 5px;
-  font-size: 13px;
-  overflow-wrap: anywhere;
-}
-
 .inspir-profile-details-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -8138,8 +8119,28 @@ a {
   background: rgb(255 255 255 / 0.045);
 }
 
+.inspir-profile-details-form input[readonly] {
+  cursor: default;
+  color: rgb(255 255 255 / 0.78);
+  background: rgb(255 255 255 / 0.055);
+}
+
 .inspir-profile-details-language {
-  grid-column: 1 / -1;
+  grid-column: auto;
+}
+
+.inspir-profile-language-picker .language-picker-button {
+  min-height: 46px;
+  border-radius: 10px;
+  padding: 0 12px;
+}
+
+.inspir-profile-language-picker .language-picker-button small {
+  display: none;
+}
+
+.inspir-profile-language-picker .language-picker-button strong {
+  font-size: 15px;
 }
 
 .inspir-profile-details-error,
@@ -15305,6 +15306,11 @@ a {
   align-items: end;
 }
 
+.marketing-page-visual.is-film-only {
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+}
+
 .marketing-page-visual figure {
   position: relative;
   width: 100%;
@@ -15321,6 +15327,10 @@ a {
 .marketing-page-visual .is-film {
   aspect-ratio: 16 / 10;
   background: #171719;
+}
+
+.marketing-page-visual.is-film-only .is-film {
+  aspect-ratio: 16 / 9;
 }
 
 .marketing-page-visual .is-photo {
@@ -15368,6 +15378,10 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.marketing-page-visual video[controls] {
+  background: #171719;
 }
 
 .marketing-page-visual .is-map {
@@ -15465,6 +15479,11 @@ a {
 
   .marketing-page-visual.has-film .is-film {
     display: none;
+  }
+
+  .marketing-page-visual.has-film.is-film-only .is-film {
+    display: block;
+    aspect-ratio: 16 / 9;
   }
 
   .marketing-page-visual.has-film .is-photo,

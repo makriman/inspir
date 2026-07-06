@@ -190,10 +190,6 @@ export function ProfilePanel({
                   <Camera size={15} strokeWidth={2.5} />
                 </span>
               </button>
-              <div className="inspir-profile-hero-copy">
-                <h3>{user.name || "Learner"}</h3>
-                <p>{user.email || "user@example.com"}</p>
-              </div>
               <input
                 ref={photoInputRef}
                 type="file"
@@ -215,6 +211,10 @@ export function ProfilePanel({
                   autoComplete="name"
                   onChange={(event) => updateState({ name: event.target.value })}
                 />
+              </label>
+              <label>
+                <span>{t("Google email")}</span>
+                <input type="text" value={user.email || "Not connected"} autoComplete="email" readOnly />
               </label>
               <label>
                 <span>{t("Date of birth")}</span>

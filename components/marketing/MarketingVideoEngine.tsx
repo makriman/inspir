@@ -15,10 +15,10 @@ import {
   VolumeX,
 } from "lucide-react";
 
-const defaultFilmSrc = "/media/inspir-hero-learning-loop.webm";
-const defaultPosterSrc = "/media/inspir-hero-learning-studio.jpg";
-const defaultCaptionsSrc = "/media/inspir-hero-learning-loop.en.vtt";
-const defaultChapterTrackSrc = "/media/inspir-hero-learning-loop.chapters.vtt";
+const defaultFilmSrc = "/media/inspir-learning-film.mp4";
+const defaultPosterSrc = "/inspir-social-preview.png";
+const defaultCaptionsSrc = "/media/inspir-learning-film.en.vtt";
+const defaultChapterTrackSrc = "/media/inspir-learning-film.chapters.vtt";
 const fallbackFilmDuration = 31;
 
 type MarketingVideoChapter = {
