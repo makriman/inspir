@@ -280,7 +280,10 @@ function useAutoTranslate(
     }
 
     translateNodeTree();
-    const observer = new MutationObserver(() => translateNodeTree());
+    const observer = new MutationObserver((mutations) => {
+      if (mutations.every((mutation) => shouldSkipTranslation(mutation.target))) return;
+      translateNodeTree();
+    });
     observer.observe(root, {
       childList: true,
       subtree: true,

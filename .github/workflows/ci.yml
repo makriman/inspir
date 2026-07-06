@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CI: "true"
+  NEXT_TELEMETRY_DISABLED: "1"
+  PNPM_CONFIG_CONFIRM_MODULES_PURGE: "false"
+  npm_config_confirm_modules_purge: "false"
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Unit tests
+        run: pnpm test
+
+      - name: Source secret scan
+        run: pnpm cf:scan:source-secrets
+
+      - name: Next build
+        run: pnpm build
+        env:
+          ADMIN_EMAILS: ""
+          AUTH_GOOGLE_ID: ci-google-client-id
+          AUTH_GOOGLE_SECRET: ci-google-client-secret
+          AUTH_SECRET: ci-auth-secret
+          CRON_SECRET: ci-cron-secret
+          NEXTAUTH_SECRET: ci-auth-secret
+          NEXTAUTH_URL: http://localhost:3000
+
+      - name: OpenNext Cloudflare build
+        run: pnpm cf:build
+

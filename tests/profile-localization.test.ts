@@ -65,6 +65,12 @@ test("profile photo validation accepts small real image types only", () => {
   const invalid = prepareProfileImage(new Uint8Array([0x25, 0x50, 0x44, 0x46]), "application/pdf");
   assert.equal(invalid.success, false);
 
+  const truncatedPng = prepareProfileImage(new Uint8Array([0x89, 0x50, 0x4e]), "image/png");
+  assert.equal(truncatedPng.success, false);
+
+  const spoofedMime = prepareProfileImage(new Uint8Array([0x25, 0x50, 0x44, 0x46]), "image/png");
+  assert.equal(spoofedMime.success, false);
+
   const tooLarge = prepareProfileImage(new Uint8Array(maxProfileImageBytes + 1), "image/png");
   assert.equal(tooLarge.success, false);
 });

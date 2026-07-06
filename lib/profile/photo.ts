@@ -17,7 +17,8 @@ export type PreparedProfileImage =
       error: string;
     };
 
-export function prepareProfileImage(bytes: Uint8Array, providedMimeType?: string | null): PreparedProfileImage {
+export function prepareProfileImage(bytes: Uint8Array, _providedMimeType?: string | null): PreparedProfileImage {
+  void _providedMimeType;
   if (bytes.length === 0) {
     return { success: false, error: "Choose an image file." };
   }
@@ -27,7 +28,7 @@ export function prepareProfileImage(bytes: Uint8Array, providedMimeType?: string
   }
 
   const detectedMimeType = detectImageMimeType(bytes);
-  const mimeType = detectedMimeType ?? normalizeMimeType(providedMimeType);
+  const mimeType = detectedMimeType;
   if (!mimeType || !supportedProfileImageTypes.has(mimeType)) {
     return { success: false, error: "Use a JPG, PNG, or WebP image." };
   }
@@ -45,10 +46,6 @@ export function isOversizedProfileImageUpload(contentLength: string | null) {
   if (!contentLength) return false;
   const parsed = Number(contentLength);
   return Number.isFinite(parsed) && parsed > maxProfileImageUploadRequestBytes;
-}
-
-function normalizeMimeType(mimeType?: string | null) {
-  return mimeType?.split(";")[0]?.trim().toLowerCase() || null;
 }
 
 function detectImageMimeType(bytes: Uint8Array) {

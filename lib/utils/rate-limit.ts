@@ -21,6 +21,7 @@ type DbTimestamp = Date | number | string;
 export const quotaDefaults = {
   userChatDaily: 150,
   guestSessionDaily: 10,
+  guestFingerprintDaily: 10,
   guestIpDaily: 150,
   activityDaily: 150,
   memoryDaily: 60,
@@ -108,8 +109,6 @@ export async function consumeFixedWindowQuota(
   } catch (error) {
     console.error("rate_limit_check_failed", { key, error });
     return quotaUnavailableResult(limit, resetAt, now);
-  } finally {
-    void pruneExpiredRateLimits();
   }
 }
 
@@ -147,8 +146,16 @@ export async function consumeDailyLlmBudget(
     const result = rateLimitResult(true, limit, limit - total, resetAt, now);
     return { ...result, day };
   } catch (error) {
-    console.error("llm_budget_check_failed", { day, error });
-    return { ...quotaUnavailableResult(limit, resetAt, now), day };
+    console.error(
+      JSON.stringify({
+        event: "llm_budget_check_failed",
+        severity: "critical",
+        posture: "fail_closed",
+        day,
+        error: error instanceof Error ? error.message : String(error),
+      }),
+    );
+    return { ...budgetUnavailableResult(limit, resetAt, now), day };
   }
 }
 
@@ -188,6 +195,10 @@ function quotaUnavailableResult(limit: number, resetAt: Date, now: Date) {
   return rateLimitResult(true, limit, Math.max(0, limit - 1), resetAt, now);
 }
 
+function budgetUnavailableResult(limit: number, resetAt: Date, now: Date) {
+  return rateLimitResult(false, limit, 0, resetAt, now);
+}
+
 async function getDailyLlmCallTotal(day: string) {
   const row = await d1First<{ total: number }>(
     `select coalesce((select sum(call_count) from llm_usage_daily_shards where day = ?), 0) as total`,
@@ -204,11 +215,28 @@ function randomLlmBudgetShard(shardCount: number) {
   return (values[0] ?? 0) % normalized;
 }
 
-async function pruneExpiredRateLimits() {
-  if (Math.random() > 0.01) return;
+export async function pruneExpiredRateLimits(now = new Date(), retentionMs = 2 * oneDayMs) {
+  const cutoff = now.getTime() - retentionMs;
   try {
-    await d1Run("delete from rate_limit_windows where reset_at < ?", Date.now() - 2 * oneDayMs);
-  } catch {
-    // Best-effort table hygiene; request quota decisions must not depend on it.
+    const result = await d1Run("delete from rate_limit_windows where reset_at < ?", cutoff);
+    return {
+      ok: true,
+      cutoff,
+      deletedRows: Number(result.meta?.changes ?? 0),
+    };
+  } catch (error) {
+    console.error(
+      JSON.stringify({
+        event: "rate_limit_prune_failed",
+        severity: "warning",
+        cutoff,
+        error: error instanceof Error ? error.message : String(error),
+      }),
+    );
+    return {
+      ok: false,
+      cutoff,
+      deletedRows: 0,
+    };
   }
 }

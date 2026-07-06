@@ -2,6 +2,7 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { NextRequest, NextResponse } from "next/server";
 import { enqueueDueMemorySynthesis } from "@/lib/ai/memory-queue";
 import { writeFreezeResponse } from "@/lib/migration/write-freeze";
+import { pruneExpiredRateLimits } from "@/lib/utils/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -17,12 +18,15 @@ export async function GET(request: NextRequest) {
   if (freeze) return freeze;
 
   const limit = Number(request.nextUrl.searchParams.get("limit") ?? 10) || 10;
-  const stats = await enqueueDueMemorySynthesis(getCloudflareContext().env, {
-    limit,
-    reason: "manual_cron",
-  });
+  const [stats, rateLimitPrune] = await Promise.all([
+    enqueueDueMemorySynthesis(getCloudflareContext().env, {
+      limit,
+      reason: "manual_cron",
+    }),
+    pruneExpiredRateLimits(),
+  ]);
 
-  return NextResponse.json(stats);
+  return NextResponse.json({ ...stats, rateLimitPrune });
 }
 
 async function timingSafeBearerEquals(auth: string | null, secret: string) {

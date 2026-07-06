@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
 import { createLearningAgent } from "@/lib/ai/learning-agent";
 import { createLearningTextStreamResponse } from "@/lib/ai/streaming";
 import { resolveModelForTopic } from "@/lib/ai/model-router";
@@ -15,45 +14,20 @@ import {
   safeQuotaKeyPart,
 } from "@/lib/utils/rate-limit";
 import { writeFreezeResponse } from "@/lib/migration/write-freeze";
+import {
+  guestChatSchema,
+  guestCookieMaxAge,
+  guestFingerprintKey,
+  guestSessionCookie,
+  guestUsageCookie,
+  guestUsageCookieMaxAge,
+  parseUsage,
+  requestIp,
+  sanitizeGuestHistory,
+} from "@/lib/guest-chat/safety";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-
-const guestSessionCookie = "inspir_guest_session";
-const guestUsageCookie = "inspir_guest_messages_used";
-const guestCookieMaxAge = 60 * 60 * 24 * 30;
-const guestUsageCookieMaxAge = 60 * 60 * 24;
-
-const guestChatSchema = z.object({
-  topicId: z.string().trim().min(1).max(120),
-  content: z.string().trim().min(1).max(6000),
-  preferredLanguage: z.string().trim().min(1).max(80).optional(),
-  messages: z
-    .array(
-      z.object({
-        role: z.enum(["user", "assistant"]),
-        content: z.string().trim().min(1).max(6000),
-      }),
-    )
-    .max(12)
-    .optional()
-    .default([]),
-});
-
-function parseUsage(value: string | undefined, limit: number) {
-  const parsed = Number(value ?? "0");
-  if (!Number.isFinite(parsed) || parsed < 0) return 0;
-  return Math.min(Math.floor(parsed), limit);
-}
-
-function requestIp(request: NextRequest) {
-  return (
-    request.headers.get("cf-connecting-ip") ||
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown"
-  );
-}
 
 async function getGuestTopic(topicId: string) {
   const seededTopic = findSeededTopic(topicId);
@@ -97,13 +71,25 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Topic not available for guest chat" }, { status: 404 });
   }
 
-  const ipRate = await consumeFixedWindowQuota(
-    `guest-chat:ip:${safeQuotaKeyPart(requestIp(request))}`,
-    numberFromEnv("RATE_LIMIT_GUEST_IP_DAILY", quotaDefaults.guestIpDaily),
+  const ip = requestIp(request);
+  if (ip) {
+    const ipRate = await consumeFixedWindowQuota(
+      `guest-chat:ip:${safeQuotaKeyPart(ip)}`,
+      numberFromEnv("RATE_LIMIT_GUEST_IP_DAILY", quotaDefaults.guestIpDaily),
+      guestUsageCookieMaxAge * 1000,
+    );
+    if (!ipRate.ok) {
+      return guestLimitResponse(used, guestMessageLimit, ipRate.retryAfterSeconds);
+    }
+  }
+
+  const fingerprintRate = await consumeFixedWindowQuota(
+    await guestFingerprintKey(request),
+    numberFromEnv("RATE_LIMIT_GUEST_FINGERPRINT_DAILY", quotaDefaults.guestFingerprintDaily),
     guestUsageCookieMaxAge * 1000,
   );
-  if (!ipRate.ok) {
-    return guestLimitResponse(used, guestMessageLimit, ipRate.retryAfterSeconds);
+  if (!fingerprintRate.ok) {
+    return guestLimitResponse(used, guestMessageLimit, fingerprintRate.retryAfterSeconds);
   }
 
   const sessionRate = await consumeFixedWindowQuota(
@@ -145,7 +131,7 @@ export async function POST(request: NextRequest) {
     });
     const result = await agent.stream({
       messages: [
-        ...parsed.data.messages.slice(-12),
+        ...sanitizeGuestHistory(parsed.data.messages),
         { role: "user" as const, content: parsed.data.content },
       ],
     });

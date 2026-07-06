@@ -44,6 +44,36 @@ test("Cloudflare scripts avoid machine-local absolute tool paths", () => {
   }
 });
 
+test("GitHub CI runs the core quality and build gates", () => {
+  const workflow = fs.readFileSync(path.resolve(".github/workflows/ci.yml"), "utf8");
+
+  assert.match(workflow, /pnpm install --frozen-lockfile/);
+  assert.match(workflow, /pnpm typecheck/);
+  assert.match(workflow, /pnpm lint/);
+  assert.match(workflow, /pnpm test/);
+  assert.match(workflow, /pnpm build/);
+  assert.match(workflow, /pnpm cf:build/);
+  assert.match(workflow, /node-version: 22/);
+});
+
+test("reset password page is honest about Google-only auth", () => {
+  const source = fs.readFileSync(path.resolve("app/(marketing)/reset_pw/page.tsx"), "utf8");
+
+  assert.doesNotMatch(source, /type="password"/);
+  assert.doesNotMatch(source, /<form/);
+  assert.match(source, /no inspir password to reset/i);
+  assert.match(source, /\/api\/auth\/signin\/google\?callbackUrl=\/chat/);
+});
+
+test("chat auto-translation skips streaming markdown mutations", () => {
+  const chatClient = fs.readFileSync(path.resolve("components/chat/ChatClient.tsx"), "utf8");
+  const richMarkdown = fs.readFileSync(path.resolve("components/chat/RichMarkdownContent.tsx"), "utf8");
+
+  assert.match(chatClient, /new MutationObserver\(\(mutations\) =>/);
+  assert.match(chatClient, /mutations\.every\(\(mutation\) => shouldSkipTranslation\(mutation\.target\)\)/);
+  assert.match(richMarkdown, /data-no-auto-translate="true"/);
+});
+
 test("deploy quality gates avoid floating CLI resolution", () => {
   const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
     scripts?: Record<string, string>;

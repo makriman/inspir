@@ -1,5 +1,7 @@
 import { default as handler } from "./.open-next/worker.js";
 import { enqueueDueMemorySynthesis, processMemoryQueueBatch } from "./lib/ai/memory-queue";
+import { runWithRuntimeCloudflareEnv } from "./lib/runtime/cloudflare";
+import { pruneExpiredRateLimits } from "./lib/utils/rate-limit";
 
 export default {
   fetch: handler.fetch,
@@ -10,8 +12,11 @@ export default {
     ctx.waitUntil(
       (async () => {
         try {
-          const stats = await enqueueDueMemorySynthesis(env, { reason: "daily_cron" });
-          console.log(JSON.stringify({ event: "cron_completed", cron: controller.cron, ...stats }));
+          const [stats, rateLimitPrune] = await Promise.all([
+            enqueueDueMemorySynthesis(env, { reason: "daily_cron" }),
+            runWithRuntimeCloudflareEnv(env, () => pruneExpiredRateLimits()),
+          ]);
+          console.log(JSON.stringify({ event: "cron_completed", cron: controller.cron, rateLimitPrune, ...stats }));
         } catch (error) {
           console.error(
             JSON.stringify({

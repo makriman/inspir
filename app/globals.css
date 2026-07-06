@@ -14477,6 +14477,26 @@ a {
   color: #fffdf8;
 }
 
+.marketing-auth-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 24px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: var(--editorial-ink);
+  color: #fffdf8;
+  font-size: 15px;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.marketing-auth-action:hover,
+.marketing-auth-action:focus-visible {
+  background: var(--editorial-red);
+}
+
 .marketing-status-copy.is-compact {
   margin-top: 28px;
 }
