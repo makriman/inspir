@@ -881,6 +881,7 @@ function useChatClientController({
       const decoder = new TextDecoder();
       let assistantText = "";
       let assistantInserted = true;
+      let assistantHasPaintedText = false;
       let assistantFlushTimeout: number | null = null;
       let assistantFlushFrame: number | null = null;
 
@@ -902,9 +903,19 @@ function useChatClientController({
       }
       cancelPendingAssistantFlush = cancelAssistantFlush;
 
+      function waitForFirstAssistantPaint() {
+        return new Promise<void>((resolve) => {
+          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => resolve());
+          });
+        });
+      }
+
       function flushAssistantText({ final = false }: { final?: boolean } = {}) {
         cancelAssistantFlush();
         if (!assistantText && !final) return;
+        const isFirstPaintedText = assistantText.length > 0 && !assistantHasPaintedText;
+        if (assistantText.length > 0) assistantHasPaintedText = true;
         if (!assistantInserted) {
           assistantInserted = true;
           updateChatState((current) => ({
@@ -938,12 +949,12 @@ function useChatClientController({
           }));
         }
         scheduleMessageScrollToEnd("auto");
+        return isFirstPaintedText;
       }
 
       function scheduleAssistantFlush() {
-        if (!assistantInserted) {
-          flushAssistantText();
-          return;
+        if (!assistantHasPaintedText) {
+          return flushAssistantText();
         }
         if (assistantFlushTimeout !== null || assistantFlushFrame !== null) return;
         assistantFlushTimeout = window.setTimeout(() => {
@@ -953,6 +964,7 @@ function useChatClientController({
             flushAssistantText();
           });
         }, 48);
+        return false;
       }
 
       async function readAssistantStream(): Promise<void> {
@@ -966,7 +978,8 @@ function useChatClientController({
           return;
         }
         assistantText += decoder.decode(value, { stream: true });
-        scheduleAssistantFlush();
+        const paintedFirstText = scheduleAssistantFlush();
+        if (paintedFirstText) await waitForFirstAssistantPaint();
         return readAssistantStream();
       }
 

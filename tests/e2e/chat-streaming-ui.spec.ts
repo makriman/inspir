@@ -194,6 +194,56 @@ test("guest chat streaming stays visually stable and formats rich markdown after
   expect(diagnostics.codeBlocks).toBe(1);
 });
 
+test("guest chat paints streamed text before a fast response completes", async ({ page }) => {
+  await installGuestChatStream(page, streamingChunks, { chunkDelayMs: -1, initialDelayMs: 40 });
+  await page.goto("/chat");
+  await page.waitForLoadState("networkidle").catch(() => {});
+
+  await page.locator("textarea.inspir-composer-input").first().fill("Stream a burst response.");
+  await startStreamingProbe(page);
+  await page.getByRole("button", { name: /send message/i }).last().click();
+
+  await page.waitForFunction(() => {
+    const rich = Array.from(document.querySelectorAll(".inspir-message-row.is-assistant .inspir-rich-content")).at(-1);
+    return rich && !rich.classList.contains("is-streaming") && (rich.textContent?.length ?? 0) > 200;
+  });
+  await page.waitForTimeout(250);
+
+  const diagnostics = await page.evaluate((expectedLength) => {
+    const samples =
+      ((window as typeof window & { __chatStreamingSamples?: StreamingSample[] }).__chatStreamingSamples ?? []);
+    const streamingSamples = samples.filter((sample) => sample.isStreaming);
+    const streamingWithText = streamingSamples.filter((sample) => sample.rawStreamLength > 0);
+    const firstStreamingText = streamingWithText[0] ?? null;
+    let previousScrollTop: number | null = null;
+    let maxScrollTopRegression = 0;
+    for (const sample of streamingSamples) {
+      if (previousScrollTop !== null && sample.scrollTop !== null && sample.scrollTop < previousScrollTop - 1) {
+        maxScrollTopRegression = Math.max(maxScrollTopRegression, previousScrollTop - sample.scrollTop);
+      }
+      if (sample.scrollTop !== null) previousScrollTop = sample.scrollTop;
+    }
+
+    return {
+      firstStreamingRawLength: firstStreamingText?.rawStreamLength ?? 0,
+      firstStreamingTextLength: firstStreamingText?.textLength ?? 0,
+      maxScrollTopRegression,
+      streamingFrames: streamingSamples.length,
+      streamingFramesWithText: streamingWithText.length,
+      uniqueStreamingLengths: new Set(streamingWithText.map((sample) => sample.rawStreamLength)).size,
+      expectedLength,
+    };
+  }, streamingText.length);
+
+  expect(diagnostics.streamingFrames).toBeGreaterThan(0);
+  expect(diagnostics.streamingFramesWithText).toBeGreaterThan(0);
+  expect(diagnostics.uniqueStreamingLengths).toBeGreaterThan(0);
+  expect(diagnostics.firstStreamingRawLength).toBeGreaterThan(0);
+  expect(diagnostics.firstStreamingRawLength).toBeLessThan(diagnostics.expectedLength);
+  expect(diagnostics.firstStreamingTextLength).toBeLessThan(diagnostics.expectedLength);
+  expect(diagnostics.maxScrollTopRegression).toBe(0);
+});
+
 function chunkText(text: string, size: number) {
   const chunks: string[] = [];
   for (let index = 0; index < text.length; index += size) {
@@ -202,8 +252,12 @@ function chunkText(text: string, size: number) {
   return chunks;
 }
 
-async function installGuestChatStream(page: Page, chunks: string[]) {
-  await page.addInitScript(({ chunks: streamChunks }) => {
+async function installGuestChatStream(
+  page: Page,
+  chunks: string[],
+  options: { chunkDelayMs?: number; initialDelayMs?: number } = {},
+) {
+  await page.addInitScript(({ chunks: streamChunks, chunkDelayMs, initialDelayMs }) => {
     const originalFetch = window.fetch.bind(window);
     window.fetch = (input, init) => {
       const url = typeof input === "string" ? input : input instanceof Request ? input.url : String(input);
@@ -215,15 +269,21 @@ async function installGuestChatStream(page: Page, chunks: string[]) {
         new Response(
           new ReadableStream({
             start(controller) {
+              if (chunkDelayMs < 0) {
+                for (const chunk of streamChunks) controller.enqueue(encoder.encode(chunk));
+                controller.close();
+                return;
+              }
+
               const send = () => {
                 if (index >= streamChunks.length) {
                   controller.close();
                   return;
                 }
                 controller.enqueue(encoder.encode(streamChunks[index++]));
-                window.setTimeout(send, 55);
+                window.setTimeout(send, chunkDelayMs);
               };
-              window.setTimeout(send, 550);
+              window.setTimeout(send, initialDelayMs);
             },
           }),
           {
@@ -237,7 +297,7 @@ async function installGuestChatStream(page: Page, chunks: string[]) {
         ),
       );
     };
-  }, { chunks });
+  }, { chunks, chunkDelayMs: options.chunkDelayMs ?? 55, initialDelayMs: options.initialDelayMs ?? 550 });
 }
 
 async function startStreamingProbe(page: Page) {

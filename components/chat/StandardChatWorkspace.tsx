@@ -62,7 +62,7 @@ export function StandardChatWorkspace({
 
   return (
     <main className="inspir-workspace">
-      <MessageScrollerProvider defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
+      <MessageScrollerProvider autoScroll={false} defaultScrollPosition="end" scrollEdgeThreshold={64} scrollMargin={112}>
         <MessageScroller className="inspir-message-scroller">
           <MessageScrollerViewport ref={listRef} className="inspir-message-scroll app-scrollbar">
             <MessageScrollerContent className="inspir-message-stack">

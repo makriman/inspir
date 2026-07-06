@@ -484,6 +484,7 @@ a {
   position: absolute;
   inset: 0;
   overflow-y: auto;
+  overflow-anchor: none;
   padding: 30px clamp(18px, 6vw, 72px) 128px;
   scroll-padding-bottom: 128px;
   -webkit-mask-image: none;
@@ -550,6 +551,7 @@ a {
   width: min(860px, 100%);
   min-height: 100%;
   margin: 0 auto;
+  overflow-anchor: none;
   flex-direction: column;
   gap: 18px;
   justify-content: flex-end;
@@ -561,6 +563,7 @@ a {
   width: 100%;
   align-items: flex-end;
   gap: 10px;
+  overflow-anchor: none;
 }
 
 .inspir-message-row.is-user {
