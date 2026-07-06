@@ -136,31 +136,24 @@ export async function MarketingPageHero({
         <h1>{chrome.t(title)}</h1>
         <p>{translateInlineNode(children, chrome.t)}</p>
       </div>
-      <div className={`marketing-page-visual ${showFilm ? "has-film" : "is-map-only"}`} aria-hidden="true">
+      <div className={`marketing-page-visual ${showFilm ? "has-film" : "has-photos"}`} aria-hidden="true">
         {showFilm ? (
           <figure className="is-film">
             <video
               aria-label={chrome.t("inspir learning film preview")}
-              src="/media/inspir-learning-film.mp4"
-              poster="/inspir-social-preview.png"
+              src="/media/inspir-hero-learning-loop.webm"
+              poster="/media/inspir-hero-learning-studio.jpg"
               muted
               autoPlay
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
             />
           </figure>
-        ) : null}
-        <figure className="is-map">
-          <div className="marketing-page-map">
-            <span />
-            <span />
-            <span />
-            <span />
-            <i />
-            <i />
-          </div>
-        </figure>
+        ) : (
+          <figure className="is-photo is-1" />
+        )}
+        <figure className="is-photo is-2" />
       </div>
     </section>
   );
@@ -176,19 +169,54 @@ type MarketingHeroVideoChapter = {
 export function MarketingHeroVideo({
   chapters,
   transcript,
+  src,
+  poster,
+  captionsSrc,
+  chapterTrackSrc,
+  autoPlay = false,
+  loop = false,
 }: {
   chapters?: ReadonlyArray<MarketingHeroVideoChapter>;
   transcript?: string;
+  src?: string;
+  poster?: string;
+  captionsSrc?: string;
+  chapterTrackSrc?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
 }) {
-  return <LocalizedMarketingHeroVideo chapters={chapters} transcript={transcript} />;
+  return (
+    <LocalizedMarketingHeroVideo
+      chapters={chapters}
+      transcript={transcript}
+      src={src}
+      poster={poster}
+      captionsSrc={captionsSrc}
+      chapterTrackSrc={chapterTrackSrc}
+      autoPlay={autoPlay}
+      loop={loop}
+    />
+  );
 }
 
 async function LocalizedMarketingHeroVideo({
   chapters,
   transcript,
+  src,
+  poster,
+  captionsSrc,
+  chapterTrackSrc,
+  autoPlay,
+  loop,
 }: {
   chapters?: ReadonlyArray<MarketingHeroVideoChapter>;
   transcript?: string;
+  src?: string;
+  poster?: string;
+  captionsSrc?: string;
+  chapterTrackSrc?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
 }) {
   const chrome = await getMarketingChrome();
   const localizedChapters = chapters?.map((chapter) => ({
@@ -201,6 +229,12 @@ async function LocalizedMarketingHeroVideo({
     <MarketingVideoEngine
       chapters={localizedChapters}
       transcript={transcript ? chrome.t(transcript) : undefined}
+      src={src}
+      poster={poster}
+      captionsSrc={captionsSrc}
+      chapterTrackSrc={chapterTrackSrc}
+      autoPlay={autoPlay}
+      loop={loop}
       copy={{
         ariaLabel: chrome.t("inspir learning film"),
         playLabel: chrome.t("Play inspir learning preview"),

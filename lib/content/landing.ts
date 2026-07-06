@@ -439,10 +439,10 @@ export const homepageFilm = {
   title: "inspir: You can Learn Anything",
   description:
     "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
-  contentUrl: "/media/inspir-learning-film.mp4",
-  captionUrl: "/media/inspir-learning-film.en.vtt",
-  chaptersUrl: "/media/inspir-learning-film.chapters.vtt",
-  thumbnailUrl: "/inspir-social-preview.png",
+  contentUrl: "/media/inspir-hero-learning-loop.webm",
+  captionUrl: "/media/inspir-hero-learning-loop.en.vtt",
+  chaptersUrl: "/media/inspir-hero-learning-loop.chapters.vtt",
+  thumbnailUrl: "/media/inspir-hero-learning-studio.jpg",
   duration: "PT31S",
   uploadDate: "2026-05-28",
   transcript:

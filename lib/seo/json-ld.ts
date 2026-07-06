@@ -149,6 +149,7 @@ export function videoObjectJsonLd({
   clips?: ReadonlyArray<{ title: string; start: number; end?: number; text?: string }>;
 }) {
   const url = absoluteUrl(path);
+  const encodingFormat = contentUrl.endsWith(".webm") ? "video/webm" : "video/mp4";
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
@@ -157,7 +158,7 @@ export function videoObjectJsonLd({
     description,
     thumbnailUrl: [absoluteUrl(thumbnailUrl)],
     contentUrl: absoluteUrl(contentUrl),
-    encodingFormat: "video/mp4",
+    encodingFormat,
     url: `${url}#learning-film`,
     duration,
     uploadDate,

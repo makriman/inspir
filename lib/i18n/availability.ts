@@ -4,12 +4,8 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
-import {
-  getRuntimeSiteTranslationNamespacesForPath,
-  getRuntimeSiteTranslationSource,
-} from "@/lib/i18n/runtime-site-source";
-import { getCachedSiteTranslationBundle } from "@/lib/i18n/site-translations";
-import { isTranslationBundleCompleteAndFluent } from "@/lib/i18n/translation-quality";
+import { staticSiteTranslationNamespaceAvailability } from "@/lib/i18n/site-availability-manifest";
+import { getPotentialSiteTranslationNamespacesForPath } from "@/lib/i18n/site-path-namespaces";
 import { absoluteUrl } from "@/lib/seo/config";
 import { localizePath } from "@/lib/i18n/routing";
 
@@ -60,15 +56,12 @@ async function readSiteLanguageAvailabilityForLanguage(
 ): Promise<LanguageAvailability> {
   if (language === defaultLanguage) return { language, complete: true };
 
-  const namespaces = getRuntimeSiteTranslationNamespacesForPath(pathname);
-  const checks = await Promise.all(namespaces.map(async (namespace) => {
-    const source = await getRuntimeSiteTranslationSource(namespace);
-    if (!source) return false;
-    const bundle = await getCachedSiteTranslationBundle(language, namespace);
-    return isTranslationBundleCompleteAndFluent(source, bundle, language);
-  }));
+  const namespaces = getPotentialSiteTranslationNamespacesForPath(pathname);
+  const availableNamespaces = staticSiteTranslationNamespaceAvailability[language];
+  if (!availableNamespaces?.length) return { language, complete: false };
 
-  return { language, complete: checks.every(Boolean) };
+  const available = new Set<string>(availableNamespaces);
+  return { language, complete: namespaces.every((namespace) => available.has(namespace)) };
 }
 
 async function readAvailableSiteLanguagesForPath(pathname: string) {

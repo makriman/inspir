@@ -321,7 +321,16 @@ function LandingHero({ t }: { t: LandingTranslator }) {
           ))}
         </nav>
       </div>
-      <MarketingHeroVideo chapters={homepageFilm.chapters} transcript={homepageFilm.transcript} />
+      <MarketingHeroVideo
+        chapters={homepageFilm.chapters}
+        transcript={homepageFilm.transcript}
+        src={homepageFilm.contentUrl}
+        poster={homepageFilm.thumbnailUrl}
+        captionsSrc={homepageFilm.captionUrl}
+        chapterTrackSrc={homepageFilm.chaptersUrl}
+        autoPlay
+        loop
+      />
     </section>
   );
 }

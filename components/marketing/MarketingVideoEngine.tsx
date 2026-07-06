@@ -2,7 +2,7 @@
 
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import type { CSSProperties } from "react";
-import { useReducer, useRef } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import {
   ArrowUpRight,
   Captions,
@@ -15,9 +15,10 @@ import {
   VolumeX,
 } from "lucide-react";
 
-const filmSrc = "/media/inspir-learning-film.mp4";
-const captionsSrc = "/media/inspir-learning-film.en.vtt";
-const chapterTrackSrc = "/media/inspir-learning-film.chapters.vtt";
+const defaultFilmSrc = "/media/inspir-hero-learning-loop.webm";
+const defaultPosterSrc = "/media/inspir-hero-learning-studio.jpg";
+const defaultCaptionsSrc = "/media/inspir-hero-learning-loop.en.vtt";
+const defaultChapterTrackSrc = "/media/inspir-hero-learning-loop.chapters.vtt";
 const fallbackFilmDuration = 31;
 
 type MarketingVideoChapter = {
@@ -102,6 +103,12 @@ const initialVideoEngineState: VideoEngineState = {
   duration: fallbackFilmDuration,
   currentTime: 0,
 };
+const autoplayVideoEngineState: VideoEngineState = {
+  ...initialVideoEngineState,
+  started: true,
+  playing: true,
+  muted: true,
+};
 
 function videoEngineReducer(state: VideoEngineState, nextState: Partial<VideoEngineState>) {
   return { ...state, ...nextState };
@@ -119,23 +126,47 @@ export function MarketingVideoEngine({
   chapters = emptyVideoChapters,
   transcript,
   copy = defaultVideoCopy,
+  src = defaultFilmSrc,
+  poster = defaultPosterSrc,
+  captionsSrc = defaultCaptionsSrc,
+  chapterTrackSrc = defaultChapterTrackSrc,
+  autoPlay = false,
+  loop = false,
 }: {
   chapters?: ReadonlyArray<MarketingVideoChapter>;
   transcript?: string;
   copy?: MarketingVideoCopy;
+  src?: string;
+  poster?: string;
+  captionsSrc?: string;
+  chapterTrackSrc?: string;
+  autoPlay?: boolean;
+  loop?: boolean;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [
     { started, playing, muted, ended, chaptersOpen, transcriptOpen, duration, currentTime },
     updateVideoState,
-  ] = useReducer(videoEngineReducer, initialVideoEngineState);
+  ] = useReducer(videoEngineReducer, autoPlay ? autoplayVideoEngineState : initialVideoEngineState);
 
   const progress = duration > 0 ? Math.min((currentTime / duration) * 100, 100) : 0;
   const progressStyle = { "--video-progress": `${progress}%` } as CSSProperties;
   const activeChapter =
     chapters.find((chapter) => currentTime >= chapter.start && currentTime < chapter.end) ??
     chapters[chapters.length - 1];
+
+  useEffect(() => {
+    if (!autoPlay) return;
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    updateVideoState({ started: true, playing: true, muted: true, ended: false });
+    void video.play().catch(() => {
+      updateVideoState({ playing: false });
+    });
+  }, [autoPlay, src]);
 
   async function playVideo() {
     const video = videoRef.current;
@@ -213,7 +244,9 @@ export function MarketingVideoEngine({
     <div
       ref={containerRef}
       id="learning-film"
-      className={`marketing-hero-video ${started ? "is-started" : ""} ${playing ? "is-playing" : ""} ${
+      className={`marketing-hero-video ${autoPlay ? "is-autoplay" : ""} ${started ? "is-started" : ""} ${
+        playing ? "is-playing" : ""
+      } ${
         chaptersOpen ? "is-chapters-open" : ""
       } ${transcriptOpen ? "is-transcript-open" : ""} ${ended ? "is-ended" : ""}`}
       aria-describedby="learning-film-caption"
@@ -225,11 +258,13 @@ export function MarketingVideoEngine({
       <video
         ref={videoRef}
         className="marketing-video-frame"
-        src={filmSrc}
-        poster="/inspir-social-preview.png"
+        src={src}
+        poster={poster}
         aria-label={copy.ariaLabel}
+        autoPlay={autoPlay}
+        loop={loop}
         playsInline
-        preload="metadata"
+        preload={autoPlay ? "auto" : "metadata"}
         muted={muted}
         onLoadedMetadata={(event) => updateDuration(event.currentTarget)}
         onDurationChange={(event) => updateDuration(event.currentTarget)}
@@ -243,7 +278,7 @@ export function MarketingVideoEngine({
         }}
       >
         <track kind="captions" src={captionsSrc} srcLang="en" label="English captions" />
-        <track kind="chapters" src={chapterTrackSrc} srcLang="en" label="Film chapters" />
+        {chapterTrackSrc ? <track kind="chapters" src={chapterTrackSrc} srcLang="en" label="Film chapters" /> : null}
       </video>
       <button
         type="button"

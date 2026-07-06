@@ -27,7 +27,7 @@ export async function JsonLdScripts({ items, path, nonce }: JsonLdScriptsProps) 
   const localizedItems = await localizeMarketingStructuredData(items, pathname);
 
   return localizedItems.map((entry) => (
-    <script key={jsonLdKey(entry)} type="application/ld+json" nonce={scriptNonce}>
+    <script key={jsonLdKey(entry)} type="application/ld+json" nonce={scriptNonce} suppressHydrationWarning>
       {serializeJsonLd(entry)}
     </script>
   ));

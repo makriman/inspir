@@ -9501,7 +9501,7 @@ a {
   overflow: hidden;
   background-image:
     linear-gradient(135deg, rgb(2 5 211 / 0.34), rgb(255 90 102 / 0.16)),
-    url("/inspir-social-preview.png");
+    url("/media/inspir-hero-learning-studio.jpg");
   background-color: #050505;
   background-position: center;
   background-size: cover;
@@ -12087,7 +12087,7 @@ a {
   border: 0;
   background:
     linear-gradient(180deg, rgb(23 23 25 / 0.08), rgb(23 23 25 / 0.38)),
-    url("/inspir-social-preview.png") center / cover no-repeat;
+    url("/media/inspir-hero-learning-studio.jpg") center / cover no-repeat;
   opacity: 0.72;
   filter: saturate(0.92) contrast(0.96) blur(10px);
   transform: scale(1.04);
@@ -12409,6 +12409,23 @@ a {
   transform: translateY(0);
 }
 
+.marketing-hero-video.is-autoplay .marketing-video-poster {
+  display: none;
+}
+
+.marketing-hero-video.is-autoplay .marketing-video-controls {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+.marketing-hero-video.is-autoplay:focus-within .marketing-video-controls,
+.marketing-hero-video.is-autoplay:hover .marketing-video-controls {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
 .marketing-video-controls button {
   display: grid;
   width: 40px;
@@ -12696,7 +12713,7 @@ a {
   aspect-ratio: 4 / 3;
   background:
     linear-gradient(135deg, rgb(23 23 25 / 0.08), rgb(23 23 25 / 0.38)),
-    url("/inspir-social-preview.png") center / cover no-repeat;
+    url("/media/inspir-community-learning.jpg") center / cover no-repeat;
   box-shadow: 0 24px 70px rgb(23 23 25 / 0.1);
 }
 
@@ -15288,11 +15305,6 @@ a {
   align-items: end;
 }
 
-.marketing-page-visual.is-map-only {
-  grid-template-columns: minmax(0, min(420px, 100%));
-  justify-content: center;
-}
-
 .marketing-page-visual figure {
   position: relative;
   width: 100%;
@@ -15309,6 +15321,46 @@ a {
 .marketing-page-visual .is-film {
   aspect-ratio: 16 / 10;
   background: #171719;
+}
+
+.marketing-page-visual .is-photo {
+  aspect-ratio: 4 / 3;
+  background: #e9edf3 center / cover no-repeat;
+}
+
+.marketing-page-visual .is-photo.is-1 {
+  background-image:
+    linear-gradient(180deg, rgb(0 0 0 / 0), rgb(0 0 0 / 0.08)),
+    url("/media/inspir-community-learning.jpg");
+}
+
+.marketing-page-visual .is-photo.is-2 {
+  background-image:
+    linear-gradient(180deg, rgb(0 0 0 / 0), rgb(0 0 0 / 0.08)),
+    url("/media/inspir-school-workshop.jpg");
+}
+
+.marketing-page-visual .is-photo img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+  box-shadow: none;
+  transform: none;
+}
+
+.marketing-page-visual .is-photo.is-1 {
+  transform: translateY(18px);
+}
+
+.marketing-page-visual .is-photo.is-2 {
+  transform: translateY(-12px);
+}
+
+.marketing-page-visual.has-film .is-photo {
+  aspect-ratio: 4 / 5;
 }
 
 .marketing-page-visual video {
@@ -15415,10 +15467,11 @@ a {
     display: none;
   }
 
-  .marketing-page-visual.has-film .is-map,
-  .marketing-page-visual.is-map-only .is-map {
+  .marketing-page-visual.has-film .is-photo,
+  .marketing-page-visual.has-photos .is-photo {
     display: block;
     aspect-ratio: 16 / 9;
+    transform: none;
   }
 }
 
