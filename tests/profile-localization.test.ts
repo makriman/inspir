@@ -54,24 +54,24 @@ test("date of birth validation rejects invalid and future dates", () => {
   assert.equal(updateProfileSchema.safeParse({ dateOfBirth: "2999-01-01" }).success, false);
 });
 
-test("profile photo validation accepts small real image types only", () => {
-  const jpeg = prepareProfileImage(new Uint8Array([0xff, 0xd8, 0xff, 0xdb]), "application/octet-stream");
+test("profile photo validation accepts small real image types only", async () => {
+  const jpeg = await prepareProfileImage(new Uint8Array([0xff, 0xd8, 0xff, 0xdb]), "application/octet-stream");
   assert.equal(jpeg.success, true);
   if (jpeg.success) {
     assert.equal(jpeg.mimeType, "image/jpeg");
     assert.ok(jpeg.hash);
   }
 
-  const invalid = prepareProfileImage(new Uint8Array([0x25, 0x50, 0x44, 0x46]), "application/pdf");
+  const invalid = await prepareProfileImage(new Uint8Array([0x25, 0x50, 0x44, 0x46]), "application/pdf");
   assert.equal(invalid.success, false);
 
-  const truncatedPng = prepareProfileImage(new Uint8Array([0x89, 0x50, 0x4e]), "image/png");
+  const truncatedPng = await prepareProfileImage(new Uint8Array([0x89, 0x50, 0x4e]), "image/png");
   assert.equal(truncatedPng.success, false);
 
-  const spoofedMime = prepareProfileImage(new Uint8Array([0x25, 0x50, 0x44, 0x46]), "image/png");
+  const spoofedMime = await prepareProfileImage(new Uint8Array([0x25, 0x50, 0x44, 0x46]), "image/png");
   assert.equal(spoofedMime.success, false);
 
-  const tooLarge = prepareProfileImage(new Uint8Array(maxProfileImageBytes + 1), "image/png");
+  const tooLarge = await prepareProfileImage(new Uint8Array(maxProfileImageBytes + 1), "image/png");
   assert.equal(tooLarge.success, false);
 });
 

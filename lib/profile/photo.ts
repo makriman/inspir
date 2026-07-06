@@ -1,5 +1,3 @@
-import { createHash } from "node:crypto";
-
 export const maxProfileImageBytes = 1_000_000;
 export const maxProfileImageUploadRequestBytes = maxProfileImageBytes + 64_000;
 
@@ -17,7 +15,7 @@ export type PreparedProfileImage =
       error: string;
     };
 
-export function prepareProfileImage(bytes: Uint8Array, _providedMimeType?: string | null): PreparedProfileImage {
+export async function prepareProfileImage(bytes: Uint8Array, _providedMimeType?: string | null): Promise<PreparedProfileImage> {
   void _providedMimeType;
   if (bytes.length === 0) {
     return { success: false, error: "Choose an image file." };
@@ -33,10 +31,9 @@ export function prepareProfileImage(bytes: Uint8Array, _providedMimeType?: strin
     return { success: false, error: "Use a JPG, PNG, or WebP image." };
   }
 
-  const buffer = Buffer.from(bytes);
   return {
     success: true,
-    hash: createHash("sha256").update(buffer).digest("hex"),
+    hash: await sha256Hex(bytes),
     mimeType,
     byteLength: bytes.length,
   };
@@ -79,4 +76,11 @@ function detectImageMimeType(bytes: Uint8Array) {
     return "image/webp";
   }
   return null;
+}
+
+async function sha256Hex(bytes: Uint8Array) {
+  const digestSource = new ArrayBuffer(bytes.byteLength);
+  new Uint8Array(digestSource).set(bytes);
+  const digest = await crypto.subtle.digest("SHA-256", digestSource);
+  return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
 }

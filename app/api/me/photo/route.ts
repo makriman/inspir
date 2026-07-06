@@ -52,7 +52,7 @@ export async function PATCH(request: NextRequest) {
   }
 
   const bytes = new Uint8Array(await photo.arrayBuffer());
-  const prepared = prepareProfileImage(bytes, photo.type);
+  const prepared = await prepareProfileImage(bytes, photo.type);
   if (!prepared.success) {
     return NextResponse.json({ error: prepared.error }, { status: 400 });
   }

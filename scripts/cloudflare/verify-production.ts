@@ -150,7 +150,7 @@ function checkResponse(
   else fail(`${name} status`, { status: result.status, url: result.url, bodyPreview: result.bodyPreview });
 
   for (const pattern of options.bodyIncludes ?? []) {
-    if (pattern.test(result.bodyPreview)) pass(`${name} body: ${pattern.source}`);
+    if (pattern.test(result.body)) pass(`${name} body: ${pattern.source}`);
     else fail(`${name} body: ${pattern.source}`, { bodyPreview: result.bodyPreview });
   }
 

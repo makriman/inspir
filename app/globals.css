@@ -8001,12 +8001,19 @@ a {
 }
 
 .inspir-profile-panel.inspir-profile-workspace .inspir-profile-avatar {
+  appearance: none;
   position: relative;
   top: auto;
   left: auto;
   display: grid;
   width: 78px;
   height: 78px;
+  min-width: 78px;
+  max-width: 78px;
+  min-height: 78px;
+  max-height: 78px;
+  flex: 0 0 78px;
+  aspect-ratio: 1 / 1;
   place-items: center;
   transform: none;
   overflow: hidden;
@@ -8015,6 +8022,7 @@ a {
   background: rgb(255 255 255 / 0.055);
   color: rgb(255 255 255 / 0.74);
   padding: 0;
+  line-height: 0;
 }
 
 .inspir-profile-avatar-button {
