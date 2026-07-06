@@ -690,6 +690,12 @@ test("next config preserves canonical legal route and crawler headers", async ()
       (header) => header.key === "Content-Security-Policy" && header.value.includes("frame-ancestors 'none'"),
     ),
   );
+  assert.ok(
+    rootHeaders?.headers.some(
+      (header) =>
+        header.key === "Content-Security-Policy" && header.value.includes("form-action 'self' https://accounts.google.com"),
+    ),
+  );
   assert.equal(
     rootHeaders?.headers.some((header) => header.key === "Content-Security-Policy-Report-Only"),
     false,

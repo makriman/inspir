@@ -9,7 +9,7 @@ const securityHeaders = [
       "default-src 'self'",
       "base-uri 'self'",
       "frame-ancestors 'none'",
-      "form-action 'self'",
+      "form-action 'self' https://accounts.google.com",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://accounts.google.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "img-src 'self' data: blob: https://*.googleusercontent.com",
