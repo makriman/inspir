@@ -129,6 +129,7 @@ const marketingStaticPaths = new Set([
   "/",
   "/about",
   "/ai-learning-map",
+  "/blog",
   "/compare",
   "/for",
   "/learn",

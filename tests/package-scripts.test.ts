@@ -128,6 +128,7 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.match(middleware, /buildCacheableMarketingContentSecurityPolicy/);
   assert.match(middleware, /isMarketingPageRequest/);
   assert.match(middleware, /isPubliclyCacheableMarketingRequest/);
+  assert.match(middleware, /"\/blog"/);
   assert.match(middleware, /pathname === "\/reset_pw"/);
   assert.match(middleware, /Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400"/);
   assert.match(middleware, /Cache-Control", "private, no-cache, no-store, max-age=0, must-revalidate"/);
@@ -138,6 +139,7 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.match(cacheRule, /http_request_cache_settings/);
   assert.match(cacheRule, /set_cache_settings/);
   assert.match(cacheRule, /inspir_marketing_html_edge_cache_v1/);
+  assert.match(cacheRule, /"\/blog"/);
   assert.match(cacheRule, /http\.cookie contains/);
   assert.match(cacheRule, /better-auth\.session_token/);
   assert.match(cacheRule, /__Secure-better-auth\.session_token/);
@@ -154,6 +156,44 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.equal(wrangler.placement?.mode, "smart");
   assert.equal(wrangler.cache?.enabled, true);
   assert.equal(wrangler.limits, undefined);
+});
+
+test("localized marketing chrome avoids English-only video and PWA labels", () => {
+  const marketingShell = fs.readFileSync(path.resolve("components/marketing/MarketingShell.tsx"), "utf8");
+  const pwaPrompt = fs.readFileSync(path.resolve("components/pwa/PwaInstallPrompt.tsx"), "utf8");
+  const playerLabels = [
+    "inspir learning film",
+    "Play inspir learning preview",
+    "Watch 31s",
+    "inspir in motion",
+    "Curiosity, practice, and AI that teaches.",
+    "Film chapters",
+    "Transcript",
+    "Next step",
+    "Start a live learning session.",
+    "Ask your first question and move straight into practice.",
+    "Start learning",
+    "Replay",
+    "Pause film",
+    "Play film",
+    "Restart film",
+    "Hide film chapters",
+    "Show film chapters",
+    "Hide film transcript",
+    "Show film transcript",
+    "Video controls",
+    "Video progress",
+    "Unmute film",
+    "Mute film",
+    "Open film fullscreen",
+  ];
+
+  for (const label of playerLabels) {
+    assert.ok(marketingShell.includes(`chrome.t("${label}")`), `Expected localized video label: ${label}`);
+  }
+
+  assert.match(pwaPrompt, /const promptEnabled = enabled && !hasLocalePathPrefix\(pathname\)/);
+  assert.match(pwaPrompt, /if \(!promptEnabled \|\| !sheet\.isVisible \|\| !sheet\.mode\)/);
 });
 
 test("sitemap lastmod data is generated from git content sources", () => {

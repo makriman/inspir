@@ -98,6 +98,7 @@ const marketingExactPaths = [
   "/",
   "/about",
   "/ai-learning-map",
+  "/blog",
   "/compare",
   "/for",
   "/learn",
