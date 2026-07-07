@@ -65,6 +65,14 @@ const structuredDataCodeKeys = new Set([
 
 export async function localizeMarketingMetadata(metadata: Metadata, path: string): Promise<Metadata> {
   const language = await getRequestLanguage();
+  return localizeMarketingMetadataForLanguage(metadata, path, language);
+}
+
+export async function localizeMarketingMetadataForLanguage(
+  metadata: Metadata,
+  path: string,
+  language: SupportedLanguage,
+): Promise<Metadata> {
   const languageAvailable = isStaticSiteLanguageAvailableForPath(path, language);
   const t =
     language === defaultLanguage || !languageAvailable
@@ -110,8 +118,16 @@ export async function localizeMarketingMetadata(metadata: Metadata, path: string
 }
 
 export async function localizeMarketingStructuredData(items: ReadonlyArray<unknown>, path?: string) {
-  const pathname = path ?? "/";
   const language = await getRequestLanguage();
+  return localizeMarketingStructuredDataForLanguage(items, language, path);
+}
+
+export async function localizeMarketingStructuredDataForLanguage(
+  items: ReadonlyArray<unknown>,
+  language: SupportedLanguage,
+  path?: string,
+) {
+  const pathname = path ?? "/";
   if (language === defaultLanguage) return items;
   const languageAvailable = isStaticSiteLanguageAvailableForPath(pathname, language);
   if (!languageAvailable) return items;
@@ -145,8 +161,10 @@ export function localizeStructuredDataValue(
   return localized;
 }
 
-export async function localizedMarketingMetadata(input: LocalizedMetadataInput): Promise<Metadata> {
-  const language = await getRequestLanguage();
+export async function localizedMarketingMetadataForLanguage(
+  input: LocalizedMetadataInput,
+  language: SupportedLanguage,
+): Promise<Metadata> {
   const languageAvailable = isStaticSiteLanguageAvailableForPath(input.path, language);
   const t =
     language === defaultLanguage || !languageAvailable

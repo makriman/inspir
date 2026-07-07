@@ -5,8 +5,8 @@ import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
 import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import { languageConfigs } from "@/lib/content/languages";
 import { localizedMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { defaultLanguage, languageConfigs } from "@/lib/content/languages";
 import {
   absoluteUrl,
   siteDescription,
@@ -20,15 +20,21 @@ import {
   webApplicationJsonLd,
   websiteJsonLd,
 } from "@/lib/seo/json-ld";
-import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Geist } from "next/font/google";
+import { resolveLocaleParam, type LocaleRouteParams } from "./locale-utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
-const defaultLanguageConfig = languageConfigs[defaultLanguage];
 
-export async function generateMetadata(): Promise<Metadata> {
+type LocalizedLayoutProps = Readonly<{
+  children: React.ReactNode;
+  params: LocaleRouteParams;
+}>;
+
+export async function generateMetadata({ params }: { params: LocaleRouteParams }): Promise<Metadata> {
+  const language = await resolveLocaleParam(params);
   const localized = await localizedMarketingMetadataForLanguage(
     {
       path: "/",
@@ -51,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
         },
       },
     },
-    defaultLanguage,
+    language,
   );
 
   return {
@@ -111,19 +117,18 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function LocalizedLayout({ children, params }: LocalizedLayoutProps) {
+  const language = await resolveLocaleParam(params);
+  const languageConfig = languageConfigs[language];
+
   return (
-    <html lang={defaultLanguageConfig.locale} dir={defaultLanguageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
+    <html lang={languageConfig.locale} dir={languageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full bg-[#171614] text-white">
         <AnalyticsScripts />
         <Suspense fallback={null}>
           <ProductAnalytics />
         </Suspense>
-        <JsonLdScripts items={rootJsonLd} language={defaultLanguage} />
+        <JsonLdScripts items={rootJsonLd} language={language} />
         {children}
         <PwaInstallPrompt />
       </body>

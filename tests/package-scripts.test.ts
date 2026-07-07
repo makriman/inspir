@@ -88,6 +88,7 @@ test("marketing metadata has one localized alternates source of truth", () => {
 test("marketing performance path avoids runtime translation fan-out and DOM walking", () => {
   const metadata = fs.readFileSync(path.resolve("lib/i18n/metadata.ts"), "utf8");
   const sitemap = fs.readFileSync(path.resolve("lib/seo/sitemap.ts"), "utf8");
+  const marketingChrome = fs.readFileSync(path.resolve("lib/i18n/marketing-chrome.ts"), "utf8");
   const shell = fs.readFileSync(path.resolve("components/marketing/MarketingShell.tsx"), "utf8");
   const layout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
   const jsonLd = fs.readFileSync(path.resolve("components/seo/JsonLdScripts.tsx"), "utf8");
@@ -99,7 +100,8 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
   assert.doesNotMatch(metadata, /availableSiteLanguagesForPath/);
   assert.match(sitemap, /staticSiteLanguagesForPath/);
   assert.doesNotMatch(shell, /MarketingDomLocalizer/);
-  assert.match(shell, /isStaticSiteLanguageAvailableForPath/);
+  assert.match(marketingChrome, /isStaticSiteLanguageAvailableForPath/);
+  assert.match(marketingChrome, /getRequestMarketingChrome/);
   assert.match(shell, /hrefLanguage/);
   assert.doesNotMatch(layout, /MarketingServerLocalizer/);
   assert.match(manifestGenerator, /isRenderLocalizedSiteTranslationNamespace/);

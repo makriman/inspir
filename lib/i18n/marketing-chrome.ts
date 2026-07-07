@@ -1,6 +1,11 @@
 import { cache } from "react";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import { getRequestLanguage, getRequestPathname } from "@/lib/i18n/request-locale";
+import {
+  getRequestLanguage,
+  getRequestPathname,
+  getRequestRecommendedLanguage,
+  requestHasLocalePrefix,
+} from "@/lib/i18n/request-locale";
 import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
 import {
   getCachedSiteTranslationBundle,
@@ -10,32 +15,61 @@ import {
 import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
 import type { TranslationBundle } from "@/lib/i18n/translation-types";
 
-export type MarketingTranslator = {
+export type MarketingChrome = {
   language: SupportedLanguage;
   hrefLanguage: SupportedLanguage;
-  pathname: string;
+  recommendedLanguage: SupportedLanguage;
+  currentPathname: string;
+  hasLocalePrefix: boolean;
   translationNamespaces: string[];
-  isAvailable: boolean;
+  translationEntries: Array<[string, string]>;
   t: (value: string) => string;
 };
 
-export const getMarketingTranslator = cache(async function getMarketingTranslator(
-  pathnameOverride?: string,
-): Promise<MarketingTranslator> {
-  const [language, requestPathname] = await Promise.all([
+type MarketingChromeInput = {
+  language: SupportedLanguage;
+  recommendedLanguage: SupportedLanguage;
+  currentPathname: string;
+  hasLocalePrefix: boolean;
+};
+
+export const getStaticMarketingChrome = cache(async function getStaticMarketingChrome(
+  currentPathname: string,
+  language: SupportedLanguage = defaultLanguage,
+): Promise<MarketingChrome> {
+  return buildMarketingChrome({
+    language,
+    recommendedLanguage: defaultLanguage,
+    currentPathname,
+    hasLocalePrefix: language !== defaultLanguage,
+  });
+});
+
+export const getRequestMarketingChrome = cache(async function getRequestMarketingChrome() {
+  const [language, recommendedLanguage, currentPathname, hasLocalePrefix] = await Promise.all([
     getRequestLanguage(),
-    pathnameOverride ? Promise.resolve(pathnameOverride) : getRequestPathname(),
+    getRequestRecommendedLanguage(),
+    getRequestPathname(),
+    requestHasLocalePrefix(),
   ]);
-  const pathname = pathnameOverride ?? requestPathname;
-  const isAvailable = language === defaultLanguage || isStaticSiteLanguageAvailableForPath(pathname, language);
-  const hrefLanguage = isAvailable ? language : defaultLanguage;
-  const translationNamespaces = isAvailable ? getSiteTranslationNamespaces(pathname) : [];
+  return buildMarketingChrome({ language, recommendedLanguage, currentPathname, hasLocalePrefix });
+});
+
+async function buildMarketingChrome({
+  language,
+  recommendedLanguage,
+  currentPathname,
+  hasLocalePrefix,
+}: MarketingChromeInput): Promise<MarketingChrome> {
+  const languageAvailable = language === defaultLanguage || isStaticSiteLanguageAvailableForPath(currentPathname, language);
+  const hrefLanguage = languageAvailable ? language : defaultLanguage;
+  const translationNamespaces = languageAvailable ? getSiteTranslationNamespaces(currentPathname) : [];
   const bundles =
-    language === defaultLanguage || !isAvailable
+    language === defaultLanguage || !languageAvailable
       ? []
       : await Promise.all(translationNamespaces.map((namespace) => getCachedSiteTranslationBundle(language, namespace)));
   const translationEntries =
-    language === defaultLanguage || !isAvailable
+    language === defaultLanguage || !languageAvailable
       ? []
       : await getCachedSiteTranslationEntries(language, translationNamespaces);
   const textMap = buildTextMap(bundles.filter((bundle) => bundle !== null));
@@ -44,12 +78,14 @@ export const getMarketingTranslator = cache(async function getMarketingTranslato
   return {
     language,
     hrefLanguage,
-    pathname,
+    recommendedLanguage,
+    currentPathname,
+    hasLocalePrefix,
     translationNamespaces,
-    isAvailable,
+    translationEntries,
     t: (value: string) => translateMarketingText(value, lookup.translate, textMap),
   };
-});
+}
 
 function buildTextMap(bundles: TranslationBundle[]) {
   const map = new Map<string, string>();

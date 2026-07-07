@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Download, EyeOff, Plus, Share, Sparkles, X } from "lucide-react";
 import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
+import { languagePrefixToLanguage } from "@/lib/content/languages";
 
 const DISMISSED_AT_KEY = "pwa_install_dismissed_at";
 const NEVER_SHOW_KEY = "pwa_install_never_show";
@@ -33,6 +35,11 @@ type SheetState = {
   isVisible: boolean;
   mode: InstallMode | null;
   showIosSteps: boolean;
+};
+
+type PromptCopy = {
+  headline: string;
+  subtext: string;
 };
 
 const hiddenSheetState: SheetState = {
@@ -67,6 +74,11 @@ function isIosBrowser() {
   );
 }
 
+function hasLocalePathPrefix(pathname: string | null) {
+  const firstSegment = pathname?.split("/").find(Boolean)?.toLowerCase();
+  return firstSegment ? Boolean(languagePrefixToLanguage[firstSegment]) : false;
+}
+
 function readTimestamp(key: string) {
   const value = window.localStorage.getItem(key);
   const timestamp = value ? Number(value) : Number.NaN;
@@ -96,6 +108,8 @@ function registerVisit() {
 }
 
 export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
+  const pathname = usePathname();
+  const promptEnabled = enabled && !hasLocalePathPrefix(pathname);
   const [sheet, setSheet] = useState<SheetState>(hiddenSheetState);
   const canConsiderPromptRef = useRef(false);
   const hasMeaningfulInteractionRef = useRef(false);
@@ -171,7 +185,7 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
 
     try {
       if (
-        !enabled ||
+        !promptEnabled ||
         isStandaloneDisplayMode() ||
         window.localStorage.getItem(NEVER_SHOW_KEY) === "true" ||
         window.localStorage.getItem(INSTALLED_AT_KEY) ||
@@ -203,11 +217,11 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
         window.clearTimeout(timeout);
       }
     };
-  }, [enabled]);
+  }, [promptEnabled]);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event: Event) => {
-      if (!enabled || !isLikelyMobileOrTablet()) {
+      if (!promptEnabled || !isLikelyMobileOrTablet()) {
         return;
       }
 
@@ -243,10 +257,10 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
       window.removeEventListener("appinstalled", handleAppInstalled);
     };
-  }, [enabled]);
+  }, [promptEnabled]);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!promptEnabled) return;
 
     const standaloneQuery = window.matchMedia("(display-mode: standalone)");
     const handleStandaloneChange = () => {
@@ -260,10 +274,10 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
     return () => {
       standaloneQuery.removeEventListener("change", handleStandaloneChange);
     };
-  }, [enabled]);
+  }, [promptEnabled]);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!promptEnabled) return;
 
     const markInteraction = () => {
       hasMeaningfulInteractionRef.current = true;
@@ -285,10 +299,10 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
       window.removeEventListener("keydown", markInteraction);
       window.removeEventListener("scroll", markScrollInteraction);
     };
-  }, [enabled]);
+  }, [promptEnabled]);
 
   useEffect(() => {
-    if (!enabled) return;
+    if (!promptEnabled) return;
 
     const timeout = window.setTimeout(() => {
       hasWaitedLongEnoughRef.current = true;
@@ -298,7 +312,7 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
     return () => {
       window.clearTimeout(timeout);
     };
-  }, [enabled]);
+  }, [promptEnabled]);
 
   const promptCopy =
     sheet.mode === "ios" && sheet.showIosSteps
@@ -339,10 +353,34 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
     }
   }, [dismissForLater, markInstalled, sheet.mode]);
 
-  if (!enabled || !sheet.isVisible || !sheet.mode) {
+  if (!promptEnabled || !sheet.isVisible || !sheet.mode) {
     return null;
   }
 
+  return (
+    <PwaInstallSheet
+      sheet={sheet}
+      promptCopy={promptCopy}
+      onInstallClick={() => void handleInstallClick()}
+      onDismissForLater={dismissForLater}
+      onDismissPermanently={dismissPermanently}
+    />
+  );
+}
+
+function PwaInstallSheet({
+  sheet,
+  promptCopy,
+  onInstallClick,
+  onDismissForLater,
+  onDismissPermanently,
+}: {
+  sheet: SheetState;
+  promptCopy: PromptCopy;
+  onInstallClick: () => void;
+  onDismissForLater: () => void;
+  onDismissPermanently: () => void;
+}) {
   return (
     <section className="pwa-install-shell" aria-label="Install inspir app">
       <div className="pwa-install-card">
@@ -378,15 +416,15 @@ export function PwaInstallPrompt({ enabled = true }: { enabled?: boolean }) {
         ) : null}
 
         <div className="pwa-install-actions">
-          <button className="pwa-install-primary" type="button" onClick={() => void handleInstallClick()}>
+          <button className="pwa-install-primary" type="button" onClick={onInstallClick}>
             <Download size={18} aria-hidden="true" />
             Install App
           </button>
-          <button className="pwa-install-secondary" type="button" onClick={dismissForLater}>
+          <button className="pwa-install-secondary" type="button" onClick={onDismissForLater}>
             <X size={17} aria-hidden="true" />
             Maybe Later
           </button>
-          <button className="pwa-install-quiet" type="button" onClick={dismissPermanently}>
+          <button className="pwa-install-quiet" type="button" onClick={onDismissPermanently}>
             <EyeOff size={17} aria-hidden="true" />
             Don&apos;t show again
           </button>

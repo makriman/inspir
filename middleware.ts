@@ -73,7 +73,7 @@ export async function middleware(request: NextRequest) {
 
   const buildResponse = () => {
     let response: NextResponse;
-    if (!localizedPath.hasLocalePrefix) {
+    if (!localizedPath.hasLocalePrefix || hasLocalizedMarketingRoute(effectivePathname)) {
       response = NextResponse.next({ request: { headers: requestHeaders } });
       return applyMarketingCacheHeaders(applySecurityHeaders(response, csp), cacheableMarketingRequest);
     }
@@ -147,6 +147,27 @@ const marketingStaticPaths = new Set([
 
 const marketingStaticPrefixes = ["/blog", "/compare", "/for", "/learn", "/subjects"];
 
+const localizedMarketingRoutePaths = new Set([
+  "/",
+  "/about",
+  "/ai-learning-map",
+  "/blog",
+  "/compare",
+  "/for",
+  "/learn",
+  "/loading",
+  "/media",
+  "/mission",
+  "/privacy",
+  "/prompts",
+  "/reset_pw",
+  "/schools",
+  "/subjects",
+  "/terms",
+  "/topics",
+  "/trust",
+]);
+
 function isMarketingPageRequest(request: NextRequest, pathname: string) {
   if (request.method !== "GET" && request.method !== "HEAD") return false;
   if (request.headers.get("rsc") === "1") return false;
@@ -162,6 +183,10 @@ function isPubliclyCacheableMarketingRequest(request: NextRequest, pathname: str
 function isMarketingPath(pathname: string) {
   if (marketingStaticPaths.has(pathname)) return true;
   return marketingStaticPrefixes.some((prefix) => pathname.startsWith(`${prefix}/`));
+}
+
+function hasLocalizedMarketingRoute(pathname: string) {
+  return localizedMarketingRoutePaths.has(pathname);
 }
 
 function canonicalOriginRedirectUrl(request: NextRequest) {

@@ -231,6 +231,7 @@ function fileBelongsToNamespace(relativePath: string, namespace: string) {
   if (route === "home") {
     return (
       routePath === "app/page.tsx" ||
+      routePath === "components/marketing/pages/LandingMarketingPage.tsx" ||
       routePath === "components/marketing/MarketingVideoEngine.tsx" ||
       routePath === "lib/content/landing.ts"
     );
@@ -278,7 +279,7 @@ function contentFileBelongsToRoute(relativePath: string, route: string) {
     for: ["lib/content/audiences.ts"],
     learn: ["lib/content/landing.ts", "lib/content/blog-link-graph.ts", "lib/content/topics.ts"],
     media: ["lib/content/authority.ts"],
-    mission: ["lib/content/authority.ts"],
+    mission: ["components/marketing/pages/MissionMarketingPage.tsx", "lib/content/authority.ts"],
     prompts: ["lib/content/prompt-library.ts", "lib/content/topics.ts"],
     schools: ["lib/content/authority.ts"],
     subjects: ["lib/content/subjects.ts", "lib/content/topics.ts"],

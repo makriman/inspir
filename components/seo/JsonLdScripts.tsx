@@ -1,9 +1,11 @@
-import { localizeMarketingStructuredData } from "@/lib/i18n/metadata";
+import { localizeMarketingStructuredData, localizeMarketingStructuredDataForLanguage } from "@/lib/i18n/metadata";
 import { serializeJsonLd } from "@/lib/seo/json-ld";
+import type { SupportedLanguage } from "@/lib/content/languages";
 
 type JsonLdScriptsProps = {
   items: ReadonlyArray<unknown>;
   path?: string;
+  language?: SupportedLanguage;
   nonce?: string;
 };
 
@@ -19,9 +21,11 @@ function jsonLdKey(entry: unknown) {
   return serializeJsonLd(entry);
 }
 
-export async function JsonLdScripts({ items, path, nonce }: JsonLdScriptsProps) {
+export async function JsonLdScripts({ items, path, language, nonce }: JsonLdScriptsProps) {
   const pathname = path ?? "/";
-  const localizedItems = await localizeMarketingStructuredData(items, pathname);
+  const localizedItems = language
+    ? await localizeMarketingStructuredDataForLanguage(items, language, pathname)
+    : await localizeMarketingStructuredData(items, pathname);
 
   return localizedItems.map((entry) => (
     <script key={jsonLdKey(entry)} type="application/ld+json" nonce={nonce} suppressHydrationWarning>

@@ -1,26 +1,13 @@
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
-import { cache, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { MarketingVideoEngine } from "@/components/marketing/MarketingVideoEngine";
 import { MarketingLanguageControls } from "@/components/marketing/LanguageControls";
-import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import type { TranslationBundle } from "@/lib/i18n/translation-types";
+import { type SupportedLanguage } from "@/lib/content/languages";
 import { localizeHref } from "@/lib/i18n/routing";
-import {
-  getRequestLanguage,
-  getRequestPathname,
-  getRequestRecommendedLanguage,
-  requestHasLocalePrefix,
-} from "@/lib/i18n/request-locale";
-import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
-import {
-  getCachedSiteTranslationBundle,
-  getCachedSiteTranslationEntries,
-  getSiteTranslationNamespaces,
-} from "@/lib/i18n/site-translations";
-import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
+import { getRequestMarketingChrome, type MarketingChrome } from "@/lib/i18n/marketing-chrome";
 import type { MarketingHeroVisual } from "@/lib/content/marketing-visuals";
 
 const navLinks = [
@@ -35,7 +22,17 @@ const navLinks = [
 ] as const;
 
 export async function MarketingHeader({ hero = false }: { hero?: boolean }) {
-  const chrome = await getMarketingChrome();
+  const chrome = await getRequestMarketingChrome();
+  return <MarketingHeaderWithChrome chrome={chrome} hero={hero} />;
+}
+
+export function MarketingHeaderWithChrome({
+  chrome,
+  hero = false,
+}: {
+  chrome: MarketingChrome;
+  hero?: boolean;
+}) {
   return (
     <header className={`marketing-header ${hero ? "is-hero" : ""}`}>
       <Link href={localizeHref("/", chrome.hrefLanguage)} aria-label="inspir home" className="marketing-brand">
@@ -76,7 +73,11 @@ export async function MarketingHeader({ hero = false }: { hero?: boolean }) {
 }
 
 export async function MarketingFooter() {
-  const chrome = await getMarketingChrome();
+  const chrome = await getRequestMarketingChrome();
+  return <MarketingFooterWithChrome chrome={chrome} />;
+}
+
+export function MarketingFooterWithChrome({ chrome }: { chrome: MarketingChrome }) {
   return (
     <footer className="marketing-footer">
       <div>
@@ -122,6 +123,7 @@ export async function MarketingPageHero({
   showFilm = false,
   filmMuted = true,
   filmOnly = false,
+  chrome: chromeOverride,
 }: {
   eyebrow: string;
   title: string;
@@ -130,8 +132,9 @@ export async function MarketingPageHero({
   showFilm?: boolean;
   filmMuted?: boolean;
   filmOnly?: boolean;
+  chrome?: MarketingChrome;
 }) {
-  const chrome = await getMarketingChrome();
+  const chrome = chromeOverride ?? (await getRequestMarketingChrome());
   const filmHasAudio = showFilm && !filmMuted;
   const showSupportingPhoto = showFilm && !filmOnly;
   return (
@@ -189,6 +192,7 @@ export function MarketingHeroVideo({
   chapterTrackSrc,
   autoPlay = false,
   loop = false,
+  chrome,
 }: {
   chapters?: ReadonlyArray<MarketingHeroVideoChapter>;
   transcript?: string;
@@ -198,6 +202,7 @@ export function MarketingHeroVideo({
   chapterTrackSrc?: string;
   autoPlay?: boolean;
   loop?: boolean;
+  chrome?: MarketingChrome;
 }) {
   return (
     <LocalizedMarketingHeroVideo
@@ -209,6 +214,7 @@ export function MarketingHeroVideo({
       chapterTrackSrc={chapterTrackSrc}
       autoPlay={autoPlay}
       loop={loop}
+      chrome={chrome}
     />
   );
 }
@@ -222,6 +228,7 @@ async function LocalizedMarketingHeroVideo({
   chapterTrackSrc,
   autoPlay,
   loop,
+  chrome: chromeOverride,
 }: {
   chapters?: ReadonlyArray<MarketingHeroVideoChapter>;
   transcript?: string;
@@ -231,8 +238,9 @@ async function LocalizedMarketingHeroVideo({
   chapterTrackSrc?: string;
   autoPlay?: boolean;
   loop?: boolean;
+  chrome?: MarketingChrome;
 }) {
-  const chrome = await getMarketingChrome();
+  const chrome = chromeOverride ?? (await getRequestMarketingChrome());
   const localizedChapters = chapters?.map((chapter) => ({
     ...chapter,
     title: chrome.t(chapter.title),
@@ -283,10 +291,12 @@ export async function ArrowLink({
   href,
   children,
   external = false,
+  hrefLanguage,
 }: {
   href: string;
   children: ReactNode;
   external?: boolean;
+  hrefLanguage?: SupportedLanguage;
 }) {
   if (external) {
     return (
@@ -297,79 +307,13 @@ export async function ArrowLink({
     );
   }
 
+  const language = hrefLanguage ?? (await getRequestMarketingChrome()).hrefLanguage;
   return (
-    <Link className="marketing-arrow-link" href={localizeHref(href, (await getMarketingChrome()).hrefLanguage)}>
+    <Link className="marketing-arrow-link" href={localizeHref(href, language)}>
       {children}
       <ArrowUpRight size={17} />
     </Link>
   );
-}
-
-const getMarketingChrome = cache(async function getMarketingChrome() {
-  const [language, recommendedLanguage, currentPathname, hasLocalePrefix] = await Promise.all([
-    getRequestLanguage(),
-    getRequestRecommendedLanguage(),
-    getRequestPathname(),
-    requestHasLocalePrefix(),
-  ]);
-  const languageAvailable = language === defaultLanguage || isStaticSiteLanguageAvailableForPath(currentPathname, language);
-  const hrefLanguage = languageAvailable ? language : defaultLanguage;
-  const translationNamespaces = languageAvailable ? getSiteTranslationNamespaces(currentPathname) : [];
-  const bundles =
-    language === defaultLanguage || !languageAvailable
-      ? []
-      : await Promise.all(translationNamespaces.map((namespace) => getCachedSiteTranslationBundle(language, namespace)));
-  const translationEntries =
-    language === defaultLanguage || !languageAvailable
-      ? []
-      : await getCachedSiteTranslationEntries(language, translationNamespaces);
-  const textMap = buildTextMap(bundles.filter((bundle) => bundle !== null));
-  const lookup = createTranslationLookup(translationEntries);
-
-  return {
-    language,
-    hrefLanguage,
-    recommendedLanguage,
-    currentPathname,
-    hasLocalePrefix,
-    translationNamespaces,
-    translationEntries,
-    t: (value: string) => translateMarketingText(value, lookup.translate, textMap),
-  } satisfies {
-    language: SupportedLanguage;
-    hrefLanguage: SupportedLanguage;
-    recommendedLanguage: SupportedLanguage;
-    currentPathname: string;
-    hasLocalePrefix: boolean;
-    translationNamespaces: string[];
-    translationEntries: Array<[string, string]>;
-    t: (value: string) => string;
-  };
-});
-
-function buildTextMap(bundles: TranslationBundle[]) {
-  const map = new Map<string, string>();
-  for (const bundle of bundles) {
-    for (const [key, source] of Object.entries(bundle.sourceStrings)) {
-      const translated = bundle.strings[key];
-      if (translated) map.set(normalizeTranslationText(source), translated);
-    }
-  }
-  return map;
-}
-
-function translateMarketingText(
-  value: string,
-  translate: (value: string) => string,
-  textMap: Map<string, string>,
-) {
-  const normalized = normalizeTranslationText(value);
-  if (!normalized) return value;
-  const translated = textMap.get(normalized) ?? translate(normalized);
-  if (!translated || translated === normalized) return value;
-  const leading = value.match(/^\s*/)?.[0] ?? "";
-  const trailing = value.match(/\s*$/)?.[0] ?? "";
-  return `${leading}${translated}${trailing}`;
 }
 
 function translateInlineNode(node: ReactNode, t: (value: string) => string): ReactNode {
