@@ -5,7 +5,6 @@ import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
 import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
-import { MarketingServerLocalizer } from "@/components/i18n/MarketingServerLocalizer";
 import { getRequestLanguageConfig, getRequestPathname } from "@/lib/i18n/request-locale";
 import { localizedMarketingMetadata, localizeMarketingStructuredData } from "@/lib/i18n/metadata";
 import { defaultLanguage } from "@/lib/content/languages";
@@ -124,7 +123,7 @@ export default async function RootLayout({
           <ProductAnalytics />
         </Suspense>
         <JsonLdScripts items={localizedRootJsonLd} />
-        <MarketingServerLocalizer>{children}</MarketingServerLocalizer>
+        {children}
         <PwaInstallPrompt enabled={languageConfig.language === defaultLanguage} />
       </body>
     </html>
