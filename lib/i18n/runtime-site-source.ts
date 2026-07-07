@@ -3,7 +3,6 @@ import { getAppTranslationSource } from "@/lib/db/queries";
 import {
   siteTranslationNamespace,
 } from "@/lib/i18n/site-source-constants";
-import { siteSourceManifest } from "@/lib/i18n/site-source-manifest";
 import {
   getPotentialSiteTranslationNamespacesForPath,
   isPotentialSiteTranslationNamespace,
@@ -20,9 +19,9 @@ type StaticSiteTranslationSource = {
   sourceStrings: Record<string, string>;
 };
 
-const staticSiteSources = siteSourceManifest as Record<string, StaticSiteTranslationSource | undefined>;
 const runtimeSourceCacheTtlMs = 5 * 60 * 1000;
 const runtimeSourceCache = new Map<string, CachedRuntimeSource>();
+let buildTimeSourceManifestPromise: Promise<Record<string, StaticSiteTranslationSource> | null> | undefined;
 
 export function isKnownRuntimeSiteTranslationNamespace(namespace: string) {
   return isPotentialSiteTranslationNamespace(namespace);
@@ -35,12 +34,12 @@ export function getRuntimeSiteTranslationNamespacesForPath(pathname: string) {
 export async function getRuntimeSiteTranslationSource(namespace = siteTranslationNamespace) {
   if (!isKnownRuntimeSiteTranslationNamespace(namespace)) return null;
 
-  const staticSource = staticSiteSources[namespace];
-  if (staticSource) {
+  const buildTimeSource = await getBuildTimeSiteTranslationSource(namespace);
+  if (buildTimeSource) {
     return {
       namespace,
-      sourceHash: staticSource.sourceHash,
-      sourceStrings: staticSource.sourceStrings,
+      sourceHash: buildTimeSource.sourceHash,
+      sourceStrings: buildTimeSource.sourceStrings,
       systemInstruction: buildRuntimeSiteTranslationSystemInstruction(),
     } satisfies TranslationSource;
   }
@@ -82,6 +81,58 @@ async function readRuntimeSiteTranslationSource(namespace: string): Promise<Tran
     sourceStrings: row.sourceStrings,
     systemInstruction: buildRuntimeSiteTranslationSystemInstruction(),
   };
+}
+
+async function getBuildTimeSiteTranslationSource(namespace: string) {
+  if (!shouldReadBuildTimeTranslationFiles()) return null;
+  const manifest = await readBuildTimeSourceManifest();
+  return manifest?.[namespace] ?? null;
+}
+
+function shouldReadBuildTimeTranslationFiles() {
+  return process.env.NEXT_PHASE === "phase-production-build";
+}
+
+function readBuildTimeSourceManifest() {
+  buildTimeSourceManifestPromise ??= readBuildTimeSourceManifestFile().catch((error) => {
+    console.warn("site_translation_source_manifest_unavailable", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return null;
+  });
+  return buildTimeSourceManifestPromise;
+}
+
+async function readBuildTimeSourceManifestFile() {
+  const [{ readFile }, path] = await Promise.all([import("node:fs/promises"), import("node:path")]);
+  const filePath = path.join(process.cwd(), "lib/i18n/site-source-manifest.ts");
+  const source = await readFile(filePath, "utf8");
+  const marker = "export const siteSourceManifest = ";
+  const start = source.indexOf(marker);
+  const end = source.lastIndexOf(" as const;");
+  if (start < 0 || end <= start) return null;
+
+  const parsed: unknown = JSON.parse(source.slice(start + marker.length, end));
+  if (!isBuildTimeSourceManifest(parsed)) return null;
+  return parsed;
+}
+
+function isBuildTimeSourceManifest(value: unknown): value is Record<string, StaticSiteTranslationSource> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+
+  for (const entry of Object.values(value)) {
+    if (!entry || typeof entry !== "object" || Array.isArray(entry)) return false;
+    const source = entry as Partial<StaticSiteTranslationSource>;
+    if (typeof source.sourceHash !== "string") return false;
+    if (!isStringRecord(source.sourceStrings)) return false;
+  }
+
+  return true;
+}
+
+function isStringRecord(value: unknown): value is Record<string, string> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  return Object.values(value).every((item) => typeof item === "string");
 }
 
 function buildRuntimeSiteTranslationSystemInstruction() {
