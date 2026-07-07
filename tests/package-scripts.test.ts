@@ -91,6 +91,7 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
   const shell = fs.readFileSync(path.resolve("components/marketing/MarketingShell.tsx"), "utf8");
   const layout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
   const jsonLd = fs.readFileSync(path.resolve("components/seo/JsonLdScripts.tsx"), "utf8");
+  const requestLocale = fs.readFileSync(path.resolve("lib/i18n/request-locale.ts"), "utf8");
   const manifestGenerator = fs.readFileSync(path.resolve("scripts/generate-site-source-manifest.ts"), "utf8");
 
   assert.match(metadata, /isStaticSiteLanguageAvailableForPath/);
@@ -104,6 +105,8 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
   assert.match(manifestGenerator, /isRenderLocalizedSiteTranslationNamespace/);
   assert.doesNotMatch(layout, /headers\(\)/);
   assert.doesNotMatch(jsonLd, /headers\(\)/);
+  assert.equal(requestLocale.match(/await headers\(\)/g)?.length, 1);
+  assert.match(requestLocale, /getRequestLocaleHeaderSnapshot/);
 });
 
 test("marketing cacheability config is deterministic for cookieless GET pages", () => {

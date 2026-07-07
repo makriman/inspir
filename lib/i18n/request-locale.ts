@@ -16,8 +16,7 @@ import {
 } from "@/lib/i18n/routing";
 
 export const getRequestLanguage = cache(async function getRequestLanguage(): Promise<SupportedLanguage> {
-  const requestHeaders = await headers();
-  const headerLanguage = requestHeaders.get(requestLanguageHeader);
+  const { language: headerLanguage } = await getRequestLocaleHeaderSnapshot();
   if (headerLanguage) return normalizeLanguage(headerLanguage);
 
   const cookieStore = await cookies();
@@ -29,16 +28,26 @@ export const getRequestLanguageConfig = cache(async function getRequestLanguageC
 });
 
 export const getRequestRecommendedLanguage = cache(async function getRequestRecommendedLanguage(): Promise<SupportedLanguage> {
-  const requestHeaders = await headers();
-  return normalizeLanguage(requestHeaders.get(requestRecommendedLanguageHeader) ?? defaultLanguage);
+  const { recommendedLanguage } = await getRequestLocaleHeaderSnapshot();
+  return normalizeLanguage(recommendedLanguage ?? defaultLanguage);
 });
 
 export const getRequestPathname = cache(async function getRequestPathname() {
-  const requestHeaders = await headers();
-  return requestHeaders.get(requestPathnameHeader) ?? "/";
+  const { pathname } = await getRequestLocaleHeaderSnapshot();
+  return pathname ?? "/";
 });
 
 export const requestHasLocalePrefix = cache(async function requestHasLocalePrefix() {
+  const { hasLocalePrefix } = await getRequestLocaleHeaderSnapshot();
+  return hasLocalePrefix;
+});
+
+const getRequestLocaleHeaderSnapshot = cache(async function getRequestLocaleHeaderSnapshot() {
   const requestHeaders = await headers();
-  return requestHeaders.get(requestLocalePrefixHeader) === "1";
+  return {
+    language: requestHeaders.get(requestLanguageHeader),
+    recommendedLanguage: requestHeaders.get(requestRecommendedLanguageHeader),
+    pathname: requestHeaders.get(requestPathnameHeader),
+    hasLocalePrefix: requestHeaders.get(requestLocalePrefixHeader) === "1",
+  };
 });
