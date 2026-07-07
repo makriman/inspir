@@ -88,7 +88,11 @@ async function checkGuestChat() {
 
   const response = await request("/api/guest-chat", {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: {
+      "accept-language": "en-US,en;q=0.9",
+      "content-type": "application/json",
+      "user-agent": `inspir-production-smoke-${Date.now()}`,
+    },
     body: JSON.stringify({
       topicId: "learn-anything",
       content: "Say hello in one short sentence.",
