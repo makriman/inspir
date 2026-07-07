@@ -40,9 +40,18 @@ async function main() {
     bodyIncludes: [/learn|सीख|सीखने|शिक्ष/i],
   });
   if ((localized.headers["set-cookie"] ?? "").includes("inspir_locale=Hindi")) {
-    pass("localized Hindi route language cookie");
+    fail("localized Hindi route language cookie suppressed", { setCookie: localized.headers["set-cookie"] ?? null });
   } else {
-    fail("localized Hindi route language cookie", { setCookie: localized.headers["set-cookie"] ?? null });
+    pass("localized Hindi route language cookie suppressed", { setCookie: localized.headers["set-cookie"] ?? null });
+  }
+  checkCacheControl("localized Hindi route", localized, [/public/i, /s-maxage=3600/i]);
+
+  const localizedChat = await request("/hi/chat/learn-anything");
+  checkResponse("localized Hindi chat route", localizedChat);
+  if ((localizedChat.headers["set-cookie"] ?? "").includes("inspir_locale=Hindi")) {
+    pass("localized Hindi chat route language cookie");
+  } else {
+    fail("localized Hindi chat route language cookie", { setCookie: localizedChat.headers["set-cookie"] ?? null });
   }
 
   const robots = await request("/robots.txt");
