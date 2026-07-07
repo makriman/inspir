@@ -1,6 +1,7 @@
 "use client";
 
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useReducer, useRef } from "react";
 import {
@@ -60,6 +61,7 @@ type VideoEngineState = {
   playing: boolean;
   muted: boolean;
   ended: boolean;
+  ready: boolean;
   chaptersOpen: boolean;
   transcriptOpen: boolean;
   duration: number;
@@ -98,6 +100,7 @@ const initialVideoEngineState: VideoEngineState = {
   playing: false,
   muted: false,
   ended: false,
+  ready: false,
   chaptersOpen: false,
   transcriptOpen: false,
   duration: fallbackFilmDuration,
@@ -120,6 +123,22 @@ function formatTime(seconds: number, { roundUp = false } = {}) {
   const minutes = Math.floor(roundedSeconds / 60);
   const remainingSeconds = (roundedSeconds % 60).toString().padStart(2, "0");
   return `${minutes}:${remainingSeconds}`;
+}
+
+function VideoFallbackImage({ poster, autoPlay }: { poster: string; autoPlay: boolean }) {
+  return (
+    <Image
+      className="marketing-video-fallback"
+      src={poster}
+      alt=""
+      aria-hidden="true"
+      fill
+      sizes="100vw"
+      loading={autoPlay ? "eager" : "lazy"}
+      fetchPriority={autoPlay ? "high" : "auto"}
+      decoding="async"
+    />
+  );
 }
 
 export function MarketingVideoEngine({
@@ -146,7 +165,7 @@ export function MarketingVideoEngine({
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [
-    { started, playing, muted, ended, chaptersOpen, transcriptOpen, duration, currentTime },
+    { started, playing, muted, ended, ready, chaptersOpen, transcriptOpen, duration, currentTime },
     updateVideoState,
   ] = useReducer(videoEngineReducer, autoPlay ? autoplayVideoEngineState : initialVideoEngineState);
 
@@ -162,7 +181,7 @@ export function MarketingVideoEngine({
     if (!video) return;
 
     video.muted = true;
-    updateVideoState({ started: true, playing: true, muted: true, ended: false });
+    updateVideoState({ started: true, playing: true, muted: true, ended: false, ready: false });
     void video.play().catch(() => {
       updateVideoState({ playing: false });
     });
@@ -246,7 +265,7 @@ export function MarketingVideoEngine({
       id="learning-film"
       className={`marketing-hero-video ${autoPlay ? "is-autoplay" : ""} ${started ? "is-started" : ""} ${
         playing ? "is-playing" : ""
-      } ${
+      } ${ready ? "is-ready" : ""} ${
         chaptersOpen ? "is-chapters-open" : ""
       } ${transcriptOpen ? "is-transcript-open" : ""} ${ended ? "is-ended" : ""}`}
       aria-describedby="learning-film-caption"
@@ -255,6 +274,7 @@ export function MarketingVideoEngine({
         className="marketing-video-ambient"
         aria-hidden="true"
       />
+      <VideoFallbackImage poster={poster} autoPlay={autoPlay} />
       <video
         ref={videoRef}
         className="marketing-video-frame"
@@ -266,6 +286,8 @@ export function MarketingVideoEngine({
         playsInline
         preload={autoPlay ? "auto" : "metadata"}
         muted={muted}
+        onLoadedData={() => updateVideoState({ ready: true })}
+        onCanPlay={() => updateVideoState({ ready: true })}
         onLoadedMetadata={(event) => updateDuration(event.currentTarget)}
         onDurationChange={(event) => updateDuration(event.currentTarget)}
         onTimeUpdate={(event) => updateVideoState({ currentTime: event.currentTarget.currentTime })}
