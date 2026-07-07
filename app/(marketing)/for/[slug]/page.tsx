@@ -23,7 +23,7 @@ import {
 } from "@/lib/content/audiences";
 import { getAudienceHeroVisual } from "@/lib/content/marketing-visuals";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
+import { absoluteUrl, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -85,7 +85,6 @@ export async function generateMetadata({ params }: AudienceDetailPageProps): Pro
   return localizeMarketingMetadata({
     title: page.seoTitle,
     description: page.description,
-    alternates: metadataAlternates(audiencePath(page.slug)),
     openGraph: {
       title: `${page.seoTitle} | inspir`,
       description: page.description,

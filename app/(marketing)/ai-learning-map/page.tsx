@@ -20,7 +20,7 @@ import {
   learningMapSearchIntents,
 } from "@/lib/content/learning-map";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { absoluteUrl, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { absoluteUrl, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -35,7 +35,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "AI Learning Map",
   description,
-  alternates: metadataAlternates("/ai-learning-map"),
   openGraph: {
     title: "AI Learning Map | inspir",
     description,

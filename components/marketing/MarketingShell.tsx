@@ -110,7 +110,7 @@ export async function MarketingFooter() {
             {chrome.t(label)}
           </Link>
         ))}
-        <a href="https://github.com/makriman/inspir" target="_blank" rel="noreferrer">
+        <a href="https://github.com/greatindiancompany/ai-study-platform" target="_blank" rel="noreferrer">
           GitHub
         </a>
       </nav>
@@ -157,7 +157,7 @@ export async function MarketingPageHero({
             <video
               aria-label={chrome.t("inspir learning film preview")}
               src="/media/inspir-learning-film.mp4"
-              poster="/inspir-social-preview.png"
+              poster="/media/inspir-learning-film-poster.webp"
               muted={filmMuted}
               controls={filmHasAudio}
               autoPlay

@@ -25,7 +25,7 @@ import {
 } from "@/lib/content/subjects";
 import { getSubjectHeroVisual } from "@/lib/content/marketing-visuals";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
+import { absoluteUrl, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -100,7 +100,6 @@ export async function generateMetadata({ params }: SubjectDetailPageProps): Prom
   return localizeMarketingMetadata({
     title: page.seoTitle,
     description: page.description,
-    alternates: metadataAlternates(subjectPath(page.slug)),
     robots: { index: true, follow: true },
     openGraph: {
       title: `${page.seoTitle} | inspir`,

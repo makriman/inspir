@@ -14,7 +14,7 @@ import {
   subjectPath,
 } from "@/lib/content/subjects";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -29,7 +29,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "AI Tutors by Subject",
   description,
-  alternates: metadataAlternates("/subjects"),
   robots: { index: true, follow: true },
   openGraph: {
     title: "AI Tutors by Subject | inspir",

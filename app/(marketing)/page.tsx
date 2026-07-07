@@ -39,7 +39,7 @@ import { getCachedSiteTranslationEntries, getSiteTranslationNamespaces } from "@
 import { getRequestLanguage, getRequestPathname } from "@/lib/i18n/request-locale";
 import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
 import { defaultLanguage } from "@/lib/content/languages";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
 import {
@@ -53,7 +53,6 @@ const pageMetadata: Metadata = {
   title: "Free AI learning for everyone",
   description:
     "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
-  alternates: metadataAlternates("/"),
   openGraph: {
     title: "Free AI learning for everyone | inspir",
     description:
@@ -159,17 +158,17 @@ const learningJourney = [
 
 const repos = [
   {
-    href: "https://github.com/makriman/inspir",
+    href: "https://github.com/greatindiancompany/ai-study-platform",
     title: "makriman/inspir",
     text: "The current inspirlearning.com rebuild.",
   },
   {
-    href: "https://github.com/makriman/ai-study-platform",
+    href: "https://github.com/greatindiancompany/ai-learning-platform",
     title: "makriman/ai-study-platform",
     text: "The next-generation AI study platform.",
   },
   {
-    href: "https://github.com/makriman/inspir-platform",
+    href: "https://github.com/greatindiancompany/ai-learning-platform",
     title: "makriman/inspir-platform",
     text: "The broader open-source inspir platform.",
   },
@@ -295,6 +294,7 @@ function buildLandingJsonLd(subjectPages: SubjectPageSummary[], posts: LandingPo
 function LandingHero({ t }: { t: LandingTranslator }) {
   return (
     <section className="marketing-hero" aria-labelledby="home-title">
+      <link rel="preload" as="image" href={homepageFilm.thumbnailUrl} fetchPriority="high" />
       <div className="marketing-hero-content">
         <span className="marketing-kicker">{t("Free public AI learning platform")}</span>
         <h1 id="home-title">{t("Free AI learning for everyone.")}</h1>

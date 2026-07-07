@@ -16,7 +16,7 @@ import {
 } from "@/components/marketing/MarketingShell";
 import { authorityReferenceLinks, missionFaqs, missionPrinciples } from "@/lib/content/authority";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -29,7 +29,6 @@ const pageMetadata: Metadata = {
   title: "Mission",
   description:
     "inspir's mission is to make learning accessible, engaging, enjoyable, and useful for everyone through free public AI learning tools.",
-  alternates: metadataAlternates("/mission"),
   openGraph: {
     title: "Mission | inspir",
     description:

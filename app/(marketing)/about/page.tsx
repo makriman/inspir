@@ -9,7 +9,7 @@ import {
 } from "@/components/marketing/MarketingShell";
 import { aboutFaqs, aboutProofPoints, aboutStoryLinks, aboutTimeline } from "@/lib/content/authority";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -22,7 +22,6 @@ const pageMetadata: Metadata = {
   title: "About",
   description:
     "The story of inspir, from Facebook quizzes and student communities to a free AI learning platform built in public.",
-  alternates: metadataAlternates("/about"),
   openGraph: {
     title: "About inspir",
     description:
@@ -174,7 +173,7 @@ export default function AboutPage() {
         <div className="marketing-media-list">
           <ArrowLink href="/mission">Read the mission</ArrowLink>
           <ArrowLink href="/schools">Schools and CSR</ArrowLink>
-          <ArrowLink href="https://github.com/makriman/inspir" external>
+          <ArrowLink href="https://github.com/greatindiancompany/ai-study-platform" external>
             Contribute on GitHub
           </ArrowLink>
         </div>

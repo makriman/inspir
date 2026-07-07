@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { TermsAndConditionsContent, termsDescription } from "@/components/legal/TermsAndConditionsContent";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 
 const pageMetadata: Metadata = {
   title: "Terms",
   description: termsDescription,
-  alternates: metadataAlternates("/terms"),
   robots: { index: false, follow: true },
   openGraph: {
     title: "Terms | inspir",

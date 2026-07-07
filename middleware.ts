@@ -120,7 +120,8 @@ function canonicalOriginRedirectUrl(request: NextRequest) {
   const url = request.nextUrl.clone();
   const hostname = url.hostname.toLowerCase();
   const isInspirHost = hostname === "inspirlearning.com" || hostname === "www.inspirlearning.com";
-  const needsHttps = isInspirHost && url.protocol === "http:";
+  const forwardedScheme = requestScheme(request);
+  const needsHttps = isInspirHost && forwardedScheme === "http";
   const needsApex = hostname === "www.inspirlearning.com";
 
   if (!needsHttps && !needsApex) return null;
@@ -131,6 +132,23 @@ function canonicalOriginRedirectUrl(request: NextRequest) {
     url.port = "";
   }
   return url;
+}
+
+function requestScheme(request: NextRequest) {
+  const forwarded = request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim().toLowerCase();
+  if (forwarded === "http" || forwarded === "https") return forwarded;
+
+  const cfVisitor = request.headers.get("cf-visitor");
+  if (cfVisitor) {
+    try {
+      const parsed = JSON.parse(cfVisitor) as { scheme?: unknown };
+      if (parsed.scheme === "http" || parsed.scheme === "https") return parsed.scheme;
+    } catch {
+      return request.nextUrl.protocol.replace(/:$/, "");
+    }
+  }
+
+  return request.nextUrl.protocol.replace(/:$/, "");
 }
 
 function hasBetterAuthSessionCookie(request: NextRequest) {

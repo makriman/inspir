@@ -25,7 +25,7 @@ import {
   mediaStoryAngles,
 } from "@/lib/content/authority";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -40,7 +40,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "Media And Press",
   description,
-  alternates: metadataAlternates("/media"),
   openGraph: {
     title: "Media And Press | inspir",
     description,

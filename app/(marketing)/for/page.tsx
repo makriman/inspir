@@ -14,7 +14,7 @@ import {
   getAudiencePages,
 } from "@/lib/content/audiences";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -29,7 +29,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "AI Learning for Students, Parents, and Teachers",
   description,
-  alternates: metadataAlternates("/for"),
   openGraph: {
     title: "AI Learning for Students, Parents, and Teachers | inspir",
     description,

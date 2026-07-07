@@ -15,7 +15,7 @@ import {
   trustSafeguards,
 } from "@/lib/content/authority";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -30,7 +30,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "Trust And Safety",
   description,
-  alternates: metadataAlternates("/trust"),
   openGraph: {
     title: "Trust And Safety | inspir",
     description,

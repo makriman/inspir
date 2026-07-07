@@ -1,6 +1,6 @@
 const links = [
   {
-    href: "https://twitter.com/inspiruk",
+    href: "https://x.com/inspiruk",
     label: "X/Twitter",
     mark: "X",
   },
@@ -15,7 +15,7 @@ const links = [
     mark: "ig",
   },
   {
-    href: "https://www.linkedin.com/company/inspiruk/",
+    href: "https://www.linkedin.com/company/inspiruk",
     label: "LinkedIn",
     mark: "in",
   },

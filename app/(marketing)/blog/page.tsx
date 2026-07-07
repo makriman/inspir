@@ -7,7 +7,7 @@ import { indexedBlogPosts, isIndexedBlogPost } from "@/lib/content/blog-seo-poli
 import { blogHubFaqs, getBlogPillarClusters } from "@/lib/content/blog-directory";
 import { topicSeeds } from "@/lib/content/topics";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
 import {
@@ -23,7 +23,6 @@ const blogDescription =
 const pageMetadata: Metadata = {
   title: "AI Learning Blog",
   description: blogDescription,
-  alternates: metadataAlternates("/blog"),
   openGraph: {
     title: "AI Learning Blog | inspir",
     description: blogDescription,

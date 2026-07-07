@@ -80,13 +80,14 @@ export async function localizeMarketingMetadata(metadata: Metadata, path: string
         ? metadata.robots
         : { index: false, follow: true },
     openGraph: metadata.openGraph
-        ? {
+      ? {
           ...metadata.openGraph,
           title: localizeOptionalTitle(metadata.openGraph.title, t),
           description:
             typeof metadata.openGraph.description === "string"
               ? t(metadata.openGraph.description)
               : metadata.openGraph.description,
+          images: localizeOpenGraphImages(metadata.openGraph.images, t),
           url: localizeHref(path, languageAvailable ? language : defaultLanguage),
           siteName,
         }
@@ -99,6 +100,7 @@ export async function localizeMarketingMetadata(metadata: Metadata, path: string
             typeof metadata.twitter.description === "string"
               ? t(metadata.twitter.description)
               : metadata.twitter.description,
+          images: localizeTwitterImages(metadata.twitter.images, t),
         }
       : metadata.twitter,
   };
@@ -206,7 +208,6 @@ function localizedAlternates(
     types: {
       "application/rss+xml": "/rss.xml",
       "text/plain": "/llms.txt",
-      "application/json": "/ai-content-index.json",
     },
   };
 }
@@ -220,6 +221,62 @@ function shouldExposeSearchAlternates(robots: Metadata["robots"]) {
   if (typeof robots === "string") return !/\bnoindex\b/i.test(robots);
   if (robots && typeof robots === "object" && "index" in robots && robots.index === false) return false;
   return true;
+}
+
+type OpenGraphImage = NonNullable<NonNullable<Metadata["openGraph"]>["images"]>;
+type TwitterImage = NonNullable<NonNullable<Metadata["twitter"]>["images"]>;
+
+function localizeOpenGraphImages(images: NonNullable<Metadata["openGraph"]>["images"], t: (value: string) => string) {
+  if (!images) return images;
+  const imageList = Array.isArray(images) ? images : [images];
+  return imageList.map((image) => {
+    const localizedUrl = localizeSocialImageUrl(imageUrlString(image), t);
+    if (!localizedUrl) return image;
+    if (typeof image === "string" || image instanceof URL) return localizedUrl;
+    return {
+      ...image,
+      url: localizedUrl,
+      alt: typeof image.alt === "string" ? t(image.alt) : image.alt,
+    };
+  }) as OpenGraphImage;
+}
+
+function localizeTwitterImages(images: NonNullable<Metadata["twitter"]>["images"], t: (value: string) => string) {
+  if (!images) return images;
+  const imageList = Array.isArray(images) ? images : [images];
+  return imageList.map((image) => localizeSocialImageUrl(imageUrlString(image), t) ?? image) as TwitterImage;
+}
+
+function imageUrlString(image: unknown) {
+  if (typeof image === "string") return image;
+  if (image instanceof URL) return image.toString();
+  if (image && typeof image === "object" && "url" in image) {
+    const value = (image as { url?: unknown }).url;
+    if (typeof value === "string") return value;
+    if (value instanceof URL) return value.toString();
+  }
+  return null;
+}
+
+function localizeSocialImageUrl(value: string | null, t: (value: string) => string) {
+  if (!value) return null;
+  let url: URL;
+  try {
+    url = new URL(value, siteUrl);
+  } catch {
+    return null;
+  }
+  if (url.origin !== siteUrl || url.pathname !== "/og") return null;
+
+  const title = url.searchParams.get("title");
+  if (!title) return null;
+  const eyebrow = url.searchParams.get("eyebrow");
+  const description = url.searchParams.get("description");
+  return socialImage({
+    title: t(title),
+    eyebrow: eyebrow ? t(eyebrow) : undefined,
+    description: description ? t(description) : undefined,
+  }).url;
 }
 
 function localizeTitle(title: Metadata["title"], t: (value: string) => string): Metadata["title"] {

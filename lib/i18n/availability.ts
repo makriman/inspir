@@ -4,8 +4,12 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
-import { staticSiteTranslationNamespaceAvailability } from "@/lib/i18n/site-availability-manifest";
 import { getPotentialSiteTranslationNamespacesForPath } from "@/lib/i18n/site-path-namespaces";
+import {
+  getCachedSiteTranslationBundle,
+} from "@/lib/i18n/site-translations";
+import { getRuntimeSiteTranslationSource } from "@/lib/i18n/runtime-site-source";
+import { isTranslationBundleCompleteAndFluent } from "@/lib/i18n/translation-quality";
 import { absoluteUrl } from "@/lib/seo/config";
 import { localizePath } from "@/lib/i18n/routing";
 
@@ -57,11 +61,18 @@ async function readSiteLanguageAvailabilityForLanguage(
   if (language === defaultLanguage) return { language, complete: true };
 
   const namespaces = getPotentialSiteTranslationNamespacesForPath(pathname);
-  const availableNamespaces = staticSiteTranslationNamespaceAvailability[language];
-  if (!availableNamespaces?.length) return { language, complete: false };
+  if (!namespaces.length) return { language, complete: true };
 
-  const available = new Set<string>(availableNamespaces);
-  return { language, complete: namespaces.every((namespace) => available.has(namespace)) };
+  for (const namespace of namespaces) {
+    const source = await getRuntimeSiteTranslationSource(namespace);
+    if (!source) return { language, complete: false };
+    const bundle = await getCachedSiteTranslationBundle(language, namespace);
+    if (!isTranslationBundleCompleteAndFluent(source, bundle, language)) {
+      return { language, complete: false };
+    }
+  }
+
+  return { language, complete: true };
 }
 
 async function readAvailableSiteLanguagesForPath(pathname: string) {

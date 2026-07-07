@@ -9,7 +9,7 @@ import {
 } from "@/components/marketing/MarketingShell";
 import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -21,7 +21,6 @@ const pageMetadata: Metadata = {
   title: "AI Learning Paths",
   description:
     "Practical AI learning paths for understanding hard topics, homework help, exam prep, history, debate, flashcards, and active recall.",
-  alternates: metadataAlternates("/learn"),
   openGraph: {
     title: "AI Learning Paths | inspir",
     description:

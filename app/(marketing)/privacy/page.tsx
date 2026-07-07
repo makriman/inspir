@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContentPage } from "@/components/legal/ContentPage";
 import { extractedPages } from "@/lib/content/extracted-pages";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 
 const description =
   "How inspir describes data use, privacy practices, and user rights for the public learning platform.";
@@ -10,7 +10,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "Privacy Policy",
   description,
-  alternates: metadataAlternates("/privacy"),
   robots: { index: false, follow: true },
   openGraph: {
     title: "Privacy Policy | inspir",

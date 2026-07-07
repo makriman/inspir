@@ -10,7 +10,7 @@ import {
   promptLibrarySearchIntents,
 } from "@/lib/content/prompt-library";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -25,7 +25,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "AI Learning Prompt Library",
   description,
-  alternates: metadataAlternates("/prompts"),
   openGraph: {
     title: "AI Learning Prompt Library | inspir",
     description,

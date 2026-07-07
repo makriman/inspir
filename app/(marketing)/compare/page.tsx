@@ -14,7 +14,7 @@ import {
   getComparisonPages,
 } from "@/lib/content/comparisons";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -29,7 +29,6 @@ const description =
 const pageMetadata: Metadata = {
   title: "AI Tutor Comparisons",
   description,
-  alternates: metadataAlternates("/compare"),
   openGraph: {
     title: "AI Tutor Comparisons | inspir",
     description,

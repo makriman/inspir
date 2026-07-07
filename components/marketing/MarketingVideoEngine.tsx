@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 const defaultFilmSrc = "/media/inspir-learning-film.mp4";
-const defaultPosterSrc = "/inspir-social-preview.png";
+const defaultPosterSrc = "/media/inspir-learning-film-poster.webp";
 const defaultCaptionsSrc = "/media/inspir-learning-film.en.vtt";
 const defaultChapterTrackSrc = "/media/inspir-learning-film.chapters.vtt";
 const fallbackFilmDuration = 31;

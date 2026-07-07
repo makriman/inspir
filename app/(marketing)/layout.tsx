@@ -97,7 +97,6 @@ export async function generateMetadata(): Promise<Metadata> {
     manifest: "/manifest.webmanifest",
     verification: siteVerificationMetadata(),
     other: {
-      "ai-content-index": absoluteUrl("/ai-content-index.json"),
       "llms-txt": absoluteUrl("/llms.txt"),
       "llms-full": absoluteUrl("/llms-full.txt"),
     },

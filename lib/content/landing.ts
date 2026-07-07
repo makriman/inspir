@@ -442,7 +442,7 @@ export const homepageFilm = {
   contentUrl: "/media/inspir-learning-film.mp4",
   captionUrl: "/media/inspir-learning-film.en.vtt",
   chaptersUrl: "/media/inspir-learning-film.chapters.vtt",
-  thumbnailUrl: "/inspir-social-preview.png",
+  thumbnailUrl: "/media/inspir-learning-film-poster.webp",
   duration: "PT31S",
   uploadDate: "2026-05-28",
   transcript:

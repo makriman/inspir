@@ -208,10 +208,12 @@ test("sitemap includes SEO pages but excludes chat app surfaces", () => {
   for (const page of getSubjectPages()) {
     assert.ok(urls.includes(absoluteUrl(subjectPath(page.slug))), `${page.slug} should be in sitemap`);
   }
-  assert.ok(sitemap().some((entry) => entry.images?.some((image) => image.startsWith(absoluteUrl("/og?")))));
+  assert.ok(sitemap().some((entry) => entry.images?.some((image) => image === absoluteUrl("/inspir-social-preview.png"))));
   const homeEntry = sitemap().find((entry) => entry.url === absoluteUrl("/"));
+  assert.equal(homeEntry?.lastModified, "2026-07-06");
   assert.ok(homeEntry?.videos?.some((video) => video.content_loc === absoluteUrl(homepageFilm.contentUrl)));
   assert.ok(homeEntry?.videos?.some((video) => video.thumbnail_loc === absoluteUrl(homepageFilm.thumbnailUrl)));
+  assert.equal(homeEntry?.videos?.[0]?.thumbnail_loc, absoluteUrl("/media/inspir-learning-film-poster.webp"));
   assert.equal(homeEntry?.videos?.[0]?.duration, 31);
   assert.equal(homeEntry?.videos?.[0]?.requires_subscription, "no");
   const homeAlternates = new Map(Object.entries(homeEntry?.alternates?.languages ?? {}));
@@ -231,6 +233,7 @@ test("sitemap index advertises every source-current language sitemap", () => {
   const xml = buildSitemapIndexXml();
 
   assert.ok(sitemapLanguages().includes("English"));
+  assert.ok(entries.every((entry) => entry.lastModified === "2026-07-06"));
   assert.equal(sitemapLanguages().every((language) => supportedLanguages.includes(language)), true);
   assert.equal(entries.length, sitemapLanguages().length);
   assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
@@ -1034,7 +1037,7 @@ test("video json-ld exposes the public learning film without unsafe markup", () 
   assert.equal(video["@type"], "VideoObject");
   assert.equal(video["@id"], `${absoluteUrl("/")}#video`);
   assert.equal(video.contentUrl, absoluteUrl("/media/inspir-learning-film.mp4"));
-  assert.equal(video.thumbnailUrl[0], absoluteUrl("/inspir-social-preview.png"));
+  assert.equal(video.thumbnailUrl[0], absoluteUrl("/media/inspir-learning-film-poster.webp"));
   assert.equal(video.url, `${absoluteUrl("/")}#learning-film`);
   assert.equal(video.encodingFormat, "video/mp4");
   assert.equal(video.isAccessibleForFree, true);
@@ -1484,7 +1487,7 @@ test("rss feed exposes the blog library with escaped public links", () => {
   assert.ok(feed.includes('xmlns:dc="http://purl.org/dc/elements/1.1/"'));
   assert.ok(feed.includes(`<atom:link href="${absoluteUrl("/rss.xml")}" rel="self" type="application/rss+xml" />`));
   assert.ok(feed.includes(absoluteUrl("/blog/ai-learn-anything-guide")));
-  assert.ok(feed.includes(absoluteUrl("/og?")));
+  assert.ok(feed.includes(absoluteUrl("/inspir-social-preview.png")));
   assert.ok(feed.includes(`<dc:creator>inspir</dc:creator>`));
   assert.ok(feed.includes("<content:encoded><![CDATA["));
   assert.ok(feed.includes(absoluteUrl("/chat/learn-anything")));
@@ -1678,7 +1681,7 @@ test("ai discovery files describe every public mode without exposing private cha
   assert.equal(/\/chat\/[0-9a-f-]{36}/i.test(serialized), false);
 });
 
-test("metadata alternates expose rss, llms, ai index, and language canonicals", () => {
+test("metadata alternates expose rss, llms, and language canonicals", () => {
   const alternates = metadataAlternates("/blog");
 
   assert.equal(alternates.canonical, "/blog");
@@ -1686,10 +1689,10 @@ test("metadata alternates expose rss, llms, ai index, and language canonicals", 
   assert.equal(alternates.languages["x-default"], "/blog");
   assert.equal(alternates.types["application/rss+xml"], "/rss.xml");
   assert.equal(alternates.types["text/plain"], "/llms.txt");
-  assert.equal(alternates.types["application/json"], "/ai-content-index.json");
+  assert.equal("application/json" in alternates.types, false);
 });
 
-test("social image helper uses the dynamic branded preview image", () => {
+test("social image helper uses the static branded preview image", () => {
   const image = socialImage({
     title: "AI Socratic Tutor <script>",
     eyebrow: "Learning mode",
@@ -1698,9 +1701,7 @@ test("social image helper uses the dynamic branded preview image", () => {
 
   assert.equal(image.width, 1200);
   assert.equal(image.height, 630);
-  assert.ok(image.url.startsWith(absoluteUrl("/og?")));
-  assert.ok(image.url.includes("AI+Socratic+Tutor"));
-  assert.ok(image.url.includes("Learning+mode"));
+  assert.equal(image.url, absoluteUrl("/inspir-social-preview.png"));
   assert.equal(image.url.includes("legacy.example"), false);
   assert.equal(image.alt, "AI Socratic Tutor <script> | inspir");
 });

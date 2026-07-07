@@ -17,7 +17,7 @@ import {
 } from "@/lib/content/landing";
 import { getLearningPathHeroVisual } from "@/lib/content/marketing-visuals";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { absoluteUrl, metadataAlternates, siteName, siteUrl, socialImage } from "@/lib/seo/config";
+import { absoluteUrl, siteName, siteUrl, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
 import {
@@ -98,7 +98,6 @@ export async function generateMetadata({ params }: LearningPathPageProps): Promi
   return localizeMarketingMetadata({
     title: path.seoTitle,
     description: path.seoDescription,
-    alternates: metadataAlternates(learningPathHref(path.slug)),
     openGraph: {
       title: path.seoTitle,
       description: path.seoDescription,

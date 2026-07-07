@@ -23,6 +23,7 @@ import {
 import { translationStringsFromDbPayload } from "../lib/i18n/db-translations";
 import { getLocalizedPathInfo, languageAlternatesForPath, localizeHref, localizePath } from "../lib/i18n/routing";
 import { createTranslationLookup } from "../lib/i18n/translation-lookup";
+import { isTranslationBundleCompleteAndFluent } from "../lib/i18n/translation-quality";
 import { isValidFieldTranslation } from "../lib/i18n/translation-field-validation";
 import { isFreshAppTranslation, validateTranslationPayload } from "../lib/i18n/translation-validation";
 import { calculateAge, validateDateOfBirth } from "../lib/profile/age";
@@ -370,4 +371,25 @@ test("translation lookup localizes template-composed text", () => {
   assert.equal(lookup.translate("Mathematics on inspir"), "inspir पर गणित");
   assert.equal(lookup.translate("Mathematics AI learning modes"), "गणित एआई सीखने के मोड");
   assert.equal(lookup.translate("Unknown text"), "Unknown text");
+});
+
+test("site translation fluency gate rejects mixed-language complete bundles", () => {
+  const source = {
+    namespace: "route:mission",
+    sourceHash: "test-source",
+    sourceStrings: {
+      "site.example":
+        "Every public mode is a doorway into a different learning behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+    },
+  };
+  const bundle = {
+    ...source,
+    language: "Spanish" as const,
+    strings: {
+      "site.example":
+        "Every público modo is a doorway into a different aprendizaje behavior, so the format can match the job instead of forcing every learner into one generic chat box.",
+    },
+  };
+
+  assert.equal(isTranslationBundleCompleteAndFluent(source, bundle, "Spanish"), false);
 });

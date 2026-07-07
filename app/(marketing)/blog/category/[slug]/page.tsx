@@ -13,7 +13,7 @@ import {
   getBlogCategoryRelatedModes,
 } from "@/lib/content/blog-directory";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate } from "@/lib/utils/dates";
 import {
@@ -48,7 +48,6 @@ export async function generateMetadata({ params }: BlogCategoryPageProps): Promi
   return localizeMarketingMetadata({
     title,
     description,
-    alternates: metadataAlternates(`/blog/category/${category.slug}`),
     openGraph: {
       title: `${title} | inspir`,
       description,

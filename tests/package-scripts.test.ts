@@ -67,6 +67,46 @@ test("reset password page is honest about Google-only auth", () => {
   assert.match(source, /callbackUrl="\/chat"/);
 });
 
+test("marketing metadata has one localized alternates source of truth", () => {
+  const marketingDir = path.resolve("app/(marketing)");
+  const pageFiles = fs
+    .readdirSync(marketingDir, { recursive: true })
+    .filter((file): file is string => typeof file === "string" && /page\.tsx$/.test(file))
+    .map((file) => path.join(marketingDir, file));
+
+  for (const filePath of pageFiles) {
+    const source = fs.readFileSync(filePath, "utf8");
+    assert.doesNotMatch(source, /alternates:\s*metadataAlternates\(/, path.relative(process.cwd(), filePath));
+  }
+
+  const marketingLayout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
+  const marketingMetadata = fs.readFileSync(path.resolve("lib/i18n/metadata.ts"), "utf8");
+  assert.doesNotMatch(marketingLayout, /"ai-content-index"/);
+  assert.doesNotMatch(marketingMetadata, /ai-content-index\.json/);
+});
+
+test("social preview metadata points at the static PNG fallback", () => {
+  const source = fs.readFileSync(path.resolve("app/og/route.ts"), "utf8");
+  const socialConfig = fs.readFileSync(path.resolve("lib/seo/config.ts"), "utf8");
+
+  assert.match(source, /inspir-social-preview\.png/);
+  assert.match(socialConfig, /url:\s*`\$\{siteUrl\}\/inspir-social-preview\.png`/);
+  assert.doesNotMatch(source, /ImageResponse/);
+  assert.doesNotMatch(source, /runtime\s*=\s*"edge"/);
+});
+
+test("IndexNow key is root-served and submit script targets Bing", () => {
+  const indexNow = fs.readFileSync(path.resolve("lib/seo/indexnow.ts"), "utf8");
+  const keyMatch = indexNow.match(/indexNowKey = "([a-f0-9]{32})"/);
+  assert.ok(keyMatch);
+
+  const keyFile = path.resolve(`public/${keyMatch[1]}.txt`);
+  assert.equal(fs.readFileSync(keyFile, "utf8").trim(), keyMatch[1]);
+
+  const submitScript = fs.readFileSync(path.resolve("scripts/seo/submit-indexnow.ts"), "utf8");
+  assert.match(submitScript, /https:\/\/www\.bing\.com\/indexnow/);
+});
+
 test("chat auto-translation skips streaming markdown mutations", () => {
   const chatClient = fs.readFileSync(path.resolve("components/chat/ChatClient.tsx"), "utf8");
   const richMarkdown = fs.readFileSync(path.resolve("components/chat/RichMarkdownContent.tsx"), "utf8");

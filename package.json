@@ -62,7 +62,8 @@
     "translations:bundle": "tsx scripts/bundle-curated-translations.ts",
     "translations:export-cache": "tsx scripts/export-cached-translations.ts",
     "translations:import": "tsx scripts/import-curated-translations.ts",
-    "translations:seed-core": "tsx scripts/seed-core-main-app-translations.ts"
+    "translations:seed-core": "tsx scripts/seed-core-main-app-translations.ts",
+    "seo:indexnow": "tsx scripts/seo/submit-indexnow.ts"
   },
   "dependencies": {
     "@shadcn/react": "^0.1.0",

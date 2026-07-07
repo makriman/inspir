@@ -15,7 +15,7 @@ import {
   schoolUseCases,
 } from "@/lib/content/authority";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -28,7 +28,6 @@ const pageMetadata: Metadata = {
   title: "AI Tutor For Schools",
   description:
     "White-labelled AI tutoring for schools, with guest learning modes, custom workflows, confidentiality planning, NCERT-aligned options, and funded access paths.",
-  alternates: metadataAlternates("/schools"),
   openGraph: {
     title: "AI Learning For Schools | inspir",
     description:

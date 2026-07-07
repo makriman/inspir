@@ -476,7 +476,7 @@ export const mediaOfficialLinks = [
     text: "More than 100 guides on tutoring, prompts, study loops, active recall, and modes.",
   },
   {
-    href: "https://github.com/makriman/inspir",
+    href: "https://github.com/greatindiancompany/ai-study-platform",
     title: "Current GitHub repo",
     text: "The open-source rebuild for developers, educators, and contributors.",
   },

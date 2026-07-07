@@ -17,7 +17,28 @@ import { getPotentialSiteTranslationNamespacesForPath } from "@/lib/i18n/site-pa
 import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, defaultSocialImage, socialImage } from "@/lib/seo/config";
 
-const staticLastModified = new Date();
+const contentLastModified = {
+  home: "2026-07-06",
+  mission: "2026-07-06",
+  about: "2026-07-06",
+  schools: "2026-07-06",
+  trust: "2026-07-06",
+  media: "2026-07-06",
+  topics: "2026-07-06",
+  subjects: "2026-07-06",
+  prompts: "2026-07-06",
+  learningMap: "2026-07-06",
+  compare: "2026-07-06",
+  audience: "2026-07-06",
+  learn: "2026-07-06",
+  blog: "2026-07-06",
+  learningPaths: "2026-07-06",
+  comparisons: "2026-07-06",
+  audiences: "2026-07-06",
+  subjectPages: "2026-07-06",
+  blogCategories: "2026-07-06",
+} as const;
+const sitemapIndexLastModified = contentLastModified.home;
 const sitemapLanguageCache = new Map<string, SupportedLanguage[]>();
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
@@ -174,7 +195,7 @@ export function languageFromSitemapFileSlug(value: string): SupportedLanguage | 
 export function sitemapIndexEntries(): SitemapIndexEntry[] {
   return sitemapLanguages().map((language) => ({
     loc: absoluteUrl(sitemapFilePathForLanguage(language)),
-    lastModified: staticLastModified,
+    lastModified: sitemapIndexLastModified,
   }));
 }
 
@@ -187,7 +208,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: absoluteUrl("/"),
-      lastModified: staticLastModified,
+      lastModified: contentLastModified.home,
       changeFrequency: "weekly",
       priority: 1,
       images: [absoluteUrl(homepageFilm.thumbnailUrl)],
@@ -212,53 +233,53 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
     },
     {
       url: absoluteUrl("/mission"),
-      lastModified: staticLastModified,
+      lastModified: contentLastModified.mission,
       changeFrequency: "monthly",
       priority: 0.8,
       images: [socialImage({ title: "Learning is for everyone", eyebrow: "Mission" }).url],
     },
-    { url: absoluteUrl("/about"), lastModified: staticLastModified, changeFrequency: "monthly", priority: 0.75 },
-    { url: absoluteUrl("/schools"), lastModified: staticLastModified, changeFrequency: "monthly", priority: 0.75 },
-    { url: absoluteUrl("/trust"), lastModified: staticLastModified, changeFrequency: "monthly", priority: 0.74 },
-    { url: absoluteUrl("/media"), lastModified: staticLastModified, changeFrequency: "monthly", priority: 0.65 },
-    { url: absoluteUrl("/topics"), lastModified: staticLastModified, changeFrequency: "weekly", priority: 0.82 },
+    { url: absoluteUrl("/about"), lastModified: contentLastModified.about, changeFrequency: "monthly", priority: 0.75 },
+    { url: absoluteUrl("/schools"), lastModified: contentLastModified.schools, changeFrequency: "monthly", priority: 0.75 },
+    { url: absoluteUrl("/trust"), lastModified: contentLastModified.trust, changeFrequency: "monthly", priority: 0.74 },
+    { url: absoluteUrl("/media"), lastModified: contentLastModified.media, changeFrequency: "monthly", priority: 0.65 },
+    { url: absoluteUrl("/topics"), lastModified: contentLastModified.topics, changeFrequency: "weekly", priority: 0.82 },
     {
       url: absoluteUrl("/subjects"),
-      lastModified: staticLastModified,
+      lastModified: contentLastModified.subjects,
       changeFrequency: "weekly",
       priority: 0.81,
       images: [socialImage({ title: "AI Tutors by Subject", eyebrow: "Subjects" }).url],
     },
     {
       url: absoluteUrl("/prompts"),
-      lastModified: staticLastModified,
+      lastModified: contentLastModified.prompts,
       changeFrequency: "weekly",
       priority: 0.8,
       images: [socialImage({ title: "AI Learning Prompt Library", eyebrow: "Prompts" }).url],
     },
     {
       url: absoluteUrl("/ai-learning-map"),
-      lastModified: staticLastModified,
+      lastModified: contentLastModified.learningMap,
       changeFrequency: "weekly",
       priority: 0.81,
       images: [socialImage({ title: "AI Learning Map", eyebrow: "Learning workflows" }).url],
     },
     {
       url: absoluteUrl("/compare"),
-      lastModified: staticLastModified,
+      lastModified: contentLastModified.compare,
       changeFrequency: "weekly",
       priority: 0.79,
       images: [socialImage({ title: "AI Tutor Comparisons", eyebrow: "Compare" }).url],
     },
     {
       url: absoluteUrl("/for"),
-      lastModified: staticLastModified,
+      lastModified: contentLastModified.audience,
       changeFrequency: "weekly",
       priority: 0.8,
       images: [socialImage({ title: "AI Learning by Audience", eyebrow: "For learners" }).url],
     },
-    { url: absoluteUrl("/learn"), lastModified: staticLastModified, changeFrequency: "weekly", priority: 0.78 },
-    { url: absoluteUrl("/blog"), lastModified: staticLastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: absoluteUrl("/learn"), lastModified: contentLastModified.learn, changeFrequency: "weekly", priority: 0.78 },
+    { url: absoluteUrl("/blog"), lastModified: contentLastModified.blog, changeFrequency: "weekly", priority: 0.7 },
   ];
 
   const posts = getBlogPosts();
@@ -281,7 +302,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
     .filter((category) => categoryHasIndexedPosts(category, posts))
     .map((category) => ({
     url: absoluteUrl(`/blog/category/${category.slug}`),
-    lastModified: staticLastModified,
+    lastModified: contentLastModified.blogCategories,
     changeFrequency: "weekly",
     priority: 0.62,
     images: [socialImage({ title: `${category.name} AI Learning Guides`, eyebrow: "Blog theme" }).url],
@@ -289,7 +310,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
 
   const learningPathRoutes: MetadataRoute.Sitemap = homepageLearningPaths.map((path) => ({
     url: absoluteUrl(learningPathHref(path.slug)),
-    lastModified: staticLastModified,
+    lastModified: contentLastModified.learningPaths,
     changeFrequency: "weekly",
     priority: 0.76,
     images: [
@@ -303,7 +324,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
 
   const comparisonRoutes: MetadataRoute.Sitemap = getComparisonPages().map((page) => ({
     url: absoluteUrl(comparisonPath(page.slug)),
-    lastModified: staticLastModified,
+    lastModified: contentLastModified.comparisons,
     changeFrequency: "weekly",
     priority: 0.77,
     images: [
@@ -317,7 +338,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
 
   const audienceRoutes: MetadataRoute.Sitemap = getAudiencePages().map((page) => ({
     url: absoluteUrl(audiencePath(page.slug)),
-    lastModified: staticLastModified,
+    lastModified: contentLastModified.audiences,
     changeFrequency: "weekly",
     priority: 0.79,
     images: [
@@ -331,7 +352,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
 
   const subjectRoutes: MetadataRoute.Sitemap = getSubjectPages().map((page) => ({
     url: absoluteUrl(subjectPath(page.slug)),
-    lastModified: staticLastModified,
+    lastModified: contentLastModified.subjectPages,
     changeFrequency: "weekly",
     priority: 0.8,
     images: [

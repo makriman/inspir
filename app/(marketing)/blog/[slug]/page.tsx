@@ -23,7 +23,7 @@ import { getTopicSeo } from "@/lib/content/topic-seo";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { localizeHref } from "@/lib/i18n/routing";
 import { defaultLanguage } from "@/lib/content/languages";
-import { defaultSocialImage, metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { defaultSocialImage, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { formatMediumDate, formatLongDate } from "@/lib/utils/dates";
 import {
@@ -60,7 +60,6 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   return localizeMarketingMetadata({
     title: post.title,
     description: post.description,
-    alternates: metadataAlternates(`/blog/${post.slug}`),
     openGraph: {
       title: post.title,
       description: post.description,

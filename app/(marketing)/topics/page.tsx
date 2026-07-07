@@ -10,7 +10,7 @@ import {
 import { topicSeeds } from "@/lib/content/topics";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
-import { metadataAlternates, siteName, socialImage } from "@/lib/seo/config";
+import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   breadcrumbJsonLd,
@@ -24,7 +24,6 @@ const pageMetadata: Metadata = {
   title: "AI Learning Modes",
   description:
     "Browse every public inspir AI learning mode: Socratic tutoring, homework coaching, math help, writing feedback, flashcards, quizzes, history roleplay, debate, and more.",
-  alternates: metadataAlternates("/topics"),
   openGraph: {
     title: "AI Learning Modes | inspir",
     description:

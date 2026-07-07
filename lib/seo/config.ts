@@ -20,11 +20,10 @@ export type SocialImageInput = {
 };
 
 export const socialProfiles = [
-  "https://twitter.com/inspiruk",
+  "https://x.com/inspiruk",
   "https://www.facebook.com/inspir.uk",
-  "https://instagram.com/inspir.uk",
-  "https://www.linkedin.com/company/inspiruk/",
-  "https://github.com/makriman/inspir",
+  "https://www.instagram.com/inspir.uk",
+  "https://www.linkedin.com/company/inspiruk",
 ];
 
 export function absoluteUrl(path = "/") {
@@ -44,27 +43,13 @@ export function metadataAlternates(canonical: string) {
     types: {
       "application/rss+xml": "/rss.xml",
       "text/plain": "/llms.txt",
-      "application/json": "/ai-content-index.json",
     },
   };
 }
 
-function encodeOgParam(value: string, maxLength: number) {
-  return value.replace(/\s+/g, " ").trim().slice(0, maxLength);
-}
-
-export function socialImage({ title, eyebrow, description }: SocialImageInput) {
-  const params = new URLSearchParams({
-    title: encodeOgParam(title, 120),
-  });
-
-  if (eyebrow) params.set("eyebrow", encodeOgParam(eyebrow, 64));
-  if (description) params.set("description", encodeOgParam(description, 180));
-
+export function socialImage({ title }: SocialImageInput) {
   return {
-    url: `${siteUrl}/og?${params.toString()}`,
-    width: 1200,
-    height: 630,
+    ...defaultSocialImage,
     alt: `${title} | ${siteName}`,
   };
 }
