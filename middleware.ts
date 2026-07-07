@@ -244,8 +244,11 @@ function applySecurityHeaders(response: NextResponse, csp: string) {
 }
 
 function applyMarketingCacheHeaders(response: NextResponse, cacheable: boolean) {
-  if (!cacheable) return response;
+  response.headers.set("Vary", "Accept-Encoding, Cookie");
+  if (!cacheable) {
+    response.headers.set("Cache-Control", "private, no-cache, no-store, max-age=0, must-revalidate");
+    return response;
+  }
   response.headers.set("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
-  response.headers.set("Vary", "Accept-Encoding");
   return response;
 }

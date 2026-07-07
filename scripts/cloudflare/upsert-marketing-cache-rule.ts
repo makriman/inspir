@@ -63,11 +63,15 @@ type MarketingCacheRule = {
   description: string;
   expression: string;
   action: "set_cache_settings";
-  action_parameters: {
-    cache: true;
-    edge_ttl: { mode: "respect_origin" };
-    browser_ttl: { mode: "respect_origin" };
-  };
+  action_parameters:
+    | {
+        cache: true;
+        edge_ttl: { mode: "respect_origin" };
+        browser_ttl: { mode: "respect_origin" };
+      }
+    | {
+        cache: false;
+      };
   enabled: true;
 };
 
@@ -75,6 +79,8 @@ const DOMAIN = CLOUDFLARE_TOKEN_DOMAIN;
 const CACHE_RULES_PHASE = "http_request_cache_settings";
 const RULE_REF = "inspir_marketing_html_edge_cache_v1";
 const RULE_DESCRIPTION = "inspir marketing/blog cookieless HTML edge cache";
+const BYPASS_RULE_REF = `${RULE_REF}_cookie-bypass`;
+const BYPASS_RULE_DESCRIPTION = `${RULE_DESCRIPTION} (cookie bypass)`;
 const RULESET_NAME = "inspir cache rules";
 const RULESET_DESCRIPTION = "Cache public inspir marketing/blog HTML while respecting origin TTLs.";
 const MAX_EXPRESSION_LENGTH = 4096;
@@ -109,6 +115,7 @@ const marketingExactPaths = [
 
 const marketingPathPrefixes = ["/blog/", "/compare/", "/for/", "/learn/", "/subjects/"] as const;
 const rscQueryNames = ["_rsc", "rsc", "next-router-state-tree", "next-router-prefetch", "next-router-segment-prefetch"];
+const authCookieNames = ["better-auth.session_token", "__Secure-better-auth.session_token"] as const;
 
 const backupDir = resolveBackupDir();
 const cfDir = cloudflareDir(backupDir);
@@ -255,6 +262,7 @@ function buildMarketingCacheRules(): MarketingCacheRule[] {
         `(${prefixes.map((prefix) => buildPathPrefixClause(prefix)).join(" or ")})`,
       ]),
     ),
+    buildCookieBypassRule(),
   ];
 }
 
@@ -262,7 +270,7 @@ function buildCommonRequestClauses() {
   return [
     `(http.host in ${quoteSet([DOMAIN, `www.${DOMAIN}`])})`,
     `(http.request.method in {"GET" "HEAD"})`,
-    `(not http.cookie contains "=")`,
+    `(not (${buildCookieContainsClauses(authCookieNames).join(" or ")}))`,
     `(not any(http.request.headers["rsc"][*] eq "1"))`,
     ...rscQueryNames.map((name) => `(not http.request.uri.query contains ${quoteExpressionString(`${name}=`)})`),
     `(not http.request.uri.path contains ".")`,
@@ -297,6 +305,23 @@ function buildMarketingCacheRule(refSuffix: string, label: string, clauses: stri
   };
 }
 
+function buildCookieBypassRule(): MarketingCacheRule {
+  return {
+    ref: BYPASS_RULE_REF,
+    description: BYPASS_RULE_DESCRIPTION,
+    expression: [
+      `(http.host in ${quoteSet([DOMAIN, `www.${DOMAIN}`])})`,
+      `(http.request.method in {"GET" "HEAD"})`,
+      `(${buildCookieContainsClauses(authCookieNames).join(" or ")})`,
+    ].join(" and "),
+    action: "set_cache_settings",
+    action_parameters: {
+      cache: false,
+    },
+    enabled: true,
+  };
+}
+
 function chunkPathPrefixes(pathPrefixes: readonly string[], commonClauses: readonly string[]) {
   const chunks: string[][] = [];
   let currentChunk: string[] = [];
@@ -324,6 +349,10 @@ function buildPathPrefixClause(prefix: string) {
   return `starts_with(http.request.uri.path, ${quoteExpressionString(prefix)})`;
 }
 
+function buildCookieContainsClauses(cookieNames: readonly string[]) {
+  return cookieNames.map((name) => `http.cookie contains ${quoteExpressionString(name)}`);
+}
+
 function upsertRules(existingRules: RulesetRule[], rules: MarketingCacheRule[]) {
   return [...existingRules.filter((candidate) => !managedRuleMatches(candidate)), ...rules];
 }
@@ -332,8 +361,10 @@ function managedRuleMatches(rule: RulesetRule) {
   return (
     rule.ref === RULE_REF ||
     (typeof rule.ref === "string" && rule.ref.startsWith(`${RULE_REF}_`)) ||
+    rule.ref === BYPASS_RULE_REF ||
     rule.description === RULE_DESCRIPTION ||
-    (typeof rule.description === "string" && rule.description.startsWith(`${RULE_DESCRIPTION} (`))
+    (typeof rule.description === "string" && rule.description.startsWith(`${RULE_DESCRIPTION} (`)) ||
+    rule.description === BYPASS_RULE_DESCRIPTION
   );
 }
 
