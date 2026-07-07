@@ -1,0 +1,236 @@
+import type { Metadata } from "next";
+import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
+import { ArrowUpRight, BookOpenCheck, SearchCheck, Sparkles, Waypoints } from "lucide-react";
+import {
+  ArrowLink,
+  MarketingFooterWithChrome,
+  MarketingHeaderWithChrome,
+  MarketingPageHero,
+} from "@/components/marketing/MarketingShell";
+import {
+  getSubjectPages,
+  subjectHubFaqs,
+  subjectHubSearchIntents,
+  subjectPath,
+} from "@/lib/content/subjects";
+import type { SupportedLanguage } from "@/lib/content/languages";
+import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
+import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
+import { localizeHref } from "@/lib/i18n/routing";
+import { siteName, socialImage } from "@/lib/seo/config";
+import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
+import {
+  breadcrumbJsonLd,
+  faqPageJsonLd,
+  itemListJsonLd,
+  webPageJsonLd,
+} from "@/lib/seo/json-ld";
+
+const description =
+  "Explore inspir AI learning by subject: math, writing, coding, history, homework, and exam prep, each connected to public guest modes, guides, prompts, and review loops.";
+
+const pageMetadata: Metadata = {
+  title: "AI Tutors by Subject",
+  description,
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "AI Tutors by Subject | inspir",
+    description,
+    url: "/subjects",
+    siteName,
+    images: [
+      socialImage({
+        title: "AI Tutors by Subject",
+        eyebrow: "Subjects",
+        description,
+      }),
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Tutors by Subject | inspir",
+    description,
+    images: [
+      socialImage({
+        title: "AI Tutors by Subject",
+        eyebrow: "Subjects",
+      }).url,
+    ],
+  },
+};
+
+export function generateSubjectsMetadata(language: SupportedLanguage) {
+  return localizeMarketingMetadataForLanguage(pageMetadata, "/subjects", language);
+}
+
+export async function SubjectsPageContent({
+  language,
+  pathname,
+}: {
+  language: SupportedLanguage;
+  pathname: string;
+}) {
+  const chrome = await getStaticMarketingChrome(pathname, language);
+  const { hrefLanguage } = chrome;
+  const pages = getSubjectPages();
+  const jsonLd = [
+    webPageJsonLd({
+      path: "/subjects",
+      name: "AI Tutors by Subject | inspir",
+      description,
+      type: "CollectionPage",
+    }),
+    breadcrumbJsonLd([
+      { name: "Home", url: "/" },
+      { name: "Subjects", url: "/subjects" },
+    ]),
+    itemListJsonLd({
+      path: "/subjects",
+      id: "subject-pages",
+      name: "AI tutor subject pages",
+      items: pages.map((page) => ({
+        name: page.seoTitle,
+        url: subjectPath(page.slug),
+        description: page.description,
+      })),
+    }),
+    itemListJsonLd({
+      path: "/subjects",
+      id: "subject-common-questions",
+      name: "AI tutor subject questions",
+      items: subjectHubSearchIntents.map((intent) => ({
+        name: intent,
+        url: "/subjects",
+      })),
+    }),
+    faqPageJsonLd({ path: "/subjects", questions: subjectHubFaqs }),
+  ];
+
+  return (
+    <main className="marketing-site">
+      <JsonLdScripts items={jsonLd} path="/subjects" language={language} />
+      <MarketingHeaderWithChrome chrome={chrome} />
+      <MarketingPageHero
+        eyebrow="Subjects"
+        title="Find the right AI tutor for the subject in front of you."
+        visual="subjects"
+        chrome={chrome}
+      >
+        Math, writing, coding, history, homework, and exam prep each need a different kind of help.
+        These pages route learners into the public mode, prompt, guide, and review loop that fits.
+      </MarketingPageHero>
+
+      <section className="marketing-band is-topic-finder">
+        <div className="marketing-section-copy">
+          <span>{pages.length} subject hubs</span>
+          <h2>Subject pages built around real learning jobs.</h2>
+          <p>
+            Each subject hub explains the learning need and sends learners straight into live guest-mode help instead
+            of leaving them on a brochure page.
+          </p>
+        </div>
+        <div className="marketing-mode-finder-grid">
+          {pages.map((page) => (
+            <Link
+              key={page.slug}
+              href={localizeHref(subjectPath(page.slug), hrefLanguage)}
+              className="marketing-mode-finder-card"
+            >
+              <span>{page.eyebrow}</span>
+              <strong>{page.seoTitle}</strong>
+              <p>{page.description}</p>
+              <small>
+                Open subject hub
+                <ArrowUpRight size={14} />
+              </small>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>Common questions</span>
+          <h2>The subject questions this hub helps with.</h2>
+          <p>
+            Broad subjects become easier when the help is specific: tutoring, hints, feedback, quizzes, flashcards,
+            debate, and planning.
+          </p>
+        </div>
+        <div className="learning-path-mode-list">
+          {subjectHubSearchIntents.map((intent) => (
+            <Link key={intent} href={localizeHref("/subjects", hrefLanguage)}>
+              <SearchCheck size={15} />
+              {intent}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-band">
+        <div className="marketing-section-copy">
+          <span>How it works</span>
+          <h2>Every subject page connects content to action.</h2>
+          <p>
+            The goal is to make the first click useful: name the subject, choose the right mode, and keep practising.
+          </p>
+        </div>
+        <div className="learning-path-step-grid">
+          <article className="learning-path-step">
+            <span>
+              <BookOpenCheck size={16} />
+              Subject
+            </span>
+            <h3>Name the subject and learner need.</h3>
+            <p>Math help, writing feedback, code tutoring, history context, homework hints, and exam prep are separate needs.</p>
+          </article>
+          <article className="learning-path-step">
+            <span>
+              <Sparkles size={16} />
+              Live mode
+            </span>
+            <h3>Open the right public guest mode.</h3>
+            <p>The subject hub links directly to focused chat entrypoints such as Math Step Coach and Writing Coach.</p>
+          </article>
+          <article className="learning-path-step">
+            <span>
+              <Waypoints size={16} />
+              Review
+            </span>
+            <h3>Finish with evidence of learning.</h3>
+            <p>Each route ends with explain-back, a quiz, a flashcard, a source check, or a study plan.</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="marketing-band is-home-faq">
+        <div className="marketing-section-copy">
+          <span>Subject FAQ</span>
+          <h2>Public pages for subjects, private chats for learners.</h2>
+        </div>
+        <div className="marketing-faq-list">
+          {subjectHubFaqs.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="marketing-cta-band">
+        <h2>Want the broadest place to start?</h2>
+        <div className="marketing-inline-actions">
+          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+            Start learning
+            <Sparkles size={18} />
+          </Link>
+          <ArrowLink href="/ai-learning-map" hrefLanguage={hrefLanguage}>Open the learning map</ArrowLink>
+        </div>
+      </section>
+
+      <MarketingFooterWithChrome chrome={chrome} />
+    </main>
+  );
+}

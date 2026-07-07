@@ -1,1 +1,20 @@
-export { default, generateMetadata } from "@/app/(marketing)/about/page";
+import type { Metadata } from "next";
+import {
+  AboutPageContent,
+  generateAboutMetadata,
+} from "@/components/marketing/pages/AboutMarketingPage";
+import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
+
+type LocalizedAboutPageProps = {
+  params: LocaleRouteParams;
+};
+
+export async function generateMetadata({ params }: LocalizedAboutPageProps): Promise<Metadata> {
+  const language = await resolveLocaleParam(params);
+  return generateAboutMetadata(language);
+}
+
+export default async function LocalizedAboutPage({ params }: LocalizedAboutPageProps) {
+  const language = await resolveLocaleParam(params);
+  return <AboutPageContent language={language} pathname="/about" />;
+}

@@ -266,7 +266,7 @@ function stripRouteGroupSegments(relativePath: string) {
 
 function contentFileBelongsToRoute(relativePath: string, route: string) {
   const contentByRoute: Record<string, string[]> = {
-    about: ["lib/content/authority.ts"],
+    about: ["components/marketing/pages/AboutMarketingPage.tsx", "lib/content/authority.ts"],
     "ai-learning-map": ["lib/content/learning-map.ts", "lib/content/topics.ts"],
     "chat-public": [
       "lib/content/topic-public-seo.ts",
@@ -278,12 +278,13 @@ function contentFileBelongsToRoute(relativePath: string, route: string) {
     compare: ["lib/content/comparisons.ts"],
     for: ["lib/content/audiences.ts"],
     learn: ["lib/content/landing.ts", "lib/content/blog-link-graph.ts", "lib/content/topics.ts"],
-    media: ["lib/content/authority.ts"],
+    media: ["components/marketing/pages/MediaMarketingPage.tsx", "lib/content/authority.ts"],
     mission: ["components/marketing/pages/MissionMarketingPage.tsx", "lib/content/authority.ts"],
     prompts: ["lib/content/prompt-library.ts", "lib/content/topics.ts"],
     schools: ["lib/content/authority.ts"],
-    subjects: ["lib/content/subjects.ts", "lib/content/topics.ts"],
+    subjects: ["components/marketing/pages/SubjectsMarketingPage.tsx", "lib/content/subjects.ts", "lib/content/topics.ts"],
     topics: [
+      "components/marketing/pages/TopicsMarketingPage.tsx",
       "lib/content/topic-directory.ts",
       "lib/content/topic-public-seo.ts",
       "lib/content/topic-routing.ts",
