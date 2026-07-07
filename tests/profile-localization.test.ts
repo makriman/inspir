@@ -11,6 +11,7 @@ import { topicSeeds } from "../lib/content/topics";
 import { recommendLanguageFromCountry } from "../lib/i18n/language-detection";
 import { resolveRequestLanguage } from "../lib/i18n/language-preference";
 import { localizeStructuredDataValue } from "../lib/i18n/metadata";
+import { isStaticSiteLanguageAvailableForPath } from "../lib/i18n/static-availability";
 import { getEnglishMainAppTranslationBundle, getMainAppSourceHash } from "../lib/i18n/main-app-source";
 import {
   getAllSiteTranslationNamespaces,
@@ -204,6 +205,11 @@ test("locale routing helpers preserve canonical English and prefix non-English p
   assert.equal(alternates.es, "/es/subjects");
   assert.equal(alternates.ml, "/ml/subjects");
   assert.equal(languageConfigs.Arabic.dir, "rtl");
+});
+
+test("static locale availability admits only render-localized page bodies", () => {
+  assert.equal(isStaticSiteLanguageAvailableForPath("/", "Spanish"), true);
+  assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Spanish"), false);
 });
 
 test("explicit English language cookie wins over localized referrer", () => {

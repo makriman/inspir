@@ -6,6 +6,7 @@ import {
   type SupportedLanguage,
 } from "@/lib/content/languages";
 import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
+import { isRenderLocalizedSiteTranslationNamespace } from "@/lib/i18n/render-localized-namespaces";
 import {
   getAllSiteTranslationNamespaces,
   getSiteSourceHash,
@@ -32,6 +33,7 @@ for (const language of supportedLanguages) {
 
   const availableNamespaces = namespaces
     .filter((namespace) => namespace !== siteTranslationNamespace)
+    .filter((namespace) => isRenderLocalizedSiteTranslationNamespace(namespace))
     .filter((namespace) => {
       const source = sourceFromManifestEntry(namespace, manifest[namespace]);
       const bundle = getCuratedTranslationBundle(source, language);

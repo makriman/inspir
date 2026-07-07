@@ -5,14 +5,11 @@ import type { SupportedLanguage } from "@/lib/content/languages";
 export const staticSiteTranslationNamespaceAvailability: Partial<Record<SupportedLanguage, readonly string[]>> = {
   "Hindi": [
     "marketing-shell",
-    "route:home",
-    "legal:terms",
-    "legal:tnc"
+    "route:home"
   ],
   "Spanish": [
     "marketing-shell",
-    "route:home",
-    "route:mission"
+    "route:home"
   ],
   "French": [
     "marketing-shell"
@@ -62,9 +59,7 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Arabic": [
-    "route:home",
-    "legal:terms",
-    "legal:tnc"
+    "route:home"
   ],
   "Hebrew": [
     "marketing-shell",
@@ -104,9 +99,7 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
   ],
   "Malayalam": [
     "marketing-shell",
-    "route:home",
-    "legal:terms",
-    "legal:tnc"
+    "route:home"
   ],
   "Punjabi": [
     "marketing-shell",

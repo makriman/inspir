@@ -92,6 +92,7 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
   const layout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
   const jsonLd = fs.readFileSync(path.resolve("components/seo/JsonLdScripts.tsx"), "utf8");
   const serverLocalizer = fs.readFileSync(path.resolve("components/i18n/MarketingServerLocalizer.tsx"), "utf8");
+  const manifestGenerator = fs.readFileSync(path.resolve("scripts/generate-site-source-manifest.ts"), "utf8");
 
   assert.match(metadata, /isStaticSiteLanguageAvailableForPath/);
   assert.match(metadata, /staticSiteLanguagesForPath/);
@@ -102,6 +103,7 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
   assert.match(shell, /hrefLanguage/);
   assert.match(serverLocalizer, /pathname === "\/"/);
   assert.match(serverLocalizer, /isStaticSiteLanguageAvailableForPath/);
+  assert.match(manifestGenerator, /isRenderLocalizedSiteTranslationNamespace/);
   assert.doesNotMatch(layout, /headers\(\)/);
   assert.doesNotMatch(jsonLd, /headers\(\)/);
 });
