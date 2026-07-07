@@ -65,6 +65,8 @@
     "translations:export-cache": "tsx scripts/export-cached-translations.ts",
     "translations:import": "tsx scripts/import-curated-translations.ts",
     "translations:seed-core": "tsx scripts/seed-core-main-app-translations.ts",
+    "seo:lastmod:generate": "tsx scripts/seo/generate-sitemap-lastmod.ts",
+    "seo:lastmod:check": "tsx scripts/seo/generate-sitemap-lastmod.ts --check",
     "seo:indexnow": "tsx scripts/seo/submit-indexnow.ts"
   },
   "dependencies": {

@@ -38,6 +38,7 @@ import { getTopicSeo } from "@/lib/content/topic-seo";
 import { localizeMarketingMetadata } from "@/lib/i18n/metadata";
 import { getCachedSiteTranslationEntries, getSiteTranslationNamespaces } from "@/lib/i18n/site-translations";
 import { getRequestLanguage, getRequestPathname } from "@/lib/i18n/request-locale";
+import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
 import { createTranslationLookup, normalizeTranslationText } from "@/lib/i18n/translation-lookup";
 import { defaultLanguage } from "@/lib/content/languages";
 import { siteName, socialImage } from "@/lib/seo/config";
@@ -339,6 +340,7 @@ function LandingHero({ t }: { t: LandingTranslator }) {
 const getLandingTranslator = cache(async function getLandingTranslator() {
   const [language, pathname] = await Promise.all([getRequestLanguage(), getRequestPathname()]);
   if (language === defaultLanguage) return (value: string) => value;
+  if (!isStaticSiteLanguageAvailableForPath(pathname, language)) return (value: string) => value;
   const entries = await getCachedSiteTranslationEntries(language, getSiteTranslationNamespaces(pathname));
   const lookup = createTranslationLookup(entries);
   return (value: string) => {

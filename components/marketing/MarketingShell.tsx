@@ -14,6 +14,7 @@ import {
   getRequestRecommendedLanguage,
   requestHasLocalePrefix,
 } from "@/lib/i18n/request-locale";
+import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
 import {
   getCachedSiteTranslationBundle,
   getCachedSiteTranslationEntries,
@@ -37,14 +38,14 @@ export async function MarketingHeader({ hero = false }: { hero?: boolean }) {
   const chrome = await getMarketingChrome();
   return (
     <header className={`marketing-header ${hero ? "is-hero" : ""}`}>
-      <Link href={localizeHref("/", chrome.language)} aria-label="inspir home" className="marketing-brand">
+      <Link href={localizeHref("/", chrome.hrefLanguage)} aria-label="inspir home" className="marketing-brand">
         <InspirLogo variant="white" className="marketing-brand-mark" />
       </Link>
       <nav className="marketing-nav" aria-label="Primary navigation">
         {navLinks.map((link) => (
           <Link
             key={link.href}
-            href={localizeHref(link.href, chrome.language)}
+            href={localizeHref(link.href, chrome.hrefLanguage)}
             className={link.href.startsWith("/chat") ? "is-primary" : ""}
           >
             {chrome.t(link.label)}
@@ -100,7 +101,7 @@ export async function MarketingFooter() {
           ["/terms", "Terms"],
           ["/privacy", "Privacy"],
         ].map(([href, label]) => (
-          <Link key={href} href={localizeHref(href, chrome.language)}>
+          <Link key={href} href={localizeHref(href, chrome.hrefLanguage)}>
             {chrome.t(label)}
           </Link>
         ))}
@@ -297,7 +298,7 @@ export async function ArrowLink({
   }
 
   return (
-    <Link className="marketing-arrow-link" href={localizeHref(href, await getRequestLanguage())}>
+    <Link className="marketing-arrow-link" href={localizeHref(href, (await getMarketingChrome()).hrefLanguage)}>
       {children}
       <ArrowUpRight size={17} />
     </Link>
@@ -311,18 +312,23 @@ const getMarketingChrome = cache(async function getMarketingChrome() {
     getRequestPathname(),
     requestHasLocalePrefix(),
   ]);
-  const translationNamespaces = getSiteTranslationNamespaces(currentPathname);
+  const languageAvailable = language === defaultLanguage || isStaticSiteLanguageAvailableForPath(currentPathname, language);
+  const hrefLanguage = languageAvailable ? language : defaultLanguage;
+  const translationNamespaces = languageAvailable ? getSiteTranslationNamespaces(currentPathname) : [];
   const bundles =
-    language === defaultLanguage
+    language === defaultLanguage || !languageAvailable
       ? []
       : await Promise.all(translationNamespaces.map((namespace) => getCachedSiteTranslationBundle(language, namespace)));
   const translationEntries =
-    language === defaultLanguage ? [] : await getCachedSiteTranslationEntries(language, translationNamespaces);
+    language === defaultLanguage || !languageAvailable
+      ? []
+      : await getCachedSiteTranslationEntries(language, translationNamespaces);
   const textMap = buildTextMap(bundles.filter((bundle) => bundle !== null));
   const lookup = createTranslationLookup(translationEntries);
 
   return {
     language,
+    hrefLanguage,
     recommendedLanguage,
     currentPathname,
     hasLocalePrefix,
@@ -331,6 +337,7 @@ const getMarketingChrome = cache(async function getMarketingChrome() {
     t: (value: string) => translateMarketingText(value, lookup.translate, textMap),
   } satisfies {
     language: SupportedLanguage;
+    hrefLanguage: SupportedLanguage;
     recommendedLanguage: SupportedLanguage;
     currentPathname: string;
     hasLocalePrefix: boolean;

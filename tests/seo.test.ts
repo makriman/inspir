@@ -123,6 +123,7 @@ import {
 } from "../lib/content/topic-routing";
 import { buildAiContentIndex, buildLlmsFullTxt, buildLlmsTxt } from "../lib/seo/ai-index";
 import { absoluteUrl, metadataAlternates, socialImage } from "../lib/seo/config";
+import { sitemapContentLastModified } from "../lib/seo/content-lastmod.generated";
 import {
   blogLearningResourceJsonLd,
   blogPostingJsonLd,
@@ -213,7 +214,7 @@ test("sitemap includes SEO pages but excludes chat app surfaces", () => {
   }
   assert.ok(sitemap().some((entry) => entry.images?.some((image) => image === absoluteUrl("/inspir-social-preview.png"))));
   const homeEntry = sitemap().find((entry) => entry.url === absoluteUrl("/"));
-  assert.equal(homeEntry?.lastModified, "2026-07-06");
+  assert.equal(homeEntry?.lastModified, sitemapContentLastModified.home);
   assert.ok(homeEntry?.videos?.some((video) => video.content_loc === absoluteUrl(homepageFilm.contentUrl)));
   assert.ok(homeEntry?.videos?.some((video) => video.thumbnail_loc === absoluteUrl(homepageFilm.thumbnailUrl)));
   assert.equal(homeEntry?.videos?.[0]?.thumbnail_loc, absoluteUrl("/media/inspir-learning-film-poster.webp"));
@@ -236,7 +237,7 @@ test("sitemap index advertises every source-current language sitemap", () => {
   const xml = buildSitemapIndexXml();
 
   assert.ok(sitemapLanguages().includes("English"));
-  assert.ok(entries.every((entry) => entry.lastModified === "2026-07-06"));
+  assert.ok(entries.every((entry) => entry.lastModified === latestSitemapContentDate()));
   assert.equal(sitemapLanguages().every((language) => supportedLanguages.includes(language)), true);
   assert.equal(entries.length, sitemapLanguages().length);
   assert.ok(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>'));
@@ -254,6 +255,13 @@ test("sitemap index advertises every source-current language sitemap", () => {
   assert.equal(languageFromSitemapFileSlug("made-up.xml"), null);
   assert.ok(xml.length < 1_000_000);
 });
+
+function latestSitemapContentDate() {
+  return Object.values(sitemapContentLastModified).reduce(
+    (latest, value) => (value > latest ? value : latest),
+    "1970-01-01",
+  );
+}
 
 test("language sitemap helpers emit localized complete locale clusters", () => {
   const englishUrls = sitemap("English").map((entry) => entry.url);

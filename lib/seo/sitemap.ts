@@ -14,29 +14,9 @@ import {
 import { staticSiteLanguagesForPath } from "@/lib/i18n/static-availability";
 import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, defaultSocialImage, socialImage } from "@/lib/seo/config";
+import { sitemapContentLastModified as contentLastModified } from "@/lib/seo/content-lastmod.generated";
 
-const contentLastModified = {
-  home: "2026-07-06",
-  mission: "2026-07-06",
-  about: "2026-07-06",
-  schools: "2026-07-06",
-  trust: "2026-07-06",
-  media: "2026-07-06",
-  topics: "2026-07-06",
-  subjects: "2026-07-06",
-  prompts: "2026-07-06",
-  learningMap: "2026-07-06",
-  compare: "2026-07-06",
-  audience: "2026-07-06",
-  learn: "2026-07-06",
-  blog: "2026-07-06",
-  learningPaths: "2026-07-06",
-  comparisons: "2026-07-06",
-  audiences: "2026-07-06",
-  subjectPages: "2026-07-06",
-  blogCategories: "2026-07-06",
-} as const;
-const sitemapIndexLastModified = contentLastModified.home;
+const sitemapIndexLastModified = latestDate(Object.values(contentLastModified));
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type SitemapIndexEntry = {
@@ -50,6 +30,10 @@ function isoDurationToSeconds(value: string) {
   if (!match) return undefined;
   const [, hours = "0", minutes = "0", seconds = "0"] = match;
   return Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds);
+}
+
+function latestDate(values: readonly string[]) {
+  return values.reduce((latest, value) => (value > latest ? value : latest), values[0] ?? "1970-01-01");
 }
 
 function canonicalPathForEntry(entry: SitemapEntry) {
@@ -282,7 +266,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
   const posts = getBlogPosts();
   const blogRoutes: MetadataRoute.Sitemap = indexedBlogPosts(posts).map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),
-    lastModified: new Date(post.updated ?? post.date),
+    lastModified: post.updated ?? post.date,
     changeFrequency: "monthly",
     priority: 0.68,
     images: [

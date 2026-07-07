@@ -5,6 +5,7 @@ import {
   type ReactNode,
 } from "react";
 import { defaultLanguage } from "@/lib/content/languages";
+import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
 import { getRequestLanguage, getRequestPathname } from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
 import { getCachedSiteTranslationEntries, getSiteTranslationNamespaces } from "@/lib/i18n/site-translations";
@@ -21,6 +22,7 @@ export async function MarketingServerLocalizer({ children }: MarketingServerLoca
   const [language, pathname] = await Promise.all([getRequestLanguage(), getRequestPathname()]);
   if (language === defaultLanguage) return children;
   if (pathname === "/") return children;
+  if (!isStaticSiteLanguageAvailableForPath(pathname, language)) return children;
 
   const namespaces = getSiteTranslationNamespaces(pathname);
   if (!namespaces.length) return children;
