@@ -5,6 +5,9 @@ import {
 } from "@/components/marketing/pages/MediaMarketingPage";
 import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 type LocalizedMediaPageProps = {
   params: LocaleRouteParams;
 };

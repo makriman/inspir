@@ -28,10 +28,18 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
 
+export const dynamic = "force-static";
+export const revalidate = 3600;
+
 type LocalizedLayoutProps = Readonly<{
   children: React.ReactNode;
   params: LocaleRouteParams;
 }>;
+
+export function generateStaticParams(): Array<{ locale: string }> {
+  // Locale HTML is generated into OpenNext's R2 ISR cache on first request, when D1 translations are available.
+  return [];
+}
 
 export async function generateMetadata({ params }: { params: LocaleRouteParams }): Promise<Metadata> {
   const language = await resolveLocaleParam(params);

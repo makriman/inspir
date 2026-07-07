@@ -267,7 +267,7 @@ function stripRouteGroupSegments(relativePath: string) {
 function contentFileBelongsToRoute(relativePath: string, route: string) {
   const contentByRoute: Record<string, string[]> = {
     about: ["components/marketing/pages/AboutMarketingPage.tsx", "lib/content/authority.ts"],
-    "ai-learning-map": ["lib/content/learning-map.ts", "lib/content/topics.ts"],
+    "ai-learning-map": ["components/marketing/pages/AiLearningMapMarketingPage.tsx", "lib/content/learning-map.ts", "lib/content/topics.ts"],
     "chat-public": [
       "lib/content/topic-public-seo.ts",
       "lib/content/topic-routing.ts",
@@ -275,13 +275,18 @@ function contentFileBelongsToRoute(relativePath: string, route: string) {
       "lib/content/topics.ts",
       "lib/content/seeded-topics.ts",
     ],
-    compare: ["lib/content/comparisons.ts"],
-    for: ["lib/content/audiences.ts"],
-    learn: ["lib/content/landing.ts", "lib/content/blog-link-graph.ts", "lib/content/topics.ts"],
+    compare: ["components/marketing/pages/CompareMarketingPage.tsx", "lib/content/comparisons.ts"],
+    for: ["components/marketing/pages/AudienceMarketingPage.tsx", "lib/content/audiences.ts"],
+    learn: [
+      "components/marketing/pages/LearningPathsMarketingPage.tsx",
+      "lib/content/landing.ts",
+      "lib/content/blog-link-graph.ts",
+      "lib/content/topics.ts",
+    ],
     media: ["components/marketing/pages/MediaMarketingPage.tsx", "lib/content/authority.ts"],
     mission: ["components/marketing/pages/MissionMarketingPage.tsx", "lib/content/authority.ts"],
-    prompts: ["lib/content/prompt-library.ts", "lib/content/topics.ts"],
-    schools: ["lib/content/authority.ts"],
+    prompts: ["components/marketing/pages/PromptsMarketingPage.tsx", "lib/content/prompt-library.ts", "lib/content/topics.ts"],
+    schools: ["components/marketing/pages/SchoolsMarketingPage.tsx", "lib/content/authority.ts"],
     subjects: ["components/marketing/pages/SubjectsMarketingPage.tsx", "lib/content/subjects.ts", "lib/content/topics.ts"],
     topics: [
       "components/marketing/pages/TopicsMarketingPage.tsx",
@@ -292,7 +297,7 @@ function contentFileBelongsToRoute(relativePath: string, route: string) {
       "lib/content/topics.ts",
       "lib/content/seeded-topics.ts",
     ],
-    trust: ["lib/content/authority.ts"],
+    trust: ["components/marketing/pages/TrustMarketingPage.tsx", "lib/content/authority.ts"],
   };
   return contentByRoute[route]?.includes(relativePath) ?? false;
 }
