@@ -301,7 +301,6 @@ function LandingHero({ t, chrome }: { t: LandingTranslator; chrome: MarketingChr
   const hrefLanguage = chrome.hrefLanguage;
   return (
     <section className="marketing-hero" aria-labelledby="home-title">
-      <link rel="preload" as="image" href={homepageFilm.thumbnailUrl} fetchPriority="high" />
       <div className="marketing-hero-content">
         <span className="marketing-kicker">{t("Free public AI learning platform")}</span>
         <h1 id="home-title">{t("Free AI learning for everyone.")}</h1>

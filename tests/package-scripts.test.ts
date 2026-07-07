@@ -196,6 +196,15 @@ test("localized marketing chrome avoids English-only video and PWA labels", () =
   assert.match(pwaPrompt, /if \(!promptEnabled \|\| !sheet\.isVisible \|\| !sheet\.mode\)/);
 });
 
+test("homepage film keeps the poster as the first visible LCP surface", () => {
+  const landingPage = fs.readFileSync(path.resolve("components/marketing/pages/LandingMarketingPage.tsx"), "utf8");
+  const globals = fs.readFileSync(path.resolve("app/globals.css"), "utf8");
+
+  assert.doesNotMatch(landingPage, /rel="preload"\s+as="image"\s+href=\{homepageFilm\.thumbnailUrl\}/);
+  assert.match(globals, /\.marketing-hero-video\.is-started\.is-ready \.marketing-video-frame\s*{\s*opacity: 1;/);
+  assert.doesNotMatch(globals, /\.marketing-hero-video\.is-started \.marketing-video-frame\s*{\s*opacity: 1;/);
+});
+
 test("sitemap lastmod data is generated from git content sources", () => {
   const sitemap = fs.readFileSync(path.resolve("lib/seo/sitemap.ts"), "utf8");
   const lastmod = fs.readFileSync(path.resolve("lib/seo/content-lastmod.generated.ts"), "utf8");

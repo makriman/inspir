@@ -12281,7 +12281,7 @@ a {
   transition: opacity 220ms ease;
 }
 
-.marketing-hero-video.is-started .marketing-video-frame {
+.marketing-hero-video.is-started.is-ready .marketing-video-frame {
   opacity: 1;
 }
 
