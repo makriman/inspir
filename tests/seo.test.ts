@@ -65,7 +65,7 @@ import {
   getBlogPillarClusters,
 } from "../lib/content/blog-directory";
 import { categoryHasIndexedPosts, indexedBlogPosts, isIndexedBlogPost } from "../lib/content/blog-seo-policy";
-import { languageConfigs, supportedLanguages } from "../lib/content/languages";
+import { defaultLanguage, languageConfigs, supportedLanguages } from "../lib/content/languages";
 import {
   comparisonHubFaqs,
   comparisonHubSearchIntents,
@@ -121,8 +121,9 @@ import {
   resolveTopicSlug,
   topicPath,
 } from "../lib/content/topic-routing";
+import { localizeMarketingMetadataForLanguage } from "../lib/i18n/metadata";
 import { buildAiContentIndex, buildLlmsFullTxt, buildLlmsTxt } from "../lib/seo/ai-index";
-import { absoluteUrl, metadataAlternates, socialImage } from "../lib/seo/config";
+import { absoluteUrl, socialImage } from "../lib/seo/config";
 import { sitemapContentLastModified } from "../lib/seo/content-lastmod.generated";
 import {
   blogLearningResourceJsonLd,
@@ -1699,15 +1700,24 @@ test("ai discovery files describe every public mode without exposing private cha
   assert.equal(/\/chat\/[0-9a-f-]{36}/i.test(serialized), false);
 });
 
-test("metadata alternates expose rss, llms, and language canonicals", () => {
-  const alternates = metadataAlternates("/blog");
+test("localized metadata alternates expose rss, llms, and language canonicals", async () => {
+  const metadata = await localizeMarketingMetadataForLanguage(
+    {
+      title: "Blog",
+      description: "Learning guides from inspir.",
+      robots: { index: true, follow: true },
+    },
+    "/blog",
+    defaultLanguage,
+  );
+  const alternates = metadata.alternates;
 
-  assert.equal(alternates.canonical, "/blog");
-  assert.equal(alternates.languages["en-US"], "/blog");
-  assert.equal(alternates.languages["x-default"], "/blog");
-  assert.equal(alternates.types["application/rss+xml"], "/rss.xml");
-  assert.equal(alternates.types["text/plain"], "/llms.txt");
-  assert.equal("application/json" in alternates.types, false);
+  assert.equal(alternates?.canonical, "/blog");
+  assert.equal(alternates?.languages?.["en-US"], absoluteUrl("/blog"));
+  assert.equal(alternates?.languages?.["x-default"], absoluteUrl("/blog"));
+  assert.equal(alternates?.types?.["application/rss+xml"], "/rss.xml");
+  assert.equal(alternates?.types?.["text/plain"], "/llms.txt");
+  assert.equal("application/json" in (alternates?.types ?? {}), false);
 });
 
 test("social image helper uses the static branded preview image", () => {
