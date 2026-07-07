@@ -29,6 +29,9 @@
       "persist": true
     }
   },
+  "cache": {
+    "enabled": true
+  },
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",

@@ -122,6 +122,7 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   const wrangler = JSON.parse(fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8")) as {
     placement?: { mode?: string };
     limits?: { cpu_ms?: number };
+    cache?: { enabled?: boolean };
   };
 
   assert.match(middleware, /buildCacheableMarketingContentSecurityPolicy/);
@@ -138,7 +139,8 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.match(cacheRule, /inspir_marketing_html_edge_cache_v1/);
   assert.match(cacheRule, /not http\.cookie contains "="/);
   assert.match(cacheRule, /edge_ttl:\s*\{ mode: "respect_origin" \}/);
-  assert.match(cacheRule, /exclude:\s*\["\*"\]/);
+  assert.match(cacheRule, /not http\.request\.uri\.query contains/);
+  assert.doesNotMatch(cacheRule, /custom_key/);
   assert.match(edgeCacheVerifier, /cf-cache-status/);
   assert.match(edgeCacheVerifier, /better-auth\.session_token=edge-cache-probe/);
   assert.equal(packageJson.scripts?.["cf:cache:upsert-marketing-html"], "tsx scripts/cloudflare/upsert-marketing-cache-rule.ts");
@@ -146,6 +148,7 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.equal(packageJson.scripts?.["seo:lastmod:generate"], "tsx scripts/seo/generate-sitemap-lastmod.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");
   assert.equal(wrangler.placement?.mode, "smart");
+  assert.equal(wrangler.cache?.enabled, true);
   assert.equal(wrangler.limits, undefined);
 });
 

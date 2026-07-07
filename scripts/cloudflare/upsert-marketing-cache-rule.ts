@@ -67,15 +67,6 @@ type MarketingCacheRule = {
     cache: true;
     edge_ttl: { mode: "respect_origin" };
     browser_ttl: { mode: "respect_origin" };
-    cache_key: {
-      ignore_query_strings_order: true;
-      cache_deception_armor: true;
-      custom_key: {
-        query_string: {
-          exclude: ["*"];
-        };
-      };
-    };
   };
   enabled: true;
 };
@@ -86,6 +77,8 @@ const RULE_REF = "inspir_marketing_html_edge_cache_v1";
 const RULE_DESCRIPTION = "inspir marketing/blog cookieless HTML edge cache";
 const RULESET_NAME = "inspir cache rules";
 const RULESET_DESCRIPTION = "Cache public inspir marketing/blog HTML while respecting origin TTLs.";
+const MAX_EXPRESSION_LENGTH = 4096;
+const EXPRESSION_LENGTH_MARGIN = 96;
 const requiredPermissions = {
   accountId: CLOUDFLARE_ACCOUNT_ID,
   zone: DOMAIN,
@@ -133,16 +126,28 @@ void main().catch((error) => {
 });
 
 async function main() {
-  const rule = buildMarketingCacheRule();
+  const rules = buildMarketingCacheRules();
 
   if (hasFlag("--dry-run")) {
     writeReport({
       ok: true,
       dryRun: true,
-      rule,
+      rules,
       requiredPermissions,
     });
-    console.log(JSON.stringify({ ok: true, dryRun: true, outputPath, ruleRef: RULE_REF }, null, 2));
+    console.log(
+      JSON.stringify(
+        {
+          ok: true,
+          dryRun: true,
+          outputPath,
+          ruleRef: RULE_REF,
+          ruleRefs: rules.map((rule) => rule.ref),
+        },
+        null,
+        2,
+      ),
+    );
     return;
   }
 
@@ -151,7 +156,7 @@ async function main() {
     writeReport({
       ok: false,
       error: credential.error,
-      rule,
+      rules,
       requiredPermissions,
     });
     process.exitCode = 1;
@@ -164,7 +169,7 @@ async function main() {
     writeReport({
       ok: false,
       error: `Could not resolve Cloudflare zone for ${DOMAIN}.`,
-      rule,
+      rules,
       requiredPermissions,
     });
     process.exitCode = 1;
@@ -173,7 +178,7 @@ async function main() {
 
   const existingRuleset = await getRuleset(zone.id);
   const existingRules = existingRuleset?.rules ?? [];
-  const updatedRules = upsertRule(existingRules, rule);
+  const updatedRules = upsertRules(existingRules, rules);
   const payload = {
     name: existingRuleset?.name ?? RULESET_NAME,
     description: existingRuleset?.description ?? RULESET_DESCRIPTION,
@@ -199,13 +204,13 @@ async function main() {
     return;
   }
 
-  const installedRule = response.payload.result.rules?.find((candidate) => ruleMatches(candidate)) ?? rule;
+  const installedRules = response.payload.result.rules?.filter((candidate) => managedRuleMatches(candidate)) ?? rules;
   writeReport({
     ok: true,
     operation: existingRuleset?.id ? "update" : "create",
     zone: redactZone(zone),
     rulesetId: response.payload.result.id,
-    rule: installedRule,
+    rules: installedRules,
     requiredPermissions,
   });
   console.log(
@@ -216,6 +221,7 @@ async function main() {
         zone: zone.name,
         rulesetId: response.payload.result.id,
         ruleRef: RULE_REF,
+        ruleRefs: installedRules.map((rule) => rule.ref),
         outputPath,
       },
       null,
@@ -224,41 +230,36 @@ async function main() {
   );
 }
 
-function buildMarketingCacheRule(): MarketingCacheRule {
-  return {
-    ref: RULE_REF,
-    description: RULE_DESCRIPTION,
-    expression: buildMarketingCacheExpression(),
-    action: "set_cache_settings",
-    action_parameters: {
-      cache: true,
-      edge_ttl: { mode: "respect_origin" },
-      browser_ttl: { mode: "respect_origin" },
-      cache_key: {
-        ignore_query_strings_order: true,
-        cache_deception_armor: true,
-        custom_key: {
-          query_string: {
-            exclude: ["*"],
-          },
-        },
-      },
-    },
-    enabled: true,
-  };
-}
-
-function buildMarketingCacheExpression() {
+function buildMarketingCacheRules(): MarketingCacheRule[] {
   const localePrefixes = supportedLanguages
     .map((language) => languageUrlPrefixes[language])
     .filter((prefix) => prefix.length > 0)
     .sort();
-  const exactPaths = quoteSet([...marketingExactPaths, ...localePrefixes.map((prefix) => `/${prefix}`)]);
-  const pathPrefixes = [
-    ...marketingPathPrefixes,
-    ...localePrefixes.map((prefix) => `/${prefix}/`),
-  ].map((prefix) => `starts_with(http.request.uri.path, ${quoteExpressionString(prefix)})`);
-  const requestClauses = [
+  const commonClauses = buildCommonRequestClauses();
+  const englishPrefixClauses = marketingPathPrefixes.map((prefix) => buildPathPrefixClause(prefix));
+  const localizedRootPaths = localePrefixes.map((prefix) => `/${prefix}`);
+  const localizedPathPrefixes = localePrefixes.map((prefix) => `/${prefix}/`);
+
+  return [
+    buildMarketingCacheRule("english", "English marketing/blog pages", [
+      ...commonClauses,
+      `(http.request.uri.path in ${quoteSet(marketingExactPaths)} or ${englishPrefixClauses.join(" or ")})`,
+    ]),
+    buildMarketingCacheRule("localized-roots", "localized marketing roots", [
+      ...commonClauses,
+      `(http.request.uri.path in ${quoteSet(localizedRootPaths)})`,
+    ]),
+    ...chunkPathPrefixes(localizedPathPrefixes, commonClauses).map((prefixes, index) =>
+      buildMarketingCacheRule(`localized-paths-${index + 1}`, `localized marketing paths ${index + 1}`, [
+        ...commonClauses,
+        `(${prefixes.map((prefix) => buildPathPrefixClause(prefix)).join(" or ")})`,
+      ]),
+    ),
+  ];
+}
+
+function buildCommonRequestClauses() {
+  return [
     `(http.host in ${quoteSet([DOMAIN, `www.${DOMAIN}`])})`,
     `(http.request.method in {"GET" "HEAD"})`,
     `(not http.cookie contains "=")`,
@@ -271,28 +272,69 @@ function buildMarketingCacheExpression() {
     `(not http.request.uri.path contains "/onboarding")`,
     `(not http.request.uri.path contains "/chat")`,
     `(not http.request.uri.path contains "/reset_pw")`,
-    `(http.request.uri.path in ${exactPaths} or ${pathPrefixes.join(" or ")})`,
   ];
-
-  return requestClauses.join(" and ");
 }
 
-function upsertRule(existingRules: RulesetRule[], rule: MarketingCacheRule) {
-  const ruleIndex = existingRules.findIndex((candidate) => ruleMatches(candidate));
-  if (ruleIndex === -1) return [...existingRules, rule];
+function buildMarketingCacheRule(refSuffix: string, label: string, clauses: string[]): MarketingCacheRule {
+  const expression = clauses.join(" and ");
+  if (expression.length > MAX_EXPRESSION_LENGTH) {
+    throw new Error(
+      `Cloudflare cache rule expression ${refSuffix} is ${expression.length} characters; maximum is ${MAX_EXPRESSION_LENGTH}.`,
+    );
+  }
 
-  return existingRules.map((candidate, index) =>
-    index === ruleIndex
-      ? {
-          ...candidate,
-          ...rule,
-        }
-      : candidate,
+  return {
+    ref: `${RULE_REF}_${refSuffix}`,
+    description: `${RULE_DESCRIPTION} (${label})`,
+    expression,
+    action: "set_cache_settings",
+    action_parameters: {
+      cache: true,
+      edge_ttl: { mode: "respect_origin" },
+      browser_ttl: { mode: "respect_origin" },
+    },
+    enabled: true,
+  };
+}
+
+function chunkPathPrefixes(pathPrefixes: readonly string[], commonClauses: readonly string[]) {
+  const chunks: string[][] = [];
+  let currentChunk: string[] = [];
+
+  for (const prefix of pathPrefixes) {
+    const nextChunk = [...currentChunk, prefix];
+    const nextExpression = [
+      ...commonClauses,
+      `(${nextChunk.map((candidate) => buildPathPrefixClause(candidate)).join(" or ")})`,
+    ].join(" and ");
+
+    if (currentChunk.length > 0 && nextExpression.length > MAX_EXPRESSION_LENGTH - EXPRESSION_LENGTH_MARGIN) {
+      chunks.push(currentChunk);
+      currentChunk = [prefix];
+    } else {
+      currentChunk = nextChunk;
+    }
+  }
+
+  if (currentChunk.length > 0) chunks.push(currentChunk);
+  return chunks;
+}
+
+function buildPathPrefixClause(prefix: string) {
+  return `starts_with(http.request.uri.path, ${quoteExpressionString(prefix)})`;
+}
+
+function upsertRules(existingRules: RulesetRule[], rules: MarketingCacheRule[]) {
+  return [...existingRules.filter((candidate) => !managedRuleMatches(candidate)), ...rules];
+}
+
+function managedRuleMatches(rule: RulesetRule) {
+  return (
+    rule.ref === RULE_REF ||
+    (typeof rule.ref === "string" && rule.ref.startsWith(`${RULE_REF}_`)) ||
+    rule.description === RULE_DESCRIPTION ||
+    (typeof rule.description === "string" && rule.description.startsWith(`${RULE_DESCRIPTION} (`))
   );
-}
-
-function ruleMatches(rule: RulesetRule) {
-  return rule.ref === RULE_REF || rule.description === RULE_DESCRIPTION;
 }
 
 async function resolveZone() {
