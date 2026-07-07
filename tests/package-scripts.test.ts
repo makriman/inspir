@@ -106,6 +106,11 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
 test("marketing cacheability config is deterministic for cookieless GET pages", () => {
   const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
   const csp = fs.readFileSync(path.resolve("lib/security/headers.ts"), "utf8");
+  const cacheRule = fs.readFileSync(path.resolve("scripts/cloudflare/upsert-marketing-cache-rule.ts"), "utf8");
+  const edgeCacheVerifier = fs.readFileSync(path.resolve("scripts/cloudflare/verify-marketing-edge-cache.ts"), "utf8");
+  const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
   const wrangler = JSON.parse(fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8")) as {
     placement?: { mode?: string };
     limits?: { cpu_ms?: number };
@@ -120,6 +125,16 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.match(middleware, /localizedPath\.hasLocalePrefix && !cacheableMarketingRequest/);
   assert.match(csp, /buildCacheableMarketingContentSecurityPolicy/);
   assert.match(csp, /script-src 'self' 'unsafe-inline' https:\/\/accounts\.google\.com/);
+  assert.match(cacheRule, /http_request_cache_settings/);
+  assert.match(cacheRule, /set_cache_settings/);
+  assert.match(cacheRule, /inspir_marketing_html_edge_cache_v1/);
+  assert.match(cacheRule, /not http\.cookie contains "="/);
+  assert.match(cacheRule, /edge_ttl:\s*\{ mode: "respect_origin" \}/);
+  assert.match(cacheRule, /exclude:\s*\["\*"\]/);
+  assert.match(edgeCacheVerifier, /cf-cache-status/);
+  assert.match(edgeCacheVerifier, /better-auth\.session_token=edge-cache-probe/);
+  assert.equal(packageJson.scripts?.["cf:cache:upsert-marketing-html"], "tsx scripts/cloudflare/upsert-marketing-cache-rule.ts");
+  assert.equal(packageJson.scripts?.["cf:verify:edge-cache"], "tsx scripts/cloudflare/verify-marketing-edge-cache.ts");
   assert.equal(wrangler.placement?.mode, "smart");
   assert.equal(wrangler.limits, undefined);
 });

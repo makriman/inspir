@@ -38,6 +38,8 @@
     "cf:sync:site-translation-sources": "tsx scripts/cloudflare/sync-site-translation-sources.ts",
     "cf:preflight:deploy": "tsx scripts/cloudflare/deploy-preflight.ts",
     "cf:verify:cloudflare-token": "tsx scripts/cloudflare/verify-cloudflare-api-token.ts",
+    "cf:cache:upsert-marketing-html": "tsx scripts/cloudflare/upsert-marketing-cache-rule.ts",
+    "cf:verify:edge-cache": "tsx scripts/cloudflare/verify-marketing-edge-cache.ts",
     "cf:verify:production": "tsx scripts/cloudflare/verify-production.ts",
     "cf:test:e2e:production": "tsx scripts/cloudflare/run-production-playwright.ts",
     "start": "next start",
