@@ -15524,10 +15524,16 @@ a {
 
 .marketing-page-visual .is-photo {
   aspect-ratio: 16 / 10;
-  background:
-    var(--marketing-visual-overlay),
-    var(--marketing-visual-image) center / cover no-repeat,
-    #e9edf3;
+  background: #e9edf3;
+}
+
+.marketing-page-visual .is-photo::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: var(--marketing-visual-overlay);
+  content: "";
 }
 
 .marketing-page-visual .is-photo img {

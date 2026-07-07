@@ -1,4 +1,5 @@
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
+import Image from "next/image";
 import { type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
@@ -8,7 +9,10 @@ import { MarketingLanguageControls } from "@/components/marketing/LanguageContro
 import { type SupportedLanguage } from "@/lib/content/languages";
 import { localizeHref } from "@/lib/i18n/routing";
 import { getRequestMarketingChrome, type MarketingChrome } from "@/lib/i18n/marketing-chrome";
-import type { MarketingHeroVisual } from "@/lib/content/marketing-visuals";
+import {
+  marketingHeroVisualAssetById,
+  type MarketingHeroVisual,
+} from "@/lib/content/marketing-visuals";
 
 const navLinks = [
   { href: "/chat/learn-anything", label: "Start" },
@@ -168,11 +172,26 @@ export async function MarketingPageHero({
             </video>
           </figure>
         ) : (
-          <figure className="is-photo" aria-hidden="true" />
+          <MarketingHeroPhoto visual={visual} eager />
         )}
-        {showSupportingPhoto ? <figure className="is-photo" aria-hidden="true" /> : null}
+        {showSupportingPhoto ? <MarketingHeroPhoto visual={visual} /> : null}
       </div>
     </section>
+  );
+}
+
+function MarketingHeroPhoto({ visual, eager = false }: { visual: MarketingHeroVisual; eager?: boolean }) {
+  return (
+    <figure className="is-photo" aria-hidden="true">
+      <Image
+        src={marketingHeroVisualAssetById[visual]}
+        alt=""
+        fill
+        sizes="(max-width: 767px) 100vw, 42vw"
+        loading={eager ? "eager" : "lazy"}
+        fetchPriority={eager ? "high" : "auto"}
+      />
+    </figure>
   );
 }
 
