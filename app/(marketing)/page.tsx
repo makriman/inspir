@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cache } from "react";
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import {
   ArrowUpRight,
@@ -335,7 +336,7 @@ function LandingHero({ t }: { t: LandingTranslator }) {
   );
 }
 
-async function getLandingTranslator() {
+const getLandingTranslator = cache(async function getLandingTranslator() {
   const [language, pathname] = await Promise.all([getRequestLanguage(), getRequestPathname()]);
   if (language === defaultLanguage) return (value: string) => value;
   const entries = await getCachedSiteTranslationEntries(language, getSiteTranslationNamespaces(pathname));
@@ -347,7 +348,7 @@ async function getLandingTranslator() {
     if (!translated || translated === normalized) return value;
     return translated;
   };
-}
+});
 
 function LandingImpactBand({ proofStats, t }: { proofStats: ProofStats; t: LandingTranslator }) {
   return (

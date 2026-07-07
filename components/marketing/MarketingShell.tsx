@@ -1,10 +1,9 @@
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
-import type { ReactNode } from "react";
+import { cache, type ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { MarketingVideoEngine } from "@/components/marketing/MarketingVideoEngine";
-import { MarketingDomLocalizer } from "@/components/i18n/MarketingDomLocalizer";
 import { MarketingLanguageControls } from "@/components/marketing/LanguageControls";
 import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import type { TranslationBundle } from "@/lib/i18n/translation-types";
@@ -38,11 +37,6 @@ export async function MarketingHeader({ hero = false }: { hero?: boolean }) {
   const chrome = await getMarketingChrome();
   return (
     <header className={`marketing-header ${hero ? "is-hero" : ""}`}>
-      <MarketingDomLocalizer
-        language={chrome.language}
-        namespaces={chrome.translationNamespaces}
-        initialEntries={chrome.translationEntries}
-      />
       <Link href={localizeHref("/", chrome.language)} aria-label="inspir home" className="marketing-brand">
         <InspirLogo variant="white" className="marketing-brand-mark" />
       </Link>
@@ -310,7 +304,7 @@ export async function ArrowLink({
   );
 }
 
-async function getMarketingChrome() {
+const getMarketingChrome = cache(async function getMarketingChrome() {
   const [language, recommendedLanguage, currentPathname, hasLocalePrefix] = await Promise.all([
     getRequestLanguage(),
     getRequestRecommendedLanguage(),
@@ -344,7 +338,7 @@ async function getMarketingChrome() {
     translationEntries: Array<[string, string]>;
     t: (value: string) => string;
   };
-}
+});
 
 function buildTextMap(bundles: TranslationBundle[]) {
   const map = new Map<string, string>();

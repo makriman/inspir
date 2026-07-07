@@ -4,6 +4,12 @@
   "main": "./cloudflare-worker.ts",
   "compatibility_date": "2026-06-24",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "placement": {
+    "mode": "smart"
+  },
+  "limits": {
+    "cpu_ms": 30000
+  },
   "account_id": "a1e5e542dc1d5fe5a5c6b2a10d755a81",
   "workers_dev": false,
   "preview_urls": false,

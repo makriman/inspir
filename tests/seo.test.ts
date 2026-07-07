@@ -146,7 +146,10 @@ import sitemap, {
   sitemapIndexEntries,
   sitemapLanguages,
 } from "../lib/seo/sitemap";
-import { buildContentSecurityPolicy } from "../lib/security/headers";
+import {
+  buildCacheableMarketingContentSecurityPolicy,
+  buildContentSecurityPolicy,
+} from "../lib/security/headers";
 
 test("topic routing separates public slugs from private uuid chats", () => {
   assert.equal(defaultTopicPath(), "/chat/learn-anything");
@@ -697,7 +700,11 @@ test("next config preserves canonical legal route and crawler headers", async ()
   const mediaHeaders = headers.find((entry) => entry.source === "/media/:path*");
   const rootHeaders = headers.find((entry) => entry.source === "/:path*");
   const csp = buildContentSecurityPolicy("test-nonce");
+  const marketingCsp = buildCacheableMarketingContentSecurityPolicy();
   const scriptDirective = csp
+    .split("; ")
+    .find((directive) => directive.startsWith("script-src"));
+  const marketingScriptDirective = marketingCsp
     .split("; ")
     .find((directive) => directive.startsWith("script-src"));
 
@@ -710,6 +717,9 @@ test("next config preserves canonical legal route and crawler headers", async ()
   assert.ok(scriptDirective?.includes("script-src 'self' 'nonce-test-nonce' 'strict-dynamic'"));
   assert.equal(scriptDirective?.includes("'unsafe-inline'"), false);
   assert.equal(scriptDirective?.includes("'unsafe-eval'"), process.env.NODE_ENV === "development");
+  assert.ok(marketingScriptDirective?.includes("script-src 'self' 'unsafe-inline'"));
+  assert.equal(marketingScriptDirective?.includes("'strict-dynamic'"), false);
+  assert.equal(marketingScriptDirective?.includes("'nonce-"), false);
   assert.equal(
     rootHeaders?.headers.some((header) => header.key === "Content-Security-Policy-Report-Only"),
     false,

@@ -14,21 +14,29 @@ import {
   requestPathnameHeader,
   requestRecommendedLanguageHeader,
 } from "@/lib/i18n/routing";
-import { buildContentSecurityPolicy, cspNonceHeader, staticSecurityHeaders } from "@/lib/security/headers";
+import {
+  buildCacheableMarketingContentSecurityPolicy,
+  buildContentSecurityPolicy,
+  cspNonceHeader,
+  staticSecurityHeaders,
+} from "@/lib/security/headers";
 
 // OpenNext Cloudflare 1.19.11 does not yet support the Next 16 nodejs proxy output.
 // Keep Edge Middleware until the Cloudflare adapter supports proxy.ts.
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const nonce = createNonce();
-  const csp = buildContentSecurityPolicy(nonce);
   const canonicalUrl = canonicalOriginRedirectUrl(request);
   if (canonicalUrl) {
-    return applySecurityHeaders(NextResponse.redirect(canonicalUrl, 308), csp);
+    return applySecurityHeaders(NextResponse.redirect(canonicalUrl, 308), buildContentSecurityPolicy(createNonce()));
   }
 
   const localizedPath = getLocalizedPathInfo(pathname);
   const effectivePathname = localizedPath.pathnameWithoutLocale;
+  const marketingPageRequest = isMarketingPageRequest(request, effectivePathname);
+  const cacheableMarketingRequest =
+    marketingPageRequest && isPubliclyCacheableMarketingRequest(request, effectivePathname);
+  const nonce = marketingPageRequest ? undefined : createNonce();
+  const csp = nonce ? buildContentSecurityPolicy(nonce) : buildCacheableMarketingContentSecurityPolicy();
   const referrerLanguage = getReferrerLocaleLanguage(request.headers.get("referer"));
   const language = resolveRequestLanguage({
     localeLanguage: localizedPath.hasLocalePrefix ? localizedPath.language : null,
@@ -39,15 +47,16 @@ export async function middleware(request: NextRequest) {
     countryCode: request.headers.get("cf-ipcountry"),
     acceptLanguage: request.headers.get("accept-language"),
   });
-  const requestHeaders = buildForwardedRequestHeaders(request.headers, [
-    [cspNonceHeader, nonce],
+  const internalHeaders: Array<readonly [string, string]> = [
     ["Content-Security-Policy", csp],
     [requestLanguageHeader, language],
     [requestLocaleHeader, language],
     [requestLocalePrefixHeader, localizedPath.hasLocalePrefix ? "1" : "0"],
     [requestPathnameHeader, effectivePathname],
     [requestRecommendedLanguageHeader, recommendedLanguage],
-  ]);
+  ];
+  if (nonce) internalHeaders.unshift([cspNonceHeader, nonce]);
+  const requestHeaders = buildForwardedRequestHeaders(request.headers, internalHeaders);
 
   const chatSegment = effectivePathname.match(/^\/chat\/([^/]+)$/)?.[1];
   const isPublicTopicChat = chatSegment ? isKnownTopicSlug(chatSegment) : false;
@@ -66,18 +75,18 @@ export async function middleware(request: NextRequest) {
     let response: NextResponse;
     if (!localizedPath.hasLocalePrefix) {
       response = NextResponse.next({ request: { headers: requestHeaders } });
-      return applySecurityHeaders(response, csp);
+      return applyMarketingCacheHeaders(applySecurityHeaders(response, csp), cacheableMarketingRequest);
     }
 
     const url = request.nextUrl.clone();
     url.pathname = effectivePathname;
     response = NextResponse.rewrite(url, { request: { headers: requestHeaders } });
-    return applySecurityHeaders(response, csp);
+    return applyMarketingCacheHeaders(applySecurityHeaders(response, csp), cacheableMarketingRequest);
   };
 
   if (!needsAuth) {
     const response = buildResponse();
-    if (localizedPath.hasLocalePrefix) {
+    if (localizedPath.hasLocalePrefix && !cacheableMarketingRequest) {
       response.cookies.set(localeCookieName, localizedPath.language, {
         path: "/",
         maxAge: 60 * 60 * 24 * 365,
@@ -114,6 +123,45 @@ function shouldLocaleRedirectPath(pathname: string) {
   if (pathname.startsWith("/admin")) return false;
   if (pathname.startsWith("/onboarding")) return false;
   return true;
+}
+
+const marketingStaticPaths = new Set([
+  "/",
+  "/about",
+  "/ai-learning-map",
+  "/compare",
+  "/for",
+  "/learn",
+  "/loading",
+  "/media",
+  "/mission",
+  "/privacy",
+  "/prompts",
+  "/reset_pw",
+  "/schools",
+  "/subjects",
+  "/terms",
+  "/topics",
+  "/trust",
+]);
+
+const marketingStaticPrefixes = ["/blog", "/compare", "/for", "/learn", "/subjects"];
+
+function isMarketingPageRequest(request: NextRequest, pathname: string) {
+  if (request.method !== "GET" && request.method !== "HEAD") return false;
+  if (request.headers.get("rsc") === "1") return false;
+  if (request.nextUrl.searchParams.has("_rsc")) return false;
+  return isMarketingPath(pathname);
+}
+
+function isPubliclyCacheableMarketingRequest(request: NextRequest, pathname: string) {
+  if (pathname === "/reset_pw") return false;
+  return !hasBetterAuthSessionCookie(request);
+}
+
+function isMarketingPath(pathname: string) {
+  if (marketingStaticPaths.has(pathname)) return true;
+  return marketingStaticPrefixes.some((prefix) => pathname.startsWith(`${prefix}/`));
 }
 
 function canonicalOriginRedirectUrl(request: NextRequest) {
@@ -167,5 +215,12 @@ function applySecurityHeaders(response: NextResponse, csp: string) {
   for (const header of staticSecurityHeaders) {
     response.headers.set(header.key, header.value);
   }
+  return response;
+}
+
+function applyMarketingCacheHeaders(response: NextResponse, cacheable: boolean) {
+  if (!cacheable) return response;
+  response.headers.set("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
+  response.headers.set("Vary", "Accept-Encoding");
   return response;
 }

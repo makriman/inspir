@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
 import { Suspense } from "react";
-import { headers } from "next/headers";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
 import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
@@ -23,7 +22,6 @@ import {
   webApplicationJsonLd,
   websiteJsonLd,
 } from "@/lib/seo/json-ld";
-import { cspNonceHeader } from "@/lib/security/headers";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -117,16 +115,15 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const [languageConfig, pathname] = await Promise.all([getRequestLanguageConfig(), getRequestPathname()]);
-  const nonce = (await headers()).get(cspNonceHeader) ?? undefined;
   const localizedRootJsonLd = await localizeMarketingStructuredData(rootJsonLd, pathname);
   return (
     <html lang={languageConfig.locale} dir={languageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full bg-[#171614] text-white">
-        <AnalyticsScripts nonce={nonce} />
+        <AnalyticsScripts />
         <Suspense fallback={null}>
           <ProductAnalytics />
         </Suspense>
-        <JsonLdScripts items={localizedRootJsonLd} nonce={nonce} />
+        <JsonLdScripts items={localizedRootJsonLd} />
         <MarketingServerLocalizer>{children}</MarketingServerLocalizer>
         <PwaInstallPrompt enabled={languageConfig.language === defaultLanguage} />
       </body>

@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import { cache } from "react";
 import { defaultLanguage, languageConfigs, normalizeLanguage, type SupportedLanguage } from "@/lib/content/languages";
 import {
   alternatesForAvailableLanguages,
-  availableSiteLanguagesForPath,
-  isSiteLanguageAvailableForPath,
 } from "@/lib/i18n/availability";
 import { getRequestLanguage } from "@/lib/i18n/request-locale";
 import { localizeHref } from "@/lib/i18n/routing";
+import {
+  isStaticSiteLanguageAvailableForPath,
+  staticSiteLanguagesForPath,
+} from "@/lib/i18n/static-availability";
 import {
   getCachedSiteTranslationBundle,
   getSiteTranslationNamespaces,
@@ -62,7 +65,7 @@ const structuredDataCodeKeys = new Set([
 
 export async function localizeMarketingMetadata(metadata: Metadata, path: string): Promise<Metadata> {
   const language = await getRequestLanguage();
-  const languageAvailable = await isSiteLanguageAvailableForPath(path, language);
+  const languageAvailable = isStaticSiteLanguageAvailableForPath(path, language);
   const t =
     language === defaultLanguage || !languageAvailable
       ? (value: string) => value
@@ -110,7 +113,7 @@ export async function localizeMarketingStructuredData(items: ReadonlyArray<unkno
   const pathname = path ?? "/";
   const language = await getRequestLanguage();
   if (language === defaultLanguage) return items;
-  const languageAvailable = await isSiteLanguageAvailableForPath(pathname, language);
+  const languageAvailable = isStaticSiteLanguageAvailableForPath(pathname, language);
   if (!languageAvailable) return items;
   const t = await getSiteMetadataTranslator(language, pathname);
   return items.map((item) => localizeStructuredDataValue(item, t, undefined, language));
@@ -144,7 +147,7 @@ export function localizeStructuredDataValue(
 
 export async function localizedMarketingMetadata(input: LocalizedMetadataInput): Promise<Metadata> {
   const language = await getRequestLanguage();
-  const languageAvailable = await isSiteLanguageAvailableForPath(input.path, language);
+  const languageAvailable = isStaticSiteLanguageAvailableForPath(input.path, language);
   const t =
     language === defaultLanguage || !languageAvailable
       ? (value: string) => value
@@ -214,7 +217,7 @@ function localizedAlternates(
 
 async function metadataAvailableLanguages(path: string, robots: Metadata["robots"]): Promise<SupportedLanguage[]> {
   if (!shouldExposeSearchAlternates(robots)) return [defaultLanguage];
-  return availableSiteLanguagesForPath(path);
+  return staticSiteLanguagesForPath(path);
 }
 
 function shouldExposeSearchAlternates(robots: Metadata["robots"]) {
@@ -348,7 +351,7 @@ function isGlobalStructuredDataId(value: string) {
   return /^https:\/\/inspirlearning\.com\/#(?:app|organization|site-navigation|website)$/i.test(value);
 }
 
-async function getSiteMetadataTranslator(language: string, pathname: string) {
+const getSiteMetadataTranslator = cache(async function getSiteMetadataTranslator(language: string, pathname: string) {
   const namespaces = getSiteTranslationNamespaces(pathname);
   const bundles = await Promise.all(
     namespaces.map((namespace) => getCachedSiteTranslationBundle(language, namespace)),
@@ -376,4 +379,4 @@ async function getSiteMetadataTranslator(language: string, pathname: string) {
     }
     return value;
   };
-}
+});

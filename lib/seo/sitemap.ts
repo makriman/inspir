@@ -9,11 +9,9 @@ import {
   defaultLanguage,
   languageConfigs,
   normalizeLanguage,
-  supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
-import { staticSiteTranslationNamespaceAvailability } from "@/lib/i18n/site-availability-manifest";
-import { getPotentialSiteTranslationNamespacesForPath } from "@/lib/i18n/site-path-namespaces";
+import { staticSiteLanguagesForPath } from "@/lib/i18n/static-availability";
 import { localizePath } from "@/lib/i18n/routing";
 import { absoluteUrl, defaultSocialImage, socialImage } from "@/lib/seo/config";
 
@@ -39,7 +37,6 @@ const contentLastModified = {
   blogCategories: "2026-07-06",
 } as const;
 const sitemapIndexLastModified = contentLastModified.home;
-const sitemapLanguageCache = new Map<string, SupportedLanguage[]>();
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 type SitemapIndexEntry = {
@@ -379,23 +376,7 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
 }
 
 function sitemapLanguagesForPath(pathname: string) {
-  const cacheKey = pathname || "/";
-  const cached = sitemapLanguageCache.get(cacheKey);
-  if (cached) return cached;
-
-  const languages = supportedLanguages.filter((language) => isStaticSiteLanguageAvailableForPath(pathname, language));
-  sitemapLanguageCache.set(cacheKey, languages);
-  return languages;
-}
-
-function isStaticSiteLanguageAvailableForPath(pathname: string, language: SupportedLanguage) {
-  if (language === defaultLanguage) return true;
-
-  const availableNamespaces = staticSiteTranslationNamespaceAvailability[language];
-  if (!availableNamespaces?.length) return false;
-  const available = new Set<string>(availableNamespaces);
-
-  return getPotentialSiteTranslationNamespacesForPath(pathname).every((namespace) => available.has(namespace));
+  return staticSiteLanguagesForPath(pathname);
 }
 
 function sitemapEntriesForLanguage(language: SupportedLanguage | string) {

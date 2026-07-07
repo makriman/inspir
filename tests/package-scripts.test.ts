@@ -85,6 +85,45 @@ test("marketing metadata has one localized alternates source of truth", () => {
   assert.doesNotMatch(marketingMetadata, /ai-content-index\.json/);
 });
 
+test("marketing performance path avoids runtime translation fan-out and DOM walking", () => {
+  const metadata = fs.readFileSync(path.resolve("lib/i18n/metadata.ts"), "utf8");
+  const sitemap = fs.readFileSync(path.resolve("lib/seo/sitemap.ts"), "utf8");
+  const shell = fs.readFileSync(path.resolve("components/marketing/MarketingShell.tsx"), "utf8");
+  const layout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
+  const jsonLd = fs.readFileSync(path.resolve("components/seo/JsonLdScripts.tsx"), "utf8");
+  const serverLocalizer = fs.readFileSync(path.resolve("components/i18n/MarketingServerLocalizer.tsx"), "utf8");
+
+  assert.match(metadata, /isStaticSiteLanguageAvailableForPath/);
+  assert.match(metadata, /staticSiteLanguagesForPath/);
+  assert.doesNotMatch(metadata, /availableSiteLanguagesForPath/);
+  assert.match(sitemap, /staticSiteLanguagesForPath/);
+  assert.doesNotMatch(shell, /MarketingDomLocalizer/);
+  assert.match(serverLocalizer, /pathname === "\/"/);
+  assert.doesNotMatch(layout, /headers\(\)/);
+  assert.doesNotMatch(jsonLd, /headers\(\)/);
+});
+
+test("marketing cacheability config is deterministic for cookieless GET pages", () => {
+  const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
+  const csp = fs.readFileSync(path.resolve("lib/security/headers.ts"), "utf8");
+  const wrangler = JSON.parse(fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8")) as {
+    placement?: { mode?: string };
+    limits?: { cpu_ms?: number };
+  };
+
+  assert.match(middleware, /buildCacheableMarketingContentSecurityPolicy/);
+  assert.match(middleware, /isMarketingPageRequest/);
+  assert.match(middleware, /isPubliclyCacheableMarketingRequest/);
+  assert.match(middleware, /pathname === "\/reset_pw"/);
+  assert.match(middleware, /Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400"/);
+  assert.match(middleware, /Vary", "Accept-Encoding"/);
+  assert.match(middleware, /localizedPath\.hasLocalePrefix && !cacheableMarketingRequest/);
+  assert.match(csp, /buildCacheableMarketingContentSecurityPolicy/);
+  assert.match(csp, /script-src 'self' 'unsafe-inline' https:\/\/accounts\.google\.com/);
+  assert.equal(wrangler.placement?.mode, "smart");
+  assert.equal(wrangler.limits?.cpu_ms, 30000);
+});
+
 test("social preview metadata points at the static PNG fallback", () => {
   const source = fs.readFileSync(path.resolve("app/og/route.ts"), "utf8");
   const socialConfig = fs.readFileSync(path.resolve("lib/seo/config.ts"), "utf8");

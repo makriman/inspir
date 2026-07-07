@@ -20,11 +20,15 @@ test("public, localized, SEO, and topic API routes work on Cloudflare preview", 
 
   const localized = await request.get("/hi");
   expect(localized.status()).toBe(200);
-  expect(localized.headers()["set-cookie"] ?? "").toContain("inspir_locale=Hindi");
+  expect(localized.headers()["set-cookie"] ?? "").not.toContain("inspir_locale=Hindi");
+  expect(localized.headers()["cache-control"] ?? "").toContain("s-maxage=3600");
 
   for (const route of ["/hi/topics", "/hi/chat/learn-anything"]) {
     const response = await request.get(route);
     expect(response.status(), route).toBe(200);
+    if (route.startsWith("/hi/chat")) {
+      expect(response.headers()["set-cookie"] ?? "", route).toContain("inspir_locale=Hindi");
+    }
   }
 
   const robots = await request.get("/robots.txt");

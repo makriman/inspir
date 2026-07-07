@@ -18,6 +18,24 @@ export function buildContentSecurityPolicy(nonce: string) {
   ].join("; ");
 }
 
+export function buildCacheableMarketingContentSecurityPolicy() {
+  const isDev = process.env.NODE_ENV === "development";
+  return [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "frame-ancestors 'none'",
+    "form-action 'self' https://accounts.google.com",
+    `script-src 'self' 'unsafe-inline' https://accounts.google.com https://www.googletagmanager.com https://www.clarity.ms${isDev ? " 'unsafe-eval'" : ""}`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https://*.googleusercontent.com https://www.google-analytics.com https://*.clarity.ms https://c.bing.com",
+    "font-src 'self' data:",
+    "connect-src 'self' https://api.openai.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://*.clarity.ms",
+    "frame-src 'self' https://accounts.google.com",
+    "object-src 'none'",
+    "worker-src 'self' blob:",
+  ].join("; ");
+}
+
 export const staticSecurityHeaders = [
   {
     key: "X-Frame-Options",

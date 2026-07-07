@@ -27,14 +27,25 @@ export function createTranslationLookup(entries: Iterable<[string, string]>): Tr
   }
 
   templates.sort((a, b) => b.source.length - a.source.length);
+  const templateCandidatePattern = buildTemplateCandidatePattern(templates);
+  const resultCache = new Map<string, string>();
 
   function translate(value: string, depth = 0): string {
     const normalized = normalizeTranslationText(value);
     if (!normalized) return value;
+    const cacheKey = `${depth}\u0000${normalized}`;
+    const cached = resultCache.get(cacheKey);
+    if (cached !== undefined) return cached;
 
     const directMatch = direct.get(normalized);
-    if (directMatch) return directMatch;
-    if (depth >= 2) return normalized;
+    if (directMatch) {
+      resultCache.set(cacheKey, directMatch);
+      return directMatch;
+    }
+    if (depth >= 2 || !templateCandidatePattern?.test(normalized)) {
+      resultCache.set(cacheKey, normalized);
+      return normalized;
+    }
 
     for (const template of templates) {
       const match = template.pattern.exec(normalized);
@@ -46,9 +57,11 @@ export function createTranslationLookup(entries: Iterable<[string, string]>): Tr
         const localizedCapture = translate(captured, depth + 1);
         output = output.replaceAll(placeholder, localizedCapture);
       });
+      resultCache.set(cacheKey, output);
       return output;
     }
 
+    resultCache.set(cacheKey, normalized);
     return normalized;
   }
 
@@ -78,6 +91,19 @@ function compileTemplate(source: string, translated: string): CompiledTemplate |
     placeholders: sourcePlaceholders,
     pattern,
   };
+}
+
+function buildTemplateCandidatePattern(templates: CompiledTemplate[]) {
+  const hints = new Set<string>();
+  for (const template of templates) {
+    for (const hint of template.source.split(placeholderPattern)) {
+      const normalized = normalizeTranslationText(hint);
+      if (normalized.length >= 3 && /\p{L}/u.test(normalized)) hints.add(normalized);
+    }
+  }
+
+  if (!hints.size) return null;
+  return new RegExp(Array.from(hints).sort((a, b) => b.length - a.length).map(escapeRegExp).join("|"), "iu");
 }
 
 function templatePattern(source: string) {

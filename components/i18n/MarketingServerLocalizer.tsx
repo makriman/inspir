@@ -20,6 +20,7 @@ const skippedTags = new Set(["code", "pre", "script", "style", "textarea", "sele
 export async function MarketingServerLocalizer({ children }: MarketingServerLocalizerProps) {
   const [language, pathname] = await Promise.all([getRequestLanguage(), getRequestPathname()]);
   if (language === defaultLanguage) return children;
+  if (pathname === "/") return children;
 
   const namespaces = getSiteTranslationNamespaces(pathname);
   if (!namespaces.length) return children;
