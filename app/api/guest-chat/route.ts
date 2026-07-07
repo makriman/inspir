@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
       guestUsageCookieMaxAge * 1000,
     );
     if (!ipRate.ok) {
-      return guestLimitResponse(used, guestMessageLimit, ipRate.retryAfterSeconds);
+      return guestLimitResponse(used, guestMessageLimit, ipRate.retryAfterSeconds, "Guest message limit reached", "ip");
     }
   }
 
@@ -99,7 +99,13 @@ export async function POST(request: NextRequest) {
     guestUsageCookieMaxAge * 1000,
   );
   if (!fingerprintRate.ok) {
-    return guestLimitResponse(used, guestMessageLimit, fingerprintRate.retryAfterSeconds);
+    return guestLimitResponse(
+      used,
+      guestMessageLimit,
+      fingerprintRate.retryAfterSeconds,
+      "Guest message limit reached",
+      "fingerprint",
+    );
   }
 
   const sessionRate = await consumeFixedWindowQuota(
@@ -108,7 +114,7 @@ export async function POST(request: NextRequest) {
     guestUsageCookieMaxAge * 1000,
   );
   if (!sessionRate.ok) {
-    return guestLimitResponse(used, guestMessageLimit, sessionRate.retryAfterSeconds);
+    return guestLimitResponse(used, guestMessageLimit, sessionRate.retryAfterSeconds, "Guest message limit reached", "session");
   }
 
   const nextUsed = Math.min(guestMessageLimit, sessionRate.limit - sessionRate.remaining);
@@ -200,7 +206,13 @@ export async function POST(request: NextRequest) {
 
     const budget = await consumeDailyLlmBudget();
     if (!budget.ok) {
-      return guestLimitResponse(used, guestMessageLimit, budget.retryAfterSeconds, "Daily AI usage limit reached");
+      return guestLimitResponse(
+        used,
+        guestMessageLimit,
+        budget.retryAfterSeconds,
+        "Daily AI usage limit reached",
+        "global-ai-budget",
+      );
     }
 
     const agent = createLearningAgent({
@@ -255,12 +267,16 @@ function guestLimitResponse(
   limit: number,
   retryAfterSeconds: number,
   error = "Guest message limit reached",
+  bucket: "ip" | "fingerprint" | "session" | "global-ai-budget" = "session",
 ) {
   return NextResponse.json(
-    { error, used, limit },
+    { error, used, limit, bucket },
     {
       status: 429,
-      headers: { "Retry-After": String(retryAfterSeconds) },
+      headers: {
+        "Retry-After": String(retryAfterSeconds),
+        "x-guest-rate-limit-bucket": bucket,
+      },
     },
   );
 }

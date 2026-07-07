@@ -44,7 +44,7 @@ async function main() {
   } else {
     pass("localized Hindi route language cookie suppressed", { setCookie: localized.headers["set-cookie"] ?? null });
   }
-  checkCacheControl("localized Hindi route", localized, [/public/i, /s-maxage=3600/i]);
+  checkSharedIsrCacheControl("localized Hindi route", localized, 3600);
 
   const localizedChat = await request("/hi/chat/learn-anything");
   checkResponse("localized Hindi chat route", localizedChat);
@@ -210,6 +210,35 @@ function checkCacheControl(name: string, result: FetchResult, patterns: RegExp[]
   } else {
     fail(`${name} cache policy`, { cacheControl, missing });
   }
+}
+
+function checkSharedIsrCacheControl(name: string, result: FetchResult, maxSMaxAgeSeconds: number) {
+  const cacheControl = result.headers["cache-control"] ?? "";
+  const sMaxAge = readCacheControlSeconds(cacheControl, "s-maxage");
+  const missing: string[] = [];
+
+  if (sMaxAge === null || sMaxAge < 0 || sMaxAge > maxSMaxAgeSeconds) {
+    missing.push(`s-maxage<=${maxSMaxAgeSeconds}`);
+  }
+  if (!/stale-while-revalidate(?:=|$)/i.test(cacheControl)) {
+    missing.push("stale-while-revalidate");
+  }
+  if (/\b(?:private|no-store)\b/i.test(cacheControl)) {
+    missing.push("shared-cacheable");
+  }
+
+  if (missing.length === 0) {
+    pass(`${name} cache policy`, { cacheControl, sMaxAge });
+  } else {
+    fail(`${name} cache policy`, { cacheControl, sMaxAge, missing });
+  }
+}
+
+function readCacheControlSeconds(cacheControl: string, directive: string) {
+  const pattern = new RegExp(`(?:^|,)\\s*${directive}=([0-9]+)`, "i");
+  const match = cacheControl.match(pattern);
+  if (!match) return null;
+  return Number(match[1]);
 }
 
 function writeReport() {
