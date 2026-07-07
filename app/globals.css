@@ -15148,9 +15148,11 @@ a {
 }
 
 .marketing-hero > .marketing-hero-video .marketing-video-ambient {
+  display: none;
   inset: 0;
   width: 100%;
   height: 100%;
+  background: none;
   opacity: 1;
   filter: saturate(1.06) contrast(1.04) brightness(0.72);
   transform: none;

@@ -198,11 +198,17 @@ test("localized marketing chrome avoids English-only video and PWA labels", () =
 
 test("homepage film keeps the poster as the first visible LCP surface", () => {
   const landingPage = fs.readFileSync(path.resolve("components/marketing/pages/LandingMarketingPage.tsx"), "utf8");
+  const videoEngine = fs.readFileSync(path.resolve("components/marketing/MarketingVideoEngine.tsx"), "utf8");
   const globals = fs.readFileSync(path.resolve("app/globals.css"), "utf8");
 
   assert.doesNotMatch(landingPage, /rel="preload"\s+as="image"\s+href=\{homepageFilm\.thumbnailUrl\}/);
+  assert.match(videoEngine, /poster=\{autoPlay \? undefined : poster\}/);
   assert.match(globals, /\.marketing-hero-video\.is-started\.is-ready \.marketing-video-frame\s*{\s*opacity: 1;/);
   assert.doesNotMatch(globals, /\.marketing-hero-video\.is-started \.marketing-video-frame\s*{\s*opacity: 1;/);
+  assert.match(
+    globals,
+    /\.marketing-hero > \.marketing-hero-video \.marketing-video-ambient\s*{[\s\S]*?display: none;[\s\S]*?background: none;/,
+  );
 });
 
 test("sitemap lastmod data is generated from git content sources", () => {

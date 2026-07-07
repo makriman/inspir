@@ -279,7 +279,7 @@ export function MarketingVideoEngine({
         ref={videoRef}
         className="marketing-video-frame"
         src={src}
-        poster={poster}
+        poster={autoPlay ? undefined : poster}
         aria-label={copy.ariaLabel}
         autoPlay={autoPlay}
         loop={loop}
