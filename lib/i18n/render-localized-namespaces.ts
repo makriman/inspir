@@ -3,6 +3,7 @@ import { marketingShellTranslationNamespace } from "@/lib/i18n/site-source-const
 export const renderLocalizedSiteTranslationNamespaces = [
   marketingShellTranslationNamespace,
   "route:home",
+  "route:mission",
 ] as const;
 
 const renderLocalizedNamespaceSet = new Set<string>(renderLocalizedSiteTranslationNamespaces);

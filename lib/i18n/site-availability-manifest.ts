@@ -9,7 +9,8 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
   ],
   "Spanish": [
     "marketing-shell",
-    "route:home"
+    "route:home",
+    "route:mission"
   ],
   "French": [
     "marketing-shell"

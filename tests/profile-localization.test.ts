@@ -209,7 +209,9 @@ test("locale routing helpers preserve canonical English and prefix non-English p
 
 test("static locale availability admits only render-localized page bodies", () => {
   assert.equal(isStaticSiteLanguageAvailableForPath("/", "Spanish"), true);
-  assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Spanish"), false);
+  assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Spanish"), true);
+  assert.equal(isStaticSiteLanguageAvailableForPath("/about", "Spanish"), false);
+  assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Hindi"), false);
 });
 
 test("explicit English language cookie wins over localized referrer", () => {
