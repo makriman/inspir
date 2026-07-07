@@ -121,7 +121,7 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.match(csp, /buildCacheableMarketingContentSecurityPolicy/);
   assert.match(csp, /script-src 'self' 'unsafe-inline' https:\/\/accounts\.google\.com/);
   assert.equal(wrangler.placement?.mode, "smart");
-  assert.equal(wrangler.limits?.cpu_ms, 30000);
+  assert.equal(wrangler.limits, undefined);
 });
 
 test("social preview metadata points at the static PNG fallback", () => {
