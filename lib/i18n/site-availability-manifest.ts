@@ -13,7 +13,8 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:mission"
   ],
   "French": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "German": [
     "marketing-shell",
