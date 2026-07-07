@@ -3,6 +3,7 @@ import { getAppTranslationSource } from "@/lib/db/queries";
 import {
   siteTranslationNamespace,
 } from "@/lib/i18n/site-source-constants";
+import { siteSourceManifest } from "@/lib/i18n/site-source-manifest";
 import {
   getPotentialSiteTranslationNamespacesForPath,
   isPotentialSiteTranslationNamespace,
@@ -14,6 +15,12 @@ type CachedRuntimeSource = {
   promise: Promise<TranslationSource | null>;
 };
 
+type StaticSiteTranslationSource = {
+  sourceHash: string;
+  sourceStrings: Record<string, string>;
+};
+
+const staticSiteSources = siteSourceManifest as Record<string, StaticSiteTranslationSource | undefined>;
 const runtimeSourceCacheTtlMs = 5 * 60 * 1000;
 const runtimeSourceCache = new Map<string, CachedRuntimeSource>();
 
@@ -27,6 +34,16 @@ export function getRuntimeSiteTranslationNamespacesForPath(pathname: string) {
 
 export async function getRuntimeSiteTranslationSource(namespace = siteTranslationNamespace) {
   if (!isKnownRuntimeSiteTranslationNamespace(namespace)) return null;
+
+  const staticSource = staticSiteSources[namespace];
+  if (staticSource) {
+    return {
+      namespace,
+      sourceHash: staticSource.sourceHash,
+      sourceStrings: staticSource.sourceStrings,
+      systemInstruction: buildRuntimeSiteTranslationSystemInstruction(),
+    } satisfies TranslationSource;
+  }
 
   const cached = runtimeSourceCache.get(namespace);
   if (cached && cached.expiresAt > Date.now()) return cached.promise;

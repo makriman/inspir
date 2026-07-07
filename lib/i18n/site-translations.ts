@@ -1,4 +1,5 @@
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
+import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
 import { getDatabaseTranslationBundle } from "@/lib/i18n/db-translations";
 import type { TranslationResult } from "./translation-types";
 import {
@@ -23,6 +24,9 @@ export async function getCachedSiteTranslationBundle(language: string, namespace
   const source = await getRuntimeSiteTranslationSource(namespace);
   if (!source) return null;
   if (normalized === defaultLanguage) return getRuntimeEnglishSiteTranslationBundle(source.namespace);
+
+  const curatedBundle = getCuratedTranslationBundle(source, normalized);
+  if (curatedBundle) return curatedBundle;
 
   return translationDbFallbackWithTimeout(getDatabaseTranslationBundle(source, normalized));
 }

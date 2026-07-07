@@ -5,7 +5,11 @@ import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
 import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
-import { languageConfigs } from "@/lib/content/languages";
+import {
+  defaultLanguage,
+  languageConfigs,
+  supportedLanguages,
+} from "@/lib/content/languages";
 import { localizedMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
 import {
   absoluteUrl,
@@ -29,6 +33,7 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(), siteNavigationJsonLd()];
 
 export const dynamic = "force-static";
+export const dynamicParams = false;
 export const revalidate = 3600;
 
 type LocalizedLayoutProps = Readonly<{
@@ -37,8 +42,11 @@ type LocalizedLayoutProps = Readonly<{
 }>;
 
 export function generateStaticParams(): Array<{ locale: string }> {
-  // Locale HTML is generated into OpenNext's R2 ISR cache on first request, when D1 translations are available.
-  return [];
+  const params: Array<{ locale: string }> = [];
+  for (const language of supportedLanguages) {
+    if (language !== defaultLanguage) params.push({ locale: languageConfigs[language].prefix });
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: { params: LocaleRouteParams }): Promise<Metadata> {
