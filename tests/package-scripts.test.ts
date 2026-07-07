@@ -143,7 +143,7 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.equal(packageJson.scripts?.["seo:lastmod:generate"], "tsx scripts/seo/generate-sitemap-lastmod.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");
   assert.equal(wrangler.placement?.mode, "smart");
-  assert.equal(wrangler.limits?.cpu_ms, 30000);
+  assert.equal(wrangler.limits, undefined);
 });
 
 test("sitemap lastmod data is generated from git content sources", () => {
