@@ -1,7 +1,21 @@
 "use client";
 
 import { useMemo, useReducer, useState, type ReactNode } from "react";
-import { Bot, Brain, CircleDot, RotateCcw, Sparkles, Swords } from "lucide-react";
+import {
+  Bot,
+  Brain,
+  CheckCircle2,
+  CircleDot,
+  Cpu,
+  Flag,
+  Grid3X3,
+  Handshake,
+  RefreshCw,
+  RotateCcw,
+  Sparkles,
+  Swords,
+  Trophy,
+} from "lucide-react";
 import {
   type ActivityRun,
   type ActivityRunResponse,
@@ -98,8 +112,13 @@ export function GameArenaWorkspace({
     updateArenaState({ selectedGame: slug, selectedSide: game.sides[0], error: "" });
   }
 
-  async function startMatch() {
+  async function startMatch(
+    overrides?: Pick<PublicGameArenaState, "gameSlug" | "humanSide" | "modelProfile">,
+  ) {
     if (loading) return;
+    const nextGameSlug = overrides?.gameSlug ?? selectedGame;
+    const nextHumanSide = overrides?.humanSide ?? selectedSide;
+    const nextModelProfile = overrides?.modelProfile ?? selectedModel;
     updateArenaState({ loading: true, error: "" });
     try {
       const chatId = activeChatId ?? (await createChat(activeTopicId));
@@ -108,15 +127,20 @@ export function GameArenaWorkspace({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           chatId,
-          gameSlug: selectedGame,
-          humanSide: selectedSide,
-          modelProfile: selectedModel,
+          gameSlug: nextGameSlug,
+          humanSide: nextHumanSide,
+          modelProfile: nextModelProfile,
         }),
       });
       if (!response.ok) throw new Error("Could not start game");
       const data = (await response.json()) as ActivityRunResponse;
       onActivityRun(data.activityRun);
-      updateArenaState({ setupOpen: false });
+      updateArenaState({
+        selectedGame: nextGameSlug,
+        selectedSide: nextHumanSide,
+        selectedModel: nextModelProfile,
+        setupOpen: false,
+      });
     } catch {
       updateArenaState({ error: "I could not start that match. Try again in a moment." });
     } finally {
@@ -236,6 +260,31 @@ export function GameArenaWorkspace({
             </button>
           </header>
 
+          {arena.completed ? (
+            <GameArenaResultScreen
+              arena={arena}
+              activityRunId={activityRun?.id ?? ""}
+              loading={loading}
+              onPlayAgain={() => {
+                void startMatch({
+                  gameSlug: arena.gameSlug,
+                  humanSide: arena.humanSide,
+                  modelProfile: arena.modelProfile,
+                });
+              }}
+              onChangeOpponent={() =>
+                updateArenaState({
+                  selectedGame: arena.gameSlug,
+                  selectedSide: arena.humanSide,
+                  selectedModel: arena.modelProfile,
+                  setupOpen: true,
+                  error: "",
+                })
+              }
+              onNewGame={() => updateArenaState({ setupOpen: true, error: "" })}
+            />
+          ) : null}
+
           <div className="inspir-game-seat-row">
             <SeatCard label="You" side={arena.humanSide} active={arena.activePlayer === "human"} />
             <SeatCard
@@ -246,7 +295,7 @@ export function GameArenaWorkspace({
             />
           </div>
 
-          <div className="inspir-game-stage">
+          <div className={`inspir-game-stage ${arena.completed ? "is-after-result" : ""}`}>
             <div className="inspir-game-board-wrap">
               {arena.gameSlug === "chess" ? (
                 <ChessBoard
@@ -273,9 +322,9 @@ export function GameArenaWorkspace({
                   </>
                 ) : arena.completed ? (
                   <>
-                    <Sparkles size={18} />
-                    <strong>{resultTitle(arena.winner)}</strong>
-                    <span>{resultSubtitle(arena.winner)}</span>
+                    <CheckCircle2 size={18} />
+                    <strong>Match complete</strong>
+                    <span>The result is locked above. Review the board and move history here.</span>
                   </>
                 ) : (
                   <>
@@ -308,6 +357,86 @@ export function GameArenaWorkspace({
         </section>
       ) : null}
     </main>
+  );
+}
+
+function GameArenaResultScreen({
+  arena,
+  activityRunId,
+  loading,
+  onPlayAgain,
+  onChangeOpponent,
+  onNewGame,
+}: {
+  arena: PublicGameArenaState;
+  activityRunId: string;
+  loading: boolean;
+  onPlayAgain: () => void;
+  onChangeOpponent: () => void;
+  onNewGame: () => void;
+}) {
+  const tone = arena.winner === "human" ? "win" : arena.winner === "model" ? "loss" : "draw";
+  const copy = resultCopy(arena.winner);
+  const Icon = copy.icon;
+  const score = resultScore(arena.winner);
+  const modelName = arena.modelProfile === "reasoning" ? "GPT-5" : "GPT-5 mini";
+
+  return (
+    <section className={`inspir-game-result is-${tone}`} aria-label="Match result" aria-live="polite">
+      <div className="inspir-game-result-banner">
+        <div className="inspir-game-result-icon">
+          <Icon size={30} />
+        </div>
+        <div className="inspir-game-result-copy">
+          <span>Result</span>
+          <h3>{copy.title}</h3>
+          <p>{copy.description}</p>
+        </div>
+        <div className="inspir-game-result-game">
+          <Swords size={18} />
+          <span>{arena.gameName}</span>
+        </div>
+      </div>
+
+      <div className="inspir-game-result-stats">
+        <div className="inspir-game-result-versus">
+          <strong>You</strong>
+          <span className={`inspir-game-result-chip is-${tone}`}>{copy.label}</span>
+          <strong>{modelName}</strong>
+        </div>
+
+        <div className="inspir-game-result-grid">
+          <ResultStat label="Reason" value={resultReason(arena)} />
+          <ResultStat label="Final score" value={`You ${score.human}, OpenAI ${score.model}`} />
+          <ResultStat label="Moves" value={String(arena.moveHistory.length)} />
+          <ResultStat label="Session" value={activityRunId ? activityRunId.slice(0, 8) : "Saved"} />
+        </div>
+      </div>
+
+      <div className="inspir-game-result-actions">
+        <button type="button" className="is-primary" disabled={loading} onClick={onPlayAgain}>
+          <RefreshCw size={16} />
+          {loading ? "Starting" : "Play again"}
+        </button>
+        <button type="button" onClick={onChangeOpponent}>
+          <Cpu size={16} />
+          Change opponent
+        </button>
+        <button type="button" onClick={onNewGame}>
+          <Grid3X3 size={16} />
+          New game
+        </button>
+      </div>
+    </section>
+  );
+}
+
+function ResultStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="inspir-game-result-stat">
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </div>
   );
 }
 
@@ -527,14 +656,42 @@ function chessGlyph(piece: PublicChessPiece) {
   return glyphs[piece.color][piece.type];
 }
 
-function resultTitle(winner: PublicGameArenaState["winner"]) {
-  if (winner === "human") return "You won";
-  if (winner === "model") return "OpenAI won";
-  return "Draw";
+function resultCopy(winner: PublicGameArenaState["winner"]) {
+  if (winner === "human") {
+    return {
+      title: "Victory",
+      description: "You beat the model.",
+      label: "WIN",
+      icon: Trophy,
+    };
+  }
+  if (winner === "model") {
+    return {
+      title: "Defeated",
+      description: "The model came out ahead.",
+      label: "LOSS",
+      icon: Flag,
+    };
+  }
+  return {
+    title: "Draw",
+    description: "Evenly matched game.",
+    label: "DRAW",
+    icon: Handshake,
+  };
 }
 
-function resultSubtitle(winner: PublicGameArenaState["winner"]) {
-  if (winner === "human") return "Nice. Review the move history and try a harder side.";
-  if (winner === "model") return "Replay the turning point and try another line.";
-  return "Balanced game. Try changing sides or model strength.";
+function resultScore(winner: PublicGameArenaState["winner"]) {
+  if (winner === "human") return { human: "1", model: "0" };
+  if (winner === "model") return { human: "0", model: "1" };
+  return { human: "0.5", model: "0.5" };
+}
+
+function resultReason(arena: PublicGameArenaState) {
+  if (arena.winner === "draw") {
+    return arena.gameSlug === "chess" ? "Draw by chess rules" : "Full board";
+  }
+  if (arena.gameSlug === "chess") return "Checkmate";
+  if (arena.gameSlug === "connect-four") return "Four in a row";
+  return "Three in a row";
 }
