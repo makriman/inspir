@@ -58,58 +58,6 @@ export type PublicFlashcardState = {
   cards: PublicFlashcard[];
 };
 
-export type PublicGameArenaLegalAction = {
-  token: string;
-  label: string;
-  index?: number;
-  column?: number;
-  from?: string;
-  to?: string;
-  san?: string;
-  piece?: string;
-  promotion?: string;
-};
-
-export type PublicGameArenaMove = {
-  id: string;
-  player: "human" | "model";
-  action: string;
-  label: string;
-  note?: string;
-  createdAt: string;
-};
-
-export type PublicChessPiece = {
-  square: string;
-  type: "p" | "n" | "b" | "r" | "q" | "k";
-  color: "w" | "b";
-};
-
-export type PublicGameArenaState = {
-  topic: string;
-  gameSlug: "tic-tac-toe" | "connect-four" | "chess";
-  gameName: string;
-  modelProfile: "fast" | "reasoning";
-  modelName: string;
-  humanSide: string;
-  modelSide: string;
-  humanMark: string;
-  modelMark: string;
-  activePlayer: "human" | "model" | null;
-  currentIndex: number;
-  moveNumber: number;
-  completed: boolean;
-  winner: "human" | "model" | "draw" | null;
-  statusText: string;
-  board?: Array<"" | "X" | "O">;
-  chessFen?: string;
-  chessBoard?: Array<Array<PublicChessPiece | null>>;
-  legalActions: PublicGameArenaLegalAction[];
-  moveHistory: PublicGameArenaMove[];
-  createdAt: string;
-  updatedAt: string;
-};
-
 export type MergeActivityStateAction<State> = Partial<State> | ((state: State) => Partial<State>);
 
 export function mergeActivityState<State>(state: State, nextState: MergeActivityStateAction<State>) {
@@ -131,18 +79,5 @@ export function isFlashcardState(value: Record<string, unknown>): value is Publi
     Array.isArray(value.cards) &&
     typeof value.currentIndex === "number" &&
     typeof value.reviewedCount === "number"
-  );
-}
-
-export function isGameArenaState(value: Record<string, unknown>): value is PublicGameArenaState {
-  return (
-    typeof value.topic === "string" &&
-    typeof value.gameSlug === "string" &&
-    typeof value.gameName === "string" &&
-    typeof value.currentIndex === "number" &&
-    typeof value.moveNumber === "number" &&
-    typeof value.completed === "boolean" &&
-    Array.isArray(value.legalActions) &&
-    Array.isArray(value.moveHistory)
   );
 }

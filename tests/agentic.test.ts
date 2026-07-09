@@ -14,12 +14,6 @@ import {
   sanitizeFlashcardState,
   type FlashcardState,
 } from "../lib/activities/flashcards";
-import {
-  applyHumanGameMove,
-  createGameArenaState,
-  parseGameArenaState,
-  sanitizeGameArenaState,
-} from "../lib/activities/game-arena";
 import { answerQuizQuestion, sanitizeQuizState, type QuizState } from "../lib/activities/quiz";
 import { findSeededTopic, seededTopics } from "../lib/content/seeded-topics";
 import { topicSeeds } from "../lib/content/topics";
@@ -39,7 +33,6 @@ test("topic registry exposes imported learner modes and preserves legacy slugs",
     "debate-any-topic",
     "study-timer",
     "music-for-focus",
-    "ai-game-arena",
     "practice-test-builder",
     "cornell-notes",
     "study-streaks",
@@ -109,14 +102,6 @@ test("flashcard builder is a structured mini app mode", () => {
   assert.ok(seed);
   assert.equal(seed.metadata.uiMode, "flashcards");
   assert.equal(seed.metadata.modelProfile, "structured");
-});
-
-test("AI game arena is registered as an activity-backed mini app", () => {
-  const seed = topicSeeds.find((topic) => topic.slug === "ai-game-arena");
-  assert.ok(seed);
-  assert.equal(seed.metadata.uiMode, "game-arena");
-  assert.equal(seed.metadata.toolId, "ai-game-arena");
-  assert.ok(seed.metadata.keywords?.includes("chess"));
 });
 
 test("seeded topic fallback preserves full AI topic fields with slug ids", () => {
@@ -432,28 +417,4 @@ test("flashcard state hides answers until reveal and tracks recall", () => {
   assert.equal(rated.state.knownCount, 1);
   assert.equal(rated.state.reviewedCount, 1);
   assert.equal(rated.state.currentIndex, 1);
-});
-
-test("game arena validates legal moves and exposes public state", () => {
-  const state = createGameArenaState({ gameSlug: "tic-tac-toe", humanSide: "X", modelProfile: "fast" });
-  assert.equal(state.activePlayer, "human");
-  assert.equal(state.legalActions.length, 9);
-
-  const moved = applyHumanGameMove(state, "4");
-  assert.equal(moved.ok, true);
-  assert.equal(moved.ok ? moved.state.board?.[4] : "", "X");
-  assert.equal(moved.ok ? moved.state.activePlayer : null, "model");
-
-  const publicState = moved.ok ? sanitizeGameArenaState(moved.state) : state;
-  assert.equal(publicState.moveHistory[0].label, "Center");
-  assert.equal(parseGameArenaState(publicState).success, true);
-});
-
-test("game arena chess starts with legal OpenAI and learner sides", () => {
-  const state = createGameArenaState({ gameSlug: "chess", humanSide: "Black", modelProfile: "reasoning" });
-  assert.equal(state.activePlayer, "model");
-  assert.equal(state.humanSide, "Black");
-  assert.equal(state.modelSide, "White");
-  assert.equal(state.legalActions.length, 20);
-  assert.ok(state.legalActions.some((action) => action.token === "e2e4"));
 });

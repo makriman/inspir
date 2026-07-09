@@ -4,7 +4,6 @@ import { generateOpenAiJsonObject } from "@/lib/ai/openai-client";
 import { resolveModelName } from "@/lib/ai/model-router";
 import { hasOpenAiRuntimeCredentials } from "@/lib/ai/openai-provider";
 import { parseFlashcardState, sanitizeFlashcardState } from "@/lib/activities/flashcards";
-import { gameArenaActivityType, parseGameArenaState, sanitizeGameArenaState } from "@/lib/activities/game-arena";
 import { defaultLanguage, normalizeLanguage } from "@/lib/content/languages";
 
 const quizQuestionSchema = z.object({
@@ -165,13 +164,6 @@ export function sanitizeActivityRun(run: ActivityRun | undefined | null) {
     return {
       ...run,
       state: parsed.success ? sanitizeFlashcardState(parsed.data) : run.state,
-    };
-  }
-  if (run.type === gameArenaActivityType) {
-    const parsed = parseGameArenaState(run.state);
-    return {
-      ...run,
-      state: parsed.success ? sanitizeGameArenaState(parsed.data) : run.state,
     };
   }
   if (run.type !== "quiz") return run;
