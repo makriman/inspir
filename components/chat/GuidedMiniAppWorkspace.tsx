@@ -50,7 +50,7 @@ import {
 } from "@/components/chat/topic-model";
 import { buildMiniAppInstruction } from "@/lib/ai/visible-content";
 
-type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards" | "study-timer" | "focus-music">;
+type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards" | "study-timer" | "focus-music" | "game-arena">;
 
 type MiniAppConfig = {
   icon: MiniAppIcon;

@@ -29,6 +29,7 @@ import {
   type MessageMemorySource,
 } from "@/components/chat/chat-message-model";
 import { FlashcardWorkspace } from "@/components/chat/FlashcardWorkspace";
+import { GameArenaWorkspace } from "@/components/chat/GameArenaWorkspace";
 import { GuidedMiniAppWorkspace } from "@/components/chat/GuidedMiniAppWorkspace";
 import { GuestFeatureGate } from "@/components/chat/GuestFeatureGate";
 import {
@@ -111,7 +112,7 @@ class StaleChatRequestError extends Error {
   }
 }
 
-type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards" | "study-timer" | "focus-music">;
+type MiniMode = Exclude<TopicMetadata["uiMode"], "chat" | "quiz" | "flashcards" | "study-timer" | "focus-music" | "game-arena">;
 
 function readStoredGuestUsage(limit: number) {
   if (typeof window === "undefined") return 0;
@@ -525,6 +526,7 @@ function useChatClientController({
   const uiMode = metadata?.uiMode ?? "chat";
   const isQuizMode = uiMode === "quiz";
   const isFlashcardMode = uiMode === "flashcards";
+  const isGameArenaMode = uiMode === "game-arena";
   const isFocusTimerMode = uiMode === "study-timer";
   const isFocusMusicMode = uiMode === "focus-music";
   const usesManagedMessageScroller = false;
@@ -532,6 +534,7 @@ function useChatClientController({
     uiMode !== "chat" &&
     uiMode !== "quiz" &&
     uiMode !== "flashcards" &&
+    uiMode !== "game-arena" &&
     uiMode !== "study-timer" &&
     uiMode !== "focus-music";
   const miniAppMode = isMiniAppMode ? (uiMode as MiniMode) : null;
@@ -774,7 +777,7 @@ function useChatClientController({
 
   async function sendMessage(content: string, appendUser = true) {
     const trimmed = content.trim();
-    if (!trimmed || sending || isQuizMode || isFlashcardMode) return;
+    if (!trimmed || sending || isQuizMode || isFlashcardMode || isGameArenaMode) return;
     const storedGuestMessagesUsed = isGuest ? readStoredGuestUsage(guestMessageLimit) : guestMessagesUsed;
     const effectiveGuestMessagesUsed = isGuest
       ? Math.max(guestMessagesUsed, storedGuestMessagesUsed)
@@ -1342,6 +1345,7 @@ function useChatClientController({
     isFlashcardMode,
     isFocusMusicMode,
     isFocusTimerMode,
+    isGameArenaMode,
     isGuest,
     isQuizMode,
     languageSaving,
@@ -1422,6 +1426,7 @@ function ChatClientLayout(controller: ChatClientController) {
     guestMessagesUsed,
     guestPromptOpen,
     isFlashcardMode,
+    isGameArenaMode,
     isGuest,
     isQuizMode,
     learningTools,
@@ -1519,6 +1524,7 @@ function ChatClientLayout(controller: ChatClientController) {
           !isGuest &&
           !isQuizMode &&
           !isFlashcardMode &&
+          !isGameArenaMode &&
           messages.some((message) => message.role === "user")
         }
         onReset={resetChat}
@@ -1576,6 +1582,7 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
     isFlashcardMode,
     isFocusMusicMode,
     isFocusTimerMode,
+    isGameArenaMode,
     isGuest,
     isQuizMode,
     currentLanguage,
@@ -1711,6 +1718,28 @@ function ChatWorkspaceSwitch({ controller }: { controller: ChatClientController 
         createChat={createChat}
         onActivityRun={setActivityRun}
         onReset={resetChat}
+      />
+    );
+  }
+
+  if (isGameArenaMode) {
+    if (isGuest) {
+      return (
+        <GuestFeatureGate
+          {...topicIntroProps(activeTopic)}
+          featureName="AI game arena matches"
+          starters={topicMetadata(activeTopic)?.starters ?? []}
+          topicHref={localizedTopicHref(activeTopic, currentLanguage)}
+        />
+      );
+    }
+    return (
+      <GameArenaWorkspace
+        activeChatId={activeChatId}
+        activeTopicId={activeTopicId}
+        activityRun={activityRun}
+        createChat={createChat}
+        onActivityRun={setActivityRun}
       />
     );
   }

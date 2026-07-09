@@ -13,7 +13,8 @@ export type TopicMetadata = {
     | "collaborative-instruction"
     | "socratic-instruction"
     | "study-timer"
-    | "focus-music";
+    | "focus-music"
+    | "game-arena";
   modelProfile: "fast" | "reasoning" | "structured";
   starters: string[];
   keywords?: string[];

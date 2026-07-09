@@ -8,7 +8,8 @@ export type TopicUiMode =
   | "collaborative-instruction"
   | "socratic-instruction"
   | "study-timer"
-  | "focus-music";
+  | "focus-music"
+  | "game-arena";
 
 export type TopicModelProfile = "fast" | "reasoning" | "structured";
 
@@ -889,6 +890,26 @@ export const topicSeeds: TopicSeed[] = [
     firstTurn: "Ask for topic, level, and preferred game vibe; then create the first quest.",
     loop: "Challenge, score, give feedback, unlock next level, and review missed ideas.",
     output: "Use quests, levels, badges, and boss questions.",
+  }),
+  topic({
+    slug: "ai-game-arena",
+    name: "AI Game Arena",
+    subText: "Play strategy games against OpenAI",
+    description:
+      "Challenge an OpenAI opponent in legal chess, Connect Four, and tic-tac-toe matches inside the inspir workspace.",
+    inputboxText: "Choose a game and make your first move.",
+    sortOrder: 50,
+    category: "Practice",
+    uiMode: "game-arena",
+    modelProfile: "reasoning",
+    starters: ["Play chess against GPT-5", "Start Connect Four", "Try a quick tic-tac-toe match"],
+    keywords: ["arena", "game", "chess", "connect four", "tic tac toe", "OpenAI opponent"],
+    source: "ai-learning-platform, ai-study-platform",
+    toolId: "ai-game-arena",
+    purpose: "Let learners practice planning, tactics, and reflection through structured games against OpenAI.",
+    firstTurn: "Offer game, side, and model choices, then launch the match once selected.",
+    loop: "Validate moves, let the model respond, show status, and invite reflection after the result.",
+    output: "Use compact game status, legal move controls, and short tactical notes.",
   }),
   topic({
     slug: "viva-practice",
