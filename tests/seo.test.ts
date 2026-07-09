@@ -1080,8 +1080,9 @@ test("homepage video controls stay accessible and compact on mobile", () => {
     /\.marketing-video-controls button:nth-of-type\(2\),[\s\S]*?display: none;\n  \}/,
   )?.[0];
 
-  assert.ok(videoEngine.includes("hidden={!chaptersOpen}"));
-  assert.ok(videoEngine.includes("hidden={!transcriptOpen}"));
+  assert.equal(videoEngine.match(/hidden=\{!open\}/g)?.length, 2);
+  assert.ok(videoEngine.includes("open={chaptersOpen}"));
+  assert.ok(videoEngine.includes("open={transcriptOpen}"));
   assert.equal(videoEngine.includes('label="English captions" default'), false);
   assert.ok(videoEngine.includes('aria-controls="learning-film-chapters"'));
   assert.ok(videoEngine.includes('aria-controls="learning-film-transcript"'));

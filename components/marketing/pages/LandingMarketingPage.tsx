@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
+import Image from "next/image";
 import {
   ArrowUpRight,
   BookOpenCheck,
@@ -397,7 +398,16 @@ function TrustSignalsSection({ t }: { t: LandingTranslator }) {
 function MissionStorySection({ t }: { t: LandingTranslator }) {
   return (
     <section className="marketing-story-split">
-      <div className="marketing-story-media" aria-hidden="true" />
+      <figure className="marketing-story-media" aria-hidden="true">
+        <Image
+          src="/media/inspir-community-learning.jpg"
+          alt=""
+          fill
+          sizes="(max-width: 900px) 100vw, 42vw"
+          loading="lazy"
+          fetchPriority="low"
+        />
+      </figure>
       <div className="marketing-story-copy">
         <span>{t("Mission first")}</span>
         <h2>{t("Not another answer box. A place to learn.")}</h2>

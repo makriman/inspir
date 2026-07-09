@@ -11621,7 +11621,7 @@ a {
   --editorial-paper: #fffdf8;
   --editorial-card: #ffffff;
   --editorial-line: rgb(33 31 28 / 0.12);
-  --editorial-red: #ff385c;
+  --editorial-red: #e11d48;
   --editorial-blue: #2447ff;
   --editorial-green: #157f58;
   --editorial-gold: #b26f00;
@@ -11845,8 +11845,8 @@ a {
 }
 
 .marketing-hero .marketing-primary-cta {
-  border-color: #ff385c;
-  background: #ff385c;
+  border-color: var(--editorial-red);
+  background: var(--editorial-red);
   color: #fffdf8;
 }
 
@@ -12384,8 +12384,8 @@ a {
 }
 
 .marketing-video-end-card a {
-  border: 1px solid #ff385c;
-  background: #ff385c;
+  border: 1px solid var(--editorial-red);
+  background: var(--editorial-red);
   color: #fffdf8;
 }
 
@@ -12484,13 +12484,13 @@ a {
 .marketing-video-progress input::-webkit-slider-runnable-track {
   height: 6px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #ff385c var(--video-progress), rgb(255 255 255 / 0.26) 0);
+  background: linear-gradient(90deg, var(--editorial-red) var(--video-progress), rgb(255 255 255 / 0.26) 0);
 }
 
 .marketing-video-progress input::-moz-range-track {
   height: 6px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #ff385c var(--video-progress), rgb(255 255 255 / 0.26) 0);
+  background: linear-gradient(90deg, var(--editorial-red) var(--video-progress), rgb(255 255 255 / 0.26) 0);
 }
 
 .marketing-video-progress input::-webkit-slider-thumb {
@@ -12500,7 +12500,7 @@ a {
   appearance: none;
   border: 2px solid #fffdf8;
   border-radius: 999px;
-  background: #ff385c;
+  background: var(--editorial-red);
   box-shadow: 0 4px 14px rgb(0 0 0 / 0.22);
 }
 
@@ -12509,7 +12509,7 @@ a {
   height: 16px;
   border: 2px solid #fffdf8;
   border-radius: 999px;
-  background: #ff385c;
+  background: var(--editorial-red);
   box-shadow: 0 4px 14px rgb(0 0 0 / 0.22);
 }
 
@@ -12732,11 +12732,10 @@ a {
 .marketing-story-media {
   position: relative;
   overflow: hidden;
+  margin: 0;
   border-radius: 8px;
   aspect-ratio: 4 / 3;
-  background:
-    linear-gradient(135deg, rgb(23 23 25 / 0.08), rgb(23 23 25 / 0.38)),
-    url("/media/inspir-community-learning.jpg") center / cover no-repeat;
+  background: #e9edf3;
   box-shadow: 0 24px 70px rgb(23 23 25 / 0.1);
 }
 
@@ -13114,7 +13113,7 @@ a {
   --editorial-paper: #fffdf8;
   --editorial-card: #ffffff;
   --editorial-line: rgb(33 31 28 / 0.12);
-  --editorial-red: #ff385c;
+  --editorial-red: #e11d48;
   --editorial-green: #157f58;
   display: grid;
   gap: 38px;
@@ -15083,7 +15082,7 @@ a {
   --editorial-paper: #ffffff;
   --editorial-card: #ffffff;
   --editorial-line: rgb(23 23 25 / 0.11);
-  --editorial-red: #ff385c;
+  --editorial-red: #e11d48;
   --editorial-blue: #2457ff;
   --editorial-green: #0f7a5a;
   --editorial-gold: #a96500;

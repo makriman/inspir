@@ -2,8 +2,8 @@
 
 import { LocalizedLink as Link } from "@/components/i18n/LocalizedLink";
 import Image from "next/image";
-import type { CSSProperties } from "react";
-import { useEffect, useReducer, useRef } from "react";
+import type { CSSProperties, RefObject } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import {
   ArrowUpRight,
   Captions,
@@ -21,6 +21,7 @@ const defaultPosterSrc = "/media/inspir-learning-film-poster.webp";
 const defaultCaptionsSrc = "/media/inspir-learning-film.en.vtt";
 const defaultChapterTrackSrc = "/media/inspir-learning-film.chapters.vtt";
 const fallbackFilmDuration = 31;
+const deferredAutoplayDelayMs = 8_000;
 
 type MarketingVideoChapter = {
   title: string;
@@ -141,6 +142,268 @@ function VideoFallbackImage({ poster, autoPlay }: { poster: string; autoPlay: bo
   );
 }
 
+function MarketingVideoFrame({
+  videoRef,
+  videoSrc,
+  poster,
+  copy,
+  loop,
+  muted,
+  captionsSrc,
+  chapterTrackSrc,
+  onReady,
+  onDurationChange,
+  onTimeUpdate,
+  onPlay,
+  onPause,
+  onEnded,
+}: {
+  videoRef: RefObject<HTMLVideoElement | null>;
+  videoSrc?: string;
+  poster: string;
+  copy: MarketingVideoCopy;
+  loop: boolean;
+  muted: boolean;
+  captionsSrc: string;
+  chapterTrackSrc?: string;
+  onReady: () => void;
+  onDurationChange: (video: HTMLVideoElement) => void;
+  onTimeUpdate: (time: number) => void;
+  onPlay: () => void;
+  onPause: () => void;
+  onEnded: () => void;
+}) {
+  return (
+    <video
+      ref={videoRef}
+      className="marketing-video-frame"
+      src={videoSrc}
+      poster={poster}
+      aria-label={copy.ariaLabel}
+      loop={loop}
+      playsInline
+      preload={videoSrc ? "metadata" : "none"}
+      muted={muted}
+      onLoadedData={onReady}
+      onCanPlay={onReady}
+      onLoadedMetadata={(event) => onDurationChange(event.currentTarget)}
+      onDurationChange={(event) => onDurationChange(event.currentTarget)}
+      onTimeUpdate={(event) => onTimeUpdate(event.currentTarget.currentTime)}
+      onPlay={onPlay}
+      onPause={onPause}
+      onEnded={onEnded}
+    >
+      <track kind="captions" src={captionsSrc} srcLang="en" label="English captions" />
+      {chapterTrackSrc ? <track kind="chapters" src={chapterTrackSrc} srcLang="en" label="Film chapters" /> : null}
+    </video>
+  );
+}
+
+function MarketingVideoPoster({ copy, onPlay }: { copy: MarketingVideoCopy; onPlay: () => void }) {
+  return (
+    <button type="button" className="marketing-video-poster" onClick={onPlay} aria-label={copy.playLabel}>
+      <span className="marketing-video-kicker">{copy.kicker}</span>
+      <span className="marketing-hero-video-play">
+        <Play size={26} fill="currentColor" />
+      </span>
+      <span id="learning-film-caption" className="marketing-video-caption">
+        <strong>{copy.captionTitle}</strong>
+        <span>{copy.captionText}</span>
+      </span>
+    </button>
+  );
+}
+
+function MarketingVideoChapters({
+  chapters,
+  activeChapter,
+  open,
+  label,
+  onSeekToChapter,
+}: {
+  chapters: ReadonlyArray<MarketingVideoChapter>;
+  activeChapter?: MarketingVideoChapter;
+  open: boolean;
+  label: string;
+  onSeekToChapter: (seconds: number) => void;
+}) {
+  if (!chapters.length) return null;
+
+  return (
+    <div id="learning-film-chapters" className="marketing-video-chapters" aria-label={label} hidden={!open}>
+      <span>{activeChapter?.title ?? label}</span>
+      <div>
+        {chapters.map((chapter) => (
+          <button
+            key={chapter.title}
+            type="button"
+            onClick={() => onSeekToChapter(chapter.start)}
+            aria-current={activeChapter?.title === chapter.title ? "true" : undefined}
+          >
+            <small>{formatTime(chapter.start)}</small>
+            {chapter.title}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function MarketingVideoTranscript({
+  transcript,
+  chapters,
+  open,
+  label,
+  onSeekToChapter,
+}: {
+  transcript?: string;
+  chapters: ReadonlyArray<MarketingVideoChapter>;
+  open: boolean;
+  label: string;
+  onSeekToChapter: (seconds: number) => void;
+}) {
+  if (!transcript) return null;
+
+  return (
+    <aside id="learning-film-transcript" className="marketing-video-transcript" aria-label={label} hidden={!open}>
+      <span>{label}</span>
+      <p>{transcript}</p>
+      {chapters.length ? (
+        <div>
+          {chapters.map((chapter) => (
+            <button key={chapter.title} type="button" onClick={() => onSeekToChapter(chapter.start)}>
+              <small>{formatTime(chapter.start)}</small>
+              {chapter.title}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </aside>
+  );
+}
+
+function MarketingVideoEndCard({
+  copy,
+  ended,
+  onReplay,
+}: {
+  copy: MarketingVideoCopy;
+  ended: boolean;
+  onReplay: () => void;
+}) {
+  if (!ended) return null;
+
+  return (
+    <div className="marketing-video-end-card">
+      <span>{copy.nextStepLabel}</span>
+      <strong>{copy.nextStepTitle}</strong>
+      <p>{copy.nextStepText}</p>
+      <div>
+        <Link href="/chat/learn-anything">
+          {copy.startLearningLabel}
+          <ArrowUpRight size={15} />
+        </Link>
+        <button type="button" onClick={onReplay}>
+          {copy.replayLabel}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function MarketingVideoControls({
+  copy,
+  playing,
+  muted,
+  chaptersOpen,
+  transcriptOpen,
+  hasTranscript,
+  progress,
+  progressStyle,
+  currentTime,
+  duration,
+  onTogglePlay,
+  onRestart,
+  onToggleChapters,
+  onToggleTranscript,
+  onSeek,
+  onToggleMute,
+  onFullscreen,
+}: {
+  copy: MarketingVideoCopy;
+  playing: boolean;
+  muted: boolean;
+  chaptersOpen: boolean;
+  transcriptOpen: boolean;
+  hasTranscript: boolean;
+  progress: number;
+  progressStyle: CSSProperties;
+  currentTime: number;
+  duration: number;
+  onTogglePlay: () => void;
+  onRestart: () => void;
+  onToggleChapters: () => void;
+  onToggleTranscript: () => void;
+  onSeek: (value: string) => void;
+  onToggleMute: () => void;
+  onFullscreen: () => void;
+}) {
+  return (
+    <div className="marketing-video-controls" aria-label={copy.controlsLabel}>
+      <button type="button" onClick={onTogglePlay} aria-label={playing ? copy.pauseLabel : copy.playFilmLabel}>
+        {playing ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
+      </button>
+      <button type="button" onClick={onRestart} aria-label={copy.restartLabel}>
+        <RotateCcw size={17} />
+      </button>
+      <button
+        type="button"
+        onClick={onToggleChapters}
+        aria-label={chaptersOpen ? copy.hideChaptersLabel : copy.showChaptersLabel}
+        aria-expanded={chaptersOpen}
+        aria-controls="learning-film-chapters"
+      >
+        <ListVideo size={18} />
+      </button>
+      {hasTranscript ? (
+        <button
+          type="button"
+          onClick={onToggleTranscript}
+          aria-label={transcriptOpen ? copy.hideTranscriptLabel : copy.showTranscriptLabel}
+          aria-expanded={transcriptOpen}
+          aria-controls="learning-film-transcript"
+        >
+          <Captions size={18} />
+        </button>
+      ) : null}
+      <label className="marketing-video-progress">
+        <span className="sr-only">{copy.progressLabel}</span>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          step="0.1"
+          value={progress}
+          onChange={(event) => onSeek(event.currentTarget.value)}
+          style={progressStyle}
+          aria-label={copy.progressLabel}
+        />
+      </label>
+      <span className="marketing-video-time">
+        {formatTime(currentTime)}
+        <span>/</span>
+        {formatTime(duration, { roundUp: true })}
+      </span>
+      <button type="button" onClick={onToggleMute} aria-label={muted ? copy.unmuteLabel : copy.muteLabel}>
+        {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+      </button>
+      <button type="button" onClick={onFullscreen} aria-label={copy.fullscreenLabel}>
+        <Maximize2 size={17} />
+      </button>
+    </div>
+  );
+}
+
 export function MarketingVideoEngine({
   chapters = emptyVideoChapters,
   transcript,
@@ -164,6 +427,8 @@ export function MarketingVideoEngine({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const pendingPlayRef = useRef(false);
+  const [videoSrc, setVideoSrc] = useState<string | undefined>(() => (autoPlay ? undefined : src));
   const [
     { started, playing, muted, ended, ready, chaptersOpen, transcriptOpen, duration, currentTime },
     updateVideoState,
@@ -176,20 +441,53 @@ export function MarketingVideoEngine({
     chapters[chapters.length - 1];
 
   useEffect(() => {
-    if (!autoPlay) return;
+    pendingPlayRef.current = false;
+
+    if (!autoPlay) return undefined;
+
+    const timeoutId = window.setTimeout(() => {
+      pendingPlayRef.current = true;
+      setVideoSrc(src);
+    }, deferredAutoplayDelayMs);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [autoPlay, src]);
+
+  useEffect(() => {
+    if (!videoSrc || !pendingPlayRef.current) return;
+
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = true;
-    updateVideoState({ started: true, playing: true, muted: true, ended: false, ready: false });
-    void video.play().catch(() => {
-      updateVideoState({ playing: false });
-    });
-  }, [autoPlay, src]);
+    pendingPlayRef.current = false;
+    if (autoPlay) video.muted = true;
+
+    const playWhenReady = () => {
+      updateVideoState({ started: true, playing: true, ended: false });
+      void video.play().catch(() => {
+        updateVideoState({ playing: false });
+      });
+    };
+
+    if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+      playWhenReady();
+      return;
+    }
+
+    video.addEventListener("canplay", playWhenReady, { once: true });
+    return () => video.removeEventListener("canplay", playWhenReady);
+  }, [autoPlay, videoSrc]);
 
   async function playVideo() {
     const video = videoRef.current;
     if (!video) return;
+
+    if (!videoSrc) {
+      pendingPlayRef.current = true;
+      setVideoSrc(src);
+      updateVideoState({ started: true, playing: true, ended: false, ready: false });
+      return;
+    }
 
     try {
       await video.play();
@@ -215,6 +513,12 @@ export function MarketingVideoEngine({
   function restartVideo() {
     const video = videoRef.current;
     if (!video) return;
+    if (!videoSrc) {
+      pendingPlayRef.current = true;
+      setVideoSrc(src);
+      updateVideoState({ started: true, playing: true, ended: false, ready: false, currentTime: 0 });
+      return;
+    }
     video.currentTime = 0;
     updateVideoState({ currentTime: 0, ended: false });
     void playVideo();
@@ -275,161 +579,58 @@ export function MarketingVideoEngine({
         aria-hidden="true"
       />
       <VideoFallbackImage poster={poster} autoPlay={autoPlay} />
-      <video
-        ref={videoRef}
-        className="marketing-video-frame"
-        src={src}
-        poster={autoPlay ? undefined : poster}
-        aria-label={copy.ariaLabel}
-        autoPlay={autoPlay}
+      <MarketingVideoFrame
+        videoRef={videoRef}
+        videoSrc={videoSrc}
+        poster={poster}
+        copy={copy}
         loop={loop}
-        playsInline
-        preload={autoPlay ? "auto" : "metadata"}
         muted={muted}
-        onLoadedData={() => updateVideoState({ ready: true })}
-        onCanPlay={() => updateVideoState({ ready: true })}
-        onLoadedMetadata={(event) => updateDuration(event.currentTarget)}
-        onDurationChange={(event) => updateDuration(event.currentTarget)}
-        onTimeUpdate={(event) => updateVideoState({ currentTime: event.currentTarget.currentTime })}
-        onPlay={() => {
-          updateVideoState({ ended: false, playing: true });
-        }}
+        captionsSrc={captionsSrc}
+        chapterTrackSrc={chapterTrackSrc}
+        onReady={() => updateVideoState({ ready: true })}
+        onDurationChange={updateDuration}
+        onTimeUpdate={(time) => updateVideoState({ currentTime: time })}
+        onPlay={() => updateVideoState({ ended: false, playing: true })}
         onPause={() => updateVideoState({ playing: false })}
-        onEnded={() => {
-          updateVideoState({ playing: false, ended: true });
-        }}
-      >
-        <track kind="captions" src={captionsSrc} srcLang="en" label="English captions" />
-        {chapterTrackSrc ? <track kind="chapters" src={chapterTrackSrc} srcLang="en" label="Film chapters" /> : null}
-      </video>
-      <button
-        type="button"
-        className="marketing-video-poster"
-        onClick={() => void playVideo()}
-        aria-label={copy.playLabel}
-      >
-        <span className="marketing-video-kicker">{copy.kicker}</span>
-        <span className="marketing-hero-video-play">
-          <Play size={26} fill="currentColor" />
-        </span>
-        <span id="learning-film-caption" className="marketing-video-caption">
-          <strong>{copy.captionTitle}</strong>
-          <span>{copy.captionText}</span>
-        </span>
-      </button>
-      {chapters.length ? (
-        <div
-          id="learning-film-chapters"
-          className="marketing-video-chapters"
-          aria-label={copy.chaptersLabel}
-          hidden={!chaptersOpen}
-        >
-          <span>{activeChapter?.title ?? copy.chaptersLabel}</span>
-          <div>
-            {chapters.map((chapter) => (
-              <button
-                key={chapter.title}
-                type="button"
-                onClick={() => seekToChapter(chapter.start)}
-                aria-current={activeChapter?.title === chapter.title ? "true" : undefined}
-              >
-                <small>{formatTime(chapter.start)}</small>
-                {chapter.title}
-              </button>
-            ))}
-          </div>
-        </div>
-      ) : null}
-      {transcript ? (
-        <aside
-          id="learning-film-transcript"
-          className="marketing-video-transcript"
-          aria-label={copy.transcriptLabel}
-          hidden={!transcriptOpen}
-        >
-          <span>{copy.transcriptLabel}</span>
-          <p>{transcript}</p>
-          {chapters.length ? (
-            <div>
-              {chapters.map((chapter) => (
-                <button key={chapter.title} type="button" onClick={() => seekToChapter(chapter.start)}>
-                  <small>{formatTime(chapter.start)}</small>
-                  {chapter.title}
-                </button>
-              ))}
-            </div>
-          ) : null}
-        </aside>
-      ) : null}
+        onEnded={() => updateVideoState({ playing: false, ended: true })}
+      />
+      <MarketingVideoPoster copy={copy} onPlay={() => void playVideo()} />
+      <MarketingVideoChapters
+        chapters={chapters}
+        activeChapter={activeChapter}
+        open={chaptersOpen}
+        label={copy.chaptersLabel}
+        onSeekToChapter={seekToChapter}
+      />
+      <MarketingVideoTranscript
+        transcript={transcript}
+        chapters={chapters}
+        open={transcriptOpen}
+        label={copy.transcriptLabel}
+        onSeekToChapter={seekToChapter}
+      />
       <div className="marketing-video-sheen" aria-hidden="true" />
-      {ended ? (
-        <div className="marketing-video-end-card">
-          <span>{copy.nextStepLabel}</span>
-          <strong>{copy.nextStepTitle}</strong>
-          <p>{copy.nextStepText}</p>
-          <div>
-            <Link href="/chat/learn-anything">
-              {copy.startLearningLabel}
-              <ArrowUpRight size={15} />
-            </Link>
-            <button type="button" onClick={restartVideo}>
-              {copy.replayLabel}
-            </button>
-          </div>
-        </div>
-      ) : null}
-      <div className="marketing-video-controls" aria-label={copy.controlsLabel}>
-        <button type="button" onClick={togglePlay} aria-label={playing ? copy.pauseLabel : copy.playFilmLabel}>
-          {playing ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
-        </button>
-        <button type="button" onClick={restartVideo} aria-label={copy.restartLabel}>
-          <RotateCcw size={17} />
-        </button>
-        <button
-          type="button"
-          onClick={() => updateVideoState({ chaptersOpen: !chaptersOpen })}
-          aria-label={chaptersOpen ? copy.hideChaptersLabel : copy.showChaptersLabel}
-          aria-expanded={chaptersOpen}
-          aria-controls="learning-film-chapters"
-        >
-          <ListVideo size={18} />
-        </button>
-        {transcript ? (
-          <button
-            type="button"
-            onClick={() => updateVideoState({ transcriptOpen: !transcriptOpen })}
-            aria-label={transcriptOpen ? copy.hideTranscriptLabel : copy.showTranscriptLabel}
-            aria-expanded={transcriptOpen}
-            aria-controls="learning-film-transcript"
-          >
-            <Captions size={18} />
-          </button>
-        ) : null}
-        <label className="marketing-video-progress">
-          <span className="sr-only">{copy.progressLabel}</span>
-          <input
-            type="range"
-            min="0"
-            max="100"
-            step="0.1"
-            value={progress}
-            onChange={(event) => seek(event.currentTarget.value)}
-            style={progressStyle}
-            aria-label={copy.progressLabel}
-          />
-        </label>
-        <span className="marketing-video-time">
-          {formatTime(currentTime)}
-          <span>/</span>
-          {formatTime(duration, { roundUp: true })}
-        </span>
-        <button type="button" onClick={toggleMute} aria-label={muted ? copy.unmuteLabel : copy.muteLabel}>
-          {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-        </button>
-        <button type="button" onClick={() => void openFullscreen()} aria-label={copy.fullscreenLabel}>
-          <Maximize2 size={17} />
-        </button>
-      </div>
+      <MarketingVideoEndCard copy={copy} ended={ended} onReplay={restartVideo} />
+      <MarketingVideoControls
+        copy={copy}
+        playing={playing}
+        muted={muted}
+        chaptersOpen={chaptersOpen}
+        transcriptOpen={transcriptOpen}
+        hasTranscript={Boolean(transcript)}
+        progress={progress}
+        progressStyle={progressStyle}
+        currentTime={currentTime}
+        duration={duration}
+        onTogglePlay={togglePlay}
+        onRestart={restartVideo}
+        onToggleChapters={() => updateVideoState({ chaptersOpen: !chaptersOpen })}
+        onToggleTranscript={() => updateVideoState({ transcriptOpen: !transcriptOpen })}
+        onSeek={seek}
+        onToggleMute={toggleMute}
+        onFullscreen={() => void openFullscreen()}
+      />
     </div>
   );
 }
