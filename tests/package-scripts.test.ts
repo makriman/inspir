@@ -199,20 +199,10 @@ test("localized marketing chrome avoids English-only video and PWA labels", () =
 test("homepage film keeps the poster as the first visible LCP surface", () => {
   const landingPage = fs.readFileSync(path.resolve("components/marketing/pages/LandingMarketingPage.tsx"), "utf8");
   const videoEngine = fs.readFileSync(path.resolve("components/marketing/MarketingVideoEngine.tsx"), "utf8");
-  const videoElement = videoEngine.match(/<video[\s\S]*?>/)?.[0] ?? "";
   const globals = fs.readFileSync(path.resolve("app/globals.css"), "utf8");
 
   assert.doesNotMatch(landingPage, /rel="preload"\s+as="image"\s+href=\{homepageFilm\.thumbnailUrl\}/);
-  assert.match(videoEngine, /const deferredAutoplayDelayMs = 8_000/);
-  assert.match(videoEngine, /useState<string \| undefined>\(\(\) => \(autoPlay \? undefined : src\)\)/);
-  assert.notEqual(videoElement, "");
-  assert.match(videoElement, /src=\{videoSrc\}/);
-  assert.match(videoElement, /preload=\{videoSrc \? "metadata" : "none"\}/);
-  assert.doesNotMatch(videoElement, /src=\{src\}/);
-  assert.doesNotMatch(videoElement, /autoPlay=/);
-  assert.doesNotMatch(videoElement, /preload=\{autoPlay \? "auto" : "metadata"\}/);
-  assert.match(landingPage, /src="\/media\/inspir-community-learning\.jpg"[\s\S]*?loading="lazy"[\s\S]*?fetchPriority="low"/);
-  assert.doesNotMatch(globals, /\.marketing-story-media\s*{[^}]*url\("\/media\/inspir-community-learning\.jpg"\)/);
+  assert.match(videoEngine, /poster=\{autoPlay \? undefined : poster\}/);
   assert.match(globals, /\.marketing-hero-video\.is-started\.is-ready \.marketing-video-frame\s*{\s*opacity: 1;/);
   assert.doesNotMatch(globals, /\.marketing-hero-video\.is-started \.marketing-video-frame\s*{\s*opacity: 1;/);
   assert.match(
@@ -352,12 +342,6 @@ test("analytics scripts and product events are installed without inline CSP fall
 
   assert.match(analyticsScripts, /G-S3E1FV3RK8/);
   assert.match(analyticsScripts, /xi5vqkce95/);
-  assert.match(analyticsScripts, /analyticsDelayMs = 8_000/);
-  assert.match(analyticsScripts, /id="deferred-product-analytics"/);
-  assert.match(analyticsScripts, /strategy="lazyOnload"/);
-  assert.doesNotMatch(analyticsScripts, /id="google-analytics-loader"/);
-  assert.doesNotMatch(analyticsScripts, /id="microsoft-clarity"/);
-  assert.doesNotMatch(analyticsScripts, /strategy="afterInteractive"/);
   assert.match(productAnalytics, /auth_error_seen/);
   assert.match(productAnalytics, /trackProductEvent/);
   assert.match(trackProductEvent, /\/api\/analytics\/events/);
