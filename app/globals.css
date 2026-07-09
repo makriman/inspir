@@ -7717,8 +7717,7 @@ a {
 .inspir-game-segment button,
 .inspir-game-start,
 .inspir-game-return,
-.inspir-game-header button,
-.inspir-game-result-actions button {
+.inspir-game-header button {
   border: 1px solid rgb(255 255 255 / 0.13);
   border-radius: 8px;
   background: rgb(255 255 255 / 0.065);
@@ -7790,8 +7789,7 @@ a {
 
 .inspir-game-start,
 .inspir-game-return,
-.inspir-game-header button,
-.inspir-game-result-actions button {
+.inspir-game-header button {
   display: inline-flex;
   min-height: 46px;
   align-items: center;
@@ -7833,200 +7831,6 @@ a {
   margin-top: 7px;
   font-size: clamp(24px, 4vw, 38px);
   line-height: 1.08;
-}
-
-.inspir-game-result {
-  display: grid;
-  overflow: hidden;
-  border: 1px solid rgb(255 255 255 / 0.13);
-  border-radius: 12px;
-  background: rgb(255 255 255 / 0.055);
-  box-shadow: 0 20px 50px rgb(0 0 0 / 0.24);
-}
-
-.inspir-game-result-banner {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  gap: 16px;
-  align-items: center;
-  padding: clamp(18px, 4vw, 26px);
-}
-
-.inspir-game-result.is-win .inspir-game-result-banner {
-  background: rgb(88 205 110 / 0.16);
-}
-
-.inspir-game-result.is-loss .inspir-game-result-banner {
-  background: rgb(255 72 95 / 0.14);
-}
-
-.inspir-game-result.is-draw .inspir-game-result-banner {
-  background: rgb(255 214 88 / 0.14);
-}
-
-.inspir-game-result-icon {
-  display: grid;
-  width: 58px;
-  height: 58px;
-  place-items: center;
-  border-radius: 12px;
-  background: rgb(3 8 6 / 0.44);
-}
-
-.inspir-game-result.is-win .inspir-game-result-icon,
-.inspir-game-result.is-win .inspir-game-result-copy > span {
-  color: rgb(125 235 143);
-}
-
-.inspir-game-result.is-loss .inspir-game-result-icon,
-.inspir-game-result.is-loss .inspir-game-result-copy > span {
-  color: rgb(255 122 139);
-}
-
-.inspir-game-result.is-draw .inspir-game-result-icon,
-.inspir-game-result.is-draw .inspir-game-result-copy > span {
-  color: rgb(255 214 88);
-}
-
-.inspir-game-result-copy {
-  min-width: 0;
-}
-
-.inspir-game-result-copy > span {
-  font-size: 12px;
-  font-weight: 950;
-  letter-spacing: 0;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.inspir-game-result-copy h3 {
-  margin: 5px 0 0;
-  color: #fff;
-  font-size: 52px;
-  font-weight: 950;
-  letter-spacing: 0;
-  line-height: 0.96;
-}
-
-.inspir-game-result-copy p {
-  margin: 8px 0 0;
-  color: rgb(255 255 255 / 0.74);
-  font-size: 15px;
-  font-weight: 750;
-  line-height: 1.42;
-}
-
-.inspir-game-result-game {
-  display: inline-flex;
-  min-width: 0;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgb(255 255 255 / 0.12);
-  border-radius: 999px;
-  background: rgb(0 0 0 / 0.2);
-  padding: 9px 12px;
-  color: rgb(255 255 255 / 0.78);
-  font-size: 13px;
-  font-weight: 850;
-}
-
-.inspir-game-result-game span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.inspir-game-result-stats {
-  display: grid;
-  gap: 15px;
-  padding: 18px clamp(18px, 4vw, 26px);
-}
-
-.inspir-game-result-versus {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid rgb(255 255 255 / 0.11);
-  padding-bottom: 15px;
-}
-
-.inspir-game-result-versus strong {
-  color: #fff;
-  font-weight: 900;
-}
-
-.inspir-game-result-chip {
-  border-radius: 8px;
-  padding: 4px 10px;
-  font-size: 12px;
-  font-weight: 950;
-  line-height: 1;
-}
-
-.inspir-game-result-chip.is-win {
-  background: rgb(88 205 110 / 0.18);
-  color: rgb(125 235 143);
-}
-
-.inspir-game-result-chip.is-loss {
-  background: rgb(255 72 95 / 0.16);
-  color: rgb(255 122 139);
-}
-
-.inspir-game-result-chip.is-draw {
-  background: rgb(255 214 88 / 0.16);
-  color: rgb(255 214 88);
-}
-
-.inspir-game-result-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.inspir-game-result-stat {
-  display: grid;
-  gap: 5px;
-  border-radius: 8px;
-  background: rgb(0 0 0 / 0.16);
-  padding: 12px;
-}
-
-.inspir-game-result-stat span {
-  color: rgb(255 255 255 / 0.58);
-  font-size: 11px;
-  font-weight: 850;
-  text-transform: uppercase;
-}
-
-.inspir-game-result-stat strong {
-  overflow-wrap: anywhere;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 900;
-  line-height: 1.25;
-}
-
-.inspir-game-result-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  border-top: 1px solid rgb(255 255 255 / 0.11);
-  background: rgb(0 0 0 / 0.16);
-  padding: 15px clamp(18px, 4vw, 26px);
-}
-
-.inspir-game-result-actions button.is-primary {
-  border-color: rgb(88 205 110 / 0.58);
-  background: rgb(88 205 110);
-  color: rgb(5 16 8);
-}
-
-.inspir-game-result-actions button:disabled {
-  cursor: default;
-  opacity: 0.65;
 }
 
 .inspir-game-seat-row {
@@ -8276,19 +8080,6 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .inspir-game-result-banner {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .inspir-game-result-game {
-    grid-column: 1 / -1;
-    justify-self: start;
-  }
-
-  .inspir-game-result-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .inspir-game-setup-copy {
     text-align: center;
   }
@@ -8315,29 +8106,6 @@ a {
 
   .inspir-game-header button {
     width: 100%;
-  }
-
-  .inspir-game-result-banner {
-    align-items: start;
-  }
-
-  .inspir-game-result-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 10px;
-  }
-
-  .inspir-game-result-copy h3 {
-    font-size: 36px;
-  }
-
-  .inspir-game-result-grid,
-  .inspir-game-result-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .inspir-game-result-actions {
-    display: grid;
   }
 
   .inspir-game-ttt,
