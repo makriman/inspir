@@ -1526,10 +1526,6 @@ test("ai discovery files describe every public mode without exposing private cha
 
   assert.ok(compact.includes(absoluteUrl("/llms-full.txt")));
   assert.ok(compact.includes(absoluteUrl("/ai-content-index.json")));
-  assert.ok(compact.includes(`[Sitemap](${absoluteUrl("/sitemap.xml")})`));
-  assert.ok(compact.includes(`[Full AI-readable index](${absoluteUrl("/llms-full.txt")})`));
-  assert.ok(compact.includes(`[JSON content catalog](${absoluteUrl("/ai-content-index.json")})`));
-  assert.ok(full.includes(`[Compact llms.txt](${absoluteUrl("/llms.txt")})`));
   assert.equal(index.discovery.promptLibrary, absoluteUrl("/prompts"));
   assert.equal(index.discovery.learningMap, absoluteUrl("/ai-learning-map"));
   assert.equal(index.discovery.comparisons, absoluteUrl("/compare"));

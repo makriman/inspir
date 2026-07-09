@@ -176,10 +176,6 @@ function markdownList(items: readonly string[]) {
   return items.map((item) => `- ${item}`).join("\n");
 }
 
-function markdownLink(label: string, url: string) {
-  return `[${label}](${url})`;
-}
-
 function learningFilmIndex() {
   return {
     title: homepageFilm.title,
@@ -912,16 +908,16 @@ export function buildLlmsTxt() {
     siteDescription,
     "",
     "## Canonical discovery files",
-    `- ${markdownLink("Sitemap", index.discovery.sitemap)}`,
-    `- ${markdownLink("Robots", index.discovery.robots)}`,
-    `- ${markdownLink("RSS feed", index.discovery.rss)}`,
-    `- ${markdownLink("Full AI-readable index", index.discovery.llmsFull)}`,
-    `- ${markdownLink("JSON content catalog", index.url)}`,
-    `- ${markdownLink("AI prompt library", index.discovery.promptLibrary)}`,
-    `- ${markdownLink("AI learning map", index.discovery.learningMap)}`,
-    `- ${markdownLink("AI tutor comparisons", index.discovery.comparisons)}`,
-    `- ${markdownLink("Audience learning paths", index.discovery.audiencePaths)}`,
-    `- ${markdownLink("Subject learning hubs", index.discovery.subjectHubs)}`,
+    `- Sitemap: ${index.discovery.sitemap}`,
+    `- Robots: ${index.discovery.robots}`,
+    `- RSS feed: ${index.discovery.rss}`,
+    `- Full AI-readable index: ${index.discovery.llmsFull}`,
+    `- JSON content catalog: ${index.url}`,
+    `- AI prompt library: ${index.discovery.promptLibrary}`,
+    `- AI learning map: ${index.discovery.learningMap}`,
+    `- AI tutor comparisons: ${index.discovery.comparisons}`,
+    `- Audience learning paths: ${index.discovery.audiencePaths}`,
+    `- Subject learning hubs: ${index.discovery.subjectHubs}`,
     "",
     "## Indexing policy",
     `- ${index.indexingPolicy.publicGuestModes}`,
@@ -1411,14 +1407,14 @@ export function buildLlmsFullTxt() {
     "Use canonical public URLs from this file. Public guest learning modes live at /chat/{topicSlug}. Private saved conversations are intentionally absent from this index and should not be inferred from public pages. Historical and persona simulations are interactive learning experiences, not primary sources or authenticated quotations.",
     "",
     "## Discovery files",
-    `- ${markdownLink("Sitemap", index.discovery.sitemap)}`,
-    `- ${markdownLink("Robots", index.discovery.robots)}`,
-    `- ${markdownLink("RSS feed", index.discovery.rss)}`,
-    `- ${markdownLink("Compact llms.txt", index.discovery.llms)}`,
-    `- ${markdownLink("JSON content catalog", index.url)}`,
-    `- ${markdownLink("AI prompt library", index.discovery.promptLibrary)}`,
-    `- ${markdownLink("AI learning map", index.discovery.learningMap)}`,
-    `- ${markdownLink("Subject learning hubs", index.discovery.subjectHubs)}`,
+    `- Sitemap: ${index.discovery.sitemap}`,
+    `- Robots: ${index.discovery.robots}`,
+    `- RSS feed: ${index.discovery.rss}`,
+    `- Compact llms.txt: ${index.discovery.llms}`,
+    `- JSON content catalog: ${index.url}`,
+    `- AI prompt library: ${index.discovery.promptLibrary}`,
+    `- AI learning map: ${index.discovery.learningMap}`,
+    `- Subject learning hubs: ${index.discovery.subjectHubs}`,
     "",
     "## Public pages",
     ...publicPageLines,
