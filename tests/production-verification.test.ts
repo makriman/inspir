@@ -32,6 +32,7 @@ test("production verification covers the resource-outage and game relaunch contr
   assert.match(outcomes, /minimumCapturedInvocations/);
   assert.match(outcomes, /nonOkInvocations/);
   assert.match(outcomes, /safePathname/);
+  assert.match(outcomes, /classifySoakRequestError/);
   assert.match(source, /\/api\/games\/results/);
   assert.match(source, /checkLocaleResourceSoak/);
   assert.match(source, /checkImmutableLocalizedCacheControl/);
@@ -41,6 +42,20 @@ test("production verification covers the resource-outage and game relaunch contr
   assert.match(source, /supportedLanguages/);
   assert.match(source, /ai-game-arena/);
   assert.match(source, /cf-cache-status/);
+});
+
+test("Worker outcome soak records sanitized request failures without leaking URLs", async () => {
+  const { classifySoakRequestError } = await import("../scripts/cloudflare/verify-production-worker-outcomes");
+  const timeout = new Error("request timed out at https://inspirlearning.com/private?token=secret");
+  timeout.name = "TimeoutError";
+  assert.equal(classifySoakRequestError(timeout), "timeout");
+
+  const network = new Error("fetch failed for https://inspirlearning.com/private?token=secret");
+  network.name = "TypeError<script>";
+  const classified = classifySoakRequestError(network);
+  assert.equal(classified, "network:TypeErrorscript");
+  assert.doesNotMatch(classified, /inspirlearning|private|secret/i);
+  assert.equal(classifySoakRequestError("https://inspirlearning.com/private?token=secret"), "network:unknown");
 });
 
 test("production smoke generators create server-valid completed Chess submissions", async () => {

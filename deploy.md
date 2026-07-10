@@ -69,6 +69,8 @@ OpenNext revalidation is deliberately serialized (`MAX_REVALIDATE_CONCURRENCY=1`
 
 The Worker CPU contract is explicit: `limits.cpu_ms` is 5,000. This is high enough for the bounded server replay and cold Next.js paths after the leak/stampede remediations, but well below Cloudflare's 30-second paid default. Do not remove it (which can restore an inherited legacy ceiling) or raise it without route-attributed tail evidence and a spend-risk review.
 
+Production therefore requires the Workers Paid plan on the configured account. Cloudflare API error `100328` ("CPU limits are not supported for the Free plan") is a hard stop: upgrade the production account, then rerun the unchanged config. Never delete `limits.cpu_ms` merely to make a Free-plan upload succeed; that recreates 10 ms `exceededCpu` outages on localized rendering and game-result validation.
+
 Never apply a bucket-wide expiry to the incremental-cache R2 bucket: a stable release could lose its active objects and stampede regeneration. After a new release has passed its production smoke, retire only the previous build prefix. The command requires the operator-confirmed active Worker version and build, independently verifies a single 100% deployment plus current no-store health, refuses to target the active build, and assigns the retired prefix an absolute expiration date 90 days after retirement.
 
 ### Rollout policy

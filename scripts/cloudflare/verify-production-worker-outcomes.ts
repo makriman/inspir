@@ -32,6 +32,14 @@ const tailStartupMs = 5_000;
 const tailDrainMs = 8_000;
 const minimumCapturedInvocations = 10;
 
+type SoakRequestResult = {
+  route: string;
+  method: "GET" | "POST";
+  status: number | null;
+  ok: boolean;
+  error?: string;
+};
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   void main().catch((error) => {
     console.error(error instanceof Error ? error.message : String(error));
@@ -140,7 +148,7 @@ async function runResourceSoak(baseUrl: string, expectedVersion: string) {
     "/games/chess",
     ...localeRoutes.map((route) => `${route}?resource_soak=${nonce}`),
   ];
-  const results: Array<{ route: string; method: "GET" | "POST"; status: number; ok: boolean }> = [];
+  const results: SoakRequestResult[] = [];
   for (let index = 0; index < routes.length; index += 8) {
     const batch = routes.slice(index, index + 8);
     results.push(
@@ -151,12 +159,22 @@ async function runResourceSoak(baseUrl: string, expectedVersion: string) {
             "x-inspir-resource-soak": nonce,
             "Cloudflare-Workers-Version-Overrides": `${workerName}="${expectedVersion}"`,
           });
-          const response = await fetch(new URL(route, baseUrl), {
-            headers,
-            redirect: "manual",
-            signal: AbortSignal.timeout(30_000),
-          });
-          return { route, method: "GET" as const, status: response.status, ok: response.status < 500 };
+          try {
+            const response = await fetch(new URL(route, baseUrl), {
+              headers,
+              redirect: "manual",
+              signal: AbortSignal.timeout(30_000),
+            });
+            return { route, method: "GET" as const, status: response.status, ok: response.status < 500 };
+          } catch (error) {
+            return {
+              route,
+              method: "GET" as const,
+              status: null,
+              ok: false,
+              error: classifySoakRequestError(error),
+            };
+          }
         }),
       )),
     );
@@ -169,29 +187,48 @@ async function runResourceSoak(baseUrl: string, expectedVersion: string) {
   ] as const;
   for (const game of completedGames) {
     const route = "/api/games/results";
-    const response = await fetch(new URL(route, baseUrl), {
-      method: "POST",
-      headers: {
-        "cache-control": "no-cache",
-        "content-type": "application/json",
-        "user-agent": `inspir-worker-outcome-${game.slug}-${nonce}`,
-        "x-inspir-resource-soak": nonce,
-        "Cloudflare-Workers-Version-Overrides": `${workerName}="${expectedVersion}"`,
-      },
-      body: JSON.stringify({
-        state: game.state,
-        startedAt: new Date(Date.now() - 60_000).toISOString(),
-      }),
-      signal: AbortSignal.timeout(30_000),
-    });
-    results.push({
-      route: `${route} (${game.slug})`,
-      method: "POST",
-      status: response.status,
-      ok: response.status === 201,
-    });
+    try {
+      const response = await fetch(new URL(route, baseUrl), {
+        method: "POST",
+        headers: {
+          "cache-control": "no-cache",
+          "content-type": "application/json",
+          "user-agent": `inspir-worker-outcome-${game.slug}-${nonce}`,
+          "x-inspir-resource-soak": nonce,
+          "Cloudflare-Workers-Version-Overrides": `${workerName}="${expectedVersion}"`,
+        },
+        body: JSON.stringify({
+          state: game.state,
+          startedAt: new Date(Date.now() - 60_000).toISOString(),
+        }),
+        signal: AbortSignal.timeout(30_000),
+      });
+      results.push({
+        route: `${route} (${game.slug})`,
+        method: "POST",
+        status: response.status,
+        ok: response.status === 201,
+      });
+    } catch (error) {
+      results.push({
+        route: `${route} (${game.slug})`,
+        method: "POST",
+        status: null,
+        ok: false,
+        error: classifySoakRequestError(error),
+      });
+    }
   }
   return results;
+}
+
+export function classifySoakRequestError(error: unknown) {
+  if (!(error instanceof Error)) return "network:unknown";
+  if (error.name === "TimeoutError" || error.name === "AbortError" || /timeout/i.test(error.message)) {
+    return "timeout";
+  }
+  const safeName = error.name.replace(/[^A-Za-z0-9_.-]/g, "").slice(0, 80);
+  return safeName ? `network:${safeName}` : "network:error";
 }
 
 function completedStrategyTicTacToeState(): TicTacToeState {
