@@ -375,6 +375,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const routes = arrayValue(config.routes).map((route) => route.pattern);
   const cron = objectValue(config.triggers).crons;
   const observability = objectValue(config.observability);
+  const limits = objectValue(config.limits);
   const observabilityLogs = objectValue(observability.logs);
   const observabilityTraces = objectValue(observability.traces);
   const observabilityIncidentMode = vars.OBSERVABILITY_INCIDENT_MODE === "1";
@@ -412,6 +413,7 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     workersDevOk: config.workers_dev === false,
     previewUrlsOk: config.preview_urls === false,
     workerGlobalCacheOk: config.cache === undefined || objectValue(config.cache).enabled === false,
+    cpuBudgetOk: limits.cpu_ms === 5_000,
     cacheRevalidationConcurrencyOk:
       vars.MAX_REVALIDATE_CONCURRENCY === "1" && vars.NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION === "1",
     observabilityOk:
@@ -446,12 +448,13 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     problems.workersDevOk &&
     problems.previewUrlsOk &&
     problems.workerGlobalCacheOk &&
+    problems.cpuBudgetOk &&
     problems.cacheRevalidationConcurrencyOk &&
     problems.observabilityOk;
   return {
     name: "Wrangler production config",
     status: ok ? "pass" : "fail",
-    detail: ok ? { worker: "inspirlearning" } : problems,
+    detail: ok ? { worker: "inspirlearning", cpuMs: limits.cpu_ms } : problems,
   };
 }
 

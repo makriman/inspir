@@ -212,6 +212,28 @@ test("steady-state deploy preflight rejects Worker-wide response caching", () =>
   assert.equal((wrangler?.detail as { workerGlobalCacheOk?: boolean }).workerGlobalCacheOk, false);
 });
 
+test("steady-state deploy preflight requires the bounded production CPU contract", () => {
+  for (const cpuMs of [undefined, 300_000]) {
+    const { backupDir, repoDir } = makeFixture();
+    replaceWranglerConfig(repoDir, backupDir, (config) => {
+      if (cpuMs === undefined) Reflect.deleteProperty(config, "limits");
+      else config.limits.cpu_ms = cpuMs;
+    });
+
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: Date.parse("2026-06-26T12:00:00Z"),
+    });
+
+    assert.equal(report.ok, false);
+    const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+    assert.equal(wrangler?.status, "fail");
+    assert.equal((wrangler?.detail as { cpuBudgetOk?: boolean }).cpuBudgetOk, false);
+  }
+});
+
 test("steady-state deploy preflight rejects a missing OpenNext Durable Object queue", () => {
   const { backupDir, repoDir } = makeFixture();
   replaceWranglerConfig(repoDir, backupDir, (config) => {
@@ -356,6 +378,7 @@ function wranglerConfig() {
     name: "inspirlearning",
     workers_dev: false,
     preview_urls: false,
+    limits: { cpu_ms: 5_000 },
     d1_databases: [{ binding: "DB", database_name: D1_DATABASE_NAME, database_id: D1_DATABASE_ID }],
     vectorize: [{ binding: "MEMORY_VECTORIZE", index_name: VECTORIZE_INDEX_NAME }],
     r2_buckets: [

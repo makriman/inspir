@@ -12,7 +12,8 @@ The incident was a request-time CPU and heap failure in the shared OpenNext Work
 - The matching OpenNext cache contained 1,435 entries and 541 MB. Locale variants were about 92% of the cache because every one of 69 non-English locales generated every localized child route, even when no curated body translation existed.
 - Topic reads performed seed synchronization in request paths. The rollback occurred at 20:24:58 UTC and `topic_seed_hash` changed at 20:25:19 UTC, directly correlating rollback traffic with 84 write attempts per cold isolate.
 - Worker-wide caching returned a shared-cache `HIT` for the same `/api/auth/get-session` URL with and without a Better Auth cookie. The route had no fail-closed cache headers.
-- The Worker bundle remained around 2.73 MB compressed and startup remained under 100 ms, below platform limits. Raising `limits.cpu_ms` would only hide the leak and stampede.
+- The Worker bundle remained around 2.73 MB compressed and startup remained under 100 ms, below platform limits. Raising `limits.cpu_ms` before removing the leak and stampede would only have hidden those defects.
+- After the architecture fixes were deployed, a bounded production tail still captured `exceededCpu` on otherwise healthy requests at tens of milliseconds of reported CPU time. With no source-controlled CPU setting, the Worker inherited an account/legacy ceiling unsuitable for a server-rendered Next.js application.
 
 ## Remediation
 
@@ -24,10 +25,12 @@ The incident was a request-time CPU and heap failure in the shared OpenNext Work
 6. Gate OpenNext output at 256 MB total, 128 MB cache, 400 cache entries, 80 localized entries, and 2 MB per cache entry.
 7. Run deterministic game engines in isolated client bundles. The Worker only validates and stores completed, bounded results; game turns make no LLM calls.
 8. Never expire the active R2 cache prefix. After a verified release, add retention only to the prior build-specific prefix so rollback objects remain temporarily available without creating a future regeneration stampede.
+9. After the unbounded work is removed, set an explicit 5,000 ms per-invocation CPU ceiling. This replaces an unsuitable inherited ceiling while staying far below Cloudflare's 30-second paid default and retaining a denial-of-wallet bound.
 
 ## Release invariants
 
 - `wrangler.jsonc` must not contain `cache.enabled: true`.
+- `wrangler.jsonc` must set `limits.cpu_ms` to exactly 5,000; neither an inherited legacy ceiling nor an unbounded five-minute maximum is acceptable.
 - Localized edge-cache rules enumerate only source-hash-proven public page paths; locale-wide prefixes are forbidden.
 - `NEXT_CACHE_DO_QUEUE`, its SQLite migration, regional R2 caching, and serialized queue vars must pass deploy preflight.
 - Auth cookie variants must never return `CF-Cache-Status: HIT` and must always return private/no-store.

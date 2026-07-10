@@ -77,6 +77,13 @@ async function main() {
       (total, record) => total + (Array.isArray(record.exceptions) ? record.exceptions.length : 0),
       0,
     );
+    const nonOkInvocations = records
+      .filter(
+        (record) =>
+          record.outcome !== "ok" || (Array.isArray(record.exceptions) && record.exceptions.length > 0),
+      )
+      .slice(0, 50)
+      .map(summarizeInvocation);
     const forbiddenLogPatterns = [
       /Dummy queue is not implemented/i,
       /exceededCpu/i,
@@ -105,6 +112,7 @@ async function main() {
       minimumCapturedInvocations,
       outcomeCounts,
       nonOkOutcomes,
+      nonOkInvocations,
       exceptionCount,
       forbiddenLogs,
       tailExitCode: tail.exitCode,
@@ -296,6 +304,37 @@ function objectRecord(value: unknown): Record<string, unknown> | null {
 
 function isRecord(value: Record<string, unknown> | null): value is Record<string, unknown> {
   return value !== null;
+}
+
+function summarizeInvocation(record: Record<string, unknown>) {
+  const event = objectRecord(record.event);
+  const request = objectRecord(event?.request);
+  const response = objectRecord(event?.response);
+  const exceptions = Array.isArray(record.exceptions) ? record.exceptions.map(objectRecord).filter(isRecord) : [];
+  return {
+    outcome: typeof record.outcome === "string" ? record.outcome : null,
+    cpuTimeMs: finiteNumber(record.cpuTime),
+    wallTimeMs: finiteNumber(record.wallTime),
+    method: typeof request?.method === "string" ? request.method : null,
+    path: safePathname(request?.url),
+    status: finiteNumber(response?.status),
+    exceptions: exceptions
+      .map((exception) => (typeof exception.message === "string" ? exception.message : null))
+      .filter((message): message is string => message !== null),
+  };
+}
+
+function finiteNumber(value: unknown) {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function safePathname(value: unknown) {
+  if (typeof value !== "string") return null;
+  try {
+    return new URL(value).pathname;
+  } catch {
+    return null;
+  }
 }
 
 function requireWorkerVersion(value: string | undefined) {

@@ -30,6 +30,8 @@ test("production verification covers the resource-outage and game relaunch contr
   assert.match(outcomes, /exceededMemory/);
   assert.match(outcomes, /Dummy queue is not implemented/);
   assert.match(outcomes, /minimumCapturedInvocations/);
+  assert.match(outcomes, /nonOkInvocations/);
+  assert.match(outcomes, /safePathname/);
   assert.match(source, /\/api\/games\/results/);
   assert.match(source, /checkLocaleResourceSoak/);
   assert.match(source, /checkImmutableLocalizedCacheControl/);

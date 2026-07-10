@@ -196,7 +196,7 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");
   assert.equal(wrangler.placement?.mode, "smart");
   assert.equal(wrangler.cache, undefined);
-  assert.equal(wrangler.limits, undefined);
+  assert.equal(wrangler.limits?.cpu_ms, 5_000);
 });
 
 test("localized marketing chrome avoids English-only video and PWA labels", () => {

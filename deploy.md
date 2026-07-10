@@ -67,6 +67,8 @@ The Worker-wide `cache.enabled` switch must remain absent: it can cache private/
 
 OpenNext revalidation is deliberately serialized (`MAX_REVALIDATE_CONCURRENCY=1` and `NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION=1`). Raise those values only with route-attributed CPU evidence from a production-like stale-cache soak.
 
+The Worker CPU contract is explicit: `limits.cpu_ms` is 5,000. This is high enough for the bounded server replay and cold Next.js paths after the leak/stampede remediations, but well below Cloudflare's 30-second paid default. Do not remove it (which can restore an inherited legacy ceiling) or raise it without route-attributed tail evidence and a spend-risk review.
+
 Never apply a bucket-wide expiry to the incremental-cache R2 bucket: a stable release could lose its active objects and stampede regeneration. After a new release has passed its production smoke, retire only the previous build prefix. The command requires the operator-confirmed active Worker version and build, independently verifies a single 100% deployment plus current no-store health, refuses to target the active build, and assigns the retired prefix an absolute expiration date 90 days after retirement.
 
 ### Rollout policy
