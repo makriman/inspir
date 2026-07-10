@@ -38,6 +38,20 @@
       "service": "inspirlearning"
     }
   ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "NEXT_CACHE_DO_QUEUE",
+        "class_name": "DOQueueHandler"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "opennext-cache-queue-v1",
+      "new_sqlite_classes": ["DOQueueHandler"]
+    }
+  ],
   "d1_databases": [
     {
       "binding": "DB",

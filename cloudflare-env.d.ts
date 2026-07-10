@@ -6,6 +6,7 @@ declare global {
     DB: D1Database;
     MEMORY_VECTORIZE: VectorizeIndex;
     MEMORY_POST_TURN_QUEUE: Queue<import("./lib/ai/memory-queue").MemoryQueueMessage>;
+    NEXT_CACHE_DO_QUEUE: DurableObjectNamespace<import("./cloudflare-worker").DOQueueHandler>;
     NEXT_INC_CACHE_R2_BUCKET: R2Bucket;
     PROFILE_IMAGES_R2_BUCKET: R2Bucket;
     WORKER_SELF_REFERENCE: Fetcher;
