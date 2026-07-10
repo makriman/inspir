@@ -16,7 +16,7 @@ import { getTopicSeo } from "@/lib/content/topic-seo";
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -140,7 +140,7 @@ export async function TopicsPageContent({
         </div>
         <div className="marketing-mode-finder-grid">
           {spotlightModes.map((mode) => (
-            <Link key={mode.slug} href={localizeHref(mode.href, hrefLanguage)} className="marketing-mode-finder-card">
+            <Link key={mode.slug} href={localizeStaticSiteHref(mode.href, hrefLanguage)} className="marketing-mode-finder-card">
               <span>{mode.intent}</span>
               <strong>{mode.name}</strong>
               <p>{mode.reason}</p>
@@ -164,7 +164,7 @@ export async function TopicsPageContent({
         </div>
         <nav className="marketing-mode-category-nav" aria-label="Learning mode categories">
           {categoryHubs.map((hub) => (
-            <Link key={hub.slug} href={localizeHref(hub.href, hrefLanguage)}>
+            <Link key={hub.slug} href={localizeStaticSiteHref(hub.href, hrefLanguage)}>
               {hub.name}
               <span>{hub.modeCount}</span>
             </Link>
@@ -202,7 +202,7 @@ export async function TopicsPageContent({
                   return (
                     <Link
                       key={topic.slug}
-                      href={localizeHref(`/chat/${topic.slug}`, hrefLanguage)}
+                      href={localizeStaticSiteHref(`/chat/${topic.slug}`, hrefLanguage)}
                       className="marketing-topic-link"
                     >
                       <span>{topic.metadata.uiMode.replaceAll("-", " ")}</span>
@@ -248,7 +248,7 @@ export async function TopicsPageContent({
 
       <section className="marketing-cta-band">
         <h2>Not sure where to begin?</h2>
-        <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+        <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
           Start with Learn Anything
           <Sparkles size={18} />
         </Link>

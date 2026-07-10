@@ -67,6 +67,10 @@ const gatesById: Record<LocalGateId, Gate> = {
     steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }],
   },
   "wrangler-deploy-dry-run": { id: "wrangler-deploy-dry-run", steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run"] }] },
+  "www-redirect-dry-run": {
+    id: "www-redirect-dry-run",
+    steps: [{ command: bin("wrangler"), args: ["deploy", "--dry-run", "--config", "wrangler.www-redirect.jsonc"] }],
+  },
   "wrangler-check-startup": {
     id: "wrangler-check-startup",
     steps: [{ command: bin("wrangler"), args: ["check", "startup", "--outfile", startupProfilePath, "--args=--dry-run"] }],

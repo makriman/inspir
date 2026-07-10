@@ -7,71 +7,171 @@ type ApiResult<T = unknown> = {
   json: T | null;
 };
 
+type ResponseWithHeaders = {
+  headers(): Record<string, string>;
+};
+
 test("production browser requests are pinned to the expected Worker version", async ({ request }) => {
   const expectedVersion = process.env.EXPECTED_WORKER_VERSION?.trim();
   test.skip(!expectedVersion, "Worker version pinning is a production-only contract.");
 
   const response = await request.get("/api/health");
   expect(response.status()).toBe(200);
+  expect(response.headers()["x-inspir-delivery"]).toBeUndefined();
   const payload = (await response.json()) as { version?: { id?: string } };
   expect(payload.version?.id).toBe(expectedVersion);
 });
 
 test("public, localized, SEO, and topic API routes work on Cloudflare preview", async ({ page, request }) => {
-  await page.goto("/");
+  const home = await page.goto("/");
+  expect(home).not.toBeNull();
+  expectStaticAssetDelivery(home, "/");
   await expect(page).toHaveTitle(/Free AI learning/i);
   await expect(page.locator("body")).toContainText(/learn/i);
 
-  for (const route of ["/about", "/mission", "/schools", "/trust", "/topics", "/learn", "/subjects", "/blog"]) {
+  for (const route of [
+    "/about",
+    "/mission",
+    "/schools",
+    "/trust",
+    "/topics",
+    "/learn",
+    "/subjects",
+    "/blog",
+    "/loading",
+  ]) {
     const response = await request.get(route);
     expect(response.status(), route).toBe(200);
+    expectStaticAssetDelivery(response, route);
     expect((await response.text()).length, route).toBeGreaterThan(500);
   }
 
   const localized = await request.get("/hi");
   expect(localized.status()).toBe(200);
   expect(localized.headers()["set-cookie"] ?? "").not.toContain("inspir_locale=Hindi");
-  const localizedCacheControl = localized.headers()["cache-control"] ?? "";
-  const localizedSharedMaxAge = Number(localizedCacheControl.match(/(?:^|,)\s*s-maxage=(\d+)/)?.[1]);
-  expect(localizedSharedMaxAge).toBeGreaterThanOrEqual(31_536_000);
-  expect(localized.headers()["x-nextjs-prerender"] ?? "").toBe("1");
-  const localizedRenderCache =
-    localized.headers()["x-nextjs-cache"] ?? localized.headers()["x-opennext-cache"] ?? "";
-  expect(localizedRenderCache).toMatch(/^(?:HIT|REVALIDATED)$/);
+  expectStaticAssetDelivery(localized, "/hi");
 
-  for (const route of ["/hi/topics", "/hi/chat/learn-anything"]) {
+  const localizedChat = await request.get("/hi/chat/learn-anything");
+  expect(localizedChat.status()).toBe(200);
+  expect(localizedChat.headers()["set-cookie"] ?? "").toContain("inspir_locale=Hindi");
+  expect(localizedChat.headers()["x-inspir-delivery"]).toBeUndefined();
+
+  for (const route of [
+    "/hi/mission",
+    "/__inspir_static_404_preview_probe",
+    "/api/__inspir_static_404_preview_probe",
+    "/games",
+    "/og",
+  ]) {
     const response = await request.get(route);
-    expect(response.status(), route).toBe(200);
-    if (route.startsWith("/hi/chat")) {
-      expect(response.headers()["set-cookie"] ?? "", route).toContain("inspir_locale=Hindi");
-    }
+    expect(response.status(), route).toBe(404);
+    expectStaticAssetDelivery(response, route);
   }
 
   const robots = await request.get("/robots.txt");
   expect(robots.status()).toBe(200);
+  expectStaticAssetDelivery(robots, "/robots.txt");
   expect(await robots.text()).toContain("User-Agent");
 
-  const sitemap = await request.get("/sitemap");
+  const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.status()).toBe(200);
+  expectStaticAssetDelivery(sitemap, "/sitemap.xml");
   expect(await sitemap.text()).toContain("<sitemapindex");
 
   const englishSitemap = await request.get("/sitemap/en-US.xml");
   expect(englishSitemap.status()).toBe(200);
+  expectStaticAssetDelivery(englishSitemap, "/sitemap/en-US.xml");
   expect(await englishSitemap.text()).toContain("<urlset");
 
   const rss = await request.get("/rss.xml");
   expect(rss.status()).toBe(200);
+  expectStaticAssetDelivery(rss, "/rss.xml");
   expect(await rss.text()).toContain("<rss");
 
-  const og = await request.get("/og");
-  expect(og.status()).toBe(200);
-  expect(og.headers()["content-type"] ?? "").toContain("image/png");
+  const manifest = await request.get("/manifest.webmanifest");
+  expect(manifest.status()).toBe(200);
+  expectStaticAssetDelivery(manifest, "/manifest.webmanifest");
+  expect(manifest.headers()["content-type"] ?? "").toContain("application/manifest+json");
+  expect((await manifest.json()).start_url).toBe("/chat/learn-anything");
+
+  const tnc = await request.get("/tnc", { maxRedirects: 0 });
+  expect(tnc.status()).toBe(308);
+  expect(new URL(tnc.headers().location ?? "/", "http://localhost").pathname).toBe("/terms");
+
+  const socialPreview = await request.get("/inspir-social-preview.png");
+  expect(socialPreview.status()).toBe(200);
+  expectStaticAssetDelivery(socialPreview, "/inspir-social-preview.png", true);
+  expect(socialPreview.headers()["content-type"] ?? "").toContain("image/png");
 
   const topics = await request.get("/api/topics");
   expect(topics.status()).toBe(200);
   const payload = await topics.json();
   expect(payload.topics.length).toBeGreaterThan(50);
   expect(payload.topics.some((topic: { slug?: string }) => topic.slug === "learn-anything")).toBe(true);
+  expect(payload.topics.some((topic: { slug?: string }) => topic.slug === "ai-game-arena")).toBe(false);
+  expect(topics.headers()["x-inspir-delivery"]).toBeUndefined();
+
+});
+
+function expectStaticAssetDelivery(response: ResponseWithHeaders | null, route: string, immutable = false) {
+  expect(response, route).not.toBeNull();
+  const headers = response?.headers() ?? {};
+  expect(headers["x-inspir-delivery"], route).toBe("static-assets");
+  expect(headers["x-nextjs-cache"], route).toBeUndefined();
+  expect(headers["x-opennext-cache"], route).toBeUndefined();
+  expect(headers["x-nextjs-prerender"], route).toBeUndefined();
+  const cacheControl = headers["cache-control"] ?? "";
+  expect(cacheControl, route).not.toMatch(/\b(?:private|no-store)\b/i);
+  if (immutable) {
+    expect(cacheControl, route).toMatch(/\bimmutable\b/i);
+    expect(Number(cacheControl.match(/(?:^|,)\s*max-age=(\d+)/i)?.[1]), route).toBeGreaterThanOrEqual(31_536_000);
+  } else {
+    expect(cacheControl, route).toMatch(/\bpublic\b/i);
+    expect(cacheControl, route).toMatch(/(?:^|,)\s*max-age=0(?:,|$)/i);
+    expect(cacheControl, route).toMatch(/\bmust-revalidate\b/i);
+  }
+}
+
+test("chat hydration chunks bypass deep localized Worker-first globs", async ({ request }) => {
+  const document = await request.get("/chat/learn-anything");
+  expect(document.status()).toBe(200);
+  const html = await document.text();
+  const chunkPaths = Array.from(html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/gi), (match) => match[1])
+    .filter((source): source is string => typeof source === "string")
+    .map((source) => new URL(source, "http://localhost").pathname)
+    .filter((pathname) => decodeURIComponent(pathname).includes("/_next/static/chunks/app/(workspace)/chat/"));
+
+  expect(chunkPaths.length).toBeGreaterThan(0);
+  for (const pathname of chunkPaths) {
+    const chunk = await request.get(pathname);
+    expect(chunk.status(), pathname).toBe(200);
+    expect(chunk.headers()["content-type"] ?? "", pathname).toMatch(/(?:java|ecma)script/i);
+    expectStaticAssetDelivery(chunk, pathname, true);
+  }
+});
+
+test("idle public and 404 documents never invoke same-origin dynamic routes", async ({ page }) => {
+  const dynamicRequests: string[] = [];
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    if (url.origin !== new URL(page.url() || "http://localhost:8787").origin) return;
+    if (
+      url.pathname.startsWith("/api/") ||
+      url.searchParams.has("_rsc") ||
+      request.headers().rsc === "1"
+    ) {
+      dynamicRequests.push(`${url.pathname}${url.search}`);
+    }
+  });
+
+  for (const route of ["/", "/__inspir_idle_static_404_probe"]) {
+    dynamicRequests.length = 0;
+    const response = await page.goto(route);
+    expect(response?.status(), route).toBe(route === "/" ? 200 : 404);
+    expectStaticAssetDelivery(response, route);
+    await page.waitForTimeout(1_250);
+    expect(dynamicRequests, route).toEqual([]);
+  }
 });
 
 test("guest-only activity modes show the Google gate instead of private tooling", async ({ page }) => {

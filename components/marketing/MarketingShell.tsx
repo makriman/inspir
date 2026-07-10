@@ -6,9 +6,8 @@ import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { MarketingVideoEngine } from "@/components/marketing/MarketingVideoEngine";
 import { MarketingLanguageControls } from "@/components/marketing/LanguageControls";
-import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
-import { gameArenaNavigationLabel } from "@/lib/games/navigation";
-import { localizeHref } from "@/lib/i18n/routing";
+import { type SupportedLanguage } from "@/lib/content/languages";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { getRequestMarketingChrome, type MarketingChrome } from "@/lib/i18n/marketing-chrome";
 import {
   marketingHeroVisualAssetById,
@@ -40,24 +39,22 @@ export function MarketingHeaderWithChrome({
 }) {
   return (
     <header className={`marketing-header ${hero ? "is-hero" : ""}`}>
-      <Link href={localizeHref("/", chrome.hrefLanguage)} aria-label="inspir home" className="marketing-brand">
+      <Link href={localizeStaticSiteHref("/", chrome.hrefLanguage)} aria-label="inspir home" className="marketing-brand">
         <InspirLogo variant="white" className="marketing-brand-mark" />
       </Link>
       <nav className="marketing-nav" aria-label="Primary navigation">
         {navLinks.map((link) => (
           <Link
             key={link.href}
-            href={localizeHref(link.href, chrome.hrefLanguage)}
+            href={localizeStaticSiteHref(link.href, chrome.hrefLanguage)}
             className={link.href.startsWith("/chat") ? "is-primary" : ""}
           >
             {chrome.t(link.label)}
           </Link>
         ))}
-        {chrome.hrefLanguage === defaultLanguage ? <Link href="/games">{gameArenaNavigationLabel}</Link> : null}
         <MarketingLanguageControls
           currentLanguage={chrome.language}
           recommendedLanguage={chrome.recommendedLanguage}
-          currentPathname={chrome.currentPathname}
           hasLocalePrefix={chrome.hasLocalePrefix}
           availableLanguages={chrome.availableLanguages}
           copy={{
@@ -109,7 +106,7 @@ export function MarketingFooterWithChrome({ chrome }: { chrome: MarketingChrome 
           ["/terms", "Terms"],
           ["/privacy", "Privacy"],
         ].map(([href, label]) => (
-          <Link key={href} href={localizeHref(href, chrome.hrefLanguage)}>
+          <Link key={href} href={localizeStaticSiteHref(href, chrome.hrefLanguage)}>
             {chrome.t(label)}
           </Link>
         ))}
@@ -331,7 +328,7 @@ export async function ArrowLink({
 
   const language = hrefLanguage ?? (await getRequestMarketingChrome()).hrefLanguage;
   return (
-    <Link className="marketing-arrow-link" href={localizeHref(href, language)}>
+    <Link className="marketing-arrow-link" href={localizeStaticSiteHref(href, language)}>
       {children}
       <ArrowUpRight size={17} />
     </Link>

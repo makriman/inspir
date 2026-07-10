@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { isKnownTopicSlug, isUuidPathSegment } from "@/lib/content/topic-routing";
 import { buildForwardedRequestHeaders } from "@/lib/http/forwarded-request-headers";
+import { canonicalOriginRedirectUrl } from "@/lib/http/canonical-origin";
 import { recommendLanguage } from "@/lib/i18n/language-detection";
 import { resolveRequestLanguage } from "@/lib/i18n/language-preference";
 import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
@@ -26,7 +27,7 @@ import {
 // Keep Edge Middleware until the Cloudflare adapter supports proxy.ts.
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-  const canonicalUrl = canonicalOriginRedirectUrl(request);
+  const canonicalUrl = canonicalOriginRedirectUrl(request.nextUrl, request.headers);
   if (canonicalUrl) {
     return applySecurityHeaders(NextResponse.redirect(canonicalUrl, 308), buildContentSecurityPolicy(createNonce()));
   }
@@ -75,9 +76,8 @@ export async function middleware(request: NextRequest) {
 
   if (
     localizedPath.hasLocalePrefix &&
-    (effectivePathname.startsWith("/games") ||
-      (isMarketingPath(effectivePathname) &&
-        !isStaticSiteLanguageAvailableForPath(effectivePathname, localizedPath.language)))
+    isMarketingPath(effectivePathname) &&
+    !isStaticSiteLanguageAvailableForPath(effectivePathname, localizedPath.language)
   ) {
     const url = request.nextUrl.clone();
     url.pathname = effectivePathname;
@@ -155,7 +155,6 @@ function getReferrerLocaleLanguage(referrer: string | null) {
 
 function shouldLocaleRedirectPath(pathname: string) {
   if (pathname.startsWith("/admin")) return false;
-  if (pathname.startsWith("/games")) return false;
   if (pathname.startsWith("/onboarding")) return false;
   return true;
 }
@@ -207,52 +206,6 @@ function isMarketingPath(pathname: string) {
 
 function hasLocalizedMarketingRoute(pathname: string) {
   return localizedMarketingRoutePaths.has(pathname);
-}
-
-function canonicalOriginRedirectUrl(request: NextRequest) {
-  const url = request.nextUrl.clone();
-  const requestHost = request.headers.get("host")?.toLowerCase() ?? "";
-  if (
-    requestHost === "localhost" ||
-    requestHost.startsWith("localhost:") ||
-    requestHost === "127.0.0.1" ||
-    requestHost.startsWith("127.0.0.1:") ||
-    requestHost === "[::1]" ||
-    requestHost.startsWith("[::1]:")
-  ) {
-    return null;
-  }
-  const hostname = url.hostname.toLowerCase();
-  const isInspirHost = hostname === "inspirlearning.com" || hostname === "www.inspirlearning.com";
-  const forwardedScheme = requestScheme(request);
-  const needsHttps = isInspirHost && forwardedScheme === "http";
-  const needsApex = hostname === "www.inspirlearning.com";
-
-  if (!needsHttps && !needsApex) return null;
-
-  url.protocol = "https:";
-  if (needsApex) {
-    url.hostname = "inspirlearning.com";
-    url.port = "";
-  }
-  return url;
-}
-
-function requestScheme(request: NextRequest) {
-  const forwarded = request.headers.get("x-forwarded-proto")?.split(",")[0]?.trim().toLowerCase();
-  if (forwarded === "http" || forwarded === "https") return forwarded;
-
-  const cfVisitor = request.headers.get("cf-visitor");
-  if (cfVisitor) {
-    try {
-      const parsed = JSON.parse(cfVisitor) as { scheme?: unknown };
-      if (parsed.scheme === "http" || parsed.scheme === "https") return parsed.scheme;
-    } catch {
-      return request.nextUrl.protocol.replace(/:$/, "");
-    }
-  }
-
-  return request.nextUrl.protocol.replace(/:$/, "");
 }
 
 function hasBetterAuthSessionCookie(request: NextRequest) {

@@ -31,6 +31,10 @@ type LearningPathPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+export const revalidate = false;
+
 function pathJsonLd(path: HomepageLearningPath) {
   return {
     "@context": "https://schema.org",

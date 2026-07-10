@@ -27,7 +27,7 @@ import {
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -193,7 +193,7 @@ export async function MediaPageContent({
         </div>
         <div className="marketing-topic-grid">
           {mediaStoryAngles.map((angle) => (
-            <Link key={angle.href} href={localizeHref(angle.href, hrefLanguage)} className="marketing-topic-link">
+            <Link key={angle.href} href={localizeStaticSiteHref(angle.href, hrefLanguage)} className="marketing-topic-link">
               <span>Coverage angle</span>
               <strong>{angle.title}</strong>
               <p>{angle.text}</p>
@@ -221,7 +221,7 @@ export async function MediaPageContent({
             return (
               <Link
                 key={link.href}
-                href={localizeHref(link.href, hrefLanguage)}
+                href={localizeStaticSiteHref(link.href, hrefLanguage)}
                 className="marketing-topic-link"
                 target={external ? "_blank" : undefined}
                 rel={external ? "noreferrer" : undefined}
@@ -274,7 +274,7 @@ export async function MediaPageContent({
         </div>
         <div className="marketing-topic-grid">
           {mediaLinkingTargets.map((target) => (
-            <Link key={target.href} href={localizeHref(target.href, hrefLanguage)} className="marketing-topic-link">
+            <Link key={target.href} href={localizeStaticSiteHref(target.href, hrefLanguage)} className="marketing-topic-link">
               <span>Suggested anchor: {target.anchorText}</span>
               <strong>{target.title}</strong>
               <p>{target.text}</p>
@@ -345,7 +345,7 @@ export async function MediaPageContent({
       <section className="marketing-cta-band">
         <h2>For press and school partnership notes.</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             Start learning
             <Sparkles size={18} />
           </Link>

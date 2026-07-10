@@ -1,6 +1,5 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { consumeGameResultGuestQuota } from "../lib/games/result-rate-limit";
 import { runWithRuntimeCloudflareEnv } from "../lib/runtime/cloudflare";
 import {
   consumeDailyLlmBudget,
@@ -30,22 +29,6 @@ test("per-window quota keeps the deliberate availability-biased fail-open postur
   assert.equal(result.ok, true);
   assert.equal(result.limit, 5);
   assert.equal(result.remaining, 4);
-});
-
-test("public game-result quota fails closed when D1 is unavailable", async () => {
-  const request = new Request("https://example.test/api/games/results", {
-    method: "POST",
-    headers: {
-      "cf-connecting-ip": "203.0.113.24",
-      "user-agent": "quota-test",
-      "accept-language": "en",
-    },
-  });
-  const result = await withSuppressedConsoleError(() =>
-    runWithRuntimeCloudflareEnv({ DB: throwingD1() }, () => consumeGameResultGuestQuota(request)),
-  );
-
-  assert.deepEqual(result, { ok: false, bucket: "edge", retryAfterSeconds: 60 });
 });
 
 test("expired rate-limit pruning is explicit and reports deleted rows", async () => {

@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
-import { Suspense } from "react";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
-import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
+import { StaticDocumentNavigation } from "@/components/navigation/StaticDocumentNavigation";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import { localizedMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
 import { defaultLanguage, languageConfigs } from "@/lib/content/languages";
@@ -119,10 +118,8 @@ export default async function RootLayout({
   return (
     <html lang={defaultLanguageConfig.locale} dir={defaultLanguageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full bg-[#171614] text-white">
+        <StaticDocumentNavigation />
         <AnalyticsScripts />
-        <Suspense fallback={null}>
-          <ProductAnalytics />
-        </Suspense>
         <JsonLdScripts items={rootJsonLd} language={defaultLanguage} />
         {children}
         <PwaInstallPrompt />

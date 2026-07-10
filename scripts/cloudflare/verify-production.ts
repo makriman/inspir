@@ -1,29 +1,10 @@
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
-import { defaultLanguage, languageConfigs, supportedLanguages } from "../../lib/content/languages";
-import {
-  applyChessMove,
-  createChessState,
-  legalChessActions,
-  type ChessState,
-} from "../../lib/games/chess";
-import { chooseChessOpponentAction } from "../../lib/games/chess-strategy";
-import {
-  applyConnectFourMove,
-  createConnectFourState,
-  legalConnectFourActions,
-  type ConnectFourState,
-} from "../../lib/games/connect-four";
-import { chooseConnectFourOpponentAction } from "../../lib/games/connect-four-strategy";
-import {
-  applyTicTacToeMove,
-  createTicTacToeState,
-  legalTicTacToeActions,
-  type TicTacToeState,
-} from "../../lib/games/tic-tac-toe";
-import { chooseTicTacToeOpponentAction } from "../../lib/games/tic-tac-toe-strategy";
-import { cloudflareDir, resolveBackupDir } from "./migration-config";
+import { defaultLanguage, languageConfigs } from "../../lib/content/languages";
+import { staticSiteLanguagesForPath } from "../../lib/i18n/static-availability";
+import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
 
 type Check = {
   name: string;
@@ -57,14 +38,21 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
 }
 
 async function main() {
+  await checkWwwCanonicalRedirect();
+  checkActiveMainWorkerDeployment();
+
   const home = await request("/");
   checkResponse("home", home, {
     bodyIncludes: [/free ai learning/i, /learn/i],
     requireCloudflare: true,
   });
+  checkStaticAssetDelivery("home", home);
+
+  const loading = await request("/loading");
+  checkResponse("static loading state", loading, { bodyIncludes: [/Getting your learning space ready/i] });
+  checkStaticAssetDelivery("static loading state", loading);
 
   await checkRuntimeHealth();
-  await checkCacheRevalidation();
   await checkAuthCacheIsolation();
 
   const localized = await request("/hi");
@@ -76,7 +64,7 @@ async function main() {
   } else {
     pass("localized Hindi route language cookie suppressed", { setCookie: localized.headers["set-cookie"] ?? null });
   }
-  checkImmutableLocalizedCacheControl("localized Hindi route", localized);
+  checkStaticAssetDelivery("localized Hindi route", localized);
 
   const localizedChat = await request("/hi/chat/learn-anything");
   checkResponse("localized Hindi chat route", localizedChat);
@@ -88,40 +76,66 @@ async function main() {
   checkCacheControl("localized Hindi chat route", localizedChat, [/private/i, /no-store/i]);
 
   const unavailableLocalized = await request("/hi/mission");
-  if (unavailableLocalized.status === 308 && new URL(unavailableLocalized.headers.location ?? "/", baseUrl).pathname === "/mission") {
-    pass("unavailable localized route canonical redirect", {
-      status: unavailableLocalized.status,
-      location: unavailableLocalized.headers.location,
-    });
-  } else {
-    fail("unavailable localized route canonical redirect", {
-      status: unavailableLocalized.status,
-      location: unavailableLocalized.headers.location,
-    });
-  }
+  checkStaticNotFound("unsupported localized route", unavailableLocalized);
 
   const robots = await request("/robots.txt");
   checkResponse("robots", robots, { bodyIncludes: [/User-Agent/i] });
+  checkStaticAssetDelivery("robots", robots);
 
-  const sitemap = await request("/sitemap");
+  const sitemap = await request("/sitemap.xml");
   checkResponse("sitemap index", sitemap, { bodyIncludes: [/<sitemapindex/i] });
+  checkStaticAssetDelivery("sitemap index", sitemap);
 
   const englishSitemap = await request("/sitemap/en-US.xml");
   checkResponse("English sitemap", englishSitemap, { bodyIncludes: [/<urlset/i] });
+  checkStaticAssetDelivery("English sitemap", englishSitemap);
 
   const rss = await request("/rss.xml");
   checkResponse("RSS", rss, { bodyIncludes: [/<rss/i] });
+  checkStaticAssetDelivery("RSS", rss);
 
-  const og = await request("/og");
-  checkResponse("OG image", og, { contentTypeIncludes: "image/png" });
+  const manifest = await request("/manifest.webmanifest");
+  checkResponse("web app manifest", manifest, {
+    bodyIncludes: [/"start_url":"\/chat\/learn-anything"/],
+    contentTypeIncludes: "application/manifest+json",
+  });
+  checkStaticAssetDelivery("web app manifest", manifest);
+
+  const tnc = await request("/tnc");
+  const tncPathname = new URL(tnc.headers.location ?? "/", baseUrl).pathname;
+  if (
+    tnc.status === 308 &&
+    tncPathname === "/terms" &&
+    tnc.headers["x-inspir-delivery"] === undefined
+  ) {
+    pass("static legal redirect", { status: tnc.status, location: tnc.headers.location });
+  } else {
+    fail("static legal redirect", {
+      status: tnc.status,
+      location: tnc.headers.location ?? null,
+      delivery: tnc.headers["x-inspir-delivery"] ?? null,
+    });
+  }
+
+  const socialPreview = await request("/inspir-social-preview.png");
+  checkResponse("social preview image", socialPreview, { contentTypeIncludes: "image/png" });
+  checkStaticAssetDelivery("social preview image", socialPreview, { immutable: true });
+
+  const unknownPublic = await request(`/__inspir_static_404_probe_${Date.now()}`);
+  checkStaticNotFound("unknown public route", unknownPublic);
+
+  const unknownApi = await request(`/api/__inspir_static_404_probe_${Date.now()}`);
+  checkStaticNotFound("unknown API route", unknownApi);
 
   const topics = await request("/api/topics");
   checkResponse("topics API", topics, { contentTypeIncludes: "application/json" });
   checkCacheControl("topics API", topics, [/public/i, /max-age=300/i, /s-maxage=3600/i]);
   checkTopicsPayload(topics);
 
+  const retiredGames = await request("/games");
+  checkStaticNotFound("removed game surface", retiredGames);
+
   await checkRemovedTranslationApis();
-  await checkGameMiniApps();
   await checkLocaleResourceSoak();
 
   await checkGuestChat();
@@ -130,10 +144,72 @@ async function main() {
   if (!ok) process.exitCode = 1;
 }
 
+async function checkWwwCanonicalRedirect() {
+  const query = `production_redirect_probe=${Date.now()}&next=a%2Fb`;
+  const sourceUrl = `https://www.inspirlearning.com/hi/about?${query}`;
+  const expectedLocation = `https://inspirlearning.com/hi/about?${query}`;
+  const redirect = await request(sourceUrl, undefined, { pinMainWorkerVersion: false });
+  const detail = {
+    status: redirect.status,
+    location: redirect.headers.location ?? null,
+    delivery: redirect.headers["x-inspir-delivery"] ?? null,
+    cacheControl: redirect.headers["cache-control"] ?? null,
+  };
+
+  if (
+    redirect.status === 308 &&
+    redirect.headers.location === expectedLocation &&
+    redirect.headers["x-inspir-delivery"] === "www-redirect-worker"
+  ) {
+    pass("www canonical redirect Worker", detail);
+  } else {
+    fail("www canonical redirect Worker", { ...detail, expectedLocation });
+  }
+}
+
+function checkActiveMainWorkerDeployment() {
+  const wrangler = path.resolve(process.cwd(), "node_modules/.bin/wrangler");
+  const result = spawnSync(
+    wrangler,
+    ["deployments", "status", "--json", "--name", "inspirlearning"],
+    {
+      cwd: process.cwd(),
+      env: commandEnv(),
+      encoding: "utf8",
+      maxBuffer: 16 * 1024 * 1024,
+    },
+  );
+  if (result.status !== 0) {
+    fail("active main Worker deployment", {
+      status: result.status,
+      outputTail: `${result.stdout ?? ""}${result.stderr ?? ""}`.slice(-2000),
+    });
+    return;
+  }
+
+  const deployment = parseJsonObjectFromOutput(`${result.stdout ?? ""}${result.stderr ?? ""}`);
+  const versions = deploymentVersions(deployment?.versions);
+  const active = versions.length === 1 ? versions[0] : null;
+  if (active?.versionId === expectedWorkerVersion && active.percentage === 100) {
+    pass("active main Worker deployment", active);
+  } else {
+    fail("active main Worker deployment", {
+      expectedWorkerVersion,
+      requiredPercentage: 100,
+      versions,
+    });
+  }
+}
+
 async function checkRuntimeHealth() {
-  const health = await request("/api/health");
-  checkResponse("Worker health", health, { contentTypeIncludes: "application/json", requireCloudflare: true });
-  checkCacheControl("Worker health", health, [/private/i, /no-store/i]);
+  const health = await request(
+    `/api/health?production_unpinned_version_probe=${Date.now()}`,
+    undefined,
+    { pinMainWorkerVersion: false },
+  );
+  checkResponse("unpinned Worker health", health, { contentTypeIncludes: "application/json", requireCloudflare: true });
+  checkWorkerDelivery("unpinned Worker health", health);
+  checkCacheControl("unpinned Worker health", health, [/private/i, /no-store/i]);
 
   const payload = parseJsonObject(health.body);
   const version = objectValue(payload?.version);
@@ -143,91 +219,20 @@ async function checkRuntimeHealth() {
     version.id === expectedWorkerVersion &&
     typeof build.id === "string" &&
     build.id !== "unknown-build" &&
-    architecture.cacheRevalidationQueue === true &&
-    architecture.incrementalCache === "regional-r2" &&
-    architecture.workerWideCache === false
+    architecture.deploymentMode === "free-static-first" &&
+    architecture.publicDocuments === "workers-static-assets" &&
+    architecture.workerCpuPlan === "free-10ms" &&
+    architecture.games === false
   ) {
-    pass("Worker health architecture", {
+    pass("unpinned Worker health architecture", {
       versionId: version.id,
       expectedWorkerVersion,
       buildId: build.id,
       architecture,
     });
   } else {
-    fail("Worker health architecture", { expectedWorkerVersion, version, build, architecture });
+    fail("unpinned Worker health architecture", { expectedWorkerVersion, version, build, architecture });
   }
-}
-
-async function checkCacheRevalidation() {
-  const first = await request("/api/cache-health");
-  checkResponse("ISR cache health", first, { contentTypeIncludes: "application/json" });
-  const stable = await findStableCachePair(first);
-  if (!stable) {
-    fail("OpenNext ISR cache hit", {
-      firstGeneratedAt: stringValue(parseJsonObject(first.body)?.generatedAt),
-      firstRenderCache: renderCacheState(first) || null,
-    });
-    return;
-  }
-
-  const baselineGeneratedAt = stringValue(parseJsonObject(stable.body)?.generatedAt);
-  pass("OpenNext ISR cache hit", {
-    generatedAt: baselineGeneratedAt,
-    renderCache: renderCacheState(stable),
-  });
-  await delay(6_000);
-  const stale = await request("/api/cache-health");
-  const staleGeneratedAt = stringValue(parseJsonObject(stale.body)?.generatedAt);
-  const staleState = renderCacheState(stale);
-  if (staleGeneratedAt === baselineGeneratedAt && staleState === "STALE") {
-    pass("OpenNext ISR stale transition", { generatedAt: staleGeneratedAt, nextCache: staleState });
-  } else {
-    fail("OpenNext ISR stale transition", { generatedAt: staleGeneratedAt, nextCache: staleState || null });
-  }
-
-  let revalidated: FetchResult | null = null;
-  for (let attempt = 0; attempt < 12; attempt += 1) {
-    const candidate = await request("/api/cache-health");
-    const generatedAt = stringValue(parseJsonObject(candidate.body)?.generatedAt);
-    const nextCache = renderCacheState(candidate);
-    if (
-      baselineGeneratedAt &&
-      generatedAt &&
-      generatedAt !== baselineGeneratedAt &&
-      (nextCache === "HIT" || nextCache === "REVALIDATED")
-    ) {
-      revalidated = candidate;
-      break;
-    }
-    await delay(500);
-  }
-
-  if (revalidated) {
-    pass("OpenNext Durable Object cache revalidation", {
-      before: baselineGeneratedAt,
-      after: stringValue(parseJsonObject(revalidated.body)?.generatedAt),
-      renderCache: renderCacheState(revalidated) || null,
-    });
-  } else {
-    fail("OpenNext Durable Object cache revalidation", {
-      before: baselineGeneratedAt,
-      staleRenderCache: renderCacheState(stale) || null,
-    });
-  }
-}
-
-async function findStableCachePair(initial: FetchResult) {
-  let previous = initial;
-  for (let attempt = 0; attempt < 12; attempt += 1) {
-    await delay(250);
-    const candidate = await request("/api/cache-health");
-    const previousGeneratedAt = stringValue(parseJsonObject(previous.body)?.generatedAt);
-    const generatedAt = stringValue(parseJsonObject(candidate.body)?.generatedAt);
-    const nextCache = renderCacheState(candidate);
-    if (previousGeneratedAt && previousGeneratedAt === generatedAt && nextCache === "HIT") return candidate;
-    previous = candidate;
-  }
-  return null;
 }
 
 async function checkAuthCacheIsolation() {
@@ -256,159 +261,8 @@ async function checkAuthCacheIsolation() {
 async function checkRemovedTranslationApis() {
   for (const route of ["/api/site-translations", "/api/main-app-translations"]) {
     const result = await request(route);
-    if (result.status === 404) pass(`${route} removed`, { status: result.status });
-    else fail(`${route} removed`, { status: result.status, bodyPreview: result.bodyPreview });
+    checkStaticNotFound(`${route} removed`, result);
   }
-}
-
-async function checkGameMiniApps() {
-  const arena = await request("/games");
-  checkResponse("game arena", arena, { bodyIncludes: [/tic.tac.toe/i, /connect four/i, /chess/i] });
-
-  for (const slug of ["tic-tac-toe", "connect-four", "chess"] as const) {
-    const game = await request(`/games/${slug}`);
-    checkResponse(`${slug} mini-app`, game);
-    const manifest = await request(`/games/${slug}/manifest.webmanifest`);
-    checkResponse(`${slug} manifest`, manifest);
-    const manifestPayload = parseJsonObject(manifest.body);
-    const manifestIcons = Array.isArray(manifestPayload?.icons) ? manifestPayload.icons : [];
-    const primaryIcon = objectValue(manifestIcons[0]);
-    if (
-      manifestPayload?.id === `/games/${slug}` &&
-      manifestPayload.scope === `/games/${slug}` &&
-      manifestPayload.start_url === `/games/${slug}?source=installed` &&
-      primaryIcon.src === `/games/${slug}/icon.svg`
-    ) {
-      pass(`${slug} install identity`, {
-        id: manifestPayload.id,
-        scope: manifestPayload.scope,
-        startUrl: manifestPayload.start_url,
-        primaryIcon: primaryIcon.src,
-      });
-    } else {
-      fail(`${slug} install identity`, manifestPayload);
-    }
-
-    const icon = await request(`/games/${slug}/icon.svg`);
-    checkResponse(`${slug} install icon`, icon, { contentTypeIncludes: "image/svg+xml" });
-
-    const serviceWorker = await request(`/games/${slug}-sw.js`);
-    checkResponse(`${slug} service worker`, serviceWorker, {
-      bodyIncludes: [/skipWaiting/, /clients\.claim/],
-      contentTypeIncludes: "javascript",
-    });
-  }
-
-  await checkDurableGameResult();
-}
-
-async function checkDurableGameResult() {
-  const completedGames = [
-    { slug: "tic-tac-toe", state: completedStrategyTicTacToeState() },
-    { slug: "connect-four", state: completedStrategyConnectFourState() },
-    { slug: "chess", state: completedStrategyChessState() },
-  ] as const;
-
-  for (const { slug, state } of completedGames) {
-    const startedAt = new Date(Date.now() - 60_000).toISOString();
-    const created = await request("/api/games/results", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "user-agent": `inspir-production-${slug}-result-smoke-${Date.now()}`,
-      },
-      body: JSON.stringify({ state, startedAt }),
-    });
-    checkResponse(`${slug} durable game result create`, created, { contentTypeIncludes: "application/json" });
-    checkCacheControl(`${slug} durable game result create`, created, [/private/i, /no-store/i]);
-    if (created.status !== 201) {
-      fail(`${slug} durable game result create contract`, {
-        status: created.status,
-        bodyPreview: created.bodyPreview,
-      });
-      continue;
-    }
-
-    const createdResult = objectValue(parseJsonObject(created.body)?.result);
-    const resultId = stringValue(createdResult.id);
-    if (!resultId || !/^gr_[a-f0-9]{32}$/.test(resultId)) {
-      fail(`${slug} durable game result opaque ID`, { resultId });
-      continue;
-    }
-    pass(`${slug} durable game result opaque ID`, { resultId });
-
-    const fetched = await request(`/api/games/results/${resultId}`);
-    checkResponse(`${slug} durable game result read`, fetched, { contentTypeIncludes: "application/json" });
-    checkCacheControl(`${slug} durable game result read`, fetched, [/public/i, /immutable/i]);
-    const fetchedResult = objectValue(parseJsonObject(fetched.body)?.result);
-    const fetchedState = objectValue(fetchedResult.state);
-    const opponent = objectValue(fetchedResult.opponent);
-    const opponentEngine = objectValue(opponent.engine);
-    if (
-      fetchedResult.id === resultId &&
-      fetchedResult.gameSlug === slug &&
-      fetchedState.gameSlug === slug &&
-      opponent.kind === "deterministic-engine" &&
-      opponentEngine.id === `inspir.local-strategy.${slug}`
-    ) {
-      pass(`${slug} durable game result replay and provenance`, {
-        resultId,
-        terminalCode: fetchedResult.terminalCode,
-        opponent: opponentEngine,
-      });
-    } else {
-      fail(`${slug} durable game result replay and provenance`, { resultId, fetchedResult });
-    }
-
-    const resultPage = await request(`/games/${slug}/results/${resultId}`);
-    checkResponse(`${slug} durable game result experience`, resultPage, { bodyIncludes: [/Opening result/i] });
-  }
-}
-
-function completedStrategyTicTacToeState(): TicTacToeState {
-  let state = createTicTacToeState("x");
-  while (!state.result) {
-    const action =
-      state.activeActor === "opponent"
-        ? chooseTicTacToeOpponentAction(state)
-        : legalTicTacToeActions(state)[0] ?? null;
-    if (!action || !state.activeActor) throw new Error("Could not build deterministic Tic-Tac-Toe smoke state.");
-    const applied = applyTicTacToeMove(state, state.activeActor, action);
-    if (!applied.ok) throw new Error(`Tic-Tac-Toe smoke move failed: ${applied.error}`);
-    state = applied.state;
-  }
-  return state;
-}
-
-function completedStrategyConnectFourState(): ConnectFourState {
-  let state = createConnectFourState("red");
-  while (!state.result) {
-    const action =
-      state.activeActor === "opponent"
-        ? chooseConnectFourOpponentAction(state)
-        : legalConnectFourActions(state)[0] ?? null;
-    if (!action || !state.activeActor) throw new Error("Could not build deterministic Connect Four smoke state.");
-    const applied = applyConnectFourMove(state, state.activeActor, action);
-    if (!applied.ok) throw new Error(`Connect Four smoke move failed: ${applied.error}`);
-    state = applied.state;
-  }
-  return state;
-}
-
-export function completedStrategyChessState(): ChessState {
-  let state = createChessState({ humanColor: "w" });
-  for (let turn = 0; turn < 128 && !state.result; turn += 1) {
-    const action =
-      state.activeActor === "opponent"
-        ? chooseChessOpponentAction(state)
-        : [...legalChessActions(state)].sort((left, right) => left.token.localeCompare(right.token))[0] ?? null;
-    if (!action || !state.activeActor) throw new Error("Could not build deterministic Chess smoke state.");
-    const applied = applyChessMove(state, state.activeActor, { token: action.token });
-    if (!applied.ok) throw new Error(`Chess smoke move failed: ${applied.error}`);
-    state = applied.state;
-  }
-  if (!state.result) throw new Error("Chess smoke game did not finish within the persisted result bound.");
-  return state;
 }
 
 async function checkLocaleResourceSoak() {
@@ -417,20 +271,25 @@ async function checkLocaleResourceSoak() {
     return;
   }
 
-  const routes = supportedLanguages
+  const routes = staticSiteLanguagesForPath("/")
     .filter((language) => language !== defaultLanguage)
     .map((language) => `/${languageConfigs[language].prefix}`);
-  const failures: Array<{ route: string; status: number }> = [];
+  const failures: Array<{ route: string; status: number; problems: string[] }> = [];
   for (let index = 0; index < routes.length; index += 8) {
     const batch = routes.slice(index, index + 8);
     const results = await Promise.all(batch.map(async (route) => ({ route, result: await request(route) })));
     for (const { route, result } of results) {
-      if (result.status !== 200 && result.status !== 308) failures.push({ route, status: result.status });
+      const problems = staticAssetProblems(result);
+      if (result.status !== 200) problems.unshift("status=200");
+      if (problems.length > 0) failures.push({ route, status: result.status, problems });
     }
   }
 
-  if (failures.length === 0) pass("localized route resource soak", { routes: routes.length });
-  else fail("localized route resource soak", { routes: routes.length, failures });
+  if (failures.length === 0) {
+    pass("localized route resource soak", { routes: routes.length, delivery: "static-assets" });
+  } else {
+    fail("localized route resource soak", { routes: routes.length, failures });
+  }
 }
 
 async function checkGuestChat() {
@@ -482,13 +341,19 @@ async function checkGuestChat() {
   }
 }
 
-async function request(route: string, init?: RequestInit): Promise<FetchResult> {
+async function request(
+  route: string,
+  init?: RequestInit,
+  options: { pinMainWorkerVersion?: boolean } = {},
+): Promise<FetchResult> {
   const url = new URL(route, baseUrl).toString();
   const headers = new Headers(init?.headers);
-  headers.set(
-    "Cloudflare-Workers-Version-Overrides",
-    `inspirlearning="${expectedWorkerVersion}"`,
-  );
+  if (options.pinMainWorkerVersion !== false) {
+    headers.set(
+      "Cloudflare-Workers-Version-Overrides",
+      `inspirlearning="${expectedWorkerVersion}"`,
+    );
+  }
   const response = await fetch(url, {
     ...init,
     headers,
@@ -576,18 +441,28 @@ function parseJsonObject(value: string): Record<string, unknown> | null {
   }
 }
 
+function parseJsonObjectFromOutput(value: string) {
+  const direct = parseJsonObject(value.trim());
+  if (direct) return direct;
+  const first = value.indexOf("{");
+  const last = value.lastIndexOf("}");
+  return first >= 0 && last > first ? parseJsonObject(value.slice(first, last + 1)) : null;
+}
+
 function objectValue(value: unknown): Record<string, unknown> {
   return value !== null && typeof value === "object" && !Array.isArray(value)
     ? (value as Record<string, unknown>)
     : {};
 }
 
-function stringValue(value: unknown) {
-  return typeof value === "string" ? value : null;
-}
-
-function delay(milliseconds: number) {
-  return new Promise<void>((resolve) => setTimeout(resolve, milliseconds));
+function deploymentVersions(value: unknown) {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry) => {
+    const record = objectValue(entry);
+    const versionId = typeof record.version_id === "string" ? record.version_id : null;
+    const percentage = typeof record.percentage === "number" ? record.percentage : null;
+    return versionId && percentage !== null ? [{ versionId, percentage }] : [];
+  });
 }
 
 function checkCacheControl(name: string, result: FetchResult, patterns: RegExp[]) {
@@ -600,31 +475,64 @@ function checkCacheControl(name: string, result: FetchResult, patterns: RegExp[]
   }
 }
 
-function checkImmutableLocalizedCacheControl(name: string, result: FetchResult) {
-  const cacheControl = result.headers["cache-control"] ?? "";
-  const sMaxAge = readCacheControlSeconds(cacheControl, "s-maxage");
-  const renderCache = renderCacheState(result);
-  const prerender = result.headers["x-nextjs-prerender"] ?? "";
-  const missing: string[] = [];
-
-  if (sMaxAge === null || sMaxAge < 365 * 24 * 60 * 60) missing.push("s-maxage>=31536000");
-  if (/\b(?:private|no-store)\b/i.test(cacheControl)) {
-    missing.push("shared-cacheable");
-  }
-  if (!prerender.split(",").some((value) => value.trim() === "1")) missing.push("x-nextjs-prerender=1");
-  if (renderCache !== "HIT" && renderCache !== "REVALIDATED") {
-    missing.push("x-nextjs-cache|x-opennext-cache=HIT|REVALIDATED");
-  }
-
-  if (missing.length === 0) {
-    pass(`${name} immutable cache policy`, { cacheControl, sMaxAge, renderCache, prerender });
+function checkWorkerDelivery(name: string, result: FetchResult) {
+  const delivery = result.headers["x-inspir-delivery"];
+  if (delivery === undefined) {
+    pass(`${name} dynamic Worker delivery`);
   } else {
-    fail(`${name} immutable cache policy`, { cacheControl, sMaxAge, renderCache, prerender, missing });
+    fail(`${name} dynamic Worker delivery`, { unexpectedStaticDeliveryHeader: delivery });
   }
 }
 
-function renderCacheState(result: FetchResult) {
-  return (result.headers["x-nextjs-cache"] ?? result.headers["x-opennext-cache"] ?? "").toUpperCase();
+function checkStaticAssetDelivery(name: string, result: FetchResult, options: { immutable?: boolean } = {}) {
+  const problems = staticAssetProblems(result, options);
+  if (problems.length === 0) {
+    pass(`${name} direct static asset delivery`, {
+      delivery: result.headers["x-inspir-delivery"],
+      cacheControl: result.headers["cache-control"] ?? null,
+      etag: result.headers.etag ?? null,
+    });
+  } else {
+    fail(`${name} direct static asset delivery`, {
+      delivery: result.headers["x-inspir-delivery"] ?? null,
+      cacheControl: result.headers["cache-control"] ?? null,
+      nextCache: result.headers["x-nextjs-cache"] ?? null,
+      openNextCache: result.headers["x-opennext-cache"] ?? null,
+      nextPrerender: result.headers["x-nextjs-prerender"] ?? null,
+      problems,
+    });
+  }
+}
+
+function checkStaticNotFound(name: string, result: FetchResult) {
+  if (result.status === 404) {
+    pass(`${name} status`, { status: result.status, url: result.url });
+  } else {
+    fail(`${name} status`, { status: result.status, url: result.url, bodyPreview: result.bodyPreview });
+  }
+  checkStaticAssetDelivery(name, result);
+}
+
+function staticAssetProblems(result: FetchResult, options: { immutable?: boolean } = {}) {
+  const cacheControl = result.headers["cache-control"] ?? "";
+  const problems: string[] = [];
+  if (result.headers["x-inspir-delivery"] !== "static-assets") {
+    problems.push("x-inspir-delivery=static-assets");
+  }
+  if (/\b(?:private|no-store)\b/i.test(cacheControl)) problems.push("shared-cacheable");
+  for (const header of ["x-nextjs-cache", "x-opennext-cache", "x-nextjs-prerender"] as const) {
+    if (result.headers[header]) problems.push(`no-${header}`);
+  }
+  if (options.immutable) {
+    const maxAge = readCacheControlSeconds(cacheControl, "max-age");
+    if (maxAge === null || maxAge < 365 * 24 * 60 * 60) problems.push("max-age>=31536000");
+    if (!/\bimmutable\b/i.test(cacheControl)) problems.push("immutable");
+  } else {
+    if (!/\bpublic\b/i.test(cacheControl)) problems.push("public");
+    if (readCacheControlSeconds(cacheControl, "max-age") !== 0) problems.push("max-age=0");
+    if (!/\bmust-revalidate\b/i.test(cacheControl)) problems.push("must-revalidate");
+  }
+  return problems;
 }
 
 function readCacheControlSeconds(cacheControl: string, directive: string) {

@@ -9,6 +9,9 @@ const pageMetadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export function generateMetadata() {
   return localizeMarketingMetadata(pageMetadata, "/loading");
 }

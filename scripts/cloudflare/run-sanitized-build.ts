@@ -13,6 +13,7 @@ import {
 } from "./sanitized-build-env";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
 import { inspectOpenNextResourceBudget } from "./check-opennext-resource-budget";
+import { materializeStaticMarketingAssets } from "./materialize-static-marketing-assets";
 import { writeWorkerDeployEvidenceReport, type WorkerDeployEvidenceReport } from "./worker-deploy-evidence";
 
 type CommandMode = "next-build" | "opennext-build" | "opennext-deploy" | "opennext-upload" | "opennext-preview";
@@ -35,14 +36,14 @@ const COMMANDS: Record<
     scanAfter: true,
   },
   "opennext-deploy": {
-    executable: bin("opennextjs-cloudflare"),
+    executable: bin("wrangler"),
     args: ["deploy"],
     buildBefore: true,
     scanBefore: true,
   },
   "opennext-upload": {
-    executable: bin("opennextjs-cloudflare"),
-    args: ["upload"],
+    executable: bin("wrangler"),
+    args: ["versions", "upload"],
     buildBefore: true,
     scanBefore: true,
   },
@@ -131,6 +132,20 @@ export function runSanitizedBuildCommand(
           });
         }
 
+        try {
+          materializeStaticMarketingAssets(process.cwd());
+        } catch (error) {
+          return deployEvidence.finish(1, {
+            commandExecuted: false,
+            deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+            deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: null,
+            scanBeforeOk: null,
+            scanAfterOk: null,
+            error: `Static marketing asset materialization failed before ${mode}: ${errorMessage(error)}`,
+          });
+        }
+
         const resourceBudget = inspectOpenNextResourceBudget(process.cwd());
         if (!resourceBudget.ok) {
           console.error(`OpenNext resource budget failed before ${mode}: ${JSON.stringify(resourceBudget)}`);
@@ -193,6 +208,18 @@ export function runSanitizedBuildCommand(
       }
 
       if (mode === "opennext-build") {
+        try {
+          materializeStaticMarketingAssets(process.cwd());
+        } catch (error) {
+          return deployEvidence.finish(1, {
+            commandExecuted: true,
+            resourceBudgetOk: null,
+            scanBeforeOk: null,
+            scanAfterOk: null,
+            error: `Static marketing asset materialization failed after ${mode}: ${errorMessage(error)}`,
+          });
+        }
+
         const resourceBudget = inspectOpenNextResourceBudget(process.cwd());
         if (!resourceBudget.ok) {
           console.error(`OpenNext resource budget failed after ${mode}: ${JSON.stringify(resourceBudget)}`);
@@ -266,6 +293,10 @@ function printScanFailure(findings: number) {
   console.error(
     `OpenNext artifact scan failed with ${findings} finding(s). See cloudflare/build-artifact-scan-report.json in the active backup directory.`,
   );
+}
+
+function errorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
 }
 
 function bin(name: string) {

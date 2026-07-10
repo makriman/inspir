@@ -96,8 +96,6 @@ const REQUIRED_WRANGLER_VARS = [
   "RATE_LIMIT_GUEST_IP_DAILY",
   "RATE_LIMIT_ACTIVITY_DAILY",
   "RATE_LIMIT_MEMORY_DAILY",
-  "RATE_LIMIT_GAME_RESULT_IP_DAILY",
-  "RATE_LIMIT_GAME_RESULT_FINGERPRINT_DAILY",
   "LLM_GLOBAL_DAILY_CALL_LIMIT",
   "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD",
   "MEMORY_PROFILE_COMPILE_LIMIT",
@@ -116,6 +114,43 @@ const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
   "CRON_SECRET",
 ];
 const STEADY_STATE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
+
+export const FREE_PLAN_WORKER_FIRST_ROUTES = [
+  "!/_next/static/*",
+  "/api/activities/flashcards",
+  "/api/activities/flashcards/*",
+  "/api/activities/quiz",
+  "/api/activities/quiz/*",
+  "/api/admin/topics",
+  "/api/admin/users",
+  "/api/analytics/events",
+  "/api/auth",
+  "/api/auth/*",
+  "/api/chat",
+  "/api/chats",
+  "/api/chats/*",
+  "/api/cron/memory-dreaming",
+  "/api/guest-chat",
+  "/api/health",
+  "/api/logout",
+  "/api/me",
+  "/api/me/photo",
+  "/api/memory",
+  "/api/memory/*",
+  "/api/migration/e2e-auth",
+  "/api/migration/write-freeze",
+  "/api/topics",
+  "/chat",
+  "/chat/*",
+  "/admin",
+  "/admin/*",
+  "/reset_pw",
+  "/*/chat",
+  "/*/chat/*",
+  "/*/admin",
+  "/*/admin/*",
+  "/*/reset_pw",
+] as const;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const backupDir = resolveBackupDir();
@@ -144,7 +179,6 @@ export function buildSteadyStateDeployPreflightReport(options: {
   if (options.runWranglerDryRun !== false) {
     checks.push(remoteDurableObjectInfrastructureCheck());
     checks.push(remoteD1ProfilePhotoSchemaCheck());
-    checks.push(remoteD1GameResultsSchemaCheck());
     checks.push(wranglerDeployDryRunCheck());
   }
 
@@ -351,6 +385,10 @@ function buildArtifactScanCheck(backupDir: string, currentSourceFingerprint: Sou
 
 function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const config = readRepoJson<Record<string, unknown>>(cwd, "wrangler.jsonc");
+  const staticRedirectsPath = path.resolve(cwd, "public/_redirects");
+  const staticRedirects = fs.existsSync(staticRedirectsPath)
+    ? fs.readFileSync(staticRedirectsPath, "utf8")
+    : "";
   const vars = objectValue(config.vars);
   const secrets = objectValue(config.secrets);
   const requiredSecrets = Array.isArray(secrets.required) ? secrets.required.filter(isString) : [];
@@ -375,7 +413,10 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const routes = arrayValue(config.routes).map((route) => route.pattern);
   const cron = objectValue(config.triggers).crons;
   const observability = objectValue(config.observability);
-  const limits = objectValue(config.limits);
+  const assets = objectValue(config.assets);
+  const workerFirstRoutes = Array.isArray(assets.run_worker_first)
+    ? assets.run_worker_first.filter(isString)
+    : [];
   const observabilityLogs = objectValue(observability.logs);
   const observabilityTraces = objectValue(observability.traces);
   const observabilityIncidentMode = vars.OBSERVABILITY_INCIDENT_MODE === "1";
@@ -413,7 +454,14 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     workersDevOk: config.workers_dev === false,
     previewUrlsOk: config.preview_urls === false,
     workerGlobalCacheOk: config.cache === undefined || objectValue(config.cache).enabled === false,
-    cpuBudgetOk: limits.cpu_ms === 5_000,
+    freePlanCpuConfigOk: config.limits === undefined,
+    staticAssetsOk:
+      assets.directory === ".open-next/assets" &&
+      assets.binding === "ASSETS" &&
+      assets.html_handling === "drop-trailing-slash" &&
+      assets.not_found_handling === "404-page" &&
+      sameStringSet(workerFirstRoutes, FREE_PLAN_WORKER_FIRST_ROUTES),
+    staticLegalRedirectOk: /^\/tnc\s+\/terms\s+308\s*$/m.test(staticRedirects),
     cacheRevalidationConcurrencyOk:
       vars.MAX_REVALIDATE_CONCURRENCY === "1" && vars.NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION === "1",
     observabilityOk:
@@ -448,13 +496,15 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     problems.workersDevOk &&
     problems.previewUrlsOk &&
     problems.workerGlobalCacheOk &&
-    problems.cpuBudgetOk &&
+    problems.freePlanCpuConfigOk &&
+    problems.staticAssetsOk &&
+    problems.staticLegalRedirectOk &&
     problems.cacheRevalidationConcurrencyOk &&
     problems.observabilityOk;
   return {
     name: "Wrangler production config",
     status: ok ? "pass" : "fail",
-    detail: ok ? { worker: "inspirlearning", cpuMs: limits.cpu_ms } : problems,
+    detail: ok ? { worker: "inspirlearning", deploymentMode: "free-static-first" } : problems,
   };
 }
 
@@ -533,76 +583,6 @@ function remoteD1ProfilePhotoSchemaCheck(): DeployPreflightCheck {
   };
 }
 
-function remoteD1GameResultsSchemaCheck(): DeployPreflightCheck {
-  const requiredColumns = [
-    "id",
-    "schema_version",
-    "game_slug",
-    "engine_id",
-    "engine_version",
-    "terminal_code",
-    "winner",
-    "outcome",
-    "ply_count",
-    "payload",
-    "started_at",
-    "completed_at",
-    "duration_ms",
-    "created_at",
-  ];
-  const result = spawnSync(
-    path.resolve(process.cwd(), "node_modules/.bin/wrangler"),
-    [
-      "d1",
-      "execute",
-      D1_DATABASE_NAME,
-      "--remote",
-      "--json",
-      "--command",
-      "select type, name, sql from sqlite_master where name in ('game_results', 'game_results_reject_update'); select name from pragma_table_info('game_results') order by cid;",
-    ],
-    {
-      cwd: process.cwd(),
-      env: commandEnv(),
-      encoding: "utf8",
-      maxBuffer: 64 * 1024 * 1024,
-    },
-  );
-  if (result.status !== 0) {
-    return {
-      name: "remote D1 immutable game-results schema",
-      status: "fail",
-      detail: {
-        status: result.status,
-        outputTail: `${result.stdout ?? ""}${result.stderr ?? ""}`.slice(-2000),
-      },
-    };
-  }
-
-  const rows = parseJsonFromOutput<Array<{ results?: Array<{ name?: string; type?: string; sql?: string }> }>>(
-    `${result.stdout ?? ""}${result.stderr ?? ""}`,
-    [],
-  ).flatMap((entry) => entry.results ?? []);
-  const columns = new Set(rows.filter((row) => row.type === undefined).map((row) => row.name).filter(Boolean));
-  const tableSql = rows.find((row) => row.type === "table" && row.name === "game_results")?.sql ?? "";
-  const triggerSql = rows.find((row) => row.type === "trigger" && row.name === "game_results_reject_update")?.sql ?? "";
-  const missingColumns = requiredColumns.filter((column) => !columns.has(column));
-  const invariants = {
-    tablePresent: tableSql.length > 0,
-    updateGuardPresent: /before\s+update\s+on\s+[`"]?game_results/i.test(triggerSql) && /raise\s*\(\s*abort/i.test(triggerSql),
-    schemaVersionFixed: /[`"]?schema_version[`"]?\s*=\s*1/i.test(tableSql),
-    payloadJsonChecked: /json_valid\s*\(\s*[`"]?payload/i.test(tableSql),
-    plyBounded: /[`"]?ply_count[`"]?\s*<=\s*128/i.test(tableSql),
-    completionImmutable: /[`"]?completed_at[`"]?\s*=\s*[`"]?created_at/i.test(tableSql),
-  };
-  const ok = missingColumns.length === 0 && Object.values(invariants).every(Boolean);
-  return {
-    name: "remote D1 immutable game-results schema",
-    status: ok ? "pass" : "fail",
-    detail: ok ? { columns: requiredColumns, invariants } : { missingColumns, invariants },
-  };
-}
-
 function writeReport(report: DeployPreflightReport) {
   fs.writeFileSync(path.join(cloudflareDir(report.backupDir), "deploy-preflight-report.json"), `${JSON.stringify(report, null, 2)}\n`, {
     mode: 0o600,
@@ -638,6 +618,10 @@ function isString(value: unknown): value is string {
 function samplingRateAtMost(value: unknown, max: number) {
   const numeric = Number(value);
   return Number.isFinite(numeric) && numeric >= 0 && numeric <= max;
+}
+
+function sameStringSet(actual: readonly string[], expected: readonly string[]) {
+  return actual.length === expected.length && new Set(actual).size === actual.length && expected.every((value) => actual.includes(value));
 }
 
 function parseJsonFromOutput<T>(output: string, fallback: T): T {

@@ -21,8 +21,8 @@ export default function GlobalNotFound() {
             <h1 id="not-found-title">Page not found</h1>
             <p>The page is not available. Start a fresh learning chat or return home.</p>
             <div className="inspir-status-actions">
-              <Link href="/chat/learn-anything">Start learning</Link>
-              <Link href="/">Home</Link>
+              <Link href="/chat/learn-anything" prefetch={false}>Start learning</Link>
+              <Link href="/" prefetch={false}>Home</Link>
             </div>
           </div>
         </main>

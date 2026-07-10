@@ -16,7 +16,7 @@ import {
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -133,7 +133,7 @@ export async function ComparePageContent({
           {pages.map((page) => (
             <Link
               key={page.slug}
-              href={localizeHref(comparisonPath(page.slug), hrefLanguage)}
+              href={localizeStaticSiteHref(comparisonPath(page.slug), hrefLanguage)}
               className="marketing-mode-finder-card"
             >
               <span>{page.eyebrow}</span>
@@ -159,7 +159,7 @@ export async function ComparePageContent({
         </div>
         <div className="learning-path-mode-list">
           {comparisonHubSearchIntents.map((intent) => (
-            <Link key={intent} href={localizeHref("/compare", hrefLanguage)}>
+            <Link key={intent} href={localizeStaticSiteHref("/compare", hrefLanguage)}>
               <SearchCheck size={15} />
               {intent}
             </Link>
@@ -223,7 +223,7 @@ export async function ComparePageContent({
       <section className="marketing-cta-band">
         <h2>Want the live learning version right now?</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             Start learning
             <Sparkles size={18} />
           </Link>

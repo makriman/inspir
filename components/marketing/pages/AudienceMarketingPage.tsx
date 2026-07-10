@@ -16,7 +16,7 @@ import {
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -133,7 +133,7 @@ export async function AudiencePageContent({
           {pages.map((page) => (
             <Link
               key={page.slug}
-              href={localizeHref(audiencePath(page.slug), hrefLanguage)}
+              href={localizeStaticSiteHref(audiencePath(page.slug), hrefLanguage)}
               className="marketing-mode-finder-card"
             >
               <span>{page.eyebrow}</span>
@@ -159,7 +159,7 @@ export async function AudiencePageContent({
         </div>
         <div className="learning-path-mode-list">
           {audienceHubSearchIntents.map((intent) => (
-            <Link key={intent} href={localizeHref("/for", hrefLanguage)}>
+            <Link key={intent} href={localizeStaticSiteHref("/for", hrefLanguage)}>
               <SearchCheck size={15} />
               {intent}
             </Link>
@@ -222,7 +222,7 @@ export async function AudiencePageContent({
       <section className="marketing-cta-band">
         <h2>Want the broadest place to start?</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             Start learning
             <Sparkles size={18} />
           </Link>

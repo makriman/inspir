@@ -17,7 +17,7 @@ import {
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -187,7 +187,7 @@ export async function SchoolsPageContent({
               <span>{step.step}</span>
               <h3>{step.title}</h3>
               <p>{step.text}</p>
-              <Link href={localizeHref(step.href, hrefLanguage)}>Explore step</Link>
+              <Link href={localizeStaticSiteHref(step.href, hrefLanguage)}>Explore step</Link>
             </article>
           ))}
         </div>
@@ -204,7 +204,7 @@ export async function SchoolsPageContent({
         </div>
         <div className="marketing-topic-grid">
           {schoolUseCases.map((useCase) => (
-            <Link key={useCase.title} href={localizeHref(useCase.href, hrefLanguage)} className="marketing-topic-link">
+            <Link key={useCase.title} href={localizeStaticSiteHref(useCase.href, hrefLanguage)} className="marketing-topic-link">
               <span>Use case</span>
               <strong>{useCase.title}</strong>
               <p>{useCase.text}</p>

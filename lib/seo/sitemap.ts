@@ -224,10 +224,6 @@ export default function sitemapEntries(language: SupportedLanguage | string = de
     { url: absoluteUrl("/trust"), lastModified: contentLastModified.trust, changeFrequency: "monthly", priority: 0.74 },
     { url: absoluteUrl("/media"), lastModified: contentLastModified.media, changeFrequency: "monthly", priority: 0.65 },
     { url: absoluteUrl("/topics"), lastModified: contentLastModified.topics, changeFrequency: "weekly", priority: 0.82 },
-    { url: absoluteUrl("/games"), changeFrequency: "monthly", priority: 0.78 },
-    { url: absoluteUrl("/games/tic-tac-toe"), changeFrequency: "monthly", priority: 0.72 },
-    { url: absoluteUrl("/games/connect-four"), changeFrequency: "monthly", priority: 0.72 },
-    { url: absoluteUrl("/games/chess"), changeFrequency: "monthly", priority: 0.72 },
     {
       url: absoluteUrl("/subjects"),
       lastModified: contentLastModified.subjects,

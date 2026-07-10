@@ -9,6 +9,10 @@ test("production health exposes version-attributed architecture without cacheabl
 
   assert.match(route, /CF_VERSION_METADATA\.id/);
   assert.match(route, /process\.env\.OPEN_NEXT_BUILD_ID/);
+  assert.match(route, /deploymentMode: "free-static-first"/);
+  assert.match(route, /publicDocuments: "workers-static-assets"/);
+  assert.match(route, /workerCpuPlan: "free-10ms"/);
+  assert.match(route, /games: false/);
   assert.match(route, /Boolean\(env\.NEXT_CACHE_DO_QUEUE\)/);
   assert.match(route, /workerWideCache: false/);
   assert.match(route, /Cloudflare-CDN-Cache-Control/);
@@ -17,11 +21,6 @@ test("production health exposes version-attributed architecture without cacheabl
   assert.match(wrangler, /"binding": "CF_VERSION_METADATA"/);
 });
 
-test("cache health is a tiny time-based ISR probe for the Durable Object queue", () => {
-  const route = fs.readFileSync(path.resolve("app/api/cache-health/route.ts"), "utf8");
-
-  assert.match(route, /export const dynamic = "force-static"/);
-  assert.match(route, /export const revalidate = 5/);
-  assert.match(route, /X-Inspir-Cache-Generated-At/);
-  assert.match(route, /s-maxage=5/);
+test("obsolete public ISR health probe is not exposed on the Free Worker", () => {
+  assert.equal(fs.existsSync(path.resolve("app/api/cache-health/route.ts")), false);
 });

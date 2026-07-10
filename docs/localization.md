@@ -95,4 +95,6 @@ This bridge never calls model providers; it only copies fresh, complete cache ro
 pnpm translations:generate-site-source-manifest
 ```
 
-The unit suite includes a freshness check for the manifest, so stale source hashes should fail before deployment.
+The unit suite and production repair preflight compare every extracted namespace with the generated manifest, so stale namespace sets or source hashes fail before deployment.
+
+Production source synchronization is incremental: it upserts only changed source rows, deletes only obsolete rows, never recreates the source tables, and fails closed above the repository's conservative Workers Free D1 write budget. Remote synchronization requires `--confirm-production`; the SEO CTA repair combines the source diff and payload repair into one atomic D1 SQL-file execution.

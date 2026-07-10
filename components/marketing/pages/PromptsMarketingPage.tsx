@@ -16,7 +16,7 @@ import {
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -155,7 +155,7 @@ export async function PromptsPageContent({
         </div>
         <div className="marketing-mode-finder-grid">
           {spotlightPrompts.map((entry) => (
-            <Link key={entry.id} href={localizeHref(entry.href, hrefLanguage)} className="marketing-mode-finder-card">
+            <Link key={entry.id} href={localizeStaticSiteHref(entry.href, hrefLanguage)} className="marketing-mode-finder-card">
               <span>{entry.category}</span>
               <strong>{entry.topicName}</strong>
               <p>{entry.prompt}</p>
@@ -179,7 +179,7 @@ export async function PromptsPageContent({
         </div>
         <div className="learning-path-mode-list">
           {promptLibrarySearchIntents.map((intent) => (
-            <Link key={intent} href={localizeHref("/prompts", hrefLanguage)}>
+            <Link key={intent} href={localizeStaticSiteHref("/prompts", hrefLanguage)}>
               {intent}
             </Link>
           ))}
@@ -197,7 +197,7 @@ export async function PromptsPageContent({
         </div>
         <nav className="marketing-mode-category-nav" aria-label="Prompt categories">
           {categoryHubs.map((hub) => (
-            <Link key={hub.slug} href={localizeHref(hub.href, hrefLanguage)}>
+            <Link key={hub.slug} href={localizeStaticSiteHref(hub.href, hrefLanguage)}>
               {hub.name}
               <span>{hub.promptCount}</span>
             </Link>
@@ -230,7 +230,7 @@ export async function PromptsPageContent({
               </div>
               <div className="marketing-topic-grid">
                 {hub.prompts.map((entry) => (
-                  <Link key={entry.id} href={localizeHref(entry.href, hrefLanguage)} className="marketing-topic-link">
+                  <Link key={entry.id} href={localizeStaticSiteHref(entry.href, hrefLanguage)} className="marketing-topic-link">
                     <span>{entry.uiMode.replaceAll("-", " ")}</span>
                     <strong>{entry.topicName}</strong>
                     <p>{entry.prompt}</p>
@@ -263,7 +263,7 @@ export async function PromptsPageContent({
 
       <section className="marketing-cta-band">
         <h2>Ready to try one?</h2>
-        <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+        <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
           Start learning
           <Sparkles size={18} />
         </Link>

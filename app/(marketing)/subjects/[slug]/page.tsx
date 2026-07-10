@@ -38,6 +38,10 @@ type SubjectDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const dynamic = "force-static";
+export const dynamicParams = false;
+export const revalidate = false;
+
 type Subject = NonNullable<ReturnType<typeof getSubjectPage>>;
 
 export function generateStaticParams() {

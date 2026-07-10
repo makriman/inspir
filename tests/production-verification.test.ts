@@ -2,50 +2,77 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
-import { buildPublicGameResult } from "../lib/games/results";
 
-test("production verification covers the resource-outage and game relaunch contracts", () => {
+test("production verification covers the resource-outage contracts", () => {
   const source = fs.readFileSync(path.resolve("scripts/cloudflare/verify-production.ts"), "utf8");
   const outcomes = fs.readFileSync(
     path.resolve("scripts/cloudflare/verify-production-worker-outcomes.ts"),
     "utf8",
   );
+  const headers = fs.readFileSync(path.resolve("public/_headers"), "utf8");
 
   assert.match(source, /checkRuntimeHealth/);
-  assert.match(source, /checkCacheRevalidation/);
-  assert.match(source, /findStableCachePair/);
-  assert.match(source, /nextCache === "HIT"/);
-  assert.match(source, /staleState === "STALE"/);
+  assert.match(source, /checkActiveMainWorkerDeployment/);
+  assert.match(source, /deployments", "status"/);
+  assert.match(source, /requiredPercentage: 100/);
+  assert.match(source, /pinMainWorkerVersion: false/);
+  assert.match(source, /checkWwwCanonicalRedirect/);
+  assert.match(source, /www\.inspirlearning\.com\/hi\/about/);
+  assert.match(source, /www-redirect-worker/);
+  assert.match(source, /redirect\.status === 308/);
+  assert.match(source, /checkWorkerDelivery/);
+  assert.doesNotMatch(source, /checkCacheRevalidation/);
+  assert.doesNotMatch(source, /findStableCachePair/);
+  assert.doesNotMatch(source, /\/api\/cache-health/);
   assert.match(source, /checkAuthCacheIsolation/);
   assert.match(source, /checkRemovedTranslationApis/);
-  assert.match(source, /checkGameMiniApps/);
-  assert.match(source, /checkDurableGameResult/);
-  assert.match(source, /durable game result replay and provenance/);
-  assert.match(source, /completedStrategyConnectFourState/);
-  assert.match(source, /completedStrategyChessState/);
   assert.match(source, /Cloudflare-Workers-Version-Overrides/);
   assert.match(source, /expectedWorkerVersion/);
   assert.match(outcomes, /--version-id/);
   assert.match(outcomes, /exceededCpu/);
   assert.match(outcomes, /exceededMemory/);
   assert.match(outcomes, /Dummy queue is not implemented/);
-  assert.match(outcomes, /minimumCapturedInvocations/);
+  assert.match(outcomes, /requireActiveDeployment/);
+  assert.match(outcomes, /missingWorkerInvocations/);
+  assert.match(outcomes, /missingCpuSamples/);
+  assert.match(outcomes, /cpuThresholdViolations/);
+  assert.match(outcomes, /workerCpuHeadroomThresholdMs/);
+  assert.match(outcomes, /routeCounts/);
+  assert.match(outcomes, /resourceSoak/);
   assert.match(outcomes, /nonOkInvocations/);
-  assert.match(outcomes, /safePathname/);
+  assert.match(outcomes, /workerInvokedStaticRoutes/);
+  assert.match(outcomes, /\/api\/topics\?resource_soak/);
+  assert.match(outcomes, /\/chat\/learn-anything\?resource_soak/);
+  assert.match(outcomes, /\/api\/guest-chat\?resource_soak/);
+  assert.match(outcomes, /method: "POST"/);
+  assert.match(outcomes, /safeRequestUrl/);
   assert.match(outcomes, /classifySoakRequestError/);
-  assert.match(source, /\/api\/games\/results/);
   assert.match(source, /checkLocaleResourceSoak/);
-  assert.match(source, /checkImmutableLocalizedCacheControl/);
-  assert.match(source, /s-maxage>=31536000/);
-  assert.doesNotMatch(source, /checkSharedIsrCacheControl/);
+  assert.match(source, /checkStaticAssetDelivery/);
+  assert.match(source, /checkStaticNotFound/);
+  assert.match(source, /unknown public route/);
+  assert.match(source, /unknown API route/);
+  assert.match(source, /x-inspir-delivery/);
+  assert.match(source, /\/sitemap\.xml/);
+  assert.match(source, /\/manifest\.webmanifest/);
+  assert.match(source, /static legal redirect/);
+  assert.match(source, /\/loading/);
+  assert.match(source, /\/inspir-social-preview\.png/);
+  assert.match(source, /staticSiteLanguagesForPath/);
+  assert.doesNotMatch(source, /checkImmutableLocalizedCacheControl/);
+  assert.match(headers, /X-Inspir-Delivery: static-assets/);
   assert.match(source, /REQUIRE_RESOURCE_SOAK/);
-  assert.match(source, /supportedLanguages/);
   assert.match(source, /ai-game-arena/);
+  assert.match(source, /request\("\/games"\)/);
+  assert.match(source, /removed game surface/);
   assert.match(source, /cf-cache-status/);
 });
 
 test("Worker outcome soak records sanitized request failures without leaking URLs", async () => {
-  const { classifySoakRequestError } = await import("../scripts/cloudflare/verify-production-worker-outcomes");
+  const { classifySoakRequestError, workerCpuHeadroomThresholdMs } = await import(
+    "../scripts/cloudflare/verify-production-worker-outcomes"
+  );
+  assert.equal(workerCpuHeadroomThresholdMs, 8);
   const timeout = new Error("request timed out at https://inspirlearning.com/private?token=secret");
   timeout.name = "TimeoutError";
   assert.equal(classifySoakRequestError(timeout), "timeout");
@@ -56,36 +83,4 @@ test("Worker outcome soak records sanitized request failures without leaking URL
   assert.equal(classified, "network:TypeErrorscript");
   assert.doesNotMatch(classified, /inspirlearning|private|secret/i);
   assert.equal(classifySoakRequestError("https://inspirlearning.com/private?token=secret"), "network:unknown");
-});
-
-test("production smoke generators create server-valid completed Chess submissions", async () => {
-  const previousExpectedVersion = process.env.EXPECTED_WORKER_VERSION;
-  process.env.EXPECTED_WORKER_VERSION = "00000000-0000-4000-8000-000000000001";
-  try {
-    const production = await import("../scripts/cloudflare/verify-production");
-    const outcomes = await import("../scripts/cloudflare/verify-production-worker-outcomes");
-    const generators = [production.completedStrategyChessState, outcomes.completedStrategyChessState] as const;
-
-    for (const [index, generate] of generators.entries()) {
-      const state = generate();
-      assert.ok(state.result, `generator ${index + 1} should reach a terminal Chess state`);
-      assert.ok(state.history.length > 0 && state.history.length <= 128);
-
-      const built = buildPublicGameResult(
-        { state, startedAt: "2026-07-10T11:59:00.000Z" },
-        {
-          now: new Date("2026-07-10T12:00:00.000Z"),
-          resultId: `gr_${String(index + 1).padStart(32, "0")}`,
-        },
-      );
-      assert.equal(built.ok, true, `generator ${index + 1} should pass server replay validation`);
-      if (built.ok) {
-        assert.equal(built.result.gameSlug, "chess");
-        assert.equal(built.result.plyCount, state.history.length);
-      }
-    }
-  } finally {
-    if (previousExpectedVersion === undefined) delete process.env.EXPECTED_WORKER_VERSION;
-    else process.env.EXPECTED_WORKER_VERSION = previousExpectedVersion;
-  }
 });

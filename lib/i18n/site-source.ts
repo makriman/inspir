@@ -38,7 +38,7 @@ const sourceRoots = [
   "content/blog",
 ] as const;
 
-const skippedAppSegments = new Set(["api", "admin", "games"]);
+const skippedAppSegments = new Set(["api", "admin"]);
 const skippedJsxAttributes = new Set([
   "className",
   "href",

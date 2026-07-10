@@ -22,7 +22,7 @@ import {
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { absoluteUrl, siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -202,7 +202,7 @@ export async function AiLearningMapPageContent({
           {workflows.map((workflow) => (
             <Link
               key={workflow.slug}
-              href={localizeHref(workflow.href, hrefLanguage)}
+              href={localizeStaticSiteHref(workflow.href, hrefLanguage)}
               className="marketing-mode-finder-card"
             >
               <span>{workflow.kicker}</span>
@@ -228,7 +228,7 @@ export async function AiLearningMapPageContent({
         </div>
         <div className="learning-path-mode-list">
           {learningMapSearchIntents.map((intent) => (
-            <Link key={intent} href={localizeHref("/ai-learning-map", hrefLanguage)}>
+            <Link key={intent} href={localizeStaticSiteHref("/ai-learning-map", hrefLanguage)}>
               {intent}
             </Link>
           ))}
@@ -280,7 +280,7 @@ export async function AiLearningMapPageContent({
                     </span>
                     <h3>{workflow.path.title}</h3>
                     <p>{workflow.path.description}</p>
-                    <Link href={localizeHref(workflow.path.href, hrefLanguage)}>
+                    <Link href={localizeStaticSiteHref(workflow.path.href, hrefLanguage)}>
                       Open path
                       <ArrowUpRight size={15} />
                     </Link>
@@ -292,7 +292,7 @@ export async function AiLearningMapPageContent({
                     </span>
                     <h3>What this workflow should leave behind</h3>
                     <p>{workflow.outcome}</p>
-                    <Link href={localizeHref(workflow.modes[0]?.href ?? "/topics", hrefLanguage)}>
+                    <Link href={localizeStaticSiteHref(workflow.modes[0]?.href ?? "/topics", hrefLanguage)}>
                       Start the first mode
                       <ArrowUpRight size={15} />
                     </Link>
@@ -307,7 +307,7 @@ export async function AiLearningMapPageContent({
                     </span>
                     <h3>What this workflow should leave behind</h3>
                     <p>{workflow.outcome}</p>
-                    <Link href={localizeHref(workflow.modes[0]?.href ?? "/topics", hrefLanguage)}>
+                    <Link href={localizeStaticSiteHref(workflow.modes[0]?.href ?? "/topics", hrefLanguage)}>
                       Start the first mode
                       <ArrowUpRight size={15} />
                     </Link>
@@ -317,7 +317,7 @@ export async function AiLearningMapPageContent({
 
               <div className="marketing-topic-grid">
                 {workflow.modes.map((mode) => (
-                  <Link key={mode.slug} href={localizeHref(mode.href, hrefLanguage)} className="marketing-topic-link">
+                  <Link key={mode.slug} href={localizeStaticSiteHref(mode.href, hrefLanguage)} className="marketing-topic-link">
                     <span>{mode.uiMode.replaceAll("-", " ")}</span>
                     <strong>{mode.name}</strong>
                     <p>{mode.description}</p>
@@ -335,7 +335,7 @@ export async function AiLearningMapPageContent({
                   </Link>
                 ))}
                 {workflow.prompts.slice(0, 4).map((prompt) => (
-                  <Link key={prompt.id} href={localizeHref(prompt.href, hrefLanguage)} className="marketing-topic-link">
+                  <Link key={prompt.id} href={localizeStaticSiteHref(prompt.href, hrefLanguage)} className="marketing-topic-link">
                     <span>Prompt starter</span>
                     <strong>{prompt.topicName}</strong>
                     <p>{prompt.prompt}</p>
@@ -346,7 +346,7 @@ export async function AiLearningMapPageContent({
                   </Link>
                 ))}
                 {workflow.guides.map((guide) => (
-                  <Link key={guide.slug} href={localizeHref(guide.href, hrefLanguage)} className="marketing-topic-link">
+                  <Link key={guide.slug} href={localizeStaticSiteHref(guide.href, hrefLanguage)} className="marketing-topic-link">
                     <span>Guide</span>
                     <strong>{guide.title}</strong>
                     <p>{guide.description}</p>
@@ -396,7 +396,7 @@ export async function AiLearningMapPageContent({
       <section className="marketing-cta-band">
         <h2>Start with the broadest learning mode.</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             Start learning
             <Sparkles size={18} />
           </Link>

@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "../globals.css";
-import { Suspense } from "react";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
-import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
+import { StaticDocumentNavigation } from "@/components/navigation/StaticDocumentNavigation";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
   languageConfigs,
@@ -130,10 +129,8 @@ export default async function LocalizedLayout({ children, params }: LocalizedLay
   return (
     <html lang={languageConfig.locale} dir={languageConfig.dir} className={cn("h-full antialiased", "font-sans", geist.variable)}>
       <body className="min-h-full bg-[#171614] text-white">
+        <StaticDocumentNavigation />
         <AnalyticsScripts />
-        <Suspense fallback={null}>
-          <ProductAnalytics />
-        </Suspense>
         <JsonLdScripts items={rootJsonLd} language={language} />
         {children}
         <PwaInstallPrompt />

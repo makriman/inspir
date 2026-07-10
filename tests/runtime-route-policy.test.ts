@@ -18,7 +18,8 @@ test("marketing rendering is documented as coverage-scoped and deploy-time immut
   assert.doesNotMatch(layout, /export const dynamic = "force-dynamic"/);
   assert.match(docs, /Localized marketing HTML is deploy-time immutable/);
   assert.match(docs, /source-hash-exact curated packs/);
-  assert.match(docs, /unavailable localized URLs redirect to canonical English/);
+  assert.match(docs, /Generated links use canonical English when coverage is missing/);
+  assert.match(docs, /direct unsupported localized URL receives the static `404`/);
   assert.doesNotMatch(docs, /future static-marketing project/);
 });
 

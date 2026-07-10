@@ -3,17 +3,23 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Globe2, X } from "lucide-react";
+import { setClientLanguagePreferenceCookie } from "@/components/i18n/client-language-preference";
 import { LanguagePicker } from "@/components/i18n/LanguagePicker";
 import {
   defaultLanguage,
   languageDisplayName,
   type SupportedLanguage,
 } from "@/lib/content/languages";
+import {
+  localeCookieName,
+  localePromptCookieName,
+  localizeHref,
+  removeLocaleFromPath,
+} from "@/lib/i18n/routing";
 
 type LanguageControlsProps = {
   currentLanguage: SupportedLanguage;
   recommendedLanguage: SupportedLanguage;
-  currentPathname: string;
   hasLocalePrefix: boolean;
   availableLanguages: readonly SupportedLanguage[];
   copy: {
@@ -36,7 +42,6 @@ const promptStorageKey = "inspir_locale_prompt_dismissed";
 export function MarketingLanguageControls({
   currentLanguage,
   recommendedLanguage,
-  currentPathname,
   hasLocalePrefix,
   availableLanguages,
   copy,
@@ -54,23 +59,16 @@ export function MarketingLanguageControls({
     return () => window.cancelAnimationFrame(frame);
   }, [hasLocalePrefix]);
 
-  async function saveLanguage(language: SupportedLanguage) {
+  function saveLanguage(language: SupportedLanguage) {
     window.localStorage.setItem(promptStorageKey, "1");
     setPromptVisible(false);
-    const response = await fetch("/api/language-preference", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        language,
-        pathname: currentPathname || window.location.pathname + window.location.search,
-      }),
-    });
-    const data = (await response.json().catch(() => null)) as { redirectTo?: string } | null;
-    if (data?.redirectTo) {
-      window.location.assign(data.redirectTo);
-      return;
-    }
-    window.location.reload();
+    setClientLanguagePreferenceCookie(localeCookieName, language);
+    setClientLanguagePreferenceCookie(localePromptCookieName, "1");
+
+    const requestedPath = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    const unlocalizedPath = removeLocaleFromPath(requestedPath);
+    const redirectTo = language === defaultLanguage ? unlocalizedPath : localizeHref(unlocalizedPath, language);
+    window.location.assign(redirectTo);
   }
 
   function dismissPrompt() {
@@ -92,10 +90,10 @@ export function MarketingLanguageControls({
       <div className="marketing-language-bar-actions">
         {shouldRecommend ? (
           <>
-            <button type="button" className="is-recommended" onClick={() => void saveLanguage(recommendedLanguage)}>
+            <button type="button" className="is-recommended" onClick={() => saveLanguage(recommendedLanguage)}>
               {recommendedLabel}
             </button>
-            <button type="button" className="is-secondary" onClick={() => void saveLanguage(defaultLanguage)}>
+            <button type="button" className="is-secondary" onClick={() => saveLanguage(defaultLanguage)}>
               {copy.continueEnglish}
             </button>
           </>
@@ -109,7 +107,7 @@ export function MarketingLanguageControls({
           description={copy.chooseAnotherDescription}
           closeLabel={copy.dismissLabel}
           quickChoicesLabel={copy.promptAriaLabel}
-          onSelect={(language) => void saveLanguage(language)}
+          onSelect={saveLanguage}
           className="marketing-language-bar-picker"
         />
         <button type="button" onClick={dismissPrompt} aria-label={copy.dismissLabel}>
@@ -130,7 +128,7 @@ export function MarketingLanguageControls({
         description={copy.chooseDescription}
         closeLabel={copy.dismissLabel}
         quickChoicesLabel={copy.promptAriaLabel}
-        onSelect={(language) => void saveLanguage(language)}
+        onSelect={saveLanguage}
         className="marketing-language-picker-shell"
       />
       {prompt && typeof document !== "undefined" ? createPortal(prompt, document.body) : null}

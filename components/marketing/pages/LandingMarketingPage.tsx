@@ -36,7 +36,7 @@ import { topicPath } from "@/lib/content/topic-routing";
 import { getTopicSeo } from "@/lib/content/topic-seo";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
 import { getStaticMarketingChrome, type MarketingChrome } from "@/lib/i18n/marketing-chrome";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
@@ -310,17 +310,17 @@ function LandingHero({ t, chrome }: { t: LandingTranslator; chrome: MarketingChr
           )}
         </p>
         <div className="marketing-hero-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta">
             {t("Start learning")}
             <Sparkles size={18} />
           </Link>
-          <Link href={localizeHref("/mission", hrefLanguage)} className="marketing-secondary-cta">
+          <Link href={localizeStaticSiteHref("/mission", hrefLanguage)} className="marketing-secondary-cta">
             {t("Read the mission")}
           </Link>
         </div>
         <nav className="marketing-hero-routes" aria-label="Fast learning routes">
           {homepageHeroRoutes.map((route) => (
-            <Link key={route.href} href={localizeHref(route.href, hrefLanguage)}>
+            <Link key={route.href} href={localizeStaticSiteHref(route.href, hrefLanguage)}>
               <span>{t(route.eyebrow)}</span>
               <strong>{t(route.title)}</strong>
             </Link>
@@ -443,7 +443,7 @@ function LearningProcessSection({ t, hrefLanguage }: { t: LandingTranslator; hre
             <span>{step.step}</span>
             <h3>{t(step.title)}</h3>
             <p>{t(step.text)}</p>
-            <Link href={localizeHref(step.href, hrefLanguage)}>
+            <Link href={localizeStaticSiteHref(step.href, hrefLanguage)}>
               {t("Continue")}
               <ArrowUpRight size={15} />
             </Link>
@@ -501,7 +501,7 @@ function PublicModesSection({
         {priorityTopics.map((topic) => {
           const seo = getTopicSeo(topic);
           return (
-            <Link key={topic.slug} href={localizeHref(topicPath(topic.slug), hrefLanguage)} className="marketing-topic-link">
+            <Link key={topic.slug} href={localizeStaticSiteHref(topicPath(topic.slug), hrefLanguage)} className="marketing-topic-link">
               <span>{t(topic.metadata.category)}</span>
               <strong>{t(topic.name)}</strong>
               <p>{t(seo.description)}</p>
@@ -543,7 +543,7 @@ function SubjectHubsSection({
       </div>
       <div className="marketing-mode-finder-grid">
         {subjectPages.map((page) => (
-          <Link key={page.slug} href={localizeHref(subjectPath(page.slug), hrefLanguage)} className="marketing-mode-finder-card">
+          <Link key={page.slug} href={localizeStaticSiteHref(subjectPath(page.slug), hrefLanguage)} className="marketing-mode-finder-card">
             <span>{t(page.eyebrow)}</span>
             <strong>{t(page.seoTitle)}</strong>
             <p>{t(page.description)}</p>
@@ -584,12 +584,12 @@ function LearningPathsSection({ t, hrefLanguage }: { t: LandingTranslator; hrefL
             <h3>{t(path.title)}</h3>
             <p>{t(path.description)}</p>
             <div>
-              <Link href={localizeHref(learningPathHref(path.slug), hrefLanguage)}>
+              <Link href={localizeStaticSiteHref(learningPathHref(path.slug), hrefLanguage)}>
                 <ArrowUpRight size={15} />
                 {t("Open the path")}
               </Link>
               {path.links.map((link) => (
-                <Link key={link.href} href={localizeHref(link.href, hrefLanguage)}>
+                <Link key={link.href} href={localizeStaticSiteHref(link.href, hrefLanguage)}>
                   <CornerDownRight size={15} />
                   {t(link.label)}
                 </Link>
@@ -682,7 +682,7 @@ function BlogHighlightsSection({
         {featuredPosts.map((post) => (
           <Link
             key={post.slug}
-            href={localizeHref(`/blog/${post.slug}`, hrefLanguage)}
+            href={localizeStaticSiteHref(`/blog/${post.slug}`, hrefLanguage)}
             className="marketing-repo-card blog-card"
           >
             <time dateTime={post.date}>{formatMediumDate(post.date)}</time>

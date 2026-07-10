@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { FREE_PLAN_WORKER_FIRST_ROUTES } from "../scripts/cloudflare/deploy-preflight";
 import { LOCAL_GATE_IDS } from "../scripts/cloudflare/migration-config";
 
 test("Cloudflare package scripts avoid nested pnpm invocations", () => {
@@ -108,7 +109,7 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
   assert.match(shell, /hrefLanguage/);
   assert.doesNotMatch(layout, /MarketingServerLocalizer/);
   assert.match(manifestGenerator, /isRenderLocalizedSiteTranslationNamespace/);
-  assert.match(fs.readFileSync(path.resolve("lib/i18n/site-source.ts"), "utf8"), /"api", "admin", "games"/);
+  assert.match(fs.readFileSync(path.resolve("lib/i18n/site-source.ts"), "utf8"), /"api", "admin"/);
   assert.doesNotMatch(layout, /headers\(\)/);
   assert.doesNotMatch(jsonLd, /headers\(\)/);
   assert.equal(requestLocale.match(/await headers\(\)/g)?.length, 1);
@@ -137,23 +138,31 @@ test("runtime translation reads cannot accumulate request-bound promises in isol
   assert.match(manifestGenerator, /site-namespace-manifest\.ts/);
 });
 
-test("marketing cacheability config is deterministic for cookieless GET pages", () => {
+test("public marketing delivery is direct Static Assets with no managed HTML cache tooling", () => {
   const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
+  const nextConfig = fs.readFileSync(path.resolve("next.config.ts"), "utf8");
+  const globalNotFound = fs.readFileSync(path.resolve("app/global-not-found.tsx"), "utf8");
   const csp = fs.readFileSync(path.resolve("lib/security/headers.ts"), "utf8");
-  const cacheRule = fs.readFileSync(path.resolve("scripts/cloudflare/upsert-marketing-cache-rule.ts"), "utf8");
-  const edgeCacheVerifier = fs.readFileSync(path.resolve("scripts/cloudflare/verify-marketing-edge-cache.ts"), "utf8");
+  const staticHeaders = fs.readFileSync(path.resolve("public/_headers"), "utf8");
+  const staticRedirects = fs.readFileSync(path.resolve("public/_redirects"), "utf8");
+  const materializer = fs.readFileSync(path.resolve("scripts/cloudflare/materialize-static-marketing-assets.ts"), "utf8");
   const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
     scripts?: Record<string, string>;
   };
   const wrangler = JSON.parse(fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8")) as {
     placement?: { mode?: string };
     limits?: { cpu_ms?: number };
+    assets?: {
+      directory?: string;
+      html_handling?: string;
+      not_found_handling?: string;
+      run_worker_first?: string[];
+    };
     cache?: { enabled?: boolean };
   };
 
   assert.match(middleware, /buildCacheableMarketingContentSecurityPolicy/);
-  assert.match(middleware, /requestHost === "localhost"/);
-  assert.match(middleware, /requestHost === "127\.0\.0\.1"/);
+  assert.match(middleware, /canonicalOriginRedirectUrl\(request\.nextUrl, request\.headers\)/);
   assert.match(middleware, /isMarketingPageRequest/);
   assert.match(middleware, /isPubliclyCacheableMarketingRequest/);
   assert.match(middleware, /"\/blog"/);
@@ -164,39 +173,36 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.match(middleware, /Vary", "Accept-Encoding, Cookie"/);
   assert.match(middleware, /localizedPath\.hasLocalePrefix && !cacheableMarketingRequest/);
   assert.match(middleware, /isStaticSiteLanguageAvailableForPath\(effectivePathname, language\)/);
-  assert.match(middleware, /pathname\.startsWith\("\/games"\)/);
   assert.match(csp, /buildCacheableMarketingContentSecurityPolicy/);
   assert.match(csp, /script-src 'self' 'unsafe-inline' https:\/\/accounts\.google\.com/);
-  assert.match(cacheRule, /http_request_cache_settings/);
-  assert.match(cacheRule, /set_cache_settings/);
-  assert.match(cacheRule, /inspir_marketing_html_edge_cache_v1/);
-  assert.match(cacheRule, /"\/blog"/);
-  assert.match(cacheRule, /http\.cookie contains/);
-  assert.match(cacheRule, /better-auth\.session_token/);
-  assert.match(cacheRule, /__Secure-better-auth\.session_token/);
-  assert.match(cacheRule, /cache: false/);
-  assert.match(cacheRule, /mode: "override_origin"/);
-  assert.match(cacheRule, /englishEdgeTtlSeconds = 60 \* 60/);
-  assert.match(cacheRule, /localizedEdgeTtlSeconds = 365 \* 24 \* 60 \* 60/);
-  assert.match(cacheRule, /default: edgeTtlSeconds/);
-  assert.match(cacheRule, /from: 200, to: 299 \}, value: edgeTtlSeconds/);
-  assert.match(cacheRule, /from: 300, to: 499 \}, value: 0/);
-  assert.match(cacheRule, /from: 500, to: 599 \}, value: -1/);
-  assert.doesNotMatch(cacheRule, /status_code_range[^\n]+duration:/);
-  assert.match(cacheRule, /browser_ttl: \{ mode: "respect_origin" \}/);
-  assert.match(cacheRule, /not http\.request\.uri\.query contains/);
-  assert.doesNotMatch(cacheRule, /custom_key/);
-  assert.match(edgeCacheVerifier, /cf-cache-status/);
-  assert.match(edgeCacheVerifier, /better-auth\.session_token=edge-cache-probe/);
-  assert.match(edgeCacheVerifier, /unavailableLocalizedPassed/);
-  assert.match(edgeCacheVerifier, /"\/hi\/mission"/);
-  assert.equal(packageJson.scripts?.["cf:cache:upsert-marketing-html"], "tsx scripts/cloudflare/upsert-marketing-cache-rule.ts");
-  assert.equal(packageJson.scripts?.["cf:verify:edge-cache"], "tsx scripts/cloudflare/verify-marketing-edge-cache.ts");
+  assert.match(staticHeaders, /X-Inspir-Delivery: static-assets/);
+  assert.match(staticRedirects, /^\/tnc\s+\/terms\s+308$/m);
+  assert.match(materializer, /minimumLocalizedHomeDocuments/);
+  assert.match(materializer, /Required static document was not materialized/);
+  assert.match(materializer, /Static HTML must not depend on the billable Next image optimizer/);
+  assert.match(nextConfig, /unoptimized:\s*true/);
+  assert.match(globalNotFound, /from "next\/link"/);
+  assert.match(globalNotFound, /<Link href="\/chat\/learn-anything" prefetch=\{false\}>/);
+  assert.match(globalNotFound, /<Link href="\/" prefetch=\{false\}>/);
+  assert.equal(fs.existsSync(path.resolve("scripts/cloudflare/upsert-marketing-cache-rule.ts")), false);
+  assert.equal(fs.existsSync(path.resolve("scripts/cloudflare/purge-deploy-html-cache.ts")), false);
+  assert.equal(fs.existsSync(path.resolve("scripts/cloudflare/verify-marketing-edge-cache.ts")), false);
+  assert.equal(packageJson.scripts?.["cf:cache:upsert-marketing-html"], undefined);
+  assert.equal(packageJson.scripts?.["cf:cache:purge-deploy-html"], undefined);
+  assert.equal(packageJson.scripts?.["cf:verify:edge-cache"], undefined);
   assert.equal(packageJson.scripts?.["seo:lastmod:generate"], "tsx scripts/seo/generate-sitemap-lastmod.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");
   assert.equal(wrangler.placement?.mode, "smart");
   assert.equal(wrangler.cache, undefined);
-  assert.equal(wrangler.limits?.cpu_ms, 5_000);
+  assert.equal(wrangler.limits, undefined);
+  assert.equal(wrangler.assets?.directory, ".open-next/assets");
+  assert.equal(wrangler.assets?.html_handling, "drop-trailing-slash");
+  assert.equal(wrangler.assets?.not_found_handling, "404-page");
+  assert.deepEqual(wrangler.assets?.run_worker_first, [...FREE_PLAN_WORKER_FIRST_ROUTES]);
+  const workerFirstRoutes = new Set<string>(wrangler.assets?.run_worker_first ?? []);
+  assert.equal(workerFirstRoutes.has("!/_next/static/*"), true);
+  assert.equal(workerFirstRoutes.has("/api/*"), false);
+  assert.equal(workerFirstRoutes.has("/*"), false);
 });
 
 test("localized marketing chrome avoids English-only video and PWA labels", () => {
@@ -236,8 +242,6 @@ test("localized marketing chrome avoids English-only video and PWA labels", () =
   assert.match(pwaPrompt, /const promptEnabled = enabled && !hasLocalePathPrefix\(pathname\)/);
   assert.match(pwaPrompt, /if \(!promptEnabled \|\| !sheet\.isVisible \|\| !sheet\.mode\)/);
   assert.match(marketingShell, /availableLanguages=\{chrome\.availableLanguages\}/);
-  assert.match(marketingShell, /chrome\.hrefLanguage === defaultLanguage/);
-  assert.match(marketingShell, /href="\/games"/);
 });
 
 test("homepage film keeps the poster as the first visible LCP surface", () => {
@@ -265,17 +269,13 @@ test("sitemap lastmod data is generated from git content sources", () => {
   assert.doesNotMatch(sitemap, /lastModified:\s*new Date\(/);
   assert.match(lastmod, /Generated by pnpm seo:lastmod:generate/);
   assert.match(generator, /"git", \["log", "-1", "--format=%cs"/);
-  assert.match(sitemap, /absoluteUrl\("\/games\/chess"\)/);
 });
 
 test("social preview metadata points at the static PNG fallback", () => {
-  const source = fs.readFileSync(path.resolve("app/og/route.ts"), "utf8");
   const socialConfig = fs.readFileSync(path.resolve("lib/seo/config.ts"), "utf8");
 
-  assert.match(source, /inspir-social-preview\.png/);
+  assert.equal(fs.existsSync(path.resolve("app/og/route.ts")), false);
   assert.match(socialConfig, /url:\s*`\$\{siteUrl\}\/inspir-social-preview\.png`/);
-  assert.doesNotMatch(source, /ImageResponse/);
-  assert.doesNotMatch(source, /runtime\s*=\s*"edge"/);
 });
 
 test("IndexNow key is root-served and submit script targets Bing", () => {
@@ -392,10 +392,13 @@ test("admin dashboard is DB-backed and reachable from admin profiles", () => {
   assert.match(adminPage, /Cached topics/);
 });
 
-test("analytics scripts and product events are installed without inline CSP fallback", () => {
+test("static pages keep external analytics but reserve D1 product events for the workspace", () => {
   const analyticsScripts = fs.readFileSync(path.resolve("components/analytics/AnalyticsScripts.tsx"), "utf8");
   const productAnalytics = fs.readFileSync(path.resolve("components/analytics/ProductAnalytics.tsx"), "utf8");
   const trackProductEvent = fs.readFileSync(path.resolve("components/analytics/trackProductEvent.ts"), "utf8");
+  const marketingLayout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
+  const localizedLayout = fs.readFileSync(path.resolve("app/[locale]/layout.tsx"), "utf8");
+  const workspaceLayout = fs.readFileSync(path.resolve("app/(workspace)/layout.tsx"), "utf8");
   const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
   const csp = fs.readFileSync(path.resolve("lib/security/headers.ts"), "utf8");
   const scriptDirective = csp.split("\n").find((line) => line.includes("script-src")) ?? "";
@@ -405,6 +408,11 @@ test("analytics scripts and product events are installed without inline CSP fall
   assert.match(productAnalytics, /auth_error_seen/);
   assert.match(productAnalytics, /trackProductEvent/);
   assert.match(trackProductEvent, /\/api\/analytics\/events/);
+  assert.match(marketingLayout, /AnalyticsScripts/);
+  assert.match(localizedLayout, /AnalyticsScripts/);
+  assert.doesNotMatch(marketingLayout, /ProductAnalytics/);
+  assert.doesNotMatch(localizedLayout, /ProductAnalytics/);
+  assert.match(workspaceLayout, /ProductAnalytics/);
   assert.match(middleware, /buildContentSecurityPolicy\(nonce\)/);
   assert.match(csp, /'nonce-\$\{nonce\}'/);
   assert.doesNotMatch(scriptDirective, /'unsafe-inline'/);

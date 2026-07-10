@@ -11,7 +11,7 @@ import { aboutFaqs, aboutProofPoints, aboutStoryLinks, aboutTimeline } from "@/l
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -203,7 +203,7 @@ export async function AboutPageContent({
         </div>
         <div className="marketing-topic-grid">
           {aboutStoryLinks.map((link) => (
-            <Link key={link.href} href={localizeHref(link.href, hrefLanguage)} className="marketing-topic-link">
+            <Link key={link.href} href={localizeStaticSiteHref(link.href, hrefLanguage)} className="marketing-topic-link">
               <span>Story reference</span>
               <strong>{link.title}</strong>
               <p>{link.text}</p>
@@ -238,7 +238,7 @@ export async function AboutPageContent({
       <section className="marketing-cta-band">
         <h2>Explore the public learning surface.</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             Start learning
             <Sparkles size={18} />
           </Link>

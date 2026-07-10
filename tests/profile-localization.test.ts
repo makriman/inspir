@@ -15,7 +15,10 @@ import {
 } from "../lib/i18n/language-detection";
 import { resolveRequestLanguage } from "../lib/i18n/language-preference";
 import { localizeStructuredDataValue } from "../lib/i18n/metadata";
-import { isStaticSiteLanguageAvailableForPath } from "../lib/i18n/static-availability";
+import {
+  isStaticSiteLanguageAvailableForPath,
+  localizeStaticSiteHref,
+} from "../lib/i18n/static-availability";
 import {
   getEnglishMainAppTranslationBundle,
   getMainAppSourceHash,
@@ -30,7 +33,13 @@ import {
   marketingShellTranslationNamespace,
 } from "../lib/i18n/site-source";
 import { translationStringsFromDbPayload } from "../lib/i18n/db-translations";
-import { getLocalizedPathInfo, languageAlternatesForPath, localizeHref, localizePath } from "../lib/i18n/routing";
+import {
+  getLocalizedPathInfo,
+  languageAlternatesForPath,
+  localizeHref,
+  localizePath,
+  removeLocaleFromPath,
+} from "../lib/i18n/routing";
 import { createTranslationLookup } from "../lib/i18n/translation-lookup";
 import { isTranslationBundleCompleteAndFluent } from "../lib/i18n/translation-quality";
 import { isValidFieldTranslation } from "../lib/i18n/translation-field-validation";
@@ -207,6 +216,8 @@ test("locale routing helpers preserve canonical English and prefix non-English p
   assert.equal(localizePath("/blog/example", "Spanish"), "/es/blog/example");
   assert.equal(localizePath("/blog/example", "English"), "/blog/example");
   assert.equal(localizeHref("/topics?tab=math", "Hindi"), "/hi/topics?tab=math");
+  assert.equal(removeLocaleFromPath("/hi/topics?tab=math#practice"), "/topics?tab=math#practice");
+  assert.equal(localizeHref("/hi/topics?tab=math#practice", "Spanish"), "/es/topics?tab=math#practice");
   assert.deepEqual(getLocalizedPathInfo("/ar/blog/example"), {
     language: "Arabic",
     prefix: "ar",
@@ -226,8 +237,11 @@ test("static locale availability admits only render-localized page bodies", () =
   assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Spanish"), true);
   assert.equal(isStaticSiteLanguageAvailableForPath("/about", "Spanish"), false);
   assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Hindi"), false);
-  assert.equal(isStaticSiteLanguageAvailableForPath("/games", "Spanish"), false);
   assert.equal(isStaticSiteLanguageAvailableForPath("/reset_pw", "Spanish"), false);
+  assert.equal(localizeStaticSiteHref("/mission?source=home#principles", "Spanish"), "/es/mission?source=home#principles");
+  assert.equal(localizeStaticSiteHref("/mission?source=home#principles", "Hindi"), "/mission?source=home#principles");
+  assert.equal(localizeStaticSiteHref("/chat/learn-anything?source=home", "Hindi"), "/hi/chat/learn-anything?source=home");
+  assert.equal(localizeStaticSiteHref("/blog/ai-learn-anything-guide", "Spanish"), "/blog/ai-learn-anything-guide");
 });
 
 test("explicit English language cookie wins over localized referrer", () => {

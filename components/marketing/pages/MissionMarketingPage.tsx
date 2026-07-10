@@ -18,7 +18,7 @@ import { authorityReferenceLinks, missionFaqs, missionPrinciples } from "@/lib/c
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -230,7 +230,7 @@ export async function MissionPageContent({
         </div>
         <div className="marketing-topic-grid">
           {authorityReferenceLinks.map((link) => (
-            <Link key={link.href} href={localizeHref(link.href, hrefLanguage)} className="marketing-topic-link">
+            <Link key={link.href} href={localizeStaticSiteHref(link.href, hrefLanguage)} className="marketing-topic-link">
               <span>{t("Reference page")}</span>
               <strong>{t(link.title)}</strong>
               <p>{t(link.text)}</p>
@@ -289,7 +289,7 @@ export async function MissionPageContent({
       <section className="marketing-cta-band">
         <h2>{t("Start with the public learning companion.")}</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             {t("Start learning")}
             <Sparkles size={18} />
           </Link>

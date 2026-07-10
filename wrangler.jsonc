@@ -7,15 +7,50 @@
   "placement": {
     "mode": "smart"
   },
-  "limits": {
-    "cpu_ms": 5000
-  },
   "account_id": "a1e5e542dc1d5fe5a5c6b2a10d755a81",
   "workers_dev": false,
   "preview_urls": false,
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": [
+      "!/_next/static/*",
+      "/api/activities/flashcards",
+      "/api/activities/flashcards/*",
+      "/api/activities/quiz",
+      "/api/activities/quiz/*",
+      "/api/admin/topics",
+      "/api/admin/users",
+      "/api/analytics/events",
+      "/api/auth",
+      "/api/auth/*",
+      "/api/chat",
+      "/api/chats",
+      "/api/chats/*",
+      "/api/cron/memory-dreaming",
+      "/api/guest-chat",
+      "/api/health",
+      "/api/logout",
+      "/api/me",
+      "/api/me/photo",
+      "/api/memory",
+      "/api/memory/*",
+      "/api/migration/e2e-auth",
+      "/api/migration/write-freeze",
+      "/api/topics",
+      "/chat",
+      "/chat/*",
+      "/admin",
+      "/admin/*",
+      "/reset_pw",
+      "/*/chat",
+      "/*/chat/*",
+      "/*/admin",
+      "/*/admin/*",
+      "/*/reset_pw"
+    ]
   },
   "observability": {
     "enabled": true,
@@ -130,8 +165,6 @@
     "RATE_LIMIT_GUEST_IP_DAILY": "150",
     "RATE_LIMIT_ACTIVITY_DAILY": "10",
     "RATE_LIMIT_MEMORY_DAILY": "20",
-    "RATE_LIMIT_GAME_RESULT_IP_DAILY": "120",
-    "RATE_LIMIT_GAME_RESULT_FINGERPRINT_DAILY": "60",
     "LLM_GLOBAL_DAILY_CALL_LIMIT": "1000",
     "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD": "2",
     "MEMORY_PROFILE_COMPILE_LIMIT": "20",

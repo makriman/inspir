@@ -25,6 +25,10 @@ export function GET() {
         id: process.env.OPEN_NEXT_BUILD_ID ?? "unknown-build",
       },
       architecture: {
+        deploymentMode: "free-static-first",
+        publicDocuments: "workers-static-assets",
+        workerCpuPlan: "free-10ms",
+        games: false,
         cacheRevalidationQueue: Boolean(env.NEXT_CACHE_DO_QUEUE),
         incrementalCache: "regional-r2",
         workerWideCache: false,

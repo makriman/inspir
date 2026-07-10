@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "inspirlearning-www-redirect",
+  "main": "./cloudflare-www-redirect.ts",
+  "compatibility_date": "2026-07-10",
+  "compatibility_flags": ["nodejs_compat"],
+  "account_id": "a1e5e542dc1d5fe5a5c6b2a10d755a81",
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 0.01,
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 0.01,
+      "invocation_logs": true,
+      "persist": true
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.01,
+      "persist": true
+    }
+  },
+  "routes": [
+    {
+      "pattern": "www.inspirlearning.com/*",
+      "zone_name": "inspirlearning.com"
+    }
+  ]
+}

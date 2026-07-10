@@ -73,20 +73,6 @@ export async function consumeFixedWindowQuota(
   return consumeFixedWindowQuotaWithFailureMode(key, limit, windowMs, now, "fail-open");
 }
 
-/**
- * Reserved for abuse-sensitive public writes that must stop when D1 cannot
- * authoritatively consume a quota. Existing per-user quotas intentionally use
- * consumeFixedWindowQuota() and keep their availability-biased fail-open policy.
- */
-export async function consumeFixedWindowQuotaOrThrow(
-  key: string,
-  limit: number,
-  windowMs: number,
-  now = new Date(),
-): Promise<RateLimitResult> {
-  return consumeFixedWindowQuotaWithFailureMode(key, limit, windowMs, now, "throw");
-}
-
 async function consumeFixedWindowQuotaWithFailureMode(
   key: string,
   limit: number,

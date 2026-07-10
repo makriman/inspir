@@ -17,7 +17,7 @@ import {
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -185,7 +185,7 @@ export async function TrustPageContent({
             return (
               <Link
                 key={safeguard.title}
-                href={localizeHref(safeguard.href, hrefLanguage)}
+                href={localizeStaticSiteHref(safeguard.href, hrefLanguage)}
                 className="marketing-topic-link"
               >
                 <span>
@@ -234,7 +234,7 @@ export async function TrustPageContent({
         </div>
         <div className="learning-path-mode-list">
           {trustReferenceLinks.map((link) => (
-            <Link key={link.href} href={localizeHref(link.href, hrefLanguage)}>
+            <Link key={link.href} href={localizeStaticSiteHref(link.href, hrefLanguage)}>
               {link.title}
             </Link>
           ))}
@@ -259,7 +259,7 @@ export async function TrustPageContent({
       <section className="marketing-cta-band">
         <h2>Start from a public learning mode with clear boundaries.</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             Start learning
             <Sparkles size={18} />
           </Link>

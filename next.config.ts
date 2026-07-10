@@ -49,6 +49,10 @@ const nextConfig: NextConfig = {
     "/ai-content-index.json": contentTraceFiles,
   },
   images: {
+    // Workers Static Assets serve public images directly. The Next optimizer
+    // would turn otherwise static pages into billable `/_next/image` Worker
+    // requests and would be unavailable behind the static 404 boundary.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

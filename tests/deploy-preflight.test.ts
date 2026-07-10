@@ -4,7 +4,10 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { buildSteadyStateDeployPreflightReport } from "../scripts/cloudflare/deploy-preflight";
+import {
+  FREE_PLAN_WORKER_FIRST_ROUTES,
+  buildSteadyStateDeployPreflightReport,
+} from "../scripts/cloudflare/deploy-preflight";
 import {
   D1_DATABASE_ID,
   D1_DATABASE_NAME,
@@ -39,6 +42,32 @@ test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
       ["OpenNext cache revalidation architecture", "pass"],
     ],
   );
+});
+
+test("production Static Assets config exactly covers the current dynamic routes", () => {
+  const config = JSON.parse(fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8")) as {
+    assets?: { not_found_handling?: string; run_worker_first?: string[] };
+  };
+  const routes: string[] = [...(config.assets?.run_worker_first ?? [])];
+  assert.equal(config.assets?.not_found_handling, "404-page");
+  assert.deepEqual([...routes].sort(), [...FREE_PLAN_WORKER_FIRST_ROUTES].sort());
+  assert.equal(routes.includes("/api/*"), false);
+  assert.equal(routes.includes("/*"), false);
+  assert.ok(
+    routes.includes("!/_next/static/*"),
+    "Next client chunks must take precedence over deep localized Worker-first globs",
+  );
+  for (const required of ["/*/chat", "/*/chat/*", "/*/admin", "/*/admin/*", "/*/reset_pw"]) {
+    assert.ok(routes.includes(required), `missing localized dynamic route ${required}`);
+  }
+
+  const apiRouteFiles = listFiles(path.resolve("app/api")).filter((file) => file.endsWith("/route.ts"));
+  for (const file of apiRouteFiles) {
+    const route = `/${path.relative(path.resolve("app"), path.dirname(file)).split(path.sep).join("/")}`
+      .replaceAll(/\[\.\.\.\w+\]/g, "probe")
+      .replaceAll(/\[\w+\]/g, "probe");
+    assert.ok(routes.some((pattern) => routePatternMatches(pattern, route)), `unrouted dynamic endpoint ${route}`);
+  }
 });
 
 test("steady-state deploy preflight rejects stale local-gate source evidence", () => {
@@ -212,12 +241,52 @@ test("steady-state deploy preflight rejects Worker-wide response caching", () =>
   assert.equal((wrangler?.detail as { workerGlobalCacheOk?: boolean }).workerGlobalCacheOk, false);
 });
 
-test("steady-state deploy preflight requires the bounded production CPU contract", () => {
-  for (const cpuMs of [undefined, 300_000]) {
+test("steady-state deploy preflight rejects paid-only CPU limits on the Free deployment", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    Object.assign(config, { limits: { cpu_ms: 5_000 } });
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.equal((wrangler?.detail as { freePlanCpuConfigOk?: boolean }).freePlanCpuConfigOk, false);
+});
+
+test("steady-state deploy preflight rejects a missing Static Asset 404 boundary", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    delete (config.assets as { not_found_handling?: string }).not_found_handling;
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.equal((wrangler?.detail as { staticAssetsOk?: boolean }).staticAssetsOk, false);
+});
+
+test("steady-state deploy preflight rejects broad or incomplete Worker-first routing", () => {
+  for (const mutate of [
+    (routes: string[]) => routes.push("/*"),
+    (routes: string[]) => routes.splice(routes.indexOf("/*/chat/*"), 1),
+  ]) {
     const { backupDir, repoDir } = makeFixture();
     replaceWranglerConfig(repoDir, backupDir, (config) => {
-      if (cpuMs === undefined) Reflect.deleteProperty(config, "limits");
-      else config.limits.cpu_ms = cpuMs;
+      mutate(config.assets.run_worker_first);
     });
 
     const report = buildSteadyStateDeployPreflightReport({
@@ -230,8 +299,26 @@ test("steady-state deploy preflight requires the bounded production CPU contract
     assert.equal(report.ok, false);
     const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
     assert.equal(wrangler?.status, "fail");
-    assert.equal((wrangler?.detail as { cpuBudgetOk?: boolean }).cpuBudgetOk, false);
+    assert.equal((wrangler?.detail as { staticAssetsOk?: boolean }).staticAssetsOk, false);
   }
+});
+
+test("steady-state deploy preflight rejects a missing zero-CPU legal redirect", () => {
+  const { backupDir, repoDir } = makeFixture();
+  fs.rmSync(path.join(repoDir, "public/_redirects"));
+  writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.equal((wrangler?.detail as { staticLegalRedirectOk?: boolean }).staticLegalRedirectOk, false);
 });
 
 test("steady-state deploy preflight rejects a missing OpenNext Durable Object queue", () => {
@@ -251,19 +338,6 @@ test("steady-state deploy preflight rejects a missing OpenNext Durable Object qu
   const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
   assert.equal(wrangler?.status, "fail");
   assert.equal((wrangler?.detail as { cacheRevalidationDoOk?: boolean }).cacheRevalidationDoOk, false);
-});
-
-test("deploy preflight gates the immutable game-results schema before Worker cutover", () => {
-  const source = fs.readFileSync(path.resolve("scripts/cloudflare/deploy-preflight.ts"), "utf8");
-  const deploy = fs.readFileSync(path.resolve("deploy.md"), "utf8");
-
-  assert.match(source, /remoteD1GameResultsSchemaCheck/);
-  assert.match(source, /game_results_reject_update/);
-  assert.match(source, /schemaVersionFixed/);
-  assert.match(source, /payloadJsonChecked/);
-  assert.match(source, /plyBounded/);
-  assert.match(deploy, /cf:d1:apply-game-results -- --remote --confirm-production/);
-  assert.ok(deploy.indexOf("cf:d1:apply-game-results") < deploy.indexOf("cf:deploy"));
 });
 
 test("deploy preflight requires a post-migration Durable Object rollback target", () => {
@@ -305,6 +379,8 @@ function makeFixture() {
   fs.writeFileSync(path.join(repoDir, "app.ts"), "export const ok = true;\n");
   fs.writeFileSync(path.join(repoDir, "wrangler.jsonc"), `${JSON.stringify(wranglerConfig(), null, 2)}\n`);
   fs.writeFileSync(path.join(repoDir, "open-next.config.ts"), openNextConfig());
+  fs.mkdirSync(path.join(repoDir, "public"), { recursive: true });
+  fs.writeFileSync(path.join(repoDir, "public/_redirects"), "/tnc /terms 308\n");
 
   const fingerprint = buildRepoSourceFingerprint(repoDir);
   writeLocalEvidence(backupDir, fingerprint);
@@ -373,12 +449,42 @@ function localGateDetail(check: { detail?: unknown } | undefined) {
   return check.detail as { missingGateIds?: string[]; failedGateIds?: string[] };
 }
 
+function listFiles(root: string) {
+  const files: string[] = [];
+  const pending = [root];
+  while (pending.length) {
+    const current = pending.pop();
+    if (!current) continue;
+    const stats = fs.statSync(current);
+    if (stats.isDirectory()) {
+      for (const entry of fs.readdirSync(current)) pending.push(path.join(current, entry));
+    } else if (stats.isFile()) {
+      files.push(current);
+    }
+  }
+  return files;
+}
+
+function routePatternMatches(pattern: string, route: string) {
+  const expression = pattern
+    .split("*")
+    .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+    .join(".*");
+  return new RegExp(`^${expression}$`).test(route);
+}
+
 function wranglerConfig() {
   return {
     name: "inspirlearning",
     workers_dev: false,
     preview_urls: false,
-    limits: { cpu_ms: 5_000 },
+    assets: {
+      directory: ".open-next/assets",
+      binding: "ASSETS",
+      html_handling: "drop-trailing-slash",
+      not_found_handling: "404-page",
+      run_worker_first: [...FREE_PLAN_WORKER_FIRST_ROUTES],
+    },
     d1_databases: [{ binding: "DB", database_name: D1_DATABASE_NAME, database_id: D1_DATABASE_ID }],
     vectorize: [{ binding: "MEMORY_VECTORIZE", index_name: VECTORIZE_INDEX_NAME }],
     r2_buckets: [
@@ -441,8 +547,6 @@ function wranglerConfig() {
       RATE_LIMIT_GUEST_IP_DAILY: "150",
       RATE_LIMIT_ACTIVITY_DAILY: "10",
       RATE_LIMIT_MEMORY_DAILY: "20",
-      RATE_LIMIT_GAME_RESULT_IP_DAILY: "120",
-      RATE_LIMIT_GAME_RESULT_FINGERPRINT_DAILY: "60",
       LLM_GLOBAL_DAILY_CALL_LIMIT: "1000",
       MEMORY_POST_TURN_SYNTHESIS_THRESHOLD: "2",
       MEMORY_PROFILE_COMPILE_LIMIT: "20",

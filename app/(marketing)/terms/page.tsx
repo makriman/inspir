@@ -23,6 +23,9 @@ const pageMetadata: Metadata = {
   },
 };
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 export function generateMetadata() {
   return localizeMarketingMetadata(pageMetadata, "/terms");
 }

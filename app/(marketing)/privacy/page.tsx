@@ -7,6 +7,9 @@ import { siteName, socialImage } from "@/lib/seo/config";
 const description =
   "How inspir describes data use, privacy practices, and user rights for the public learning platform.";
 
+export const dynamic = "force-static";
+export const revalidate = false;
+
 const pageMetadata: Metadata = {
   title: "Privacy Policy",
   description,

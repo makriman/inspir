@@ -11,7 +11,7 @@ import { homepageLearningPaths, learningPathHref } from "@/lib/content/landing";
 import type { SupportedLanguage } from "@/lib/content/languages";
 import { getStaticMarketingChrome } from "@/lib/i18n/marketing-chrome";
 import { localizeMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
-import { localizeHref } from "@/lib/i18n/routing";
+import { localizeStaticSiteHref } from "@/lib/i18n/static-availability";
 import { siteName, socialImage } from "@/lib/seo/config";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
@@ -120,12 +120,12 @@ export async function LearningPathsPageContent({
               <h3>{path.title}</h3>
               <p>{path.description}</p>
               <div>
-                <Link href={localizeHref(learningPathHref(path.slug), hrefLanguage)}>
+                <Link href={localizeStaticSiteHref(learningPathHref(path.slug), hrefLanguage)}>
                   <ArrowUpRight size={15} />
                   Open the full path
                 </Link>
                 {path.links.slice(0, 2).map((link) => (
-                  <Link key={link.href} href={localizeHref(link.href, hrefLanguage)}>
+                  <Link key={link.href} href={localizeStaticSiteHref(link.href, hrefLanguage)}>
                     <CornerDownRight size={15} />
                     {link.label}
                   </Link>
@@ -139,7 +139,7 @@ export async function LearningPathsPageContent({
       <section className="marketing-cta-band">
         <h2>Need a first step right now?</h2>
         <div className="marketing-inline-actions">
-          <Link href={localizeHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
+          <Link href={localizeStaticSiteHref("/chat/learn-anything", hrefLanguage)} className="marketing-primary-cta is-dark">
             Start learning
             <Sparkles size={18} />
           </Link>
