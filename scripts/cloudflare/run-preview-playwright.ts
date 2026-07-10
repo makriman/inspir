@@ -3,11 +3,13 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
+import { clearLocalPreviewCacheApiState } from "./run-sanitized-build";
 import { buildRepoSourceFingerprint } from "./source-fingerprint";
 
 const backupDir = resolveBackupDir();
 const reportPath = path.join(cloudflareDir(backupDir), "playwright-preview-report.json");
 const baseUrl = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:8787";
+clearLocalPreviewCacheApiState();
 const localCliBinDir = createLocalCliWrappers();
 const sourceFingerprintBefore = buildRepoSourceFingerprint();
 

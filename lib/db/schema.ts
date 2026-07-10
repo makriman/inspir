@@ -1,4 +1,5 @@
 import { sql } from "drizzle-orm";
+import type { PublicGameResult } from "@/lib/games/results";
 import {
   index,
   integer,
@@ -276,6 +277,23 @@ export const activityRuns = sqliteTable(
     typeIdx: index("activity_runs_type_idx").on(table.type),
   }),
 );
+
+export const gameResults = sqliteTable("game_results", {
+  id: text("id").primaryKey(),
+  schemaVersion: integer("schema_version").notNull(),
+  gameSlug: text("game_slug").notNull(),
+  engineId: text("engine_id").notNull(),
+  engineVersion: text("engine_version").notNull(),
+  terminalCode: text("terminal_code").notNull(),
+  winner: text("winner").notNull(),
+  outcome: text("outcome").notNull(),
+  plyCount: integer("ply_count").notNull(),
+  payload: jsonText<PublicGameResult>("payload").notNull(),
+  startedAt: timestampMs("started_at"),
+  completedAt: timestampMs("completed_at").notNull(),
+  durationMs: integer("duration_ms"),
+  createdAt: timestampMsNow("created_at"),
+});
 
 export const aiRuns = sqliteTable("ai_runs", {
   id: uuidText("id").primaryKey(),
@@ -644,6 +662,7 @@ export type ProductEvent = typeof productEvents.$inferSelect;
 export type OpsEvent = typeof opsEvents.$inferSelect;
 export type AppMetadata = typeof appMetadata.$inferSelect;
 export type ActivityRun = typeof activityRuns.$inferSelect;
+export type GameResult = typeof gameResults.$inferSelect;
 export type AppTranslation = typeof appTranslations.$inferSelect;
 export type AppTranslationSource = typeof appTranslationSources.$inferSelect;
 export type AppTranslationSourceString = typeof appTranslationSourceStrings.$inferSelect;

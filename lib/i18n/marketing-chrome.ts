@@ -6,7 +6,10 @@ import {
   getRequestRecommendedLanguage,
   requestHasLocalePrefix,
 } from "@/lib/i18n/request-locale";
-import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
+import {
+  isStaticSiteLanguageAvailableForPath,
+  staticSiteLanguagesForPath,
+} from "@/lib/i18n/static-availability";
 import {
   getCachedSiteTranslationBundle,
   getCachedSiteTranslationEntries,
@@ -23,6 +26,7 @@ export type MarketingChrome = {
   hasLocalePrefix: boolean;
   translationNamespaces: string[];
   translationEntries: Array<[string, string]>;
+  availableLanguages: SupportedLanguage[];
   t: (value: string) => string;
 };
 
@@ -83,6 +87,7 @@ async function buildMarketingChrome({
     hasLocalePrefix,
     translationNamespaces,
     translationEntries,
+    availableLanguages: staticSiteLanguagesForPath(currentPathname),
     t: (value: string) => translateMarketingText(value, lookup.translate, textMap),
   };
 }

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { D1_DATABASE_NAME, RUNTIME_MUTABLE_TABLES, hasFlag, runWrangler } from "./migration-config";
 import { syncSiteTranslationSources } from "./sync-site-translation-sources";
+import { syncTopicSeeds } from "./sync-topic-seeds";
 
 const migrationPath = path.resolve(process.cwd(), "drizzle-d1/0000_majestic_invisible_woman.sql");
 const migrationDir = path.dirname(migrationPath);
@@ -21,20 +22,50 @@ function main() {
     "--local",
     "--json",
     "--command",
-    "select name from sqlite_master where type = 'table' and name = 'users';",
+    "select name from sqlite_master where type = 'table' and name not like 'sqlite_%';",
   ]);
   const parsed = parseJsonFromOutput<Array<{ results?: Array<{ name?: string }>; success?: boolean }>>(existing, []);
-  if (parsed[0]?.results?.[0]?.name !== "users") {
-    runWrangler(["d1", "execute", D1_DATABASE_NAME, "--local", "--file", migrationPath]);
-    localSchema = "created";
+  const applicationTables = (parsed[0]?.results ?? [])
+    .map((row) => row.name)
+    .filter((name): name is string => typeof name === "string" && !name.startsWith("_cf_"));
+  if (!applicationTables.includes("users")) {
+    if (applicationTables.length > 0) {
+      runWrangler([
+        "d1",
+        "execute",
+        D1_DATABASE_NAME,
+        "--local",
+        "--command",
+        idempotentBaseMigration(fs.readFileSync(migrationPath, "utf8")),
+      ]);
+      localSchema = "completed-incomplete";
+    } else {
+      runWrangler(["d1", "execute", D1_DATABASE_NAME, "--local", "--file", migrationPath]);
+      localSchema = "created";
+    }
   }
 
   const supplementalMigrations = applySupplementalMigrations();
+  const topicSeedSync = syncTopicSeeds("local");
   const sourceSync = syncSiteTranslationSources("local");
   const resetRuntimeTables = hasFlag("--reset-runtime-state") ? resetLocalRuntimeState() : [];
   console.log(
-    JSON.stringify({ database: D1_DATABASE_NAME, localSchema, supplementalMigrations, sourceSync, resetRuntimeTables }),
+    JSON.stringify({
+      database: D1_DATABASE_NAME,
+      localSchema,
+      supplementalMigrations,
+      topicSeedSync,
+      sourceSync,
+      resetRuntimeTables,
+    }),
   );
+}
+
+function idempotentBaseMigration(source: string) {
+  return source
+    .replaceAll("--> statement-breakpoint", "")
+    .replaceAll("CREATE TABLE ", "CREATE TABLE IF NOT EXISTS ")
+    .replace(/CREATE (UNIQUE )?INDEX /g, "CREATE $1INDEX IF NOT EXISTS ");
 }
 
 function applySupplementalMigrations() {

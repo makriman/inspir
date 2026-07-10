@@ -3,10 +3,14 @@ import {
   ComparePageContent,
   generateCompareMetadata,
 } from "@/components/marketing/pages/CompareMarketingPage";
-import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
+import { generateLocalizedStaticParams, resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return generateLocalizedStaticParams("/compare");
+}
 
 type LocalizedComparePageProps = {
   params: LocaleRouteParams;

@@ -32,16 +32,13 @@ type CuratedTranslationPack = {
 const buildTimeBundleCache = new Map<string, Promise<TranslationBundle | null>>();
 const buildTimePackCache = new Map<string, Promise<CuratedTranslationPack[]>>();
 
-export function isKnownSiteTranslationNamespace(namespace: string) {
-  return isKnownRuntimeSiteTranslationNamespace(namespace);
-}
-
 export function getSiteTranslationNamespaces(pathname: string) {
   return getRuntimeSiteTranslationNamespacesForPath(pathname);
 }
 
 export async function getCachedSiteTranslationBundle(language: string, namespace?: string) {
   const normalized = normalizeLanguage(language);
+  if (namespace !== undefined && !isKnownRuntimeSiteTranslationNamespace(namespace)) return null;
   const source = await getRuntimeSiteTranslationSource(namespace);
   if (!source) return null;
   if (normalized === defaultLanguage) return getRuntimeEnglishSiteTranslationBundle(source.namespace);
@@ -64,47 +61,6 @@ export async function getCachedSiteTranslationEntries(language: string, namespac
     }
   }
   return entries;
-}
-
-export async function getOrCreateSiteTranslationResult(
-  language: string,
-  namespace?: string,
-): Promise<SiteTranslationResult> {
-  const normalized = normalizeLanguage(language);
-  const source = await getRuntimeSiteTranslationSource(namespace);
-  if (!source) {
-    return {
-      bundle: {
-        namespace: namespace ?? "",
-        language: normalized,
-        sourceHash: "",
-        sourceStrings: {},
-        strings: {},
-      },
-      complete: false,
-      translatedCount: 0,
-      totalCount: 0,
-    };
-  }
-
-  const bundle =
-    normalized === defaultLanguage
-      ? await getRuntimeEnglishSiteTranslationBundle(source.namespace)
-      : await getCachedSiteTranslationBundle(normalized, source.namespace);
-  const translatedCount = bundle ? Object.keys(bundle.strings).length : 0;
-  const totalCount = Object.keys(source.sourceStrings).length;
-  return {
-    bundle: bundle ?? {
-      namespace: source.namespace,
-      language: normalized,
-      sourceHash: source.sourceHash,
-      sourceStrings: source.sourceStrings,
-      strings: {},
-    },
-    complete: translatedCount === totalCount,
-    translatedCount,
-    totalCount,
-  };
 }
 
 function translationDbFallbackWithTimeout<T>(promise: Promise<T | null>) {

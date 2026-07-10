@@ -15,6 +15,7 @@ type LanguageControlsProps = {
   recommendedLanguage: SupportedLanguage;
   currentPathname: string;
   hasLocalePrefix: boolean;
+  availableLanguages: readonly SupportedLanguage[];
   copy: {
     buttonLabel: string;
     chooseTitle: string;
@@ -37,11 +38,12 @@ export function MarketingLanguageControls({
   recommendedLanguage,
   currentPathname,
   hasLocalePrefix,
+  availableLanguages,
   copy,
 }: LanguageControlsProps) {
   const [promptVisible, setPromptVisible] = useState(false);
   const recommendedLabel = languageDisplayName(recommendedLanguage);
-  const shouldRecommend = recommendedLanguage !== defaultLanguage;
+  const shouldRecommend = recommendedLanguage !== defaultLanguage && availableLanguages.includes(recommendedLanguage);
 
   useEffect(() => {
     if (hasLocalePrefix) return;
@@ -101,6 +103,7 @@ export function MarketingLanguageControls({
         <LanguagePicker
           currentLanguage={currentLanguage}
           recommendedLanguage={recommendedLanguage}
+          languages={availableLanguages}
           buttonLabel={copy.chooseButtonLabel}
           title={copy.chooseAnotherTitle}
           description={copy.chooseAnotherDescription}
@@ -121,6 +124,7 @@ export function MarketingLanguageControls({
       <LanguagePicker
         currentLanguage={currentLanguage}
         recommendedLanguage={recommendedLanguage}
+        languages={availableLanguages}
         buttonLabel={copy.buttonLabel}
         title={copy.chooseTitle}
         description={copy.chooseDescription}

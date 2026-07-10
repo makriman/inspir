@@ -3,10 +3,14 @@ import {
   AiLearningMapPageContent,
   generateAiLearningMapMetadata,
 } from "@/components/marketing/pages/AiLearningMapMarketingPage";
-import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
+import { generateLocalizedStaticParams, resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return generateLocalizedStaticParams("/ai-learning-map");
+}
 
 type LocalizedAiLearningMapPageProps = {
   params: LocaleRouteParams;

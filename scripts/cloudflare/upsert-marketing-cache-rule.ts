@@ -1,6 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { languageUrlPrefixes, supportedLanguages } from "@/lib/content/languages";
+import { pathToFileURL } from "node:url";
+import { defaultLanguage, supportedLanguages } from "@/lib/content/languages";
+import { localizePath } from "@/lib/i18n/routing";
+import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
 import {
   CLOUDFLARE_ACCOUNT_ID,
   cloudflareDir,
@@ -66,7 +69,14 @@ type MarketingCacheRule = {
   action_parameters:
     | {
         cache: true;
-        edge_ttl: { mode: "respect_origin" };
+        edge_ttl: {
+          mode: "override_origin";
+          default: number;
+          status_code_ttl: Array<{
+            status_code_range: { from: number; to: number };
+            value: number;
+          }>;
+        };
         browser_ttl: { mode: "respect_origin" };
       }
     | {
@@ -85,6 +95,8 @@ const RULESET_NAME = "inspir cache rules";
 const RULESET_DESCRIPTION = "Cache public inspir marketing/blog HTML while respecting origin TTLs.";
 const MAX_EXPRESSION_LENGTH = 4096;
 const EXPRESSION_LENGTH_MARGIN = 96;
+const englishEdgeTtlSeconds = 60 * 60;
+const localizedEdgeTtlSeconds = 365 * 24 * 60 * 60;
 const requiredPermissions = {
   accountId: CLOUDFLARE_ACCOUNT_ID,
   zone: DOMAIN,
@@ -123,15 +135,17 @@ const cfDir = cloudflareDir(backupDir);
 const outputPath = path.join(cfDir, "marketing-cache-rule-report.json");
 const credential = readCloudflareApiToken();
 
-void main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  writeReport({
-    ok: false,
-    error: error instanceof Error ? error.message : String(error),
-    requiredPermissions,
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  void main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    writeReport({
+      ok: false,
+      error: error instanceof Error ? error.message : String(error),
+      requiredPermissions,
+    });
+    process.exitCode = 1;
   });
-  process.exitCode = 1;
-});
+}
 
 async function main() {
   const rules = buildMarketingCacheRules();
@@ -238,30 +252,38 @@ async function main() {
   );
 }
 
-function buildMarketingCacheRules(): MarketingCacheRule[] {
-  const localePrefixes = supportedLanguages
-    .map((language) => languageUrlPrefixes[language])
-    .filter((prefix) => prefix.length > 0)
-    .sort();
+export function buildMarketingCacheRules(): MarketingCacheRule[] {
   const commonClauses = buildCommonRequestClauses();
   const englishPrefixClauses = marketingPathPrefixes.map((prefix) => buildPathPrefixClause(prefix));
-  const localizedRootPaths = localePrefixes.map((prefix) => `/${prefix}`);
-  const localizedPathPrefixes = localePrefixes.map((prefix) => `/${prefix}/`);
+  const localizedPaths = supportedLanguages
+    .filter((language) => language !== defaultLanguage)
+    .flatMap((language) =>
+      marketingExactPaths
+        .filter((pathname) => isStaticSiteLanguageAvailableForPath(pathname, language))
+        .map((pathname) => localizePath(pathname, language)),
+    )
+    .sort();
 
   return [
-    buildMarketingCacheRule("english", "English marketing/blog pages", [
-      ...commonClauses,
-      `(http.request.uri.path in ${quoteSet(marketingExactPaths)} or ${englishPrefixClauses.join(" or ")})`,
-    ]),
-    buildMarketingCacheRule("localized-roots", "localized marketing roots", [
-      ...commonClauses,
-      `(http.request.uri.path in ${quoteSet(localizedRootPaths)})`,
-    ]),
-    ...chunkPathPrefixes(localizedPathPrefixes, commonClauses).map((prefixes, index) =>
-      buildMarketingCacheRule(`localized-paths-${index + 1}`, `localized marketing paths ${index + 1}`, [
+    buildMarketingCacheRule(
+      "english",
+      "English marketing/blog pages",
+      [
         ...commonClauses,
-        `(${prefixes.map((prefix) => buildPathPrefixClause(prefix)).join(" or ")})`,
-      ]),
+        `(http.request.uri.path in ${quoteSet(marketingExactPaths)} or ${englishPrefixClauses.join(" or ")})`,
+      ],
+      englishEdgeTtlSeconds,
+    ),
+    ...chunkExactPaths(localizedPaths, commonClauses).map((paths, index) =>
+      buildMarketingCacheRule(
+        `localized-pages-${index + 1}`,
+        `localized marketing pages ${index + 1}`,
+        [
+          ...commonClauses,
+          `(http.request.uri.path in ${quoteSet(paths)})`,
+        ],
+        localizedEdgeTtlSeconds,
+      ),
     ),
     buildCookieBypassRule(),
   ];
@@ -284,7 +306,12 @@ function buildCommonRequestClauses() {
   ];
 }
 
-function buildMarketingCacheRule(refSuffix: string, label: string, clauses: string[]): MarketingCacheRule {
+function buildMarketingCacheRule(
+  refSuffix: string,
+  label: string,
+  clauses: string[],
+  edgeTtlSeconds: number,
+): MarketingCacheRule {
   const expression = clauses.join(" and ");
   if (expression.length > MAX_EXPRESSION_LENGTH) {
     throw new Error(
@@ -299,7 +326,15 @@ function buildMarketingCacheRule(refSuffix: string, label: string, clauses: stri
     action: "set_cache_settings",
     action_parameters: {
       cache: true,
-      edge_ttl: { mode: "respect_origin" },
+      edge_ttl: {
+        mode: "override_origin",
+        default: edgeTtlSeconds,
+        status_code_ttl: [
+          { status_code_range: { from: 200, to: 299 }, value: edgeTtlSeconds },
+          { status_code_range: { from: 300, to: 499 }, value: 0 },
+          { status_code_range: { from: 500, to: 599 }, value: -1 },
+        ],
+      },
       browser_ttl: { mode: "respect_origin" },
     },
     enabled: true,
@@ -323,20 +358,20 @@ function buildCookieBypassRule(): MarketingCacheRule {
   };
 }
 
-function chunkPathPrefixes(pathPrefixes: readonly string[], commonClauses: readonly string[]) {
+function chunkExactPaths(paths: readonly string[], commonClauses: readonly string[]) {
   const chunks: string[][] = [];
   let currentChunk: string[] = [];
 
-  for (const prefix of pathPrefixes) {
-    const nextChunk = [...currentChunk, prefix];
+  for (const pathname of paths) {
+    const nextChunk = [...currentChunk, pathname];
     const nextExpression = [
       ...commonClauses,
-      `(${nextChunk.map((candidate) => buildPathPrefixClause(candidate)).join(" or ")})`,
+      `(http.request.uri.path in ${quoteSet(nextChunk)})`,
     ].join(" and ");
 
     if (currentChunk.length > 0 && nextExpression.length > MAX_EXPRESSION_LENGTH - EXPRESSION_LENGTH_MARGIN) {
       chunks.push(currentChunk);
-      currentChunk = [prefix];
+      currentChunk = [pathname];
     } else {
       currentChunk = nextChunk;
     }

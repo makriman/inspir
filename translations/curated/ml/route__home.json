@@ -1,0 +1,1880 @@
+{
+  "schemaVersion": 1,
+  "language": "Malayalam",
+  "locale": "ml",
+  "namespace": "route:home",
+  "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
+  "model": "curated-codex-v2",
+  "entries": [
+    {
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} പ്രായോഗിക വഴികാട്ടികൾ"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "പ്രവർത്തിയായി മാറുന്ന പഠനത്തിനായി ഒരുക്കിയ {value1} വഴികാട്ടികളുടെ ശേഖരം."
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "പഠിപ്പിക്കൽ സഹായം, പരിശീലനം, ചോദ്യപരീക്ഷകൾ, ഓർമ്മക്കാർഡുകൾ, വാദപരിശീലനം, എഴുത്തിലെ അഭിപ്രായം, കോഡിംഗ് സഹായം, പഠന ആസൂത്രണം എന്നിവയ്ക്കുള്ള സൗജന്യ പൊതുജന AI പഠന കൂട്ടാളി."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "കുഴപ്പത്തിൽ നിന്ന് വ്യക്തമായ വിശദീകരണത്തിലേക്കും സോക്രാറ്റിക് ചോദ്യങ്ങളിലേക്കും ഉദാഹരണങ്ങളിലേക്കും സജീവ ഓർമ്മപ്പരിശീലനത്തിലേക്കും നയിക്കുന്ന പ്രായോഗിക AI പഠനപാത."
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "അടിസ്ഥാന പഠനത്തിനായി inspir-ൽ എന്തും പഠിക്കുക ഉപയോഗിക്കാനുള്ള പ്രായോഗിക വഴികാട്ടി; പ്രോംപ്റ്റുകൾ, പഠനചക്രങ്ങൾ, സുരക്ഷിതമായ AI ശീലങ്ങൾ എന്നിവയോടെ."
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "വിദ്യാർത്ഥികളെ നിഷ്ക്രിയമായി ഉത്തരങ്ങൾ ശേഖരിക്കുന്നവരാക്കാതെ AI പഠനത്തെ എങ്ങനെ കൂടുതൽ വ്യക്തവും വ്യക്തിപരവുമായും കൂടുതൽ സുലഭവുമായും മാറ്റാം എന്നതിലേക്കുള്ള പ്രായോഗിക നോക്ക്."
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "ആൾക്കാർക്ക് വേഗത്തിൽ മനസ്സിലാക്കാവുന്ന പൊതുപഠന സൈറ്റ്."
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "പഠനം സൗജന്യവും സുലഭവും ജീവന്തവുമായിരിക്കണം എന്ന inspir-ന്റെ വിശ്വാസം പരിചയപ്പെടുത്തുന്ന ചെറുചിത്രം."
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "ആദ്യ ചോദ്യത്തിനുള്ള പഠനസഹായി"
+    },
+    {
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "സുലഭത, പ്രോംപ്റ്റുകൾ, പരിശോധനകൾ, സുരക്ഷിതമായ AI പെരുമാറ്റം, പഠിതൃ പ്രവാഹങ്ങൾ, ഉപയോക്തൃ ഇന്റർഫേസ് മിനുക്കൽ."
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "വായിച്ചതിന് ശേഷം ചെയ്യേണ്ടത്"
+    },
+    {
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "സജീവ പരിശീലനം"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "സജീവ ഓർമ്മപ്പരിശീലന അവലോകനം"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "ഓരോ സൂചനയ്ക്കും ശേഷം, തുടരുന്നതിന് മുമ്പ് ആ ഘട്ടം എന്തുകൊണ്ട് പ്രവർത്തിക്കുന്നു എന്ന് വിശദീകരിക്കുക."
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "അനുകരണത്തിന് ശേഷം സ്ഥലം, നിയന്ത്രണങ്ങൾ, തെളിവുകൾ എന്നിവ ചുരുക്കുക."
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI കോഡ് പഠനസഹായി"
+    },
+    {
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI വാദപരിശീലനം"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI പരീക്ഷാ തയ്യാറെടുപ്പ് പദ്ധതി"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "ചോദ്യപരീക്ഷകളും സജീവ ഓർമ്മപ്പരിശീലനവും ഉള്ള AI പരീക്ഷാ തയ്യാറെടുപ്പ് പദ്ധതി"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI പരീക്ഷാ തയ്യാറെടുപ്പ് ആസൂത്രകൻ"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI ഓർമ്മക്കാർഡുകളും സജീവ ഓർമ്മപ്പരിശീലനവും: കൂടുതൽ ഓർക്കാൻ എങ്ങനെ"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "സജീവ ഓർമ്മപ്പരിശീലനത്തിനുള്ള AI ഓർമ്മക്കാർഡുകൾ"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "പുനഃപരിശീലനത്തിനുള്ള AI ഓർമ്മക്കാർഡുകൾ"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI ചരിത്ര പഠനസഹായി"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI ചരിത്ര പഠനസഹായി"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI ഗൃഹപാഠ പരിശീലകൻ"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "വഞ്ചനയില്ലാത്ത AI ഗൃഹപാഠ സഹായം"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "ഉത്തരങ്ങൾ പകർത്താതെ AI ഗൃഹപാഠ സഹായം"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI ഗൃഹപാഠ സഹായി"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI ഗണിത ഘട്ടപരിശീലകൻ"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI ഗണിത പഠനസഹായി"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "പരീക്ഷകൾക്കുള്ള AI ചോദ്യപരീക്ഷ നിർമ്മാതാവ്"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI സോക്രാറ്റിക് പഠനസഹായി"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI പഠന സമയക്രമം"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI കാലയാത്രാ പഠനം"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "കഠിന ആശയങ്ങൾക്കുള്ള AI പഠനസഹായി"
+    },
+    {
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "വിഷയമനുസരിച്ചുള്ള AI പഠനസഹായികൾ"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "വിദ്യാർത്ഥികൾക്കുള്ള AI എഴുത്തഭിപ്രായം"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI എഴുത്ത് പഠനസഹായി"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "പരിശോധനാ ചോദ്യത്തിന് ഉത്തരം നൽകുക, ഒരു ഘട്ടം ശ്രമിക്കുക, ഒരു അവകാശവാദം വാദിക്കുക, കരട് തിരുത്തുക, അല്ലെങ്കിൽ ഓർമ്മക്കാർഡുകൾ ഉണ്ടാക്കുക."
+    },
+    {
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "വീണ്ടും വായിക്കുന്നതിനെക്കാൾ ചോദ്യപരീക്ഷകൾ നല്ലതാണോ?"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "വാദം"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "വാദപരിശീലനം"
+    },
+    {
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "ഏത് ചോദ്യവും ചോദിച്ച് വ്യക്തമായ വിശദീകരണങ്ങൾ, ഉദാഹരണങ്ങൾ, തുടർ പ്രോംപ്റ്റുകൾ, ക്ഷമയുള്ള AI പഠിപ്പിക്കൽ എന്നിവയിലൂടെ പഠിക്കുക."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "എന്തും ചോദിക്കുക"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "ഒരു സൂചന ചോദിക്കുക"
+    },
+    {
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "ഉത്തരം അല്ല, ഒരു സൂചന ചോദിക്കുക"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "ഏറ്റവും ദുർബലമായ ആശയത്തിന് കൂടുതൽ ലളിതമായ വിശദീകരണം ചോദിക്കുക."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "നിർവചനങ്ങൾ, ഉദാഹരണങ്ങൾ, കൈമാറ്റപ്രശ്നങ്ങൾ എന്നിവ കലർത്തിയ അഞ്ച് ചോദ്യങ്ങൾ ചോദിക്കുക."
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "ചിന്ത പഠിതാവിന്റെ കൈകളിൽ തന്നെ നിലനിൽക്കുന്ന വിധത്തിൽ സൂചനകൾ, പരിശോധനകൾ, അഭിപ്രായം, പഠന പദ്ധതികൾ എന്നിവ ചോദിക്കുക."
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "വിഷയം ലളിതമായ ഭാഷയിൽ ചോദിക്കുക; തുടർന്ന് ഒരു ഉപമയും ഒരു ഉദാഹരണവും ഒരു സാധാരണ തെറ്റിദ്ധാരണയും ആവശ്യപ്പെടുക."
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "ഈ വിഷയത്തെക്കുറിച്ച് എന്നോട് അഞ്ച് സോക്രാറ്റിക് ചോദ്യങ്ങൾ ചോദിക്കൂ. ഓരോ ഉത്തരത്തിനുശേഷവും ഞാൻ ഉപയോഗിച്ച അനുമാനം എന്താണെന്നും അടുത്തതായി എന്ത് പരിശോധിക്കണമെന്നും പറയൂ."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "ചോദ്യങ്ങൾ ചോദിക്കുക, ആശയങ്ങളെ വെല്ലുവിളിക്കുക, ഭൂതകാലത്തിലെ പൊതുജന വ്യക്തികളുമായി അടിസ്ഥാനമുള്ള സംഭാഷണങ്ങളിലൂടെ ചരിത്രം പഠിക്കുക."
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "രേഖപ്പെടുത്തിയതും അനുമാനിച്ചതും അനുകരിച്ചതും ഏതാണ് എന്ന് അടയാളപ്പെടുത്താൻ ചരിത്രരീതിയോട് ചോദിക്കുക."
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "യഥാർത്ഥ ചോദ്യം ചോദിക്കുക"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "ആദ്യ ചോദ്യം ചോദിച്ച് നേരെ പരിശീലനത്തിലേക്ക് കടക്കുക."
+    },
+    {
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "സ്കൂളുകൾക്ക് രഹസ്യമായ ഇഷ്ടാനുസൃത പതിപ്പുകൾ നടത്താനാകുമ്പോഴും പൊതുവായി ലഭ്യം."
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "എല്ലാ രീതികളും കാണുക"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "വിഷയങ്ങൾ കാണുക"
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "കാലസഞ്ചാര പാസ്പോർട്ട് തയ്യാറാക്കി, യാത്രാ മുന്നറിയിപ്പ് മനസ്സിലാക്കി, രംഗം, ഭൂപടം, സമയരേഖ, മനുഷ്യർ, നിയമങ്ങൾ, കൈവശപ്പട്ടിക, തെളിവുകൾ എന്നിവയിലൂടെ ഒരു ചരിത്രലോകം അന്വേഷിക്കുക."
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "യാഥാർത്ഥ്യബോധമുള്ള പഠനപദ്ധതി, ഓർമ്മയിൽ നിന്ന് തിരിച്ചെടുക്കൽ പരിശീലനം, ചോദ്യപരീക്ഷകൾ, ഓർമ്മക്കാർഡുകൾ, ദുർബല മേഖലകളുടെ അവലോകനം എന്നിവയുള്ള AI പരീക്ഷാ തയ്യാറെടുപ്പ് പ്രവർത്തനക്രമം സൃഷ്ടിക്കുക."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "പരീക്ഷാ പദ്ധതി തയ്യാറാക്കുക"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "പദ്ധതി തയ്യാറാക്കുക"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "ഞങ്ങളോടൊപ്പം നിർമ്മിക്കുക"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "ജിജ്ഞാസയ്ക്കും പരിശീലനത്തിനും പ്രവേശനത്തിനുമായി നിർമ്മിച്ചത്."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "സാധാരണ ചാറ്റ് പെട്ടിയിൽ നിന്നല്ല, യഥാർത്ഥ പഠിതൃ പെരുമാറ്റത്തിൽ നിന്നാണ് ഇത് നിർമ്മിച്ചത്."
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "ഉപയോഗിക്കപ്പെടാൻ വേണ്ടി നിർമ്മിച്ചത്"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "AI ഗൃഹപാഠ സഹായം നൈതികമായിരിക്കാമോ?"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "AI സൃഷ്ടിച്ച ചരിത്രസംഭാഷണം ഒരു സ്രോതസായി ഉദ്ധരിക്കാമോ?"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "സൈൻ ഇൻ ചെയ്യാതെ inspir ഉപയോഗിക്കാമോ?"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "വഞ്ചന പ്രോത്സാഹിപ്പിക്കാതെ ഗൃഹപാഠത്തിൽ inspir സഹായിക്കുമോ?"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "എന്റെ മാതൃക പരിശോധിക്കുക"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "ഒരു ഘട്ടം പരിശോധിക്കുക"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "യുക്തിചിന്ത വരി വരിയായി പരിശോധിക്കുക"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "എന്റെ പ്രവർത്തനത്തിലെ ഈ ഘട്ടം പരിശോധിക്കുക. തെറ്റാണെങ്കിൽ പിഴവ് വിശദീകരിച്ച് അടുത്തൊരു നീക്കം മാത്രം തരൂ."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "വ്യക്തമായ വിശദീകരണങ്ങൾ"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "വ്യക്തമായ സ്വകാര്യതാ പരിധികൾ"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "കോഡ് പഠനസഹായി"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "കോഡിംഗ്"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "ആശയവിനിമയം"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "വാദങ്ങൾ താരതമ്യം ചെയ്യുക"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "രഹസ്യ വിന്യാസങ്ങൾ"
+    },
+    {
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "തുടരുക"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "AI പഠനം കൂടുതൽ സുരക്ഷിതവും വ്യക്തവും സുലഭവും ഉപകാരപ്രദവുമാകണമെന്ന് ആഗ്രഹിക്കുന്ന എഞ്ചിനീയർമാർ, അധ്യാപകർ, ഡിസൈനർമാർ, വിദ്യാർത്ഥികൾ, മറ്റെല്ലാവരും സംഭാവനകൾ നൽകാൻ സ്വാഗതം."
+    },
+    {
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "തെറ്റുകൾ പഠനത്തിലേക്ക് മാറ്റുക"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "വിശദീകരണത്തെ സജീവ ഓർമ്മക്കാർഡുകളാക്കി മാറ്റുക; തുടർന്ന് പിഴവുകളോ മടിയോ ഉണ്ടായതിന് ശേഷം കാർഡുകൾ വീണ്ടും കാണുക."
+    },
+    {
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "ചെറിയ ചോദ്യപരീക്ഷ സൃഷ്ടിക്കുക"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "ജിജ്ഞാസ ഇവിടെ തുടങ്ങുന്നു"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "പഠിപ്പിക്കുന്ന ജിജ്ഞാസയും പരിശീലനവും AI-യും."
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "തെളിവുകളുടെ പാത തെറ്റിക്കാതെ ചരിത്രവും ആശയങ്ങളും സ്ഥിതിചെയ്യുന്നതായും വാദിക്കാവുന്നതായും ജീവന്തമായും തോന്നണമെന്ന് ആഗ്രഹിക്കുന്ന ജിജ്ഞാസയുള്ള പഠിതാക്കൾ."
+    },
+    {
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "ഡാറ്റ രഹസ്യതയുള്ള ഇഷ്ടാനുസൃത AI പഠന ഇടങ്ങൾ."
+    },
+    {
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "ഒരു അവകാശവാദത്തെ വാദിക്കുക"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "ഏതു വിഷയവും വാദിച്ച് പരിശോധിക്കുക"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "ഏതു വിഷയവും വാദിക്കുക, വെല്ലുവിളികൾ ഏറ്റെടുക്കുക, അവകാശവാദങ്ങൾ താരതമ്യം ചെയ്യുക, കൂടുതൽ ശക്തമായ വാദങ്ങൾ ഉണ്ടാക്കാൻ പഠിക്കുക."
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "അവകാശവാദങ്ങൾ, തെളിവുകൾ, മൂല്യങ്ങൾ, അനുമാനങ്ങൾ എന്നിവ വേർതിരിക്കാൻ വാദം സഹായിക്കുന്നു; അതിലൂടെ ചരിത്രവ്യാഖ്യാനം കൂടുതൽ കൃത്യമാകുന്നു."
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "അവകാശവാദം വാദിക്കുക"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "അനുമാനങ്ങളും വിട്ടുവീഴ്ചകളും ദുർബല തെളിവുകളും കാണാനായി അവകാശവാദത്തെ ഒന്നിലധികം വശങ്ങളിൽ നിന്ന് വാദിക്കുക."
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "ഈ ചരിത്രമോ തത്ത്വചിന്താപരമോ ആയ അവകാശവാദം ഇരുവശത്തുനിന്നും വാദിക്കുക. തെളിവുകൾ, അനുമാനങ്ങൾ, മൂല്യങ്ങൾ എന്നിവ വേർതിരിക്കുക."
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "ആത്മവിശ്വാസത്തിനായി രൂപകൽപ്പന ചെയ്തത്"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "തിരുത്തൽ എന്തുകൊണ്ട് നല്ലതാണെന്ന് നിങ്ങൾക്ക് വിശദീകരിക്കാനാകുന്നതുവരെ തിരുത്തിയ പാരഗ്രാഫ് സ്വീകരിക്കരുത്."
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "ആവശ്യമായ മുൻധാരണകൾ അറിയുന്നതിന് മുമ്പ് പൂർണ്ണ ചുരുക്കം ചോദിക്കരുത്."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "നിങ്ങൾക്ക് നേരത്തെ തന്നെ യോജിക്കുന്ന വശം മാത്രം വാദിക്കരുത്."
+    },
+    {
+      "key": "site.00aa0ce5925c3a4939",
+      "source": "Do not ignore hesitation; uncertainty is a useful signal for review.",
+      "value": "മടി അവഗണിക്കരുത്; അനിശ്ചിതത്വം അവലോകനത്തിനുള്ള ഉപകാരപ്രദമായ സൂചനയാണ്."
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "റോൾപ്ലേ തീയതികൾ, പശ്ചാത്തലം, രേഖകൾ, തെളിവ് അടയാളങ്ങൾ എന്നിവയ്ക്ക് പകരമാകാൻ അനുവദിക്കരുത്."
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "ഓരോ വിഷയത്തിനും ഒരേ സമയം വേണമെന്നു കരുതുന്ന പദ്ധതി ഉണ്ടാക്കരുത്."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "സ്വന്തം വാക്കുകളിൽ വിശദീകരിക്കാനാകാത്ത വാക്യങ്ങളിൽ നിന്ന് ഓർമ്മക്കാർഡുകൾ ഉണ്ടാക്കരുത്."
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "അസൈൻമെന്റ് ഒട്ടിച്ച് പൂർത്തിയായ മറുപടി ചോദിക്കരുത്."
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "ഇതിനകം ഓർമ്മയിലുള്ളത് പരിശോധിക്കുന്നതിന് മുമ്പ് കുറിപ്പുകൾ വീണ്ടും വായിക്കരുത്."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "നിങ്ങൾ ഇതിനകം എന്ത് ശ്രമിച്ചു എന്ന് കാണിക്കുന്നത് ഒഴിവാക്കരുത്; ഉപകാരപ്രദമായ സഹായം ആ പശ്ചാത്തലത്തിന്മേലാണ് ആശ്രയിക്കുന്നത്."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "ആദ്യ വിശദീകരണത്തിനു ശേഷം നിർത്തരുത്; അതിനെക്കുറിച്ചുള്ള ചോദ്യങ്ങൾക്ക് സ്വയം ഉത്തരം പറയുക."
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "സൃഷ്ടിച്ച സംഭാഷണത്തെ യഥാർത്ഥ ഉദ്ധരണിയോ പ്രാഥമിക സ്രോതസോ ആയി കാണരുത്."
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "അതുകൊണ്ട് എന്തെങ്കിലും ചെയ്യുക"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir സ്കൂളുകളെ പിന്തുണയ്ക്കുമോ?"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "ഓരോ വഴികാട്ടിയും പരിശീലനപദ്ധതികൾ, പാതകൾ, യോജിച്ച കൃത്യമായ പഠനരീതിയിലേക്കുള്ള കണ്ണികൾ എന്നിവയോടെ അവസാനിക്കുന്നു."
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "വായന പരിശീലനമാകാൻ ഓരോ വഴികാട്ടിയും ഒരു രീതി, പ്രോംപ്റ്റ്, അല്ലെങ്കിൽ അവലോകനചക്രം ചൂണ്ടിക്കാണിക്കുന്നു."
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "ഓരോ രീതിയും സ്വന്തം ലക്ഷ്യവും ഉദാഹരണങ്ങളും പഠനപ്രവാഹവും ഉള്ള പൊതുഅതിഥി സംഭാഷണമായി തുറക്കുന്നു; അതിനാൽ പഠിതാക്കൾക്ക് ഉടൻ തന്നെ ശരിയായ പിന്തുണയോടെ തുടങ്ങാം."
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "എളുപ്പമുള്ള അടുത്ത ഘട്ടങ്ങൾ"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "ഒരു കാലഘട്ടം നൽകുക"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "പശ്ചാത്തലം നൽകുക"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "ഓരോ ലേഖനവും വിഭാഗങ്ങൾ, തത്സമയ രീതികൾ, വിഷയ കേന്ദ്രങ്ങൾ, പഠനപാതകൾ, ബന്ധപ്പെട്ട വഴികാട്ടികൾ എന്നിവയുമായി ബന്ധിപ്പിക്കുന്നു."
+    },
+    {
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "പ്രധാന വിവരങ്ങൾ മറച്ചുവയ്ക്കാതെ വിശ്വാസം നിർമ്മിക്കുക, പഠനപാത വിശദീകരിക്കുക, പഠിതാക്കളെ ഉപകാരപ്രദമായ അടുത്ത നടപടിയിലേക്ക് നയിക്കുക എന്നൊരു ജോലി ഓരോ ആപ്പ് അല്ലാത്ത പേജിനും ഇപ്പോൾ ഉണ്ട്."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "തെളിവ് മനസ്സിലാക്കുന്ന രംഗങ്ങൾ"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "പരീക്ഷാ തയ്യാറെടുപ്പ്"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "പരീക്ഷാ തയ്യാറെടുപ്പ് ആസൂത്രകൻ"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "തിരിച്ചു വിശദീകരിക്കുക"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "അടുത്ത ഘട്ടം വിശദീകരിക്കുക"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "ഈ വിഷയം ലളിതമായ ഭാഷയിൽ വിശദീകരിക്കുക. എനിക്ക് വേണ്ട മൂന്ന് മുൻധാരണകളും ഒരു ഉപമയും ഒരു സാധാരണ തെറ്റിദ്ധാരണയും പറയുക."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "വിവരണങ്ങൾ, സോക്രാറ്റിക് പഠിപ്പിക്കൽ, ഗൃഹപാഠ പരിശീലനം, ചോദ്യപരീക്ഷകൾ, ഓർമ്മക്കാർഡുകൾ, എഴുത്ത്, കോഡ്, വാദം, പഠന ആസൂത്രണം."
+    },
+    {
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "AI ഉപയോഗിച്ച് ചരിത്രവും വലിയ ആശയങ്ങളും അന്വേഷിക്കുക"
+    },
+    {
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "ചരിത്രവും ആശയങ്ങളും അന്വേഷിക്കുക"
+    },
+    {
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "തെളിവും അനുകരണവും വേർതിരിക്കുന്ന AI പഠനരീതികളിലൂടെ ചരിത്രം, പൊതുജന വ്യക്തികൾ, കാരണങ്ങൾ, വാദങ്ങൾ, തത്ത്വചിന്ത, സ്രോതസ്സ് വിമർശനം എന്നിവ അന്വേഷിക്കുക."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "സ്കൂളുകൾ അന്വേഷിക്കുക"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "വഴികാട്ടി ശേഖരം കാണുക"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "വേഗത്തിലുള്ള പഠനപാതകൾ"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "ചിത്രഭാഗങ്ങൾ"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "ഓർമ്മക്കാർഡ് നിർമ്മാതാവ്"
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "ഓരോ തവണയും ഒരു ആശയം വീതം പരിശോധിക്കുമ്പോഴും ശ്രമത്തിന് ശേഷം മാത്രമേ ഉത്തരങ്ങൾ കാണിക്കുമ്പോഴും തെറ്റിയ കാർഡുകൾ വേഗം വീണ്ടും കാണുമ്പോഴും ഓർമ്മക്കാർഡുകൾ മികച്ചതായി പ്രവർത്തിക്കും."
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "ഗണിതമോ തർക്കമോ ആയാൽ ഓരോ ഘട്ടമായി പ്രവർത്തിക്കുക; മുന്നോട്ട് പോകുന്നതിന് മുമ്പ് ഓരോ നീക്കവും എന്തുകൊണ്ട് അനുവദനീയമാണെന്ന് ചോദിക്കുക."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "സ്കൂളുകൾക്കും CSR പങ്കാളികൾക്കും"
+    },
+    {
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "അടിസ്ഥാനങ്ങൾ"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "എല്ലാവർക്കും സൗജന്യ AI പഠനം"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "എല്ലാവർക്കും സൗജന്യ AI പഠനം | inspir"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "എല്ലാവർക്കും സൗജന്യ AI പഠനം."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "സൗജന്യ അതിഥി പഠനം"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "സൗജന്യ പൊതുജന AI പഠന വേദി"
+    },
+    {
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "ബ്ലോഗിൽ നിന്ന്"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "ഏത് വിഷയത്തിലും കേന്ദ്രീകൃത ബഹുവികൽപ്പ ചോദ്യപരീക്ഷ സൃഷ്ടിച്ച് ഓരോ ഉത്തരത്തിനുശേഷവും വിശദീകരണങ്ങൾ അവലോകനം ചെയ്യുക."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "പഠന സമയക്രമം നേടുക, ദുർബല മേഖലകളിൽ സ്വയം പരീക്ഷിക്കുക, തെറ്റുകൾ ആവർത്തിത അവലോകനത്തിനുള്ള ഓർമ്മക്കാർഡുകളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "ആദ്യം ലളിതമായ മാതൃക നേടുക"
+    },
+    {
+      "key": "site.03a9ef834faab0396a",
+      "source": "Get unstuck",
+      "value": "തടസ്സം നീക്കുക"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "ഗൃഹപാഠത്തിൽ തടസ്സം നീക്കുക"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "നൈതികമായ സൂചനകൾ, ഉദാഹരണങ്ങൾ, പരിശോധനകൾ, ഘട്ടംഘട്ട പരിശീലനം എന്നിവയിലൂടെ ഗൃഹപാഠത്തിലെ തടസ്സം നീക്കുക."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "ഘടന, വ്യക്തത, തെളിവ് എന്നിവയെക്കുറിച്ച് അഭിപ്രായം തരൂ. എന്റെ ശബ്ദം നിലനിർത്തുക; മുഴുവൻ മറുപടിയും വീണ്ടും എഴുതരുത്."
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "തുടങ്ങാൻ നല്ല മേഖലകൾ:"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "വഴികാട്ടി ശേഖരം"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "വഴികാട്ടികൾ, പാതകൾ, വിഷയങ്ങൾ, പ്രോംപ്റ്റുകൾ എന്നിവ അടുത്ത ഉപകാരപ്രദമായ പരിശീലനസ്ഥലത്തേക്ക് ബന്ധിപ്പിക്കുന്നു."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "ഉപകാരപ്രദമായ പഠന ഭൂപടം"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "ഇതാണ് ചോദ്യം, ഇതാണ് ഞാൻ ശ്രമിച്ചത്. അന്തിമ ഉത്തരമല്ല, ഏറ്റവും ചെറിയ ഉപകാരപ്രദമായ സൂചന തരൂ."
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "ചിത്രഭാഗങ്ങൾ മറയ്ക്കുക"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "ചിത്രത്തിന്റെ എഴുത്തുപതിപ്പ് മറയ്ക്കുക"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "ആദ്യം സൂചന നൽകുന്ന സഹായം"
+    },
+    {
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "ചരിത്രസംഭാഷണങ്ങൾ"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "ചരിത്രം"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "ഗൃഹപാഠം"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "ഗൃഹപാഠ പരിശീലകൻ"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "പരീക്ഷാ തയ്യാറെടുപ്പ് പദ്ധതി എത്ര നേരത്തെ തയ്യാറാക്കണം?"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "സാധാരണ AI ചാറ്റ്ബോട്ടിൽ നിന്ന് inspir എങ്ങനെ വ്യത്യസ്തമാണ്?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "ഇത് എങ്ങനെ പ്രവർത്തിക്കുന്നു"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "സ്വയം വഞ്ചിക്കാതെ AI ഉപയോഗിച്ച് പഠിക്കാൻ എങ്ങനെ"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "AI ഉപയോഗിച്ച് കഠിന വിഷയം മനസ്സിലാക്കാൻ എങ്ങനെ"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "AI ഉപയോഗിച്ച് കഠിന വിഷയം മനസ്സിലാക്കാൻ എങ്ങനെ"
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "ആഴത്തിൽ അനുഭവിച്ച് പഠിക്കൽ"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "കരട് മെച്ചപ്പെടുത്തുക"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "നിങ്ങളുടെ ശബ്ദം നിലനിർത്തിക്കൊണ്ട് ആസൂത്രണം, തിരുത്തൽ, ഘടന, അഭിപ്രായം എന്നിവയിലൂടെ എഴുത്ത് മെച്ചപ്പെടുത്തുക."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "ചോദ്യം, നിങ്ങൾ ഇതിനകം ശ്രമിച്ചത്, എവിടെയാണ് കുടുങ്ങിയത്, നിങ്ങൾക്ക് സൂചനയാണോ ഘട്ടപരിശോധനയാണോ അഭിപ്രായമാണോ വേണ്ടത് എന്നിവ ഉൾപ്പെടുത്തുക."
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspir AI പഠന വഴികാട്ടി ശേഖരം"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir ചോദ്യപരീക്ഷകളും വിദ്യാർത്ഥി സമൂഹങ്ങളും ആയി തുടങ്ങി, സ്കൂളുകളിലൂടെയും പരിപാടികളിലൂടെയും വളർന്നു, ഇപ്പോൾ ഒരാൾക്ക് ഒരാൾ എന്ന പഠനം കൂടുതൽ സുലഭമാക്കാൻ AI ഉപയോഗിക്കുന്നു."
+    },
+    {
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "ഒരു പഠിതാവ് എന്തെങ്കിലും മനസ്സിലാക്കാൻ ആഗ്രഹിക്കുകയും ക്ഷമയുള്ള ഒരു തുടക്കസ്ഥലം ആവശ്യമാകുകയും ചെയ്യുന്ന നിമിഷത്തിനായാണ് inspir നിലനിൽക്കുന്നത്. ജിജ്ഞാസ, പരിശീലനം, പ്രവേശനം എന്നിവയ്ക്കുള്ള സൗജന്യ പൊതുപഠന കൂട്ടാളിയായി ഉൽപ്പന്നത്തെ ഈ ചിത്രം പരിചയപ്പെടുത്തുന്നു."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "ചലനത്തിലുള്ള inspir"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir പൊതുവേദിയിൽ നിർമ്മിച്ചുകൊണ്ടിരിക്കുന്നു."
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "സൂചനകൾ, സോക്രാറ്റിക് ചോദ്യങ്ങൾ, ചോദ്യപരീക്ഷകൾ, സജീവ ഓർമ്മപ്പരിശീലനം, റോൾപ്ലേ, വാദം, എഴുത്തഭിപ്രായം, പഠന ആസൂത്രണം എന്നിവ പോലുള്ള പ്രത്യേക പഠിപ്പിക്കൽ രൂപങ്ങളുള്ള പഠനരീതികളായി inspir ക്രമീകരിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir പഠനചിത്രം"
+    },
+    {
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "ജിജ്ഞാസ, ഗൃഹപാഠം, പുനഃപരിശീലനം, വലിയ ചോദ്യങ്ങൾ എന്നിവയെ വിശദീകരിക്കുകയും തിരിച്ചുചോദിക്കുകയും പരിശീലിക്കാൻ സഹായിക്കുകയും ചെയ്യുന്ന മാർഗനിർദ്ദേശമുള്ള AI പഠനസമ്മേളനങ്ങളാക്കി inspir മാറ്റുന്നു."
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: നിങ്ങൾക്ക് എന്തും പഠിക്കാം"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir സൗജന്യമായി ഉപയോഗിക്കാമോ?"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "പാത ജീവന്തമായി നിലനിർത്തുക"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "അടുത്തതായി എന്ത് ശ്രമിക്കണം, ഒരു ഘട്ടം എന്തുകൊണ്ട് പ്രവർത്തിക്കുന്നു, പിഴവ് എവിടെ സംഭവിച്ചു, അന്തിമ ഉത്തരത്തെ നിങ്ങളുടെ സ്വന്തം ശബ്ദത്തിൽ എങ്ങനെ തിരുത്തണം എന്നിവ അറിയുക."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "എന്തും പഠിക്കുക"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "എന്തും പഠിക്കുക പ്രോംപ്റ്റുകളും പഠനചക്രവും"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "സൗജന്യ AI പഠനസഹായിയോടൊപ്പം എന്തും പഠിക്കുക: പ്രായോഗിക വഴികാട്ടി"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "സംസാരിച്ചും പരിശോധിച്ചും വാദിച്ചും അന്വേഷിച്ചും പഠിക്കുക."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "പഠിതാവിനെ പ്രക്രിയയിൽ നിലനിർത്തുന്ന പൊതുജന AI രീതികളിലൂടെ പ്രോഗ്രാമിംഗ് പഠിക്കുക, ആശയങ്ങൾ ഡീബഗ് ചെയ്യുക, പദ്ധതികൾ ആസൂത്രണം ചെയ്യുക, ഡാറ്റ വ്യാഖ്യാനിക്കുക, സാങ്കേതിക ചോദ്യങ്ങൾ അന്വേഷിക്കുക."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "നിഷ്ക്രിയമായി ഉത്തരം വായിക്കുന്നതിനുപകരം കേന്ദ്രീകൃത ചോദ്യങ്ങൾ, സൂചനകൾ, പ്രതിഫലനം എന്നിവയിലൂടെ പഠിക്കുക."
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "വിവരണങ്ങൾ, സോക്രാറ്റിക് ചോദ്യങ്ങൾ, ഗൃഹപാഠ പരിശീലനം, ചോദ്യപരീക്ഷകൾ, ഓർമ്മക്കാർഡുകൾ, വാദം, എഴുത്തഭിപ്രായം, കോഡിംഗ് സഹായം, പഠന ആസൂത്രണം എന്നിവയ്ക്കായി സൗജന്യ AI പഠനസഹായിയോടൊപ്പം പഠിക്കുക."
+    },
+    {
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "പഠിതാവിനെ ആദ്യം കാണുന്ന പിന്തുണ"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "പഠിതാക്കൾക്ക് കണ്ണികളുടെ കൂമ്പാരം അല്ല, ഒരു ക്രമമാണ് വേണ്ടത്. മനസ്സിലാക്കൽ, ഗൃഹപാഠം, പരീക്ഷാ തയ്യാറെടുപ്പ്, അന്വേഷണങ്ങൾ എന്നിവയ്ക്കുള്ള പ്രായോഗിക പഠനചക്രങ്ങളായി ഈ പാതകൾ രീതികളെ ബന്ധിപ്പിക്കുന്നു."
+    },
+    {
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "പുതിയ വിഷയത്തിന്റെ തുടക്കത്തിൽ കുടുങ്ങിയതായി തോന്നുന്നവർ അല്ലെങ്കിൽ കഠിന ആശയത്തിലേക്ക് ലളിതമായ വഴി വേണ്ട പഠിതാക്കൾ."
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "സമയം കുറവ്, വലിയ പാഠ്യപദ്ധതി, എല്ലാം ഒരുപോലെ പ്രധാനമാണെന്നു നടിക്കാതെ യാഥാർത്ഥ്യബോധത്തോടെ അവലോകനം ചെയ്യാനുള്ള വഴി വേണ്ട പഠിതാക്കൾ."
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "എല്ലാവർക്കുമുള്ള പഠനം"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "പഠന വഴികാട്ടികളും പരിശീലനചക്രങ്ങളും"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "ലളിതഭാഷയിലെ മാതൃക, കൂടുതൽ മൂർച്ചയുള്ള ചോദ്യങ്ങൾ, തിരിച്ചു വിശദീകരിക്കാനാകുന്ന ഉദാഹരണങ്ങൾ, അവലോകനത്തിനുള്ള ഓർമ്മക്കാർഡുകൾ എന്നിവയുമായി പുറപ്പെടുക."
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "ഈ ചരിത്ര വ്യക്തിയെ എന്നോട് അഭിമുഖം ചെയ്യിക്കൂ. ഉത്തരങ്ങൾ തെളിവ് മനസ്സിലാക്കുന്നവയായിരിക്കട്ടെ; അനിശ്ചിതത്വം വ്യക്തമായി അടയാളപ്പെടുത്തുക."
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "പിഴവുകളിൽ നിന്ന് ഓർമ്മക്കാർഡുകൾ ഉണ്ടാക്കി ഇടവേളയ്ക്കുശേഷം വീണ്ടും കാണുക."
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "പിഴവുകൾ, മടി, സൂത്രങ്ങൾ, നിർവചനങ്ങൾ, വ്യക്തമായി വിശദീകരിക്കാനാകാത്ത ആശയങ്ങൾ എന്നിവയിൽ നിന്ന് ഓർമ്മക്കാർഡുകൾ ഉണ്ടാക്കുക."
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "മനസ്സിൽ പതിയിക്കുക"
+    },
+    {
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "ആശയം പതിയിക്കുക"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "പഠനപദ്ധതി യാഥാർത്ഥ്യയോഗ്യമാക്കുക"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "ഗണിതം"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "ഗണിത ഘട്ടപരിശീലകൻ"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "ഗണിതം, എഴുത്ത്, കോഡിംഗ്, ചരിത്രം, ഗൃഹപാഠം, പരീക്ഷാ തയ്യാറെടുപ്പ് എന്നിവയ്ക്ക് ഓരോന്നിനും വേറിട്ട സഹായം വേണം. വിഷയത്തിൽ നിന്ന് തുടങ്ങുക; തുടർന്ന് യോജിക്കുന്ന രീതി, പ്രോംപ്റ്റ്, വഴികാട്ടി, അല്ലെങ്കിൽ അവലോകനചക്രത്തിലേക്ക് നീങ്ങുക."
+    },
+    {
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "ദൗത്യം ആദ്യം"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "സാധാരണ പഠനനിമിഷങ്ങൾക്കുള്ള രീതിവഴികാട്ടികൾ, പ്രോംപ്റ്റ് ചക്രങ്ങൾ, പഠനരീതികൾ, അടിസ്ഥാന ലേഖനങ്ങൾ."
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "ലളിതഭാഷയിലെ വിശദീകരണത്തിൽ നിന്ന് ചോദ്യങ്ങളിലേക്കും ഉദാഹരണങ്ങളിലേക്കും ഓർമ്മപരിശീലനത്തിലേക്കും നീങ്ങുക."
+    },
+    {
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "സോക്രാറ്റിക് ചോദ്യങ്ങൾ, ചോദ്യപരീക്ഷകൾ, ഓർമ്മക്കാർഡുകൾ, വാദം, റോൾപ്ലേ, മാർഗനിർദ്ദേശമുള്ള പഠനം എന്നിവയിലേക്ക് നീങ്ങുക."
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "ചിത്രത്തിന്റെ ശബ്ദം നിശ്ശബ്ദമാക്കുക"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "എന്റെ പരീക്ഷ ഈ തീയതിയിലാണ്. ഇതാണ് പാഠ്യപദ്ധതി, എന്റെ ദുർബല മേഖലകൾ, എനിക്ക് ലഭ്യമായ സമയം. ദിവസേന ഓർമ്മപ്പരിശീലനം ഉൾപ്പെടുത്തിയ യാഥാർത്ഥ്യബോധമുള്ള പദ്ധതി ഉണ്ടാക്കുക."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT-നോട് ചേർന്ന തിരഞ്ഞെടുപ്പുകൾ"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "അടുത്ത ഘട്ടം"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "ഇല്ല. സൃഷ്ടിച്ച സംഭാഷണത്തെ പഠനാനുകരണമായി കാണുക. വസ്തുതാപരമായ അവകാശവാദങ്ങൾക്ക് യഥാർത്ഥ പ്രാഥമികമോ ദ്വിതീയമോ ആയ സ്രോതസുകൾ ഉദ്ധരിക്കുക."
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "മറ്റൊരു ഉത്തരപ്പെട്ടി അല്ല. പഠിക്കാൻ ഒരു സ്ഥലം."
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "പൊതുഅതിഥി അനുഭവത്തിന് അക്കൗണ്ട് ആവശ്യമില്ലാതെ ഒരു രീതി തുറന്ന് ഉടൻ തുടങ്ങുക."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "രൂപകൽപ്പനയിലുതന്നെ തുറന്നത്"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "ചിത്രം പൂർണ്ണസ്ക്രീനിൽ തുറക്കുക"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "അതിഥി സംഭാഷണം തുറക്കുക"
+    },
+    {
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "വിഷയ കേന്ദ്രം തുറക്കുക"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "നിങ്ങൾ വന്നത് ഏത് തരത്തിലുള്ള സഹായത്തിനായാണോ, അതുതന്നെ തുറക്കുക."
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "പഠന ഭൂപടം തുറക്കുക"
+    },
+    {
+      "key": "site.08cb05cece7fcdc481",
+      "source": "Open the path",
+      "value": "പാത തുറക്കുക"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "വിവരണത്തിൽ നിന്ന് തത്സമയ രീതി, പ്രോംപ്റ്റ്, ചോദ്യപരീക്ഷ, അല്ലെങ്കിൽ അവലോകനചക്രം എന്നിവയിലേക്കു ആളുകളെ നീക്കാൻ പേജുകൾ രൂപകൽപ്പന ചെയ്തിരിക്കുന്നു."
+    },
+    {
+      "key": "site.2882d30f0153bb0830",
+      "source": "Paste the question and what you have tried, then ask for the smallest useful next step.",
+      "value": "ചോദ്യവും നിങ്ങൾ ശ്രമിച്ചതും ഒട്ടിക്കുക; തുടർന്ന് ഏറ്റവും ചെറിയ ഉപകാരപ്രദമായ അടുത്ത ഘട്ടം ചോദിക്കുക."
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "ചിത്രം ഇടവേളയ്ക്ക് നിർത്തുക"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "എന്നെ ഈ സമയത്തിലും സ്ഥലത്തിലും സ്ഥാപിക്കുക. രേഖപ്പെടുത്തിയ വസ്തുതകൾ സാധ്യതയുള്ള അനുകരണത്തിൽ നിന്ന് വേർതിരിച്ച് അടയാളപ്പെടുത്തുകയും ഞാൻ എന്ത് ശ്രദ്ധിക്കുന്നുവെന്ന് ചോദിക്കുകയും ചെയ്യുക."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "ലളിതഭാഷയിലെ വിശദീകരണങ്ങൾ"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "പരീക്ഷാ പുനഃപരിശീലനം ആസൂത്രണം ചെയ്യുക, ചോദ്യപരീക്ഷകൾ സൃഷ്ടിക്കുക, ഓർമ്മക്കാർഡുകൾ നിർമ്മിക്കുക, ഇടവിട്ട അവലോകനം സമയക്രമപ്പെടുത്തുക, കേന്ദ്രീകൃത AI പഠനരീതികളിലൂടെ പ്രചോദനം യാഥാർത്ഥ്യബോധത്തോടെ നിലനിർത്തുക."
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "പ്രവർത്തനം ആസൂത്രണം ചെയ്യുക, ഓർമ്മയിൽ നിന്ന് തിരിച്ചെടുക്കൽ പരിശീലിക്കുക, ചോദ്യപരീക്ഷകളും സജീവ ഓർമ്മപ്പരിശീലനവും ഉപയോഗിച്ച് ദുർബല ഭാഗങ്ങൾ അടയ്ക്കുക."
+    },
+    {
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "ആസൂത്രണം"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "ചിത്രംപ്രവർത്തിപ്പിക്കുകിക്കുക"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "inspir പഠന മുൻകാഴ്‌ച പ്രവർത്തിപ്പിക്കുക"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "ജനപ്രിയ AI പഠനപാതകൾ"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "ജനപ്രിയ പാതകൾ"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "പരിശീലനം"
+    },
+    {
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "ഉത്തരങ്ങൾ പകർത്തൽ അല്ല, പരിശീലനം"
+    },
+    {
+      "key": "site.3112ef0b944597c68c",
+      "source": "Practise retrieval before rereading",
+      "value": "വീണ്ടും വായിക്കുന്നതിന് മുമ്പ് ഓർമ്മയിൽ നിന്ന് തിരിച്ചെടുക്കൽ പരിശീലിക്കുക"
+    },
+    {
+      "key": "site.311a95872a0bdae422",
+      "source": "Prepare for an exam",
+      "value": "പരീക്ഷയ്ക്ക് തയ്യാറെടുക്കുക"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "inspir-ൽ എന്തും പഠിക്കുക ഉപയോഗിച്ച് ഉപകാരപ്രദമായ പഠനഫലങ്ങൾ നേടാനുള്ള പ്രോംപ്റ്റ് ആശയങ്ങളും ആവർത്തിക്കാവുന്ന പഠനചക്രവും."
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "ഒരു വ്യക്തിയോട് ചോദ്യം ചെയ്യുക"
+    },
+    {
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "ഒരു ചരിത്ര കാഴ്ചപ്പാട് ചോദ്യം ചെയ്യുക"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "ചോദ്യങ്ങൾ നിങ്ങളെ വിഷയത്തെക്കുറിച്ചുള്ള സ്വന്തം മാതൃക പുറത്തുകൊണ്ടുവരാൻ നിർബന്ധിക്കുന്നു; സാധാരണയായി കുഴപ്പം, വ്യാജ ആത്മവിശ്വാസം, നഷ്ടമായ മുൻധാരണകൾ എന്നിവ അവിടെയാണ് കാണപ്പെടുന്നത്."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "വേഗത്തിലുള്ള ഉത്തരങ്ങൾ"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "ഈ വിഷയങ്ങളിൽ എന്നോട് ഒരിക്കൽ ഒരു ചോദ്യമായി ചോദിക്കൂ. ഓരോ ഉത്തരത്തിനുശേഷവും പോരായ്മ വിശദീകരിച്ച് ബുദ്ധിമുട്ട് പതുക്കെ കൂട്ടുക."
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "പൊതുവിജ്ഞാനത്തിൽ എന്നെ പരീക്ഷിക്കുക"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "ദുർബല മേഖലകൾ പരീക്ഷിക്കുക"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "സ്വയം പരീക്ഷിക്കുക"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "നിങ്ങൾ യഥാർത്ഥത്തിൽ എന്താണ് ഓർക്കുന്നതെന്നും ആത്മവിശ്വാസം എവിടെയാണ് തെറ്റിദ്ധരിപ്പിക്കുന്നതെന്നും കാണാൻ ആദ്യം സ്വയം പരീക്ഷിക്കുക."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "ചോദ്യപരീക്ഷകൾ സാധാരണയായി കൂടുതൽ വെളിപ്പെടുത്തുന്നു, കാരണം അവ ഓർമ്മയിൽ നിന്ന് തിരിച്ചെടുക്കൽ പരിശോധിക്കുന്നു. എന്ത് തിരുത്തണം എന്ന് ചോദ്യപരീക്ഷ കാണിച്ചതിന് ശേഷം വീണ്ടും വായിക്കുന്നത് സഹായിക്കും."
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "ദൗത്യം വായിക്കുക"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "യാഥാർത്ഥ്യബോധമുള്ള സമയക്രമം"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "ഒരു തെറ്റ് ശരിയാക്കുക"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "ദുർബല ഭാഗം ശരിയാക്കുക"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "വീണ്ടുംപ്രവർത്തിപ്പിക്കുകിക്കുക"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "ചിത്രം വീണ്ടും തുടങ്ങുക"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "ഓർമ്മയിൽ നിന്ന് തിരിച്ചെടുക്കൽ പരിശീലനം"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "ഓർമ്മക്കാർഡുകളോടെ അവലോകനം ചെയ്യുക"
+    },
+    {
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "എന്റെ കരട് തിരുത്തുക"
+    },
+    {
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "നിങ്ങളുടെ ശബ്ദം നഷ്ടമാക്കാതെ തിരുത്തുക"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "പിഴവ് സൂക്ഷിക്കുക"
+    },
+    {
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "അടുത്ത ആവർത്തനം സമയക്രമപ്പെടുത്തുക"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "സ്കൂൾ-വിശിഷ്ട പ്രവർത്തനക്രമങ്ങൾ"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "പങ്കാളി സ്കൂളുകളോ CSR പ്രായോജകത്വമോ ധനസഹായം നൽകുന്ന രീതിയിൽ, NCERT-നോട് ചേർന്ന ഉള്ളടക്കവും പ്രവർത്തനക്രമങ്ങളും ഉൾപ്പെടെ, സ്വന്തം പഠിതാക്കൾക്ക് യോജിച്ച സ്കൂൾ പേരിലുള്ള AI സംഭാഷണാനുഭവങ്ങൾ സ്കൂളുകൾക്ക് നൽകാം."
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "തിരയൽ പേജുകൾ, ബ്ലോഗ് വഴികാട്ടികൾ, പ്രോംപ്റ്റുകൾ, തത്സമയ രീതികൾ എന്നിവ ചോദിക്കുക, ശ്രമിക്കുക, പരിശോധിക്കുക, ശരിയാക്കുക, അവലോകനം ചെയ്യുക എന്ന ലളിതചക്രത്തെ ചുറ്റിപ്പറ്റി ബന്ധിപ്പിച്ചിരിക്കുന്നു."
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "വസ്തുതയെ കൽപ്പനയിൽ നിന്ന് വേർതിരിക്കുക"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "ചിത്രഭാഗങ്ങൾ കാണിക്കുക"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "ചിത്രത്തിന്റെ എഴുത്തുപതിപ്പ് കാണിക്കുക"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "സോക്രാറ്റിക് പരിശോധനകൾ"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "സോക്രാറ്റിക് പഠനം"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "സോക്രാറ്റിക് പഠനസഹായി"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "സോക്രാറ്റിക് പഠിപ്പിക്കൽ ചോദ്യങ്ങൾ, അനുമാനങ്ങൾ, സൂചനകൾ, പ്രതിഫലനം എന്നിവ ഉപയോഗിച്ച് നിഷ്ക്രിയമായി ഉത്തരം വായിക്കുന്നതിനെക്കാൾ ആഴത്തിലുള്ള മനസ്സിലാക്കൽ നിർമ്മിക്കുന്നു."
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "തത്സമയ പഠനസമ്മേളനം ആരംഭിക്കുക."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "പരീക്ഷാ തീയതി അറിയുന്ന ഉടൻ തുടങ്ങുക. സമയം കുറവാണെങ്കിൽ ദുർബല മേഖലകൾ, മുൻപരീക്ഷാ രീതിയിലുള്ള ചോദ്യങ്ങൾ, ദിവസേന ഓർമ്മപ്പരിശീലനം എന്നിവക്ക് മുൻഗണന നൽകുക."
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "ലളിതമായ വിശദീകരണം, ദൈനംദിന ഉപമ, വിഷയം അർത്ഥമാകാൻ മുമ്പ് വേണ്ട മൂന്ന് ആശയങ്ങൾ എന്നിവ ചോദിച്ച് തുടങ്ങുക."
+    },
+    {
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "ഓരോ സമ്മേളനവും വീണ്ടും വായിക്കുന്നതിന് മുമ്പ് വേഗത്തിലുള്ള ചോദ്യപരീക്ഷയോടെ തുടങ്ങുക."
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "ആദ്യ സിദ്ധാന്തങ്ങളിൽ നിന്ന് തുടങ്ങുക"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "വിഷയത്തിൽ നിന്ന് തുടങ്ങി ശരിയായ പഠനരീതി തുറക്കുക."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "നിങ്ങൾ മനസ്സിലാക്കാത്ത കാര്യത്തിൽ നിന്ന് തുടങ്ങി ലളിതഭാഷയിലെ മാതൃകയും ഉദാഹരണങ്ങളും അടുത്ത ഘട്ടങ്ങളും നേടുക."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "പഠനം ആരംഭിക്കുക"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "ജോലിക്ക് യോജിക്കുന്ന രീതിയിൽ വിഷയം, അസൈൻമെന്റ്, കരട്, പരീക്ഷ, അല്ലെങ്കിൽ ആശയം എന്നിവയിൽ നിന്ന് തുടങ്ങുക."
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "എന്തും പഠിക്കുക എന്നതോടെ തുടങ്ങുക"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "രംഗം സാധാരണ റോൾപ്ലേ ആയി മാറാതിരിക്കാനായി സ്ഥലം, സമയം, തിരിച്ചറിയൽ, നിയന്ത്രണങ്ങൾ, തെളിവ് അടയാളങ്ങൾ എന്നിവയോടെ തുടങ്ങുക."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "നിങ്ങൾക്ക് ചെയ്യേണ്ട ജോലിയോടെ തുടങ്ങുക."
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "കുടുങ്ങിയ സ്ഥലം പറയുക"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "ഘട്ടപരിശോധനകൾ"
+    },
+    {
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "ചരിത്രപരമായ പശ്ചാത്തലത്തിലേക്ക് കടക്കുക, വാദങ്ങൾ താരതമ്യം ചെയ്യുക, ഒരു ആശയം ഒന്നിലധികം വശങ്ങളിൽ നിന്ന് കാണാൻ പരിശീലിക്കുക."
+    },
+    {
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "അസൈൻമെന്റിന്റെ ഉടമസ്ഥത നഷ്ടമാക്കാതെ അടുത്ത ഘട്ടമോ പിഴവുപരിശോധനയോ അഭിപ്രായമോ ആവശ്യമുള്ള വിദ്യാർത്ഥികൾ."
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "പഠനചക്രങ്ങൾ, AI പഠിപ്പിക്കൽ വഴികാട്ടികൾ, പ്രായോഗിക പ്രോംപ്റ്റുകൾ."
+    },
+    {
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "പഠിതൃ ആവശ്യങ്ങളോട് ചേർത്ത വിഷയ കേന്ദ്രങ്ങൾ"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "പശ്ചാത്തലം ചുരുക്കുക"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "പാഠ്യപദ്ധതിക്ക് പുറത്തുള്ള പഠനം, അക്കാദമിക് പരിശീലനം, ജിജ്ഞാസ എന്നിവയെ പിന്തുണയ്ക്കുന്നു."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "ഉത്തരം നിഷ്ക്രിയമായി വായിക്കുന്നതിന് പകരം അനുമാനങ്ങൾ തുറന്നുകാട്ടുകയും ഇടവേളകൾ നിറയ്ക്കുകയും ചെയ്യാൻ ചോദ്യങ്ങളിലേക്ക് മാറുക."
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "സൃഷ്ടിച്ച സംഭാഷണം രേഖപ്പെടുത്തിയ ഉദ്ധരണിയിൽ നിന്ന് വേർതിരിച്ചുവെച്ച് ഒരു ചരിത്ര വ്യക്തിയോട് സംസാരിക്കുക."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "ഒരു ചരിത്ര വ്യക്തിയോട് സംസാരിക്കുക"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "ചരിത്ര വ്യക്തികളോട് സംസാരിക്കുന്ന AI"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "അവലോകനത്തിന് മുമ്പ് പരിശോധിക്കുക"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "വാദം പരിശോധിക്കുക"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "നിങ്ങളുടെ യുക്തിചിന്ത പരിശോധിക്കുക"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "ബ്ലോഗ് ഉപകാരപ്രദമായ പഠന ഉപദേശത്തെ തത്സമയ പരിശീലനവുമായി ബന്ധിപ്പിക്കുന്നു; അതിനാൽ ഒരു വഴികാട്ടി ഒരു ഘട്ടത്തിൽ പഠനസമ്മേളനമാകാം."
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "കുടുങ്ങൽ നീക്കൽ, കൂടുതൽ ഓർക്കൽ, നന്നായി എഴുതൽ, പരീക്ഷകൾക്ക് തയ്യാറെടുപ്പ്, ക്ഷമയുള്ള പഠനസഹായിയോടൊപ്പം ആശയങ്ങൾ അന്വേഷിക്കൽ തുടങ്ങിയ യഥാർത്ഥ പഠനനിമിഷങ്ങളെ ചുറ്റിപ്പറ്റിയാണ് ബ്ലോഗ് ക്രമീകരിച്ചിരിക്കുന്നത്."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "വ്യാപകമായ തുറന്ന സോഴ്‌സ് inspir വേദി."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "അവസാന ഭാഗം ദൗത്യത്തിലേക്ക് മടങ്ങുന്നു: പൊതുപ്രവേശനം, സ്കൂളുകൾ, കൂടുതൽ തുറന്ന പഠനരീതി."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "ഇപ്പോഴത്തെ inspirlearning.com പുനർനിർമ്മാണം."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "ചിത്രം പ്രചോദനത്തിൽ നിന്ന് പ്രായോഗിക വാഗ്ദാനത്തിലേക്ക് മാറുന്നു: ക്ഷമയുള്ള AI പഠന കൂട്ടാളി."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "ഗൃഹപാഠവും സോക്രാറ്റിക് രീതികളും പൂർത്തിയായ ഉത്തരങ്ങൾ കൈമാറുന്നതിനുപകരം സൂചനകൾ, യുക്തിചിന്ത, ഘട്ടപരിശോധനകൾ, പഠിതൃ വിശദീകരണങ്ങൾ എന്നിവയെ ചുറ്റിപ്പറ്റിയാണ് രൂപകൽപ്പന ചെയ്തിരിക്കുന്നത്."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "മദ്ധ്യഭാഗം inspir-നെ മനസ്സിലാക്കൽ, സൂചനകൾ, ചോദ്യപരീക്ഷകൾ, സജീവ പഠനചക്രങ്ങൾ എന്നിവയെ ചുറ്റിപ്പറ്റിയാണ് അവതരിപ്പിക്കുന്നത്."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "അടുത്ത തലമുറ AI പഠന വേദി."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "തുടക്ക ഫ്രെയിമുകൾ പഠനം ആരും ഉടൻ തുടങ്ങാവുന്ന ഒന്നായി അവതരിപ്പിക്കുന്നു."
+    },
+    {
+      "key": "site.33237ba4c491cb9422",
+      "source": "The public site is structured like a learning map: live modes for immediate help, subject hubs for learner questions, and guides that turn reading into action.",
+      "value": "പൊതു സൈറ്റ് ഒരു പഠന ഭൂപടം പോലെ ഘടിപ്പിച്ചിരിക്കുന്നു: ഉടൻ സഹായത്തിനുള്ള തത്സമയ രീതികൾ, പഠിതൃ ചോദ്യങ്ങൾക്കുള്ള വിഷയ കേന്ദ്രങ്ങൾ, വായനയെ പ്രവർത്തിയാക്കുന്ന വഴികാട്ടികൾ."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "സൈറ്റ് ഒരു പാതയാണ്, പരസ്യപത്രികയല്ല."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "കൂടുതൽ ആഴത്തിൽ ചിന്തിക്കുക"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "കാലയാത്ര"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "വിഷയ കൂട്ടങ്ങൾ"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "എഴുത്തുപതിപ്പ്"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "ഒരു കാലഘട്ടത്തിലൂടെ സഞ്ചരിക്കുക"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "ഗൃഹപാഠ പരിശീലകൻ പരീക്ഷിക്കുക"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "അതിനെ ഓർമ്മക്കാർഡുകളാക്കുക"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "തെറ്റുകളെ അവലോകനചക്രങ്ങളാക്കുക"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "കുറിപ്പുകളെയോ വിഷയങ്ങളെയോ സൂചനകൾ, ഉത്തരങ്ങൾ, ഉദാഹരണങ്ങൾ, സാധാരണ കുടുക്കുകൾ എന്നിവയുള്ള കേന്ദ്രീകൃത ഓർമ്മക്കാർഡുകളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "ശരിയാക്കിയ പിഴവിനെ പിന്നീട് ഉപയോഗിക്കാൻ ഒരു ഓർമ്മക്കാർഡോ ചെറിയ പരിശോധനപ്പട്ടികയോ ആക്കുക."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "വിശദീകരണത്തെ ഒരു ആശയകാർഡ്, ഒരു ഉദാഹരണകാർഡ്, ഒരു തെറ്റിദ്ധാരണകാർഡ് എന്നിവയുള്ള സജീവ ഓർമ്മക്കാർഡുകളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "ഏറ്റവും കഠിനമായി തെറ്റിയ ചോദ്യത്തെ ഓർമ്മക്കാർഡാക്കി പിന്നീട് അവലോകനം ചെയ്യുക."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "ഈ തെറ്റിയ ചോദ്യങ്ങളെ ആശയം, സൂത്രം, നിർവചനം, ഉദാഹരണം എന്നിവയായി കൂട്ടിച്ചേർത്ത ഓർമ്മക്കാർഡുകളാക്കി മാറ്റുക."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "നിങ്ങളുടെ പാഠ്യപദ്ധതി, പരീക്ഷാ തീയതി, സമയം, ദുർബല മേഖലകൾ എന്നിവയെ പ്രായോഗിക പഠനപദ്ധതിയാക്കുക."
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "കഠിന വിഷയം മനസ്സിലാക്കുക"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "ചരിത്രപശ്ചാത്തലം മനസ്സിലാക്കുക, ഒരു കാഴ്ചപ്പാട് ചോദ്യം ചെയ്യുക, അവകാശവാദങ്ങൾ താരതമ്യം ചെയ്യുക, അനുകരണത്തെ രേഖപ്പെടുത്തിയ വസ്തുതയിൽ നിന്ന് വേർതിരിക്കുക."
+    },
+    {
+      "key": "site.43417b2770a6aa9b4b",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "കോഡ് മനസ്സിലാക്കുക, പിഴവുകൾ ഡീബഗ് ചെയ്യുക, പ്രോഗ്രാമിംഗ് ആശയങ്ങൾ പഠിക്കുക, ചെറിയ പദ്ധതികൾ ഘട്ടംഘട്ടമായി നിർമ്മിക്കുക."
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "ചിത്രത്തിന്റെ ശബ്ദം വീണ്ടും പ്രവർത്തിപ്പിക്കുക"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "പഠനം നിശ്ശബ്ദമായി നീക്കം ചെയ്യുന്ന കുറുക്കുവഴിയല്ല, മനസ്സിലാക്കൽ, പരിശീലനം, അഭിപ്രായം എന്നിവയ്ക്കുള്ള പരിശീലകനായി AI ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "അന്തിമ പ്രവർത്തി നിങ്ങളുടെതായിരിക്കെ സൂചനകൾ, ഘട്ടപരിശോധനകൾ, ഗണിത യുക്തിചിന്ത, എഴുത്തിലെ അഭിപ്രായം എന്നിവയ്ക്കായി AI ഗൃഹപാഠ പരിശീലനം ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "പശ്ചാത്തലം, തെളിവ്, വാദങ്ങൾ, കാഴ്ചപ്പാടുകൾ എന്നിവ അന്വേഷിക്കാൻ AI കാലയാത്ര, ചരിത്രസംഭാഷണങ്ങൾ, വാദപരിശീലനം എന്നിവ ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "ഏറ്റവും ശക്തമായ അവകാശവാദവും ഏറ്റവും ശക്തമായ പ്രതിവാദവും താരതമ്യം ചെയ്യാൻ വാദം ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "പഠനം ഉത്തരങ്ങൾ പകർത്തലായി മാറാതെ സൂചനകൾ, ഘട്ടപരിശോധനകൾ, എഴുത്തഭിപ്രായം എന്നിവ ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "പഠിതാവിന്റെ ശബ്ദം മാറ്റിസ്ഥാപിക്കാതെ ഘടന മെച്ചപ്പെടുത്തുന്ന ലേഖനാഭിപ്രായം, വായനാ പിന്തുണ, സംസാരപരിശീലനം, സ്രോതസ്സ് വിമർശനം, തിരുത്തൽചക്രങ്ങൾ എന്നിവയ്ക്കായി inspir ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "സ്വകാര്യ സംഭാഷണങ്ങൾ വെളിപ്പെടുത്താതെ ഗൃഹപാഠ സൂചനകൾ, ഗണിത ഘട്ടപരിശോധനകൾ, എഴുത്തഭിപ്രായം, സ്രോതസ്സ് വിമർശനം, സോക്രാറ്റിക് ചോദ്യങ്ങൾ, ഓർമ്മക്കാർഡുകൾ എന്നിവയ്ക്കായി inspir ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "ഉത്തരങ്ങൾ പകർത്താതെ ഘട്ടംഘട്ടമായ ഗണിതസഹായം, ഗൃഹപാഠ സൂചനകൾ, സോക്രാറ്റിക് യുക്തിചിന്ത, ചോദ്യപരീക്ഷകൾ, ഓർമ്മക്കാർഡുകൾ, പരീക്ഷാ തയ്യാറെടുപ്പ് എന്നിവയ്ക്കായി inspir ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "പൊതു അതിഥി രീതികൾ സൗജന്യമായി ഉപയോഗിക്കുക; തുടർന്ന് തുറന്ന സോഴ്‌സ് പ്രവർത്തനവും സ്കൂൾ വിന്യാസ പാതകളും അന്വേഷിക്കുക."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "സോക്രാറ്റിക് ചോദ്യങ്ങൾ ഉപയോഗിക്കുക"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "യഥാർത്ഥ ജീവിതത്തിലും നിലനിൽക്കുന്ന പദ്ധതി സൃഷ്ടിക്കാൻ പരീക്ഷാ തീയതി, പാഠ്യപദ്ധതി, ലഭ്യമായ സമയം, ദുർബല മേഖലകൾ എന്നിവ ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "ദുർബല ഭാഗം പിന്നീട് അവലോകനം ചെയ്യാൻ ബന്ധിപ്പിച്ച വഴികാട്ടി, പ്രോംപ്റ്റ്, വിഷയ കേന്ദ്രം, അല്ലെങ്കിൽ പഠനപാത ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "അന്തിമ കരട് തിരിച്ചറിയാവുന്ന വിധത്തിൽ നിങ്ങളുടെതായിരിക്കെ ഘടന, വ്യക്തത, തെളിവ് എന്നിവയ്ക്കായി എഴുത്തഭിപ്രായം ഉപയോഗിക്കുക."
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "ആദ്യ ക്ലിക്കിൽ നിന്നുതന്നെ ഉപകാരപ്രദം"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "വീഡിയോ നിയന്ത്രണങ്ങൾ"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "വീഡിയോ പുരോഗതി"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "ശബ്ദം നിലനിർത്തുന്ന അഭിപ്രായം"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "31 സെക്കൻഡ് കാണുക"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "ദുർബല മേഖലകളുടെ ചക്രങ്ങൾ"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "എല്ലാവർക്കും വേണ്ടി ഒരു AI പഠന കൂട്ടാളി ചെയ്യേണ്ടത്"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "പഠിതാക്കൾ തുടങ്ങുന്നതിന് മുമ്പ് സാധാരണ ചോദിക്കുന്നത്."
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "വിഷയം വളരെ കഠിനമായി തോന്നുമ്പോൾ ആദ്യം എന്ത് ചോദിക്കണം?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "ഗൃഹപാഠ പ്രോംപ്റ്റിൽ ഞാൻ എന്ത് ഉൾപ്പെടുത്തണം?"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "നിങ്ങൾക്ക് ചെയ്യാൻ കഴിയുന്നത്"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "സ്കൂളിന്റെ പേരിൽ അവതരിപ്പിക്കാവുന്ന AI"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "സോക്രാറ്റിക് AI പഠനസഹായി ആശയങ്ങളെ പതിയാൻ സഹായിക്കുന്നതെന്തുകൊണ്ട്"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "ചരിത്രം വാദവുമായി ചേർക്കേണ്ടത് എന്തുകൊണ്ട്?"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "വിശദീകരണത്തിന് ശേഷം സോക്രാറ്റിക് ചോദ്യങ്ങൾ ഉപയോഗിക്കേണ്ടത് എന്തുകൊണ്ട്?"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "ഒരു AI പരിശീലകനോടൊപ്പം ആൽജിബ്ര, കല്കുലസ്, വാക്കുപ്രശ്നങ്ങൾ, ഗണിത ആശയങ്ങൾ എന്നിവ ഓരോ ഘട്ടമായി കൈകാര്യം ചെയ്യുക."
+    },
+    {
+      "key": "site.4e2149136bd53c413f",
+      "source": "Work through math steps",
+      "value": "ഗണിത ഘട്ടങ്ങളിലൂടെ പ്രവർത്തിക്കുക"
+    },
+    {
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "നോക്കാതെ മൂന്ന് വാക്യങ്ങളിലുള്ള വിശദീകരണം എഴുതുക; തുടർന്ന് ദുർബല കണ്ണി കണ്ടെത്താൻ സോക്രാറ്റിക് രീതിയോട് ചോദിക്കുക."
+    },
+    {
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "സഹായം ചോദിക്കുന്നതിന് മുമ്പ് നിങ്ങൾ എവിടെയാണ് കുടുങ്ങിയതെന്ന് കൃത്യമായി എഴുതുക."
+    },
+    {
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "എഴുത്ത്"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "എഴുത്ത് പരിശീലകൻ"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "അതെ, അത് സൂചനകൾ നൽകുകയും യുക്തിചിന്ത പരിശോധിക്കുകയും പിഴവുകൾ വിശദീകരിക്കുകയും നിങ്ങൾക്കുവേണ്ടി എഴുതുന്നതിനുപകരം അന്തിമ ഉത്തരം നിങ്ങൾ സൃഷ്ടിക്കാൻ ആവശ്യപ്പെടുകയും ചെയ്യുമ്പോൾ."
+    },
+    {
+      "key": "site.4eb7825da66025f6ae",
+      "source": "Yes. Public topic chats such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly in guest mode.",
+      "value": "അതെ. എന്തും പഠിക്കുക, സോക്രാറ്റിക് പഠനം, ഗൃഹപാഠ പരിശീലകൻ, ചോദ്യപരീക്ഷകൾ, ഓർമ്മക്കാർഡുകൾ തുടങ്ങിയ പൊതുവിഷയ സംഭാഷണങ്ങൾ അതിഥി രീതിയിൽ നേരിട്ട് തുറക്കും."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "അതെ. സ്കൂളുകൾക്ക് ആദ്യം പൊതു ഉൽപ്പന്നം ഉപയോഗിച്ച് ശേഷം സ്കൂൾ-വിശിഷ്ട പ്രവർത്തനക്രമങ്ങൾ, രഹസ്യത, ധനസഹായമുള്ള പ്രവേശന തിരഞ്ഞെടുപ്പുകൾ എന്നിവയുള്ള ഇഷ്ടാനുസൃത AI പഠന ഇടങ്ങളെക്കുറിച്ച് ചർച്ച ചെയ്യാം."
+    },
+    {
+      "key": "site.7e0d4a8f0b3a3c531c",
+      "source": "Yes. The public guest learning modes are designed for free access, so learners can start without needing a school deployment or paid account.",
+      "value": "അതെ. പൊതു അതിഥി പഠനരീതികൾ സൗജന്യപ്രവേശനത്തിനായി രൂപകൽപ്പന ചെയ്തതാണ്; അതിനാൽ പഠിതാക്കൾക്ക് സ്കൂൾ വിന്യാസമോ പണമടച്ച അക്കൗണ്ടോ ആവശ്യമില്ലാതെ തുടങ്ങാം."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "പൊതു പഠനരീതികൾ നിങ്ങൾക്ക് സ്വതന്ത്രമായി പരീക്ഷിക്കാം. സംരക്ഷിച്ച സംഭാഷണങ്ങൾ, അക്കൗണ്ടുകൾ, അഡ്മിൻ ഉപകരണങ്ങൾ, ഉപയോക്തൃ ഡാറ്റ എന്നിവ സ്വകാര്യമായി തുടരും."
+    }
+  ]
+}

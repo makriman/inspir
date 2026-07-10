@@ -42,7 +42,6 @@ const nextConfig: NextConfig = {
     "/terms": siteTranslationTraceFiles,
     "/topics": siteTranslationTraceFiles,
     "/trust": siteTranslationTraceFiles,
-    "/api/site-translations": siteTranslationTraceFiles,
     "/rss.xml": contentTraceFiles,
     "/sitemap/:path*": contentTraceFiles,
     "/llms.txt": contentTraceFiles,

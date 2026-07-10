@@ -6,7 +6,8 @@ import { InspirLogo } from "@/components/brand/InspirLogo";
 import { SocialLinks } from "@/components/brand/SocialLinks";
 import { MarketingVideoEngine } from "@/components/marketing/MarketingVideoEngine";
 import { MarketingLanguageControls } from "@/components/marketing/LanguageControls";
-import { type SupportedLanguage } from "@/lib/content/languages";
+import { defaultLanguage, type SupportedLanguage } from "@/lib/content/languages";
+import { gameArenaNavigationLabel } from "@/lib/games/navigation";
 import { localizeHref } from "@/lib/i18n/routing";
 import { getRequestMarketingChrome, type MarketingChrome } from "@/lib/i18n/marketing-chrome";
 import {
@@ -52,11 +53,13 @@ export function MarketingHeaderWithChrome({
             {chrome.t(link.label)}
           </Link>
         ))}
+        {chrome.hrefLanguage === defaultLanguage ? <Link href="/games">{gameArenaNavigationLabel}</Link> : null}
         <MarketingLanguageControls
           currentLanguage={chrome.language}
           recommendedLanguage={chrome.recommendedLanguage}
           currentPathname={chrome.currentPathname}
           hasLocalePrefix={chrome.hasLocalePrefix}
+          availableLanguages={chrome.availableLanguages}
           copy={{
             buttonLabel: chrome.t("Language"),
             chooseTitle: chrome.t("Choose your language"),

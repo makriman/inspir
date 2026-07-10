@@ -6,9 +6,7 @@ import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
 import { PwaInstallPrompt } from "@/components/pwa/PwaInstallPrompt";
 import { JsonLdScripts } from "@/components/seo/JsonLdScripts";
 import {
-  defaultLanguage,
   languageConfigs,
-  supportedLanguages,
 } from "@/lib/content/languages";
 import { localizedMarketingMetadataForLanguage } from "@/lib/i18n/metadata";
 import {
@@ -34,20 +32,12 @@ const rootJsonLd = [organizationJsonLd(), websiteJsonLd(), webApplicationJsonLd(
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
-export const revalidate = 3600;
+export const revalidate = false;
 
 type LocalizedLayoutProps = Readonly<{
   children: React.ReactNode;
   params: LocaleRouteParams;
 }>;
-
-export function generateStaticParams(): Array<{ locale: string }> {
-  const params: Array<{ locale: string }> = [];
-  for (const language of supportedLanguages) {
-    if (language !== defaultLanguage) params.push({ locale: languageConfigs[language].prefix });
-  }
-  return params;
-}
 
 export async function generateMetadata({ params }: { params: LocaleRouteParams }): Promise<Metadata> {
   const language = await resolveLocaleParam(params);

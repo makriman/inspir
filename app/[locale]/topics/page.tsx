@@ -3,10 +3,14 @@ import {
   generateTopicsMetadata,
   TopicsPageContent,
 } from "@/components/marketing/pages/TopicsMarketingPage";
-import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
+import { generateLocalizedStaticParams, resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return generateLocalizedStaticParams("/topics");
+}
 
 type LocalizedTopicsPageProps = {
   params: LocaleRouteParams;

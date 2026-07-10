@@ -21,12 +21,15 @@ test("Cloudflare package scripts avoid nested pnpm invocations", () => {
 test("preview Playwright resets only declared local runtime counters", () => {
   const previewRunner = fs.readFileSync(path.resolve("scripts/cloudflare/run-preview-playwright.ts"), "utf8");
   const localD1Setup = fs.readFileSync(path.resolve("scripts/cloudflare/setup-local-d1.ts"), "utf8");
+  const sanitizedBuild = fs.readFileSync(path.resolve("scripts/cloudflare/run-sanitized-build.ts"), "utf8");
 
   assert.match(previewRunner, /setup-local-d1\.ts", "--reset-runtime-state"/);
+  assert.match(previewRunner, /clearLocalPreviewCacheApiState\(\)/);
   assert.match(localD1Setup, /RUNTIME_MUTABLE_TABLES/);
   assert.match(localD1Setup, /delete from "\$\{table\}";/);
   assert.doesNotMatch(localD1Setup, /delete from "users"/);
   assert.doesNotMatch(localD1Setup, /drop table/i);
+  assert.match(sanitizedBuild, /delete config\.routes/);
 });
 
 test("Cloudflare scripts avoid machine-local absolute tool paths", () => {
@@ -105,10 +108,33 @@ test("marketing performance path avoids runtime translation fan-out and DOM walk
   assert.match(shell, /hrefLanguage/);
   assert.doesNotMatch(layout, /MarketingServerLocalizer/);
   assert.match(manifestGenerator, /isRenderLocalizedSiteTranslationNamespace/);
+  assert.match(fs.readFileSync(path.resolve("lib/i18n/site-source.ts"), "utf8"), /"api", "admin", "games"/);
   assert.doesNotMatch(layout, /headers\(\)/);
   assert.doesNotMatch(jsonLd, /headers\(\)/);
   assert.equal(requestLocale.match(/await headers\(\)/g)?.length, 1);
   assert.match(requestLocale, /getRequestLocaleHeaderSnapshot/);
+});
+
+test("large translation dictionaries are not exposed through dynamic public API routes", () => {
+  assert.equal(fs.existsSync(path.resolve("app/api/site-translations/route.ts")), false);
+  assert.equal(fs.existsSync(path.resolve("app/api/main-app-translations/route.ts")), false);
+
+  const nextConfig = fs.readFileSync(path.resolve("next.config.ts"), "utf8");
+  assert.doesNotMatch(nextConfig, /\/api\/site-translations/);
+  assert.doesNotMatch(nextConfig, /\/api\/main-app-translations/);
+});
+
+test("runtime translation reads cannot accumulate request-bound promises in isolate globals", () => {
+  const sourceReader = fs.readFileSync(path.resolve("lib/i18n/runtime-site-source.ts"), "utf8");
+  const bundleReader = fs.readFileSync(path.resolve("lib/i18n/db-translations.ts"), "utf8");
+  const manifestGenerator = fs.readFileSync(path.resolve("scripts/generate-site-source-manifest.ts"), "utf8");
+
+  assert.match(sourceReader, /knownSiteTranslationNamespaces/);
+  assert.match(sourceReader, /knownRuntimeNamespaceSet\.has\(namespace\)/);
+  assert.doesNotMatch(sourceReader, /runtimeSourceCache/);
+  assert.doesNotMatch(bundleReader, /dbBundleCache/);
+  assert.doesNotMatch(bundleReader, /Promise<TranslationBundle \| null>/);
+  assert.match(manifestGenerator, /site-namespace-manifest\.ts/);
 });
 
 test("marketing cacheability config is deterministic for cookieless GET pages", () => {
@@ -126,14 +152,19 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   };
 
   assert.match(middleware, /buildCacheableMarketingContentSecurityPolicy/);
+  assert.match(middleware, /requestHost === "localhost"/);
+  assert.match(middleware, /requestHost === "127\.0\.0\.1"/);
   assert.match(middleware, /isMarketingPageRequest/);
   assert.match(middleware, /isPubliclyCacheableMarketingRequest/);
   assert.match(middleware, /"\/blog"/);
   assert.match(middleware, /pathname === "\/reset_pw"/);
-  assert.match(middleware, /Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400"/);
+  assert.match(middleware, /public, s-maxage=3600, stale-while-revalidate=86400/);
+  assert.match(middleware, /public, max-age=0, s-maxage=31536000, must-revalidate/);
   assert.match(middleware, /Cache-Control", "private, no-cache, no-store, max-age=0, must-revalidate"/);
   assert.match(middleware, /Vary", "Accept-Encoding, Cookie"/);
   assert.match(middleware, /localizedPath\.hasLocalePrefix && !cacheableMarketingRequest/);
+  assert.match(middleware, /isStaticSiteLanguageAvailableForPath\(effectivePathname, language\)/);
+  assert.match(middleware, /pathname\.startsWith\("\/games"\)/);
   assert.match(csp, /buildCacheableMarketingContentSecurityPolicy/);
   assert.match(csp, /script-src 'self' 'unsafe-inline' https:\/\/accounts\.google\.com/);
   assert.match(cacheRule, /http_request_cache_settings/);
@@ -144,17 +175,27 @@ test("marketing cacheability config is deterministic for cookieless GET pages", 
   assert.match(cacheRule, /better-auth\.session_token/);
   assert.match(cacheRule, /__Secure-better-auth\.session_token/);
   assert.match(cacheRule, /cache: false/);
-  assert.match(cacheRule, /edge_ttl:\s*\{ mode: "respect_origin" \}/);
+  assert.match(cacheRule, /mode: "override_origin"/);
+  assert.match(cacheRule, /englishEdgeTtlSeconds = 60 \* 60/);
+  assert.match(cacheRule, /localizedEdgeTtlSeconds = 365 \* 24 \* 60 \* 60/);
+  assert.match(cacheRule, /default: edgeTtlSeconds/);
+  assert.match(cacheRule, /from: 200, to: 299 \}, value: edgeTtlSeconds/);
+  assert.match(cacheRule, /from: 300, to: 499 \}, value: 0/);
+  assert.match(cacheRule, /from: 500, to: 599 \}, value: -1/);
+  assert.doesNotMatch(cacheRule, /status_code_range[^\n]+duration:/);
+  assert.match(cacheRule, /browser_ttl: \{ mode: "respect_origin" \}/);
   assert.match(cacheRule, /not http\.request\.uri\.query contains/);
   assert.doesNotMatch(cacheRule, /custom_key/);
   assert.match(edgeCacheVerifier, /cf-cache-status/);
   assert.match(edgeCacheVerifier, /better-auth\.session_token=edge-cache-probe/);
+  assert.match(edgeCacheVerifier, /unavailableLocalizedPassed/);
+  assert.match(edgeCacheVerifier, /"\/hi\/mission"/);
   assert.equal(packageJson.scripts?.["cf:cache:upsert-marketing-html"], "tsx scripts/cloudflare/upsert-marketing-cache-rule.ts");
   assert.equal(packageJson.scripts?.["cf:verify:edge-cache"], "tsx scripts/cloudflare/verify-marketing-edge-cache.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:generate"], "tsx scripts/seo/generate-sitemap-lastmod.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");
   assert.equal(wrangler.placement?.mode, "smart");
-  assert.equal(wrangler.cache?.enabled, true);
+  assert.equal(wrangler.cache, undefined);
   assert.equal(wrangler.limits, undefined);
 });
 
@@ -194,6 +235,9 @@ test("localized marketing chrome avoids English-only video and PWA labels", () =
 
   assert.match(pwaPrompt, /const promptEnabled = enabled && !hasLocalePathPrefix\(pathname\)/);
   assert.match(pwaPrompt, /if \(!promptEnabled \|\| !sheet\.isVisible \|\| !sheet\.mode\)/);
+  assert.match(marketingShell, /availableLanguages=\{chrome\.availableLanguages\}/);
+  assert.match(marketingShell, /chrome\.hrefLanguage === defaultLanguage/);
+  assert.match(marketingShell, /href="\/games"/);
 });
 
 test("homepage film keeps the poster as the first visible LCP surface", () => {
@@ -221,6 +265,7 @@ test("sitemap lastmod data is generated from git content sources", () => {
   assert.doesNotMatch(sitemap, /lastModified:\s*new Date\(/);
   assert.match(lastmod, /Generated by pnpm seo:lastmod:generate/);
   assert.match(generator, /"git", \["log", "-1", "--format=%cs"/);
+  assert.match(sitemap, /absoluteUrl\("\/games\/chess"\)/);
 });
 
 test("social preview metadata points at the static PNG fallback", () => {
@@ -245,12 +290,27 @@ test("IndexNow key is root-served and submit script targets Bing", () => {
   assert.match(submitScript, /https:\/\/www\.bing\.com\/indexnow/);
 });
 
-test("chat auto-translation skips streaming markdown mutations", () => {
+test("chat auto-translation is incremental and preserves workspace node identity", () => {
   const chatClient = fs.readFileSync(path.resolve("components/chat/ChatClient.tsx"), "utf8");
   const richMarkdown = fs.readFileSync(path.resolve("components/chat/RichMarkdownContent.tsx"), "utf8");
+  const observerStart = chatClient.indexOf("const observer = new MutationObserver");
+  const observerEnd = chatClient.indexOf("observer.observe(root", observerStart);
+  assert.ok(observerStart >= 0 && observerEnd > observerStart);
+  const observerBody = chatClient.slice(observerStart, observerEnd);
 
   assert.match(chatClient, /new MutationObserver\(\(mutations\) =>/);
-  assert.match(chatClient, /mutations\.every\(\(mutation\) => shouldSkipTranslation\(mutation\.target\)\)/);
+  assert.match(chatClient, /translateNodeTree\(root, textMap, translationState\)/);
+  assert.match(observerBody, /translateNodeTree\(addedNode, textMap, translationState\)/);
+  assert.match(observerBody, /translateTextNode\(mutation\.target, textMap, translationState\)/);
+  assert.match(observerBody, /translateElementAttribute\(mutation\.target, mutation\.attributeName, textMap, translationState\)/);
+  assert.doesNotMatch(observerBody, /translateNodeTree\(root/);
+  assert.doesNotMatch(observerBody, /querySelectorAll|createTreeWalker/);
+  assert.match(chatClient, /textNodes: WeakMap<Text, AppliedTranslation>/);
+  assert.match(chatClient, /previous\?\.applied === currentValue \? previous\.source : currentValue/);
+  assert.match(chatClient, /useAutoTranslate\(translationRootRef, translationTextMap\)/);
+  assert.equal(chatClient.match(/buildTranslationTextMap\(/g)?.length, 2);
+  assert.match(chatClient, /<div ref=\{translationRootRef\}/);
+  assert.doesNotMatch(chatClient, /key=\{`\$\{translationBundle\.language\}-\$\{translationBundle\.sourceHash\}`\}/);
   assert.match(richMarkdown, /data-no-auto-translate="true"/);
 });
 

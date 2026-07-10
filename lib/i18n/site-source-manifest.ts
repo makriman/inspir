@@ -2,7 +2,7 @@
 // Do not edit by hand.
 export const siteSourceManifest = {
   "marketing-site": {
-    "sourceHash": "784fb3090db46f80d95db18611a9c8f6c784cccb397e2a0634e658734b6e5d39",
+    "sourceHash": "ec84387ca93fbec6a68df90e756a5b64af6dc401b0fefbc4646866ee897b228b",
     "sourceStrings": {
       "site.69de268ddc00988413": ", and when to open inspir.",
       "site.b6ad3fa84a3b2c302d": "\"AI in classrooms\"",
@@ -1739,6 +1739,7 @@ export const siteSourceManifest = {
       "site.ea7589a6750c48a4f2": "Front: \"Why does spaced review work better than cramming?\"",
       "site.7a6a5dcd5b773964b6": "Full public reference index",
       "site.d38012005bd9ca64d9": "Funded access paths",
+      "site.ee30b035ee17c34450": "Game Arena | inspir",
       "site.e32e40425dc912fbf0": "Gamification",
       "site.022187cef1321d7ae7": "Gamify learning while keeping real understanding at the center.",
       "site.0677f2964259bc8d3a": "Gamify study while preserving meaningful learning evidence.",
@@ -2015,6 +2016,7 @@ export const siteSourceManifest = {
       "site.434ff946ce0862dc81": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity through free public AI learning tools and school-ready learning spaces.",
       "site.ed09d5aa7dd27b2edc": "inspir exists to make learning accessible, engaging, enjoyable, and useful for anyone with curiosity, whether they are a student, parent, teacher, or self-taught learner.",
       "site.2cade887d3d2117ef1": "inspir free AI learning for everyone",
+      "site.5121f7306ecc75edb5": "inspir Game Arena",
       "site.116474409fe330fe3a": "inspir home",
       "site.646411f4ba89569311": "inspir in motion",
       "site.7735fec73f26f3fe0d": "inspir is a free AI learning platform shaped by more than a decade of quizzes, extracurricular learning, school networks, and applied AI experimentation.",
@@ -3046,6 +3048,7 @@ export const siteSourceManifest = {
       "site.087cd4244039b82180": "Simulate supply and demand",
       "site.dc4f7ae02ae1046f9d": "SiteNavigationElement",
       "site.b5d45f2cbf4c958fe1": "Sketch a cell diagram",
+      "site.df499d7c6f44a88703": "Small, deterministic strategy games with inspectable rules and complete results.",
       "site.41a575086b73bd0661": "Social",
       "site.eb142eede9b957ee66": "Socratic AI",
       "site.c7a243a1f77156e2f7": "Socratic AI tutor",

@@ -102,7 +102,7 @@ const baseStrings: Record<string, string> = {
   "memory.category.general": "General",
 };
 
-export function getMainAppSourceStrings() {
+function buildMainAppSourceStrings() {
   const strings: Record<string, string> = { ...baseStrings };
 
   for (const text of mainAppComponentText) {
@@ -124,7 +124,7 @@ export function getMainAppSourceStrings() {
   return strings;
 }
 
-export function getMainAppSourceHash(sourceStrings = getMainAppSourceStrings()) {
+function hashMainAppSourceStrings(sourceStrings: Record<string, string>) {
   const stablePayload = Object.keys(sourceStrings)
     .sort()
     .map((key) => `${key}\u0000${sourceStrings[key]}`)
@@ -132,27 +132,27 @@ export function getMainAppSourceHash(sourceStrings = getMainAppSourceStrings()) 
   return createHash("sha256").update(stablePayload).digest("hex");
 }
 
+export function getMainAppSourceStrings() {
+  return mainAppSourceStrings;
+}
+
+export function getMainAppSourceHash(sourceStrings = mainAppSourceStrings) {
+  return sourceStrings === mainAppSourceStrings ? mainAppSourceHash : hashMainAppSourceStrings(sourceStrings);
+}
+
 export function getEnglishMainAppTranslationBundle(): MainAppTranslationBundle {
-  const sourceStrings = getMainAppSourceStrings();
-  return {
-    namespace: mainAppTranslationNamespace,
-    language: defaultLanguage,
-    sourceHash: getMainAppSourceHash(sourceStrings),
-    sourceStrings,
-    strings: sourceStrings,
-  };
+  return englishMainAppTranslationBundle;
 }
 
 export function buildMainAppTranslationBundle(
   language: string,
   strings: Record<string, string>,
 ): MainAppTranslationBundle {
-  const sourceStrings = getMainAppSourceStrings();
   return {
     namespace: mainAppTranslationNamespace,
     language: normalizeLanguage(language),
-    sourceHash: getMainAppSourceHash(sourceStrings),
-    sourceStrings,
+    sourceHash: mainAppSourceHash,
+    sourceStrings: mainAppSourceStrings,
     strings,
   };
 }
@@ -185,3 +185,13 @@ function isTranslatableComponentText(text: string) {
   if (/^[Mm][0-9,.\sCcSsLlHhVvZz-]+$/.test(value)) return false;
   return true;
 }
+
+const mainAppSourceStrings: Record<string, string> = Object.freeze(buildMainAppSourceStrings());
+const mainAppSourceHash = hashMainAppSourceStrings(mainAppSourceStrings);
+const englishMainAppTranslationBundle: MainAppTranslationBundle = Object.freeze({
+  namespace: mainAppTranslationNamespace,
+  language: defaultLanguage,
+  sourceHash: mainAppSourceHash,
+  sourceStrings: mainAppSourceStrings,
+  strings: mainAppSourceStrings,
+});

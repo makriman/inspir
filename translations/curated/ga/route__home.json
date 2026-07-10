@@ -1,0 +1,1880 @@
+{
+  "schemaVersion": 1,
+  "language": "Irish",
+  "locale": "ga",
+  "namespace": "route:home",
+  "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
+  "model": "curated-codex-v2",
+  "entries": [
+    {
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "treoracha praiticiúla {value1}"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Leabharlann treoracha {value1} atá tógtha le haghaidh foghlama a iompaíonn ina gníomh."
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Compánach foghlama AI poiblí saor in aisce le haghaidh teagaisc, cleachtaidh, ceisteanna tástála, cártaí cuimhne, díospóireachta, aiseolais scríbhneoireachta, cúnaimh códaithe agus pleanála staidéir."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Conair phraiticiúil foghlama AI chun bogadh ó mhearbhall go míniú soiléir, ceisteanna Sócraiteacha, samplaí agus cuimhne ghníomhach."
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Treoir phraiticiúil ar Foghlaim Aon Rud a úsáid ar inspir le haghaidh foghlaim bhunsraithe, le spreagthaí, lúba staidéir agus nósanna AI níos sábháilte."
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Súil phraiticiúil ar an gcaoi ar féidir le AI an fhoghlaim a dhéanamh níos soiléire, níos pearsanta agus níos inrochtana gan mic léinn a iompú ina mbailitheoirí freagraí éighníomhacha."
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Suíomh foghlama poiblí ar féidir le daoine a thuiscint go tapa."
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Gearrscannán a chuireann creideamh inspir in iúl: gur chóir don fhoghlaim a bheith saor in aisce, inrochtana agus beo."
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Teagascóir don chéad cheist"
+    },
+    {
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "inrochtaineacht, spreagthaí, tástálacha, iompar AI níos sábháilte, sreafaí foghlaimeoirí agus snas ar an gcomhéadan."
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Gníomh tar éis léitheoireachta"
+    },
+    {
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Cleachtadh gníomhach"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Athbhreithniú cuimhne ghníomhaí"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Tar éis gach leid, mínigh cén fáth a n-oibríonn an chéim sula leanann tú ar aghaidh."
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Tar éis an ionsamhlaithe, déan achoimre ar an suíomh, na srianta agus an fhianaise."
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "Teagascóir Códaithe AI"
+    },
+    {
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "cleachtadh díospóireachta AI"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "plean ullmhúcháin scrúdaithe AI"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "Plean Ullmhúcháin Scrúdaithe AI le Ceisteanna Tástála agus Cuimhne Ghníomhach"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "Pleanálaí Ullmhúcháin Scrúdaithe AI"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "Cártaí cuimhne AI agus cuimhne ghníomhach: conas níos mó a choinneáil i gcuimhne"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "Cártaí cuimhne AI le haghaidh cuimhne ghníomhaí"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "Cártaí cuimhne AI don athdhéanamh"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "teagascóir staire AI"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "Teagascóir Staire AI"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "cóitseálaí obair bhaile AI"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "Cúnamh obair bhaile AI gan chaimiléireacht"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "Cúnamh Obair Bhaile AI gan Freagraí a Chóipeáil"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "Cúntóir Obair Bhaile AI"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "cóitseálaí céimeanna matamaitice AI"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "Teagascóir Matamaitice AI"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "gineadóir ceisteanna tástála AI le haghaidh scrúduithe"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "teagascóir Sócraiteach AI"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "sceideal staidéir AI"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "foghlaim taistil ama AI"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "teagascóir AI le haghaidh coincheapa deacra"
+    },
+    {
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "teagascóirí AI de réir ábhair"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "aiseolas scríbhneoireachta AI do mhic léinn"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "Teagascóir Scríbhneoireachta AI"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Freagair ceist seiceála, bain triail as céim, déan díospóireacht ar mhaíomh, athbhreithnigh dréacht, nó tóg cártaí cuimhne."
+    },
+    {
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "An fearr ceisteanna tástála ná athléamh?"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Argóint"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Cleachtadh argóna"
+    },
+    {
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Cuir ceist ar bith agus foghlaim trí mhínithe soiléire, samplaí, spreagthaí leantacha agus teagasc AI foighneach."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Cuir ceist ar bith"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Iarr leid"
+    },
+    {
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Iarr leid, ní an freagra"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Iarr míniú níos simplí ar an gcoincheap is laige."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Iarr cúig cheist a mheascann sainmhínithe, samplaí agus fadhbanna aistrithe."
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Iarr leideanna, seiceálacha, aiseolas agus pleananna staidéir a fhágann an smaointeoireacht ag an bhfoghlaimeoir."
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Iarr an topaic i ngnáthchaint, ansin iarr analóg amháin, sampla amháin agus míthuiscint choitianta amháin."
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Cuir cúig cheist Shócraiteacha orm faoin topaic seo. Tar éis gach freagra, inis dom cén toimhde a d'úsáid mé agus cad ba chóir a thástáil ina dhiaidh sin."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Cuir ceisteanna, cuir dúshlán faoi smaointe agus foghlaim stair trí chomhráite daingnithe le daoine poiblí ón am atá thart."
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Iarr ar an mód stairiúil lipéad a chur ar a bhfuil doiciméadaithe, intuigthe nó ionsamhlaithe."
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Cuir an cheist cheart"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Cuir do chéad cheist agus bog díreach isteach sa chleachtadh."
+    },
+    {
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Ar fáil go poiblí, agus is féidir le scoileanna leaganacha saincheaptha rúnda a rith."
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Brabhsáil gach mód"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Brabhsáil ábhair"
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Tóg pas ama, glan an chomhairle taistil, agus taiscéal domhan stairiúil trí radharc, léarscáil, amlíne, daoine, rialacha, fardal agus fianaise."
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Tóg sreabhadh ullmhúcháin scrúdaithe AI le plean staidéir réalaíoch, cleachtadh aisghlaoigh, ceisteanna tástála, cártaí cuimhne agus athbhreithniú ar réimsí laga."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Tóg plean scrúdaithe"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Tóg an plean"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Tóg linn é"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Tógtha don fhiosracht, don chleachtadh agus don rochtain."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Tógtha ó fhíoriompar foghlaimeoirí, ní ó bhosca comhrá ginearálta."
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Tógtha lena úsáid"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "An féidir le cúnamh obair bhaile AI a bheith eiticiúil?"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "An féidir liom dialóg stairiúil AI a lua mar fhoinse?"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "An féidir liom inspir a úsáid gan síniú isteach?"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "An féidir le inspir cabhrú le hobair bhaile gan caimiléireacht a spreagadh?"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Seiceáil mo mhúnla"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Seiceáil céim amháin"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Seiceáil an réasúnaíocht líne ar líne"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Seiceáil an chéim seo i mo chuid oibre. Má tá sí mícheart, mínigh an botún agus tabhair dom aon chéad bheart amháin."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Mínithe soiléire"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Teorainneacha soiléire príobháideachais"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Teagascóir Cóid"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Códú"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Cumarsáid"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Cuir na hargóintí i gcomparáid"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Imscarthaí rúnda"
+    },
+    {
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Lean ar aghaidh"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Tá fáilte roimh ranníocaíochtaí ó innealtóirí, oideoirí, dearthóirí, mic léinn agus aon duine ar mian leo foghlaim AI a dhéanamh níos sábháilte, níos soiléire, níos inrochtana agus níos úsáidí."
+    },
+    {
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Iompaigh botúin ina n-ábhar cleachtaidh"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Iompaigh an míniú ina chártaí cuimhne ghníomhaí, ansin fill ar na cártaí tar éis botúin nó leisce."
+    },
+    {
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Cruthaigh tástáil bheag"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Tosaíonn fiosracht anseo"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Fiosracht, cleachtadh agus AI a mhúineann."
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Foghlaimeoirí fiosracha ar mhaith leo go mbraithfeadh stair agus smaointe suite, inchíorraithe agus beo gan rian na fianaise a chailleadh."
+    },
+    {
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Spásanna foghlama AI saincheaptha le rúndacht sonraí."
+    },
+    {
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Déan díospóireacht ar mhaíomh"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Déan díospóireacht ar aon topaic"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Déan díospóireacht ar aon topaic, faigh dúshlán, cuir maímh i gcomparáid agus foghlaim conas argóintí níos láidre a dhéanamh."
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Cabhraíonn díospóireacht leat maímh, fianaise, luachanna agus toimhdí a scaradh, rud a fhágann go bhfuil léirmhíniú stairiúil níos cruinne."
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Déan díospóireacht ar an maíomh"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Déan díospóireacht ar an maíomh ó níos mó ná taobh amháin chun toimhdí, malairtí agus fianaise lag a thabhairt faoi deara."
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Déan díospóireacht ar an maíomh stairiúil nó fealsúnach seo ón dá thaobh. Scar fianaise, toimhdí agus luachanna."
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Deartha chun muinín a chothú"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Ná glac le halt leasaithe go dtí gur féidir leat a mhíniú cén fáth a bhfuil an leasú níos fearr."
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Ná hiarr achoimre iomlán sula dtuigeann tú na bunsmaointe riachtanacha."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Ná déan díospóireacht ar an taobh lena n-aontaíonn tú cheana amháin."
+    },
+    {
+      "key": "site.00aa0ce5925c3a4939",
+      "source": "Do not ignore hesitation; uncertainty is a useful signal for review.",
+      "value": "Ná déan neamhaird de leisce; is comhartha úsáideach é éiginnteacht don athbhreithniú."
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Ná lig don rólghlacadh dátaí, comhthéacs, cáipéisí ná lipéid fianaise a chur as áit."
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Ná déan plean a ghlacann leis go dteastaíonn an méid céanna ama ó gach topaic."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Ná déan cártaí cuimhne as abairtí nach féidir leat a mhíniú fós i do chuid focal féin."
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Ná greamaigh tasc agus ná hiarr an freagra críochnaithe."
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Ná hathléigh nótaí sula dtástálann tú an méid is féidir leat a thabhairt chun cuimhne cheana."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Ná scipeáil an méid a rinne tú cheana; braitheann an chabhair úsáideach ar an gcomhthéacs sin."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "Ná stad tar éis an chéad mhínithe; cuir iallach ort féin ceisteanna faoi a fhreagairt."
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Ná caith le dialóg ghinte mar fhíorsleachta ná mar bhunfhoinse."
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Déan rud éigin leis"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "An dtacaíonn inspir le scoileanna?"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Críochnaíonn gach treoir le pleananna cleachtaidh, bealaí agus naisc isteach sa mhód foghlama cruinn a oireann."
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Díríonn gach treoir ar mhód, spreagadh nó lúb athbhreithnithe ionas gur féidir le léamh éirí ina chleachtadh."
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Osclaítear gach mód mar chomhrá aoi poiblí lena chuspóir, samplaí agus sreabhadh foghlama féin, ionas gur féidir le foghlaimeoirí tosú láithreach leis an gcineál tacaíochta ceart."
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Na chéad chéimeanna éasca"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Cuir isteach tréimhse"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Cuir isteach an comhthéacs"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Ceanglaíonn gach alt le catagóirí, móid bheo, moil ábhair, conairí foghlama agus treoracha gaolmhara."
+    },
+    {
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Tá cúram anois ar gach leathanach nach cuid den aip é: muinín a chothú, an bealach foghlama a mhíniú agus foghlaimeoirí a sheoladh i dtreo chéad ghnímh úsáideach gan na sonraí tábhachtacha a cheilt."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Radhairc a thugann aird ar fhianaise"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Ullmhúchán scrúdaithe"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Pleanálaí Ullmhúcháin Scrúdaithe"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Mínigh ar ais é"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Mínigh an chéad chéim eile"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Mínigh an topaic seo i ngnáthchaint. Ainmnigh na trí bhunsmaoineamh atá de dhíth orm, analóg amháin agus míthuiscint choitianta amháin."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Mínithe, teagasc Sócraiteach, cóitseáil obair bhaile, ceisteanna tástála, cártaí cuimhne, scríbhneoireacht, cód, díospóireacht agus pleanáil staidéir."
+    },
+    {
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Taiscéal Stair agus Smaointe Móra le AI"
+    },
+    {
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Taiscéal stair agus smaointe"
+    },
+    {
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Taiscéal stair, daoine poiblí, cúiseanna, díospóireachtaí, fealsúnacht agus léirmheas foinsí le móid foghlama AI a scarann fianaise ón ionsamhlú."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Taiscéal scoileanna"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Taiscéal leabharlann na dtreoracha"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Bealaí tapa foghlama"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Caibidlí an scannáin"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Tógálaí Cártaí Cuimhne"
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Is fearr a oibríonn cártaí cuimhne nuair a thástálann siad smaoineamh amháin ag an am, nuair nach nochtann siad freagraí ach tar éis iarrachta, agus nuair a dhéantar cártaí caillte a athbhreithniú níos luaithe."
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Maidir le matamaitic nó loighic, oibrigh céim amháin ag an am agus fiafraigh cén fáth a gceadaítear gach bogadh sula mbogann tú ar aghaidh."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Do scoileanna agus do chomhpháirtithe CSR"
+    },
+    {
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Bunsraitheanna"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Foghlaim AI saor in aisce do chách"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Foghlaim AI saor in aisce do chách | inspir"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Foghlaim AI saor in aisce do chách."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Foghlaim aoi saor in aisce"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Ardán foghlama AI poiblí saor in aisce"
+    },
+    {
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Ón mblag"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Gin tástáil ilroghnach dhírithe ar aon ábhar agus déan athbhreithniú ar mhínithe tar éis gach freagra."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Faigh sceideal staidéir, cuir ceisteanna ort féin faoi réimsí laga, agus iompaigh botúin ina gcártaí cuimhne le hathbhreithniú arís agus arís eile."
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Faigh an múnla simplí ar dtús"
+    },
+    {
+      "key": "site.03a9ef834faab0396a",
+      "source": "Get unstuck",
+      "value": "Éirigh as sáinn"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Éirigh as sáinn san obair bhaile"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Éirigh as sáinn san obair bhaile le leideanna eiticiúla, samplaí, seiceálacha agus cóitseáil céim ar chéim."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Tabhair aiseolas ar struchtúr, soiléireacht agus fianaise. Coinnigh mo ghuth agus ná hathscríobh an freagra iomlán."
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Réimsí maithe le tosú:"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Leabharlann treoracha"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Ceanglaíonn treoracha, conairí, ábhair agus spreagthaí leis an gcéad áit úsáideach eile le cleachtadh."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Léarscáil foghlama chabhrach"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Seo í an cheist agus seo an méid a rinne mé. Tabhair dom an leid úsáideach is lú, ní an freagra deiridh."
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Folaigh caibidlí an scannáin"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Folaigh tras-scríbhinn an scannáin"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Cabhair a thosaíonn le leid"
+    },
+    {
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Comhráite stairiúla"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Stair"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Obair bhaile"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Cóitseálaí Obair Bhaile"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Cé chomh luath ba chóir dom plean ullmhúcháin scrúdaithe a dhéanamh?"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Conas atá inspir difriúil ó bhosca comhrá AI ginearálta?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Conas a oibríonn sé"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Conas staidéar a dhéanamh le AI gan tú féin a mhealladh"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "conas topaic dheacair a thuiscint le AI"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Conas Topaic Dheacair a Thuiscint le AI"
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Tumadh"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Feabhsaigh an dréacht"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Feabhsaigh scríbhneoireacht le pleanáil, leasú, struchtúr agus aiseolas a choinníonn do ghuth slán."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Cuir isteach an cheist, an méid a rinne tú cheana, an áit ar éirigh tú sáinnithe, agus an dteastaíonn leid, seiceáil céime nó aiseolas uait."
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "Leabharlann treoracha foghlama AI inspir"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "Thosaigh inspir mar cheisteanna tástála agus pobail mac léinn, d'fhás sé trí scoileanna agus imeachtaí, agus úsáideann sé AI anois chun foghlaim duine le duine a dhéanamh níos inrochtana."
+    },
+    {
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "Tá inspir ann don nóiméad a mbíonn foghlaimeoir ag iarraidh rud a thuiscint agus áit fhoighneach ag teastáil uaidh chun tosú. Cuireann an scannán an táirge i láthair mar chompánach foghlama poiblí saor in aisce don fhiosracht, don chleachtadh agus don rochtain."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir i mbun gluaiseachta"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "Tá inspir á thógáil go poiblí."
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "Tá inspir eagraithe timpeall ar mhóid foghlama le cruthanna teagaisc ar leith: leideanna, ceisteanna Sócraiteacha, ceisteanna tástála, cuimhne ghníomhach, rólghlacadh, díospóireacht, aiseolas scríbhneoireachta agus pleanáil staidéir."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "scannán foghlama inspir"
+    },
+    {
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "Iompaíonn inspir fiosracht, obair bhaile, athdhéanamh agus ceisteanna móra ina seisiúin foghlama AI threoraithe a mhíníonn, a chuireann ceisteanna ar ais agus a chuidíonn leat cleachtadh."
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Is féidir leat aon rud a fhoghlaim"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "An bhfuil inspir saor in aisce le húsáid?"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Coinnigh an bealach beo"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Bíodh a fhios agat cad ba chóir a thriail ina dhiaidh sin, cén fáth a n-oibríonn céim, cá háit ar tharla an botún, agus conas an freagra deiridh a leasú i do ghuth féin."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Foghlaim Aon Rud"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Spreagthaí agus lúb staidéir Foghlaim Aon Rud"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Foghlaim Aon Rud le Teagascóir AI Saor in Aisce: treoir phraiticiúil"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Foghlaim trí labhairt, tástáil, díospóireacht agus taiscéalaíocht."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Foghlaim ríomhchlárú, dífhabhtaigh coincheapa, pleanáil tionscadail, léirmhínigh sonraí agus déan taighde ar cheisteanna teicniúla le móid AI phoiblí a choinníonn an foghlaimeoir páirteach."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Foghlaim trí cheisteanna dírithe, leideanna agus machnamh in ionad freagraí a léamh go héighníomhach."
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Foghlaim le teagascóir AI saor in aisce le haghaidh mínithe, ceisteanna Sócraiteacha, cóitseáil obair bhaile, ceisteanna tástála, cártaí cuimhne, díospóireacht, aiseolas scríbhneoireachta, cúnamh códaithe agus pleanáil staidéir."
+    },
+    {
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Tacaíocht a chuireann an foghlaimeoir chun tosaigh"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Teastaíonn seicheamh ó fhoghlaimeoirí, ní carn nasc. Ceanglaíonn na conairí seo móid ina lúba staidéir phraiticiúla don tuiscint, don obair bhaile, don ullmhúchán scrúdaithe agus don taiscéalaíocht."
+    },
+    {
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Foghlaimeoirí a bhraitheann sáinnithe ag tús ábhair nua nó a dteastaíonn bealach níos simplí uathu isteach i smaoineamh deacair."
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Foghlaimeoirí a bhfuil am teoranta, siollabas mór agus bealach réalaíoch athbhreithnithe de dhíth orthu gan ligean orthu go bhfuil gach rud chomh tábhachtach lena chéile."
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Foghlaim do chách"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "treoracha foghlama agus lúba cleachtaidh"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Fág le múnla i ngnáthchaint, ceisteanna níos géire, samplaí is féidir leat a mhíniú ar ais, agus cártaí cuimhne don athbhreithniú."
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Lig dom agallamh a chur ar an duine stairiúil seo. Coinnigh na freagraí feasach ar fhianaise agus marcáil éiginnteacht go soiléir."
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Déan cártaí cuimhne as botúin agus fill orthu tar éis moille."
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Déan cártaí cuimhne as botúin, leisce, foirmlí, sainmhínithe agus coincheapa nach raibh tú in ann a mhíniú go soiléir."
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Daingnigh é"
+    },
+    {
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Daingnigh an smaoineamh"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Déan an plean staidéir réalaíoch"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Matamaitic"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Cóitseálaí Céimeanna Matamaitice"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Teastaíonn cúnamh difriúil ó mhatamaitic, scríbhneoireacht, códú, stair, obair bhaile agus ullmhúchán scrúdaithe. Tosaigh ón ábhar, ansin bog isteach sa mhód, spreagadh, treoir nó lúb athbhreithnithe a oireann."
+    },
+    {
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "An misean ar dtús"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Treoracha mód, lúba spreagthaí, modhanna staidéir agus ailt bhunchloiche do ghnáthchuimhneacháin foghlama."
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Bog ó mhíniú i ngnáthchaint isteach i gceisteanna, samplaí agus cleachtadh cuimhne."
+    },
+    {
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Bog isteach i gceisteanna Sócraiteacha, ceisteanna tástála, cártaí cuimhne, díospóireacht, rólghlacadh agus teagasc treoraithe."
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Balbhaigh an scannán"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Tá mo scrúdú ar an dáta seo. Seo é an siollabas, mo réimsí laga agus an t-am atá agam. Déan plean réalaíoch le cuimhne laethúil."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Roghanna ailínithe le NCERT"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "An chéad chéim eile"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Ní féidir. Caith le dialóg ghinte mar ionsamhlú foghlama. Luaigh fíorfhoinsí príomhúla nó tánaisteacha le haghaidh maíomh fíriciúil."
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Ní bosca freagraí eile é. Is áit foghlama é."
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Oscail mód agus tosaigh láithreach, gan cuntas de dhíth don eispéireas poiblí aoi."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Oscailte de réir deartha"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Oscail an scannán ar lánscáileán"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Oscail comhrá aoi"
+    },
+    {
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Oscail mol ábhair"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Oscail an cineál cabhrach cruinn a tháinig tú chuige."
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Oscail an léarscáil foghlama"
+    },
+    {
+      "key": "site.08cb05cece7fcdc481",
+      "source": "Open the path",
+      "value": "Oscail an chonair"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Tá leathanaigh deartha chun daoine a bhogadh ó mhíniú isteach i mód beo, spreagadh, tástáil nó lúb athbhreithnithe."
+    },
+    {
+      "key": "site.2882d30f0153bb0830",
+      "source": "Paste the question and what you have tried, then ask for the smallest useful next step.",
+      "value": "Greamaigh an cheist agus an méid a rinne tú, ansin iarr an chéad chéim úsáideach is lú."
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Cuir an scannán ar sos"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Cuir mé san am agus san áit seo. Lipéadaigh fíricí doiciméadaithe ar leith ó ionsamhlú inchreidte agus fiafraigh díom cad a thugaim faoi deara."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Mínithe i ngnáthchaint"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Pleanáil athdhéanamh scrúdaithe, gin ceisteanna tástála, tóg cártaí cuimhne, sceideal athbhreithniú spásáilte agus coinnigh an spreagadh réalaíoch le móid foghlama AI dhírithe."
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Pleanáil an obair, cleachtaigh aisghlaoch agus dún bearnaí laga le ceisteanna tástála agus cuimhne ghníomhach."
+    },
+    {
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Pleanáil"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Seinn an scannán"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Seinn réamhamharc foghlama inspir"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Conairí foghlama AI coitianta"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Conairí coitianta"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Cleachtadh"
+    },
+    {
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Cleachtadh, ní cóipeáil freagraí"
+    },
+    {
+      "key": "site.3112ef0b944597c68c",
+      "source": "Practise retrieval before rereading",
+      "value": "Cleachtaigh aisghlaoch sula n-athléann tú"
+    },
+    {
+      "key": "site.311a95872a0bdae422",
+      "source": "Prepare for an exam",
+      "value": "Ullmhaigh do scrúdú"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Smaointe spreagtha agus lúb staidéir in-athdhéanta chun torthaí úsáideacha foghlama a fháil ó Foghlaim Aon Rud ar inspir."
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Cuir ceist ar phearsa"
+    },
+    {
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Ceistigh peirspictíocht stairiúil"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Cuireann ceisteanna iallach ort do mhúnla féin den topaic a nochtadh, agus sin an áit a dtagann mearbhall, muinín bhréagach agus bunsmaointe in easnamh chun solais de ghnáth."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Freagraí tapa"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Cuir ceisteanna orm faoi na topaicí seo, ceist amháin ag an am. Tar éis gach freagra, mínigh an bhearna agus ardaigh an deacracht go mall."
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Cuir ceisteanna fánacha orm"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Ceistigh na réimsí laga"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Cuir ceisteanna ort féin"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Cuir ceisteanna ort féin ar dtús ionas go bhfeicfidh tú cad is cuimhin leat i ndáiríre agus cá bhfuil muinín ag cur amú ort."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Nochtann ceisteanna tástála níos mó de ghnáth mar go dtástálann siad aisghlaoch. Is féidir le hathléamh cabhrú tar éis do thástáil a léiriú cad is gá a dheisiú."
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Léigh an misean"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Sceideal réalaíoch"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Deisigh botún amháin"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Deisigh an láthair lag"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Athsheinn"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Atosaigh an scannán"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Cleachtadh aisghlaoigh"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Déan athbhreithniú le cártaí cuimhne"
+    },
+    {
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Leasaigh mo dhréacht"
+    },
+    {
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Leasaigh gan do ghuth a chailleadh"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Sábháil an botún"
+    },
+    {
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Sceideal an chéad athrá eile"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Sreafaí oibre sainiúla do scoileanna"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Is féidir le scoileanna eispéiris chomhrá AI faoi bhrandáil na scoile a thairiscint dá bhfoghlaimeoirí, lena n-áirítear ábhar agus sreafaí oibre ailínithe le NCERT, agus úsáid maoinithe ag scoileanna comhpháirtíochta nó ag urraíocht CSR."
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Tá leathanaigh chuardaigh, treoracha blag, spreagthaí agus móid bheo nasctha timpeall ar lúb shimplí: fiafraigh, bain triail as, seiceáil, deisigh agus déan athbhreithniú."
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Scar fíric ón chumadóireacht"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Taispeáin caibidlí an scannáin"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Taispeáin tras-scríbhinn an scannáin"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Seiceálacha Sócraiteacha"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Teagasc Sócraiteach"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Teagascóir Sócraiteach"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Úsáideann teagasc Sócraiteach ceisteanna, hipitéisí, leideanna agus machnamh chun tuiscint níos doimhne a thógáil ná léamh freagraí go héighníomhach."
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Tosaigh seisiún foghlama beo."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Tosaigh a luaithe is eol duit dáta an scrúdaithe. Má tá an t-am gann, tabhair tús áite do réimsí laga, ceisteanna ar stíl páipéar roimhe seo agus cuimhne laethúil."
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Tosaigh trí mhíniú simplí, analóg laethúil amháin agus na trí smaoineamh atá de dhíth ort sula mbeidh ciall leis an topaic a iarraidh."
+    },
+    {
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Tosaigh gach seisiún le tástáil thapa sula n-athléann tú."
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Tosaigh ó na chéad phrionsabail"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Tosaigh ón ábhar, ansin oscail an mód foghlama ceart."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Tosaigh leis an rud nach dtuigeann tú agus faigh múnla i ngnáthchaint, samplaí agus na chéad chéimeanna eile."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Tosaigh ag foghlaim"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Tosaigh le topaic, tasc, dréacht, scrúdú nó smaoineamh sa mhód a oireann don obair."
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Tosaigh le Foghlaim Aon Rud"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Tosaigh le háit, am, féiniúlacht, srianta agus lipéid fianaise ionas nach n-éireoidh an radharc ina rólghlacadh ginearálta."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Tosaigh leis an obair atá le déanamh agat."
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Luaigh an áit a bhfuil tú sáinnithe"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Seiceálacha céime"
+    },
+    {
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Céim isteach i gcomhthéacs stairiúil, cuir argóintí i gcomparáid agus cleachtaigh smaoineamh a fheiceáil ó níos mó ná taobh amháin."
+    },
+    {
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Mic léinn a dteastaíonn chéad chéim eile, seiceáil botúin nó aiseolas uathu gan úinéireacht an taisc a chailleadh."
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Lúba staidéir, treoracha teagaisc AI agus spreagthaí praiticiúla."
+    },
+    {
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "moil ábhair mapáilte ar riachtanais foghlaimeoirí"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Déan achoimre ar an gcomhthéacs"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Tacaíonn sé le foghlaim seach-churaclaim, cleachtadh acadúil agus fiosracht."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Athraigh isteach i gceisteanna ionas gur féidir leat toimhdí a nochtadh agus bearnaí a líonadh in ionad an freagra a léamh go héighníomhach."
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Labhair le pearsa stairiúil agus coinnigh dialóg ghinte scartha ó shleachta doiciméadaithe."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Labhair le duine stairiúil"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "labhairt le pearsana stairiúla le AI"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Tástáil roimh athbhreithniú"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Tástáil an argóint"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Tástáil do réasúnaíocht"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Ceanglaíonn an blag comhairle foghlama úsáideach le cleachtadh beo, ionas gur féidir le treoir éirí ina seisiún staidéir in aon chéim amháin."
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Tá an blag eagraithe timpeall ar fhíorchuimhneacháin staidéir: éirí as sáinn, níos mó a choinneáil i gcuimhne, scríobh níos fearr, ullmhú do scrúduithe agus smaointe a thaiscéaladh le teagascóir foighneach."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Ardán foinse oscailte inspir níos leithne."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Filleann buille deiridh an scannáin ar an misean: rochtain phoiblí, scoileanna agus bealach níos oscailte le foghlaim."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Atógáil reatha inspirlearning.com."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Bogann an scannán ó inspioráid go gealltanas praiticiúil: compánach foghlama AI foighneach."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Tá na móid obair bhaile agus Sócraiteacha deartha timpeall ar leideanna, réasúnaíocht, seiceálacha céime agus mínithe ón bhfoghlaimeoir seachas freagraí críochnaithe a thabhairt amach go simplí."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Cuireann an mhír lárnach inspir i láthair timpeall ar thuiscint, leideanna, ceisteanna tástála agus lúba foghlama gníomhaí."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "An chéad ghlúin eile d'ardán staidéir AI."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Cuireann na frámaí tosaigh an fhoghlaim i láthair mar rud ar chóir d'aon duine a bheith in ann tosú láithreach."
+    },
+    {
+      "key": "site.33237ba4c491cb9422",
+      "source": "The public site is structured like a learning map: live modes for immediate help, subject hubs for learner questions, and guides that turn reading into action.",
+      "value": "Tá an suíomh poiblí struchtúrtha mar léarscáil foghlama: móid bheo le haghaidh cabhrach láithreach, moil ábhair do cheisteanna foghlaimeoirí, agus treoracha a iompaíonn léamh ina ghníomh."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Is bealach é an suíomh, ní bróisiúr."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Smaoinigh níos doimhne"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Taisteal ama"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Braislí topaicí"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Tras-scríbhinn"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Taisteal trí thréimhse"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Bain triail as an gCóitseálaí Obair Bhaile"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Iompaigh ina chártaí cuimhne é"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Iompaigh botúin ina lúba athbhreithnithe"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Iompaigh nótaí nó topaicí ina gcártaí cuimhne dírithe le leideanna, freagraí, samplaí agus gaistí coitianta."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Iompaigh an botún ceartaithe ina chárta cuimhne nó ina ghearrliosta seiceála don uair eile."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Iompaigh an míniú ina chártaí cuimhne ghníomhaí le cárta coincheapúil amháin, cárta sampla amháin agus cárta míthuisceana amháin."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Iompaigh an cheist chaillte is deacra ina cárta cuimhne agus déan athbhreithniú air níos déanaí."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Iompaigh na ceisteanna caillte seo ina gcártaí cuimhne grúpáilte de réir coincheapa, foirmlí, sainmhínithe agus samplaí."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Iompaigh do shiollabas, dáta scrúdaithe, am agus réimsí laga ina bplean staidéir praiticiúil."
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "Tuig topaic dheacair"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Tuig comhthéacs stairiúil, ceistigh peirspictíocht, cuir maímh i gcomparáid agus scar ionsamhlú ó fhíric dhoiciméadaithe."
+    },
+    {
+      "key": "site.43417b2770a6aa9b4b",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "Tuig cód, dífhabhtaigh earráidí, foghlaim coincheapa ríomhchlárúcháin agus tóg tionscadail bheaga céim ar chéim."
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Dí-bhalbhaigh an scannán"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Úsáid AI mar chóitseálaí don tuiscint, don chleachtadh agus don aiseolas in ionad aicearra a bhaineann an fhoghlaim díot go ciúin."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Úsáid cóitseáil obair bhaile AI le haghaidh leideanna, seiceálacha céime, réasúnaíocht mhatamaitice agus aiseolas scríbhneoireachta agus coinnigh an obair dheiridh agat féin."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Úsáid taisteal ama AI, comhráite stairiúla agus cleachtadh díospóireachta chun comhthéacs, fianaise, argóintí agus peirspictíochtaí a thaiscéaladh."
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Úsáid díospóireacht chun an maíomh is láidre agus an frithmhaíomh is láidre a chur i gcomparáid."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Úsáid leideanna, seiceálacha céime agus aiseolas scríbhneoireachta gan an fhoghlaim a iompú ina cóipeáil freagraí."
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Úsáid inspir le haghaidh aiseolais ar aistí, tacaíocht léitheoireachta, cleachtadh cainte, léirmheas foinsí agus lúba athdhéanta a fheabhsaíonn struchtúr gan guth an fhoghlaimeora a chur ina áit."
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Úsáid inspir le haghaidh leideanna obair bhaile, seiceálacha céime matamaitice, aiseolas scríbhneoireachta, léirmheas foinsí, ceisteanna Sócraiteacha agus cártaí cuimhne gan comhráite príobháideacha a nochtadh."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Úsáid inspir le haghaidh cabhair mhatamaitice céim ar chéim, leideanna obair bhaile, réasúnaíocht Shócraiteach, ceisteanna tástála, cártaí cuimhne agus ullmhúchán scrúdaithe gan freagraí a chóipeáil."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Úsáid móid aoi phoiblí saor in aisce, ansin taiscéal an obair foinse oscailte agus na bealaí imscartha do scoileanna."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Úsáid ceisteanna Sócraiteacha"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Úsáid dáta an scrúdaithe, an siollabas, an t-am atá ar fáil agus na réimsí laga chun plean a chruthú a sheasfaidh leis an bhfíorshaol."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Úsáid an treoir, an spreagadh, an mol ábhair nó an chonair foghlama nasctha chun an láthair lag a athbhreithniú níos déanaí."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Úsáid aiseolas scríbhneoireachta ar struchtúr, soiléireacht agus fianaise agus coinnigh an dréacht deiridh so-aitheanta mar do chuid féin."
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Úsáideach ón gcéad chliceáil"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Rialuithe físeáin"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Dul chun cinn físeáin"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Aiseolas a chaomhnaíonn an guth"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Féach ar 31s"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Lúba do réimsí laga"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Cad ba chóir do chompánach foghlama AI a dhéanamh do chách"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Na rudaí a fhiafraíonn foghlaimeoirí de ghnáth sula dtosaíonn siad."
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Cad ba chóir dom a fhiafraí ar dtús nuair a bhraitheann topaic ró-dheacair?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Cad ba chóir dom a chur i spreagadh obair bhaile?"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Cad is féidir leat a dhéanamh"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "AI scoile brandáilte ar leith"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Cén fáth ar féidir le teagascóir Sócraiteach AI smaointe a dhaingniú"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Cén fáth stair a cheangal le díospóireacht?"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Cén fáth ceisteanna Sócraiteacha a úsáid tar éis míniú?"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Oibrigh trí ailgéabar, calcalas, fadhbanna focal agus coincheapa matamaitice céim ar chéim le cóitseálaí AI."
+    },
+    {
+      "key": "site.4e2149136bd53c413f",
+      "source": "Work through math steps",
+      "value": "Oibrigh trí chéimeanna matamaitice"
+    },
+    {
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Scríobh míniú trí abairt gan féachaint, ansin iarr ar an mód Sócraiteach an nasc lag a aimsiú."
+    },
+    {
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Scríobh go díreach cá háit ar éirigh tú sáinnithe sula n-iarrann tú cabhair."
+    },
+    {
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Scríbhneoireacht"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Cóitseálaí Scríbhneoireachta"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Is féidir, nuair a thugann sé leideanna, a sheiceálann sé réasúnaíocht, a mhíníonn sé botúin agus a iarrann sé ort an freagra deiridh a tháirgeadh in ionad é a scríobh duit."
+    },
+    {
+      "key": "site.4eb7825da66025f6ae",
+      "source": "Yes. Public topic chats such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly in guest mode.",
+      "value": "Is féidir. Osclaítear comhráite topaice poiblí amhail Foghlaim Aon Rud, Teagasc Sócraiteach, Cóitseálaí Obair Bhaile, ceisteanna tástála agus cártaí cuimhne go díreach i mód aoi."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Is féidir. Is féidir le scoileanna an táirge poiblí a úsáid ar dtús, ansin spásanna foghlama AI saincheaptha a phlé le sreafaí oibre sainiúla don scoil, rúndacht agus roghanna rochtana maoinithe."
+    },
+    {
+      "key": "site.7e0d4a8f0b3a3c531c",
+      "source": "Yes. The public guest learning modes are designed for free access, so learners can start without needing a school deployment or paid account.",
+      "value": "Is féidir. Tá na móid foghlama poiblí aoi deartha le haghaidh rochtain saor in aisce, ionas gur féidir le foghlaimeoirí tosú gan imscaradh scoile ná cuntas íoctha de dhíth."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Is féidir leat triail a bhaint as móid foghlama phoiblí go saor. Fanann comhráite a sábháladh, cuntais, uirlisí riaracháin agus sonraí úsáideoirí príobháideach."
+    }
+  ]
+}

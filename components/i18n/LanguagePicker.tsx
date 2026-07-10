@@ -13,6 +13,7 @@ import {
 export type LanguagePickerProps = {
   currentLanguage: SupportedLanguage | string;
   recommendedLanguage?: SupportedLanguage | string;
+  languages?: readonly SupportedLanguage[];
   onSelect: (language: SupportedLanguage) => void;
   disabled?: boolean;
   buttonLabel?: string;
@@ -28,6 +29,7 @@ export type LanguagePickerProps = {
 export function LanguagePicker({
   currentLanguage,
   recommendedLanguage = defaultLanguage,
+  languages = supportedLanguages,
   onSelect,
   disabled = false,
   buttonLabel = "Preferred Language",
@@ -42,17 +44,17 @@ export function LanguagePicker({
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const current = normalizePickerLanguage(currentLanguage);
-  const recommended = normalizePickerLanguage(recommendedLanguage);
+  const current = normalizePickerLanguage(currentLanguage, languages);
+  const recommended = normalizePickerLanguage(recommendedLanguage, languages);
   const filteredLanguages = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return supportedLanguages;
-    return supportedLanguages.filter((language) => {
+    if (!q) return languages;
+    return languages.filter((language) => {
       const nativeName = languageDisplayName(language).toLowerCase();
       return nativeName.includes(q) || language.toLowerCase().includes(q);
     });
-  }, [query]);
-  const quickChoices = uniqueLanguages([recommended, defaultLanguage, current]);
+  }, [languages, query]);
+  const quickChoices = uniqueLanguages([recommended, defaultLanguage, current]).filter((language) => languages.includes(language));
 
   function choose(language: SupportedLanguage) {
     onSelect(language);
@@ -154,8 +156,12 @@ export function LanguagePicker({
   );
 }
 
-function normalizePickerLanguage(language: SupportedLanguage | string): SupportedLanguage {
-  return supportedLanguages.includes(language as SupportedLanguage) ? (language as SupportedLanguage) : defaultLanguage;
+function normalizePickerLanguage(
+  language: SupportedLanguage | string,
+  languages: readonly SupportedLanguage[],
+): SupportedLanguage {
+  const match = languages.find((candidate) => candidate === language);
+  return match ?? (languages.includes(defaultLanguage) ? defaultLanguage : languages[0] ?? defaultLanguage);
 }
 
 function uniqueLanguages(languages: SupportedLanguage[]) {

@@ -4,7 +4,7 @@ import {
   staticSiteTranslationNamespaces,
 } from "@/lib/i18n/site-source-constants";
 
-export function isPotentialSiteTranslationNamespace(namespace: string) {
+function isPotentialSiteTranslationNamespace(namespace: string) {
   return (
     namespace === siteTranslationNamespace ||
     staticSiteTranslationNamespaces.includes(namespace as (typeof staticSiteTranslationNamespaces)[number]) ||
@@ -32,7 +32,7 @@ export function getPotentialSiteTranslationNamespacesForPath(pathname: string) {
     if (staticSiteTranslationNamespaces.includes(routeNamespace as (typeof staticSiteTranslationNamespaces)[number])) {
       namespaces.add(routeNamespace);
     } else {
-      namespaces.add("route:home");
+      return [];
     }
   }
 

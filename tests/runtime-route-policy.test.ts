@@ -11,14 +11,15 @@ test("public topics API is bounded by a cache policy", () => {
   assert.match(source, /public, max-age=300, s-maxage=3600, stale-while-revalidate=86400/);
 });
 
-test("marketing dynamic rendering is documented as localization-sensitive", () => {
+test("marketing rendering is documented as coverage-scoped and deploy-time immutable", () => {
   const layout = read("app/(marketing)/layout.tsx");
   const docs = read("docs/runtime-routes.md");
 
   assert.doesNotMatch(layout, /export const dynamic = "force-dynamic"/);
-  assert.match(docs, /Marketing HTML under `app\/\(marketing\)` is localization-sensitive/);
-  assert.match(docs, /must not declare segment-wide `force-dynamic`/);
-  assert.match(docs, /DB-backed translations/);
+  assert.match(docs, /Localized marketing HTML is deploy-time immutable/);
+  assert.match(docs, /source-hash-exact curated packs/);
+  assert.match(docs, /unavailable localized URLs redirect to canonical English/);
+  assert.doesNotMatch(docs, /future static-marketing project/);
 });
 
 test("static SEO and AI discovery routes stay explicitly static or cached", () => {

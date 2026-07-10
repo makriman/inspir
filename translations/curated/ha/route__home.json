@@ -1,0 +1,1880 @@
+{
+  "schemaVersion": 1,
+  "language": "Hausa",
+  "locale": "ha",
+  "namespace": "route:home",
+  "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
+  "model": "curated-codex-v2",
+  "entries": [
+    {
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} jagorori masu amfani"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Ɗakin jagororin {value1} da aka gina don koyo ya koma aiki."
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Abokin koyon AI na jama’a kyauta don koyarwa, atisaye, gwaje-gwaje, katunan tunawa, muhawara, ra’ayin rubutu, taimakon rubuta lamba, da tsara nazari."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Hanyar koyon AI mai amfani don fita daga ruɗani zuwa bayani mai haske, tambayoyin Socratic, misalai, da tuna kai tsaye."
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Jagora mai amfani don amfani da Koyi Komai a kan inspir don koyon tushe, tare da umarnin tambaya, zagayen nazari, da halayen AI mafi aminci."
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Kallo mai amfani kan yadda AI zai iya sa koyo ya fi bayyana, ya fi dacewa da mutum, kuma ya fi sauƙin samu ba tare da mayar da ɗalibai masu tara amsa kawai ba."
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Shafin koyo na jama’a da mutane za su fahimta da sauri."
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Ɗan gajeren fim da ke gabatar da imanin inspir cewa ya kamata koyo ya kasance kyauta, mai sauƙin samu, kuma mai rai."
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Malami don tambaya ta farko"
+    },
+    {
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "sauƙin amfani, umarnin tambaya, gwaje-gwaje, halayen AI mafi aminci, hanyoyin masu koyo, da gyaran UI."
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Aiki bayan karatu"
+    },
+    {
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Atisaye mai aiki"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Bita ta tuna kai tsaye"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Bayan kowace alamar taimako, bayyana dalilin da ya sa matakin ke aiki kafin ci gaba."
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Bayan kwaikwayon, taƙaita yanayin, ƙuntatawa, da shaida."
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "Malamin lamba na AI"
+    },
+    {
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "Atisayen muhawara da AI"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "Tsarin shirin jarabawa na AI"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "Tsarin Shirin Jarabawa na AI Tare da Gwaje-gwaje da Tuna Kai Tsaye"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "Mai tsara shirin jarabawa na AI"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "Katunan tunawa na AI da tuna kai tsaye: yadda ake ƙara tunawa"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "Katunan tunawa na AI don tuna kai tsaye"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "Katunan tunawa na AI don bita"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "Malamin tarihin AI"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "Malamin tarihin AI"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "Kocin aikin gida na AI"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "Taimakon aikin gida na AI ba tare da yaudara ba"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "Taimakon Aikin Gida na AI Ba Tare da Kwafin Amsa Ba"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "Mai taimakon aikin gida na AI"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "Kocin matakan lissafi na AI"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "Malamin lissafi na AI"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "Mai ƙirƙirar gwaje-gwajen AI don jarabawa"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "Malamin Socratic na AI"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "Jadawalin nazari na AI"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "Koyon tafiyar lokaci da AI"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "Malamin AI don ra’ayoyi masu wahala"
+    },
+    {
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "Malaman AI bisa darasi"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Ra’ayin rubutu na AI ga ɗalibai"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "Malamin rubutu na AI"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Amsa tambayar duba fahimta, gwada mataki, yi muhawara kan da’awa, gyara daftari, ko gina katunan tunawa."
+    },
+    {
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Shin gwaje-gwaje sun fi sake karantawa?"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Hujja"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Atisayen hujja"
+    },
+    {
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Tambayi kowace tambaya ka koya ta hanyar bayanai bayyanannu, misalai, umarnin tambaya na gaba, da koyarwar AI mai haƙuri."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Tambayi komai"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Nemi alamar taimako"
+    },
+    {
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Nemi alamar taimako, ba amsar ba"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Nemi bayani mafi sauƙi kan ra’ayin da ya fi rauni."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Nemi tambayoyi biyar da suka haɗa ma’anoni, misalai, da matsalolin amfani da ilimi."
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Nemi alamomin taimako, dubawa, ra’ayi, da tsare-tsaren nazari da ke barin tunani a hannun mai koyo."
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Nemi batun a harshe mai sauƙi, sannan ka nemi misalin kwatanci ɗaya, misali ɗaya, da kuskuren fahimta guda na gama gari."
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Tambaye ni tambayoyin Socratic biyar game da wannan batu. Bayan kowace amsa, faɗa mini zato da na yi amfani da shi da abin da zan gwada na gaba."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Yi tambayoyi, ƙalubalanci ra’ayoyi, kuma koyi tarihi ta tattaunawa mai tushe da fitattun mutane na baya."
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Nemi yanayin tarihi ya sanya alama kan abin da aka rubuta, aka fahimta daga shaida, ko aka kwaikwaya."
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Tambayi tambayar gaskiya"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Yi tambayarka ta farko sannan ka shiga atisaye kai tsaye."
+    },
+    {
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Akwai ga jama’a, yayin da makarantu za su iya gudanar da nau’o’in musamman na sirri."
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Bincika kowane yanayi"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Bincika darussa"
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Gina fasfon lokaci, kammala shawarar tafiya, sannan ka binciki duniyar tarihi ta yanayi, taswira, jadawalin lokaci, mutane, ƙa’idoji, kaya, da shaida."
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Gina tsarin shirin jarabawa na AI tare da tsarin nazari mai yiwuwa, atisayen tuna abin da aka koya, gwaje-gwaje, katunan tunawa, da bita kan wuraren rauni."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Gina tsarin jarabawa"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Gina tsarin"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Gina tare da mu"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "An gina shi don son sani, atisaye, da samun dama."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "An gina shi daga ainihin halayen masu koyo, ba akwatin hira na gama gari ba."
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "An gina don a yi amfani da shi"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "Shin taimakon aikin gida na AI zai iya zama na ɗabi’a?"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "Zan iya ambaton tattaunawar tarihi ta AI a matsayin tushe?"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "Zan iya amfani da inspir ba tare da shiga ba?"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "Shin inspir zai iya taimaka da aikin gida ba tare da ƙarfafa yaudara ba?"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Duba samfurin fahimtata"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Duba mataki ɗaya"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Duba tsarin tunani layi bayan layi"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Duba wannan mataki a aikina. Idan ba daidai ba ne, bayyana kuskuren sannan ka ba ni mataki ɗaya na gaba."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Bayanai bayyanannu"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Iyakokin sirri bayyanannu"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Malamin lamba"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Rubuta lamba"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Sadarwa"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Kwatanta hujjojin"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Turawa na sirri"
+    },
+    {
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Ci gaba"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Ana maraba da gudunmawa daga injiniyoyi, malamai, masu zane, ɗalibai, da duk wanda yake son koyon AI ya zama mafi aminci, mafi bayyana, mafi sauƙin samu, kuma mafi amfani."
+    },
+    {
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Mayar da kuskure"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Mayar da bayanin zuwa katunan tuna kai tsaye, sannan ka sake duba katunan bayan kurakurai ko jinkiri."
+    },
+    {
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Ƙirƙiri ƙaramin gwaji"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Son sani yana farawa nan"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Son sani, aiki, da AI mai koyarwa."
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Masu koyo masu son sani waɗanda suke son tarihi da ra’ayoyi su ji suna cikin wuri, ana iya muhawara a kansu, kuma suna da rai ba tare da rasa bin shaida ba."
+    },
+    {
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Wuraren koyon AI na musamman tare da tsare sirrin bayanai."
+    },
+    {
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Yi muhawara kan da’awa"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Yi muhawara kan kowane batu"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Yi muhawara kan kowane batu, a ƙalubalance ka, kwatanta da’awowi, kuma ka koyi yadda ake ƙarfafa hujjoji."
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Muhawara tana taimaka maka raba da’awowi, shaida, ƙimomi, da zace-zace, wanda ke sa fassarar tarihi ta fi daidaito."
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Yi muhawara kan da’awar"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Yi muhawara kan da’awar daga fiye da gefe ɗaya domin ka lura da zace-zace, musaya, da shaida mai rauni."
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Yi muhawara kan wannan da’awar tarihi ko falsafa daga bangarori biyu. Raba shaida, zace-zace, da ƙimomi."
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "An tsara don ƙwarin gwiwa"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Kada ka karɓi sakin layi da aka gyara sai ka iya bayyana dalilin da ya sa gyaran ya fi kyau."
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Kada ka nemi cikakken taƙaitawa kafin ka san ra’ayoyin da ake buƙata tun farko."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Kada ka yi muhawara kan gefen da ka riga ka amince da shi kawai."
+    },
+    {
+      "key": "site.00aa0ce5925c3a4939",
+      "source": "Do not ignore hesitation; uncertainty is a useful signal for review.",
+      "value": "Kada ka yi watsi da jinkiri; rashin tabbas alamu ne mai amfani don bita."
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Kada ka bar wasan kwaikwayo ya maye gurbin ranaku, mahalli, takardu, ko alamomin shaida."
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Kada ka yi tsari da ke ɗauka cewa kowane batu yana buƙatar lokaci iri ɗaya."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Kada ka yi katunan tunawa daga jimlolin da har yanzu ba za ka iya bayyana su da kalamanka ba."
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Kada ka manna aiki ka nemi amsar da aka gama."
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Kada ka sake karanta bayanai kafin ka gwada abin da ka riga ka iya tunawa."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Kada ka tsallake nuna abin da ka riga ka gwada; taimako mai amfani yana dogara da wannan mahalli."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "Kada ka tsaya bayan bayanin farko; sa kanka amsa tambayoyi game da shi."
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Kada ka ɗauki tattaunawar da aka samar a matsayin ainihin zance ko tushe na farko."
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Yi wani abu da shi"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "Shin inspir yana tallafa wa makarantu?"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Kowane jagora yana ƙarewa da tsare-tsaren atisaye, hanyoyi, da mahaɗa zuwa ainihin yanayin koyo da ya dace."
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Kowane jagora yana nuna yanayi, umarnin tambaya, ko zagayen bita domin karatu ya zama atisaye."
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Kowane yanayi yana buɗewa a matsayin hirar baƙo ta jama’a da manufarsa, misalansa, da hanyar koyonsa, don masu koyo su fara da irin tallafin da ya dace nan take."
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Matakai na gaba masu sauƙi"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Shigar da zamani"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Shigar da mahalli"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Kowace makala tana haɗuwa da rukunai, yanayoyin kai tsaye, cibiyoyin darussa, hanyoyin koyo, da jagorori masu alaƙa."
+    },
+    {
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Kowane shafin da ba na app ba yanzu yana da aiki: gina amincewa, bayyana hanyar koyo, da tura masu koyo zuwa aiki na gaba mai amfani ba tare da ɓoye muhimman bayanai ba."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Yanayi masu kula da shaida"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Shirin jarabawa"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Mai tsara shirin jarabawa"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Bayyana shi da kalamanka"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Bayyana mataki na gaba"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Bayyana wannan batu a harshe mai sauƙi. Ambaci ra’ayoyi uku da nake bukata tun farko, misalin kwatanci ɗaya, da kuskuren fahimta guda na gama gari."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Bayanai, koyarwar Socratic, horar da aikin gida, gwaje-gwaje, katunan tunawa, rubutu, lamba, muhawara, da tsara nazari."
+    },
+    {
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Binciki Tarihi da Manyan Ra’ayoyi Da AI"
+    },
+    {
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Binciki tarihi da ra’ayoyi"
+    },
+    {
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Binciki tarihi, fitattun mutane, dalilai, muhawarori, falsafa, da nazarin tushe da yanayoyin koyon AI da ke raba shaida da kwaikwayo."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Binciki makarantu"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Binciki ɗakin jagorori"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Hanyoyin koyo masu sauri"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Sassan fim"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Mai gina katunan tunawa"
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Katunan tunawa suna aiki mafi kyau idan suna gwada ra’ayi ɗaya lokaci guda, suna nuna amsoshi bayan ƙoƙari kawai, kuma suna sa a sake duba katunan da aka kasa da wuri."
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "A lissafi ko dabaru, yi aiki mataki ɗaya lokaci guda kuma ka tambayi dalilin da ya sa kowane motsi ya halatta kafin ka ci gaba."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Ga makarantu da abokan CSR"
+    },
+    {
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Tushen koyo"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Koyon AI kyauta ga kowa"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Koyon AI kyauta ga kowa | inspir"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Koyon AI kyauta ga kowa."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Koyon baƙo kyauta"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Dandalin koyon AI na jama’a kyauta"
+    },
+    {
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Daga bulogi"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Ƙirƙiri gwajin zaɓi-da-yawa mai mayar da hankali kan kowane darasi kuma ka duba bayanai bayan kowace amsa."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Sami jadawalin nazari, gwada kanka kan wuraren rauni, kuma ka mayar da abin da ka kasa zuwa katunan tunawa don bita akai-akai."
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Fara da samfurin sauƙi"
+    },
+    {
+      "key": "site.03a9ef834faab0396a",
+      "source": "Get unstuck",
+      "value": "Fita daga makale"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Fita daga makale a aikin gida"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Fita daga makale a aikin gida da alamomin taimako na ɗabi’a, misalai, dubawa, da horarwa mataki bayan mataki."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Ba da ra’ayi kan tsari, bayyana, da shaida. Ka kiyaye muryata kuma kada ka sake rubuta amsar gaba ɗaya."
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Wuraren farko masu kyau:"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Ɗakin jagorori"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Jagorori, hanyoyi, darussa, da umarnin tambaya suna haɗa kai zuwa wuri na gaba mai amfani don atisaye."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Taswirar koyo mai taimako"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Ga tambayar da abin da na gwada. Ba ni alamar taimako mafi ƙanƙanta mai amfani, ba amsar ƙarshe ba."
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Ɓoye sassan fim"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Ɓoye rubutun fim"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Taimako da alama tun farko"
+    },
+    {
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Tattaunawar tarihi"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Tarihi"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Aikin gida"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Kocin aikin gida"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Yaushe ya kamata in fara yin tsarin shirin jarabawa?"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Ta yaya inspir ya bambanta da chatbot na AI na gama gari?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Yadda yake aiki"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Yadda ake yin nazari da AI ba tare da yaudarar kanka ba"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "yadda ake fahimtar batu mai wahala da AI"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Yadda Ake Fahimtar Batu Mai Wahala Da AI"
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Nutsuwa cikin yanayi"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Inganta daftarin"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Inganta rubutu da tsarawa, bita, tsari, da ra’ayi da ke kiyaye muryarka."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Haɗa tambayar, abin da ka riga ka gwada, inda ka makale, da ko kana son alamar taimako, duba mataki, ko ra’ayi."
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "ɗakin jagororin koyon AI na inspir"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir ya fara ne da gwaje-gwaje da al’ummomin ɗalibai, ya girma ta makarantu da taruka, kuma yanzu yana amfani da AI don sa koyo ɗaya-da-ɗaya ya fi sauƙin samu."
+    },
+    {
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir yana nan don lokacin da mai koyo yake son fahimtar wani abu kuma yana buƙatar wuri mai haƙuri don farawa. Fim ɗin yana gabatar da samfurin a matsayin abokin koyo na jama’a kyauta don son sani, atisaye, da samun dama."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir cikin motsi"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "Ana gina inspir a fili."
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "An tsara inspir a kusa da yanayin koyo masu siffofin koyarwa na musamman: alamomin taimako, tambayoyin Socratic, gwaje-gwaje, tuna kai tsaye, wasan kwaikwayo, muhawara, ra’ayin rubutu, da tsara nazari."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "fim ɗin koyon inspir"
+    },
+    {
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir yana mayar da son sani, aikin gida, bita, da manyan tambayoyi zuwa zaman koyon AI masu jagora da suke bayani, tambaya a baya, kuma suna taimaka maka yin atisaye."
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Za ka iya Koyi Komai"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "Shin amfani da inspir kyauta ne?"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Ci gaba da rayar da hanyar"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "San abin da za ka gwada na gaba, dalilin da ya sa mataki yake aiki, inda kuskure ya faru, da yadda za ka gyara amsar ƙarshe da muryarka."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Koyi Komai"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Umarnin tambaya na Koyi Komai da zagayen nazari"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Koyi Komai Tare da Malamin AI Kyauta: jagora mai amfani"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Koyi ta magana, gwaji, muhawara, da bincike."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Koyi shirye-shirye, gano kurakuran ra’ayoyi, tsara ƙananan ayyuka, fassara bayanai, da binciken tambayoyin fasaha da yanayoyin AI na jama’a da ke barin mai koyo cikin aikin."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Koyi ta tambayoyi masu mayar da hankali, alamomin taimako, da tunani maimakon karanta amsa kawai ba tare da aiki ba."
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Koyi tare da malamin AI kyauta don bayanai, tambayoyin Socratic, horar da aikin gida, gwaje-gwaje, katunan tunawa, muhawara, ra’ayin rubutu, taimakon lamba, da tsara nazari."
+    },
+    {
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Tallafi da ya fara da mai koyo"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Masu koyo suna buƙatar jeri, ba tarin mahaɗa ba. Waɗannan hanyoyi suna haɗa yanayoyi zuwa zagayen nazari masu amfani don fahimta, aikin gida, shirin jarabawa, da bincike."
+    },
+    {
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Masu koyo da suka makale a farkon sabon darasi ko suna buƙatar hanya mafi sauƙi zuwa ra’ayi mai wahala."
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Masu koyo da lokacinsu ya takaita, syllabus ɗinsu ya yi yawa, kuma suna buƙatar hanya mai yiwuwa don bita ba tare da ɗauka cewa komai yana da muhimmanci iri ɗaya ba."
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Koyo ga kowa"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "jagororin koyo da zagayen atisaye"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Ka tafi da samfurin harshe mai sauƙi, tambayoyi mafi kaifi, misalan da za ka iya sake bayyanawa, da katunan tunawa don bita."
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Bari in yi hira da wannan mutumin tarihi. Ka sa amsoshi su kula da shaida kuma ka nuna rashin tabbas a fili."
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Yi katunan tunawa daga kurakurai kuma ka sake duba su bayan ɗan lokaci."
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Yi katunan tunawa daga kurakurai, jinkiri, formuloli, ma’anoni, da ra’ayoyin da ba ka iya bayyanawa a fili ba."
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Sa ya manne a ƙwaƙwalwa"
+    },
+    {
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Sa ra’ayin ya manne a ƙwaƙwalwa"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Sa tsarin nazarin ya zama mai yiwuwa"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Lissafi"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Kocin matakan lissafi"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Lissafi, rubutu, rubuta lamba, tarihi, aikin gida, da shirin jarabawa kowanne yana buƙatar taimako daban. Fara daga darasin, sannan ka shiga yanayi, umarnin tambaya, jagora, ko zagayen bita da ya dace."
+    },
+    {
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Manufa ta farko"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Jagororin yanayi, zagayen umarnin tambaya, hanyoyin nazari, da muhimman makaloli don lokutan koyo na gama gari."
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Matsa daga bayani a harshe mai sauƙi zuwa tambayoyi, misalai, da atisayen ƙwaƙwalwa."
+    },
+    {
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Shiga tambayoyin Socratic, gwaje-gwaje, katunan tunawa, muhawara, wasan kwaikwayo, da koyarwa mai jagora."
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Kashe sautin fim"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Jarabawata tana wannan rana. Ga syllabus ɗin, wuraren rauni na, da lokacin da nake da shi. Yi tsari mai yiwuwa tare da tuna kullum."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Zaɓuɓɓukan da suka dace da NCERT"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Mataki na gaba"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "A’a. Ɗauki tattaunawar da aka samar a matsayin kwaikwayon koyo. Ambaci tushe na farko ko na biyu na gaskiya don da’awoyin bayanai."
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Ba wani akwatin amsa ba. Wuri ne na koyo."
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Buɗe yanayi ka fara nan take, ba tare da buƙatar asusu don kwarewar baƙo ta jama’a ba."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Buɗe bisa ƙira"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Buɗe fim a cikakken allo"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Buɗe hirar baƙo"
+    },
+    {
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Buɗe cibiyar darasi"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Buɗe ainihin irin taimakon da ka zo nema."
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Buɗe taswirar koyo"
+    },
+    {
+      "key": "site.08cb05cece7fcdc481",
+      "source": "Open the path",
+      "value": "Buɗe hanyar"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "An tsara shafuka su matsar da mutane daga bayani zuwa yanayi kai tsaye, umarnin tambaya, gwaji, ko zagayen bita."
+    },
+    {
+      "key": "site.2882d30f0153bb0830",
+      "source": "Paste the question and what you have tried, then ask for the smallest useful next step.",
+      "value": "Manna tambayar da abin da ka gwada, sannan ka nemi mataki na gaba mafi ƙanƙanta mai amfani."
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Tsayar da fim"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Sanya ni cikin wannan lokaci da wuri. Sanya alama ga gaskiyoyin da aka rubuta daban da kwaikwayo mai yiwuwa, sannan ka tambaye ni abin da na lura."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Bayanai a harshe mai sauƙi"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Tsara bitar jarabawa, ƙirƙiri gwaje-gwaje, gina katunan tunawa, tsara bita mai tazarar lokaci, kuma ka sa ƙwarin gwiwa ya kasance mai yiwuwa da yanayoyin koyon AI masu mayar da hankali."
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Tsara aikin, yi atisayen tuna abin da aka koya, kuma rufe wuraren rauni da gwaje-gwaje da tuna kai tsaye."
+    },
+    {
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Tsarawa"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Kunna fim"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Kunna samfurin koyon inspir"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Shahararrun hanyoyin koyon AI"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Shahararrun hanyoyi"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Atisaye"
+    },
+    {
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Atisaye, ba kwafin amsa ba"
+    },
+    {
+      "key": "site.3112ef0b944597c68c",
+      "source": "Practise retrieval before rereading",
+      "value": "Yi atisayen tuna abin da aka koya kafin sake karantawa"
+    },
+    {
+      "key": "site.311a95872a0bdae422",
+      "source": "Prepare for an exam",
+      "value": "Shirya don jarabawa"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Ra’ayoyin umarnin tambaya da zagayen nazari mai maimaituwa don samun sakamakon koyo mai amfani daga Koyi Komai a kan inspir."
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Tambayi wani mutum"
+    },
+    {
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Tambayi wani hangen tarihi"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Tambayoyi suna sa ka bayyana samfurin fahimtarka na batu, inda ruɗani, ƙwarin gwiwar ƙarya, da abubuwan da suka ɓace da ake buƙata tun farko kan bayyana."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Amsoshi masu sauri"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Yi mini gwaji kan waɗannan batutuwa, tambaya ɗaya lokaci guda. Bayan kowace amsa, bayyana gibi sannan ka ƙara wahala a hankali."
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Yi mini tambayoyin Trivia"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Gwada wuraren rauni"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Gwada kanka"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Gwada kanka da farko don ka ga abin da kake tunawa da gaske da inda ƙwarin gwiwa yake ɓatarwa."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Gwaje-gwaje yawanci suna nuna fiye saboda suna gwada tuna abin da aka koya. Sake karantawa na iya taimakawa bayan gwaji ya nuna abin da ke buƙatar gyara."
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Karanta manufar"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Jadawali mai yiwuwa"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Gyara kuskure ɗaya"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Gyara wurin rauni"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Sake kunnawa"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Sake fara fim"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Atisayen tuna abin da aka koya"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Yi bita da katunan tunawa"
+    },
+    {
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Gyara daftarina"
+    },
+    {
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Gyara ba tare da rasa muryarka ba"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Ajiye kuskuren"
+    },
+    {
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Tsara maimaitawa ta gaba"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Tsarin aiki na musamman ga makaranta"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Makarantu za su iya bayar da kwarewar hira ta AI mai farar alama da ta dace da masu koyonsu, ciki har da abun ciki da tsarin aiki da suka dace da NCERT, tare da amfani da makarantu abokan hulɗa ko tallafin CSR ke ɗaukar nauyi."
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Shafukan bincike, jagororin bulogi, umarnin tambaya, da yanayoyi kai tsaye suna haɗe a kan zagaye mai sauƙi: tambaya, gwada, duba, gyara, da bita."
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Raba gaskiya da ƙirƙira"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Nuna sassan fim"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Nuna rubutun fim"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Dubawar Socratic"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Koyarwar Socratic"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Malamin Socratic"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Koyarwar Socratic tana amfani da tambayoyi, hasashe, alamomin taimako, da tunani don gina fahimta mai zurfi fiye da karanta amsa kawai ba tare da aiki ba."
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Fara zaman koyo kai tsaye."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Fara da zarar ka san ranar jarabawa. Idan lokaci ya yi kaɗan, fifita wuraren rauni, tambayoyi irin na tsoffin takardun jarabawa, da tuna kullum."
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Fara da neman bayani mai sauƙi, misalin kwatanci na yau da kullum ɗaya, da ra’ayoyi uku da kake bukata kafin batun ya yi ma’ana."
+    },
+    {
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Fara kowane zama da gwaji mai sauri kafin sake karantawa."
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Fara daga ka’idoji na farko"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Fara daga darasin, sannan ka buɗe yanayin koyo da ya dace."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Fara daga abin da ba ka fahimta ba kuma ka sami samfurin harshe mai sauƙi, misalai, da matakai na gaba."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Fara koyo"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Fara da batu, aiki, daftari, jarabawa, ko ra’ayi a yanayin da ya dace da aikin."
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Fara da Koyi Komai"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Fara da wuri, lokaci, ainihi, ƙuntatawa, da alamomin shaida domin yanayin kada ya zama wasan kwaikwayo na gama gari."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Fara da aikin da kake son a yi."
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Faɗi inda ka makale"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Dubawar matakai"
+    },
+    {
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Shiga cikin mahallin tarihi, kwatanta hujjoji, kuma yi atisayen ganin ra’ayi daga fiye da gefe ɗaya."
+    },
+    {
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Ɗalibai da ke buƙatar mataki na gaba, duba kuskure, ko ra’ayi ba tare da rasa mallakar aikin ba."
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Zagayen nazari, jagororin koyarwar AI, da umarnin tambaya masu amfani."
+    },
+    {
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "cibiyoyin darussa da aka tsara bisa buƙatun masu koyo"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Taƙaita mahallin"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Yana tallafa wa koyo bayan aji, atisayen ilimi, da son sani."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Sauya zuwa tambayoyi domin ka iya bayyana zace-zace da cike gibi maimakon karanta amsar kawai ba tare da aiki ba."
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Yi magana da wani mutumin tarihi yayin da kake ware tattaunawar da aka samar daga zancen da aka rubuta."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Yi magana da mutumin tarihi"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "AI don magana da mutanen tarihi"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Gwada kafin bita"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Gwada hujjar"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Gwada tunaninka"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Bulogin yana haɗa shawarar koyo mai amfani da atisaye kai tsaye, don jagora ya iya zama zaman nazari cikin mataki ɗaya."
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "An tsara bulogin a kusa da ainihin lokutan nazari: fita daga makale, ƙara tunawa, inganta rubutu, shirya jarabawa, da binciken ra’ayoyi tare da malami mai haƙuri."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Dandalin inspir na buɗaɗɗen tushe mafi faɗi."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Ƙarshen fim ɗin yana komawa ga manufa: samun damar jama’a, makarantu, da hanya mafi buɗe don koyo."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Sake ginin inspirlearning.com na yanzu."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Fim ɗin yana matsawa daga zaburarwa zuwa alkawarin aiki: abokin koyon AI mai haƙuri."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "An tsara yanayin aikin gida da na Socratic a kan alamomin taimako, tunani, dubawar matakai, da bayanan mai koyo maimakon mika amsoshi da aka gama kawai."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Sashen tsakiya yana tsara inspir a kusa da fahimta, alamomin taimako, gwaje-gwaje, da zagayen koyo mai aiki."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "Dandalin nazarin AI na zamani na gaba."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Hotunan farko suna nuna koyo a matsayin abin da kowa ya kamata ya iya farawa nan take."
+    },
+    {
+      "key": "site.33237ba4c491cb9422",
+      "source": "The public site is structured like a learning map: live modes for immediate help, subject hubs for learner questions, and guides that turn reading into action.",
+      "value": "An tsara shafin jama’a kamar taswirar koyo: yanayoyi kai tsaye don taimako nan take, cibiyoyin darussa don tambayoyin masu koyo, da jagorori da ke mayar da karatu aiki."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Shafin hanya ce, ba takardar talla ba."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Yi tunani zurfi"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Tafiyar lokaci"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Tarin batutuwa"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Rubutun bayani"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Yi tafiya cikin zamani"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Gwada Kocin aikin gida"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Mayar da shi katunan tunawa"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Mayar da abin da aka kasa zuwa zagayen bita"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Mayar da bayanai ko batutuwa zuwa katunan tunawa masu mayar da hankali tare da alamomin taimako, amsoshi, misalai, da tarkuna na gama gari."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Mayar da kuskuren da aka gyara zuwa katin tunawa ko gajeren jerin dubawa don daga baya."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Mayar da bayanin zuwa katunan tuna kai tsaye tare da katin ra’ayi ɗaya, katin misali ɗaya, da katin kuskuren fahimta ɗaya."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Mayar da tambayar da aka fi kasa zuwa katin tunawa kuma ka sake duba ta daga baya."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Mayar da waɗannan tambayoyin da aka kasa zuwa katunan tunawa da aka rarraba bisa ra’ayi, ƙa’ida, ma’ana, da misali."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Mayar da syllabus ɗinka, ranar jarabawa, lokaci, da wuraren rauni zuwa tsarin nazari mai amfani."
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "Fahimci batu mai wahala"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Fahimci mahallin tarihi, tambayi wani hangen nesa, kwatanta da’awowi, kuma raba kwaikwayo da gaskiyar da aka rubuta."
+    },
+    {
+      "key": "site.43417b2770a6aa9b4b",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "Fahimci lamba, gyara kurakurai, koyi ra’ayoyin shirye-shirye, kuma gina ƙananan ayyuka mataki bayan mataki."
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Kunna sautin fim"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Yi amfani da AI a matsayin koci don fahimta, atisaye, da ra’ayi maimakon wata gajeriyar hanya da ke cire koyon a hankali."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Yi amfani da horar da aikin gida na AI don alamomin taimako, dubawar matakai, tunanin lissafi, da ra’ayin rubutu yayin da aikin ƙarshe ya kasance naka."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Yi amfani da tafiyar lokaci ta AI, tattaunawar tarihi, da atisayen muhawara don binciken mahalli, shaida, hujjoji, da hangen nesa."
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Yi amfani da muhawara don kwatanta da’awa mafi ƙarfi da martani mafi ƙarfi."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Yi amfani da alamomin taimako, dubawar matakai, da ra’ayin rubutu ba tare da mayar da koyo kwafin amsa ba."
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Yi amfani da inspir don ra’ayin ƙasida, tallafin karatu, atisayen magana, nazarin tushe, da zagayen bita da ke inganta tsari ba tare da maye gurbin muryar mai koyo ba."
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Yi amfani da inspir don alamomin taimakon aikin gida, dubawar matakan lissafi, ra’ayin rubutu, nazarin tushe, tambayoyin Socratic, da katunan tunawa ba tare da bayyana hirarraki na sirri ba."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Yi amfani da inspir don taimakon lissafi mataki bayan mataki, alamomin taimakon aikin gida, tunanin Socratic, gwaje-gwaje, katunan tunawa, da shirin jarabawa ba tare da kwafin amsa ba."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Yi amfani da yanayin baƙo na jama’a kyauta, sannan ka binciki aikin buɗaɗɗen tushe da hanyoyin tura shi makarantu."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Yi amfani da tambayoyin Socratic"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Yi amfani da ranar jarabawa, syllabus, lokacin da ake da shi, da wuraren rauni don ƙirƙirar tsarin da zai iya jure rayuwa ta gaske."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Yi amfani da jagorar da aka haɗa, umarnin tambaya, cibiyar darasi, ko hanyar koyo don sake duba wurin rauni daga baya."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Yi amfani da ra’ayin rubutu don tsari, bayyana, da shaida yayin da daftarin ƙarshe yake zama naka a bayyane."
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Mai amfani tun daga dannawa ta farko"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Ikon bidiyo"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Ci gaban bidiyo"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Ra’ayi mai kiyaye murya"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Kalli 31s"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Zagayen wuraren rauni"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Abin da abokin koyo na AI ya kamata ya yi wa kowa"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Abin da masu koyo kan tambaya kafin su fara."
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Me ya kamata in fara tambaya idan batu ya yi mini wahala sosai?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Me zan haɗa a umarnin tambayar aikin gida?"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Abin da za ka iya yi"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "AI na makaranta mai farar alama"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Dalilin da ya sa malamin AI na Socratic zai iya sa ra’ayoyi su zauna a ƙwaƙwalwa"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Me ya sa a haɗa tarihi da muhawara?"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Me ya sa ake amfani da tambayoyin Socratic bayan bayani?"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Yi aiki kan algebra, calculus, matsalolin kalmomi, da ra’ayoyin lissafi mataki ɗaya lokaci guda tare da kocin AI."
+    },
+    {
+      "key": "site.4e2149136bd53c413f",
+      "source": "Work through math steps",
+      "value": "Yi aiki kan matakan lissafi"
+    },
+    {
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Rubuta bayani na jimloli uku ba tare da dubawa ba, sannan ka nemi yanayin Socratic ya nemo mahaɗin rauni."
+    },
+    {
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Rubuta daidai inda ka makale kafin ka nemi taimako."
+    },
+    {
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Rubutu"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Kocin rubutu"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Ee, idan yana ba da alamomin taimako, yana duba tunani, yana bayyana kurakurai, kuma yana neman ka samar da amsar ƙarshe maimakon ya rubuta maka ita."
+    },
+    {
+      "key": "site.4eb7825da66025f6ae",
+      "source": "Yes. Public topic chats such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly in guest mode.",
+      "value": "Ee. Hirarrakin batutuwa na jama’a kamar Koyi Komai, Koyarwar Socratic, Kocin Aikin Gida, gwaje-gwaje, da katunan tunawa suna buɗewa kai tsaye a yanayin baƙo."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Ee. Makarantu za su iya amfani da samfurin jama’a da farko, sannan su tattauna wuraren koyon AI na musamman tare da tsarin aiki na makaranta, sirri, da zaɓuɓɓukan samun dama da aka tallafa."
+    },
+    {
+      "key": "site.7e0d4a8f0b3a3c531c",
+      "source": "Yes. The public guest learning modes are designed for free access, so learners can start without needing a school deployment or paid account.",
+      "value": "Ee. An tsara yanayin koyon baƙo na jama’a don samun dama kyauta, don haka masu koyo za su iya farawa ba tare da buƙatar tura shi makaranta ko asusun biya ba."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Za ka iya gwada yanayoyin koyo na jama’a kyauta. Hirarraki da aka ajiye, asusu, kayan aikin gudanarwa, da bayanan mai amfani suna zama na sirri."
+    }
+  ]
+}

@@ -8,11 +8,19 @@ import {
   supportedLanguages,
 } from "../lib/content/languages";
 import { topicSeeds } from "../lib/content/topics";
-import { recommendLanguageFromCountry } from "../lib/i18n/language-detection";
+import {
+  recommendLanguage,
+  recommendLanguageFromAcceptLanguage,
+  recommendLanguageFromCountry,
+} from "../lib/i18n/language-detection";
 import { resolveRequestLanguage } from "../lib/i18n/language-preference";
 import { localizeStructuredDataValue } from "../lib/i18n/metadata";
 import { isStaticSiteLanguageAvailableForPath } from "../lib/i18n/static-availability";
-import { getEnglishMainAppTranslationBundle, getMainAppSourceHash } from "../lib/i18n/main-app-source";
+import {
+  getEnglishMainAppTranslationBundle,
+  getMainAppSourceHash,
+  getMainAppSourceStrings,
+} from "../lib/i18n/main-app-source";
 import {
   getAllSiteTranslationNamespaces,
   getSiteTranslationSource,
@@ -105,9 +113,15 @@ test("prompt assembly includes age context only when known", () => {
 
 test("main app translation source has stable keys and validates placeholders", () => {
   const bundle = getEnglishMainAppTranslationBundle();
-  const sourceHash = getMainAppSourceHash(bundle.sourceStrings);
+  const sourceHash = getMainAppSourceHash();
 
   assert.equal(bundle.sourceHash, sourceHash);
+  assert.equal(Object.isFrozen(bundle), true);
+  assert.equal(Object.isFrozen(bundle.sourceStrings), true);
+  assert.strictEqual(getMainAppSourceStrings(), getMainAppSourceStrings());
+  assert.strictEqual(getMainAppSourceStrings(), bundle.sourceStrings);
+  assert.strictEqual(getEnglishMainAppTranslationBundle(), bundle);
+  assert.strictEqual(getEnglishMainAppTranslationBundle().sourceStrings, bundle.sourceStrings);
   assert.equal(bundle.strings["onboarding.age.submit"], "Continue");
   assert.ok(Object.keys(bundle.sourceStrings).some((key) => key.startsWith("topic.learn-anything.")));
   assert.equal(Object.keys(bundle.sourceStrings).some((key) => key.includes(".seo.")), false);
@@ -212,6 +226,8 @@ test("static locale availability admits only render-localized page bodies", () =
   assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Spanish"), true);
   assert.equal(isStaticSiteLanguageAvailableForPath("/about", "Spanish"), false);
   assert.equal(isStaticSiteLanguageAvailableForPath("/mission", "Hindi"), false);
+  assert.equal(isStaticSiteLanguageAvailableForPath("/games", "Spanish"), false);
+  assert.equal(isStaticSiteLanguageAvailableForPath("/reset_pw", "Spanish"), false);
 });
 
 test("explicit English language cookie wins over localized referrer", () => {
@@ -248,6 +264,12 @@ test("country recommendation maps IP country signals to supported languages", ()
   assert.equal(recommendLanguageFromCountry("JP"), "Japanese");
   assert.equal(recommendLanguageFromCountry("XX"), null);
   assert.equal(recommendLanguageFromCountry("T1"), null);
+});
+
+test("browser language skips unknown tags and takes precedence over country inference", () => {
+  assert.equal(recommendLanguageFromAcceptLanguage("xx,es;q=0.9"), "Spanish");
+  assert.equal(recommendLanguageFromAcceptLanguage("xx,fr;q=0"), null);
+  assert.equal(recommendLanguage({ countryCode: "ES", acceptLanguage: "fr-FR,fr;q=0.9" }), "French");
 });
 
 test("site translation source includes short UI labels and legal notice", () => {

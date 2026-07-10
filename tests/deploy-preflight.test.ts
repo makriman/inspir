@@ -36,6 +36,7 @@ test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
       ["source secret scan", "pass"],
       ["OpenNext build artifact secret scan", "pass"],
       ["Wrangler production config", "pass"],
+      ["OpenNext cache revalidation architecture", "pass"],
     ],
   );
 });
@@ -192,6 +193,88 @@ test("steady-state deploy preflight rejects missing response cache runtime vars"
   assert.ok((wrangler?.detail as { missingVars?: string[] } | undefined)?.missingVars?.includes("AI_RESPONSE_CACHE_TTL_SECONDS"));
 });
 
+test("steady-state deploy preflight rejects Worker-wide response caching", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    Object.assign(config, { cache: { enabled: true } });
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.equal((wrangler?.detail as { workerGlobalCacheOk?: boolean }).workerGlobalCacheOk, false);
+});
+
+test("steady-state deploy preflight rejects a missing OpenNext Durable Object queue", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    config.durable_objects.bindings = [];
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.equal((wrangler?.detail as { cacheRevalidationDoOk?: boolean }).cacheRevalidationDoOk, false);
+});
+
+test("deploy preflight gates the immutable game-results schema before Worker cutover", () => {
+  const source = fs.readFileSync(path.resolve("scripts/cloudflare/deploy-preflight.ts"), "utf8");
+  const deploy = fs.readFileSync(path.resolve("deploy.md"), "utf8");
+
+  assert.match(source, /remoteD1GameResultsSchemaCheck/);
+  assert.match(source, /game_results_reject_update/);
+  assert.match(source, /schemaVersionFixed/);
+  assert.match(source, /payloadJsonChecked/);
+  assert.match(source, /plyBounded/);
+  assert.match(deploy, /cf:d1:apply-game-results -- --remote --confirm-production/);
+  assert.ok(deploy.indexOf("cf:d1:apply-game-results") < deploy.indexOf("cf:deploy"));
+});
+
+test("deploy preflight requires a post-migration Durable Object rollback target", () => {
+  const source = fs.readFileSync(path.resolve("scripts/cloudflare/deploy-preflight.ts"), "utf8");
+
+  assert.match(source, /remoteDurableObjectInfrastructureCheck/);
+  assert.match(source, /deployments", "status", "--json"/);
+  assert.match(source, /versions", "view"/);
+  assert.match(source, /NEXT_CACHE_DO_QUEUE/);
+  assert.match(source, /durable_object_namespace/);
+  assert.match(source, /DOQueueHandler/);
+});
+
+test("steady-state deploy preflight rejects dummy OpenNext revalidation architecture", () => {
+  const { backupDir, repoDir } = makeFixture();
+  fs.writeFileSync(
+    path.join(repoDir, "open-next.config.ts"),
+    'import { defineCloudflareConfig } from "@opennextjs/cloudflare";\nexport default defineCloudflareConfig({});\n',
+  );
+  writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const openNext = report.checks.find((check) => check.name === "OpenNext cache revalidation architecture");
+  assert.equal(openNext?.status, "fail");
+});
+
 function makeFixture() {
   const repoDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-deploy-preflight-repo-"));
   const backupDir = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-deploy-preflight-backup-"));
@@ -199,6 +282,7 @@ function makeFixture() {
   runGit(repoDir, ["init"]);
   fs.writeFileSync(path.join(repoDir, "app.ts"), "export const ok = true;\n");
   fs.writeFileSync(path.join(repoDir, "wrangler.jsonc"), `${JSON.stringify(wranglerConfig(), null, 2)}\n`);
+  fs.writeFileSync(path.join(repoDir, "open-next.config.ts"), openNextConfig());
 
   const fingerprint = buildRepoSourceFingerprint(repoDir);
   writeLocalEvidence(backupDir, fingerprint);
@@ -279,6 +363,11 @@ function wranglerConfig() {
       { binding: "PROFILE_IMAGES_R2_BUCKET", bucket_name: PROFILE_IMAGES_R2_BUCKET_NAME },
     ],
     services: [{ binding: "WORKER_SELF_REFERENCE", service: "inspirlearning" }],
+    version_metadata: { binding: "CF_VERSION_METADATA" },
+    durable_objects: {
+      bindings: [{ name: "NEXT_CACHE_DO_QUEUE", class_name: "DOQueueHandler" }],
+    },
+    migrations: [{ tag: "opennext-cache-queue-v1", new_sqlite_classes: ["DOQueueHandler"] }],
     queues: {
       producers: [{ binding: "MEMORY_POST_TURN_QUEUE", queue: MEMORY_POST_TURN_QUEUE_NAME }],
       consumers: [
@@ -329,14 +418,34 @@ function wranglerConfig() {
       RATE_LIMIT_GUEST_IP_DAILY: "150",
       RATE_LIMIT_ACTIVITY_DAILY: "10",
       RATE_LIMIT_MEMORY_DAILY: "20",
+      RATE_LIMIT_GAME_RESULT_IP_DAILY: "120",
+      RATE_LIMIT_GAME_RESULT_FINGERPRINT_DAILY: "60",
       LLM_GLOBAL_DAILY_CALL_LIMIT: "1000",
       MEMORY_POST_TURN_SYNTHESIS_THRESHOLD: "2",
       MEMORY_PROFILE_COMPILE_LIMIT: "20",
       OBSERVABILITY_INCIDENT_MODE: "0",
       APP_WRITE_FREEZE: "0",
       APP_WRITE_FREEZE_RETRY_AFTER_SECONDS: "300",
+      MAX_REVALIDATE_CONCURRENCY: "1",
+      NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION: "1",
     },
   };
+}
+
+function openNextConfig() {
+  return `import { defineCloudflareConfig } from "@opennextjs/cloudflare";
+import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
+import { withRegionalCache } from "@opennextjs/cloudflare/overrides/incremental-cache/regional-cache";
+import doQueue from "@opennextjs/cloudflare/overrides/queue/do-queue";
+import queueCache from "@opennextjs/cloudflare/overrides/queue/queue-cache";
+
+export default defineCloudflareConfig({
+  incrementalCache: withRegionalCache(r2IncrementalCache, { mode: "long-lived" }),
+  queue: queueCache(doQueue, { regionalCacheTtlSec: 5, waitForQueueAck: true }),
+  enableCacheInterception: true,
+  routePreloadingBehavior: "none",
+});
+`;
 }
 
 function writeJson(root: string, relativePath: string, value: unknown) {

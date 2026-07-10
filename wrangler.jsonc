@@ -29,13 +29,27 @@
       "persist": true
     }
   },
-  "cache": {
-    "enabled": true
-  },
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
       "service": "inspirlearning"
+    }
+  ],
+  "version_metadata": {
+    "binding": "CF_VERSION_METADATA"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "NEXT_CACHE_DO_QUEUE",
+        "class_name": "DOQueueHandler"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "opennext-cache-queue-v1",
+      "new_sqlite_classes": ["DOQueueHandler"]
     }
   ],
   "d1_databases": [
@@ -113,12 +127,16 @@
     "RATE_LIMIT_GUEST_IP_DAILY": "150",
     "RATE_LIMIT_ACTIVITY_DAILY": "10",
     "RATE_LIMIT_MEMORY_DAILY": "20",
+    "RATE_LIMIT_GAME_RESULT_IP_DAILY": "120",
+    "RATE_LIMIT_GAME_RESULT_FINGERPRINT_DAILY": "60",
     "LLM_GLOBAL_DAILY_CALL_LIMIT": "1000",
     "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD": "2",
     "MEMORY_PROFILE_COMPILE_LIMIT": "20",
     "OBSERVABILITY_INCIDENT_MODE": "0",
     "APP_WRITE_FREEZE": "0",
-    "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS": "300"
+    "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS": "300",
+    "MAX_REVALIDATE_CONCURRENCY": "1",
+    "NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION": "1"
   },
   "secrets": {
     "required": [

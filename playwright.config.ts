@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const baseURL = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:8787";
+const expectedWorkerVersion = process.env.EXPECTED_WORKER_VERSION?.trim();
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -23,6 +24,11 @@ export default defineConfig({
   use: {
     baseURL,
     trace: "retain-on-failure",
+    extraHTTPHeaders: expectedWorkerVersion
+      ? {
+          "Cloudflare-Workers-Version-Overrides": `inspirlearning="${expectedWorkerVersion}"`,
+        }
+      : undefined,
   },
   projects: [
     {

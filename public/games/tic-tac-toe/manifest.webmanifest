@@ -1,0 +1,17 @@
+{
+  "id": "/games/tic-tac-toe",
+  "name": "inspir Tic-Tac-Toe",
+  "short_name": "Tic-Tac-Toe",
+  "description": "A deterministic Tic-Tac-Toe mini-app with replayable results.",
+  "start_url": "/games/tic-tac-toe?source=installed",
+  "scope": "/games/tic-tac-toe",
+  "display": "standalone",
+  "background_color": "#090d18",
+  "theme_color": "#8b5cf6",
+  "orientation": "any",
+  "icons": [
+    { "src": "/games/tic-tac-toe/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/inspir-app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/inspir-app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

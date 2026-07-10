@@ -7,6 +7,16 @@ type ApiResult<T = unknown> = {
   json: T | null;
 };
 
+test("production browser requests are pinned to the expected Worker version", async ({ request }) => {
+  const expectedVersion = process.env.EXPECTED_WORKER_VERSION?.trim();
+  test.skip(!expectedVersion, "Worker version pinning is a production-only contract.");
+
+  const response = await request.get("/api/health");
+  expect(response.status()).toBe(200);
+  const payload = (await response.json()) as { version?: { id?: string } };
+  expect(payload.version?.id).toBe(expectedVersion);
+});
+
 test("public, localized, SEO, and topic API routes work on Cloudflare preview", async ({ page, request }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/Free AI learning/i);
@@ -21,7 +31,13 @@ test("public, localized, SEO, and topic API routes work on Cloudflare preview", 
   const localized = await request.get("/hi");
   expect(localized.status()).toBe(200);
   expect(localized.headers()["set-cookie"] ?? "").not.toContain("inspir_locale=Hindi");
-  expect(localized.headers()["cache-control"] ?? "").toContain("s-maxage=3600");
+  const localizedCacheControl = localized.headers()["cache-control"] ?? "";
+  const localizedSharedMaxAge = Number(localizedCacheControl.match(/(?:^|,)\s*s-maxage=(\d+)/)?.[1]);
+  expect(localizedSharedMaxAge).toBeGreaterThanOrEqual(31_536_000);
+  expect(localized.headers()["x-nextjs-prerender"] ?? "").toBe("1");
+  const localizedRenderCache =
+    localized.headers()["x-nextjs-cache"] ?? localized.headers()["x-opennext-cache"] ?? "";
+  expect(localizedRenderCache).toMatch(/^(?:HIT|REVALIDATED)$/);
 
   for (const route of ["/hi/topics", "/hi/chat/learn-anything"]) {
     const response = await request.get(route);

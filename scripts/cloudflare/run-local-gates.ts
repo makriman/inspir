@@ -58,6 +58,10 @@ const gatesById: Record<LocalGateId, Gate> = {
   "source-secret-scan": { id: "source-secret-scan", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-source-secrets.ts"] }] },
   "next-build": { id: "next-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "next-build"] }] },
   "opennext-build": { id: "opennext-build", steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/run-sanitized-build.ts", "opennext-build"] }] },
+  "opennext-resource-budget": {
+    id: "opennext-resource-budget",
+    steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/check-opennext-resource-budget.ts"] }],
+  },
   "opennext-artifact-secret-scan": {
     id: "opennext-artifact-secret-scan",
     steps: [{ command: bin("tsx"), args: ["scripts/cloudflare/scan-build-artifacts.ts"] }],

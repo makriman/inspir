@@ -8,12 +8,16 @@ const reportPath = path.join(cloudflareDir(backupDir), "playwright-production-re
 const FINAL_PRODUCTION_BASE_URL = "https://inspirlearning.com/";
 const baseUrl = normalizeBaseUrl(process.env.PLAYWRIGHT_BASE_URL ?? process.env.PRODUCTION_BASE_URL ?? FINAL_PRODUCTION_BASE_URL);
 const usingSessionAuth = Boolean(process.env.E2E_TEST_AUTH_SECRET?.trim());
+const expectedWorkerVersion = getArg("--expected-version") ?? process.env.EXPECTED_WORKER_VERSION;
 
 const missingEnv = ["E2E_GOOGLE_EMAIL"].filter((key) => !process.env[key]?.trim());
 if (!usingSessionAuth && !process.env.E2E_GOOGLE_PASSWORD?.trim()) missingEnv.push("E2E_GOOGLE_PASSWORD");
 if (process.env.REQUIRE_LIVE_AI !== "1") missingEnv.push("REQUIRE_LIVE_AI");
 if (process.env.E2E_GOOGLE_IS_ADMIN !== "1") missingEnv.push("E2E_GOOGLE_IS_ADMIN");
 if (baseUrl !== FINAL_PRODUCTION_BASE_URL) missingEnv.push("PLAYWRIGHT_BASE_URL=https://inspirlearning.com");
+if (!expectedWorkerVersion || !isWorkerVersionId(expectedWorkerVersion)) {
+  missingEnv.push("--expected-version=<Worker version UUID>");
+}
 if (missingEnv.length) {
   writeReport({
     ok: false,
@@ -30,6 +34,7 @@ const result = spawnSync("pnpm", ["exec", "playwright", "test", "--reporter=json
     ...commandEnv(),
     PLAYWRIGHT_BASE_URL: baseUrl,
     REQUIRE_LIVE_AI: "1",
+    EXPECTED_WORKER_VERSION: expectedWorkerVersion ?? "",
   },
   maxBuffer: 128 * 1024 * 1024,
 });
@@ -47,6 +52,7 @@ writeReport({
     googlePassword: Boolean(process.env.E2E_GOOGLE_PASSWORD?.trim()),
     googleAdmin: process.env.E2E_GOOGLE_IS_ADMIN === "1",
     sessionAuth: usingSessionAuth,
+    expectedWorkerVersion,
   },
   playwright: parsed,
 });
@@ -77,4 +83,13 @@ function parsePlaywrightJson(output: string) {
 
 function normalizeBaseUrl(url: string) {
   return url.endsWith("/") ? url : `${url}/`;
+}
+
+function getArg(name: string) {
+  const index = process.argv.indexOf(name);
+  return index >= 0 ? process.argv[index + 1] : undefined;
+}
+
+function isWorkerVersionId(value: string) {
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value);
 }

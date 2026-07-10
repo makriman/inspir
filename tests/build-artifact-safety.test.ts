@@ -10,7 +10,11 @@ import {
   sanitizedDotEnvContent,
   withSanitizedProjectEnvFiles,
 } from "../scripts/cloudflare/sanitized-build-env";
-import { blockedOpenNextSkipBuildArgs, runSanitizedBuildCommand } from "../scripts/cloudflare/run-sanitized-build";
+import {
+  blockedOpenNextSkipBuildArgs,
+  clearLocalPreviewCacheApiState,
+  runSanitizedBuildCommand,
+} from "../scripts/cloudflare/run-sanitized-build";
 import { buildArtifactScanReport, scanNextEnvFallbacks } from "../scripts/cloudflare/scan-build-artifacts";
 import { WORKER_DEPLOY_REPORT, type WorkerDeployEvidenceReport } from "../scripts/cloudflare/worker-deploy-evidence";
 
@@ -41,6 +45,38 @@ test("sanitized build path blocks OpenNext skip-build bypasses", () => {
   assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-build", ["--skipNextBuild"]), ["--skipNextBuild"]);
   assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-deploy", ["--skipBuild=true"]), ["--skipBuild=true"]);
   assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-preview", ["--remote"]), []);
+});
+
+test("local preview clears only persisted Cache API state", () => {
+  const cwd = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-preview-cache-reset-"));
+  const cacheDir = path.join(cwd, ".wrangler", "state", "v3", "cache");
+  const d1Dir = path.join(cwd, ".wrangler", "state", "v3", "d1");
+  const r2Dir = path.join(cwd, ".wrangler", "state", "v3", "r2");
+  try {
+    for (const directory of [cacheDir, d1Dir, r2Dir]) {
+      fs.mkdirSync(directory, { recursive: true });
+      fs.writeFileSync(path.join(directory, "sentinel"), directory);
+    }
+
+    assert.equal(clearLocalPreviewCacheApiState(cwd), cacheDir);
+    assert.equal(fs.existsSync(cacheDir), false);
+    assert.equal(fs.existsSync(path.join(d1Dir, "sentinel")), true);
+    assert.equal(fs.existsSync(path.join(r2Dir, "sentinel")), true);
+  } finally {
+    fs.rmSync(cwd, { recursive: true, force: true });
+  }
+});
+
+test("fresh OpenNext artifacts must pass the resource budget before upload", () => {
+  const source = fs.readFileSync(path.resolve("scripts/cloudflare/run-sanitized-build.ts"), "utf8");
+  const buildIndex = source.indexOf("const buildResult = spawnSync");
+  const budgetIndex = source.indexOf("inspectOpenNextResourceBudget(process.cwd())", buildIndex);
+  const scanIndex = source.indexOf("if (command.scanBefore)", budgetIndex);
+
+  assert.ok(buildIndex >= 0);
+  assert.ok(budgetIndex > buildIndex);
+  assert.ok(scanIndex > budgetIndex);
+  assert.match(source, /resourceBudgetOk: false/);
 });
 
 test("blocked OpenNext deploy writes non-secret Worker deploy evidence", () => {

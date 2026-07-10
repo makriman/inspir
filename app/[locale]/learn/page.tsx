@@ -3,10 +3,14 @@ import {
   generateLearningPathsMetadata,
   LearningPathsPageContent,
 } from "@/components/marketing/pages/LearningPathsMarketingPage";
-import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
+import { generateLocalizedStaticParams, resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return generateLocalizedStaticParams("/learn");
+}
 
 type LocalizedLearningPathsPageProps = {
   params: LocaleRouteParams;

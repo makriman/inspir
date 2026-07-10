@@ -12,6 +12,7 @@ import {
   withSanitizedProjectEnvFiles,
 } from "./sanitized-build-env";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "./source-fingerprint";
+import { inspectOpenNextResourceBudget } from "./check-opennext-resource-budget";
 import { writeWorkerDeployEvidenceReport, type WorkerDeployEvidenceReport } from "./worker-deploy-evidence";
 
 type CommandMode = "next-build" | "opennext-build" | "opennext-deploy" | "opennext-upload" | "opennext-preview";
@@ -123,9 +124,24 @@ export function runSanitizedBuildCommand(
             commandExecuted: false,
             deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
             deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: null,
             scanBeforeOk: null,
             scanAfterOk: null,
             error: `OpenNext build before ${mode} exited with status ${buildResult.status ?? "unknown"}.`,
+          });
+        }
+
+        const resourceBudget = inspectOpenNextResourceBudget(process.cwd());
+        if (!resourceBudget.ok) {
+          console.error(`OpenNext resource budget failed before ${mode}: ${JSON.stringify(resourceBudget)}`);
+          return deployEvidence.finish(1, {
+            commandExecuted: false,
+            deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
+            deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: false,
+            scanBeforeOk: null,
+            scanAfterOk: null,
+            error: `OpenNext resource budget failed before ${mode}.`,
           });
         }
       }
@@ -138,6 +154,7 @@ export function runSanitizedBuildCommand(
             commandExecuted: false,
             deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
             deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: command.buildBefore ? true : undefined,
             scanBeforeOk: false,
             scanAfterOk: null,
             error: `OpenNext artifact scan failed with ${report.findings.length} finding(s).`,
@@ -148,6 +165,7 @@ export function runSanitizedBuildCommand(
       let localPreviewConfig: string | null = null;
       let commandArgs = passthroughArgs;
       if (mode === "opennext-preview") {
+        clearLocalPreviewCacheApiState();
         writeLocalPreviewRuntimeVars();
         Object.assign(env, localPreviewRuntimeEnv());
         localPreviewConfig = writeLocalPreviewWranglerConfig();
@@ -167,10 +185,25 @@ export function runSanitizedBuildCommand(
           commandExecuted: true,
           deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
           deployPreflightStatus: productionDeployPreflightResult?.status,
+          resourceBudgetOk: command.buildBefore ? true : undefined,
           scanBeforeOk: command.scanBefore ? true : null,
           scanAfterOk: null,
           error: `OpenNext ${mode} exited with status ${result.status ?? "unknown"}.`,
         });
+      }
+
+      if (mode === "opennext-build") {
+        const resourceBudget = inspectOpenNextResourceBudget(process.cwd());
+        if (!resourceBudget.ok) {
+          console.error(`OpenNext resource budget failed after ${mode}: ${JSON.stringify(resourceBudget)}`);
+          return deployEvidence.finish(1, {
+            commandExecuted: true,
+            resourceBudgetOk: false,
+            scanBeforeOk: null,
+            scanAfterOk: null,
+            error: `OpenNext resource budget failed after ${mode}.`,
+          });
+        }
       }
 
       if (command.scanAfter) {
@@ -181,6 +214,7 @@ export function runSanitizedBuildCommand(
             commandExecuted: true,
             deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
             deployPreflightStatus: productionDeployPreflightResult?.status,
+            resourceBudgetOk: command.buildBefore || mode === "opennext-build" ? true : undefined,
             scanBeforeOk: command.scanBefore ? true : null,
             scanAfterOk: false,
             error: `OpenNext artifact scan failed with ${report.findings.length} finding(s).`,
@@ -192,6 +226,7 @@ export function runSanitizedBuildCommand(
         commandExecuted: true,
         deployPreflightOk: productionDeployPreflightResult?.ok ?? undefined,
         deployPreflightStatus: productionDeployPreflightResult?.status,
+        resourceBudgetOk: command.buildBefore || mode === "opennext-build" ? true : undefined,
         scanBeforeOk: command.scanBefore ? true : null,
         scanAfterOk: command.scanAfter ? true : null,
       });
@@ -203,6 +238,12 @@ export function runSanitizedBuildCommand(
 
 export function requiresProductionDeployPreflight(mode: CommandMode) {
   return mode === "opennext-deploy" || mode === "opennext-upload";
+}
+
+export function clearLocalPreviewCacheApiState(cwd = process.cwd()) {
+  const cacheApiDir = path.join(cwd, ".wrangler", "state", "v3", "cache");
+  fs.rmSync(cacheApiDir, { recursive: true, force: true });
+  return cacheApiDir;
 }
 
 function runProductionDeployPreflight(backupDir: string): DeployPreflightResult {
@@ -247,6 +288,7 @@ function writeLocalPreviewWranglerConfig() {
     assets?: { directory?: string };
     secrets?: { required?: string[] };
     vars?: Record<string, unknown>;
+    routes?: unknown;
   };
   if (typeof config.main === "string") config.main = path.resolve(cwd, config.main);
   if (typeof config.assets?.directory === "string") {
@@ -269,6 +311,9 @@ function writeLocalPreviewWranglerConfig() {
     AUTH_URL: localPreviewUrl,
     BETTER_AUTH_URL: localPreviewUrl,
   };
+  // Production custom-domain routes make OpenNext construct localhost requests
+  // against the canonical production host and trigger an HTTPS redirect loop.
+  delete config.routes;
   const previewConfigPath = ".wrangler.preview.local.jsonc";
   fs.writeFileSync(path.join(cwd, previewConfigPath), `${JSON.stringify(config, null, 2)}\n`, { mode: 0o600 });
   return previewConfigPath;
@@ -295,6 +340,7 @@ function createWorkerDeployEvidenceWriter(
         | "commandExecuted"
         | "deployPreflightOk"
         | "deployPreflightStatus"
+        | "resourceBudgetOk"
         | "scanBeforeOk"
         | "scanAfterOk"
         | "blockedArgs"
@@ -312,7 +358,11 @@ function createWorkerDeployEvidenceWriter(
         mode,
         command: [command.executable, ...command.args, ...passthroughArgs],
         passthroughArgs,
-        ok: status === 0 && extra.commandExecuted === true && sourceFingerprintStable,
+        ok:
+          status === 0 &&
+          extra.commandExecuted === true &&
+          extra.resourceBudgetOk === true &&
+          sourceFingerprintStable,
         status,
         sourceFingerprintBefore,
         sourceFingerprintAfter,

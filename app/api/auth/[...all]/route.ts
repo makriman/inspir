@@ -1,6 +1,7 @@
 import { toNextJsHandler } from "better-auth/next-js";
 import { after } from "next/server";
 import { createAuth } from "@/lib/auth/better-auth";
+import { withPrivateAuthCache } from "@/lib/auth/private-response";
 import { writeFreezeResponse } from "@/lib/migration/write-freeze";
 import { recordOpsEvent } from "@/lib/observability/events";
 
@@ -11,31 +12,31 @@ const handler = toNextJsHandler((request) => createAuth().handler(request));
 
 export async function GET(request: Request) {
   const freeze = authWriteFreezeResponse(request);
-  if (freeze) return freeze;
+  if (freeze) return withPrivateAuthCache(freeze);
   return runObservedAuthHandler("GET", request, handler.GET);
 }
 
 export async function POST(request: Request) {
   const freeze = writeFreezeResponse("auth");
-  if (freeze) return freeze;
+  if (freeze) return withPrivateAuthCache(freeze);
   return runObservedAuthHandler("POST", request, handler.POST);
 }
 
 export async function PATCH(request: Request) {
   const freeze = writeFreezeResponse("auth");
-  if (freeze) return freeze;
+  if (freeze) return withPrivateAuthCache(freeze);
   return runObservedAuthHandler("PATCH", request, handler.PATCH);
 }
 
 export async function PUT(request: Request) {
   const freeze = writeFreezeResponse("auth");
-  if (freeze) return freeze;
+  if (freeze) return withPrivateAuthCache(freeze);
   return runObservedAuthHandler("PUT", request, handler.PUT);
 }
 
 export async function DELETE(request: Request) {
   const freeze = writeFreezeResponse("auth");
-  if (freeze) return freeze;
+  if (freeze) return withPrivateAuthCache(freeze);
   return runObservedAuthHandler("DELETE", request, handler.DELETE);
 }
 
@@ -52,7 +53,7 @@ async function runObservedAuthHandler(
 ) {
   const response = await action(request);
   queueAuthTelemetry(method, request, response);
-  return response;
+  return withPrivateAuthCache(response);
 }
 
 function queueAuthTelemetry(method: string, request: Request, response: Response) {

@@ -1,0 +1,1880 @@
+{
+  "schemaVersion": 1,
+  "language": "Welsh",
+  "locale": "cy",
+  "namespace": "route:home",
+  "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
+  "model": "curated-codex-v2",
+  "entries": [
+    {
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "canllawiau ymarferol ar gyfer {value1}"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "Llyfrgell o ganllawiau {value1} ar gyfer dysgu sy'n troi'n weithredu."
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Cydymaith dysgu AI cyhoeddus am ddim ar gyfer tiwtora, ymarfer, cwisiau, cardiau cof, dadlau, adborth ar ysgrifennu, cymorth codio a chynllunio astudio."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Llwybr dysgu AI ymarferol sy'n symud o ddryswch at esboniadau clir, cwestiynau Socrataidd, enghreifftiau a galw i gof gweithredol."
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "Canllaw ymarferol i ddefnyddio Dysgu Unrhyw Beth ar inspir ar gyfer dysgu'r sylfeini, gydag ysgogiadau, cylchoedd astudio ac arferion AI mwy diogel."
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "Golwg ymarferol ar sut gall AI wneud dysgu'n gliriach, yn fwy personol ac yn fwy hygyrch heb droi myfyrwyr yn gasglwyr atebion goddefol."
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "Safle dysgu cyhoeddus y gall pobl ei ddeall yn gyflym."
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Ffilm fer sy'n cyflwyno cred inspir y dylai dysgu fod yn rhad ac am ddim, yn hygyrch ac yn fyw."
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "Tiwtor ar gyfer y cwestiwn cyntaf"
+    },
+    {
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "hygyrchedd, ysgogiadau, profion, ymddygiad AI mwy diogel, llifoedd dysgwyr a gloywi'r rhyngwyneb."
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Cam ar ôl darllen"
+    },
+    {
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Ymarfer gweithredol"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Adolygu drwy alw i gof gweithredol"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Ar ôl pob awgrym, eglurwch pam mae'r cam yn gweithio cyn parhau."
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Ar ôl yr efelychiad, crynhowch y lleoliad, y cyfyngiadau a'r dystiolaeth."
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "Tiwtor Codio AI"
+    },
+    {
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "Ymarfer dadlau ag AI"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "Cynllun paratoi arholiad gydag AI"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "Cynllun Paratoi Arholiad AI gyda Chwisiau a Galw i Gof Gweithredol"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "Cynlluniwr Paratoi Arholiadau AI"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "Cardiau cof AI a galw i gof gweithredol: sut i gofio mwy"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "Cardiau cof AI ar gyfer galw i gof gweithredol"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "Cardiau cof AI ar gyfer adolygu"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "Tiwtor hanes AI"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "Tiwtor Hanes AI"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "Hyfforddwr gwaith cartref AI"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "Cymorth gwaith cartref AI heb dwyllo"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "Cymorth Gwaith Cartref AI Heb Gopïo Atebion"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "Cynorthwyydd Gwaith Cartref AI"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "Hyfforddwr camau mathemateg AI"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "Tiwtor Mathemateg AI"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "Cynhyrchydd cwisiau AI ar gyfer arholiadau"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "Tiwtor Socrataidd AI"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "Amserlen astudio AI"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "Dysgu teithio amser gydag AI"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "Tiwtor AI ar gyfer cysyniadau anodd"
+    },
+    {
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "Tiwtoriaid AI yn ôl pwnc"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Adborth ysgrifennu AI i fyfyrwyr"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "Tiwtor Ysgrifennu AI"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Atebwch gwestiwn gwirio, rhowch gynnig ar gam, dadleuwch honiad, adolygwch ddrafft, neu adeiladwch gardiau cof."
+    },
+    {
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Ydy cwisiau'n well nag ailddarllen?"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Dadl"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Ymarfer dadlau"
+    },
+    {
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "Gofynnwch unrhyw gwestiwn a dysgwch drwy esboniadau clir, enghreifftiau, ysgogiadau dilynol a thiwtora AI amyneddgar."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "Gofynnwch unrhyw beth"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "Gofynnwch am awgrym"
+    },
+    {
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Gofynnwch am awgrym, nid yr ateb"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "Gofynnwch am esboniad symlach o'r cysyniad gwannaf."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Gofynnwch am bum cwestiwn sy'n cymysgu diffiniadau, enghreifftiau a phroblemau trosglwyddo."
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Gofynnwch am awgrymiadau, gwiriadau, adborth a chynlluniau astudio sy'n cadw'r meddwl gyda'r dysgwr."
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Gofynnwch am y pwnc mewn iaith glir, wedyn gofynnwch am un gyfatebiaeth, un enghraifft ac un camsyniad cyffredin."
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Gofynnwch bum cwestiwn Socrataidd i mi am y pwnc hwn. Ar ôl pob ateb, dywedwch wrthyf pa dybiaeth a ddefnyddiais a beth i'w brofi nesaf."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Gofynnwch gwestiynau, heriwch syniadau, a dysgwch hanes drwy sgyrsiau wedi'u seilio ar dystiolaeth gyda ffigurau cyhoeddus o'r gorffennol."
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Gofynnwch i'r modd hanesyddol labelu'r hyn sydd wedi'i ddogfennu, ei gasglu neu ei efelychu."
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Gofynnwch y cwestiwn go iawn"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "Gofynnwch eich cwestiwn cyntaf a symudwch yn syth i ymarfer."
+    },
+    {
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Ar gael yn gyhoeddus tra gall ysgolion redeg fersiynau cyfrinachol wedi'u teilwra."
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Pori pob modd"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Pori pynciau"
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Adeiladwch basbort amserol, cliriwch yr hysbysiad teithio, ac archwiliwch fyd hanesyddol drwy olygfa, map, llinell amser, pobl, rheolau, rhestr eitemau a thystiolaeth."
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Adeiladwch lif gwaith paratoi arholiad AI gyda chynllun astudio realistig, ymarfer adalw, cwisiau, cardiau cof ac adolygu meysydd gwan."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Adeiladwch gynllun arholiad"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Adeiladwch y cynllun"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Adeiladwch gyda ni"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Wedi'i adeiladu ar gyfer chwilfrydedd, ymarfer a mynediad."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Wedi'i adeiladu o ymddygiad dysgwyr go iawn, nid blwch sgwrsio cyffredinol."
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Wedi'i adeiladu i gael ei ddefnyddio"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "A all cymorth gwaith cartref AI fod yn foesegol?"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "A gaf i ddyfynnu deialog hanesyddol AI fel ffynhonnell?"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "A gaf i ddefnyddio inspir heb fewngofnodi?"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "A all inspir helpu gyda gwaith cartref heb annog twyllo?"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Gwiriwch fy model"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Gwiriwch un cam"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Gwiriwch y rhesymu fesul llinell"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Gwiriwch y cam hwn yn fy ngwaith. Os yw'n anghywir, eglurwch y camgymeriad a rhowch un symudiad nesaf i mi."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Esboniadau clir"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Ffiniau preifatrwydd clir"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Tiwtor Codio"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Codio"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "Cyfathrebu"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Cymharwch y dadleuon"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Gosodiadau cyfrinachol"
+    },
+    {
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Parhau"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "Mae croeso i gyfraniadau gan beirianwyr, addysgwyr, dylunwyr, myfyrwyr ac unrhyw un sydd am i ddysgu AI fod yn fwy diogel, yn gliriach, yn fwy hygyrch ac yn fwy defnyddiol."
+    },
+    {
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Trosi'r hyn a fethwyd"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Trowch yr esboniad yn gardiau galw i gof gweithredol, yna dychwelwch at y cardiau ar ôl camgymeriadau neu betruster."
+    },
+    {
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Creu cwis bach"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Mae chwilfrydedd yn dechrau yma"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Chwilfrydedd, ymarfer ac AI sy'n addysgu."
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Dysgwyr chwilfrydig sydd am i hanes a syniadau deimlo'n eu cyd-destun, yn agored i'w trafod ac yn fyw heb golli golwg ar dystiolaeth."
+    },
+    {
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Mannau dysgu AI wedi'u teilwra gyda chyfrinachedd data."
+    },
+    {
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Dadleuwch honiad"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Dadleuwch unrhyw bwnc"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Dadleuwch unrhyw bwnc, derbyniwch her, cymharwch honiadau, a dysgwch sut i greu dadleuon cryfach."
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Mae dadlau'n eich helpu i wahanu honiadau, tystiolaeth, gwerthoedd a thybiaethau, sy'n gwneud dehongli hanesyddol yn fwy manwl."
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "Dadleuwch yr honiad"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Dadleuwch yr honiad o fwy nag un ochr fel y gallwch sylwi ar dybiaethau, cyfaddawdau a thystiolaeth wan."
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Dadleuwch yr honiad hanesyddol neu athronyddol hwn o'r ddwy ochr. Gwahanwch dystiolaeth, tybiaethau a gwerthoedd."
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Wedi'i gynllunio ar gyfer hyder"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Peidiwch â derbyn paragraff diwygiedig nes y gallwch egluro pam mae'r diwygiad yn well."
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Peidiwch â gofyn am grynodeb cyflawn cyn i chi ddeall y syniadau rhagofynnol."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Peidiwch â dadlau dros yr ochr rydych eisoes yn cytuno â hi yn unig."
+    },
+    {
+      "key": "site.00aa0ce5925c3a4939",
+      "source": "Do not ignore hesitation; uncertainty is a useful signal for review.",
+      "value": "Peidiwch ag anwybyddu petruster; mae ansicrwydd yn arwydd defnyddiol ar gyfer adolygu."
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Peidiwch â gadael i chwarae rôl ddisodli dyddiadau, cyd-destun, dogfennau na labeli tystiolaeth."
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Peidiwch â gwneud cynllun sy'n tybio bod pob pwnc angen yr un faint o amser."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Peidiwch â gwneud cardiau cof o frawddegau na allwch eu hegluro yn eich geiriau eich hun eto."
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Peidiwch â gludo aseiniad a gofyn am yr ymateb gorffenedig."
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Peidiwch ag ailddarllen nodiadau cyn profi beth y gallwch eisoes ei alw i gof."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Peidiwch â hepgor dangos beth rydych eisoes wedi'i roi ar brawf; mae'r cymorth defnyddiol yn dibynnu ar y cyd-destun hwnnw."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "Peidiwch â stopio ar ôl yr esboniad cyntaf; gwnewch i chi'ch hun ateb cwestiynau amdano."
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Peidiwch â thrin deialog wedi'i gynhyrchu fel dyfyniad go iawn na ffynhonnell gynradd."
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Gwnewch rywbeth ag ef"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "Ydy inspir yn cefnogi ysgolion?"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Mae pob canllaw yn gorffen gyda chynlluniau ymarfer, llwybrau a dolenni i'r union fodd dysgu sy'n addas."
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Mae pob canllaw yn pwyntio at fodd, ysgogiad neu gylch adolygu fel y gall darllen droi'n ymarfer."
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Mae pob modd yn agor fel sgwrs westai gyhoeddus â'i bwrpas, ei enghreifftiau a'i lif dysgu ei hun, fel y gall dysgwyr ddechrau gyda'r math cywir o gefnogaeth ar unwaith."
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Camau nesaf syml"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Nodwch gyfnod"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Nodwch y cyd-destun"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Mae pob erthygl yn cysylltu â chategorïau, moddau byw, hybiau pwnc, llwybrau dysgu a chanllawiau cysylltiedig."
+    },
+    {
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Mae gan bob tudalen nad yw'n rhan o'r ap dasg bellach: meithrin ymddiriedaeth, egluro'r llwybr dysgu, ac anfon dysgwyr at gam nesaf defnyddiol heb guddio'r manylion pwysig."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Golygfeydd sy'n ymwybodol o dystiolaeth"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Paratoi arholiadau"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Cynlluniwr Paratoi ar gyfer Arholiadau"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Eglurwch ef yn ôl"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Eglurwch y cam nesaf"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Eglurwch y pwnc hwn mewn iaith glir. Enwch y tri syniad rhagofynnol sydd eu hangen arnaf, un gyfatebiaeth ac un camsyniad cyffredin."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Esboniadau, tiwtora Socrataidd, hyfforddi gwaith cartref, cwisiau, cardiau cof, ysgrifennu, codio, dadlau a chynllunio astudio."
+    },
+    {
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Archwilio Hanes a Syniadau Mawr gydag AI"
+    },
+    {
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Archwilio hanes a syniadau"
+    },
+    {
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Archwiliwch hanes, ffigurau cyhoeddus, achosion, dadleuon, athroniaeth a beirniadaeth ffynonellau gyda moddau dysgu AI sy'n gwahanu tystiolaeth oddi wrth efelychiad."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Archwilio ysgolion"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Archwilio'r llyfrgell ganllawiau"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Llwybrau dysgu cyflym"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Penodau'r ffilm"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Adeiladwr Cardiau Cof"
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Mae cardiau cof yn gweithio orau pan fyddant yn profi un syniad ar y tro, yn datgelu atebion dim ond ar ôl ymdrech, ac yn adolygu cardiau a fethwyd yn gynt."
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Ar gyfer mathemateg neu resymeg, gweithiwch un cam ar y tro a gofynnwch pam y caniateir pob symudiad cyn symud ymlaen."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Ar gyfer ysgolion a phartneriaid CSR"
+    },
+    {
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Sylfeini"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Dysgu AI am ddim i bawb"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Dysgu AI am ddim i bawb | inspir"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Dysgu AI am ddim i bawb."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Dysgu gwestai am ddim"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Llwyfan dysgu AI cyhoeddus am ddim"
+    },
+    {
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "O'r blog"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Cynhyrchwch gwis amlddewis â ffocws ar unrhyw bwnc ac adolygwch esboniadau ar ôl pob ateb."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Cewch amserlen astudio, cwisio'ch hun ar feysydd gwan, a throi'r hyn a fethwyd yn gardiau cof ar gyfer adolygu dro ar ôl tro."
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Cael y model syml yn gyntaf"
+    },
+    {
+      "key": "site.03a9ef834faab0396a",
+      "source": "Get unstuck",
+      "value": "Symud ymlaen pan fyddwch yn sownd"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Symud ymlaen gyda gwaith cartref"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Symudwch ymlaen gyda gwaith cartref drwy awgrymiadau moesegol, enghreifftiau, gwiriadau a hyfforddi cam wrth gam."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Rhowch adborth ar strwythur, eglurder a thystiolaeth. Cadwch fy llais a pheidiwch ag ailysgrifennu'r ateb cyfan."
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "Meysydd cyntaf da:"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Llyfrgell ganllawiau"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Mae canllawiau, llwybrau, pynciau ac ysgogiadau yn cysylltu â'r lle defnyddiol nesaf i ymarfer."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Map dysgu defnyddiol"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "Dyma'r cwestiwn a'r hyn a geisiais. Rhowch yr awgrym defnyddiol lleiaf i mi, nid yr ateb terfynol."
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Cuddio penodau'r ffilm"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Cuddio trawsgrifiad y ffilm"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Cymorth sy'n dechrau gydag awgrym"
+    },
+    {
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Sgyrsiau hanesyddol"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Hanes"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Gwaith cartref"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Hyfforddwr Gwaith Cartref"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Pa mor gynnar ddylwn i wneud cynllun paratoi arholiad?"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "Sut mae inspir yn wahanol i sgwrsfot AI cyffredinol?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Sut mae’n gweithio"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "Sut i astudio gydag AI heb dwyllo'ch hun"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "sut i ddeall pwnc anodd gydag AI"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "Sut i Ddeall Pwnc Anodd gydag AI"
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Trochi"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Gwella'r drafft"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Gwella ysgrifennu drwy gynllunio, diwygio, strwythur ac adborth sy'n cadw'ch llais yn gyfan."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Cynhwyswch y cwestiwn, beth rydych eisoes wedi rhoi cynnig arno, lle aethoch yn sownd, ac a ydych eisiau awgrym, gwiriad cam neu adborth."
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "llyfrgell ganllawiau dysgu AI inspir"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "Dechreuodd inspir fel cwisiau a chymunedau myfyrwyr, tyfodd drwy ysgolion a digwyddiadau, ac mae bellach yn defnyddio AI i wneud dysgu un i un yn fwy hygyrch."
+    },
+    {
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "Mae inspir yn bodoli ar gyfer y foment pan fydd dysgwr eisiau deall rhywbeth ac angen lle amyneddgar i ddechrau. Mae'r ffilm yn cyflwyno'r cynnyrch fel cydymaith dysgu cyhoeddus am ddim ar gyfer chwilfrydedd, ymarfer a mynediad."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir ar waith"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "Mae inspir yn cael ei adeiladu'n gyhoeddus."
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "Mae inspir wedi'i drefnu o amgylch moddau dysgu â siapiau addysgu penodol: awgrymiadau, cwestiynau Socrataidd, cwisiau, galw i gof gweithredol, chwarae rôl, dadlau, adborth ar ysgrifennu a chynllunio astudio."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "ffilm ddysgu inspir"
+    },
+    {
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "Mae inspir yn troi chwilfrydedd, gwaith cartref, adolygu a chwestiynau mawr yn sesiynau dysgu AI dan arweiniad sy'n esbonio, yn gofyn yn ôl ac yn eich helpu i ymarfer."
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Gallwch Ddysgu Unrhyw Beth"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "Ydy inspir yn rhad ac am ddim i'w ddefnyddio?"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Cadwch y llwybr yn fyw"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Gwybod beth i'w roi ar brawf nesaf, pam mae cam yn gweithio, lle digwyddodd y camgymeriad, a sut i ddiwygio'r ateb terfynol yn eich llais eich hun."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Dysgu Unrhyw Beth"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Ysgogiadau Dysgu Unrhyw Beth a chylch astudio"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Dysgu Unrhyw Beth gyda Thiwtor AI Am Ddim: canllaw ymarferol"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Dysgwch drwy siarad, profi, dadlau ac archwilio."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Dysgwch raglennu, dadfygio cysyniadau, cynllunio prosiectau, dehongli data ac ymchwilio cwestiynau technegol gyda moddau AI cyhoeddus sy'n cadw'r dysgwr yn rhan o'r gwaith."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Dysgwch drwy gwestiynau â ffocws, awgrymiadau a myfyrio yn lle darllen atebion yn oddefol."
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Dysgwch gyda thiwtor AI am ddim ar gyfer esboniadau, cwestiynau Socrataidd, hyfforddi gwaith cartref, cwisiau, cardiau cof, dadlau, adborth ysgrifennu, cymorth codio a chynllunio astudio."
+    },
+    {
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Cefnogaeth sy'n rhoi'r dysgwr yn gyntaf"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Mae angen dilyniant ar ddysgwyr, nid pentwr o ddolenni. Mae'r llwybrau hyn yn cysylltu moddau yn gylchoedd astudio ymarferol ar gyfer deall, gwaith cartref, paratoi arholiadau ac archwilio."
+    },
+    {
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Dysgwyr sy'n teimlo'n sownd ar ddechrau pwnc newydd neu sydd angen llwybr symlach i mewn i syniad anodd."
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Dysgwyr sydd ag amser cyfyngedig, maes llafur mawr, ac sydd angen ffordd realistig o adolygu heb esgus bod popeth yr un mor bwysig."
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Dysgu i bawb"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "canllawiau dysgu a chylchoedd ymarfer"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Gadewch gyda model mewn iaith glir, cwestiynau mwy craff, enghreifftiau y gallwch eu hesbonio'n ôl, a chardiau cof ar gyfer adolygu."
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Gadewch i mi gyfweld â'r person hanesyddol hwn. Cadwch yr atebion yn ymwybodol o dystiolaeth a nodwch ansicrwydd yn glir."
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Gwnewch gardiau cof o wallau a dychwelwch atynt ar ôl saib."
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Gwnewch gardiau cof o wallau, petruster, fformiwlâu, diffiniadau a chysyniadau na allech eu hesbonio'n glir."
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Gwneud iddo lynu"
+    },
+    {
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Gwneud i'r syniad lynu"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Gwnewch y cynllun astudio'n realistig"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Mathemateg"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Hyfforddwr Camau Mathemateg"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Mae angen cymorth gwahanol ar fathemateg, ysgrifennu, codio, hanes, gwaith cartref a pharatoi arholiadau. Dechreuwch o'r pwnc, yna symudwch i'r modd, yr ysgogiad, y canllaw neu'r cylch adolygu sy'n addas."
+    },
+    {
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Y genhadaeth yn gyntaf"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Canllawiau moddau, cylchoedd ysgogiadau, dulliau astudio ac erthyglau sylfaen ar gyfer eiliadau dysgu cyffredin."
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Symudwch o esboniad mewn iaith glir i gwestiynau, enghreifftiau ac ymarfer cof."
+    },
+    {
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Symudwch i gwestiynau Socrataidd, cwisiau, cardiau cof, dadlau, chwarae rôl a chyfarwyddyd dan arweiniad."
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Tewi'r ffilm"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Mae fy arholiad ar y dyddiad hwn. Dyma'r maes llafur, fy meysydd gwan a'r amser sydd ar gael i mi. Gwnewch gynllun realistig gyda galw i gof dyddiol."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "Opsiynau sy'n cyd-fynd â NCERT"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Cam nesaf"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Na. Triniwch ddeialog wedi'i chynhyrchu fel efelychiad dysgu. Dyfynnwch ffynonellau cynradd neu eilaidd go iawn ar gyfer honiadau ffeithiol."
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Nid blwch ateb arall. Lle i ddysgu."
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Agorwch fodd a dechreuwch ar unwaith, heb angen cyfrif ar gyfer profiad gwestai cyhoeddus."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Agored drwy ddyluniad"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Agor y ffilm ar sgrin lawn"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Agor sgwrs westai"
+    },
+    {
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Agor hyb pwnc"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Agorwch yr union fath o gymorth y daethoch amdano."
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Agor y map dysgu"
+    },
+    {
+      "key": "site.08cb05cece7fcdc481",
+      "source": "Open the path",
+      "value": "Agor y llwybr"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Mae tudalennau wedi'u cynllunio i symud pobl o esboniad i fodd byw, ysgogiad, cwis neu gylch adolygu."
+    },
+    {
+      "key": "site.2882d30f0153bb0830",
+      "source": "Paste the question and what you have tried, then ask for the smallest useful next step.",
+      "value": "Gludwch y cwestiwn a'r hyn rydych wedi rhoi cynnig arno, yna gofynnwch am y cam nesaf defnyddiol lleiaf."
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Oedi'r ffilm"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Rhowch fi yn yr amser a'r lleoliad hwn. Labelwch ffeithiau wedi'u dogfennu ar wahân i efelychiad tebygol a gofynnwch beth rwy'n sylwi arno."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Esboniadau mewn iaith glir"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Cynlluniwch adolygu arholiadau, cynhyrchwch gwisiau, adeiladwch gardiau cof, trefnwch adolygu bylchog, a chadwch gymhelliant yn realistig gyda moddau dysgu AI â ffocws."
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Cynlluniwch y gwaith, ymarferwch adalw, a chau bylchau gwan gyda chwisiau a galw i gof gweithredol."
+    },
+    {
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Cynllunio"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Chwarae'r ffilm"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "Chwarae rhagolwg dysgu inspir"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Llwybrau dysgu AI poblogaidd"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Llwybrau poblogaidd"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Ymarfer"
+    },
+    {
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Ymarfer, nid copïo atebion"
+    },
+    {
+      "key": "site.3112ef0b944597c68c",
+      "source": "Practise retrieval before rereading",
+      "value": "Ymarfer adalw cyn ailddarllen"
+    },
+    {
+      "key": "site.311a95872a0bdae422",
+      "source": "Prepare for an exam",
+      "value": "Paratoi ar gyfer arholiad"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "Syniadau ysgogiadau a chylch astudio ailadroddadwy i gael canlyniadau dysgu defnyddiol o Dysgu Unrhyw Beth ar inspir."
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Holwch ffigur"
+    },
+    {
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Holwch safbwynt hanesyddol"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Mae cwestiynau'n gwneud i chi ddatgelu eich model eich hun o'r pwnc, a dyna lle mae dryswch, hyder ffug a rhagofynion coll fel arfer yn ymddangos."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Atebion cyflym"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Cwisiwch fi ar y pynciau hyn un cwestiwn ar y tro. Ar ôl pob ateb, eglurwch y bwlch a chynyddwch yr anhawster yn araf."
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Cwisiwch fi ar wybodaeth gyffredinol"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Cwisio meysydd gwan"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Cwisiwch eich hun"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Cwisiwch eich hun yn gyntaf fel y gallwch weld beth rydych yn ei gofio mewn gwirionedd a lle mae hyder yn gamarweiniol."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Mae cwisiau fel arfer yn datgelu mwy oherwydd eu bod yn profi adalw. Gall ailddarllen helpu ar ôl i gwis ddangos beth sydd angen ei atgyweirio."
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Darllenwch y genhadaeth"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Amserlen realistig"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Atgyweirio un ateb a fethwyd"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Atgyweirio'r man gwan"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Ailchwarae"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Ailddechrau'r ffilm"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Ymarfer adalw"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Adolygu gyda chardiau cof"
+    },
+    {
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Diwygio fy nrafft"
+    },
+    {
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Diwygio heb golli eich llais"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Cadw'r camgymeriad"
+    },
+    {
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Trefnu'r ailadrodd nesaf"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Llifoedd gwaith penodol i ysgolion"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Gall ysgolion gynnig profiadau sgwrsio AI â label gwyn wedi'u teilwra i'w dysgwyr, gan gynnwys cynnwys a llifoedd gwaith sy'n cyd-fynd â NCERT, gyda'r defnydd wedi'i ariannu gan ysgolion partner neu nawdd CSR."
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Mae tudalennau chwilio, canllawiau blog, ysgogiadau a moddau byw wedi'u cysylltu o amgylch cylch syml: gofyn, rhoi cynnig, gwirio, atgyweirio ac adolygu."
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Gwahanu ffaith oddi wrth ddyfais"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Dangos penodau'r ffilm"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Dangos trawsgrifiad y ffilm"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Gwiriadau Socrataidd"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Cyfarwyddyd Socratig"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Tiwtor Socrataidd"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Mae tiwtora Socrataidd yn defnyddio cwestiynau, damcaniaethau, awgrymiadau a myfyrio i adeiladu dealltwriaeth ddyfnach na darllen atebion yn oddefol."
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Dechreuwch sesiwn ddysgu fyw."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Dechreuwch cyn gynted ag y byddwch yn gwybod dyddiad yr arholiad. Os yw amser yn brin, blaenoriaethwch feysydd gwan, cwestiynau yn null papurau blaenorol a galw i gof bob dydd."
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Dechreuwch drwy ofyn am esboniad syml, un gyfatebiaeth bob dydd, a'r tri syniad sydd eu hangen arnoch cyn i'r pwnc wneud synnwyr."
+    },
+    {
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Dechreuwch bob sesiwn gyda chwis cyflym cyn ailddarllen."
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "Dechreuwch o egwyddorion cyntaf"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Dechreuwch o'r pwnc, yna agorwch y modd dysgu cywir."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Dechreuwch o'r peth nad ydych yn ei ddeall a chael model mewn iaith glir, enghreifftiau a chamau nesaf."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Dechreuwch ddysgu"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "Dechreuwch gyda phwnc, aseiniad, drafft, arholiad neu syniad yn y modd sy'n addas i'r gwaith."
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Dechreuwch gyda Dysgu Unrhyw Beth"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Dechreuwch gyda lle, amser, hunaniaeth, cyfyngiadau a labeli tystiolaeth fel nad yw'r olygfa'n troi'n chwarae rôl cyffredinol."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Dechreuwch gyda'r gwaith sydd angen ei wneud."
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Nodwch y man lle rydych yn sownd"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Gwiriadau camau"
+    },
+    {
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Camwch i gyd-destun hanesyddol, cymharwch ddadleuon, ac ymarferwch weld syniad o fwy nag un ochr."
+    },
+    {
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Myfyrwyr sydd angen cam nesaf, gwiriad camgymeriad neu adborth heb golli perchnogaeth ar yr aseiniad."
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Cylchoedd astudio, canllawiau tiwtora AI ac ysgogiadau ymarferol."
+    },
+    {
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "hybiau pwnc wedi'u mapio i anghenion dysgwyr"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Crynhowch y cyd-destun"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Yn cefnogi dysgu allgyrsiol, ymarfer academaidd a chwilfrydedd."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Newidiwch i gwestiynau fel y gallwch ddatgelu tybiaethau a llenwi bylchau yn lle darllen yr ateb yn oddefol."
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Siaradwch â ffigur hanesyddol gan gadw deialog wedi'i chynhyrchu ar wahân i ddyfyniad dogfennol."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Siarad â pherson hanesyddol"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "siarad â ffigurau hanesyddol ag AI"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Profi cyn adolygu"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Profwch y ddadl"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Profwch eich rhesymu"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Mae'r blog yn cysylltu cyngor dysgu defnyddiol ag ymarfer byw, fel y gall canllaw droi'n sesiwn astudio mewn un cam."
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Mae'r blog wedi'i drefnu o amgylch eiliadau astudio go iawn: symud ymlaen pan fyddwch yn sownd, cofio mwy, ysgrifennu'n well, paratoi ar gyfer arholiadau ac archwilio syniadau gyda thiwtor amyneddgar."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Y llwyfan inspir ffynhonnell agored ehangach."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Mae'r diweddglo'n dychwelyd at y genhadaeth: mynediad cyhoeddus, ysgolion a ffordd fwy agored o ddysgu."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Yr ailadeiladu presennol o inspirlearning.com."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Mae'r ffilm yn symud o ysbrydoliaeth i'r addewid ymarferol: cydymaith dysgu AI amyneddgar."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Mae'r moddau gwaith cartref a Socrataidd wedi'u cynllunio o amgylch awgrymiadau, rhesymu, gwiriadau camau ac esboniadau gan y dysgwr yn hytrach na chyflwyno atebion gorffenedig yn syml."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Mae rhan ganol y ffilm yn gosod inspir o amgylch deall, awgrymiadau, cwisiau a chylchoedd dysgu gweithredol."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "Llwyfan astudio AI y genhedlaeth nesaf."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Mae'r fframiau agoriadol yn cyflwyno dysgu fel rhywbeth y dylai unrhyw un allu ei ddechrau ar unwaith."
+    },
+    {
+      "key": "site.33237ba4c491cb9422",
+      "source": "The public site is structured like a learning map: live modes for immediate help, subject hubs for learner questions, and guides that turn reading into action.",
+      "value": "Mae'r safle cyhoeddus wedi'i strwythuro fel map dysgu: moddau byw ar gyfer cymorth uniongyrchol, hybiau pwnc ar gyfer cwestiynau dysgwyr, a chanllawiau sy'n troi darllen yn weithredu."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Llwybr yw'r safle, nid taflen."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Meddwl yn ddyfnach"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Teithio amser"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Clystyrau pwnc"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Trawsgrifiad"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Teithiwch drwy gyfnod"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Rhowch gynnig ar Hyfforddwr Gwaith Cartref"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Trowch ef yn gardiau cof"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Trowch atebion a fethwyd yn gylchoedd adolygu"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Trowch nodiadau neu bynciau yn gardiau cof â ffocws gydag awgrymiadau, atebion, enghreifftiau a maglau cyffredin."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Trowch y camgymeriad wedi'i gywiro yn gerdyn cof neu restr wirio fer ar gyfer yn nes ymlaen."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Trowch yr esboniad yn gardiau galw i gof gweithredol gydag un cerdyn cysyniadol, un cerdyn enghraifft ac un cerdyn camsyniad."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "Trowch y cwestiwn anoddaf a fethwyd yn gerdyn cof a'i adolygu'n nes ymlaen."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Trowch y cwestiynau a fethwyd hyn yn gardiau cof wedi'u grwpio yn ôl cysyniad, fformiwla, diffiniad ac enghraifft."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Trowch eich maes llafur, dyddiad yr arholiad, amser a meysydd gwan yn gynllun astudio ymarferol."
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "Deall pwnc anodd"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Deall cyd-destun hanesyddol, holi safbwynt, cymharu honiadau a gwahanu efelychiad oddi wrth ffaith wedi'i dogfennu."
+    },
+    {
+      "key": "site.43417b2770a6aa9b4b",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "Deall cod, dadfygio gwallau, dysgu cysyniadau rhaglennu ac adeiladu prosiectau bach gam wrth gam."
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Dad-dewi'r ffilm"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "Defnyddiwch AI fel hyfforddwr ar gyfer deall, ymarfer ac adborth yn hytrach na llwybr byr sy'n dileu'r dysgu'n dawel."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Defnyddiwch hyfforddi gwaith cartref AI ar gyfer awgrymiadau, gwiriadau camau, rhesymu mathemateg ac adborth ar ysgrifennu, gan gadw'r gwaith terfynol yn eiddo i chi."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Defnyddiwch deithio amser AI, sgyrsiau hanesyddol ac ymarfer dadlau i archwilio cyd-destun, tystiolaeth, dadleuon a safbwyntiau."
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "Defnyddiwch ddadlau i gymharu'r honiad cryfaf a'r gwrth-honiad cryfaf."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Defnyddiwch awgrymiadau, gwiriadau camau ac adborth ar ysgrifennu heb droi'r dysgu'n gopïo atebion."
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Defnyddiwch inspir ar gyfer adborth ar draethodau, cymorth darllen, ymarfer siarad, beirniadaeth ffynonellau a chylchoedd adolygu sy'n gwella strwythur heb ddisodli llais y dysgwr."
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Defnyddiwch inspir ar gyfer awgrymiadau gwaith cartref, gwiriadau camau mathemateg, adborth ar ysgrifennu, beirniadaeth ffynonellau, cwestiynau Socrataidd a chardiau cof heb ddatgelu sgyrsiau preifat."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Defnyddiwch inspir ar gyfer cymorth mathemateg cam wrth gam, awgrymiadau gwaith cartref, rhesymu Socrataidd, cwisiau, cardiau cof a pharatoi arholiadau heb gopïo atebion."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Defnyddiwch foddau gwesteion cyhoeddus am ddim, yna archwiliwch y gwaith ffynhonnell agored a'r llwybrau defnyddio mewn ysgolion."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Defnyddio cwestiynau Socrataidd"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Defnyddiwch ddyddiad yr arholiad, y maes llafur, yr amser sydd ar gael a'r meysydd gwan i greu cynllun sy'n gallu goroesi bywyd go iawn."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Defnyddiwch y canllaw, yr ysgogiad, yr hyb pwnc neu'r llwybr dysgu cysylltiedig i adolygu'r man gwan yn nes ymlaen."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Defnyddiwch adborth ar ysgrifennu ar gyfer strwythur, eglurder a thystiolaeth gan gadw'r drafft terfynol yn amlwg yn un chi."
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "Defnyddiol o'r clic cyntaf"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Rheolyddion fideo"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Cynnydd fideo"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Adborth sy'n cadw'r llais"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "Gwylio 31 eiliad"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Cylchoedd meysydd gwan"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Yr hyn y dylai cydymaith dysgu AI ei wneud i bawb"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Beth mae dysgwyr fel arfer yn ei ofyn cyn dechrau."
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Beth ddylwn i ofyn gyntaf pan fydd pwnc yn teimlo'n rhy anodd?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Beth ddylwn i ei gynnwys mewn ysgogiad gwaith cartref?"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Beth allwch ei wneud"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "AI ysgol â label gwyn"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Pam y gall tiwtor AI Socrataidd wneud i syniadau lynu"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Pam cyfuno hanes â dadlau?"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Pam defnyddio cwestiynau Socrataidd ar ôl esboniad?"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Gweithiwch drwy algebra, calcwlws, problemau geiriol a chysyniadau mathemateg un cam ar y tro gyda hyfforddwr AI."
+    },
+    {
+      "key": "site.4e2149136bd53c413f",
+      "source": "Work through math steps",
+      "value": "Gweithio drwy gamau mathemateg"
+    },
+    {
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Ysgrifennwch esboniad tair brawddeg heb edrych, yna gofynnwch i'r modd Socrataidd ddod o hyd i'r cyswllt gwan."
+    },
+    {
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Ysgrifennwch yn union lle aethoch yn sownd cyn gofyn am gymorth."
+    },
+    {
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Ysgrifennu"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Hyfforddwr Ysgrifennu"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Ydy, pan fydd yn rhoi awgrymiadau, yn gwirio rhesymu, yn egluro camgymeriadau ac yn gofyn i chi gynhyrchu'r ateb terfynol yn hytrach na'i ysgrifennu drosoch."
+    },
+    {
+      "key": "site.4eb7825da66025f6ae",
+      "source": "Yes. Public topic chats such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly in guest mode.",
+      "value": "Ydy. Mae sgyrsiau pwnc cyhoeddus fel Dysgu Unrhyw Beth, Cyfarwyddyd Socrataidd, Hyfforddwr Gwaith Cartref, cwisiau a chardiau cof yn agor yn uniongyrchol yn y modd gwestai."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Ydy. Gall ysgolion ddefnyddio'r cynnyrch cyhoeddus yn gyntaf, yna drafod mannau dysgu AI wedi'u teilwra gyda llifoedd gwaith penodol i ysgolion, cyfrinachedd ac opsiynau mynediad wedi'u hariannu."
+    },
+    {
+      "key": "site.7e0d4a8f0b3a3c531c",
+      "source": "Yes. The public guest learning modes are designed for free access, so learners can start without needing a school deployment or paid account.",
+      "value": "Ydy. Mae'r moddau dysgu gwestai cyhoeddus wedi'u cynllunio ar gyfer mynediad am ddim, fel y gall dysgwyr ddechrau heb fod angen gosodiad ysgol na chyfrif taledig."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Gallwch roi cynnig ar foddau dysgu cyhoeddus yn rhydd. Mae sgyrsiau wedi'u cadw, cyfrifon, offer gweinyddol a data defnyddwyr yn aros yn breifat."
+    }
+  ]
+}

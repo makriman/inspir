@@ -96,12 +96,16 @@ const REQUIRED_WRANGLER_VARS = [
   "RATE_LIMIT_GUEST_IP_DAILY",
   "RATE_LIMIT_ACTIVITY_DAILY",
   "RATE_LIMIT_MEMORY_DAILY",
+  "RATE_LIMIT_GAME_RESULT_IP_DAILY",
+  "RATE_LIMIT_GAME_RESULT_FINGERPRINT_DAILY",
   "LLM_GLOBAL_DAILY_CALL_LIMIT",
   "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD",
   "MEMORY_PROFILE_COMPILE_LIMIT",
   "OBSERVABILITY_INCIDENT_MODE",
   "APP_WRITE_FREEZE",
   "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS",
+  "MAX_REVALIDATE_CONCURRENCY",
+  "NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION",
 ];
 
 const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
@@ -135,9 +139,12 @@ export function buildSteadyStateDeployPreflightReport(options: {
   checks.push(sourceSecretScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(buildArtifactScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(wranglerConfigCheck(cwd));
+  checks.push(openNextCacheArchitectureCheck(cwd));
 
   if (options.runWranglerDryRun !== false) {
+    checks.push(remoteDurableObjectInfrastructureCheck());
     checks.push(remoteD1ProfilePhotoSchemaCheck());
+    checks.push(remoteD1GameResultsSchemaCheck());
     checks.push(wranglerDeployDryRunCheck());
   }
 
@@ -147,6 +154,76 @@ export function buildSteadyStateDeployPreflightReport(options: {
     mode: "steady-state",
     ok: checks.every((check) => check.status === "pass"),
     checks,
+  };
+}
+
+function remoteDurableObjectInfrastructureCheck(): DeployPreflightCheck {
+  const wrangler = path.resolve(process.cwd(), "node_modules/.bin/wrangler");
+  const status = spawnSync(wrangler, ["deployments", "status", "--json", "--name", "inspirlearning"], {
+    cwd: process.cwd(),
+    env: commandEnv(),
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+  });
+  if (status.status !== 0) {
+    return {
+      name: "post-migration Durable Object infrastructure",
+      status: "fail",
+      detail: { status: status.status, outputTail: `${status.stdout ?? ""}${status.stderr ?? ""}`.slice(-2000) },
+    };
+  }
+  const deployment = parseJsonFromOutput<{
+    versions?: Array<{ version_id?: string; percentage?: number }>;
+  }>(`${status.stdout ?? ""}${status.stderr ?? ""}`, {});
+  const active = deployment.versions?.length === 1 && deployment.versions[0]?.percentage === 100
+    ? deployment.versions[0]
+    : null;
+  if (!active?.version_id) {
+    return {
+      name: "post-migration Durable Object infrastructure",
+      status: "fail",
+      detail: { reason: "A single 100% infrastructure-compatible version is required.", versions: deployment.versions },
+    };
+  }
+
+  const viewed = spawnSync(
+    wrangler,
+    ["versions", "view", active.version_id, "--name", "inspirlearning", "--json"],
+    {
+      cwd: process.cwd(),
+      env: commandEnv(),
+      encoding: "utf8",
+      maxBuffer: 64 * 1024 * 1024,
+    },
+  );
+  if (viewed.status !== 0) {
+    return {
+      name: "post-migration Durable Object infrastructure",
+      status: "fail",
+      detail: { status: viewed.status, outputTail: `${viewed.stdout ?? ""}${viewed.stderr ?? ""}`.slice(-2000) },
+    };
+  }
+  const version = parseJsonFromOutput<Record<string, unknown>>(
+    `${viewed.stdout ?? ""}${viewed.stderr ?? ""}`,
+    {},
+  );
+  const resources = objectValue(version.resources);
+  const bindings = Array.isArray(resources.bindings)
+    ? resources.bindings.filter(
+        (binding): binding is Record<string, unknown> =>
+          binding !== null && typeof binding === "object" && !Array.isArray(binding),
+      )
+    : [];
+  const queueBinding = bindings.find((binding) => binding.name === "NEXT_CACHE_DO_QUEUE");
+  const ok =
+    queueBinding?.type === "durable_object_namespace" &&
+    queueBinding.class_name === "DOQueueHandler";
+  return {
+    name: "post-migration Durable Object infrastructure",
+    status: ok ? "pass" : "fail",
+    detail: ok
+      ? { activeVersion: active.version_id, binding: "NEXT_CACHE_DO_QUEUE", className: "DOQueueHandler" }
+      : { activeVersion: active.version_id, queueBinding: queueBinding ?? null },
   };
 }
 
@@ -288,6 +365,13 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     (binding) => binding.queue === MEMORY_POST_TURN_QUEUE_NAME,
   );
   const services = arrayValue(config.services).find((binding) => binding.binding === "WORKER_SELF_REFERENCE");
+  const versionMetadata = objectValue(config.version_metadata);
+  const cacheQueueDo = arrayValue(objectValue(config.durable_objects).bindings).find(
+    (binding) => binding.name === "NEXT_CACHE_DO_QUEUE",
+  );
+  const cacheQueueMigration = arrayValue(config.migrations).find((migration) =>
+    Array.isArray(migration.new_sqlite_classes) && migration.new_sqlite_classes.includes("DOQueueHandler"),
+  );
   const routes = arrayValue(config.routes).map((route) => route.pattern);
   const cron = objectValue(config.triggers).crons;
   const observability = objectValue(config.observability);
@@ -316,6 +400,9 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
       queueConsumer.dead_letter_queue === MEMORY_POST_TURN_DLQ_NAME &&
       Number(queueConsumer.max_retries) >= 1,
     serviceOk: services?.service === "inspirlearning",
+    versionMetadataOk: versionMetadata.binding === "CF_VERSION_METADATA",
+    cacheRevalidationDoOk: cacheQueueDo?.class_name === "DOQueueHandler",
+    cacheRevalidationMigrationOk: cacheQueueMigration !== undefined,
     cronOk: Array.isArray(cron) && cron.includes("0 3 * * *"),
     routesOk: routes.includes("inspirlearning.com") && routes.includes("www.inspirlearning.com"),
     appUrlOk:
@@ -324,6 +411,9 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
       vars.BETTER_AUTH_URL === "https://inspirlearning.com",
     workersDevOk: config.workers_dev === false,
     previewUrlsOk: config.preview_urls === false,
+    workerGlobalCacheOk: config.cache === undefined || objectValue(config.cache).enabled === false,
+    cacheRevalidationConcurrencyOk:
+      vars.MAX_REVALIDATE_CONCURRENCY === "1" && vars.NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION === "1",
     observabilityOk:
       observability.enabled === true &&
       observabilityLogs.enabled === true &&
@@ -347,16 +437,40 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     problems.queueProducerOk &&
     problems.queueConsumerOk &&
     problems.serviceOk &&
+    problems.versionMetadataOk &&
+    problems.cacheRevalidationDoOk &&
+    problems.cacheRevalidationMigrationOk &&
     problems.cronOk &&
     problems.routesOk &&
     problems.appUrlOk &&
     problems.workersDevOk &&
     problems.previewUrlsOk &&
+    problems.workerGlobalCacheOk &&
+    problems.cacheRevalidationConcurrencyOk &&
     problems.observabilityOk;
   return {
     name: "Wrangler production config",
     status: ok ? "pass" : "fail",
     detail: ok ? { worker: "inspirlearning" } : problems,
+  };
+}
+
+function openNextCacheArchitectureCheck(cwd: string): DeployPreflightCheck {
+  const filePath = path.join(cwd, "open-next.config.ts");
+  const source = fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf8") : "";
+  const architecture = {
+    regionalR2Cache: /withRegionalCache\s*\(\s*r2IncrementalCache\s*,[\s\S]*?mode:\s*["']long-lived["']/.test(source),
+    durableObjectQueue: /queueCache\s*\(\s*doQueue\s*,/.test(source),
+    queueDedupeTtl: /regionalCacheTtlSec:\s*5\b/.test(source),
+    waitsForQueueAck: /waitForQueueAck:\s*true\b/.test(source),
+    cacheInterception: /enableCacheInterception:\s*true\b/.test(source),
+    routePreloadingDisabled: /routePreloadingBehavior:\s*["']none["']/.test(source),
+  };
+  const ok = Object.values(architecture).every(Boolean);
+  return {
+    name: "OpenNext cache revalidation architecture",
+    status: ok ? "pass" : "fail",
+    detail: ok ? { queue: "NEXT_CACHE_DO_QUEUE", incrementalCache: "regional R2" } : architecture,
   };
 }
 
@@ -413,6 +527,76 @@ function remoteD1ProfilePhotoSchemaCheck(): DeployPreflightCheck {
     name: "remote D1 profile photo schema",
     status: missingColumns.length ? "fail" : "pass",
     detail: missingColumns.length ? { missingColumns } : { columns: requiredColumns },
+  };
+}
+
+function remoteD1GameResultsSchemaCheck(): DeployPreflightCheck {
+  const requiredColumns = [
+    "id",
+    "schema_version",
+    "game_slug",
+    "engine_id",
+    "engine_version",
+    "terminal_code",
+    "winner",
+    "outcome",
+    "ply_count",
+    "payload",
+    "started_at",
+    "completed_at",
+    "duration_ms",
+    "created_at",
+  ];
+  const result = spawnSync(
+    path.resolve(process.cwd(), "node_modules/.bin/wrangler"),
+    [
+      "d1",
+      "execute",
+      D1_DATABASE_NAME,
+      "--remote",
+      "--json",
+      "--command",
+      "select type, name, sql from sqlite_master where name in ('game_results', 'game_results_reject_update'); select name from pragma_table_info('game_results') order by cid;",
+    ],
+    {
+      cwd: process.cwd(),
+      env: commandEnv(),
+      encoding: "utf8",
+      maxBuffer: 64 * 1024 * 1024,
+    },
+  );
+  if (result.status !== 0) {
+    return {
+      name: "remote D1 immutable game-results schema",
+      status: "fail",
+      detail: {
+        status: result.status,
+        outputTail: `${result.stdout ?? ""}${result.stderr ?? ""}`.slice(-2000),
+      },
+    };
+  }
+
+  const rows = parseJsonFromOutput<Array<{ results?: Array<{ name?: string; type?: string; sql?: string }> }>>(
+    `${result.stdout ?? ""}${result.stderr ?? ""}`,
+    [],
+  ).flatMap((entry) => entry.results ?? []);
+  const columns = new Set(rows.filter((row) => row.type === undefined).map((row) => row.name).filter(Boolean));
+  const tableSql = rows.find((row) => row.type === "table" && row.name === "game_results")?.sql ?? "";
+  const triggerSql = rows.find((row) => row.type === "trigger" && row.name === "game_results_reject_update")?.sql ?? "";
+  const missingColumns = requiredColumns.filter((column) => !columns.has(column));
+  const invariants = {
+    tablePresent: tableSql.length > 0,
+    updateGuardPresent: /before\s+update\s+on\s+[`"]?game_results/i.test(triggerSql) && /raise\s*\(\s*abort/i.test(triggerSql),
+    schemaVersionFixed: /[`"]?schema_version[`"]?\s*=\s*1/i.test(tableSql),
+    payloadJsonChecked: /json_valid\s*\(\s*[`"]?payload/i.test(tableSql),
+    plyBounded: /[`"]?ply_count[`"]?\s*<=\s*128/i.test(tableSql),
+    completionImmutable: /[`"]?completed_at[`"]?\s*=\s*[`"]?created_at/i.test(tableSql),
+  };
+  const ok = missingColumns.length === 0 && Object.values(invariants).every(Boolean);
+  return {
+    name: "remote D1 immutable game-results schema",
+    status: ok ? "pass" : "fail",
+    detail: ok ? { columns: requiredColumns, invariants } : { missingColumns, invariants },
   };
 }
 

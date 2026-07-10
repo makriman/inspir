@@ -244,46 +244,108 @@ function translateTopic(topic: Topic, textMap: Map<string, string>): Topic {
 }
 
 function shouldSkipTranslation(node: Node) {
-  const element = node.nodeType === Node.ELEMENT_NODE ? (node as Element) : node.parentElement;
+  const element = node instanceof Element ? node : node.parentElement;
   return Boolean(element?.closest("[data-no-auto-translate], code, pre, script, style"));
+}
+
+type AppliedTranslation = {
+  source: string;
+  applied: string;
+};
+
+type AutoTranslationState = {
+  textNodes: WeakMap<Text, AppliedTranslation>;
+  attributes: WeakMap<Element, Map<string, AppliedTranslation>>;
+};
+
+function createAutoTranslationState(): AutoTranslationState {
+  return {
+    textNodes: new WeakMap(),
+    attributes: new WeakMap(),
+  };
+}
+
+function sourceBeforeAutoTranslation(currentValue: string, previous: AppliedTranslation | undefined) {
+  return previous?.applied === currentValue ? previous.source : currentValue;
+}
+
+function translateTextNode(node: Text, textMap: Map<string, string>, state: AutoTranslationState) {
+  if (shouldSkipTranslation(node)) return;
+  const source = sourceBeforeAutoTranslation(node.data, state.textNodes.get(node));
+  const translated = translateRawText(source, textMap);
+  state.textNodes.set(node, { source, applied: translated });
+  if (translated !== node.data) node.data = translated;
+}
+
+function translateElementAttribute(
+  element: Element,
+  attribute: string,
+  textMap: Map<string, string>,
+  state: AutoTranslationState,
+) {
+  if (shouldSkipTranslation(element)) return;
+  const currentValue = element.getAttribute(attribute);
+  if (!currentValue) return;
+
+  let attributeState = state.attributes.get(element);
+  if (!attributeState) {
+    attributeState = new Map();
+    state.attributes.set(element, attributeState);
+  }
+  const source = sourceBeforeAutoTranslation(currentValue, attributeState.get(attribute));
+  const translated = translateRawText(source, textMap);
+  attributeState.set(attribute, { source, applied: translated });
+  if (translated !== currentValue) element.setAttribute(attribute, translated);
+}
+
+function translateNodeTree(node: Node, textMap: Map<string, string>, state: AutoTranslationState) {
+  if (shouldSkipTranslation(node)) return;
+  if (node instanceof Text) {
+    translateTextNode(node, textMap, state);
+    return;
+  }
+  if (node instanceof Element) {
+    for (const attribute of translatableAttributes) {
+      translateElementAttribute(node, attribute, textMap, state);
+    }
+  }
+  for (const child of Array.from(node.childNodes)) {
+    translateNodeTree(child, textMap, state);
+  }
 }
 
 function useAutoTranslate(
   ref: MutableRefObject<HTMLElement | null>,
-  bundle: MainAppTranslationBundle | null | undefined,
+  textMap: Map<string, string>,
 ) {
-  const textMap = useMemo(() => buildTranslationTextMap(bundle), [bundle]);
+  const [translationState] = useState(createAutoTranslationState);
 
   useEffect(() => {
     const root = ref.current;
-    if (!root || textMap.size === 0) return;
-    const translateRoot = root;
+    if (!root) return;
 
-    function translateNodeTree() {
-      for (const element of Array.from(translateRoot.querySelectorAll<HTMLElement>("*"))) {
-        if (shouldSkipTranslation(element)) continue;
-        for (const attribute of translatableAttributes) {
-          const value = element.getAttribute(attribute);
-          if (!value) continue;
-          const translated = translateRawText(value, textMap);
-          if (translated !== value) element.setAttribute(attribute, translated);
+    translateNodeTree(root, textMap, translationState);
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (shouldSkipTranslation(mutation.target)) continue;
+        if (mutation.type === "childList") {
+          for (const addedNode of Array.from(mutation.addedNodes)) {
+            translateNodeTree(addedNode, textMap, translationState);
+          }
+          continue;
+        }
+        if (mutation.type === "characterData" && mutation.target instanceof Text) {
+          translateTextNode(mutation.target, textMap, translationState);
+          continue;
+        }
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName &&
+          mutation.target instanceof Element
+        ) {
+          translateElementAttribute(mutation.target, mutation.attributeName, textMap, translationState);
         }
       }
-
-      const walker = document.createTreeWalker(translateRoot, NodeFilter.SHOW_TEXT);
-      const textNodes: Text[] = [];
-      while (walker.nextNode()) textNodes.push(walker.currentNode as Text);
-      for (const node of textNodes) {
-        if (shouldSkipTranslation(node)) continue;
-        const translated = translateRawText(node.data, textMap);
-        if (translated !== node.data) node.data = translated;
-      }
-    }
-
-    translateNodeTree();
-    const observer = new MutationObserver((mutations) => {
-      if (mutations.every((mutation) => shouldSkipTranslation(mutation.target))) return;
-      translateNodeTree();
     });
     observer.observe(root, {
       childList: true,
@@ -293,7 +355,7 @@ function useAutoTranslate(
       attributeFilter: translatableAttributes,
     });
     return () => observer.disconnect();
-  }, [bundle?.language, bundle?.sourceHash, ref, textMap]);
+  }, [ref, textMap, translationState]);
 }
 
 function resolveSetState<Value>(nextValue: SetStateAction<Value>, currentValue: Value) {
@@ -320,7 +382,6 @@ type ChatClientState = {
   mobileSidebarOpen: boolean;
   profileUser: UserProfile;
   agePromptOpen: boolean;
-  translationBundle: MainAppTranslationBundle;
   languageSaving: boolean;
   guestMessagesUsed: number;
   guestPromptOpen: boolean;
@@ -386,7 +447,6 @@ function useChatClientController({
       mobileSidebarOpen,
       profileUser,
       agePromptOpen,
-      translationBundle,
       languageSaving,
       guestMessagesUsed,
       guestPromptOpen,
@@ -417,7 +477,6 @@ function useChatClientController({
     mobileSidebarOpen: false,
     profileUser: user,
     agePromptOpen: !isGuest && !user.dateOfBirth,
-    translationBundle: initialTranslationBundle,
     languageSaving: false,
     guestMessagesUsed: 0,
     guestPromptOpen: false,
@@ -495,14 +554,17 @@ function useChatClientController({
   const forceAutoFollowMessagesRef = useRef(false);
   const sidebarHydratedRef = useRef(false);
   const [sidebarPersonalizationReady, setSidebarPersonalizationReady] = useState(false);
-  const translationTextMap = useMemo(() => buildTranslationTextMap(translationBundle), [translationBundle]);
+  const translationTextMap = useMemo(
+    () => buildTranslationTextMap(initialTranslationBundle),
+    [initialTranslationBundle],
+  );
   const translateUi = useCallback((source: string) => translateRawText(source, translationTextMap), [translationTextMap]);
   const displayTopics = useMemo(
     () => topics.map((topic) => translateTopic(topic, translationTextMap)),
     [topics, translationTextMap],
   );
   const learningTools = usePersistentLearningTools();
-  useAutoTranslate(translationRootRef, translationBundle);
+  useAutoTranslate(translationRootRef, translationTextMap);
 
   const defaultSidebarIds = useMemo(
     () => getDefaultSidebarTopicIds(displayTopics as LearningStoreTopic[]),
@@ -1390,7 +1452,6 @@ function useChatClientController({
     submitMemorySourceFeedback,
     submitMessage,
     translateUi,
-    translationBundle,
     translationRootRef,
     patchMemorySettings,
     createMemoryItem,
@@ -1453,15 +1514,10 @@ function ChatClientLayout(controller: ChatClientController) {
     storeOpen,
     submitMemorySourceFeedback,
     translateUi,
-    translationBundle,
     translationRootRef,
   } = controller;
   return (
-    <div
-      key={`${translationBundle.language}-${translationBundle.sourceHash}`}
-      ref={translationRootRef}
-      className={`inspir-chat-root ${profileOpen ? "profile-open" : ""}`}
-    >
+    <div ref={translationRootRef} className={`inspir-chat-root ${profileOpen ? "profile-open" : ""}`}>
       <aside className={`inspir-sidebar ${mobileSidebarOpen ? "is-open" : ""}`}>
         <TopicSidebar
           isGuest={isGuest}

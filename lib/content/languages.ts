@@ -277,11 +277,3 @@ export function normalizeLanguage(language: unknown): SupportedLanguage {
     ? (language as SupportedLanguage)
     : defaultLanguage;
 }
-
-export function normalizeLocaleOrLanguage(value: unknown): SupportedLanguage {
-  if (typeof value !== "string") return defaultLanguage;
-  const normalized = value.trim().toLowerCase();
-  const direct = supportedLanguages.find((language) => language.toLowerCase() === normalized);
-  if (direct) return direct;
-  return languageCodeToLanguage[normalized] ?? languageCodeToLanguage[normalized.split("-")[0]] ?? defaultLanguage;
-}

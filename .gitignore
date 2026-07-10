@@ -48,7 +48,15 @@ tmp/
 
 # local data workbench
 data/raw/*.csv
-translations/curated/
+translations/curated/*
+!translations/curated/*/
+translations/curated/*/*
+!translations/curated/*/marketing-shell.json
+!translations/curated/*/marketing-shell.part-*.json
+!translations/curated/*/route__home.json
+!translations/curated/*/route__home.part-*.json
+!translations/curated/*/route__mission.json
+!translations/curated/*/route__mission.part-*.json
 translations/curated-bundles/
 translations/workbench/
 translations/workbench-site-batch/

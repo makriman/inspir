@@ -1,30 +1,22 @@
 import { defaultLanguage } from "@/lib/content/languages";
 import { getAppTranslationSource } from "@/lib/db/queries";
+import { knownSiteTranslationNamespaces } from "@/lib/i18n/site-namespace-manifest";
 import {
   siteTranslationNamespace,
 } from "@/lib/i18n/site-source-constants";
-import {
-  getPotentialSiteTranslationNamespacesForPath,
-  isPotentialSiteTranslationNamespace,
-} from "@/lib/i18n/site-path-namespaces";
+import { getPotentialSiteTranslationNamespacesForPath } from "@/lib/i18n/site-path-namespaces";
 import type { TranslationBundle, TranslationSource } from "@/lib/i18n/translation-types";
-
-type CachedRuntimeSource = {
-  expiresAt: number;
-  promise: Promise<TranslationSource | null>;
-};
 
 type StaticSiteTranslationSource = {
   sourceHash: string;
   sourceStrings: Record<string, string>;
 };
 
-const runtimeSourceCacheTtlMs = 5 * 60 * 1000;
-const runtimeSourceCache = new Map<string, CachedRuntimeSource>();
+const knownRuntimeNamespaceSet = new Set<string>(knownSiteTranslationNamespaces);
 let buildTimeSourceManifestPromise: Promise<Record<string, StaticSiteTranslationSource> | null> | undefined;
 
 export function isKnownRuntimeSiteTranslationNamespace(namespace: string) {
-  return isPotentialSiteTranslationNamespace(namespace);
+  return knownRuntimeNamespaceSet.has(namespace);
 }
 
 export function getRuntimeSiteTranslationNamespacesForPath(pathname: string) {
@@ -44,20 +36,15 @@ export async function getRuntimeSiteTranslationSource(namespace = siteTranslatio
     } satisfies TranslationSource;
   }
 
-  const cached = runtimeSourceCache.get(namespace);
-  if (cached && cached.expiresAt > Date.now()) return cached.promise;
-  if (cached) runtimeSourceCache.delete(namespace);
-
-  const promise = readRuntimeSiteTranslationSource(namespace).catch((error) => {
-    runtimeSourceCache.delete(namespace);
+  try {
+    return await readRuntimeSiteTranslationSource(namespace);
+  } catch (error) {
     console.warn("site_translation_source_unavailable", {
       namespace,
       error: error instanceof Error ? error.message : String(error),
     });
     return null;
-  });
-  runtimeSourceCache.set(namespace, { expiresAt: Date.now() + runtimeSourceCacheTtlMs, promise });
-  return promise;
+  }
 }
 
 export async function getRuntimeEnglishSiteTranslationBundle(namespace = siteTranslationNamespace) {

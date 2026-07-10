@@ -3,10 +3,14 @@ import {
   generatePromptsMetadata,
   PromptsPageContent,
 } from "@/components/marketing/pages/PromptsMarketingPage";
-import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
+import { generateLocalizedStaticParams, resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return generateLocalizedStaticParams("/prompts");
+}
 
 type LocalizedPromptsPageProps = {
   params: LocaleRouteParams;

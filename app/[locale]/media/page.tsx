@@ -3,10 +3,14 @@ import {
   generateMediaMetadata,
   MediaPageContent,
 } from "@/components/marketing/pages/MediaMarketingPage";
-import { resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
+import { generateLocalizedStaticParams, resolveLocaleParam, type LocaleRouteParams } from "../locale-utils";
 
 export const dynamic = "force-static";
-export const revalidate = 3600;
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return generateLocalizedStaticParams("/media");
+}
 
 type LocalizedMediaPageProps = {
   params: LocaleRouteParams;

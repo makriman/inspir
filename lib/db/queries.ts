@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { and, asc, count, desc, eq, inArray, or, sql as drizzleSql } from "drizzle-orm";
 import { d1All, db } from "./client";
 import { d1ContainsLikePattern } from "./like";
@@ -6,7 +5,6 @@ import {
   activityRuns,
   adminUsers,
   aiRuns,
-  appMetadata,
   appTranslationSourceStrings,
   appTranslationSources,
   appTranslations,
@@ -17,11 +15,8 @@ import {
   users,
 } from "./schema";
 import type { Topic } from "./schema";
-import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
+import { defaultTopicSlug } from "@/lib/content/topics";
 import { getVisibleMessageContent } from "@/lib/ai/visible-content";
-
-const topicSeedMetadataKey = "topic_seed_hash";
-let seedTopicsPromise: Promise<void> | null = null;
 
 export type PublicTopic = Pick<
   Topic,
@@ -37,70 +32,6 @@ const publicMetadataKeys = new Set([
   "source",
   "toolId",
 ]);
-
-async function ensureSeedTopics() {
-  seedTopicsPromise ??= syncSeedTopicsOnce().catch((error) => {
-    seedTopicsPromise = null;
-    throw error;
-  });
-  return seedTopicsPromise;
-}
-
-async function syncSeedTopicsOnce() {
-  const seedHash = topicSeedHash();
-  const [state] = await db
-    .select({ value: appMetadata.value })
-    .from(appMetadata)
-    .where(eq(appMetadata.key, topicSeedMetadataKey))
-    .limit(1);
-
-  if (state?.value === seedHash) return;
-
-  await Promise.all(
-    topicSeeds.map((topic) =>
-      db
-        .insert(topics)
-        .values({
-          slug: topic.slug,
-          name: topic.name,
-          subText: topic.subText,
-          description: topic.description,
-          inputboxText: topic.inputboxText,
-          systemPrompt: topic.systemPrompt,
-          sortOrder: topic.sortOrder,
-          metadata: topic.metadata,
-          status: "active",
-        })
-        .onConflictDoNothing({ target: topics.slug }),
-    ),
-  );
-  await db
-    .insert(appMetadata)
-    .values({ key: topicSeedMetadataKey, value: seedHash })
-    .onConflictDoUpdate({
-      target: appMetadata.key,
-      set: { value: seedHash, updatedAt: new Date() },
-    });
-}
-
-function topicSeedHash() {
-  return createHash("sha256")
-    .update(
-      JSON.stringify(
-        topicSeeds.map((topic) => ({
-          slug: topic.slug,
-          name: topic.name,
-          subText: topic.subText,
-          description: topic.description,
-          inputboxText: topic.inputboxText,
-          systemPrompt: topic.systemPrompt,
-          sortOrder: topic.sortOrder,
-          metadata: topic.metadata,
-        })),
-      ),
-    )
-    .digest("hex");
-}
 
 export function toPublicTopic(topic: Topic): PublicTopic {
   return {
@@ -140,7 +71,6 @@ function publicTopicSelect() {
 }
 
 export async function getActiveTopics() {
-  await ensureSeedTopics();
   return db
     .select()
     .from(topics)
@@ -149,7 +79,6 @@ export async function getActiveTopics() {
 }
 
 export async function getPublicActiveTopics() {
-  await ensureSeedTopics();
   const rows = await db
     .select(publicTopicSelect())
     .from(topics)
@@ -159,13 +88,11 @@ export async function getPublicActiveTopics() {
 }
 
 export async function getDefaultTopic() {
-  await ensureSeedTopics();
   const [topic] = await db.select().from(topics).where(eq(topics.slug, defaultTopicSlug)).limit(1);
   return topic;
 }
 
 export async function getTopicByIdOrSlug(topicIdentifier: string) {
-  await ensureSeedTopics();
   const normalized = topicIdentifier.trim();
   if (!normalized) return null;
   const [topic] = await db

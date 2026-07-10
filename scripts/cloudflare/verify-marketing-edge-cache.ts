@@ -14,11 +14,13 @@ type ProbeResult = {
   vary: string | null;
   setCookie: string | null;
   contentType: string | null;
+  location: string | null;
 };
 
 type TargetReport = {
   label: string;
   path: string;
+  minimumSharedTtlSeconds: number;
   probes: ProbeResult[];
   passed: boolean;
   reason?: string;
@@ -32,9 +34,9 @@ const cacheEligibleStatuses = new Set(["HIT", "MISS", "EXPIRED", "REVALIDATED", 
 const strict = hasFlag("--strict");
 
 const targets = [
-  { label: "homepage", path: "/" },
-  { label: "localized homepage", path: "/hi" },
-  { label: "blog post", path: "/blog/ai-learn-anything-guide" },
+  { label: "homepage", path: "/", minimumSharedTtlSeconds: 3_600 },
+  { label: "localized homepage", path: "/hi", minimumSharedTtlSeconds: 31_536_000 },
+  { label: "blog post", path: "/blog/ai-learn-anything-guide", minimumSharedTtlSeconds: 3_600 },
 ] as const;
 
 void main().catch((error) => {
@@ -47,12 +49,28 @@ void main().catch((error) => {
 });
 
 async function main() {
-  const targetReports = await Promise.all(targets.map((target) => verifyTarget(target.label, target.path)));
+  const targetReports = await Promise.all(
+    targets.map((target) => verifyTarget(target.label, target.path, target.minimumSharedTtlSeconds)),
+  );
   const resetPasswordProbe = await probe("reset password no-store boundary", "/reset_pw");
   const cookieProbe = await probe("cookie bypass homepage", "/", { cookie: "better-auth.session_token=edge-cache-probe" });
+  const unavailableLocalizedProbes = [
+    await probe("unavailable localized route warm", "/hi/mission"),
+    await probe("unavailable localized route repeat", "/hi/mission"),
+  ];
   const resetPasswordPassed = resetPasswordProbe.cacheControl?.includes("no-store") === true;
   const cookieBypassPassed = !isCacheEligible(cookieProbe.cfCacheStatus);
-  const ok = targetReports.every((report) => report.passed) && resetPasswordPassed && cookieBypassPassed;
+  const unavailableLocalizedPassed = unavailableLocalizedProbes.every(
+    (result) =>
+      result.status === 308 &&
+      (result.cfCacheStatus ?? "").toUpperCase() !== "HIT" &&
+      new URL(result.location ?? "/", productionOrigin).pathname === "/mission",
+  );
+  const ok =
+    targetReports.every((report) => report.passed) &&
+    resetPasswordPassed &&
+    cookieBypassPassed &&
+    unavailableLocalizedPassed;
 
   writeReport({
     ok,
@@ -63,6 +81,8 @@ async function main() {
     resetPasswordPassed,
     cookieProbe,
     cookieBypassPassed,
+    unavailableLocalizedProbes,
+    unavailableLocalizedPassed,
   });
 
   console.log(
@@ -76,10 +96,12 @@ async function main() {
           passed: report.passed,
           statuses: report.probes.map((probeResult) => probeResult.cfCacheStatus),
           ages: report.probes.map((probeResult) => probeResult.age),
+          minimumSharedTtlSeconds: report.minimumSharedTtlSeconds,
           reason: report.reason ?? null,
         })),
         resetPasswordPassed,
         cookieBypassPassed,
+        unavailableLocalizedPassed,
       },
       null,
       2,
@@ -89,7 +111,11 @@ async function main() {
   if (!ok) process.exitCode = 1;
 }
 
-async function verifyTarget(label: string, pathname: string): Promise<TargetReport> {
+async function verifyTarget(
+  label: string,
+  pathname: string,
+  minimumSharedTtlSeconds: number,
+): Promise<TargetReport> {
   const query = `utm_source=codex-edge-cache-probe-${Date.now()}`;
   const probes = [
     await probe(`${label} warm`, pathname),
@@ -101,19 +127,35 @@ async function verifyTarget(label: string, pathname: string): Promise<TargetRepo
   const repeatedStatusesEligible = repeatProbes.every((probeResult) => isCacheEligible(probeResult.cfCacheStatus));
   const repeatedHits = repeatProbes.filter((probeResult) => probeResult.cfCacheStatus === "HIT");
   const hitsHaveAge = repeatedHits.every((probeResult) => typeof probeResult.age === "string" && probeResult.age.length > 0);
-  const passed = repeatedStatusesEligible && (!strict || (repeatedHits.length > 0 && hitsHaveAge));
+  const sharedTtlValid = repeatProbes.every(
+    (probeResult) =>
+      (readCacheControlSeconds(probeResult.cacheControl, "s-maxage") ?? -1) >= minimumSharedTtlSeconds,
+  );
+  const passed =
+    repeatedStatusesEligible &&
+    sharedTtlValid &&
+    (!strict || (repeatedHits.length > 0 && hitsHaveAge));
 
   return {
     label,
     path: pathname,
+    minimumSharedTtlSeconds,
     probes,
     passed,
     reason: passed
       ? undefined
-      : strict
+      : !sharedTtlValid
+        ? `Repeat probes must advertise s-maxage >= ${minimumSharedTtlSeconds}.`
+        : strict
         ? "Repeat probes must expose cache statuses and at least one repeat HIT with Age."
         : "Repeat probes must expose Cloudflare cache statuses; missing status means the Cache Rule is not active.",
   };
+}
+
+function readCacheControlSeconds(cacheControl: string | null, directive: string) {
+  if (!cacheControl) return null;
+  const match = cacheControl.match(new RegExp(`(?:^|,)\\s*${directive}=([0-9]+)`, "i"));
+  return match ? Number(match[1]) : null;
 }
 
 async function probe(label: string, pathOrUrl: string, headers: Record<string, string> = {}): Promise<ProbeResult> {
@@ -124,6 +166,7 @@ async function probe(label: string, pathOrUrl: string, headers: Record<string, s
       "user-agent": "inspir-marketing-edge-cache-probe/1.0",
       ...headers,
     },
+    redirect: "manual",
     signal: AbortSignal.timeout(20_000),
   });
 
@@ -138,6 +181,7 @@ async function probe(label: string, pathOrUrl: string, headers: Record<string, s
     vary: normalizeHeader(response.headers.get("vary")),
     setCookie: normalizeHeader(response.headers.get("set-cookie")),
     contentType: normalizeHeader(response.headers.get("content-type")),
+    location: normalizeHeader(response.headers.get("location")),
   };
 }
 

@@ -1,0 +1,1880 @@
+{
+  "schemaVersion": 1,
+  "language": "Chinese",
+  "locale": "zh",
+  "namespace": "route:home",
+  "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
+  "model": "curated-codex-v2",
+  "entries": [
+    {
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} 本实用指南"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "一个把学习转化为行动的 {value1} 本指南库。"
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "面向公众的免费 AI 学习伙伴，可用于辅导、练习、测验、抽认卡、辩论、写作反馈、编程帮助和学习规划。"
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "一条实用的 AI 学习路径，帮助你从困惑走向清晰解释、苏格拉底式提问、示例和主动回忆。"
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "在 inspir 上使用“学习任何内容”进行基础学习的实用指南，包含提示、学习循环和更安全的 AI 习惯。"
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "一次务实的观察：AI 如何让学习更清晰、更个性化、更容易获得，同时避免让学生变成被动收集答案的人。"
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "一个让人能快速看懂的公开学习网站。"
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "一部短片，介绍 inspir 对学习应当免费、可及且充满生命力的信念。"
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "第一个问题的导师"
+    },
+    {
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "无障碍、提示、测试、更安全的 AI 行为、学习者流程和界面打磨。"
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "阅读后的行动"
+    },
+    {
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "主动练习"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "主动回忆复习"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "每个提示之后，先解释这一步为什么有效，再继续。"
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "模拟结束后，总结场景、限制条件和证据。"
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "AI 代码导师"
+    },
+    {
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "AI 辩论练习"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "AI 备考计划"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "包含测验和主动回忆的 AI 备考计划"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "AI 备考规划器"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "AI 抽认卡与主动回忆：如何记住更多"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "用于主动回忆的 AI 抽认卡"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "用于复习的 AI 抽认卡"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "AI 历史导师"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "AI 历史导师"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "AI 作业教练"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "不作弊的 AI 作业帮助"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "不抄答案的 AI 作业帮助"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "AI 作业助手"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "AI 数学分步教练"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "AI 数学导师"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "面向考试的 AI 测验生成器"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "AI 苏格拉底式导师"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "AI 学习日程"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "AI 时间旅行学习"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "面向疑难概念的 AI 导师"
+    },
+    {
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "按学科分类的 AI 导师"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "面向学生的 AI 写作反馈"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "AI 写作导师"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "回答一个检查问题，尝试一个步骤，辩论一个主张，修改一份草稿，或制作回忆卡。"
+    },
+    {
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "测验比重读更好吗？"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "论证"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "论证练习"
+    },
+    {
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "提出任何问题，并通过清晰解释、示例、追问提示和耐心的 AI 辅导来学习。"
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "问任何问题"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "请求提示"
+    },
+    {
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "请求提示，而不是答案"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "请求对最薄弱的概念做更简单的解释。"
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "请求五个问题，混合定义、示例和迁移题。"
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "请求提示、检查、反馈和学习计划，让思考仍由学习者完成。"
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "先用通俗语言说明主题，再请求一个类比、一个示例和一个常见误解。"
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "围绕这个主题问我五个苏格拉底式问题。每次回答后，告诉我用了什么假设，以及下一步该检验什么。"
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "提出问题，挑战观点，并通过与过去公众人物的有依据对话来学习历史。"
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "让历史模式标注哪些内容有记录、哪些是推断、哪些是模拟。"
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "提出真正的问题"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "提出你的第一个问题，然后直接进入练习。"
+    },
+    {
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "公开可用，同时学校也可以运行保密的定制版本。"
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "浏览所有模式"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "浏览学科"
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "创建一份时间护照，通过旅行提示，并通过场景、地图、时间线、人物、规则、物品和证据探索一个历史世界。"
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "用现实可行的学习计划、提取练习、测验、抽认卡和薄弱项复习，搭建 AI 备考流程。"
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "制定考试计划"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "制定计划"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "和我们一起建设"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "为好奇心、练习和可及性而建。"
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "基于真实学习者行为打造，而不是通用聊天框。"
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "为实际使用而构建"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "AI 作业帮助可以合乎伦理吗？"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "我可以把 AI 历史对话作为来源引用吗？"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "我可以不登录就使用 inspir 吗？"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "inspir 能在不鼓励作弊的情况下帮助完成作业吗？"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "检查我的模型"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "检查一个步骤"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "逐行检查推理"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "检查我解题过程中的这一步。如果有错，请解释错误，并给我下一步动作。"
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "清晰解释"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "清晰的隐私边界"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "代码导师"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "编程"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "沟通"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "比较这些论证"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "保密部署"
+    },
+    {
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "继续"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "欢迎工程师、教育者、设计师、学生，以及任何希望 AI 学习更安全、更清晰、更易获得、更有用的人参与贡献。"
+    },
+    {
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "转化错题"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "把解释转成主动回忆卡，然后在出错或犹豫后再回顾这些卡片。"
+    },
+    {
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "创建一个小测验"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "好奇心从这里开始"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "好奇心、练习，以及会教学的 AI。"
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "适合希望历史和思想更有情境感、可辩论、鲜活，同时不丢失证据线索的好奇学习者。"
+    },
+    {
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "具备数据保密性的定制 AI 学习空间。"
+    },
+    {
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "辩论一个主张"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "辩论任意主题"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "辩论任意主题，接受挑战，比较主张，并学习如何提出更有力的论证。"
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "辩论帮助你区分主张、证据、价值观和假设，从而让历史解释更精确。"
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "辩论这个主张"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "从多个角度辩论这个主张，以便发现假设、取舍和薄弱证据。"
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "从正反两面辩论这个历史或哲学主张。区分证据、假设和价值观。"
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "为建立信心而设计"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "在你能解释修改为什么更好之前，不要接受改写后的段落。"
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "在弄清前置概念之前，不要要求完整总结。"
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "不要只辩论你已经认同的一方。"
+    },
+    {
+      "key": "site.00aa0ce5925c3a4939",
+      "source": "Do not ignore hesitation; uncertainty is a useful signal for review.",
+      "value": "不要忽视犹豫；不确定是复习的有用信号。"
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "不要让角色扮演取代日期、背景、文献或证据标签。"
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "不要制定一个假设每个主题都需要同等时间的计划。"
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "不要把你还无法用自己的话解释清楚的句子做成抽认卡。"
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "不要粘贴作业并要求成品答案。"
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "在测试自己已经能回忆起什么之前，不要先重读笔记。"
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "不要省略你已经尝试过的内容；有用的帮助取决于这些背景。"
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "不要停在第一次解释之后；要让自己回答关于它的问题。"
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "不要把生成的对话当作真实引文或一手来源。"
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "用它做点什么"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir 支持学校吗？"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "每篇指南都以练习计划、路径和链接收尾，指向最适合的具体学习模式。"
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "每篇指南都会指向一种模式、一个提示或一个复习循环，让阅读可以转化为练习。"
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "每种模式都会以公开访客聊天打开，并带有自己的目标、示例和学习流程，让学习者能立即获得合适的支持。"
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "简单的下一步"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "输入一个时期"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "输入背景"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "每篇文章都会连接到分类、实时模式、学科中心、学习路径和相关指南。"
+    },
+    {
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "每个非应用页面现在都有明确任务：建立信任，解释学习路径，并把学习者引向有用的下一步，同时不隐藏重要细节。"
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "有证据意识的场景"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "备考"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "备考规划器"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "复述解释"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "解释下一步"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "用通俗语言解释这个主题。列出我需要的三个前置概念、一个类比和一个常见误解。"
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "解释、苏格拉底式辅导、作业辅导、测验、抽认卡、写作、代码、辩论和学习规划。"
+    },
+    {
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "用 AI 探索历史与重要思想"
+    },
+    {
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "探索历史和思想"
+    },
+    {
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "用 AI 学习模式探索历史、公众人物、成因、辩论、哲学和资料评析，并区分证据与模拟。"
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "探索学校方案"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "探索指南库"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "快速学习路径"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "影片章节"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "抽认卡构建器"
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "抽认卡在一次测试一个想法、只在努力后显示答案，并更早复习错过的卡片时效果最好。"
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "学习数学或逻辑时，一次只做一步，并在继续之前询问每一步为什么成立。"
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "面向学校和 CSR 伙伴"
+    },
+    {
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "基础学习"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "人人可用的免费 AI 学习"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "人人可用的免费 AI 学习 | inspir"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "人人可用的免费 AI 学习。"
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "免费访客学习"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "免费公开 AI 学习平台"
+    },
+    {
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "来自博客"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "生成一个面向任意学科的聚焦选择题测验，并在每次回答后复习解释。"
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "获取学习日程，针对薄弱项自测，并把错题转成抽认卡反复复习。"
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "先获得简单模型"
+    },
+    {
+      "key": "site.03a9ef834faab0396a",
+      "source": "Get unstuck",
+      "value": "摆脱卡住"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "在作业上摆脱卡住"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "通过合乎伦理的提示、示例、检查和分步辅导，在作业中摆脱卡住。"
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "针对结构、清晰度和证据给出反馈。保留我的声音，不要重写整篇答案。"
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "好的起点领域："
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "指南库"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "指南、路径、学科和提示会连接到下一个有用的练习地点。"
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "有帮助的学习地图"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "这是问题和我尝试过的内容。请给我最小的有用提示，而不是最终答案。"
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "隐藏影片章节"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "隐藏影片文字稿"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "先给提示的帮助"
+    },
+    {
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "历史对话"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "历史"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "作业"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "作业教练"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "我应该多早制定备考计划？"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir 与通用 AI 聊天机器人有什么不同？"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "工作方式"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "如何用 AI 学习而不欺骗自己"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "如何用 AI 理解困难主题"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "如何用 AI 理解困难主题"
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "沉浸体验"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "改进草稿"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "通过规划、修改、结构和反馈改进写作，同时保留你的声音。"
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "包括问题、你已经尝试过的内容、卡住的位置，以及你想要提示、步骤检查还是反馈。"
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspir AI 学习指南库"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir 最初源于测验和学生社区，后来通过学校和活动成长，如今使用 AI 让一对一学习更容易获得。"
+    },
+    {
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir 为学习者想理解某件事并需要一个耐心起点的时刻而存在。这部影片把产品介绍为一个面向公众的免费学习伙伴，服务于好奇心、练习和可及性。"
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir 在行动"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir 正在公开共建。"
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir 围绕具有明确教学形态的学习模式组织起来：提示、苏格拉底式问题、测验、主动回忆、角色扮演、辩论、写作反馈和学习规划。"
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir 学习影片"
+    },
+    {
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir 将好奇心、作业、复习和重大问题转化为有引导的 AI 学习会话：它会解释、反问，并帮助你练习。"
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir：你可以学习任何内容"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir 可以免费使用吗？"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "让路径保持鲜活"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "了解下一步该尝试什么、某个步骤为什么有效、错误发生在哪里，以及如何用自己的声音修改最终答案。"
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "学习任何内容"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "“学习任何内容”提示和学习循环"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "使用免费 AI 导师学习任何内容：实用指南"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "通过交谈、测试、辩论和探索来学习。"
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "通过公开 AI 模式学习编程、调试概念、规划项目、解读数据和研究技术问题，同时让学习者始终参与其中。"
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "通过聚焦问题、提示和反思来学习，而不是被动阅读答案。"
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "使用免费 AI 导师学习解释、苏格拉底式问题、作业辅导、测验、抽认卡、辩论、写作反馈、编程帮助和学习规划。"
+    },
+    {
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "以学习者为先的支持"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "学习者需要的是顺序，而不是一堆链接。这些路径把不同模式连接成实用的学习循环，用于理解、作业、备考和探索。"
+    },
+    {
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "适合在新学科开头感到卡住，或需要更简单路径进入困难想法的学习者。"
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "适合时间有限、课程范围很大，并且需要现实可行的复习方式，而不是假装每件事都同等重要的学习者。"
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "面向每个人的学习"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "学习指南和练习循环"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "离开时带走一个通俗模型、更清晰的问题、你能复述的示例，以及用于复习的回忆卡。"
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "让我采访这位历史人物。回答要关注证据，并清楚标出不确定性。"
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "把错误做成抽认卡，并在一段时间后回顾。"
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "把错误、犹豫、公式、定义和你无法清楚解释的概念做成抽认卡。"
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "让它记牢"
+    },
+    {
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "让这个想法记得住"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "让学习计划现实可行"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "数学"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "数学分步教练"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "数学、写作、编程、历史、作业和备考各自需要不同帮助。先从学科开始，再进入合适的模式、提示、指南或复习循环。"
+    },
+    {
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "使命优先"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "面向常见学习时刻的模式指南、提示循环、学习方法和核心文章。"
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "从通俗语言解释进入问题、示例和记忆练习。"
+    },
+    {
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "进入苏格拉底式问题、测验、抽认卡、辩论、角色扮演和引导式教学。"
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "静音影片"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "我的考试在这个日期。这是教学大纲、我的薄弱项和可用时间。请制定一个包含每日回忆的现实计划。"
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "符合 NCERT 的选项"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "下一步"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "不能。请把生成的对话当作学习模拟。事实性主张应引用真实的一手或二手来源。"
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "不是又一个答案框，而是一个学习的地方。"
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "打开一种模式并立即开始；公开访客体验无需账号。"
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "以开放为设计原则"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "全屏打开影片"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "打开访客聊天"
+    },
+    {
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "打开学科中心"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "打开你需要的那种具体帮助。"
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "打开学习地图"
+    },
+    {
+      "key": "site.08cb05cece7fcdc481",
+      "source": "Open the path",
+      "value": "打开路径"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "页面旨在把人们从解释带入实时模式、提示、测验或复习循环。"
+    },
+    {
+      "key": "site.2882d30f0153bb0830",
+      "source": "Paste the question and what you have tried, then ask for the smallest useful next step.",
+      "value": "粘贴问题和你尝试过的内容，然后请求最小的有用下一步。"
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "暂停影片"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "把我放到这个时间和地点。将有记录的事实与合理模拟分开标注，并询问我注意到了什么。"
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "通俗语言解释"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "规划考试复习，生成测验，制作抽认卡，安排间隔复习，并用聚焦的 AI 学习模式让动力保持现实。"
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "规划任务，练习提取，并用测验和主动回忆弥补薄弱点。"
+    },
+    {
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "规划"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "播放影片"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "播放 inspir 学习预览"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "热门 AI 学习路径"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "热门路径"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "练习"
+    },
+    {
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "练习，而不是抄答案"
+    },
+    {
+      "key": "site.3112ef0b944597c68c",
+      "source": "Practise retrieval before rereading",
+      "value": "重读之前先练习提取"
+    },
+    {
+      "key": "site.311a95872a0bdae422",
+      "source": "Prepare for an exam",
+      "value": "准备考试"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "在 inspir 上用“学习任何内容”获得有用学习成果的提示想法和可重复学习循环。"
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "询问一位人物"
+    },
+    {
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "质疑一种历史视角"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "问题会迫使你暴露自己对主题的模型，而困惑、虚假自信和缺失的前置知识通常都会在那里显现。"
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "快速答案"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "围绕这些主题一次问我一个测验题。每次回答后，解释差距，并慢慢提高难度。"
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "用趣味知识测验我"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "测验薄弱项"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "自我测验"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "先自我测验，这样你能看见自己实际记住了什么，以及信心在哪里会误导你。"
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "测验通常能揭示更多，因为它们测试提取。重读可以在测验显示需要修补的地方之后发挥作用。"
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "阅读使命"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "现实可行的日程"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "修补一个错题"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "修补薄弱点"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "重播"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "重新开始影片"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "提取练习"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "用抽认卡复习"
+    },
+    {
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "修改我的草稿"
+    },
+    {
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "修改时不丢掉你的声音"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "保存这个错误"
+    },
+    {
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "安排下一次重复"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "学校专用流程"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "学校可以提供白标 AI 聊天体验，并根据学习者定制，包括符合 NCERT 的内容和流程，使用费用由合作学校或 CSR 赞助承担。"
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "搜索页面、博客指南、提示和实时模式围绕一个简单循环相互连接：提问、尝试、检查、修补和复习。"
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "区分事实与想象"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "显示影片章节"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "显示影片文字稿"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "苏格拉底式检查"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "苏格拉底式教学"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "苏格拉底式导师"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "苏格拉底式辅导通过问题、假设、提示和反思来建立比被动阅读答案更深的理解。"
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "开始一次实时学习会话。"
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "一知道考试日期就开始。如果时间紧，优先处理薄弱项、往年试题风格的问题和每日回忆。"
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "先请求一个简单解释、一个日常类比，以及在主题变得有意义之前你需要掌握的三个想法。"
+    },
+    {
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "每次学习开始时先做一个快速测验，再重读。"
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "从第一性原理开始"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "从学科开始，然后打开合适的学习模式。"
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "从你不理解的地方开始，获得一个通俗模型、示例和下一步。"
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "开始学习"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "从适合任务的模式开始，输入一个主题、作业、草稿、考试或想法。"
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "从“学习任何内容”开始"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "从地点、时间、身份、限制条件和证据标签开始，避免场景变成泛泛的角色扮演。"
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "从你需要完成的任务开始。"
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "说出卡住的地方"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "步骤检查"
+    },
+    {
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "进入历史背景，比较论证，并练习从不止一个角度看待想法。"
+    },
+    {
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "适合需要下一步、错误检查或反馈，同时不失去作业主导权的学生。"
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "学习循环、AI 辅导指南和实用提示。"
+    },
+    {
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "按学习者需求映射的学科中心"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "总结背景"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "支持课外学习、学业练习和好奇心。"
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "切换到问题，让你暴露假设并填补缺口，而不是被动阅读答案。"
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "与一位历史人物对话，同时把生成的对话与有记录的引文分开。"
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "与历史人物对话"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "与历史人物对话的 AI"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "复习前先测试"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "检验论证"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "检验你的推理"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "博客把有用的学习建议连接到实时练习，因此一篇指南可以一步变成一次学习会话。"
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "博客围绕真实学习时刻组织：摆脱卡住、记住更多、写得更好、准备考试，以及与耐心导师一起探索想法。"
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "更广泛的开源 inspir 平台。"
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "结尾再次回到使命：公共访问、学校，以及一种更开放的学习方式。"
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "当前的 inspirlearning.com 重建版本。"
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "影片从启发转向实际承诺：一个耐心的 AI 学习伙伴。"
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "作业和苏格拉底式模式围绕提示、推理、步骤检查和学习者解释而设计，而不是简单交出成品答案。"
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "中段围绕理解、提示、测验和主动学习循环来呈现 inspir。"
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "下一代 AI 学习平台。"
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "开场画面把学习设定为任何人都应能立即开始的事情。"
+    },
+    {
+      "key": "site.33237ba4c491cb9422",
+      "source": "The public site is structured like a learning map: live modes for immediate help, subject hubs for learner questions, and guides that turn reading into action.",
+      "value": "公开网站被构造成一张学习地图：实时模式提供即时帮助，学科中心回应学习者问题，指南把阅读转化为行动。"
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "这个网站是一条路径，而不是一本宣传册。"
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "更深入地思考"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "时间旅行"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "主题群组"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "文字稿"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "穿越一个时期"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "试试作业教练"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "把它变成抽认卡"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "把错题变成复习循环"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "把笔记或主题变成聚焦的抽认卡，包含提示、答案、示例和常见陷阱。"
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "把纠正后的错误变成抽认卡或简短清单，供以后使用。"
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "把解释变成主动回忆卡，包括一张概念卡、一张示例卡和一张误解卡。"
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "把最难的错题变成抽认卡，稍后复习。"
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "把这些错题按概念、公式、定义和示例分组成抽认卡。"
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "把你的教学大纲、考试日期、时间和薄弱项转化为实用学习计划。"
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "理解困难主题"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "理解历史背景，质疑一种视角，比较主张，并把模拟与有记录的事实分开。"
+    },
+    {
+      "key": "site.43417b2770a6aa9b4b",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "理解代码、调试错误、学习编程概念，并一步步构建小项目。"
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "取消静音影片"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "把 AI 当作理解、练习和反馈的教练，而不是悄悄拿走学习过程的捷径。"
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "使用 AI 作业辅导获得提示、步骤检查、数学推理和写作反馈，同时让最终作品仍然属于你。"
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "使用 AI 时间旅行、历史对话和辩论练习来探索背景、证据、论证和视角。"
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "用辩论比较最强主张和最强反方主张。"
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "使用提示、步骤检查和写作反馈，而不把学习变成抄答案。"
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "使用 inspir 获得作文反馈、阅读支持、口语练习、资料评析和修改循环，在不取代学习者声音的情况下改进结构。"
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "使用 inspir 获得作业提示、数学步骤检查、写作反馈、资料评析、苏格拉底式问题和抽认卡，同时不暴露私人聊天。"
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "使用 inspir 获得分步数学帮助、作业提示、苏格拉底式推理、测验、抽认卡和备考支持，而不抄答案。"
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "免费使用公开访客模式，然后探索开源工作和学校部署路径。"
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "使用苏格拉底式问题"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "使用考试日期、教学大纲、可用时间和薄弱项，创建一个经得起现实生活的计划。"
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "使用链接的指南、提示、学科中心或学习路径，稍后复习薄弱点。"
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "使用写作反馈改进结构、清晰度和证据，同时让最终草稿仍然像是你写的。"
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "从第一次点击开始就有用"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "视频控件"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "视频进度"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "保留声音的反馈"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "观看 31 秒"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "薄弱项循环"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "AI 学习伙伴应为每个人做什么"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "学习者开始前通常会问的问题。"
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "当一个主题感觉太难时，我应该先问什么？"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "作业提示中应该包含什么？"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "你可以做什么"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "白标学校 AI"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "为什么苏格拉底式 AI 导师能让想法记得更牢？"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "为什么要把历史和辩论结合起来？"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "为什么在解释之后使用苏格拉底式问题？"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "在 AI 教练的帮助下，一次一步地学习代数、微积分、文字题和数学概念。"
+    },
+    {
+      "key": "site.4e2149136bd53c413f",
+      "source": "Work through math steps",
+      "value": "逐步学习数学步骤"
+    },
+    {
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "不看资料写出三句话解释，然后让苏格拉底式模式找出薄弱环节。"
+    },
+    {
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "在求助前，准确写出你卡在哪里。"
+    },
+    {
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "写作"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "写作教练"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "可以，前提是它给出提示、检查推理、解释错误，并要求你自己产出最终答案，而不是替你写出来。"
+    },
+    {
+      "key": "site.4eb7825da66025f6ae",
+      "source": "Yes. Public topic chats such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly in guest mode.",
+      "value": "可以。公开主题聊天，例如“学习任何内容”、苏格拉底式教学、作业教练、测验和抽认卡，都可以直接以访客模式打开。"
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "可以。学校可以先使用公开产品，然后讨论带有学校专用流程、保密性和资助访问选项的定制 AI 学习空间。"
+    },
+    {
+      "key": "site.7e0d4a8f0b3a3c531c",
+      "source": "Yes. The public guest learning modes are designed for free access, so learners can start without needing a school deployment or paid account.",
+      "value": "可以。公开访客学习模式为免费访问而设计，因此学习者无需学校部署或付费账号即可开始。"
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "你可以自由试用公开学习模式。已保存的聊天、账号、管理工具和用户数据都会保持私密。"
+    }
+  ]
+}

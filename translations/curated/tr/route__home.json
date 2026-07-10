@@ -1,0 +1,1880 @@
+{
+  "schemaVersion": 1,
+  "language": "Turkish",
+  "locale": "tr",
+  "namespace": "route:home",
+  "sourceHash": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
+  "model": "curated-codex-v2",
+  "entries": [
+    {
+      "key": "site.07a357bc36430248d1",
+      "source": "{value1} practical guides",
+      "value": "{value1} pratik rehber"
+    },
+    {
+      "key": "site.925ff321656c966f56",
+      "source": "A {value1}-guide library built for learning that turns into action.",
+      "value": "{value1} rehberden oluşan, öğrenmeyi eyleme dönüştüren bir kitaplık."
+    },
+    {
+      "key": "site.ab115a93150e7a06ae",
+      "source": "A free public AI learning companion for tutoring, practice, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Özel ders desteği, alıştırma, kısa sınavlar, bilgi kartları, tartışma, yazı geri bildirimi, kodlama yardımı ve çalışma planlaması için ücretsiz, herkese açık bir YZ öğrenme arkadaşı."
+    },
+    {
+      "key": "site.1204c5f44e4f621dc1",
+      "source": "A practical AI learning path for moving from confusion to clear explanation, Socratic questions, examples, and active recall.",
+      "value": "Kafa karışıklığından net açıklamaya, Sokratik sorulara, örneklere ve aktif hatırlamaya uzanan pratik bir YZ öğrenme yolu."
+    },
+    {
+      "key": "site.660e8ab787b7647f4d",
+      "source": "A practical guide to using Learn Anything on inspir for foundations learning, with prompts, study loops, and safer AI habits.",
+      "value": "inspir üzerinde Her şeyi öğren'i temel konuları öğrenmek için kullanmaya yönelik, istemler, çalışma döngüleri ve daha güvenli YZ alışkanlıkları içeren pratik bir rehber."
+    },
+    {
+      "key": "site.cd7ec783fe04413db9",
+      "source": "A practical look at how AI can make learning clearer, more personal, and more accessible without turning students into passive answer collectors.",
+      "value": "YZ'nin öğrencileri pasif cevap toplayıcılarına çevirmeden öğrenmeyi nasıl daha açık, kişisel ve erişilebilir kılabileceğine dair pratik bir bakış."
+    },
+    {
+      "key": "site.c109227813c69b1e5a",
+      "source": "A public learning site people can understand quickly.",
+      "value": "İnsanların hızlıca anlayabileceği herkese açık bir öğrenme sitesi."
+    },
+    {
+      "key": "site.e30bc8c62089995cb7",
+      "source": "A short film introducing inspir's belief that learning should be free, accessible, and alive.",
+      "value": "Öğrenmenin ücretsiz, erişilebilir ve canlı olması gerektiğine dair inspir inancını tanıtan kısa bir film."
+    },
+    {
+      "key": "site.3f2bdaf5f0bd4b28a2",
+      "source": "A tutor for the first question",
+      "value": "İlk soru için bir öğretmen"
+    },
+    {
+      "key": "site.2aa8c1048b9f196902",
+      "source": "accessibility, prompts, tests, safer AI behavior, learner flows, and UI polish.",
+      "value": "erişilebilirlik, istemler, testler, daha güvenli YZ davranışı, öğrenen akışları ve arayüz iyileştirmesi."
+    },
+    {
+      "key": "site.95184db267e0a035c5",
+      "source": "Action after reading",
+      "value": "Okuduktan sonra harekete geç"
+    },
+    {
+      "key": "site.43ec5c5a05b4954ea6",
+      "source": "Active practice",
+      "value": "Aktif alıştırma"
+    },
+    {
+      "key": "site.8bc4fbc90c8e9c86b6",
+      "source": "Active recall review",
+      "value": "Aktif hatırlama tekrarı"
+    },
+    {
+      "key": "site.f68f1f0ca7c2e9bea4",
+      "source": "After each hint, explain why the step works before continuing.",
+      "value": "Her ipucundan sonra, devam etmeden önce adımın neden işe yaradığını açıkla."
+    },
+    {
+      "key": "site.8a46d135cf50f178dc",
+      "source": "After the simulation, summarize the setting, constraints, and evidence.",
+      "value": "Simülasyondan sonra ortamı, sınırlamaları ve kanıtları özetle."
+    },
+    {
+      "key": "site.1797c87f833df44771",
+      "source": "AI Code Tutor",
+      "value": "YZ Kod Eğitmeni"
+    },
+    {
+      "key": "site.31d2d79f22f9a1f3a5",
+      "source": "AI debate practice",
+      "value": "YZ tartışma alıştırması"
+    },
+    {
+      "key": "site.65b6c2ffc4f05740f4",
+      "source": "AI exam prep plan",
+      "value": "YZ sınav hazırlık planı"
+    },
+    {
+      "key": "site.0f15e8657395bc417a",
+      "source": "AI Exam Prep Plan With Quizzes and Active Recall",
+      "value": "Kısa sınavlar ve aktif hatırlamayla YZ sınav hazırlık planı"
+    },
+    {
+      "key": "site.0ebaaaae7e0b6b8c54",
+      "source": "AI Exam Prep Planner",
+      "value": "YZ sınav hazırlık planlayıcısı"
+    },
+    {
+      "key": "site.3ffc005101843fb96e",
+      "source": "AI flashcards and active recall: how to remember more",
+      "value": "YZ bilgi kartları ve aktif hatırlama: daha çok şeyi nasıl hatırlarsın"
+    },
+    {
+      "key": "site.e307fcca9c1d174b0b",
+      "source": "AI flashcards for active recall",
+      "value": "Aktif hatırlama için YZ bilgi kartları"
+    },
+    {
+      "key": "site.6f4a9472ade8b0f187",
+      "source": "AI flashcards for revision",
+      "value": "Tekrar için YZ bilgi kartları"
+    },
+    {
+      "key": "site.b304cc7b41fd7f5598",
+      "source": "AI history tutor",
+      "value": "YZ tarih öğretmeni"
+    },
+    {
+      "key": "site.dd9a32e062ead6421d",
+      "source": "AI History Tutor",
+      "value": "YZ Tarih Öğretmeni"
+    },
+    {
+      "key": "site.9934b557028ea58e35",
+      "source": "AI homework coach",
+      "value": "YZ ödev koçu"
+    },
+    {
+      "key": "site.3ece0a6c6ee7334d12",
+      "source": "AI homework help without cheating",
+      "value": "Kopya çekmeden YZ ödev yardımı"
+    },
+    {
+      "key": "site.d75c0f0918af68bb3a",
+      "source": "AI Homework Help Without Copying Answers",
+      "value": "Cevapları kopyalamadan YZ ödev yardımı"
+    },
+    {
+      "key": "site.f12feed708f02b10fe",
+      "source": "AI Homework Helper",
+      "value": "YZ Ödev Yardımcısı"
+    },
+    {
+      "key": "site.2f7d415e4a528d3424",
+      "source": "AI math step coach",
+      "value": "YZ matematik adım koçu"
+    },
+    {
+      "key": "site.ac2a55b07e4c4f813e",
+      "source": "AI Math Tutor",
+      "value": "YZ Matematik Öğretmeni"
+    },
+    {
+      "key": "site.a66254e93319e01241",
+      "source": "AI quiz generator for exams",
+      "value": "Sınavlar için YZ kısa sınav oluşturucu"
+    },
+    {
+      "key": "site.b5e2de3d24523bd9d5",
+      "source": "AI Socratic tutor",
+      "value": "Sokratik YZ öğretmeni"
+    },
+    {
+      "key": "site.639df740680bb81ecc",
+      "source": "AI study schedule",
+      "value": "YZ çalışma programı"
+    },
+    {
+      "key": "site.3d26487f434c2aa113",
+      "source": "AI time travel learning",
+      "value": "YZ ile zamanda yolculukla öğrenme"
+    },
+    {
+      "key": "site.94ad4463944c3f8b6b",
+      "source": "AI tutor for difficult concepts",
+      "value": "Zor kavramlar için YZ öğretmeni"
+    },
+    {
+      "key": "site.48a4f5f1272c5615a7",
+      "source": "AI tutors by subject",
+      "value": "Konuya göre YZ öğretmenleri"
+    },
+    {
+      "key": "site.1611baf2165f1a2574",
+      "source": "AI writing feedback for students",
+      "value": "Öğrenciler için YZ yazı geri bildirimi"
+    },
+    {
+      "key": "site.1286b1cf29ceb48cec",
+      "source": "AI Writing Tutor",
+      "value": "YZ Yazı Öğretmeni"
+    },
+    {
+      "key": "site.423e1acbeb242376a2",
+      "source": "Answer a check question, try a step, debate a claim, revise a draft, or build recall cards.",
+      "value": "Bir kontrol sorusunu yanıtla, bir adımı dene, bir iddiayı tartış, taslağı düzelt veya hatırlama kartları oluştur."
+    },
+    {
+      "key": "site.066bf3fd79787c0aa0",
+      "source": "Are quizzes better than rereading?",
+      "value": "Kısa sınavlar yeniden okumaktan daha mı iyi?"
+    },
+    {
+      "key": "site.ce5e5792e97fe5c786",
+      "source": "Argument",
+      "value": "Argüman"
+    },
+    {
+      "key": "site.8d328c362de1ca40a5",
+      "source": "Argument practice",
+      "value": "Argüman alıştırması"
+    },
+    {
+      "key": "site.09827c7a4a4e3d49aa",
+      "source": "Ask any question and learn through clear explanations, examples, follow-up prompts, and patient AI tutoring.",
+      "value": "İstediğin soruyu sor; açık açıklamalar, örnekler, takip istemleri ve sabırlı YZ öğretmenliğiyle öğren."
+    },
+    {
+      "key": "site.fffbce7dc473518ed3",
+      "source": "Ask anything",
+      "value": "İstediğini sor"
+    },
+    {
+      "key": "site.f6b0b688ba270161b7",
+      "source": "Ask for a hint",
+      "value": "İpucu iste"
+    },
+    {
+      "key": "site.356cb16c463b79042c",
+      "source": "Ask for a hint, not the answer",
+      "value": "Cevabı değil, ipucu iste"
+    },
+    {
+      "key": "site.8e6e4130c7bbf6e77b",
+      "source": "Ask for a simpler explanation of the weakest concept.",
+      "value": "En zayıf kavram için daha basit bir açıklama iste."
+    },
+    {
+      "key": "site.99d2d178dc9e3177c3",
+      "source": "Ask for five questions that mix definitions, examples, and transfer problems.",
+      "value": "Tanımları, örnekleri ve transfer problemlerini birlikte kullanan beş soru iste."
+    },
+    {
+      "key": "site.d796999939090513b0",
+      "source": "Ask for hints, checks, feedback, and study plans that keep the thinking with the learner.",
+      "value": "Düşünmeyi öğrenende tutan ipuçları, kontroller, geri bildirimler ve çalışma planları iste."
+    },
+    {
+      "key": "site.3bc69865d77d46d0e9",
+      "source": "Ask for the topic in plain language, then request one analogy, one example, and one common misconception.",
+      "value": "Konuyu sade dille anlatmasını iste; ardından bir benzetme, bir örnek ve sık görülen bir yanlış kanı iste."
+    },
+    {
+      "key": "site.d074052ccb5b9ac76f",
+      "source": "Ask me five Socratic questions about this topic. After each answer, tell me what assumption I used and what to test next.",
+      "value": "Bu konu hakkında bana beş Sokratik soru sor. Her yanıttan sonra hangi varsayımı kullandığımı ve sırada neyi test etmem gerektiğini söyle."
+    },
+    {
+      "key": "site.9723a48c598bcb10c2",
+      "source": "Ask questions, challenge ideas, and learn history through grounded conversations with public figures from the past.",
+      "value": "Sorular sor, fikirleri sorgula ve geçmişteki tanınmış kişilerle sağlam temelli sohbetler üzerinden tarihi öğren."
+    },
+    {
+      "key": "site.d33b252b9554dc0f01",
+      "source": "Ask the historical mode to label what is documented, inferred, or simulated.",
+      "value": "Tarihsel moddan neyin belgeli, neyin çıkarım, neyin simülasyon olduğunu etiketlemesini iste."
+    },
+    {
+      "key": "site.3084462f3cb5ab0dac",
+      "source": "Ask the real question",
+      "value": "Asıl soruyu sor"
+    },
+    {
+      "key": "site.5e4f930345a16005d3",
+      "source": "Ask your first question and move straight into practice.",
+      "value": "İlk sorunu sor ve doğrudan alıştırmaya geç."
+    },
+    {
+      "key": "site.36933e53b48c769889",
+      "source": "Available publicly while schools can run confidential custom versions.",
+      "value": "Herkese açık olarak kullanılabilir; okullar gizli özel sürümler çalıştırabilir."
+    },
+    {
+      "key": "site.34fbf06e215da78420",
+      "source": "Browse every mode",
+      "value": "Tüm modlara göz at"
+    },
+    {
+      "key": "site.5e8f1c553ed04dfa75",
+      "source": "Browse subjects",
+      "value": "Konulara göz at"
+    },
+    {
+      "key": "site.4f8a8bc9c0f6fe441f",
+      "source": "Build a temporal passport, clear the travel advisory, and explore a historical world through scene, map, timeline, people, rules, inventory, and evidence.",
+      "value": "Zamansal bir pasaport oluştur, yolculuk uyarısını geç ve sahne, harita, zaman çizelgesi, kişiler, kurallar, envanter ve kanıtlar üzerinden tarihsel bir dünyayı keşfet."
+    },
+    {
+      "key": "site.7875b72e2fb703c0d9",
+      "source": "Build an AI exam prep workflow with a realistic study plan, retrieval practice, quizzes, flashcards, and weak-area review.",
+      "value": "Gerçekçi bir çalışma planı, hatırlama alıştırması, kısa sınavlar, bilgi kartları ve zayıf alan tekrarıyla bir YZ sınav hazırlık akışı oluştur."
+    },
+    {
+      "key": "site.718872ecb8918ccc4c",
+      "source": "Build an exam plan",
+      "value": "Sınav planı oluştur"
+    },
+    {
+      "key": "site.8a02031f85e3e14dcf",
+      "source": "Build the plan",
+      "value": "Planı oluştur"
+    },
+    {
+      "key": "site.e9488c9d49232e93fa",
+      "source": "Build with us",
+      "value": "Bizimle birlikte geliştir"
+    },
+    {
+      "key": "site.b9e3ec5bdae27d85d0",
+      "source": "Built for curiosity, practice, and access.",
+      "value": "Merak, alıştırma ve erişim için tasarlandı."
+    },
+    {
+      "key": "site.24d611d55bfd1fd36a",
+      "source": "Built from real learner behavior, not a generic chat box.",
+      "value": "Genel bir sohbet kutusundan değil, gerçek öğrenen davranışından yola çıkılarak tasarlandı."
+    },
+    {
+      "key": "site.a1d249a1b4ac815a08",
+      "source": "Built to be used",
+      "value": "Kullanılmak için tasarlandı"
+    },
+    {
+      "key": "site.90cd9b8f0ca4389792",
+      "source": "Can AI homework help be ethical?",
+      "value": "YZ ödev yardımı etik olabilir mi?"
+    },
+    {
+      "key": "site.532f3af3eee8e18836",
+      "source": "Can I cite AI historical dialogue as a source?",
+      "value": "YZ ile tarihsel diyaloğu kaynak olarak gösterebilir miyim?"
+    },
+    {
+      "key": "site.881de22882ac1fbed1",
+      "source": "Can I use inspir without signing in?",
+      "value": "Oturum açmadan inspir kullanabilir miyim?"
+    },
+    {
+      "key": "site.a71f0be5382364e0d7",
+      "source": "Can inspir help with homework without encouraging cheating?",
+      "value": "inspir kopya çekmeyi teşvik etmeden ödeve yardımcı olabilir mi?"
+    },
+    {
+      "key": "site.833b567cc0b33a57ba",
+      "source": "Check my model",
+      "value": "Modelimi kontrol et"
+    },
+    {
+      "key": "site.e15170352f3cb4e2a0",
+      "source": "Check one step",
+      "value": "Bir adımı kontrol et"
+    },
+    {
+      "key": "site.52d23e52d6bee06edc",
+      "source": "Check the reasoning line by line",
+      "value": "Akıl yürütmeyi satır satır kontrol et"
+    },
+    {
+      "key": "site.db2400ba03e78eaddf",
+      "source": "Check this step in my working. If it is wrong, explain the mistake and give me one next move.",
+      "value": "Çalışmamdaki bu adımı kontrol et. Yanlışsa hatayı açıkla ve bana bir sonraki hamleyi ver."
+    },
+    {
+      "key": "site.e706b6be9e7464a3a3",
+      "source": "Clear explanations",
+      "value": "Açık açıklamalar"
+    },
+    {
+      "key": "site.bca4abf0832cb158fb",
+      "source": "Clear privacy boundaries",
+      "value": "Net gizlilik sınırları"
+    },
+    {
+      "key": "site.20987f2bb05ca607b9",
+      "source": "Code Tutor",
+      "value": "Kod Eğitmeni"
+    },
+    {
+      "key": "site.224abff6cabf8a8699",
+      "source": "Coding",
+      "value": "Kodlama"
+    },
+    {
+      "key": "site.ade0d50c9254cf0c94",
+      "source": "Communication",
+      "value": "İletişim"
+    },
+    {
+      "key": "site.8b59dcfb75861bd0c0",
+      "source": "Compare the arguments",
+      "value": "Argümanları karşılaştır"
+    },
+    {
+      "key": "site.f9eed846f53dcbcf1e",
+      "source": "Confidential deployments",
+      "value": "Gizli kurulumlar"
+    },
+    {
+      "key": "site.2e02623966f9391fac",
+      "source": "Continue",
+      "value": "Devam et"
+    },
+    {
+      "key": "site.11920520f8e8927eba",
+      "source": "Contributions are welcome from engineers, educators, designers, students, and anyone who wants AI learning to be safer, clearer, more accessible, and more useful.",
+      "value": "YZ ile öğrenmenin daha güvenli, daha açık, daha erişilebilir ve daha yararlı olmasını isteyen mühendislerin, eğitimcilerin, tasarımcıların, öğrencilerin ve herkesin katkılarına açığız."
+    },
+    {
+      "key": "site.2c4f32b5900b9beef7",
+      "source": "Convert misses",
+      "value": "Eksikleri dönüştür"
+    },
+    {
+      "key": "site.a6644b14103ea246d4",
+      "source": "Convert the explanation into active recall cards, then revisit the cards after mistakes or hesitation.",
+      "value": "Açıklamayı aktif hatırlama kartlarına dönüştür; hata ya da tereddüt yaşadığında kartlara yeniden dön."
+    },
+    {
+      "key": "site.01ff1921147e28c735",
+      "source": "Create a tiny quiz",
+      "value": "Küçük bir kısa sınav oluştur"
+    },
+    {
+      "key": "site.f3bb93efc9b355931f",
+      "source": "Curiosity starts here",
+      "value": "Merak burada başlar"
+    },
+    {
+      "key": "site.f8bb4b90f14257ccd2",
+      "source": "Curiosity, practice, and AI that teaches.",
+      "value": "Merak, alıştırma ve öğreten YZ."
+    },
+    {
+      "key": "site.5eebdef3c313d9607f",
+      "source": "Curious learners who want history and ideas to feel situated, debatable, and alive without losing track of evidence.",
+      "value": "Tarihin ve fikirlerin kanıttan kopmadan bağlama oturmuş, tartışılabilir ve canlı hissettirmesini isteyen meraklı öğrenenler."
+    },
+    {
+      "key": "site.47857da659bedbf89a",
+      "source": "Custom AI learning spaces with data confidentiality.",
+      "value": "Veri gizliliğine sahip özel YZ öğrenme alanları."
+    },
+    {
+      "key": "site.34f0987ebea74fc940",
+      "source": "Debate a claim",
+      "value": "Bir iddiayı tartış"
+    },
+    {
+      "key": "site.62563ae4f4175234eb",
+      "source": "Debate any topic",
+      "value": "Her konuyu tartış"
+    },
+    {
+      "key": "site.907666477e5fe34f49",
+      "source": "Debate any topic, get challenged, compare claims, and learn how to make stronger arguments.",
+      "value": "Her konuyu tartış, zorlan, iddiaları karşılaştır ve daha güçlü argümanlar kurmayı öğren."
+    },
+    {
+      "key": "site.1034eb0dcf6fc1230d",
+      "source": "Debate helps you separate claims, evidence, values, and assumptions, which makes historical interpretation more precise.",
+      "value": "Tartışma; iddiaları, kanıtları, değerleri ve varsayımları ayırmana yardım eder; bu da tarihsel yorumu daha kesin kılar."
+    },
+    {
+      "key": "site.e1a4fa573c7f545d3c",
+      "source": "Debate the claim",
+      "value": "İddiayı tartış"
+    },
+    {
+      "key": "site.b1bb71c713289fd31b",
+      "source": "Debate the claim from more than one side so you can notice assumptions, tradeoffs, and weak evidence.",
+      "value": "Varsayımları, ödünleri ve zayıf kanıtları fark edebilmek için iddiayı birden fazla taraftan tartış."
+    },
+    {
+      "key": "site.4c22a785282a7a33db",
+      "source": "Debate this historical or philosophical claim from both sides. Separate evidence, assumptions, and values.",
+      "value": "Bu tarihsel ya da felsefi iddiayı iki taraftan tartış. Kanıtları, varsayımları ve değerleri ayır."
+    },
+    {
+      "key": "site.ee1229c09055721bfd",
+      "source": "Designed for confidence",
+      "value": "Güven için tasarlandı"
+    },
+    {
+      "key": "site.23434ad4b2352cd83d",
+      "source": "Do not accept a revised paragraph until you can explain why the revision is better.",
+      "value": "Revize edilmiş bir paragrafı, revizyonun neden daha iyi olduğunu açıklayabilene kadar kabul etme."
+    },
+    {
+      "key": "site.761df0c823f13a98b5",
+      "source": "Do not ask for a complete summary before you know the prerequisite ideas.",
+      "value": "Ön koşul fikirleri bilmeden eksiksiz bir özet isteme."
+    },
+    {
+      "key": "site.c4559ce2b10f6ead02",
+      "source": "Do not debate only the side you already agree with.",
+      "value": "Yalnızca zaten katıldığın tarafı tartışma."
+    },
+    {
+      "key": "site.00aa0ce5925c3a4939",
+      "source": "Do not ignore hesitation; uncertainty is a useful signal for review.",
+      "value": "Tereddüdü görmezden gelme; belirsizlik tekrar için yararlı bir sinyaldir."
+    },
+    {
+      "key": "site.f5de131f08eb4bd5fa",
+      "source": "Do not let roleplay replace dates, context, documents, or evidence labels.",
+      "value": "Rol yapmanın tarihlerin, bağlamın, belgelerin veya kanıt etiketlerinin yerini almasına izin verme."
+    },
+    {
+      "key": "site.a5242f3ba86cd9c0f0",
+      "source": "Do not make a plan that assumes every topic needs equal time.",
+      "value": "Her konuya eşit zaman gerektiğini varsayan bir plan yapma."
+    },
+    {
+      "key": "site.7d575017a3f23cd39a",
+      "source": "Do not make flashcards from sentences you still cannot explain in your own words.",
+      "value": "Hâlâ kendi sözlerinle açıklayamadığın cümlelerden bilgi kartı yapma."
+    },
+    {
+      "key": "site.93a88b5002dec789a8",
+      "source": "Do not paste an assignment and ask for the finished response.",
+      "value": "Bir ödevi yapıştırıp bitmiş yanıt isteme."
+    },
+    {
+      "key": "site.3e1a706bca15d6e1cc",
+      "source": "Do not reread notes before testing what you can already recall.",
+      "value": "Zaten ne hatırladığını test etmeden notları yeniden okuma."
+    },
+    {
+      "key": "site.db0a85d5315d363264",
+      "source": "Do not skip showing what you already tried; the useful help depends on that context.",
+      "value": "Ne denediğini göstermeyi atlama; yararlı yardım buna bağlıdır."
+    },
+    {
+      "key": "site.1b7692a5742065c8fd",
+      "source": "Do not stop after the first explanation; make yourself answer questions about it.",
+      "value": "İlk açıklamadan sonra durma; kendini onunla ilgili soruları yanıtlamaya zorla."
+    },
+    {
+      "key": "site.a2ad47724e94b66423",
+      "source": "Do not treat generated dialogue as a real quote or primary source.",
+      "value": "Oluşturulan diyaloğu gerçek alıntı ya da birincil kaynak gibi görme."
+    },
+    {
+      "key": "site.f328079c2a15303520",
+      "source": "Do something with it",
+      "value": "Onunla bir şey yap"
+    },
+    {
+      "key": "site.09b147c2709a66e103",
+      "source": "Does inspir support schools?",
+      "value": "inspir okulları destekliyor mu?"
+    },
+    {
+      "key": "site.dd7f37a9850d9ab6b4",
+      "source": "Each guide ends with practice plans, routes, and links into the exact learning mode that fits.",
+      "value": "Her rehber, uygun öğrenme moduna giden alıştırma planları, rotalar ve bağlantılarla biter."
+    },
+    {
+      "key": "site.63e69f35a1f972a2bd",
+      "source": "Each guide points to a mode, prompt, or review loop so reading can become practice.",
+      "value": "Her rehber bir moda, isteme veya tekrar döngüsüne işaret eder; böylece okuma alıştırmaya dönüşebilir."
+    },
+    {
+      "key": "site.9e34a7ba8c3f410aae",
+      "source": "Each mode opens as a public guest chat with its own purpose, examples, and learning flow, so learners can start with the right kind of support immediately.",
+      "value": "Her mod, kendi amacı, örnekleri ve öğrenme akışıyla herkese açık bir misafir sohbeti olarak açılır; böylece öğrenenler doğru destek türüyle hemen başlayabilir."
+    },
+    {
+      "key": "site.c9e4d4f8dbab7b20de",
+      "source": "Easy next steps",
+      "value": "Kolay sonraki adımlar"
+    },
+    {
+      "key": "site.f1ea2357a10ef5bd80",
+      "source": "Enter a period",
+      "value": "Bir dönem gir"
+    },
+    {
+      "key": "site.2ff4cd1087fbfb8275",
+      "source": "Enter the context",
+      "value": "Bağlamı gir"
+    },
+    {
+      "key": "site.f854abe788da39c094",
+      "source": "Every article connects to categories, live modes, subject hubs, learning paths, and related guides.",
+      "value": "Her yazı kategorilere, canlı modlara, konu merkezlerine, öğrenme yollarına ve ilgili rehberlere bağlanır."
+    },
+    {
+      "key": "site.4746a3ca4c3fc9a645",
+      "source": "Every non-app page now has a job: build trust, explain the learning route, and send learners toward a useful next action without hiding the important details.",
+      "value": "Uygulama dışındaki her sayfanın artık bir görevi var: güven oluşturmak, öğrenme rotasını açıklamak ve önemli ayrıntıları saklamadan öğrenenleri yararlı bir sonraki eyleme yönlendirmek."
+    },
+    {
+      "key": "site.c3ad6830e2ed444fa4",
+      "source": "Evidence-aware scenes",
+      "value": "Kanıta duyarlı sahneler"
+    },
+    {
+      "key": "site.213aa4eda2224f9758",
+      "source": "Exam prep",
+      "value": "Sınav hazırlığı"
+    },
+    {
+      "key": "site.0c8d16b7e3c031e1d2",
+      "source": "Exam Prep Planner",
+      "value": "Sınav hazırlık planlayıcısı"
+    },
+    {
+      "key": "site.dc0000a11294d4645d",
+      "source": "Explain it back",
+      "value": "Anladığını geri anlat"
+    },
+    {
+      "key": "site.e2d2c3170bcfe3c7f7",
+      "source": "Explain the next step",
+      "value": "Sonraki adımı açıkla"
+    },
+    {
+      "key": "site.f976690f1b80c16cc7",
+      "source": "Explain this topic in plain language. Name the three prerequisite ideas I need, one analogy, and one common misconception.",
+      "value": "Bu konuyu sade dille açıkla. İhtiyacım olan üç ön koşul fikri, bir benzetmeyi ve sık görülen bir yanlış kanıyı adlandır."
+    },
+    {
+      "key": "site.0b1d98a07088fa1e3c",
+      "source": "Explanations, Socratic tutoring, homework coaching, quizzes, flashcards, writing, code, debate, and study planning.",
+      "value": "Açıklamalar, Sokratik öğretmenlik, ödev koçluğu, kısa sınavlar, bilgi kartları, yazma, kod, tartışma ve çalışma planlaması."
+    },
+    {
+      "key": "site.2cdce1dc74d4649b1d",
+      "source": "Explore History and Big Ideas With AI",
+      "value": "Tarihi ve büyük fikirleri YZ ile keşfet"
+    },
+    {
+      "key": "site.2c8140e7c879749da9",
+      "source": "Explore history and ideas",
+      "value": "Tarihi ve fikirleri keşfet"
+    },
+    {
+      "key": "site.31602042ce71cfc075",
+      "source": "Explore history, public figures, causes, debates, philosophy, and source critique with AI learning modes that separate evidence from simulation.",
+      "value": "Kanıtı simülasyondan ayıran YZ öğrenme modlarıyla tarihi, tanınmış kişileri, nedenleri, tartışmaları, felsefeyi ve kaynak eleştirisini keşfet."
+    },
+    {
+      "key": "site.b79d7c1cfe675535c2",
+      "source": "Explore schools",
+      "value": "Okulları keşfet"
+    },
+    {
+      "key": "site.d45ce385b1ed73f5c9",
+      "source": "Explore the guide library",
+      "value": "Rehber kitaplığını keşfet"
+    },
+    {
+      "key": "site.b330117e7dfb1d0c41",
+      "source": "Fast learning routes",
+      "value": "Hızlı öğrenme rotaları"
+    },
+    {
+      "key": "site.c81a932350c436b565",
+      "source": "Film chapters",
+      "value": "Film bölümleri"
+    },
+    {
+      "key": "site.8d3383856ae937dbc8",
+      "source": "Flashcard Builder",
+      "value": "Bilgi Kartı Oluşturucu"
+    },
+    {
+      "key": "site.4717d13b6ef8aea9d2",
+      "source": "Flashcards work best when they test one idea at a time, reveal answers only after effort, and review missed cards sooner.",
+      "value": "Bilgi kartları en iyi; bir seferde tek fikri test ettiğinde, cevapları ancak çabadan sonra gösterdiğinde ve kaçırılan kartları daha erken tekrar ettirdiğinde işe yarar."
+    },
+    {
+      "key": "site.5276ea30c955550e97",
+      "source": "For math or logic, work one step at a time and ask why each move is allowed before moving on.",
+      "value": "Matematik veya mantık için her seferinde tek adım ilerle ve devam etmeden önce her hamlenin neden geçerli olduğunu sor."
+    },
+    {
+      "key": "site.92b41e9f0148fb0f0a",
+      "source": "For schools and CSR partners",
+      "value": "Okullar ve CSR ortakları için"
+    },
+    {
+      "key": "site.2efa1e7572ca417851",
+      "source": "Foundations",
+      "value": "Temeller"
+    },
+    {
+      "key": "site.0becb18dcb85b53ff1",
+      "source": "Free AI learning for everyone",
+      "value": "Herkes için ücretsiz YZ öğrenme"
+    },
+    {
+      "key": "site.86c7908370fe03dd0c",
+      "source": "Free AI learning for everyone | inspir",
+      "value": "Herkes için ücretsiz YZ öğrenme | inspir"
+    },
+    {
+      "key": "site.3fd455102b46891af2",
+      "source": "Free AI learning for everyone.",
+      "value": "Herkes için ücretsiz YZ öğrenme."
+    },
+    {
+      "key": "site.69e83e18f371b5ae7b",
+      "source": "Free guest learning",
+      "value": "Ücretsiz misafir olarak öğrenme"
+    },
+    {
+      "key": "site.bf94355949ee3b5c3a",
+      "source": "Free public AI learning platform",
+      "value": "Ücretsiz herkese açık YZ öğrenme platformu"
+    },
+    {
+      "key": "site.3500071337b0ad334d",
+      "source": "From the blog",
+      "value": "Blogdan"
+    },
+    {
+      "key": "site.2334c3ba1c4723b3b9",
+      "source": "Generate a focused multiple-choice quiz on any subject and review explanations after each answer.",
+      "value": "Herhangi bir konuda odaklı çoktan seçmeli bir kısa sınav oluştur ve her yanıttan sonra açıklamaları gözden geçir."
+    },
+    {
+      "key": "site.9b248a2446901b4913",
+      "source": "Get a study schedule, quiz yourself on weak areas, and turn misses into flashcards for repeated review.",
+      "value": "Bir çalışma programı al, zayıf alanlarda kendini test et ve hataları tekrar tekrar gözden geçirmek için bilgi kartlarına dönüştür."
+    },
+    {
+      "key": "site.a93dc55abe6c62d5ba",
+      "source": "Get the simple model first",
+      "value": "Önce basit modeli edin"
+    },
+    {
+      "key": "site.03a9ef834faab0396a",
+      "source": "Get unstuck",
+      "value": "Takıldığın yerden çık"
+    },
+    {
+      "key": "site.251edb415d354f2aea",
+      "source": "Get unstuck on homework",
+      "value": "Ödevde takıldığın yerden çık"
+    },
+    {
+      "key": "site.0cbb471bce8f56f67c",
+      "source": "Get unstuck on homework with ethical hints, examples, checks, and step-by-step coaching.",
+      "value": "Etik ipuçları, örnekler, kontroller ve adım adım koçlukla ödevde takıldığın yerden çık."
+    },
+    {
+      "key": "site.50f236034a934a9dc3",
+      "source": "Give feedback on structure, clarity, and evidence. Keep my voice and do not rewrite the whole answer.",
+      "value": "Yapı, açıklık ve kanıt konusunda geri bildirim ver. Sesimi koru ve yanıtın tamamını yeniden yazma."
+    },
+    {
+      "key": "site.ebcc7f2cfb4a436cbc",
+      "source": "Good first areas:",
+      "value": "İyi başlangıç alanları:"
+    },
+    {
+      "key": "site.ca8d5e5cc3e33bdf88",
+      "source": "Guide library",
+      "value": "Rehber kitaplığı"
+    },
+    {
+      "key": "site.c43f3f4806786f9ef0",
+      "source": "Guides, paths, subjects, and prompts connect to the next useful place to practise.",
+      "value": "Rehberler, yollar, konular ve istemler, alıştırma yapmak için bir sonraki yararlı yere bağlanır."
+    },
+    {
+      "key": "site.c4aeb3142173434038",
+      "source": "Helpful learning map",
+      "value": "Yararlı öğrenme haritası"
+    },
+    {
+      "key": "site.41f4cf1baff097d685",
+      "source": "Here is the question and what I tried. Give me the smallest useful hint, not the final answer.",
+      "value": "İşte soru ve denediklerim. Son cevabı değil, işe yarayan en küçük ipucunu ver."
+    },
+    {
+      "key": "site.5c870eec4fd9e934ac",
+      "source": "Hide film chapters",
+      "value": "Film bölümlerini gizle"
+    },
+    {
+      "key": "site.83727dd19f3de7179d",
+      "source": "Hide film transcript",
+      "value": "Film dökümünü gizle"
+    },
+    {
+      "key": "site.4118582bb8830474c8",
+      "source": "Hint-first help",
+      "value": "Önce ipucu veren yardım"
+    },
+    {
+      "key": "site.32f8688cfce862e11b",
+      "source": "Historical conversations",
+      "value": "Tarihsel konuşmalar"
+    },
+    {
+      "key": "site.90ccd6497400b5576a",
+      "source": "History",
+      "value": "Tarih"
+    },
+    {
+      "key": "site.e4e86dcdfb4072dab5",
+      "source": "Homework",
+      "value": "Ödev"
+    },
+    {
+      "key": "site.e210ba7bb8b7dffc72",
+      "source": "Homework Coach",
+      "value": "Ödev koçu"
+    },
+    {
+      "key": "site.e868f882cc9301f04c",
+      "source": "How early should I make an exam prep plan?",
+      "value": "Sınav hazırlık planını ne kadar erken yapmalıyım?"
+    },
+    {
+      "key": "site.a06fbb33165c168d14",
+      "source": "How is inspir different from a generic AI chatbot?",
+      "value": "inspir genel bir YZ sohbet botundan nasıl farklıdır?"
+    },
+    {
+      "key": "site.1dd6a17cb4033f4f74",
+      "source": "How it works",
+      "value": "Nasıl çalışır"
+    },
+    {
+      "key": "site.3b2800f5d2c3b2c7dd",
+      "source": "How to study with AI without cheating yourself",
+      "value": "YZ ile kendini kandırmadan nasıl çalışılır"
+    },
+    {
+      "key": "site.7dcc8edc4da0e595e9",
+      "source": "how to understand a hard topic with AI",
+      "value": "YZ ile zor bir konu nasıl anlaşılır"
+    },
+    {
+      "key": "site.427a0e65c3332fca92",
+      "source": "How to Understand a Hard Topic With AI",
+      "value": "YZ ile Zor Bir Konu Nasıl Anlaşılır"
+    },
+    {
+      "key": "site.44845f4e3fccd01b4f",
+      "source": "Immersion",
+      "value": "Deneyimleme"
+    },
+    {
+      "key": "site.8fcc7fa2ab2c9c7301",
+      "source": "Improve the draft",
+      "value": "Taslağı iyileştir"
+    },
+    {
+      "key": "site.f09ad2640fd954f2d1",
+      "source": "Improve writing with planning, revision, structure, and feedback that keeps your voice intact.",
+      "value": "Planlama, revizyon, yapı ve sesini koruyan geri bildirimle yazını geliştir."
+    },
+    {
+      "key": "site.78b4970d07d221fcc6",
+      "source": "Include the question, what you already tried, where you got stuck, and whether you want a hint, a step check, or feedback.",
+      "value": "Soruyu, ne denediğini, nerede takıldığını ve ipucu mu, adım kontrolü mü yoksa geri bildirim mi istediğini ekle."
+    },
+    {
+      "key": "site.aa6592f0c930b72b85",
+      "source": "inspir AI learning guide library",
+      "value": "inspir YZ öğrenme rehber kitaplığı"
+    },
+    {
+      "key": "site.131a6131495bba6bfd",
+      "source": "inspir began as quizzes and student communities, grew through schools and events, and now uses AI to make one-to-one learning more accessible.",
+      "value": "inspir kısa sınavlar ve öğrenci topluluklarıyla başladı, okullar ve etkinliklerle büyüdü ve şimdi bire bir öğrenmeyi daha erişilebilir kılmak için YZ kullanıyor."
+    },
+    {
+      "key": "site.4d58ea095fc5f2c07f",
+      "source": "inspir exists for the moment a learner wants to understand something and needs a patient place to begin. The film introduces the product as a free public learning companion for curiosity, practice, and access.",
+      "value": "inspir, bir öğrenenin bir şeyi anlamak istediği ve başlamak için sabırlı bir yere ihtiyaç duyduğu an için var. Film, ürünü merak, alıştırma ve erişim için ücretsiz, herkese açık bir öğrenme arkadaşı olarak tanıtıyor."
+    },
+    {
+      "key": "site.646411f4ba89569311",
+      "source": "inspir in motion",
+      "value": "inspir hareket halinde"
+    },
+    {
+      "key": "site.970b34ac6b5e964b18",
+      "source": "inspir is being built in public.",
+      "value": "inspir açık şekilde geliştiriliyor."
+    },
+    {
+      "key": "site.0a6f330a14dcc70645",
+      "source": "inspir is organized around learning modes with specific teaching shapes: hints, Socratic questions, quizzes, active recall, role-play, debate, writing feedback, and study planning.",
+      "value": "inspir belirli öğretim biçimlerine sahip öğrenme modları etrafında düzenlenmiştir: ipuçları, Sokratik sorular, kısa sınavlar, aktif hatırlama, rol yapma, tartışma, yazı geri bildirimi ve çalışma planlaması."
+    },
+    {
+      "key": "site.143952c3b348ab1dad",
+      "source": "inspir learning film",
+      "value": "inspir öğrenme filmi"
+    },
+    {
+      "key": "site.0122c1283c1bf98b16",
+      "source": "inspir turns curiosity, homework, revision, and big questions into guided AI learning sessions that explain, ask back, and help you practise.",
+      "value": "inspir merakı, ödevi, tekrarı ve büyük soruları açıklayan, karşı soru soran ve alıştırma yapmana yardım eden rehberli YZ öğrenme oturumlarına dönüştürür."
+    },
+    {
+      "key": "site.6f70af069c7834e22c",
+      "source": "inspir: You can Learn Anything",
+      "value": "inspir: Her şeyi öğrenebilirsin"
+    },
+    {
+      "key": "site.d0c3a432a6057385ba",
+      "source": "Is inspir free to use?",
+      "value": "inspir kullanmak ücretsiz mi?"
+    },
+    {
+      "key": "site.8f7037bfb9e1edd520",
+      "source": "Keep the route alive",
+      "value": "Rotayı canlı tut"
+    },
+    {
+      "key": "site.1582ba0451dc7c52f4",
+      "source": "Know what to try next, why a step works, where the mistake happened, and how to revise the final answer in your own voice.",
+      "value": "Sırada neyi deneyeceğini, bir adımın neden işe yaradığını, hatanın nerede olduğunu ve son yanıtı kendi sesinle nasıl düzelteceğini bil."
+    },
+    {
+      "key": "site.c7c9ff97842b1e33ba",
+      "source": "Learn Anything",
+      "value": "Her şeyi öğren"
+    },
+    {
+      "key": "site.92579c86e348294495",
+      "source": "Learn Anything prompts and study loop",
+      "value": "Her şeyi öğren: istem fikirleri ve çalışma döngüsü"
+    },
+    {
+      "key": "site.2454155c3547f259bb",
+      "source": "Learn Anything With a Free AI Tutor: practical guide",
+      "value": "Ücretsiz YZ Öğretmeniyle Her şeyi öğren: pratik rehber"
+    },
+    {
+      "key": "site.afee965b76409c8dcf",
+      "source": "Learn by talking, testing, debating, and exploring.",
+      "value": "Konuşarak, test ederek, tartışarak ve keşfederek öğren."
+    },
+    {
+      "key": "site.5aff981e794d4c8a7c",
+      "source": "Learn programming, debug concepts, plan projects, interpret data, and research technical questions with public AI modes that keep the learner in the loop.",
+      "value": "Öğreneni sürecin içinde tutan herkese açık YZ modlarıyla programlama öğren, kavramları hata ayıkla, projeler planla, verileri yorumla ve teknik soruları araştır."
+    },
+    {
+      "key": "site.9d218a043b632a71a9",
+      "source": "Learn through focused questions, hints, and reflection instead of passive answer reading.",
+      "value": "Pasif biçimde cevap okumak yerine odaklı sorular, ipuçları ve düşünmeyle öğren."
+    },
+    {
+      "key": "site.1a88028ff9e430edae",
+      "source": "Learn with a free AI tutor for explanations, Socratic questions, homework coaching, quizzes, flashcards, debate, writing feedback, coding help, and study planning.",
+      "value": "Açıklamalar, Sokratik sorular, ödev koçluğu, kısa sınavlar, bilgi kartları, tartışma, yazı geri bildirimi, kodlama yardımı ve çalışma planlaması için ücretsiz bir YZ öğretmeniyle öğren."
+    },
+    {
+      "key": "site.4557ea500d921956e2",
+      "source": "Learner-first support",
+      "value": "Öğreneni önceleyen destek"
+    },
+    {
+      "key": "site.c59234985540319bab",
+      "source": "Learners need a sequence, not a pile of links. These paths connect modes into practical study loops for understanding, homework, exam prep, and exploration.",
+      "value": "Öğrenenlerin bağlantı yığınına değil, bir sıraya ihtiyacı vardır. Bu yollar; anlama, ödev, sınav hazırlığı ve keşif için modları pratik çalışma döngülerine bağlar."
+    },
+    {
+      "key": "site.29452fbee0c92b6985",
+      "source": "Learners who feel stuck at the beginning of a new subject or need a simpler path into a difficult idea.",
+      "value": "Yeni bir konunun başında takılan ya da zor bir fikre daha basit bir yol arayan öğrenenler."
+    },
+    {
+      "key": "site.854622c01e379bda6b",
+      "source": "Learners who have limited time, a large syllabus, and need a realistic way to review without pretending everything matters equally.",
+      "value": "Sınırlı zamanı, geniş müfredatı olan ve her şey eşit önemdeymiş gibi davranmadan tekrar yapmak için gerçekçi bir yola ihtiyaç duyan öğrenenler."
+    },
+    {
+      "key": "site.16445da6dc0fb8f58c",
+      "source": "Learning for everyone",
+      "value": "Herkes için öğrenme"
+    },
+    {
+      "key": "site.b1903b28e76fc4f22f",
+      "source": "learning guides and practice loops",
+      "value": "öğrenme rehberleri ve alıştırma döngüleri"
+    },
+    {
+      "key": "site.c4eef625b53068a0cb",
+      "source": "Leave with a plain-language model, sharper questions, examples you can explain back, and recall cards for review.",
+      "value": "Sade dilli bir model, daha keskin sorular, geri anlatabileceğin örnekler ve tekrar için hatırlama kartlarıyla ayrıl."
+    },
+    {
+      "key": "site.249376730e992ff424",
+      "source": "Let me interview this historical person. Keep answers evidence-aware and mark uncertainty clearly.",
+      "value": "Bu tarihsel kişiyle röportaj yapmama izin ver. Yanıtları kanıta duyarlı tut ve belirsizliği açıkça işaretle."
+    },
+    {
+      "key": "site.d4bf802ec96e3ae018",
+      "source": "Make flashcards from errors and revisit them after a delay.",
+      "value": "Hatalardan bilgi kartları oluştur ve bir süre sonra yeniden bak."
+    },
+    {
+      "key": "site.686e30fa1304a39944",
+      "source": "Make flashcards from errors, hesitation, formulas, definitions, and concepts you could not explain clearly.",
+      "value": "Hatalardan, tereddütlerden, formüllerden, tanımlardan ve açıkça açıklayamadığın kavramlardan bilgi kartları oluştur."
+    },
+    {
+      "key": "site.4006cd4d503710da94",
+      "source": "Make it stick",
+      "value": "Aklında kalmasını sağla"
+    },
+    {
+      "key": "site.2ced5a7d3fe83945cc",
+      "source": "Make the idea stick",
+      "value": "Fikri kalıcı hale getir"
+    },
+    {
+      "key": "site.ca6b5ec0de1b670bed",
+      "source": "Make the study plan realistic",
+      "value": "Çalışma planını gerçekçi yap"
+    },
+    {
+      "key": "site.3edf0df49942da6d11",
+      "source": "Math",
+      "value": "Matematik"
+    },
+    {
+      "key": "site.accca8c4b44c698f11",
+      "source": "Math Step Coach",
+      "value": "Adım adım matematik koçu"
+    },
+    {
+      "key": "site.8a8b5b1ba0b43a8b41",
+      "source": "Math, writing, coding, history, homework, and exam prep each need different help. Start from the subject, then move into the mode, prompt, guide, or review loop that fits.",
+      "value": "Matematik, yazma, kodlama, tarih, ödev ve sınav hazırlığının her biri farklı yardım gerektirir. Konudan başla, ardından uygun moda, isteme, rehbere veya tekrar döngüsüne geç."
+    },
+    {
+      "key": "site.49a1ca68ffa8cffabd",
+      "source": "Mission first",
+      "value": "Önce misyon"
+    },
+    {
+      "key": "site.9ddbb219033e30f431",
+      "source": "Mode guides, prompt loops, study methods, and cornerstone articles for common learning moments.",
+      "value": "Yaygın öğrenme anları için mod rehberleri, istem döngüleri, çalışma yöntemleri ve temel yazılar."
+    },
+    {
+      "key": "site.40597b496c50e06cba",
+      "source": "Move from a plain-language explanation into questions, examples, and memory practice.",
+      "value": "Sade dilli bir açıklamadan sorulara, örneklere ve hafıza alıştırmasına geç."
+    },
+    {
+      "key": "site.37fe8045ce471dd45e",
+      "source": "Move into Socratic questions, quizzes, flashcards, debate, role-play, and guided instruction.",
+      "value": "Sokratik sorulara, kısa sınavlara, bilgi kartlarına, tartışmaya, rol yapmaya ve rehberli öğretime geç."
+    },
+    {
+      "key": "site.b3f1a868d11c99421b",
+      "source": "Mute film",
+      "value": "Filmin sesini kapat"
+    },
+    {
+      "key": "site.23bdaa41402cf810e7",
+      "source": "My exam is on this date. Here is the syllabus, my weak areas, and my available time. Make a realistic plan with daily recall.",
+      "value": "Sınavım şu tarihte. İşte müfredatım, zayıf alanlarım ve ayırabileceğim zaman. Günlük hatırlama çalışması içeren gerçekçi bir plan yap."
+    },
+    {
+      "key": "site.cefd4d57efca3b4c27",
+      "source": "NCERT-aligned options",
+      "value": "NCERT uyumlu seçenekler"
+    },
+    {
+      "key": "site.5500eef9fdb1576f57",
+      "source": "Next step",
+      "value": "Sonraki adım"
+    },
+    {
+      "key": "site.537fbac462af326c4e",
+      "source": "No. Treat generated dialogue as a learning simulation. Cite real primary or secondary sources for factual claims.",
+      "value": "Hayır. Oluşturulan diyaloğu bir öğrenme simülasyonu olarak gör. Olgusal iddialar için gerçek birincil veya ikincil kaynaklara atıf yap."
+    },
+    {
+      "key": "site.f398e93ba3cc1c04fd",
+      "source": "Not another answer box. A place to learn.",
+      "value": "Başka bir cevap kutusu değil. Öğrenilecek bir yer."
+    },
+    {
+      "key": "site.7ae7cdd166634a89de",
+      "source": "Open a mode and start immediately, with no account needed for the public guest experience.",
+      "value": "Bir modu aç ve herkese açık misafir deneyimi için hesap gerekmeksizin hemen başla."
+    },
+    {
+      "key": "site.965e7f42f9aac32d2e",
+      "source": "Open by design",
+      "value": "Tasarımı gereği açık"
+    },
+    {
+      "key": "site.fa270cc5e9f75bec2a",
+      "source": "Open film fullscreen",
+      "value": "Filmi tam ekran aç"
+    },
+    {
+      "key": "site.f408b36efd1825ae46",
+      "source": "Open guest chat",
+      "value": "Misafir sohbetini aç"
+    },
+    {
+      "key": "site.2d5cd6a24ffa08f338",
+      "source": "Open subject hub",
+      "value": "Konu merkezini aç"
+    },
+    {
+      "key": "site.b4c3ee477e9ac9996c",
+      "source": "Open the exact kind of help you came for.",
+      "value": "Geldiğin yardım türünü tam olarak aç."
+    },
+    {
+      "key": "site.6eee031ce4d05fa1f0",
+      "source": "Open the learning map",
+      "value": "Öğrenme haritasını aç"
+    },
+    {
+      "key": "site.08cb05cece7fcdc481",
+      "source": "Open the path",
+      "value": "Yolu aç"
+    },
+    {
+      "key": "site.3e915977da1859f65b",
+      "source": "Pages are designed to move people from explanation into a live mode, prompt, quiz, or review loop.",
+      "value": "Sayfalar, insanları açıklamadan canlı bir moda, isteme, kısa sınava veya tekrar döngüsüne taşımak için tasarlandı."
+    },
+    {
+      "key": "site.2882d30f0153bb0830",
+      "source": "Paste the question and what you have tried, then ask for the smallest useful next step.",
+      "value": "Soruyu ve ne denediğini yapıştır, sonra en küçük yararlı sonraki adımı iste."
+    },
+    {
+      "key": "site.8e65026ea44b665d7f",
+      "source": "Pause film",
+      "value": "Filmi duraklat"
+    },
+    {
+      "key": "site.dbdb42d1c0ac0f641d",
+      "source": "Place me in this time and location. Label documented facts separately from plausible simulation and ask what I notice.",
+      "value": "Beni bu zaman ve konuma yerleştir. Belgelenmiş olguları olası simülasyondan ayrı etiketle ve ne fark ettiğimi sor."
+    },
+    {
+      "key": "site.896991ab7730a1d36f",
+      "source": "Plain-language explanations",
+      "value": "Sade dille açıklamalar"
+    },
+    {
+      "key": "site.b49c2683a7f8e9ba04",
+      "source": "Plan exam revision, generate quizzes, build flashcards, schedule spaced review, and keep motivation realistic with focused AI learning modes.",
+      "value": "Sınav tekrarını planla, kısa sınavlar oluştur, bilgi kartları yap, aralıklı tekrarı programla ve odaklı YZ öğrenme modlarıyla motivasyonu gerçekçi tut."
+    },
+    {
+      "key": "site.88613cd9f4e52a850a",
+      "source": "Plan the work, practise retrieval, and close weak spots with quizzes and active recall.",
+      "value": "Çalışmayı planla, hatırlama alıştırması yap ve kısa sınavlar ile aktif hatırlamayla zayıf noktaları kapat."
+    },
+    {
+      "key": "site.0005027d894f6116a6",
+      "source": "Planning",
+      "value": "Planlama"
+    },
+    {
+      "key": "site.989d43cc247b32a98b",
+      "source": "Play film",
+      "value": "Filmi oynat"
+    },
+    {
+      "key": "site.a58f0bc12b7e451fdf",
+      "source": "Play inspir learning preview",
+      "value": "inspir öğrenme önizlemesini oynat"
+    },
+    {
+      "key": "site.bca473d3438d9d87b8",
+      "source": "Popular AI learning paths",
+      "value": "Popüler YZ öğrenme yolları"
+    },
+    {
+      "key": "site.7d6c8e4e5d444d752d",
+      "source": "Popular paths",
+      "value": "Popüler yollar"
+    },
+    {
+      "key": "site.3e15ac7882aa8da5f1",
+      "source": "Practice",
+      "value": "Alıştırma"
+    },
+    {
+      "key": "site.7e2e70fef6cf5a71bd",
+      "source": "Practice, not answer-copying",
+      "value": "Alıştırma, cevap kopyalama değil"
+    },
+    {
+      "key": "site.3112ef0b944597c68c",
+      "source": "Practise retrieval before rereading",
+      "value": "Yeniden okumadan önce hatırlama alıştırması yap"
+    },
+    {
+      "key": "site.311a95872a0bdae422",
+      "source": "Prepare for an exam",
+      "value": "Sınava hazırlan"
+    },
+    {
+      "key": "site.b6c57c829df00235d3",
+      "source": "Prompt ideas and a repeatable study loop for getting useful learning results from Learn Anything on inspir.",
+      "value": "inspir üzerinde Her şeyi öğren'den yararlı öğrenme sonuçları almak için istem fikirleri ve tekrarlanabilir bir çalışma döngüsü."
+    },
+    {
+      "key": "site.de06c20ba0a01c99dc",
+      "source": "Question a figure",
+      "value": "Bir figürü sorgula"
+    },
+    {
+      "key": "site.35fa56b8d4c3f8c114",
+      "source": "Question a historical perspective",
+      "value": "Tarihsel bir bakışı sorgula"
+    },
+    {
+      "key": "site.95edfccad814282ebb",
+      "source": "Questions make you expose your own model of the topic, which is where confusion, false confidence, and missing prerequisites usually show up.",
+      "value": "Sorular, konuyla ilgili kendi modelini ortaya koymanı sağlar; kafa karışıklığı, sahte güven ve eksik ön koşullar genellikle burada görünür."
+    },
+    {
+      "key": "site.88a09039e843bfc240",
+      "source": "Quick answers",
+      "value": "Hızlı cevaplar"
+    },
+    {
+      "key": "site.bc370fc79f2618dd0f",
+      "source": "Quiz me on these topics one question at a time. After each answer, explain the gap and increase difficulty slowly.",
+      "value": "Bu konularda bana her seferinde bir soru sorarak kısa sınav yap. Her yanıttan sonra boşluğu açıkla ve zorluğu yavaş yavaş artır."
+    },
+    {
+      "key": "site.5728bdb5f3eb838312",
+      "source": "Quiz me on Trivia",
+      "value": "Genel kültür testi yap"
+    },
+    {
+      "key": "site.19f05fe3613746ddec",
+      "source": "Quiz weak areas",
+      "value": "Zayıf alanları test et"
+    },
+    {
+      "key": "site.a4cb09690b7bf7842e",
+      "source": "Quiz yourself",
+      "value": "Kendini test et"
+    },
+    {
+      "key": "site.6b9f48ebb7d5746120",
+      "source": "Quiz yourself first so you can see what you actually remember and where confidence is misleading.",
+      "value": "Önce kendini test et; neyi gerçekten hatırladığını ve güvenin nerede yanıltıcı olduğunu gör."
+    },
+    {
+      "key": "site.42366e2f6505c4a02c",
+      "source": "Quizzes usually reveal more because they test retrieval. Rereading can help after a quiz shows what needs repair.",
+      "value": "Kısa sınavlar genellikle daha fazlasını ortaya çıkarır çünkü hatırlamayı test eder. Yeniden okuma, bir kısa sınav neyin onarılması gerektiğini gösterdikten sonra yardımcı olabilir."
+    },
+    {
+      "key": "site.bfa2e30751f302a55a",
+      "source": "Read the mission",
+      "value": "Misyonu oku"
+    },
+    {
+      "key": "site.74db8409c654eb064f",
+      "source": "Realistic schedule",
+      "value": "Gerçekçi program"
+    },
+    {
+      "key": "site.666dafcaa6473bb42d",
+      "source": "Repair one miss",
+      "value": "Bir eksiği düzelt"
+    },
+    {
+      "key": "site.e1d7888585cf2df5bc",
+      "source": "Repair the weak spot",
+      "value": "Zayıf noktayı düzelt"
+    },
+    {
+      "key": "site.c0f85d6679730ccd89",
+      "source": "Replay",
+      "value": "Yeniden oynat"
+    },
+    {
+      "key": "site.a673ced8dddc550f97",
+      "source": "Restart film",
+      "value": "Filmi yeniden başlat"
+    },
+    {
+      "key": "site.78da2c36ecf2d7d856",
+      "source": "Retrieval practice",
+      "value": "Hatırlama alıştırması"
+    },
+    {
+      "key": "site.f41b60afa800299604",
+      "source": "Review with flashcards",
+      "value": "Bilgi kartlarıyla tekrar et"
+    },
+    {
+      "key": "site.47a2ad291e423eac19",
+      "source": "Revise my draft",
+      "value": "Taslağımı gözden geçir"
+    },
+    {
+      "key": "site.3aac0e85b4f95cb6e7",
+      "source": "Revise without losing your voice",
+      "value": "Sesini kaybetmeden düzelt"
+    },
+    {
+      "key": "site.78682f561028af9af9",
+      "source": "Save the mistake",
+      "value": "Hatayı kaydet"
+    },
+    {
+      "key": "site.2f2777d9836d0e598e",
+      "source": "Schedule the next repetition",
+      "value": "Sonraki tekrarı planla"
+    },
+    {
+      "key": "site.933329109d0358aa6a",
+      "source": "School-specific workflows",
+      "value": "Okula özel iş akışları"
+    },
+    {
+      "key": "site.612f92623bf6afb21f",
+      "source": "Schools can offer white-labelled AI chat experiences tailored to their learners, including NCERT-aligned content and workflows, with usage funded by partner schools or CSR sponsorship.",
+      "value": "Okullar, NCERT uyumlu içerik ve iş akışları dahil, öğrenenlerine göre uyarlanmış beyaz etiketli YZ sohbet deneyimleri sunabilir; kullanım, ortak okullar veya CSR sponsorluğu tarafından finanse edilir."
+    },
+    {
+      "key": "site.223227dc50ee10045f",
+      "source": "Search pages, blog guides, prompts, and live modes are linked around a simple loop: ask, try, check, repair, and review.",
+      "value": "Arama sayfaları, blog rehberleri, istemler ve canlı modlar basit bir döngü etrafında bağlanır: sor, dene, kontrol et, düzelt ve tekrar et."
+    },
+    {
+      "key": "site.ed0284e84fbec7109f",
+      "source": "Separate fact from invention",
+      "value": "Gerçeği kurgudan ayır"
+    },
+    {
+      "key": "site.145f7b8ce293ce4921",
+      "source": "Show film chapters",
+      "value": "Film bölümlerini göster"
+    },
+    {
+      "key": "site.e43628d4b042bd4701",
+      "source": "Show film transcript",
+      "value": "Film dökümünü göster"
+    },
+    {
+      "key": "site.bcb54b7803dc654a46",
+      "source": "Socratic checks",
+      "value": "Sokratik kontroller"
+    },
+    {
+      "key": "site.bfac28b8b6c02e7484",
+      "source": "Socratic Instruction",
+      "value": "Sokratik öğretim"
+    },
+    {
+      "key": "site.b586bea1f41da28bdc",
+      "source": "Socratic tutor",
+      "value": "Sokratik öğretmen"
+    },
+    {
+      "key": "site.50de465a2e853df96b",
+      "source": "Socratic tutoring uses questions, hypotheses, hints, and reflection to build deeper understanding than passive answer reading.",
+      "value": "Sokratik öğretmenlik; pasif cevap okumaktan daha derin bir anlayış kurmak için sorular, hipotezler, ipuçları ve yansıtma kullanır."
+    },
+    {
+      "key": "site.ac03d0786921a7ada5",
+      "source": "Start a live learning session.",
+      "value": "Canlı bir öğrenme oturumu başlat."
+    },
+    {
+      "key": "site.f62cc1ec8e8e6beb64",
+      "source": "Start as soon as you know the exam date. If time is short, prioritize weak areas, past-paper style questions, and daily recall.",
+      "value": "Sınav tarihini bilir bilmez başla. Zaman kısaysa zayıf alanlara, geçmiş sınav tarzı sorulara ve günlük hatırlamaya öncelik ver."
+    },
+    {
+      "key": "site.a6192a1d04229aa735",
+      "source": "Start by asking for a simple explanation, one everyday analogy, and the three ideas you need before the topic will make sense.",
+      "value": "Basit bir açıklama, günlük hayattan bir benzetme ve konu anlam kazanmadan önce bilmen gereken üç fikri isteyerek başla."
+    },
+    {
+      "key": "site.4e5e24e4f3160a1073",
+      "source": "Start each session with a quick quiz before rereading.",
+      "value": "Her oturuma yeniden okumadan önce hızlı bir kısa sınavla başla."
+    },
+    {
+      "key": "site.b3b270e133dd3c1318",
+      "source": "Start from first principles",
+      "value": "İlk ilkelerden başla"
+    },
+    {
+      "key": "site.ee45c49a07ace8c741",
+      "source": "Start from the subject, then open the right learning mode.",
+      "value": "Konudan başla, sonra doğru öğrenme modunu aç."
+    },
+    {
+      "key": "site.e37d17cc6975fc35f3",
+      "source": "Start from the thing you do not understand and get a plain-language model, examples, and next steps.",
+      "value": "Anlamadığın şeyden başla ve sade dilli bir model, örnekler ve sonraki adımlar al."
+    },
+    {
+      "key": "site.02d279ce2f7b58c890",
+      "source": "Start learning",
+      "value": "Öğrenmeye başla"
+    },
+    {
+      "key": "site.7bf5c783e0e45dbcba",
+      "source": "Start with a topic, assignment, draft, exam, or idea in the mode that fits the job.",
+      "value": "İşe uygun modda bir konu, ödev, taslak, sınav veya fikirle başla."
+    },
+    {
+      "key": "site.aa8c9f9d46e3c16f1f",
+      "source": "Start with Learn Anything",
+      "value": "Her şeyi öğren ile başla"
+    },
+    {
+      "key": "site.1153fe30b38ef9826f",
+      "source": "Start with place, time, identity, constraints, and evidence labels so the scene does not become generic roleplay.",
+      "value": "Sahnenin genel bir rol yapmaya dönüşmemesi için yer, zaman, kimlik, sınırlamalar ve kanıt etiketleriyle başla."
+    },
+    {
+      "key": "site.53cdd9cd009f737f93",
+      "source": "Start with the job you need done.",
+      "value": "Yapılması gereken işle başla."
+    },
+    {
+      "key": "site.3ab933be8f0526fa38",
+      "source": "State the stuck point",
+      "value": "Takıldığın noktayı belirt"
+    },
+    {
+      "key": "site.ea0fe8464cc555a772",
+      "source": "Step checks",
+      "value": "Adım kontrolleri"
+    },
+    {
+      "key": "site.047526cdb6421387d4",
+      "source": "Step into historical context, compare arguments, and practise seeing an idea from more than one side.",
+      "value": "Tarihsel bağlama adım at, argümanları karşılaştır ve bir fikri birden fazla taraftan görme alıştırması yap."
+    },
+    {
+      "key": "site.02784cd57d167ffd6b",
+      "source": "Students who need a next step, a mistake check, or feedback without losing ownership of the assignment.",
+      "value": "Bir sonraki adıma, hata kontrolüne veya ödevin sahipliğini kaybetmeden geri bildirime ihtiyaç duyan öğrenciler."
+    },
+    {
+      "key": "site.651348d1cb2b1a6e85",
+      "source": "Study loops, AI tutoring guides, and practical prompts.",
+      "value": "Çalışma döngüleri, YZ öğretmenlik rehberleri ve pratik istemler."
+    },
+    {
+      "key": "site.04b79d7d3d9d8596f4",
+      "source": "subject hubs mapped to learner needs",
+      "value": "öğrenen ihtiyaçlarına göre eşleştirilmiş konu merkezleri"
+    },
+    {
+      "key": "site.c3c058c289d430b423",
+      "source": "Summarize the context",
+      "value": "Bağlamı özetle"
+    },
+    {
+      "key": "site.3ff20108ad7694163a",
+      "source": "Supports extracurricular learning, academic practice, and curiosity.",
+      "value": "Ders dışı öğrenmeyi, akademik alıştırmayı ve merakı destekler."
+    },
+    {
+      "key": "site.9a3eb7e1dfc6d450f8",
+      "source": "Switch into questions so you can reveal assumptions and fill gaps instead of passively reading the answer.",
+      "value": "Cevabı pasifçe okumak yerine varsayımları ortaya çıkarıp boşlukları kapatabilmek için soru moduna geç."
+    },
+    {
+      "key": "site.88a9fea69240291a5f",
+      "source": "Talk to a historical figure while keeping generated dialogue separate from documented quotation.",
+      "value": "Oluşturulan diyaloğu belgelenmiş alıntılardan ayrı tutarak tarihi bir figürle konuş."
+    },
+    {
+      "key": "site.77fa2b3ec987ab1aa4",
+      "source": "Talk to a historical person",
+      "value": "Tarihî bir kişiyle konuş"
+    },
+    {
+      "key": "site.9df89025b4bd1ee045",
+      "source": "talk to historical figures AI",
+      "value": "YZ ile tarihî kişilerle konuşma"
+    },
+    {
+      "key": "site.a2239be0c7855e64bf",
+      "source": "Test before review",
+      "value": "Tekrardan önce test et"
+    },
+    {
+      "key": "site.6da5b23e718ca9e323",
+      "source": "Test the argument",
+      "value": "Argümanı test et"
+    },
+    {
+      "key": "site.5223abcc7a10e74cff",
+      "source": "Test your reasoning",
+      "value": "Akıl yürütmeni test et"
+    },
+    {
+      "key": "site.27ab1313ce5cd637c8",
+      "source": "The blog connects useful learning advice to live practice, so a guide can become a study session in one step.",
+      "value": "Blog, yararlı öğrenme önerilerini canlı alıştırmaya bağlar; böylece bir rehber tek adımda çalışma oturumuna dönüşebilir."
+    },
+    {
+      "key": "site.2612682890bf429128",
+      "source": "The blog is organized around real study moments: getting unstuck, remembering more, writing better, preparing for exams, and exploring ideas with a patient tutor.",
+      "value": "Blog, gerçek çalışma anları etrafında düzenlenmiştir: takıldığın yerden çıkmak, daha çok hatırlamak, daha iyi yazmak, sınavlara hazırlanmak ve sabırlı bir öğretmenle fikirleri keşfetmek."
+    },
+    {
+      "key": "site.d9c636955d36e0ee3a",
+      "source": "The broader open-source inspir platform.",
+      "value": "Daha geniş açık kaynaklı inspir platformu."
+    },
+    {
+      "key": "site.059c79ee431bfc4427",
+      "source": "The closing beat returns to the mission: public access, schools, and a more open way to learn.",
+      "value": "Kapanış vurgusu misyona geri döner: herkese açık erişim, okullar ve öğrenmenin daha açık bir yolu."
+    },
+    {
+      "key": "site.9c2dd1d68f53e68960",
+      "source": "The current inspirlearning.com rebuild.",
+      "value": "Mevcut inspirlearning.com yeniden yapımı."
+    },
+    {
+      "key": "site.e92b2222fa496b32ce",
+      "source": "The film shifts from inspiration into the practical promise: a patient AI learning companion.",
+      "value": "Film, ilhamdan pratik vaade geçer: sabırlı bir YZ öğrenme arkadaşı."
+    },
+    {
+      "key": "site.7e6ed2d38c989652c5",
+      "source": "The homework and Socratic modes are designed around hints, reasoning, step checks, and learner explanations instead of simply handing over finished answers.",
+      "value": "Ödev ve Sokratik modlar; bitmiş cevapları doğrudan vermek yerine ipuçları, akıl yürütme, adım kontrolleri ve öğrenen açıklamaları etrafında tasarlanmıştır."
+    },
+    {
+      "key": "site.58be6769f6599885a2",
+      "source": "The middle section frames inspir around understanding, hints, quizzes, and active learning loops.",
+      "value": "Orta bölüm, inspir'i anlama, ipuçları, kısa sınavlar ve aktif öğrenme döngüleri etrafında çerçeveler."
+    },
+    {
+      "key": "site.6bc1b280c55aceeb1b",
+      "source": "The next-generation AI study platform.",
+      "value": "Yeni nesil YZ çalışma platformu."
+    },
+    {
+      "key": "site.59b5ab693533b9d350",
+      "source": "The opening frames set up learning as something anyone should be able to start immediately.",
+      "value": "Açılış kareleri, öğrenmeyi herkesin hemen başlayabilmesi gereken bir şey olarak kurar."
+    },
+    {
+      "key": "site.33237ba4c491cb9422",
+      "source": "The public site is structured like a learning map: live modes for immediate help, subject hubs for learner questions, and guides that turn reading into action.",
+      "value": "Herkese açık site bir öğrenme haritası gibi yapılandırılmıştır: anında yardım için canlı modlar, öğrenen soruları için konu merkezleri ve okumayı eyleme dönüştüren rehberler."
+    },
+    {
+      "key": "site.09ad4dd2ea0c36ebb3",
+      "source": "The site is a route, not a brochure.",
+      "value": "Site bir broşür değil, bir rota."
+    },
+    {
+      "key": "site.f875dfe94a0d5ef0d2",
+      "source": "Think deeper",
+      "value": "Daha derin düşün"
+    },
+    {
+      "key": "site.534f9712426325b6e2",
+      "source": "Time travel",
+      "value": "Zamanda yolculuk"
+    },
+    {
+      "key": "site.e380cdbfb5a190fcaf",
+      "source": "Topic clusters",
+      "value": "Konu kümeleri"
+    },
+    {
+      "key": "site.5bcd602254f322e5e2",
+      "source": "Transcript",
+      "value": "Döküm"
+    },
+    {
+      "key": "site.504b702ceedfaa1372",
+      "source": "Travel through a period",
+      "value": "Bir dönemde yolculuk et"
+    },
+    {
+      "key": "site.9219f300e6d6741265",
+      "source": "Try Homework Coach",
+      "value": "Ödev Koçunu dene"
+    },
+    {
+      "key": "site.e71a79ec223bf638e0",
+      "source": "Turn it into flashcards",
+      "value": "Bilgi kartlarına dönüştür"
+    },
+    {
+      "key": "site.654996be2022b987df",
+      "source": "Turn misses into review loops",
+      "value": "Eksikleri tekrar döngülerine dönüştür"
+    },
+    {
+      "key": "site.b510debc2ba94dfda6",
+      "source": "Turn notes or topics into focused flashcards with hints, answers, examples, and common traps.",
+      "value": "Notları veya konuları; ipuçları, cevaplar, örnekler ve sık tuzaklar içeren odaklı bilgi kartlarına dönüştür."
+    },
+    {
+      "key": "site.477b50d4abd0da659b",
+      "source": "Turn the corrected mistake into a flashcard or short checklist for later.",
+      "value": "Düzeltilen hatayı sonrası için bir bilgi kartına veya kısa kontrol listesine dönüştür."
+    },
+    {
+      "key": "site.48a08f580119dbfd04",
+      "source": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+      "value": "Açıklamayı bir kavram kartı, bir örnek kartı ve bir yanlış kanı kartı içeren aktif hatırlama kartlarına dönüştür."
+    },
+    {
+      "key": "site.ff1a7c17f19c22b5eb",
+      "source": "Turn the hardest missed question into a flashcard and review it later.",
+      "value": "En zor kaçırılan soruyu bir bilgi kartına dönüştür ve daha sonra tekrar et."
+    },
+    {
+      "key": "site.148eb6fc9a6b1b8134",
+      "source": "Turn these missed questions into flashcards grouped by concept, formula, definition, and example.",
+      "value": "Bu kaçırılan soruları kavram, formül, tanım ve örneğe göre gruplandırılmış bilgi kartlarına dönüştür."
+    },
+    {
+      "key": "site.3e23220342351e6253",
+      "source": "Turn your syllabus, exam date, time, and weak areas into a practical study plan.",
+      "value": "Müfredatını, sınav tarihini, zamanını ve zayıf alanlarını pratik bir çalışma planına dönüştür."
+    },
+    {
+      "key": "site.3a056d0d453e66afed",
+      "source": "Understand a hard topic",
+      "value": "Zor bir konuyu anla"
+    },
+    {
+      "key": "site.7142cc64953587182b",
+      "source": "Understand a historical context, question a perspective, compare claims, and separate simulation from documented fact.",
+      "value": "Tarihsel bir bağlamı anla, bir bakış açısını sorgula, iddiaları karşılaştır ve simülasyonu belgelenmiş olgudan ayır."
+    },
+    {
+      "key": "site.43417b2770a6aa9b4b",
+      "source": "Understand code, debug errors, learn programming concepts, and build small projects step by step.",
+      "value": "Kodu anla, hataları ayıkla, programlama kavramlarını öğren ve küçük projeleri adım adım oluştur."
+    },
+    {
+      "key": "site.555550019c0610a389",
+      "source": "Unmute film",
+      "value": "Filmin sesini aç"
+    },
+    {
+      "key": "site.5837baa2f3fd477b73",
+      "source": "Use AI as a coach for understanding, practice, and feedback instead of a shortcut that quietly removes the learning.",
+      "value": "YZ'yi, öğrenmeyi sessizce ortadan kaldıran bir kestirme yol yerine anlama, alıştırma ve geri bildirim için bir koç olarak kullan."
+    },
+    {
+      "key": "site.e6ef6fb29b1c837901",
+      "source": "Use AI homework coaching for hints, step checks, math reasoning, and writing feedback while keeping the final work yours.",
+      "value": "Son çalışmanın sana ait kalmasını sağlayarak ipuçları, adım kontrolleri, matematik akıl yürütmesi ve yazı geri bildirimi için YZ ödev koçluğunu kullan."
+    },
+    {
+      "key": "site.9a8c3a87f33267391f",
+      "source": "Use AI time travel, historical conversations, and debate practice to explore context, evidence, arguments, and perspectives.",
+      "value": "Bağlamı, kanıtı, argümanları ve bakış açılarını keşfetmek için YZ ile zamanda yolculuğu, tarihsel konuşmaları ve tartışma alıştırmasını kullan."
+    },
+    {
+      "key": "site.ca2809d878b3d8d4bf",
+      "source": "use client",
+      "value": "use client"
+    },
+    {
+      "key": "site.1ae09bc3eef4a70662",
+      "source": "Use debate to compare the strongest claim and strongest counterclaim.",
+      "value": "En güçlü iddiayı ve en güçlü karşı iddiayı karşılaştırmak için tartışmayı kullan."
+    },
+    {
+      "key": "site.981c30512d55fc31b6",
+      "source": "Use hints, step checks, and writing feedback without turning the learning into answer copying.",
+      "value": "Öğrenmeyi cevap kopyalamaya dönüştürmeden ipuçları, adım kontrolleri ve yazı geri bildirimi kullan."
+    },
+    {
+      "key": "site.7365f708ac121cec86",
+      "source": "Use inspir for essay feedback, reading support, speaking practice, source critique, and revision loops that improve structure without replacing the learner's voice.",
+      "value": "Öğrenenin sesini değiştirmeden yapıyı iyileştiren kompozisyon geri bildirimi, okuma desteği, konuşma alıştırması, kaynak eleştirisi ve revizyon döngüleri için inspir kullan."
+    },
+    {
+      "key": "site.6aada9efddc2925e91",
+      "source": "Use inspir for homework hints, math step checks, writing feedback, source critique, Socratic questions, and flashcards without exposing private chats.",
+      "value": "Özel sohbetleri açığa çıkarmadan ödev ipuçları, matematik adım kontrolleri, yazı geri bildirimi, kaynak eleştirisi, Sokratik sorular ve bilgi kartları için inspir kullan."
+    },
+    {
+      "key": "site.5419b0585afa54c629",
+      "source": "Use inspir for step-by-step math help, homework hints, Socratic reasoning, quizzes, flashcards, and exam prep without answer-copying.",
+      "value": "Cevap kopyalamadan adım adım matematik yardımı, ödev ipuçları, Sokratik akıl yürütme, kısa sınavlar, bilgi kartları ve sınav hazırlığı için inspir kullan."
+    },
+    {
+      "key": "site.0af3b33b94561f1ce4",
+      "source": "Use public guest modes for free, then explore the open-source work and school deployment paths.",
+      "value": "Herkese açık misafir modlarını ücretsiz kullan, ardından açık kaynak çalışmasını ve okul kurulum yollarını keşfet."
+    },
+    {
+      "key": "site.4cfe6ba8b15db0b7c1",
+      "source": "Use Socratic questions",
+      "value": "Sokratik sorular kullan"
+    },
+    {
+      "key": "site.9963920c7bdac40912",
+      "source": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+      "value": "Gerçek hayata dayanabilecek bir plan oluşturmak için sınav tarihini, müfredatı, ayırabileceğin zamanı ve zayıf alanları kullan."
+    },
+    {
+      "key": "site.5917147366ea1099e5",
+      "source": "Use the linked guide, prompt, subject hub, or learning path to review the weak spot later.",
+      "value": "Zayıf noktayı daha sonra tekrar etmek için bağlantılı rehberi, istemi, konu merkezini veya öğrenme yolunu kullan."
+    },
+    {
+      "key": "site.cedb4e92bf7b0e0fcc",
+      "source": "Use writing feedback for structure, clarity, and evidence while keeping the final draft recognizably yours.",
+      "value": "Son taslağın belirgin biçimde sana ait kalmasını sağlayarak yapı, açıklık ve kanıt için yazı geri bildirimi kullan."
+    },
+    {
+      "key": "site.22ae52c971e1606ead",
+      "source": "Useful from the first click",
+      "value": "İlk tıklamadan itibaren yararlı"
+    },
+    {
+      "key": "site.83d51c9d18fe71ac90",
+      "source": "Video controls",
+      "value": "Video kontrolleri"
+    },
+    {
+      "key": "site.a7e51103cd6606a2ba",
+      "source": "Video progress",
+      "value": "Video ilerlemesi"
+    },
+    {
+      "key": "site.5075ec6fde28bf0c22",
+      "source": "Voice-preserving feedback",
+      "value": "Kendi sesini koruyan geri bildirim"
+    },
+    {
+      "key": "site.b403b9e2441bca4f6a",
+      "source": "Watch 31s",
+      "value": "31 sn izle"
+    },
+    {
+      "key": "site.dd4a106d8c6a7587bb",
+      "source": "Weak-area loops",
+      "value": "Zayıf alan döngüleri"
+    },
+    {
+      "key": "site.dd89c6eec7302a5fa6",
+      "source": "What an AI learning companion should do for everyone",
+      "value": "Bir YZ öğrenme arkadaşı herkes için ne yapmalı"
+    },
+    {
+      "key": "site.c180ca03873f371014",
+      "source": "What learners usually ask before they start.",
+      "value": "Öğrenenlerin başlamadan önce genellikle sorduğu şeyler."
+    },
+    {
+      "key": "site.991dc86bc00526d618",
+      "source": "What should I ask first when a topic feels too hard?",
+      "value": "Bir konu çok zor geldiğinde önce ne sormalıyım?"
+    },
+    {
+      "key": "site.1176f58d853e6b6bc6",
+      "source": "What should I include in a homework prompt?",
+      "value": "Bir ödev istemine neleri eklemeliyim?"
+    },
+    {
+      "key": "site.fb2dbad141ac041ae2",
+      "source": "What you can do",
+      "value": "Neler yapabilirsin"
+    },
+    {
+      "key": "site.abf643921ca1c59909",
+      "source": "White-labelled school AI",
+      "value": "Beyaz etiketli okul YZ'si"
+    },
+    {
+      "key": "site.9884d6321db182435a",
+      "source": "Why a Socratic AI tutor can make ideas stick",
+      "value": "Sokratik bir YZ öğretmeni fikirleri neden kalıcı kılar"
+    },
+    {
+      "key": "site.26e66d2c403929d540",
+      "source": "Why combine history with debate?",
+      "value": "Tarihi neden tartışmayla birleştirmeli?"
+    },
+    {
+      "key": "site.cb3f19f849d9a614f6",
+      "source": "Why use Socratic questions after an explanation?",
+      "value": "Bir açıklamadan sonra neden Sokratik sorular kullanmalı?"
+    },
+    {
+      "key": "site.b8a5730cebdd9b8c2d",
+      "source": "Work through algebra, calculus, word problems, and math concepts one step at a time with an AI coach.",
+      "value": "Cebir, kalkülüs, sözel problemler ve matematik kavramları üzerinde bir YZ koçuyla her seferinde tek adım ilerle."
+    },
+    {
+      "key": "site.4e2149136bd53c413f",
+      "source": "Work through math steps",
+      "value": "Matematik adımları üzerinde çalış"
+    },
+    {
+      "key": "site.3437548ca48afa1053",
+      "source": "Write a three-sentence explanation without looking, then ask the Socratic mode to find the weak link.",
+      "value": "Bakmadan üç cümlelik bir açıklama yaz, sonra Sokratik moddan zayıf halkayı bulmasını iste."
+    },
+    {
+      "key": "site.2b690267ad064f9d94",
+      "source": "Write exactly where you got stuck before asking for help.",
+      "value": "Yardım istemeden önce tam olarak nerede takıldığını yaz."
+    },
+    {
+      "key": "site.2dabb8334b6cbbc196",
+      "source": "Writing",
+      "value": "Yazma"
+    },
+    {
+      "key": "site.031857a0f03861e726",
+      "source": "Writing Coach",
+      "value": "Yazı Koçu"
+    },
+    {
+      "key": "site.572dd800fbaae05945",
+      "source": "Yes, when it gives hints, checks reasoning, explains mistakes, and asks you to produce the final answer instead of writing it for you.",
+      "value": "Evet; ipuçları verdiğinde, akıl yürütmeyi kontrol ettiğinde, hataları açıkladığında ve senin yerine yazmak yerine son yanıtı senin üretmeni istediğinde."
+    },
+    {
+      "key": "site.4eb7825da66025f6ae",
+      "source": "Yes. Public topic chats such as Learn Anything, Socratic Instruction, Homework Coach, quizzes, and flashcards open directly in guest mode.",
+      "value": "Evet. Her şeyi öğren, Sokratik öğretim, Ödev koçu, kısa sınavlar ve bilgi kartları gibi herkese açık konu sohbetleri doğrudan misafir modunda açılır."
+    },
+    {
+      "key": "site.8a7aa2b153eb463026",
+      "source": "Yes. Schools can use the public product first, then discuss custom AI learning spaces with school-specific workflows, confidentiality, and funded access options.",
+      "value": "Evet. Okullar önce herkese açık ürünü kullanabilir, ardından okula özel iş akışları, gizlilik ve finanse edilmiş erişim seçenekleriyle özel YZ öğrenme alanlarını görüşebilir."
+    },
+    {
+      "key": "site.7e0d4a8f0b3a3c531c",
+      "source": "Yes. The public guest learning modes are designed for free access, so learners can start without needing a school deployment or paid account.",
+      "value": "Evet. Herkese açık misafir öğrenme modları ücretsiz erişim için tasarlandı; bu nedenle öğrenenler okul kurulumu veya ücretli hesap gerektirmeden başlayabilir."
+    },
+    {
+      "key": "site.6ca3eede4c1406628d",
+      "source": "You can try public learning modes freely. Saved chats, accounts, admin tools, and user data stay private.",
+      "value": "Herkese açık öğrenme modlarını özgürce deneyebilirsin. Kayıtlı sohbetler, hesaplar, yönetici araçları ve kullanıcı verileri gizli kalır."
+    }
+  ]
+}

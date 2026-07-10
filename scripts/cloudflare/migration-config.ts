@@ -21,12 +21,14 @@ export const LOCAL_GATE_IDS = [
   "source-secret-scan",
   "next-build",
   "opennext-build",
+  "opennext-resource-budget",
   "opennext-artifact-secret-scan",
   "wrangler-deploy-dry-run",
   "wrangler-check-startup",
 ] as const;
 
 export const RUNTIME_MUTABLE_TABLES = [
+  "game_results",
   "llm_usage_daily_shards",
   "rate_limit_windows",
   "ops_events",

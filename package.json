@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/makriman/inspir/issues"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@11.7.0",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
@@ -30,17 +30,23 @@
     "cf:verify:local": "tsx scripts/cloudflare/run-local-gates.ts",
     "cf:scan:source-secrets": "tsx scripts/cloudflare/scan-source-secrets.ts",
     "cf:scan:build-artifacts": "tsx scripts/cloudflare/scan-build-artifacts.ts",
+    "cf:check:resource-budget": "tsx scripts/cloudflare/check-opennext-resource-budget.ts",
     "cf:harden:backup-permissions": "tsx scripts/cloudflare/harden-backup-permissions.ts",
     "cf:check:write-freeze": "tsx scripts/cloudflare/check-write-freeze-readiness.ts",
     "cf:activate:write-freeze": "tsx scripts/cloudflare/activate-write-freeze.ts",
     "cf:backup:frozen-cloudflare": "tsx scripts/cloudflare/backup-frozen-cloudflare-production.ts",
     "cf:d1:local:setup": "tsx scripts/cloudflare/setup-local-d1.ts",
+    "cf:d1:apply-game-results": "tsx scripts/cloudflare/apply-game-results-migration.ts",
+    "cf:sync:topic-seeds": "tsx scripts/cloudflare/sync-topic-seeds.ts",
+    "cf:r2:retire-cache-build": "tsx scripts/cloudflare/retire-next-cache-build.ts",
     "cf:sync:site-translation-sources": "tsx scripts/cloudflare/sync-site-translation-sources.ts",
     "cf:preflight:deploy": "tsx scripts/cloudflare/deploy-preflight.ts",
     "cf:verify:cloudflare-token": "tsx scripts/cloudflare/verify-cloudflare-api-token.ts",
     "cf:cache:upsert-marketing-html": "tsx scripts/cloudflare/upsert-marketing-cache-rule.ts",
+    "cf:cache:purge-deploy-html": "tsx scripts/cloudflare/purge-deploy-html-cache.ts",
     "cf:verify:edge-cache": "tsx scripts/cloudflare/verify-marketing-edge-cache.ts",
     "cf:verify:production": "tsx scripts/cloudflare/verify-production.ts",
+    "cf:verify:worker-outcomes": "tsx scripts/cloudflare/verify-production-worker-outcomes.ts",
     "cf:test:e2e:production": "tsx scripts/cloudflare/run-production-playwright.ts",
     "start": "next start",
     "lint": "eslint",
@@ -73,6 +79,7 @@
     "@shadcn/react": "^0.1.0",
     "@speed-highlight/core": "1.2.17",
     "better-auth": "1.6.22",
+    "chess.js": "1.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.2",
@@ -92,7 +99,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20260617.1",
+    "@cloudflare/workers-types": "^4.20260701.1",
     "@opennextjs/cloudflare": "^1.19.11",
     "@playwright/test": "^1.61.0",
     "@testing-library/dom": "^10.4.1",
@@ -110,6 +117,6 @@
     "tailwindcss": "3.4.17",
     "tsx": "^4.22.3",
     "typescript": "^5",
-    "wrangler": "^4.102.0"
+    "wrangler": "^4.107.0"
   }
 }

@@ -1,7 +1,6 @@
 import {
   defaultLanguage,
   languageCodeToLanguage,
-  normalizeLocaleOrLanguage,
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
@@ -75,8 +74,8 @@ export function recommendLanguage(input: {
   fallback?: SupportedLanguage;
 }) {
   return (
-    recommendLanguageFromCountry(input.countryCode) ??
     recommendLanguageFromAcceptLanguage(input.acceptLanguage) ??
+    recommendLanguageFromCountry(input.countryCode) ??
     input.fallback ??
     defaultLanguage
   );
@@ -96,7 +95,7 @@ export function recommendLanguageFromCountry(countryCode?: string | null) {
   }
 }
 
-function recommendLanguageFromAcceptLanguage(value?: string | null) {
+export function recommendLanguageFromAcceptLanguage(value?: string | null) {
   if (!value) return null;
 
   const ranked = value
@@ -106,12 +105,14 @@ function recommendLanguageFromAcceptLanguage(value?: string | null) {
       const q = qValue ? Number.parseFloat(qValue) : 1;
       return { locale, q: Number.isFinite(q) ? q : 0 };
     })
-    .filter((entry) => entry.locale)
+    .filter((entry) => entry.locale && entry.q > 0)
     .sort((a, b) => b.q - a.q);
 
   for (const entry of ranked) {
-    const language = normalizeLocaleOrLanguage(entry.locale);
-    if (supportedLanguages.includes(language)) return language;
+    const normalized = entry.locale.trim().toLowerCase();
+    const direct = supportedLanguages.find((language) => language.toLowerCase() === normalized);
+    const language = direct ?? languageCodeToLanguage[normalized] ?? languageCodeToLanguage[normalized.split("-")[0] ?? ""];
+    if (language) return language;
   }
 
   return null;

@@ -4,6 +4,7 @@ import { isKnownTopicSlug, isUuidPathSegment } from "@/lib/content/topic-routing
 import { buildForwardedRequestHeaders } from "@/lib/http/forwarded-request-headers";
 import { recommendLanguage } from "@/lib/i18n/language-detection";
 import { resolveRequestLanguage } from "@/lib/i18n/language-preference";
+import { isStaticSiteLanguageAvailableForPath } from "@/lib/i18n/static-availability";
 import {
   getLocalizedPathInfo,
   localeCookieName,
@@ -35,6 +36,10 @@ export async function middleware(request: NextRequest) {
   const marketingPageRequest = isMarketingPageRequest(request, effectivePathname);
   const cacheableMarketingRequest =
     marketingPageRequest && isPubliclyCacheableMarketingRequest(request, effectivePathname);
+  const immutableLocalizedMarketingRequest =
+    cacheableMarketingRequest &&
+    localizedPath.hasLocalePrefix &&
+    isStaticSiteLanguageAvailableForPath(effectivePathname, localizedPath.language);
   const nonce = marketingPageRequest ? undefined : createNonce();
   const csp = nonce ? buildContentSecurityPolicy(nonce) : buildCacheableMarketingContentSecurityPolicy();
   const referrerLanguage = getReferrerLocaleLanguage(request.headers.get("referer"));
@@ -63,7 +68,28 @@ export async function middleware(request: NextRequest) {
   const isPrivateChatThread = chatSegment ? isUuidPathSegment(chatSegment) : false;
   const needsAuth = effectivePathname.startsWith("/admin") || (isPrivateChatThread && !isPublicTopicChat);
   const shouldRedirectToLocale =
-    !localizedPath.hasLocalePrefix && language !== "English" && shouldLocaleRedirectPath(effectivePathname);
+    !localizedPath.hasLocalePrefix &&
+    language !== "English" &&
+    shouldLocaleRedirectPath(effectivePathname) &&
+    (!isMarketingPath(effectivePathname) || isStaticSiteLanguageAvailableForPath(effectivePathname, language));
+
+  if (
+    localizedPath.hasLocalePrefix &&
+    (effectivePathname.startsWith("/games") ||
+      (isMarketingPath(effectivePathname) &&
+        !isStaticSiteLanguageAvailableForPath(effectivePathname, localizedPath.language)))
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = effectivePathname;
+    const response = NextResponse.redirect(url, 308);
+    response.cookies.set(localeCookieName, localizedPath.language, {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 365,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+    });
+    return applyMarketingCacheHeaders(applySecurityHeaders(response, csp), false);
+  }
 
   if (shouldRedirectToLocale) {
     const url = request.nextUrl.clone();
@@ -75,13 +101,21 @@ export async function middleware(request: NextRequest) {
     let response: NextResponse;
     if (!localizedPath.hasLocalePrefix || hasLocalizedMarketingRoute(effectivePathname)) {
       response = NextResponse.next({ request: { headers: requestHeaders } });
-      return applyMarketingCacheHeaders(applySecurityHeaders(response, csp), cacheableMarketingRequest);
+      return applyMarketingCacheHeaders(
+        applySecurityHeaders(response, csp),
+        cacheableMarketingRequest,
+        immutableLocalizedMarketingRequest,
+      );
     }
 
     const url = request.nextUrl.clone();
     url.pathname = effectivePathname;
     response = NextResponse.rewrite(url, { request: { headers: requestHeaders } });
-    return applyMarketingCacheHeaders(applySecurityHeaders(response, csp), cacheableMarketingRequest);
+    return applyMarketingCacheHeaders(
+      applySecurityHeaders(response, csp),
+      cacheableMarketingRequest,
+      immutableLocalizedMarketingRequest,
+    );
   };
 
   if (!needsAuth) {
@@ -121,6 +155,7 @@ function getReferrerLocaleLanguage(referrer: string | null) {
 
 function shouldLocaleRedirectPath(pathname: string) {
   if (pathname.startsWith("/admin")) return false;
+  if (pathname.startsWith("/games")) return false;
   if (pathname.startsWith("/onboarding")) return false;
   return true;
 }
@@ -150,23 +185,7 @@ const marketingStaticPrefixes = ["/blog", "/compare", "/for", "/learn", "/subjec
 
 const localizedMarketingRoutePaths = new Set([
   "/",
-  "/about",
-  "/ai-learning-map",
-  "/blog",
-  "/compare",
-  "/for",
-  "/learn",
-  "/loading",
-  "/media",
   "/mission",
-  "/privacy",
-  "/prompts",
-  "/reset_pw",
-  "/schools",
-  "/subjects",
-  "/terms",
-  "/topics",
-  "/trust",
 ]);
 
 function isMarketingPageRequest(request: NextRequest, pathname: string) {
@@ -192,6 +211,17 @@ function hasLocalizedMarketingRoute(pathname: string) {
 
 function canonicalOriginRedirectUrl(request: NextRequest) {
   const url = request.nextUrl.clone();
+  const requestHost = request.headers.get("host")?.toLowerCase() ?? "";
+  if (
+    requestHost === "localhost" ||
+    requestHost.startsWith("localhost:") ||
+    requestHost === "127.0.0.1" ||
+    requestHost.startsWith("127.0.0.1:") ||
+    requestHost === "[::1]" ||
+    requestHost.startsWith("[::1]:")
+  ) {
+    return null;
+  }
   const hostname = url.hostname.toLowerCase();
   const isInspirHost = hostname === "inspirlearning.com" || hostname === "www.inspirlearning.com";
   const forwardedScheme = requestScheme(request);
@@ -244,12 +274,21 @@ function applySecurityHeaders(response: NextResponse, csp: string) {
   return response;
 }
 
-function applyMarketingCacheHeaders(response: NextResponse, cacheable: boolean) {
+function applyMarketingCacheHeaders(
+  response: NextResponse,
+  cacheable: boolean,
+  immutableLocalized = false,
+) {
   response.headers.set("Vary", "Accept-Encoding, Cookie");
   if (!cacheable) {
     response.headers.set("Cache-Control", "private, no-cache, no-store, max-age=0, must-revalidate");
     return response;
   }
-  response.headers.set("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
+  response.headers.set(
+    "Cache-Control",
+    immutableLocalized
+      ? "public, max-age=0, s-maxage=31536000, must-revalidate"
+      : "public, s-maxage=3600, stale-while-revalidate=86400",
+  );
   return response;
 }

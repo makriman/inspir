@@ -18,6 +18,7 @@ export type WorkerDeployEvidenceReport = {
   commandExecuted: boolean;
   deployPreflightOk?: boolean;
   deployPreflightStatus?: number | null;
+  resourceBudgetOk?: boolean | null;
   scanBeforeOk: boolean | null;
   scanAfterOk: boolean | null;
   sourceFingerprintBefore: SourceFingerprint;

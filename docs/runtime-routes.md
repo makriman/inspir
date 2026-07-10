@@ -5,14 +5,16 @@ Inspir runs on Cloudflare Workers through OpenNext. Public and private routes sh
 ## Static Or Cacheable Public Routes
 
 - `/robots.txt`, `/sitemap`, `/sitemap/:locale.xml`, `/rss.xml`, `/llms.txt`, `/llms-full.txt`, `/ai-content-index.json`, and `/og` are static or explicitly cacheable SEO/discovery surfaces.
+- English marketing HTML is pre-rendered and may use bounded ISR backed by the OpenNext R2 incremental cache and the `NEXT_CACHE_DO_QUEUE` revalidation Durable Object.
+- Localized marketing HTML is deploy-time immutable. Only route/language pairs with committed, source-hash-exact curated packs are generated; unavailable localized URLs redirect to canonical English.
 - `/api/topics` is a public D1-backed catalog endpoint. It is intentionally dynamic because topic rows can change through admin tooling, but the response is CDN/browser cacheable for short freshness windows.
 - Immutable media and social-preview assets are cached through `next.config.ts` headers.
 
 ## Intentionally Dynamic Public Routes
 
-- Marketing HTML under `app/(marketing)` is localization-sensitive. The layout reads middleware-provided request language/path headers and the locale cookie so DB-backed translations continue to render exactly without regeneration, but it must not declare segment-wide `force-dynamic` because file-backed public pages such as the blog need a static build path.
-- Localized marketing paths such as `/hi` rewrite to the canonical route tree while carrying the request language header. Do not add shared public HTML cache headers to those responses unless the cache key varies by original URL/language and `Set-Cookie` behavior is accounted for.
-- A future static-marketing project may export the preserved translation tables into build-time bundles and pre-render localized routes, but that is a separate migration because translation fidelity is a hard requirement.
+- Language preference writes are dynamic and private/no-store. A preference only redirects to a localized URL when that exact route has full curated coverage.
+- Game result writes are bounded, rate-limited, and revalidated server-side; completed non-personal result reads are intentionally public.
+- Do not add Worker-wide caching. Public marketing HTML uses a path-scoped Cloudflare cache rule with `/api` exclusion and authenticated-cookie bypass.
 
 ## Private And Mutating Routes
 

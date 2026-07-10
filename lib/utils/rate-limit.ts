@@ -70,6 +70,30 @@ export async function consumeFixedWindowQuota(
   windowMs: number,
   now = new Date(),
 ): Promise<RateLimitResult> {
+  return consumeFixedWindowQuotaWithFailureMode(key, limit, windowMs, now, "fail-open");
+}
+
+/**
+ * Reserved for abuse-sensitive public writes that must stop when D1 cannot
+ * authoritatively consume a quota. Existing per-user quotas intentionally use
+ * consumeFixedWindowQuota() and keep their availability-biased fail-open policy.
+ */
+export async function consumeFixedWindowQuotaOrThrow(
+  key: string,
+  limit: number,
+  windowMs: number,
+  now = new Date(),
+): Promise<RateLimitResult> {
+  return consumeFixedWindowQuotaWithFailureMode(key, limit, windowMs, now, "throw");
+}
+
+async function consumeFixedWindowQuotaWithFailureMode(
+  key: string,
+  limit: number,
+  windowMs: number,
+  now: Date,
+  failureMode: "fail-open" | "throw",
+): Promise<RateLimitResult> {
   const resetAt = new Date(now.getTime() + windowMs);
   if (limit <= 0) {
     await recordOpsEvent({
@@ -130,6 +154,7 @@ export async function consumeFixedWindowQuota(
     return rateLimitResult(true, limit, limit - updated[0].count, updated[0].resetAt, now);
   } catch (error) {
     console.error("rate_limit_check_failed", { key, error });
+    if (failureMode === "throw") throw error;
     await recordOpsEvent({
       eventName: "rate_limit_check_failed",
       severity: "warning",
