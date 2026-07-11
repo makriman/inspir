@@ -426,7 +426,7 @@ test("success sets secure cookies, builds a localized compact prompt, and passes
   assert.equal(providerHeaders.get("cf-aig-authorization"), "Bearer gateway-token");
   assert.equal(providerHeaders.get("cf-aig-byok-alias"), "inspir");
   assert.equal(providerHeaders.get("cf-aig-collect-log-payload"), "false");
-  assert.equal(providerInit?.redirect, "error");
+  assert.equal(providerInit?.redirect, "manual");
 
   const providerBody: unknown = JSON.parse(String(providerInit?.body));
   assert.ok(isRecord(providerBody));

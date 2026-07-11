@@ -432,7 +432,9 @@ export async function handleFreeGuestChat(
       method: "POST",
       headers: provider.headers,
       body: JSON.stringify(providerBody),
-      redirect: "error",
+      // workerd implements `manual`, not `error`. Keeping redirects manual also
+      // prevents the authenticated Gateway headers from following to another host.
+      redirect: "manual",
       signal: request.signal,
     });
   } catch (error) {
