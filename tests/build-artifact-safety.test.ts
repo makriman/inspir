@@ -11,6 +11,7 @@ import {
   withSanitizedProjectEnvFiles,
 } from "../scripts/cloudflare/sanitized-build-env";
 import {
+  applyNativeWranglerDeployEnvironment,
   blockedOpenNextSkipBuildArgs,
   clearLocalPreviewCacheApiState,
   pruneUnusedOpenNextServerRuntime,
@@ -46,6 +47,20 @@ test("sanitized build path blocks OpenNext skip-build bypasses", () => {
   assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-build", ["--skipNextBuild"]), ["--skipNextBuild"]);
   assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-deploy", ["--skipBuild=true"]), ["--skipBuild=true"]);
   assert.deepEqual(blockedOpenNextSkipBuildArgs("wrangler-preview", ["--remote"]), []);
+});
+
+test("native production deploy cannot delegate back to the retired OpenNext R2 path", () => {
+  const deployEnv: Record<string, string | undefined> = {};
+  const previewEnv: Record<string, string | undefined> = {};
+
+  assert.equal(
+    applyNativeWranglerDeployEnvironment("opennext-deploy", deployEnv).OPEN_NEXT_DEPLOY,
+    "true",
+  );
+  assert.equal(
+    applyNativeWranglerDeployEnvironment("wrangler-preview", previewEnv).OPEN_NEXT_DEPLOY,
+    undefined,
+  );
 });
 
 test("local preview clears only persisted Cache API state", () => {
@@ -122,6 +137,7 @@ test("blocked OpenNext deploy writes non-secret Worker deploy evidence", () => {
     assert.equal(report.ok, false);
     assert.equal(report.mode, "opennext-deploy");
     assert.equal(report.commandExecuted, false);
+    assert.deepEqual(report.command.slice(1, 4), ["deploy", "--config", "wrangler.jsonc"]);
     assert.deepEqual(report.blockedArgs, ["--skipBuild"]);
     assert.equal(report.sourceFingerprintStable, true);
     assert.equal(report.sourceFingerprintAfter.sha256.length, 64);

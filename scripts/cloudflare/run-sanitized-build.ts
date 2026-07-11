@@ -37,13 +37,13 @@ const COMMANDS: Record<
   },
   "opennext-deploy": {
     executable: bin("wrangler"),
-    args: ["deploy"],
+    args: ["deploy", "--config", "wrangler.jsonc"],
     buildBefore: true,
     scanBefore: true,
   },
   "opennext-upload": {
     executable: bin("wrangler"),
-    args: ["versions", "upload"],
+    args: ["versions", "upload", "--config", "wrangler.jsonc"],
     buildBefore: true,
     scanBefore: true,
   },
@@ -111,6 +111,7 @@ export function runSanitizedBuildCommand(
   return withSanitizedProjectEnvFiles(() => {
     try {
       const env = buildSanitizedCloudflareBuildEnv();
+      applyNativeWranglerDeployEnvironment(mode, env);
       env.PATH = [localCliBinDir, env.PATH].filter(Boolean).join(path.delimiter);
 
       if (command.buildBefore) {
@@ -298,6 +299,22 @@ export function blockedOpenNextSkipBuildArgs(mode: CommandMode, passthroughArgs:
   return passthroughArgs.filter((arg) =>
     BLOCKED_OPENNEXT_SKIP_BUILD_ARGS.some((blocked) => arg === blocked || arg.startsWith(`${blocked}=`)),
   );
+}
+
+export function applyNativeWranglerDeployEnvironment(
+  mode: CommandMode,
+  env: Record<string, string | undefined>,
+) {
+  if (mode === "opennext-deploy") {
+    // Wrangler auto-detects open-next.config.ts and otherwise delegates back to
+    // `opennextjs-cloudflare deploy`, which tries to populate the retired R2
+    // incremental cache. This wrapper already performed the clean OpenNext
+    // build, static materialization, resource gate, and artifact scan. Mark the
+    // direct Wrangler step as the delegated/native upload so it deploys
+    // cloudflare-worker.ts plus Static Assets without invoking OpenNext again.
+    env.OPEN_NEXT_DEPLOY = "true";
+  }
+  return env;
 }
 
 function printScanFailure(findings: number) {
