@@ -9,9 +9,6 @@ export const D1_DATABASE_ID = "7cb2ddf7-ca3d-4f46-a022-cc8b3a25b7b9";
 export const VECTORIZE_INDEX_NAME = "inspirlearning-memory-prod";
 export const R2_BUCKET_NAME = "inspirlearning-next-cache-prod";
 export const PROFILE_IMAGES_R2_BUCKET_NAME = "inspirlearning-profile-images-prod";
-export const MEMORY_POST_TURN_QUEUE_NAME = "inspirlearning-memory-post-turn-prod";
-export const MEMORY_POST_TURN_DLQ_NAME = "inspirlearning-memory-post-turn-dlq";
-
 export const LOCAL_GATE_IDS = [
   "typecheck",
   "cloudflare-worker-typecheck",

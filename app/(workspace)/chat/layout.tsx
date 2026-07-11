@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Private inspir chat workspace.",
   robots: {
     index: false,
-    follow: false,
+    follow: true,
     nocache: true,
   },
   keywords: [],

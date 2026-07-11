@@ -1,8 +1,9 @@
 # Localization Workflow
 
 The app does not translate text at user request time. Translation packs are generated and validated
-offline, then imported once into `app_translations`. Production reads those cached DB rows by
-`namespace + language`; missing rows are a data-prep problem, not a runtime model call.
+offline. The Workers Free deployment publishes curated site HTML and tracked static main-app bundles;
+D1 mirrors the audited translation rows but is not on the page-rendering path. Missing rows or files
+are a data-prep problem, not a runtime model call.
 
 ## Manual Curated Packs
 
@@ -34,6 +35,18 @@ into the one-file-per-language bundle format:
 ```bash
 pnpm translations:bundle -- --dir=translations/curated --out-dir=translations/curated-bundles --clean
 ```
+
+The main-app editing shards are intentionally ignored. After reviewing changes to them, regenerate
+the smaller values-only deployment snapshot and commit `translations/static-main-app/`:
+
+```bash
+pnpm translations:static-main-app -- --clean
+pnpm translations:static-main-app:check
+```
+
+Each tracked pack is locked to the full main-app source hash and sorted key count. A stale, incomplete,
+non-NFC, placeholder-breaking, or unchanged ordinary UI translation fails closed. This snapshot lets a
+clean checkout build every localized static chat shell without D1 or hidden workbench files.
 
 Fill every `entries[].value` in the exported JSON file. Preserve:
 

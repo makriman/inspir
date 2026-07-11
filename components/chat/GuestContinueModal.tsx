@@ -1,15 +1,12 @@
 import { X } from "lucide-react";
-import { GoogleContinueButton } from "@/components/marketing/SignInButton";
 
 export function GuestContinueModal({
   used,
   limit,
-  callbackUrl,
   onClose,
 }: {
   used: number;
   limit: number;
-  callbackUrl: string;
   onClose: () => void;
 }) {
   return (
@@ -22,13 +19,6 @@ export function GuestContinueModal({
           {Math.min(used, limit)}/{limit} free guest messages used
         </span>
         <h2 id="guest-modal-title">Continue learning</h2>
-        <p>
-          Easy Google login, then inspir stores your learning history, language preference, and chats so everything is
-          ready next time. inspir stays free to use.
-        </p>
-        <GoogleContinueButton className="inspir-guest-modal-primary" callbackUrl={callbackUrl}>
-          Continue with Google
-        </GoogleContinueButton>
         <button type="button" onClick={onClose} className="inspir-guest-modal-secondary">
           Maybe later
         </button>

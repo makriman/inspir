@@ -13,6 +13,7 @@ import {
 import {
   blockedOpenNextSkipBuildArgs,
   clearLocalPreviewCacheApiState,
+  pruneUnusedOpenNextServerRuntime,
   runSanitizedBuildCommand,
 } from "../scripts/cloudflare/run-sanitized-build";
 import { buildArtifactScanReport, scanNextEnvFallbacks } from "../scripts/cloudflare/scan-build-artifacts";
@@ -44,7 +45,7 @@ test("sanitized build path blocks OpenNext skip-build bypasses", () => {
   assert.equal(isForbiddenBuildEnvKey("SKIP_NEXT_APP_BUILD"), true);
   assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-build", ["--skipNextBuild"]), ["--skipNextBuild"]);
   assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-deploy", ["--skipBuild=true"]), ["--skipBuild=true"]);
-  assert.deepEqual(blockedOpenNextSkipBuildArgs("opennext-preview", ["--remote"]), []);
+  assert.deepEqual(blockedOpenNextSkipBuildArgs("wrangler-preview", ["--remote"]), []);
 });
 
 test("local preview clears only persisted Cache API state", () => {
@@ -62,6 +63,29 @@ test("local preview clears only persisted Cache API state", () => {
     assert.equal(fs.existsSync(cacheDir), false);
     assert.equal(fs.existsSync(path.join(d1Dir, "sentinel")), true);
     assert.equal(fs.existsSync(path.join(r2Dir, "sentinel")), true);
+  } finally {
+    fs.rmSync(cwd, { recursive: true, force: true });
+  }
+});
+
+test("lean build pruning removes only the unused OpenNext server function", () => {
+  const cwd = fs.mkdtempSync(path.join(os.tmpdir(), "inspir-lean-opennext-prune-"));
+  const serverFile = path.join(cwd, ".open-next/server-functions/default/handler.mjs");
+  const queueFile = path.join(cwd, ".open-next/.build/durable-objects/queue.js");
+  const assetFile = path.join(cwd, ".open-next/assets/chat/index.html");
+  try {
+    for (const file of [serverFile, queueFile, assetFile]) {
+      fs.mkdirSync(path.dirname(file), { recursive: true });
+      fs.writeFileSync(file, "sentinel");
+    }
+
+    const result = pruneUnusedOpenNextServerRuntime(cwd);
+
+    assert.equal(result.removed, true);
+    assert.equal(fs.existsSync(serverFile), false);
+    assert.equal(fs.readFileSync(queueFile, "utf8"), "sentinel");
+    assert.equal(fs.readFileSync(assetFile, "utf8"), "sentinel");
+    assert.equal(pruneUnusedOpenNextServerRuntime(cwd).removed, false);
   } finally {
     fs.rmSync(cwd, { recursive: true, force: true });
   }

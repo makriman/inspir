@@ -16,7 +16,7 @@ import { inspectOpenNextResourceBudget } from "./check-opennext-resource-budget"
 import { materializeStaticMarketingAssets } from "./materialize-static-marketing-assets";
 import { writeWorkerDeployEvidenceReport, type WorkerDeployEvidenceReport } from "./worker-deploy-evidence";
 
-type CommandMode = "next-build" | "opennext-build" | "opennext-deploy" | "opennext-upload" | "opennext-preview";
+type CommandMode = "next-build" | "opennext-build" | "opennext-deploy" | "opennext-upload" | "wrangler-preview";
 type DeployPreflightResult = { ok: boolean; status: number | null };
 type RunSanitizedBuildOptions = {
   deployPreflight?: (backupDir: string) => DeployPreflightResult;
@@ -47,9 +47,9 @@ const COMMANDS: Record<
     buildBefore: true,
     scanBefore: true,
   },
-  "opennext-preview": {
-    executable: bin("opennextjs-cloudflare"),
-    args: ["preview"],
+  "wrangler-preview": {
+    executable: bin("wrangler"),
+    args: ["dev", "--show-interactive-dev-session=false"],
     buildBefore: true,
     scanBefore: true,
   },
@@ -134,6 +134,7 @@ export function runSanitizedBuildCommand(
 
         try {
           materializeStaticMarketingAssets(process.cwd());
+          pruneUnusedOpenNextServerRuntime(process.cwd());
         } catch (error) {
           return deployEvidence.finish(1, {
             commandExecuted: false,
@@ -179,7 +180,7 @@ export function runSanitizedBuildCommand(
 
       let localPreviewConfig: string | null = null;
       let commandArgs = passthroughArgs;
-      if (mode === "opennext-preview") {
+      if (mode === "wrangler-preview") {
         clearLocalPreviewCacheApiState();
         writeLocalPreviewRuntimeVars();
         Object.assign(env, localPreviewRuntimeEnv());
@@ -203,13 +204,14 @@ export function runSanitizedBuildCommand(
           resourceBudgetOk: command.buildBefore ? true : undefined,
           scanBeforeOk: command.scanBefore ? true : null,
           scanAfterOk: null,
-          error: `OpenNext ${mode} exited with status ${result.status ?? "unknown"}.`,
+          error: `${mode} exited with status ${result.status ?? "unknown"}.`,
         });
       }
 
       if (mode === "opennext-build") {
         try {
           materializeStaticMarketingAssets(process.cwd());
+          pruneUnusedOpenNextServerRuntime(process.cwd());
         } catch (error) {
           return deployEvidence.finish(1, {
             commandExecuted: true,
@@ -271,6 +273,15 @@ export function clearLocalPreviewCacheApiState(cwd = process.cwd()) {
   const cacheApiDir = path.join(cwd, ".wrangler", "state", "v3", "cache");
   fs.rmSync(cacheApiDir, { recursive: true, force: true });
   return cacheApiDir;
+}
+
+export function pruneUnusedOpenNextServerRuntime(cwd = process.cwd()) {
+  const serverFunctionsDir = path.join(cwd, ".open-next", "server-functions");
+  const removed = fs.existsSync(serverFunctionsDir);
+  // Production uses cloudflare-worker.ts plus Static Assets. The generated Next
+  // server function is outside that deploy graph and only consumes artifact budget.
+  fs.rmSync(serverFunctionsDir, { recursive: true, force: true });
+  return { path: serverFunctionsDir, removed };
 }
 
 function runProductionDeployPreflight(backupDir: string): DeployPreflightResult {
@@ -342,8 +353,7 @@ function writeLocalPreviewWranglerConfig() {
     AUTH_URL: localPreviewUrl,
     BETTER_AUTH_URL: localPreviewUrl,
   };
-  // Production custom-domain routes make OpenNext construct localhost requests
-  // against the canonical production host and trigger an HTTPS redirect loop.
+  // Production custom domains are not part of the localhost Wrangler preview.
   delete config.routes;
   const previewConfigPath = ".wrangler.preview.local.jsonc";
   fs.writeFileSync(path.join(cwd, previewConfigPath), `${JSON.stringify(config, null, 2)}\n`, { mode: 0o600 });

@@ -1,34 +1,64 @@
 # Cloudflare Workers Free Deploy Runbook
 
-Production is a static-first OpenNext deployment on Cloudflare Workers Free. The OpenNext build still supplies the dynamic application, but public marketing pages, supported localized pages, SEO documents, and immutable frontend assets are copied into `.open-next/assets` and served directly by Workers Static Assets. Those requests must not invoke the Worker.
+Production is intentionally limited to the product that can run reliably on Cloudflare Workers Free:
 
-Only explicitly listed dynamic surfaces enter the main OpenNext Worker: the deployed API endpoints, `/chat`, `/admin`, `/reset_pw`, and their supported localized workspace forms. `assets.not_found_handling` is `404-page`, so every other asset miss is a direct Static Asset `404` instead of an OpenNext invocation. The production `wrangler.jsonc` must not contain `limits.cpu_ms`; configurable CPU limits are not accepted on Workers Free. Treat the platform's 10 ms per-request CPU ceiling as a hard design constraint for every dynamic request.
+- multilingual marketing, learning, SEO, topic-catalogue, and guest-chat documents are Workers Static Assets;
+- `/api/health` and `/api/guest-chat` are the only routes that execute the main Worker;
+- the guest tutor streams OpenAI's SSE response through a small native Worker and enforces D1-backed global and guest quotas;
+- games, accounts, saved chats, profiles, memory, admin, quiz/flashcard generation, and other private or mutating APIs are not routable in production.
 
-## Release Invariants
+Next and OpenNext are build tools only. The deployed request handler must not import Next or the OpenNext server runtime. The old `DOQueueHandler` binding, migration tag, and self binding remain solely to keep the existing Durable Object migration rollback-safe; they are dormant in normal traffic.
 
-- The game arena and game APIs are absent. `/games` must remain a `404`, and no game document may appear in the static asset report.
-- Public HTML and SEO files are direct Static Assets, identified in production by `X-Inspir-Delivery: static-assets`.
-- Static pages do not depend on OpenNext ISR, Worker execution, a managed HTML Cache Rule, or a post-deploy cache purge.
-- Static HTML contains no `/_next/image` optimizer URLs; local and release-owned images are served directly as cached assets.
-- Static layouts retain external GA/Clarity scripts but never beacon the D1-backed product-event API merely because a public page or `404` was viewed.
-- `/tnc` is a native Static Assets `308` declared in `public/_redirects`; it must not invoke either Worker.
-- The separate `inspirlearning-www-redirect` route Worker canonicalizes every `www.inspirlearning.com` request to the same path and query on `https://inspirlearning.com` and identifies itself with `X-Inspir-Delivery: www-redirect-worker`.
-- `assets.run_worker_first` must equal the reviewed endpoint list in deploy preflight. Broad patterns such as `/api/*` or `/*` are forbidden; the list includes only real APIs plus unprefixed and localized chat/admin/reset paths, with the higher-precedence `!/_next/static/*` exclusion required so deep localized globs cannot capture Next client chunks.
-- `assets.not_found_handling` remains `404-page`. Unknown public paths, unknown API paths, removed endpoints, and unsupported localized URLs must return the Static Asset `404` without invoking OpenNext.
-- Localized documents are generated only for route/language pairs whose committed curated pack is complete and matches the current source hash. Generated links fall back to the canonical English URL when a localized document is unavailable; a direct unsupported locale URL returns the static `404` rather than rendering partial English copy.
-- API routes enforce their own authorization and user scoping. Private, authenticated, mutating, and operational responses remain `private, no-store`.
-- Worker-wide caching remains disabled.
-- A release is atomic: the main application and redirect Worker must each have exactly one version at 100% of their traffic. Do not use a split main-Worker rollout while the OpenNext Durable Object revalidation self-call is not explicitly version-pinned.
+## Release invariants
 
-## Local Gates
+- `wrangler.jsonc` has no `limits.cpu_ms`. The Free plan's 10 ms CPU ceiling is a hard constraint.
+- `assets.run_worker_first` is exactly `/api/health` and `/api/guest-chat`. Broad globs such as `/api/*`, `/chat/*`, or `/*` are forbidden.
+- Every public document, `/api/topics`, known topic-chat URL, localized topic-chat URL, static redirect, and asset returns `X-Inspir-Delivery: static-assets` without invoking Worker code.
+- The two native APIs return `X-Inspir-Delivery: lean-api-worker` and `private, no-store`.
+- Unknown topic URLs, UUID chat URLs, auth/private/admin/reset-password/game routes resolve to the Static Asset 404; retired mutation methods receive the Static Asset router's fail-closed 405.
+- Static chat pages are `noindex, follow`, contain no marketing JSON-LD, initialize from the requested topic path, and use the complete curated main-app bundle for their language.
+- Localized documents are emitted only when their committed curated bundle matches the current source hash and is complete. Partial English fallback inside a localized document is not allowed.
+- Static HTML contains no `/_next/image` optimizer URLs.
+- Static pages may load the reviewed GA/Clarity scripts but must not call the retired D1 product-event API.
+- The global LLM daily ceiling fails closed. Guest session, fingerprint, and IP quota-storage errors may fail open only with a structured warning.
+- Request JSON, message history, prompt length, response headers, cookies, and provider errors stay bounded. Provider secrets are never returned or logged.
+- `/tnc` is a Static Assets `308` to `/terms`.
+- `inspirlearning-www-redirect` remains the canonical `www` route Worker and returns `X-Inspir-Delivery: www-redirect-worker`.
+- The main Worker and redirect Worker each have one version at 100%; no split rollout is accepted.
 
-Start by validating the SEO translation repair contract. The verification form is read-only: it checks the exact source hashes and keys, the 69-language NFC seed, field validation, and the repair SQL without touching D1.
+## Translation gate
+
+The repository owns the curated translation bundles used at build time. D1 mirrors every current source namespace and stores the audited payload repairs used by the former runtime. Run the read-only repair verifier and require complete bundles for every language on the surfaces this Free deployment publishes globally:
 
 ```bash
 pnpm cf:d1:repair-seo-translations
+pnpm translations:static-main-app:check
+pnpm translations:status -- --all-languages \
+  --namespace=main-app \
+  --namespace=marketing-shell \
+  --namespace=route:home
 ```
 
-Then run the application and Cloudflare gates:
+If the audited SEO source hashes changed, capture a D1 Time Travel bookmark and apply the explicit incremental repair:
+
+```bash
+pnpm exec wrangler d1 time-travel info inspirlearning-prod --json
+pnpm cf:d1:repair-seo-translations -- --remote --confirm-production
+```
+
+The repair must fail closed unless source extraction, the 69-language seed, Unicode normalization, and field validation all pass. It exports the affected translation tables to a mode-`0600`, ignored backup, rejects a projected write count above the repository's Free-plan safety budget, applies one atomic SQL file, and verifies every resulting row against the current source hash. Never run it routinely when the same hashes already pass.
+
+If source rows alone need reconciliation, use the same bookmark/backup discipline and run:
+
+```bash
+pnpm cf:sync:site-translation-sources -- --remote --confirm-production
+```
+
+Never commit the generated SQL, backups, or reports.
+
+## Local gates
+
+Run the repository gates before every deployable change:
 
 ```bash
 pnpm typecheck
@@ -44,169 +74,76 @@ pnpm cf:verify:local
 pnpm cf:preflight:deploy
 ```
 
-`pnpm cf:build` runs the sanitized OpenNext build, materializes the prerendered public documents into `.open-next/assets`, enforces the Workers Static Assets file/count budgets, and scans the result. Inspect `.open-next/static-marketing-assets-report.json` and require all of the following before deployment:
+`pnpm cf:build` performs a clean sanitized OpenNext build and then materializes the prerender cache into `.open-next/assets`. Inspect `.open-next/static-marketing-assets-report.json` and require:
 
-- at least 100 public HTML documents and at least 50 localized home documents;
-- `index.html`, `404.html`, `manifest.webmanifest`, `robots.txt`, `sitemap.xml`, and `llms.txt` are present;
-- no materialized HTML contains `/_next/image`, and `/loading` is a real static document;
-- no `games/` output exists;
-- the asset-count and largest-file budgets pass;
-- the report records the current OpenNext build ID and output SHA-256.
+- at least 100 public HTML documents and all 69 non-English localized home documents;
+- one static chat shell for every supported language;
+- exact English and localized known-topic `308` redirects into query-based static chat shells, with fewer than Cloudflare's 100 dynamic redirect-rule limit;
+- `index.html`, `404.html`, `/api/topics`, `_redirects`, `manifest.webmanifest`, `robots.txt`, `sitemap.xml`, and `llms.txt`;
+- no game output and no `/_next/image` reference;
+- asset-count, individual-file-size, source-hash, and secret scans all passing.
 
-To rerun only the fail-closed materialization check against an existing OpenNext build while diagnosing an asset problem:
+`pnpm cf:preflight:deploy` rejects stale source-fingerprinted gate evidence, any retired Vectorize/R2/Queue/cron binding, extra Worker-first route, paid CPU configuration, missing Static Asset 404 boundary, missing translation/static-chat artifacts, missing rollback-safe Durable Object infrastructure, or a main Worker that imports OpenNext.
 
-```bash
-pnpm cf:materialize:static
-```
-
-This diagnostic command does not replace `pnpm cf:build`; the deploy wrapper always rebuilds and rematerializes from clean source.
-
-`pnpm cf:check:www-redirect` performs a Wrangler dry run against `wrangler.www-redirect.jsonc`. The same `www-redirect-dry-run` check is part of `pnpm cf:verify:local`, which writes source-fingerprinted evidence to `tmp/cloudflare-reports/cloudflare/local-gates-report.json`. Deploy preflight rejects stale evidence, a paid-only CPU limit, a missing Static Asset 404 boundary, any broad/extra/missing Worker-first route, a failed main or redirect Worker dry run, or an incompatible production binding/schema state.
-
-For local browser regression coverage:
+For local browser coverage:
 
 ```bash
 pnpm cf:d1:local:setup
 pnpm cf:preview
 ```
 
-In a second terminal:
+Then, in a second terminal:
 
 ```bash
 pnpm cf:test:e2e:preview
 ```
 
-## Repair SEO Translations
+## Canonical `www` Worker
 
-Run the production repair only for a release that includes the audited SEO CTA source changes. First preserve the D1 Time Travel bookmark or timestamp in the release evidence:
+Static Asset matches bypass Next middleware. `inspirlearning-www-redirect`, configured by `wrangler.www-redirect.jsonc`, owns `www.inspirlearning.com/*` and issues a `308` to the same path/query on `https://inspirlearning.com`.
 
-```bash
-pnpm exec wrangler d1 time-travel info inspirlearning-prod --json
-```
-
-Re-run the read-only verifier, then apply the explicitly confirmed repair:
-
-```bash
-pnpm cf:d1:repair-seo-translations
-pnpm cf:d1:repair-seo-translations -- --remote --confirm-production
-```
-
-The remote command fails closed unless every generated namespace matches fresh source extraction and the 69-language seed matches the repair SQL exactly. Before writing it verifies D1 Time Travel and exports `app_translations`, `app_translation_sources`, and `app_translation_source_strings` to a mode-`0600`, ignored backup. It computes an incremental source diff, rejects a conservative projected write count above 50,000 billed D1 rows, and submits the source diff plus CTA payload repair as one atomic D1 SQL file. It never drops or rebuilds the source tables. Postchecks require every site row to be source-current and all 69 target languages to be complete for `route:about`, `route:media`, and `route:schools`.
-
-Keep the command output, the pre-repair bookmark, the generated backup path, and `tmp/cloudflare-reports/cloudflare/seo-cta-translation-repair-remote.json` with the release evidence. The read-only run writes the adjacent `seo-cta-translation-repair-verify.json`. Never commit the SQL backup or generated reports.
-
-If this repair has already passed against the same source hashes, do not turn it into a routine write on unrelated releases.
-
-The standalone source synchronizer is also production-confirmed and incremental. If it is ever needed outside the repair, first capture Time Travel evidence and export the two source tables, then use the remote form:
-
-```bash
-pnpm cf:sync:site-translation-sources -- --remote --confirm-production
-```
-
-Inspect its reported logical and projected billed writes before proceeding. Workers Free allows 100,000 D1 rows written per UTC day across the account; the repository guard intentionally reserves at least half for normal application traffic and other release work.
-
-## Canonical `www` Route Worker
-
-Static Asset matches bypass Next middleware, so middleware cannot be the production canonical-host mechanism. The current deploy credential can write Worker routes but has only zone read access; it cannot create a zone-level Redirect Rule. The deployable production solution is therefore the separate `inspirlearning-www-redirect` Worker defined by `cloudflare-www-redirect.ts` and `wrangler.www-redirect.jsonc`.
-
-Its route is `www.inspirlearning.com/*`. A Worker Route takes precedence over the main Worker's existing `www.inspirlearning.com` Custom Domain, so every `www` request reaches the tiny redirect Worker before the main application or its Static Assets. The redirect Worker:
-
-- changes the scheme and host to `https://inspirlearning.com`;
-- preserves the complete path and query string;
-- returns `308` for every method;
-- returns `X-Inspir-Delivery: www-redirect-worker` and bounded public caching;
-- has no assets, storage bindings, application variables, secrets, or configurable CPU limit.
-
-Keep both existing Custom Domains in the main `wrangler.jsonc`: `inspirlearning.com` and `www.inspirlearning.com`. The `www` Custom Domain continues to supply DNS and certificate coverage behind the higher-priority route. Do not combine this release with detaching that domain or changing its DNS.
-
-Dry-run and deploy the redirect Worker before the main static-first Worker:
+Dry-run it on every release. Deploy it only when its source or config changed:
 
 ```bash
 pnpm cf:check:www-redirect
 pnpm cf:deploy:www-redirect
-pnpm exec wrangler deployments status \
-  --name inspirlearning-www-redirect \
-  --json
+pnpm exec wrangler deployments status --name inspirlearning-www-redirect --json
 ```
 
-Require one redirect Worker version at 100%, then validate it before continuing with the application cutover:
+Verify exact path and query preservation:
 
 ```bash
-curl -sS -D - -o /dev/null \
-  'https://www.inspirlearning.com/about?utm_source=canonical-test'
-
-curl -sS -D - -o /dev/null \
-  'https://www.inspirlearning.com/hi?probe=a%2Fb'
-
-curl -sS -X POST -D - -o /dev/null \
-  'https://www.inspirlearning.com/api/health?probe=method'
+curl -sS -D - -o /dev/null 'https://www.inspirlearning.com/about?utm_source=canonical-test'
+curl -sS -D - -o /dev/null 'https://www.inspirlearning.com/hi?probe=a%2Fb'
+curl -sS -X POST -D - -o /dev/null 'https://www.inspirlearning.com/api/health?probe=method'
 ```
 
-All three must return `308` and `X-Inspir-Delivery: www-redirect-worker`. Their `Location` values must respectively be:
+All three responses must be `308`, contain `X-Inspir-Delivery: www-redirect-worker`, preserve the complete query, and point at the apex host. Keep both Custom Domains in the main config for DNS and certificate coverage.
 
-```text
-https://inspirlearning.com/about?utm_source=canonical-test
-https://inspirlearning.com/hi?probe=a%2Fb
-https://inspirlearning.com/api/health?probe=method
-```
+## Atomic main deploy
 
-Confirm that the first probe is a single hop:
-
-```bash
-curl -sS -L --max-redirs 2 -o /dev/null \
-  -w '%{url_effective} %{num_redirects} %{http_code}\n' \
-  'https://www.inspirlearning.com/about?utm_source=canonical-test'
-```
-
-Expected output is `https://inspirlearning.com/about?utm_source=canonical-test 1 200`. A uniquely tagged `www` request must not appear in a tail of the main `inspirlearning` Worker; it intentionally creates one small invocation on `inspirlearning-www-redirect`.
-
-### Optional later zero-invocation optimization
-
-A zone-level Cloudflare Single Redirect can replace the route Worker later, eliminating even that small Free-plan invocation. It requires zone read plus Single Redirect edit permission, which the current deploy credential does not have and Wrangler does not manage. This is not part of the present cutover.
-
-If the permission is added in a future release, create a `308` Single Redirect from `http*://www.inspirlearning.com/*` to `https://inspirlearning.com/${2}`, preserve the query string, and put it first. Prove exact path/query behavior and zero Worker invocation before removing the `www.inspirlearning.com/*` Worker Route. Update the production verifier and this runbook as part of that migration; until then, `X-Inspir-Delivery: www-redirect-worker` is the required production contract.
-
-## Atomic Deploy
-
-Before changing production, record the currently active Worker version and OpenNext build ID from `/api/health`:
+Record the active versions before changing production:
 
 ```bash
 pnpm exec wrangler deployments status --name inspirlearning --json
-pnpm exec wrangler deployments status \
-  --name inspirlearning-www-redirect \
-  --json
+pnpm exec wrangler deployments status --name inspirlearning-www-redirect --json
 curl -fsS https://inspirlearning.com/api/health
 ```
 
-Keep the previous version UUID for each Worker as its independent rollback target. The main application target must be at or after the existing `opennext-cache-queue-v1` Durable Object migration; Cloudflare cannot roll a migrated Worker back to a pre-migration version.
+The main rollback target must be at or after `opennext-cache-queue-v1`; Cloudflare cannot roll a migrated Worker back to a pre-migration version.
 
-After all local gates and any required D1 repair pass, use this order for the static-first cutover:
+After every local and translation gate passes:
 
 ```bash
-pnpm cf:check:www-redirect
-pnpm cf:deploy:www-redirect
-pnpm exec wrangler deployments status \
-  --name inspirlearning-www-redirect \
-  --json
-
-# Run the three exact www header/location probes above before continuing.
-
 pnpm cf:deploy
 pnpm exec wrangler deployments status --name inspirlearning --json
-pnpm cf:sync:topic-seeds -- --remote
 ```
 
-Deploying and verifying the redirect route first closes the interval in which `www` could serve duplicate Static Asset content after the main cutover. On later releases, redeploy the redirect Worker only when its source or config changes, but always rerun its dry run and production probes before deploying the main Worker.
+`pnpm cf:deploy` reruns preflight, rebuilds from clean source, rematerializes assets, repeats resource/secret scans, and runs `wrangler deploy`. Do not deploy a hand-edited `.open-next` directory or bypass the wrapper. The native Worker and Static Assets manifest are one versioned deployment.
 
-`pnpm cf:deploy` reruns deploy preflight, performs a clean sanitized OpenNext build, rematerializes the static documents, rechecks resource and secret budgets, and then calls `wrangler deploy`. Do not deploy a hand-edited `.open-next` directory and do not bypass the wrapper with an OpenNext skip-build flag.
+## Production verification
 
-The deployment is complete only when Wrangler reports one redirect version and one main application version, each at 100%. Topic synchronization is an explicit post-cutover reconciliation step; it must not run from public requests.
-
-There is no HTML Cache Rule creation and no deploy-time HTML purge in this architecture. The Worker version and its Static Assets manifest are released together.
-
-## Production Verification
-
-Use the exact 100% Worker version UUID from Wrangler:
+Use the single version UUID reported at 100%:
 
 ```bash
 REQUIRE_LIVE_AI=1 REQUIRE_RESOURCE_SOAK=1 pnpm cf:verify:production -- \
@@ -215,56 +152,39 @@ REQUIRE_LIVE_AI=1 REQUIRE_RESOURCE_SOAK=1 pnpm cf:verify:production -- \
 REQUIRE_LIVE_AI=1 pnpm cf:verify:worker-outcomes -- \
   --expected-version <current-worker-version-id> \
   --confirm-production
+
+PLAYWRIGHT_BASE_URL=https://inspirlearning.com \
+REQUIRE_LIVE_AI=1 \
+pnpm cf:test:e2e:production -- --expected-version <current-worker-version-id>
 ```
 
-Production verification must prove all three delivery paths:
+The production gates must prove:
 
-- `/`, a generated localized page such as `/hi`, `/robots.txt`, `/sitemap.xml`, locale sitemaps, RSS/LLM documents, and the static social preview return successfully with `X-Inspir-Delivery: static-assets`;
-- `/manifest.webmanifest` and `/loading` are direct Static Assets, while `/tnc` returns a native Static Assets `308` to `/terms` without a Worker delivery marker;
-- those public responses do not expose OpenNext render-cache headers, private/no-store policy, or a language-setting response cookie;
-- `/api/health`, auth/session probes, topics, and guest chat execute the expected Worker version;
-- every `www` probe returns `308`, the exact apex path/query, and `X-Inspir-Delivery: www-redirect-worker` from the separate redirect Worker;
-- health and private/auth responses are `private, no-store` and never shared-cache hits;
-- unknown paths, removed endpoints, and unavailable locale/route pairs return the direct Static Asset `404` and never enter OpenNext;
-- idle public and static-404 documents create no same-origin API or RSC-prefetch request;
-- stale translation APIs remain removed and the retired managed-topic catalog state is absent;
-- the live guest tutor streams a non-empty bounded response.
+- an unpinned health request reports the exact 100% version and `free-static-lean-guest` architecture;
+- `/api/health` and `/api/guest-chat` identify `lean-api-worker`, are private/no-store, and every sampled execution uses less than 8 ms CPU;
+- guest chat returns real `text/event-stream`, at least one valid OpenAI text delta, and sane server quota headers;
+- multilingual pages, known topic routes, `/api/topics`, SEO documents, redirects, chunks, and images identify `static-assets`;
+- Hindi renders `lang=hi`, Arabic renders `dir=rtl`, localized main-app strings are not English fallbacks, and chat has `noindex, follow` without marketing JSON-LD;
+- unknown/deep/UUID topic routes and retired GET surfaces are direct Static Asset 404s, while retired mutation methods are direct Static Asset 405s;
+- static requests produce no main Worker tail event, API/RSC bootstrap, Next cache header, or private cache policy;
+- tail events have `ok` outcomes, no exceptions or resource-limit logs, complete CPU samples, and no unexpected invocation;
+- `www` preserves path/query in one redirect hop.
 
-Check the headers independently as a fast operational probe:
+Fast independent header probes:
 
 ```bash
 curl -fsSI https://inspirlearning.com/
 curl -fsSI https://inspirlearning.com/hi
-curl -fsSI https://inspirlearning.com/sitemap.xml
+curl -fsSI https://inspirlearning.com/chat/learn-anything
+curl -fsSI https://inspirlearning.com/api/topics
 curl -fsSI https://inspirlearning.com/api/health
 ```
 
-The first three responses must contain `X-Inspir-Delivery: static-assets`. `/api/health` must not contain that header and must contain a private/no-store cache policy.
-
-Before either production gate accepts a release, Wrangler deployment status must show exactly the expected main Worker version at 100%, and an unpinned health request must report that same UUID. Version overrides are used only after this proof; they cannot substitute for proving what normal traffic receives.
-
-The bounded Wrangler-tail gate generates multilingual Static Asset traffic, direct static 404 traffic, dynamic health/auth/topics/chat traffic, and one live streaming `POST /api/guest-chat`, all tagged by a unique query nonce. Every expected dynamic probe must have its own correlated tail event and CPU sample; unrelated production traffic cannot satisfy the count. Public assets and static 404 probes must create no main Worker invocation. The gate requires only `ok` outcomes, no exceptions/resource logs, and CPU below 8 ms for every sampled dynamic invocation. The 8 ms threshold reserves 2 ms (20%) beneath the Free-plan 10 ms termination ceiling for runtime and traffic variance.
-
-Repeat the three canonical `www` probes after the release and require the exact `308` locations plus `X-Inspir-Delivery: www-redirect-worker`. A uniquely tagged `www` request must not appear in the main Worker tail.
-
-Run the production browser suite when credentials for the authenticated flow are available:
-
-```bash
-PLAYWRIGHT_BASE_URL=https://inspirlearning.com \
-REQUIRE_LIVE_AI=1 \
-E2E_GOOGLE_EMAIL=<test-admin-email> \
-E2E_GOOGLE_PASSWORD=<test-admin-password> \
-E2E_GOOGLE_IS_ADMIN=1 \
-pnpm cf:test:e2e:production -- --expected-version <current-worker-version-id>
-```
-
-The hidden session-auth path is an alternative only when `E2E_TEST_AUTH_SECRET` is temporarily configured in the Worker and local shell. Delete temporary test credentials immediately after the run and verify `/api/migration/e2e-auth` returns `404` again.
+The first four must say `static-assets`; health must say `lean-api-worker` and be private/no-store.
 
 ## Rollback
 
-### Worker and Static Assets
-
-Roll back the Worker and its associated Static Assets to the recorded, post-migration version:
+Roll back the native Worker and its matching Static Assets together:
 
 ```bash
 pnpm exec wrangler rollback <previous-post-migration-version-id> \
@@ -273,39 +193,21 @@ pnpm exec wrangler rollback <previous-post-migration-version-id> \
 pnpm exec wrangler deployments status --name inspirlearning --json
 ```
 
-Require one version at 100%, verify that `/api/health` reports the rollback UUID/build, and repeat the Static Asset header probes plus the Worker outcome gate. Do not restore or purge an incremental-cache R2 prefix as part of a normal rollback; public availability does not depend on that cache.
+Require one version at 100%, check that health reports the rollback UUID, and rerun all production gates. Leave the `www` route Worker and both Custom Domains in place during an application rollback.
 
-Leave the `inspirlearning-www-redirect` route Worker and both Custom Domains in place during an application rollback. Canonical-host routing is independent of the application version.
-
-If the redirect Worker itself must be rolled back, use its separately recorded version:
+If the redirect Worker itself needs rollback:
 
 ```bash
 pnpm exec wrangler rollback <previous-www-redirect-version-id> \
   --name inspirlearning-www-redirect \
   --message "Rollback failed www canonical redirect"
-pnpm exec wrangler deployments status \
-  --name inspirlearning-www-redirect \
-  --json
 ```
 
-Require one redirect version at 100% and rerun all three header/location probes. On the first redirect deployment, where no prior route-Worker version exists, redeploy the reviewed redirect source/config rather than removing the route and exposing duplicate `www` content.
+A Worker rollback does not roll back D1 translations. Prefer a reviewed forward correction. A full D1 Time Travel restore can discard unrelated later writes; it requires a write freeze, a fresh backup, an explicit write-loss window, and separate approval.
 
-### D1 Translation Repair
+## Evidence hygiene
 
-A Worker rollback does not roll back D1. Prefer a forward translation correction because D1 Time Travel restores the entire database and can discard unrelated writes made after the chosen point. Keep the site available while preparing a forward correction unless the data itself is unsafe.
-
-If an emergency full D1 restore is genuinely required, first activate the documented write freeze, take a fresh full Cloudflare backup, and obtain explicit approval for the write-loss window. Then restore the recorded pre-repair bookmark:
-
-```bash
-pnpm exec wrangler d1 time-travel restore inspirlearning-prod \
-  --bookmark <pre-repair-bookmark>
-```
-
-After any D1 restore, rerun the translation verifier, production smoke, authenticated data checks, and Worker outcome gate before lifting the write freeze. Do not import the runner's table backup wholesale over a live database; use it as audit evidence or as the source for a reviewed, targeted forward repair.
-
-## Backups and Evidence
-
-Before destructive maintenance, take and harden a Cloudflare-native backup:
+Before destructive maintenance:
 
 ```bash
 pnpm cf:backup:frozen-cloudflare

@@ -16,7 +16,10 @@ type CuratedPack = {
 };
 
 test("localized routes are generated only for proven route coverage", () => {
-  assert.equal(staticSiteLanguagesForPath("/").filter((language) => language !== defaultLanguage).length, 49);
+  assert.equal(
+    staticSiteLanguagesForPath("/").filter((language) => language !== defaultLanguage).length,
+    supportedLanguages.length - 1,
+  );
   assert.deepEqual(staticSiteLanguagesForPath("/mission"), [defaultLanguage, "Spanish"]);
   assert.deepEqual(staticSiteLanguagesForPath("/about"), [defaultLanguage]);
   assert.deepEqual(staticSiteLanguagesForPath("/reset_pw"), [defaultLanguage]);

@@ -4,14 +4,45 @@ SET
     payload,
     '$."site.ee30b035ee17c34450"',
     '$."site.5121f7306ecc75edb5"',
-    '$."site.df499d7c6f44a88703"'
+    '$."site.df499d7c6f44a88703"',
+    '$."site.19abb1657a1d5e54c2"',
+    '$."site.2ced57f125910a9e8a"',
+    '$."site.649df08a448ee3fa90"',
+    '$."site.2ac5cdad2988ba0c40"',
+    '$."site.b78a38d18d6555118d"',
+    '$."site.4b0412c73bb17a566f"'
   ),
-  source_hash = '784fb3090db46f80d95db18611a9c8f6c784cccb397e2a0634e658734b6e5d39',
+  source_hash = 'f14328ad17e645fbc8d904da8d2892fae56e9c7a41b54b8aa108c89eaf7611b0',
+  model = 'codex-curated-free-static-no-games-v4',
   updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
 WHERE namespace = 'marketing-site'
   AND source_hash IN (
     'ec84387ca93fbec6a68df90e756a5b64af6dc401b0fefbc4646866ee897b228b',
-    '784fb3090db46f80d95db18611a9c8f6c784cccb397e2a0634e658734b6e5d39'
+    '784fb3090db46f80d95db18611a9c8f6c784cccb397e2a0634e658734b6e5d39',
+    'f14328ad17e645fbc8d904da8d2892fae56e9c7a41b54b8aa108c89eaf7611b0'
+  );
+
+UPDATE app_translations
+SET
+  payload = json_remove(
+    payload,
+    '$."site.c737278d536db3a59e"',
+    '$."site.19abb1657a1d5e54c2"',
+    '$."site.2ced57f125910a9e8a"',
+    '$."site.efd5b7d0291c46f8f7"',
+    '$."site.649df08a448ee3fa90"',
+    '$."site.2ac5cdad2988ba0c40"',
+    '$."site.b78a38d18d6555118d"',
+    '$."site.4b0412c73bb17a566f"',
+    '$."site.0ceccded9174305dc1"'
+  ),
+  source_hash = 'f5ef074ab3712ef9b40cb5fcbc794e9b7d42efd2089fc22400aeb280abce8689',
+  model = 'codex-curated-free-static-no-games-v4',
+  updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
+WHERE namespace = 'route:chat-public'
+  AND source_hash IN (
+    '86bf6df3dfce89c2fafc10af32f4300e6c485e93c5e1dbbf473fa792081bd317',
+    'f5ef074ab3712ef9b40cb5fcbc794e9b7d42efd2089fc22400aeb280abce8689'
   );
 
 UPDATE app_translations AS target
@@ -28,7 +59,7 @@ SET
     )
   ),
   source_hash = '6aa44ee2349a660b840519a4fc03037976d4e26ee4ceb55d7d94e2959b211a99',
-  model = 'codex-curated-no-games-seo-repair-v3',
+  model = 'codex-curated-free-static-no-games-v4',
   updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
 WHERE target.namespace = 'route:about'
   AND EXISTS (
@@ -55,7 +86,7 @@ SET
     )
   ),
   source_hash = '8f437d1337e18df480b2aef7ced339482fa4b1d53653e29fa7b06ae881a77982',
-  model = 'codex-curated-no-games-seo-repair-v3',
+  model = 'codex-curated-free-static-no-games-v4',
   updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
 WHERE target.namespace = 'route:media'
   AND EXISTS (
@@ -152,7 +183,7 @@ SET
     )
   ),
   source_hash = '2c3294f27d9887dd9fbb10d0ad2147c31960a75ace708d1b3fc750416e6adabe',
-  model = 'codex-curated-no-games-seo-repair-v3',
+  model = 'codex-curated-free-static-no-games-v4',
   updated_at = CAST(strftime('%s', 'now') AS INTEGER) * 1000
 WHERE target.namespace = 'route:schools'
   AND EXISTS (

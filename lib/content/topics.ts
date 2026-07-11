@@ -1525,4 +1525,4 @@ export const topicSeeds: TopicSeed[] = [
   }),
 ];
 
-export const defaultTopicSlug = "learn-anything";
+export { defaultTopicSlug } from "@/lib/content/topic-path";

@@ -20,7 +20,7 @@ export const defaultOpenNextResourceBudget: OpenNextResourceBudget = {
   artifactBytes: 256 * 1024 * 1024,
   cacheBytes: 128 * 1024 * 1024,
   cacheEntries: 400,
-  localizedCacheEntries: 80,
+  localizedCacheEntries: 140,
   largestCacheEntryBytes: 2 * 1024 * 1024,
 };
 

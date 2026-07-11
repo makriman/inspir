@@ -1,9 +1,6 @@
 import { Check, Plus, Search } from "lucide-react";
 import { InspirLogo } from "@/components/brand/InspirLogo";
 import { ProfileAvatarImage } from "@/components/chat/ProfileAvatarImage";
-import { GoogleContinueButton } from "@/components/marketing/SignInButton";
-import { topicPath } from "@/lib/content/topic-routing";
-import { localizeHref } from "@/lib/i18n/routing";
 import { topicMetadata, type Topic } from "@/components/chat/topic-model";
 
 type TopicSidebarProps = {
@@ -55,12 +52,9 @@ export function TopicSidebar({
     <div className="inspir-sidebar-inner">
       <div className="inspir-sidebar-header">
         {isGuest ? (
-          <GoogleContinueButton
-            className="inspir-guest-auth-button"
-            callbackUrl={localizeHref(activeTopic ? topicPath(activeTopic.slug) : "/chat", currentLanguage)}
-          >
-            Continue with Google
-          </GoogleContinueButton>
+          <span className="inspir-guest-auth-button" aria-label={`${currentLanguage} guest mode`}>
+            <span>Preferred Language</span>
+          </span>
         ) : (
           <button type="button" onClick={onProfile} aria-label="Open profile" className="inspir-avatar-button">
             <ProfileAvatarImage

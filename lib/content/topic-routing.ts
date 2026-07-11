@@ -1,4 +1,7 @@
-import { defaultTopicSlug, topicSeeds } from "@/lib/content/topics";
+import { defaultTopicSlug } from "@/lib/content/topic-path";
+import { topicSeeds } from "@/lib/content/topics";
+
+export { defaultTopicPath, topicPath } from "@/lib/content/topic-path";
 
 const uuidPathSegmentPattern =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -12,14 +15,6 @@ const knownTopicSlugs = new Set(topicSeeds.map((topic) => topic.slug));
 
 export function isUuidPathSegment(value: string) {
   return uuidPathSegmentPattern.test(value);
-}
-
-export function topicPath(slug: string) {
-  return `/chat/${slug}`;
-}
-
-export function defaultTopicPath() {
-  return topicPath(defaultTopicSlug);
 }
 
 export function resolveTopicSlug(value: string | null | undefined) {

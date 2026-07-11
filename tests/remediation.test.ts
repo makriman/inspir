@@ -93,7 +93,7 @@ test("LLM daily budget sharding stays bounded and D1-migrated", () => {
   else process.env.LLM_GLOBAL_DAILY_SHARDS = previous;
 });
 
-test("AI response cache is D1-migrated and runtime-configured", () => {
+test("historical AI response cache migration remains while the Free runtime disables it", () => {
   const supplementalMigrations = readdirSync("drizzle-d1")
     .filter((file) => file.endsWith(".sql") && !file.startsWith("0000_"))
     .sort()
@@ -104,8 +104,8 @@ test("AI response cache is D1-migrated and runtime-configured", () => {
   assert.match(supplementalMigrations, /CREATE TABLE IF NOT EXISTS `ai_response_cache`/);
   assert.match(supplementalMigrations, /ALTER TABLE `ai_runs` ADD `cached_prompt_tokens` integer/);
   assert.match(supplementalMigrations, /CREATE INDEX IF NOT EXISTS `ai_response_cache_status_expires_idx`/);
-  assert.match(wrangler, /"AI_RESPONSE_CACHE_ENABLED": "1"/);
-  assert.match(wrangler, /"AI_RESPONSE_CACHE_SEMANTIC_ENABLED": "0"/);
+  assert.doesNotMatch(wrangler, /AI_RESPONSE_CACHE_/);
+  assert.doesNotMatch(wrangler, /NEXT_INC_CACHE_R2_BUCKET/);
 });
 
 test("D1 LIKE patterns stay within the platform byte limit", () => {

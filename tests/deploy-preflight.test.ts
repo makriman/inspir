@@ -7,16 +7,12 @@ import test from "node:test";
 import {
   FREE_PLAN_WORKER_FIRST_ROUTES,
   buildSteadyStateDeployPreflightReport,
+  hasOpenNextRequestRuntimeImport,
 } from "../scripts/cloudflare/deploy-preflight";
 import {
   D1_DATABASE_ID,
   D1_DATABASE_NAME,
   LOCAL_GATE_IDS,
-  MEMORY_POST_TURN_DLQ_NAME,
-  MEMORY_POST_TURN_QUEUE_NAME,
-  PROFILE_IMAGES_R2_BUCKET_NAME,
-  R2_BUCKET_NAME,
-  VECTORIZE_INDEX_NAME,
 } from "../scripts/cloudflare/migration-config";
 import { buildRepoSourceFingerprint, type SourceFingerprint } from "../scripts/cloudflare/source-fingerprint";
 
@@ -39,35 +35,46 @@ test("steady-state deploy preflight accepts fresh Cloudflare evidence", () => {
       ["source secret scan", "pass"],
       ["OpenNext build artifact secret scan", "pass"],
       ["Wrangler production config", "pass"],
-      ["OpenNext cache revalidation architecture", "pass"],
+      ["Free static and lean guest architecture", "pass"],
     ],
   );
 });
 
-test("production Static Assets config exactly covers the current dynamic routes", () => {
+test("production Static Assets routes only health and guest chat through the Worker", () => {
   const config = JSON.parse(fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8")) as {
+    main?: string;
     assets?: { not_found_handling?: string; run_worker_first?: string[] };
+    vectorize?: unknown[];
+    r2_buckets?: unknown[];
+    queues?: { producers?: unknown[]; consumers?: unknown[] };
+    triggers?: { crons?: string[] };
+    services?: Array<{ binding?: string; service?: string }>;
+    durable_objects?: { bindings?: Array<{ name?: string; class_name?: string }> };
+    migrations?: Array<{ new_sqlite_classes?: string[] }>;
   };
-  const routes: string[] = [...(config.assets?.run_worker_first ?? [])];
+  const routes = [...(config.assets?.run_worker_first ?? [])] as string[];
+  assert.equal(config.main, "./cloudflare-worker.ts");
   assert.equal(config.assets?.not_found_handling, "404-page");
-  assert.deepEqual([...routes].sort(), [...FREE_PLAN_WORKER_FIRST_ROUTES].sort());
   assert.equal(routes.includes("/api/*"), false);
   assert.equal(routes.includes("/*"), false);
+  assert.equal(routes.some((route) => route.includes("*") || route.startsWith("!")), false);
+  assert.deepEqual(routes, [...FREE_PLAN_WORKER_FIRST_ROUTES]);
+  assert.deepEqual(config.vectorize ?? [], []);
+  assert.deepEqual(config.r2_buckets ?? [], []);
+  assert.deepEqual(config.queues?.producers ?? [], []);
+  assert.deepEqual(config.queues?.consumers ?? [], []);
+  assert.deepEqual(config.triggers?.crons ?? [], []);
   assert.ok(
-    routes.includes("!/_next/static/*"),
-    "Next client chunks must take precedence over deep localized Worker-first globs",
+    config.services?.some(
+      (binding) => binding.binding === "WORKER_SELF_REFERENCE" && binding.service === "inspirlearning",
+    ),
   );
-  for (const required of ["/*/chat", "/*/chat/*", "/*/admin", "/*/admin/*", "/*/reset_pw"]) {
-    assert.ok(routes.includes(required), `missing localized dynamic route ${required}`);
-  }
-
-  const apiRouteFiles = listFiles(path.resolve("app/api")).filter((file) => file.endsWith("/route.ts"));
-  for (const file of apiRouteFiles) {
-    const route = `/${path.relative(path.resolve("app"), path.dirname(file)).split(path.sep).join("/")}`
-      .replaceAll(/\[\.\.\.\w+\]/g, "probe")
-      .replaceAll(/\[\w+\]/g, "probe");
-    assert.ok(routes.some((pattern) => routePatternMatches(pattern, route)), `unrouted dynamic endpoint ${route}`);
-  }
+  assert.ok(
+    config.durable_objects?.bindings?.some(
+      (binding) => binding.name === "NEXT_CACHE_DO_QUEUE" && binding.class_name === "DOQueueHandler",
+    ),
+  );
+  assert.ok(config.migrations?.some((migration) => migration.new_sqlite_classes?.includes("DOQueueHandler")));
 });
 
 test("steady-state deploy preflight rejects stale local-gate source evidence", () => {
@@ -203,10 +210,10 @@ test("steady-state deploy preflight allows high observability sampling in incide
   assert.equal(report.ok, true);
 });
 
-test("steady-state deploy preflight rejects missing response cache runtime vars", () => {
+test("steady-state deploy preflight rejects missing guest quota runtime vars", () => {
   const { backupDir, repoDir } = makeFixture();
   replaceWranglerConfig(repoDir, backupDir, (config) => {
-    delete (config.vars as Record<string, string | undefined>).AI_RESPONSE_CACHE_TTL_SECONDS;
+    delete (config.vars as Record<string, string | undefined>).RATE_LIMIT_GUEST_SESSION_DAILY;
   });
 
   const report = buildSteadyStateDeployPreflightReport({
@@ -219,7 +226,64 @@ test("steady-state deploy preflight rejects missing response cache runtime vars"
   assert.equal(report.ok, false);
   const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
   assert.equal(wrangler?.status, "fail");
-  assert.ok((wrangler?.detail as { missingVars?: string[] } | undefined)?.missingVars?.includes("AI_RESPONSE_CACHE_TTL_SECONDS"));
+  assert.ok(
+    (wrangler?.detail as { missingVars?: string[] } | undefined)?.missingVars?.includes(
+      "RATE_LIMIT_GUEST_SESSION_DAILY",
+    ),
+  );
+});
+
+test("steady-state deploy preflight rejects a direct OpenAI secret in Gateway BYOK production", () => {
+  const { backupDir, repoDir } = makeFixture();
+  replaceWranglerConfig(repoDir, backupDir, (config) => {
+    config.secrets.required.push("OPENAI_API_KEY");
+  });
+
+  const report = buildSteadyStateDeployPreflightReport({
+    backupDir,
+    cwd: repoDir,
+    runWranglerDryRun: false,
+    nowMs: Date.parse("2026-06-26T12:00:00Z"),
+  });
+
+  assert.equal(report.ok, false);
+  const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+  assert.equal(wrangler?.status, "fail");
+  assert.equal((wrangler?.detail as { requiredSecretsOk?: boolean }).requiredSecretsOk, false);
+});
+
+test("steady-state deploy preflight rejects retired dynamic runtime bindings", () => {
+  const mutations: Array<(config: ReturnType<typeof wranglerConfig>) => void> = [
+    (config) => {
+      Object.assign(config, { vectorize: [{ binding: "MEMORY_VECTORIZE", index_name: "retired" }] });
+    },
+    (config) => {
+      Object.assign(config, { r2_buckets: [{ binding: "NEXT_INC_CACHE_R2_BUCKET", bucket_name: "retired" }] });
+    },
+    (config) => {
+      Object.assign(config, { queues: { producers: [{ binding: "RETIRED", queue: "retired" }] } });
+    },
+    (config) => {
+      Object.assign(config, { triggers: { crons: ["0 3 * * *"] } });
+    },
+  ];
+
+  for (const mutate of mutations) {
+    const { backupDir, repoDir } = makeFixture();
+    replaceWranglerConfig(repoDir, backupDir, mutate);
+
+    const report = buildSteadyStateDeployPreflightReport({
+      backupDir,
+      cwd: repoDir,
+      runWranglerDryRun: false,
+      nowMs: Date.parse("2026-06-26T12:00:00Z"),
+    });
+
+    assert.equal(report.ok, false);
+    const wrangler = report.checks.find((check) => check.name === "Wrangler production config");
+    assert.equal(wrangler?.status, "fail");
+    assert.equal((wrangler?.detail as { retiredBindingsAbsent?: boolean }).retiredBindingsAbsent, false);
+  }
 });
 
 test("steady-state deploy preflight rejects Worker-wide response caching", () => {
@@ -282,7 +346,8 @@ test("steady-state deploy preflight rejects a missing Static Asset 404 boundary"
 test("steady-state deploy preflight rejects broad or incomplete Worker-first routing", () => {
   for (const mutate of [
     (routes: string[]) => routes.push("/*"),
-    (routes: string[]) => routes.splice(routes.indexOf("/*/chat/*"), 1),
+    (routes: string[]) => routes.push("/api/topics"),
+    (routes: string[]) => routes.splice(routes.indexOf("/api/health"), 1),
   ]) {
     const { backupDir, repoDir } = makeFixture();
     replaceWranglerConfig(repoDir, backupDir, (config) => {
@@ -321,7 +386,7 @@ test("steady-state deploy preflight rejects a missing zero-CPU legal redirect", 
   assert.equal((wrangler?.detail as { staticLegalRedirectOk?: boolean }).staticLegalRedirectOk, false);
 });
 
-test("steady-state deploy preflight rejects a missing OpenNext Durable Object queue", () => {
+test("steady-state deploy preflight rejects a missing legacy Durable Object rollback binding", () => {
   const { backupDir, repoDir } = makeFixture();
   replaceWranglerConfig(repoDir, backupDir, (config) => {
     config.durable_objects.bindings = [];
@@ -351,11 +416,11 @@ test("deploy preflight requires a post-migration Durable Object rollback target"
   assert.match(source, /DOQueueHandler/);
 });
 
-test("steady-state deploy preflight rejects dummy OpenNext revalidation architecture", () => {
+test("steady-state deploy preflight rejects an OpenNext main Worker", () => {
   const { backupDir, repoDir } = makeFixture();
   fs.writeFileSync(
-    path.join(repoDir, "open-next.config.ts"),
-    'import { defineCloudflareConfig } from "@opennextjs/cloudflare";\nexport default defineCloudflareConfig({});\n',
+    path.join(repoDir, "cloudflare-worker.ts"),
+    'import handler from "./.open-next/worker.js";\nexport default handler;\n',
   );
   writeLocalEvidence(backupDir, buildRepoSourceFingerprint(repoDir));
 
@@ -367,8 +432,37 @@ test("steady-state deploy preflight rejects dummy OpenNext revalidation architec
   });
 
   assert.equal(report.ok, false);
-  const openNext = report.checks.find((check) => check.name === "OpenNext cache revalidation architecture");
-  assert.equal(openNext?.status, "fail");
+  const architecture = report.checks.find((check) => check.name === "Free static and lean guest architecture");
+  assert.equal(architecture?.status, "fail");
+  assert.equal(
+    (architecture?.detail as { noOpenNextRuntimeImport?: boolean } | undefined)?.noOpenNextRuntimeImport,
+    false,
+  );
+});
+
+test("OpenNext runtime import detection permits the rollback-only Durable Object export", () => {
+  assert.equal(
+    hasOpenNextRequestRuntimeImport(
+      'export { DOQueueHandler } from "./.open-next/.build/durable-objects/queue.js";',
+    ),
+    false,
+  );
+  assert.equal(
+    hasOpenNextRequestRuntimeImport('import handler from "./.open-next/worker.js";'),
+    true,
+  );
+  assert.equal(
+    hasOpenNextRequestRuntimeImport(
+      'import handler from "./.open-next/server-functions/default/handler.mjs";',
+    ),
+    true,
+  );
+  assert.equal(
+    hasOpenNextRequestRuntimeImport('const handler = require("./.open-next/worker.js");'),
+    true,
+  );
+  assert.equal(hasOpenNextRequestRuntimeImport('import { getCloudflareContext } from "@opennextjs/cloudflare";'), true);
+  assert.equal(hasOpenNextRequestRuntimeImport('import { NextResponse } from "next/server";'), true);
 });
 
 function makeFixture() {
@@ -378,7 +472,12 @@ function makeFixture() {
   runGit(repoDir, ["init"]);
   fs.writeFileSync(path.join(repoDir, "app.ts"), "export const ok = true;\n");
   fs.writeFileSync(path.join(repoDir, "wrangler.jsonc"), `${JSON.stringify(wranglerConfig(), null, 2)}\n`);
-  fs.writeFileSync(path.join(repoDir, "open-next.config.ts"), openNextConfig());
+  fs.writeFileSync(path.join(repoDir, "cloudflare-worker.ts"), leanWorkerSource());
+  fs.mkdirSync(path.join(repoDir, "scripts/cloudflare"), { recursive: true });
+  fs.writeFileSync(
+    path.join(repoDir, "scripts/cloudflare/materialize-static-marketing-assets.ts"),
+    leanMaterializerSource(),
+  );
   fs.mkdirSync(path.join(repoDir, "public"), { recursive: true });
   fs.writeFileSync(path.join(repoDir, "public/_redirects"), "/tnc /terms 308\n");
 
@@ -449,33 +548,11 @@ function localGateDetail(check: { detail?: unknown } | undefined) {
   return check.detail as { missingGateIds?: string[]; failedGateIds?: string[] };
 }
 
-function listFiles(root: string) {
-  const files: string[] = [];
-  const pending = [root];
-  while (pending.length) {
-    const current = pending.pop();
-    if (!current) continue;
-    const stats = fs.statSync(current);
-    if (stats.isDirectory()) {
-      for (const entry of fs.readdirSync(current)) pending.push(path.join(current, entry));
-    } else if (stats.isFile()) {
-      files.push(current);
-    }
-  }
-  return files;
-}
-
-function routePatternMatches(pattern: string, route: string) {
-  const expression = pattern
-    .split("*")
-    .map((part) => part.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-    .join(".*");
-  return new RegExp(`^${expression}$`).test(route);
-}
-
 function wranglerConfig() {
   return {
     name: "inspirlearning",
+    main: "./cloudflare-worker.ts",
+    compatibility_date: "2026-07-10",
     workers_dev: false,
     preview_urls: false,
     assets: {
@@ -486,28 +563,12 @@ function wranglerConfig() {
       run_worker_first: [...FREE_PLAN_WORKER_FIRST_ROUTES],
     },
     d1_databases: [{ binding: "DB", database_name: D1_DATABASE_NAME, database_id: D1_DATABASE_ID }],
-    vectorize: [{ binding: "MEMORY_VECTORIZE", index_name: VECTORIZE_INDEX_NAME }],
-    r2_buckets: [
-      { binding: "NEXT_INC_CACHE_R2_BUCKET", bucket_name: R2_BUCKET_NAME },
-      { binding: "PROFILE_IMAGES_R2_BUCKET", bucket_name: PROFILE_IMAGES_R2_BUCKET_NAME },
-    ],
     services: [{ binding: "WORKER_SELF_REFERENCE", service: "inspirlearning" }],
     version_metadata: { binding: "CF_VERSION_METADATA" },
     durable_objects: {
       bindings: [{ name: "NEXT_CACHE_DO_QUEUE", class_name: "DOQueueHandler" }],
     },
     migrations: [{ tag: "opennext-cache-queue-v1", new_sqlite_classes: ["DOQueueHandler"] }],
-    queues: {
-      producers: [{ binding: "MEMORY_POST_TURN_QUEUE", queue: MEMORY_POST_TURN_QUEUE_NAME }],
-      consumers: [
-        {
-          queue: MEMORY_POST_TURN_QUEUE_NAME,
-          dead_letter_queue: MEMORY_POST_TURN_DLQ_NAME,
-          max_retries: 5,
-        },
-      ],
-    },
-    triggers: { crons: ["0 3 * * *"] },
     routes: [{ pattern: "inspirlearning.com" }, { pattern: "www.inspirlearning.com" }],
     observability: {
       enabled: true,
@@ -516,62 +577,47 @@ function wranglerConfig() {
       traces: { enabled: true, head_sampling_rate: 0.02 },
     },
     secrets: {
-      required: [
-        "OPENAI_API_KEY",
-        "CLOUDFLARE_AI_GATEWAY_TOKEN",
-        "AUTH_SECRET",
-        "AUTH_GOOGLE_ID",
-        "AUTH_GOOGLE_SECRET",
-        "ADMIN_EMAILS",
-        "CRON_SECRET",
-      ],
+      required: ["CLOUDFLARE_AI_GATEWAY_TOKEN"],
     },
     vars: {
-      APP_URL: "https://inspirlearning.com",
-      AUTH_URL: "https://inspirlearning.com",
-      BETTER_AUTH_URL: "https://inspirlearning.com",
       CLOUDFLARE_AI_GATEWAY_BASE_URL: "https://gateway.ai.cloudflare.com/v1/account/inspir/openai",
       CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS: "inspir",
-      OPENAI_MODEL: "gpt-5",
+      OPENAI_MODEL: "gpt-5-mini",
       OPENAI_FAST_MODEL: "gpt-5-mini",
-      OPENAI_REASONING_MODEL: "gpt-5",
+      OPENAI_REASONING_MODEL: "gpt-5-mini",
       OPENAI_STRUCTURED_MODEL: "gpt-5-mini",
-      OPENAI_EMBEDDING_MODEL: "text-embedding-3-small",
-      AI_RESPONSE_CACHE_ENABLED: "1",
-      AI_RESPONSE_CACHE_TTL_SECONDS: "2592000",
-      AI_RESPONSE_CACHE_MAX_RESPONSE_BYTES: "120000",
-      AI_RESPONSE_CACHE_SEMANTIC_ENABLED: "0",
-      RATE_LIMIT_USER_CHAT_DAILY: "20",
       RATE_LIMIT_GUEST_SESSION_DAILY: "10",
       RATE_LIMIT_GUEST_FINGERPRINT_DAILY: "10",
       RATE_LIMIT_GUEST_IP_DAILY: "150",
-      RATE_LIMIT_ACTIVITY_DAILY: "10",
-      RATE_LIMIT_MEMORY_DAILY: "20",
       LLM_GLOBAL_DAILY_CALL_LIMIT: "1000",
-      MEMORY_POST_TURN_SYNTHESIS_THRESHOLD: "2",
-      MEMORY_PROFILE_COMPILE_LIMIT: "20",
       OBSERVABILITY_INCIDENT_MODE: "0",
       APP_WRITE_FREEZE: "0",
       APP_WRITE_FREEZE_RETRY_AFTER_SECONDS: "300",
-      MAX_REVALIDATE_CONCURRENCY: "1",
-      NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION: "1",
     },
   };
 }
 
-function openNextConfig() {
-  return `import { defineCloudflareConfig } from "@opennextjs/cloudflare";
-import r2IncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/r2-incremental-cache";
-import { withRegionalCache } from "@opennextjs/cloudflare/overrides/incremental-cache/regional-cache";
-import doQueue from "@opennextjs/cloudflare/overrides/queue/do-queue";
-import queueCache from "@opennextjs/cloudflare/overrides/queue/queue-cache";
+function leanWorkerSource() {
+  return `import { handleFreeGuestChat } from "./lib/free-runtime/guest-chat";
+type Env = { CF_VERSION_METADATA: { id: string } };
+export class DOQueueHandler {}
+export default {
+  fetch(request: Request, env: Env) {
+    if (new URL(request.url).pathname === "/api/guest-chat") return handleFreeGuestChat(request, env);
+    return Response.json({ version: env.CF_VERSION_METADATA.id });
+  },
+};
+`;
+}
 
-export default defineCloudflareConfig({
-  incrementalCache: withRegionalCache(r2IncrementalCache, { mode: "long-lived" }),
-  queue: queueCache(doQueue, { regionalCacheTtlSec: 5, waitForQueueAck: true }),
-  enableCacheInterception: true,
-  routePreloadingBehavior: "none",
-});
+function leanMaterializerSource() {
+  return `const staticChatCacheKeys = new Set(["chat"]);
+const staticTopicsDocument = "api/topics";
+const staticMainAppBundleRoot = "i18n/main-app";
+const staticTopicRedirect = "/chat/example /chat?topic=example 308";
+function writeStaticMainAppBundles() { return staticMainAppBundleRoot; }
+// Exact public topic redirects preserve static 404s for unknown and private chat paths.
+export { staticChatCacheKeys, staticTopicRedirect, staticTopicsDocument, writeStaticMainAppBundles };
 `;
 }
 

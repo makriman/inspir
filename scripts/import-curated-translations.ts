@@ -8,6 +8,7 @@ import {
   getSiteTranslationSource,
   isKnownSiteTranslationNamespace,
 } from "@/lib/i18n/site-source";
+import { isTranslationBundleCompleteAndFluent } from "@/lib/i18n/translation-quality";
 
 type CuratedTranslationEntry = {
   key: string;
@@ -237,12 +238,27 @@ async function importPackGroup(group: LoadedCuratedTranslationPack[], args: Args
   const translatedCount = Object.keys(validPayload).length;
   const missingCount = totalCount - translatedCount;
   const staleSourceHash = staleFiles.length > 0;
+  const renderReady =
+    namespace === mainAppTranslationNamespace ||
+    (missingCount === 0 &&
+      isTranslationBundleCompleteAndFluent(
+        source,
+        {
+          namespace,
+          language,
+          sourceHash: source.sourceHash,
+          sourceStrings: source.sourceStrings,
+          strings: validPayload,
+        },
+        language,
+      ));
   const ok =
     !unknownKeys.length &&
     !invalid.length &&
     !conflictKeys.length &&
     (!staleSourceHash || args.allowStale) &&
-    (args.allowPartial || missingCount === 0);
+    (args.allowPartial || missingCount === 0) &&
+    (args.allowPartial || renderReady);
 
   if (ok && !args.dryRun) {
     if (!upsertTranslation) throw new Error("Translation importer was not initialized.");
@@ -264,6 +280,7 @@ async function importPackGroup(group: LoadedCuratedTranslationPack[], args: Args
     translatedCount,
     totalCount,
     missingCount,
+    renderReady,
     staleSourceHash,
     staleFiles: staleFiles.slice(0, 10),
     unknownKeys: unknownKeys.slice(0, 10),
@@ -291,6 +308,7 @@ function sourceForNamespace(namespace: string) {
   if (namespace === mainAppTranslationNamespace) {
     const sourceStrings = getMainAppSourceStrings();
     return {
+      namespace,
       sourceHash: getMainAppSourceHash(sourceStrings),
       sourceStrings,
     };

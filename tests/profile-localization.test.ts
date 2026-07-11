@@ -437,3 +437,126 @@ test("site translation fluency gate rejects mixed-language complete bundles", ()
 
   assert.equal(isTranslationBundleCompleteAndFluent(source, bundle, "Spanish"), false);
 });
+
+test("site translation fluency gate rejects Latin scaffolding in a non-Latin translation", () => {
+  const source = {
+    namespace: "marketing-shell",
+    sourceHash: "test-source",
+    sourceStrings: {
+      "site.example": "The film has a text transcript, timed captions, and chapter markers on the page.",
+    },
+  };
+  const bundle = {
+    ...source,
+    language: "Hindi" as const,
+    strings: {
+      "site.example": "film has एक text transcript, timed captions, और chapter markers on पेज.",
+    },
+  };
+
+  assert.equal(isTranslationBundleCompleteAndFluent(source, bundle, "Hindi"), false);
+});
+
+test("site translation fluency gate permits translated prose with shared short words", () => {
+  const source = {
+    namespace: "route:home",
+    sourceHash: "test-source",
+    sourceStrings: {
+      "site.example": "Use the exam date, syllabus, available time, and weak areas to create a plan that can survive real life.",
+    },
+  };
+  const bundle = {
+    ...source,
+    language: "Portuguese" as const,
+    strings: {
+      "site.example": "Use a data da prova, o programa, o tempo disponível e as áreas fracas para criar um plano que sobreviva à vida real.",
+    },
+  };
+
+  assert.equal(isTranslationBundleCompleteAndFluent(source, bundle, "Portuguese"), true);
+});
+
+test("site translation fluency gate preserves target-language diacritics during leakage checks", () => {
+  const source = {
+    namespace: "route:home",
+    sourceHash: "test-source",
+    sourceStrings: {
+      "site.example": "Turn the explanation into active recall cards with one conceptual card, one example card, and one misconception card.",
+    },
+  };
+  const bundle = {
+    ...source,
+    language: "Vietnamese" as const,
+    strings: {
+      "site.example": "Biến lời giải thích thành thẻ gợi nhớ chủ động gồm một thẻ khái niệm, một thẻ ví dụ và một thẻ hiểu lầm thường gặp.",
+    },
+  };
+
+  assert.equal(isTranslationBundleCompleteAndFluent(source, bundle, "Vietnamese"), true);
+});
+
+test("site translation fluency gate rejects embedded untranslated mode names", () => {
+  const source = {
+    namespace: "route:home",
+    sourceHash: "test-source",
+    sourceStrings: {
+      "site.example": "Start with Learn Anything",
+    },
+  };
+  const bundle = {
+    ...source,
+    language: "Czech" as const,
+    strings: {
+      "site.example": "Začněte s Learn Anything",
+    },
+  };
+
+  assert.equal(isTranslationBundleCompleteAndFluent(source, bundle, "Czech"), false);
+});
+
+test("site translation fluency gate rejects one generic value reused for unrelated copy", () => {
+  const source = {
+    namespace: "marketing-shell",
+    sourceHash: "test-source",
+    sourceStrings: {
+      "site.about": "About",
+      "site.media": "Media",
+      "site.trust": "Trust",
+    },
+  };
+  const bundle = {
+    ...source,
+    language: "Czech" as const,
+    strings: {
+      "site.about": "Část učení inspir",
+      "site.media": "Část učení inspir",
+      "site.trust": "Část učení inspir",
+    },
+  };
+
+  assert.equal(isTranslationBundleCompleteAndFluent(source, bundle, "Czech"), false);
+});
+
+test("site translation fluency gate rejects unchanged UI copy and broken placeholders", () => {
+  const source = {
+    namespace: "marketing-shell",
+    sourceHash: "test-source",
+    sourceStrings: {
+      answer: "Answer",
+      greeting: "Hello {name}",
+    },
+  };
+  const unchanged = {
+    ...source,
+    language: "Spanish" as const,
+    strings: { answer: "Answer", greeting: "Hola {name}" },
+  };
+  const wrongPlaceholder = {
+    ...source,
+    language: "Spanish" as const,
+    strings: { answer: "Respuesta", greeting: "Hola {wrong}" },
+  };
+
+  assert.equal(isTranslationBundleCompleteAndFluent(source, unchanged, "Spanish"), false);
+  assert.equal(isTranslationBundleCompleteAndFluent(source, wrongPlaceholder, "Spanish"), false);
+});

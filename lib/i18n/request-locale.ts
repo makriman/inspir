@@ -2,9 +2,7 @@ import { cookies, headers } from "next/headers";
 import { cache } from "react";
 import {
   defaultLanguage,
-  languageConfigs,
   normalizeLanguage,
-  type LanguageConfig,
   type SupportedLanguage,
 } from "@/lib/content/languages";
 import {
@@ -21,10 +19,6 @@ export const getRequestLanguage = cache(async function getRequestLanguage(): Pro
 
   const cookieStore = await cookies();
   return normalizeLanguage(cookieStore.get(localeCookieName)?.value ?? defaultLanguage);
-});
-
-export const getRequestLanguageConfig = cache(async function getRequestLanguageConfig(): Promise<LanguageConfig> {
-  return languageConfigs[await getRequestLanguage()];
 });
 
 export const getRequestRecommendedLanguage = cache(async function getRequestRecommendedLanguage(): Promise<SupportedLanguage> {

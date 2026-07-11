@@ -244,6 +244,26 @@ test("guest chat paints streamed text before a fast response completes", async (
   expect(diagnostics.maxScrollTopRegression).toBe(0);
 });
 
+test("localized auto-translation leaves streamed assistant tokens untouched", async ({ page }) => {
+  await installGuestChatStream(page, ["Search"], { chunkDelayMs: 1_000, initialDelayMs: 100 });
+  await page.goto("/hi/chat?topic=learn-anything");
+  await page.waitForLoadState("networkidle").catch(() => {});
+
+  await page.locator("textarea.inspir-composer-input").fill("Reply with one UI word.");
+  await page.locator("button.inspir-send-button").click();
+
+  const latestAssistantContent = page
+    .locator(".inspir-message-row.is-assistant .inspir-rich-content")
+    .last();
+  await expect(latestAssistantContent).toHaveClass(/is-streaming/);
+  await expect(latestAssistantContent).toHaveAttribute("data-no-auto-translate", "true");
+  await expect(latestAssistantContent).toHaveText("Search");
+
+  await expect(latestAssistantContent).not.toHaveClass(/is-streaming/, { timeout: 5_000 });
+  await expect(latestAssistantContent).toHaveAttribute("data-no-auto-translate", "true");
+  await expect(latestAssistantContent).toHaveText("Search");
+});
+
 function chunkText(text: string, size: number) {
   const chunks: string[] = [];
   for (let index = 0; index < text.length; index += size) {

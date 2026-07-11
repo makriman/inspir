@@ -7,13 +7,10 @@ const backupDir = resolveBackupDir();
 const reportPath = path.join(cloudflareDir(backupDir), "playwright-production-report.json");
 const FINAL_PRODUCTION_BASE_URL = "https://inspirlearning.com/";
 const baseUrl = normalizeBaseUrl(process.env.PLAYWRIGHT_BASE_URL ?? process.env.PRODUCTION_BASE_URL ?? FINAL_PRODUCTION_BASE_URL);
-const usingSessionAuth = Boolean(process.env.E2E_TEST_AUTH_SECRET?.trim());
 const expectedWorkerVersion = getArg("--expected-version") ?? process.env.EXPECTED_WORKER_VERSION;
 
-const missingEnv = ["E2E_GOOGLE_EMAIL"].filter((key) => !process.env[key]?.trim());
-if (!usingSessionAuth && !process.env.E2E_GOOGLE_PASSWORD?.trim()) missingEnv.push("E2E_GOOGLE_PASSWORD");
+const missingEnv: string[] = [];
 if (process.env.REQUIRE_LIVE_AI !== "1") missingEnv.push("REQUIRE_LIVE_AI");
-if (process.env.E2E_GOOGLE_IS_ADMIN !== "1") missingEnv.push("E2E_GOOGLE_IS_ADMIN");
 if (baseUrl !== FINAL_PRODUCTION_BASE_URL) missingEnv.push("PLAYWRIGHT_BASE_URL=https://inspirlearning.com");
 if (!expectedWorkerVersion || !isWorkerVersionId(expectedWorkerVersion)) {
   missingEnv.push("--expected-version=<Worker version UUID>");
@@ -48,10 +45,7 @@ writeReport({
   rawOutput: parsed ? undefined : output,
   liveEnvironment: {
     requireLiveAi: process.env.REQUIRE_LIVE_AI === "1",
-    googleEmail: Boolean(process.env.E2E_GOOGLE_EMAIL?.trim()),
-    googlePassword: Boolean(process.env.E2E_GOOGLE_PASSWORD?.trim()),
-    googleAdmin: process.env.E2E_GOOGLE_IS_ADMIN === "1",
-    sessionAuth: usingSessionAuth,
+    productScope: "multilingual-static-and-guest-chat",
     expectedWorkerVersion,
   },
   playwright: parsed,

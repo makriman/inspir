@@ -1,6 +1,6 @@
 import { Sparkles } from "lucide-react";
 import { TopicIntroCard } from "@/components/chat/TopicIntroCard";
-import { GoogleContinueButton } from "@/components/marketing/SignInButton";
+import { defaultTopicWorkspacePath } from "@/lib/content/topic-path";
 
 export function GuestFeatureGate({
   category,
@@ -23,12 +23,12 @@ export function GuestFeatureGate({
         <TopicIntroCard category={category} name={name} description={description} />
         <div className="inspir-guest-feature-card">
           <Sparkles size={26} />
-          <span>Sign in to keep learning</span>
-          <h2>Continue with Google to use {featureName}.</h2>
-          <p>Sign in keeps your progress, score, generated activities, and future conversations saved.</p>
-          <GoogleContinueButton className="inspir-guest-modal-primary" callbackUrl={topicHref}>
-            Continue with Google
-          </GoogleContinueButton>
+          <span>Continue learning</span>
+          <h2>{featureName}</h2>
+          <p>{description}</p>
+          <a className="inspir-guest-modal-primary" href={defaultTopicWorkspacePath()}>
+            Learn Anything
+          </a>
         </div>
         {starters.length ? (
           <div className="inspir-starter-grid">

@@ -1,29 +1,8 @@
-import type { Metadata } from "next";
-import { redirect } from "next/navigation";
-import { defaultTopicPath, resolveTopicSlug, topicPath } from "@/lib/content/topic-routing";
-import { localizePath } from "@/lib/i18n/routing";
-import { getRequestLanguage } from "@/lib/i18n/request-locale";
+import { StaticGuestChatPage } from "@/components/chat/StaticGuestChatPage";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "Chat",
-    description: "Private inspir chat workspace.",
-    robots: { index: false, follow: false, nocache: true },
-    alternates: {},
-    keywords: [],
-    other: {},
-  };
-}
+export const dynamic = "force-static";
+export const revalidate = false;
 
-type ChatPageProps = {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-};
-
-export default async function ChatPage({ searchParams }: ChatPageProps) {
-  const [params, language] = await Promise.all([searchParams, getRequestLanguage()]);
-  const topicParam = Array.isArray(params.topic) ? params.topic[0] : params.topic;
-  const requested = "askmeanything" in params ? "askmeanything" : topicParam;
-  const slug = resolveTopicSlug(requested);
-
-  redirect(localizePath(slug ? topicPath(slug) : defaultTopicPath(), language));
+export default function ChatPage() {
+  return <StaticGuestChatPage />;
 }

@@ -2,11 +2,39 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import {
+  defaultLanguage,
+  languageConfigs,
+  supportedLanguages,
+} from "../../lib/content/languages";
+import { topicSeeds } from "../../lib/content/topics";
+import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
+import { getMainAppSourceHash } from "../../lib/i18n/main-app-source";
+import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
 
 const maxAssetFiles = 20_000;
 const maxAssetBytes = 25 * 1024 * 1024;
+const maxStaticRedirectRules = 2_000;
+const maxDynamicRedirectRules = 100;
+const maxTotalRedirectRules = 2_100;
 const minimumHtmlDocuments = 100;
-const minimumLocalizedHomeDocuments = 50;
+const minimumLocalizedHomeDocuments = supportedLanguages.length - 1;
+const localizedHomeOutputPaths = new Set(
+  supportedLanguages
+    .filter((language) => language !== defaultLanguage)
+    .map((language) => `${languageConfigs[language].prefix}/index.html`),
+);
+const localizedRoutePrefixes = new Set(
+  supportedLanguages
+    .filter((language) => language !== defaultLanguage)
+    .map((language) => languageConfigs[language].prefix),
+);
+const staticChatCacheKeys = new Set([
+  "chat",
+  ...supportedLanguages
+    .filter((language) => language !== defaultLanguage)
+    .map((language) => `${languageConfigs[language].prefix}/chat`),
+]);
 
 const privateAppPrefixes = new Set([
   "_global-error",
@@ -19,6 +47,7 @@ const privateAppPrefixes = new Set([
 
 const textualRouteKeys = new Set([
   "ai-content-index.json",
+  "api/topics",
   "llms-full.txt",
   "llms.txt",
   "manifest.webmanifest",
@@ -43,6 +72,11 @@ export type StaticMarketingAssetReport = {
   cacheEntries: number;
   htmlDocuments: number;
   localizedHomeDocuments: number;
+  staticChatDocuments: number;
+  staticChatRedirects: number;
+  staticChatExactRedirects: number;
+  staticChatDynamicRedirects: number;
+  staticMainAppBundles: number;
   routeDocuments: number;
   skippedEntries: number;
   assetFiles: number;
@@ -68,11 +102,13 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
   }
 
   removePreviouslyMaterializedFiles(assetsRoot);
+  removeEmptyDirectories(assetsRoot);
 
   const cacheFiles = listFiles(buildRoot).filter((file) => file.endsWith(".cache")).sort();
   const generatedPaths: string[] = [];
   let htmlDocuments = 0;
   let localizedHomeDocuments = 0;
+  let staticChatDocuments = 0;
   let routeDocuments = 0;
   let skippedEntries = 0;
 
@@ -89,9 +125,10 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
       writeAsset(assetsRoot, outputPath, entry.html);
       generatedPaths.push(outputPath);
       htmlDocuments += 1;
-      if (/^[a-z]{2,3}\/index\.html$/.test(outputPath) || /^en-US\/index\.html$/.test(outputPath)) {
+      if (localizedHomeOutputPaths.has(outputPath)) {
         localizedHomeDocuments += 1;
       }
+      if (staticChatCacheKeys.has(cacheKey)) staticChatDocuments += 1;
       continue;
     }
 
@@ -104,6 +141,14 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
     generatedPaths.push(outputPath);
     routeDocuments += 1;
   }
+
+  assertNoRemovedGameAssets(assetsRoot);
+
+  const staticMainAppBundlePaths = writeStaticMainAppBundles(assetsRoot);
+  generatedPaths.push(...staticMainAppBundlePaths);
+
+  const staticChatRedirects = writeStaticRedirects(cwd, assetsRoot);
+  generatedPaths.push("_redirects");
 
   generatedPaths.sort();
   const assetFiles = listFiles(assetsRoot);
@@ -136,6 +181,11 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
       `Only ${localizedHomeDocuments} localized home documents were materialized; expected at least ${minimumLocalizedHomeDocuments}.`,
     );
   }
+  if (staticChatDocuments !== staticChatCacheKeys.size) {
+    throw new Error(
+      `Only ${staticChatDocuments} static chat documents were materialized; expected ${staticChatCacheKeys.size}.`,
+    );
+  }
   for (const required of [
     "index.html",
     "404.html",
@@ -143,13 +193,11 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
     "robots.txt",
     "sitemap.xml",
     "llms.txt",
+    "api/topics",
+    "_redirects",
   ]) {
     if (!generatedPaths.includes(required)) throw new Error(`Required static document was not materialized: ${required}`);
   }
-  if (generatedPaths.some((entry) => entry === "games/index.html" || entry.startsWith("games/"))) {
-    throw new Error("Game routes must not be present in the static production assets.");
-  }
-
   const outputSha256 = hashGeneratedOutput(assetsRoot, generatedPaths);
   const report: StaticMarketingAssetReport = {
     createdAt: new Date().toISOString(),
@@ -157,6 +205,11 @@ export function materializeStaticMarketingAssets(cwd: string): StaticMarketingAs
     cacheEntries: cacheFiles.length,
     htmlDocuments,
     localizedHomeDocuments,
+    staticChatDocuments,
+    staticChatRedirects: staticChatRedirects.total,
+    staticChatExactRedirects: staticChatRedirects.exact,
+    staticChatDynamicRedirects: staticChatRedirects.dynamic,
+    staticMainAppBundles: staticMainAppBundlePaths.length,
     routeDocuments,
     skippedEntries,
     assetFiles: assetFiles.length,
@@ -203,8 +256,19 @@ function cacheKeyForFile(buildRoot: string, file: string) {
 
 function htmlOutputPath(cacheKey: string) {
   if (cacheKey === "_not-found") return "404.html";
-  const firstSegment = cacheKey.split("/")[0] ?? "";
-  if (privateAppPrefixes.has(firstSegment) || firstSegment.startsWith("_")) return null;
+  if (staticChatCacheKeys.has(cacheKey)) return `${cacheKey}/index.html`;
+  const segments = cacheKey.split("/");
+  const firstSegment = segments[0] ?? "";
+  const appRouteSegment = localizedRoutePrefixes.has(firstSegment)
+    ? (segments[1] ?? "")
+    : firstSegment;
+  if (
+    privateAppPrefixes.has(appRouteSegment) ||
+    appRouteSegment.startsWith("_") ||
+    segments.includes("games")
+  ) {
+    return null;
+  }
   return cacheKey === "index" ? "index.html" : `${cacheKey}/index.html`;
 }
 
@@ -222,6 +286,74 @@ function writeAsset(assetsRoot: string, relativePath: string, content: string) {
   fs.writeFileSync(destination, content);
 }
 
+function writeStaticRedirects(cwd: string, assetsRoot: string) {
+  const sourcePath = path.join(cwd, "public", "_redirects");
+  if (!fs.existsSync(sourcePath)) throw new Error("The committed public/_redirects file is missing.");
+
+  const source = fs.readFileSync(sourcePath, "utf8").trim();
+  if (/^\s*\/(?:[^\s]*\/)?chat\/\*/m.test(source)) {
+    throw new Error("Broad chat wildcard redirects would turn unknown or private chat URLs into soft 404s.");
+  }
+  const exactTopicRules: string[] = [];
+  const dynamicTopicRules: string[] = [];
+  for (const topic of topicSeeds) {
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(topic.slug)) {
+      throw new Error(`Unsafe static chat topic slug: ${topic.slug}`);
+    }
+    exactTopicRules.push(`/chat/${topic.slug} /chat?topic=${topic.slug} 308`);
+    dynamicTopicRules.push(`/:locale/chat/${topic.slug} /:locale/chat?topic=${topic.slug} 308`);
+  }
+  const committedRules = source
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith("#"));
+  const committedDynamicRules = committedRules.filter((line) => {
+    const sourcePattern = line.split(/\s+/, 1)[0] ?? "";
+    return sourcePattern.includes(":") || sourcePattern.includes("*");
+  }).length;
+  const committedStaticRules = committedRules.length - committedDynamicRules;
+  const dynamicRules = committedDynamicRules + dynamicTopicRules.length;
+  const staticRules = committedStaticRules + exactTopicRules.length;
+  if (dynamicRules > maxDynamicRedirectRules) {
+    throw new Error(
+      `Static Assets would have ${dynamicRules} dynamic redirect rules; the limit is ${maxDynamicRedirectRules}.`,
+    );
+  }
+  if (staticRules > maxStaticRedirectRules || staticRules + dynamicRules > maxTotalRedirectRules) {
+    throw new Error(
+      `Static Assets redirect rules exceed the platform limits: ${staticRules} static, ${dynamicRules} dynamic.`,
+    );
+  }
+  const content = [
+    source,
+    "",
+    "# Exact public topic redirects preserve static 404s for unknown and private chat paths.",
+    ...exactTopicRules,
+    ...dynamicTopicRules,
+    "",
+  ].join("\n");
+  writeAsset(assetsRoot, "_redirects", content);
+  return {
+    total: exactTopicRules.length + dynamicTopicRules.length,
+    exact: exactTopicRules.length,
+    dynamic: dynamicTopicRules.length,
+  };
+}
+
+function writeStaticMainAppBundles(assetsRoot: string) {
+  const sourceHash = getMainAppSourceHash();
+  return supportedLanguages.map((language) => {
+    const bundle = getCuratedMainAppTranslationBundle(language);
+    if (!bundle || bundle.sourceHash !== sourceHash || bundle.language !== language) {
+      throw new Error(`The static main-app translation bundle is incomplete for ${language}.`);
+    }
+    const locale = languageConfigs[language].prefix || languageConfigs[language].locale;
+    const asset = buildStaticMainAppBundleAsset(locale, bundle);
+    writeAsset(assetsRoot, asset.relativePath, asset.serialized);
+    return asset.relativePath;
+  });
+}
+
 function removePreviouslyMaterializedFiles(assetsRoot: string) {
   for (const file of listFiles(assetsRoot)) {
     const relative = path.relative(assetsRoot, file).split(path.sep).join("/");
@@ -236,10 +368,34 @@ function removePreviouslyMaterializedFiles(assetsRoot: string) {
       relative === "llms-full.txt" ||
       relative === "rss.xml" ||
       relative === "ai-content-index.json" ||
+      relative === "api/topics" ||
+      (relative.startsWith("i18n/main-app/") && relative.endsWith(".json")) ||
       (relative.startsWith("sitemap/") && relative.endsWith(".xml"))
     ) {
       fs.rmSync(file, { force: true });
     }
+  }
+}
+
+function removeEmptyDirectories(root: string) {
+  for (const entry of fs.readdirSync(root)) {
+    const entryPath = path.join(root, entry);
+    if (!fs.statSync(entryPath).isDirectory()) continue;
+    removeEmptyDirectories(entryPath);
+    if (fs.readdirSync(entryPath).length === 0) fs.rmdirSync(entryPath);
+  }
+}
+
+function assertNoRemovedGameAssets(assetsRoot: string) {
+  const removedGameAssets = listFiles(assetsRoot)
+    .map((file) => path.relative(assetsRoot, file).split(path.sep).join("/"))
+    .filter((file) => file.split("/").includes("games"));
+  if (removedGameAssets.length > 0) {
+    throw new Error(
+      `Game assets must not be present in the static production output: ${removedGameAssets
+        .slice(0, 10)
+        .join(", ")}`,
+    );
   }
 }
 

@@ -7,7 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: siteName,
     description: siteDescription,
     id: "/",
-    start_url: "/chat/learn-anything",
+    start_url: "/chat?topic=learn-anything",
     scope: "/",
     display: "standalone",
     background_color: "#fffdf8",

@@ -11,6 +11,10 @@ import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
 import { getMainAppSourceHash, getMainAppSourceStrings, mainAppTranslationNamespace } from "@/lib/i18n/main-app-source";
 import { getAllSiteTranslationNamespaces, getSiteTranslationSource, isKnownSiteTranslationNamespace } from "@/lib/i18n/site-source";
 import { isValidFieldTranslation } from "@/lib/i18n/translation-field-validation";
+import {
+  isTranslationBundleCompleteAndFluent,
+  isTranslationBundleFieldValid,
+} from "@/lib/i18n/translation-quality";
 import type { TranslationSource } from "@/lib/i18n/translation-types";
 
 type Args = {
@@ -19,7 +23,10 @@ type Args = {
 };
 
 const args = parseArgs(process.argv.slice(2));
-const byNamespace: Record<string, { complete: number; incomplete: number; total: number }> = {};
+const byNamespace: Record<
+  string,
+  { complete: number; incomplete: number; renderReady: number; notRenderReady: number; total: number }
+> = {};
 const incomplete: Array<{
   namespace: string;
   language: SupportedLanguage;
@@ -28,15 +35,32 @@ const incomplete: Array<{
   sourceHashFresh: boolean;
 }> = [];
 let complete = 0;
+const notRenderReady: Array<{ namespace: string; language: SupportedLanguage }> = [];
 
 for (const namespace of args.namespaces) {
   const source = sourceForNamespace(namespace);
-  byNamespace[namespace] = { complete: 0, incomplete: 0, total: args.languages.length };
+  byNamespace[namespace] = {
+    complete: 0,
+    incomplete: 0,
+    renderReady: 0,
+    notRenderReady: 0,
+    total: args.languages.length,
+  };
   for (const language of args.languages) {
     const bundle = getCuratedTranslationBundle(source, language);
     if (bundle) {
       complete += 1;
       byNamespace[namespace].complete += 1;
+      const renderReady =
+        isTranslationBundleFieldValid(source, bundle, language) &&
+        (namespace === mainAppTranslationNamespace ||
+          isTranslationBundleCompleteAndFluent(source, bundle, language));
+      if (renderReady) {
+        byNamespace[namespace].renderReady += 1;
+      } else {
+        byNamespace[namespace].notRenderReady += 1;
+        notRenderReady.push({ namespace, language });
+      }
       continue;
     }
     const partial = getCuratedTranslationPartial(source, language);
@@ -48,6 +72,8 @@ for (const namespace of args.namespaces) {
       totalCount: Object.keys(source.sourceStrings).length,
       sourceHashFresh: partial.sourceHashFresh,
     });
+    byNamespace[namespace].notRenderReady += 1;
+    notRenderReady.push({ namespace, language });
   }
 }
 
@@ -56,12 +82,17 @@ console.log(
     event: "curated_translation_status_complete",
     complete,
     incompleteCount: incomplete.length,
+    renderReadinessIncompleteCount: notRenderReady.length,
     byNamespace,
     total: args.languages.length * args.namespaces.length,
     incomplete: incomplete.slice(0, 120),
     incompleteTruncated: incomplete.length > 120,
+    notRenderReady: notRenderReady.slice(0, 120),
+    notRenderReadyTruncated: notRenderReady.length > 120,
   }),
 );
+
+if (incomplete.length || notRenderReady.length) process.exitCode = 1;
 
 function sourceForNamespace(namespace: string): TranslationSource {
   if (namespace === mainAppTranslationNamespace) {

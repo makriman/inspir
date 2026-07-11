@@ -39,7 +39,6 @@ declare global {
     APP_WRITE_FREEZE_RETRY_AFTER_SECONDS: string;
     MAX_REVALIDATE_CONCURRENCY: string;
     NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION: string;
-    OPENAI_API_KEY: string;
     CLOUDFLARE_AI_GATEWAY_TOKEN: string;
     AUTH_SECRET: string;
     AUTH_GOOGLE_ID: string;

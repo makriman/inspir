@@ -14,7 +14,6 @@ import {
   useState,
 } from "react";
 import dynamic from "next/dynamic";
-import { trackProductEvent } from "@/components/analytics/trackProductEvent";
 import type { ActivityRun } from "@/components/chat/activity-model";
 import { ChatMainSection } from "@/components/chat/ChatMainSection";
 import { ChatPanelOverlays } from "@/components/chat/ChatPanelOverlays";
@@ -31,6 +30,7 @@ import {
 import { FlashcardWorkspace } from "@/components/chat/FlashcardWorkspace";
 import { GuidedMiniAppWorkspace } from "@/components/chat/GuidedMiniAppWorkspace";
 import { GuestFeatureGate } from "@/components/chat/GuestFeatureGate";
+import { parseOpenAiSseText } from "@/components/chat/openai-sse";
 import {
   type MemoryCreateInput,
   type MemoryDashboard,
@@ -38,7 +38,6 @@ import {
   type MemoryUpdateInput,
 } from "@/components/chat/memory-model";
 import { displayMessages } from "@/components/chat/message-display";
-import { ProfilePanel } from "@/components/chat/ProfilePanel";
 import {
   profileFromApiUser,
   type ProfileDetailsInput,
@@ -64,7 +63,7 @@ import { TopicSidebar } from "@/components/chat/TopicSidebar";
 import { TimeTravelWorkspace } from "@/components/chat/TimeTravelWorkspace";
 import { FocusTimerWorkspace, usePersistentLearningTools } from "@/components/chat/PersistentLearningTools";
 import { defaultLanguage } from "@/lib/content/languages";
-import { topicPath } from "@/lib/content/topic-routing";
+import { topicWorkspacePath } from "@/lib/content/topic-path";
 import { localizeHref } from "@/lib/i18n/routing";
 import type { MainAppTranslationBundle } from "@/lib/i18n/main-app-types";
 
@@ -76,6 +75,9 @@ const FocusMusicWorkspace = dynamic(() =>
 );
 const SocraticWorkspace = dynamic(() =>
   import("@/components/chat/SocraticWorkspace").then((mod) => mod.SocraticWorkspace),
+);
+const ProfilePanel = dynamic(() =>
+  import("@/components/chat/ProfilePanel").then((mod) => mod.ProfilePanel),
 );
 
 type RecentChat = {
@@ -398,7 +400,7 @@ function chatClientStateReducer(state: ChatClientState, nextState: MergeStateAct
 }
 
 type ChatClientProps = {
-  authMode?: "authenticated" | "guest";
+  authMode: "guest";
   user: UserProfile;
   topics: Topic[];
   initialTopicId: string;
@@ -416,7 +418,7 @@ export function ChatClient(props: ChatClientProps) {
 type ChatClientController = ReturnType<typeof useChatClientController>;
 
 function useChatClientController({
-  authMode = "authenticated",
+  authMode,
   user,
   topics,
   initialTopicId,
@@ -824,7 +826,7 @@ function useChatClientController({
       setActivityRun(null);
       setInput("");
       setRecentOpen(false);
-      window.history.replaceState(null, "", localizeHref(topicPath(activeTopic.slug), currentLanguage));
+      window.history.replaceState(null, "", localizeHref(topicWorkspacePath(activeTopic.slug), currentLanguage));
       return;
     }
     const chatId = await createChat(activeTopicId);
@@ -922,11 +924,6 @@ function useChatClientController({
         return;
       }
       if (!response.ok || !response.body) throw new Error("No assistant response");
-      trackProductEvent("chat_message_sent", {
-        guest: isGuest,
-        topic: activeTopic.slug,
-      });
-
       const responseAssistantMetadata = assistantResponseMetadata(response);
       if (responseAssistantMetadata) {
         setMessages((current) =>
@@ -946,7 +943,9 @@ function useChatClientController({
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
+      const isOpenAiSse = response.headers.get("content-type")?.includes("text/event-stream") ?? false;
       let assistantText = "";
+      let sseBuffer = "";
       let assistantInserted = true;
       let assistantHasPaintedText = false;
       let assistantFlushTimeout: number | null = null;
@@ -1040,11 +1039,25 @@ function useChatClientController({
         ensureCurrentStream();
         if (done) {
           const finalDecoderText = decoder.decode();
-          if (finalDecoderText) assistantText += finalDecoderText;
+          if (isOpenAiSse) {
+            const parsed = parseOpenAiSseText(`${sseBuffer}${finalDecoderText}`, true);
+            assistantText += parsed.text;
+            sseBuffer = parsed.remainder;
+          } else if (finalDecoderText) {
+            assistantText += finalDecoderText;
+          }
+          if (!assistantText.trim()) throw new Error("Empty assistant response");
           flushAssistantText({ final: true });
           return;
         }
-        assistantText += decoder.decode(value, { stream: true });
+        const decoded = decoder.decode(value, { stream: true });
+        if (isOpenAiSse) {
+          const parsed = parseOpenAiSseText(`${sseBuffer}${decoded}`);
+          assistantText += parsed.text;
+          sseBuffer = parsed.remainder;
+        } else {
+          assistantText += decoded;
+        }
         const paintedFirstText = scheduleAssistantFlush();
         if (paintedFirstText) await waitForFirstAssistantPaint();
         return readAssistantStream();
@@ -1184,7 +1197,11 @@ function useChatClientController({
     setStoreOpen(false);
     setProfileOpen(false);
     setMobileSidebarOpen(false);
-    window.history.replaceState(null, "", localizeHref(nextTopic ? topicPath(nextTopic.slug) : "/chat", currentLanguage));
+    window.history.replaceState(
+      null,
+      "",
+      localizeHref(nextTopic ? topicWorkspacePath(nextTopic.slug) : "/chat", currentLanguage),
+    );
   }
 
   async function openRecentConversations() {
@@ -1526,7 +1543,7 @@ function ChatClientLayout(controller: ChatClientController) {
           topics={displayTopics}
           sidebarTopics={sidebarTopics}
           filteredTopics={filteredTopics}
-          currentLanguage={controller.currentLanguage}
+          currentLanguage={currentLanguage}
           activeTopicId={activeTopicId}
           addedTopicIds={addedTopicIds}
           search={search}
@@ -1538,7 +1555,6 @@ function ChatClientLayout(controller: ChatClientController) {
               controller.setStoreOpen(false);
               controller.setRecentOpen(false);
               setProfileOpen(true);
-              trackProductEvent("profile_opened");
             }
             setMobileSidebarOpen(false);
           }}
@@ -1592,9 +1608,7 @@ function ChatClientLayout(controller: ChatClientController) {
         <ChatWorkspaceSwitch controller={controller} />
       </ChatMainSection>
       <ChatPanelOverlays
-        activeTopic={activeTopic}
         agePromptOpen={agePromptOpen}
-        currentLanguage={currentLanguage}
         guestMessageLimit={guestMessageLimit}
         guestMessagesUsed={guestMessagesUsed}
         guestPromptOpen={guestPromptOpen}

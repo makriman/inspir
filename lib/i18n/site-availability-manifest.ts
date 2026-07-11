@@ -25,7 +25,8 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Portuguese": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Dutch": [
     "marketing-shell",
@@ -44,13 +45,16 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Romanian": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Czech": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Hungarian": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Greek": [
     "marketing-shell",
@@ -61,6 +65,7 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Arabic": [
+    "marketing-shell",
     "route:home"
   ],
   "Hebrew": [
@@ -124,16 +129,20 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Chinese": [
+    "marketing-shell",
     "route:home"
   ],
   "Japanese": [
+    "marketing-shell",
     "route:home"
   ],
   "Korean": [
+    "marketing-shell",
     "route:home"
   ],
   "Vietnamese": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Thai": [
     "marketing-shell",
@@ -156,15 +165,31 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Afrikaans": [
+    "marketing-shell",
     "route:home"
   ],
   "Amharic": [
+    "marketing-shell",
+    "route:home"
+  ],
+  "Yoruba": [
+    "marketing-shell",
     "route:home"
   ],
   "Zulu": [
+    "marketing-shell",
+    "route:home"
+  ],
+  "Hausa": [
+    "marketing-shell",
     "route:home"
   ],
   "Somali": [
+    "marketing-shell",
+    "route:home"
+  ],
+  "Norwegian": [
+    "marketing-shell",
     "route:home"
   ],
   "Swedish": [
@@ -180,10 +205,12 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Icelandic": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Irish": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Welsh": [
     "marketing-shell",
@@ -198,7 +225,8 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Galician": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Serbian": [
     "marketing-shell",
@@ -217,7 +245,8 @@ export const staticSiteTranslationNamespaceAvailability: Partial<Record<Supporte
     "route:home"
   ],
   "Slovak": [
-    "marketing-shell"
+    "marketing-shell",
+    "route:home"
   ],
   "Slovenian": [
     "marketing-shell",

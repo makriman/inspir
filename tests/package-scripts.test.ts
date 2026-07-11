@@ -19,18 +19,45 @@ test("Cloudflare package scripts avoid nested pnpm invocations", () => {
   );
 });
 
-test("preview Playwright resets only declared local runtime counters", () => {
+test("native Wrangler preview preserves sanitized build and local D1 gates", () => {
   const previewRunner = fs.readFileSync(path.resolve("scripts/cloudflare/run-preview-playwright.ts"), "utf8");
   const localD1Setup = fs.readFileSync(path.resolve("scripts/cloudflare/setup-local-d1.ts"), "utf8");
   const sanitizedBuild = fs.readFileSync(path.resolve("scripts/cloudflare/run-sanitized-build.ts"), "utf8");
+  const packageJson = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8")) as {
+    scripts?: Record<string, string>;
+  };
+  const nativePreviewCommand = sanitizedBuild.match(
+    /"wrangler-preview": \{([\s\S]*?)\n  \},/,
+  )?.[1];
 
+  assert.ok(nativePreviewCommand, "native Wrangler preview command should remain statically inspectable");
+  assert.equal(
+    packageJson.scripts?.["cf:preview"],
+    "tsx scripts/cloudflare/setup-local-d1.ts && tsx scripts/cloudflare/run-sanitized-build.ts wrangler-preview",
+  );
+  assert.equal(
+    packageJson.scripts?.["cf:preview:remote"],
+    "tsx scripts/cloudflare/run-sanitized-build.ts wrangler-preview --remote",
+  );
   assert.match(previewRunner, /setup-local-d1\.ts", "--reset-runtime-state"/);
+  assert.match(previewRunner, /run-sanitized-build\.ts", "wrangler-preview"/);
   assert.match(previewRunner, /clearLocalPreviewCacheApiState\(\)/);
   assert.match(localD1Setup, /RUNTIME_MUTABLE_TABLES/);
   assert.match(localD1Setup, /delete from "\$\{table\}";/);
   assert.doesNotMatch(localD1Setup, /delete from "users"/);
   assert.doesNotMatch(localD1Setup, /drop table/i);
+  assert.match(nativePreviewCommand, /executable: bin\("wrangler"\)/);
+  assert.match(nativePreviewCommand, /args: \["dev", "--show-interactive-dev-session=false"\]/);
+  assert.match(nativePreviewCommand, /buildBefore: true/);
+  assert.match(nativePreviewCommand, /scanBefore: true/);
+  assert.match(sanitizedBuild, /mode === "wrangler-preview"/);
+  assert.match(sanitizedBuild, /writeLocalPreviewRuntimeVars\(\)/);
+  assert.match(sanitizedBuild, /writeLocalPreviewWranglerConfig\(\)/);
+  assert.match(sanitizedBuild, /\["--config", localPreviewConfig, \.\.\.passthroughArgs\]/);
   assert.match(sanitizedBuild, /delete config\.routes/);
+  assert.doesNotMatch(sanitizedBuild, /opennext-preview/);
+  assert.doesNotMatch(sanitizedBuild, /NEXT_INC_CACHE_R2_BUCKET/);
+  assert.doesNotMatch(previewRunner, /opennext-preview/);
 });
 
 test("Cloudflare scripts avoid machine-local absolute tool paths", () => {
@@ -138,7 +165,7 @@ test("runtime translation reads cannot accumulate request-bound promises in isol
   assert.match(manifestGenerator, /site-namespace-manifest\.ts/);
 });
 
-test("public marketing delivery is direct Static Assets with no managed HTML cache tooling", () => {
+test("public delivery is Static Assets with only two lean API Worker routes", () => {
   const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
   const nextConfig = fs.readFileSync(path.resolve("next.config.ts"), "utf8");
   const globalNotFound = fs.readFileSync(path.resolve("app/global-not-found.tsx"), "utf8");
@@ -150,6 +177,7 @@ test("public marketing delivery is direct Static Assets with no managed HTML cac
     scripts?: Record<string, string>;
   };
   const wrangler = JSON.parse(fs.readFileSync(path.resolve("wrangler.jsonc"), "utf8")) as {
+    main?: string;
     placement?: { mode?: string };
     limits?: { cpu_ms?: number };
     assets?: {
@@ -159,6 +187,17 @@ test("public marketing delivery is direct Static Assets with no managed HTML cac
       run_worker_first?: string[];
     };
     cache?: { enabled?: boolean };
+    d1_databases?: Array<{ binding?: string; database_name?: string }>;
+    vectorize?: unknown[];
+    r2_buckets?: unknown[];
+    queues?: { producers?: unknown[]; consumers?: unknown[] };
+    triggers?: { crons?: string[] };
+    services?: Array<{ binding?: string; service?: string }>;
+    version_metadata?: { binding?: string };
+    durable_objects?: { bindings?: Array<{ name?: string; class_name?: string }> };
+    migrations?: Array<{ new_sqlite_classes?: string[] }>;
+    secrets?: { required?: string[] };
+    vars?: Record<string, string>;
   };
 
   assert.match(middleware, /buildCacheableMarketingContentSecurityPolicy/);
@@ -174,10 +213,22 @@ test("public marketing delivery is direct Static Assets with no managed HTML cac
   assert.match(middleware, /localizedPath\.hasLocalePrefix && !cacheableMarketingRequest/);
   assert.match(middleware, /isStaticSiteLanguageAvailableForPath\(effectivePathname, language\)/);
   assert.match(csp, /buildCacheableMarketingContentSecurityPolicy/);
-  assert.match(csp, /script-src 'self' 'unsafe-inline' https:\/\/accounts\.google\.com/);
   assert.match(staticHeaders, /X-Inspir-Delivery: static-assets/);
+  assert.match(staticHeaders, /^\/api\/topics$/m);
+  assert.match(staticHeaders, /^\/chat$/m);
+  assert.match(staticHeaders, /^\/:locale\/chat$/m);
+  assert.doesNotMatch(staticHeaders, /^\/chat\*$/m);
+  assert.doesNotMatch(staticHeaders, /^\/\*\/chat\*$/m);
+  assert.doesNotMatch(staticHeaders, /accounts\.google\.com/);
+  assert.doesNotMatch(staticHeaders, /api\.openai\.com/);
   assert.match(staticRedirects, /^\/tnc\s+\/terms\s+308$/m);
+  assert.doesNotMatch(staticRedirects, /^\s*\/(?:[^\s]*\/)?chat\/\*/m);
   assert.match(materializer, /minimumLocalizedHomeDocuments/);
+  assert.match(materializer, /staticChatCacheKeys/);
+  assert.match(materializer, /Exact public topic redirects/);
+  assert.match(materializer, /\/chat\?topic=\$\{topic\.slug\} 308/);
+  assert.match(materializer, /staticChatDynamicRedirects/);
+  assert.match(materializer, /api\/topics/);
   assert.match(materializer, /Required static document was not materialized/);
   assert.match(materializer, /Static HTML must not depend on the billable Next image optimizer/);
   assert.match(nextConfig, /unoptimized:\s*true/);
@@ -192,7 +243,8 @@ test("public marketing delivery is direct Static Assets with no managed HTML cac
   assert.equal(packageJson.scripts?.["cf:verify:edge-cache"], undefined);
   assert.equal(packageJson.scripts?.["seo:lastmod:generate"], "tsx scripts/seo/generate-sitemap-lastmod.ts");
   assert.equal(packageJson.scripts?.["seo:lastmod:check"], "tsx scripts/seo/generate-sitemap-lastmod.ts --check");
-  assert.equal(wrangler.placement?.mode, "smart");
+  assert.equal(wrangler.main, "./cloudflare-worker.ts");
+  assert.equal(wrangler.placement, undefined);
   assert.equal(wrangler.cache, undefined);
   assert.equal(wrangler.limits, undefined);
   assert.equal(wrangler.assets?.directory, ".open-next/assets");
@@ -200,9 +252,35 @@ test("public marketing delivery is direct Static Assets with no managed HTML cac
   assert.equal(wrangler.assets?.not_found_handling, "404-page");
   assert.deepEqual(wrangler.assets?.run_worker_first, [...FREE_PLAN_WORKER_FIRST_ROUTES]);
   const workerFirstRoutes = new Set<string>(wrangler.assets?.run_worker_first ?? []);
-  assert.equal(workerFirstRoutes.has("!/_next/static/*"), true);
+  assert.deepEqual([...workerFirstRoutes], ["/api/guest-chat", "/api/health"]);
+  assert.equal([...workerFirstRoutes].some((route) => route.includes("*") || route.startsWith("!")), false);
   assert.equal(workerFirstRoutes.has("/api/*"), false);
   assert.equal(workerFirstRoutes.has("/*"), false);
+  assert.ok(
+    wrangler.d1_databases?.some(
+      (binding) => binding.binding === "DB" && binding.database_name === "inspirlearning-prod",
+    ),
+  );
+  assert.deepEqual(wrangler.vectorize ?? [], []);
+  assert.deepEqual(wrangler.r2_buckets ?? [], []);
+  assert.deepEqual(wrangler.queues?.producers ?? [], []);
+  assert.deepEqual(wrangler.queues?.consumers ?? [], []);
+  assert.deepEqual(wrangler.triggers?.crons ?? [], []);
+  assert.ok(
+    wrangler.services?.some(
+      (binding) => binding.binding === "WORKER_SELF_REFERENCE" && binding.service === "inspirlearning",
+    ),
+  );
+  assert.equal(wrangler.version_metadata?.binding, "CF_VERSION_METADATA");
+  assert.ok(
+    wrangler.durable_objects?.bindings?.some(
+      (binding) => binding.name === "NEXT_CACHE_DO_QUEUE" && binding.class_name === "DOQueueHandler",
+    ),
+  );
+  assert.ok(wrangler.migrations?.some((migration) => migration.new_sqlite_classes?.includes("DOQueueHandler")));
+  assert.deepEqual(wrangler.secrets?.required, ["CLOUDFLARE_AI_GATEWAY_TOKEN"]);
+  assert.equal(wrangler.vars?.AUTH_URL, undefined);
+  assert.equal(wrangler.vars?.AI_RESPONSE_CACHE_TTL_SECONDS, undefined);
 });
 
 test("localized marketing chrome avoids English-only video and PWA labels", () => {
@@ -299,7 +377,9 @@ test("chat auto-translation is incremental and preserves workspace node identity
   const observerBody = chatClient.slice(observerStart, observerEnd);
 
   assert.match(chatClient, /new MutationObserver\(\(mutations\) =>/);
+  assert.match(chatClient, /closest\("\[data-no-auto-translate\], code, pre, script, style"\)/);
   assert.match(chatClient, /translateNodeTree\(root, textMap, translationState\)/);
+  assert.match(observerBody, /if \(shouldSkipTranslation\(mutation\.target\)\) continue/);
   assert.match(observerBody, /translateNodeTree\(addedNode, textMap, translationState\)/);
   assert.match(observerBody, /translateTextNode\(mutation\.target, textMap, translationState\)/);
   assert.match(observerBody, /translateElementAttribute\(mutation\.target, mutation\.attributeName, textMap, translationState\)/);
@@ -311,7 +391,11 @@ test("chat auto-translation is incremental and preserves workspace node identity
   assert.equal(chatClient.match(/buildTranslationTextMap\(/g)?.length, 2);
   assert.match(chatClient, /<div ref=\{translationRootRef\}/);
   assert.doesNotMatch(chatClient, /key=\{`\$\{translationBundle\.language\}-\$\{translationBundle\.sourceHash\}`\}/);
-  assert.match(richMarkdown, /data-no-auto-translate="true"/);
+  assert.equal(richMarkdown.match(/data-no-auto-translate="true"/g)?.length, 2);
+  assert.match(
+    richMarkdown,
+    /className=\{`\$\{className\} is-streaming`\}[\s\S]*?data-no-auto-translate="true"/,
+  );
 });
 
 test("profile layout merges identity into details and uses full-width sections", () => {
@@ -352,17 +436,39 @@ test("profile avatars fall back instead of rendering broken images", () => {
   assert.match(chatClient, /const avatarFallbackSrc = profileUser\.image \|\| undefined/);
 });
 
-test("signed-in public chat routes stay authenticated when topic lookup falls back to seeds", () => {
-  const page = fs.readFileSync(path.resolve("app/(workspace)/chat/[chatId]/page.tsx"), "utf8");
-  const chatsRoute = fs.readFileSync(path.resolve("app/api/chats/route.ts"), "utf8");
-  const queries = fs.readFileSync(path.resolve("lib/db/queries.ts"), "utf8");
+test("public chat shells are static, localized, and limited to seeded topics", () => {
+  const page = fs.readFileSync(path.resolve("app/(workspace)/chat/page.tsx"), "utf8");
+  const localizedPage = fs.readFileSync(
+    path.resolve("app/(localized-workspace)/[locale]/chat/page.tsx"),
+    "utf8",
+  );
+  const bootstrap = fs.readFileSync(path.resolve("components/chat/StaticGuestChatBootstrap.tsx"), "utf8");
+  const topicsRoute = fs.readFileSync(path.resolve("app/api/topics/route.ts"), "utf8");
+  const publicTopics = fs.readFileSync(path.resolve("lib/content/public-topics.ts"), "utf8");
+  const chatClient = fs.readFileSync(path.resolve("components/chat/ChatClient.tsx"), "utf8");
+  const sidebar = fs.readFileSync(path.resolve("components/chat/TopicSidebar.tsx"), "utf8");
+  const learningStore = fs.readFileSync(path.resolve("components/chat/LearningStore.tsx"), "utf8");
 
-  assert.match(page, /const savedChatsAvailable = Boolean\(session\?\.user\?\.id\)/);
-  assert.match(page, /withPublicTopicTimeout\(getPublicActiveTopics\(\)\)\.catch\(\(\) => \[\]\)/);
-  assert.doesNotMatch(page, /savedChatsAvailable = false/);
-  assert.match(chatsRoute, /topicId: z\.string\(\)\.trim\(\)\.min\(1\)\.max\(120\)/);
-  assert.match(queries, /export async function getTopicByIdOrSlug/);
-  assert.match(queries, /const topic = await getTopicByIdOrSlug\(topicId\)/);
+  assert.equal(fs.existsSync(path.resolve("app/(workspace)/chat/[chatId]/page.tsx")), false);
+  assert.match(page, /export const dynamic = "force-static"/);
+  assert.match(page, /<StaticGuestChatPage/);
+  assert.match(localizedPage, /export const dynamic = "force-static"/);
+  assert.match(localizedPage, /export const dynamicParams = false/);
+  assert.match(localizedPage, /generateStaticParams/);
+  assert.match(bootstrap, /useSyncExternalStore/);
+  assert.match(bootstrap, /topicSlugFromChatLocation/);
+  assert.match(bootstrap, /window\.location\.search/);
+  assert.match(bootstrap, /topics\.find\(\(topic\) => topic\.slug === slug\)/);
+  assert.match(bootstrap, /authMode="guest"/);
+  assert.match(topicsRoute, /export const dynamic = "force-static"/);
+  assert.match(topicsRoute, /getPublicSeededTopics/);
+  assert.match(publicTopics, /topicSeeds\.map/);
+  assert.match(chatClient, /authMode: "guest"/);
+  assert.doesNotMatch(chatClient, /authMode\s*=\s*"authenticated"/);
+  assert.doesNotMatch(chatClient, /trackProductEvent|\/api\/analytics\/events/);
+  assert.doesNotMatch(sidebar, /GoogleContinueButton|SignInButton|Continue with Google/);
+  assert.doesNotMatch(learningStore, /ai-game-arena|href=\{?["'`]\/games/);
+  assert.equal(fs.existsSync(path.resolve("components/analytics/trackProductEvent.ts")), false);
 });
 
 test("Better Auth can safely link migrated Google-only users", () => {
@@ -392,30 +498,23 @@ test("admin dashboard is DB-backed and reachable from admin profiles", () => {
   assert.match(adminPage, /Cached topics/);
 });
 
-test("static pages keep external analytics but reserve D1 product events for the workspace", () => {
+test("all static page shells keep external analytics without D1 product events", () => {
   const analyticsScripts = fs.readFileSync(path.resolve("components/analytics/AnalyticsScripts.tsx"), "utf8");
-  const productAnalytics = fs.readFileSync(path.resolve("components/analytics/ProductAnalytics.tsx"), "utf8");
-  const trackProductEvent = fs.readFileSync(path.resolve("components/analytics/trackProductEvent.ts"), "utf8");
   const marketingLayout = fs.readFileSync(path.resolve("app/(marketing)/layout.tsx"), "utf8");
   const localizedLayout = fs.readFileSync(path.resolve("app/[locale]/layout.tsx"), "utf8");
   const workspaceLayout = fs.readFileSync(path.resolve("app/(workspace)/layout.tsx"), "utf8");
-  const middleware = fs.readFileSync(path.resolve("middleware.ts"), "utf8");
-  const csp = fs.readFileSync(path.resolve("lib/security/headers.ts"), "utf8");
-  const scriptDirective = csp.split("\n").find((line) => line.includes("script-src")) ?? "";
 
   assert.match(analyticsScripts, /G-S3E1FV3RK8/);
   assert.match(analyticsScripts, /xi5vqkce95/);
-  assert.match(productAnalytics, /auth_error_seen/);
-  assert.match(productAnalytics, /trackProductEvent/);
-  assert.match(trackProductEvent, /\/api\/analytics\/events/);
   assert.match(marketingLayout, /AnalyticsScripts/);
   assert.match(localizedLayout, /AnalyticsScripts/);
+  assert.match(workspaceLayout, /AnalyticsScripts/);
   assert.doesNotMatch(marketingLayout, /ProductAnalytics/);
   assert.doesNotMatch(localizedLayout, /ProductAnalytics/);
-  assert.match(workspaceLayout, /ProductAnalytics/);
-  assert.match(middleware, /buildContentSecurityPolicy\(nonce\)/);
-  assert.match(csp, /'nonce-\$\{nonce\}'/);
-  assert.doesNotMatch(scriptDirective, /'unsafe-inline'/);
+  assert.doesNotMatch(workspaceLayout, /ProductAnalytics/);
+  assert.equal(fs.existsSync(path.resolve("components/analytics/trackProductEvent.ts")), false);
+  assert.match(workspaceLayout, /export const dynamic = "force-static"/);
+  assert.doesNotMatch(workspaceLayout, /headers\(\)/);
 });
 
 test("Better Auth schema keeps rollback columns documented during soak", () => {

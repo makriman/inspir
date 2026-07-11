@@ -7,6 +7,13 @@ import {
   supportedLanguages,
   type SupportedLanguage,
 } from "@/lib/content/languages";
+import { getCuratedTranslationBundle } from "@/lib/i18n/curated-translations";
+import { getCuratedMainAppTranslationBundle } from "@/lib/i18n/main-app-curated";
+import {
+  getMainAppSourceHash,
+  getMainAppSourceStrings,
+  mainAppTranslationNamespace,
+} from "@/lib/i18n/main-app-source";
 import { siteSourceManifest } from "@/lib/i18n/site-source-manifest";
 import {
   getAllSiteTranslationNamespaces,
@@ -14,6 +21,7 @@ import {
 } from "@/lib/i18n/site-source";
 import { siteTranslationNamespace } from "@/lib/i18n/site-source-constants";
 import { isValidFieldTranslation } from "@/lib/i18n/translation-field-validation";
+import { isTranslationBundleCompleteAndFluent } from "@/lib/i18n/translation-quality";
 import {
   cloudflareDir,
   D1_DATABASE_NAME,
@@ -34,7 +42,22 @@ const repairSqlPath = path.resolve(
   process.cwd(),
   "scripts/cloudflare/seo-cta-translation-repair.sql",
 );
-const model = "codex-curated-no-games-seo-repair-v3";
+const model = "codex-curated-free-static-no-games-v4";
+const curatedRepairModel = "codex-curated-free-static-no-games-v5";
+const mainAppRepairModel = "codex-curated-free-static-no-games-main-app-v1";
+const curatedRepairNamespaces = ["marketing-shell", "route:home"] as const;
+const staticRepairNamespaces = [
+  "marketing-site",
+  "route:chat-public",
+  "route:about",
+  "route:media",
+  "route:schools",
+] as const;
+const curatedRepairNamespaceNames = new Set<string>(curatedRepairNamespaces);
+const staticRepairNamespaceNames = new Set<string>(staticRepairNamespaces);
+const supportedLanguageNames = new Set<string>(supportedLanguages);
+const maximumD1SqlStatementBytes = 100_000;
+const mainAppPatchStatementTargetBytes = 90_000;
 const startLearningKey = "site.02d279ce2f7b58c890";
 const tryPublicModesKey = "site.fc4ad9c971ade5617d";
 const retiredGameTranslationKeys = [
@@ -44,18 +67,39 @@ const retiredGameTranslationKeys = [
 ] as const;
 const previousMarketingSiteHash = "ec84387ca93fbec6a68df90e756a5b64af6dc401b0fefbc4646866ee897b228b";
 const expectedSourceHashes = {
-  "marketing-site": "784fb3090db46f80d95db18611a9c8f6c784cccb397e2a0634e658734b6e5d39",
+  "marketing-site": "f14328ad17e645fbc8d904da8d2892fae56e9c7a41b54b8aa108c89eaf7611b0",
   "route:home": "fab351f36a82182656bcf48d9cce7ac2abb9f654a65e7e04a0efb7b50fbb86ce",
   "route:about": "6aa44ee2349a660b840519a4fc03037976d4e26ee4ceb55d7d94e2959b211a99",
+  "route:chat-public": "f5ef074ab3712ef9b40cb5fcbc794e9b7d42efd2089fc22400aeb280abce8689",
   "route:media": "8f437d1337e18df480b2aef7ced339482fa4b1d53653e29fa7b06ae881a77982",
   "route:schools": "2c3294f27d9887dd9fbb10d0ad2147c31960a75ace708d1b3fc750416e6adabe",
 } as const;
-const maximumRepairTranslationRows = supportedLanguages.filter(
-  (language) => language !== defaultLanguage,
-).length * 4;
 const projectedBilledWritesPerRepairTranslationRow = 2;
 
 type RepairNamespace = keyof typeof expectedSourceHashes;
+
+export type CuratedNamespaceRepairRow = {
+  namespace: (typeof curatedRepairNamespaces)[number];
+  language: SupportedLanguage;
+  sourceHash: string;
+  payload: Readonly<Record<string, string>>;
+};
+
+export type MainAppRepairRow = {
+  namespace: typeof mainAppTranslationNamespace;
+  language: SupportedLanguage;
+  sourceHash: string;
+  payload: Readonly<Record<string, string>>;
+};
+
+export type MainAppRepairPlan = {
+  sql: string;
+  rows: number;
+  resetStatements: number;
+  patchStatements: number;
+  logicalRowWrites: number;
+  largestStatementBytes: number;
+};
 
 type RepairReport = {
   createdAt: string;
@@ -64,21 +108,32 @@ type RepairReport = {
   database: string;
   backupPath?: string;
   translationCount: number;
+  curatedTranslationRows: number;
+  largestCuratedRepairStatementBytes: number;
+  mainAppTranslationRows: number;
+  mainAppRepairStatements: number;
+  mainAppRepairLogicalRowWrites: number;
+  largestMainAppRepairStatementBytes: number;
   manifestNamespacesVerified: number;
   sourceHashes: Record<RepairNamespace, string>;
   repairSqlSha256: string;
   sourceSyncSha256?: string;
   sourceSyncStatements?: number;
   sourceSyncLogicalRowWrites?: number;
+  staticRepairRows?: number;
   projectedBilledRowWrites?: number;
   projectedBilledRowWriteLimit?: number;
   timeTravelVerified: boolean;
   productionVerification?: {
+    expectedSiteNamespaces: number;
+    siteNamespaces: number;
     expectedSiteRows: number;
     freshSiteRows: number;
     targetNamespaces: number;
     schoolValuesMatched: number;
     retiredGamePayloads: number;
+    curatedRowsMatched: number;
+    mainAppRowsMatched: number;
   };
 };
 
@@ -101,17 +156,34 @@ export function repairSeoCtaTranslations(options: {
   }
 
   const translations = loadAndValidateTranslationSeed();
+  const curatedRepairRows = loadCuratedNamespaceRepairRows();
+  const mainAppRepairRows = loadMainAppRepairRows();
+  const mainAppRepairPlan = buildMainAppRepairPlan(mainAppRepairRows);
   const manifestNamespacesVerified = validateSiteSourceManifestFreshness();
   const sourceHashes = validateSourceContract();
   const repairSql = fs.readFileSync(repairSqlPath, "utf8");
   validateRepairSql(repairSql, translations, sourceHashes);
+  const curatedRepairSql = buildCuratedNamespaceRepairSql(curatedRepairRows);
+  const largestCuratedRepairStatementBytes = assertD1SqlStatementSize(curatedRepairSql);
+  const completeRepairSql = buildAtomicSeoCtaRepairSql(
+    curatedRepairSql,
+    mainAppRepairPlan.sql,
+    repairSql,
+  );
   const common = {
     createdAt: new Date().toISOString(),
     database: D1_DATABASE_NAME,
     translationCount: translations.size,
+    curatedTranslationRows: curatedRepairRows.length,
+    largestCuratedRepairStatementBytes,
+    mainAppTranslationRows: mainAppRepairRows.length,
+    mainAppRepairStatements:
+      mainAppRepairPlan.resetStatements + mainAppRepairPlan.patchStatements,
+    mainAppRepairLogicalRowWrites: mainAppRepairPlan.logicalRowWrites,
+    largestMainAppRepairStatementBytes: mainAppRepairPlan.largestStatementBytes,
     manifestNamespacesVerified,
     sourceHashes,
-    repairSqlSha256: sha256(repairSql),
+    repairSqlSha256: sha256(completeRepairSql),
   };
 
   if (!options.remote) {
@@ -139,6 +211,7 @@ export function repairSeoCtaTranslations(options: {
   if (!timeTravelVerified) {
     throw new Error("Could not verify D1 Time Travel before translation repair.");
   }
+  const staticRepairRows = validateRemoteRepairTargets(translations);
 
   const previousUmask = process.umask(0o077);
   try {
@@ -166,9 +239,12 @@ export function repairSeoCtaTranslations(options: {
   fs.chmodSync(backupPath, 0o600);
 
   const sourceSync = planSiteTranslationSourceSync("remote");
-  const projectedBilledRowWrites =
-    sourceSync.projectedBilledRowWrites +
-    maximumRepairTranslationRows * projectedBilledWritesPerRepairTranslationRow;
+  const projectedBilledRowWrites = projectRepairBilledRowWrites(
+    sourceSync.projectedBilledRowWrites,
+    staticRepairRows,
+    curatedRepairRows.length,
+    mainAppRepairPlan.logicalRowWrites,
+  );
   if (projectedBilledRowWrites > MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES) {
     throw new Error(
       "Projected atomic translation repair writes exceed the Workers Free safety budget: " +
@@ -180,7 +256,7 @@ export function repairSeoCtaTranslations(options: {
   }
 
   const atomicSqlPath = writeTemporarySqlFile(
-    buildAtomicSeoCtaRepairSql(sourceSync.sql, repairSql),
+    buildAtomicSeoCtaRepairSql(sourceSync.sql, completeRepairSql),
     "atomic-seo-cta-translation-repair.sql",
   );
   try {
@@ -203,7 +279,11 @@ export function repairSeoCtaTranslations(options: {
     fs.rmSync(path.dirname(atomicSqlPath), { recursive: true, force: true });
   }
 
-  const productionVerification = verifyRemoteRepair(translations);
+  const productionVerification = verifyRemoteRepair(
+    translations,
+    curatedRepairRows,
+    mainAppRepairRows,
+  );
   const report: RepairReport = {
     ...common,
     mode: "remote",
@@ -212,6 +292,7 @@ export function repairSeoCtaTranslations(options: {
     sourceSyncSha256: sourceSync.sha256,
     sourceSyncStatements: sourceSync.statements,
     sourceSyncLogicalRowWrites: sourceSync.logicalRowWrites,
+    staticRepairRows,
     projectedBilledRowWrites,
     projectedBilledRowWriteLimit: MAX_PROJECTED_SOURCE_SYNC_BILLED_ROW_WRITES,
     timeTravelVerified,
@@ -221,10 +302,589 @@ export function repairSeoCtaTranslations(options: {
   return report;
 }
 
-export function buildAtomicSeoCtaRepairSql(sourceSyncSql: string, repairSql: string) {
-  const statements = [sourceSyncSql.trim(), repairSql.trim()].filter(Boolean);
+export function buildAtomicSeoCtaRepairSql(...sqlParts: readonly string[]) {
+  const statements = sqlParts.map((sql) => sql.trim()).filter(Boolean);
   if (!statements.length) throw new Error("Atomic SEO translation repair SQL must not be empty.");
-  return statements.join("\n") + "\n";
+  const sql = statements.join("\n") + "\n";
+  assertNoExplicitTransactionControl(sql);
+  assertD1SqlStatementSize(sql);
+  return sql;
+}
+
+export function loadCuratedNamespaceRepairRows(): CuratedNamespaceRepairRow[] {
+  const rows: CuratedNamespaceRepairRow[] = [];
+  const targetLanguages = supportedLanguages.filter((language) => language !== defaultLanguage);
+
+  for (const namespace of curatedRepairNamespaces) {
+    const source = getSiteTranslationSource(namespace);
+    for (const language of targetLanguages) {
+      const bundle = getCuratedTranslationBundle(source, language);
+      if (!bundle || !isTranslationBundleCompleteAndFluent(source, bundle, language)) {
+        throw new Error(`Curated ${namespace} translation is not render-ready for ${language}.`);
+      }
+
+      const payload: Record<string, string> = {};
+      for (const [key, sourceText] of Object.entries(source.sourceStrings)) {
+        const value = bundle.strings[key];
+        if (!isValidFieldTranslation(sourceText, value, language) || value !== value.normalize("NFC")) {
+          throw new Error(`Curated ${namespace} translation is invalid for ${language}/${key}.`);
+        }
+        payload[key] = value;
+      }
+      rows.push({ namespace, language, sourceHash: source.sourceHash, payload });
+    }
+  }
+
+  return rows;
+}
+
+export function loadMainAppRepairRows(): MainAppRepairRow[] {
+  const rows: MainAppRepairRow[] = [];
+  const sourceStrings = getMainAppSourceStrings();
+  const sourceHash = getMainAppSourceHash(sourceStrings);
+  const sourceKeys = Object.keys(sourceStrings).sort();
+  const targetLanguages = supportedLanguages.filter((language) => language !== defaultLanguage);
+
+  for (const language of targetLanguages) {
+    const bundle = getCuratedMainAppTranslationBundle(language);
+    if (
+      !bundle ||
+      bundle.namespace !== mainAppTranslationNamespace ||
+      bundle.language !== language ||
+      bundle.sourceHash !== sourceHash
+    ) {
+      throw new Error(`Tracked main-app translation metadata is invalid for ${language}.`);
+    }
+
+    const bundleKeys = Object.keys(bundle.strings).sort();
+    if (
+      bundleKeys.length !== sourceKeys.length ||
+      sourceKeys.some((key, index) => key !== bundleKeys[index])
+    ) {
+      throw new Error(`Tracked main-app translation is incomplete for ${language}.`);
+    }
+
+    const payload: Record<string, string> = {};
+    for (const key of sourceKeys) {
+      const sourceText = sourceStrings[key];
+      const value = bundle.strings[key];
+      if (!isValidFieldTranslation(sourceText, value, language) || value !== value.normalize("NFC")) {
+        throw new Error(`Tracked main-app translation is invalid for ${language}/${key}.`);
+      }
+      payload[key] = value;
+    }
+    rows.push({
+      namespace: mainAppTranslationNamespace,
+      language,
+      sourceHash,
+      payload,
+    });
+  }
+
+  return rows;
+}
+
+export function buildMainAppRepairPlan(rows: readonly MainAppRepairRow[]): MainAppRepairPlan {
+  const targetLanguages = supportedLanguages.filter((language) => language !== defaultLanguage);
+  const expectedLanguages = new Set<SupportedLanguage>(targetLanguages);
+  if (rows.length !== expectedLanguages.size) {
+    throw new Error(
+      `Expected ${expectedLanguages.size} main-app translation rows, received ${rows.length}.`,
+    );
+  }
+
+  const sourceStrings = getMainAppSourceStrings();
+  const sourceHash = getMainAppSourceHash(sourceStrings);
+  const sourceKeys = Object.keys(sourceStrings).sort();
+  const seenLanguages = new Set<SupportedLanguage>();
+  const statements = [buildMainAppCardinalityGuardSql(targetLanguages)];
+  let resetStatements = 0;
+  let patchStatements = 0;
+
+  for (const row of rows) {
+    if (
+      row.namespace !== mainAppTranslationNamespace ||
+      !expectedLanguages.has(row.language) ||
+      row.sourceHash !== sourceHash
+    ) {
+      throw new Error(`Unexpected main-app translation row ${row.namespace}/${row.language}.`);
+    }
+    if (seenLanguages.has(row.language)) {
+      throw new Error(`Duplicate main-app translation row for ${row.language}.`);
+    }
+    seenLanguages.add(row.language);
+
+    const payloadKeys = Object.keys(row.payload).sort();
+    if (
+      payloadKeys.length !== sourceKeys.length ||
+      sourceKeys.some((key, index) => key !== payloadKeys[index])
+    ) {
+      throw new Error(`Incomplete main-app translation payload for ${row.language}.`);
+    }
+    for (const key of sourceKeys) {
+      const value = row.payload[key];
+      if (
+        !isValidFieldTranslation(sourceStrings[key], value, row.language) ||
+        value !== value.normalize("NFC")
+      ) {
+        throw new Error(`Invalid main-app translation payload for ${row.language}/${key}.`);
+      }
+    }
+
+    statements.push(buildMainAppResetStatement(row));
+    resetStatements += 1;
+    const patchSql = buildMainAppPatchStatements(row, sourceKeys);
+    statements.push(...patchSql);
+    patchStatements += patchSql.length;
+  }
+
+  if (seenLanguages.size !== expectedLanguages.size) {
+    throw new Error(
+      `Main-app translation row set is incomplete: ${seenLanguages.size}/${expectedLanguages.size}.`,
+    );
+  }
+
+  const sql = statements.join("\n\n");
+  return {
+    sql,
+    rows: rows.length,
+    resetStatements,
+    patchStatements,
+    logicalRowWrites: resetStatements + patchStatements,
+    largestStatementBytes: assertD1SqlStatementSize(sql),
+  };
+}
+
+function buildMainAppCardinalityGuardSql(languages: readonly SupportedLanguage[]) {
+  const allowedLanguages = languages.map(sqlString).join(", ");
+  return [
+    "SELECT CASE",
+    `  WHEN COUNT(*) = ${languages.length}`,
+    `    AND SUM(CASE WHEN language IN (${allowedLanguages}) THEN 1 ELSE 0 END) = ${languages.length}`,
+    "  THEN json('{}')",
+    "  ELSE json('main-app-cardinality-guard-failed')",
+    "END AS main_app_cardinality_guard",
+    "FROM app_translations",
+    `WHERE namespace = ${sqlString(mainAppTranslationNamespace)};`,
+  ].join("\n");
+}
+
+function buildMainAppResetStatement(row: MainAppRepairRow) {
+  const now = "CAST(strftime('%s', 'now') AS INTEGER) * 1000";
+  return [
+    "UPDATE app_translations",
+    "SET",
+    "  payload = json('{}'),",
+    `  source_hash = ${sqlString(row.sourceHash)},`,
+    `  model = ${sqlString(mainAppRepairModel)},`,
+    `  updated_at = ${now}`,
+    `WHERE namespace = ${sqlString(mainAppTranslationNamespace)}`,
+    `  AND language = ${sqlString(row.language)};`,
+  ].join("\n");
+}
+
+function buildMainAppPatchStatements(
+  row: MainAppRepairRow,
+  sourceKeys: readonly string[],
+) {
+  const statements: string[] = [];
+  const emptyStatement = buildMainAppPatchStatement(row.language, "{}");
+  const fixedStatementBytes =
+    Buffer.byteLength(emptyStatement, "utf8") - Buffer.byteLength(sqlString("{}"), "utf8");
+  let fragments: string[] = [];
+  let encodedFragmentBytes = 0;
+
+  const flush = () => {
+    if (!fragments.length) return;
+    const chunkJson = `{${fragments.join(",")}}`;
+    const statement = buildMainAppPatchStatement(row.language, chunkJson);
+    const bytes = Buffer.byteLength(statement, "utf8");
+    if (bytes > mainAppPatchStatementTargetBytes) {
+      throw new Error(
+        `Main-app patch statement exceeds the ${mainAppPatchStatementTargetBytes}-byte target: ` +
+          `${row.language} is ${bytes} bytes.`,
+      );
+    }
+    statements.push(statement);
+    fragments = [];
+    encodedFragmentBytes = 0;
+  };
+
+  for (const key of sourceKeys) {
+    const fragment = `${JSON.stringify(key)}:${JSON.stringify(row.payload[key])}`;
+    const encodedBytes = Buffer.byteLength(fragment.replaceAll("'", "''"), "utf8");
+    const commaBytes = fragments.length ? 1 : 0;
+    const candidateStatementBytes =
+      fixedStatementBytes +
+      4 +
+      encodedFragmentBytes +
+      commaBytes +
+      encodedBytes;
+    if (candidateStatementBytes > mainAppPatchStatementTargetBytes && fragments.length) {
+      flush();
+    }
+
+    const singleFragmentStatementBytes = fixedStatementBytes + 4 + encodedBytes;
+    if (singleFragmentStatementBytes > mainAppPatchStatementTargetBytes) {
+      throw new Error(
+        `Main-app translation entry exceeds the D1 patch target for ${row.language}/${key}.`,
+      );
+    }
+    if (fragments.length) encodedFragmentBytes += 1;
+    fragments.push(fragment);
+    encodedFragmentBytes += encodedBytes;
+  }
+  flush();
+  return statements;
+}
+
+function buildMainAppPatchStatement(language: SupportedLanguage, chunkJson: string) {
+  return [
+    "UPDATE app_translations",
+    `SET payload = json_patch(payload, json(${sqlString(chunkJson)}))`,
+    `WHERE namespace = ${sqlString(mainAppTranslationNamespace)}`,
+    `  AND language = ${sqlString(language)};`,
+  ].join("\n");
+}
+
+export function buildCuratedNamespaceRepairSql(rows: readonly CuratedNamespaceRepairRow[]) {
+  const targetLanguages = supportedLanguages.filter((language) => language !== defaultLanguage);
+  const expectedIdentifiers = new Set(
+    curatedRepairNamespaces.flatMap((namespace) =>
+      targetLanguages.map((language) => curatedRepairIdentifier(namespace, language)),
+    ),
+  );
+  const expectedRows = expectedIdentifiers.size;
+  if (rows.length !== expectedRows) {
+    throw new Error(`Expected ${expectedRows} curated translation rows, received ${rows.length}.`);
+  }
+
+  const seenIdentifiers = new Set<string>();
+  const statements = rows.map((row) => {
+    const identifier = curatedRepairIdentifier(row.namespace, row.language);
+    if (!expectedIdentifiers.has(identifier)) {
+      throw new Error(`Unexpected curated translation row ${row.namespace}/${row.language}.`);
+    }
+    if (seenIdentifiers.has(identifier)) {
+      throw new Error(`Duplicate curated translation row ${row.namespace}/${row.language}.`);
+    }
+    seenIdentifiers.add(identifier);
+
+    const source = getSiteTranslationSource(row.namespace);
+    if (row.sourceHash !== source.sourceHash) {
+      throw new Error(`Stale curated translation source hash for ${row.namespace}/${row.language}.`);
+    }
+    const sourceKeys = Object.keys(source.sourceStrings).sort();
+    const payloadKeys = Object.keys(row.payload).sort();
+    if (
+      payloadKeys.length !== sourceKeys.length ||
+      sourceKeys.some((key, index) => key !== payloadKeys[index])
+    ) {
+      throw new Error(`Incomplete curated translation payload for ${row.namespace}/${row.language}.`);
+    }
+    for (const [key, sourceText] of Object.entries(source.sourceStrings)) {
+      const value = row.payload[key];
+      if (!isValidFieldTranslation(sourceText, value, row.language) || value !== value.normalize("NFC")) {
+        throw new Error(`Invalid curated translation payload for ${row.namespace}/${row.language}/${key}.`);
+      }
+    }
+
+    const now = "CAST(strftime('%s', 'now') AS INTEGER) * 1000";
+    const statement = [
+      "INSERT INTO app_translations",
+      "  (namespace, language, source_hash, payload, model, created_at, updated_at)",
+      "VALUES",
+      `  (${sqlString(row.namespace)}, ${sqlString(row.language)}, ${sqlString(row.sourceHash)},`,
+      `   json(${sqlString(JSON.stringify(row.payload))}), ${sqlString(curatedRepairModel)}, ${now}, ${now})`,
+      "ON CONFLICT(namespace, language) DO UPDATE SET",
+      "  source_hash = excluded.source_hash,",
+      "  payload = excluded.payload,",
+      "  model = excluded.model,",
+      "  updated_at = excluded.updated_at;",
+    ].join("\n");
+    const bytes = Buffer.byteLength(statement, "utf8");
+    if (bytes > maximumD1SqlStatementBytes) {
+      throw new Error(
+        `Curated translation SQL exceeds the D1 ${maximumD1SqlStatementBytes}-byte statement limit: ` +
+          `${row.namespace}/${row.language} is ${bytes} bytes.`,
+      );
+    }
+    return statement;
+  });
+  if (seenIdentifiers.size !== expectedIdentifiers.size) {
+    throw new Error(
+      `Curated translation row set is incomplete: ${seenIdentifiers.size}/${expectedIdentifiers.size}.`,
+    );
+  }
+  return statements.join("\n\n");
+}
+
+export function largestSqlStatementBytes(sql: string) {
+  return Math.max(
+    0,
+    ...splitSqlStatements(sql).map((statement) => Buffer.byteLength(statement, "utf8")),
+  );
+}
+
+export function assertD1SqlStatementSize(sql: string) {
+  const largest = largestSqlStatementBytes(sql);
+  if (largest > maximumD1SqlStatementBytes) {
+    throw new Error(
+      `SQL exceeds the D1 ${maximumD1SqlStatementBytes}-byte statement limit: ` +
+        `${largest} bytes.`,
+    );
+  }
+  return largest;
+}
+
+export function splitSqlStatements(sql: string) {
+  const statements: string[] = [];
+  let statementStart = 0;
+  let quote: "'" | '"' | "`" | "]" | undefined;
+  let inLineComment = false;
+  let inBlockComment = false;
+
+  for (let index = 0; index < sql.length; index += 1) {
+    const character = sql[index];
+    const next = sql[index + 1];
+
+    if (inLineComment) {
+      if (character === "\n") inLineComment = false;
+      continue;
+    }
+    if (inBlockComment) {
+      if (character === "*" && next === "/") {
+        inBlockComment = false;
+        index += 1;
+      }
+      continue;
+    }
+    if (quote) {
+      if (character === quote) {
+        if (quote !== "]" && next === quote) {
+          index += 1;
+        } else {
+          quote = undefined;
+        }
+      }
+      continue;
+    }
+
+    if (character === "-" && next === "-") {
+      inLineComment = true;
+      index += 1;
+      continue;
+    }
+    if (character === "/" && next === "*") {
+      inBlockComment = true;
+      index += 1;
+      continue;
+    }
+    if (character === "'" || character === '"' || character === "`") {
+      quote = character;
+      continue;
+    }
+    if (character === "[") {
+      quote = "]";
+      continue;
+    }
+    if (character !== ";") continue;
+
+    const statement = sql.slice(statementStart, index + 1).trim();
+    if (statement) statements.push(statement);
+    statementStart = index + 1;
+  }
+
+  if (quote || inBlockComment) {
+    throw new Error("SQL statement parsing failed because a quote or block comment is unterminated.");
+  }
+
+  const trailingStatement = sql.slice(statementStart).trim();
+  if (trailingStatement) statements.push(trailingStatement);
+  return statements;
+}
+
+export function projectRepairBilledRowWrites(
+  sourceSyncProjectedWrites: number,
+  staticRepairRows: number,
+  curatedRepairRows: number,
+  mainAppRepairRowWrites: number,
+) {
+  const counts = [
+    sourceSyncProjectedWrites,
+    staticRepairRows,
+    curatedRepairRows,
+    mainAppRepairRowWrites,
+  ];
+  if (counts.some((count) => !Number.isSafeInteger(count) || count < 0)) {
+    throw new Error("Projected D1 repair write inputs must be non-negative safe integers.");
+  }
+  return (
+    sourceSyncProjectedWrites +
+    (staticRepairRows + curatedRepairRows + mainAppRepairRowWrites) *
+      projectedBilledWritesPerRepairTranslationRow
+  );
+}
+
+type StaticRepairTargetCount = {
+  namespace: string;
+  rows: number;
+  unsupportedLanguages: number;
+};
+
+export function validateStaticRepairTargetCounts(
+  rows: readonly StaticRepairTargetCount[],
+  expectedLanguageCount: number,
+) {
+  if (!Number.isSafeInteger(expectedLanguageCount) || expectedLanguageCount <= 0) {
+    throw new Error("Expected translation language count must be a positive safe integer.");
+  }
+  const counts = new Map<string, StaticRepairTargetCount>();
+  for (const row of rows) {
+    if (!staticRepairNamespaceNames.has(row.namespace)) {
+      throw new Error(`Unexpected production translation namespace ${row.namespace}.`);
+    }
+    if (counts.has(row.namespace)) {
+      throw new Error(`Duplicate production translation cardinality row for ${row.namespace}.`);
+    }
+    if (
+      !Number.isSafeInteger(row.rows) ||
+      row.rows < 0 ||
+      !Number.isSafeInteger(row.unsupportedLanguages) ||
+      row.unsupportedLanguages < 0
+    ) {
+      throw new Error(`Invalid production translation cardinality for ${row.namespace}.`);
+    }
+    counts.set(row.namespace, row);
+  }
+  let totalRows = 0;
+  for (const namespace of staticRepairNamespaces) {
+    const row = counts.get(namespace) ?? {
+      namespace,
+      rows: 0,
+      unsupportedLanguages: 0,
+    };
+    const allowedCount =
+      namespace === "marketing-site"
+        ? row.rows === 0 || row.rows === expectedLanguageCount
+        : row.rows === expectedLanguageCount;
+    if (!allowedCount || row.unsupportedLanguages !== 0) {
+      throw new Error(
+        `Unexpected production translation cardinality for ${namespace}: ` +
+          `${row.rows} rows, ${row.unsupportedLanguages} unsupported languages.`,
+      );
+    }
+    totalRows += row.rows;
+  }
+  return totalRows;
+}
+
+export function validateCuratedRepairTargetCounts(
+  rows: readonly StaticRepairTargetCount[],
+  expectedLanguageCount: number,
+) {
+  if (!Number.isSafeInteger(expectedLanguageCount) || expectedLanguageCount <= 0) {
+    throw new Error("Expected translation language count must be a positive safe integer.");
+  }
+  const counts = new Map<string, StaticRepairTargetCount>();
+  for (const row of rows) {
+    if (!curatedRepairNamespaceNames.has(row.namespace)) {
+      throw new Error(`Unexpected curated production translation namespace ${row.namespace}.`);
+    }
+    if (counts.has(row.namespace)) {
+      throw new Error(`Duplicate curated production cardinality row for ${row.namespace}.`);
+    }
+    if (
+      !Number.isSafeInteger(row.rows) ||
+      row.rows < 0 ||
+      row.rows > expectedLanguageCount ||
+      !Number.isSafeInteger(row.unsupportedLanguages) ||
+      row.unsupportedLanguages < 0
+    ) {
+      throw new Error(`Invalid curated production translation cardinality for ${row.namespace}.`);
+    }
+    if (row.unsupportedLanguages !== 0) {
+      throw new Error(
+        `Unexpected curated production translation languages for ${row.namespace}: ` +
+          `${row.unsupportedLanguages} unsupported languages.`,
+      );
+    }
+    counts.set(row.namespace, row);
+  }
+  return curatedRepairNamespaces.reduce(
+    (total, namespace) => total + (counts.get(namespace)?.rows ?? 0),
+    0,
+  );
+}
+
+export function validateMainAppRepairTargetCounts(
+  rows: readonly StaticRepairTargetCount[],
+  expectedLanguageCount: number,
+) {
+  if (!Number.isSafeInteger(expectedLanguageCount) || expectedLanguageCount <= 0) {
+    throw new Error("Expected translation language count must be a positive safe integer.");
+  }
+  if (rows.length !== 1 || rows[0]?.namespace !== mainAppTranslationNamespace) {
+    throw new Error("Production main-app translation cardinality row is missing or duplicated.");
+  }
+  const row = rows[0];
+  if (
+    row.rows !== expectedLanguageCount ||
+    row.unsupportedLanguages !== 0 ||
+    !Number.isSafeInteger(row.rows) ||
+    !Number.isSafeInteger(row.unsupportedLanguages)
+  ) {
+    throw new Error(
+      "Unexpected production main-app translation cardinality: " +
+        `${row.rows} rows, ${row.unsupportedLanguages} unsupported languages.`,
+    );
+  }
+  return row.rows;
+}
+
+function validateRemoteRepairTargets(
+  translations: ReadonlyMap<SupportedLanguage, string>,
+) {
+  const allowedLanguages = Array.from(translations.keys(), (language) => `(${sqlString(language)})`).join(",");
+  const namespaces = [
+    ...staticRepairNamespaces,
+    ...curatedRepairNamespaces,
+    mainAppTranslationNamespace,
+  ]
+    .map(sqlString)
+    .join(",");
+  const sql = [
+    `WITH allowed_languages(language) AS (VALUES ${allowedLanguages})`,
+    "SELECT target.namespace, COUNT(*) AS rows,",
+    "  SUM(CASE WHEN allowed_languages.language IS NULL THEN 1 ELSE 0 END) AS unsupported_languages",
+    "FROM app_translations AS target",
+    "LEFT JOIN allowed_languages ON allowed_languages.language = target.language",
+    `WHERE target.namespace IN (${namespaces})`,
+    "GROUP BY target.namespace ORDER BY target.namespace;",
+  ].join("\n");
+  const output = runWrangler([
+    "d1",
+    "execute",
+    D1_DATABASE_NAME,
+    "--remote",
+    "--json",
+    "--command",
+    sql,
+  ]);
+  const rows = d1ResultRows(output).map((row) => ({
+    namespace: typeof row.namespace === "string" ? row.namespace : "",
+    rows: numeric(row.rows),
+    unsupportedLanguages: numeric(row.unsupported_languages),
+  }));
+  const staticRows = rows.filter((row) => staticRepairNamespaceNames.has(row.namespace));
+  const curatedRows = rows.filter((row) => curatedRepairNamespaceNames.has(row.namespace));
+  const mainAppRows = rows.filter((row) => row.namespace === mainAppTranslationNamespace);
+  if (staticRows.length + curatedRows.length + mainAppRows.length !== rows.length) {
+    throw new Error("Remote translation cardinality returned an unexpected namespace.");
+  }
+  validateCuratedRepairTargetCounts(curatedRows, translations.size);
+  validateMainAppRepairTargetCounts(mainAppRows, translations.size);
+  return validateStaticRepairTargetCounts(staticRows, translations.size);
 }
 
 export function validateSiteSourceManifestFreshness() {
@@ -310,9 +970,16 @@ function validateSourceContract(): Record<RepairNamespace, string> {
     "marketing-site": marketingSite.sourceHash,
     "route:home": "",
     "route:about": "",
+    "route:chat-public": "",
     "route:media": "",
     "route:schools": "",
   };
+
+  const publicChat = getSiteTranslationSource("route:chat-public");
+  if (publicChat.sourceHash !== expectedSourceHashes["route:chat-public"]) {
+    throw new Error("Translation source hash drift for route:chat-public: " + publicChat.sourceHash);
+  }
+  hashes["route:chat-public"] = publicChat.sourceHash;
 
   for (const contract of contracts) {
     const source = getSiteTranslationSource(contract.namespace);
@@ -358,16 +1025,31 @@ function validateRepairSql(
   }
 }
 
-function verifyRemoteRepair(translations: ReadonlyMap<SupportedLanguage, string>) {
-  const expectedSiteRows = Object.keys(siteSourceManifest)
-    .filter((namespace) => namespace !== siteTranslationNamespace)
-    .length * translations.size;
+export function buildRemoteRepairVerificationSql(
+  translations: ReadonlyMap<SupportedLanguage, string>,
+) {
+  const expectedNamespaces = getPublishedSiteTranslationNamespaces();
+  const expectedNamespaceValues = expectedNamespaces
+    .map((namespace) => `(${sqlString(namespace)})`)
+    .join(",");
+  const allowedLanguageValues = Array.from(
+    translations.keys(),
+    (language) => `(${sqlString(language)})`,
+  ).join(",");
   const repairValues = Array.from(translations, ([language, value]) => {
     return "(" + sqlString(language) + ", " + sqlString(value) + ")";
   }).join(",");
-  const verificationSql = [
-    "SELECT COUNT(*) AS site_rows, SUM(t.source_hash = s.source_hash) AS fresh_rows",
-    "FROM app_translations AS t JOIN app_translation_sources AS s USING (namespace);",
+  return [
+    `WITH expected_namespaces(namespace) AS (VALUES ${expectedNamespaceValues}),`,
+    `allowed_languages(language) AS (VALUES ${allowedLanguageValues})`,
+    "SELECT COUNT(*) AS site_rows, COUNT(DISTINCT t.namespace) AS site_namespaces,",
+    "  SUM(t.source_hash = s.source_hash) AS fresh_rows,",
+    "  SUM(CASE WHEN expected_namespaces.namespace IS NULL THEN 1 ELSE 0 END) AS unexpected_namespaces,",
+    "  SUM(CASE WHEN allowed_languages.language IS NULL THEN 1 ELSE 0 END) AS unsupported_languages",
+    "FROM app_translations AS t JOIN app_translation_sources AS s USING (namespace)",
+    "LEFT JOIN expected_namespaces ON expected_namespaces.namespace = t.namespace",
+    "LEFT JOIN allowed_languages ON allowed_languages.language = t.language",
+    `WHERE t.namespace <> ${sqlString(siteTranslationNamespace)};`,
     "SELECT t.namespace, COUNT(*) AS rows, COUNT(DISTINCT t.language) AS languages,",
     "  SUM(t.source_hash = s.source_hash) AS fresh_rows,",
     "  SUM(CASE WHEN NOT EXISTS (",
@@ -404,6 +1086,16 @@ function verifyRemoteRepair(translations: ReadonlyMap<SupportedLanguage, string>
     ]),
     ");",
   ].join("\n");
+}
+
+function verifyRemoteRepair(
+  translations: ReadonlyMap<SupportedLanguage, string>,
+  curatedRepairRows: readonly CuratedNamespaceRepairRow[],
+  mainAppRepairRows: readonly MainAppRepairRow[],
+) {
+  const expectedSiteNamespaces = getPublishedSiteTranslationNamespaces().length;
+  const expectedSiteRows = expectedSiteNamespaces * translations.size;
+  const verificationSql = buildRemoteRepairVerificationSql(translations);
   const output = runWrangler([
     "d1",
     "execute",
@@ -421,10 +1113,19 @@ function verifyRemoteRepair(translations: ReadonlyMap<SupportedLanguage, string>
   const schools = rows.find((row) => "school_values_matched" in row);
   const retired = rows.find((row) => "retired_game_payloads" in row);
   const freshSiteRows = numeric(site?.fresh_rows);
+  const siteNamespaces = numeric(site?.site_namespaces);
+  const unexpectedNamespaces = numeric(site?.unexpected_namespaces);
+  const unsupportedLanguages = numeric(site?.unsupported_languages);
   const schoolValuesMatched = numeric(schools?.school_values_matched);
   const retiredGamePayloads = numeric(retired?.retired_game_payloads);
 
-  if (numeric(site?.site_rows) !== expectedSiteRows || freshSiteRows !== expectedSiteRows) {
+  if (
+    numeric(site?.site_rows) !== expectedSiteRows ||
+    siteNamespaces !== expectedSiteNamespaces ||
+    freshSiteRows !== expectedSiteRows ||
+    unexpectedNamespaces !== 0 ||
+    unsupportedLanguages !== 0
+  ) {
     throw new Error("Site translation freshness verification failed.");
   }
   if (
@@ -453,13 +1154,162 @@ function verifyRemoteRepair(translations: ReadonlyMap<SupportedLanguage, string>
     throw new Error("Retired game translation payload verification failed.");
   }
 
+  const curatedOutput = runWrangler([
+    "d1",
+    "execute",
+    D1_DATABASE_NAME,
+    "--remote",
+    "--json",
+    "--command",
+    "SELECT namespace, language, payload, source_hash, model FROM app_translations " +
+      "WHERE namespace IN ('marketing-shell', 'route:home') ORDER BY namespace, language;",
+  ], { maxBuffer: 64 * 1024 * 1024 });
+  const actualCuratedRows = d1ResultRows(curatedOutput);
+  if (actualCuratedRows.length !== curatedRepairRows.length) {
+    throw new Error(
+      `Curated translation row cardinality failed: ${actualCuratedRows.length}/${curatedRepairRows.length}.`,
+    );
+  }
+  const expectedCuratedRows = new Map<string, CuratedNamespaceRepairRow>(
+    curatedRepairRows.map((row) => [`${row.namespace}\u0000${row.language}`, row] as const),
+  );
+  let curatedRowsMatched = 0;
+  for (const actual of actualCuratedRows) {
+    if (typeof actual.namespace !== "string" || typeof actual.language !== "string") continue;
+    const expected = expectedCuratedRows.get(`${actual.namespace}\u0000${actual.language}`);
+    if (!expected) continue;
+    if (
+      actual.source_hash !== expected.sourceHash ||
+      actual.model !== curatedRepairModel ||
+      typeof actual.payload !== "string"
+    ) {
+      throw new Error(`Curated translation metadata verification failed for ${actual.namespace}/${actual.language}.`);
+    }
+    const payload: unknown = JSON.parse(actual.payload);
+    if (!isStringRecord(payload) || !sameStringRecord(payload, expected.payload)) {
+      throw new Error(`Curated translation payload verification failed for ${actual.namespace}/${actual.language}.`);
+    }
+    curatedRowsMatched += 1;
+  }
+  if (curatedRowsMatched !== curatedRepairRows.length) {
+    throw new Error(
+      `Curated translation row verification failed: ${curatedRowsMatched}/${curatedRepairRows.length}.`,
+    );
+  }
+
+  const mainAppOutput = runWrangler(
+    [
+      "d1",
+      "execute",
+      D1_DATABASE_NAME,
+      "--remote",
+      "--json",
+      "--command",
+      "SELECT namespace, language, payload, source_hash, model FROM app_translations " +
+        `WHERE namespace = ${sqlString(mainAppTranslationNamespace)} ORDER BY language;`,
+    ],
+    { maxBuffer: 128 * 1024 * 1024 },
+  );
+  const mainAppRowsMatched = verifyMainAppRepairResultRows(
+    d1ResultRows(mainAppOutput),
+    mainAppRepairRows,
+  );
+
   return {
+    expectedSiteNamespaces,
+    siteNamespaces,
     expectedSiteRows,
     freshSiteRows,
     targetNamespaces: targets.length,
     schoolValuesMatched,
     retiredGamePayloads,
+    curatedRowsMatched,
+    mainAppRowsMatched,
   };
+}
+
+export function verifyMainAppRepairResultRows(
+  actualRows: readonly Record<string, unknown>[],
+  expectedRows: readonly MainAppRepairRow[],
+) {
+  if (actualRows.length !== expectedRows.length) {
+    throw new Error(
+      `Main-app translation row cardinality failed: ${actualRows.length}/${expectedRows.length}.`,
+    );
+  }
+
+  const expectedByLanguage = new Map<SupportedLanguage, MainAppRepairRow>(
+    expectedRows.map((row) => [row.language, row]),
+  );
+  let matched = 0;
+  for (const actual of actualRows) {
+    const language = isSupportedLanguageValue(actual.language) ? actual.language : null;
+    const expected = language ? expectedByLanguage.get(language) : undefined;
+    if (!language || !expected) {
+      throw new Error("Main-app translation verification found an unexpected or duplicate language.");
+    }
+    if (
+      actual.namespace !== mainAppTranslationNamespace ||
+      actual.source_hash !== expected.sourceHash ||
+      actual.model !== mainAppRepairModel ||
+      typeof actual.payload !== "string"
+    ) {
+      throw new Error(`Main-app translation metadata verification failed for ${language}.`);
+    }
+    const expectedPayload = JSON.stringify(expected.payload);
+    if (actual.payload !== expectedPayload) {
+      throw new Error(`Main-app translation byte equality verification failed for ${language}.`);
+    }
+    expectedByLanguage.delete(language);
+    matched += 1;
+  }
+
+  if (expectedByLanguage.size !== 0 || matched !== expectedRows.length) {
+    throw new Error(`Main-app translation row verification failed: ${matched}/${expectedRows.length}.`);
+  }
+  return matched;
+}
+
+function getPublishedSiteTranslationNamespaces() {
+  return Object.keys(siteSourceManifest)
+    .filter((namespace) => namespace !== siteTranslationNamespace)
+    .sort();
+}
+
+function curatedRepairIdentifier(
+  namespace: CuratedNamespaceRepairRow["namespace"],
+  language: SupportedLanguage,
+) {
+  return `${namespace}\u0000${language}`;
+}
+
+function assertNoExplicitTransactionControl(sql: string) {
+  const transactionStatement = splitSqlStatements(sql).find((statement) =>
+    /^(?:BEGIN(?:\s+TRANSACTION)?|COMMIT|END(?:\s+TRANSACTION)?|ROLLBACK)\b/i.test(
+      stripLeadingSqlComments(statement),
+    ),
+  );
+  if (transactionStatement) {
+    throw new Error(
+      "Atomic D1 repair SQL must rely on Wrangler file rollback and not contain transaction control.",
+    );
+  }
+}
+
+function stripLeadingSqlComments(statement: string) {
+  let remainder = statement.trimStart();
+  while (remainder.startsWith("--") || remainder.startsWith("/*")) {
+    if (remainder.startsWith("--")) {
+      const newline = remainder.indexOf("\n");
+      if (newline === -1) return "";
+      remainder = remainder.slice(newline + 1).trimStart();
+      continue;
+    }
+    const end = remainder.indexOf("*/", 2);
+    if (end === -1) return remainder;
+    remainder = remainder.slice(end + 2).trimStart();
+  }
+  return remainder;
 }
 
 function d1ResultRows(output: string) {
@@ -511,6 +1361,26 @@ function numeric(value: unknown) {
   return typeof value === "number" ? value : Number(value);
 }
 
+function isSupportedLanguageValue(value: unknown): value is SupportedLanguage {
+  return typeof value === "string" && supportedLanguageNames.has(value);
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isStringRecord(value: unknown): value is Record<string, string> {
+  return isRecord(value) && Object.values(value).every((entry) => typeof entry === "string");
+}
+
+function sameStringRecord(
+  actual: Readonly<Record<string, string>>,
+  expected: Readonly<Record<string, string>>,
+) {
+  const actualKeys = Object.keys(actual);
+  const expectedKeys = Object.keys(expected);
+  return (
+    actualKeys.length === expectedKeys.length &&
+    expectedKeys.every((key) => actual[key] === expected[key])
+  );
 }

@@ -1,4 +1,4 @@
-import { topicPath } from "@/lib/content/topic-routing";
+import { topicWorkspacePath } from "@/lib/content/topic-path";
 import { localizeHref } from "@/lib/i18n/routing";
 
 export type TopicMetadata = {
@@ -47,7 +47,7 @@ export function topicIntroProps(topic: Topic) {
 }
 
 export function localizedTopicHref(topic: Topic, language: string) {
-  return localizeHref(topicPath(topic.slug), language);
+  return localizeHref(topicWorkspacePath(topic.slug), language);
 }
 
 export function topicSearchContent(topic: Topic) {

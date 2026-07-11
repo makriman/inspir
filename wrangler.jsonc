@@ -2,11 +2,8 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "inspirlearning",
   "main": "./cloudflare-worker.ts",
-  "compatibility_date": "2026-06-24",
+  "compatibility_date": "2026-07-08",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
-  "placement": {
-    "mode": "smart"
-  },
   "account_id": "a1e5e542dc1d5fe5a5c6b2a10d755a81",
   "workers_dev": false,
   "preview_urls": false,
@@ -15,42 +12,7 @@
     "binding": "ASSETS",
     "html_handling": "drop-trailing-slash",
     "not_found_handling": "404-page",
-    "run_worker_first": [
-      "!/_next/static/*",
-      "/api/activities/flashcards",
-      "/api/activities/flashcards/*",
-      "/api/activities/quiz",
-      "/api/activities/quiz/*",
-      "/api/admin/topics",
-      "/api/admin/users",
-      "/api/analytics/events",
-      "/api/auth",
-      "/api/auth/*",
-      "/api/chat",
-      "/api/chats",
-      "/api/chats/*",
-      "/api/cron/memory-dreaming",
-      "/api/guest-chat",
-      "/api/health",
-      "/api/logout",
-      "/api/me",
-      "/api/me/photo",
-      "/api/memory",
-      "/api/memory/*",
-      "/api/migration/e2e-auth",
-      "/api/migration/write-freeze",
-      "/api/topics",
-      "/chat",
-      "/chat/*",
-      "/admin",
-      "/admin/*",
-      "/reset_pw",
-      "/*/chat",
-      "/*/chat/*",
-      "/*/admin",
-      "/*/admin/*",
-      "/*/reset_pw"
-    ]
+    "run_worker_first": ["/api/guest-chat", "/api/health"]
   },
   "observability": {
     "enabled": true,
@@ -97,43 +59,6 @@
       "database_id": "7cb2ddf7-ca3d-4f46-a022-cc8b3a25b7b9"
     }
   ],
-  "vectorize": [
-    {
-      "binding": "MEMORY_VECTORIZE",
-      "index_name": "inspirlearning-memory-prod"
-    }
-  ],
-  "r2_buckets": [
-    {
-      "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "inspirlearning-next-cache-prod"
-    },
-    {
-      "binding": "PROFILE_IMAGES_R2_BUCKET",
-      "bucket_name": "inspirlearning-profile-images-prod"
-    }
-  ],
-  "queues": {
-    "producers": [
-      {
-        "binding": "MEMORY_POST_TURN_QUEUE",
-        "queue": "inspirlearning-memory-post-turn-prod"
-      }
-    ],
-    "consumers": [
-      {
-        "queue": "inspirlearning-memory-post-turn-prod",
-        "max_batch_size": 5,
-        "max_batch_timeout": 10,
-        "max_retries": 5,
-        "retry_delay": 60,
-        "dead_letter_queue": "inspirlearning-memory-post-turn-dlq"
-      }
-    ]
-  },
-  "triggers": {
-    "crons": ["0 3 * * *"]
-  },
   "routes": [
     {
       "pattern": "inspirlearning.com",
@@ -145,44 +70,21 @@
     }
   ],
   "vars": {
-    "APP_URL": "https://inspirlearning.com",
-    "AUTH_URL": "https://inspirlearning.com",
-    "BETTER_AUTH_URL": "https://inspirlearning.com",
     "CLOUDFLARE_AI_GATEWAY_BASE_URL": "https://gateway.ai.cloudflare.com/v1/a1e5e542dc1d5fe5a5c6b2a10d755a81/inspir/openai",
     "CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS": "inspir",
-    "OPENAI_MODEL": "gpt-5",
+    "OPENAI_MODEL": "gpt-5-mini",
     "OPENAI_FAST_MODEL": "gpt-5-mini",
-    "OPENAI_REASONING_MODEL": "gpt-5",
+    "OPENAI_REASONING_MODEL": "gpt-5-mini",
     "OPENAI_STRUCTURED_MODEL": "gpt-5-mini",
-    "OPENAI_EMBEDDING_MODEL": "text-embedding-3-small",
-    "AI_RESPONSE_CACHE_ENABLED": "1",
-    "AI_RESPONSE_CACHE_TTL_SECONDS": "2592000",
-    "AI_RESPONSE_CACHE_MAX_RESPONSE_BYTES": "120000",
-    "AI_RESPONSE_CACHE_SEMANTIC_ENABLED": "0",
-    "RATE_LIMIT_USER_CHAT_DAILY": "20",
     "RATE_LIMIT_GUEST_SESSION_DAILY": "10",
     "RATE_LIMIT_GUEST_FINGERPRINT_DAILY": "10",
     "RATE_LIMIT_GUEST_IP_DAILY": "150",
-    "RATE_LIMIT_ACTIVITY_DAILY": "10",
-    "RATE_LIMIT_MEMORY_DAILY": "20",
     "LLM_GLOBAL_DAILY_CALL_LIMIT": "1000",
-    "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD": "2",
-    "MEMORY_PROFILE_COMPILE_LIMIT": "20",
     "OBSERVABILITY_INCIDENT_MODE": "0",
     "APP_WRITE_FREEZE": "0",
-    "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS": "300",
-    "MAX_REVALIDATE_CONCURRENCY": "1",
-    "NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION": "1"
+    "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS": "300"
   },
   "secrets": {
-    "required": [
-      "OPENAI_API_KEY",
-      "CLOUDFLARE_AI_GATEWAY_TOKEN",
-      "AUTH_SECRET",
-      "AUTH_GOOGLE_ID",
-      "AUTH_GOOGLE_SECRET",
-      "ADMIN_EMAILS",
-      "CRON_SECRET"
-    ]
+    "required": ["CLOUDFLARE_AI_GATEWAY_TOKEN"]
   }
 }

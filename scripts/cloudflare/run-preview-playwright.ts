@@ -98,7 +98,7 @@ if (args[0] === "cf:preview") {
   const tsx = path.join(repo, "node_modules", ".bin", "tsx");
   let result = spawnSync(tsx, ["scripts/cloudflare/setup-local-d1.ts", "--reset-runtime-state"], { cwd: repo, env: process.env, stdio: "inherit" });
   if (result.status !== 0) process.exit(result.status ?? 1);
-  result = spawnSync(tsx, ["scripts/cloudflare/run-sanitized-build.ts", "opennext-preview"], { cwd: repo, env: process.env, stdio: "inherit" });
+  result = spawnSync(tsx, ["scripts/cloudflare/run-sanitized-build.ts", "wrangler-preview"], { cwd: repo, env: process.env, stdio: "inherit" });
   process.exit(result.status ?? 1);
 }
 

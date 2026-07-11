@@ -6,11 +6,6 @@ import {
   D1_DATABASE_ID,
   D1_DATABASE_NAME,
   LOCAL_GATE_IDS,
-  MEMORY_POST_TURN_DLQ_NAME,
-  MEMORY_POST_TURN_QUEUE_NAME,
-  PROFILE_IMAGES_R2_BUCKET_NAME,
-  R2_BUCKET_NAME,
-  VECTORIZE_INDEX_NAME,
   cloudflareDir,
   commandEnv,
   resolveBackupDir,
@@ -66,44 +61,23 @@ type DeployPreflightReport = {
 };
 
 const REQUIRED_SECRET_KEYS = [
-  "OPENAI_API_KEY",
   "CLOUDFLARE_AI_GATEWAY_TOKEN",
-  "AUTH_SECRET",
-  "AUTH_GOOGLE_ID",
-  "AUTH_GOOGLE_SECRET",
-  "ADMIN_EMAILS",
-  "CRON_SECRET",
 ];
 
 const REQUIRED_WRANGLER_VARS = [
-  "APP_URL",
-  "AUTH_URL",
-  "BETTER_AUTH_URL",
   "CLOUDFLARE_AI_GATEWAY_BASE_URL",
   "CLOUDFLARE_AI_GATEWAY_BYOK_ALIAS",
   "OPENAI_MODEL",
   "OPENAI_FAST_MODEL",
   "OPENAI_REASONING_MODEL",
   "OPENAI_STRUCTURED_MODEL",
-  "OPENAI_EMBEDDING_MODEL",
-  "AI_RESPONSE_CACHE_ENABLED",
-  "AI_RESPONSE_CACHE_TTL_SECONDS",
-  "AI_RESPONSE_CACHE_MAX_RESPONSE_BYTES",
-  "AI_RESPONSE_CACHE_SEMANTIC_ENABLED",
-  "RATE_LIMIT_USER_CHAT_DAILY",
   "RATE_LIMIT_GUEST_SESSION_DAILY",
   "RATE_LIMIT_GUEST_FINGERPRINT_DAILY",
   "RATE_LIMIT_GUEST_IP_DAILY",
-  "RATE_LIMIT_ACTIVITY_DAILY",
-  "RATE_LIMIT_MEMORY_DAILY",
   "LLM_GLOBAL_DAILY_CALL_LIMIT",
-  "MEMORY_POST_TURN_SYNTHESIS_THRESHOLD",
-  "MEMORY_PROFILE_COMPILE_LIMIT",
   "OBSERVABILITY_INCIDENT_MODE",
   "APP_WRITE_FREEZE",
   "APP_WRITE_FREEZE_RETRY_AFTER_SECONDS",
-  "MAX_REVALIDATE_CONCURRENCY",
-  "NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION",
 ];
 
 const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
@@ -116,40 +90,8 @@ const SECRET_KEYS_THAT_MUST_NOT_BE_VARS = [
 const STEADY_STATE_REPORT_MAX_AGE_MS = 60 * 60 * 1000;
 
 export const FREE_PLAN_WORKER_FIRST_ROUTES = [
-  "!/_next/static/*",
-  "/api/activities/flashcards",
-  "/api/activities/flashcards/*",
-  "/api/activities/quiz",
-  "/api/activities/quiz/*",
-  "/api/admin/topics",
-  "/api/admin/users",
-  "/api/analytics/events",
-  "/api/auth",
-  "/api/auth/*",
-  "/api/chat",
-  "/api/chats",
-  "/api/chats/*",
-  "/api/cron/memory-dreaming",
   "/api/guest-chat",
   "/api/health",
-  "/api/logout",
-  "/api/me",
-  "/api/me/photo",
-  "/api/memory",
-  "/api/memory/*",
-  "/api/migration/e2e-auth",
-  "/api/migration/write-freeze",
-  "/api/topics",
-  "/chat",
-  "/chat/*",
-  "/admin",
-  "/admin/*",
-  "/reset_pw",
-  "/*/chat",
-  "/*/chat/*",
-  "/*/admin",
-  "/*/admin/*",
-  "/*/reset_pw",
 ] as const;
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
@@ -174,11 +116,10 @@ export function buildSteadyStateDeployPreflightReport(options: {
   checks.push(sourceSecretScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(buildArtifactScanCheck(options.backupDir, currentSourceFingerprint, options.nowMs));
   checks.push(wranglerConfigCheck(cwd));
-  checks.push(openNextCacheArchitectureCheck(cwd));
+  checks.push(leanWorkerArchitectureCheck(cwd));
 
   if (options.runWranglerDryRun !== false) {
     checks.push(remoteDurableObjectInfrastructureCheck());
-    checks.push(remoteD1ProfilePhotoSchemaCheck());
     checks.push(wranglerDeployDryRunCheck());
   }
 
@@ -393,15 +334,6 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const secrets = objectValue(config.secrets);
   const requiredSecrets = Array.isArray(secrets.required) ? secrets.required.filter(isString) : [];
   const d1 = arrayValue(config.d1_databases).find((binding) => binding.binding === "DB");
-  const vectorize = arrayValue(config.vectorize).find((binding) => binding.binding === "MEMORY_VECTORIZE");
-  const r2 = arrayValue(config.r2_buckets).find((binding) => binding.binding === "NEXT_INC_CACHE_R2_BUCKET");
-  const profileImagesR2 = arrayValue(config.r2_buckets).find((binding) => binding.binding === "PROFILE_IMAGES_R2_BUCKET");
-  const queueProducer = arrayValue(objectValue(config.queues).producers).find(
-    (binding) => binding.binding === "MEMORY_POST_TURN_QUEUE",
-  );
-  const queueConsumer = arrayValue(objectValue(config.queues).consumers).find(
-    (binding) => binding.queue === MEMORY_POST_TURN_QUEUE_NAME,
-  );
   const services = arrayValue(config.services).find((binding) => binding.binding === "WORKER_SELF_REFERENCE");
   const versionMetadata = objectValue(config.version_metadata);
   const cacheQueueDo = arrayValue(objectValue(config.durable_objects).bindings).find(
@@ -411,8 +343,8 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
     Array.isArray(migration.new_sqlite_classes) && migration.new_sqlite_classes.includes("DOQueueHandler"),
   );
   const routes = arrayValue(config.routes).map((route) => route.pattern);
-  const cron = objectValue(config.triggers).crons;
   const observability = objectValue(config.observability);
+  const configuredCrons = objectValue(config.triggers).crons;
   const assets = objectValue(config.assets);
   const workerFirstRoutes = Array.isArray(assets.run_worker_first)
     ? assets.run_worker_first.filter(isString)
@@ -431,26 +363,20 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const problems = {
     missingVars: REQUIRED_WRANGLER_VARS.filter((key) => vars[key] === undefined || vars[key] === ""),
     leakedSecretVars: SECRET_KEYS_THAT_MUST_NOT_BE_VARS.filter((key) => vars[key] !== undefined),
-    missingRequiredSecrets: REQUIRED_SECRET_KEYS.filter((key) => !requiredSecrets.includes(key)),
+    requiredSecretsOk: sameStringSet(requiredSecrets, REQUIRED_SECRET_KEYS),
     d1Ok: d1?.database_name === D1_DATABASE_NAME && d1?.database_id === D1_DATABASE_ID,
-    vectorizeOk: vectorize?.index_name === VECTORIZE_INDEX_NAME,
-    r2Ok: r2?.bucket_name === R2_BUCKET_NAME,
-    profileImagesR2Ok: profileImagesR2?.bucket_name === PROFILE_IMAGES_R2_BUCKET_NAME,
-    queueProducerOk: queueProducer?.queue === MEMORY_POST_TURN_QUEUE_NAME,
-    queueConsumerOk:
-      queueConsumer?.queue === MEMORY_POST_TURN_QUEUE_NAME &&
-      queueConsumer.dead_letter_queue === MEMORY_POST_TURN_DLQ_NAME &&
-      Number(queueConsumer.max_retries) >= 1,
+    retiredBindingsAbsent:
+      arrayValue(config.vectorize).length === 0 &&
+      arrayValue(config.r2_buckets).length === 0 &&
+      arrayValue(objectValue(config.queues).producers).length === 0 &&
+      arrayValue(objectValue(config.queues).consumers).length === 0 &&
+      (!Array.isArray(configuredCrons) || configuredCrons.length === 0),
     serviceOk: services?.service === "inspirlearning",
     versionMetadataOk: versionMetadata.binding === "CF_VERSION_METADATA",
     cacheRevalidationDoOk: cacheQueueDo?.class_name === "DOQueueHandler",
     cacheRevalidationMigrationOk: cacheQueueMigration !== undefined,
-    cronOk: Array.isArray(cron) && cron.includes("0 3 * * *"),
     routesOk: routes.includes("inspirlearning.com") && routes.includes("www.inspirlearning.com"),
-    appUrlOk:
-      vars.APP_URL === "https://inspirlearning.com" &&
-      vars.AUTH_URL === "https://inspirlearning.com" &&
-      vars.BETTER_AUTH_URL === "https://inspirlearning.com",
+    mainEntryOk: config.main === "./cloudflare-worker.ts",
     workersDevOk: config.workers_dev === false,
     previewUrlsOk: config.preview_urls === false,
     workerGlobalCacheOk: config.cache === undefined || objectValue(config.cache).enabled === false,
@@ -462,8 +388,6 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
       assets.not_found_handling === "404-page" &&
       sameStringSet(workerFirstRoutes, FREE_PLAN_WORKER_FIRST_ROUTES),
     staticLegalRedirectOk: /^\/tnc\s+\/terms\s+308\s*$/m.test(staticRedirects),
-    cacheRevalidationConcurrencyOk:
-      vars.MAX_REVALIDATE_CONCURRENCY === "1" && vars.NEXT_CACHE_DO_QUEUE_MAX_REVALIDATION === "1",
     observabilityOk:
       observability.enabled === true &&
       observabilityLogs.enabled === true &&
@@ -479,52 +403,72 @@ function wranglerConfigCheck(cwd: string): DeployPreflightCheck {
   const ok =
     !problems.missingVars.length &&
     !problems.leakedSecretVars.length &&
-    !problems.missingRequiredSecrets.length &&
+    problems.requiredSecretsOk &&
     problems.d1Ok &&
-    problems.vectorizeOk &&
-    problems.r2Ok &&
-    problems.profileImagesR2Ok &&
-    problems.queueProducerOk &&
-    problems.queueConsumerOk &&
+    problems.retiredBindingsAbsent &&
     problems.serviceOk &&
     problems.versionMetadataOk &&
     problems.cacheRevalidationDoOk &&
     problems.cacheRevalidationMigrationOk &&
-    problems.cronOk &&
     problems.routesOk &&
-    problems.appUrlOk &&
+    problems.mainEntryOk &&
     problems.workersDevOk &&
     problems.previewUrlsOk &&
     problems.workerGlobalCacheOk &&
     problems.freePlanCpuConfigOk &&
     problems.staticAssetsOk &&
     problems.staticLegalRedirectOk &&
-    problems.cacheRevalidationConcurrencyOk &&
     problems.observabilityOk;
   return {
     name: "Wrangler production config",
     status: ok ? "pass" : "fail",
-    detail: ok ? { worker: "inspirlearning", deploymentMode: "free-static-first" } : problems,
+    detail: ok ? { worker: "inspirlearning", deploymentMode: "free-static-lean-guest" } : problems,
   };
 }
 
-function openNextCacheArchitectureCheck(cwd: string): DeployPreflightCheck {
-  const filePath = path.join(cwd, "open-next.config.ts");
+function leanWorkerArchitectureCheck(cwd: string): DeployPreflightCheck {
+  const filePath = path.join(cwd, "cloudflare-worker.ts");
   const source = fs.existsSync(filePath) ? fs.readFileSync(filePath, "utf8") : "";
+  const materializerPath = path.join(cwd, "scripts/cloudflare/materialize-static-marketing-assets.ts");
+  const materializer = fs.existsSync(materializerPath) ? fs.readFileSync(materializerPath, "utf8") : "";
   const architecture = {
-    regionalR2Cache: /withRegionalCache\s*\(\s*r2IncrementalCache\s*,[\s\S]*?mode:\s*["']long-lived["']/.test(source),
-    durableObjectQueue: /queueCache\s*\(\s*doQueue\s*,/.test(source),
-    queueDedupeTtl: /regionalCacheTtlSec:\s*5\b/.test(source),
-    waitsForQueueAck: /waitForQueueAck:\s*true\b/.test(source),
-    cacheInterception: /enableCacheInterception:\s*true\b/.test(source),
-    routePreloadingDisabled: /routePreloadingBehavior:\s*["']none["']/.test(source),
+    noOpenNextRuntimeImport: !hasOpenNextRequestRuntimeImport(source),
+    nativeGuestHandler: /handleFreeGuestChat/.test(source),
+    nativeHealthHandler: /CF_VERSION_METADATA/.test(source),
+    legacyDoExportRetained: /DOQueueHandler/.test(source),
+    staticChatDocuments: /staticChatCacheKeys/.test(materializer),
+    exactStaticChatRedirects:
+      /Exact public topic redirects/.test(materializer) &&
+      /\/chat\?topic=/.test(materializer) &&
+      / 308/.test(materializer),
+    staticTopicsDocument: /api\/topics/.test(materializer),
+    staticMainAppBundles:
+      /writeStaticMainAppBundles/.test(materializer) && /i18n\/main-app/.test(materializer),
   };
   const ok = Object.values(architecture).every(Boolean);
   return {
-    name: "OpenNext cache revalidation architecture",
+    name: "Free static and lean guest architecture",
     status: ok ? "pass" : "fail",
-    detail: ok ? { queue: "NEXT_CACHE_DO_QUEUE", incrementalCache: "regional R2" } : architecture,
+    detail: ok ? { workerRuntime: "native-health-and-guest-chat", publicRuntime: "static-assets" } : architecture,
   };
+}
+
+export function hasOpenNextRequestRuntimeImport(source: string): boolean {
+  const importSpecifiers = [
+    ...source.matchAll(/\b(?:from\s+|import\s*(?:\(\s*)?|require\s*\(\s*)["']([^"']+)["']/g),
+  ]
+    .map((match) => match[1])
+    .filter((specifier): specifier is string => typeof specifier === "string");
+
+  return importSpecifiers.some(
+    (specifier) =>
+      (specifier.includes(".open-next/") &&
+        specifier !== "./.open-next/.build/durable-objects/queue.js") ||
+      specifier === "@opennextjs/cloudflare" ||
+      specifier.startsWith("@opennextjs/cloudflare/") ||
+      specifier === "next" ||
+      specifier.startsWith("next/"),
+  );
 }
 
 function wranglerDeployDryRunCheck(): DeployPreflightCheck {
@@ -544,42 +488,6 @@ function wranglerDeployDryRunCheck(): DeployPreflightCheck {
             status: result.status,
             outputTail: `${result.stdout ?? ""}${result.stderr ?? ""}`.slice(-2000),
           },
-  };
-}
-
-function remoteD1ProfilePhotoSchemaCheck(): DeployPreflightCheck {
-  const requiredColumns = ["profile_image_r2_key", "profile_image_r2_etag", "profile_image_size"];
-  const result = spawnSync(
-    path.resolve(process.cwd(), "node_modules/.bin/wrangler"),
-    ["d1", "execute", D1_DATABASE_NAME, "--remote", "--json", "--command", "pragma table_info(users);"],
-    {
-      cwd: process.cwd(),
-      env: commandEnv(),
-      encoding: "utf8",
-      maxBuffer: 64 * 1024 * 1024,
-    },
-  );
-  if (result.status !== 0) {
-    return {
-      name: "remote D1 profile photo schema",
-      status: "fail",
-      detail: {
-        status: result.status,
-        outputTail: `${result.stdout ?? ""}${result.stderr ?? ""}`.slice(-2000),
-      },
-    };
-  }
-
-  const rows = parseJsonFromOutput<Array<{ results?: Array<{ name?: string }> }>>(
-    `${result.stdout ?? ""}${result.stderr ?? ""}`,
-    [],
-  ).flatMap((entry) => entry.results ?? []);
-  const columns = new Set(rows.map((row) => row.name).filter(Boolean));
-  const missingColumns = requiredColumns.filter((column) => !columns.has(column));
-  return {
-    name: "remote D1 profile photo schema",
-    status: missingColumns.length ? "fail" : "pass",
-    detail: missingColumns.length ? { missingColumns } : { columns: requiredColumns },
   };
 }
 

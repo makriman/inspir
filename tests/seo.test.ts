@@ -1738,7 +1738,7 @@ test("web app manifest starts learners on the canonical guest mode", () => {
   const output = manifest();
 
   assert.equal(output.name, "inspir | Free AI learning for everyone");
-  assert.equal(output.start_url, "/chat/learn-anything");
+  assert.equal(output.start_url, "/chat?topic=learn-anything");
   assert.equal(output.display, "standalone");
   assert.ok(output.icons?.some((icon) => icon.src === "/inspir-app-icon.svg" && icon.purpose?.includes("maskable")));
   assert.ok(output.screenshots?.some((screenshot) => screenshot.src === "/inspir-social-preview.png"));

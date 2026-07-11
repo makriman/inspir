@@ -3,10 +3,11 @@ import fs from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
-test("public topics API is bounded by a cache policy", () => {
+test("public topics API is a build-time Static Asset with a bounded cache policy", () => {
   const source = read("app/api/topics/route.ts");
 
-  assert.match(source, /export const dynamic = "force-dynamic"/);
+  assert.match(source, /export const dynamic = "force-static"/);
+  assert.match(source, /getPublicSeededTopics/);
   assert.match(source, /Cache-Control/);
   assert.match(source, /public, max-age=300, s-maxage=3600, stale-while-revalidate=86400/);
 });

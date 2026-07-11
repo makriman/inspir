@@ -6,6 +6,7 @@ import {
   normalizeLanguage,
   type SupportedLanguage,
 } from "@/lib/content/languages";
+import { readStaticMainAppTranslations } from "@/lib/i18n/static-main-app-translations";
 import type { TranslationBundle, TranslationSource } from "@/lib/i18n/translation-types";
 
 type CuratedTranslationPack = {
@@ -49,9 +50,30 @@ export function getCuratedTranslationBundle(source: TranslationSource, language:
   const cacheKey = `${source.namespace}\u0000${normalized}\u0000${source.sourceHash}`;
   if (bundleCache.has(cacheKey)) return bundleCache.get(cacheKey) ?? null;
 
-  const packs = curatedPacksForNamespace(normalized, source.namespace);
+  const staticMainAppTranslations =
+    source.namespace === "main-app"
+      ? readStaticMainAppTranslations(source, normalized)
+      : null;
+  const packs =
+    source.namespace === "main-app"
+      ? staticMainAppTranslations
+        ? [
+            {
+              schemaVersion: 1,
+              language: normalized,
+              locale: languageConfigs[normalized].locale,
+              namespace: source.namespace,
+              sourceHash: source.sourceHash,
+              translations: staticMainAppTranslations,
+            },
+          ]
+        : []
+      : curatedPacksForNamespace(normalized, source.namespace);
   if (!packs.length) {
-    const fallbackBundle = getMarketingSiteFallbackBundle(source, normalized);
+    const fallbackBundle =
+      source.namespace === "main-app"
+        ? null
+        : getMarketingSiteFallbackBundle(source, normalized);
     bundleCache.set(cacheKey, fallbackBundle);
     return fallbackBundle;
   }

@@ -3,6 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { defaultLanguage, languageConfigs } from "../../lib/content/languages";
+import { getCuratedMainAppTranslationBundle } from "../../lib/i18n/main-app-curated";
+import { buildStaticMainAppBundleAsset } from "../../lib/i18n/main-app-static-asset";
 import { staticSiteLanguagesForPath } from "../../lib/i18n/static-availability";
 import { cloudflareDir, commandEnv, resolveBackupDir } from "./migration-config";
 
@@ -53,7 +55,6 @@ async function main() {
   checkStaticAssetDelivery("static loading state", loading);
 
   await checkRuntimeHealth();
-  await checkAuthCacheIsolation();
 
   const localized = await request("/hi");
   checkResponse("localized Hindi route", localized, {
@@ -66,14 +67,49 @@ async function main() {
   }
   checkStaticAssetDelivery("localized Hindi route", localized);
 
-  const localizedChat = await request("/hi/chat/learn-anything");
-  checkResponse("localized Hindi chat route", localizedChat);
+  const englishLegacyChat = await request("/chat/learn-anything");
+  checkStaticTopicRedirect(
+    "known English legacy chat route",
+    englishLegacyChat,
+    "/chat",
+    "learn-anything",
+  );
+  const englishChat = await request("/chat?topic=learn-anything");
+  checkResponse("known English chat route", englishChat);
+  checkStaticAssetDelivery("known English chat route", englishChat);
+
+  const localizedLegacyChat = await request("/hi/chat/learn-anything");
+  checkStaticTopicRedirect(
+    "known localized Hindi legacy chat route",
+    localizedLegacyChat,
+    "/hi/chat",
+    "learn-anything",
+  );
+  const localizedChat = await request("/hi/chat?topic=learn-anything");
+  checkResponse("known localized Hindi chat route", localizedChat);
   if ((localizedChat.headers["set-cookie"] ?? "").includes("inspir_locale=Hindi")) {
-    pass("localized Hindi chat route language cookie");
+    fail("known localized Hindi chat route language cookie suppressed", {
+      setCookie: localizedChat.headers["set-cookie"] ?? null,
+    });
   } else {
-    fail("localized Hindi chat route language cookie", { setCookie: localizedChat.headers["set-cookie"] ?? null });
+    pass("known localized Hindi chat route language cookie suppressed", {
+      setCookie: localizedChat.headers["set-cookie"] ?? null,
+    });
   }
-  checkCacheControl("localized Hindi chat route", localizedChat, [/private/i, /no-store/i]);
+  checkStaticAssetDelivery("known localized Hindi chat route", localizedChat);
+
+  const hindiMainAppTranslationBundle = getCuratedMainAppTranslationBundle("Hindi");
+  if (!hindiMainAppTranslationBundle) {
+    fail("immutable Hindi main-app bundle source", "The curated Hindi bundle is missing.");
+  } else {
+    const hindiMainAppAsset = buildStaticMainAppBundleAsset("hi", hindiMainAppTranslationBundle);
+    const hindiMainAppBundle = await request(hindiMainAppAsset.publicPath);
+    checkResponse("immutable Hindi main-app bundle", hindiMainAppBundle, {
+      contentTypeIncludes: "application/json",
+    });
+    checkStaticAssetDelivery("immutable Hindi main-app bundle", hindiMainAppBundle, { immutable: true });
+    checkLocalizedMainAppBundle(hindiMainAppBundle, "Hindi", hindiMainAppAsset.sourceHash);
+  }
 
   const unavailableLocalized = await request("/hi/mission");
   checkStaticNotFound("unsupported localized route", unavailableLocalized);
@@ -96,7 +132,7 @@ async function main() {
 
   const manifest = await request("/manifest.webmanifest");
   checkResponse("web app manifest", manifest, {
-    bodyIncludes: [/"start_url":"\/chat\/learn-anything"/],
+    bodyIncludes: [/"start_url":"\/chat\?topic=learn-anything"/],
     contentTypeIncludes: "application/manifest+json",
   });
   checkStaticAssetDelivery("web app manifest", manifest);
@@ -106,7 +142,7 @@ async function main() {
   if (
     tnc.status === 308 &&
     tncPathname === "/terms" &&
-    tnc.headers["x-inspir-delivery"] === undefined
+    isStaticRedirectDelivery(tnc.headers["x-inspir-delivery"])
   ) {
     pass("static legal redirect", { status: tnc.status, location: tnc.headers.location });
   } else {
@@ -130,11 +166,10 @@ async function main() {
   const topics = await request("/api/topics");
   checkResponse("topics API", topics, { contentTypeIncludes: "application/json" });
   checkCacheControl("topics API", topics, [/public/i, /max-age=300/i, /s-maxage=3600/i]);
+  checkStaticAssetDelivery("topics API", topics, { allowFreshPublicCache: true });
   checkTopicsPayload(topics);
 
-  const retiredGames = await request("/games");
-  checkStaticNotFound("removed game surface", retiredGames);
-
+  await checkRetiredStaticSurfaces();
   await checkRemovedTranslationApis();
   await checkLocaleResourceSoak();
 
@@ -213,49 +248,78 @@ async function checkRuntimeHealth() {
 
   const payload = parseJsonObject(health.body);
   const version = objectValue(payload?.version);
-  const build = objectValue(payload?.build);
   const architecture = objectValue(payload?.architecture);
   if (
     version.id === expectedWorkerVersion &&
-    typeof build.id === "string" &&
-    build.id !== "unknown-build" &&
-    architecture.deploymentMode === "free-static-first" &&
+    architecture.deploymentMode === "free-static-lean-guest" &&
     architecture.publicDocuments === "workers-static-assets" &&
     architecture.workerCpuPlan === "free-10ms" &&
+    architecture.openNext === false &&
+    architecture.accounts === false &&
+    architecture.savedState === false &&
     architecture.games === false
   ) {
     pass("unpinned Worker health architecture", {
       versionId: version.id,
       expectedWorkerVersion,
-      buildId: build.id,
       architecture,
     });
   } else {
-    fail("unpinned Worker health architecture", { expectedWorkerVersion, version, build, architecture });
+    fail("unpinned Worker health architecture", { expectedWorkerVersion, version, architecture });
   }
 }
 
-async function checkAuthCacheIsolation() {
-  const route = `/api/auth/get-session?production_cache_probe=${Date.now()}`;
-  const anonymous = await request(route);
-  const repeated = await request(route);
-  const cookieVariant = await request(route, {
-    headers: { cookie: "better-auth.session_token=invalid-production-cache-probe" },
-  });
+async function checkRetiredStaticSurfaces() {
+  const retiredRoutes: Array<{
+    name: string;
+    route: string;
+    init?: RequestInit;
+    expectedStatus?: 404 | 405;
+  }> = [
+    { name: "unknown chat topic", route: "/chat/__inspir_unknown_topic__" },
+    { name: "deep chat route", route: "/chat/learn-anything/deep" },
+    { name: "UUID saved chat route", route: "/chat/123e4567-e89b-42d3-a456-426614174000" },
+    { name: "deep localized chat route", route: "/hi/chat/learn-anything/deep" },
+    { name: "removed game surface", route: "/games" },
+    { name: "removed game deep route", route: "/games/arena" },
+    { name: "removed auth session API", route: "/api/auth/get-session" },
+    { name: "removed account API", route: "/api/me" },
+    { name: "removed saved chats API", route: "/api/chats" },
+    { name: "removed memory API", route: "/api/memory" },
+    { name: "removed admin surface", route: "/admin" },
+    { name: "removed admin API", route: "/api/admin/users" },
+    {
+      name: "removed authenticated chat mutation",
+      route: "/api/chat",
+      init: jsonPost({ content: "production static 404 probe" }),
+      expectedStatus: 405,
+    },
+    {
+      name: "removed analytics mutation",
+      route: "/api/analytics/events",
+      init: jsonPost({ event: "production_static_404_probe" }),
+      expectedStatus: 405,
+    },
+    {
+      name: "removed logout mutation",
+      route: "/api/logout",
+      init: jsonPost({}),
+      expectedStatus: 405,
+    },
+  ];
 
-  for (const [name, result] of [
-    ["anonymous", anonymous],
-    ["repeated", repeated],
-    ["cookie variant", cookieVariant],
-  ] as const) {
-    checkResponse(`auth session ${name}`, result, { contentTypeIncludes: "application/json" });
-    checkCacheControl(`auth session ${name}`, result, [/private/i, /no-store/i]);
-    if ((result.headers["cf-cache-status"] ?? "").toUpperCase() === "HIT") {
-      fail(`auth session ${name} bypasses shared cache`, { cfCacheStatus: result.headers["cf-cache-status"] });
-    } else {
-      pass(`auth session ${name} bypasses shared cache`, { cfCacheStatus: result.headers["cf-cache-status"] ?? null });
-    }
+  for (const retired of retiredRoutes) {
+    const result = await request(retired.route, retired.init);
+    checkStaticStatus(retired.name, result, retired.expectedStatus ?? 404);
   }
+}
+
+function jsonPost(body: unknown): RequestInit {
+  return {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(body),
+  };
 }
 
 async function checkRemovedTranslationApis() {
@@ -313,32 +377,56 @@ async function checkGuestChat() {
     }),
   });
 
-  checkResponse("live guest chat", response);
-  if (response.ok && response.bodyPreview.trim().length > 0) {
-    const used = Number(response.headers["x-guest-messages-used"]);
-    const limit = Number(response.headers["x-guest-messages-limit"]);
-    pass("live guest chat streamed body", {
-      messageLimit: response.headers["x-guest-messages-limit"] ?? null,
-      messagesUsed: response.headers["x-guest-messages-used"] ?? null,
+  checkResponse("live guest chat", response, { contentTypeIncludes: "text/event-stream" });
+  checkWorkerDelivery("live guest chat", response);
+
+  const deltas = parseOpenAiTextDeltas(response.body);
+  if (response.ok && deltas.length > 0) {
+    pass("live guest chat parsed OpenAI delta", {
+      deltaCount: deltas.length,
+      textCharacters: deltas.join("").length,
     });
-    if (Number.isInteger(used) && Number.isInteger(limit) && used >= 1 && limit >= used) {
-      pass("live guest chat limit headers", { messagesUsed: used, messageLimit: limit });
-    } else {
-      fail("live guest chat limit headers", {
-        messageLimit: response.headers["x-guest-messages-limit"] ?? null,
-        messagesUsed: response.headers["x-guest-messages-used"] ?? null,
-      });
-    }
   } else {
-    fail("live guest chat streamed body", {
+    fail("live guest chat parsed OpenAI delta", {
       status: response.status,
       bodyPreview: response.bodyPreview,
     });
+  }
+
+  const used = Number(response.headers["x-guest-messages-used"]);
+  const limit = Number(response.headers["x-guest-messages-limit"]);
+  if (Number.isInteger(used) && Number.isInteger(limit) && used >= 1 && limit >= used) {
+    pass("live guest chat limit headers", { messagesUsed: used, messageLimit: limit });
+  } else {
     fail("live guest chat limit headers", {
       messageLimit: response.headers["x-guest-messages-limit"] ?? null,
       messagesUsed: response.headers["x-guest-messages-used"] ?? null,
     });
   }
+}
+
+export function parseOpenAiTextDeltas(source: string) {
+  const deltas: string[] = [];
+  const normalized = source.replaceAll("\r\n", "\n");
+  for (const rawEvent of normalized.split("\n\n")) {
+    const data = rawEvent
+      .split("\n")
+      .filter((line) => line.startsWith("data:"))
+      .map((line) => line.slice(5).trimStart())
+      .join("\n")
+      .trim();
+    if (!data || data === "[DONE]") continue;
+
+    const payload = parseJsonObject(data);
+    const choices = Array.isArray(payload?.choices) ? payload.choices : [];
+    for (const choice of choices) {
+      const delta = objectValue(objectValue(choice).delta);
+      if (typeof delta.content === "string" && delta.content.length > 0) {
+        deltas.push(delta.content);
+      }
+    }
+  }
+  return deltas;
 }
 
 async function request(
@@ -430,6 +518,39 @@ function checkTopicsPayload(result: FetchResult) {
   }
 }
 
+function checkLocalizedMainAppBundle(
+  result: FetchResult,
+  expectedLanguage: string,
+  expectedSourceHash: string,
+) {
+  const payload = parseJsonObject(result.body);
+  const strings = objectValue(payload?.strings);
+  const localizedStrings = Object.values(strings).filter(
+    (value): value is string => typeof value === "string" && value.trim().length > 0,
+  );
+  if (
+    payload?.namespace === "main-app" &&
+    payload.language === expectedLanguage &&
+    payload.sourceHash === expectedSourceHash &&
+    localizedStrings.length > 0
+  ) {
+    pass("immutable Hindi main-app bundle payload", {
+      language: payload.language,
+      sourceHash: payload.sourceHash,
+      translatedStrings: localizedStrings.length,
+    });
+  } else {
+    fail("immutable Hindi main-app bundle payload", {
+      expectedLanguage,
+      expectedSourceHash,
+      namespace: payload?.namespace ?? null,
+      language: payload?.language ?? null,
+      sourceHash: payload?.sourceHash ?? null,
+      translatedStrings: localizedStrings.length,
+    });
+  }
+}
+
 function parseJsonObject(value: string): Record<string, unknown> | null {
   try {
     const parsed: unknown = JSON.parse(value);
@@ -476,15 +597,52 @@ function checkCacheControl(name: string, result: FetchResult, patterns: RegExp[]
 }
 
 function checkWorkerDelivery(name: string, result: FetchResult) {
-  const delivery = result.headers["x-inspir-delivery"];
-  if (delivery === undefined) {
-    pass(`${name} dynamic Worker delivery`);
+  const delivery = result.headers["x-inspir-delivery"] ?? null;
+  if (delivery === "lean-api-worker") {
+    pass(`${name} lean API Worker delivery`, { delivery });
   } else {
-    fail(`${name} dynamic Worker delivery`, { unexpectedStaticDeliveryHeader: delivery });
+    fail(`${name} lean API Worker delivery`, { expected: "lean-api-worker", actual: delivery });
   }
 }
 
-function checkStaticAssetDelivery(name: string, result: FetchResult, options: { immutable?: boolean } = {}) {
+function checkStaticTopicRedirect(
+  name: string,
+  result: FetchResult,
+  expectedPathname: string,
+  expectedTopic: string,
+) {
+  const location = new URL(result.headers.location ?? "/", result.url);
+  const expectedOrigin = new URL(baseUrl).origin;
+  const detail = {
+    status: result.status,
+    delivery: result.headers["x-inspir-delivery"] ?? null,
+    location: result.headers.location ?? null,
+  };
+  if (
+    result.status === 308 &&
+    isStaticRedirectDelivery(result.headers["x-inspir-delivery"]) &&
+    location.origin === expectedOrigin &&
+    location.pathname === expectedPathname &&
+    location.searchParams.get("topic") === expectedTopic
+  ) {
+    pass(`${name} static redirect`, detail);
+  } else {
+    fail(`${name} static redirect`, {
+      ...detail,
+      expectedLocation: `${expectedPathname}?topic=${expectedTopic}`,
+    });
+  }
+}
+
+function checkStaticAssetDelivery(
+  name: string,
+  result: FetchResult,
+  options: {
+    immutable?: boolean;
+    allowFreshPublicCache?: boolean;
+    allowMissingCacheControl?: boolean;
+  } = {},
+) {
   const problems = staticAssetProblems(result, options);
   if (problems.length === 0) {
     pass(`${name} direct static asset delivery`, {
@@ -505,15 +663,31 @@ function checkStaticAssetDelivery(name: string, result: FetchResult, options: { 
 }
 
 function checkStaticNotFound(name: string, result: FetchResult) {
-  if (result.status === 404) {
-    pass(`${name} status`, { status: result.status, url: result.url });
-  } else {
-    fail(`${name} status`, { status: result.status, url: result.url, bodyPreview: result.bodyPreview });
-  }
-  checkStaticAssetDelivery(name, result);
+  checkStaticStatus(name, result, 404);
 }
 
-function staticAssetProblems(result: FetchResult, options: { immutable?: boolean } = {}) {
+function checkStaticStatus(name: string, result: FetchResult, expectedStatus: 404 | 405) {
+  if (result.status === expectedStatus) {
+    pass(`${name} status`, { status: result.status, url: result.url });
+  } else {
+    fail(`${name} status`, {
+      status: result.status,
+      expectedStatus,
+      url: result.url,
+      bodyPreview: result.bodyPreview,
+    });
+  }
+  checkStaticAssetDelivery(name, result, { allowMissingCacheControl: expectedStatus === 405 });
+}
+
+function staticAssetProblems(
+  result: FetchResult,
+  options: {
+    immutable?: boolean;
+    allowFreshPublicCache?: boolean;
+    allowMissingCacheControl?: boolean;
+  } = {},
+) {
   const cacheControl = result.headers["cache-control"] ?? "";
   const problems: string[] = [];
   if (result.headers["x-inspir-delivery"] !== "static-assets") {
@@ -523,16 +697,25 @@ function staticAssetProblems(result: FetchResult, options: { immutable?: boolean
   for (const header of ["x-nextjs-cache", "x-opennext-cache", "x-nextjs-prerender"] as const) {
     if (result.headers[header]) problems.push(`no-${header}`);
   }
+  if (options.allowMissingCacheControl && !cacheControl) {
+    return problems;
+  }
   if (options.immutable) {
     const maxAge = readCacheControlSeconds(cacheControl, "max-age");
     if (maxAge === null || maxAge < 365 * 24 * 60 * 60) problems.push("max-age>=31536000");
     if (!/\bimmutable\b/i.test(cacheControl)) problems.push("immutable");
   } else {
     if (!/\bpublic\b/i.test(cacheControl)) problems.push("public");
-    if (readCacheControlSeconds(cacheControl, "max-age") !== 0) problems.push("max-age=0");
-    if (!/\bmust-revalidate\b/i.test(cacheControl)) problems.push("must-revalidate");
+    if (!options.allowFreshPublicCache) {
+      if (readCacheControlSeconds(cacheControl, "max-age") !== 0) problems.push("max-age=0");
+      if (!/\bmust-revalidate\b/i.test(cacheControl)) problems.push("must-revalidate");
+    }
   }
   return problems;
+}
+
+function isStaticRedirectDelivery(delivery: string | undefined) {
+  return delivery === undefined || delivery === "static-assets";
 }
 
 function readCacheControlSeconds(cacheControl: string, directive: string) {

@@ -1,19 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import "katex/dist/katex.min.css";
 import "../globals.css";
-import { Suspense } from "react";
-import { headers } from "next/headers";
 import { AnalyticsScripts } from "@/components/analytics/AnalyticsScripts";
-import { ProductAnalytics } from "@/components/analytics/ProductAnalytics";
+import { StaticDocumentNavigation } from "@/components/navigation/StaticDocumentNavigation";
 import { Geist } from "next/font/google";
-import { getRequestLanguageConfig } from "@/lib/i18n/request-locale";
+import { languageConfigs } from "@/lib/content/languages";
 import { siteName, siteUrl } from "@/lib/seo/config";
-import { cspNonceHeader } from "@/lib/security/headers";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+export const revalidate = false;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -65,13 +63,12 @@ export const viewport: Viewport = {
   colorScheme: "light dark",
 };
 
-export default async function WorkspaceLayout({
+export default function WorkspaceLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const languageConfig = await getRequestLanguageConfig();
-  const nonce = (await headers()).get(cspNonceHeader) ?? undefined;
+  const languageConfig = languageConfigs.English;
   return (
     <html
       lang={languageConfig.locale}
@@ -79,10 +76,8 @@ export default async function WorkspaceLayout({
       className={cn("h-full antialiased", "font-sans", geist.variable)}
     >
       <body className="min-h-full bg-[#171614] text-white">
-        <AnalyticsScripts nonce={nonce} />
-        <Suspense fallback={null}>
-          <ProductAnalytics />
-        </Suspense>
+        <StaticDocumentNavigation />
+        <AnalyticsScripts />
         {children}
       </body>
     </html>

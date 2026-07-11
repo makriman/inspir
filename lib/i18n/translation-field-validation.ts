@@ -56,6 +56,7 @@ const mustTranslatePhrases = new Set([
 ]);
 const mustTranslateSingleWords = new Set([
   "About",
+  "Answer",
   "Compare",
   "Continue",
   "Learn",
